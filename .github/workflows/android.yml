@@ -43,8 +43,38 @@ jobs:
           node --check app/src/main/assets/lexicon-extra.js
           node tools/lexicon.test.cjs
           node tools/freedict.test.cjs
+          node tools/editorial.test.cjs
+          node tools/assets.test.cjs
       - name: Run tests and assemble installable APK
         run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
+      - name: Verify required files really exist inside APK
+        shell: bash
+        run: |
+          APK="$(find app/build/outputs/apk/debug -type f -name '*.apk' | head -1)"
+          test -n "$APK"
+          for file in index.html lexicon-extra.js liquid-aurora.css reader-experience.js reader-experience.css editorial-stories-a.js editorial-stories-b.js editorial-art.js freedict-en-ar.js LICENSE_FREEDICT.txt; do
+            unzip -Z1 "$APK" | grep -Fqx "assets/$file" || { echo "MISSING assets/$file"; exit 1; }
+          done
+          echo "PASS: all critical offline modules packaged into $APK"
+      - name: Browser render smoke and screenshot artifacts
+        shell: bash
+        run: |
+          CHROME="$(command -v google-chrome || command -v chromium || true)"
+          if [ -z "$CHROME" ]; then echo "Chrome missing; screenshots skipped"; exit 0; fi
+          mkdir -p qa-screenshots
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=1280,840 --screenshot="$PWD/qa-screenshots/library-tablet.png" "file://$PWD/app/src/main/assets/index.html" >/tmp/chrome-tablet.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/library-phone.png" "file://$PWD/app/src/main/assets/index.html" >/tmp/chrome-phone.log 2>&1
+          file qa-screenshots/*.png
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=4500 --dump-dom "file://$PWD/app/src/main/assets/index.html" > /tmp/storylens-dom.html 2>/tmp/chrome-dom.log
+          grep -Fq 'storylens-hero' /tmp/storylens-dom.html || { echo 'Library hero failed to render'; exit 1; }
+          echo "PASS: desktop-browser library render smoke"
+      - name: Upload UI screenshot evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: StoryLens-UI-Screenshots
+          path: qa-screenshots/*.png
+          if-no-files-found: ignore
       - name: Upload debug APK
         if: success()
         uses: actions/upload-artifact@v4
