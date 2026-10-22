@@ -63,11 +63,17 @@ class MainActivity : ComponentActivity() {
         )
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                reader.evaluateJavascript(
-                    "(function(){if(document.getElementById('modals').innerHTML){closeSheet();}" +
-                    "else if(state.page==='translation'){backToReader();}" +
-                    "else{libraryBack();}})();", null
-                )
+                reader.evaluateJavascript("state.page") { page ->
+                    if (page == "\"library\"") {
+                        finish()
+                    } else {
+                        reader.evaluateJavascript(
+                            "(function(){if(document.getElementById('modals').innerHTML){closeSheet();}" +
+                            "else if(state.page==='translation'){backToReader();}" +
+                            "else{libraryBack();}})();", null
+                        )
+                    }
+                }
             }
         })
     }
