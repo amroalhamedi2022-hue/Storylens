@@ -23,10 +23,12 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.3.1'
-      - name: Prepare Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Use Android SDK preinstalled on GitHub runner
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          which sdkmanager
       - name: Install required SDK
-        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+        run: sdkmanager --install "platforms;android-36" "build-tools;36.0.0"
       - name: Validate curated offline content
         run: python3 tools/validate_catalog.py
       - name: Run tests and assemble installable APK
