@@ -16,7 +16,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 SOURCE = "https://download.freedict.org/dictionaries/eng-ara/0.6.3/freedict-eng-ara-0.6.3.src.tar.xz"
-EXPECTED_SHA512 = "2604f6ce902e719c61fcf391bef02cdbf5acd4f601b243933081689c0cfc4e169400f84bdda95a77110d545ddba444739d9d05b6d5d2a12b7aeab1bbd1"
+EXPECTED_SHA512 = "2604f6ce902e719c61fcf391bef02cdbf5eb60f5acd4f601b243933081689c0cfc4e169400f84bdda95a77110d545ddba444739d9d05b6d5d2a12b7aeab1bbd1"
 ARABIC = re.compile(r"[\u0600-\u06ff]")
 ENGLISH = re.compile(r"^[a-z][a-z' -]{0,75}$")
 MAX_GLOSSES = 6
