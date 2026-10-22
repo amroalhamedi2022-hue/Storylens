@@ -32,7 +32,7 @@ jobs:
           if [ -z "$SDKMGR" ]; then echo "sdkmanager not found"; exit 1; fi
           "$SDKMGR" --install "platforms;android-36" "build-tools;36.0.0"
       - name: Validate curated offline content
-        run: python3 tools/validate_catalog.py
+        run: python3 tools/validate_catalog.py && python3 tools/check_js.py
       - name: Run tests and assemble installable APK
         run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
       - name: Upload debug APK
