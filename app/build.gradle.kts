@@ -19,5 +19,6 @@ android {
 dependencies {
     implementation("androidx.activity:activity:1.13.0")
     implementation("androidx.core:core-ktx:1.17.0")
+    implementation("androidx.webkit:webkit:1.18.0")
     testImplementation("junit:junit:4.13.2")
 }
