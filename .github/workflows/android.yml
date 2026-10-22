@@ -23,12 +23,14 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.3.1'
-      - name: Use Android SDK preinstalled on GitHub runner
+      - name: Install Android components using runner SDK
+        shell: bash
         run: |
-          echo "ANDROID_HOME=$ANDROID_HOME"
-          which sdkmanager
-      - name: Install required SDK
-        run: sdkmanager --install "platforms;android-36" "build-tools;36.0.0"
+          echo "Android SDK: $ANDROID_HOME"
+          ls -la "$ANDROID_HOME/cmdline-tools" || true
+          SDKMGR="$(find "$ANDROID_HOME/cmdline-tools" -maxdepth 3 -type f -name sdkmanager | head -n 1)"
+          if [ -z "$SDKMGR" ]; then echo "sdkmanager not found"; exit 1; fi
+          "$SDKMGR" --install "platforms;android-36" "build-tools;36.0.0"
       - name: Validate curated offline content
         run: python3 tools/validate_catalog.py
       - name: Run tests and assemble installable APK
