@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
+import android.webkit.WebResourceResponse
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -13,6 +14,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.webkit.WebViewAssetLoader
 
 /**
  * Secure offline host for the StoryLens reader.
@@ -30,6 +32,11 @@ class MainActivity : ComponentActivity() {
             systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
             hide(WindowInsetsCompat.Type.systemBars())
         }
+
+        val assetLoader = WebViewAssetLoader.Builder()
+            .setDomain("appassets.androidplatform.net")
+            .addPathHandler("/assets/", WebViewAssetLoader.AssetsPathHandler(this))
+            .build()
 
         reader = WebView(this).apply {
             setBackgroundColor(Color.rgb(239, 245, 243))
@@ -49,6 +56,12 @@ class MainActivity : ComponentActivity() {
             }
             webChromeClient = WebChromeClient()
             webViewClient = object : WebViewClient() {
+                override fun shouldInterceptRequest(view: WebView?, request: WebResourceRequest?): WebResourceResponse? {
+                    val url = request?.url ?: return null
+                    return if (url.scheme == "https" && url.host == "appassets.androidplatform.net") {
+                        assetLoader.shouldInterceptRequest(url)
+                    } else null
+                }
                 override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                     val uri = request?.url ?: return true
                     return uri.scheme != "https" || uri.host != "appassets.androidplatform.net"
@@ -56,11 +69,9 @@ class MainActivity : ComponentActivity() {
             }
         }
         setContentView(reader)
-        val html = assets.open("index.html").bufferedReader(Charsets.UTF_8).use { it.readText() }
-        reader.loadDataWithBaseURL(
-            "https://appassets.androidplatform.net/assets/index.html",
-            html, "text/html", "UTF-8", null
-        )
+        // All HTML/CSS/JS, including the independent GPL dictionary data, are
+        // served from APK assets by WebViewAssetLoader — no network permission.
+        reader.loadUrl("https://appassets.androidplatform.net/assets/index.html")
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 reader.evaluateJavascript("state.page") { page ->
