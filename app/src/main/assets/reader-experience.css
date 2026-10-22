@@ -52,3 +52,32 @@
  .hero-orb{width:110px;align-self:center;margin-right:-35px;opacity:.62}.storylens-hero h2{font-size:30px}
  .storylens-hero p{font-size:13px}.hero-metrics span{font-size:9px}.hero-metrics{gap:6px}}
 @media(prefers-reduced-motion:reduce){.hero-orb{animation:none!important}}
+
+
+/* UX audit 2026-10-22: first story must be discoverable above the fold. */
+.storylens-hero{padding:24px 28px;margin:0 0 18px;min-height:0;}
+.storylens-hero h2{font-size:clamp(26px,3.4vw,39px);margin:6px 0 8px;line-height:1.11;}
+.storylens-hero p{font-size:13px;line-height:1.55;margin:7px 0;}
+.hero-metrics{margin:12px 0 9px;}
+.hero-orb{width:min(100%,200px)}
+.storylens-header{margin-bottom:12px}
+.storylens-header h1{font-size:clamp(27px,3.8vw,45px);margin:4px 0 8px;}
+.storylens-header .quiet{line-height:1.5}
+.library .filters{margin:15px 0 12px;padding-bottom:5px}
+.library .search-label{margin-top:2px}
+@media(max-width:650px){
+ .storylens-hero{grid-template-columns:minmax(0,1fr) 75px;padding:16px 16px 18px;margin:0 0 14px;border-radius:22px}
+ .storylens-hero h2{font-size:27px;line-height:1.12;margin:6px 0;}
+ .storylens-hero p{font-size:12px;line-height:1.6;margin:6px 0;}
+ .hero-orb{width:92px;margin-inline-start:-19px;opacity:.53}
+ .hero-metrics{gap:5px;margin:9px 0 7px}
+ .hero-metrics span{padding:3px 6px;font-size:9px}
+ .library.storylens-header{margin:0}
+ .storylens-header{margin-bottom:11px}
+ .storylens-header h1{font-size:29px;line-height:1.14;margin:2px 0 6px}
+ .storylens-header .quiet{font-size:12px;line-height:1.4}
+ .storylens-header .library-actions{gap:5px}
+ .storylens-header .library-actions button{padding:8px 11px;border-radius:12px;font-size:12px}
+ .library .filters{margin:10px 0 11px}
+ .library .search-label input{padding:12px 14px}
+}
