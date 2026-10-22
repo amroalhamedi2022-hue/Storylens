@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+"""Build temporary HTML fixtures for real Chromium screenshots and E2E DOM QA.
+
+Fixtures are generated AFTER APK assembly so QA code is never shipped in the app.
+"""
+from pathlib import Path
+assets=Path(__file__).resolve().parents[1]/"app/src/main/assets"
+source=(assets/"index.html").read_text(encoding="utf-8")
+assert source.count("</body>")==1
+tests={
+ "reader":"""openStory('last-passenger');document.body.setAttribute('data-stl-screenshot','reader');""",
+ "word":"""openStory('last-passenger');document.querySelector('.reader .tok')?.click();document.body.setAttribute('data-stl-screenshot','word');""",
+ "flow":r"""
+(function(){
+ const passes=[],errors=[];
+ function check(name,fn){try{if(!fn())throw Error('false');passes.push(name)}catch(err){errors.push(name+': '+err.message)}}
+ check('catalog',()=>catalog.stories.length===30&&document.querySelectorAll('.card').length===30);
+ check('hero',()=>!!document.querySelector('.storylens-hero'));
+ check('dictionary',()=>FreeDictEnglishArabic.size>=80000&&FreeDictEnglishArabic.resolve('dog')?.literal.includes('كلب'));
+ check('story art',()=>!!art['eleven-minute-alibi_0']);
+ try{openStory('eleven-minute-alibi')}catch(e){errors.push('open: '+e.message)}
+ check('reader',()=>state.page==='reader'&&!!document.querySelector('.reader .tok'));
+ try{document.querySelector('.reader .tok').click()}catch(e){errors.push('tap: '+e.message)}
+ check('word',()=>!!document.querySelector('.sheet')&&!document.querySelector('.sheet').textContent.includes('لم نضف المعنى المعجمي'));
+ try{closeSheet();settings()}catch(e){errors.push('settings: '+e.message)}
+ check('chapters',()=>!!document.querySelector('.chapter-picker'));
+ try{stlBookmark()}catch(e){errors.push('bookmark: '+e.message)}
+ check('bookmark saved',()=>!!get('bookmarks',{})['eleven-minute-alibi']);
+ try{stlChapter(1)}catch(e){errors.push('chapter navigation: '+e.message)}
+ check('chapter navigation',()=>state.chapter===1);
+ try{stlJumpBookmark()}catch(e){errors.push('jump bookmark: '+e.message)}
+ check('bookmark restored',()=>state.chapter===0);
+ try{fullTranslation()}catch(e){errors.push('translation: '+e.message)}
+ check('full translation',()=>state.page==='translation'&&document.querySelector('.arabic-page')?.textContent.includes('التحقيق'));
+ try{backToReader();libraryBack();cycleVisualTheme()}catch(e){errors.push('theme: '+e.message)}
+ check('switch theme',()=>state.uiTheme==='aqua'&&document.body.classList.contains('theme-aqua'));
+ check('library retained',()=>document.querySelectorAll('.card').length===30);
+ document.body.setAttribute('data-storylens-qa',errors.length?'FAIL':'PASS');
+ document.body.setAttribute('data-storylens-qa-count',String(passes.length));
+ document.body.setAttribute('data-storylens-qa-errors',errors.join(' | '));
+})();
+"""
+}
+for name,script in tests.items():
+ result=source.replace("</body>","<script>\n"+script+"\n</script>\n</body>")
+ target=assets/("qa-"+name+".html")
+ target.write_text(result,encoding="utf-8")
+ print(target)
