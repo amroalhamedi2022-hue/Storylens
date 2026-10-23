@@ -244,3 +244,24 @@ assert.match(shellCss,/\.reader\.lt-reader-exit/,'exit transition is styled');
 assert.match(shellCss,/\.reader\.lt-reader-enter/,'enter transition is styled');
 assert.ok(backupJs.includes("'midnight-library'"),'backup permits new theme');
 console.log('PASS: LT-02 production navigation enter/exit, rapid back, modal, scroll, reduced-motion and Midnight Library layout');
+
+
+// LT-01 / LT-09 Android host regression: manifest identity and native system Back.
+const manifest=fs.readFileSync(path.join(root,'app/src/main/AndroidManifest.xml'),'utf8');
+const gradle=fs.readFileSync(path.join(root,'app/build.gradle.kts'),'utf8');
+const nativeHost=fs.readFileSync(path.join(root,'app/src/main/java/com/storylens/reader/MainActivity.kt'),'utf8');
+assert.match(manifest,/android:label="Lingua Tales"/,'Android launcher must show new brand');
+assert.match(gradle,/applicationId\s*=\s*"com\.storylens\.reader"/,
+ 'existing installed application identity must remain unchanged');
+assert.ok(!/<uses-permission/.test(manifest),'rebrand cannot add network or microphone permission');
+assert.ok(nativeHost.includes('exportDocument.launch("LinguaTales-backup.json")'),
+ 'new backup filename must not change JSON schema or storage keys');
+const nativeBack=nativeHost.slice(nativeHost.indexOf('override fun handleOnBackPressed()'));
+assert.ok(nativeBack.includes('window.LinguaShell.isDrawerOpen()'),
+ 'Android Back must check the library drawer before finishing');
+assert.ok(nativeBack.includes('window.LinguaShell.closeDrawer();'),
+ 'Android Back must dismiss the open drawer');
+assert.ok(nativeBack.indexOf('window.LinguaShell.closeDrawer();') <
+ nativeBack.indexOf('if (page == "\\\"library\\\"") finish()'),
+ 'drawer close must precede activity finish');
+console.log('PASS: LT-01 launcher/backup naming, package continuity and LT-09 native drawer Back contract (source; device NOT TESTED)');
