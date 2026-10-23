@@ -206,3 +206,26 @@ body.theme-midnight-library{
 @media(prefers-reduced-motion:reduce){
  .reader.lt-reader-enter,.reader.lt-reader-exit{animation:none!important;transform:none!important;opacity:1!important}
 }
+
+/* LT-12: independent English and Arabic font stacks. No remote font requests. */
+:root{
+ --lt-ar-font:system-ui,-apple-system,"Noto Sans Arabic",Tahoma,sans-serif;
+ --lt-en-font:Georgia,"Times New Roman",serif;
+}
+html[data-lt-arabic-font="naskh"]{
+ --lt-ar-font:"Noto Naskh Arabic","Noto Serif Arabic",serif;
+}
+html[data-lt-english-font="sans"]{
+ --lt-en-font:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+body,.arabic-page,.inline-ar,.arabic-inner,.lt-settings-sheet{
+ font-family:var(--lt-ar-font);
+}
+.reader .sentence,.reader h2,.card h2,.sheet .en,
+.review-card .en-prompt,.vitem h3{
+ font-family:var(--lt-en-font)!important;
+}
+.lt-font-setting{display:flex;align-items:center;justify-content:space-between;
+ gap:16px;margin:12px 0;font-size:15px}
+.lt-font-setting select{max-width:60%;min-height:44px;border-radius:10px;
+ padding:8px 12px;background:var(--card);color:var(--ink);border:1px solid var(--accent)}
