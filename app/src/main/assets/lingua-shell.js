@@ -55,6 +55,16 @@ function openDrawer(){
  drawer.querySelector('button')?.focus();
  return true;
 }
+function moveDiscovery(){
+ const section=document.querySelector('.library');
+ const drawer=document.getElementById('lt-drawer');
+ const discovery=section?.querySelector('.stl-discovery');
+ if(!drawer||!discovery||discovery.parentNode===drawer)return false;
+ const divider=drawer.querySelector('.lt-drawer-divider');
+ if(divider)drawer.insertBefore(discovery,divider);
+ else drawer.appendChild(discovery);
+ return true;
+}
 function addButton(parent,label,click,className){
  const button=document.createElement('button');
  button.type='button';button.className=className||'secondary';
@@ -151,11 +161,13 @@ function decorateLibrary(){
  }
  drawer.appendChild(genres);
  const divider=document.createElement('div');divider.className='lt-drawer-divider';drawer.appendChild(divider);
- addButton(drawer,settingsText(),openSettings,'secondary lt-drawer-settings');
  section.appendChild(drawer);
+ moveDiscovery();
+ if(actions){actions.classList.add('lt-drawer-actions');drawer.appendChild(actions);}
+
 }
 library=function(){originalLibrary();decorateLibrary();};
-global.LinguaShell={applyTheme,openDrawer,closeDrawer,openSettings,menuSide,validTheme,
+global.LinguaShell={applyTheme,openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,
  isDrawerOpen:()=>opened,themeNames:[...themeNames]};
 window.addEventListener('keydown',event=>{
  if(event.key==='Escape'&&opened){
