@@ -47,6 +47,7 @@ jobs:
           node tools/editorial-c.test.cjs
           node tools/assets.test.cjs
           node tools/library-experience.test.cjs
+          node tools/reader-experience.test.cjs
           node tools/data-backup.test.cjs
       - name: Run tests and assemble installable APK
         run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
