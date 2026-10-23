@@ -111,39 +111,40 @@ function show(message){
  const box=document.getElementById('stl-backup-feedback');
  if(box)box.textContent=message;
 }
+const ui=(ar,en)=>document.documentElement.lang==='en'?en:ar;
 function renderBackup(){
  const parent=document.getElementById('modals');
  if(!parent)return;
  parent.innerHTML='<div class="overlay" onclick="closeSheet(event)"><div class="sheet stl-backup-sheet" onclick="event.stopPropagation()">'+
-  '<div class="tag">OFFLINE · DATA SAFETY</div><h2>النسخ الاحتياطي</h2>'+
-  '<p class="quiet">احفظ المفردات والمفضلة ومواقع القراءة والإعدادات في ملف JSON خاص بك. لن يغادر جهازك.</p>'+
-  '<div class="stl-backup-actions"><button class="primary" id="stl-backup-export">تصدير نسخة</button>'+
-  '<button class="secondary" id="stl-backup-import">استيراد نسخة</button></div>'+
-  '<label for="stl-backup-paste">أو الصق نسخة JSON هنا لاسترجاعها يدويًا</label>'+
-  '<textarea id="stl-backup-paste" placeholder="Paste your StoryLens JSON here" spellcheck="false"></textarea>'+
-  '<button class="secondary" id="stl-backup-validate">فحص النسخة الملصوقة</button>'+
+  '<div class="tag">OFFLINE · DATA SAFETY</div><h2>'+ui('النسخ الاحتياطي','Backup & restore')+'</h2>'+
+  '<p class="quiet">'+ui('احفظ مفرداتك ومواقع القراءة والإعدادات محليًا. لن يغادر الملف جهازك.','Save your words, reading progress and settings locally. Nothing is uploaded.')+'</p>'+
+  '<div class="stl-backup-actions"><button class="primary" id="stl-backup-export">'+ui('تصدير نسخة','Export backup')+'</button>'+
+  '<button class="secondary" id="stl-backup-import">'+ui('استيراد نسخة','Import backup')+'</button></div>'+
+  '<label for="stl-backup-paste">'+ui('أو الصق نسخة JSON هنا','Or paste your JSON backup here')+'</label>'+
+  '<textarea id="stl-backup-paste" placeholder="'+ui('الصق ملف Lingua Tales هنا','Paste your Lingua Tales JSON here')+'" spellcheck="false"></textarea>'+
+  '<button class="secondary" id="stl-backup-validate">'+ui('فحص النسخة الملصوقة','Validate pasted backup')+'</button>'+
   '<p id="stl-backup-feedback" class="stl-backup-feedback" role="status" aria-live="polite"></p>'+
-  '<footer><button class="secondary" onclick="closeSheet()">إغلاق</button></footer></div></div>';
+  '<footer><button class="secondary" onclick="closeSheet()">'+ui('إغلاق','Close')+'</button></footer></div></div>';
  document.getElementById('stl-backup-export').addEventListener('click',()=>{
   try{
    const value=exportObject();
    if(global.StoryLensNative&&typeof global.StoryLensNative.saveBackup==='function'){
     global.StoryLensNative.saveBackup(value);
-    show('اختر مكان حفظ ملف النسخة الاحتياطية على جهازك.');
+    show(ui('اختر مكان حفظ ملف النسخة الاحتياطية على جهازك.','Choose where to save your backup file on this device.'));
    }else{
     const textarea=document.getElementById('stl-backup-paste');
     textarea.value=value;textarea.focus();textarea.select();
-    show('لا يوجد جسر حفظ ملفات في هذه المعاينة. انسخ النص المحدد واحتفظ به.');
+    show(ui('لا يوجد جسر حفظ ملفات في هذه المعاينة. انسخ النص المحدد واحتفظ به.','File saving is unavailable here. Copy the selected JSON and keep it safe.'));
    }
   }catch(e){show(e.message)}
  });
  document.getElementById('stl-backup-import').addEventListener('click',()=>{
   if(global.StoryLensNative&&typeof global.StoryLensNative.openBackup==='function'){
    global.StoryLensNative.openBackup();
-   show('اختر ملف JSON من جهازك؛ لن تُستبدل البيانات قبل الموافقة.');
+   show(ui('اختر ملف JSON من جهازك؛ لن تُستبدل البيانات قبل الموافقة.','Choose a JSON backup; no data will change before you confirm.'));
   }else{
    document.getElementById('stl-backup-paste').focus();
-   show('الصق محتوى ملف النسخة في المربع ثم اضغط فحص.');
+   show(ui('الصق محتوى ملف النسخة في المربع ثم اضغط فحص.','Paste the backup JSON above, then choose Validate.'));
   }
  });
  document.getElementById('stl-backup-validate').addEventListener('click',()=>{
@@ -151,19 +152,26 @@ function renderBackup(){
  });
 }
 function showImport(value){
- let data;try{data=preview(value)}catch(e){if(!document.getElementById('stl-backup-feedback'))renderBackup();show(e.message);return false;}
+ let data;try{data=preview(value)}catch(e){staged=null;if(!document.getElementById('stl-backup-feedback'))renderBackup();show(e.message);return false;}
  staged=data.entries;
  if(!document.getElementById('stl-backup-feedback'))renderBackup();
  const box=document.getElementById('stl-backup-feedback');
- box.innerHTML='وجدت '+data.stats.words+' كلمة و'+data.stats.favorites+
-  ' قصة مفضلة و'+data.stats.cards+' بطاقة مراجعة ضمن '+data.stats.keys+
-  ' مجموعة بيانات. <strong>استيرادها سيستبدل المجموعات المماثلة الموجودة عندك.</strong>';
+ box.textContent=ui('وجدت ','Found ')+data.stats.words+ui(' كلمة، ',' words, ')+data.stats.favorites+
+  ui(' قصة مفضلة، ',' favorites, ')+data.stats.cards+ui(' بطاقة مراجعة في ',' review cards in ')+data.stats.keys+
+  ui(' مجموعة بيانات. الاستيراد سيستبدل البيانات المماثلة بعد التأكيد.',' groups. Import replaces matching data only after confirmation.');
  const go=document.createElement('button');go.type='button';go.className='primary stl-backup-confirm';
- go.textContent='نعم، استرجع بياناتي';
+ go.textContent=ui('نعم، استرجع بياناتي','Yes, restore my data');
  go.addEventListener('click',()=>{
   try {const count=restore(staged);staged=null;close();state.saved=get('saved',[]);
    state.cards=get('cards',[]);state.dark=get('dark',false);state.size=get('size',22);
    state.uiTheme=get('uiTheme','aurora');document.body.className='theme-'+state.uiTheme;
+   // Restore imported UI preferences immediately; no app restart or change to
+   // legacy storage keys. The shell is loaded later than this module.
+   if(global.LinguaShell){
+    global.LinguaShell.applyLocale(get('uiLocale','ar'),false);
+    global.LinguaShell.applyFont('ar',get('fontArabic','sans'));
+    global.LinguaShell.applyFont('en',get('fontEnglish','serif'));
+   }
    state.page='library';library();window.scrollTo(0,0);
    alertOnce(count);
   }catch(e){show(e.message)}
@@ -173,7 +181,7 @@ function showImport(value){
 }
 function alertOnce(count){
  const note=document.createElement('div');note.className='stl-backup-toast';note.role='status';
- note.textContent='تم استيراد '+count+' مجموعة بيانات بنجاح.';document.body.appendChild(note);
+ note.textContent=ui('تم استيراد ','Restored ')+count+ui(' مجموعة بيانات بنجاح.',' data groups successfully.');document.body.appendChild(note);
  setTimeout(()=>note.remove(),3800);
 }
 const baseLibrary=library;

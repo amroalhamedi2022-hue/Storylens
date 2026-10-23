@@ -54,3 +54,47 @@ assert.ok(kt.includes('JSONObject.quote(data)'),'native callback escapes JSON');
 assert.ok(kt.includes('maxBackupBytes'),'files bounded');
 assert.ok(css.includes('.stl-backup-confirm'),'confirmation styled');
 console.log('PASS: offline JSON schema, restore, rollback data preservation, unsafe-input rejection, native SAF bridge and styles');
+
+
+// LT-06/LT-12: run the real backup dialog and confirmed import in a bilingual
+// fake DOM. Imported locale/fonts must apply immediately without a restart.
+{
+ const data=new Map(), elements=new Map(), applied=[];
+ const element=()=>({innerHTML:'',textContent:'',value:'',children:[],events:{},
+  addEventListener(type,handler){this.events[type]=handler;},
+  appendChild(child){this.children.push(child);},focus(){},select(){},remove(){}});
+ const doc={documentElement:{lang:'en'},body:{className:'',appendChild(){}},
+  getElementById(id){if(!elements.has(id))elements.set(id,element());return elements.get(id);},
+  createElement:()=>element(),querySelector:()=>null};
+ const local={get length(){return data.size},key:i=>[...data.keys()][i],
+  getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,String(v)),removeItem:k=>data.delete(k)};
+ const window={scrollTo(){},LinguaShell:{
+  applyLocale(value){applied.push(['locale',value]);doc.documentElement.lang=value;return true;},
+  applyFont(lang,value){applied.push([lang,value]);return true;}
+ }};
+ const state={page:'reader',saved:[],cards:[],dark:false,size:22,uiTheme:'nebula'};
+ const get=(key,fallback)=>{try{return JSON.parse(local.getItem('storylens_'+key))??fallback}catch{return fallback}};
+ const domSandbox={window,localStorage:local,document:doc,library(){},get,state,
+  closeSheet(){},setTimeout(){},console};
+ vm.runInNewContext(src,domSandbox,{filename:'data-backup.js bilingual',timeout:5000});
+ const backupApi=window.StoryLensBackup;
+ backupApi.open();
+ assert.match(elements.get('modals').innerHTML,/Backup & restore/);
+ assert.match(elements.get('modals').innerHTML,/Export backup/);
+ doc.documentElement.lang='ar';backupApi.open();
+ assert.match(elements.get('modals').innerHTML,/النسخ الاحتياطي/);
+ doc.documentElement.lang='en';
+ const payload=JSON.stringify({format:'storylens.backup',version:1,entries:{
+  storylens_uiLocale:'"en"',storylens_fontArabic:'"naskh"',storylens_fontEnglish:'"sans"'
+ }});
+ assert.equal(backupApi.receiveImport(payload),true);
+ const confirm=elements.get('stl-backup-feedback').children.at(-1);
+ assert.equal(confirm.textContent,'Yes, restore my data');
+ confirm.events.click();
+ assert.equal(state.page,'library');
+ assert.deepEqual(applied,[['locale','en'],['ar','naskh'],['en','sans']],
+  'confirmed restore immediately reapplies locale and independent fonts');
+ assert.equal(backupApi.receiveImport('invalid JSON'),false,
+  'bad follow-up import is rejected without restoring stale data');
+}
+console.log('PASS: LT-06 bilingual backup UI and immediate restored locale/fonts');
