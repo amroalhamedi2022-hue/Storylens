@@ -110,3 +110,18 @@ body.theme-paper-atlas::before,body.theme-paper-atlas::after{display:none!import
  .theme-paper-atlas .library .storylens-hero .hero-orb{width:82px;height:82px}
  .theme-paper-atlas .library .storylens-hero .hero-orb::after{font-size:22px}
 }
+
+/* Controls live in the drawer, not in a second giant home accordion. */
+.lt-drawer .stl-discovery{margin:8px 0 0;padding:10px;border:1px solid #ffffff32;
+ border-radius:12px;background:#ffffff0a;box-shadow:none;
+ -webkit-backdrop-filter:none;backdrop-filter:none}
+.lt-drawer .stl-discovery-controls{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;margin-top:0}
+.lt-drawer .stl-choice,.lt-drawer .stl-select{width:100%;justify-content:space-between;
+ color:#fff;background:#ffffff13;border:1px solid #ffffff35}
+.lt-drawer .stl-select select{color:#fff;min-width:0}
+.lt-drawer .stl-select option{color:#1b3035}
+.lt-drawer .stl-visible-count{display:none}
+.lt-drawer .lt-drawer-actions{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;margin-top:14px}
+.lt-drawer .lt-drawer-actions .secondary{color:#fff;background:#ffffff10;
+ border-color:#ffffff50;border-radius:12px;min-height:45px}
+.theme-paper-atlas .lt-drawer .stl-discovery{background:#ffffff0b;border-color:#ffffff36}
