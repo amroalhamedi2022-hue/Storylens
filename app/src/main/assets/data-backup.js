@@ -28,7 +28,7 @@ function validValue(key,val){
    ['sentence','translation','meaning'].every(k=>!x[k]||typeof x[k]==='string'&&x[k].length<5000));
  }
  if(tail==='last_story')return typeof val==='string'&&val.length<=100;
- if(tail==='uiTheme')return ['aurora','aqua','nebula','paper-atlas'].includes(val);
+ if(tail==='uiTheme')return ['aurora','aqua','nebula','paper-atlas','midnight-library'].includes(val);
  if(tail==='discoveryLevel')return ['all','A1','A2','B1','B2','C1','C2'].includes(val);
  if(tail==='discoverySort')return ['editorial','title','level'].includes(val);
  if(tail==='favoritesOnly'||tail==='dark'||tail.startsWith('has_read_'))return typeof val==='boolean';
