@@ -1,0 +1,112 @@
+/* LT-05 / LT-09: content-first homepage and directional category drawer. */
+.library .filters{display:none!important}
+.library .header{position:relative;min-height:76px;padding-inline-start:57px}
+.library .lt-menu-toggle{position:absolute;inset-block-start:2px;inset-inline-start:0;
+ width:47px;height:47px;display:grid;place-items:center;font-size:23px;z-index:2}
+.library .storylens-hero{min-height:220px;padding-block:24px;overflow:hidden}
+.library .storylens-hero .hero-content{position:relative;z-index:1}
+.library .storylens-hero h2{font-size:clamp(26px,4vw,37px);margin-block:0 15px}
+.library .storylens-hero .hero-orb{opacity:.75;pointer-events:none}
+.library .stl-discovery{padding:10px 12px;margin-block:12px;min-height:0}
+.library .stl-discovery-controls{gap:8px}
+.library .stl-discovery .stl-discovery-counter{display:none}
+.library .card .desc{max-width:55ch}
+.lt-drawer-backdrop{position:fixed;inset:0;background:#070c1a9c;z-index:150;
+ opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,visibility .18s}
+.lt-drawer-backdrop.open{opacity:1;visibility:visible;pointer-events:auto}
+.lt-drawer{position:fixed;z-index:151;inset-block:0;inset-inline-start:0;width:min(340px,86vw);
+ padding:28px 18px 30px;overflow-y:auto;overscroll-behavior:contain;
+ background:linear-gradient(160deg,#352044,#1d1832);color:#fff;
+ border-inline-end:1px solid #ffffff35;box-shadow:0 20px 55px #0005;
+ transform:translateX(-105%);transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+html[dir="rtl"] .lt-drawer{transform:translateX(105%);border-inline-end:0;border-inline-start:1px solid #ffffff35}
+.lt-drawer.open,html[dir="rtl"] .lt-drawer.open{transform:translateX(0)}
+.lt-drawer-title{display:flex;justify-content:space-between;align-items:center;
+ gap:12px;font-size:19px;margin-bottom:23px}
+.lt-drawer-close{background:#ffffff17;border:1px solid #ffffff40;border-radius:12px;
+ color:inherit;font-size:25px;min-width:44px;min-height:44px}
+.lt-genre-list{display:grid;gap:7px}
+.lt-genre{border:1px solid #ffffff28;background:#ffffff0b;color:inherit;
+ padding:14px 17px;border-radius:13px;text-align:start;min-height:48px}
+.lt-genre.selected{background:#9e72b74d;border-color:#e5bdffb0}
+.lt-drawer-divider{height:1px;background:#ffffff25;margin:23px 0}
+.lt-drawer-settings{width:100%;color:inherit;border-color:#ffffff65}
+.lt-theme-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0 23px}
+.lt-theme-choice{display:flex;align-items:center;flex-direction:column;gap:10px;
+ background:var(--card);color:var(--ink);border:2px solid transparent;border-radius:15px;
+ padding:11px 7px;min-height:100px;font-size:13px}
+.lt-theme-choice.selected{border-color:var(--accent);outline:2px solid color-mix(in srgb,var(--accent),transparent 60%)}
+.lt-theme-swatch{display:block;width:100%;height:49px;border-radius:10px;
+ background:linear-gradient(135deg,#ed91c1,#513e96,#8df2ee)}
+.lt-theme-aqua .lt-theme-swatch{background:linear-gradient(125deg,#9be6e6,#b3f4ef,#287c92)}
+.lt-theme-nebula .lt-theme-swatch{background:linear-gradient(135deg,#c05798,#4b255f,#2c1743)}
+.lt-theme-paper-atlas .lt-theme-swatch{background:linear-gradient(125deg,#f1dfb8,#b6884c,#405449)}
+.lt-settings-sheet{max-width:540px}
+@media(max-width:600px){
+ .library .storylens-hero{min-height:180px;padding:17px 19px}
+ .library .storylens-hero .hero-orb{transform:scale(.67);transform-origin:bottom left}
+ .library .header h1{font-size:clamp(24px,6vw,30px)}
+ .lt-drawer{padding-top:24px}
+}
+@media(prefers-reduced-motion:reduce){
+ .lt-drawer,.lt-drawer-backdrop{transition:none!important}
+}
+/* LT-13 Paper Atlas: a new *editorial composition*, not a recolored Nebula.
+ * Static paper grain, map grid and compass motif; no animated blur/particles. */
+body.theme-paper-atlas{
+ --body:#e8ddc8;--card:#f8f0df;--ink:#2f342e;--sub:#665f50;
+ --accent:#7d5035;--reader:#f8f0dd;--reader-ink:#2d352f;
+ background:repeating-linear-gradient(0deg,#7c603208 0 1px,transparent 1px 32px),
+ linear-gradient(145deg,#f5ebd5,#ded0b1 72%,#e5d8bc);
+ color:var(--ink)
+}
+body.theme-paper-atlas::before,body.theme-paper-atlas::after{display:none!important}
+.theme-paper-atlas .library{max-width:1170px}
+.theme-paper-atlas .library .header{border-bottom:2px solid #795d3c55;padding-bottom:21px}
+.theme-paper-atlas .library .brand{color:#7c5034;letter-spacing:.19em}
+.theme-paper-atlas .library .header h1{font-family:Georgia,serif;font-weight:600;color:#3e4337}
+.theme-paper-atlas .library .secondary,.theme-paper-atlas .library .pill{
+ border-radius:7px;border-color:#93745388;background:#f5e9d0a6;color:#57432e}
+.theme-paper-atlas .library .storylens-hero{
+ display:grid;grid-template-columns:minmax(0,1fr) 180px;align-items:center;
+ border:1px solid #8c694d99;border-radius:8px;box-shadow:8px 9px 0 #8b6a4230;
+ background:linear-gradient(100deg,#faf1da,#d8c29a);color:#3c3e31;min-height:200px;
+ padding:26px 32px
+}
+.theme-paper-atlas .library .storylens-hero h2{font-family:Georgia,serif;color:#51402d}
+.theme-paper-atlas .library .storylens-hero .hero-orb{
+ position:relative;inset:auto;transform:none;width:160px;height:160px;opacity:1;
+ border:3px double #78583f;background:repeating-conic-gradient(from 0deg,
+ #9a7950 0deg 2deg,transparent 2deg 15deg),radial-gradient(circle,#e9d9b7 0 43%,#c7a678 100%);
+ border-radius:50%;box-shadow:inset 0 0 0 13px #e8d7b4,0 3px 7px #4d3b2a35
+}
+.theme-paper-atlas .library .storylens-hero .hero-orb::after{
+ content:'N';position:absolute;inset:0;display:grid;place-items:center;
+ font:700 37px Georgia,serif;color:#5d513d;text-shadow:0 1px #fff7
+}
+.theme-paper-atlas .library .storylens-hero .hero-orb-core{display:none}
+.theme-paper-atlas .library .hero-continue{background:#455a50;color:#fff;border:1px solid #3a4a41;border-radius:6px}
+.theme-paper-atlas .library .shelf{grid-template-columns:repeat(auto-fit,minmax(min(100%,265px),1fr));gap:18px}
+.theme-paper-atlas .library .shelf .card{
+ display:flex;flex-direction:column;gap:12px;padding:12px;
+ border:1px solid #b7a17d;border-radius:7px;box-shadow:3px 4px 0 #735b3830;
+ background:#faf2e3;min-height:310px;animation:none
+}
+.theme-paper-atlas .library .shelf .card .cover{
+ flex:0 0 auto;width:100%;height:145px;min-height:145px;border-radius:4px;
+ background-position:center 42%
+}
+.theme-paper-atlas .library .shelf .card-content{padding:4px 8px 10px;gap:7px}
+.theme-paper-atlas .library .shelf .card h2{font:600 21px Georgia,serif;color:#2c3b39}
+.theme-paper-atlas .library .stl-discovery{border:1px solid #b9a07e;border-radius:7px;
+ background:#f8edd7}
+.theme-paper-atlas .lt-drawer{background:linear-gradient(150deg,#3b4d44,#253a34);
+ border-color:#d7c59c}
+.theme-paper-atlas .lt-genre.selected{background:#c5ab7c55;border-color:#dfcda2}
+.theme-paper-atlas .lt-theme-choice{background:#f8edd7}
+.theme-paper-atlas .reader:not(.dark){background:#f8f0dd;color:#2d352f}
+@media(max-width:650px){
+ .theme-paper-atlas .library .storylens-hero{grid-template-columns:minmax(0,1fr) 84px;padding:18px}
+ .theme-paper-atlas .library .storylens-hero .hero-orb{width:82px;height:82px}
+ .theme-paper-atlas .library .storylens-hero .hero-orb::after{font-size:22px}
+}
