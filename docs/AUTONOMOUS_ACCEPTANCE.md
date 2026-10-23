@@ -50,3 +50,18 @@ This record does not assert any physical Android verification.
 | Security, accessibility, performance, rotation and negative cases | NOT TESTED | Require full independent end-to-end QA. |
 
 Next action: obtain physical Android installation/reader tap/save/restart evidence for artifact #12498568304, then quantify remaining missing story-word glosses from the generated FreeDict pack and audit real contextual senses. This documentation update is not a new feature implementation. Do not claim release ready without physical Android install + independent recheck.
+
+## 2026-10-23 — Additional approved requirements (roadmap only)
+**Production code changed by this administrative update: NO.** GitHub roadmap file `docs/LINGUA_TALES_REBRAND_UX_PERFORMANCE_I18N_PLAN.md` is the source of truth for detailed acceptance.
+
+| Gate | Status | Future acceptance evidence |
+|---|---|---|
+| LT-07 real medium/long fiction; new reviewed batches, faithful public-domain edition verification and contextual Arabic translation | NOT TESTED | Chapter inventory, source/license records, editorial and dictionary tests |
+| LT-08 in-reader context-matched images with legal source/asset provenance and attractive focal-point cropping/feathering | NOT TESTED | Image catalog, chapter anchors, offline mobile screenshots and performance |
+| LT-09 category drawer at Arabic right/English left and corresponding edge swipe, without homepage clutter | NOT TESTED | Bilingual touch/back/gesture tests and screenshots |
+| LT-10 centralize theme, audio, font, motion in Settings | NOT TESTED | UI/persistence regression |
+| LT-11 optional playback-only UI effects and ~20 licensed music/nature ambiences; no microphone or TTS | NOT TESTED | License/asset audit, audio-focus, background, offline and CPU/RAM checks |
+| LT-12 selectable separate Arabic/English fonts and typography | NOT TESTED | RTL/LTR readability, licensed assets and preserved state |
+| LT-13 each substantive development/content batch adds one *genuinely visually different* functional theme, not just a palette shift, while runtime remains smooth | NOT TESTED | Per-batch theme ID, distinct visual tokens/layout, code+CI, screenshots and same-device FPS/RAM evidence |
+
+A plan or screenshot is **not** proof of implementation, and not every small hourly task automatically creates a theme. Track real batched deliveries, with standalone independent recheck when all features are satisfied.
