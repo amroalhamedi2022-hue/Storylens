@@ -2,6 +2,18 @@
 
 AUTOMATION_COMPLETE: IN_PROGRESS
 
+## 2026-10-23 — New user-requested Lingua Tales plan (documentation only)
+**No app code, icon, animations, localization or performance change was implemented in this planning update.** The screenshot is a visual reference; see `docs/LINGUA_TALES_REBRAND_UX_PERFORMANCE_I18N_PLAN.md` for detailed acceptance gates.
+
+| New requirement | Status | Evidence needed in future development runs |
+|---|---|---|
+| LT-01 Lingua Tales launcher/in-app rebrand and retained data | NOT TESTED | Code + migration/upgrade tests and on-device labels |
+| LT-02 smooth story open **and close** animations | NOT TESTED | Actual UI change, navigation regressions, repeated open/close device evidence |
+| LT-03 measurable performance improvement while preserving visuals | NOT TESTED | Same-device baseline and after profiling, screenshot comparison |
+| LT-04 modern distinctive Android adaptive icon inspired by Wen Sarafet design quality | NOT TESTED | Icon assets and real launcher mask/theme inspection |
+| LT-05 reduced marketing metadata/clutter without loss of features | NOT TESTED | Compact layout and phone/tablet screenshot/action tests |
+| LT-06 complete Arabic/English app UI language toggle; keep English story/Arabic translations | NOT TESTED | i18n catalogs, RTL/LTR, offline save/restore and bilingual flow tests |
+
 ## 2026-10-23 — Reader navigation regression (production + tests)
 - **Production fix:** `app/src/main/assets/reader-experience.js` now routes chapter picker and bookmark jumps through the live `renderReader()` enhancement chain instead of bypassing it with the captured base `originalReader()`. This restores sentence keyboard focus, long-press sentence translation, bookmark marker, saved read progress, and later reader preferences after navigation. The fix is independent of dictionary edits and stays in existing PR #1.
 - **Regression:** `tools/reader-experience.test.cjs` runs the real enhancement script inside a deterministic Node VM, checks both navigation paths, sentence accessibility, translation listener binding, progress persistence and scroll restoration. CI workflow executes it before APK packaging.
