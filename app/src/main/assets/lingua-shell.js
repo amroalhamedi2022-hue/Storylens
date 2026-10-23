@@ -39,9 +39,16 @@ function applyLocale(lang,rerender=true){
  put('uiLocale',lang);
  if(rerender&&state.page==='library'){
   const scroll=Math.max(0,global.scrollY||0);
+  // Switching locale inside Settings must not dismiss the dialog. Rebuild it
+  // in the newly selected language, then return keyboard focus to the selector.
+  const settingsWasOpen=!!document.querySelector('.lt-settings-overlay');
   closeSheet();
   library();
   if(typeof global.scrollTo==='function')global.scrollTo(0,scroll);
+  if(settingsWasOpen){
+   openSettings();
+   document.querySelector('.lt-locale-setting select')?.focus();
+  }
  }
  return true;
 }
