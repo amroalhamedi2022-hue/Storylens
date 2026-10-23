@@ -34,6 +34,14 @@ store.delete('storylens_saved');store.delete('storylens_cards');
 assert.equal(api.restore(preview.entries),4);
 assert.deepEqual(JSON.parse(storage.getItem('storylens_saved')),['reached','break the ice']);
 assert.equal(store.has('personal_secret'),true,'unrelated personal storage untouched');
+storage.setItem('storylens_fontArabic','"naskh"');
+storage.setItem('storylens_fontEnglish','"sans"');
+const fontBackup=JSON.parse(api.exportObject());
+assert.equal(JSON.parse(fontBackup.entries.storylens_fontArabic),'naskh');
+assert.equal(JSON.parse(fontBackup.entries.storylens_fontEnglish),'sans');
+assert.throws(()=>api.parseBackup(JSON.stringify({format:'storylens.backup',version:1,
+ entries:{'storylens_fontArabic':'"url(https://bad.example)"'}})),/نوع/);
+
 assert.throws(()=>api.parseBackup('not valid JSON'),/JSON/i);
 assert.throws(()=>api.parseBackup('{"format":"no","version":1,"entries":{}}'),/صيغة/);
 assert.throws(()=>api.parseBackup(JSON.stringify({format:'storylens.backup',version:1,entries:{'evil':'"x"'}})),/مفتاح/);
