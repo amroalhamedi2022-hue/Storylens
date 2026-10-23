@@ -2,6 +2,11 @@ package com.storylens.reader
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.net.Uri
+import android.webkit.JavascriptInterface
+import org.json.JSONObject
+import java.io.ByteArrayOutputStream
+import androidx.activity.result.contract.ActivityResultContracts
 import android.os.Bundle
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
@@ -23,6 +28,81 @@ import androidx.webkit.WebViewAssetLoader
  */
 class MainActivity : ComponentActivity() {
     private lateinit var reader: WebView
+    private var pendingExport: String? = null
+    private val maxBackupBytes = 3_000_000
+
+    private val exportDocument = registerForActivityResult(
+        ActivityResultContracts.CreateDocument("application/json")
+    ) { uri: Uri? ->
+        val text = pendingExport
+        pendingExport = null
+        if (uri != null && text != null) {
+            try {
+                val output = contentResolver.openOutputStream(uri)
+                    ?: throw IllegalStateException("تعذّر فتح الملف للحفظ.")
+                output.use { it.write(text.toByteArray(Charsets.UTF_8)) }
+                notifyBackup("nativeError", "تم حفظ النسخة الاحتياطية في الموقع الذي اخترته.")
+            } catch (ex: Exception) {
+                notifyBackup("nativeError", "تعذّر حفظ النسخة الاحتياطية: " + (ex.message ?: "خطأ في الملفات"))
+            }
+        }
+    }
+
+    private val importDocument = registerForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri: Uri? ->
+        if (uri == null) return@registerForActivityResult
+        try {
+            val input = contentResolver.openInputStream(uri)
+                ?: throw IllegalStateException("تعذّر فتح الملف.")
+            val buffer = ByteArray(8192)
+            val bytes = ByteArrayOutputStream()
+            input.use { stream ->
+                while (true) {
+                    val n = stream.read(buffer)
+                    if (n < 0) break
+                    if (bytes.size() + n > maxBackupBytes)
+                        throw IllegalArgumentException("الملف أكبر من الحد المسموح.")
+                    bytes.write(buffer, 0, n)
+                }
+            }
+            notifyBackup("receiveImport", bytes.toString(Charsets.UTF_8.name()))
+        } catch (ex: Exception) {
+            notifyBackup("nativeError", "تعذّر استيراد الملف: " + (ex.message ?: "خطأ في الملفات"))
+        }
+    }
+
+    /** Only exposed to local APK JavaScript; does not access the Internet. */
+    private inner class OfflineBackupBridge {
+        @JavascriptInterface
+        fun saveBackup(json: String) {
+            if (json.toByteArray(Charsets.UTF_8).size > maxBackupBytes) {
+                runOnUiThread { notifyBackup("nativeError", "النسخة كبيرة جدًا.") }
+                return
+            }
+            runOnUiThread {
+                pendingExport = json
+                exportDocument.launch("StoryLens-backup.json")
+            }
+        }
+
+        @JavascriptInterface
+        fun openBackup() {
+            runOnUiThread {
+                importDocument.launch(arrayOf("application/json", "text/plain", "application/octet-stream"))
+            }
+        }
+    }
+
+    private fun notifyBackup(method: String, data: String) {
+        if (!::reader.isInitialized) return
+        // Method names are fixed, and JSONObject.quote safely escapes file content.
+        if (method != "receiveImport" && method != "nativeError") return
+        reader.evaluateJavascript(
+            "window.StoryLensBackup && window.StoryLensBackup." + method +
+                "(" + JSONObject.quote(data) + ");", null
+        )
+    }
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +134,7 @@ class MainActivity : ComponentActivity() {
                 mixedContentMode = WebSettings.MIXED_CONTENT_NEVER_ALLOW
                 setSupportZoom(false)
             }
+            addJavascriptInterface(OfflineBackupBridge(), "StoryLensNative")
             webChromeClient = WebChromeClient()
             webViewClient = object : WebViewClient() {
                 override fun shouldInterceptRequest(view: WebView?, request: WebResourceRequest?): WebResourceResponse? {
@@ -74,15 +155,19 @@ class MainActivity : ComponentActivity() {
         reader.loadUrl("https://appassets.androidplatform.net/assets/index.html")
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                reader.evaluateJavascript("state.page") { page ->
-                    if (page == "\"library\"") {
-                        finish()
+                reader.evaluateJavascript(
+                    "Boolean(document.getElementById('modals')?.innerHTML)"
+                ) { modalOpen ->
+                    if (modalOpen == "true") {
+                        reader.evaluateJavascript("closeSheet();", null)
                     } else {
-                        reader.evaluateJavascript(
-                            "(function(){if(document.getElementById('modals').innerHTML){closeSheet();}" +
-                            "else if(state.page==='translation'){backToReader();}" +
-                            "else{libraryBack();}})();", null
-                        )
+                        reader.evaluateJavascript("state.page") { page ->
+                            if (page == "\"library\"") finish()
+                            else reader.evaluateJavascript(
+                                "(function(){if(state.page==='translation'){backToReader();}" +
+                                "else{libraryBack();}})();", null
+                            )
+                        }
                     }
                 }
             }
