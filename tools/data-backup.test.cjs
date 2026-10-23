@@ -34,6 +34,10 @@ store.delete('storylens_saved');store.delete('storylens_cards');
 assert.equal(api.restore(preview.entries),4);
 assert.deepEqual(JSON.parse(storage.getItem('storylens_saved')),['reached','break the ice']);
 assert.equal(store.has('personal_secret'),true,'unrelated personal storage untouched');
+// Exports must never produce an archive that the importer refuses (>900 keys).
+for(let i=0;i<901;i++)storage.setItem('storylens_chapter_test-'+i,'0');
+assert.throws(()=>api.exportObject(),/عدد عناصر/);
+for(let i=0;i<901;i++)storage.removeItem('storylens_chapter_test-'+i);
 storage.setItem('storylens_fontArabic','"naskh"');
 storage.setItem('storylens_fontEnglish','"sans"');
 const fontBackup=JSON.parse(api.exportObject());
@@ -60,12 +64,14 @@ console.log('PASS: offline JSON schema, restore, rollback data preservation, uns
 // fake DOM. Imported locale/fonts must apply immediately without a restart.
 {
  const data=new Map(), elements=new Map(), applied=[];
- const element=()=>({innerHTML:'',textContent:'',value:'',children:[],events:{},
+ const element=()=>({innerHTML:'',textContent:'',value:'',children:[],events:{},attributes:{},
+  setAttribute(name,value){this.attributes[name]=value;},
   addEventListener(type,handler){this.events[type]=handler;},
   appendChild(child){this.children.push(child);},focus(){},select(){},remove(){}});
  const doc={documentElement:{lang:'en'},body:{className:'',appendChild(){}},
   getElementById(id){if(!elements.has(id))elements.set(id,element());return elements.get(id);},
-  createElement:()=>element(),querySelector:()=>null};
+  createElement:()=>element(),querySelector:selector=>selector==='.library-actions'?elements.get('library-actions'):null};
+ elements.set('library-actions',element());
  const local={get length(){return data.size},key:i=>[...data.keys()][i],
   getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,String(v)),removeItem:k=>data.delete(k)};
  const window={scrollTo(){},LinguaShell:{
@@ -78,6 +84,9 @@ console.log('PASS: offline JSON schema, restore, rollback data preservation, uns
   closeSheet(){},setTimeout(){},console};
  vm.runInNewContext(src,domSandbox,{filename:'data-backup.js bilingual',timeout:5000});
  const backupApi=window.StoryLensBackup;
+ const backupButton=elements.get('library-actions').children.at(-1);
+ assert.equal(backupButton.textContent,'⤓ Backup');
+ assert.equal(backupButton.attributes['aria-label'],'Save or restore learning data');
  backupApi.open();
  assert.match(elements.get('modals').innerHTML,/Backup & restore/);
  assert.match(elements.get('modals').innerHTML,/Export backup/);
@@ -94,6 +103,18 @@ console.log('PASS: offline JSON schema, restore, rollback data preservation, uns
  assert.equal(state.page,'library');
  assert.deepEqual(applied,[['locale','en'],['ar','naskh'],['en','sans']],
   'confirmed restore immediately reapplies locale and independent fonts');
+ // A newer preview must revoke an older confirmation button, even when both
+ // backups are individually valid. Restore exactly the preview being confirmed.
+ assert.equal(backupApi.receiveImport(payload),true);
+ const staleConfirm=elements.get('stl-backup-feedback').children.at(-1);
+ const replacement=JSON.stringify({format:'storylens.backup',version:1,entries:{storylens_uiLocale:'"ar"'}});
+ assert.equal(backupApi.receiveImport(replacement),true);
+ const currentConfirm=elements.get('stl-backup-feedback').children.at(-1);
+ staleConfirm.events.click();
+ assert.equal(local.getItem('storylens_uiLocale'),'"en"','stale preview did not restore');
+ currentConfirm.events.click();
+ assert.equal(local.getItem('storylens_uiLocale'),'"ar"','latest preview restored');
+ assert.equal(elements.get('library-actions').children.at(-1).textContent,'⤓ نسخ احتياطي');
  assert.equal(backupApi.receiveImport('invalid JSON'),false,
   'bad follow-up import is rejected without restoring stale data');
 }
