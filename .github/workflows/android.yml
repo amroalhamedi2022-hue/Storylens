@@ -74,6 +74,7 @@ jobs:
           python3 tools/make_browser_fixtures.py
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/reader-phone.png" "file://$PWD/app/src/main/assets/qa-reader.html" >/tmp/chrome-reader.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/word-phone.png" "file://$PWD/app/src/main/assets/qa-word.html" >/tmp/chrome-word.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/backup-phone.png" "file://$PWD/app/src/main/assets/qa-backup.html" >/tmp/chrome-backup.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-flow.html" > /tmp/storylens-flow-dom.html 2>/tmp/chrome-flow.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-flow-dom.html || { echo "E2E journey failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-flow-dom.html | head -1; exit 1; }
           echo "PASS: full reader / word sheet / chapter / bookmark / translation / theme functional journey"
