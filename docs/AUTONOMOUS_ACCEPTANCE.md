@@ -2,6 +2,15 @@
 
 AUTOMATION_COMPLETE: IN_PROGRESS
 
+## 2026-10-24 — Backup consistency and bilingual control hardening (source-only)
+- **Production commit** `cb5a71fc8e1012ed293bda78abd800a627f16b02`; **test commit** `84a8e307e81bdca4eb1f8e2cbd82d1c5011728ac` (PR #1, no main write).
+- **Fix:** `data-backup.js` now refuses exports with more than 900 valid keys instead of producing a JSON archive its own importer rejects; English interface shows English Backup label/accessibility name; a superseded/invalid backup preview revokes its old confirmation button, preventing accidental restoration of another snapshot.
+- **PASS:** 6 direct V8 executions of the modified production backup module: English button and accessibility label, valid backup export, >900-entry export refusal, valid preview, stale confirmation refusing to mutate, latest confirmation restoring the intended snapshot. Test file JavaScript syntax checked in V8.
+- **NOT TESTED:** full Node regression suite (`node tools/data-backup.test.cjs`), Android CI, APK packaging, actual SAF import/export, physical device upgrade and independent recheck. Node regression assertions were committed but **not executed** in this run.
+- **Build policy:** all new commits carry `[skip ci]`; no build or workflow dispatch requested. PR head at source/test checkpoint `84a8e307` had no PR workflow runs when checked. The existing PR workflow assembles an APK, so source-only commits must continue to skip it until final acceptance.
+- **Outstanding:** exact user-approved **icon with its text** must be separated from the approved visual reference and integrated as Android launcher resources; do not substitute an invented icon. LT-01..LT-13 and real-device acceptance remain IN_PROGRESS.
+
+
 ## 2026-10-23 — New user-requested Lingua Tales plan (documentation only)
 **No app code, icon, animations, localization or performance change was implemented in this planning update.** The screenshot is a visual reference; see `docs/LINGUA_TALES_REBRAND_UX_PERFORMANCE_I18N_PLAN.md` for detailed acceptance gates.
 
