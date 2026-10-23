@@ -272,11 +272,35 @@ function decorateLibrary(){
 library=function(){originalLibrary();decorateLibrary();};
 global.LinguaShell={applyTheme,applyFont,applyLocale,fontChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,
  isDrawerOpen:()=>opened,themeNames:[...themeNames]};
-window.addEventListener('keydown',event=>{
- if(event.key==='Escape'&&opened){
-  event.preventDefault();event.stopImmediatePropagation();closeDrawer();
+/* LT-09/06 accessibility: a visible modal must own keyboard focus.
+ * Trap Tab/Shift+Tab in Settings or the genre drawer; Escape dismisses the
+ * topmost dialog. No extra listeners are installed on each library rerender. */
+function handleDialogKeyboard(event){
+ const settings=document.querySelector('.lt-settings-overlay .lt-settings-sheet');
+ const dialog=settings||(opened?document.getElementById('lt-drawer'):null);
+ if(!dialog)return;
+ if(event.key==='Escape'){
+  event.preventDefault();event.stopImmediatePropagation();
+  if(settings){
+   closeSheet();
+   document.getElementById('lt-menu-toggle')?.focus();
+  }else closeDrawer();
+  return;
  }
-},true);
+ if(event.key!=='Tab')return;
+ const nodes=Array.from(dialog.querySelectorAll(
+  'button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
+ )).filter(node=>!node.hidden&&node.getAttribute?.('aria-hidden')!=='true');
+ if(!nodes.length){event.preventDefault();dialog.focus?.();return;}
+ const first=nodes[0],last=nodes[nodes.length-1],active=document.activeElement;
+ const inside=typeof dialog.contains==='function'&&dialog.contains(active);
+ if(event.shiftKey&&(active===first||!inside)){
+  event.preventDefault();last.focus();
+ }else if(!event.shiftKey&&(active===last||!inside)){
+  event.preventDefault();first.focus();
+ }
+}
+window.addEventListener('keydown',handleDialogKeyboard,true);
 document.addEventListener('touchstart',event=>{
  if(state.page!=='library'||event.touches.length!==1){touch=null;return;}
  const p=event.touches[0],width=global.innerWidth||document.documentElement.clientWidth;
