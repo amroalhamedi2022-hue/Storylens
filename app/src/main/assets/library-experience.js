@@ -144,6 +144,9 @@ function renderDiscovery() {
   counter.textContent='القصص الظاهرة: '+shown.length+' / '+cards.length;
   choices.appendChild(counter);
  }
+ // Keep the discovery controls in the locale-aware drawer after any
+ // favorites/level/sort refresh; this hook is installed by lingua-shell.js.
+ if(typeof global.LinguaShell?.moveDiscovery==='function')global.LinguaShell.moveDiscovery();
 }
 const originalLibrary=library;
 library=function(){
