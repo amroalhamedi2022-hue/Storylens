@@ -107,7 +107,9 @@ function renderDiscovery() {
   const story=catalog.stories.find(item=>item.id===id);
   if(!story)return;
   card.dataset.storyId=id;
-  card.dataset.originalIndex=String(index);
+  const naturalIndex=catalog.stories.findIndex(item=>item.id===id);
+  const stableIndex=naturalIndex<0?index:naturalIndex;
+  card.dataset.originalIndex=String(stableIndex);
   card.querySelector('.stl-favorite')?.remove();
   const star=document.createElement('button');
   star.type='button';star.className='stl-favorite'+(favIds.has(id)?' active':'');
@@ -123,7 +125,7 @@ function renderDiscovery() {
   card.appendChild(star);
   const visible=(current.level==='all'||story.level===current.level)&&(!current.favoritesOnly||favIds.has(id));
   card.hidden=!visible;
-  if(visible)shown.push({card,story,index});
+  if(visible)shown.push({card,story,index:stableIndex});
  });
  if(current.sort==='title')shown.sort((a,b)=>a.story.title.localeCompare(b.story.title,'en'));
  else if(current.sort==='level')shown.sort((a,b)=>levels.indexOf(a.story.level)-levels.indexOf(b.story.level)||a.index-b.index);
