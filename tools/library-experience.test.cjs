@@ -32,6 +32,31 @@ sandbox.window.window=sandbox.window;
 vm.runInNewContext(source,sandbox,{filename:'library-experience.js',timeout:5000});
 const extras=sandbox.window.StoryLensExtras;
 assert.ok(extras,'public helper for feature integration');
+
+// LT-06: test the production locale label helper in both directions.
+// English UI must not translate source stories or overwrite Arabic glosses.
+{
+ const start=source.indexOf('const uiText=(ar,en)=>');
+ const end=source.indexOf(';',start);
+ assert.ok(start>=0&&end>start,'library uses a centralized locale label helper');
+ const document={documentElement:{lang:'ar'}};
+ const context={document};
+ vm.runInNewContext(source.slice(start,end+1)+'\nthis.label=uiText;',context,
+  {filename:'LT-06 discovery locale',timeout:5000});
+ assert.equal(context.label('المفضلة','Favorites'),'المفضلة');
+ document.documentElement.lang='en';
+ assert.equal(context.label('المفضلة','Favorites'),'Favorites');
+ for(const label of ['Discover stories','Favorites','All levels','Recommended',
+  'Remove from favorites','Visible stories: ','Reading comfort','Line spacing',
+  'Choose the best sense in this sentence']){
+  assert.ok(source.includes(label),'English discovery/reader label: '+label);
+ }
+ assert.match(source,/const senses=String\(args\.entry\.literal\)/,
+  'dictionary meaning must remain sourced, not translated by UI locale');
+ assert.match(source,/button\.textContent=sense/,
+  'selected dictionary gloss must preserve the original Arabic sense');
+}
+
 assert.equal(extras.favorites().length,0);
 assert.equal(extras.toggleFavorite('missing'),false,'never save non-existent story');
 assert.equal(extras.toggleFavorite('alibi'),true);
