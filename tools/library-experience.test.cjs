@@ -140,6 +140,45 @@ assert.equal(shellDocument.documentElement.dir,'rtl');
 assert.equal(shell.menuSide(),'right');
 assert.match(shellJs,/get\('uiLocale','ar'\)/,'cold start restores locale preference');
 assert.match(shellJs,/languageSelect\.addEventListener\('change'/,'settings exposes locale control');
+
+// Exercise the exact production locale handler, not a reimplementation.
+// Changing the language while Settings is open must rebuild its labels,
+// preserve library scroll and restore focus to the language control.
+{
+ const begin=shellJs.indexOf('function applyLocale(');
+ const end=shellJs.indexOf('\nconst originalLibrary',begin);
+ assert.ok(begin>=0&&end>begin,'production locale function is extractable');
+ const events=[];
+ let dialogOpen=true;
+ const doc={
+  documentElement:{lang:'ar',dir:'rtl'},
+  querySelector(selector){
+   if(selector==='.lt-settings-overlay')return dialogOpen?{}:null;
+   if(selector==='.lt-locale-setting select')return {focus(){events.push('focus-locale');}};
+   return null;
+  }
+ };
+ const context={
+  localeChoices:['ar','en'],document:doc,state:{page:'library'},
+  global:{scrollY:215,scrollTo(x,y){events.push('scroll:'+y);}},
+  put(k,v){events.push('persist:'+k+':'+v);},
+  closeSheet(){events.push('close');},
+  library(){events.push('library');},
+  openSettings(){events.push('reopen-settings');}
+ };
+ vm.runInNewContext(shellJs.slice(begin,end)+'\nthis.switchLocale=applyLocale;',context,
+  {filename:'LT-06 locale handler',timeout:5000});
+ assert.equal(context.switchLocale('en'),true);
+ assert.equal(doc.documentElement.lang,'en');
+ assert.equal(doc.documentElement.dir,'ltr');
+ assert.deepEqual(events,['persist:uiLocale:en','close','library','scroll:215',
+  'reopen-settings','focus-locale']);
+ events.length=0;dialogOpen=false;
+ assert.equal(context.switchLocale('ar'),true);
+ assert.ok(!events.includes('reopen-settings'),'do not open Settings unexpectedly');
+ assert.equal(context.switchLocale('invalid'),false,'unsupported locale rejected');
+}
+
 assert.equal(shell.applyFont('ar','naskh'),true);
 assert.equal(shellDocument.documentElement.dataset.ltArabicFont,'naskh');
 assert.equal(shellStore.get('fontArabic'),'naskh','Arabic font saved offline');
