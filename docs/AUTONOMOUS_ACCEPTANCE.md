@@ -113,3 +113,5 @@ A plan or screenshot is **not** proof of implementation, and not every small hou
 - **Tests added:** Node VM locale/direction/persistence/rejection and backup allowlist assertions in `tools/library-experience.test.cjs`. A JS syntax/VM smoke was performed in the development runner; full Node suite and Android runtime are **NOT TESTED** in this round.
 - **LT-06 status:** PARTIAL / NOT TESTED for full UI translation (reader, dictionary, review, errors and accessibility strings still need a full catalog and bilingual audit). **No APK build or GitHub Actions build requested** per user's final-only build policy.
 - **Next:** complete all remaining UI localization via a maintainable catalog, test both directions and persisted reading state, then continue LT-07/08/11 and the approved icon integration when its original asset is accessible.
+
+- **Exact production/test commit:** `0499c900f1c1f123b5b43ef86a6680216f298015` ([PR #1](https://github.com/amroalhamedi2022-hue/Storylens/pull/1)). V8 actual-shell locale smoke **PASS**; full Node suite, Android CI and device **NOT TESTED**. Commit used `[skip ci]` to honor the no-interim-APK policy.
