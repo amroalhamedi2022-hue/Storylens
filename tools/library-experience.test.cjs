@@ -67,4 +67,23 @@ assert.ok(css.includes('prefers-reduced-motion'),'reduced motion respected');
 assert.ok(html.includes('src="library-experience.js"'));
 assert.ok(html.includes('href="library-experience.css"'));
 assert.ok(html.indexOf('src="reader-experience.js"')<html.indexOf('src="library-experience.js"'),'wrappers run in intended sequence');
+// LT-03: production CSS must not reallocate a live backdrop blur and entrance
+// animation for every card on each filter/search. Retain theme/cover/hero detail.
+const liquidCss=fs.readFileSync(path.join(assets,'liquid-aurora.css'),'utf8');
+const paintBudget=liquidCss.match(/\/\* LT-03 paint budget:[\s\S]*?(?=\n@media\(max-width:600px\))/);
+assert.ok(paintBudget,'documented story-card paint optimization exists');
+const optimized=paintBudget[0];
+assert.match(optimized,/\.library\s+\.shelf\s+\.card\s*\{/,'only the library shelf cards are optimized');
+assert.match(optimized,/-webkit-backdrop-filter\s*:\s*none/,'disable vendor live card backdrop blur');
+assert.match(optimized,/backdrop-filter\s*:\s*none/,'disable live card backdrop blur');
+assert.match(optimized,/animation\s*:\s*none/,'avoid re-animating every card on library redraw');
+assert.match(optimized,/content-visibility\s*:\s*auto/,'skip painting offscreen card contents');
+assert.match(optimized,/contain-intrinsic-size\s*:\s*auto\s+192px/,'stable offscreen card geometry');
+assert.match(optimized,/background\s*:\s*linear-gradient/,'keep gradient/glass-like card appearance');
+assert.match(liquidCss,/\.storylens-hero|\.hero-orb|\.sheet/,'Liquid theme still contains detailed visuals');
+assert.match(liquidCss,/\.card\s*\.cover/,'original artwork and covers retained');
+assert.match(liquidCss,/prefers-reduced-motion/,'reduced-motion accessibility retained');
+assert.ok(!optimized.includes('display:none'),'story cards must remain visible');
+console.log('PASS: LT-03 scoped card paint optimization retains Liquid visuals and reduced-motion support');
+
 console.log('PASS: favorite persistence, invalid IDs, reader preferences, input validation, corrupt-store recovery, 2 asset imports, accessibility and style gates');
