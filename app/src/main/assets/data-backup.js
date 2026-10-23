@@ -10,7 +10,7 @@ const MAX_BYTES=1_500_000;
 const MAX_ENTRIES=900;
 const simple=new Set(['saved','cards','favorites','bookmarks','last_story','uiTheme','readerPrefs',
  'written_examples','discoveryLevel','discoverySort','favoritesOnly','wordSenses','dark','size',
- 'fontArabic','fontEnglish']);
+ 'fontArabic','fontEnglish','uiLocale']);
 function allowed(key){
  if(typeof key!=='string'||!key.startsWith(PREFIX))return false;
  const suffix=key.slice(PREFIX.length);
@@ -32,6 +32,7 @@ function validValue(key,val){
  if(tail==='uiTheme')return ['aurora','aqua','nebula','paper-atlas','midnight-library'].includes(val);
  if(tail==='fontArabic')return ['sans','naskh'].includes(val);
  if(tail==='fontEnglish')return ['serif','sans'].includes(val);
+ if(tail==='uiLocale')return ['ar','en'].includes(val);
  if(tail==='discoveryLevel')return ['all','A1','A2','B1','B2','C1','C2'].includes(val);
  if(tail==='discoverySort')return ['editorial','title','level'].includes(val);
  if(tail==='favoritesOnly'||tail==='dark'||tail.startsWith('has_read_'))return typeof val==='boolean';

@@ -23,6 +23,28 @@ function loadFonts(){
  }
 }
 
+/* LT-06: interface locale is independent of the English stories and Arabic
+ * learning translations. Never change legacy storage prefixes on rebrand. */
+const localeChoices=['ar','en'];
+function loadLocale(){
+ const saved=typeof get==='function'?get('uiLocale','ar'):'ar';
+ const lang=localeChoices.includes(saved)?saved:'ar';
+ document.documentElement.lang=lang;
+ document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+}
+function applyLocale(lang,rerender=true){
+ if(!localeChoices.includes(lang))return false;
+ document.documentElement.lang=lang;
+ document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+ put('uiLocale',lang);
+ if(rerender&&state.page==='library'){
+  const scroll=Math.max(0,global.scrollY||0);
+  closeSheet();
+  library();
+  if(typeof global.scrollTo==='function')global.scrollTo(0,scroll);
+ }
+ return true;
+}
 const originalLibrary=library;
 let opened=false;
 let touch=null;
@@ -108,6 +130,25 @@ function openSettings(){
  description.className='quiet';
  description.textContent=rtl()?'اختر تصميم القراءة والمكتبة. تبقى بياناتك محفوظة.':'Choose your library appearance. Your reading progress is preserved.';
  sheet.appendChild(description);
+ const languageHeading=document.createElement('h3');
+ languageHeading.textContent=rtl()?'لغة الواجهة':'Interface language';
+ sheet.appendChild(languageHeading);
+ const languageLabel=document.createElement('label');
+ languageLabel.className='lt-font-setting lt-locale-setting';
+ const languageTitle=document.createElement('span');
+ languageTitle.textContent=rtl()?'اللغة':'Language';
+ languageLabel.appendChild(languageTitle);
+ const languageSelect=document.createElement('select');
+ languageSelect.setAttribute('aria-label',languageHeading.textContent);
+ for(const choice of [{id:'ar',name:'العربية'},{id:'en',name:'English'}]){
+  const option=document.createElement('option');
+  option.value=choice.id;option.textContent=choice.name;
+  languageSelect.appendChild(option);
+ }
+ languageSelect.value=rtl()?'ar':'en';
+ languageSelect.addEventListener('change',()=>applyLocale(languageSelect.value));
+ languageLabel.appendChild(languageSelect);
+ sheet.appendChild(languageLabel);
  const themeHeading=document.createElement('h3');
  themeHeading.textContent=rtl()?'تصميم الواجهة':'Appearance';
  sheet.appendChild(themeHeading);
@@ -144,7 +185,7 @@ function openSettings(){
   label.appendChild(select);sheet.appendChild(label);
  }
  const note=document.createElement('p');note.className='quiet';
- note.textContent=rtl()?'تبديل لغة الواجهة والأصوات قيد التطوير.':'Interface language and optional audio controls are in development.';
+ note.textContent=rtl()?'ترجمة بقية عناصر الواجهة والأصوات الاختيارية قيد التطوير.':'Remaining interface translations and optional audio are in development.';
  sheet.appendChild(note);
  const footer=document.createElement('footer');
  addButton(footer,rtl()?'إغلاق':'Close',()=>closeSheet(),'secondary');
@@ -169,6 +210,20 @@ function decorateLibrary(){
  section.querySelectorAll('.shelf .card .sub').forEach(p=>p.remove());
  section.querySelector('.library-actions [aria-label="تغيير تصميم الواجهة"]')?.remove();
  const actions=section.querySelector('.library-actions');
+ const searchLabel=section.querySelector('.search-label');
+ if(searchLabel){
+  const textNode=Array.from(searchLabel.childNodes).find(node=>node.nodeType===3);
+  if(textNode)textNode.textContent=rtl()?'بحث في المكتبة':'Search the library';
+  const input=searchLabel.querySelector('input');
+  if(input){
+   input.setAttribute('aria-label',rtl()?'بحث عن قصة':'Search stories');
+   input.placeholder=rtl()?'عنوان القصة أو موضوعها…':'Story title or topic…';
+  }
+ }
+ const words=actions?.querySelector('button[onclick="showWords()"]');
+ if(words)words.textContent=rtl()?'مفرداتي ◀':'My words';
+ const review=actions?.querySelector('button[onclick="showReview()"]');
+ if(review)review.textContent=(rtl()?'مراجعة اليوم · ':'Due today · ')+state.cards.filter(c=>c.dueAt<=Date.now()).length;
  if(actions)addButton(actions,settingsText(),openSettings,'secondary lt-settings-open');
  const header=section.querySelector('.header');
  if(!header)return;
@@ -208,7 +263,7 @@ function decorateLibrary(){
 
 }
 library=function(){originalLibrary();decorateLibrary();};
-global.LinguaShell={applyTheme,applyFont,fontChoices,openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,
+global.LinguaShell={applyTheme,applyFont,applyLocale,fontChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,
  isDrawerOpen:()=>opened,themeNames:[...themeNames]};
 window.addEventListener('keydown',event=>{
  if(event.key==='Escape'&&opened){
@@ -306,6 +361,7 @@ document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
  });
  global.LinguaStoryNavigation={isClosing:()=>closing,isWaitingForHistory:()=>waitingPop};
 })();
+loadLocale();
 loadFonts();
 library();
 })(window);

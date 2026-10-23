@@ -125,6 +125,21 @@ const shellSandbox={
 vm.runInNewContext(shellJs,shellSandbox,{filename:'lingua-shell.js',timeout:5000});
 const shell=shellWindow.LinguaShell;
 assert.ok(shell,'exposes theme, drawer and settings controls');
+// LT-06 partial: actual locale preference switches HTML direction without
+// changing the source story/translation data or the legacy storage prefix.
+assert.equal(shellDocument.documentElement.lang,'ar','first launch uses Arabic UI');
+assert.equal(shell.applyLocale('en',false),true);
+assert.equal(shellDocument.documentElement.dir,'ltr');
+assert.equal(shellDocument.documentElement.lang,'en');
+assert.equal(shellStore.get('uiLocale'),'en','locale saved offline');
+assert.equal(shell.menuSide(),'left','English menu opens at left');
+assert.equal(shell.applyLocale('es',false),false,'unsupported locales rejected');
+assert.equal(shellDocument.documentElement.lang,'en','invalid locale preserves selection');
+assert.equal(shell.applyLocale('ar',false),true);
+assert.equal(shellDocument.documentElement.dir,'rtl');
+assert.equal(shell.menuSide(),'right');
+assert.match(shellJs,/get\('uiLocale','ar'\)/,'cold start restores locale preference');
+assert.match(shellJs,/languageSelect\.addEventListener\('change'/,'settings exposes locale control');
 assert.equal(shell.applyFont('ar','naskh'),true);
 assert.equal(shellDocument.documentElement.dataset.ltArabicFont,'naskh');
 assert.equal(shellStore.get('fontArabic'),'naskh','Arabic font saved offline');
@@ -189,6 +204,8 @@ assert.match(shellCss,/\.theme-paper-atlas\s+\.library\s+\.storylens-hero/,'Pape
 assert.match(shellCss,/prefers-reduced-motion/,'drawer motion has reduced-motion fallback');
 const backupJs=fs.readFileSync(path.join(assets,'data-backup.js'),'utf8');
 assert.ok(backupJs.includes("'paper-atlas'"),'offline backup validator must retain the new theme');
+assert.match(backupJs,/tail==='uiLocale'[^\n]*\['ar','en'\]/,'backup validates both locale values');
+assert.match(backupJs,/'fontArabic','fontEnglish','uiLocale'/,'backup exports the locale preference');
 console.log('PASS: Lingua Tales shell RTL/LTR swipe, theme persistence, backup and Paper Atlas layout gates');
 
 
