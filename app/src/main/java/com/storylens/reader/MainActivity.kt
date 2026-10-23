@@ -82,7 +82,7 @@ class MainActivity : ComponentActivity() {
             }
             runOnUiThread {
                 pendingExport = json
-                exportDocument.launch("StoryLens-backup.json")
+                exportDocument.launch("LinguaTales-backup.json")
             }
         }
 
@@ -161,12 +161,23 @@ class MainActivity : ComponentActivity() {
                     if (modalOpen == "true") {
                         reader.evaluateJavascript("closeSheet();", null)
                     } else {
-                        reader.evaluateJavascript("state.page") { page ->
-                            if (page == "\"library\"") finish()
-                            else reader.evaluateJavascript(
-                                "(function(){if(state.page==='translation'){backToReader();}" +
-                                "else{libraryBack();}})();", null
-                            )
+                        // Android system Back must dismiss the locale-aware library
+                        // drawer before exiting the app. This mirrors Escape/backdrop
+                        // handling in lingua-shell.js without altering reader history.
+                        reader.evaluateJavascript(
+                            "Boolean(window.LinguaShell && window.LinguaShell.isDrawerOpen())"
+                        ) { drawerOpen ->
+                            if (drawerOpen == "true") {
+                                reader.evaluateJavascript("window.LinguaShell.closeDrawer();", null)
+                            } else {
+                                reader.evaluateJavascript("state.page") { page ->
+                                    if (page == "\"library\"") finish()
+                                    else reader.evaluateJavascript(
+                                        "(function(){if(state.page==='translation'){backToReader();}" +
+                                        "else{libraryBack();}})();", null
+                                    )
+                                }
+                            }
                         }
                     }
                 }

@@ -79,3 +79,23 @@ body:has(.reader)::before,body:has(.reader)::after,body:has(.arabic-page)::befor
 .reader .toolbar button{color:#218caa}
 @media(max-width:600px){.library{padding:22px 15px 42px}.header{display:flex;flex-wrap:wrap}.library-actions{justify-content:flex-start;gap:9px}.library .secondary{padding:10px 13px}.card{min-height:175px;border-radius:20px}.card .cover{flex-basis:108px;min-height:150px}.shelf{gap:13px}.header h1{font-size:35px}.sheet{padding:22px 19px 32px}}
 @media(prefers-reduced-motion:reduce){body::before,body::after,.card,.sheet{animation:none!important;transition:none!important;will-change:auto!important}}
+
+/* LT-03 paint budget: 36+ story cards used to each allocate a live backdrop blur
+ * and re-run entrance animations on every search/filter/library render. Keep the
+ * same translucent Liquid palette, glass border, gradients, covers and hover
+ * motion, but reserve live blur for the single hero and modal surfaces.
+ * content-visibility skips offscreen card contents on compatible Android WebView.
+ * Real-device FPS/memory comparison is still required before acceptance. */
+.library .shelf .card {
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+  background:linear-gradient(145deg,
+    color-mix(in srgb,var(--card) 93%,var(--accent) 7%),
+    var(--card));
+  animation:none;
+  content-visibility:auto;
+  contain-intrinsic-size:auto 192px;
+}
+@media(max-width:600px){
+  .library .shelf .card{contain-intrinsic-size:auto 175px}
+}

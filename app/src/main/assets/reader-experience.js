@@ -125,7 +125,9 @@ window.stlJumpBookmark=function(){
  state.chapter=Math.max(0,Math.min(state.story.chapters.length-1,mark.chapter));
  put(chapterKey(),state.chapter);
  closeSheet();state.toolbar=false;
- originalReader();
+ // Run the currently installed reader pipeline (accessibility, bookmarks and preferences).
+ // Calling the captured base renderer here skips every later enhancement wrapper.
+ renderReader();
  window.scrollTo(0,mark.scroll||0);
 };
 window.stlChapter=function(i){
@@ -134,7 +136,9 @@ window.stlChapter=function(i){
  state.chapter=i;
  put(chapterKey(),state.chapter);
  closeSheet();state.toolbar=false;
- originalReader();
+ // Run the currently installed reader pipeline (accessibility, bookmarks and preferences).
+ // Calling the captured base renderer here skips every later enhancement wrapper.
+ renderReader();
  window.scrollTo(0,get('scroll_'+state.story.id+'_'+state.chapter,0));
 };
 theme=function(){snapshot();originalTheme()};
