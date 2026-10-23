@@ -14,7 +14,7 @@ tests={
 (function(){
  const passes=[],errors=[];
  function check(name,fn){try{if(!fn())throw Error('false');passes.push(name)}catch(err){errors.push(name+': '+err.message)}}
- check('catalog',()=>catalog.stories.length===30&&document.querySelectorAll('.card').length===30);
+ check('catalog',()=>catalog.stories.length===36&&document.querySelectorAll('.card').length===36);
  check('hero',()=>!!document.querySelector('.storylens-hero'));
  check('dictionary',()=>FreeDictEnglishArabic.size>=80000&&FreeDictEnglishArabic.resolve('dog')?.literal.includes('كلب'));
  check('story art',()=>!!art['eleven-minute-alibi_0']);
@@ -34,7 +34,15 @@ tests={
  check('full translation',()=>state.page==='translation'&&document.querySelector('.arabic-page')?.textContent.includes('التحقيق'));
  try{backToReader();libraryBack();cycleVisualTheme()}catch(e){errors.push('theme: '+e.message)}
  check('switch theme',()=>state.uiTheme==='aqua'&&document.body.classList.contains('theme-aqua'));
- check('library retained',()=>document.querySelectorAll('.card').length===30);
+ check('library retained',()=>document.querySelectorAll('.card').length===36);
+
+ check('discover controls',()=>!!document.querySelector('.stl-discovery')&&!!document.querySelector('.stl-select select'));
+ check('favorite persistence',()=>{const x=StoryLensExtras.toggleFavorite('eleven-minute-alibi');return x===true&&StoryLensExtras.favorites().includes('eleven-minute-alibi')});
+ check('favorite removal',()=>{const x=StoryLensExtras.toggleFavorite('eleven-minute-alibi');return x===false&&!StoryLensExtras.favorites().includes('eleven-minute-alibi')});
+ check('reading preferences',()=>{StoryLensExtras.preference('spacing','airy');openStory('eleven-minute-alibi');return document.querySelector('.reader')?.dataset.spacing==='airy'});
+ check('reading focus',()=>{StoryLensExtras.preference('illustrations',false);return document.querySelector('.reader')?.classList.contains('stl-hide-illustrations')});
+ check('reader tool settings',()=>{settings();return !!document.querySelector('.stl-reading-custom')});
+
  document.body.setAttribute('data-storylens-qa',errors.length?'FAIL':'PASS');
  document.body.setAttribute('data-storylens-qa-count',String(passes.length));
  document.body.setAttribute('data-storylens-qa-errors',errors.join(' | '));
