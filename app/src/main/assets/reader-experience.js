@@ -15,6 +15,8 @@ const snapshot=()=>state.story&&state.page==='reader'&&put('scroll_'+state.story
 const storyById=id=>catalog.stories.find(s=>s.id===id);
 const chapterIndex=s=>Math.max(0,Math.min(s.chapters.length-1,Number(get('chapter_'+s.id,0))||0));
 const escapeText=value=>esc(value);
+// Interface strings follow the UI locale; story English and translations remain untouched.
+const uiText=(ar,en)=>document.documentElement.lang==='en'?en:ar;
 
 openStory=function(id){
  if(!storyById(id)) return;
@@ -29,8 +31,8 @@ library=function(){
  const chapter=last?chapterIndex(last):0;
  const hero=document.createElement('section');
  hero.className='storylens-hero';
- hero.setAttribute('aria-label','المكتبة والعودة للقراءة');
- hero.innerHTML='<div class="hero-content"><div class="hero-eyebrow">STORYLENS · IMMERSIVE READING</div>'+
+ hero.setAttribute('aria-label',uiText('المكتبة والعودة للقراءة','Library and continue reading'));
+ hero.innerHTML='<div class="hero-content"><div class="hero-eyebrow">LINGUA TALES · IMMERSIVE READING</div>'+
   '<h2>Lose yourself in a good story.</h2>'+
   '<p>قصص ناضجة، أسرار تستحق الاكتشاف، وإنجليزي تتعلمه من الأحداث نفسها.</p>'+
   '<div class="hero-metrics"><span>'+catalog.stories.length+' STORIES</span><span>'+catalog.genres.length+' GENRES</span><span>100% OFFLINE</span></div>'+
@@ -57,7 +59,7 @@ library=function(){
    const content=card.querySelector('.card-content');if(!content)return;
    const badge=document.createElement('div');badge.className='story-progress';
    const percent=Math.round(100*(ix+1)/story.chapters.length);
-   badge.innerHTML='<span>الفصل '+(ix+1)+' من '+story.chapters.length+'</span><div class="story-progress-track"><i style="width:'+percent+'%"></i></div>';
+   badge.innerHTML='<span>'+uiText('الفصل '+(ix+1)+' من '+story.chapters.length,'Chapter '+(ix+1)+' of '+story.chapters.length)+'</span><div class="story-progress-track"><i style="width:'+percent+'%"></i></div>';
    content.appendChild(badge);
   }
  });
@@ -73,12 +75,12 @@ renderReader=function(){
   const marker=document.createElement('span');
   marker.className='reader-bookmark-indicator';
   marker.textContent=' · 🔖';
-  marker.setAttribute('title','يوجد علامة محفوظة في هذا الفصل');
+  marker.setAttribute('title',uiText('يوجد علامة محفوظة في هذا الفصل','Bookmark saved in this chapter'));
   label.appendChild(marker);
  }
  document.querySelectorAll('.reader .sentence').forEach(p=>{
   p.setAttribute('tabindex','0');
-  p.setAttribute('aria-label','الجملة الإنجليزية. انقر كلمة لمعناها، أو اضغط مطولًا لعرض الترجمة.');
+  p.setAttribute('aria-label',uiText('الجملة الإنجليزية. انقر كلمة لمعناها، أو اضغط مطولًا لعرض الترجمة.','English sentence. Tap a word for its meaning, or long-press for Arabic translation.'));
   p.addEventListener('contextmenu',event=>{
    event.preventDefault();
    event.stopImmediatePropagation();
@@ -103,12 +105,12 @@ settings=function(){
  const current=marks[state.story.id];
  const bar=document.createElement('section');
  bar.className='reader-nav-panel';
- bar.innerHTML='<h3>أدوات القراءة</h3><div class="reader-nav-actions">'+
- '<button class="secondary" type="button" onclick="stlBookmark()">🔖 احفظ موضعك</button>'+
- (current?'<button class="secondary" type="button" onclick="stlJumpBookmark()">↪ ارجع للعلامة</button>':'')+
+ bar.innerHTML='<h3>'+uiText('أدوات القراءة','Reading tools')+'</h3><div class="reader-nav-actions">'+
+ '<button class="secondary" type="button" onclick="stlBookmark()">'+uiText('🔖 احفظ موضعك','🔖 Save bookmark')+'</button>'+
+ (current?'<button class="secondary" type="button" onclick="stlJumpBookmark()">'+uiText('↪ ارجع للعلامة','↪ Jump to bookmark')+'</button>':'')+
  '</div><div class="chapter-picker">'+state.story.chapters.map((c,i)=>
  '<button type="button" class="'+(i===state.chapter?'selected':'')+'" onclick="stlChapter('+i+')">'+(i+1)+'. '+escapeText(c.title)+'</button>').join('')+'</div>'+
- '<p class="quiet">اضغط مطولًا على أي جملة لإظهار ترجمتها فقط. الترجمة لا تحتاج اتصالًا بالإنترنت.</p>';
+ '<p class="quiet">'+uiText('اضغط مطولًا على أي جملة لإظهار ترجمتها فقط. الترجمة لا تحتاج اتصالًا بالإنترنت.','Long-press a sentence to reveal its Arabic translation. Works offline.')+'</p>';
  const footer=sheet.querySelector('footer');
  if(footer)footer.insertAdjacentElement('beforebegin',bar);else sheet.appendChild(bar);
 };
