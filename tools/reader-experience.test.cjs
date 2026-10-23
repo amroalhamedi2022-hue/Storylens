@@ -15,13 +15,18 @@ const story = {
  ]
 };
 let originalRenderCalls = 0, accessibleSentences = 0, contextMenuHandlers = 0, scrollTarget = null;
+const sentenceLabels = [], readerPanels = [];
+const footer = {insertAdjacentElement(position, panel) {assert.equal(position, 'beforebegin'); readerPanels.push(panel.innerHTML);}};
+const sheet = {querySelector(selector) {return selector === 'footer' ? footer : null;}, appendChild(panel) {readerPanels.push(panel.innerHTML);}};
 const sentence = {
  dataset: {i: '0'},
- setAttribute(name) {if (name === 'tabindex') accessibleSentences++;},
+ setAttribute(name, value) {if (name === 'tabindex') accessibleSentences++; if (name === 'aria-label') sentenceLabels.push(value);},
  addEventListener(name) {if (name === 'contextmenu') contextMenuHandlers++;}
 };
 const document = {
+ documentElement: {lang: 'ar'},
  querySelector(selector) {
+  if (selector === '#modals .sheet') return sheet;
   if (selector === '.reader-label') return {appendChild() {}};
   return null; // No library view while testing reader navigation.
  },
@@ -59,4 +64,17 @@ assert.equal(accessibleSentences, 2, 'bookmark keeps accessibility annotations')
 assert.equal(contextMenuHandlers, 2, 'bookmark keeps translation interaction');
 assert.equal(store.get('has_read_book-one'), true, 'bookmark re-establishes reading progress');
 assert.deepEqual(scrollTarget, [0, 88], 'bookmark restores scroll position');
+assert.ok(sentenceLabels.at(-1).includes('الجملة الإنجليزية'), 'Arabic reader controls remain accessible');
+document.documentElement.lang = 'en';
+sandbox.renderReader();
+assert.ok(sentenceLabels.at(-1).includes('English sentence'), 'English reader accessibility labels are translated');
+sandbox.settings();
+assert.match(readerPanels.at(-1), /Reading tools/, 'reader navigation panel uses English');
+assert.match(readerPanels.at(-1), /Save bookmark/, 'bookmark action uses English');
+assert.match(readerPanels.at(-1), /Jump to bookmark/, 'jump action uses English');
+assert.match(readerPanels.at(-1), /Arabic translation/, 'English UI still explains Arabic translation');
+document.documentElement.lang = 'ar';
+sandbox.settings();
+assert.match(readerPanels.at(-1), /أدوات القراءة/, 'reader panel restores Arabic without losing state');
+assert.equal(story.chapters[0].paragraphs[0].ar, 'الجملة الأولى.', 'learning translation remains Arabic');
 console.log('PASS: chapter and bookmark navigation preserve enhanced reader accessibility, translation and progress');
