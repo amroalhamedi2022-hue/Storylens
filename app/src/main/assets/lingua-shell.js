@@ -4,6 +4,25 @@
 'use strict';
 const themeNames=['aurora','aqua','nebula','paper-atlas','midnight-library'];
 const themeLabels={aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library'};
+/* LT-12: separate, offline typography preferences. System font stacks avoid
+ * font downloads and extra memory. Unsupported values never reach CSS. */
+const fontChoices={ar:['sans','naskh'],en:['serif','sans']};
+const fontDefaults={ar:'sans',en:'serif'};
+const fontKeys={ar:'fontArabic',en:'fontEnglish'};
+function applyFont(lang,name){
+ if(!Object.prototype.hasOwnProperty.call(fontChoices,lang)||!fontChoices[lang].includes(name))return false;
+ document.documentElement.dataset[lang==='ar'?'ltArabicFont':'ltEnglishFont']=name;
+ put(fontKeys[lang],name);
+ return true;
+}
+function loadFonts(){
+ for(const lang of ['ar','en']){
+  const saved=typeof get==='function'?get(fontKeys[lang],fontDefaults[lang]):fontDefaults[lang];
+  const safe=fontChoices[lang].includes(saved)?saved:fontDefaults[lang];
+  document.documentElement.dataset[lang==='ar'?'ltArabicFont':'ltEnglishFont']=safe;
+ }
+}
+
 const originalLibrary=library;
 let opened=false;
 let touch=null;
@@ -102,8 +121,30 @@ function openSettings(){
   swatch.setAttribute('aria-hidden','true');b.prepend(swatch);
  }
  sheet.appendChild(gallery);
+ const fontsHeading=document.createElement('h3');
+ fontsHeading.textContent=rtl()?'خطوط القراءة':'Reading fonts';
+ sheet.appendChild(fontsHeading);
+ for(const lang of ['ar','en']){
+  const label=document.createElement('label');label.className='lt-font-setting';
+  const title=document.createElement('span');
+  title.textContent=lang==='ar'?(rtl()?'الخط العربي':'Arabic font'):(rtl()?'الخط الإنجليزي':'English font');
+  label.appendChild(title);
+  const select=document.createElement('select');
+  select.setAttribute('aria-label',title.textContent);
+  const options=lang==='ar'?
+   [{value:'sans',ar:'عصري',en:'Modern Arabic'},{value:'naskh',ar:'نسخ',en:'Naskh / serif'}]:
+   [{value:'serif',ar:'أدبي',en:'Literary serif'},{value:'sans',ar:'عصري',en:'Modern sans'}];
+  for(const option of options){
+   const item=document.createElement('option');
+   item.value=option.value;item.textContent=rtl()?option.ar:option.en;
+   select.appendChild(item);
+  }
+  select.value=document.documentElement.dataset[lang==='ar'?'ltArabicFont':'ltEnglishFont']||fontDefaults[lang];
+  select.addEventListener('change',()=>applyFont(lang,select.value));
+  label.appendChild(select);sheet.appendChild(label);
+ }
  const note=document.createElement('p');note.className='quiet';
- note.textContent=rtl()?'اللغة والخطوط والأصوات ستُضاف هنا ضمن المراحل المعتمدة.':'Language, fonts and audio controls are planned for this settings page.';
+ note.textContent=rtl()?'تبديل لغة الواجهة والأصوات قيد التطوير.':'Interface language and optional audio controls are in development.';
  sheet.appendChild(note);
  const footer=document.createElement('footer');
  addButton(footer,rtl()?'إغلاق':'Close',()=>closeSheet(),'secondary');
@@ -167,7 +208,7 @@ function decorateLibrary(){
 
 }
 library=function(){originalLibrary();decorateLibrary();};
-global.LinguaShell={applyTheme,openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,
+global.LinguaShell={applyTheme,applyFont,fontChoices,openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,
  isDrawerOpen:()=>opened,themeNames:[...themeNames]};
 window.addEventListener('keydown',event=>{
  if(event.key==='Escape'&&opened){
@@ -265,5 +306,6 @@ document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
  });
  global.LinguaStoryNavigation={isClosing:()=>closing,isWaitingForHistory:()=>waitingPop};
 })();
+loadFonts();
 library();
 })(window);
