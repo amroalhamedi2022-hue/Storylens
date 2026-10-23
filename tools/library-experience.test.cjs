@@ -237,6 +237,38 @@ assert.equal(fakeToggle.attributes['aria-expanded'],'true');
 registered['window-keydown']({key:'Escape',preventDefault(){},stopImmediatePropagation(){}});
 assert.equal(shell.isDrawerOpen(),false,'Escape closes drawer before base reader navigation');
 assert.equal(fakeDrawer.inert,true,'closed drawer cannot be keyboard focused');
+
+// LT-09/06: keyboard users must not Tab out of an open modal. Test the
+// production window keydown listener, including Shift+Tab and Settings Escape.
+shell.openDrawer();
+const keyboardFocus=[];
+const firstKey={hidden:false,getAttribute:()=>null,focus(){keyboardFocus.push('first');shellDocument.activeElement=this;}};
+const lastKey={hidden:false,getAttribute:()=>null,focus(){keyboardFocus.push('last');shellDocument.activeElement=this;}};
+fakeDrawer.querySelectorAll=()=>[firstKey,lastKey];
+fakeDrawer.contains=node=>node===firstKey||node===lastKey;
+shellDocument.activeElement=lastKey;
+let tabPrevented=0;
+registered['window-keydown']({key:'Tab',shiftKey:false,preventDefault(){tabPrevented++;}});
+assert.equal(tabPrevented,1,'forward Tab is trapped at drawer end');
+assert.equal(keyboardFocus.at(-1),'first','forward Tab wraps to first control');
+registered['window-keydown']({key:'Tab',shiftKey:true,preventDefault(){tabPrevented++;}});
+assert.equal(tabPrevented,2,'reverse Tab is trapped at drawer start');
+assert.equal(keyboardFocus.at(-1),'last','Shift+Tab wraps to last control');
+shell.closeDrawer();
+let settingsClosed=0,menuRefocused=0;
+const originalQuerySelector=shellDocument.querySelector;
+const originalMenuFocus=fakeToggle.focus;
+shellSandbox.closeSheet=()=>{settingsClosed++;};
+fakeToggle.focus=()=>{menuRefocused++;};
+shellDocument.querySelector=selector=>selector==='.lt-settings-overlay .lt-settings-sheet'
+ ?{querySelectorAll:()=>[],contains:()=>false}:originalQuerySelector(selector);
+registered['window-keydown']({key:'Escape',preventDefault(){},stopImmediatePropagation(){}});
+assert.equal(settingsClosed,1,'Escape dismisses Settings before page navigation');
+assert.equal(menuRefocused,1,'Settings Escape restores menu focus');
+shellDocument.querySelector=originalQuerySelector;
+fakeToggle.focus=originalMenuFocus;
+console.log('PASS: keyboard focus trap, reverse Tab and Settings Escape');
+
 registered.touchstart({touches:[{clientX:391,clientY:200}]});
 registered.touchend({changedTouches:[{clientX:291,clientY:210}]});
 assert.equal(shell.isDrawerOpen(),true,'Arabic swipe from right edge opens drawer');
