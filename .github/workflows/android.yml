@@ -45,6 +45,7 @@ jobs:
           node tools/freedict.test.cjs
           node tools/editorial.test.cjs
           node tools/assets.test.cjs
+          node tools/library-experience.test.cjs
       - name: Run tests and assemble installable APK
         run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
       - name: Verify required files really exist inside APK
@@ -52,7 +53,7 @@ jobs:
         run: |
           APK="$(find app/build/outputs/apk/debug -type f -name '*.apk' | head -1)"
           test -n "$APK"
-          for file in index.html lexicon-extra.js liquid-aurora.css reader-experience.js reader-experience.css editorial-stories-a.js editorial-stories-b.js editorial-art.js freedict-en-ar.js LICENSE_FREEDICT.txt; do
+          for file in index.html lexicon-extra.js liquid-aurora.css reader-experience.js reader-experience.css editorial-stories-a.js editorial-stories-b.js editorial-art.js library-experience.js library-experience.css freedict-en-ar.js LICENSE_FREEDICT.txt; do
             unzip -Z1 "$APK" | grep -Fqx "assets/$file" || { echo "MISSING assets/$file"; exit 1; }
           done
           echo "PASS: all critical offline modules packaged into $APK"
