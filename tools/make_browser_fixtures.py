@@ -10,6 +10,7 @@ assert source.count("</body>")==1
 tests={
  "reader":"""openStory('last-passenger');document.body.setAttribute('data-stl-screenshot','reader');""",
  "word":"""openStory('last-passenger');document.querySelector('.reader .tok')?.click();document.body.setAttribute('data-stl-screenshot','word');""",
+ "backup":"""StoryLensBackup.open();document.body.setAttribute('data-stl-screenshot','backup');""",
  "flow":r"""
 (function(){
  const passes=[],errors=[];
@@ -42,6 +43,8 @@ tests={
  check('reading preferences',()=>{StoryLensExtras.preference('spacing','airy');openStory('eleven-minute-alibi');return document.querySelector('.reader')?.dataset.spacing==='airy'});
  check('reading focus',()=>{StoryLensExtras.preference('illustrations',false);return document.querySelector('.reader')?.classList.contains('stl-hide-illustrations')});
  check('reader tool settings',()=>{settings();return !!document.querySelector('.stl-reading-custom')});
+ check('offline backup',()=>{const data=StoryLensBackup.exportObject();return StoryLensBackup.preview(data).stats.keys>=0&&JSON.parse(data).format==='storylens.backup'});
+ check('backup modal',()=>{StoryLensBackup.open();return !!document.querySelector('.stl-backup-sheet')&&!!document.querySelector('#stl-backup-import')});
 
  document.body.setAttribute('data-storylens-qa',errors.length?'FAIL':'PASS');
  document.body.setAttribute('data-storylens-qa-count',String(passes.length));
