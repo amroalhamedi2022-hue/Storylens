@@ -177,3 +177,70 @@ assert.match(shellCss,/prefers-reduced-motion/,'drawer motion has reduced-motion
 const backupJs=fs.readFileSync(path.join(assets,'data-backup.js'),'utf8');
 assert.ok(backupJs.includes("'paper-atlas'"),'offline backup validator must retain the new theme');
 console.log('PASS: Lingua Tales shell RTL/LTR swipe, theme persistence, backup and Paper Atlas layout gates');
+
+
+// LT-02: execute the production navigation gate (not a reimplementation).
+const navStart=shellJs.indexOf('/* LT-02: a single, cancellable story navigation gate.');
+const navEnd=shellJs.indexOf('\n})();',navStart);
+assert.ok(navStart>0&&navEnd>navStart,'production story transition controller exists');
+const navSource='(function(global){"use strict";\n'+shellJs.slice(navStart,navEnd+5)+'\n})(window);';
+function navigationScenario(reduced=false){
+ const calls={open:0,back:0,historyBack:0,scroll:[],saved:new Map(),readerClasses:[]};
+ const callbacks=new Map(),listeners={};let timer=0;
+ const state={page:'library',story:null,chapter:0};
+ const story={id:'classic-1',chapters:[{title:'First',paragraphs:[]}]};
+ const history={state:{page:'library'},back(){calls.historyBack++;this.state={page:'library'};listeners.popstate?.();},
+  pushState(value){this.state=value;}};
+ const window={scrollY:470,history,matchMedia(){return{matches:reduced}},
+  setTimeout(fn,delay){const id=++timer;callbacks.set(id,{fn,delay});return id;},
+  clearTimeout(id){callbacks.delete(id);},
+  requestAnimationFrame(fn){fn();},
+  scrollTo(x,y){calls.scroll.push([x,y]);this.scrollY=y;},
+  addEventListener(type,fn){listeners[type]=fn;}};
+ const reader={classList:{add(k){calls.readerClasses.push(k);}}};
+ const modal={childElementCount:0};
+ const document={querySelector:sel=>sel==='.reader'?reader:null,
+  getElementById:id=>id==='modals'?modal:null};
+ const sandbox={window,document,state,
+  openStory(id){if(id!==story.id)return;calls.open++;state.story=story;state.page='reader';window.scrollY=120;history.pushState({page:'reader'});},
+  libraryBack(){calls.back++;state.page='library';window.scrollTo(0,0);},
+  backToReader(){state.page='reader';},closeSheet(){modal.childElementCount=0;},
+  put(key,value){calls.saved.set(key,value);},console};
+ vm.runInNewContext(navSource,sandbox,{filename:'LT-02 navigation',timeout:5000});
+ const flush=()=>{for(const [id,item] of [...callbacks]){callbacks.delete(id);item.fn();}};
+ return {sandbox,window,state,calls,history,modal,listeners,flush};
+}
+{
+ const t=navigationScenario();t.sandbox.openStory('classic-1');
+ assert.equal(t.state.page,'reader');assert.equal(t.calls.saved.get('libraryScroll'),470);
+ assert.ok(t.calls.readerClasses.includes('lt-reader-enter'));
+ t.window.scrollY=283;t.sandbox.libraryBack();t.sandbox.libraryBack();
+ assert.equal(t.calls.historyBack,1,'rapid double back must not pop twice');
+ assert.equal(t.calls.saved.get('scroll_classic-1_0'),283,'reader position saved');
+ assert.ok(t.calls.readerClasses.includes('lt-reader-exit'));
+ t.flush();assert.equal(t.calls.back,1);assert.equal(t.state.page,'library');
+ assert.deepEqual(t.calls.scroll.at(-1),[0,470],'library scroll restored');
+ t.flush();assert.equal(t.calls.back,1,'no duplicate delayed close');
+}
+{
+ const t=navigationScenario(true);t.sandbox.openStory('classic-1');
+ assert.equal(t.calls.readerClasses.length,0,'reduced motion disables entrance');
+ t.sandbox.libraryBack();t.flush();
+ assert.equal(t.calls.back,1);assert.equal(t.calls.readerClasses.length,0,'reduced motion disables exit');
+}
+{
+ const t=navigationScenario();t.sandbox.openStory('classic-1');
+ t.modal.childElementCount=1;t.listeners.popstate();
+ assert.equal(t.state.page,'reader','system back dismisses reader modal first');
+ assert.equal(t.modal.childElementCount,0);assert.equal(t.history.state.page,'reader');
+ t.sandbox.libraryBack();t.flush();assert.equal(t.state.page,'library');
+}
+assert.equal(shell.validTheme('midnight-library'),true,'new Midnight Library theme is selectable');
+assert.match(shellCss,/\.theme-midnight-library\s+\.library\s+\.shelf\s+\.card/,
+ 'Midnight Library uses distinct book-spine card layout');
+assert.match(shellCss,/\.theme-midnight-library\s+\.library\s+\.storylens-hero/,
+ 'Midnight Library uses centered brass library hero');
+assert.match(shellCss,/\.reader\.lt-reader-exit/,'exit transition is styled');
+assert.match(shellCss,/\.reader\.lt-reader-enter/,'enter transition is styled');
+assert.ok(backupJs.includes("'midnight-library'"),'backup permits new theme');
+console.log('PASS: LT-02 production navigation enter/exit, rapid back, modal, scroll, reduced-motion and Midnight Library layout');
