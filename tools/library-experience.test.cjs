@@ -159,6 +159,17 @@ shell.closeDrawer();
 registered.touchstart({touches:[{clientX:7,clientY:180}]});
 registered.touchend({changedTouches:[{clientX:130,clientY:285}]});
 assert.equal(shell.isDrawerOpen(),false,'vertical scrolling must not trigger drawer');
+// Existing discovery refreshes must rehome controls in the drawer without rerender loops.
+const discovery={parentNode:{}};
+let movedDiscovery=false;
+shellDocument.querySelector=selector=>selector==='.library'?{querySelector:()=>discovery}:null;
+fakeDrawer.querySelector=selector=>selector==='.lt-drawer-divider'?{}:{focus(){}};
+fakeDrawer.insertBefore=node=>{node.parentNode=fakeDrawer;movedDiscovery=true;};
+assert.equal(shell.moveDiscovery(),true,'discovery controls moved to drawer');
+assert.equal(movedDiscovery,true);
+assert.equal(shell.moveDiscovery(),false,'already moved controls do not move repeatedly');
+assert.match(source,/global\.LinguaShell\?\.moveDiscovery/,'discovery rerenders call shell rehome hook');
+assert.match(shellCss,/\.lt-drawer\s+\.stl-discovery-controls/,'drawer discovery layout exists');
 assert.match(shellCss,/html\[dir="rtl"\]\s+\.lt-drawer/,'RTL physical drawer side is explicit');
 assert.match(shellCss,/\.theme-paper-atlas\s+\.library\s+\.shelf\s+\.card/,'Paper Atlas has a different card composition');
 assert.match(shellCss,/\.theme-paper-atlas\s+\.library\s+\.storylens-hero/,'Paper Atlas has a distinct hero composition');
