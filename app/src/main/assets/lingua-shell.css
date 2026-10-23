@@ -125,3 +125,84 @@ body.theme-paper-atlas::before,body.theme-paper-atlas::after{display:none!import
 .lt-drawer .lt-drawer-actions .secondary{color:#fff;background:#ffffff10;
  border-color:#ffffff50;border-radius:12px;min-height:45px}
 .theme-paper-atlas .lt-drawer .stl-discovery{background:#ffffff0b;border-color:#ffffff36}
+
+/* LT-13 Midnight Library: ink-blue reading hall, brass shelf rails, vertical
+ * book-spine cards and centered illuminated title plate. Entirely static:
+ * no new network images, particles, live blurs or expensive JS animation. */
+body.theme-midnight-library{
+ --body:#111a29;--card:#1d2938;--ink:#f3e9d7;--sub:#c3b49a;
+ --accent:#dfb879;--reader:#171d27;--reader-ink:#efe5d2;
+ background:repeating-linear-gradient(90deg,transparent 0 95px,#d5b37b0a 95px 97px),
+ linear-gradient(135deg,#101a2b,#1c2b3c 55%,#0d1624);
+ color:var(--ink)
+}
+.theme-midnight-library::before,.theme-midnight-library::after{display:none!important}
+.theme-midnight-library .library{max-width:1180px}
+.theme-midnight-library .library .header{
+ border-bottom:4px double #bb976866;padding-bottom:22px;align-items:center}
+.theme-midnight-library .library .brand{color:#e2c48f;letter-spacing:.23em}
+.theme-midnight-library .library .header h1{
+ font:600 clamp(29px,4.6vw,48px)/1.15 Georgia,serif;
+ color:#f8ead1;text-shadow:0 2px 16px #0007}
+.theme-midnight-library .library .secondary{
+ color:#f2d9ae;background:#273749;border:1px solid #aa855a;
+ border-radius:4px;box-shadow:inset 0 0 0 1px #0c1420}
+.theme-midnight-library .library .storylens-hero{
+ display:flex;flex-direction:column;justify-content:center;text-align:center;
+ border:4px double #b9996e;border-radius:3px;
+ background:linear-gradient(180deg,#253448 0%,#172334 65%,#202f41 100%);
+ box-shadow:inset 0 0 0 9px #111c2b,0 11px 0 #09111c;
+ min-height:215px;padding:31px 24px 35px;overflow:hidden}
+.theme-midnight-library .library .storylens-hero .hero-content{max-width:700px;margin:auto}
+.theme-midnight-library .library .storylens-hero h2{
+ color:#f7dfb6;font:600 clamp(29px,4vw,43px)/1.15 Georgia,serif;
+ letter-spacing:.02em}
+.theme-midnight-library .library .storylens-hero .hero-orb{display:none}
+.theme-midnight-library .library .storylens-hero::after{
+ content:'';width:min(300px,60%);height:3px;margin:12px auto 0;
+ background:linear-gradient(90deg,transparent,#d6b178,transparent)}
+.theme-midnight-library .library .hero-continue{
+ background:#ba955f;color:#121e2e;border-radius:3px;border:1px solid #f5d6a1;
+ font-weight:700}
+.theme-midnight-library .library .search-label input{
+ background:#1a293b;border:1px solid #987d5d;color:#f7e7c8;border-radius:5px}
+.theme-midnight-library .library .shelf{
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,315px),1fr));gap:17px}
+.theme-midnight-library .library .shelf .card{
+ display:grid;grid-template-columns:79px minmax(0,1fr);gap:16px;
+ min-height:188px;padding:13px 16px 13px 10px;border-radius:4px;
+ background:linear-gradient(100deg,#2e4154,#1b2a3c 25%,#192536);
+ border:1px solid #b38d58;box-shadow:inset 6px 0 #b48d59,0 8px 0 #0b1522;
+ animation:none;content-visibility:auto;contain-intrinsic-size:auto 188px}
+.theme-midnight-library .library .shelf .card .cover{
+ flex:initial;width:79px;height:100%;min-height:156px;border-radius:2px;
+ background-position:center center;box-shadow:3px 0 0 #d5ad69,5px 0 10px #0006}
+.theme-midnight-library .library .shelf .card-content{padding:5px 0;gap:7px;min-width:0}
+.theme-midnight-library .library .shelf .card h2{
+ color:#f7e9ce;font:600 clamp(19px,2vw,23px)/1.3 Georgia,serif}
+.theme-midnight-library .library .shelf .card .lvl{color:#e6bd7f}
+.theme-midnight-library .library .shelf .card .desc{color:#c9c1b4}
+.theme-midnight-library .library .stl-discovery{
+ background:#1a293b;border:1px solid #8d7658;border-radius:3px}
+.theme-midnight-library .lt-drawer{
+ background:linear-gradient(160deg,#1a2a3d,#101b2c);border-color:#d7b17a}
+.theme-midnight-library .lt-genre.selected{background:#ab854d55;border-color:#d9b27b}
+.theme-midnight-library .lt-theme-choice{background:#243449;color:#f2e7d5}
+.theme-midnight-library .reader:not(.dark){background:#f0e6d4;color:#263142}
+.theme-midnight-library .reader.dark{background:#151e2b;color:#eee1cb}
+.lt-theme-midnight-library .lt-theme-swatch{
+ background:linear-gradient(135deg,#101a2b,#364b61 50%,#d7b17a)}
+@media(max-width:560px){
+ .theme-midnight-library .library .shelf{grid-template-columns:1fr}
+ .theme-midnight-library .library .shelf .card{grid-template-columns:68px minmax(0,1fr);min-height:160px}
+ .theme-midnight-library .library .shelf .card .cover{width:68px;min-height:135px}
+ .theme-midnight-library .library .storylens-hero{min-height:175px;padding:20px 14px 26px}
+}
+/* LT-02: transform+opacity only, no layout animation or live blur. */
+@keyframes ltReaderEnter{from{opacity:.45;transform:translate3d(0,12px,0) scale(.992)}to{opacity:1;transform:none}}
+@keyframes ltReaderExit{from{opacity:1;transform:none}to{opacity:.2;transform:translate3d(0,9px,0) scale(.994)}}
+.reader.lt-reader-enter{animation:ltReaderEnter .21s cubic-bezier(.18,.8,.24,1) both;transform-origin:center top}
+.reader.lt-reader-exit{animation:ltReaderExit .19s ease-in both;pointer-events:none}
+@media(prefers-reduced-motion:reduce){
+ .reader.lt-reader-enter,.reader.lt-reader-exit{animation:none!important;transform:none!important;opacity:1!important}
+}
