@@ -2,8 +2,8 @@
  * Offline, no new permissions, no per-frame animation work. */
 (function(global){
 'use strict';
-const themeNames=['aurora','aqua','nebula','paper-atlas'];
-const themeLabels={aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas'};
+const themeNames=['aurora','aqua','nebula','paper-atlas','midnight-library'];
+const themeLabels={aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library'};
 const originalLibrary=library;
 let opened=false;
 let touch=null;
@@ -190,5 +190,80 @@ document.addEventListener('touchend',event=>{
  else if(!opening&&opened)closeDrawer(false);
 },{passive:true});
 document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
+/* LT-02: a single, cancellable story navigation gate. The original openStory
+ * still owns history and the reader pipeline; no second state store is created. */
+(function installStoryTransitions(){
+ if(typeof openStory!=='function'||typeof libraryBack!=='function')return;
+ const baseOpen=openStory,baseBack=libraryBack;
+ let closing=false,waitingPop=false,closeTimer=null,historyFallback=null;
+ let returnY=0;
+ const motionOff=()=>!!global.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+ const nextFrame=callback=>typeof global.requestAnimationFrame==='function'
+  ?global.requestAnimationFrame(callback):callback();
+ function savePosition(){
+  if(state.story&&state.page==='reader')
+   put('scroll_'+state.story.id+'_'+state.chapter,global.scrollY||0);
+ }
+ function finishClose(){
+  if(closeTimer!==null){global.clearTimeout(closeTimer);closeTimer=null;}
+  closing=false;waitingPop=false;
+  if(state.page!=='reader')return;
+  baseBack();
+  nextFrame(()=>{if(state.page==='library')global.scrollTo(0,returnY);});
+ }
+ function closeReader(){
+  if(closing||state.page!=='reader')return;
+  closing=true;savePosition();
+  if(!motionOff())document.querySelector('.reader')?.classList.add('lt-reader-exit');
+  closeTimer=global.setTimeout(finishClose,motionOff()?0:190);
+ }
+ openStory=function(id){
+  if(state.page==='library'){
+   returnY=Math.max(0,global.scrollY||0);
+   put('libraryScroll',returnY);
+  }
+  if(closeTimer!==null){global.clearTimeout(closeTimer);closeTimer=null;}
+  if(historyFallback!==null){global.clearTimeout(historyFallback);historyFallback=null;}
+  closing=false;waitingPop=false;
+  baseOpen(id);
+  if(state.page==='reader'&&!motionOff())
+   document.querySelector('.reader')?.classList.add('lt-reader-enter');
+ };
+ libraryBack=function(){
+  if(state.page!=='reader') {baseBack();return;}
+  if(closing||waitingPop)return;
+  const historyApi=global.history;
+  if(historyApi?.state?.page==='reader'&&typeof historyApi.back==='function'){
+   waitingPop=true;
+   historyApi.back();
+   // Some embedded WebViews do not dispatch popstate reliably. Recover safely.
+   historyFallback=global.setTimeout(()=>{
+    historyFallback=null;
+    if(waitingPop&&state.page==='reader'){waitingPop=false;closeReader();}
+   },480);
+  }else closeReader();
+ };
+ global.addEventListener?.('popstate',()=>{
+  if(historyFallback!==null){global.clearTimeout(historyFallback);historyFallback=null;}
+  waitingPop=false;
+  if(state.page==='translation'){
+   backToReader();
+   // Keep a same-document reader entry so a second Back returns to library.
+   if(state.story&&global.history?.pushState)
+    global.history.pushState({page:'reader'},'','#read-'+state.story.id);
+   return;
+  }
+  if(state.page==='reader'){
+   const modal=document.getElementById('modals');
+   if(modal?.childElementCount){closeSheet();
+    if(state.story&&global.history?.pushState)
+     global.history.pushState({page:'reader'},'','#read-'+state.story.id);
+    return;
+   }
+   closeReader();
+  }
+ });
+ global.LinguaStoryNavigation={isClosing:()=>closing,isWaitingForHistory:()=>waitingPop};
+})();
 library();
 })(window);
