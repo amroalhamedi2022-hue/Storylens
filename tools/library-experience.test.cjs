@@ -87,3 +87,82 @@ assert.ok(!optimized.includes('display:none'),'story cards must remain visible')
 console.log('PASS: LT-03 scoped card paint optimization retains Liquid visuals and reduced-motion support');
 
 console.log('PASS: favorite persistence, invalid IDs, reader preferences, input validation, corrupt-store recovery, 2 asset imports, accessibility and style gates');
+
+
+// LT-05/09/10/13: exercise the real new shell controller in an isolated VM.
+const shellJs=fs.readFileSync(path.join(assets,'lingua-shell.js'),'utf8');
+const shellCss=fs.readFileSync(path.join(assets,'lingua-shell.css'),'utf8');
+assert.ok(html.includes('href="lingua-shell.css"')&&html.includes('src="lingua-shell.js"'),
+ 'new shell CSS and JS must be loaded by the actual Android WebView HTML');
+assert.ok(html.indexOf('src="data-backup.js"')<html.indexOf('src="lingua-shell.js"'),
+ 'shell wraps final library/backup renderers, not earlier base functions');
+const themeClasses=new Set(['theme-nebula']);
+const registered={};
+const shellStore=new Map();
+const fakeDrawer={
+ id:'lt-drawer',inert:true,attributes:{},classList:{add(){},remove(){}},
+ setAttribute(k,v){this.attributes[k]=v;},querySelector(){return {focus(){}};}
+};
+const fakeBackdrop={classList:{add(){},remove(){}}};
+const fakeToggle={attributes:{},setAttribute(k,v){this.attributes[k]=v;},focus(){}};
+const shellDocument={
+ documentElement:{dir:'rtl',clientWidth:400},
+ body:{classList:{
+  add(k){themeClasses.add(k);},remove(k){themeClasses.delete(k);}
+ }},
+ querySelector:()=>null,querySelectorAll:()=>[],
+ getElementById(id){return ({'lt-drawer':fakeDrawer,'lt-drawer-backdrop':fakeBackdrop,
+  'lt-menu-toggle':fakeToggle})[id]||null;},
+ addEventListener(type,listener){registered[type]=listener;}
+};
+const shellWindow={innerWidth:400,addEventListener(type,listener){registered['window-'+type]=listener;}};
+const shellState={page:'library',uiTheme:'nebula'};
+const shellSandbox={
+ window:shellWindow,document:shellDocument,state:shellState,
+ catalog:{genres:[]},library(){},closeSheet(){},filterGenre(){},
+ put(k,v){shellStore.set(k,v);},Date,console
+};
+vm.runInNewContext(shellJs,shellSandbox,{filename:'lingua-shell.js',timeout:5000});
+const shell=shellWindow.LinguaShell;
+assert.ok(shell,'exposes theme, drawer and settings controls');
+assert.equal(shell.validTheme('paper-atlas'),true);
+assert.equal(shell.validTheme('malicious-theme'),false);
+assert.equal(shell.applyTheme('paper-atlas'),true);
+assert.equal(shellState.uiTheme,'paper-atlas');
+assert.equal(shellStore.get('uiTheme'),'paper-atlas','theme selection persisted offline');
+assert.ok(themeClasses.has('theme-paper-atlas')&&!themeClasses.has('theme-nebula'));
+assert.equal(shell.applyTheme('malicious-theme'),false,'reject unknown theme values');
+assert.equal(shellState.uiTheme,'paper-atlas','invalid theme must not overwrite preference');
+assert.equal(shell.menuSide(),'right','Arabic opens the right-edge drawer');
+shellDocument.documentElement.dir='ltr';
+assert.equal(shell.menuSide(),'left','English opens the left-edge drawer');
+shellDocument.documentElement.dir='rtl';
+assert.equal(shell.openDrawer(),true);
+assert.equal(shell.isDrawerOpen(),true);
+assert.equal(fakeDrawer.inert,false);
+assert.equal(fakeDrawer.attributes['aria-hidden'],'false');
+assert.equal(fakeToggle.attributes['aria-expanded'],'true');
+registered['window-keydown']({key:'Escape',preventDefault(){},stopImmediatePropagation(){}});
+assert.equal(shell.isDrawerOpen(),false,'Escape closes drawer before base reader navigation');
+assert.equal(fakeDrawer.inert,true,'closed drawer cannot be keyboard focused');
+registered.touchstart({touches:[{clientX:391,clientY:200}]});
+registered.touchend({changedTouches:[{clientX:291,clientY:210}]});
+assert.equal(shell.isDrawerOpen(),true,'Arabic swipe from right edge opens drawer');
+registered.touchstart({touches:[{clientX:280,clientY:200}]});
+registered.touchend({changedTouches:[{clientX:370,clientY:205}]});
+assert.equal(shell.isDrawerOpen(),false,'opposite swipe closes drawer');
+shellDocument.documentElement.dir='ltr';
+registered.touchstart({touches:[{clientX:7,clientY:180}]});
+registered.touchend({changedTouches:[{clientX:99,clientY:186}]});
+assert.equal(shell.isDrawerOpen(),true,'English swipe from left edge opens drawer');
+shell.closeDrawer();
+registered.touchstart({touches:[{clientX:7,clientY:180}]});
+registered.touchend({changedTouches:[{clientX:130,clientY:285}]});
+assert.equal(shell.isDrawerOpen(),false,'vertical scrolling must not trigger drawer');
+assert.match(shellCss,/html\[dir="rtl"\]\s+\.lt-drawer/,'RTL physical drawer side is explicit');
+assert.match(shellCss,/\.theme-paper-atlas\s+\.library\s+\.shelf\s+\.card/,'Paper Atlas has a different card composition');
+assert.match(shellCss,/\.theme-paper-atlas\s+\.library\s+\.storylens-hero/,'Paper Atlas has a distinct hero composition');
+assert.match(shellCss,/prefers-reduced-motion/,'drawer motion has reduced-motion fallback');
+const backupJs=fs.readFileSync(path.join(assets,'data-backup.js'),'utf8');
+assert.ok(backupJs.includes("'paper-atlas'"),'offline backup validator must retain the new theme');
+console.log('PASS: Lingua Tales shell RTL/LTR swipe, theme persistence, backup and Paper Atlas layout gates');
