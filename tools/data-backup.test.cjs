@@ -30,7 +30,7 @@ assert.equal(Object.keys(json.entries).length,4);
 assert.equal(json.entries.personal_secret,undefined);
 const preview=api.preview(backup);assert.equal(preview.stats.words,2);
 assert.equal(preview.stats.cards,1);assert.equal(preview.stats.favorites,1);
-storage.delete('storylens_saved');storage.delete('storylens_cards');
+store.delete('storylens_saved');store.delete('storylens_cards');
 assert.equal(api.restore(preview.entries),4);
 assert.deepEqual(JSON.parse(storage.getItem('storylens_saved')),['reached','break the ice']);
 assert.equal(store.has('personal_secret'),true,'unrelated personal storage untouched');
