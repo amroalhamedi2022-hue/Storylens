@@ -10,6 +10,8 @@ const validSpacing = ['comfortable','airy','compact'];
 const validWidth = ['normal','wide'];
 const validFonts = ['literary','modern'];
 const defaults = {spacing:'comfortable',width:'normal',font:'literary',illustrations:true};
+// UI labels follow the selected interface language; vocabulary glosses stay Arabic.
+const uiText=(ar,en)=>document.documentElement.lang==='en'?en:ar;
 const read = (key,fallback) => {
  try { const value=JSON.parse(localStorage.getItem(STORAGE+key)); return value===null?fallback:value; }
  catch(_) { return fallback; }
@@ -73,26 +75,26 @@ function renderDiscovery() {
  const current=discoveryState();
  const choices=document.createElement('section');
  choices.className='stl-discovery';
- choices.setAttribute('aria-label','اكتشاف القصص');
+ choices.setAttribute('aria-label',uiText('اكتشاف القصص','Discover stories'));
  const heading=document.createElement('div');heading.className='stl-discovery-title';
- heading.innerHTML='<span>استكشف مكتبتك</span><small>قصص منتقاة حسب اهتماماتك ومستواك</small>';
+ heading.innerHTML=uiText('<span>استكشف مكتبتك</span><small>قصص منتقاة حسب اهتماماتك ومستواك</small>','<span>Explore your library</span><small>Stories for your interests and level</small>');
  choices.appendChild(heading);
  const controls=document.createElement('div');controls.className='stl-discovery-controls';
  const fav=document.createElement('button');
  fav.type='button';fav.className='stl-choice'+(current.favoritesOnly?' active':'');
- fav.textContent='★ المفضلة';fav.setAttribute('aria-pressed',String(current.favoritesOnly));
+ fav.textContent=uiText('★ المفضلة','★ Favorites');fav.setAttribute('aria-pressed',String(current.favoritesOnly));
  fav.addEventListener('click',()=>{write('favoritesOnly',!discoveryState().favoritesOnly);renderDiscovery();});
  controls.appendChild(fav);
  const levelLabel=document.createElement('label');levelLabel.className='stl-select';
- levelLabel.append('المستوى ');
- const select=document.createElement('select');select.setAttribute('aria-label','تصفية حسب مستوى اللغة');
- for(const level of levels){const opt=document.createElement('option');opt.value=level;opt.textContent=level==='all'?'كل المستويات':level;select.appendChild(opt);}
+ levelLabel.append(uiText('المستوى ','Level '));
+ const select=document.createElement('select');select.setAttribute('aria-label',uiText('تصفية حسب مستوى اللغة','Filter by language level'));
+ for(const level of levels){const opt=document.createElement('option');opt.value=level;opt.textContent=level==='all'?uiText('كل المستويات','All levels'):level;select.appendChild(opt);}
  select.value=current.level;
  select.addEventListener('change',()=>{write('discoveryLevel',select.value);renderDiscovery();});
  levelLabel.appendChild(select);controls.appendChild(levelLabel);
- const sortLabel=document.createElement('label');sortLabel.className='stl-select';sortLabel.append('الترتيب ');
- const order=document.createElement('select');order.setAttribute('aria-label','ترتيب القصص');
- for(const [value,name] of [['editorial','المختارة'],['title','العنوان'],['level','المستوى']]){
+ const sortLabel=document.createElement('label');sortLabel.className='stl-select';sortLabel.append(uiText('الترتيب ','Sort '));
+ const order=document.createElement('select');order.setAttribute('aria-label',uiText('ترتيب القصص','Sort stories'));
+ for(const [value,name] of [['editorial',uiText('المختارة','Recommended')],['title',uiText('العنوان','Title')],['level',uiText('المستوى','Level')]]){
   const opt=document.createElement('option');opt.value=value;opt.textContent=name;order.appendChild(opt);
  }
  order.value=current.sort;order.addEventListener('change',()=>{write('discoverySort',order.value);renderDiscovery();});
@@ -114,7 +116,7 @@ function renderDiscovery() {
   const star=document.createElement('button');
   star.type='button';star.className='stl-favorite'+(favIds.has(id)?' active':'');
   star.textContent=favIds.has(id)?'★':'☆';
-  star.title=favIds.has(id)?'إزالة من المفضلة':'إضافة للمفضلة';
+  star.title=favIds.has(id)?uiText('إزالة من المفضلة','Remove from favorites'):uiText('إضافة للمفضلة','Add to favorites');
   star.setAttribute('aria-label',star.title);
   star.setAttribute('aria-pressed',String(favIds.has(id)));
   star.addEventListener('click',event=>{
@@ -134,14 +136,14 @@ function renderDiscovery() {
  // Hidden cards are still kept in the shelf to preserve existing search behavior.
  if(!shown.length){
   const empty=document.createElement('p');empty.className='stl-empty-shelf';
-  empty.textContent=current.favoritesOnly?'لا يوجد قصص مطابقة في المفضلة. اضغط على النجمة لحفظ قصصك المفضلة.':'لا توجد قصص بهذا المستوى ضمن الفئة المختارة.';
+  empty.textContent=current.favoritesOnly?uiText('لا يوجد قصص مطابقة في المفضلة. اضغط على النجمة لحفظ قصصك المفضلة.','No matching favorites. Use the star to save a story.'):uiText('لا توجد قصص بهذا المستوى ضمن الفئة المختارة.','No stories match this level and genre.');
   shelf.parentNode.insertBefore(empty,shelf.nextSibling);
  }
  const count=section.querySelector('.stl-visible-count');
- if(count)count.textContent='القصص الظاهرة: '+shown.length+' / '+cards.length;
+ if(count)count.textContent=uiText('القصص الظاهرة: ','Visible stories: ')+shown.length+' / '+cards.length;
  else{
   const counter=document.createElement('p');counter.className='stl-visible-count';
-  counter.textContent='القصص الظاهرة: '+shown.length+' / '+cards.length;
+  counter.textContent=uiText('القصص الظاهرة: ','Visible stories: ')+shown.length+' / '+cards.length;
   choices.appendChild(counter);
  }
  // Keep the discovery controls in the locale-aware drawer after any
@@ -165,11 +167,11 @@ settings=function(){
  if(!sheet||!state.story)return;
  const section=document.createElement('section');
  section.className='stl-reading-custom';
- const h=document.createElement('h3');h.textContent='راحة القراءة';section.appendChild(h);
+ const h=document.createElement('h3');h.textContent=uiText('راحة القراءة','Reading comfort');section.appendChild(h);
  const choices=[
- ['spacing','المسافة بين السطور',[['compact','مضغوط'],['comfortable','مريح'],['airy','واسع']]],
- ['width','عرض النص',[['normal','معتدل'],['wide','واسع']]],
- ['font','نمط الخط',[['literary','أدبي'],['modern','حديث']]]
+ ['spacing',uiText('المسافة بين السطور','Line spacing'),[['compact',uiText('مضغوط','Compact')],['comfortable',uiText('مريح','Comfortable')],['airy',uiText('واسع','Airy')]]],
+ ['width',uiText('عرض النص','Text width'),[['normal',uiText('معتدل','Normal')],['wide',uiText('واسع','Wide')]]],
+ ['font',uiText('نمط الخط','Font style'),[['literary',uiText('أدبي','Literary')],['modern',uiText('حديث','Modern')]]]
  ];
  for(const [key,label,options] of choices){
   const row=document.createElement('div');row.className='stl-setting-line';
@@ -186,7 +188,7 @@ settings=function(){
   row.appendChild(group);section.appendChild(row);
  }
  const art=document.createElement('button');art.type='button';art.className='secondary stl-art-toggle';
- art.textContent=prefs().illustrations?'إخفاء رسم الفصل':'إظهار رسم الفصل';
+ art.textContent=prefs().illustrations?uiText('إخفاء رسم الفصل','Hide chapter illustration'):uiText('إظهار رسم الفصل','Show chapter illustration');
  art.addEventListener('click',()=>{preference('illustrations',!prefs().illustrations);settings();});
  section.appendChild(art);
  const footer=sheet.querySelector('footer');
@@ -204,8 +206,8 @@ wordSheet=function(args) {
  const scopedKey=storyId+'\u001f'+state.chapter+'\u001f'+args.source.en+'\u001f'+args.display.toLowerCase();
  const selections=read('wordSenses',{});
  const box=document.createElement('section');box.className='stl-sense-choices';
- const heading=document.createElement('h3');heading.textContent='اختر المعنى الأنسب في هذه الجملة';box.appendChild(heading);
- const sub=document.createElement('p');sub.textContent='معانٍ معجمية محتملة. اختيارك شخصي ومحفوظ في هذه الجملة فقط، وليس ترجمة معتمدة آليًا.';
+ const heading=document.createElement('h3');heading.textContent=uiText('اختر المعنى الأنسب في هذه الجملة','Choose the best sense in this sentence');box.appendChild(heading);
+ const sub=document.createElement('p');sub.textContent=uiText('معانٍ معجمية محتملة. اختيارك شخصي ومحفوظ في هذه الجملة فقط، وليس ترجمة معتمدة آليًا.','Possible dictionary senses. Your selection applies only to this sentence; it is not a verified contextual translation.');
  box.appendChild(sub);
  const options=document.createElement('div');options.className='stl-sense-options';
  for(const sense of senses.slice(0,6)){
