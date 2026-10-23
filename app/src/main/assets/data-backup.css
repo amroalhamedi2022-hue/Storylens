@@ -1,0 +1,18 @@
+/* Offline backup uses theme glass but offers sober, readable confirmation. */
+.stl-backup-sheet{max-height:min(91dvh,930px);overflow-y:auto}
+.stl-backup-sheet>p{font-size:14px;line-height:1.8}
+.stl-backup-actions{display:flex;flex-wrap:wrap;gap:11px;margin:20px 0}
+.stl-backup-actions button{flex:1;min-width:125px;min-height:45px}
+.stl-backup-sheet label{display:block;margin-top:16px;font-size:13px;color:var(--ink)}
+#stl-backup-paste{width:100%;min-height:110px;resize:vertical;direction:ltr;text-align:left;
+ font:12px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;
+ background:color-mix(in srgb,var(--card) 86%,transparent);color:var(--ink);
+ border:1px solid color-mix(in srgb,var(--ink) 24%,transparent);border-radius:12px;
+ margin:12px 0;padding:12px;overflow-wrap:anywhere;outline:none}
+#stl-backup-paste:focus-visible{border-color:var(--accent);outline:2px solid color-mix(in srgb,var(--accent) 30%,transparent)}
+.stl-backup-feedback{color:var(--ink);font-size:13px;line-height:1.8;overflow-wrap:anywhere}
+.stl-backup-confirm{display:block;margin-top:13px;min-height:44px}
+.stl-backup-toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);z-index:100;
+ border:1px solid #7ed4dc99;border-radius:14px;background:#0e2d42;color:#efffff;
+ padding:13px 18px;font:600 14px/1.6 system-ui,sans-serif;max-width:90vw;
+ box-shadow:0 16px 45px #01061199}
