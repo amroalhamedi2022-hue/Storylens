@@ -11,7 +11,7 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 | LT-02 smooth story open **and close** animations | NOT TESTED | Actual UI change, navigation regressions, repeated open/close device evidence |
 | LT-03 card-paint optimization / measurable performance | PASS (source/CI); NOT TESTED (device) | Scoped blur/animation reduction and lazy card painting verified in CI at `e64732a206d56c0ae4bcdf5350a6933041f53276`; no Android FPS/RAM baseline or visual parity measurement yet |
 | LT-04 modern distinctive Android adaptive icon inspired by Wen Sarafet design quality | NOT TESTED | Icon assets and real launcher mask/theme inspection |
-| LT-05 reduced marketing metadata/clutter without loss of features | NOT TESTED | Compact layout and phone/tablet screenshot/action tests |
+| LT-05 reduced marketing metadata/clutter without loss of features | PASS (source/browser CI); NOT TESTED (device) | Simplified homepage with hero metadata removed, cards prioritized; CI run 39972837571 screenshot artifacts |
 | LT-06 complete Arabic/English app UI language toggle; keep English story/Arabic translations | NOT TESTED | i18n catalogs, RTL/LTR, offline save/restore and bilingual flow tests |
 
 ## 2026-10-23 — LT-03 paint budget (production code + test, not device benchmark)
@@ -58,10 +58,22 @@ Next action: obtain physical Android installation/reader tap/save/restart eviden
 |---|---|---|
 | LT-07 real medium/long fiction; new reviewed batches, faithful public-domain edition verification and contextual Arabic translation | NOT TESTED | Chapter inventory, source/license records, editorial and dictionary tests |
 | LT-08 in-reader context-matched images with legal source/asset provenance and attractive focal-point cropping/feathering | NOT TESTED | Image catalog, chapter anchors, offline mobile screenshots and performance |
-| LT-09 category drawer at Arabic right/English left and corresponding edge swipe, without homepage clutter | NOT TESTED | Bilingual touch/back/gesture tests and screenshots |
-| LT-10 centralize theme, audio, font, motion in Settings | NOT TESTED | UI/persistence regression |
+| LT-09 category drawer at Arabic right/English left and corresponding edge swipe, without homepage clutter | PASS (source/VM/browser CI); NOT TESTED (device) | RTL/LTR swipe + Escape tests; categories, levels, sort, actions in drawer; run 39972837571 |
+| LT-10 centralize theme controls in Settings | PARTIAL PASS (source/CI); NOT TESTED (device) | Theme gallery and offline persistence implemented; audio/fonts/language settings still pending |
 | LT-11 optional playback-only UI effects and ~20 licensed music/nature ambiences; no microphone or TTS | NOT TESTED | License/asset audit, audio-focus, background, offline and CPU/RAM checks |
 | LT-12 selectable separate Arabic/English fonts and typography | NOT TESTED | RTL/LTR readability, licensed assets and preserved state |
-| LT-13 each substantive development/content batch adds one *genuinely visually different* functional theme, not just a palette shift, while runtime remains smooth | NOT TESTED | Per-batch theme ID, distinct visual tokens/layout, code+CI, screenshots and same-device FPS/RAM evidence |
+| LT-13 each substantive development/content batch adds one *genuinely visually different* functional theme, not just a palette shift, while runtime remains smooth | PARTIAL PASS (source/CI); NOT TESTED (theme visual/device performance) | Paper Atlas editorial layout, static compass, warm paper cards; run 39972837571; no Pad 5 FPS/RAM or Paper Atlas screenshot yet |
 
 A plan or screenshot is **not** proof of implementation, and not every small hourly task automatically creates a theme. Track real batched deliveries, with standalone independent recheck when all features are satisfied.
+
+
+## 2026-10-23 — LT-05 / LT-09 / LT-10 / LT-13: production shell and distinct Paper Atlas
+- **Production source SHA:** `ccc8da7a5ba9c5aef5db2173227af6e4323f7fe7` on existing draft PR #1. Added `lingua-shell.js` and `lingua-shell.css`; wired after backup/library/reader wrappers in `index.html`; `library-experience.js` rehomes refreshed discovery controls into the menu; `data-backup.js` accepts `paper-atlas` theme in validated backups.
+- **LT-05:** removed redundant brand copy, marketing metrics, repeated descriptions and oversized home controls, preserving cards, reader, offline words, review and backup behind the menu. Browser screenshots show a shorter, content-first library.
+- **LT-09:** category/genre drawer opens at top-right in Arabic and top-left in English (based on HTML dir), with corresponding right/left edge swipe, reverse swipe, backdrop click and Escape; favorite/level/sort/search and learning actions remain functional. Tests check directional swipes, closed-drawer inert state, rehome hook and no repeated move.
+- **LT-10:** theme picker moved to a dedicated Settings overlay; selection persists in the existing `storylens_uiTheme` key, and old themes remain selectable. Other Settings modules (fonts, language, audio) are **not implemented**.
+- **LT-13:** new **Paper Atlas** theme changes page geometry, editorial card orientation, header and hero layout, compass ornament and warm paper palette; not a hue-only swap. Static CSS art avoids animated full-screen filters. **No device performance evidence** yet.
+- **PASS GitHub CI on exact production SHA:** [Actions run 39972837571](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/39972837571) completed successfully: Node regression (`PASS: Lingua Tales shell RTL/LTR swipe, theme persistence, backup and Paper Atlas layout gates`), offline dictionary/content tests, Gradle unit tests and Debug APK, browser flow smoke and library/reader/backup screenshots. APK artifact **12509033991**, screenshots **12509473831**. Earlier APK at run 39971652217 was unpacked locally and verified to contain `assets/lingua-shell.js` and `assets/lingua-shell.css`; the latest run's artifact has not yet been unpacked in this record.
+- **Additional isolated V8 execution:** actual `lingua-shell.js` verified with RTL swipe, rehome-once, persisted theme, no unknown theme and Escape; **not a substitute** for Android gesture/device tests.
+- **NOT TESTED:** Xiaomi Pad 5 visual parity and real FPS/RAM/CPU, Android physical system back, full English locale switch (LT-06), Paper Atlas screenshot at selected theme, all 20 audio assets, fonts, story animations, long books and inline images. No claims of fully completed app or independent second-pass verification.
+- **Next:** implement LT-02 story open/close animations preserving scroll/back-stack and reduced-motion, then full LT-06/12 localization/fonts; continue a genuinely different theme per next substantial batch and measure device performance.
