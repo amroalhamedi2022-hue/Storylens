@@ -57,6 +57,7 @@ function exportObject(){
    if(validValue(key,val))entries[key]=raw;
   }catch(_){}
  }
+ if(Object.keys(entries).length>MAX_ENTRIES)throw Error('عدد عناصر النسخة الاحتياطية يتجاوز الحد الآمن.');
  const payload={format:'storylens.backup',version:VERSION,createdAt:new Date().toISOString(),entries};
  const text=JSON.stringify(payload);
  if(text.length>MAX_BYTES)throw Error('حجم النسخة الاحتياطية يتجاوز الحد الآمن.');
@@ -154,6 +155,7 @@ function renderBackup(){
 function showImport(value){
  let data;try{data=preview(value)}catch(e){staged=null;if(!document.getElementById('stl-backup-feedback'))renderBackup();show(e.message);return false;}
  staged=data.entries;
+ const approvedEntries=staged;
  if(!document.getElementById('stl-backup-feedback'))renderBackup();
  const box=document.getElementById('stl-backup-feedback');
  box.textContent=ui('وجدت ','Found ')+data.stats.words+ui(' كلمة، ',' words, ')+data.stats.favorites+
@@ -162,7 +164,11 @@ function showImport(value){
  const go=document.createElement('button');go.type='button';go.className='primary stl-backup-confirm';
  go.textContent=ui('نعم، استرجع بياناتي','Yes, restore my data');
  go.addEventListener('click',()=>{
-  try {const count=restore(staged);staged=null;close();state.saved=get('saved',[]);
+  try {
+   // A newer/invalid preview revokes this button's authorization. Never
+   // restore a different file than the one shown when this button appeared.
+   if(staged!==approvedEntries)throw Error(ui('انتهت صلاحية التأكيد؛ افحص النسخة مرة أخرى.','Confirmation expired; validate the backup again.'));
+   const count=restore(approvedEntries);staged=null;close();state.saved=get('saved',[]);
    state.cards=get('cards',[]);state.dark=get('dark',false);state.size=get('size',22);
    state.uiTheme=get('uiTheme','aurora');document.body.className='theme-'+state.uiTheme;
    // Restore imported UI preferences immediately; no app restart or change to
@@ -190,7 +196,7 @@ library=function(){
  const bar=document.querySelector('.library-actions');
  if(!bar)return;
  const b=document.createElement('button');b.type='button';b.className='secondary stl-backup-open';
- b.textContent='⤓ نسخ احتياطي';b.setAttribute('aria-label','حفظ أو استعادة بيانات التعلم');
+ b.textContent=ui('⤓ نسخ احتياطي','⤓ Backup');b.setAttribute('aria-label',ui('حفظ أو استعادة بيانات التعلم','Save or restore learning data'));
  b.addEventListener('click',renderBackup);bar.appendChild(b);
 };
 global.StoryLensBackup={
