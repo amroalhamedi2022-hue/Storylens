@@ -106,7 +106,7 @@ const fakeDrawer={
 const fakeBackdrop={classList:{add(){},remove(){}}};
 const fakeToggle={attributes:{},setAttribute(k,v){this.attributes[k]=v;},focus(){}};
 const shellDocument={
- documentElement:{dir:'rtl',clientWidth:400},
+ documentElement:{dir:'rtl',clientWidth:400,dataset:{}},
  body:{classList:{
   add(k){themeClasses.add(k);},remove(k){themeClasses.delete(k);}
  }},
@@ -125,6 +125,19 @@ const shellSandbox={
 vm.runInNewContext(shellJs,shellSandbox,{filename:'lingua-shell.js',timeout:5000});
 const shell=shellWindow.LinguaShell;
 assert.ok(shell,'exposes theme, drawer and settings controls');
+assert.equal(shell.applyFont('ar','naskh'),true);
+assert.equal(shellDocument.documentElement.dataset.ltArabicFont,'naskh');
+assert.equal(shellStore.get('fontArabic'),'naskh','Arabic font saved offline');
+assert.equal(shell.applyFont('en','sans'),true);
+assert.equal(shellDocument.documentElement.dataset.ltEnglishFont,'sans');
+assert.equal(shellStore.get('fontEnglish'),'sans','English font saved separately');
+assert.equal(shell.applyFont('en','url(https://example.com/font)'),false,'reject injected CSS');
+assert.equal(shell.applyFont('__proto__','sans'),false,'reject unknown font language');
+assert.match(shellCss,/html\[data-lt-arabic-font="naskh"\]/,'Arabic Naskh style exists');
+assert.match(shellCss,/html\[data-lt-english-font="sans"\]/,'English sans style exists');
+assert.match(shellCss,/\.reader \.sentence/,'reader uses selected English font');
+assert.match(shellCss,/\.inline-ar/,'translation uses selected Arabic font');
+
 assert.equal(shell.validTheme('paper-atlas'),true);
 assert.equal(shell.validTheme('malicious-theme'),false);
 assert.equal(shell.applyTheme('paper-atlas'),true);
