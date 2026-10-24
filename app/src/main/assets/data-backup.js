@@ -38,6 +38,14 @@ function allowed(key){
   /^scroll_[a-z0-9-]{1,90}_[0-9]{1,4}$/.test(suffix);
 }
 const safeText=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// A backup must not silently restore objects/arrays where the reader expects
+// plain user-authored text. Keep limits generous for legitimate older cards.
+function validStringMap(value,maxKeyChars,maxValueChars){
+ if(!value||typeof value!=='object'||Array.isArray(value))return false;
+ const entries=Object.entries(value);
+ return entries.length<=5000&&entries.every(([key,text])=>
+  key.length<=maxKeyChars&&typeof text==='string'&&text.length<=maxValueChars);
+}
 function validValue(key,val){
  const tail=key.slice(PREFIX.length);
  if(tail==='saved'||tail==='favorites'){
@@ -61,7 +69,9 @@ function validValue(key,val){
  if(tail.startsWith('chapter_'))return Number.isInteger(val)&&val>=0&&val<1000;
  if(tail.startsWith('scroll_'))return Number.isFinite(val)&&val>=0&&val<1e9;
  if(tail==='readerPrefs')return val!==null&&typeof val==='object'&&!Array.isArray(val);
- if(['bookmarks','written_examples','wordSenses'].includes(tail)){
+ if(tail==='written_examples')return validStringMap(val,500,5000);
+ if(tail==='wordSenses')return validStringMap(val,4000,5000);
+ if(tail==='bookmarks'){
   return val!==null&&typeof val==='object'&&!Array.isArray(val)&&Object.keys(val).length<=5000;
  }
  return false;
