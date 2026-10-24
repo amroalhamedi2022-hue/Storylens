@@ -33,6 +33,14 @@ const sandbox = {
   Date
 };
 vm.runInNewContext(js, sandbox, {timeout: 5000});
+// Exercise the real openStory wrapper: corrupt legacy chapter data must be
+// repaired BEFORE the captured base renderer indexes the chapter array.
+saved.chapter_book = 1.5;
+sandbox.openStory('book');
+assert.equal(saved.chapter_book, 0, 'fractional chapter is sanitized on story entry');
+saved.chapter_book = 12;
+sandbox.openStory('book');
+assert.equal(saved.chapter_book, 1, 'out-of-range chapter clamps before story entry');
 window.stlJumpBookmark();
 assert.equal(sandbox.state.chapter, 0, 'invalid chapter must not reach reader');
 assert.equal(renders, 0);
