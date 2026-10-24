@@ -81,3 +81,18 @@
  .library .filters{margin:10px 0 11px}
  .library .search-label input{padding:12px 14px}
 }
+
+/* LT-08: optional chapter art is never fetched remotely or laid over text. */
+.reader .lt-inline-illustration{display:block;clear:both;max-width:100%;margin:1.2rem auto 1.6rem;
+ padding:0;overflow:hidden;border-radius:16px;contain:layout style;}
+.reader .lt-inline-illustration img{display:block;width:100%;height:auto;max-height:420px;
+ object-fit:contain;background:color-mix(in srgb,var(--card) 75%,transparent);}
+.reader .lt-inline-illustration figcaption{padding:6px 10px;font-size:.75rem;
+ line-height:1.5;color:var(--sub);text-align:start;}
+@media(min-width:850px){
+ .reader .lt-inline-edge-start,.reader .lt-inline-edge-end{max-width:min(42%,330px);clear:none;}
+ .reader .lt-inline-edge-start{float:inline-start;margin:0.35rem 1.3rem 1rem 0;}
+ .reader .lt-inline-edge-end{float:inline-end;margin:0.35rem 0 1rem 1.3rem;}
+}
+@media(max-width:849px){.reader .lt-inline-illustration{float:none!important;max-width:100%;}}
+@media(prefers-reduced-motion:reduce){.reader .lt-inline-illustration{transition:none!important;}}
