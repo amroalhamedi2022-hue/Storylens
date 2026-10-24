@@ -76,7 +76,10 @@ renderReader=function(){
  const sentences=Array.from(document.querySelectorAll('.reader .sentence'));
  const usedAnchors=new Set();
  const safeArtPath=/^art\/[a-z0-9_-]+(?:\/[a-z0-9_-]+)*\.(?:webp|png|jpe?g)$/i;
- for(const item of art.slice(0,12)){
+ // Ignore invalid catalog entries without allowing them to consume the 12-image budget.
+ // Bound candidate scanning so a corrupt chapter cannot stall the reader.
+ for(const item of art.slice(0,64)){
+  if(usedAnchors.size>=12)break;
   if(!item||!Number.isInteger(item.afterParagraph)||item.afterParagraph<0||
      usedAnchors.has(item.afterParagraph)||!safeArtPath.test(item.src||'')||
      typeof item.alt!=='string'||!item.alt.trim()||item.alt.length>240)continue;
