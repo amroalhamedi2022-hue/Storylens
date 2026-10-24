@@ -73,7 +73,7 @@ class MainActivity : ComponentActivity() {
                     bytes.write(buffer, 0, n)
                 }
             }
-            notifyBackup("receiveImport", bytes.toString(Charsets.UTF_8.name()))
+            // Never silently replace malformed UTF-8 bytes with U+FFFD; that could\n            // change saved vocabulary and source text without user consent.\n            notifyBackup("receiveImport", BackupUtf8.decode(bytes.toByteArray()))
         } catch (ex: Exception) {
             notifyBackup("nativeStatus", "import_failed")
         }
