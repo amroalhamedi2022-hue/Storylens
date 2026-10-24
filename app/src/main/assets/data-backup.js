@@ -52,10 +52,15 @@ function exportObject(){
   if(!allowed(key))continue;
   const raw=localStorage.getItem(key);
   if(raw===null)continue;
-  try{
-   const val=JSON.parse(raw);
-   if(validValue(key,val))entries[key]=raw;
-  }catch(_){}
+  // Never produce a backup that silently drops an existing learning key.
+  // A corrupt allowed entry needs explicit repair before export, otherwise
+  // restoring this apparently successful archive could lose saved progress.
+  let val;
+  try{val=JSON.parse(raw)}catch(_){
+   throw Error('تعذّر تصدير نسخة كاملة: بيانات تالفة في '+key);
+  }
+  if(!validValue(key,val))throw Error('تعذّر تصدير نسخة كاملة: بيانات غير صالحة في '+key);
+  entries[key]=raw;
  }
  if(Object.keys(entries).length>MAX_ENTRIES)throw Error('عدد عناصر النسخة الاحتياطية يتجاوز الحد الآمن.');
  const payload={format:'storylens.backup',version:VERSION,createdAt:new Date().toISOString(),entries};
