@@ -40,6 +40,9 @@ jobs:
         run: |
           python3 tools/validate_catalog.py
           python3 tools/check_js.py
+          python3 tools/test_lingua_launcher.py
+          node tools/botanical-theme.test.cjs
+          node tools/rain-glass.test.cjs
           node --check app/src/main/assets/lexicon-extra.js
           node tools/lexicon.test.cjs
           node tools/freedict.test.cjs
@@ -59,7 +62,12 @@ jobs:
           for file in index.html lexicon-extra.js liquid-aurora.css reader-experience.js reader-experience.css editorial-stories-a.js editorial-stories-b.js editorial-stories-c.js editorial-art.js library-experience.js library-experience.css data-backup.js data-backup.css freedict-en-ar.js LICENSE_FREEDICT.txt; do
             unzip -Z1 "$APK" | grep -Fqx "assets/$file" || { echo "MISSING assets/$file"; exit 1; }
           done
-          echo "PASS: all critical offline modules packaged into $APK"
+          # This purposeful build checks that Android AAPT2 compiled the new
+          # adaptive launcher XML, rather than trusting source XML alone.
+          unzip -Z1 "$APK" | grep -Fqx "res/mipmap-anydpi-v26/ic_launcher.xml" || {
+            echo "FAIL: adaptive icon not packaged"; exit 1;
+          }
+          echo "PASS: adaptive launcher resource and all critical offline modules packaged into $APK"
       - name: Browser render smoke and screenshot artifacts
         shell: bash
         run: |
