@@ -136,6 +136,26 @@ renderReader=function(){
   label.appendChild(marker);
  }
  document.querySelectorAll('.reader .sentence').forEach(p=>{
+  // Capture word taps before the legacy per-tap scan of every phrase. The
+  // optimized index preserves longest edited idiom, inflected-word fallback,
+  // and the existing source-grounded word sheet/SRS persistence.
+  p.addEventListener('click',event=>{
+   if(!event.target?.matches?.('.tok') || !window.LinguaLookup ||
+      typeof document.createRange!=='function' || typeof wordSheet!=='function')return;
+   const source=state.story.chapters[state.chapter]?.paragraphs?.[Number(p.dataset.i)];
+   if(!source)return;
+   const range=document.createRange();
+   range.selectNodeContents(p);
+   range.setEndBefore(event.target);
+   const hit=window.LinguaLookup.lookup({
+    story:state.story,dictionary:catalog.dictionary,sentence:source.en,
+    selected:event.target.textContent,offset:range.toString().length,
+    lemmas,lexicon:window.StoryLexicon,freeDict:window.FreeDictEnglishArabic
+   });
+   if(!hit)return;
+   event.stopImmediatePropagation();
+   wordSheet({...hit,source});
+  },true);
   p.setAttribute('tabindex','0');
   p.setAttribute('lang','en');
   p.setAttribute('dir','ltr');
