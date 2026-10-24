@@ -23,6 +23,16 @@ storage.setItem('storylens_cards',JSON.stringify([{term:'break the ice',sentence
 storage.setItem('storylens_favorites',JSON.stringify(['eleven-minute-alibi']));
 storage.setItem('storylens_chapter_eleven-minute-alibi','1');
 storage.setItem('personal_secret','"should not be exported"');
+// An export must fail visibly rather than silently omit an allowed key.
+// Unrelated application keys remain outside the archive and cannot block it.
+storage.setItem('storylens_cards','not valid JSON');
+assert.throws(()=>api.exportObject(),/storylens_cards/,'corrupt cards cannot be silently dropped');
+storage.setItem('storylens_cards',JSON.stringify({term:'wrong shape'}));
+assert.throws(()=>api.exportObject(),/storylens_cards/,'wrong-shaped cards cannot be silently dropped');
+storage.setItem('storylens_cards',JSON.stringify([{term:'break the ice',sentence:'He broke the ice.',meaning:'كسر التوتر'}]));
+storage.setItem('storylens_chapter_corrupt','-3');
+assert.throws(()=>api.exportObject(),/storylens_chapter_corrupt/,'invalid progress must block incomplete backups');
+storage.removeItem('storylens_chapter_corrupt');
 const backup=api.exportObject();
 const json=JSON.parse(backup);
 assert.equal(json.format,'storylens.backup');assert.equal(json.version,1);
