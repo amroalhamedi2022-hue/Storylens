@@ -431,3 +431,106 @@ body.theme-rain-glass{
  .theme-rain-glass .library .shelf .card{grid-template-columns:96px minmax(0,1fr);min-height:176px}
  .theme-rain-glass .library .shelf .card .cover{width:96px;height:152px;min-height:152px}
 }
+
+
+/* LT-13 Solar Atelier: bright editorial art studio, asymmetric cut-paper
+ * geometry and a stationary sun-dial disc; intentionally not a glass recolor.
+ * All visuals are offline CSS; no image/font/audio/network dependency. */
+.lt-theme-solar-atelier .lt-theme-swatch{
+ background:linear-gradient(140deg,#fff1d2 0 35%,#f48d5b 35% 68%,#42304d 68%);
+}
+body.theme-solar-atelier{
+ --body:#f8ead8;--card:#fff7e8;--ink:#3b2941;--sub:#6c5861;
+ --accent:#b3444c;--reader:#fff8e9;--reader-ink:#342b3c;
+ color:var(--ink);
+ background:repeating-linear-gradient(90deg,#ab4f4410 0 1px,transparent 1px 94px),
+ linear-gradient(130deg,#fbead3,#f7e2cf 55%,#f0c4b3);
+}
+.theme-solar-atelier::before,.theme-solar-atelier::after{display:none!important}
+.theme-solar-atelier .library{max-width:1170px}
+.theme-solar-atelier .library .header{
+ border-bottom:3px solid #c15b4b;padding-bottom:18px;
+}
+.theme-solar-atelier .library .brand{color:#b3484a;letter-spacing:.1em}
+.theme-solar-atelier .library .header h1{
+ font:800 clamp(28px,4vw,44px)/1.13 system-ui,sans-serif;color:#482e48;
+}
+.theme-solar-atelier .library .secondary{
+ color:#703348;background:#fff5e7;border:2px solid #be695b;
+ border-radius:2px;box-shadow:3px 3px 0 #e4a68c;
+}
+.theme-solar-atelier .library .storylens-hero{
+ display:grid;grid-template-columns:minmax(0,1fr) 190px;
+ gap:22px;align-items:center;min-height:228px;padding:28px 30px;
+ border-radius:4px 50px 4px 4px;border:3px solid #4c3048;
+ background:linear-gradient(115deg,#ffe7c4 0 59%,#ef9d7a 59% 78%,#ad5864 78%);
+ box-shadow:8px 8px 0 #b4564d4d;
+}
+.theme-solar-atelier .library .storylens-hero h2{
+ font:800 clamp(28px,4vw,43px)/1.1 system-ui,sans-serif;color:#542f45;
+}
+.theme-solar-atelier .library .storylens-hero .hero-orb{
+ position:relative;inset:auto;transform:none;opacity:1;
+ width:166px;height:166px;margin-inline:auto;border-radius:50%;
+ border:12px solid #f7c06e;
+ background:conic-gradient(from 15deg,#c45251 0 25%,#f9d48b 25% 50%,#c45251 50% 75%,#f9d48b 75%);
+ box-shadow:0 0 0 5px #553348,7px 7px 0 #542e4833;
+}
+.theme-solar-atelier .library .storylens-hero .hero-orb::after{
+ content:'';position:absolute;inset:26px;border-radius:50%;
+ background:#fff1cb;border:5px solid #4c3048;
+}
+.theme-solar-atelier .library .storylens-hero .hero-orb-core{display:none}
+.theme-solar-atelier .library .hero-continue{
+ background:#542f48;color:#fff8e8;border:2px solid #542f48;border-radius:2px;
+}
+.theme-solar-atelier .library .shelf{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,335px),1fr));gap:20px;
+}
+.theme-solar-atelier .library .shelf .card{
+ display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;
+ padding:13px;min-height:198px;border-radius:2px 28px 2px 2px;
+ border:2px solid #ab6b61;background:#fff7e9;
+ box-shadow:5px 5px 0 #d58e7766;animation:none;
+ content-visibility:auto;contain-intrinsic-size:auto 198px;
+}
+.theme-solar-atelier .library .shelf .card .cover{
+ width:110px;height:163px;min-height:163px;flex:initial;
+ border-radius:50% 50% 2px 2px;border:3px solid #5d3850;
+ box-shadow:none;background-position:center;
+}
+.theme-solar-atelier .library .shelf .card-content{gap:8px;min-width:0}
+.theme-solar-atelier .library .shelf .card h2{
+ color:#4d304a;font:800 21px/1.22 system-ui,sans-serif;
+}
+.theme-solar-atelier .library .shelf .card .lvl{color:#ad434b}
+.theme-solar-atelier .library .stl-discovery{
+ background:#fff4e4;border:2px solid #bc6d5a;border-radius:2px;
+}
+.theme-solar-atelier .lt-drawer{
+ background:linear-gradient(150deg,#6b3c58,#3f2b46);border-color:#f4b37b;
+}
+.theme-solar-atelier .lt-genre.selected{
+ background:#f3b77844;border-color:#f6bd8e;
+}
+.theme-solar-atelier .lt-theme-choice{background:#fff5e6;color:#482e48}
+.theme-solar-atelier .reader:not(.dark){
+ background:#fff8e9;color:#342b3c;
+}
+.theme-solar-atelier .reader.dark{background:#292438;color:#fce6d1}
+@media(max-width:600px){
+ .theme-solar-atelier .library .storylens-hero{
+  grid-template-columns:minmax(0,1fr) 74px;gap:10px;min-height:173px;padding:18px;
+ }
+ .theme-solar-atelier .library .storylens-hero .hero-orb{
+  width:69px;height:69px;border-width:6px;
+ }
+ .theme-solar-atelier .library .storylens-hero .hero-orb::after{inset:9px;border-width:2px}
+ .theme-solar-atelier .library .shelf{grid-template-columns:1fr}
+ .theme-solar-atelier .library .shelf .card{
+  grid-template-columns:90px minmax(0,1fr);min-height:166px;
+ }
+ .theme-solar-atelier .library .shelf .card .cover{
+  width:90px;height:134px;min-height:134px;
+ }
+}
