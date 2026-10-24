@@ -34,7 +34,8 @@ const api=sandbox.window.StoryLensBackup;assert.ok(api);
   saved:'Backup saved to the selected location.',
   save_failed:'Could not save the backup. Check storage space and try again.',
   import_failed:'Could not read the backup file. Check the file and try again.',
-  export_too_large:'The backup exceeds the allowed size.'
+  export_too_large:'The backup exceeds the allowed size.',
+  picker_busy:'Finish or cancel the current file picker before starting another operation.'
  };
  for(const [code,label] of Object.entries(expected)){
   assert.equal(native.nativeStatus(code),true,'recognized native status '+code);
@@ -182,6 +183,11 @@ assert.ok(kt.includes('ActivityResultContracts.CreateDocument')&&kt.includes('Ac
 assert.ok(kt.includes('addJavascriptInterface(OfflineBackupBridge(), "StoryLensNative")'));
 assert.ok(kt.includes('JSONObject.quote(data)'),'native callback escapes JSON');
 assert.ok(kt.includes('maxBackupBytes'),'files bounded');
+assert.match(kt,/private var pickerInFlight = false/,'one native SAF picker at a time');
+assert.equal((kt.match(/if \(pickerInFlight\)/g)||[]).length,2,'both import and export reject concurrent pickers');
+assert.equal((kt.match(/pickerInFlight = false/g)||[]).length,5,'both callbacks and failed launches clear picker guard');
+assert.match(kt,/pendingExport = null\s+notifyBackup\("nativeStatus", "save_failed"\)/,
+ 'failed export launch clears pending payload');
 assert.ok(css.includes('.stl-backup-confirm'),'confirmation styled');
 console.log('PASS: offline JSON schema, restore, rollback data preservation, unsafe-input rejection, native SAF bridge and styles');
 
