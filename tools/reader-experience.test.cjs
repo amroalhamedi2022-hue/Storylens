@@ -17,14 +17,14 @@ const story = {
 let originalRenderCalls = 0, accessibleSentences = 0, contextMenuHandlers = 0, scrollTarget = null;
 const sentenceDescriptions = [], readerPanels = [], translations = [];
 const sentenceAttributes = {}, headingAttributes = {}, arabicAttributes = {}, pageAttributes = {};
-let contextHandler = null;
+let contextHandler = null, keyboardHandler = null;
 const footer = {insertAdjacentElement(position, panel) {assert.equal(position, 'beforebegin'); readerPanels.push(panel.innerHTML);}};
 const sheet = {querySelector(selector) {return selector === 'footer' ? footer : null;}, appendChild(panel) {readerPanels.push(panel.innerHTML);}};
 const sentence = {
  textContent: 'First sentence.', dataset: {i: '0'},
  setAttribute(name, value) {sentenceAttributes[name] = value; if (name === 'tabindex') accessibleSentences++; if (name === 'aria-label') throw new Error('aria-label must not mask the English sentence'); if (name === 'aria-description') sentenceDescriptions.push(value);},
- addEventListener(name, handler) {if (name === 'contextmenu') {contextMenuHandlers++; contextHandler = handler;}},
- insertAdjacentElement(position, node) {assert.equal(position, 'afterend'); translations.push(node);},
+ addEventListener(name, handler) {if (name === 'contextmenu') {contextMenuHandlers++; contextHandler = handler;} if (name === 'keydown') keyboardHandler = handler;}, 
+ insertAdjacentElement(position, node) {assert.equal(position, 'afterend'); translations.push(node); this.nextElementSibling = node;}, 
  nextElementSibling: null
 };
 const document = {
@@ -38,7 +38,7 @@ const document = {
  },
  querySelectorAll(selector) {return selector === '.reader .sentence' ? [sentence] :
    selector === '.reader .inline-ar' ? [{setAttribute(k,v) {arabicAttributes[k]=v;}}] : [];},
- createElement() {return {attributes:{},setAttribute(k,v) {this.attributes[k]=v;}, textContent: '',className:''};}
+ createElement() {return {attributes:{},setAttribute(k,v) {this.attributes[k]=v;}, textContent: '',className:'', get classList(){return {contains:cls=>this.className.split(' ').includes(cls)};}, remove(){sentence.nextElementSibling=null;}};}
 };
 const state = {story, page: 'reader', chapter: 0, toolbar: true};
 const sandbox = {
@@ -81,6 +81,25 @@ contextHandler({preventDefault() {},stopImmediatePropagation() {}});
 assert.equal(translations.at(-1).textContent, 'الجملة الأولى.', 'translation content is unchanged');
 assert.equal(translations.at(-1).attributes.lang, 'ar', 'revealed translation is spoken in Arabic');
 assert.equal(translations.at(-1).attributes.dir, 'rtl', 'revealed translation keeps RTL');
+// A keyboard-focused sentence must reveal exactly the same Arabic text as
+// long-press, and Enter/Space must toggle without hijacking child controls.
+assert.equal(typeof keyboardHandler, 'function', 'keyboard handler bound to focused sentence');
+const keyEvent=(key,target=sentence)=>({key,target,prevented:false,preventDefault(){this.prevented=true;},stopImmediatePropagation(){}});
+const space=keyEvent(' ');
+keyboardHandler(space);
+assert.equal(space.prevented,true,'Space prevents page scrolling');
+assert.equal(sentence.nextElementSibling,null,'Space hides an existing translation');
+const enter=keyEvent('Enter');
+keyboardHandler(enter);
+assert.equal(translations.at(-1).textContent,'الجملة الأولى.','Enter restores exact Arabic translation');
+assert.equal(translations.at(-1).attributes.lang,'ar','keyboard translation has Arabic language tag');
+const descendant=keyEvent('Enter',{});
+keyboardHandler(descendant);
+assert.equal(descendant.prevented,false,'nested interactive word keeps its own Enter');
+assert.equal(sentence.nextElementSibling,translations.at(-1),'nested Enter does not toggle translation');
+const tab=keyEvent('Tab');
+keyboardHandler(tab);
+assert.equal(tab.prevented,false,'Tab remains available for keyboard navigation');
 sandbox.inlineTranslate();
 assert.equal(pageAttributes.lang, 'ar', 'full-page Arabic translation has Arabic language metadata');
 document.documentElement.lang = 'en';
