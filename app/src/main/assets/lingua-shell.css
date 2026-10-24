@@ -534,3 +534,72 @@ body.theme-solar-atelier{
   width:90px;height:134px;min-height:134px;
  }
 }
+
+/* LT-13 Ink Workshop: monochrome print studio, offset red stamps, asymmetric
+ * magazine covers and sharp type rules. Static CSS, no network textures. */
+body.theme-ink-workshop{
+ --body:#e9e6db;--card:#f8f6ed;--ink:#202323;--sub:#585f5b;
+ --accent:#a62e29;--reader:#f9f7ef;--reader-ink:#1e2422;
+ background:repeating-linear-gradient(90deg,transparent 0 23px,#1e262008 23px 24px),
+ linear-gradient(160deg,#f0eee6,#dedbd0);color:var(--ink)}
+.theme-ink-workshop::before,.theme-ink-workshop::after{display:none!important}
+.theme-ink-workshop .library{max-width:1240px}
+.theme-ink-workshop .library .header{
+ border-bottom:5px solid #202323;padding-bottom:16px}
+.theme-ink-workshop .library .brand{
+ color:#a62e29;letter-spacing:.3em;font-weight:900}
+.theme-ink-workshop .library .header h1{
+ font:900 clamp(28px,5vw,52px)/1 Georgia,serif;text-transform:uppercase;color:#202323}
+.theme-ink-workshop .library .storylens-hero{
+ display:grid;grid-template-columns:minmax(0,2fr) minmax(115px,1fr);
+ gap:18px;align-items:center;min-height:210px;padding:26px 32px;
+ border-radius:0;border:3px solid #202323;border-inline-start:12px solid #a62e29;
+ box-shadow:9px 9px 0 #252a2760;background:#f8f6ed;color:#202323}
+.theme-ink-workshop .library .storylens-hero h2{
+ font:900 clamp(29px,4vw,48px)/1.04 Georgia,serif;letter-spacing:-.03em;color:#1e2221}
+.theme-ink-workshop .library .storylens-hero .hero-orb{
+ position:relative;inset:auto;width:min(100%,190px);height:150px;
+ border-radius:0;opacity:1;transform:rotate(-7deg);border:5px double #a62e29;
+ background:repeating-linear-gradient(0deg,#a62e2919 0 3px,transparent 3px 12px);
+ box-shadow:4px 5px 0 #202323}
+.theme-ink-workshop .library .storylens-hero .hero-orb::after{
+ content:'LT';position:absolute;inset:0;display:grid;place-items:center;
+ font:900 64px Georgia,serif;color:#a62e29}
+.theme-ink-workshop .library .storylens-hero .hero-orb-core{display:none}
+.theme-ink-workshop .library .hero-continue{
+ border-radius:0;background:#a62e29;color:#fff;border:2px solid #202323;font-weight:800}
+.theme-ink-workshop .library .shelf{
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:19px}
+.theme-ink-workshop .library .shelf .card{
+ display:grid;grid-template-columns:105px minmax(0,1fr);gap:13px;
+ min-height:195px;padding:12px;border-radius:0;border:2px solid #202323;
+ background:#fbfaf3;box-shadow:5px 5px 0 #20232335;animation:none}
+.theme-ink-workshop .library .shelf .card .cover{
+ flex:initial;width:105px;height:100%;min-height:170px;border-radius:0}
+.theme-ink-workshop .library .shelf .card-content{padding:3px 0;min-width:0;gap:6px}
+.theme-ink-workshop .library .shelf .card h2{
+ font:800 clamp(18px,2vw,22px)/1.2 Georgia,serif;color:#202323}
+.theme-ink-workshop .library .secondary,.theme-ink-workshop .library .pill{
+ border-radius:0;background:#f6f3e9;color:#202323;border:2px solid #202323}
+.theme-ink-workshop .library .stl-discovery{
+ border-radius:0;background:#f9f6eb;border:2px solid #202323}
+.theme-ink-workshop .lt-drawer{
+ background:linear-gradient(155deg,#252a28,#171a1a);border-color:#c44c42}
+.theme-ink-workshop .lt-genre.selected{
+ border-color:#f3a39a;background:#a62e2955}
+.theme-ink-workshop .lt-theme-choice{background:#f8f6ed;color:#202323;border-radius:0}
+.theme-ink-workshop .reader:not(.dark){
+ background:#f9f7ef;color:#1e2422;font-family:Georgia,serif}
+.theme-ink-workshop .reader:not(.dark) .reading-width{
+ border-inline-start:3px solid #a62e2950;padding-inline-start:clamp(10px,2vw,25px)}
+.lt-theme-ink-workshop .lt-theme-swatch{
+ background:linear-gradient(90deg,#252a28 0 48%,#a62e29 48% 61%,#f6f3e9 61%)}
+@media(max-width:600px){
+ .theme-ink-workshop .library .storylens-hero{
+  grid-template-columns:minmax(0,1fr) 75px;padding:16px;gap:9px;box-shadow:4px 4px 0 #252a2760}
+ .theme-ink-workshop .library .storylens-hero .hero-orb{
+  width:73px;height:95px;border-width:3px}
+ .theme-ink-workshop .library .storylens-hero .hero-orb::after{font-size:29px}
+ .theme-ink-workshop .library .shelf .card{grid-template-columns:84px minmax(0,1fr)}
+ .theme-ink-workshop .library .shelf .card .cover{width:84px;min-height:148px}
+}
