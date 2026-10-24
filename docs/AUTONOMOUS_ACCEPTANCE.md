@@ -274,3 +274,10 @@ A plan or screenshot is **not** proof of implementation, and not every small hou
 - **FAIL:** 0 in the completed source/static gate. **NOT TESTED:** full Node suite, Android Kotlin compilation, SAF picker on device, backup round-trip, upgrade and performance. No APK or workflow run; zero PR-triggered runs reported for the test commit. User-approved icon and other product gates remain incomplete.
 
 AUTOMATION_COMPLETE: IN_PROGRESS
+
+## 2026-10-24 — LT-13 Botanical Folio editorial theme (source milestone)
+- **Production:** `app/src/main/assets/lingua-shell.js` now registers **Botanical Folio** in the persisted Settings theme gallery; `lingua-shell.css` adds a distinct static field-journal composition: sage/moss palette, pressed-leaf hero, specimen-cover card geometry, botanical drawer, matte reading surface and responsive tablet/phone layout. No network images, downloaded fonts, continuous animation or new permissions.
+- **PASS (production JS):** executed the latest GitHub `lingua-shell.js` inside V8 with mocked DOM; **12 checks** covered theme registration, applying/persisting the selection, replacing the previous body class, rejecting invalid themes, and six required CSS surfaces. A committed Node regression `tools/botanical-theme.test.cjs` exercises the actual production JS and stylesheet.
+- **NOT TESTED:** committed Node suite as a complete repository checkout, Android CSS rendering, contrast screenshots, RTL/LTR visual comparison, reduced-motion, memory/FPS and real Pad 5 launcher. A static/CSS/V8 test is not device or visual acceptance.
+- **Gate:** LT-13 implementation for this theme **PASS (source)** / **NOT TESTED (device)**; all remaining LT-01..LT-13 gates stay open until evidenced. Do not count one new theme as full app completion.
+- **Commit checkpoint:** `31da47b49dcdec2791a499ed932dc1e95da1b369` (source + CSS + regression, PR #1 only). No APK/Actions build, no merge/main write.
