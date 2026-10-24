@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <!-- Liquid-glass halo; the book/petals remain inside the adaptive safe zone. -->
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.12"
+        android:pathData="M54,19 C73.33,19 89,34.67 89,54 C89,73.33 73.33,89 54,89 C34.67,89 19,73.33 19,54 C19,34.67 34.67,19 54,19 Z"/>
+    <path android:fillColor="#BEEBFF" android:fillAlpha="0.40"
+        android:pathData="M25,57 C34,43 44,42 54,48 C64,42 74,43 83,57 L83,80 C72,74 62,76 54,82 C46,76 36,74 25,80 Z"/>
+    <!-- Three petals / language sparks above the open book. -->
+    <path android:fillColor="#FFE3F3"
+        android:pathData="M54,43 C45,35 45,26 54,21 C63,26 63,35 54,43 Z"/>
+    <path android:fillColor="#FFC0DE"
+        android:pathData="M51,45 C39,45 34,37 36,30 C45,29 51,35 51,45 Z"/>
+    <path android:fillColor="#B5E9FF"
+        android:pathData="M57,45 C69,45 74,37 72,30 C63,29 57,35 57,45 Z"/>
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.78"
+        android:pathData="M53,42 C52,38 52,32 54,28 C56,32 56,38 55,42 Z"/>
+    <!-- Open pages, independent of the original StoryLens placeholder icon. -->
+    <path android:fillColor="#FFF3FE"
+        android:pathData="M28,49 Q41,43 53,51 L53,76 Q41,69 28,75 Z"/>
+    <path android:fillColor="#D5EFFF"
+        android:pathData="M80,49 Q67,43 55,51 L55,76 Q67,69 80,75 Z"/>
+    <path android:fillColor="#8A72DB" android:fillAlpha="0.70"
+        android:pathData="M30,52 Q42,48 50,53 L50,56 Q42,52 30,56 Z M58,53 Q66,48 78,52 L78,56 Q66,52 58,56 Z"/>
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.50"
+        android:pathData="M30,61 Q42,57 50,62 L50,64 Q42,60 30,64 Z M58,62 Q66,57 78,61 L78,64 Q66,60 58,64 Z"/>
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="2"
+        android:strokeAlpha="0.85" android:fillColor="#00000000"
+        android:pathData="M54,50 L54,78"/>
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="1.5"
+        android:strokeAlpha="0.55" android:fillColor="#00000000"
+        android:pathData="M28,49 Q41,43 53,51 M55,51 Q67,43 80,49"/>
+</vector>
