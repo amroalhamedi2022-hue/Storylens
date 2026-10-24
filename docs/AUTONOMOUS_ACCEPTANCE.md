@@ -307,3 +307,10 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **FAIL:** none in 53 executed V8 assertions. **NOT TESTED:** full Node test suite, Android packaging, TalkBack/RTL screenshots, physical Xiaomi Pad 5 UI/FPS/RAM, real upgrade, entire LT-01..LT-13 acceptance, final APK and SHA-256.
 - **Purposeful build question (authorized 2026-10-24):** do the new script and theme survive full native Node/Android CI, and does AAPT2 package the launcher/resources? Source-only V8 cannot answer Gradle compilation, APK asset packaging or integration with the real WebView. A single targeted CI run is justified for this milestone, **not a final release or device PASS**. Workflow and exact run/artifact must be recorded only if actually observed.
 - **Scope:** draft Storylens PR #1 only; no `main`, no auto-merge, no paid API, no Library/Handoff. **IN_PROGRESS.**
+
+
+### Targeted Android CI evidence for bilingual/Solar Atelier milestone
+- **PASS (GitHub Actions):** source SHA `5b399aa8dc090c759d1b8c09b1e2669e715f4e4b`, run **40126808076**, `push` event on Storylens PR #1 head only. URL: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40126808076 .
+- **Verified job logs:** actual Node `locale-journeys.test.cjs` and `solar-atelier.test.cjs` PASS; Gradle `:app:testDebugUnitTest :app:assembleDebug` **BUILD SUCCESSFUL (29s)**; AAPT2 adaptive icon and critical offline assets including `lingua-i18n.js` packaged; desktop Chrome reader/word/chapter/bookmark/translation/theme flow PASS.
+- **Real artifacts:** debug APK ZIP artifact **12573722602** (`StoryLens-Debug-APK`); browser screenshots artifact **12573652714** (`StoryLens-UI-Screenshots`). These are *CI debug artifacts*, not final release. APK inner-file SHA-256 **NOT TESTED** (not printed by this workflow). CI did not install it on Xiaomi Pad 5.
+- **NOT TESTED:** real Android install/upgrade, physical Pad 5 bilingual UX/animations, performance/thermal, TalkBack, 100% offline field verification and all remaining LT acceptance. No claim of final app. **IN_PROGRESS**.
