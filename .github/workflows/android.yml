@@ -63,6 +63,7 @@ jobs:
         run: |
           APK="$(find app/build/outputs/apk/debug -type f -name '*.apk' | head -1)"
           test -n "$APK"
+          sha256sum "$APK" | tee app/build/outputs/apk/debug/APK_SHA256.txt
           for file in index.html lexicon-extra.js liquid-aurora.css reader-experience.js reader-experience.css editorial-stories-a.js editorial-stories-b.js editorial-stories-c.js editorial-art.js library-experience.js library-experience.css data-backup.js data-backup.css lingua-shell.js lingua-shell.css lingua-i18n.js freedict-en-ar.js LICENSE_FREEDICT.txt; do
             unzip -Z1 "$APK" | grep -Fqx "assets/$file" || { echo "MISSING assets/$file"; exit 1; }
           done
@@ -103,5 +104,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: StoryLens-Debug-APK
-          path: app/build/outputs/apk/debug/*.apk
+          path: |
+            app/build/outputs/apk/debug/*.apk
+            app/build/outputs/apk/debug/APK_SHA256.txt
           if-no-files-found: error
