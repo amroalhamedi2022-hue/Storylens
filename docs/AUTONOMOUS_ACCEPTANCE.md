@@ -1,5 +1,13 @@
 # StoryLens — Autonomous acceptance evidence
 
+## 2026-10-24 — Backup quota-safe rollback and malformed card-field rejection (source-only)
+- **Production commit:** `58a9f540e45eb26d82f7d72202ec6d7e2e1f0a5b`; **regression commit:** `fd395a46e8127bd5f1fa67ac224a4a4eb3d95f0b` on draft PR #1; `main` unchanged.
+- **Fix:** On a storage-quota failure during import, rollback now restores smaller previous values and removes newly created keys before restoring larger old values. This avoids losing previously saved words when a forward-order rollback itself exceeds quota. If rollback cannot finish, the user receives an explicit data-safety warning. Optional saved-card fields now reject numeric/boolean values while retaining absent/null/string compatibility.
+- **PASS:** Actual modified production JavaScript parsed and executed in V8 against a byte-limited localStorage mock. Import failed on the third write, all three original values were restored, and a malformed numeric card meaning was rejected. Regression assertions were committed to `tools/data-backup.test.cjs` and its syntax parsed.
+- **NOT TESTED:** Full Node test suite, committed regression script under Node, Android SAF quota behavior, physical device, APK, performance and offline acceptance. No APK or GitHub Actions dispatched.
+- **Outstanding:** Approved icon source not available in this run; do not invent replacement. LT-01..LT-13 and device gates remain IN_PROGRESS.
+
+
 ## 2026-10-24 — Reader accessibility: preserve spoken story text (source-only)
 - **Production SHA:** `b90e164678903dc98153b94c22c7a15afea5b067`; **regression SHA:** `9234fd21681fb8e9d43aacc2dd696b868b0ea891` (draft PR #1; `main` untouched).
 - **Fix:** Replaced generic per-sentence `aria-label` with `aria-description` in `reader-experience.js`. An `aria-label` masks the actual English sentence for screen readers; the optional instructions now accompany, rather than replace, the source story text. Arabic translations remain unchanged.
