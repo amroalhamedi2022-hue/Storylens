@@ -391,3 +391,9 @@ assert.ok(nativeBack.indexOf('window.LinguaShell.closeDrawer();') <
  nativeBack.indexOf('if (page == "\\\"library\\\"") finish()'),
  'drawer close must precede activity finish');
 console.log('PASS: LT-01 launcher/backup naming, package continuity and LT-09 native drawer Back contract (source; device NOT TESTED)');
+
+// User product invariant: Lingua Tales has no audio/TTS/microphone feature.
+// Settings must not advertise unsupported optional audio in either locale.
+assert.doesNotMatch(shellJs,/optional audio|الأصوات الاختيارية/i,
+ 'settings must not promise audio or speech features');
+console.log('PASS: bilingual settings do not promise forbidden audio features');
