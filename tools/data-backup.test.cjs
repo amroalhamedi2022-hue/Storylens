@@ -251,3 +251,25 @@ console.log('PASS: offline JSON schema, restore, rollback data preservation, uns
   'bad follow-up import is rejected without restoring stale data');
 }
 console.log('PASS: LT-06 bilingual backup UI and immediate restored locale/fonts');
+
+
+// Vocabulary text maps must be strings, never nested JSON from a corrupt
+// archive. The same gate applies to export so data is not silently dropped.
+{
+ const backupMap=(name,value)=>JSON.stringify({format:'storylens.backup',version:1,
+  entries:{['storylens_'+name]:JSON.stringify(value)}});
+ assert.doesNotThrow(()=>api.parseBackup(backupMap('written_examples',{'break the ice':'He broke the ice.'})));
+ assert.doesNotThrow(()=>api.parseBackup(backupMap('wordSenses',{'book\\u001f1\\u001fword':'كلمة'})));
+ for(const invalid of [{term:{nested:'not text'}},{term:23},{term:null}])
+  assert.throws(()=>api.parseBackup(backupMap('written_examples',invalid)),/نوع/);
+ for(const invalid of [{term:['not text']},{term:false},{term:null}])
+  assert.throws(()=>api.parseBackup(backupMap('wordSenses',invalid)),/نوع/);
+ assert.throws(()=>api.parseBackup(backupMap('written_examples',{['x'.repeat(501)]:'text'})),/نوع/);
+ assert.throws(()=>api.parseBackup(backupMap('wordSenses',{term:'x'.repeat(5001)})),/نوع/);
+ const old=storage.getItem('storylens_written_examples');
+ storage.setItem('storylens_written_examples',JSON.stringify({term:{nested:'bad'}}));
+ assert.throws(()=>api.exportObject(),/storylens_written_examples/);
+ if(old===null)storage.removeItem('storylens_written_examples');
+ else storage.setItem('storylens_written_examples',old);
+}
+console.log('PASS: vocabulary example/sense map validation on import and export');
