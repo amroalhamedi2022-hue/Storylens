@@ -13,7 +13,13 @@ const chapterKey=()=> 'chapter_'+state.story.id;
 const bookmarkKey=()=> 'bookmarks';
 const snapshot=()=>state.story&&state.page==='reader'&&put('scroll_'+state.story.id+'_'+state.chapter,window.scrollY);
 const storyById=id=>catalog.stories.find(s=>s.id===id);
-const chapterIndex=s=>Math.max(0,Math.min(s.chapters.length-1,Number(get('chapter_'+s.id,0))||0));
+const chapterIndex=s=>{
+ const value=Number(get('chapter_'+s.id,0));
+ // Imported/legacy progress can contain fractions, NaN or nonnumeric strings.
+ // Never use such values to index chapters or calculate progress percentages.
+ return Number.isInteger(value)&&Number.isFinite(value)
+  ?Math.max(0,Math.min(s.chapters.length-1,value)):0;
+};
 const escapeText=value=>esc(value);
 // Interface strings follow the UI locale; story English and translations remain untouched.
 const uiText=(ar,en)=>document.documentElement.lang==='en'?en:ar;
@@ -180,7 +186,11 @@ window.stlChapter=function(i){
  // Run the currently installed reader pipeline (accessibility, bookmarks and preferences).
  // Calling the captured base renderer here skips every later enhancement wrapper.
  renderReader();
- window.scrollTo(0,get('scroll_'+state.story.id+'_'+state.chapter,0));
+ const savedScroll=get('scroll_'+state.story.id+'_'+state.chapter,0);
+ // Treat imported scroll offsets as untrusted, just like bookmark offsets.
+ const safeScroll=typeof savedScroll==='number'&&Number.isFinite(savedScroll)
+  ?Math.max(0,Math.min(savedScroll,10000000)):0;
+ window.scrollTo(0,safeScroll);
 };
 theme=function(){snapshot();originalTheme()};
 inlineTranslate=function(){snapshot();originalInlineTranslate()};
