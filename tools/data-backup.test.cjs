@@ -307,3 +307,23 @@ console.log('PASS: vocabulary example/sense map validation on import and export'
  else storage.setItem('storylens_cards',old);
 }
 console.log('PASS: SRS review-card backup schema and legacy compatibility');
+
+
+// Android SAF regression: an escaped "\\n" inside a // comment once swallowed
+// the receiveImport call. Matching the method name alone missed this outage.
+{
+ const callbackStart=kt.indexOf('private val importDocument');
+ const callbackEnd=kt.indexOf('private inner class OfflineBackupBridge',callbackStart);
+ assert.ok(callbackStart>=0&&callbackEnd>callbackStart,'import callback exists');
+ const callback=kt.slice(callbackStart,callbackEnd);
+ const active=callback.split(/\r?\n/).filter(line=>
+  /^\s*notifyBackup\("receiveImport", BackupUtf8\.decode\(bytes\.toByteArray\(\)\)\)\s*$/.test(line));
+ assert.equal(active.length,1,'exactly one executable strict-UTF8 import delivery');
+ assert.ok(callback.indexOf('input.use { stream ->')<callback.indexOf(active[0]),
+  'file read completes before import delivery');
+ assert.ok(callback.indexOf(active[0])<callback.indexOf('} catch (ex: Exception)'),
+  'import delivery occurs on success, not after error handling');
+ assert.ok(!callback.includes('consent.\\n            notifyBackup'),
+  'literal escaped newlines must never comment out the delivery');
+}
+console.log('PASS: Android SAF receiveImport callback is executable and strictly decoded');
