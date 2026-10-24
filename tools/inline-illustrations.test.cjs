@@ -9,6 +9,8 @@ const added = [];
 const chapter = {title: 'Chapter', paragraphs: [
  {en: 'A station.', ar: 'محطة.'}, {en: 'A train.', ar: 'قطار.'}, {en: 'A map.', ar: 'خريطة.'}
 ], inlineArt: [
+ // Invalid entries must not crowd out later valid editorial art.
+ ...Array.from({length: 14}, (_, i) => ({afterParagraph: i, src: 'https://example.org/blocked.png', alt: 'Blocked'})),
  {afterParagraph: 0, src: 'art/verne/station.webp', alt: 'Railway station', credit: 'CC0 illustration', position: 'edge-start'},
  {afterParagraph: 1, src: 'https://example.org/remote.png', alt: 'Remote asset'},
  {afterParagraph: 1, src: 'art/../traversal.png', alt: 'Traversal asset'},
