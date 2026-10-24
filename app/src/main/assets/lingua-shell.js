@@ -192,7 +192,7 @@ function openSettings(){
   label.appendChild(select);sheet.appendChild(label);
  }
  const note=document.createElement('p');note.className='quiet';
- note.textContent=rtl()?'ترجمة بقية عناصر الواجهة والأصوات الاختيارية قيد التطوير.':'Remaining interface translations and optional audio are in development.';
+ note.textContent=rtl()?'ترجمة بقية عناصر الواجهة قيد التطوير.':'Full localization of the remaining interface is in progress.';
  sheet.appendChild(note);
  const footer=document.createElement('footer');
  addButton(footer,rtl()?'إغلاق':'Close',()=>closeSheet(),'secondary');
