@@ -7,6 +7,23 @@
 const PREFIX='storylens_';
 const VERSION=1;
 const MAX_BYTES=1_500_000;
+// Count actual UTF-8 bytes, not JavaScript UTF-16 code units. Android SAF
+// writes UTF-8; non-ASCII vocabulary must obey the same bound end to end.
+// Unpaired surrogates are encoded as U+FFFD (three bytes), as in TextEncoder.
+function exceedsUtf8Limit(value, limit){
+ let bytes=0;
+ for(let i=0;i<value.length;i++){
+  const code=value.charCodeAt(i);
+  if(code<0x80)bytes++;
+  else if(code<0x800)bytes+=2;
+  else if(code>=0xd800&&code<=0xdbff&&i+1<value.length&&
+          value.charCodeAt(i+1)>=0xdc00&&value.charCodeAt(i+1)<=0xdfff){
+   bytes+=4;i++;
+  }else bytes+=3;
+  if(bytes>limit)return true;
+ }
+ return false;
+}
 const MAX_ENTRIES=900;
 const simple=new Set(['saved','cards','favorites','bookmarks','last_story','uiTheme','readerPrefs',
  'written_examples','discoveryLevel','discoverySort','favoritesOnly','wordSenses','dark','size',
@@ -65,11 +82,11 @@ function exportObject(){
  if(Object.keys(entries).length>MAX_ENTRIES)throw Error('عدد عناصر النسخة الاحتياطية يتجاوز الحد الآمن.');
  const payload={format:'storylens.backup',version:VERSION,createdAt:new Date().toISOString(),entries};
  const text=JSON.stringify(payload);
- if(text.length>MAX_BYTES)throw Error('حجم النسخة الاحتياطية يتجاوز الحد الآمن.');
+ if(exceedsUtf8Limit(text,MAX_BYTES))throw Error('حجم النسخة الاحتياطية يتجاوز الحد الآمن.');
  return text;
 }
 function parseBackup(input){
- if(typeof input!=='string'||input.length>MAX_BYTES)throw Error('ملف النسخة غير صالح أو كبير جدًا.');
+ if(typeof input!=='string'||exceedsUtf8Limit(input,MAX_BYTES))throw Error('ملف النسخة غير صالح أو كبير جدًا.');
  let obj;try{obj=JSON.parse(input)}catch(_){throw Error('هذا ليس ملف JSON صالحًا.');}
  if(!obj||obj.format!=='storylens.backup'||obj.version!==VERSION||
     !obj.entries||typeof obj.entries!=='object'||Array.isArray(obj.entries))throw Error('صيغة النسخة غير مدعومة.');
