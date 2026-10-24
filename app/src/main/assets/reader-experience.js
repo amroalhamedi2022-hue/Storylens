@@ -154,18 +154,25 @@ window.stlBookmark=function(){
  closeSheet();settings();
 };
 window.stlJumpBookmark=function(){
- const mark=get(bookmarkKey(),{})[state.story?.id];
- if(!mark)return;
- state.chapter=Math.max(0,Math.min(state.story.chapters.length-1,mark.chapter));
+ if(!state.story)return;
+ const mark=get(bookmarkKey(),{})[state.story.id];
+ // Backups and old local storage can contain corrupt bookmark values.
+ // Never let NaN or a non-integer chapter reach the reader renderer.
+ if(!mark||!Number.isInteger(mark.chapter)||mark.chapter<0)return;
+ const chapter=Math.min(mark.chapter,state.story.chapters.length-1);
+ if(chapter<0)return;
+ const scroll=typeof mark.scroll==='number'&&Number.isFinite(mark.scroll)
+  ?Math.max(0,Math.min(mark.scroll,10000000)):0;
+ state.chapter=chapter;
  put(chapterKey(),state.chapter);
  closeSheet();state.toolbar=false;
  // Run the currently installed reader pipeline (accessibility, bookmarks and preferences).
  // Calling the captured base renderer here skips every later enhancement wrapper.
  renderReader();
- window.scrollTo(0,mark.scroll||0);
+ window.scrollTo(0,scroll);
 };
 window.stlChapter=function(i){
- if(!state.story||i<0||i>=state.story.chapters.length)return;
+ if(!state.story||!Number.isInteger(i)||i<0||i>=state.story.chapters.length)return;
  snapshot();
  state.chapter=i;
  put(chapterKey(),state.chapter);
