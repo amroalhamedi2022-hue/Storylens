@@ -1,5 +1,13 @@
 # StoryLens — Autonomous acceptance evidence
 
+## 2026-10-24 — Concurrent Android file picker protection (source-only)
+- **Production commits:** Android SAF host `28cf730b298511ad41d33af50d712d45aecf6f87`; localized feedback `790c818f5fe0774c47c18b66230526860dc74799`; **regression commit:** `170fe16ffc8594dee0b1d0a349e94c75787e0a45` (Storylens PR #1 only).
+- **Fix:** Import/export now share one guarded Storage Access Framework picker. A second action cannot overwrite a pending backup payload; canceled or failed picker launches release the guard, and an export callback without retained bytes reports failure instead of success. Arabic and English users receive a specific busy status.
+- **PASS:** Executed the updated production `data-backup.js` in V8 with a fake DOM; validated busy/saved statuses in English and busy in Arabic. Four static assertions confirmed both picker entry guards, callback/failure cleanup and the committed test assertion (7 checks total).
+- **NOT TESTED:** Running the committed full Node suite, Kotlin Android compilation, concurrent picker behavior and lifecycle recreation on a real device, backup SAF interoperability, performance, icon, offline device, APK and SHA-256.
+- **Build policy:** All commits `[skip ci]`; no Actions build dispatched; `main` unchanged. Single final APK build deferred.
+
+
 ## 2026-10-24 — Offline WebView fail-closed routing and bilingual SAF callbacks (source-only)
 - **Production commits:** Android host `e485d01f8e86979605626987082afcb03ec49725`; JS backup UI `a3856922ef9ad2c7d4987fbe74c2ce0f5b73f5b1`. **Regression commits:** `8b14dd23c8df954fbbbc4358c7ebc92d68d79f24`, `72554e75a1fbe41ae186e3eabee3d93e32cebc13`, draft PR #1 only.
 - **Change:** WebView explicitly returns HTTP 403 for off-origin or missing APK assets rather than falling through to WebView networking; top-level navigation is limited to local `/assets/`. Android Storage Access Framework export/import reports fixed status codes rendered in the chosen Arabic/English UI language; legacy backup keys, schema, app ID and offline permission policy unchanged.
