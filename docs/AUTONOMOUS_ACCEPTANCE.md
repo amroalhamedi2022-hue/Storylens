@@ -1,5 +1,13 @@
 # StoryLens — Autonomous acceptance evidence
 
+## 2026-10-24 — UTF-8 quota rollback safety (source-only)
+- **Production SHA:** `fefafc0207970863f818086821f842b3a4e0a4b7`; **regression SHA:** `7877943cb45847c6cf9218ad8ba2d8856c4314fe`, draft PR #1; `main` untouched.
+- **Fix:** Storage-quota rollback now sorts restoration by actual UTF-8 byte deltas rather than UTF-16 JavaScript string lengths. Emoji/CJK values can reverse which restore operation frees space; incorrect ordering could previously leave saved words unrestored after a failed import.
+- **PASS:** Executed the actual modified production backup module in V8 with a UTF-8-byte-limited localStorage mock. A three-key import fails at quota and all three original keys are restored; the test covers emoji vs ASCII byte-order inversion. Added the same regression to `tools/data-backup.test.cjs`.
+- **NOT TESTED:** Running the committed full Node test suite, Android WebView/SAF quota behavior, real device backup/restore, APK, performance, full LT-01..LT-13 gates and the final approved icon. No Actions or APK build.
+- **Build policy:** All commits `[skip ci]`; 0 PR-triggered workflow runs associated with the regression SHA when checked. Final one-time APK build deferred.
+
+
 ## 2026-10-24 — LT-06 bilingual reader semantics and continuation controls (source-only)
 - **Production SHA:** `898fca0f641f2be7c2d5abcbb1d39409553971fa`; **test SHA:** `bf73cdeef7522e95cb635884acf904f4f7b0bb2c`, PR #1; `main` unchanged.
 - **Fix:** Continue-reading CTA and empty-library invitation now follow Arabic/English UI locale. English source sentences/chapter title are explicitly tagged `lang=en` / LTR even in Arabic UI. Inline, long-press and full-page Arabic learning translations carry `lang=ar`; source content, progress keys and backup format unchanged.
