@@ -323,7 +323,14 @@ document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
  if(typeof openStory!=='function'||typeof libraryBack!=='function')return;
  const baseOpen=openStory,baseBack=libraryBack;
  let closing=false,waitingPop=false,closeTimer=null,historyFallback=null;
- let returnY=0;
+ let returnY=0,returnStoryId=null,translationScroll=0;
+ const safeOffset=value=>typeof value==='number'&&Number.isFinite(value)
+  ?Math.max(0,Math.min(value,10000000)):0;
+ const focusWithoutScroll=node=>{
+  if(!node)return;
+  node.setAttribute?.('tabindex','-1');
+  if(typeof node.focus==='function')node.focus({preventScroll:true});
+ };
  const motionOff=()=>!!global.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
  const nextFrame=callback=>typeof global.requestAnimationFrame==='function'
   ?global.requestAnimationFrame(callback):callback();
@@ -336,7 +343,14 @@ document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
   closing=false;waitingPop=false;
   if(state.page!=='reader')return;
   baseBack();
-  nextFrame(()=>{if(state.page==='library')global.scrollTo(0,returnY);});
+  nextFrame(()=>{
+   if(state.page!=='library')return;
+   global.scrollTo(0,returnY);
+   // Rebuilt library cards replace their previous DOM nodes.
+   const card=Array.from(document.querySelectorAll('.library .card')).find(node=>
+    node.getAttribute?.('onclick')==="openStory('"+returnStoryId+"')");
+   focusWithoutScroll(card);
+  });
  }
  function closeReader(){
   if(closing||state.page!=='reader')return;
@@ -346,15 +360,24 @@ document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
  }
  openStory=function(id){
   if(state.page==='library'){
-   returnY=Math.max(0,global.scrollY||0);
+   returnY=safeOffset(global.scrollY);
    put('libraryScroll',returnY);
   }
   if(closeTimer!==null){global.clearTimeout(closeTimer);closeTimer=null;}
   if(historyFallback!==null){global.clearTimeout(historyFallback);historyFallback=null;}
   closing=false;waitingPop=false;
   baseOpen(id);
-  if(state.page==='reader'&&!motionOff())
-   document.querySelector('.reader')?.classList.add('lt-reader-enter');
+  if(state.page==='reader'){
+   returnStoryId=state.story?.id||id;
+   if(!motionOff())document.querySelector('.reader')?.classList.add('lt-reader-enter');
+   // Resume the saved chapter position; a fresh chapter starts at the top.
+   const saved=safeOffset(get('scroll_'+returnStoryId+'_'+state.chapter,0));
+   nextFrame(()=>{
+    if(state.page!=='reader'||state.story?.id!==returnStoryId)return;
+    focusWithoutScroll(document.querySelector('.reader h2'));
+    global.scrollTo(0,saved);
+   });
+  }
  };
  libraryBack=function(){
   if(state.page!=='reader') {baseBack();return;}
@@ -370,6 +393,23 @@ document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
    },480);
   }else closeReader();
  };
+ // Full Arabic translation is a separate page: preserve the English
+ // reader's position on toolbar Back and Android system Back.
+ if(typeof fullTranslation==='function'&&typeof backToReader==='function'){
+  const baseTranslation=fullTranslation,baseReaderReturn=backToReader;
+  fullTranslation=function(...args){
+   if(state.page==='reader'){
+    translationScroll=safeOffset(global.scrollY);
+    savePosition();
+   }
+   return baseTranslation.apply(this,args);
+  };
+  backToReader=function(...args){
+   const result=baseReaderReturn.apply(this,args);
+   nextFrame(()=>{if(state.page==='reader')global.scrollTo(0,translationScroll);});
+   return result;
+  };
+ }
  global.addEventListener?.('popstate',()=>{
   if(historyFallback!==null){global.clearTimeout(historyFallback);historyFallback=null;}
   waitingPop=false;
