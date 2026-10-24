@@ -1,5 +1,12 @@
 # StoryLens — Autonomous acceptance evidence
 
+## 2026-10-24 — Strict UTF-8 import for offline SAF backups (source-only)
+- **Production commits:** `afd50fd9ab12ee6bd0684bb16b2b861398cc67f2` (decoder), `eab6efc0cde9456be0491a08074a99e949d11b6f` (native wiring); **test commits:** `4817fd7ae608127aa9b5f71980dab2bd6eef4d48`, `adf61b9f2fcb5aef69e003eccc08ef1e2b929123`, `c453befa539a9a0e8d86fa106072a01bbecabdb8` (draft PR #1 only).
+- **Fix:** Android Storage Access Framework import now strictly decodes UTF-8 and rejects malformed, truncated, overlong or surrogate byte sequences instead of silently replacing invalid bytes and potentially corrupting saved words. Optional UTF-8 BOM is stripped before JSON validation. The existing import size cap and confirmation gate remain.
+- **PASS:** Compiled the exact new pure-Kotlin `BackupUtf8.kt` helper with `kotlinc` and ran 6 JVM assertions (multilingual round-trip, BOM, four malformed sequences). Fetched the committed helper, Android caller, JUnit test and Node contract test from the PR branch; five static integration assertions passed. **FAIL:** 0 in these checks.
+- **NOT TESTED:** Running committed JUnit through Android Gradle, complete Node suite, Android SAF picker and import on physical devices, final launcher icon, offline/performance tests, APK and SHA-256. Static contract checks are not Android runtime tests.
+- **Build policy:** all commits `[skip ci]`; no APK or Actions build requested, no `main` modification, no merge. Final APK remains deferred.
+
 ## 2026-10-24 — Review-card SRS backup integrity (source-only)
 - **Production commit:** `14ac316c9878ba8f7cf4892e4fcde9a6b9aba72f`; **regression commit:** `86e826c64ce1eb904c663e559371f3168bfc4a6f` (draft PR #1, no main modification).
 - **Fix:** Import/export of learning cards now checks optional SRS scheduling fields (`dueAt`, `intervalDays`, `ease`, `repetitions`, `lapses`) for finite, bounded numeric types. Rejects malformed `surface` and blank terms. Older cards with missing SRS fields remain valid. This prevents corrupted due timestamps from silently hiding scheduled reviews.
