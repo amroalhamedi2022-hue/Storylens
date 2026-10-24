@@ -2,8 +2,8 @@
  * Offline, no new permissions, no per-frame animation work. */
 (function(global){
 'use strict';
-const themeNames=['aurora','aqua','nebula','paper-atlas','midnight-library'];
-const themeLabels={aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library'};
+const themeNames=['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio'];
+const themeLabels={aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library','botanical-folio':'Botanical Folio'};
 /* LT-12: separate, offline typography preferences. System font stacks avoid
  * font downloads and extra memory. Unsupported values never reach CSS. */
 const fontChoices={ar:['sans','naskh'],en:['serif','sans']};
