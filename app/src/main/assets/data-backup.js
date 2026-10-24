@@ -157,7 +157,8 @@ const nativeStatusMessages={
  saved:['تم حفظ النسخة الاحتياطية في الموقع الذي اخترته.','Backup saved to the selected location.'],
  save_failed:['تعذّر حفظ النسخة الاحتياطية. تأكد من مساحة التخزين وأعد المحاولة.','Could not save the backup. Check storage space and try again.'],
  import_failed:['تعذّر قراءة النسخة الاحتياطية. تأكد من الملف وأعد المحاولة.','Could not read the backup file. Check the file and try again.'],
- export_too_large:['النسخة الاحتياطية أكبر من الحد المسموح.','The backup exceeds the allowed size.']
+ export_too_large:['النسخة الاحتياطية أكبر من الحد المسموح.','The backup exceeds the allowed size.'],
+ picker_busy:['أغلق نافذة اختيار الملف الحالية قبل بدء عملية أخرى.','Finish or cancel the current file picker before starting another operation.']
 };
 function showNativeStatus(code){
  const messages=nativeStatusMessages[code];
