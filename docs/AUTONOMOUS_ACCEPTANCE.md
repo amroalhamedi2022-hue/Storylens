@@ -192,3 +192,9 @@ A plan or screenshot is **not** proof of implementation, and not every small hou
 - **PASS:** parsed and executed modified production JavaScript inside V8 with a mocked reader and storage; checked invalid/fractional/oversized chapter progress, infinite and negative scroll, and valid scroll restoration. Separately verified the committed regression test parses and its source-extraction regex matches the real production helper; 4 index cases passed in V8.
 - **NOT TESTED:** full committed Node test suite, Android WebView/Pad 5, live migration, FPS, icon integration, final licensed art, full bilingual UI, independent recheck.
 - **Build:** no APK, no workflow dispatch, no merge, no paid API; existing workflows unchanged. Status: **IN_PROGRESS**.
+
+## 2026-10-24 — Fail-closed offline backup export (source-only)
+- **Production commit:** `3304cdbf93aed5f20bc062d680290c0ead122851` updates `app/src/main/assets/data-backup.js`. An allowed learning/progress key with malformed JSON or an invalid schema now stops export with the exact key identified, rather than silently disappearing from an apparently successful backup. Unrelated storage keys remain excluded. Legacy `storylens_` keys and backup format remain unchanged.
+- **Regression commit:** `693fc80b0e016a6e26656470febff82e5277230a` adds malformed cards, wrong-shaped cards and invalid chapter progress tests to `tools/data-backup.test.cjs`.
+- **PASS (production V8 smoke):** executed the actual modified JavaScript export function with mock localStorage: corrupt JSON and wrong-shaped allowed values rejected; valid data exported; unrelated key excluded.
+- **NOT TESTED:** complete Node test suite, Android/WebView storage-quota behavior, real restore/device upgrade and independent QA. No APK build, no Actions dispatch, no paid API, no main write or merge. **IN_PROGRESS.**
