@@ -168,3 +168,10 @@ A plan or screenshot is **not** proof of implementation, and not every small hou
 - **PASS:** executed the modified **actual production** `reader-experience.js` in V8 with a fake DOM: 14 rejected remote entries followed by two safe anchored illustrations both render; 20 valid illustrations render only the first 12. No original Arabic paragraph text was altered.
 - **NOT TESTED:** full Node test file execution, Android/WebView layout, image asset licensing and editorial review, physical-device scroll/memory, accessibility and independent recheck. No final licensed art has been supplied by this patch. **No APK build requested**; commits use `[skip ci]`.
 - **Status:** LT-08 remains PARTIAL / IN_PROGRESS; approved text-bearing launcher icon and full LT-01..13 acceptance remain pending.
+
+
+## 2026-10-24 — Corrupt bookmark navigation hardening (source-only)
+- **Production commit:** `97e95b8aa4d6816e978f4069cbdb6172566b2683` in `reader-experience.js`. Restoring an old/imported bookmark now rejects non-integer, NaN and negative chapter indices; clamps chapters removed by content updates; sanitizes non-finite/negative scroll offsets. Direct chapter navigation rejects non-integers. Existing numeric bookmarks remain supported.
+- **Regression commit:** `313a5425e0b9d78cd34c40731ae26ef1419e8fe1` adds `tools/bookmark-navigation.test.cjs` with invalid/valid chapter and scroll cases.
+- **PASS:** executed the **actual modified production JS** from the PR in a V8 harness: four bookmark restoration scenarios (invalid chapter, infinite scroll, out-of-range chapter/negative scroll, valid chapter/scroll). Production file blob SHA `8cae8d93557cb8c5e003ce8b8d342d64d125a642`.
+- **NOT TESTED:** Node test file through the full repository runner, Android browser/Pad 5, upgrade migration, device gestures, icon and media. No APK or Actions run intentionally triggered. Existing CI workflow remains unchanged. Status: **IN_PROGRESS**.
