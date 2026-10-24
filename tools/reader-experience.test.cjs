@@ -93,6 +93,25 @@ const enter=keyEvent('Enter');
 keyboardHandler(enter);
 assert.equal(translations.at(-1).textContent,'الجملة الأولى.','Enter restores exact Arabic translation');
 assert.equal(translations.at(-1).attributes.lang,'ar','keyboard translation has Arabic language tag');
+// Theme/font re-renders replace the reader DOM. A revealed Arabic sentence
+// must be reconstructed from the original chapter, without storing it on disk.
+sentence.nextElementSibling=null;
+const beforeRestore=translations.length;
+sandbox.renderReader();
+assert.equal(translations.length,beforeRestore+1,'revealed sentence survives reader rerender');
+assert.equal(sentence.nextElementSibling.textContent,'الجملة الأولى.','restored translation is exact source Arabic');
+keyboardHandler(keyEvent(' '));
+assert.equal(sentence.nextElementSibling,null,'user can explicitly hide restored translation');
+sandbox.renderReader();
+assert.equal(sentence.nextElementSibling,null,'hidden sentence stays hidden after rerender');
+keyboardHandler(keyEvent('Enter'));
+sentence.nextElementSibling=null;
+sandbox.window.stlChapter(1);
+assert.equal(sentence.nextElementSibling,null,'chapter two does not inherit chapter one reveal');
+sentence.nextElementSibling=null;
+sandbox.window.stlChapter(0);
+assert.equal(sentence.nextElementSibling.textContent,'الجملة الأولى.','returning to chapter restores only its own reveal');
+
 const descendant=keyEvent('Enter',{});
 keyboardHandler(descendant);
 assert.equal(descendant.prevented,false,'nested interactive word keeps its own Enter');
