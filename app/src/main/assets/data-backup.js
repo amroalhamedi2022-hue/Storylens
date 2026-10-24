@@ -52,10 +52,20 @@ function validValue(key,val){
   return Array.isArray(val)&&val.length<=5000&&val.every(x=>typeof x==='string'&&x.length<=180);
  }
  if(tail==='cards'){
+  // Malformed SRS timestamps silently hide due reviews; nonnumeric counters
+  // can also corrupt the next review calculation. Older cards may omit fields.
+  const optionalNumber=(x,key,min,max)=>x[key]===undefined||
+   (typeof x[key]==='number'&&Number.isFinite(x[key])&&x[key]>=min&&x[key]<=max);
+  const optionalCount=(x,key)=>x[key]===undefined||
+   (Number.isSafeInteger(x[key])&&x[key]>=0&&x[key]<=100000);
   return Array.isArray(val)&&val.length<=5000&&val.every(x=>x&&typeof x==='object'&&
-   typeof x.term==='string'&&x.term.length<=180&&
-   ['sentence','translation','meaning'].every(k=>x[k]===undefined||x[k]===null||
-    (typeof x[k]==='string'&&x[k].length<5000)));
+   typeof x.term==='string'&&x.term.trim().length>0&&x.term.length<=180&&
+   ['sentence','translation','meaning','surface'].every(k=>x[k]===undefined||x[k]===null||
+    (typeof x[k]==='string'&&x[k].length<5000))&&
+   optionalNumber(x,'dueAt',0,7258118400000)&&
+   optionalNumber(x,'intervalDays',0,36500)&&
+   optionalNumber(x,'ease',0,10)&&
+   optionalCount(x,'repetitions')&&optionalCount(x,'lapses'));
  }
  if(tail==='last_story')return typeof val==='string'&&val.length<=100;
  if(tail==='uiTheme')return ['aurora','aqua','nebula','paper-atlas','midnight-library'].includes(val);
