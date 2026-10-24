@@ -42,8 +42,8 @@ library=function(){
   '<h2>Lose yourself in a good story.</h2>'+
   '<p>قصص ناضجة، أسرار تستحق الاكتشاف، وإنجليزي تتعلمه من الأحداث نفسها.</p>'+
   '<div class="hero-metrics"><span>'+catalog.stories.length+' STORIES</span><span>'+catalog.genres.length+' GENRES</span><span>100% OFFLINE</span></div>'+
-  (last?'<button class="hero-continue" type="button" onclick="openStory(\''+escapeText(last.id)+'\')">تابع: '+escapeText(last.title)+' · '+(chapter+1)+' / '+last.chapters.length+' ←</button>':
-   '<div class="hero-invitation">اختر عالمك التالي من المكتبة بالأسفل ↓</div>')+'</div>'+
+  (last?'<button class="hero-continue" type="button" onclick="openStory(\''+escapeText(last.id)+'\')">'+uiText('تابع: ','Continue: ')+escapeText(last.title)+' · '+(chapter+1)+' / '+last.chapters.length+uiText(' ←',' →')+'</button>':
+   '<div class="hero-invitation">'+uiText('اختر عالمك التالي من المكتبة بالأسفل ↓','Choose a story from the library below ↓')+'</div>')+'</div>'+
   '<div class="hero-orb" aria-hidden="true"><div class="hero-orb-core"></div></div>';
  const filters=section.querySelector('.filters');
  section.insertBefore(hero,section.querySelector('.search-label'));
@@ -73,6 +73,9 @@ library=function(){
 renderReader=function(){
  originalReader();
  if(!state.story || state.page!=='reader')return;
+ // UI language must not change pronunciation of English source paragraphs.
+ document.querySelector('.reader h2')?.setAttribute('lang','en');
+ document.querySelectorAll('.reader .inline-ar').forEach(node=>node.setAttribute('lang','ar'));
  put('has_read_'+state.story.id,true);
  // LT-08: render only editorially approved, packaged images anchored to a
  // specific paragraph. No remote URLs, HTML injection, or network fallback.
@@ -118,6 +121,8 @@ renderReader=function(){
  }
  document.querySelectorAll('.reader .sentence').forEach(p=>{
   p.setAttribute('tabindex','0');
+  p.setAttribute('lang','en');
+  p.setAttribute('dir','ltr');
   // Preserve the actual English sentence for screen readers: aria-label would
   // replace the sentence with generic instructions and hide its learning text.
   p.setAttribute('aria-description',uiText('انقر كلمة لمعناها، أو اضغط مطولًا لعرض الترجمة.','Tap a word for its meaning, or long-press for Arabic translation.'));
@@ -132,6 +137,7 @@ renderReader=function(){
    const translation=document.createElement('p');
    translation.className='stl-sentence-translation';
    translation.setAttribute('dir','rtl');
+   translation.setAttribute('lang','ar');
    translation.textContent=source.ar;
    p.insertAdjacentElement('afterend',translation);
   },true);
@@ -195,6 +201,6 @@ window.stlChapter=function(i){
  window.scrollTo(0,safeScroll);
 };
 theme=function(){snapshot();originalTheme()};
-inlineTranslate=function(){snapshot();originalInlineTranslate()};
+inlineTranslate=function(){snapshot();originalInlineTranslate();document.querySelector('.arabic-page')?.setAttribute('lang','ar');};
 library(); // Re-render once after installing enhancements.
 })();
