@@ -61,9 +61,9 @@ window.stlChapter('1');
 window.stlChapter(NaN);
 assert.equal(sandbox.state.chapter, 0, 'invalid chapter navigation is ignored');
 // Imported chapter progress must never yield fractional or non-finite indexes.
-const indexSource = js.match(/const chapterIndex=s=>\\{[\\s\\S]*?\\n\\};/);
+const indexSource = js.match(/const chapterIndex=s=>\{[\s\S]*?\n\};/);
 assert.ok(indexSource, 'reader chapter-index implementation is present');
-const readIndex = () => vm.runInNewContext(indexSource[0] + '\\nchapterIndex(story)', {
+const readIndex = () => vm.runInNewContext(indexSource[0] + '\nchapterIndex(story)', {
  story, get: (key, fallback) => Object.prototype.hasOwnProperty.call(saved, key) ? saved[key] : fallback,
  Number, Math
 });
