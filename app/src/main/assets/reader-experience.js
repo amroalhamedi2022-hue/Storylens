@@ -11,6 +11,18 @@ const originalTheme=theme;
 const originalInlineTranslate=inlineTranslate;
 const chapterKey=()=> 'chapter_'+state.story.id;
 const bookmarkKey=()=> 'bookmarks';
+// Keep reader-only sentence reveals through theme/font/locale re-renders and
+// chapter navigation. Do not write per-tap state to synchronous localStorage;
+// reveals are ephemeral and never modify the English or Arabic book content.
+const revealedByChapter=new Map();
+const revealKey=()=>state.story.id+'\u0000'+state.chapter;
+function revealSet(key){
+ if(!revealedByChapter.has(key)){
+  if(revealedByChapter.size>=40)revealedByChapter.delete(revealedByChapter.keys().next().value);
+  revealedByChapter.set(key,new Set());
+ }
+ return revealedByChapter.get(key);
+}
 const snapshot=()=>state.story&&state.page==='reader'&&put('scroll_'+state.story.id+'_'+state.chapter,window.scrollY);
 const storyById=id=>catalog.stories.find(s=>s.id===id);
 const chapterIndex=s=>{
@@ -130,20 +142,33 @@ renderReader=function(){
   // Preserve the actual English sentence for screen readers: aria-label would
   // replace the sentence with generic instructions and hide its learning text.
   p.setAttribute('aria-description',uiText('انقر كلمة لمعناها، أو اضغط مطولًا أو اضغط Enter أو Space لعرض الترجمة.','Tap a word for its meaning, or long-press, Enter or Space for Arabic translation.'));
-  const toggleSentenceTranslation=event=>{
-   event.preventDefault();
-   event.stopImmediatePropagation();
-   const i=Number(p.dataset.i);
-   const source=state.story.chapters[state.chapter]?.paragraphs?.[i];
-   if(!source)return;
-   const old=p.nextElementSibling;
-   if(old?.classList?.contains('stl-sentence-translation')){old.remove();return}
+  const sentenceIndex=Number(p.dataset.i);
+  const source=state.story.chapters[state.chapter]?.paragraphs?.[sentenceIndex];
+  const key=revealKey();
+  const showTranslation=()=>{
+   if(!source||p.nextElementSibling?.classList?.contains('stl-sentence-translation'))return;
    const translation=document.createElement('p');
    translation.className='stl-sentence-translation';
    translation.setAttribute('dir','rtl');
    translation.setAttribute('lang','ar');
    translation.textContent=source.ar;
    p.insertAdjacentElement('afterend',translation);
+  };
+  const toggleSentenceTranslation=event=>{
+   event.preventDefault();
+   event.stopImmediatePropagation();
+   if(!source)return;
+   const old=p.nextElementSibling;
+   if(old?.classList?.contains('stl-sentence-translation')){
+    old.remove();
+    revealedByChapter.get(key)?.delete(sentenceIndex);
+    return;
+   }
+   // Prevent unbounded retained sentence state on very large imported books.
+   const shown=revealSet(key);
+   if(shown.size>=200)shown.delete(shown.values().next().value);
+   shown.add(sentenceIndex);
+   showTranslation();
   };
   p.addEventListener('contextmenu',toggleSentenceTranslation,true);
   // A focusable sentence must also be operable without a mouse or long-press.
@@ -152,6 +177,7 @@ renderReader=function(){
    if(event.target!==p||(event.key!=='Enter'&&event.key!==' '))return;
    toggleSentenceTranslation(event);
   });
+  if(revealedByChapter.get(key)?.has(sentenceIndex))showTranslation();
  });
 };
 settings=function(){
