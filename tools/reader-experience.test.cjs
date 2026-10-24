@@ -15,23 +15,30 @@ const story = {
  ]
 };
 let originalRenderCalls = 0, accessibleSentences = 0, contextMenuHandlers = 0, scrollTarget = null;
-const sentenceDescriptions = [], readerPanels = [];
+const sentenceDescriptions = [], readerPanels = [], translations = [];
+const sentenceAttributes = {}, headingAttributes = {}, arabicAttributes = {}, pageAttributes = {};
+let contextHandler = null;
 const footer = {insertAdjacentElement(position, panel) {assert.equal(position, 'beforebegin'); readerPanels.push(panel.innerHTML);}};
 const sheet = {querySelector(selector) {return selector === 'footer' ? footer : null;}, appendChild(panel) {readerPanels.push(panel.innerHTML);}};
 const sentence = {
  textContent: 'First sentence.', dataset: {i: '0'},
- setAttribute(name, value) {if (name === 'tabindex') accessibleSentences++; if (name === 'aria-label') throw new Error('aria-label must not mask the English sentence'); if (name === 'aria-description') sentenceDescriptions.push(value);},
- addEventListener(name) {if (name === 'contextmenu') contextMenuHandlers++;}
+ setAttribute(name, value) {sentenceAttributes[name] = value; if (name === 'tabindex') accessibleSentences++; if (name === 'aria-label') throw new Error('aria-label must not mask the English sentence'); if (name === 'aria-description') sentenceDescriptions.push(value);},
+ addEventListener(name, handler) {if (name === 'contextmenu') {contextMenuHandlers++; contextHandler = handler;}},
+ insertAdjacentElement(position, node) {assert.equal(position, 'afterend'); translations.push(node);},
+ nextElementSibling: null
 };
 const document = {
  documentElement: {lang: 'ar'},
  querySelector(selector) {
   if (selector === '#modals .sheet') return sheet;
   if (selector === '.reader-label') return {appendChild() {}};
+  if (selector === '.reader h2') return {setAttribute(k,v) {headingAttributes[k]=v;}};
+  if (selector === '.arabic-page') return {setAttribute(k,v) {pageAttributes[k]=v;}};
   return null; // No library view while testing reader navigation.
  },
- querySelectorAll(selector) {return selector === '.reader .sentence' ? [sentence] : [];},
- createElement() {return {setAttribute() {}, textContent: ''};}
+ querySelectorAll(selector) {return selector === '.reader .sentence' ? [sentence] :
+   selector === '.reader .inline-ar' ? [{setAttribute(k,v) {arabicAttributes[k]=v;}}] : [];},
+ createElement() {return {attributes:{},setAttribute(k,v) {this.attributes[k]=v;}, textContent: '',className:''};}
 };
 const state = {story, page: 'reader', chapter: 0, toolbar: true};
 const sandbox = {
@@ -49,6 +56,10 @@ sandbox.window.stlChapter(1);
 assert.equal(state.chapter, 1, 'chapter picker changes chapter');
 assert.equal(originalRenderCalls, 1, 'base renderer runs once');
 assert.equal(accessibleSentences, 1, 'enhanced reader sets sentence keyboard focus');
+assert.equal(sentenceAttributes.lang, 'en', 'English story language independent of Arabic interface');
+assert.equal(sentenceAttributes.dir, 'ltr', 'English story keeps LTR direction');
+assert.equal(headingAttributes.lang, 'en', 'chapter title has English language metadata');
+assert.equal(arabicAttributes.lang, 'ar', 'inline learning translation has Arabic language metadata');
 assert.equal(contextMenuHandlers, 1, 'enhanced reader rebinds translation context menu');
 assert.equal(sentence.textContent, 'First sentence.', 'spoken English story text remains present');
 assert.equal(store.get('has_read_book-one'), true, 'chapter navigation persists reading progress');
@@ -66,6 +77,12 @@ assert.equal(contextMenuHandlers, 2, 'bookmark keeps translation interaction');
 assert.equal(store.get('has_read_book-one'), true, 'bookmark re-establishes reading progress');
 assert.deepEqual(scrollTarget, [0, 88], 'bookmark restores scroll position');
 assert.ok(sentenceDescriptions.at(-1).includes('انقر كلمة'), 'Arabic reader instructions are available without hiding English story text');
+contextHandler({preventDefault() {},stopImmediatePropagation() {}});
+assert.equal(translations.at(-1).textContent, 'الجملة الأولى.', 'translation content is unchanged');
+assert.equal(translations.at(-1).attributes.lang, 'ar', 'revealed translation is spoken in Arabic');
+assert.equal(translations.at(-1).attributes.dir, 'rtl', 'revealed translation keeps RTL');
+sandbox.inlineTranslate();
+assert.equal(pageAttributes.lang, 'ar', 'full-page Arabic translation has Arabic language metadata');
 document.documentElement.lang = 'en';
 sandbox.renderReader();
 assert.ok(sentenceDescriptions.at(-1).includes('Tap a word'), 'English reader instructions are translated without masking story text');
@@ -78,4 +95,6 @@ document.documentElement.lang = 'ar';
 sandbox.settings();
 assert.match(readerPanels.at(-1), /أدوات القراءة/, 'reader panel restores Arabic without losing state');
 assert.equal(story.chapters[0].paragraphs[0].ar, 'الجملة الأولى.', 'learning translation remains Arabic');
-console.log('PASS: chapter and bookmark navigation preserve enhanced reader accessibility, translation and progress');
+assert.match(js, /Continue: /, 'English continue-reading CTA is localized');
+assert.match(js, /Choose a story from the library below/, 'English empty-state invitation is localized');
+console.log('PASS: chapter/bookmark navigation, bilingual CTAs, explicit English/Arabic reader language and translations');
