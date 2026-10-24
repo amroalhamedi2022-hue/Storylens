@@ -61,6 +61,18 @@ assert.throws(()=>api.parseBackup('{"format":"no","version":1,"entries":{}}'),/�
 assert.throws(()=>api.parseBackup(JSON.stringify({format:'storylens.backup',version:1,entries:{'evil':'"x"'}})),/مفتاح/);
 assert.throws(()=>api.parseBackup(JSON.stringify({format:'storylens.backup',version:1,entries:{'storylens_saved':'"invalid type"'}})),/نوع/);
 assert.throws(()=>api.parseBackup(JSON.stringify({format:'storylens.backup',version:1,entries:{'storylens_chapter_demo':'-1'}})),/نوع/);
+// Native SAF writes UTF-8 bytes, not JS UTF-16 characters. A multibyte
+// archive must never pass export only to fail in Android's file bridge.
+{
+ const previous=storage.getItem('storylens_cards');
+ const cjkCards=Array.from({length:120},(_,i)=>({term:'term-'+i,meaning:'漢'.repeat(4500)}));
+ storage.setItem('storylens_cards',JSON.stringify(cjkCards));
+ assert.throws(()=>api.exportObject(),/حجم النسخة/,'oversized UTF-8 export rejected');
+ storage.setItem('storylens_cards',previous);
+ assert.throws(()=>api.parseBackup('漢'.repeat(520_000)),/كبير/,'oversized UTF-8 import rejected before JSON parse');
+ const arabicBackup=api.exportObject();
+ assert.ok(api.parseBackup(arabicBackup).storylens_cards,'valid Arabic backup still roundtrips');
+}
 assert.ok(html.includes('src="data-backup.js"')&&html.includes('href="data-backup.css"'));
 assert.ok(kt.includes('ActivityResultContracts.CreateDocument')&&kt.includes('ActivityResultContracts.OpenDocument'));
 assert.ok(kt.includes('addJavascriptInterface(OfflineBackupBridge(), "StoryLensNative")'));
