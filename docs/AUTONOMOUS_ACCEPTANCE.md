@@ -1,5 +1,12 @@
 # StoryLens — Autonomous acceptance evidence
 
+## 2026-10-24 — LT-06 bilingual reader semantics and continuation controls (source-only)
+- **Production SHA:** `898fca0f641f2be7c2d5abcbb1d39409553971fa`; **test SHA:** `bf73cdeef7522e95cb635884acf904f4f7b0bb2c`, PR #1; `main` unchanged.
+- **Fix:** Continue-reading CTA and empty-library invitation now follow Arabic/English UI locale. English source sentences/chapter title are explicitly tagged `lang=en` / LTR even in Arabic UI. Inline, long-press and full-page Arabic learning translations carry `lang=ar`; source content, progress keys and backup format unchanged.
+- **PASS:** Executed the committed reader regression script against committed production JS inside a V8 CommonJS/VM compatibility harness (chapter/bookmark navigation, English/Arabic content-language attributes, long-press translation, interface controls). Also executed the production library wrapper with mocked DOM in Arabic and English; localized continue CTA and English empty-state invitation PASS.
+- **NOT TESTED:** Native Node regression suite, complete i18n audit, Android WebView/TalkBack pronunciation, physical device, APK, launch/exit animation performance, final icon and LT-01..LT-13 end-to-end acceptance.
+- **Build gate:** source-only `[skip ci]` commits; no APK build or Actions dispatch. Exact approved icon with text still unavailable as repository asset; do not substitute an invented design.
+
 ## 2026-10-24 — Backup quota-safe rollback and malformed card-field rejection (source-only)
 - **Production commit:** `58a9f540e45eb26d82f7d72202ec6d7e2e1f0a5b`; **regression commit:** `fd395a46e8127bd5f1fa67ac224a4a4eb3d95f0b` on draft PR #1; `main` unchanged.
 - **Fix:** On a storage-quota failure during import, rollback now restores smaller previous values and removes newly created keys before restoring larger old values. This avoids losing previously saved words when a forward-order rollback itself exceeds quota. If rollback cannot finish, the user receives an explicit data-safety warning. Optional saved-card fields now reject numeric/boolean values while retaining absent/null/string compatibility.
