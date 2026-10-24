@@ -1,5 +1,13 @@
 # StoryLens — Autonomous acceptance evidence
 
+## 2026-10-24 — Review-card SRS backup integrity (source-only)
+- **Production commit:** `14ac316c9878ba8f7cf4892e4fcde9a6b9aba72f`; **regression commit:** `86e826c64ce1eb904c663e559371f3168bfc4a6f` (draft PR #1, no main modification).
+- **Fix:** Import/export of learning cards now checks optional SRS scheduling fields (`dueAt`, `intervalDays`, `ease`, `repetitions`, `lapses`) for finite, bounded numeric types. Rejects malformed `surface` and blank terms. Older cards with missing SRS fields remain valid. This prevents corrupted due timestamps from silently hiding scheduled reviews.
+- **PASS:** 9 checks against modified production JavaScript in V8, covering legacy/current cards and seven invalid inputs. Added matching Node regression cases to `tools/data-backup.test.cjs`.
+- **FAIL:** 0 in the 9 executed isolated checks. **NOT TESTED:** executing the complete Node test file, full source test suite, Android Gradle/lint, on-device backup/restore and SRS scheduling, approved launcher icon, performance, offline field testing, final APK and SHA-256.
+- **Build policy:** commits include `[skip ci]`; no APK or workflow build requested. Final build deferred until requirements complete.
+
+
 ## 2026-10-24 — Concurrent Android file picker protection (source-only)
 - **Production commits:** Android SAF host `28cf730b298511ad41d33af50d712d45aecf6f87`; localized feedback `790c818f5fe0774c47c18b66230526860dc74799`; **regression commit:** `170fe16ffc8594dee0b1d0a349e94c75787e0a45` (Storylens PR #1 only).
 - **Fix:** Import/export now share one guarded Storage Access Framework picker. A second action cannot overwrite a pending backup payload; canceled or failed picker launches release the guard, and an export callback without retained bytes reports failure instead of success. Arabic and English users receive a specific busy status.
