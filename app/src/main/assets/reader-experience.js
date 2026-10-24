@@ -25,7 +25,11 @@ const escapeText=value=>esc(value);
 const uiText=(ar,en)=>document.documentElement.lang==='en'?en:ar;
 
 openStory=function(id){
- if(!storyById(id)) return;
+ const story=storyById(id);
+ if(!story)return;
+ // A damaged/old backup must not make the base reader index an absent chapter.
+ // Keep the original progress key and clamp before invoking the base renderer.
+ put('chapter_'+id,chapterIndex(story));
  put('last_story',id);
  originalOpenStory(id);
 };
