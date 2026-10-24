@@ -273,3 +273,30 @@ console.log('PASS: LT-06 bilingual backup UI and immediate restored locale/fonts
  else storage.setItem('storylens_written_examples',old);
 }
 console.log('PASS: vocabulary example/sense map validation on import and export');
+
+
+// SRS scheduling fields are optional for old archives, but when present must
+// be finite numbers. Otherwise an imported card may never appear in Due Today.
+{
+ const pack=cards=>JSON.stringify({format:'storylens.backup',version:1,
+  entries:{storylens_cards:JSON.stringify(cards)}});
+ const valid={term:'fracture',surface:'fractures',dueAt:0,intervalDays:2,
+  ease:2.5,repetitions:1,lapses:0};
+ assert.doesNotThrow(()=>api.parseBackup(pack([valid])));
+ assert.doesNotThrow(()=>api.parseBackup(pack([{term:'legacy',meaning:'كسر'}])),
+  'old cards without SRS fields remain importable');
+ for(const card of [
+  {...valid,dueAt:'tomorrow'}, {...valid,dueAt:-1},
+  {...valid,intervalDays:'2'}, {...valid,ease:null},
+  {...valid,repetitions:1.5}, {...valid,lapses:-1},
+  {...valid,surface:42}, {...valid,term:'   '}
+ ])assert.throws(()=>api.parseBackup(pack([card])),/نوع/,
+  'corrupt SRS metadata cannot silently suppress due reviews');
+ const old=storage.getItem('storylens_cards');
+ storage.setItem('storylens_cards',JSON.stringify([{term:'fracture',dueAt:'never'}]));
+ assert.throws(()=>api.exportObject(),/storylens_cards/,
+  'corrupt local review schedule cannot silently enter exported backup');
+ if(old===null)storage.removeItem('storylens_cards');
+ else storage.setItem('storylens_cards',old);
+}
+console.log('PASS: SRS review-card backup schema and legacy compatibility');
