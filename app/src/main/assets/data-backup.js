@@ -43,7 +43,8 @@ function validValue(key,val){
  if(tail==='cards'){
   return Array.isArray(val)&&val.length<=5000&&val.every(x=>x&&typeof x==='object'&&
    typeof x.term==='string'&&x.term.length<=180&&
-   ['sentence','translation','meaning'].every(k=>!x[k]||typeof x[k]==='string'&&x[k].length<5000));
+   ['sentence','translation','meaning'].every(k=>x[k]===undefined||x[k]===null||
+    (typeof x[k]==='string'&&x[k].length<5000)));
  }
  if(tail==='last_story')return typeof val==='string'&&val.length<=100;
  if(tail==='uiTheme')return ['aurora','aqua','nebula','paper-atlas','midnight-library'].includes(val);
@@ -121,10 +122,23 @@ function restore(entries){
  for(const name of names)previous.set(name,localStorage.getItem(name));
  try {for(const name of names)localStorage.setItem(name,entries[name]);}
  catch(error){
-  for(const [name,raw] of previous){
-   try{if(raw===null)localStorage.removeItem(name);else localStorage.setItem(name,raw);}catch(_){}
+  // Revert changes that FREE space before those that need space. Restoring
+  // large old values first can itself fail under quota while newer imported
+  // values still occupy storage; silently swallowing that loses progress.
+  const rollback=[...previous].map(([name,raw])=>{
+   const current=localStorage.getItem(name);
+   return {name,raw,delta:(raw===null?0:raw.length)-(current===null?0:current.length)};
+  }).sort((a,b)=>a.delta-b.delta);
+  let rollbackComplete=true;
+  for(const {name,raw} of rollback){
+   try{
+    if(raw===null)localStorage.removeItem(name);else localStorage.setItem(name,raw);
+    if(localStorage.getItem(name)!==raw)rollbackComplete=false;
+   }catch(_){rollbackComplete=false;}
   }
-  throw new Error('تعذّر الحفظ؛ قد تكون مساحة التخزين ممتلئة.');
+  throw new Error(rollbackComplete?
+   'تعذّر الحفظ؛ لم تتغير بياناتك السابقة. قد تكون مساحة التخزين ممتلئة.':
+   'تعذّر الحفظ واسترجاع بعض البيانات السابقة؛ لا تغلق التطبيق قبل حفظ نسخة من بياناتك.');
  }
  return names.length;
 }
