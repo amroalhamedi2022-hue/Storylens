@@ -30,13 +30,18 @@ import androidx.webkit.WebViewAssetLoader
 class MainActivity : ComponentActivity() {
     private lateinit var reader: WebView
     private var pendingExport: String? = null
+    // Only one Storage Access Framework picker may own an import/export result.
+    // A second tap must never replace the bytes of an export already in flight.
+    private var pickerInFlight = false
     private val maxBackupBytes = 3_000_000
 
     private val exportDocument = registerForActivityResult(
         ActivityResultContracts.CreateDocument("application/json")
     ) { uri: Uri? ->
+        pickerInFlight = false
         val text = pendingExport
         pendingExport = null
+        if (uri != null && text == null) notifyBackup("nativeStatus", "save_failed")
         if (uri != null && text != null) {
             try {
                 val output = contentResolver.openOutputStream(uri)
@@ -52,6 +57,7 @@ class MainActivity : ComponentActivity() {
     private val importDocument = registerForActivityResult(
         ActivityResultContracts.OpenDocument()
     ) { uri: Uri? ->
+        pickerInFlight = false
         if (uri == null) return@registerForActivityResult
         try {
             val input = contentResolver.openInputStream(uri)
@@ -82,15 +88,36 @@ class MainActivity : ComponentActivity() {
                 return
             }
             runOnUiThread {
+                if (pickerInFlight) {
+                    notifyBackup("nativeStatus", "picker_busy")
+                    return@runOnUiThread
+                }
+                pickerInFlight = true
                 pendingExport = json
-                exportDocument.launch("LinguaTales-backup.json")
+                try {
+                    exportDocument.launch("LinguaTales-backup.json")
+                } catch (_: Exception) {
+                    pickerInFlight = false
+                    pendingExport = null
+                    notifyBackup("nativeStatus", "save_failed")
+                }
             }
         }
 
         @JavascriptInterface
         fun openBackup() {
             runOnUiThread {
-                importDocument.launch(arrayOf("application/json", "text/plain", "application/octet-stream"))
+                if (pickerInFlight) {
+                    notifyBackup("nativeStatus", "picker_busy")
+                    return@runOnUiThread
+                }
+                pickerInFlight = true
+                try {
+                    importDocument.launch(arrayOf("application/json", "text/plain", "application/octet-stream"))
+                } catch (_: Exception) {
+                    pickerInFlight = false
+                    notifyBackup("nativeStatus", "import_failed")
+                }
             }
         }
     }
