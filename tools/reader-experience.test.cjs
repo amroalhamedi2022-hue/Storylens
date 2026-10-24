@@ -15,12 +15,12 @@ const story = {
  ]
 };
 let originalRenderCalls = 0, accessibleSentences = 0, contextMenuHandlers = 0, scrollTarget = null;
-const sentenceLabels = [], readerPanels = [];
+const sentenceDescriptions = [], readerPanels = [];
 const footer = {insertAdjacentElement(position, panel) {assert.equal(position, 'beforebegin'); readerPanels.push(panel.innerHTML);}};
 const sheet = {querySelector(selector) {return selector === 'footer' ? footer : null;}, appendChild(panel) {readerPanels.push(panel.innerHTML);}};
 const sentence = {
- dataset: {i: '0'},
- setAttribute(name, value) {if (name === 'tabindex') accessibleSentences++; if (name === 'aria-label') sentenceLabels.push(value);},
+ textContent: 'First sentence.', dataset: {i: '0'},
+ setAttribute(name, value) {if (name === 'tabindex') accessibleSentences++; if (name === 'aria-label') throw new Error('aria-label must not mask the English sentence'); if (name === 'aria-description') sentenceDescriptions.push(value);},
  addEventListener(name) {if (name === 'contextmenu') contextMenuHandlers++;}
 };
 const document = {
@@ -50,6 +50,7 @@ assert.equal(state.chapter, 1, 'chapter picker changes chapter');
 assert.equal(originalRenderCalls, 1, 'base renderer runs once');
 assert.equal(accessibleSentences, 1, 'enhanced reader sets sentence keyboard focus');
 assert.equal(contextMenuHandlers, 1, 'enhanced reader rebinds translation context menu');
+assert.equal(sentence.textContent, 'First sentence.', 'spoken English story text remains present');
 assert.equal(store.get('has_read_book-one'), true, 'chapter navigation persists reading progress');
 assert.equal(store.get('scroll_book-one_0'), 175, 'prior chapter scroll is saved');
 assert.equal(store.get('chapter_book-one'), 1, 'selected chapter is saved');
@@ -64,10 +65,10 @@ assert.equal(accessibleSentences, 2, 'bookmark keeps accessibility annotations')
 assert.equal(contextMenuHandlers, 2, 'bookmark keeps translation interaction');
 assert.equal(store.get('has_read_book-one'), true, 'bookmark re-establishes reading progress');
 assert.deepEqual(scrollTarget, [0, 88], 'bookmark restores scroll position');
-assert.ok(sentenceLabels.at(-1).includes('الجملة الإنجليزية'), 'Arabic reader controls remain accessible');
+assert.ok(sentenceDescriptions.at(-1).includes('انقر كلمة'), 'Arabic reader instructions are available without hiding English story text');
 document.documentElement.lang = 'en';
 sandbox.renderReader();
-assert.ok(sentenceLabels.at(-1).includes('English sentence'), 'English reader accessibility labels are translated');
+assert.ok(sentenceDescriptions.at(-1).includes('Tap a word'), 'English reader instructions are translated without masking story text');
 sandbox.settings();
 assert.match(readerPanels.at(-1), /Reading tools/, 'reader navigation panel uses English');
 assert.match(readerPanels.at(-1), /Save bookmark/, 'bookmark action uses English');
