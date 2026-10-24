@@ -52,6 +52,7 @@ jobs:
           node tools/editorial-c.test.cjs
           node tools/assets.test.cjs
           node tools/library-experience.test.cjs
+          node tools/bookmark-navigation.test.cjs
           node tools/reader-experience.test.cjs
           node tools/story-transitions.test.cjs
           node tools/data-backup.test.cjs
