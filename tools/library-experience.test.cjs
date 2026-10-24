@@ -326,11 +326,13 @@ function navigationScenario(reduced=false){
  const reader={classList:{add(k){calls.readerClasses.push(k);}}};
  const modal={childElementCount:0};
  const document={querySelector:sel=>sel==='.reader'?reader:null,
+  querySelectorAll:()=>[],
   getElementById:id=>id==='modals'?modal:null};
  const sandbox={window,document,state,
   openStory(id){if(id!==story.id)return;calls.open++;state.story=story;state.page='reader';window.scrollY=120;history.pushState({page:'reader'});},
   libraryBack(){calls.back++;state.page='library';window.scrollTo(0,0);},
   backToReader(){state.page='reader';},closeSheet(){modal.childElementCount=0;},
+  get(key,fallback){return calls.saved.has(key)?calls.saved.get(key):fallback;},
   put(key,value){calls.saved.set(key,value);},console};
  vm.runInNewContext(navSource,sandbox,{filename:'LT-02 navigation',timeout:5000});
  const flush=()=>{for(const [id,item] of [...callbacks]){callbacks.delete(id);item.fn();}};

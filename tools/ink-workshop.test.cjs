@@ -30,4 +30,6 @@ const fragment=css.slice(css.indexOf('/* LT-13 Ink Workshop:'));
 assert.ok(!/https?:\/\//.test(fragment),'offline assets only');
 assert.ok(!/\banimation\s*:\s*[^;]*infinite/i.test(fragment),'no infinite animations');
 assert.ok(fragment.includes('grid-template-columns:105px minmax(0,1fr)'),'unique magazine card geometry');
+const backup=fs.readFileSync(path.join(root,'app/src/main/assets/data-backup.js'),'utf8');
+assert.ok(backup.includes("'ink-workshop'"),'backup accepts new theme without losing preferences');
 console.log('PASS Ink Workshop: distinct layout, reader, drawer, persistence, offline safety');

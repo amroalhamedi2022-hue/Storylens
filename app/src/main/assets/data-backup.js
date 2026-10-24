@@ -68,7 +68,7 @@ function validValue(key,val){
    optionalCount(x,'repetitions')&&optionalCount(x,'lapses'));
  }
  if(tail==='last_story')return typeof val==='string'&&val.length<=100;
- if(tail==='uiTheme')return ['aurora','aqua','nebula','paper-atlas','midnight-library'].includes(val);
+ if(tail==='uiTheme')return ['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop'].includes(val);
  if(tail==='fontArabic')return ['sans','naskh'].includes(val);
  if(tail==='fontEnglish')return ['serif','sans'].includes(val);
  if(tail==='uiLocale')return ['ar','en'].includes(val);
