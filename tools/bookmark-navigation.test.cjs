@@ -60,4 +60,28 @@ sandbox.state.chapter = 0;
 window.stlChapter('1');
 window.stlChapter(NaN);
 assert.equal(sandbox.state.chapter, 0, 'invalid chapter navigation is ignored');
+// Imported chapter progress must never yield fractional or non-finite indexes.
+const indexSource = js.match(/const chapterIndex=s=>\\{[\\s\\S]*?\\n\\};/);
+assert.ok(indexSource, 'reader chapter-index implementation is present');
+const readIndex = () => vm.runInNewContext(indexSource[0] + '\\nchapterIndex(story)', {
+ story, get: (key, fallback) => Object.prototype.hasOwnProperty.call(saved, key) ? saved[key] : fallback,
+ Number, Math
+});
+saved.chapter_book = 1.5;
+assert.equal(readIndex(), 0, 'fractional chapter progress is rejected');
+saved.chapter_book = Infinity;
+assert.equal(readIndex(), 0, 'non-finite chapter progress is rejected');
+saved.chapter_book = 12;
+assert.equal(readIndex(), 1, 'removed chapter progress clamps to last chapter');
+saved.chapter_book = 1;
+assert.equal(readIndex(), 1, 'valid chapter progress is retained');
+saved.scroll_book_1 = Infinity;
+window.stlChapter(1);
+assert.equal(scrolls.at(-1)[1], 0, 'infinite saved chapter scroll resets');
+saved.scroll_book_0 = -25;
+window.stlChapter(0);
+assert.equal(scrolls.at(-1)[1], 0, 'negative saved chapter scroll resets');
+saved.scroll_book_1 = 64;
+window.stlChapter(1);
+assert.equal(scrolls.at(-1)[1], 64, 'valid saved chapter scroll restores');
 console.log('PASS: corrupt bookmark and chapter navigation guards');
