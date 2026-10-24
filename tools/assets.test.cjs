@@ -18,6 +18,15 @@ for(const asset of unique){
 const activity=fs.readFileSync(path.join(root,'app/src/main/java/com/storylens/reader/MainActivity.kt'),'utf8');
 assert.match(activity,/WebViewAssetLoader\.Builder\(\)/,'real offline https asset loader used');
 assert.match(activity,/shouldInterceptRequest\(/,'external assets resolved from APK, not network');
+
+// Offline means an explicit deny for non-APK requests, not a null response
+// that lets WebView try the network if permissions ever change.
+assert.match(activity,/val bundled = url\.scheme == "https"/);
+assert.match(activity,/url\.path\.orEmpty\(\)\.startsWith\("\/assets\/"\)/);
+assert.match(activity,/return local \?: WebResourceResponse\(/);
+assert.match(activity,/403, "Forbidden"/);
+assert.match(activity,/!uri\.path\.orEmpty\(\)\.startsWith\("\/assets\/"\)/);
+
 assert.match(activity,/reader\.loadUrl\("https:\/\/appassets\.androidplatform\.net\/assets\/index\.html"\)/);
 const manifest=fs.readFileSync(path.join(root,'app/src/main/AndroidManifest.xml'),'utf8');
 assert.ok(!manifest.includes('android.permission.RECORD_AUDIO'),'no microphone permission');
