@@ -1,5 +1,13 @@
 # StoryLens — Autonomous acceptance evidence
 
+## 2026-10-24 — Offline WebView fail-closed routing and bilingual SAF callbacks (source-only)
+- **Production commits:** Android host `e485d01f8e86979605626987082afcb03ec49725`; JS backup UI `a3856922ef9ad2c7d4987fbe74c2ce0f5b73f5b1`. **Regression commits:** `8b14dd23c8df954fbbbc4358c7ebc92d68d79f24`, `72554e75a1fbe41ae186e3eabee3d93e32cebc13`, draft PR #1 only.
+- **Change:** WebView explicitly returns HTTP 403 for off-origin or missing APK assets rather than falling through to WebView networking; top-level navigation is limited to local `/assets/`. Android Storage Access Framework export/import reports fixed status codes rendered in the chosen Arabic/English UI language; legacy backup keys, schema, app ID and offline permission policy unchanged.
+- **PASS:** Ran production `data-backup.js` in V8 with mocked storage/DOM and checked four English statuses, Arabic success, and unknown-code rejection (6 cases). Production JS and both committed Node test files parsed in V8; static assertions verify native status dispatch and fail-closed asset routing. No Android runtime implied.
+- **NOT TESTED:** Native Node execution of full regression scripts, Android/Kotlin compilation, SAF save/import on real device, WebView request interception behavior on Pad 5, physical offline test, approved icon, LT-01..LT-13 full gates, APK, SHA-256 and performance.
+- **Build policy:** All commits `[skip ci]`; no GitHub Actions build dispatched, no APK generated, `main` untouched. Final single APK build remains deferred.
+
+
 ## 2026-10-24 — UTF-8 quota rollback safety (source-only)
 - **Production SHA:** `fefafc0207970863f818086821f842b3a4e0a4b7`; **regression SHA:** `7877943cb45847c6cf9218ad8ba2d8856c4314fe`, draft PR #1; `main` untouched.
 - **Fix:** Storage-quota rollback now sorts restoration by actual UTF-8 byte deltas rather than UTF-16 JavaScript string lengths. Emoji/CJK values can reverse which restore operation frees space; incorrect ordering could previously leave saved words unrestored after a failed import.
