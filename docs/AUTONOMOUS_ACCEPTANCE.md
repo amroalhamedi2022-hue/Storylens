@@ -1,5 +1,14 @@
 # StoryLens — Autonomous acceptance evidence
 
+## 2026-10-24 — Reader accessibility: preserve spoken story text (source-only)
+- **Production SHA:** `b90e164678903dc98153b94c22c7a15afea5b067`; **regression SHA:** `9234fd21681fb8e9d43aacc2dd696b868b0ea891` (draft PR #1; `main` untouched).
+- **Fix:** Replaced generic per-sentence `aria-label` with `aria-description` in `reader-experience.js`. An `aria-label` masks the actual English sentence for screen readers; the optional instructions now accompany, rather than replace, the source story text. Arabic translations remain unchanged.
+- **PASS:** Executed the committed reader, bookmark-navigation and inline-illustration regression scripts in a V8 CommonJS/VM compatibility harness using the actual committed production source (3 scripts). Production JavaScript and regression script syntax parsed successfully.
+- **NOT TESTED:** Native Node.js execution of the full suite, Android TalkBack behavior, Android packaging/installation, actual sentence pronunciation by screen reader, performance and offline device QA. V8 compatibility is not a device accessibility test.
+- **CI policy:** `[skip ci]` commits; 0 PR workflow runs reported for regression SHA when checked. No APK created or Actions build dispatched.
+- **Open:** LT-01..LT-13 remain incomplete; user-approved icon asset is not yet integrated. No Library/Handoff access.
+
+
 AUTOMATION_COMPLETE: IN_PROGRESS
 
 ## 2026-10-24 — Backup consistency and bilingual control hardening (source-only)
