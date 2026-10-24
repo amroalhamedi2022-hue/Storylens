@@ -125,8 +125,8 @@ renderReader=function(){
   p.setAttribute('dir','ltr');
   // Preserve the actual English sentence for screen readers: aria-label would
   // replace the sentence with generic instructions and hide its learning text.
-  p.setAttribute('aria-description',uiText('انقر كلمة لمعناها، أو اضغط مطولًا لعرض الترجمة.','Tap a word for its meaning, or long-press for Arabic translation.'));
-  p.addEventListener('contextmenu',event=>{
+  p.setAttribute('aria-description',uiText('انقر كلمة لمعناها، أو اضغط مطولًا أو اضغط Enter أو Space لعرض الترجمة.','Tap a word for its meaning, or long-press, Enter or Space for Arabic translation.'));
+  const toggleSentenceTranslation=event=>{
    event.preventDefault();
    event.stopImmediatePropagation();
    const i=Number(p.dataset.i);
@@ -140,7 +140,14 @@ renderReader=function(){
    translation.setAttribute('lang','ar');
    translation.textContent=source.ar;
    p.insertAdjacentElement('afterend',translation);
-  },true);
+  };
+  p.addEventListener('contextmenu',toggleSentenceTranslation,true);
+  // A focusable sentence must also be operable without a mouse or long-press.
+  // Do not hijack key events from interactive descendants such as word buttons.
+  p.addEventListener('keydown',event=>{
+   if(event.target!==p||(event.key!=='Enter'&&event.key!==' '))return;
+   toggleSentenceTranslation(event);
+  });
  });
 };
 settings=function(){
