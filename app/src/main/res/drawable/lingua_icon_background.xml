@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <!-- Local gradient, no bitmap or network dependency. Launcher mask clips it. -->
+    <gradient android:angle="45" android:startColor="#242058"
+        android:centerColor="#6D4CD2" android:endColor="#EE82B5"/>
+</shape>
