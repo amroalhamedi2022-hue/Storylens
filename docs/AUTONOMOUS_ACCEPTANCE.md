@@ -161,3 +161,10 @@ A plan or screenshot is **not** proof of implementation, and not every small hou
 - **Source/test SHA:** production `5b2095b601d409c040a7721c5eb13e1792419433`, CSS `c57d96bab84a98f422f54003da1fd7bf836f23e1`, regression `9439ef0f191ced5601b465b928fae926cdd1ce69`.
 - **PASS:** executed actual committed reader JavaScript in V8 with simulated DOM: 2 valid images placed at expected anchors; rejected remote/traversal/duplicate; checked alt and lazy loading. **NOT TESTED:** committed Node test on Node, Android renderer, accessibility screen reader, image crop/contrast and offline loading from a packaged real illustration.
 - **LT-08 PARTIAL ONLY:** this is the renderer and safety contract; **no approved, licensed, scene-matched art files have been bundled**. No new LT-13 theme claimed for this narrowly scoped infrastructure batch. The original user-approved text-inclusive launcher icon is still **NOT INTEGRATED**. No interim APK or Actions build.
+
+## 2026-10-24 — LT-08 safe inline-art budget (source-only)
+- **Production SHA:** `02f0bb74d8bfcff284f1850c9b6dd5075dbd3b02`; **regression SHA:** `902c838da7a6285c935a99e4d96453d8db00dbd3` on draft PR #1.
+- **Fix:** invalid/remote/traversal/unlabeled illustration entries no longer consume the 12-valid-image budget. Reader scans at most 64 candidates to avoid unbounded work from a malformed catalog; duplicates remain excluded and local-path/alt allowlist is preserved.
+- **PASS:** executed the modified **actual production** `reader-experience.js` in V8 with a fake DOM: 14 rejected remote entries followed by two safe anchored illustrations both render; 20 valid illustrations render only the first 12. No original Arabic paragraph text was altered.
+- **NOT TESTED:** full Node test file execution, Android/WebView layout, image asset licensing and editorial review, physical-device scroll/memory, accessibility and independent recheck. No final licensed art has been supplied by this patch. **No APK build requested**; commits use `[skip ci]`.
+- **Status:** LT-08 remains PARTIAL / IN_PROGRESS; approved text-bearing launcher icon and full LT-01..13 acceptance remain pending.
