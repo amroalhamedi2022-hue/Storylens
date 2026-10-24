@@ -10,7 +10,7 @@ const MAX_BYTES=1_500_000;
 // Count actual UTF-8 bytes, not JavaScript UTF-16 code units. Android SAF
 // writes UTF-8; non-ASCII vocabulary must obey the same bound end to end.
 // Unpaired surrogates are encoded as U+FFFD (three bytes), as in TextEncoder.
-function exceedsUtf8Limit(value, limit){
+function utf8ByteLength(value, limit=Infinity){
  let bytes=0;
  for(let i=0;i<value.length;i++){
   const code=value.charCodeAt(i);
@@ -20,9 +20,12 @@ function exceedsUtf8Limit(value, limit){
           value.charCodeAt(i+1)>=0xdc00&&value.charCodeAt(i+1)<=0xdfff){
    bytes+=4;i++;
   }else bytes+=3;
-  if(bytes>limit)return true;
+  if(bytes>limit)return bytes;
  }
- return false;
+ return bytes;
+}
+function exceedsUtf8Limit(value, limit){
+ return utf8ByteLength(value,limit)>limit;
 }
 const MAX_ENTRIES=900;
 const simple=new Set(['saved','cards','favorites','bookmarks','last_story','uiTheme','readerPrefs',
@@ -125,9 +128,10 @@ function restore(entries){
   // Revert changes that FREE space before those that need space. Restoring
   // large old values first can itself fail under quota while newer imported
   // values still occupy storage; silently swallowing that loses progress.
+  // Storage quota counts UTF-8 bytes, not JavaScript string code units.
   const rollback=[...previous].map(([name,raw])=>{
    const current=localStorage.getItem(name);
-   return {name,raw,delta:(raw===null?0:raw.length)-(current===null?0:current.length)};
+   return {name,raw,delta:(raw===null?0:utf8ByteLength(raw))-(current===null?0:utf8ByteLength(current))};
   }).sort((a,b)=>a.delta-b.delta);
   let rollbackComplete=true;
   for(const {name,raw} of rollback){
