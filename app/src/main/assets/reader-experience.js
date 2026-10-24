@@ -68,6 +68,35 @@ renderReader=function(){
  originalReader();
  if(!state.story || state.page!=='reader')return;
  put('has_read_'+state.story.id,true);
+ // LT-08: render only editorially approved, packaged images anchored to a
+ // specific paragraph. No remote URLs, HTML injection, or network fallback.
+ // An absent inlineArt catalog does nothing to existing books.
+ const chapter=state.story.chapters[state.chapter];
+ const art=Array.isArray(chapter?.inlineArt)?chapter.inlineArt:[];
+ const sentences=Array.from(document.querySelectorAll('.reader .sentence'));
+ const usedAnchors=new Set();
+ const safeArtPath=/^art\/[a-z0-9_-]+(?:\/[a-z0-9_-]+)*\.(?:webp|png|jpe?g)$/i;
+ for(const item of art.slice(0,12)){
+  if(!item||!Number.isInteger(item.afterParagraph)||item.afterParagraph<0||
+     usedAnchors.has(item.afterParagraph)||!safeArtPath.test(item.src||'')||
+     typeof item.alt!=='string'||!item.alt.trim()||item.alt.length>240)continue;
+  const anchor=sentences.find(node=>Number(node.dataset.i)===item.afterParagraph);
+  if(!anchor||typeof anchor.insertAdjacentElement!=='function')continue;
+  const position=['wide','edge-start','edge-end'].includes(item.position)?item.position:'wide';
+  const figure=document.createElement('figure');
+  figure.className='lt-inline-illustration lt-inline-'+position;
+  const picture=document.createElement('img');
+  picture.src=item.src;picture.alt=item.alt.trim();
+  picture.loading='lazy';picture.decoding='async';
+  figure.appendChild(picture);
+  if(typeof item.credit==='string'&&item.credit.trim()&&item.credit.length<=160){
+   const caption=document.createElement('figcaption');
+   caption.textContent=item.credit.trim();
+   figure.appendChild(caption);
+  }
+  anchor.insertAdjacentElement('afterend',figure);
+  usedAnchors.add(item.afterParagraph);
+ }
  const marks=get(bookmarkKey(),{});
  const current=marks[state.story.id];
  const label=document.querySelector('.reader-label');
