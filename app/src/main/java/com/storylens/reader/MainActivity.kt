@@ -6,6 +6,7 @@ import android.net.Uri
 import android.webkit.JavascriptInterface
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
+import java.io.ByteArrayInputStream
 import androidx.activity.result.contract.ActivityResultContracts
 import android.os.Bundle
 import android.webkit.WebChromeClient
@@ -41,9 +42,9 @@ class MainActivity : ComponentActivity() {
                 val output = contentResolver.openOutputStream(uri)
                     ?: throw IllegalStateException("تعذّر فتح الملف للحفظ.")
                 output.use { it.write(text.toByteArray(Charsets.UTF_8)) }
-                notifyBackup("nativeError", "تم حفظ النسخة الاحتياطية في الموقع الذي اخترته.")
+                notifyBackup("nativeStatus", "saved")
             } catch (ex: Exception) {
-                notifyBackup("nativeError", "تعذّر حفظ النسخة الاحتياطية: " + (ex.message ?: "خطأ في الملفات"))
+                notifyBackup("nativeStatus", "save_failed")
             }
         }
     }
@@ -68,7 +69,7 @@ class MainActivity : ComponentActivity() {
             }
             notifyBackup("receiveImport", bytes.toString(Charsets.UTF_8.name()))
         } catch (ex: Exception) {
-            notifyBackup("nativeError", "تعذّر استيراد الملف: " + (ex.message ?: "خطأ في الملفات"))
+            notifyBackup("nativeStatus", "import_failed")
         }
     }
 
@@ -77,7 +78,7 @@ class MainActivity : ComponentActivity() {
         @JavascriptInterface
         fun saveBackup(json: String) {
             if (json.toByteArray(Charsets.UTF_8).size > maxBackupBytes) {
-                runOnUiThread { notifyBackup("nativeError", "النسخة كبيرة جدًا.") }
+                runOnUiThread { notifyBackup("nativeStatus", "export_too_large") }
                 return
             }
             runOnUiThread {
@@ -97,7 +98,7 @@ class MainActivity : ComponentActivity() {
     private fun notifyBackup(method: String, data: String) {
         if (!::reader.isInitialized) return
         // Method names are fixed, and JSONObject.quote safely escapes file content.
-        if (method != "receiveImport" && method != "nativeError") return
+        if (method != "receiveImport" && method != "nativeError" && method != "nativeStatus") return
         reader.evaluateJavascript(
             "window.StoryLensBackup && window.StoryLensBackup." + method +
                 "(" + JSONObject.quote(data) + ");", null
@@ -139,13 +140,22 @@ class MainActivity : ComponentActivity() {
             webViewClient = object : WebViewClient() {
                 override fun shouldInterceptRequest(view: WebView?, request: WebResourceRequest?): WebResourceResponse? {
                     val url = request?.url ?: return null
-                    return if (url.scheme == "https" && url.host == "appassets.androidplatform.net") {
-                        assetLoader.shouldInterceptRequest(url)
-                    } else null
+                    // Do not fall through to WebView's network stack for any
+                    // off-origin or missing asset, even if permissions change.
+                    val bundled = url.scheme == "https" &&
+                        url.host == "appassets.androidplatform.net" &&
+                        url.path.orEmpty().startsWith("/assets/")
+                    val local = if (bundled) assetLoader.shouldInterceptRequest(url) else null
+                    return local ?: WebResourceResponse(
+                        "text/plain", "UTF-8", 403, "Forbidden",
+                        mapOf("Cache-Control" to "no-store"),
+                        ByteArrayInputStream(ByteArray(0))
+                    )
                 }
                 override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                     val uri = request?.url ?: return true
-                    return uri.scheme != "https" || uri.host != "appassets.androidplatform.net"
+                    return uri.scheme != "https" || uri.host != "appassets.androidplatform.net" ||
+                        !uri.path.orEmpty().startsWith("/assets/")
                 }
             }
         }
