@@ -267,3 +267,10 @@ A plan or screenshot is **not** proof of implementation, and not every small hou
 - **PASS:** executed the **actual modified production JavaScript** inside V8 with fake offline storage: 10 checks covering valid maps, malformed imports, invalid export and roundtrip. Parsed the committed Node test file in V8. **FAIL:** none observed in the checks run.
 - **NOT TESTED:** full committed Node suite, Android WebView backup import/export, real device upgrade, screenshot/launcher icon, complete LT-01..13 requirements, offline/performance/accessibility and final APK. The committed Node regressions are authored but not yet executed in the full project runner.
 - **Build/merge:** no APK or Actions dispatch; no main writes, merge, paid API or Library/Handoff. Status **IN_PROGRESS**. Do not run APK builds until final feature/test gates pass.
+
+## 2026-10-24 — Android SAF import callback execution regression
+- **Production SHA:** `8e4efdf6d51531ec9ae36927ced17595705665f3`; **test SHA:** `f6fc40bd5b1e1b3b475d154515326b6496afee4c`. The prior source contained literal `\\n` inside a Kotlin `//` comment, swallowing the entire `notifyBackup("receiveImport", BackupUtf8.decode(...))` statement. Successful file picks therefore never delivered backup JSON to the JavaScript importer. Restored real source newlines so the strict UTF-8 callback executes after reading.
+- **PASS (source/static):** 7 checks on actual PR-head `MainActivity.kt`, including exactly one executable `receiveImport` call, read-before-delivery, catch ordering, no escaped-newline comment, and JS regression test syntax. New regression lives in `tools/data-backup.test.cjs`.
+- **FAIL:** 0 in the completed source/static gate. **NOT TESTED:** full Node suite, Android Kotlin compilation, SAF picker on device, backup round-trip, upgrade and performance. No APK or workflow run; zero PR-triggered runs reported for the test commit. User-approved icon and other product gates remain incomplete.
+
+AUTOMATION_COMPLETE: IN_PROGRESS
