@@ -18,6 +18,38 @@ const sandbox={window:{},localStorage:storage,document:{querySelector:()=>null},
  library:()=>{},console};
 vm.runInNewContext(src,sandbox,{filename:'data-backup.js',timeout:5000});
 const api=sandbox.window.StoryLensBackup;assert.ok(api);
+// Quota rollback must first free space occupied by imported replacements,
+// then restore larger original values. Old forward-order rollback lost saved words.
+{
+ const initial=new Map([
+  ['storylens_saved',JSON.stringify(['x'.repeat(500)])],
+  ['storylens_cards','[]'],['storylens_favorites','[]']
+ ]);
+ const limited=new Map(initial);
+ const usage=()=>[...limited].reduce((sum,[key,val])=>sum+key.length+val.length,0);
+ const quota=usage()+100;
+ const limitedStorage={
+  get length(){return limited.size},key:i=>[...limited.keys()][i]??null,
+  getItem:key=>limited.get(key)??null,
+  removeItem:key=>limited.delete(key),
+  setItem(key,value){
+   const next=String(value);
+   const size=usage()-(limited.has(key)?key.length+limited.get(key).length:0)+key.length+next.length;
+   if(size>quota)throw Error('QuotaExceededError');
+   limited.set(key,next);
+  }
+ };
+ const limitedWindow={};
+ vm.runInNewContext(src,{window:limitedWindow,localStorage:limitedStorage,
+  document:{querySelector:()=>null},library:()=>{},console},{timeout:5000});
+ assert.throws(()=>limitedWindow.StoryLensBackup.restore({
+  storylens_saved:'[]',
+  storylens_cards:JSON.stringify([{term:'a',meaning:'x'.repeat(490)}]),
+  storylens_favorites:JSON.stringify(['z'.repeat(150)])
+ }),/لم تتغير بياناتك السابقة/);
+ for(const [key,value] of initial)
+  assert.equal(limited.get(key),value,'quota rollback preserved '+key);
+}
 storage.setItem('storylens_saved',JSON.stringify(['reached','break the ice']));
 storage.setItem('storylens_cards',JSON.stringify([{term:'break the ice',sentence:'He broke the ice.',meaning:'كسر التوتر'}]));
 storage.setItem('storylens_favorites',JSON.stringify(['eleven-minute-alibi']));
@@ -29,6 +61,11 @@ storage.setItem('storylens_cards','not valid JSON');
 assert.throws(()=>api.exportObject(),/storylens_cards/,'corrupt cards cannot be silently dropped');
 storage.setItem('storylens_cards',JSON.stringify({term:'wrong shape'}));
 assert.throws(()=>api.exportObject(),/storylens_cards/,'wrong-shaped cards cannot be silently dropped');
+storage.setItem('storylens_cards',JSON.stringify([{term:'broken',meaning:0}]));
+assert.throws(()=>api.exportObject(),/storylens_cards/,'numeric card meaning cannot pass export');
+assert.throws(()=>api.parseBackup(JSON.stringify({format:'storylens.backup',version:1,
+ entries:{storylens_cards:JSON.stringify([{term:'broken',translation:false}])}})),/نوع/,
+ 'false optional translation cannot pass import');
 storage.setItem('storylens_cards',JSON.stringify([{term:'break the ice',sentence:'He broke the ice.',meaning:'كسر التوتر'}]));
 storage.setItem('storylens_chapter_corrupt','-3');
 assert.throws(()=>api.exportObject(),/storylens_chapter_corrupt/,'invalid progress must block incomplete backups');
