@@ -188,7 +188,7 @@ const strictUtf8=fs.readFileSync(path.join(root,'app/src/main/java/com/storylens
 const strictTest=fs.readFileSync(path.join(root,'app/src/test/java/com/storylens/reader/BackupUtf8Test.kt'),'utf8');
 assert.match(kt,/BackupUtf8\.decode\(bytes\.toByteArray\(\)\)/,'SAF import uses strict decoder');
 assert.match(strictUtf8,/CodingErrorAction\.REPORT/,'malformed input fails closed');
-assert.match(strictUtf8,/removePrefix\("\\\\uFEFF"\)/,'optional UTF-8 BOM handled');
+assert.match(strictUtf8,/removePrefix\("\\uFEFF"\)/,'optional UTF-8 BOM handled');
 assert.match(strictTest,/malformedTruncatedOverlongAndSurrogateBytesAreRejected/,'Kotlin unit regression included');
 assert.match(kt,/private var pickerInFlight = false/,'one native SAF picker at a time');
 assert.equal((kt.match(/if \(pickerInFlight\)/g)||[]).length,2,'both import and export reject concurrent pickers');
