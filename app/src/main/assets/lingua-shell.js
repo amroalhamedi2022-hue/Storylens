@@ -371,9 +371,10 @@ document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
    returnStoryId=state.story?.id||id;
    if(!motionOff())document.querySelector('.reader')?.classList.add('lt-reader-enter');
    // Resume the saved chapter position; a fresh chapter starts at the top.
-   const saved=safeOffset(get('scroll_'+returnStoryId+'_'+state.chapter,0));
+   const storyId=returnStoryId;
+   const saved=safeOffset(get('scroll_'+storyId+'_'+state.chapter,0));
    nextFrame(()=>{
-    if(state.page!=='reader'||state.story?.id!==returnStoryId)return;
+    if(state.page!=='reader'||state.story?.id!==storyId)return;
     focusWithoutScroll(document.querySelector('.reader h2'));
     global.scrollTo(0,saved);
    });
