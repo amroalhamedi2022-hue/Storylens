@@ -335,3 +335,99 @@ body.theme-botanical-folio{
   width:88px;height:128px;min-height:128px;
  }
 }
+
+/* LT-13 Rain Glass: quiet windowpane reading room. This is a different
+ * composition: translucent split-panel hero, framed horizontal book tiles,
+ * rain-line window texture and cool editorial reading surface. Static only. */
+.lt-theme-rain-glass .lt-theme-swatch{
+ background:linear-gradient(135deg,#c8e9f2 0 31%,#608da7 31% 62%,#18394f 62%);
+}
+body.theme-rain-glass{
+ --body:#d7e8ef;--card:#eef7f9;--ink:#19394d;--sub:#426075;
+ --accent:#226a88;--reader:#f2f8f9;--reader-ink:#17384b;
+ color:var(--ink);
+ background:repeating-linear-gradient(91deg,transparent 0 79px,#ffffff50 80px 81px,transparent 82px 161px),
+ linear-gradient(155deg,#d4e8f2,#e7f3f5 42%,#b9d3e0);
+}
+.theme-rain-glass::before,.theme-rain-glass::after{display:none!important}
+.theme-rain-glass .library{max-width:1180px}
+.theme-rain-glass .library .header{
+ border-bottom:1px solid #507d9466;padding-bottom:16px;
+}
+.theme-rain-glass .library .brand{color:#286d8a;letter-spacing:.12em}
+.theme-rain-glass .library .header h1{
+ color:#183e55;font:600 clamp(27px,4vw,42px)/1.2 system-ui,sans-serif;
+}
+.theme-rain-glass .library .secondary{
+ color:#204e65;background:#edf7f9;border:1px solid #83b1c3;
+ border-radius:18px;box-shadow:none;
+}
+.theme-rain-glass .library .storylens-hero{
+ display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:22px;align-items:center;
+ min-height:235px;padding:26px 30px;border-radius:22px;
+ border:1px solid #7da8bb;box-shadow:0 9px 0 #3d739024;
+ background:linear-gradient(120deg,#f0f9facc,#c4e1ebdd 60%,#8bb7c9dd);
+}
+.theme-rain-glass .library .storylens-hero h2{
+ font:600 clamp(27px,4vw,42px)/1.15 system-ui,sans-serif;color:#15445b;
+}
+.theme-rain-glass .library .storylens-hero .hero-orb{
+ position:relative;inset:auto;transform:none;opacity:1;
+ width:180px;height:160px;border-radius:14px;
+ border:5px solid #f0f9fa;box-shadow:inset 0 0 0 1px #507c99,0 7px 14px #204c6455;
+ background:repeating-linear-gradient(104deg,transparent 0 20px,#e5f6fb88 21px 22px,transparent 23px 42px),
+ linear-gradient(145deg,#93bbcb,#467d9b 70%,#214d6b);
+}
+.theme-rain-glass .library .storylens-hero .hero-orb::after{
+ content:'';position:absolute;inset:0;
+ border-left:2px solid #e5f6f8a0;border-right:2px solid #e5f6f8a0;
+ margin-inline:auto;width:3px;pointer-events:none;
+}
+.theme-rain-glass .library .storylens-hero .hero-orb-core{display:none}
+.theme-rain-glass .library .hero-continue{
+ color:#fff;background:#24617e;border:1px solid #16475e;border-radius:16px;
+}
+.theme-rain-glass .library .shelf{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:18px;
+}
+.theme-rain-glass .library .shelf .card{
+ display:grid;grid-template-columns:118px minmax(0,1fr);gap:14px;
+ padding:12px;min-height:204px;border-radius:18px;border:1px solid #87b2c1;
+ background:#f1f8f9;box-shadow:0 7px 0 #4a819626;
+ animation:none;content-visibility:auto;contain-intrinsic-size:auto 204px;
+}
+.theme-rain-glass .library .shelf .card .cover{
+ width:118px;height:174px;min-height:174px;flex:initial;
+ border-radius:12px 4px 4px 12px;box-shadow:inset -6px 0 #ffffff55;
+ background-position:center 42%;
+}
+.theme-rain-glass .library .shelf .card-content{padding:3px 0;gap:7px;min-width:0}
+.theme-rain-glass .library .shelf .card h2{
+ color:#1a4b61;font:600 21px/1.25 system-ui,sans-serif;
+}
+.theme-rain-glass .library .shelf .card .desc{color:#42667a}
+.theme-rain-glass .library .stl-discovery{
+ background:#eef7f8;border:1px solid #8ab1c2;border-radius:18px;
+}
+.theme-rain-glass .lt-drawer{
+ background:linear-gradient(155deg,#26526b,#16394e);border-color:#a7d2df;
+}
+.theme-rain-glass .lt-genre.selected{
+ background:#a9dce044;border-color:#b8e9f1;
+}
+.theme-rain-glass .lt-theme-choice{background:#e9f5f7;color:#19394d}
+.theme-rain-glass .reader:not(.dark){
+ background:#f2f8f9;color:#17384b;
+}
+.theme-rain-glass .reader.dark{
+ background:#112e41;color:#e1f3f7;
+}
+@media(max-width:620px){
+ .theme-rain-glass .library .storylens-hero{
+  grid-template-columns:minmax(0,1fr) 78px;padding:18px;gap:8px;min-height:175px;
+ }
+ .theme-rain-glass .library .storylens-hero .hero-orb{width:74px;height:110px}
+ .theme-rain-glass .library .shelf{grid-template-columns:1fr}
+ .theme-rain-glass .library .shelf .card{grid-template-columns:96px minmax(0,1fr);min-height:176px}
+ .theme-rain-glass .library .shelf .card .cover{width:96px;height:152px;min-height:152px}
+}
