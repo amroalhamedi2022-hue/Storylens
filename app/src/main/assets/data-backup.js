@@ -153,6 +153,19 @@ function show(message){
  if(box)box.textContent=message;
 }
 const ui=(ar,en)=>document.documentElement.lang==='en'?en:ar;
+const nativeStatusMessages={
+ saved:['تم حفظ النسخة الاحتياطية في الموقع الذي اخترته.','Backup saved to the selected location.'],
+ save_failed:['تعذّر حفظ النسخة الاحتياطية. تأكد من مساحة التخزين وأعد المحاولة.','Could not save the backup. Check storage space and try again.'],
+ import_failed:['تعذّر قراءة النسخة الاحتياطية. تأكد من الملف وأعد المحاولة.','Could not read the backup file. Check the file and try again.'],
+ export_too_large:['النسخة الاحتياطية أكبر من الحد المسموح.','The backup exceeds the allowed size.']
+};
+function showNativeStatus(code){
+ const messages=nativeStatusMessages[code];
+ if(!messages)return false;
+ if(!document.getElementById('stl-backup-feedback'))renderBackup();
+ show(ui(messages[0],messages[1]));
+ return true;
+}
 function renderBackup(){
  const parent=document.getElementById('modals');
  if(!parent)return;
@@ -241,7 +254,7 @@ library=function(){
 };
 global.StoryLensBackup={
  exportObject,parseBackup,preview,restore,
- receiveImport:showImport,nativeError:message=>{if(!document.getElementById('stl-backup-feedback'))renderBackup();show(message);},
+ receiveImport:showImport,nativeStatus:showNativeStatus,nativeError:message=>{if(!document.getElementById('stl-backup-feedback'))renderBackup();show(message);},
  open:renderBackup
 };
 library();
