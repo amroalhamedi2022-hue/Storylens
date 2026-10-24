@@ -340,3 +340,7 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **Artifacts:** Debug APK archive **12578540992** and UI screenshot archive **12578865623** exist on that run. CI wrote `APK_SHA256.txt` into the APK artifact, but **inner APK SHA-256 has NOT been independently read/verified** here; do not confuse archive hashes with APK hashes.
 - **NOT TESTED:** installation or upgrade on Xiaomi Pad 5, actual frame timing/jank, Android system Back, real-device icon masks, TalkBack, the theme's visual acceptance, editorial licensing/translation of new long works, licensed ~20 soundtracks, and independent second-pass device acceptance. **LT-01..13 remain IN_PROGRESS**, not all accepted.
 - **Scope:** Storylens draft PR #1 only; no main, release, paid API, personal assets or ChatGPT Library/Handoff. Documentation-only commit uses `[skip ci]` to avoid an unnecessary second APK build; CI above validates the exact preceding production SHA.
+
+### Independent Debug APK byte verification for LT milestone
+- Downloaded the actual Actions artifact **12578540992**, opened its ZIP, and independently SHA-256 hashed `app-debug.apk` (**4,233,456 bytes**): **`f0c0f9abe571ed2677c1e028a1e8d5814e7f8e70ad3f68a63e60fbfe718684de`**. It exactly matches the bundled `APK_SHA256.txt`.
+- Inspected the inner APK: `assets/lingua-lookup.js` and `res/mipmap-anydpi-v26/ic_launcher.xml` are present. **PASS artifact integrity/resource packaging.** Device installation, icon appearance and Pad 5 performance remain **NOT TESTED**. This is a Debug validation artifact, not a final release.
