@@ -244,3 +244,11 @@ A plan or screenshot is **not** proof of implementation, and not every small hou
 - **PASS:** executed the exact committed production JS inside V8 with fake offline localStorage; 5 checks: CJK oversized export/import, valid Arabic backup roundtrip, mixed-script backup, emoji oversized import. Regression file parsed successfully. **No Node/Android APK build.**
 - **NOT TESTED:** full `node tools/data-backup.test.cjs` in a complete checkout, full Node suite, Android SAF roundtrip, physical device, final approved icon and LT-01..LT-13 acceptance.
 - **CI:** no PR workflow run on code/test head when checked. All commits use `[skip ci]`. **Status:** IN_PROGRESS.
+
+
+## 2026-10-24 — Vocabulary backup schema and audio-free settings (source-only)
+- **Production commits:** `df9b5f4476aa61374847f214001d10090b36f0af` (backup text-map validation) and `2f012d87612d082b65ed8c9d67cfd95a6c59999c` (settings wording). **Regression commits:** `f26002958d032ce49d468a427d0a3ca7d4cdfcc9` and `2dd56b73c710f71a2241ebf74692312a3626b99d`, all on draft PR #1.
+- **Fix:** `written_examples` and `wordSenses` backups now reject nested objects, arrays, booleans, null, and oversized text keys/values; valid Arabic sense strings and ordinary English usage examples remain accepted. Export fails visibly for corrupt allowed keys instead of silently dropping learning data. Settings no longer advertise optional audio, which is outside the approved product scope.
+- **PASS:** executed the **actual modified production JavaScript** inside V8 with fake offline storage: 10 checks covering valid maps, malformed imports, invalid export and roundtrip. Parsed the committed Node test file in V8. **FAIL:** none observed in the checks run.
+- **NOT TESTED:** full committed Node suite, Android WebView backup import/export, real device upgrade, screenshot/launcher icon, complete LT-01..13 requirements, offline/performance/accessibility and final APK. The committed Node regressions are authored but not yet executed in the full project runner.
+- **Build/merge:** no APK or Actions dispatch; no main writes, merge, paid API or Library/Handoff. Status **IN_PROGRESS**. Do not run APK builds until final feature/test gates pass.
