@@ -198,3 +198,10 @@ A plan or screenshot is **not** proof of implementation, and not every small hou
 - **Regression commit:** `693fc80b0e016a6e26656470febff82e5277230a` adds malformed cards, wrong-shaped cards and invalid chapter progress tests to `tools/data-backup.test.cjs`.
 - **PASS (production V8 smoke):** executed the actual modified JavaScript export function with mock localStorage: corrupt JSON and wrong-shaped allowed values rejected; valid data exported; unrelated key excluded.
 - **NOT TESTED:** complete Node test suite, Android/WebView storage-quota behavior, real restore/device upgrade and independent QA. No APK build, no Actions dispatch, no paid API, no main write or merge. **IN_PROGRESS.**
+
+## 2026-10-24 — UTF-8-safe offline backup boundaries (source-only)
+- **Production commit:** `7ed6ce311b36f97951b284dc0cf618a04e6fa952`; **regression commit:** `10055cb720853fbe36b6f767ba0df97d2e454026` on Storylens PR #1 (not `main`).
+- **Fix:** backup export and pasted/imported JSON now enforce the 1,500,000 limit in actual UTF-8 bytes rather than UTF-16 code units. This prevents Arabic/CJK/emoji data from passing the WebView check only to exceed Android's UTF-8 SAF file limit. Correct surrogate-pair and malformed-surrogate replacement byte accounting; existing v1 format and `storylens_` storage identifiers unchanged.
+- **PASS:** executed the exact committed production JS inside V8 with fake offline localStorage; 5 checks: CJK oversized export/import, valid Arabic backup roundtrip, mixed-script backup, emoji oversized import. Regression file parsed successfully. **No Node/Android APK build.**
+- **NOT TESTED:** full `node tools/data-backup.test.cjs` in a complete checkout, full Node suite, Android SAF roundtrip, physical device, final approved icon and LT-01..LT-13 acceptance.
+- **CI:** no PR workflow run on code/test head when checked. All commits use `[skip ci]`. **Status:** IN_PROGRESS.
