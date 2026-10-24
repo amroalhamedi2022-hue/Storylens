@@ -50,6 +50,38 @@ const api=sandbox.window.StoryLensBackup;assert.ok(api);
  for(const [key,value] of initial)
   assert.equal(limited.get(key),value,'quota rollback preserved '+key);
 }
+// UTF-8 quotas can invert rollback ordering relative to UTF-16 code-unit
+// lengths (emoji vs ASCII). Free actual bytes before restoring larger values.
+{
+ const original=new Map([
+  ['storylens_saved',JSON.stringify(['😀'.repeat(85)])],
+  ['storylens_cards',JSON.stringify([{term:'x',meaning:'a'.repeat(200)}])],
+  ['storylens_favorites','[]']
+ ]);
+ const data=new Map(original);
+ const bytes=value=>Buffer.byteLength(value,'utf8');
+ const used=()=>[...data].reduce((n,[key,value])=>n+bytes(key)+bytes(value),0);
+ const quota=used()+100;
+ const quotaStorage={
+  get length(){return data.size},key:i=>[...data.keys()][i]??null,
+  getItem:key=>data.get(key)??null,removeItem:key=>data.delete(key),
+  setItem(key,value){
+   value=String(value);
+   const after=used()-(data.has(key)?bytes(key)+bytes(data.get(key)):0)+bytes(key)+bytes(value);
+   if(after>quota)throw Error('QuotaExceededError');
+   data.set(key,value);
+  }
+ };
+ const win={};
+ vm.runInNewContext(src,{window:win,localStorage:quotaStorage,
+  document:{querySelector:()=>null},library:()=>{},console},{timeout:5000});
+ assert.throws(()=>win.StoryLensBackup.restore({
+  storylens_saved:JSON.stringify(['a'.repeat(180),'b'.repeat(40)]),
+  storylens_cards:JSON.stringify([{term:'x',meaning:'😀'.repeat(100)}]),
+  storylens_favorites:JSON.stringify(Array.from({length:8},()=> 'z'.repeat(150)))
+ }),/لم تتغير بياناتك السابقة/);
+ for(const [key,value] of original)assert.equal(data.get(key),value,'UTF-8 quota rollback: '+key);
+}
 storage.setItem('storylens_saved',JSON.stringify(['reached','break the ice']));
 storage.setItem('storylens_cards',JSON.stringify([{term:'break the ice',sentence:'He broke the ice.',meaning:'كسر التوتر'}]));
 storage.setItem('storylens_favorites',JSON.stringify(['eleven-minute-alibi']));
