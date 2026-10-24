@@ -18,6 +18,41 @@ const sandbox={window:{},localStorage:storage,document:{querySelector:()=>null},
  library:()=>{},console};
 vm.runInNewContext(src,sandbox,{filename:'data-backup.js',timeout:5000});
 const api=sandbox.window.StoryLensBackup;assert.ok(api);
+
+// Native Android SAF callbacks must be localized without changing legacy
+// backup keys or showing a success message as an error. Exercise production JS.
+{
+ const feedback={textContent:''};
+ const doc={documentElement:{lang:'en'},
+  getElementById:id=>id==='stl-backup-feedback'?feedback:null,
+  querySelector:()=>null};
+ const nativeWindow={};
+ vm.runInNewContext(src,{window:nativeWindow,document:doc,localStorage:storage,
+  library:()=>{},console},{filename:'data-backup.js native statuses',timeout:5000});
+ const native=nativeWindow.StoryLensBackup;
+ const expected={
+  saved:'Backup saved to the selected location.',
+  save_failed:'Could not save the backup. Check storage space and try again.',
+  import_failed:'Could not read the backup file. Check the file and try again.',
+  export_too_large:'The backup exceeds the allowed size.'
+ };
+ for(const [code,label] of Object.entries(expected)){
+  assert.equal(native.nativeStatus(code),true,'recognized native status '+code);
+  assert.equal(feedback.textContent,label,'English native feedback '+code);
+ }
+ doc.documentElement.lang='ar';
+ assert.equal(native.nativeStatus('saved'),true);
+ assert.match(feedback.textContent,/تم حفظ النسخة الاحتياطية/);
+ const previous=feedback.textContent;
+ assert.equal(native.nativeStatus('unknown'),false,'unknown native event ignored');
+ assert.equal(feedback.textContent,previous);
+ assert.match(kt,/notifyBackup\("nativeStatus", "saved"\)/);
+ assert.match(kt,/notifyBackup\("nativeStatus", "save_failed"\)/);
+ assert.match(kt,/notifyBackup\("nativeStatus", "import_failed"\)/);
+ assert.match(kt,/notifyBackup\("nativeStatus", "export_too_large"\)/);
+ assert.match(kt,/method != "nativeStatus"/);
+}
+
 // Quota rollback must first free space occupied by imported replacements,
 // then restore larger original values. Old forward-order rollback lost saved words.
 {
