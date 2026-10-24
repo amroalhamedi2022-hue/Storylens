@@ -1,7 +1,7 @@
 name: Android APK • validate • unit tests
 on:
   push:
-    branches: [main]
+    branches: [main, automation/storylens-dictionary-saved-words-20261023]
   pull_request:
   workflow_dispatch:
 
@@ -43,6 +43,8 @@ jobs:
           python3 tools/test_lingua_launcher.py
           node tools/botanical-theme.test.cjs
           node tools/rain-glass.test.cjs
+          node tools/solar-atelier.test.cjs
+          node tools/locale-journeys.test.cjs
           node --check app/src/main/assets/lexicon-extra.js
           node tools/lexicon.test.cjs
           node tools/freedict.test.cjs
@@ -59,7 +61,7 @@ jobs:
         run: |
           APK="$(find app/build/outputs/apk/debug -type f -name '*.apk' | head -1)"
           test -n "$APK"
-          for file in index.html lexicon-extra.js liquid-aurora.css reader-experience.js reader-experience.css editorial-stories-a.js editorial-stories-b.js editorial-stories-c.js editorial-art.js library-experience.js library-experience.css data-backup.js data-backup.css freedict-en-ar.js LICENSE_FREEDICT.txt; do
+          for file in index.html lexicon-extra.js liquid-aurora.css reader-experience.js reader-experience.css editorial-stories-a.js editorial-stories-b.js editorial-stories-c.js editorial-art.js library-experience.js library-experience.css data-backup.js data-backup.css lingua-shell.js lingua-shell.css lingua-i18n.js freedict-en-ar.js LICENSE_FREEDICT.txt; do
             unzip -Z1 "$APK" | grep -Fqx "assets/$file" || { echo "MISSING assets/$file"; exit 1; }
           done
           # This purposeful build checks that Android AAPT2 compiled the new
