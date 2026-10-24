@@ -175,3 +175,11 @@ A plan or screenshot is **not** proof of implementation, and not every small hou
 - **Regression commit:** `313a5425e0b9d78cd34c40731ae26ef1419e8fe1` adds `tools/bookmark-navigation.test.cjs` with invalid/valid chapter and scroll cases.
 - **PASS:** executed the **actual modified production JS** from the PR in a V8 harness: four bookmark restoration scenarios (invalid chapter, infinite scroll, out-of-range chapter/negative scroll, valid chapter/scroll). Production file blob SHA `8cae8d93557cb8c5e003ce8b8d342d64d125a642`.
 - **NOT TESTED:** Node test file through the full repository runner, Android browser/Pad 5, upgrade migration, device gestures, icon and media. No APK or Actions run intentionally triggered. Existing CI workflow remains unchanged. Status: **IN_PROGRESS**.
+
+
+## 2026-10-24 — Legacy chapter progress and scroll safety (source-only)
+- **Production commit:** `a4b74caea89612d34e2231d57fbcd3ded9134e97`; **regression commits:** `0564243b88ee532b2cf3c692f4e79073619b6694`, `c7f93cde9da14113212e5b983f1fad46bfe689b5` (draft PR #1, never main).
+- **Fix:** reader's library/continue chapter index rejects fractional, NaN and non-finite saved progress, clamps removed chapters; chapter-picker restores only finite, nonnegative, bounded scroll offsets. This complements the earlier bookmark jump guard and does not alter story text or saved data formats.
+- **PASS:** parsed and executed modified production JavaScript inside V8 with a mocked reader and storage; checked invalid/fractional/oversized chapter progress, infinite and negative scroll, and valid scroll restoration. Separately verified the committed regression test parses and its source-extraction regex matches the real production helper; 4 index cases passed in V8.
+- **NOT TESTED:** full committed Node test suite, Android WebView/Pad 5, live migration, FPS, icon integration, final licensed art, full bilingual UI, independent recheck.
+- **Build:** no APK, no workflow dispatch, no merge, no paid API; existing workflows unchanged. Status: **IN_PROGRESS**.
