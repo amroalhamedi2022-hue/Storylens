@@ -183,6 +183,13 @@ assert.ok(kt.includes('ActivityResultContracts.CreateDocument')&&kt.includes('Ac
 assert.ok(kt.includes('addJavascriptInterface(OfflineBackupBridge(), "StoryLensNative")'));
 assert.ok(kt.includes('JSONObject.quote(data)'),'native callback escapes JSON');
 assert.ok(kt.includes('maxBackupBytes'),'files bounded');
+// Import must decode strict UTF-8, not Java's replacement-mode String decoder.
+const strictUtf8=fs.readFileSync(path.join(root,'app/src/main/java/com/storylens/reader/BackupUtf8.kt'),'utf8');
+const strictTest=fs.readFileSync(path.join(root,'app/src/test/java/com/storylens/reader/BackupUtf8Test.kt'),'utf8');
+assert.match(kt,/BackupUtf8\.decode\(bytes\.toByteArray\(\)\)/,'SAF import uses strict decoder');
+assert.match(strictUtf8,/CodingErrorAction\.REPORT/,'malformed input fails closed');
+assert.match(strictUtf8,/removePrefix\("\\\\uFEFF"\)/,'optional UTF-8 BOM handled');
+assert.match(strictTest,/malformedTruncatedOverlongAndSurrogateBytesAreRejected/,'Kotlin unit regression included');
 assert.match(kt,/private var pickerInFlight = false/,'one native SAF picker at a time');
 assert.equal((kt.match(/if \(pickerInFlight\)/g)||[]).length,2,'both import and export reject concurrent pickers');
 assert.equal((kt.match(/pickerInFlight = false/g)||[]).length,5,'both callbacks and failed launches clear picker guard');
