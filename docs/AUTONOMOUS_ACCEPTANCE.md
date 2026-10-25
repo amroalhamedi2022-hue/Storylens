@@ -481,3 +481,9 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - Regression: `tools/chapter-search.test.cjs` now checks new chapter invalidation, paragraph focus/highlight/cleanup, theme geometry and persistence. **Source edits committed; CI/source test result PENDING** until workflow run completes.
 - **Purposeful Android build question:** Does Android package the changed JS/CSS/backup, pass the real Node VM search regression and Chrome reader flow, and render the new CSS without parse errors? Source string inspection cannot prove APK packaging or browser integration. One branch build, not per-file builds.
 - **NOT TESTED:** Xiaomi Pad 5 paragraph focus/TalkBack, theme contrast and real FPS/thermal; licensed long novels, editorial Arabic review and licensed audio remain open. Debug is not final. No main merge.
+
+### LT search/Bauhaus CI and artifact evidence — 2026-10-25
+- **PASS source/V8:** 5 direct production-script checks: bilingual search, appended chapter invalidation, paragraph focus/highlight/cleanup, theme selection and offline preference persistence. This is not a physical-device test.
+- **PASS Android CI:** [run 40185612369](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40185612369), source SHA `953437dbf67369f569c8939521952573a0c9958a`; Node regressions, Gradle APK, packaged assets, Chromium journey.
+- **PASS independent artifact rehash:** artifact `12595952491` contains `app-debug.apk` (4,266,184 bytes), SHA-256 `fe2d2b36d0d08fb486e24889b844be3c60a43cee270198a729c83f0b8ca0d6c3`, independently extracted and matched `APK_SHA256.txt`. New theme present in packaged JS/CSS/backup.
+- **NOT TESTED:** Pad 5/phone installation, TalkBack focus, theme contrast, FPS/thermal, editorial long books/audio; final release remains IN_PROGRESS.
