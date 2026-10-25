@@ -15,7 +15,11 @@ const chapters=[
 const story={id:'sea-story',title:'The Sea Story',chapters};
 const catalog={stories:[story]};
 const saved=new Map(),classes=[];
-const paragraphNode={dataset:{i:'1'},scrollIntoView:opts=>{saved.set('jump',opts.block);}};
+const paragraphNode={dataset:{i:'1'},
+ classList:{add:token=>saved.set('highlightAdded',token),remove:token=>saved.set('highlightRemoved',token)},
+ setAttribute:(key,value)=>saved.set('paragraph:'+key,value),
+ focus:opts=>saved.set('focusedWithoutScroll',opts.preventScroll),
+ scrollIntoView:opts=>{saved.set('jump',opts.block);}};
 const document={
  documentElement:{lang:'en',dir:'ltr',dataset:{}},
  body:{classList:{add:x=>classes.push('+'+x),remove:x=>classes.push('-'+x)}},
@@ -56,12 +60,19 @@ assert.equal(state.page,'reader');
 assert.equal(state.chapter,0);
 assert.equal(saved.get('chapter_sea-story'),0);
 assert.equal(saved.get('jump'),'center');
+assert.equal(saved.get('highlightAdded'),'lt-search-target');
+assert.equal(saved.get('highlightRemoved'),'lt-search-target');
+assert.equal(saved.get('focusedWithoutScroll'),true);
+assert.equal(saved.get('paragraph:tabindex'),'-1');
 // The index must notice later licensed content batches without changing the
 // already displayed original English/Arabic paragraphs.
 catalog.stories.push({id:'new-chapter',title:'The Desert Clock',chapters:[
  {title:'Dawn',paragraphs:[{en:'A quiet oasis appeared at dawn.',
  ar:'ظهر أفقاً جديداً خلف الواحة.'}]}]});
 assert.equal(search('oasis').length,1);
+// Same work count, new chapter in an existing story must invalidate the cache.
+chapters.push({title:'Afterword',paragraphs:[{en:'The brass compass pointed east.',ar:'أشارت البوصلة النحاسية إلى الشرق.'}]});
+assert.equal(search('brass compass').length,1);
 assert.equal(search('أُفُقًا').length,1);
 assert.equal(search('افقا')[0].ar,'ظهر أفقاً جديداً خلف الواحة.');
 assert.equal(chapters[0].paragraphs[0].ar,'فتح القبطان الخريطة السرية عند شروق الشمس.');
@@ -85,4 +96,12 @@ for(const selector of ['body.theme-saffron-archive',
 assert.ok(backup.includes("'saffron-archive'"));
 assert.ok(!/https?:\/\//.test(css.slice(css.indexOf('/* LT-13: Moonlit Margins'))));
 assert.equal(chapters[0].paragraphs[0].ar,'فتح القبطان الخريطة السرية عند شروق الشمس.');
-console.log('PASS: bilingual Arabic-folded search, lazy content refresh, source-preserving paragraph jump, Moonlit and Saffron themes');
+assert.ok(window.LinguaShell.themeNames.includes('bauhaus-studio'));
+assert.equal(window.LinguaShell.applyTheme('bauhaus-studio'),true);
+assert.equal(saved.get('uiTheme'),'bauhaus-studio');
+assert.ok(backup.includes("'bauhaus-studio'"));
+for(const selector of ['body.theme-bauhaus-studio','.theme-bauhaus-studio .library .storylens-hero',
+ '.theme-bauhaus-studio .library .shelf .card','.theme-bauhaus-studio .reader.dark',
+ '.lt-theme-bauhaus-studio .lt-theme-swatch','.reader .sentence.lt-search-target'])
+ assert.ok(css.includes(selector),selector);
+console.log('PASS: bilingual chapter search, dynamic chapter cache, accessible paragraph jump and Bauhaus theme');
