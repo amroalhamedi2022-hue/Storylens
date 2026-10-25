@@ -11,7 +11,34 @@ const colors={
  contemporary:['#111d2b','#426c77','#ffc18c','#98d6cf'],
  horror:['#121523','#303c56','#7894b9','#c9d7e6']
 };
+function savilleRowScene(){
+ // Bespoke offline vector scene: Victorian Saville Row, clock and two figures.
+ // No external illustration or remotely loaded asset.
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="Victorian London street, townhouse, clock and two figures">'+
+ '<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#24334a"/><stop offset="1" stop-color="#b38a69"/></linearGradient><linearGradient id="stone" x2="0" y2="1"><stop stop-color="#d5b995"/><stop offset="1" stop-color="#876b58"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#sky)"/><circle cx="790" cy="115" r="72" fill="#ffdb9d" opacity=".55"/>'+
+ '<path d="M0 460V170H210V128H480V182H730V145H1000V460Z" fill="#2b3040"/>'+
+ '<rect x="155" y="155" width="690" height="340" fill="url(#stone)" stroke="#473d40" stroke-width="12"/>'+
+ '<path d="M132 155L500 65L867 155Z" fill="#393a45"/><rect x="466" y="93" width="68" height="62" fill="#302f3b"/>'+
+ '<circle cx="500" cy="123" r="24" fill="#f3dfb8" stroke="#463b40" stroke-width="5"/>'+
+ '<path d="M500 123L500 107M500 123L512 130" stroke="#342e32" stroke-width="3" fill="none"/>'+
+ '<g fill="#2c3645" stroke="#f0d4a8" stroke-width="9"><rect x="218" y="210" width="110" height="105"/><rect x="672" y="210" width="110" height="105"/><rect x="218" y="344" width="110" height="105"/><rect x="672" y="344" width="110" height="105"/></g>'+
+ '<rect x="430" y="270" width="140" height="225" fill="#3c2e30" stroke="#dfc69c" stroke-width="9"/>'+
+ '<rect x="495" y="270" width="7" height="225" fill="#c8a875"/><circle cx="520" cy="380" r="5" fill="#e6bd74"/>'+
+ '<rect x="450" y="185" width="100" height="44" rx="4" fill="#2c313b" stroke="#d8c39c" stroke-width="4"/>'+
+ '<text x="500" y="214" text-anchor="middle" font-family="Georgia,serif" font-size="25" fill="#f5e7c6">7</text>'+
+ '<path d="M0 495H1000V620H0Z" fill="#3e4049"/><path d="M0 533H1000" stroke="#c9ae85" stroke-width="5"/>'+
+ '<g fill="#191f2c"><path d="M375 490L392 382L420 382L439 490Z"/><circle cx="406" cy="363" r="25"/>'+
+ '<path d="M366 340H444V354H366Z"/><path d="M385 309H426L435 342H376Z"/>'+
+ '<path d="M607 490L619 404L645 404L660 490Z"/><circle cx="631" cy="384" r="22"/>'+
+ '<path d="M610 361H654V369H610Z"/></g>'+
+ '<path d="M90 492V220M70 220H110" stroke="#252d37" stroke-width="13"/>'+
+ '<path d="M69 214Q89 176 110 214Z" fill="#ffdf9b" stroke="#303441" stroke-width="6"/>'+
+ '<rect x="0" y="570" width="1000" height="50" fill="#222a34" opacity=".5"/></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
 function scene(story,chapter){
+ if(story.id==='around-the-world-in-eighty-days-towle') return savilleRowScene();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
