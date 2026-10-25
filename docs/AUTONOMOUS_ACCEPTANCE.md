@@ -604,3 +604,10 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **NOT TESTED:** execution of the committed Node test file, full Android CI on this branch SHA, Chromium, Xiaomi Pad 5, accessibility/TalkBack, app install and final APK. The isolated V8 harness is **not** device acceptance.
 - **Build question:** does the new script load after the locale wrappers in Android WebView, and do chapter controls preserve back navigation on device? Source inspection alone cannot prove this; a targeted Android/Chromium validation is justified, not a routine build after every edit.
 - **Open:** only 2/37 authentic Towle chapters; English/Arabic editorial review, full licensed audio catalog and independent device acceptance remain IN_PROGRESS.
+
+## 2026-10-25 — Serialized novel chapter progress and direct navigation
+- The library progress denominator now uses `totalChapters` when larger than the offline `chapters.length`. For the Towle novel, finishing the currently published second chapter must not display 100% of 37 chapters. The badge also reports the number available offline.
+- The reader chapter-end panel now offers a keyboard/touch chapter selector populated **only from locally available chapters**, preserving the existing `stlChapter` progress/scroll/bookmark path. Chapter titles use Arabic or English metadata without inserting HTML.
+- **PASS (direct production V8 smoke):** ran the committed chapter-navigation module with two available chapters out of 37, selected the first chapter, and rejected a jump to unpublished chapter 37. Checked that the library denominator uses total chapters. This is not an Android or full Node test.
+- **NOT TESTED:** complete Node test and Android/Chromium CI on the latest source SHA, Xiaomi Pad 5 navigation, TalkBack, portrait/landscape, real FPS, complete licensed literature and final acceptance.
+- **Purposeful Android build question:** does the updated reader/navigation JS pass the repository's actual Node test and does the WebView asset remain packaged in an Android Debug APK? Static/V8 checks cannot verify Gradle packaging or Chromium flow. No physical device is accessible in this run.
