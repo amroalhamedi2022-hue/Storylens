@@ -38,6 +38,9 @@ assert.equal(search('x').length,0);
 assert.equal(search('x'.repeat(81)).length,0);
 assert.equal(search('captain').length,2);
 assert.equal(search('الخريطة').length,1);
+assert.equal(search('الخَرِيطَة').length,1); // Arabic vowel marks
+assert.equal(search('الخريطه').length,1); // taa marbuta variant
+assert.equal(search('السريه').length,1); // spelling fold, original text intact
 assert.equal(search('HARBOR').length,2);
 assert.equal(search('harbor',1).length,1);
 assert.equal(search('harbor',999).length,2);
@@ -53,6 +56,15 @@ assert.equal(state.page,'reader');
 assert.equal(state.chapter,0);
 assert.equal(saved.get('chapter_sea-story'),0);
 assert.equal(saved.get('jump'),'center');
+// The index must notice later licensed content batches without changing the
+// already displayed original English/Arabic paragraphs.
+catalog.stories.push({id:'new-chapter',title:'The Desert Clock',chapters:[
+ {title:'Dawn',paragraphs:[{en:'A quiet oasis appeared at dawn.',
+ ar:'ظهر أفقاً جديداً خلف الواحة.'}]}]});
+assert.equal(search('oasis').length,1);
+assert.equal(search('أُفُقًا').length,1);
+assert.equal(search('افقا')[0].ar,'ظهر أفقاً جديداً خلف الواحة.');
+assert.equal(chapters[0].paragraphs[0].ar,'فتح القبطان الخريطة السرية عند شروق الشمس.');
 assert.equal(window.LinguaShell.themeNames.includes('moonlit-margins'),true);
 assert.equal(window.LinguaShell.applyTheme('moonlit-margins'),true);
 assert.equal(saved.get('uiTheme'),'moonlit-margins');
@@ -61,6 +73,16 @@ for(const selector of ['body.theme-moonlit-margins','.theme-moonlit-margins .sto
  '.theme-moonlit-margins .shelf .card','.theme-moonlit-margins .reader.dark',
  '.lt-chapter-results','.lt-chapter-hit'])assert.ok(css.includes(selector),selector);
 assert.ok(backup.includes("'moonlit-margins'"));
+assert.ok(window.LinguaShell.themeNames.includes('saffron-archive'));
+assert.equal(window.LinguaShell.applyTheme('saffron-archive'),true);
+assert.equal(saved.get('uiTheme'),'saffron-archive');
+for(const selector of ['body.theme-saffron-archive',
+ '.theme-saffron-archive .storylens-hero',
+ '.theme-saffron-archive .shelf .card',
+ '.theme-saffron-archive .reader.dark',
+ '.lt-theme-saffron-archive .lt-theme-swatch'])
+ assert.ok(css.includes(selector),selector);
+assert.ok(backup.includes("'saffron-archive'"));
 assert.ok(!/https?:\/\//.test(css.slice(css.indexOf('/* LT-13: Moonlit Margins'))));
 assert.equal(chapters[0].paragraphs[0].ar,'فتح القبطان الخريطة السرية عند شروق الشمس.');
-console.log('PASS: bilingual offline full-text search, bounded results, source-preserving paragraph jump, Moonlit theme');
+console.log('PASS: bilingual Arabic-folded search, lazy content refresh, source-preserving paragraph jump, Moonlit and Saffron themes');
