@@ -73,4 +73,24 @@ assert.equal(inflected('She went on.','went',0),null,
 assert.equal(inflected('She went on.','went',5),null,
  'a click inside a token is not an exact word start');
 
+
+const appended={terms:[{term:'take off',type:'idiom',context:'أقلع'}]};
+const appendedDict=[{term:'book',literal:'كتاب'}];
+const call=(sentence,selected,offset)=>lookup({story:appended,dictionary:appendedDict,sentence,selected,offset,lemmas:w=>[w]});
+assert.equal(call('At dawn.', 'dawn', 3).entry,null,'unknown before append');
+appended.terms.push({term:'at dawn',type:'phrase',context:'عند الفجر'});
+assert.equal(call('At dawn.', 'dawn', 3).entry.term,'at dawn','rebuild lazy index when same terms array grows');
+assert.equal(call('She reads.', 'reads', 4).entry,null);
+appendedDict.push({term:'reads',literal:'يقرأ'});
+assert.equal(call('She reads.', 'reads', 4).entry.literal,'يقرأ','rebuild when same dictionary array grows');
+assert.equal(call('A cat.', 'at', 3),null,'no suffix lookup inside longer word');
+assert.equal(call("I can't.", 'can', 2),null,'no partial contraction lookup');
+assert.equal(call('A café.', 'café', 2).entry,null,'complete accented word remains selectable');
+const shell=fs.readFileSync(path.join(root,'app/src/main/assets/lingua-shell.js'),'utf8');
+const css=fs.readFileSync(path.join(root,'app/src/main/assets/lingua-shell.css'),'utf8');
+const backup=fs.readFileSync(path.join(root,'app/src/main/assets/data-backup.js'),'utf8');
+assert.ok(shell.includes("'mosaic-courtyard':'Mosaic Courtyard'"),'theme selectable in Settings');
+assert.match(css,/body\.theme-mosaic-courtyard[\s\S]*?border-radius:46%/,'courtyard has distinct arched layout');
+assert.ok(backup.includes("'mosaic-courtyard'].includes(val)"),'theme survives backup validation');
+
 console.log('PASS: indexed idioms, repeated matches, inflections, punctuation, unknowns, offline fallbacks and reader integration');
