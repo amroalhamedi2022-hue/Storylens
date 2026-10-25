@@ -96,3 +96,7 @@
 }
 @media(max-width:849px){.reader .lt-inline-illustration{float:none!important;max-width:100%;}}
 @media(prefers-reduced-motion:reduce){.reader .lt-inline-illustration{transition:none!important;}}
+
+/* LT-06/07: keyboard dictionary focus without turning every word into a Tab stop. */
+.reader .sentence .tok[role="button"]:focus-visible{outline:2px solid #188b94;outline-offset:3px;border-radius:3px;background:color-mix(in srgb,#64cfc8 19%,transparent)}
+.reader.dark .sentence .tok[role="button"]:focus-visible{outline-color:#a5f1e5;background:#a5f1e522}

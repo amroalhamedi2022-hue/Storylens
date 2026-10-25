@@ -168,22 +168,62 @@ renderReader=function(){
   // Capture word taps before the legacy per-tap scan of every phrase. The
   // optimized index preserves longest edited idiom, inflected-word fallback,
   // and the existing source-grounded word sheet/SRS persistence.
-  p.addEventListener('click',event=>{
-   if(!event.target?.matches?.('.tok') || !window.LinguaLookup ||
-      typeof document.createRange!=='function' || typeof wordSheet!=='function')return;
+  // One lookup path for touch, mouse, keyboard and assistive switches.
+  // The exact DOM token offset is still checked against the original English
+  // sentence, so keyboard focus cannot resolve an unrelated occurrence.
+  const lookupToken=token=>{
+   if(!token?.matches?.('.tok') || !window.LinguaLookup ||
+      typeof document.createRange!=='function' || typeof wordSheet!=='function')return false;
    const source=state.story.chapters[state.chapter]?.paragraphs?.[Number(p.dataset.i)];
-   if(!source)return;
+   if(!source)return false;
    const range=document.createRange();
    range.selectNodeContents(p);
-   range.setEndBefore(event.target);
+   range.setEndBefore(token);
    const hit=window.LinguaLookup.lookup({
     story:state.story,dictionary:catalog.dictionary,sentence:source.en,
-    selected:event.target.textContent,offset:range.toString().length,
+    selected:token.textContent,offset:range.toString().length,
     lemmas,lexicon:window.StoryLexicon,freeDict:window.FreeDictEnglishArabic
    });
-   if(!hit)return;
-   event.stopImmediatePropagation();
+   if(!hit)return false;
    wordSheet({...hit,source});
+   return true;
+  };
+  p.addEventListener('click',event=>{
+   if(lookupToken(event.target))event.stopImmediatePropagation();
+  },true);
+  // A paragraph is one Tab stop; ArrowRight enters word navigation, and
+  // ArrowLeft/Right/Home/End move within it. Avoid hundreds of Tab stops on
+  // long chapters, while making the dictionary operable without touch.
+  const wordTokens=Array.from(p.querySelectorAll?.('.tok')||[]);
+  wordTokens.forEach(token=>{
+   token.setAttribute('role','button');
+   token.setAttribute('tabindex','-1');
+  });
+  p.addEventListener('keydown',event=>{
+   const current=wordTokens.indexOf(event.target);
+   const fromParagraph=event.target===p;
+   let target=-1;
+   if(fromParagraph&&event.key==='ArrowRight')target=0;
+   else if(current>=0){
+    if(event.key==='ArrowRight')target=Math.min(wordTokens.length-1,current+1);
+    else if(event.key==='ArrowLeft'){
+     if(current===0){
+      event.preventDefault();event.stopImmediatePropagation();p.focus?.();return;
+     }
+     target=current-1;
+    }else if(event.key==='Home')target=0;
+    else if(event.key==='End')target=wordTokens.length-1;
+    else if(event.key==='Escape'){
+     event.preventDefault();event.stopImmediatePropagation();p.focus?.();return;
+    }else if(event.key==='Enter'||event.key===' '){
+     event.preventDefault();event.stopImmediatePropagation();
+     lookupToken(event.target);return;
+    }
+   }
+   if(target<0||!wordTokens.length)return;
+   event.preventDefault();event.stopImmediatePropagation();
+   wordTokens.forEach((token,i)=>token.setAttribute('tabindex',i===target?'0':'-1'));
+   wordTokens[target].focus?.();
   },true);
   p.setAttribute('tabindex','0');
   p.setAttribute('lang','en');
