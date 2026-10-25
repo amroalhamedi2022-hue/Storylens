@@ -1,3 +1,12 @@
+## 2026-10-25 — LT-07 Chapter V / LT-08 Exchange Gazette art / LT-13 theme (validated)
+
+- **Final tested PR-head SHA:** `e9affbf84d3a5a2c88ea0830e99b29aa6d7d4f2c`. The first targeted run failed only because the Chromium fixture still required four chapters; updated the fixture and reran the complete workflow.
+- **PASS:** `tools/verne-towle-ch05.test.cjs` — 14 aligned English/Arabic paragraphs, 933 English source words, 18 source-occurring contextual entries, Chapter V-specific offline SVG, Exchange Gazette theme and backup allowlist.
+- **PASS Android CI:** [run 40232066464](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40232066464) completed SUCCESS on the final tested SHA. Native Node content/regression tests, Gradle unit tests + Debug assembly, required APK asset checks, and Chromium full reader journey all passed.
+- **Debug APK artifact:** `12613321921`; CI inner APK SHA-256 `52e065d99a08bea3f2f218508f964cf00c613c4c3d4d08b5833c4c394507dfea`. Artifact ZIP SHA-256 is separate and is not the APK hash. Independent APK re-hash NOT TESTED.
+- **Content:** Chapters I–V of 37 are available offline. Chapter V is transcribed from Standard Ebooks' CC0 editorial edition; the English translation is public domain in the US, but territorial redistribution rights and independent Arabic literary proofreading remain NOT TESTED.
+- **Device/final acceptance NOT TESTED:** Xiaomi Pad 5 installation, real frame pacing, RTL/TalkBack, audio-device acceptance and final signed release. This Debug build is not final.
+
 ### Independent Debug APK verification — Chapter IV milestone
 - **PASS:** downloaded artifact **12609633627**, extracted 4,320,237-byte `app-debug.apk` and independently recalculated SHA-256 `62d7a0ed909df97c4ef5a4ab7ddc515e8ec4d84b6d0d3de60ed22bcad9bab294`, matching CI `APK_SHA256.txt`. Chapter IV script, reader index and contextual art are packaged. This supersedes the earlier pending independent-hash line for this run.
 - **NOT TESTED:** installation, visual/performance/RTL/TalkBack on Pad 5, independent literary editing, final signing.

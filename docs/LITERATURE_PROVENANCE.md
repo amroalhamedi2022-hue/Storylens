@@ -149,7 +149,7 @@ merely because its title is present in a roadmap.
   https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-5.xhtml
 - Arabic: 14 aligned companion draft translations. Independent literary proofreading and territory-specific redistribution clearance remain NOT TESTED.
 - Added 18 expressions that occur in the chapter source, a local original SVG of the Victorian newspaper/exchange setting, and the distinct offline **Exchange Gazette** theme with backup validation.
-- Test coverage checks paragraph alignment, substantial source length, source-bound expressions, script load order, chapter-specific illustration and theme/backup registration. Android CI and APK packaging will be reported after the targeted run completes.
+- Test coverage checks paragraph alignment, substantial source length, source-bound expressions, script load order, chapter-specific illustration and theme/backup registration. **PASS Android CI:** [run 40232066464](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40232066464) on final tested SHA `e9affbf84d3a5a2c88ea0830e99b29aa6d7d4f2c`. Debug artifact `12613321921`; CI-calculated inner APK SHA-256 `52e065d99a08bea3f2f218508f964cf00c613c4c3d4d08b5833c4c394507dfea`; independent APK re-hash NOT TESTED.
 - The source edition is public domain in the United States; this does not by itself settle distribution rights in every territory.
 
 ## Rules
