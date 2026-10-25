@@ -106,3 +106,10 @@
 .lt-chapter-nav .lt-chapter-button{flex:1 1 145px;min-height:44px;padding:10px 14px;border-radius:12px}
 .lt-chapter-nav .lt-chapter-button:disabled{opacity:.45;cursor:not-allowed}
 .lt-serial-progress{display:inline-block;font-size:.88em;letter-spacing:normal;line-height:1.5}
+
+/* LT-07: direct chapter jump is bounded to available offline chapters. */
+.lt-chapter-picker{display:flex;flex:1 1 100%;align-items:center;gap:12px;flex-wrap:wrap;color:var(--ink);font-size:.92rem}
+.lt-chapter-picker select{flex:1 1 220px;min-width:0;max-width:100%;min-height:44px;padding:8px 12px;
+ border:1px solid color-mix(in srgb,var(--ink) 25%,transparent);border-radius:12px;
+ background:var(--card);color:var(--ink);font:inherit}
+.lt-chapter-picker select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
