@@ -67,6 +67,7 @@ jobs:
           node tools/editorial.test.cjs
           node tools/editorial-c.test.cjs
           node tools/salt-meridian.test.cjs
+          node tools/verne-towle.test.cjs
           node tools/inline-illustrations.test.cjs
           node tools/assets.test.cjs
           node tools/library-experience.test.cjs
@@ -83,7 +84,7 @@ jobs:
           APK="$(find app/build/outputs/apk/debug -type f -name '*.apk' | head -1)"
           test -n "$APK"
           sha256sum "$APK" | tee app/build/outputs/apk/debug/APK_SHA256.txt
-          for file in index.html lexicon-extra.js liquid-aurora.css lingua-lookup.js reader-experience.js reader-experience.css editorial-stories-a.js editorial-stories-b.js editorial-stories-c.js novella-salt-meridian.js editorial-art.js library-experience.js library-experience.css data-backup.js data-backup.css lingua-shell.js lingua-shell.css lingua-ambience.js lingua-i18n.js freedict-en-ar.js LICENSE_FREEDICT.txt; do
+          for file in index.html lexicon-extra.js liquid-aurora.css lingua-lookup.js reader-experience.js reader-experience.css editorial-stories-a.js editorial-stories-b.js editorial-stories-c.js novella-salt-meridian.js classic-verne-towle-ch01.js editorial-art.js library-experience.js library-experience.css data-backup.js data-backup.css lingua-shell.js lingua-shell.css lingua-ambience.js lingua-i18n.js freedict-en-ar.js LICENSE_FREEDICT.txt; do
             unzip -Z1 "$APK" | grep -Fqx "assets/$file" || { echo "MISSING assets/$file"; exit 1; }
           done
           # This purposeful build checks that Android AAPT2 compiled the new
