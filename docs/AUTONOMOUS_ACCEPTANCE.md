@@ -1,3 +1,9 @@
+### Chapter IV targeted integration validation — 2026-10-25
+- **PASS:** [GitHub Actions 40222789455](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40222789455) on code+fixture SHA `4b4763f39084b1ef4eb2825579ea5a1fe2b7da26`: Node literary/content/dictionary regressions, Gradle Android Debug compilation and unit tests, explicit Chapter IV packaged-asset check, Chromium library and full reader/word/translation/theme journey.
+- **PASS (CI-calculated inner APK SHA-256):** `62d7a0ed909df97c4ef5a4ab7ddc515e8ec4d84b6d0d3de60ed22bcad9bab294`. Debug APK Artifact **12609633627**; screenshot Artifact **12609902605**. Independent artifact download and SHA-256 recomputation **NOT TESTED**.
+- **PASS (source-bound):** Chapter IV 43/43 exact English paragraphs, 942 words, 43 Arabic companion draft passages, 14 source-occurring contextual expressions, offline Charing Cross SVG, Midnight Platform theme/settings/backup.
+- **NOT TESTED:** actual Xiaomi Pad 5 installation, frame pacing, TalkBack, independent Arabic proofreading, territory-specific rights clearance, final signed release. Four of 37 chapters; never mark LT-07 complete.
+
 ## 2026-10-25 — LT-07 Chapter IV / LT-08 Charing Cross art / LT-13 Midnight Platform
 - **Production SHA:** `de0b6b563273403ecfac6e41de032000f5c37a50` (first functional commit); browser fixture/workflow repair in this follow-up. PR #1 only.
 - **English:** all 43 original paragraphs / 942 words of Towle Chapter IV copied from the Standard Ebooks source and checked paragraph-by-paragraph (43/43 exact after XHTML tag/whitespace normalization).
