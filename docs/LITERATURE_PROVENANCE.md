@@ -8,7 +8,7 @@ merely because its title is present in a roadmap.
 
 - ID: `around-the-world-in-eighty-days-towle`; appended by
   `app/src/main/assets/classic-verne-towle-ch02.js` after Chapter I.
-  **Two of 37 authentic chapters now packaged**, not a completed novel.
+  **Two of 37 were packaged at this checkpoint; Chapter III is now also available**, not a completed novel.
 - **English:** all 11 source paragraphs, **1,114 English words**, checked
   paragraph-by-paragraph against the public-domain Towle translation as
   transcribed by Standard Ebooks (11/11 exact matches after HTML and
@@ -35,14 +35,14 @@ merely because its title is present in a roadmap.
   registered in Settings, CSS and offline backup whitelist.
 - **Android CI and Pad 5:** see `docs/AUTONOMOUS_ACCEPTANCE.md`; do not
   infer successful packaging or real-device acceptance from V8 checks.
-- **Next batch:** complete Chapter III from the same verified translation,
+- **Next batch:** Chapter III has now been added; independently proofread it,
   with independent editorial review of Chapters I–II before final release.
 
 ## Packaged draft: Around the World in Eighty Days — Chapter I (Towle 1873)
 
 - ID: `around-the-world-in-eighty-days-towle`; asset:
   `app/src/main/assets/classic-verne-towle-ch01.js`.
-- **Only authentic Chapter I of 37** is packaged, not a completed novel.
+- **Authentic Chapter I of 37** is packaged, not a completed novel.
   English: 1,453 words in 29 continuous source-aligned passage groups;
   new Arabic companion translations: 29; 14 contextual vocabulary/idiom cards;
   one original locally generated Victorian Saville Row SVG scene.
@@ -84,7 +84,7 @@ merely because its title is present in a roadmap.
 - Remaining: Pad 5 reading/performance, scene fidelity, editorial QA, any
   additional long-form content and signed final release.
 
-## Continuing research: remaining Chapters III–XXXVII of Around the World in Eighty Days
+## Continuing research: remaining Chapters IV–XXXVII of Around the World in Eighty Days
 
 - Author: Jules Verne (1828–1905); original French novel published 1872.
 - Specific **English translation**: George Makepeace Towle (1841–1893),
@@ -96,12 +96,42 @@ merely because its title is present in a roadmap.
   distribution, and each image's own rights require independent checking
   before public APK distribution. Avoid carrying Project Gutenberg branding
   or license text into an app without reviewing their redistribution terms.
-- **Chapters I–II are now packaged as unreviewed bilingual drafts; Chapters III–XXXVII are NOT PACKAGED.** Do not claim the complete novel is available offline in Lingua Tales.
+- **Chapters I–III are now packaged as unreviewed bilingual drafts; Chapters IV–XXXVII are NOT PACKAGED.** Do not claim the complete novel is available offline in Lingua Tales.
 - Next coherent editorial milestone: finish redistribution-territory review,
-  add contiguous authentic Chapters III onward with fresh Arabic
+  add contiguous authentic Chapters IV onward with fresh Arabic
   paragraph translations and source-to-paragraph QA, retain chapter numbering,
   then test actual reader progress, vocabulary and visual context. Prefer
   licensed historical illustrations with per-file provenance and attribution.
+
+## Packaged draft: Around the World in Eighty Days — Chapter III (Towle; Standard Ebooks)
+
+- Added 2026-10-25 on the existing PR #1 branch. **Three of 37 authentic chapters
+  now packaged**, not a completed book.
+- English source: **65 original prose paragraphs** from the 1873 Towle
+  translation as transcribed by Standard Ebooks, plus the **complete eight-leg
+  80-day itinerary** preserved as an additional aligned passage. 66 aligned
+  English/Arabic entries, **1,980 English words**, 18 new source-occurring
+  contextual terms.
+- Exact upstream chapter:
+  https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-3.xhtml
+  Source XHTML is flattened to plain English text with typographic formatting
+  and invisible word joiners removed. This is not a synopsis.
+- New Arabic draft translation covers all 66 entries; **independent fluent
+  literary review NOT TESTED**.
+- Original offline SVG depicts the Reform Club whist table, clock and itinerary;
+  no third-party artwork or remote requests. Distinct **Reform Club Brass**
+  theme is registered in Settings and offline backup.
+- **PASS direct production-script V8:** 3 chapters, 66 bilingual entries,
+  itinerary, source-occurring terms, unique local illustration.
+- **FAIL initial CI** [40217571565](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40217571565)
+  on SHA `8e1e5a78aef9edd8ca52d708aaec8597164e3baf`: newly introduced
+  regression used a literal backslash-s instead of whitespace. Fixed test
+  regexes in SHA `00b206fb8386777e683ca3255b1898259be0c2d0`.
+  [CI 40217753579](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40217753579)
+  was **IN PROGRESS** at this checkpoint.
+- US public-domain rationale for Towle 1873; Standard Ebooks editorial CC0.
+  **Territory-specific redistribution, independent Arabic proofreading,
+  Pad 5 device FPS/RTL/TalkBack and final APK NOT TESTED**.
 
 ## Rules
 
