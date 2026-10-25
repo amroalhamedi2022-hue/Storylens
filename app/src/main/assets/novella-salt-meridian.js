@@ -83,7 +83,6 @@ const terms=[
  ['drawn a line','رسم خطًا','غيّر أحدهم حدود الممر على الخريطة','phrase','Also figuratively means setting a limit.'],
  ['by the book','وفق القواعد والإجراءات','سلطة اللجنة في تعليق العقد','idiom','Following formal rules.'],
  ['under oath','تحت القسم','اعترف إدريس رسميًا أمام اللجنة','legal phrase','A formal promise to tell the truth.'],
- ['a matter of record','حقيقة مثبتة في السجلات','الخلاف كان حول بيانات موثقة لا انطباعات','phrase','A fact established in official records.'],
  ['narrow gamble','مغامرة ذات هامش أمان ضئيل','عبور السفينة قرب الحيد','collocation','Narrow refers to the limited margin for error.'],
  ['barely enough room','حيّز بالكاد يكفي','لم تملك السفينة مساحة كبيرة لتغيّر مسارها','phrase','Barely emphasizes a near miss.'],
  ['the most to lose','الأكثر عرضة للخسارة','عمّال الميناء سيتحملون عواقب الحادث','idiom','Used to compare risks and consequences.'],
