@@ -27,7 +27,7 @@ function sanitize(raw){
   sfx:obj.sfx===true};
 }
 let prefs=sanitize(typeof get==='function'?get(KEY,DEFAULT):DEFAULT);
-let context=null,master=null,noiseSource=null,noiseFilter=null,drone=null,droneGain=null,playing=false;
+let context=null,master=null,noiseSource=null,noiseFilter=null,noiseGain=null,drone=null,droneGain=null,playing=false;
 function persist(){if(typeof put==='function')put(KEY,{...prefs});}
 function stopNodes(){
  for(const node of [noiseSource,drone]){
@@ -35,6 +35,7 @@ function stopNodes(){
  }
  noiseSource=null;drone=null;
  if(noiseFilter){noiseFilter.disconnect();noiseFilter=null;}
+ if(noiseGain){noiseGain.disconnect();noiseGain=null;}
  if(droneGain){droneGain.disconnect();droneGain=null;}
 }
 function ensureContext(){
@@ -67,7 +68,7 @@ function build(scene){
  const spec=SCENES.find(s=>s[0]===scene)||SCENES[0];
  noiseSource=ctx.createBufferSource();noiseSource.buffer=buffer(ctx);noiseSource.loop=true;
  noiseFilter=ctx.createBiquadFilter();noiseFilter.type='lowpass';noiseFilter.frequency.value=spec[3];
- const noiseGain=ctx.createGain();noiseGain.gain.value=spec[4];
+ noiseGain=ctx.createGain();noiseGain.gain.value=spec[4];
  noiseSource.connect(noiseFilter);noiseFilter.connect(noiseGain);noiseGain.connect(master);
  noiseSource.start();
  if(spec[5]){
@@ -104,8 +105,10 @@ function setVolume(value){
 function setSfx(enabled){prefs.sfx=enabled===true;persist();}
 function setSfxVolume(value){prefs.sfxVolume=clamp(value);persist();}
 function clickSound(){
- if(!prefs.sfx||document.hidden||!context||context.state!=='running')return;
- const osc=context.createOscillator(),gain=context.createGain();
+ if(!prefs.sfx||document.hidden)return;
+ const ctx=ensureContext();
+ if(ctx.state!=='running')ctx.resume().catch(()=>{});
+ const osc=ctx.createOscillator(),gain=ctx.createGain();
  osc.type='sine';osc.frequency.setValueAtTime(720,context.currentTime);
  osc.frequency.exponentialRampToValueAtTime(490,context.currentTime+0.045);
  gain.gain.setValueAtTime(Math.max(0.0001,prefs.sfxVolume*0.06),context.currentTime);
