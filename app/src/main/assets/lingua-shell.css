@@ -1297,3 +1297,52 @@ body.theme-bauhaus-studio{--body:#f2ead7;--card:#fff9e9;--ink:#162a38;--sub:#465
  background:color-mix(in srgb,#f5bd42 25%,transparent);border-radius:3px}
 .reader .sentence.lt-search-target:focus{outline:3px solid #214e8d}
 @media(prefers-reduced-motion:reduce){.theme-bauhaus-studio *{animation-duration:.001ms!important}}
+
+
+/* LT-13 Mosaic Courtyard — quiet tiled courtyard and arched reading alcove.
+ * Unlike the prior typographic/Bauhaus layouts: geometric ceramic borders,
+ * paired offset cards and a rounded architectural hero. Static/offline only. */
+body.theme-mosaic-courtyard{
+ --body:#f4ecdb;--card:#fff9ed;--ink:#243b42;--sub:#55676a;
+ --accent:#116d72;--reader:#fff9ed;--reader-ink:#243b42;
+ background:repeating-conic-gradient(#1d77740c 0 25%,transparent 0 50%) 0 0/32px 32px,
+ linear-gradient(155deg,#faf2e0,#e7e5d6 65%,#e2eee8);color:var(--ink)
+}
+.theme-mosaic-courtyard::before,.theme-mosaic-courtyard::after{display:none!important}
+.theme-mosaic-courtyard .library .header{border-bottom:5px double #176b7390;padding-bottom:17px}
+.theme-mosaic-courtyard .library .header h1{font:700 clamp(27px,4vw,42px)/1.2 Georgia,serif;color:#13585e}
+.theme-mosaic-courtyard .library .storylens-hero{
+ border:6px solid #2d8584;border-radius:46% 46% 18px 18px/26% 26% 18px 18px;
+ background:radial-gradient(circle at 80% 22%,#fff4d8 0 12%,transparent 13%),
+ linear-gradient(135deg,#d7ebe0,#f8edd8 58%,#b5d7cc);
+ box-shadow:inset 0 0 0 5px #f5e7c9,0 9px 0 #b8c4aa;
+ min-height:220px;padding:36px 32px;color:#25474b
+}
+.theme-mosaic-courtyard .library .storylens-hero h2{font:700 clamp(28px,4vw,39px)/1.2 Georgia,serif;color:#155a61}
+.theme-mosaic-courtyard .library .storylens-hero .hero-orb{
+ opacity:.3;filter:none;animation:none
+}
+.theme-mosaic-courtyard .library .shelf{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:21px}
+.theme-mosaic-courtyard .library .shelf .card{
+ border:4px solid #e8d4a6;border-radius:4px 30px 4px 30px;
+ background:#fffaf0;box-shadow:5px 6px 0 #17787b30;
+ padding:13px;animation:none
+}
+.theme-mosaic-courtyard .library .shelf .card:nth-child(even){border-radius:30px 4px 30px 4px}
+.theme-mosaic-courtyard .library .shelf .card .cover{border-radius:2px 20px 2px 20px;min-height:135px}
+.theme-mosaic-courtyard .library .shelf .card h2{color:#135f63;font-family:Georgia,serif}
+.theme-mosaic-courtyard .library .stl-discovery{background:#fff7e9;border:2px solid #8cb5ac;border-radius:4px 20px}
+.theme-mosaic-courtyard .lt-drawer{background:linear-gradient(160deg,#16565b,#143d46);border-color:#e9d5a5}
+.theme-mosaic-courtyard .lt-genre.selected{background:#f2d99d35;border-color:#ffe7af}
+.theme-mosaic-courtyard .lt-theme-choice{background:#f7f0dd;color:#204c52}
+.theme-mosaic-courtyard .reader:not(.dark){background:#fff9ed;color:#243b42}
+.lt-theme-mosaic-courtyard .lt-theme-swatch{
+ background:repeating-conic-gradient(#146d73 0 25%,#e9d6aa 0 50%) 0 0/24px 24px
+}
+@media(max-width:600px){
+ .theme-mosaic-courtyard .library .storylens-hero{padding:24px 19px;min-height:176px;border-width:4px}
+ .theme-mosaic-courtyard .library .shelf{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+ .theme-mosaic-courtyard .library .storylens-hero .hero-orb{animation:none!important}
+}
