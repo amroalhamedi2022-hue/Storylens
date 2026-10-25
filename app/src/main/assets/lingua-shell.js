@@ -237,12 +237,19 @@ function searchChapters(query,limit=40){
  }
  return results;
 }
+let chapterSearchTimer=null;
+function closeChapterSearch(){
+ if(chapterSearchTimer!==null){global.clearTimeout(chapterSearchTimer);chapterSearchTimer=null;}
+ const root=document.getElementById('root');
+ if(root)root.inert=false;
+ closeSheet();
+}
 function jumpToChapterHit(hit){
  if(!hit||!catalog.stories.some(s=>s.id===hit.storyId&&
   Number.isInteger(hit.chapter)&&hit.chapter>=0&&hit.chapter<s.chapters.length&&
   Number.isInteger(hit.paragraph)&&hit.paragraph>=0&&
   hit.paragraph<s.chapters[hit.chapter].paragraphs.length))return false;
- closeSheet();
+ closeChapterSearch();
  openStory(hit.storyId); // keeps the existing history and animation pipeline
  if(state.page!=='reader'||state.story?.id!==hit.storyId)return false;
  state.chapter=hit.chapter;
@@ -288,16 +295,17 @@ function openChapterSearch(){
  sheet.appendChild(results);
  const footer=document.createElement('footer');
  addButton(footer,rtl()?'إغلاق':'Close',()=>{
-  closeSheet();document.querySelector('.lt-chapter-search-open')?.focus();
+  closeChapterSearch();document.querySelector('.lt-chapter-search-open')?.focus();
  },'secondary');
  sheet.appendChild(footer);
  overlay.addEventListener('click',event=>{
-  if(event.target===overlay){closeSheet();document.querySelector('.lt-chapter-search-open')?.focus();}
+  if(event.target===overlay){closeChapterSearch();document.querySelector('.lt-chapter-search-open')?.focus();}
  });
  overlay.appendChild(sheet);host.appendChild(overlay);
- let pending=null;
+ const root=document.getElementById('root');
+ if(root)root.inert=true; // keep background controls outside modal focus order
  const render=()=>{
-  pending=null;results.replaceChildren();
+  chapterSearchTimer=null;results.replaceChildren();
   const q=input.value.trim();
   if(q.length<2){status.textContent=rtl()?'اكتب حرفين على الأقل.':'Enter at least two characters.';return;}
   const hits=searchChapters(q);
@@ -317,8 +325,8 @@ function openChapterSearch(){
   }
  };
  input.addEventListener('input',()=>{
-  if(pending!==null)global.clearTimeout(pending);
-  pending=global.setTimeout(render,170);
+  if(chapterSearchTimer!==null)global.clearTimeout(chapterSearchTimer);
+  chapterSearchTimer=global.setTimeout(render,170);
  });
  render();input.focus();return true;
 }
@@ -419,7 +427,7 @@ function handleDialogKeyboard(event){
    closeSheet();
    document.getElementById('lt-menu-toggle')?.focus();
   }else if(search){
-   closeSheet();
+   closeChapterSearch();
    document.querySelector('.lt-chapter-search-open')?.focus();
   }else closeDrawer();
   return;
