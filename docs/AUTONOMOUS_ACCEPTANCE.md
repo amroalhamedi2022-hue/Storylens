@@ -596,3 +596,11 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS (direct V8 execution on fetched production):** 14 checks for exact phrase selection, complete token boundaries, accented/combining forms, appended term/dictionary lookup, theme registration, CSS and backup whitelist. Regression assertions committed in `tools/phrase-lookup.test.cjs`.
 - **NOT TESTED:** native Node execution of the committed test, new SHA Android CI/APK packaging, visual theme screenshot, Pad 5 performance, TalkBack and full editorial content. No new verified APK or SHA-256 for this checkpoint; do not reuse earlier build fingerprints.
 - **Next:** verify Node/Android CI on this exact source; independent device acceptance and long licensed literature remain open.
+
+
+## 2026-10-25 — Serial chapter navigation and honest incomplete-book status
+- **Production:** `lingua-chapter-navigation.js` decorates the fully installed reader after locale wrappers. The reader exposes accessible previous/next chapter buttons through existing `stlChapter` navigation (which preserves legacy chapter/scroll storage). The Towle novel now declares `totalChapters=37`; when only 2 chapters are packaged, the final visible chapter says **To be continued** rather than falsely claiming **The End**. Arabic and English UI labels are supported; complete books retain their existing ending. Added responsive navigation CSS and `tools/chapter-navigation.test.cjs`.
+- **PASS (production V8 isolated):** fetched the committed production module and executed three DOM scenarios: ongoing English chapter 2/37, Arabic chapter 1/37, and a completed 2/2 book; navigation controls and status labels matched expectations.
+- **NOT TESTED:** execution of the committed Node test file, full Android CI on this branch SHA, Chromium, Xiaomi Pad 5, accessibility/TalkBack, app install and final APK. The isolated V8 harness is **not** device acceptance.
+- **Build question:** does the new script load after the locale wrappers in Android WebView, and do chapter controls preserve back navigation on device? Source inspection alone cannot prove this; a targeted Android/Chromium validation is justified, not a routine build after every edit.
+- **Open:** only 2/37 authentic Towle chapters; English/Arabic editorial review, full licensed audio catalog and independent device acceptance remain IN_PROGRESS.
