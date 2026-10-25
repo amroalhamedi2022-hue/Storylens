@@ -1,3 +1,37 @@
+## 2026-10-25 — LT-07 authentic Verne Chapter II + contextual interior art + Station Tickets
+
+- **Production:** complete Towle English Chapter II from the Standard Ebooks
+  CC0/public-domain transcription, 11 original source paragraphs and
+  **1,114 English words**, with 11 aligned original Arabic draft translations
+  and 14 new source-occurring contextual vocabulary/idiom entries. App now
+  contains **2 of 37 chapters**, not the full book. Existing chapter I, story
+  ID, bookmarks, vocabulary and reading history remain in place.
+- **Offline visual:** distinct locally drawn Victorian Saville Row interior
+  (numbered wardrobe, synchronized clock) for chapter II; existing chapter I
+  street illustration preserved. New Station Tickets theme uses railway
+  tickets/platform signage and contrasting blue/cream/coral layout, integrated
+  with Settings and backup; no remote art, fonts, audio or permissions.
+- **PASS (direct production V8):** 11/11 English chapter paragraphs
+  matched the upstream XHTML exactly after stripping HTML/typographic
+  whitespace, 11/11 Arabic aligned, 14/14 new terms source-occurring;
+  chapter load order, distinct offline SVG and theme/backup registration
+  checked against fetched production files. **This does not certify the
+  literary quality of the Arabic translation.**
+- **Source commit tested:** `40d703b41c25003d3ba7b3326490d682fc77aa5c`;
+  [Android CI 40203765741](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40203765741)
+  **IN PROGRESS at checkpoint**. Node/Gradle/asset verification steps
+  completed PASS; browser/screenshot/artifact steps pending. Do not claim
+  whole CI or APK artifact PASS before run completion.
+- **Purposeful build question:** can the two chapters, bilingual reader,
+  new illustration, theme, backups and dictionary survive Node, Android
+  packaging and Chromium navigation together? V8 alone cannot prove this.
+- **NOT TESTED:** real Xiaomi Pad 5 installation, scrolling/frame times,
+  screen-reader access, font/layout screenshots, independent APK rehash,
+  literary Arabic proofreading, rights in each redistribution territory,
+  Chapters III–XXXVII, final release. Debug is not final.
+- **Safety:** Draft PR #1 only; no main merge, other repositories,
+  Library/Handoff, paid API, microphone/TTS or private data.
+
 ## 2026-10-25 — LT-07 authentic Verne chapter I + LT-08 contextual art + LT-13 Saville Clockwork
 
 - **Production:** bundled the complete authentic **1873 George Makepeace
