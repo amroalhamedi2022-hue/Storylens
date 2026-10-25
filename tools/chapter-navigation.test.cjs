@@ -52,6 +52,6 @@ assert.match(arabic.label.children[0].textContent,/37/);
 const complete=run({total:2});
 assert.equal(complete.heading.textContent,'The End','finished books retain truthful ending');
 assert.equal(complete.label.children.length,0);
-const legacy=run({total:undefined});
+const legacy=run({total:null});
 assert.equal(legacy.label.children.length,0);
 console.log('PASS chapter navigation: ongoing book, Arabic/English, legacy and complete stories');
