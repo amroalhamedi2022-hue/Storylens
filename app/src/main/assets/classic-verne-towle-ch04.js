@@ -12,7 +12,7 @@ story.chapters.push({title:'In Which Phileas Fogg Astounds Passepartout, His Ser
  paragraphs:[
   {
     "en": "Having won twenty guineas at whist, and taken leave of his friends, Phileas Fogg, at twenty-five minutes past seven, left the Reform Club.",
-    "ar": "بعد أن ربح عشرين جنيهًا ذهبيًا في لعبة «ويست» وودّع أصدقاءه، غادر فيلياس فوغ نادي الإصلاح عند السابعة وخمس وثلاثين دقيقة مساءً."
+    "ar": "بعد أن ربح عشرين جنيهًا ذهبيًا في لعبة «ويست» وودّع أصدقاءه، غادر فيلياس فوغ نادي الإصلاح عند السابعة وخمس وعشرين دقيقة مساءً."
   },
   {
     "en": "Passepartout, who had conscientiously studied the programme of his duties, was more than surprised to see his master guilty of the inexactness of appearing at this unaccustomed hour; for, according to rule, he was not due in Saville Row until precisely midnight.",
