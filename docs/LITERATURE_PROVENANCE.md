@@ -50,7 +50,7 @@ merely because its title is present in a roadmap.
 - Remaining: Pad 5 reading/performance, scene fidelity, editorial QA, any
   additional long-form content and signed final release.
 
-## Research-only: Around the World in Eighty Days (1873 Towle translation)
+## Continuing research: remaining Chapters II–XXXVII of Around the World in Eighty Days
 
 - Author: Jules Verne (1828–1905); original French novel published 1872.
 - Specific **English translation**: George Makepeace Towle (1841–1893),
@@ -62,10 +62,9 @@ merely because its title is present in a roadmap.
   distribution, and each image's own rights require independent checking
   before public APK distribution. Avoid carrying Project Gutenberg branding
   or license text into an app without reviewing their redistribution terms.
-- **NOT PACKAGED, NOT TRANSLATED, NOT EDITORIALLY ACCEPTED.** Do not claim the
-  book is already available offline in Lingua Tales.
-- Next coherent editorial milestone: verify redistribution territory and
-  edition, add substantial contiguous authentic chapters with fresh Arabic
+- **Chapter I is now packaged as an unreviewed bilingual draft; Chapters II–XXXVII are NOT PACKAGED.** Do not claim the complete novel is available offline in Lingua Tales.
+- Next coherent editorial milestone: finish redistribution-territory review,
+  add contiguous authentic Chapters II onward with fresh Arabic
   paragraph translations and source-to-paragraph QA, retain chapter numbering,
   then test actual reader progress, vocabulary and visual context. Prefer
   licensed historical illustrations with per-file provenance and attribution.
