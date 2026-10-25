@@ -8,6 +8,12 @@ on:
 permissions:
   contents: read
 
+# Only the newest branch build is useful; avoid consuming CI minutes for
+# intermediate source edits in the same functional milestone.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
