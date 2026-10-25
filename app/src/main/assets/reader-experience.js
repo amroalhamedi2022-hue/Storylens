@@ -225,7 +225,22 @@ renderReader=function(){
    wordTokens.forEach((token,i)=>token.setAttribute('tabindex',i===target?'0':'-1'));
    wordTokens[target].focus?.();
   },true);
-  p.setAttribute('tabindex','0');
+  // One chapter-level Tab entry rather than hundreds of Tab stops in a
+  // full-length book. Up/Down moves between English paragraphs; the existing
+  // Right/Left controls still move among individual words for dictionary lookup.
+  p.setAttribute('tabindex',p===sentences[0]?'0':'-1');
+  p.addEventListener('focusin',()=>{
+   sentences.forEach(node=>node.setAttribute('tabindex',node===p?'0':'-1'));
+  });
+  p.addEventListener('keydown',event=>{
+   if(event.target!==p||!['ArrowUp','ArrowDown'].includes(event.key))return;
+   const index=sentences.indexOf(p);
+   const next=sentences[index+(event.key==='ArrowDown'?1:-1)];
+   if(!next)return; // let the browser handle the boundary naturally
+   event.preventDefault();event.stopImmediatePropagation();
+   sentences.forEach(node=>node.setAttribute('tabindex',node===next?'0':'-1'));
+   next.focus?.();
+  },true);
   p.setAttribute('lang','en');
   p.setAttribute('dir','ltr');
   // Preserve the actual English sentence for screen readers: aria-label would
