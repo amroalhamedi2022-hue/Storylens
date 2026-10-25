@@ -75,8 +75,27 @@ function reformClubScene(){
  '</svg>';
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
+function charingCrossDeparture(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="Rainy Victorian Charing Cross railway platform, steam locomotive and travellers">'+
+ '<defs><linearGradient id="night" x2="0" y2="1"><stop stop-color="#182f37"/><stop offset="1" stop-color="#61716e"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#night)"/><path d="M0 170L500 42L1000 170M0 238L500 78L1000 238" stroke="#b9a27a" stroke-width="18" fill="none"/>'+
+ '<path d="M140 0V490M500 0V490M850 0V490" stroke="#344a4b" stroke-width="28"/>'+
+ '<path d="M0 480H1000V620H0Z" fill="#303e40"/><path d="M0 600L380 430M1000 600L630 430" stroke="#c9a879" stroke-width="16"/>'+
+ '<path d="M0 615L400 430M1000 615L610 430" stroke="#77847c" stroke-width="8"/>'+
+ '<rect x="450" y="215" width="360" height="205" rx="48" fill="#1f363b" stroke="#bd9e67" stroke-width="13"/>'+
+ '<rect x="505" y="170" width="220" height="115" rx="18" fill="#30474a" stroke="#c7b080" stroke-width="12"/>'+
+ '<circle cx="510" cy="428" r="59" fill="#182a2c" stroke="#bba273" stroke-width="14"/>'+
+ '<circle cx="755" cy="428" r="59" fill="#182a2c" stroke="#bba273" stroke-width="14"/>'+
+ '<circle cx="785" cy="297" r="28" fill="#ffe4a0"/><path d="M440 165Q385 85 425 35M500 155Q455 70 505 20" fill="none" stroke="#d3e0d0" stroke-width="34" opacity=".28"/>'+
+ '<path d="M210 500L225 376L255 376L276 500Z" fill="#171f26"/><circle cx="239" cy="356" r="25" fill="#171f26"/>'+
+ '<path d="M175 333H300V347H175Z" fill="#171f26"/><path d="M220 300H264L283 336H198Z" fill="#171f26"/>'+
+ '<path d="M325 510L338 402L370 402L390 510Z" fill="#242a31"/><circle cx="352" cy="379" r="23" fill="#242a31"/>'+
+ '<rect x="375" y="458" width="58" height="42" rx="8" fill="#80583f" stroke="#d3b47e" stroke-width="5"/>'+
+ '<path d="M0 560Q220 525 400 555T1000 555" stroke="#f1dcb4" stroke-width="7" opacity=".3" fill="none"/></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():reformClubScene();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
