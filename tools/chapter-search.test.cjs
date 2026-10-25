@@ -77,8 +77,8 @@ assert.ok(window.LinguaShell.themeNames.includes('saffron-archive'));
 assert.equal(window.LinguaShell.applyTheme('saffron-archive'),true);
 assert.equal(saved.get('uiTheme'),'saffron-archive');
 for(const selector of ['body.theme-saffron-archive',
- '.theme-saffron-archive .storylens-hero',
- '.theme-saffron-archive .shelf .card',
+ '.theme-saffron-archive .library .storylens-hero',
+ '.theme-saffron-archive .library .shelf .card',
  '.theme-saffron-archive .reader.dark',
  '.lt-theme-saffron-archive .lt-theme-swatch'])
  assert.ok(css.includes(selector),selector);
