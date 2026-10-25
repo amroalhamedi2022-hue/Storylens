@@ -4,6 +4,35 @@ Updated 2026-10-25. This ledger distinguishes **packaged original text** from
 **researched but not yet imported** classic editions. A book is not accepted
 merely because its title is present in a roadmap.
 
+## Packaged draft: Around the World in Eighty Days — Chapter I (Towle 1873)
+
+- ID: `around-the-world-in-eighty-days-towle`; asset:
+  `app/src/main/assets/classic-verne-towle-ch01.js`.
+- **Only authentic Chapter I of 37** is packaged, not a completed novel.
+  English: 1,453 words in 29 continuous source-aligned passage groups;
+  new Arabic companion translations: 29; 14 contextual vocabulary/idiom cards;
+  one original locally generated Victorian Saville Row SVG scene.
+- Author: **Jules Verne (1828–1905)**; original French work (1872).
+  English translator: **George Makepeace Towle (1841–1893)**; 1873 edition.
+- Edition and full first chapter verified against:
+  https://en.wikisource.org/wiki/Around_the_World_in_Eighty_Days_(Towle)/Chapter_1
+  and https://www.gutenberg.org/ebooks/103 .
+  No Gutenberg trademark, edition images or modern translation is bundled.
+  Project Gutenberg lists the Towle text public domain in the **USA**.
+  Both original author and translator died over 120 years ago, a strong
+  public-domain rationale in common life+70 jurisdictions; **territory-specific
+  redistribution review is still open**, as is attribution/edition cross-check.
+- Arabic translation is a **new companion draft**, not a pre-existing published
+  Arabic translation; independent bilingual editorial proofreading is
+  **NOT TESTED**. The opening chapter is marked as a continuing batch.
+- Functional source checks: `tools/verne-towle.test.cjs`, including chapter
+  beginning/end, continuity anchors, source-occurring lexicon, bilingual
+  alignment, offline art, settings theme and backup. CI/Pad 5 device acceptance
+  to be recorded separately; do not claim final release.
+- Next editorial batch: add **complete Chapter II** from the same Towle
+  edition with source and Arabic proofreading, then Chapters III onward.
+  No placeholder text should be represented as a completed chapter.
+
 ## Packaged: The Salt Meridian (original short serial)
 
 - ID: `the-salt-meridian`; local source: `app/src/main/assets/novella-salt-meridian.js`.
