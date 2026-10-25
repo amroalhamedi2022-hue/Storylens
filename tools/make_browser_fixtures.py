@@ -15,12 +15,14 @@ tests={
 (function(){
  const passes=[],errors=[];
  function check(name,fn){try{if(!fn())throw Error('false');passes.push(name)}catch(err){errors.push(name+': '+err.message)}}
- check('catalog',()=>catalog.stories.length===37&&document.querySelectorAll('.card').length===37);
+ check('catalog',()=>catalog.stories.length>=38&&document.querySelectorAll('.card').length===catalog.stories.length);
  check('hero',()=>!!document.querySelector('.storylens-hero'));
  check('dictionary',()=>FreeDictEnglishArabic.size>=80000&&FreeDictEnglishArabic.resolve('dog')?.literal.includes('كلب'));
  check('story art',()=>!!art['eleven-minute-alibi_0']);
  check('novella catalog',()=>catalog.stories.some(s=>s.id==='the-salt-meridian'&&s.chapters.length===5));
  check('novella art',()=>!!art['the-salt-meridian_4']);
+ check('Verne authentic chapter',()=>catalog.stories.some(s=>s.id==='around-the-world-in-eighty-days-towle'&&s.chapters.length===1&&s.chapters[0].paragraphs.length===29));
+ check('Verne chapter scene',()=>!!art['around-the-world-in-eighty-days-towle_0']);
  check('in-book search entry',()=>!!document.querySelector('.lt-chapter-search-open'));
  check('offline chapter search',()=>{const hits=LinguaShell.searchChapters('harbor authority');return hits.some(x=>x.storyId==='the-salt-meridian'&&x.en.includes('harbor authority'))});
  check('Arabic source search',()=>LinguaShell.searchChapters('المنارة').some(x=>x.storyId==='the-salt-meridian'));
@@ -42,7 +44,7 @@ tests={
  check('full translation',()=>state.page==='translation'&&document.querySelector('.arabic-page')?.textContent.includes('التحقيق'));
  try{backToReader();libraryBack();cycleVisualTheme()}catch(e){errors.push('theme: '+e.message)}
  check('switch theme',()=>state.uiTheme==='aqua'&&document.body.classList.contains('theme-aqua'));
- check('library retained',()=>document.querySelectorAll('.card').length===37);
+ check('library retained',()=>document.querySelectorAll('.card').length===catalog.stories.length);
 
  check('discover controls',()=>!!document.querySelector('.stl-discovery')&&!!document.querySelector('.stl-select select'));
  check('favorite persistence',()=>{const x=StoryLensExtras.toggleFavorite('eleven-minute-alibi');return x===true&&StoryLensExtras.favorites().includes('eleven-minute-alibi')});
