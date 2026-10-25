@@ -2,8 +2,8 @@
  * Offline, no new permissions, no per-frame animation work. */
 (function(global){
 'use strict';
-const themeNames=['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre','celestial-atlas','harbor-ledger','circuit-notebook','terracotta-gallery','monochrome-zine','moonlit-margins','saffron-archive'];
-const themeLabels={aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library','botanical-folio':'Botanical Folio','rain-glass':'Rain Glass','solar-atelier':'Solar Atelier','ink-workshop':'Ink Workshop','velvet-theatre':'Velvet Theatre','celestial-atlas':'Celestial Atlas','harbor-ledger':'Harbor Ledger','circuit-notebook':'Circuit Notebook','terracotta-gallery':'Terracotta Gallery','monochrome-zine':'Monochrome Zine','moonlit-margins':'Moonlit Margins','saffron-archive':'Saffron Archive'};
+const themeNames=['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre','celestial-atlas','harbor-ledger','circuit-notebook','terracotta-gallery','monochrome-zine','moonlit-margins','saffron-archive','bauhaus-studio'];
+const themeLabels={aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library','botanical-folio':'Botanical Folio','rain-glass':'Rain Glass','solar-atelier':'Solar Atelier','ink-workshop':'Ink Workshop','velvet-theatre':'Velvet Theatre','celestial-atlas':'Celestial Atlas','harbor-ledger':'Harbor Ledger','circuit-notebook':'Circuit Notebook','terracotta-gallery':'Terracotta Gallery','monochrome-zine':'Monochrome Zine','moonlit-margins':'Moonlit Margins','saffron-archive':'Saffron Archive','bauhaus-studio':'Bauhaus Studio'};
 /* LT-12: separate, offline typography preferences. System font stacks avoid
  * font downloads and extra memory. Unsupported values never reach CSS. */
 const fontChoices={ar:['sans','naskh'],en:['serif','sans']};
@@ -205,6 +205,11 @@ function openSettings(){
  * and never invent dictionary meanings or replace a book's original text. */
 let chapterSearchIndex=null;
 let chapterSearchCatalogSize=-1;
+let chapterSearchCatalogShape='';
+// Refresh if a new chapter/paragraph batch is appended to an existing work.
+function catalogSearchShape(){
+ return catalog.stories.map(s=>s.id+':'+s.chapters.map(c=>c.paragraphs.length).join(',')).join('|');
+}
 // Search folds common Arabic spelling variants and vowel marks without
 // changing the original bilingual text displayed to readers. Do not
 // normalize source paragraphs in the catalog itself.
@@ -222,9 +227,11 @@ function searchChapters(query,limit=40){
  if(q.length<2)return [];
  // Content batches can be appended after the first search. Rebuild when the
  // catalog grows; do not silently hide newly packaged chapters.
- if(!chapterSearchIndex||chapterSearchCatalogSize!==catalog.stories.length){
+ const shape=catalogSearchShape();
+ if(!chapterSearchIndex||chapterSearchCatalogSize!==catalog.stories.length||chapterSearchCatalogShape!==shape){
   chapterSearchIndex=[];
   chapterSearchCatalogSize=catalog.stories.length;
+  chapterSearchCatalogShape=shape;
   for(const story of catalog.stories){
    for(let chapter=0;chapter<story.chapters.length;chapter++){
     const item=story.chapters[chapter];
@@ -278,7 +285,14 @@ function jumpToChapterHit(hit){
   if(state.page!=='reader'||state.story?.id!==hit.storyId||state.chapter!==hit.chapter)return;
   const node=Array.from(document.querySelectorAll('.reader .sentence'))
    .find(n=>Number(n.dataset?.i)===hit.paragraph);
-  node?.scrollIntoView?.({block:'center',behavior:'instant'});
+  if(!node)return;
+  // The hit is announced as real English reading content to assistive tech.
+  // This transient marker never changes the underlying literary paragraph.
+  node.classList?.add?.('lt-search-target');
+  node.setAttribute?.('tabindex','-1');
+  node.scrollIntoView?.({block:'center',behavior:'instant'});
+  node.focus?.({preventScroll:true});
+  global.setTimeout?.(()=>node.classList?.remove?.('lt-search-target'),2600);
  };
  if(typeof global.requestAnimationFrame==='function')global.requestAnimationFrame(scroll);
  else scroll();
