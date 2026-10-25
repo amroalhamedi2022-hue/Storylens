@@ -66,6 +66,7 @@ jobs:
           node tools/editorial.test.cjs
           node tools/editorial-c.test.cjs
           node tools/salt-meridian.test.cjs
+          node tools/inline-illustrations.test.cjs
           node tools/assets.test.cjs
           node tools/library-experience.test.cjs
           node tools/bookmark-navigation.test.cjs
