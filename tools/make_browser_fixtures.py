@@ -21,8 +21,8 @@ tests={
  check('story art',()=>!!art['eleven-minute-alibi_0']);
  check('novella catalog',()=>catalog.stories.some(s=>s.id==='the-salt-meridian'&&s.chapters.length===5));
  check('novella art',()=>!!art['the-salt-meridian_4']);
- check('Verne authentic chapter',()=>catalog.stories.some(s=>s.id==='around-the-world-in-eighty-days-towle'&&s.chapters.length===1&&s.chapters[0].paragraphs.length===29));
- check('Verne chapter scene',()=>!!art['around-the-world-in-eighty-days-towle_0']);
+ check('Verne authentic chapter',()=>catalog.stories.some(s=>s.id==='around-the-world-in-eighty-days-towle'&&s.chapters.length===2&&s.chapters[0].paragraphs.length===29&&s.chapters[1].paragraphs.length===11));
+ check('Verne chapter scenes',()=>!!art['around-the-world-in-eighty-days-towle_0']&&!!art['around-the-world-in-eighty-days-towle_1']&&art['around-the-world-in-eighty-days-towle_0']!==art['around-the-world-in-eighty-days-towle_1']);
  check('in-book search entry',()=>!!document.querySelector('.lt-chapter-search-open'));
  check('offline chapter search',()=>{const hits=LinguaShell.searchChapters('harbor authority');return hits.some(x=>x.storyId==='the-salt-meridian'&&x.en.includes('harbor authority'))});
  check('Arabic source search',()=>LinguaShell.searchChapters('المنارة').some(x=>x.storyId==='the-salt-meridian'));
