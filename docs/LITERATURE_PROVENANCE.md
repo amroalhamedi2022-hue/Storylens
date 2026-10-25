@@ -104,7 +104,7 @@ merely because its title is present in a roadmap.
   distribution, and each image's own rights require independent checking
   before public APK distribution. Avoid carrying Project Gutenberg branding
   or license text into an app without reviewing their redistribution terms.
-- **Chapters I–III are now packaged as unreviewed bilingual drafts; Chapters IV–XXXVII are NOT PACKAGED.** Do not claim the complete novel is available offline in Lingua Tales.
+- **Current package status supersedes the historical checkpoint below: Chapters I–V are packaged as bilingual drafts; Chapters VI–XXXVII are NOT PACKAGED.** Do not claim the complete novel is available offline in Lingua Tales.
 - Next coherent editorial milestone: finish redistribution-territory review,
   add contiguous authentic Chapters IV onward with fresh Arabic
   paragraph translations and source-to-paragraph QA, retain chapter numbering,
@@ -141,6 +141,16 @@ merely because its title is present in a roadmap.
 - US public-domain rationale for Towle 1873; Standard Ebooks editorial CC0.
   **Territory-specific redistribution, independent Arabic proofreading,
   Pad 5 device FPS/RTL/TalkBack and final APK NOT TESTED**.
+
+## Packaged draft: Around the World in Eighty Days — Chapter V (Towle; Standard Ebooks)
+
+- Added on the existing PR #1 branch. **Five of 37 chapters are packaged**, not a completed novel.
+- English source: 14 source paragraphs including the Suez-to-London telegram, 933 words, transcribed from Standard Ebooks' CC0 editorial XHTML:
+  https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-5.xhtml
+- Arabic: 14 aligned companion draft translations. Independent literary proofreading and territory-specific redistribution clearance remain NOT TESTED.
+- Added 18 expressions that occur in the chapter source, a local original SVG of the Victorian newspaper/exchange setting, and the distinct offline **Exchange Gazette** theme with backup validation.
+- Test coverage checks paragraph alignment, substantial source length, source-bound expressions, script load order, chapter-specific illustration and theme/backup registration. Android CI and APK packaging will be reported after the targeted run completes.
+- The source edition is public domain in the United States; this does not by itself settle distribution rights in every territory.
 
 ## Rules
 

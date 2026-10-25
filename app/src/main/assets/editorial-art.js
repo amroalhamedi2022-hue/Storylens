@@ -94,8 +94,26 @@ function charingCrossDeparture(){
  '<path d="M0 560Q220 525 400 555T1000 555" stroke="#f1dcb4" stroke-width="7" opacity=".3" fill="none"/></svg>';
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
+function exchangeGazetteScene(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="Victorian London exchange hall, folded gazette and brass telegraph">'+
+ '<defs><linearGradient id="gazette-wall" x2="0" y2="1"><stop stop-color="#34443d"/><stop offset="1" stop-color="#8d6645"/></linearGradient><linearGradient id="gazette-paper" x2="1" y2="1"><stop stop-color="#fff3d4"/><stop offset="1" stop-color="#d6bd8e"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#gazette-wall)"/><path d="M0 500H1000V620H0Z" fill="#2d302b"/>'+
+ '<path d="M70 0V500M930 0V500" stroke="#c9a36d" stroke-width="18" opacity=".7"/>'+
+ '<rect x="112" y="75" width="340" height="370" rx="5" fill="url(#gazette-paper)" stroke="#5c4430" stroke-width="12"/>'+
+ '<text x="282" y="125" text-anchor="middle" font-family="Georgia,serif" font-size="27" fill="#2c3830">THE GAZETTE</text>'+
+ '<path d="M145 150H420M145 170H420M145 190H420" stroke="#5a5a49" stroke-width="5"/>'+
+ '<rect x="145" y="215" width="110" height="95" fill="#8c9a80"/><path d="M145 300L195 245L255 300Z" fill="#3c5547"/>'+
+ '<path d="M275 220H420M275 240H420M275 260H420M275 280H420M145 330H420M145 350H420M145 370H420M145 390H420" stroke="#8b8068" stroke-width="5"/>'+
+ '<path d="M540 470L565 260H865L890 470Z" fill="#342f2a" stroke="#d1ad70" stroke-width="12"/>'+
+ '<rect x="595" y="290" width="240" height="135" fill="#192c2b" stroke="#b58a50" stroke-width="7"/>'+
+ '<path d="M615 390L660 365L702 380L747 330L790 350L815 315" fill="none" stroke="#e4bd72" stroke-width="8"/>'+
+ '<circle cx="792" cy="145" r="84" fill="#e6cf9e" stroke="#47382d" stroke-width="17"/><circle cx="792" cy="145" r="65" fill="#f8edcf" stroke="#b18a55" stroke-width="5"/>'+
+ '<path d="M792 145V95M792 145L829 166" stroke="#39443a" stroke-width="9" stroke-linecap="round"/>'+
+ '<path d="M0 535H1000" stroke="#d0ad75" stroke-width="5" opacity=".65"/></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():charingCrossDeparture();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';

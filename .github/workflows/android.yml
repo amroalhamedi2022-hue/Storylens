@@ -69,6 +69,7 @@ jobs:
           node tools/salt-meridian.test.cjs
           node tools/verne-towle.test.cjs
           node tools/verne-chronology.test.cjs
+          node tools/verne-towle-ch05.test.cjs
           node tools/chapter-navigation.test.cjs
           node tools/inline-illustrations.test.cjs
           node tools/assets.test.cjs
@@ -86,7 +87,7 @@ jobs:
           APK="$(find app/build/outputs/apk/debug -type f -name '*.apk' | head -1)"
           test -n "$APK"
           sha256sum "$APK" | tee app/build/outputs/apk/debug/APK_SHA256.txt
-          for file in index.html lexicon-extra.js liquid-aurora.css lingua-lookup.js reader-experience.js reader-experience.css editorial-stories-a.js editorial-stories-b.js editorial-stories-c.js novella-salt-meridian.js classic-verne-towle-ch01.js classic-verne-towle-ch02.js classic-verne-towle-ch03.js classic-verne-towle-ch04.js lingua-chapter-navigation.js editorial-art.js library-experience.js library-experience.css data-backup.js data-backup.css lingua-shell.js lingua-shell.css lingua-ambience.js lingua-i18n.js freedict-en-ar.js LICENSE_FREEDICT.txt; do
+          for file in index.html lexicon-extra.js liquid-aurora.css lingua-lookup.js reader-experience.js reader-experience.css editorial-stories-a.js editorial-stories-b.js editorial-stories-c.js novella-salt-meridian.js classic-verne-towle-ch01.js classic-verne-towle-ch02.js classic-verne-towle-ch03.js classic-verne-towle-ch04.js classic-verne-towle-ch05.js lingua-chapter-navigation.js editorial-art.js library-experience.js library-experience.css data-backup.js data-backup.css lingua-shell.js lingua-shell.css lingua-ambience.js lingua-i18n.js freedict-en-ar.js LICENSE_FREEDICT.txt; do
             unzip -Z1 "$APK" | grep -Fqx "assets/$file" || { echo "MISSING assets/$file"; exit 1; }
           done
           # This purposeful build checks that Android AAPT2 compiled the new

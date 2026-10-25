@@ -1545,3 +1545,27 @@ body.theme-midnight-platform::before,body.theme-midnight-platform::after{display
 .theme-midnight-platform .reader .reading-width{border-inline-start:2px solid #cfa96c;padding-inline-start:20px}
 .lt-theme-midnight-platform .lt-theme-swatch{background:linear-gradient(130deg,#14272d,#46636a 52%,#e6b974)}
 @media(prefers-reduced-motion:reduce){.theme-midnight-platform .library .shelf .card{transition:none!important}}
+
+
+/* LT-13 Exchange Gazette: newspaper columns, exchange-board lines and warm ink.
+ * Static CSS only; no blur animation or additional network/font assets. */
+.lt-theme-exchange-gazette .lt-theme-swatch{
+ background:repeating-linear-gradient(90deg,#f3e6c8 0 15px,#9d5735 15px 18px,#33483c 18px 24px);
+}
+body.theme-exchange-gazette{
+ --body:#e9dfc8;--card:#fff7e5;--ink:#2a332d;--sub:#626456;
+ --accent:#9b4f2f;--reader:#fff8e8;--reader-ink:#29332d;color:var(--ink);
+ background:repeating-linear-gradient(0deg,transparent 0 31px,#4c5b4b13 31px 32px),
+ linear-gradient(135deg,#f4e8cd,#e3d5b6 58%,#e9e0cb);
+}
+body.theme-exchange-gazette::before,body.theme-exchange-gazette::after{display:none!important}
+.theme-exchange-gazette .library .header{border-bottom:5px double #9b4f2f;padding-bottom:17px}
+.theme-exchange-gazette .library .brand{color:#9b4f2f}
+.theme-exchange-gazette .library .card{
+ border:1px solid #b99a6b;border-radius:4px 4px 18px 4px;
+ box-shadow:4px 4px 0 #6c4c2c18;
+}
+.theme-exchange-gazette .library .storylens-hero{
+ border-radius:4px 4px 24px 4px;
+ background-image:repeating-linear-gradient(90deg,transparent 0 64px,#f3e2be12 64px 66px);
+}
