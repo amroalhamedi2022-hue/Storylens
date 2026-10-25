@@ -45,4 +45,30 @@ assert.match(readerJs,/addEventListener\('click',event=>[\s\S]*?window\.LinguaLo
  'production reader uses resolver in a click capture handler');
 assert.match(readerJs,/event\.stopImmediatePropagation\(\);\s*wordSheet\(/,
  'one word tap opens exactly one existing sheet');
+
+// Inflected idioms must resolve from either the changed verb or a later word,
+// while preserving the exact clicked occurrence and rejecting punctuation gaps.
+const goOn={term:'go on',type:'idiom',context:'تابع'};
+const takeOff={term:'take off',type:'idiom',context:'أقلع'};
+const inflectedStory={terms:[goOn,takeOff]};
+const inflectedLemmas=w=>({went:['went','go'],going:['going','go'],
+ took:['took','take']}[w.toLowerCase()]||[w.toLowerCase()]);
+function inflected(sentence,selected,offset) {
+ return lookup({story:inflectedStory,dictionary:[],sentence,selected,offset,
+  lemmas:inflectedLemmas});
+}
+assert.equal(inflected('She went on, then went on.','went',4).entry,goOn);
+assert.equal(inflected('She went on, then went on.','on',9).entry,goOn);
+assert.equal(inflected('She went on, then went on.','went',18).entry,goOn);
+assert.equal(inflected('She went on, then went on.','on',23).entry,goOn);
+assert.equal(inflected('The plane took off.','took',10).entry,takeOff);
+assert.equal(inflected('The plane took off.','off',15).entry,takeOff);
+assert.equal(inflected('She went   on.','went',4).display,'went   on');
+assert.equal(inflected('She went, on.','went',4).entry,null,
+ 'do not span punctuation as if it were whitespace');
+assert.equal(inflected('She went on.','went',0),null,
+ 'forged DOM offset must not resolve another word');
+assert.equal(inflected('She went on.','went',5),null,
+ 'a click inside a token is not an exact word start');
+
 console.log('PASS: indexed idioms, repeated matches, inflections, punctuation, unknowns, offline fallbacks and reader integration');
