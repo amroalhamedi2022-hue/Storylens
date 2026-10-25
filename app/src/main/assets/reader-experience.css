@@ -100,3 +100,9 @@
 /* LT-06/07: keyboard dictionary focus without turning every word into a Tab stop. */
 .reader .sentence .tok[role="button"]:focus-visible{outline:2px solid #188b94;outline-offset:3px;border-radius:3px;background:color-mix(in srgb,#64cfc8 19%,transparent)}
 .reader.dark .sentence .tok[role="button"]:focus-visible{outline-color:#a5f1e5;background:#a5f1e522}
+
+/* Truthful progress for ongoing serialized classics; no change to reading font. */
+.lt-chapter-nav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin:0 0 24px}
+.lt-chapter-nav .lt-chapter-button{flex:1 1 145px;min-height:44px;padding:10px 14px;border-radius:12px}
+.lt-chapter-nav .lt-chapter-button:disabled{opacity:.45;cursor:not-allowed}
+.lt-serial-progress{display:inline-block;font-size:.88em;letter-spacing:normal;line-height:1.5}
