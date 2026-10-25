@@ -132,8 +132,18 @@ function suezQuaysScene(){
  '<text x="600" y="345" font-family="Georgia,serif" font-size="31" fill="#273d45" text-anchor="middle">MONGOLIA</text></svg>';
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
+function consularLedgerScene(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="Victorian consulate desk with passport, official seal and detective magnifying glass">'+
+ '<defs><linearGradient id="wall" x2="0" y2="1"><stop stop-color="#d8d0bb"/><stop offset="1" stop-color="#8f9c96"/></linearGradient><linearGradient id="desk" x2="0" y2="1"><stop stop-color="#7b4d3b"/><stop offset="1" stop-color="#3c3032"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#wall)"/><path d="M0 0H1000V72H0Z" fill="#243b45"/><path d="M105 72V360M895 72V360" stroke="#a18a61" stroke-width="12"/><rect x="130" y="105" width="740" height="250" fill="#e7e0ca" stroke="#43555a" stroke-width="12"/><path d="M165 145H835M165 180H835M165 215H835" stroke="#b9b39f" stroke-width="4"/>'+
+ '<path d="M0 385L1000 355V620H0Z" fill="url(#desk)"/><path d="M0 432L1000 402M0 487L1000 457M0 542L1000 512" stroke="#c28b60" stroke-width="5" opacity=".5"/>'+
+ '<g transform="translate(250 270) rotate(-8)"><rect x="0" y="0" width="300" height="188" rx="8" fill="#263f4a" stroke="#d6bd82" stroke-width="8"/><rect x="22" y="20" width="256" height="148" rx="4" fill="#e8ddbd"/><path d="M42 50H255M42 75H230M42 100H250M42 125H180" stroke="#61716c" stroke-width="5"/><circle cx="226" cy="127" r="24" fill="none" stroke="#9b4b3c" stroke-width="5"/><path d="M212 127L222 137L241 113" fill="none" stroke="#9b4b3c" stroke-width="5"/></g>'+
+ '<g transform="translate(690 240) rotate(14)"><circle cx="0" cy="0" r="84" fill="#c6d9d4" fill-opacity=".42" stroke="#293e49" stroke-width="20"/><circle cx="0" cy="0" r="65" fill="none" stroke="#e9c88a" stroke-width="5"/><path d="M58 60L132 135" stroke="#293e49" stroke-width="27" stroke-linecap="round"/><path d="M58 60L132 135" stroke="#9e7147" stroke-width="11" stroke-linecap="round"/></g>'+
+ '<g transform="translate(600 445)"><rect x="-36" y="-24" width="72" height="52" rx="8" fill="#b34d43" stroke="#ead6aa" stroke-width="5"/><circle r="18" fill="#f0d7a1"/><path d="M-11 0H11M0 -11V11" stroke="#87403a" stroke-width="4"/></g><path d="M0 590H1000" stroke="#e0bd7e" stroke-width="5"/></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():charingCrossDeparture();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
