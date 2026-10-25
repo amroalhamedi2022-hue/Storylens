@@ -1569,3 +1569,30 @@ body.theme-exchange-gazette::before,body.theme-exchange-gazette::after{display:n
  border-radius:4px 4px 24px 4px;
  background-image:repeating-linear-gradient(90deg,transparent 0 64px,#f3e2be12 64px 66px);
 }
+
+
+/* LT-13 Suez Quays: bright maritime chart, split horizon, archival navigation labels.
+ * Static gradients and borders only; distinct from Exchange Gazette newsprint. */
+.lt-theme-suez-quays .lt-theme-swatch{background:linear-gradient(145deg,#103e57 0 35%,#55a1a5 35% 62%,#e9bf81 62%)}
+body.theme-suez-quays{
+ --body:#dcece8;--card:#f8f7eb;--ink:#173e49;--sub:#49686c;
+ --accent:#a05c37;--reader:#fdfbf0;--reader-ink:#203c42;color:var(--ink);
+ background:linear-gradient(90deg,transparent 49.9%,#2b758a1b 50%,transparent 50.1%),
+ repeating-linear-gradient(0deg,transparent 0 45px,#29748712 45px 46px),
+ linear-gradient(145deg,#e8f4ee,#bedbdc 52%,#f4d8a8);
+}
+body.theme-suez-quays::before,body.theme-suez-quays::after{display:none!important}
+.theme-suez-quays .library .header{border-bottom:3px solid #276c7e;padding-bottom:16px}
+.theme-suez-quays .library .brand{color:#164d63}
+.theme-suez-quays .library .storylens-hero{
+ border:2px solid #377f87;border-radius:28px 4px 28px 4px;
+ background:linear-gradient(115deg,#d3ebeb,#f6dfb7 76%);
+}
+.theme-suez-quays .library .card{
+ border:1px solid #8eaba6;border-radius:3px 22px 3px 22px;
+ box-shadow:6px 6px 0 #357d7e20;animation:none;
+}
+.theme-suez-quays .library .card h2{color:#164c5a;font-family:Georgia,serif}
+.theme-suez-quays .reader{background:#fdfbf0;color:#213b44}
+.theme-suez-quays .reader .reading-width{border-inline-start:3px double #267d8b;padding-inline-start:20px}
+@media(prefers-reduced-motion:reduce){.theme-suez-quays .library .card{transition:none!important}}

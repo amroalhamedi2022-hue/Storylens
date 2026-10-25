@@ -160,3 +160,10 @@ merely because its title is present in a roadmap.
   license or public-domain rationale, checksum and per-chapter QA.
 - No third-party PDF, personal medical data, model weights or secrets belong
   in this literature repository.
+
+
+## 2026-10-25 — Towle Chapter VI (Suez and detective Fix)
+- Complete original English chapter VI from [Standard Ebooks Towle 1873 transcription](https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-6.xhtml), 37 aligned prose/dialogue paragraphs and a new 37-paragraph Arabic draft. English source is public domain in the US; Standard Ebooks editorial transcription is CC0. Independent Arabic review and territorial distribution clearance remain **NOT TESTED**.
+- Seventeen source-occurring English vocabulary/idiom entries, bespoke original offline Suez steamship SVG, and a distinct Suez Quays maritime chart theme. No unlicensed stock photo or network image.
+- Only **six of the original 37 chapters** are now packaged, not the whole novel. Prior historical statements about five chapters describe earlier checkpoints.
+- New Node content regression checks original paragraph alignment, source length, source-bound terms, art uniqueness, theme and backup compatibility. Android/Chromium/device result recorded separately in acceptance ledger.

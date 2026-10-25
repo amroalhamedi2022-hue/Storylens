@@ -1,3 +1,9 @@
+## 2026-10-25 — Towle Chapter VI / Suez Quays integrated milestone
+- Production: 37 original English source paragraphs aligned to 37 newly drafted Arabic paragraphs; 17 source-occurring contextual entries; original offline SVG of the Mongolia at Suez; new visually distinct Suez Quays theme and backup allowlist. Script order, Chromium chapter fixture, Android asset packaging and source tests updated together.
+- Source: Standard Ebooks 1873 Towle transcription (CC0 editorial work); US public-domain translation; territory rights and independent Arabic literary review **NOT TESTED**. Six of 37 original chapters available; not the complete novel.
+- **NOT TESTED (pending matching CI):** native Node tests, Chromium flow, Android Gradle, APK checksum, Pad 5 RTL/TalkBack/FPS and final acceptance. A build is justified to check full integration of 37 passages, asset packaging and browser chapter navigation, not routine compilation.
+- No main writes, PR merge, paid API, microphone/TTS, other repositories or Library/Handoff changes.
+
 ## 2026-10-25 — LT-07 Chapter V / LT-08 Exchange Gazette art / LT-13 theme (validated)
 
 - **Final tested PR-head SHA:** `e9affbf84d3a5a2c88ea0830e99b29aa6d7d4f2c`. The first targeted run failed only because the Chromium fixture still required four chapters; updated the fixture and reran the complete workflow.

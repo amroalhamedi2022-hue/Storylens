@@ -112,8 +112,28 @@ function exchangeGazetteScene(){
  '<path d="M0 535H1000" stroke="#d0ad75" stroke-width="5" opacity=".65"/></svg>';
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
+// Original locally generated vector illustration: the Mongolia at Suez, 1872.
+function suezQuaysScene(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="Steamship Mongolia arriving at Suez, with detective on the quay">'+
+ '<defs><linearGradient id="suez-sky" x2="0" y2="1"><stop stop-color="#143b50"/><stop offset="1" stop-color="#e5b985"/></linearGradient><linearGradient id="suez-sea" x2="0" y2="1"><stop stop-color="#347b87"/><stop offset="1" stop-color="#143f55"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#suez-sky)"/><circle cx="835" cy="115" r="70" fill="#f7d59e" opacity=".78"/>'+
+ '<path d="M0 320L110 292L195 308L270 284L360 314L455 300L545 330H1000V400H0Z" fill="#b99b75"/>'+
+ '<path d="M0 345H1000V620H0Z" fill="url(#suez-sea)"/>'+
+ '<path d="M100 330V220H125V330M130 330V254H148V330M158 330V204H182V330" stroke="#665e55" stroke-width="6" fill="#d9c39b"/>'+
+ '<path d="M258 375H860L810 462H333Z" fill="#263e48" stroke="#d6ba8c" stroke-width="8"/>'+
+ '<path d="M335 365V275H730V365Z" fill="#e2d4b5" stroke="#364a4b" stroke-width="8"/>'+
+ '<path d="M410 275V208H482V275M565 275V208H637V275" fill="#a65b43" stroke="#2f4347" stroke-width="7"/>'+
+ '<path d="M450 205Q425 162 467 125Q510 98 526 60M604 205Q585 158 620 121" fill="none" stroke="#b7b0a4" stroke-width="22" opacity=".48"/>'+
+ '<path d="M355 318H708" stroke="#3e585d" stroke-width="10" stroke-dasharray="26 22"/>'+
+ '<path d="M0 470L260 446L260 620H0Z" fill="#a17d5d"/><path d="M0 490L260 464" stroke="#e2c69c" stroke-width="8"/>'+
+ '<path d="M100 468L113 373L133 373L147 467Z" fill="#182f3a"/><circle cx="124" cy="353" r="23" fill="#263642"/>'+
+ '<path d="M89 333H159V344H89Z" fill="#263642"/><path d="M107 310H144L151 333H99Z" fill="#263642"/>'+
+ '<path d="M0 560Q230 540 470 566T1000 551" stroke="#a8d1c4" stroke-width="5" fill="none" opacity=".45"/>'+
+ '<text x="600" y="345" font-family="Georgia,serif" font-size="31" fill="#273d45" text-anchor="middle">MONGOLIA</text></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():charingCrossDeparture();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
