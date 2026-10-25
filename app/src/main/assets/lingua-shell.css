@@ -1394,3 +1394,85 @@ body.theme-saville-clockwork{
 @media(prefers-reduced-motion:reduce){
  .theme-saville-clockwork .library .card:hover{transform:none}
 }
+
+/* LT-13 Station Tickets: bold railway ticket punches, platform signs and route
+ * panels, deliberately distinct from the Saville Clockwork parchment salon.
+ * No motion-heavy effects, fonts, image fetches or third-party resources. */
+body.theme-station-tickets{
+ --body:#e5eef1;--card:#fffdf4;--ink:#102d42;--sub:#426070;
+ --accent:#c9472c;--reader:#fffdf4;--reader-ink:#102d42;
+ background:linear-gradient(90deg,#123d59 0 13px,transparent 13px),
+ repeating-linear-gradient(0deg,transparent 0 48px,#1646630c 49px 50px),
+ #e5eef1;color:var(--ink)
+}
+.theme-station-tickets::before,.theme-station-tickets::after{display:none!important}
+.theme-station-tickets .library .header{
+ border-bottom:7px solid #123d59;padding-bottom:16px
+}
+.theme-station-tickets .library .header h1{
+ font:900 clamp(27px,4.6vw,49px)/1.05 system-ui,sans-serif;
+ letter-spacing:-.045em;color:#123d59;text-transform:uppercase
+}
+.theme-station-tickets .library .storylens-hero{
+ border:5px solid #123d59;border-radius:12px 12px 4px 4px;
+ background:linear-gradient(115deg,#f8e2aa 0 65%,#d6ecf0 65% 100%);
+ box-shadow:0 9px 0 #c9472c;min-height:210px
+}
+.theme-station-tickets .library .storylens-hero h2{
+ font:900 clamp(27px,4vw,46px)/1.05 system-ui,sans-serif;
+ color:#123d59;letter-spacing:-.03em
+}
+.theme-station-tickets .library .storylens-hero .hero-orb{
+ background:repeating-conic-gradient(#c9472c 0 18deg,#123d59 18deg 36deg);
+ border:10px solid #f8e2aa;border-radius:50%;animation:none;filter:none
+}
+.theme-station-tickets .library .shelf{
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));gap:22px
+}
+.theme-station-tickets .library .shelf .card{
+ background:#fffdf4;border:3px solid #123d59;border-radius:12px;
+ box-shadow:0 8px 0 #d2a35d;animation:none;padding:13px;
+ content-visibility:auto;contain-intrinsic-size:auto 300px
+}
+.theme-station-tickets .library .shelf .card:nth-child(3n+2){
+ border-top:9px solid #c9472c
+}
+.theme-station-tickets .library .shelf .card .cover{
+ border-radius:5px;border:2px dashed #c9472c
+}
+.theme-station-tickets .library .shelf .card h2{
+ color:#123d59;font-weight:850;letter-spacing:-.025em
+}
+.theme-station-tickets .library .stl-discovery{
+ background:#fffdf4;border:3px solid #123d59;border-radius:8px
+}
+.theme-station-tickets .lt-drawer{
+ background:#123d59;border-color:#f8e2aa
+}
+.theme-station-tickets .lt-genre.selected{
+ background:#c9472c;border-color:#f8e2aa
+}
+.theme-station-tickets button:focus-visible{
+ outline:3px solid #c9472c;outline-offset:3px
+}
+.theme-station-tickets .reader:not(.dark){
+ background:#fffdf4;color:#102d42;border-inline:5px solid #123d59
+}
+.theme-station-tickets .reader.dark{background:#102d42;color:#f2e8d4}
+.theme-station-tickets .reader h2{
+ border-bottom:4px dashed #c9472c;padding-bottom:12px
+}
+.theme-station-tickets .lt-theme-choice{background:#e9f1f1;color:#123d59}
+.lt-theme-station-tickets .lt-theme-swatch{
+ background:linear-gradient(145deg,#123d59 0 40%,#f8e2aa 40% 72%,#c9472c 72%)
+}
+@media(max-width:600px){
+ .theme-station-tickets .library .storylens-hero{
+  padding:18px;min-height:165px;border-width:3px;box-shadow:0 5px 0 #c9472c
+ }
+ .theme-station-tickets .library .shelf{grid-template-columns:1fr}
+ .theme-station-tickets .reader:not(.dark){border-inline-width:2px}
+}
+@media(prefers-reduced-motion:reduce){
+ .theme-station-tickets .library .storylens-hero .hero-orb{animation:none!important}
+}
