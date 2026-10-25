@@ -208,7 +208,16 @@ let chapterSearchCatalogSize=-1;
 let chapterSearchCatalogShape='';
 // Refresh if a new chapter/paragraph batch is appended to an existing work.
 function catalogSearchShape(){
- return catalog.stories.map(s=>s.id+':'+s.chapters.map(c=>c.paragraphs.length).join(',')).join('|');
+ // Keep cache validation proportional to chapters, not millions of words.
+ // A translator correcting an existing paragraph (same chapter length) bumps
+ // chapter.searchRevision; a new book edition may bump story.searchRevision.
+ return catalog.stories.map(s=>s.id+':'+(s.searchRevision??0)+':'+
+  s.chapters.map(c=>c.paragraphs.length+'@'+(c.searchRevision??0)).join(',')).join('|');
+}
+function invalidateChapterSearch(){
+ chapterSearchIndex=null;
+ chapterSearchCatalogSize=-1;
+ chapterSearchCatalogShape='';
 }
 // Search folds common Arabic spelling variants and vowel marks without
 // changing the original bilingual text displayed to readers. Do not
@@ -445,7 +454,7 @@ function decorateLibrary(){
 }
 library=function(){originalLibrary();decorateLibrary();};
 global.LinguaShell={applyTheme,applyFont,applyLocale,fontChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,
- isDrawerOpen:()=>opened,themeNames:[...themeNames],searchChapters,openChapterSearch,jumpToChapterHit};
+ isDrawerOpen:()=>opened,themeNames:[...themeNames],searchChapters,invalidateChapterSearch,openChapterSearch,jumpToChapterHit};
 /* LT-09/06 accessibility: a visible modal must own keyboard focus.
  * Trap Tab/Shift+Tab in Settings or the genre drawer; Escape dismisses the
  * topmost dialog. No extra listeners are installed on each library rerender. */
