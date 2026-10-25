@@ -15,10 +15,12 @@ tests={
 (function(){
  const passes=[],errors=[];
  function check(name,fn){try{if(!fn())throw Error('false');passes.push(name)}catch(err){errors.push(name+': '+err.message)}}
- check('catalog',()=>catalog.stories.length===36&&document.querySelectorAll('.card').length===36);
+ check('catalog',()=>catalog.stories.length===37&&document.querySelectorAll('.card').length===37);
  check('hero',()=>!!document.querySelector('.storylens-hero'));
  check('dictionary',()=>FreeDictEnglishArabic.size>=80000&&FreeDictEnglishArabic.resolve('dog')?.literal.includes('كلب'));
  check('story art',()=>!!art['eleven-minute-alibi_0']);
+ check('novella catalog',()=>catalog.stories.some(s=>s.id==='the-salt-meridian'&&s.chapters.length===5));
+ check('novella art',()=>!!art['the-salt-meridian_4']);
  try{openStory('eleven-minute-alibi')}catch(e){errors.push('open: '+e.message)}
  check('reader',()=>state.page==='reader'&&!!document.querySelector('.reader .tok'));
  try{document.querySelector('.reader .tok').click()}catch(e){errors.push('tap: '+e.message)}
@@ -35,7 +37,7 @@ tests={
  check('full translation',()=>state.page==='translation'&&document.querySelector('.arabic-page')?.textContent.includes('التحقيق'));
  try{backToReader();libraryBack();cycleVisualTheme()}catch(e){errors.push('theme: '+e.message)}
  check('switch theme',()=>state.uiTheme==='aqua'&&document.body.classList.contains('theme-aqua'));
- check('library retained',()=>document.querySelectorAll('.card').length===36);
+ check('library retained',()=>document.querySelectorAll('.card').length===37);
 
  check('discover controls',()=>!!document.querySelector('.stl-discovery')&&!!document.querySelector('.stl-select select'));
  check('favorite persistence',()=>{const x=StoryLensExtras.toggleFavorite('eleven-minute-alibi');return x===true&&StoryLensExtras.favorites().includes('eleven-minute-alibi')});
