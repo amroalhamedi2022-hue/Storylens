@@ -75,6 +75,21 @@ chapters.push({title:'Afterword',paragraphs:[{en:'The brass compass pointed east
 assert.equal(search('brass compass').length,1);
 assert.equal(search('أُفُقًا').length,1);
 assert.equal(search('افقا')[0].ar,'ظهر أفقاً جديداً خلف الواحة.');
+// Existing paragraphs may receive a corrected translation without changing
+// the number of chapters/paragraphs. Versioned invalidation must expose the
+// corrected bilingual content and never return a stale search hit.
+chapters[0].paragraphs[0].ar='فتح القبطان خريطة الملاحة الدقيقة عند شروق الشمس.';
+chapters[0].searchRevision=1;
+assert.equal(search('الخريطة').length,0,'old Arabic translation must leave index');
+assert.equal(search('الملاحة الدقيقة').length,1,'same-length chapter correction indexed');
+chapters[0].paragraphs[0].en='The captain unfolded the accurate nautical chart at sunrise.';
+window.LinguaShell.invalidateChapterSearch();
+assert.equal(search('secret map').length,0,'explicit invalidation clears old English');
+assert.equal(search('nautical chart').length,1,'corrected English is searchable');
+chapters[0].paragraphs[0].ar='فتح القبطان الخريطة السرية عند شروق الشمس.';
+chapters[0].paragraphs[0].en='The captain opened the secret map at sunrise.';
+chapters[0].searchRevision=2;
+assert.equal(search('الخريطة').length,1,'restored source reindexed');
 assert.equal(chapters[0].paragraphs[0].ar,'فتح القبطان الخريطة السرية عند شروق الشمس.');
 assert.equal(window.LinguaShell.themeNames.includes('moonlit-margins'),true);
 assert.equal(window.LinguaShell.applyTheme('moonlit-margins'),true);
