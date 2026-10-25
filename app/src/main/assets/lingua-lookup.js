@@ -41,11 +41,17 @@ function createIndex(story, dictionary) {
 }
 function indexFor(story, dictionary) {
  const previous = indexes.get(story);
+ // A same-length editorial correction must not reuse a stale phrase index.
+ // Content batch loaders may increment lexiconRevision or call invalidate().
+ // Revision checks are O(1), avoiding a full dictionary scan on every tap.
  if (previous && previous.terms === story.terms && previous.dictionary === dictionary &&
-     previous.termsLength === (story.terms?.length || 0) && previous.dictionaryLength === (dictionary?.length || 0)) return previous.index;
+     previous.termsLength === (story.terms?.length || 0) && previous.dictionaryLength === (dictionary?.length || 0) &&
+     previous.revision === story.lexiconRevision &&
+     previous.dictionaryRevision === dictionary?.lexiconRevision) return previous.index;
  const index = createIndex(story, dictionary);
  indexes.set(story, {terms: story.terms, dictionary,
-  termsLength:story.terms?.length || 0,dictionaryLength:dictionary?.length || 0,index});
+  termsLength:story.terms?.length || 0,dictionaryLength:dictionary?.length || 0,
+  revision:story.lexiconRevision,dictionaryRevision:dictionary?.lexiconRevision,index});
  return index;
 }
 function lookup({story, dictionary, sentence, selected, offset, lemmas, lexicon, freeDict}) {
@@ -101,5 +107,7 @@ function lookup({story, dictionary, sentence, selected, offset, lemmas, lexicon,
  if (!entry && freeDict && typeof freeDict.resolve === 'function') entry = freeDict.resolve(selected);
  return {entry:entry || null, display:selected};
 }
-global.LinguaLookup = Object.freeze({lookup});
+global.LinguaLookup = Object.freeze({lookup, invalidate(story) {
+ if (story && (typeof story === 'object' || typeof story === 'function')) indexes.delete(story);
+}});
 })(window);
