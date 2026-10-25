@@ -357,13 +357,13 @@ function decorateLibrary(){
  if(actions)addButton(actions,settingsText(),openSettings,'secondary lt-settings-open');
  // Full-text chapter search is intentionally opt-in: never scan the complete
  // English/Arabic corpus while rendering the library or typing a title.
- const searchLabel=section.querySelector('.search-label');
- if(searchLabel){
+ const chapterSearchLabel=section.querySelector('.search-label');
+ if(chapterSearchLabel){
   // Keep the button OUTSIDE the <label> containing the title-search input.
   // Nested interactive controls inside a label break mobile focus and a11y.
   const searchButton=addButton(section,rtl()?'⌕ ابحث داخل القصص':'⌕ Search story text',
     openChapterSearch,'secondary lt-chapter-search-open');
-  searchLabel.after(searchButton);
+  chapterSearchLabel.after(searchButton);
  }
  const header=section.querySelector('.header');
  if(!header)return;
