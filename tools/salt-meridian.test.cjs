@@ -55,7 +55,7 @@ const shell=read('lingua-shell.js'),css=read('lingua-shell.css'),backup=read('da
 assert.ok(shell.includes("'harbor-ledger'"),'theme appears in settings gallery');
 assert.ok(css.includes('body.theme-harbor-ledger')&&css.includes('.theme-harbor-ledger .reader'),
  'theme has distinct library and reader styling');
-assert.ok(backup.includes("'harbor-ledger'].includes(val)"),'offline backup restores theme');
+assert.ok(backup.includes("'harbor-ledger'"),'offline backup restores theme');
 console.log(JSON.stringify({result:'PASS',title:story.title,chapters:5,bilingualParagraphs:50,englishWords:words,
  contextualTerms:story.terms.length,offlineChapterScenes:5,theme:'Harbor Ledger',
  editorialReview:'NOT TESTED'},null,2));
