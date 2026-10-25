@@ -5,7 +5,11 @@
 - **Purposeful CI question:** do the new chapter, theme, browser fixture, Node regression and packaged APK work together in Android/Chromium? Source-only V8 cannot verify Gradle packaging or Chromium rendering. One targeted CI run is authorized.
 
 - **FAIL (first Android CI):** [run 40236665237](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40236665237) stopped in Node content validation because the older Chapter V regression asserted the theme allowlist ended exactly at `exchange-gazette`. Adding the new valid theme changed that suffix; production chapter VI and direct V8 assertions passed separately. Fix the brittle old test and rerun; no APK was produced in the failed run.
-- **NOT TESTED (pending matching CI):** native Node tests, Chromium flow, Android Gradle, APK checksum, Pad 5 RTL/TalkBack/FPS and final acceptance. A build is justified to check full integration of 37 passages, asset packaging and browser chapter navigation, not routine compilation.
+- **PASS Android CI:** [run 40236765779](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40236765779) on functional source + test SHA `a6a353a16cc2eeeaa47d77cada79af33cfe72656`. Native Node tests, Gradle testDebugUnitTest + assembleDebug, required APK assets, and Chromium reader/word/theme journey succeeded after fixing the old Chapter V theme-tail assertion.
+- **PASS exact English source comparison:** all 37 committed Chapter VI English paragraphs match the Standard Ebooks XHTML paragraphs after removing formatting markup; 37/37 aligned Arabic drafts present. **NOT TESTED:** independent human literary proofreading.
+- **PASS independent APK verification:** downloaded Debug Artifact `12615222302`, extracted 4,341,845-byte APK, independently SHA-256 `2b12d325bc4a95ae3bac595c360a3a2c48b8362c0fd47f1125023589a3c9487d`, matching the CI checksum; Chapter VI and UI assets verified packaged. Screenshot Artifact `12615386751`.
+- **NOT TESTED:** Xiaomi Pad 5 install, real RTL/TalkBack, audio, frame pacing, final signed release. Debug APK is not final.
+- **NOT TESTED (historical first checkpoint; superseded by PASS above):** native Node tests, Chromium flow, Android Gradle, APK checksum, Pad 5 RTL/TalkBack/FPS and final acceptance. A build is justified to check full integration of 37 passages, asset packaging and browser chapter navigation, not routine compilation.
 - No main writes, PR merge, paid API, microphone/TTS, other repositories or Library/Handoff changes.
 
 ## 2026-10-25 — LT-07 Chapter V / LT-08 Exchange Gazette art / LT-13 theme (validated)
