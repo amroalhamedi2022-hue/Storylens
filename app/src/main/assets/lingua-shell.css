@@ -1160,3 +1160,87 @@ body.theme-moonlit-margins{
 .lt-chapter-hit span[lang="ar"]{color:#53626b}
 .lt-chapter-hit:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 @media(min-width:720px){.lt-chapter-search{border-radius:22px;margin-block:auto}}
+
+
+/* LT-13 Saffron Archive — archival folios, numbered index spines and a
+ * sun-stamped manuscript desk. Distinct grid geometry from glass and zines.
+ * Static gradients only; no network fonts, images or animated filters. */
+.lt-theme-saffron-archive .lt-theme-swatch{
+ background:linear-gradient(120deg,#2c3c34 0 27%,#dba849 27% 42%,#e8dcc0 42% 85%,#916a43 85%)}
+body.theme-saffron-archive{
+ --body:#e3d8bc;--card:#f3ebd5;--ink:#29372f;--sub:#655f4e;
+ --accent:#96601e;--reader:#f5efdf;--reader-ink:#29372f;
+ color:var(--ink);
+ background:linear-gradient(90deg,#34463b 0 max(12px,calc((100vw - 1260px)/2)),transparent 0),
+ repeating-linear-gradient(0deg,#795d2510 0 1px,transparent 1px 44px),
+ linear-gradient(145deg,#e7dcc2,#c9bb9a)}
+.theme-saffron-archive::before,.theme-saffron-archive::after{display:none!important}
+.theme-saffron-archive .library{max-width:1200px}
+.theme-saffron-archive .library .header{
+ border-bottom:3px double #5c624c;padding-bottom:18px}
+.theme-saffron-archive .library .brand{
+ color:#77501e;letter-spacing:.24em;text-transform:uppercase;font-weight:800}
+.theme-saffron-archive .library .header h1{
+ color:#2b4035;font:700 clamp(29px,4vw,44px)/1.1 Georgia,serif}
+.theme-saffron-archive .library .storylens-hero{
+ display:grid;grid-template-columns:minmax(0,1fr) 170px;align-items:center;gap:18px;
+ min-height:225px;padding:26px 32px;border-radius:3px 46px 3px 3px;
+ border:2px solid #485a49;border-inline-start:13px solid #b18438;
+ background:linear-gradient(115deg,#f4ead1 0 72%,#d4bc82 72%);
+ box-shadow:inset 0 0 0 6px #f4ead1,0 9px 0 #46574538}
+.theme-saffron-archive .library .storylens-hero h2{
+ color:#2d4437;font:700 clamp(29px,4vw,45px)/1.12 Georgia,serif}
+.theme-saffron-archive .library .storylens-hero .hero-orb{
+ position:relative;inset:auto;width:144px;height:144px;opacity:1;
+ transform:rotate(12deg);border-radius:50%;border:8px double #805622;
+ background:radial-gradient(circle,#f4e3b5 0 30%,#cf9e42 31% 34%,#f1d79c 35% 100%);
+ box-shadow:0 0 0 3px #e7c67c}
+.theme-saffron-archive .library .storylens-hero .hero-orb::after{
+ content:'✦';position:absolute;inset:0;display:grid;place-items:center;
+ color:#805622;font:700 75px Georgia,serif}
+.theme-saffron-archive .library .storylens-hero .hero-orb-core{display:none}
+.theme-saffron-archive .library .hero-continue{
+ border-radius:3px;background:#314a3a;color:#f8edce;border:2px solid #314a3a}
+.theme-saffron-archive .library .shelf{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:23px}
+.theme-saffron-archive .library .shelf .card{
+ position:relative;display:grid;grid-template-columns:76px minmax(0,1fr);gap:15px;
+ min-height:205px;padding:15px;border-radius:2px 20px 2px 2px;
+ border:1px solid #7e7655;border-inline-start:9px solid #38513f;
+ background:#f8f1dd;box-shadow:5px 7px 0 #4e5c4038;animation:none}
+.theme-saffron-archive .library .shelf .card::before{
+ content:'ARCHIVE';position:absolute;inset-block-end:9px;inset-inline-end:12px;
+ color:#80683b;font:700 9px Georgia,serif;letter-spacing:.2em;opacity:.8}
+.theme-saffron-archive .library .shelf .card .cover{
+ flex:initial;width:76px;height:165px;min-height:165px;
+ border-radius:1px;border:2px solid #a58b58;box-shadow:none}
+.theme-saffron-archive .library .shelf .card-content{min-width:0;gap:8px;padding-bottom:18px}
+.theme-saffron-archive .library .shelf .card h2{
+ color:#294537;font:700 22px/1.22 Georgia,serif}
+.theme-saffron-archive .library .secondary{
+ border:1px solid #526c53;border-radius:3px;background:#eee1c2;color:#263b30}
+.theme-saffron-archive .library .stl-discovery{
+ border:2px solid #b0925a;border-radius:3px;background:#f5ead2}
+.theme-saffron-archive .lt-drawer{
+ background:linear-gradient(160deg,#304c3e,#1e332a);border-color:#d3a85a}
+.theme-saffron-archive .lt-genre.selected{
+ border-color:#e2bd76;background:#d6a95744}
+.theme-saffron-archive .lt-theme-choice{
+ background:#f2e8ce;color:#273b30;border-radius:3px}
+.theme-saffron-archive .reader:not(.dark){
+ background:#f5efdf;color:#29372f;font-family:Georgia,serif}
+.theme-saffron-archive .reader:not(.dark) .reading-width{
+ border-inline-start:3px double #b28a44;padding-inline-start:clamp(12px,2vw,28px)}
+.theme-saffron-archive .reader.dark{background:#24362d;color:#f1e4c9}
+@media(max-width:600px){
+ .theme-saffron-archive .library .storylens-hero{
+  grid-template-columns:minmax(0,1fr) 72px;gap:9px;padding:17px;min-height:165px}
+ .theme-saffron-archive .library .storylens-hero .hero-orb{
+  width:69px;height:69px;border-width:4px}
+ .theme-saffron-archive .library .storylens-hero .hero-orb::after{font-size:34px}
+ .theme-saffron-archive .library .shelf{grid-template-columns:1fr}
+ .theme-saffron-archive .library .shelf .card{
+  grid-template-columns:68px minmax(0,1fr);min-height:178px}
+ .theme-saffron-archive .library .shelf .card .cover{
+  width:68px;height:145px;min-height:145px}
+}
