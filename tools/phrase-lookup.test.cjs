@@ -93,4 +93,25 @@ assert.ok(shell.includes("'mosaic-courtyard':'Mosaic Courtyard'"),'theme selecta
 assert.match(css,/body\.theme-mosaic-courtyard[\s\S]*?border-radius:46%/,'courtyard has distinct arched layout');
 assert.ok(backup.includes("'mosaic-courtyard'].includes(val)"),'theme survives backup validation');
 
+// Editorial corrections can replace a term without changing array length.
+// An explicit revision or invalidation must refresh the cached phrase meaning
+// without an O(dictionary-size) scan on every word tap.
+const editedBatch={terms:[{term:'go on',context:'original'}],lexiconRevision:1};
+const editorialDict=[{term:'harbor',literal:'ميناء'}];
+const editorialLookup=(text,selected,offset)=>lookup({story:editedBatch,
+ dictionary:editorialDict,sentence:text,selected,offset,lemmas:w=>[w]});
+assert.equal(editorialLookup('We go on.','go',3).entry.context,'original');
+editedBatch.terms[0]={term:'go on',context:'revised'};
+editedBatch.lexiconRevision++;
+assert.equal(editorialLookup('We go on.','go',3).entry.context,'revised',
+ 'same-length phrase correction must invalidate the index');
+editedBatch.terms[0]={term:'go on',context:'final'};
+context.window.LinguaLookup.invalidate(editedBatch);
+assert.equal(editorialLookup('We go on.','go',3).entry.context,'final',
+ 'explicit invalidation supports importers without revision counters');
+editorialDict[0]={term:'harbor',literal:'مرفأ'};
+editorialDict.lexiconRevision=1;
+assert.equal(editorialLookup('A harbor.','harbor',2).entry.literal,'مرفأ',
+ 'dictionary revision must refresh a same-length replacement');
+
 console.log('PASS: indexed idioms, repeated matches, inflections, punctuation, unknowns, offline fallbacks and reader integration');
