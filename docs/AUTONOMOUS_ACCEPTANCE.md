@@ -468,3 +468,9 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS (source V8):** executed the actual committed `lingua-shell.js` with eight focused checks: Arabic diacritics/variant search, English case, catalog growth, theme activation and persisted selection.
 - **NOT TESTED:** committed native Node test, Android CI/APK on this head, Xiaomi Pad 5 rendering, visual contrast, large-book memory/scroll performance, and full editorial acceptance. No device FPS claim.
 - **Purposeful build question:** Does the new theme/search pass the real Node test and package/compile inside Android? V8 source tests cannot verify AAPT/Android packaging or Chromium UI. Run one CI build for this functional milestone, not a routine build per file.
+
+
+### Validation closure for Arabic search / Saffron Archive (2026-10-25)
+- **PASS:** targeted Android CI [40181610305](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40181610305), functional SHA `996e7504ef5688d5cec1e016f302b85780bd5e7a`: native Node tests, Gradle, packaged assets and Chromium journey.
+- **PASS:** independently extracted 4,264,860-byte `app-debug.apk` from GitHub Artifact **12594795168**, SHA-256 `0b920f85f9caed4975c127a94737e467e4eebe4efb17d542c842090b91635236` matches CI. New JS/CSS theme and search modules confirmed inside APK.
+- **NOT TESTED:** Pad 5/Android installation, FPS/RAM, accessibility, editorial/long-book acceptance. This is a debug validation build, not a final release.
