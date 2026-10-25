@@ -1,3 +1,30 @@
+## 2026-10-25 — Complete bilingual Towle Chapter III, itinerary, art and distinct theme
+
+- **Production:** complete Chapter III of the authentic Towle 1873 English
+  translation, 65 original prose paragraphs + eight-leg itinerary as one
+  extra aligned entry; 66 new Arabic draft passages, 1,980 English words,
+  18 new source-occurring contextual terms, bespoke offline Reform Club SVG,
+  and distinct `Reform Club Brass` theme wired into Settings and backup.
+  Reader now has **3 of 37** authentic chapters, not a finished novel.
+- **PASS direct V8 production:** all three scripts loaded in order; 66 aligned
+  English/Arabic entries, itinerary, term occurrence and offline illustration.
+- **FAIL initial CI:** [run 40217571565](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40217571565)
+  on SHA `8e1e5a78aef9edd8ca52d708aaec8597164e3baf` reached Node
+  regression but failed due to an overescaped test-only whitespace regex.
+  Corrected regex and Arabic Unicode test in SHA
+  `00b206fb8386777e683ca3255b1898259be0c2d0`.
+  [CI 40217753579](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40217753579)
+  **IN PROGRESS at checkpoint**; Android packaging and Chromium on this SHA
+  are **NOT TESTED** until completed.
+- **Build question:** does the new authentic chapter, theme, SVG and registration
+  survive the entire Node/Android asset packaging/Chromium reader pipeline?
+  Direct V8 source tests cannot establish APK integration.
+- **NOT TESTED:** human Arabic proofreading, international distribution
+  clearance, physical Pad 5 install/FPS/RTL/TalkBack, independently
+  downloaded APK hash and final signed release. No claim of completion.
+- Full edition/rights details: `docs/LITERATURE_PROVENANCE.md`.
+  No `main` merge, no unrelated repository or Library/Handoff changes.
+
 ### Chapter II / Station Tickets targeted CI and independent artifact verification — 2026-10-25
 
 - **FAIL (initial browser regression):** [run 40203765741](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40203765741) passed Node/Gradle/APK asset checks but failed a stale Chromium fixture expecting exactly one Verne chapter. Corrected fixture to require both chapters and two distinct contextual illustrations.
