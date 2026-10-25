@@ -26,6 +26,33 @@ function decorate(){
  };
  button(localized('← الفصل السابق','← Previous chapter'),index-1,index>0);
  button(localized('الفصل التالي →','Next chapter →'),index+1,index<chapters.length-1);
+ // Long books need direct chapter access without opening the settings sheet.
+ // Only offline/published chapters are selectable; never imply future chapters exist.
+ if(chapters.length>1){
+  const picker=document.createElement('label');
+  picker.className='lt-chapter-picker';
+  const caption=document.createElement('span');
+  caption.textContent=localized('انتقل إلى فصل','Jump to chapter');
+  const select=document.createElement('select');
+  select.setAttribute('aria-label',caption.textContent);
+  select.setAttribute('dir',document.documentElement.lang==='en'?'ltr':'rtl');
+  chapters.forEach((chapter,i)=>{
+   const option=document.createElement('option');
+   option.value=String(i);
+   option.selected=i===index;
+   option.textContent=(i+1)+' · '+(document.documentElement.lang==='en'
+    ?(chapter.title||chapter.titleAr||'Chapter')
+    :(chapter.titleAr||chapter.title||'فصل'));
+   select.appendChild(option);
+  });
+  select.value=String(index);
+  select.addEventListener('change',()=>{
+   const target=Number(select.value);
+   if(Number.isInteger(target)&&target>=0&&target<chapters.length&&target!==index
+      &&typeof global.stlChapter==='function')global.stlChapter(target);
+  });
+  picker.appendChild(caption);picker.appendChild(select);nav.appendChild(picker);
+ }
  end.prepend(nav);
  if(!incomplete)return;
  const label=document.querySelector('.reader .reader-label');
