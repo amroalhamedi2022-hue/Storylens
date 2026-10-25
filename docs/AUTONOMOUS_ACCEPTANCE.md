@@ -18,7 +18,7 @@
 - **Build question:** does the new authentic chapter, theme, SVG and registration
   survive the entire Node/Android asset packaging/Chromium reader pipeline?
   Direct V8 source tests cannot establish APK integration.
-- **PASS (CI-calculated inner APK SHA-256):** `47fb8906def0eca5d80e4c9e9a7a408a05b9b42daf7ef453a8031a7cffd1dee8`; Debug artifact **12607598645**, screenshots **12607219655**. Independent artifact rehash and Pad 5 remain **NOT TESTED**.
+- **PASS (CI-calculated inner APK SHA-256):** `47fb8906def0eca5d80e4c9e9a7a408a05b9b42daf7ef453a8031a7cffd1dee8`; Debug artifact **12607598645**, screenshots **12607219655**. **PASS independent ZIP extraction and APK SHA-256:** downloaded artifact **12607598645**, extracted 4,310,321-byte APK and independently matched CI digest `47fb8906def0eca5d80e4c9e9a7a408a05b9b42daf7ef453a8031a7cffd1dee8`; confirmed Chapter III JS, offline art and theme CSS packaged. Pad 5 remains **NOT TESTED**.
 - **NOT TESTED:** human Arabic proofreading, international distribution
   clearance, physical Pad 5 install/FPS/RTL/TalkBack, independently
   downloaded APK hash and final signed release. No claim of completion.
