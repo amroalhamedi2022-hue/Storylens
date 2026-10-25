@@ -735,3 +735,59 @@ body.theme-celestial-atlas{
  .theme-celestial-atlas .library .shelf .card .cover{
   width:78px;max-width:78px;height:155px;min-height:155px}
 }
+
+
+/* LT-13: Harbor Ledger — nautical field-book geometry, not a recolored
+ * Nebula/Atlas card. Static ruled-paper textures; no repainting animations. */
+.lt-theme-harbor-ledger .lt-theme-swatch{
+ background:linear-gradient(115deg,#0c3341 0 32%,#b7d1cb 32% 35%,#d5b37b 35% 38%,#f4ebd7 38% 100%);
+}
+body.theme-harbor-ledger{
+ --body:#dce9e5;--card:#fcf7eb;--ink:#163c44;--sub:#55747b;
+ --accent:#1a6972;--reader:#f7f0df;--reader-ink:#1d4048;
+ background:linear-gradient(115deg,#c7deda,#edf1e7 38%,#d6e4dd);
+}
+.theme-harbor-ledger::before,.theme-harbor-ledger::after{display:none!important}
+.theme-harbor-ledger .library{max-width:1200px}
+.theme-harbor-ledger .storylens-hero{
+ background:repeating-linear-gradient(90deg,#fff2 0 1px,transparent 1px 64px),
+ linear-gradient(135deg,#0b3442,#1d6772 60%,#396e74);
+ border:3px double #d7bd86;border-radius:6px;box-shadow:10px 12px 0 #0c394020;
+ padding-inline-start:clamp(22px,4vw,55px);
+}
+.theme-harbor-ledger .storylens-hero:before{
+ content:"";position:absolute;inset:10px;border:1px solid #e5d3a154;
+ pointer-events:none;
+}
+.theme-harbor-ledger .storylens-hero .hero-orb{
+ border:2px solid #e4c48a;outline:1px dashed #e4c48a99;outline-offset:12px;
+ border-radius:50%;background:repeating-conic-gradient(from 12deg,#e3c68b33 0deg 3deg,transparent 3deg 30deg);
+ box-shadow:inset 0 0 0 15px #07343d66;
+}
+.theme-harbor-ledger .shelf{grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:20px}
+.theme-harbor-ledger .card{
+ border:1px solid #9cbaaf;border-inline-start:7px solid #bd9459;
+ border-radius:4px;box-shadow:5px 6px 0 #0d465b15;background:#fcf7eb;
+}
+.theme-harbor-ledger .card .cover{border-radius:1px;filter:sepia(.16)}
+.theme-harbor-ledger .card h2{font-family:Georgia,serif;color:#194c53}
+.theme-harbor-ledger .reader{
+ background:repeating-linear-gradient(0deg,#2e69770b 0 1px,transparent 1px 35px),#f7f0df;
+}
+.theme-harbor-ledger .reader .reading-width{
+ max-width:810px;border-inline:1px solid #c3a97666;background:#fffaf0cc;
+}
+.theme-harbor-ledger .reader h2{
+ color:#245b63;border-block-end:2px solid #bd9459;padding-block-end:20px;
+}
+.theme-harbor-ledger .reader .sentence{font-family:Georgia,serif;line-height:1.85}
+.theme-harbor-ledger .lt-drawer{background:linear-gradient(160deg,#0d3743,#205964);border-inline-end:3px solid #d5b37b}
+.theme-harbor-ledger .sheet{border-radius:7px 7px 0 0;border-top:5px solid #b99960}
+@media(max-width:620px){
+ .theme-harbor-ledger .storylens-hero{padding:23px;border-width:2px}
+ .theme-harbor-ledger .reader .reading-width{border-inline:0}
+ .theme-harbor-ledger .card{border-inline-start-width:5px}
+}
+@media(prefers-reduced-motion:reduce){
+ .theme-harbor-ledger .card,.theme-harbor-ledger .storylens-hero{animation:none!important;transition:none!important}
+}
