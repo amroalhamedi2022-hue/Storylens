@@ -158,6 +158,7 @@
     "note": "Get on means have a harmonious relationship."
   }
 ]);
+ story.totalChapters=37; // Serial source has 37 chapters; only two are packaged.
  story.subtitle='The original Towle translation — Chapters I–II';
  story.description='Phileas Fogg and Passepartout begin their unlikely partnership. Authentic opening two chapters; further chapters to follow.';
  story.editorialStatus='English Chapters I–II source-checked; Arabic companion draft pending independent literary review; 2 of 37 chapters';
