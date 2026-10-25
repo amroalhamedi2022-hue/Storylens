@@ -2,8 +2,8 @@
  * Offline, no new permissions, no per-frame animation work. */
 (function(global){
 'use strict';
-const themeNames=['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop'];
-const themeLabels={aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library','botanical-folio':'Botanical Folio','rain-glass':'Rain Glass','solar-atelier':'Solar Atelier','ink-workshop':'Ink Workshop'};
+const themeNames=['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre'];
+const themeLabels={aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library','botanical-folio':'Botanical Folio','rain-glass':'Rain Glass','solar-atelier':'Solar Atelier','ink-workshop':'Ink Workshop','velvet-theatre':'Velvet Theatre'};
 /* LT-12: separate, offline typography preferences. System font stacks avoid
  * font downloads and extra memory. Unsupported values never reach CSS. */
 const fontChoices={ar:['sans','naskh'],en:['serif','sans']};
@@ -191,6 +191,7 @@ function openSettings(){
   select.addEventListener('change',()=>applyFont(lang,select.value));
   label.appendChild(select);sheet.appendChild(label);
  }
+ if(global.LinguaAmbience)global.LinguaAmbience.controls(sheet,rtl());
  const note=document.createElement('p');note.className='quiet';
  note.textContent=rtl()?'ترجمة بقية عناصر الواجهة قيد التطوير.':'Full localization of the remaining interface is in progress.';
  sheet.appendChild(note);
