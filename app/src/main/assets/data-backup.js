@@ -68,10 +68,10 @@ function validValue(key,val){
    optionalCount(x,'repetitions')&&optionalCount(x,'lapses'));
  }
  if(tail==='last_story')return typeof val==='string'&&val.length<=100;
- if(tail==='uiTheme')return ['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre'].includes(val);
+ if(tail==='uiTheme')return ['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre','celestial-atlas'].includes(val);
  if(tail==='audioPrefs')return val!==null&&typeof val==='object'&&!Array.isArray(val)&&
   Object.keys(val).sort().join(',')==='scene,sfx,sfxVolume,volume'&&
-  ['rain','thunder','forest','night','ocean','fire','wind','cabin'].includes(val.scene)&&
+  ['rain','thunder','forest','night','ocean','fire','wind','cabin','brook','waterfall','dawn','snow','train','library','window','cliffs','meadow','leaves','desert','stars'].includes(val.scene)&&
   typeof val.sfx==='boolean'&&
   [val.volume,val.sfxVolume].every(v=>typeof v==='number'&&Number.isFinite(v)&&v>=0&&v<=1);
  if(tail==='fontArabic')return ['sans','naskh'].includes(val);
