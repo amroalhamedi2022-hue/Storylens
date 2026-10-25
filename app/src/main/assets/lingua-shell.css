@@ -603,3 +603,68 @@ body.theme-ink-workshop{
  .theme-ink-workshop .library .shelf .card{grid-template-columns:84px minmax(0,1fr)}
  .theme-ink-workshop .library .shelf .card .cover{width:84px;min-height:148px}
 }
+
+/* LT-11: compact, touch-accessible offline soundscape controls. */
+.lt-audio-settings{margin:18px 0;padding:15px;border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);
+ border-radius:15px;background:color-mix(in srgb,var(--card) 87%,transparent)}
+.lt-audio-settings h3{margin:2px 0 8px}
+.lt-audio-settings .quiet{line-height:1.65}
+.lt-audio-buttons{display:flex;gap:10px;margin:12px 0}
+.lt-audio-buttons button{min-height:45px}
+.lt-audio-range{display:grid;gap:7px;margin:12px 0;font-size:14px}
+.lt-audio-range input{width:100%;accent-color:var(--accent);min-height:28px}
+.lt-audio-checkbox{display:flex;align-items:center;gap:10px;margin-top:16px}
+.lt-audio-checkbox input{width:20px;height:20px;accent-color:var(--accent)}
+/* LT-13 Velvet Theatre: wine-red playhouse, gold marquee, vertical stage
+ * curtains, ticket-shaped story cards and cream program-paper reader. Unlike
+ * glass/neon themes it uses opaque matte surfaces and no animated gradients. */
+.lt-theme-velvet-theatre .lt-theme-swatch{
+ background:linear-gradient(110deg,#481526 0 40%,#a33c4b 40% 68%,#d8b276 68%)}
+body.theme-velvet-theatre{
+ --body:#271a23;--card:#4b2634;--ink:#f8e7ce;--sub:#dfbfb5;
+ --accent:#e2bd83;--reader:#f5e9d7;--reader-ink:#372c2a;
+ color:var(--ink);
+ background:repeating-linear-gradient(90deg,#2c1923 0 66px,#381e2b 66px 73px,#241620 73px 79px);
+}
+.theme-velvet-theatre::before,.theme-velvet-theatre::after{display:none!important}
+.theme-velvet-theatre .library{max-width:1180px}
+.theme-velvet-theatre .library .header{
+ padding-bottom:21px;border-bottom:2px solid #e6b8768a}
+.theme-velvet-theatre .library .header h1{font:600 clamp(29px,4.5vw,45px) Georgia,serif;color:#f5d4a6}
+.theme-velvet-theatre .library .brand{color:#f0bf8b;letter-spacing:.27em}
+.theme-velvet-theatre .library .secondary{
+ background:#572c3b;border:1px solid #c69b67;color:#f7dfbf;border-radius:2px}
+.theme-velvet-theatre .library .storylens-hero{
+ position:relative;min-height:205px;display:flex;align-items:center;justify-content:center;
+ text-align:center;padding:27px 42px;border-radius:3px;border:4px double #d6a56b;
+ background:repeating-linear-gradient(90deg,#541b32 0 42px,#71273f 42px 65px,#4b192d 65px 73px);
+ box-shadow:inset 0 -22px 24px #190b1d70,0 9px 0 #1b0d18}
+.theme-velvet-theatre .library .storylens-hero .hero-content{margin:auto;max-width:650px}
+.theme-velvet-theatre .library .storylens-hero h2{
+ font:600 clamp(27px,4vw,44px) Georgia,serif;color:#ffdfae;text-shadow:0 3px 5px #190812}
+.theme-velvet-theatre .library .storylens-hero .hero-orb{display:none}
+.theme-velvet-theatre .library .hero-continue{
+ background:#f1c995;color:#4c2433;border:1px solid #fff0c4;border-radius:2px}
+.theme-velvet-theatre .library .shelf{
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,275px),1fr));gap:22px}
+.theme-velvet-theatre .library .shelf .card{
+ position:relative;display:flex;flex-direction:column;min-height:305px;gap:12px;
+ padding:14px;border-radius:5px;border:1px dashed #c7a270;
+ background:#4a2634;box-shadow:6px 7px 0 #170b16;animation:none}
+.theme-velvet-theatre .library .shelf .card::after{
+ content:'';position:absolute;inset-inline-end:13px;inset-block-start:12px;
+ width:7px;height:7px;border-radius:50%;background:#e6c68e}
+.theme-velvet-theatre .library .shelf .card .cover{
+ width:100%;height:150px;min-height:150px;flex:0 0 auto;border-radius:2px}
+.theme-velvet-theatre .library .shelf .card-content{padding:5px 8px 10px}
+.theme-velvet-theatre .library .shelf .card h2{font:600 23px Georgia,serif;color:#ffe3bb}
+.theme-velvet-theatre .library .stl-discovery{background:#3c2330;border:1px solid #bb996f;border-radius:3px}
+.theme-velvet-theatre .lt-drawer{background:#361d2a;border-color:#d4a773}
+.theme-velvet-theatre .lt-theme-choice{background:#4b2634;color:#f7e1c6}
+.theme-velvet-theatre .reader:not(.dark){background:#f5e9d7;color:#372c2a}
+.theme-velvet-theatre .reader.dark{background:#2a1b25;color:#f7dfc4}
+@media(max-width:620px){
+ .theme-velvet-theatre .library .storylens-hero{min-height:160px;padding:18px 14px}
+ .theme-velvet-theatre .library .shelf{grid-template-columns:1fr}
+ .theme-velvet-theatre .library .shelf .card{min-height:285px}
+}
