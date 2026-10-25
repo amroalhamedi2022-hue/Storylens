@@ -690,3 +690,9 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS Android CI:** [run 40242081851](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40242081851) on tested SHA `68d00fb3f8c81db6ea15d3db9a4bee30a5bd0f0c`: Node regressions, Gradle unit tests/Debug APK assembly, required offline asset packaging and Chromium reader journey succeeded.
 - **Debug APK Artifact:** `12616169442`; CI inner APK SHA-256 `983400f219959b6ac7cef58db24cc3c1fb59a3d949072fe9b23e6d1ac29d37bf`. Artifact ZIP SHA-256 is separate. Independent APK re-hash **NOT TESTED**.
 - **NOT TESTED:** Xiaomi Pad 5 installation, frame pacing, RTL/TalkBack, independent Arabic literary proofreading and territory-specific redistribution clearance. Seven of 37 authentic chapters are packaged; this is not a complete novel or final release.
+
+
+## 2026-10-26 — Chapter VIII browser-smoke follow-up
+- **FAIL (first integrated run):** [Android CI 40246503473](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40246503473) passed curated content/Node tests, Gradle unit tests, Debug APK assembly and the packaged-asset gate, then failed the final Chromium E2E catalog assertion. The fixture checked Chapter VIII's 59 passages but still required `chapters.length===7`; this stale exact-count assertion contradicted the new eighth chapter.
+- **Repair:** updated the same browser fixture to require eight chapters. Chapter VIII's dedicated Node regression and APK asset gate had already passed in the failed run; the full browser/Android re-run is **PENDING**.
+- **Build rationale:** this re-run verifies the repaired real Chromium journey after the stale fixture gate; no physical Pad 5 claim is made.

@@ -174,3 +174,10 @@ merely because its title is present in a roadmap.
 - SHA-256 of upstream XHTML fetched for this batch: `02d79d84d624a78dc6ac239e8a565ea001cd5fa1559014479c09a18b99cfb836`. The source has a header bridgehead plus 39 narrative paragraphs; all 39 narrative paragraphs are bundled in original English wording with 39 aligned Arabic companion drafts.
 - Standard Ebooks editorial transcription is CC0; Towle's 1873 English translation is public domain in the United States. Territory-specific redistribution clearance and independent Arabic literary proofreading remain **NOT TESTED**.
 - Added 19 source-occurring vocabulary/phrase entries, a bespoke offline SVG consulate/passport scene, and the distinct **Consular Ledger** theme. No external image or font asset is loaded.
+
+
+## Towle Chapter VIII — Suez telegraph dispatch
+- English source: [Standard Ebooks, Towle 1873 transcription, Chapter VIII](https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-8.xhtml).
+- The source bridgehead is used as the chapter title; the 59 narrative paragraphs are bundled in English with 59 aligned Arabic companion drafts (1,080 English words).
+- Standard Ebooks editorial transcription is CC0; Towle's 1873 English translation is public domain in the United States. Territorial redistribution clearance and independent Arabic literary proofreading remain **NOT TESTED**. The upstream XHTML digest was not computed in this batch.
+- Added 26 source-occurring learning phrases, an original offline SVG of the telegraph dispatch desk and Red Sea steamship, and the distinct **Red Sea Dispatch** theme. No remote image, audio or font asset is loaded.
