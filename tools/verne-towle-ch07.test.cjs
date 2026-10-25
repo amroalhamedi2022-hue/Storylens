@@ -1,0 +1,16 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const assets=path.join(__dirname,'../app/src/main/assets'),read=n=>fs.readFileSync(path.join(assets,n),'utf8');
+const html=read('index.html');assert.ok(html.indexOf('classic-verne-towle-ch06.js')<html.indexOf('classic-verne-towle-ch07.js'));assert.ok(html.indexOf('classic-verne-towle-ch07.js')<html.indexOf('editorial-art.js'));
+const story={id:'around-the-world-in-eighty-days-towle',genre:'historical',chapters:Array.from({length:6},()=>({})),terms:[],totalChapters:37,provenance:''},sandbox={window:{StoryLensEditorialStories:[story]}};
+vm.runInNewContext(read('classic-verne-towle-ch07.js'),sandbox,{filename:'classic-verne-towle-ch07.js'});
+const chapter=story.chapters[6],english=chapter.paragraphs.map(p=>p.en).join(' '),norm=s=>s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
+assert.equal(story.chapters.length,7);assert.equal(chapter.paragraphs.length,39);assert.ok(chapter.paragraphs.every(p=>p.en.trim()&&p.ar.trim()));
+const words=(english.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;assert.ok(words>900,'substantial full Chapter VII source required');
+for(const phrase of ['The detective passed down the quay','passport is genuine','devoured the stranger with his eyes','customary fee','behindhand','in advance of his time'])assert.ok(norm(english).includes(norm(phrase)),'missing original scene: '+phrase);
+assert.equal(story.terms.length,19);for(const term of story.terms)assert.ok(norm(english).includes(norm(term.term)),'term absent from source: '+term.term);
+assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/7 of 37/);
+vm.runInNewContext(read('editorial-art.js'),sandbox,{filename:'editorial-art.js'});const art=sandbox.window.StoryLensMakeEditorialArt([story]);
+assert.ok(art[story.id+'_6'].startsWith('data:image/svg+xml'));assert.notEqual(art[story.id+'_6'],art[story.id+'_5']);assert.ok(decodeURIComponent(art[story.id+'_6']).includes('consulate desk'));
+const sh=read('lingua-shell.js'),css=read('lingua-shell.css'),backup=read('data-backup.js');assert.ok(sh.includes("'consular-ledger'"));assert.ok(sh.includes("'consular-ledger':'Consular Ledger'"));assert.ok(css.includes('body.theme-consular-ledger'));assert.ok(backup.includes("'consular-ledger'].includes(val)"));
+console.log('PASS Towle VII: 39 aligned paragraphs, '+words+' English words, 19 source-bound terms, bespoke offline consulate art and Consular Ledger theme');
