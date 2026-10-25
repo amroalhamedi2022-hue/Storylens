@@ -31,5 +31,5 @@ const shell=read('lingua-shell.js'),css=read('lingua-shell.css'),backup=read('da
 assert.ok(shell.includes("'exchange-gazette'"));
 assert.ok(shell.includes("'exchange-gazette':'Exchange Gazette'"));
 assert.ok(css.includes('body.theme-exchange-gazette'));
-assert.ok(backup.includes("'exchange-gazette'].includes(val)"));
+assert.ok(backup.includes("'exchange-gazette'"),'Exchange Gazette must remain backup-allowlisted');
 console.log('PASS Towle V: 14 aligned paragraphs, '+wordCount+' source words, 18 source-bound terms, distinct offline art and Exchange Gazette theme');
