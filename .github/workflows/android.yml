@@ -56,6 +56,7 @@ jobs:
           node tools/circuit-notebook.test.cjs
           node tools/terracotta-gallery.test.cjs
           node tools/monochrome-zine.test.cjs
+          node tools/chapter-search.test.cjs
           node tools/paragraph-roving.test.cjs
           node tools/keyboard-lookup.test.cjs
           node tools/phrase-lookup.test.cjs
