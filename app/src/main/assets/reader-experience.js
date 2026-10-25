@@ -109,8 +109,15 @@ library=function(){
   if(hasRead){
    const content=card.querySelector('.card-content');if(!content)return;
    const badge=document.createElement('div');badge.className='story-progress';
-   const percent=Math.round(100*(ix+1)/story.chapters.length);
-   badge.innerHTML='<span>'+uiText('الفصل '+(ix+1)+' من '+story.chapters.length,'Chapter '+(ix+1)+' of '+story.chapters.length)+'</span><div class="story-progress-track"><i style="width:'+percent+'%"></i></div>';
+   // A serialized classic is not 100% finished after its last published chapter.
+   // Use the verified total chapter count, while showing how many are offline now.
+   const total=Number.isInteger(story.totalChapters)&&story.totalChapters>=story.chapters.length
+    ?story.totalChapters:story.chapters.length;
+   const available=story.chapters.length;
+   const percent=total>0?Math.round(100*(ix+1)/total):0;
+   const label=uiText('الفصل '+(ix+1)+' من '+total+(total>available?' · المتاح '+available:''),
+    'Chapter '+(ix+1)+' of '+total+(total>available?' · '+available+' available':''));
+   badge.innerHTML='<span>'+label+'</span><div class="story-progress-track"><i style="width:'+percent+'%"></i></div>';
    content.appendChild(badge);
   }
  });
