@@ -474,3 +474,10 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS:** targeted Android CI [40181610305](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40181610305), functional SHA `996e7504ef5688d5cec1e016f302b85780bd5e7a`: native Node tests, Gradle, packaged assets and Chromium journey.
 - **PASS:** independently extracted 4,264,860-byte `app-debug.apk` from GitHub Artifact **12594795168**, SHA-256 `0b920f85f9caed4975c127a94737e467e4eebe4efb17d542c842090b91635236` matches CI. New JS/CSS theme and search modules confirmed inside APK.
 - **NOT TESTED:** Pad 5/Android installation, FPS/RAM, accessibility, editorial/long-book acceptance. This is a debug validation build, not a final release.
+
+
+## 2026-10-25 — LT-03/07/13 search-navigation and Bauhaus Studio milestone
+- Production changes: full-text search now refreshes when chapters/paragraphs are appended to an existing work (not only when the story count changes); a search hit visibly highlights and keyboard-focuses the exact English paragraph, with an ephemeral 2.6-second marker and no mutation of English/Arabic source text. Added the offline **Bauhaus Studio** poster-geometry theme, Settings gallery choice and backup whitelist.
+- Regression: `tools/chapter-search.test.cjs` now checks new chapter invalidation, paragraph focus/highlight/cleanup, theme geometry and persistence. **Source edits committed; CI/source test result PENDING** until workflow run completes.
+- **Purposeful Android build question:** Does Android package the changed JS/CSS/backup, pass the real Node VM search regression and Chrome reader flow, and render the new CSS without parse errors? Source string inspection cannot prove APK packaging or browser integration. One branch build, not per-file builds.
+- **NOT TESTED:** Xiaomi Pad 5 paragraph focus/TalkBack, theme contrast and real FPS/thermal; licensed long novels, editorial Arabic review and licensed audio remain open. Debug is not final. No main merge.
