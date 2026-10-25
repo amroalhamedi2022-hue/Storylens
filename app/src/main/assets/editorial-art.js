@@ -37,8 +37,26 @@ function savilleRowScene(){
  '<rect x="0" y="570" width="1000" height="50" fill="#222a34" opacity=".5"/></svg>';
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
+function savilleRowInterior(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="Victorian Saville Row interior with matching clocks and numbered wardrobe">'+
+ '<defs><linearGradient id="wall" x2="0" y2="1"><stop stop-color="#374858"/><stop offset="1" stop-color="#8c7261"/></linearGradient><linearGradient id="wood" x2="1" y2="1"><stop stop-color="#382f36"/><stop offset="1" stop-color="#795444"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#wall)"/><path d="M0 530H1000V620H0Z" fill="#352e33"/>'+
+ '<path d="M0 530L1000 530M120 0V530M880 0V530" stroke="#d1ae78" stroke-width="8" opacity=".55"/>'+
+ '<rect x="150" y="110" width="700" height="415" rx="8" fill="url(#wood)" stroke="#cba779" stroke-width="13"/>'+
+ '<rect x="180" y="142" width="310" height="348" fill="#443945" stroke="#ad886c" stroke-width="5"/>'+
+ '<rect x="515" y="142" width="302" height="348" fill="#443945" stroke="#ad886c" stroke-width="5"/>'+
+ '<path d="M335 142V490M666 142V490" stroke="#a98668" stroke-width="5"/>'+
+ '<g fill="#e5d2aa" font-family="Georgia,serif" font-size="48" text-anchor="middle"><text x="270" y="250">1</text><text x="405" y="250">2</text><text x="600" y="250">3</text><text x="730" y="250">4</text></g>'+
+ '<rect x="378" y="38" width="245" height="145" rx="14" fill="#222c38" stroke="#e3c58e" stroke-width="11"/>'+
+ '<circle cx="500" cy="111" r="53" fill="#f2e2c4" stroke="#ba8c5b" stroke-width="7"/>'+
+ '<path d="M500 111V72M500 111L529 128" stroke="#343c44" stroke-width="7" stroke-linecap="round"/>'+
+ '<path d="M270 360H405M590 360H725" stroke="#d7b47b" stroke-width="5"/>'+
+ '<path d="M240 530L200 620M760 530L800 620" stroke="#bb986b" stroke-width="10"/>'+
+ '<path d="M0 560H1000" stroke="#ba9364" stroke-width="5"/></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return savilleRowScene();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():savilleRowInterior();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
