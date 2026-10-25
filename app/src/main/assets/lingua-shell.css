@@ -668,3 +668,70 @@ body.theme-velvet-theatre{
  .theme-velvet-theatre .library .shelf{grid-template-columns:1fr}
  .theme-velvet-theatre .library .shelf .card{min-height:285px}
 }
+
+/* LT-13 Celestial Atlas — static observatory charts, brass instrument rules,
+ * constellation dots, book-spine cards and warm paper reader. No animation,
+ * network image, blur-heavy full-screen layers or external font dependency. */
+.lt-theme-celestial-atlas .lt-theme-swatch{
+ background:radial-gradient(circle at 72% 32%,#c6a36b 0 7%,transparent 8%),
+ linear-gradient(125deg,#0e2c37 0 52%,#32545c 52% 75%,#e2c899 75%)}
+body.theme-celestial-atlas{
+ --body:#0d2831;--card:#193c45;--ink:#f4e7ca;--sub:#d0c5aa;
+ --accent:#e6c78e;--reader:#f2ead8;--reader-ink:#253b3f;
+ background:#0d2831;
+ background-image:linear-gradient(#d5bc7d12 1px,transparent 1px),
+ linear-gradient(90deg,#d5bc7d12 1px,transparent 1px);
+ background-size:44px 44px;
+}
+.theme-celestial-atlas::before,.theme-celestial-atlas::after{display:none!important}
+.theme-celestial-atlas .library{max-width:1200px}
+.theme-celestial-atlas .library .header{
+ border-bottom:1px solid #c9ae78a8;padding-bottom:20px}
+.theme-celestial-atlas .library .header h1{
+ font:600 clamp(28px,4.5vw,45px) Georgia,serif;color:#f3ddad}
+.theme-celestial-atlas .library .brand{letter-spacing:.16em;color:#d9c28f}
+.theme-celestial-atlas .library .storylens-hero{
+ position:relative;overflow:hidden;min-height:220px;
+ padding:34px 44px;border-radius:4px;border:1px solid #b99b69;
+ background:radial-gradient(circle at 83% 45%,transparent 0 46px,#d5ba7b77 47px 48px,
+ transparent 49px 73px,#d5ba7b66 74px 75px,transparent 76px),
+ linear-gradient(130deg,#133743,#0a2732);
+ box-shadow:inset 0 0 0 8px #0c2934,0 8px 0 #071a22;
+}
+.theme-celestial-atlas .library .storylens-hero::after{
+ content:'✦  ·  ✧  ·  ✦';position:absolute;inset-inline-end:5%;
+ inset-block-start:14%;font:26px Georgia,serif;color:#e6ca91a8;pointer-events:none}
+.theme-celestial-atlas .library .storylens-hero h2{
+ color:#ffe8b5;font:600 clamp(29px,4.1vw,47px) Georgia,serif}
+.theme-celestial-atlas .library .storylens-hero .hero-orb{display:none}
+.theme-celestial-atlas .library .hero-continue{
+ background:#e3c690;color:#193a43;border:1px solid #fff1ca;border-radius:3px}
+.theme-celestial-atlas .library .shelf{
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:19px}
+.theme-celestial-atlas .library .shelf .card{
+ display:grid;grid-template-columns:68px minmax(0,1fr);align-items:start;
+ gap:12px;min-height:245px;padding:17px 13px;border-radius:3px;
+ border:1px solid #b8a17b;background:#193a44;box-shadow:5px 5px 0 #081e27;
+ animation:none}
+.theme-celestial-atlas .library .shelf .card .cover{
+ width:68px;height:175px;min-height:175px;max-width:68px;border-radius:2px;
+ border-inline-start:5px solid #e2c68b}
+.theme-celestial-atlas .library .shelf .card-content{min-width:0;padding:2px}
+.theme-celestial-atlas .library .shelf .card h2{
+ font:600 21px Georgia,serif;color:#f5e3bd;overflow-wrap:anywhere}
+.theme-celestial-atlas .library .stl-discovery{
+ background:#12323d;border:1px solid #ae9568;border-radius:3px}
+.theme-celestial-atlas .lt-drawer{background:#122e39;border-color:#c7ab78}
+.theme-celestial-atlas .lt-theme-choice{
+ background:#21434c;color:#f4e2bf;border:1px solid #a88e66}
+.theme-celestial-atlas .reader:not(.dark){
+ background:#f2ead8;color:#253b3f;font-family:Georgia,serif}
+.theme-celestial-atlas .reader.dark{background:#152f38;color:#f3e6cc}
+@media(max-width:680px){
+ .theme-celestial-atlas .library .storylens-hero{min-height:170px;padding:19px 16px}
+ .theme-celestial-atlas .library .shelf{grid-template-columns:1fr}
+ .theme-celestial-atlas .library .shelf .card{
+  grid-template-columns:78px minmax(0,1fr);min-height:195px}
+ .theme-celestial-atlas .library .shelf .card .cover{
+  width:78px;max-width:78px;height:155px;min-height:155px}
+}
