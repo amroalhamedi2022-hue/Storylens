@@ -145,6 +145,22 @@ renderReader=function(){
   const picture=document.createElement('img');
   picture.src=item.src;picture.alt=item.alt.trim();
   picture.loading='lazy';picture.decoding='async';
+  // Reserve editorial image geometry before decode on long chapters. The
+  // optional crop/focal data is bounded: invalid metadata cannot break layout.
+  if(picture.style && typeof item.aspectRatio==='number' &&
+     Number.isFinite(item.aspectRatio) && item.aspectRatio>=0.5 && item.aspectRatio<=3.5){
+   picture.style.aspectRatio=String(item.aspectRatio);
+  }
+  if(picture.style && item.crop==='cover'){
+   picture.style.objectFit='cover';
+   if(Number.isFinite(item.focalX)&&Number.isFinite(item.focalY)&&
+      item.focalX>=0&&item.focalX<=100&&item.focalY>=0&&item.focalY<=100){
+    picture.style.objectPosition=item.focalX+'% '+item.focalY+'%';
+   }
+  }
+  // A missing local image must never leave a broken-image icon or an empty
+  // figure in the reading flow. No network fallback or remote hotlink.
+  picture.onerror=()=>figure.remove?.();
   figure.appendChild(picture);
   if(typeof item.credit==='string'&&item.credit.trim()&&item.credit.length<=160){
    const caption=document.createElement('figcaption');
