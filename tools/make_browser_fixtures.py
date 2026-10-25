@@ -21,6 +21,11 @@ tests={
  check('story art',()=>!!art['eleven-minute-alibi_0']);
  check('novella catalog',()=>catalog.stories.some(s=>s.id==='the-salt-meridian'&&s.chapters.length===5));
  check('novella art',()=>!!art['the-salt-meridian_4']);
+ check('in-book search entry',()=>!!document.querySelector('.lt-chapter-search-open'));
+ check('offline chapter search',()=>{const hits=LinguaShell.searchChapters('harbor authority');return hits.some(x=>x.storyId==='the-salt-meridian'&&x.en.includes('harbor authority'))});
+ check('Arabic source search',()=>LinguaShell.searchChapters('المنارة').some(x=>x.storyId==='the-salt-meridian'));
+ check('search modal inert background',()=>{LinguaShell.openChapterSearch();return !!document.querySelector('.lt-chapter-search')&&document.getElementById('root').inert});
+ check('search modal escape cleanup',()=>{document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));return !document.getElementById('root').inert&&!document.querySelector('.lt-chapter-search')});
  try{openStory('eleven-minute-alibi')}catch(e){errors.push('open: '+e.message)}
  check('reader',()=>state.page==='reader'&&!!document.querySelector('.reader .tok'));
  try{document.querySelector('.reader .tok').click()}catch(e){errors.push('tap: '+e.message)}
