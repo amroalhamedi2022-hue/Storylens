@@ -38,7 +38,7 @@ const regexStory={terms:[{term:'a (rare) phrase',type:'idiom'}]};
 const punct=lookup({story:regexStory,dictionary:[],sentence:'It is a (rare) phrase.',selected:'rare',offset:9});
 assert.equal(punct.entry.term,'a (rare) phrase','escape punctuation in phrase regex');
 const boundary=lookup({story:{terms:[{term:'at sea'}]},dictionary:[],sentence:'The cat seafood.',selected:'sea',offset:8});
-assert.equal(boundary.entry,null,'never match phrase inside larger words');
+assert.equal(boundary,null,'never resolve a partial token inside a larger word');
 assert.ok(html.indexOf('src="lingua-lookup.js"') < html.indexOf('src="reader-experience.js"'),
  'load indexed resolver before reader interception');
 assert.match(readerJs,/const lookupToken=token=>[\s\S]*?window\.LinguaLookup\.lookup\(/,
