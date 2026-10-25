@@ -142,8 +142,23 @@ function consularLedgerScene(){
  '<g transform="translate(600 445)"><rect x="-36" y="-24" width="72" height="52" rx="8" fill="#b34d43" stroke="#ead6aa" stroke-width="5"/><circle r="18" fill="#f0d7a1"/><path d="M-11 0H11M0 -11V11" stroke="#87403a" stroke-width="4"/></g><path d="M0 590H1000" stroke="#e0bd7e" stroke-width="5"/></svg>';
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
+
+function redSeaDispatchScene(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="Victorian telegraph dispatch desk beside a Red Sea steamship">'+
+ '<defs><linearGradient id="dispatch-sky" x2="0" y2="1"><stop stop-color="#123747"/><stop offset="1" stop-color="#d49a62"/></linearGradient><linearGradient id="dispatch-paper" x2="1" y2="1"><stop stop-color="#fff4d8"/><stop offset="1" stop-color="#d5bb8b"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#dispatch-sky)"/><circle cx="810" cy="118" r="62" fill="#f7d49a" opacity=".82"/>'+
+ '<path d="M0 340L120 306L235 328L340 296L470 326L590 301L710 330L830 302L1000 328V420H0Z" fill="#bd9b72"/>'+
+ '<rect x="0" y="420" width="1000" height="200" fill="#174a58"/><path d="M0 470Q160 450 320 475T650 470T1000 478M0 525Q210 500 410 530T790 522T1000 530" stroke="#8ec2c0" stroke-width="4" opacity=".42" fill="none"/>'+
+ '<path d="M510 342L610 342L660 382L455 382Z" fill="#152b35"/><rect x="535" y="280" width="18" height="62" fill="#263b43"/><path d="M544 282L544 208L630 278Z" fill="#f0dfb9" stroke="#203740" stroke-width="5"/><path d="M544 209L544 282L475 282Z" fill="#a33b31"/><rect x="565" y="300" width="24" height="16" fill="#f0d29a"/><path d="M485 342L455 382M610 342L660 382" stroke="#c99b61" stroke-width="6"/>'+
+ '<path d="M80 420V370H245V420M105 370V338H220V370" stroke="#f2dfbd" stroke-width="8" fill="none" opacity=".7"/><path d="M80 425L80 445L245 445L245 425" fill="#6b4937" stroke="#2c3535" stroke-width="5"/><path d="M145 445V475M200 445V475" stroke="#d4ae75" stroke-width="7"/>'+
+ '<path d="M245 438C320 400 340 360 410 345S510 300 535 286" stroke="#b84035" stroke-width="4" stroke-dasharray="8 8" fill="none"/>'+
+ '<rect x="290" y="388" width="190" height="125" rx="4" fill="url(#dispatch-paper)" stroke="#4b4b3e" stroke-width="7" transform="rotate(-7 385 450)"/><path d="M315 420L438 405M320 442L432 428M324 465L408 453" stroke="#52615c" stroke-width="5" opacity=".7"/><circle cx="443" cy="478" r="17" fill="#a33b31"/><path d="M430 478L443 465L456 478L443 491Z" fill="#f0d2a0"/>'+
+ '<rect x="98" y="492" width="210" height="24" rx="6" fill="#263b43" stroke="#d6b57a" stroke-width="5"/><circle cx="145" cy="504" r="12" fill="#a33b31"/><path d="M145 504L175 485L210 504" stroke="#d8b77e" stroke-width="6" fill="none"/><path d="M0 572H1000" stroke="#d5bb8b" stroke-width="4" opacity=".55"/></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():charingCrossDeparture();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
