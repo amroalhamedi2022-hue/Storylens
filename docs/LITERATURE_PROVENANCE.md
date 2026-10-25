@@ -4,6 +4,40 @@ Updated 2026-10-25. This ledger distinguishes **packaged original text** from
 **researched but not yet imported** classic editions. A book is not accepted
 merely because its title is present in a roadmap.
 
+## Packaged draft: Around the World in Eighty Days — Chapter II (Towle; Standard Ebooks transcription)
+
+- ID: `around-the-world-in-eighty-days-towle`; appended by
+  `app/src/main/assets/classic-verne-towle-ch02.js` after Chapter I.
+  **Two of 37 authentic chapters now packaged**, not a completed novel.
+- **English:** all 11 source paragraphs, **1,114 English words**, checked
+  paragraph-by-paragraph against the public-domain Towle translation as
+  transcribed by Standard Ebooks (11/11 exact matches after HTML and
+  typographic spacing normalization). No synopsis or fabricated text.
+- **Arabic:** 11 new aligned translations; **independent bilingual literary
+  editing NOT TESTED**. Fourteen additional source-occurring
+  contextual expressions; one original offline SVG of Fogg's numbered
+  wardrobe and matching clocks, distinct from the Chapter I street scene.
+- **Upstream English source:** 
+  https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-2.xhtml
+  (upstream Git blob `62c2a501351321b1251309ffd2d4587ca4a44e5a`).
+  **Rights:** Standard Ebooks `LICENSE.md` (blob
+  `87aa7d003e74ba350bcce690938ced732f96e06e`) states the
+  original text is believed public domain in the United States, and
+  contributors dedicate their own editorial contributions worldwide via
+  CC0 1.0. Territory-specific rights verification remains **NOT TESTED**.
+  No publisher logo or third-party art is included.
+- **Source verification:** production scripts evaluated in V8 with the
+  upstream XHTML: 11/11 paragraphs matched, 11/11 Arabic passages present,
+  14 new terms appear in the English, correct chapter load order and
+  distinct offline illustration. These checks do **not** verify Arabic
+  translation quality or device performance.
+- **Theme:** Station Tickets (railway ticket geometry, blue/ivory/red palette)
+  registered in Settings, CSS and offline backup whitelist.
+- **Android CI and Pad 5:** see `docs/AUTONOMOUS_ACCEPTANCE.md`; do not
+  infer successful packaging or real-device acceptance from V8 checks.
+- **Next batch:** complete Chapter III from the same verified translation,
+  with independent editorial review of Chapters I–II before final release.
+
 ## Packaged draft: Around the World in Eighty Days — Chapter I (Towle 1873)
 
 - ID: `around-the-world-in-eighty-days-towle`; asset:
