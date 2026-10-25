@@ -1047,3 +1047,116 @@ body.theme-monochrome-zine{
   animation:none!important;transition:none!important;
  }
 }
+
+/* LT-13: Moonlit Margins — nocturnal bookbinder's library with offset
+ * book-spine cards and copper-foil bookplates, not a monochrome zine recolor.
+ * All effects are static and work entirely offline. */
+.lt-theme-moonlit-margins .lt-theme-swatch{
+ background:linear-gradient(135deg,#111b36 0 52%,#d4a96c 52% 64%,#e9dfca 64%);
+}
+body.theme-moonlit-margins{
+ --body:#10192b;--card:#efe7d8;--ink:#f5ebd8;--sub:#c3bcae;
+ --accent:#b47b38;--reader:#f1e9d7;--reader-ink:#273046;
+ background:radial-gradient(circle at 82% 5%,#394967 0,#121e34 37%,#10192b 75%);
+}
+.theme-moonlit-margins::before,.theme-moonlit-margins::after{display:none!important}
+.theme-moonlit-margins .library{max-width:1230px}
+.theme-moonlit-margins .storylens-hero{
+ min-height:235px;position:relative;padding:40px 55px 38px 76px;
+ border:1px solid #bb925c;border-inline-start:14px double #d6b887;
+ border-radius:4px 32px 4px 32px;
+ background:linear-gradient(105deg,#17243c 0 65%,#2c3d58 65% 100%);
+ box-shadow:0 22px 40px #0208178a,inset 0 0 0 8px #d8b47c12;
+}
+.theme-moonlit-margins .storylens-hero::after{
+ content:'✦  THE READING ROOM  ✦';position:absolute;
+ inset-inline-end:22px;inset-block-end:15px;
+ font:700 10px/1.3 Georgia,serif;letter-spacing:.2em;color:#e4c28e;
+ pointer-events:none;
+}
+.theme-moonlit-margins .storylens-hero h2{
+ font:italic 600 clamp(32px,5vw,57px)/1.08 Georgia,serif;
+ color:#f5e7cd;max-width:78%;letter-spacing:-.025em;
+}
+.theme-moonlit-margins .storylens-hero .hero-orb{
+ width:135px;height:135px;border-radius:50%;
+ background:radial-gradient(circle at 32% 30%,#fff4d4,#c0a16e 45%,#293956 46%);
+ box-shadow:0 0 0 14px #bd94512b,0 0 0 16px #bd94517a;
+}
+.theme-moonlit-margins .shelf{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,275px),1fr));
+ gap:25px 20px;
+}
+.theme-moonlit-margins .shelf .card{
+ display:grid;grid-template-columns:55px minmax(0,1fr);
+ gap:0;min-height:245px;padding:0;border-radius:2px 15px 15px 2px;
+ background:#efe7d8;color:#283149;border:1px solid #d4bd97;
+ box-shadow:8px 11px 0 #050d1d,10px 14px 20px #0007;
+ animation:none;transform:none;
+}
+.theme-moonlit-margins .shelf .card .cover{
+ width:55px;max-width:55px;min-height:245px;height:100%;
+ border-radius:0;border-inline-end:4px double #d2a66c;
+ background-size:auto 100%;background-position:center;
+ filter:saturate(.8) contrast(1.08);
+}
+.theme-moonlit-margins .shelf .card-content{
+ min-width:0;padding:28px 18px 20px;justify-content:center;
+ border-block-start:5px solid #b88b50;
+}
+.theme-moonlit-margins .shelf .card h2{
+ font:600 23px/1.2 Georgia,serif;color:#26334b;overflow-wrap:anywhere;
+}
+.theme-moonlit-margins .shelf .card .lvl{color:#855b28}
+.theme-moonlit-margins .lt-drawer{
+ background:#1d2c44;color:#f6e7ce;border-inline-end:5px double #bd985d;
+}
+.theme-moonlit-margins .reader:not(.dark){
+ background:linear-gradient(90deg,#d6c7ab 0 3%,#f1e9d7 3% 97%,#d6c7ab 97%);
+ color:#273046;
+}
+.theme-moonlit-margins .reader.dark{background:#172238;color:#f4e8d3}
+.theme-moonlit-margins .reader .reading-width{
+ max-width:780px;border-inline:1px solid #b28b5a55;
+ padding-inline:clamp(17px,4vw,42px);
+}
+.theme-moonlit-margins .reader h2{
+ font:italic 600 clamp(31px,4vw,44px)/1.16 Georgia,serif;
+ border-block-end:2px solid #aa8453;padding-block-end:20px;
+}
+.theme-moonlit-margins .reader .sentence{line-height:1.9}
+.theme-moonlit-margins .sheet{border-block-start:6px double #c59c60}
+@media(max-width:680px){
+ .theme-moonlit-margins .storylens-hero{min-height:175px;padding:23px 20px;border-inline-start-width:7px}
+ .theme-moonlit-margins .storylens-hero h2{max-width:85%;font-size:32px}
+ .theme-moonlit-margins .storylens-hero .hero-orb{width:75px;height:75px}
+ .theme-moonlit-margins .shelf{grid-template-columns:1fr;gap:20px}
+ .theme-moonlit-margins .shelf .card{min-height:205px;grid-template-columns:45px minmax(0,1fr)}
+ .theme-moonlit-margins .shelf .card .cover{width:45px;max-width:45px;min-height:205px}
+ .theme-moonlit-margins .reader .reading-width{padding-inline:16px}
+}
+@media(prefers-reduced-motion:reduce){
+ .theme-moonlit-margins .shelf .card,.theme-moonlit-margins .storylens-hero{
+  animation:none!important;transition:none!important;
+ }
+}
+/* LT-07: in-book search, bilingual source passages, accessible dialog. */
+.lt-chapter-search-open{display:block;margin-top:10px;width:100%;text-align:center}
+.lt-chapter-search{max-height:90dvh;overflow-y:auto;overscroll-behavior:contain}
+.lt-chapter-search h2{direction:inherit;text-align:start}
+.lt-chapter-query{
+ width:100%;padding:13px 16px;border:1px solid #a4b9bc;
+ border-radius:12px;background:var(--card);color:var(--reader-ink);
+ font:inherit;min-height:48px;
+}
+.lt-chapter-results{display:grid;gap:11px;margin:15px 0}
+.lt-chapter-hit{
+ display:grid;gap:7px;width:100%;padding:14px 15px;text-align:start;
+ background:var(--card);color:#263149;border:1px solid #b6b5aa;
+ border-radius:12px;cursor:pointer;
+}
+.lt-chapter-hit strong{font-size:14px}
+.lt-chapter-hit span{display:block;line-height:1.55;font-size:14px;text-align:start}
+.lt-chapter-hit span[lang="ar"]{color:#53626b}
+.lt-chapter-hit:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media(min-width:720px){.lt-chapter-search{border-radius:22px;margin-block:auto}}
