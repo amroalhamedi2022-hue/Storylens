@@ -1596,3 +1596,20 @@ body.theme-suez-quays::before,body.theme-suez-quays::after{display:none!importan
 .theme-suez-quays .reader{background:#fdfbf0;color:#213b44}
 .theme-suez-quays .reader .reading-width{border-inline-start:3px double #267d8b;padding-inline-start:20px}
 @media(prefers-reduced-motion:reduce){.theme-suez-quays .library .card{transition:none!important}}
+
+
+/* LT-13 Consular Ledger: docket margins, stamped-paper geometry and sober ink palette.
+ * Static CSS only; no additional fonts, blur layers, animation loops or network assets. */
+.lt-theme-consular-ledger .lt-theme-swatch{background:linear-gradient(90deg,#8d3e35 0 12%,#efe6cf 12% 76%,#29434d 76%)}
+body.theme-consular-ledger{--body:#e9e4d5;--card:#f8f4e8;--ink:#24363d;--sub:#5c6865;--accent:#91483d;--reader:#fffaf0;--reader-ink:#28383d;color:var(--ink);background:repeating-linear-gradient(90deg,transparent 0 54px,#9a51400c 54px 55px),linear-gradient(135deg,#f0eadb,#dce1d8)}
+body.theme-consular-ledger::before,body.theme-consular-ledger::after{display:none!important}
+.theme-consular-ledger .library .header{border-bottom:1px solid #91483d;padding-bottom:15px;position:relative}
+.theme-consular-ledger .library .header::after{content:'FILE · SUEZ · 09 OCT';display:block;margin-top:9px;font:600 10px/1.4 ui-monospace,monospace;letter-spacing:.18em;color:#91483d}
+.theme-consular-ledger .library .storylens-hero{border-radius:2px;border-inline-start:8px solid #91483d;background:linear-gradient(100deg,#f8f4e8 0 72%,#d9e0d8 72%);box-shadow:0 5px 0 #24363d10}
+.theme-consular-ledger .library .card{border-radius:2px;border:1px solid #b9b7a8;border-top:4px solid #29434d;box-shadow:3px 3px 0 #24363d12;animation:none}
+.theme-consular-ledger .library .card h2{font-family:Georgia,serif;color:#29434d}
+.theme-consular-ledger .lt-drawer{background:#243d46;border-inline-start:4px solid #b58b58}
+.theme-consular-ledger .reader{background:#fffaf0;color:#28383d}
+.theme-consular-ledger .reader .reading-width{border-inline-start:3px solid #91483d;padding-inline-start:18px;background:linear-gradient(90deg,#91483d08,transparent 36px)}
+.theme-consular-ledger .lt-theme-choice{background:#f8f4e8;color:#24363d;border-radius:2px}
+@media(prefers-reduced-motion:reduce){.theme-consular-ledger .library .card{transition:none!important;transform:none!important}}
