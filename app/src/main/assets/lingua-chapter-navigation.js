@@ -10,7 +10,7 @@ function decorate(){
  const story=state.story,chapters=story.chapters||[],index=state.chapter;
  if(!Number.isInteger(index)||index<0||index>=chapters.length)return;
  const end=document.querySelector('.reader .chapter-end');
- if(!end)return;
+ if(!end||end.querySelector('.lt-chapter-nav'))return; // Avoid duplicate controls on repeated decoration.
  const incomplete=Number.isInteger(story.totalChapters)&&story.totalChapters>chapters.length;
  const nav=document.createElement('nav');
  nav.className='lt-chapter-nav';
@@ -24,8 +24,8 @@ function decorate(){
   });
   nav.appendChild(control);
  };
- button(localized('← الفصل السابق','← Previous chapter'),index-1,index>0);
- button(localized('الفصل التالي →','Next chapter →'),index+1,index<chapters.length-1);
+ button(localized('الفصل السابق →','← Previous chapter'),index-1,index>0);
+ button(localized('← الفصل التالي','Next chapter →'),index+1,index<chapters.length-1);
  // Long books need direct chapter access without opening the settings sheet.
  // Only offline/published chapters are selectable; never imply future chapters exist.
  if(chapters.length>1){
