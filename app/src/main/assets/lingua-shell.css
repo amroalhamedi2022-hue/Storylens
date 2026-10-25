@@ -791,3 +791,93 @@ body.theme-harbor-ledger{
 @media(prefers-reduced-motion:reduce){
  .theme-harbor-ledger .card,.theme-harbor-ledger .storylens-hero{animation:none!important;transition:none!important}
 }
+
+
+/* LT-13: Circuit Notebook — an architectural annotation-board theme.
+ * Distinct geometry: numbered index-tab cards, diagram-grid hero, squared
+ * technical reader with side rules. All textures are static CSS, offline. */
+.lt-theme-circuit-notebook .lt-theme-swatch{
+ background:repeating-linear-gradient(0deg,#b6f1e7 0 1px,transparent 1px 13px),
+ linear-gradient(120deg,#101e30 0 57%,#eaf3e9 57% 100%);
+}
+body.theme-circuit-notebook{
+ --body:#d7e8e7;--card:#f5f7ec;--ink:#172b37;--sub:#476a6b;
+ --accent:#007b76;--reader:#f9f9ee;--reader-ink:#162f35;
+ background:linear-gradient(110deg,#c5dbda,#e5efeb);
+}
+.theme-circuit-notebook::before,.theme-circuit-notebook::after{display:none!important}
+.theme-circuit-notebook .library{max-width:1280px}
+.theme-circuit-notebook .storylens-hero{
+ min-height:235px;position:relative;padding:33px 44px;
+ border-radius:0 0 25px 0;border:2px solid #7ae0cf;
+ background:repeating-linear-gradient(90deg,#78dfd92c 0 1px,transparent 1px 36px),
+ repeating-linear-gradient(0deg,#78dfd92c 0 1px,transparent 1px 36px),#132b42;
+ box-shadow:9px 9px 0 #2d657a35;
+}
+.theme-circuit-notebook .storylens-hero::after{
+ content:'01 / READ   ─────   02 / DISCOVER';
+ position:absolute;inset-inline-end:22px;inset-block-end:16px;
+ font:600 11px/1.4 monospace;letter-spacing:.1em;color:#a2f5e4;
+ pointer-events:none;
+}
+.theme-circuit-notebook .storylens-hero h2{
+ font:700 clamp(30px,4.5vw,49px)/1.12 system-ui,sans-serif;
+ letter-spacing:-.045em;color:#e4fff6;
+}
+.theme-circuit-notebook .storylens-hero .hero-orb{
+ width:145px;height:145px;border-radius:0;transform:rotate(45deg);
+ background:repeating-linear-gradient(90deg,transparent 0 14px,#92e9dc6e 15px 16px);
+ border:2px solid #8debd8;box-shadow:none;
+}
+.theme-circuit-notebook .shelf{
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px;
+}
+.theme-circuit-notebook .shelf .card{
+ position:relative;display:grid;grid-template-columns:94px minmax(0,1fr);
+ align-items:start;gap:14px;min-height:228px;padding:17px;
+ border-radius:0 13px 0 0;border:2px solid #648b8d;
+ border-inline-start:8px solid #007d7c;background:#f8f9ef;
+ box-shadow:7px 7px 0 #2b66712b;animation:none;
+}
+.theme-circuit-notebook .shelf .card::after{
+ content:'LT / INDEX';position:absolute;inset-inline-end:9px;inset-block-end:7px;
+ font:600 9px monospace;letter-spacing:.14em;color:#487675;pointer-events:none;
+}
+.theme-circuit-notebook .shelf .card .cover{
+ width:94px;max-width:94px;min-height:160px;height:160px;
+ border-radius:0;clip-path:polygon(0 0,100% 0,100% 88%,85% 100%,0 100%);
+}
+.theme-circuit-notebook .shelf .card-content{min-width:0}
+.theme-circuit-notebook .shelf .card h2{
+ font:700 20px/1.25 system-ui,sans-serif;letter-spacing:-.02em;color:#123f48;
+}
+.theme-circuit-notebook .lt-drawer{
+ background:#152e41;border-inline-end:4px solid #7ce2d4;
+}
+.theme-circuit-notebook .lt-theme-choice{
+ border-radius:0 12px 0 0;border:1px solid #70a7a0;
+}
+.theme-circuit-notebook .reader:not(.dark){
+ color:#18303a;background:repeating-linear-gradient(0deg,#0c6b7513 0 1px,transparent 1px 34px),#f7f9ef;
+}
+.theme-circuit-notebook .reader.dark{background:#172e3b;color:#e3f5e9}
+.theme-circuit-notebook .reader .reading-width{
+ max-width:830px;border-inline-start:3px double #539b99;
+ padding-inline-start:clamp(14px,3vw,32px);
+}
+.theme-circuit-notebook .reader h2{
+ font-family:system-ui,sans-serif;font-weight:800;
+ border-block-end:2px dashed #569996;padding-block-end:14px;
+}
+@media(max-width:660px){
+ .theme-circuit-notebook .storylens-hero{min-height:185px;padding:23px 17px}
+ .theme-circuit-notebook .shelf{grid-template-columns:1fr}
+ .theme-circuit-notebook .shelf .card{grid-template-columns:82px minmax(0,1fr);min-height:190px}
+ .theme-circuit-notebook .shelf .card .cover{width:82px;max-width:82px;height:140px;min-height:140px}
+ .theme-circuit-notebook .reader .reading-width{padding-inline-start:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ .theme-circuit-notebook .shelf .card,.theme-circuit-notebook .storylens-hero{
+  animation:none!important;transition:none!important;
+ }
+}
