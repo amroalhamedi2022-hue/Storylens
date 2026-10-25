@@ -11,7 +11,7 @@ const chapter=story.chapters[5],english=chapter.paragraphs.map(p=>p.en).join(' '
 assert.equal(story.chapters.length,6);
 assert.equal(chapter.paragraphs.length,37);
 assert.ok(chapter.paragraphs.every(p=>p.en.trim()&&p.ar.trim()));
-const words=(english.match(/[\\p{L}\\p{N}’'-]+/gu)||[]).length;
+const words=(english.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.ok(words>1250,'full chapter VI required');
 for(const phrase of ['fifty-five thousand pounds','four hours','eleven o’clock','Scotland Yard','Quite indispensable'])
  assert.ok(english.toLowerCase().includes(phrase.toLowerCase()),'missing original scene: '+phrase);
