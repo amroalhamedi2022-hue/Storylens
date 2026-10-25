@@ -128,7 +128,8 @@ merely because its title is present in a roadmap.
   regression used a literal backslash-s instead of whitespace. Fixed test
   regexes in SHA `00b206fb8386777e683ca3255b1898259be0c2d0`.
   [CI 40217753579](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40217753579)
-  was **IN PROGRESS** at this checkpoint.
+  **completed SUCCESS** on source SHA `00b206fb8386777e683ca3255b1898259be0c2d0` (Node, Android Gradle, offline asset checks, Chromium).
+- **CI-calculated APK SHA-256:** `47fb8906def0eca5d80e4c9e9a7a408a05b9b42daf7ef453a8031a7cffd1dee8`; Debug artifact **12607598645**; independent download/rehash and device tests NOT TESTED.
 - US public-domain rationale for Towle 1873; Standard Ebooks editorial CC0.
   **Territory-specific redistribution, independent Arabic proofreading,
   Pad 5 device FPS/RTL/TalkBack and final APK NOT TESTED**.
