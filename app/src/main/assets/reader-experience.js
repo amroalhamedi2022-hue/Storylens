@@ -11,6 +11,35 @@ const originalTheme=theme;
 const originalInlineTranslate=inlineTranslate;
 const chapterKey=()=> 'chapter_'+state.story.id;
 const bookmarkKey=()=> 'bookmarks';
+// Semantic paragraph anchors survive font, theme and tablet-width changes;
+// retain legacy pixel scroll for old backups and readers without DOM geometry.
+function captureParagraphAnchor(){
+ const viewport=Number.isFinite(window.innerHeight)?window.innerHeight:800;
+ for(const node of document.querySelectorAll('.reader .sentence')){
+  const paragraph=Number(node.dataset?.i);
+  const box=node.getBoundingClientRect?.();
+  if(!Number.isInteger(paragraph)||paragraph<0||!box||
+     !Number.isFinite(box.top)||!Number.isFinite(box.bottom)||
+     box.bottom<=52||box.top>=viewport)continue;
+  return {paragraph,viewportOffset:Math.max(-4096,Math.min(4096,box.top))};
+ }
+ return {};
+}
+function bookmarkPosition(mark){
+ const fallback=typeof mark.scroll==='number'&&Number.isFinite(mark.scroll)
+  ?Math.max(0,Math.min(mark.scroll,10000000)):0;
+ const paragraphs=state.story?.chapters[state.chapter]?.paragraphs;
+ if(!Number.isInteger(mark.paragraph)||mark.paragraph<0||
+    mark.paragraph>=(paragraphs?.length??0)||
+    typeof mark.viewportOffset!=='number'||!Number.isFinite(mark.viewportOffset)||
+    Math.abs(mark.viewportOffset)>4096)return fallback;
+ const node=Array.from(document.querySelectorAll('.reader .sentence'))
+  .find(el=>Number(el.dataset?.i)===mark.paragraph);
+ const top=node?.getBoundingClientRect?.().top;
+ const y=window.scrollY+top-mark.viewportOffset;
+ return Number.isFinite(top)&&Number.isFinite(y)
+  ?Math.max(0,Math.min(y,10000000)):fallback;
+}
 // Keep reader-only sentence reveals through theme/font/locale re-renders and
 // chapter navigation. Do not write per-tap state to synchronous localStorage;
 // reveals are ephemeral and never modify the English or Arabic book content.
@@ -220,7 +249,8 @@ settings=function(){
 window.stlBookmark=function(){
  if(!state.story)return;
  const marks=get(bookmarkKey(),{});
- marks[state.story.id]={chapter:state.chapter,scroll:window.scrollY,updatedAt:Date.now()};
+ marks[state.story.id]={chapter:state.chapter,scroll:window.scrollY,
+  ...captureParagraphAnchor(),updatedAt:Date.now()};
  put(bookmarkKey(),marks);
  closeSheet();settings();
 };
@@ -232,15 +262,14 @@ window.stlJumpBookmark=function(){
  if(!mark||!Number.isInteger(mark.chapter)||mark.chapter<0)return;
  const chapter=Math.min(mark.chapter,state.story.chapters.length-1);
  if(chapter<0)return;
- const scroll=typeof mark.scroll==='number'&&Number.isFinite(mark.scroll)
-  ?Math.max(0,Math.min(mark.scroll,10000000)):0;
+
  state.chapter=chapter;
  put(chapterKey(),state.chapter);
  closeSheet();state.toolbar=false;
  // Run the currently installed reader pipeline (accessibility, bookmarks and preferences).
  // Calling the captured base renderer here skips every later enhancement wrapper.
  renderReader();
- window.scrollTo(0,scroll);
+ window.scrollTo(0,bookmarkPosition(mark));
 };
 window.stlChapter=function(i){
  if(!state.story||!Number.isInteger(i)||i<0||i>=state.story.chapters.length)return;
