@@ -167,3 +167,10 @@ merely because its title is present in a roadmap.
 - Seventeen source-occurring English vocabulary/idiom entries, bespoke original offline Suez steamship SVG, and a distinct Suez Quays maritime chart theme. No unlicensed stock photo or network image.
 - Only **six of the original 37 chapters** are now packaged, not the whole novel. Prior historical statements about five chapters describe earlier checkpoints.
 - New Node content regression checks original paragraph alignment, source length, source-bound terms, art uniqueness, theme and backup compatibility. Android/Chromium/device result recorded separately in acceptance ledger.
+
+
+## Towle Chapter VII — Consular passport inspection
+- English source: [Standard Ebooks, Towle 1873 transcription, Chapter VII](https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-7.xhtml).
+- SHA-256 of upstream XHTML fetched for this batch: `02d79d84d624a78dc6ac239e8a565ea001cd5fa1559014479c09a18b99cfb836`. The source has a header bridgehead plus 39 narrative paragraphs; all 39 narrative paragraphs are bundled in original English wording with 39 aligned Arabic companion drafts.
+- Standard Ebooks editorial transcription is CC0; Towle's 1873 English translation is public domain in the United States. Territory-specific redistribution clearance and independent Arabic literary proofreading remain **NOT TESTED**.
+- Added 19 source-occurring vocabulary/phrase entries, a bespoke offline SVG consulate/passport scene, and the distinct **Consular Ledger** theme. No external image or font asset is loaded.
