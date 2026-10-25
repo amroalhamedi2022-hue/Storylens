@@ -10,12 +10,12 @@ const match=html.match(/<script id="libraryData" type="application\/json">([\s\S
 assert.ok(match,'catalog present in index.html');
 const core=JSON.parse(match[1]);
 const context={window:{},encodeURIComponent};
-for(const file of ['editorial-stories-a.js','editorial-stories-b.js','editorial-stories-c.js','editorial-art.js']){
+for(const file of ['editorial-stories-a.js','editorial-stories-b.js','editorial-stories-c.js','novella-salt-meridian.js','editorial-art.js']){
  assert.ok(html.includes('src="'+file+'"'),file+' loaded before the primary app');
  vm.runInNewContext(fs.readFileSync(path.join(assets,file),'utf8'),context,{filename:file,timeout:2000});
 }
 const stories=context.window.StoryLensEditorialStories;
-assert.equal(stories.length,12,'twelve complete editorial adult stories');
+assert.equal(stories.length,13,'twelve original short stories plus one complete five-chapter novella');
 const all=[...core.stories,...stories],ids=new Set(),genres=new Map();
 let paragraphs=0,chapters=0,artCount=0;
 const art=context.window.StoryLensMakeEditorialArt(stories);
@@ -41,10 +41,10 @@ for(const story of all){
  }
  if(stories.includes(story))assert.ok(story.terms.length>=6,'context terms: '+story.id);
 }
-assert.equal(all.length,36);
-for(const [genre,count] of genres)assert.equal(count,6,genre+' now offers six distinct stories');
+assert.equal(all.length,37);
+for(const [genre,count] of genres)assert.equal(count,genre==='historical'?7:6,genre+' retains its original collection');
 assert.ok(paragraphs>=640 && chapters>=90,'original core and twelve editorial stories retained');
-assert.equal(artCount,24,'24 editorial chapter scenes rendered');
+assert.equal(artCount,29,'24 original editorial scenes plus five novella scenes rendered');
 assert.ok(html.includes('catalog.stories.push(...window.StoryLensEditorialStories)'),'stories registered before library render');
 assert.ok(html.includes('Object.assign(art,window.StoryLensMakeEditorialArt'),'art registered');
 console.log(JSON.stringify({result:'PASS',totalStories:all.length,totalChapters:chapters,totalBilingualParagraphs:paragraphs,illustratedNewChapters:artCount,perGenre:Object.fromEntries(genres)},null,2));
