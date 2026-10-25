@@ -27,5 +27,5 @@ const shell=read('lingua-shell.js'),css=read('lingua-shell.css'),backup=read('da
 assert.ok(shell.includes("'suez-quays'"));
 assert.ok(shell.includes("'suez-quays':'Suez Quays'"));
 assert.ok(css.includes('body.theme-suez-quays'));
-assert.ok(backup.includes("'suez-quays'].includes(val)"));
+assert.ok(backup.includes("'suez-quays','consular-ledger'].includes(val)"));
 console.log('PASS Towle VI: 37 aligned paragraphs, '+words+' source words, 17 source terms, offline art and Suez Quays theme');
