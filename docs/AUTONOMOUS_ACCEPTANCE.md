@@ -1,3 +1,11 @@
+## 2026-10-25 — LT-08 inline illustration geometry and offline failure fallback
+- Production change: `reader-experience.js` reserves a bounded optional aspect ratio (0.5–3.5), applies explicit opt-in cover crop with bounded focal coordinates (0–100%), and removes missing offline images instead of leaving broken icons. Remote paths remain rejected; existing Arabic translations and paragraph anchors remain untouched.
+- Regression: `tools/inline-illustrations.test.cjs` now exercises valid/invalid geometry, safe focal points, missing-image cleanup and the existing allowlist; Android CI workflow now runs this test.
+- **PASS (source/V8):** executed the committed regression script against the committed production reader in a V8 Node-compatible harness; 19 assertions passed. This is not a real Android WebView rendering test.
+- **NOT TESTED:** native Node execution in CI on this SHA (pending), Android packaging, visual crop/focal checks, offline image-error behavior and frame stability on Xiaomi Pad 5, full LT-01..LT-13 acceptance. No final APK or verified device performance claimed.
+- **Build question:** does the full Node/Android workflow compile and package the changed reader and pass the actual regression under native Node? Static/source checks cannot establish packaging or WebView behavior. One targeted CI run is justified, not a final release.
+- **Status:** IN_PROGRESS; PR #1 remains Draft; no main merge, no Handoff/Library access.
+
 # StoryLens — Autonomous acceptance evidence
 
 ## 2026-10-24 — Strict UTF-8 import for offline SAF backups (source-only)
