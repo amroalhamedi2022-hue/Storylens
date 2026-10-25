@@ -19,7 +19,8 @@ function run({locale='en',total=37,count=2,index=1}={}){
  const heading=createElement('div');heading.textContent='The End';
  const primary=createElement('button');primary.textContent='Return to library';
  const end=createElement('section');
- end.querySelector=selector=>selector==='div'?heading:selector==='button.primary'?primary:null;
+ end.querySelector=selector=>selector==='div'?heading:selector==='button.primary'?primary:
+  selector==='.lt-chapter-nav'?end.children.find(x=>x.className==='lt-chapter-nav')||null:null;
  const label=createElement('div');
  const doc={documentElement:{lang:locale},createElement,
   querySelector:selector=>selector==='.reader .chapter-end'?end:
@@ -29,7 +30,7 @@ function run({locale='en',total=37,count=2,index=1}={}){
   state:{page:'reader',story,chapter:index},renderReader:()=>{calls.push('base')}};
  vm.runInNewContext(source,sandbox,{filename:'lingua-chapter-navigation.js'});
  sandbox.renderReader();
- return {end,label,heading,primary,calls};
+ return {end,label,heading,primary,calls,decorate:sandbox.window.LinguaChapterNavigation.decorate};
 }
 const incomplete=run();
 assert.equal(incomplete.calls[0],'base');
@@ -42,12 +43,17 @@ assert.equal(nav.children[0].disabled,false);
 assert.equal(nav.children[1].disabled,true);
 nav.children[0].onclick();
 assert.equal(incomplete.calls[1],0,'previous chapter uses existing navigation pipeline');
+incomplete.decorate();
+assert.equal(incomplete.end.children.length,1,'repeated decoration must not duplicate chapter controls');
+assert.equal(incomplete.label.children.length,1,'repeated decoration must not duplicate progress labels');
 const middle=run({index:0});
 assert.equal(middle.end.children[0].children[0].disabled,true);
 middle.end.children[0].children[1].onclick();
 assert.equal(middle.calls[1],1);
 const arabic=run({locale:'ar'});
 assert.match(arabic.heading.textContent,/يتبع/);
+assert.equal(arabic.end.children[0].children[0].textContent,'الفصل السابق →');
+assert.equal(arabic.end.children[0].children[1].textContent,'← الفصل التالي');
 assert.match(arabic.label.children[0].textContent,/37/);
 const selector=nav.children[2];
 assert.equal(selector.tagName,'label');
