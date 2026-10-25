@@ -25,7 +25,7 @@ assert.equal(hit('plain',sentence.lastIndexOf('plain')).display,'in plain sight'
 assert.equal(hit('took',4,'She took it.').entry.term,'take','inflected headword');
 assert.equal(hit('unknown',3,'An unknown word.').entry,null,'no invented gloss');
 assert.equal(hit('sight',0,'sight.').entry.term,'sight','single word lookup');
-assert.equal(hit('plain',3,'A plain answer.').entry.term,'plain','no phrase outside matching span');
+assert.equal(hit('plain',2,'A plain answer.').entry.term,'plain','no phrase outside matching span');
 assert.equal(hit('plain',-1),null,'reject negative offset');
 assert.equal(hit('plain',10000),null,'reject out-of-bounds offset');
 assert.equal(hit('plain',0,'',{}),null,'reject empty source');
