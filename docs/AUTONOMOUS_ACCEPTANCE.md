@@ -1,3 +1,11 @@
+### Chapter II / Station Tickets targeted CI and independent artifact verification — 2026-10-25
+
+- **FAIL (initial browser regression):** [run 40203765741](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40203765741) passed Node/Gradle/APK asset checks but failed a stale Chromium fixture expecting exactly one Verne chapter. Corrected fixture to require both chapters and two distinct contextual illustrations.
+- **PASS (final targeted CI):** [run 40203941716](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40203941716) on functional SHA `052e33d826c389913ba5075f4f24833301c0b265`: Node tests, Android unit/Debug assembly, explicit chapter II APK asset gate, Chromium reader/word/translation/theme journey and screenshots.
+- **PASS (independent ZIP extraction and SHA-256):** Debug artifact **12603021648** contains `app-debug.apk` (**4,292,268 bytes**) with CI SHA-256 `146831a519894dec4a98ce286198429a90010dcc54a759d00971697658e15d91`; downloaded ZIP, independently recalculated APK digest and matched the CI checksum. Verified packaged `classic-verne-towle-ch02.js`, HTML registration, Station Tickets CSS and chapter II art.
+- **Screenshot artifact:** **12602707519**; no independent visual review of screenshot contents or physical Pad 5 was performed.
+- **NOT TESTED:** real Pad 5 install/upgrade/FPS/RTL/TalkBack, independent Arabic literary proofreading, territory-specific redistribution, remaining Chapters III–XXXVII and final release. Debug is test-only.
+
 ## 2026-10-25 — LT-07 authentic Verne Chapter II + contextual interior art + Station Tickets
 
 - **Production:** complete Towle English Chapter II from the Standard Ebooks
