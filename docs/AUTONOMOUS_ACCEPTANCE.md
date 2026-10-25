@@ -1,3 +1,7 @@
+### Independent Debug APK verification — Chapter IV milestone
+- **PASS:** downloaded artifact **12609633627**, extracted 4,320,237-byte `app-debug.apk` and independently recalculated SHA-256 `62d7a0ed909df97c4ef5a4ab7ddc515e8ec4d84b6d0d3de60ed22bcad9bab294`, matching CI `APK_SHA256.txt`. Chapter IV script, reader index and contextual art are packaged. This supersedes the earlier pending independent-hash line for this run.
+- **NOT TESTED:** installation, visual/performance/RTL/TalkBack on Pad 5, independent literary editing, final signing.
+
 ### Chapter IV targeted integration validation — 2026-10-25
 - **PASS:** [GitHub Actions 40222789455](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40222789455) on code+fixture SHA `4b4763f39084b1ef4eb2825579ea5a1fe2b7da26`: Node literary/content/dictionary regressions, Gradle Android Debug compilation and unit tests, explicit Chapter IV packaged-asset check, Chromium library and full reader/word/translation/theme journey.
 - **PASS (CI-calculated inner APK SHA-256):** `62d7a0ed909df97c4ef5a4ab7ddc515e8ec4d84b6d0d3de60ed22bcad9bab294`. Debug APK Artifact **12609633627**; screenshot Artifact **12609902605**. Independent artifact download and SHA-256 recomputation **NOT TESTED**.
