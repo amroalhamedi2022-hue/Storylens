@@ -11,10 +11,10 @@ const chapter = {title: 'Chapter', paragraphs: [
 ], inlineArt: [
  // Invalid entries must not crowd out later valid editorial art.
  ...Array.from({length: 14}, (_, i) => ({afterParagraph: i, src: 'https://example.org/blocked.png', alt: 'Blocked'})),
- {afterParagraph: 0, src: 'art/verne/station.webp', alt: 'Railway station', credit: 'CC0 illustration', position: 'edge-start'},
+ {afterParagraph: 0, src: 'art/verne/station.webp', alt: 'Railway station', credit: 'CC0 illustration', position: 'edge-start', aspectRatio: 1.5, crop: 'cover', focalX: 35, focalY: 60},
  {afterParagraph: 1, src: 'https://example.org/remote.png', alt: 'Remote asset'},
  {afterParagraph: 1, src: 'art/../traversal.png', alt: 'Traversal asset'},
- {afterParagraph: 2, src: 'art/verne/map.png', alt: 'Historic map', position: 'wide'},
+ {afterParagraph: 2, src: 'art/verne/map.png', alt: 'Historic map', position: 'wide', aspectRatio: -2, crop: 'cover', focalX: 500, focalY: 50},
  {afterParagraph: 0, src: 'art/verne/duplicate.png', alt: 'Duplicate anchor'},
  {afterParagraph: 1, src: 'art/verne/empty.png', alt: ''}
 ]};
@@ -27,7 +27,8 @@ const document = {
  documentElement: {lang: 'en'},
  querySelector() {return null;},
  querySelectorAll(selector) {return selector === '.reader .sentence' ? sentences : [];},
- createElement(tag) {return {tag, children: [], appendChild(child) {this.children.push(child);}, setAttribute() {}};}
+ createElement(tag) {return {tag, style: {}, children: [], removed: false,
+  appendChild(child) {this.children.push(child);}, setAttribute() {}, remove() {this.removed=true;}};}
 };
 const state = {story, page: 'reader', chapter: 0};
 const sandbox = {
@@ -45,6 +46,14 @@ assert.equal(added[0].figure.children[0].alt, 'Railway station');
 assert.equal(added[0].figure.children[0].loading, 'lazy');
 assert.equal(added[0].figure.children[0].decoding, 'async');
 assert.equal(added[0].figure.children[1].textContent, 'CC0 illustration');
+assert.equal(added[0].figure.children[0].style.aspectRatio, '1.5', 'layout space reserved');
+assert.equal(added[0].figure.children[0].style.objectFit, 'cover', 'opt-in crop');
+assert.equal(added[0].figure.children[0].style.objectPosition, '35% 60%', 'bounded focal point');
+assert.equal(added[1].figure.children[0].style.aspectRatio, undefined, 'invalid ratio ignored');
+assert.equal(added[1].figure.children[0].style.objectPosition, undefined, 'unsafe focal point ignored');
+assert.equal(added[0].figure.removed, false);
+added[0].figure.children[0].onerror();
+assert.equal(added[0].figure.removed, true, 'missing offline image removed without remote fallback');
 assert.equal(added[1].figure.children[0].src, 'art/verne/map.png');
 assert.equal(added[1].figure.children.length, 1);
 assert.equal(chapter.paragraphs[0].ar, 'محطة.', 'Arabic learning text unchanged');
