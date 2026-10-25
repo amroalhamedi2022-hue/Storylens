@@ -21,8 +21,8 @@ tests={
  check('story art',()=>!!art['eleven-minute-alibi_0']);
  check('novella catalog',()=>catalog.stories.some(s=>s.id==='the-salt-meridian'&&s.chapters.length===5));
  check('novella art',()=>!!art['the-salt-meridian_4']);
- check('Verne authentic chapter',()=>catalog.stories.some(s=>s.id==='around-the-world-in-eighty-days-towle'&&s.chapters.length===3&&s.chapters[0].paragraphs.length===29&&s.chapters[1].paragraphs.length===11&&s.chapters[2].paragraphs.length===66));
- check('Verne chapter scenes',()=>!!art['around-the-world-in-eighty-days-towle_0']&&!!art['around-the-world-in-eighty-days-towle_1']&&art['around-the-world-in-eighty-days-towle_0']!==art['around-the-world-in-eighty-days-towle_1']&&!!art['around-the-world-in-eighty-days-towle_2']);
+ check('Verne authentic chapter',()=>catalog.stories.some(s=>s.id==='around-the-world-in-eighty-days-towle'&&s.chapters.length===4&&s.chapters[0].paragraphs.length===29&&s.chapters[1].paragraphs.length===11&&s.chapters[2].paragraphs.length===66&&s.chapters[3].paragraphs.length===43));
+ check('Verne chapter scenes',()=>!!art['around-the-world-in-eighty-days-towle_0']&&!!art['around-the-world-in-eighty-days-towle_1']&&art['around-the-world-in-eighty-days-towle_0']!==art['around-the-world-in-eighty-days-towle_1']&&!!art['around-the-world-in-eighty-days-towle_2']&&!!art['around-the-world-in-eighty-days-towle_3']&&art['around-the-world-in-eighty-days-towle_2']!==art['around-the-world-in-eighty-days-towle_3']);
  check('in-book search entry',()=>!!document.querySelector('.lt-chapter-search-open'));
  check('offline chapter search',()=>{const hits=LinguaShell.searchChapters('harbor authority');return hits.some(x=>x.storyId==='the-salt-meridian'&&x.en.includes('harbor authority'))});
  check('Arabic source search',()=>LinguaShell.searchChapters('المنارة').some(x=>x.storyId==='the-salt-meridian'));

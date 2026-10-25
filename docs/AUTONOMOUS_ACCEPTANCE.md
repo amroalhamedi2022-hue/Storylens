@@ -1,3 +1,13 @@
+## 2026-10-25 — LT-07 Chapter IV / LT-08 Charing Cross art / LT-13 Midnight Platform
+- **Production SHA:** `de0b6b563273403ecfac6e41de032000f5c37a50` (first functional commit); browser fixture/workflow repair in this follow-up. PR #1 only.
+- **English:** all 43 original paragraphs / 942 words of Towle Chapter IV copied from the Standard Ebooks source and checked paragraph-by-paragraph (43/43 exact after XHTML tag/whitespace normalization).
+- **Arabic:** 43 newly written aligned draft translations; **independent editorial proofreading NOT TESTED**. Four chapters of 37 available, never claim a complete novel.
+- **Contextual learning:** 14 source-occurring new expressions, offline original Charing Cross rainy station SVG, new distinct Midnight Platform dark iron-and-lamplight theme with Settings/backup integration.
+- **PASS (direct production V8):** loaded real chapter I–IV and offline art scripts; 4 chapters, 43 Chapter IV paragraphs, 60 total edited contextual entries, unique SVG for Chapter IV. Compared all 43 source English paragraphs to upstream.
+- **FAIL then repaired:** [CI 40222614783](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40222614783) passed Node/Gradle/APK packaging but failed browser smoke due to stale fixture requiring exactly three chapters. Fixed fixture and explicitly required Chapter IV in APK assets; rerun pending.
+- **NOT TESTED:** new CI after repair, independent APK artifact hash, Pad 5 install/RTL/TalkBack/FPS, human Arabic literary review, rights by territory and final release. A browser smoke is not a device test.
+- **Build rationale:** Source V8 checks cannot verify Android asset packaging, Chromium reader flow and the full Node suite; this chapter/theme integration warrants a targeted CI build.
+
 ## 2026-10-25 — Complete bilingual Towle Chapter III, itinerary, art and distinct theme
 
 - **Production:** complete Chapter III of the authentic Towle 1873 English

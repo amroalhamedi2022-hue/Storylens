@@ -1,5 +1,5 @@
 ## 2026-10-25 — Packaged draft Chapter IV: Departure from Charing Cross
-- English: complete 43 paragraphs / 1 words from George Makepeace Towle's 1873 translation, Standard Ebooks CC0 editorial transcription, source https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-4.xhtml .
+- English: complete 43 paragraphs / 942 words from George Makepeace Towle's 1873 translation, Standard Ebooks CC0 editorial transcription, source https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-4.xhtml .
 - Arabic: 43 newly drafted aligned paragraphs; independent bilingual editing **NOT TESTED**.
 - 14 source-occurring contextual expressions; new offline original SVG scene of the rainy Victorian Charing Cross platform.
 - New static Midnight Platform theme (iron canopy, amber lamps, departure-board cards), registered in Settings and backup.
