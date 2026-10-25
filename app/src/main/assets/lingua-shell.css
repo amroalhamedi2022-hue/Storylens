@@ -1476,3 +1476,47 @@ body.theme-station-tickets{
 @media(prefers-reduced-motion:reduce){
  .theme-station-tickets .library .storylens-hero .hero-orb{animation:none!important}
 }
+
+/* LT-13 Reform Club Brass: subdued green felt and engraved brass club-room
+ * panels; deliberately distinct from bright railway-ticket typography. */
+body.theme-reform-club-brass{
+ --body:#132c2a;--card:#f4e8ce;--ink:#203c38;--sub:#50625b;
+ --accent:#a9713b;--reader:#fbf5e7;--reader-ink:#223e37;
+ background:radial-gradient(ellipse at 15% 12%,#355c4a 0,transparent 42%),
+ repeating-linear-gradient(90deg,#ffffff08 0 1px,transparent 1px 28px),
+ #132c2a;color:var(--ink)
+}
+.theme-reform-club-brass::before,.theme-reform-club-brass::after{display:none!important}
+.theme-reform-club-brass .library .header{
+ border-bottom:3px double #c8a66b;padding-bottom:12px
+}
+.theme-reform-club-brass .library .header h1{
+ font:700 clamp(28px,4vw,48px)/1.1 Georgia,serif;
+ letter-spacing:.03em;color:#f5dfae
+}
+.theme-reform-club-brass .library .storylens-hero{
+ border:7px double #c4a069;border-radius:4px;
+ background:linear-gradient(145deg,#153c36,#295849 72%,#795c3b);
+ box-shadow:inset 0 0 0 3px #0e2825,0 8px 22px #051a1a50;
+ min-height:210px
+}
+.theme-reform-club-brass .library .storylens-hero h2{color:#ffe8ae;font-family:Georgia,serif}
+.theme-reform-club-brass .library .card{
+ border:2px solid #c09b60;border-radius:3px;
+ box-shadow:4px 4px 0 #0a201b40;
+ background:linear-gradient(150deg,#fff7e4,#e8d5b3)
+}
+.theme-reform-club-brass .reader:not(.dark){
+ background:#fbf5e7;color:#223e37;border:6px double #aa844e;
+ box-shadow:0 6px 20px #091e1d33
+}
+.theme-reform-club-brass .lt-theme-swatch{
+ background:linear-gradient(135deg,#133e35 0 50%,#c39a5b 50% 60%,#f1e0bc 60%)
+}
+@media(max-width:600px){
+ .theme-reform-club-brass .library .storylens-hero{border-width:4px;min-height:170px}
+ .theme-reform-club-brass .reader:not(.dark){border-width:3px}
+}
+@media(prefers-reduced-motion:reduce){
+ .theme-reform-club-brass .library .card:hover{transform:none}
+}

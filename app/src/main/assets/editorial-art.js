@@ -55,8 +55,28 @@ function savilleRowInterior(){
  '<path d="M0 560H1000" stroke="#ba9364" stroke-width="5"/></svg>';
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
+function reformClubScene(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="Victorian Reform Club card table, route map and brass clock">'+
+ '<defs><linearGradient id="room" x2="1" y2="1"><stop stop-color="#18343a"/><stop offset="1" stop-color="#76523d"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#room)"/><path d="M0 490H1000V620H0Z" fill="#2b2527"/>'+
+ '<rect x="72" y="76" width="300" height="345" rx="12" fill="#e6d1a1" stroke="#bc9054" stroke-width="16"/>'+
+ '<path d="M117 167Q195 103 283 186T332 308M120 280Q210 340 315 240" fill="none" stroke="#987d58" stroke-width="6" stroke-dasharray="14 10"/>'+
+ '<circle cx="155" cy="179" r="12" fill="#a14c32"/><circle cx="312" cy="309" r="12" fill="#a14c32"/>'+
+ '<text x="222" y="381" text-anchor="middle" fill="#493a2e" font-family="Georgia,serif" font-size="44">80 DAYS</text>'+
+ '<circle cx="792" cy="160" r="112" fill="#d8bd80" stroke="#342b29" stroke-width="18"/>'+
+ '<circle cx="792" cy="160" r="89" fill="#f5e5c2" stroke="#7c5735" stroke-width="5"/>'+
+ '<path d="M792 160V95M792 160L843 184" stroke="#30383c" stroke-width="10" fill="none" stroke-linecap="round"/>'+
+ '<ellipse cx="651" cy="487" rx="325" ry="105" fill="#2d5849" stroke="#b99254" stroke-width="25"/>'+
+ '<g transform="rotate(-14 600 450)"><rect x="555" y="415" width="75" height="112" rx="7" fill="#f5e5c6" stroke="#a47b48" stroke-width="5"/>'+
+ '<path d="M592 436V503M565 469H619" stroke="#a0443b" stroke-width="8"/></g>'+
+ '<g transform="rotate(18 718 452)"><rect x="680" y="420" width="75" height="112" rx="7" fill="#f5e5c6" stroke="#a47b48" stroke-width="5"/>'+
+ '<path d="M718 438V506M691 472H745" stroke="#253b45" stroke-width="8"/></g>'+
+ '<circle cx="510" cy="466" r="18" fill="#c4a56c"/><circle cx="818" cy="478" r="18" fill="#c4a56c"/>'+
+ '</svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():savilleRowInterior();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():reformClubScene();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
