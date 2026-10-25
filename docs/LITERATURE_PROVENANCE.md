@@ -63,8 +63,8 @@ merely because its title is present in a roadmap.
   beginning/end, continuity anchors, source-occurring lexicon, bilingual
   alignment, offline art, settings theme and backup. CI/Pad 5 device acceptance
   to be recorded separately; do not claim final release.
-- Next editorial batch: add **complete Chapter II** from the same Towle
-  edition with source and Arabic proofreading, then Chapters III onward.
+- Chapter II is now included as a separate verified English/Arabic draft;
+  next editorial batch is **complete Chapter III**, with independent review.
   No placeholder text should be represented as a completed chapter.
 
 ## Packaged: The Salt Meridian (original short serial)
@@ -84,7 +84,7 @@ merely because its title is present in a roadmap.
 - Remaining: Pad 5 reading/performance, scene fidelity, editorial QA, any
   additional long-form content and signed final release.
 
-## Continuing research: remaining Chapters II–XXXVII of Around the World in Eighty Days
+## Continuing research: remaining Chapters III–XXXVII of Around the World in Eighty Days
 
 - Author: Jules Verne (1828–1905); original French novel published 1872.
 - Specific **English translation**: George Makepeace Towle (1841–1893),
@@ -96,9 +96,9 @@ merely because its title is present in a roadmap.
   distribution, and each image's own rights require independent checking
   before public APK distribution. Avoid carrying Project Gutenberg branding
   or license text into an app without reviewing their redistribution terms.
-- **Chapter I is now packaged as an unreviewed bilingual draft; Chapters II–XXXVII are NOT PACKAGED.** Do not claim the complete novel is available offline in Lingua Tales.
+- **Chapters I–II are now packaged as unreviewed bilingual drafts; Chapters III–XXXVII are NOT PACKAGED.** Do not claim the complete novel is available offline in Lingua Tales.
 - Next coherent editorial milestone: finish redistribution-territory review,
-  add contiguous authentic Chapters II onward with fresh Arabic
+  add contiguous authentic Chapters III onward with fresh Arabic
   paragraph translations and source-to-paragraph QA, retain chapter numbering,
   then test actual reader progress, vocabulary and visual context. Prefer
   licensed historical illustrations with per-file provenance and attribution.
