@@ -4,9 +4,9 @@
 (function (global) {
 'use strict';
 const indexes = new WeakMap();
-const tokens = value => (String(value).toLowerCase().match(/[\p{L}]+(?:['’\-][\p{L}]+)*/gu) || []);
+const tokens = value => (String(value).toLowerCase().match(/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu) || []);
 const canonical=value=>String(value).toLowerCase().replaceAll('’',"'");
-const tokenSpans=value=>Array.from(String(value).matchAll(/[\p{L}]+(?:['’\-][\p{L}]+)*/gu),m=>
+const tokenSpans=value=>Array.from(String(value).matchAll(/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu),m=>
  ({word:m[0],start:m.index,end:m.index+m[0].length}));
 function rootsFor(word,lemmas){
  const roots=typeof lemmas==='function'?lemmas(word):[word];
@@ -41,9 +41,11 @@ function createIndex(story, dictionary) {
 }
 function indexFor(story, dictionary) {
  const previous = indexes.get(story);
- if (previous && previous.terms === story.terms && previous.dictionary === dictionary) return previous.index;
+ if (previous && previous.terms === story.terms && previous.dictionary === dictionary &&
+     previous.termsLength === (story.terms?.length || 0) && previous.dictionaryLength === (dictionary?.length || 0)) return previous.index;
  const index = createIndex(story, dictionary);
- indexes.set(story, {terms: story.terms, dictionary, index});
+ indexes.set(story, {terms: story.terms, dictionary,
+  termsLength:story.terms?.length || 0,dictionaryLength:dictionary?.length || 0,index});
  return index;
 }
 function lookup({story, dictionary, sentence, selected, offset, lemmas, lexicon, freeDict}) {
@@ -51,6 +53,10 @@ function lookup({story, dictionary, sentence, selected, offset, lemmas, lexicon,
      !selected || !Number.isInteger(offset) || offset < 0 || offset + selected.length > sentence.length ||
      canonical(sentence.slice(offset,offset+selected.length))!==canonical(selected))
   return null;
+ // A tapped dictionary word must be a complete source token. Never resolve
+ // the suffix of a longer word ("at" inside "cat") or part of a contraction.
+ if (!/\s/u.test(selected) && !tokenSpans(sentence).some(span =>
+      span.start === offset && span.end === offset + selected.length)) return null;
  const index = indexFor(story, dictionary);
  // Index by the clicked surface form, not every phrase in every story.
  const roots=rootsFor(selected,lemmas);
