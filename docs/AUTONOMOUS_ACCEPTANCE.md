@@ -1,3 +1,51 @@
+## 2026-10-25 — LT-07 authentic Verne chapter I + LT-08 contextual art + LT-13 Saville Clockwork
+
+- **Production:** bundled the complete authentic **1873 George Makepeace
+  Towle English translation of Chapter I** of Jules Verne's *Around the
+  World in Eighty Days*: 1,453 English words, 29 continuous bilingual
+  English/new Arabic draft passage groups, 14 source-occurring contextual
+  terms, one locally generated Victorian Saville Row SVG illustration.
+  This is **Chapter I of 37**, NOT the whole novel or a synopsis.
+- **Source provenance:** 1873 Towle translation from
+  https://en.wikisource.org/wiki/Around_the_World_in_Eighty_Days_(Towle)/Chapter_1
+  (Wikisource revision 13924990); Gutenberg ebook 103 lists US public-domain
+  status. No Gutenberg trademark/images/modern translations are packaged.
+  `docs/LITERATURE_PROVENANCE.md` records outstanding territory and
+  independent Arabic literary editorial review; both remain **NOT TESTED**.
+  Packaged source Git blob `4c2f137ba5eab8b5b3d4f1870acf33436cc92d4f`.
+- **Design:** distinct **Saville Clockwork** offline book/reader theme
+  (Victorian station/timetable geometry), registered in Settings and backup
+  whitelist. The new contextual SVG is an original local vector scene, not
+  a scraped/copyrighted image. No microphone, TTS, paid API or new permissions.
+- **PASS (source):** direct V8 execution of production chapter and artwork:
+  29 bilingual passages, 1,453 English words, 14 actual source-occurring
+  contextual entries, packaged HTML registration, offline scene, Settings,
+  theme CSS and backup integration.
+- **PASS (native Node/Android/Chromium CI):**
+  [run 40199465771](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40199465771)
+  on functional SHA `2b923d67292d4645c3760ef6b6bccaf9b4994ca4`:
+  new `tools/verne-towle.test.cjs`, existing dictionary/search/theme tests,
+  Gradle `testDebugUnitTest` and `assembleDebug`, APK offline assets
+  including the new classic, Chromium library and full reader/word/translation
+  journey **PASS**. Debug APK Artifact **12600997230**, screenshot Artifact
+  **12600857797**. CI-calculated APK SHA-256:
+  `84419a3a1d9cbc673468a060b4e5c3a7b274d5e2c609030ff5b2dc5ab884e4ab`.
+- **Repair evidence:** initial run 40199170622 **FAIL** on a brittle
+  backup theme assertion, corrected in `tools/phrase-lookup.test.cjs`.
+  Follow-up run 40199293266 **FAIL** on hard-coded 37-story Chromium fixture
+  counts, corrected to require 38+ and the current catalog count, plus
+  explicit Verne chapter/art checks. Final run above **PASS**.
+- **NOT TESTED:** independent APK download/rehash, Xiaomi Pad 5 installation,
+  upgrade/reader frame times, actual visual/crop and TalkBack inspection,
+  Arabic editorial accuracy, remaining 36 Verne chapters, territory-specific
+  copyright review and final signed APK. Source/CI PASS is not device PASS.
+- **Build rationale:** JavaScript/Node alone cannot prove new chapter/assets
+  were packaged in Android or that the expanded catalog still works through
+  Chromium; one purposeful Android validation was needed. Intermediate
+  commits' runs were cancelled by CI concurrency.
+- PR #1 remains Draft, no `main` write/merge; no other repositories or
+  ChatGPT Library/Handoff modified.
+
 ## 2026-10-25 — LT-07 long-form editorial correction cache milestone
 
 - **Production:** `LinguaLookup` now refreshes same-length word/idiom edits when a content importer increments `story.lexiconRevision` or `dictionary.lexiconRevision`, with explicit `LinguaLookup.invalidate(story)` for importers without revision counters. Existing O(1) per-tap cache check remains; no full dictionary scan on every tap.
