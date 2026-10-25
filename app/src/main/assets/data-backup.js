@@ -30,7 +30,7 @@ function exceedsUtf8Limit(value, limit){
 const MAX_ENTRIES=900;
 const simple=new Set(['saved','cards','favorites','bookmarks','last_story','uiTheme','readerPrefs',
  'written_examples','discoveryLevel','discoverySort','favoritesOnly','wordSenses','dark','size',
- 'fontArabic','fontEnglish','uiLocale']);
+ 'fontArabic','fontEnglish','uiLocale','audioPrefs']);
 function allowed(key){
  if(typeof key!=='string'||!key.startsWith(PREFIX))return false;
  const suffix=key.slice(PREFIX.length);
@@ -68,7 +68,12 @@ function validValue(key,val){
    optionalCount(x,'repetitions')&&optionalCount(x,'lapses'));
  }
  if(tail==='last_story')return typeof val==='string'&&val.length<=100;
- if(tail==='uiTheme')return ['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop'].includes(val);
+ if(tail==='uiTheme')return ['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre'].includes(val);
+ if(tail==='audioPrefs')return val!==null&&typeof val==='object'&&!Array.isArray(val)&&
+  Object.keys(val).sort().join(',')==='scene,sfx,sfxVolume,volume'&&
+  ['rain','thunder','forest','night','ocean','fire','wind','cabin'].includes(val.scene)&&
+  typeof val.sfx==='boolean'&&
+  [val.volume,val.sfxVolume].every(v=>typeof v==='number'&&Number.isFinite(v)&&v>=0&&v<=1);
  if(tail==='fontArabic')return ['sans','naskh'].includes(val);
  if(tail==='fontEnglish')return ['serif','sans'].includes(val);
  if(tail==='uiLocale')return ['ar','en'].includes(val);
