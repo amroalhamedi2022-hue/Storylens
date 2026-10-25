@@ -55,6 +55,8 @@ jobs:
           node tools/celestial-atlas.test.cjs
           node tools/circuit-notebook.test.cjs
           node tools/terracotta-gallery.test.cjs
+          node tools/monochrome-zine.test.cjs
+          node tools/paragraph-roving.test.cjs
           node tools/keyboard-lookup.test.cjs
           node tools/phrase-lookup.test.cjs
           node tools/locale-journeys.test.cjs
