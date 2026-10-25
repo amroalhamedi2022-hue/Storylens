@@ -1346,3 +1346,51 @@ body.theme-mosaic-courtyard{
 @media(prefers-reduced-motion:reduce){
  .theme-mosaic-courtyard .library .storylens-hero .hero-orb{animation:none!important}
 }
+
+/* LT-13 Saville Clockwork: Victorian station timetable / copperplate book design.
+ * Distinct from Mosaic Courtyard tiles; all patterns are static and offline. */
+body.theme-saville-clockwork{
+ --body:#eae0cd;--card:#fcf5e7;--ink:#312b30;--sub:#67545a;
+ --accent:#7b343e;--reader:#fff8e9;--reader-ink:#312b30;
+ color:var(--ink);
+ background:repeating-linear-gradient(0deg,transparent 0 38px,#6f534b0a 39px 40px),
+ linear-gradient(125deg,#f7ebd5,#dfd5c5 70%,#e4d2b9)
+}
+.theme-saville-clockwork::before,.theme-saville-clockwork::after{display:none!important}
+.theme-saville-clockwork .library .header{
+ border-bottom:4px double #8b5552;padding-bottom:15px
+}
+.theme-saville-clockwork .library .header h1{
+ font:700 clamp(28px,4vw,46px)/1.2 Georgia,serif;
+ letter-spacing:-.035em;color:#6a303c
+}
+.theme-saville-clockwork .library .storylens-hero{
+ border:8px double #815548;border-radius:2px;
+ background:linear-gradient(90deg,#81554818 0 1px,transparent 1px) 0 0/24px 24px,
+ linear-gradient(155deg,#fff9eb,#ecd8b9);
+ box-shadow:7px 7px 0 #6e494532
+}
+.theme-saville-clockwork .library .card{
+ background:#fff7e9;border:2px solid #ad8871;border-radius:3px;
+ box-shadow:5px 6px 0 #8d655333
+}
+.theme-saville-clockwork .library .card:hover{transform:translateY(-2px)}
+.theme-saville-clockwork button.primary,
+.theme-saville-clockwork .pill.active{background:#793844;color:#fff9ed;border-color:#793844}
+.theme-saville-clockwork button:focus-visible{outline:3px solid #b4772f;outline-offset:2px}
+.theme-saville-clockwork .reader:not(.dark){
+ background:#fff8e9;color:#312b30;
+ border-inline:5px double #ab8068
+}
+.theme-saville-clockwork .reader .en{font-family:Georgia,serif}
+.theme-saville-clockwork .lt-theme-choice{background:#f6e9d2;color:#65313a}
+.lt-theme-saville-clockwork .lt-theme-swatch{
+ background:repeating-linear-gradient(90deg,#7d3b45 0 6px,#f4dfba 6px 18px,#a77856 18px 21px)
+}
+@media(max-width:600px){
+ .theme-saville-clockwork .library .storylens-hero{border-width:4px;box-shadow:3px 3px 0 #6e494532}
+ .theme-saville-clockwork .reader:not(.dark){border-inline-width:2px}
+}
+@media(prefers-reduced-motion:reduce){
+ .theme-saville-clockwork .library .card:hover{transform:none}
+}
