@@ -14,11 +14,11 @@
   Corrected regex and Arabic Unicode test in SHA
   `00b206fb8386777e683ca3255b1898259be0c2d0`.
   [CI 40217753579](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40217753579)
-  **IN PROGRESS at checkpoint**; Android packaging and Chromium on this SHA
-  are **NOT TESTED** until completed.
+  **PASS (completed)** on source SHA `00b206fb8386777e683ca3255b1898259be0c2d0`: Node regressions, Android Gradle Debug build, APK offline asset check and Chromium reader journey.
 - **Build question:** does the new authentic chapter, theme, SVG and registration
   survive the entire Node/Android asset packaging/Chromium reader pipeline?
   Direct V8 source tests cannot establish APK integration.
+- **PASS (CI-calculated inner APK SHA-256):** `47fb8906def0eca5d80e4c9e9a7a408a05b9b42daf7ef453a8031a7cffd1dee8`; Debug artifact **12607598645**, screenshots **12607219655**. Independent artifact rehash and Pad 5 remain **NOT TESTED**.
 - **NOT TESTED:** human Arabic proofreading, international distribution
   clearance, physical Pad 5 install/FPS/RTL/TalkBack, independently
   downloaded APK hash and final signed release. No claim of completion.
