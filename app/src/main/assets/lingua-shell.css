@@ -1244,3 +1244,56 @@ body.theme-saffron-archive{
  .theme-saffron-archive .library .shelf .card .cover{
   width:68px;height:145px;min-height:145px}
 }
+
+/* LT-13: Bauhaus Studio — graphic poster blocks, not another glass gradient.
+ * Static geometric typography/cards; no external assets or animated layers. */
+.lt-theme-bauhaus-studio .lt-theme-swatch{background:linear-gradient(135deg,#f1e9cf 0 35%,#d43e30 35% 60%,#214e8d 60% 82%,#f5bd42 82%)}
+body.theme-bauhaus-studio{--body:#f2ead7;--card:#fff9e9;--ink:#162a38;--sub:#46545b;
+ --accent:#bd3228;--reader:#fff9e9;--reader-ink:#142e3e;
+ background:linear-gradient(90deg,#142e3e 0 12px,transparent 12px),#f2ead7;color:var(--ink)}
+.theme-bauhaus-studio::before,.theme-bauhaus-studio::after{display:none!important}
+.theme-bauhaus-studio .library{max-width:1200px}
+.theme-bauhaus-studio .library .header{border-bottom:5px solid #142e3e;padding-bottom:20px}
+.theme-bauhaus-studio .library .brand{color:#bd3228;letter-spacing:.07em;font-weight:1000}
+.theme-bauhaus-studio .library .header h1{font:900 clamp(30px,5vw,57px)/1.02 system-ui,sans-serif;
+ text-transform:uppercase;letter-spacing:-.045em;color:#142e3e}
+.theme-bauhaus-studio .library .secondary{border:2px solid #142e3e;border-radius:0;
+ background:#fff9e9;color:#142e3e;box-shadow:4px 4px 0 #142e3e}
+.theme-bauhaus-studio .library .storylens-hero{display:grid;grid-template-columns:minmax(0,1fr) 140px;
+ align-items:center;min-height:225px;padding:25px 35px;border:5px solid #142e3e;border-radius:0;
+ background:#f4bc3d;box-shadow:9px 9px 0 #d23e32;overflow:hidden}
+.theme-bauhaus-studio .library .storylens-hero h2{font:900 clamp(31px,5vw,54px)/.98 system-ui,sans-serif;
+ text-transform:uppercase;letter-spacing:-.04em;color:#142e3e;max-width:15ch}
+.theme-bauhaus-studio .library .storylens-hero .hero-orb{position:relative;inset:auto;
+ width:120px;height:120px;border-radius:50%;background:#d23e32;border:10px solid #142e3e;
+ box-shadow:none;animation:none;transform:none;opacity:1}
+.theme-bauhaus-studio .library .storylens-hero .hero-orb-core{display:none}
+.theme-bauhaus-studio .library .hero-continue{background:#214e8d;border:2px solid #142e3e;
+ color:#fff;border-radius:0;box-shadow:4px 4px 0 #142e3e}
+.theme-bauhaus-studio .library .shelf{grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:21px}
+.theme-bauhaus-studio .library .shelf .card{display:flex;flex-direction:column;
+ border:3px solid #142e3e;border-radius:0;background:#fff9e9;padding:11px;
+ min-height:310px;box-shadow:7px 7px 0 #214e8d;animation:none;content-visibility:auto;
+ contain-intrinsic-size:auto 310px}
+.theme-bauhaus-studio .library .shelf .card .cover{width:100%;height:135px;
+ flex:0 0 135px;border-radius:0;border-bottom:5px solid #142e3e}
+.theme-bauhaus-studio .library .shelf .card-content{padding:4px 8px 9px}
+.theme-bauhaus-studio .library .shelf .card h2{font:900 22px/1.13 system-ui,sans-serif;
+ letter-spacing:-.035em;color:#142e3e}
+.theme-bauhaus-studio .library .stl-discovery{border:2px solid #142e3e;border-radius:0;
+ background:#fff9e9;box-shadow:4px 4px 0 #d43e30}
+.theme-bauhaus-studio .lt-drawer{background:#214e8d;border-color:#f5bd42}
+.theme-bauhaus-studio .lt-genre.selected{background:#d43e30;border-color:#f5bd42}
+.theme-bauhaus-studio .lt-theme-choice{background:#fff9e9;border-radius:0}
+.theme-bauhaus-studio .reader:not(.dark){background:#fff9e9;color:#142e3e}
+.theme-bauhaus-studio .reader.dark{background:#142e3e;color:#f2ead7}
+.theme-bauhaus-studio .reader h2{font-family:Georgia,serif;border-bottom:4px solid #d43e30;padding-bottom:12px}
+@media(max-width:620px){.theme-bauhaus-studio .library .storylens-hero{
+ grid-template-columns:minmax(0,1fr) 60px;padding:18px;box-shadow:5px 5px 0 #d23e32}
+ .theme-bauhaus-studio .library .storylens-hero .hero-orb{width:55px;height:55px;border-width:5px}
+ .theme-bauhaus-studio .library .shelf .card{box-shadow:4px 4px 0 #214e8d}}
+/* Search jump is temporary and accessible; no mutation of source text. */
+.reader .sentence.lt-search-target{outline:3px solid #d43e30;outline-offset:5px;
+ background:color-mix(in srgb,#f5bd42 25%,transparent);border-radius:3px}
+.reader .sentence.lt-search-target:focus{outline:3px solid #214e8d}
+@media(prefers-reduced-motion:reduce){.theme-bauhaus-studio *{animation-duration:.001ms!important}}
