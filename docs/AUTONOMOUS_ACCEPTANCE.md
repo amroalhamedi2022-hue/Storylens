@@ -1,6 +1,9 @@
 ## 2026-10-25 — Towle Chapter VI / Suez Quays integrated milestone
 - Production: 37 original English source paragraphs aligned to 37 newly drafted Arabic paragraphs; 17 source-occurring contextual entries; original offline SVG of the Mongolia at Suez; new visually distinct Suez Quays theme and backup allowlist. Script order, Chromium chapter fixture, Android asset packaging and source tests updated together.
 - Source: Standard Ebooks 1873 Towle transcription (CC0 editorial work); US public-domain translation; territory rights and independent Arabic literary review **NOT TESTED**. Six of 37 original chapters available; not the complete novel.
+- **PASS (direct production V8):** 9 source/asset assertions, including complete 37-paragraph bilingual Chapter VI, 1,302 English words, 17 source-occurring terms, distinct offline SVG, theme and backup registration, script order and test syntax. This is not native Node/Android/Pad 5 validation.
+- **Purposeful CI question:** do the new chapter, theme, browser fixture, Node regression and packaged APK work together in Android/Chromium? Source-only V8 cannot verify Gradle packaging or Chromium rendering. One targeted CI run is authorized.
+
 - **NOT TESTED (pending matching CI):** native Node tests, Chromium flow, Android Gradle, APK checksum, Pad 5 RTL/TalkBack/FPS and final acceptance. A build is justified to check full integration of 37 passages, asset packaging and browser chapter navigation, not routine compilation.
 - No main writes, PR merge, paid API, microphone/TTS, other repositories or Library/Handoff changes.
 
