@@ -487,3 +487,11 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS Android CI:** [run 40185612369](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40185612369), source SHA `953437dbf67369f569c8939521952573a0c9958a`; Node regressions, Gradle APK, packaged assets, Chromium journey.
 - **PASS independent artifact rehash:** artifact `12595952491` contains `app-debug.apk` (4,266,184 bytes), SHA-256 `fe2d2b36d0d08fb486e24889b844be3c60a43cee270198a729c83f0b8ca0d6c3`, independently extracted and matched `APK_SHA256.txt`. New theme present in packaged JS/CSS/backup.
 - **NOT TESTED:** Pad 5/phone installation, TalkBack focus, theme contrast, FPS/thermal, editorial long books/audio; final release remains IN_PROGRESS.
+
+
+## 2026-10-25 — LT lexical source-boundary and Mosaic Courtyard checkpoint
+- **Production/tests SHA:** `0357d3804570816f65e0c5ba5772c8d90943f27d` on draft PR #1. No main changes.
+- **Production:** reject clicks selecting only part of a word/contraction; support combining marks in token spans; refresh lazy phrase/dictionary indexes when an existing story or dictionary array receives appended entries. This prevents missing later curated content batches while preserving original meanings. Added a distinct static, offline **Mosaic Courtyard** theme (ceramic-grid, arch hero, offset cards), selectable in Settings and accepted by backup validation.
+- **PASS (direct V8 execution on fetched production):** 14 checks for exact phrase selection, complete token boundaries, accented/combining forms, appended term/dictionary lookup, theme registration, CSS and backup whitelist. Regression assertions committed in `tools/phrase-lookup.test.cjs`.
+- **NOT TESTED:** native Node execution of the committed test, new SHA Android CI/APK packaging, visual theme screenshot, Pad 5 performance, TalkBack and full editorial content. No new verified APK or SHA-256 for this checkpoint; do not reuse earlier build fingerprints.
+- **Next:** verify Node/Android CI on this exact source; independent device acceptance and long licensed literature remain open.
