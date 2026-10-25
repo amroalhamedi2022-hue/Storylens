@@ -46,6 +46,7 @@ jobs:
           node tools/solar-atelier.test.cjs
           node tools/ink-workshop.test.cjs
           node tools/ambience.test.cjs
+          node tools/celestial-atlas.test.cjs
           node tools/phrase-lookup.test.cjs
           node tools/locale-journeys.test.cjs
           node --check app/src/main/assets/lexicon-extra.js
