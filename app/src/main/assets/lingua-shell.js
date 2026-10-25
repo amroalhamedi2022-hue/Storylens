@@ -2,8 +2,8 @@
  * Offline, no new permissions, no per-frame animation work. */
 (function(global){
 'use strict';
-const themeNames=['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre','celestial-atlas','harbor-ledger','circuit-notebook','terracotta-gallery','monochrome-zine','moonlit-margins'];
-const themeLabels={aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library','botanical-folio':'Botanical Folio','rain-glass':'Rain Glass','solar-atelier':'Solar Atelier','ink-workshop':'Ink Workshop','velvet-theatre':'Velvet Theatre','celestial-atlas':'Celestial Atlas','harbor-ledger':'Harbor Ledger','circuit-notebook':'Circuit Notebook','terracotta-gallery':'Terracotta Gallery','monochrome-zine':'Monochrome Zine','moonlit-margins':'Moonlit Margins'};
+const themeNames=['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre','celestial-atlas','harbor-ledger','circuit-notebook','terracotta-gallery','monochrome-zine','moonlit-margins','saffron-archive'];
+const themeLabels={aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library','botanical-folio':'Botanical Folio','rain-glass':'Rain Glass','solar-atelier':'Solar Atelier','ink-workshop':'Ink Workshop','velvet-theatre':'Velvet Theatre','celestial-atlas':'Celestial Atlas','harbor-ledger':'Harbor Ledger','circuit-notebook':'Circuit Notebook','terracotta-gallery':'Terracotta Gallery','monochrome-zine':'Monochrome Zine','moonlit-margins':'Moonlit Margins','saffron-archive':'Saffron Archive'};
 /* LT-12: separate, offline typography preferences. System font stacks avoid
  * font downloads and extra memory. Unsupported values never reach CSS. */
 const fontChoices={ar:['sans','naskh'],en:['serif','sans']};
@@ -204,22 +204,39 @@ function openSettings(){
  * only card titles. Index only when the user opens search, cap result count,
  * and never invent dictionary meanings or replace a book's original text. */
 let chapterSearchIndex=null;
+let chapterSearchCatalogSize=-1;
+// Search folds common Arabic spelling variants and vowel marks without
+// changing the original bilingual text displayed to readers. Do not
+// normalize source paragraphs in the catalog itself.
+function foldChapterSearch(value){
+ return String(value).normalize('NFKC').toLocaleLowerCase()
+  .replace(/[\u064b-\u065f\u0670\u0640]/gu,'')
+  .replace(/[أإآٱ]/gu,'ا').replace(/ى/gu,'ي')
+  .replace(/ؤ/gu,'و').replace(/ئ/gu,'ي').replace(/ة/gu,'ه')
+  .replace(/[’‘]/gu,"'").replace(/\s+/gu,' ').trim();
+}
 function searchChapters(query,limit=40){
- const q=String(query||'').normalize('NFKC').trim().toLocaleLowerCase();
- if(q.length<2||q.length>80)return [];
- if(!chapterSearchIndex){
+ const raw=String(query||'');
+ if(raw.length>80)return [];
+ const q=foldChapterSearch(raw);
+ if(q.length<2)return [];
+ // Content batches can be appended after the first search. Rebuild when the
+ // catalog grows; do not silently hide newly packaged chapters.
+ if(!chapterSearchIndex||chapterSearchCatalogSize!==catalog.stories.length){
   chapterSearchIndex=[];
+  chapterSearchCatalogSize=catalog.stories.length;
   for(const story of catalog.stories){
    for(let chapter=0;chapter<story.chapters.length;chapter++){
     const item=story.chapters[chapter];
     for(let paragraph=0;paragraph<item.paragraphs.length;paragraph++){
      const p=item.paragraphs[paragraph];
      if(typeof p.en!=='string'||typeof p.ar!=='string')continue;
+     // Keep only folded search strings; the source is already in catalog.
+     // This avoids retaining a second copy of every bilingual paragraph.
      chapterSearchIndex.push({
-      storyId:story.id,storyTitle:story.title,chapter,chapterTitle:item.title,
-      paragraph,en:p.en,ar:p.ar,
-      searchEn:p.en.normalize('NFKC').toLocaleLowerCase(),
-      searchAr:p.ar.normalize('NFKC').toLocaleLowerCase()
+      story,chapter,paragraph,
+      searchEn:foldChapterSearch(p.en),
+      searchAr:foldChapterSearch(p.ar)
      });
     }
    }
@@ -229,9 +246,11 @@ function searchChapters(query,limit=40){
  const cap=Math.max(1,Math.min(40,Number.isInteger(limit)?limit:40));
  for(const entry of chapterSearchIndex){
   if(entry.searchEn.includes(q)||entry.searchAr.includes(q)){
-   results.push({storyId:entry.storyId,storyTitle:entry.storyTitle,
-    chapter:entry.chapter,chapterTitle:entry.chapterTitle,
-    paragraph:entry.paragraph,en:entry.en,ar:entry.ar});
+   const story=entry.story,chapter=story.chapters[entry.chapter];
+   const p=chapter.paragraphs[entry.paragraph];
+   results.push({storyId:story.id,storyTitle:story.title,
+    chapter:entry.chapter,chapterTitle:chapter.title,
+    paragraph:entry.paragraph,en:p.en,ar:p.ar});
    if(results.length>=cap)break;
   }
  }
