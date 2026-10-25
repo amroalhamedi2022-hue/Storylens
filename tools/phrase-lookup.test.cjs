@@ -41,10 +41,12 @@ const boundary=lookup({story:{terms:[{term:'at sea'}]},dictionary:[],sentence:'T
 assert.equal(boundary.entry,null,'never match phrase inside larger words');
 assert.ok(html.indexOf('src="lingua-lookup.js"') < html.indexOf('src="reader-experience.js"'),
  'load indexed resolver before reader interception');
-assert.match(readerJs,/addEventListener\('click',event=>[\s\S]*?window\.LinguaLookup\.lookup\(/,
- 'production reader uses resolver in a click capture handler');
-assert.match(readerJs,/event\.stopImmediatePropagation\(\);\s*wordSheet\(/,
- 'one word tap opens exactly one existing sheet');
+assert.match(readerJs,/const lookupToken=token=>[\s\S]*?window\.LinguaLookup\.lookup\(/,
+ 'production token handler uses the source-bound resolver');
+assert.match(readerJs,/addEventListener\('click',event=>\{\s*if\(lookupToken\(event\.target\)\)event\.stopImmediatePropagation\(\)/,
+ 'click capture delegates to the same keyboard-accessible lookup');
+assert.match(readerJs,/wordSheet\(\{\.\.\.hit,source\}\)/,
+ 'one resolved word opens the existing dictionary sheet');
 
 // Inflected idioms must resolve from either the changed verb or a later word,
 // while preserving the exact clicked occurrence and rejecting punctuation gaps.
