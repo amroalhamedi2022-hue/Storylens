@@ -1,3 +1,11 @@
+## 2026-10-25 — LT-07 bilingual in-book passage search + LT-13 Moonlit Margins
+- **Production:** offline English/Arabic paragraph search across all loaded story chapters, lazy corpus index (not built on library launch), 170 ms input debounce, 2–80 character query bound, max 40 results, exact source snippets, direct chapter/paragraph navigation through existing reader/history pipeline. No network, invented glosses or changes to English/Arabic literary text.
+- **UI:** a separate accessible chapter-search dialog, keyboard focus/escape, original English and Arabic passage excerpts, and a new **Moonlit Margins** night bookbinder theme with book-spine cards, double-border hero and bookplate reader; settings/backup theme whitelist updated.
+- **PASS (source/V8):** production shell parsed after fixing duplicate declaration; executed actual shell with mock catalog and DOM: English and Arabic lookup, empty/short query refusal, direct paragraph jump and theme activation succeeded. Committed Node regression: `tools/chapter-search.test.cjs`.
+- **NOT TESTED:** native Node regression, Chromium dialog behavior, Android APK packaging, Pad 5 search scroll/focus/RTL/latency, independent visual review, complete LT-07 literature/translation and LT-13 acceptance.
+- **Build question:** does the new search/theme work under native Node and Android WebView packaging, and do existing reader journeys remain intact? V8 mocks cannot verify DOM/browser integration; one targeted Android CI build is justified.
+- **No final release:** PR #1 remains Draft; no `main` writes, no Handoff/Library changes.
+
 ## 2026-10-25 — LT-08 inline illustration geometry and offline failure fallback
 - Production change: `reader-experience.js` reserves a bounded optional aspect ratio (0.5–3.5), applies explicit opt-in cover crop with bounded focal coordinates (0–100%), and removes missing offline images instead of leaving broken icons. Remote paths remain rejected; existing Arabic translations and paragraph anchors remain untouched.
 - Regression: `tools/inline-illustrations.test.cjs` now exercises valid/invalid geometry, safe focal points, missing-image cleanup and the existing allowlist; Android CI workflow now runs this test.
