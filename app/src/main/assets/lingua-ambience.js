@@ -13,7 +13,19 @@ const SCENES=[
  ['ocean','Ocean Hush','هدوء البحر',350,0.26,72],
  ['fire','Hearth','موقد هادئ',1800,0.10,0],
  ['wind','Highland Wind','رياح المرتفعات',320,0.19,105],
- ['cabin','Quiet Cabin','كوخ هادئ',620,0.13,165]
+ ['cabin','Quiet Cabin','كوخ هادئ',620,0.13,165],
+ ['brook','Woodland Brook','جدول في الغابة',1450,0.19,220],
+ ['waterfall','Distant Waterfall','شلال بعيد',2400,0.21,80],
+ ['dawn','First Light','فجر هادئ',1750,0.10,310],
+ ['snow','Snowfall','تساقط الثلج',720,0.09,60],
+ ['train','Night Train','قطار ليلي',460,0.22,92],
+ ['library','Old Library','مكتبة قديمة',280,0.08,115],
+ ['window','Rain on Glass','مطر على النافذة',2800,0.23,0],
+ ['cliffs','Coastal Cliffs','جروف ساحلية',800,0.18,55],
+ ['meadow','Spring Meadow','مرج الربيع',2100,0.10,260],
+ ['leaves','Autumn Leaves','أوراق الخريف',1250,0.14,135],
+ ['desert','Desert Night','ليل الصحراء',390,0.11,180],
+ ['stars','Starry Observatory','مرصد النجوم',180,0.07,432]
 ];
 const KEY='audioPrefs';
 const DEFAULT={scene:'rain',volume:0.28,sfxVolume:0.18,sfx:false};
@@ -28,6 +40,7 @@ function sanitize(raw){
 }
 let prefs=sanitize(typeof get==='function'?get(KEY,DEFAULT):DEFAULT);
 let context=null,master=null,noiseSource=null,noiseFilter=null,noiseGain=null,drone=null,droneGain=null,playing=false;
+let playbackGeneration=0; // invalidates an in-flight AudioContext.resume after pagehide/pause
 function persist(){if(typeof put==='function')put(KEY,{...prefs});}
 function stopNodes(){
  for(const node of [noiseSource,drone]){
@@ -48,7 +61,7 @@ function ensureContext(){
  return context;
 }
 function buffer(ctx){
- // Shared two-second mono texture (~350 KB at 44.1 kHz), not eight decoded tracks.
+ // Shared two-second mono texture (~350 KB at 44.1 kHz), not twenty decoded tracks.
  if(buffer.cache&&buffer.rate===ctx.sampleRate)return buffer.cache;
  const count=Math.floor(ctx.sampleRate*2);
  const b=ctx.createBuffer(1,count,ctx.sampleRate),data=b.getChannelData(0);
@@ -80,14 +93,17 @@ function build(scene){
 }
 async function play(){
  if(document.hidden)return false;
+ const ticket=++playbackGeneration;
  const ctx=ensureContext();
- // Call resume in the user's click handler, per Chromium autoplay policy.
+ // Call resume directly in the user gesture, then check for lifecycle races.
  if(ctx.state!=='running')await ctx.resume();
+ if(document.hidden||ticket!==playbackGeneration)return false;
  if(playing)return true;
  build(prefs.scene);master.gain.value=prefs.volume*0.36;
  playing=true;return true;
 }
 async function pause(){
+ ++playbackGeneration; // a delayed resume must never start audio after pause
  playing=false;stopNodes();
  if(master)master.gain.value=0;
  if(context&&context.state==='running')await context.suspend();
