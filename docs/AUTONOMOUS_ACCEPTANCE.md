@@ -4,6 +4,7 @@
 - **PASS (direct production V8):** 9 source/asset assertions, including complete 37-paragraph bilingual Chapter VI, 1,302 English words, 17 source-occurring terms, distinct offline SVG, theme and backup registration, script order and test syntax. This is not native Node/Android/Pad 5 validation.
 - **Purposeful CI question:** do the new chapter, theme, browser fixture, Node regression and packaged APK work together in Android/Chromium? Source-only V8 cannot verify Gradle packaging or Chromium rendering. One targeted CI run is authorized.
 
+- **FAIL (first Android CI):** [run 40236665237](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40236665237) stopped in Node content validation because the older Chapter V regression asserted the theme allowlist ended exactly at `exchange-gazette`. Adding the new valid theme changed that suffix; production chapter VI and direct V8 assertions passed separately. Fix the brittle old test and rerun; no APK was produced in the failed run.
 - **NOT TESTED (pending matching CI):** native Node tests, Chromium flow, Android Gradle, APK checksum, Pad 5 RTL/TalkBack/FPS and final acceptance. A build is justified to check full integration of 37 passages, asset packaging and browser chapter navigation, not routine compilation.
 - No main writes, PR merge, paid API, microphone/TTS, other repositories or Library/Handoff changes.
 
