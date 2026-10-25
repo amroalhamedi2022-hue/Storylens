@@ -91,7 +91,7 @@ const css=fs.readFileSync(path.join(root,'app/src/main/assets/lingua-shell.css')
 const backup=fs.readFileSync(path.join(root,'app/src/main/assets/data-backup.js'),'utf8');
 assert.ok(shell.includes("'mosaic-courtyard':'Mosaic Courtyard'"),'theme selectable in Settings');
 assert.match(css,/body\.theme-mosaic-courtyard[\s\S]*?border-radius:46%/,'courtyard has distinct arched layout');
-assert.match(backup, /'mosaic-courtyard'[^\\n]*\\.includes\\(val\\)/,'theme survives backup validation even when new themes are appended');
+assert.match(backup, /'mosaic-courtyard'[^\n]*\.includes\(val\)/,'theme survives backup validation even when new themes are appended');
 
 // Editorial corrections can replace a term without changing array length.
 // An explicit revision or invalidation must refresh the cached phrase meaning
