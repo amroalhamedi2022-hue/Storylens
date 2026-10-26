@@ -297,3 +297,14 @@ merely because its title is present in a roadmap.
 - **Vocabulary:** 33 contextual entries; automated regression requires each surface phrase to occur in the English chapter body.
 - **Illustration/theme:** original offline SVG of the Tankadere under storm conditions with a distress signal, plus distinct **Typhoon Signal** theme registered in Settings and backup.
 - **Rights:** Standard Ebooks identifies its editorial contribution as CC0; the underlying Towle translation is treated as public domain in the United States. Territory-specific redistribution clearance remains **NOT TESTED**.
+
+
+## Chapter XXII — Passepartout arrives in Yokohama
+
+- **Source:** Standard Ebooks editorial transcription of George Makepeace Towle's 1873 English translation of Jules Verne, Chapter XXII: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-22.xhtml
+- **Exact source blob SHA-1:** `1ae20fed64d05d867c7021cdfd1033a7fc71a879`.
+- **English:** 31 source-aligned body paragraphs, 2,072 tokenized words; the module records the upstream source and the regression requires source-occurring glossary phrases.
+- **Arabic:** 31 aligned companion draft translations. Independent literary proofreading remains **NOT TESTED**.
+- **Vocabulary:** 34 contextual entries; the Node regression checks every English surface phrase against the chapter body.
+- **Illustration/theme:** original offline SVG of Yokohama harbour, a Japanese junk and red lanterns; distinct **Yokohama Lantern** theme is registered in Settings and backup.
+- **Rights:** Standard Ebooks dedicates its editorial contribution to CC0 and the 1873 Towle translation is treated as public domain in the United States. Territory-specific redistribution clearance remains **NOT TESTED**.
