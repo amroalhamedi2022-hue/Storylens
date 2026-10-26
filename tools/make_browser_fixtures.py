@@ -59,7 +59,7 @@ tests={
  try{openStory('around-the-world-in-eighty-days-towle');stlChapter(13)}catch(e){errors.push('Verne Chapter XIV open: '+e.message)}
  check('Verne Chapter XIV reader opens the new source',()=>state.page==='reader'&&state.chapter===13&&!!document.querySelector('.reader')&&document.querySelector('.reader').textContent.includes('Calcutta'));
  try{openStory('around-the-world-in-eighty-days-towle');stlChapter(14)}catch(e){errors.push('Verne Chapter XV open: '+e.message)}
- check('Verne Chapter XV reader opens the new source',()=>state.page==='reader'&&state.chapter===14&&!!document.querySelector('.reader')&&document.querySelector('.reader').textContent.includes('Judge Obadiah')&&document.querySelector('.reader').textContent.includes('15 of 37')&&document.querySelector('.reader').textContent.includes('End of available chapters')&&!document.querySelector('.reader').textContent.includes('The End'));
+ check('Verne Chapter XV reader opens the new source',()=>state.page==='reader'&&state.chapter===14&&!!document.querySelector('.reader')&&document.querySelector('.reader').textContent.includes('Judge Obadiah')&&document.querySelector('.reader').textContent.includes('15 of 37')&&document.querySelector('.reader').textContent.includes('يتبع — لم تكتمل الرواية بعد')&&!document.querySelector('.reader').textContent.includes('The End'));
  document.body.setAttribute('data-storylens-qa',errors.length?'FAIL':'PASS');
  document.body.setAttribute('data-storylens-qa-count',String(passes.length));
  document.body.setAttribute('data-storylens-qa-errors',errors.join(' | '));
