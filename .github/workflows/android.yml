@@ -264,6 +264,11 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=7500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne30-en.html" > /tmp/storylens-verne30-en-dom.html 2>/tmp/chrome-verne30-en-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne30-en-dom.html || { echo "Chapter XXX English reader failed"; exit 1; }
           echo "PASS: Chapter XXX English reader shows complete source, offline illustration and no unavailable Chapter XXXI"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=7500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne30-theme-phone.png" "file://$PWD/app/src/main/assets/qa-verne30-theme.html" >/tmp/chrome-verne30-theme.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=7500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne30-theme.html" > /tmp/storylens-verne30-theme-dom.html 2>/tmp/chrome-verne30-theme-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne30-theme-dom.html || { echo "Snowbound Telegraph visual fixture failed"; exit 1; }
+          echo "PASS: Snowbound Telegraph theme applies distinct reader styling to Chapter XXX in RTL"
+
 
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/word-phone.png" "file://$PWD/app/src/main/assets/qa-word.html" >/tmp/chrome-word.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/backup-phone.png" "file://$PWD/app/src/main/assets/qa-backup.html" >/tmp/chrome-backup.log 2>&1
