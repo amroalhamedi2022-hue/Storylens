@@ -286,3 +286,14 @@ merely because its title is present in a roadmap.
 - **Vocabulary:** 33 contextual entries; two surface forms were corrected to match the source exactly (“shuffling his hat” and “venturing so far”). The test continues to require every glossary term to occur in the chapter body.
 - **Illustration/theme:** original offline Shanghai/Tankadere SVG scene and distinct **Shanghai Wind Ledger** theme, registered in Settings and backup. No remote image is required.
 - **Rights:** Standard Ebooks identifies its editorial contribution as CC0; the underlying 1873 Towle translation is treated as public domain in the United States. Territory-specific redistribution clearance remains **NOT TESTED**.
+
+
+## Chapter XXI — The Tankadere races the typhoon toward Shanghai
+
+- **Source:** Standard Ebooks editorial transcription of George Makepeace Towle's 1873 English translation of Jules Verne, Chapter XXI: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-21.xhtml
+- **Exact source blob SHA-1:** `47c6a1144e756752618e36c56f21832d1020f3fb`.
+- **English:** 55 source-aligned body paragraphs, approximately 2,562 words; source text is normalized from the XHTML without rewriting the English passage.
+- **Arabic:** 55 aligned companion draft translations. They are editorial drafts and have not received independent literary proofreading.
+- **Vocabulary:** 33 contextual entries; automated regression requires each surface phrase to occur in the English chapter body.
+- **Illustration/theme:** original offline SVG of the Tankadere under storm conditions with a distress signal, plus distinct **Typhoon Signal** theme registered in Settings and backup.
+- **Rights:** Standard Ebooks identifies its editorial contribution as CC0; the underlying Towle translation is treated as public domain in the United States. Territory-specific redistribution clearance remains **NOT TESTED**.
