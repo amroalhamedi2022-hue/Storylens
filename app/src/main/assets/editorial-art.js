@@ -291,8 +291,26 @@ function typhoonSignalScene(){
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
 
+
+function yokohamaLanternScene(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="Yokohama harbour at dusk, a Japanese junk, lantern-lit street and cedar silhouettes">'+
+ '<defs><linearGradient id="yl-sky" x2="0" y2="1"><stop stop-color="#18242b"/><stop offset=".55" stop-color="#7e4a42"/><stop offset="1" stop-color="#e2a46a"/></linearGradient><linearGradient id="yl-water" x2="0" y2="1"><stop stop-color="#326d68"/><stop offset="1" stop-color="#102b31"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#yl-sky)"/><circle cx="740" cy="132" r="78" fill="#f1d79c" opacity=".78"/>'+
+ '<path d="M0 305L80 240L135 285L200 220L280 290L350 232L430 292L510 250L590 298L660 230L735 292L820 240L900 286L1000 225V420H0Z" fill="#172d32" opacity=".85"/>'+
+ '<path d="M0 395Q170 360 320 397T640 388T1000 380V620H0Z" fill="url(#yl-water)"/>'+
+ '<path d="M0 455Q160 428 310 457T620 449T1000 440M0 520Q190 493 380 522T760 511T1000 507" fill="none" stroke="#a8d0b5" stroke-width="3" opacity=".45"/>'+
+ '<path d="M345 385L365 280L515 280L555 385Z" fill="#17272c" stroke="#d8a76b" stroke-width="6"/><path d="M435 280V185M435 190L355 300H435L500 300Z" fill="#f3d8a1" opacity=".82"/><path d="M442 210L515 300H442Z" fill="#c95c43"/>'+
+ '<path d="M300 385H590L548 425H345Z" fill="#241f26" stroke="#d8a76b" stroke-width="6"/><path d="M445 185L445 135" stroke="#f5e5c3" stroke-width="5"/>'+
+ '<g stroke="#2a2329" stroke-width="8"><path d="M90 410V235M60 250H120M850 410V220M820 235H880"/></g>'+
+ '<g><path d="M54 240Q90 192 126 240Z" fill="#d64e3f" stroke="#f1d79c" stroke-width="5"/><rect x="62" y="240" width="56" height="78" rx="17" fill="#d64e3f" stroke="#f1d79c" stroke-width="5"/><path d="M90 245V312" stroke="#f8e7bf" stroke-width="3"/>'+
+ '<path d="M814 225Q850 177 886 225Z" fill="#d64e3f" stroke="#f1d79c" stroke-width="5"/><rect x="822" y="225" width="56" height="84" rx="17" fill="#d64e3f" stroke="#f1d79c" stroke-width="5"/><path d="M850 230V302" stroke="#f8e7bf" stroke-width="3"/></g>'+
+ '<g fill="#172d32"><path d="M0 445L55 325L112 445Z"/><path d="M75 445L150 300L220 445Z"/><path d="M780 445L850 295L920 445Z"/><path d="M880 445L940 330L1000 445Z"/></g>'+
+ '<path d="M0 565H1000" stroke="#d64e3f" stroke-width="7"/><text x="500" y="594" text-anchor="middle" font-family="Georgia,serif" font-size="27" letter-spacing="5" fill="#f8e7bf">YOKOHAMA LANTERN · XXII</text></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():chapter===19?shanghaiWindLedgerScene():chapter===20?typhoonSignalScene():charingCrossDeparture();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():chapter===19?shanghaiWindLedgerScene():chapter===20?typhoonSignalScene():chapter===21?yokohamaLanternScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
