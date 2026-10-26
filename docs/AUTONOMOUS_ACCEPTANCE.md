@@ -809,3 +809,13 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS (source runtime):** chapter script executes, English source paragraphs match 35/35, all Arabic paragraphs are present, 32 terms are source-bound, and the chapter SVG is distinct from Chapter XVI. Node test syntax parses.
 - **CI / APK for head `19daa38f9ee99678d856b049e8bfa4d892293b37`: NOT VERIFIED.** No new run ID or artifact is recorded for this head; earlier APKs do **not** include Chapter XVII. Build question remains whether full Node regression, Chromium reader fixture, Android packaging and SHA manifest pass together.
 - **NOT TESTED:** Xiaomi Pad 5 install/performance, RTL/TalkBack device review, independent Arabic literary proofreading, and territory-specific rights clearance. PR remains Draft; no main merge.
+
+
+## 2026-10-26 — LT-06 serial-reader localization boundary (validated)
+
+- **Production fix:** `lingua-i18n.js` now localizes only `.reader .chapter-end > button.primary`; the former broad selector also matched the first accessible chapter-navigation button and could replace “Previous/Next chapter” with the primary return action in English UI.
+- **Regression coverage:** the locale journey verifies that the primary action changes while chapter-navigation labels remain intact. Chromium fixtures verify Chapter XVII remains a normal chapter with a next-chapter control, Chapter XVIII is truthfully marked as an incomplete serial in Arabic and English, and navigation to an unpublished future chapter is disabled.
+- **PASS Android CI:** [run 40297626205](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40297626205) on source/test SHA `bed69d985398db8c7d8dcca98df14fe714f0a2f6`: Node regressions, Android Gradle unit tests + Debug assembly, required offline asset packaging and Chromium reader journeys all passed.
+- **PASS independent APK verification:** artifact **12639301103**, `app-debug.apk` **4,517,673 bytes**, SHA-256 `2640e0a09120f4d1347ce1c6d516ca5b1d00d99bf0b1a1c5b046198f89563de5`; independently recalculated digest matches `APK_SHA256.txt`. Adaptive launcher icon, localization/navigation scripts and Towle Chapters I–XVIII were verified packaged. Screenshot artifact **12639470594** includes Chapter XVII, Chapter XVIII Arabic UI and Chapter XVIII English UI.
+- **NOT TESTED:** Xiaomi Pad 5 installation, physical-device frame times, RTL/TalkBack, keyboard and real touch acceptance, independent Arabic literary review, licensed recorded music/ambience and final signed release. Chromium is not a device benchmark.
+- No `main` writes or merge. Debug APK only; LT-01..LT-13 remain **IN PROGRESS**.
