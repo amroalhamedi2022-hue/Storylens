@@ -199,3 +199,10 @@ merely because its title is present in a roadmap.
 - 24 narrative paragraphs, 1559 English words and 24 aligned Arabic companion drafts; source comparison passed before commit. Upstream SHA-256 not calculated in this run.
 - Standard Ebooks editorial work is CC0; Towle's 1873 translation is public domain in the US. Territorial redistribution clearance and independent Arabic literary proofreading remain NOT TESTED.
 - Added 26 source-occurring phrases, offline Bombay railway SVG and Deccan Timetable theme.
+
+## Towle Chapter XI — Kholby and the elephant conveyance
+- English source: Standard Ebooks, Towle 1873 transcription, Chapter XI: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-11.xhtml
+- Bundled source text contains 49 narrative paragraphs (2,533 words) in English, with 49 aligned Arabic companion drafts. The source bridgehead is the chapter title, not a duplicate paragraph.
+- Standard Ebooks editorial work is CC0; Towle's 1873 translation is public domain in the United States. Territory-specific redistribution clearance and independent Arabic literary proofreading remain NOT TESTED.
+- Added 29 source-occurring contextual phrases, a locally generated Kholby forest/unfinished railway/elephant SVG, and the distinct Kholby Crossing theme. The image is generated as offline SVG by production code; no external image URL is loaded.
+- Android CI 40253482067 passed Node regressions, Gradle/Android packaging and Chromium reader integration. Independently verified Debug APK SHA-256 d5b70b14d80fb833ac38ed4956d9a853cedf0553a0c4d0269fb8254fc1e5e7b8 (4,408,785 bytes). Physical Pad 5 and final signed release remain NOT TESTED.
