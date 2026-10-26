@@ -23,5 +23,5 @@ const scenes=artSandbox.window.StoryLensMakeEditorialArt([story]);
 assert.ok(scenes['around-the-world-in-eighty-days-towle_26']);
 assert.notEqual(scenes['around-the-world-in-eighty-days-towle_25'],scenes['around-the-world-in-eighty-days-towle_26']);
 assert.ok(scenes['around-the-world-in-eighty-days-towle_26'].includes('SALT%20LAKE%20DISPATCH'));
-assert.ok(read('tools/theme-catalog.test.cjs').includes("'salt-lake-dispatch'"));
+assert.ok(fs.readFileSync(path.join(root,'tools/theme-catalog.test.cjs'),'utf8').includes("'salt-lake-dispatch'"));
 console.log('PASS Towle XXVII: '+count+' source words, 25 aligned bilingual passages, 38 source-bound terms, distinct offline scene/theme.');
