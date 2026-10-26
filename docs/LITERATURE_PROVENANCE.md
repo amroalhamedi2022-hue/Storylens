@@ -104,7 +104,7 @@ merely because its title is present in a roadmap.
   distribution, and each image's own rights require independent checking
   before public APK distribution. Avoid carrying Project Gutenberg branding
   or license text into an app without reviewing their redistribution terms.
-- **Current package status supersedes the historical checkpoint below: Chapters I–V are packaged as bilingual drafts; Chapters VI–XXXVII are NOT PACKAGED.** Do not claim the complete novel is available offline in Lingua Tales.
+- **Current package status supersedes the historical checkpoint below: Chapters I–IX are packaged as bilingual drafts; Chapters X–XXXVII are NOT PACKAGED.** Do not claim the complete novel is available offline in Lingua Tales.
 - Next coherent editorial milestone: finish redistribution-territory review,
   add contiguous authentic Chapters IV onward with fresh Arabic
   paragraph translations and source-to-paragraph QA, retain chapter numbering,
@@ -181,3 +181,14 @@ merely because its title is present in a roadmap.
 - The source bridgehead is used as the chapter title; the 59 narrative paragraphs are bundled in English with 59 aligned Arabic companion drafts (1,080 English words).
 - Standard Ebooks editorial transcription is CC0; Towle's 1873 English translation is public domain in the United States. Territorial redistribution clearance and independent Arabic literary proofreading remain **NOT TESTED**. The upstream XHTML digest was not computed in this batch.
 - Added 26 source-occurring learning phrases, an original offline SVG of the telegraph dispatch desk and Red Sea steamship, and the distinct **Red Sea Dispatch** theme. No remote image, audio or font asset is loaded.
+
+
+## Packaged draft: Around the World in Eighty Days — Chapter IX (Towle; Standard Ebooks)
+
+- Added on the existing Storylens PR #1 branch. **Nine of 37 chapters are packaged**, not the complete novel.
+- English: 30 original prose/dialogue paragraphs, 1,552 words, transcribed from the 1873 George Makepeace Towle translation as published in Standard Ebooks' CC0 editorial XHTML.
+- Exact source: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-9.xhtml
+- Source XHTML SHA-256: `d61493072b960641c3bd7c0145dad1414b857dbcacabd058e09bf406b42fda1b`.
+- Arabic: 30 aligned companion draft translations. **Independent Arabic literary proofreading and territory-specific redistribution clearance remain NOT TESTED.**
+- Added 23 source-occurring contextual vocabulary/idiom entries, an original offline SVG of the Mongolia crossing the Indian Ocean toward Bombay, and the visually distinct **Monsoon Meridian** theme registered in Settings and backup.
+- Automated coverage checks paragraph alignment, source length, source-bound terms, chapter load order, offline illustration, theme registration and backup allowlist. Android/Chromium integration and physical Pad 5 checks remain pending until the targeted workflow completes.
