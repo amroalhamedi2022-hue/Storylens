@@ -317,6 +317,7 @@ merely because its title is present in a roadmap.
 - **English:** 53 source-aligned body paragraphs, 1,933 tokenized words; source paragraph boundaries are preserved in the module.
 - **Arabic:** 53 aligned companion translation drafts. Independent literary proofreading remains **NOT TESTED**.
 - **Vocabulary:** 35 contextual entries; the regression checks every surface phrase against the English chapter body.
+- **Independent source comparison (2026-10-26):** all 53/53 narrative paragraphs match the upstream XHTML after markup/entity/whitespace normalization; the Chapter XXIII comma spacing was corrected to match the source.
 - **Illustration/theme:** original offline SVG of the travelling circus’s paper-lantern stage and acrobatic pyramid; distinct **Paper Lantern Circus** theme registered in Settings, reduced-motion styling and backup allowlist.
 - **Rights:** Standard Ebooks dedicates its editorial contribution to CC0 and the underlying 1873 Towle translation is treated as public domain in the United States. Territory-specific redistribution clearance remains **NOT TESTED**.
 
@@ -327,4 +328,5 @@ merely because its title is present in a roadmap.
 - **Upstream Git blob SHA-1:** dd14ef8731bcc974e5d7c8f025f50d408f58badc; 36 narrative paragraphs and 1,955 English words after XHTML markup/entity normalization. Standard Ebooks' editorial transcription is CC0; the underlying 1873 translation is public domain in the United States. Territory-specific rights remain a separate review gate.
 - Added 36 aligned Arabic companion drafts, 38 source-occurring lexical/idiom entries, an original offline SVG of a nineteenth-century paddle steamer approaching the Golden Gate headlands (no anachronistic bridge), and the distinct Pacific Meridian theme with Settings/gallery/reduced-motion/backup registration.
 - Source, bilingual alignment, word count, glossary occurrences, art uniqueness and theme registration are covered by tools/verne-towle-ch24.test.cjs. Arabic literary review and rights clearance remain NOT TESTED until independently reviewed.
+- **Independent source comparison (2026-10-26):** all 36/36 narrative paragraphs match the upstream XHTML after markup/entity/whitespace normalization.
 - Chapter XXIV is 24 of 37; the novel remains incomplete. Device reading/performance/accessibility checks remain NOT TESTED.
