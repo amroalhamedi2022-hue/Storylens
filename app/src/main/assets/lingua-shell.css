@@ -1859,3 +1859,24 @@ body.theme-typhoon-signal::before,body.theme-typhoon-signal::after{display:none!
 .theme-typhoon-signal .lt-theme-choice{border-radius:2px 12px 2px 12px;background:#1c2d3e;color:#f4efe4;border:1px solid #d6bd7b}
 @media(max-width:600px){.theme-typhoon-signal .library .storylens-hero{grid-template-columns:minmax(0,1fr) 84px;padding:16px}.theme-typhoon-signal .library .storylens-hero .hero-orb{width:76px;height:76px}}
 @media(prefers-reduced-motion:reduce){.theme-typhoon-signal .library .card{transition:none!important;transform:none!important}}
+
+
+/* LT-13 — Yokohama Lantern: lacquer-red port signage, jade water and warm rice-paper reading.
+   Static shapes only; no perpetual particles, remote fonts or expensive blur layers. */
+.lt-theme-yokohama-lantern .lt-theme-swatch{background:radial-gradient(ellipse at 50% 25%,#f5d8a0 0 10%,#d64e3f 11% 28%,transparent 29%),linear-gradient(160deg,#18242b 0 38%,#326d68 38% 67%,#e2a46a 67%);border:2px solid #d8a76b}
+body.theme-yokohama-lantern{--body:#18242b;--card:#263a3b;--ink:#f7edda;--sub:#c7c3ad;--accent:#d64e3f;--reader:#f7f0df;--reader-ink:#252b29;color:#f7edda;background:linear-gradient(90deg,#d64e3f0b 1px,transparent 1px),linear-gradient(#d8a76b0a 1px,transparent 1px),radial-gradient(ellipse at 80% 0%,#326d6844,transparent 48%),#18242b;background-size:28px 28px,28px 28px,auto,auto}
+body.theme-yokohama-lantern::before,body.theme-yokohama-lantern::after{display:none!important}
+.theme-yokohama-lantern .library .header{border-bottom:5px solid #d64e3f;padding-bottom:13px;position:relative}
+.theme-yokohama-lantern .library .header::after{content:'YOKOHAMA · PORT LIGHTS · XXII';display:block;margin-top:9px;font:700 10px/1.5 ui-monospace,monospace;letter-spacing:.14em;color:#e2a46a}
+.theme-yokohama-lantern .library .brand{color:#f7edda;letter-spacing:.04em}
+.theme-yokohama-lantern .library .storylens-hero{border:2px solid #d8a76b;border-radius:48px 8px 48px 8px;background:linear-gradient(130deg,#263a3b 0 50%,#326d68 50% 70%,#d64e3f 70%);box-shadow:0 8px 0 #091518;color:#fff4dc}
+.theme-yokohama-lantern .library .storylens-hero h2{font-family:Georgia,serif;color:#f5d8a0}
+.theme-yokohama-lantern .library .card{border:1px solid #d8a76b;border-radius:26px 6px 26px 6px;border-inline-start:6px solid #d64e3f;background:linear-gradient(145deg,#263a3b,#1b3032);box-shadow:0 6px 0 #09151870;color:#f7edda;animation:none}
+.theme-yokohama-lantern .library .card h2{font-family:Georgia,serif;color:#f5d8a0}
+.theme-yokohama-lantern .library .secondary,.theme-yokohama-lantern .library .pill{border-radius:999px;border:1px solid #d8a76b;background:#263a3b;color:#f7edda}
+.theme-yokohama-lantern .reader{background:#f7f0df;color:#252b29;border-top:6px solid #d64e3f;box-shadow:0 10px 28px #07151955}
+.theme-yokohama-lantern .reader .reading-width{border-inline-start:4px solid #326d68;padding-inline-start:22px;background:linear-gradient(90deg,#326d680c,transparent 24%)}
+.theme-yokohama-lantern .lt-drawer{background:#18242b;color:#f7edda;border-inline-start:5px solid #d64e3f}
+.theme-yokohama-lantern .lt-theme-choice{border-radius:18px 4px 18px 4px;background:#263a3b;color:#f7edda;border:1px solid #d8a76b}
+@media(max-width:600px){.theme-yokohama-lantern .library .storylens-hero{grid-template-columns:minmax(0,1fr) 82px;padding:16px}.theme-yokohama-lantern .library .storylens-hero .hero-orb{width:74px;height:74px}}
+@media(prefers-reduced-motion:reduce){.theme-yokohama-lantern .library .card{transition:none!important;transform:none!important}}
