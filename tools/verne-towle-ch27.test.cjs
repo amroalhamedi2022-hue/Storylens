@@ -10,7 +10,7 @@ vm.runInNewContext(source,{window:{StoryLensEditorialStories:[story]}},{filename
 assert.equal(story.chapters.length,27);const ch=story.chapters[26];assert.equal(ch.paragraphs.length,25);
 const body=ch.paragraphs.map(p=>p.en).join(' '),count=(body.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.equal(count,1952,'Chapter XXVII must remain complete source text, not a synopsis');
-assert.ok(body.startsWith('During the night of the 5th of December')&&body.endsWith('one, and that was enough!'));
+assert.ok(body.startsWith('During the night of the 5th of December')&&body.endsWith('one, and that was enough!”'));
 assert.ok(ch.paragraphs.every(p=>p.en.trim()&&p.ar.trim()&&/[ء-ي]/.test(p.ar)));
 assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/27 of 37/);assert.equal(story.terms.length,38);
 for(const term of story.terms)assert.ok(body.toLowerCase().includes(term.term.toLowerCase()),'term absent from source: '+term.term);
