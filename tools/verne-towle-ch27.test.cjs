@@ -10,7 +10,7 @@ vm.runInNewContext(source,{window:{StoryLensEditorialStories:[story]}},{filename
 assert.equal(story.chapters.length,27);const ch=story.chapters[26];assert.equal(ch.paragraphs.length,25);
 const body=ch.paragraphs.map(p=>p.en).join(' '),count=(body.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.equal(count,1952,'Chapter XXVII must remain complete source text, not a synopsis');
-const normalizedEnglish=ch.paragraphs.map(p=>p.en.replace(/[\\u00a0\\u2007\\u202f]/g,' ').replace(/[\\u2060\\u00ad\\ufeff]/g,'').replace(/\\s+/g,' ').trim()).join('\\n');
+const normalizedEnglish=ch.paragraphs.map(p=>p.en.replace(/[\u00a0\u2007\u202f]/g,' ').replace(/[\u2060\u00ad\ufeff]/g,'').replace(/\s+/g,' ').trim()).join('\n');
 assert.equal(crypto.createHash('sha256').update(normalizedEnglish,'utf8').digest('hex'),'df283010b402b4c3f56d68e4cada2bb1265465ac2a9d3bfc034e7721ccbc9b0c','all English paragraphs must match the pinned Standard Ebooks Chapter XXVII transcription after typographic normalization');
 assert.ok(body.startsWith('During the night of the 5th of December')&&body.endsWith('one, and that was enough!”'));
 assert.ok(ch.paragraphs.every(p=>p.en.trim()&&p.ar.trim()&&/[ء-ي]/.test(p.ar)));
