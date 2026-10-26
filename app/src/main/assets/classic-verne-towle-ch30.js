@@ -79,7 +79,7 @@ const english=[
 ];
 const arabic=[
   "اختفى ثلاثة ركاب، بينهم باسبارتو. هل قُتلوا في الاشتباك؟ أم أخذهم أفراد السيو أسرى؟ تعذّر معرفة ذلك.",
-  "كان هناك كثير من الجرحى، لكن لم تكن إصابة أحد منهم قاتلة. وكان العقيد بروكتور من أشدهم إصابة؛ فقد قاتل بشجاعة وأصابته رصاصة في أعلى الفخذ. نُقل إلى المحطة مع بقية الجرحى ليتلقى ما يمكن تقديمه من عناية.",
+  "كان هناك كثير من الجرحى، لكن لم تكن إصابة أحد منهم قاتلة. وكان العقيد بروكتور من أشدهم إصابة؛ فقد قاتل بشجاعة ودخلت رصاصة في منطقة الأربية. نُقل إلى المحطة مع بقية الجرحى ليتلقى ما يمكن تقديمه من عناية.",
   "كانت أودا سالمة، ولم يُصب فيلياس فوج، الذي كان في قلب القتال، بخدش. أما فيكس فأصيب إصابة طفيفة في ذراعه. لكنهم لم يعثروا على باسبارتو، وانحدرت الدموع على خدي أودا.",
   "خرج جميع الركاب من القطار، وكانت عجلاته ملطخة بالدماء. وتدلّت من الإطارات والأسلاك قطع ممزقة من اللحم. وعلى السهل الأبيض خلفهم، حتى مدى البصر، ظهرت آثار حمراء. وكان آخر أفراد السيو يبتعدون جنوبًا بمحاذاة نهر ريببليكان.",
   "وقف السيد فوج ساكنًا وذراعاه مطويتان. كان عليه اتخاذ قرار خطير. وقفت أودا بالقرب منه تنظر إليه دون كلام، ففهم ما تعنيه نظرتها. إن كان خادمه أسيرًا، أفلا ينبغي له أن يخاطر بكل شيء لإنقاذه من المهاجمين؟ قال لها بهدوء: «سأعثر عليه، حيًا كان أم ميتًا».",
@@ -428,8 +428,9 @@ const terms=[
     "type": "phrase"
   }
 ];
+terms.push({term:'groin',literal:'الأربية',context:'المنطقة التشريحية التي يلتقي فيها أعلى الفخذ بأسفل البطن',note:'Chapter XXX: Fort Kearney rescue in the snow',type:'word'});
 const body=english.join(' ');
-if(english.length!==67||arabic.length!==english.length||terms.length!==40)throw Error('Towle XXX bilingual/glossary alignment mismatch');
+if(english.length!==67||arabic.length!==english.length||terms.length!==41)throw Error('Towle XXX bilingual/glossary alignment mismatch');
 if(terms.some(t=>!body.toLowerCase().includes(t.term.toLowerCase())))throw Error('Towle XXX glossary term absent from source');
 s.chapters.push({title:'In which Phileas Fogg simply does his duty.',titleAr:'الفصل الثلاثون — حيث يؤدي فيلياس فوج واجبه ببساطة',paragraphs:english.map((en,i)=>({en,ar:arabic[i]}))});
 s.terms.push(...terms);s.totalChapters=37;
