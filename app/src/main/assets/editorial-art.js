@@ -390,7 +390,7 @@ function saltLakeDispatchScene(){
 }
 
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():chapter===19?shanghaiWindLedgerScene():chapter===20?typhoonSignalScene():chapter===21?yokohamaLanternScene():chapter===22?paperLanternCircusScene():chapter===23?pacificMeridianScene():chapter===24?civicPanoramaScene():chapter===25?prairieSignalScene():chapter===27?medicineBowCrossingScene():chapter===26?saltLakeDispatchScene():charingCrossDeparture();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():chapter===19?shanghaiWindLedgerScene():chapter===20?typhoonSignalScene():chapter===21?yokohamaLanternScene():chapter===22?paperLanternCircusScene():chapter===23?pacificMeridianScene():chapter===24?civicPanoramaScene():chapter===25?prairieSignalScene():chapter===28?plumCreekRailwayScene():chapter===27?medicineBowCrossingScene():chapter===26?saltLakeDispatchScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
@@ -457,6 +457,24 @@ function medicineBowCrossingScene(){
  <path d="M74 255V330" stroke="#273645" stroke-width="10"/><rect x="52" y="240" width="44" height="40" rx="3" fill="#c64235" stroke="#f9fbfc" stroke-width="3"/><circle cx="74" cy="260" r="9" fill="#f9fbfc"/>
  <path d="M75 338L92 355M90 339L74 357" stroke="#c64235" stroke-width="5"/><path d="M640 160L672 188M672 160L640 188" stroke="#f9fbfc" stroke-width="3" opacity=".8"/>
  <text x="500" y="575" text-anchor="middle" font-family="ui-monospace,monospace" font-size="25" font-weight="700" letter-spacing="3" fill="#f9fbfc">MEDICINE BOW CROSSING · XXVIII</text></svg>`;
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
+
+function plumCreekRailwayScene(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="A nineteenth-century steam train at a prairie signal, rails and a broad river">'+
+ '<defs><linearGradient id="pcs-sky" x2="0" y2="1"><stop stop-color="#1d3141"/><stop offset=".58" stop-color="#82949a"/><stop offset="1" stop-color="#eadbb9"/></linearGradient><linearGradient id="pcs-river" x2="0" y2="1"><stop stop-color="#3c6871"/><stop offset="1" stop-color="#c5d0c1"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#pcs-sky)"/><circle cx="790" cy="105" r="53" fill="#e7c57e" opacity=".9"/>'+
+ '<path d="M0 330L120 265L250 315L380 245L515 320L650 270L785 315L900 255L1000 292V620H0Z" fill="#596f65"/>'+
+ '<path d="M0 385Q190 330 370 380T720 370T1000 350V620H0Z" fill="#293e3e"/>'+
+ '<path d="M0 445Q190 412 390 450T730 430T1000 420V620H0Z" fill="url(#pcs-river)"/>'+
+ '<path d="M0 500Q170 475 360 504T700 492T1000 475M0 540Q190 518 380 545T760 528T1000 520" stroke="#f4edda" stroke-width="3" fill="none" opacity=".7"/>'+
+ '<path d="M85 585L370 390M915 585L630 390" stroke="#263844" stroke-width="16"/><path d="M85 585L370 390M915 585L630 390" stroke="#d8b56b" stroke-width="4"/>'+
+ '<g stroke="#f5e8c9" stroke-width="7"><path d="M180 520L800 520M240 480L760 480M295 440L705 440M340 408L660 408"/></g>'+
+ '<path d="M170 390V250M150 250H190M150 285H190" stroke="#243a48" stroke-width="12"/><rect x="143" y="205" width="55" height="65" rx="4" fill="#a53c31" stroke="#f4ecd9" stroke-width="4"/><circle cx="170" cy="237" r="13" fill="#f4d9a1"/>'+
+ '<g transform="translate(390 315)"><rect x="0" y="38" width="320" height="86" rx="5" fill="#243a48" stroke="#f4ecd9" stroke-width="4"/><rect x="30" y="0" width="92" height="42" fill="#a53c31" stroke="#f4ecd9" stroke-width="3"/><rect x="44" y="8" width="24" height="23" fill="#f5e8c9"/><rect x="78" y="8" width="24" height="23" fill="#f5e8c9"/><rect x="150" y="56" width="42" height="32" fill="#d8b56b"/><rect x="207" y="56" width="42" height="32" fill="#d8b56b"/><circle cx="58" cy="130" r="22" fill="#182a35" stroke="#f4ecd9" stroke-width="5"/><circle cx="257" cy="130" r="22" fill="#182a35" stroke="#f4ecd9" stroke-width="5"/><path d="M18 25L-8 2M-8 2L-24 12" stroke="#fff8e8" stroke-width="8" stroke-linecap="round" opacity=".7"/></g>'+
+ '<path d="M500 170Q550 130 520 92Q590 135 558 182Q548 200 520 198Z" fill="#f4ecd9" opacity=".42"/>'+
+ '<text x="500" y="592" text-anchor="middle" font-family="ui-monospace,monospace" font-size="24" font-weight="700" letter-spacing="4" fill="#fff8e8">PLUM CREEK · UNION PACIFIC</text></svg>';
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
 
