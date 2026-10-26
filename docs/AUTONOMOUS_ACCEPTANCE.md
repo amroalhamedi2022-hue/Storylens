@@ -790,3 +790,8 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - Added a Chapter XVI source regression and a dedicated Chromium reader fixture that checks the actual rendered Straits of Malacca passage and 16-of-37 continuation state. Workflow will verify APK packaging and capture the chapter-specific reader screenshot.
 - **Purposeful build question:** do the bilingual chapter, SVG scene, theme/backup wiring, and Chapter XVI reader journey integrate in Android packaging and Chromium? Source-only checks cannot prove script order, APK inclusion, or actual browser rendering, so one targeted CI build is justified.
 - **CI / independent APK verification: PENDING.** Xiaomi Pad 5, RTL/TalkBack, frame pacing, independent Arabic literary/sensitivity review, territory-specific rights clearance, and final signed release remain NOT TESTED. Sixteen of 37 chapters are bundled, not the complete novel; Arabic is an editorial draft.
+
+
+## Chapter XVI integration regression and correction — 2026-10-26
+- The first browser run after adding Chapter XVI passed source/Node/Gradle/APK packaging checks but failed in the **old Chapter XV fixture**: Chapter XV correctly stopped being the last available chapter, so the old fixture incorrectly expected the Arabic end-of-available-content label instead of the normal `End of Chapter 15` control.
+- Corrected the Chapter XV fixture and full-reader journey to assert its actual next-chapter boundary. The Chapter XVI fixture remains responsible for asserting the Arabic “more chapters coming” continuation label at 16 of 37. CI rerun pending.
