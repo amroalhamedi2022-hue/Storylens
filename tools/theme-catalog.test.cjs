@@ -24,7 +24,7 @@ for (const name of names) {
   assert.ok(backup.includes("'" + name + "'") || backup.includes('"' + name + '"'),
     'backup validator does not allow theme ' + name);
 }
-for (const name of ['red-sea-dispatch', 'monsoon-meridian', 'deccan-timetable', 'kholby-crossing']) {
+for (const name of ['red-sea-dispatch', 'monsoon-meridian', 'deccan-timetable', 'kholby-crossing', 'shanghai-wind-ledger']) {
   assert.ok(shellCss.includes('.lt-theme-' + name + ' .lt-theme-swatch'), 'missing gallery swatch for ' + name);
   assert.ok(shellCss.includes('@media(prefers-reduced-motion:reduce){.theme-' + name),
     'missing reduced-motion fallback for ' + name);

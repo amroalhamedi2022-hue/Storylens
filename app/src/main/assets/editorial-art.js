@@ -264,8 +264,21 @@ function victoriaHarbourDispatchScene(){
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
 
+function shanghaiWindLedgerScene(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="The pilot boat Tankadere crossing toward Shanghai">'+
+ '<defs><linearGradient id="sea" x2="0" y2="1"><stop stop-color="#d6e9df"/><stop offset=".55" stop-color="#8bb8b0"/><stop offset="1" stop-color="#315e68"/></linearGradient><linearGradient id="paper" x2="1" y2="1"><stop stop-color="#f8f0d9"/><stop offset="1" stop-color="#d5c79e"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#paper)"/><path d="M0 285Q130 260 260 288T520 284T780 290T1000 278V620H0Z" fill="url(#sea)"/>'+
+ '<g fill="none" stroke="#f4e8c7" stroke-width="3" opacity=".65"><path d="M0 354Q160 330 320 356T640 356T1000 347"/><path d="M0 412Q180 389 360 413T720 410T1000 407"/><path d="M0 484Q190 461 380 485T760 483T1000 478"/></g>'+
+ '<path d="M140 225Q245 204 338 225T520 223T700 225T865 214" stroke="#b17a4d" stroke-width="4" stroke-dasharray="10 12" fill="none"/>'+
+ '<g transform="translate(472 252)"><path d="M-170 76L-130 126L142 126L194 76Z" fill="#1e3d48" stroke="#f8f0d9" stroke-width="7"/><path d="M-12 76V-145M85 76V-112" stroke="#1e3d48" stroke-width="9"/><path d="M-2 -132L-2 55L-124 55Z" fill="#fff7df" stroke="#b17a4d" stroke-width="5"/><path d="M10 -112L10 46L104 46Z" fill="#e9b86e" stroke="#b17a4d" stroke-width="5"/><path d="M93 -98L93 42L168 42Z" fill="#f5e8c8" stroke="#b17a4d" stroke-width="5"/><path d="M-180 76Q-40 108 180 76" fill="none" stroke="#c77b4e" stroke-width="6"/></g>'+
+ '<g transform="translate(825 170)"><circle r="70" fill="#f8f0d9" stroke="#1e3d48" stroke-width="6"/><circle r="52" fill="none" stroke="#b17a4d" stroke-width="3"/><path d="M0 -43V43M-43 0H43M-30 -30L30 30M30 -30L-30 30" stroke="#1e3d48" stroke-width="3"/><path d="M0 0L24 -27" stroke="#c77b4e" stroke-width="8" stroke-linecap="round"/><text x="0" y="-82" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#1e3d48">N</text></g>'+
+ '<path d="M55 55H945V565H55Z" fill="none" stroke="#b17a4d" stroke-width="3" stroke-dasharray="13 8"/>'+
+ '<text x="500" y="548" text-anchor="middle" font-family="Georgia,serif" font-size="28" letter-spacing="4" fill="#f8f0d9">TANKADERE · SHANGHAI · XX</text></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():charingCrossDeparture();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():chapter===19?shanghaiWindLedgerScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';

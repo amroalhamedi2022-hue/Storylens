@@ -1821,3 +1821,22 @@ body.theme-kholby-crossing::before,body.theme-kholby-crossing::after{display:non
 .theme-kholby-crossing .lt-drawer{background:#17392e;color:#f5f0dc;border-inline-start:4px solid #c19a53}
 .theme-kholby-crossing .lt-theme-choice{border-radius:5px 14px 5px 14px;background:#efe7d3;color:#20392e;border:1px solid #c19a53}
 @media(prefers-reduced-motion:reduce){.theme-kholby-crossing .library .card{transition:none!important;transform:none!important}}
+
+/* Shanghai Wind Ledger — pale sea-chart paper, jade currents and copper route marks. */
+.lt-theme-shanghai-wind-ledger .lt-theme-swatch{background:repeating-linear-gradient(165deg,#f8f0d9 0 9px,#8bb8b0 9px 13px,#1e3d48 13px 17px,#c77b4e 17px 20px,#f8f0d9 20px 29px);border:1px solid #b17a4d}
+body.theme-shanghai-wind-ledger{--body:#e7e0c9;--card:#f8f0d9;--ink:#1e3d48;--sub:#526c68;--accent:#c77b4e;--reader:#fffaf0;--reader-ink:#203d45;color:#1e3d48;background:repeating-linear-gradient(0deg,#1e3d4808 0 1px,transparent 1px 28px),linear-gradient(135deg,#e7e0c9,#b7d0c4 48%,#6d9d9a)}
+body.theme-shanghai-wind-ledger::before,body.theme-shanghai-wind-ledger::after{display:none!important}
+.theme-shanghai-wind-ledger .library .header{border-bottom:2px solid #c77b4e;position:relative;padding-bottom:16px}
+.theme-shanghai-wind-ledger .library .header::after{content:'SHANGHAI WIND LEDGER · XX';display:block;margin-top:9px;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.15em;color:#315e68}
+.theme-shanghai-wind-ledger .library .brand{color:#1e3d48;letter-spacing:.12em}
+.theme-shanghai-wind-ledger .library .storylens-hero{border:1px solid #b17a4d;border-radius:4px;background:linear-gradient(155deg,#f8f0d9 0 70%,#b7d0c4 70%);box-shadow:0 10px 0 #1e3d4820;color:#1e3d48}
+.theme-shanghai-wind-ledger .library .storylens-hero h2{font-family:Georgia,serif;color:#a95737}
+.theme-shanghai-wind-ledger .library .card{border:1px solid #9ab7aa;border-radius:3px 3px 16px 3px;border-top:4px solid #c77b4e;box-shadow:0 5px 0 #1e3d4815;animation:none}
+.theme-shanghai-wind-ledger .library .card h2{font-family:Georgia,serif;color:#1e3d48}
+.theme-shanghai-wind-ledger .library .secondary,.theme-shanghai-wind-ledger .library .pill{border-radius:3px;background:#f8f0d9;color:#1e3d48;border-color:#c77b4e}
+.theme-shanghai-wind-ledger .reader{background:#fffaf0;color:#203d45;border-top:4px solid #c77b4e;box-shadow:0 8px 28px #1e3d4815}
+.theme-shanghai-wind-ledger .reader .reading-width{border-inline-start:4px solid #6d9d9a;padding-inline-start:22px;background:repeating-linear-gradient(0deg,transparent 0 31px,#6d9d9a0b 31px 32px)}
+.theme-shanghai-wind-ledger .lt-drawer{background:#1e3d48;color:#f8f0d9;border-inline-start:4px solid #c77b4e}
+.theme-shanghai-wind-ledger .lt-theme-choice{border-radius:3px;background:#f8f0d9;color:#1e3d48;border:1px solid #c77b4e}
+@media(max-width:600px){.theme-shanghai-wind-ledger .library .storylens-hero{grid-template-columns:minmax(0,1fr) 86px;padding:16px}.theme-shanghai-wind-ledger .library .storylens-hero .hero-orb{width:78px;height:78px}}
+@media(prefers-reduced-motion:reduce){.theme-shanghai-wind-ledger .library .card{transition:none!important;transform:none!important}}
