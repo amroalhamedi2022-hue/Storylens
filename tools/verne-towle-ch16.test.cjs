@@ -1,0 +1,18 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const root=path.resolve(__dirname,'..'),assets=path.join(root,'app/src/main/assets'),read=n=>fs.readFileSync(path.join(assets,n),'utf8');
+const html=read('index.html'),script=read('classic-verne-towle-ch16.js');
+assert.ok(html.includes('src="classic-verne-towle-ch15.js"')&&html.includes('src="classic-verne-towle-ch16.js"'));
+assert.ok(html.indexOf('classic-verne-towle-ch15.js')<html.indexOf('classic-verne-towle-ch16.js')&&html.indexOf('classic-verne-towle-ch16.js')<html.indexOf('editorial-art.js'));
+const story={id:'around-the-world-in-eighty-days-towle',chapters:Array.from({length:15},()=>({})),terms:[],totalChapters:37,provenance:'Towle 1873',editorialStatus:'review'};
+const box={window:{StoryLensEditorialStories:[story]},encodeURIComponent};vm.runInNewContext(script,box,{filename:'classic-verne-towle-ch16.js',timeout:5000});
+assert.equal(story.chapters.length,16);const chapter=story.chapters[15],english=chapter.paragraphs.map(p=>p.en).join(' ');
+const norm=s=>s.toLowerCase().replace(/\u2060/g,'').replace(/[^a-z0-9]+/g,' ').replace(/\s+/g,' ').trim();
+const words=(english.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
+assert.equal(chapter.paragraphs.length,25);assert.ok(chapter.paragraphs.every(p=>p.en.trim().length>30&&p.ar.trim().length>30&&/[\u0621-\u064A]/.test(p.ar)));assert.ok(words>=1500,'Chapter XVI too short: '+words);
+for(const phrase of ['screw steamer','fitted up','deep gratitude','phlegmatic','strictest politeness','precision of an automaton','exalting medium','Parsee guide','propitious winds','Saddle Peak','looming above the waters','luxurious dish','Straits of Malacca','conceal his presence','local police','extradition warrant','elude justice','make a confidant','sore strait','new material for reflection','wicked elopement','full under way','telegraphic wire','make himself known','promenading up and down','crony','staying in my berth','not a day behind time','not seeming to comprehend','friendly glass'])assert.ok(norm(english).includes(norm(phrase)),'missing source phrase: '+phrase);
+assert.equal(story.terms.length,32);for(const term of story.terms)assert.ok(norm(english).includes(norm(term.term)),'context term absent: '+term.term);assert.match(story.editorialStatus,/16 of 37/);
+vm.runInNewContext(read('editorial-art.js'),box,{filename:'editorial-art.js',timeout:5000});const scenes=box.window.StoryLensMakeEditorialArt([story]);assert.ok(decodeURIComponent(scenes[story.id+'_15']).includes('RANGOON PASSAGE'));assert.notEqual(scenes[story.id+'_15'],scenes[story.id+'_14']);
+const shell=read('lingua-shell.js'),css=read('lingua-shell.css'),backup=read('data-backup.js'),fixtures=fs.readFileSync(path.join(root,'tools/make_browser_fixtures.py'),'utf8');
+assert.ok(shell.includes("'rangoon-passage':'Rangoon Passage'"));assert.ok(css.includes('body.theme-rangoon-passage'));assert.ok(css.includes('.theme-rangoon-passage .library .card'));assert.ok(backup.includes("val==='rangoon-passage'"));assert.ok(fixtures.includes('tests["verne16"]')&&fixtures.includes('state.chapter===15'));
+console.log('PASS Towle XVI: '+words+' English words, 25 bilingual passages, 32 source-bound terms, offline steamer SVG, Rangoon Passage theme/backup, chapter-specific browser fixture');
