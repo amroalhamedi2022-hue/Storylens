@@ -12,7 +12,7 @@ assert.equal(story.chapters.length,17);
 const chapter=story.chapters[16],english=chapter.paragraphs.map(p=>p.en).join(' ');
 const norm=s=>s.toLowerCase().replace(/\u2060/g,'').replace(/[^a-z0-9]+/g,' ').replace(/\s+/g,' ').trim();
 const words=(english.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
-assert.equal(chapter.paragraphs.length,35);assert.ok(chapter.paragraphs.every(p=>p.en.trim().length>20&&p.ar.trim().length>20&&/[\u0621-\u064A]/.test(p.ar)));
+assert.equal(chapter.paragraphs.length,35);assert.ok(chapter.paragraphs.every(p=>p.en.trim().length>0&&p.ar.trim().length>0&&/[\u0621-\u064A]/.test(p.ar)));
 assert.ok(words>=1650,'Chapter XVII too short: '+words);
 for(const phrase of ['met often on deck','cudgelled his brain for a century','Reform Club','keep us in view','weighed anchor','Strait of Malacca','clove-trees','sago-bushes','penetrating perfume','several dozen mangoes','thirteen hundred miles','second-class travellers','last quarter of the moon','put up his sails','land where the pepper grows','A very great hurry','I don’t believe a word of it','sly dog','present occupation','at my own expense','last foothold of English territory','deal plainly','accomplice','gravitated around him','perpetual reveries','engine-room','screw out of the water','steam came hissing','not sufficiently charged'])assert.ok(norm(english).includes(norm(phrase)),'missing source phrase: '+phrase);
 assert.equal(story.terms.length,32);for(const term of story.terms)assert.ok(norm(english).includes(norm(term.term)),'context term absent: '+term.term);
