@@ -716,3 +716,12 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS independent APK verification:** extracted 4,376,613-byte app-debug.apk; independently recalculated SHA-256 408e532b82e16a3de44dafd1e22109c5cc7c5010420173fdc9d20dcc763da043, matching the packaged APK_SHA256.txt. Chapter IX JS, illustration, shell, backup and adaptive launcher resource are present in the APK.
 - **Purposeful build question answered:** the new chapter, theme, illustration, backup registration and Android/Chromium integration work together in CI; this does not prove physical tablet performance.
 - **NOT TESTED:** Xiaomi Pad 5 installation, real frame times/scrolling, RTL/TalkBack, independent Arabic literary review, territory-specific redistribution clearance and final signed release. Nine of 37 chapters are present; LT-07 and overall LT-01..13 remain **IN PROGRESS**. PR remains Draft; no main write, merge, other repository or Library/Handoff change.
+
+
+## 2026-10-26 — Towle Chapter X / Deccan Timetable (functional source; CI pending)
+- Source: Standard Ebooks Towle 1873 Chapter X: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-10.xhtml
+- 24 narrative paragraphs, 1559 English words and 24 aligned Arabic companion drafts. Direct source comparison passed after XHTML tag/entity/whitespace normalization; upstream SHA-256 was not calculated in this run. Arabic drafts are not independently proofread.
+- Added 26 source-occurring vocabulary/phrase annotations, original offline Bombay railway/timetable/lost-shoe SVG, and distinct **Deccan Timetable** theme, wired into Settings and backup allowlist.
+- Standard Ebooks editorial work is CC0; Towle's 1873 translation is public domain in the US. Territory-specific redistribution clearance and independent Arabic review remain NOT TESTED.
+- Purposeful CI question: do the bilingual chapter, terms, SVG/theme, backup registry and reader catalog survive Node regressions, Gradle packaging and Chromium integration? Source-only checks cannot prove APK packaging/browser journey. Targeted CI justified; result pending.
+- NOT TESTED: Xiaomi Pad 5 install/frame timing, real RTL/TalkBack, literary review, territorial rights clearance and final signed release. Ten of 37 chapters are available; LT-07 and LT-01..LT-13 remain IN PROGRESS.

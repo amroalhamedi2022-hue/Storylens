@@ -192,3 +192,10 @@ merely because its title is present in a roadmap.
 - Arabic: 30 aligned companion draft translations. **Independent Arabic literary proofreading and territory-specific redistribution clearance remain NOT TESTED.**
 - Added 23 source-occurring contextual vocabulary/idiom entries, an original offline SVG of the Mongolia crossing the Indian Ocean toward Bombay, and the visually distinct **Monsoon Meridian** theme registered in Settings and backup.
 - Automated coverage checks paragraph alignment, source length, source-bound terms, chapter load order, offline illustration, theme registration and backup allowlist. Android/Chromium integration and physical Pad 5 checks remain pending until the targeted workflow completes.
+
+
+## Towle Chapter X — Bombay railway departure and lost shoes
+- Source: [Standard Ebooks, Towle 1873 Chapter X](https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-10.xhtml).
+- 24 narrative paragraphs, 1559 English words and 24 aligned Arabic companion drafts; source comparison passed before commit. Upstream SHA-256 not calculated in this run.
+- Standard Ebooks editorial work is CC0; Towle's 1873 translation is public domain in the US. Territorial redistribution clearance and independent Arabic literary proofreading remain NOT TESTED.
+- Added 26 source-occurring phrases, offline Bombay railway SVG and Deccan Timetable theme.

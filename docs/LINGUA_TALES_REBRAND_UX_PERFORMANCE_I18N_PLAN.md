@@ -1,7 +1,7 @@
 # Lingua Tales — approved rebrand, UX, performance and localization plan
 
 **Added 2026-10-23 after user review of StoryLens Android screenshot.**
-**Status: PLANNED ONLY — DO NOT CLAIM THESE CHANGES HAVE BEEN IMPLEMENTED OR TESTED.**
+**Status: ACTIVE IMPLEMENTATION — per-gate evidence and unresolved acceptance are tracked in `docs/AUTONOMOUS_ACCEPTANCE.md`; do not infer completion from individual milestones.**
 Source repository (unchanged for continuity): `amroalhamedi2022-hue/Storylens`.
 Authoritative development base: inspect `main`, existing open PR #1 and its branch `automation/storylens-dictionary-saved-words-20261023` before modifying production code. Preserve prior dictionary and reader regression work.
 
