@@ -237,3 +237,11 @@ merely because its title is present in a roadmap.
 - Android CI: [run 40266145893](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40266145893) **PASS**. The browser fixture opens Chapter XIV in the actual reader and verifies the rendered text; the screenshot artifact [12626636801](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40266145893/artifacts/12626636801) includes `verne14-phone.png`.
 - APK artifact [12626597198](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40266145893/artifacts/12626597198), size 4,458,901 bytes. SHA-256 independently recomputed from the extracted APK: `7a935f68cc542bdb4a23c8f8a46fa0fff0e09fad87f57c6afeb6cc8011a36afc`, matching the CI manifest.
 - The screenshot is a Chromium simulation, not Xiaomi Pad 5 device evidence. Arabic literary/sensitivity review, territorial rights review, RTL/TalkBack, performance and final signed release remain NOT TESTED.
+
+
+## Packaged draft: Around the World in Eighty Days — Chapter XV (Towle; Standard Ebooks)
+
+- Source: [Standard Ebooks Towle transcription, Chapter XV](https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-15.xhtml), English translation by George Makepeace Towle (1841–1893); Standard Ebooks editorial transcription is CC0. Territorial distribution review remains a separate gate.
+- Added 33 English source-aligned paragraphs (about 1833 English words), 33 Arabic companion draft paragraphs and 36 contextual entries found in the English text. The new offline Calcutta courtroom SVG and distinct Calcutta Ledger theme are registered in Settings and backup validation.
+- This is 15 of 37 chapters, not the complete novel. The chapter includes a false sacrilege accusation and a mistaken legal proceeding; the Arabic translation is a draft and needs independent literary/sensitivity review. Pad 5 and final release remain NOT TESTED.
+- Standard Ebooks editorial work is CC0; Towle's 1873 English translation is public domain in the United States. Territorial redistribution clearance remains NOT TESTED.

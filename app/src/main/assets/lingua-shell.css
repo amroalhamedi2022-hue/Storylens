@@ -1656,3 +1656,21 @@ body.theme-ganges-panorama::before,body.theme-ganges-panorama::after{display:non
 .theme-ganges-panorama .lt-drawer{background:#174b52;color:#f7f0d7;border-inline-start:4px solid #dfbd74}
 .theme-ganges-panorama .lt-theme-choice{border-radius:3px 12px 3px 12px;background:#f8f3df;color:#173d43}
 @media(prefers-reduced-motion:reduce){.theme-ganges-panorama .library .card{transition:none!important;transform:none!important}}
+
+/* Calcutta Ledger — courtroom docket geometry, burgundy ink and evidence-paper surfaces. */
+.lt-theme-calcutta-ledger .lt-theme-swatch{background:linear-gradient(135deg,#2d202d 0 27%,#9b4b4c 27% 44%,#d9b77a 44% 49%,#f5ead6 49% 100%);border:1px solid #d9b77a}
+body.theme-calcutta-ledger{--body:#2b202c;--card:#f5ead6;--ink:#302632;--sub:#776875;--accent:#9b4b4c;--reader:#fbf2df;--reader-ink:#302632;color:#f2e5cd;background:repeating-linear-gradient(0deg,#f5ead609 0 1px,transparent 1px 34px),linear-gradient(145deg,#211b29,#493044 56%,#2b202c)}
+body.theme-calcutta-ledger::before,body.theme-calcutta-ledger::after{display:none!important}
+.theme-calcutta-ledger .library .header{border-bottom:4px double #d9b77a;padding-bottom:15px;position:relative}
+.theme-calcutta-ledger .library .header::after{content:'CALCUTTA · COURT LEDGER';display:block;margin-top:8px;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.16em;color:#e6c98f}
+.theme-calcutta-ledger .library .brand{color:#e6c98f;letter-spacing:.15em}
+.theme-calcutta-ledger .library .storylens-hero{border:2px solid #d9b77a;border-inline-start:9px solid #9b4b4c;border-radius:3px;background:repeating-linear-gradient(0deg,#f5ead6 0 35px,#ead8b7 35px 36px);box-shadow:7px 7px 0 #0f101b55;color:#302632}
+.theme-calcutta-ledger .library .storylens-hero h2{font-family:Georgia,serif;color:#7e333e}
+.theme-calcutta-ledger .library .card{border:1px solid #bca77f;border-top:4px solid #9b4b4c;border-radius:3px;box-shadow:4px 5px 0 #0e101a40;animation:none}
+.theme-calcutta-ledger .library .card h2{font-family:Georgia,serif;color:#392638}
+.theme-calcutta-ledger .library .secondary,.theme-calcutta-ledger .library .pill{border-radius:3px;border-color:#9b4b4c;background:#f5ead6;color:#5e303d}
+.theme-calcutta-ledger .reader{background:#fbf2df;color:#302632;border-top:4px double #9b4b4c}
+.theme-calcutta-ledger .reader .reading-width{border-inline-start:3px solid #9b4b4c;padding-inline-start:18px;background:linear-gradient(90deg,#9b4b4c0b,transparent 44px)}
+.theme-calcutta-ledger .lt-drawer{background:#302331;color:#f5ead6;border-inline-start:4px solid #d9b77a}
+.theme-calcutta-ledger .lt-theme-choice{border-radius:3px;background:#f5ead6;color:#302632;border:1px solid #c3a86f}
+@media(prefers-reduced-motion:reduce){.theme-calcutta-ledger .library .card{transition:none!important;transform:none!important}}

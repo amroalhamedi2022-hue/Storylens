@@ -1,0 +1,16 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const assets=path.join(__dirname,'../app/src/main/assets'),read=n=>fs.readFileSync(path.join(assets,n),'utf8'),html=read('index.html');
+assert.ok(html.indexOf('classic-verne-towle-ch14.js')<html.indexOf('classic-verne-towle-ch15.js'));
+assert.ok(html.indexOf('classic-verne-towle-ch15.js')<html.indexOf('editorial-art.js'));
+const story={id:'around-the-world-in-eighty-days-towle',genre:'historical',chapters:Array.from({length:14},()=>({})),terms:[],totalChapters:37,provenance:''},box={window:{StoryLensEditorialStories:[story]}};
+vm.runInNewContext(read('classic-verne-towle-ch15.js'),box,{filename:'classic-verne-towle-ch15.js'});
+const ch=story.chapters[14],english=ch.paragraphs.map(p=>p.en).join(' '),norm=s=>s.toLowerCase().replace(/\u2060/g,'').replace(/[^a-z0-9]+/g,' ').replace(/\s+/g,' ').trim();
+assert.equal(story.chapters.length,15);assert.equal(ch.paragraphs.length,33);assert.ok(ch.paragraphs.every(p=>p.en.trim()&&p.ar.trim()));
+const words=(english.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;assert.ok(words>1800,'Chapter XV too short: '+words);
+for(const phrase of ['dangerous ground','representative of the law','law is sacred','four-wheeled carriage','squalid population','presented a relief','barred windows','leave me to my fate','by no means reassured','adjoining hall','take down a wig','wise sentence','getting nervous','about to be informed','held consecrated','admit it','on the point of','imprudent exclamation','feverish anxiety','rash exclamation','connivance','held responsible','offer bail','liberated on bail','crestfallen','serve out his week in jail','at the rate he is going on','rapidly diminishing'])assert.ok(norm(english).includes(norm(phrase)),'missing phrase: '+phrase);
+assert.equal(story.terms.length,36);for(const term of story.terms)assert.ok(norm(english).includes(norm(term.term)),'term absent: '+term.term);
+assert.match(story.editorialStatus,/15 of 37/);vm.runInNewContext(read('editorial-art.js'),box,{filename:'editorial-art.js'});
+const art=box.window.StoryLensMakeEditorialArt([story]);assert.ok(decodeURIComponent(art[story.id+'_14']).includes('CALCUTTA COURT'));assert.notEqual(art[story.id+'_14'],art[story.id+'_13']);
+assert.ok(read('lingua-shell.js').includes("'calcutta-ledger':'Calcutta Ledger'"));assert.ok(read('data-backup.js').includes("val==='calcutta-ledger'"));assert.ok(read('lingua-shell.css').includes('body.theme-calcutta-ledger'));
+console.log('PASS Towle XV: '+words+' English words, 33 aligned bilingual passages, 36 contextual terms, offline courtroom SVG and Calcutta Ledger theme');
