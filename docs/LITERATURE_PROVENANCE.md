@@ -385,3 +385,12 @@ merely because its title is present in a roadmap.
 - **Artwork/theme:** original offline SVG of the Plum Creek railway attack; original **Plum Creek Signal** timetable/brass/signal-red theme. No third-party image or remote asset is bundled.
 - **Rights:** Standard Ebooks editorial contribution is CC0; the Towle text is treated as public domain in the USA. Territory-specific clearance remains NOT TESTED. Arabic translations require independent bilingual literary review; historical racial/colonial language is attributed to the narrator, not endorsed.
 - **Validation:** Chapter XXIX source/glossary/translation/art/theme tests and Chromium Arabic/English fixtures were added. CI run `40415287688` was still pending when this note was written.
+
+
+## Chapter XXX — In which Phileas Fogg simply does his duty
+
+- Upstream source: Standard Ebooks, Towle translation of Jules Verne's *Around the World in Eighty Days*: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/56c82e97ff5d4f8950afca05b71af72688a8da34/src/epub/text/chapter-30.xhtml
+- Pinned source commit: `56c82e97ff5d4f8950afca05b71af72688a8da34`; Git blob SHA-1: `d26e028ef931fea90caa1a625b91ca8f4310f244`.
+- The app's normalized English body is 67 paragraphs / 2,133 words; normalized-text SHA-256: `cc6571f506f550e03e3627476ae0c534bb9fc7cb8d179ed08809ba3e6c5575ef`. The Node acceptance test recomputes this digest.
+- The Standard Ebooks editorial edition is distributed under CC0 for its editorial contributions; the underlying book is generally public domain in the United States. This does **not** establish status in every territory; regional redistribution review remains open.
+- The 67 Arabic paragraphs are a separately authored companion draft, not upstream content. They require independent literary review before being described as publication-ready.
