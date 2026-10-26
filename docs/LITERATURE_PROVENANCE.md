@@ -1,3 +1,11 @@
+## 2026-10-26 — Chapter XXVII independent source fingerprint
+
+- Upstream: Standard Ebooks / George Makepeace Towle, `src/epub/text/chapter-27.xhtml`, source blob `2475c77964fd4cdaf1a83b3e60a6c905e89d66f7`, from repository commit `56c82e97ff5d4f8950afca05b71af72688a8da34`.
+- Compared the 25 body paragraphs against the packaged English array after removing XHTML inline markup and normalizing whitespace, non-breaking spaces and U+2060 word-joiners: **25/25 exact matches**.
+- Normalized English paragraph text: 1,952 words; SHA-256 `df283010b402b4c3f56d68e4cada2bb1265465ac2a9d3bfc034e7721ccbc9b0c`. A committed Node regression now pins this digest.
+- Arabic: 25 aligned draft translations and 38 source-occurring vocabulary entries; independent literary proofreading **NOT TESTED**.
+- Standard Ebooks describes the original English translation as believed public domain in the United States and its editorial contributions as CC0; territorial redistribution rights remain **NOT TESTED**. No third-party art or private assets are added.
+
 ## 2026-10-25 — Packaged draft Chapter IV: Departure from Charing Cross
 - English: complete 43 paragraphs / 942 words from George Makepeace Towle's 1873 translation, Standard Ebooks CC0 editorial transcription, source https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-4.xhtml .
 - Arabic: 43 newly drafted aligned paragraphs; independent bilingual editing **NOT TESTED**.
