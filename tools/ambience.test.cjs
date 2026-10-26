@@ -17,7 +17,8 @@ assert.ok(shell.includes("'velvet-theatre'"));
 assert.ok(backup.includes("tail==='audioPrefs'"));
 assert.ok(css.includes('body.theme-velvet-theatre'));
 assert.ok(!script.includes('getUserMedia')&&!script.includes('fetch('));
-let created=0,starts=0,stops=0;
+let created=0,starts=0,stops=0,nextTimer=0;
+const intervals=new Map();
 const listeners={},stored={};
 const node=()=>({connect(){return this},disconnect(){},start(){starts++},stop(){stops++},
  frequency:{value:0,setValueAtTime(){},exponentialRampToValueAtTime(){}},
@@ -33,13 +34,16 @@ class FakeAudioContext {
  async suspend(){this.state='suspended'}
 }
 const document={hidden:false,addEventListener(name,cb){listeners['doc:'+name]=cb},createElement(){}};
-const window={AudioContext:FakeAudioContext,addEventListener(name,cb){listeners['win:'+name]=cb}};
+const window={AudioContext:FakeAudioContext,addEventListener(name,cb){listeners['win:'+name]=cb},
+ setInterval(cb){const id=++nextTimer;intervals.set(id,cb);return id;},clearInterval(id){intervals.delete(id)}};
 const sandbox={window,document,Math,Number,Set,get:(k,def)=>stored[k]||def,put:(k,v)=>{stored[k]=v}};
 vm.runInNewContext(script,sandbox);
 const audio=window.LinguaAmbience;
 assert.equal(created,0,'silent cold start, no AudioContext');
 assert.equal(audio.isPlaying(),false);
-assert.equal(audio.SCENES.length,20);
+assert.equal(audio.SCENES.length,24,'20 original ambience scenes plus four original melodic presets');
+assert.equal(audio.SCENES.filter(s=>s.type==='music').length,4,'four presets must generate a real note sequence');
+assert.equal(audio.SCENES.filter(s=>s.type==='ambience').length,20,'all original ambience scenes remain available');
 assert.equal(new Set(audio.SCENES.map(s=>s.id)).size,20,'distinct preset identifiers');
 assert.ok(audio.SCENES.every(s=>s.en&&s.ar),'bilingual scene labels');
 assert.equal(audio.selectScene('evil'),false);
@@ -55,11 +59,18 @@ assert.equal(created,0,'no audio created by settings change');
  assert.ok(starts>=2,'loop and oscillator connected');
  assert.equal(await audio.play(),true);
  assert.equal(created,1,'reuse one context');
+ audio.selectScene('quiet-keys');
+ assert.equal(intervals.size,1,'melodic preset schedules one bounded timer');
+ const startsBeforeMelodyTick=starts;[...intervals.values()][0]();
+ assert.ok(starts>startsBeforeMelodyTick,'melody timer emits a note rather than only filtered noise');
+ audio.selectScene('rain');
+ assert.equal(intervals.size,0,'switching back to ambience clears the melody timer');
  for(const scene of audio.SCENES)assert.equal(audio.selectScene(scene.id),true);
  audio.selectScene('rain');
  assert.ok(stops>=20,'previous soundscape nodes stopped on each switch');
  await audio.pause();
  assert.equal(audio.isPlaying(),false);
+ assert.equal(intervals.size,0,'pause releases any melodic timer');
  assert.equal(await audio.play(),true);
  document.hidden=true;
  listeners['doc:visibilitychange']();
@@ -78,7 +89,7 @@ assert.equal(created,0,'no audio created by settings change');
  }
  const hiddenListeners={};
  const doc2={hidden:false,addEventListener(name,cb){hiddenListeners[name]=cb}};
- const win2={AudioContext:SlowAudioContext,addEventListener(){}};
+ const win2={AudioContext:SlowAudioContext,addEventListener(){},setInterval(cb){const id=++nextTimer;intervals.set(id,cb);return id;},clearInterval(id){intervals.delete(id)}};
  vm.runInNewContext(script,{window:win2,document:doc2,Math,Number,Set,get:()=>({}),put:()=>{}});
  const slow=win2.LinguaAmbience;
  const delayed=slow.play();
@@ -86,5 +97,5 @@ assert.equal(created,0,'no audio created by settings change');
  finishResume();
  assert.equal(await delayed,false,'no stale play after visibility pause');
  assert.equal(slow.isPlaying(),false,'no hidden soundscape graph');
- console.log('PASS LT-11: offline opt-in ambience, lifecycle, volume, scene switch, backup and Velvet Theatre source gates');
+ console.log('PASS LT-11: 20 offline ambience scenes + 4 original melodies; opt-in lifecycle, volume, switching, timer cleanup and backup gates');
 })().catch(e=>{console.error(e);process.exitCode=1});
