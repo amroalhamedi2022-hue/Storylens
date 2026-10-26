@@ -4,8 +4,8 @@ const assets=path.join(__dirname,'../app/src/main/assets'),read=n=>fs.readFileSy
 const fixtureBuilder=fs.readFileSync(path.join(__dirname,'make_browser_fixtures.py'),'utf8');
 assert.ok(fixtureBuilder.includes('tests["verne15"] = r"""'),'Chapter XV must have a dedicated reader fixture, not a fragile string-derived copy');
 assert.ok(fixtureBuilder.includes("errors.push('full novel progress missing')"),'Chapter XV fixture must report a missing full-novel progress label');
-assert.ok(fixtureBuilder.includes("errors.push('chapter-end label missing; current='")&&fixtureBuilder.includes('End of Chapter 15'),'Chapter XV is no longer the last bundled chapter; it must expose its normal chapter-end control.');
-assert.ok(fixtureBuilder.includes("check('Verne Chapter XV reader opens the new source'")&&fixtureBuilder.includes("includes('End of Chapter 15')"),'Full reader journey must reflect Chapter XVI being available after Chapter XV.');
+assert.ok(fixtureBuilder.includes("errors.push('chapter-end label missing; current='")&&fixtureBuilder.includes('نهاية الفصل 15'),'Chapter XV is no longer the last bundled chapter; it must expose its normal chapter-end control.');
+assert.ok(fixtureBuilder.includes("check('Verne Chapter XV reader opens the new source'")&&fixtureBuilder.includes("includes('نهاية الفصل 15')"),'Full reader journey must reflect Chapter XVI being available after Chapter XV.');
 assert.ok(fixtureBuilder.includes("errors.push('false ending label present')"),'Chapter XV fixture must report a false end-of-book label');
 assert.ok(html.indexOf('classic-verne-towle-ch14.js')<html.indexOf('classic-verne-towle-ch15.js'));
 assert.ok(html.indexOf('classic-verne-towle-ch15.js')<html.indexOf('editorial-art.js'));
