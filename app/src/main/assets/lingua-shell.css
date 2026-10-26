@@ -1751,3 +1751,73 @@ body.theme-victoria-harbour-dispatch::before,body.theme-victoria-harbour-dispatc
 .theme-victoria-harbour-dispatch .lt-theme-choice{border-radius:3px 14px 3px 14px;background:#f4efe3;color:#172d48;border:1px solid #d85e4b}
 @media(max-width:600px){.theme-victoria-harbour-dispatch .library .storylens-hero{grid-template-columns:minmax(0,1fr) 86px;padding:16px}.theme-victoria-harbour-dispatch .library .storylens-hero .hero-orb{width:78px;height:78px}}
 @media(prefers-reduced-motion:reduce){.theme-victoria-harbour-dispatch .library .card{transition:none!important;transform:none!important}}
+
+
+/* Red Sea Dispatch — copper convoy stamps, warm manifests and a narrow route rail. */
+.lt-theme-red-sea-dispatch .lt-theme-swatch{background:repeating-linear-gradient(135deg,#f2e5cf 0 9px,#b64f3d 9px 13px,#5c3540 13px 22px);border:1px solid #d3a66d}
+body.theme-red-sea-dispatch{--body:#3b2028;--card:#f3e6d1;--ink:#3b2730;--sub:#745c60;--accent:#c75d46;--reader:#fff9ed;--reader-ink:#33262b;color:#f8ead3;background:linear-gradient(90deg,#d8a56b16 0 1px,transparent 1px 38px),radial-gradient(ellipse at 78% 12%,#d46b4c32,transparent 30%),linear-gradient(145deg,#311d29,#65404a 58%,#2c1b28)}
+body.theme-red-sea-dispatch::before,body.theme-red-sea-dispatch::after{display:none!important}
+.theme-red-sea-dispatch .library .header{border-bottom:4px double #d3a66d;padding-bottom:16px}
+.theme-red-sea-dispatch .library .brand{color:#f4d29a;letter-spacing:.13em}
+.theme-red-sea-dispatch .library .storylens-hero{border:1px solid #d3a66d;border-radius:2px;background:linear-gradient(115deg,#f3e6d1 0 72%,#e2c7a6 72%);box-shadow:7px 7px 0 #241722;color:#3b2730}
+.theme-red-sea-dispatch .library .storylens-hero h2{font-family:Georgia,serif;color:#a74237}
+.theme-red-sea-dispatch .library .card{border:1px solid #c5a47b;border-radius:2px;box-shadow:4px 5px 0 #20151e66;animation:none}
+.theme-red-sea-dispatch .library .card h2{font-family:Georgia,serif;color:#73383b}
+.theme-red-sea-dispatch .library .secondary,.theme-red-sea-dispatch .library .pill{border-radius:2px;border-color:#b64f3d;background:#f3e6d1;color:#3b2730}
+.theme-red-sea-dispatch .reader{background:#fff9ed;color:#33262b;border-top:5px solid #c75d46}
+.theme-red-sea-dispatch .reader .reading-width{border-inline-start:4px double #c75d46;padding-inline-start:21px;background:linear-gradient(90deg,#c75d4610,transparent 50px)}
+.theme-red-sea-dispatch .lt-drawer{background:#35202c;color:#fff4df;border-inline-start:4px solid #d3a66d}
+.theme-red-sea-dispatch .lt-theme-choice{border-radius:2px;background:#f3e6d1;color:#3b2730;border:1px solid #b64f3d}
+@media(prefers-reduced-motion:reduce){.theme-red-sea-dispatch .library .card{transition:none!important;transform:none!important}}
+
+/* Monsoon Meridian — jade monsoon charts, silver rain lines and a gold compass route. */
+.lt-theme-monsoon-meridian .lt-theme-swatch{background:radial-gradient(circle at 72% 25%,#e6c879 0 7%,transparent 8%),repeating-linear-gradient(125deg,#123e43 0 12px,#5b9b91 12px 14px,#1d5756 14px 26px);border:1px solid #d6c27e}
+body.theme-monsoon-meridian{--body:#123b40;--card:#e5f0e7;--ink:#17383a;--sub:#557574;--accent:#bd9650;--reader:#f7fbf3;--reader-ink:#203b39;color:#eff8ec;background:repeating-linear-gradient(112deg,#d8eee20a 0 1px,transparent 1px 20px),radial-gradient(ellipse at 80% 8%,#78c6b52c,transparent 30%),linear-gradient(145deg,#0e3038,#205b5a 56%,#102f37)}
+body.theme-monsoon-meridian::before,body.theme-monsoon-meridian::after{display:none!important}
+.theme-monsoon-meridian .library .header{border-bottom:2px solid #d6c27e;padding-bottom:16px;position:relative}
+.theme-monsoon-meridian .library .header::after{content:'MONSOON MERIDIAN · ROUTE ATLAS';display:block;margin-top:8px;font:700 10px/1.5 ui-monospace,monospace;letter-spacing:.15em;color:#e7d394}
+.theme-monsoon-meridian .library .brand{color:#e7d394;letter-spacing:.12em}
+.theme-monsoon-meridian .library .storylens-hero{border:1px solid #d6c27e;border-radius:26px 4px 26px 4px;background:linear-gradient(118deg,#e5f0e7 0 68%,#c2ded5 68% 70%,#e5f0e7 70%);box-shadow:7px 7px 0 #09282d;color:#17383a}
+.theme-monsoon-meridian .library .storylens-hero h2{font-family:Georgia,serif;color:#24635d}
+.theme-monsoon-meridian .library .card{border:1px solid #8dbab0;border-radius:4px 18px 4px 18px;border-inline-start:4px solid #bd9650;box-shadow:4px 5px 0 #09282d55;animation:none}
+.theme-monsoon-meridian .library .card h2{font-family:Georgia,serif;color:#1d5b57}
+.theme-monsoon-meridian .library .secondary,.theme-monsoon-meridian .library .pill{border-radius:4px 14px 4px 14px;border-color:#bd9650;background:#e5f0e7;color:#17383a}
+.theme-monsoon-meridian .reader{background:#f7fbf3;color:#203b39;border-top:5px solid #bd9650}
+.theme-monsoon-meridian .reader .reading-width{border-inline-start:3px solid #438c82;padding-inline-start:22px;background:repeating-linear-gradient(0deg,transparent 0 30px,#438c820c 30px 31px)}
+.theme-monsoon-meridian .lt-drawer{background:#123b40;color:#eff8ec;border-inline-start:4px solid #d6c27e}
+.theme-monsoon-meridian .lt-theme-choice{border-radius:4px 14px 4px 14px;background:#e5f0e7;color:#17383a;border:1px solid #bd9650}
+@media(prefers-reduced-motion:reduce){.theme-monsoon-meridian .library .card{transition:none!important;transform:none!important}}
+
+/* Deccan Timetable — indigo rail-board typography, saffron route marks and ticket-square cards. */
+.lt-theme-deccan-timetable .lt-theme-swatch{background:repeating-linear-gradient(0deg,#f6e8c8 0 8px,#25355e 8px 10px,#e0a34b 10px 12px);border:1px solid #e0a34b}
+body.theme-deccan-timetable{--body:#202b4a;--card:#f6e8c8;--ink:#242e4b;--sub:#6e6b65;--accent:#c8793b;--reader:#fff8e9;--reader-ink:#2b3042;color:#f8e9c8;background:repeating-linear-gradient(90deg,#f6e8c80a 0 1px,transparent 1px 44px),linear-gradient(145deg,#1b2544,#38466b 56%,#1b2340)}
+body.theme-deccan-timetable::before,body.theme-deccan-timetable::after{display:none!important}
+.theme-deccan-timetable .library .header{border-bottom:3px double #e0a34b;padding-bottom:15px}
+.theme-deccan-timetable .library .brand{font:700 12px/1.4 ui-monospace,monospace;letter-spacing:.18em;color:#f3c56f}
+.theme-deccan-timetable .library .storylens-hero{border:2px solid #e0a34b;border-radius:2px;background:repeating-linear-gradient(0deg,#f6e8c8 0 29px,#e8d9b7 29px 30px);box-shadow:7px 7px 0 #111a32;color:#242e4b}
+.theme-deccan-timetable .library .storylens-hero h2{font-family:Georgia,serif;color:#8c4935}
+.theme-deccan-timetable .library .card{border:1px solid #d1b67d;border-radius:2px;box-shadow:4px 4px 0 #111a3255;animation:none}
+.theme-deccan-timetable .library .card h2{font-family:Georgia,serif;color:#263b68}
+.theme-deccan-timetable .library .secondary,.theme-deccan-timetable .library .pill{border-radius:2px;border-color:#c8793b;background:#f6e8c8;color:#242e4b}
+.theme-deccan-timetable .reader{background:#fff8e9;color:#2b3042;border-top:5px double #c8793b}
+.theme-deccan-timetable .reader .reading-width{border-inline-start:4px dashed #c8793b;padding-inline-start:21px;background:repeating-linear-gradient(0deg,transparent 0 31px,#25355e0a 31px 32px)}
+.theme-deccan-timetable .lt-drawer{background:#202b4a;color:#fff8e9;border-inline-start:4px solid #e0a34b}
+.theme-deccan-timetable .lt-theme-choice{border-radius:2px;background:#f6e8c8;color:#242e4b;border:1px solid #c8793b}
+@media(prefers-reduced-motion:reduce){.theme-deccan-timetable .library .card{transition:none!important;transform:none!important}}
+
+/* Kholby Crossing — forest canopy, field-notebook margins and sand-colored expedition cards. */
+.lt-theme-kholby-crossing .lt-theme-swatch{background:radial-gradient(ellipse at 26% 35%,#d5c28d 0 12%,transparent 13%),repeating-linear-gradient(135deg,#183f32 0 10px,#3c7556 10px 13px,#274b39 13px 25px);border:1px solid #d5c28d}
+body.theme-kholby-crossing{--body:#17392e;--card:#efe7d3;--ink:#20392e;--sub:#647466;--accent:#c19a53;--reader:#fbf7eb;--reader-ink:#283b30;color:#f5f0dc;background:radial-gradient(ellipse at 12% 12%,#63936a25,transparent 34%),repeating-linear-gradient(135deg,#dce8d008 0 2px,transparent 2px 23px),linear-gradient(145deg,#12352c,#2e5d43 60%,#102c27)}
+body.theme-kholby-crossing::before,body.theme-kholby-crossing::after{display:none!important}
+.theme-kholby-crossing .library .header{border-bottom:2px solid #c19a53;padding-bottom:16px}
+.theme-kholby-crossing .library .brand{color:#e1ca8c;letter-spacing:.1em}
+.theme-kholby-crossing .library .storylens-hero{border:1px solid #c19a53;border-radius:28px 5px 28px 5px;background:linear-gradient(120deg,#efe7d3 0 74%,#d8dfc4 74%);box-shadow:7px 7px 0 #0b2922;color:#20392e}
+.theme-kholby-crossing .library .storylens-hero h2{font-family:Georgia,serif;color:#315d43}
+.theme-kholby-crossing .library .card{border:1px solid #c8c39d;border-radius:5px 20px 5px 20px;border-inline-start:4px solid #c19a53;box-shadow:4px 5px 0 #0b292255;animation:none}
+.theme-kholby-crossing .library .card h2{font-family:Georgia,serif;color:#2d5b40}
+.theme-kholby-crossing .library .secondary,.theme-kholby-crossing .library .pill{border-radius:5px 14px 5px 14px;border-color:#c19a53;background:#efe7d3;color:#20392e}
+.theme-kholby-crossing .reader{background:#fbf7eb;color:#283b30;border-top:5px solid #c19a53}
+.theme-kholby-crossing .reader .reading-width{border-inline-start:4px solid #608a61;padding-inline-start:22px;background:linear-gradient(90deg,#608a610c,transparent 48px)}
+.theme-kholby-crossing .lt-drawer{background:#17392e;color:#f5f0dc;border-inline-start:4px solid #c19a53}
+.theme-kholby-crossing .lt-theme-choice{border-radius:5px 14px 5px 14px;background:#efe7d3;color:#20392e;border:1px solid #c19a53}
+@media(prefers-reduced-motion:reduce){.theme-kholby-crossing .library .card{transition:none!important;transform:none!important}}

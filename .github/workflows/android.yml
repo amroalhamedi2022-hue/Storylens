@@ -52,6 +52,7 @@ jobs:
           node tools/solar-atelier.test.cjs
           node tools/ink-workshop.test.cjs
           node tools/ambience.test.cjs
+          node tools/theme-catalog.test.cjs
           node tools/celestial-atlas.test.cjs
           node tools/circuit-notebook.test.cjs
           node tools/terracotta-gallery.test.cjs
