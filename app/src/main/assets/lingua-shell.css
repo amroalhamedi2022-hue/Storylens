@@ -1628,3 +1628,16 @@ body.theme-vindhya-passage::before,body.theme-vindhya-passage::after{display:non
 .theme-vindhya-passage .reader .reading-width{border-inline-start:3px double #a14f32;padding-inline-start:18px;background:linear-gradient(90deg,#a14f3208,transparent 40px)}
 .theme-vindhya-passage .lt-theme-choice{background:#f7f0dd;color:#28342b;border-radius:4px 14px 4px 14px}
 @media(prefers-reduced-motion:reduce){.theme-vindhya-passage .library .card{transition:none!important;transform:none!important}}
+
+
+/* LT-13 Dawn Escape: restrained indigo-to-amber dawn, high-contrast reading surface, no animated blur. */
+.lt-theme-dawn-escape .lt-theme-swatch{background:linear-gradient(135deg,#171c35 0 42%,#5c4255 42% 58%,#f2b66b 58% 72%,#f7e6c5 72%)}
+body.theme-dawn-escape{--body:#171c30;--card:#252a43;--ink:#f7ecd8;--sub:#c7bdc0;--accent:#f2b66b;--reader:#202238;--reader-ink:#fff2d8;color:var(--ink);background:linear-gradient(165deg,#171c35 0%,#30283d 48%,#6b4750 78%,#b67a5d 100%)}
+body.theme-dawn-escape::before,body.theme-dawn-escape::after{display:none!important}
+.theme-dawn-escape .library .header{border-bottom:1px solid #f2b66b;padding-bottom:16px}
+.theme-dawn-escape .library .brand{color:#ffe0a2;letter-spacing:.16em}
+.theme-dawn-escape .library .storylens-hero{border:1px solid #8e6a72;border-radius:28px 5px 28px 5px;background:linear-gradient(120deg,#252a43 0 63%,#4b3548 63% 76%,#f2b66b 76% 77%,#30283d 77%);box-shadow:0 12px 28px #090d1d55}
+.theme-dawn-escape .library .card{border:1px solid #655367;border-radius:18px 4px 18px 4px;box-shadow:0 8px 22px #090d1d45;animation:none}
+.theme-dawn-escape .reader{background:#202238;color:#fff2d8;border-color:#655367}
+.theme-dawn-escape .reader .arabic,.theme-dawn-escape .translation{color:#f2d9bd}
+@media(prefers-reduced-motion:reduce){.theme-dawn-escape .library .card{transition:none!important;transform:none!important}}

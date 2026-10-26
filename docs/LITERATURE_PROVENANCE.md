@@ -92,7 +92,7 @@ merely because its title is present in a roadmap.
 - Remaining: Pad 5 reading/performance, scene fidelity, editorial QA, any
   additional long-form content and signed final release.
 
-## Continuing research: remaining Chapters XIII–XXXVII of Around the World in Eighty Days
+## Continuing research: remaining Chapters XIV–XXXVII of Around the World in Eighty Days
 
 - Author: Jules Verne (1828–1905); original French novel published 1872.
 - Specific **English translation**: George Makepeace Towle (1841–1893),
@@ -215,3 +215,12 @@ merely because its title is present in a roadmap.
 - Added 28 source-occurring contextual entries, an original local SVG of the elephant route through the Vindhya forest, and the distinct **Vindhya Passage** theme. Theme selection and backup allowlist are updated; no remote images, fonts, audio, permissions or model files were added.
 - Standard Ebooks editorial transcription is CC0; Towle's 1873 English translation is public domain in the United States. Territory-specific redistribution review and independent Arabic literary proofreading remain **NOT TESTED**.
 - The chapter includes historical descriptions of sati and threatened coerced immolation; the Arabic draft preserves the plot context without presenting the practice as acceptable. Editorial sensitivity review remains **NOT TESTED**.
+
+
+## Towle Chapter XIII — Passepartout's rescue at Pillaji
+
+- English source: Standard Ebooks transcription of George Makepeace Towle's 1873 translation, Chapter XIII: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-13.xhtml
+- Bundled source text contains 48 narrative paragraphs (the bridgehead is used as the chapter title), 2,036 English words, and 48 aligned Arabic companion drafts. English text is normalized only for XHTML markup, nonbreaking spacing and invisible word-joiners; independent Arabic literary proofreading remains NOT TESTED.
+- Added 34 source-occurring contextual phrases, an original local SVG depicting the party's dawn escape without graphic violence, and the distinct **Dawn Escape** theme. Theme selection and backup validation are updated; no remote image, font, audio or model file was added.
+- The episode portrays coercion and threatened widow-burning as danger in the historical plot, not as endorsement. Historical-sensitivity review, territory-specific redistribution clearance and independent Arabic literary review remain NOT TESTED.
+- Standard Ebooks editorial work is CC0; Towle's 1873 English translation is public domain in the United States. Other-territory rights clearance remains NOT TESTED.
