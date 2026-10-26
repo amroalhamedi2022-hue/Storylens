@@ -863,3 +863,7 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS package inspection:** `assets/classic-verne-towle-ch19.js`, `assets/editorial-art.js`, and `assets/index.html` are present in the APK. This closes the prior source/CI/artifact uncertainty for Chapter XIX; it does not close device acceptance.
 - **Content scope:** 19 of 37 chapters bundled. The 71 Arabic passages are editorial drafts, not independently proofread literary translations. The 1873 Towle translation is public domain in the United States; territory-specific redistribution rights and independent Arabic review remain **NOT TESTED**.
 - **NOT TESTED:** Xiaomi Pad 5 installation, touch/edge-swipe and RTL/TalkBack, real frame pacing/RAM, literary proofreading, and final signed release. Chromium is not a device benchmark; Debug APK is not final. No main write or merge.
+
+### Chapter XIX Chromium visual inspection — 2026-10-26
+- Reviewed the actual Chapter XIX screenshots from [artifact 12645530424](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40311875239/artifacts/12645530424). The Victoria Harbour SVG is present, and the English/Arabic serial-progress labels render; the capture shows a visible focus rectangle around the chapter heading after scripted navigation.
+- Preserve keyboard/screen-reader focus visibility; **do not remove it merely to clean up the screenshot**. Review contrast and geometry on Xiaomi Pad 5 before deciding whether the outline should be refined. Chromium screenshot evidence is not device visual acceptance.
