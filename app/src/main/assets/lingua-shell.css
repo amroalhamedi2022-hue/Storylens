@@ -1693,3 +1693,22 @@ body.theme-rangoon-passage::before,body.theme-rangoon-passage::after{display:non
 .theme-rangoon-passage .lt-drawer{background:#123b42;color:#f6f0df;border-inline-start:4px solid #d7bd7d}
 .theme-rangoon-passage .lt-theme-choice{border-radius:18px 3px 18px 3px;background:#f3edda;color:#173c40;border:1px solid #b78a45}
 @media(prefers-reduced-motion:reduce){.theme-rangoon-passage .library .card{transition:none!important;transform:none!important}}
+
+
+/* Singapore Lantern — midnight port palette, amber route-light, vertical travel ledger. */
+.lt-theme-singapore-lantern .lt-theme-swatch{background:radial-gradient(circle at 72% 24%,#ffd28a 0 10%,#f5a04a 11% 15%,transparent 16%),linear-gradient(155deg,#17152e 0 42%,#633c58 42% 46%,#182b43 46%);border:1px solid #e7b66c}
+body.theme-singapore-lantern{--body:#17152e;--card:#f4e7d0;--ink:#2c243b;--sub:#746478;--accent:#bd5546;--reader:#fbf0d9;--reader-ink:#292238;color:#f9e8c7;background:radial-gradient(circle at 76% 12%,#f4a24d28,transparent 26%),linear-gradient(160deg,#15142d,#352844 58%,#101d34)}
+body.theme-singapore-lantern::before,body.theme-singapore-lantern::after{display:none!important}
+.theme-singapore-lantern .library .header{border-bottom:1px solid #e7b66c;padding-bottom:17px;position:relative}
+.theme-singapore-lantern .library .header::after{content:'SINGAPORE · LANTERN 17';display:block;margin-top:8px;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.2em;color:#ffc777}
+.theme-singapore-lantern .library .brand{color:#ffc777;letter-spacing:.18em}
+.theme-singapore-lantern .library .storylens-hero{border:1px solid #e7b66c;border-radius:5px 32px 5px 32px;background:radial-gradient(circle at 83% 25%,#ffc77755 0 8%,transparent 9%),linear-gradient(125deg,#f4e7d0 0 54%,#e6c6a0 54% 56%,#f4e7d0 56%);box-shadow:9px 9px 0 #0a102b;color:#292238}
+.theme-singapore-lantern .library .storylens-hero h2{font-family:Georgia,serif;color:#5d2c4e}
+.theme-singapore-lantern .library .card{border:1px solid #d9a95e;border-radius:5px 22px 5px 22px;border-inline-start:6px solid #bd5546;box-shadow:7px 7px 0 #0b1028;animation:none}
+.theme-singapore-lantern .library .card h2{font-family:Georgia,serif;color:#352744}
+.theme-singapore-lantern .library .secondary,.theme-singapore-lantern .library .pill{border-radius:4px 14px 4px 14px;border-color:#bd5546;background:#f4e7d0;color:#3d2946}
+.theme-singapore-lantern .reader{background:#fbf0d9;color:#292238;border-top:4px solid #bd5546}
+.theme-singapore-lantern .reader .reading-width{border-inline-start:5px solid #e7b66c;padding-inline:23px;background:linear-gradient(90deg,#f5a04a0d,transparent 44px)}
+.theme-singapore-lantern .lt-drawer{background:#201a37;color:#fbf0d9;border-inline-start:4px solid #e7b66c}
+.theme-singapore-lantern .lt-theme-choice{border-radius:4px 16px 4px 16px;background:#f4e7d0;color:#2c243b;border:1px solid #bd5546}
+@media(prefers-reduced-motion:reduce){.theme-singapore-lantern .library .card{transition:none!important;transform:none!important}}
