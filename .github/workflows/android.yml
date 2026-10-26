@@ -146,7 +146,7 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne18-en-phone.png" "file://$PWD/app/src/main/assets/qa-verne18-en.html" >/tmp/chrome-verne18-en.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne18-en.html" > /tmp/storylens-verne18-en-dom.html 2>/tmp/chrome-verne18-en-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne18-en-dom.html || { echo "Chapter XVIII English UI end-label failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne18-en-dom.html | head -1; exit 1; }
-          echo "PASS: Chapter XVIII incomplete-book label is correct in English UI"
+          echo "PASS: Chapter XVIII English UI keeps normal next-chapter navigation"
 
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne19-phone.png" "file://$PWD/app/src/main/assets/qa-verne19.html" >/tmp/chrome-verne19.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne19.html" > /tmp/storylens-verne19-dom.html 2>/tmp/chrome-verne19-dom.log
