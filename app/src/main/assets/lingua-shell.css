@@ -1880,3 +1880,23 @@ body.theme-yokohama-lantern::before,body.theme-yokohama-lantern::after{display:n
 .theme-yokohama-lantern .lt-theme-choice{border-radius:18px 4px 18px 4px;background:#263a3b;color:#f7edda;border:1px solid #d8a76b}
 @media(max-width:600px){.theme-yokohama-lantern .library .storylens-hero{grid-template-columns:minmax(0,1fr) 82px;padding:16px}.theme-yokohama-lantern .library .storylens-hero .hero-orb{width:74px;height:74px}}
 @media(prefers-reduced-motion:reduce){.theme-yokohama-lantern .library .card{transition:none!important;transform:none!important}}
+
+/* LT-13 batch XXIII — Paper Lantern Circus: indigo theatre, vermilion curtains,
+   perforated ticket geometry and warm paper stage. Distinct from port/storm themes. */
+.lt-theme-paper-lantern-circus .lt-theme-swatch{background:radial-gradient(circle at 50% 35%,#f0cf85 0 9%,#e65b4f 10% 23%,transparent 24%),linear-gradient(180deg,#171b3d 0 42%,#4a1f43 42% 65%,#e9bd68 65%);border:2px solid #efcf83}
+body.theme-paper-lantern-circus{--body:#171b3d;--card:#302449;--ink:#fff0d0;--sub:#d7bfc0;--accent:#e65b4f;--reader:#fff4dc;--reader-ink:#28213a;color:#fff0d0;background:radial-gradient(circle at 12% 5%,#e65b4f33,transparent 25%),repeating-linear-gradient(135deg,#efcf8309 0 2px,transparent 2px 24px),#171b3d}
+body.theme-paper-lantern-circus::before,body.theme-paper-lantern-circus::after{display:none!important}
+.theme-paper-lantern-circus .library .header{border-bottom:7px double #efcf83;padding-bottom:14px;position:relative}
+.theme-paper-lantern-circus .library .header::after{content:'PAPER LANTERN CIRCUS · XXIII';display:block;margin-top:10px;font:700 10px/1.5 ui-monospace,monospace;letter-spacing:.13em;color:#efcf83}
+.theme-paper-lantern-circus .library .brand{color:#fff0d0;letter-spacing:.06em}
+.theme-paper-lantern-circus .library .storylens-hero{border:3px solid #efcf83;border-radius:12px 42px 12px 42px;background:linear-gradient(145deg,#4a1f43 0 42%,#171b3d 42% 68%,#b9483f 68%);box-shadow:0 9px 0 #0c1028;color:#fff0d0}
+.theme-paper-lantern-circus .library .storylens-hero h2{font-family:Georgia,serif;color:#f6df9d}
+.theme-paper-lantern-circus .library .card{border:1px solid #efcf83;border-radius:8px 28px 8px 28px;border-inline-start:7px solid #e65b4f;background:linear-gradient(145deg,#302449,#211d3b);box-shadow:0 7px 0 #0c1028;color:#fff0d0;animation:none}
+.theme-paper-lantern-circus .library .card h2{font-family:Georgia,serif;color:#f6df9d}
+.theme-paper-lantern-circus .library .secondary,.theme-paper-lantern-circus .library .pill{border-radius:4px 16px 4px 16px;border:1px solid #efcf83;background:#302449;color:#fff0d0}
+.theme-paper-lantern-circus .reader{background:#fff4dc;color:#28213a;border-top:8px solid #e65b4f;box-shadow:0 10px 0 #0c1028}
+.theme-paper-lantern-circus .reader .reading-width{border-inline-start:5px solid #e9bd68;padding-inline-start:22px;background:repeating-linear-gradient(0deg,#e9bd680b 0 1px,transparent 1px 34px)}
+.theme-paper-lantern-circus .lt-drawer{background:#171b3d;color:#fff0d0;border-inline-start:5px solid #e65b4f}
+.theme-paper-lantern-circus .lt-theme-choice{border-radius:6px 20px 6px 20px;background:#302449;color:#fff0d0;border:1px solid #efcf83}
+@media(max-width:600px){.theme-paper-lantern-circus .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-paper-lantern-circus .library .storylens-hero .hero-orb{width:70px;height:70px}}
+@media(prefers-reduced-motion:reduce){.theme-paper-lantern-circus .library .card{transition:none!important;transform:none!important}}

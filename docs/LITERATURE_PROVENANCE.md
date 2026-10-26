@@ -308,3 +308,14 @@ merely because its title is present in a roadmap.
 - **Vocabulary:** 34 contextual entries; the Node regression checks every English surface phrase against the chapter body.
 - **Illustration/theme:** original offline SVG of Yokohama harbour, a Japanese junk and red lanterns; distinct **Yokohama Lantern** theme is registered in Settings and backup.
 - **Rights:** Standard Ebooks dedicates its editorial contribution to CC0 and the 1873 Towle translation is treated as public domain in the United States. Territory-specific redistribution clearance remains **NOT TESTED**.
+
+
+## Chapter XXIII — Passepartout’s long-nose circus escape
+
+- **Source:** Standard Ebooks editorial transcription of George Makepeace Towle’s 1873 English translation of Jules Verne, Chapter XXIII: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-23.xhtml
+- **Exact source blob SHA-1:** `0757ba736579c0474a2e8e55b4dd4262a78da966`.
+- **English:** 53 source-aligned body paragraphs, 1,933 tokenized words; source paragraph boundaries are preserved in the module.
+- **Arabic:** 53 aligned companion translation drafts. Independent literary proofreading remains **NOT TESTED**.
+- **Vocabulary:** 35 contextual entries; the regression checks every surface phrase against the English chapter body.
+- **Illustration/theme:** original offline SVG of the travelling circus’s paper-lantern stage and acrobatic pyramid; distinct **Paper Lantern Circus** theme registered in Settings, reduced-motion styling and backup allowlist.
+- **Rights:** Standard Ebooks dedicates its editorial contribution to CC0 and the underlying 1873 Towle translation is treated as public domain in the United States. Territory-specific redistribution clearance remains **NOT TESTED**.

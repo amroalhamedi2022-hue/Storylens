@@ -917,3 +917,11 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS — independent APK checksum:** 4,587,889 bytes; SHA-256 `dcba12d3545c5736b27d68d672d284c3d5d38f1bfec674c3f91e39d8b2253f6d`; [Debug APK artifact 12658901284](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40338750217/artifacts/12658901284).
 - **PASS — browser evidence:** [UI screenshot artifact 12658451869](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40338750217/artifacts/12658451869) includes `verne21-phone.png`, `verne21-en-phone.png`, `verne22-phone.png`, and `verne22-en-phone.png`. These are Chromium runner captures, not Xiaomi Pad 5 captures.
 - **NOT TESTED:** installation on Xiaomi Pad 5; real-device RTL/TalkBack/contrast; scroll/frame-time/RAM/thermal behavior; independent Arabic literary proofreading; territory-specific redistribution clearance. Chapter XXII is 22/37, not the full novel. No main write or PR merge; APK is Debug/test-only.
+
+
+## 2026-10-26 — Chapter XXIII + Paper Lantern Circus source checkpoint (CI pending)
+
+- **Purposeful build question:** does the complete source-transcribed Chapter XXIII (53 bilingual-aligned paragraphs, 1,933 English words), 35 source-bound lexical entries, new offline SVG, distinct selectable theme, backup allowlist and chapter navigation integrate into Android packaging and Arabic/English Chromium journeys? Source-only checks cannot prove asset packaging or browser rendering.
+- **Source:** Standard Ebooks CC0 editorial transcription, source blob SHA-1 `0757ba736579c0474a2e8e55b4dd4262a78da966`; Arabic is an editorial draft requiring independent literary review.
+- **Changes:** add Chapter XXIII to the production reader and APK asset gate; make Chapter XXII a navigable non-terminal chapter; add Arabic and English browser fixtures for Chapters XXII and XXIII; add **Paper Lantern Circus** to theme gallery/CSS/reduced-motion/backup contracts.
+- **Status at source checkpoint:** Node content regression, Android CI, Chromium browser evidence, APK and SHA-256 are **PENDING**. Xiaomi Pad 5 installation, real touch/RTL/TalkBack, frame pacing/RAM/thermal, Arabic proofreading and territory-specific redistribution clearance remain **NOT TESTED**. The book remains 23 of 37 chapters; Debug is not final. No main write/merge.

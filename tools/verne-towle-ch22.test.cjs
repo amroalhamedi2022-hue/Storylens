@@ -10,6 +10,8 @@ const file=read('classic-verne-towle-ch22.js');
 const html=read('index.html');
 assert.ok(html.includes('src="classic-verne-towle-ch21.js"'));
 assert.ok(html.includes('src="classic-verne-towle-ch22.js"'));
+assert.ok(html.includes('src="classic-verne-towle-ch23.js"'));
+assert.ok(html.indexOf('classic-verne-towle-ch22.js')<html.indexOf('classic-verne-towle-ch23.js'));
 assert.ok(html.indexOf('classic-verne-towle-ch21.js')<html.indexOf('classic-verne-towle-ch22.js'));
 assert.ok(html.indexOf('classic-verne-towle-ch22.js')<html.indexOf('editorial-art.js'));
 assert.ok(file.includes('1ae20fed64d05d867c7021cdfd1033a7fc71a879'),'exact upstream source blob is recorded');

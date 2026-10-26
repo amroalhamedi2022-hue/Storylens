@@ -309,8 +309,26 @@ function yokohamaLanternScene(){
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
 
+function paperLanternCircusScene(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="A Japanese travelling circus stage with paper lanterns, acrobats and a stacked human pyramid">'+
+ '<defs><linearGradient id="plc-backdrop" x2="0" y2="1"><stop stop-color="#171b3d"/><stop offset=".6" stop-color="#4a1f43"/><stop offset="1" stop-color="#b9483f"/></linearGradient><linearGradient id="plc-floor" x2="0" y2="1"><stop stop-color="#e9bd68"/><stop offset="1" stop-color="#7b2c3e"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#plc-backdrop)"/><path d="M0 0H1000V100Q820 170 670 95T330 95T0 105Z" fill="#b9483f" stroke="#efcf83" stroke-width="7"/>'+
+ '<path d="M0 110Q130 175 250 110T500 110T750 110T1000 110" fill="none" stroke="#efcf83" stroke-width="7"/>'+
+ '<g stroke="#f0cf85" stroke-width="4"><path d="M125 0V150M290 0V130M710 0V130M875 0V150"/></g>'+
+ '<g fill="#efcf85" stroke="#fff0bd" stroke-width="5"><path d="M88 145Q125 100 162 145L153 215H97Z" fill="#e65b4f"/><path d="M253 125Q290 80 327 125L318 195H262Z" fill="#e6a44e"/><path d="M673 125Q710 80 747 125L738 195H682Z" fill="#e65b4f"/><path d="M838 145Q875 100 912 145L903 215H847Z" fill="#e6a44e"/></g>'+
+ '<g fill="#f6df9d" opacity=".8"><circle cx="205" cy="75" r="5"/><circle cx="390" cy="55" r="4"/><circle cx="615" cy="65" r="5"/><circle cx="795" cy="70" r="4"/></g>'+
+ '<path d="M90 510L180 250H820L910 510Z" fill="#241a39" stroke="#e9bd68" stroke-width="8"/><path d="M155 500L245 300H755L845 500Z" fill="#2d2448" stroke="#c95a4d" stroke-width="7"/>'+
+ '<path d="M100 520H900L1000 620H0Z" fill="url(#plc-floor)"/>'+
+ '<g fill="#171b3d" stroke="#f0cf85" stroke-width="5"><circle cx="500" cy="285" r="27"/><path d="M476 314L524 314L544 365L456 365Z"/><path d="M458 330L415 295L400 310L455 355M542 330L585 295L600 310L545 355"/><circle cx="430" cy="375" r="22"/><path d="M410 397L450 397L465 438L395 438Z"/><circle cx="570" cy="375" r="22"/><path d="M550 397L590 397L605 438L535 438Z"/></g>'+
+ '<g stroke="#f0cf85" stroke-width="5" fill="none"><path d="M350 270Q500 170 650 270"/><path d="M350 270L390 310M650 270L610 310"/></g>'+
+ '<g fill="#efcf83"><path d="M368 300L380 332L347 322Z"/><path d="M632 300L620 332L653 322Z"/><path d="M470 435L500 485L530 435Z"/></g>'+
+ '<rect x="25" y="25" width="950" height="570" rx="18" fill="none" stroke="#efcf83" stroke-width="3" stroke-dasharray="12 10"/>'+
+ '<text x="500" y="578" text-anchor="middle" font-family="Georgia,serif" font-size="28" letter-spacing="4" fill="#fff0bd">PAPER LANTERN CIRCUS · XXIII</text></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():chapter===19?shanghaiWindLedgerScene():chapter===20?typhoonSignalScene():chapter===21?yokohamaLanternScene():charingCrossDeparture();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():chapter===19?shanghaiWindLedgerScene():chapter===20?typhoonSignalScene():chapter===21?yokohamaLanternScene():chapter===22?paperLanternCircusScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
