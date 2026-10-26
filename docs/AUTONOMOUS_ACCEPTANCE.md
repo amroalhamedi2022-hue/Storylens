@@ -941,3 +941,12 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS — browser evidence:** [screenshot artifact 12665236971](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40354034944/artifacts/12665236971) contains Arabic and English Chromium captures for Chapters XXII, XXIII and XXIV. These are runner screenshots, not Xiaomi Pad 5 captures.
 - **Superseded FAILs:** intermediate runs 40350035414, 40351674534, 40352167103, 40352877527 and 40353277996 exposed stale chapter-progress / locale / navigation assertions while the new chapter and localized label were integrated. The fixtures and production label were corrected; the final source SHA above passes the complete workflow.
 - **NOT TESTED:** Xiaomi Pad 5 installation/upgrade, real touch/RTL/TalkBack/contrast, frame pacing/RAM/thermal, independent Arabic proofreading and territory-specific redistribution clearance. Chapter XXIV is 24/37, not the complete novel.
+
+
+## 2026-10-26 — Chapter XXV + Civic Panorama (integration gate pending)
+
+- **Purposeful build question:** does the complete Standard Ebooks/Towle Chapter XXV (50 source-derived English paragraphs, 2011 words), 50 aligned Arabic draft passages, 38 source-bound lexical entries, new offline SVG, distinct selectable theme/backup contract, script order and bilingual reader fixtures integrate into Android packaging and Chromium? Source-only checks cannot prove browser rendering or packaged asset presence.
+- **Source:** Standard Ebooks CC0 editorial transcription, Chapter XXV source blob `dd5e34efeaffca11b3b6aa3e9ef32a5f75639a0f`; the underlying 1873 Towle translation is treated as public domain in the United States. Arabic remains a draft; independent literary review and territory-specific rights clearance are separate gates.
+- **Changes:** Chapter XXIV becomes a normal navigable chapter; Chapter XXV is the honest current endpoint (25/37); Arabic/English Chromium fixtures check progress, mixed-script direction isolation, previous/next behavior and incomplete-book messaging.
+- **PENDING CI:** new Node source regression, Gradle build, APK asset inspection and Chapter XXIV–XXV Chromium journeys are wired into the existing workflow. Do not claim a passing APK until this run completes.
+- **NOT TESTED:** Xiaomi Pad 5 installation/upgrade, real touch/RTL/TalkBack/contrast, frame pacing/RAM/thermal, independent Arabic proofreading and territory-specific redistribution clearance. Debug only; no main write or merge.

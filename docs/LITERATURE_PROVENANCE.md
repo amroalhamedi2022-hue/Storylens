@@ -330,3 +330,12 @@ merely because its title is present in a roadmap.
 - Source, bilingual alignment, word count, glossary occurrences, art uniqueness and theme registration are covered by tools/verne-towle-ch24.test.cjs. Arabic literary review and rights clearance remain NOT TESTED until independently reviewed.
 - **Independent source comparison (2026-10-26):** all 36/36 narrative paragraphs match the upstream XHTML after markup/entity/whitespace normalization.
 - Chapter XXIV is 24 of 37; the novel remains incomplete. Device reading/performance/accessibility checks remain NOT TESTED.
+
+
+## 2026-10-26 — Towle Chapter XXV: San Francisco civic gathering
+
+- **Source:** Standard Ebooks editorial transcription of George Makepeace Towle's 1873 English translation of Jules Verne, Chapter XXV: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-25.xhtml
+- **Upstream Git blob SHA-1:** dd5e34efeaffca11b3b6aa3e9ef32a5f75639a0f; 50 narrative paragraphs and 2011 English words after XHTML markup/entity/whitespace normalization. Standard Ebooks' editorial transcription is CC0; the underlying 1873 translation is treated as public domain in the United States. Territory-specific redistribution rights remain a separate review gate.
+- Added 50 aligned Arabic companion translation drafts, 38 source-occurring lexical/idiom entries, an original offline SVG of San Francisco's nineteenth-century waterfront and civic platform, and the distinct **Civic Panorama** theme with Settings/gallery/reduced-motion/backup registration.
+- `tools/verne-towle-ch25.test.cjs` checks paragraph alignment, source word count, glossary occurrences, source provenance, chapter order, art uniqueness and theme registration. English body paragraphs are extracted directly from upstream XHTML after markup/entity normalization; independent Arabic literary proofreading remains **NOT TESTED**.
+- Chapter XXV is 25 of 37; the novel remains incomplete. Device reading/performance/accessibility and territory-specific redistribution clearance remain **NOT TESTED**.

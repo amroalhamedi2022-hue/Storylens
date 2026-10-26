@@ -1916,3 +1916,23 @@ body.theme-pacific-meridian::before,body.theme-pacific-meridian::after{display:n
 .theme-pacific-meridian .reader{border-top:4px solid #a95f42;box-shadow:inset 0 0 0 1px #d5bd91}
 @media(max-width:600px){.theme-pacific-meridian .library .storylens-hero{grid-template-columns:minmax(0,1fr) 82px;padding:16px}.theme-pacific-meridian .library .storylens-hero .hero-orb{width:76px;height:76px}}
 @media(prefers-reduced-motion:reduce){.theme-pacific-meridian .library .card{transition:none!important;transform:none!important}}
+
+
+/* LT-13 batch XXV — Civic Panorama: civic broadsheet, navy ink and vermilion election flags. */
+.lt-theme-civic-panorama .lt-theme-swatch{background:linear-gradient(135deg,#f5e9d1 0 24%,#b6473d 24% 31%,#1d3047 31% 68%,#d9b46a 68%);border:2px solid #1d3047}
+body.theme-civic-panorama{--body:#e1d0b0;--card:#fff7e6;--ink:#1d3047;--sub:#596b76;--accent:#b6473d;--reader:#fffaf0;--reader-ink:#1d3047;color:var(--ink);background:repeating-linear-gradient(0deg,#d1bd9a 0 1px,#e8dbc2 1px 31px),linear-gradient(135deg,#e8dbc2,#d6c29f)}
+body.theme-civic-panorama::before,body.theme-civic-panorama::after{display:none!important}
+.theme-civic-panorama .library .header{border-bottom:4px double #1d3047;background:linear-gradient(90deg,#f7ebd2,#e0caa4);padding-bottom:13px}
+.theme-civic-panorama .library .brand{color:#b6473d;letter-spacing:.13em;text-transform:uppercase}
+.theme-civic-panorama .library .header h1{font-family:Georgia,serif;font-weight:700;color:#1d3047}
+.theme-civic-panorama .library .storylens-hero{display:grid;grid-template-columns:minmax(0,1fr) 148px;align-items:center;border:2px solid #1d3047;border-radius:2px;background:linear-gradient(135deg,#fff7e6 0 70%,#e4d0aa 70%);box-shadow:7px 7px 0 #1d30471c;color:#1d3047;min-height:190px;padding:23px 26px}
+.theme-civic-panorama .library .storylens-hero h2{font-family:Georgia,serif;color:#b6473d}
+.theme-civic-panorama .library .storylens-hero .hero-orb{position:relative;inset:auto;transform:none;width:132px;height:132px;border-radius:2px;opacity:1;border:5px double #1d3047;background:linear-gradient(160deg,#b6473d 0 18%,#f5e9d1 18% 38%,#1d3047 38% 66%,#d9b46a 66%);box-shadow:inset 0 0 0 7px #fff7e6}
+.theme-civic-panorama .library .storylens-hero .hero-orb-core{display:none}
+.theme-civic-panorama .library .card{border-radius:2px;border:1px solid #8b9da0;border-inline-start:5px solid #b6473d;box-shadow:3px 4px 0 #1d304714;background:#fff7e6}
+.theme-civic-panorama .library .card h3{font-family:Georgia,serif;color:#1d3047}
+.theme-civic-panorama .library .secondary,.theme-civic-panorama .library .pill{border-radius:2px;border:1px solid #1d3047;background:#1d3047;color:#fff7e6}
+.theme-civic-panorama .reader{border:2px solid #1d3047;border-top:7px solid #b6473d;box-shadow:5px 5px 0 #1d304714}
+.theme-civic-panorama .reader .reading-width{border-inline-start:4px solid #d9b46a;padding-inline-start:20px;background:repeating-linear-gradient(0deg,#1d304708 0 1px,transparent 1px 33px)}
+@media(max-width:600px){.theme-civic-panorama .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-civic-panorama .library .storylens-hero .hero-orb{width:70px;height:70px}}
+@media(prefers-reduced-motion:reduce){.theme-civic-panorama .library .card{transition:none!important,transform:none!important}}

@@ -138,3 +138,10 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - **PASS — independently recomputed APK SHA-256:** Debug APK is 4,621,341 bytes; SHA-256 `2b6ef7d0b8b323c56f0fca372fb5cf3f6abc7f787cfed22288d8566469771dcb`, matching `APK_SHA256.txt`. [APK artifact 12664738273](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40354034944/artifacts/12664738273). [Chromium screenshot artifact 12665236971](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40354034944/artifacts/12665236971) includes Arabic/English captures for Chapters XXII–XXIV.
 - **Historical FAILs, superseded by this passing run:** intermediate runs exposed stale progress expectations and English-only expectations in Arabic fixtures; the production label, explicit locale setup, bidi checks and E2E assertions were corrected. Do not count those intermediate failures as acceptance; run 40354034944 is the verified result for this source SHA.
 - **NOT TESTED:** installation/upgrade and actual touch/RTL/TalkBack/contrast on Xiaomi Pad 5; device frame pacing/RAM/thermal; independent Arabic literary proofreading; territory-specific redistribution clearance. Chromium captures are not device captures. The novel is still incomplete at 24/37; LT-01..LT-13 and LT-13 device acceptance remain **IN PROGRESS**. Debug is not final.
+
+
+## 2026-10-26 — Chapter XXV continuation batch
+
+- Added the complete Standard Ebooks/Towle Chapter XXV source text for San Francisco (50 aligned passages; 2011 English words), 50 Arabic translation drafts, 38 source-bound lexical entries, original offline civic-waterfront SVG, and **Civic Panorama** as a visually distinct selectable theme.
+- Chapter XXIV now navigates forward; Chapter XXV is marked 25/37, not as the end of the novel. Arabic/English browser fixtures verify reader progress and mixed-direction labels.
+- Purposeful CI/build is required for asset packaging and browser integration. Xiaomi Pad 5 runtime, accessibility, performance, independent Arabic proofreading and territory-specific rights remain open acceptance gates.
