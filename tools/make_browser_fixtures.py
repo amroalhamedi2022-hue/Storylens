@@ -59,14 +59,14 @@ tests={
  try{openStory('around-the-world-in-eighty-days-towle');stlChapter(13)}catch(e){errors.push('Verne Chapter XIV open: '+e.message)}
  check('Verne Chapter XIV reader opens the new source',()=>state.page==='reader'&&state.chapter===13&&!!document.querySelector('.reader')&&document.querySelector('.reader').textContent.includes('Calcutta'));
  try{openStory('around-the-world-in-eighty-days-towle');stlChapter(14)}catch(e){errors.push('Verne Chapter XV open: '+e.message)}
- check('Verne Chapter XV reader opens the new source',()=>state.page==='reader'&&state.chapter===14&&!!document.querySelector('.reader')&&document.querySelector('.reader').textContent.includes('Judge Obadiah'));
+ check('Verne Chapter XV reader opens the new source',()=>state.page==='reader'&&state.chapter===14&&!!document.querySelector('.reader')&&document.querySelector('.reader').textContent.includes('Judge Obadiah')&&document.querySelector('.reader').textContent.includes('15 of 37')&&document.querySelector('.reader').textContent.includes('End of available chapters')&&!document.querySelector('.reader').textContent.includes('The End'));
  document.body.setAttribute('data-storylens-qa',errors.length?'FAIL':'PASS');
  document.body.setAttribute('data-storylens-qa-count',String(passes.length));
  document.body.setAttribute('data-storylens-qa-errors',errors.join(' | '));
 })();
 """
 }
-tests["verne15"] = tests["verne14"].replace("stlChapter(13)", "stlChapter(14)").replace("state.chapter===13", "state.chapter===14").replace("includes('Calcutta')", "includes('Judge Obadiah')").replace("verne14", "verne15")
+tests["verne15"] = tests["verne14"].replace("stlChapter(13)", "stlChapter(14)").replace("state.chapter===13", "state.chapter===14").replace("includes('Calcutta')", "includes('Judge Obadiah')").replace("includes('Judge Obadiah')", "includes('Judge Obadiah')&&reader.textContent.includes('15 of 37')&&reader.textContent.includes('End of available chapters')&&!reader.textContent.includes('The End')").replace("verne14", "verne15")
 for name,script in tests.items():
  result=source.replace("</body>","<script>\n"+script+"\n</script>\n</body>")
  target=assets/("qa-"+name+".html")

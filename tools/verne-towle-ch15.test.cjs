@@ -3,6 +3,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const assets=path.join(__dirname,'../app/src/main/assets'),read=n=>fs.readFileSync(path.join(assets,n),'utf8'),html=read('index.html');
 assert.ok(html.indexOf('classic-verne-towle-ch14.js')<html.indexOf('classic-verne-towle-ch15.js'));
 assert.ok(html.indexOf('classic-verne-towle-ch15.js')<html.indexOf('editorial-art.js'));
+assert.ok(html.includes('story.totalChapters||story.chapters.length'));
+assert.ok(html.includes("'End of available chapters'"));
 const story={id:'around-the-world-in-eighty-days-towle',genre:'historical',chapters:Array.from({length:14},()=>({})),terms:[],totalChapters:37,provenance:''},box={window:{StoryLensEditorialStories:[story]}};
 vm.runInNewContext(read('classic-verne-towle-ch15.js'),box,{filename:'classic-verne-towle-ch15.js'});
 const ch=story.chapters[14],english=ch.paragraphs.map(p=>p.en).join(' '),norm=s=>s.toLowerCase().replace(/\u2060/g,'').replace(/[^a-z0-9]+/g,' ').replace(/\s+/g,' ').trim();
