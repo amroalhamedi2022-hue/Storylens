@@ -145,3 +145,11 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - Added the complete Standard Ebooks/Towle Chapter XXV source text for San Francisco (50 aligned passages; 2011 English words), 50 Arabic translation drafts, 38 source-bound lexical entries, original offline civic-waterfront SVG, and **Civic Panorama** as a visually distinct selectable theme.
 - Chapter XXIV now navigates forward; Chapter XXV is marked 25/37, not as the end of the novel. Arabic/English browser fixtures verify reader progress and mixed-direction labels.
 - Purposeful CI/build is required for asset packaging and browser integration. Xiaomi Pad 5 runtime, accessibility, performance, independent Arabic proofreading and territory-specific rights remain open acceptance gates.
+
+
+### 2026-10-26 — Chapter XXV integration verified
+
+- **PASS:** [Android CI run 40363830394](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40363830394) on `aeec188d7401ea3781d92ad313a0b7791b2f7806`; Node/content tests, Gradle build, asset packaging and Arabic/English Chromium Chapter XXIV–XXV journeys passed.
+- **PASS:** independently verified Debug APK `6754bae4af6f9284b1336e47e0795899c1c5b5cd8cf92482b14e6c2efdc3c1b1` (4,638,069 bytes), artifact 12669048661.
+- **PASS:** all 50/50 English Chapter XXV paragraphs match the recorded Standard Ebooks XHTML after normalization; 2,011 words, 50 aligned Arabic draft passages and 38 source-occurring terms.
+- **NOT TESTED:** Xiaomi Pad 5 runtime/accessibility/performance, independent Arabic proofreading and territory-specific redistribution clearance. Continue to Chapter XXVI; 25/37 chapters are bundled.
