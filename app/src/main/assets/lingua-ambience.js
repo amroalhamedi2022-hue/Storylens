@@ -49,8 +49,13 @@ let playbackGeneration=0; // invalidates an in-flight AudioContext.resume after 
 function persist(){if(typeof put==='function')put(KEY,{...prefs});}
 function stopNodes(){
  if(melodyTimer!==null){global.clearInterval(melodyTimer);melodyTimer=null;}
- for(const node of [noiseSource,drone,...melodyNodes]){
+ for(const node of [noiseSource,drone]){
   if(node){try{node.stop();}catch(_){}try{node.disconnect();}catch(_){}}
+ }
+ for(const voice of melodyNodes){
+  try{voice.osc.stop();}catch(_){}
+  try{voice.osc.disconnect();}catch(_){}
+  try{voice.gain.disconnect();}catch(_){}
  }
  melodyNodes.clear();melodyStep=0;
  noiseSource=null;drone=null;
@@ -63,23 +68,23 @@ function playMelodyNote(ctx,spec){
  if(!notes.length)return;
  const frequency=notes[melodyStep%notes.length],now=ctx.currentTime;
  melodyStep++;
- const osc=ctx.createOscillator(),gain=ctx.createGain();
+ const osc=ctx.createOscillator(),gain=ctx.createGain(),voice={osc,gain};
  osc.type='sine';osc.frequency.setValueAtTime(frequency,now);
  gain.gain.setValueAtTime(0.0001,now);
  gain.gain.exponentialRampToValueAtTime(0.032,now+0.055);
  gain.gain.exponentialRampToValueAtTime(0.0001,now+0.98);
- osc.connect(gain);gain.connect(master);melodyNodes.add(osc);
- osc.onended=()=>{melodyNodes.delete(osc);try{osc.disconnect();gain.disconnect();}catch(_){}};
+ osc.connect(gain);gain.connect(master);melodyNodes.add(voice);
+ osc.onended=()=>{melodyNodes.delete(voice);try{osc.disconnect();gain.disconnect();}catch(_){}};
  osc.start(now);osc.stop(now+1);
  // A quiet fifth on alternate beats gives the original motif a soft harmonic bed.
  if(melodyStep%2===0){
-  const harmony=ctx.createOscillator(),hGain=ctx.createGain();
+  const harmony=ctx.createOscillator(),hGain=ctx.createGain(),harmonicVoice={osc:harmony,gain:hGain};
   harmony.type='triangle';harmony.frequency.setValueAtTime(frequency*1.5,now);
   hGain.gain.setValueAtTime(0.0001,now);
   hGain.gain.exponentialRampToValueAtTime(0.009,now+0.08);
   hGain.gain.exponentialRampToValueAtTime(0.0001,now+1.18);
-  harmony.connect(hGain);hGain.connect(master);melodyNodes.add(harmony);
-  harmony.onended=()=>{melodyNodes.delete(harmony);try{harmony.disconnect();hGain.disconnect();}catch(_){}};
+  harmony.connect(hGain);hGain.connect(master);melodyNodes.add(harmonicVoice);
+  harmony.onended=()=>{melodyNodes.delete(harmonicVoice);try{harmony.disconnect();hGain.disconnect();}catch(_){}};
   harmony.start(now);harmony.stop(now+1.2);
  }
 }
