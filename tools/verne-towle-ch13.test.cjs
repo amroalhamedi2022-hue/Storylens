@@ -11,6 +11,8 @@ const ch=story.chapters[12],english=ch.paragraphs.map(p=>p.en).join(' '),norm=s=
 assert.equal(story.chapters.length,13);
 assert.equal(ch.paragraphs.length,48);
 assert.ok(ch.paragraphs.every(p=>p.en.trim()&&p.ar.trim()));
+assert.ok(ch.paragraphs.every(p=>!p.ar.includes('الفقراوات')),'historical fakir term should not be mistranslated as poor women');
+assert.ok(ch.paragraphs.some(p=>p.ar.includes('المتنسكون')),'Arabic companion draft should name the ascetics clearly');
 const words=(english.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.ok(words>2000,'Chapter XIII too short: '+words);
 for(const phrase of ['bold one','enthusiastic ally','icy exterior','wealthy Bombay merchant','against her will','funeral pyre','make a reconnaissance','naked sabres','roundabout way','common prudence','without betraying any emotion','at the last moment','struck him like a flash','suppleness of a serpent','hour of the sacrifice','prostrated themselves','ghostly appearance','happy audacity','apprised them','beyond the reach of the bullets and arrows'])assert.ok(norm(english).includes(norm(phrase)),'missing source phrase: '+phrase);
