@@ -368,3 +368,10 @@ merely because its title is present in a roadmap.
 - Theme: **Salt Lake Dispatch**, a distinct salt-paper/indigo/copper visual composition, registered in Settings and the backup allowlist.
 - Arabic translation is a draft and requires independent bilingual literary review. Period-specific religious/social claims remain attributed to the novel's narrator and are not endorsed as current factual statements.
 - Status at source checkpoint: 27 of 37 chapters packaged; Android CI, independent APK checksum and real-device acceptance must be recorded separately.
+
+## 2026-10-26 — Towle Chapter XXVIII
+
+- **Source edition:** Standard Ebooks, George Makepeace Towle translation of Jules Verne, `src/epub/text/chapter-28.xhtml`, upstream commit `56c82e97ff5d4f8950afca05b71af72688a8da34`, blob SHA-1 `4e233a81707c90e3c70ae89cc66309049a012bee`.
+- **Source URL:** https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/56c82e97ff5d4f8950afca05b71af72688a8da34/src/epub/text/chapter-28.xhtml
+- **Editorial scope:** full English paragraph transcription normalized only for XHTML markup/entities/whitespace; 75 aligned Arabic draft translations and 40 source-bound glossary terms. The Arabic is not independently proofread and must not be represented as a reviewed literary translation.
+- **Rights:** the 1873 Towle text is treated as public domain in the United States; the Standard Ebooks editorial transcription is CC0. This is not blanket legal clearance for every territory or any external illustration. Territory-specific review remains NOT TESTED. All chapter artwork added for this batch is generated as an original local SVG and requires no remote request.
