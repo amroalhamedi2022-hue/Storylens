@@ -170,3 +170,11 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - Added an original offline SVG of the train beside the Great Salt Lake and a visually distinct **Salt Lake Dispatch** theme with Settings-gallery, persistence and backup-whitelist wiring.
 - Updated chapter order, truthful progress, Arabic/English Chromium fixtures and required APK asset/test gates. The build is purposeful because source-only checks cannot prove Android packaging or reader rendering.
 - Arabic independent proofreading, territory-specific redistribution rights, Xiaomi Pad 5 interaction/accessibility/performance and final signing remain separate acceptance gates.
+
+
+## Progress update — 2026-10-27 (LT-07 / LT-08 / LT-13 batch)
+
+- The public-domain Towle sequence now has **29 of 37 chapters** packaged, including Chapter XXIX with full English source, aligned Arabic draft, 42 contextual glossary surfaces, a local SVG scene and the distinct Plum Creek Signal theme.
+- Chapter navigation and the available-content boundary are updated; new Node and Chromium acceptance checks are wired into CI.
+- This does not close LT-07/LT-08: eight chapters remain, the Arabic draft needs independent review, and territory-specific rights checks remain open.
+- LT-13 remains open until the complete visual system and performance/accessibility are independently checked on Xiaomi Pad 5. Microphone/TTS remain excluded.

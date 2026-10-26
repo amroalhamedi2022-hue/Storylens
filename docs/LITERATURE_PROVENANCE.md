@@ -375,3 +375,13 @@ merely because its title is present in a roadmap.
 - **Source URL:** https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/56c82e97ff5d4f8950afca05b71af72688a8da34/src/epub/text/chapter-28.xhtml
 - **Editorial scope:** full English paragraph transcription normalized only for XHTML markup/entities/whitespace; 75 aligned Arabic draft translations and 40 source-bound glossary terms. The Arabic is not independently proofread and must not be represented as a reviewed literary translation.
 - **Rights:** the 1873 Towle text is treated as public domain in the United States; the Standard Ebooks editorial transcription is CC0. This is not blanket legal clearance for every territory or any external illustration. Territory-specific review remains NOT TESTED. All chapter artwork added for this batch is generated as an original local SVG and requires no remote request.
+
+
+## 2026-10-27 — Towle Chapter XXIX
+
+- **Asset:** `app/src/main/assets/classic-verne-towle-ch29.js`; 68 normalized English paragraphs / 2,126 words, 68 Arabic draft translations and 42 source-occurring glossary surfaces.
+- **Source:** Standard Ebooks, George Makepeace Towle translation, `src/epub/text/chapter-29.xhtml`; upstream commit `56c82e97ff5d4f8950afca05b71af72688a8da34`; source blob SHA-1 `603fa34982062a3dbc86a79370980cad4df9d263`.
+- **Normalized English SHA-256:** `0e182c64f274d7afb3e502c40a887509103b409f5f84c6d4329300cbcaceb70c`.
+- **Artwork/theme:** original offline SVG of the Plum Creek railway attack; original **Plum Creek Signal** timetable/brass/signal-red theme. No third-party image or remote asset is bundled.
+- **Rights:** Standard Ebooks editorial contribution is CC0; the Towle text is treated as public domain in the USA. Territory-specific clearance remains NOT TESTED. Arabic translations require independent bilingual literary review; historical racial/colonial language is attributed to the narrator, not endorsed.
+- **Validation:** Chapter XXIX source/glossary/translation/art/theme tests and Chromium Arabic/English fixtures were added. CI run `40415287688` was still pending when this note was written.

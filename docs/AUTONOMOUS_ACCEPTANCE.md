@@ -1014,3 +1014,17 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **CI/APK for the latest functional head:** NOT VERIFIED in the available workflow-status lookup. Do not reuse the Chapter XXVII APK as evidence for this audio change.
 - **Honest scope:** these four are original synthesized melodies, not licensed recordings. The app now offers a broader local music/ambience experience, but a separately curated licensed recording catalog and on-device acoustic/audio-focus validation remain open.
 - **NOT TESTED:** Xiaomi Pad 5 audio focus/background lifecycle, audible quality, power use, real frame pacing, and full LT-01..LT-13 final acceptance. No microphone/TTS/network/audio permission was added.
+
+
+## 2026-10-27 — Towle Chapter XXIX + Plum Creek Signal (functional batch)
+
+- Source: Standard Ebooks Towle edition, pinned commit `56c82e97ff5d4f8950afca05b71af72688a8da34`, chapter source blob `603fa34982062a3dbc86a79370980cad4df9d263`.
+- Added `app/src/main/assets/classic-verne-towle-ch29.js`: 68 source-aligned English paragraphs, 2,126 normalized words, 68 aligned Arabic translation drafts, and 42 glossary entries whose surfaces are checked against the chapter.
+- Normalized English paragraph SHA-256: `0e182c64f274d7afb3e502c40a887509103b409f5f84c6d4329300cbcaceb70c`.
+- Added a locally generated SVG scene for Plum Creek and a distinct **Plum Creek Signal** theme. The theme is registered in the picker, its offline CSS, and the backup allowlist.
+- Updated chapter navigation so Chapter XXVIII leads to XXIX, while Chapter XXIX honestly marks the current available-content boundary (29/37).
+- Added source hash, glossary, theme/art, navigation and bilingual browser fixtures; workflow now runs Chapter XXIX Chromium checks and packages the updated debug APK.
+- **Source/static checks:** implementation committed as `87de7e297bfb4fa61818e3fb642dfef45ab8cb44`; audio preset assertion fix `0d55ca77773ab64ae1b50b8cfd2ef77c18b8dec0`.
+- **CI:** latest run `40415287688` is queued/in progress at documentation time. Do not claim PASS until the run finishes.
+- **Rights:** Standard Ebooks editorial contribution is CC0; the Towle translation is treated as public domain in the USA. Territory-specific distribution clearance remains NOT TESTED. Arabic is an unreviewed draft, not a professionally proofread translation.
+- **Device:** Xiaomi Pad 5 rendering, TalkBack, frame pacing, memory and real-device audio focus remain NOT TESTED. No microphone/TTS or network permission was introduced.
