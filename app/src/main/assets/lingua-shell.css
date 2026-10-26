@@ -1935,4 +1935,4 @@ body.theme-civic-panorama::before,body.theme-civic-panorama::after{display:none!
 .theme-civic-panorama .reader{border:2px solid #1d3047;border-top:7px solid #b6473d;box-shadow:5px 5px 0 #1d304714}
 .theme-civic-panorama .reader .reading-width{border-inline-start:4px solid #d9b46a;padding-inline-start:20px;background:repeating-linear-gradient(0deg,#1d304708 0 1px,transparent 1px 33px)}
 @media(max-width:600px){.theme-civic-panorama .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-civic-panorama .library .storylens-hero .hero-orb{width:70px;height:70px}}
-@media(prefers-reduced-motion:reduce){.theme-civic-panorama .library .card{transition:none!important,transform:none!important}}
+@media(prefers-reduced-motion:reduce){.theme-civic-panorama .library .card{transition:none!important;transform:none!important}}

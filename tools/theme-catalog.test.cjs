@@ -29,4 +29,5 @@ for (const name of ['red-sea-dispatch', 'monsoon-meridian', 'deccan-timetable', 
   assert.ok(shellCss.includes('@media(prefers-reduced-motion:reduce){.theme-' + name),
     'missing reduced-motion fallback for ' + name);
 }
+assert.ok(shellCss.includes('@media(prefers-reduced-motion:reduce){.theme-civic-panorama .library .card{transition:none!important;transform:none!important}}'), 'Civic Panorama reduced-motion fallback must disable both transitions and transforms');
 console.log('PASS theme catalog: ' + names.length + ' selectable themes have labels, production body styles and backup allowlist; routed themes have swatches and reduced-motion fallbacks.');
