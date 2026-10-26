@@ -5,7 +5,7 @@
 'use strict';
 const indexes = new WeakMap();
 const tokens = value => (String(value).normalize('NFC').toLowerCase().normalize('NFC').match(/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu) || []);
-const canonical=value=>String(value).toLowerCase().replaceAll('’',"'");
+const canonical=value=>String(value).normalize('NFC').toLowerCase().normalize('NFC').replaceAll('’',"'");
 const tokenSpans=value=>Array.from(String(value).matchAll(/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu),m=>
  ({word:m[0],start:m.index,end:m.index+m[0].length}));
 function rootsFor(word,lemmas){

@@ -839,3 +839,12 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS Android CI:** [run 40305864189](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40305864189). The new catalog regression, existing Node regressions, Gradle unit tests/Debug assembly, asset checks and Chromium journey completed successfully.
 - **PASS independent APK verification:** artifact [12643240435](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40305864189/artifacts/12643240435), extracted `app-debug.apk` size **4,536,977 bytes**, independently recalculated SHA-256 `a8924fde2d4fbb672d3000c457abbdebc10c291828c332258fe8661319e13cf6`, matching `APK_SHA256.txt`.
 - **NOT TESTED:** Xiaomi Pad 5 theme-switch/reading-progress preservation, visual contrast/TalkBack, device FPS/RAM and screenshots of every restored theme. CI proves source/catalog/packaging behavior, not physical-device acceptance. Debug APK is not final; PR remains Draft and unmerged.
+
+
+## 2026-10-26 — Unicode canonical-equivalence lookup regression
+
+- Latest branch CI [40309708469](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40309708469) **FAILED** at `tools/phrase-lookup.test.cjs:127`: a decomposed spelling of `café` returned no dictionary entry although the composed NFC entry existed.
+- Production comparison keys now normalize to NFC before case folding and again afterward. Source text and UTF-16 offsets are preserved; only comparison keys are normalized.
+- Existing regressions cover a decomposed single word and a decomposed token inside an authored multiword phrase, while requiring the displayed phrase to preserve the original source spelling.
+- **CI for the fix: NOT VERIFIED at commit time.** The next branch CI must pass the phrase lookup regression, content suite, Gradle/package checks and Chromium reader journey.
+- **NOT TESTED:** Xiaomi Pad 5 keyboard/TalkBack and actual Android taps on decomposed PDF text.
