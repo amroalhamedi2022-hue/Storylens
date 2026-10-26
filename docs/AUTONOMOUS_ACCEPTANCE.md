@@ -915,3 +915,9 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - Added `tools/verne-towle-ch22.test.cjs` to the existing Android workflow and required APK asset list. The test checks script order, paragraph alignment, source-bound glossary entries, chapter progress (22/37), artwork, theme registration and backup compatibility.
 - **Purposeful CI question:** can the new source module be parsed, packaged into Android assets, and coexist with reader/navigation tests? Source-only inspection cannot verify Gradle packaging or the Chromium reader workflow, so this batch should run the existing Android CI.
 - **CI/APK/SHA-256:** NOT VERIFIED at documentation time. Pad 5 installation, frame timing/RAM, TalkBack, Arabic literary review and territory-specific redistribution rights remain **NOT TESTED**. Chapter XXII is 22 of 37, not a complete novel. Debug is not final; no main write/merge.
+
+
+### Chapter XXII direct V8 source smoke — 2026-10-26
+
+- **PASS: 10 focused runtime assertions** against the committed Chapter XXII module, index, theme catalog, CSS, backup allowlist and SVG art generator: 31 aligned bilingual-draft passages; 2,072 English words; 34 glossary terms all present in source; 22-of-37 status; script order; unique Yokohama SVG; theme gallery/backup wiring; reduced-motion fallback; and the MedMate cleanup source checks performed in the same review.
+- This is direct source-runtime evidence only. Native Node workflow, Android Gradle asset packaging, Chromium Chapter XXII rendering, fresh APK SHA-256 and physical Xiaomi Pad 5 acceptance remain **NOT VERIFIED / NOT TESTED**.
