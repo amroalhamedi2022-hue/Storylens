@@ -17,15 +17,15 @@ assert.ok(shell.includes("'velvet-theatre'"));
 assert.ok(backup.includes("tail==='audioPrefs'"));
 assert.ok(css.includes('body.theme-velvet-theatre'));
 assert.ok(!script.includes('getUserMedia')&&!script.includes('fetch('));
-let created=0,starts=0,stops=0,nextTimer=0;
+let created=0,starts=0,stops=0,nextTimer=0,gainDisconnects=0;
 const intervals=new Map();
 const listeners={},stored={};
-const node=()=>({connect(){return this},disconnect(){},start(){starts++},stop(){stops++},
+const node=(kind='node')=>({connect(){return this},disconnect(){if(kind==='gain')gainDisconnects++;},start(){starts++},stop(){stops++},
  frequency:{value:0,setValueAtTime(){},exponentialRampToValueAtTime(){}},
  gain:{value:0,setValueAtTime(){},exponentialRampToValueAtTime(){}},onended:null});
 class FakeAudioContext {
  constructor(){created++;this.state='suspended';this.sampleRate=8000;this.currentTime=1;this.destination=node()}
- createGain(){return node()}
+ createGain(){return node('gain')}
  createBuffer(ch,len){return {getChannelData(){return new Float32Array(len)}}}
  createBufferSource(){return node()}
  createBiquadFilter(){return node()}
@@ -61,10 +61,12 @@ assert.equal(created,0,'no audio created by settings change');
  assert.equal(created,1,'reuse one context');
  audio.selectScene('quiet-keys');
  assert.equal(intervals.size,1,'melodic preset schedules one bounded timer');
+ const gainsBeforeMelodyCleanup=gainDisconnects;
  const startsBeforeMelodyTick=starts;[...intervals.values()][0]();
  assert.ok(starts>startsBeforeMelodyTick,'melody timer emits a note rather than only filtered noise');
  audio.selectScene('rain');
  assert.equal(intervals.size,0,'switching back to ambience clears the melody timer');
+ assert.ok(gainDisconnects>gainsBeforeMelodyCleanup,'scene switch disconnects melodic envelope gains, not only oscillators');
  for(const scene of audio.SCENES)assert.equal(audio.selectScene(scene.id),true);
  audio.selectScene('rain');
  assert.ok(stops>=20,'previous soundscape nodes stopped on each switch');
