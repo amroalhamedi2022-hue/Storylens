@@ -260,3 +260,11 @@ merely because its title is present in a roadmap.
 - Source URL: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-17.xhtml
 - Standard Ebooks identifies its editorial transcription as CC0; the underlying Towle translation is treated as public domain in the United States. Territory-specific redistribution clearance remains NOT TESTED. Arabic paragraphs are editorial drafts pending independent review.
 - The Singapore Lantern scene is original local SVG artwork created for this project; no third-party image was copied.
+
+
+## Chapter XVIII — Hong Kong and the delayed Carnatic
+- Exact English edition: Standard Ebooks editorial transcription of George Makepeace Towle's 1873 translation, source file `src/epub/text/chapter-18.xhtml`, blob SHA-1 `74292ce1802d0b83eeb13605795d60fc04b0fce7`.
+- Source URL: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-18.xhtml
+- The offline chapter adds **31 aligned English/Arabic draft passages**, approximately **1,339 English words**, 35 context-bound vocabulary/phrase entries, and original local SVG artwork for the storm-bound Rangoon. The **Typhoon Timetable** theme is a distinct storm-chart layout registered in Settings and backup validation.
+- Standard Ebooks identifies its editorial transcription as CC0; Towle's underlying 1873 English translation is treated as public domain in the United States. Territory-specific redistribution clearance remains **NOT TESTED**. Arabic text is a draft pending independent literary review; no claim of professional proofreading or Pad 5 acceptance is made.
+- The SVG was drawn in-project and does not copy third-party illustration assets.
