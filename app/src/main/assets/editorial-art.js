@@ -157,8 +157,24 @@ function redSeaDispatchScene(){
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
 
+
+function monsoonMeridianScene(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="The steamship Mongolia crossing the Indian Ocean toward Bombay beneath a monsoon sky">'+
+ '<defs><linearGradient id="monsoon-sky" x2="0" y2="1"><stop stop-color="#142b4a"/><stop offset=".55" stop-color="#557f88"/><stop offset="1" stop-color="#e2b36d"/></linearGradient><linearGradient id="monsoon-sea" x2="0" y2="1"><stop stop-color="#176b75"/><stop offset="1" stop-color="#102d49"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#monsoon-sky)"/><circle cx="780" cy="150" r="68" fill="#f5d99c" opacity=".9"/>'+
+ '<path d="M0 320Q150 280 280 320T550 315T820 310T1000 326V620H0Z" fill="url(#monsoon-sea)"/>'+
+ '<g fill="none" stroke="#9bd0c7" stroke-width="4" opacity=".55"><path d="M0 390Q130 365 260 392T520 390T780 391T1000 387"/><path d="M0 450Q150 422 300 452T600 449T900 451"/><path d="M0 515Q170 490 340 518T680 516T1000 513"/></g>'+
+ '<path d="M0 310L70 284L132 301L200 274L270 304L340 279L420 310L505 292L600 315L680 288L770 309L870 282L1000 312" fill="none" stroke="#f2d5a1" stroke-width="4" opacity=".6"/>'+
+ '<path d="M350 360L700 360L770 420L285 420Z" fill="#162b3c" stroke="#d8b16b" stroke-width="7"/><path d="M390 356L420 303L650 303L680 356Z" fill="#d9e2d4" stroke="#17374a" stroke-width="6"/>'+
+ '<rect x="465" y="270" width="125" height="33" rx="5" fill="#a74335" stroke="#f1d49a" stroke-width="5"/><rect x="510" y="220" width="18" height="50" fill="#263d4b"/><path d="M519 222L519 165L592 221Z" fill="#f1d9a5" stroke="#263d4b" stroke-width="4"/><path d="M519 165L519 221L465 221Z" fill="#c05a40"/>'+
+ '<path d="M312 420L280 448H740L700 420Z" fill="#0e263a"/><path d="M365 445L350 470M660 445L677 470" stroke="#d6b36e" stroke-width="8"/>'+
+ '<g transform="translate(145 125)" fill="none" stroke="#f0d7a0" stroke-width="5" opacity=".85"><circle r="64"/><circle r="42"/><path d="M0 -82V82M-82 0H82M-58 -58L58 58M58 -58L-58 58"/></g><path d="M145 43L158 125L145 207L132 125Z" fill="#f0d7a0"/>'+
+ '<path d="M0 575Q190 548 370 578T730 575T1000 570" fill="none" stroke="#e0bd7a" stroke-width="5" opacity=".6"/></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():charingCrossDeparture();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
