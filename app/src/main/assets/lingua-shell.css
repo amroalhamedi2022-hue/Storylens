@@ -1641,3 +1641,18 @@ body.theme-dawn-escape::before,body.theme-dawn-escape::after{display:none!import
 .theme-dawn-escape .reader{background:#202238;color:#fff2d8;border-color:#655367}
 .theme-dawn-escape .reader .arabic,.theme-dawn-escape .translation{color:#f2d9bd}
 @media(prefers-reduced-motion:reduce){.theme-dawn-escape .library .card{transition:none!important;transform:none!important}}
+
+/* Ganges Panorama — river-cartography palette and a distinct rail-ticket reading layout. */
+.lt-theme-ganges-panorama .lt-theme-swatch{background:linear-gradient(165deg,#123f4b 0 28%,#2c8a8c 28% 44%,#e3c47f 44% 49%,#f1e7cf 49% 100%)}
+body.theme-ganges-panorama{--body:#e4eee1;--card:#f8f3df;--ink:#173d43;--sub:#55746f;--accent:#c17a3c;--reader:#f9f3df;--reader-ink:#193d43;color:var(--ink);background:repeating-linear-gradient(172deg,transparent 0 36px,#2d92911b 36px 38px,transparent 38px 72px),linear-gradient(145deg,#d9e8d9,#a8cfc3 52%,#e9d09b)}
+body.theme-ganges-panorama::before,body.theme-ganges-panorama::after{display:none!important}
+.theme-ganges-panorama .library .header{border-bottom:3px double #c17a3c;padding-bottom:14px}
+.theme-ganges-panorama .library .brand{color:#17626a;letter-spacing:.13em}
+.theme-ganges-panorama .library .storylens-hero{border:2px solid #397f7c;border-radius:3px 28px 3px 28px;background:linear-gradient(118deg,#f8f3df 0 54%,#b8d9ca 54% 73%,#e3c47f 73% 76%,#f8f3df 76%);box-shadow:0 9px 0 #1d65641b}
+.theme-ganges-panorama .library .card{border:1px solid #76a69a;border-radius:3px 18px 3px 18px;box-shadow:0 5px 0 #1d65641a;animation:none}
+.theme-ganges-panorama .library .card h2{font-family:Georgia,serif;color:#174e55}
+.theme-ganges-panorama .reader{background:#f9f3df;color:#193d43;border-inline-start:4px solid #2d8987}
+.theme-ganges-panorama .reader .reading-width{border-block:1px solid #c17a3c;padding-block:14px}
+.theme-ganges-panorama .lt-drawer{background:#174b52;color:#f7f0d7;border-inline-start:4px solid #dfbd74}
+.theme-ganges-panorama .lt-theme-choice{border-radius:3px 12px 3px 12px;background:#f8f3df;color:#173d43}
+@media(prefers-reduced-motion:reduce){.theme-ganges-panorama .library .card{transition:none!important;transform:none!important}}
