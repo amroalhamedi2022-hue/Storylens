@@ -800,3 +800,12 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 ## Chapter XVI browser-fixture count correction — 2026-10-26
 - Chapter XV and Chapter XVI dedicated Chromium fixtures now pass, but the broader E2E fixture still had a stale novel-count assertion pinned to 15 chapters and only asserted distinct artwork through Chapter XV. Updated it to require all 16 bundled chapters, 25 aligned Chapter XVI passages, and the new Rangoon scene at index 15.
 - Rerun is pending; no device-performance claim is inferred from Chromium.
+
+
+## 2026-10-26 — Chapter XVII / Singapore Lantern source milestone
+- Added Chapter XVII from the Standard Ebooks Towle XHTML source `src/epub/text/chapter-17.xhtml`, source blob SHA-1 `9032cb0cbc51867336e21dfd73885a2f8bee7c66`. The editorial transcription is CC0; Towle's 1873 translation is public domain in the United States, while territory-specific redistribution rights remain **NOT TESTED**.
+- Source-level V8 verification matched **35/35 English paragraphs** after stripping XHTML and normalizing word-joiners/spacing; 1,723 English words, 35 aligned Arabic draft paragraphs, and 32 contextual terms all found in the English text.
+- Added original offline SVG art and the distinct **Singapore Lantern** theme; registered the theme in settings and backup validation; added a Chapter XVII Node regression, browser fixture, APK asset assertion, and Chromium render gate. The chapter script is loaded after Chapter XVI and before editorial art.
+- **PASS (source runtime):** chapter script executes, English source paragraphs match 35/35, all Arabic paragraphs are present, 32 terms are source-bound, and the chapter SVG is distinct from Chapter XVI. Node test syntax parses.
+- **CI / APK for head `19daa38f9ee99678d856b049e8bfa4d892293b37`: NOT VERIFIED.** No new run ID or artifact is recorded for this head; earlier APKs do **not** include Chapter XVII. Build question remains whether full Node regression, Chromium reader fixture, Android packaging and SHA manifest pass together.
+- **NOT TESTED:** Xiaomi Pad 5 install/performance, RTL/TalkBack device review, independent Arabic literary proofreading, and territory-specific rights clearance. PR remains Draft; no main merge.
