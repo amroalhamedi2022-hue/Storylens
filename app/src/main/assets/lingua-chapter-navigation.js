@@ -64,8 +64,7 @@ function decorate(){
  progress.textContent=localized(
   'المتاح '+chapters.length+' من '+story.totalChapters+' فصلًا',
   chapters.length+' of '+story.totalChapters+' chapters available');
- if(endHeading)endHeading.insertAdjacentElement('afterend',progress);
- else end.prepend(progress);
+ end.insertBefore(progress,end.querySelector('button.primary'));
  if(index===chapters.length-1){
   const heading=end.querySelector('div');
   if(heading)heading.textContent=localized(

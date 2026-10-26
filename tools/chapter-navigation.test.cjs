@@ -11,6 +11,7 @@ const createElement=tag=>({
  tagName:tag,children:[],attrs:{},textContent:'',disabled:false,
  appendChild(node){this.children.push(node);return node},
  prepend(node){this.children.unshift(node)},
+ insertBefore(node,reference){const i=this.children.indexOf(reference);if(i<0)this.children.push(node);else this.children.splice(i,0,node);return node},
  setAttribute(key,value){this.attrs[key]=value},
  addEventListener(key,cb){this['on'+key]=cb},
  querySelector(){return null}
@@ -19,6 +20,7 @@ function run({locale='en',total=37,count=2,index=1}={}){
  const heading=createElement('div');heading.textContent='The End';
  const primary=createElement('button');primary.textContent='Return to library';
  const end=createElement('section');
+ end.children.push(heading,primary);
  end.querySelector=selector=>selector==='div'?heading:selector==='button.primary'?primary:
   selector==='.lt-chapter-nav'?end.children.find(x=>x.className==='lt-chapter-nav')||null:null;
  const label=createElement('div');
@@ -36,7 +38,9 @@ const incomplete=run();
 assert.equal(incomplete.calls[0],'base');
 assert.match(incomplete.heading.textContent,/To be continued/);
 assert.equal(incomplete.primary.textContent,'Back to library');
-assert.match(incomplete.label.children[0].textContent,/2 of 37/);
+assert.equal(incomplete.label.children.length,0,'availability must not duplicate the current-chapter label');
+const availableEn=incomplete.end.children.find(x=>x.className==='lt-serial-progress');
+assert.ok(availableEn);assert.match(availableEn.textContent,/2 of 37 chapters available/);assert.equal(availableEn.attrs.dir,'ltr');
 const nav=incomplete.end.children[0];
 assert.equal(nav.attrs['aria-label'],'Chapter navigation');
 assert.equal(nav.children[0].disabled,false);
@@ -44,8 +48,9 @@ assert.equal(nav.children[1].disabled,true);
 nav.children[0].onclick();
 assert.equal(incomplete.calls[1],0,'previous chapter uses existing navigation pipeline');
 incomplete.decorate();
-assert.equal(incomplete.end.children.length,1,'repeated decoration must not duplicate chapter controls');
-assert.equal(incomplete.label.children.length,1,'repeated decoration must not duplicate progress labels');
+assert.equal(incomplete.end.children.filter(x=>x.className==='lt-chapter-nav').length,1,'repeated decoration must not duplicate chapter controls');
+assert.equal(incomplete.end.children.filter(x=>x.className==='lt-serial-progress').length,1,'repeated decoration must not duplicate availability notes');
+assert.equal(incomplete.label.children.length,0);
 const middle=run({index:0});
 assert.equal(middle.end.children[0].children[0].disabled,true);
 middle.end.children[0].children[1].onclick();
@@ -54,7 +59,9 @@ const arabic=run({locale:'ar'});
 assert.match(arabic.heading.textContent,/يتبع/);
 assert.equal(arabic.end.children[0].children[0].textContent,'الفصل السابق →');
 assert.equal(arabic.end.children[0].children[1].textContent,'← الفصل التالي');
-assert.match(arabic.label.children[0].textContent,/37/);
+const availableAr=arabic.end.children.find(x=>x.className==='lt-serial-progress');
+assert.ok(availableAr);assert.match(availableAr.textContent,/المتاح 2 من 37 فصلًا/);assert.equal(availableAr.attrs.dir,'rtl');
+assert.equal(arabic.label.children.length,0);
 const selector=nav.children[2];
 assert.equal(selector.tagName,'label');
 assert.equal(selector.children[1].tagName,'select');
