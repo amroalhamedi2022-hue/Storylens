@@ -1028,3 +1028,19 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **CI:** latest run `40415287688` is queued/in progress at documentation time. Do not claim PASS until the run finishes.
 - **Rights:** Standard Ebooks editorial contribution is CC0; the Towle translation is treated as public domain in the USA. Territory-specific distribution clearance remains NOT TESTED. Arabic is an unreviewed draft, not a professionally proofread translation.
 - **Device:** Xiaomi Pad 5 rendering, TalkBack, frame pacing, memory and real-device audio focus remain NOT TESTED. No microphone/TTS or network permission was introduced.
+
+
+## 2026-10-27 — Verified LT-07/LT-08/LT-13 acceptance record
+
+| Gate | Result | Evidence / remaining boundary |
+|---|---|---|
+| Chapter XXX source integrity | **PASS — source/CI** | 67 paragraphs, 2,133 words; normalized SHA-256 `cc6571f506f550e03e3627476ae0c534bb9fc7cb8d179ed08809ba3e6c5575ef`; source blob `d26e028ef931fea90caa1a625b91ca8f4310f244`. |
+| Arabic paragraph alignment + contextual glossary | **PASS — structural tests** | 67 non-empty Arabic drafts; 41 source-bound terms including `groin / الأربية`. Independent literary review **NOT TESTED**. |
+| Original Chapter XXX scene packaged | **PASS — CI** | Offline SVG present in source and APK asset bundle. Physical GPU/memory performance **NOT TESTED**. |
+| Snowbound Telegraph theme | **PASS — source + Chromium** | Picker, CSS, backup allowlist and reduced-motion contract; RTL screenshot verifies 7px signal-red reader border. Xiaomi Pad 5 rendering **NOT TESTED**. |
+| Android Debug build / required assets | **PASS — CI** | Run 40419513853; APK SHA-256 `23ade4fe075f47bb374640920705b0b50b700cd2915386e6d5496e19ff7e3634`; Artifact 12696587055. |
+| Full project acceptance | **IN PROGRESS** | 30/37 novel chapters; Pad 5, accessibility/performance, translation review, and licensed audio catalog remain open. |
+
+CI: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40419513853
+APK artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40419513853/artifacts/12696587055
+Screenshot artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40419513853/artifacts/12696252319
