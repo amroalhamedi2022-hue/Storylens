@@ -341,3 +341,12 @@ merely because its title is present in a roadmap.
 - Chapter XXV is 25 of 37; the novel remains incomplete. Device reading/performance/accessibility and territory-specific redistribution clearance remain **NOT TESTED**.
 
 - **Verification addendum (2026-10-26):** all 50/50 stored English Chapter XXV paragraphs were compared with the upstream XHTML after markup/entity/whitespace normalization; no paragraph differences. The packaged Debug APK passed CI asset inspection, and its SHA-256 was independently recomputed. Arabic remains an unreviewed draft.
+
+
+## Chapter XXVI — Pacific Railroad (added 2026-10-26)
+
+- Source: Standard Ebooks repository tree 56c82e97ff5d4f8950afca05b71af72688a8da34, file src/epub/text/chapter-26.xhtml, blob d81f9235390ec9dac8c7e27ed08ba76ecf55a709.
+- Text: George Makepeace Towle's 1873 English translation of Jules Verne's Around the World in Eighty Days, transcribed paragraph-by-paragraph from the pinned XHTML; 25 body paragraphs and 1,605 words. Standard Ebooks' editorial transcription is CC0; the underlying 1873 translation is treated as public domain in the United States. Territory-specific redistribution clearance must still be checked before release.
+- Arabic: 25 aligned translation drafts created for learning use. They are not independently proofread and must not be described as professionally reviewed.
+- Assets: original offline SVG artwork for the Sierra Nevada locomotive/buffalo scene; no third-party image or remote asset.
+- Acceptance: the chapter regression verifies the source pin, paragraph count, word count, 36 source-occurring glossary surfaces, script order and unique art. Android/Chromium CI and device checks are tracked in docs/AUTONOMOUS_ACCEPTANCE.md.

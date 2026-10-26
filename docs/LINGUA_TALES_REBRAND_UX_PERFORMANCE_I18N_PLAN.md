@@ -153,3 +153,11 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - **PASS:** independently verified Debug APK `6754bae4af6f9284b1336e47e0795899c1c5b5cd8cf92482b14e6c2efdc3c1b1` (4,638,069 bytes), artifact 12669048661.
 - **PASS:** all 50/50 English Chapter XXV paragraphs match the recorded Standard Ebooks XHTML after normalization; 2,011 words, 50 aligned Arabic draft passages and 38 source-occurring terms.
 - **NOT TESTED:** Xiaomi Pad 5 runtime/accessibility/performance, independent Arabic proofreading and territory-specific redistribution clearance. Continue to Chapter XXVI; 25/37 chapters are bundled.
+
+
+## 2026-10-26 — Chapter XXVI / Prairie Signal continuation batch
+
+- Added the source-transcribed Standard Ebooks/Towle Chapter XXVI (25 aligned English paragraphs, 1,605 English words), 25 Arabic translation drafts and 36 source-bound dictionary/phrase entries.
+- Added original offline Sierra Nevada steam-train/buffalo SVG artwork and the visually distinct Prairie Signal theme, with gallery swatch, backup allowlist and reduced-motion fallback.
+- Chapter XXV now advances to XXVI; the serial reader remains honestly incomplete at 26/37. English source is pinned to Standard Ebooks repository tree 56c82e97ff5d4f8950afca05b71af72688a8da34 and chapter blob SHA d81f9235390ec9dac8c7e27ed08ba76ecf55a709.
+- CI is intentionally required to verify the new chapter loader, theme persistence, APK asset packaging and Chromium reader journey; source-only validation cannot prove integration. Xiaomi Pad 5 performance, accessibility, independent Arabic proofreading and territory-specific rights remain separate acceptance gates.
