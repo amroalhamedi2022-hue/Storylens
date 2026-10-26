@@ -25,7 +25,11 @@ const SCENES=[
  ['meadow','Spring Meadow','مرج الربيع',2100,0.10,260],
  ['leaves','Autumn Leaves','أوراق الخريف',1250,0.14,135],
  ['desert','Desert Night','ليل الصحراء',390,0.11,180],
- ['stars','Starry Observatory','مرصد النجوم',180,0.07,432]
+ ['stars','Starry Observatory','مرصد النجوم',180,0.07,432],
+ ['quiet-keys','Quiet Keys','مفاتيح هادئة',1800,0,0,'music',[261.63,329.63,392,329.63,293.66,349.23,329.63,261.63],1250],
+ ['moonlit-chimes','Moonlit Chimes','رنين ضوء القمر',1800,0,0,'music',[220,261.63,329.63,392,349.23,329.63,261.63,246.94],1550],
+ ['lantern-motif','Lantern Motif','لحن الفوانيس',1800,0,0,'music',[196,246.94,293.66,369.99,329.63,293.66,246.94,220],1120],
+ ['paper-atlas-melody','Paper Atlas Melody','لحن أطلس الورق',1800,0,0,'music',[174.61,220,261.63,293.66,261.63,220,196,220],1680]
 ];
 const KEY='audioPrefs';
 const DEFAULT={scene:'rain',volume:0.28,sfxVolume:0.18,sfx:false};
@@ -40,16 +44,44 @@ function sanitize(raw){
 }
 let prefs=sanitize(typeof get==='function'?get(KEY,DEFAULT):DEFAULT);
 let context=null,master=null,noiseSource=null,noiseFilter=null,noiseGain=null,drone=null,droneGain=null,playing=false;
+let melodyTimer=null,melodyNodes=new Set(),melodyStep=0;
 let playbackGeneration=0; // invalidates an in-flight AudioContext.resume after pagehide/pause
 function persist(){if(typeof put==='function')put(KEY,{...prefs});}
 function stopNodes(){
- for(const node of [noiseSource,drone]){
+ if(melodyTimer!==null){global.clearInterval(melodyTimer);melodyTimer=null;}
+ for(const node of [noiseSource,drone,...melodyNodes]){
   if(node){try{node.stop();}catch(_){}try{node.disconnect();}catch(_){}}
  }
+ melodyNodes.clear();melodyStep=0;
  noiseSource=null;drone=null;
  if(noiseFilter){noiseFilter.disconnect();noiseFilter=null;}
  if(noiseGain){noiseGain.disconnect();noiseGain=null;}
  if(droneGain){droneGain.disconnect();droneGain=null;}
+}
+function playMelodyNote(ctx,spec){
+ const notes=Array.isArray(spec[7])?spec[7]:[];
+ if(!notes.length)return;
+ const frequency=notes[melodyStep%notes.length],now=ctx.currentTime;
+ melodyStep++;
+ const osc=ctx.createOscillator(),gain=ctx.createGain();
+ osc.type='sine';osc.frequency.setValueAtTime(frequency,now);
+ gain.gain.setValueAtTime(0.0001,now);
+ gain.gain.exponentialRampToValueAtTime(0.032,now+0.055);
+ gain.gain.exponentialRampToValueAtTime(0.0001,now+0.98);
+ osc.connect(gain);gain.connect(master);melodyNodes.add(osc);
+ osc.onended=()=>{melodyNodes.delete(osc);try{osc.disconnect();gain.disconnect();}catch(_){}};
+ osc.start(now);osc.stop(now+1);
+ // A quiet fifth on alternate beats gives the original motif a soft harmonic bed.
+ if(melodyStep%2===0){
+  const harmony=ctx.createOscillator(),hGain=ctx.createGain();
+  harmony.type='triangle';harmony.frequency.setValueAtTime(frequency*1.5,now);
+  hGain.gain.setValueAtTime(0.0001,now);
+  hGain.gain.exponentialRampToValueAtTime(0.009,now+0.08);
+  hGain.gain.exponentialRampToValueAtTime(0.0001,now+1.18);
+  harmony.connect(hGain);hGain.connect(master);melodyNodes.add(harmony);
+  harmony.onended=()=>{melodyNodes.delete(harmony);try{harmony.disconnect();hGain.disconnect();}catch(_){}};
+  harmony.start(now);harmony.stop(now+1.2);
+ }
 }
 function ensureContext(){
  if(!context){
@@ -79,6 +111,13 @@ function build(scene){
  const ctx=ensureContext();
  stopNodes();
  const spec=SCENES.find(s=>s[0]===scene)||SCENES[0];
+ if(spec[6]==='music'){
+  playMelodyNote(ctx,spec);
+  melodyTimer=global.setInterval(()=>{
+   if(playing&&!document.hidden&&context===ctx)playMelodyNote(ctx,spec);
+  },spec[8]||1300);
+  return;
+ }
  noiseSource=ctx.createBufferSource();noiseSource.buffer=buffer(ctx);noiseSource.loop=true;
  noiseFilter=ctx.createBiquadFilter();noiseFilter.type='lowpass';noiseFilter.frequency.value=spec[3];
  noiseGain=ctx.createGain();noiseGain.gain.value=spec[4];
@@ -135,17 +174,20 @@ function clickSound(){
 }
 function controls(sheet,rtl){
  const section=document.createElement('section');section.className='lt-audio-settings';
- const heading=document.createElement('h3');heading.textContent=rtl?'🎧 أجواء القراءة':'🎧 Reading ambience';
+ const heading=document.createElement('h3');heading.textContent=rtl?'🎧 موسيقى وأجواء القراءة':'🎧 Reading music & ambience';
  section.appendChild(heading);
  const note=document.createElement('p');note.className='quiet';
- note.textContent=rtl?'أصوات مولّدة محليًا للتجربة؛ ليست تسجيلات أو موسيقى مرخّصة. صامتة افتراضيًا، وتبدأ فقط عند الضغط على تشغيل.':'Original synthesized ambience previews, not licensed recordings or music. Silent by default; starts only when you press Play.';
+ note.textContent=rtl
+  ?'24 إعدادًا محليًا: 20 مشهد أجواء و4 ألحان إلكترونية أصلية. ليست تسجيلات مرخّصة؛ صامتة افتراضيًا ولا تحتاج إلى شبكة.'
+  :'24 offline presets: 20 ambience scenes and 4 original synthesized melodies. These are not licensed recordings; silent by default and network-free.';
  section.appendChild(note);
  const sceneLabel=document.createElement('label');sceneLabel.className='lt-font-setting';
- const caption=document.createElement('span');caption.textContent=rtl?'الأجواء':'Soundscape';
+ const caption=document.createElement('span');caption.textContent=rtl?'موسيقى وأجواء':'Music & ambience';
  sceneLabel.appendChild(caption);
  const select=document.createElement('select');select.setAttribute('aria-label',caption.textContent);
  for(const scene of SCENES){
-  const option=document.createElement('option');option.value=scene[0];option.textContent=rtl?scene[2]:scene[1];select.appendChild(option);
+  const option=document.createElement('option');option.value=scene[0];
+  option.textContent=(scene[6]==='music'?'♫ ':'◌ ')+(rtl?scene[2]:scene[1]);select.appendChild(option);
  }
  select.value=prefs.scene;select.addEventListener('change',()=>selectScene(select.value));
  sceneLabel.appendChild(select);section.appendChild(sceneLabel);
@@ -181,7 +223,7 @@ function controls(sheet,rtl){
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pause().catch(()=>{});});
 global.addEventListener('pagehide',()=>{pause().catch(()=>{});});
 document.addEventListener('click',event=>{if(event.target?.closest?.('button'))clickSound();});
-global.LinguaAmbience={SCENES:SCENES.map(s=>({id:s[0],en:s[1],ar:s[2]})),
+global.LinguaAmbience={SCENES:SCENES.map(s=>({id:s[0],en:s[1],ar:s[2],type:s[6]||'ambience'})),
  controls,play,pause,selectScene,setVolume,setSfx,setSfxVolume,
  prefs:()=>({...prefs}),isPlaying:()=>playing,hasContext:()=>!!context};
 })(window);
