@@ -20,6 +20,8 @@ assert.equal(story.chapters.length,23);
 const chapter=story.chapters[22];
 assert.equal(chapter.paragraphs.length,53);
 const english=chapter.paragraphs.map(p=>p.en).join(' ');
+assert.ok(english.includes('barrels, etc., was executed with wonderful precision.'),'English punctuation must match the verified source edition');
+assert.ok(!english.includes('etc. ,'),'do not introduce a space before the source comma');
 const words=(english.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.ok(words>=1800,'Chapter XXIII must remain full source text, not a synopsis: '+words);
 assert.ok(english.startsWith('The next morning poor, jaded, famished Passepartout'));
