@@ -206,3 +206,12 @@ merely because its title is present in a roadmap.
 - Standard Ebooks editorial work is CC0; Towle's 1873 translation is public domain in the United States. Territory-specific redistribution clearance and independent Arabic literary proofreading remain NOT TESTED.
 - Added 29 source-occurring contextual phrases, a locally generated Kholby forest/unfinished railway/elephant SVG, and the distinct Kholby Crossing theme. The image is generated as offline SVG by production code; no external image URL is loaded.
 - Android CI 40253482067 passed Node regressions, Gradle/Android packaging and Chromium reader integration. Independently verified Debug APK SHA-256 d5b70b14d80fb833ac38ed4956d9a853cedf0553a0c4d0269fb8254fc1e5e7b8 (4,408,785 bytes). Physical Pad 5 and final signed release remain NOT TESTED.
+
+
+## Towle Chapter XII — Across the Vindhya forests
+
+- English source: Standard Ebooks transcription of George Makepeace Towle's 1873 translation, Chapter XII: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-12.xhtml
+- Packaged source: 48 paragraph blocks (including the chapter bridgehead), approximately 2,100 English words, with 48 aligned Arabic companion drafts. English strings are extracted from the upstream XHTML with markup/entities/spacing normalized; the Node regression verifies key source phrases, bilingual alignment and term occurrences.
+- Added 28 source-occurring contextual entries, an original local SVG of the elephant route through the Vindhya forest, and the distinct **Vindhya Passage** theme. Theme selection and backup allowlist are updated; no remote images, fonts, audio, permissions or model files were added.
+- Standard Ebooks editorial transcription is CC0; Towle's 1873 English translation is public domain in the United States. Territory-specific redistribution review and independent Arabic literary proofreading remain **NOT TESTED**.
+- The chapter includes historical descriptions of sati and threatened coerced immolation; the Arabic draft preserves the plot context without presenting the practice as acceptable. Editorial sensitivity review remains **NOT TESTED**.

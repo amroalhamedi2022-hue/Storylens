@@ -1613,3 +1613,18 @@ body.theme-consular-ledger::before,body.theme-consular-ledger::after{display:non
 .theme-consular-ledger .reader .reading-width{border-inline-start:3px solid #91483d;padding-inline-start:18px;background:linear-gradient(90deg,#91483d08,transparent 36px)}
 .theme-consular-ledger .lt-theme-choice{background:#f8f4e8;color:#24363d;border-radius:2px}
 @media(prefers-reduced-motion:reduce){.theme-consular-ledger .library .card{transition:none!important;transform:none!important}}
+
+/* LT-13 Vindhya Passage: topographic travel-map composition, warm mineral palette, static layers only. */
+.lt-theme-vindhya-passage .lt-theme-swatch{background:repeating-linear-gradient(135deg,#24382e 0 8px,#e2bd72 8px 11px,#a34e31 11px 16px,#e9dec1 16px 22px)}
+body.theme-vindhya-passage{--body:#e8dfc7;--card:#f7f0dd;--ink:#28342b;--sub:#687064;--accent:#a14f32;--reader:#fbf4e2;--reader-ink:#2b342d;color:var(--ink);background:repeating-linear-gradient(25deg,transparent 0 38px,#6e7d4b13 38px 40px),repeating-linear-gradient(155deg,transparent 0 76px,#a14f3210 76px 78px),linear-gradient(135deg,#f0e5c8,#c9d0af 56%,#d9b985)}
+body.theme-vindhya-passage::before,body.theme-vindhya-passage::after{display:none!important}
+.theme-vindhya-passage .library .header{border-bottom:2px dashed #a14f32;padding-bottom:15px}
+.theme-vindhya-passage .library .brand{color:#8f452f;letter-spacing:.18em}
+.theme-vindhya-passage .library .storylens-hero{border-radius:4px 26px 4px 26px;border:1px solid #a98d59;background:linear-gradient(125deg,#f7f0dd 0 58%,#d9c38e 58% 61%,#e4d8b8 61%);box-shadow:5px 5px 0 #5c69401c}
+.theme-vindhya-passage .library .card{border:1px solid #a9ad8a;border-radius:4px 18px 4px 18px;box-shadow:4px 4px 0 #394c3518;animation:none}
+.theme-vindhya-passage .library .card h2{font-family:Georgia,serif;color:#354b38}
+.theme-vindhya-passage .lt-drawer{background:#293d32;border-inline-start:4px solid #d4a55c}
+.theme-vindhya-passage .reader{background:#fbf4e2;color:#2b342d}
+.theme-vindhya-passage .reader .reading-width{border-inline-start:3px double #a14f32;padding-inline-start:18px;background:linear-gradient(90deg,#a14f3208,transparent 40px)}
+.theme-vindhya-passage .lt-theme-choice{background:#f7f0dd;color:#28342b;border-radius:4px 14px 4px 14px}
+@media(prefers-reduced-motion:reduce){.theme-vindhya-passage .library .card{transition:none!important;transform:none!important}}
