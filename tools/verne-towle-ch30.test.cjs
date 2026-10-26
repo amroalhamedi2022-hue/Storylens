@@ -16,7 +16,7 @@ assert.equal(count,2133,'Chapter XXX must remain complete source text, not a syn
 assert.ok(body.startsWith('Three passengers including Passepartout had disappeared.'));
 assert.ok(body.endsWith('“Ah!” returned the impassible gentleman quietly.'));
 assert.ok(ch.paragraphs.every(p=>p.en.trim()&&p.ar.trim()&&/[ء-ي]/.test(p.ar)));
-assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/30 of 37/);assert.equal(story.terms.length,40);
+assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/30 of 37/);assert.equal(story.terms.length,41);
 for(const term of story.terms)assert.ok(body.toLowerCase().includes(term.term.toLowerCase()),'term absent from source: '+term.term);
 const shell=read('lingua-shell.js'),css=read('lingua-shell.css'),backup=read('data-backup.js');
 assert.ok(shell.includes("'snowbound-telegraph':'Snowbound Telegraph'")&&shell.includes("'snowbound-telegraph'"));
@@ -27,4 +27,4 @@ const scenes=artSandbox.window.StoryLensMakeEditorialArt([story]);
 assert.ok(scenes['around-the-world-in-eighty-days-towle_29']);
 assert.notEqual(scenes['around-the-world-in-eighty-days-towle_28'],scenes['around-the-world-in-eighty-days-towle_29']);
 assert.ok(decodeURIComponent(scenes['around-the-world-in-eighty-days-towle_29']).includes('FORT KEARNEY'));
-console.log('PASS Towle XXX: '+count+' source words, 67 aligned Arabic drafts, 40 source-bound terms, original offline scene and backup-safe theme.');
+console.log('PASS Towle XXX: '+count+' source words, 67 aligned Arabic drafts, 41 source-bound terms, original offline scene and backup-safe theme.');
