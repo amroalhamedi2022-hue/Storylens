@@ -906,3 +906,12 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 
 - **PASS source smoke:** executed the committed Chapter XXI production module and editorial-art generator in an isolated V8 runtime. 18 targeted assertions passed: 55 aligned paragraphs, 2,568 tokenized English words, 55 non-empty Arabic drafts, 33 source-occurring glossary entries, 21-of-37 metadata, script order, distinct encoded offline SVG, theme gallery label/style/reduced-motion and backup whitelist, test/workflow/asset wiring.
 - This is a direct source-runtime check, **not** native Node CI, Android Gradle/Chromium CI, APK verification or physical-device acceptance. Those gates remain **NOT VERIFIED / NOT TESTED** as recorded above.
+
+
+## 2026-10-26 — Chapter XXII + Yokohama Lantern (new functional batch)
+
+- Added the Standard Ebooks/Towle Chapter XXII source transcription (blob SHA-1 `1ae20fed64d05d867c7021cdfd1033a7fc71a879`) as 31 aligned English/Arabic-draft passages, 2,072 English words and 34 source-occurring contextual phrases. The Arabic is still an editorial draft, not independently proofread.
+- Added an original offline Yokohama harbour/lantern SVG and visually distinct **Yokohama Lantern** theme; Settings, theme gallery, reduced-motion fallback and backup allowlist are wired.
+- Added `tools/verne-towle-ch22.test.cjs` to the existing Android workflow and required APK asset list. The test checks script order, paragraph alignment, source-bound glossary entries, chapter progress (22/37), artwork, theme registration and backup compatibility.
+- **Purposeful CI question:** can the new source module be parsed, packaged into Android assets, and coexist with reader/navigation tests? Source-only inspection cannot verify Gradle packaging or the Chromium reader workflow, so this batch should run the existing Android CI.
+- **CI/APK/SHA-256:** NOT VERIFIED at documentation time. Pad 5 installation, frame timing/RAM, TalkBack, Arabic literary review and territory-specific redistribution rights remain **NOT TESTED**. Chapter XXII is 22 of 37, not a complete novel. Debug is not final; no main write/merge.
