@@ -2,7 +2,9 @@ name: Android APK • validate • unit tests
 on:
   push:
     branches: [main, automation/storylens-dictionary-saved-words-20261023]
+    paths-ignore: ['docs/**']
   pull_request:
+    paths-ignore: ['docs/**']
   workflow_dispatch:
 
 permissions:
@@ -176,6 +178,14 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne21-en.html" > /tmp/storylens-verne21-en-dom.html 2>/tmp/chrome-verne21-en-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne21-en-dom.html || { echo "Chapter XXI English reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne21-en-dom.html | head -1; exit 1; }
           echo "PASS: Chapter XXI English UI shows correct 21-of-37 continuation state"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne22-phone.png" "file://$PWD/app/src/main/assets/qa-verne22.html" >/tmp/chrome-verne22.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne22.html" > /tmp/storylens-verne22-dom.html 2>/tmp/chrome-verne22-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne22-dom.html || { echo "Chapter XXII Arabic reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne22-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXII Arabic reader shows honest 22-of-37 continuation state"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne22-en-phone.png" "file://$PWD/app/src/main/assets/qa-verne22-en.html" >/tmp/chrome-verne22-en.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne22-en.html" > /tmp/storylens-verne22-en-dom.html 2>/tmp/chrome-verne22-en-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne22-en-dom.html || { echo "Chapter XXII English reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne22-en-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXII English reader shows honest 22-of-37 continuation state"
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/word-phone.png" "file://$PWD/app/src/main/assets/qa-word.html" >/tmp/chrome-word.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/backup-phone.png" "file://$PWD/app/src/main/assets/qa-backup.html" >/tmp/chrome-backup.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-flow.html" > /tmp/storylens-flow-dom.html 2>/tmp/chrome-flow.log
