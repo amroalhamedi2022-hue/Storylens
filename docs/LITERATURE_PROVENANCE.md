@@ -224,3 +224,10 @@ merely because its title is present in a roadmap.
 - Added 34 source-occurring contextual phrases, an original local SVG depicting the party's dawn escape without graphic violence, and the distinct **Dawn Escape** theme. Theme selection and backup validation are updated; no remote image, font, audio or model file was added.
 - The episode portrays coercion and threatened widow-burning as danger in the historical plot, not as endorsement. Historical-sensitivity review, territory-specific redistribution clearance and independent Arabic literary review remain NOT TESTED.
 - Standard Ebooks editorial work is CC0; Towle's 1873 English translation is public domain in the United States. Other-territory rights clearance remains NOT TESTED.
+
+
+## Packaged draft: Around the World in Eighty Days — Chapter XIV (Towle; Standard Ebooks)
+
+- Source: [Standard Ebooks Towle transcription, Chapter XIV](https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-14.xhtml), English translation by George Makepeace Towle (1841–1893); Standard Ebooks editorial transcription is CC0. Territorial distribution review remains a separate gate.
+- Added 27 source-aligned English/Arabic draft paragraphs (1,917 English body words), 28 contextual entries found in the English text, an original offline Ganges/railway SVG, and a distinct Ganges Panorama theme registered in Settings and backup.
+- This is **14 of 37** chapters, not the complete novel. Arabic is a draft requiring independent literary/sensitivity review; Pad 5 and final release remain NOT TESTED.
