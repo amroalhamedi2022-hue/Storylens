@@ -995,3 +995,11 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **Purposeful build question:** does Chapter XXVIII, all 75 bilingual passages, the new local SVG and theme integrate into the Android APK, and do the Arabic/English Chromium journeys render 75 translations with honest 28-of-37 continuation? Source-only checks cannot prove packaged asset presence or browser rendering.
 - **CI/APK:** PENDING at this documentation checkpoint. Do not mark PASS until the branch workflow completes, the exact artifact is inspected and the APK SHA-256 is independently recomputed.
 - **NOT TESTED:** Xiaomi Pad 5 install/upgrade, real touch/RTL/TalkBack/contrast, device frame pacing/RAM/thermal, independent Arabic literary proofreading and territory-specific redistribution clearance. The Towle novel is 28/37 chapters, not complete; Debug is not final; no main write or PR merge.
+
+### Exact checkpoint record — 2026-10-26
+
+- Functional source commit: `9b1df385f44d5092062cc65a3bb44cfdabef20ca` (Chapter XXVIII asset/test/fixture workflow).
+- Current branch head also contains documentation-only provenance/acceptance updates.
+- Direct production-source V8 smoke: **PASS** — 28 loaded chapters, 75 bilingual passages, 2,444 English words, 40 source-occurring terms, unique offline SVG, theme/backup/reduced-motion and script order.
+- GitHub Actions run/check and APK artifact for this functional SHA: **NOT VERIFIED** by the available run/status lookup. Do not reuse an older chapter APK as proof for XXVIII.
+- Pad 5, TalkBack, FPS/RAM/thermal and Arabic editorial/legal review: **NOT TESTED**.
