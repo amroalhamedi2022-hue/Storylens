@@ -820,3 +820,12 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **NOT TESTED:** Xiaomi Pad 5 installation, physical-device frame times, RTL/TalkBack, keyboard and real touch acceptance, independent Arabic literary review, licensed recorded music/ambience and final signed release. Chromium is not a device benchmark.
 - **Visual review note:** the Chromium Chapter XVIII capture shows a strong focus outline around the chapter heading after scripted navigation. It may be intentional focus visibility; preserve accessibility, but review its contrast/geometry on Pad 5 before final UI sign-off.
 - No `main` writes or merge. Debug APK only; LT-01..LT-13 remain **IN PROGRESS**.
+
+
+## 2026-10-26 — Towle Chapter XIX / Victoria Harbour Dispatch (source + integration gate added)
+- **Source:** Standard Ebooks Towle XHTML Chapter XIX, blob SHA-1 `c1d30bba75d0a72629c6047d436c745ca8844b5e`. The chapter asset adds **71 aligned English/Arabic-draft paragraphs**, about 2,060 English words, and 34 contextual entries that must be found in the source body.
+- Added an original offline Victoria Harbour SVG scene and the distinct **Victoria Harbour Dispatch** theme (cobalt nautical chart / ivory dispatch paper / coral signal geometry). Theme is registered in Settings and the backup allowlist.
+- Added a dedicated Node source regression and Arabic + English Chromium reader fixtures, including the honest **19 of 37** progress state and disabled navigation to the not-yet-bundled Chapter XX. Android CI now checks the asset is packaged and runs both reader fixtures.
+- **Purposeful build question:** does the complete bilingual Chapter XIX, illustration, theme/backup registration, chapter navigation and both locale reader journeys integrate through Node, Chromium and Android packaging? Source-only checks cannot prove script load order, WebView/Chromium rendering or APK asset inclusion; one targeted CI build is justified.
+- **Source regression / CI / artifact verification: PENDING.** The Arabic is an editorial draft, not an independently reviewed translation. Towle's translation is public domain in the United States; territory-specific rights clearance remains **NOT TESTED**.
+- **NOT TESTED:** physical Xiaomi Pad 5 installation, scrolling/frame pacing, actual touch/edge-swipe behavior, RTL/TalkBack device checks, independent Arabic literary review and final signed release. Nineteen of 37 chapters are bundled, not the complete novel; Debug is not final.
