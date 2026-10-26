@@ -1731,3 +1731,23 @@ body.theme-typhoon-timetable::before,body.theme-typhoon-timetable::after{display
 .theme-typhoon-timetable .lt-drawer{background:#1a2a39;color:#f7f2e8;border-inline-start:4px solid #d9b66c}
 .theme-typhoon-timetable .lt-theme-choice{border-radius:2px;background:#f0ede4;color:#1b2c3d;border:1px solid #c75b4d}
 @media(prefers-reduced-motion:reduce){.theme-typhoon-timetable .library .card{transition:none!important;transform:none!important}}
+
+
+/* Victoria Harbour Dispatch — cobalt nautical charts, ivory dispatch paper and coral signal geometry. */
+.lt-theme-victoria-harbour-dispatch .lt-theme-swatch{background:repeating-linear-gradient(135deg,#173b62 0 9px,#f4efe3 9px 15px,#d85e4b 15px 18px,#173b62 18px 28px);border:1px solid #d6b66d}
+body.theme-victoria-harbour-dispatch{--body:#132b47;--card:#f4efe3;--ink:#172d48;--sub:#536a7d;--accent:#d85e4b;--reader:#fffdf7;--reader-ink:#1a2d45;color:#f6f0df;background:repeating-linear-gradient(0deg,#f4efe308 0 1px,transparent 1px 25px),radial-gradient(ellipse at 82% 12%,#d85e4b2b,transparent 28%),linear-gradient(140deg,#102744,#214c72 52%,#10253e)}
+body.theme-victoria-harbour-dispatch::before,body.theme-victoria-harbour-dispatch::after{display:none!important}
+.theme-victoria-harbour-dispatch .library .header{border-bottom:3px double #d6b66d;padding-bottom:17px;position:relative}
+.theme-victoria-harbour-dispatch .library .header::after{content:'VICTORIA HARBOUR · DISPATCH XIX';display:block;margin-top:8px;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.16em;color:#f1d58e}
+.theme-victoria-harbour-dispatch .library .brand{color:#f1d58e;letter-spacing:.15em}
+.theme-victoria-harbour-dispatch .library .storylens-hero{border:1px solid #d6b66d;border-radius:28px 3px 28px 3px;background:linear-gradient(118deg,#f4efe3 0 62%,#dbe5e8 62% 64%,#f4efe3 64%);box-shadow:8px 8px 0 #071a2b;color:#172d48}
+.theme-victoria-harbour-dispatch .library .storylens-hero h2{font-family:Georgia,serif;color:#b3483e}
+.theme-victoria-harbour-dispatch .library .card{border:1px solid #9fb3c0;border-radius:3px 18px 3px 18px;border-inline-start:5px solid #d85e4b;box-shadow:5px 6px 0 #071a2b55;animation:none}
+.theme-victoria-harbour-dispatch .library .card h2{font-family:Georgia,serif;color:#193b5b}
+.theme-victoria-harbour-dispatch .library .secondary,.theme-victoria-harbour-dispatch .library .pill{border-radius:3px 12px 3px 12px;border-color:#d85e4b;background:#f4efe3;color:#172d48}
+.theme-victoria-harbour-dispatch .reader{background:#fffdf7;color:#1a2d45;border-top:5px solid #d85e4b;box-shadow:0 12px 30px #071a2b30}
+.theme-victoria-harbour-dispatch .reader .reading-width{border-inline-start:4px solid #244f78;padding-inline-start:22px;background:repeating-linear-gradient(0deg,transparent 0 31px,#244f780a 31px 32px)}
+.theme-victoria-harbour-dispatch .lt-drawer{background:#122d4b;color:#fffdf7;border-inline-start:4px solid #d6b66d}
+.theme-victoria-harbour-dispatch .lt-theme-choice{border-radius:3px 14px 3px 14px;background:#f4efe3;color:#172d48;border:1px solid #d85e4b}
+@media(max-width:600px){.theme-victoria-harbour-dispatch .library .storylens-hero{grid-template-columns:minmax(0,1fr) 86px;padding:16px}.theme-victoria-harbour-dispatch .library .storylens-hero .hero-orb{width:78px;height:78px}}
+@media(prefers-reduced-motion:reduce){.theme-victoria-harbour-dispatch .library .card{transition:none!important;transform:none!important}}
