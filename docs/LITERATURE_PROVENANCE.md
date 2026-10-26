@@ -277,3 +277,12 @@ merely because its title is present in a roadmap.
 - **Arabic companion:** 71 aligned paragraph-level Arabic draft translations, not yet independently proofread by a literary editor. The chapter includes period colonial framing and historical depictions of opium use; the translation preserves the source's historical narrative and must not be read as endorsement or medical guidance.
 - **Vocabulary:** 34 context-bound terms/phrases; automated checks require each entry to occur in the English chapter body.
 - **Illustration:** original offline SVG “Victoria Harbour Dispatch”, generated as project artwork; no remote image or third-party illustration is used.
+
+## Chapter XX — “In which Fix comes face to face with Phileas Fogg”
+- **Source:** Standard Ebooks editorial transcription of George Makepeace Towle's 1873 English translation of Jules Verne, Chapter XX: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-20.xhtml
+- **Exact source blob SHA-1:** `844ca4176ab3330e01b2745b68a51c6737d66a94`.
+- **English:** 72 aligned paragraph entries, 1,744 words in the current committed transcription; CI source checks enforce key phrases and the chapter's source-bound vocabulary.
+- **Arabic:** 72 aligned companion draft passages; independent literary proofreading remains **NOT TESTED**.
+- **Vocabulary:** 33 contextual entries; two surface forms were corrected to match the source exactly (“shuffling his hat” and “venturing so far”). The test continues to require every glossary term to occur in the chapter body.
+- **Illustration/theme:** original offline Shanghai/Tankadere SVG scene and distinct **Shanghai Wind Ledger** theme, registered in Settings and backup. No remote image is required.
+- **Rights:** Standard Ebooks identifies its editorial contribution as CC0; the underlying 1873 Towle translation is treated as public domain in the United States. Territory-specific redistribution clearance remains **NOT TESTED**.

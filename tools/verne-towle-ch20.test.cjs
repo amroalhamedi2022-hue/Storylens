@@ -24,7 +24,7 @@ const words=(english.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.equal(chapter.paragraphs.length,72);
 assert.ok(words>=1700,'Chapter XX must be substantial source text, not a synopsis: '+words);
 assert.ok(chapter.paragraphs.every(p=>p.en.trim().length>0&&p.ar.trim().length>0&&/[\u0621-\u064A]/.test(p.ar)));
-for(const phrase of ['unconscious of the danger','characteristic serenity','the Carnatic had sailed the evening before','charter a vessel','pilot-boat','mortal suspense','currents run northward','master of the Tankadere','stupefying influence of the opium','bounded briskly forward over the waves'])
+for(const phrase of ['unconscious of the danger','characteristic serenity','the Carnatic had sailed the evening before','charter a vessel','pilot-boat','mortal suspense','currents run northward','master of the Tankadere','stupefying influence of the opium','bounded briskly forward over the waves','shuffling his hat','fear of venturing so far'])
  assert.ok(norm(english).includes(norm(phrase)),'missing source phrase: '+phrase);
 assert.equal(story.terms.length,67,'chapter XIX terms plus Chapter XX terms');
 for(const term of story.terms.slice(-33))assert.ok(norm(english).includes(norm(term.term)),'context term absent from source: '+term.term);

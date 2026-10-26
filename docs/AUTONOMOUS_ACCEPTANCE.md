@@ -867,3 +867,11 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 ### Chapter XIX Chromium visual inspection — 2026-10-26
 - Reviewed the actual Chapter XIX screenshots from [artifact 12645530424](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40311875239/artifacts/12645530424). The Victoria Harbour SVG is present, and the English/Arabic serial-progress labels render; the capture shows a visible focus rectangle around the chapter heading after scripted navigation.
 - Preserve keyboard/screen-reader focus visibility; **do not remove it merely to clean up the screenshot**. Review contrast and geometry on Xiaomi Pad 5 before deciding whether the outline should be refined. Chromium screenshot evidence is not device visual acceptance.
+
+## 2026-10-26 — Chapter XX source-bound vocabulary regression repair
+
+- **Detected by Android CI:** run [40318791346](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40318791346) failed during the curated-content gate, before Gradle or APK packaging. The production chapter's English text and bilingual alignment checks passed; two glossary lemmas were phrased differently from the exact source surface forms: “shuffle his hat” vs “shuffling his hat”, and “venture so far” vs “venturing so far”.
+- **Correction:** the two displayed glossary entries now use the exact source-occurring forms, without weakening the source-bound rule. The Chapter XX regression explicitly requires both source phrases and continues checking all 33 new terms against the chapter body.
+- **Content gate:** Chapter XX has 72 English/Arabic aligned paragraphs and 1,744 words in the committed transcription; Arabic is an unreviewed editorial draft. Shanghai Wind Ledger remains registered in Settings and backup, with local SVG art.
+- **Purposeful build question:** do the corrected production glossary and source-bound regression pass the complete Node content suite and then Android packaging/Chromium navigation? The prior failure stopped before those stages, so source-only checks cannot establish integration. A single targeted CI run is justified.
+- **Status at commit:** CI rerun pending; APK/artifact SHA, Pad 5 installation, RTL/TalkBack, frame pacing, independent Arabic proofreading and territory-specific redistribution review remain **NOT TESTED**. LT-01..LT-13 remain IN PROGRESS; Debug is not final. No main write or merge.
