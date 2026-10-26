@@ -1976,3 +1976,25 @@ body.theme-salt-lake-dispatch::before,body.theme-salt-lake-dispatch::after{displ
 .theme-salt-lake-dispatch .reader .reading-width{border-inline-start:4px solid #86adb1;padding-inline-start:20px;background:repeating-linear-gradient(0deg,#263b4c06 0 1px,transparent 1px 35px)}
 @media(max-width:600px){.theme-salt-lake-dispatch .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-salt-lake-dispatch .library .storylens-hero .hero-orb{width:70px;height:70px}}
 @media(prefers-reduced-motion:reduce){.theme-salt-lake-dispatch .library .card{transition:none!important;transform:none!important}}
+
+
+/* LT-13 batch XXVIII — Medicine Bow Crossing: engineering blueprint, winter slate and signal-red geometry. */
+.lt-theme-medicine-bow-crossing .lt-theme-swatch{background:linear-gradient(135deg,#e8edf0 0 24%,#273645 24% 53%,#c64235 53% 63%,#d8b56b 63%);border:2px solid #273645}
+body.theme-medicine-bow-crossing{--body:#e7edf0;--card:#fbfdff;--ink:#233342;--sub:#536879;--accent:#c64235;--reader:#f9fbfc;--reader-ink:#233342;color:var(--ink);background-color:#e7edf0;background-image:linear-gradient(#27364508 1px,transparent 1px),linear-gradient(90deg,#27364508 1px,transparent 1px);background-size:22px 22px}
+body.theme-medicine-bow-crossing::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;background:linear-gradient(115deg,transparent 0 48%,#c642350c 48% 49%,transparent 49% 100%);z-index:-1}
+body.theme-medicine-bow-crossing::after{display:none!important}
+.theme-medicine-bow-crossing .library .header{border-bottom:1px solid #273645;background:linear-gradient(90deg,#fbfdff,#d7e0e5);box-shadow:0 5px 0 #2736450a}
+.theme-medicine-bow-crossing .library .brand{color:#b5352d;letter-spacing:.15em;text-transform:uppercase;font-weight:800}
+.theme-medicine-bow-crossing .library .header h1{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-.045em;color:#233342}
+.theme-medicine-bow-crossing .library .storylens-hero{display:grid;grid-template-columns:minmax(0,1fr) 145px;align-items:center;border:1px solid #273645;border-radius:3px;background:linear-gradient(135deg,#fbfdff 0 66%,#d7e0e5 66%);box-shadow:6px 6px 0 #27364512;color:#233342;min-height:190px;padding:23px 26px;position:relative}
+.theme-medicine-bow-crossing .library .storylens-hero:after{content:"XXVIII / ENGINEERING NOTE";position:absolute;inset-inline-end:16px;top:10px;font:700 9px/1.2 ui-monospace,monospace;letter-spacing:.12em;color:#b5352d}
+.theme-medicine-bow-crossing .library .storylens-hero h2{font-family:Georgia,serif;color:#b5352d}
+.theme-medicine-bow-crossing .library .storylens-hero .hero-orb{position:relative;inset:auto;transform:none;width:132px;height:132px;border-radius:4px;opacity:1;border:1px solid #273645;background:linear-gradient(180deg,#cbd7df 0 44%,#f9fbfc 44% 49%,#273645 49% 57%,#c64235 57% 62%,#273645 62%);box-shadow:inset 0 0 0 6px #fbfdff}
+.theme-medicine-bow-crossing .library .storylens-hero .hero-orb-core{display:none}
+.theme-medicine-bow-crossing .library .card{border-radius:3px;border:1px solid #aebbc4;border-top:3px solid #c64235;box-shadow:3px 4px 0 #2736450b;background:#fbfdff}
+.theme-medicine-bow-crossing .library .card h3{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#233342}
+.theme-medicine-bow-crossing .library .secondary,.theme-medicine-bow-crossing .library .pill{border-radius:3px;border:1px solid #273645;background:#273645;color:#f9fbfc}
+.theme-medicine-bow-crossing .reader{border:1px solid #273645;border-top:6px solid #c64235;box-shadow:0 8px 20px #27364512;background:linear-gradient(180deg,#fbfdff,#f4f7f9)}
+.theme-medicine-bow-crossing .reader .reading-width{border-inline-start:3px solid #d8b56b;padding-inline-start:19px;background:linear-gradient(90deg,#27364505 1px,transparent 1px);background-size:32px 100%}
+@media(max-width:600px){.theme-medicine-bow-crossing .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-medicine-bow-crossing .library .storylens-hero .hero-orb{width:70px;height:70px}.theme-medicine-bow-crossing .library .storylens-hero:after{font-size:7px}}
+@media(prefers-reduced-motion:reduce){.theme-medicine-bow-crossing .library .card{transition:none!important;transform:none!important}}
