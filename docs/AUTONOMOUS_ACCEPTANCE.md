@@ -900,3 +900,9 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 
 - Latest functional/test head: `acfd5445af48d2d4e85ce035a1937cebeca6abe9`.
 - The GitHub connector returned no PR-triggered workflow run/status for that SHA at the time of this record. Therefore Android CI, packaged APK, SHA-256 and browser screenshots for Chapter XXI are **NOT VERIFIED**, not PASS. Existing Chapter XX artifact remains the last verified APK and does not contain Chapter XXI.
+
+
+### Chapter XXI direct V8 production smoke — 2026-10-26
+
+- **PASS source smoke:** executed the committed Chapter XXI production module and editorial-art generator in an isolated V8 runtime. 18 targeted assertions passed: 55 aligned paragraphs, 2,568 tokenized English words, 55 non-empty Arabic drafts, 33 source-occurring glossary entries, 21-of-37 metadata, script order, distinct encoded offline SVG, theme gallery label/style/reduced-motion and backup whitelist, test/workflow/asset wiring.
+- This is a direct source-runtime check, **not** native Node CI, Android Gradle/Chromium CI, APK verification or physical-device acceptance. Those gates remain **NOT VERIFIED / NOT TESTED** as recorded above.
