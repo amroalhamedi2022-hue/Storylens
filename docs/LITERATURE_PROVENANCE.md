@@ -253,3 +253,10 @@ merely because its title is present in a roadmap.
 - Added 25 source-aligned English/Arabic draft paragraphs (1,614 English words), 32 contextual entries found in the English text, an original offline Rangoon steamer SVG, and a distinct Rangoon Passage theme registered in Settings and backup.
 - This is 16 of 37 chapters, not the complete novel. The historical text contains period language about Indigenous peoples; the Arabic is a draft and requires independent literary/sensitivity review. Pad 5 and final release remain NOT TESTED.
 - Standard Ebooks editorial work is CC0; Towle's 1873 English translation is public domain in the United States. Territorial redistribution clearance remains NOT TESTED.
+
+
+## Chapter XVII — Singapore to Hong Kong
+- Exact English edition: Standard Ebooks editorial transcription of George Makepeace Towle's 1873 translation, source file `src/epub/text/chapter-17.xhtml`, blob SHA-1 `9032cb0cbc51867336e21dfd73885a2f8bee7c66`.
+- Source URL: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-17.xhtml
+- Standard Ebooks identifies its editorial transcription as CC0; the underlying Towle translation is treated as public domain in the United States. Territory-specific redistribution clearance remains NOT TESTED. Arabic paragraphs are editorial drafts pending independent review.
+- The Singapore Lantern scene is original local SVG artwork created for this project; no third-party image was copied.
