@@ -38,6 +38,6 @@ assert.ok(backup.includes("val==='typhoon-signal'"));
 const artContext={window:{}};
 vm.runInNewContext(read('editorial-art.js'),artContext,{filename:'editorial-art.js',timeout:5000});
 const art=artContext.window.StoryLensMakeEditorialArt([story]);
-assert.ok(art[story.id+'_20'].includes('TYPHOON SIGNAL · XXI'));
+assert.ok(decodeURIComponent(art[story.id+'_20'].split(',')[1]).includes('TYPHOON SIGNAL · XXI'));
 assert.notEqual(art[story.id+'_20'],art[story.id+'_19'],'new chapter needs distinct offline art');
 console.log('PASS Chapter XXI: '+words+' source words, '+chapter.paragraphs.length+' aligned bilingual passages, '+chapterTerms.length+' source-bound terms, distinct offline illustration/theme.');
