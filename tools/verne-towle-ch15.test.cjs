@@ -2,8 +2,9 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const assets=path.join(__dirname,'../app/src/main/assets'),read=n=>fs.readFileSync(path.join(assets,n),'utf8'),html=read('index.html');
 const fixtureBuilder=fs.readFileSync(path.join(__dirname,'make_browser_fixtures.py'),'utf8');
-assert.ok(fixtureBuilder.includes(`includes('Judge Obadiah')&&document.querySelector('.reader').textContent.includes('15 of 37')`),'Chapter XV browser fixture must query the rendered reader element');
-assert.ok(!fixtureBuilder.includes("reader.textContent.includes('15 of 37')"),'Chapter XV fixture must not reference an undefined reader variable');
+assert.ok(fixtureBuilder.includes('tests["verne15"] = r"""'),'Chapter XV must have a dedicated reader fixture, not a fragile string-derived copy');
+assert.ok(fixtureBuilder.includes("errors.push('full novel progress missing')"),'Chapter XV fixture must report a missing full-novel progress label');
+assert.ok(fixtureBuilder.includes("errors.push('false ending label present')"),'Chapter XV fixture must report a false end-of-book label');
 assert.ok(html.indexOf('classic-verne-towle-ch14.js')<html.indexOf('classic-verne-towle-ch15.js'));
 assert.ok(html.indexOf('classic-verne-towle-ch15.js')<html.indexOf('editorial-art.js'));
 assert.ok(html.includes('story.totalChapters||story.chapters.length'));
