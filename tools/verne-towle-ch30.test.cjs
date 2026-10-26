@@ -16,6 +16,8 @@ assert.equal(count,2133,'Chapter XXX must remain complete source text, not a syn
 assert.ok(body.startsWith('Three passengers including Passepartout had disappeared.'));
 assert.ok(body.endsWith('“Ah!” returned the impassible gentleman quietly.'));
 assert.ok(ch.paragraphs.every(p=>p.en.trim()&&p.ar.trim()&&/[ء-ي]/.test(p.ar)));
+assert.match(ch.paragraphs[1].ar,/الأربية/,'the anatomical groin passage must use the correct Arabic term');
+assert.ok(story.terms.some(t=>t.term==='groin'&&t.literal==='الأربية'),'contextual anatomy term must be available in the chapter glossary');
 assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/30 of 37/);assert.equal(story.terms.length,41);
 for(const term of story.terms)assert.ok(body.toLowerCase().includes(term.term.toLowerCase()),'term absent from source: '+term.term);
 const shell=read('lingua-shell.js'),css=read('lingua-shell.css'),backup=read('data-backup.js');
