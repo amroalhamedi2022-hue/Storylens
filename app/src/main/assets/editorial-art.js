@@ -390,7 +390,7 @@ function saltLakeDispatchScene(){
 }
 
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():chapter===19?shanghaiWindLedgerScene():chapter===20?typhoonSignalScene():chapter===21?yokohamaLanternScene():chapter===22?paperLanternCircusScene():chapter===23?pacificMeridianScene():chapter===24?civicPanoramaScene():chapter===25?prairieSignalScene():chapter===26?saltLakeDispatchScene():charingCrossDeparture();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():chapter===19?shanghaiWindLedgerScene():chapter===20?typhoonSignalScene():chapter===21?yokohamaLanternScene():chapter===22?paperLanternCircusScene():chapter===23?pacificMeridianScene():chapter===24?civicPanoramaScene():chapter===25?prairieSignalScene():chapter===27?medicineBowCrossingScene():chapter===26?saltLakeDispatchScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
@@ -440,6 +440,26 @@ function scene(story,chapter){
  '</svg>';
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
+
+function medicineBowCrossingScene(){
+ const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="A steam train crossing a damaged suspension bridge above a snowy river">
+ <defs><linearGradient id="mbc-sky" x2="0" y2="1"><stop stop-color="#273645"/><stop offset=".58" stop-color="#93a8b5"/><stop offset="1" stop-color="#edf2f4"/></linearGradient><linearGradient id="mbc-water" x2="0" y2="1"><stop stop-color="#6c8798"/><stop offset="1" stop-color="#dbe5ea"/></linearGradient></defs>
+ <rect width="1000" height="620" fill="url(#mbc-sky)"/><circle cx="780" cy="110" r="48" fill="#e4c77e" opacity=".9"/>
+ <path d="M0 245L115 150L205 218L335 105L438 220L555 130L675 223L810 115L930 220L1000 174V620H0Z" fill="#647a89"/>
+ <path d="M0 310L160 238L278 282L400 226L520 286L670 220L800 278L910 235L1000 268V620H0Z" fill="#344858"/>
+ <path d="M0 438Q170 402 340 435T670 426T1000 410V620H0Z" fill="url(#mbc-water)"/>
+ <path d="M0 490Q150 462 310 488T650 478T1000 465M0 530Q160 510 320 531T690 520T1000 512" stroke="#f8fbfc" stroke-width="4" opacity=".7" fill="none"/>
+ <path d="M115 312L885 312M150 290L150 382M850 290L850 382M150 290Q500 62 850 290" stroke="#d8b56b" stroke-width="5" fill="none"/>
+ <path d="M150 290L230 312L310 330L390 342L470 348L550 347L630 337L710 322L790 305L850 290" stroke="#273645" stroke-width="4" fill="none"/>
+ <path d="M150 312V395M230 312V400M310 330V405M390 342V409M470 348V412M550 347V410M630 337V407M710 322V402M790 305V396M850 312V388" stroke="#d8b56b" stroke-width="2"/>
+ <path d="M150 395L850 388" stroke="#273645" stroke-width="9"/><path d="M150 409L850 402" stroke="#c64235" stroke-width="4"/>
+ <g transform="translate(355 315)"><rect x="0" y="0" width="250" height="72" rx="5" fill="#233342" stroke="#e7edf0" stroke-width="3"/><rect x="22" y="-34" width="78" height="36" fill="#c64235" stroke="#233342" stroke-width="3"/><rect x="36" y="-26" width="22" height="18" fill="#e8edf0"/><rect x="66" y="-26" width="22" height="18" fill="#e8edf0"/><rect x="112" y="15" width="30" height="26" fill="#e4c77e"/><rect x="155" y="15" width="30" height="26" fill="#e4c77e"/><rect x="198" y="15" width="30" height="26" fill="#e4c77e"/><circle cx="48" cy="78" r="18" fill="#273645" stroke="#e7edf0" stroke-width="4"/><circle cx="205" cy="78" r="18" fill="#273645" stroke="#e7edf0" stroke-width="4"/><path d="M10 8L-18 -18M-18 -18L-34 -8" stroke="#f9fbfc" stroke-width="7" stroke-linecap="round" opacity=".7"/></g>
+ <path d="M74 255V330" stroke="#273645" stroke-width="10"/><rect x="52" y="240" width="44" height="40" rx="3" fill="#c64235" stroke="#f9fbfc" stroke-width="3"/><circle cx="74" cy="260" r="9" fill="#f9fbfc"/>
+ <path d="M75 338L92 355M90 339L74 357" stroke="#c64235" stroke-width="5"/><path d="M640 160L672 188M672 160L640 188" stroke="#f9fbfc" stroke-width="3" opacity=".8"/>
+ <text x="500" y="575" text-anchor="middle" font-family="ui-monospace,monospace" font-size="25" font-weight="700" letter-spacing="3" fill="#f9fbfc">MEDICINE BOW CROSSING · XXVIII</text></svg>`;
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
 global.StoryLensMakeEditorialArt=function(stories){
  const assets={};
  for(const s of stories)for(let c=0;c<s.chapters.length;c++)assets[s.id+'_'+c]=scene(s,c);
