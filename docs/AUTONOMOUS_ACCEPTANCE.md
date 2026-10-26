@@ -928,3 +928,11 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS — independent APK SHA-256:** [Debug artifact 12660114191](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40344930773/artifacts/12660114191) contains `app-debug.apk` (4,604,553 bytes), SHA-256 `c30c43b724388e3dc149b413cf8fc7d0d2fb416760cb1a275d62c1b475bbe131`; independently recomputed hash matches `APK_SHA256.txt`. Verified Chapter XXIII module, index, artwork, theme CSS and theme catalog are packaged; no GGUF/PDF payload is present.
 - **PASS — Chromium evidence:** [screenshot artifact 12660888022](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40344930773/artifacts/12660888022) contains `verne22-phone.png`, `verne22-en-phone.png`, `verne23-phone.png` and `verne23-en-phone.png`. These are runner/browser captures, not Xiaomi Pad 5 screenshots.
 - **NOT TESTED:** Xiaomi Pad 5 install/upgrade, real touch/RTL/TalkBack/contrast, frame pacing/RAM/thermal, independent Arabic literary proofreading and territory-specific redistribution clearance. Chapter XXIII brings the bundled novel to 23 of 37 chapters; Debug is not final. No main write/merge.
+
+
+## 2026-10-26 — Chapter XXIV + Pacific Meridian (functional CI checkpoint)
+
+- **Purposeful build question:** do the full source-transcribed Chapter XXIV (36 aligned paragraphs, 1,955 English words), 38 source-bound terms, new offline SVG, selectable theme/backup contract, chapter navigation, and Arabic/English Chromium fixtures integrate into the APK? Source-only checks cannot verify Android asset packaging or actual Chromium rendering.
+- **Source:** Standard Ebooks Towle transcription, Chapter XXIV; upstream blob SHA-1 dd14ef8731bcc974e5d7c8f025f50d408f58badc; Arabic is a draft requiring independent literary review.
+- **Checkpoint status before CI:** source content/test wiring prepared; CI/APK/checksum/browser evidence PENDING. Do not infer pass until the new run completes and its APK SHA-256 is independently checked.
+- **NOT TESTED:** Xiaomi Pad 5 installation/upgrade, real touch/RTL/TalkBack/contrast, frame pacing/RAM/thermal, independent Arabic proofreading and territory-specific redistribution clearance. Chapter XXIV is 24/37, not the complete novel.

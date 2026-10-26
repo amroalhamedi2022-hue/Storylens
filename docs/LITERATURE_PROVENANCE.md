@@ -319,3 +319,12 @@ merely because its title is present in a roadmap.
 - **Vocabulary:** 35 contextual entries; the regression checks every surface phrase against the English chapter body.
 - **Illustration/theme:** original offline SVG of the travelling circus’s paper-lantern stage and acrobatic pyramid; distinct **Paper Lantern Circus** theme registered in Settings, reduced-motion styling and backup allowlist.
 - **Rights:** Standard Ebooks dedicates its editorial contribution to CC0 and the underlying 1873 Towle translation is treated as public domain in the United States. Territory-specific redistribution clearance remains **NOT TESTED**.
+
+
+## 2026-10-26 — Towle Chapter XXIV: Pacific crossing and the Golden Gate
+
+- **Source:** Standard Ebooks editorial transcription of George Makepeace Towle's 1873 English translation of Jules Verne, Chapter XXIV: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-24.xhtml
+- **Upstream Git blob SHA-1:** dd14ef8731bcc974e5d7c8f025f50d408f58badc; 36 narrative paragraphs and 1,955 English words after XHTML markup/entity normalization. Standard Ebooks' editorial transcription is CC0; the underlying 1873 translation is public domain in the United States. Territory-specific rights remain a separate review gate.
+- Added 36 aligned Arabic companion drafts, 38 source-occurring lexical/idiom entries, an original offline SVG of a nineteenth-century paddle steamer approaching the Golden Gate headlands (no anachronistic bridge), and the distinct Pacific Meridian theme with Settings/gallery/reduced-motion/backup registration.
+- Source, bilingual alignment, word count, glossary occurrences, art uniqueness and theme registration are covered by tools/verne-towle-ch24.test.cjs. Arabic literary review and rights clearance remain NOT TESTED until independently reviewed.
+- Chapter XXIV is 24 of 37; the novel remains incomplete. Device reading/performance/accessibility checks remain NOT TESTED.

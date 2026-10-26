@@ -327,8 +327,27 @@ function paperLanternCircusScene(){
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
 
+
+function pacificMeridianScene(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="A nineteenth-century paddle steamer crossing the Pacific toward the Golden Gate headlands">'+
+ '<defs><linearGradient id="pm-sky" x2="0" y2="1"><stop stop-color="#d9e6df"/><stop offset=".68" stop-color="#e9d5ad"/><stop offset="1" stop-color="#c58b58"/></linearGradient><linearGradient id="pm-sea" x2="0" y2="1"><stop stop-color="#3b7781"/><stop offset="1" stop-color="#102f42"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#pm-sky)"/><circle cx="730" cy="165" r="86" fill="#f6f0d9" opacity=".8"/>'+
+ '<path d="M0 330Q115 285 225 333T450 325T690 333T1000 310V620H0Z" fill="url(#pm-sea)"/>'+
+ '<path d="M0 365Q120 330 235 369T470 361T710 370T1000 350M0 420Q150 390 290 425T570 418T850 427T1000 414M0 490Q140 465 285 495T570 486T820 497T1000 480" fill="none" stroke="#b7d8cf" stroke-width="5" opacity=".55"/>'+
+ '<path d="M0 326L110 245L205 278L290 225L380 319Z" fill="#8b8d77"/><path d="M650 320L735 245L810 270L892 205L1000 300V350Z" fill="#647a72"/>'+
+ '<path d="M0 326L110 245L205 278L290 225L380 319M650 320L735 245L810 270L892 205L1000 300" fill="none" stroke="#e9d5ad" stroke-width="6"/>'+
+ '<g stroke="#183a4b" stroke-width="7" fill="none"><path d="M425 330V112M510 322V135M590 325V166"/><path d="M425 130L355 245H425ZM425 155L485 244H425ZM510 152L458 260H510ZM510 176L567 260H510ZM590 184L548 275H590Z" fill="#f5ead1" stroke="#9b754b" stroke-width="4"/></g>'+
+ '<path d="M300 345L690 345L635 412L370 412Z" fill="#1b3442" stroke="#d3ae75" stroke-width="7"/>'+
+ '<rect x="405" y="300" width="178" height="45" rx="5" fill="#f0d7a5" stroke="#9d7446" stroke-width="5"/><rect x="465" y="263" width="58" height="38" fill="#a95f42" stroke="#f0d7a5" stroke-width="4"/>'+
+ '<path d="M355 355Q320 380 355 405Q390 380 355 355M645 355Q610 380 645 405Q680 380 645 355" fill="#d8b06e" stroke="#183a4b" stroke-width="7"/>'+
+ '<path d="M375 430Q500 455 630 430" fill="none" stroke="#f0d7a5" stroke-width="5" stroke-dasharray="10 12"/>'+
+ '<g transform="translate(825 82)"><circle cx="0" cy="0" r="52" fill="#f7f0dc" stroke="#a86b42" stroke-width="5"/><circle cx="0" cy="0" r="37" fill="none" stroke="#2f6570" stroke-width="2"/><path d="M0 -45L7 -7L0 0L-7 -7Z" fill="#a64f39"/><path d="M0 45L7 7L0 0L-7 7Z" fill="#2f6570"/><path d="M-45 0H45M0 -45V45" stroke="#2f6570" stroke-width="2" opacity=".65"/></g>'+
+ '<path d="M35 36H270M35 49H230M35 62H190" stroke="#315e66" stroke-width="3" opacity=".5"/>'+
+ '<text x="500" y="570" text-anchor="middle" font-family="Georgia,serif" font-size="27" letter-spacing="4" fill="#f5ead1">PACIFIC MERIDIAN · XXIV</text></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():chapter===19?shanghaiWindLedgerScene():chapter===20?typhoonSignalScene():chapter===21?yokohamaLanternScene():chapter===22?paperLanternCircusScene():charingCrossDeparture();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():chapter===19?shanghaiWindLedgerScene():chapter===20?typhoonSignalScene():chapter===21?yokohamaLanternScene():chapter===22?paperLanternCircusScene():chapter===23?pacificMeridianScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';

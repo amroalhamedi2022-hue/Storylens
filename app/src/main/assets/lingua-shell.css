@@ -1900,3 +1900,19 @@ body.theme-paper-lantern-circus::before,body.theme-paper-lantern-circus::after{d
 .theme-paper-lantern-circus .lt-theme-choice{border-radius:6px 20px 6px 20px;background:#302449;color:#fff0d0;border:1px solid #efcf83}
 @media(max-width:600px){.theme-paper-lantern-circus .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-paper-lantern-circus .library .storylens-hero .hero-orb{width:70px;height:70px}}
 @media(prefers-reduced-motion:reduce){.theme-paper-lantern-circus .library .card{transition:none!important;transform:none!important}}
+
+/* LT-13 batch XXIV — Pacific Meridian: cream navigation charts, teal sea and copper route marks. */
+.lt-theme-pacific-meridian .lt-theme-swatch{background:radial-gradient(circle at 50% 50%,#f7f0dc 0 20%,#c58b58 21% 24%,transparent 25%),repeating-conic-gradient(from 0deg,#173b4b 0 9deg,#e9d5ad 9deg 10deg,#3b7781 10deg 20deg);border:2px solid #c58b58}
+body.theme-pacific-meridian{--body:#dce7e1;--card:#f7f0dc;--ink:#18333d;--sub:#526e72;--accent:#a95f42;--reader:#fbf7ed;--reader-ink:#18333d;color:var(--ink);background:linear-gradient(135deg,#dce7e1 0 47%,#cbded8 47% 53%,#dce7e1 53%),repeating-linear-gradient(0deg,#173b4b0b 0 1px,transparent 1px 26px)}
+body.theme-pacific-meridian::before,body.theme-pacific-meridian::after{display:none!important}
+.theme-pacific-meridian .library .header{border-bottom:2px solid #a95f42;padding-bottom:12px;background:linear-gradient(90deg,transparent,#f7f0dc99,transparent)}
+.theme-pacific-meridian .library .brand{color:#a95f42;letter-spacing:.09em}
+.theme-pacific-meridian .library .storylens-hero{display:grid;grid-template-columns:minmax(0,1fr) 150px;align-items:center;border:1px solid #a95f42;border-radius:3px;background:repeating-linear-gradient(0deg,#f7f0dc 0 31px,#e2d1ad 31px 32px);color:#18333d;min-height:190px;padding:23px 27px;box-shadow:5px 5px 0 #173b4b19}
+.theme-pacific-meridian .library .storylens-hero h2{font-family:Georgia,serif;color:#a95f42}
+.theme-pacific-meridian .library .storylens-hero .hero-orb{position:relative;inset:auto;transform:none;width:136px;height:136px;border-radius:50%;opacity:1;border:4px double #a95f42;background:radial-gradient(circle at center,#f7f0dc 0 23%,#c58b58 24% 27%,#3b7781 28% 30%,transparent 31%),repeating-conic-gradient(#173b4b 0 8deg,#dce7e1 8deg 10deg);box-shadow:inset 0 0 0 8px #f7f0dc}
+.theme-pacific-meridian .library .storylens-hero .hero-orb-core{display:none}
+.theme-pacific-meridian .library .card{border-radius:4px;border:1px solid #9cb9b4;border-inline-start:5px solid #a95f42;box-shadow:3px 4px 0 #18333d14}
+.theme-pacific-meridian .library .secondary,.theme-pacific-meridian .library .pill{border-radius:3px;border:1px solid #315e66;background:#f7f0dc;color:#18333d}
+.theme-pacific-meridian .reader{border-top:4px solid #a95f42;box-shadow:inset 0 0 0 1px #d5bd91}
+@media(max-width:600px){.theme-pacific-meridian .library .storylens-hero{grid-template-columns:minmax(0,1fr) 82px;padding:16px}.theme-pacific-meridian .library .storylens-hero .hero-orb{width:76px;height:76px}}
+@media(prefers-reduced-motion:reduce){.theme-pacific-meridian .library .card{transition:none!important;transform:none!important}}
