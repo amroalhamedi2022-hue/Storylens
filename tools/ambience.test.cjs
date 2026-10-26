@@ -44,7 +44,7 @@ assert.equal(audio.isPlaying(),false);
 assert.equal(audio.SCENES.length,24,'20 original ambience scenes plus four original melodic presets');
 assert.equal(audio.SCENES.filter(s=>s.type==='music').length,4,'four presets must generate a real note sequence');
 assert.equal(audio.SCENES.filter(s=>s.type==='ambience').length,20,'all original ambience scenes remain available');
-assert.equal(new Set(audio.SCENES.map(s=>s.id)).size,20,'distinct preset identifiers');
+assert.equal(new Set(audio.SCENES.map(s=>s.id)).size,24,'all ambience and melodic preset identifiers are distinct');
 assert.ok(audio.SCENES.every(s=>s.en&&s.ar),'bilingual scene labels');
 assert.equal(audio.selectScene('evil'),false);
 assert.equal(audio.selectScene('ocean'),true);
