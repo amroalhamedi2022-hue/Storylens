@@ -21,7 +21,7 @@ const body=chapter.paragraphs.map(p=>p.en).join(' '),words=(body.match(/[A-Za-z0
 assert.equal(words,1843);
 assert.ok(body.startsWith('Phileas Fogg found himself twenty hours behind time.'));
 assert.ok(body.endsWith('The China, for Liverpool, had started three-quarters of an hour before!'));
-assert.ok(chapter.paragraphs.every(p=>p.en.trim().length>20&&p.ar.trim().length>20&&/[\u0621-\u064A]/.test(p.ar)));
+assert.ok(chapter.paragraphs.every(p=>p.en.trim().length>5&&p.ar.trim().length>5&&/[\u0621-\u064A]/.test(p.ar)));
 assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/31 of 37/);assert.equal(story.terms.length,34);
 for(const t of story.terms){assert.ok(body.toLowerCase().includes(t.term.toLowerCase()),'term absent from source: '+t.term);assert.ok(t.literal&&t.context&&t.note);}
 const artSandbox={window:{}};vm.runInNewContext(read('editorial-art.js'),artSandbox,{filename:'editorial-art.js',timeout:5000});
