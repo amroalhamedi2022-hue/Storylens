@@ -1840,3 +1840,22 @@ body.theme-shanghai-wind-ledger::before,body.theme-shanghai-wind-ledger::after{d
 .theme-shanghai-wind-ledger .lt-theme-choice{border-radius:3px;background:#f8f0d9;color:#1e3d48;border:1px solid #c77b4e}
 @media(max-width:600px){.theme-shanghai-wind-ledger .library .storylens-hero{grid-template-columns:minmax(0,1fr) 86px;padding:16px}.theme-shanghai-wind-ledger .library .storylens-hero .hero-orb{width:78px;height:78px}}
 @media(prefers-reduced-motion:reduce){.theme-shanghai-wind-ledger .library .card{transition:none!important;transform:none!important}}
+
+/* LT-13: Typhoon Signal — storm-chart geometry, signal-red markers and a pale logbook reader. */
+.lt-theme-typhoon-signal .lt-theme-swatch{background:repeating-linear-gradient(145deg,#101f30 0 8px,#526b7b 8px 13px,#d65f55 13px 17px,#e2c47b 17px 20px,#101f30 20px 29px);border:1px solid #d65f55}
+body.theme-typhoon-signal{--body:#101b2a;--card:#1c2d3e;--ink:#e8edf0;--sub:#a8b7c3;--accent:#d65f55;--reader:#f4efe4;--reader-ink:#202d3a;color:#e8edf0;background:repeating-linear-gradient(135deg,#d65f550a 0 2px,transparent 2px 22px),radial-gradient(ellipse at 82% 8%,#526b7b66,transparent 42%),#101b2a}
+body.theme-typhoon-signal::before,body.theme-typhoon-signal::after{display:none!important}
+.theme-typhoon-signal .library .header{border-bottom:3px double #d6bd7b;padding-bottom:14px}
+.theme-typhoon-signal .library .header::after{content:'TYPHOON SIGNAL · XXI';display:block;margin-top:9px;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.17em;color:#e2c47b}
+.theme-typhoon-signal .library .brand{color:#e8edf0;letter-spacing:.09em}
+.theme-typhoon-signal .library .storylens-hero{border:1px solid #d6bd7b;border-radius:2px 22px 2px 22px;background:linear-gradient(135deg,#1c2d3e 0 64%,#526b7b 64% 76%,#d65f55 76%);box-shadow:0 10px 0 #030a1280;color:#f4efe4}
+.theme-typhoon-signal .library .storylens-hero h2{font-family:Georgia,serif;color:#f0d28b}
+.theme-typhoon-signal .library .card{border:1px solid #526b7b;border-radius:2px 18px 2px 18px;border-inline-start:5px solid #d65f55;background:linear-gradient(150deg,#1c2d3e,#23384a);box-shadow:0 7px 0 #030a1250;color:#e8edf0;animation:none}
+.theme-typhoon-signal .library .card h2{font-family:Georgia,serif;color:#f0d28b}
+.theme-typhoon-signal .library .secondary,.theme-typhoon-signal .library .pill{border-radius:2px 12px 2px 12px;border:1px solid #d6bd7b;background:#1c2d3e;color:#f4efe4}
+.theme-typhoon-signal .reader{background:#f4efe4;color:#202d3a;border-top:5px solid #d65f55;box-shadow:0 10px 30px #030a1240}
+.theme-typhoon-signal .reader .reading-width{border-inline-start:5px solid #d65f55;padding-inline-start:22px;background:repeating-linear-gradient(0deg,transparent 0 33px,#526b7b12 33px 34px)}
+.theme-typhoon-signal .lt-drawer{background:#101f30;color:#f4efe4;border-inline-start:4px solid #d65f55}
+.theme-typhoon-signal .lt-theme-choice{border-radius:2px 12px 2px 12px;background:#1c2d3e;color:#f4efe4;border:1px solid #d6bd7b}
+@media(max-width:600px){.theme-typhoon-signal .library .storylens-hero{grid-template-columns:minmax(0,1fr) 84px;padding:16px}.theme-typhoon-signal .library .storylens-hero .hero-orb{width:76px;height:76px}}
+@media(prefers-reduced-motion:reduce){.theme-typhoon-signal .library .card{transition:none!important;transform:none!important}}
