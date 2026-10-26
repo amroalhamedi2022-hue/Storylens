@@ -163,3 +163,10 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - **PASS CI/build:** [run 40371715604](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40371715604) on source/test SHA 942bf86e4ac0c9727f54aa5d1e136336f83eddb4; content/Node regressions, Gradle tests/build, APK asset verification and Arabic/English Chromium Chapter XXV–XXVI journeys passed.
 - **PASS independent APK SHA-256:** 8c41d05ea0239c11ecb948872e68002ac6a5219439db4c613c637bf9bb543709 (4,653,761 bytes), artifact 12671654499. Bilingual progress label and separate available-chapter note have computed-style and placement assertions.
 - **NOT TESTED:** Xiaomi Pad 5 install/upgrade, actual touch gestures, real-device RTL/TalkBack/contrast, frame pacing/RAM/thermal, independent Arabic literary proofreading and territory-specific redistribution clearance. Chapter XXVI brings the bundled novel to 26/37; LT-01..LT-13 remain IN PROGRESS.
+
+
+## 2026-10-26 — Chapter XXVII continuation batch
+- Added the complete Standard Ebooks/Towle Chapter XXVII source text: 25 aligned English/Arabic-draft passages, 1,952 normalized English words and 38 source-occurring vocabulary/phrase cards.
+- Added an original offline SVG of the train beside the Great Salt Lake and a visually distinct **Salt Lake Dispatch** theme with Settings-gallery, persistence and backup-whitelist wiring.
+- Updated chapter order, truthful progress, Arabic/English Chromium fixtures and required APK asset/test gates. The build is purposeful because source-only checks cannot prove Android packaging or reader rendering.
+- Arabic independent proofreading, territory-specific redistribution rights, Xiaomi Pad 5 interaction/accessibility/performance and final signing remain separate acceptance gates.

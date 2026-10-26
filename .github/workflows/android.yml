@@ -93,6 +93,7 @@ jobs:
           node tools/verne-towle-ch24.test.cjs
           node tools/verne-towle-ch25.test.cjs
           node tools/verne-towle-ch26.test.cjs
+          node tools/verne-towle-ch27.test.cjs
           node tools/chapter-navigation.test.cjs
           node tools/inline-illustrations.test.cjs
           node tools/assets.test.cjs
@@ -110,7 +111,7 @@ jobs:
           APK="$(find app/build/outputs/apk/debug -type f -name '*.apk' | head -1)"
           test -n "$APK"
           sha256sum "$APK" | tee app/build/outputs/apk/debug/APK_SHA256.txt
-          for file in index.html lexicon-extra.js liquid-aurora.css lingua-lookup.js reader-experience.js reader-experience.css editorial-stories-a.js editorial-stories-b.js editorial-stories-c.js novella-salt-meridian.js classic-verne-towle-ch01.js classic-verne-towle-ch02.js classic-verne-towle-ch03.js classic-verne-towle-ch04.js classic-verne-towle-ch05.js classic-verne-towle-ch06.js classic-verne-towle-ch07.js classic-verne-towle-ch08.js classic-verne-towle-ch09.js classic-verne-towle-ch10.js classic-verne-towle-ch11.js classic-verne-towle-ch12.js classic-verne-towle-ch13.js classic-verne-towle-ch14.js classic-verne-towle-ch15.js classic-verne-towle-ch16.js classic-verne-towle-ch17.js classic-verne-towle-ch18.js classic-verne-towle-ch19.js classic-verne-towle-ch20.js classic-verne-towle-ch21.js classic-verne-towle-ch22.js classic-verne-towle-ch23.js classic-verne-towle-ch24.js classic-verne-towle-ch25.js classic-verne-towle-ch26.js lingua-chapter-navigation.js editorial-art.js library-experience.js library-experience.css data-backup.js data-backup.css lingua-shell.js lingua-shell.css lingua-ambience.js lingua-i18n.js freedict-en-ar.js LICENSE_FREEDICT.txt; do
+          for file in index.html lexicon-extra.js liquid-aurora.css lingua-lookup.js reader-experience.js reader-experience.css editorial-stories-a.js editorial-stories-b.js editorial-stories-c.js novella-salt-meridian.js classic-verne-towle-ch01.js classic-verne-towle-ch02.js classic-verne-towle-ch03.js classic-verne-towle-ch04.js classic-verne-towle-ch05.js classic-verne-towle-ch06.js classic-verne-towle-ch07.js classic-verne-towle-ch08.js classic-verne-towle-ch09.js classic-verne-towle-ch10.js classic-verne-towle-ch11.js classic-verne-towle-ch12.js classic-verne-towle-ch13.js classic-verne-towle-ch14.js classic-verne-towle-ch15.js classic-verne-towle-ch16.js classic-verne-towle-ch17.js classic-verne-towle-ch18.js classic-verne-towle-ch19.js classic-verne-towle-ch20.js classic-verne-towle-ch21.js classic-verne-towle-ch22.js classic-verne-towle-ch23.js classic-verne-towle-ch24.js classic-verne-towle-ch25.js classic-verne-towle-ch26.js classic-verne-towle-ch27.js lingua-chapter-navigation.js editorial-art.js library-experience.js library-experience.css data-backup.js data-backup.css lingua-shell.js lingua-shell.css lingua-ambience.js lingua-i18n.js freedict-en-ar.js LICENSE_FREEDICT.txt; do
             unzip -Z1 "$APK" | grep -Fqx "assets/$file" || { echo "MISSING assets/$file"; exit 1; }
           done
           # This purposeful build checks that Android AAPT2 compiled the new
@@ -225,6 +226,15 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne26-en.html" > /tmp/storylens-verne26-en-dom.html 2>/tmp/chrome-verne26-en-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne26-en-dom.html || { echo "Chapter XXVI English reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne26-en-dom.html | head -1; exit 1; }
           echo "PASS: Chapter XXVI English reader shows honest 26-of-37 continuation state"
+
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne27-phone.png" "file://$PWD/app/src/main/assets/qa-verne27.html" >/tmp/chrome-verne27.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne27.html" > /tmp/storylens-verne27-dom.html 2>/tmp/chrome-verne27-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne27-dom.html || { echo "Chapter XXVII Arabic reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne27-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXVII Arabic reader shows honest 27-of-37 continuation state"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne27-en-phone.png" "file://$PWD/app/src/main/assets/qa-verne27-en.html" >/tmp/chrome-verne27-en.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne27-en.html" > /tmp/storylens-verne27-en-dom.html 2>/tmp/chrome-verne27-en-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne27-en-dom.html || { echo "Chapter XXVII English reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne27-en-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXVII English reader shows honest 27-of-37 continuation state"
 
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/word-phone.png" "file://$PWD/app/src/main/assets/qa-word.html" >/tmp/chrome-word.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/backup-phone.png" "file://$PWD/app/src/main/assets/qa-backup.html" >/tmp/chrome-backup.log 2>&1

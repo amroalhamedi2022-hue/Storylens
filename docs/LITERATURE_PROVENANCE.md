@@ -104,7 +104,7 @@ merely because its title is present in a roadmap.
   distribution, and each image's own rights require independent checking
   before public APK distribution. Avoid carrying Project Gutenberg branding
   or license text into an app without reviewing their redistribution terms.
-- **Current package status supersedes the historical checkpoint below: Chapters I–IX are packaged as bilingual drafts; Chapters X–XXXVII are NOT PACKAGED.** Do not claim the complete novel is available offline in Lingua Tales.
+- **Current package status supersedes the historical checkpoint below: Chapters I–XXVII are packaged as bilingual drafts; Chapters XXVIII–XXXVII are NOT PACKAGED.** Do not claim the complete novel is available offline in Lingua Tales.
 - Next coherent editorial milestone: finish redistribution-territory review,
   add contiguous authentic Chapters IV onward with fresh Arabic
   paragraph translations and source-to-paragraph QA, retain chapter numbering,
@@ -350,3 +350,13 @@ merely because its title is present in a roadmap.
 - Arabic: 25 aligned translation drafts created for learning use. They are not independently proofread and must not be described as professionally reviewed.
 - Assets: original offline SVG artwork for the Sierra Nevada locomotive/buffalo scene; no third-party image or remote asset.
 - Acceptance: the chapter regression verifies the source pin, paragraph count, word count, 36 source-occurring glossary surfaces, script order and unique art. Android/Chromium CI and device checks are tracked in docs/AUTONOMOUS_ACCEPTANCE.md.
+
+
+## Packaged draft: Around the World in Eighty Days — Chapter XXVII (Towle; Standard Ebooks transcription)
+
+- Asset: `app/src/main/assets/classic-verne-towle-ch27.js`; 25 source-aligned English paragraphs, 25 Arabic translation drafts, 1,952 normalized English words and 38 source-occurring contextual terms.
+- English source: Standard Ebooks repository commit `56c82e97ff5d4f8950afca05b71af72688a8da34`, `src/epub/text/chapter-27.xhtml`, blob `2475c77964fd4cdaf1a83b3e60a6c905e89d66f7`. The repository's editorial contribution is CC0; the Towle translation is treated as public domain in the USA. Territory-specific distribution clearance remains NOT TESTED.
+- Art: one original offline SVG of a nineteenth-century train beside the Great Salt Lake; no third-party image is bundled.
+- Theme: **Salt Lake Dispatch**, a distinct salt-paper/indigo/copper visual composition, registered in Settings and the backup allowlist.
+- Arabic translation is a draft and requires independent bilingual literary review. Period-specific religious/social claims remain attributed to the novel's narrator and are not endorsed as current factual statements.
+- Status at source checkpoint: 27 of 37 chapters packaged; Android CI, independent APK checksum and real-device acceptance must be recorded separately.
