@@ -11,6 +11,7 @@ tests={
  "reader":"""openStory('last-passenger');document.body.setAttribute('data-stl-screenshot','reader');""",
  "word":"""openStory('last-passenger');document.querySelector('.reader .tok')?.click();document.body.setAttribute('data-stl-screenshot','word');""",
  "backup":"""StoryLensBackup.open();document.body.setAttribute('data-stl-screenshot','backup');""",
+ "verne14":r"""(function(){const errors=[];try{openStory('around-the-world-in-eighty-days-towle');stlChapter(13)}catch(e){errors.push(e.message)}const reader=document.querySelector('.reader');const ok=state.page==='reader'&&state.chapter===13&&state.story?.id==='around-the-world-in-eighty-days-towle'&&!!reader&&reader.textContent.includes('Calcutta');document.body.setAttribute('data-storylens-qa',ok?'PASS':'FAIL');document.body.setAttribute('data-storylens-qa-errors',errors.join(' | '));document.body.setAttribute('data-stl-screenshot','verne14')})();""",
  "flow":r"""
 (function(){
  const passes=[],errors=[];
