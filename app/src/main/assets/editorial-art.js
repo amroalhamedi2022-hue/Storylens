@@ -390,7 +390,7 @@ function saltLakeDispatchScene(){
 }
 
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():chapter===19?shanghaiWindLedgerScene():chapter===20?typhoonSignalScene():chapter===21?yokohamaLanternScene():chapter===22?paperLanternCircusScene():chapter===23?pacificMeridianScene():chapter===24?civicPanoramaScene():chapter===25?prairieSignalScene():chapter===29?snowboundTelegraphScene():chapter===28?plumCreekRailwayScene():chapter===27?medicineBowCrossingScene():chapter===26?saltLakeDispatchScene():charingCrossDeparture();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():chapter===16?singaporeLanternScene():chapter===17?typhoonTimetableScene():chapter===18?victoriaHarbourDispatchScene():chapter===19?shanghaiWindLedgerScene():chapter===20?typhoonSignalScene():chapter===21?yokohamaLanternScene():chapter===22?paperLanternCircusScene():chapter===23?pacificMeridianScene():chapter===24?civicPanoramaScene():chapter===25?prairieSignalScene():chapter===30?prairieSailsScene():chapter===29?snowboundTelegraphScene():chapter===28?plumCreekRailwayScene():chapter===27?medicineBowCrossingScene():chapter===26?saltLakeDispatchScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
@@ -494,6 +494,23 @@ function snowboundTelegraphScene(){
  '<path d="M265 150L385 190L505 148L625 190L745 148L865 190" stroke="#29495f" stroke-width="4" fill="none"/><g fill="#29495f"><circle cx="265" cy="150" r="7"/><circle cx="385" cy="190" r="7"/><circle cx="505" cy="148" r="7"/><circle cx="625" cy="190" r="7"/><circle cx="745" cy="148" r="7"/><circle cx="865" cy="190" r="7"/></g>'+
  '<g stroke="#fbfdff" stroke-width="3" opacity=".75"><path d="M215 80l18 27M230 70l-7 34M700 230l20 30M760 275l-8 31M845 70l18 28M550 250l-6 24M325 270l15 22"/></g>'+
  '<text x="500" y="585" text-anchor="middle" font-family="ui-monospace,monospace" font-size="24" font-weight="700" letter-spacing="4" fill="#29495f">FORT KEARNEY · SNOWBOUND TELEGRAPH</text></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
+
+function prairieSailsScene(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="A sail-powered winter sledge racing across the frozen prairie toward Omaha">'+
+ '<defs><linearGradient id="ps-sky" x2="0" y2="1"><stop stop-color="#173c46"/><stop offset=".54" stop-color="#8ca9a0"/><stop offset="1" stop-color="#f4e4bd"/></linearGradient><linearGradient id="ps-snow" x2="0" y2="1"><stop stop-color="#f9f3e4"/><stop offset="1" stop-color="#d7e4d9"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#ps-sky)"/><circle cx="790" cy="118" r="55" fill="#f2c46e" opacity=".92"/>'+
+ '<path d="M0 300L120 240L230 276L350 218L470 282L590 230L710 280L840 224L1000 265V620H0Z" fill="#55766d"/>'+
+ '<path d="M0 360Q170 320 340 358T680 345T1000 333V620H0Z" fill="url(#ps-snow)"/>'+
+ '<g stroke="#fffaf0" stroke-width="4" opacity=".7" fill="none"><path d="M50 175L255 153M90 204L310 182M540 145L720 127M640 188L900 162M160 260L330 245"/></g>'+
+ '<path d="M80 560Q280 525 490 555T920 540" stroke="#d27a34" stroke-width="5" fill="none"/>'+
+ '<path d="M120 565L370 425M890 565L610 425" stroke="#173c46" stroke-width="15"/><path d="M120 565L370 425M890 565L610 425" stroke="#d27a34" stroke-width="4"/>'+
+ '<g stroke="#173c46" stroke-width="6"><path d="M220 530L790 530M285 492L725 492M350 455L660 455"/></g>'+
+ '<g transform="translate(350 330)"><path d="M20 135L275 135L245 162L40 162Z" fill="#173c46" stroke="#f9f3e4" stroke-width="4"/><path d="M72 132L95 0L220 132Z" fill="#f9f3e4" stroke="#d27a34" stroke-width="7"/><path d="M102 0L102 136" stroke="#173c46" stroke-width="8"/><path d="M105 20L210 132" stroke="#d27a34" stroke-width="5"/><path d="M105 12L38 132" stroke="#173c46" stroke-width="4"/><path d="M242 132L285 132L265 150" stroke="#173c46" stroke-width="7" fill="none"/><circle cx="82" cy="170" r="13" fill="#173c46" stroke="#f9f3e4" stroke-width="4"/><circle cx="235" cy="170" r="13" fill="#173c46" stroke="#f9f3e4" stroke-width="4"/></g>'+
+ '<path d="M90 350L170 330L250 345L330 320L410 336L490 315L570 330L650 310L730 325L810 305L910 318" stroke="#173c46" stroke-width="3" fill="none" opacity=".65"/>'+
+ '<text x="500" y="592" text-anchor="middle" font-family="ui-monospace,monospace" font-size="25" font-weight="700" letter-spacing="4" fill="#173c46">PRAIRIE SAILS · OMAHA EXPRESS</text></svg>';
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
 

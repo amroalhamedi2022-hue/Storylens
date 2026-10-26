@@ -1044,3 +1044,14 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 CI: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40419513853
 APK artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40419513853/artifacts/12696587055
 Screenshot artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40419513853/artifacts/12696252319
+
+
+## 2026-10-27 — Towle Chapter XXXI + Prairie Sails (CI pending)
+
+- **Source:** Standard Ebooks / George Makepeace Towle, `src/epub/text/chapter-31.xhtml`, pinned commit `56c82e97ff5d4f8950afca05b71af72688a8da34`, source blob `3f96f87cf359251196f1a935314eaedce8d676fd`.
+- **Content gate:** 37 complete English body paragraphs, 1,843 words, 37 aligned Arabic draft translations and 34 source-occurring contextual glossary entries. Normalized English SHA-256: `155822a6e00d078984230cc6d8183e399b8f87333270ab530024b909de83c5a7`.
+- **UI/content integration:** Chapter XXXI is loaded after Chapter XXX; Chapter XXX becomes a normal navigable chapter. Chapter XXXI is the honest current endpoint (31/37) and keeps Chapter XXXII unavailable. Added original offline Prairie Sails art and a distinctive Settings theme with CSS, backup allowlist and reduced-motion styling.
+- **Tests added:** `tools/verne-towle-ch31.test.cjs`, updated complete-catalog/browser-fixture assertions, Arabic + English Chapter XXXI Chromium fixtures, and Prairie Sails RTL reader fixture.
+- **Purposeful build question:** do the new full chapter, 37 Arabic companions, offline SVG, theme/backup wiring and navigation fixtures work together in Android asset packaging and the Chromium reader? Source-only checks cannot prove AAPT asset inclusion or computed RTL/browser layout; one targeted CI build is justified.
+- **CI/APK:** PENDING for this functional batch; do not reuse the Chapter XXX Debug APK as proof for Chapter XXXI.
+- **NOT TESTED:** Xiaomi Pad 5 installation/upgrade, real touch/RTL/TalkBack/contrast, frame pacing/RAM/thermal, independent Arabic literary proofreading and territory-specific redistribution clearance. Debug is not final; no main write or merge.

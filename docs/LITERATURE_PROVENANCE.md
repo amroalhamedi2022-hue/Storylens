@@ -394,3 +394,13 @@ merely because its title is present in a roadmap.
 - The app's normalized English body is 67 paragraphs / 2,133 words; normalized-text SHA-256: `cc6571f506f550e03e3627476ae0c534bb9fc7cb8d179ed08809ba3e6c5575ef`. The Node acceptance test recomputes this digest.
 - The Standard Ebooks editorial edition is distributed under CC0 for its editorial contributions; the underlying book is generally public domain in the United States. This does **not** establish status in every territory; regional redistribution review remains open.
 - The 67 Arabic paragraphs are a separately authored companion draft, not upstream content. They require independent literary review before being described as publication-ready.
+
+
+## 2026-10-27 — Towle Chapter XXXI: Prairie Sails
+
+- **Asset:** `app/src/main/assets/classic-verne-towle-ch31.js`; 37 complete source-aligned English body paragraphs / 1,843 words, 37 Arabic companion drafts and 34 source-occurring glossary entries.
+- **Pinned source:** Standard Ebooks, George Makepeace Towle translation, `src/epub/text/chapter-31.xhtml`; upstream commit `56c82e97ff5d4f8950afca05b71af72688a8da34`; source blob SHA-1 `3f96f87cf359251196f1a935314eaedce8d676fd`.
+- **Normalized English SHA-256:** `155822a6e00d078984230cc6d8183e399b8f87333270ab530024b909de83c5a7`. The regression recomputes the digest after removing XHTML formatting, normalizing whitespace and stripping the editorial word-joiner.
+- **Art/theme:** original offline Prairie Sails SVG of a sail-powered winter sledge; a distinct ochre/teal wind-chart theme registered in Settings, CSS, reduced-motion fallback and backup allowlist.
+- **Rights:** Standard Ebooks editorial contribution is CC0; the 1873 Towle text is treated as public domain in the USA. Territory-specific redistribution clearance remains **NOT TESTED**. Arabic translation is an unreviewed draft requiring independent bilingual literary review.
+- **Serial status:** 31 of 37 chapters packaged; the next chapter remains unavailable until added. CI/build and Xiaomi Pad 5 acceptance are tracked separately.

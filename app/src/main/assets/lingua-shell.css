@@ -2043,3 +2043,26 @@ body.theme-snowbound-telegraph::before,body.theme-snowbound-telegraph::after{dis
 .lt-theme-snowbound-telegraph .lt-theme-swatch{background:linear-gradient(180deg,#dce8ef 0 28%,#29495f 28% 34%,#fbfdff 34% 58%,#bd3d3a 58% 66%,#29495f 66%)!important;border:2px solid #29495f}
 @media(max-width:600px){.theme-snowbound-telegraph .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-snowbound-telegraph .library .storylens-hero .hero-orb{width:70px;height:70px}.theme-snowbound-telegraph .library .header::after{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.theme-snowbound-telegraph .library .card{transition:none!important;transform:none!important}}
+
+
+/* LT-07/13 — Prairie Sails: ochre sailcloth, teal horizon and wind-chart geometry. */
+.lt-theme-prairie-sails .lt-theme-swatch{background:repeating-linear-gradient(135deg,#f4e4bd 0 9px,#d27a34 9px 12px,#173c46 12px 24px);border:2px solid #173c46}
+body.theme-prairie-sails{--body:#e8e0c9;--card:#faf4e5;--ink:#173c46;--sub:#63766f;--accent:#d27a34;--reader:#fffaf0;--reader-ink:#203a40;background:repeating-linear-gradient(135deg,#173c4608 0 2px,transparent 2px 29px),linear-gradient(135deg,#e8e0c9,#d5e2d8 58%,#e8c88e)}
+body.theme-prairie-sails::before,body.theme-prairie-sails::after{display:none!important}
+.theme-prairie-sails .library .header{border-bottom:3px solid #173c46;background:linear-gradient(115deg,#faf4e5 0 57%,#d5e2d8 57%);padding-bottom:15px;position:relative}
+.theme-prairie-sails .library .header::after{content:'OMAHA EXPRESS · WIND LOG';display:block;margin-top:8px;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.16em;color:#a95628}
+.theme-prairie-sails .library .brand{color:#a95628;letter-spacing:.14em}
+.theme-prairie-sails .library .header h1{font-family:Georgia,serif;color:#173c46}
+.theme-prairie-sails .library .storylens-hero{display:grid;grid-template-columns:minmax(0,1fr) 145px;align-items:center;border:2px solid #173c46;border-radius:2px 24px 2px 24px;background:linear-gradient(135deg,#faf4e5 0 62%,#d5e2d8 62%);box-shadow:7px 7px 0 #173c4618;color:#173c46;min-height:190px;padding:23px 26px}
+.theme-prairie-sails .library .storylens-hero h2{font-family:Georgia,serif;color:#a95628}
+.theme-prairie-sails .library .storylens-hero .hero-orb{position:relative;inset:auto;transform:none;width:132px;height:132px;border-radius:2px 40px 2px 40px;border:2px solid #173c46;background:linear-gradient(155deg,transparent 0 36%,#d27a34 36% 39%,transparent 39%),linear-gradient(90deg,transparent 47%,#173c46 47% 51%,transparent 51%),linear-gradient(180deg,#d5e2d8 0 44%,#faf4e5 44% 67%,#d27a34 67% 73%,#173c46 73%);box-shadow:inset 0 0 0 6px #faf4e5;opacity:1}
+.theme-prairie-sails .library .storylens-hero .hero-orb-core{display:none}
+.theme-prairie-sails .library .card{border-radius:2px 14px 2px 14px;border:1px solid #b8c9b9;border-top:4px solid #d27a34;background:#faf4e5;box-shadow:4px 5px 0 #173c4612}
+.theme-prairie-sails .library .card h2{font-family:Georgia,serif;color:#173c46}
+.theme-prairie-sails .library .secondary,.theme-prairie-sails .library .pill{border-radius:3px 12px 3px 12px;border:1px solid #173c46;background:#173c46;color:#faf4e5}
+.theme-prairie-sails .lt-drawer{background:#173c46;border-inline-start:4px solid #d27a34}
+.theme-prairie-sails .reader{border:1px solid #173c46;border-top:8px solid #d27a34;background:linear-gradient(180deg,#faf4e5,#fffaf0)}
+.theme-prairie-sails .reader .reading-width{border-inline-start:3px solid #d27a34;padding-inline-start:19px;background:repeating-linear-gradient(0deg,#173c4607 0 1px,transparent 1px 34px)}
+.theme-prairie-sails .lt-theme-choice{background:#faf4e5;color:#173c46;border-radius:3px 12px 3px 12px}
+@media(max-width:600px){.theme-prairie-sails .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-prairie-sails .library .storylens-hero .hero-orb{width:70px;height:70px}.theme-prairie-sails .library .header::after{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.theme-prairie-sails .library .card{transition:none!important;transform:none!important}}
