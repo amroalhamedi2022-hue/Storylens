@@ -1,7 +1,7 @@
 /* Lingua Tales — Towle Chapter IX, source-aligned bilingual batch.
  * English: Jules Verne / George Makepeace Towle (1873); Standard Ebooks CC0 editorial XHTML.
  * Arabic: companion draft; independent literary review and territory rights pending.
- * Source XHTML SHA-256: NOT COMPUTED
+ * Source XHTML SHA-256: d61493072b960641c3bd7c0145dad1414b857dbcacabd058e09bf406b42fda1b
  * https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-9.xhtml
  */
 (function(global){
