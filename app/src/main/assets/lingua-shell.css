@@ -1936,3 +1936,23 @@ body.theme-civic-panorama::before,body.theme-civic-panorama::after{display:none!
 .theme-civic-panorama .reader .reading-width{border-inline-start:4px solid #d9b46a;padding-inline-start:20px;background:repeating-linear-gradient(0deg,#1d304708 0 1px,transparent 1px 33px)}
 @media(max-width:600px){.theme-civic-panorama .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-civic-panorama .library .storylens-hero .hero-orb{width:70px;height:70px}}
 @media(prefers-reduced-motion:reduce){.theme-civic-panorama .library .card{transition:none!important;transform:none!important}}
+
+
+/* LT-13 batch XXVI — Prairie Signal: continental rail atlas, pine-ink rails and copper signal lamps. */
+.lt-theme-prairie-signal .lt-theme-swatch{background:linear-gradient(135deg,#f3ead5 0 20%,#cf6b3a 20% 28%,#20313c 28% 67%,#8aa59b 67%);border:2px solid #20313c}
+body.theme-prairie-signal{--body:#e5e0d2;--card:#fffdf4;--ink:#20313c;--sub:#68767a;--accent:#b65e2e;--reader:#fbf6e9;--reader-ink:#20313c;color:var(--ink);background:repeating-linear-gradient(90deg,#20313c0b 0 1px,transparent 1px 46px),linear-gradient(135deg,#e4dfd1,#f3ead7)}
+body.theme-prairie-signal::before,body.theme-prairie-signal::after{display:none!important}
+.theme-prairie-signal .library .header{border-bottom:3px solid #20313c;background:repeating-linear-gradient(90deg,#fff9eb 0 42px,#d8d0bc 42px 43px);padding-bottom:12px}
+.theme-prairie-signal .library .brand{color:#b65e2e;letter-spacing:.12em;text-transform:uppercase}
+.theme-prairie-signal .library .header h1{font-family:Georgia,serif;font-weight:700;color:#20313c}
+.theme-prairie-signal .library .storylens-hero{display:grid;grid-template-columns:minmax(0,1fr) 145px;align-items:center;border:1px solid #20313c;border-inline-start:8px solid #b65e2e;border-radius:12px;background:linear-gradient(120deg,#fffdf4 0 63%,#d4e0d4 63%);box-shadow:0 8px 0 #20313c14;color:#20313c;min-height:190px;padding:23px 26px}
+.theme-prairie-signal .library .storylens-hero h2{font-family:Georgia,serif;color:#b65e2e}
+.theme-prairie-signal .library .storylens-hero .hero-orb{position:relative;inset:auto;transform:none;width:132px;height:132px;border-radius:50%;opacity:1;border:4px solid #20313c;background:radial-gradient(circle at 50% 38%,#f3ead5 0 13%,#cf6b3a 14% 18%,transparent 19%),repeating-linear-gradient(90deg,#20313c 0 3px,#d4e0d4 3px 9px);box-shadow:inset 0 0 0 7px #fffdf4}
+.theme-prairie-signal .library .storylens-hero .hero-orb-core{display:none}
+.theme-prairie-signal .library .card{border-radius:12px;border:1px solid #a9b8ac;border-top:4px solid #b65e2e;box-shadow:0 5px 0 #20313c10;background:#fffdf4}
+.theme-prairie-signal .library .card h3{font-family:Georgia,serif;color:#20313c}
+.theme-prairie-signal .library .secondary,.theme-prairie-signal .library .pill{border-radius:9px;border:1px solid #20313c;background:#20313c;color:#fffdf4}
+.theme-prairie-signal .reader{border-top:6px solid #b65e2e;background:repeating-linear-gradient(0deg,#20313c06 0 1px,transparent 1px 38px),var(--reader)}
+.theme-prairie-signal .reader .reading-width{border-inline-start:3px solid #8aa59b;padding-inline-start:19px}
+@media(max-width:600px){.theme-prairie-signal .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-prairie-signal .library .storylens-hero .hero-orb{width:70px;height:70px}}
+@media(prefers-reduced-motion:reduce){.theme-prairie-signal .library .card{transition:none!important;transform:none!important}}
