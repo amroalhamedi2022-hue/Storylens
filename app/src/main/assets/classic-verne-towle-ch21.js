@@ -351,7 +351,7 @@ const terms=[
     "type": "phrase"
   }
 ];
-if(english.length!==55||arabic.length!==english.length||terms.length!==34)throw Error('Towle XXI bilingual alignment mismatch');
+if(english.length!==55||arabic.length!==english.length||terms.length!==33)throw Error('Towle XXI bilingual alignment mismatch');
 s.chapters.push({title:"In which the master of the Tankadere runs great risk of losing a reward of two hundred pounds.",titleAr:'حين يواجه قائد «تانكادير» خطر فقدان مكافأة مئتي جنيه',paragraphs:english.map((en,i)=>({en,ar:arabic[i]}))});
 s.terms.push(...terms);s.totalChapters=37;s.subtitle='The original Towle translation — Chapters I–XXI';s.description='The Tankadere races toward Shanghai through a typhoon as Fogg’s reward and the Yokohama connection hang in the balance.';s.editorialStatus='English Chapters I–XXI source-transcribed; Arabic draft pending independent review; 21 of 37 chapters';s.provenance+=' Chapter XXI: Standard Ebooks Towle transcription (CC0 editorial edition; source blob 47c6a1144e756752618e36c56f21832d1020f3fb); territory-specific rights pending review.';
 })(window);
