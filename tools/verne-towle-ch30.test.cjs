@@ -8,8 +8,8 @@ assert.ok(source.includes('chapter-30.xhtml')&&source.includes('d26e028ef931fea9
 const story={id:'around-the-world-in-eighty-days-towle',genre:'adventure',chapters:Array.from({length:29},()=>({paragraphs:[]})),terms:[],totalChapters:37,provenance:'Towle 1873',editorialStatus:'29 of 37'};
 vm.runInNewContext(source,{window:{StoryLensEditorialStories:[story]}},{filename:'classic-verne-towle-ch30.js',timeout:5000});
 assert.equal(story.chapters.length,30);const ch=story.chapters[29];assert.equal(ch.paragraphs.length,67);
-const normalize=s=>s.replace(/[\\u00a0\\u2007\\u202f]/g,' ').replace(/[\\u2060\\u00ad\\ufeff]/g,'').replace(/\\s+/g,' ').trim();
-const normalizedEnglish=ch.paragraphs.map(p=>normalize(p.en)).join('\\n');
+const normalize=s=>s.replace(/[\u00a0\u2007\u202f]/g,' ').replace(/[\u2060\u00ad\ufeff]/g,'').replace(/\s+/g,' ').trim();
+const normalizedEnglish=ch.paragraphs.map(p=>normalize(p.en)).join('\n');
 assert.equal(crypto.createHash('sha256').update(normalizedEnglish,'utf8').digest('hex'),'cc6571f506f550e03e3627476ae0c534bb9fc7cb8d179ed08809ba3e6c5575ef','English must remain pinned to the complete Standard Ebooks source');
 const body=ch.paragraphs.map(p=>p.en).join(' '),count=(body.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.equal(count,2133,'Chapter XXX must remain complete source text, not a synopsis');
