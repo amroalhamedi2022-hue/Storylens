@@ -795,3 +795,8 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 ## Chapter XVI integration regression and correction — 2026-10-26
 - The first browser run after adding Chapter XVI passed source/Node/Gradle/APK packaging checks but failed in the **old Chapter XV fixture**: Chapter XV correctly stopped being the last available chapter, so the old fixture incorrectly expected the Arabic end-of-available-content label instead of the normal `End of Chapter 15` control.
 - Corrected the Chapter XV fixture and full-reader journey to assert its actual next-chapter boundary. The Chapter XVI fixture remains responsible for asserting the Arabic “more chapters coming” continuation label at 16 of 37. CI rerun pending.
+
+
+## Chapter XVI browser-fixture count correction — 2026-10-26
+- Chapter XV and Chapter XVI dedicated Chromium fixtures now pass, but the broader E2E fixture still had a stale novel-count assertion pinned to 15 chapters and only asserted distinct artwork through Chapter XV. Updated it to require all 16 bundled chapters, 25 aligned Chapter XVI passages, and the new Rangoon scene at index 15.
+- Rerun is pending; no device-performance claim is inferred from Chromium.
