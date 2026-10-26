@@ -1712,3 +1712,22 @@ body.theme-singapore-lantern::before,body.theme-singapore-lantern::after{display
 .theme-singapore-lantern .lt-drawer{background:#201a37;color:#fbf0d9;border-inline-start:4px solid #e7b66c}
 .theme-singapore-lantern .lt-theme-choice{border-radius:4px 16px 4px 16px;background:#f4e7d0;color:#2c243b;border:1px solid #bd5546}
 @media(prefers-reduced-motion:reduce){.theme-singapore-lantern .library .card{transition:none!important;transform:none!important}}
+
+
+/* Typhoon Timetable — storm-chart slate, warning coral, and brass route markings. */
+.lt-theme-typhoon-timetable .lt-theme-swatch{background:radial-gradient(circle at 74% 24%,#e7c46d 0 8%,transparent 9%),repeating-linear-gradient(135deg,#1b2b3b 0 12px,#435b6c 12px 14px,#263c4d 14px 27px);border:1px solid #d9b66c}
+body.theme-typhoon-timetable{--body:#182737;--card:#f0ede4;--ink:#1b2c3d;--sub:#5e7180;--accent:#c75b4d;--reader:#f7f2e8;--reader-ink:#1d2d3b;color:#f7f2e8;background:repeating-linear-gradient(135deg,#25384922 0 2px,transparent 2px 22px),radial-gradient(ellipse at 76% 12%,#c75b4d24,transparent 28%),linear-gradient(145deg,#142332,#304859 55%,#172634)}
+body.theme-typhoon-timetable::before,body.theme-typhoon-timetable::after{display:none!important}
+.theme-typhoon-timetable .library .header{border-bottom:2px dashed #d9b66c;padding-bottom:18px;position:relative}
+.theme-typhoon-timetable .library .header::after{content:'HONG KONG · TYPHOON XVIII';display:block;margin-top:9px;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.18em;color:#e7c46d}
+.theme-typhoon-timetable .library .brand{color:#f2d58b;letter-spacing:.16em}
+.theme-typhoon-timetable .library .storylens-hero{border:2px solid #d9b66c;border-radius:2px;background:repeating-linear-gradient(0deg,#f0ede4 0 31px,#d8dedc 31px 32px);box-shadow:8px 8px 0 #0a1724;color:#1b2c3d}
+.theme-typhoon-timetable .library .storylens-hero h2{font-family:Georgia,serif;color:#9c413d}
+.theme-typhoon-timetable .library .card{border:1px solid #aab5b8;border-bottom:4px solid #c75b4d;border-radius:2px;box-shadow:5px 5px 0 #0c19244d;animation:none}
+.theme-typhoon-timetable .library .card h2{font-family:Georgia,serif;color:#1b2c3d}
+.theme-typhoon-timetable .library .secondary,.theme-typhoon-timetable .library .pill{border-radius:2px;border-color:#b58c45;background:#f0ede4;color:#1b2c3d}
+.theme-typhoon-timetable .reader{background:#f7f2e8;color:#1d2d3b;border-top:5px solid #c75b4d}
+.theme-typhoon-timetable .reader .reading-width{border-inline-start:3px dashed #c75b4d;padding-inline-start:20px;background:linear-gradient(90deg,#d9b66c12,transparent 48px)}
+.theme-typhoon-timetable .lt-drawer{background:#1a2a39;color:#f7f2e8;border-inline-start:4px solid #d9b66c}
+.theme-typhoon-timetable .lt-theme-choice{border-radius:2px;background:#f0ede4;color:#1b2c3d;border:1px solid #c75b4d}
+@media(prefers-reduced-motion:reduce){.theme-typhoon-timetable .library .card{transition:none!important;transform:none!important}}
