@@ -66,7 +66,7 @@ tests={
 })();
 """
 }
-tests["verne15"] = tests["verne14"].replace("stlChapter(13)", "stlChapter(14)").replace("state.chapter===13", "state.chapter===14").replace("includes('Calcutta')", "includes('Judge Obadiah')").replace("includes('Judge Obadiah')", "includes('Judge Obadiah')&&reader.textContent.includes('15 of 37')&&reader.textContent.includes('End of available chapters')&&!reader.textContent.includes('The End')").replace("verne14", "verne15")
+tests["verne15"] = tests["verne14"].replace("stlChapter(13)", "stlChapter(14)").replace("state.chapter===13", "state.chapter===14").replace("includes('Calcutta')", "includes('Judge Obadiah')&&document.querySelector('.reader').textContent.includes('15 of 37')&&document.querySelector('.reader').textContent.includes('End of available chapters')&&!document.querySelector('.reader').textContent.includes('The End')").replace("verne14", "verne15")
 for name,script in tests.items():
  result=source.replace("</body>","<script>\n"+script+"\n</script>\n</body>")
  target=assets/("qa-"+name+".html")

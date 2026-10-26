@@ -1,6 +1,9 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const assets=path.join(__dirname,'../app/src/main/assets'),read=n=>fs.readFileSync(path.join(assets,n),'utf8'),html=read('index.html');
+const fixtureBuilder=fs.readFileSync(path.join(__dirname,'make_browser_fixtures.py'),'utf8');
+assert.ok(fixtureBuilder.includes(`includes('Judge Obadiah')&&document.querySelector('.reader').textContent.includes('15 of 37')`),'Chapter XV browser fixture must query the rendered reader element');
+assert.ok(!fixtureBuilder.includes("reader.textContent.includes('15 of 37')"),'Chapter XV fixture must not reference an undefined reader variable');
 assert.ok(html.indexOf('classic-verne-towle-ch14.js')<html.indexOf('classic-verne-towle-ch15.js'));
 assert.ok(html.indexOf('classic-verne-towle-ch15.js')<html.indexOf('editorial-art.js'));
 assert.ok(html.includes('story.totalChapters||story.chapters.length'));
