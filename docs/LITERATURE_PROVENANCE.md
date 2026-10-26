@@ -92,7 +92,7 @@ merely because its title is present in a roadmap.
 - Remaining: Pad 5 reading/performance, scene fidelity, editorial QA, any
   additional long-form content and signed final release.
 
-## Continuing research: remaining Chapters IV–XXXVII of Around the World in Eighty Days
+## Continuing research: remaining Chapters XIII–XXXVII of Around the World in Eighty Days
 
 - Author: Jules Verne (1828–1905); original French novel published 1872.
 - Specific **English translation**: George Makepeace Towle (1841–1893),
