@@ -268,3 +268,12 @@ merely because its title is present in a roadmap.
 - The offline chapter adds **31 aligned English/Arabic draft passages**, approximately **1,339 English words**, 35 context-bound vocabulary/phrase entries, and original local SVG artwork for the storm-bound Rangoon. The **Typhoon Timetable** theme is a distinct storm-chart layout registered in Settings and backup validation.
 - Standard Ebooks identifies its editorial transcription as CC0; Towle's underlying 1873 English translation is treated as public domain in the United States. Territory-specific redistribution clearance remains **NOT TESTED**. Arabic text is a draft pending independent literary review; no claim of professional proofreading or Pad 5 acceptance is made.
 - The SVG was drawn in-project and does not copy third-party illustration assets.
+
+
+## Chapter XIX — “In which Passepartout takes a too great interest in his master, and what comes of it”
+- **Source:** Standard Ebooks' editorial transcription of George Makepeace Towle's English translation of Jules Verne, *Around the World in Eighty Days*, Chapter XIX: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-19.xhtml
+- **Exact source blob SHA-1:** `c1d30bba75d0a72629c6047d436c745ca8844b5e`.
+- **Source/asset status:** the English text is transcribed from the linked XHTML chapter; Standard Ebooks' editorial transcription is CC0. Towle's 1873 translation is public domain in the United States; redistribution clearance for every target territory remains **NOT TESTED**.
+- **Arabic companion:** 71 aligned paragraph-level Arabic draft translations, not yet independently proofread by a literary editor. The chapter includes period colonial framing and historical depictions of opium use; the translation preserves the source's historical narrative and must not be read as endorsement or medical guidance.
+- **Vocabulary:** 34 context-bound terms/phrases; automated checks require each entry to occur in the English chapter body.
+- **Illustration:** original offline SVG “Victoria Harbour Dispatch”, generated as project artwork; no remote image or third-party illustration is used.
