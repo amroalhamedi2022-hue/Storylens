@@ -1,3 +1,11 @@
+## 2026-10-26 — Chapter XXVII exact-source comparison and digest regression
+
+- **PASS — independent source comparison:** fetched the pinned Standard Ebooks chapter-27 XHTML (chapter blob `2475c77964fd4cdaf1a83b3e60a6c905e89d66f7`), extracted the 25 body paragraphs, removed inline markup, and normalized whitespace, non-breaking spaces and the editorial U+2060 word-joiner. All **25/25 English paragraphs match** the packaged source text; 1,952 English words.
+- **PASS — normalized source fingerprint:** SHA-256 `df283010b402b4c3f56d68e4cada2bb1265465ac2a9d3bfc034e7721ccbc9b0c`. Added a Node `crypto` regression so later edits cannot silently change any Chapter XXVII English paragraph while preserving only the word count and first/last sentence.
+- **Purposeful CI question:** does this stronger source-fidelity regression pass together with the complete Node suite, Gradle packaging, required-asset checks and both Arabic/English Chromium journeys? The external source comparison alone cannot prove workflow wiring or Android asset packaging.
+- **CI:** PENDING for test commit `84434c72013fd0b233a290a55bbf389e9973c6d6`; do not infer success from the direct comparison.
+- **NOT TESTED:** Xiaomi Pad 5, real RTL/TalkBack, frame pacing/RAM/thermal, independent Arabic literary review and territory-specific redistribution clearance. Arabic remains a draft; the novel is 27/37 chapters, not complete. Debug is not final; no main write or merge.
+
 ## 2026-10-25 — Towle Chapter VI / Suez Quays integrated milestone
 - Production: 37 original English source paragraphs aligned to 37 newly drafted Arabic paragraphs; 17 source-occurring contextual entries; original offline SVG of the Mongolia at Suez; new visually distinct Suez Quays theme and backup allowlist. Script order, Chromium chapter fixture, Android asset packaging and source tests updated together.
 - Source: Standard Ebooks 1873 Towle transcription (CC0 editorial work); US public-domain translation; territory rights and independent Arabic literary review **NOT TESTED**. Six of 37 original chapters available; not the complete novel.
