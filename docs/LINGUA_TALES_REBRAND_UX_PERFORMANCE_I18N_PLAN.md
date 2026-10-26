@@ -121,4 +121,9 @@ Authoritative development base: inspect `main`, existing open PR #1 and its bran
 
 ## 2026-10-26 — Long-book continuation checkpoint
 
-Chapter XXII of the Towle translation is now present on the PR branch with 31 aligned Arabic-draft passages, 34 source-bound glossary entries, original offline Yokohama harbour artwork and a distinct Yokohama Lantern theme. This is a **source milestone only** until the chapter-specific Node regression, Android asset packaging, Chromium reader flow and independent APK checksum pass. Physical Xiaomi Pad 5 performance and independent Arabic proofreading remain separate acceptance gates; 22/37 chapters are bundled.
+Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regression, Android asset packaging/required-file inspection, Chromium reader checks in Arabic and English, and independent APK SHA-256 verification. The previous run exposed a stale Chapter XXI fixture that still treated XXI as the last available chapter; that test now correctly expects navigation to XXII, while XXII is the current last bundled chapter.
+
+- **Verified CI:** [Run 40338750217](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40338750217), head `1f40c4978cfc21ec5ddce1bffb450d057845fcf9`, all steps PASS.
+- **Debug APK:** 4,587,889 bytes; SHA-256 `dcba12d3545c5736b27d68d672d284c3d5d38f1bfec674c3f91e39d8b2253f6d`; artifact 12658901284.
+- **Chromium evidence:** [Screenshot artifact 12658451869](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40338750217/artifacts/12658451869), including Chapter XXI normal-navigation and Chapter XXII terminal-state screenshots in Arabic and English.
+- **Scope:** 22/37 chapters bundled. The Yokohama Lantern theme is implemented and packaged, but LT-13 remains **IN PROGRESS** under the plan's stricter criterion until real-device screenshots, accessibility/contrast and runtime performance are checked on Xiaomi Pad 5. Arabic literary proofreading and territory-specific redistribution rights remain **NOT TESTED**. Debug is not final.
