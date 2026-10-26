@@ -205,8 +205,26 @@ function calcuttaCourtScene(){
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
 
+function rangoonPassageScene(){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="The Rangoon steamer crossing jade water toward the Straits of Malacca">'+
+ '<defs><linearGradient id="rangoon-sky" x2="0" y2="1"><stop stop-color="#d5c99f"/><stop offset=".58" stop-color="#7db3a7"/><stop offset="1" stop-color="#205b63"/></linearGradient><linearGradient id="rangoon-sea" x2="0" y2="1"><stop stop-color="#347f80"/><stop offset="1" stop-color="#0c3545"/></linearGradient><linearGradient id="rangoon-hull" x2="0" y2="1"><stop stop-color="#233d43"/><stop offset="1" stop-color="#0b202b"/></linearGradient></defs>'+
+ '<rect width="1000" height="620" fill="url(#rangoon-sky)"/><circle cx="775" cy="125" r="70" fill="#f2d99b" opacity=".75"/>'+
+ '<path d="M0 310Q145 270 270 310T520 296T780 306T1000 280V620H0Z" fill="#427f78" opacity=".52"/>'+
+ '<path d="M0 360Q170 315 330 360T650 350T1000 352V620H0Z" fill="url(#rangoon-sea)"/>'+
+ '<path d="M0 420Q160 395 310 420T610 416T1000 420M0 482Q130 460 285 482T580 477T1000 484M0 548Q180 526 350 548T680 544T1000 550" fill="none" stroke="#a8d2bc" stroke-width="4" opacity=".7"/>'+
+ '<path d="M0 332L90 260L170 302L250 240L320 310L320 375H0Z" fill="#204e51" opacity=".78"/><path d="M80 296L90 260L110 278M236 270L250 240L273 264" fill="none" stroke="#d2c18e" stroke-width="5"/>'+
+ '<g transform="translate(180 0)"><path d="M60 382L670 382L590 470L155 470Z" fill="url(#rangoon-hull)" stroke="#d3b879" stroke-width="7"/><path d="M132 405H600" stroke="#e0c98d" stroke-width="4"/><g fill="#c3a66b"><circle cx="210" cy="435" r="7"/><circle cx="280" cy="435" r="7"/><circle cx="350" cy="435" r="7"/><circle cx="420" cy="435" r="7"/><circle cx="490" cy="435" r="7"/></g>'+
+ '<rect x="235" y="305" width="245" height="78" rx="5" fill="#f0e5c8" stroke="#b28b4d" stroke-width="7"/><rect x="265" y="322" width="45" height="31" fill="#1b5861"/><rect x="331" y="322" width="45" height="31" fill="#1b5861"/><rect x="397" y="322" width="45" height="31" fill="#1b5861"/>'+
+ '<rect x="345" y="238" width="35" height="67" fill="#293f43" stroke="#d3b879" stroke-width="5"/><path d="M360 238Q330 208 357 180Q386 205 360 238Z" fill="#f1dfb7" opacity=".75"/><path d="M360 238Q405 211 388 190" stroke="#f1dfb7" stroke-width="12" fill="none" opacity=".45"/>'+
+ '<path d="M250 305V170M470 305V190" stroke="#d3b879" stroke-width="7"/><path d="M252 180L252 278L330 278Z" fill="#f4edda" stroke="#b28b4d" stroke-width="4"/><path d="M468 198L468 276L405 276Z" fill="#f4edda" stroke="#b28b4d" stroke-width="4"/><path d="M252 180L252 278M468 198L468 276" stroke="#22565c" stroke-width="4"/>'+
+ '<path d="M85 386L155 470L60 470Z" fill="#17343d" stroke="#d3b879" stroke-width="5"/></g>'+
+ '<path d="M695 245Q760 190 815 225T930 210" fill="none" stroke="#f5e7bf" stroke-width="3" stroke-dasharray="8 11" opacity=".8"/><circle cx="815" cy="225" r="9" fill="#c9a35b"/>'+
+ '<rect x="36" y="36" width="928" height="548" rx="28" fill="none" stroke="#f0dfb2" stroke-width="3" opacity=".7"/><text x="500" y="575" text-anchor="middle" font-family="Georgia,serif" font-size="27" letter-spacing="7" fill="#f5ecd4">RANGOON PASSAGE</text></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
 function scene(story,chapter){
- if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():charingCrossDeparture();
+ if(story.id==='around-the-world-in-eighty-days-towle') return chapter===0?savilleRowScene():chapter===1?savilleRowInterior():chapter===2?reformClubScene():chapter===3?charingCrossDeparture():chapter===4?exchangeGazetteScene():chapter===5?suezQuaysScene():chapter===6?consularLedgerScene():chapter===7?redSeaDispatchScene():chapter===8?monsoonMeridianScene():chapter===9?deccanTimetableScene():chapter===10?kholbyCrossingScene():chapter===11?vindhyaPassageScene():chapter===12?dawnEscapeScene():chapter===13?gangesPanoramaScene():chapter===14?calcuttaCourtScene():chapter===15?rangoonPassageScene():charingCrossDeparture();
  const p=colors[story.genre]||colors.mystery, key=story.genre, v=chapter%4;
  const skyline='<path d="M0 420 L60 400 L108 415 L150 340 L210 370 L260 320 L300 332 L360 270 L420 315 L470 284 L530 353 L590 312 L635 370 L700 335 L760 410 L850 390 L920 350 L1000 402 V620 H0Z" fill="#060e20" opacity=".55"/>';
  const floors='<path d="M0 475 Q120 405 240 458 T470 450 T720 452 T1000 440 V620 H0Z" fill="#091324" opacity=".55"/>';
