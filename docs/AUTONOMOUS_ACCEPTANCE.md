@@ -725,3 +725,8 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - Standard Ebooks editorial work is CC0; Towle's 1873 translation is public domain in the US. Territory-specific redistribution clearance and independent Arabic review remain NOT TESTED.
 - Purposeful CI question: do the bilingual chapter, terms, SVG/theme, backup registry and reader catalog survive Node regressions, Gradle packaging and Chromium integration? Source-only checks cannot prove APK packaging/browser journey. Targeted CI justified; result pending.
 - NOT TESTED: Xiaomi Pad 5 install/frame timing, real RTL/TalkBack, literary review, territorial rights clearance and final signed release. Ten of 37 chapters are available; LT-07 and LT-01..LT-13 remain IN PROGRESS.
+
+
+### Chapter X first integration attempt — 2026-10-26
+- **FAIL:** [Android CI 40251445638](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40251445638) passed curated Node tests, Android JUnit/Gradle compilation, Debug APK assembly and packaged-asset checks; the final Chromium reader journey then failed its 'Verne authentic chapter' fixture because it still required exactly nine chapters and had no Chapter X paragraph/art assertion. No APK artifact was uploaded because the E2E step failed.
+- **Repair:** updated tools/make_browser_fixtures.py to require ten chapters, 24 Chapter X passages and the distinct Chapter X art. Re-run is pending; no physical Xiaomi Pad 5 claim.
