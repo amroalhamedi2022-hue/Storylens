@@ -231,3 +231,9 @@ merely because its title is present in a roadmap.
 - Source: [Standard Ebooks Towle transcription, Chapter XIV](https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-14.xhtml), English translation by George Makepeace Towle (1841–1893); Standard Ebooks editorial transcription is CC0. Territorial distribution review remains a separate gate.
 - Added 27 source-aligned English/Arabic draft paragraphs (1,917 English body words), 28 contextual entries found in the English text, an original offline Ganges/railway SVG, and a distinct Ganges Panorama theme registered in Settings and backup.
 - This is **14 of 37** chapters, not the complete novel. Arabic is a draft requiring independent literary/sensitivity review; Pad 5 and final release remain NOT TESTED.
+
+
+## Chapter XIV verification record — 2026-10-26
+- Android CI: [run 40266145893](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40266145893) **PASS**. The browser fixture opens Chapter XIV in the actual reader and verifies the rendered text; the screenshot artifact [12626636801](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40266145893/artifacts/12626636801) includes `verne14-phone.png`.
+- APK artifact [12626597198](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40266145893/artifacts/12626597198), size 4,458,901 bytes. SHA-256 independently recomputed from the extracted APK: `7a935f68cc542bdb4a23c8f8a46fa0fff0e09fad87f57c6afeb6cc8011a36afc`, matching the CI manifest.
+- The screenshot is a Chromium simulation, not Xiaomi Pad 5 device evidence. Arabic literary/sensitivity review, territorial rights review, RTL/TalkBack, performance and final signed release remain NOT TESTED.
