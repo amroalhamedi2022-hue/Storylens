@@ -2021,3 +2021,25 @@ body.theme-plum-creek-signal::before,body.theme-plum-creek-signal::after{display
 .theme-plum-creek-signal .lt-theme-choice{background:#fff8e8;color:#243a48;border-radius:3px}
 @media(max-width:600px){.theme-plum-creek-signal .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-plum-creek-signal .library .storylens-hero .hero-orb{width:70px;height:70px}.theme-plum-creek-signal .library .header::after{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.theme-plum-creek-signal .library .card{transition:none!important;transform:none!important}}
+
+/* LT-07/13 — Snowbound Telegraph: winter signal-board geometry, frost paper and red railway signal. */
+body.theme-snowbound-telegraph{--body:#eaf1f5;--card:#fbfdff;--ink:#1b2e40;--sub:#526d7e;--accent:#bd3d3a;--reader:#f6fbff;--reader-ink:#1b2e40;background:#eaf1f5}
+body.theme-snowbound-telegraph::before,body.theme-snowbound-telegraph::after{display:none!important}
+.theme-snowbound-telegraph .library .header{border-bottom:4px double #29495f;background:linear-gradient(110deg,#fbfdff 0 63%,#d5e3ec 63%);padding-bottom:14px;position:relative}
+.theme-snowbound-telegraph .library .header::after{content:'FORT KEARNEY · TELEGRAPH LOG';display:block;margin-top:8px;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.16em;color:#bd3d3a}
+.theme-snowbound-telegraph .library .brand{color:#bd3d3a;letter-spacing:.14em}
+.theme-snowbound-telegraph .library .header h1{font-family:Georgia,serif;color:#1b2e40}
+.theme-snowbound-telegraph .library .storylens-hero{display:grid;grid-template-columns:minmax(0,1fr) 145px;align-items:center;border:2px solid #29495f;border-radius:2px;background:repeating-linear-gradient(0deg,#fbfdff 0 33px,#e7eef3 33px 34px);box-shadow:7px 7px 0 #29495f14;color:#1b2e40;min-height:190px;padding:23px 26px}
+.theme-snowbound-telegraph .library .storylens-hero h2{font-family:Georgia,serif;color:#bd3d3a}
+.theme-snowbound-telegraph .library .storylens-hero .hero-orb{position:relative;inset:auto;transform:none;width:132px;height:132px;border-radius:2px;border:2px solid #29495f;background:linear-gradient(180deg,#dce8ef 0 30%,#29495f 30% 35%,#fbfdff 35% 60%,#bd3d3a 60% 67%,#29495f 67%);box-shadow:inset 0 0 0 6px #fbfdff;opacity:1}
+.theme-snowbound-telegraph .library .storylens-hero .hero-orb-core{display:none}
+.theme-snowbound-telegraph .library .card{border-radius:2px;border:1px solid #b8cbd7;border-inline-start:5px solid #bd3d3a;background:#fbfdff;box-shadow:3px 5px 0 #29495f10}
+.theme-snowbound-telegraph .library .card h2{font-family:Georgia,serif;color:#1b2e40}
+.theme-snowbound-telegraph .library .secondary,.theme-snowbound-telegraph .library .pill{border-radius:2px;border:1px solid #29495f;background:#29495f;color:#fbfdff}
+.theme-snowbound-telegraph .lt-drawer{background:#1b2e40;border-inline-start:4px solid #bd3d3a}
+.theme-snowbound-telegraph .reader{border:1px solid #29495f;border-top:7px solid #bd3d3a;background:linear-gradient(180deg,#fbfdff,#f0f6fa)}
+.theme-snowbound-telegraph .reader .reading-width{border-inline-start:3px solid #bd3d3a;padding-inline-start:19px;background:repeating-linear-gradient(0deg,#29495f07 0 1px,transparent 1px 35px)}
+.theme-snowbound-telegraph .lt-theme-choice{background:#fbfdff;color:#1b2e40;border-radius:2px}
+.lt-theme-snowbound-telegraph .lt-theme-swatch{background:linear-gradient(180deg,#dce8ef 0 28%,#29495f 28% 34%,#fbfdff 34% 58%,#bd3d3a 58% 66%,#29495f 66%)!important;border:2px solid #29495f}
+@media(max-width:600px){.theme-snowbound-telegraph .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-snowbound-telegraph .library .storylens-hero .hero-orb{width:70px;height:70px}.theme-snowbound-telegraph .library .header::after{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.theme-snowbound-telegraph .library .card{transition:none!important;transform:none!important}}
