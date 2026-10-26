@@ -1003,3 +1003,14 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - Direct production-source V8 smoke: **PASS** — 28 loaded chapters, 75 bilingual passages, 2,444 English words, 40 source-occurring terms, unique offline SVG, theme/backup/reduced-motion and script order.
 - GitHub Actions run/check and APK artifact for this functional SHA: **NOT VERIFIED** by the available run/status lookup. Do not reuse an older chapter APK as proof for XXVIII.
 - Pad 5, TalkBack, FPS/RAM/thermal and Arabic editorial/legal review: **NOT TESTED**.
+
+
+## 2026-10-26 — LT-11 original procedural melodic presets (CI pending)
+
+- **Production source:** preserved all 20 existing offline ambience scenes and added four original procedural melodic presets: Quiet Keys, Moonlit Chimes, Lantern Motif and Paper Atlas Melody (24 selectable presets total).
+- **Lifecycle:** melodies use a single bounded interval, short note envelopes and a small active-node set; switching scenes, pausing, hiding the app and page teardown clear the timer/nodes. Playback remains opt-in, silent on cold start, offline and permission-free.
+- **Tests added:** the ambience regression now asserts 20 ambience + 4 music presets, exercises a real scheduled melody tick in a synthetic Web Audio context, and verifies timer cleanup on scene changes/pause. This harness does not assess acoustic quality or Android audio focus.
+- **Functional commits:** source `359226a22ff6d0bbac4a424df1c484f606af95f3`; regression `4d0f2231c7f83bc27e787e5bb7a456fcc9d004cd`.
+- **CI/APK for the new functional head:** NOT VERIFIED in the available workflow-status lookup. Do not reuse the Chapter XXVII APK as evidence for this audio change.
+- **Honest scope:** these four are original synthesized melodies, not licensed recordings. The app now offers a broader local music/ambience experience, but a separately curated licensed recording catalog and on-device acoustic/audio-focus validation remain open.
+- **NOT TESTED:** Xiaomi Pad 5 audio focus/background lifecycle, audible quality, power use, real frame pacing, and full LT-01..LT-13 final acceptance. No microphone/TTS/network/audio permission was added.
