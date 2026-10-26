@@ -105,7 +105,7 @@
 .lt-chapter-nav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin:0 0 24px}
 .lt-chapter-nav .lt-chapter-button{flex:1 1 145px;min-height:44px;padding:10px 14px;border-radius:12px}
 .lt-chapter-nav .lt-chapter-button:disabled{opacity:.45;cursor:not-allowed}
-.lt-serial-progress{display:inline-block;font-size:.88em;letter-spacing:normal;line-height:1.5}
+.lt-serial-progress{display:block;max-width:760px;margin:.45rem auto 0;color:var(--sub);font-size:.88em;letter-spacing:normal;line-height:1.5;text-align:start}
 
 /* LT-07: direct chapter jump is bounded to available offline chapters. */
 .lt-chapter-picker{display:flex;flex:1 1 100%;align-items:center;gap:12px;flex-wrap:wrap;color:var(--ink);font-size:.92rem}

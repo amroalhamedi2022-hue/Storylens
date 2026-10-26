@@ -55,15 +55,17 @@ function decorate(){
  }
  end.prepend(nav);
  if(!incomplete)return;
- const label=document.querySelector('.reader .reader-label');
- if(label){
-  const progress=document.createElement('small');
-  progress.className='lt-serial-progress';
-  progress.textContent=localized(
-   ' · المتاح '+chapters.length+' من '+story.totalChapters+' فصلًا',
-   ' · '+chapters.length+' of '+story.totalChapters+' chapters available');
-  label.appendChild(progress);
- }
+ const endHeading=end.querySelector('div');
+ const progress=document.createElement('small');
+ progress.className='lt-serial-progress';
+ const english=document.documentElement.lang==='en';
+ progress.setAttribute('lang',english?'en':'ar');
+ progress.setAttribute('dir',english?'ltr':'rtl');
+ progress.textContent=localized(
+  'المتاح '+chapters.length+' من '+story.totalChapters+' فصلًا',
+  chapters.length+' of '+story.totalChapters+' chapters available');
+ if(endHeading)endHeading.insertAdjacentElement('afterend',progress);
+ else end.prepend(progress);
  if(index===chapters.length-1){
   const heading=end.querySelector('div');
   if(heading)heading.textContent=localized(
