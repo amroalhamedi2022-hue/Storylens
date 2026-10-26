@@ -117,3 +117,8 @@ Authoritative development base: inspect `main`, existing open PR #1 and its bran
 4. LT-13 is **ongoing**, not a one-off final task: every substantive batch should aim for a *new visually distinct functional theme*, with gating by real implementation/test evidence.
 5. Complete LT-01/LT-04 rebrand/icon without breaking existing Android app identity or saved data. Cross-check all old features; finish with independent device acceptance and separate recheck.
 6. No paid API, no extra expense, no auto-merge or publishing user-private assets. Asset download/generation is conditional on availability and license; never fabricate its completion.
+
+
+## 2026-10-26 — Long-book continuation checkpoint
+
+Chapter XXII of the Towle translation is now present on the PR branch with 31 aligned Arabic-draft passages, 34 source-bound glossary entries, original offline Yokohama harbour artwork and a distinct Yokohama Lantern theme. This is a **source milestone only** until the chapter-specific Node regression, Android asset packaging, Chromium reader flow and independent APK checksum pass. Physical Xiaomi Pad 5 performance and independent Arabic proofreading remain separate acceptance gates; 22/37 chapters are bundled.
