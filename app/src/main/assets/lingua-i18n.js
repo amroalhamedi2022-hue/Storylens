@@ -23,9 +23,13 @@ function localizeReader() {
  backLabel('.reader .toolbar button[onclick="libraryBack()"]');
  label('.reader .toolbar button[onclick="settings()"]', 'Aa · Options');
  const chapterEnd = find('.reader .chapter-end > div');
- if (chapterEnd) chapterEnd.textContent =
-  state.chapter === state.story.chapters.length - 1 ? 'The End' : 'End of Chapter ' + (state.chapter + 1);
- label('.reader .chapter-end button', state.chapter === state.story.chapters.length - 1 ? 'Return to library' : 'Next chapter →');
+ const lastAvailable = state.chapter === state.story.chapters.length - 1;
+ const incomplete = Number.isInteger(state.story.totalChapters) &&
+  state.story.totalChapters > state.story.chapters.length;
+ if (chapterEnd) chapterEnd.textContent = lastAvailable
+  ? (incomplete ? 'End of available chapters' : 'The End')
+  : 'End of Chapter ' + (state.chapter + 1);
+ label('.reader .chapter-end button', lastAvailable ? 'Return to library' : 'Next chapter →');
 }
 function localizeSettings() {
  if (!english()) return;
