@@ -894,3 +894,9 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **New regression:** `tools/verne-towle-ch21.test.cjs` checks source length/alignment, source-bound vocabulary, script order, generated offline art, theme registration and backup allowlist. Browser fixtures cover Chapter XX continuation and Chapter XXI terminal-catalog state in both locales.
 - **New visual batch:** Typhoon Signal adds storm-chart geometry, signal-red/brass accents, a readable light logbook surface, reduced-motion fallback and original offline chapter art.
 - **CI/APK/device status:** **PENDING** at this source checkpoint. Do not infer pass until the branch workflow completes and its APK/artifact/checksum are verified. Xiaomi Pad 5, TalkBack, real frame pacing, Arabic literary proofreading and territory-specific rights remain **NOT TESTED**. Chapter XXI is 21 of 37; the novel is not complete. No main write/merge; Debug is not final.
+
+
+### Chapter XXI source checkpoint — CI visibility
+
+- Latest functional/test head: `acfd5445af48d2d4e85ce035a1937cebeca6abe9`.
+- The GitHub connector returned no PR-triggered workflow run/status for that SHA at the time of this record. Therefore Android CI, packaged APK, SHA-256 and browser screenshots for Chapter XXI are **NOT VERIFIED**, not PASS. Existing Chapter XX artifact remains the last verified APK and does not contain Chapter XXI.
