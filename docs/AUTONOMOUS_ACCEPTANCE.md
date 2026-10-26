@@ -908,16 +908,12 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - This is a direct source-runtime check, **not** native Node CI, Android Gradle/Chromium CI, APK verification or physical-device acceptance. Those gates remain **NOT VERIFIED / NOT TESTED** as recorded above.
 
 
-## 2026-10-26 — Chapter XXII + Yokohama Lantern (new functional batch)
+## 2026-10-26 — Chapter XXII + Yokohama Lantern: CI/browser acceptance PASS
 
-- Added the Standard Ebooks/Towle Chapter XXII source transcription (blob SHA-1 `1ae20fed64d05d867c7021cdfd1033a7fc71a879`) as 31 aligned English/Arabic-draft passages, 2,072 English words and 34 source-occurring contextual phrases. The Arabic is still an editorial draft, not independently proofread.
-- Added an original offline Yokohama harbour/lantern SVG and visually distinct **Yokohama Lantern** theme; Settings, theme gallery, reduced-motion fallback and backup allowlist are wired.
-- Added `tools/verne-towle-ch22.test.cjs` to the existing Android workflow and required APK asset list. The test checks script order, paragraph alignment, source-bound glossary entries, chapter progress (22/37), artwork, theme registration and backup compatibility.
-- **Purposeful CI question:** can the new source module be parsed, packaged into Android assets, and coexist with reader/navigation tests? Source-only inspection cannot verify Gradle packaging or the Chromium reader workflow, so this batch should run the existing Android CI.
-- **CI/APK/SHA-256:** NOT VERIFIED at documentation time. Pad 5 installation, frame timing/RAM, TalkBack, Arabic literary review and territory-specific redistribution rights remain **NOT TESTED**. Chapter XXII is 22 of 37, not a complete novel. Debug is not final; no main write/merge.
-
-
-### Chapter XXII direct V8 source smoke — 2026-10-26
-
-- **PASS: 10 focused runtime assertions** against the committed Chapter XXII module, index, theme catalog, CSS, backup allowlist and SVG art generator: 31 aligned bilingual-draft passages; 2,072 English words; 34 glossary terms all present in source; 22-of-37 status; script order; unique Yokohama SVG; theme gallery/backup wiring; reduced-motion fallback; and the MedMate cleanup source checks performed in the same review.
-- This is direct source-runtime evidence only. Native Node workflow, Android Gradle asset packaging, Chromium Chapter XXII rendering, fresh APK SHA-256 and physical Xiaomi Pad 5 acceptance remain **NOT VERIFIED / NOT TESTED**.
+- **Content:** 31 aligned English/Arabic-draft passages, 2,072 English words, and 34 contextual terms verified to occur in the source. Arabic remains an editorial draft requiring independent proofreading.
+- **Artwork/theme:** original offline Yokohama harbour SVG; distinct Yokohama Lantern theme registered in Settings, theme gallery, reduced-motion styling and backup allowlist.
+- **Regression found and fixed:** run [40336187954](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40336187954) failed because the Chapter XXI Chromium fixture still treated XXI as the final available chapter. The fixture generator now asserts that XXI has a working next-chapter action and that XXII is the terminal bundled chapter. Added Arabic/English Chromium fixtures for XXII, and updated catalog/art checks to 22 chapters.
+- **PASS — CI:** [Run 40338750217](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40338750217), commit `1f40c4978cfc21ec5ddce1bffb450d057845fcf9`. Node content test, Gradle unit tests/build, required APK asset inspection, Chromium browser smoke, screenshots and artifact upload all passed.
+- **PASS — independent APK checksum:** 4,587,889 bytes; SHA-256 `dcba12d3545c5736b27d68d672d284c3d5d38f1bfec674c3f91e39d8b2253f6d`; [Debug APK artifact 12658901284](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40338750217/artifacts/12658901284).
+- **PASS — browser evidence:** [UI screenshot artifact 12658451869](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40338750217/artifacts/12658451869) includes `verne21-phone.png`, `verne21-en-phone.png`, `verne22-phone.png`, and `verne22-en-phone.png`. These are Chromium runner captures, not Xiaomi Pad 5 captures.
+- **NOT TESTED:** installation on Xiaomi Pad 5; real-device RTL/TalkBack/contrast; scroll/frame-time/RAM/thermal behavior; independent Arabic literary proofreading; territory-specific redistribution clearance. Chapter XXII is 22/37, not the full novel. No main write or PR merge; APK is Debug/test-only.
