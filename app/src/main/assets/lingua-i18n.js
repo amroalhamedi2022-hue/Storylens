@@ -29,7 +29,7 @@ function localizeReader() {
  if (chapterEnd) chapterEnd.textContent = lastAvailable
   ? (incomplete ? 'End of available chapters' : 'The End')
   : 'End of Chapter ' + (state.chapter + 1);
- label('.reader .chapter-end button', lastAvailable ? 'Return to library' : 'Next chapter →');
+ label('.reader .chapter-end > button.primary', lastAvailable ? 'Return to library' : 'Next chapter →');
 }
 function localizeSettings() {
  if (!english()) return;
