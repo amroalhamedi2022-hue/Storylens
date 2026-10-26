@@ -1674,3 +1674,22 @@ body.theme-calcutta-ledger::before,body.theme-calcutta-ledger::after{display:non
 .theme-calcutta-ledger .lt-drawer{background:#302331;color:#f5ead6;border-inline-start:4px solid #d9b77a}
 .theme-calcutta-ledger .lt-theme-choice{border-radius:3px;background:#f5ead6;color:#302632;border:1px solid #c3a86f}
 @media(prefers-reduced-motion:reduce){.theme-calcutta-ledger .library .card{transition:none!important;transform:none!important}}
+
+
+/* Rangoon Passage — jade tide, ivory chart, brass route marks and porthole geometry. */
+.lt-theme-rangoon-passage .lt-theme-swatch{background:radial-gradient(circle at 70% 25%,#d8c18a 0 12%,transparent 13%),repeating-linear-gradient(155deg,#103d43 0 9px,#1b6667 9px 12px,#e8e0c8 12px 15px,#1b6667 15px 27px);border:1px solid #c9ad6c}
+body.theme-rangoon-passage{--body:#12383d;--card:#f3edda;--ink:#173c40;--sub:#587579;--accent:#b78a45;--reader:#f6f0df;--reader-ink:#183d42;color:#f6f0df;background:radial-gradient(ellipse at 78% 12%,#4e989050,transparent 36%),repeating-linear-gradient(160deg,transparent 0 42px,#e5d6ad14 42px 44px,transparent 44px 86px),linear-gradient(145deg,#0d2935,#15545a 55%,#0c313b)}
+body.theme-rangoon-passage::before,body.theme-rangoon-passage::after{display:none!important}
+.theme-rangoon-passage .library .header{border-bottom:1px solid #d7bd7d;padding-bottom:18px;position:relative}
+.theme-rangoon-passage .library .header::after{content:'RANGOON · PASSAGE 16';display:block;margin-top:8px;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.22em;color:#dfc78f}
+.theme-rangoon-passage .library .brand{color:#e7d4a2;letter-spacing:.2em}
+.theme-rangoon-passage .library .storylens-hero{border:1px solid #c9ad6c;border-radius:34px 5px 34px 5px;background:radial-gradient(circle at 88% 22%,#d9bf7d 0 5%,transparent 5.5%),repeating-linear-gradient(155deg,#f3edda 0 35px,#d5e4d5 35px 37px,#f3edda 37px 70px);box-shadow:0 12px 0 #071e2850;color:#173c40}
+.theme-rangoon-passage .library .storylens-hero h2{font-family:Georgia,serif;color:#14545b}
+.theme-rangoon-passage .library .card{border:1px solid #c6b17d;border-inline-start:5px solid #2a8580;border-radius:18px 3px 18px 3px;box-shadow:0 7px 0 #071e282e;animation:none}
+.theme-rangoon-passage .library .card h2{font-family:Georgia,serif;color:#173c40}
+.theme-rangoon-passage .library .secondary,.theme-rangoon-passage .library .pill{border-radius:999px;border-color:#2d7776;background:#f3edda;color:#17484c}
+.theme-rangoon-passage .reader{background:#f6f0df;color:#183d42;border-top:3px solid #b78a45}
+.theme-rangoon-passage .reader .reading-width{border-inline:1px solid #d6c28e;padding-inline:20px;background:linear-gradient(90deg,#2b88810c,transparent 30%,#b78a4508)}
+.theme-rangoon-passage .lt-drawer{background:#123b42;color:#f6f0df;border-inline-start:4px solid #d7bd7d}
+.theme-rangoon-passage .lt-theme-choice{border-radius:18px 3px 18px 3px;background:#f3edda;color:#173c40;border:1px solid #b78a45}
+@media(prefers-reduced-motion:reduce){.theme-rangoon-passage .library .card{transition:none!important;transform:none!important}}
