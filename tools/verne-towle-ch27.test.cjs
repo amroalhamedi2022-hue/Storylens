@@ -1,5 +1,5 @@
 'use strict';
-const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..'),assets=path.join(root,'app/src/main/assets'),read=n=>fs.readFileSync(path.join(assets,n),'utf8');
 const source=read('classic-verne-towle-ch27.js'),html=read('index.html');
 assert.ok(html.includes('src="classic-verne-towle-ch26.js"')&&html.includes('src="classic-verne-towle-ch27.js"'));
@@ -10,6 +10,8 @@ vm.runInNewContext(source,{window:{StoryLensEditorialStories:[story]}},{filename
 assert.equal(story.chapters.length,27);const ch=story.chapters[26];assert.equal(ch.paragraphs.length,25);
 const body=ch.paragraphs.map(p=>p.en).join(' '),count=(body.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.equal(count,1952,'Chapter XXVII must remain complete source text, not a synopsis');
+const normalizedEnglish=ch.paragraphs.map(p=>p.en.replace(/[\\u00a0\\u2007\\u202f]/g,' ').replace(/[\\u2060\\u00ad\\ufeff]/g,'').replace(/\\s+/g,' ').trim()).join('\\n');
+assert.equal(crypto.createHash('sha256').update(normalizedEnglish,'utf8').digest('hex'),'df283010b402b4c3f56d68e4cada2bb1265465ac2a9d3bfc034e7721ccbc9b0c','all English paragraphs must match the pinned Standard Ebooks Chapter XXVII transcription after typographic normalization');
 assert.ok(body.startsWith('During the night of the 5th of December')&&body.endsWith('one, and that was enough!”'));
 assert.ok(ch.paragraphs.every(p=>p.en.trim()&&p.ar.trim()&&/[ء-ي]/.test(p.ar)));
 assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/27 of 37/);assert.equal(story.terms.length,38);
