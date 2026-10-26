@@ -178,3 +178,14 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - Chapter navigation and the available-content boundary are updated; new Node and Chromium acceptance checks are wired into CI.
 - This does not close LT-07/LT-08: eight chapters remain, the Arabic draft needs independent review, and territory-specific rights checks remain open.
 - LT-13 remains open until the complete visual system and performance/accessibility are independently checked on Xiaomi Pad 5. Microphone/TTS remain excluded.
+
+
+## 2026-10-27 — LT-07 / LT-08 / LT-13 functional batch: Chapter XXX
+
+- Added the complete Towle Chapter XXX source from the pinned Standard Ebooks edition: 67 body paragraphs, 2,133 English words, normalized-text SHA-256 `cc6571f506f550e03e3627476ae0c534bb9fc7cb8d179ed08809ba3e6c5575ef`, source commit `56c82e97ff5d4f8950afca05b71af72688a8da34`, blob `d26e028ef931fea90caa1a625b91ca8f4310f244`.
+- Added 67 paragraph-aligned Arabic draft translations and 41 source-bound contextual glossary entries, including the anatomical term `groin → الأربية`. Arabic prose remains an unreviewed draft; independent literary review is still required.
+- Added an original offline SVG scene for Fort Kearney in the snow and the visually distinct **Snowbound Telegraph** theme. Registered the theme in the picker, CSS, reduced-motion contract and backup/import allowlist.
+- Updated browser fixtures so Chapter XXIX enables Chapter XXX, Chapter XXX honestly keeps Chapter XXXI unavailable, and screenshot fixtures close the settings sheet after toggling translations. A separate RTL theme fixture checks the new reader border and screenshot.
+- CI Run 40419513853: **PASS** — chapter/source hash test, glossary checks, theme catalog, Android Debug assembly, packaged-asset verification, Chromium RTL/LTR chapter journeys and Snowbound Telegraph visual check.
+- Debug APK: 4,730,537 bytes; SHA-256 `23ade4fe075f47bb374640920705b0b50b700cd2915386e6d5496e19ff7e3634`; Artifact 12696587055.
+- Content progress: 30/37 chapters (about 81% of this novel only; not the app completion percentage). Physical Xiaomi Pad 5 performance, touch/RTL/TalkBack acceptance and independent Arabic review remain **NOT TESTED**. LT-11's request for a curated library of ~20 externally licensed recordings remains open; procedural melodies do not satisfy that license requirement.
