@@ -764,3 +764,10 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS independent APK verification:** Artifact [12623908761](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40261319574/artifacts/12623908761), extracted 4,442,713-byte APK, independently recalculated SHA-256 `a465f06347dc86b7d2f9062ecae866a4f6a3ce5f0d91a88391f802d29604dc1e`, matching `APK_SHA256.txt`. Chapter XIII, editorial art, theme CSS and backup module are packaged.
 - Source: Standard Ebooks Towle 1873 transcription; CC0 editorial work and US public-domain translation. Territory-specific redistribution clearance and independent Arabic literary/sensitivity review remain **NOT TESTED**. Thirteen of 37 chapters are bundled, not the complete novel.
 - **NOT TESTED:** physical Xiaomi Pad 5 installation, frame pacing/scrolling, RTL/TalkBack, low-memory behavior and final signed release. PR remains Draft; no main write/merge or unrelated repository/Library/Handoff changes.
+
+
+## 2026-10-26 — Towle Chapter XIV / Ganges Panorama (integration pending)
+- Added Chapter XIV from the Standard Ebooks Towle transcription: 27 aligned English/Arabic draft paragraphs (1,917 English words), 28 source-occurring contextual entries, a bespoke offline river/railway SVG, and a visually distinct Ganges Panorama theme with Settings and backup registration.
+- Browser fixture now requires 14 chapters and explicitly opens Chapter XIV in the Chromium reader, checking actual rendered content rather than relying only on catalog counts. Added a dedicated source-bound Chapter XIV regression and required APK asset packaging.
+- **Purposeful build question:** do the new chapter script, bilingual data, theme/backup wiring and chapter-specific reader journey work together in Android packaging and Chromium? Source-only checks cannot prove script order or actual reader rendering, so one targeted CI run is warranted.
+- CI/APK checksum: pending. Xiaomi Pad 5, real frame pacing, RTL/TalkBack, independent Arabic review, territory-specific rights clearance and final signed release remain NOT TESTED. Fourteen of 37 chapters are bundled, not the complete novel.
