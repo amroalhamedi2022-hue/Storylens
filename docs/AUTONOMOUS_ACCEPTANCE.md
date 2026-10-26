@@ -848,3 +848,10 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - Existing regressions cover a decomposed single word and a decomposed token inside an authored multiword phrase, while requiring the displayed phrase to preserve the original source spelling.
 - **CI for the fix: NOT VERIFIED at commit time.** The next branch CI must pass the phrase lookup regression, content suite, Gradle/package checks and Chromium reader journey.
 - **NOT TESTED:** Xiaomi Pad 5 keyboard/TalkBack and actual Android taps on decomposed PDF text.
+
+
+### Unicode lookup CI closure — 2026-10-26
+
+- **PASS:** [Android CI run 40311875239](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40311875239) completed SUCCESS on source SHA `47c9819a8a4e08b9cbad0024e0b74611b46b2a6c`. The production phrase-lookup regression passed, including NFC-equivalent composed/decomposed single-word and phrase matching; Gradle unit tests, APK asset checks and Chromium reader journey passed.
+- **PASS independent APK verification:** downloaded Debug artifact [12645083213](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40311875239/artifacts/12645083213), extracted `app-debug.apk` (4,536,997 bytes), and independently recomputed SHA-256 `a7478fe24d429b617ed258c68a1d8fc7dfa5156e1615b036666c9c101424f819`, matching `APK_SHA256.txt`.
+- **NOT TESTED:** Xiaomi Pad 5 installation, actual taps against decomposed PDF-derived text, real frame pacing, TalkBack and final signed release. Debug APK is test-only; LT-01..LT-13 remain IN PROGRESS.
