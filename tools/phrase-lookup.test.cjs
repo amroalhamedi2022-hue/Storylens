@@ -114,4 +114,28 @@ editorialDict.lexiconRevision=1;
 assert.equal(editorialLookup('A harbor.','harbor',2).entry.literal,'مرفأ',
  'dictionary revision must refresh a same-length replacement');
 
+
+/* Canonically equivalent Unicode must resolve across composed/decomposed text.
+ * Imported lexicons and extracted PDFs may differ in normalization. */
+const decomposed = 'cafe\u0301';
+const unicodeDictionary = [{term:'café', literal:'قهوة'}];
+const unicodeWordSentence = 'We ordered ' + decomposed + '.';
+const unicodeWord = lookup({
+ story:{terms:[]}, dictionary:unicodeDictionary, sentence:unicodeWordSentence,
+ selected:decomposed, offset:unicodeWordSentence.indexOf(decomposed)
+});
+assert.equal(unicodeWord.entry.literal, 'قهوة',
+ 'NFC-equivalent single word must resolve without rewriting source text');
+const unicodePhraseEntry = {term:'café noir', type:'phrase', context:'تعبير سياقي'};
+const unicodePhraseSentence = 'The menu said ' + decomposed + ' noir.';
+const unicodePhrase = lookup({
+ story:{terms:[unicodePhraseEntry]}, dictionary:[],
+ sentence:unicodePhraseSentence, selected:decomposed,
+ offset:unicodePhraseSentence.indexOf(decomposed), lemmas:w=>[w]
+});
+assert.equal(unicodePhrase.entry, unicodePhraseEntry,
+ 'NFC-equivalent decomposed token must match a composed multiword phrase');
+assert.equal(unicodePhrase.display, decomposed + ' noir',
+ 'phrase result preserves exact original source spelling and offsets');
+
 console.log('PASS: indexed idioms, repeated matches, inflections, punctuation, unknowns, offline fallbacks and reader integration');

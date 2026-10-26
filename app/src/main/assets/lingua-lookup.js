@@ -4,7 +4,7 @@
 (function (global) {
 'use strict';
 const indexes = new WeakMap();
-const tokens = value => (String(value).toLowerCase().match(/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu) || []);
+const tokens = value => (String(value).normalize('NFC').toLowerCase().normalize('NFC').match(/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu) || []);
 const canonical=value=>String(value).toLowerCase().replaceAll('’',"'");
 const tokenSpans=value=>Array.from(String(value).matchAll(/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu),m=>
  ({word:m[0],start:m.index,end:m.index+m[0].length}));
@@ -28,7 +28,7 @@ function createIndex(story, dictionary) {
   const words=tokens(term).map(canonical);
   if(words.length<2)continue;
   const item = {entry, term, words,
-   simple:/^[\p{L}'’\-]+(?:\s+[\p{L}'’\-]+)+$/u.test(term),
+   simple:/^[\p{L}\p{M}'’\-]+(?:\s+[\p{L}\p{M}'’\-]+)+$/u.test(term),
    regex: new RegExp('(^|[^\\p{L}])(' + escapeRegex(term) + ')(?=$|[^\\p{L}])', 'giu')};
   for (const word of new Set(words)) {
    const bucket = phrases.get(word) || [];
