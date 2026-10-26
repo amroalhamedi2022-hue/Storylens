@@ -118,6 +118,10 @@ jobs:
           echo "PASS: desktop-browser library render smoke"
           python3 tools/make_browser_fixtures.py
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/reader-phone.png" "file://$PWD/app/src/main/assets/qa-reader.html" >/tmp/chrome-reader.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne14-phone.png" "file://$PWD/app/src/main/assets/qa-verne14.html" >/tmp/chrome-verne14.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne14.html" > /tmp/storylens-verne14-dom.html 2>/tmp/chrome-verne14-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne14-dom.html || { echo "Chapter XIV reader screenshot failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne14-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XIV rendered in the Chromium reader; screenshot saved as verne14-phone.png"
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/word-phone.png" "file://$PWD/app/src/main/assets/qa-word.html" >/tmp/chrome-word.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/backup-phone.png" "file://$PWD/app/src/main/assets/qa-backup.html" >/tmp/chrome-backup.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-flow.html" > /tmp/storylens-flow-dom.html 2>/tmp/chrome-flow.log
