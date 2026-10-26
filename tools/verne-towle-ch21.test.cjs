@@ -24,7 +24,7 @@ const words=(english.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.ok(words>=2500,'Chapter XXI must be substantial source text, not a synopsis: '+words);
 assert.ok(english.startsWith('This voyage of eight hundred miles'));
 assert.ok(english.endsWith('“Fire!” said Mr. Fogg. And the booming of the little cannon resounded in the air.'));
-assert.ok(chapter.paragraphs.every(p=>p.en.trim().length>0&&p.ar.trim().length>0&&/[\\u0621-\\u064A]/.test(p.ar)));
+assert.ok(chapter.paragraphs.every(p=>p.en.trim().length>0&&p.ar.trim().length>0&&/[\u0621-\u064A]/.test(p.ar)));
 assert.equal(story.totalChapters,37);
 assert.match(story.editorialStatus,/21 of 37/);
 const chapterTerms=story.terms.filter(t=>t.note.includes('Chapter XXI:'));
