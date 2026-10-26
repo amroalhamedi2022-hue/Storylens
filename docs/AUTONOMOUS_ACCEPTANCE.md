@@ -703,3 +703,13 @@ AUTOMATION_COMPLETE: IN_PROGRESS
 - **PASS independent APK verification:** downloaded Debug artifact `12618723865`, extracted `app-debug.apk` (4,362,669 bytes), and independently recalculated SHA-256 `cec80e3327787fe9edbf35253deabc72ec125380ecfb72c4d777edd0e3ff8cf0`, matching the artifact's `APK_SHA256.txt`. Confirmed Chapter VIII, index and editorial-art assets are packaged.
 - **PASS source-bound checks:** 59/59 English source paragraphs and 59 aligned Arabic draft passages, 1,080 English words, 26 source-occurring phrases, original offline telegraph SVG, and Red Sea Dispatch theme/settings/backup registration. Eight of 37 authentic chapters are available; not a completed novel.
 - **NOT TESTED:** physical Xiaomi Pad 5 installation, real frame pacing, RTL/TalkBack, independent Arabic literary proofreading, territory-specific redistribution clearance, final signed release. This Debug APK is not final.
+
+
+## 2026-10-26 — LT-07 Chapter IX / LT-08 Indian Ocean art / LT-13 Monsoon Meridian (validation pending)
+
+- **Production milestone:** Standard Ebooks Towle Chapter IX is bundled as 30 original English prose/dialogue paragraphs (1,552 English words) with 30 aligned Arabic companion drafts and 23 contextual entries that occur in the source. This brings the book to **9 of 37 chapters**, not completion.
+- **Provenance:** https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-9.xhtml; source XHTML SHA-256 `d61493072b960641c3bd7c0145dad1414b857dbcacabd058e09bf406b42fda1b`. Standard Ebooks' editorial transcription is CC0; Towle's 1873 English translation is public domain in the US. Territory-specific redistribution and independent Arabic literary proofreading remain **NOT TESTED**.
+- **Visual:** bespoke offline Indian Ocean / Mongolia SVG and distinct Monsoon Meridian theme, registered in Settings and backup; no remote art, fonts, sound or new permissions.
+- **Purposeful build question:** do the new bilingual passages, chapter load order, art/theme/backup integration, Node regressions, Android asset packaging and Chromium reader journey work together? Source inspection alone cannot establish Gradle packaging or WebView behavior.
+- **Status at commit:** CI **PENDING**; do not mark LT-07/08/13 or overall LT-01..13 complete until CI and device/editorial gates pass.
+- **NOT TESTED:** Xiaomi Pad 5 installation, scrolling/frame times, RTL/TalkBack, independent Arabic literary review, territory-specific redistribution clearance and final signed release. No main write, merge, other repository, paid API, microphone/TTS or Library/Handoff change.
