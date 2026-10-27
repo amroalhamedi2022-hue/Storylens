@@ -65,6 +65,7 @@ jobs:
           node tools/keyboard-lookup.test.cjs
           node tools/phrase-lookup.test.cjs
           node tools/locale-journeys.test.cjs
+          node tools/locale-shell.test.cjs
           node --check app/src/main/assets/lexicon-extra.js
           node tools/lexicon.test.cjs
           node tools/freedict.test.cjs
