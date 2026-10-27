@@ -415,3 +415,13 @@ merely because its title is present in a roadmap.
 - **Art/theme:** original offline SVG of the London terminus clock at 8:50 p.m.; distinct **The Last Five Minutes** theme with clock-face geometry, timetable rules, square editorial cards and reduced-motion fallback. No remote image or third-party art is bundled.
 - **Rights:** Standard Ebooks editorial contribution is CC0; Towle's 1873 English translation is treated as public domain in the USA. Territory-specific redistribution clearance remains NOT TESTED.
 - **CI evidence:** https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40446487903 — PASS; Debug APK SHA-256 `d364e29aea175f2dbcd29885efd5878c203bdf3b8498ed266c76bf2245f09472`.
+
+
+## 2026-10-27 — Towle Chapter XXXV: Westminster Vows
+
+- **Asset:** `app/src/main/assets/classic-verne-towle-ch35.js`; 52 narrative paragraphs / 1,573 English words, 52 aligned Arabic companion drafts, and 30 source-occurring contextual glossary entries.
+- **Pinned source:** Standard Ebooks, George Makepeace Towle translation, `src/epub/text/chapter-35.xhtml`; upstream commit `56c82e97ff5d4f8950afca05b71af72688a8da34`; source blob SHA-1 `8a39e6eaa78e1c14cca130353697f307f55e48d0`.
+- **Normalized English SHA-256:** `3746f6d1389e415cec8a093d32fa5bf7e0feca5970ccad59f69bfbb50943820a`; regression test recomputes it and asserts 1,573 words and 52 aligned paragraphs.
+- **Art/theme:** original offline SVG of Westminster's clock above Saville Row and paired rings; distinct **Westminster Vows** theme with oxblood/ivory/brass palette, reduced-motion fallback and backup allowlist. No remote art is bundled.
+- **Rights:** the pinned Standard Ebooks license says the text/artwork are believed public domain in the United States and contributors dedicate their contributions worldwide under CC0 1.0. Other-territory redistribution clearance remains **NOT TESTED**. The Arabic translation is a draft requiring independent literary review.
+- **CI evidence:** https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40448838238 — PASS; Debug APK SHA-256 `63a59994a24ab43366936f755f25e1d05b02858e0e41631557fb41a0021ba3c3`.

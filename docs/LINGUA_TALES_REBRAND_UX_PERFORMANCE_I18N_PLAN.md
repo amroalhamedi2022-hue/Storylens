@@ -218,3 +218,17 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - New original SVG scene and distinct **The Last Five Minutes** theme registered in selection, CSS, reduced-motion and backup validation.
 - **PASS — CI Run 40446487903:** Chapter XXXIV Arabic/English Chromium journeys, new theme styling, 53-theme catalog, offline asset packaging and Debug APK build. Debug APK SHA-256 `d364e29aea175f2dbcd29885efd5878c203bdf3b8498ed266c76bf2245f09472`.
 - Open gates: three remaining novel chapters; independent Arabic literary review; regional rights review; curated licensed audio; Xiaomi Pad 5 smoothness, RAM/thermal, TalkBack, and physical RTL/contrast. Do not mark LT-01..LT-13 complete from this chapter-only milestone.
+
+
+## 2026-10-27 — Chapter XXXV + Westminster Vows (CI PASS; physical device NOT TESTED)
+
+- Serial literature milestone: **35/37 chapters available**. Chapter XXXV adds **52 English narrative paragraphs / 1,573 words**, 52 aligned Arabic draft paragraphs, and 30 contextual word/phrase/idiom entries. The normalized English SHA-256 is `3746f6d1389e415cec8a093d32fa5bf7e0feca5970ccad59f69bfbb50943820a`.
+- Pinned source: Standard Ebooks Towle transcription, `src/epub/text/chapter-35.xhtml`; upstream commit `56c82e97ff5d4f8950afca05b71af72688a8da34`, source blob `8a39e6eaa78e1c14cca130353697f307f55e48d0`.
+- Added an original offline Westminster-clock / paired-rings SVG and the distinct **Westminster Vows** theme. The theme is registered in the selector, loaded from its own stylesheet, supports reduced-motion, and is accepted by backup validation. Chapter XXXIV navigation now leads to XXXV; XXXV remains the honest current endpoint with XXXVI–XXXVII unavailable.
+- **Purposeful build question:** do the new chapter, artwork wrapper and separate theme stylesheet survive APK asset packaging, and do the Arabic/English reader plus theme DOM journeys pass together? Source checks alone cannot establish that the files are packaged or that the rendered RTL/LTR theme works.
+- **PASS — CI Run 40448838238** on source commit `4bf6aa47be20ef4c1a95dcf6026eccb3d1fb6be0`: curated content/theme tests, Chapter XXXV hash/glossary/alignment test, Android Debug APK build and asset verification, browser fixtures for Chapters XXVI–XXXV, Chapter XXXV Arabic/English, Westminster Vows, and the full reader/word-sheet/bookmark/translation/theme journey.
+- **PASS — independently re-hashed Debug APK:** 4,802,164 bytes; SHA-256 `63a59994a24ab43366936f755f25e1d05b02858e0e41631557fb41a0021ba3c3`; matches `APK_SHA256.txt` from Artifact **12709542775**. Screenshot evidence: Artifact **12709138752**.
+- CI: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40448838238
+- APK Artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40448838238/artifacts/12709542775
+- Browser screenshots: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40448838238/artifacts/12709138752
+- **NOT TESTED:** physical Xiaomi Pad 5 install/touch, frame pacing/RAM/thermal, TalkBack and physical RTL/contrast, independent Arabic literary review, and territory-specific redistribution clearance. The curated externally licensed ~20-recording audio library remains open; procedural melodies do not satisfy it. This is a Debug test build, not a final release, and the milestone does not mark LT-01..LT-13 complete.
