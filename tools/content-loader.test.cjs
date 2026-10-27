@@ -6,7 +6,7 @@ const vm=require('node:vm');
 const root=path.resolve(__dirname,'..');
 const html=fs.readFileSync(path.join(root,'app/src/main/assets/index.html'),'utf8');
 const source=fs.readFileSync(path.join(root,'app/src/main/assets/lingua-content-loader.js'),'utf8');
-const artMatch=html.match(/<script id="artData" type="application\\/json">([\\s\\S]*?)<\\/script>/);
+const artMatch=html.match(/<script id="artData" type="application\/json">([\s\S]*?)<\/script>/);
 assert.ok(artMatch,'static library art catalog exists');
 const initialArt=JSON.parse(artMatch[1]);
 assert.ok(initialArt['around-the-world-in-eighty-days-towle_0']?.startsWith('data:image/svg+xml'), 'Verne has a lightweight library-cover illustration before chapter assets load');
