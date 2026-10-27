@@ -1235,3 +1235,12 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - **PASS — Android CI:** [run 40533628521](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40533628521) on source/test head cb102c186f7b5dabd5c9d444183809ffc56b2596. Pinned CC-BY audio fetch/verification, all Node/content/theme regressions, Gradle unit tests + Debug assembly, required APK asset/license/manifest checks, and Chromium reader journey passed.
 - **PASS — independently re-hashed Debug APK:** 20,050,454 bytes; SHA-256 e1bdd4eda45dcc90961957c252bbfd2f3ca7a044903cbd2f49dc66f5eabd5c62, matching APK_SHA256.txt in Debug artifact **12747891165**. Browser evidence artifact **12746174907**.
 - **NOT TESTED:** physical Xiaomi Pad 5 install, actual Android Audio Focus and screen-off interruption, audible quality, battery/thermal/frame pacing, physical RTL/TalkBack, Arabic literary review and territory-specific redistribution clearance. The pack contains 16 licensed ambience loops + 4 short effects; the device/acoustic gate remains open. Debug is not final and LT-01..LT-13 remain **IN PROGRESS**.
+
+
+## 2026-10-27 — LT-06 bilingual backup-validation failures
+
+- **Production:** backup/export/import error messages now follow the selected interface locale. Known malformed-JSON, unsupported-format, invalid-field, size-limit, and rollback failures receive English UI messages when the interface is English; Arabic UI retains the original Arabic diagnostics. Unknown Arabic internal errors use a safe generic English fallback instead of leaking an untranslated message. Imported story text, saved vocabulary, translations, and backup data are not rewritten.
+- **Regression:** `tools/data-backup.test.cjs` exercises the real production `receiveImport` path for malformed JSON and unsupported format in English, then confirms the same malformed input remains Arabic in Arabic UI. The test also retains the existing restore-confirmation and data-preservation cases.
+- **Source/test head:** `e4fd74fe31f12c7351d8bc083f38630454c0403b`.
+- **CI:** **NOT VERIFIED** for this exact head in this checkpoint; the connected status lookup did not expose the push-triggered Actions run. Do not infer PASS from the source changes alone.
+- **NOT TESTED:** physical Xiaomi Pad 5, actual Android WebView locale behavior, full UI string audit, RTL/TalkBack, frame pacing, Arabic literary review, territory-specific rights, and final release. LT-01..LT-13 remain **IN PROGRESS**.
