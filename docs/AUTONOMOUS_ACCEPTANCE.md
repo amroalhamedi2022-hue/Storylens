@@ -1329,3 +1329,13 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 
 
 - **Isolated production-helper smoke (2026-10-28): PASS, 5/5 checks** — executed the actual pageSwipeAllowed function extracted from the current branch source in V8 for ordinary reading, selected text, interactive targets, nested text nodes and a missing target. This does not replace repository Node CI, Chromium or Pad 5 testing.
+
+
+## 2026-10-28 — Page-turn/contextual meaning + Android integration gate (PASS; device NOT TESTED)
+
+- **Production UX in this branch:** bilingual chapter pages with swipe/previous/next navigation and reduced-motion page-turn animation; contextual word sheet prioritizes story-authored meaning, otherwise shows a clearly labelled translation-overlap estimate or admits no verified standalone sense. Swipe guards preserve text selection and interactive controls.
+- **Regression/build repairs:** isolated reader harnesses now provide the base `wordSheet` host dependency expected by `reader-experience.js`. The Android Kotlin DSL signing check now imports `java.io.File` rather than resolving `java.io.File` through Gradle's `java` extension. The earlier failures were corrected; production assertions were not weakened.
+- **PASS — Android CI:** [run 40603809099](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40603809099), exact source/test SHA `2a36ea47f0aaaa18416243d422a4c1eb18b32b63`. Curated-content/dictionary/theme/licensed-audio checks, Node regression suite, Gradle unit tests + Debug APK, critical packaged-resource verification, and Chromium library/reader journeys through Chapter XXXVII all passed.
+- **PASS — independent APK hash verification:** downloaded Debug Artifact [12780451234](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40603809099/artifacts/12780451234); extracted `app-debug.apk` is 20,062,103 bytes, SHA-256 `5cceffecca74e45ab6eb98dc802394ae24d6c475be91e581e72296a5c5522c45`, independently recalculated and matching `APK_SHA256.txt`.
+- **Signing/update limitation:** GitHub Actions stable-signing secrets were absent, so the stable-signed release APK step was skipped. This Debug APK is for testing and is **not** an in-place update package; it can conflict with an existing installation signed by a different/ephemeral key. Future data-preserving updates require the matching private keystore configured as Actions secrets. Otherwise export/verify a backup before a one-time uninstall/reinstall.
+- **NOT TESTED:** physical Xiaomi Pad 5 install/update, real frame pacing/RAM/thermal, page-turn feel, actual RTL/TalkBack, contextual-meaning editorial accuracy, and final signing/legal/editorial acceptance. LT-01..LT-13 remain IN PROGRESS overall; no final release or main merge.
