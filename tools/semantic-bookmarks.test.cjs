@@ -21,7 +21,7 @@ const sandbox={window,document,state:{story,page:'reader',chapter:0,toolbar:fals
  get:(k,f)=>store.has(k)?store.get(k):f,
  put:(k,v)=>store.set(k,v),
  esc:String,Date,library(){},openStory(){},settings(){},theme(){},inlineTranslate(){},
- renderReader(){rendered++;},closeSheet(){}};
+ wordSheet(){},renderReader(){rendered++;},closeSheet(){}};
 vm.runInNewContext(source,sandbox,{timeout:5000});
 window.stlBookmark();
 const saved=store.get('bookmarks').novel;
