@@ -189,3 +189,12 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - CI Run 40419513853: **PASS** — chapter/source hash test, glossary checks, theme catalog, Android Debug assembly, packaged-asset verification, Chromium RTL/LTR chapter journeys and Snowbound Telegraph visual check.
 - Debug APK: 4,730,537 bytes; SHA-256 `23ade4fe075f47bb374640920705b0b50b700cd2915386e6d5496e19ff7e3634`; Artifact 12696587055.
 - Content progress: 30/37 chapters (about 81% of this novel only; not the app completion percentage). Physical Xiaomi Pad 5 performance, touch/RTL/TalkBack acceptance and independent Arabic review remain **NOT TESTED**. LT-11's request for a curated library of ~20 externally licensed recordings remains open; procedural melodies do not satisfy that license requirement.
+
+
+## 2026-10-27 — LT-11 stale-resume lifecycle regression
+
+- **Finding:** if the document became hidden while `AudioContext.resume()` was pending, the visibility pause could run before the context reached `running`; the late resume was prevented from creating sound, but could leave the context running silently.
+- **Change:** a stale/hidden play request now re-suspends a late-running context when no newer playback is active. The regression fixture explicitly delays `resume()` and asserts the context returns to `suspended` after the visibility pause.
+- **PASS — CI/source/build/browser:** [run 40427307659](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40427307659), source SHA `bd16885cabe8490a7eb60129d253301710e768f7`. Node tests, Android Debug assembly, required offline-asset/adaptive-icon packaging, Chromium reader journey and screenshot upload all passed.
+- **PASS — APK integrity:** Debug APK 4,746,929 bytes; SHA-256 `8fa1a7145080e8e453ebb24054fb9963f6cf94a7075f73021f359b4ddb9b657d`. Recomputed independently from the downloaded artifact and matched `APK_SHA256.txt`. [APK artifact 12699928561](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40427307659/artifacts/12699928561); [browser evidence 12700058460](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40427307659/artifacts/12700058460).
+- **NOT TESTED:** real Android audio focus, screen-off behavior, Xiaomi Pad 5 sound quality, battery use, frame pacing, TalkBack and device installation. Synthesized previews still do not satisfy the separately required curated ~20 licensed recordings/music library. No microphone/TTS.

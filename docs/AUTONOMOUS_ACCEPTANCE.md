@@ -1070,3 +1070,16 @@ Screenshot artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/r
 - **Source commits:** CSS `fd819cbf90af770c6f5f77a60866dbcad1f76711`; regression test `f749a006faa3b8ea0c275f9e13932aac56be3ed8`.
 - **CI:** NOT VERIFIED for this source/test head. The connected commit-run/status lookup returned no run or check result; no PASS is inferred from source inspection.
 - **NOT TESTED:** visual gallery screenshot on Android, Xiaomi Pad 5 installation, RTL/TalkBack, frame pacing and final signed release.
+
+
+## 2026-10-27 — LT-11 late AudioContext resume guard
+
+| Gate | Result | Evidence / boundary |
+|---|---|---|
+| Stale resume after visibility pause | **PASS — Node regression** | Delayed fake AudioContext resume must return to `suspended`; no hidden sound graph starts. |
+| Android Debug build + offline asset/adaptive icon packaging | **PASS — CI** | Run 40427307659 on `bd16885cabe8490a7eb60129d253301710e768f7`. |
+| Browser reader journey | **PASS — CI** | Chromium full reader/word-sheet/chapter/bookmark/translation/theme journey completed. |
+| APK SHA-256 | **PASS — independently rehashed** | 4,746,929 bytes; `8fa1a7145080e8e453ebb24054fb9963f6cf94a7075f73021f359b4ddb9b657d`; Artifact 12699928561. |
+| Xiaomi Pad 5 / Android audio focus / screen-off / battery | **NOT TESTED** | Requires physical-device execution. |
+| Curated licensed audio library | **OPEN** | 24 procedural presets remain distinct from the requested licensed recordings/music collection. |
+
