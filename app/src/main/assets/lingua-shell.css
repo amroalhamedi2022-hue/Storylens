@@ -2102,3 +2102,27 @@ body.theme-atlantic-passage::before,body.theme-atlantic-passage::after{display:n
 @media(max-width:600px){.theme-atlantic-passage .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-atlantic-passage .library .storylens-hero .hero-orb{width:70px;height:70px}.theme-atlantic-passage .library .header::after{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.theme-atlantic-passage .library .card{transition:none!important;transform:none!important}}
 
+
+
+/* The Last Five Minutes — clock-face geometry, timetable rules and square editorial cards. */
+.lt-theme-last-five-minutes .lt-theme-swatch{background:conic-gradient(from -90deg at 75% 50%,#c23e35 0 24deg,#fffdf7 24deg 360deg);border:2px solid #202d39}
+body.theme-last-five-minutes{--body:#f3eddf;--card:#fffdf7;--ink:#202d39;--sub:#59656b;--accent:#c23e35;--reader:#fffdf7;--reader-ink:#202d39;background:radial-gradient(circle at 92% 6%,#c23e3514 0 11%,transparent 11.2%),repeating-linear-gradient(90deg,#202d3908 0 1px,transparent 1px 38px),linear-gradient(135deg,#f3eddf,#e5dfd2 62%,#d7d9d2)}
+body.theme-last-five-minutes::before,body.theme-last-five-minutes::after{display:none!important}
+.theme-last-five-minutes .library .header{position:relative;border-bottom:5px solid #c23e35;background:linear-gradient(90deg,#fffdf7 0 70%,#e5dfd2 70%);padding-bottom:15px}
+.theme-last-five-minutes .library .header::after{content:'LONDON TERMINUS · FIVE MINUTES LOST';display:block;margin-top:8px;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.15em;color:#c23e35}
+.theme-last-five-minutes .library .brand{color:#c23e35;letter-spacing:.14em}
+.theme-last-five-minutes .library .header h1{font-family:Georgia,serif;color:#202d39}
+.theme-last-five-minutes .library .storylens-hero{display:grid;grid-template-columns:minmax(0,1fr) 145px;align-items:center;border:2px solid #202d39;border-radius:0;background:repeating-linear-gradient(0deg,#202d3906 0 1px,transparent 1px 34px),#fffdf7;box-shadow:7px 7px 0 #202d3912;color:#202d39;min-height:190px;padding:23px 26px}
+.theme-last-five-minutes .library .storylens-hero h2{font-family:Georgia,serif;color:#c23e35}
+.theme-last-five-minutes .library .storylens-hero .hero-orb{position:relative;inset:auto;transform:none;width:132px;height:132px;border-radius:50%;border:5px solid #202d39;background:conic-gradient(from -90deg,#c23e35 0 24deg,#fffdf7 24deg 360deg);box-shadow:inset 0 0 0 8px #d0b36d;opacity:1}
+.theme-last-five-minutes .library .storylens-hero .hero-orb-core{display:none}
+.theme-last-five-minutes .library .card{border-radius:0;border:1px solid #b9b5a9;border-top:5px solid #c23e35;background:#fffdf7;box-shadow:4px 5px 0 #202d3910;color:#202d39}
+.theme-last-five-minutes .library .card h2,.theme-last-five-minutes .library .card h3{font-family:Georgia,serif;color:#202d39}
+.theme-last-five-minutes .library .secondary,.theme-last-five-minutes .library .pill{border-radius:0;border:1px solid #202d39;background:#202d39;color:#fffdf7}
+.theme-last-five-minutes .lt-drawer{background:#202d39;border-inline-start:5px solid #c23e35}
+.theme-last-five-minutes .reader{border:1px solid #202d39;border-top:8px solid #c23e35;border-radius:0;background:linear-gradient(180deg,#fffdf7,#f8f4ea)}
+.theme-last-five-minutes .reader .reading-width{border-inline-start:4px solid #c23e35;padding-inline-start:19px;background:repeating-linear-gradient(0deg,#202d3907 0 1px,transparent 1px 34px)}
+.theme-last-five-minutes .lt-theme-choice{background:#fffdf7;color:#202d39;border-radius:0;border:1px solid #b9b5a9}
+.theme-last-five-minutes .lt-theme-choice.selected{outline:3px solid #c23e35;outline-offset:2px}
+@media(max-width:600px){.theme-last-five-minutes .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-last-five-minutes .library .storylens-hero .hero-orb{width:70px;height:70px}.theme-last-five-minutes .library .header::after{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.theme-last-five-minutes .library .card{transition:none!important;transform:none!important}}
