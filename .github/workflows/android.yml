@@ -344,7 +344,7 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne36-phone.png" "file://$PWD/app/src/main/assets/qa-verne36.html" >/tmp/chrome-verne36.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne36.html" > /tmp/storylens-verne36-dom.html 2>/tmp/chrome-verne36-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne36-dom.html || { echo "Chapter XXXVI Arabic reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne36-dom.html | head -1; exit 1; }
-          echo "PASS: Chapter XXXVI Arabic reader, 30 aligned bilingual paragraphs and honest 36-of-37 boundary"
+          echo "PASS: Chapter XXXVI Arabic reader, 30 aligned bilingual paragraphs and navigation into Chapter XXXVII"
 
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne36-en-phone.png" "file://$PWD/app/src/main/assets/qa-verne36-en.html" >/tmp/chrome-verne36-en.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne36-en.html" > /tmp/storylens-verne36-en-dom.html 2>/tmp/chrome-verne36-en-dom.log
@@ -355,6 +355,19 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne36-theme.html" > /tmp/storylens-verne36-theme-dom.html 2>/tmp/chrome-verne36-theme-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne36-theme-dom.html || { echo "Reform Club Countdown visual fixture failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne36-theme-dom.html | head -1; exit 1; }
           echo "PASS: Reform Club Countdown styles Chapter XXXVI in RTL with offline art"
+
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne37-phone.png" "file://$PWD/app/src/main/assets/qa-verne37.html" >/tmp/chrome-verne37.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne37.html" > /tmp/storylens-verne37-dom.html 2>/tmp/chrome-verne37-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne37-dom.html || { echo "Chapter XXXVII Arabic reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne37-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXXVII Arabic reader, 41 aligned bilingual paragraphs and final-book state"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne37-en-phone.png" "file://$PWD/app/src/main/assets/qa-verne37-en.html" >/tmp/chrome-verne37-en.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne37-en.html" > /tmp/storylens-verne37-en-dom.html 2>/tmp/chrome-verne37-en-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne37-en-dom.html || { echo "Chapter XXXVII English reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne37-en-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXXVII English reader and 41 aligned Arabic translations"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne37-theme-phone.png" "file://$PWD/app/src/main/assets/qa-verne37-theme.html" >/tmp/chrome-verne37-theme.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne37-theme.html" > /tmp/storylens-verne37-theme-dom.html 2>/tmp/chrome-verne37-theme-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne37-theme-dom.html || { echo "Meridian Epilogue visual fixture failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne37-theme-dom.html | head -1; exit 1; }
+          echo "PASS: Meridian Epilogue styles Chapter XXXVII in RTL with offline final-chapter art"
 
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/word-phone.png" "file://$PWD/app/src/main/assets/qa-word.html" >/tmp/chrome-word.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/backup-phone.png" "file://$PWD/app/src/main/assets/qa-backup.html" >/tmp/chrome-backup.log 2>&1
