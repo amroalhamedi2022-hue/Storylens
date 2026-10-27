@@ -155,7 +155,7 @@ tests["lazy-content"] = r"""(async function(){
   const id='around-the-world-in-eighty-days-towle';
   const story=catalog.stories.find(s=>s.id===id);
   const resources=()=>performance.getEntriesByType('resource').map(x=>x.name);
-  const eager=()=>resources().filter(x=>/(classic-verne-towle-ch\\d+\\.js|editorial-art(?:-ch(?:35|36|37))?\\.js|freedict-en-ar\\.js)(?:[?#]|$)/.test(x));
+  const eager=()=>resources().filter(x=>/(classic-verne-towle-ch\d+\.js|editorial-art(?:-ch(?:35|36|37))?\.js|freedict-en-ar\.js)(?:[?#]|$)/.test(x));
   if(!story||story.chapters.length!==0)errors.push('long book should start with chapter metadata only');
   if(window.FreeDictEnglishArabic)errors.push('FreeDict should not be evaluated during startup');
   if(eager().length)errors.push('deferred assets were fetched before use: '+eager().join(','));
@@ -166,7 +166,7 @@ tests["lazy-content"] = r"""(async function(){
   await window.LinguaContentLoader.ensureStory(id);
   if(story.chapters.length!==37)errors.push('book loader did not produce all 37 chapters');
   if(!art[id+'_36'])errors.push('offline final-chapter illustration was not attached');
-  if(eager().filter(x=>/classic-verne-towle-ch\\d+\\.js/.test(x)).length!==36)errors.push('expected all 36 ordered chapter files after opening the book');
+  if(eager().filter(x=>/classic-verne-towle-ch\d+\.js/.test(x)).length!==36)errors.push('expected all 36 ordered chapter files after opening the book');
  }catch(e){errors.push('loader exception: '+e.message)}
  document.body.setAttribute('data-lt-lazy-qa',errors.length?'FAIL':'PASS');
  document.body.setAttribute('data-lt-lazy-qa-errors',errors.join(' | '));
