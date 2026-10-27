@@ -10,7 +10,7 @@ const artMatch=html.match(/<script id="artData" type="application\/json">([\s\S]
 assert.ok(artMatch,'static library art catalog exists');
 const initialArt=JSON.parse(artMatch[1]);
 assert.ok(initialArt['around-the-world-in-eighty-days-towle_0']?.startsWith('data:image/svg+xml'), 'Verne has a lightweight library-cover illustration before chapter assets load');
-const libraryMatch=html.match(/<script id="libraryData" type="application\\/json">([\\s\\S]*?)<\\/script>/);
+const libraryMatch=html.match(/<script id="libraryData" type="application\/json">([\s\S]*?)<\/script>/);
 assert.ok(libraryMatch,'static library metadata exists');
 const initialLibrary=JSON.parse(libraryMatch[1]);
 const verneEntry=initialLibrary.stories.find(item=>item.id==='around-the-world-in-eighty-days-towle');
@@ -96,7 +96,7 @@ function makeHarness({failOnce=null,lang='ar'}={}) {
   }}
  };
  vm.runInNewContext(source,{window,document,Promise,Set,Array,Error,console},{filename:'lingua-content-loader.js',timeout:5000});
- return {window,document,rootNode,story,attempted,successful,removed,opened,sheetEntries,bodyChildren,get artAttached(){return artAttached;},get statusText(){return bodyChildren.map(x=>x.text||x.textContent||'').join(' ');}};
+  return {window,document,rootNode,story,catalog,catalogStory,openedChapterCounts,attempted,successful,removed,opened,sheetEntries,bodyChildren,get artAttached(){return artAttached;},get statusText(){return bodyChildren.map(x=>x.text||x.textContent||'').join(' ')};};
 }
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 (async()=>{
