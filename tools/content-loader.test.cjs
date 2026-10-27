@@ -7,24 +7,24 @@ const root=path.resolve(__dirname,'..');
 const html=fs.readFileSync(path.join(root,'app/src/main/assets/index.html'),'utf8');
 const source=fs.readFileSync(path.join(root,'app/src/main/assets/lingua-content-loader.js'),'utf8');
 
-const tags=[...html.matchAll(/<script\\b([^>]*)><\\/script>/g)].map(m=>{
- const attrs=m[1],src=attrs.match(/\\bsrc="([^"]+)"/)?.[1],group=attrs.match(/\\bdata-lt-lazy="([^"]+)"/)?.[1];
+const tags=[...html.matchAll(/<script\b([^>]*)><\/script>/g)].map(m=>{
+ const attrs=m[1],src=attrs.match(/\bsrc="([^"]+)"/)?.[1],group=attrs.match(/\bdata-lt-lazy="([^"]+)"/)?.[1];
  return {attrs,src,group};
 }).filter(x=>x.group);
 const bookAssets=tags.filter(x=>x.group==='book').map(x=>x.src);
 const dictionaryAssets=tags.filter(x=>x.group==='dictionary').map(x=>x.src);
 assert.equal(bookAssets.length,40,'all 36 chapter files and four art scripts are declared lazy');
 assert.equal(dictionaryAssets.length,1,'the generated FreeDict pack is declared lazy');
-assert.equal(bookAssets.filter(x=>/^classic-verne-towle-ch\\d+\\.js$/.test(x)).length,36);
+assert.equal(bookAssets.filter(x=>/^classic-verne-towle-ch\d+\.js$/.test(x)).length,36);
 assert.deepEqual(bookAssets.slice(0,3),['classic-verne-towle-ch01.js','classic-verne-towle-ch02.js','classic-verne-towle-ch03.js']);
 assert.ok(bookAssets.indexOf('classic-verne-towle-ch31.js')<bookAssets.indexOf('classic-verne-towle-ch33.js'));
 assert.ok(bookAssets.indexOf('classic-verne-towle-ch37.js')<bookAssets.indexOf('editorial-art.js'));
 assert.ok(bookAssets.indexOf('editorial-art.js')<bookAssets.indexOf('editorial-art-ch35.js'));
-assert.ok(tags.every(x=>/\\btype="application\\/x-lingua-lazy"/.test(x.attrs)),'lazy payload tags must not execute as JavaScript during startup');
+assert.ok(tags.every(x=>/\btype="application\/x-lingua-lazy"/.test(x.attrs)),'lazy payload tags must not execute as JavaScript during startup');
 assert.ok(html.includes('<script src="lingua-content-loader.js"></script>'));
 assert.ok(html.includes('window.LinguaAttachEditorialArt=function'));
 assert.ok(html.includes('src="freedict-en-ar.js"'),'dictionary remains a packaged local asset');
-assert.ok(!/<script\\b(?![^>]*data-lt-lazy)[^>]*\\bsrc="(?:classic-verne-towle-ch\\d+\\.js|editorial-art(?:-ch(?:35|36|37))?\\.js|freedict-en-ar\\.js)"/.test(html),
+assert.ok(!/<script\b(?![^>]*data-lt-lazy)[^>]*\bsrc="(?:classic-verne-towle-ch\d+\.js|editorial-art(?:-ch(?:35|36|37))?\.js|freedict-en-ar\.js)"/.test(html),
  'long-book and dictionary assets must not be eager executable scripts');
 
 function makeHarness({failOnce=null,lang='ar'}={}) {
@@ -68,8 +68,8 @@ function makeHarness({failOnce=null,lang='ar'}={}) {
    if(failOnce===n.src&&!failed){failed=true;Promise.resolve().then(()=>n.onerror?.());return n;}
    if(n.src==='freedict-en-ar.js'){
     window.FreeDictEnglishArabic={resolve(value){return value.toLowerCase()==='dog'?{term:'dog',literal:'كلب',meanings:['كلب'],context:'',type:'dictionary'}:null;}};
-   } else if(/^classic-verne-towle-ch\\d+\\.js$/.test(n.src)){
-    const number=Number(n.src.match(/ch(\\d+)\\.js$/)[1]);
+   } else if(/^classic-verne-towle-ch\d+\.js$/.test(n.src)){
+    const number=Number(n.src.match(/ch(\d+)\.js$/)[1]);
     const amount=number===31?2:1;
     for(let i=0;i<amount;i++)story.chapters.push({title:'Chapter',paragraphs:[{en:'An English sentence.',ar:'جملة إنجليزية.'}]});
    } else if(n.src==='editorial-art.js') window.StoryLensMakeEditorialArt=()=>({});
