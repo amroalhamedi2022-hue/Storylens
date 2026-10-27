@@ -521,9 +521,45 @@ document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
  const motionOff=()=>!!global.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
  const nextFrame=callback=>typeof global.requestAnimationFrame==='function'
   ?global.requestAnimationFrame(callback):callback();
+ function captureSemanticAnchor(){
+  const nodes=Array.from(document.querySelectorAll('.reader .sentence[data-i]')||[]);
+  const viewport=Number.isFinite(global.innerHeight)&&global.innerHeight>0?global.innerHeight:2000;
+  for(const node of nodes){
+   const index=Number(node.getAttribute?.('data-i'));
+   const rect=node.getBoundingClientRect?.();
+   if(!Number.isInteger(index)||index<0||!rect||
+      !Number.isFinite(rect.top)||!Number.isFinite(rect.bottom))continue;
+   // Save only a paragraph intersecting the viewport, not an off-screen
+   // future paragraph or a stale DOM node left by a previous chapter.
+   if(rect.bottom>0&&rect.top<viewport)
+    return {index,top:Math.round(Math.max(-2000,Math.min(2000,rect.top)))};
+  }
+  return null;
+ }
+ function restoreReadingPosition(storyId,chapterIndex,fallback){
+  const chapter=state.story?.chapters?.[chapterIndex];
+  const anchor=get('reading_anchor_'+storyId+'_'+chapterIndex,null);
+  if(anchor&&Number.isInteger(anchor.index)&&anchor.index>=0&&
+     Array.isArray(chapter?.paragraphs)&&anchor.index<chapter.paragraphs.length&&
+     typeof anchor.top==='number'&&Number.isFinite(anchor.top)&&anchor.top>=-2000&&anchor.top<=2000){
+   const target=document.querySelector('.reader .sentence[data-i="'+anchor.index+'"]');
+   const rect=target?.getBoundingClientRect?.();
+   if(rect&&Number.isFinite(rect.top)){
+    // Keep the same paragraph at the same viewport offset after font/theme
+    // reflow. Pixel scroll remains the fallback for old/corrupt backups.
+    global.scrollTo(0,safeOffset((global.scrollY||0)+rect.top-anchor.top));
+    return true;
+   }
+  }
+  global.scrollTo(0,fallback);
+  return false;
+ }
  function savePosition(){
-  if(state.story&&state.page==='reader')
-   put('scroll_'+state.story.id+'_'+state.chapter,global.scrollY||0);
+  if(state.story&&state.page==='reader'){
+   const key=state.story.id+'_'+state.chapter;
+   put('scroll_'+key,safeOffset(global.scrollY||0)); // backward-compatible fallback
+   put('reading_anchor_'+key,captureSemanticAnchor());
+  }
  }
  function finishClose(){
   if(closeTimer!==null){global.clearTimeout(closeTimer);closeTimer=null;}
@@ -559,11 +595,12 @@ document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
    if(!motionOff())document.querySelector('.reader')?.classList.add('lt-reader-enter');
    // Resume the saved chapter position; a fresh chapter starts at the top.
    const storyId=returnStoryId;
-   const saved=safeOffset(get('scroll_'+storyId+'_'+state.chapter,0));
+   const chapterIndex=state.chapter;
+   const saved=safeOffset(get('scroll_'+storyId+'_'+chapterIndex,0));
    nextFrame(()=>{
-    if(state.page!=='reader'||state.story?.id!==storyId)return;
+    if(state.page!=='reader'||state.story?.id!==storyId||state.chapter!==chapterIndex)return;
     focusWithoutScroll(document.querySelector('.reader h2'));
-    global.scrollTo(0,saved);
+    restoreReadingPosition(storyId,chapterIndex,saved);
    });
   }
  };
