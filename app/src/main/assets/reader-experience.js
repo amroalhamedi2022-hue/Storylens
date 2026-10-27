@@ -19,13 +19,13 @@ function contextualMeaning(entry, source, story){
  if(authored)return {label:'المعنى السياقي داخل القصة',text:entry.context.trim(),kind:'editorial'};
  const senses=Array.isArray(entry?.meanings)?entry.meanings.filter(x=>typeof x==='string'&&x.trim()):[];
  if(!senses.length&&typeof entry?.literal==='string'&&entry.literal.trim())senses.push(entry.literal.trim());
- const fold=s=>String(s||'').normalize('NFC').replace(/[\\u064B-\\u065F\\u0670\\u0640]/g,'')
+ const fold=s=>String(s||'').normalize('NFC').replace(/[\u064B-\u065F\u0670\u0640]/g,'')
   .replace(/[إأآٱ]/g,'ا').replace(/ى/g,'ي').toLowerCase();
  const stop=new Set(['في','من','على','الى','إلى','عن','ان','أن','كان','كانت','هو','هي','هذا','هذه','ذلك','ثم','مع','قد','لم','لن','لا','ما','و','ف','ب','ل','الذي','التي']);
- const contextTokens=new Set((fold(source?.ar).match(/[\\u0621-\\u064A]{3,}/g)||[]).filter(x=>!stop.has(x)));
+ const contextTokens=new Set((fold(source?.ar).match(/[\u0621-\u064A]{3,}/g)||[]).filter(x=>!stop.has(x)));
  let best=null,bestScore=0;
  for(const sense of senses){
-  const words=(fold(sense).match(/[\\u0621-\\u064A]{3,}/g)||[]).filter(x=>!stop.has(x));
+  const words=(fold(sense).match(/[\u0621-\u064A]{3,}/g)||[]).filter(x=>!stop.has(x));
   const overlap=words.filter(x=>contextTokens.has(x)).length;
   const score=overlap/(Math.max(1,Math.min(words.length,contextTokens.size)));
   if(score>bestScore){best=sense;bestScore=score}
