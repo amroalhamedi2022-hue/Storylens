@@ -1092,3 +1092,18 @@ Screenshot artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/r
 - **PASS — APK SHA-256:** 4,776,817-byte Debug APK; `bf03553a8ed36d5a4e2a22098bfaf12784ea46972ac910e2a60e0ab754b86b59`; independently recalculated from Artifact `12705158884` and matched the embedded checksum.
 - **PASS — Chromium visual/browser evidence:** Artifact `12704999038`; new Chapter XXXII/XXXIII journeys and Atlantic Passage RTL styling all pass in CI.
 - **NOT TESTED:** physical Xiaomi Pad 5, audio focus/battery, TalkBack and real-device RTL/contrast, Arabic literary review, territory-specific rights, and a curated licensed audio library. Do not promote this Debug APK as final.
+
+
+## 2026-10-27 — Chapter XXXIV + The Last Five Minutes acceptance checkpoint
+
+- **Content/source commit:** `259e328dd7a856917ce0a5ffed218d01c3870f74`; **browser-fixture correction:** `cbb96b6ff8daa4ce77facdd33770d6c51c307d3f`.
+- Added authentic Standard Ebooks/Towle Chapter XXXIV: **22 English paragraphs / 972 words**, 22 aligned Arabic draft paragraphs and 20 source-occurring contextual word/phrase/idiom notes. Normalized English SHA-256: `b99d773a896ea121836a443ffc1290e67041718ccbb59f5341a19bc78246e6d9`.
+- Added original offline SVG art of the London terminus clock at 8:50 p.m. and a distinct `last-five-minutes` / **The Last Five Minutes** theme (clock-face wedge, timetable rules, square editorial cards, reduced-motion fallback, backup allowlist).
+- The first browser run after the chapter addition, 40446049539, failed because older fixtures still expected 33 available chapters. Corrected the catalog/availability assertions, enabled Chapter XXXIV from Chapter XXXIII, and added Arabic inline-translation, English-reader, and theme Chromium fixtures for Chapter XXXIV.
+- **PASS — CI Run 40446487903** on `cbb96b6ff8daa4ce77facdd33770d6c51c307d3f`: theme catalog (53 selectable themes), source/hash/glossary tests, offline APK asset checks, Android Debug build, Chromium reader journeys for Chapter XXXIV Arabic/English, and The Last Five Minutes theme.
+- **PASS — independently verified Debug APK:** 4,786,633 bytes; SHA-256 `d364e29aea175f2dbcd29885efd5878c203bdf3b8498ed266c76bf2245f09472`; matches `APK_SHA256.txt`.
+- Debug APK Artifact **12708781802**; Chromium screenshot Artifact **12708886547**.
+- CI: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40446487903
+- APK Artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40446487903/artifacts/12708781802
+- Screenshot Artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40446487903/artifacts/12708886547
+- **NOT TESTED:** physical Xiaomi Pad 5 installation, frame pacing/RAM/thermal, TalkBack and hardware RTL/contrast, full-translation review on device, independent Arabic literary review, territory-specific rights, and the curated licensed audio library. The screenshot evidence is Chromium/CI, not a device capture; Debug APK is not a final release.
