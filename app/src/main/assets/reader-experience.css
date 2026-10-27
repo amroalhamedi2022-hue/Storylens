@@ -118,3 +118,54 @@
 .reader .reader-label{direction:ltr;letter-spacing:normal;line-height:1.5;unicode-bidi:isolate}
 .reader .reader-label>bdi:first-of-type{direction:ltr;unicode-bidi:isolate}
 .reader .reader-label>bdi:last-of-type{unicode-bidi:isolate;white-space:nowrap;letter-spacing:normal}
+
+
+/* Lingua Tales — Liquid Glass reading surfaces and physical page-turn illusion. */
+body.theme-aurora,body.theme-nebula{
+ background:
+  radial-gradient(ellipse at 12% 8%,rgba(255,91,185,.35),transparent 36%),
+  radial-gradient(ellipse at 88% 18%,rgba(42,225,239,.34),transparent 34%),
+  radial-gradient(ellipse at 65% 92%,rgba(255,163,91,.28),transparent 38%),
+  linear-gradient(135deg,#25115b,#4d3db7 43%,#0a728e 78%,#ed79b2);
+ background-attachment:fixed;
+}
+.storylens-header,.library .card,.reader-nav-panel,.lt-drawer,.sheet,.reader-nav-actions button{
+ border:1px solid rgba(255,255,255,.32);
+ background:linear-gradient(135deg,rgba(255,255,255,.24),rgba(255,255,255,.10));
+ -webkit-backdrop-filter:blur(18px) saturate(145%);
+ backdrop-filter:blur(18px) saturate(145%);
+ box-shadow:0 14px 38px rgba(20,10,70,.18),inset 0 1px rgba(255,255,255,.45);
+}
+.library .card{border-radius:24px;overflow:hidden;transition:transform .22s ease,box-shadow .22s ease}
+.library .card:active{transform:scale(.985)}
+.reader .reading-width{perspective:1400px;transform-style:preserve-3d}
+.lt-book-page{
+ display:none;position:relative;min-height:min(68vh,760px);padding:clamp(20px,4vw,38px);
+ margin:14px 0 20px;border-radius:9px 22px 22px 9px;
+ color:var(--reader-ink);background:
+  linear-gradient(90deg,rgba(40,38,75,.08),transparent 18px),
+  linear-gradient(145deg,rgba(255,255,255,.95),rgba(246,244,255,.88) 72%,rgba(218,237,255,.78));
+ border:1px solid rgba(255,255,255,.76);
+ box-shadow:0 24px 48px rgba(20,12,66,.18),inset 7px 0 14px rgba(45,35,80,.06),inset 0 1px #fff;
+ transform-origin:left center;backface-visibility:hidden;
+}
+.lt-book-page.is-active{display:block}
+.lt-book-page:after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+ background:linear-gradient(110deg,rgba(255,255,255,.25),transparent 22%,transparent 76%,rgba(70,76,130,.05))}
+.lt-book-page .sentence{position:relative;z-index:1}
+.lt-page-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;
+ padding:12px;border:1px solid rgba(255,255,255,.35);border-radius:22px;
+ background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.lt-page-controls button{min-height:44px;max-width:46%}
+.lt-page-count{font-size:12px;font-weight:750;color:var(--ink);text-align:center}
+.lt-turn-forward{animation:ltPageTurnForward .42s cubic-bezier(.2,.75,.25,1)}
+.lt-turn-back{animation:ltPageTurnBack .42s cubic-bezier(.2,.75,.25,1)}
+@keyframes ltPageTurnForward{0%{opacity:.65;transform:rotateY(-13deg) translateX(14px);box-shadow:0 10px 24px #24164a12}55%{opacity:1;transform:rotateY(3deg) translateX(-2px)}100%{transform:rotateY(0) translateX(0)}}
+@keyframes ltPageTurnBack{0%{opacity:.65;transform:rotateY(13deg) translateX(-14px)}55%{opacity:1;transform:rotateY(-3deg) translateX(2px)}100%{transform:rotateY(0) translateX(0)}}
+.lt-context-editorial{border-inline-start:3px solid #22b8a7;padding-inline-start:12px}
+.lt-context-inferred{border-inline-start:3px solid #8c73e6;padding-inline-start:12px}
+.lt-context-missing{color:var(--sub);font-size:.94em}
+@media(prefers-reduced-motion:reduce){
+ .lt-turn-forward,.lt-turn-back{animation:none!important}
+ .library .card{transition:none!important}
+}
