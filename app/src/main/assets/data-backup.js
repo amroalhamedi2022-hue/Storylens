@@ -178,6 +178,35 @@ function show(message){
  if(box)box.textContent=message;
 }
 const ui=(ar,en)=>document.documentElement.lang==='en'?en:ar;
+/* LT-06: backup validation errors are UI chrome, unlike imported learning
+ * content. Keep Arabic diagnostics in Arabic UI, and translate known errors
+ * (including dynamic storage-key details) before showing them in English UI. */
+function localizeBackupError(message){
+ const text=typeof message==='string'?message:String(message??'');
+ if(document.documentElement.lang!=='en'||!/[\\u0600-\\u06FF]/.test(text))return text;
+ const exact={
+  'ملف النسخة غير صالح أو كبير جدًا.':'The backup file is invalid or too large.',
+  'هذا ليس ملف JSON صالحًا.':'This is not valid JSON.',
+  'صيغة النسخة غير مدعومة.':'This backup format is not supported.',
+  'النسخة تتضمن عناصر أكثر من الحد الآمن.':'The backup contains more entries than the safe limit.',
+  'النسخة تحتوي على مفتاح غير مسموح به.':'The backup contains an unsupported field.',
+  'بيانات غير صالحة.':'The backup data is invalid.',
+  'عدد عناصر النسخة الاحتياطية يتجاوز الحد الآمن.':'The backup contains more items than the safe limit.',
+  'حجم النسخة الاحتياطية يتجاوز الحد الآمن.':'The backup exceeds the safe size limit.',
+  'انتهت صلاحية التأكيد؛ افحص النسخة مرة أخرى.':'Confirmation expired; validate the backup again.',
+  'تعذّر الحفظ؛ لم تتغير بياناتك السابقة. قد تكون مساحة التخزين ممتلئة.':'Restore failed; your previous data was preserved. Storage may be full.',
+  'تعذّر الحفظ واسترجاع بعض البيانات السابقة؛ لا تغلق التطبيق قبل حفظ نسخة من بياناتك.':'Restore and rollback both failed. Keep the app open and export a backup before leaving.'
+ };
+ if(Object.prototype.hasOwnProperty.call(exact,text))return exact[text];
+ if(text.startsWith('تعذّر تصدير نسخة كاملة: بيانات تالفة في '))
+  return 'Cannot export a complete backup because a saved field is corrupted. Repair it before retrying.';
+ if(text.startsWith('تعذّر تصدير نسخة كاملة: بيانات غير صالحة في '))
+  return 'Cannot export a complete backup because a saved field is invalid. Repair it before retrying.';
+ if(text.startsWith('بيانات JSON تالفة في '))return 'The backup contains a corrupted JSON field.';
+ if(text.startsWith('بيانات تالفة في '))return 'The backup contains corrupted data.';
+ if(text.startsWith('نوع البيانات غير صحيح في '))return 'The backup contains a field with an unsupported data type.';
+ return 'Backup operation failed. Please check the file or available storage and try again.';
+}
 const nativeStatusMessages={
  saved:['تم حفظ النسخة الاحتياطية في الموقع الذي اخترته.','Backup saved to the selected location.'],
  save_failed:['تعذّر حفظ النسخة الاحتياطية. تأكد من مساحة التخزين وأعد المحاولة.','Could not save the backup. Check storage space and try again.'],
@@ -216,7 +245,7 @@ function renderBackup(){
     textarea.value=value;textarea.focus();textarea.select();
     show(ui('لا يوجد جسر حفظ ملفات في هذه المعاينة. انسخ النص المحدد واحتفظ به.','File saving is unavailable here. Copy the selected JSON and keep it safe.'));
    }
-  }catch(e){show(e.message)}
+  }catch(e){show(localizeBackupError(e.message))}
  });
  document.getElementById('stl-backup-import').addEventListener('click',()=>{
   if(global.StoryLensNative&&typeof global.StoryLensNative.openBackup==='function'){
@@ -232,7 +261,7 @@ function renderBackup(){
  });
 }
 function showImport(value){
- let data;try{data=preview(value)}catch(e){staged=null;if(!document.getElementById('stl-backup-feedback'))renderBackup();show(e.message);return false;}
+ let data;try{data=preview(value)}catch(e){staged=null;if(!document.getElementById('stl-backup-feedback'))renderBackup();show(localizeBackupError(e.message));return false;}
  staged=data.entries;
  const approvedEntries=staged;
  if(!document.getElementById('stl-backup-feedback'))renderBackup();
@@ -259,7 +288,7 @@ function showImport(value){
    }
    state.page='library';library();window.scrollTo(0,0);
    alertOnce(count);
-  }catch(e){show(e.message)}
+  }catch(e){show(localizeBackupError(e.message))}
  });
  box.appendChild(go);
  return true;
@@ -280,7 +309,7 @@ library=function(){
 };
 global.StoryLensBackup={
  exportObject,parseBackup,preview,restore,
- receiveImport:showImport,nativeStatus:showNativeStatus,nativeError:message=>{if(!document.getElementById('stl-backup-feedback'))renderBackup();show(message);},
+ receiveImport:showImport,nativeStatus:showNativeStatus,nativeError:message=>{if(!document.getElementById('stl-backup-feedback'))renderBackup();show(localizeBackupError(message));},
  open:renderBackup
 };
 library();
