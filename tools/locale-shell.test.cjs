@@ -28,7 +28,7 @@ function harness(initialLocale = 'ar') {
     }
   };
   const context = {
-    document, window, state: { page: 'settings' },
+    document, window, global: window, state: { page: 'settings' },
     get(key, fallback) { return Object.prototype.hasOwnProperty.call(storage, key) ? storage[key] : fallback; },
     put(key, value) { storage[key] = value; },
     closeSheet() { calls.closeSheet++; settingsOpen = false; },
