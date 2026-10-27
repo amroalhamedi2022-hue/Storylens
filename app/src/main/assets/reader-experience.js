@@ -9,6 +9,137 @@ const originalReader=renderReader;
 const originalSettings=settings;
 const originalTheme=theme;
 const originalInlineTranslate=inlineTranslate;
+const originalWordSheet=wordSheet;
+
+// Choose a contextual Arabic gloss only from the actual dictionary senses and
+// the aligned Arabic sentence. This is a transparent heuristic, not an AI claim.
+function contextualMeaning(entry, source, story){
+ const authored=Array.isArray(story?.terms)&&story.terms.includes(entry)&&
+  typeof entry?.context==='string'&&entry.context.trim();
+ if(authored)return {label:'المعنى السياقي داخل القصة',text:entry.context.trim(),kind:'editorial'};
+ const senses=Array.isArray(entry?.meanings)?entry.meanings.filter(x=>typeof x==='string'&&x.trim()):[];
+ if(!senses.length&&typeof entry?.literal==='string'&&entry.literal.trim())senses.push(entry.literal.trim());
+ const fold=s=>String(s||'').normalize('NFC').replace(/[\\u064B-\\u065F\\u0670\\u0640]/g,'')
+  .replace(/[إأآٱ]/g,'ا').replace(/ى/g,'ي').toLowerCase();
+ const stop=new Set(['في','من','على','الى','إلى','عن','ان','أن','كان','كانت','هو','هي','هذا','هذه','ذلك','ثم','مع','قد','لم','لن','لا','ما','و','ف','ب','ل','الذي','التي']);
+ const contextTokens=new Set((fold(source?.ar).match(/[\\u0621-\\u064A]{3,}/g)||[]).filter(x=>!stop.has(x)));
+ let best=null,bestScore=0;
+ for(const sense of senses){
+  const words=(fold(sense).match(/[\\u0621-\\u064A]{3,}/g)||[]).filter(x=>!stop.has(x));
+  const overlap=words.filter(x=>contextTokens.has(x)).length;
+  const score=overlap/(Math.max(1,Math.min(words.length,contextTokens.size)));
+  if(score>bestScore){best=sense;bestScore=score}
+ }
+ if(best&&bestScore>0)return {label:'أقرب معنى بحسب ترجمة الجملة',text:best,kind:'inferred'};
+ return {label:'السياق من القصة',text:'لم يُعثر على معنى مفرد موثّق لهذه الكلمة في هذه الجملة بعد. اقرأ ترجمة الجملة أدناه؛ ولن نخترع تعريفًا غير مؤكد.',kind:'sentence'};
+}
+wordSheet=function(args){
+ originalWordSheet(args);
+ const sheet=document.querySelector('#modals .sheet');
+ if(!sheet)return;
+ const labels=Array.from(sheet.querySelectorAll('label'));
+ const contextLabel=labels.find(node=>/المعنى داخل القصة|المعنى في الجملة/.test(node.textContent||''));
+ if(!contextLabel)return;
+ const contextNode=contextLabel.nextElementSibling;
+ if(!contextNode)return;
+ const result=contextualMeaning(args?.entry,args?.source,state.story);
+ contextLabel.textContent=result.label;
+ contextNode.textContent=result.text;
+ contextNode.classList.toggle('lt-context-inferred',result.kind==='inferred');
+ contextNode.classList.toggle('lt-context-editorial',result.kind==='editorial');
+ contextNode.classList.toggle('lt-context-missing',result.kind==='sentence');
+};
+
+// Each chapter becomes a sequence of readable pages. Four paragraphs is a
+// conservative starting point; translations and illustrations travel with
+// their source paragraph. The current page is persisted per story/chapter.
+const ltPageIndices=new Map();
+function installPageTurn(){
+ const reader=document.querySelector('.reader');
+ const width=reader?.querySelector('.reading-width');
+ const sentenceBox=width?.querySelector('#sentences');
+ if(!reader||!width||!sentenceBox||width.dataset.ltPaged==='1')return;
+ const sentences=Array.from(sentenceBox.querySelectorAll(':scope > .sentence'));
+ if(!sentences.length)return;
+ width.dataset.ltPaged='1';
+ const chapterEnd=width.querySelector('.chapter-end');
+ if(chapterEnd)chapterEnd.hidden=true;
+ const originalNodes=Array.from(sentenceBox.childNodes);
+ const pages=[];
+ let page=null,count=0;
+ for(const node of originalNodes){
+  if(node.nodeType===1&&node.classList.contains('sentence')){
+   if(!page||count>=4){
+    page=document.createElement('section');
+    page.className='lt-book-page';
+    page.setAttribute('role','group');
+    pages.push(page);count=0;
+   }
+   count++;
+  }
+  if(!page){page=document.createElement('section');page.className='lt-book-page';page.setAttribute('role','group');pages.push(page)}
+  page.appendChild(node);
+ }
+ sentenceBox.replaceChildren(...pages);
+ const pageControls=document.createElement('nav');
+ pageControls.className='lt-page-controls';
+ pageControls.setAttribute('aria-label','التنقل بين صفحات القصة');
+ pageControls.innerHTML='<button type="button" class="secondary lt-page-prev">السابق</button><span class="lt-page-count" aria-live="polite"></span><button type="button" class="primary lt-page-next">الصفحة التالية</button>';
+ sentenceBox.insertAdjacentElement('afterend',pageControls);
+ const key='readpage_'+state.story.id+'_'+state.chapter;
+ const initial=Number(get(key,0));
+ let current=Number.isInteger(initial)?Math.max(0,Math.min(pages.length-1,initial)):0;
+ const prev=pageControls.querySelector('.lt-page-prev');
+ const next=pageControls.querySelector('.lt-page-next');
+ const countLabel=pageControls.querySelector('.lt-page-count');
+ function renderPage(direction,animate){
+  current=Math.max(0,Math.min(pages.length-1,current));
+  pages.forEach((item,index)=>{
+   item.classList.toggle('is-active',index===current);
+   item.setAttribute('aria-hidden',index===current?'false':'true');
+   item.inert=index!==current;
+  });
+  prev.disabled=current===0;
+  next.textContent=current===pages.length-1
+   ?(state.chapter<state.story.chapters.length-1?'الفصل التالي':'العودة للمكتبة')
+   :'الصفحة التالية';
+  countLabel.textContent='الصفحة '+(current+1)+' من '+pages.length;
+  put(key,current);
+  if(chapterEnd)chapterEnd.hidden=current!==pages.length-1;
+  if(animate&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+   const active=pages[current];
+   active.classList.remove('lt-turn-forward','lt-turn-back');
+   void active.offsetWidth;
+   active.classList.add(direction==='back'?'lt-turn-back':'lt-turn-forward');
+   window.setTimeout(()=>active.classList.remove('lt-turn-forward','lt-turn-back'),420);
+  }
+  window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+ }
+ function move(delta){
+  if(delta>0&&current===pages.length-1){
+   if(state.chapter<state.story.chapters.length-1)nextChapter();
+   else libraryBack();
+   return;
+  }
+  if(delta<0&&current===0)return;
+  current+=delta;renderPage(delta>0?'next':'back',true);
+ }
+ prev.addEventListener('click',()=>move(-1));
+ next.addEventListener('click',()=>move(1));
+ let startX=0,startY=0;
+ sentenceBox.addEventListener('touchstart',event=>{
+  if(event.touches?.length!==1)return;
+  startX=event.touches[0].clientX;startY=event.touches[0].clientY;
+ },{passive:true});
+ sentenceBox.addEventListener('touchend',event=>{
+  if(event.changedTouches?.length!==1)return;
+  const dx=event.changedTouches[0].clientX-startX;
+  const dy=event.changedTouches[0].clientY-startY;
+  if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.25)return;
+  move(dx<0?1:-1);
+ },{passive:true});
+ renderPage('next',false);
+}
 const chapterKey=()=> 'chapter_'+state.story.id;
 const bookmarkKey=()=> 'bookmarks';
 // Semantic paragraph anchors survive font, theme and tablet-width changes;
@@ -306,6 +437,7 @@ renderReader=function(){
   });
   if(revealedByChapter.get(key)?.has(sentenceIndex))showTranslation();
  });
+ installPageTurn();
 };
 settings=function(){
  originalSettings();
