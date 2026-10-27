@@ -121,8 +121,32 @@ jobs:
           node tools/contextual-page-turn.test.cjs
           node tools/story-transitions.test.cjs
           node tools/data-backup.test.cjs
-      - name: Run tests and assemble installable APK
-        run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
+      - name: Configure stable update signing (optional private repository secrets)
+        env:
+          LT_SIGNING_KEYSTORE_BASE64: ${{ secrets.LT_SIGNING_KEYSTORE_BASE64 }}
+          LT_SIGNING_STORE_PASSWORD: ${{ secrets.LT_SIGNING_STORE_PASSWORD }}
+          LT_SIGNING_KEY_ALIAS: ${{ secrets.LT_SIGNING_KEY_ALIAS }}
+          LT_SIGNING_KEY_PASSWORD: ${{ secrets.LT_SIGNING_KEY_PASSWORD }}
+        run: |
+          if [ -n "$LT_SIGNING_KEYSTORE_BASE64" ] && [ -n "$LT_SIGNING_STORE_PASSWORD" ] && [ -n "$LT_SIGNING_KEY_ALIAS" ] && [ -n "$LT_SIGNING_KEY_PASSWORD" ]; then
+            printf '%s' "$LT_SIGNING_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/lingua-release.jks"
+            echo "LT_SIGNING_KEYSTORE=$RUNNER_TEMP/lingua-release.jks" >> "$GITHUB_ENV"
+            echo "LT_SIGNING_STORE_PASSWORD=$LT_SIGNING_STORE_PASSWORD" >> "$GITHUB_ENV"
+            echo "LT_SIGNING_KEY_ALIAS=$LT_SIGNING_KEY_ALIAS" >> "$GITHUB_ENV"
+            echo "LT_SIGNING_KEY_PASSWORD=$LT_SIGNING_KEY_PASSWORD" >> "$GITHUB_ENV"
+            echo "Stable release signing configured."
+          else
+            echo "Stable signing secrets absent; only a CI debug APK will be produced. It is not an in-place update package."
+          fi
+      - name: Run tests and assemble APK
+        run: |
+          gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
+          if [ -n "$LT_SIGNING_KEYSTORE" ]; then
+            gradle --no-daemon :app:assembleRelease
+            APK="$(find app/build/outputs/apk/release -type f -name '*.apk' | head -1)"
+            test -n "$APK"
+            sha256sum "$APK" | tee app/build/outputs/apk/release/APK_SHA256.txt
+          fi
       - name: Verify required files really exist inside APK
         shell: bash
         run: |
@@ -409,4 +433,13 @@ jobs:
           path: |
             app/build/outputs/apk/debug/*.apk
             app/build/outputs/apk/debug/APK_SHA256.txt
+          if-no-files-found: error
+      - name: Upload stable-signed release APK
+        if: success() && env.LT_SIGNING_KEYSTORE != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: Lingua-Tales-Stable-Signed-Release
+          path: |
+            app/build/outputs/apk/release/*.apk
+            app/build/outputs/apk/release/APK_SHA256.txt
           if-no-files-found: error
