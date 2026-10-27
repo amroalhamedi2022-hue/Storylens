@@ -1316,3 +1316,13 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - **Launcher test follow-up:** the adaptive-icon regression now accepts the refined approved book/petal geometry (the petal apex moved by one vector unit); it still verifies adaptive foreground/background/monochrome resources, manifest branding, no network permissions and unchanged storage/package identity.
 - **Latest test/source commit:** `7b2fd419b6fc947d7041de6fcac4a6eb80f45476`.
 - **No new mystery-book payload was added in this UI-fix batch.** Existing long-form Verne content remains source-bound and chapter-based; the next content milestone should add a substantial, separately licensed or explicitly original detective serial with aligned Arabic translations, vocabulary/idioms, scene art and provenance checks rather than short filler entries.
+
+
+## 2026-10-28 — LT-02/LT-03 reader gesture safety follow-up
+
+- **Production change:** page-swipe gestures now refuse to navigate when a text selection is active or the gesture begins on a button/link/form/accessibility control; text-node targets are resolved to their parent element. Touch-cancel resets gesture state, and selection lookup tolerates a missing browser Selection object.
+- **Regression:** tools/contextual-page-turn.test.cjs extracts and executes the production guard against normal reading surfaces, selected text, interactive controls, nested text nodes and missing targets; it also checks the touch-cancel and null-safe Selection hooks.
+- **Source/test head:** 4777708a516dca1d2929a8b132549c4a9e57588b (production source commit 2c3cff557219013c363bb443488c45d3b6c0e98d; defensive Selection follow-up 4e4faf9ccf12ec00f6c6d5a753c61723ad2f38e9).
+- **CI NOT VERIFIED:** connected workflow/status surfaces returned no run/status rows for the latest source/test head; do not infer PASS from earlier builds. A new Android workflow result must exercise the updated Node regression, Gradle packaging and Chromium reader journey.
+- **NOT TESTED:** Xiaomi Pad 5 gesture/text-selection interaction, actual WebView touch cancellation, RTL swipe feel, TalkBack, frame pacing/RAM/thermal. No APK is claimed for this source/test head.
+- **Acceptance:** LT-01..LT-13 remain IN PROGRESS; this safety fix does not close story-transition, full bilingual UI, literary editorial, audio-license, device-performance or final-signing gates.
