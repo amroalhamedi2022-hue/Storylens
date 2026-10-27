@@ -162,6 +162,16 @@ if (typeof originalOpenStory === 'function') {
       unlockRoot();
       return originalOpenStory.call(this, id, ...args);
     }
+    // Once the verified long book has been merged into the catalog, reopening it
+    // must be synchronous: no loading overlay, inert library, or microtask race.
+    const readyStory = global.LinguaCatalog?.stories?.find(item => item.id === BOOK_ID);
+    if (readyStory && readyStory.lazyBook === false &&
+        Number.isInteger(readyStory.totalChapters) && readyStory.totalChapters > 0 &&
+        Array.isArray(readyStory.chapters) && readyStory.chapters.length === readyStory.totalChapters) {
+      clearStatus();
+      unlockRoot();
+      return originalOpenStory.call(this, id, ...args);
+    }
     showLoading();
     const root = rootNode();
     if (root) {
