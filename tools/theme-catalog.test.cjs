@@ -30,7 +30,7 @@ for (const [, name, label] of arabicThemeLabels) {
 }
 const styles = shellCss + '\n' + auroraCss + '\n' + westminsterCss + '\n' + countdownCss;
 for (const name of names) {
-  assert.match(styles, new RegExp('body\\.theme-' + name + '(?:\s|\\{|:|\\.)'),
+  assert.match(styles, new RegExp('body\\.theme-' + name + '(?:\\s|\\{|:|\\.)'),
     'missing production body style for ' + name);
   assert.ok(backup.includes("'" + name + "'") || backup.includes('"' + name + '"'),
     'backup validator does not allow theme ' + name);
