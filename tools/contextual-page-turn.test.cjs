@@ -13,7 +13,7 @@ vm.runInNewContext(productionHelper + "\nresult = contextualMeaning({term:'bank'
 assert.equal(context.result.kind, 'inferred');
 assert.equal(context.result.text, 'ضفة النهر');
 const authored = {};
-vm.runInNewContext(productionHelper + "\nresult = contextualMeaning({term:'take off',context:'ينطلق في رحلة'},{en:'The plane will take off.',ar:'ستقلع الطائرة.'},{terms:[{term:'take off',context:'ينطلق في رحلة'}]});", authored);
+vm.runInNewContext(productionHelper + "\nconst entry={term:'take off',context:'ينطلق في رحلة'}; result = contextualMeaning(entry,{en:'The plane will take off.',ar:'ستقلع الطائرة.'},{terms:[entry]});", authored);
 assert.equal(authored.result.kind, 'editorial');
 assert.equal(authored.result.text, 'ينطلق في رحلة');
 const missing = {};
