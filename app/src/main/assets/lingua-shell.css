@@ -1510,7 +1510,7 @@ body.theme-reform-club-brass{
  background:#fbf5e7;color:#223e37;border:6px double #aa844e;
  box-shadow:0 6px 20px #091e1d33
 }
-.theme-reform-club-brass .lt-theme-swatch{
+.lt-theme-reform-club-brass .lt-theme-swatch{
  background:linear-gradient(135deg,#133e35 0 50%,#c39a5b 50% 60%,#f1e0bc 60%)
 }
 @media(max-width:600px){
