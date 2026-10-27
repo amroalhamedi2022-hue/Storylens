@@ -34,7 +34,7 @@ const state={page:'reader',chapter:0,story,saved:['river'],
  cards:[{dueAt:0,meaning:'نهر',translation:'كان النهر صامتًا.'}]};
 const calls={};
 const window={};
-for(const name of ['renderReader','settings','wordSheet','showWords','renderReview','fullTranslation','openUsage']){
+for(const name of ['renderReader','library','settings','wordSheet','showWords','renderReview','fullTranslation','openUsage']){
  calls[name]=0;
  window[name]=()=>{calls[name]++;};
 }
@@ -141,6 +141,26 @@ assert.equal(usageClose.textContent,'Close');
 usageSave.click();
 assert.equal(usageFeedback.textContent,'Your sentence is saved and includes the expression. Review grammar and meaning yourself.');
 assert.equal(sourceSentence.textContent,'The river was silent.','vocabulary practice keeps the source sentence unchanged');
+
+state.page='library';
+const heroEyebrow=node('.storylens-hero .hero-eyebrow','LINGUA TALES · IMMERSIVE READING');
+const heroTitle=node('.storylens-hero .hero-content > h2','Lose yourself in a good story.');
+const heroDescription=node('.storylens-hero .hero-content > p','Mature stories, mysteries worth discovering, and English learned through the story itself.');
+const heroMetrics=group('.storylens-hero .hero-metrics span',['2 STORIES','5 GENRES','100% OFFLINE']);
+window.library();
+assert.equal(heroTitle.textContent,'Lose yourself in a good story.');
+assert.equal(heroDescription.textContent,'Mature stories, mysteries worth discovering, and English learned through the story itself.');
+assert.deepEqual(heroMetrics.map(x=>x.textContent),['2 STORIES','5 GENRES','100% OFFLINE']);
+heroEyebrow.textContent='LINGUA TALES · IMMERSIVE READING';
+heroTitle.textContent='Lose yourself in a good story.';
+heroDescription.textContent='Mature stories, mysteries worth discovering, and English learned through the story itself.';
+heroMetrics[0].textContent='2 STORIES';heroMetrics[1].textContent='5 GENRES';heroMetrics[2].textContent='100% OFFLINE';
+document.documentElement.lang='ar';
+window.LinguaI18n.localizeLibrary();
+assert.equal(heroEyebrow.textContent,'LINGUA TALES · قراءة غامرة');
+assert.equal(heroTitle.textContent,'انغمس في حكاية تستحق القراءة.');
+assert.equal(heroDescription.textContent,'قصص ناضجة، وأسرار تستحق الاكتشاف، وإنجليزية تتعلمها من الأحداث نفسها.');
+assert.deepEqual(heroMetrics.map(x=>x.textContent),['2 قصة','5 تصنيف','100% دون إنترنت']);
 
 document.documentElement.lang='ar';
 const unchanged=node('.review > h1','مراجعة المفردات');
