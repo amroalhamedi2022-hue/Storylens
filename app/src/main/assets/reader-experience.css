@@ -129,14 +129,14 @@ body.theme-aurora,body.theme-nebula{
   linear-gradient(135deg,#25115b,#4d3db7 43%,#0a728e 78%,#ed79b2);
  background-attachment:fixed;
 }
-.storylens-header,.library .card,.reader-nav-panel,.lt-drawer,.sheet,.reader-nav-actions button{
+.storylens-header,.reader-nav-panel,.lt-drawer,.sheet,.reader-nav-actions button{
  border:1px solid rgba(255,255,255,.32);
  background:linear-gradient(135deg,rgba(255,255,255,.24),rgba(255,255,255,.10));
- -webkit-backdrop-filter:blur(18px) saturate(145%);
- backdrop-filter:blur(18px) saturate(145%);
+ -webkit-backdrop-filter:blur(12px) saturate(135%);
+ backdrop-filter:blur(12px) saturate(135%);
  box-shadow:0 14px 38px rgba(20,10,70,.18),inset 0 1px rgba(255,255,255,.45);
 }
-.library .card{border-radius:24px;overflow:hidden;transition:transform .22s ease,box-shadow .22s ease}
+.library .card{border:1px solid rgba(255,255,255,.34);background:linear-gradient(135deg,rgba(255,255,255,.24),rgba(255,255,255,.08));border-radius:24px;overflow:hidden;transition:transform .22s ease,box-shadow .22s ease}
 .library .card:active{transform:scale(.985)}
 .reader .reading-width{perspective:1400px;transform-style:preserve-3d}
 .lt-book-page{
