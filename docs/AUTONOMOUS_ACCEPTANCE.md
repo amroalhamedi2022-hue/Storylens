@@ -1326,3 +1326,6 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - **CI NOT VERIFIED:** connected workflow/status surfaces returned no run/status rows for the latest source/test head; do not infer PASS from earlier builds. A new Android workflow result must exercise the updated Node regression, Gradle packaging and Chromium reader journey.
 - **NOT TESTED:** Xiaomi Pad 5 gesture/text-selection interaction, actual WebView touch cancellation, RTL swipe feel, TalkBack, frame pacing/RAM/thermal. No APK is claimed for this source/test head.
 - **Acceptance:** LT-01..LT-13 remain IN PROGRESS; this safety fix does not close story-transition, full bilingual UI, literary editorial, audio-license, device-performance or final-signing gates.
+
+
+- **Isolated production-helper smoke (2026-10-28): PASS, 5/5 checks** — executed the actual pageSwipeAllowed function extracted from the current branch source in V8 for ordinary reading, selected text, interactive targets, nested text nodes and a missing target. This does not replace repository Node CI, Chromium or Pad 5 testing.
