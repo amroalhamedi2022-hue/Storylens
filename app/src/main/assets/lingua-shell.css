@@ -2081,3 +2081,24 @@ body.theme-hudson-ledger::before,body.theme-hudson-ledger::after{display:none!im
 .theme-hudson-ledger .lt-theme-choice.selected{outline:2px solid #b4493c;outline-offset:2px}
 @media(prefers-reduced-motion:reduce){.theme-hudson-ledger .library .card{transition:none!important;transform:none!important}}
 
+
+
+/* LT-07/13 — Atlantic Passage: sea-glass, storm-chart geometry and copper signal lines. */
+.lt-theme-atlantic-passage .lt-theme-swatch{background:linear-gradient(145deg,#102d43 0 30%,#739ca2 30% 48%,#f1d6a2 48% 62%,#b96549 62%);border:2px solid #102d43}
+body.theme-atlantic-passage{--body:#dce8e8;--card:#f8f5eb;--ink:#153247;--sub:#526d79;--accent:#b96549;--reader:#fcfaf3;--reader-ink:#153247;background:linear-gradient(135deg,#dce8e8,#c7d9db 48%,#f3e7cd)}
+body.theme-atlantic-passage::before,body.theme-atlantic-passage::after{display:none!important}
+.theme-atlantic-passage .library .header{border:1px solid #8eafb5;border-bottom:5px solid #b96549;background:linear-gradient(105deg,#102d43 0 72%,#b96549 72%);color:#f8f5eb;padding-bottom:17px;position:relative}
+.theme-atlantic-passage .library .header h1,.theme-atlantic-passage .library .header h2{color:#f8f5eb;font-family:Georgia,serif}
+.theme-atlantic-passage .library .header::after{content:'ATLANTIC PASSAGE · QUEENSTOWN';display:block;margin-top:12px;padding:8px 12px;border-top:1px solid #f1d6a2;border-bottom:1px solid #f1d6a2;color:#f1d6a2;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.16em}
+.theme-atlantic-passage .library .storylens-hero{border:1px solid #739ca2;border-radius:24px 4px 24px 4px;background:linear-gradient(135deg,#f8f5eb 0 61%,#c7d9db 61%);box-shadow:0 9px 0 #15324712}
+.theme-atlantic-passage .library .storylens-hero .hero-orb{border-radius:50% 50% 42% 42%;border:3px solid #b96549;background:radial-gradient(circle at 35% 25%,#f8f5eb 0 8%,transparent 9%),linear-gradient(145deg,#739ca2,#153247)}
+.theme-atlantic-passage .library .card{border-radius:16px 3px 16px 3px;border:1px solid #8eafb5;border-bottom:4px solid #b96549;background:#f8f5eb;box-shadow:0 7px 0 #15324712}
+.theme-atlantic-passage .library .card h2{font-family:Georgia,serif;color:#153247}
+.theme-atlantic-passage .library .secondary,.theme-atlantic-passage .library .pill{border-radius:14px 3px 14px 3px;border:1px solid #153247;background:#153247;color:#f8f5eb}
+.theme-atlantic-passage .lt-drawer{background:#102d43;border-inline-start:4px solid #f1d6a2}
+.theme-atlantic-passage .reader{border:1px solid #8eafb5;border-top:6px solid #b96549;background:linear-gradient(180deg,#fcfaf3,#f2f5ef)}
+.theme-atlantic-passage .reader .reading-width{border-inline-start:3px solid #739ca2;padding-inline-start:19px;background:repeating-linear-gradient(0deg,#15324706 0 1px,transparent 1px 36px)}
+.theme-atlantic-passage .lt-theme-choice{background:#f8f5eb;color:#153247;border-radius:14px 3px 14px 3px}
+@media(max-width:600px){.theme-atlantic-passage .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-atlantic-passage .library .storylens-hero .hero-orb{width:70px;height:70px}.theme-atlantic-passage .library .header::after{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.theme-atlantic-passage .library .card{transition:none!important;transform:none!important}}
+

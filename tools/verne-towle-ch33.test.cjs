@@ -1,0 +1,34 @@
+'use strict';
+/* Source-bound regression for the complete Towle Chapter XXXIII and contextual learning batch. */
+const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const root=path.resolve(__dirname,'..'),assets=path.join(root,'app/src/main/assets'),read=n=>fs.readFileSync(path.join(assets,n),'utf8');
+const html=read('index.html');
+assert.ok(html.includes('src="classic-verne-towle-ch31.js"')&&html.includes('src="classic-verne-towle-ch33.js"'));
+assert.ok(html.indexOf('classic-verne-towle-ch31.js')<html.indexOf('classic-verne-towle-ch33.js'));
+assert.ok(html.indexOf('classic-verne-towle-ch33.js')<html.indexOf('editorial-art.js'));
+const source=read('classic-verne-towle-ch33.js');
+assert.ok(source.includes('src/epub/text/chapter-33.xhtml')&&source.includes('22da80571dce2d37f9bfb1612f1c96ab9331c3c9')&&source.includes('56c82e97ff5d4f8950afca05b71af72688a8da34'));
+const story={id:'around-the-world-in-eighty-days-towle',chapters:Array.from({length:32},()=>({paragraphs:[]})),terms:[],totalChapters:37,provenance:'Jules Verne / George Makepeace Towle 1873',editorialStatus:'32 of 37'};
+vm.runInNewContext(source,{window:{StoryLensEditorialStories:[story]}},{filename:'classic-verne-towle-ch33.js',timeout:5000});
+assert.equal(story.chapters.length,33);
+const chapter=story.chapters[32];assert.equal(chapter.paragraphs.length,67);
+const normalize=s=>s.replace(/[\u00a0\u2007\u202f]/g,' ').replace(/[\u2060\u00ad\ufeff]/g,'').replace(/\s+/g,' ').trim();
+const normalized=chapter.paragraphs.map(p=>normalize(p.en)).join('\n');
+assert.equal(crypto.createHash('sha256').update(normalized,'utf8').digest('hex'),'c575cc82b383cc32f87ec58929f92dac3e152f9ab42025c859bf4897b5337f32');
+const body=chapter.paragraphs.map(p=>p.en).join(' '),words=(body.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
+assert.equal(words,2482);
+assert.ok(body.startsWith('An hour after, the Henrietta passed the lighthouse'));
+assert.ok(body.endsWith('I arrest you in the Queen’s name!'));
+assert.ok(chapter.paragraphs.every(p=>p.en.trim().length>4&&p.ar.trim().length>4&&/[\u0621-\u064A]/.test(p.ar)));
+assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/33 of 37/);assert.equal(story.terms.length,35);
+for(const t of story.terms){assert.ok(body.toLowerCase().includes(t.term.toLowerCase()),'Chapter XXXIII term absent from source: '+t.term);assert.ok(t.literal&&t.context&&t.note);}
+const artSandbox={window:{}};vm.runInNewContext(read('editorial-art.js'),artSandbox,{filename:'editorial-art.js',timeout:5000});
+const art=artSandbox.window.StoryLensMakeEditorialArt([story]);
+assert.ok(art[story.id+'_32']);assert.notEqual(art[story.id+'_31'],art[story.id+'_32']);
+assert.match(decodeURIComponent(art[story.id+'_32']),/ATLANTIC PASSAGE · QUEENSTOWN/);
+const shell=read('lingua-shell.js'),css=read('lingua-shell.css'),backup=read('data-backup.js');
+assert.ok(shell.includes("'atlantic-passage':'Atlantic Passage'")&&shell.includes("'atlantic-passage'"));
+assert.ok(css.includes('body.theme-atlantic-passage')&&css.includes('.lt-theme-atlantic-passage .lt-theme-swatch'));
+assert.ok(css.includes('@media(prefers-reduced-motion:reduce){.theme-atlantic-passage'));
+assert.ok(backup.includes("val==='atlantic-passage'"));
+console.log(JSON.stringify({result:'PASS',chapter:33,paragraphs:67,englishWords:words,normalizedEnglishSha256:'c575cc82b383cc32f87ec58929f92dac3e152f9ab42025c859bf4897b5337f32',arabicDrafts:67,contextualTerms:35,illustration:'ATLANTIC PASSAGE · QUEENSTOWN',theme:'Atlantic Passage',editorialReview:'NOT TESTED',device:'NOT TESTED'},null,2));

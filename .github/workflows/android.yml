@@ -98,6 +98,7 @@ jobs:
           node tools/verne-towle-ch29.test.cjs
           node tools/verne-towle-ch30.test.cjs
           node tools/verne-towle-ch31.test.cjs
+          node tools/verne-towle-ch33.test.cjs
           node tools/chapter-navigation.test.cjs
           node tools/inline-illustrations.test.cjs
           node tools/assets.test.cjs
