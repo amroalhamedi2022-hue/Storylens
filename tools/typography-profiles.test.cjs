@@ -14,15 +14,16 @@ const source = shell.slice(start, end) + '\nglobalThis.__api={fontChoices,fontDe
 function harness(saved = {}) {
   const storage = {...saved};
   const document = {documentElement:{dataset:{}}};
+  const calls = {saved:0,restored:[]};
   const context = {
     document,
     state:{page:'library',story:null,chapter:0},
     global:{scrollY:0},
-    calls:{saved:0,restored:[]},
+    calls,
     safeOffset(value){return value;},
-    savePosition(){this.calls.saved++;},
+    savePosition(){calls.saved++;},
     nextFrame(callback){callback();},
-    restoreReadingPosition(...args){this.calls.restored.push(args);},
+    restoreReadingPosition(...args){calls.restored.push(args);},
     get(key, fallback) { return Object.prototype.hasOwnProperty.call(storage,key) ? storage[key] : fallback; },
     put(key,value) { storage[key] = value; },
     storage
