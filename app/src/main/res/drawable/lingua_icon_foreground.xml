@@ -2,33 +2,34 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp" android:height="108dp"
     android:viewportWidth="108" android:viewportHeight="108">
-    <!-- Liquid-glass halo; the book/petals remain inside the adaptive safe zone. -->
-    <path android:fillColor="#FFFFFF" android:fillAlpha="0.12"
-        android:pathData="M54,19 C73.33,19 89,34.67 89,54 C89,73.33 73.33,89 54,89 C34.67,89 19,73.33 19,54 C19,34.67 34.67,19 54,19 Z"/>
-    <path android:fillColor="#BEEBFF" android:fillAlpha="0.40"
-        android:pathData="M25,57 C34,43 44,42 54,48 C64,42 74,43 83,57 L83,80 C72,74 62,76 54,82 C46,76 36,74 25,80 Z"/>
-    <!-- Three petals / language sparks above the open book. -->
-    <path android:fillColor="#FFE3F3"
-        android:pathData="M54,43 C45,35 45,26 54,21 C63,26 63,35 54,43 Z"/>
-    <path android:fillColor="#FFC0DE"
-        android:pathData="M51,45 C39,45 34,37 36,30 C45,29 51,35 51,45 Z"/>
-    <path android:fillColor="#B5E9FF"
-        android:pathData="M57,45 C69,45 74,37 72,30 C63,29 57,35 57,45 Z"/>
-    <path android:fillColor="#FFFFFF" android:fillAlpha="0.78"
-        android:pathData="M53,42 C52,38 52,32 54,28 C56,32 56,38 55,42 Z"/>
-    <!-- Open pages, independent of the original StoryLens placeholder icon. -->
-    <path android:fillColor="#FFF3FE"
-        android:pathData="M28,49 Q41,43 53,51 L53,76 Q41,69 28,75 Z"/>
-    <path android:fillColor="#D5EFFF"
-        android:pathData="M80,49 Q67,43 55,51 L55,76 Q67,69 80,75 Z"/>
-    <path android:fillColor="#8A72DB" android:fillAlpha="0.70"
-        android:pathData="M30,52 Q42,48 50,53 L50,56 Q42,52 30,56 Z M58,53 Q66,48 78,52 L78,56 Q66,52 58,56 Z"/>
-    <path android:fillColor="#FFFFFF" android:fillAlpha="0.50"
-        android:pathData="M30,61 Q42,57 50,62 L50,64 Q42,60 30,64 Z M58,62 Q66,57 78,61 L78,64 Q66,60 58,64 Z"/>
-    <path android:strokeColor="#FFFFFF" android:strokeWidth="2"
-        android:strokeAlpha="0.85" android:fillColor="#00000000"
-        android:pathData="M54,50 L54,78"/>
-    <path android:strokeColor="#FFFFFF" android:strokeWidth="1.5"
-        android:strokeAlpha="0.55" android:fillColor="#00000000"
-        android:pathData="M28,49 Q41,43 53,51 M55,51 Q67,43 80,49"/>
+    <!-- Approved Lingua Tales motif: open book + three lexical petals, now in layered liquid glass. -->
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.16"
+        android:pathData="M54,12 C77,12 96,31 96,54 C96,77 77,96 54,96 C31,96 12,77 12,54 C12,31 31,12 54,12 Z"/>
+    <path android:fillColor="#35E8F2" android:fillAlpha="0.30"
+        android:pathData="M18,60 C30,42 43,42 54,49 C65,42 78,42 90,60 L87,79 C73,72 63,76 54,84 C45,76 35,72 21,79 Z"/>
+    <path android:fillColor="#FFB8E3" android:fillAlpha="0.96"
+        android:pathData="M54,42 C42,32 43,20 54,15 C65,20 66,32 54,42 Z"/>
+    <path android:fillColor="#FFE8FA"
+        android:pathData="M50,44 C36,47 29,37 32,27 C43,28 50,34 50,44 Z"/>
+    <path android:fillColor="#A8F4FF"
+        android:pathData="M58,44 C72,47 79,37 76,27 C65,28 58,34 58,44 Z"/>
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.88"
+        android:pathData="M53,39 C52,33 52,27 54,22 C56,27 56,33 55,39 Z"/>
+    <path android:fillColor="#F7F0FF"
+        android:pathData="M23,49 Q39,40 52,50 L52,79 Q38,71 23,78 Z"/>
+    <path android:fillColor="#C4F6FF"
+        android:pathData="M85,49 Q69,40 56,50 L56,79 Q70,71 85,78 Z"/>
+    <path android:fillColor="#8A5EE8" android:fillAlpha="0.75"
+        android:pathData="M27,53 Q40,47 49,53 L49,57 Q39,52 27,58 Z"/>
+    <path android:fillColor="#3BAFCF" android:fillAlpha="0.72"
+        android:pathData="M81,53 Q68,47 59,53 L59,57 Q69,52 81,58 Z"/>
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.66"
+        android:pathData="M27,62 Q40,56 49,62 L49,65 Q39,60 27,66 Z M59,62 Q68,56 81,62 L81,66 Q69,60 59,65 Z"/>
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="2.2" android:strokeAlpha="0.95"
+        android:fillColor="#00000000" android:pathData="M54,49 L54,81"/>
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="1.4" android:strokeAlpha="0.8"
+        android:fillColor="#00000000" android:pathData="M23,49 Q39,40 52,50 M56,50 Q69,40 85,49"/>
+    <!-- Gloss highlights create depth without clipping inside adaptive launcher masks. -->
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.56"
+        android:pathData="M24,31 C31,22 41,18 48,19 C39,22 33,27 29,34 Z"/>
 </vector>
