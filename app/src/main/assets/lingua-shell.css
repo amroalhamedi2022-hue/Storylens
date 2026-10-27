@@ -2066,3 +2066,18 @@ body.theme-prairie-sails::before,body.theme-prairie-sails::after{display:none!im
 .theme-prairie-sails .lt-theme-choice{background:#faf4e5;color:#173c46;border-radius:3px 12px 3px 12px}
 @media(max-width:600px){.theme-prairie-sails .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-prairie-sails .library .storylens-hero .hero-orb{width:70px;height:70px}.theme-prairie-sails .library .header::after{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.theme-prairie-sails .library .card{transition:none!important;transform:none!important}}
+
+
+/* LT-07/13 — Hudson Ledger: ink-blue harbor charts, brass manifest rules and signal-red geometry. */
+.lt-theme-hudson-ledger .lt-theme-swatch{background:linear-gradient(135deg,#101e31 0 43%,#d8c28d 43% 51%,#f1e5c9 51% 78%,#b4493c 78%);border:2px solid #101e31}
+body.theme-hudson-ledger{--body:#e7e0d2;--card:#f8f2e6;--ink:#172a3e;--sub:#5c6975;--accent:#b4493c;--reader:#fffaf0;--reader-ink:#172a3e;background:linear-gradient(90deg,#10243a0b 1px,transparent 1px),linear-gradient(#10243a0b 1px,transparent 1px),linear-gradient(135deg,#e7e0d2,#cbd8dc 62%,#d9c18f);background-size:28px 28px,28px 28px,auto}
+body.theme-hudson-ledger::before,body.theme-hudson-ledger::after{display:none!important}
+.theme-hudson-ledger .library .header{border-bottom:3px double #172a3e;background:linear-gradient(100deg,#f8f2e6 0 64%,#d8c28d 64%);padding-bottom:17px;position:relative}
+.theme-hudson-ledger .library .header::after{content:'HENRIETTA · HARBOR MANIFEST';display:block;margin-top:12px;padding:8px 12px;border-top:1px solid #b4493c;border-bottom:1px solid #b4493c;color:#172a3e;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.18em}
+.theme-hudson-ledger .library .card{border-radius:8px 8px 3px 3px;border:1px solid #bca979;box-shadow:5px 5px 0 #172a3e12}
+.theme-hudson-ledger .library .card .cover{border-radius:5px 5px 0 0;filter:saturate(.82) contrast(1.04)}
+.theme-hudson-ledger .reader .page{border-left:3px double #c2a76e;border-right:1px solid #c2a76e;box-shadow:inset 8px 0 0 #d8c28d18,0 16px 38px #172a3e18}
+.theme-hudson-ledger .reader .chapter-end{border-top:2px solid #b4493c;background:linear-gradient(110deg,#f8f2e6,#e4d6b6)}
+.theme-hudson-ledger .lt-theme-choice.selected{outline:2px solid #b4493c;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.theme-hudson-ledger .library .card{transition:none!important;transform:none!important}}
+
