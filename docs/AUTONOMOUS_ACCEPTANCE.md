@@ -1194,3 +1194,13 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - **Regression:** extended `tools/locale-journeys.test.cjs` with an open-usage journey, accessible input attributes, feedback-after-save behavior and a source-sentence preservation assertion.
 - **Purposeful CI question:** does this new wrapper work in the actual asset load order and pass the Node/Chromium/Android packaging gates? Static inspection alone cannot establish script-order and browser integration.
 - **First CI attempt FAIL (test harness only):** run [40502926618](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40502926618) stopped in `locale-journeys.test.cjs` because the new assertion referenced `usageSentence` instead of the already-created `sourceSentence` mock. The production localization wrapper loaded; the failure was a test variable typo, not a runtime assertion against app behavior. Corrected the test reference; the next targeted run is pending. LT-06 and overall LT-01..LT-13 remain **IN PROGRESS**; full app-wide UI audit, Pad 5 testing, Arabic literary review, territory-specific rights and licensed audio remain open.
+
+
+## 2026-10-27 — LT-06 locale persistence integration gate (CI PASS; device NOT TESTED)
+
+- Added `tools/locale-shell.test.cjs`, which executes the actual `localeChoices`, `loadLocale` and `applyLocale` functions extracted from production `lingua-shell.js` in a bounded VM harness.
+- Regression covers persisted Arabic/English, RTL/LTR direction, invalid stored-locale fallback to Arabic, rejection of unsupported locale values without corrupting storage, and preserving library scroll plus returning focus to the locale selector when Settings is open.
+- Wired the new test into `.github/workflows/android.yml`. The first integration attempt failed only because the isolated harness omitted the production IIFE's `global` binding; the harness was corrected and the final run passed.
+- **PASS — CI run 40505706036** on source/test SHA `82374cb360253dc5a12de0c47f55e83bd63e38de`: curated offline-content gates, all Node regressions including the new locale-shell test, Gradle unit tests + Debug APK, critical asset verification, and Chromium reader journeys passed.
+- Debug APK Artifact **12735505881**; CI-calculated inner APK SHA-256 `d376e7df1123437cd43ee379eb1de8ffef8191681029b27ef56d1e9db5dadb92`. Independent download/re-hash **NOT TESTED** for this artifact.
+- **NOT TESTED:** Xiaomi Pad 5 locale-switch/restart, physical RTL/TalkBack, frame timing/RAM/thermal, full UI hard-coded-string audit, Arabic literary review, territory-specific redistribution clearance, and curated licensed audio. This is a Debug build; LT-01..LT-13 remain IN PROGRESS overall.
