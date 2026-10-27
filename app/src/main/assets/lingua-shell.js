@@ -4,6 +4,65 @@
 'use strict';
 const themeNames=['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre','celestial-atlas','harbor-ledger','circuit-notebook','terracotta-gallery','monochrome-zine','moonlit-margins','saffron-archive','bauhaus-studio','mosaic-courtyard','saville-clockwork','station-tickets','reform-club-brass','midnight-platform','exchange-gazette','suez-quays','consular-ledger','red-sea-dispatch','monsoon-meridian','deccan-timetable','kholby-crossing','vindhya-passage','dawn-escape','ganges-panorama','calcutta-ledger','rangoon-passage','singapore-lantern','typhoon-timetable','victoria-harbour-dispatch','shanghai-wind-ledger','typhoon-signal','yokohama-lantern','paper-lantern-circus','pacific-meridian','civic-panorama','prairie-signal','salt-lake-dispatch','medicine-bow-crossing','plum-creek-signal','snowbound-telegraph','prairie-sails','hudson-ledger','atlantic-passage', 'last-five-minutes','westminster-vows','reform-club-countdown','meridian-epilogue'];
 const themeLabels={aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library','botanical-folio':'Botanical Folio','rain-glass':'Rain Glass','solar-atelier':'Solar Atelier','ink-workshop':'Ink Workshop','velvet-theatre':'Velvet Theatre','celestial-atlas':'Celestial Atlas','harbor-ledger':'Harbor Ledger','circuit-notebook':'Circuit Notebook','terracotta-gallery':'Terracotta Gallery','monochrome-zine':'Monochrome Zine','moonlit-margins':'Moonlit Margins','saffron-archive':'Saffron Archive','bauhaus-studio':'Bauhaus Studio','mosaic-courtyard':'Mosaic Courtyard','saville-clockwork':'Saville Clockwork','station-tickets':'Station Tickets','reform-club-brass':'Reform Club Brass','midnight-platform':'Midnight Platform','exchange-gazette':'Exchange Gazette','suez-quays':'Suez Quays','consular-ledger':'Consular Ledger','red-sea-dispatch':'Red Sea Dispatch','monsoon-meridian':'Monsoon Meridian','deccan-timetable':'Deccan Timetable','kholby-crossing':'Kholby Crossing','vindhya-passage':'Vindhya Passage','dawn-escape':'Dawn Escape','ganges-panorama':'Ganges Panorama','calcutta-ledger':'Calcutta Ledger','rangoon-passage':'Rangoon Passage','singapore-lantern':'Singapore Lantern','typhoon-timetable':'Typhoon Timetable','victoria-harbour-dispatch':'Victoria Harbour Dispatch','shanghai-wind-ledger':'Shanghai Wind Ledger','typhoon-signal':'Typhoon Signal','yokohama-lantern':'Yokohama Lantern','paper-lantern-circus':'Paper Lantern Circus','pacific-meridian':'Pacific Meridian','civic-panorama':'Civic Panorama','prairie-signal':'Prairie Signal','salt-lake-dispatch':'Salt Lake Dispatch','medicine-bow-crossing':'Medicine Bow Crossing','plum-creek-signal':'Plum Creek Signal','snowbound-telegraph':'Snowbound Telegraph','prairie-sails':'Prairie Sails','hudson-ledger':'Hudson Ledger','atlantic-passage':'Atlantic Passage','last-five-minutes':'The Last Five Minutes','westminster-vows':'Westminster Vows','reform-club-countdown':'Reform Club Countdown','meridian-epilogue':'Meridian Epilogue'};
+const themeLabelsAr={
+ 'aurora':"الشفق السائل",
+ 'aqua':"الزجاج المائي",
+ 'nebula':"تدفّق السديم",
+ 'paper-atlas':"أطلس الورق",
+ 'midnight-library':"مكتبة منتصف الليل",
+ 'botanical-folio':"دفتر نباتي",
+ 'rain-glass':"زجاج المطر",
+ 'solar-atelier':"مرسم شمسي",
+ 'ink-workshop':"ورشة الحبر",
+ 'velvet-theatre':"مسرح المخمل",
+ 'celestial-atlas':"أطلس سماوي",
+ 'harbor-ledger':"سجل الميناء",
+ 'circuit-notebook':"دفتر الدوائر",
+ 'terracotta-gallery':"معرض الفخار",
+ 'monochrome-zine':"مجلة أحادية اللون",
+ 'moonlit-margins':"هوامش ضوء القمر",
+ 'saffron-archive':"أرشيف الزعفران",
+ 'bauhaus-studio':"مرسم باوهاوس",
+ 'mosaic-courtyard':"فناء الفسيفساء",
+ 'saville-clockwork':"ساعة سافيل",
+ 'station-tickets':"تذاكر المحطة",
+ 'reform-club-brass':"نحاس نادي الإصلاح",
+ 'midnight-platform':"رصيف منتصف الليل",
+ 'exchange-gazette':"جريدة البورصة",
+ 'suez-quays':"أرصفة السويس",
+ 'consular-ledger':"سجل القنصلية",
+ 'red-sea-dispatch':"برقية البحر الأحمر",
+ 'monsoon-meridian':"خط الزوال الموسمي",
+ 'deccan-timetable':"جدول دكن",
+ 'kholby-crossing':"معبر خولبي",
+ 'vindhya-passage':"ممر فينديا",
+ 'dawn-escape':"هروب الفجر",
+ 'ganges-panorama':"بانوراما الغانج",
+ 'calcutta-ledger':"سجل كلكتا",
+ 'rangoon-passage':"ممر رانغون",
+ 'singapore-lantern':"فانوس سنغافورة",
+ 'typhoon-timetable':"جدول الإعصار",
+ 'victoria-harbour-dispatch':"برقية ميناء فيكتوريا",
+ 'shanghai-wind-ledger':"سجل رياح شنغهاي",
+ 'typhoon-signal':"إشارة الإعصار",
+ 'yokohama-lantern':"فانوس يوكوهاما",
+ 'paper-lantern-circus':"سيرك الفوانيس الورقية",
+ 'pacific-meridian':"خط الزوال الهادئ",
+ 'civic-panorama':"بانوراما المدينة",
+ 'prairie-signal':"إشارة البراري",
+ 'salt-lake-dispatch':"برقية البحيرة المالحة",
+ 'medicine-bow-crossing':"معبر ميديسن بو",
+ 'plum-creek-signal':"إشارة بلَم كريك",
+ 'snowbound-telegraph':"تلغراف الثلوج",
+ 'prairie-sails':"أشرعة البراري",
+ 'hudson-ledger':"سجل هدسون",
+ 'atlantic-passage':"عبور الأطلسي",
+ 'last-five-minutes':"الدقائق الخمس الأخيرة",
+ 'westminster-vows':"عهود وستمنستر",
+ 'reform-club-countdown':"العد التنازلي لنادي الإصلاح",
+ 'meridian-epilogue':"خاتمة خط الزوال"
+};
+const themeLabelFor=name=>rtl()?themeLabelsAr[name]:themeLabels[name];
 /* LT-12: separate, offline typography preferences. System font stacks avoid
  * font downloads and extra memory. Unsupported values never reach CSS. */
 const fontChoices={ar:['sans','naskh'],en:['serif','sans']};
@@ -161,7 +220,7 @@ function openSettings(){
  sheet.appendChild(themeHeading);
  const gallery=document.createElement('div');gallery.className='lt-theme-gallery';
  for(const name of themeNames){
-  const b=addButton(gallery,themeLabels[name],()=>applyTheme(name),'lt-theme-choice lt-theme-'+name);
+  const b=addButton(gallery,themeLabelFor(name),()=>applyTheme(name),'lt-theme-choice lt-theme-'+name);
   b.dataset.theme=name;
   b.setAttribute('aria-pressed',String(state.uiTheme===name));
   b.classList.toggle('selected',state.uiTheme===name);
