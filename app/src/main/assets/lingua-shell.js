@@ -104,8 +104,10 @@ const readingSizeDefaults={ar:'comfortable',en:'comfortable'};
 const readingSizeKeys={ar:'readingSizeArabic',en:'readingSizeEnglish'};
 function applyReadingSize(lang,name){
  if(!Object.prototype.hasOwnProperty.call(readingSizeChoices,lang)||!readingSizeChoices[lang].includes(name))return false;
- document.documentElement.dataset[lang==='ar'?'ltArabicSize':'ltEnglishSize']=name;
- put(readingSizeKeys[lang],name);
+ preserveReaderPosition(()=>{
+  document.documentElement.dataset[lang==='ar'?'ltArabicSize':'ltEnglishSize']=name;
+  put(readingSizeKeys[lang],name);
+ });
  return true;
 }
 function loadReadingSizes(){
