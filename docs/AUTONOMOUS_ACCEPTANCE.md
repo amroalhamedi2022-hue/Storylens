@@ -1244,3 +1244,13 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - **Source/test head:** `e4fd74fe31f12c7351d8bc083f38630454c0403b`.
 - **CI:** **NOT VERIFIED** for this exact head in this checkpoint; the connected status lookup did not expose the push-triggered Actions run. Do not infer PASS from the source changes alone.
 - **NOT TESTED:** physical Xiaomi Pad 5, actual Android WebView locale behavior, full UI string audit, RTL/TalkBack, frame pacing, Arabic literary review, territory-specific rights, and final release. LT-01..LT-13 remain **IN PROGRESS**.
+
+
+## 2026-10-27 — LT-06 backup safety badge follows interface locale (CI PASS; device NOT TESTED)
+
+- **Production:** the backup/restore sheet's “OFFLINE · DATA SAFETY” badge now uses the same Arabic/English locale helper as the rest of the sheet; Arabic UI shows “بدون اتصال · حماية البيانات” instead of leaking the English badge.
+- **Regression:** `tools/data-backup.test.cjs` asserts the English badge in English UI, the Arabic badge in Arabic UI, and the absence of the English badge from the Arabic-rendered sheet. Existing backup schema, stale-preview, data-preservation, and bilingual validation checks remain enabled.
+- **Purposeful build question:** does the actual bundled WebView sheet keep this visible safety label localized while the offline content, dictionary, audio, Android packaging, and reader browser gates still pass? Source inspection alone cannot prove the production asset bundle and browser journey together.
+- **PASS — Android CI:** [run 40553962157](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40553962157), source/test SHA `f0cd468314efc5b5e0ea5855cd5410a1c1eb6839`. Offline dictionary and pinned CC-BY audio verification, curated content/Node regressions, Gradle unit tests + Debug APK, packaged-asset verification, and Chromium journeys through Chapter XXXVII passed.
+- **PASS — independently re-hashed Debug APK:** 20,051,250 bytes; SHA-256 `a36eca44f070805532bfdb4b3e30f363508b4ba539ec7fc870d00cafacf862a1`, matching `APK_SHA256.txt` from Artifact **12756332646**. Screenshot Artifact **12756686459**.
+- **NOT TESTED:** Xiaomi Pad 5 install, actual Android RTL/TalkBack, device frame pacing/RAM/thermal, licensed-audio acoustics/Audio Focus with screen off, independent Arabic literary review, and territory-specific redistribution rights. Debug is not final; LT-01..LT-13 remain **IN PROGRESS**.
