@@ -22,6 +22,15 @@ chapters = paragraphs = 0
 for story in stories:
     assert story["genre"] in genres
     assert story["title"] and story["description"]
+    if story.get("lazyBook") is True:
+        # Long-book metadata is visible at startup while its large chapter payload
+        # stays inert until the reader explicitly opens the book.
+        assert story.get("totalChapters", 0) > 0
+        assert story["chapters"] == []
+        assert story.get("terms") == []
+        assert story["id"] + "_0" in art
+        assert story.get("provenance")
+        continue
     assert story["chapters"]
     for chapter in story["chapters"]:
         chapters += 1
