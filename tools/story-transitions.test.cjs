@@ -25,8 +25,11 @@ const document = {
  querySelector(selector) {
   if(selector === '.reader')return reader;
   if(selector === '.reader h2')return heading;
-  const match=selector.match(/^\\.reader \\.sentence\\[data-i="(\\d+)"\\]$/);
-  return match?sentenceNodes.find(node=>node.getAttribute('data-i')===match[1])||null:null;
+  if(!selector.startsWith('.reader .sentence[')||!selector.endsWith(']'))return null;
+  const marker=selector.indexOf('data-i="');
+  if(marker<0)return null;
+  const value=selector.slice(marker+8,-2);
+  return sentenceNodes.find(node=>node.getAttribute('data-i')===value)||null;
  },
  querySelectorAll(selector) {
   if(selector === '.library .card')return [card];
@@ -94,6 +97,7 @@ sandbox.libraryBack(); flush();
 // Semantic progress survives font reflow: preserve the first visible paragraph
 // and its viewport offset, while keeping the legacy pixel position as fallback.
 store.set('reading_anchor_book_0', null);
+store.set('scroll_book_0', 0);
 const paragraph=(index,top,bottom)=>({
  getAttribute(name){return name==='data-i'?String(index):null;},
  getBoundingClientRect(){return {top,bottom};}
