@@ -324,6 +324,21 @@ jobs:
 
 
 
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne35-phone.png" "file://$PWD/app/src/main/assets/qa-verne35.html" >/tmp/chrome-verne35.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne35.html" > /tmp/storylens-verne35-dom.html 2>/tmp/chrome-verne35-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne35-dom.html || { echo "Chapter XXXV Arabic reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne35-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXXV Arabic reader, 52 aligned bilingual paragraphs and honest 35-of-37 boundary"
+
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne35-en-phone.png" "file://$PWD/app/src/main/assets/qa-verne35-en.html" >/tmp/chrome-verne35-en.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne35-en.html" > /tmp/storylens-verne35-en-dom.html 2>/tmp/chrome-verne35-en-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne35-en-dom.html || { echo "Chapter XXXV English reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne35-en-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXXV English reader journey"
+
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne35-theme-phone.png" "file://$PWD/app/src/main/assets/qa-verne35-theme.html" >/tmp/chrome-verne35-theme.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne35-theme.html" > /tmp/storylens-verne35-theme-dom.html 2>/tmp/chrome-verne35-theme-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne35-theme-dom.html || { echo "Westminster Vows visual fixture failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne35-theme-dom.html | head -1; exit 1; }
+          echo "PASS: Westminster Vows styles Chapter XXXV in RTL with offline art"
+
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/word-phone.png" "file://$PWD/app/src/main/assets/qa-word.html" >/tmp/chrome-word.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/backup-phone.png" "file://$PWD/app/src/main/assets/qa-backup.html" >/tmp/chrome-backup.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-flow.html" > /tmp/storylens-flow-dom.html 2>/tmp/chrome-flow.log
