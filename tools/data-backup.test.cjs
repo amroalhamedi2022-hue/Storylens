@@ -228,9 +228,13 @@ console.log('PASS: offline JSON schema, restore, rollback data preservation, uns
  assert.equal(backupButton.attributes['aria-label'],'Save or restore learning data');
  backupApi.open();
  assert.match(elements.get('modals').innerHTML,/Backup & restore/);
+ assert.match(elements.get('modals').innerHTML,/OFFLINE · DATA SAFETY/);
  assert.match(elements.get('modals').innerHTML,/Export backup/);
  doc.documentElement.lang='ar';backupApi.open();
  assert.match(elements.get('modals').innerHTML,/النسخ الاحتياطي/);
+ assert.match(elements.get('modals').innerHTML,/بدون اتصال · حماية البيانات/);
+ assert.doesNotMatch(elements.get('modals').innerHTML,/OFFLINE · DATA SAFETY/,
+  'the safety badge must follow the selected Arabic UI locale');
  doc.documentElement.lang='en';
  const payload=JSON.stringify({format:'storylens.backup',version:1,entries:{
   storylens_uiLocale:'"en"',storylens_fontArabic:'"naskh"',storylens_fontEnglish:'"sans"'
