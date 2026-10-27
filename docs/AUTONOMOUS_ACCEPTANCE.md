@@ -1204,3 +1204,12 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - **PASS — CI run 40505706036** on source/test SHA `82374cb360253dc5a12de0c47f55e83bd63e38de`: curated offline-content gates, all Node regressions including the new locale-shell test, Gradle unit tests + Debug APK, critical asset verification, and Chromium reader journeys passed.
 - Debug APK Artifact **12735505881**; CI-calculated inner APK SHA-256 `d376e7df1123437cd43ee379eb1de8ffef8191681029b27ef56d1e9db5dadb92`. **PASS — independent artifact verification:** downloaded Artifact **12735505881**, extracted `app-debug.apk` (4,831,838 bytes), and recalculated SHA-256 `d376e7df1123437cd43ee379eb1de8ffef8191681029b27ef56d1e9db5dadb92`; it matches `APK_SHA256.txt`.
 - **NOT TESTED:** Xiaomi Pad 5 locale-switch/restart, physical RTL/TalkBack, frame timing/RAM/thermal, full UI hard-coded-string audit, Arabic literary review, territory-specific redistribution clearance, and curated licensed audio. This is a Debug build; LT-01..LT-13 remain IN PROGRESS overall.
+
+
+## 2026-10-27 — LT-06 library hero locale coverage (targeted CI pending)
+
+- **Production:** the post-render locale wrapper now translates the library hero eyebrow, title, description, story/genre counts and offline badge in both Arabic and English. It leaves story titles, English passages and Arabic learning translations untouched.
+- **Regression:** `tools/locale-journeys.test.cjs` executes the real production wrapper and asserts the hero strings and metrics in both locales; the test is part of the Android workflow.
+- **Purposeful build question:** does the actual post-render wrapper localize the generated hero in both directions while the Node suite, Android packaging and Chromium journey remain integrated? Source inspection alone cannot prove script-order and browser behavior.
+- **Current CI:** [run 40510897833](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40510897833) on test-bearing commit `b50458e6a263bd39c26891393df529ebfc947176` is **IN PROGRESS**. Curated content/Node tests, Gradle tests + Debug assembly, and critical APK asset verification have completed successfully; Chromium render/screenshot is still running. Do not record overall CI PASS until the run concludes.
+- **NOT TESTED:** Xiaomi Pad 5, physical RTL/TalkBack, real frame timing/RAM/thermal, full app-wide hard-coded UI-string audit, independent Arabic literary review, territorial redistribution rights and the curated licensed recording catalog. This is not a final release.
