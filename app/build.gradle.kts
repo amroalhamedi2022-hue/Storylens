@@ -1,3 +1,5 @@
+import java.io.File
+
 plugins { id("com.android.application") }
 
 val ltSigningStore = System.getenv("LT_SIGNING_KEYSTORE")
@@ -8,7 +10,7 @@ val hasLtStableSigning = !ltSigningStore.isNullOrBlank() &&
     !ltSigningStorePassword.isNullOrBlank() &&
     !ltSigningAlias.isNullOrBlank() &&
     !ltSigningKeyPassword.isNullOrBlank() &&
-    java.io.File(ltSigningStore).isFile
+    File(ltSigningStore ?: "").isFile
 android {
     namespace = "com.storylens.reader"
     compileSdk = 36
