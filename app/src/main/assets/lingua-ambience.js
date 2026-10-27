@@ -141,7 +141,13 @@ async function play(){
  const ctx=ensureContext();
  // Call resume directly in the user gesture, then check for lifecycle races.
  if(ctx.state!=='running')await ctx.resume();
- if(document.hidden||ticket!==playbackGeneration)return false;
+ if(document.hidden||ticket!==playbackGeneration){
+  // pause() may run while resume() is pending, before the context becomes
+  // running. In that race, pause cannot suspend it; close the gap here.
+  // Do not suspend a newer play request that has already started playback.
+  if(!playing&&ctx.state==='running')await ctx.suspend();
+  return false;
+ }
  if(playing)return true;
  build(prefs.scene);master.gain.value=prefs.volume*0.36;
  playing=true;return true;

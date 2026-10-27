@@ -86,7 +86,9 @@ assert.equal(created,0,'no audio created by settings change');
  // start a hidden audio graph when the delayed resume finally completes.
  let finishResume;
  const pending=new Promise(resolve=>{finishResume=resolve});
+ let slowContext;
  class SlowAudioContext extends FakeAudioContext {
+  constructor(){super();slowContext=this}
   async resume(){await pending;this.state='running'}
  }
  const hiddenListeners={};
@@ -99,5 +101,6 @@ assert.equal(created,0,'no audio created by settings change');
  finishResume();
  assert.equal(await delayed,false,'no stale play after visibility pause');
  assert.equal(slow.isPlaying(),false,'no hidden soundscape graph');
+ assert.equal(slowContext.state,'suspended','a late resume after visibility pause must not leave AudioContext running');
  console.log('PASS LT-11: 20 offline ambience scenes + 4 original melodies; opt-in lifecycle, volume, switching, timer cleanup and backup gates');
 })().catch(e=>{console.error(e);process.exitCode=1});
