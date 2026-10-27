@@ -18,7 +18,7 @@ assert.equal(crypto.createHash('sha256').update(normalized,'utf8').digest('hex')
 const body=chapter.paragraphs.map(p=>p.en).join(' '),words=(body.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.equal(words,2482);
 assert.ok(body.startsWith('An hour after, the Henrietta passed the lighthouse'));
-assert.ok(body.endsWith('I arrest you in the Queen’s name!'));
+assert.ok(body.endsWith('I arrest you in the Queen’s name!”'));
 assert.ok(chapter.paragraphs.every(p=>p.en.trim().length>4&&p.ar.trim().length>4&&/[\u0621-\u064A]/.test(p.ar)));
 assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/33 of 37/);assert.equal(story.terms.length,35);
 for(const t of story.terms){assert.ok(body.toLowerCase().includes(t.term.toLowerCase()),'Chapter XXXIII term absent from source: '+t.term);assert.ok(t.literal&&t.context&&t.note);}
