@@ -26,7 +26,7 @@ assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/32 of 3
 for(const t of story.terms.slice(0,34)){assert.ok(body.toLowerCase().includes(t.term.toLowerCase()),'term absent from source: '+t.term);assert.ok(t.literal&&t.context&&t.note);}
 
 const chapter32=story.chapters[31];assert.equal(chapter32.paragraphs.length,50);
-const normalized32=chapter32.paragraphs.map(p=>normalize(p.en)).join('\\n');
+const normalized32=chapter32.paragraphs.map(p=>normalize(p.en)).join('\n');
 assert.equal(crypto.createHash('sha256').update(normalized32,'utf8').digest('hex'),'992fcb13f472c5638ec7bfe89569351bc64c17a40d2b671b598df4679d4f5877');
 const body32=chapter32.paragraphs.map(p=>p.en).join(' '),words32=(body32.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.equal(words32,1051);
