@@ -404,3 +404,14 @@ merely because its title is present in a roadmap.
 - **Art/theme:** original offline Prairie Sails SVG of a sail-powered winter sledge; a distinct ochre/teal wind-chart theme registered in Settings, CSS, reduced-motion fallback and backup allowlist.
 - **Rights:** Standard Ebooks editorial contribution is CC0; the 1873 Towle text is treated as public domain in the USA. Territory-specific redistribution clearance remains **NOT TESTED**. Arabic translation is an unreviewed draft requiring independent bilingual literary review.
 - **Serial status:** 31 of 37 chapters packaged; the next chapter remains unavailable until added. CI/build and Xiaomi Pad 5 acceptance are tracked separately.
+
+
+## 2026-10-27 — Towle Chapter XXXIV: The Last Five Minutes
+
+- **Asset:** `app/src/main/assets/classic-verne-towle-ch34.js`; 22 complete narrative paragraphs / 972 English words and 22 aligned Arabic companion drafts.
+- **Pinned source:** Standard Ebooks, George Makepeace Towle translation, `src/epub/text/chapter-34.xhtml`; upstream commit `56c82e97ff5d4f8950afca05b71af72688a8da34`; source blob SHA-1 `d78ec1d3014c2bb027c60645be33e0c0331ea7d3`.
+- **Normalized English SHA-256:** `b99d773a896ea121836a443ffc1290e67041718ccbb59f5341a19bc78246e6d9`; CI regression recomputes this digest and asserts 972 words and 22 aligned paragraphs.
+- **Learning content:** 20 source-occurring word/phrase/idiom annotations; English text and Arabic translation are aligned by paragraph. Arabic is an editorial draft pending independent literary review.
+- **Art/theme:** original offline SVG of the London terminus clock at 8:50 p.m.; distinct **The Last Five Minutes** theme with clock-face geometry, timetable rules, square editorial cards and reduced-motion fallback. No remote image or third-party art is bundled.
+- **Rights:** Standard Ebooks editorial contribution is CC0; Towle's 1873 English translation is treated as public domain in the USA. Territory-specific redistribution clearance remains NOT TESTED.
+- **CI evidence:** https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40446487903 — PASS; Debug APK SHA-256 `d364e29aea175f2dbcd29885efd5878c203bdf3b8498ed266c76bf2245f09472`.
