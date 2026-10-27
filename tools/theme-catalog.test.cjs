@@ -31,4 +31,6 @@ for (const name of ['red-sea-dispatch', 'monsoon-meridian', 'deccan-timetable', 
 }
 assert.ok(shellCss.includes('@media(prefers-reduced-motion:reduce){.theme-civic-panorama .library .card{transition:none!important;transform:none!important}}'), 'Civic Panorama reduced-motion fallback must disable both transitions and transforms');
 assert.ok(shellCss.includes('@media(prefers-reduced-motion:reduce){.theme-prairie-signal .library .card{transition:none!important;transform:none!important}}'), 'Prairie Signal reduced-motion fallback must disable both transitions and transforms');
+assert.ok(shellCss.includes('.lt-theme-reform-club-brass .lt-theme-swatch{'), 'Reform Club Brass must style its own gallery swatch');
+assert.match(shellCss, /@media\(prefers-reduced-motion:reduce\)\{\s*\.theme-reform-club-brass\b/, 'Reform Club Brass must retain a reduced-motion fallback');
 console.log('PASS theme catalog: ' + names.length + ' selectable themes have labels, production body styles and backup allowlist; routed themes have swatches and reduced-motion fallbacks.');
