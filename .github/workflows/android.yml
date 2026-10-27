@@ -226,11 +226,11 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne26-phone.png" "file://$PWD/app/src/main/assets/qa-verne26.html" >/tmp/chrome-verne26.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne26.html" > /tmp/storylens-verne26-dom.html 2>/tmp/chrome-verne26-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne26-dom.html || { echo "Chapter XXVI Arabic reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne26-dom.html | head -1; exit 1; }
-          echo "PASS: Chapter XXVI Arabic reader keeps next-chapter navigation enabled; 28 chapters are available"
+          echo "PASS: Chapter XXVI Arabic reader keeps next-chapter navigation enabled; 33 chapters are available"
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne26-en-phone.png" "file://$PWD/app/src/main/assets/qa-verne26-en.html" >/tmp/chrome-verne26-en.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne26-en.html" > /tmp/storylens-verne26-en-dom.html 2>/tmp/chrome-verne26-en-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne26-en-dom.html || { echo "Chapter XXVI English reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne26-en-dom.html | head -1; exit 1; }
-          echo "PASS: Chapter XXVI English reader keeps next-chapter navigation enabled; 28 chapters are available"
+          echo "PASS: Chapter XXVI English reader keeps next-chapter navigation enabled; 33 chapters are available"
 
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne27-phone.png" "file://$PWD/app/src/main/assets/qa-verne27.html" >/tmp/chrome-verne27.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne27.html" > /tmp/storylens-verne27-dom.html 2>/tmp/chrome-verne27-dom.log
@@ -244,7 +244,7 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=7000 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne28-phone.png" "file://$PWD/app/src/main/assets/qa-verne28.html" >/tmp/chrome-verne28.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=7000 --dump-dom "file://$PWD/app/src/main/assets/qa-verne28.html" > /tmp/storylens-verne28-dom.html 2>/tmp/chrome-verne28-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne28-dom.html || { echo "Chapter XXVIII Arabic reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne28-dom.html | head -1; exit 1; }
-          echo "PASS: Chapter XXVIII Arabic reader shows 75 inline Arabic drafts and enables Chapter XXIX; 31 of 37 chapters are available"
+          echo "PASS: Chapter XXVIII Arabic reader shows 75 inline Arabic drafts and enables Chapter XXIX; 33 of 37 chapters are available"
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=7000 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne28-en-phone.png" "file://$PWD/app/src/main/assets/qa-verne28-en.html" >/tmp/chrome-verne28-en.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=7000 --dump-dom "file://$PWD/app/src/main/assets/qa-verne28-en.html" > /tmp/storylens-verne28-en-dom.html 2>/tmp/chrome-verne28-en-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne28-en-dom.html || { echo "Chapter XXVIII English reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne28-en-dom.html | head -1; exit 1; }
@@ -261,7 +261,7 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=7500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne30-phone.png" "file://$PWD/app/src/main/assets/qa-verne30.html" >/tmp/chrome-verne30.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=7500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne30.html" > /tmp/storylens-verne30-dom.html 2>/tmp/chrome-verne30-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne30-dom.html || { echo "Chapter XXX Arabic reader failed"; exit 1; }
-          echo "PASS: Chapter XXX Arabic reader renders 67 aligned translation drafts and honest 31-of-37 continuation"
+          echo "PASS: Chapter XXX Arabic reader renders 67 aligned translation drafts and honest 33-of-37 continuation"
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=7500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne30-en-phone.png" "file://$PWD/app/src/main/assets/qa-verne30-en.html" >/tmp/chrome-verne30-en.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=7500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne30-en.html" > /tmp/storylens-verne30-en-dom.html 2>/tmp/chrome-verne30-en-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne30-en-dom.html || { echo "Chapter XXX English reader failed"; exit 1; }
@@ -273,7 +273,7 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=8000 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne31-phone.png" "file://$PWD/app/src/main/assets/qa-verne31.html" >/tmp/chrome-verne31.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=8000 --dump-dom "file://$PWD/app/src/main/assets/qa-verne31.html" > /tmp/storylens-verne31-dom.html 2>/tmp/chrome-verne31-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne31-dom.html || { echo "Chapter XXXI Arabic reader failed"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne31-dom.html | head -1; exit 1; }
-          echo "PASS: Chapter XXXI Arabic reader renders 37 aligned translation drafts and honest 31-of-37 continuation"
+          echo "PASS: Chapter XXXI Arabic reader renders 37 aligned translation drafts and enables Chapter XXXII"
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=8000 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne31-en-phone.png" "file://$PWD/app/src/main/assets/qa-verne31-en.html" >/tmp/chrome-verne31-en.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=8000 --dump-dom "file://$PWD/app/src/main/assets/qa-verne31-en.html" > /tmp/storylens-verne31-en-dom.html 2>/tmp/chrome-verne31-en-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne31-en-dom.html || { echo "Chapter XXXI English reader failed"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne31-en-dom.html | head -1; exit 1; }
@@ -282,6 +282,29 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=8000 --dump-dom "file://$PWD/app/src/main/assets/qa-verne31-theme.html" > /tmp/storylens-verne31-theme-dom.html 2>/tmp/chrome-verne31-theme-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne31-theme-dom.html || { echo "Prairie Sails visual fixture failed"; exit 1; }
           echo "PASS: Prairie Sails theme styles the Chapter XXXI reader in RTL"
+
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=8500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne32-phone.png" "file://$PWD/app/src/main/assets/qa-verne32.html" >/tmp/chrome-verne32.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=8500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne32.html" > /tmp/storylens-verne32-dom.html 2>/tmp/chrome-verne32-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne32-dom.html || { echo "Chapter XXXII Arabic reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne32-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXXII Arabic reader renders 50 translations and enables Chapter XXXIII"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=8500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne32-en-phone.png" "file://$PWD/app/src/main/assets/qa-verne32-en.html" >/tmp/chrome-verne32-en.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=8500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne32-en.html" > /tmp/storylens-verne32-en-dom.html 2>/tmp/chrome-verne32-en-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne32-en-dom.html || { echo "Chapter XXXII English reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne32-en-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXXII English reader preserves source and next-chapter navigation"
+
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne33-phone.png" "file://$PWD/app/src/main/assets/qa-verne33.html" >/tmp/chrome-verne33.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --dump-dom "file://$PWD/app/src/main/assets/qa-verne33.html" > /tmp/storylens-verne33-dom.html 2>/tmp/chrome-verne33-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne33-dom.html || { echo "Chapter XXXIII Arabic reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne33-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXXIII Arabic reader renders 67 translations and honest 33-of-37 continuation"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne33-en-phone.png" "file://$PWD/app/src/main/assets/qa-verne33-en.html" >/tmp/chrome-verne33-en.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --dump-dom "file://$PWD/app/src/main/assets/qa-verne33-en.html" > /tmp/storylens-verne33-en-dom.html 2>/tmp/chrome-verne33-en-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne33-en-dom.html || { echo "Chapter XXXIII English reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne33-en-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXXIII English reader preserves the incomplete-book boundary"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne33-theme-phone.png" "file://$PWD/app/src/main/assets/qa-verne33-theme.html" >/tmp/chrome-verne33-theme.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --dump-dom "file://$PWD/app/src/main/assets/qa-verne33-theme.html" > /tmp/storylens-verne33-theme-dom.html 2>/tmp/chrome-verne33-theme-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne33-theme-dom.html || { echo "Atlantic Passage visual fixture failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne33-theme-dom.html | head -1; exit 1; }
+          echo "PASS: Atlantic Passage theme styles the Chapter XXXIII reader in RTL"
+
 
 
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/word-phone.png" "file://$PWD/app/src/main/assets/qa-word.html" >/tmp/chrome-word.log 2>&1
