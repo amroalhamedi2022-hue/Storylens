@@ -2126,3 +2126,22 @@ body.theme-last-five-minutes::before,body.theme-last-five-minutes::after{display
 .theme-last-five-minutes .lt-theme-choice.selected{outline:3px solid #c23e35;outline-offset:2px}
 @media(max-width:600px){.theme-last-five-minutes .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-last-five-minutes .library .storylens-hero .hero-orb{width:70px;height:70px}.theme-last-five-minutes .library .header::after{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.theme-last-five-minutes .library .card{transition:none!important;transform:none!important}}
+
+/* LT-07/08/13 — Meridian Epilogue: a final atlas page in deep teal, parchment and copper. */
+.lt-theme-meridian-epilogue .lt-theme-swatch{background:radial-gradient(circle at 50% 48%,#f1e8d5 0 17%,#c78454 17.5% 21%,transparent 21.5%),repeating-radial-gradient(circle at 50% 50%,#183d36 0 9px,#315b4d 10px 11px);border:2px solid #c78454}
+body.theme-meridian-epilogue{--body:#102e2b;--card:#173c35;--ink:#f1e8d5;--sub:#b9c9b7;--accent:#d69a69;--reader:#0e2926;--reader-ink:#f1e8d5;background:linear-gradient(135deg,#071b1a,#143a34 52%,#315b4d);color:#f1e8d5}
+body.theme-meridian-epilogue::before{content:'';position:fixed;inset:0;pointer-events:none;opacity:.13;background:repeating-radial-gradient(ellipse at 50% 45%,transparent 0 38px,#d69a69 39px 40px,transparent 41px 78px);z-index:0}
+body.theme-meridian-epilogue::after{display:none!important}
+.theme-meridian-epilogue .library .header{border:1px solid #c78454;border-inline-start:9px solid #c78454;border-radius:4px;padding:22px;background:linear-gradient(120deg,#102e2b,#1b4b41 62%,#315b4d);position:relative;box-shadow:0 12px 28px #06151366}
+.theme-meridian-epilogue .library .header::after{content:'THE LAST MERIDIAN · 37/37';display:block;margin-top:10px;font:700 10px/1.5 ui-monospace,monospace;letter-spacing:.22em;color:#e2b38b}
+.theme-meridian-epilogue .library .brand{color:#f0c89d;letter-spacing:.1em}
+.theme-meridian-epilogue .library .card{border:1px solid #8caa8e;border-radius:5px 22px 5px 22px;background:linear-gradient(145deg,#173c35,#102e2b);box-shadow:0 9px 24px #06151366;transition:transform .18s ease,border-color .18s ease}
+.theme-meridian-epilogue .library .card:hover{transform:translateY(-3px);border-color:#d69a69}
+.theme-meridian-epilogue .reader{border-top:10px solid #c78454!important;border-radius:5px;background:linear-gradient(180deg,#102e2b,#0b2421);box-shadow:0 14px 36px #020b0a88}
+.theme-meridian-epilogue .reader .reader-hero{border:1px solid #c78454;border-radius:4px 30px 4px 30px;box-shadow:inset 0 0 0 8px #102e2b}
+.theme-meridian-epilogue .reader .reading-width{border-inline-start:4px solid #c78454;padding-inline-start:20px;background:repeating-linear-gradient(0deg,#f1e8d508 0 1px,transparent 1px 36px)}
+.theme-meridian-epilogue .reader h2{font-family:Georgia,'Times New Roman',serif;color:#f0c89d;letter-spacing:.015em}
+.theme-meridian-epilogue .lt-theme-choice{background:#102e2b;color:#f1e8d5;border:1px solid #6f9278;border-radius:4px 14px 4px 14px}
+.theme-meridian-epilogue .lt-theme-choice.selected{outline:3px solid #d69a69;outline-offset:2px}
+@media(max-width:600px){.theme-meridian-epilogue .library .header{padding:15px}.theme-meridian-epilogue .library .header::after{font-size:8px}.theme-meridian-epilogue .reader .reading-width{padding-inline-start:12px}}
+@media(prefers-reduced-motion:reduce){.theme-meridian-epilogue .library .card{transition:none!important;transform:none!important}}
