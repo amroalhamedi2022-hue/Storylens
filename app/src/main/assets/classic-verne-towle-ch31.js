@@ -1,8 +1,8 @@
-/* Lingua Tales — authentic Towle Chapter XXXI; Standard Ebooks CC0 editorial transcription.
+/* Lingua Tales — authentic Towle Chapters XXXI–XXXII; Standard Ebooks CC0 editorial transcription.
  * Upstream repository: standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle
  * Source commit: 56c82e97ff5d4f8950afca05b71af72688a8da34
- * Source blob SHA-1: 3f96f87cf359251196f1a935314eaedce8d676fd; src/epub/text/chapter-31.xhtml.
- * Normalized English SHA-256: 155822a6e00d078984230cc6d8183e399b8f87333270ab530024b909de83c5a7; 37 complete body paragraphs / 1843 words.
+ * Chapter XXXI source blob: 3f96f87cf359251196f1a935314eaedce8d676fd; src/epub/text/chapter-31.xhtml; 37 body paragraphs / 1,843 words.
+ * Chapter XXXII source blob: e218533192364ce19436fcc65e9cd2d93842c8d5; src/epub/text/chapter-32.xhtml; 50 body paragraphs / 1,051 words; normalized English SHA-256: 992fcb13f472c5638ec7bfe89569351bc64c17a40d2b671b598df4679d4f5877.
  * Arabic is a companion draft pending independent literary review; historical framing is retained, not endorsed.
  */
 (function(g){'use strict';
@@ -336,4 +336,362 @@ s.subtitle='The original Towle translation — Chapters I–XXXI';
 s.description='Fogg and his companions race across the frozen prairie on a sail-powered sledge toward Omaha.';
 s.editorialStatus='English Chapters I–XXXI source-transcribed; Arabic draft pending independent review; 31 of 37 chapters';
 s.provenance+=' Chapter XXXI: Standard Ebooks Towle transcription (source blob 3f96f87cf359251196f1a935314eaedce8d676fd; CC0 editorial edition; territory-specific rights pending review).';
+
+/* Chapter XXXII — pinned Standard Ebooks/Towle source; Arabic companion is an editorial draft. */
+const english32=[
+  "The China, in leaving, seemed to have carried off Phileas Fogg’s last hope. None of the other steamers were able to serve his projects. The Pereire, of the French Transatlantic Company, whose admirable steamers are equal to any in speed and comfort, did not leave until the 14th; the Hamburg boats did not go directly to Liverpool or London, but to Havre; and the additional trip from Havre to Southampton would render Phileas Fogg’s last efforts of no avail. The Inman steamer did not depart till the next day, and could not cross the Atlantic in time to save the wager.",
+  "Mr. Fogg learned all this in consulting his Bradshaw, which gave him the daily movements of the trans-Atlantic steamers.",
+  "Passepartout was crushed; it overwhelmed him to lose the boat by three-quarters of an hour. It was his fault, for, instead of helping his master, he had not ceased putting obstacles in his path! And when he recalled all the incidents of the tour, when he counted up the sums expended in pure loss and on his own account, when he thought that the immense stake, added to the heavy charges of this useless journey, would completely ruin Mr. Fogg, he overwhelmed himself with bitter self-accusations. Mr. Fogg, however, did not reproach him; and, on leaving the Cunard pier, only said: “We will consult about what is best tomorrow. Come.”",
+  "The party crossed the Hudson in the Jersey City ferryboat, and drove in a carriage to the St. Nicholas Hotel, on Broadway. Rooms were engaged, and the night passed, briefly to Phileas Fogg, who slept profoundly, but very long to Aouda and the others, whose agitation did not permit them to rest.",
+  "The next day was the 12th of December. From seven in the morning of the 12th to a quarter before nine in the evening of the 21st there were nine days, thirteen hours, and forty-five minutes. If Phileas Fogg had left in the China, one of the fastest steamers on the Atlantic, he would have reached Liverpool, and then London, within the period agreed upon.",
+  "Mr. Fogg left the hotel alone, after giving Passepartout instructions to await his return, and inform Aouda to be ready at an instant’s notice. He proceeded to the banks of the Hudson, and looked about among the vessels moored or anchored in the river, for any that were about to depart. Several had departure signals, and were preparing to put to sea at morning tide; for in this immense and admirable port there is not one day in a hundred that vessels do not set out for every quarter of the globe. But they were mostly sailing vessels, of which, of course, Phileas Fogg could make no use.",
+  "He seemed about to give up all hope, when he espied, anchored at the Battery, a cable’s length off at most, a trading vessel, with a screw, well-shaped, whose funnel, puffing a cloud of smoke, indicated that she was getting ready for departure.",
+  "Phileas Fogg hailed a boat, got into it, and soon found himself on board the Henrietta, iron-hulled, wood-built above. He ascended to the deck, and asked for the captain, who forthwith presented himself. He was a man of fifty, a sort of sea-wolf, with big eyes, a complexion of oxidised copper, red hair and thick neck, and a growling voice.",
+  "“The captain?” asked Mr. Fogg.",
+  "“I am the captain.”",
+  "“I am Phileas Fogg, of London.”",
+  "“And I am Andrew Speedy, of Cardiff.”",
+  "“You are going to put to sea?”",
+  "“In an hour.”",
+  "“You are bound for—”",
+  "“Bordeaux.”",
+  "“And your cargo?”",
+  "“No freight. Going in ballast.”",
+  "“Have you any passengers?”",
+  "“No passengers. Never have passengers. Too much in the way.”",
+  "“Is your vessel a swift one?”",
+  "“Between eleven and twelve knots. The Henrietta, well known.”",
+  "“Will you carry me and three other persons to Liverpool?”",
+  "“To Liverpool? Why not to China?”",
+  "“I said Liverpool.”",
+  "“No!”",
+  "“No?”",
+  "“No. I am setting out for Bordeaux, and shall go to Bordeaux.”",
+  "“Money is no object?”",
+  "“None.”",
+  "The captain spoke in a tone which did not admit of a reply.",
+  "“But the owners of the Henrietta—” resumed Phileas Fogg.",
+  "“The owners are myself,” replied the captain. “The vessel belongs to me.”",
+  "“I will freight it for you.”",
+  "“No.”",
+  "“I will buy it of you.”",
+  "“No.”",
+  "Phileas Fogg did not betray the least disappointment; but the situation was a grave one. It was not at New York as at Hong Kong, nor with the captain of the Henrietta as with the captain of the Tankadere. Up to this time money had smoothed away every obstacle. Now money failed.",
+  "Still, some means must be found to cross the Atlantic on a boat, unless by balloon—which would have been venturesome, besides not being capable of being put in practice. It seemed that Phileas Fogg had an idea, for he said to the captain, “Well, will you carry me to Bordeaux?”",
+  "“No, not if you paid me two hundred dollars.”",
+  "“I offer you two thousand.”",
+  "“Apiece?”",
+  "“Apiece.”",
+  "“And there are four of you?”",
+  "“Four.”",
+  "Captain Speedy began to scratch his head. There were eight thousand dollars to gain, without changing his route; for which it was well worth conquering the repugnance he had for all kinds of passengers. Besides, passengers at two thousand dollars are no longer passengers, but valuable merchandise. “I start at nine o’clock,” said Captain Speedy, simply. “Are you and your party ready?”",
+  "“We will be on board at nine o’clock,” replied, no less simply, Mr. Fogg.",
+  "It was half-past eight. To disembark from the Henrietta, jump into a hack, hurry to the St. Nicholas, and return with Aouda, Passepartout, and even the inseparable Fix was the work of a brief time, and was performed by Mr. Fogg with the coolness which never abandoned him. They were on board when the Henrietta made ready to weigh anchor.",
+  "When Passepartout heard what this last voyage was going to cost, he uttered a prolonged “Oh!” which extended throughout his vocal gamut.",
+  "As for Fix, he said to himself that the Bank of England would certainly not come out of this affair well indemnified. When they reached England, even if Mr. Fogg did not throw some handfuls of bank-bills into the sea, more than seven thousand pounds would have been spent!"
+];
+const arabic32=[
+  "بدت «تشاينا» وهي تغادر وكأنها حملت معها آخر أمل لفيلياس فوج. ولم تكن أي سفينة أخرى قادرة على خدمة خطته. فسفينة «بيرير» التابعة للشركة الفرنسية العابرة للأطلسي، التي تضاهي سفنها الرائعة غيرها سرعةً وراحةً، لم تكن ستغادر قبل الرابع عشر؛ أما سفن هامبورغ فلم تكن تتجه مباشرة إلى ليفربول أو لندن، بل إلى لوهافر، وكانت الرحلة الإضافية من لوهافر إلى ساوثهامبتون ستجعل آخر محاولات فوج بلا جدوى. ولم تكن سفينة إنمان ستغادر إلا في اليوم التالي، ولن تستطيع عبور الأطلسي في الوقت المناسب لإنقاذ الرهان.",
+  "عرف السيد فوج كل ذلك حين راجع دليل برادشو، الذي كان يسرد مواعيد رحلات السفن العابرة للأطلسي يومًا بيوم.",
+  "كان باسبارتو محطّمًا؛ فقد سحقه أن السفينة فاتته بثلاثة أرباع الساعة. وكان يحمّل نفسه المسؤولية، لأنه بدلًا من مساعدة سيده لم يكفّ عن وضع العقبات في طريقه! وكلما استعاد أحداث الرحلة، وحسب الأموال التي أُنفقت سدى وبسببه، وتذكّر أن الرهان الضخم، مضافًا إليه نفقات هذه الرحلة التي بدت بلا جدوى، سيُفلس السيد فوج تمامًا، غرق في لوم نفسه بمرارة. لكن السيد فوج لم يوبّخه، وقال فقط عند مغادرته رصيف كونارد: «سنتشاور غدًا بشأن أفضل ما يمكن فعله. هيا.»",
+  "عبر أفراد المجموعة نهر هدسون على متن عبّارة جيرسي سيتي، ثم استقلوا عربة إلى فندق سانت نيكولاس في برودواي. حُجزت لهم غرف، ومضت الليلة قصيرةً بالنسبة إلى فيلياس فوج، إذ نام نومًا عميقًا، لكنها بدت طويلة جدًا لأودا والآخرين الذين منعهم القلق من الراحة.",
+  "كان اليوم التالي هو الثاني عشر من ديسمبر. ومن السابعة صباحًا في ذلك اليوم إلى الثامنة وخمس وأربعين دقيقة مساءً في الحادي والعشرين، كانت هناك تسعة أيام وثلاث عشرة ساعة وخمس وأربعون دقيقة. ولو غادر السيد فوج على متن «تشاينا»، إحدى أسرع السفن البخارية في الأطلسي، لوصل إلى ليفربول ثم لندن ضمن المهلة المتفق عليها.",
+  "غادر السيد فوج الفندق وحده، بعد أن طلب من باسبارتو انتظار عودته وإبلاغ أودا بأن تكون مستعدة في أي لحظة. واتجه إلى ضفاف هدسون، يتفحّص السفن الراسية أو المربوطة في النهر بحثًا عن سفينة تستعد للمغادرة. كانت عدة سفن ترفع إشارات الرحيل وتتهيأ للإبحار مع مدّ الصباح؛ ففي هذا الميناء الهائل الرائع تكاد السفن تنطلق إلى كل أرجاء العالم كل يوم. غير أن معظمها كان شراعيًا، وهو ما لم يكن يفيد فوج بالطبع.",
+  "كاد يفقد الأمل تمامًا، إلى أن لمح عند ذا باتري سفينة تجارية راسية لا تبعد أكثر من طول حبل تقريبًا، مزوّدة بمروحة دفع وهيكل أنيق، وكان دخان يتصاعد من مدخنتها يشير إلى استعدادها للمغادرة.",
+  "استوقف فيلياس فوج قاربًا وصعد إليه، وسرعان ما وجد نفسه على متن «هنرييتا»، ذات الهيكل الحديدي والسطح العلوي الخشبي. صعد إلى السطح وطلب مقابلة القبطان، الذي حضر فورًا. كان رجلًا في الخمسين، أشبه بذئب بحر، بعينين كبيرتين وبشرة بلون النحاس المؤكسد وشعر أحمر وعنق غليظ وصوت أجش.",
+  "«القبطان؟» سأل السيد فوج.",
+  "«أنا القبطان.»",
+  "«أنا فيلياس فوج من لندن.»",
+  "«وأنا أندرو سبيدي من كارديف.»",
+  "«هل ستبحرون؟»",
+  "«بعد ساعة.»",
+  "«إلى أين تتجهون؟»",
+  "«بوردو.»",
+  "«وما حمولتكم؟»",
+  "«لا شحنات. نبحر دون حمولة.»",
+  "«هل على متنكم ركاب؟»",
+  "«لا ركاب. لا أحمل ركابًا أبدًا. إنهم يعيقون العمل.»",
+  "«هل سفينتكم سريعة؟»",
+  "«بين إحدى عشرة واثنتي عشرة عقدة. هنرييتا معروفة.»",
+  "«هل تنقلني أنا وثلاثة أشخاص آخرين إلى ليفربول؟»",
+  "«إلى ليفربول؟ ولمَ لا إلى الصين؟»",
+  "«قلت ليفربول.»",
+  "«لا!»",
+  "«لا؟»",
+  "«لا. أنا متجه إلى بوردو وسأذهب إلى بوردو.»",
+  "«المال ليس عائقًا؟»",
+  "«ليس عائقًا.»",
+  "تحدث القبطان بنبرة لا تسمح بالرد.",
+  "«لكن مالكي هنرييتا—» استأنف فيلياس فوج.",
+  "«أنا مالكها»، أجاب القبطان. «السفينة ملكي.»",
+  "«سأستأجرها لك.»",
+  "«لا.»",
+  "«سأشتريها منك.»",
+  "«لا.»",
+  "لم يُظهر فيلياس فوج أدنى خيبة، لكن الموقف كان خطيرًا. لم يكن الوضع في نيويورك كما كان في هونغ كونغ، ولم يكن قبطان «هنرييتا» مثل قبطان «تانكادير». حتى ذلك الوقت كان المال يزيل كل عقبة، أما الآن فقد عجز المال عن حل المشكلة.",
+  "مع ذلك، كان لا بد من إيجاد وسيلة لعبور الأطلسي بحرًا، لا بمنطاد؛ فذلك سيكون مغامرة محفوفة بالمخاطر، فضلًا عن أنه غير قابل للتنفيذ. وبدا أن فكرة خطرت للسيد فوج، فقال للقبطان: «حسنًا، هل ستنقلني إلى بوردو؟»",
+  "«لن أفعل، حتى لو دفعت مئتي دولار.»",
+  "«أعرض عليك ألفي دولار.»",
+  "«لكل شخص؟»",
+  "«لكل شخص.»",
+  "«وأنتم أربعة؟»",
+  "«أربعة.»",
+  "بدأ القبطان سبيدي يحك رأسه. كان بإمكانه كسب ثمانية آلاف دولار دون تغيير مساره، وهو ما يستحق التغلب على نفوره من جميع أنواع الركاب. ثم إن من يدفع ألفي دولار لا يعود راكبًا عاديًا، بل بضاعة ثمينة. قال القبطان ببساطة: «سأغادر الساعة التاسعة. هل ستكون أنت ورفاقك مستعدين؟»",
+  "«سنكون على متن السفينة في التاسعة»، أجاب السيد فوج بالبساطة نفسها.",
+  "كانت الساعة الثامنة والنصف. كان النزول من «هنرييتا»، والقفز في عربة أجرة، والإسراع إلى سانت نيكولاس، ثم العودة مع أودا وباسبارتو وحتى فيكس الذي لا يفارقهما، مهمةً قصيرة أنجزها السيد فوج بهدوئه المعتاد. وكانوا على متن السفينة حين بدأت «هنرييتا» تستعد لرفع المرساة.",
+  "حين سمع باسبارتو كم ستكلف هذه الرحلة الأخيرة، أطلق «آه!» طويلة امتدت عبر طبقات صوته كلها.",
+  "أما فيكس، فقال في نفسه إن بنك إنجلترا لن يستعيد أمواله من هذه القضية بسهولة. فعندما يصلون إلى إنجلترا، حتى لو لم يلقِ السيد فوج رزمًا من الأوراق النقدية في البحر، فستكون نفقات الرحلة قد تجاوزت سبعة آلاف جنيه!"
+];
+const terms32=[
+  {
+    "term": "trans-Atlantic",
+    "literal": "عابر للأطلسي",
+    "context": "وصف خطوط الملاحة التي تعبر المحيط الأطلسي",
+    "note": "Chapter XXXII: transatlantic timetable",
+    "type": "phrase"
+  },
+  {
+    "term": "three-quarters of an hour",
+    "literal": "ثلاثة أرباع الساعة",
+    "context": "مدة تساوي خمسًا وأربعين دقيقة",
+    "note": "Chapter XXXII: missed steamer",
+    "type": "phrase"
+  },
+  {
+    "term": "self-accusations",
+    "literal": "لوم الذات",
+    "context": "تحميل النفس مسؤولية ما حدث",
+    "note": "Chapter XXXII: Passepartout's guilt",
+    "type": "word"
+  },
+  {
+    "term": "did not reproach him",
+    "literal": "لم يوبّخه",
+    "context": "امتنع عن لومه رغم تأخر الرحلة",
+    "note": "Chapter XXXII: Fogg's response",
+    "type": "phrase"
+  },
+  {
+    "term": "at an instant’s notice",
+    "literal": "عند أي طلب فوري",
+    "context": "أن تكون مستعدة دون مهلة طويلة",
+    "note": "Chapter XXXII: Aouda's readiness",
+    "type": "phrase"
+  },
+  {
+    "term": "morning tide",
+    "literal": "مدّ الصباح",
+    "context": "ارتفاع الماء الذي يساعد السفن على الإبحار",
+    "note": "Chapter XXXII: harbor departures",
+    "type": "phrase"
+  },
+  {
+    "term": "at the Battery",
+    "literal": "عند ذا باتري",
+    "context": "منطقة ساحلية عند الطرف الجنوبي لمانهاتن",
+    "note": "Chapter XXXII: the Henrietta",
+    "type": "phrase"
+  },
+  {
+    "term": "a cable’s length",
+    "literal": "طول حبل بحري",
+    "context": "مسافة قصيرة تُقدّر بطول كابل سفينة",
+    "note": "Chapter XXXII: distance from shore",
+    "type": "phrase"
+  },
+  {
+    "term": "trading vessel",
+    "literal": "سفينة تجارية",
+    "context": "سفينة مخصصة لنقل البضائع",
+    "note": "Chapter XXXII: Hudson search",
+    "type": "phrase"
+  },
+  {
+    "term": "iron-hulled",
+    "literal": "ذات هيكل حديدي",
+    "context": "وصف لبنية بدن السفينة",
+    "note": "Chapter XXXII: the Henrietta",
+    "type": "word"
+  },
+  {
+    "term": "sea-wolf",
+    "literal": "ذئب بحر",
+    "context": "تعبير يصوّر بحّارًا خشنًا خبيرًا",
+    "note": "Chapter XXXII: Captain Speedy",
+    "type": "phrase"
+  },
+  {
+    "term": "put to sea",
+    "literal": "يبحر إلى عرض البحر",
+    "context": "مغادرة الميناء وبدء الرحلة",
+    "note": "Chapter XXXII: departure",
+    "type": "phrase"
+  },
+  {
+    "term": "going in ballast",
+    "literal": "يبحر دون حمولة تجارية",
+    "context": "السفر دون شحنة مدفوعة",
+    "note": "Chapter XXXII: the Henrietta's cargo",
+    "type": "phrase"
+  },
+  {
+    "term": "No freight",
+    "literal": "لا شحنات",
+    "context": "لا توجد بضائع مدفوعة لنقلها",
+    "note": "Chapter XXXII: the captain's answer",
+    "type": "phrase"
+  },
+  {
+    "term": "Too much in the way",
+    "literal": "يعيقون العمل كثيرًا",
+    "context": "سبب القبطان لرفض حمل الركاب",
+    "note": "Chapter XXXII: passenger policy",
+    "type": "phrase"
+  },
+  {
+    "term": "a swift one",
+    "literal": "سريعة",
+    "context": "سؤال عن سرعة السفينة",
+    "note": "Chapter XXXII: vessel speed",
+    "type": "phrase"
+  },
+  {
+    "term": "between eleven and twelve knots",
+    "literal": "بين إحدى عشرة واثنتي عشرة عقدة",
+    "context": "قياس سرعة بحرية بالعقدة",
+    "note": "Chapter XXXII: Henrietta speed",
+    "type": "phrase"
+  },
+  {
+    "term": "Money is no object",
+    "literal": "المال ليس عائقًا",
+    "context": "التأكيد أن السعر ليس مانعًا",
+    "note": "Chapter XXXII: bargaining",
+    "type": "phrase"
+  },
+  {
+    "term": "freight it for you",
+    "literal": "أستأجرها لنقلك",
+    "context": "استئجار السفينة لنقل الركاب",
+    "note": "Chapter XXXII: Fogg's offer",
+    "type": "phrase"
+  },
+  {
+    "term": "did not betray the least disappointment",
+    "literal": "لم يُظهر أدنى خيبة",
+    "context": "حافظ على هدوئه رغم رفض العرض",
+    "note": "Chapter XXXII: Fogg's composure",
+    "type": "phrase"
+  },
+  {
+    "term": "smoothed away every obstacle",
+    "literal": "أزال كل عقبة",
+    "context": "صورة مجازية عن المال الذي يحل المشكلات",
+    "note": "Chapter XXXII: limits of wealth",
+    "type": "phrase"
+  },
+  {
+    "term": "venturesome",
+    "literal": "محفوف بالمخاطر",
+    "context": "يتطلب جرأة ومجازفة",
+    "note": "Chapter XXXII: balloon alternative",
+    "type": "word"
+  },
+  {
+    "term": "Apiece",
+    "literal": "لكل فرد",
+    "context": "المبلغ المعروض لكل شخص",
+    "note": "Chapter XXXII: the bargain",
+    "type": "word"
+  },
+  {
+    "term": "valuable merchandise",
+    "literal": "بضاعة ثمينة",
+    "context": "تشبيه الركاب الذين يدفعون مبلغًا كبيرًا",
+    "note": "Chapter XXXII: Captain Speedy's calculation",
+    "type": "phrase"
+  },
+  {
+    "term": "weigh anchor",
+    "literal": "يرفع المرساة",
+    "context": "يستعد للمغادرة من الميناء",
+    "note": "Chapter XXXII: departure",
+    "type": "phrase"
+  },
+  {
+    "term": "profoundly",
+    "literal": "بعمق",
+    "context": "وصف نوم شديد العمق",
+    "note": "Chapter XXXII: the night at the hotel",
+    "type": "word"
+  },
+  {
+    "term": "inseparable Fix",
+    "literal": "فيكس الذي لا يفارقهما",
+    "context": "وصف ملازمتهما في الرحلة",
+    "note": "Chapter XXXII: returning to the ship",
+    "type": "phrase"
+  },
+  {
+    "term": "not admit of a reply",
+    "literal": "لا يسمح بالرد",
+    "context": "نبرة حاسمة لا تترك مجالًا للاعتراض",
+    "note": "Chapter XXXII: Captain Speedy",
+    "type": "phrase"
+  },
+  {
+    "term": "the vessel belongs to me",
+    "literal": "السفينة ملكي",
+    "context": "تأكيد الملكية الشخصية للسفينة",
+    "note": "Chapter XXXII: ownership",
+    "type": "phrase"
+  },
+  {
+    "term": "to Bordeaux",
+    "literal": "إلى بوردو",
+    "context": "وجهة السفينة التي يرفض القبطان تغييرها",
+    "note": "Chapter XXXII: route negotiation",
+    "type": "phrase"
+  },
+  {
+    "term": "well indemnified",
+    "literal": "مُعوَّضًا عنه جيدًا",
+    "context": "استرداد المال المفقود أو تعويضه",
+    "note": "Chapter XXXII: Bank of England",
+    "type": "phrase"
+  },
+  {
+    "term": "vocal gamut",
+    "literal": "مدى صوته",
+    "context": "امتداد طبقات الصوت من المنخفض إلى المرتفع",
+    "note": "Chapter XXXII: Passepartout's exclamation",
+    "type": "phrase"
+  },
+  {
+    "term": "daily movements",
+    "literal": "المواعيد اليومية",
+    "context": "جدول رحلات السفن ومواعيدها",
+    "note": "Chapter XXXII: Bradshaw",
+    "type": "phrase"
+  },
+  {
+    "term": "within the period agreed upon",
+    "literal": "ضمن المهلة المتفق عليها",
+    "context": "الوصول قبل انتهاء الموعد المحدد",
+    "note": "Chapter XXXII: the wager",
+    "type": "phrase"
+  }
+];
+const body32=english32.join(' ');
+const words32=(body32.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
+if(english32.length!==50||arabic32.length!==english32.length||terms32.length!==34||words32!==1051)throw Error('Towle XXXII bilingual/source count mismatch');
+if(arabic32.some(t=>!/[ء-ي]/.test(t)))throw Error('Towle XXXII Arabic draft missing');
+if(terms32.some(t=>!body32.toLowerCase().includes(t.term.toLowerCase())))throw Error('Towle XXXII glossary term absent from source');
+s.chapters.push({title:'In which Phileas Fogg engages in a direct struggle with bad fortune.',titleAr:'الفصل الثاني والثلاثون — حيث يخوض فيلياس فوج صراعًا مباشرًا مع سوء الحظ',paragraphs:english32.map((en,i)=>({en,ar:arabic32[i]}))});
+s.terms.push(...terms32);
+s.subtitle='The original Towle translation — Chapters I–XXXII';
+s.description='After missing the China, Fogg searches New York Harbor for a ship that can still carry his wager across the Atlantic.';
+s.editorialStatus='English Chapters I–XXXII source-transcribed; Arabic drafts pending independent review; 32 of 37 chapters';
+s.provenance+=' Chapter XXXII: Standard Ebooks Towle transcription (source blob e218533192364ce19436fcc65e9cd2d93842c8d5; src/epub/text/chapter-32.xhtml; CC0 editorial edition; territory-specific rights pending review).';
+
 })(window);
