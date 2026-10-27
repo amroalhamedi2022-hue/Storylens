@@ -1083,3 +1083,12 @@ Screenshot artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/r
 | Xiaomi Pad 5 / Android audio focus / screen-off / battery | **NOT TESTED** | Requires physical-device execution. |
 | Curated licensed audio library | **OPEN** | 24 procedural presets remain distinct from the requested licensed recordings/music collection. |
 
+
+
+## 2026-10-27 — Current 33-chapter reader acceptance checkpoint
+
+- Fixed stale browser acceptance fixtures after the novel grew to 33 available chapters. The test suite now validates the catalog's 37-paragraph Chapter XXXI, 50-paragraph Chapter XXXII and 67-paragraph Chapter XXXIII, plus current 33-of-37 availability, truthful navigation, bilingual RTL/LTR journeys and the Atlantic Passage theme.
+- **PASS — CI/build:** [run 40440113181](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40440113181), source/test SHA `22954f9b12f0db21d442ac0eaff88790fa1a3189). The prior stale-fixture failure is superseded; it was not a Gradle/content-packaging failure.
+- **PASS — APK SHA-256:** 4,776,817-byte Debug APK; `bf03553a8ed36d5a4e2a22098bfaf12784ea46972ac910e2a60e0ab754b86b59`; independently recalculated from Artifact `12705158884` and matched the embedded checksum.
+- **PASS — Chromium visual/browser evidence:** Artifact `12704999038`; new Chapter XXXII/XXXIII journeys and Atlantic Passage RTL styling all pass in CI.
+- **NOT TESTED:** physical Xiaomi Pad 5, audio focus/battery, TalkBack and real-device RTL/contrast, Arabic literary review, territory-specific rights, and a curated licensed audio library. Do not promote this Debug APK as final.
