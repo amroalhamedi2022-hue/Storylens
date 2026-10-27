@@ -101,8 +101,8 @@ function installPageTurn(){
   });
   prev.disabled=current===0;
   next.textContent=current===pages.length-1
-   ?(state.chapter<state.story.chapters.length-1?'الفصل التالي':'العودة للمكتبة')
-   :'الصفحة التالية';
+   ?(state.chapter<state.story.chapters.length-1?uiText('الفصل التالي','Next chapter'):uiText('العودة للمكتبة','Back to library'))
+   :uiText('الصفحة التالية','Next page');
   countLabel.textContent=uiText('الصفحة '+(current+1)+' من '+pages.length,'Page '+(current+1)+' of '+pages.length);
   put(key,current);
   if(chapterEnd)chapterEnd.hidden=current!==pages.length-1;
