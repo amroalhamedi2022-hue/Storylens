@@ -16,6 +16,13 @@ function harness(saved = {}) {
   const document = {documentElement:{dataset:{}}};
   const context = {
     document,
+    state:{page:'library',story:null,chapter:0},
+    global:{scrollY:0},
+    calls:{saved:0,restored:[]},
+    safeOffset(value){return value;},
+    savePosition(){this.calls.saved++;},
+    nextFrame(callback){callback();},
+    restoreReadingPosition(...args){this.calls.restored.push(args);},
     get(key, fallback) { return Object.prototype.hasOwnProperty.call(storage,key) ? storage[key] : fallback; },
     put(key,value) { storage[key] = value; },
     storage
@@ -56,6 +63,13 @@ function harness(saved = {}) {
   assert.equal(h.api.applyReadingSize('ar','huge'),false);
   assert.equal(h.storage.readingSizeArabic,'unsupported','invalid request must not overwrite saved state');
   assert.equal(h.api.applyFont('en','naskh'),false);
+}
+{
+  const h = harness();
+  h.state.page='reader';h.state.story={id:'story-1'};h.state.chapter=2;h.global.scrollY=321;
+  assert.equal(h.api.applyReadingSize('en','large'),true);
+  assert.equal(h.calls.saved,1,'typography changes save a semantic reading anchor');
+  assert.deepEqual(h.calls.restored,[['story-1',2,321]],'the same chapter and fallback position are restored after reflow');
 }
 {
   const h = harness();
