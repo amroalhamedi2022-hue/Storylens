@@ -94,16 +94,42 @@ async function playTrack(id){
  if(!requestFocus()){await pausePromise;releaseFocus();return false;}
  if(playerTrack!==id||!player){
   if(player){try{player.pause();player.currentTime=0;}catch(_){}}
-  player=new global.Audio('licensed-audio/'+track.file);
-  playerTrack=id;player.preload='none';player.loop=true;
-  player.addEventListener('error',()=>{if(ticket===generation){playing=false;releaseFocus();syncUi();}});
+  const createdPlayer=new global.Audio('licensed-audio/'+track.file);
+  player=createdPlayer;
+  playerTrack=id;createdPlayer.preload='none';createdPlayer.loop=true;
+  // A cached Audio element can fail on a later replay, after its original
+  // request ticket has expired. Tie recovery to element identity, not that
+  // one-shot ticket, and evict failed elements so the next tap gets a fresh one.
+  createdPlayer.addEventListener('error',()=>{
+   if(player!==createdPlayer)return;
+   playing=false;
+   try{createdPlayer.pause();createdPlayer.currentTime=0;}catch(_){}
+   player=null;playerTrack=null;
+   releaseFocus();syncUi();
+  });
  }
  const active=player;
  active.loop=true;active.volume=prefs.volume;
  let playPromise;
- try{playPromise=active.play();}catch(error){releaseFocus();throw error;}
+ try{playPromise=active.play();}catch(error){
+  if(ticket===generation){
+   playing=false;
+   try{active.pause();active.currentTime=0;}catch(_){}
+   if(player===active){player=null;playerTrack=null;}
+   releaseFocus();syncUi();
+  }
+  throw error;
+ }
  try{await Promise.all([pausePromise,playPromise]);}
- catch(error){if(ticket===generation){playing=false;try{active.pause();}catch(_){}releaseFocus();syncUi();}throw error;}
+ catch(error){
+  if(ticket===generation){
+   playing=false;
+   try{active.pause();active.currentTime=0;}catch(_){}
+   if(player===active){player=null;playerTrack=null;}
+   releaseFocus();syncUi();
+  }
+  throw error;
+ }
  if(ticket!==generation||doc?.hidden){
   try{active.pause();}catch(_){}
   if(!playing)releaseFocus();
