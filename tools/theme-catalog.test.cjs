@@ -7,6 +7,7 @@ const read = p => fs.readFileSync(path.join(root, p), 'utf8');
 const shell = read('app/src/main/assets/lingua-shell.js');
 const shellCss = read('app/src/main/assets/lingua-shell.css');
 const auroraCss = read('app/src/main/assets/liquid-aurora.css');
+const westminsterCss = read('app/src/main/assets/westminster-vows.css');
 const backup = read('app/src/main/assets/data-backup.js');
 
 const listSource = (shell.match(/const themeNames=\[([^\]]+)\]/) || [])[1];
@@ -17,14 +18,14 @@ const labels = [...labelsSource.matchAll(/(?:^|,)(?:'([^']+)'|([a-z0-9-]+)):/g)]
 const unique = values => [...new Set(values)].sort();
 assert.equal(new Set(names).size, names.length, 'duplicate selectable theme IDs');
 assert.deepEqual(unique(names), unique(labels), 'every selectable theme needs a gallery label');
-const styles = shellCss + '\n' + auroraCss;
+const styles = shellCss + '\n' + auroraCss + '\n' + westminsterCss;
 for (const name of names) {
   assert.match(styles, new RegExp('body\\.theme-' + name + '(?:\\s|\\{|:|\\.)'),
     'missing production body style for ' + name);
   assert.ok(backup.includes("'" + name + "'") || backup.includes('"' + name + '"'),
     'backup validator does not allow theme ' + name);
 }
-for (const name of ['red-sea-dispatch', 'monsoon-meridian', 'deccan-timetable', 'kholby-crossing', 'shanghai-wind-ledger', 'typhoon-signal', 'paper-lantern-circus', 'pacific-meridian', 'civic-panorama', 'prairie-signal', 'salt-lake-dispatch', 'medicine-bow-crossing', 'plum-creek-signal', 'snowbound-telegraph', 'prairie-sails', 'hudson-ledger', 'atlantic-passage']) {
+for (const name of ['red-sea-dispatch', 'monsoon-meridian', 'deccan-timetable', 'kholby-crossing', 'shanghai-wind-ledger', 'typhoon-signal', 'paper-lantern-circus', 'pacific-meridian', 'civic-panorama', 'prairie-signal', 'salt-lake-dispatch', 'medicine-bow-crossing', 'plum-creek-signal', 'snowbound-telegraph', 'prairie-sails', 'hudson-ledger', 'atlantic-passage', 'westminster-vows']) {
   assert.ok(shellCss.includes('.lt-theme-' + name + ' .lt-theme-swatch'), 'missing gallery swatch for ' + name);
   assert.ok(shellCss.includes('@media(prefers-reduced-motion:reduce){.theme-' + name),
     'missing reduced-motion fallback for ' + name);

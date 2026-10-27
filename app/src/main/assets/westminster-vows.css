@@ -1,0 +1,25 @@
+/* LT-07/08/13 — Westminster Vows: oxblood, candle-ivory and paired-ring geometry. */
+.lt-theme-westminster-vows .lt-theme-swatch{background:radial-gradient(circle at 50% 50%,transparent 0 12%,#cba96a 12% 16%,transparent 16% 23%,#cba96a 23% 27%,transparent 27%),linear-gradient(135deg,#4b1729,#8f3f50,#f6eddc);border:2px solid #4b1729}
+body.theme-westminster-vows{--body:#efe3d1;--card:#fff7e8;--ink:#35212a;--sub:#79636a;--accent:#8f3f50;--reader:#fff7e8;--reader-ink:#35212a;background:radial-gradient(circle at 88% 4%,#cba96a25 0 12%,transparent 12.3%),linear-gradient(135deg,#efe3d1,#f6eddc 52%,#dfc7b0)}
+body.theme-westminster-vows::before,body.theme-westminster-vows::after{display:none!important}
+.theme-westminster-vows .library .header{border-bottom:4px double #8f3f50;padding-bottom:15px;background:linear-gradient(100deg,#fff7e8 0 66%,#e5c7bb 66%);position:relative}
+.theme-westminster-vows .library .header::after{content:'SAVILLE ROW · WESTMINSTER VOWS';display:block;margin-top:8px;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.16em;color:#8f3f50}
+.theme-westminster-vows .library .brand{color:#8f3f50;letter-spacing:.14em}
+.theme-westminster-vows .library .header h1{font-family:Georgia,serif;color:#4b1729}
+.theme-westminster-vows .library .storylens-hero{display:grid;grid-template-columns:minmax(0,1fr) 145px;align-items:center;border:1px solid #cba96a;border-radius:28px 3px 28px 3px;background:radial-gradient(circle at 88% 20%,#cba96a28 0 16%,transparent 16.2%),linear-gradient(135deg,#fff7e8,#ead6c7);box-shadow:0 12px 28px #4b172914;color:#35212a;min-height:190px;padding:23px 26px}
+.theme-westminster-vows .library .storylens-hero h2{font-family:Georgia,serif;color:#8f3f50}
+.theme-westminster-vows .library .storylens-hero .hero-orb{position:relative;inset:auto;transform:none;width:132px;height:132px;border-radius:50%;border:3px double #cba96a;background:radial-gradient(circle at 50% 50%,#fff7e8 0 25%,transparent 26%),linear-gradient(135deg,#4b1729,#8f3f50);box-shadow:inset 0 0 0 8px #fff7e8;opacity:1}
+.theme-westminster-vows .library .storylens-hero .hero-orb::before,.theme-westminster-vows .library .storylens-hero .hero-orb::after{content:'';position:absolute;top:37%;width:32%;height:32%;border:3px solid #cba96a;border-radius:50%}
+.theme-westminster-vows .library .storylens-hero .hero-orb::before{left:19%}
+.theme-westminster-vows .library .storylens-hero .hero-orb::after{right:19%}
+.theme-westminster-vows .library .storylens-hero .hero-orb-core{display:none}
+.theme-westminster-vows .library .card{border-radius:17px 3px 17px 3px;border:1px solid #dec5a8;border-bottom:4px solid #8f3f50;background:#fff7e8;box-shadow:0 7px 0 #4b17290c}
+.theme-westminster-vows .library .card h2,.theme-westminster-vows .library .card h3{font-family:Georgia,serif;color:#4b1729}
+.theme-westminster-vows .library .secondary,.theme-westminster-vows .library .pill{border-radius:18px 3px 18px 3px;border:1px solid #8f3f50;background:#4b1729;color:#fff7e8}
+.theme-westminster-vows .lt-drawer{background:linear-gradient(160deg,#4b1729,#291522);border-inline-start:4px solid #cba96a}
+.theme-westminster-vows .reader{border:1px solid #cba96a;border-top:7px double #8f3f50;border-radius:24px 3px 24px 3px;background:linear-gradient(180deg,#fff7e8,#f5ead9)}
+.theme-westminster-vows .reader .reading-width{border-inline-start:3px solid #cba96a;padding-inline-start:19px;background:repeating-linear-gradient(0deg,#4b172906 0 1px,transparent 1px 37px)}
+.theme-westminster-vows .lt-theme-choice{background:#fff7e8;color:#4b1729;border-radius:17px 3px 17px 3px;border:1px solid #dec5a8}
+.theme-westminster-vows .lt-theme-choice.selected{outline:3px solid #cba96a;outline-offset:2px}
+@media(max-width:600px){.theme-westminster-vows .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-westminster-vows .library .storylens-hero .hero-orb{width:70px;height:70px}.theme-westminster-vows .library .header::after{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.theme-westminster-vows .library .card{transition:none!important;transform:none!important}}
