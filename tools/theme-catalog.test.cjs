@@ -26,8 +26,8 @@ for (const name of names) {
     'backup validator does not allow theme ' + name);
 }
 for (const name of ['red-sea-dispatch', 'monsoon-meridian', 'deccan-timetable', 'kholby-crossing', 'shanghai-wind-ledger', 'typhoon-signal', 'paper-lantern-circus', 'pacific-meridian', 'civic-panorama', 'prairie-signal', 'salt-lake-dispatch', 'medicine-bow-crossing', 'plum-creek-signal', 'snowbound-telegraph', 'prairie-sails', 'hudson-ledger', 'atlantic-passage', 'westminster-vows']) {
-  assert.ok(shellCss.includes('.lt-theme-' + name + ' .lt-theme-swatch'), 'missing gallery swatch for ' + name);
-  assert.ok(shellCss.includes('@media(prefers-reduced-motion:reduce){.theme-' + name),
+  assert.ok(styles.includes('.lt-theme-' + name + ' .lt-theme-swatch'), 'missing gallery swatch for ' + name);
+  assert.ok(styles.includes('@media(prefers-reduced-motion:reduce){.theme-' + name),
     'missing reduced-motion fallback for ' + name);
 }
 assert.ok(shellCss.includes('@media(prefers-reduced-motion:reduce){.theme-civic-panorama .library .card{transition:none!important;transform:none!important}}'), 'Civic Panorama reduced-motion fallback must disable both transitions and transforms');
