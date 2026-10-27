@@ -1061,3 +1061,12 @@ Screenshot artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/r
 
 
 - **Verified checkpoint note (2026-10-27):** the above CI result closes source/CI/packaging for Chapter XXXI only. It does not close LT-01..LT-13 globally; 31/37 chapters are bundled, and Pad 5, literary review, territory rights, full audio licensing and runtime performance remain open.
+
+
+## 2026-10-27 — Reform Club Brass gallery swatch regression
+
+- **Finding:** the gallery button uses the `lt-theme-reform-club-brass` class, but its swatch rule was scoped to `.theme-reform-club-brass`; the preview could therefore inherit the active theme instead of reliably showing its own brass/green palette.
+- **Change:** corrected the selector to `.lt-theme-reform-club-brass .lt-theme-swatch` and added regression assertions for the gallery swatch and the theme's reduced-motion fallback.
+- **Source commits:** CSS `fd819cbf90af770c6f5f77a60866dbcad1f76711`; regression test `f749a006faa3b8ea0c275f9e13932aac56be3ed8`.
+- **CI:** NOT VERIFIED for this source/test head. The connected commit-run/status lookup returned no run or check result; no PASS is inferred from source inspection.
+- **NOT TESTED:** visual gallery screenshot on Android, Xiaomi Pad 5 installation, RTL/TalkBack, frame pacing and final signed release.
