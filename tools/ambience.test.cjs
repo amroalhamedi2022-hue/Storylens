@@ -102,5 +102,36 @@ assert.equal(created,0,'no audio created by settings change');
  assert.equal(await delayed,false,'no stale play after visibility pause');
  assert.equal(slow.isPlaying(),false,'no hidden soundscape graph');
  assert.equal(slowContext.state,'suspended','a late resume after visibility pause must not leave AudioContext running');
- console.log('PASS LT-11: 20 offline ambience scenes + 4 original melodies; opt-in lifecycle, volume, switching, timer cleanup and backup gates');
+
+ // Native Android audio focus is a separate gate from Web Audio availability.
+ // A denied focus request must not even create an AudioContext; focus loss pauses
+ // playback and releases the grant. These are bridge-contract tests, not device audio.
+ let focusGranted=false,focusRequests=0,focusReleases=0,focusContext;
+ const focusListeners={};
+ const focusDocument={hidden:false,addEventListener(name,cb){focusListeners[name]=cb}};
+ class FocusAudioContext extends FakeAudioContext {constructor(){super();focusContext=this}}
+ const focusWindow={AudioContext:FocusAudioContext,
+  LinguaTalesAudioFocus:{requestFocus(){focusRequests++;return focusGranted},releaseFocus(){focusReleases++;}},
+  addEventListener(){},setInterval(cb){const id=++nextTimer;intervals.set(id,cb);return id;},
+  clearInterval(id){intervals.delete(id)}};
+ vm.runInNewContext(script,{window:focusWindow,document:focusDocument,Math,Number,Set,
+  get:()=>({}),put:()=>{}});
+ const focusAudio=focusWindow.LinguaAmbience;
+ focusAudio.setSfx(true);
+ focusListeners.click({target:{closest:()=>({})}});
+ assert.equal(focusRequests,1,'button SFX must request focus when no ambience is playing');
+ assert.equal(focusAudio.hasContext(),false,'denied SFX focus must remain silent');
+ assert.equal(await focusAudio.play(),false,'denied ambience focus must remain silent');
+ assert.equal(focusRequests,2);
+ assert.equal(focusAudio.hasContext(),false,'denied ambience focus must not create an AudioContext');
+ focusGranted=true;
+ assert.equal(await focusAudio.play(),true,'granted native focus permits opt-in ambience');
+ assert.equal(focusRequests,3);
+ assert.equal(focusAudio.isPlaying(),true);
+ focusAudio.onNativeAudioFocusLoss();
+ await new Promise(resolve=>setImmediate(resolve));
+ assert.equal(focusAudio.isPlaying(),false,'native focus loss pauses ambience');
+ assert.equal(focusReleases,1,'pausing after focus loss abandons native focus');
+ assert.equal(focusContext.state,'suspended');
+ console.log('PASS LT-11: 24 offline procedural presets; native-focus denial/loss contract, lifecycle, volume, switching and cleanup');
 })().catch(e=>{console.error(e);process.exitCode=1});

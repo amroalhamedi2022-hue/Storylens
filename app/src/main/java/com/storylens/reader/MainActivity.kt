@@ -2,6 +2,10 @@ package com.storylens.reader
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.media.AudioAttributes
+import android.media.AudioFocusRequest
+import android.media.AudioManager
+import android.os.Build
 import android.net.Uri
 import android.webkit.JavascriptInterface
 import org.json.JSONObject
@@ -34,6 +38,69 @@ class MainActivity : ComponentActivity() {
     // A second tap must never replace the bytes of an export already in flight.
     private var pickerInFlight = false
     private val maxBackupBytes = 3_000_000
+    private val audioManager: AudioManager by lazy { getSystemService(AudioManager::class.java) }
+    private var readerAudioFocusRequest: Any? = null
+    private var readerAudioFocusHeld = false
+
+    // Any focus loss pauses ambience/SFX. Gain never auto-resumes sound, so returning
+    // from a call or another app cannot unexpectedly start playback.
+    private val readerAudioFocusListener = AudioManager.OnAudioFocusChangeListener { focusChange ->
+        if (focusChange != AudioManager.AUDIOFOCUS_GAIN) {
+            runOnUiThread {
+                if (::reader.isInitialized) reader.evaluateJavascript(
+                    "window.LinguaAmbience && window.LinguaAmbience.onNativeAudioFocusLoss && window.LinguaAmbience.onNativeAudioFocusLoss();",
+                    null
+                )
+            }
+        }
+    }
+
+    @Synchronized
+    private fun requestReaderAudioFocus(): Boolean {
+        if (readerAudioFocusHeld) return true
+        val result = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val request = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
+                .setAudioAttributes(
+                    AudioAttributes.Builder()
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                        .build()
+                )
+                .setWillPauseWhenDucked(true)
+                .setOnAudioFocusChangeListener(readerAudioFocusListener)
+                .build()
+            readerAudioFocusRequest = request
+            audioManager.requestAudioFocus(request)
+        } else {
+            @Suppress("DEPRECATION")
+            audioManager.requestAudioFocus(
+                readerAudioFocusListener,
+                AudioManager.STREAM_MUSIC,
+                AudioManager.AUDIOFOCUS_GAIN
+            )
+        }
+        readerAudioFocusHeld = result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED
+        if (!readerAudioFocusHeld) readerAudioFocusRequest = null
+        return readerAudioFocusHeld
+    }
+
+    @Synchronized
+    private fun abandonReaderAudioFocus() {
+        if (!readerAudioFocusHeld) {
+            readerAudioFocusRequest = null
+            return
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            (readerAudioFocusRequest as? AudioFocusRequest)?.let {
+                audioManager.abandonAudioFocusRequest(it)
+            }
+        } else {
+            @Suppress("DEPRECATION")
+            audioManager.abandonAudioFocus(readerAudioFocusListener)
+        }
+        readerAudioFocusHeld = false
+        readerAudioFocusRequest = null
+    }
 
     private val exportDocument = registerForActivityResult(
         ActivityResultContracts.CreateDocument("application/json")
@@ -124,6 +191,15 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    /** Audio playback only; no microphone, recording or network capability. */
+    private inner class ReaderAudioFocusBridge {
+        @JavascriptInterface
+        fun requestFocus(): Boolean = requestReaderAudioFocus()
+
+        @JavascriptInterface
+        fun releaseFocus() = abandonReaderAudioFocus()
+    }
+
     private fun notifyBackup(method: String, data: String) {
         if (!::reader.isInitialized) return
         // Method names are fixed, and JSONObject.quote safely escapes file content.
@@ -165,6 +241,7 @@ class MainActivity : ComponentActivity() {
                 setSupportZoom(false)
             }
             addJavascriptInterface(OfflineBackupBridge(), "StoryLensNative")
+            addJavascriptInterface(ReaderAudioFocusBridge(), "LinguaTalesAudioFocus")
             webChromeClient = WebChromeClient()
             webViewClient = object : WebViewClient() {
                 override fun shouldInterceptRequest(view: WebView?, request: WebResourceRequest?): WebResourceResponse? {
@@ -224,7 +301,27 @@ class MainActivity : ComponentActivity() {
         })
     }
 
+    override fun onPause() {
+        if (::reader.isInitialized) {
+            // Stop Web Audio before Android backgrounds the WebView; release is also
+            // performed natively so a paused JS event loop cannot retain audio focus.
+            reader.evaluateJavascript(
+                "window.LinguaAmbience && window.LinguaAmbience.pauseFromNative && window.LinguaAmbience.pauseFromNative();",
+                null
+            )
+            reader.onPause()
+        }
+        abandonReaderAudioFocus()
+        super.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (::reader.isInitialized) reader.onResume()
+    }
+
     override fun onDestroy() {
+        abandonReaderAudioFocus()
         if (::reader.isInitialized) {
             reader.stopLoading()
             reader.destroy()

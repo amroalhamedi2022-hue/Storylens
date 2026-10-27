@@ -135,29 +135,57 @@ function build(scene){
   drone.connect(droneGain);droneGain.connect(master);drone.start();
  }
 }
+function requestNativeAudioFocus(){
+ const bridge=global.LinguaTalesAudioFocus;
+ if(!bridge||typeof bridge.requestFocus!=='function')return true; // Browser preview.
+ try{return bridge.requestFocus()===true;}catch(_){return false;}
+}
+function releaseNativeAudioFocus(){
+ const bridge=global.LinguaTalesAudioFocus;
+ if(!bridge||typeof bridge.releaseFocus!=='function')return;
+ try{bridge.releaseFocus();}catch(_){}
+}
 async function play(){
  if(document.hidden)return false;
+ if(playing)return true;
+ // Android focus is acquired synchronously from the user gesture, before an
+ // AudioContext is created or resumed. A denied request remains silent.
+ if(!requestNativeAudioFocus())return false;
  const ticket=++playbackGeneration;
- const ctx=ensureContext();
- // Call resume directly in the user gesture, then check for lifecycle races.
- if(ctx.state!=='running')await ctx.resume();
+ let ctx;
+ try{
+  ctx=ensureContext();
+  if(ctx.state!=='running')await ctx.resume();
+ }catch(error){
+  releaseNativeAudioFocus();
+  throw error;
+ }
  if(document.hidden||ticket!==playbackGeneration){
-  // pause() may run while resume() is pending, before the context becomes
-  // running. In that race, pause cannot suspend it; close the gap here.
-  // Do not suspend a newer play request that has already started playback.
-  if(!playing&&ctx.state==='running')await ctx.suspend();
+  // A stale resume must not suspend a newer play request or retain focus.
+  if(!playing){
+   try{if(ctx.state==='running')await ctx.suspend();}
+   finally{releaseNativeAudioFocus();}
+  }
   return false;
  }
  if(playing)return true;
- build(prefs.scene);master.gain.value=prefs.volume*0.36;
- playing=true;return true;
+ try{
+  build(prefs.scene);master.gain.value=prefs.volume*0.36;
+  playing=true;return true;
+ }catch(error){
+  releaseNativeAudioFocus();
+  throw error;
+ }
 }
 async function pause(){
  ++playbackGeneration; // a delayed resume must never start audio after pause
  playing=false;stopNodes();
  if(master)master.gain.value=0;
- if(context&&context.state==='running')await context.suspend();
+ try{if(context&&context.state==='running')await context.suspend();}
+ finally{releaseNativeAudioFocus();}
 }
+function onNativeAudioFocusLoss(){pause().catch(()=>{});}
+function pauseFromNative(){return pause();}
 function selectScene(id){
  if(!ids.has(id))return false;
  prefs.scene=id;persist();
@@ -172,16 +200,20 @@ function setSfx(enabled){prefs.sfx=enabled===true;persist();}
 function setSfxVolume(value){prefs.sfxVolume=clamp(value);persist();}
 function clickSound(){
  if(!prefs.sfx||document.hidden)return;
- const ctx=ensureContext();
- if(ctx.state!=='running')ctx.resume().catch(()=>{});
+ // A short UI click only acquires focus when no ambience session already owns it.
+ const needsFocus=!playing;
+ if(needsFocus&&!requestNativeAudioFocus())return;
+ let ctx;
+ try{ctx=ensureContext();}catch(_){if(needsFocus)releaseNativeAudioFocus();return;}
+ if(ctx.state!=='running')ctx.resume().catch(()=>{if(needsFocus)releaseNativeAudioFocus();});
  const osc=ctx.createOscillator(),gain=ctx.createGain();
- osc.type='sine';osc.frequency.setValueAtTime(720,context.currentTime);
- osc.frequency.exponentialRampToValueAtTime(490,context.currentTime+0.045);
- gain.gain.setValueAtTime(Math.max(0.0001,prefs.sfxVolume*0.06),context.currentTime);
- gain.gain.exponentialRampToValueAtTime(0.0001,context.currentTime+0.05);
- osc.connect(gain);gain.connect(context.destination);
- osc.start();osc.stop(context.currentTime+0.055);
- osc.onended=()=>{osc.disconnect();gain.disconnect();};
+ osc.type='sine';osc.frequency.setValueAtTime(720,ctx.currentTime);
+ osc.frequency.exponentialRampToValueAtTime(490,ctx.currentTime+0.045);
+ gain.gain.setValueAtTime(Math.max(0.0001,prefs.sfxVolume*0.06),ctx.currentTime);
+ gain.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.05);
+ osc.connect(gain);gain.connect(ctx.destination);
+ osc.start();osc.stop(ctx.currentTime+0.055);
+ osc.onended=()=>{osc.disconnect();gain.disconnect();if(needsFocus)releaseNativeAudioFocus();};
 }
 function controls(sheet,rtl){
  const section=document.createElement('section');section.className='lt-audio-settings';
@@ -235,6 +267,6 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)pause().cat
 global.addEventListener('pagehide',()=>{pause().catch(()=>{});});
 document.addEventListener('click',event=>{if(event.target?.closest?.('button'))clickSound();});
 global.LinguaAmbience={SCENES:SCENES.map(s=>({id:s[0],en:s[1],ar:s[2],type:s[6]||'ambience'})),
- controls,play,pause,selectScene,setVolume,setSfx,setSfxVolume,
+ controls,play,pause,pauseFromNative,onNativeAudioFocusLoss,selectScene,setVolume,setSfx,setSfxVolume,clickSound,
  prefs:()=>({...prefs}),isPlaying:()=>playing,hasContext:()=>!!context};
 })(window);

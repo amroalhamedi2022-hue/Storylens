@@ -49,6 +49,7 @@ jobs:
           python3 tools/validate_catalog.py
           python3 tools/check_js.py
           python3 tools/test_lingua_launcher.py
+          python3 tools/test_lingua_audio_focus.py
           node tools/botanical-theme.test.cjs
           node tools/rain-glass.test.cjs
           node tools/solar-atelier.test.cjs
