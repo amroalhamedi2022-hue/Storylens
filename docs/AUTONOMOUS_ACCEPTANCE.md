@@ -1254,3 +1254,13 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - **PASS — Android CI:** [run 40553962157](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40553962157), source/test SHA `f0cd468314efc5b5e0ea5855cd5410a1c1eb6839`. Offline dictionary and pinned CC-BY audio verification, curated content/Node regressions, Gradle unit tests + Debug APK, packaged-asset verification, and Chromium journeys through Chapter XXXVII passed.
 - **PASS — independently re-hashed Debug APK:** 20,051,250 bytes; SHA-256 `a36eca44f070805532bfdb4b3e30f363508b4ba539ec7fc870d00cafacf862a1`, matching `APK_SHA256.txt` from Artifact **12756332646**. Screenshot Artifact **12756686459**.
 - **NOT TESTED:** Xiaomi Pad 5 install, actual Android RTL/TalkBack, device frame pacing/RAM/thermal, licensed-audio acoustics/Audio Focus with screen off, independent Arabic literary review, and territory-specific redistribution rights. Debug is not final; LT-01..LT-13 remain **IN PROGRESS**.
+
+
+## 2026-10-27 — LT-01/LT-03 long-book card and catalog merge (CI pending)
+
+- **Production change:** the library now contains a lightweight placeholder for *Around the World in Eighty Days* before any chapter script executes. The existing cover remains immediately available; all 37 chapter payloads and editorial art scripts remain inert until the user opens the book.
+- **Loader fix:** after sequential loading, the loader validates all 37 bilingual chapters, attaches offline editorial art, and merges the verified story into the same catalog object before calling the original `openStory`. This repairs a source-level discoverability/publication gap that isolated loader tests had not represented.
+- **Regression:** `tools/content-loader.test.cjs` asserts the startup placeholder, zero chapters before open, all 37 chapters on the catalog entry before reader open, and publication after retry. `tools/validate_catalog.py` validates lazy metadata without forcing the long payload into startup data.
+- **Purposeful build question:** does the actual lazy-script order and APK asset bundle now make the classic novel discoverable and openable, while the full content/Node suite, Gradle APK assembly, required-asset checks and Chromium journey pass? Static review alone cannot prove the cross-script catalog handoff.
+- **CI:** pending for source/test head `948b4f48da44631968f25e69d3b4fc45071888ec`; do not infer PASS before Actions completes.
+- **NOT TESTED:** Xiaomi Pad 5 installation, physical first-open interaction, frame pacing/RAM/thermal, actual RTL/TalkBack, independent Arabic literary review and territory-specific redistribution clearance. LT-01..LT-13 remain IN PROGRESS; Debug is not final and no main write/merge was made.
