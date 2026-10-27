@@ -225,7 +225,7 @@ function renderBackup(){
  const parent=document.getElementById('modals');
  if(!parent)return;
  parent.innerHTML='<div class="overlay" onclick="closeSheet(event)"><div class="sheet stl-backup-sheet" onclick="event.stopPropagation()">'+
-  '<div class="tag">OFFLINE · DATA SAFETY</div><h2>'+ui('النسخ الاحتياطي','Backup & restore')+'</h2>'+
+  '<div class="tag">'+ui('بدون اتصال · حماية البيانات','OFFLINE · DATA SAFETY')+'</div><h2>'+ui('النسخ الاحتياطي','Backup & restore')+'</h2>'+
   '<p class="quiet">'+ui('احفظ مفرداتك ومواقع القراءة والإعدادات محليًا. لن يغادر الملف جهازك.','Save your words, reading progress and settings locally. Nothing is uploaded.')+'</p>'+
   '<div class="stl-backup-actions"><button class="primary" id="stl-backup-export">'+ui('تصدير نسخة','Export backup')+'</button>'+
   '<button class="secondary" id="stl-backup-import">'+ui('استيراد نسخة','Import backup')+'</button></div>'+
