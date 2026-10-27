@@ -7,14 +7,23 @@ const source = fs.readFileSync(path.join(__dirname, '../app/src/main/assets/ling
 const html = fs.readFileSync(path.join(__dirname, '../app/src/main/assets/index.html'), 'utf8');
 assert.ok(html.indexOf('src="lingua-shell.js"') < html.indexOf('src="lingua-i18n.js"'));
 const nodes = new Map();
+function makeNode(value, attributes={}) {
+ const listeners={};
+ return {textContent:value,lang:null,dir:null,placeholder:'',dataset:{},onclick:null,
+  getAttribute(name){return attributes[name]??null;},
+  setAttribute(name,val){attributes[name]=String(val);},
+  addEventListener(name,callback){(listeners[name]??=[]).push(callback);},
+  click(){
+   if(typeof this.onclick==='function')this.onclick();
+   for(const callback of listeners.click||[])callback();
+  }};
+}
 function node(selector, value, attributes={}) {
- const result={textContent:value, lang:null, dir:null,
-  getAttribute(name){return attributes[name]||null;}};
+ const result=makeNode(value,attributes);
  nodes.set(selector,[result]);return result;
 }
 function group(selector,values,attributes={}) {
- const result=values.map(value=>({textContent:value,lang:null,dir:null,
-  getAttribute(name){return attributes[name]||null;}}));
+ const result=values.map(value=>makeNode(value,attributes));
  nodes.set(selector,result);return result;
 }
 const document={documentElement:{lang:'en'},
@@ -25,7 +34,7 @@ const state={page:'reader',chapter:0,story,saved:['river'],
  cards:[{dueAt:0,meaning:'نهر',translation:'كان النهر صامتًا.'}]};
 const calls={};
 const window={};
-for(const name of ['renderReader','settings','wordSheet','showWords','renderReview','fullTranslation']){
+for(const name of ['renderReader','settings','wordSheet','showWords','renderReview','fullTranslation','openUsage']){
  calls[name]=0;
  window[name]=()=>{calls[name]++;};
 }
@@ -108,6 +117,31 @@ window.fullTranslation();
 assert.equal(back.textContent,'← Back to English story');
 assert.ok(arabicParagraph.every(x=>x.lang==='ar'&&x.dir==='rtl'));
 assert.equal(arabicParagraph[1].textContent,'كان النهر صامتًا.');
+
+state.page='words';
+const usageTag=node('#modals .sheet .tag','ACTIVE VOCABULARY');
+const usageNote=node('.usage-note','اكتب جملة إنجليزية جديدة تستخدم فيها التعبير. الفحص هنا يساعدك على التدرب والحفظ، لكنه ليس تصحيحًا لغويًا بالذكاء الاصطناعي.');
+const usageInput=node('#usage-example','');
+const usageSave=node('#usage-check','احفظ محاولتي');
+const usageExampleLabel=node('#modals .sheet label','مثال من القصة');
+const usageClose=node('#modals .sheet footer button[onclick="closeSheet()"]','إغلاق');
+const usageFeedback=node('#usage-feedback','');
+usageSave.onclick=()=>{usageFeedback.textContent='تم حفظ جملتك، والتعبير موجود فيها. راجع القواعد والمعنى بنفسك.';};
+window.openUsage('river');
+assert.equal(calls.openUsage,1);
+assert.equal(usageTag.textContent,'VOCABULARY PRACTICE');
+assert.match(usageNote.textContent,/not AI grammar correction/);
+assert.equal(usageInput.placeholder,'Write your own sentence...');
+assert.equal(usageInput.getAttribute('aria-label'),'Your English sentence');
+assert.equal(usageInput.getAttribute('lang'),'en');
+assert.equal(usageInput.getAttribute('dir'),'ltr');
+assert.equal(usageSave.textContent,'Save my attempt');
+assert.equal(usageExampleLabel.textContent,'Example from the story');
+assert.equal(usageClose.textContent,'Close');
+usageSave.click();
+assert.equal(usageFeedback.textContent,'Your sentence is saved and includes the expression. Review grammar and meaning yourself.');
+assert.equal(usageSentence.textContent,'The river was silent.','vocabulary practice keeps the source sentence unchanged');
+
 document.documentElement.lang='ar';
 const unchanged=node('.review > h1','مراجعة المفردات');
 state.page='review';window.renderReview(false);

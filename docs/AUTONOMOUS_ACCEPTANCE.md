@@ -1185,3 +1185,12 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - **PASS — Android CI:** [run 40491000267](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40491000267), tested source/test SHA `dc9ec5046b3221937ccc44651f8667bab5f9971b`. Content/theme tests, `:app:testDebugUnitTest`, Debug APK assembly, critical asset packaging, and Chromium reader journeys all passed.
 - **Debug APK:** Artifact **12728807583**; CI-calculated inner APK SHA-256 `821eca40492acadc580d578327591e2df5ec86e9ef0643c06bace63c7c6898b5`. Artifact ZIP digest is separate; independent APK re-hash **NOT TESTED**.
 - **NOT TESTED:** Xiaomi Pad 5 installation, real-device bilingual theme selector/RTL/TalkBack, frame pacing/RAM/thermal, full UI localization audit, Arabic literary proofreading, territory-specific redistribution clearance, and the requested curated licensed audio library. The 24 procedural ambience presets are not licensed recordings. This Debug build is not final; LT-01..LT-13 remain IN PROGRESS overall.
+
+
+## 2026-10-27 — LT-06 vocabulary-practice dialog localization (CI pending)
+
+- **Production:** the English interface now localizes the saved-vocabulary writing-practice dialog: purpose note, input placeholder/accessibility label and LTR direction, save action, story-example label, close action, and the three post-save feedback messages.
+- **Content boundary:** the learner's typed English sentence, saved value, and original English example remain unchanged. Arabic interface strings remain Arabic; no translation is applied to learning content.
+- **Regression:** extended `tools/locale-journeys.test.cjs` with an open-usage journey, accessible input attributes, feedback-after-save behavior and a source-sentence preservation assertion.
+- **Purposeful CI question:** does this new wrapper work in the actual asset load order and pass the Node/Chromium/Android packaging gates? Static inspection alone cannot establish script-order and browser integration.
+- **CI:** pending for the next targeted Android workflow run. LT-06 and overall LT-01..LT-13 remain **IN PROGRESS**; full app-wide UI audit, Pad 5 testing, Arabic literary review, territory-specific rights and licensed audio remain open.

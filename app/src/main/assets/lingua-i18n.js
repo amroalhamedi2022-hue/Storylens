@@ -106,6 +106,55 @@ function localizeTranslation() {
   node.lang = 'ar'; node.dir = 'rtl';
  });
 }
+function localizeUsageFeedback() {
+ if (!english()) return;
+ const feedback = find('#usage-feedback');
+ if (!feedback) return;
+ const messages = {
+  'الجملة قصيرة جدًا؛ حاول تضيف سياقًا أوضح.':
+   'The sentence is very short; add clearer context.',
+  'تم حفظ جملتك، والتعبير موجود فيها. راجع القواعد والمعنى بنفسك.':
+   'Your sentence is saved and includes the expression. Review grammar and meaning yourself.',
+  'تم حفظ جملتك. جرّب استخدام التعبير نفسه بشكل واضح داخلها.':
+   'Your sentence is saved. Try using the expression clearly in the sentence.'
+ };
+ const translated = messages[feedback.textContent.trim()];
+ if (translated) feedback.textContent = translated;
+}
+function localizeUsage() {
+ if (!english()) return;
+ label('#modals .sheet .tag', 'VOCABULARY PRACTICE');
+ label('.usage-note',
+  'Write a new English sentence using this expression. This helps you practise recall; it is not AI grammar correction.');
+ const input = find('#usage-example');
+ if (input) {
+  input.placeholder = 'Write your own sentence...';
+  input.setAttribute('aria-label', 'Your English sentence');
+  input.setAttribute('lang', 'en');
+  input.setAttribute('dir', 'ltr');
+ }
+ const save = find('#usage-check');
+ if (save) {
+  save.textContent = 'Save my attempt';
+  save.setAttribute('aria-label', 'Save my attempt');
+  if (save.dataset && save.dataset.ltUsageFeedbackBound !== 'true') {
+   save.dataset.ltUsageFeedbackBound = 'true';
+   // The existing click handler saves the attempt first; this listener only
+   // localizes its resulting feedback and never alters the saved English text.
+   save.addEventListener('click', localizeUsageFeedback);
+  }
+ }
+ exact('#modals .sheet label', {
+  'مثال من القصة': 'Example from the story'
+ });
+ each('#modals .sheet p.en', node => { node.lang = 'en'; node.dir = 'ltr'; });
+ const close = find('#modals .sheet footer button[onclick="closeSheet()"]');
+ if (close) {
+  close.textContent = 'Close';
+  close.setAttribute('aria-label', 'Close vocabulary practice');
+ }
+ localizeUsageFeedback();
+}
 function wrap(name, after) {
  const previous = global[name];
  if (typeof previous !== 'function') return false;
@@ -120,7 +169,8 @@ function wrap(name, after) {
 for (const [name, callback] of [
  ['renderReader', localizeReader], ['settings', localizeSettings],
  ['wordSheet', localizeWordSheet], ['showWords', localizeWords],
- ['renderReview', localizeReview], ['fullTranslation', localizeTranslation]
+ ['renderReview', localizeReview], ['fullTranslation', localizeTranslation],
+ ['openUsage', localizeUsage]
 ]) wrap(name, callback);
 global.LinguaI18n = {localizeReader, localizeSettings, localizeWordSheet,
  localizeWords, localizeReview, localizeTranslation};
