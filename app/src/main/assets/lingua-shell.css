@@ -229,6 +229,32 @@ body,.arabic-page,.inline-ar,.arabic-inner,.lt-settings-sheet{
  gap:16px;margin:12px 0;font-size:15px}
 .lt-font-setting select{max-width:60%;min-height:44px;border-radius:10px;
  padding:8px 12px;background:var(--card);color:var(--ink);border:1px solid var(--accent)}
+.lt-reading-size-setting select{min-width:150px}
+:root{
+ --lt-ar-reading-size:20px;--lt-ar-reading-leading:2;
+ --lt-en-reading-size:19px;--lt-en-reading-leading:1.85;--lt-en-reading-spacing:0;
+}
+html[data-lt-arabic-size="compact"]{--lt-ar-reading-size:18px;--lt-ar-reading-leading:1.78}
+html[data-lt-arabic-size="comfortable"]{--lt-ar-reading-size:20px;--lt-ar-reading-leading:2}
+html[data-lt-arabic-size="large"]{--lt-ar-reading-size:23px;--lt-ar-reading-leading:2.15}
+html[data-lt-english-size="compact"]{--lt-en-reading-size:17px;--lt-en-reading-leading:1.7;--lt-en-reading-spacing:0}
+html[data-lt-english-size="comfortable"]{--lt-en-reading-size:19px;--lt-en-reading-leading:1.85;--lt-en-reading-spacing:0}
+html[data-lt-english-size="large"]{--lt-en-reading-size:22px;--lt-en-reading-leading:2;--lt-en-reading-spacing:.012em}
+/* Profiles affect reading text only; image geometry and interactive controls remain unchanged. */
+html[data-lt-arabic-size] .reader .inline-ar,
+html[data-lt-arabic-size] .reader .stl-sentence-translation,
+html[data-lt-arabic-size] .arabic-inner>p:not(.quiet){
+ font-size:var(--lt-ar-reading-size)!important;
+ line-height:var(--lt-ar-reading-leading)!important;
+ letter-spacing:0!important;
+}
+html[data-lt-english-size] .reader .sentence,
+html[data-lt-english-size] .sheet .en,
+html[data-lt-english-size] .review-card .en-prompt{
+ font-size:var(--lt-en-reading-size)!important;
+ line-height:var(--lt-en-reading-leading)!important;
+ letter-spacing:var(--lt-en-reading-spacing)!important;
+}
 
 /* LT-13 Botanical Folio: field-journal composition, not a Nebula recolor.
  * Sage/moss ink, specimen-number cards, pressed-leaf art and warm matte pages.
