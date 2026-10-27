@@ -251,6 +251,7 @@ function openSettings(){
   label.appendChild(select);sheet.appendChild(label);
  }
  if(global.LinguaAmbience)global.LinguaAmbience.controls(sheet,rtl());
+ if(global.LinguaLicensedAudio)global.LinguaLicensedAudio.controls(sheet,rtl());
  const note=document.createElement('p');note.className='quiet';
  note.textContent=rtl()?'ترجمة بقية عناصر الواجهة قيد التطوير.':'Full localization of the remaining interface is in progress.';
  sheet.appendChild(note);

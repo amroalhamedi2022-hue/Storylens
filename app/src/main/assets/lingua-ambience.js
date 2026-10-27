@@ -177,12 +177,12 @@ async function play(){
   throw error;
  }
 }
-async function pause(){
+async function pause(options){
  ++playbackGeneration; // a delayed resume must never start audio after pause
  playing=false;stopNodes();
  if(master)master.gain.value=0;
  try{if(context&&context.state==='running')await context.suspend();}
- finally{releaseNativeAudioFocus();}
+ finally{if(!(options&&options.keepFocus))releaseNativeAudioFocus();}
 }
 function onNativeAudioFocusLoss(){pause().catch(()=>{});}
 function pauseFromNative(){return pause();}
