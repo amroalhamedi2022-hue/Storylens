@@ -54,6 +54,13 @@ wordSheet=function(args){
 // conservative starting point; translations and illustrations travel with
 // their source paragraph. The current page is persisted per story/chapter.
 const ltPageIndices=new Map();
+// Do not let page gestures steal taps, text selection, or accessibility controls.
+function pageSwipeAllowed(target,selectionText=''){
+ if(typeof selectionText==='string'&&selectionText.trim())return false;
+ const element=target?.nodeType===1?target:target?.parentElement;
+ if(!element||typeof element.closest!=='function')return true;
+ return !element.closest('button,a,input,textarea,select,summary,[role="button"],[contenteditable="true"]');
+}
 function installPageTurn(){
  const reader=document.querySelector('.reader');
  const width=reader?.querySelector('.reading-width');
@@ -126,19 +133,28 @@ function installPageTurn(){
  }
  prev.addEventListener('click',()=>move(-1));
  next.addEventListener('click',()=>move(1));
- let startX=0,startY=0;
+ let startX=null,startY=null,startTarget=null;
+ const resetTouch=()=>{startX=null;startY=null;startTarget=null;};
  sentenceBox.addEventListener('touchstart',event=>{
-  if(event.touches?.length!==1)return;
+  if(event.touches?.length!==1){resetTouch();return;}
+  const target=event.target;
+  const selected=window.getSelection?.().toString()||'';
+  if(!pageSwipeAllowed(target,selected)){resetTouch();return;}
+  startTarget=target;
   startX=event.touches[0].clientX;startY=event.touches[0].clientY;
  },{passive:true});
  sentenceBox.addEventListener('touchend',event=>{
-  if(event.changedTouches?.length!==1)return;
+  if(event.changedTouches?.length!==1||startX===null||startY===null){resetTouch();return;}
   const dx=event.changedTouches[0].clientX-startX;
   const dy=event.changedTouches[0].clientY-startY;
-  if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.25)return;
+  const selected=window.getSelection?.().toString()||'';
+  const allowed=pageSwipeAllowed(startTarget,selected);
+  resetTouch();
+  if(!allowed||Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.25)return;
   const rtl=document.documentElement.dir==='rtl';
   move((rtl?dx>0:dx<0)?1:-1);
  },{passive:true});
+ sentenceBox.addEventListener('touchcancel',resetTouch,{passive:true});
  renderPage('next',false);
 }
 const chapterKey=()=> 'chapter_'+state.story.id;
