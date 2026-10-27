@@ -18,7 +18,7 @@ assert.equal(crypto.createHash('sha256').update(normalized,'utf8').digest('hex')
 const body=chapter.paragraphs.map(p=>p.en).join(' '),words=(body.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.equal(words,1060);assert.ok(body.startsWith('It is time to relate what a change took place'));assert.ok(body.endsWith('“Here I am, gentlemen!”'));
 assert.ok(chapter.paragraphs.every(p=>p.en.trim().length>4&&p.ar.trim().length>4&&/[ء-ي]/.test(p.ar)));
-assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/36 of 37/);assert.equal(story.terms.length,25);
+assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/36 of 37/);assert.equal(story.terms.length,26);
 for(const t of story.terms){assert.ok(body.toLowerCase().includes(t.term.toLowerCase()),'Chapter XXXVI term absent from source: '+t.term);assert.ok(t.literal&&t.context&&t.note);}
 const artSandbox={window:{}};
 vm.runInNewContext(read('editorial-art.js'),artSandbox,{filename:'editorial-art.js',timeout:5000});
@@ -30,4 +30,4 @@ assert.ok(shell.includes("'reform-club-countdown':'Reform Club Countdown'")&&she
 assert.ok(css.includes('body.theme-reform-club-countdown')&&css.includes('.lt-theme-reform-club-countdown .lt-theme-swatch'));
 assert.ok(css.includes('@media(prefers-reduced-motion:reduce){.theme-reform-club-countdown .library .card{transition:none!important;transform:none!important}}'));
 assert.ok(backup.includes("val==='reform-club-countdown'"));
-console.log(JSON.stringify({result:'PASS',chapter:36,paragraphs:30,englishWords:1060,normalizedEnglishSha256:'ebb586929c9c278c7191447c1bc99152e2ad83754a6c25844325372d3a9387cf',arabicDrafts:30,contextualTerms:25,illustration:'REFORM CLUB · FINAL COUNTDOWN',theme:'Reform Club Countdown',editorialReview:'NOT TESTED',device:'NOT TESTED'},null,2));
+console.log(JSON.stringify({result:'PASS',chapter:36,paragraphs:30,englishWords:1060,normalizedEnglishSha256:'ebb586929c9c278c7191447c1bc99152e2ad83754a6c25844325372d3a9387cf',arabicDrafts:30,contextualTerms:26,illustration:'REFORM CLUB · FINAL COUNTDOWN',theme:'Reform Club Countdown',editorialReview:'NOT TESTED',device:'NOT TESTED'},null,2));
