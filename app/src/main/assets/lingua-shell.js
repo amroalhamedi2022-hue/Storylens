@@ -68,10 +68,24 @@ const themeLabelFor=name=>rtl()?themeLabelsAr[name]:themeLabels[name];
 const fontChoices={ar:['sans','naskh'],en:['serif','sans']};
 const fontDefaults={ar:'sans',en:'serif'};
 const fontKeys={ar:'fontArabic',en:'fontEnglish'};
+function preserveReaderPosition(change){
+ const active=state.page==='reader'&&state.story;
+ const storyId=active?state.story.id:null;
+ const chapterIndex=state.chapter;
+ const fallback=safeOffset(global.scrollY||0);
+ if(active)savePosition();
+ change();
+ if(active)nextFrame(()=>{
+  if(state.page==='reader'&&state.story?.id===storyId&&state.chapter===chapterIndex)
+   restoreReadingPosition(storyId,chapterIndex,fallback);
+ });
+}
 function applyFont(lang,name){
  if(!Object.prototype.hasOwnProperty.call(fontChoices,lang)||!fontChoices[lang].includes(name))return false;
- document.documentElement.dataset[lang==='ar'?'ltArabicFont':'ltEnglishFont']=name;
- put(fontKeys[lang],name);
+ preserveReaderPosition(()=>{
+  document.documentElement.dataset[lang==='ar'?'ltArabicFont':'ltEnglishFont']=name;
+  put(fontKeys[lang],name);
+ });
  return true;
 }
 function loadFonts(){
