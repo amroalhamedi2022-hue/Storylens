@@ -82,6 +82,26 @@ function loadFonts(){
  }
 }
 
+/* LT-12: independent reading-size profiles. Arabic keeps natural shaping
+ * (no added letter spacing); English gets a small spacing increase only in
+ * the large profile. All preferences are local and validated. */
+const readingSizeChoices={ar:['compact','comfortable','large'],en:['compact','comfortable','large']};
+const readingSizeDefaults={ar:'comfortable',en:'comfortable'};
+const readingSizeKeys={ar:'readingSizeArabic',en:'readingSizeEnglish'};
+function applyReadingSize(lang,name){
+ if(!Object.prototype.hasOwnProperty.call(readingSizeChoices,lang)||!readingSizeChoices[lang].includes(name))return false;
+ document.documentElement.dataset[lang==='ar'?'ltArabicSize':'ltEnglishSize']=name;
+ put(readingSizeKeys[lang],name);
+ return true;
+}
+function loadReadingSizes(){
+ for(const lang of ['ar','en']){
+  const saved=typeof get==='function'?get(readingSizeKeys[lang],readingSizeDefaults[lang]):readingSizeDefaults[lang];
+  const safe=readingSizeChoices[lang].includes(saved)?saved:readingSizeDefaults[lang];
+  document.documentElement.dataset[lang==='ar'?'ltArabicSize':'ltEnglishSize']=safe;
+ }
+}
+
 /* LT-06: interface locale is independent of the English stories and Arabic
  * learning translations. Never change legacy storage prefixes on rebrand. */
 const localeChoices=['ar','en'];
@@ -248,6 +268,31 @@ function openSettings(){
   }
   select.value=document.documentElement.dataset[lang==='ar'?'ltArabicFont':'ltEnglishFont']||fontDefaults[lang];
   select.addEventListener('change',()=>applyFont(lang,select.value));
+  label.appendChild(select);sheet.appendChild(label);
+ }
+ const sizeHeading=document.createElement('h3');
+ sizeHeading.textContent=rtl()?'حجم النص وتباعد السطور':'Text size & line spacing';
+ sheet.appendChild(sizeHeading);
+ for(const lang of ['ar','en']){
+  const label=document.createElement('label');label.className='lt-font-setting lt-reading-size-setting';
+  const title=document.createElement('span');
+  title.textContent=lang==='ar'?(rtl()?'حجم النص العربي':'Arabic reading size'):(rtl()?'حجم النص الإنجليزي':'English reading size');
+  label.appendChild(title);
+  const select=document.createElement('select');
+  select.setAttribute('aria-label',title.textContent);
+  const options=[
+   {value:'compact',ar:'مضغوط',en:'Compact'},
+   {value:'comfortable',ar:'مريح',en:'Comfortable'},
+   {value:'large',ar:'كبير ومسافات أوسع',en:'Large · wider spacing'}
+  ];
+  for(const option of options){
+   const item=document.createElement('option');
+   item.value=option.value;item.textContent=rtl()?option.ar:option.en;
+   select.appendChild(item);
+  }
+  const key=lang==='ar'?'ltArabicSize':'ltEnglishSize';
+  select.value=document.documentElement.dataset[key]||readingSizeDefaults[lang];
+  select.addEventListener('change',()=>applyReadingSize(lang,select.value));
   label.appendChild(select);sheet.appendChild(label);
  }
  if(global.LinguaAmbience)global.LinguaAmbience.controls(sheet,rtl());
@@ -520,7 +565,7 @@ function decorateLibrary(){
 
 }
 library=function(){originalLibrary();decorateLibrary();};
-global.LinguaShell={applyTheme,applyFont,applyLocale,fontChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,
+global.LinguaShell={applyTheme,applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,
  isDrawerOpen:()=>opened,themeNames:[...themeNames],searchChapters,invalidateChapterSearch,openChapterSearch,jumpToChapterHit};
 /* LT-09/06 accessibility: a visible modal must own keyboard focus.
  * Trap Tab/Shift+Tab in Settings or the genre drawer; Escape dismisses the
@@ -726,5 +771,6 @@ document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
 })();
 loadLocale();
 loadFonts();
+loadReadingSizes();
 library();
 })(window);
