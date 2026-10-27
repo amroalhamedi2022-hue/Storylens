@@ -48,7 +48,7 @@ const sandbox = {
  put: (key, value) => store.set(key, value),
  library() {}, openStory() {}, settings() {}, theme() {}, inlineTranslate() {},
  renderReader() {originalRenderCalls++;},
- closeSheet() {}, esc: String, console, Date
+ closeSheet() {}, wordSheet() {}, esc: String, console, Date
 };
 vm.runInNewContext(js, sandbox, {filename: 'reader-experience.js', timeout: 5000});
 
