@@ -1311,3 +1311,8 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - **Follow-up:** page controls now follow English/Arabic UI labels and swipe direction (LTR: swipe left for next; RTL: swipe right for next). The selector's Unicode ranges were corrected to match actual Arabic characters rather than escaped literal text.
 - **Latest source head:** `df48a9fd8e6f31bb5ebf22d663b6b4009c88214a`.
 - **Workflow lookup:** the connected commit-run query returned no rows for this head; CI therefore remains **NOT VERIFIED**, not PASS. Confirm the actual Actions run and test output before distributing any APK.
+
+
+- **Launcher test follow-up:** the adaptive-icon regression now accepts the refined approved book/petal geometry (the petal apex moved by one vector unit); it still verifies adaptive foreground/background/monochrome resources, manifest branding, no network permissions and unchanged storage/package identity.
+- **Latest test/source commit:** `7b2fd419b6fc947d7041de6fcac4a6eb80f45476`.
+- **No new mystery-book payload was added in this UI-fix batch.** Existing long-form Verne content remains source-bound and chapter-based; the next content milestone should add a substantial, separately licensed or explicitly original detective serial with aligned Arabic translations, vocabulary/idioms, scene art and provenance checks rather than short filler entries.
