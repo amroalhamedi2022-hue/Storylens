@@ -1107,3 +1107,8 @@ Screenshot artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/r
 - APK Artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40446487903/artifacts/12708781802
 - Screenshot Artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40446487903/artifacts/12708886547
 - **NOT TESTED:** physical Xiaomi Pad 5 installation, frame pacing/RAM/thermal, TalkBack and hardware RTL/contrast, full-translation review on device, independent Arabic literary review, territory-specific rights, and the curated licensed audio library. The screenshot evidence is Chromium/CI, not a device capture; Debug APK is not a final release.
+
+
+### Why this milestone used a build
+
+The build question was whether Chapter XXXIV and its new theme survive Android asset packaging and whether the packaged reader still renders the Arabic/English journey and theme correctly. Source/hash tests alone cannot prove that the new script is bundled in the APK or that the Chromium reader journey and screenshot fixtures work together. The build was therefore tied to this functional milestone, not a routine post-edit build.
