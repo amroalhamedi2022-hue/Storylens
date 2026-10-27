@@ -34,7 +34,7 @@ const swipeStart = reader.indexOf('function pageSwipeAllowed(');
 const swipeEnd = reader.indexOf('function installPageTurn()', swipeStart);
 assert.ok(swipeStart >= 0 && swipeEnd > swipeStart, 'production page-swipe guard is present');
 const swipeContext = {};
-vm.runInNewContext(reader.slice(swipeStart, swipeEnd) + '\\nglobalThis.__pageSwipeAllowed = pageSwipeAllowed;', swipeContext);
+vm.runInNewContext(reader.slice(swipeStart, swipeEnd) + '\nglobalThis.__pageSwipeAllowed = pageSwipeAllowed;', swipeContext);
 const swipeAllowed = swipeContext.__pageSwipeAllowed;
 const plainTarget = {nodeType:1, closest:()=>null};
 const buttonTarget = {nodeType:1, closest:()=>({tagName:'BUTTON'})};
@@ -44,6 +44,6 @@ assert.equal(swipeAllowed(plainTarget, 'selected English words'), false, 'active
 assert.equal(swipeAllowed(buttonTarget, ''), false, 'interactive controls must not trigger page gestures');
 assert.equal(swipeAllowed(textInsideButton, ''), false, 'text nodes inside controls are protected too');
 assert.equal(swipeAllowed(null, ''), true, 'missing event target fails safely without throwing');
-assert.match(reader, /sentenceBox\\.addEventListener\\('touchcancel',resetTouch/);
-assert.match(reader, /window\\.getSelection\\?\\.toString\\(\\)\\|\\|''/);
+assert.ok(reader.includes("sentenceBox.addEventListener('touchcancel',resetTouch"), 'touch cancellation resets gesture state');
+assert.ok(reader.includes("window.getSelection?.()?.toString()||''"), 'selection lookup is null-safe');
 console.log('PASS: contextual meaning and page-turn production regression');
