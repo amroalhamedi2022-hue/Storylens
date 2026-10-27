@@ -1272,3 +1272,12 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - **PASS — Android CI:** [run 40570332057](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40570332057), exact source/test head `074d2f381b1c3bd9d51da4488057c6950e98162f`. Full Node/content/theme/dictionary/audio suite, Gradle unit tests + Debug APK, required packaged assets, and Chromium reader journeys through Chapter XXXVII passed.
 - **PASS — independently re-hashed Debug APK:** Artifact [12763938820](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40570332057/artifacts/12763938820), extracted `app-debug.apk` 20,056,319 bytes; SHA-256 `8060c6e1d2584ec2ab182b37e064c6df829ad1aba765ac6cf714788f65bd8123`, matching the artifact's `APK_SHA256.txt`.
 - **NOT TESTED:** Xiaomi Pad 5 install, first-open latency/frame pacing/RAM/thermal, physical RTL/TalkBack, audio focus/screen-off acoustics, independent Arabic literary review, territory-specific redistribution rights, and final signing. The novel is discoverable and all 37 chapter scripts pass Chromium journeys, but translation editorial quality and real-device acceptance are not inferred from CI. Debug is not final; LT-01..LT-13 remain IN PROGRESS.
+
+## 2026-10-27 — LT-12 independent typography profiles (CI NOT VERIFIED; device NOT TESTED)
+
+- Production shell adds separate persisted Arabic/English compact, comfortable and large reading-size/line-height profiles, preserving independent font choices and the current semantic reading anchor after a font/size change.
+- Arabic keeps `letter-spacing: 0`; the large English profile uses a restrained `0.012em`. Image elements and controls are outside the profile selectors.
+- Regression added: `tools/typography-profiles.test.cjs`, wired into `.github/workflows/android.yml`.
+- **PASS (isolated local smoke):** exercised the extracted production function/CSS slice for defaults, invalid values, independent persistence and anchor restoration. **This is not the full repository CI run.**
+- **CI NOT VERIFIED** for current source/test head `ec902fc2fbe680b43409f94c011480362fbfd5bf`; no CI PASS is inferred.
+- **NOT TESTED:** Xiaomi Pad 5, actual WebView wrapping/font availability, RTL/TalkBack, screenshot comparison, FPS/RAM/thermal. LT-01..LT-13 remain IN PROGRESS; Debug is not final.
