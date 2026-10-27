@@ -9,7 +9,7 @@ source=(assets/"index.html").read_text(encoding="utf-8")
 assert source.count("</body>")==1
 tests={
  "reader":"""openStory('last-passenger');document.body.setAttribute('data-stl-screenshot','reader');""",
- "word":"""openStory('last-passenger');document.querySelector('.reader .tok')?.click();document.body.setAttribute('data-stl-screenshot','word');""",
+ "word":"""(async function(){await window.LinguaContentLoader.ensureDictionary();openStory('last-passenger');document.querySelector('.reader .tok')?.click();document.body.setAttribute('data-stl-screenshot','word')})();""",
  "backup":"""StoryLensBackup.open();document.body.setAttribute('data-stl-screenshot','backup');""",
  "verne14":r"""(function(){document.documentElement.lang='ar';document.documentElement.dir='rtl';const errors=[];try{openStory('around-the-world-in-eighty-days-towle');stlChapter(13)}catch(e){errors.push(e.message)}const reader=document.querySelector('.reader');if(reader&&(!reader.querySelector('.reader-label bdi[dir="ltr"]')||!reader.querySelector('.reader-label bdi[dir="rtl"]')))errors.push('Arabic reader label direction isolation missing');const ok=state.page==='reader'&&state.chapter===13&&state.story?.id==='around-the-world-in-eighty-days-towle'&&!!reader&&reader.textContent.includes('Calcutta');document.body.setAttribute('data-storylens-qa',ok?'PASS':'FAIL');document.body.setAttribute('data-storylens-qa-errors',errors.join(' | '));document.body.setAttribute('data-stl-screenshot','verne14')})();""",
  "flow":r"""
@@ -145,6 +145,45 @@ tests["verne36-theme"] = r"""(function(){document.documentElement.lang='ar';docu
 tests["verne37"] = r"""(function(){document.documentElement.lang='ar';document.documentElement.dir='rtl';const errors=[];try{openStory('around-the-world-in-eighty-days-towle');stlChapter(36);state.inline=false;inlineTranslate();closeSheet()}catch(e){errors.push('navigation/translation: '+e.message)}const r=document.querySelector('.reader'),a=r?.querySelector('.chapter-end .lt-serial-progress'),end=r?.querySelector('.chapter-end > div'),btn=r?.querySelector('.chapter-end > button.primary'),nav=r?.querySelectorAll('.lt-chapter-nav button');if(state.chapter!==36||state.story?.chapters?.length!==37)errors.push('chapter 37 catalog state');if(!r||!r.querySelector('h2')?.textContent.includes('حيث يتبيّن أن فيلياس فوج لم يربح من رحلته حول العالم سوى السعادة')||r.querySelectorAll('.inline-ar').length!==41||!r.textContent.includes('أسعد الرجال'))errors.push('chapter 37 Arabic title and bilingual ending');if(!r?.textContent.includes('37 من 37'))errors.push('chapter 37 progress');if(a)errors.push('completed book should not show an incomplete-book availability note');if(!end||end.textContent.trim()!=='النهاية'||!btn||btn.textContent.trim()!=='العودة إلى المكتبة'||!nav||!nav[1].disabled)errors.push('Chapter XXXVII must be the honest final 37-of-37 chapter');if(!r?.querySelector('.reader-hero')?.style.backgroundImage.includes('data:image/svg+xml'))errors.push('offline chapter art');document.body.setAttribute('data-storylens-qa',errors.length?'FAIL':'PASS');document.body.setAttribute('data-storylens-qa-errors',errors.join(' | '));document.body.setAttribute('data-stl-screenshot','verne37')})();""";
 tests["verne37-en"] = r"""(function(){document.documentElement.lang='en';document.documentElement.dir='ltr';const errors=[];try{openStory('around-the-world-in-eighty-days-towle');stlChapter(36);state.inline=false;inlineTranslate();closeSheet()}catch(e){errors.push('navigation/translation: '+e.message)}const r=document.querySelector('.reader'),a=r?.querySelector('.chapter-end .lt-serial-progress'),end=r?.querySelector('.chapter-end > div'),btn=r?.querySelector('.chapter-end > button.primary'),nav=r?.querySelectorAll('.lt-chapter-nav button');if(state.chapter!==36||state.story?.chapters?.length!==37)errors.push('chapter 37 catalog state');if(!r||!r.querySelector('h2')?.textContent.includes('In which it is shown that Phileas Fogg gained nothing by his tour around the world')||r.querySelectorAll('.inline-ar').length!==41||!r.textContent.includes('happiest of men'))errors.push('chapter 37 English title, source and aligned translation');if(!r?.textContent.includes('37 of 37'))errors.push('chapter 37 progress');if(a)errors.push('completed book should not show an incomplete-book availability note');if(!end||end.textContent.trim()!=='The End')errors.push('final English heading: '+JSON.stringify(end?.textContent.trim()));if(!btn||btn.textContent.trim()!=='Back to library')errors.push('final English action: '+JSON.stringify(btn?.textContent.trim()));if(!nav||!nav[1]?.disabled)errors.push('final English next-chapter button must be disabled');if(!r?.querySelector('.reader-hero')?.style.backgroundImage.includes('data:image/svg+xml'))errors.push('offline chapter art');document.body.setAttribute('data-storylens-qa',errors.length?'FAIL':'PASS');document.body.setAttribute('data-storylens-qa-errors',errors.join(' | '));document.body.setAttribute('data-stl-screenshot','verne37-en')})();""";
 tests["verne37-theme"] = r"""(function(){document.documentElement.lang='ar';document.documentElement.dir='rtl';const errors=[];try{openStory('around-the-world-in-eighty-days-towle');stlChapter(36);state.inline=false;inlineTranslate();closeSheet();document.body.classList.add('theme-meridian-epilogue')}catch(e){errors.push('theme reader setup: '+e.message)}const r=document.querySelector('.reader'),progress=r?.querySelector('.chapter-end .lt-serial-progress');if(!document.body.classList.contains('theme-meridian-epilogue')||!r||getComputedStyle(r).borderTopWidth!=='10px')errors.push('Meridian Epilogue did not style the reader');if(!r?.querySelector('h2')?.textContent.includes('حيث يتبيّن أن فيلياس فوج')||r.querySelectorAll('.inline-ar').length!==41)errors.push('themed Chapter XXXVII bilingual content');if(progress)errors.push('completed book should not show an incomplete-book availability note');if(!r?.querySelector('.reader-hero')?.style.backgroundImage.includes('data:image/svg+xml'))errors.push('offline chapter art');const rgb=v=>{const m=v.match(/\d+/g);return m?m.slice(0,3).map(Number):null};const lum=v=>{const f=v.map(n=>{n/=255;return n<=.04045?n/12.92:Math.pow((n+.055)/1.055,2.4)});return .2126*f[0]+.7152*f[1]+.0722*f[2]};const contrast=(a,b)=>{if(!a)return 0;const x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)};const worstBg=[16,46,43],en=r?.querySelector('.sentence'),ar=r?.querySelector('.inline-ar');if(!en||contrast(rgb(getComputedStyle(en).color),worstBg)<7)errors.push('English paragraph contrast below 7:1');if(!ar||contrast(rgb(getComputedStyle(ar).color),worstBg)<4.5)errors.push('Arabic inline translation contrast below 4.5:1');document.body.setAttribute('data-storylens-qa',errors.length?'FAIL':'PASS');document.body.setAttribute('data-storylens-qa-errors',errors.join(' | '));document.body.setAttribute('data-stl-screenshot','verne37-theme')})();""";
+
+
+# Long literature and the FreeDict pack are intentionally absent from startup.
+# Chromium verifies that each stays unloaded until its own user-facing path asks for it.
+tests["lazy-content"] = r"""(async function(){
+ const errors=[];
+ try{
+  const id='around-the-world-in-eighty-days-towle';
+  const story=catalog.stories.find(s=>s.id===id);
+  const resources=()=>performance.getEntriesByType('resource').map(x=>x.name);
+  const eager=()=>resources().filter(x=>/(classic-verne-towle-ch\\d+\\.js|editorial-art(?:-ch(?:35|36|37))?\\.js|freedict-en-ar\\.js)(?:[?#]|$)/.test(x));
+  if(!story||story.chapters.length!==0)errors.push('long book should start with chapter metadata only');
+  if(window.FreeDictEnglishArabic)errors.push('FreeDict should not be evaluated during startup');
+  if(eager().length)errors.push('deferred assets were fetched before use: '+eager().join(','));
+  await window.LinguaContentLoader.ensureDictionary();
+  if(!window.FreeDictEnglishArabic?.resolve('dog'))errors.push('on-demand FreeDict lookup failed');
+  if(story.chapters.length!==0)errors.push('dictionary load must not load the book');
+  if(eager().some(x=>/classic-verne|editorial-art/.test(x)))errors.push('dictionary request eagerly loaded book scripts');
+  await window.LinguaContentLoader.ensureStory(id);
+  if(story.chapters.length!==37)errors.push('book loader did not produce all 37 chapters');
+  if(!art[id+'_36'])errors.push('offline final-chapter illustration was not attached');
+  if(eager().filter(x=>/classic-verne-towle-ch\\d+\\.js/.test(x)).length!==36)errors.push('expected all 36 ordered chapter files after opening the book');
+ }catch(e){errors.push('loader exception: '+e.message)}
+ document.body.setAttribute('data-lt-lazy-qa',errors.length?'FAIL':'PASS');
+ document.body.setAttribute('data-lt-lazy-qa-errors',errors.join(' | '));
+})();""";
+
+for name,script in list(tests.items()):
+ if "openStory('around-the-world-in-eighty-days-towle')" not in script:
+  continue
+ if "(async function(){" not in script:
+  script=script.replace("(function(){","(async function(){",1)
+ marker="(async function(){"
+ if "await window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');" not in script:
+  script=script.replace(marker,marker+"await window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');",1)
+ if name=="flow":
+  script=script.replace("await window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');",
+                        "await window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');await window.LinguaContentLoader.ensureDictionary();",1)
+ tests[name]=script
 
 for name,script in tests.items():
  result=source.replace("</body>","<script>\n"+script+"\n</script>\n</body>")
