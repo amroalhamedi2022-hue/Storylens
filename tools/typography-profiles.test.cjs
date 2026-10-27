@@ -13,24 +13,28 @@ const source = shell.slice(start, end) + '\nglobalThis.__api={fontChoices,fontDe
 
 function harness(saved = {}) {
   const storage = {...saved};
-  const document = {documentElement:{dataset:{}}};
-  const calls = {saved:0,restored:[]};
+  const sentenceNodes = [];
+  const document = {
+    documentElement:{dataset:{},clientHeight:800},
+    querySelectorAll(selector) { return selector === '.reader .sentence' ? sentenceNodes : []; }
+  };
+  const calls = {restored:[]};
   const context = {
     document,
     state:{page:'library',story:null,chapter:0},
-    global:{scrollY:0},
+    global:{scrollY:0,innerHeight:800,
+      requestAnimationFrame(callback){callback();},
+      scrollTo(x,y){calls.restored.push(y);},
+      setTimeout(callback){callback();}},
     calls,
-    safeOffset(value){return value;},
-    savePosition(){calls.saved++;},
-    nextFrame(callback){callback();},
-    restoreReadingPosition(...args){calls.restored.push(args);},
+    sentenceNodes,
     get(key, fallback) { return Object.prototype.hasOwnProperty.call(storage,key) ? storage[key] : fallback; },
     put(key,value) { storage[key] = value; },
     storage
   };
   vm.createContext(context);
   vm.runInContext(source, context, {filename:'lingua-shell.js#typography',timeout:2000});
-  return {...context, api:context.__api, document, storage};
+  return {...context, api:context.__api, document, storage, sentenceNodes};
 }
 
 {
@@ -67,10 +71,22 @@ function harness(saved = {}) {
 }
 {
   const h = harness();
-  h.state.page='reader';h.state.story={id:'story-1'};h.state.chapter=2;h.global.scrollY=321;
+  let geometryRead=0;
+  h.state.page='reader';
+  h.state.story={id:'story-1',chapters:[{paragraphs:[]},{paragraphs:[]},{paragraphs:Array(8).fill('p')}]};
+  h.state.chapter=2;
+  h.global.scrollY=321;
+  h.sentenceNodes.push({
+    dataset:{i:'3'},
+    getBoundingClientRect(){
+      geometryRead++;
+      return geometryRead===1?{top:100,bottom:140}:{top:150,bottom:190};
+    }
+  });
   assert.equal(h.api.applyReadingSize('en','large'),true);
-  assert.equal(h.calls.saved,1,'typography changes save a semantic reading anchor');
-  assert.deepEqual(h.calls.restored,[['story-1',2,321]],'the same chapter and fallback position are restored after reflow');
+  assert.equal(h.storage['scroll_story-1_2'],321,'legacy scroll checkpoint is saved');
+  assert.deepEqual(h.calls.restored,[371],
+    'same paragraph remains at its prior viewport offset after simulated reflow');
 }
 {
   const h = harness();
