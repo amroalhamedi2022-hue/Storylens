@@ -140,7 +140,7 @@ assert.equal(usageExampleLabel.textContent,'Example from the story');
 assert.equal(usageClose.textContent,'Close');
 usageSave.click();
 assert.equal(usageFeedback.textContent,'Your sentence is saved and includes the expression. Review grammar and meaning yourself.');
-assert.equal(usageSentence.textContent,'The river was silent.','vocabulary practice keeps the source sentence unchanged');
+assert.equal(sourceSentence.textContent,'The river was silent.','vocabulary practice keeps the source sentence unchanged');
 
 document.documentElement.lang='ar';
 const unchanged=node('.review > h1','مراجعة المفردات');
