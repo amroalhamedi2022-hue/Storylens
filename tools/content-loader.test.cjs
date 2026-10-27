@@ -10,6 +10,15 @@ const artMatch=html.match(/<script id="artData" type="application\/json">([\s\S]
 assert.ok(artMatch,'static library art catalog exists');
 const initialArt=JSON.parse(artMatch[1]);
 assert.ok(initialArt['around-the-world-in-eighty-days-towle_0']?.startsWith('data:image/svg+xml'), 'Verne has a lightweight library-cover illustration before chapter assets load');
+const libraryMatch=html.match(/<script id="libraryData" type="application\\/json">([\\s\\S]*?)<\\/script>/);
+assert.ok(libraryMatch,'static library metadata exists');
+const initialLibrary=JSON.parse(libraryMatch[1]);
+const verneEntry=initialLibrary.stories.find(item=>item.id==='around-the-world-in-eighty-days-towle');
+assert.ok(verneEntry,'the long novel is discoverable before its chapter assets load');
+assert.equal(verneEntry.lazyBook,true,'the library uses a lightweight lazy-book placeholder');
+assert.equal(verneEntry.totalChapters,37);
+assert.equal(verneEntry.chapters.length,0,'chapter payload remains deferred at startup');
+
 
 const tags=[...html.matchAll(/<script\b([^>]*)><\/script>/g)].map(m=>{
  const attrs=m[1],src=attrs.match(/\bsrc="([^"]+)"/)?.[1],group=attrs.match(/\bdata-lt-lazy="([^"]+)"/)?.[1];
@@ -34,7 +43,10 @@ assert.ok(!/<script\b(?![^>]*data-lt-lazy)[^>]*\bsrc="(?:classic-verne-towle-ch\
 function makeHarness({failOnce=null,lang='ar'}={}) {
  const attempted=[], successful=[], removed=[], opened=[], sheetEntries=[];
  let failed=false, headingText=null, artAttached=0;
- const story={id:'around-the-world-in-eighty-days-towle',totalChapters:37,chapters:[]};
+ const story={id:'around-the-world-in-eighty-days-towle',title:'Around the World in Eighty Days',subtitle:'A wager, a globe, and eighty days',genre:'historical',level:'C1',description:'Authentic long-form novel.',totalChapters:37,chapters:[],terms:[]};
+ const catalogStory={id:story.id,title:story.title,subtitle:story.subtitle,genre:story.genre,level:story.level,description:story.description,totalChapters:37,lazyBook:true,chapters:[],terms:[]};
+ const catalog={stories:[catalogStory]};
+ const openedChapterCounts=[];
  const rootNode={inert:false,attrs:{},setAttribute(k,v){this.attrs[k]=String(v);},removeAttribute(k){delete this.attrs[k];}};
  const bodyChildren=[];
  function node(tag){
@@ -55,8 +67,9 @@ function makeHarness({failOnce=null,lang='ar'}={}) {
  }));
  const window={
   StoryLensEditorialStories:[story],
+  LinguaCatalog:catalog,
   LinguaAttachEditorialArt(){artAttached++;return true;},
-  openStory(id){opened.push(id);},
+  openStory(id){opened.push(id);if(id===story.id)openedChapterCounts.push(catalog.stories.find(item=>item.id===id)?.chapters.length??-1);},
   wordSheet(payload){headingText=payload.display;sheetEntries.push(payload);},
  };
  const document={
@@ -99,6 +112,9 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
  await h.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
  await tick();
  assert.equal(h.story.chapters.length,37,'chapter XXXI script contributes chapters XXXI and XXXII in order');
+ assert.equal(h.catalogStory.chapters.length,37,'verified chapters are merged into the visible library entry');
+ assert.equal(h.catalogStory.lazyBook,false,'the placeholder becomes the loaded book after validation');
+ assert.deepEqual(h.openedChapterCounts,[37],'the reader opens only after the catalog entry contains all chapters');
  assert.equal(h.opened[1],'around-the-world-in-eighty-days-towle','reader opens only after the bilingual book is ready');
  assert.equal(h.rootNode.inert,false,'library becomes interactive after load');
  assert.equal(h.artAttached,1,'contextual offline illustrations attach after all chapter data');
@@ -136,6 +152,7 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
  await retry.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
  await tick();
  assert.equal(retry.story.chapters.length,37,'retry resumes after already loaded chapters without duplication');
+ assert.equal(retry.catalogStory.chapters.length,37,'retry also publishes the complete book into the catalog');
  assert.ok(retry.opened.includes('around-the-world-in-eighty-days-towle'));
  console.log('PASS: LT-03 deferred local payload, ordered chapter loading, dictionary-on-demand, cancellation and retry');
 })().catch(error=>{console.error(error);process.exitCode=1;});
