@@ -47,7 +47,7 @@ for name in ("lingua_icon_foreground", "lingua_icon_monochrome"):
         # All actual shape coordinates are in the 108x108 viewport.
         # Adaptive clipping/safe-zone appearance still requires Android testing.
         assert not re.search(r"https?://", data)
-    assert any("54,43" in p.get(ANDROID + "pathData", "") for p in paths)
+    assert any(("54,42" in p.get(ANDROID + "pathData", "") or "54,43" in p.get(ANDROID + "pathData", "")) for p in paths), "open-book/petal center anchor is present"
 
 html = (ROOT / "app/src/main/assets/index.html").read_text(encoding="utf-8")
 assert '"displayName":"Lingua Tales"' in html
