@@ -13,15 +13,16 @@ vm.runInNewContext(shell.slice(helperStart, helperEnd) +
   '\nglobalThis.removeLegacyGenreFilters = removeLegacyGenreFilters;', context, { timeout: 2000 });
 
 let removed = 0;
-const filters = { remove() { removed++; } };
+let filterPresent = true;
+const filters = { remove() { removed++; filterPresent = false; } };
 const section = { querySelector(selector) {
   assert.equal(selector, '.filters');
-  return filters;
+  return filterPresent ? filters : null;
 }};
 assert.equal(context.removeLegacyGenreFilters(section), true);
+assert.equal(context.removeLegacyGenreFilters(section), false,
+  'repeated library decoration must not remove or recreate a duplicate filter row');
 assert.equal(removed, 1, 'only the obsolete duplicate genre row is removed');
-assert.equal(context.removeLegacyGenreFilters({ querySelector: () => null }), false,
-  'a missing legacy row is a safe no-op');
 
 const decorateStart = shell.indexOf('function decorateLibrary()');
 const decorateEnd = shell.indexOf('\nlibrary=function()', decorateStart);
@@ -53,4 +54,62 @@ for (const required of [
   'Remove from favorites', 'Add to favorites', 'Visible stories:',
   'No matching favorites.', 'No stories match this level and genre.'
 ]) assert.ok(discovery.includes(required), 'bilingual discovery control missing: ' + required);
+
+/* Exercise the real drawer open/close functions with a tiny DOM contract. */
+const closeStart = shell.indexOf('function closeDrawer(');
+const openStart = shell.indexOf('\nfunction openDrawer()', closeStart);
+const moveStart = shell.indexOf('\nfunction moveDiscovery()', openStart);
+assert.ok(closeStart >= 0 && openStart > closeStart && moveStart > openStart,
+  'production drawer lifecycle functions must remain contiguous and testable');
+const drawerFocus = { close: 0, toggle: 0 };
+const closeButton = { focus() { drawerFocus.close++; } };
+const drawerClasses = new Set();
+const backdropClasses = new Set();
+const drawerAttrs = {};
+const toggleAttrs = {};
+const drawer = {
+  classList: { add(v) { drawerClasses.add(v); }, remove(v) { drawerClasses.delete(v); } },
+  inert: true,
+  setAttribute(name, value) { drawerAttrs[name] = String(value); },
+  getAttribute(name) { return drawerAttrs[name] ?? null; },
+  querySelector(selector) { assert.equal(selector, 'button'); return closeButton; }
+};
+const backdrop = { classList: { add(v) { backdropClasses.add(v); }, remove(v) { backdropClasses.delete(v); } } };
+const toggle = {
+  setAttribute(name, value) { toggleAttrs[name] = String(value); },
+  getAttribute(name) { return toggleAttrs[name] ?? null; },
+  focus() { drawerFocus.toggle++; }
+};
+const drawerNodes = new Map([
+  ['lt-drawer', drawer], ['lt-drawer-backdrop', backdrop], ['lt-menu-toggle', toggle]
+]);
+const drawerContext = {
+  document: { getElementById(id) { return drawerNodes.get(id) || null; } },
+  state: { page: 'library' }
+};
+vm.runInNewContext('let opened=false;\n' +
+  shell.slice(closeStart, moveStart) +
+  '\nglobalThis.drawerApi={openDrawer,closeDrawer,isOpen:()=>opened};',
+  drawerContext, { timeout: 2000 });
+assert.equal(drawerContext.drawerApi.openDrawer(), true);
+assert.equal(drawerContext.drawerApi.isOpen(), true);
+assert.ok(drawerClasses.has('open'));
+assert.equal(drawerAttrs['aria-hidden'], 'false');
+assert.equal(drawer.inert, false);
+assert.ok(backdropClasses.has('open'));
+assert.equal(toggleAttrs['aria-expanded'], 'true');
+assert.equal(drawerFocus.close, 1, 'opening the drawer moves focus inside it');
+assert.equal(drawerContext.drawerApi.closeDrawer(), true);
+assert.equal(drawerContext.drawerApi.isOpen(), false);
+assert.ok(!drawerClasses.has('open'));
+assert.equal(drawerAttrs['aria-hidden'], 'true');
+assert.equal(drawer.inert, true);
+assert.ok(!backdropClasses.has('open'));
+assert.equal(toggleAttrs['aria-expanded'], 'false');
+assert.equal(drawerFocus.toggle, 1, 'closing the drawer restores focus to its toggle');
+drawerContext.state.page = 'reader';
+assert.equal(drawerContext.drawerApi.openDrawer(), false, 'drawer cannot open over the reader');
+drawerNodes.delete('lt-drawer');
+assert.equal(drawerContext.drawerApi.closeDrawer(), false, 'missing drawer is a safe no-op');
+
 console.log('PASS: LT-06 localized discovery labels and single genre-navigation surface');
