@@ -83,8 +83,8 @@ function installPageTurn(){
  sentenceBox.replaceChildren(...pages);
  const pageControls=document.createElement('nav');
  pageControls.className='lt-page-controls';
- pageControls.setAttribute('aria-label','التنقل بين صفحات القصة');
- pageControls.innerHTML='<button type="button" class="secondary lt-page-prev">السابق</button><span class="lt-page-count" aria-live="polite"></span><button type="button" class="primary lt-page-next">الصفحة التالية</button>';
+ pageControls.setAttribute('aria-label',uiText('التنقل بين صفحات القصة','Story page navigation'));
+ pageControls.innerHTML='<button type="button" class="secondary lt-page-prev">'+uiText('السابق','Previous')+'</button><span class="lt-page-count" aria-live="polite"></span><button type="button" class="primary lt-page-next">'+uiText('الصفحة التالية','Next page')+'</button>';
  sentenceBox.insertAdjacentElement('afterend',pageControls);
  const key='readpage_'+state.story.id+'_'+state.chapter;
  const initial=Number(get(key,0));
@@ -103,7 +103,7 @@ function installPageTurn(){
   next.textContent=current===pages.length-1
    ?(state.chapter<state.story.chapters.length-1?'الفصل التالي':'العودة للمكتبة')
    :'الصفحة التالية';
-  countLabel.textContent='الصفحة '+(current+1)+' من '+pages.length;
+  countLabel.textContent=uiText('الصفحة '+(current+1)+' من '+pages.length,'Page '+(current+1)+' of '+pages.length);
   put(key,current);
   if(chapterEnd)chapterEnd.hidden=current!==pages.length-1;
   if(animate&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
@@ -136,7 +136,8 @@ function installPageTurn(){
   const dx=event.changedTouches[0].clientX-startX;
   const dy=event.changedTouches[0].clientY-startY;
   if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.25)return;
-  move(dx<0?1:-1);
+  const rtl=document.documentElement.dir==='rtl';
+  move((rtl?dx>0:dx<0)?1:-1);
  },{passive:true});
  renderPage('next',false);
 }
