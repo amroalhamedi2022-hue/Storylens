@@ -303,6 +303,22 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne33-theme-phone.png" "file://$PWD/app/src/main/assets/qa-verne33-theme.html" >/tmp/chrome-verne33-theme.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --dump-dom "file://$PWD/app/src/main/assets/qa-verne33-theme.html" > /tmp/storylens-verne33-theme-dom.html 2>/tmp/chrome-verne33-theme-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne33-theme-dom.html || { echo "Atlantic Passage visual fixture failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne33-theme-dom.html | head -1; exit 1; }
+
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne34-phone.png" "file://$PWD/app/src/main/assets/qa-verne34.html" >/tmp/chrome-verne34.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --dump-dom "file://$PWD/app/src/main/assets/qa-verne34.html" > /tmp/storylens-verne34-dom.html 2>/tmp/chrome-verne34-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne34-dom.html || { echo "Chapter XXXIV Arabic reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne34-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXXIV Arabic reader, 22 aligned inline translations and honest 34-of-37 boundary"
+
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne34-en-phone.png" "file://$PWD/app/src/main/assets/qa-verne34-en.html" >/tmp/chrome-verne34-en.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --dump-dom "file://$PWD/app/src/main/assets/qa-verne34-en.html" > /tmp/storylens-verne34-en-dom.html 2>/tmp/chrome-verne34-en-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne34-en-dom.html || { echo "Chapter XXXIV English reader failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne34-en-dom.html | head -1; exit 1; }
+          echo "PASS: Chapter XXXIV English reader journey"
+
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne34-theme-phone.png" "file://$PWD/app/src/main/assets/qa-verne34-theme.html" >/tmp/chrome-verne34-theme.log 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --dump-dom "file://$PWD/app/src/main/assets/qa-verne34-theme.html" > /tmp/storylens-verne34-theme-dom.html 2>/tmp/chrome-verne34-theme-dom.log
+          grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne34-theme-dom.html || { echo "The Last Five Minutes visual fixture failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne34-theme-dom.html | head -1; exit 1; }
+          echo "PASS: The Last Five Minutes clock-face theme styles the bilingual reader"
+
           echo "PASS: Atlantic Passage theme styles the Chapter XXXIII reader in RTL"
 
 
