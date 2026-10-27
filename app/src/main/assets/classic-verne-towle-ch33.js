@@ -2,7 +2,7 @@
  * Upstream commit: 56c82e97ff5d4f8950afca05b71af72688a8da34; source blob: 22da80571dce2d37f9bfb1612f1c96ab9331c3c9; source path: src/epub/text/chapter-33.xhtml.
  * Standard Ebooks editorial transcription is CC0; Towle's 1873 English translation is public domain in the US.
  * Territory-specific redistribution clearance and independent Arabic literary review remain NOT TESTED.
- * 67 narrative paragraphs / 2482 English words; normalized English SHA-256: c575cc82b383cc32f87ec58929f92dac3e152f9ab42025c859bf4897b5337f32.
+ * 67 narrative paragraphs / 2482 English words; normalized English SHA-256: baebea11a8d79e4458973a88d541efe432a4f1723718ce6cd4d53234601db441.
  */
 (function(g){'use strict';
 const s=(g.StoryLensEditorialStories||[]).find(x=>x.id==='around-the-world-in-eighty-days-towle');

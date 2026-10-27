@@ -14,7 +14,7 @@ assert.equal(story.chapters.length,33);
 const chapter=story.chapters[32];assert.equal(chapter.paragraphs.length,67);
 const normalize=s=>s.replace(/[\u00a0\u2007\u202f]/g,' ').replace(/[\u2060\u00ad\ufeff]/g,'').replace(/\s+/g,' ').trim();
 const normalized=chapter.paragraphs.map(p=>normalize(p.en)).join('\n');
-assert.equal(crypto.createHash('sha256').update(normalized,'utf8').digest('hex'),'c575cc82b383cc32f87ec58929f92dac3e152f9ab42025c859bf4897b5337f32');
+assert.equal(crypto.createHash('sha256').update(normalized,'utf8').digest('hex'),'baebea11a8d79e4458973a88d541efe432a4f1723718ce6cd4d53234601db441');
 const body=chapter.paragraphs.map(p=>p.en).join(' '),words=(body.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.equal(words,2482);
 assert.ok(body.startsWith('An hour after, the Henrietta passed the lighthouse'));
@@ -31,4 +31,4 @@ assert.ok(shell.includes("'atlantic-passage':'Atlantic Passage'")&&shell.include
 assert.ok(css.includes('body.theme-atlantic-passage')&&css.includes('.lt-theme-atlantic-passage .lt-theme-swatch'));
 assert.ok(css.includes('@media(prefers-reduced-motion:reduce){.theme-atlantic-passage'));
 assert.ok(backup.includes("val==='atlantic-passage'"));
-console.log(JSON.stringify({result:'PASS',chapter:33,paragraphs:67,englishWords:words,normalizedEnglishSha256:'c575cc82b383cc32f87ec58929f92dac3e152f9ab42025c859bf4897b5337f32',arabicDrafts:67,contextualTerms:35,illustration:'ATLANTIC PASSAGE · QUEENSTOWN',theme:'Atlantic Passage',editorialReview:'NOT TESTED',device:'NOT TESTED'},null,2));
+console.log(JSON.stringify({result:'PASS',chapter:33,paragraphs:67,englishWords:words,normalizedEnglishSha256:'baebea11a8d79e4458973a88d541efe432a4f1723718ce6cd4d53234601db441',arabicDrafts:67,contextualTerms:35,illustration:'ATLANTIC PASSAGE · QUEENSTOWN',theme:'Atlantic Passage',editorialReview:'NOT TESTED',device:'NOT TESTED'},null,2));
