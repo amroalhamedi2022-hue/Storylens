@@ -127,5 +127,5 @@ assert.equal(window.scrollY, 0, 'corrupt scroll is clamped');
 sandbox.libraryBack(); flush();
 assert.equal(state.page, 'library');
 assert.equal(window.scrollY, 25);
-assert.equal(backs, 22);
+assert.equal(backs, 24);
 console.log('PASS: LT-02 production navigation: 20 cycles, rapid Back, scroll, focus, translation and reduced motion');
