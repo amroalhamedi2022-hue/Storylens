@@ -2148,3 +2148,21 @@ body.theme-meridian-epilogue::after{display:none!important}
 .theme-meridian-epilogue .lt-theme-choice.selected{outline:3px solid #d69a69;outline-offset:2px}
 @media(max-width:600px){.theme-meridian-epilogue .library .header{padding:15px}.theme-meridian-epilogue .library .header::after{font-size:8px}.theme-meridian-epilogue .reader .reading-width{padding-inline-start:12px}}
 @media(prefers-reduced-motion:reduce){.theme-meridian-epilogue .library .card{transition:none!important;transform:none!important}}
+
+
+/* Reduced-motion acceptance for the three newest editorial themes.
+ * Base card hover transforms and theme-specific clockwork/orb motion must not
+ * reappear when a user explicitly asks the OS to reduce motion. */
+@media(prefers-reduced-motion:reduce){
+ .theme-mosaic-courtyard .library .card,
+ .theme-mosaic-courtyard .library .card:hover,
+ .theme-mosaic-courtyard .library .storylens-hero .hero-orb,
+ .theme-saville-clockwork .library .card,
+ .theme-saville-clockwork .library .card:hover,
+ .theme-saville-clockwork .library .storylens-hero .hero-orb,
+ .theme-station-tickets .library .card,
+ .theme-station-tickets .library .card:hover,
+ .theme-station-tickets .library .storylens-hero .hero-orb{
+  animation:none!important;transition:none!important;transform:none!important
+ }
+}
