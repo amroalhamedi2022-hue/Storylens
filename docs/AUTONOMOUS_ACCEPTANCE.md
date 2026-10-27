@@ -1306,3 +1306,8 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - **Device:** Xiaomi Pad 5 page-fit/page-turn smoothness, gesture conflicts with text selection, Arabic RTL/TalkBack, install-over-update signing, and real-world contextual-meaning accuracy remain **NOT TESTED**.
 - **Literature:** existing *Around the World in Eighty Days* is a long serialized book with chapter-by-chapter source/provenance checks. Further mystery novels should be added as coherent reviewed batches with bilingual alignment, source/license provenance and a non-fabricated completion state; no new copyrighted full text was copied in this UX fix batch.
 - **Acceptance status:** LT-01..LT-13 remain IN PROGRESS; this is not a final release.
+
+
+- **Follow-up:** page controls now follow English/Arabic UI labels and swipe direction (LTR: swipe left for next; RTL: swipe right for next). The selector's Unicode ranges were corrected to match actual Arabic characters rather than escaped literal text.
+- **Latest source head:** `df48a9fd8e6f31bb5ebf22d663b6b4009c88214a`.
+- **Workflow lookup:** the connected commit-run query returned no rows for this head; CI therefore remains **NOT VERIFIED**, not PASS. Confirm the actual Actions run and test output before distributing any APK.
