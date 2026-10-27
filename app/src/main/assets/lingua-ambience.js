@@ -265,7 +265,13 @@ function controls(sheet,rtl){
 }
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pause().catch(()=>{});});
 global.addEventListener('pagehide',()=>{pause().catch(()=>{});});
-document.addEventListener('click',event=>{if(event.target?.closest?.('button'))clickSound();});
+document.addEventListener('click',event=>{
+ const button=event.target?.closest?.('button');
+ // Audio controls own their focus/playback lifecycle. A bubbling click on Play/Pause
+ // must not race a second one-shot focus request against the explicit user action.
+ if(!button||button.closest?.('.lt-audio-settings'))return;
+ clickSound();
+});
 global.LinguaAmbience={SCENES:SCENES.map(s=>({id:s[0],en:s[1],ar:s[2],type:s[6]||'ambience'})),
  controls,play,pause,pauseFromNative,onNativeAudioFocusLoss,selectScene,setVolume,setSfx,setSfxVolume,clickSound,
  prefs:()=>({...prefs}),isPlaying:()=>playing,hasContext:()=>!!context};

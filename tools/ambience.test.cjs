@@ -73,6 +73,12 @@ assert.equal(created,0,'no audio created by settings change');
  await audio.pause();
  assert.equal(audio.isPlaying(),false);
  assert.equal(intervals.size,0,'pause releases any melodic timer');
+ // A bubbling click on the ambience Pause/Play control must not schedule a second
+ // one-shot SFX or resume the just-paused AudioContext behind the user's back.
+ const startsBeforeAudioControlClick=starts;
+ const audioSettingsButton={closest(selector){return selector==='.lt-audio-settings'?{}:null;}};
+ listeners['doc:click']({target:{closest(selector){return selector==='button'?audioSettingsButton:null;}}});
+ assert.equal(starts,startsBeforeAudioControlClick,'audio settings clicks must not race their own pause/play lifecycle');
  assert.equal(await audio.play(),true);
  document.hidden=true;
  listeners['doc:visibilitychange']();
