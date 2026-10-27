@@ -138,7 +138,7 @@ function installPageTurn(){
  sentenceBox.addEventListener('touchstart',event=>{
   if(event.touches?.length!==1){resetTouch();return;}
   const target=event.target;
-  const selected=window.getSelection?.().toString()||'';
+  const selected=window.getSelection?.()?.toString()||'';
   if(!pageSwipeAllowed(target,selected)){resetTouch();return;}
   startTarget=target;
   startX=event.touches[0].clientX;startY=event.touches[0].clientY;
@@ -147,7 +147,7 @@ function installPageTurn(){
   if(event.changedTouches?.length!==1||startX===null||startY===null){resetTouch();return;}
   const dx=event.changedTouches[0].clientX-startX;
   const dy=event.changedTouches[0].clientY-startY;
-  const selected=window.getSelection?.().toString()||'';
+  const selected=window.getSelection?.()?.toString()||'';
   const allowed=pageSwipeAllowed(startTarget,selected);
   resetTouch();
   if(!allowed||Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.25)return;
