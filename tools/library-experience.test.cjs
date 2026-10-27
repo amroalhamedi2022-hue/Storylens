@@ -145,7 +145,8 @@ const shellState={page:'library',uiTheme:'nebula'};
 const shellSandbox={
  window:shellWindow,document:shellDocument,state:shellState,
  catalog:{genres:[]},library(){},closeSheet(){},filterGenre(){},
- put(k,v){shellStore.set(k,v);},Date,console
+ put(k,v){shellStore.set(k,v);},
+ safeOffset(value){return Number.isFinite(value)?Math.max(0,Math.min(10000000,value)):0;},Date,console
 };
 vm.runInNewContext(shellJs,shellSandbox,{filename:'lingua-shell.js',timeout:5000});
 const shell=shellWindow.LinguaShell;
