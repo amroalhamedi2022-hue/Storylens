@@ -96,7 +96,7 @@ function makeHarness({failOnce=null,lang='ar'}={}) {
   }}
  };
  vm.runInNewContext(source,{window,document,Promise,Set,Array,Error,console},{filename:'lingua-content-loader.js',timeout:5000});
-  return {window,document,rootNode,story,catalog,catalogStory,openedChapterCounts,attempted,successful,removed,opened,sheetEntries,bodyChildren,get artAttached(){return artAttached;},get statusText(){return bodyChildren.map(x=>x.text||x.textContent||'').join(' ')};};
+  return {window,document,rootNode,story,catalog,catalogStory,openedChapterCounts,attempted,successful,removed,opened,sheetEntries,bodyChildren,get artAttached(){return artAttached;},get statusText(){return bodyChildren.map(x=>x.text||x.textContent||'').join(' ');}};
 }
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 (async()=>{
