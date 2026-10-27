@@ -125,6 +125,16 @@ async function loadBook() {
         chapter.paragraphs.some(paragraph => !paragraph.en?.trim() || !paragraph.ar?.trim()))) {
     throw new Error('Offline bilingual chapter catalog is incomplete');
   }
+  // The first chapter is lazy-loaded, so the library starts with a lightweight
+  // metadata placeholder. Merge the verified loaded object into that same
+  // catalog entry before the original openStory callback looks it up.
+  const catalog = global.LinguaCatalog;
+  if (!catalog || !Array.isArray(catalog.stories)) {
+    throw new Error('Offline library catalog is unavailable');
+  }
+  const catalogStory = catalog.stories.find(item => item.id === BOOK_ID);
+  if (catalogStory) Object.assign(catalogStory, story, { lazyBook: false });
+  else catalog.stories.push(story);
   return true;
 }
 function ensureStory(id) {
