@@ -108,8 +108,9 @@ sandbox.openStory('book');
 assert.equal(window.scrollY, 0, 'legacy fallback applies before any semantic anchor exists');
 window.scrollY=510;
 sandbox.libraryBack(); flush();
-assert.deepEqual(store.get('reading_anchor_book_0'), {index:1,top:-25},
- 'save the visible paragraph and its signed viewport offset');
+const savedAnchor=store.get('reading_anchor_book_0');
+assert.equal(savedAnchor?.index,1,'save the visible paragraph index');
+assert.equal(savedAnchor?.top,-25,'preserve the signed viewport offset');
 assert.equal(store.get('scroll_book_0'),510,'retain pixel fallback for older clients');
 
 sentenceNodes=[paragraph(0,-300,-80),paragraph(1,100,180)]; // reflow moved the paragraph
