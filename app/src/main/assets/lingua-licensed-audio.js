@@ -168,7 +168,7 @@ function controls(sheet,rtl){
  sheet.appendChild(section);
  return section;
 }
-function onNativeAudioFocusLoss(){pause({keepFocus:true}).catch(()=>{});}
+function onNativeAudioFocusLoss(){focusOwned=false;pause({keepFocus:true}).catch(()=>{});}
 if(doc&&typeof doc.addEventListener==='function'){
  doc.addEventListener('visibilitychange',()=>{if(doc.hidden)pause().catch(()=>{});});
 }
@@ -186,6 +186,9 @@ if(procedural&&!procedural.__licensedAudioBridge){
  const originalLoss=procedural.onNativeAudioFocusLoss;
  procedural.onNativeAudioFocusLoss=function(...args){
   pause({keepFocus:true}).catch(()=>{});
+  // The original procedural handler releases the native grant after this wrapper.
+  // Clear our local ownership bit so the next licensed play must reacquire focus.
+  focusOwned=false;
   if(typeof originalLoss==='function')return originalLoss.apply(this,args);
  };
  procedural.__licensedAudioBridge=true;
