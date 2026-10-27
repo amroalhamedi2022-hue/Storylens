@@ -118,6 +118,7 @@ jobs:
           node tools/bookmark-navigation.test.cjs
           node tools/semantic-bookmarks.test.cjs
           node tools/reader-experience.test.cjs
+          node tools/contextual-page-turn.test.cjs
           node tools/story-transitions.test.cjs
           node tools/data-backup.test.cjs
       - name: Run tests and assemble installable APK
