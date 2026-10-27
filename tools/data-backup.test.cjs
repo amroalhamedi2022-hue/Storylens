@@ -254,8 +254,18 @@ console.log('PASS: offline JSON schema, restore, rollback data preservation, uns
  currentConfirm.events.click();
  assert.equal(local.getItem('storylens_uiLocale'),'"ar"','latest preview restored');
  assert.equal(elements.get('library-actions').children.at(-1).textContent,'⤓ نسخ احتياطي');
+ doc.documentElement.lang='en';
  assert.equal(backupApi.receiveImport('invalid JSON'),false,
   'bad follow-up import is rejected without restoring stale data');
+ assert.equal(elements.get('stl-backup-feedback').textContent,'This is not valid JSON.',
+  'English UI localizes the production JSON validation error');
+ const unsupported=JSON.stringify({format:'unsupported',version:1,entries:{}});
+ assert.equal(backupApi.receiveImport(unsupported),false);
+ assert.equal(elements.get('stl-backup-feedback').textContent,'This backup format is not supported.');
+ doc.documentElement.lang='ar';
+ assert.equal(backupApi.receiveImport('invalid JSON'),false);
+ assert.equal(elements.get('stl-backup-feedback').textContent,'هذا ليس ملف JSON صالحًا.',
+  'Arabic UI retains the Arabic validation error');
 }
 console.log('PASS: LT-06 bilingual backup UI and immediate restored locale/fonts');
 
