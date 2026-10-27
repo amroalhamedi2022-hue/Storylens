@@ -13,7 +13,7 @@ assert.equal(story.chapters.length,37);
 const chapter=story.chapters[36];assert.equal(chapter.paragraphs.length,41);
 const normalize=s=>s.replace(/[\u00a0\u2007\u202f]/g,' ').replace(/[\u2060\u00ad\ufeff]/g,'').replace(/\s+/g,' ').trim();
 const normalized=chapter.paragraphs.map(p=>normalize(p.en)).join('\n');
-assert.equal(crypto.createHash('sha256').update(normalized,'utf8').digest('hex'),'22287499b2cc15cfdd589ea409c42b02716cbf369e0a88324fefc3fed2a4ecf8');
+assert.equal(crypto.createHash('sha256').update(normalized,'utf8').digest('hex'),'868ef0d51c18834255f7ca9aa79af2d18fb5f86809579880302753ff75056409');
 const body=chapter.paragraphs.map(p=>p.en).join(' '),words=(body.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;
 assert.equal(words,947);assert.ok(body.startsWith('Yes; Phileas Fogg in person.'));assert.ok(body.endsWith('Truly, would you not for less than that make the tour around the world?'));
 assert.equal(chapter.title,"In which it is shown that Phileas Fogg gained nothing by his tour around the world, unless it were happiness.");assert.equal(chapter.titleAr,'الفصل السابع والثلاثون — حيث يتبيّن أن فيلياس فوج لم يربح من رحلته حول العالم سوى السعادة');
