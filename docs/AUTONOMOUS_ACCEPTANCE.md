@@ -1126,3 +1126,13 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - APK Artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40448838238/artifacts/12709542775
 - Browser screenshots: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40448838238/artifacts/12709138752
 - **NOT TESTED:** physical Xiaomi Pad 5 install/touch, frame pacing/RAM/thermal, TalkBack and physical RTL/contrast, independent Arabic literary review, and territory-specific redistribution clearance. The curated externally licensed ~20-recording audio library remains open; procedural melodies do not satisfy it. This is a Debug test build, not a final release, and the milestone does not mark LT-01..LT-13 complete.
+
+
+## 2026-10-27 — Chapter XXXVI + Reform Club Countdown (CI pending; device NOT TESTED)
+
+- Added pinned Standard Ebooks Towle Chapter XXXVI: 30 narrative paragraphs / 1,060 English words, 30 aligned Arabic drafts and 26 contextual glossary entries. Normalized English SHA-256: `ebb586929c9c278c7191447c1bc99152e2ad83754a6c25844325372d3a9387cf`.
+- Added original offline Reform Club countdown artwork and the visually distinct **Reform Club Countdown** theme, including theme selection, backup validation and reduced-motion fallback.
+- Chapter XXXV navigation now leads to XXXVI; the serial remains explicitly incomplete at 36/37.
+- **Purposeful build question:** do the new chapter and theme survive APK asset packaging, and do Arabic/LTR reader journeys, the final chapter boundary and theme styling pass together? Source checks alone cannot establish packaging/rendered integration.
+- **CI:** pending run `40451608622` on source/test head `7d99deca03e98395b383876b3243241e6348a3eb`. No new APK is claimed until this run completes successfully.
+- **NOT TESTED:** Xiaomi Pad 5 installation/touch/performance, hardware RTL/accessibility, independent Arabic literary review, territory-specific redistribution rights, and the curated licensed audio library. This is not a final release; LT-01..LT-13 remain incomplete as a whole.

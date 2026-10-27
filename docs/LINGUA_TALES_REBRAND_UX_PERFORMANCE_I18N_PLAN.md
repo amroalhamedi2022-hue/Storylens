@@ -232,3 +232,11 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - APK Artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40448838238/artifacts/12709542775
 - Browser screenshots: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40448838238/artifacts/12709138752
 - **NOT TESTED:** physical Xiaomi Pad 5 install/touch, frame pacing/RAM/thermal, TalkBack and physical RTL/contrast, independent Arabic literary review, and territory-specific redistribution clearance. The curated externally licensed ~20-recording audio library remains open; procedural melodies do not satisfy it. This is a Debug test build, not a final release, and the milestone does not mark LT-01..LT-13 complete.
+
+
+## 2026-10-27 — Functional milestone: Chapter XXXVI + Reform Club Countdown
+
+- LT-07/LT-08/LT-13 source milestone implemented: authentic Towle Chapter XXXVI, 30 bilingual paragraph pairs (Arabic draft), 26 contextual glossary entries, offline SVG illustration, and a separate high-contrast clock/ticker theme.
+- The production catalog, theme selector, backup allowlist, Android asset verifier, source regression and Chromium RTL/LTR/theme fixtures are wired to the new chapter.
+- The serial is **36/37 chapters available**; Chapter XXXVII and all remaining LT-01..LT-13 acceptance work are still open. Do not mark the product complete based on this content milestone.
+- **Build purpose:** verify Android packaging and rendered bilingual/theme navigation after the new source/assets and updated chapter boundary. CI is pending; physical-device acceptance remains NOT TESTED.

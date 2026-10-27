@@ -425,3 +425,15 @@ merely because its title is present in a roadmap.
 - **Art/theme:** original offline SVG of Westminster's clock above Saville Row and paired rings; distinct **Westminster Vows** theme with oxblood/ivory/brass palette, reduced-motion fallback and backup allowlist. No remote art is bundled.
 - **Rights:** the pinned Standard Ebooks license says the text/artwork are believed public domain in the United States and contributors dedicate their contributions worldwide under CC0 1.0. Other-territory redistribution clearance remains **NOT TESTED**. The Arabic translation is a draft requiring independent literary review.
 - **CI evidence:** https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40448838238 — PASS; Debug APK SHA-256 `63a59994a24ab43366936f755f25e1d05b02858e0e41631557fb41a0021ba3c3`.
+
+
+## 2026-10-27 — Towle Chapter XXXVI: Reform Club Countdown (CI pending)
+
+- **Asset:** `app/src/main/assets/classic-verne-towle-ch36.js`; 30 complete narrative paragraphs / 1,060 English words, 30 aligned Arabic companion drafts, and 26 contextual word/phrase/idiom entries.
+- **Pinned source:** Standard Ebooks, George Makepeace Towle translation, `src/epub/text/chapter-36.xhtml`; upstream commit `56c82e97ff5d4f8950afca05b71af72688a8da34`; source blob SHA-1 `04892fb62e2a79732e13ad18620a0d9ec8f98189`.
+- **Normalized English SHA-256:** `ebb586929c9c278c7191447c1bc99152e2ad83754a6c25844325372d3a9387cf`; regression recomputes this digest and checks the paragraph and word counts.
+- **Art/theme:** original offline SVG of the Reform Club clock, final seconds and London crowd; distinct **Reform Club Countdown** theme with midnight-blue/scarlet/ivory palette, backup allowlist entry and reduced-motion fallback. No remote image or third-party art is bundled.
+- **Rights:** Standard Ebooks editorial contribution is CC0; Towle's 1873 English translation is treated as public domain in the USA. Territory-specific redistribution clearance remains **NOT TESTED**. Arabic is an unreviewed draft requiring independent literary review.
+- **Integration:** Chapter XXXV now navigates to XXXVI. Chapter XXXVI is the honest current endpoint at 36/37; XXXVII remains unavailable until its content is added.
+- **CI:** pending run `40451608622` on source/test head `7d99deca03e98395b383876b3243241e6348a3eb`.
+- **NOT TESTED:** physical Xiaomi Pad 5 install/touch, frame pacing/RAM/thermal, TalkBack and hardware RTL/contrast, independent Arabic literary review, and territory-specific rights. Chromium/CI screenshots are not device captures; this is not a final release.
