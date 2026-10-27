@@ -18,6 +18,31 @@ function exact(selector, replacements) {
  });
 }
 function backLabel(selector) { label(selector, '← Library'); }
+function localizeLibrary() {
+ if (state.page !== 'library') return;
+ const set = (selector, ar, en) => {
+  const node = find(selector);
+  if (node) node.textContent = english() ? en : ar;
+ };
+ // The hero is created by the reader enhancement after the base library render.
+ // Localize it after that render so switching locale never leaves mixed-language chrome.
+ set('.storylens-hero .hero-eyebrow',
+  'LINGUA TALES · قراءة غامرة', 'LINGUA TALES · IMMERSIVE READING');
+ set('.storylens-hero .hero-content > h2',
+  'انغمس في حكاية تستحق القراءة.', 'Lose yourself in a good story.');
+ set('.storylens-hero .hero-content > p',
+  'قصص ناضجة، وأسرار تستحق الاكتشاف، وإنجليزية تتعلمها من الأحداث نفسها.',
+  'Mature stories, mysteries worth discovering, and English learned through the story itself.');
+ each('.storylens-hero .hero-metrics span', node => {
+  const text = node.textContent.trim();
+  let match = text.match(/^(\d+)\s+STORIES$/i);
+  if (match) { node.textContent = english() ? match[1] + ' STORIES' : match[1] + ' قصة'; return; }
+  match = text.match(/^(\d+)\s+GENRES$/i);
+  if (match) { node.textContent = english() ? match[1] + ' GENRES' : match[1] + ' تصنيف'; return; }
+  if (/^100%\s+OFFLINE$/i.test(text))
+   node.textContent = english() ? '100% OFFLINE' : '100% دون إنترنت';
+ });
+}
 function localizeReader() {
  if (!english() || state.page !== 'reader') return;
  backLabel('.reader .toolbar button[onclick="libraryBack()"]');
@@ -167,11 +192,11 @@ function wrap(name, after) {
 }
 // Top-level script functions are exposed on Window in the Android WebView.
 for (const [name, callback] of [
- ['renderReader', localizeReader], ['settings', localizeSettings],
+ ['library', localizeLibrary], ['renderReader', localizeReader], ['settings', localizeSettings],
  ['wordSheet', localizeWordSheet], ['showWords', localizeWords],
  ['renderReview', localizeReview], ['fullTranslation', localizeTranslation],
  ['openUsage', localizeUsage]
 ]) wrap(name, callback);
-global.LinguaI18n = {localizeReader, localizeSettings, localizeWordSheet,
+global.LinguaI18n = {localizeLibrary, localizeReader, localizeSettings, localizeWordSheet,
  localizeWords, localizeReview, localizeTranslation};
 })(window);
