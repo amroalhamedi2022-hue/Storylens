@@ -276,3 +276,12 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - **PASS — Android CI run 40533628521**, source/test head cb102c186f7b5dabd5c9d444183809ffc56b2596: licensed-asset fetch/verification, Node/content tests, Gradle tests + Debug APK, packaged audio/license/manifest checks, and Chromium reader journeys passed.
 - **PASS — independently re-hashed Debug APK:** 20,050,454 bytes; SHA-256 e1bdd4eda45dcc90961957c252bbfd2f3ca7a044903cbd2f49dc66f5eabd5c62, matching APK_SHA256.txt from Artifact **12747891165**. Screenshot Artifact **12746174907**.
 - **NOT TESTED:** Xiaomi Pad 5 installation, audible quality, Android Audio Focus interruption/screen-off behavior, battery/thermal/frame pacing, TalkBack/physical RTL, and literary/legal review. Source/CI confirms a pinned licensed pack, not real-device acoustic acceptance. LT-01..LT-13 remain **IN PROGRESS** overall; this is a Debug test build, not final.
+
+
+## 2026-10-27 — LT-01/LT-03 long-book discovery and safe lazy publication
+
+- Source review found that the 37-chapter Towle novel's chapters were declared as inert lazy scripts and its cover existed in the art catalog, but the initial library catalog had no story entry for it. The reader's lazy loader therefore had no visible card to open from the normal library.
+- Added a lightweight, bilingual-library-visible metadata placeholder with the authentic title, level, historical genre, cover, source provenance, and expected chapter count; the 37-chapter payload remains deferred.
+- Exposed the catalog to the loader and merge the fully validated 37-chapter story into the existing placeholder before the original reader-open callback runs. No duplicate story is added and the existing chapter/dictionary lazy split is preserved.
+- Added regression assertions for startup discoverability, deferred chapter payload, complete publication before reader opening, and successful retry after a partial asset failure. Catalog validation explicitly distinguishes lazy metadata from packaged chapter content.
+- **CI pending** for the final source/test head. Physical Xiaomi Pad 5, actual WebView first-open behavior and performance remain **NOT TESTED**. LT-01..LT-13 remain IN PROGRESS overall; Debug is not final.
