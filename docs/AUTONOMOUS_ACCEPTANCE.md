@@ -1164,3 +1164,12 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - **PASS — Android CI:** [run 40476252571](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40476252571) on source/test head `d0f3ec5135bc0184df57e15687975156ca8ece82`. Node/content suite, integrated novel gate, Gradle unit tests + Debug assembly, critical asset packaging, and Chromium Arabic/English journeys all succeeded.
 - **CI-calculated inner Debug APK SHA-256:** `8568ca4cf1c322f80db78b8b616041ee1c1d1a0a1b4e804907c4044aa6736c46`. Debug APK Artifact **12721376761**; screenshot Artifact **12721266821**. This SHA is from the CI build log; independent download/re-hash of this run's APK is NOT TESTED.
 - **NOT TESTED:** Xiaomi Pad 5 installation/upgrade, physical RTL/TalkBack and frame pacing, independent Arabic literary proofreading, territory-specific redistribution clearance, and the curated licensed recording/music library. The full novel being packaged does not mean LT-01..LT-13 are complete. Debug is not final; no main write or merge.
+
+
+## 2026-10-27 — Reduced-motion fallbacks for latest editorial themes (CI in progress)
+
+- **Production:** added a prefers-reduced-motion: reduce override for Mosaic Courtyard, Saville Clockwork and Station Tickets. The override suppresses card hover transforms, transitions and the hero-orb animation without changing normal-motion styling.
+- **Regression:** tools/theme-catalog.test.cjs now includes all three themes in the explicit swatch/reduced-motion acceptance set and allows grouped CSS selectors. A direct source-contract smoke checked all 56 theme labels/body styles/backup allowlist entries and all 23 routed-theme swatch/reduced-motion contracts: **PASS**. This source-level smoke is not Android/WebView/device evidence.
+- **Purposeful CI question:** does the committed CSS + catalog regression pass the full Node suite, Android packaging and Chromium reader journeys? Static source checks cannot verify the complete integration.
+- **CI:** run [40482113172](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40482113172), source/test SHA `ae0fd6d62375816a6430e60e91e41c60c47b1a23`, **IN PROGRESS at checkpoint**. No PASS is claimed until the run completes.
+- **NOT TESTED:** Xiaomi Pad 5 reduced-motion behavior, actual WebView frame pacing, TalkBack/RTL on device, Arabic literary review, territory-specific redistribution clearance, and the requested curated licensed recording/music catalog. No final APK or release is claimed.
