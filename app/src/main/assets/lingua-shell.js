@@ -68,17 +68,49 @@ const themeLabelFor=name=>rtl()?themeLabelsAr[name]:themeLabels[name];
 const fontChoices={ar:['sans','naskh'],en:['serif','sans']};
 const fontDefaults={ar:'sans',en:'serif'};
 const fontKeys={ar:'fontArabic',en:'fontEnglish'};
+function safeOffset(value){
+ const number=Number(value);
+ return Number.isFinite(number)?Math.max(0,Math.min(number,10000000)):0;
+}
+function captureReaderAnchor(){
+ const viewport=Number.isFinite(global.innerHeight)?global.innerHeight:
+  (document.documentElement.clientHeight||800);
+ for(const node of document.querySelectorAll('.reader .sentence')){
+  const paragraph=Number(node.dataset?.i);
+  const box=node.getBoundingClientRect?.();
+  if(!Number.isInteger(paragraph)||paragraph<0||!box||
+     !Number.isFinite(box.top)||!Number.isFinite(box.bottom)||
+     box.bottom<=52||box.top>=viewport)continue;
+  return {paragraph,viewportOffset:Math.max(-4096,Math.min(4096,box.top))};
+ }
+ return null;
+}
 function preserveReaderPosition(change){
  const active=state.page==='reader'&&state.story;
  const storyId=active?state.story.id:null;
  const chapterIndex=state.chapter;
  const fallback=safeOffset(global.scrollY||0);
- if(active)savePosition();
+ const anchor=active?captureReaderAnchor():null;
+ if(active)put('scroll_'+storyId+'_'+chapterIndex,fallback);
  change();
- if(active)nextFrame(()=>{
-  if(state.page==='reader'&&state.story?.id===storyId&&state.chapter===chapterIndex)
-   restoreReadingPosition(storyId,chapterIndex,fallback);
- });
+ if(!active)return;
+ const restore=()=>{
+  if(state.page!=='reader'||state.story?.id!==storyId||state.chapter!==chapterIndex)return;
+  let y=fallback;
+  if(anchor&&Array.isArray(state.story.chapters?.[chapterIndex]?.paragraphs)&&
+     anchor.paragraph<state.story.chapters[chapterIndex].paragraphs.length){
+   const node=Array.from(document.querySelectorAll('.reader .sentence'))
+    .find(el=>Number(el.dataset?.i)===anchor.paragraph);
+   const top=node?.getBoundingClientRect?.().top;
+   const current=Number.isFinite(global.scrollY)?global.scrollY:0;
+   const candidate=current+top-anchor.viewportOffset;
+   if(Number.isFinite(top)&&Number.isFinite(candidate))y=safeOffset(candidate);
+  }
+  if(typeof global.scrollTo==='function')global.scrollTo(0,y);
+ };
+ if(typeof global.requestAnimationFrame==='function')global.requestAnimationFrame(restore);
+ else if(typeof global.setTimeout==='function')global.setTimeout(restore,0);
+ else restore();
 }
 function applyFont(lang,name){
  if(!Object.prototype.hasOwnProperty.call(fontChoices,lang)||!fontChoices[lang].includes(name))return false;

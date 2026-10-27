@@ -130,12 +130,13 @@ const fakeDrawer={
 };
 const fakeBackdrop={classList:{add(){},remove(){}}};
 const fakeToggle={attributes:{},setAttribute(k,v){this.attributes[k]=v;},focus(){}};
+let shellSentenceNodes=[];
 const shellDocument={
  documentElement:{dir:'rtl',clientWidth:400,dataset:{}},
  body:{classList:{
   add(k){themeClasses.add(k);},remove(k){themeClasses.delete(k);}
  }},
- querySelector:()=>null,querySelectorAll:()=>[],
+ querySelector:()=>null,querySelectorAll(selector){return selector==='.reader .sentence'?shellSentenceNodes:[];},
  getElementById(id){return ({'lt-drawer':fakeDrawer,'lt-drawer-backdrop':fakeBackdrop,
   'lt-menu-toggle':fakeToggle})[id]||null;},
  addEventListener(type,listener){registered[type]=listener;}
@@ -213,6 +214,33 @@ assert.equal(shellDocument.documentElement.dataset.ltEnglishFont,'sans');
 assert.equal(shellStore.get('fontEnglish'),'sans','English font saved separately');
 assert.equal(shell.applyFont('en','url(https://example.com/font)'),false,'reject injected CSS');
 assert.equal(shell.applyFont('__proto__','sans'),false,'reject unknown font language');
+
+// LT-12: changing typography while reading must not call missing helpers or
+// lose the visible paragraph when its geometry changes after reflow.
+{
+ const restores=[];
+ let geometryRead=0;
+ shellWindow.scrollY=240;
+ shellWindow.scrollTo=(x,y)=>restores.push(y);
+ shellWindow.requestAnimationFrame=callback=>callback();
+ shellSentenceNodes=[{
+  dataset:{i:'4'},
+  getBoundingClientRect(){
+   geometryRead++;
+   return geometryRead===1?{top:80,bottom:120}:{top:120,bottom:160};
+  }
+ }];
+ shellState.page='reader';
+ shellState.story={id:'reader-fixture',chapters:[{paragraphs:Array(10).fill('p')}]};
+ shellState.chapter=0;
+ assert.equal(shell.applyReadingSize('en','large'),true);
+ assert.equal(shellStore.get('scroll_reader-fixture_0'),240,'legacy scroll checkpoint saved');
+ assert.deepEqual(restores,[280],'same paragraph is restored to its previous viewport offset');
+ shellState.page='library';
+ delete shellState.story;
+ shellSentenceNodes=[];
+ shellWindow.scrollY=0;
+}
 assert.match(shellCss,/html\[data-lt-arabic-font="naskh"\]/,'Arabic Naskh style exists');
 assert.match(shellCss,/html\[data-lt-english-font="sans"\]/,'English sans style exists');
 assert.match(shellCss,/\.reader \.sentence/,'reader uses selected English font');
