@@ -285,3 +285,13 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - Exposed the catalog to the loader and merge the fully validated 37-chapter story into the existing placeholder before the original reader-open callback runs. No duplicate story is added and the existing chapter/dictionary lazy split is preserved.
 - Added regression assertions for startup discoverability, deferred chapter payload, complete publication before reader opening, and successful retry after a partial asset failure. Catalog validation explicitly distinguishes lazy metadata from packaged chapter content.
 - **Independent in-memory integration simulation: PASS** for the catalog → lazy loader → verified chapter publication handoff. **CI NOT VERIFIED** for source/test head `948b4f48da44631968f25e69d3b4fc45071888ec` because the connected status adapter returned no rows. Physical Xiaomi Pad 5, actual WebView first-open behavior and performance remain **NOT TESTED**. LT-01..LT-13 remain IN PROGRESS overall; Debug is not final.
+
+## 2026-10-27 — LT-12 independent reading-size and line-spacing profiles
+
+- Settings now expose independent **Compact / Comfortable / Large** profiles for Arabic and English reading text, stored offline under separate keys. They complement the existing independent Arabic/English font-family selectors.
+- Arabic translation text uses size and line-height profiles without added letter spacing, preserving shaping. English story paragraphs and English learning prompts get independent size/line-height; only the large English profile adds a restrained 0.012em letter-spacing.
+- Applying either a font or size profile saves the current semantic paragraph/viewport anchor and restores it after reflow when the reader is still on the same story/chapter. The rules do not target illustrations or interactive controls.
+- Added `tools/typography-profiles.test.cjs` and wired it into Android CI. It covers defaults, offline persistence, independent locale settings, invalid-value fallback/rejection, reader-anchor restoration, CSS profile presence and zero Arabic letter-spacing.
+- **PASS — isolated local Node smoke** against the extracted production typography function/CSS slice: defaults, persistence, invalid values, independent profiles, anchor restoration and CSS checks passed.
+- **CI NOT VERIFIED** for current source/test head `ec902fc2fbe680b43409f94c011480362fbfd5bf`; the available workflow-status surface did not expose a run for this branch head. Do not infer CI PASS from the isolated smoke.
+- **NOT TESTED:** Xiaomi Pad 5 wrapping/overflow, actual WebView font availability, TalkBack, visual comparison, frame pacing and memory. LT-01..LT-13 remain IN PROGRESS; no final release or main write.
