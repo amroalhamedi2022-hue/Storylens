@@ -157,6 +157,7 @@ tests["lazy-content"] = r"""(async function(){
   const resources=()=>performance.getEntriesByType('resource').map(x=>x.name);
   const eager=()=>resources().filter(x=>/(classic-verne-towle-ch\d+\.js|editorial-art(?:-ch(?:35|36|37))?\.js|freedict-en-ar\.js)(?:[?#]|$)/.test(x));
   if(!story||story.chapters.length!==0)errors.push('long book should start with chapter metadata only');
+  if(!art[id+'_0'])errors.push('library cover art should remain available before chapter loading');
   if(window.FreeDictEnglishArabic)errors.push('FreeDict should not be evaluated during startup');
   if(eager().length)errors.push('deferred assets were fetched before use: '+eager().join(','));
   await window.LinguaContentLoader.ensureDictionary();
