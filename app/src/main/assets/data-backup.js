@@ -183,7 +183,7 @@ const ui=(ar,en)=>document.documentElement.lang==='en'?en:ar;
  * (including dynamic storage-key details) before showing them in English UI. */
 function localizeBackupError(message){
  const text=typeof message==='string'?message:String(message??'');
- if(document.documentElement.lang!=='en'||!/[\\u0600-\\u06FF]/.test(text))return text;
+ if(document.documentElement.lang!=='en'||!/[\u0600-\u06FF]/.test(text))return text;
  const exact={
   'ملف النسخة غير صالح أو كبير جدًا.':'The backup file is invalid or too large.',
   'هذا ليس ملف JSON صالحًا.':'This is not valid JSON.',
