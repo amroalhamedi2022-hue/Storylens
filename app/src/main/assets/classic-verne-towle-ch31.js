@@ -444,7 +444,7 @@ const arabic32=[
 ];
 const terms32=[
   {
-    "term": "trans-Atlantic",
+    "term": "transatlantic",
     "literal": "عابر للأطلسي",
     "context": "وصف خطوط الملاحة التي تعبر المحيط الأطلسي",
     "note": "Chapter XXXII: transatlantic timetable",
