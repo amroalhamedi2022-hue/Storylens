@@ -431,9 +431,16 @@ function openChapterSearch(){
  });
  render();input.focus();return true;
 }
+function removeLegacyGenreFilters(section){
+ const filters=section.querySelector('.filters');
+ if(!filters)return false;
+ filters.remove();
+ return true;
+}
 function decorateLibrary(){
  const section=document.querySelector('.library');
  if(!section||state.page!=='library')return;
+ removeLegacyGenreFilters(section);
  opened=false;
  section.querySelector('.header .brand')?.replaceChildren(document.createTextNode('LINGUA TALES'));
  const headerTitle=section.querySelector('.header h1');
