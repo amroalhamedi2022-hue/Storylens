@@ -54,7 +54,17 @@ function decorate(){
   picker.appendChild(caption);picker.appendChild(select);nav.appendChild(picker);
  }
  end.prepend(nav);
- if(!incomplete)return;
+ if(!incomplete){
+  // Make the completed-book endpoint explicit in both locales; the base reader
+  // normally renders these labels, but this layer owns the chapter-end contract.
+  if(index===chapters.length-1){
+   const heading=end.querySelector('div');
+   if(heading)heading.textContent=localized('النهاية','The End');
+   const primary=end.querySelector('button.primary');
+   if(primary)primary.textContent=localized('العودة إلى المكتبة','Back to library');
+  }
+  return;
+ }
  const endHeading=end.querySelector('div');
  const progress=document.createElement('small');
  progress.className='lt-serial-progress';
