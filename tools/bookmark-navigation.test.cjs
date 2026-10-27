@@ -27,6 +27,7 @@ const sandbox = {
   get: (key, fallback) => Object.prototype.hasOwnProperty.call(saved, key) ? saved[key] : fallback,
   put: (key, value) => { saved[key] = value; },
   esc: String,
+  wordSheet() {}, // host-script dependency wrapped by reader-experience.js
   closeSheet() { closes++; },
   library() {}, openStory() {}, settings() {}, theme() {}, inlineTranslate() {},
   renderReader() { renders++; },
