@@ -12,7 +12,7 @@ const code = source.slice(begin, end + 5);
 const timers = new Map(), store = new Map(), scrolls = [];
 let timerId = 0, backs = 0, cardFocus = 0, headingFocus = 0, reduced = false;
 const state = {page: 'library', story: null, chapter: 0};
-const story = {id: 'book', chapters: [{title: 'First', paragraphs: []}]};
+const story = {id: 'book', chapters: [{title: 'First', paragraphs: [{en: 'First paragraph.'}, {en: 'Second paragraph.'}]}]};
 const card = {
  getAttribute(name) { return name === 'onclick' ? "openStory('book')" : null; },
  setAttribute(name, value) { assert.equal(name, 'tabindex'); assert.equal(value, '-1'); },
@@ -20,13 +20,24 @@ const card = {
 };
 const heading = {setAttribute() {}, focus(options) {assert.equal(options.preventScroll, true); headingFocus++;}};
 const reader = {classList: {add(name) {assert.match(name, /^lt-reader-(enter|exit)$/);}}};
+let sentenceNodes=[];
 const document = {
- querySelector(selector) {return selector === '.reader' ? reader : selector === '.reader h2' ? heading : null;},
- querySelectorAll(selector) {return selector === '.library .card' ? [card] : [];},
+ querySelector(selector) {
+  if(selector === '.reader')return reader;
+  if(selector === '.reader h2')return heading;
+  const match=selector.match(/^\\.reader \\.sentence\\[data-i="(\\d+)"\\]$/);
+  return match?sentenceNodes.find(node=>node.getAttribute('data-i')===match[1])||null:null;
+ },
+ querySelectorAll(selector) {
+  if(selector === '.library .card')return [card];
+  if(selector === '.reader .sentence[data-i]')return sentenceNodes;
+  return [];
+ },
  getElementById() {return {childElementCount: 0};}
 };
 const window = {
  scrollY: 0,
+ innerHeight: 800,
  scrollTo(x, y) {assert.equal(x, 0); this.scrollY = y; scrolls.push(y);},
  requestAnimationFrame(callback) {callback();},
  matchMedia() {return {matches: reduced};},
@@ -79,6 +90,30 @@ assert.equal(store.get('scroll_book_0'), 317, 'translation remembers reading pos
 sandbox.backToReader();
 assert.equal(window.scrollY, 317, 'toolbar/Android Back restores reading position');
 sandbox.libraryBack(); flush();
+
+// Semantic progress survives font reflow: preserve the first visible paragraph
+// and its viewport offset, while keeping the legacy pixel position as fallback.
+store.set('reading_anchor_book_0', null);
+const paragraph=(index,top,bottom)=>({
+ getAttribute(name){return name==='data-i'?String(index):null;},
+ getBoundingClientRect(){return {top,bottom};}
+});
+sentenceNodes=[paragraph(0,-420,-220),paragraph(1,-25,55)];
+window.scrollY=400;
+sandbox.openStory('book');
+assert.equal(window.scrollY, 0, 'legacy fallback applies before any semantic anchor exists');
+window.scrollY=510;
+sandbox.libraryBack(); flush();
+assert.deepEqual(store.get('reading_anchor_book_0'), {index:1,top:-25},
+ 'save the visible paragraph and its signed viewport offset');
+assert.equal(store.get('scroll_book_0'),510,'retain pixel fallback for older clients');
+
+sentenceNodes=[paragraph(0,-300,-80),paragraph(1,100,180)]; // reflow moved the paragraph
+window.scrollY=400;
+sandbox.openStory('book');
+assert.equal(window.scrollY,525,'restore the same paragraph to its previous viewport offset');
+sandbox.libraryBack(); flush();
+store.set('reading_anchor_book_0', null);
 store.set('scroll_book_0', Infinity);
 reduced = true;
 window.scrollY = 25;
