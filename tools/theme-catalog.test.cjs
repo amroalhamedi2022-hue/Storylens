@@ -13,12 +13,21 @@ const backup = read('app/src/main/assets/data-backup.js');
 
 const listSource = (shell.match(/const themeNames=\[([^\]]+)\]/) || [])[1];
 const labelsSource = (shell.match(/const themeLabels=\{([\s\S]*?)\};/) || [])[1];
-assert.ok(listSource && labelsSource, 'production theme catalog must remain discoverable');
+const labelsArSource = (shell.match(/const themeLabelsAr=\{([\s\S]*?)\};/) || [])[1];
+assert.ok(listSource && labelsSource && labelsArSource, 'production theme catalogs must remain discoverable');
 const names = [...listSource.matchAll(/'([^']+)'/g)].map(m => m[1]);
 const labels = [...labelsSource.matchAll(/(?:^|,)(?:'([^']+)'|([a-z0-9-]+)):/g)].map(m => m[1] || m[2]);
+const labelsAr = [...labelsArSource.matchAll(/'([^']+)'\\s*:/g)].map(m => m[1]);
+const arabicThemeLabels = [...labelsArSource.matchAll(/'([^']+)'\\s*:\\s*\"([^\"]+)\"/g)];
 const unique = values => [...new Set(values)].sort();
 assert.equal(new Set(names).size, names.length, 'duplicate selectable theme IDs');
-assert.deepEqual(unique(names), unique(labels), 'every selectable theme needs a gallery label');
+assert.deepEqual(unique(names), unique(labels), 'every selectable theme needs an English gallery label');
+assert.deepEqual(unique(names), unique(labelsAr), 'every selectable theme needs an Arabic gallery label');
+assert.equal(arabicThemeLabels.length, names.length, 'each theme needs exactly one Arabic label');
+for (const [, name, label] of arabicThemeLabels) {
+  assert.ok(/[\\u0600-\\u06FF]/u.test(label), 'Arabic theme label missing Arabic text: ' + name);
+  assert.ok(label.trim().length >= 3, 'Arabic theme label is too short: ' + name);
+}
 const styles = shellCss + '\n' + auroraCss + '\n' + westminsterCss + '\n' + countdownCss;
 for (const name of names) {
   assert.match(styles, new RegExp('body\\.theme-' + name + '(?:\\s|\\{|:|\\.)'),
