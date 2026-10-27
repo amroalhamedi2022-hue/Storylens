@@ -34,6 +34,9 @@ const state = {story, page: 'reader', chapter: 0};
 const sandbox = {
  window: {scrollY: 0}, document, state, catalog: {stories: [story]},
  get: (_, fallback) => fallback, put() {}, esc: String, closeSheet() {},
+ // The production reader decorates the base word-sheet function. This isolated
+ // illustration test supplies the documented host-script dependency explicitly.
+ wordSheet() {},
  library() {}, openStory() {}, renderReader() {}, settings() {}, theme() {}, inlineTranslate() {},
  Date
 };
