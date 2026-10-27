@@ -266,3 +266,13 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - **PASS:** Android CI run 40520046330 on source/test SHA `2cb305bbec5048361e170a0660a5cb56cbfc2bc5`; Node/content tests, Gradle unit tests, APK asset verification and Chromium reader journey passed.
 - **PASS independent APK verification:** 4,832,486-byte Debug APK, SHA-256 `4daf87cb043015b8cd4c2b24b666dd30846f4f0857b95e6cf239965549488fc3`, matches the CI checksum file (Artifact 12740599357).
 - **NOT TESTED:** Xiaomi Pad 5 physical drawer/RTL/TalkBack, swipe, real frame timing/RAM/thermal, independent Arabic literary review, rights review and the curated licensed recording catalog. Do not infer overall LT-01..LT-13 completion from this milestone.
+
+
+## 2026-10-27 — LT-11 licensed audio pack + playback recovery checkpoint
+
+- The branch now fetches **20 pinned CC BY 4.0 OGG assets** from the exact facebookincubator/Meta-open-sound source commit recorded by tools/fetch_licensed_audio.py: 16 looped ambience recordings and 4 short effects. The workflow verifies Git blob SHA-1, byte length, OGG signature, attribution and APK packaging; app playback uses local assets only, with no runtime fetch, microphone or TTS.
+- New recovery change: a rejected Audio.play() promise or media error evicts the failed cached player and releases the licensed player's focus ownership. The listener is bound to the Audio element identity, not a stale one-shot request ticket; a late error from a replaced track cannot stop the currently selected track.
+- Regression now covers rejected play, media error, fresh retry, and stale error after track replacement.
+- **PASS — Android CI run 40533628521**, source/test head cb102c186f7b5dabd5c9d444183809ffc56b2596: licensed-asset fetch/verification, Node/content tests, Gradle tests + Debug APK, packaged audio/license/manifest checks, and Chromium reader journeys passed.
+- **PASS — independently re-hashed Debug APK:** 20,050,454 bytes; SHA-256 e1bdd4eda45dcc90961957c252bbfd2f3ca7a044903cbd2f49dc66f5eabd5c62, matching APK_SHA256.txt from Artifact **12747891165**. Screenshot Artifact **12746174907**.
+- **NOT TESTED:** Xiaomi Pad 5 installation, audible quality, Android Audio Focus interruption/screen-off behavior, battery/thermal/frame pacing, TalkBack/physical RTL, and literary/legal review. Source/CI confirms a pinned licensed pack, not real-device acoustic acceptance. LT-01..LT-13 remain **IN PROGRESS** overall; this is a Debug test build, not final.
