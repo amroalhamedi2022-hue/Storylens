@@ -17,20 +17,20 @@ const labelsArSource = (shell.match(/const themeLabelsAr=\{([\s\S]*?)\};/) || []
 assert.ok(listSource && labelsSource && labelsArSource, 'production theme catalogs must remain discoverable');
 const names = [...listSource.matchAll(/'([^']+)'/g)].map(m => m[1]);
 const labels = [...labelsSource.matchAll(/(?:^|,)(?:'([^']+)'|([a-z0-9-]+)):/g)].map(m => m[1] || m[2]);
-const labelsAr = [...labelsArSource.matchAll(/'([^']+)'\\s*:/g)].map(m => m[1]);
-const arabicThemeLabels = [...labelsArSource.matchAll(/'([^']+)'\\s*:\\s*\"([^\"]+)\"/g)];
+const labelsAr = [...labelsArSource.matchAll(/'([^']+)'\s*:/g)].map(m => m[1]);
+const arabicThemeLabels = [...labelsArSource.matchAll(/'([^']+)'\s*:\s*\"([^\"]+)\"/g)];
 const unique = values => [...new Set(values)].sort();
 assert.equal(new Set(names).size, names.length, 'duplicate selectable theme IDs');
 assert.deepEqual(unique(names), unique(labels), 'every selectable theme needs an English gallery label');
 assert.deepEqual(unique(names), unique(labelsAr), 'every selectable theme needs an Arabic gallery label');
 assert.equal(arabicThemeLabels.length, names.length, 'each theme needs exactly one Arabic label');
 for (const [, name, label] of arabicThemeLabels) {
-  assert.ok(/[\\u0600-\\u06FF]/u.test(label), 'Arabic theme label missing Arabic text: ' + name);
+  assert.ok(/[\u0600-\u06FF]/u.test(label), 'Arabic theme label missing Arabic text: ' + name);
   assert.ok(label.trim().length >= 3, 'Arabic theme label is too short: ' + name);
 }
 const styles = shellCss + '\n' + auroraCss + '\n' + westminsterCss + '\n' + countdownCss;
 for (const name of names) {
-  assert.match(styles, new RegExp('body\\.theme-' + name + '(?:\\s|\\{|:|\\.)'),
+  assert.match(styles, new RegExp('body\\.theme-' + name + '(?:\s|\\{|:|\\.)'),
     'missing production body style for ' + name);
   assert.ok(backup.includes("'" + name + "'") || backup.includes('"' + name + '"'),
     'backup validator does not allow theme ' + name);
