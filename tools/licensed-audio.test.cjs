@@ -47,11 +47,12 @@ assert.ok(loopTracks.every(x=>script.includes(x.id)&&script.includes(x.file)));
 assert.ok(effects.every(x=>script.includes(x.id)&&script.includes(x.file)));
 
 let focusGranted=true,focusRequests=0,focusReleases=0,proceduralPlaying=false,proceduralPauses=0,proceduralPlays=0;
+let rejectNextPlay=false;
 const instances=[];
 class FakeAudio{
  constructor(src){this.src=src;this.loop=false;this.volume=1;this.preload='auto';this.paused=true;this.currentTime=0;this.listeners={};instances.push(this);}
  addEventListener(name,cb){(this.listeners[name]||(this.listeners[name]=[])).push(cb);}
- async play(){this.paused=false;return Promise.resolve();}
+ async play(){if(rejectNextPlay){rejectNextPlay=false;throw new Error('synthetic decode failure');}this.paused=false;return Promise.resolve();}
  pause(){this.paused=true;}
  emit(name){for(const cb of this.listeners[name]||[])cb();}
 }
@@ -90,6 +91,35 @@ const audio=window.LinguaLicensedAudio;
  assert.equal(audio.isPlaying(),false);
  assert.equal(instances.at(-1).paused,true);
  assert.equal(focusReleases,1);
+
+ // A rejected play() promise must evict the failed element, not cache it forever.
+ rejectNextPlay=true;
+ const beforeRejectedPlay=instances.length;
+ await assert.rejects(()=>audio.playTrack('lake-shore'),/synthetic decode failure/);
+ assert.equal(audio.isPlaying(),false);
+ assert.equal(instances.length,beforeRejectedPlay+1);
+ const failedPlayInstance=instances.at(-1);
+ const beforeRetry=instances.length;
+ assert.equal(await audio.playTrack('lake-shore'),true);
+ assert.equal(instances.length,beforeRetry+1,'rejected play must discard cached Audio element');
+ assert.notEqual(instances.at(-1),failedPlayInstance);
+
+ // A later media error must also evict a cached element even when its original
+ // playback ticket is stale; an error from a replaced element must be ignored.
+ const failedEventInstance=instances.at(-1);
+ failedEventInstance.emit('error');
+ assert.equal(audio.isPlaying(),false,'current media error must stop active playback');
+ const beforeErrorRetry=instances.length;
+ assert.equal(await audio.playTrack('lake-shore'),true);
+ assert.equal(instances.length,beforeErrorRetry+1,'media error must discard cached Audio element');
+ const staleInstance=instances.at(-1);
+ assert.equal(await audio.playTrack('forest'),true,'switching ambience should create a new current player');
+ const activeAfterSwitch=instances.at(-1);
+ staleInstance.emit('error');
+ assert.equal(audio.isPlaying(),true,'late error from replaced player must not stop current ambience');
+ assert.equal(instances.at(-1),activeAfterSwitch);
+ await audio.pause();
+
  const beforeSfx=instances.length;
  assert.equal(await audio.playSfx('page-turn'),true);
  assert.equal(instances.length,beforeSfx+1);
@@ -123,5 +153,5 @@ const audio=window.LinguaLicensedAudio;
  assert.equal(await audio.playTrack('forest'),true,'licensed playback can resume after focus is reacquired');
  assert.equal(focusRequests,focusBeforeLoss+1,'focus loss must invalidate the licensed module ownership bit');
  await audio.pause();
- console.log('PASS LT-11: 16 pinned CC-BY ambience loops + 4 licensed one-shot effects, silent start, focus denial/loss, lifecycle and exclusive playback.');
+ console.log('PASS LT-11: 16 pinned CC-BY ambience loops + 4 licensed one-shot effects, retry-safe player errors, focus denial/loss, lifecycle and exclusive playback.');
 })().catch(error=>{console.error(error);process.exitCode=1});
