@@ -22,8 +22,8 @@ tests={
  check('story art',()=>!!art['eleven-minute-alibi_0']);
  check('novella catalog',()=>catalog.stories.some(s=>s.id==='the-salt-meridian'&&s.chapters.length===5));
  check('novella art',()=>!!art['the-salt-meridian_4']);
- check('Verne lazy placeholder',()=>catalog.stories.some(s=>s.id==='around-the-world-in-eighty-days-towle'&&s.lazyBook===true&&s.totalChapters===37&&s.chapters.length===0));
- check('Verne cover before lazy load',()=>!!art['around-the-world-in-eighty-days-towle_0']&&!art['around-the-world-in-eighty-days-towle_1']&&!art['around-the-world-in-eighty-days-towle_36']);
+ check('Verne catalog publishes verified book after deferred load',()=>catalog.stories.some(s=>s.id==='around-the-world-in-eighty-days-towle'&&s.lazyBook===false&&s.totalChapters===37&&s.chapters.length===37));
+ check('Verne cover and final-chapter art remain available after load',()=>!!art['around-the-world-in-eighty-days-towle_0']&&!!art['around-the-world-in-eighty-days-towle_36']);
  check('in-book search entry',()=>!!document.querySelector('.lt-chapter-search-open'));
  check('offline chapter search',()=>{const hits=LinguaShell.searchChapters('harbor authority');return hits.some(x=>x.storyId==='the-salt-meridian'&&x.en.includes('harbor authority'))});
  check('Arabic source search',()=>LinguaShell.searchChapters('المنارة').some(x=>x.storyId==='the-salt-meridian'));
