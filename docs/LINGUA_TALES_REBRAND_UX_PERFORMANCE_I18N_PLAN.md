@@ -257,3 +257,12 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - **PASS — CI run 40468220443** on source/test SHA `f4de186f78f5e25f31993aba999a87cff936d485`: Android workflow completed successfully; Node/content checks, ambience lifecycle regression, Gradle unit tests, APK assembly/asset verification and Chromium reader journeys passed.
 - CI-calculated Debug APK SHA-256: `d6a72b2fc900e3cf3d7ff292c563fac43cf5f5f76d3365a686f4bd33863de6a7`. Debug APK Artifact **12717732252**; screenshot Artifact **12717084335**. **Independent artifact re-hash NOT TESTED** for this run.
 - **NOT TESTED:** physical Xiaomi Pad 5 install, actual Android Audio Focus interruption, audible SFX quality, battery/thermal/frame timing, TalkBack/hardware RTL, Arabic literary review, territory-specific redistribution rights, and the required curated licensed recording/music catalog. The 24 procedural presets are not licensed recordings. This is a Debug build; LT-01..LT-13 remain IN PROGRESS overall.
+
+
+## 2026-10-27 — LT-06 localized drawer lifecycle (validated source/CI; device open)
+
+- Removed the obsolete duplicate genre-filter row from the library before adding the single bilingual drawer navigation surface; the discovery controls remain inside the drawer after refresh.
+- Added an executable regression for production drawer open/close behavior, focus movement/restoration, `aria-hidden`, `inert`, backdrop and expanded-state semantics, reader-page refusal and safe no-op behavior. Repeated decoration is checked for idempotent legacy-row removal.
+- **PASS:** Android CI run 40520046330 on source/test SHA `2cb305bbec5048361e170a0660a5cb56cbfc2bc5`; Node/content tests, Gradle unit tests, APK asset verification and Chromium reader journey passed.
+- **PASS independent APK verification:** 4,832,486-byte Debug APK, SHA-256 `4daf87cb043015b8cd4c2b24b666dd30846f4f0857b95e6cf239965549488fc3`, matches the CI checksum file (Artifact 12740599357).
+- **NOT TESTED:** Xiaomi Pad 5 physical drawer/RTL/TalkBack, swipe, real frame timing/RAM/thermal, independent Arabic literary review, rights review and the curated licensed recording catalog. Do not infer overall LT-01..LT-13 completion from this milestone.
