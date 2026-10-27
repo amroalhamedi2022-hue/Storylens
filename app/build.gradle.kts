@@ -1,4 +1,14 @@
 plugins { id("com.android.application") }
+
+val ltSigningStore = System.getenv("LT_SIGNING_KEYSTORE")
+val ltSigningStorePassword = System.getenv("LT_SIGNING_STORE_PASSWORD")
+val ltSigningAlias = System.getenv("LT_SIGNING_KEY_ALIAS")
+val ltSigningKeyPassword = System.getenv("LT_SIGNING_KEY_PASSWORD")
+val hasLtStableSigning = !ltSigningStore.isNullOrBlank() &&
+    !ltSigningStorePassword.isNullOrBlank() &&
+    !ltSigningAlias.isNullOrBlank() &&
+    !ltSigningKeyPassword.isNullOrBlank() &&
+    java.io.File(ltSigningStore).isFile
 android {
     namespace = "com.storylens.reader"
     compileSdk = 36
@@ -9,7 +19,22 @@ android {
         versionCode = 6
         versionName = "0.6.0"
     }
-    buildTypes { release { isMinifyEnabled = false } }
+    signingConfigs {
+        if (hasLtStableSigning) {
+            create("stableRelease") {
+                storeFile = file(ltSigningStore!!)
+                storePassword = ltSigningStorePassword
+                keyAlias = ltSigningAlias
+                keyPassword = ltSigningKeyPassword
+            }
+        }
+    }
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            if (hasLtStableSigning) signingConfig = signingConfigs.getByName("stableRelease")
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
