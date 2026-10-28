@@ -85,12 +85,20 @@ function contextualMeaning(entry, source, story){
   .replace(/[إأآٱ]/g,'ا').replace(/ى/g,'ي').toLowerCase();
  const stop=new Set(['في','من','على','الى','إلى','عن','ان','أن','كان','كانت','هو','هي','هذا','هذه','ذلك','ثم','مع','قد','لم','لن','لا','ما','و','ف','ب','ل','الذي','التي']);
  const contextTokens=new Set((fold(source?.ar).match(/[\u0621-\u064A]{3,}/g)||[]).filter(x=>!stop.has(x)));
- let best=null,bestScore=0;
+ let best=null,bestScore=0,bestOverlap=0,ambiguous=false;
  for(const sense of senses){
-  const words=(fold(sense).match(/[\u0621-\u064A]{3,}/g)||[]).filter(x=>!stop.has(x));
+  // Count distinct content words only; duplicate words must not inflate evidence.
+  const words=Array.from(new Set((fold(sense).match(/[\u0621-\u064A]{3,}/g)||[]).filter(x=>!stop.has(x))));
   const overlap=words.filter(x=>contextTokens.has(x)).length;
   const score=overlap/(Math.max(1,Math.min(words.length,contextTokens.size)));
-  if(score>bestScore){best=sense;bestScore=score}
+  const sameScore=Math.abs(score-bestScore)<1e-9;
+  if(score>bestScore+1e-9||(sameScore&&overlap>bestOverlap)){
+   best=sense;bestScore=score;bestOverlap=overlap;ambiguous=false;
+  }else if(score>0&&sameScore&&overlap===bestOverlap&&best&&fold(sense)!==fold(best)){
+   // Two different senses with identical sentence evidence are not distinguishable.
+   // Prefer the honest fallback over an arbitrary first-item "contextual" meaning.
+   ambiguous=true;
+  }
  }
  if(best&&bestScore>0)return {label:'أقرب معنى بحسب ترجمة الجملة',text:best,kind:'inferred'};
  return {label:'السياق من القصة',text:'لم يُعثر على معنى مفرد موثّق لهذه الكلمة في هذه الجملة بعد. اقرأ ترجمة الجملة أدناه؛ ولن نخترع تعريفًا غير مؤكد.',kind:'sentence'};
