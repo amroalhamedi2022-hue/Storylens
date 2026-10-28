@@ -112,6 +112,7 @@ wordSheet=function(args){
 // Each chapter becomes a sequence of readable pages. Four paragraphs is a
 // conservative starting point; translations and illustrations travel with
 // their source paragraph. The current page is persisted per story/chapter.
+const LT_PAGE_PARAGRAPHS=4;
 const ltPageIndices=new Map();
 // Do not let page gestures steal taps, text selection, or accessibility controls.
 function pageSwipeAllowed(target,selectionText=''){
@@ -135,7 +136,7 @@ function installPageTurn(){
  let page=null,count=0;
  for(const node of originalNodes){
   if(node.nodeType===1&&node.classList.contains('sentence')){
-   if(!page||count>=4){
+   if(!page||count>=LT_PAGE_PARAGRAPHS){
     page=document.createElement('section');
     page.className='lt-book-page';
     page.setAttribute('role','group');
@@ -570,7 +571,10 @@ settings=function(){
 window.stlBookmark=function(){
  if(!state.story)return;
  const marks=get(bookmarkKey(),{});
+ const pageKey='readpage_'+state.story.id+'_'+state.chapter;
+ const currentPage=get(pageKey,0);
  marks[state.story.id]={chapter:state.chapter,scroll:window.scrollY,
+  readerPage:Number.isInteger(currentPage)&&currentPage>=0?currentPage:0,
   ...captureParagraphAnchor(),updatedAt:Date.now()};
  put(bookmarkKey(),marks);
  closeSheet();settings();
@@ -583,6 +587,13 @@ window.stlJumpBookmark=function(){
  if(!mark||!Number.isInteger(mark.chapter)||mark.chapter<0)return;
  const chapter=Math.min(mark.chapter,state.story.chapters.length-1);
  if(chapter<0)return;
+ // Page-turn mode hides non-active pages. Restore the saved page before the
+ // reader pipeline renders, so the paragraph anchor is measured in a visible page.
+ const savedReaderPage=Number.isInteger(mark.readerPage)&&mark.readerPage>=0
+  ?mark.readerPage
+  :Number.isInteger(mark.paragraph)&&mark.paragraph>=0
+   ?Math.floor(mark.paragraph/LT_PAGE_PARAGRAPHS):null;
+ if(savedReaderPage!==null)put('readpage_'+state.story.id+'_'+chapter,savedReaderPage);
 
  state.chapter=chapter;
  put(chapterKey(),state.chapter);

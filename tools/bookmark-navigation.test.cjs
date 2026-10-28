@@ -93,4 +93,16 @@ assert.equal(scrolls.at(-1)[1], 0, 'negative saved chapter scroll resets');
 saved.scroll_book_1 = 64;
 window.stlChapter(1);
 assert.equal(scrolls.at(-1)[1], 64, 'valid saved chapter scroll restores');
-console.log('PASS: corrupt bookmark and chapter navigation guards');
+
+// Page-turn mode must bookmark the active page as well as the chapter/paragraph.
+sandbox.state.chapter = 1;
+saved.readpage_book_1 = 3;
+window.stlBookmark();
+assert.equal(saved.bookmarks.book.readerPage, 3, 'bookmark records the active reading page');
+saved.bookmarks.book = {chapter: 1, readerPage: 2, paragraph: 9, scroll: 0};
+window.stlJumpBookmark();
+assert.equal(saved.readpage_book_1, 2, 'bookmark restores its page before the reader renders');
+saved.bookmarks.book = {chapter: 0, paragraph: 9, scroll: 0};
+window.stlJumpBookmark();
+assert.equal(saved.readpage_book_0, 2, 'legacy paragraph bookmark derives its four-paragraph page');
+console.log('PASS: corrupt bookmark, page-turn restoration, and chapter navigation guards');
