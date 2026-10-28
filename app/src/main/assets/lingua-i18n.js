@@ -179,22 +179,42 @@ function localizeUsage() {
 function localizeReaderLocaleControl() {
  if (state.page !== 'reader' || typeof document.createElement !== 'function') return false;
  const sheet = find('#modals .sheet');
- if (!sheet || typeof sheet.querySelector !== 'function' || sheet.querySelector('.lt-reader-locale')) return false;
+ if (!sheet || typeof sheet.querySelector !== 'function') return false;
+ const currentLabel = english() ? 'Interface language' : 'لغة الواجهة';
+ const currentLocale = english() ? 'en' : 'ar';
+ const existingRow = sheet.querySelector('.lt-reader-locale');
+ if (existingRow) {
+  // Settings may keep the same DOM row while the interface locale changes.
+  // Refresh its visible label, accessibility name and selected value instead
+  // of leaving a stale Arabic control inside an English interface (or vice versa).
+  const existingLabel = typeof existingRow.querySelector === 'function'
+   ? existingRow.querySelector('span') : null;
+  const existingSelect = typeof existingRow.querySelector === 'function'
+   ? existingRow.querySelector('select') : null;
+  const labelNode = existingLabel || existingRow.children?.[0];
+  const selectNode = existingSelect || existingRow.children?.[1];
+  if (labelNode) labelNode.textContent = currentLabel;
+  if (selectNode) {
+   selectNode.value = currentLocale;
+   selectNode.setAttribute('aria-label', currentLabel);
+  }
+  return false;
+ }
  const row = document.createElement('div');
  row.className = 'settings-row lt-reader-locale';
  row.setAttribute('role', 'group');
  const label = document.createElement('span');
- label.textContent = english() ? 'Interface language' : 'لغة الواجهة';
+ label.textContent = currentLabel;
  const select = document.createElement('select');
  select.id = 'lt-reader-locale-select';
- select.setAttribute('aria-label', label.textContent);
+ select.setAttribute('aria-label', currentLabel);
  for (const choice of [{id:'ar',name:'العربية'},{id:'en',name:'English'}]) {
   const option = document.createElement('option');
   option.value = choice.id;
   option.textContent = choice.name;
   select.appendChild(option);
  }
- select.value = english() ? 'en' : 'ar';
+ select.value = currentLocale;
  select.addEventListener('change', () => {
   const next = select.value;
   const y = Math.max(0, Number(global.scrollY) || 0);
@@ -217,7 +237,6 @@ function localizeReaderLocaleControl() {
  else sheet.appendChild(row);
  return true;
 }
-
 function wrap(name, after) {
  const previous = global[name];
  if (typeof previous !== 'function') return false;
