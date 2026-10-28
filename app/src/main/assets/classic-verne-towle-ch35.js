@@ -321,7 +321,7 @@ const terms=[
   },
   {
     "term": "Never too late",
-    "literal": "لا وقت يفوت أبدًا",
+    "literal": "لم يفت الأوان بعد",
     "context": "Never too late",
     "note": "A confident response that there is still time",
     "type": "idiom"
