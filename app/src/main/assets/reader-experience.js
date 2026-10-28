@@ -73,8 +73,11 @@ function ltApplyFonts(){
 // Choose a contextual Arabic gloss only from the actual dictionary senses and
 // the aligned Arabic sentence. This is a transparent heuristic, not an AI claim.
 function contextualMeaning(entry, source, story){
+ // Historical glossaries use `context` for an English source excerpt in some entries.
+ // Only an explicitly Arabic context may be presented as an Arabic contextual gloss.
+ const authoredContext=typeof entry?.context==='string'?entry.context.trim():'';
  const authored=Array.isArray(story?.terms)&&story.terms.includes(entry)&&
-  typeof entry?.context==='string'&&entry.context.trim();
+  authoredContext&&/[\u0600-\u06FF]/.test(authoredContext);
  if(authored)return {label:'المعنى السياقي داخل القصة',text:entry.context.trim(),kind:'editorial'};
  const senses=Array.isArray(entry?.meanings)?entry.meanings.filter(x=>typeof x==='string'&&x.trim()):[];
  if(!senses.length&&typeof entry?.literal==='string'&&entry.literal.trim())senses.push(entry.literal.trim());
