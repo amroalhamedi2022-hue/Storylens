@@ -128,10 +128,10 @@
 - **Android CI: NOT VERIFIED for this exact head.** The connected workflow-run lookup returned no PR-triggered run for the new head, so this record does not claim Node/Gradle/Chromium execution or a new APK. The next gate is a successful workflow run for the current source/test head.
 - **NOT TESTED:** physical Xiaomi Pad 5/WebView, TalkBack focus announcements, real gesture latency/frame pacing, and visual drawer placement in every theme. LT-01..LT-13 remain IN PROGRESS; no final APK or release claim.
 
-## LT-10 — Settings modal focus isolation (2026-10-28; source/test added, CI pending)
+## LT-10 — Settings modal focus isolation (2026-10-28; source/test smoke PASS, Android CI NOT VERIFIED)
 
-- **Production issue:** the custom Settings sheet declared `aria-modal="true"` but left the app root focusable. Keyboard focus could move behind the modal while the Settings overlay was open.
-- **Fix:** capture a safe return target before closing the drawer, mark the app root inert while the Settings sheet is active, and restore its prior inert state plus focus when the sheet is actually dismissed. Outside clicks that do not dismiss the sheet do not prematurely restore background interaction.
-- **Regression:** extend the existing `tools/library-shell-layout.test.cjs` (already part of Android CI) to execute the exact production focus helpers for normal close, ignored outside click, previously-inert root, drawer-origin focus and detached return target.
-- **CI:** pending for the exact source/test head. No Android/Chromium pass or APK is claimed until a workflow result is observed.
+- **Production fix:** the custom Settings sheet now captures a safe return target, marks the app root inert while `.lt-settings-overlay` is active, and restores the prior inert state plus focus only after the sheet is actually dismissed. It avoids returning focus into a drawer that has become inert and falls back to the visible menu toggle when the original target is detached.
+- **Regression:** expanded `tools/library-shell-layout.test.cjs` (already invoked by Android CI) to execute the actual production helpers. It covers normal close, an outside click that does not dismiss, preserving a previously-inert root, drawer-origin focus and a detached return target.
+- **PASS — direct production V8 smoke:** 10/10 assertions passed against the fetched production helper, including the Settings wiring order. Source commit `ac378284a0e5205e01616cbef600da8609ee844d`; test commit `a036f97a2973c18eb3aa2d04183a77c8cd1ef8be`.
+- **Android CI: NOT VERIFIED** for this exact source/test head. No new APK or Android/Chromium pass is claimed.
 - **NOT TESTED:** physical Xiaomi Pad 5, TalkBack focus announcements, modal behavior across every theme, and final LT-01..LT-13 acceptance.
