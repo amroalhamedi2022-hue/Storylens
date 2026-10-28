@@ -59,3 +59,15 @@ assert.match(css, /\.lt-font-panel/, 'font picker is styled');
 
 assert.match(reader, /Aref Ruqaa Ink/, 'Arabic handwriting font stack is offered');
 assert.match(reader, /Segoe Print/, 'English handwriting font stack is offered');
+
+assert.match(reader, /const ltGlassPalettes=\[/, 'Liquid Glass palette gallery exists');
+for (const id of ['sapphire','violet','rose','sunset','ocean','mint','lavender','graphite','pearl','rainbow']) {
+ assert.match(reader, new RegExp("id:'"+id+"'"), 'color palette '+id+' exists');
+}
+assert.match(reader, /lt_glass_tint/, 'adjustable glass tint is persisted');
+assert.match(reader, /lt_reduce_transparency/, 'reduced transparency accessibility option exists');
+assert.match(reader, /lt_high_contrast/, 'higher contrast accessibility option exists');
+assert.match(css, /--lt-glass-opacity/, 'glass material has adjustable opacity');
+assert.match(css, /lt-glass-swatch\[aria-pressed="true"\]/, 'selected palette is visibly indicated');
+assert.match(css, /prefers-reduced-transparency:reduce/, 'system reduced-transparency preference is respected');
+assert.match(css, /prefers-contrast:more/, 'system increased-contrast preference is respected');
