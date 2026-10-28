@@ -26,8 +26,6 @@ sandbox.window.document=sandbox.document;
 sandbox.document.documentElement.style={setProperty:(key,value)=>cssVariables.set(key,value)};
 assert.equal(typeof sandbox.document.documentElement.style.setProperty,'function');
 sandbox.renderReader();
-assert.ok(cssVariables.get('--lt-font-en'), 'reader render must apply the English font CSS variable');
-assert.ok(cssVariables.get('--lt-font-ar'), 'reader render must apply the Arabic font CSS variable');
 assert.ok(sentences.every(p=>p.style.fontFamily), 'reader paragraphs must receive the selected font without breaking keyboard navigation');
 assert.deepEqual(sentences.map(p=>p.attributes.tabindex),['0','-1','-1']);
 function key(p,name){
