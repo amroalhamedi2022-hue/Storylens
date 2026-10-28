@@ -1372,3 +1372,12 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - **PASS — independent APK SHA-256:** downloaded Debug Artifact [12796045904](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40640774324/artifacts/12796045904), extracted APK size 25,743,251 bytes; SHA-256 `4e6f20c0c33b86839058972c77cbd4c72a56a53be2e9cac6aa5d24c202c8df25`, independently recalculated and matching APK_SHA256.txt. Inspected the APK archive directly and confirmed the packaged lingua-i18n.js contains the reader locale selector; the redundant shell translation bridge is absent.
 - **Signing/update limitation:** stable-signed release artifact was skipped because the private update-signing secrets are not configured. This Debug APK is for testing and is not guaranteed to update an existing installation signed by another/ephemeral key.
 - **NOT TESTED:** physical Xiaomi Pad 5 locale switching, WebView RTL/LTR behavior, TalkBack, frame pacing/RAM/thermal, visual contrast on-device, Arabic literary review, licensed long-book editorial review, and final release signing. LT-01..LT-13 remain IN PROGRESS; no main write or merge.
+
+
+## 2026-10-28 — LT-03 immediate cancel/reopen race verified in Android CI
+
+- **PASS:** test commit `7cca6028f1b18b26003b8e9b5df2381490703767` is included in functional SHA `4162fcad840de4f8d021f381f07f0b021baf4154`; Android CI run [40640774324](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40640774324) passed the native Node loader regression, Gradle unit tests/Debug assembly, asset packaging and Chromium reader journey.
+- The test covers cancel/reopen while chapter 1 is still in flight, shared request reuse, stale-generation rejection, complete 37-chapter catalog publication, and no duplicate local asset URLs.
+- APK artifact [12796045904](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40640774324/artifacts/12796045904) independently verified at 25,743,251 bytes, SHA-256 `4e6f20c0c33b86839058972c77cbd4c72a56a53be2e9cac6aa5d24c202c8df25`.
+- **NOT TESTED:** physical Xiaomi Pad 5/WebView performance, RTL/TalkBack, independent Arabic literary review and territory-specific redistribution rights. Debug is not final; no main write or merge.
+
