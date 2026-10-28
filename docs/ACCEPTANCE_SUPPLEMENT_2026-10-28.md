@@ -87,3 +87,15 @@
 - **PASS — direct CSS/source contract:** all eight focused checks passed; stylesheet braces are balanced (201/201), and the production chapter-turn duration remains aligned with the 420 ms class cleanup.
 - **CI: NOT VERIFIED for this exact head.** Last confirmed build [40667188476](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40667188476) predates the directional animation and glossary correction. No new APK is claimed.
 - **NOT TESTED:** actual WebView rendering, physical Xiaomi Pad 5 swipe/button timing, frame pacing, screen-reader behavior, contrast, stable update signing, Arabic literary proofreading and territory-specific redistribution rights. LT-01..LT-13 remain IN PROGRESS; Debug is not final.
+
+
+## 2026-10-28 — Contextual gloss must not mislabel English source text (exact-head CI NOT VERIFIED)
+
+- **Production fix:** contextualMeaning now treats entry.context as an authored Arabic contextual gloss only when it actually contains Arabic-script text. Historical glossary entries use this field for English source excerpts; those excerpts must not be displayed under the Arabic “contextual meaning” label.
+- When an English excerpt is present, the resolver continues through the bounded Arabic senses and sentence-overlap heuristic; if no supported sense matches, it retains the honest “no verified single-word meaning” fallback rather than inventing one.
+- **Content correction:** the Chapter XXXV idiom “Never too late” now uses the natural Arabic meaning “لم يفت الأوان بعد” instead of the awkward “لا وقت يفوت أبدًا”. The English source paragraphs and source digest are unchanged.
+- **Regression tests:** tools/contextual-page-turn.test.cjs verifies an English source excerpt cannot be returned as an Arabic gloss while an explicitly Arabic-authored context remains supported; tools/verne-towle-ch35.test.cjs pins the idiom correction.
+- **Source commits:** resolver 5c09cf890ae62b91d58f8c3fe7cf9c2b7e170fe2; Chapter XXXV 000de7081cfa0eb15f2d34cef7548f0861680da5; contextual regression 8e32c8da05126b853ea786c575b6ea15471f8b2c; chapter regression c8ca2ffb5af66655de91dd2ec23ec18cbac958d8.
+- **PASS — direct V8 production smoke:** the exact helper returned “سكان / قاطنو” for the Chapter XXXV-style English source excerpt and retained “ينطلق في رحلة” for an explicitly Arabic-authored context.
+- **CI: NOT VERIFIED** for the exact functional head c8ca2ffb5af66655de91dd2ec23ec18cbac958d8. The workflow-run/status connector has not yet returned a run/check for this head; the prior CI is not evidence for this correction. No new APK is claimed.
+- **NOT TESTED:** full Node/Chromium CI, WebView dictionary-sheet visual QA, independent Arabic literary proofreading, physical Xiaomi Pad 5 and territory-specific redistribution review. LT-01..LT-13 remain IN PROGRESS; no main write or merge.
