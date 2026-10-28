@@ -565,3 +565,79 @@ global.StoryLensMakeEditorialArt=function(stories){
  return assets;
 };
 })(window);
+
+
+/* Editorial Collection D: original, offline chapter illustrations. */
+(function(global){
+'use strict';
+const base = global.StoryLensMakeEditorialArt;
+if (typeof base !== 'function') throw new Error('Base editorial art engine is required');
+const palettes = {
+ mystery: ['#142d3a','#3e7885','#e6c58b','#f7f0dd'],
+ sci_fi: ['#101b3a','#4f75d8','#7be4e0','#edf4ff'],
+ psychological: ['#2b2037','#845c91','#e6b86d','#f4e8f0'],
+ historical: ['#f0dfbd','#a84f38','#28635e','#273d3b'],
+ contemporary: ['#dce8e7','#1f5d63','#e2a34d','#233c45'],
+ horror: ['#111d24','#465a50','#c7b27d','#edf0df']
+};
+const xml = value => String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
+function motif(genre, scene, p) {
+ const [bg,accent,glow,light] = p;
+ if (genre === 'mystery') {
+  return scene===0
+   ? '<rect x="115" y="115" width="390" height="390" rx="8" fill="'+light+'" stroke="'+accent+'" stroke-width="10"/><path d="M160 190H455M160 245H430M160 300H455M160 355H390M160 410H440" stroke="'+bg+'" stroke-width="8" opacity=".72"/><circle cx="685" cy="300" r="118" fill="none" stroke="'+glow+'" stroke-width="20"/><path d="M770 386L875 492" stroke="'+glow+'" stroke-width="28" stroke-linecap="round"/>'
+   : scene===1
+   ? '<path d="M160 505V165Q160 95 235 95H435Q510 95 510 165V505Z" fill="'+accent+'" stroke="'+glow+'" stroke-width="10"/><rect x="230" y="210" width="210" height="295" fill="'+bg+'" stroke="'+light+'" stroke-width="8"/><circle cx="410" cy="365" r="13" fill="'+glow+'"/><path d="M610 170L815 375M610 375L815 170" stroke="'+light+'" stroke-width="13" opacity=".7"/>'
+   : '<rect x="120" y="130" width="420" height="350" fill="'+light+'" stroke="'+accent+'" stroke-width="10"/><path d="M160 200H490M160 255H450M160 310H480M160 365H430M160 420H470" stroke="'+bg+'" stroke-width="7"/><path d="M650 155L810 235V415L650 495L490 415V235Z" fill="'+accent+'" stroke="'+glow+'" stroke-width="8"/><circle cx="650" cy="325" r="42" fill="'+bg+'" stroke="'+light+'" stroke-width="8"/>';
+ }
+ if (genre === 'sci_fi') {
+  return scene===0
+   ? '<circle cx="500" cy="310" r="118" fill="'+glow+'" opacity=".92"/><ellipse cx="500" cy="310" rx="325" ry="100" fill="none" stroke="'+light+'" stroke-width="18" transform="rotate(-18 500 310)"/><ellipse cx="500" cy="310" rx="325" ry="100" fill="none" stroke="'+accent+'" stroke-width="7" transform="rotate(28 500 310)"/><circle cx="770" cy="190" r="24" fill="'+light+'"/><circle cx="220" cy="440" r="14" fill="'+glow+'"/>'
+   : scene===1
+   ? '<path d="M500 105V250M500 390V520M340 310H470M530 310H680" stroke="'+glow+'" stroke-width="12"/><rect x="430" y="245" width="140" height="135" rx="18" fill="'+accent+'" stroke="'+light+'" stroke-width="8"/><path d="M430 270L350 215M570 270L650 215M430 350L350 405M570 350L650 405" stroke="'+light+'" stroke-width="8"/><circle cx="500" cy="310" r="36" fill="'+bg+'" stroke="'+glow+'" stroke-width="8"/>'
+   : '<path d="M130 440Q300 250 480 370T870 210" fill="none" stroke="'+glow+'" stroke-width="14"/><circle cx="250" cy="335" r="42" fill="'+accent+'" stroke="'+light+'" stroke-width="8"/><circle cx="515" cy="375" r="68" fill="'+bg+'" stroke="'+light+'" stroke-width="8"/><circle cx="790" cy="250" r="28" fill="'+glow+'"/><path d="M700 465L765 400L830 465" fill="none" stroke="'+accent+'" stroke-width="12"/>'
+ }
+ if (genre === 'psychological') {
+  return scene===0
+   ? '<path d="M200 500V245Q200 100 350 100Q500 100 500 245V500Z" fill="'+accent+'" stroke="'+glow+'" stroke-width="10"/><path d="M260 500V260Q260 165 350 165Q440 165 440 260V500Z" fill="'+bg+'" stroke="'+light+'" stroke-width="7"/><path d="M630 150L820 340L700 470L570 340Z" fill="'+light+'" opacity=".9" stroke="'+glow+'" stroke-width="8"/>'
+   : scene===1
+   ? '<rect x="170" y="120" width="660" height="380" fill="'+bg+'" stroke="'+glow+'" stroke-width="10"/><path d="M500 120V500M170 310H830" stroke="'+light+'" stroke-width="8" opacity=".8"/><path d="M245 445L360 325L430 390L565 220L670 335L760 205" fill="none" stroke="'+accent+'" stroke-width="12"/><circle cx="360" cy="325" r="18" fill="'+glow+'"/>'
+   : '<circle cx="500" cy="300" r="175" fill="'+accent+'" stroke="'+glow+'" stroke-width="12"/><path d="M500 130L465 260L530 300L450 420L500 470" fill="none" stroke="'+light+'" stroke-width="12"/><circle cx="445" cy="270" r="16" fill="'+bg+'"/><circle cx="555" cy="270" r="16" fill="'+bg+'"/><path d="M430 355Q500 395 570 350" fill="none" stroke="'+bg+'" stroke-width="9"/>'
+ }
+ if (genre === 'historical') {
+  return scene===0
+   ? '<path d="M130 120H700L835 255V500H130Z" fill="'+light+'" stroke="'+accent+'" stroke-width="10"/><path d="M180 180H650M180 240H620M180 300H540M180 360H590" stroke="'+bg+'" stroke-width="7"/><circle cx="735" cy="365" r="65" fill="'+glow+'" stroke="'+bg+'" stroke-width="8"/><path d="M735 285V445M655 365H815" stroke="'+bg+'" stroke-width="7"/>'
+   : scene===1
+   ? '<path d="M200 485V260Q200 115 500 115Q800 115 800 260V485Z" fill="'+accent+'" stroke="'+glow+'" stroke-width="10"/><path d="M300 485V285Q300 205 500 205Q700 205 700 285V485Z" fill="'+bg+'" stroke="'+light+'" stroke-width="8"/><circle cx="500" cy="335" r="88" fill="'+glow+'" opacity=".85"/><path d="M360 485L410 400L455 485M545 485L590 400L640 485" fill="'+light+'" opacity=".9"/>'
+   : '<path d="M145 155Q300 90 470 155V475Q300 410 145 475Z" fill="'+light+'" stroke="'+accent+'" stroke-width="9"/><path d="M530 155Q700 90 855 155V475Q700 410 530 475Z" fill="'+light+'" stroke="'+accent+'" stroke-width="9"/><path d="M470 155Q500 135 530 155V475Q500 455 470 475Z" fill="'+glow+'"/><path d="M210 225L395 280L280 380M600 235L790 300L660 400" fill="none" stroke="'+bg+'" stroke-width="8"/>'
+ }
+ if (genre === 'contemporary') {
+  return scene===0
+   ? '<rect x="125" y="155" width="750" height="325" rx="24" fill="'+accent+'" stroke="'+bg+'" stroke-width="10"/><rect x="185" y="215" width="220" height="125" rx="10" fill="'+light+'"/><rect x="445" y="215" width="365" height="125" rx="10" fill="'+bg+'"/><circle cx="270" cy="450" r="48" fill="'+bg+'" stroke="'+glow+'" stroke-width="10"/><circle cx="720" cy="450" r="48" fill="'+bg+'" stroke="'+glow+'" stroke-width="10"/><path d="M500 260H755M500 300H690" stroke="'+light+'" stroke-width="9"/>'
+   : scene===1
+   ? '<rect x="170" y="120" width="660" height="380" rx="16" fill="'+light+'" stroke="'+accent+'" stroke-width="10"/><rect x="235" y="185" width="530" height="70" fill="'+bg+'"/><path d="M250 310H750M250 365H750M250 420H650" stroke="'+accent+'" stroke-width="10"/><circle cx="710" cy="450" r="26" fill="'+glow+'"/>'
+   : '<path d="M135 485L250 260L365 485M365 485L490 195L615 485M615 485L735 285L855 485" fill="none" stroke="'+accent+'" stroke-width="12"/><path d="M120 500H880" stroke="'+bg+'" stroke-width="18"/><circle cx="500" cy="155" r="52" fill="'+glow+'"/><path d="M500 125V155L525 175" stroke="'+bg+'" stroke-width="8" fill="none"/>'
+ }
+ return scene===0
+  ? '<path d="M170 500V245L500 105L830 245V500Z" fill="'+bg+'" stroke="'+glow+'" stroke-width="12"/><path d="M240 500V280H390V500M610 500V280H760V500" fill="'+accent+'" stroke="'+light+'" stroke-width="8"/><circle cx="650" cy="185" r="55" fill="'+glow+'"/><path d="M500 500V360H600V500" fill="'+light+'" stroke="'+bg+'" stroke-width="8"/>'
+  : scene===1
+  ? '<path d="M180 500V250L500 120L820 250V500Z" fill="'+bg+'" stroke="'+accent+'" stroke-width="10"/><rect x="275" y="280" width="90" height="110" fill="'+glow+'"/><rect x="455" y="250" width="90" height="140" fill="'+glow+'"/><rect x="635" y="280" width="90" height="110" fill="'+glow+'"/><path d="M500 390V500" stroke="'+light+'" stroke-width="10"/><circle cx="500" cy="170" r="24" fill="'+light+'"/>'
+  : '<path d="M200 500V170H800V500Z" fill="'+bg+'" stroke="'+glow+'" stroke-width="10"/><path d="M275 500V235H725V500" fill="none" stroke="'+accent+'" stroke-width="9"/><path d="M310 455L420 345L500 410L600 285L690 365" fill="none" stroke="'+light+'" stroke-width="12"/><circle cx="600" cy="285" r="18" fill="'+glow+'"/>';
+}
+function sceneSvg(story, chapterIndex, chapter) {
+ const p = palettes[story.genre] || palettes.mystery;
+ const [bg,accent,glow,light] = p;
+ const id = story.id.replace(/[^a-z0-9-]/gi,'-') + '-' + chapterIndex;
+ const sceneTitle = xml(story.title + ' — ' + chapter.title);
+ const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="'+sceneTitle+'"><defs><linearGradient id="'+id+'-sky" x2="0" y2="1"><stop stop-color="'+bg+'"/><stop offset="1" stop-color="'+accent+'"/></linearGradient><radialGradient id="'+id+'-glow"><stop stop-color="'+glow+'"/><stop offset="1" stop-color="'+glow+'" stop-opacity="0"/></radialGradient></defs><rect width="1000" height="620" fill="url(#'+id+'-sky)"/><circle cx="'+(760-chapterIndex*70)+'" cy="'+(150+chapterIndex*24)+'" r="190" fill="url(#'+id+'-glow)"/>'+motif(story.genre,chapterIndex,p)+'<path d="M0 535Q250 495 500 540T1000 520V620H0Z" fill="'+bg+'" opacity=".8"/><path d="M0 550H1000" stroke="'+glow+'" stroke-width="5" opacity=".8"/><text x="52" y="570" font-family="Georgia,serif" font-size="23" letter-spacing="2" fill="'+light+'">'+sceneTitle+'</text><text x="948" y="570" text-anchor="end" font-family="system-ui,sans-serif" font-size="14" fill="'+light+'" opacity=".8">LINGUA TALES · ORIGINAL SCENE</text></svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+global.StoryLensMakeEditorialArt = function(stories) {
+ const art = base(stories);
+ for (const story of stories) {
+  if (!story || !['blue-room-ledger','quiet-orbit','name-in-margin','glassmakers-map','last-shift-swap','house-that-counted'].includes(story.id)) continue;
+  story.chapters.forEach((chapter,index) => { art[story.id+'_'+index] = sceneSvg(story,index,chapter); });
+ }
+ return art;
+};
+})(window);
