@@ -313,3 +313,7 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - **PASS:** [Android CI 40611408964](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40611408964) on `fe7ea244dd0803ca9adf4c9bb5d94f3681e9b393`; Node/content/audio gates, Gradle, APK asset inclusion and Chromium reader journeys passed.
 - **PASS:** independently extracted APK artifact `12782818143`; 25,721,483 bytes, SHA-256 `9a92c11ad2f6bfb6fb9c57bb0fea9655ced3c651148231145af94c9e21a010a9`. Archive inspection confirms all 24 OGG assets and attribution text are packaged.
 - **NOT TESTED:** real-device acoustic quality, Android audio focus/lifecycle, screen-off, battery/thermal, Pad 5 performance and final stable signing. Build was justified to prove that the newly expanded offline audio catalog and attribution survive actual Android packaging; it is a Debug test build, not a final update/release.
+
+## 2026-10-28 — Page-turn accessibility checkpoint
+
+The production paged reader now names each page group in the active interface locale and atomically announces the full page counter. The exact source/test head is ac72f5a40573f9b9181bc6c848479d75081b5851; Android CI run 40737942544 is still in progress after source tests, Gradle, APK assembly and resource checks passed. Do not mark LT-02/LT-06 or overall LT-01..LT-13 complete until CI finishes and Xiaomi Pad 5/TalkBack validation is recorded.
