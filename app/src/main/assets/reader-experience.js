@@ -60,8 +60,13 @@ function ltApplyFonts(){
   const arabic=node.matches('.inline-ar')||node.closest('[lang="ar"]')||/[\\u0600-\\u06FF]/.test(node.textContent||'');
   node.style.fontFamily=arabic?choice.ar:choice.en;
  });
- document.documentElement.style.setProperty('--lt-font-en',choice.en);
- document.documentElement.style.setProperty('--lt-font-ar',choice.ar);
+ const rootStyle=document.documentElement?.style;
+ // Inline font-family remains usable even in a partial/early WebView host that
+ // does not expose CSSStyleDeclaration yet; real Android browsers take this path.
+ if(rootStyle&&typeof rootStyle.setProperty==='function'){
+  rootStyle.setProperty('--lt-font-en',choice.en);
+  rootStyle.setProperty('--lt-font-ar',choice.ar);
+ }
 }
 
 
