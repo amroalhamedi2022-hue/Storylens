@@ -1,6 +1,6 @@
 (function(global){
 'use strict';
-/* LT-11: 16 pinned, licensed looped soundscapes + 4 short licensed sound effects.
+/* LT-11: 20 pinned, licensed looped soundscapes + 4 short licensed sound effects.
  * All files are packaged locally by tools/fetch_licensed_audio.py. No runtime network,
  * autoplay, microphone or speech synthesis. Audio begins only after an explicit tap.
  */
@@ -20,7 +20,11 @@ const TRACKS = [
  {id:"river-flow",en:"River flow",ar:"جريان النهر",file:"river-flow.ogg"},
  {id:"waterfall",en:"Waterfall",ar:"شلال",file:"waterfall.ogg"},
  {id:"wind-birds",en:"Wind and birds",ar:"رياح وطيور",file:"wind-birds.ogg"},
- {id:"wind-chimes",en:"Wind chimes",ar:"أجراس الرياح",file:"wind-chimes.ogg"}
+ {id:"wind-chimes",en:"Wind chimes",ar:"أجراس الرياح",file:"wind-chimes.ogg"},
+ {id:"farm",en:"Farm ambience",ar:"أجواء المزرعة",file:"farm.ogg"},
+ {id:"european-city",en:"European city daytime",ar:"أجواء مدينة أوروبية نهارًا",file:"european-city.ogg"},
+ {id:"creek-in-woods",en:"Creek in the woods",ar:"جدول ماء بين الأشجار",file:"creek-in-woods.ogg"},
+ {id:"water-lapping",en:"Water lapping at the shore",ar:"ماء يلامس الشاطئ",file:"water-lapping.ogg"}
 ];
 const SFX = [
  {id:"book-open",en:"Book opens",ar:"فتح كتاب",file:"book-open.ogg"},
@@ -65,8 +69,8 @@ function releaseFocus(){
 function syncUi(){
  if(playButton)playButton.textContent=playing?(rtlUi?'إيقاف مؤقت':'Pause'):(rtlUi?'تشغيل الأجواء':'Play ambience');
  if(statusNote)statusNote.textContent=rtlUi
-  ?'16 أجواء مسجّلة ومرخّصة + 4 مؤثرات قصيرة؛ تعمل محليًا بعد اختيارك. CC BY 4.0.'
-  :'16 licensed recorded ambiences + 4 short effects; local playback only after your tap. CC BY 4.0.';
+  ?'20 أجواء مسجّلة ومرخّصة + 4 مؤثرات قصيرة؛ تعمل محليًا بعد اختيارك. CC BY 4.0.'
+  :'20 licensed recorded ambiences + 4 short effects; local playback only after your tap. CC BY 4.0.';
 }
 function stopSfx(){
  for(const audio of sfxPlayers){try{audio.pause();audio.currentTime=0;}catch(_){}}
