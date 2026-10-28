@@ -24,8 +24,8 @@ assert.ok(!missing.result.text.includes('هذه معانٍ معجمية عامة
 assert.match(reader, /function installPageTurn\(\)/);
 assert.match(reader, /const LT_PAGE_PARAGRAPHS=4/);
 assert.match(reader, /count>=LT_PAGE_PARAGRAPHS/);
-assert.match(reader, /readerPage:Number\\.isInteger\\(currentPage\\)/);
-assert.match(reader, /Math\\.floor\\(mark\\.paragraph\\/LT_PAGE_PARAGRAPHS\\)/);
+assert.match(reader, /readerPage:Number\.isInteger\(currentPage\)/);
+assert.match(reader, /Math\.floor\(mark\.paragraph\/LT_PAGE_PARAGRAPHS\)/);
 assert.match(reader, /readpage_/);
 assert.match(reader, /touchstart/);
 assert.match(reader, /lt-turn-forward/);
