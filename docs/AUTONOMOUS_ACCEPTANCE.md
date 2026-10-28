@@ -1,5 +1,13 @@
 <!-- Latest dated evidence: docs/ACCEPTANCE_SUPPLEMENT_2026-10-28.md; preserve the historical acceptance ledger below. -->
 
+## Latest source checkpoint — 2026-10-28 (Settings modal accessibility)
+
+- **PASS source fix:** the custom Settings dialog now makes the background app root inert and restores its prior state and a safe focus target only when the dialog is dismissed. It does not return focus into an inert drawer or to a detached node.
+- **PASS direct production V8 smoke:** 10/10 focused checks on the actual extracted helper and its production wiring.
+- **Source/test commits:** `ac378284a0e5205e01616cbef600da8609ee844d` / `a036f97a2973c18eb3aa2d04183a77c8cd1ef8be`.
+- **Android CI NOT VERIFIED** for this exact source/test head; no new APK is claimed.
+- **NOT TESTED:** Xiaomi Pad 5, TalkBack, theme-by-theme modal rendering and final LT-01..LT-13 acceptance.
+
 ## Latest source checkpoint — 2026-10-28 (contextual dictionary correctness)
 
 - **PASS source fix:** an English source excerpt in a historical story glossary can no longer be mislabeled as an Arabic contextual meaning; only Arabic-script authored context is treated as an Arabic gloss. Otherwise the resolver uses supported Arabic senses and sentence overlap, or honestly reports no verified gloss.
