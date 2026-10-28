@@ -17,7 +17,7 @@ const sorted=a=>[...a].sort();
 assert.deepEqual(sorted(collectionC.map(s=>s.genre)),sorted(expected),'Collection C covers all six adult genres');
 assert.deepEqual(sorted(collectionD.map(s=>s.genre)),sorted(expected),'Collection D covers all six adult genres');
 const known=new Set(),normalizedLines=new Set();
-const norm=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().replace(/\\s+/g,' ');
+const norm=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
 function validateCollection(collection,{chaptersPerStory,paragraphsPerChapter,label}) {
  let paragraphs=0,words=0,illustrations=0,annotations=0;
  for(const story of collection){
@@ -32,12 +32,12 @@ function validateCollection(collection,{chaptersPerStory,paragraphsPerChapter,la
    assert.ok(ch.title.length>=4&&ch.titleAr.length>=4,'bilingual chapter headings '+story.id);
    assert.equal(ch.paragraphs.length,paragraphsPerChapter,label+' paragraph count '+story.id);
    for(const p of ch.paragraphs){
-    assert.ok(p.en.trim().split(/\\s+/).length>=11,'complete English sentence '+story.id);
-    assert.ok(p.ar.length>=35&&/[\\u0621-\\u064A]/.test(p.ar),'aligned Arabic companion paragraph '+story.id);
+    assert.ok(p.en.trim().split(/\s+/).length>=11,'complete English sentence '+story.id);
+    assert.ok(p.ar.length>=35&&/[\u0621-\u064A]/.test(p.ar),'aligned Arabic companion paragraph '+story.id);
     const normalized=norm(p.en);
     assert.ok(!normalizedLines.has(normalized),'no recycled English paragraph: '+p.en);
     normalizedLines.add(normalized);body.push(normalized);
-    paragraphs++;words+=normalized.split(/\\s+/).length;
+    paragraphs++;words+=normalized.split(/\s+/).length;
    }
   }
   const full=body.join(' ');
@@ -51,8 +51,9 @@ function validateCollection(collection,{chaptersPerStory,paragraphsPerChapter,la
    const uri=scenes[story.id+'_'+i];
    assert.ok(uri?.startsWith('data:image/svg+xml;charset=utf-8,'),'local illustration for '+story.id+' chapter '+i);
    const svg=decodeURIComponent(uri.slice(uri.indexOf(',')+1));
-   assert.ok(svg.includes(story.title)&&svg.includes(ch.title||'' )===false || svg.includes('LINGUA TALES'),'SVG must be a self-contained local scene');
-   assert.doesNotMatch(svg,/https?:\\/\\//,'no remote image/font dependency');
+   assert.ok(svg.includes(story.title),'scene includes the story identity');
+   assert.ok(svg.includes('LINGUA TALES · ORIGINAL SCENE'),'scene carries accessible local-art provenance');
+   assert.doesNotMatch(svg,/https?:\/\//,'no remote image/font dependency');
    illustrations++;
   }
   annotations+=story.terms.length;
