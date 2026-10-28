@@ -127,3 +127,11 @@
 - **Test source commit:** `83f0997e192bd6ddf9a24b76b6298ef1b9ddb2c5`. The test harness uses the same production callbacks, not a separately reimplemented gesture algorithm.
 - **Android CI: NOT VERIFIED for this exact head.** The connected workflow-run lookup returned no PR-triggered run for the new head, so this record does not claim Node/Gradle/Chromium execution or a new APK. The next gate is a successful workflow run for the current source/test head.
 - **NOT TESTED:** physical Xiaomi Pad 5/WebView, TalkBack focus announcements, real gesture latency/frame pacing, and visual drawer placement in every theme. LT-01..LT-13 remain IN PROGRESS; no final APK or release claim.
+
+## LT-10 — Settings modal focus isolation (2026-10-28; source/test added, CI pending)
+
+- **Production issue:** the custom Settings sheet declared `aria-modal="true"` but left the app root focusable. Keyboard focus could move behind the modal while the Settings overlay was open.
+- **Fix:** capture a safe return target before closing the drawer, mark the app root inert while the Settings sheet is active, and restore its prior inert state plus focus when the sheet is actually dismissed. Outside clicks that do not dismiss the sheet do not prematurely restore background interaction.
+- **Regression:** extend the existing `tools/library-shell-layout.test.cjs` (already part of Android CI) to execute the exact production focus helpers for normal close, ignored outside click, previously-inert root, drawer-origin focus and detached return target.
+- **CI:** pending for the exact source/test head. No Android/Chromium pass or APK is claimed until a workflow result is observed.
+- **NOT TESTED:** physical Xiaomi Pad 5, TalkBack focus announcements, modal behavior across every theme, and final LT-01..LT-13 acceptance.
