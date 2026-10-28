@@ -28,8 +28,8 @@ assert.deepEqual(manifest.tracks.filter(x=>x.kind==='loop').map(x=>x.id),expecte
 
 assert.equal(manifest.license,'CC BY 4.0');
 assert.equal(manifest.sourceCommit,'251c0be57d5d1b3242b91f53e0cde62ab1cb42d9');
-assert.equal(new Set(manifest.tracks.map(x=>x.id)).size,20);
-assert.equal(new Set(manifest.tracks.map(x=>x.file)).size,20);
+assert.equal(new Set(manifest.tracks.map(x=>x.id)).size,24);
+assert.equal(new Set(manifest.tracks.map(x=>x.file)).size,24);
 for(const item of manifest.tracks){
  assert.ok(/^[a-z0-9-]+\.ogg$/.test(item.file));
  assert.equal(item.sourceCommit,manifest.sourceCommit);
