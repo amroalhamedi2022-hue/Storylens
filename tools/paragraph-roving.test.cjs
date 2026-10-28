@@ -4,13 +4,14 @@ const reader=fs.readFileSync(path.resolve(__dirname,'../app/src/main/assets/read
 const paragraphs=['First English paragraph.','Second English paragraph.','Third English paragraph.'];
 let active=null;
 const sentences=paragraphs.map((en,i)=>({
- dataset:{i:String(i)},attributes:{},handlers:{},nextElementSibling:null,
+ dataset:{i:String(i)},attributes:{},handlers:{},style:{},textContent:en,nextElementSibling:null,matches(){return false},closest(){return null},
  querySelectorAll:()=>[],addEventListener(k,fn){(this.handlers[k]||=[]).push(fn)},
  setAttribute(k,v){this.attributes[k]=v},
  focus(){active=this;for(const f of this.handlers.focusin||[])f({target:this})}
 }));
-const document={documentElement:{lang:'en'},querySelectorAll:s=>s==='.reader .sentence'?sentences:[],
- querySelector:()=>null};
+const cssVariables=new Map();
+const document={documentElement:{lang:'en',style:{setProperty:(key,value)=>cssVariables.set(key,value)}},
+ querySelectorAll:s=>s.includes('.reader .sentence')?sentences:[], querySelector:()=>null};
 const story={id:'long',title:'Long',chapters:[{title:'Part',paragraphs:paragraphs.map(en=>({en,ar:'ترجمة'}))}]};
 const state={page:'reader',story,chapter:0,toolbar:false};
 const store=new Map(),window={scrollY:0,scrollTo(){}};
@@ -21,6 +22,9 @@ const sandbox={window,document,state,catalog:{stories:[story],dictionary:[]},
  lemmas:w=>[w],Date,console};
 vm.runInNewContext(reader,sandbox,{timeout:5000});
 sandbox.renderReader();
+assert.ok(cssVariables.get('--lt-font-en'), 'reader render must apply the English font CSS variable');
+assert.ok(cssVariables.get('--lt-font-ar'), 'reader render must apply the Arabic font CSS variable');
+assert.ok(sentences.every(p=>p.style.fontFamily), 'reader paragraphs must receive the selected font without breaking keyboard navigation');
 assert.deepEqual(sentences.map(p=>p.attributes.tabindex),['0','-1','-1']);
 function key(p,name){
  const event={target:p,key:name,prevented:false,stopped:false,
