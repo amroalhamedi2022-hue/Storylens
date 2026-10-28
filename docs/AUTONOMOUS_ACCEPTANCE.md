@@ -1,5 +1,13 @@
 <!-- Latest dated evidence: docs/ACCEPTANCE_SUPPLEMENT_2026-10-28.md; preserve the historical acceptance ledger below. -->
 
+## Latest verified checkpoint — 2026-10-28 (page-turn bookmark continuity)
+
+- **Production + regression:** reader bookmarks now preserve the active page-turn index and restore it before the paragraph anchor is measured. Older paragraph bookmarks derive a page using the shared four-paragraph rule; scroll-only legacy bookmarks remain supported.
+- **PASS — exact source/test CI:** [run 40667188476](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40667188476), source/test SHA `70af49e18ba6d02faec7b7b37ea356bc249ccb2b`; content/Node regression suite, Gradle unit tests + Debug assembly, packaged-resource validation and browser render smoke passed.
+- **PASS — independent APK integrity:** Debug Artifact [12805779575](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40667188476/artifacts/12805779575), 25,749,207 bytes, SHA-256 `fcbd1396ee3b729663702d0bd42b3cc0e2a1f0d658f54657b7aab193164d5a88`, independently recalculated from the downloaded ZIP.
+- **NOT TESTED:** physical Xiaomi Pad 5, real swipe/button timing, TalkBack, performance/thermal and stable update signing. CI/source acceptance is not device acceptance; LT-01..LT-13 remain IN PROGRESS, Debug is not final.
+
+
 ## 2026-10-26 — Chapter XXVII exact-source comparison and digest regression
 
 - **PASS — independent source comparison:** fetched the pinned Standard Ebooks chapter-27 XHTML (chapter blob `2475c77964fd4cdaf1a83b3e60a6c905e89d66f7`), extracted the 25 body paragraphs, removed inline markup, and normalized whitespace, non-breaking spaces and the editorial U+2060 word-joiner. All **25/25 English paragraphs match** the packaged source text; 1,952 English words.
