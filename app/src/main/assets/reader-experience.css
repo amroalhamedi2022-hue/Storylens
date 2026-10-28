@@ -169,3 +169,13 @@ body.theme-aurora,body.theme-nebula{
  .lt-turn-forward,.lt-turn-back{animation:none!important}
  .library .card{transition:none!important}
 }
+
+/* Offline Arabic/English type gallery; font stacks gracefully fall back per device. */
+.lt-font-panel{margin:16px 0 4px;padding:15px;border:1px solid color-mix(in srgb,var(--ink) 13%,transparent);border-radius:18px;background:linear-gradient(135deg,#ffffff14,#8c9dff0b)}
+.lt-font-panel h3{margin:0 0 7px;font-size:15px}
+.lt-font-panel .quiet{line-height:1.65;margin:0 0 12px}
+.lt-font-label{display:grid;gap:7px;font-size:13px;font-weight:700}
+.lt-font-label select{width:100%;min-height:46px;border:1px solid color-mix(in srgb,var(--ink) 20%,transparent);border-radius:12px;padding:10px 12px;background:var(--card,#fff);color:var(--ink);font:inherit}
+.reader .sentence{font-family:var(--lt-font-en,Georgia,serif)}
+.reader .sentence .inline-ar,[lang="ar"] .reader .sentence{font-family:var(--lt-font-ar,"Noto Sans Arabic",sans-serif)}
+@media (prefers-reduced-motion:reduce){.lt-font-panel *{transition:none!important}}
