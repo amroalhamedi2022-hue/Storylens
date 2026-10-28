@@ -143,7 +143,13 @@ const pageTurnTimers=new WeakMap();
 function animatePageTurn(active,direction){
  const previous=pageTurnTimers.get(active);
  if(previous!==undefined)window.clearTimeout(previous);
+ // Invalidate ownership before the reduced-motion early return: a callback
+ // already queued by WebView must not regain authority after a turn is skipped.
+ pageTurnTimers.delete(active);
  active.classList.remove('lt-turn-forward','lt-turn-back');
+ // CSS already suppresses the animation, but skipping the forced layout and
+ // timer here also avoids unnecessary work on reduced-motion devices.
+ if(typeof window.matchMedia==='function'&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
  void active.offsetWidth;
  active.classList.add(direction==='back'?'lt-turn-back':'lt-turn-forward');
  const timer=window.setTimeout(()=>{
