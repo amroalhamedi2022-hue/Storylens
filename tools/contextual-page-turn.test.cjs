@@ -49,10 +49,13 @@ assert.ok(reader.includes("window.getSelection?.()?.toString()||''"), 'selection
 console.log('PASS: contextual meaning and page-turn production regression');
 
 assert.match(reader, /const ltFontChoices=\[/, 'font gallery choices are defined in production');
-for (const id of ['system','naskh','sans','serif','rounded','humanist','classic','mono']) {
+for (const id of ['system','naskh','sans','serif','rounded','humanist','classic','mono','handwritten','casual-hand','calligraphy']) {
  assert.match(reader, new RegExp("id:'"+id+"'"), 'font choice '+id+' exists');
 }
 assert.match(reader, /ltApplyFonts\(\)/, 'font choice is applied to the reader');
 assert.match(reader, /lt_font_choice/, 'font choice is persisted offline');
 assert.match(reader, /lt-font-choice/, 'font picker is rendered in reader settings');
 assert.match(css, /\.lt-font-panel/, 'font picker is styled');
+
+assert.match(reader, /Aref Ruqaa Ink/, 'Arabic handwriting font stack is offered');
+assert.match(reader, /Segoe Print/, 'English handwriting font stack is offered');
