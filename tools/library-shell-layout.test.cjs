@@ -150,13 +150,13 @@ function swipeHarness(locale, initiallyOpen = false) {
 {
   const h = swipeHarness('ar');
   h.swipe(390, 300);
-  assert.deepEqual(h.snapshot(), { opened: true, openCount: 1, focusRestored: 0, closeCalls: [] },
+  assert.deepEqual(JSON.parse(JSON.stringify(h.snapshot())), { opened: true, openCount: 1, focusRestored: 0, closeCalls: [] },
     'Arabic drawer opens only on a right-edge leftward swipe');
 }
 {
   const h = swipeHarness('en');
   h.swipe(10, 100);
-  assert.deepEqual(h.snapshot(), { opened: true, openCount: 1, focusRestored: 0, closeCalls: [] },
+  assert.deepEqual(JSON.parse(JSON.stringify(h.snapshot())), { opened: true, openCount: 1, focusRestored: 0, closeCalls: [] },
     'English drawer opens only on a left-edge rightward swipe');
 }
 {
@@ -172,13 +172,13 @@ function swipeHarness(locale, initiallyOpen = false) {
 {
   const h = swipeHarness('ar', true);
   h.swipe(180, 270);
-  assert.deepEqual(h.snapshot(), { opened: false, openCount: 0, focusRestored: 1, closeCalls: [true] },
+  assert.deepEqual(JSON.parse(JSON.stringify(h.snapshot())), { opened: false, openCount: 0, focusRestored: 1, closeCalls: [true] },
     'closing the Arabic drawer by reciprocal swipe restores focus to the menu toggle');
 }
 {
   const h = swipeHarness('en', true);
   h.swipe(220, 130);
-  assert.deepEqual(h.snapshot(), { opened: false, openCount: 0, focusRestored: 1, closeCalls: [true] },
+  assert.deepEqual(JSON.parse(JSON.stringify(h.snapshot())), { opened: false, openCount: 0, focusRestored: 1, closeCalls: [true] },
     'closing the English drawer by reciprocal swipe restores focus to the menu toggle');
 }
 {
