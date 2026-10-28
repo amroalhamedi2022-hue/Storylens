@@ -22,11 +22,11 @@ assert.equal(englishSourceContext.result.kind, 'inferred', 'an English source ex
 assert.equal(englishSourceContext.result.text, 'سكان / قاطنو', 'use the supported Arabic sense when it overlaps the translated sentence');
 assert.notEqual(englishSourceContext.result.text, 'The dwellers in Saville Row', 'never label an English excerpt as an Arabic meaning');
 const ambiguousContext = {};
-vm.runInNewContext(productionHelper + "\\nresult = contextualMeaning({term:'riverbank',meanings:['ضفة النهر','طريق النهر']},{en:'The river was wide.',ar:'كان النهر واسعًا.'},{terms:[]});", ambiguousContext);
+vm.runInNewContext(productionHelper + "\nresult = contextualMeaning({term:'riverbank',meanings:['ضفة النهر','طريق النهر']},{en:'The river was wide.',ar:'كان النهر واسعًا.'},{terms:[]});", ambiguousContext);
 assert.equal(ambiguousContext.result.kind, 'sentence', 'equally supported senses must abstain rather than choose arbitrarily');
 assert.match(ambiguousContext.result.text, /لم يُعثر على معنى مفرد موثّق/);
 const duplicateSense = {};
-vm.runInNewContext(productionHelper + "\\nresult = contextualMeaning({term:'riverbank',meanings:['ضفة النهر','ضفة النهر']},{en:'They reached the riverbank.',ar:'وصلوا إلى ضفة النهر.'},{terms:[]});", duplicateSense);
+vm.runInNewContext(productionHelper + "\nresult = contextualMeaning({term:'riverbank',meanings:['ضفة النهر','ضفة النهر']},{en:'They reached the riverbank.',ar:'وصلوا إلى ضفة النهر.'},{terms:[]});", duplicateSense);
 assert.equal(duplicateSense.result.kind, 'inferred', 'duplicate copies of one sense are not an ambiguity');
 assert.equal(duplicateSense.result.text, 'ضفة النهر');
 const missing = {};
