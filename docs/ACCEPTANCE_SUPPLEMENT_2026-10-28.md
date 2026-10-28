@@ -77,3 +77,13 @@
 - **PASS — direct source contract:** Chapter XXXIV still contains 22 English/Arabic paragraph pairs and 972 English words; the contextual term is present and the regression assertion is wired into the existing content test.
 - **CI: NOT VERIFIED for this exact head.** The last confirmed build remains [40667188476](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40667188476), which predates this glossary correction. No new APK is claimed for this change.
 - **NOT TESTED:** independent bilingual literary proofreading, territory-specific redistribution review, Xiaomi Pad 5 visual/RTL/TalkBack/performance acceptance and stable update signing. LT-01..LT-13 remain IN PROGRESS; Debug is not final.
+
+
+## 2026-10-28 — Directional paper-edge page-turn animation (exact-head CI NOT VERIFIED)
+
+- **Production:** upgraded the reader's incoming-page motion from a small 13-degree nudge to a short 42-degree 3D edge turn with a composited opacity/transform shade overlay. LTR turns pivot at the right edge for Next and left edge for Back; RTL reverses the pivot and motion. The effect remains 420 ms and uses transform/opacity only; reduced-motion disables both the page and shade animations.
+- **Regression:** `tools/contextual-page-turn.test.cjs` now pins LTR angle, mirrored RTL pivots/shading and reduced-motion behavior. The existing Android workflow already invokes this test.
+- **Source commits:** CSS `8501042c0ec6ccb72bc83e74991ed8ade3195d06`; test `262415c82ac3753c793bc919819fe075c8b8fa6d`.
+- **PASS — direct CSS/source contract:** all eight focused checks passed; stylesheet braces are balanced (201/201), and the production chapter-turn duration remains aligned with the 420 ms class cleanup.
+- **CI: NOT VERIFIED for this exact head.** Last confirmed build [40667188476](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40667188476) predates the directional animation and glossary correction. No new APK is claimed.
+- **NOT TESTED:** actual WebView rendering, physical Xiaomi Pad 5 swipe/button timing, frame pacing, screen-reader behavior, contrast, stable update signing, Arabic literary proofreading and territory-specific redistribution rights. LT-01..LT-13 remain IN PROGRESS; Debug is not final.
