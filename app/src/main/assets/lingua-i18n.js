@@ -33,15 +33,11 @@ function localizeLibrary() {
  set('.storylens-hero .hero-content > p',
   'قصص ناضجة، وأسرار تستحق الاكتشاف، وإنجليزية تتعلمها من الأحداث نفسها.',
   'Mature stories, mysteries worth discovering, and English learned through the story itself.');
- each('.storylens-hero .hero-metrics span', node => {
-  const text = node.textContent.trim();
-  let match = text.match(/^(\d+)\s+STORIES$/i);
-  if (match) { node.textContent = english() ? match[1] + ' STORIES' : match[1] + ' قصة'; return; }
-  match = text.match(/^(\d+)\s+GENRES$/i);
-  if (match) { node.textContent = english() ? match[1] + ' GENRES' : match[1] + ' تصنيف'; return; }
-  if (/^100%\s+OFFLINE$/i.test(text))
-   node.textContent = english() ? '100% OFFLINE' : '100% دون إنترنت';
- });
+
+ // The story library is the product. Remove stale promotional counts instead
+ // of hard-coding totals that drift whenever a new licensed content batch lands.
+ const metrics = find('.storylens-hero .hero-metrics');
+ if (metrics) metrics.remove();
 }
 function localizeReader() {
  if (!english() || state.page !== 'reader') return;
