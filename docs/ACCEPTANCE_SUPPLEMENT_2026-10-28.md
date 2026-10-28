@@ -109,3 +109,12 @@
 - **Functional commits:** resolver `53d5ea280603f51361b3b4b98484c1d522a16ead`; focused regression `e551c1c05b38aad5ac1e8aab16ab283a921d729e`. The Android workflow includes `node tools/contextual-page-turn.test.cjs`.
 - **CI: NOT VERIFIED for this exact head.** The connected status lookup returned no pull-request run for the new commits; the last confirmed run `40640774324` predates this change. No APK or CI pass is claimed for this fix.
 - **NOT TESTED:** dictionary-sheet rendering on WebView/Xiaomi Pad 5, independent Arabic editorial review, physical RTL/TalkBack and overall LT-01..LT-13 acceptance. No source story text or translations were altered; no main write or merge.
+
+
+## 2026-10-28 — Page-swipe endpoint safety (exact-head CI NOT VERIFIED)
+
+- **Production:** page-turn gestures now check the surface at both the start and end coordinates. A horizontal swipe that begins in ordinary reading text but ends over a button/link/form/accessibility control is ignored, avoiding accidental page changes when the gesture crosses a control.
+- **Regression:** the production-helper test covers plain reading surfaces, selection, controls at either endpoint, nested text targets and null-safe behavior; it also asserts that touchend resolves the ending element with `document.elementFromPoint` and passes both endpoints through the shared guard.
+- **Source commit:** `8138f7b7b94d2b61a7dfd4691150af1d86be378f`; test commit `949d25b42349723bfdd77fd637b4fb97f4a90f52`.
+- **CI NOT VERIFIED** for this exact source/test head; no current workflow row was returned by the connected run/status surface. The last confirmed CI run `40667188476` predates this endpoint guard. No APK is claimed for this change.
+- **NOT TESTED:** physical Xiaomi Pad 5 swipe/button interaction, RTL feel, TalkBack and frame pacing. LT-01..LT-13 remain IN PROGRESS; no main write or merge.
