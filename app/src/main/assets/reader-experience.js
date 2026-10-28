@@ -135,6 +135,24 @@ function pageSwipeAllowed(target,selectionText=''){
 function pageSwipeGestureAllowed(startTarget,endTarget,selectionText=''){
  return pageSwipeAllowed(startTarget,selectionText)&&pageSwipeAllowed(endTarget,selectionText);
 }
+
+// A timeout from an earlier turn must never clear a newer animation on the
+// same page. WebView timers can already be queued when clearTimeout is called,
+// so the callback also verifies that it still owns the page's current timer.
+const pageTurnTimers=new WeakMap();
+function animatePageTurn(active,direction){
+ const previous=pageTurnTimers.get(active);
+ if(previous!==undefined)window.clearTimeout(previous);
+ active.classList.remove('lt-turn-forward','lt-turn-back');
+ void active.offsetWidth;
+ active.classList.add(direction==='back'?'lt-turn-back':'lt-turn-forward');
+ const timer=window.setTimeout(()=>{
+  if(pageTurnTimers.get(active)!==timer)return;
+  active.classList.remove('lt-turn-forward','lt-turn-back');
+  pageTurnTimers.delete(active);
+ },420);
+ pageTurnTimers.set(active,timer);
+}
 function installPageTurn(){
  const reader=document.querySelector('.reader');
  const width=reader?.querySelector('.reading-width');
@@ -188,11 +206,7 @@ function installPageTurn(){
   put(key,current);
   if(chapterEnd)chapterEnd.hidden=current!==pages.length-1;
   if(animate&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-   const active=pages[current];
-   active.classList.remove('lt-turn-forward','lt-turn-back');
-   void active.offsetWidth;
-   active.classList.add(direction==='back'?'lt-turn-back':'lt-turn-forward');
-   window.setTimeout(()=>active.classList.remove('lt-turn-forward','lt-turn-back'),420);
+   animatePageTurn(pages[current],direction);
   }
   window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
  }
