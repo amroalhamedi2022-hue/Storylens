@@ -19,6 +19,8 @@ const loaded = new Set();
 let bookPromise = null;
 let dictionaryPromise = null;
 let openGeneration = 0;
+let bookLoadGeneration = 0;
+const inFlightAssets = new Map();
 let statusNode = null;
 const BOOK_ID = 'around-the-world-in-eighty-days-towle';
 
@@ -28,6 +30,17 @@ function unlockRoot() {
   if (!root) return;
   root.inert = false;
   root.removeAttribute('aria-busy');
+}
+function cancelBookLoad() {
+  // Let the already-started local script finish, but never load the remaining
+  // chapter/art scripts after the user leaves or cancels the long book.
+  bookLoadGeneration++;
+  bookPromise = null;
+}
+function cancelledLoadError() {
+  const error = new Error('Offline book load cancelled');
+  error.name = 'AbortError';
+  return error;
 }
 function clearStatus() {
   if (statusNode) statusNode.remove();
@@ -85,12 +98,14 @@ function showError() {
 }
 function cancelPending() {
   openGeneration++;
+  cancelBookLoad();
   clearStatus();
   unlockRoot();
 }
 function loadAsset(src) {
   if (loaded.has(src)) return Promise.resolve();
-  return new Promise((resolve, reject) => {
+  if (inFlightAssets.has(src)) return inFlightAssets.get(src);
+  const pending = new Promise((resolve, reject) => {
     const script = document.createElement('script');
     script.src = src;
     script.async = false;
@@ -110,13 +125,24 @@ function loadAsset(src) {
     };
     document.head.appendChild(script);
   });
+  let tracked;
+  tracked = pending.finally(() => {
+    if (inFlightAssets.get(src) === tracked) inFlightAssets.delete(src);
+  });
+  inFlightAssets.set(src, tracked);
+  return tracked;
 }
-async function loadAssets(list) {
-  for (const src of list) await loadAsset(src);
+async function loadAssets(list, generation = null) {
+  for (const src of list) {
+    if (generation !== null && generation !== bookLoadGeneration) throw cancelledLoadError();
+    await loadAsset(src);
+  }
+  if (generation !== null && generation !== bookLoadGeneration) throw cancelledLoadError();
 }
-async function loadBook() {
+async function loadBook(generation) {
   if (!bookAssets.length) throw new Error('Offline book manifest is empty');
-  await loadAssets(bookAssets);
+  await loadAssets(bookAssets, generation);
+  if (generation !== bookLoadGeneration) throw cancelledLoadError();
   if (typeof global.LinguaAttachEditorialArt !== 'function' || global.LinguaAttachEditorialArt() !== true)
     throw new Error('Offline illustration registry is unavailable');
   const story = (global.StoryLensEditorialStories || []).find(item => item.id === BOOK_ID);
@@ -139,7 +165,16 @@ async function loadBook() {
 }
 function ensureStory(id) {
   if (id !== BOOK_ID) return Promise.resolve(true);
-  if (!bookPromise) bookPromise = loadBook().catch(error => { bookPromise = null; throw error; });
+  if (!bookPromise) {
+    const generation = bookLoadGeneration;
+    const pending = loadBook(generation);
+    let tracked;
+    tracked = pending.catch(error => {
+      if (bookPromise === tracked) bookPromise = null;
+      throw error;
+    });
+    bookPromise = tracked;
+  }
   return bookPromise;
 }
 function ensureDictionary() {
@@ -158,6 +193,7 @@ if (typeof originalOpenStory === 'function') {
   global.openStory = function (id, ...args) {
     const token = ++openGeneration;
     if (id !== BOOK_ID) {
+      cancelBookLoad();
       clearStatus();
       unlockRoot();
       return originalOpenStory.call(this, id, ...args);
