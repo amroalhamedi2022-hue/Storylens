@@ -37,6 +37,9 @@ assert.equal(words34,972);assert.ok(body34.startsWith('Phileas Fogg was in priso
 assert.ok(chapter34.paragraphs.every(p=>p.en.trim().length>4&&p.ar.trim().length>4&&/[ء-ي]/.test(p.ar)));
 assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/34 of 37/);assert.equal(story.terms.length,55);
 for(const t of story.terms.slice(-20)){assert.ok(body34.toLowerCase().includes(t.term.toLowerCase()),'Chapter XXXIV term absent from source: '+t.term);assert.ok(t.literal&&t.context&&t.note);}
+const fatalGloss=story.terms.slice(-20).find(t=>t.term==='fatal');
+assert.ok(fatalGloss,'Chapter XXXIV fatal entry must remain in the contextual glossary');
+assert.equal(fatalGloss.literal,'كارثيّ / ضربة قاصمة','fatal describes a disastrous setback here, not an Arabic judge');
 
 const artSandbox={window:{}};vm.runInNewContext(read('editorial-art.js'),artSandbox,{filename:'editorial-art.js',timeout:5000});
 const art=artSandbox.window.StoryLensMakeEditorialArt([story]);
