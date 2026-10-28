@@ -13,6 +13,30 @@ const originalInlineTranslate=inlineTranslate;
 const originalWordSheet=wordSheet;
 // Offline font gallery: use Android's installed font families so the APK stays light.
 // Families are deliberately split by language to preserve correct Arabic shaping.
+const ltGlassPalettes=[
+ {id:'sapphire',ar:'ياقوتي',en:'Sapphire',a:'#1768ff',b:'#6b4dff',c:'#28d9ff'},
+ {id:'violet',ar:'بنفسجي',en:'Violet',a:'#5428d9',b:'#a34cff',c:'#f16acb'},
+ {id:'rose',ar:'وردي',en:'Rose',a:'#f33e8e',b:'#a744e8',c:'#ff9dba'},
+ {id:'sunset',ar:'غروب',en:'Sunset',a:'#ff6c47',b:'#f43f83',c:'#ffbd59'},
+ {id:'ocean',ar:'محيطي',en:'Ocean',a:'#006fba',b:'#00a9b7',c:'#5b80ff'},
+ {id:'mint',ar:'نعناعي',en:'Mint',a:'#00a98e',b:'#50c7b5',c:'#b0f1c6'},
+ {id:'lavender',ar:'لافندر',en:'Lavender',a:'#9381ff',b:'#d3a3ff',c:'#f7b9df'},
+ {id:'graphite',ar:'جرافيت',en:'Graphite',a:'#26364d',b:'#69788d',c:'#9a8da9'},
+ {id:'pearl',ar:'لؤلؤي',en:'Pearl',a:'#b4c9ff',b:'#e1baff',c:'#ffc9df'},
+ {id:'rainbow',ar:'طيف',en:'Spectrum',a:'#ff5d9e',b:'#7b61ff',c:'#ffad57'}
+];
+function ltApplyGlass(){
+ const palette=ltGlassPalettes.find(item=>item.id===get('lt_glass_palette','sapphire'))||ltGlassPalettes[0];
+ const raw=Number(get('lt_glass_tint',42));
+ const tint=Number.isFinite(raw)?Math.max(0,Math.min(100,raw)):42;
+ document.body.dataset.ltPalette=palette.id;
+ document.documentElement.style.setProperty('--lt-glass-opacity',String(.08+tint/100*.52));
+ document.documentElement.style.setProperty('--lt-glass-a',palette.a);
+ document.documentElement.style.setProperty('--lt-glass-b',palette.b);
+ document.documentElement.style.setProperty('--lt-glass-c',palette.c);
+ document.body.classList.toggle('lt-reduce-transparency',!!get('lt_reduce_transparency',false));
+ document.body.classList.toggle('lt-high-contrast',!!get('lt_high_contrast',false));
+}
 const ltFontChoices=[
  {id:'system',labelAr:'النظام الافتراضي',labelEn:'System default',ar:'system-ui, sans-serif',en:'Georgia, serif'},
  {id:'naskh',labelAr:'نسخ كلاسيكي',labelEn:'Classic Naskh',ar:'"Noto Naskh Arabic", "Noto Serif Arabic", serif',en:'Georgia, "Noto Serif", serif'},
@@ -497,6 +521,32 @@ settings=function(){
  '</div><div class="chapter-picker">'+state.story.chapters.map((c,i)=>
  '<button type="button" class="'+(i===state.chapter?'selected':'')+'" onclick="stlChapter('+i+')">'+(i+1)+'. '+escapeText(c.title)+'</button>').join('')+'</div>'+
  '<p class="quiet">'+uiText('اضغط مطولًا على أي جملة لإظهار ترجمتها فقط. الترجمة لا تحتاج اتصالًا بالإنترنت.','Long-press a sentence to reveal its Arabic translation. Works offline.')+'</p>';
+ const glassPanel=document.createElement('section');
+ glassPanel.className='lt-glass-panel';
+ const palette=get('lt_glass_palette','sapphire');
+ const tintRaw=Number(get('lt_glass_tint',42));
+ const tint=Number.isFinite(tintRaw)?Math.max(0,Math.min(100,tintRaw)):42;
+ glassPanel.innerHTML='<h3>'+uiText('ألوان Liquid Glass','Liquid Glass colors')+'</h3>'+
+ '<p class="quiet">'+uiText('اختر لونًا متعدد التدرجات مثل واجهة الآيفون، ثم اضبط شفافية الزجاج من الشفاف إلى الملوّن.','Choose an iPhone-inspired multicolor tint, then tune the glass from clear to richly tinted.')+'</p>'+
+ '<div class="lt-glass-palette-grid" role="group" aria-label="'+uiText('لوحة الألوان','Color palette')+'">'+ltGlassPalettes.map(item=>'<button type="button" class="lt-glass-swatch" data-lt-palette-choice="'+item.id+'" aria-pressed="'+(item.id===palette)+'" style="--sw-a:'+item.a+';--sw-b:'+item.b+';--sw-c:'+item.c+'">'+uiText(item.ar,item.en)+'</button>').join('')+'</div>'+
+ '<div class="lt-glass-slider"><label for="lt-glass-tint"><span>'+uiText('شفافية الزجاج','Glass transparency')+'</span><output id="lt-glass-tint-value">'+tint+'%</output></label><input id="lt-glass-tint" type="range" min="0" max="100" step="1" value="'+tint+'" aria-label="'+uiText('شفافية الزجاج','Glass transparency')+'"><div class="lt-glass-preview" aria-hidden="true"></div></div>'+
+ '<label class="lt-glass-check"><input id="lt-glass-reduce" type="checkbox" '+(get('lt_reduce_transparency',false)?'checked':'')+'> '+uiText('تقليل الشفافية لأولوية القراءة','Reduce transparency for readability')+'</label>'+
+ '<label class="lt-glass-check"><input id="lt-glass-contrast" type="checkbox" '+(get('lt_high_contrast',false)?'checked':'')+'> '+uiText('تباين أعلى وحدود أوضح','Higher contrast and clearer borders')+'</label>';
+ bar.appendChild(glassPanel);
+ glassPanel.querySelectorAll('[data-lt-palette-choice]').forEach(button=>button.addEventListener('click',()=>{
+  put('lt_glass_palette',button.dataset.ltPaletteChoice);
+  glassPanel.querySelectorAll('[data-lt-palette-choice]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+  ltApplyGlass();
+ }));
+ const tintSlider=glassPanel.querySelector('#lt-glass-tint');
+ tintSlider?.addEventListener('input',event=>{
+  put('lt_glass_tint',Number(event.target.value));
+  glassPanel.querySelector('#lt-glass-tint-value').textContent=event.target.value+'%';
+  ltApplyGlass();
+ });
+ glassPanel.querySelector('#lt-glass-reduce')?.addEventListener('change',event=>{put('lt_reduce_transparency',event.target.checked);ltApplyGlass()});
+ glassPanel.querySelector('#lt-glass-contrast')?.addEventListener('change',event=>{put('lt_high_contrast',event.target.checked);ltApplyGlass()});
+ ltApplyGlass();
  const fontPanel=document.createElement('div');
  fontPanel.className='lt-font-panel';
  const chosen=get('lt_font_choice','system');
