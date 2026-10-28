@@ -154,3 +154,11 @@
 - **Source commit:** `87beccaf0d9d31d59ab12a5bf52680dd0a9b7075`; regression/test fix: `b981fff440adccaeca19aece90f699b40e8066b7`.
 - **Exact-head Android CI: NOT VERIFIED.** The connected workflow lookup returned no PR-triggered run for the API-created commits. No Node/Gradle/Chromium CI pass or new APK is claimed for this fix.
 - **NOT TESTED:** Xiaomi Pad 5/WebView rapid repeated page turns, frame pacing, reduced-motion behavior on Android, TalkBack and visual review. LT-01..LT-13 remain IN PROGRESS; no main write or merge.
+
+## 2026-10-28 — reduced-motion page-turn fast path (exact-head CI PASS)
+
+- **Production:** `animatePageTurn` now invalidates the previous timer owner before branching and, when `prefers-reduced-motion: reduce` is active, removes turn classes without forcing layout or scheduling a cleanup timer. A timeout already queued by WebView cannot regain ownership after the skipped turn.
+- **Regression:** `tools/contextual-page-turn.test.cjs` covers same-page rapid reversal, a callback already queued before cancellation, independent timers on two different page nodes, and the reduced-motion path (no extra forced layout/timer).
+- **PASS — exact-head Android CI:** [run 40728414372](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40728414372), test head `e1741f2e02795e18bfa5bdde24c0003877bccdc3`. The workflow completed the Node/content suite, Gradle Debug build, asset checks and Chromium phone/tablet journeys.
+- **PASS — independently rehashed Debug APK:** artifact [12834077571](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40728414372/artifacts/12834077571); extracted APK **25,752,655 bytes**, SHA-256 `30583620acc6a9de97e2ef735b8404de0c3fab7b78f7b276aff98a0b66dc623d`, matching `APK_SHA256.txt`.
+- **NOT TESTED:** Xiaomi Pad 5, Android system reduced-motion setting, TalkBack/physical RTL, real frame pacing/RAM/thermal, in-place upgrade signing, Arabic literary proofreading and territory-specific redistribution clearance. Chromium and CI do not substitute for physical-device acceptance. LT-01..LT-13 remain IN PROGRESS; Debug is not final.
