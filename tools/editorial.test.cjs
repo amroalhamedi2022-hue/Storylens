@@ -15,7 +15,7 @@ for(const file of ['editorial-stories-a.js','editorial-stories-b.js','editorial-
  vm.runInNewContext(fs.readFileSync(path.join(assets,file),'utf8'),context,{filename:file,timeout:2000});
 }
 const stories=context.window.StoryLensEditorialStories;
-assert.equal(stories.length,18,'six original stories in each of the four editorial batches A–D');
+assert.equal(stories.length,19,'eighteen original stories across batches A–D plus one complete five-chapter novella');
 const all=[...core.stories,...stories],ids=new Set(),genres=new Map();
 let paragraphs=0,chapters=0,artCount=0;
 const art=context.window.StoryLensMakeEditorialArt(stories);
