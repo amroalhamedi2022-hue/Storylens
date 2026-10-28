@@ -94,7 +94,7 @@ const animationWindow={
 };
 const animationContext={window:animationWindow};
 vm.runInNewContext(reader.slice(animationStart,animationEnd)+
- '\\nglobalThis.animatePageTurn=animatePageTurn;',animationContext,{timeout:2000});
+ '\nglobalThis.animatePageTurn=animatePageTurn;',animationContext,{timeout:2000});
 const turnClasses=new Set();
 const animatedPage={classList:{
  add(name){turnClasses.add(name);},
