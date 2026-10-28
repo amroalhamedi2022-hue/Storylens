@@ -35,7 +35,7 @@ for (const name of names) {
   assert.ok(backup.includes("'" + name + "'") || backup.includes('"' + name + '"'),
     'backup validator does not allow theme ' + name);
 }
-for (const name of ['red-sea-dispatch', 'monsoon-meridian', 'deccan-timetable', 'kholby-crossing', 'shanghai-wind-ledger', 'typhoon-signal', 'paper-lantern-circus', 'pacific-meridian', 'civic-panorama', 'prairie-signal', 'salt-lake-dispatch', 'medicine-bow-crossing', 'plum-creek-signal', 'snowbound-telegraph', 'prairie-sails', 'hudson-ledger', 'atlantic-passage', 'westminster-vows', 'reform-club-countdown', 'meridian-epilogue', 'mosaic-courtyard', 'saville-clockwork', 'station-tickets']) {
+for (const name of ['red-sea-dispatch', 'monsoon-meridian', 'deccan-timetable', 'kholby-crossing', 'shanghai-wind-ledger', 'typhoon-signal', 'paper-lantern-circus', 'pacific-meridian', 'civic-panorama', 'prairie-signal', 'salt-lake-dispatch', 'medicine-bow-crossing', 'plum-creek-signal', 'snowbound-telegraph', 'prairie-sails', 'hudson-ledger', 'atlantic-passage', 'westminster-vows', 'reform-club-countdown', 'meridian-epilogue', 'stained-glass', 'mosaic-courtyard', 'saville-clockwork', 'station-tickets']) {
   assert.ok(styles.includes('.lt-theme-' + name + ' .lt-theme-swatch'), 'missing gallery swatch for ' + name);
   assert.match(styles, new RegExp('@media\\(prefers-reduced-motion:reduce\\)\\{[^}]*\\.theme-' + name + '\\b'),
     'missing reduced-motion fallback for ' + name);
@@ -43,5 +43,11 @@ for (const name of ['red-sea-dispatch', 'monsoon-meridian', 'deccan-timetable', 
 assert.ok(shellCss.includes('@media(prefers-reduced-motion:reduce){.theme-civic-panorama .library .card{transition:none!important;transform:none!important}}'), 'Civic Panorama reduced-motion fallback must disable both transitions and transforms');
 assert.ok(shellCss.includes('@media(prefers-reduced-motion:reduce){.theme-prairie-signal .library .card{transition:none!important;transform:none!important}}'), 'Prairie Signal reduced-motion fallback must disable both transitions and transforms');
 assert.ok(shellCss.includes('.lt-theme-reform-club-brass .lt-theme-swatch{'), 'Reform Club Brass must style its own gallery swatch');
+const stainedGlass = shellCss.slice(shellCss.indexOf('/* LT-13 — Stained Glass:'));
+assert.ok(stainedGlass.includes('conic-gradient('), 'Stained Glass needs a distinct jewel-pane visual language');
+assert.ok(stainedGlass.includes('border-radius:92px 92px 18px 18px'), 'Stained Glass needs its own arched library header');
+assert.ok(stainedGlass.includes('repeating-linear-gradient(135deg'), 'Stained Glass needs a distinct leadwork reading surface');
+assert.ok(!/https?:\\/\\//.test(stainedGlass), 'Stained Glass must work offline');
+assert.ok(!/\\banimation\\s*:\\s*[^;]*infinite/i.test(stainedGlass), 'Stained Glass must not add infinite repaint work');
 assert.match(shellCss, /@media\(prefers-reduced-motion:reduce\)\{\s*\.theme-reform-club-brass\b/, 'Reform Club Brass must retain a reduced-motion fallback');
 console.log('PASS theme catalog: ' + names.length + ' selectable themes have labels, production body styles and backup allowlist; routed themes have swatches and reduced-motion fallbacks.');
