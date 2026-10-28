@@ -14,13 +14,17 @@ const document={documentElement:{lang:'en',style:{setProperty:(key,value)=>cssVa
  querySelectorAll:s=>s.includes('.reader .sentence')?sentences:[], querySelector:()=>null};
 const story={id:'long',title:'Long',chapters:[{title:'Part',paragraphs:paragraphs.map(en=>({en,ar:'ترجمة'}))}]};
 const state={page:'reader',story,chapter:0,toolbar:false};
-const store=new Map(),window={scrollY:0,scrollTo(){}};
+const store=new Map(),window={scrollY:0,scrollTo(){},document};
 const sandbox={window,document,state,catalog:{stories:[story],dictionary:[]},
  get:(k,f)=>store.has(k)?store.get(k):f,put:(k,v)=>store.set(k,v),
  library(){},openStory(){},libraryBack(){},settings(){},theme(){},
  inlineTranslate(){},renderReader(){},closeSheet(){},wordSheet(){},esc:String,
  lemmas:w=>[w],Date,console};
 vm.runInNewContext(reader,sandbox,{timeout:5000});
+// The WebView's window and document are the same browsing context; keep that relationship in this VM fixture.
+sandbox.window.document=sandbox.document;
+sandbox.document.documentElement.style={setProperty:(key,value)=>cssVariables.set(key,value)};
+assert.equal(typeof sandbox.document.documentElement.style.setProperty,'function');
 sandbox.renderReader();
 assert.ok(cssVariables.get('--lt-font-en'), 'reader render must apply the English font CSS variable');
 assert.ok(cssVariables.get('--lt-font-ar'), 'reader render must apply the Arabic font CSS variable');
