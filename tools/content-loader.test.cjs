@@ -40,9 +40,9 @@ assert.ok(html.includes('src="freedict-en-ar.js"'),'dictionary remains a package
 assert.ok(!/<script\b(?![^>]*data-lt-lazy)[^>]*\bsrc="(?:classic-verne-towle-ch\d+\.js|editorial-art(?:-ch(?:35|36|37))?\.js|freedict-en-ar\.js)"/.test(html),
  'long-book and dictionary assets must not be eager executable scripts');
 
-function makeHarness({failOnce=null,lang='ar'}={}) {
+function makeHarness({failOnce=null,lang='ar',deferAsset=null}={}) {
  const attempted=[], successful=[], removed=[], opened=[], sheetEntries=[];
- let failed=false, headingText=null, artAttached=0;
+ let failed=false, headingText=null, artAttached=0, deferredOnce=false, deferredAsset=null;
  const story={id:'around-the-world-in-eighty-days-towle',title:'Around the World in Eighty Days',subtitle:'A wager, a globe, and eighty days',genre:'historical',level:'C1',description:'Authentic long-form novel.',totalChapters:37,chapters:[],terms:[]};
  const catalogStory={id:story.id,title:story.title,subtitle:story.subtitle,genre:story.genre,level:story.level,description:story.description,totalChapters:37,lazyBook:true,chapters:[],terms:[]};
  const catalog={stories:[catalogStory]};
@@ -83,20 +83,24 @@ function makeHarness({failOnce=null,lang='ar'}={}) {
    if(n.tagName!=='SCRIPT')return n;
    attempted.push(n.src);
    if(failOnce===n.src&&!failed){failed=true;Promise.resolve().then(()=>n.onerror?.());return n;}
-   if(n.src==='freedict-en-ar.js'){
-    window.FreeDictEnglishArabic={resolve(value){return value.toLowerCase()==='dog'?{term:'dog',literal:'كلب',meanings:['كلب'],context:'',type:'dictionary'}:null;}};
-   } else if(/^classic-verne-towle-ch\d+\.js$/.test(n.src)){
-    const number=Number(n.src.match(/ch(\d+)\.js$/)[1]);
-    const amount=number===31?2:1;
-    for(let i=0;i<amount;i++)story.chapters.push({title:'Chapter',paragraphs:[{en:'An English sentence.',ar:'جملة إنجليزية.'}]});
-   } else if(n.src==='editorial-art.js') window.StoryLensMakeEditorialArt=()=>({});
-   successful.push(n.src);
-   Promise.resolve().then(()=>n.onload?.());
+   const finish=()=>{
+    if(n.src==='freedict-en-ar.js'){
+     window.FreeDictEnglishArabic={resolve(value){return value.toLowerCase()==='dog'?{term:'dog',literal:'كلب',meanings:['كلب'],context:'',type:'dictionary'}:null;}};
+    } else if(/^classic-verne-towle-ch\d+\.js$/.test(n.src)){
+     const number=Number(n.src.match(/ch(\d+)\.js$/)[1]);
+     const amount=number===31?2:1;
+     for(let i=0;i<amount;i++)story.chapters.push({title:'Chapter',paragraphs:[{en:'An English sentence.',ar:'جملة إنجليزية.'}]});
+    } else if(n.src==='editorial-art.js') window.StoryLensMakeEditorialArt=()=>({});
+    successful.push(n.src);
+    Promise.resolve().then(()=>n.onload?.());
+   };
+   if(deferAsset===n.src&&!deferredOnce){deferredOnce=true;deferredAsset={src:n.src,complete:finish};return n;}
+   finish();
    return n;
   }}
  };
  vm.runInNewContext(source,{window,document,Promise,Set,Array,Error,console},{filename:'lingua-content-loader.js',timeout:5000});
-  return {window,document,rootNode,story,catalog,catalogStory,openedChapterCounts,attempted,successful,removed,opened,sheetEntries,bodyChildren,get artAttached(){return artAttached;},get statusText(){return bodyChildren.map(x=>x.text||x.textContent||'').join(' ');}};
+  return {window,document,rootNode,story,catalog,catalogStory,openedChapterCounts,attempted,successful,removed,opened,sheetEntries,bodyChildren,completeDeferredAsset(){const pending=deferredAsset;assert.ok(pending,'no deferred script is waiting');deferredAsset=null;pending.complete();},get artAttached(){return artAttached;},get statusText(){return bodyChildren.map(x=>x.text||x.textContent||'').join(' ');}};
 }
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 (async()=>{
@@ -140,10 +144,27 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
 
  const cancel=makeHarness();
  cancel.window.openStory('around-the-world-in-eighty-days-towle');
+ assert.deepEqual(cancel.attempted,['classic-verne-towle-ch01.js'],'opening the long book begins with only its first local script');
  cancel.window.openStory('the-salt-meridian');
- await cancel.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
  await tick();
  assert.deepEqual(cancel.opened,['the-salt-meridian'],'stale async open cannot steal navigation from a later story');
+ assert.deepEqual(cancel.attempted,['classic-verne-towle-ch01.js'],'leaving the book prevents the remaining chapter and art scripts from loading');
+
+ const interrupted=makeHarness({deferAsset:'classic-verne-towle-ch01.js'});
+ interrupted.window.openStory('around-the-world-in-eighty-days-towle');
+ const interruptedLoad=interrupted.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ assert.deepEqual(interrupted.attempted,['classic-verne-towle-ch01.js'],'only the active script may be pending when cancellation begins');
+ interrupted.window.LinguaContentLoader.cancel();
+ assert.equal(interrupted.rootNode.inert,false,'cancel restores library interaction immediately');
+ interrupted.completeDeferredAsset();
+ await assert.rejects(interruptedLoad,/cancelled/i,'cancelled load must stop before requesting the next chapter');
+ await tick();
+ assert.deepEqual(interrupted.attempted,['classic-verne-towle-ch01.js'],'no later chapter is requested after the in-flight script settles');
+ interrupted.window.openStory('around-the-world-in-eighty-days-towle');
+ await interrupted.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ await tick();
+ assert.equal(interrupted.story.chapters.length,37,'a later deliberate retry completes the book without duplicating the in-flight chapter');
+ assert.equal(interrupted.catalogStory.chapters.length,37,'retry publishes all chapters after successful validation');
 
  const retry=makeHarness({failOnce:'classic-verne-towle-ch05.js'});
  retry.window.openStory('around-the-world-in-eighty-days-towle');
