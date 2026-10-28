@@ -47,3 +47,12 @@ assert.equal(swipeAllowed(null, ''), true, 'missing event target fails safely wi
 assert.ok(reader.includes("sentenceBox.addEventListener('touchcancel',resetTouch"), 'touch cancellation resets gesture state');
 assert.ok(reader.includes("window.getSelection?.()?.toString()||''"), 'selection lookup is null-safe');
 console.log('PASS: contextual meaning and page-turn production regression');
+
+assert.match(reader, /const ltFontChoices=\[/, 'font gallery choices are defined in production');
+for (const id of ['system','naskh','sans','serif','rounded','humanist','classic','mono']) {
+ assert.match(reader, new RegExp("id:'"+id+"'"), 'font choice '+id+' exists');
+}
+assert.match(reader, /ltApplyFonts\(\)/, 'font choice is applied to the reader');
+assert.match(reader, /lt_font_choice/, 'font choice is persisted offline');
+assert.match(reader, /lt-font-choice/, 'font picker is rendered in reader settings');
+assert.match(css, /\.lt-font-panel/, 'font picker is styled');
