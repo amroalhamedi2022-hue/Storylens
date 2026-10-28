@@ -20,6 +20,7 @@ assert.equal(words,1573);assert.ok(body.startsWith('The dwellers in Saville Row'
 assert.ok(chapter.paragraphs.every(p=>p.en.trim().length>4&&p.ar.trim().length>4&&/[ء-ي]/.test(p.ar)));
 assert.equal(story.totalChapters,37);assert.match(story.editorialStatus,/35 of 37/);assert.equal(story.terms.length,30);
 for(const t of story.terms){assert.ok(body.toLowerCase().includes(t.term.toLowerCase()),'Chapter XXXV term absent from source: '+t.term);assert.ok(t.literal&&t.context&&t.note);}
+const latePhrase=story.terms.find(t=>t.term==='Never too late');assert.ok(latePhrase,'the idiom must remain in the chapter glossary');assert.equal(latePhrase.literal,'لم يفت الأوان بعد','use a natural Arabic idiomatic meaning');
 const artSandbox={window:{}};vm.runInNewContext(read('editorial-art.js'),artSandbox,{filename:'editorial-art.js',timeout:5000});vm.runInNewContext(read('editorial-art-ch35.js'),artSandbox,{filename:'editorial-art-ch35.js',timeout:5000});
 const art=artSandbox.window.StoryLensMakeEditorialArt([story]);assert.ok(art[story.id+'_34']);assert.match(decodeURIComponent(art[story.id+'_34']),/WESTMINSTER VOWS · SAVILLE ROW/);
 const shell=read('lingua-shell.js'),css=read('westminster-vows.css'),backup=read('data-backup.js');
