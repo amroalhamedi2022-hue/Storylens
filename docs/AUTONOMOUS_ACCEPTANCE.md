@@ -1,5 +1,13 @@
 <!-- Latest dated evidence: docs/ACCEPTANCE_SUPPLEMENT_2026-10-28.md; preserve the historical acceptance ledger below. -->
 
+## Latest source checkpoint — 2026-10-28 (Chapter XXXIV glossary)
+
+- **PASS source change:** corrected the context-specific Arabic gloss for `fatal` to `كارثيّ / ضربة قاصمة`; English literature and Arabic paragraph text remain unchanged.
+- **Regression added:** Chapter XXXIV is covered by `tools/verne-towle-ch33.test.cjs`, including the exact contextual gloss.
+- **CI: NOT VERIFIED** on current head `b4f636accdb8fe91f7a0ef5635d64e9afcdb2e87`; last confirmed CI `40667188476` predates this change. No new APK claimed.
+- **NOT TESTED:** independent Arabic literary proofreading, territory-specific rights, physical Pad 5 install/performance/accessibility and stable update signing.
+
+
 ## Latest verified checkpoint — 2026-10-28 (page-turn bookmark continuity)
 
 - **Production + regression:** reader bookmarks now preserve the active page-turn index and restore it before the paragraph anchor is measured. Older paragraph bookmarks derive a page using the shared four-paragraph rule; scroll-only legacy bookmarks remain supported.
