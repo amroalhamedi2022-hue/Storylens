@@ -1,5 +1,13 @@
 <!-- Latest dated evidence: docs/ACCEPTANCE_SUPPLEMENT_2026-10-28.md; preserve the historical acceptance ledger below. -->
 
+## 2026-10-28 — Accessible bilingual page-turn labels (source/test checkpoint)
+
+- **Production source:** each paged-reader group now exposes a localized accessible name ("صفحة N من M" / "Page N of M") and a localized aria-roledescription; the changing page counter uses aria-live="polite" with aria-atomic="true" so assistive technology receives the whole updated page label.
+- **Regression:** tools/contextual-page-turn.test.cjs directly exercises the production label helper in Arabic and English and checks the group/live-region wiring.
+- **Source/test SHA:** ac72f5a40573f9b9181bc6c848479d75081b5851.
+- **Android CI:** [run 40737942544](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40737942544) is still in progress. Curated content, dictionary/audio checks, Gradle tests, APK assembly and required-resource checks have passed in the current job; Chromium render smoke and artifact upload are not yet complete. No APK is claimed for this head until the run finishes.
+- **NOT TESTED:** TalkBack on Xiaomi Pad 5, physical RTL/LTR, focus/announcement quality, frame pacing/RAM/thermal, stable update signing and literary/territory-rights review. LT-01..LT-13 remain IN PROGRESS; this is not final acceptance.
+
 ## 2026-10-28 — Prevent stale UI-sound resume after Android audio-focus loss (CI PASS)
 
 - **Production fix (LT-11):** the 24 procedural ambience/music presets now track one-shot UI SFX voices. A pause or native focus-loss event stops and disconnects active click tones; a delayed `AudioContext.resume()` completion is checked against the playback generation, cleaned up, and suspended again rather than restarting sound after focus loss. Focus is not released by a stale SFX completion when a newer playback owns it.
