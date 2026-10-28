@@ -180,6 +180,48 @@ function localizeUsage() {
  }
  localizeUsageFeedback();
 }
+function localizeReaderLocaleControl() {
+ if (state.page !== 'reader' || typeof document.createElement !== 'function') return false;
+ const sheet = find('#modals .sheet');
+ if (!sheet || typeof sheet.querySelector !== 'function' || sheet.querySelector('.lt-reader-locale')) return false;
+ const row = document.createElement('div');
+ row.className = 'settings-row lt-reader-locale';
+ row.setAttribute('role', 'group');
+ const label = document.createElement('span');
+ label.textContent = english() ? 'Interface language' : 'لغة الواجهة';
+ const select = document.createElement('select');
+ select.id = 'lt-reader-locale-select';
+ select.setAttribute('aria-label', label.textContent);
+ for (const choice of [{id:'ar',name:'العربية'},{id:'en',name:'English'}]) {
+  const option = document.createElement('option');
+  option.value = choice.id;
+  option.textContent = choice.name;
+  select.appendChild(option);
+ }
+ select.value = english() ? 'en' : 'ar';
+ select.addEventListener('change', () => {
+  const next = select.value;
+  const y = Math.max(0, Number(global.scrollY) || 0);
+  if (state.story && typeof put === 'function')
+   put('scroll_' + state.story.id + '_' + state.chapter, y);
+  if (global.LinguaShell && typeof global.LinguaShell.applyLocale === 'function') {
+   global.LinguaShell.applyLocale(next, false);
+  } else {
+   document.documentElement.lang = next;
+   document.documentElement.dir = next === 'ar' ? 'rtl' : 'ltr';
+  }
+  if (typeof global.renderReader === 'function') global.renderReader();
+  if (typeof global.settings === 'function') global.settings();
+  if (typeof global.scrollTo === 'function') global.scrollTo(0, y);
+ });
+ row.appendChild(label);
+ row.appendChild(select);
+ const first = sheet.querySelector('.settings-row');
+ if (first) sheet.insertBefore(row, first);
+ else sheet.appendChild(row);
+ return true;
+}
+
 function wrap(name, after) {
  const previous = global[name];
  if (typeof previous !== 'function') return false;
@@ -192,11 +234,12 @@ function wrap(name, after) {
 }
 // Top-level script functions are exposed on Window in the Android WebView.
 for (const [name, callback] of [
- ['library', localizeLibrary], ['renderReader', localizeReader], ['settings', localizeSettings],
+ ['library', localizeLibrary], ['renderReader', localizeReader],
+ ['settings', () => { localizeSettings(); localizeReaderLocaleControl(); }],
  ['wordSheet', localizeWordSheet], ['showWords', localizeWords],
  ['renderReview', localizeReview], ['fullTranslation', localizeTranslation],
  ['openUsage', localizeUsage]
 ]) wrap(name, callback);
 global.LinguaI18n = {localizeLibrary, localizeReader, localizeSettings, localizeWordSheet,
- localizeWords, localizeReview, localizeTranslation};
+ localizeWords, localizeReview, localizeTranslation, localizeReaderLocaleControl};
 })(window);
