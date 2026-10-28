@@ -44,3 +44,11 @@
 - **PASS — isolated V8:** the exact production `localizeLibrary()` function was extracted from `lingua-i18n.js` and executed with a minimal DOM stub for both Arabic and English; the metrics node was removed in both locales. Full source syntax and the new contract assertions also passed; Python acceptance snippet syntax check passed.
 - **CI: NOT VERIFIED** for the new source/test head; the available workflow-run/status lookup returned no run/check for these API-created commits. The last confirmed CI does not include this LT-05 change. **No APK is claimed for this change.**
 - **NOT TESTED:** visual result in real Chromium/WebView on Xiaomi Pad 5, layout balance across all themes, RTL/TalkBack/contrast and frame pacing. This is a focused content-first UX change, not final acceptance.
+
+
+## LT-06 — keep the reader language selector synchronized (2026-10-28)
+
+- **Production fix:** when Settings reuses the existing reader locale row, it now refreshes the visible label, accessibility name, and selected option from the active document locale. This prevents an Arabic label/selection from remaining stale after switching the reader UI to English (and vice versa), without adding duplicate controls.
+- **Regression:** expanded `tools/full-localization.test.cjs` to switch Arabic → English → Arabic against the exact extracted production helper; verifies the label, accessible name, selected locale and single-row invariant.
+- **CI: NOT VERIFIED for these new source/test commits.** The existing workflow includes `tools/full-localization.test.cjs`, but source-only inspection is not evidence of execution; no new APK is claimed.
+- **NOT TESTED:** Chromium/WebView rendering, locale persistence after process death, RTL/TalkBack and Xiaomi Pad 5. English learning text and Arabic translations remain unchanged.
