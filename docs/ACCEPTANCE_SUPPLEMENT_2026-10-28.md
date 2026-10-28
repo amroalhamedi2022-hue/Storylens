@@ -54,7 +54,13 @@
 - **NOT TESTED:** Chromium/WebView rendering, locale persistence after process death, RTL/TalkBack and Xiaomi Pad 5. English learning text and Arabic translations remain unchanged.
 
 
-## 2026-10-28 — Page-turn bookmark restoration (exact-head CI pending)
+## 2026-10-28 — Page-turn bookmark restoration (CI PASS)
+
+- **Production change:** saved reader bookmarks now record the active four-paragraph page as well as chapter/scroll/paragraph anchor. Jumping to a bookmark restores that page **before** rendering and measuring the paragraph anchor, avoiding attempts to scroll to a paragraph hidden on another page. Older paragraph bookmarks without the new field derive the page from the existing four-paragraph pagination rule; old scroll-only bookmarks remain compatible.
+- **Regression tests:** `tools/bookmark-navigation.test.cjs` covers page save/restore and legacy paragraph fallback; `tools/contextual-page-turn.test.cjs` pins the shared page-size rule and restoration wiring.
+- **PASS — Android CI:** [run 40667188476](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40667188476) completed SUCCESS on source/test SHA `70af49e18ba6d02faec7b7b37ea356bc249ccb2b`. The curated Node regression suite, Gradle unit tests + Debug assembly, offline asset checks and browser render smoke passed. The earlier attempt on `ff95a82b248770043baf7cfa978a553682297a7b` failed because two newly added regex assertions were over-escaped; corrected in the final tested SHA.
+- **PASS — independent APK integrity:** Debug artifact [12805779575](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40667188476/artifacts/12805779575), 25,749,207 bytes, SHA-256 `fcbd1396ee3b729663702d0bd42b3cc0e2a1f0d658f54657b7aab193164d5a88`; extracted and independently re-hashed from the artifact ZIP. Confirmed `reader-experience.js`, `reader-experience.css`, `lingua-chapter-navigation.js` and the adaptive launcher icon are packaged.
+- **NOT TESTED:** physical Xiaomi Pad 5, live swipe/button animation timing, TalkBack page announcements, frame pacing/RAM/thermal and stable update signing. CI/source acceptance is not device acceptance; LT-01..LT-13 remain IN PROGRESS and Debug is not final. No main write or merge.
 
 - **Production change:** saved reader bookmarks now record the active four-paragraph page as well as chapter/scroll/paragraph anchor. Jumping to a bookmark restores that page **before** rendering and measuring the paragraph anchor, avoiding attempts to scroll to a paragraph hidden on another page. Older paragraph bookmarks without the new field derive the page from the existing four-paragraph pagination rule; old scroll-only bookmarks remain compatible.
 - **Regression tests:** `tools/bookmark-navigation.test.cjs` covers page save/restore and legacy paragraph fallback; `tools/contextual-page-turn.test.cjs` pins the shared page-size rule and restoration wiring.
