@@ -139,5 +139,36 @@ assert.equal(created,0,'no audio created by settings change');
  assert.equal(focusAudio.isPlaying(),false,'native focus loss pauses ambience');
  assert.equal(focusReleases,1,'pausing after focus loss abandons native focus');
  assert.equal(focusContext.state,'suspended');
- console.log('PASS LT-11: 24 offline procedural presets; native-focus denial/loss contract, lifecycle, volume, switching and cleanup');
+
+ // A button SFX may call AudioContext.resume() just before Android revokes focus.
+ // The delayed resume must not leave a new tone running after pause/focus loss.
+ let finishSfxResume;
+ const sfxResumeGate=new Promise(resolve=>{finishSfxResume=resolve});
+ let sfxContext,sfxFocusReleases=0;
+ const sfxListeners={};
+ const sfxDocument={hidden:false,addEventListener(name,cb){sfxListeners[name]=cb}};
+ class DelayedSfxContext extends FakeAudioContext{
+  constructor(){super();sfxContext=this}
+  async resume(){await sfxResumeGate;this.state='running'}
+ }
+ const sfxWindow={AudioContext:DelayedSfxContext,
+  LinguaTalesAudioFocus:{requestFocus(){return true},releaseFocus(){sfxFocusReleases++}},
+  addEventListener(){},setInterval(cb){const id=++nextTimer;intervals.set(id,cb);return id;},
+  clearInterval(id){intervals.delete(id)}};
+ vm.runInNewContext(script,{window:sfxWindow,document:sfxDocument,Math,Number,Set,
+  get:()=>({}),put:()=>{}});
+ const sfxAudio=sfxWindow.LinguaAmbience;
+ sfxAudio.setSfx(true);
+ const outsideButton={closest(selector){return selector==='.lt-audio-settings'?null:null}};
+ sfxListeners.click({target:{closest(selector){return selector==='button'?outsideButton:null}}});
+ assert.ok(sfxContext,'button SFX creates the audio context after explicit opt-in');
+ sfxAudio.onNativeAudioFocusLoss();
+ await new Promise(resolve=>setImmediate(resolve));
+ assert.equal(sfxFocusReleases,1,'focus loss releases the existing grant once');
+ finishSfxResume();
+ await new Promise(resolve=>setImmediate(resolve));
+ await new Promise(resolve=>setImmediate(resolve));
+ assert.equal(sfxContext.state,'suspended','late SFX resume must not leave AudioContext running after focus loss');
+ assert.equal(sfxFocusReleases,1,'stale SFX completion must not release focus a second time');
+ console.log('PASS LT-11: 24 offline procedural presets; native-focus denial/loss contract, lifecycle, volume, switching, cleanup and delayed-SFX resume race');
 })().catch(e=>{console.error(e);process.exitCode=1});
