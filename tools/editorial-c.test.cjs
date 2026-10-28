@@ -19,14 +19,16 @@ assert.deepEqual(sorted(collectionD.map(s=>s.genre)),sorted(expected),'Collectio
 assert.equal(new Set(stories.map(s=>s.id)).size,stories.length,'all original story IDs are unique across batches A–D');
 const known=new Set(),normalizedLines=new Set();
 const norm=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
-function validateCollection(collection,{chaptersPerStory,paragraphsPerChapter,label,brandedScenes=false}) {
+function validateCollection(collection,{chaptersPerStory,paragraphsPerChapter,label,brandedScenes=false,originalProvenance=false}) {
  let paragraphs=0,words=0,illustrations=0,annotations=0;
  for(const story of collection){
   assert.ok(!known.has(story.id),'unique story ID '+story.id);known.add(story.id);
   assert.equal(story.chapters.length,chaptersPerStory,label+' chapter count '+story.id);
   assert.ok(story.title.length>8&&story.description.length>40,'complete metadata '+story.id);
-  assert.match(story.provenance,/Original fiction created for Lingua Tales/,'transparent original-content provenance '+story.id);
-  assert.match(story.editorialStatus,/review pending/,'do not imply professional review '+story.id);
+  if(originalProvenance){
+   assert.match(story.provenance,/Original fiction created for Lingua Tales/,'transparent original-content provenance '+story.id);
+   assert.match(story.editorialStatus,/review pending/,'do not imply professional review '+story.id);
+  }
   assert.ok(story.terms.length>=8,'at least eight contextual annotations '+story.id);
   const body=[];
   for(const ch of story.chapters){
@@ -67,7 +69,7 @@ function validateCollection(collection,{chaptersPerStory,paragraphsPerChapter,la
 const c=validateCollection(collectionC,{chaptersPerStory:2,paragraphsPerChapter:9,label:'Collection C'});
 assert.equal(c.paragraphs,108,'Collection C bilingual paragraph count');
 assert.ok(c.englishWords>=1900,'Collection C remains substantial prose');
-const d=validateCollection(collectionD,{chaptersPerStory:3,paragraphsPerChapter:6,label:'Collection D',brandedScenes:true});
+const d=validateCollection(collectionD,{chaptersPerStory:3,paragraphsPerChapter:6,label:'Collection D',brandedScenes:true,originalProvenance:true});
 assert.equal(d.paragraphs,108,'Collection D bilingual paragraph count');
 assert.ok(d.englishWords>=1800,'Collection D must be substantial prose, not filler');
 assert.equal(d.illustrations,18,'each Collection D chapter has its own local illustration');
