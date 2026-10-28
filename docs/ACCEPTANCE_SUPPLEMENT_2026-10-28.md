@@ -118,3 +118,12 @@
 - **Source commit:** `8138f7b7b94d2b61a7dfd4691150af1d86be378f`; test commit `949d25b42349723bfdd77fd637b4fb97f4a90f52`.
 - **CI NOT VERIFIED** for this exact source/test head; no current workflow row was returned by the connected run/status surface. The last confirmed CI run `40667188476` predates this endpoint guard. No APK is claimed for this change.
 - **NOT TESTED:** physical Xiaomi Pad 5 swipe/button interaction, RTL feel, TalkBack and frame pacing. LT-01..LT-13 remain IN PROGRESS; no main write or merge.
+
+## LT-09 — Reciprocal drawer swipe restores accessibility focus (2026-10-28)
+
+- **Production fix:** when a reciprocal swipe closes the Arabic or English library drawer, the handler now calls `closeDrawer(true)`. Previously it passed `false`, leaving keyboard/screen-reader focus inside the drawer after that subtree became inert.
+- **Regression:** expanded the existing `tools/library-shell-layout.test.cjs` (already wired into Android CI) to execute the exact production touch-listener bodies. Seven cases cover Arabic right-edge opening, English left-edge opening, rejecting non-edge gestures in both locales, reciprocal close/focus restoration in both locales, and ignoring a slow swipe.
+- **PASS — direct production V8 execution:** fetched current `lingua-shell.js` blob `eef24158d195a650b01a579c3a2f1dc863ffe31d`; all 7 gesture cases passed against the exact callback bodies.
+- **Test source commit:** `83f0997e192bd6ddf9a24b76b6298ef1b9ddb2c5`. The test harness uses the same production callbacks, not a separately reimplemented gesture algorithm.
+- **Android CI: NOT VERIFIED for this exact head.** The connected workflow-run lookup returned no PR-triggered run for the new head, so this record does not claim Node/Gradle/Chromium execution or a new APK. The next gate is a successful workflow run for the current source/test head.
+- **NOT TESTED:** physical Xiaomi Pad 5/WebView, TalkBack focus announcements, real gesture latency/frame pacing, and visual drawer placement in every theme. LT-01..LT-13 remain IN PROGRESS; no final APK or release claim.
