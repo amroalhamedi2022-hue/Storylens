@@ -3,6 +3,7 @@
 from pathlib import Path
 from xml.etree import ElementTree as ET
 import re
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / "app/src/main/res"
@@ -60,4 +61,5 @@ i18n = (ROOT / "app/src/main/assets/lingua-i18n.js").read_text(encoding="utf-8")
 assert "const metrics = find('.storylens-hero .hero-metrics');" in i18n
 assert "if (metrics) metrics.remove();" in i18n
 assert "each('.storylens-hero .hero-metrics span'" not in i18n, "stale hard-coded marketing counters must not return"
+subprocess.run(["node", str(ROOT / "tools/hero-declutter.test.cjs")], cwd=ROOT, check=True)
 print("PASS Lingua Tales LT-01/04/05: adaptive icon, brand, offline identity and content-first hero")
