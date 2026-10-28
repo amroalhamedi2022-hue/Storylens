@@ -87,8 +87,9 @@ const animationStart=reader.indexOf('const pageTurnTimers=new WeakMap();');
 const animationEnd=reader.indexOf('\nfunction installPageTurn()',animationStart);
 assert.ok(animationStart>=0&&animationEnd>animationStart,'production timer guard helper exists');
 const animationTimers=new Map(), allCallbacks=new Map(), cleared=[];
-let nextAnimationTimer=0;
+let nextAnimationTimer=0, reducedMotion=false, forcedLayouts=0;
 const animationWindow={
+ matchMedia(query){assert.equal(query,'(prefers-reduced-motion: reduce)');return {matches:reducedMotion};},
  setTimeout(callback,delay){assert.equal(delay,420);const id=++nextAnimationTimer;animationTimers.set(id,callback);allCallbacks.set(id,callback);return id;},
  clearTimeout(id){cleared.push(id);animationTimers.delete(id);}
 };
@@ -99,7 +100,7 @@ const turnClasses=new Set();
 const animatedPage={classList:{
  add(name){turnClasses.add(name);},
  remove(...names){names.forEach(name=>turnClasses.delete(name));}
-},get offsetWidth(){return 600;}};
+},get offsetWidth(){forcedLayouts++;return 600;}};
 animationContext.animatePageTurn(animatedPage,'next');
 const firstTurnTimer=nextAnimationTimer;
 assert.ok(turnClasses.has('lt-turn-forward'));
@@ -113,6 +114,34 @@ allCallbacks.get(firstTurnTimer)();
 assert.ok(turnClasses.has('lt-turn-back'),'stale timeout cannot remove the newer reverse animation');
 allCallbacks.get(secondTurnTimer)();
 assert.equal(turnClasses.size,0,'the current timeout eventually cleans up the animation classes');
+// Each page owns its own timer; finishing one page cannot clear another page's turn.
+const otherClasses=new Set();
+const otherPage={classList:{
+ add(name){otherClasses.add(name);},
+ remove(...names){names.forEach(name=>otherClasses.delete(name));}
+},get offsetWidth(){forcedLayouts++;return 600;}};
+animationContext.animatePageTurn(animatedPage,'next');
+const pageATimer=nextAnimationTimer;
+animationContext.animatePageTurn(otherPage,'next');
+const pageBTimer=nextAnimationTimer;
+allCallbacks.get(pageATimer)();
+assert.ok(otherClasses.has('lt-turn-forward'),'a different page keeps its own animation');
+allCallbacks.get(pageBTimer)();
+assert.equal(otherClasses.size,0);
+
+// Reduced motion must skip forced layout/timers and invalidate any already queued callback.
+animationContext.animatePageTurn(animatedPage,'next');
+const queuedBeforeReduce=nextAnimationTimer;
+const layoutsBeforeReduce=forcedLayouts;
+reducedMotion=true;
+animationContext.animatePageTurn(animatedPage,'back');
+assert.equal(forcedLayouts,layoutsBeforeReduce,'reduced motion skips forced layout');
+assert.equal(nextAnimationTimer,queuedBeforeReduce,'reduced motion does not schedule a cleanup timer');
+assert.equal(turnClasses.size,0,'reduced motion leaves no animation classes');
+allCallbacks.get(queuedBeforeReduce)();
+assert.equal(turnClasses.size,0,'a queued stale callback cannot regain ownership after reduced-motion turn');
+reducedMotion=false;
+
 
 console.log('PASS: contextual meaning and page-turn production regression');
 
