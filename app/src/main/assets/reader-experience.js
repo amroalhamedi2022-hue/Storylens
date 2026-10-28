@@ -31,6 +31,10 @@ function ltApplyGlass(){
  const tint=Number.isFinite(raw)?Math.max(0,Math.min(100,raw)):42;
  document.body.dataset.ltPalette=palette.id;
  document.documentElement.style.setProperty('--lt-glass-opacity',String(.08+tint/100*.52));
+ document.documentElement.style.setProperty('--lt-glass-mix',Math.round(8+tint*.42)+'%');
+ document.documentElement.style.setProperty('--lt-glass-blur',(7+tint*.3)+'px');
+ document.documentElement.style.setProperty('--lt-glass-sheen',String(.12+tint/100*.48));
+ document.documentElement.style.setProperty('--lt-glass-preview-alpha',String(tint/100*.65));
  document.documentElement.style.setProperty('--lt-glass-a',palette.a);
  document.documentElement.style.setProperty('--lt-glass-b',palette.b);
  document.documentElement.style.setProperty('--lt-glass-c',palette.c);
