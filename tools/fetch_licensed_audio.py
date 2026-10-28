@@ -67,7 +67,7 @@ def main() -> None:
     (ASSETS / "LICENSE_AUDIO.txt").write_text(
         ATTRIBUTION + "\nSource repository: https://github.com/" + SOURCE_REPO +
         "\nPinned commit: " + SOURCE_COMMIT +
-        "\nAll {len(FILES)} selected OGG files are redistributed unchanged except for local filename mapping.\n",
+        f"\nAll {len(FILES)} selected OGG files are redistributed unchanged except for local filename mapping.\n",
         encoding="utf-8"
     )
     print(f"PASS: {len(FILES)} pinned CC-BY audio files verified ({total} bytes total).")

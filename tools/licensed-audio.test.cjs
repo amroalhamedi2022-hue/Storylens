@@ -20,6 +20,7 @@ assert.ok(shell.includes('global.LinguaLicensedAudio.controls(sheet,rtl())'));
 assert.ok(workflow.includes('python3 tools/fetch_licensed_audio.py'));
 assert.ok(workflow.includes('node tools/licensed-audio.test.cjs'));
 assert.ok(license.includes('CC BY 4.0')&&license.includes('Oculus Audio Pack 01'));
+assert.ok(license.includes('All 24 selected OGG files'),'license attribution must describe the exact 20-loop + 4-effect pack');
 assert.equal(manifest.tracks.length,24);
 assert.equal(manifest.tracks.filter(x=>x.kind==='loop').length,20);
 assert.equal(manifest.tracks.filter(x=>x.kind==='oneshot').length,4);
