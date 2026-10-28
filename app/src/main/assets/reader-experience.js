@@ -100,7 +100,7 @@ function contextualMeaning(entry, source, story){
    ambiguous=true;
   }
  }
- if(best&&bestScore>0)return {label:'أقرب معنى بحسب ترجمة الجملة',text:best,kind:'inferred'};
+ if(best&&bestScore>0&&!ambiguous)return {label:'أقرب معنى بحسب ترجمة الجملة',text:best,kind:'inferred'};
  return {label:'السياق من القصة',text:'لم يُعثر على معنى مفرد موثّق لهذه الكلمة في هذه الجملة بعد. اقرأ ترجمة الجملة أدناه؛ ولن نخترع تعريفًا غير مؤكد.',kind:'sentence'};
 }
 wordSheet=function(args){
