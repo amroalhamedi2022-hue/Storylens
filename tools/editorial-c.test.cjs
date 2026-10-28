@@ -10,12 +10,13 @@ const scripts=['editorial-stories-a.js','editorial-stories-b.js','editorial-stor
 const context={window:{},encodeURIComponent};
 for(const file of scripts)vm.runInNewContext(fs.readFileSync(path.join(assets,file),'utf8'),context,{filename:file,timeout:6000});
 const stories=context.window.StoryLensEditorialStories;
-assert.equal(stories.length,18,'six stories in each of the three original-content batches A/B, C and D');
+assert.equal(stories.length,18,'six stories in each of the four original-content batches A, B, C and D');
 const collectionC=stories.slice(6,12), collectionD=stories.slice(12);
 const expected=['mystery','sci_fi','psychological','historical','contemporary','horror'];
 const sorted=a=>[...a].sort();
 assert.deepEqual(sorted(collectionC.map(s=>s.genre)),sorted(expected),'Collection C covers all six adult genres');
 assert.deepEqual(sorted(collectionD.map(s=>s.genre)),sorted(expected),'Collection D covers all six adult genres');
+assert.equal(new Set(stories.map(s=>s.id)).size,stories.length,'all original story IDs are unique across batches A–D');
 const known=new Set(),normalizedLines=new Set();
 const norm=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
 function validateCollection(collection,{chaptersPerStory,paragraphsPerChapter,label,brandedScenes=false}) {
