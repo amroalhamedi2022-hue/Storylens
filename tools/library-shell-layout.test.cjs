@@ -187,4 +187,99 @@ function swipeHarness(locale, initiallyOpen = false) {
   assert.equal(h.snapshot().openCount, 0, 'a slow swipe must not open the drawer');
 }
 
+/* LT-10 Settings modal focus isolation: execute the exact production focus helpers, not a parallel implementation. */
+const settingsStart = shell.indexOf('let settingsModalActive=false;');
+const settingsEnd = shell.indexOf('\nfunction closeDrawer(restoreFocus=true){', settingsStart);
+assert.ok(settingsStart >= 0 && settingsEnd > settingsStart,
+  'production Settings focus helpers must remain available to the regression harness');
+const settingsHelpers = shell.slice(settingsStart, settingsEnd);
+const openSettingsStart = shell.indexOf('function openSettings(){');
+const openSettingsEnd = shell.indexOf('\n/* LT-07', openSettingsStart);
+assert.ok(openSettingsStart >= 0 && openSettingsEnd > openSettingsStart,
+  'production Settings modal builder must remain testable');
+const openSettingsBody = shell.slice(openSettingsStart, openSettingsEnd);
+assert.ok(openSettingsBody.indexOf('beginSettingsModal();') >= 0 &&
+  openSettingsBody.indexOf('beginSettingsModal();') < openSettingsBody.indexOf('closeDrawer(false);'),
+  'Settings must capture a safe focus return target before making the drawer inert');
+assert.match(openSettingsBody, /aria-modal/);
+
+function settingsHarness({ rootInitiallyInert = false, fromDrawer = false,
+  targetConnected = true, activeIsBody = false } = {}) {
+  let modalPresent = false;
+  const focus = { origin: 0, toggle: 0 };
+  const root = { inert: rootInitiallyInert };
+  const body = {};
+  const toggle = { isConnected: true, focus() { focus.toggle++; },
+    closest() { return null; } };
+  const origin = { isConnected: targetConnected, focus() { focus.origin++; },
+    closest(selector) { return fromDrawer && selector === '#lt-drawer' ? {} : null; } };
+  const document = {
+    body,
+    activeElement: activeIsBody ? body : origin,
+    getElementById(id) {
+      if (id === 'root') return root;
+      if (id === 'lt-menu-toggle') return toggle;
+      return null;
+    },
+    querySelector(selector) {
+      return selector === '.lt-settings-overlay' && modalPresent ? {} : null;
+    }
+  };
+  const baseCloseSheet = event => {
+    if (event && event.target !== event.currentTarget) return;
+    modalPresent = false;
+  };
+  const context = { document, closeSheet: baseCloseSheet };
+  vm.runInNewContext(settingsHelpers +
+    '\nglobalThis.settingsApi={beginSettingsModal,releaseSettingsModal,closeSheet};',
+    context, { timeout: 2000 });
+  return {
+    root, focus, api: context.settingsApi,
+    setModalPresent(value) { modalPresent = value; }
+  };
+}
+{
+  const h = settingsHarness();
+  h.api.beginSettingsModal();
+  h.setModalPresent(true);
+  assert.equal(h.root.inert, true, 'background app root becomes inert while Settings is open');
+  h.api.closeSheet();
+  assert.equal(h.root.inert, false, 'dismissal restores the prior root interactivity');
+  assert.equal(h.focus.origin, 1, 'dismissal restores focus to the originating control');
+}
+{
+  const h = settingsHarness();
+  h.api.beginSettingsModal();
+  h.setModalPresent(true);
+  h.api.closeSheet({ target: {}, currentTarget: {} });
+  assert.equal(h.root.inert, true, 'an ignored outside click must not unblock the background');
+  assert.equal(h.focus.origin, 0, 'focus is not restored while the modal remains open');
+  h.setModalPresent(false);
+  h.api.releaseSettingsModal();
+  assert.equal(h.root.inert, false);
+  assert.equal(h.focus.origin, 1);
+}
+{
+  const h = settingsHarness({ rootInitiallyInert: true });
+  h.api.beginSettingsModal();
+  h.setModalPresent(true);
+  h.api.closeSheet();
+  assert.equal(h.root.inert, true, 'the modal restores an already-inert root instead of unblocking it');
+}
+{
+  const h = settingsHarness({ fromDrawer: true });
+  h.api.beginSettingsModal();
+  h.setModalPresent(true);
+  h.api.closeSheet();
+  assert.equal(h.focus.origin, 0, 'focus is not returned into the now-inert drawer');
+  assert.equal(h.focus.toggle, 1, 'drawer-origin focus returns to the visible menu toggle');
+}
+{
+  const h = settingsHarness({ targetConnected: false });
+  h.api.beginSettingsModal();
+  h.setModalPresent(true);
+  h.api.closeSheet();
+  assert.equal(h.focus.toggle, 1, 'a detached return target safely falls back to the menu toggle');
+}
+
 console.log('PASS: LT-06 localized discovery labels and single genre-navigation surface');
