@@ -94,7 +94,7 @@ const terms=[
   },
   {
     "term": "fatal",
-    "literal": "قاضٍ / مدمّر",
+    "literal": "كارثيّ / ضربة قاصمة",
     "context": "This arrest was fatal",
     "note": "Chapter XXXIV: decisive setback",
     "type": "word"
