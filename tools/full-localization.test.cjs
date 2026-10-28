@@ -22,6 +22,7 @@ function element(tag) {
     querySelector(selector) {
       if (selector === '.lt-reader-locale') return this.children.find(x => (x.className || '').includes('lt-reader-locale')) || null;
       if (selector === '.settings-row') return this.children.find(x => (x.className || '').includes('settings-row')) || null;
+      if (selector === 'span' || selector === 'select') return this.children.find(x => x.tag === selector) || null;
       return null;
     },
     setAttribute(name, value) { this.attributes[name] = String(value); },
@@ -72,4 +73,17 @@ assert.equal(renderCalls, 1);
 assert.equal(settingsCalls, 1);
 assert.deepEqual(scrollCalls, [[0, 418]]);
 assert.equal(document.documentElement.dir, 'ltr');
-console.log('PASS: reader locale switch preserves chapter scroll, rerenders in LTR/RTL, and avoids duplicate controls');
+assert.equal(context.install(), false, 'existing selector should refresh without creating a second row');
+assert.equal(row.children[0].textContent, 'Interface language', 'existing selector label must follow English UI');
+assert.equal(select.getAttribute('aria-label'), 'Interface language', 'accessible name must follow English UI');
+assert.equal(select.value, 'en', 'selected option must match the active UI locale');
+assert.equal(sheet.children.length, 1, 'locale refresh must not duplicate the row');
+
+select.value = 'ar';
+select.fire('change');
+context.install();
+assert.equal(row.children[0].textContent, 'لغة الواجهة', 'existing selector label must return to Arabic');
+assert.equal(select.getAttribute('aria-label'), 'لغة الواجهة', 'accessible name must return to Arabic');
+assert.equal(select.value, 'ar', 'selected option must match Arabic UI after switching back');
+assert.equal(sheet.children.length, 1, 'repeated Arabic/English switches must keep one selector');
+console.log('PASS: reader locale control refreshes label, accessibility name and selected value across Arabic/English switches without duplication');
