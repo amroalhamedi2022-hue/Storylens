@@ -305,3 +305,11 @@ Chapter XXII (Yokohama) is now integrated and has passed its targeted Node regre
 - **PASS:** Android CI [40603809099](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40603809099), source/test SHA `2a36ea47f0aaaa18416243d422a4c1eb18b32b63`; Node regressions, Gradle tests/Debug build, packaged-resource checks and Chromium journeys through Chapter XXXVII passed.
 - **PASS:** Debug Artifact [12780451234](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40603809099/artifacts/12780451234), 20,062,103 bytes; independent SHA-256 `5cceffecca74e45ab6eb98dc802394ae24d6c475be91e581e72296a5c5522c45` matches the packaged checksum.
 - **Signing gate still open:** stable-signing secrets are not configured, so CI produced Debug only; not suitable for in-place updating an app signed with another key. Physical Pad 5 and final acceptance remain NOT TESTED.
+
+
+### 2026-10-28 — Licensed audio catalog expansion (verified build)
+
+- The pinned CC BY 4.0 pack now contains **20 recorded looped ambience tracks + 4 short one-shot SFX**. Added farm, European city daytime, creek-in-woods and water-lapping tracks from the same pinned Meta-open-sound commit, with exact byte-size and Git blob SHA-1 verification. `LICENSE_AUDIO.txt` now states the generated pack's exact 24-file count.
+- **PASS:** [Android CI 40611408964](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40611408964) on `fe7ea244dd0803ca9adf4c9bb5d94f3681e9b393`; Node/content/audio gates, Gradle, APK asset inclusion and Chromium reader journeys passed.
+- **PASS:** independently extracted APK artifact `12782818143`; 25,721,483 bytes, SHA-256 `9a92c11ad2f6bfb6fb9c57bb0fea9655ced3c651148231145af94c9e21a010a9`. Archive inspection confirms all 24 OGG assets and attribution text are packaged.
+- **NOT TESTED:** real-device acoustic quality, Android audio focus/lifecycle, screen-off, battery/thermal, Pad 5 performance and final stable signing. Build was justified to prove that the newly expanded offline audio catalog and attribution survive actual Android packaging; it is a Debug test build, not a final update/release.
