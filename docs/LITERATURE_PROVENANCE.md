@@ -437,3 +437,11 @@ merely because its title is present in a roadmap.
 - **Integration:** Chapter XXXV now navigates to XXXVI. Chapter XXXVI is the honest current endpoint at 36/37; XXXVII remains unavailable until its content is added.
 - **CI:** pending run `40451608622` on source/test head `7d99deca03e98395b383876b3243241e6348a3eb`.
 - **NOT TESTED:** physical Xiaomi Pad 5 install/touch, frame pacing/RAM/thermal, TalkBack and hardware RTL/contrast, independent Arabic literary review, and territory-specific rights. Chromium/CI screenshots are not device captures; this is not a final release.
+
+
+## Editorial Collection D — six original bilingual stories (2026-10-28)
+
+- **Stories:** The Blue Room Ledger; The Quiet Orbit; A Name in the Margin; The Glassmaker’s Map; The Last Shift Swap; The House That Counted.
+- **Content:** 3 chapters per story, 6 aligned English/Arabic passage pairs per chapter; 18 chapters, 108 passage pairs and 2,083 English words. Each story has eight contextual vocabulary/phrase notes and a separate original local SVG scene for each chapter.
+- **Rights/provenance:** original fiction composed for Lingua Tales, not copied or abridged from a published book. Arabic translations are companion drafts and still require independent bilingual literary editing. No third-party art, audio or remote resources were introduced in this batch.
+- **Source check:** direct V8 execution of the committed production story scripts and illustration engine passed story/genre counts, bilingual passage shape, non-duplicate English passages, vocabulary occurrence and local-art checks. Android CI and physical-device acceptance are recorded separately in `docs/AUTONOMOUS_ACCEPTANCE.md`; neither is implied by this source smoke.
