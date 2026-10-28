@@ -203,6 +203,36 @@ function applyTheme(name){
  });
  return true;
 }
+let settingsModalActive=false;
+let settingsReturnFocus=null;
+let settingsRootWasInert=false;
+function beginSettingsModal(){
+ const root=document.getElementById('root');
+ const active=document.activeElement;
+ const toggle=document.getElementById('lt-menu-toggle');
+ settingsReturnFocus=active&&active!==document.body&&!active.closest?.('#lt-drawer')?active:toggle;
+ settingsRootWasInert=!!root?.inert;
+ if(root)root.inert=true;
+ settingsModalActive=true;
+ return true;
+}
+function releaseSettingsModal(){
+ if(!settingsModalActive||document.querySelector('.lt-settings-overlay'))return false;
+ settingsModalActive=false;
+ const root=document.getElementById('root');
+ if(root)root.inert=settingsRootWasInert;
+ const target=settingsReturnFocus;
+ settingsReturnFocus=null;
+ settingsRootWasInert=false;
+ if(target?.isConnected)target.focus?.();
+ else document.getElementById('lt-menu-toggle')?.focus?.();
+ return true;
+}
+const originalCloseSheet=closeSheet;
+closeSheet=function(e){
+ originalCloseSheet(e);
+ releaseSettingsModal();
+};
 function closeDrawer(restoreFocus=true){
  const drawer=document.getElementById('lt-drawer');
  const backdrop=document.getElementById('lt-drawer-backdrop');
@@ -248,9 +278,10 @@ function addButton(parent,label,click,className){
  parent.appendChild(button);return button;
 }
 function openSettings(){
- closeDrawer(false);
  const host=document.getElementById('modals');
  if(!host)return;
+ beginSettingsModal();
+ closeDrawer(false);
  host.innerHTML='';
  const overlay=document.createElement('div');
  overlay.className='overlay lt-settings-overlay';
