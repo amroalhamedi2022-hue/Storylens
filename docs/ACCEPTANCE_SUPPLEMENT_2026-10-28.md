@@ -52,3 +52,12 @@
 - **Regression:** expanded `tools/full-localization.test.cjs` to switch Arabic → English → Arabic against the exact extracted production helper; verifies the label, accessible name, selected locale and single-row invariant.
 - **CI: NOT VERIFIED for these new source/test commits.** The existing workflow includes `tools/full-localization.test.cjs`, but source-only inspection is not evidence of execution; no new APK is claimed.
 - **NOT TESTED:** Chromium/WebView rendering, locale persistence after process death, RTL/TalkBack and Xiaomi Pad 5. English learning text and Arabic translations remain unchanged.
+
+
+## 2026-10-28 — Page-turn bookmark restoration (exact-head CI pending)
+
+- **Production change:** saved reader bookmarks now record the active four-paragraph page as well as chapter/scroll/paragraph anchor. Jumping to a bookmark restores that page **before** rendering and measuring the paragraph anchor, avoiding attempts to scroll to a paragraph hidden on another page. Older paragraph bookmarks without the new field derive the page from the existing four-paragraph pagination rule; old scroll-only bookmarks remain compatible.
+- **Regression tests:** `tools/bookmark-navigation.test.cjs` covers page save/restore and legacy paragraph fallback; `tools/contextual-page-turn.test.cjs` pins the shared page-size rule and restoration wiring.
+- **PASS — direct source-contract inspection:** the page size constant is shared by pagination and legacy bookmark fallback; all new source/test assertions are present. This does not replace Node CI or browser interaction.
+- **CI:** run [40667188476](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40667188476) is **IN PROGRESS** on test SHA `70af49e18ba6d02faec7b7b37ea356bc249ccb2b`. The earlier run on production commit `ff95a82b248770043baf7cfa978a553682297a7b` failed in the curated-content gate; the test's regex assertions were over-escaped and have been corrected in the current SHA. No APK is claimed for this milestone yet.
+- **NOT TESTED:** Chromium button/swipe interaction for this exact head, physical Xiaomi Pad 5, screen-reader page announcements, frame pacing and update signing. LT-01..LT-13 remain IN PROGRESS; no main write or merge.
