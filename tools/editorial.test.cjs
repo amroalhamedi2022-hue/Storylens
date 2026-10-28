@@ -49,7 +49,7 @@ assert.equal(lazyClassic[0].totalChapters,37,'the classic advertises its full ch
 assert.equal(lazyClassic[0].chapters.length,0,'the full-length chapter payload stays deferred until open');
 for(const [genre,count] of genres)assert.equal(count,genre==='historical'?9:7,genre+' count includes the current core, editorial batches and historical classic');
 assert.ok(paragraphs>=640 && chapters>=90,'original core, eighteen editorial stories and the novella retained');
-assert.equal(artCount,29,'24 original editorial scenes plus five novella scenes rendered');
+assert.equal(artCount,stories.reduce((sum,story)=>sum+story.chapters.length,0),'every editorial and novella chapter has a local illustration');
 assert.ok(html.includes('catalog.stories.push(...window.StoryLensEditorialStories)'),'stories registered before library render');
 assert.ok(html.includes('Object.assign(art,window.StoryLensMakeEditorialArt'),'art registered');
 console.log(JSON.stringify({result:'PASS',totalStories:all.length,totalChapters:chapters,totalBilingualParagraphs:paragraphs,illustratedNewChapters:artCount,perGenre:Object.fromEntries(genres)},null,2));
