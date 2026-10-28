@@ -1,12 +1,12 @@
 <!-- Latest dated evidence: docs/ACCEPTANCE_SUPPLEMENT_2026-10-28.md; preserve the historical acceptance ledger below. -->
 
-## Latest source checkpoint — 2026-10-28 (page turn + contextual glossary)
+## Latest source checkpoint — 2026-10-28 (contextual dictionary correctness)
 
-- **PASS source change:** reader page turns now use a 42-degree 3D paper-edge motion, direction-aware LTR/RTL pivots and a lightweight shade overlay; reduced-motion disables both animations.
-- **PASS source change:** Chapter XXXIV `fatal` glossary gloss corrected to `كارثيّ / ضربة قاصمة`; English source and bilingual paragraphs unchanged.
-- **PASS direct source contract:** eight focused page-turn CSS checks; Chapter XXXIV script executes with 22 aligned bilingual paragraphs and 972 English words.
-- **CI: NOT VERIFIED** for current functional head `262415c82ac3753c793bc919819fe075c8b8fa6d`; last confirmed run `40667188476` predates these changes. No new APK claimed.
-- **NOT TESTED:** WebView/device animation timing, physical Pad 5 performance/accessibility, independent Arabic literary proofreading, territory-specific rights and stable update signing.
+- **PASS source fix:** an English source excerpt in a historical story glossary can no longer be mislabeled as an Arabic contextual meaning; only Arabic-script authored context is treated as an Arabic gloss. Otherwise the resolver uses supported Arabic senses and sentence overlap, or honestly reports no verified gloss.
+- **PASS content fix:** Chapter XXXV “Never too late” now uses the natural Arabic idiom “لم يفت الأوان بعد”; English source text and its pinned source digest remain unchanged.
+- **PASS direct V8 production smoke:** English excerpt resolves to “سكان / قاطنو”; Arabic-authored context resolves to “ينطلق في رحلة”.
+- **Source/test head:** c8ca2ffb5af66655de91dd2ec23ec18cbac958d8. Exact-head CI is NOT VERIFIED; no APK is claimed for this correction.
+- **NOT TESTED:** full Node/Chromium CI, WebView sheet presentation, independent Arabic literary review, Xiaomi Pad 5, and territory-specific rights review.
 
 
 ## Latest verified checkpoint — 2026-10-28 (page-turn bookmark continuity)
