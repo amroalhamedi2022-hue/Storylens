@@ -662,7 +662,7 @@ document.addEventListener('touchend',event=>{
  if(elapsed>850||Math.abs(dx)<65||Math.abs(dy)>55||Math.abs(dx)<Math.abs(dy)*1.4)return;
  const opening=rtl()?dx<0:dx>0;
  if(opening&&!opened)openDrawer();
- else if(!opening&&opened)closeDrawer(false);
+ else if(!opening&&opened)closeDrawer(true);
 },{passive:true});
 document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
 /* LT-02: a single, cancellable story navigation gate. The original openStory
