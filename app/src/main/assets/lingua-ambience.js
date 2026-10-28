@@ -46,6 +46,7 @@ let prefs=sanitize(typeof get==='function'?get(KEY,DEFAULT):DEFAULT);
 let context=null,master=null,noiseSource=null,noiseFilter=null,noiseGain=null,drone=null,droneGain=null,playing=false;
 let melodyTimer=null,melodyNodes=new Set(),melodyStep=0;
 let playbackGeneration=0; // invalidates an in-flight AudioContext.resume after pagehide/pause
+const clickVoices=new Set();
 function persist(){if(typeof put==='function')put(KEY,{...prefs});}
 function stopNodes(){
  if(melodyTimer!==null){global.clearInterval(melodyTimer);melodyTimer=null;}
@@ -145,6 +146,25 @@ function releaseNativeAudioFocus(){
  if(!bridge||typeof bridge.releaseFocus!=='function')return;
  try{bridge.releaseFocus();}catch(_){}
 }
+function licensedPlaybackActive(){
+ const licensed=global.LinguaLicensedAudio;
+ try{return !!(licensed&&typeof licensed.isPlaying==='function'&&licensed.isPlaying());}
+ catch(_){return false;}
+}
+function releaseClickFocusIfIdle(ticket){
+ // A short click sound must not abandon focus acquired by newer ambience/music.
+ if(ticket!==playbackGeneration||playing||licensedPlaybackActive()||clickVoices.size>0)return;
+ releaseNativeAudioFocus();
+}
+function disposeClickVoice(voice,stop){
+ if(!clickVoices.delete(voice))return;
+ if(stop){try{voice.osc.stop();}catch(_){}}
+ try{voice.osc.disconnect();}catch(_){}
+ try{voice.gain.disconnect();}catch(_){}
+}
+function stopClickSounds(){
+ for(const voice of [...clickVoices])disposeClickVoice(voice,true);
+}
 async function play(){
  if(document.hidden)return false;
  if(playing)return true;
@@ -179,12 +199,11 @@ async function play(){
 }
 async function pause(options){
  ++playbackGeneration; // a delayed resume must never start audio after pause
- playing=false;stopNodes();
+ playing=false;stopNodes();stopClickSounds();
  if(master)master.gain.value=0;
  try{if(context&&context.state==='running')await context.suspend();}
  finally{if(!(options&&options.keepFocus))releaseNativeAudioFocus();}
 }
-function onNativeAudioFocusLoss(){pause().catch(()=>{});}
 function pauseFromNative(){return pause();}
 function selectScene(id){
  if(!ids.has(id))return false;
@@ -200,20 +219,43 @@ function setSfx(enabled){prefs.sfx=enabled===true;persist();}
 function setSfxVolume(value){prefs.sfxVolume=clamp(value);persist();}
 function clickSound(){
  if(!prefs.sfx||document.hidden)return;
- // A short UI click only acquires focus when no ambience session already owns it.
+ const ticket=playbackGeneration;
  const needsFocus=!playing;
  if(needsFocus&&!requestNativeAudioFocus())return;
- let ctx;
- try{ctx=ensureContext();}catch(_){if(needsFocus)releaseNativeAudioFocus();return;}
- if(ctx.state!=='running')ctx.resume().catch(()=>{if(needsFocus)releaseNativeAudioFocus();});
- const osc=ctx.createOscillator(),gain=ctx.createGain();
+ let ctx,resumePromise=null;
+ try{
+  ctx=ensureContext();
+  // Invoke resume synchronously from the user gesture, but do not trust its
+  // eventual completion: focus may be lost while the promise is still pending.
+  if(ctx.state!=='running')resumePromise=ctx.resume();
+ }catch(_){if(needsFocus)releaseClickFocusIfIdle(ticket);return;}
+ const osc=ctx.createOscillator(),gain=ctx.createGain(),voice={osc,gain};
+ clickVoices.add(voice);
  osc.type='sine';osc.frequency.setValueAtTime(720,ctx.currentTime);
  osc.frequency.exponentialRampToValueAtTime(490,ctx.currentTime+0.045);
  gain.gain.setValueAtTime(Math.max(0.0001,prefs.sfxVolume*0.06),ctx.currentTime);
  gain.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.05);
  osc.connect(gain);gain.connect(ctx.destination);
- osc.start();osc.stop(ctx.currentTime+0.055);
- osc.onended=()=>{osc.disconnect();gain.disconnect();if(needsFocus)releaseNativeAudioFocus();};
+ osc.onended=()=>{
+  disposeClickVoice(voice,false);
+  if(needsFocus)releaseClickFocusIfIdle(ticket);
+ };
+ try{osc.start();osc.stop(ctx.currentTime+0.055);}
+ catch(_){disposeClickVoice(voice,true);if(needsFocus)releaseClickFocusIfIdle(ticket);return;}
+ if(resumePromise&&typeof resumePromise.then==='function'){
+  Promise.resolve(resumePromise).then(async()=>{
+   if(document.hidden||ticket!==playbackGeneration){
+    disposeClickVoice(voice,true);
+    // A stale resume can complete after pause already observed a suspended
+    // context. Suspend it again, but never release a newer playback's focus.
+    if(ctx.state==='running'){try{await ctx.suspend();}catch(_){}}
+    if(needsFocus)releaseClickFocusIfIdle(ticket);
+   }
+  }).catch(()=>{
+   disposeClickVoice(voice,true);
+   if(needsFocus)releaseClickFocusIfIdle(ticket);
+  });
+ }
 }
 function controls(sheet,rtl){
  const section=document.createElement('section');section.className='lt-audio-settings';
