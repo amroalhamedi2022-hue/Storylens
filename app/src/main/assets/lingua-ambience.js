@@ -204,6 +204,7 @@ async function pause(options){
  try{if(context&&context.state==='running')await context.suspend();}
  finally{if(!(options&&options.keepFocus))releaseNativeAudioFocus();}
 }
+function onNativeAudioFocusLoss(){pause().catch(()=>{});}
 function pauseFromNative(){return pause();}
 function selectScene(id){
  if(!ids.has(id))return false;
