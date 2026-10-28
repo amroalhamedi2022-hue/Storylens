@@ -142,7 +142,7 @@ function swipeHarness(locale, initiallyOpen = false) {
     'const touchEndHandler = event => {' + touchEndBody + '};',
     'function swipe(startX, endX, elapsed = 100, startY = 20, endY = 20) { touch = null; clock.now = 1000; touchStartHandler({ touches: [{ clientX: startX, clientY: startY }] }); clock.now += elapsed; touchEndHandler({ changedTouches: [{ clientX: endX, clientY: endY }] }); }',
     'globalThis.api = { swipe, snapshot: () => ({ opened, openCount, focusRestored, closeCalls: closeCalls.slice() }) };'
-  ].join('\\n');
+  ].join('\n');
   const context = {};
   vm.runInNewContext(source, context, { timeout: 2000 });
   return context.api;
