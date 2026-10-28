@@ -159,6 +159,9 @@ function animatePageTurn(active,direction){
  },420);
  pageTurnTimers.set(active,timer);
 }
+function pageGroupLabel(index,total){
+ return uiText('صفحة '+(index+1)+' من '+total,'Page '+(index+1)+' of '+total);
+}
 function installPageTurn(){
  const reader=document.querySelector('.reader');
  const width=reader?.querySelector('.reading-width');
@@ -189,7 +192,7 @@ function installPageTurn(){
  const pageControls=document.createElement('nav');
  pageControls.className='lt-page-controls';
  pageControls.setAttribute('aria-label',uiText('التنقل بين صفحات القصة','Story page navigation'));
- pageControls.innerHTML='<button type="button" class="secondary lt-page-prev">'+uiText('السابق','Previous')+'</button><span class="lt-page-count" aria-live="polite"></span><button type="button" class="primary lt-page-next">'+uiText('الصفحة التالية','Next page')+'</button>';
+ pageControls.innerHTML='<button type="button" class="secondary lt-page-prev">'+uiText('السابق','Previous')+'</button><span class="lt-page-count" aria-live="polite" aria-atomic="true"></span><button type="button" class="primary lt-page-next">'+uiText('الصفحة التالية','Next page')+'</button>';
  sentenceBox.insertAdjacentElement('afterend',pageControls);
  const key='readpage_'+state.story.id+'_'+state.chapter;
  const initial=Number(get(key,0));
@@ -201,6 +204,8 @@ function installPageTurn(){
   current=Math.max(0,Math.min(pages.length-1,current));
   pages.forEach((item,index)=>{
    item.classList.toggle('is-active',index===current);
+   item.setAttribute('aria-label',pageGroupLabel(index,pages.length));
+   item.setAttribute('aria-roledescription',uiText('صفحة من القصة','story page'));
    item.setAttribute('aria-hidden',index===current?'false':'true');
    item.inert=index!==current;
   });
