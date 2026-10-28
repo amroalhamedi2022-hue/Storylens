@@ -9,7 +9,30 @@ const originalReader=renderReader;
 const originalSettings=settings;
 const originalTheme=theme;
 const originalInlineTranslate=inlineTranslate;
+
 const originalWordSheet=wordSheet;
+// Offline font gallery: use Android's installed font families so the APK stays light.
+// Families are deliberately split by language to preserve correct Arabic shaping.
+const ltFontChoices=[
+ {id:'system',labelAr:'النظام الافتراضي',labelEn:'System default',ar:'system-ui, sans-serif',en:'Georgia, serif'},
+ {id:'naskh',labelAr:'نسخ كلاسيكي',labelEn:'Classic Naskh',ar:'"Noto Naskh Arabic", "Noto Serif Arabic", serif',en:'Georgia, "Noto Serif", serif'},
+ {id:'sans',labelAr:'حديث واضح',labelEn:'Modern sans',ar:'"Noto Sans Arabic", "Noto Sans", sans-serif',en:'Arial, sans-serif'},
+ {id:'serif',labelAr:'سيريف أدبي',labelEn:'Literary serif',ar:'"Noto Naskh Arabic", serif',en:'Georgia, "Times New Roman", serif'},
+ {id:'rounded',labelAr:'مستدير وودود',labelEn:'Rounded friendly',ar:'"Noto Sans Arabic", "Arial Rounded MT Bold", sans-serif',en:'"Trebuchet MS", Arial, sans-serif'},
+ {id:'humanist',labelAr:'إنساني مريح',labelEn:'Humanist',ar:'"Noto Sans Arabic", sans-serif',en:'"Trebuchet MS", "Gill Sans", sans-serif'},
+ {id:'classic',labelAr:'كلاسيكي مطبوع',labelEn:'Classic print',ar:'"Noto Naskh Arabic", serif',en:'"Times New Roman", Georgia, serif'},
+ {id:'mono',labelAr:'أحادي المسافة',labelEn:'Monospace',ar:'monospace',en:'ui-monospace, monospace'}
+];
+function ltApplyFonts(){
+ const choice=ltFontChoices.find(item=>item.id===get('lt_font_choice','system'))||ltFontChoices[0];
+ document.querySelectorAll('.reader .sentence,.reader .reader-hero,.reader .chapter-end,.reader .inline-ar').forEach(node=>{
+  const arabic=node.matches('.inline-ar')||node.closest('[lang="ar"]')||/[\\u0600-\\u06FF]/.test(node.textContent||'');
+  node.style.fontFamily=arabic?choice.ar:choice.en;
+ });
+ document.documentElement.style.setProperty('--lt-font-en',choice.en);
+ document.documentElement.style.setProperty('--lt-font-ar',choice.ar);
+}
+
 
 // Choose a contextual Arabic gloss only from the actual dictionary senses and
 // the aligned Arabic sentence. This is a transparent heuristic, not an AI claim.
@@ -273,6 +296,7 @@ library=function(){
 renderReader=function(){
  originalReader();
  if(!state.story || state.page!=='reader')return;
+ ltApplyFonts();
  // UI language must not change pronunciation of English source paragraphs.
  document.querySelector('.reader h2')?.setAttribute('lang','en');
  document.querySelectorAll('.reader .inline-ar').forEach(node=>node.setAttribute('lang','ar'));
@@ -470,8 +494,16 @@ settings=function(){
  '</div><div class="chapter-picker">'+state.story.chapters.map((c,i)=>
  '<button type="button" class="'+(i===state.chapter?'selected':'')+'" onclick="stlChapter('+i+')">'+(i+1)+'. '+escapeText(c.title)+'</button>').join('')+'</div>'+
  '<p class="quiet">'+uiText('اضغط مطولًا على أي جملة لإظهار ترجمتها فقط. الترجمة لا تحتاج اتصالًا بالإنترنت.','Long-press a sentence to reveal its Arabic translation. Works offline.')+'</p>';
+ const fontPanel=document.createElement('div');
+ fontPanel.className='lt-font-panel';
+ const chosen=get('lt_font_choice','system');
+ fontPanel.innerHTML='<h3>'+uiText('أنواع الخطوط','Font styles')+'</h3><p class="quiet">'+uiText('اختَر أسلوبًا للنص العربي والإنجليزي. الخيارات تستخدم الخطوط المتاحة على جهازك وتعمل دون إنترنت.','Choose a style for Arabic and English. Options use fonts available on your device and work offline.')+'</p><label class="lt-font-label">'+uiText('الخط','Typeface')+'<select id="lt-font-choice" aria-label="'+uiText('اختيار الخط','Choose font')+'">'+ltFontChoices.map(item=>'<option value="'+item.id+'" '+(item.id===chosen?'selected':'')+'>'+uiText(item.labelAr,item.labelEn)+'</option>').join('')+'</select></label>';
+ bar.appendChild(fontPanel);
  const footer=sheet.querySelector('footer');
  if(footer)footer.insertAdjacentElement('beforebegin',bar);else sheet.appendChild(bar);
+ const fontSelect=sheet.querySelector('#lt-font-choice');
+ fontSelect?.addEventListener('change',event=>{put('lt_font_choice',event.target.value);ltApplyFonts();});
+
 };
 window.stlBookmark=function(){
  if(!state.story)return;
