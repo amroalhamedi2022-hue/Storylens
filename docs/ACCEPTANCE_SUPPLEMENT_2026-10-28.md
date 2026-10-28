@@ -145,3 +145,12 @@
 - **PASS — direct production V8 smoke:** 10/10 assertions passed against the fetched production helper, including the Settings wiring order. Source commit `ac378284a0e5205e01616cbef600da8609ee844d`; test commit `a036f97a2973c18eb3aa2d04183a77c8cd1ef8be`.
 - **Android CI: NOT VERIFIED** for this exact source/test head. No new APK or Android/Chromium pass is claimed.
 - **NOT TESTED:** physical Xiaomi Pad 5, TalkBack focus announcements, modal behavior across every theme, and final LT-01..LT-13 acceptance.
+
+## LT-02 — Prevent stale page-turn timers from cancelling newer turns (2026-10-28)
+
+- **Production fix:** `animatePageTurn` now tracks timeout ownership per page, cancels the previous timer before restarting the same page, and verifies ownership again in the timeout callback. This handles the WebView race where a callback may already be queued when cancellation occurs; an older turn can no longer strip CSS classes from a newer reverse/forward animation.
+- **Regression:** `tools/contextual-page-turn.test.cjs` executes the production helper with controllable timers and explicitly invokes a stale queued callback after a newer turn starts.
+- **PASS — direct V8 execution:** the committed test was run against the current production JS/CSS with a small Node-compatible harness: **95 assertions passed**, including the overlapping-timer case; production JS and test source syntax also passed.
+- **Source commit:** `87beccaf0d9d31d59ab12a5bf52680dd0a9b7075`; regression/test fix: `b981fff440adccaeca19aece90f699b40e8066b7`.
+- **Exact-head Android CI: NOT VERIFIED.** The connected workflow lookup returned no PR-triggered run for the API-created commits. No Node/Gradle/Chromium CI pass or new APK is claimed for this fix.
+- **NOT TESTED:** Xiaomi Pad 5/WebView rapid repeated page turns, frame pacing, reduced-motion behavior on Android, TalkBack and visual review. LT-01..LT-13 remain IN PROGRESS; no main write or merge.
