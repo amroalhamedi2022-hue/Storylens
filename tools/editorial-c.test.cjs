@@ -1,5 +1,5 @@
 'use strict';
-// Editorial Collection C: full story arcs, bilingual review and illustration gates.
+// Editorial Collections C + D: bilingual completeness, source-occurring vocabulary and local scene art.
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
@@ -8,38 +8,62 @@ const root=path.resolve(__dirname,'..');
 const assets=path.join(root,'app/src/main/assets');
 const scripts=['editorial-stories-a.js','editorial-stories-b.js','editorial-stories-c.js','editorial-art.js'];
 const context={window:{},encodeURIComponent};
-for(const file of scripts)vm.runInNewContext(fs.readFileSync(path.join(assets,file),'utf8'),context,{filename:file,timeout:4000});
+for(const file of scripts)vm.runInNewContext(fs.readFileSync(path.join(assets,file),'utf8'),context,{filename:file,timeout:6000});
 const stories=context.window.StoryLensEditorialStories;
-const collection=stories.slice(-6);
-assert.equal(stories.length,12,'twelve editorial stories across three batches');
+assert.equal(stories.length,18,'six stories in each of the three original-content batches A/B, C and D');
+const collectionC=stories.slice(6,12), collectionD=stories.slice(12);
 const expected=['mystery','sci_fi','psychological','historical','contemporary','horror'];
-assert.deepEqual([...collection.map(s=>s.genre)].sort(),[...expected].sort(),'one full story in each adult genre');
-const known=new Set(),lines=new Set();
-let paragraphs=0,words=0;
-for(const story of collection){
- assert.ok(!known.has(story.id),'unique story ID '+story.id);known.add(story.id);
- assert.equal(story.chapters.length,2,'two-chapter resolved arc '+story.id);
- assert.ok(story.title.length>8&&story.description.length>40,'complete metadata '+story.id);
- assert.ok(story.terms.length>=8,'at least 8 edited idioms/terms '+story.id);
- const body=[];
- for(const ch of story.chapters){
-  assert.ok(ch.title.length>=4&&ch.titleAr.length>=4,'bilingual chapter headings');
-  assert.ok(ch.paragraphs.length>=9,'editorially substantial chapter '+story.id);
-  for(const p of ch.paragraphs){
-   assert.ok(p.en.trim().split(/\s+/).length>=11,'complete English sentences');
-   assert.ok(p.ar.length>=35&&/[\u0621-\u064A]/.test(p.ar),'full fluent Arabic pair');
-   const normalized=p.en.toLowerCase().replace(/[^a-z]+/g,' ').trim();
-   assert.ok(!lines.has(normalized),'not recycled: '+p.en);
-   lines.add(normalized);body.push(normalized);
-   paragraphs++;words+=normalized.split(/\s+/).length;
+const sorted=a=>[...a].sort();
+assert.deepEqual(sorted(collectionC.map(s=>s.genre)),sorted(expected),'Collection C covers all six adult genres');
+assert.deepEqual(sorted(collectionD.map(s=>s.genre)),sorted(expected),'Collection D covers all six adult genres');
+const known=new Set(),normalizedLines=new Set();
+const norm=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().replace(/\\s+/g,' ');
+function validateCollection(collection,{chaptersPerStory,paragraphsPerChapter,label}) {
+ let paragraphs=0,words=0,illustrations=0,annotations=0;
+ for(const story of collection){
+  assert.ok(!known.has(story.id),'unique story ID '+story.id);known.add(story.id);
+  assert.equal(story.chapters.length,chaptersPerStory,label+' chapter count '+story.id);
+  assert.ok(story.title.length>8&&story.description.length>40,'complete metadata '+story.id);
+  assert.match(story.provenance,/Original fiction created for Lingua Tales/,'transparent original-content provenance '+story.id);
+  assert.match(story.editorialStatus,/review pending/,'do not imply professional review '+story.id);
+  assert.ok(story.terms.length>=8,'at least eight contextual annotations '+story.id);
+  const body=[];
+  for(const ch of story.chapters){
+   assert.ok(ch.title.length>=4&&ch.titleAr.length>=4,'bilingual chapter headings '+story.id);
+   assert.equal(ch.paragraphs.length,paragraphsPerChapter,label+' paragraph count '+story.id);
+   for(const p of ch.paragraphs){
+    assert.ok(p.en.trim().split(/\\s+/).length>=11,'complete English sentence '+story.id);
+    assert.ok(p.ar.length>=35&&/[\\u0621-\\u064A]/.test(p.ar),'aligned Arabic companion paragraph '+story.id);
+    const normalized=norm(p.en);
+    assert.ok(!normalizedLines.has(normalized),'no recycled English paragraph: '+p.en);
+    normalizedLines.add(normalized);body.push(normalized);
+    paragraphs++;words+=normalized.split(/\\s+/).length;
+   }
   }
+  const full=body.join(' ');
+  const covered=story.terms.filter(t=>full.includes(norm(t.term))).length;
+  assert.ok(covered>=6,story.id+' must use at least six annotated phrases in its actual prose');
+  for(const term of story.terms){
+   assert.ok(term.literal&&term.context&&term.type&&term.note,'complete bilingual annotation: '+term.term);
+  }
+  const scenes=context.window.StoryLensMakeEditorialArt([story]);
+  for(let i=0;i<chaptersPerStory;i++){
+   const uri=scenes[story.id+'_'+i];
+   assert.ok(uri?.startsWith('data:image/svg+xml;charset=utf-8,'),'local illustration for '+story.id+' chapter '+i);
+   const svg=decodeURIComponent(uri.slice(uri.indexOf(',')+1));
+   assert.ok(svg.includes(story.title)&&svg.includes(ch.title||'' )===false || svg.includes('LINGUA TALES'),'SVG must be a self-contained local scene');
+   assert.doesNotMatch(svg,/https?:\\/\\//,'no remote image/font dependency');
+   illustrations++;
+  }
+  annotations+=story.terms.length;
  }
- const text=body.join(' ');
- const covered=story.terms.filter(t=>text.includes(t.term.toLowerCase())).length;
- assert.ok(covered>=3,story.id+' must include contextual expressions actually used in the story');
- const scenes=context.window.StoryLensMakeEditorialArt([story]);
- for(const i of [0,1])assert.ok(scenes[story.id+'_'+i]?.startsWith('data:image/svg+xml'),'local scene for both chapters');
+ return {stories:collection.length,chapters:collection.length*chaptersPerStory,paragraphs,englishWords:words,illustrations,annotations};
 }
-assert.equal(paragraphs,108,'all English–Arabic paragraphs delivered');
-assert.ok(words>=1900,'substantial original English prose, not filler');
-console.log(JSON.stringify({result:'PASS',newStories:collection.length,chapters:12,paragraphs,englishWords:words,newIllustrations:12,annotations:collection.reduce((n,s)=>n+s.terms.length,0)},null,2));
+const c=validateCollection(collectionC,{chaptersPerStory:2,paragraphsPerChapter:9,label:'Collection C'});
+assert.equal(c.paragraphs,108,'Collection C bilingual paragraph count');
+assert.ok(c.englishWords>=1900,'Collection C remains substantial prose');
+const d=validateCollection(collectionD,{chaptersPerStory:3,paragraphsPerChapter:6,label:'Collection D'});
+assert.equal(d.paragraphs,108,'Collection D bilingual paragraph count');
+assert.ok(d.englishWords>=1800,'Collection D must be substantial prose, not filler');
+assert.equal(d.illustrations,18,'each Collection D chapter has its own local illustration');
+console.log(JSON.stringify({result:'PASS',collectionC:c,collectionD:d,totalNewStories:c.stories+d.stories,totalBilingualParagraphs:c.paragraphs+d.paragraphs,totalEnglishWords:c.englishWords+d.englishWords},null,2));
