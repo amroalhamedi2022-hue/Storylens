@@ -112,4 +112,79 @@ assert.equal(drawerContext.drawerApi.openDrawer(), false, 'drawer cannot open ov
 drawerNodes.delete('lt-drawer');
 assert.equal(drawerContext.drawerApi.closeDrawer(), false, 'missing drawer is a safe no-op');
 
+
+/* Evaluate the actual touch callback bodies so RTL/LTR edge behavior and
+ * focus restoration cannot drift from the production drawer implementation. */
+function listenerBody(type) {
+  const prefix = "document.addEventListener('" + type + "',event=>{";
+  const start = shell.indexOf(prefix);
+  const end = start < 0 ? -1 : shell.indexOf('},{passive:true});', start);
+  assert.ok(start >= 0 && end > start, 'production ' + type + ' listener must exist');
+  return shell.slice(start + prefix.length, end);
+}
+const touchStartBody = listenerBody('touchstart');
+const touchEndBody = listenerBody('touchend');
+function swipeHarness(locale, initiallyOpen = false) {
+  const source = [
+    'let opened = ' + (initiallyOpen ? 'true' : 'false') + ';',
+    'let touch = null;',
+    'let openCount = 0, focusRestored = 0;',
+    'const closeCalls = [];',
+    'const state = { page: "library" };',
+    'const global = { innerWidth: 400 };',
+    'const document = { documentElement: { clientWidth: 400 } };',
+    'const clock = { now: 1000 };',
+    'const Date = { now: () => clock.now };',
+    'const rtl = () => ' + (locale === 'ar' ? 'true' : 'false') + ';',
+    'function openDrawer() { opened = true; openCount++; }',
+    'function closeDrawer(restoreFocus = true) { opened = false; closeCalls.push(restoreFocus); if (restoreFocus) focusRestored++; }',
+    'const touchStartHandler = event => {' + touchStartBody + '};',
+    'const touchEndHandler = event => {' + touchEndBody + '};',
+    'function swipe(startX, endX, elapsed = 100, startY = 20, endY = 20) { touch = null; clock.now = 1000; touchStartHandler({ touches: [{ clientX: startX, clientY: startY }] }); clock.now += elapsed; touchEndHandler({ changedTouches: [{ clientX: endX, clientY: endY }] }); }',
+    'globalThis.api = { swipe, snapshot: () => ({ opened, openCount, focusRestored, closeCalls: closeCalls.slice() }) };'
+  ].join('\\n');
+  const context = {};
+  vm.runInNewContext(source, context, { timeout: 2000 });
+  return context.api;
+}
+{
+  const h = swipeHarness('ar');
+  h.swipe(390, 300);
+  assert.deepEqual(h.snapshot(), { opened: true, openCount: 1, focusRestored: 0, closeCalls: [] },
+    'Arabic drawer opens only on a right-edge leftward swipe');
+}
+{
+  const h = swipeHarness('en');
+  h.swipe(10, 100);
+  assert.deepEqual(h.snapshot(), { opened: true, openCount: 1, focusRestored: 0, closeCalls: [] },
+    'English drawer opens only on a left-edge rightward swipe');
+}
+{
+  const h = swipeHarness('ar');
+  h.swipe(180, 90);
+  assert.equal(h.snapshot().openCount, 0, 'an Arabic content-area swipe must not open the drawer');
+}
+{
+  const h = swipeHarness('en');
+  h.swipe(220, 310);
+  assert.equal(h.snapshot().openCount, 0, 'an English content-area swipe must not open the drawer');
+}
+{
+  const h = swipeHarness('ar', true);
+  h.swipe(180, 270);
+  assert.deepEqual(h.snapshot(), { opened: false, openCount: 0, focusRestored: 1, closeCalls: [true] },
+    'closing the Arabic drawer by reciprocal swipe restores focus to the menu toggle');
+}
+{
+  const h = swipeHarness('en', true);
+  h.swipe(220, 130);
+  assert.deepEqual(h.snapshot(), { opened: false, openCount: 0, focusRestored: 1, closeCalls: [true] },
+    'closing the English drawer by reciprocal swipe restores focus to the menu toggle');
+}
+{
+  const h = swipeHarness('ar');
+  h.swipe(390, 300, 900);
+  assert.equal(h.snapshot().openCount, 0, 'a slow swipe must not open the drawer');
+}
+
 console.log('PASS: LT-06 localized discovery labels and single genre-navigation surface');
