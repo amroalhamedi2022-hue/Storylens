@@ -1,3 +1,5 @@
+<!-- Latest dated evidence: docs/ACCEPTANCE_SUPPLEMENT_2026-10-28.md; preserve the historical acceptance ledger below. -->
+
 ## 2026-10-26 — Chapter XXVII exact-source comparison and digest regression
 
 - **PASS — independent source comparison:** fetched the pinned Standard Ebooks chapter-27 XHTML (chapter blob `2475c77964fd4cdaf1a83b3e60a6c905e89d66f7`), extracted the 25 body paragraphs, removed inline markup, and normalized whitespace, non-breaking spaces and the editorial U+2060 word-joiner. All **25/25 English paragraphs match** the packaged source text; 1,952 English words.
