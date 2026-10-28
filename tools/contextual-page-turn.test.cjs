@@ -77,6 +77,43 @@ assert.match(reader, /document\.elementFromPoint\?\.\(/, 'touchend resolves the 
 assert.match(reader, /pageSwipeGestureAllowed\(startTarget,endTarget,selected\)/, 'both gesture endpoints are guarded');
 assert.ok(reader.includes("sentenceBox.addEventListener('touchcancel',resetTouch"), 'touch cancellation resets gesture state');
 assert.ok(reader.includes("window.getSelection?.()?.toString()||''"), 'selection lookup is null-safe');
+
+/* Rapid turns on the same page must not let an older timeout cancel the newer
+ * animation. Exercise the exact production helper with controllable WebView-like
+ * timers, including a callback that was already queued when it was cancelled. */
+assert.ok(reader.includes('animatePageTurn(pages[current],direction);'),
+  'production page renderer must use the guarded animation helper');
+const animationStart=reader.indexOf('const pageTurnTimers=new WeakMap();');
+const animationEnd=reader.indexOf('\nfunction installPageTurn()',animationStart);
+assert.ok(animationStart>=0&&animationEnd>animationStart,'production timer guard helper exists');
+const animationTimers=new Map(), allCallbacks=new Map(), cleared=[];
+let nextAnimationTimer=0;
+const animationWindow={
+ setTimeout(callback,delay){assert.equal(delay,420);const id=++nextAnimationTimer;animationTimers.set(id,callback);allCallbacks.set(id,callback);return id;},
+ clearTimeout(id){cleared.push(id);animationTimers.delete(id);}
+};
+const animationContext={window:animationWindow};
+vm.runInNewContext(reader.slice(animationStart,animationEnd)+
+ '\\nglobalThis.animatePageTurn=animatePageTurn;',animationContext,{timeout:2000});
+const turnClasses=new Set();
+const animatedPage={classList:{
+ add(name){turnClasses.add(name);},
+ remove(...names){names.forEach(name=>turnClasses.delete(name));}
+},get offsetWidth(){return 600;}};
+animationContext.animatePageTurn(animatedPage,'next');
+const firstTurnTimer=nextAnimationTimer;
+assert.ok(turnClasses.has('lt-turn-forward'));
+animationContext.animatePageTurn(animatedPage,'back');
+const secondTurnTimer=nextAnimationTimer;
+assert.ok(cleared.includes(firstTurnTimer),'restarting the same page clears its older timer');
+assert.ok(turnClasses.has('lt-turn-back'));
+assert.ok(!turnClasses.has('lt-turn-forward'));
+// Simulate a timeout callback already queued by the WebView before cancellation.
+allCallbacks.get(firstTurnTimer)();
+assert.ok(turnClasses.has('lt-turn-back'),'stale timeout cannot remove the newer reverse animation');
+allCallbacks.get(secondTurnTimer)();
+assert.equal(turnClasses.size,0,'the current timeout eventually cleans up the animation classes');
+
 console.log('PASS: contextual meaning and page-turn production regression');
 
 assert.match(reader, /const ltFontChoices=\[/, 'font gallery choices are defined in production');
