@@ -34,19 +34,21 @@ const SFX = [
 ];
 const LICENSE = 'CC BY 4.0';
 const KEY='licensedAudioPrefs';
-const DEFAULT={track:'forest',volume:0.24,sfxVolume:0.18};
+const DEFAULT={track:'forest',volume:0.24,sfxVolume:0.18,ambienceEnabled:false,sfxEnabled:false};
 const trackIds=new Set(TRACKS.map(x=>x.id)),sfxIds=new Set(SFX.map(x=>x.id));
 const clamp=v=>Math.max(0,Math.min(1,Number.isFinite(Number(v))?Number(v):0));
 function sanitize(raw){
  const o=raw&&typeof raw==='object'&&!Array.isArray(raw)?raw:{};
  return {track:trackIds.has(o.track)?o.track:DEFAULT.track,
   volume:clamp(o.volume===undefined?DEFAULT.volume:o.volume),
-  sfxVolume:clamp(o.sfxVolume===undefined?DEFAULT.sfxVolume:o.sfxVolume)};
+  sfxVolume:clamp(o.sfxVolume===undefined?DEFAULT.sfxVolume:o.sfxVolume),
+  ambienceEnabled:o.ambienceEnabled===true,sfxEnabled:o.sfxEnabled===true};
 }
 let prefs=sanitize(typeof global.get==='function'?global.get(KEY,DEFAULT):DEFAULT);
 let player=null,playerTrack=null,playing=false,focusOwned=false,generation=0;
 const sfxPlayers=new Set();
-let playButton=null,statusNote=null,rtlUi=false;
+let playButton=null,statusNote=null,rtlUi=false,ambienceToggle=null,sfxToggle=null;
+let ambienceVolumeControl=null,sfxVolumeControl=null,sfxButtons=[];
 const doc=global.document;
 function persist(){if(typeof global.put==='function')global.put(KEY,{...prefs});}
 function proceduralPlaying(){
@@ -68,9 +70,14 @@ function releaseFocus(){
 }
 function syncUi(){
  if(playButton)playButton.textContent=playing?(rtlUi?'إيقاف مؤقت':'Pause'):(rtlUi?'تشغيل الأجواء':'Play ambience');
+ if(ambienceToggle)ambienceToggle.checked=!!prefs.ambienceEnabled;
+ if(sfxToggle)sfxToggle.checked=!!prefs.sfxEnabled;
+ if(ambienceVolumeControl)ambienceVolumeControl.value=String(prefs.volume);
+ if(sfxVolumeControl)sfxVolumeControl.value=String(prefs.sfxVolume);
+ for(const button of sfxButtons)button.disabled=!prefs.sfxEnabled;
  if(statusNote)statusNote.textContent=rtlUi
-  ?'20 أجواء مسجّلة ومرخّصة + 4 مؤثرات قصيرة؛ تعمل محليًا بعد اختيارك. CC BY 4.0.'
-  :'20 licensed recorded ambiences + 4 short effects; local playback only after your tap. CC BY 4.0.';
+  ?'20 أجواء مسجّلة ومرخّصة + 4 مؤثرات قصيرة؛ التشغيل اختياري ومحلي. CC BY 4.0.'
+  :'20 licensed recorded ambiences + 4 short effects; optional local playback. CC BY 4.0.';
 }
 function stopSfx(){
  for(const audio of sfxPlayers){try{audio.pause();audio.currentTime=0;}catch(_){}}
@@ -79,8 +86,8 @@ function stopSfx(){
 async function pause(options){
  ++generation;playing=false;
  if(player){try{player.pause();}catch(_){}}
- stopSfx();
- if(!(options&&options.keepFocus)&&!proceduralPlaying())releaseFocus();
+ if(!options||options.stopSfx!==false)stopSfx();
+ if(!(options&&options.keepFocus)&&!proceduralPlaying()&&sfxPlayers.size===0)releaseFocus();
  syncUi();
 }
 async function stopProceduralKeepingFocus(){
@@ -92,6 +99,8 @@ async function stopProceduralKeepingFocus(){
 async function playTrack(id){
  const track=TRACKS.find(x=>x.id===id);
  if(!track||doc?.hidden)return false;
+ // Calling Play is an explicit opt-in, never a startup side effect.
+ if(!prefs.ambienceEnabled){prefs.ambienceEnabled=true;persist();syncUi();}
  if(playing&&playerTrack===id&&player&&!player.paused)return true;
  const ticket=++generation;
  const pausePromise=stopProceduralKeepingFocus(); // sync pause happens before Audio.play, preserving user gesture
@@ -147,10 +156,39 @@ function selectTrack(id){
  if(playing)playTrack(id).catch(error=>{if(statusNote)statusNote.textContent=(rtlUi?'تعذر تشغيل الصوت: ':'Audio unavailable: ')+(error?.message||String(error));});
  return true;
 }
-function setVolume(value){prefs.volume=clamp(value);persist();if(player)player.volume=prefs.volume;}
+function setVolume(value){prefs.volume=clamp(value);persist();if(player)player.volume=prefs.volume;syncUi();}
+async function setAmbienceEnabled(enabled){
+ prefs.ambienceEnabled=!!enabled;persist();syncUi();
+ if(!prefs.ambienceEnabled){
+  const proceduralStop=stopProceduralKeepingFocus();
+  await pause({keepFocus:true,stopSfx:false});
+  await proceduralStop;
+  if(!proceduralPlaying()&&sfxPlayers.size===0)releaseFocus();
+  syncUi();
+ }
+ return prefs.ambienceEnabled;
+}
+function setSfxEnabled(enabled){
+ prefs.sfxEnabled=!!enabled;persist();
+ if(!prefs.sfxEnabled)stopSfx();
+ if(!playing&&!proceduralPlaying()&&sfxPlayers.size===0)releaseFocus();
+ syncUi();return prefs.sfxEnabled;
+}
+function setSfxVolume(value){
+ prefs.sfxVolume=clamp(value);persist();
+ for(const audio of sfxPlayers){try{audio.volume=prefs.sfxVolume;}catch(_){}}
+ syncUi();
+}
+async function disableAll(){
+ prefs.ambienceEnabled=false;prefs.sfxEnabled=false;persist();syncUi();
+ const proceduralStop=stopProceduralKeepingFocus();
+ await pause({keepFocus:true,stopSfx:true});await proceduralStop;
+ if(!proceduralPlaying()&&sfxPlayers.size===0)releaseFocus();
+ syncUi();return true;
+}
 async function playSfx(id){
  const sfx=SFX.find(x=>x.id===id);
- if(!sfx||doc?.hidden)return false;
+ if(!sfx||!prefs.sfxEnabled||doc?.hidden)return false;
  const anotherLoop=playing||proceduralPlaying();
  if(!anotherLoop&&!requestFocus())return false;
  const audio=new global.Audio('licensed-audio/'+sfx.file);
@@ -164,13 +202,25 @@ async function playSfx(id){
  audio.addEventListener('error',finish,{once:true});
  let promise;
  try{promise=audio.play();}catch(error){finish();throw error;}
- try{await promise;return true;}catch(error){finish();throw error;}
+ try{await promise;return prefs.sfxEnabled&&sfxPlayers.has(audio)&&!audio.paused;}catch(error){finish();throw error;}
 }
 function controls(sheet,rtl){
  rtlUi=!!rtl;
  const section=doc.createElement('section');section.className='lt-audio-settings lt-licensed-audio-settings';
  const heading=doc.createElement('h3');heading.textContent=rtl?'🎧 أجواء مسجّلة مرخّصة':'🎧 Licensed recorded ambience';section.appendChild(heading);
  statusNote=doc.createElement('p');statusNote.className='quiet';section.appendChild(statusNote);
+ function toggleControl(id,text,value,onChange){
+  const label=doc.createElement('label');label.className='lt-audio-checkbox';
+  const input=doc.createElement('input');input.type='checkbox';input.id=id;input.checked=!!value;
+  input.setAttribute('aria-label',text);input.addEventListener('change',()=>onChange(input.checked));
+  const caption=doc.createElement('span');caption.textContent=text;label.appendChild(input);label.appendChild(caption);section.appendChild(label);return input;
+ }
+ function rangeControl(id,text,value,onChange){
+  const label=doc.createElement('label');label.className='lt-audio-range';label.textContent=text;
+  const input=doc.createElement('input');input.type='range';input.id=id;input.min='0';input.max='1';input.step='0.01';input.value=String(value);
+  input.setAttribute('aria-label',text);input.addEventListener('input',()=>onChange(input.value));label.appendChild(input);section.appendChild(label);return input;
+ }
+ ambienceToggle=toggleControl('lt-ambience-enabled',rtl?'السماح بأجواء القراءة':'Enable reading ambience',prefs.ambienceEnabled,setAmbienceEnabled);
  const label=doc.createElement('label');label.className='lt-font-setting';
  const caption=doc.createElement('span');caption.textContent=rtl?'أجواء القراءة':'Reading ambience';label.appendChild(caption);
  const select=doc.createElement('select');select.setAttribute('aria-label',caption.textContent);
@@ -178,25 +228,18 @@ function controls(sheet,rtl){
  select.value=prefs.track;select.addEventListener('change',()=>selectTrack(select.value));label.appendChild(select);section.appendChild(label);
  const row=doc.createElement('div');row.className='lt-audio-buttons';
  playButton=doc.createElement('button');playButton.type='button';playButton.className='secondary';
- const update=()=>syncUi();update();
- playButton.addEventListener('click',async()=>{
-  playButton.disabled=true;
-  try{if(playing)await pause();else await playTrack(prefs.track);}
-  catch(error){if(statusNote)statusNote.textContent=(rtl?'تعذر تشغيل الصوت: ':'Audio unavailable: ')+(error?.message||String(error));}
-  finally{playButton.disabled=false;syncUi();}
- });
+ playButton.addEventListener('click',async()=>{playButton.disabled=true;try{if(playing)await pause();else await playTrack(prefs.track);}catch(error){if(statusNote)statusNote.textContent=(rtl?'تعذر تشغيل الصوت: ':'Audio unavailable: ')+(error?.message||String(error));}finally{playButton.disabled=false;syncUi();}});
  row.appendChild(playButton);section.appendChild(row);
- const volumeLabel=doc.createElement('label');volumeLabel.className='lt-audio-range';volumeLabel.textContent=rtl?'مستوى الصوت':'Ambience volume';
- const volume=doc.createElement('input');volume.type='range';volume.min='0';volume.max='1';volume.step='0.01';volume.value=String(prefs.volume);volume.setAttribute('aria-label',volumeLabel.textContent);
- volume.addEventListener('input',()=>setVolume(volume.value));volumeLabel.appendChild(volume);section.appendChild(volumeLabel);
+ ambienceVolumeControl=rangeControl('lt-ambience-volume',rtl?'مستوى صوت الأجواء':'Ambience volume',prefs.volume,setVolume);
  const sfxTitle=doc.createElement('h4');sfxTitle.textContent=rtl?'مؤثرات قصيرة (تشغيل يدوي)':'Short sound effects (tap to play)';section.appendChild(sfxTitle);
- const sfxRow=doc.createElement('div');sfxRow.className='lt-audio-buttons';
- for(const sfx of SFX){const button=doc.createElement('button');button.type='button';button.className='secondary';button.textContent=rtl?sfx.ar:sfx.en;
-  button.addEventListener('click',()=>playSfx(sfx.id).catch(error=>{if(statusNote)statusNote.textContent=(rtl?'تعذر تشغيل المؤثر: ':'Sound effect unavailable: ')+(error?.message||String(error));}));
-  sfxRow.appendChild(button);}
+ sfxToggle=toggleControl('lt-sfx-enabled',rtl?'السماح بالمؤثرات الصوتية':'Enable sound effects',prefs.sfxEnabled,setSfxEnabled);
+ sfxVolumeControl=rangeControl('lt-sfx-volume',rtl?'مستوى صوت المؤثرات':'Sound-effects volume',prefs.sfxVolume,setSfxVolume);
+ const sfxRow=doc.createElement('div');sfxRow.className='lt-audio-buttons';sfxButtons=[];
+ for(const sfx of SFX){const button=doc.createElement('button');button.type='button';button.className='secondary';button.textContent=rtl?sfx.ar:sfx.en;button.disabled=!prefs.sfxEnabled;button.setAttribute('aria-label',button.textContent);button.addEventListener('click',()=>playSfx(sfx.id).catch(error=>{if(statusNote)statusNote.textContent=(rtl?'تعذر تشغيل المؤثر: ':'Sound effect unavailable: ')+(error?.message||String(error));}));sfxButtons.push(button);sfxRow.appendChild(button);}
  section.appendChild(sfxRow);
- sheet.appendChild(section);
- return section;
+ const disableAllButton=doc.createElement('button');disableAllButton.type='button';disableAllButton.className='secondary lt-audio-disable-all';disableAllButton.id='lt-audio-disable-all';disableAllButton.textContent=rtl?'إيقاف كل الصوت':'Disable all audio';
+ disableAllButton.addEventListener('click',()=>disableAll().catch(error=>{if(statusNote)statusNote.textContent=(rtl?'تعذر إيقاف الصوت: ':'Could not stop audio: ')+(error?.message||String(error));}));
+ section.appendChild(disableAllButton);sheet.appendChild(section);syncUi();return section;
 }
 function onNativeAudioFocusLoss(){focusOwned=false;pause({keepFocus:true}).catch(()=>{});}
 if(doc&&typeof doc.addEventListener==='function'){
@@ -224,7 +267,7 @@ if(procedural&&!procedural.__licensedAudioBridge){
  procedural.__licensedAudioBridge=true;
 }
 global.LinguaLicensedAudio={
- TRACKS,SFX,LICENSE,controls,playTrack,pause,selectTrack,setVolume,playSfx,
+ TRACKS,SFX,LICENSE,controls,playTrack,pause,selectTrack,setVolume,setAmbienceEnabled,setSfxEnabled,setSfxVolume,disableAll,playSfx,
  isPlaying:()=>playing,prefs:()=>({...prefs}),onNativeAudioFocusLoss
 };
 })(window);

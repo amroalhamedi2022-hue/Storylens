@@ -2,7 +2,7 @@
 
 ## Selected assets
 
-The app packages 16 looped ambience recordings and four short sound effects from the Oculus Audio Pack 01 OGG previews, distributed by the public `facebookincubator/Meta-open-sound` repository.
+The app packages **20 looped ambience recordings and four short sound effects** from the Oculus Audio Pack 01 OGG previews, distributed by the public `facebookincubator/Meta-open-sound` repository.
 
 - **License:** Creative Commons Attribution 4.0 International (CC BY 4.0).
 - **Required attribution:** “Oculus Audio Pack 01” by Oculus VR, LLC (https://developers.meta.com/vr/downloads/package/oculus-audio-pack-1/), licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/.
@@ -30,6 +30,10 @@ The app packages 16 looped ambience recordings and four short sound effects from
 | waterfall | `waterfall.ogg` | `WATRFall_Waterfall_LOOP_01.ogg` | loop | 835097 | `903dfb081c2236de6f191549b37a9a3cf838afab` |
 | wind-birds | `wind-birds.ogg` | `WINDVege_LightWindTreesBirds_LOOP_01.ogg` | loop | 744823 | `44fc6726008fecc2be583bb515d83b1743db0573` |
 | wind-chimes | `wind-chimes.ogg` | `MUSCChim_WindChimes_LOOP_01.ogg` | loop | 403433 | `f4be8f4c50918a2e096381366b8ee98858180ce7` |
+| farm | `farm.ogg` | `AMBFarm_FarmGeneric_LOOP_01.ogg` | loop | 1763215 | `4626085b1d23ac38f0806e178cb19aef165181d2` |
+| european-city | `european-city.ogg` | `AMBUrbn_CityEuroDaytime_LOOP_01.ogg` | loop | 1558032 | `63d4d56dd1e7fc2fa158b5e67d1a11d8c13b8af5` |
+| creek-in-woods | `creek-in-woods.ogg` | `WATRFlow_CreekInWoods_LOOP_01.ogg` | loop | 1208188 | `f984fec3a818b76e435745475766ddae9a5e998f` |
+| water-lapping | `water-lapping.ogg` | `WATRLap_WaterLapping_LOOP_01.ogg` | loop | 1128762 | `85b791df8fb7fabf6f5d72bbde4c2f99e4a93c94` |
 | book-open | `book-open.ogg` | `OBJBook_BookOpen_OS_01.ogg` | oneshot | 14021 | `a1ec470cc912e568784869b5dca5e54d424f1107` |
 | page-turn | `page-turn.ogg` | `PAPRHndl_BookPageTurns_OS_01.ogg` | oneshot | 49762 | `6d1b1cc552c7e0e79006c6aaefcf5d406b13ba00` |
 | clock-tick | `clock-tick.ogg` | `CLOCKTick_ClockCreepy_OS_01.ogg` | oneshot | 69354 | `c81d98a8b1a2413bf13ff25f40be4002c6177ed9` |

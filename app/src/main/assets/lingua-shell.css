@@ -2276,3 +2276,10 @@ body.theme-stained-glass::after{display:none!important}
   animation:none!important;transition:none!important;transform:none!important
  }
 }
+
+/* LT-11: separate explicit opt-ins for ambience and one-shot effects. */
+.lt-audio-settings .lt-audio-checkbox{min-height:44px;cursor:pointer;justify-content:flex-start;padding:8px 2px}
+.lt-audio-settings .lt-audio-checkbox span{flex:1;line-height:1.45}
+.lt-audio-settings .lt-audio-checkbox input{flex:0 0 20px}
+.lt-audio-settings button:disabled{opacity:.45;cursor:not-allowed}
+.lt-audio-settings .lt-audio-disable-all{margin-top:8px;border-color:color-mix(in srgb,#d45b63 55%,transparent)}

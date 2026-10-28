@@ -14,6 +14,7 @@ const workflow=read('.github/workflows/android.yml');
 const script=read('app/src/main/assets/lingua-licensed-audio.js');
 const license=read('app/src/main/assets/LICENSE_AUDIO.txt');
 const manifest=JSON.parse(read('app/src/main/assets/licensed-audio/manifest.json'));
+const provenance=read('docs/ASSET_PROVENANCE_AUDIO.md');
 assert.ok(html.indexOf('lingua-ambience.js')<html.indexOf('lingua-licensed-audio.js'));
 assert.ok(html.indexOf('lingua-licensed-audio.js')<html.indexOf('lingua-shell.js'));
 assert.ok(shell.includes('global.LinguaLicensedAudio.controls(sheet,rtl())'));
@@ -45,6 +46,11 @@ assert.ok(!script.includes('fetch(')&&!script.includes('getUserMedia')&&!script.
 assert.ok(script.includes('new global.Audio(\'licensed-audio/'));
 assert.ok(script.includes('doc.addEventListener(\'visibilitychange\''));
 assert.ok(script.includes('keepFocus:true'));
+assert.ok(provenance.includes('20 looped ambience recordings and four short sound effects'));
+for(const item of manifest.tracks){const row='| '+item.id+' | `'+item.file+'` | `'+item.sourceFile+'` | '+item.kind+' | '+item.sizeBytes+' | `'+item.gitBlobSha1+'` |';assert.ok(provenance.includes(row),'license provenance table must contain exact pinned source metadata: '+item.id);}
+assert.ok(script.includes('lt-ambience-enabled')&&script.includes('lt-sfx-enabled'));
+assert.ok(script.includes('lt-ambience-volume')&&script.includes('lt-sfx-volume'));
+assert.ok(script.includes('lt-audio-disable-all')&&script.includes('function disableAll()'));
 const loopTracks=manifest.tracks.filter(x=>x.kind==='loop');
 const effects=manifest.tracks.filter(x=>x.kind==='oneshot');
 assert.ok(loopTracks.every(x=>script.includes(x.id)&&script.includes(x.file)));
@@ -53,6 +59,7 @@ assert.ok(effects.every(x=>script.includes(x.id)&&script.includes(x.file)));
 let focusGranted=true,focusRequests=0,focusReleases=0,proceduralPlaying=false,proceduralPauses=0,proceduralPlays=0;
 let rejectNextPlay=false;
 const instances=[];
+const persisted=[];
 class FakeAudio{
  constructor(src){this.src=src;this.loop=false;this.volume=1;this.preload='auto';this.paused=true;this.currentTime=0;this.listeners={};instances.push(this);}
  addEventListener(name,cb){(this.listeners[name]||(this.listeners[name]=[])).push(cb);}
@@ -60,10 +67,11 @@ class FakeAudio{
  pause(){this.paused=true;}
  emit(name){for(const cb of this.listeners[name]||[])cb();}
 }
-const document={hidden:false,listeners:{},createElement(){return {children:[],appendChild(x){this.children.push(x);},setAttribute(){},addEventListener(){},className:'',textContent:'',value:'',type:'',min:'',max:'',step:'',disabled:false};},addEventListener(name,cb){this.listeners[name]=cb;}};
+class FakeElement{constructor(tag){this.tag=tag;this.children=[];this.listeners={};this.attributes={};this.className='';this.textContent='';this.value='';this.type='';this.id='';this.min='';this.max='';this.step='';this.disabled=false;this.checked=false;}appendChild(child){this.children.push(child);return child;}setAttribute(name,value){this.attributes[name]=String(value);}addEventListener(name,callback){(this.listeners[name]||(this.listeners[name]=[])).push(callback);}fire(name){for(const callback of this.listeners[name]||[])callback({target:this});}}
+const document={hidden:false,listeners:{},createElement(tag){return new FakeElement(tag);},addEventListener(name,cb){this.listeners[name]=cb;}};
 const window={
  Audio:FakeAudio,document,listeners:{},addEventListener(name,cb){this.listeners[name]=cb;},
- get(key,def){return key==='licensedAudioPrefs'?{track:'forest',volume:0.24,sfxVolume:0.18}:def;},put(){},
+ get(key,def){return key==='licensedAudioPrefs'?{track:'forest',volume:0.24,sfxVolume:0.18}:def;},put(key,value){persisted.push([key,value]);},
  LinguaTalesAudioFocus:{requestFocus(){focusRequests++;return focusGranted;},releaseFocus(){focusReleases++;}},
  LinguaAmbience:{
   isPlaying(){return proceduralPlaying;},
@@ -79,10 +87,24 @@ const audio=window.LinguaLicensedAudio;
  assert.equal(audio.TRACKS.length,20);
  assert.equal(audio.SFX.length,4);
  assert.equal(audio.isPlaying(),false);
+ assert.equal(audio.prefs().ambienceEnabled,false,'legacy preferences default to silent ambience');
+ assert.equal(audio.prefs().sfxEnabled,false,'legacy preferences default to silent SFX');
+ const mutedBefore=instances.length;assert.equal(await audio.playSfx('page-turn'),false,'SFX cannot play until explicitly enabled');assert.equal(instances.length,mutedBefore,'disabled SFX creates no Audio instance');
+ const controlsRoot=new FakeElement('section');audio.controls(controlsRoot,false);
+ function findNode(node,predicate){if(predicate(node))return node;for(const child of node.children||[]){const found=findNode(child,predicate);if(found)return found;}return null;}
+ const ambienceToggle=findNode(controlsRoot,node=>node.id==='lt-ambience-enabled'),sfxToggle=findNode(controlsRoot,node=>node.id==='lt-sfx-enabled');
+ const ambienceSlider=findNode(controlsRoot,node=>node.id==='lt-ambience-volume'),sfxSlider=findNode(controlsRoot,node=>node.id==='lt-sfx-volume'),disableAllButton=findNode(controlsRoot,node=>node.id==='lt-audio-disable-all');
+ assert.ok(ambienceToggle&&sfxToggle&&ambienceSlider&&sfxSlider&&disableAllButton,'Settings exposes two switches, two sliders and disable-all');
+ assert.equal(ambienceToggle.checked,false);assert.equal(sfxToggle.checked,false);assert.equal(ambienceSlider.value,'0.24');assert.equal(sfxSlider.value,'0.18');
+ assert.equal(findNode(controlsRoot,node=>node.textContent==='Page turns').disabled,true,'SFX buttons stay disabled until opted in');
+ ambienceToggle.checked=true;ambienceToggle.fire('change');await new Promise(resolve=>setImmediate(resolve));assert.equal(audio.prefs().ambienceEnabled,true);assert.equal(instances.length,mutedBefore,'enabling ambience never autoplays');
+ ambienceToggle.checked=false;ambienceToggle.fire('change');await new Promise(resolve=>setImmediate(resolve));assert.equal(audio.prefs().ambienceEnabled,false,'turning off ambience stops its engine');
+ sfxToggle.checked=true;sfxToggle.fire('change');assert.equal(audio.prefs().sfxEnabled,true);assert.equal(findNode(controlsRoot,node=>node.textContent==='Page turns').disabled,false,'SFX controls enable only after opt-in');
+ assert.ok(persisted.some(x=>x[0]==='licensedAudioPrefs'&&x[1].sfxEnabled===true),'audio opt-in persists locally');
  assert.equal(audio.selectTrack('missing'),false);
  assert.equal(audio.selectTrack('ocean-waves'),true);
- audio.setVolume(2);assert.equal(audio.prefs().volume,1,'volume is clamped');
- audio.setVolume(0.24);
+ audio.setVolume(2);assert.equal(audio.prefs().volume,1,'ambience volume is clamped');audio.setVolume(0.24);
+ audio.setSfxVolume(2);assert.equal(audio.prefs().sfxVolume,1,'SFX volume is clamped');audio.setSfxVolume(0.18);
  proceduralPlaying=true;
  assert.equal(await audio.playTrack('forest'),true);
  assert.ok(proceduralPauses>0,'licensed playback pauses the procedural engine without dropping focus first');
@@ -125,12 +147,18 @@ const audio=window.LinguaLicensedAudio;
  await audio.pause();
 
  const beforeSfx=instances.length;
+ audio.setSfxVolume(0.4);
  assert.equal(await audio.playSfx('page-turn'),true);
  assert.equal(instances.length,beforeSfx+1);
  assert.equal(instances.at(-1).loop,false,'short effects never loop');
  assert.ok(instances.at(-1).src.endsWith('licensed-audio/page-turn.ogg'));
+ assert.equal(instances.at(-1).volume,0.4);
+ audio.setSfxVolume(0.33);assert.equal(instances.at(-1).volume,0.33,'SFX slider updates active one-shots');
  instances.at(-1).emit('ended');
  assert.ok(focusReleases>=2,'one-shot effect releases focus after it ends when no ambience is playing');
+ sfxToggle.checked=false;sfxToggle.fire('change');assert.equal(audio.prefs().sfxEnabled,false);
+ const afterSfxOff=instances.length;assert.equal(await audio.playSfx('page-turn'),false,'turning SFX off blocks new one-shots');assert.equal(instances.length,afterSfxOff);
+ sfxToggle.checked=true;sfxToggle.fire('change');
  focusGranted=false;
  const beforeDenied=instances.length;
  assert.equal(await audio.playTrack('night-forest'),false);
@@ -157,5 +185,8 @@ const audio=window.LinguaLicensedAudio;
  assert.equal(await audio.playTrack('forest'),true,'licensed playback can resume after focus is reacquired');
  assert.equal(focusRequests,focusBeforeLoss+1,'focus loss must invalidate the licensed module ownership bit');
  await audio.pause();
- console.log('PASS LT-11: 20 pinned CC-BY ambience loops + 4 licensed one-shot effects, retry-safe player errors, focus denial/loss, lifecycle and exclusive playback.');
+ await window.LinguaAmbience.play();assert.equal(proceduralPlaying,true);
+ assert.equal(await audio.disableAll(),true);assert.equal(audio.prefs().ambienceEnabled,false);assert.equal(audio.prefs().sfxEnabled,false);assert.equal(audio.isPlaying(),false);assert.equal(proceduralPlaying,false,'disable-all also stops the procedural ambience engine');
+ assert.equal(ambienceToggle.checked,false);assert.equal(sfxToggle.checked,false);assert.equal(findNode(controlsRoot,node=>node.textContent==='Page turns').disabled,true);
+ console.log('PASS LT-11: 20 pinned CC-BY ambience loops + 4 licensed one-shot effects, independent opt-in switches/volumes, disable-all, retry-safe player errors, focus and lifecycle.');
 })().catch(error=>{console.error(error);process.exitCode=1});
