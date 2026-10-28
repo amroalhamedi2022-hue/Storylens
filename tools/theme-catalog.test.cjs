@@ -47,7 +47,7 @@ const stainedGlass = shellCss.slice(shellCss.indexOf('/* LT-13 — Stained Glass
 assert.ok(stainedGlass.includes('conic-gradient('), 'Stained Glass needs a distinct jewel-pane visual language');
 assert.ok(stainedGlass.includes('border-radius:92px 92px 18px 18px'), 'Stained Glass needs its own arched library header');
 assert.ok(stainedGlass.includes('repeating-linear-gradient(135deg'), 'Stained Glass needs a distinct leadwork reading surface');
-assert.ok(!/https?:\\/\\//.test(stainedGlass), 'Stained Glass must work offline');
-assert.ok(!/\\banimation\\s*:\\s*[^;]*infinite/i.test(stainedGlass), 'Stained Glass must not add infinite repaint work');
+assert.ok(!/https?:\/\//.test(stainedGlass), 'Stained Glass must work offline');
+assert.ok(!/\banimation\s*:\s*[^;]*infinite/i.test(stainedGlass), 'Stained Glass must not add infinite repaint work');
 assert.match(shellCss, /@media\(prefers-reduced-motion:reduce\)\{\s*\.theme-reform-club-brass\b/, 'Reform Club Brass must retain a reduced-motion fallback');
 console.log('PASS theme catalog: ' + names.length + ' selectable themes have labels, production body styles and backup allowlist; routed themes have swatches and reduced-motion fallbacks.');
