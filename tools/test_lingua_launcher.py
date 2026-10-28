@@ -56,4 +56,8 @@ assert '>STORYLENS</div>' not in html
 assert "storylens_" in html, "legacy localStorage keys must not be renamed"
 gradle = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
 assert 'applicationId = "com.storylens.reader"' in gradle, "upgrade identity must be preserved"
-print("PASS Lingua Tales LT-01/04: XML adaptive layers, brand, offline manifest and storage identity")
+i18n = (ROOT / "app/src/main/assets/lingua-i18n.js").read_text(encoding="utf-8")
+assert "const metrics = find('.storylens-hero .hero-metrics');" in i18n
+assert "if (metrics) metrics.remove();" in i18n
+assert "each('.storylens-hero .hero-metrics span'" not in i18n, "stale hard-coded marketing counters must not return"
+print("PASS Lingua Tales LT-01/04/05: adaptive icon, brand, offline identity and content-first hero")
