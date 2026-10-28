@@ -21,14 +21,16 @@ let contextHandler = null, keyboardHandler = null;
 const footer = {insertAdjacentElement(position, panel) {assert.equal(position, 'beforebegin'); readerPanels.push(panel.innerHTML);}};
 const sheet = {querySelector(selector) {return selector === 'footer' ? footer : null;}, appendChild(panel) {readerPanels.push(panel.innerHTML);}};
 const sentence = {
- textContent: 'First sentence.', dataset: {i: '0'},
+ textContent: 'First sentence.', dataset: {i: '0'}, style:{},
+ matches(){return false;}, closest(){return null;},
  setAttribute(name, value) {sentenceAttributes[name] = value; if (name === 'tabindex') accessibleSentences++; if (name === 'aria-label') throw new Error('aria-label must not mask the English sentence'); if (name === 'aria-description') sentenceDescriptions.push(value);},
  addEventListener(name, handler) {if (name === 'contextmenu') {contextMenuHandlers++; contextHandler = handler;} if (name === 'keydown') keyboardHandler = handler;}, 
  insertAdjacentElement(position, node) {assert.equal(position, 'afterend'); translations.push(node); this.nextElementSibling = node;}, 
  nextElementSibling: null
 };
 const document = {
- documentElement: {lang: 'ar'},
+ documentElement: {lang: 'ar',style:{setProperty(){}}},
+ body:{dataset:{},classList:{toggle(){}}},
  querySelector(selector) {
   if (selector === '#modals .sheet') return sheet;
   if (selector === '.reader-label') return {appendChild() {}};
@@ -36,9 +38,16 @@ const document = {
   if (selector === '.arabic-page') return {setAttribute(k,v) {pageAttributes[k]=v;}};
   return null; // No library view while testing reader navigation.
  },
- querySelectorAll(selector) {return selector === '.reader .sentence' ? [sentence] :
+ querySelectorAll(selector) {return selector.includes('.reader .sentence') ? [sentence] :
    selector === '.reader .inline-ar' ? [{setAttribute(k,v) {arabicAttributes[k]=v;}}] : [];},
- createElement() {return {attributes:{},setAttribute(k,v) {this.attributes[k]=v;}, textContent: '',className:'', get classList(){return {contains:cls=>this.className.split(' ').includes(cls)};}, remove(){sentence.nextElementSibling=null;}};}
+ createElement() {
+  return {attributes:{},dataset:{},style:{},children:[],setAttribute(k,v) {this.attributes[k]=v;},
+   addEventListener(){},appendChild(child){this.children.push(child);return child;},
+   querySelectorAll(){return [];},querySelector(){return null;},
+   textContent:'',className:'',innerHTML:'',
+   get classList(){return {contains:cls=>this.className.split(' ').includes(cls),toggle(){}};},
+   remove(){sentence.nextElementSibling=null;}};
+ }
 };
 const state = {story, page: 'reader', chapter: 0, toolbar: true};
 const sandbox = {
