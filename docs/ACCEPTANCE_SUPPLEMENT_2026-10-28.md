@@ -99,3 +99,13 @@
 - **PASS — direct V8 production smoke:** the exact helper returned “سكان / قاطنو” for the Chapter XXXV-style English source excerpt and retained “ينطلق في رحلة” for an explicitly Arabic-authored context.
 - **CI: NOT VERIFIED** for the exact functional head c8ca2ffb5af66655de91dd2ec23ec18cbac958d8. The workflow-run/status connector has not yet returned a run/check for this head; the prior CI is not evidence for this correction. No new APK is claimed.
 - **NOT TESTED:** full Node/Chromium CI, WebView dictionary-sheet visual QA, independent Arabic literary proofreading, physical Xiaomi Pad 5 and territory-specific redistribution review. LT-01..LT-13 remain IN PROGRESS; no main write or merge.
+
+
+## 2026-10-28 — Ambiguous contextual dictionary senses now abstain (source smoke PASS; exact-head CI NOT VERIFIED)
+
+- **Production:** the Arabic sentence-overlap resolver now deduplicates repeated words within each candidate gloss and ranks by distinct overlap. If two different senses have the same best score and the same amount of evidence, it returns the existing honest “no verified single-word meaning” fallback instead of choosing whichever sense appears first. A later candidate with stronger evidence can still win; duplicate copies of the same gloss do not create a false ambiguity.
+- **Regression:** `tools/contextual-page-turn.test.cjs` covers an ordinary supported riverbank sense, explicitly authored Arabic context, English source excerpts that must not be labelled Arabic meaning, equally supported competing senses, duplicate glosses, and unsupported senses.
+- **PASS — direct production V8 smoke:** compiled the complete `reader-experience.js` source for syntax and executed the actual extracted `contextualMeaning` helper. All 6 targeted cases passed, including ambiguity abstention and duplicate-gloss handling. This does not substitute for the full Node/Chromium workflow.
+- **Functional commits:** resolver `53d5ea280603f51361b3b4b98484c1d522a16ead`; focused regression `e551c1c05b38aad5ac1e8aab16ab283a921d729e`. The Android workflow includes `node tools/contextual-page-turn.test.cjs`.
+- **CI: NOT VERIFIED for this exact head.** The connected status lookup returned no pull-request run for the new commits; the last confirmed run `40640774324` predates this change. No APK or CI pass is claimed for this fix.
+- **NOT TESTED:** dictionary-sheet rendering on WebView/Xiaomi Pad 5, independent Arabic editorial review, physical RTL/TalkBack and overall LT-01..LT-13 acceptance. No source story text or translations were altered; no main write or merge.
