@@ -1398,3 +1398,12 @@ The build question was whether Chapter XXXIV and its new theme survive Android a
 - APK artifact [12796045904](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40640774324/artifacts/12796045904) independently verified at 25,743,251 bytes, SHA-256 `4e6f20c0c33b86839058972c77cbd4c72a56a53be2e9cac6aa5d24c202c8df25`.
 - **NOT TESTED:** physical Xiaomi Pad 5/WebView performance, RTL/TalkBack, independent Arabic literary review and territory-specific redistribution rights. Debug is not final; no main write or merge.
 
+
+
+## 2026-10-28 — Page-swipe endpoint safety (CI NOT VERIFIED; device NOT TESTED)
+
+- **Production:** a page-turn gesture now checks both its starting surface and the element under the ending touch coordinates. A swipe that starts in ordinary text but finishes on a button/link/form/accessibility control is rejected rather than activating page navigation.
+- **Regression:** the committed production-helper test covers reading-surface gestures, selected text, controls at either endpoint, nested text targets and null-safe targets; it also asserts the touchend path resolves the ending element through `document.elementFromPoint`.
+- **Source commit:** `8138f7b7b94d2b61a7dfd4691150af1d86be378f`; test commit `949d25b42349723bfdd77fd637b4fb97f4a90f52`.
+- **CI:** NOT VERIFIED for this exact source/test head. The connected commit-run lookup returned no workflow rows; no Android/Chromium PASS or new APK is inferred. The existing workflow is expected to run Node regressions, Gradle, packaged-resource checks and Chromium reader journeys on the updated PR.
+- **NOT TESTED:** physical Xiaomi Pad 5 swipe/control interaction, RTL feel, TalkBack and frame pacing. LT-01..LT-13 remain IN PROGRESS; no final APK claim.
