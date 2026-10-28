@@ -132,6 +132,9 @@ function pageSwipeAllowed(target,selectionText=''){
  if(!element||typeof element.closest!=='function')return true;
  return !element.closest('button,a,input,textarea,select,summary,[role="button"],[contenteditable="true"]');
 }
+function pageSwipeGestureAllowed(startTarget,endTarget,selectionText=''){
+ return pageSwipeAllowed(startTarget,selectionText)&&pageSwipeAllowed(endTarget,selectionText);
+}
 function installPageTurn(){
  const reader=document.querySelector('.reader');
  const width=reader?.querySelector('.reading-width');
@@ -219,7 +222,12 @@ function installPageTurn(){
   const dx=event.changedTouches[0].clientX-startX;
   const dy=event.changedTouches[0].clientY-startY;
   const selected=window.getSelection?.()?.toString()||'';
-  const allowed=pageSwipeAllowed(startTarget,selected);
+  // The gesture must start and finish on reading surfaces; crossing onto a
+  // control must not turn a button tap into a page change.
+  const endTarget=document.elementFromPoint?.(
+   event.changedTouches[0].clientX,event.changedTouches[0].clientY
+  )||event.target;
+  const allowed=pageSwipeGestureAllowed(startTarget,endTarget,selected);
   resetTouch();
   if(!allowed||Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.25)return;
   const rtl=document.documentElement.dir==='rtl';
