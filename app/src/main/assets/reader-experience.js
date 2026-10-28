@@ -21,7 +21,10 @@ const ltFontChoices=[
  {id:'rounded',labelAr:'مستدير وودود',labelEn:'Rounded friendly',ar:'"Noto Sans Arabic", "Arial Rounded MT Bold", sans-serif',en:'"Trebuchet MS", Arial, sans-serif'},
  {id:'humanist',labelAr:'إنساني مريح',labelEn:'Humanist',ar:'"Noto Sans Arabic", sans-serif',en:'"Trebuchet MS", "Gill Sans", sans-serif'},
  {id:'classic',labelAr:'كلاسيكي مطبوع',labelEn:'Classic print',ar:'"Noto Naskh Arabic", serif',en:'"Times New Roman", Georgia, serif'},
- {id:'mono',labelAr:'أحادي المسافة',labelEn:'Monospace',ar:'monospace',en:'ui-monospace, monospace'}
+ {id:'mono',labelAr:'أحادي المسافة',labelEn:'Monospace',ar:'monospace',en:'ui-monospace, monospace'},
+ {id:'handwritten',labelAr:'كتابة يد ناعمة',labelEn:'Soft handwriting',ar:'"Aref Ruqaa Ink", "Aref Ruqaa", "Segoe Print", cursive',en:'"Segoe Print", "Bradley Hand", "Comic Sans MS", cursive'},
+ {id:'casual-hand',labelAr:'كتابة يدوية مرحة',labelEn:'Casual handwritten',ar:'"Aref Ruqaa", "Noto Naskh Arabic", cursive',en:'"Comic Sans MS", "Chalkboard", "Trebuchet MS", cursive'},
+ {id:'calligraphy',labelAr:'خط عربي انسيابي',labelEn:'Flowing calligraphy',ar:'"Aref Ruqaa Ink", "Aref Ruqaa", "Noto Naskh Arabic", cursive',en:'"Bradley Hand", "Segoe Print", cursive'}
 ];
 function ltApplyFonts(){
  const choice=ltFontChoices.find(item=>item.id===get('lt_font_choice','system'))||ltFontChoices[0];
