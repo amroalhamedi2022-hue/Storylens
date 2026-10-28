@@ -41,14 +41,14 @@ for(const story of all){
  }
  if(stories.includes(story))assert.ok(story.terms.length>=6,'context terms: '+story.id);
 }
-assert.equal(all.length,38,'the original 37 story entries plus the lightweight full-length classic placeholder remain discoverable');
+assert.equal(all.length,44,'24 core entries plus the lazy classic, eighteen editorial stories and one novella remain discoverable');
 const lazyClassic=all.filter(story=>story.id==='around-the-world-in-eighty-days-towle');
 assert.equal(lazyClassic.length,1,'the long classic placeholder is registered exactly once');
 assert.equal(lazyClassic[0].lazyBook,true,'the classic remains a lazy entry in the startup catalog');
 assert.equal(lazyClassic[0].totalChapters,37,'the classic advertises its full chapter count without eager payload');
 assert.equal(lazyClassic[0].chapters.length,0,'the full-length chapter payload stays deferred until open');
-for(const [genre,count] of genres)assert.equal(count,genre==='historical'?8:6,genre+' retains its original collection plus the historical classic');
-assert.ok(paragraphs>=640 && chapters>=90,'original core and all eighteen editorial stories retained');
+for(const [genre,count] of genres)assert.equal(count,genre==='historical'?9:7,genre+' count includes the current core, editorial batches and historical classic');
+assert.ok(paragraphs>=640 && chapters>=90,'original core, eighteen editorial stories and the novella retained');
 assert.equal(artCount,29,'24 original editorial scenes plus five novella scenes rendered');
 assert.ok(html.includes('catalog.stories.push(...window.StoryLensEditorialStories)'),'stories registered before library render');
 assert.ok(html.includes('Object.assign(art,window.StoryLensMakeEditorialArt'),'art registered');
