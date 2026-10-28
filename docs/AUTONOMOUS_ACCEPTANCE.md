@@ -1,11 +1,12 @@
 <!-- Latest dated evidence: docs/ACCEPTANCE_SUPPLEMENT_2026-10-28.md; preserve the historical acceptance ledger below. -->
 
-## Latest source checkpoint — 2026-10-28 (Chapter XXXIV glossary)
+## Latest source checkpoint — 2026-10-28 (page turn + contextual glossary)
 
-- **PASS source change:** corrected the context-specific Arabic gloss for `fatal` to `كارثيّ / ضربة قاصمة`; English literature and Arabic paragraph text remain unchanged.
-- **Regression added:** Chapter XXXIV is covered by `tools/verne-towle-ch33.test.cjs`, including the exact contextual gloss.
-- **CI: NOT VERIFIED** on current head `b4f636accdb8fe91f7a0ef5635d64e9afcdb2e87`; last confirmed CI `40667188476` predates this change. No new APK claimed.
-- **NOT TESTED:** independent Arabic literary proofreading, territory-specific rights, physical Pad 5 install/performance/accessibility and stable update signing.
+- **PASS source change:** reader page turns now use a 42-degree 3D paper-edge motion, direction-aware LTR/RTL pivots and a lightweight shade overlay; reduced-motion disables both animations.
+- **PASS source change:** Chapter XXXIV `fatal` glossary gloss corrected to `كارثيّ / ضربة قاصمة`; English source and bilingual paragraphs unchanged.
+- **PASS direct source contract:** eight focused page-turn CSS checks; Chapter XXXIV script executes with 22 aligned bilingual paragraphs and 972 English words.
+- **CI: NOT VERIFIED** for current functional head `262415c82ac3753c793bc919819fe075c8b8fa6d`; last confirmed run `40667188476` predates these changes. No new APK claimed.
+- **NOT TESTED:** WebView/device animation timing, physical Pad 5 performance/accessibility, independent Arabic literary proofreading, territory-specific rights and stable update signing.
 
 
 ## Latest verified checkpoint — 2026-10-28 (page-turn bookmark continuity)
