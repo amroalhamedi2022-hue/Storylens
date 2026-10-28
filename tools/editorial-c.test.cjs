@@ -55,8 +55,8 @@ function validateCollection(collection,{chaptersPerStory,paragraphsPerChapter,la
     assert.ok(svg.includes(story.title),'scene includes the story identity');
     assert.ok(svg.includes('LINGUA TALES · ORIGINAL SCENE'),'scene carries accessible local-art provenance');
    }
-   assert.doesNotMatch(svg,/<(?:image|use)\\b[^>]*href=[\"']https?:/i,'no remote image dependency');
-   assert.doesNotMatch(svg,/@import\\s+url\\([\"']?https?:/i,'no remote font/style dependency');
+   assert.doesNotMatch(svg,/<(?:image|use)\b[^>]*href=["']https?:/i,'no remote image dependency');
+   assert.doesNotMatch(svg,/@import\s+url\(["']?https?:/i,'no remote font/style dependency');
    illustrations++;
   }
   annotations+=story.terms.length;
