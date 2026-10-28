@@ -166,6 +166,23 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
  assert.equal(interrupted.story.chapters.length,37,'a later deliberate retry completes the book without duplicating the in-flight chapter');
  assert.equal(interrupted.catalogStory.chapters.length,37,'retry publishes all chapters after successful validation');
 
+ // Cancel and immediately reopen while the first local script is still in flight.
+ // The new generation should share that one request, while the old generation rejects.
+ const overlap=makeHarness({deferAsset:'classic-verne-towle-ch01.js'});
+ overlap.window.openStory('around-the-world-in-eighty-days-towle');
+ const staleOverlapLoad=overlap.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ overlap.window.LinguaContentLoader.cancel();
+ overlap.window.openStory('around-the-world-in-eighty-days-towle');
+ const currentOverlapLoad=overlap.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ assert.deepEqual(overlap.attempted,['classic-verne-towle-ch01.js'],'immediate reopen reuses the in-flight local asset instead of injecting a duplicate script');
+ overlap.completeDeferredAsset();
+ await assert.rejects(staleOverlapLoad,/cancelled/i,'the superseded generation cannot publish the book');
+ await currentOverlapLoad;
+ await tick();
+ assert.equal(overlap.story.chapters.length,37,'the active generation completes after sharing the first script');
+ assert.equal(overlap.catalogStory.chapters.length,37,'only the active generation publishes the verified catalog');
+ assert.equal(new Set(overlap.attempted).size,overlap.attempted.length,'a cancel/reopen race never requests a local asset twice');
+
  const retry=makeHarness({failOnce:'classic-verne-towle-ch05.js'});
  retry.window.openStory('around-the-world-in-eighty-days-towle');
  await assert.rejects(retry.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle'));
