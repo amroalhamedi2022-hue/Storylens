@@ -139,3 +139,11 @@ body.theme-liquid-27 {
 .lt-theme-editor-actions button{flex:1 1 140px}
 .lt-themes-restore{width:100%;margin-block:7px}
 @media(prefers-reduced-motion:reduce){.theme-liquid-27 *{animation:none!important;transition:none!important}}
+
+/* Avoid displaying two full music sections in the same settings sheet. */
+.lt-generated-audio-extras{margin:13px 0;border:1px solid #ffffff46;border-radius:16px;
+ padding:9px 13px;background:#ffffff0c}
+.lt-generated-audio-extras summary{font-size:14px;font-weight:700;cursor:pointer;
+ padding:9px 4px;list-style-position:inside}
+.lt-generated-audio-extras:not([open])>.lt-audio-settings{display:none!important}
+.lt-generated-audio-extras[open]>.lt-audio-settings{margin-top:12px}
