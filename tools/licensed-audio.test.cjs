@@ -92,6 +92,8 @@ const audio=window.LinguaLicensedAudio;
  const mutedBefore=instances.length;assert.equal(await audio.playSfx('page-turn'),false,'SFX cannot play until explicitly enabled');assert.equal(instances.length,mutedBefore,'disabled SFX creates no Audio instance');
  const controlsRoot=new FakeElement('section');audio.controls(controlsRoot,false);
  function findNode(node,predicate){if(predicate(node))return node;for(const child of node.children||[]){const found=findNode(child,predicate);if(found)return found;}return null;}
+ const audioStatus=findNode(controlsRoot,node=>node.tag==='p'&&node.className==='quiet');
+ assert.ok(audioStatus,'audio controls expose a status for playback diagnostics');
  const ambienceToggle=findNode(controlsRoot,node=>node.id==='lt-ambience-enabled'),sfxToggle=findNode(controlsRoot,node=>node.id==='lt-sfx-enabled');
  const ambienceSlider=findNode(controlsRoot,node=>node.id==='lt-ambience-volume'),sfxSlider=findNode(controlsRoot,node=>node.id==='lt-sfx-volume'),disableAllButton=findNode(controlsRoot,node=>node.id==='lt-audio-disable-all');
  assert.ok(ambienceToggle&&sfxToggle&&ambienceSlider&&sfxSlider&&disableAllButton,'Settings exposes two switches, two sliders and disable-all');
@@ -123,6 +125,10 @@ const audio=window.LinguaLicensedAudio;
  const beforeRejectedPlay=instances.length;
  await assert.rejects(()=>audio.playTrack('lake-shore'),/synthetic decode failure/);
  assert.equal(audio.isPlaying(),false);
+ assert.match(audioStatus.textContent,/synthetic decode failure|Error/i,'failed playback remains visible after UI refresh');
+ audio.setVolume(.31);
+ assert.match(audioStatus.textContent,/synthetic decode failure|Error/i,'slider refresh cannot hide decoder failure');
+ audio.setVolume(.24);
  assert.equal(instances.length,beforeRejectedPlay+1);
  const failedPlayInstance=instances.at(-1);
  const beforeRetry=instances.length;
@@ -133,8 +139,10 @@ const audio=window.LinguaLicensedAudio;
  // A later media error must also evict a cached element even when its original
  // playback ticket is stale; an error from a replaced element must be ignored.
  const failedEventInstance=instances.at(-1);
+ failedEventInstance.error={code:3};
  failedEventInstance.emit('error');
  assert.equal(audio.isPlaying(),false,'current media error must stop active playback');
+ assert.match(audioStatus.textContent,/decoding failed|code 3/i,'native media error code is shown instead of silently wiped');
  const beforeErrorRetry=instances.length;
  assert.equal(await audio.playTrack('lake-shore'),true);
  assert.equal(instances.length,beforeErrorRetry+1,'media error must discard cached Audio element');
@@ -144,6 +152,12 @@ const audio=window.LinguaLicensedAudio;
  staleInstance.emit('error');
  assert.equal(audio.isPlaying(),true,'late error from replaced player must not stop current ambience');
  assert.equal(instances.at(-1),activeAfterSwitch);
+ activeAfterSwitch.paused=true;
+ activeAfterSwitch.emit('pause');
+ assert.equal(audio.isPlaying(),false,'unexpected Chromium pause reconciles UI with actual audio state');
+ assert.match(audioStatus.textContent,/unexpectedly interrupted/i,'unexpected pause is explained visibly');
+ assert.equal(await audio.playTrack('forest'),true,'paused player is retryable');
+ assert.match(audioStatus.textContent,/licensed recorded ambiences/i,'successful retry clears the diagnostic');
  await audio.pause();
 
  const beforeSfx=instances.length;

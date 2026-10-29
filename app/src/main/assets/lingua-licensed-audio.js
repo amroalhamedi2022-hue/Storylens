@@ -48,6 +48,7 @@ let prefs=sanitize(typeof global.get==='function'?global.get(KEY,DEFAULT):DEFAUL
 let player=null,playerTrack=null,playing=false,focusOwned=false,generation=0;
 const sfxPlayers=new Set();
 let playButton=null,statusNote=null,rtlUi=false,ambienceToggle=null,sfxToggle=null;
+let playbackIssue=null; // Persistent visible failure until the next successful play.
 let ambienceVolumeControl=null,sfxVolumeControl=null,sfxButtons=[];
 const doc=global.document;
 function persist(){if(typeof global.put==='function')global.put(KEY,{...prefs});}
@@ -68,6 +69,27 @@ function releaseFocus(){
  if(!bridge||typeof bridge.releaseFocus!=='function')return;
  try{bridge.releaseFocus();}catch(_){}
 }
+function mediaFailure(code){
+ const names={1:'aborted',2:'offline audio load failed',3:'audio decoding failed',4:'unsupported audio format'};
+ const detail=names[code]||'unknown media error';
+ playbackIssue=rtlUi
+  ?'تعذّر تشغيل التسجيل المحلي (الرمز '+(code||0)+'). قد يكون السبب تنسيق الصوت أو WebView. حاول مجددًا، وأرسل رمز الخطأ للتشخيص.'
+  :'Local recording stopped ('+detail+', code '+(code||0)+'). Retry or share this code for diagnosis.';
+ syncUi();
+}
+function playFailure(error){
+ const detail=String(error?.name||error?.message||'playback unavailable').slice(0,100);
+ playbackIssue=rtlUi
+  ?'تعذّر تشغيل الصوت ('+detail+'). تحقق من الصوت أو حدّث Android System WebView ثم أعد المحاولة.'
+  :'Audio playback unavailable ('+detail+'). Check media volume or Android System WebView, then retry.';
+ syncUi();
+}
+function interruptedPlayback(){
+ playbackIssue=rtlUi
+  ?'توقف الصوت بشكل غير متوقع. افحص صوت الوسائط وأرسل هذه الرسالة إذا تكرر العطل.'
+  :'Playback was unexpectedly interrupted. Check media volume and report if this repeats.';
+ syncUi();
+}
 function syncUi(){
  if(playButton)playButton.textContent=playing?(rtlUi?'إيقاف مؤقت':'Pause'):(rtlUi?'تشغيل الأجواء':'Play ambience');
  if(ambienceToggle)ambienceToggle.checked=!!prefs.ambienceEnabled;
@@ -75,9 +97,9 @@ function syncUi(){
  if(ambienceVolumeControl)ambienceVolumeControl.value=String(prefs.volume);
  if(sfxVolumeControl)sfxVolumeControl.value=String(prefs.sfxVolume);
  for(const button of sfxButtons)button.disabled=!prefs.sfxEnabled;
- if(statusNote)statusNote.textContent=rtlUi
+ if(statusNote)statusNote.textContent=playbackIssue||(rtlUi
   ?'20 أجواء مسجّلة ومرخّصة + 4 مؤثرات قصيرة؛ التشغيل اختياري ومحلي. CC BY 4.0.'
-  :'20 licensed recorded ambiences + 4 short effects; optional local playback. CC BY 4.0.';
+  :'20 licensed recorded ambiences + 4 short effects; optional local playback. CC BY 4.0.');
 }
 function stopSfx(){
  for(const audio of sfxPlayers){try{audio.pause();audio.currentTime=0;}catch(_){}}
@@ -104,9 +126,9 @@ async function playTrack(id){
  if(playing&&playerTrack===id&&player&&!player.paused)return true;
  const ticket=++generation;
  const pausePromise=stopProceduralKeepingFocus(); // sync pause happens before Audio.play, preserving user gesture
- if(!requestFocus()){await pausePromise;releaseFocus();return false;}
+ if(!requestFocus()){await pausePromise;releaseFocus();playFailure({name:'AudioFocusUnavailable'});return false;}
  if(playerTrack!==id||!player){
-  if(player){try{player.pause();player.currentTime=0;}catch(_){}}
+  if(player){playing=false;try{player.pause();player.currentTime=0;}catch(_){}}
   const createdPlayer=new global.Audio('licensed-audio/'+track.file);
   player=createdPlayer;
   playerTrack=id;createdPlayer.preload='none';createdPlayer.loop=true;
@@ -115,10 +137,17 @@ async function playTrack(id){
   // one-shot ticket, and evict failed elements so the next tap gets a fresh one.
   createdPlayer.addEventListener('error',()=>{
    if(player!==createdPlayer)return;
-   playing=false;
+   ++generation;playing=false; // invalidate a pending play() resolution
    try{createdPlayer.pause();createdPlayer.currentTime=0;}catch(_){}
    player=null;playerTrack=null;
-   releaseFocus();syncUi();
+   releaseFocus();mediaFailure(createdPlayer.error?.code||0);
+  });
+  // Chromium may pause media because of platform focus changes or decoder
+  // failures without rejecting the already-resolved play() promise.
+  createdPlayer.addEventListener('pause',()=>{
+   if(player!==createdPlayer||!playing)return;
+   ++generation;playing=false;
+   releaseFocus();interruptedPlayback();
   });
  }
  const active=player;
@@ -129,7 +158,7 @@ async function playTrack(id){
    playing=false;
    try{active.pause();active.currentTime=0;}catch(_){}
    if(player===active){player=null;playerTrack=null;}
-   releaseFocus();syncUi();
+   releaseFocus();playFailure(error);
   }
   throw error;
  }
@@ -139,7 +168,7 @@ async function playTrack(id){
    playing=false;
    try{active.pause();active.currentTime=0;}catch(_){}
    if(player===active){player=null;playerTrack=null;}
-   releaseFocus();syncUi();
+   releaseFocus();playFailure(error);
   }
   throw error;
  }
@@ -148,7 +177,7 @@ async function playTrack(id){
   if(!playing)releaseFocus();
   return false;
  }
- playing=true;syncUi();return true;
+ playbackIssue=null;playing=true;syncUi();return true;
 }
 function selectTrack(id){
  if(!trackIds.has(id))return false;
@@ -199,10 +228,10 @@ async function playSfx(id){
   if(!playing&&!proceduralPlaying()&&sfxPlayers.size===0)releaseFocus();
  };
  audio.addEventListener('ended',finish,{once:true});
- audio.addEventListener('error',finish,{once:true});
+ audio.addEventListener('error',()=>{mediaFailure(audio.error?.code||0);finish();},{once:true});
  let promise;
- try{promise=audio.play();}catch(error){finish();throw error;}
- try{await promise;return prefs.sfxEnabled&&sfxPlayers.has(audio)&&!audio.paused;}catch(error){finish();throw error;}
+ try{promise=audio.play();}catch(error){playFailure(error);finish();throw error;}
+ try{await promise;playbackIssue=null;syncUi();return prefs.sfxEnabled&&sfxPlayers.has(audio)&&!audio.paused;}catch(error){playFailure(error);finish();throw error;}
 }
 function controls(sheet,rtl){
  rtlUi=!!rtl;
