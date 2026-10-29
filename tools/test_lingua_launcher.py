@@ -58,6 +58,7 @@ assert "storylens_" in html, "legacy localStorage keys must not be renamed"
 gradle = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
 assert 'applicationId = "com.storylens.reader"' in gradle, "upgrade identity must be preserved"
 assert 'applicationIdSuffix = ".preview"' in gradle, "CI preview must not collide with production install"
+assert re.search(r'debug\\s*\\{[\\s\\S]*?if \\(hasLtStableSigning\\) signingConfig = signingConfigs.getByName\\("stableRelease"\\)', gradle), "preview must use stable signing when configured"
 assert 'manifestPlaceholders["ltAppLabel"] = "Lingua Tales Preview"' in gradle
 i18n = (ROOT / "app/src/main/assets/lingua-i18n.js").read_text(encoding="utf-8")
 assert "const metrics = find('.storylens-hero .hero-metrics');" in i18n
