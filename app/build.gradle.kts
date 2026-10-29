@@ -27,6 +27,7 @@ android {
         targetSdk = 35
         versionCode = ltVersionCode
         versionName = "0.6.0"
+        manifestPlaceholders["ltAppLabel"] = "Lingua Tales"
     }
     signingConfigs {
         if (hasLtStableSigning) {
@@ -39,7 +40,14 @@ android {
         }
     }
     buildTypes {
+        debug {
+            // Runner debug keys change; isolate test installs from user data.
+            applicationIdSuffix = ".preview"
+            versionNameSuffix = "-preview"
+            manifestPlaceholders["ltAppLabel"] = "Lingua Tales Preview"
+        }
         release {
+            manifestPlaceholders["ltAppLabel"] = "Lingua Tales"
             isMinifyEnabled = false
             if (hasLtStableSigning) signingConfig = signingConfigs.getByName("stableRelease")
         }

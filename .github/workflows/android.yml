@@ -177,7 +177,9 @@ jobs:
             [[ "$fingerprint" =~ ^[0-9a-f]{64}$ ]] || { echo "::error::Missing valid signing SHA-256 for $variant"; return 1; }
             local identity code expected_code
             identity="$("$AAPT" dump badging "$apk" | grep '^package:' | head -1)"
-            [[ "$identity" == *"name='com.storylens.reader' "* ]] || { echo "::error::Unexpected Android package: $identity"; return 1; }
+            local expected_package="com.storylens.reader"
+            if [ "$variant" = "debug" ]; then expected_package="com.storylens.reader.preview"; fi
+            [[ "$identity" == *"name='$expected_package' "* ]] || { echo "::error::Unexpected Android package: $identity (wanted $expected_package)"; return 1; }
             code="$(printf '%s\n' "$identity" | sed -n "s/.*versionCode='\\([0-9]*\\)'.*/\\1/p")"
             test -n "$code"
             expected_code=$((100000 + GITHUB_RUN_NUMBER))
@@ -205,7 +207,7 @@ jobs:
                 echo "::warning::Signed release built, but its certificate has NOT been compared to the already installed app."
               fi
             else
-              echo "update_warning=CI debug keys can change between runs. Do not assume this APK updates an installed version." >> "app/build/outputs/apk/$variant/APK_INSTALL_IDENTITY.txt"
+              echo "update_warning=Isolated Preview package; NEVER use this APK to update the installed production application. Preview signatures can also vary between CI runs." >> "app/build/outputs/apk/$variant/APK_INSTALL_IDENTITY.txt"
             fi
           }
           inspect_variant debug
@@ -492,7 +494,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: StoryLens-Debug-APK
+          name: Lingua-Tales-Preview-NOT-PRODUCTION-UPDATE
           path: |
             app/build/outputs/apk/debug/*.apk
             app/build/outputs/apk/debug/APK_SHA256.txt

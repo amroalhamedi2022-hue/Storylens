@@ -15,7 +15,7 @@ def xml(path):
 manifest = xml(ROOT / "app/src/main/AndroidManifest.xml")
 app = manifest.find("application")
 assert app is not None
-assert app.get(ANDROID + "label") == "Lingua Tales"
+assert app.get(ANDROID + "label") == "${ltAppLabel}"
 assert app.get(ANDROID + "icon") == "@mipmap/ic_launcher"
 assert app.get(ANDROID + "roundIcon") == "@mipmap/ic_launcher"
 assert manifest.findall("uses-permission") == [], "reader must remain fully offline"
@@ -57,6 +57,8 @@ assert '>STORYLENS</div>' not in html
 assert "storylens_" in html, "legacy localStorage keys must not be renamed"
 gradle = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
 assert 'applicationId = "com.storylens.reader"' in gradle, "upgrade identity must be preserved"
+assert 'applicationIdSuffix = ".preview"' in gradle, "CI preview must not collide with production install"
+assert 'manifestPlaceholders["ltAppLabel"] = "Lingua Tales Preview"' in gradle
 i18n = (ROOT / "app/src/main/assets/lingua-i18n.js").read_text(encoding="utf-8")
 assert "const metrics = find('.storylens-hero .hero-metrics');" in i18n
 assert "if (metrics) metrics.remove();" in i18n
