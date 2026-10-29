@@ -35,7 +35,7 @@ pause = activity.split("override fun onPause()", 1)[1].split("override fun onRes
 assert "window.LinguaLicensedAudio.pause()" in pause
 assert "window.LinguaAmbience.pauseFromNative()" in pause
 assert "reader.onPause()" in pause
-assert "fun onNativeAudioFocusLoss()" in procedural
+assert "function onNativeAudioFocusLoss()" in procedural
 assert "function onNativeAudioFocusLoss()" in recorded
 assert "doc.addEventListener('visibilitychange'" in recorded
 assert "RECORD_AUDIO" not in manifest and "android.permission.INTERNET" not in manifest
