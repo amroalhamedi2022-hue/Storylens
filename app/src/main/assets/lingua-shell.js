@@ -2,9 +2,10 @@
  * Offline, no new permissions, no per-frame animation work. */
 (function(global){
 'use strict';
-const themeNames=['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre','celestial-atlas','harbor-ledger','circuit-notebook','terracotta-gallery','monochrome-zine','moonlit-margins','saffron-archive','bauhaus-studio','mosaic-courtyard','saville-clockwork','station-tickets','reform-club-brass','midnight-platform','exchange-gazette','suez-quays','consular-ledger','red-sea-dispatch','monsoon-meridian','deccan-timetable','kholby-crossing','vindhya-passage','dawn-escape','ganges-panorama','calcutta-ledger','rangoon-passage','singapore-lantern','typhoon-timetable','victoria-harbour-dispatch','shanghai-wind-ledger','typhoon-signal','yokohama-lantern','paper-lantern-circus','pacific-meridian','civic-panorama','prairie-signal','salt-lake-dispatch','medicine-bow-crossing','plum-creek-signal','snowbound-telegraph','prairie-sails','hudson-ledger','atlantic-passage', 'last-five-minutes','westminster-vows','reform-club-countdown','meridian-epilogue','stained-glass'];
-const themeLabels={aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library','botanical-folio':'Botanical Folio','rain-glass':'Rain Glass','solar-atelier':'Solar Atelier','ink-workshop':'Ink Workshop','velvet-theatre':'Velvet Theatre','celestial-atlas':'Celestial Atlas','harbor-ledger':'Harbor Ledger','circuit-notebook':'Circuit Notebook','terracotta-gallery':'Terracotta Gallery','monochrome-zine':'Monochrome Zine','moonlit-margins':'Moonlit Margins','saffron-archive':'Saffron Archive','bauhaus-studio':'Bauhaus Studio','mosaic-courtyard':'Mosaic Courtyard','saville-clockwork':'Saville Clockwork','station-tickets':'Station Tickets','reform-club-brass':'Reform Club Brass','midnight-platform':'Midnight Platform','exchange-gazette':'Exchange Gazette','suez-quays':'Suez Quays','consular-ledger':'Consular Ledger','red-sea-dispatch':'Red Sea Dispatch','monsoon-meridian':'Monsoon Meridian','deccan-timetable':'Deccan Timetable','kholby-crossing':'Kholby Crossing','vindhya-passage':'Vindhya Passage','dawn-escape':'Dawn Escape','ganges-panorama':'Ganges Panorama','calcutta-ledger':'Calcutta Ledger','rangoon-passage':'Rangoon Passage','singapore-lantern':'Singapore Lantern','typhoon-timetable':'Typhoon Timetable','victoria-harbour-dispatch':'Victoria Harbour Dispatch','shanghai-wind-ledger':'Shanghai Wind Ledger','typhoon-signal':'Typhoon Signal','yokohama-lantern':'Yokohama Lantern','paper-lantern-circus':'Paper Lantern Circus','pacific-meridian':'Pacific Meridian','civic-panorama':'Civic Panorama','prairie-signal':'Prairie Signal','salt-lake-dispatch':'Salt Lake Dispatch','medicine-bow-crossing':'Medicine Bow Crossing','plum-creek-signal':'Plum Creek Signal','snowbound-telegraph':'Snowbound Telegraph','prairie-sails':'Prairie Sails','hudson-ledger':'Hudson Ledger','atlantic-passage':'Atlantic Passage','last-five-minutes':'The Last Five Minutes','westminster-vows':'Westminster Vows','reform-club-countdown':'Reform Club Countdown','meridian-epilogue':'Meridian Epilogue','stained-glass':'Stained Glass'};
+const themeNames=['liquid-27','aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre','celestial-atlas','harbor-ledger','circuit-notebook','terracotta-gallery','monochrome-zine','moonlit-margins','saffron-archive','bauhaus-studio','mosaic-courtyard','saville-clockwork','station-tickets','reform-club-brass','midnight-platform','exchange-gazette','suez-quays','consular-ledger','red-sea-dispatch','monsoon-meridian','deccan-timetable','kholby-crossing','vindhya-passage','dawn-escape','ganges-panorama','calcutta-ledger','rangoon-passage','singapore-lantern','typhoon-timetable','victoria-harbour-dispatch','shanghai-wind-ledger','typhoon-signal','yokohama-lantern','paper-lantern-circus','pacific-meridian','civic-panorama','prairie-signal','salt-lake-dispatch','medicine-bow-crossing','plum-creek-signal','snowbound-telegraph','prairie-sails','hudson-ledger','atlantic-passage', 'last-five-minutes','westminster-vows','reform-club-countdown','meridian-epilogue','stained-glass'];
+const themeLabels={'liquid-27':'Liquid Glass 27',aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library','botanical-folio':'Botanical Folio','rain-glass':'Rain Glass','solar-atelier':'Solar Atelier','ink-workshop':'Ink Workshop','velvet-theatre':'Velvet Theatre','celestial-atlas':'Celestial Atlas','harbor-ledger':'Harbor Ledger','circuit-notebook':'Circuit Notebook','terracotta-gallery':'Terracotta Gallery','monochrome-zine':'Monochrome Zine','moonlit-margins':'Moonlit Margins','saffron-archive':'Saffron Archive','bauhaus-studio':'Bauhaus Studio','mosaic-courtyard':'Mosaic Courtyard','saville-clockwork':'Saville Clockwork','station-tickets':'Station Tickets','reform-club-brass':'Reform Club Brass','midnight-platform':'Midnight Platform','exchange-gazette':'Exchange Gazette','suez-quays':'Suez Quays','consular-ledger':'Consular Ledger','red-sea-dispatch':'Red Sea Dispatch','monsoon-meridian':'Monsoon Meridian','deccan-timetable':'Deccan Timetable','kholby-crossing':'Kholby Crossing','vindhya-passage':'Vindhya Passage','dawn-escape':'Dawn Escape','ganges-panorama':'Ganges Panorama','calcutta-ledger':'Calcutta Ledger','rangoon-passage':'Rangoon Passage','singapore-lantern':'Singapore Lantern','typhoon-timetable':'Typhoon Timetable','victoria-harbour-dispatch':'Victoria Harbour Dispatch','shanghai-wind-ledger':'Shanghai Wind Ledger','typhoon-signal':'Typhoon Signal','yokohama-lantern':'Yokohama Lantern','paper-lantern-circus':'Paper Lantern Circus','pacific-meridian':'Pacific Meridian','civic-panorama':'Civic Panorama','prairie-signal':'Prairie Signal','salt-lake-dispatch':'Salt Lake Dispatch','medicine-bow-crossing':'Medicine Bow Crossing','plum-creek-signal':'Plum Creek Signal','snowbound-telegraph':'Snowbound Telegraph','prairie-sails':'Prairie Sails','hudson-ledger':'Hudson Ledger','atlantic-passage':'Atlantic Passage','last-five-minutes':'The Last Five Minutes','westminster-vows':'Westminster Vows','reform-club-countdown':'Reform Club Countdown','meridian-epilogue':'Meridian Epilogue','stained-glass':'Stained Glass'};
 const themeLabelsAr={
+ 'liquid-27':'زجاج سائل 27',
  'aurora':"الشفق السائل",
  'aqua':"الزجاج المائي",
  'nebula':"تدفّق السديم",
@@ -196,12 +197,70 @@ function applyTheme(name){
  state.uiTheme=name;
  document.body.classList.add('theme-'+name);
  put('uiTheme',name);
+ applyCustomThemeColors();
  document.querySelectorAll('.lt-theme-choice').forEach(button=>{
   const selected=button.dataset.theme===name;
   button.classList.toggle('selected',selected);
   button.setAttribute('aria-pressed',String(selected));
  });
  return true;
+}
+// Theme source definitions are immutable APK assets; deleting one at runtime
+// safely hides it from the gallery. User palettes remain local and portable.
+const themeColorKeys=['a','b','c'];
+const isThemeHex=value=>typeof value==='string'&&/^#[a-f0-9]{6}$/i.test(value);
+function hiddenThemeNames(){const saved=get('ltHiddenThemes',[]);return Array.isArray(saved)?saved.filter(validTheme):[];}
+function customThemeColors(){const value=get('ltThemeCustomColors',{});return value&&typeof value==='object'&&!Array.isArray(value)?value:{};}
+function applyCustomThemeColors(){
+ const body=document.body;
+ for(const name of ['--lt-glass-a','--lt-glass-b','--lt-glass-c','--accent'])body.style.removeProperty(name);
+ const colors=customThemeColors()[state.uiTheme];
+ if(!colors||typeof colors!=='object')return;
+ for(const key of themeColorKeys)if(isThemeHex(colors[key]))body.style.setProperty('--lt-glass-'+key,colors[key]);
+ if(isThemeHex(colors.a))body.style.setProperty('--accent',colors.a);
+}
+function openThemeEditor(name,origin){
+ const sheet=document.querySelector('.lt-settings-sheet');
+ if(!sheet||!validTheme(name))return;
+ sheet.querySelector('.lt-theme-editor')?.remove();
+ const panel=document.createElement('section');panel.className='lt-theme-editor';
+ panel.setAttribute('aria-label',rtl()?'تخصيص الثيم':'Customize theme');
+ const title=document.createElement('h4');title.textContent=(rtl()?'تخصيص: ':'Customize: ')+themeLabelFor(name);panel.appendChild(title);
+ const saved=customThemeColors()[name]||{};
+ for(const [key,defaultHex,labelAr,labelEn] of [
+  ['a','#6e77ec','اللون الأساسي','Primary color'],
+  ['b','#c078e8','لون الانعكاس','Reflection color'],
+  ['c','#6bd8ea','لون الإضاءة','Highlight color']
+ ]){
+  const label=document.createElement('label');label.className='lt-theme-color-setting';
+  label.textContent=rtl()?labelAr:labelEn;
+  const input=document.createElement('input');input.type='color';input.value=isThemeHex(saved[key])?saved[key]:defaultHex;
+  input.setAttribute('aria-label',label.textContent);
+  input.addEventListener('input',()=>{
+   const updated=customThemeColors();
+   updated[name]={...(updated[name]||{}),[key]:input.value};
+   put('ltThemeCustomColors',updated);applyCustomThemeColors();
+   const swatch=origin?.querySelector('.lt-theme-swatch');
+   if(swatch)swatch.style.background='linear-gradient(135deg,'+
+     [updated[name].a||defaultHex,updated[name].b||'#c078e8',updated[name].c||'#6bd8ea'].join(',')+')';
+  });
+  label.appendChild(input);panel.appendChild(label);
+ }
+ const actions=document.createElement('div');actions.className='lt-theme-editor-actions';
+ addButton(actions,rtl()?'تطبيق الثيم':'Use theme',()=>{applyTheme(name);},'secondary');
+ addButton(actions,rtl()?'إعادة الألوان الأصلية':'Reset colors',()=>{
+  const custom=customThemeColors();delete custom[name];put('ltThemeCustomColors',custom);
+  applyCustomThemeColors();openThemeEditor(name,origin);
+ },'secondary');
+ addButton(actions,rtl()?'إخفاء الثيم من القائمة':'Hide theme',()=>{
+  const hidden=hiddenThemeNames();
+  if(!hidden.includes(name))hidden.push(name);
+  put('ltHiddenThemes',hidden);
+  origin?.remove();panel.remove();
+  if(state.uiTheme===name)applyTheme(themeNames.find(id=>!hidden.includes(id))||'aurora');
+ },'secondary');
+ panel.appendChild(actions);sheet.querySelector('.lt-theme-gallery')?.after(panel);
+ panel.querySelector('input')?.focus();
 }
 let settingsModalActive=false;
 let settingsReturnFocus=null;
@@ -320,7 +379,32 @@ function openSettings(){
  sheet.appendChild(themeHeading);
  const gallery=document.createElement('div');gallery.className='lt-theme-gallery';
  for(const name of themeNames){
-  const b=addButton(gallery,themeLabelFor(name),()=>applyTheme(name),'lt-theme-choice lt-theme-'+name);
+  if(hiddenThemeNames().includes(name))continue;
+  let longPressTimer=null,longPressed=false,startX=0,startY=0;
+  const b=addButton(gallery,themeLabelFor(name),()=>{
+   if(longPressed){longPressed=false;return;}
+   applyTheme(name);
+  },'lt-theme-choice lt-theme-'+name);
+  b.setAttribute('aria-label',themeLabelFor(name)+(rtl()?'؛ اضغط مطوّلًا للتخصيص':' — long press to customize'));
+  b.addEventListener('pointerdown',event=>{
+   if(event.button!==0)return;
+   longPressed=false;startX=event.clientX;startY=event.clientY;
+   longPressTimer=global.setTimeout(()=>{
+    longPressTimer=null;longPressed=true;openThemeEditor(name,b);
+   },560);
+  });
+  const cancel=()=>{if(longPressTimer!==null){global.clearTimeout(longPressTimer);longPressTimer=null;}};
+  b.addEventListener('pointermove',event=>{
+   if(Math.abs(event.clientX-startX)>11||Math.abs(event.clientY-startY)>11)cancel();
+  });
+  b.addEventListener('pointerup',cancel);
+  b.addEventListener('pointercancel',cancel);
+  b.addEventListener('contextmenu',event=>{event.preventDefault();cancel();longPressed=true;openThemeEditor(name,b);});
+  b.addEventListener('keydown',event=>{
+   if((event.key==='F10'&&event.shiftKey)||event.key==='ContextMenu'){
+    event.preventDefault();openThemeEditor(name,b);
+   }
+  });
   b.dataset.theme=name;
   b.setAttribute('aria-pressed',String(state.uiTheme===name));
   b.classList.toggle('selected',state.uiTheme===name);
@@ -328,6 +412,15 @@ function openSettings(){
   swatch.setAttribute('aria-hidden','true');b.prepend(swatch);
  }
  sheet.appendChild(gallery);
+ const themeHint=document.createElement('p');themeHint.className='quiet';
+ themeHint.textContent=rtl()?'اضغط مطوّلًا على أي ثيم لتغيير ألوانه أو إخفائه.':'Long-press any theme to recolor or hide it.';
+ sheet.appendChild(themeHint);
+ if(hiddenThemeNames().length){
+  addButton(sheet,rtl()?'استرجاع جميع الثيمات المخفية':'Restore hidden themes',()=>{
+   put('ltHiddenThemes',[]);
+   closeSheet();openSettings();
+  },'secondary lt-themes-restore');
+ }
  const fontsHeading=document.createElement('h3');
  fontsHeading.textContent=rtl()?'خطوط القراءة':'Reading fonts';
  sheet.appendChild(fontsHeading);
