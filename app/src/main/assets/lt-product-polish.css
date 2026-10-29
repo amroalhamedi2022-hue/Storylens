@@ -83,3 +83,59 @@ body.theme-aurora,body.theme-nebula{background-attachment:scroll!important;}
  .lt-tap-bubble{display:none}
  .lt-book-page.lt-paper-grabbed{transform:none!important}
 }
+
+/* Liquid Glass 27: custom-designed, GPU-friendly translucent reading UI. */
+body.theme-liquid-27 {
+ --body:#181b42;--card:#272c60;--ink:#fff9ff;--sub:#cdd4f2;
+ --accent:#8fe9f9;--reader:#f7f6ff;--reader-ink:#20274b;
+ --lt-glass-a:#6077ff;--lt-glass-b:#bc5de7;--lt-glass-c:#70e7ec;
+ background:radial-gradient(ellipse at 8% 10%,color-mix(in srgb,var(--lt-glass-b) 34%,transparent),transparent 45%),
+ radial-gradient(ellipse at 95% 52%,color-mix(in srgb,var(--lt-glass-c) 35%,transparent),transparent 45%),
+ linear-gradient(145deg,#131d46,#3c327c 55%,#213966);
+ color:var(--ink);
+}
+.theme-liquid-27 .library .header{
+ border-radius:24px;border:1px solid #ffffff40;
+ background:linear-gradient(145deg,#ffffff35,#ffffff13);
+ box-shadow:inset 0 1px 0 #ffffffaa,0 7px 22px #1013423d;
+}
+.theme-liquid-27 .library .card,.theme-liquid-27 .lt-settings-sheet{
+ border-radius:26px;
+ border:1px solid color-mix(in srgb,var(--lt-glass-c) 35%,#ffffff7d);
+ background:linear-gradient(134deg,
+  color-mix(in srgb,var(--lt-glass-a) 19%,#ffffff1b),
+  color-mix(in srgb,var(--lt-glass-b) 14%,#ffffff08));
+ box-shadow:inset 0 1px 0 #ffffff6f,0 8px 22px #11153637;
+}
+.theme-liquid-27 .library .card{color:var(--ink)}
+.theme-liquid-27 .library .card h2{color:#fff}
+.theme-liquid-27 .lt-menu-toggle,.theme-liquid-27 .hero-continue{
+ background:linear-gradient(115deg,
+ color-mix(in srgb,var(--lt-glass-a) 50%,#ffffff70),
+ color-mix(in srgb,var(--lt-glass-c) 25%,#ffffff40));
+ border:1px solid #ffffff70;
+ box-shadow:inset 0 1px 0 #fff9,0 4px 14px #0c1b5560;
+ color:#142849;font-weight:700;
+}
+.theme-liquid-27 .lt-drawer{background:linear-gradient(160deg,#212855ee,#2b2353f5);
+ box-shadow:12px 0 45px #080d3099}
+.theme-liquid-27 .lt-book-page{background:linear-gradient(145deg,#fff,#f1f5ff 72%,#e5e8ff);
+ color:#222b4c}
+.theme-liquid-27 .lt-theme-choice{background:linear-gradient(140deg,#ffffff23,#ffffff0e);
+ border:1px solid #ffffff46;color:#fff}
+.lt-theme-liquid-27 .lt-theme-swatch{
+ background:radial-gradient(circle at 16% 18%,#e9ffff,transparent 32%),
+ linear-gradient(125deg,#6077ff,#bc5de7,#70e7ec)}
+/* Theme editor has real color inputs and an explicit reversible hide action. */
+.lt-theme-editor{grid-column:1/-1;display:grid;gap:10px;margin:14px 0;
+ padding:15px;border:1px solid color-mix(in srgb,var(--accent) 38%,#ffffff55);
+ background:linear-gradient(130deg,#ffffff28,#ffffff0b);border-radius:19px}
+.lt-theme-editor h4{margin:0;font-size:17px}
+.lt-theme-color-setting{display:flex!important;align-items:center;justify-content:space-between;gap:12px;
+ min-height:40px;font-size:14px}
+.lt-theme-color-setting input[type=color]{min-width:68px;min-height:40px;padding:0;
+ background:transparent;border:1px solid #ffffff50;border-radius:12px}
+.lt-theme-editor-actions{display:flex;gap:8px;flex-wrap:wrap}
+.lt-theme-editor-actions button{flex:1 1 140px}
+.lt-themes-restore{width:100%;margin-block:7px}
+@media(prefers-reduced-motion:reduce){.theme-liquid-27 *{animation:none!important;transition:none!important}}
