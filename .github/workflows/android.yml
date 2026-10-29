@@ -52,6 +52,7 @@ jobs:
           python3 tools/check_js.py
           python3 tools/test_lingua_launcher.py
           python3 tools/test_lingua_audio_focus.py
+          python3 tools/test_apk_update.py
           node tools/botanical-theme.test.cjs
           node tools/rain-glass.test.cjs
           node tools/solar-atelier.test.cjs
@@ -129,7 +130,15 @@ jobs:
           LT_SIGNING_KEY_ALIAS: ${{ secrets.LT_SIGNING_KEY_ALIAS }}
           LT_SIGNING_KEY_PASSWORD: ${{ secrets.LT_SIGNING_KEY_PASSWORD }}
         run: |
-          if [ -n "$LT_SIGNING_KEYSTORE_BASE64" ] && [ -n "$LT_SIGNING_STORE_PASSWORD" ] && [ -n "$LT_SIGNING_KEY_ALIAS" ] && [ -n "$LT_SIGNING_KEY_PASSWORD" ]; then
+          configured=0
+          for key in LT_SIGNING_KEYSTORE_BASE64 LT_SIGNING_STORE_PASSWORD LT_SIGNING_KEY_ALIAS LT_SIGNING_KEY_PASSWORD; do
+            if [ -n "${!key}" ]; then configured=$((configured + 1)); fi
+          done
+          if [ "$configured" -gt 0 ] && [ "$configured" -lt 4 ]; then
+            echo "::error::Only some signing secrets are configured. All four must be present; refusing an unsigned or misleading release."
+            exit 1
+          fi
+          if [ "$configured" -eq 4 ]; then
             printf '%s' "$LT_SIGNING_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/lingua-release.jks"
             echo "LT_SIGNING_KEYSTORE=$RUNNER_TEMP/lingua-release.jks" >> "$GITHUB_ENV"
             echo "LT_SIGNING_STORE_PASSWORD=$LT_SIGNING_STORE_PASSWORD" >> "$GITHUB_ENV"
@@ -148,6 +157,59 @@ jobs:
             test -n "$APK"
             sha256sum "$APK" | tee app/build/outputs/apk/release/APK_SHA256.txt
           fi
+      - name: Verify APK package, update version and certificate identity
+        shell: bash
+        env:
+          LT_EXPECTED_SIGNER_SHA256: ${{ secrets.LT_SIGNING_CERT_SHA256 }}
+        run: |
+          set -euo pipefail
+          AAPT="$ANDROID_HOME/build-tools/36.0.0/aapt"
+          APKSIGNER="$ANDROID_HOME/build-tools/36.0.0/apksigner"
+          test -x "$AAPT" && test -x "$APKSIGNER"
+          inspect_variant() {
+            local variant="$1"
+            local apk
+            apk="$(find "app/build/outputs/apk/$variant" -type f -name '*.apk' | head -1)"
+            test -n "$apk" && test -f "$apk"
+            "$APKSIGNER" verify --verbose --print-certs "$apk" > "$RUNNER_TEMP/$variant-signature.txt"
+            local fingerprint
+            fingerprint="$(sed -n 's/^Signer #1 certificate SHA-256 digest: //p' "$RUNNER_TEMP/$variant-signature.txt" | head -1 | tr -d ':' | tr 'A-F' 'a-f')"
+            [[ "$fingerprint" =~ ^[0-9a-f]{64}$ ]] || { echo "::error::Missing valid signing SHA-256 for $variant"; return 1; }
+            local identity code expected_code
+            identity="$("$AAPT" dump badging "$apk" | grep '^package:' | head -1)"
+            [[ "$identity" == *"name='com.storylens.reader' "* ]] || { echo "::error::Unexpected Android package: $identity"; return 1; }
+            code="$(printf '%s\n' "$identity" | sed -n "s/.*versionCode='\\([0-9]*\\)'.*/\\1/p")"
+            test -n "$code"
+            expected_code=$((100000 + GITHUB_RUN_NUMBER))
+            if [ "$code" -ne "$expected_code" ]; then
+              echo "::error::Expected monotonic CI versionCode $expected_code, got $code"
+              return 1
+            fi
+            {
+              echo "$identity"
+              echo "certificate_sha256=$fingerprint"
+              echo "variant=$variant"
+              echo "commit=$GITHUB_SHA"
+              echo "github_run=$GITHUB_RUN_ID"
+            } > "app/build/outputs/apk/$variant/APK_INSTALL_IDENTITY.txt"
+            echo "$variant APK: versionCode=$code, signing certificate SHA-256=$fingerprint"
+            if [ "$variant" = "release" ]; then
+              if [ -n "$LT_EXPECTED_SIGNER_SHA256" ]; then
+                local expected
+                expected="$(printf '%s' "$LT_EXPECTED_SIGNER_SHA256" | tr -d '[:space:]:' | tr 'A-F' 'a-f')"
+                [[ "$expected" =~ ^[0-9a-f]{64}$ ]] || { echo "::error::Invalid pinned signer fingerprint"; return 1; }
+                [ "$fingerprint" = "$expected" ] || { echo "::error::Release signing certificate differs from pinned installed certificate; refusing incompatible update."; return 1; }
+                echo "pinned_installed_signer=matched" >> "app/build/outputs/apk/$variant/APK_INSTALL_IDENTITY.txt"
+              else
+                echo "pinned_installed_signer=not_provided" >> "app/build/outputs/apk/$variant/APK_INSTALL_IDENTITY.txt"
+                echo "::warning::Signed release built, but its certificate has NOT been compared to the already installed app."
+              fi
+            else
+              echo "update_warning=CI debug keys can change between runs. Do not assume this APK updates an installed version." >> "app/build/outputs/apk/$variant/APK_INSTALL_IDENTITY.txt"
+            fi
+          }
+          inspect_variant debug
+          if [ -n "${LT_SIGNING_KEYSTORE:-}" ]; then inspect_variant release; fi
       - name: Verify required files really exist inside APK
         shell: bash
         run: |
@@ -434,6 +496,7 @@ jobs:
           path: |
             app/build/outputs/apk/debug/*.apk
             app/build/outputs/apk/debug/APK_SHA256.txt
+            app/build/outputs/apk/debug/APK_INSTALL_IDENTITY.txt
           if-no-files-found: error
       - name: Upload stable-signed release APK
         if: success() && env.LT_SIGNING_KEYSTORE != ''
@@ -443,4 +506,5 @@ jobs:
           path: |
             app/build/outputs/apk/release/*.apk
             app/build/outputs/apk/release/APK_SHA256.txt
+            app/build/outputs/apk/release/APK_INSTALL_IDENTITY.txt
           if-no-files-found: error
