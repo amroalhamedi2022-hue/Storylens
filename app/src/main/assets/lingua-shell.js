@@ -641,6 +641,12 @@ function decorateLibrary(){
  const divider=document.createElement('div');divider.className='lt-drawer-divider';drawer.appendChild(divider);
  section.appendChild(drawer);
  moveDiscovery();
+ // Search tools are available in the drawer, not three full-width rows before
+ // the first story card. Preserve real DOM inputs and their handlers.
+ const titleSearch=section.querySelector('.search-label');
+ const chapterSearch=section.querySelector('.lt-chapter-search-open');
+ if(titleSearch)drawer.appendChild(titleSearch);
+ if(chapterSearch)drawer.appendChild(chapterSearch);
  if(actions){actions.classList.add('lt-drawer-actions');drawer.appendChild(actions);}
 
 }
