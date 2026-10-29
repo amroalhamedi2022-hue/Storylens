@@ -10,12 +10,12 @@ const match=html.match(/<script id="libraryData" type="application\/json">([\s\S
 assert.ok(match,'catalog present in index.html');
 const core=JSON.parse(match[1]);
 const context={window:{},encodeURIComponent};
-for(const file of ['editorial-stories-a.js','editorial-stories-b.js','editorial-stories-c.js','novella-salt-meridian.js','editorial-art.js']){
+for(const file of ['editorial-stories-a.js','editorial-stories-b.js','editorial-stories-c.js','novella-salt-meridian.js','novella-ninth-ledger.js','editorial-art.js']){
  assert.ok(html.includes('src="'+file+'"'),file+' loaded before the primary app');
  vm.runInNewContext(fs.readFileSync(path.join(assets,file),'utf8'),context,{filename:file,timeout:2000});
 }
 const stories=context.window.StoryLensEditorialStories;
-assert.equal(stories.length,19,'eighteen original stories across batches A–D plus one complete five-chapter novella');
+assert.equal(stories.length,20,'eighteen editorial stories plus two complete bilingual novellas');
 const all=[...core.stories,...stories],ids=new Set(),genres=new Map();
 let paragraphs=0,chapters=0,artCount=0;
 const art=context.window.StoryLensMakeEditorialArt(stories);
@@ -41,13 +41,13 @@ for(const story of all){
  }
  if(stories.includes(story))assert.ok(story.terms.length>=6,'context terms: '+story.id);
 }
-assert.equal(all.length,44,'24 core entries plus the lazy classic, eighteen editorial stories and one novella remain discoverable');
+assert.equal(all.length,45,'core library, lazy classic, eighteen editorial stories and two novellas remain discoverable');
 const lazyClassic=all.filter(story=>story.id==='around-the-world-in-eighty-days-towle');
 assert.equal(lazyClassic.length,1,'the long classic placeholder is registered exactly once');
 assert.equal(lazyClassic[0].lazyBook,true,'the classic remains a lazy entry in the startup catalog');
 assert.equal(lazyClassic[0].totalChapters,37,'the classic advertises its full chapter count without eager payload');
 assert.equal(lazyClassic[0].chapters.length,0,'the full-length chapter payload stays deferred until open');
-for(const [genre,count] of genres)assert.equal(count,genre==='historical'?9:7,genre+' count includes the current core, editorial batches and historical classic');
+for(const [genre,count] of genres)assert.equal(count,genre==='historical'?9:genre==='mystery'?8:7,genre+' count includes the current core, both novellas and the classic');
 assert.ok(paragraphs>=640 && chapters>=90,'original core, eighteen editorial stories and the novella retained');
 assert.equal(artCount,stories.reduce((sum,story)=>sum+story.chapters.length,0),'every editorial and novella chapter has a local illustration');
 assert.ok(html.includes('catalog.stories.push(...window.StoryLensEditorialStories)'),'stories registered before library render');
