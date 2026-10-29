@@ -2283,3 +2283,23 @@ body.theme-stained-glass::after{display:none!important}
 .lt-audio-settings .lt-audio-checkbox input{flex:0 0 20px}
 .lt-audio-settings button:disabled{opacity:.45;cursor:not-allowed}
 .lt-audio-settings .lt-audio-disable-all{margin-top:8px;border-color:color-mix(in srgb,#d45b63 55%,transparent)}
+
+
+/* LT touch affordances: eliminate rectangular Android WebView highlight.
+   The button surface itself compresses elastically on press. */
+:where(button,[role="button"],a,input[type="button"],input[type="submit"],.lt-menu-toggle){
+ -webkit-tap-highlight-color:transparent!important;
+ -webkit-touch-callout:none;
+}
+:where(button,[role="button"],a,.lt-menu-toggle){
+ transform-origin:center;
+ transition:transform 170ms cubic-bezier(.2,1.5,.45,1),filter 170ms ease;
+}
+:where(button,[role="button"],a,.lt-menu-toggle):active{
+ transform:scale(.955);
+ filter:brightness(1.08);
+}
+@media(prefers-reduced-motion:reduce){
+ :where(button,[role="button"],a,.lt-menu-toggle){transition:none!important}
+ :where(button,[role="button"],a,.lt-menu-toggle):active{transform:none!important}
+}
