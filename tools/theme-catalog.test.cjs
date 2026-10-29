@@ -29,8 +29,10 @@ for (const [, name, label] of arabicThemeLabels) {
   assert.ok(label.trim().length >= 3, 'Arabic theme label is too short: ' + name);
 }
 const styles = shellCss + '\n' + auroraCss + '\n' + westminsterCss + '\n' + countdownCss;
+const productCss=read('app/src/main/assets/lt-product-polish.css');
+const allStyles=styles+'\n'+productCss;
 for (const name of names) {
-  assert.match(styles, new RegExp('body\\.theme-' + name + '(?:\\s|\\{|:|\\.)'),
+  assert.match(allStyles, new RegExp('body\\.theme-' + name + '(?:\\s|\\{|:|\\.)'),
     'missing production body style for ' + name);
   assert.ok(backup.includes("'" + name + "'") || backup.includes('"' + name + '"'),
     'backup validator does not allow theme ' + name);
