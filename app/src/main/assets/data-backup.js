@@ -30,7 +30,7 @@ function exceedsUtf8Limit(value, limit){
 const MAX_ENTRIES=900;
 const simple=new Set(['saved','cards','favorites','bookmarks','last_story','uiTheme','readerPrefs',
  'written_examples','discoveryLevel','discoverySort','favoritesOnly','wordSenses','dark','size',
- 'fontArabic','fontEnglish','uiLocale','audioPrefs']);
+ 'fontArabic','fontEnglish','uiLocale','audioPrefs','licensedAudioPrefs']);
 function allowed(key){
  if(typeof key!=='string'||!key.startsWith(PREFIX))return false;
  const suffix=key.slice(PREFIX.length);
@@ -73,6 +73,17 @@ function validValue(key,val){
   Object.keys(val).sort().join(',')==='scene,sfx,sfxVolume,volume'&&
   ['rain','thunder','forest','night','ocean','fire','wind','cabin','brook','waterfall','dawn','snow','train','library','window','cliffs','meadow','leaves','desert','stars'].includes(val.scene)&&
   typeof val.sfx==='boolean'&&
+  [val.volume,val.sfxVolume].every(v=>typeof v==='number'&&Number.isFinite(v)&&v>=0&&v<=1);
+ // Licensed playback preferences are separate from procedural ambience preferences.
+ // A clean reinstall after an incompatible APK signature must preserve opt-ins
+ // and both volumes; reject unknown tracks and malformed archive payloads.
+ if(tail==='licensedAudioPrefs')return val!==null&&typeof val==='object'&&!Array.isArray(val)&&
+  Object.keys(val).sort().join(',')==='ambienceEnabled,sfxEnabled,sfxVolume,track,volume'&&
+  ['forest','night-forest','quiet-room','lake-shore','coastal-waves','underwater',
+   'distant-city','book-cafe','rain-cabin','forest-rain','city-rain','ocean-waves',
+   'river-flow','waterfall','wind-birds','wind-chimes','farm','european-city',
+   'creek-in-woods','water-lapping'].includes(val.track)&&
+  typeof val.ambienceEnabled==='boolean'&&typeof val.sfxEnabled==='boolean'&&
   [val.volume,val.sfxVolume].every(v=>typeof v==='number'&&Number.isFinite(v)&&v>=0&&v<=1);
  if(tail==='fontArabic')return ['sans','naskh'].includes(val);
  if(tail==='fontEnglish')return ['serif','sans'].includes(val);
