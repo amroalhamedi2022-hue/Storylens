@@ -209,7 +209,7 @@ function installPageTurn(){
    item.setAttribute('aria-hidden',index===current?'false':'true');
    item.inert=index!==current;
   });
-  prev.disabled=current===0;
+  prev.disabled=current===0&&state.chapter===0;
   next.textContent=current===pages.length-1
    ?(state.chapter<state.story.chapters.length-1?uiText('الفصل التالي','Next chapter'):uiText('العودة للمكتبة','Back to library'))
    :uiText('الصفحة التالية','Next page');
@@ -227,7 +227,19 @@ function installPageTurn(){
    else libraryBack();
    return;
   }
-  if(delta<0&&current===0)return;
+  if(delta<0&&current===0){
+   if(state.chapter===0)return;
+   // Backwards page-turn crosses chapter boundaries, preserving the last
+   // visible page of the preceding chapter, not chapter one's first page.
+   const previous=state.chapter-1;
+   const length=state.story.chapters[previous].paragraphs.length;
+   const lastPage=Math.max(0,Math.ceil(length/LT_PAGE_PARAGRAPHS)-1);
+   state.chapter=previous;
+   put('chapter_'+state.story.id,previous);
+   put('readpage_'+state.story.id+'_'+previous,lastPage);
+   renderReader();window.scrollTo(0,0);
+   return;
+  }
   current+=delta;renderPage(delta>0?'next':'back',true);
  }
  prev.addEventListener('click',()=>move(-1));
@@ -235,6 +247,7 @@ function installPageTurn(){
  let startX=null,startY=null,startTarget=null;
  const resetTouch=()=>{startX=null;startY=null;startTarget=null;};
  sentenceBox.addEventListener('touchstart',event=>{
+  if(window.PointerEvent)return; // interactive paper drag owns modern touch gestures
   if(event.touches?.length!==1){resetTouch();return;}
   const target=event.target;
   const selected=window.getSelection?.()?.toString()||'';
@@ -259,6 +272,70 @@ function installPageTurn(){
   move((rtl?dx>0:dx<0)?1:-1);
  },{passive:true});
  sentenceBox.addEventListener('touchcancel',resetTouch,{passive:true});
+ // Physical edge-hold interaction: keep a live fold aligned to the user's
+ // finger, commit only after crossing the middle, spring back on release.
+ // Do not steal vertical scrolling, text selection or dictionary word taps.
+ let drag=null,foldRaf=null;
+ function clearFold(){
+  if(foldRaf!==null){window.cancelAnimationFrame?.(foldRaf);foldRaf=null;}
+  const active=pages[current];
+  if(active){
+   active.classList.remove('lt-paper-grabbed');
+   for(const name of ['--lt-fold-origin','--lt-fold-angle','--lt-fold-shade-angle','--lt-fold-shadow'])
+    active.style.removeProperty(name);
+  }
+ }
+ function previewFold(){
+  foldRaf=null;
+  if(!drag)return;
+  const active=pages[current];
+  const amount=drag.progress;
+  active.classList.add('lt-paper-grabbed');
+  active.style.setProperty('--lt-fold-origin',drag.edge);
+  active.style.setProperty('--lt-fold-angle',(drag.edge==='right'?-1:1)*Math.min(145,amount*145)+'deg');
+  active.style.setProperty('--lt-fold-shade-angle',drag.edge==='right'?'90deg':'270deg');
+  active.style.setProperty('--lt-fold-shadow','0 15px '+Math.round(20+amount*45)+'px rgba(15,17,44,'+(0.17+amount*.25)+')');
+ }
+ function finishPaperDrag(commit){
+  if(!drag)return;
+  const delta=drag.edge==='right'?1:-1;
+  const turn=commit&&drag.progress>=.34;
+  drag=null;clearFold();
+  if(turn)move(delta);
+ }
+ sentenceBox.addEventListener('pointerdown',event=>{
+  if(event.isPrimary===false||event.button!==0||drag||state.page!=='reader')return;
+  if(event.target.closest?.('.tok,button,a,input,select,textarea,[role="button"]'))return;
+  if(window.getSelection?.()?.toString())return;
+  const box=sentenceBox.getBoundingClientRect();
+  const x=event.clientX-box.left;
+  const edge=x>=box.width-66?'right':x<=66?'left':null;
+  if(!edge||(edge==='left'&&current===0&&state.chapter===0))return;
+  drag={id:event.pointerId,edge,startX:event.clientX,startY:event.clientY,
+   width:Math.max(1,box.width),progress:0,locked:false};
+  try{sentenceBox.setPointerCapture?.(event.pointerId);}catch(_){}
+ },{passive:true});
+ sentenceBox.addEventListener('pointermove',event=>{
+  if(!drag||event.pointerId!==drag.id)return;
+  const horizontal=drag.edge==='right'?drag.startX-event.clientX:event.clientX-drag.startX;
+  const dy=event.clientY-drag.startY;
+  if(!drag.locked){
+   if(Math.abs(dy)>15&&Math.abs(dy)>Math.abs(horizontal)*1.1){finishPaperDrag(false);return;}
+   if(horizontal<9)return;
+   drag.locked=true;
+  }
+  drag.progress=Math.max(0,Math.min(1,horizontal/Math.max(115,drag.width*.68)));
+  if(foldRaf===null){
+   if(typeof window.requestAnimationFrame==='function')foldRaf=window.requestAnimationFrame(previewFold);
+   else previewFold();
+  }
+  if(event.cancelable)event.preventDefault();
+ },{passive:false});
+ sentenceBox.addEventListener('pointerup',event=>{
+  if(drag&&event.pointerId===drag.id)finishPaperDrag(true);
+ });
+ sentenceBox.addEventListener('pointercancel',()=>finishPaperDrag(false));
+ sentenceBox.addEventListener('lostpointercapture',()=>finishPaperDrag(false));
  renderPage('next',false);
 }
 const chapterKey=()=> 'chapter_'+state.story.id;
