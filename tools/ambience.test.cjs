@@ -12,7 +12,7 @@ const shell=fs.readFileSync(path.join(assets,'lingua-shell.js'),'utf8');
 const backup=fs.readFileSync(path.join(assets,'data-backup.js'),'utf8');
 const css=fs.readFileSync(path.join(assets,'lingua-shell.css'),'utf8');
 assert.ok(html.includes('<script src="lingua-ambience.js"></script><script src="lingua-licensed-audio.js"></script><script src="lingua-shell.js"></script>'));
-assert.ok(shell.includes('LinguaAmbience.controls(sheet,rtl())'));
+assert.ok(shell.includes('LinguaAmbience.controls(extras,rtl())'),'optional generated sounds live in collapsible extras to avoid duplicate music settings');
 assert.ok(shell.includes("'velvet-theatre'"));
 assert.ok(backup.includes("tail==='audioPrefs'"));
 assert.ok(css.includes('body.theme-velvet-theatre'));
