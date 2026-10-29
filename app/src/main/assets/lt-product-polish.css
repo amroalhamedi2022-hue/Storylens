@@ -1,0 +1,85 @@
+/* Lingua Tales — native-feel input, compact library and touch paper, 2026-10-29.
+   Keeps the real reading content and all accessibility/keyboard controls. */
+:root { -webkit-tap-highlight-color:transparent; }
+button,[role="button"],.library .card,.lt-theme-choice,.lt-menu-toggle{
+ -webkit-tap-highlight-color:transparent!important;
+}
+button:focus:not(:focus-visible),[role="button"]:focus:not(:focus-visible),.library .card:focus:not(:focus-visible){
+ outline:0!important;box-shadow:none;
+}
+button:focus-visible,[role="button"]:focus-visible,.library .card:focus-visible{
+ outline:2px solid var(--accent,#6ce2e8)!important;outline-offset:3px;
+}
+button,.lt-theme-choice{position:relative;overflow:hidden;transform:translateZ(0);
+ transition:transform .18s cubic-bezier(.25,1.65,.55,1),filter .18s ease;
+}
+button:active,.lt-theme-choice:active{transform:scale(.953) translateZ(0);filter:brightness(1.07)}
+.lt-tap-bubble{position:absolute;pointer-events:none;z-index:2;aspect-ratio:1;width:65px;
+ left:var(--lt-tap-x,50%);top:var(--lt-tap-y,50%);border-radius:50%;
+ transform:translate(-50%,-50%) scale(.25);
+ background:radial-gradient(circle at 28% 24%,rgba(255,255,255,.72),rgba(158,238,255,.31) 38%,rgba(110,134,255,.05) 70%);
+ box-shadow:inset 0 1px 5px #fff7,0 0 16px #e2fcff70;
+ animation:ltTapBubble .42s cubic-bezier(.14,.8,.3,1) forwards;
+}
+@keyframes ltTapBubble{0%{opacity:.9;transform:translate(-50%,-50%) scale(.25)}
+ 65%{opacity:.65;transform:translate(-50%,-50%) scale(1.3)}
+ 100%{opacity:0;transform:translate(-50%,-50%) scale(1.75)}}
+/* The giant marketing hero and redundant searches were hiding the actual books.
+   Keep continue-reading as a single compact action. */
+.library .storylens-hero{display:block!important;min-height:0!important;max-height:none!important;
+ height:auto!important;margin:8px 0 12px!important;padding:9px 12px!important;
+ border-radius:16px!important;box-shadow:none!important;
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;}
+.library .storylens-hero .hero-orb,.library .storylens-hero .hero-eyebrow,
+.library .storylens-hero h2,.library .storylens-hero p,.library .storylens-hero .hero-metrics,
+.library .storylens-hero .hero-invitation{display:none!important;}
+.library .storylens-hero:not(:has(.hero-continue)){display:none!important;}
+.library .storylens-hero .hero-content{width:100%!important;}
+.library .storylens-hero .hero-continue{display:block!important;width:100%!important;
+ font-size:clamp(12px,1.6vw,16px);line-height:1.45;margin:0!important;min-height:44px;
+ text-align:start;overflow-wrap:anywhere}
+.library .search-label,.library .lt-chapter-search-open{display:none!important;}
+/* The original library search is moved into the drawer, still keyboard/screen-reader accessible. */
+.lt-drawer .search-label,.lt-drawer .lt-chapter-search-open{display:block!important;margin:8px 0!important;}
+.lt-drawer .search-label input{width:100%;background:#fff!important;color:#172c35!important;}
+.lt-drawer .lt-chapter-search-open{width:100%;color:#fff;}
+.library{padding-block-start:clamp(12px,2vw,22px)!important;}
+.library .storylens-header{margin-bottom:8px!important;padding:9px 12px!important;min-height:66px!important;}
+.library .header h1{font-size:clamp(22px,4vw,31px)!important;line-height:1.2!important;}
+.library .header .quiet{display:none!important;}
+.library .shelf{gap:11px!important;}
+.library .shelf .card{content-visibility:auto;contain-intrinsic-size:auto 210px;
+ transition:transform .14s ease!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+ box-shadow:0 4px 15px #0c10232c!important;}
+/* Reduce expensive compositing without removing the liquid color palette. */
+body.theme-aurora,body.theme-nebula{background-attachment:scroll!important;}
+.library .storylens-hero:after,.library .storylens-hero:before{display:none!important;}
+.lt-book-page{will-change:auto;}
+.lt-book-page.lt-paper-grabbed{touch-action:none;will-change:transform,filter;
+ transition:none!important;transform-origin:var(--lt-fold-origin,right) center!important;
+ transform:perspective(1450px) rotateY(var(--lt-fold-angle,0deg))!important;
+ box-shadow:var(--lt-fold-shadow,0 16px 30px #10182c30)!important;}
+.lt-book-page.lt-paper-grabbed:after{
+ background:linear-gradient(var(--lt-fold-shade-angle,90deg),
+ rgba(10,15,36,.30),rgba(255,255,255,.2) 24%,transparent 48%,rgba(15,20,55,.16) 85%,rgba(255,255,255,.76))!important;}
+/* Controls remain operable to accessibility APIs and keyboard, but are no
+   longer giant permanent next/previous buttons. */
+.reader .lt-page-controls{max-width:100%;border:none!important;background:none!important;
+ box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+ padding:3px 12px!important;min-height:32px!important;}
+.reader .lt-page-controls button{
+ position:absolute!important;width:1px!important;height:1px!important;padding:0!important;
+ overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;
+ border:0!important;margin:-1px!important;}
+.reader .lt-page-controls button:focus-visible{position:relative!important;width:auto!important;height:auto!important;
+ clip-path:none!important;margin:0!important;padding:8px 12px!important;}
+.reader .lt-page-count{flex:1;text-align:center;font-size:12px!important;}
+.reader .lt-book-page.is-active{touch-action:pan-y;}
+@media(max-width:650px){.library .shelf .card{min-height:148px!important;padding:9px!important}
+ .library .shelf .card .cover{flex-basis:88px!important;min-height:128px!important}
+ .library .shelf .card h2{font-size:clamp(18px,4vw,22px)!important}}
+@media(prefers-reduced-motion:reduce){
+ button,.lt-theme-choice,.lt-tap-bubble{animation:none!important;transition:none!important;}
+ .lt-tap-bubble{display:none}
+ .lt-book-page.lt-paper-grabbed{transform:none!important}
+}
