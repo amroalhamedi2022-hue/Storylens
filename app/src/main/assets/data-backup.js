@@ -32,7 +32,7 @@ const simple=new Set(['saved','cards','favorites','bookmarks','last_story','uiTh
  'written_examples','discoveryLevel','discoverySort','favoritesOnly','wordSenses','dark','size',
  'fontArabic','fontEnglish','uiLocale','audioPrefs','licensedAudioPrefs',
  'libraryScroll','lt_glass_palette','lt_glass_tint','lt_reduce_transparency',
- 'lt_high_contrast','lt_font_choice']);
+ 'lt_high_contrast','lt_font_choice','ltThemeCustomColors','ltHiddenThemes']);
 function allowed(key){
  if(typeof key!=='string'||!key.startsWith(PREFIX))return false;
  const suffix=key.slice(PREFIX.length);
@@ -70,7 +70,7 @@ function validValue(key,val){
    optionalCount(x,'repetitions')&&optionalCount(x,'lapses'));
  }
  if(tail==='last_story')return typeof val==='string'&&val.length<=100;
- if(tail==='uiTheme')return ['aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre','celestial-atlas','harbor-ledger','circuit-notebook','terracotta-gallery','monochrome-zine','moonlit-margins','saffron-archive','bauhaus-studio','mosaic-courtyard','saville-clockwork','station-tickets','reform-club-brass','midnight-platform','exchange-gazette','suez-quays','consular-ledger'].includes(val)||val==='red-sea-dispatch'||val==='monsoon-meridian'||val==='deccan-timetable'||val==='kholby-crossing'||val==='vindhya-passage'||val==='dawn-escape'||val==='ganges-panorama'||val==='calcutta-ledger'||val==='rangoon-passage'||val==='singapore-lantern'||val==='typhoon-timetable'||val==='victoria-harbour-dispatch'||val==='shanghai-wind-ledger'||val==='typhoon-signal'||val==='yokohama-lantern'||val==='paper-lantern-circus'||val==='pacific-meridian'||val==='civic-panorama'||val==='prairie-signal'||val==='salt-lake-dispatch'||val==='medicine-bow-crossing'||val==='plum-creek-signal'||val==='snowbound-telegraph'||val==='prairie-sails'||val==='hudson-ledger'||val==='atlantic-passage'||val==='last-five-minutes'||val==='westminster-vows'||val==='reform-club-countdown'||val==='meridian-epilogue'||val==='stained-glass';
+ if(tail==='uiTheme')return ['liquid-27','aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre','celestial-atlas','harbor-ledger','circuit-notebook','terracotta-gallery','monochrome-zine','moonlit-margins','saffron-archive','bauhaus-studio','mosaic-courtyard','saville-clockwork','station-tickets','reform-club-brass','midnight-platform','exchange-gazette','suez-quays','consular-ledger'].includes(val)||val==='red-sea-dispatch'||val==='monsoon-meridian'||val==='deccan-timetable'||val==='kholby-crossing'||val==='vindhya-passage'||val==='dawn-escape'||val==='ganges-panorama'||val==='calcutta-ledger'||val==='rangoon-passage'||val==='singapore-lantern'||val==='typhoon-timetable'||val==='victoria-harbour-dispatch'||val==='shanghai-wind-ledger'||val==='typhoon-signal'||val==='yokohama-lantern'||val==='paper-lantern-circus'||val==='pacific-meridian'||val==='civic-panorama'||val==='prairie-signal'||val==='salt-lake-dispatch'||val==='medicine-bow-crossing'||val==='plum-creek-signal'||val==='snowbound-telegraph'||val==='prairie-sails'||val==='hudson-ledger'||val==='atlantic-passage'||val==='last-five-minutes'||val==='westminster-vows'||val==='reform-club-countdown'||val==='meridian-epilogue'||val==='stained-glass';
  if(tail==='audioPrefs')return val!==null&&typeof val==='object'&&!Array.isArray(val)&&
   Object.keys(val).sort().join(',')==='scene,sfx,sfxVolume,volume'&&
   ['rain','thunder','forest','night','ocean','fire','wind','cabin','brook','waterfall','dawn','snow','train','library','window','cliffs','meadow','leaves','desert','stars'].includes(val.scene)&&
@@ -94,6 +94,13 @@ function validValue(key,val){
  if(tail==='discoverySort')return ['editorial','title','level'].includes(val);
  if(tail==='favoritesOnly'||tail==='dark'||tail.startsWith('has_read_'))return typeof val==='boolean';
  if(tail==='libraryScroll')return typeof val==='number'&&Number.isFinite(val)&&val>=0&&val<1e9;
+ if(tail==='ltHiddenThemes')return Array.isArray(val)&&val.length<=90&&
+  new Set(val).size===val.length&&val.every(x=>typeof x==='string'&&/^[a-z0-9-]{1,60}$/.test(x));
+ if(tail==='ltThemeCustomColors')return val!==null&&typeof val==='object'&&!Array.isArray(val)&&
+  Object.keys(val).length<=90&&Object.entries(val).every(([id,colors])=>
+   /^[a-z0-9-]{1,60}$/.test(id)&&colors!==null&&typeof colors==='object'&&!Array.isArray(colors)&&
+   Object.keys(colors).length<=3&&Object.keys(colors).every(k=>['a','b','c'].includes(k))&&
+   Object.values(colors).every(x=>typeof x==='string'&&/^#[a-f0-9]{6}$/i.test(x)));
  if(tail==='lt_glass_palette')return ['sapphire','violet','rose','sunset','ocean',
   'mint','lavender','graphite','pearl','rainbow'].includes(val);
  if(tail==='lt_glass_tint')return typeof val==='number'&&Number.isFinite(val)&&val>=0&&val<=100;
