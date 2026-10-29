@@ -9,8 +9,13 @@ certificate conflict.
 
 - CI Debug builds now have ID com.storylens.reader.preview and launcher label
   "Lingua Tales Preview". They install beside the normal app without deleting
-  its existing data. Preview is NOT an update; because its signer may change,
-  replacing an older Preview might require removing Preview only.
+  its existing data. Preview is NOT an update to the production application.
+  **When stable signing secrets are configured**, Preview also uses that retained
+  signing key; subsequent Preview APKs with increasing versionCode can update
+  earlier Preview installs without uninstalling. Without those secrets, the
+  CI runner Debug key can change and another Preview update may conflict.
+  Only remove Preview after exporting its backup; NEVER remove production
+  merely to fix a Preview installation.
 - The main app remains com.storylens.reader and keeps existing data/storage
   when installed over an earlier copy with the SAME signing certificate.
 - CI sets a monotonic versionCode from GITHUB_RUN_NUMBER and inspects
