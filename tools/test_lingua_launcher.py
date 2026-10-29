@@ -35,7 +35,21 @@ assert gradient is not None
 for color in ("startColor", "centerColor", "endColor"):
     assert re.fullmatch(r"#[0-9A-Fa-f]{6}", gradient.get(ANDROID + color, ""))
 
-for name in ("lingua_icon_foreground", "lingua_icon_monochrome"):
+foreground = xml(RES / "drawable/lingua_icon_foreground.xml")
+assert foreground.tag == "layer-list", "approved icon should be image-backed and scaled"
+icon_item = foreground.find("item")
+assert icon_item is not None and icon_item.get(ANDROID+"gravity") == "center"
+assert icon_item.get(ANDROID+"width") == "72dp"
+assert icon_item.get(ANDROID+"height") == "72dp"
+bitmap = icon_item.find("bitmap")
+assert bitmap is not None and bitmap.get(ANDROID+"src") == "@drawable/lingua_tales_approved"
+approved = RES / "drawable-nodpi/lingua_tales_approved.png"
+assert approved.is_file(), "approved Lingua Tales reference artwork must be packaged"
+data = approved.read_bytes()
+assert data[:8] == b"\\x89PNG\\r\\n\\x1a\\n", "approved icon must be a real PNG"
+assert len(data) >= 120000, "do not replace approved 3D icon with placeholder artwork"
+
+for name in ("lingua_icon_monochrome",):
     vector = xml(RES / "drawable" / (name + ".xml"))
     assert vector.tag == "vector"
     assert vector.get(ANDROID + "viewportWidth") == "108"
