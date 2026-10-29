@@ -158,6 +158,29 @@ storage.setItem('storylens_fontEnglish','"sans"');
 const fontBackup=JSON.parse(api.exportObject());
 assert.equal(JSON.parse(fontBackup.entries.storylens_fontArabic),'naskh');
 assert.equal(JSON.parse(fontBackup.entries.storylens_fontEnglish),'sans');
+
+ // The licensed OGG controls use a different localStorage key than procedural
+ // scenes. Losing it on export makes safe reinstall silently lose preferences.
+ const audioKey='storylens_licensedAudioPrefs';
+ const licensed={track:'wind-chimes',volume:0.33,sfxVolume:0.28,ambienceEnabled:true,sfxEnabled:false};
+ storage.setItem(audioKey,JSON.stringify(licensed));
+ const audioBackup=JSON.parse(api.exportObject());
+ assert.deepEqual(JSON.parse(audioBackup.entries[audioKey]),licensed,
+  'licensed audio selections and opt-ins survive backup export');
+ storage.removeItem(audioKey);
+ assert.equal(api.restore({[audioKey]:audioBackup.entries[audioKey]}),1);
+ assert.deepEqual(JSON.parse(storage.getItem(audioKey)),licensed,
+  'licensed settings restored without changing package identity');
+ const badAudio=value=>JSON.stringify({format:'storylens.backup',version:1,
+  entries:{[audioKey]:JSON.stringify(value)}});
+ for(const invalid of [
+  {...licensed,track:'../../escape'}, {...licensed,volume:NaN},
+  {...licensed,sfxVolume:2}, {...licensed,ambienceEnabled:'yes'},
+  {...licensed,extra:'unsafe'}, null, []
+ ])assert.throws(()=>api.parseBackup(badAudio(invalid)),/نوع/,
+  'malformed licensed audio preferences must not enter a backup');
+ storage.removeItem(audioKey);
+
 assert.throws(()=>api.parseBackup(JSON.stringify({format:'storylens.backup',version:1,
  entries:{'storylens_fontArabic':'"url(https://bad.example)"'}})),/نوع/);
 
