@@ -45,6 +45,10 @@ android {
             applicationIdSuffix = ".preview"
             versionNameSuffix = "-preview"
             manifestPlaceholders["ltAppLabel"] = "Lingua Tales Preview"
+            // A configured private, retained signing key makes Preview updates
+            // compatible across CI runs too. Without it, Gradle's ephemeral
+            // Debug signing remains only a disposable side-by-side preview.
+            if (hasLtStableSigning) signingConfig = signingConfigs.getByName("stableRelease")
         }
         release {
             manifestPlaceholders["ltAppLabel"] = "Lingua Tales"
