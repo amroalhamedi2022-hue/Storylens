@@ -213,6 +213,7 @@ function hiddenThemeNames(){const saved=get('ltHiddenThemes',[]);return Array.is
 function customThemeColors(){const value=get('ltThemeCustomColors',{});return value&&typeof value==='object'&&!Array.isArray(value)?value:{};}
 function applyCustomThemeColors(){
  const body=document.body;
+ if(!body?.style||typeof body.style.removeProperty!=='function')return false;
  for(const name of ['--lt-glass-a','--lt-glass-b','--lt-glass-c','--accent'])body.style.removeProperty(name);
  const colors=customThemeColors()[state.uiTheme];
  if(!colors||typeof colors!=='object')return;
