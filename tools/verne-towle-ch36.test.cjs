@@ -2,7 +2,8 @@
 const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..'),assets=path.join(root,'app/src/main/assets'),read=n=>fs.readFileSync(path.join(assets,n),'utf8');
 const html=read('index.html');
-assert.ok(html.includes('chapter.titleAr||chapter.title'),'RTL reader should prefer the Arabic chapter title when supplied');
+assert.ok(html.includes("(chapter.title||'')"),'reader keeps the original English chapter heading regardless of interface language');
+assert.ok(!html.includes('chapter.titleAr||chapter.title'),'Arabic translations must not replace original story headings');
 assert.ok(html.indexOf('classic-verne-towle-ch35.js')<html.indexOf('classic-verne-towle-ch36.js'));
 assert.ok(html.indexOf('classic-verne-towle-ch36.js')<html.indexOf('editorial-art.js'));
 assert.ok(html.indexOf('editorial-art.js')<html.indexOf('editorial-art-ch35.js'));
