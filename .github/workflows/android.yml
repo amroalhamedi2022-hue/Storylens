@@ -207,7 +207,13 @@ jobs:
                 echo "::warning::Signed release built, but its certificate has NOT been compared to the already installed app."
               fi
             else
-              echo "update_warning=Isolated Preview package; NEVER use this APK to update the installed production application. Preview signatures can also vary between CI runs." >> "app/build/outputs/apk/$variant/APK_INSTALL_IDENTITY.txt"
+              if [ -n "${LT_SIGNING_KEYSTORE:-}" ]; then
+                echo "preview_signing=retained_private_key" >> "app/build/outputs/apk/$variant/APK_INSTALL_IDENTITY.txt"
+                echo "update_warning=Preview can update an older Preview only with the SAME retained key and adequate versionCode; it cannot replace the production package." >> "app/build/outputs/apk/$variant/APK_INSTALL_IDENTITY.txt"
+              else
+                echo "preview_signing=ephemeral_ci_debug_key" >> "app/build/outputs/apk/$variant/APK_INSTALL_IDENTITY.txt"
+                echo "update_warning=Preview installs alongside production, but future Preview builds may need Preview-only backup and reinstall until stable signing is configured." >> "app/build/outputs/apk/$variant/APK_INSTALL_IDENTITY.txt"
+              fi
             fi
           }
           inspect_variant debug
