@@ -31,7 +31,11 @@ assert.match(activity,/reader\.loadUrl\("https:\/\/appassets\.androidplatform\.n
 const manifest=fs.readFileSync(path.join(root,'app/src/main/AndroidManifest.xml'),'utf8');
 assert.ok(!manifest.includes('android.permission.RECORD_AUDIO'),'no microphone permission');
 assert.ok(!manifest.includes('android.permission.INTERNET'),'offline app no network permission');
-assert.match(manifest,/android:label="Lingua Tales"/,'launcher label uses the approved brand');
+assert.match(manifest,/android:label="\$\{ltAppLabel\}"/,'launcher label is resolved per build variant');
+const gradle=fs.readFileSync(path.join(root,'app/build.gradle.kts'),'utf8');
+assert.match(gradle,/manifestPlaceholders\["ltAppLabel"\] = "Lingua Tales"/,'release keeps approved brand');
+assert.match(gradle,/manifestPlaceholders\["ltAppLabel"\] = "Lingua Tales Preview"/,'preview has distinct launcher label');
+assert.match(gradle,/applicationIdSuffix = "\.preview"/,'preview does not replace production installation');
 assert.match(manifest,/android:icon="@mipmap\/ic_launcher"/,'adaptive launcher icon is configured');
 assert.match(manifest,/android:roundIcon="@mipmap\/ic_launcher"/,'round launcher mask is configured');
 const launcher=fs.readFileSync(path.join(root,'app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml'),'utf8');
