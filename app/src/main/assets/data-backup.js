@@ -27,15 +27,17 @@ function utf8ByteLength(value, limit=Infinity){
 function exceedsUtf8Limit(value, limit){
  return utf8ByteLength(value,limit)>limit;
 }
-const MAX_ENTRIES=900;
+const MAX_ENTRIES=5000; // Full story/chapter reading positions can exceed the old 900-key cap.
 const simple=new Set(['saved','cards','favorites','bookmarks','last_story','uiTheme','readerPrefs',
  'written_examples','discoveryLevel','discoverySort','favoritesOnly','wordSenses','dark','size',
- 'fontArabic','fontEnglish','uiLocale','audioPrefs','licensedAudioPrefs']);
+ 'fontArabic','fontEnglish','uiLocale','audioPrefs','licensedAudioPrefs',
+ 'libraryScroll','lt_glass_palette','lt_glass_tint','lt_reduce_transparency',
+ 'lt_high_contrast','lt_font_choice']);
 function allowed(key){
  if(typeof key!=='string'||!key.startsWith(PREFIX))return false;
  const suffix=key.slice(PREFIX.length);
  return simple.has(suffix)||/^(chapter|has_read)_[a-z0-9-]{1,90}$/.test(suffix)||
-  /^scroll_[a-z0-9-]{1,90}_[0-9]{1,4}$/.test(suffix);
+  /^(scroll|readpage|reading_anchor)_[a-z0-9-]{1,90}_[0-9]{1,4}$/.test(suffix);
 }
 const safeText=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // A backup must not silently restore objects/arrays where the reader expects
@@ -91,8 +93,21 @@ function validValue(key,val){
  if(tail==='discoveryLevel')return ['all','A1','A2','B1','B2','C1','C2'].includes(val);
  if(tail==='discoverySort')return ['editorial','title','level'].includes(val);
  if(tail==='favoritesOnly'||tail==='dark'||tail.startsWith('has_read_'))return typeof val==='boolean';
+ if(tail==='libraryScroll')return typeof val==='number'&&Number.isFinite(val)&&val>=0&&val<1e9;
+ if(tail==='lt_glass_palette')return ['sapphire','violet','rose','sunset','ocean',
+  'mint','lavender','graphite','pearl','rainbow'].includes(val);
+ if(tail==='lt_glass_tint')return typeof val==='number'&&Number.isFinite(val)&&val>=0&&val<=100;
+ if(tail==='lt_reduce_transparency'||tail==='lt_high_contrast')return typeof val==='boolean';
+ if(tail==='lt_font_choice')return ['system','naskh','sans','serif','rounded','humanist',
+  'classic','mono','handwritten','casual-hand','calligraphy'].includes(val);
  if(tail==='size')return Number.isInteger(val)&&val>=16&&val<=32;
  if(tail.startsWith('chapter_'))return Number.isInteger(val)&&val>=0&&val<1000;
+ if(tail.startsWith('readpage_'))return Number.isInteger(val)&&val>=0&&val<=10000;
+ if(tail.startsWith('reading_anchor_'))return val===null||
+  (val!==null&&typeof val==='object'&&!Array.isArray(val)&&
+   Object.keys(val).sort().join(',')==='index,top'&&
+   Number.isInteger(val.index)&&val.index>=0&&val.index<10000&&
+   typeof val.top==='number'&&Number.isFinite(val.top)&&val.top>=-2000&&val.top<=2000);
  if(tail.startsWith('scroll_'))return Number.isFinite(val)&&val>=0&&val<1e9;
  if(tail==='readerPrefs')return val!==null&&typeof val==='object'&&!Array.isArray(val);
  if(tail==='written_examples')return validStringMap(val,500,5000);
