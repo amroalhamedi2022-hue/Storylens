@@ -6,6 +6,13 @@ val ltSigningStore = System.getenv("LT_SIGNING_KEYSTORE")
 val ltSigningStorePassword = System.getenv("LT_SIGNING_STORE_PASSWORD")
 val ltSigningAlias = System.getenv("LT_SIGNING_KEY_ALIAS")
 val ltSigningKeyPassword = System.getenv("LT_SIGNING_KEY_PASSWORD")
+// GitHub Actions generates a new run number for each build. Keep this
+// monotonically increasing for sideloaded updates (versionCode regression
+// would cause INSTALL_FAILED_VERSION_DOWNGRADE even with a matching signer).
+// Local developers without GitHub metadata keep the original v0.6 identity.
+val ltCiRun = System.getenv("GITHUB_RUN_NUMBER")?.toIntOrNull()?.takeIf { it in 1..1_000_000 }
+val ltVersionCode = if (ltCiRun != null) 100_000 + ltCiRun else 6
+
 val hasLtStableSigning = !ltSigningStore.isNullOrBlank() &&
     !ltSigningStorePassword.isNullOrBlank() &&
     !ltSigningAlias.isNullOrBlank() &&
@@ -18,7 +25,7 @@ android {
         applicationId = "com.storylens.reader"
         minSdk = 26
         targetSdk = 35
-        versionCode = 6
+        versionCode = ltVersionCode
         versionName = "0.6.0"
     }
     signingConfigs {
