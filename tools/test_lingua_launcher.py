@@ -46,7 +46,7 @@ assert bitmap is not None and bitmap.get(ANDROID+"src") == "@drawable/lingua_tal
 approved = RES / "drawable-nodpi/lingua_tales_approved.png"
 assert approved.is_file(), "approved Lingua Tales reference artwork must be packaged"
 data = approved.read_bytes()
-assert data[:8] == b"\\x89PNG\\r\\n\\x1a\\n", "approved icon must be a real PNG"
+assert data[:8] == b"\x89PNG\r\n\x1a\n", "approved icon must be a real PNG"
 assert len(data) >= 120000, "do not replace approved 3D icon with placeholder artwork"
 
 for name in ("lingua_icon_monochrome",):
