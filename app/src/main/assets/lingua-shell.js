@@ -469,7 +469,16 @@ function openSettings(){
   select.addEventListener('change',()=>applyReadingSize(lang,select.value));
   label.appendChild(select);sheet.appendChild(label);
  }
- if(global.LinguaAmbience)global.LinguaAmbience.controls(sheet,rtl());
+ // One primary licensed-audio panel; the extra synthesized presets are
+ // available on demand rather than duplicating a giant settings form.
+ if(global.LinguaAmbience){
+  const extras=document.createElement('details');extras.className='lt-generated-audio-extras';
+  const summary=document.createElement('summary');
+  summary.textContent=rtl()?'أجواء إلكترونية إضافية (اختياري)':'Extra synthesized ambience (optional)';
+  extras.appendChild(summary);
+  global.LinguaAmbience.controls(extras,rtl());
+  sheet.appendChild(extras);
+ }
  if(global.LinguaLicensedAudio)global.LinguaLicensedAudio.controls(sheet,rtl());
  const note=document.createElement('p');note.className='quiet';
  note.textContent=rtl()?'ترجمة بقية عناصر الواجهة قيد التطوير.':'Full localization of the remaining interface is in progress.';
@@ -952,5 +961,6 @@ document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
 loadLocale();
 loadFonts();
 loadReadingSizes();
+applyCustomThemeColors();
 library();
 })(window);
