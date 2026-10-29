@@ -149,15 +149,61 @@ store.delete('storylens_saved');store.delete('storylens_cards');
 assert.equal(api.restore(preview.entries),4);
 assert.deepEqual(JSON.parse(storage.getItem('storylens_saved')),['reached','break the ice']);
 assert.equal(store.has('personal_secret'),true,'unrelated personal storage untouched');
-// Exports must never produce an archive that the importer refuses (>900 keys).
-for(let i=0;i<901;i++)storage.setItem('storylens_chapter_test-'+i,'0');
+// Export and import share the same 5000-key safety cap for expanded libraries.
+for(let i=0;i<5001;i++)storage.setItem('storylens_chapter_test-'+i,'0');
 assert.throws(()=>api.exportObject(),/عدد عناصر/);
-for(let i=0;i<901;i++)storage.removeItem('storylens_chapter_test-'+i);
+for(let i=0;i<5001;i++)storage.removeItem('storylens_chapter_test-'+i);
 storage.setItem('storylens_fontArabic','"naskh"');
 storage.setItem('storylens_fontEnglish','"sans"');
 const fontBackup=JSON.parse(api.exportObject());
 assert.equal(JSON.parse(fontBackup.entries.storylens_fontArabic),'naskh');
 assert.equal(JSON.parse(fontBackup.entries.storylens_fontEnglish),'sans');
+
+ // Legacy backup format version remains one. Recover reader page, precise
+ // paragraph anchor and accessibility/typography tweaks after safe reinstall.
+ const newKeys={
+  'storylens_readpage_around-the-world-in-eighty-days-towle_31':4,
+  'storylens_reading_anchor_around-the-world-in-eighty-days-towle_31':{index:17,top:-28},
+  storylens_libraryScroll:548,
+  storylens_lt_glass_palette:'lavender',
+  storylens_lt_glass_tint:68,
+  storylens_lt_reduce_transparency:true,
+  storylens_lt_high_contrast:false,
+  storylens_lt_font_choice:'humanist'
+ };
+ for(const [key,value] of Object.entries(newKeys))storage.setItem(key,JSON.stringify(value));
+ const newBackup=api.exportObject();
+ const newArchive=JSON.parse(newBackup);
+ for(const [key,value] of Object.entries(newKeys))
+  assert.deepEqual(JSON.parse(newArchive.entries[key]),value,'export includes '+key);
+ const roundtrip=api.parseBackup(newBackup);
+ for(const key of Object.keys(newKeys))storage.removeItem(key);
+ const recovered=Object.fromEntries(Object.keys(newKeys).map(key=>[key,roundtrip[key]]));
+ assert.equal(api.restore(recovered),Object.keys(newKeys).length);
+ for(const [key,value] of Object.entries(newKeys)) {
+  assert.deepEqual(JSON.parse(storage.getItem(key)),value,'restore preserves '+key);
+  storage.removeItem(key);
+ }
+ const invalidPortable=(key,value)=>JSON.stringify({format:'storylens.backup',version:1,
+  entries:{[key]:JSON.stringify(value)}});
+ for(const [key,value] of [
+  ['storylens_readpage_short-book_0',-1],
+  ['storylens_readpage_short-book_0',1.25],
+  ['storylens_reading_anchor_short-book_0',{index:-1,top:0}],
+  ['storylens_reading_anchor_short-book_0',{index:4,top:Infinity}],
+  ['storylens_reading_anchor_short-book_0',{index:2,top:0,prototype:'evil'}],
+  ['storylens_libraryScroll',-10],
+  ['storylens_lt_glass_palette','url(https://example.test)'],
+  ['storylens_lt_glass_tint',101],
+  ['storylens_lt_reduce_transparency','true'],
+  ['storylens_lt_high_contrast',null],
+  ['storylens_lt_font_choice','external-font-url']
+ ])assert.throws(()=>api.parseBackup(invalidPortable(key,value)),/نوع/,
+   'reject malformed saved reader preference '+key);
+ assert.throws(()=>api.parseBackup(invalidPortable(
+  'storylens_reading_anchor_../../other_0',{index:0,top:0})),/مفتاح/,
+  'disallow traversal/injected storage names');
+
 
  // The licensed OGG controls use a different localStorage key than procedural
  // scenes. Losing it on export makes safe reinstall silently lose preferences.
