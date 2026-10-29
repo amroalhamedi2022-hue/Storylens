@@ -407,7 +407,12 @@ console.log('PASS: LT-02 production navigation enter/exit, rapid back, modal, sc
 const manifest=fs.readFileSync(path.join(root,'app/src/main/AndroidManifest.xml'),'utf8');
 const gradle=fs.readFileSync(path.join(root,'app/build.gradle.kts'),'utf8');
 const nativeHost=fs.readFileSync(path.join(root,'app/src/main/java/com/storylens/reader/MainActivity.kt'),'utf8');
-assert.match(manifest,/android:label="Lingua Tales"/,'Android launcher must show new brand');
+assert.match(manifest,/android:label="\\$\\{ltAppLabel\\}"/,
+ 'launcher label resolves per build variant');
+assert.match(gradle,/manifestPlaceholders\\["ltAppLabel"\\]\\s*=\\s*"Lingua Tales"/,
+ 'production release retains the approved name');
+assert.match(gradle,/manifestPlaceholders\\["ltAppLabel"\\]\\s*=\\s*"Lingua Tales Preview"/,
+ 'side-by-side CI preview has a distinct name');
 assert.match(gradle,/applicationId\s*=\s*"com\.storylens\.reader"/,
  'existing installed application identity must remain unchanged');
 assert.ok(!/<uses-permission/.test(manifest),'rebrand cannot add network or microphone permission');
