@@ -11,6 +11,8 @@ import android.webkit.JavascriptInterface
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 import java.io.ByteArrayInputStream
+import java.io.InputStream
+import java.io.FilterInputStream
 import androidx.activity.result.contract.ActivityResultContracts
 import android.os.Bundle
 import android.webkit.WebChromeClient
@@ -210,6 +212,65 @@ class MainActivity : ComponentActivity() {
         )
     }
 
+
+    /** Android's asset loader does not guarantee partial OGG byte responses.
+     * WebView/Chromium media decoding frequently requests Range bytes, so we
+     * explicitly serve 206 (or 416) with correct headers from the APK alone.
+     */
+    private fun serveOfflineOgg(request: WebResourceRequest): WebResourceResponse? {
+        val path = request.url.path.orEmpty()
+        if (!Regex("^/assets/licensed-audio/[a-z0-9-]+\\.ogg$").matches(path)) return null
+        val assetPath = path.removePrefix("/assets/")
+        val input = try { assets.open(assetPath) } catch (_: Exception) { return null }
+        val total = try { input.available().toLong() } catch (_: Exception) { input.close(); return null }
+        val header = request.requestHeaders.entries.firstOrNull {
+            it.key.equals("Range", ignoreCase = true)
+        }?.value
+        val range = try { OfflineOggByteRange.parse(header, total) }
+        catch (_: IllegalArgumentException) {
+            input.close()
+            return WebResourceResponse(
+                "text/plain", "UTF-8", 416, "Range Not Satisfiable",
+                mapOf("Content-Range" to "bytes */$total", "Cache-Control" to "no-store"),
+                ByteArrayInputStream(ByteArray(0))
+            )
+        }
+        var skipped = 0L
+        while (skipped < range.first) {
+            val step = input.skip(range.first - skipped)
+            if (step <= 0) { input.close(); return null }
+            skipped += step
+        }
+        val partial = !header.isNullOrBlank()
+        val headers = mutableMapOf(
+            "Accept-Ranges" to "bytes",
+            "Content-Length" to range.length.toString(),
+            "Cache-Control" to "private, max-age=86400"
+        )
+        if (partial) headers["Content-Range"] = "bytes ${range.first}-${range.last}/$total"
+        // Avoid copying full OGG files into heap: only stream the requested
+        // segment and close the underlying APK asset at EOF/response close.
+        val bounded = object : FilterInputStream(input) {
+            private var left = range.length
+            override fun read(): Int {
+                if (left <= 0) return -1
+                val value = super.read()
+                if (value >= 0) left--
+                return value
+            }
+            override fun read(bytes: ByteArray, offset: Int, length: Int): Int {
+                if (left <= 0) return -1
+                val n = super.read(bytes, offset, minOf(length.toLong(), left).toInt())
+                if (n > 0) left -= n
+                return n
+            }
+        }
+        return WebResourceResponse(
+            "audio/ogg", null, if (partial) 206 else 200,
+            if (partial) "Partial Content" else "OK", headers, bounded
+        )
+    }
+
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -251,7 +312,9 @@ class MainActivity : ComponentActivity() {
                     val bundled = url.scheme == "https" &&
                         url.host == "appassets.androidplatform.net" &&
                         url.path.orEmpty().startsWith("/assets/")
-                    val local = if (bundled) assetLoader.shouldInterceptRequest(url) else null
+                    val local = if (bundled) {
+                        serveOfflineOgg(request!!) ?: assetLoader.shouldInterceptRequest(url)
+                    } else null
                     return local ?: WebResourceResponse(
                         "text/plain", "UTF-8", 403, "Forbidden",
                         mapOf("Cache-Control" to "no-store"),
