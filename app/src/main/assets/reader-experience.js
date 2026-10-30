@@ -353,7 +353,11 @@ function installPageTurn(){
   if(!pageSwipeAllowed(event.target,window.getSelection?.()?.toString()||''))return;
   const box=sentenceBox.getBoundingClientRect();
   const x=event.clientX-box.left;
-  const edge=x>=box.width-66?'right':x<=66?'left':null;
+  // When the reading pane is narrow, the two 66px edge zones overlap.
+  // Resolve the gesture to the physically nearer edge instead of always right.
+  const edge=x<0||x>box.width?null:
+   x<=66&&x<=box.width-x?'left':
+   box.width-x<=66?'right':null;
   const delta=edge?pageEdgeDelta(edge,document.documentElement.dir==='rtl'):0;
   if(!edge||(delta<0&&current===0&&state.chapter===0)||
      (delta>0&&current===pages.length-1&&state.chapter===state.story.chapters.length-1))return;
