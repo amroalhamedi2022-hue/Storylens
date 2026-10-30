@@ -76,6 +76,14 @@ listeners.pointerdown({isPrimary:true,pointerType:'mouse',button:2,target,client
 assert.equal(childNodes.length,1,'right-click does not create a tap bubble');
 listeners.keydown({key:'Enter',repeat:true,target});
 assert.equal(childNodes.length,1,'repeated keyboard activation does not create a tap bubble');
+listeners.keydown({key:'Enter',altKey:true,target});
+assert.equal(childNodes.length,1,'Alt+Enter shortcut does not animate a button');
+listeners.keydown({key:' ',ctrlKey:true,target});
+assert.equal(childNodes.length,1,'Ctrl+Space shortcut does not animate a button');
+target.isConnected=false;
+listeners.pointerdown({isPrimary:true,target,clientX:55,clientY:45});
+assert.equal(childNodes.length,1,'detached buttons do not receive animation nodes');
+target.isConnected=true;
 reduced=true;
 listeners.pointerdown({isPrimary:true,target,clientX:55,clientY:45});
 assert.equal(childNodes.length,1,'reduced-motion does not spawn extra bubble');
