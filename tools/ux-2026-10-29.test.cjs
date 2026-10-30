@@ -150,4 +150,30 @@ function testPointerOwnership(){
  assert.deepEqual(turns,[1],'own capture loss cancels without a page turn');
 }
 testPointerOwnership();
-console.log('PASS: English titles, compact library, real paper fold, multi-touch pointer ownership, Liquid 27 and touch feedback');
+
+/* The last page is not a swipe-to-exit trap. Exercise the production move()
+ * closure with both gesture and explicit-control sources, not a copy of its logic. */
+const moveStart=reader.indexOf(" function move(delta,source='control'){");
+const moveEnd=reader.indexOf(" prev.addEventListener('click'",moveStart);
+assert.ok(moveStart>0&&moveEnd>moveStart,'production move handler can be extracted');
+const moveSource=reader.slice(moveStart,moveEnd).trim();
+let exits=0,advances=0;
+const moveState={chapter:0,story:{id:'book',chapters:[{paragraphs:[{en:'End',ar:'النهاية'}]}]}};
+const moveContext={current:0,pages:[{}],state:moveState,
+ nextChapter:()=>advances++,libraryBack:()=>exits++,
+ renderPage(){},renderReader(){},put(){},window:{scrollTo(){}},
+ LT_PAGE_PARAGRAPHS:4};
+const realMove=vm.runInNewContext('('+moveSource+')',moveContext);
+realMove(1,'gesture');
+assert.equal(exits,0,'swiping forward on the final page must keep the reader open');
+realMove(1);
+assert.equal(exits,1,'explicit end-of-book control still returns to library');
+moveState.story.chapters.push({paragraphs:[{en:'More',ar:'المزيد'}]});
+realMove(1,'gesture');
+assert.equal(advances,1,'swiping at an ordinary chapter boundary still advances');
+assert.match(reader,/move\(delta,'gesture'\)/,'pointer release is classified as a gesture');
+assert.match(reader,/move\(\(rtl\?dx>0:dx<0\)\?1:-1,'gesture'\)/,'touch fallback is classified as a gesture');
+assert.match(reader,/delta>0&&current===pages\.length-1&&state\.chapter===state\.story\.chapters\.length-1/,
+ 'a completed book has no misleading empty page fold');
+
+console.log('PASS: English titles, compact library, live fold, safe final-page gesture, pointer ownership, Liquid 27 and touch feedback');

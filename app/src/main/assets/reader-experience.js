@@ -232,10 +232,12 @@ function installPageTurn(){
   }
   window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
  }
- function move(delta){
+ function move(delta,source='control'){
   if(delta>0&&current===pages.length-1){
    if(state.chapter<state.story.chapters.length-1)nextChapter();
-   else libraryBack();
+   // A casual edge swipe at The End must not discard the reading view.
+   // The explicit chapter-end and keyboard-accessible Back buttons still exit.
+   else if(source==='control')libraryBack();
    return;
   }
   if(delta<0&&current===0){
@@ -280,7 +282,7 @@ function installPageTurn(){
   resetTouch();
   if(!allowed||Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.25)return;
   const rtl=document.documentElement.dir==='rtl';
-  move((rtl?dx>0:dx<0)?1:-1);
+  move((rtl?dx>0:dx<0)?1:-1,'gesture');
  },{passive:true});
  sentenceBox.addEventListener('touchcancel',resetTouch,{passive:true});
  // Physical edge-hold interaction: keep a live fold aligned to the user's
@@ -326,7 +328,7 @@ function installPageTurn(){
   const turn=commit&&held.progress>=.34;
   drag=null;clearFold();
   try{sentenceBox.releasePointerCapture?.(held.id);}catch(_){}
-  if(turn)move(delta);
+  if(turn)move(delta,'gesture');
  }
  sentenceBox.addEventListener('pointerdown',event=>{
   if(event.isPrimary===false||event.button!==0||drag||state.page!=='reader')return;
@@ -335,7 +337,9 @@ function installPageTurn(){
   const box=sentenceBox.getBoundingClientRect();
   const x=event.clientX-box.left;
   const edge=x>=box.width-66?'right':x<=66?'left':null;
-  if(!edge||(pageEdgeDelta(edge,document.documentElement.dir==='rtl')<0&&current===0&&state.chapter===0))return;
+  const delta=edge?pageEdgeDelta(edge,document.documentElement.dir==='rtl'):0;
+  if(!edge||(delta<0&&current===0&&state.chapter===0)||
+     (delta>0&&current===pages.length-1&&state.chapter===state.story.chapters.length-1))return;
   drag={id:event.pointerId,edge,startX:event.clientX,startY:event.clientY,
    width:Math.max(1,box.width),progress:0,locked:false,lastY:event.clientY};
   try{sentenceBox.setPointerCapture?.(event.pointerId);}catch(_){}
