@@ -73,4 +73,23 @@ created.animationend();assert.equal(created.wasRemoved,true,'animation cleans up
 reduced=true;
 listeners.pointerdown({isPrimary:true,target,clientX:55,clientY:45});
 assert.equal(childNodes.length,1,'reduced-motion does not spawn extra bubble');
-console.log('PASS: English titles, compact library, interactive paper guards, Liquid 27 customization and actual touch bubble handler');
+// Execute the production fold geometry, not a reimplementation.
+const geometrySource=reader.match(/function pageFoldGeometry\(progress,edge,vertical\)\{[\s\S]*?\n\}/);
+assert.ok(geometrySource,'continuous paper fold geometry exists');
+const foldGeometry=vm.runInNewContext('('+geometrySource[0]+')');
+assert.equal(foldGeometry(0,'right',0).cut,'0.00%');
+assert.equal(foldGeometry(.5,'right',0).cut,'24.00%');
+assert.equal(foldGeometry(1,'left',0).cut,'48.00%');
+assert.equal(foldGeometry(10,'right',0).cut,'48.00%','overscroll stays clamped');
+assert.equal(foldGeometry(-1,'left',0).cut,'0.00%','negative drag stays clamped');
+assert.equal(foldGeometry(.5,'right',220).skew,'-7.00deg');
+assert.equal(foldGeometry(.5,'left',220).skew,'7.00deg');
+assert.match(reader,/underneath\?\.classList\.add\('lt-paper-underlay'\)/,'real neighboring page is revealed');
+assert.match(reader,/pages\.forEach\(item=>item\.classList\.remove\('lt-paper-underlay'\)\)/,'cancel/release restores hidden page');
+assert.match(reader,/sentenceBox\.releasePointerCapture\?\.\(held\.id\)/,'pointer capture is released');
+assert.match(css,/\.lt-book-page\.lt-paper-underlay\{display:block!important;position:absolute/);
+assert.match(css,/clip-path:inset\(0 var\(--lt-fold-right,0%\) 0 var\(--lt-fold-left,0%\)\)/);
+assert.match(css,/\.lt-paper-grabbing\[data-lt-fold-edge="right"\]:after/);
+assert.match(css,/\.lt-paper-grabbing\[data-lt-fold-edge="left"\]:after/);
+assert.match(css,/prefers-reduced-motion:reduce/);
+console.log('PASS: English titles, compact library, interactive fold/reveal, Liquid 27 customization and actual touch bubble handler');

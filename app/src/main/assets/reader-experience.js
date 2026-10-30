@@ -138,6 +138,14 @@ function pageSwipeGestureAllowed(startTarget,endTarget,selectionText=''){
 // The book binding follows the interface direction. The fallback touch swipe
 // already does this; pointer-held paper must agree with it in Arabic UI.
 function pageEdgeDelta(edge,rtl){return (edge==='right')!==rtl?1:-1;}
+// A page bends at its crease: only the moving edge is uncovered. Keep the
+// geometry pure so LTR/RTL and slow finger movement can be regression-tested.
+function pageFoldGeometry(progress,edge,vertical){
+ const amount=Math.max(0,Math.min(1,Number(progress)||0));
+ const cut=(amount*48).toFixed(2)+'%';
+ const tilt=Math.max(-7,Math.min(7,(Number(vertical)||0)/22))*(edge==='right'?-1:1);
+ return {cut,flap:cut,skew:tilt.toFixed(2)+'deg'};
+}
 
 // A timeout from an earlier turn must never clear a newer animation on the
 // same page. WebView timers can already be queued when clearTimeout is called,
@@ -281,29 +289,43 @@ function installPageTurn(){
  let drag=null,foldRaf=null;
  function clearFold(){
   if(foldRaf!==null){window.cancelAnimationFrame?.(foldRaf);foldRaf=null;}
+  sentenceBox.classList.remove('lt-paper-grabbing');
+  delete sentenceBox.dataset.ltFoldEdge;
+  for(const name of ['--lt-fold-cut','--lt-flap-width','--lt-flap-skew'])
+   sentenceBox.style.removeProperty(name);
+  pages.forEach(item=>item.classList.remove('lt-paper-underlay'));
   const active=pages[current];
   if(active){
    active.classList.remove('lt-paper-grabbed');
-   for(const name of ['--lt-fold-origin','--lt-fold-angle','--lt-fold-shade-angle','--lt-fold-shadow'])
-    active.style.removeProperty(name);
+   active.style.removeProperty('--lt-fold-left');
+   active.style.removeProperty('--lt-fold-right');
   }
  }
  function previewFold(){
   foldRaf=null;
-  if(!drag)return;
+  if(!drag||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
   const active=pages[current];
-  const amount=drag.progress;
+  const geometry=pageFoldGeometry(drag.progress,drag.edge,drag.lastY-drag.startY);
+  const underneath=pages[current+pageEdgeDelta(drag.edge,document.documentElement.dir==='rtl')];
+  // The neighboring page is visually revealed but remains inert and hidden
+  // from assistive technology until the turn is actually committed.
+  underneath?.classList.add('lt-paper-underlay');
+  sentenceBox.classList.add('lt-paper-grabbing');
+  sentenceBox.dataset.ltFoldEdge=drag.edge;
+  sentenceBox.style.setProperty('--lt-fold-cut',geometry.cut);
+  sentenceBox.style.setProperty('--lt-flap-width',geometry.flap);
+  sentenceBox.style.setProperty('--lt-flap-skew',geometry.skew);
   active.classList.add('lt-paper-grabbed');
-  active.style.setProperty('--lt-fold-origin',drag.edge);
-  active.style.setProperty('--lt-fold-angle',(drag.edge==='right'?-1:1)*Math.min(145,amount*145)+'deg');
-  active.style.setProperty('--lt-fold-shade-angle',drag.edge==='right'?'90deg':'270deg');
-  active.style.setProperty('--lt-fold-shadow','0 15px '+Math.round(20+amount*45)+'px rgba(15,17,44,'+(0.17+amount*.25)+')');
+  active.style.setProperty('--lt-fold-left',drag.edge==='left'?geometry.cut:'0%');
+  active.style.setProperty('--lt-fold-right',drag.edge==='right'?geometry.cut:'0%');
  }
  function finishPaperDrag(commit){
   if(!drag)return;
-  const delta=pageEdgeDelta(drag.edge,document.documentElement.dir==='rtl');
-  const turn=commit&&drag.progress>=.34;
+  const held=drag;
+  const delta=pageEdgeDelta(held.edge,document.documentElement.dir==='rtl');
+  const turn=commit&&held.progress>=.34;
   drag=null;clearFold();
+  try{sentenceBox.releasePointerCapture?.(held.id);}catch(_){}
   if(turn)move(delta);
  }
  sentenceBox.addEventListener('pointerdown',event=>{
@@ -315,7 +337,7 @@ function installPageTurn(){
   const edge=x>=box.width-66?'right':x<=66?'left':null;
   if(!edge||(pageEdgeDelta(edge,document.documentElement.dir==='rtl')<0&&current===0&&state.chapter===0))return;
   drag={id:event.pointerId,edge,startX:event.clientX,startY:event.clientY,
-   width:Math.max(1,box.width),progress:0,locked:false};
+   width:Math.max(1,box.width),progress:0,locked:false,lastY:event.clientY};
   try{sentenceBox.setPointerCapture?.(event.pointerId);}catch(_){}
  },{passive:true});
  sentenceBox.addEventListener('pointermove',event=>{
@@ -328,6 +350,7 @@ function installPageTurn(){
    drag.locked=true;
   }
   drag.progress=Math.max(0,Math.min(1,horizontal/Math.max(115,drag.width*.68)));
+  drag.lastY=event.clientY;
   if(foldRaf===null){
    if(typeof window.requestAnimationFrame==='function')foldRaf=window.requestAnimationFrame(previewFold);
    else previewFold();
