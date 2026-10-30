@@ -285,10 +285,14 @@ function installPageTurn(){
   const selected=window.getSelection?.()?.toString()||'';
   // The gesture must start and finish on reading surfaces; crossing onto a
   // control must not turn a button tap into a page change.
-  const endTarget=document.elementFromPoint?.(
-   event.changedTouches[0].clientX,event.changedTouches[0].clientY
-  )||event.target;
-  const allowed=pageSwipeGestureAllowed(startTarget,endTarget,selected);
+  // A touch can end on a completely different part of the screen. Do not
+  // fall back to event.target when hit-testing returns null: touchend's
+  // target often remains the *original* sheet despite an off-sheet release.
+  const endTarget=typeof document.elementFromPoint==='function'
+   ?document.elementFromPoint(event.changedTouches[0].clientX,event.changedTouches[0].clientY)
+   :event.target;
+  const allowed=!!endTarget&&sentenceBox.contains(endTarget)&&
+   pageSwipeGestureAllowed(startTarget,endTarget,selected);
   resetTouch();
   if(!allowed||Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.25)return;
   const rtl=document.documentElement.dir==='rtl';
