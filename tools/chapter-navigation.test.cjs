@@ -55,8 +55,6 @@ assert.equal(incomplete.label.children.length,0);
 incomplete.sandbox.state.page='library';
 nav.children[0].onclick();
 assert.equal(incomplete.calls.length,3,'stale previous button is inert after leaving reader');
-selectorPlaceholder();
-function selectorPlaceholder(){} // The select is tested below after its declaration.
 incomplete.sandbox.state.page='reader';
 incomplete.sandbox.state.chapter=0;
 nav.children[0].onclick();
