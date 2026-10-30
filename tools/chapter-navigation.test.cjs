@@ -32,7 +32,7 @@ function run({locale='en',total=37,count=2,index=1}={}){
   state:{page:'reader',story,chapter:index},renderReader:()=>{calls.push('base')}};
  vm.runInNewContext(source,sandbox,{filename:'lingua-chapter-navigation.js'});
  sandbox.renderReader();
- return {end,label,heading,primary,calls,decorate:sandbox.window.LinguaChapterNavigation.decorate};
+ return {end,label,heading,primary,calls,story,sandbox,decorate:sandbox.window.LinguaChapterNavigation.decorate};
 }
 const incomplete=run();
 assert.equal(incomplete.calls[0],'base');
@@ -51,6 +51,17 @@ incomplete.decorate();
 assert.equal(incomplete.end.children.filter(x=>x.className==='lt-chapter-nav').length,1,'repeated decoration must not duplicate chapter controls');
 assert.equal(incomplete.end.children.filter(x=>x.className==='lt-serial-progress').length,1,'repeated decoration must not duplicate availability notes');
 assert.equal(incomplete.label.children.length,0);
+// Old controls must not navigate after leaving the reader or switching chapters.
+incomplete.sandbox.state.page='library';
+nav.children[0].onclick();
+assert.equal(incomplete.calls.length,3,'stale previous button is inert after leaving reader');
+selectorPlaceholder();
+function selectorPlaceholder(){} // The select is tested below after its declaration.
+incomplete.sandbox.state.page='reader';
+incomplete.sandbox.state.chapter=0;
+nav.children[0].onclick();
+assert.equal(incomplete.calls.length,3,'stale button cannot navigate a different chapter');
+incomplete.sandbox.state.chapter=1;
 const middle=run({index:0});
 assert.equal(middle.end.children[0].children[0].disabled,true);
 middle.end.children[0].children[1].onclick();
