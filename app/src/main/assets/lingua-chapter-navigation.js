@@ -48,10 +48,17 @@ function decorate(){
   });
   select.value=String(index);
   select.addEventListener('change',()=>{
-   const target=Number(select.value);
-   if(Number.isInteger(target)&&target>=0&&target<chapters.length&&target!==index
-      &&state.page==='reader'&&state.story===story&&state.chapter===index
-      &&typeof global.stlChapter==='function')global.stlChapter(target);
+   // A stale or malformed selection must not leave the UI claiming that a
+   // chapter was opened when navigation was rejected.
+   const raw=select.value;
+   const target=/^(0|[1-9]\\d*)$/.test(raw)?Number(raw):NaN;
+   const active=state.page==='reader'&&state.story===story&&state.chapter===index;
+   if(!active||!Number.isSafeInteger(target)||target<0||target>=chapters.length){
+    select.value=String(index);
+    return;
+   }
+   if(target!==index&&typeof global.stlChapter==='function')global.stlChapter(target);
+   else if(target!==index)select.value=String(index);
   });
   picker.appendChild(caption);picker.appendChild(select);nav.appendChild(picker);
  }
