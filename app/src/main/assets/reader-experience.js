@@ -151,10 +151,22 @@ function pageEdgeDelta(edge,rtl){return (edge==='right')!==rtl?1:-1;}
 // A page bends at its crease: only the moving edge is uncovered. Keep the
 // geometry pure so LTR/RTL and slow finger movement can be regression-tested.
 function pageFoldGeometry(progress,edge,vertical){
- const amount=Math.max(0,Math.min(1,Number(progress)||0));
+ const input=Number(progress),pull=Number(vertical);
+ const amount=Number.isFinite(input)?Math.max(0,Math.min(1,input)):0;
+ const verticalShift=Number.isFinite(pull)?Math.max(-1,Math.min(1,pull/170)):0;
  const cut=(amount*48).toFixed(2)+'%';
- const tilt=Math.max(-7,Math.min(7,(Number(vertical)||0)/22))*(edge==='right'?-1:1);
- return {cut,flap:cut,skew:tilt.toFixed(2)+'deg'};
+ const tilt=Math.max(-7,Math.min(7,(Number.isFinite(pull)?pull:0)/22))*(edge==='right'?-1:1);
+ // A five-point crease, not a straight rectangular crop: the paper bows
+ // inward at its middle, while the corners follow the finger's vertical pull.
+ // Values are bounded to keep Chromium's clip path stable on narrow tablets.
+ const arch=6.2*amount*(1-.16*amount);
+ const top=(arch*(1-.55*verticalShift)).toFixed(2)+'%';
+ const bottom=(arch*(1+.55*verticalShift)).toFixed(2)+'%';
+ const belly=(arch*.83).toFixed(2)+'%';
+ const shoulder=(arch*.18).toFixed(2)+'%';
+ const rotation=((edge==='right'?-1:1)*(12+28*amount)).toFixed(2)+'deg';
+ const shadow=(.13+.28*amount).toFixed(2);
+ return {cut,flap:cut,skew:tilt.toFixed(2)+'deg',top,bottom,belly,shoulder,rotation,shadow};
 }
 
 // A timeout from an earlier turn must never clear a newer animation on the
@@ -308,7 +320,9 @@ function installPageTurn(){
   if(foldRaf!==null){window.cancelAnimationFrame?.(foldRaf);foldRaf=null;}
   sentenceBox.classList.remove('lt-paper-grabbing');
   delete sentenceBox.dataset.ltFoldEdge;
-  for(const name of ['--lt-fold-cut','--lt-flap-width','--lt-flap-skew'])
+  for(const name of ['--lt-fold-cut','--lt-flap-width','--lt-flap-skew',
+   '--lt-curl-top','--lt-curl-bottom','--lt-curl-belly','--lt-curl-shoulder',
+   '--lt-flap-rotation','--lt-fold-shadow'])
    sentenceBox.style.removeProperty(name);
   // A page can change while a fold is held (keyboard, chapter controls,
   // accessibility navigation). Clean the originally folded sheet too.
@@ -339,6 +353,12 @@ function installPageTurn(){
   sentenceBox.style.setProperty('--lt-fold-cut',geometry.cut);
   sentenceBox.style.setProperty('--lt-flap-width',geometry.flap);
   sentenceBox.style.setProperty('--lt-flap-skew',geometry.skew);
+  sentenceBox.style.setProperty('--lt-curl-top',geometry.top);
+  sentenceBox.style.setProperty('--lt-curl-bottom',geometry.bottom);
+  sentenceBox.style.setProperty('--lt-curl-belly',geometry.belly);
+  sentenceBox.style.setProperty('--lt-curl-shoulder',geometry.shoulder);
+  sentenceBox.style.setProperty('--lt-flap-rotation',geometry.rotation);
+  sentenceBox.style.setProperty('--lt-fold-shadow',geometry.shadow);
   active.classList.add('lt-paper-grabbed');
   active.style.setProperty('--lt-fold-left',drag.edge==='left'?geometry.cut:'0%');
   active.style.setProperty('--lt-fold-right',drag.edge==='right'?geometry.cut:'0%');

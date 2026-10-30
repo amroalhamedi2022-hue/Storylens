@@ -106,6 +106,24 @@ assert.equal(foldGeometry(10,'right',0).cut,'48.00%','overscroll stays clamped')
 assert.equal(foldGeometry(-1,'left',0).cut,'0.00%','negative drag stays clamped');
 assert.equal(foldGeometry(.5,'right',220).skew,'-7.00deg');
 assert.equal(foldGeometry(.5,'left',220).skew,'7.00deg');
+assert.equal(foldGeometry(0,'right',0).top,'0.00%','no curve at rest');
+assert.ok(parseFloat(foldGeometry(.5,'right',0).belly)>0,'half-pulled sheet bows inward');
+assert.ok(parseFloat(foldGeometry(.5,'right',160).bottom)>
+ parseFloat(foldGeometry(.5,'right',160).top),'drag height skews the curve toward the finger');
+assert.ok(parseFloat(foldGeometry(.5,'left',-160).top)>
+ parseFloat(foldGeometry(.5,'left',-160).bottom),'opposite vertical pull mirrors the curve');
+assert.equal(foldGeometry(NaN,'right',Infinity).cut,'0.00%','invalid drag input is clamped');
+assert.equal(foldGeometry(Infinity,'left',NaN).cut,'0.00%','nonfinite gesture never clips text');
+assert.equal(foldGeometry(3,'left',0).cut,'48.00%','overscroll does not exceed the paper');
+assert.equal(foldGeometry(.5,'right',0).rotation,'-26.00deg','right reverse face tilts inward');
+assert.equal(foldGeometry(.5,'left',0).rotation,'26.00deg','left reverse face mirrors tilt');
+assert.match(css,/clip-path:polygon\(0 0,/,'right page has a curved contour');
+assert.match(css,/calc\(var\(--lt-fold-cut\) \+ var\(--lt-curl-belly\)\)/,'left curl reaches into sheet');
+assert.match(css,/\.lt-paper-grabbing:before\{/,'moving shadow accompanies the fold');
+assert.match(css,/--lt-flap-rotation/,'folded paper back has perspective');
+assert.match(reader,/sentenceBox\.style\.setProperty\('--lt-curl-belly',geometry\.belly\)/,
+ 'production pointer frame installs curved geometry');
+assert.match(reader,/--lt-fold-shadow'\]/,'fold cleanup resets dynamic shading');
 assert.match(reader,/underneath\?\.classList\.add\('lt-paper-underlay'\)/,'real neighboring page is revealed');
 assert.match(reader,/pages\.forEach\(item=>\{[\s\S]*?item\.classList\.remove\('lt-paper-underlay','lt-paper-grabbed'\)/,'cancel/release restores both old and current paper sheets');
 assert.match(reader,/sentenceBox\.releasePointerCapture\?\.\(held\.id\)/,'pointer capture is released');

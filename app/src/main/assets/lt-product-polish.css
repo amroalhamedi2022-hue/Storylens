@@ -79,6 +79,57 @@ body.theme-aurora,body.theme-nebula{background-attachment:scroll!important;}
  right:var(--lt-fold-cut,0%);left:auto;transform-origin:right center;}
 .reader #sentences.lt-paper-grabbing[data-lt-fold-edge="left"]:after{
  left:var(--lt-fold-cut,0%);right:auto;transform-origin:left center;}
+/* Finger-following curved crease. Each point of the clip contour is updated
+   at most once per animation frame and remains zero at rest. An inset fallback
+   above still works on old Chromium versions without polygon clip paths. */
+@supports (clip-path:polygon(0 0,100% 0,100% 100%,0 100%)){
+ .reader #sentences.lt-paper-grabbing[data-lt-fold-edge="right"] .lt-book-page.lt-paper-grabbed{
+  clip-path:polygon(0 0,
+   calc(100% - var(--lt-fold-cut) + var(--lt-curl-top)) 0,
+   calc(100% - var(--lt-fold-cut) + var(--lt-curl-shoulder)) 25%,
+   calc(100% - var(--lt-fold-cut) - var(--lt-curl-belly)) 50%,
+   calc(100% - var(--lt-fold-cut) + var(--lt-curl-shoulder)) 75%,
+   calc(100% - var(--lt-fold-cut) + var(--lt-curl-bottom)) 100%,0 100%)!important;
+ }
+ .reader #sentences.lt-paper-grabbing[data-lt-fold-edge="left"] .lt-book-page.lt-paper-grabbed{
+  clip-path:polygon(
+   calc(var(--lt-fold-cut) - var(--lt-curl-top)) 0,100% 0,100% 100%,
+   calc(var(--lt-fold-cut) - var(--lt-curl-bottom)) 100%,
+   calc(var(--lt-fold-cut) - var(--lt-curl-shoulder)) 75%,
+   calc(var(--lt-fold-cut) + var(--lt-curl-belly)) 50%,
+   calc(var(--lt-fold-cut) - var(--lt-curl-shoulder)) 25%)!important;
+ }
+}
+/* A soft moving cast shadow and bevel distinguish the reverse of the curling
+   sheet from the actual, text-bearing adjacent page beneath it. */
+.reader #sentences.lt-paper-grabbing:before{
+ content:"";position:absolute;top:14px;bottom:20px;z-index:2;pointer-events:none;
+ width:var(--lt-flap-width,0%);opacity:var(--lt-fold-shadow,.15);
+ background:linear-gradient(90deg,transparent,rgba(20,22,56,.42) 40%,transparent);
+ transform:skewY(var(--lt-flap-skew,0deg));
+}
+.reader #sentences.lt-paper-grabbing[data-lt-fold-edge="right"]:before{
+ right:var(--lt-fold-cut,0%);left:auto;
+}
+.reader #sentences.lt-paper-grabbing[data-lt-fold-edge="left"]:before{
+ left:var(--lt-fold-cut,0%);right:auto;
+}
+.reader #sentences.lt-paper-grabbing:after{
+ background:linear-gradient(95deg,
+ rgba(33,32,60,.25),rgba(247,245,254,.99) 12%,
+ rgba(255,255,255,.98) 37%,rgba(232,230,246,.95) 63%,
+ rgba(182,179,207,.87) 92%,rgba(29,31,70,.32))!important;
+ clip-path:polygon(0 0,96% 0,100% 18%,97% 49%,100% 82%,94% 100%,0 100%,4% 50%);
+ transform:perspective(900px) rotateY(var(--lt-flap-rotation,0deg))
+  skewY(var(--lt-flap-skew,0deg))!important;
+ backface-visibility:hidden;
+}
+.reader #sentences.lt-paper-grabbing[data-lt-fold-edge="left"]:after{
+ clip-path:polygon(4% 0,100% 0,96% 50%,100% 100%,6% 100%,0 82%,3% 49%,0 18%);
+}
+@media(prefers-reduced-motion:reduce){
+ .reader #sentences.lt-paper-grabbing:before{display:none!important}
+}
 /* Chapter navigation must remain visible in the paged reader, even though
    the legacy chapter-end block is hidden. Keep controls compact and keyboard-ready. */
 .reader .lt-chapter-nav{display:flex;align-items:center;justify-content:center;
