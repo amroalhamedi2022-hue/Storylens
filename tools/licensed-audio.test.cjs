@@ -57,13 +57,18 @@ assert.ok(loopTracks.every(x=>script.includes(x.id)&&script.includes(x.file)));
 assert.ok(effects.every(x=>script.includes(x.id)&&script.includes(x.file)));
 
 let focusGranted=true,focusRequests=0,focusReleases=0,proceduralPlaying=false,proceduralPauses=0,proceduralPlays=0;
-let rejectNextPlay=false;
+let rejectNextPlay=false,deferNextPlay=false,resolveDeferredPlay=null,resolvePausedNextPlay=false;
 const instances=[];
 const persisted=[];
 class FakeAudio{
  constructor(src){this.src=src;this.loop=false;this.volume=1;this.preload='auto';this.paused=true;this.currentTime=0;this.listeners={};instances.push(this);}
  addEventListener(name,cb){(this.listeners[name]||(this.listeners[name]=[])).push(cb);}
- async play(){if(rejectNextPlay){rejectNextPlay=false;throw new Error('synthetic decode failure');}this.paused=false;return Promise.resolve();}
+ async play(){
+  if(rejectNextPlay){rejectNextPlay=false;throw new Error('synthetic decode failure');}
+  if(deferNextPlay){deferNextPlay=false;this.paused=false;await new Promise(resolve=>{resolveDeferredPlay=resolve;});return;}
+  if(resolvePausedNextPlay){resolvePausedNextPlay=false;this.paused=true;return;}
+  this.paused=false;return Promise.resolve();
+ }
  pause(){this.paused=true;}
  emit(name){for(const cb of this.listeners[name]||[])cb();}
 }
@@ -158,6 +163,28 @@ const audio=window.LinguaLicensedAudio;
  assert.match(audioStatus.textContent,/unexpectedly interrupted/i,'unexpected pause is explained visibly');
  assert.equal(await audio.playTrack('forest'),true,'paused player is retryable');
  assert.match(audioStatus.textContent,/licensed recorded ambiences/i,'successful retry clears the diagnostic');
+ await audio.pause();
+
+ // Overlapping taps on one track must not let an older play() completion
+ // pause the current stream (a real WebView race on slow media startup).
+ deferNextPlay=true;
+ const oldRequest=audio.playTrack('forest');
+ assert.equal(typeof resolveDeferredPlay,'function','first play is still pending');
+ const newestRequest=audio.playTrack('forest');
+ assert.equal(await newestRequest,true,'newest tap can start the same track');
+ resolveDeferredPlay();
+ assert.equal(await oldRequest,false,'superseded play resolves without taking ownership');
+ assert.equal(audio.isPlaying(),true,'older completion must not silence the newer stream');
+ assert.equal(instances.at(-1).paused,false,'active HTMLAudioElement stays audible');
+ await audio.pause();
+
+ // Chromium can resolve play() after an immediate platform pause without
+ // firing an observable error. Never report playback while paused.
+ resolvePausedNextPlay=true;
+ assert.equal(await audio.playTrack('night-forest'),false,'paused-after-resolve is not success');
+ assert.equal(audio.isPlaying(),false,'UI must not lie about a paused decoder');
+ assert.match(audioStatus.textContent,/unexpectedly interrupted/i,'interruption has a retry diagnostic');
+ assert.equal(await audio.playTrack('night-forest'),true,'a fresh tap recovers');
  await audio.pause();
 
  const beforeSfx=instances.length;
