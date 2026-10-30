@@ -66,6 +66,14 @@ assert.equal(created,0,'no audio created by settings change');
  const gainsBeforeMelodyCleanup=gainDisconnects;
  const startsBeforeMelodyTick=starts;[...intervals.values()][0]();
  assert.ok(starts>startsBeforeMelodyTick,'melody timer emits a note rather than only filtered noise');
+ for(const preset of audio.SCENES.filter(s=>s.type==='music')){
+  const before=scheduledStops.length;
+  audio.selectScene(preset.id);
+  assert.equal(intervals.size,1,'one melody timer for '+preset.id);
+  const beat=preset.id==='quiet-keys'?1.25:preset.id==='moonlit-chimes'?1.55:preset.id==='lantern-motif'?1.12:1.68;
+  assert.ok(scheduledStops.slice(before).some(time=>time>=1+beat+0.12),
+   'note sustains until next beat for '+preset.id);
+ }
  audio.selectScene('rain');
  assert.equal(intervals.size,0,'switching back to ambience clears the melody timer');
  assert.ok(gainDisconnects>gainsBeforeMelodyCleanup,'scene switch disconnects melodic envelope gains, not only oscillators');
