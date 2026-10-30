@@ -135,6 +135,16 @@ function pageSwipeAllowed(target,selectionText=''){
 function pageSwipeGestureAllowed(startTarget,endTarget,selectionText=''){
  return pageSwipeAllowed(startTarget,selectionText)&&pageSwipeAllowed(endTarget,selectionText);
 }
+// A held page may be dragged over ordinary story words, which are themselves
+// dictionary buttons. Allow that landing surface, but never steal an active
+// selection or release onto a toolbar/control outside the reading text.
+function pageFoldReleaseAllowed(startTarget,endTarget,selectionText=''){
+ if(!endTarget||!pageSwipeAllowed(startTarget,selectionText))return false;
+ if(typeof selectionText==='string'&&selectionText.trim())return false;
+ const element=endTarget.nodeType===1?endTarget:endTarget.parentElement;
+ if(element?.closest?.('.tok'))return true;
+ return pageSwipeAllowed(endTarget,selectionText);
+}
 // The book binding follows the interface direction. The fallback touch swipe
 // already does this; pointer-held paper must agree with it in Arabic UI.
 function pageEdgeDelta(edge,rtl){return (edge==='right')!==rtl?1:-1;}
@@ -333,7 +343,7 @@ function installPageTurn(){
      ?document.elementFromPoint(event.clientX,event.clientY):event.target)
    :null;
   const turn=commit&&held.progress>=.34&&!!endTarget&&
-   pageSwipeGestureAllowed(held.target,endTarget,window.getSelection?.()?.toString()||'');
+   pageFoldReleaseAllowed(held.target,endTarget,window.getSelection?.()?.toString()||'');
   drag=null;clearFold();
   try{sentenceBox.releasePointerCapture?.(held.id);}catch(_){}
   if(turn)move(delta,'gesture');

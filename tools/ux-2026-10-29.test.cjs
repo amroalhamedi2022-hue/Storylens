@@ -107,6 +107,8 @@ function testPointerOwnership(){
  let frame=null,selected='',endSurface;
  const plainTarget={nodeType:1,closest:()=>null};
  const controlTarget={nodeType:1,closest:()=>({tagName:'BUTTON'})};
+ const tokenTarget={nodeType:1,closest:selector=>
+  selector.includes('.tok')||selector.includes('[role="button"]')?{className:'tok'}:null};
  endSurface=plainTarget;
  const classList=store=>({
   add(name){store.add(name);},
@@ -168,8 +170,11 @@ function testPointerOwnership(){
  assert.deepEqual(turns,[1],'a gesture starting on a control cannot navigate');
  selected='already selected';down(14);drag(14);up(14);selected='';
  assert.deepEqual(turns,[1],'existing selection prevents a paper grab');
- down(15);drag(15);up(15);
- assert.deepEqual(turns,[1,1],'a subsequent valid gesture still turns the page');
+ down(15);drag(15);endSurface=tokenTarget;up(15);
+ assert.deepEqual(turns,[1,1],'a page drag may naturally end over dictionary text');
+ endSurface=plainTarget;
+ down(16);drag(16);up(16);
+ assert.deepEqual(turns,[1,1,1],'a subsequent valid gesture still turns the page');
 }
 testPointerOwnership();
 
