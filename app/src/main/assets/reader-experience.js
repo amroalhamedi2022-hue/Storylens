@@ -320,7 +320,11 @@ function installPageTurn(){
  }
  function previewFold(){
   foldRaf=null;
-  if(!drag||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
+  // A queued animation frame can run after the chapter was replaced. It must
+  // never paint a detached sheet or a fold belonging to another book.
+  if(!drag||state.page!=='reader'||state.story!==installedStory||
+     state.chapter!==installedChapter||sentenceBox.isConnected===false||
+     window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
   const active=pages[current];
   const geometry=pageFoldGeometry(drag.progress,drag.edge,drag.lastY-drag.startY);
   const underneath=pages[current+pageEdgeDelta(drag.edge,document.documentElement.dir==='rtl')];
