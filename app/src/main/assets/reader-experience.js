@@ -342,7 +342,11 @@ function installPageTurn(){
    ?(typeof document.elementFromPoint==='function'
      ?document.elementFromPoint(event.clientX,event.clientY):event.target)
    :null;
+  // A captured pointerup can land on an unrelated page element within the
+  // viewport. Never turn the paper unless the finger actually ends on this
+  // reader sheet; this also rejects dictionary tokens in other overlays.
   const turn=commit&&held.progress>=.34&&!!endTarget&&
+   sentenceBox.contains(endTarget)&&
    pageFoldReleaseAllowed(held.target,endTarget,window.getSelection?.()?.toString()||'');
   drag=null;clearFold();
   try{sentenceBox.releasePointerCapture?.(held.id);}catch(_){}
