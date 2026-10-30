@@ -150,7 +150,7 @@ function testPointerOwnership(){
   setPointerCapture(){},releasePointerCapture(){}
  };
  const sandbox={sentenceBox:sheet,pages:[page(),page()],current:0,
-  state:{page:'reader'},document:{documentElement:{dir:'ltr'},
+  state:{page:'reader',chapter:1},document:{documentElement:{dir:'ltr'},
    elementFromPoint:()=>endSurface},
   move:delta=>turns.push(delta),
   window:{
@@ -214,6 +214,24 @@ function testPointerOwnership(){
  events.pointermove({pointerId:17,clientX:90,clientY:50,cancelable:true,preventDefault(){}});
  events.pointerup({pointerId:17,clientX:90,clientY:50,target:sheet});
  assert.deepEqual(turns,[1,1,1,-1],'narrow reader left-edge grab turns backward');
+ // A held fold belongs only to the chapter/story/reader that started it.
+ paneWidth=400;
+ down(20);drag(20);sandbox.state.page='library';up(20);
+ assert.deepEqual(turns,[1,1,1,-1],'leaving the reader cancels the old held fold');
+ sandbox.state.page='reader';
+ down(21);drag(21);sandbox.state.chapter=2;up(21);
+ assert.deepEqual(turns,[1,1,1,-1],'switching chapters mid-drag cannot turn a stale page');
+ down(22);drag(22);up(22);
+ assert.deepEqual(turns,[1,1,1,-1],'old page refuses new gestures after chapter changes');
+ sandbox.state.chapter=1;
+ down(23);drag(23);sandbox.state.story={id:'other'};up(23);
+ assert.deepEqual(turns,[1,1,1,-1],'switching stories mid-drag cancels the old turn');
+ sandbox.state.story=undefined;
+ sheet.isConnected=false;down(24);drag(24);up(24);
+ assert.deepEqual(turns,[1,1,1,-1],'detached reading sheets cannot start a new fold');
+ sheet.isConnected=true;
+ down(25);drag(25);up(25);
+ assert.deepEqual(turns,[1,1,1,-1,1],'valid page fold still works after stale-gesture cancellation');
 
 }
 testPointerOwnership();
