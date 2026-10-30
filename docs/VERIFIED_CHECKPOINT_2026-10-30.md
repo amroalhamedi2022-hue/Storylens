@@ -3,10 +3,19 @@
 ## Scope and exact evidence
 
 Working PR: https://github.com/amroalhamedi2022-hue/Storylens/pull/1
-Source/test HEAD **5c04fc22fdf575ab688d9698ca350db0acf887c7**.
-Exact-head GitHub Actions run **40974140412**: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40974140412 — **SUCCESS**.
+Latest functional source/test HEAD **fb9c3a485d9a97284bd39a0dc84d8fb7d75adeb6**.
+Exact-functional-head GitHub Actions run **40978972828**: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40978972828 — **SUCCESS**.
+Earlier source milestone **5c04fc22fdf575ab688d9698ca350db0acf887c7** also passed [run 40974140412](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40974140412).
 The previous two audio checkpoints also passed CI: runs **40972320083** and **40972994977**.
 Do not treat historical 2026-10-28 partial acceptance narratives as evidence of missing features that are already implemented and tested in current HEAD.
+
+### 2026-10-30 — Additional audio race and RTL paper fixes
+
+- **Recorded ambience playback race fixed:** an older, still-pending HTMLAudioElement.play() promise cannot pause a newer request for the same recording. Also detect a play() promise that resolves while the element is already paused, rather than incorrectly reporting sound as playing. Regression scenarios added to `tools/licensed-audio.test.cjs` (including a reused loop after a one-shot sound). This improves correctness and diagnostics but **does not prove the original sub-second interruption is cured on Android hardware**.
+- **Held paper direction fixed for RTL:** right edge goes backward and left edge advances when the UI is RTL; LTR keeps the opposite behavior. This now agrees with the existing touch-swipe fallback and blocks backward turning at the true first-page edge. Four direction cases execute the actual helper in `tools/ux-2026-10-29.test.cjs`. True deformable paper mesh and device gesture acceptance remain **NOT TESTED / INCOMPLETE**.
+- **CI PASS:** [run 40978972828](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40978972828) passed content/Node tests, Android Gradle tests and Debug APK, package identity checks, and complete Chromium reader screenshot journeys. An intermediate [run 40978869920](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40978869920) **FAILED** due to a test's assumption that the latest Audio instance was the loop rather than a previously-created SFX; corrected and retested in the successful run.
+- CI debug preview artifact **12944510692** and screenshots artifact **12943907381**. CI reported APK SHA-256 `74a3a0b4df6ee6f1b87eba05f2772453928417bf5e12c22b2129547a6d93512b`, `versionCode=100654`, ephemeral Debug certificate SHA-256 `7b31b076cb301ff2fdaf15a023cced38390783f9845f81a8e30a5e3b2a5d4bd2`. **Independent artifact rehash NOT TESTED.** No production-signed update was emitted.
+- The old preview artifact and certificate described below belong to the **previous** CI milestone and must not be mistaken for the latest build.
 
 ### Production changes (actual code)
 
