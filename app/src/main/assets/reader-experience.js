@@ -310,13 +310,13 @@ function installPageTurn(){
   delete sentenceBox.dataset.ltFoldEdge;
   for(const name of ['--lt-fold-cut','--lt-flap-width','--lt-flap-skew'])
    sentenceBox.style.removeProperty(name);
-  pages.forEach(item=>item.classList.remove('lt-paper-underlay'));
-  const active=pages[current];
-  if(active){
-   active.classList.remove('lt-paper-grabbed');
-   active.style.removeProperty('--lt-fold-left');
-   active.style.removeProperty('--lt-fold-right');
-  }
+  // A page can change while a fold is held (keyboard, chapter controls,
+  // accessibility navigation). Clean the originally folded sheet too.
+  pages.forEach(item=>{
+   item.classList.remove('lt-paper-underlay','lt-paper-grabbed');
+   item.style.removeProperty('--lt-fold-left');
+   item.style.removeProperty('--lt-fold-right');
+  });
  }
  function previewFold(){
   foldRaf=null;
