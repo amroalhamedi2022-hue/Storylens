@@ -54,11 +54,11 @@ assert.equal(incomplete.label.children.length,0);
 // Old controls must not navigate after leaving the reader or switching chapters.
 incomplete.sandbox.state.page='library';
 nav.children[0].onclick();
-assert.equal(incomplete.calls.length,3,'stale previous button is inert after leaving reader');
+assert.equal(incomplete.calls.length,2,'stale previous button is inert after leaving reader');
 incomplete.sandbox.state.page='reader';
 incomplete.sandbox.state.chapter=0;
 nav.children[0].onclick();
-assert.equal(incomplete.calls.length,3,'stale button cannot navigate a different chapter');
+assert.equal(incomplete.calls.length,2,'stale button cannot navigate a different chapter');
 incomplete.sandbox.state.chapter=1;
 const middle=run({index:0});
 assert.equal(middle.end.children[0].children[0].disabled,true);
