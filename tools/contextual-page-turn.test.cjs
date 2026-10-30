@@ -86,8 +86,30 @@ assert.equal(swipeGestureAllowed(plainTarget, plainTarget, ''), true, 'a gesture
 assert.equal(swipeGestureAllowed(plainTarget, buttonTarget, ''), false, 'a gesture ending on a control is rejected');
 assert.equal(swipeGestureAllowed(buttonTarget, plainTarget, ''), false, 'a gesture starting on a control is rejected');
 assert.equal(swipeGestureAllowed(plainTarget, plainTarget, 'selected words'), false, 'selection blocks the whole gesture');
-assert.match(reader, /document\.elementFromPoint\?\.\(/, 'touchend resolves the actual end surface');
+assert.match(reader, /typeof document\.elementFromPoint==='function'/, 'touchend explicitly hit-tests its actual landing surface');
+assert.match(reader, /sentenceBox\.contains\(endTarget\)/, 'legacy touch swipes must end inside the reading sheet');
 assert.match(reader, /pageSwipeGestureAllowed\(startTarget,endTarget,selected\)/, 'both gesture endpoints are guarded');
+// Execute the production touch-fallback handlers. WebView's touchend.target
+// often points to where the touch *started*, even after leaving the book.
+const touchStart=reader.indexOf(' let startX=null,startY=null,startTarget=null;');
+const touchStop=reader.indexOf(" sentenceBox.addEventListener('touchcancel',resetTouch",touchStart);
+assert.ok(touchStart>=0&&touchStop>touchStart,'production legacy touch handlers are extractable');
+function checkLegacyTouchLanding(landing){
+ const handlers={},turns=[];
+ const inside={nodeType:1,closest:()=>null},outside={nodeType:1,closest:()=>null};
+ const sheet={addEventListener(name,fn){handlers[name]=fn;},contains(node){return node===inside;}};
+ const sandbox={sentenceBox:sheet,
+  window:{getSelection:()=>({toString:()=>''})},
+  document:{documentElement:{dir:'ltr'},elementFromPoint:()=>landing==='inside'?inside:landing==='outside'?outside:null},
+  pageSwipeAllowed:()=>true,pageSwipeGestureAllowed:()=>true,move:delta=>turns.push(delta)};
+ vm.runInNewContext(reader.slice(touchStart,touchStop),sandbox,{filename:'production-legacy-touch.js'});
+ handlers.touchstart({touches:[{clientX:210,clientY:60}],target:inside});
+ handlers.touchend({changedTouches:[{clientX:115,clientY:61}],target:inside});
+ return turns;
+}
+assert.deepEqual(checkLegacyTouchLanding('inside'),[1],'touch released on the sheet still turns the page');
+assert.deepEqual(checkLegacyTouchLanding('outside'),[],'touch released elsewhere in the viewport cannot turn');
+assert.deepEqual(checkLegacyTouchLanding('null'),[],'touch released outside the viewport cannot turn');
 assert.ok(reader.includes("sentenceBox.addEventListener('touchcancel',resetTouch"), 'touch cancellation resets gesture state');
 assert.ok(reader.includes("window.getSelection?.()?.toString()||''"), 'selection lookup is null-safe');
 
