@@ -23,7 +23,16 @@ assert.match(css,/content-visibility:auto/,'offscreen book cards defer rendering
 assert.match(css,/backdrop-filter:none!important/,'card and hero blur cost reduced');
 assert.match(reader,/sentenceBox\.addEventListener\('pointerdown'/,'press edge of paper');
 assert.match(reader,/sentenceBox\.addEventListener\('pointermove'/,'fold follows drag');
-assert.match(reader,/sentenceBox\.addEventListener\('pointerup'/,'drag release commits turn');
+assert.match(reader,/sentenceBox\\.addEventListener\\('pointerup'/,'drag release commits turn');
+const edgeSource=reader.match(/function pageEdgeDelta\\(edge,rtl\\)\\{[^}]+\\}/);
+assert.ok(edgeSource,'production pointer drag exposes RTL-aware binding direction');
+const edgeDelta=vm.runInNewContext('('+edgeSource[0]+')');
+assert.equal(edgeDelta('right',false),1,'LTR right edge advances');
+assert.equal(edgeDelta('left',false),-1,'LTR left edge returns');
+assert.equal(edgeDelta('left',true),1,'RTL left edge advances');
+assert.equal(edgeDelta('right',true),-1,'RTL right edge returns');
+assert.match(reader,/pageEdgeDelta\\(drag\\.edge,document\\.documentElement\\.dir==='rtl'\\)/,'held release uses locale binding');
+assert.match(reader,/pageEdgeDelta\\(edge,document\\.documentElement\\.dir==='rtl'\\)<0/,'first page protects the correct backward edge');
 assert.match(reader,/\bfinishPaperDrag\(true\)/,'commit paper release');
 assert.match(reader,/Math\.abs\(dy\)>15/,'vertical scroll must not turn paper');
 assert.match(reader,/\.closest\?\.\('\.tok,button/,'dictionary selection/controls protected');
