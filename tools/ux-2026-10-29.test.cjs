@@ -92,4 +92,62 @@ assert.match(css,/clip-path:inset\(0 var\(--lt-fold-right,0%\) 0 var\(--lt-fold-
 assert.match(css,/\.lt-paper-grabbing\[data-lt-fold-edge="right"\]:after/);
 assert.match(css,/\.lt-paper-grabbing\[data-lt-fold-edge="left"\]:after/);
 assert.match(css,/prefers-reduced-motion:reduce/);
-console.log('PASS: English titles, compact library, interactive fold/reveal, Liquid 27 customization and actual touch bubble handler');
+// Execute the installed pointer handlers against a two-page DOM. A second
+// finger's cancellation/lost capture must not release the primary held sheet.
+const dragStart=reader.indexOf(' let drag=null,foldRaf=null;');
+const dragEnd=reader.indexOf(" renderPage('next',false);",dragStart);
+const helperStart=reader.indexOf('function pageEdgeDelta(');
+const helperEnd=reader.indexOf('\n// A timeout',helperStart);
+assert.ok(dragStart>0&&dragEnd>dragStart&&helperStart>0&&helperEnd>helperStart,
+ 'real production drag handlers and geometry are extractable');
+const dragSource=reader.slice(helperStart,helperEnd)+reader.slice(dragStart,dragEnd);
+function testPointerOwnership(){
+ const events={},turns=[],foldClasses=new Set();
+ let frame=null;
+ const classList=store=>({
+  add(name){store.add(name);},
+  remove(name){store.delete(name);}
+ });
+ const style=()=>({values:{},setProperty(name,value){this.values[name]=value;},
+  removeProperty(name){delete this.values[name];}});
+ const page=()=>({classList:classList(new Set()),style:style()});
+ const sheet={
+  dataset:{},classList:classList(foldClasses),style:style(),
+  getBoundingClientRect(){return {left:0,width:400};},
+  addEventListener(name,handler){events[name]=handler;},
+  setPointerCapture(){},releasePointerCapture(){}
+ };
+ const sandbox={sentenceBox:sheet,pages:[page(),page()],current:0,
+  state:{page:'reader'},document:{documentElement:{dir:'ltr'}},
+  move:delta=>turns.push(delta),
+  window:{
+   matchMedia:()=>({matches:false}),
+   getSelection:()=>({toString:()=>''}),
+   requestAnimationFrame:cb=>{frame=cb;return 1;},
+   cancelAnimationFrame:()=>{frame=null;}
+  }};
+ vm.runInNewContext(dragSource,sandbox,{filename:'production-pointer-fold.js'});
+ const down=id=>events.pointerdown({pointerId:id,isPrimary:true,button:0,
+  clientX:395,clientY:50,target:{closest:()=>null}});
+ const drag=id=>events.pointermove({pointerId:id,clientX:210,clientY:52,
+  cancelable:true,preventDefault(){}});
+ down(7);drag(7);
+ events.pointercancel({pointerId:99});
+ events.lostpointercapture({pointerId:99});
+ assert.equal(typeof frame,'function','unrelated pointer must not cancel fold preview');
+ frame();
+ assert.ok(foldClasses.has('lt-paper-grabbing'),'primary finger retains visible fold');
+ events.pointerup({pointerId:7});
+ assert.deepEqual(turns,[1],'primary release still commits a forward turn');
+ assert.ok(!foldClasses.has('lt-paper-grabbing'),'release cleans the fold');
+ down(8);drag(8);
+ events.pointercancel({pointerId:8});
+ events.pointerup({pointerId:8});
+ assert.deepEqual(turns,[1],'own pointercancel cancels without a page turn');
+ down(9);drag(9);
+ events.lostpointercapture({pointerId:9});
+ events.pointerup({pointerId:9});
+ assert.deepEqual(turns,[1],'own capture loss cancels without a page turn');
+}
+testPointerOwnership();
+console.log('PASS: English titles, compact library, real paper fold, multi-touch pointer ownership, Liquid 27 and touch feedback');
