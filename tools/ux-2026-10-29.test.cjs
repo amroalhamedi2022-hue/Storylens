@@ -251,6 +251,19 @@ function testPointerOwnership(){
  assert.deepEqual(turns,[1,1,1,-1,1],
   'a held fold cannot turn a different page after page-index navigation');
  sandbox.current=0;
+ // If another navigation occurs after the fold was already painted, cleanup
+ // must remove the fold from the *old* page, not only the new active page.
+ down(27);drag(27);frame();
+ assert.equal(sandbox.pages[0].classList.has('lt-paper-grabbed'),true,
+  'old page receives fold preview before navigation');
+ sandbox.current=1;up(27);
+ assert.equal(sandbox.pages[0].classList.has('lt-paper-grabbed'),false,
+  'stale page fold class is removed after page navigation');
+ assert.equal(sandbox.pages[0].style.values['--lt-fold-right'],undefined,
+  'stale page fold clip is removed after page navigation');
+ assert.deepEqual(turns,[1,1,1,-1,1],
+  'cleanup after a page switch does not commit the stale fold');
+ sandbox.current=0;
 
 }
 testPointerOwnership();
