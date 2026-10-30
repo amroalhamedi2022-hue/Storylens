@@ -172,10 +172,22 @@ async function playTrack(id){
   }
   throw error;
  }
- if(ticket!==generation||doc?.hidden){
-  try{active.pause();}catch(_){}
-  if(!playing)releaseFocus();
+ // Two taps on the same track can overlap while the first play() promise
+ // is pending. A stale promise must never pause the newer request's player.
+ if(ticket!==generation){
+  if(player!==active){try{active.pause();}catch(_){}}
   return false;
+ }
+ if(doc?.hidden){
+  ++generation;playing=false;
+  try{active.pause();}catch(_){}
+  releaseFocus();syncUi();return false;
+ }
+ // Some WebView versions resolve play() even after the decoder/focus has
+ // already paused the element. Never display a false "playing" state.
+ if(active.paused){
+  ++generation;playing=false;
+  releaseFocus();interruptedPlayback();return false;
  }
  playbackIssue=null;playing=true;syncUi();return true;
 }
