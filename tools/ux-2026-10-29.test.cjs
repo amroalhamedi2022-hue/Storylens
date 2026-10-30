@@ -125,7 +125,7 @@ assert.ok(dragStart>0&&dragEnd>dragStart&&helperStart>0&&helperEnd>helperStart,
 const dragSource=reader.slice(helperStart,helperEnd)+reader.slice(dragStart,dragEnd);
 function testPointerOwnership(){
  const events={},turns=[],foldClasses=new Set();
- let frame=null,selected='',endSurface;
+ let frame=null,selected='',endSurface,paneWidth=400;
  const plainTarget={nodeType:1,closest:()=>null};
  const controlTarget={nodeType:1,closest:selector=>
   selector.includes('.tok')?null:{tagName:'BUTTON'}};
@@ -141,7 +141,7 @@ function testPointerOwnership(){
  const page=()=>({classList:classList(new Set()),style:style()});
  const sheet={
   dataset:{},classList:classList(foldClasses),style:style(),
-  getBoundingClientRect(){return {left:0,width:400};},
+  getBoundingClientRect(){return {left:0,width:paneWidth};},
   addEventListener(name,handler){events[name]=handler;},
   setPointerCapture(){},releasePointerCapture(){}
  };
@@ -197,6 +197,14 @@ function testPointerOwnership(){
  endSurface=plainTarget;
  down(16);drag(16);up(16);
  assert.deepEqual(turns,[1,1,1],'a subsequent valid gesture still turns the page');
+ // Narrow panes have overlapping edge zones: the leftmost touch must be
+ // interpreted as a left-edge grab, not incorrectly forced to the right.
+ paneWidth=100;sandbox.state.chapter=1;
+ events.pointerdown({pointerId:17,isPrimary:true,button:0,clientX:5,clientY:50,target:plainTarget});
+ events.pointermove({pointerId:17,clientX:90,clientY:50,cancelable:true,preventDefault(){}});
+ events.pointerup({pointerId:17,clientX:90,clientY:50,target:sheet});
+ assert.deepEqual(turns,[1,1,1,-1],'narrow reader left-edge grab turns backward');
+
 }
 testPointerOwnership();
 
