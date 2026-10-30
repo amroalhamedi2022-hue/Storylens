@@ -135,6 +135,9 @@ function pageSwipeAllowed(target,selectionText=''){
 function pageSwipeGestureAllowed(startTarget,endTarget,selectionText=''){
  return pageSwipeAllowed(startTarget,selectionText)&&pageSwipeAllowed(endTarget,selectionText);
 }
+// The book binding follows the interface direction. The fallback touch swipe
+// already does this; pointer-held paper must agree with it in Arabic UI.
+function pageEdgeDelta(edge,rtl){return (edge==='right')!==rtl?1:-1;}
 
 // A timeout from an earlier turn must never clear a newer animation on the
 // same page. WebView timers can already be queued when clearTimeout is called,
@@ -298,7 +301,7 @@ function installPageTurn(){
  }
  function finishPaperDrag(commit){
   if(!drag)return;
-  const delta=drag.edge==='right'?1:-1;
+  const delta=pageEdgeDelta(drag.edge,document.documentElement.dir==='rtl');
   const turn=commit&&drag.progress>=.34;
   drag=null;clearFold();
   if(turn)move(delta);
@@ -310,7 +313,7 @@ function installPageTurn(){
   const box=sentenceBox.getBoundingClientRect();
   const x=event.clientX-box.left;
   const edge=x>=box.width-66?'right':x<=66?'left':null;
-  if(!edge||(edge==='left'&&current===0&&state.chapter===0))return;
+  if(!edge||(pageEdgeDelta(edge,document.documentElement.dir==='rtl')<0&&current===0&&state.chapter===0))return;
   drag={id:event.pointerId,edge,startX:event.clientX,startY:event.clientY,
    width:Math.max(1,box.width),progress:0,locked:false};
   try{sentenceBox.setPointerCapture?.(event.pointerId);}catch(_){}
