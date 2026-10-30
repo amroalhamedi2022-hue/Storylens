@@ -69,25 +69,29 @@ function playMelodyNote(ctx,spec){
  const notes=Array.isArray(spec[7])?spec[7]:[];
  if(!notes.length)return;
  const frequency=notes[melodyStep%notes.length],now=ctx.currentTime;
+ // Keep each note's tail audible until the next scheduled note; presets
+ // have different beat intervals, so a fixed one-second envelope leaves gaps.
+ const beat=Math.max(0.25,(spec[8]||1300)/1000);
+ const tail=beat+0.12;
  melodyStep++;
  const osc=ctx.createOscillator(),gain=ctx.createGain(),voice={osc,gain};
  osc.type='sine';osc.frequency.setValueAtTime(frequency,now);
  gain.gain.setValueAtTime(0.0001,now);
  gain.gain.exponentialRampToValueAtTime(0.032,now+0.055);
- gain.gain.exponentialRampToValueAtTime(0.0001,now+0.98);
+ gain.gain.exponentialRampToValueAtTime(0.0001,now+tail);
  osc.connect(gain);gain.connect(master);melodyNodes.add(voice);
  osc.onended=()=>{melodyNodes.delete(voice);try{osc.disconnect();gain.disconnect();}catch(_){}};
- osc.start(now);osc.stop(now+1);
+ osc.start(now);osc.stop(now+tail+0.02);
  // A quiet fifth on alternate beats gives the original motif a soft harmonic bed.
  if(melodyStep%2===0){
   const harmony=ctx.createOscillator(),hGain=ctx.createGain(),harmonicVoice={osc:harmony,gain:hGain};
   harmony.type='triangle';harmony.frequency.setValueAtTime(frequency*1.5,now);
   hGain.gain.setValueAtTime(0.0001,now);
   hGain.gain.exponentialRampToValueAtTime(0.009,now+0.08);
-  hGain.gain.exponentialRampToValueAtTime(0.0001,now+1.18);
+  hGain.gain.exponentialRampToValueAtTime(0.0001,now+tail+0.15);
   harmony.connect(hGain);hGain.connect(master);melodyNodes.add(harmonicVoice);
   harmony.onended=()=>{melodyNodes.delete(harmonicVoice);try{harmony.disconnect();hGain.disconnect();}catch(_){}};
-  harmony.start(now);harmony.stop(now+1.2);
+  harmony.start(now);harmony.stop(now+tail+0.17);
  }
 }
 function ensureContext(){
