@@ -169,6 +169,15 @@ function testPointerOwnership(){
  events.pointercancel({pointerId:99});
  events.lostpointercapture({pointerId:99});
  assert.equal(typeof frame,'function','unrelated pointer must not cancel fold preview');
+ // A scheduled frame must not paint a fold after navigation replaces its book.
+ const staleFrame=frame;
+ sandbox.state.chapter=2;
+ staleFrame();
+ assert.equal(foldClasses.has('lt-paper-grabbing'),false,
+  'queued frame from a previous chapter must not paint stale paper');
+ sandbox.state.chapter=1;
+
+ drag(7);
  frame();
  assert.ok(foldClasses.has('lt-paper-grabbing'),'primary finger retains visible fold');
  up(7);
