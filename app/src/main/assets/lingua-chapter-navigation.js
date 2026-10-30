@@ -10,7 +10,10 @@ function decorate(){
  const story=state.story,chapters=story.chapters||[],index=state.chapter;
  if(!Number.isInteger(index)||index<0||index>=chapters.length)return;
  const end=document.querySelector('.reader .chapter-end');
- if(!end||end.querySelector('.lt-chapter-nav'))return; // Avoid duplicate controls on repeated decoration.
+ const pageControls=document.querySelector('.reader .lt-page-controls');
+ if(!end||document.querySelector('.reader .lt-chapter-nav')||end.querySelector('.lt-chapter-nav'))return;
+ // In paged mode the base reader hides chapter-end. Insert chapter navigation
+ // after the visible page counter rather than into that hidden endpoint.
  const incomplete=Number.isInteger(story.totalChapters)&&story.totalChapters>chapters.length;
  const nav=document.createElement('nav');
  nav.className='lt-chapter-nav';
@@ -62,7 +65,8 @@ function decorate(){
   });
   picker.appendChild(caption);picker.appendChild(select);nav.appendChild(picker);
  }
- end.prepend(nav);
+ if(pageControls)pageControls.insertAdjacentElement('afterend',nav);
+ else end.prepend(nav);
  if(!incomplete){
   // Make the completed-book endpoint explicit in both locales; the base reader
   // normally renders these labels, but this layer owns the chapter-end contract.
@@ -83,7 +87,8 @@ function decorate(){
   'المتاح '+chapters.length+' من '+story.totalChapters+' فصلًا',
   chapters.length+' of '+story.totalChapters+' chapters available');
  const primaryAction=end.querySelector('button.primary');
- if(primaryAction)end.insertBefore(progress,primaryAction);
+ if(pageControls)nav.appendChild(progress);
+ else if(primaryAction)end.insertBefore(progress,primaryAction);
  else end.appendChild(progress);
  if(index===chapters.length-1){
   const heading=end.querySelector('div');
