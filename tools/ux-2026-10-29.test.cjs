@@ -106,7 +106,8 @@ function testPointerOwnership(){
  const events={},turns=[],foldClasses=new Set();
  let frame=null,selected='',endSurface;
  const plainTarget={nodeType:1,closest:()=>null};
- const controlTarget={nodeType:1,closest:()=>({tagName:'BUTTON'})};
+ const controlTarget={nodeType:1,closest:selector=>
+  selector.includes('.tok')?null:{tagName:'BUTTON'}};
  const tokenTarget={nodeType:1,closest:selector=>
   selector.includes('.tok')||selector.includes('[role="button"]')?{className:'tok'}:null};
  endSurface=plainTarget;
