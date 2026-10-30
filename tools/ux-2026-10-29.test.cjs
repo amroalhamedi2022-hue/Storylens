@@ -107,7 +107,7 @@ assert.equal(foldGeometry(-1,'left',0).cut,'0.00%','negative drag stays clamped'
 assert.equal(foldGeometry(.5,'right',220).skew,'-7.00deg');
 assert.equal(foldGeometry(.5,'left',220).skew,'7.00deg');
 assert.match(reader,/underneath\?\.classList\.add\('lt-paper-underlay'\)/,'real neighboring page is revealed');
-assert.match(reader,/pages\.forEach\(item=>item\.classList\.remove\('lt-paper-underlay'\)\)/,'cancel/release restores hidden page');
+assert.match(reader,/pages\.forEach\(item=>\{[\s\S]*?item\.classList\.remove\('lt-paper-underlay','lt-paper-grabbed'\)/,'cancel/release restores both old and current paper sheets');
 assert.match(reader,/sentenceBox\.releasePointerCapture\?\.\(held\.id\)/,'pointer capture is released');
 assert.match(css,/\.lt-book-page\.lt-paper-underlay\{display:block!important;position:absolute/);
 assert.match(css,/clip-path:inset\(0 var\(--lt-fold-right,0%\) 0 var\(--lt-fold-left,0%\)\)/);
