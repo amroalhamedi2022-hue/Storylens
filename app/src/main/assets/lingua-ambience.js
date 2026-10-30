@@ -46,6 +46,7 @@ let prefs=sanitize(typeof get==='function'?get(KEY,DEFAULT):DEFAULT);
 let context=null,master=null,noiseSource=null,noiseFilter=null,noiseGain=null,drone=null,droneGain=null,playing=false;
 let melodyTimer=null,melodyNodes=new Set(),melodyStep=0;
 let playbackGeneration=0; // invalidates an in-flight AudioContext.resume after pagehide/pause
+let pendingPlayTicket=null; // protects newer play() from an older SFX resume
 const clickVoices=new Set();
 function persist(){if(typeof put==='function')put(KEY,{...prefs});}
 function stopNodes(){
@@ -172,6 +173,7 @@ async function play(){
  // AudioContext is created or resumed. A denied request remains silent.
  if(!requestNativeAudioFocus())return false;
  const ticket=++playbackGeneration;
+ pendingPlayTicket=ticket;
  let ctx;
  try{
   ctx=ensureContext();
@@ -179,6 +181,8 @@ async function play(){
  }catch(error){
   releaseNativeAudioFocus();
   throw error;
+ }finally{
+  if(pendingPlayTicket===ticket)pendingPlayTicket=null;
  }
  if(document.hidden||ticket!==playbackGeneration){
   // A stale resume must not suspend a newer play request or retain focus.
@@ -249,7 +253,12 @@ function clickSound(){
     disposeClickVoice(voice,true);
     // A stale resume can complete after pause already observed a suspended
     // context. Suspend it again, but never release a newer playback's focus.
-    if(ctx.state==='running'){try{await ctx.suspend();}catch(_){}}
+    // A late click resume must never suspend the shared context while newer
+    // ambience is already playing or still waiting for its own resume.
+    if(ctx.state==='running'&&!playing&&pendingPlayTicket===null&&
+       !licensedPlaybackActive()&&clickVoices.size===0){
+     try{await ctx.suspend();}catch(_){}
+    }
     if(needsFocus)releaseClickFocusIfIdle(ticket);
    }
   }).catch(()=>{

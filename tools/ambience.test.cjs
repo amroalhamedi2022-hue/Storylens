@@ -170,5 +170,49 @@ assert.equal(created,0,'no audio created by settings change');
  await new Promise(resolve=>setImmediate(resolve));
  assert.equal(sfxContext.state,'suspended','late SFX resume must not leave AudioContext running after focus loss');
  assert.equal(sfxFocusReleases,1,'stale SFX completion must not release focus a second time');
- console.log('PASS LT-11: 24 offline procedural presets; native-focus denial/loss contract, lifecycle, volume, switching, cleanup and delayed-SFX resume race');
+
+ // Regression: a delayed button-SFX resume can settle AFTER the user starts
+ // ambience. The old callback must never suspend the newer audio session.
+ // Also cover a click resume that settles while the newer play is still pending.
+ for(const order of ['music-first','click-first']){
+  let overlapContext,overlapSuspends=0;
+  const resumeCallbacks=[],overlapListeners={};
+  class OverlapAudioContext extends FakeAudioContext{
+   constructor(){super();overlapContext=this}
+   resume(){return new Promise(resolve=>resumeCallbacks.push(()=>{
+    this.state='running';resolve();
+   }))}
+   async suspend(){overlapSuspends++;this.state='suspended'}
+  }
+  const overlapDocument={hidden:false,addEventListener(name,cb){overlapListeners[name]=cb}};
+  const overlapWindow={AudioContext:OverlapAudioContext,addEventListener(){},
+   setInterval(){return ++nextTimer},clearInterval(){}};
+  vm.runInNewContext(script,{window:overlapWindow,document:overlapDocument,Math,Number,Set,
+   get:()=>({}),put:()=>{}});
+  const overlap=overlapWindow.LinguaAmbience;
+  overlap.setSfx(true);
+  overlap.clickSound(); // first resume is delayed
+  assert.equal(resumeCallbacks.length,1);
+  const newPlay=overlap.play(); // user starts ambience before the click finishes
+  assert.equal(resumeCallbacks.length,2);
+  if(order==='music-first'){
+   resumeCallbacks[1]();
+   assert.equal(await newPlay,true);
+   resumeCallbacks[0](); // stale click completes after music starts
+  }else{
+   resumeCallbacks[0](); // stale click completes while music is still pending
+   await new Promise(resolve=>setImmediate(resolve));
+   assert.equal(overlapSuspends,0,'pending newer play must not be suspended');
+   resumeCallbacks[1]();
+   assert.equal(await newPlay,true);
+  }
+  await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(overlap.isPlaying(),true,'new ambience retains logical playback');
+  assert.equal(overlapContext.state,'running','stale click must not silence new ambience: '+order);
+  assert.equal(overlapSuspends,0,'no stale suspension while new ambience owns the context: '+order);
+  await overlap.pause();
+  assert.equal(overlapContext.state,'suspended','explicit pause still suspends: '+order);
+ }
+
+ console.log('PASS LT-11: 24 offline procedural presets; focus/lifecycle, delayed SFX resume, and newer-play ownership races');
 })().catch(e=>{console.error(e);process.exitCode=1});
