@@ -9,8 +9,9 @@
   if(!target||global.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches)return;
   if(global.matchMedia?.('(prefers-reduced-transparency: reduce)')?.matches)return;
   if(target.disabled||target.matches?.('[aria-disabled="true"]'))return;
+  if(!target.isConnected&&target.isConnected!==undefined)return;
   const rect=target.getBoundingClientRect?.();
-  if(!rect||!Number.isFinite(rect.width)||!rect.width)return;
+  if(!rect||!Number.isFinite(rect.width)||!Number.isFinite(rect.height)||rect.width<=0||rect.height<=0)return;
   target.querySelectorAll?.(':scope > .lt-tap-bubble').forEach(node=>node.remove());
   const node=doc.createElement('span');node.className='lt-tap-bubble';
   node.setAttribute('aria-hidden','true');
@@ -27,6 +28,7 @@
  },{passive:true,capture:true});
  doc.addEventListener('keydown',event=>{
   if(event.key!=='Enter'&&event.key!==' ')return;
+  if(event.altKey||event.ctrlKey||event.metaKey||event.isComposing)return;
   const target=event.target?.closest?.('button,.lt-theme-choice');
   if(!target||event.repeat||target.closest?.('[disabled],[aria-disabled="true"],fieldset[disabled]'))return;
   const rect=target.getBoundingClientRect();
