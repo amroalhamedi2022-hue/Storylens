@@ -116,7 +116,7 @@ assert.match(css,/\.lt-paper-grabbing\[data-lt-fold-edge="left"\]:after/);
 assert.match(css,/prefers-reduced-motion:reduce/);
 // Execute the installed pointer handlers against a two-page DOM. A second
 // finger's cancellation/lost capture must not release the primary held sheet.
-const dragStart=reader.indexOf(' let drag=null,foldRaf=null;');
+const dragStart=reader.indexOf(' const installedStory=state.story,installedChapter=state.chapter;');
 const dragEnd=reader.indexOf(" renderPage('next',false);",dragStart);
 const helperStart=reader.indexOf('function pageSwipeAllowed(');
 const helperEnd=reader.indexOf('\n// A timeout',helperStart);
