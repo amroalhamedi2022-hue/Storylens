@@ -136,8 +136,9 @@ function testPointerOwnership(){
   selector.includes('.tok')?{className:'tok'}:null};
  endSurface=plainTarget;
  const classList=store=>({
-  add(name){store.add(name);},
-  remove(name){store.delete(name);}
+  add(...names){names.forEach(name=>store.add(name));},
+  remove(...names){names.forEach(name=>store.delete(name));},
+  contains(name){return store.has(name);}
  });
  const style=()=>({values:{},setProperty(name,value){this.values[name]=value;},
   removeProperty(name){delete this.values[name];}});
@@ -254,10 +255,10 @@ function testPointerOwnership(){
  // If another navigation occurs after the fold was already painted, cleanup
  // must remove the fold from the *old* page, not only the new active page.
  down(27);drag(27);frame();
- assert.equal(sandbox.pages[0].classList.has('lt-paper-grabbed'),true,
+ assert.equal(sandbox.pages[0].classList.contains('lt-paper-grabbed'),true,
   'old page receives fold preview before navigation');
  sandbox.current=1;up(27);
- assert.equal(sandbox.pages[0].classList.has('lt-paper-grabbed'),false,
+ assert.equal(sandbox.pages[0].classList.contains('lt-paper-grabbed'),false,
   'stale page fold class is removed after page navigation');
  assert.equal(sandbox.pages[0].style.values['--lt-fold-right'],undefined,
   'stale page fold clip is removed after page navigation');
