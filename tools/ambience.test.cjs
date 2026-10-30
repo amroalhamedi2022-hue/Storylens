@@ -18,9 +18,10 @@ assert.ok(backup.includes("tail==='audioPrefs'"));
 assert.ok(css.includes('body.theme-velvet-theatre'));
 assert.ok(!script.includes('getUserMedia')&&!script.includes('fetch('));
 let created=0,starts=0,stops=0,nextTimer=0,gainDisconnects=0;
+const scheduledStops=[];
 const intervals=new Map();
 const listeners={},stored={};
-const node=(kind='node')=>({connect(){return this},disconnect(){if(kind==='gain')gainDisconnects++;},start(){starts++},stop(){stops++},
+const node=(kind='node')=>({connect(){return this},disconnect(){if(kind==='gain')gainDisconnects++;},start(){starts++},stop(time){stops++;if(Number.isFinite(time))scheduledStops.push(time)},
  frequency:{value:0,setValueAtTime(){},exponentialRampToValueAtTime(){}},
  gain:{value:0,setValueAtTime(){},exponentialRampToValueAtTime(){}},onended:null});
 class FakeAudioContext {
@@ -61,6 +62,7 @@ assert.equal(created,0,'no audio created by settings change');
  assert.equal(created,1,'reuse one context');
  audio.selectScene('quiet-keys');
  assert.equal(intervals.size,1,'melodic preset schedules one bounded timer');
+ assert.ok(scheduledStops.some(time=>time>=2.35),'quiet-keys notes sustain beyond the 1.25s beat instead of stopping at one second');
  const gainsBeforeMelodyCleanup=gainDisconnects;
  const startsBeforeMelodyTick=starts;[...intervals.values()][0]();
  assert.ok(starts>startsBeforeMelodyTick,'melody timer emits a note rather than only filtered noise');
