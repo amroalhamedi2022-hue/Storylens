@@ -321,26 +321,33 @@ function installPageTurn(){
   active.style.setProperty('--lt-fold-left',drag.edge==='left'?geometry.cut:'0%');
   active.style.setProperty('--lt-fold-right',drag.edge==='right'?geometry.cut:'0%');
  }
- function finishPaperDrag(commit){
+ function finishPaperDrag(commit,event){
   if(!drag)return;
   const held=drag;
   const delta=pageEdgeDelta(held.edge,document.documentElement.dir==='rtl');
-  const turn=commit&&held.progress>=.34;
+  // Pointer capture retargets pointerup to the page container. Hit-test the
+  // actual release coordinates so releasing over a word/control, outside the
+  // viewport, or after selecting text cannot unexpectedly turn the page.
+  const endTarget=commit
+   ?(typeof document.elementFromPoint==='function'
+     ?document.elementFromPoint(event.clientX,event.clientY):event.target)
+   :null;
+  const turn=commit&&held.progress>=.34&&!!endTarget&&
+   pageSwipeGestureAllowed(held.target,endTarget,window.getSelection?.()?.toString()||'');
   drag=null;clearFold();
   try{sentenceBox.releasePointerCapture?.(held.id);}catch(_){}
   if(turn)move(delta,'gesture');
  }
  sentenceBox.addEventListener('pointerdown',event=>{
   if(event.isPrimary===false||event.button!==0||drag||state.page!=='reader')return;
-  if(event.target.closest?.('.tok,button,a,input,select,textarea,[role="button"]'))return;
-  if(window.getSelection?.()?.toString())return;
+  if(!pageSwipeAllowed(event.target,window.getSelection?.()?.toString()||''))return;
   const box=sentenceBox.getBoundingClientRect();
   const x=event.clientX-box.left;
   const edge=x>=box.width-66?'right':x<=66?'left':null;
   const delta=edge?pageEdgeDelta(edge,document.documentElement.dir==='rtl'):0;
   if(!edge||(delta<0&&current===0&&state.chapter===0)||
      (delta>0&&current===pages.length-1&&state.chapter===state.story.chapters.length-1))return;
-  drag={id:event.pointerId,edge,startX:event.clientX,startY:event.clientY,
+  drag={id:event.pointerId,edge,target:event.target,startX:event.clientX,startY:event.clientY,
    width:Math.max(1,box.width),progress:0,locked:false,lastY:event.clientY};
   try{sentenceBox.setPointerCapture?.(event.pointerId);}catch(_){}
  },{passive:true});
@@ -362,7 +369,7 @@ function installPageTurn(){
   if(event.cancelable)event.preventDefault();
  },{passive:false});
  sentenceBox.addEventListener('pointerup',event=>{
-  if(drag&&event.pointerId===drag.id)finishPaperDrag(true);
+  if(drag&&event.pointerId===drag.id)finishPaperDrag(true,event);
  });
  // A secondary finger can be cancelled while the primary edge-hold remains active.
  // Only the pointer that owns the fold may end it.

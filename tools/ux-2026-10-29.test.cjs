@@ -97,14 +97,17 @@ assert.match(css,/prefers-reduced-motion:reduce/);
 // finger's cancellation/lost capture must not release the primary held sheet.
 const dragStart=reader.indexOf(' let drag=null,foldRaf=null;');
 const dragEnd=reader.indexOf(" renderPage('next',false);",dragStart);
-const helperStart=reader.indexOf('function pageEdgeDelta(');
+const helperStart=reader.indexOf('function pageSwipeAllowed(');
 const helperEnd=reader.indexOf('\n// A timeout',helperStart);
 assert.ok(dragStart>0&&dragEnd>dragStart&&helperStart>0&&helperEnd>helperStart,
  'real production drag handlers and geometry are extractable');
 const dragSource=reader.slice(helperStart,helperEnd)+reader.slice(dragStart,dragEnd);
 function testPointerOwnership(){
  const events={},turns=[],foldClasses=new Set();
- let frame=null;
+ let frame=null,selected='',endSurface;
+ const plainTarget={nodeType:1,closest:()=>null};
+ const controlTarget={nodeType:1,closest:()=>({tagName:'BUTTON'})};
+ endSurface=plainTarget;
  const classList=store=>({
   add(name){store.add(name);},
   remove(name){store.delete(name);}
@@ -119,36 +122,54 @@ function testPointerOwnership(){
   setPointerCapture(){},releasePointerCapture(){}
  };
  const sandbox={sentenceBox:sheet,pages:[page(),page()],current:0,
-  state:{page:'reader'},document:{documentElement:{dir:'ltr'}},
+  state:{page:'reader'},document:{documentElement:{dir:'ltr'},
+   elementFromPoint:()=>endSurface},
   move:delta=>turns.push(delta),
   window:{
    matchMedia:()=>({matches:false}),
-   getSelection:()=>({toString:()=>''}),
+   getSelection:()=>({toString:()=>selected}),
    requestAnimationFrame:cb=>{frame=cb;return 1;},
    cancelAnimationFrame:()=>{frame=null;}
   }};
  vm.runInNewContext(dragSource,sandbox,{filename:'production-pointer-fold.js'});
- const down=id=>events.pointerdown({pointerId:id,isPrimary:true,button:0,
-  clientX:395,clientY:50,target:{closest:()=>null}});
+ const down=(id,target=plainTarget)=>events.pointerdown({pointerId:id,isPrimary:true,button:0,
+  clientX:395,clientY:50,target});
  const drag=id=>events.pointermove({pointerId:id,clientX:210,clientY:52,
   cancelable:true,preventDefault(){}});
+ const up=id=>events.pointerup({pointerId:id,clientX:210,clientY:52,target:sheet});
  down(7);drag(7);
  events.pointercancel({pointerId:99});
  events.lostpointercapture({pointerId:99});
  assert.equal(typeof frame,'function','unrelated pointer must not cancel fold preview');
  frame();
  assert.ok(foldClasses.has('lt-paper-grabbing'),'primary finger retains visible fold');
- events.pointerup({pointerId:7});
+ up(7);
  assert.deepEqual(turns,[1],'primary release still commits a forward turn');
  assert.ok(!foldClasses.has('lt-paper-grabbing'),'release cleans the fold');
  down(8);drag(8);
  events.pointercancel({pointerId:8});
- events.pointerup({pointerId:8});
+ up(8);
  assert.deepEqual(turns,[1],'own pointercancel cancels without a page turn');
  down(9);drag(9);
  events.lostpointercapture({pointerId:9});
- events.pointerup({pointerId:9});
+ up(9);
  assert.deepEqual(turns,[1],'own capture loss cancels without a page turn');
+ // Captured pointerup targets the sheet, but the real release may land on a
+ // dictionary word, an accessible control, or outside the visible viewport.
+ down(10);drag(10);endSurface=controlTarget;up(10);
+ assert.deepEqual(turns,[1],'release over a dictionary/control target cancels the turn');
+ assert.ok(!foldClasses.has('lt-paper-grabbing'),'rejected release cleans the fold');
+ down(11);drag(11);endSurface=null;up(11);
+ assert.deepEqual(turns,[1],'release outside the viewport cannot navigate');
+ endSurface=plainTarget;
+ down(12);drag(12);selected='selected phrase';up(12);selected='';
+ assert.deepEqual(turns,[1],'selection created during the hold cancels navigation');
+ down(13,controlTarget);drag(13);up(13);
+ assert.deepEqual(turns,[1],'a gesture starting on a control cannot navigate');
+ selected='already selected';down(14);drag(14);up(14);selected='';
+ assert.deepEqual(turns,[1],'existing selection prevents a paper grab');
+ down(15);drag(15);up(15);
+ assert.deepEqual(turns,[1,1],'a subsequent valid gesture still turns the page');
 }
 testPointerOwnership();
 
