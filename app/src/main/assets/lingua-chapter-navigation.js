@@ -20,7 +20,8 @@ function decorate(){
   control.type='button';control.className='secondary lt-chapter-button';
   control.textContent=label;control.disabled=!enabled;
   control.addEventListener('click',()=>{
-   if(enabled&&typeof global.stlChapter==='function')global.stlChapter(target);
+   if(enabled&&state.page==='reader'&&state.story===story&&state.chapter===index
+      &&typeof global.stlChapter==='function')global.stlChapter(target);
   });
   nav.appendChild(control);
  };
@@ -49,6 +50,7 @@ function decorate(){
   select.addEventListener('change',()=>{
    const target=Number(select.value);
    if(Number.isInteger(target)&&target>=0&&target<chapters.length&&target!==index
+      &&state.page==='reader'&&state.story===story&&state.chapter===index
       &&typeof global.stlChapter==='function')global.stlChapter(target);
   });
   picker.appendChild(caption);picker.appendChild(select);nav.appendChild(picker);
@@ -65,7 +67,6 @@ function decorate(){
   }
   return;
  }
- const endHeading=end.querySelector('div');
  const progress=document.createElement('small');
  progress.className='lt-serial-progress';
  const english=document.documentElement.lang==='en';
@@ -74,7 +75,9 @@ function decorate(){
  progress.textContent=localized(
   'المتاح '+chapters.length+' من '+story.totalChapters+' فصلًا',
   chapters.length+' of '+story.totalChapters+' chapters available');
- end.insertBefore(progress,end.querySelector('button.primary'));
+ const primaryAction=end.querySelector('button.primary');
+ if(primaryAction)end.insertBefore(progress,primaryAction);
+ else end.appendChild(progress);
  if(index===chapters.length-1){
   const heading=end.querySelector('div');
   if(heading)heading.textContent=localized(
