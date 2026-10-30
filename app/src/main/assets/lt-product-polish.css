@@ -79,6 +79,23 @@ body.theme-aurora,body.theme-nebula{background-attachment:scroll!important;}
  right:var(--lt-fold-cut,0%);left:auto;transform-origin:right center;}
 .reader #sentences.lt-paper-grabbing[data-lt-fold-edge="left"]:after{
  left:var(--lt-fold-cut,0%);right:auto;transform-origin:left center;}
+/* Chapter navigation must remain visible in the paged reader, even though
+   the legacy chapter-end block is hidden. Keep controls compact and keyboard-ready. */
+.reader .lt-chapter-nav{display:flex;align-items:center;justify-content:center;
+ flex-wrap:wrap;gap:10px;max-width:740px;margin:12px auto 28px;padding:12px;
+ background:var(--reader);color:var(--reader-ink);border:1px solid #80808035;
+ border-radius:16px;}
+.reader .lt-chapter-nav .lt-chapter-button{font-size:13px;padding:8px 12px;
+ min-height:38px;border-radius:12px;}
+.reader .lt-chapter-nav .lt-chapter-button:disabled{opacity:.45;cursor:default;}
+.reader .lt-chapter-picker{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+ font-size:13px;min-width:0;}
+.reader .lt-chapter-picker select{font:inherit;max-width:min(72vw,270px);
+ min-height:38px;padding:7px 9px;border-radius:10px;color:inherit;
+ background:var(--reader);border:1px solid #80808066;}
+.reader .lt-serial-progress{width:100%;text-align:center;font-size:12px;opacity:.8;}
+.reader .lt-chapter-nav :is(button,select):focus-visible{outline:3px solid var(--accent);
+ outline-offset:2px;}
 /* Controls remain operable to accessibility APIs and keyboard, but are no
    longer giant permanent next/previous buttons. */
 .reader .lt-page-controls{max-width:100%;border:none!important;background:none!important;
