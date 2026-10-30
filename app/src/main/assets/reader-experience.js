@@ -326,6 +326,9 @@ function installPageTurn(){
      state.chapter!==installedChapter||sentenceBox.isConnected===false||
      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
   const active=pages[current];
+  // The frame can arrive after a separate page navigation within this chapter.
+  // A fold is valid only for the page that received pointerdown.
+  if(current!==drag.page)return;
   const geometry=pageFoldGeometry(drag.progress,drag.edge,drag.lastY-drag.startY);
   const underneath=pages[current+pageEdgeDelta(drag.edge,document.documentElement.dir==='rtl')];
   // The neighboring page is visually revealed but remains inert and hidden
@@ -355,7 +358,7 @@ function installPageTurn(){
   // viewport. Never turn the paper unless the finger actually ends on this
   // reader sheet; this also rejects dictionary tokens in other overlays.
   const stillCurrent=state.page==='reader'&&state.story===installedStory&&
-   state.chapter===installedChapter&&sentenceBox.isConnected!==false;
+   state.chapter===installedChapter&&sentenceBox.isConnected!==false&&current===held.page;
   const turn=commit&&stillCurrent&&held.progress>=.34&&!!endTarget&&
    sentenceBox.contains(endTarget)&&
    pageFoldReleaseAllowed(held.target,endTarget,window.getSelection?.()?.toString()||'');
@@ -379,7 +382,7 @@ function installPageTurn(){
   if(!edge||(delta<0&&current===0&&state.chapter===0)||
      (delta>0&&current===pages.length-1&&state.chapter===state.story.chapters.length-1))return;
   drag={id:event.pointerId,edge,target:event.target,startX:event.clientX,startY:event.clientY,
-   width:Math.max(1,box.width),progress:0,locked:false,lastY:event.clientY};
+   width:Math.max(1,box.width),progress:0,locked:false,lastY:event.clientY,page:current};
   try{sentenceBox.setPointerCapture?.(event.pointerId);}catch(_){}
  },{passive:true});
  sentenceBox.addEventListener('pointermove',event=>{
