@@ -131,6 +131,9 @@ function testPointerOwnership(){
   selector.includes('.tok')?null:{tagName:'BUTTON'}};
  const tokenTarget={nodeType:1,closest:selector=>
   selector.includes('.tok')||selector.includes('[role="button"]')?{className:'tok'}:null};
+ const outsideTarget={nodeType:1,closest:()=>null};
+ const outsideToken={nodeType:1,closest:selector=>
+  selector.includes('.tok')?{className:'tok'}:null};
  endSurface=plainTarget;
  const classList=store=>({
   add(name){store.add(name);},
@@ -142,6 +145,7 @@ function testPointerOwnership(){
  const sheet={
   dataset:{},classList:classList(foldClasses),style:style(),
   getBoundingClientRect(){return {left:0,width:paneWidth};},
+  contains(node){return node!==outsideTarget&&node!==outsideToken&&node!==null;}, 
   addEventListener(name,handler){events[name]=handler;},
   setPointerCapture(){},releasePointerCapture(){}
  };
@@ -185,6 +189,12 @@ function testPointerOwnership(){
  assert.ok(!foldClasses.has('lt-paper-grabbing'),'rejected release cleans the fold');
  down(11);drag(11);endSurface=null;up(11);
  assert.deepEqual(turns,[1],'release outside the viewport cannot navigate');
+ // Releasing over a noninteractive surface elsewhere on screen must not
+ // turn a page merely because it is inside the viewport and allowed by type.
+ endSurface=outsideTarget;down(18);drag(18);up(18);
+ assert.deepEqual(turns,[1],'release outside the reader sheet cancels the fold');
+ endSurface=outsideToken;down(19);drag(19);up(19);
+ assert.deepEqual(turns,[1],'foreign dictionary token cannot trigger a page turn');
  endSurface=plainTarget;
  down(12);drag(12);selected='selected phrase';up(12);selected='';
  assert.deepEqual(turns,[1],'selection created during the hold cancels navigation');
