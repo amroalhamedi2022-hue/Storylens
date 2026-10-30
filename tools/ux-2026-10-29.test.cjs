@@ -61,7 +61,7 @@ const bubbleNode=()=>({className:'',attributes:{},styles:{},
 const dom={addEventListener(k,fn){listeners[k]=fn;},createElement(){created=bubbleNode();return created;}};
 const childNodes=[];
 const target={disabled:false,style:{},matches:()=>false,
- closest:()=>target,querySelectorAll:()=>[],appendChild(node){childNodes.push(node);},
+ closest:selector=>selector==='button,.lt-theme-choice'?target:null,querySelectorAll:()=>[],appendChild(node){childNodes.push(node);},
  getBoundingClientRect:()=>({left:10,top:20,width:90,height:50})};
 const win={document:dom,matchMedia:()=>({matches:reduced})};
 vm.runInNewContext(touch,{window:win},{filename:'lt-tap-feedback.js'});
