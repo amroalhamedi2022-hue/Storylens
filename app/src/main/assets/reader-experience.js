@@ -360,8 +360,14 @@ function installPageTurn(){
  sentenceBox.addEventListener('pointerup',event=>{
   if(drag&&event.pointerId===drag.id)finishPaperDrag(true);
  });
- sentenceBox.addEventListener('pointercancel',()=>finishPaperDrag(false));
- sentenceBox.addEventListener('lostpointercapture',()=>finishPaperDrag(false));
+ // A secondary finger can be cancelled while the primary edge-hold remains active.
+ // Only the pointer that owns the fold may end it.
+ sentenceBox.addEventListener('pointercancel',event=>{
+  if(drag&&event.pointerId===drag.id)finishPaperDrag(false);
+ });
+ sentenceBox.addEventListener('lostpointercapture',event=>{
+  if(drag&&event.pointerId===drag.id)finishPaperDrag(false);
+ });
  renderPage('next',false);
 }
 const chapterKey=()=> 'chapter_'+state.story.id;
