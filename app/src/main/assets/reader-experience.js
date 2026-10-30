@@ -302,6 +302,7 @@ function installPageTurn(){
  // Physical edge-hold interaction: keep a live fold aligned to the user's
  // finger, commit only after crossing the middle, spring back on release.
  // Do not steal vertical scrolling, text selection or dictionary word taps.
+ const installedStory=state.story,installedChapter=state.chapter;
  let drag=null,foldRaf=null;
  function clearFold(){
   if(foldRaf!==null){window.cancelAnimationFrame?.(foldRaf);foldRaf=null;}
@@ -349,7 +350,9 @@ function installPageTurn(){
   // A captured pointerup can land on an unrelated page element within the
   // viewport. Never turn the paper unless the finger actually ends on this
   // reader sheet; this also rejects dictionary tokens in other overlays.
-  const turn=commit&&held.progress>=.34&&!!endTarget&&
+  const stillCurrent=state.page==='reader'&&state.story===installedStory&&
+   state.chapter===installedChapter&&sentenceBox.isConnected!==false;
+  const turn=commit&&stillCurrent&&held.progress>=.34&&!!endTarget&&
    sentenceBox.contains(endTarget)&&
    pageFoldReleaseAllowed(held.target,endTarget,window.getSelection?.()?.toString()||'');
   drag=null;clearFold();
@@ -357,7 +360,9 @@ function installPageTurn(){
   if(turn)move(delta,'gesture');
  }
  sentenceBox.addEventListener('pointerdown',event=>{
-  if(event.isPrimary===false||event.button!==0||drag||state.page!=='reader')return;
+  if(event.isPrimary===false||event.button!==0||drag||state.page!=='reader'||
+     state.story!==installedStory||state.chapter!==installedChapter||
+     sentenceBox.isConnected===false)return;
   if(!pageSwipeAllowed(event.target,window.getSelection?.()?.toString()||''))return;
   const box=sentenceBox.getBoundingClientRect();
   const x=event.clientX-box.left;
