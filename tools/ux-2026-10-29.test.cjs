@@ -241,6 +241,16 @@ function testPointerOwnership(){
  sheet.isConnected=true;
  down(25);drag(25);up(25);
  assert.deepEqual(turns,[1,1,1,-1,1],'valid page fold still works after stale-gesture cancellation');
+ down(26);drag(26);
+ sandbox.current=1;
+ const changedPageFrame=frame;
+ changedPageFrame();
+ assert.equal(foldClasses.has('lt-paper-grabbing'),false,
+  'a queued fold preview cannot draw on another page in the same chapter');
+ up(26);
+ assert.deepEqual(turns,[1,1,1,-1,1],
+  'a held fold cannot turn a different page after page-index navigation');
+ sandbox.current=0;
 
 }
 testPointerOwnership();
