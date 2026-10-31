@@ -19,3 +19,6 @@ const sfxJs=require('node:fs').readFileSync('app/src/main/assets/lingua-ambience
 require('node:assert/strict').match(motionJs,/lt-header-concealed/);
 require('node:assert/strict').match(sfxJs,/storyBubble=kind==='story'/);
 require('node:assert/strict').match(sfxJs,/clickSound\(story\?'story':'button'\)/);
+
+const contrastCss=require('node:fs').readFileSync('app/src/main/assets/lt-device-acceptance.css','utf8');
+require('node:assert/strict').match(contrastCss,/\.theme-meridian-epilogue \.reader \.lt-book-page \.sentence\{color:#f7f1e5!important\}/);

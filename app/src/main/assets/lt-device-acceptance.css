@@ -111,3 +111,12 @@ html[data-lt-english-font="hand"]{--lt-en-font:"Segoe Print","Bradley Hand",curs
 .library .header{transition:transform .32s cubic-bezier(.2,.8,.2,1),opacity .32s ease!important}
 .library .header.lt-header-concealed{transform:translate3d(0,calc(-100% - 14px),0)!important;pointer-events:none!important;opacity:.9!important}
 @media(prefers-reduced-motion:reduce){.library .header,.library .header.lt-header-concealed{transition:none!important}}
+
+/* Existing Meridian Epilogue is intrinsically dark. Keep its parchment ink
+   on a contrasting dark sheet instead of putting pale ink on cream paper. */
+.theme-meridian-epilogue .reader .lt-book-page{
+ background:linear-gradient(130deg,#102e2a,#193d37 95%)!important;
+ color:#f7f1e5!important;border-color:#b68e63!important;
+}
+.theme-meridian-epilogue .reader .lt-book-page .sentence{color:#f7f1e5!important}
+.theme-meridian-epilogue .reader .lt-book-page .inline-ar{color:#e8ede1!important}
