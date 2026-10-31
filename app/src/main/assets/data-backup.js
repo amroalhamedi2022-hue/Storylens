@@ -99,8 +99,10 @@ function validValue(key,val){
  if(tail==='ltThemeCustomColors')return val!==null&&typeof val==='object'&&!Array.isArray(val)&&
   Object.keys(val).length<=90&&Object.entries(val).every(([id,colors])=>
    /^[a-z0-9-]{1,60}$/.test(id)&&colors!==null&&typeof colors==='object'&&!Array.isArray(colors)&&
-   Object.keys(colors).length<=3&&Object.keys(colors).every(k=>['a','b','c'].includes(k))&&
-   Object.values(colors).every(x=>typeof x==='string'&&/^#[a-f0-9]{6}$/i.test(x)));
+   Object.keys(colors).length<=5&&Object.keys(colors).every(k=>['a','b','c','d','angle'].includes(k))&&
+   Object.entries(colors).every(([k,x])=>k==='angle'?
+    Number.isInteger(x)&&x>=0&&x<=360:
+    typeof x==='string'&&/^#[a-f0-9]{6}$/i.test(x)));
  if(tail==='lt_glass_palette')return ['sapphire','violet','rose','sunset','ocean',
   'mint','lavender','graphite','pearl','rainbow'].includes(val);
  if(tail==='lt_glass_tint')return typeof val==='number'&&Number.isFinite(val)&&val>=0&&val<=100;

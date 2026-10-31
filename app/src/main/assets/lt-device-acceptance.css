@@ -12,7 +12,7 @@
  position:sticky!important;top:env(safe-area-inset-top,0px)!important;z-index:80!important;
  min-height:73px!important;margin-bottom:12px!important;border-radius:20px!important;
  padding:10px 15px!important;
- background:linear-gradient(120deg,
+ background:linear-gradient(var(--lt-theme-angle,120deg),
   color-mix(in srgb,var(--lt-glass-a,#8066df) 39%,#2d285d),
   color-mix(in srgb,var(--lt-glass-b,#6a8dda) 42%,#25275c))!important;
  box-shadow:0 8px 24px #090d302e,inset 0 1px #ffffff65!important;
@@ -98,3 +98,8 @@ html[data-lt-english-font="hand"]{--lt-en-font:"Segoe Print","Bradley Hand",curs
  border-color:#56657b!important;color:#eaf0f5!important}
 .reader.dark .lt-book-page .sentence{color:#eaf0f5!important}
 .reader.dark .lt-book-page .inline-ar{color:#c5d6e8!important}
+
+.lt-theme-presets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:13px 0}
+.lt-theme-presets .lt-theme-preset{min-height:45px;border:1px solid #ffffff88;
+ border-radius:11px;color:#151b39;font-size:11px;font-weight:850;text-shadow:0 1px #fff9}
+.lt-theme-editor input[type="range"]{width:min(240px,54vw);accent-color:var(--accent)}

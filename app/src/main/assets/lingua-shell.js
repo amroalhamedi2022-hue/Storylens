@@ -210,18 +210,19 @@ function applyTheme(name){
 }
 // Theme source definitions are immutable APK assets; deleting one at runtime
 // safely hides it from the gallery. User palettes remain local and portable.
-const themeColorKeys=['a','b','c'];
+const themeColorKeys=['a','b','c','d'];
 const isThemeHex=value=>typeof value==='string'&&/^#[a-f0-9]{6}$/i.test(value);
 function hiddenThemeNames(){const saved=get('ltHiddenThemes',[]);return Array.isArray(saved)?saved.filter(validTheme):[];}
 function customThemeColors(){const value=get('ltThemeCustomColors',{});return value&&typeof value==='object'&&!Array.isArray(value)?value:{};}
 function applyCustomThemeColors(){
  const body=document.body;
  if(!body?.style||typeof body.style.removeProperty!=='function')return false;
- for(const name of ['--lt-glass-a','--lt-glass-b','--lt-glass-c','--accent'])body.style.removeProperty(name);
+ for(const name of ['--lt-glass-a','--lt-glass-b','--lt-glass-c','--lt-glass-d','--lt-theme-angle','--accent'])body.style.removeProperty(name);
  const colors=customThemeColors()[state.uiTheme];
  if(!colors||typeof colors!=='object')return;
  for(const key of themeColorKeys)if(isThemeHex(colors[key]))body.style.setProperty('--lt-glass-'+key,colors[key]);
  if(isThemeHex(colors.a))body.style.setProperty('--accent',colors.a);
+ if(Number.isInteger(colors.angle)&&colors.angle>=0&&colors.angle<=360)body.style.setProperty('--lt-theme-angle',colors.angle+'deg');
 }
 function openThemeEditor(name,origin){
  const sheet=document.querySelector('.lt-settings-sheet');
@@ -234,7 +235,8 @@ function openThemeEditor(name,origin){
  for(const [key,defaultHex,labelAr,labelEn] of [
   ['a','#6e77ec','اللون الأساسي','Primary color'],
   ['b','#c078e8','لون الانعكاس','Reflection color'],
-  ['c','#6bd8ea','لون الإضاءة','Highlight color']
+  ['c','#6bd8ea','لون الإضاءة','Highlight color'],
+   ['d','#e2c2f7','اللون الرابع','Fourth gradient color']
  ]){
   const label=document.createElement('label');label.className='lt-theme-color-setting';
   label.textContent=rtl()?labelAr:labelEn;
@@ -243,13 +245,43 @@ function openThemeEditor(name,origin){
   input.addEventListener('input',()=>{
    const updated=customThemeColors();
    updated[name]={...(updated[name]||{}),[key]:input.value};
-   put('ltThemeCustomColors',updated);applyCustomThemeColors();
+   put('ltThemeCustomColors',updated);applyTheme(name);
    const swatch=origin?.querySelector('.lt-theme-swatch');
-   if(swatch)swatch.style.background='linear-gradient(135deg,'+
-     [updated[name].a||defaultHex,updated[name].b||'#c078e8',updated[name].c||'#6bd8ea'].join(',')+')';
+   if(swatch)swatch.style.background='linear-gradient('+(updated[name].angle||135)+'deg,'+
+     [updated[name].a||'#6e77ec',updated[name].b||'#c078e8',updated[name].c||'#6bd8ea',updated[name].d||'#e2c2f7'].join(',')+')';
   });
   label.appendChild(input);panel.appendChild(label);
  }
+ const angleLabel=document.createElement('label');angleLabel.className='lt-theme-color-setting';
+ angleLabel.textContent=rtl()?'زاوية التدرج':'Gradient angle';
+ const angleInput=document.createElement('input');angleInput.type='range';angleInput.min='0';
+ angleInput.max='360';angleInput.step='5';angleInput.value=Number.isInteger(saved.angle)?String(saved.angle):'135';
+ angleInput.setAttribute('aria-label',angleLabel.textContent);
+ angleInput.addEventListener('input',()=>{
+  const updated=customThemeColors();
+  updated[name]={...(updated[name]||{}),angle:Number(angleInput.value)};
+  put('ltThemeCustomColors',updated);applyTheme(name);
+ });
+ angleLabel.appendChild(angleInput);panel.appendChild(angleLabel);
+ const presetRow=document.createElement('div');presetRow.className='lt-theme-presets';
+ const presets=[
+ ['sapphire','#1768ff','#6b4dff','#28d9ff','#a0caff'],
+ ['sunset','#ff6c47','#ed4494','#ffbd59','#fce8b2'],
+ ['mint','#008d85','#52beaa','#a8f0c6','#dffbea'],
+ ['noir','#273a50','#687989','#ad9ba6','#eff2fa'],
+ ['rose','#f63c89','#ac4ce1','#ffc1cd','#ecbcff'],
+ ['sand','#786147','#bc9770','#e6c89a','#f7edda']];
+ for(const [id,a,b,c,d] of presets){
+  const button=addButton(presetRow,id,()=>{
+   const updated=customThemeColors();
+   updated[name]={a,b,c,d,angle:Number(angleInput.value)};
+   put('ltThemeCustomColors',updated);applyTheme(name);
+   panel.querySelectorAll('input[type="color"]').forEach((input,index)=>input.value=[a,b,c,d][index]);
+  },'lt-theme-preset');
+  button.style.background='linear-gradient(135deg,'+[a,b,c,d].join(',')+')';
+  button.setAttribute('aria-label',rtl()?'تدرج '+id:'Gradient '+id);
+ }
+ panel.appendChild(presetRow);
  const actions=document.createElement('div');actions.className='lt-theme-editor-actions';
  addButton(actions,rtl()?'تطبيق الثيم':'Use theme',()=>{applyTheme(name);},'secondary');
  addButton(actions,rtl()?'إعادة الألوان الأصلية':'Reset colors',()=>{

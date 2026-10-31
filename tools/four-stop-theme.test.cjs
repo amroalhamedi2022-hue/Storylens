@@ -1,0 +1,11 @@
+'use strict';const a=require('node:assert/strict'),fs=require('node:fs');
+const read=f=>fs.readFileSync(f,'utf8');
+const shell=read('app/src/main/assets/lingua-shell.js');
+const backup=read('app/src/main/assets/data-backup.js'),css=read('app/src/main/assets/lt-device-acceptance.css');
+a.match(shell,/themeColorKeys=\['a','b','c','d'\]/);
+a.match(shell,/Gradient angle/);a.match(shell,/lt-theme-presets/);
+a.match(shell,/Number\.isInteger\(colors\.angle\)/);
+a.match(backup,/\['a','b','c','d','angle'\]/);
+a.match(backup,/Number\.isInteger\(x\)&&x>=0&&x<=360/);
+a.match(css,/--lt-theme-angle/);
+console.log('PASS: four-stop saved theme gradient, angle and curated presets');
