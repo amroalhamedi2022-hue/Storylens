@@ -69,8 +69,20 @@ assert.equal(added.length,1,'packaged story scene inserted in actual reading flo
 assert.equal(added[0].i,2,'illustration is anchored after the opening prose');
 assert.match(added[0].figure.className,/lt-inline-chapter-scene/);
 assert.match(added[0].figure.children[0].src,/^data:image\/svg\+xml/);
-assert.match(added[0].figure.children[0].alt,/book — Chapter/);
+assert.match(added[0].figure.children[0].alt,/Story — Chapter/);
 assert.equal(added[0].figure.children[0].style.aspectRatio,String(1000/620));
+// Bilingual text always stays adjacent; no illustration splits EN from AR.
+const afterTranslation=[];
+sentences[2].nextElementSibling={
+ classList:{contains:name=>name==='inline-ar'},
+ insertAdjacentElement(where,figure){afterTranslation.push({where,figure})}
+};
+added.length=0;
+sandbox.renderReader();
+assert.equal(added.length,0,'do not insert art between English and Arabic');
+assert.equal(afterTranslation.length,1,'art is inserted after the Arabic paragraph');
+assert.equal(afterTranslation[0].where,'afterend');
+delete sentences[2].nextElementSibling;
 added.length=0;
 sandbox.art.book_0='https://example.org/remote.svg';
 sandbox.renderReader();

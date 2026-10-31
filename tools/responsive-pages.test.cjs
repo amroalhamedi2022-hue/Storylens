@@ -9,6 +9,12 @@ const env={LT_PAGE_PARAGRAPHS:4};
 vm.runInNewContext(source.slice(start,end)+'\nglobalThis.starts=ltPageStarts;globalThis.forParagraph=ltPageForParagraph;',env);
 const starts=env.starts,locate=env.forParagraph;
 const short=Array(12).fill(60),long=Array(12).fill(330);
+const withoutFigure=Array.from(starts([60,60,60,60],680,320,20));
+const withFigure=Array.from(starts([60,60,60,60],680,320,20,[0,260,0,0]));
+assert.ok(withFigure.length>withoutFigure.length,
+ 'inline illustrations reserve their height in pagination');
+assert.ok(withFigure.includes(1),
+ 'the illustrated paragraph begins a fresh page when needed');
 const phone=Array.from(starts(long,720,320,24));
 const tablet=Array.from(starts(long,1150,850,18));
 assert.equal(phone[0],0);

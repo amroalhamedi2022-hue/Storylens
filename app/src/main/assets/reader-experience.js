@@ -257,9 +257,18 @@ function installPageTurn(){
  const preferredSize={compact:17,comfortable:19,large:22}[get('readingSizeEnglish','comfortable')]||Number(get('size',20));
  // Keep the figure on the same paper as its source paragraph. Reserve
  // enough space to prevent image-heavy pages from overrunning the sheet.
- const illustrationHeights=sentences.map(node=>node.nextElementSibling?.classList?.contains('lt-inline-illustration')
-  ?Math.min(260,Math.max(140,window.innerHeight*.26)):0);
- const starts=ltPageStarts(sentences.map(node=>(node.textContent||'').length),
+ const illustrationHeights=sentences.map(node=>{
+  const after=node.nextElementSibling;
+  const adjacent=after?.classList?.contains('inline-ar')?after.nextElementSibling:after;
+  return adjacent?.classList?.contains('lt-inline-illustration')
+   ?Math.min(260,Math.max(140,window.innerHeight*.26)):0;
+ });
+ const paragraphLengths=sentences.map(node=>{
+  const translated=node.nextElementSibling;
+  const ar=translated?.classList?.contains('inline-ar')?(translated.textContent||'').length:0;
+  return (node.textContent||'').length+ar;
+ });
+ const starts=ltPageStarts(paragraphLengths,
   window.innerHeight,bounds?.width||window.innerWidth,
   Number.isFinite(computedSize)?computedSize:preferredSize,illustrationHeights);
  const boundaries=new Set(starts);
@@ -770,7 +779,12 @@ renderReader=function(){
    caption.textContent=item.credit.trim();
    figure.appendChild(caption);
   }
-  anchor.insertAdjacentElement('afterend',figure);
+  // Keep a visible Arabic translation immediately beside its English source.
+  // The illustration follows the bilingual pair, not between both languages.
+  const translated=anchor.nextElementSibling;
+  if(translated?.classList?.contains('inline-ar')&&typeof translated.insertAdjacentElement==='function')
+   translated.insertAdjacentElement('afterend',figure);
+  else anchor.insertAdjacentElement('afterend',figure);
   usedAnchors.add(item.afterParagraph);
  }
  const marks=get(bookmarkKey(),{});
