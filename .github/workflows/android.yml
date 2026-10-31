@@ -84,6 +84,7 @@ jobs:
           node tools/salt-meridian.test.cjs
           node tools/ninth-ledger.test.cjs
           node tools/quiet-frequency.test.cjs
+          node tools/floor-between.test.cjs
           node tools/verne-towle.test.cjs
           node tools/verne-chronology.test.cjs
           node tools/verne-towle-ch05.test.cjs
