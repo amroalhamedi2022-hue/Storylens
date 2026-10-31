@@ -10,3 +10,6 @@ a.match(read('app/src/main/assets/lt-tap-feedback.js'),/--lt-bubble-size/);
 a.match(read('app/build.gradle.kts'),/applicationIdSuffix = "\.preview"/);
 a.match(read('app/src/main/res/drawable/lingua_icon_foreground.xml'),/lingua_icon_mark/);
 console.log('PASS: reader/device UX feedback regression');
+
+const touchCss=require('node:fs').readFileSync('app/src/main/assets/lt-device-acceptance.css','utf8');
+require('node:assert/strict').match(touchCss,/\.reader #sentences,\.reader \.lt-book-page\{touch-action:pan-y/);

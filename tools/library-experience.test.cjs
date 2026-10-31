@@ -418,8 +418,8 @@ assert.ok(manifest.includes('android:label="${ltAppLabel}"'),
  'launcher label resolves per build variant');
 assert.ok(gradle.includes('manifestPlaceholders["ltAppLabel"] = "Lingua Tales"'),
  'production release retains the approved name');
-assert.ok(gradle.includes('manifestPlaceholders["ltAppLabel"] = "Lingua Tales Preview"'),
- 'side-by-side CI preview has a distinct name');
+assert.ok(gradle.includes('versionNameSuffix = "-preview"'),
+ 'side-by-side debug package remains isolated without putting Preview in the launcher');
 assert.match(gradle,/applicationId\s*=\s*"com\.storylens\.reader"/,
  'existing installed application identity must remain unchanged');
 assert.ok(!/<uses-permission/.test(manifest),'rebrand cannot add network or microphone permission');

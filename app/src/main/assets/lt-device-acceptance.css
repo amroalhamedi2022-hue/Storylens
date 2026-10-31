@@ -103,3 +103,7 @@ html[data-lt-english-font="hand"]{--lt-en-font:"Segoe Print","Bradley Hand",curs
 .lt-theme-presets .lt-theme-preset{min-height:45px;border:1px solid #ffffff88;
  border-radius:11px;color:#151b39;font-size:11px;font-weight:850;text-shadow:0 1px #fff9}
 .lt-theme-editor input[type="range"]{width:min(240px,54vw);accent-color:var(--accent)}
+
+/* Preserve vertical scrolling but keep horizontal pointer gestures in
+   the WebView so the existing finger-held page curl can activate. */
+.reader #sentences,.reader .lt-book-page{touch-action:pan-y;-ms-touch-action:pan-y}
