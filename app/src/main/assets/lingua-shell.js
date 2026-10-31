@@ -67,7 +67,7 @@ const themeLabelsAr={
 const themeLabelFor=name=>rtl()?themeLabelsAr[name]:themeLabels[name];
 /* LT-12: separate, offline typography preferences. System font stacks avoid
  * font downloads and extra memory. Unsupported values never reach CSS. */
-const fontChoices={ar:['sans','naskh'],en:['serif','sans']};
+const fontChoices={ar:['sans','naskh','ruqaa','kufi','hand'],en:['serif','sans','humanist','mono','hand']};
 const fontDefaults={ar:'sans',en:'serif'};
 const fontKeys={ar:'fontArabic',en:'fontEnglish'};
 function safeOffset(value){
@@ -436,8 +436,12 @@ function openSettings(){
   const select=document.createElement('select');
   select.setAttribute('aria-label',title.textContent);
   const options=lang==='ar'?
-   [{value:'sans',ar:'عصري',en:'Modern Arabic'},{value:'naskh',ar:'نسخ',en:'Naskh / serif'}]:
-   [{value:'serif',ar:'أدبي',en:'Literary serif'},{value:'sans',ar:'عصري',en:'Modern sans'}];
+   [{value:'sans',ar:'نسخ عصري',en:'Modern Arabic'},{value:'naskh',ar:'نسخ تقليدي',en:'Classic Naskh'},
+    {value:'ruqaa',ar:'رقعة',en:'Ruqaa'},{value:'kufi',ar:'كوفي',en:'Kufi'},
+    {value:'hand',ar:'خط يدوي',en:'Handwriting'}]:
+   [{value:'serif',ar:'أدبي',en:'Literary serif'},{value:'sans',ar:'عصري',en:'Modern sans'},
+    {value:'humanist',ar:'إنساني',en:'Humanist'},{value:'mono',ar:'آلة كاتبة',en:'Monospace'},
+    {value:'hand',ar:'خط يدوي',en:'Handwriting'}];
   for(const option of options){
    const item=document.createElement('option');
    item.value=option.value;item.textContent=rtl()?option.ar:option.en;

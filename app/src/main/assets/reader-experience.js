@@ -55,17 +55,30 @@ const ltFontChoices=[
  {id:'calligraphy',labelAr:'خط عربي انسيابي',labelEn:'Flowing calligraphy',ar:'"Aref Ruqaa Ink", "Aref Ruqaa", "Noto Naskh Arabic", cursive',en:'"Bradley Hand", "Segoe Print", cursive'}
 ];
 function ltApplyFonts(){
- const choice=ltFontChoices.find(item=>item.id===get('lt_font_choice','system'))||ltFontChoices[0];
- document.querySelectorAll('.reader .sentence,.reader .reader-hero,.reader .chapter-end,.reader .inline-ar').forEach(node=>{
-  const arabic=node.matches('.inline-ar')||node.closest('[lang="ar"]')||/[\\u0600-\\u06FF]/.test(node.textContent||'');
-  node.style.fontFamily=arabic?choice.ar:choice.en;
+ const legacy=ltFontChoices.find(item=>item.id===get('lt_font_choice','system'))||ltFontChoices[0];
+ const arabic={
+  sans:'"Noto Sans Arabic",Tahoma,system-ui,sans-serif',
+  naskh:'"Noto Naskh Arabic","Noto Serif Arabic",serif',
+  ruqaa:'"Aref Ruqaa Ink","Aref Ruqaa","Noto Naskh Arabic",serif',
+  kufi:'"Noto Kufi Arabic","Noto Sans Arabic",sans-serif',
+  hand:'"Reem Kufi Ink","Aref Ruqaa","Noto Naskh Arabic",cursive'
+ };
+ const english={
+  serif:'Georgia,"Times New Roman",serif',
+  sans:'system-ui,"Segoe UI",Arial,sans-serif',
+  humanist:'"Trebuchet MS","Gill Sans",Arial,sans-serif',
+  mono:'ui-monospace,"Courier New",monospace',
+  hand:'"Segoe Print","Bradley Hand",cursive'
+ };
+ const ar=arabic[get('fontArabic','sans')]||legacy.ar;
+ const en=english[get('fontEnglish','serif')]||legacy.en;
+ document.querySelectorAll('.reader .sentence,.reader .reader-hero,.reader .chapter-end,.reader .inline-ar,.reader .stl-sentence-translation').forEach(node=>{
+  // The English source remains English even if the UI is Arabic.
+  node.style.fontFamily=(node.matches('.inline-ar')||node.matches('.stl-sentence-translation'))?ar:en;
  });
  const rootStyle=document.documentElement?.style;
- // Inline font-family remains usable even in a partial/early WebView host that
- // does not expose CSSStyleDeclaration yet; real Android browsers take this path.
  if(rootStyle&&typeof rootStyle.setProperty==='function'){
-  rootStyle.setProperty('--lt-font-en',choice.en);
-  rootStyle.setProperty('--lt-font-ar',choice.ar);
+  rootStyle.setProperty('--lt-font-en',en);rootStyle.setProperty('--lt-font-ar',ar);
  }
 }
 

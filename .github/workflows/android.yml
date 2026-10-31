@@ -74,6 +74,7 @@ jobs:
           node tools/locale-shell.test.cjs
           node tools/full-localization.test.cjs
           node tools/typography-profiles.test.cjs
+          node tools/five-font-reader.test.cjs
           node tools/content-loader.test.cjs
           node tools/library-shell-layout.test.cjs
           node --check app/src/main/assets/lexicon-extra.js

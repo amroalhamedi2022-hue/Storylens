@@ -85,3 +85,16 @@ html[dir="ltr"] .library .header{padding-left:65px!important}
 .reader .lt-page-count{color:var(--reader-ink)!important}
 @media(max-width:600px){.library{padding-inline:14px!important}.library .shelf .card{min-height:145px!important}.reader .reading-width{padding-inline:15px!important}}
 @media(prefers-reduced-motion:reduce){.lt-tap-bubble{display:none!important}.lt-drawer{transition:none!important}}
+
+/* Five independent font options for each reading language. */
+html[data-lt-arabic-font="ruqaa"]{--lt-ar-font:"Aref Ruqaa Ink","Aref Ruqaa","Noto Naskh Arabic",serif}
+html[data-lt-arabic-font="kufi"]{--lt-ar-font:"Noto Kufi Arabic","Noto Sans Arabic",sans-serif}
+html[data-lt-arabic-font="hand"]{--lt-ar-font:"Reem Kufi Ink","Aref Ruqaa","Noto Naskh Arabic",cursive}
+html[data-lt-english-font="humanist"]{--lt-en-font:"Trebuchet MS","Gill Sans",Arial,sans-serif}
+html[data-lt-english-font="mono"]{--lt-en-font:ui-monospace,"Courier New",monospace}
+html[data-lt-english-font="hand"]{--lt-en-font:"Segoe Print","Bradley Hand",cursive}
+/* Preserve readability after choosing a dark book theme. */
+.reader.dark .lt-book-page{background:linear-gradient(130deg,#1b2939,#29364b 96%)!important;
+ border-color:#56657b!important;color:#eaf0f5!important}
+.reader.dark .lt-book-page .sentence{color:#eaf0f5!important}
+.reader.dark .lt-book-page .inline-ar{color:#c5d6e8!important}
