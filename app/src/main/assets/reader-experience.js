@@ -252,7 +252,14 @@ function installPageTurn(){
   if(animate&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
    animatePageTurn(pages[current],direction);
   }
-  window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  // Show the new paper after a turn, rather than scrolling back to the cover
+  // and chapter illustration. Never race smooth-scroll against sheet animation
+  // on high-refresh-rate devices. A new chapter still opens at its artwork.
+  if(animate&&typeof sentenceBox.scrollIntoView==='function'){
+   sentenceBox.scrollIntoView({block:'start',behavior:'auto'});
+  }else{
+   window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  }
  }
  function move(delta,source='control'){
   if(delta>0&&current===pages.length-1){

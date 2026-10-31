@@ -58,7 +58,7 @@ body.theme-aurora,body.theme-nebula{background-attachment:scroll!important;}
 /* Live sheet fold: keep text flat while a narrow crease follows the finger.
    Reveal the real adjacent page beneath the sheet instead of rotating the
    entire readable page out of view. The underlay stays inert until release. */
-.reader #sentences{position:relative;isolation:isolate;}
+.reader #sentences{position:relative;isolation:isolate;scroll-margin-top:calc(78px + env(safe-area-inset-top,0px));}
 .reader .lt-book-page.is-active{z-index:1;}
 .reader .lt-book-page.lt-paper-underlay{display:block!important;position:absolute;
  inset:0;z-index:0;pointer-events:none;overflow:hidden;}
