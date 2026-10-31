@@ -70,7 +70,7 @@ env2.window.innerWidth=405;callbacks.resize();
 assert.equal(pending,null,'tiny width jitter does not rerender');
 env2.window.innerWidth=720;callbacks.resize();
 assert.equal(typeof pending,'function','rotation schedules one batched rerender');
-env2.window.innerWidth=760;callbacks.resize();
+env2.window.innerWidth=780;callbacks.resize();
 assert.equal(cancelled,1,'rapid width changes debounce previous remount');
 const rotate=pending;rotate();
 assert.equal(rerenders,1,'orientation recomputes pages once');
