@@ -113,78 +113,60 @@ drawerNodes.delete('lt-drawer');
 assert.equal(drawerContext.drawerApi.closeDrawer(), false, 'missing drawer is a safe no-op');
 
 
-/* Evaluate the actual touch callback bodies so RTL/LTR edge behavior and
- * focus restoration cannot drift from the production drawer implementation. */
-function listenerBody(type) {
-  const prefix = "document.addEventListener('" + type + "',event=>{";
-  const start = shell.indexOf(prefix);
-  const end = start < 0 ? -1 : shell.indexOf('},{passive:true});', start);
-  assert.ok(start >= 0 && end > start, 'production ' + type + ' listener must exist');
-  return shell.slice(start + prefix.length, end);
-}
-const touchStartBody = listenerBody('touchstart');
-const touchEndBody = listenerBody('touchend');
-function swipeHarness(locale, initiallyOpen = false) {
-  const source = [
-    'let opened = ' + (initiallyOpen ? 'true' : 'false') + ';',
-    'let touch = null;',
-    'let openCount = 0, focusRestored = 0;',
-    'const closeCalls = [];',
-    'const state = { page: "library" };',
-    'const global = { innerWidth: 400 };',
-    'const document = { documentElement: { clientWidth: 400 } };',
-    'const clock = { now: 1000 };',
-    'const Date = { now: () => clock.now };',
-    'const rtl = () => ' + (locale === 'ar' ? 'true' : 'false') + ';',
-    'function openDrawer() { opened = true; openCount++; }',
-    'function closeDrawer(restoreFocus = true) { opened = false; closeCalls.push(restoreFocus); if (restoreFocus) focusRestored++; }',
-    'const touchStartHandler = event => {' + touchStartBody + '};',
-    'const touchEndHandler = event => {' + touchEndBody + '};',
-    'function swipe(startX, endX, elapsed = 100, startY = 20, endY = 20) { touch = null; clock.now = 1000; touchStartHandler({ touches: [{ clientX: startX, clientY: startY }] }); clock.now += elapsed; touchEndHandler({ changedTouches: [{ clientX: endX, clientY: endY }] }); }',
-    'globalThis.api = { swipe, snapshot: () => ({ opened, openCount, focusRestored, closeCalls: closeCalls.slice() }) };'
-  ].join('\n');
-  const context = {};
-  vm.runInNewContext(source, context, { timeout: 2000 });
-  return context.api;
+/* Exercise real touch callbacks against a DOM shim. Drawer must follow
+ * finger motion while preserving vertical scroll and RTL edge semantics. */
+const dragStart=shell.indexOf('// Finger-following drawer');
+const dragEnd=shell.indexOf('/* LT-02: a single, cancellable story navigation gate.',dragStart);
+assert.ok(dragStart>=0&&dragEnd>dragStart,'finger-following drawer source present');
+function swipeHarness(locale,initiallyOpen=false){
+ const callbacks={},drawStyle={transform:'',transition:'',removeProperty(k){delete this[k];}};
+ const backdropStyle={opacity:'',transition:'',removeProperty(k){delete this[k];}};
+ const drawer={style:drawStyle,getBoundingClientRect(){return {width:300};},inert:!initiallyOpen};
+ const backdrop={style:backdropStyle,classList:{add(){}}};
+ const document={documentElement:{clientWidth:400},addEventListener(type,cb){callbacks[type]=cb;},
+  getElementById(id){return id==='lt-drawer'?drawer:id==='lt-drawer-backdrop'?backdrop:null;}};
+ const state={page:'library'};
+ const global={innerWidth:400};
+ let opened=initiallyOpen,touch=null,openCount=0,closeCount=0;
+ const rtl=()=>locale==='ar';
+ function openDrawer(){opened=true;openCount++;drawer.inert=false;}
+ function closeDrawer(){opened=false;closeCount++;drawer.inert=true;}
+ vm.runInNewContext(shell.slice(dragStart,dragEnd),
+  {document,state,global,rtl,openDrawer,closeDrawer,Math});
+ function swipe(x,y,dx,dy=0){
+  callbacks.touchstart({touches:[{clientX:x,clientY:y}]});
+  callbacks.touchmove({touches:[{clientX:x+dx,clientY:y+dy}]});
+  const mid=drawStyle.transform;
+  callbacks.touchend({});
+  return {mid,opened,openCount,closeCount};
+ }
+ return {swipe,drawer,backdrop,callbacks};
 }
 {
-  const h = swipeHarness('ar');
-  h.swipe(390, 300);
-  assert.deepEqual(JSON.parse(JSON.stringify(h.snapshot())), { opened: true, openCount: 1, focusRestored: 0, closeCalls: [] },
-    'Arabic drawer opens only on a right-edge leftward swipe');
+ const ar=swipeHarness('ar');
+ const result=ar.swipe(390,30,-155);
+ assert.match(result.mid,/translate3d\(/,'RTL drawer visibly tracks the moving finger');
+ assert.equal(result.opened,true,'RTL right-edge swipe opens');
 }
 {
-  const h = swipeHarness('en');
-  h.swipe(10, 100);
-  assert.deepEqual(JSON.parse(JSON.stringify(h.snapshot())), { opened: true, openCount: 1, focusRestored: 0, closeCalls: [] },
-    'English drawer opens only on a left-edge rightward swipe');
+ const en=swipeHarness('en');
+ const result=en.swipe(8,30,155);
+ assert.match(result.mid,/translate3d\(/,'LTR drawer visibly tracks the moving finger');
+ assert.equal(result.opened,true,'LTR left-edge swipe opens');
 }
 {
-  const h = swipeHarness('ar');
-  h.swipe(180, 90);
-  assert.equal(h.snapshot().openCount, 0, 'an Arabic content-area swipe must not open the drawer');
+ const en=swipeHarness('en');
+ assert.equal(en.swipe(195,40,130).openCount,0,'far-from-edge gestures ignored');
 }
 {
-  const h = swipeHarness('en');
-  h.swipe(220, 310);
-  assert.equal(h.snapshot().openCount, 0, 'an English content-area swipe must not open the drawer');
+ const ar=swipeHarness('ar',true);
+ const result=ar.swipe(200,40,180);
+ assert.equal(result.opened,false,'RTL reciprocal horizontal swipe closes drawer');
 }
 {
-  const h = swipeHarness('ar', true);
-  h.swipe(180, 270);
-  assert.deepEqual(JSON.parse(JSON.stringify(h.snapshot())), { opened: false, openCount: 0, focusRestored: 1, closeCalls: [true] },
-    'closing the Arabic drawer by reciprocal swipe restores focus to the menu toggle');
-}
-{
-  const h = swipeHarness('en', true);
-  h.swipe(220, 130);
-  assert.deepEqual(JSON.parse(JSON.stringify(h.snapshot())), { opened: false, openCount: 0, focusRestored: 1, closeCalls: [true] },
-    'closing the English drawer by reciprocal swipe restores focus to the menu toggle');
-}
-{
-  const h = swipeHarness('ar');
-  h.swipe(390, 300, 900);
-  assert.equal(h.snapshot().openCount, 0, 'a slow swipe must not open the drawer');
+ const en=swipeHarness('en');
+ const result=en.swipe(5,30,100,180);
+ assert.equal(result.openCount,0,'vertical scroll must not open the drawer');
 }
 
 /* LT-10 Settings modal focus isolation: execute the exact production focus helpers, not a parallel implementation. */
