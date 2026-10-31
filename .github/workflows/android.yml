@@ -75,6 +75,7 @@ jobs:
           node tools/full-localization.test.cjs
           node tools/typography-profiles.test.cjs
           node tools/five-font-reader.test.cjs
+          node tools/offline-font-pack.test.cjs
           node tools/content-loader.test.cjs
           node tools/library-shell-layout.test.cjs
           node --check app/src/main/assets/lexicon-extra.js
@@ -245,6 +246,14 @@ jobs:
           done
           unzip -Z1 "$APK" | grep -Fqx "assets/licensed-audio/manifest.json" || { echo "MISSING licensed audio manifest"; exit 1; }
           unzip -Z1 "$APK" | grep -Fqx "assets/LICENSE_AUDIO.txt" || { echo "MISSING CC-BY attribution"; exit 1; }
+          # The APK must contain the real offline fonts and their redistribution notices.
+          for font in ar-modern ar-naskh ar-ruqaa ar-kufi ar-hand en-serif en-sans en-humanist en-mono en-hand; do
+            unzip -Z1 "$APK" | grep -Fqx "assets/fonts/$font.ttf" || { echo "MISSING font $font"; exit 1; }
+          done
+          for license in tajawal notonaskharabic arefruqaa reemkufi reemkufiink lora outfit manrope ibmplexmono patrickhand; do
+            unzip -Z1 "$APK" | grep -Fqx "assets/fonts/$license-OFL.txt" || { echo "MISSING OFL $license"; exit 1; }
+          done
+          unzip -Z1 "$APK" | grep -Fqx "assets/lt-offline-fonts.css" || { echo "MISSING offline CSS"; exit 1; }
           # This purposeful build checks that Android AAPT2 compiled the new
           # adaptive launcher XML, rather than trusting source XML alone.
           unzip -Z1 "$APK" | grep -Fqx "res/mipmap-anydpi-v26/ic_launcher.xml" || {

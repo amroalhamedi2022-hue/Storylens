@@ -54,21 +54,22 @@ const ltFontChoices=[
  {id:'casual-hand',labelAr:'كتابة يدوية مرحة',labelEn:'Casual handwritten',ar:'"Aref Ruqaa", "Noto Naskh Arabic", cursive',en:'"Comic Sans MS", "Chalkboard", "Trebuchet MS", cursive'},
  {id:'calligraphy',labelAr:'خط عربي انسيابي',labelEn:'Flowing calligraphy',ar:'"Aref Ruqaa Ink", "Aref Ruqaa", "Noto Naskh Arabic", cursive',en:'"Bradley Hand", "Segoe Print", cursive'}
 ];
+const ltFontLoadingPairs=new Set();
 function ltApplyFonts(){
  const legacy=ltFontChoices.find(item=>item.id===get('lt_font_choice','system'))||ltFontChoices[0];
  const arabic={
-  sans:'"Noto Sans Arabic",Tahoma,system-ui,sans-serif',
-  naskh:'"Noto Naskh Arabic","Noto Serif Arabic",serif',
-  ruqaa:'"Aref Ruqaa Ink","Aref Ruqaa","Noto Naskh Arabic",serif',
-  kufi:'"Noto Kufi Arabic","Noto Sans Arabic",sans-serif',
-  hand:'"Reem Kufi Ink","Aref Ruqaa","Noto Naskh Arabic",cursive'
+  sans:'"LT Arabic Modern","Noto Sans Arabic",Tahoma,sans-serif',
+  naskh:'"LT Arabic Naskh","Noto Naskh Arabic",serif',
+  ruqaa:'"LT Arabic Ruqaa","Aref Ruqaa",serif',
+  kufi:'"LT Arabic Kufi","Noto Kufi Arabic",sans-serif',
+  hand:'"LT Arabic Hand","Reem Kufi Ink",cursive'
  };
  const english={
-  serif:'Georgia,"Times New Roman",serif',
-  sans:'system-ui,"Segoe UI",Arial,sans-serif',
-  humanist:'"Trebuchet MS","Gill Sans",Arial,sans-serif',
-  mono:'ui-monospace,"Courier New",monospace',
-  hand:'"Segoe Print","Bradley Hand",cursive'
+  serif:'"LT English Serif",Georgia,serif',
+  sans:'"LT English Sans",system-ui,sans-serif',
+  humanist:'"LT English Humanist","Trebuchet MS",sans-serif',
+  mono:'"LT English Mono",ui-monospace,monospace',
+  hand:'"LT English Hand",cursive'
  };
  const ar=arabic[get('fontArabic','sans')]||legacy.ar;
  const en=english[get('fontEnglish','serif')]||legacy.en;
@@ -79,6 +80,21 @@ function ltApplyFonts(){
  const rootStyle=document.documentElement?.style;
  if(rootStyle&&typeof rootStyle.setProperty==='function'){
   rootStyle.setProperty('--lt-font-en',en);rootStyle.setProperty('--lt-font-ar',ar);
+ }
+ // Offline TTF faces may resolve after the first pagination. Reflow exactly
+ // once per selected pair, retaining its semantic paragraph anchor.
+ const pair=ar+'|'+en;
+ if(!ltFontLoadingPairs.has(pair)&&document.fonts?.load){
+  ltFontLoadingPairs.add(pair);
+  const storyId=state.story?.id,chapter=state.chapter;
+  Promise.all([document.fonts.load('20px '+ar.split(',')[0]),
+   document.fonts.load('20px '+en.split(',')[0])]).then(()=>{
+   if(state.page!=='reader'||state.story?.id!==storyId||state.chapter!==chapter)return;
+   const selected=arabic[get('fontArabic','sans')]+'|'+english[get('fontEnglish','serif')];
+   if(selected!==pair)return;
+   if(typeof window.LinguaReflowReader==='function')
+    window.LinguaReflowReader(captureParagraphAnchor());
+  }).catch(()=>{}); // existing installed fallbacks remain readable
  }
 }
 
