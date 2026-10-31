@@ -195,8 +195,9 @@ function testPointerOwnership(){
  assert.equal(foldClasses.has('lt-paper-grabbing'),false,
   'queued frame from a previous chapter must not paint stale paper');
  sandbox.state.chapter=1;
-
- drag(7);
+ // Stale frames now cancel their owning pointer immediately, so the next
+ // valid gesture must start fresh instead of reusing the cancelled capture.
+ down(7);drag(7);
  frame();
  assert.ok(foldClasses.has('lt-paper-grabbing'),'primary finger retains visible fold');
  up(7);
