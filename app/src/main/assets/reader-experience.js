@@ -245,7 +245,8 @@ function installPageTurn(){
  let page=null,paragraph=0;
  for(const node of originalNodes){
   if(node.nodeType===1&&node.classList.contains('sentence')){
-   if(!page||boundaries.has(paragraph)){
+   // Leading illustrations or decorative nodes belong on the first paper.
+   if(!page||(paragraph>0&&boundaries.has(paragraph))){
     page=document.createElement('section');
     page.className='lt-book-page';
     page.setAttribute('role','group');

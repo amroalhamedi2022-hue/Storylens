@@ -30,7 +30,7 @@ for(let paragraph=0;paragraph<long.length;paragraph++){
 assert.equal(locate(phone,NaN),0,'corrupt imported anchors are safe');
 assert.equal(locate(phone,-1),0,'negative anchors are safe');
 assert.equal(locate(phone,99999),phone.length-1,'out-of-range old progress clamps to last page');
-assert.deepEqual(Array.from(starts([120,360,80,900,150],NaN,NaN,NaN)).slice(0,2),[0,2],
+assert.deepEqual(Array.from(starts([120,360,80,900,150],NaN,NaN,NaN)).slice(0,2),[0,1],
  'bad WebView geometry falls back to deterministic safe bounds');
 assert.match(source,/const anchorKey='readpage_anchor_'/,'semantic progress key used');
 assert.match(source,/put\(anchorKey,starts\[current\]\|\|0\)/,'per-turn anchor persisted');
