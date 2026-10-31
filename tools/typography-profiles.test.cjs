@@ -83,7 +83,13 @@ function harness(saved = {}) {
       return geometryRead===1?{top:100,bottom:140}:{top:150,bottom:190};
     }
   });
+  let repaginations=0;
+  h.global.LinguaReflowReader=anchor=>{
+   repaginations++;
+   assert.equal(anchor.paragraph,3,'active reader reflow retains visible paragraph');
+  };
   assert.equal(h.api.applyReadingSize('en','large'),true);
+  assert.equal(repaginations,1,'shell signals reader once after changing CSS size');
   assert.equal(h.storage['scroll_story-1_2'],321,'legacy scroll checkpoint is saved');
   assert.deepEqual(h.calls.restored,[371],
     'same paragraph remains at its prior viewport offset after simulated reflow');

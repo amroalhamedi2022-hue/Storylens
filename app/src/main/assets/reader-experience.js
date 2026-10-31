@@ -249,8 +249,13 @@ function installPageTurn(){
  const originalNodes=Array.from(sentenceBox.childNodes);
  const pages=[];
  const bounds=width.getBoundingClientRect?.();
+ // Use the actual post-theme English font size. The legacy 'size' preference
+ // does not reflect the independent compact/comfortable/large reader profiles.
+ const computedSize=Number.parseFloat(window.getComputedStyle?.(sentences[0])?.fontSize||'');
+ const preferredSize={compact:17,comfortable:19,large:22}[get('readingSizeEnglish','comfortable')]||Number(get('size',20));
  const starts=ltPageStarts(sentences.map(node=>(node.textContent||'').length),
-  window.innerHeight,bounds?.width||window.innerWidth,Number(get('size',20)));
+  window.innerHeight,bounds?.width||window.innerWidth,
+  Number.isFinite(computedSize)?computedSize:preferredSize);
  const boundaries=new Set(starts);
  let page=null,paragraph=0;
  for(const node of originalNodes){
@@ -920,7 +925,12 @@ settings=function(){
  const footer=sheet.querySelector('footer');
  if(footer)footer.insertAdjacentElement('beforebegin',bar);else sheet.appendChild(bar);
  const fontSelect=sheet.querySelector('#lt-font-choice');
- fontSelect?.addEventListener('change',event=>{put('lt_font_choice',event.target.value);ltApplyFonts();});
+ fontSelect?.addEventListener('change',event=>{
+  const anchor=captureParagraphAnchor();
+  put('lt_font_choice',event.target.value);
+  if(typeof window.LinguaReflowReader==='function')window.LinguaReflowReader(anchor);
+  else ltApplyFonts();
+ });
 
 };
 window.stlBookmark=function(){
@@ -981,6 +991,25 @@ window.stlChapter=function(i){
 };
 theme=function(){snapshot();originalTheme()};
 inlineTranslate=function(){snapshot();originalInlineTranslate();document.querySelector('.arabic-page')?.setAttribute('lang','ar');};
+// Reader typography controls apply font/size without changing chapters. Reflow
+// the actual paper pages after font changes, preserving the paragraph visible
+// at the same viewport offset. This also protects a mid-chapter bookmark from
+// shifting when an Android font has different character metrics.
+window.LinguaReflowReader=function(anchor){
+ if(state.page!=='reader'||!state.story)return;
+ const id=state.story.id,chapter=state.chapter;
+ const valid=anchor&&Number.isInteger(anchor.paragraph)&&anchor.paragraph>=0&&
+  Number.isFinite(anchor.viewportOffset)&&Math.abs(anchor.viewportOffset)<=4096;
+ if(valid)put('readpage_anchor_'+id+'_'+chapter,anchor.paragraph);
+ renderReader();
+ if(!valid||state.page!=='reader'||state.story?.id!==id||state.chapter!==chapter)return;
+ const target=Array.from(document.querySelectorAll('.reader .sentence'))
+  .find(node=>Number(node.dataset?.i)===anchor.paragraph);
+ const top=target?.getBoundingClientRect?.()?.top;
+ if(!Number.isFinite(top))return;
+ const y=window.scrollY+top-anchor.viewportOffset;
+ if(Number.isFinite(y))window.scrollTo(0,Math.max(0,y));
+};
 // Adaptive paper grouping must also respond when the device rotates or
 // Android multi-window changes width. Rebuild only on material width changes,
 // never for keyboard-height-only resize notifications. The semantic first-

@@ -82,3 +82,29 @@ env2.state.page='reader';env2.window.innerWidth=700;callbacks.resize();
 sheet.isConnected=false;pending();
 assert.equal(rerenders,1,'detached old sheets cannot be rerendered');
 console.log('PASS: orientation/multi-window repagination, keyboard resize safety and visible paper retention');
+
+/* Test the source reflow bridge with a visible semantic paragraph. */
+assert.match(source,/const computedSize=Number\.parseFloat\(window\.getComputedStyle/,
+ 'paper grouping uses actual CSS font size after theme/typography changes');
+const typoStart=source.indexOf('window.LinguaReflowReader=function(anchor){');
+const typoEnd=source.indexOf('\n};\n// Adaptive paper grouping',typoStart);
+assert.ok(typoStart>0&&typoEnd>typoStart,'production typography reflow bridge exists');
+let renderCount=0;const stored=[],scrollRestored=[];
+const visibleParagraph={dataset:{i:'3'},getBoundingClientRect(){return {top:180};}};
+const typoEnv={
+ state:{page:'reader',chapter:0,story:{id:'book'}},
+ put:(key,value)=>stored.push([key,value]),renderReader:()=>{renderCount++;},
+ document:{querySelectorAll:()=>[visibleParagraph]},
+ window:{scrollY:400,scrollTo:(x,y)=>scrollRestored.push([x,y])}
+};
+vm.runInNewContext(source.slice(typoStart,typoEnd+3),typoEnv);
+typoEnv.window.LinguaReflowReader({paragraph:3,viewportOffset:100});
+assert.equal(renderCount,1,'changing reading typography rebuilds the paper');
+assert.deepEqual(stored,[['readpage_anchor_book_0',3]],
+ 'visible paragraph is retained across font and size changes');
+assert.deepEqual(scrollRestored,[[0,480]],
+ 'same paragraph keeps its viewport position after repagination');
+typoEnv.state.page='library';
+typoEnv.window.LinguaReflowReader({paragraph:2,viewportOffset:100});
+assert.equal(renderCount,1,'font settings in the library do not open a book');
+console.log('PASS: typography changes repaginate at real font metrics without jumping paragraphs');

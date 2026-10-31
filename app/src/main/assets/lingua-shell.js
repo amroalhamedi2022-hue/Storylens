@@ -109,6 +109,9 @@ function preserveReaderPosition(change){
    if(Number.isFinite(top)&&Number.isFinite(candidate))y=safeOffset(candidate);
   }
   if(typeof global.scrollTo==='function')global.scrollTo(0,y);
+  // After CSS profile changes, rebuild actual paper groups at the new glyph
+  // width. The enhanced reader restores the same visible paragraph afterward.
+  if(typeof global.LinguaReflowReader==='function')global.LinguaReflowReader(anchor);
  };
  if(typeof global.requestAnimationFrame==='function')global.requestAnimationFrame(restore);
  else if(typeof global.setTimeout==='function')global.setTimeout(restore,0);
