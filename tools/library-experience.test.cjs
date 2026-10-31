@@ -126,9 +126,10 @@ const registered={};
 const shellStore=new Map();
 const fakeDrawer={
  id:'lt-drawer',inert:true,attributes:{},classList:{add(){},remove(){}},
+ style:{removeProperty(k){delete this[k];}},getBoundingClientRect(){return {width:300};},
  setAttribute(k,v){this.attributes[k]=v;},querySelector(){return {focus(){}};}
 };
-const fakeBackdrop={classList:{add(){},remove(){}}};
+const fakeBackdrop={classList:{add(){},remove(){}},style:{removeProperty(k){delete this[k];}}};
 const fakeToggle={attributes:{},setAttribute(k,v){this.attributes[k]=v;},focus(){}};
 let shellSentenceNodes=[];
 const shellDocument={
@@ -298,19 +299,25 @@ shellDocument.querySelector=originalQuerySelector;
 fakeToggle.focus=originalMenuFocus;
 console.log('PASS: keyboard focus trap, reverse Tab and Settings Escape');
 
+// A drag updates the drawer during touchmove, not only on touchend.
 registered.touchstart({touches:[{clientX:391,clientY:200}]});
-registered.touchend({changedTouches:[{clientX:291,clientY:210}]});
+registered.touchmove({touches:[{clientX:205,clientY:210}]});
+assert.match(fakeDrawer.style.transform,/translate3d\(/,'finger drag updates actual drawer transform');
+registered.touchend({});
 assert.equal(shell.isDrawerOpen(),true,'Arabic swipe from right edge opens drawer');
-registered.touchstart({touches:[{clientX:280,clientY:200}]});
-registered.touchend({changedTouches:[{clientX:370,clientY:205}]});
+registered.touchstart({touches:[{clientX:180,clientY:200}]});
+registered.touchmove({touches:[{clientX:385,clientY:205}]});
+registered.touchend({});
 assert.equal(shell.isDrawerOpen(),false,'opposite swipe closes drawer');
 shellDocument.documentElement.dir='ltr';
 registered.touchstart({touches:[{clientX:7,clientY:180}]});
-registered.touchend({changedTouches:[{clientX:99,clientY:186}]});
+registered.touchmove({touches:[{clientX:197,clientY:186}]});
+registered.touchend({});
 assert.equal(shell.isDrawerOpen(),true,'English swipe from left edge opens drawer');
 shell.closeDrawer();
 registered.touchstart({touches:[{clientX:7,clientY:180}]});
-registered.touchend({changedTouches:[{clientX:130,clientY:285}]});
+registered.touchmove({touches:[{clientX:130,clientY:285}]});
+registered.touchend({});
 assert.equal(shell.isDrawerOpen(),false,'vertical scrolling must not trigger drawer');
 // Existing discovery refreshes must rehome controls in the drawer without rerender loops.
 const discovery={parentNode:{}};
