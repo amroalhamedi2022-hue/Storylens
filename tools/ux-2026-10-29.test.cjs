@@ -132,6 +132,9 @@ assert.match(css,/clip-path:inset\(0 var\(--lt-fold-right,0%\) 0 var\(--lt-fold-
 assert.match(css,/\.lt-paper-grabbing\[data-lt-fold-edge="right"\]:after/);
 assert.match(css,/\.lt-paper-grabbing\[data-lt-fold-edge="left"\]:after/);
 assert.match(css,/\.lt-paper-reverse-ink/,'the fold back carries mirrored paper ink');
+assert.match(css,/@keyframes ltPaperSnapRight/,'right sheet returns toward its edge');
+assert.match(css,/@keyframes ltPaperSnapLeft/,'left sheet returns toward its edge');
+assert.match(css,/\.lt-paper-snapback\{[\s\S]*?pointer-events:none/,'recoil never captures controls');
 assert.match(css,/\.lt-paper-reverse\{[\s\S]*?pointer-events:none/,'reverse face never steals taps');
 assert.match(css,/\.lt-paper-reverse-ink\{[\s\S]*?scaleX\(-1\)/,'ink is mirrored on the back');
 assert.match(css,/prefers-reduced-motion:reduce/);
@@ -165,9 +168,10 @@ function testPointerOwnership(){
   removeProperty(name){delete this.values[name];}});
  const page=()=>({classList:classList(new Set()),style:style(),
   querySelectorAll:()=>[{textContent:'English detective ink. '.repeat(40)}]});
- const fakeElement=()=>({attributes:{},children:[],
+ const fakeElement=()=>({attributes:{},children:[],style:style(),
   setAttribute(k,v){this.attributes[k]=v;},
   appendChild(node){this.children.push(node);},
+  addEventListener(k,fn){this[k]=fn;},
   remove(){this.wasRemoved=true;}});
 
  const sheet={
@@ -323,6 +327,20 @@ function testPointerOwnership(){
  assert.equal(foldClasses.has('lt-paper-grabbing'),false,
   'reader no longer remains in grabbing state after page change');
  sandbox.current=0;
+ // A partially turned sheet should visually settle back after cancellation,
+ // without blocking the real paper or committing a navigation.
+ down(30);drag(30);frame();
+ const beforeRecoil=sheet.children.length;
+ events.pointercancel({pointerId:30});
+ assert.equal(sheet.children.length,beforeRecoil+1,'one paper recoil afterimage is created');
+ const recoil=sheet.children.at(-1);
+ assert.equal(recoil.className,'lt-paper-snapback');
+ assert.equal(recoil.attributes['aria-hidden'],'true','animation is absent from accessibility tree');
+ assert.equal(recoil.inert,true,'paper afterimage cannot steal taps');
+ assert.ok(parseFloat(recoil.style.values['--lt-snap-width'])>0,'recoil starts at the held fold width');
+ recoil.animationend();
+ assert.equal(recoil.wasRemoved,true,'finished recoil removes its temporary node');
+ assert.deepEqual(turns,[1,1,1,-1,1],'cancelled paper spring does not turn a page');
 
 }
 testPointerOwnership();

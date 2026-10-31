@@ -392,6 +392,37 @@ function installPageTurn(){
   reverseSheet=face;
  }
 
+ // A cancelled edge hold springs toward the paper's original edge, while
+ // actual pages, translations and word controls are restored immediately.
+ // The afterimage is inert and owned by its own one-shot timeout; an old
+ // animation can never remove a newer fold or page.
+ function recoilPaper(held){
+  if(!held.locked||held.progress<.06||
+     !sentenceBox.classList.contains('lt-paper-grabbing')||
+     sentenceBox.isConnected===false||
+     window.matchMedia?.('(prefers-reduced-motion: reduce)').matches||
+     typeof document.createElement!=='function')return;
+  const echo=document.createElement('div');
+  if(!echo?.style?.setProperty)return;
+  const g=pageFoldGeometry(held.progress,held.edge,held.lastY-held.startY);
+  echo.className='lt-paper-snapback';
+  echo.setAttribute('data-lt-edge',held.edge);
+  echo.setAttribute('aria-hidden','true');
+  echo.inert=true;
+  echo.style.setProperty('--lt-snap-cut',g.cut);
+  echo.style.setProperty('--lt-snap-width',g.flap);
+  echo.style.setProperty('--lt-snap-skew',g.skew);
+  echo.style.setProperty('--lt-snap-rotation',g.rotation);
+  sentenceBox.appendChild(echo);
+  let timeout=null;
+  const remove=()=>{
+   if(timeout!==null)window.clearTimeout?.(timeout);
+   echo.remove?.();
+  };
+  echo.addEventListener?.('animationend',remove,{once:true});
+  timeout=window.setTimeout?.(remove,360)??null;
+ }
+
  function clearFold(){
   if(reverseSheet){reverseSheet.remove?.();reverseSheet=null;}
   if(foldRaf!==null){window.cancelAnimationFrame?.(foldRaf);foldRaf=null;}
@@ -468,6 +499,9 @@ function installPageTurn(){
   const turn=commit&&stillCurrent&&held.progress>=.34&&releasePull>=Math.max(35,held.width*.16)&&!!endTarget&&
    sentenceBox.contains(endTarget)&&
    pageFoldReleaseAllowed(held.target,endTarget,window.getSelection?.()?.toString()||'');
+  if(!turn&&stillCurrent&&!(window.getSelection?.()?.toString()||'').trim()){
+   recoilPaper(held);
+  }
   drag=null;clearFold();
   try{sentenceBox.releasePointerCapture?.(held.id);}catch(_){}
   if(turn)move(delta,'gesture');
