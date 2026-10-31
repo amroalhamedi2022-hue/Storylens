@@ -128,7 +128,7 @@ const ltPageIndices=new Map();
 // Keep small phone pages readable instead of forcing four long passages onto
 // one oversized sheet. This is a bounded, deterministic layout estimate; each
 // authored paragraph, its bilingual translation and illustration remain intact.
-function ltPageStarts(lengths,viewportHeight,readerWidth,fontSize){
+function ltPageStarts(lengths,viewportHeight,readerWidth,fontSize,illustrationHeights=[]){
  const height=Number(viewportHeight),width=Number(readerWidth),size=Number(fontSize);
  const vh=Number.isFinite(height)&&height>=320?height:800;
  const rw=Number.isFinite(width)&&width>=220?width:420;
@@ -139,7 +139,9 @@ function ltPageStarts(lengths,viewportHeight,readerWidth,fontSize){
  for(let i=0;i<lengths.length;i++){
   const raw=Number(lengths[i]);
   const chars=Number.isFinite(raw)?Math.max(0,Math.min(20000,raw)):0;
-  const cost=Math.max(1,Math.ceil(chars/charactersPerLine))*px*1.65+38;
+  const additional=Number(illustrationHeights[i]);
+  const imageCost=Number.isFinite(additional)?Math.max(0,Math.min(320,additional)):0;
+  const cost=Math.max(1,Math.ceil(chars/charactersPerLine))*px*1.65+38+imageCost;
   if(count===0||count>=LT_PAGE_PARAGRAPHS||used+cost>budget){
    starts.push(i);used=0;count=0;
   }
@@ -253,9 +255,13 @@ function installPageTurn(){
  // does not reflect the independent compact/comfortable/large reader profiles.
  const computedSize=Number.parseFloat(window.getComputedStyle?.(sentences[0])?.fontSize||'');
  const preferredSize={compact:17,comfortable:19,large:22}[get('readingSizeEnglish','comfortable')]||Number(get('size',20));
+ // Keep the figure on the same paper as its source paragraph. Reserve
+ // enough space to prevent image-heavy pages from overrunning the sheet.
+ const illustrationHeights=sentences.map(node=>node.nextElementSibling?.classList?.contains('lt-inline-illustration')
+  ?Math.min(260,Math.max(140,window.innerHeight*.26)):0);
  const starts=ltPageStarts(sentences.map(node=>(node.textContent||'').length),
   window.innerHeight,bounds?.width||window.innerWidth,
-  Number.isFinite(computedSize)?computedSize:preferredSize);
+  Number.isFinite(computedSize)?computedSize:preferredSize,illustrationHeights);
  const boundaries=new Set(starts);
  let page=null,paragraph=0;
  for(const node of originalNodes){
@@ -693,6 +699,20 @@ library=function(){
   }
  });
 };
+// The existing offline editorial registry is chapter-specific, yet the old
+// reader showed its scene only in the hero/cover. Bring it into the prose.
+// Explicit approved image placements remain authoritative. Never hotlink.
+function ltBuiltInChapterScene(chapter,sentenceCount){
+ if(!sentenceCount||!chapter||!state.story||typeof art==='undefined'||!art)return null;
+ const src=art[state.story.id+'_'+state.chapter];
+ if(typeof src!=='string'||src.length>280000)return null;
+ const trustedRaster=/^data:image\/(?:webp|png|jpeg);base64,[a-z0-9+/=]+$/i.test(src);
+ const trustedSvg=src.startsWith('data:image/svg+xml;charset=utf-8,%3Csvg');
+ if(!trustedRaster&&!trustedSvg)return null;
+ return {afterParagraph:Math.min(2,sentenceCount-1),src,
+  alt:('Chapter illustration: '+(state.story.title||'Story')+' — '+(chapter.title||'Chapter')).slice(0,240),
+  position:'edge-start',aspectRatio:1000/620,crop:'cover'};
+}
 renderReader=function(){
  originalReader();
  if(!state.story || state.page!=='reader')return;
@@ -705,22 +725,26 @@ renderReader=function(){
  // specific paragraph. No remote URLs, HTML injection, or network fallback.
  // An absent inlineArt catalog does nothing to existing books.
  const chapter=state.story.chapters[state.chapter];
- const art=Array.isArray(chapter?.inlineArt)?chapter.inlineArt:[];
  const sentences=Array.from(document.querySelectorAll('.reader .sentence'));
- const usedAnchors=new Set();
  const safeArtPath=/^art\/[a-z0-9_-]+(?:\/[a-z0-9_-]+)*\.(?:webp|png|jpe?g)$/i;
+ const curatedArt=Array.isArray(chapter?.inlineArt)?chapter.inlineArt:[];
+ const approvedArt=curatedArt.some(item=>item&&safeArtPath.test(item.src||'')&&
+  typeof item.alt==='string'&&!!item.alt.trim());
+ const chapterScene=approvedArt?null:ltBuiltInChapterScene(chapter,sentences.length);
+ const inlineArt=chapterScene?[chapterScene,...curatedArt]:curatedArt;
+ const usedAnchors=new Set();
  // Ignore invalid catalog entries without allowing them to consume the 12-image budget.
  // Bound candidate scanning so a corrupt chapter cannot stall the reader.
- for(const item of art.slice(0,64)){
+ for(const item of inlineArt.slice(0,64)){
   if(usedAnchors.size>=12)break;
   if(!item||!Number.isInteger(item.afterParagraph)||item.afterParagraph<0||
-     usedAnchors.has(item.afterParagraph)||!safeArtPath.test(item.src||'')||
+     usedAnchors.has(item.afterParagraph)||!(item===chapterScene||safeArtPath.test(item.src||''))||
      typeof item.alt!=='string'||!item.alt.trim()||item.alt.length>240)continue;
   const anchor=sentences.find(node=>Number(node.dataset.i)===item.afterParagraph);
   if(!anchor||typeof anchor.insertAdjacentElement!=='function')continue;
   const position=['wide','edge-start','edge-end'].includes(item.position)?item.position:'wide';
   const figure=document.createElement('figure');
-  figure.className='lt-inline-illustration lt-inline-'+position;
+  figure.className='lt-inline-illustration lt-inline-'+position+(item===chapterScene?' lt-inline-chapter-scene':'');
   const picture=document.createElement('img');
   picture.src=item.src;picture.alt=item.alt.trim();
   picture.loading='lazy';picture.decoding='async';

@@ -60,4 +60,22 @@ assert.equal(added[0].figure.removed, true, 'missing offline image removed witho
 assert.equal(added[1].figure.children[0].src, 'art/verne/map.png');
 assert.equal(added[1].figure.children.length, 1);
 assert.equal(chapter.paragraphs[0].ar, 'محطة.', 'Arabic learning text unchanged');
-console.log('PASS: inline art anchors, offline allowlist, alt, lazy decode and translation integrity');
+// Existing offline chapter art should appear even when no inlineArt is authored.
+chapter.inlineArt=[];
+added.length=0;
+sandbox.art={'book_0':'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E'};
+sandbox.renderReader();
+assert.equal(added.length,1,'packaged story scene inserted in actual reading flow');
+assert.equal(added[0].i,2,'illustration is anchored after the opening prose');
+assert.match(added[0].figure.className,/lt-inline-chapter-scene/);
+assert.match(added[0].figure.children[0].src,/^data:image\/svg\+xml/);
+assert.match(added[0].figure.children[0].alt,/book — Chapter/);
+assert.equal(added[0].figure.children[0].style.aspectRatio,String(1000/620));
+added.length=0;
+sandbox.art.book_0='https://example.org/remote.svg';
+sandbox.renderReader();
+assert.equal(added.length,0,'untrusted remote image is never fetched');
+added.length=0;delete sandbox.art.book_0;
+sandbox.renderReader();
+assert.equal(added.length,0,'missing chapter art does not insert a broken image');
+console.log('PASS: inline art anchors, chapter-specific offline scenes, safe fallback and translations');

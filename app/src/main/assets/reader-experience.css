@@ -97,6 +97,24 @@
 @media(max-width:849px){.reader .lt-inline-illustration{float:none!important;max-width:100%;}}
 @media(prefers-reduced-motion:reduce){.reader .lt-inline-illustration{transition:none!important;}}
 
+/* LT-08: calm illustrated book pages, not large overlapping hero cards. */
+.reader .lt-inline-illustration{
+ border:1px solid color-mix(in srgb,var(--reader-ink) 13%,transparent);
+ box-shadow:0 10px 24px #101b2712,0 2px 5px #101b270b;
+ background:color-mix(in srgb,var(--reader) 85%,var(--card));
+}
+.reader .lt-inline-chapter-scene img{max-height:min(29vh,230px);object-fit:cover}
+.reader .lt-inline-chapter-scene{max-width:100%;margin-block:1rem 1.3rem}
+@media(min-width:850px){
+ .reader .lt-inline-chapter-scene.lt-inline-edge-start{
+  max-width:min(41%,300px);margin:0.5rem 1.25rem 0.8rem 0;
+ }
+}
+@media(max-width:849px){
+ .reader .lt-inline-chapter-scene{width:100%;margin:0.8rem auto 1.2rem}
+ .reader .lt-inline-chapter-scene img{max-height:min(27vh,220px)}
+}
+
 /* LT-06/07: keyboard dictionary focus without turning every word into a Tab stop. */
 .reader .sentence .tok[role="button"]:focus-visible{outline:2px solid #188b94;outline-offset:3px;border-radius:3px;background:color-mix(in srgb,#64cfc8 19%,transparent)}
 .reader.dark .sentence .tok[role="button"]:focus-visible{outline-color:#a5f1e5;background:#a5f1e522}
