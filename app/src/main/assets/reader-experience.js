@@ -125,6 +125,37 @@ wordSheet=function(args){
 // their source paragraph. The current page is persisted per story/chapter.
 const LT_PAGE_PARAGRAPHS=4;
 const ltPageIndices=new Map();
+// Keep small phone pages readable instead of forcing four long passages onto
+// one oversized sheet. This is a bounded, deterministic layout estimate; each
+// authored paragraph, its bilingual translation and illustration remain intact.
+function ltPageStarts(lengths,viewportHeight,readerWidth,fontSize){
+ const height=Number(viewportHeight),width=Number(readerWidth),size=Number(fontSize);
+ const vh=Number.isFinite(height)&&height>=320?height:800;
+ const rw=Number.isFinite(width)&&width>=220?width:420;
+ const px=Number.isFinite(size)&&size>=12&&size<=42?size:20;
+ const charactersPerLine=Math.max(16,Math.floor((Math.min(920,rw)-82)/(px*.56)));
+ const budget=Math.max(210,Math.min(800,vh*.77)-80);
+ const starts=[];let used=0,count=0;
+ for(let i=0;i<lengths.length;i++){
+  const raw=Number(lengths[i]);
+  const chars=Number.isFinite(raw)?Math.max(0,Math.min(20000,raw)):0;
+  const cost=Math.max(1,Math.ceil(chars/charactersPerLine))*px*1.65+38;
+  if(count===0||count>=LT_PAGE_PARAGRAPHS||used+cost>budget){
+   starts.push(i);used=0;count=0;
+  }
+  used+=cost;count++;
+ }
+ return starts;
+}
+function ltPageForParagraph(starts,paragraph){
+ const target=Number.isInteger(paragraph)&&paragraph>=0?paragraph:0;
+ let found=0;
+ for(let i=1;i<starts.length;i++){
+  if(starts[i]>target)break;
+  found=i;
+ }
+ return found;
+}
 // Do not let page gestures steal taps, text selection, or accessibility controls.
 function pageSwipeAllowed(target,selectionText=''){
  if(typeof selectionText==='string'&&selectionText.trim())return false;
@@ -207,16 +238,20 @@ function installPageTurn(){
  if(chapterEnd)chapterEnd.hidden=true;
  const originalNodes=Array.from(sentenceBox.childNodes);
  const pages=[];
- let page=null,count=0;
+ const bounds=width.getBoundingClientRect?.();
+ const starts=ltPageStarts(sentences.map(node=>(node.textContent||'').length),
+  window.innerHeight,bounds?.width||window.innerWidth,Number(get('size',20)));
+ const boundaries=new Set(starts);
+ let page=null,paragraph=0;
  for(const node of originalNodes){
   if(node.nodeType===1&&node.classList.contains('sentence')){
-   if(!page||count>=LT_PAGE_PARAGRAPHS){
+   if(!page||boundaries.has(paragraph)){
     page=document.createElement('section');
     page.className='lt-book-page';
     page.setAttribute('role','group');
-    pages.push(page);count=0;
+    pages.push(page);
    }
-   count++;
+   paragraph++;
   }
   if(!page){page=document.createElement('section');page.className='lt-book-page';page.setAttribute('role','group');pages.push(page)}
   page.appendChild(node);
@@ -228,8 +263,17 @@ function installPageTurn(){
  pageControls.innerHTML='<button type="button" class="secondary lt-page-prev">'+uiText('السابق','Previous')+'</button><span class="lt-page-count" aria-live="polite" aria-atomic="true"></span><button type="button" class="primary lt-page-next">'+uiText('الصفحة التالية','Next page')+'</button>';
  sentenceBox.insertAdjacentElement('afterend',pageControls);
  const key='readpage_'+state.story.id+'_'+state.chapter;
+ const anchorKey='readpage_anchor_'+state.story.id+'_'+state.chapter;
  const initial=Number(get(key,0));
- let current=Number.isInteger(initial)?Math.max(0,Math.min(pages.length-1,initial)):0;
+ // Old backups only had a page number (four paragraphs per page); new
+ // backups retain the first paragraph so changing font/phone width cannot
+ // skip, duplicate or reset progress.
+ const savedAnchor=Number(get(anchorKey,-1));
+ const legacyParagraph=Number.isInteger(initial)&&initial>=0
+  ?initial*LT_PAGE_PARAGRAPHS:0;
+ const firstParagraph=Number.isInteger(savedAnchor)&&savedAnchor>=0&&
+  savedAnchor<sentences.length?savedAnchor:legacyParagraph;
+ let current=ltPageForParagraph(starts,firstParagraph);
  const prev=pageControls.querySelector('.lt-page-prev');
  const next=pageControls.querySelector('.lt-page-next');
  const countLabel=pageControls.querySelector('.lt-page-count');
@@ -248,6 +292,7 @@ function installPageTurn(){
    :uiText('الصفحة التالية','Next page');
   countLabel.textContent=uiText('الصفحة '+(current+1)+' من '+pages.length,'Page '+(current+1)+' of '+pages.length);
   put(key,current);
+  put(anchorKey,starts[current]||0);
   if(chapterEnd)chapterEnd.hidden=current!==pages.length-1;
   if(animate&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
    animatePageTurn(pages[current],direction);
@@ -279,6 +324,7 @@ function installPageTurn(){
    state.chapter=previous;
    put('chapter_'+state.story.id,previous);
    put('readpage_'+state.story.id+'_'+previous,lastPage);
+   put('readpage_anchor_'+state.story.id+'_'+previous,Math.max(0,length-1));
    renderReader();window.scrollTo(0,0);
    return;
   }
@@ -855,7 +901,13 @@ window.stlJumpBookmark=function(){
   ?mark.readerPage
   :Number.isInteger(mark.paragraph)&&mark.paragraph>=0
    ?Math.floor(mark.paragraph/LT_PAGE_PARAGRAPHS):null;
- if(savedReaderPage!==null)put('readpage_'+state.story.id+'_'+chapter,savedReaderPage);
+ if(savedReaderPage!==null){
+  put('readpage_'+state.story.id+'_'+chapter,savedReaderPage);
+  // Prefer the semantic bookmark; an old page number remains compatible.
+  const target=Number.isInteger(mark.paragraph)&&mark.paragraph>=0
+   ?mark.paragraph:savedReaderPage*LT_PAGE_PARAGRAPHS;
+  put('readpage_anchor_'+state.story.id+'_'+chapter,target);
+ }
 
  state.chapter=chapter;
  put(chapterKey(),state.chapter);

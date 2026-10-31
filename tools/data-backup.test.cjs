@@ -163,6 +163,7 @@ assert.equal(JSON.parse(fontBackup.entries.storylens_fontEnglish),'sans');
  // paragraph anchor and accessibility/typography tweaks after safe reinstall.
  const newKeys={
   'storylens_readpage_around-the-world-in-eighty-days-towle_31':4,
+  'storylens_readpage_anchor_around-the-world-in-eighty-days-towle_31':17,
   'storylens_reading_anchor_around-the-world-in-eighty-days-towle_31':{index:17,top:-28},
   storylens_libraryScroll:548,
   storylens_lt_glass_palette:'lavender',
@@ -189,6 +190,9 @@ assert.equal(JSON.parse(fontBackup.entries.storylens_fontEnglish),'sans');
  for(const [key,value] of [
   ['storylens_readpage_short-book_0',-1],
   ['storylens_readpage_short-book_0',1.25],
+  ['storylens_readpage_anchor_short-book_0',-1],
+  ['storylens_readpage_anchor_short-book_0',1.5],
+  ['storylens_readpage_anchor_short-book_0','invalid'],
   ['storylens_reading_anchor_short-book_0',{index:-1,top:0}],
   ['storylens_reading_anchor_short-book_0',{index:4,top:Infinity}],
   ['storylens_reading_anchor_short-book_0',{index:2,top:0,prototype:'evil'}],

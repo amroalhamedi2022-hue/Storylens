@@ -37,7 +37,7 @@ function allowed(key){
  if(typeof key!=='string'||!key.startsWith(PREFIX))return false;
  const suffix=key.slice(PREFIX.length);
  return simple.has(suffix)||/^(chapter|has_read)_[a-z0-9-]{1,90}$/.test(suffix)||
-  /^(scroll|readpage|reading_anchor)_[a-z0-9-]{1,90}_[0-9]{1,4}$/.test(suffix);
+  /^(scroll|readpage|readpage_anchor|reading_anchor)_[a-z0-9-]{1,90}_[0-9]{1,4}$/.test(suffix);
 }
 const safeText=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // A backup must not silently restore objects/arrays where the reader expects
@@ -109,6 +109,7 @@ function validValue(key,val){
   'classic','mono','handwritten','casual-hand','calligraphy'].includes(val);
  if(tail==='size')return Number.isInteger(val)&&val>=16&&val<=32;
  if(tail.startsWith('chapter_'))return Number.isInteger(val)&&val>=0&&val<1000;
+ if(tail.startsWith('readpage_anchor_'))return Number.isInteger(val)&&val>=0&&val<=10000;
  if(tail.startsWith('readpage_'))return Number.isInteger(val)&&val>=0&&val<=10000;
  if(tail.startsWith('reading_anchor_'))return val===null||
   (val!==null&&typeof val==='object'&&!Array.isArray(val)&&
