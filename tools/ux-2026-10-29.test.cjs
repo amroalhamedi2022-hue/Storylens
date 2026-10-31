@@ -131,6 +131,9 @@ assert.match(css,/\.lt-book-page\.lt-paper-underlay\{display:block!important;pos
 assert.match(css,/clip-path:inset\(0 var\(--lt-fold-right,0%\) 0 var\(--lt-fold-left,0%\)\)/);
 assert.match(css,/\.lt-paper-grabbing\[data-lt-fold-edge="right"\]:after/);
 assert.match(css,/\.lt-paper-grabbing\[data-lt-fold-edge="left"\]:after/);
+assert.match(css,/\.lt-paper-reverse-ink/,'the fold back carries mirrored paper ink');
+assert.match(css,/\.lt-paper-reverse\{[\s\S]*?pointer-events:none/,'reverse face never steals taps');
+assert.match(css,/\.lt-paper-reverse-ink\{[\s\S]*?scaleX\(-1\)/,'ink is mirrored on the back');
 assert.match(css,/prefers-reduced-motion:reduce/);
 // Execute the installed pointer handlers against a two-page DOM. A second
 // finger's cancellation/lost capture must not release the primary held sheet.
@@ -160,9 +163,17 @@ function testPointerOwnership(){
  });
  const style=()=>({values:{},setProperty(name,value){this.values[name]=value;},
   removeProperty(name){delete this.values[name];}});
- const page=()=>({classList:classList(new Set()),style:style()});
+ const page=()=>({classList:classList(new Set()),style:style(),
+  querySelectorAll:()=>[{textContent:'English detective ink. '.repeat(40)}]});
+ const fakeElement=()=>({attributes:{},children:[],
+  setAttribute(k,v){this.attributes[k]=v;},
+  appendChild(node){this.children.push(node);},
+  remove(){this.wasRemoved=true;}});
+
  const sheet={
-  dataset:{},classList:classList(foldClasses),style:style(),
+  dataset:{},classList:classList(foldClasses),style:style(),children:[],
+  appendChild(node){this.children.push(node);},
+
   getBoundingClientRect(){return {left:0,width:paneWidth};},
   contains(node){return node!==outsideTarget&&node!==outsideToken&&node!==null;}, 
   addEventListener(name,handler){events[name]=handler;},
@@ -170,6 +181,7 @@ function testPointerOwnership(){
  };
  const sandbox={sentenceBox:sheet,pages:[page(),page()],current:0,
   state:{page:'reader',chapter:1},document:{documentElement:{dir:'ltr'},
+   createElement:fakeElement,
    elementFromPoint:()=>endSurface},
   move:delta=>turns.push(delta),
   window:{
@@ -200,9 +212,21 @@ function testPointerOwnership(){
  down(7);drag(7);
  frame();
  assert.ok(foldClasses.has('lt-paper-grabbing'),'primary finger retains visible fold');
+ assert.equal(sheet.children.length,1,'one inert paper back is allocated for this held drag');
+ const back=sheet.children[0];
+ assert.equal(back.className,'lt-paper-reverse','mirrored reverse of the real paper is visible');
+ assert.equal(back.inert,true,'reverse cannot receive pointer or keyboard interaction');
+ assert.equal(back.attributes['aria-hidden'],'true','reverse is not announced twice');
+ assert.equal(back.children[0].children[0].textContent.length,420,'ink is bounded for long chapters');
+ assert.equal(back.children[0].children[0].innerHTML,undefined,'no HTML/word buttons are copied');
+ drag(7);frame();
+ assert.equal(sheet.children.length,1,'repeated animation frames allocate no extra DOM');
+
  up(7);
  assert.deepEqual(turns,[1],'primary release still commits a forward turn');
  assert.ok(!foldClasses.has('lt-paper-grabbing'),'release cleans the fold');
+ assert.equal(back.wasRemoved,true,'releasing the paper removes its temporary reverse');
+
  down(8);drag(8);
  events.pointercancel({pointerId:8});
  up(8);

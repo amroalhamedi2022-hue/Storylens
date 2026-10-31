@@ -315,8 +315,31 @@ function installPageTurn(){
  // finger, commit only after crossing the middle, spring back on release.
  // Do not steal vertical scrolling, text selection or dictionary word taps.
  const installedStory=state.story,installedChapter=state.chapter;
- let drag=null,foldRaf=null;
+ let drag=null,foldRaf=null,reverseSheet=null;
+ // A reverse face is built once per fold, never per animation frame. Copy
+ // only bounded plain ink, not DOM buttons/ids or dictionary event handlers.
+ // It remains inert and hidden from assistive technology throughout the hold.
+ function showReverseFace(active){
+  if(reverseSheet||typeof document.createElement!=='function'||!active?.querySelectorAll)return;
+  const face=document.createElement('div');
+  face.className='lt-paper-reverse';
+  face.setAttribute('aria-hidden','true');
+  face.inert=true;
+  const ink=document.createElement('div');
+  ink.className='lt-paper-reverse-ink';
+  const paragraphs=active.querySelectorAll('.sentence');
+  for(const source of Array.from(paragraphs).slice(0,4)){
+   const line=document.createElement('p');
+   line.textContent=String(source.textContent||'').slice(0,420);
+   ink.appendChild(line);
+  }
+  face.appendChild(ink);
+  sentenceBox.appendChild(face);
+  reverseSheet=face;
+ }
+
  function clearFold(){
+  if(reverseSheet){reverseSheet.remove?.();reverseSheet=null;}
   if(foldRaf!==null){window.cancelAnimationFrame?.(foldRaf);foldRaf=null;}
   sentenceBox.classList.remove('lt-paper-grabbing');
   delete sentenceBox.dataset.ltFoldEdge;
@@ -347,6 +370,7 @@ function installPageTurn(){
   // A fold is valid only for the page that received pointerdown.
   if(current!==drag.page){finishPaperDrag(false);return;}
   const geometry=pageFoldGeometry(drag.progress,drag.edge,drag.lastY-drag.startY);
+  showReverseFace(active);
   const underneath=pages[current+pageEdgeDelta(drag.edge,document.documentElement.dir==='rtl')];
   // The neighboring page is visually revealed but remains inert and hidden
   // from assistive technology until the turn is actually committed.

@@ -130,6 +130,35 @@ body.theme-aurora,body.theme-nebula{background-attachment:scroll!important;}
 @media(prefers-reduced-motion:reduce){
  .reader #sentences.lt-paper-grabbing:before{display:none!important}
 }
+/* Live mirrored ink on the back of the folded paper, built once per drag.
+   Only inert plain text is copied: no duplicated dictionary DOM or listeners. */
+.reader #sentences.lt-paper-grabbing > .lt-paper-reverse{
+ position:absolute;top:14px;bottom:20px;z-index:4;
+ width:var(--lt-flap-width,0%);overflow:hidden;pointer-events:none;
+ user-select:none;-webkit-user-select:none;contain:paint;
+ opacity:clamp(.14,calc(.13 + var(--lt-fold-shadow,.2)),.46);
+ color:var(--reader-ink);direction:ltr;text-align:left;
+ transform:perspective(900px) rotateY(var(--lt-flap-rotation,0deg))
+  skewY(var(--lt-flap-skew,0deg));
+ transform-origin:right center;
+ border-radius:5px 13px 13px 5px;
+ mask-image:linear-gradient(90deg,transparent 0%,black 22%,black 81%,transparent 100%);
+}
+.reader #sentences.lt-paper-grabbing[data-lt-fold-edge="right"] > .lt-paper-reverse{
+ right:var(--lt-fold-cut,0%);left:auto;
+}
+.reader #sentences.lt-paper-grabbing[data-lt-fold-edge="left"] > .lt-paper-reverse{
+ left:var(--lt-fold-cut,0%);right:auto;transform-origin:left center;
+}
+.reader .lt-paper-reverse-ink{
+ width:max(340px,100%);padding:12px 18px;
+ transform:scaleX(-1);font:11px/1.55 Georgia,serif;filter:blur(.3px);
+ overflow-wrap:anywhere;opacity:.49;
+}
+.reader .lt-paper-reverse-ink p{margin:0 0 12px;max-height:11em;overflow:hidden;}
+@media(prefers-reduced-motion:reduce){
+ .reader #sentences > .lt-paper-reverse{display:none!important}
+}
 /* Chapter navigation must remain visible in the paged reader, even though
    the legacy chapter-end block is hidden. Keep controls compact and keyboard-ready. */
 .reader .lt-chapter-nav{display:flex;align-items:center;justify-content:center;
