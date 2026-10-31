@@ -40,9 +40,10 @@ assert.ok(html.includes('src="freedict-en-ar.js"'),'dictionary remains a package
 assert.ok(!/<script\b(?![^>]*data-lt-lazy)[^>]*\bsrc="(?:classic-verne-towle-ch\d+\.js|editorial-art(?:-ch(?:35|36|37))?\.js|freedict-en-ar\.js)"/.test(html),
  'long-book and dictionary assets must not be eager executable scripts');
 
-function makeHarness({failOnce=null,lang='ar',deferAsset=null,extraEditorial=[]}={}) {
+function makeHarness({failOnce=null,lang='ar',deferAsset=null,extraEditorial=[],idleWarmup=false}={}) {
  const attempted=[], successful=[], removed=[], opened=[], sheetEntries=[];
- let failed=false, headingText=null, artAttached=0, deferredOnce=false, deferredAsset=null;
+ let failed=false, headingText=null, artAttached=0, hydrationCount=0, deferredOnce=false, deferredAsset=null;
+ const idleCallbacks=[];
  const story={id:'around-the-world-in-eighty-days-towle',title:'Around the World in Eighty Days',subtitle:'A wager, a globe, and eighty days',genre:'historical',level:'C1',description:'Authentic long-form novel.',totalChapters:37,chapters:[],terms:[]};
  const catalogStory={id:story.id,title:story.title,subtitle:story.subtitle,genre:story.genre,level:story.level,description:story.description,totalChapters:37,lazyBook:true,chapters:[],terms:[]};
  const catalog={stories:[catalogStory]};
@@ -67,6 +68,8 @@ function makeHarness({failOnce=null,lang='ar',deferAsset=null,extraEditorial=[]}
  }));
  const window={
   StoryLensEditorialStories:[story,...extraEditorial],
+  ...(idleWarmup?{requestIdleCallback(callback){idleCallbacks.push(callback);}}:{}),
+  LinguaHydrateStoryCovers(){hydrationCount++;return 1;},
   LinguaCatalog:catalog,
   LinguaAttachEditorialArt(){artAttached++;return true;},
   openStory(id){opened.push(id);if(id===story.id)openedChapterCounts.push(catalog.stories.find(item=>item.id===id)?.chapters.length??-1);},
@@ -100,7 +103,7 @@ function makeHarness({failOnce=null,lang='ar',deferAsset=null,extraEditorial=[]}
   }}
  };
  vm.runInNewContext(source,{window,document,Promise,Set,Array,Error,console},{filename:'lingua-content-loader.js',timeout:5000});
-  return {window,document,rootNode,story,catalog,catalogStory,openedChapterCounts,attempted,successful,removed,opened,sheetEntries,bodyChildren,completeDeferredAsset(){const pending=deferredAsset;assert.ok(pending,'no deferred script is waiting');deferredAsset=null;pending.complete();},get artAttached(){return artAttached;},get statusText(){return bodyChildren.map(x=>x.text||x.textContent||'').join(' ');}};
+  return {window,document,rootNode,story,catalog,catalogStory,openedChapterCounts,attempted,successful,removed,opened,sheetEntries,bodyChildren,completeDeferredAsset(){const pending=deferredAsset;assert.ok(pending,'no deferred script is waiting');deferredAsset=null;pending.complete();},get artAttached(){return artAttached;},get hydrationCount(){return hydrationCount;},flushIdle(){const cb=idleCallbacks.shift();assert.ok(cb,'warmup was scheduled');cb();},get idleCount(){return idleCallbacks.length;},get statusText(){return bodyChildren.map(x=>x.text||x.textContent||'').join(' ');}};
 }
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 (async()=>{
@@ -127,6 +130,21 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
  assert.equal(h.artAttached,1,'contextual offline illustrations attach after all chapter data');
  assert.equal(h.window.FreeDictEnglishArabic,undefined,'opening the book does not force-load the separate dictionary');
  assert.deepEqual(h.successful,bookAssets,'book chapters and art load sequentially in declared order');
+
+ // Initial library paints without loading the art engine. The first idle
+ // callback hydrates local illustration covers without opening the huge novel.
+ const idle=makeHarness({idleWarmup:true});
+ assert.equal(idle.idleCount,1,'one idle cover task scheduled');
+ assert.equal(idle.attempted.length,0,'never block first library paint');
+ idle.flushIdle();
+ await idle.window.LinguaContentLoader.ensureEditorialArt();
+ await tick();
+ assert.deepEqual(idle.successful,['editorial-art.js'],'idle art never fetches novel or dictionary');
+ assert.equal(idle.artAttached,1,'editorial registry attaches once');
+ assert.equal(idle.hydrationCount,1,'visible covers hydrate in place once');
+ await idle.window.LinguaContentLoader.ensureEditorialArt();
+ assert.deepEqual(idle.successful,['editorial-art.js'],'warmup and reader share the same art promise');
+ assert.equal(idle.story.chapters.length,0,'warmup never loads the long book');
 
  const scene={id:'original-mystery',title:'Original Mystery',chapters:[{title:'Open Door',paragraphs:[{en:'The locked door opened.',ar:'انفتح الباب المغلق.'}]}]};
  const a=makeHarness({extraEditorial:[scene]});

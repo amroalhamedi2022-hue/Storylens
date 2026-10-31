@@ -77,6 +77,7 @@ jobs:
           node tools/five-font-reader.test.cjs
           node tools/offline-font-pack.test.cjs
           node tools/content-loader.test.cjs
+          node tools/illustrated-covers.test.cjs
           node tools/library-shell-layout.test.cjs
           node --check app/src/main/assets/lexicon-extra.js
           node tools/lexicon.test.cjs

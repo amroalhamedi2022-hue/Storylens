@@ -129,7 +129,31 @@ const catalog=JSON.parse(document.getElementById('libraryData').textContent);
 window.LinguaCatalog=catalog;
 if(Array.isArray(window.StoryLensEditorialStories)) catalog.stories.push(...window.StoryLensEditorialStories);
 const art=JSON.parse(document.getElementById('artData').textContent);
-window.LinguaAttachEditorialArt=function(){if(typeof window.StoryLensMakeEditorialArt!=='function')return false;Object.assign(art,window.StoryLensMakeEditorialArt(window.StoryLensEditorialStories||[]));return true;};
+window.LinguaHydrateStoryCovers=function(){
+ // Existing story-specific packaged artwork only. Never request images online.
+ // Update backgrounds in-place; do not recreate the library DOM, reset scroll,
+ // interrupt a held gesture, or steal keyboard focus.
+ let changed=0;
+ document.querySelectorAll('.library [data-lt-cover-story]').forEach(node=>{
+  const id=node.getAttribute('data-lt-cover-story');
+  if(!/^[a-z0-9-]{1,95}$/.test(id||''))return;
+  const src=art[id+'_0'];
+  const trusted=typeof src==='string'&&src.length<=280000&&(
+   src.startsWith('data:image/svg+xml;charset=utf-8,%3Csvg')||
+   /^data:image\/(?:webp|png|jpeg);base64,[a-z0-9+/=]+$/i.test(src));
+  if(!trusted||node.dataset.ltArtReady==='1')return;
+  node.style.backgroundImage='url("'+src+'")';
+  node.dataset.ltArtReady='1';
+  changed++;
+ });
+ return changed;
+};
+window.LinguaAttachEditorialArt=function(){
+ if(typeof window.StoryLensMakeEditorialArt!=='function')return false;
+ Object.assign(art,window.StoryLensMakeEditorialArt(window.StoryLensEditorialStories||[]));
+ window.LinguaHydrateStoryCovers();
+ return true;
+};
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const get=(k,d)=>{try{return JSON.parse(localStorage.getItem('storylens_'+k))??d}catch{return d}};
@@ -139,7 +163,7 @@ let state={page:'library',genre:'all',story:null,chapter:0,toolbar:false,inline:
 document.body.classList.add('theme-'+state.uiTheme);
 function cycleVisualTheme(){const themes=['aurora','aqua','nebula'];const n=(themes.indexOf(state.uiTheme)+1)%themes.length;document.body.classList.remove('theme-'+state.uiTheme);state.uiTheme=themes[n];put('uiTheme',state.uiTheme);document.body.classList.add('theme-'+state.uiTheme);library();}
 const safeKey=s=>encodeURIComponent(s).replace(/'/g,'%27');
-const cover=s=>`<div class="cover art" style="background-image:url('${art[s.id+'_0']||''}')"></div>`;
+const cover=s=>`<div class="cover art" data-lt-cover-story="${esc(s.id)}" aria-hidden="true" style="background-image:url('${art[s.id+'_0']||''}')"></div>`;
 function library(){
  const available=catalog.stories.filter(s=>(state.genre==='all'||s.genre===state.genre) &&
    (!state.query || (s.title+' '+s.subtitle+' '+s.description).toLowerCase().includes(state.query.toLowerCase())));

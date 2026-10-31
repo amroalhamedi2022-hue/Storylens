@@ -206,6 +206,24 @@ function ensureDictionary() {
   return dictionaryPromise;
 }
 
+// Paint the library first, then populate its context-matched offline covers
+// during browser idle. This is NOT the heavyweight 37-chapter book payload.
+// The loader's own promise deduplicates taps that occur while art is loading.
+// If a local asset fails, reading and navigation remain fully usable.
+function scheduleEditorialCoverWarmup(){
+ const work=()=>{
+  ensureEditorialArt().then(()=>{
+   if(typeof global.LinguaHydrateStoryCovers==='function')
+    global.LinguaHydrateStoryCovers();
+  }).catch(()=>{}); // decorative cover failure never blocks a story
+ };
+ if(typeof global.requestIdleCallback==='function')
+  global.requestIdleCallback(work,{timeout:3000});
+ else if(typeof global.setTimeout==='function')
+  global.setTimeout(work,1100);
+}
+scheduleEditorialCoverWarmup();
+
 const originalOpenStory = global.openStory;
 if (typeof originalOpenStory === 'function') {
   global.openStory = function (id, ...args) {
