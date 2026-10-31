@@ -61,7 +61,7 @@ const bubbleNode=()=>({className:'',attributes:{},styles:{},
 const dom={addEventListener(k,fn){listeners[k]=fn;},createElement(){created=bubbleNode();return created;}};
 const childNodes=[];
 const target={disabled:false,style:{},matches:()=>false,
- closest:selector=>selector==='button,.lt-theme-choice'?target:null,querySelectorAll:()=>[],appendChild(node){childNodes.push(node);},
+ closest:selector=>selector==='button,.lt-theme-choice,.library .card,.lt-genre'?target:null,querySelectorAll:()=>[],appendChild(node){childNodes.push(node);},
  getBoundingClientRect:()=>({left:10,top:20,width:90,height:50})};
 const win={document:dom,matchMedia:()=>({matches:reduced})};
 vm.runInNewContext(touch,{window:win},{filename:'lt-tap-feedback.js'});
@@ -71,6 +71,7 @@ assert.equal(childNodes.length,1,'one real bubble appended');
 assert.equal(created.className,'lt-tap-bubble');
 assert.equal(created.style['--lt-tap-x'],'45px');
 assert.equal(created.style['--lt-tap-y'],'25px');
+assert.ok(parseInt(created.style['--lt-bubble-size'],10)>90,'bubble covers entire target rather than fixed 65px');
 created.animationend();assert.equal(created.wasRemoved,true,'animation cleans up node');
 listeners.pointerdown({isPrimary:true,pointerType:'mouse',button:2,target,clientX:55,clientY:45});
 assert.equal(childNodes.length,1,'right-click does not create a tap bubble');
