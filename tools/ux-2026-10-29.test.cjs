@@ -134,6 +134,10 @@ assert.match(css,/\.lt-paper-grabbing\[data-lt-fold-edge="left"\]:after/);
 assert.match(css,/\.lt-paper-reverse-ink/,'the fold back carries mirrored paper ink');
 assert.match(css,/@keyframes ltPaperSnapRight/,'right sheet returns toward its edge');
 assert.match(css,/@keyframes ltPaperSnapLeft/,'left sheet returns toward its edge');
+assert.match(css,/@keyframes ltPaperFinishRight/,'committed right fold completes its turn');
+assert.match(css,/@keyframes ltPaperFinishLeft/,'committed left fold completes its turn');
+assert.match(css,/\.lt-paper-complete\{[\s\S]*?pointer-events:none/,
+ 'completing a turn never intercepts dictionary or page touches');
 assert.match(css,/\.lt-paper-snapback\{[\s\S]*?pointer-events:none/,'recoil never captures controls');
 assert.match(css,/\.lt-paper-reverse\{[\s\S]*?pointer-events:none/,'reverse face never steals taps');
 assert.match(css,/\.lt-paper-reverse-ink\{[\s\S]*?scaleX\(-1\)/,'ink is mirrored on the back');
@@ -243,6 +247,15 @@ function testPointerOwnership(){
  assert.deepEqual(turns,[1],'primary release still commits a forward turn');
  assert.ok(!foldClasses.has('lt-paper-grabbing'),'release cleans the fold');
  assert.equal(back.wasRemoved,true,'releasing the paper removes its temporary reverse');
+ const finishing=sheet.children.at(-1);
+ assert.equal(finishing.className,'lt-paper-complete',
+  'successful turn keeps a brief moving fold on top of the incoming page');
+ assert.equal(finishing.attributes['aria-hidden'],'true');
+ assert.equal(finishing.inert,true,'completion must not block next-page interactions');
+ assert.ok(parseFloat(finishing.style.values['--lt-snap-width'])>0,
+  'completing paper inherits actual finger fold geometry');
+ finishing.animationend();
+ assert.equal(finishing.wasRemoved,true,'finished turn afterimage is cleaned up');
 
  down(8);drag(8);
  events.pointercancel({pointerId:8});

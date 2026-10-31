@@ -411,7 +411,7 @@ function installPageTurn(){
  // actual pages, translations and word controls are restored immediately.
  // The afterimage is inert and owned by its own one-shot timeout; an old
  // animation can never remove a newer fold or page.
- function recoilPaper(held){
+ function recoilPaper(held,completed=false){
   if(!held.locked||held.progress<.06||
      !sentenceBox.classList.contains('lt-paper-grabbing')||
      sentenceBox.isConnected===false||
@@ -420,7 +420,7 @@ function installPageTurn(){
   const echo=document.createElement('div');
   if(!echo?.style?.setProperty)return;
   const g=pageFoldGeometry(held.progress,held.edge,held.lastY-held.startY);
-  echo.className='lt-paper-snapback';
+  echo.className=completed?'lt-paper-complete':'lt-paper-snapback';
   echo.setAttribute('data-lt-edge',held.edge);
   echo.setAttribute('aria-hidden','true');
   echo.inert=true;
@@ -514,8 +514,11 @@ function installPageTurn(){
   const turn=commit&&stillCurrent&&held.progress>=.34&&releasePull>=Math.max(35,held.width*.16)&&!!endTarget&&
    sentenceBox.contains(endTarget)&&
    pageFoldReleaseAllowed(held.target,endTarget,window.getSelection?.()?.toString()||'');
-  if(!turn&&stillCurrent&&!(window.getSelection?.()?.toString()||'').trim()){
-   recoilPaper(held);
+  // Keep a non-interactive crease for the final few frames of a successful
+  // turn, or spring it back when the reader cancels. The incoming page is
+  // immediately usable; the afterimage never captures pointer events.
+  if(turn||(stillCurrent&&!(window.getSelection?.()?.toString()||'').trim())){
+   recoilPaper(held,turn);
   }
   drag=null;clearFold();
   try{sentenceBox.releasePointerCapture?.(held.id);}catch(_){}
