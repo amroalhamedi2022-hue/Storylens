@@ -17,19 +17,20 @@
   node.setAttribute('aria-hidden','true');
   node.style.setProperty('--lt-tap-x',Math.max(0,Math.min(rect.width,x-rect.left))+'px');
   node.style.setProperty('--lt-tap-y',Math.max(0,Math.min(rect.height,y-rect.top))+'px');
-  target.appendChild(node);
+  node.style.setProperty('--lt-bubble-size',Math.min(900,Math.ceil(Math.hypot(rect.width,rect.height)*1.2))+'px');
+   target.appendChild(node);
   node.addEventListener('animationend',()=>node.remove(),{once:true});
  }
  doc.addEventListener('pointerdown',event=>{
   if(!event.isPrimary||event.pointerType==='mouse'&&event.button!==0)return;
-  const target=event.target?.closest?.('button,.lt-theme-choice');
+  const target=event.target?.closest?.('button,.lt-theme-choice,.library .card,.lt-genre');
   if(!target||target.closest?.('[disabled],[aria-disabled="true"],fieldset[disabled]'))return;
   bubble(target,event.clientX,event.clientY);
  },{passive:true,capture:true});
  doc.addEventListener('keydown',event=>{
   if(event.key!=='Enter'&&event.key!==' ')return;
   if(event.altKey||event.ctrlKey||event.metaKey||event.isComposing)return;
-  const target=event.target?.closest?.('button,.lt-theme-choice');
+  const target=event.target?.closest?.('button,.lt-theme-choice,.library .card,.lt-genre');
   if(!target||event.repeat||target.closest?.('[disabled],[aria-disabled="true"],fieldset[disabled]'))return;
   const rect=target.getBoundingClientRect();
   bubble(target,rect.left+rect.width/2,rect.top+rect.height/2);

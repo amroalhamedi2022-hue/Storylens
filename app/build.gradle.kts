@@ -44,7 +44,7 @@ android {
             // Runner debug keys change; isolate test installs from user data.
             applicationIdSuffix = ".preview"
             versionNameSuffix = "-preview"
-            manifestPlaceholders["ltAppLabel"] = "Lingua Tales Preview"
+            manifestPlaceholders["ltAppLabel"] = "Lingua Tales"
             // A configured private, retained signing key makes Preview updates
             // compatible across CI runs too. Without it, Gradle's ephemeral
             // Debug signing remains only a disposable side-by-side preview.

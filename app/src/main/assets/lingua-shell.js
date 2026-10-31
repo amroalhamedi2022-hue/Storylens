@@ -676,7 +676,11 @@ function decorateLibrary(){
  opened=false;
  section.querySelector('.header .brand')?.replaceChildren(document.createTextNode('LINGUA TALES'));
  const headerTitle=section.querySelector('.header h1');
- if(headerTitle)headerTitle.textContent=rtl()?'قصص تستحق القراءة':'Stories worth reading';
+ if(headerTitle){
+ const category=state.genre==='all'?null:catalog.genres.find(g=>g.id===state.genre);
+ headerTitle.textContent=category?(rtl()?category.ar:category.en):(rtl()?'الصفحة الرئيسية':'Home');
+ headerTitle.classList.add('lt-location-title');
+}
  section.querySelector('.header .quiet')?.remove();
  section.querySelector('.storylens-hero .hero-eyebrow')?.remove();
  section.querySelector('.storylens-hero .hero-metrics')?.remove();
@@ -792,22 +796,51 @@ function handleDialogKeyboard(event){
  }
 }
 window.addEventListener('keydown',handleDialogKeyboard,true);
+// Finger-following drawer, with vertical-scroll intent gating.
+function ltFinishDrawerDrag(targetOpen){
+ const drawer=document.getElementById('lt-drawer'),shade=document.getElementById('lt-drawer-backdrop');
+ if(!drawer)return;
+ drawer.style.removeProperty('transition');shade?.style.removeProperty('transition');
+ if(targetOpen)openDrawer();else closeDrawer(false);
+ drawer.style.removeProperty('transform');
+ shade?.style.removeProperty('opacity');shade?.style.removeProperty('visibility');
+}
 document.addEventListener('touchstart',event=>{
  if(state.page!=='library'||event.touches.length!==1){touch=null;return;}
  const p=event.touches[0],width=global.innerWidth||document.documentElement.clientWidth;
- if(!opened && (rtl()?p.clientX<width-28:p.clientX>28)){touch=null;return;}
- touch={x:p.clientX,y:p.clientY,at:Date.now()};
+ if(!opened&&(rtl()?p.clientX<width-32:p.clientX>32)){touch=null;return;}
+ touch={x:p.clientX,y:p.clientY,baseOpen:opened,progress:opened?1:0,drag:false,cancelled:false};
 },{passive:true});
-document.addEventListener('touchend',event=>{
- if(!touch||state.page!=='library'||event.changedTouches.length!==1)return;
- const p=event.changedTouches[0],dx=p.clientX-touch.x,dy=p.clientY-touch.y;
- const elapsed=Date.now()-touch.at;touch=null;
- if(elapsed>850||Math.abs(dx)<65||Math.abs(dy)>55||Math.abs(dx)<Math.abs(dy)*1.4)return;
- const opening=rtl()?dx<0:dx>0;
- if(opening&&!opened)openDrawer();
- else if(!opening&&opened)closeDrawer(true);
+document.addEventListener('touchmove',event=>{
+ if(!touch||state.page!=='library'||event.touches.length!==1)return;
+ const p=event.touches[0],dx=p.clientX-touch.x,dy=p.clientY-touch.y;
+ if(!touch.drag){
+  if(Math.abs(dy)>Math.abs(dx)*1.2&&Math.abs(dy)>10){touch.cancelled=true;return;}
+  if(touch.cancelled||Math.abs(dx)<10||Math.abs(dx)<Math.abs(dy)*1.2)return;
+  touch.drag=true;
+ }
+ const drawer=document.getElementById('lt-drawer'),shade=document.getElementById('lt-drawer-backdrop');
+ if(!drawer)return;
+ const width=Math.max(1,drawer.getBoundingClientRect().width);
+ const progress=Math.max(0,Math.min(1,(touch.baseOpen?1:0)+(rtl()?-dx:dx)/width));
+ touch.progress=progress;
+ drawer.style.transition='none';
+ drawer.style.transform='translate3d('+((rtl()?1:-1)*(1-progress)*width)+'px,0,0)';
+ drawer.inert=progress<.12;
+ if(shade){shade.classList.add('open');shade.style.transition='none';
+  shade.style.opacity=String(progress*.78);shade.style.visibility='visible';}
 },{passive:true});
-document.addEventListener('touchcancel',()=>{touch=null;},{passive:true});
+document.addEventListener('touchend',()=>{
+ if(!touch)return;const current=touch;touch=null;
+ if(current.drag&&state.page==='library')ltFinishDrawerDrag(current.progress>.45);
+},{passive:true});
+document.addEventListener('touchcancel',()=>{
+ if(touch?.drag)ltFinishDrawerDrag(touch.baseOpen);touch=null;
+},{passive:true});
+document.addEventListener('click',event=>{
+ if(!opened||state.page!=='library'||event.target?.closest?.('#lt-drawer,#lt-menu-toggle'))return;
+ event.preventDefault();event.stopImmediatePropagation();closeDrawer(false);
+},true);
 /* LT-02: a single, cancellable story navigation gate. The original openStory
  * still owns history and the reader pipeline; no second state store is created. */
 (function installStoryTransitions(){
