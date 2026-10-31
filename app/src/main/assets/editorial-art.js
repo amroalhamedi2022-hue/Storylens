@@ -641,3 +641,91 @@ global.StoryLensMakeEditorialArt = function(stories) {
  return art;
 };
 })(window);
+
+
+/* LT NOVELLA COVER SCENES — distinct, original offline frontispieces.
+ * These are authored for each novella's actual premise rather than a reused
+ * genre backdrop. Only first-chapter art/cover is overridden; other chapter
+ * vignettes are preserved exactly as they were. No external requests. */
+(function(global){
+'use strict';
+const previous=global.StoryLensMakeEditorialArt;
+if(typeof previous!=='function')return;
+const scenes={
+ 'the-floor-between':{
+  colors:['#0a1927','#265464','#e4b985'],
+  subject:'<g stroke-linejoin="round"><path d="M210 535V112H790V535" fill="#142c3a" stroke="#90adb2" stroke-width="14"/>'+
+   '<rect x="285" y="152" width="430" height="378" rx="9" fill="#0b1c2a" stroke="#e4b985" stroke-width="10"/>'+
+   '<path d="M500 153V528" stroke="#75939e" stroke-width="8"/>'+
+   '<path d="M302 164L484 164V516H302Z" fill="#395b67" opacity=".52"/>'+
+   '<path d="M515 164H699V516H515Z" fill="#223d4e" opacity=".85"/>'+
+   '<rect x="737" y="228" width="68" height="127" rx="11" fill="#0a1825" stroke="#e4b985" stroke-width="5"/>'+
+   '<circle cx="772" cy="252" r="12" fill="#e4b985"/>'+
+   '<path d="M755 310L773 291L790 310" fill="none" stroke="#8ed6cf" stroke-width="5"/>'+
+   '<path d="M185 537H810M204 575H792" stroke="#e4b985" stroke-width="6" opacity=".57"/></g>'+
+   '<g fill="#b8f6ed"><rect x="365" y="94" width="270" height="48" rx="8" fill="#101d2d"/>'+
+   '<text x="500" y="127" font-size="27" text-anchor="middle" font-family="sans-serif">FLOOR ?</text></g>'
+ },
+ 'the-quiet-frequency':{
+  colors:['#071c37','#29485e','#85e9df'],
+  subject:'<g fill="none" stroke-linecap="round"><circle cx="520" cy="288" r="184" stroke="#8cacc9" stroke-width="2" opacity=".55"/>'+
+   '<circle cx="520" cy="288" r="265" stroke="#8cacc9" stroke-width="2" opacity=".25"/>'+
+   '<path d="M517 135V502M465 505H569M478 175L520 108L563 175" stroke="#a9c7d3" stroke-width="12"/>'+
+   '<path d="M178 306Q226 248 274 306T370 306T466 306T562 306T658 306T754 306T850 306" stroke="#85e9df" stroke-width="15"/>'+
+   '<path d="M178 353H846" stroke="#e8bb84" stroke-width="3" stroke-dasharray="11 16"/>'+
+   '<circle cx="250" cy="172" r="63" stroke="#d5e2e2" stroke-width="7"/>'+
+   '<path d="M250 128V169L274 193" stroke="#e8bb84" stroke-width="6"/>'+
+   '<circle cx="770" cy="172" r="63" stroke="#d5e2e2" stroke-width="7"/>'+
+   '<path d="M770 128V173L746 182" stroke="#85e9df" stroke-width="6"/></g>'+
+   '<g fill="#84ddd4"><circle cx="520" cy="108" r="14"/><circle cx="520" cy="288" r="10"/></g>'
+ },
+ 'the-ninth-ledger':{
+  colors:['#151a2a','#59443c','#e5b777'],
+  subject:'<g><path d="M170 130L497 90L497 510L170 550Z" fill="#c7b695" stroke="#f7dda3" stroke-width="10"/>'+
+   '<path d="M503 91L829 130V550L503 510Z" fill="#e7d0ab" stroke="#f7dda3" stroke-width="10"/>'+
+   '<path d="M497 90V510" stroke="#5b4542" stroke-width="13"/>'+
+   '<g stroke="#695a55" stroke-width="4" opacity=".58"><path d="M210 220L460 195M210 267L460 241M210 314L460 287M210 361L460 334M210 408L460 381M540 195L790 220M540 241L790 267M540 287L790 314M540 334L790 361M540 381L790 408"/></g>'+
+   '<path d="M545 446L790 474" stroke="#b93b41" stroke-width="12"/>'+
+   '<circle cx="681" cy="345" r="83" fill="none" stroke="#a54145" stroke-width="13" opacity=".8"/>'+
+   '<text x="680" y="356" text-anchor="middle" font-family="monospace" font-weight="800" font-size="38" fill="#a54145">IX</text>'+
+   '<path d="M736 94L865 230" stroke="#e9c788" stroke-width="23" stroke-linecap="round"/>'+
+   '<circle cx="757" cy="122" r="60" fill="#f1d4a3" opacity=".32"/></g>'
+ },
+ 'the-salt-meridian':{
+  colors:['#112c3c','#357481','#efcfa0'],
+  subject:'<g><circle cx="722" cy="145" r="91" fill="#f7dcad" opacity=".72"/>'+
+   '<path d="M0 395Q170 347 335 390T670 382T1000 380V620H0Z" fill="#173f51"/>'+
+   '<path d="M0 445Q140 400 285 448T575 438T1000 455" fill="none" stroke="#71b6b9" stroke-width="8" opacity=".65"/>'+
+   '<path d="M0 490Q160 453 325 496T670 483T1000 500" fill="none" stroke="#a9dade" stroke-width="6" opacity=".56"/>'+
+   '<path d="M410 450L445 169H560L600 450Z" fill="#ecdec1" stroke="#e4b67c" stroke-width="11"/>'+
+   '<path d="M430 292H582M430 357H582" stroke="#678d96" stroke-width="11"/>'+
+   '<path d="M433 170L501 100L569 170" fill="#274755" stroke="#e4b67c" stroke-width="8"/>'+
+   '<path d="M482 96V62H520V96" fill="#fae6bb"/>'+
+   '<path d="M481 164L160 215M525 164L865 215" stroke="#ffe5a1" stroke-width="11" opacity=".38"/>'+
+   '<path d="M95 516L116 476L138 517L111 548Z M815 537L845 491L878 535L844 572Z" fill="#f8ecd8" stroke="#9ac5c1" stroke-width="5"/>'+
+   '<path d="M500 405V451" stroke="#173f51" stroke-width="22"/></g>'
+ }
+};
+function escapeXml(value){return String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');}
+function coverSvg(story){
+ const scene=scenes[story.id];if(!scene)return null;
+ const [top,bottom,accent]=scene.colors;
+ const title=escapeXml(story.title);
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" data-scene="'+story.id+'" aria-label="'+title+' — original illustrated story scene">'+
+  '<defs><linearGradient id="ltSky" x2="0" y2="1"><stop stop-color="'+top+'"/><stop offset="1" stop-color="'+bottom+'"/></linearGradient></defs>'+
+  '<rect width="1000" height="620" fill="url(#ltSky)"/><path d="M0 0H1000V620H0Z" fill="none" stroke="'+accent+'" stroke-width="12" opacity=".42"/>'+
+  scene.subject+'<path d="M0 548H1000V620H0Z" fill="'+top+'" opacity=".93"/>'+
+  '<text x="500" y="591" text-anchor="middle" font-family="Georgia,serif" font-size="31" fill="#fff2dc">'+title+'</text>'+
+  '</svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+global.StoryLensMakeEditorialArt=function(stories){
+ const out=previous(stories);
+ for(const story of stories){
+  if(!story||!Array.isArray(story.chapters)||!story.chapters.length)continue;
+  const image=coverSvg(story);
+  if(image)out[story.id+'_0']=image;
+ }
+ return out;
+};
+})(window);
