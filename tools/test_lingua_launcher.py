@@ -36,13 +36,17 @@ for color in ("startColor", "centerColor", "endColor"):
     assert re.fullmatch(r"#[0-9A-Fa-f]{6}", gradient.get(ANDROID + color, ""))
 
 foreground = xml(RES / "drawable/lingua_icon_foreground.xml")
-assert foreground.tag == "layer-list", "approved icon should be image-backed and scaled"
+assert foreground.tag == "layer-list", "icon foreground must remain inside Android adaptive icon safe zone"
 icon_item = foreground.find("item")
 assert icon_item is not None and icon_item.get(ANDROID+"gravity") == "center"
-assert icon_item.get(ANDROID+"width") == "72dp"
-assert icon_item.get(ANDROID+"height") == "72dp"
-bitmap = icon_item.find("bitmap")
-assert bitmap is not None and bitmap.get(ANDROID+"src") == "@drawable/lingua_tales_approved"
+assert icon_item.get(ANDROID+"width") == "62dp"
+assert icon_item.get(ANDROID+"height") == "62dp"
+assert icon_item.get(ANDROID+"drawable") == "@drawable/lingua_icon_mark"
+assert icon_item.find("bitmap") is None, "final icon must not contain text-printed artwork"
+mark = xml(RES / "drawable/lingua_icon_mark.xml")
+assert mark.tag == "vector" and len(mark.findall("path")) >= 5
+assert mark.get(ANDROID+"viewportWidth") == "108"
+assert mark.get(ANDROID+"viewportHeight") == "108"
 approved = RES / "drawable-nodpi/lingua_tales_approved.png"
 assert approved.is_file(), "approved Lingua Tales reference artwork must be packaged"
 data = approved.read_bytes()
@@ -74,7 +78,8 @@ assert 'applicationId = "com.storylens.reader"' in gradle, "upgrade identity mus
 assert 'applicationIdSuffix = ".preview"' in gradle, "CI preview must not collide with production install"
 previewBlock = gradle.split('debug {', 1)[1].split('release {', 1)[0]
 assert 'if (hasLtStableSigning) signingConfig = signingConfigs.getByName("stableRelease")' in previewBlock, "preview must use stable signing when configured"
-assert 'manifestPlaceholders["ltAppLabel"] = "Lingua Tales Preview"' in gradle
+assert 'manifestPlaceholders["ltAppLabel"] = "Lingua Tales"' in gradle, "visible launcher label must not say Preview"
+assert 'versionNameSuffix = "-preview"' in previewBlock, "debug installer must remain visibly non-production in package metadata"
 i18n = (ROOT / "app/src/main/assets/lingua-i18n.js").read_text(encoding="utf-8")
 assert "const metrics = find('.storylens-hero .hero-metrics');" in i18n
 assert "if (metrics) metrics.remove();" in i18n
