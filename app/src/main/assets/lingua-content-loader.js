@@ -18,6 +18,8 @@ for (const node of lazyNodes) {
 const loaded = new Set();
 let bookPromise = null;
 let dictionaryPromise = null;
+let editorialArtPromise = null;
+let editorialArtReady = false;
 let openGeneration = 0;
 let bookLoadGeneration = 0;
 const inFlightAssets = new Map();
@@ -67,7 +69,7 @@ function addAction(node, label, callback) {
   button.addEventListener('click', callback);
   node.appendChild(button);
 }
-function showLoading() {
+function showLoading(kind = 'book') {
   const node = status();
   node.setAttribute('role', 'status');
   node.setAttribute('aria-live', 'polite');
@@ -75,9 +77,9 @@ function showLoading() {
   node.dir = document.documentElement.dir || 'rtl';
   node.replaceChildren();
   const message = document.createElement('span');
-  message.textContent = node.dir === 'ltr'
-    ? 'Preparing the book for offline reading…'
-    : 'جارٍ تجهيز الكتاب للقراءة دون إنترنت…';
+  message.textContent = kind === 'art'
+    ? (node.dir === 'ltr' ? 'Preparing this story’s offline illustrations…' : 'جارٍ تجهيز رسومات هذه القصة دون إنترنت…')
+    : (node.dir === 'ltr' ? 'Preparing the book for offline reading…' : 'جارٍ تجهيز الكتاب للقراءة دون إنترنت…');
   node.appendChild(message);
   addAction(node, node.dir === 'ltr' ? 'Cancel' : 'إلغاء', cancelPending);
 }
@@ -139,12 +141,28 @@ async function loadAssets(list, generation = null) {
   }
   if (generation !== null && generation !== bookLoadGeneration) throw cancelledLoadError();
 }
+// The existing 100KB scene engine stays lazy. Non-Verne stories can load it
+// alone when first opened, without forcing any of the 36 book chapter scripts.
+function ensureEditorialArt() {
+  if (editorialArtReady) return Promise.resolve(true);
+  if (!editorialArtPromise) {
+    editorialArtPromise = loadAsset('editorial-art.js').then(() => {
+      if (typeof global.LinguaAttachEditorialArt !== 'function' ||
+          global.LinguaAttachEditorialArt() !== true)
+        throw new Error('Offline chapter scene registry is unavailable');
+      editorialArtReady = true;
+      return true;
+    }).catch(error => { editorialArtPromise = null; throw error; });
+  }
+  return editorialArtPromise;
+}
 async function loadBook(generation) {
   if (!bookAssets.length) throw new Error('Offline book manifest is empty');
   await loadAssets(bookAssets, generation);
   if (generation !== bookLoadGeneration) throw cancelledLoadError();
   if (typeof global.LinguaAttachEditorialArt !== 'function' || global.LinguaAttachEditorialArt() !== true)
     throw new Error('Offline illustration registry is unavailable');
+  editorialArtReady = true;
   const story = (global.StoryLensEditorialStories || []).find(item => item.id === BOOK_ID);
   if (!story || story.totalChapters !== 37 || story.chapters.length !== 37 ||
       story.chapters.some(chapter => !Array.isArray(chapter.paragraphs) || !chapter.paragraphs.length ||
@@ -196,7 +214,28 @@ if (typeof originalOpenStory === 'function') {
       cancelBookLoad();
       clearStatus();
       unlockRoot();
-      return originalOpenStory.call(this, id, ...args);
+      const needsIllustrations = !editorialArtReady &&
+        (global.StoryLensEditorialStories || []).some(story => story?.id === id);
+      if (!needsIllustrations) return originalOpenStory.call(this, id, ...args);
+      showLoading('art');
+      const root = rootNode();
+      if (root) {
+        root.setAttribute('aria-busy', 'true');
+        root.inert = true;
+      }
+      ensureEditorialArt().then(() => {
+        if (token !== openGeneration) return;
+        clearStatus();
+        unlockRoot();
+        originalOpenStory.call(this, id, ...args);
+      }).catch(() => {
+        if (token !== openGeneration) return;
+        // Illustrations may fail, but offline story text is always readable.
+        clearStatus();
+        unlockRoot();
+        originalOpenStory.call(this, id, ...args);
+      });
+      return;
     }
     // Once the verified long book has been merged into the catalog, reopening it
     // must be synchronous: no loading overlay, inert library, or microtask race.
@@ -250,6 +289,7 @@ if (typeof originalWordSheet === 'function') {
 
 global.LinguaContentLoader = Object.freeze({
   ensureStory,
+  ensureEditorialArt,
   ensureDictionary,
   cancel: cancelPending,
   get bookAssetCount() { return bookAssets.length; },

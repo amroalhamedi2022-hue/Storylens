@@ -40,7 +40,7 @@ assert.ok(html.includes('src="freedict-en-ar.js"'),'dictionary remains a package
 assert.ok(!/<script\b(?![^>]*data-lt-lazy)[^>]*\bsrc="(?:classic-verne-towle-ch\d+\.js|editorial-art(?:-ch(?:35|36|37))?\.js|freedict-en-ar\.js)"/.test(html),
  'long-book and dictionary assets must not be eager executable scripts');
 
-function makeHarness({failOnce=null,lang='ar',deferAsset=null}={}) {
+function makeHarness({failOnce=null,lang='ar',deferAsset=null,extraEditorial=[]}={}) {
  const attempted=[], successful=[], removed=[], opened=[], sheetEntries=[];
  let failed=false, headingText=null, artAttached=0, deferredOnce=false, deferredAsset=null;
  const story={id:'around-the-world-in-eighty-days-towle',title:'Around the World in Eighty Days',subtitle:'A wager, a globe, and eighty days',genre:'historical',level:'C1',description:'Authentic long-form novel.',totalChapters:37,chapters:[],terms:[]};
@@ -66,7 +66,7 @@ function makeHarness({failOnce=null,lang='ar',deferAsset=null}={}) {
   remove(){removed.push(item.src);}
  }));
  const window={
-  StoryLensEditorialStories:[story],
+  StoryLensEditorialStories:[story,...extraEditorial],
   LinguaCatalog:catalog,
   LinguaAttachEditorialArt(){artAttached++;return true;},
   openStory(id){opened.push(id);if(id===story.id)openedChapterCounts.push(catalog.stories.find(item=>item.id===id)?.chapters.length??-1);},
@@ -127,6 +127,27 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
  assert.equal(h.artAttached,1,'contextual offline illustrations attach after all chapter data');
  assert.equal(h.window.FreeDictEnglishArabic,undefined,'opening the book does not force-load the separate dictionary');
  assert.deepEqual(h.successful,bookAssets,'book chapters and art load sequentially in declared order');
+
+ const scene={id:'original-mystery',title:'Original Mystery',chapters:[{title:'Open Door',paragraphs:[{en:'The locked door opened.',ar:'انفتح الباب المغلق.'}]}]};
+ const a=makeHarness({extraEditorial:[scene]});
+ a.window.openStory(scene.id);
+ assert.deepEqual(a.attempted,['editorial-art.js'],'opening an editorial story loads ONLY its local art engine');
+ assert.deepEqual(a.opened,[],'first illustrated open awaits scene registration');
+ await a.window.LinguaContentLoader.ensureEditorialArt();
+ await tick();
+ assert.deepEqual(a.opened,[scene.id],'story opens after chapter art is available');
+ assert.equal(a.artAttached,1,'art registry attached once to the first illustrated story');
+ assert.equal(a.story.chapters.length,0,'short story illustration does NOT load the long novel');
+ a.window.openStory(scene.id);
+ assert.deepEqual(a.opened,[scene.id,scene.id],'second story open remains synchronous and fast');
+ assert.deepEqual(a.attempted,['editorial-art.js'],'art engine is not loaded twice');
+
+ const aCancel=makeHarness({deferAsset:'editorial-art.js',extraEditorial:[scene]});
+ aCancel.window.openStory(scene.id);
+ aCancel.window.openStory('the-salt-meridian');
+ aCancel.completeDeferredAsset();
+ await tick();
+ assert.deepEqual(aCancel.opened,['the-salt-meridian'],'cancelled illustration request cannot steal navigation');
 
  const d=makeHarness();
  await d.window.LinguaContentLoader.ensureDictionary();
