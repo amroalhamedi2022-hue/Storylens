@@ -366,9 +366,26 @@ function installPageTurn(){
    window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
   }
  }
+ // Synchronize the already-packaged, licensed page-turn recording with
+ // an ACTUAL committed page change (button, swipe or held-paper release).
+ // No autoplay, no sound on cancelled drags, no overlapping fast taps.
+ let ltLastPaperSfxAt=-Infinity;
+ function ltPlayPageTurnSfx(){
+  try{
+   const player=window.LinguaLicensedAudio;
+   if(!player||typeof player.playSfx!=='function'||
+      typeof player.prefs!=='function'||player.prefs().sfxEnabled!==true)return false;
+   const now=Date.now();
+   if(now-ltLastPaperSfxAt<280)return false;
+   ltLastPaperSfxAt=now;
+   const playback=player.playSfx('page-turn');
+   playback?.catch?.(()=>{}); // Android decoder failures remain non-fatal to reading
+   return true;
+  }catch(_){return false;}
+ }
  function move(delta,source='control'){
   if(delta>0&&current===pages.length-1){
-   if(state.chapter<state.story.chapters.length-1)nextChapter();
+   if(state.chapter<state.story.chapters.length-1){ltPlayPageTurnSfx();nextChapter();}
    // A casual edge swipe at The End must not discard the reading view.
    // The explicit chapter-end and keyboard-accessible Back buttons still exit.
    else if(source==='control')libraryBack();
@@ -385,10 +402,10 @@ function installPageTurn(){
    put('chapter_'+state.story.id,previous);
    put('readpage_'+state.story.id+'_'+previous,lastPage);
    put('readpage_anchor_'+state.story.id+'_'+previous,Math.max(0,length-1));
-   renderReader();window.scrollTo(0,0);
+   ltPlayPageTurnSfx();renderReader();window.scrollTo(0,0);
    return;
   }
-  current+=delta;renderPage(delta>0?'next':'back',true);
+  current+=delta;ltPlayPageTurnSfx();renderPage(delta>0?'next':'back',true);
  }
  prev.addEventListener('click',()=>move(-1));
  next.addEventListener('click',()=>move(1));

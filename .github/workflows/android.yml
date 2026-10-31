@@ -130,6 +130,7 @@ jobs:
           node tools/reader-experience.test.cjs
           node tools/reader-page-scroll.test.cjs
           node tools/responsive-pages.test.cjs
+          node tools/page-turn-sfx.test.cjs
           node tools/contextual-page-turn.test.cjs
           node tools/story-transitions.test.cjs
           node tools/data-backup.test.cjs
