@@ -81,7 +81,19 @@ assert.equal(rerenders,1,'resizing in library never remounts the old reader');
 env2.state.page='reader';env2.window.innerWidth=700;callbacks.resize();
 sheet.isConnected=false;pending();
 assert.equal(rerenders,1,'detached old sheets cannot be rerendered');
-console.log('PASS: orientation/multi-window repagination, keyboard resize safety and visible paper retention');
+// With a visible paragraph, orientation uses the same position-preserving
+// reflow as typography, not a hard jump to the start of the paper.
+sheet.isConnected=true;
+const semantic=[];
+env2.captureParagraphAnchor=()=>({paragraph:6,viewportOffset:93});
+env2.window.LinguaReflowReader=anchor=>{semantic.push(anchor);};
+env2.window.innerWidth=1040;callbacks.resize();
+pending();
+assert.equal(semantic.length,1,'width change invokes one semantic reflow');
+assert.equal(semantic[0].paragraph,6,'same paragraph remains visible after rotation');
+assert.equal(semantic[0].viewportOffset,93,'exact viewport offset is preserved');
+assert.equal(rerenders,1,'semantic reflow replaces legacy hard-scroll behavior');
+console.log('PASS: orientation/multi-window repagination, keyboard resize safety and semantic reading position');
 
 /* Test the source reflow bridge with a visible semantic paragraph. */
 assert.match(source,/const computedSize=Number\.parseFloat\(window\.getComputedStyle/,

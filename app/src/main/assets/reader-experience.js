@@ -1034,9 +1034,18 @@ function ltRefreshPagesOnResize(){
   const top=paper.getBoundingClientRect?.()?.top;
   const hadPaperVisible=Number.isFinite(top)&&
    top<=(Number.isFinite(window.innerHeight)?window.innerHeight:800);
-  // Reuse the full enhanced rendering pipeline. It recreates inert pages,
-  // translation actions and dictionary controls; no duplicate listeners or
-  // fixed-width page remnants are left on the old sheet.
+  // Keep the *visible paragraph*, not just its containing page, after
+  // rotation or split-screen resizing. The same semantic bridge handles font
+  // changes, so the user stays at the exact reading position when possible.
+  const anchor=hadPaperVisible&&typeof captureParagraphAnchor==='function'
+   ?captureParagraphAnchor():null;
+  if(Number.isInteger(anchor?.paragraph)&&
+     typeof window.LinguaReflowReader==='function'){
+   window.LinguaReflowReader(anchor);
+   return;
+  }
+  // No semantic anchor (e.g. reader is at its cover): keep the legacy fallback.
+  // Recreate inert paper pages and dictionary handlers through the main reader.
   renderReader();
   if(hadPaperVisible)document.querySelector('.reader #sentences')?.
    scrollIntoView?.({block:'start',behavior:'auto'});
