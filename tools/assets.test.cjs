@@ -34,7 +34,8 @@ assert.ok(!manifest.includes('android.permission.INTERNET'),'offline app no netw
 assert.match(manifest,/android:label="\$\{ltAppLabel\}"/,'launcher label is resolved per build variant');
 const gradle=fs.readFileSync(path.join(root,'app/build.gradle.kts'),'utf8');
 assert.match(gradle,/manifestPlaceholders\["ltAppLabel"\] = "Lingua Tales"/,'release keeps approved brand');
-assert.match(gradle,/manifestPlaceholders\["ltAppLabel"\] = "Lingua Tales Preview"/,'preview has distinct launcher label');
+assert.doesNotMatch(gradle,/manifestPlaceholders\["ltAppLabel"\] = "Lingua Tales Preview"/,'launch label must not append Preview');
+assert.match(gradle,/versionNameSuffix = "-preview"/,'preview package and version remain isolated from production');
 assert.match(gradle,/applicationIdSuffix = "\.preview"/,'preview does not replace production installation');
 assert.match(manifest,/android:icon="@mipmap\/ic_launcher"/,'adaptive launcher icon is configured');
 assert.match(manifest,/android:roundIcon="@mipmap\/ic_launcher"/,'round launcher mask is configured');
