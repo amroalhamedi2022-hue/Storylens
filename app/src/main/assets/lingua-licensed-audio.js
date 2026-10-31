@@ -106,6 +106,28 @@ function syncUi(){
 // HTMLMediaElement can remain unpaused after decoder output stalls. Poll
 // playhead movement only for the current, explicitly started licensed loop.
 // Never auto-restart, jump tracks or silently ask for audio focus.
+// On some WebView/decoder failures Audio.play() never settles, leaving the
+// user-triggered Play button disabled indefinitely. Bound only that pending
+// startup; never auto-retry, change volume, or turn on sound in the background.
+function awaitAudioStart(playPromise){
+ if(typeof global.setTimeout!=='function')return Promise.resolve(playPromise);
+ return new Promise((resolve,reject)=>{
+  let settled=false;
+  const timer=global.setTimeout(()=>{
+   if(settled)return;
+   settled=true;
+   const error=new Error('Local audio did not start within 12 seconds. Retry or update Android System WebView.');
+   error.name='OfflineAudioStartTimeout';
+   reject(error);
+  },12000);
+  const finish=(ok,value)=>{
+   if(settled)return;
+   settled=true;global.clearTimeout?.(timer);
+   if(ok)resolve(value);else reject(value);
+  };
+  Promise.resolve(playPromise).then(value=>finish(true,value),error=>finish(false,error));
+ });
+}
 function stopPlaybackMonitor(){
  if(playbackTimer!==null){global.clearInterval?.(playbackTimer);playbackTimer=null;}
  playbackMonitorPlayer=null;playbackPosition=null;
@@ -207,7 +229,7 @@ async function playTrack(id){
   }
   throw error;
  }
- try{await Promise.all([pausePromise,playPromise]);}
+ try{await Promise.all([pausePromise,awaitAudioStart(playPromise)]);}
  catch(error){
   if(ticket===generation){
    playing=false;

@@ -60,6 +60,7 @@ jobs:
           node tools/ambience.test.cjs
           node tools/licensed-audio.test.cjs
           node tools/licensed-audio-monitor.test.cjs
+          node tools/licensed-audio-start-timeout.test.cjs
           node tools/theme-catalog.test.cjs
           node tools/celestial-atlas.test.cjs
           node tools/circuit-notebook.test.cjs
