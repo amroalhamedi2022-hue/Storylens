@@ -160,11 +160,16 @@ tests["lazy-content"] = r"""(async function(){
   if(!story||story.chapters.length!==0)errors.push('long book should start with chapter metadata only');
   if(!art[id+'_0'])errors.push('library cover art should remain available before chapter loading');
   if(window.FreeDictEnglishArabic)errors.push('FreeDict should not be evaluated during startup');
-  if(loadedAssets().length)errors.push('deferred assets were appended before use: '+loadedAssets().join(','));
+  if(loadedBookFiles().length||loadedAssets().includes('freedict-en-ar.js'))
+   errors.push('novel or dictionary requested before user action: '+loadedAssets().join(','));
+  // A single illustration script may load during idle to hydrate missing
+  // covers; it must never trigger the 37-chapter novel or the dictionary.
   await window.LinguaContentLoader.ensureDictionary();
   if(!window.FreeDictEnglishArabic?.resolve('dog'))errors.push('on-demand FreeDict lookup failed');
   if(story.chapters.length!==0)errors.push('dictionary load must not load the book');
-  if(loadedAssets().length!==1||loadedAssets()[0]!=='freedict-en-ar.js')errors.push('dictionary request should load only the local FreeDict asset: '+loadedAssets().join(','));
+  if(loadedAssets().filter(x=>x==='freedict-en-ar.js').length!==1||
+     loadedAssets().some(x=>x!=='freedict-en-ar.js'&&x!=='editorial-art.js'))
+   errors.push('dictionary must stay independent of novel payload; only idle covers may load: '+loadedAssets().join(','));
   if(loadedBookFiles().length)errors.push('dictionary request loaded book chapters');
   await window.LinguaContentLoader.ensureStory(id);
   if(story.chapters.length!==37)errors.push('book loader did not produce all 37 chapters');
