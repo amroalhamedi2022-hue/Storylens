@@ -22,5 +22,5 @@ for(const id of expected){
 }
 assert.equal(new Set(images).size,4,'covers are four different illustrations, not repeated genre imagery');
 const bad=illustrations['the-floor-between_0'];
-assert.ok(!bad.includes('https://')&&!bad.includes('http://'), 'cover cannot load remote dependencies');
+assert.doesNotMatch(decodeURIComponent(bad),/<image\b|<use\b|(?:xlink:)?href\s*=\s*["']https?:/i,'no externally linked image or SVG reference');
 console.log('PASS: four novella-specific illustrated covers and existing chapter art stay offline');
