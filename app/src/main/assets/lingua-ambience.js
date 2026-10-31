@@ -226,7 +226,7 @@ function setVolume(value){
 }
 function setSfx(enabled){prefs.sfx=enabled===true;persist();}
 function setSfxVolume(value){prefs.sfxVolume=clamp(value);persist();}
-function clickSound(){
+function clickSound(kind='button'){
  if(!prefs.sfx||document.hidden)return;
  const ticket=playbackGeneration;
  const needsFocus=!playing;
@@ -240,16 +240,17 @@ function clickSound(){
  }catch(_){if(needsFocus)releaseClickFocusIfIdle(ticket);return;}
  const osc=ctx.createOscillator(),gain=ctx.createGain(),voice={osc,gain};
  clickVoices.add(voice);
- osc.type='sine';osc.frequency.setValueAtTime(720,ctx.currentTime);
- osc.frequency.exponentialRampToValueAtTime(490,ctx.currentTime+0.045);
- gain.gain.setValueAtTime(Math.max(0.0001,prefs.sfxVolume*0.06),ctx.currentTime);
- gain.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.05);
+ const storyBubble=kind==='story';
+ osc.type='sine';osc.frequency.setValueAtTime(storyBubble?510:720,ctx.currentTime);
+ osc.frequency.exponentialRampToValueAtTime(storyBubble?295:490,ctx.currentTime+(storyBubble?0.12:0.045));
+ gain.gain.setValueAtTime(Math.max(0.0001,prefs.sfxVolume*(storyBubble?0.085:0.06)),ctx.currentTime);
+ gain.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+(storyBubble?0.145:0.05));
  osc.connect(gain);gain.connect(ctx.destination);
  osc.onended=()=>{
   disposeClickVoice(voice,false);
   if(needsFocus)releaseClickFocusIfIdle(ticket);
  };
- try{osc.start();osc.stop(ctx.currentTime+0.055);}
+ try{osc.start();osc.stop(ctx.currentTime+(storyBubble?0.15:0.055));}
  catch(_){disposeClickVoice(voice,true);if(needsFocus)releaseClickFocusIfIdle(ticket);return;}
  if(resumePromise&&typeof resumePromise.then==='function'){
   Promise.resolve(resumePromise).then(async()=>{
@@ -325,8 +326,9 @@ document.addEventListener('click',event=>{
  const button=event.target?.closest?.('button');
  // Audio controls own their focus/playback lifecycle. A bubbling click on Play/Pause
  // must not race a second one-shot focus request against the explicit user action.
- if(!button||button.closest?.('.lt-audio-settings'))return;
- clickSound();
+ const story=event.target?.closest?.('.library .card');
+ if((!button&&!story)||button?.closest?.('.lt-audio-settings'))return;
+ clickSound(story?'story':'button');
 });
 global.LinguaAmbience={SCENES:SCENES.map(s=>({id:s[0],en:s[1],ar:s[2],type:s[6]||'ambience'})),
  controls,play,pause,pauseFromNative,onNativeAudioFocusLoss,selectScene,setVolume,setSfx,setSfxVolume,clickSound,

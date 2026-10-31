@@ -13,3 +13,9 @@ console.log('PASS: reader/device UX feedback regression');
 
 const touchCss=require('node:fs').readFileSync('app/src/main/assets/lt-device-acceptance.css','utf8');
 require('node:assert/strict').match(touchCss,/\.reader #sentences,\.reader \.lt-book-page\{touch-action:pan-y/);
+
+const motionJs=require('node:fs').readFileSync('app/src/main/assets/lt-tap-feedback.js','utf8');
+const sfxJs=require('node:fs').readFileSync('app/src/main/assets/lingua-ambience.js','utf8');
+require('node:assert/strict').match(motionJs,/lt-header-concealed/);
+require('node:assert/strict').match(sfxJs,/storyBubble=kind==='story'/);
+require('node:assert/strict').match(sfxJs,/clickSound\(story\?'story':'button'\)/);

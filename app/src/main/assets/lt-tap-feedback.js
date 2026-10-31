@@ -35,5 +35,22 @@
   const rect=target.getBoundingClientRect();
   bubble(target,rect.left+rect.width/2,rect.top+rect.height/2);
  },true);
+ let lastY=0,lastHeader=null,scheduled=false;
+ function scrollHeader(){
+  const header=doc.querySelector?.('.library .header');
+  const y=Math.max(0,Number(global.scrollY)||0);
+  if(header!==lastHeader){lastHeader=header;lastY=y;return;}
+  if(!header)return;
+  const dy=y-lastY;
+  if(y<80||global.LinguaShell?.isDrawerOpen?.()){header.classList.remove('lt-header-concealed');lastY=y;return;}
+  if(dy>7){header.classList.add('lt-header-concealed');lastY=y;}
+  else if(dy< -7){header.classList.remove('lt-header-concealed');lastY=y;}
+ }
+ global.addEventListener?.('scroll',()=>{
+  if(scheduled)return;scheduled=true;
+  const finish=()=>{scheduled=false;scrollHeader();};
+  if(typeof global.requestAnimationFrame==='function')global.requestAnimationFrame(finish);
+  else finish();
+ },{passive:true});
  global.LinguaTapFeedback={bubble};
 })(window);

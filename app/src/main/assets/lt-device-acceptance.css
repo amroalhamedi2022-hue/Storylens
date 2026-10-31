@@ -107,3 +107,7 @@ html[data-lt-english-font="hand"]{--lt-en-font:"Segoe Print","Bradley Hand",curs
 /* Preserve vertical scrolling but keep horizontal pointer gestures in
    the WebView so the existing finger-held page curl can activate. */
 .reader #sentences,.reader .lt-book-page{touch-action:pan-y;-ms-touch-action:pan-y}
+
+.library .header{transition:transform .32s cubic-bezier(.2,.8,.2,1),opacity .32s ease!important}
+.library .header.lt-header-concealed{transform:translate3d(0,calc(-100% - 14px),0)!important;pointer-events:none!important;opacity:.9!important}
+@media(prefers-reduced-motion:reduce){.library .header,.library .header.lt-header-concealed{transition:none!important}}
