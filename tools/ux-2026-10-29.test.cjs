@@ -283,6 +283,21 @@ function testPointerOwnership(){
  assert.deepEqual(turns,[1,1,1,-1,1],
   'cleanup after a page switch does not commit the stale fold');
  sandbox.current=0;
+ // A dragged sheet that returns to its starting edge must not turn merely
+ // because the earlier preview had already passed the commit threshold.
+ down(28);drag(28);
+ events.pointermove({pointerId:28,clientX:391,clientY:52,cancelable:true,preventDefault(){}});
+ events.pointerup({pointerId:28,clientX:391,clientY:52,target:sheet});
+ assert.deepEqual(turns,[1,1,1,-1,1],'returned-to-edge fold cancels instead of turning');
+ // Page switches during pointermove must clean the original page immediately.
+ down(29);drag(29);frame();
+ sandbox.current=1;
+ events.pointermove({pointerId:29,clientX:200,clientY:52,cancelable:true,preventDefault(){}});
+ assert.equal(sandbox.pages[0].classList.contains('lt-paper-grabbed'),false,
+  'stale preview is cleared immediately when pointer moves after page change');
+ assert.equal(foldClasses.has('lt-paper-grabbing'),false,
+  'reader no longer remains in grabbing state after page change');
+ sandbox.current=0;
 
 }
 testPointerOwnership();

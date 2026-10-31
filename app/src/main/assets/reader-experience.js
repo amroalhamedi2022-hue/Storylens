@@ -336,13 +336,16 @@ function installPageTurn(){
   foldRaf=null;
   // A queued animation frame can run after the chapter was replaced. It must
   // never paint a detached sheet or a fold belonging to another book.
-  if(!drag||state.page!=='reader'||state.story!==installedStory||
+  if(!drag)return;
+  if(state.page!=='reader'||state.story!==installedStory||
      state.chapter!==installedChapter||sentenceBox.isConnected===false||
-     window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
+     window.matchMedia?.('(prefers-reduced-motion: reduce)').matches){
+   finishPaperDrag(false);return;
+  }
   const active=pages[current];
   // The frame can arrive after a separate page navigation within this chapter.
   // A fold is valid only for the page that received pointerdown.
-  if(current!==drag.page)return;
+  if(current!==drag.page){finishPaperDrag(false);return;}
   const geometry=pageFoldGeometry(drag.progress,drag.edge,drag.lastY-drag.startY);
   const underneath=pages[current+pageEdgeDelta(drag.edge,document.documentElement.dir==='rtl')];
   // The neighboring page is visually revealed but remains inert and hidden
@@ -370,7 +373,7 @@ function installPageTurn(){
   // Pointer capture retargets pointerup to the page container. Hit-test the
   // actual release coordinates so releasing over a word/control, outside the
   // viewport, or after selecting text cannot unexpectedly turn the page.
-  const endTarget=commit
+  const endTarget=commit&&Number.isFinite(event?.clientX)&&Number.isFinite(event?.clientY)
    ?(typeof document.elementFromPoint==='function'
      ?document.elementFromPoint(event.clientX,event.clientY):event.target)
    :null;
@@ -379,7 +382,12 @@ function installPageTurn(){
   // reader sheet; this also rejects dictionary tokens in other overlays.
   const stillCurrent=state.page==='reader'&&state.story===installedStory&&
    state.chapter===installedChapter&&sentenceBox.isConnected!==false&&current===held.page;
-  const turn=commit&&stillCurrent&&held.progress>=.34&&!!endTarget&&
+  // A touch that was dragged backward toward its starting edge should not
+  // commit a turn merely because it crossed the threshold earlier.
+  const releasePull=commit
+   ?(held.edge==='right'?held.startX-event.clientX:event.clientX-held.startX)
+   :0;
+  const turn=commit&&stillCurrent&&held.progress>=.34&&releasePull>=Math.max(35,held.width*.16)&&!!endTarget&&
    sentenceBox.contains(endTarget)&&
    pageFoldReleaseAllowed(held.target,endTarget,window.getSelection?.()?.toString()||'');
   drag=null;clearFold();
@@ -407,6 +415,11 @@ function installPageTurn(){
  },{passive:true});
  sentenceBox.addEventListener('pointermove',event=>{
   if(!drag||event.pointerId!==drag.id)return;
+  // A page or chapter may be changed by keyboard/buttons during a held
+  // gesture. Tear down immediately instead of waiting for pointerup.
+  if(state.page!=='reader'||state.story!==installedStory||
+     state.chapter!==installedChapter||sentenceBox.isConnected===false||
+     current!==drag.page){finishPaperDrag(false);return;}
   const horizontal=drag.edge==='right'?drag.startX-event.clientX:event.clientX-drag.startX;
   const dy=event.clientY-drag.startY;
   if(!drag.locked){
