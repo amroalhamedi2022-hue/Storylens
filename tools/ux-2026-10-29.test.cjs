@@ -36,7 +36,7 @@ assert.match(reader,/const delta=edge\?pageEdgeDelta\(edge,document\.documentEle
 assert.match(reader,/delta<0&&current===0&&state\.chapter===0/,'first page protects the correct backward edge');
 assert.match(reader,/\bfinishPaperDrag\(true,event\)/,'commit paper release with actual hit-test coordinates');
 assert.match(reader,/Math\.abs\(dy\)>15/,'vertical scroll must not turn paper');
-assert.ok(reader.includes("if(!pageSwipeAllowed(event.target,window.getSelection?.()?.toString()||''))return;"),'dictionary selection and interactive start controls protected');
+assert.ok(reader.includes("if(!pageFoldStartAllowed(event.target,window.getSelection?.()?.toString()||''))return;"),'dictionary selection and interactive start controls protected');
 assert.match(reader,/pageFoldReleaseAllowed\(held\.target,endTarget/,'captured release checks actual landing surface');
 assert.match(reader,/state\.chapter===0\)return;/,'first chapter cannot turn backward');
 assert.match(reader,/Math\.ceil\(length\/LT_PAGE_PARAGRAPHS\)-1/,'backward turn opens last page of previous chapter');
@@ -148,7 +148,7 @@ assert.ok(dragStart>0&&dragEnd>dragStart&&helperStart>0&&helperEnd>helperStart,
  'real production drag handlers and geometry are extractable');
 const dragSource=reader.slice(helperStart,helperEnd)+reader.slice(dragStart,dragEnd);
 function testPointerOwnership(){
- const events={},turns=[],foldClasses=new Set();
+ const events={},turns=[],foldClasses=new Set(),captures=[];
  let frame=null,selected='',endSurface,paneWidth=400;
  const plainTarget={nodeType:1,closest:()=>null};
  const controlTarget={nodeType:1,closest:selector=>
@@ -181,7 +181,7 @@ function testPointerOwnership(){
   getBoundingClientRect(){return {left:0,width:paneWidth};},
   contains(node){return node!==outsideTarget&&node!==outsideToken&&node!==null;}, 
   addEventListener(name,handler){events[name]=handler;},
-  setPointerCapture(){},releasePointerCapture(){}
+  setPointerCapture(id){captures.push(id);},releasePointerCapture(){}
  };
  const sandbox={sentenceBox:sheet,pages:[page(),page()],current:0,
   state:{page:'reader',chapter:1},document:{documentElement:{dir:'ltr'},
@@ -200,6 +200,19 @@ function testPointerOwnership(){
  const drag=id=>events.pointermove({pointerId:id,clientX:210,clientY:52,
   cancelable:true,preventDefault(){}});
  const up=id=>events.pointerup({pointerId:id,clientX:210,clientY:52,target:sheet});
+ // Dictionary ink near the page edge stays tappable on a short press: no
+ // capture, preventDefault, reverse face or accidental navigation.
+ const initialCaptures=captures.length;
+ down(70,tokenTarget);
+ assert.equal(captures.length,initialCaptures,'dictionary press never captures pointer');
+ events.pointerup({pointerId:70,clientX:395,clientY:50,target:tokenTarget});
+ assert.deepEqual(turns,[],'dictionary tap without drag never flips the book');
+ assert.equal(captures.length,initialCaptures,'dictionary tap remains click-targeted');
+ down(71,tokenTarget);drag(71);
+ assert.equal(captures.at(-1),71,'actual drag from word ink captures only after lock');
+ up(71);
+ assert.deepEqual(turns,[1],'edge paper hold can start on a dictionary word');
+ turns.pop();
  down(7);drag(7);
  events.pointercancel({pointerId:99});
  events.lostpointercapture({pointerId:99});

@@ -163,6 +163,16 @@ function pageSwipeAllowed(target,selectionText=''){
  if(!element||typeof element.closest!=='function')return true;
  return !element.closest('button,a,input,textarea,select,summary,[role="button"],[contenteditable="true"]');
 }
+// A dictionary word at the paper's edge is still ink on the page. Start a
+// potential hold there without consuming an ordinary tap: pointer capture
+// begins only after a real horizontal drag is established.
+function pageFoldStartAllowed(target,selectionText=''){
+ if(typeof selectionText==='string'&&selectionText.trim())return false;
+ if(pageSwipeAllowed(target,selectionText))return true;
+ const element=target?.nodeType===1?target:target?.parentElement;
+ if(!element?.closest?.('.tok'))return false;
+ return !element.closest('button,a,input,textarea,select,summary,[contenteditable="true"]');
+}
 function pageSwipeGestureAllowed(startTarget,endTarget,selectionText=''){
  return pageSwipeAllowed(startTarget,selectionText)&&pageSwipeAllowed(endTarget,selectionText);
 }
@@ -170,7 +180,7 @@ function pageSwipeGestureAllowed(startTarget,endTarget,selectionText=''){
 // dictionary buttons. Allow that landing surface, but never steal an active
 // selection or release onto a toolbar/control outside the reading text.
 function pageFoldReleaseAllowed(startTarget,endTarget,selectionText=''){
- if(!endTarget||!pageSwipeAllowed(startTarget,selectionText))return false;
+ if(!endTarget||!pageFoldStartAllowed(startTarget,selectionText))return false;
  if(typeof selectionText==='string'&&selectionText.trim())return false;
  const element=endTarget.nodeType===1?endTarget:endTarget.parentElement;
  if(element?.closest?.('.tok'))return true;
@@ -510,7 +520,7 @@ function installPageTurn(){
   if(event.isPrimary===false||event.button!==0||drag||state.page!=='reader'||
      state.story!==installedStory||state.chapter!==installedChapter||
      sentenceBox.isConnected===false)return;
-  if(!pageSwipeAllowed(event.target,window.getSelection?.()?.toString()||''))return;
+  if(!pageFoldStartAllowed(event.target,window.getSelection?.()?.toString()||''))return;
   const box=sentenceBox.getBoundingClientRect();
   const x=event.clientX-box.left;
   // When the reading pane is narrow, the two 66px edge zones overlap.
@@ -523,7 +533,8 @@ function installPageTurn(){
      (delta>0&&current===pages.length-1&&state.chapter===state.story.chapters.length-1))return;
   drag={id:event.pointerId,edge,target:event.target,startX:event.clientX,startY:event.clientY,
    width:Math.max(1,box.width),progress:0,locked:false,lastY:event.clientY,page:current};
-  try{sentenceBox.setPointerCapture?.(event.pointerId);}catch(_){}
+  // Capturing on pointerdown would retarget a normal dictionary click to the
+  // book container on some WebViews. Keep the tap untouched until drag lock.
  },{passive:true});
  sentenceBox.addEventListener('pointermove',event=>{
   if(!drag||event.pointerId!==drag.id)return;
@@ -538,6 +549,7 @@ function installPageTurn(){
    if(Math.abs(dy)>15&&Math.abs(dy)>Math.abs(horizontal)*1.1){finishPaperDrag(false);return;}
    if(horizontal<9)return;
    drag.locked=true;
+   try{sentenceBox.setPointerCapture?.(event.pointerId);}catch(_){}
   }
   drag.progress=Math.max(0,Math.min(1,horizontal/Math.max(115,drag.width*.68)));
   drag.lastY=event.clientY;
