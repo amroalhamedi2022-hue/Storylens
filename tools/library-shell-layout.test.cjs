@@ -131,7 +131,8 @@ function swipeHarness(locale,initiallyOpen=false){
  const rtl=()=>locale==='ar';
  function openDrawer(){opened=true;openCount++;drawer.inert=false;}
  function closeDrawer(){opened=false;closeCount++;drawer.inert=true;}
- vm.runInNewContext(shell.slice(dragStart,dragEnd),
+ vm.runInNewContext('let opened='+JSON.stringify(initiallyOpen)+';let touch=null;\n'+
+  shell.slice(dragStart,dragEnd),
   {document,state,global,rtl,openDrawer,closeDrawer,Math});
  function swipe(x,y,dx,dy=0){
   callbacks.touchstart({touches:[{clientX:x,clientY:y}]});
