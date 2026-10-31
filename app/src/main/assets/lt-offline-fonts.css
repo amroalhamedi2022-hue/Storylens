@@ -1,0 +1,23 @@
+/* Offline, original SIL OFL 1.1 reading fonts. See fonts/README.md. */
+@font-face{font-family:"LT Arabic Modern";src:url("fonts/ar-modern.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"LT Arabic Naskh";src:url("fonts/ar-naskh.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"LT Arabic Ruqaa";src:url("fonts/ar-ruqaa.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"LT Arabic Kufi";src:url("fonts/ar-kufi.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"LT Arabic Hand";src:url("fonts/ar-hand.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"LT English Serif";src:url("fonts/en-serif.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"LT English Sans";src:url("fonts/en-sans.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"LT English Humanist";src:url("fonts/en-humanist.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"LT English Mono";src:url("fonts/en-mono.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"LT English Hand";src:url("fonts/en-hand.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+:root{--lt-ar-font:"LT Arabic Modern",Tahoma,sans-serif;--lt-en-font:"LT English Serif",Georgia,serif}
+html[data-lt-arabic-font="sans"]{--lt-ar-font:"LT Arabic Modern",sans-serif}
+html[data-lt-arabic-font="naskh"]{--lt-ar-font:"LT Arabic Naskh",sans-serif}
+html[data-lt-arabic-font="ruqaa"]{--lt-ar-font:"LT Arabic Ruqaa",sans-serif}
+html[data-lt-arabic-font="kufi"]{--lt-ar-font:"LT Arabic Kufi",sans-serif}
+html[data-lt-arabic-font="hand"]{--lt-ar-font:"LT Arabic Hand",sans-serif}
+html[data-lt-english-font="serif"]{--lt-en-font:"LT English Serif",serif}
+html[data-lt-english-font="sans"]{--lt-en-font:"LT English Sans",serif}
+html[data-lt-english-font="humanist"]{--lt-en-font:"LT English Humanist",serif}
+html[data-lt-english-font="mono"]{--lt-en-font:"LT English Mono",serif}
+html[data-lt-english-font="hand"]{--lt-en-font:"LT English Hand",serif}
+.reader .inline-ar,.reader .stl-sentence-translation{font-family:var(--lt-ar-font)!important}
