@@ -49,6 +49,8 @@ let player=null,playerTrack=null,playing=false,focusOwned=false,generation=0;
 const sfxPlayers=new Set();
 let playButton=null,statusNote=null,rtlUi=false,ambienceToggle=null,sfxToggle=null;
 let playbackIssue=null; // Persistent visible failure until the next successful play.
+let playbackTimer=null,playbackMonitorPlayer=null,playbackPosition=null;
+let playbackStationary=0,playbackSawUpdate=false;
 let ambienceVolumeControl=null,sfxVolumeControl=null,sfxButtons=[];
 const doc=global.document;
 function persist(){if(typeof global.put==='function')global.put(KEY,{...prefs});}
@@ -101,12 +103,52 @@ function syncUi(){
   ?'20 أجواء مسجّلة ومرخّصة + 4 مؤثرات قصيرة؛ التشغيل اختياري ومحلي. CC BY 4.0.'
   :'20 licensed recorded ambiences + 4 short effects; optional local playback. CC BY 4.0.');
 }
+// HTMLMediaElement can remain unpaused after decoder output stalls. Poll
+// playhead movement only for the current, explicitly started licensed loop.
+// Never auto-restart, jump tracks or silently ask for audio focus.
+function stopPlaybackMonitor(){
+ if(playbackTimer!==null){global.clearInterval?.(playbackTimer);playbackTimer=null;}
+ playbackMonitorPlayer=null;playbackPosition=null;
+ playbackStationary=0;playbackSawUpdate=false;
+}
+function startPlaybackMonitor(active,ticket){
+ stopPlaybackMonitor();
+ if(typeof global.setInterval!=='function')return;
+ playbackMonitorPlayer=active;playbackPosition=Number(active.currentTime);
+ const timer=global.setInterval(()=>{
+  // Timers already queued by WebView cannot cancel the next playback owner.
+  if(playbackTimer!==timer)return;
+  if(ticket!==generation||player!==active||!playing||doc?.hidden){stopPlaybackMonitor();return;}
+  if(active.paused){
+   ++generation;playing=false;stopPlaybackMonitor();
+   releaseFocus();interruptedPlayback();return;
+  }
+  if(active.seeking||(typeof active.readyState==='number'&&active.readyState<2)){
+   playbackStationary=0;return;
+  }
+  const current=Number(active.currentTime);
+  const progressed=playbackSawUpdate||(Number.isFinite(current)&&
+   Number.isFinite(playbackPosition)&&Math.abs(current-playbackPosition)>.05);
+  playbackPosition=current;playbackSawUpdate=false;
+  if(progressed){playbackStationary=0;return;}
+  if(++playbackStationary<4)return;
+  ++generation;playing=false;stopPlaybackMonitor();
+  try{active.pause();}catch(_){}
+  if(player===active){player=null;playerTrack=null;}
+  releaseFocus();
+  playbackIssue=rtlUi
+   ?'توقف تقدّم التسجيل المحلي رغم ظهور حالة التشغيل. أعد المحاولة وأرسل هذه الرسالة لتشخيص WebView أو فك ترميز الصوت.'
+   :'Local recording stalled while the player still showed Play. Retry and report this message to diagnose WebView or audio decoding.';
+  syncUi();
+ },2000);
+ playbackTimer=timer;
+}
 function stopSfx(){
  for(const audio of sfxPlayers){try{audio.pause();audio.currentTime=0;}catch(_){}}
  sfxPlayers.clear();
 }
 async function pause(options){
- ++generation;playing=false;
+ ++generation;playing=false;stopPlaybackMonitor();
  if(player){try{player.pause();}catch(_){}}
  if(!options||options.stopSfx!==false)stopSfx();
  if(!(options&&options.keepFocus)&&!proceduralPlaying()&&sfxPlayers.size===0)releaseFocus();
@@ -124,7 +166,7 @@ async function playTrack(id){
  // Calling Play is an explicit opt-in, never a startup side effect.
  if(!prefs.ambienceEnabled){prefs.ambienceEnabled=true;persist();syncUi();}
  if(playing&&playerTrack===id&&player&&!player.paused)return true;
- const ticket=++generation;
+ const ticket=++generation;stopPlaybackMonitor();
  const pausePromise=stopProceduralKeepingFocus(); // sync pause happens before Audio.play, preserving user gesture
  if(!requestFocus()){await pausePromise;releaseFocus();playFailure({name:'AudioFocusUnavailable'});return false;}
  if(playerTrack!==id||!player){
@@ -137,7 +179,7 @@ async function playTrack(id){
   // one-shot ticket, and evict failed elements so the next tap gets a fresh one.
   createdPlayer.addEventListener('error',()=>{
    if(player!==createdPlayer)return;
-   ++generation;playing=false; // invalidate a pending play() resolution
+   ++generation;playing=false;stopPlaybackMonitor(); // invalidate a pending play() resolution
    try{createdPlayer.pause();createdPlayer.currentTime=0;}catch(_){}
    player=null;playerTrack=null;
    releaseFocus();mediaFailure(createdPlayer.error?.code||0);
@@ -146,8 +188,11 @@ async function playTrack(id){
   // failures without rejecting the already-resolved play() promise.
   createdPlayer.addEventListener('pause',()=>{
    if(player!==createdPlayer||!playing)return;
-   ++generation;playing=false;
+   ++generation;playing=false;stopPlaybackMonitor();
    releaseFocus();interruptedPlayback();
+  });
+  createdPlayer.addEventListener('timeupdate',()=>{
+   if(playbackMonitorPlayer===createdPlayer)playbackSawUpdate=true;
   });
  }
  const active=player;
@@ -189,7 +234,7 @@ async function playTrack(id){
   ++generation;playing=false;
   releaseFocus();interruptedPlayback();return false;
  }
- playbackIssue=null;playing=true;syncUi();return true;
+ playbackIssue=null;playing=true;syncUi();startPlaybackMonitor(active,ticket);return true;
 }
 function selectTrack(id){
  if(!trackIds.has(id))return false;
