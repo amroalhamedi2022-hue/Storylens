@@ -219,7 +219,9 @@ function applyCustomThemeColors(){
  if(!body?.style||typeof body.style.removeProperty!=='function')return false;
  for(const name of ['--lt-glass-a','--lt-glass-b','--lt-glass-c','--lt-glass-d','--lt-theme-angle','--accent'])body.style.removeProperty(name);
  const colors=customThemeColors()[state.uiTheme];
- if(!colors||typeof colors!=='object')return;
+ const customOn=!!(colors&&typeof colors==='object'&&themeColorKeys.some(key=>isThemeHex(colors[key])));
+ body.classList?.toggle('lt-has-custom-gradient',customOn);
+ if(!customOn)return;
  for(const key of themeColorKeys)if(isThemeHex(colors[key]))body.style.setProperty('--lt-glass-'+key,colors[key]);
  if(isThemeHex(colors.a))body.style.setProperty('--accent',colors.a);
  if(Number.isInteger(colors.angle)&&colors.angle>=0&&colors.angle<=360)body.style.setProperty('--lt-theme-angle',colors.angle+'deg');
@@ -231,6 +233,19 @@ function openThemeEditor(name,origin){
  const panel=document.createElement('section');panel.className='lt-theme-editor';
  panel.setAttribute('aria-label',rtl()?'تخصيص الثيم':'Customize theme');
  const title=document.createElement('h4');title.textContent=(rtl()?'تخصيص: ':'Customize: ')+themeLabelFor(name);panel.appendChild(title);
+ const preview=document.createElement('div');preview.className='lt-theme-live-preview';
+ preview.setAttribute('role','img');
+ preview.setAttribute('aria-label',rtl()?'معاينة التدرج':'Gradient preview');
+ panel.appendChild(preview);
+ function syncPreview(){
+  const c=customThemeColors()[name]||{},angle=Number.isInteger(c.angle)?c.angle:135;
+  const palette=['a','b','c','d'].map((key,i)=>isThemeHex(c[key])?c[key]:['#6e77ec','#c078e8','#6bd8ea','#e2c2f7'][i]);
+  const background='linear-gradient('+angle+'deg,'+palette.join(',')+')';
+  preview.style.background=background;
+  const swatch=origin?.querySelector('.lt-theme-swatch');
+  if(swatch)swatch.style.background=background;
+ }
+ syncPreview();
  const saved=customThemeColors()[name]||{};
  for(const [key,defaultHex,labelAr,labelEn] of [
   ['a','#6e77ec','اللون الأساسي','Primary color'],
@@ -246,9 +261,7 @@ function openThemeEditor(name,origin){
    const updated=customThemeColors();
    updated[name]={...(updated[name]||{}),[key]:input.value};
    put('ltThemeCustomColors',updated);applyTheme(name);
-   const swatch=origin?.querySelector('.lt-theme-swatch');
-   if(swatch)swatch.style.background='linear-gradient('+(updated[name].angle||135)+'deg,'+
-     [updated[name].a||'#6e77ec',updated[name].b||'#c078e8',updated[name].c||'#6bd8ea',updated[name].d||'#e2c2f7'].join(',')+')';
+   syncPreview();
   });
   label.appendChild(input);panel.appendChild(label);
  }
@@ -260,7 +273,7 @@ function openThemeEditor(name,origin){
  angleInput.addEventListener('input',()=>{
   const updated=customThemeColors();
   updated[name]={...(updated[name]||{}),angle:Number(angleInput.value)};
-  put('ltThemeCustomColors',updated);applyTheme(name);
+  put('ltThemeCustomColors',updated);applyTheme(name);syncPreview();
  });
  angleLabel.appendChild(angleInput);panel.appendChild(angleLabel);
  const presetRow=document.createElement('div');presetRow.className='lt-theme-presets';
@@ -270,13 +283,20 @@ function openThemeEditor(name,origin){
  ['mint','#008d85','#52beaa','#a8f0c6','#dffbea'],
  ['noir','#273a50','#687989','#ad9ba6','#eff2fa'],
  ['rose','#f63c89','#ac4ce1','#ffc1cd','#ecbcff'],
- ['sand','#786147','#bc9770','#e6c89a','#f7edda']];
+ ['sand','#786147','#bc9770','#e6c89a','#f7edda'],
+ ['lagoon','#044f70','#149cac','#75d4cf','#d8fcf2'],
+ ['amethyst','#42316e','#8065c9','#bf95f8','#ead4ff'],
+ ['forest','#183e35','#4b8c6c','#a1d9b1','#e7f3d9'],
+ ['peach','#8c4e6d','#d7809b','#ffc3aa','#fff1d8'],
+ ['ice','#1c577a','#6d95c5','#b0e6ee','#f0fbff'],
+ ['ember','#682f31','#b95139','#e9a756','#ffe0a4']];
  for(const [id,a,b,c,d] of presets){
   const button=addButton(presetRow,id,()=>{
    const updated=customThemeColors();
    updated[name]={a,b,c,d,angle:Number(angleInput.value)};
    put('ltThemeCustomColors',updated);applyTheme(name);
    panel.querySelectorAll('input[type="color"]').forEach((input,index)=>input.value=[a,b,c,d][index]);
+   syncPreview();
   },'lt-theme-preset');
   button.style.background='linear-gradient(135deg,'+[a,b,c,d].join(',')+')';
   button.setAttribute('aria-label',rtl()?'تدرج '+id:'Gradient '+id);

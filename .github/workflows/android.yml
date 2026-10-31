@@ -133,6 +133,7 @@ jobs:
           node tools/story-transitions.test.cjs
           node tools/data-backup.test.cjs
           node tools/four-stop-theme.test.cjs
+          node tools/theme-live-gradient.test.cjs
           node tools/ux-2026-10-29.test.cjs
           node tools/device-ux-batch.test.cjs
       - name: Configure stable update signing (optional private repository secrets)
