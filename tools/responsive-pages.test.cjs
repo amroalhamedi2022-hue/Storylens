@@ -40,3 +40,45 @@ const backup=fs.readFileSync('app/src/main/assets/data-backup.js','utf8');
 assert.match(backup,/readpage_anchor\|reading_anchor/,'semantic page anchors included in backups');
 assert.match(backup,/tail\.startsWith\('readpage_anchor_'\)/,'anchors validated on import');
 console.log('PASS: phone/tablet adaptive page groups, semantic anchors, old bookmarks and portable backups');
+
+/* Execute the production width-change handler with queued WebView resize
+ * events. Height-only keyboard changes must preserve focus and reading page. */
+const resizeStart=source.indexOf('let ltLastLayoutWidth=');
+const resizeEnd=source.indexOf('library(); // Re-render once',resizeStart);
+assert.ok(resizeStart>0&&resizeEnd>resizeStart,'orientation resizer exists in production');
+const callbacks={};let pending=null,rerenders=0,cancelled=0,scrolls=0;
+const sheet={isConnected:true,getBoundingClientRect:()=>({top:18})};
+const env2={
+ state:{page:'reader',story:{id:'book'}},
+ document:{querySelector:()=>sheet},
+ renderReader:()=>{rerenders++;},
+ window:{
+  innerWidth:360,innerHeight:800,
+  addEventListener:(name,fn)=>{callbacks[name]=fn;},
+  setTimeout:fn=>{pending=fn;return 17;},
+  clearTimeout:()=>{cancelled++;}
+ }
+};
+sheet.scrollIntoView=()=>{scrolls++;};
+vm.runInNewContext(source.slice(resizeStart,resizeEnd),env2);
+assert.equal(typeof callbacks.resize,'function','resize is registered once');
+env2.window.innerWidth=360;callbacks.resize();
+assert.equal(pending,null,'unchanged viewport does not rerender');
+env2.window.innerHeight=450;callbacks.resize();
+assert.equal(pending,null,'keyboard resize without width change is ignored');
+env2.window.innerWidth=405;callbacks.resize();
+assert.equal(pending,null,'tiny width jitter does not rerender');
+env2.window.innerWidth=720;callbacks.resize();
+assert.equal(typeof pending,'function','rotation schedules one batched rerender');
+env2.window.innerWidth=760;callbacks.resize();
+assert.equal(cancelled,1,'rapid width changes debounce previous remount');
+const rotate=pending;rotate();
+assert.equal(rerenders,1,'orientation recomputes pages once');
+assert.equal(scrolls,1,'after rotation book stays visible');
+env2.state.page='library';env2.window.innerWidth=360;callbacks.resize();
+const afterLibrary=pending;afterLibrary();
+assert.equal(rerenders,1,'resizing in library never remounts the old reader');
+env2.state.page='reader';env2.window.innerWidth=700;callbacks.resize();
+sheet.isConnected=false;pending();
+assert.equal(rerenders,1,'detached old sheets cannot be rerendered');
+console.log('PASS: orientation/multi-window repagination, keyboard resize safety and visible paper retention');

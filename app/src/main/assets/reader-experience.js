@@ -969,5 +969,35 @@ window.stlChapter=function(i){
 };
 theme=function(){snapshot();originalTheme()};
 inlineTranslate=function(){snapshot();originalInlineTranslate();document.querySelector('.arabic-page')?.setAttribute('lang','ar');};
+// Adaptive paper grouping must also respond when the device rotates or
+// Android multi-window changes width. Rebuild only on material width changes,
+// never for keyboard-height-only resize notifications. The semantic first-
+// paragraph anchor already saved by renderPage() survives this remount.
+let ltLastLayoutWidth=Number(window.innerWidth),ltResizeTimer=null;
+function ltRefreshPagesOnResize(){
+ const latest=Number(window.innerWidth);
+ if(!Number.isFinite(latest)||latest<240)return;
+ if(!Number.isFinite(ltLastLayoutWidth)){ltLastLayoutWidth=latest;return;}
+ if(Math.abs(latest-ltLastLayoutWidth)<48)return;
+ ltLastLayoutWidth=latest;
+ if(ltResizeTimer!==null)window.clearTimeout?.(ltResizeTimer);
+ if(typeof window.setTimeout!=='function')return;
+ ltResizeTimer=window.setTimeout(()=>{
+  ltResizeTimer=null;
+  if(state.page!=='reader'||!state.story)return;
+  const paper=document.querySelector('.reader #sentences');
+  if(!paper||paper.isConnected===false)return;
+  const top=paper.getBoundingClientRect?.()?.top;
+  const hadPaperVisible=Number.isFinite(top)&&
+   top<=(Number.isFinite(window.innerHeight)?window.innerHeight:800);
+  // Reuse the full enhanced rendering pipeline. It recreates inert pages,
+  // translation actions and dictionary controls; no duplicate listeners or
+  // fixed-width page remnants are left on the old sheet.
+  renderReader();
+  if(hadPaperVisible)document.querySelector('.reader #sentences')?.
+   scrollIntoView?.({block:'start',behavior:'auto'});
+ },180);
+}
+window.addEventListener?.('resize',ltRefreshPagesOnResize);
 library(); // Re-render once after installing enhancements.
 })();
