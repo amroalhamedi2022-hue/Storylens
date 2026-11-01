@@ -416,6 +416,9 @@ tests["historic-verne-plates"] = r"""(async function(){
    // owns the real paragraph placement and local-only DOM wiring.
    check('chapter '+item.index+' image remains lazy',picture?.loading==='lazy'&&
      picture?.decoding==='async');
+   const realHero=document.querySelector('.reader .reader-hero');
+   check('chapter '+item.index+' top banner uses the same historic scan',
+    realHero?.classList.contains('lt-historic-hero')&&realHero.style.backgroundImage.includes(item.src));
    fullTranslation();
    const companion=document.querySelector('.lt-arabic-companion .lt-companion-plate');
    const companionImage=companion?.querySelector('img');
@@ -428,6 +431,11 @@ tests["historic-verne-plates"] = r"""(async function(){
       catalog.stories.find(s=>s.id===id).chapters[item.index].paragraphs.length);
    backToReader();
   }
+  state.chapter=13;renderReader();
+  const emptyHero=document.querySelector('.reader .reader-hero');
+  check('unsourced novel chapter never shows the synthetic SVG banner',
+    emptyHero?.classList.contains('lt-no-period-hero')&&
+    getComputedStyle(emptyHero).display==='none');
  }catch(e){errors.push('runtime: '+e.message)}
  document.body.setAttribute('data-lt-historic-qa',errors.length?'FAIL':'PASS');
  document.body.setAttribute('data-lt-historic-errors',errors.join(' | '));

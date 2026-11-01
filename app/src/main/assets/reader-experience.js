@@ -1018,6 +1018,23 @@ renderReader=function(){
       credit:uiText('نوفيل وبنيت، ١٨٧٢ · نقش تاريخي من الرواية','Neuville / Benett, 1872 · Historic engraved scene'),
       aspectRatio:640/931,position:'wide'}]
    }[state.chapter]||[]):[];
+ // UX04: a historical novel's top-of-chapter banner must also use a
+ // REAL source-era scan. Old decorative SVG cards are never suitable here.
+ // When no archive scene is verified, remove the false visual instead.
+ if(state.story.id==='around-the-world-in-eighty-days-towle'){
+  const hero=document.querySelector('.reader .reader-hero');
+  if(hero){
+   const verified=periodArt[0];
+   if(verified){
+    hero.style.backgroundImage='url("'+verified.src+'")';
+    hero.classList.add('lt-historic-hero');
+    hero.setAttribute('aria-label',verified.alt);
+   }else{
+    hero.style.backgroundImage='none';
+    hero.classList.add('lt-no-period-hero');
+   }
+  }
+ }
  const approvedArt=periodArt.length>0||curatedArt.some(item=>item&&safeArtPath.test(item.src||'')&&
   typeof item.alt==='string'&&!!item.alt.trim());
  // A sourced historical novel must never silently fall back to the

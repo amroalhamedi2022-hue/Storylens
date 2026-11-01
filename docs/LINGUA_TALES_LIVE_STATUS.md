@@ -143,6 +143,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - New real-Chromium screenshot fixtures create phone-sized evidence **focused on the new authentic archive engravings** in Towle V and XX, not merely the home-page cover. CI uploads `verne-original-news-ch05.png` and `verne-original-cabin-ch20.png` for independent inspection.
 - Corresponding static source test rejects abstract fallback reintroduction. Full exact-head CI and screenshot review PENDING; no claim of measured 120Hz or stable release signing.
 
+### 2026-11-01 — UX01 / UX04: replace the actual chapter-hero decorative SVG with sourced engravings
+- Inspected **real screenshots** from passing exact-head CI 41341877652 on `0f9ca07d86c262811424e2b1da634d16879e45e1`: although all five period-scene figures mounted correctly inside the source/companion prose, the visible TOP of chapters V and XX still showed an old synthetic vector banner (newspaper/boat). This violated the user's insistence on authentic period imagery; the earlier screenshot fixtures alone did not catch it.
+- For the Verne classic specifically, top-of-chapter art now reuses its exact verified original historical scan whenever one of the five chapter-scene plates is available; for the other 32 chapters, the false SVG banner is hidden instead of inventing a scene. Historical image framed with inexpensive CSS `background-size:contain` so original engravings are not severely cropped. Other historical/story content and older saved short-story art untouched.
+- Added Node source/CSS regression and real Chromium assertion that each original figure and its chapter hero share the same local scanned WebP; verifies an unsourced chapter has NO generic hero. New exact-head CI and re-reviewed screenshots PENDING. No stable release or measured real-device FPS claim.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
