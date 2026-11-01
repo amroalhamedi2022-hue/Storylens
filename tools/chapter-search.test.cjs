@@ -119,4 +119,14 @@ for(const selector of ['body.theme-bauhaus-studio','.theme-bauhaus-studio .libra
  '.theme-bauhaus-studio .library .shelf .card','.theme-bauhaus-studio .reader.dark',
  '.lt-theme-bauhaus-studio .lt-theme-swatch','.reader .sentence.lt-search-target'])
  assert.ok(css.includes(selector),selector);
-console.log('PASS: bilingual chapter search, dynamic chapter cache, accessible paragraph jump and Bauhaus theme');
+// The visible search now excludes short works without destroying the source
+// catalog or changing the unfiltered compatibility API.
+assert.equal(search('secret map',40,true).length,0,'novel mode excludes a short story');
+const longChapters=Array.from({length:12},(_,index)=>({
+ title:'Volume '+(index+1),paragraphs:[{en:index===0?'A blue notebook began the long investigation.':'The investigation continued.',ar:'استمر التحقيق عبر فصول الرواية.'}]
+}));
+catalog.stories.push({id:'long-investigation',title:'The Long Investigation',chapters:longChapters});
+assert.equal(search('blue notebook',40,true).length,1,'novel mode searches full-length chapters');
+assert.equal(search('blue notebook',40,true)[0].storyId,'long-investigation');
+assert.equal(search('secret map').length,1,'legacy source search keeps saved short-story access');
+console.log('PASS: bilingual chapter search, novel-only UI search, dynamic chapter cache, accessible paragraph jump and Bauhaus theme');

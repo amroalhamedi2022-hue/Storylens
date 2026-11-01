@@ -92,3 +92,8 @@ a.match(touchSource,/pointercancel',releaseWaterPress/,'cancelled touches clean 
 a.match(touchSource,/Math\.min\(260,Math\.ceil/,'GPU work capped');
 a.match(css,/\.lt-novel-card\.lt-water-pressed \.lt-book-cover/,'water press feedback styles the cover');
 console.log('PASS: novel-first cover title, short-story exclusion, water-press lifecycle');
+
+// Keep the drawer compact: show only categories with full-length books.
+a.match(source,/catalog\.stories\.filter\(isFullLengthNovel\)/);
+a.match(source,/catalog\.genres\.filter\(genre=>genresWithNovels\.has\(genre\.id\)\)/);
+a.match(source,/searchChapters\(q,40,true\)/,'visible search returns only novels');

@@ -576,7 +576,7 @@ function foldChapterSearch(value){
   .replace(/ؤ/gu,'و').replace(/ئ/gu,'ي').replace(/ة/gu,'ه')
   .replace(/[’‘]/gu,"'").replace(/\s+/gu,' ').trim();
 }
-function searchChapters(query,limit=40){
+function searchChapters(query,limit=40,novelsOnly=false){
  const raw=String(query||'');
  if(raw.length>80)return [];
  const q=foldChapterSearch(raw);
@@ -608,6 +608,9 @@ function searchChapters(query,limit=40){
  const results=[];
  const cap=Math.max(1,Math.min(40,Number.isInteger(limit)?limit:40));
  for(const entry of chapterSearchIndex){
+  // The shelf and user-facing search share one long-form-only promise.
+  // Keep the legacy unfiltered API for old saved references and test fixtures.
+  if(novelsOnly&&!isFullLengthNovel(entry.story))continue;
   if(entry.searchEn.includes(q)||entry.searchAr.includes(q)){
    const story=entry.story,chapter=story.chapters[entry.chapter];
    const p=chapter.paragraphs[entry.paragraph];
@@ -665,12 +668,12 @@ function openChapterSearch(){
  const sheet=document.createElement('section');
  sheet.className='sheet lt-chapter-search';
  sheet.setAttribute('role','dialog');sheet.setAttribute('aria-modal','true');
- sheet.setAttribute('aria-label',rtl()?'بحث في نصوص القصص':'Search inside stories');
+ sheet.setAttribute('aria-label',rtl()?'بحث في نصوص الروايات':'Search inside novels');
  const heading=document.createElement('h2');
  heading.textContent=rtl()?'ابحث في النصوص الإنجليزية والعربية':'Search English and Arabic passages';
  sheet.appendChild(heading);
  const hint=document.createElement('p');hint.className='quiet';
- hint.textContent=rtl()?'نتائج من فصول القصص المحفوظة على الجهاز.':'Results from offline story chapters.';
+ hint.textContent=rtl()?'نتائج من فصول الروايات الموجودة على الجهاز.':'Results from offline novel chapters.';
  sheet.appendChild(hint);
  const input=document.createElement('input');input.type='search';input.maxLength=80;
  input.className='lt-chapter-query';
@@ -697,7 +700,7 @@ function openChapterSearch(){
   chapterSearchTimer=null;results.replaceChildren();
   const q=input.value.trim();
   if(q.length<2){status.textContent=rtl()?'اكتب حرفين على الأقل.':'Enter at least two characters.';return;}
-  const hits=searchChapters(q);
+  const hits=searchChapters(q,40,true);
   status.textContent=(rtl()?'نتائج مطابقة: ':'Matches: ')+hits.length+
    (hits.length===40?(rtl()?' (أول 40)':' (first 40)'):'');
   if(!hits.length)return;
@@ -851,7 +854,7 @@ function decorateLibrary(){
  if(chapterSearchLabel){
   // Keep the button OUTSIDE the <label> containing the title-search input.
   // Nested interactive controls inside a label break mobile focus and a11y.
-  const searchButton=addButton(section,rtl()?'⌕ ابحث داخل القصص':'⌕ Search story text',
+  const searchButton=addButton(section,rtl()?'⌕ ابحث داخل الروايات':'⌕ Search novel text',
     openChapterSearch,'secondary lt-chapter-search-open');
   chapterSearchLabel.after(searchButton);
  }
@@ -883,7 +886,14 @@ function decorateLibrary(){
  drawer.appendChild(title);
  const genres=document.createElement('nav');
  genres.className='lt-genre-list';genres.setAttribute('aria-label',rtl()?'أنواع القصص':'Story genres');
- const list=[{id:'all',ar:'الكل',en:'All stories'},{id:'arabic-originals',ar:'القصص العربية',en:'Arabic Stories'},...catalog.genres];
+ // Only offer categories containing a genuine long-form work. Other stories
+ // remain in the source for prior bookmarks, backups and saved vocabulary.
+ const novels=catalog.stories.filter(isFullLengthNovel);
+ const genresWithNovels=new Set(novels.map(story=>story.genre));
+ const hasArabicNovel=novels.some(story=>story.sourceLanguage==='ar');
+ const list=[{id:'all',ar:'جميع الروايات',en:'All novels'},
+  ...(hasArabicNovel?[{id:'arabic-originals',ar:'روايات عربية',en:'Arabic novels'}]:[]),
+  ...catalog.genres.filter(genre=>genresWithNovels.has(genre.id))];
  for(const genre of list){
   const button=addButton(genres,rtl()?genre.ar:genre.en,()=>{
    closeDrawer(false);
