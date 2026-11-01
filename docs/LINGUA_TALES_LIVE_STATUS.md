@@ -63,6 +63,17 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - New exact-head Android/Chromium CI **PENDING** at commit creation. Need inspect new images afterward; no device/120Hz, literary-content or signed-update claim.
 - Next: confirm visual screenshot and CI then continue period, source-anchored internal book plates and Android-device acceptance.
 
+### 2026-11-01 — LANG01 / RD02 / QA01: accessible reading focus on companion chapter changes
+- Staged on verified PR parent `661151785a3c5d5f7787b553ed8845fb8743d985`. The companion's old select/Next buttons are removed whenever the chapter DOM is rebuilt; without focus transfer, keyboard navigation and TalkBack's reading cursor may fall back to the page body.
+- The translated chapter heading now has stable `id="lt-translation-chapter-title" tabindex="-1"`. Immediately after each book/chapter render, focus moves to that heading with `preventScroll:true`, then the existing scroll-to-top is retained. Chapter text, translations, personal progress, original source location and app signing are untouched.
+- Extended exact production-source `tools/translation-window.test.cjs` to assert heading focus, no focus stealing on reselect, and navigation focus change; the existing actual Chromium `translation-37` fixture now asserts the real `document.activeElement` on chapter XIV and XXXVII.
+- New exact-HEAD CI **PENDING**, not physical TalkBack proof. Only publish after parent CI has succeeded; no new branch created.
+
+### 2026-11-01 — UX01 / QA01: correct full-cover pseudo-element geometry
+- Inspected old `index.html` styles for the historic cover. In addition to `display:none`, the legacy `.cover::before` explicitly sets `width:70px;height:70px`; the legacy `.cover::after` sets `height:47%`. A re-enabled pseudo-element without dimension resets would paint ONLY a small circle/partial border and could leave the baked book title visible.
+- Scoped fix forces the production ink mask to fill 100% of the cover and the decorative border to use the actual full inset, without filters or continuous animations. Extended the real Chromium phone/tablet fixture to verify rendered pseudo widths/heights against `cover.clientWidth/clientHeight`; static source test rejects regressions.
+- Combined with the separately pre-tested companion chapter heading focus fix (staged earlier), both based on branch parent `661151785a3c5d5f7787b553ed8845fb8743d985`. Node source-bound translation focus regression previously passed under V8. Full exact-head CI **PENDING**; visual screenshot review and real Android device proof OPEN.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

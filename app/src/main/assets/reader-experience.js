@@ -859,7 +859,8 @@ function ltRenderTranslationChapter(){
   :chapter.paragraphs.map(p=>'<p lang="ar" dir="rtl">'+escapeText(p.ar)+'</p>').join('');
  const title=sourceArabic?(story.titleEn||story.title):(story.titleAr||story.title);
  const chapterTitle=sourceArabic?(chapter.titleEn||chapter.title):(chapter.titleAr||chapter.title);
- $('root').innerHTML='<section class="arabic-page '+(state.dark?'dark ':'')+
+ const root=$('root');
+ root.innerHTML='<section class="arabic-page '+(state.dark?'dark ':'')+
   (sourceArabic?'lt-english-companion':'lt-arabic-companion')+'"><div class="arabic-inner">'+
   '<button type="button" class="secondary" onclick="backToReader()">'+returnLabel+'</button>'+
   '<h1 lang="'+sourceLang+'" dir="'+direction+'">'+escapeText(title)+'</h1>'+
@@ -873,7 +874,7 @@ function ltRenderTranslationChapter(){
   '<button type="button" class="secondary" onclick="ltTranslationChapter('+(ltTranslationIndex+1)+')"'+
   (ltTranslationIndex===story.chapters.length-1?' disabled':'')+'>'+nextLabel+'</button>'+
   '</nav>'+
-  '<h2 lang="'+sourceLang+'" dir="'+direction+'">'+escapeText(chapterTitle)+'</h2>'+
+  '<h2 id="lt-translation-chapter-title" tabindex="-1" lang="'+sourceLang+'" dir="'+direction+'">'+escapeText(chapterTitle)+'</h2>'+
   translated+
   '<nav class="lt-translation-bottom" aria-label="'+selectLabel+'">'+
   '<button type="button" class="secondary" onclick="ltTranslationChapter('+(ltTranslationIndex-1)+')"'+
@@ -882,6 +883,9 @@ function ltRenderTranslationChapter(){
   '<button type="button" class="primary" onclick="ltTranslationChapter('+(ltTranslationIndex+1)+')"'+
   (ltTranslationIndex===story.chapters.length-1?' disabled':'')+'>'+nextLabel+'</button>'+
   '</nav></div></section>';
+ // The old select/Next button is destroyed by this rerender; move the
+ // reading cursor to the NEW chapter heading for keyboard and TalkBack users.
+ root.querySelector?.('#lt-translation-chapter-title')?.focus({preventScroll:true});
  window.scrollTo(0,0);
 }
 window.ltTranslationChapter=function(index){

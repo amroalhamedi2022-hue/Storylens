@@ -259,6 +259,7 @@ tests["translation-37"] = r"""(async function(){
   check('chapter 14 source open',()=>state.page==='reader'&&state.chapter===13);
   fullTranslation();
   check('Arabic companion rendered',()=>state.page==='translation'&&!!document.querySelector('.lt-arabic-companion'));
+  check('initial chapter heading accessible',()=>document.activeElement?.id==='lt-translation-chapter-title');
   const panel=document.querySelector('.lt-arabic-companion');
   check('correct title',()=>panel.querySelector('h2').textContent===(book.chapters[13].titleAr||book.chapters[13].title));
   check('only source-aligned chapter 14 paragraphs',()=>panel.querySelectorAll('p[lang="ar"][dir="rtl"]').length===book.chapters[13].paragraphs.length&&
@@ -270,6 +271,8 @@ tests["translation-37"] = r"""(async function(){
   const last=document.querySelector('.lt-arabic-companion');
   check('last chapter replaced text',()=>last.querySelector('p[lang="ar"]').textContent===book.chapters[36].paragraphs[0].ar&&last.querySelector('p[lang="ar"]').textContent!==previous);
   check('last chapter bounded',()=>last.querySelector('.lt-translation-bottom button.primary').disabled===true);
+  check('changed chapter announces via focused heading',()=>document.activeElement?.id==='lt-translation-chapter-title'&&
+    document.activeElement?.textContent===(book.chapters[36].titleAr||book.chapters[36].title));
   check('reading progress untouched',()=>state.chapter===13&&get('chapter_'+id,-1)===13);
   backToReader();
   check('return to source chapter',()=>state.page==='reader'&&state.story?.id===id&&state.chapter===13);
@@ -363,11 +366,14 @@ tests["shelf-centered"] = r"""(function(){
   check('cover ink mask is ACTUALLY painted',()=>{
    const mask=cover&&getComputedStyle(cover,'::before');
    return mask?.display!=='none'&&mask?.content!=='none'&&
-      mask?.backgroundImage.includes('linear-gradient')&&mask?.zIndex==='1';
+      mask?.backgroundImage.includes('linear-gradient')&&mask?.zIndex==='1'&&
+      Math.abs(parseFloat(mask.width)-cover.clientWidth)<3&&
+      Math.abs(parseFloat(mask.height)-cover.clientHeight)<3;
   });
   check('cover archival frame is painted',()=>{
    const frame=cover&&getComputedStyle(cover,'::after');
-   return frame?.display!=='none'&&frame?.zIndex==='3';
+   return frame?.display!=='none'&&frame?.zIndex==='3'&&
+      parseFloat(frame.height)>=cover.clientHeight-14;
   });
  }catch(e){errors.push('runtime: '+e.message)}
  document.body.setAttribute('data-lt-shelf-qa',errors.length?'FAIL':'PASS');

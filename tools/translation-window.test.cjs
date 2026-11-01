@@ -7,7 +7,11 @@ const begin=source.indexOf('let ltTranslationBook=null,ltTranslationIndex=0;');
 const end=source.indexOf('\nrenderReader=function(){',begin);
 assert.ok(begin>0&&end>begin,'source-bound companion controller exists');
 let closed=0,originalCalls=0;const scrolls=[];
-const root={innerHTML:''};
+let headingFocuses=0;
+const root={innerHTML:'',querySelector(selector){
+ assert.equal(selector,'#lt-translation-chapter-title');
+ return {focus(options){assert.equal(options.preventScroll,true);headingFocuses++;}};
+}};
 const chapter=(index)=>({
  title:'English chapter '+(index+1),
  titleAr:'الفصل '+(index+1),
@@ -33,7 +37,8 @@ window.fullTranslation();
 assert.equal(state.page,'translation');
 assert.equal(closed,1);
 assert.equal(originalCalls,0,'full book is not built by the old renderer');
-assert.match(root.innerHTML,/<h2 lang="ar" dir="rtl">الفصل 14<\/h2>/);
+assert.match(root.innerHTML,/<h2 id="lt-translation-chapter-title" tabindex="-1" lang="ar" dir="rtl">الفصل 14<\/h2>/);
+assert.equal(headingFocuses,1,'opening the companion focuses its true chapter heading');
 assert.match(root.innerHTML,/الترجمة العربية 14/);
 assert.doesNotMatch(root.innerHTML,/الترجمة العربية 13/);
 assert.doesNotMatch(root.innerHTML,/English source 37/);
@@ -46,11 +51,13 @@ assert.match(root.innerHTML,/ltTranslationChapter\(14\)/);
 const sameMarkup=root.innerHTML;
 window.ltTranslationChapter(13);
 assert.equal(root.innerHTML,sameMarkup,'reselecting the same chapter does not remount text');
+assert.equal(headingFocuses,1,'no-op chapter selection cannot steal focus');
 assert.equal((root.innerHTML.match(/class="lt-translation-bottom"/g)||[]).length,1,
  'one accessible bottom navigation remains after translated paragraphs');
 assert.match(root.innerHTML,/<nav class="lt-translation-bottom"[\s\S]*ltTranslationChapter\(14\)/);
 window.ltTranslationChapter(36);
 assert.match(root.innerHTML,/الترجمة العربية 37/);
+assert.equal(headingFocuses,2,'chapter switch moves focus to newly mounted heading');
 assert.match(root.innerHTML,/ltTranslationChapter\(37\)" disabled/,'last chapter has no phantom next');
 assert.equal(state.chapter,13,'translation browsing cannot overwrite original reading progress');
 const unchanged=root.innerHTML;

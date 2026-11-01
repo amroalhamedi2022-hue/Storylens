@@ -108,8 +108,12 @@ a.match(css,/#051023ec 72%,#061525 85%,#061525 100%/,
 a.match(css,/-webkit-line-clamp:3/,'title stays within readable lines');
 a.match(css,/\.library \.lt-book-cover\.art::before\{\s*display:block!important/,
  'CSS must reinstate cover ink mask even when .cover.art has display:none');
-a.match(css,/\.library \.lt-book-cover\.art::after\{display:block!important/,
- 'cover decorative border is visible over the scanned art');
+a.match(css,/\.library \.lt-book-cover\.art::after\{/,
+ 'cover decorative border must exist');
+a.match(css,/width:100%!important;height:100%!important/,
+ 'ink mask overrides obsolete 70px legacy circle dimensions');
+a.match(css,/width:auto!important;height:auto!important;inset:5px!important/,
+ 'archival border overrides legacy bottom half-height');
 a.match(css,/prefers-reduced-motion:reduce/);
 const touchSource=read('app/src/main/assets/lt-tap-feedback.js');
 a.match(touchSource,/heldPointers=new Map\(\)/,'water press tracks finger id');
