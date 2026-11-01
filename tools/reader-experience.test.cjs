@@ -22,7 +22,7 @@ const footer = {insertAdjacentElement(position, panel) {assert.equal(position, '
 const sheet = {querySelector(selector) {return selector === 'footer' ? footer : null;}, appendChild(panel) {readerPanels.push(panel.innerHTML);}};
 const sentence = {
  textContent: 'First sentence.', dataset: {i: '0'}, style:{},
- matches(){return false;}, closest(){return null;},
+ matches(){return false;}, closest(){return null;}, getBoundingClientRect(){return {top:143};},
  setAttribute(name, value) {sentenceAttributes[name] = value; if (name === 'tabindex') accessibleSentences++; if (name === 'aria-label') throw new Error('aria-label must not mask the English sentence'); if (name === 'aria-description') sentenceDescriptions.push(value);},
  addEventListener(name, handler) {if (name === 'contextmenu') {contextMenuHandlers++; contextHandler = handler;} if (name === 'keydown') keyboardHandler = handler;}, 
  insertAdjacentElement(position, node) {assert.equal(position, 'afterend'); translations.push(node); this.nextElementSibling = node;}, 
@@ -90,6 +90,12 @@ contextHandler({preventDefault() {},stopImmediatePropagation() {}});
 assert.equal(translations.at(-1).textContent, 'الجملة الأولى.', 'translation content is unchanged');
 assert.equal(translations.at(-1).attributes.lang, 'ar', 'revealed translation is spoken in Arabic');
 assert.equal(translations.at(-1).attributes.dir, 'rtl', 'revealed translation keeps RTL');
+// Re-pagination only runs when there are real measured paper pages.
+const originalQuerySelector=document.querySelector;
+const repaginationAnchors=[];
+document.querySelector=selector=>selector==='.reader .reading-width'
+ ? {dataset:{ltPaged:'1'}}:originalQuerySelector(selector);
+sandbox.window.LinguaReflowReader=anchor=>repaginationAnchors.push(anchor);
 // A keyboard-focused sentence must reveal exactly the same Arabic text as
 // long-press, and Enter/Space must toggle without hijacking child controls.
 assert.equal(typeof keyboardHandler, 'function', 'keyboard handler bound to focused sentence');
@@ -98,10 +104,16 @@ const space=keyEvent(' ');
 keyboardHandler(space);
 assert.equal(space.prevented,true,'Space prevents page scrolling');
 assert.equal(sentence.nextElementSibling,null,'Space hides an existing translation');
+assert.deepEqual(repaginationAnchors.map(x=>[x.paragraph,x.viewportOffset]),[[0,143]],
+ 'Hiding an in-page companion repaginates once at the original source paragraph');
 const enter=keyEvent('Enter');
 keyboardHandler(enter);
 assert.equal(translations.at(-1).textContent,'الجملة الأولى.','Enter restores exact Arabic translation');
 assert.equal(translations.at(-1).attributes.lang,'ar','keyboard translation has Arabic language tag');
+assert.deepEqual(repaginationAnchors.map(x=>[x.paragraph,x.viewportOffset]),[[0,143],[0,143]],
+ 'Showing a contextual companion also repaginates exactly once');
+document.querySelector=originalQuerySelector;
+delete sandbox.window.LinguaReflowReader;
 // Theme/font re-renders replace the reader DOM. A revealed Arabic sentence
 // must be reconstructed from the original chapter, without storing it on disk.
 sentence.nextElementSibling=null;

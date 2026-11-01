@@ -1015,6 +1015,17 @@ renderReader=function(){
   const sentenceIndex=Number(p.dataset.i);
   const source=state.story.chapters[state.chapter]?.paragraphs?.[sentenceIndex];
   const key=revealKey();
+  // A revealed companion can enlarge the source paragraph after the sheet was
+  // measured. Reflow only on actual user toggle, not every frame or scroll;
+  // keep the same paragraph under the eye and its illustration together.
+  const repaginateRevealedText=()=>{
+   if(document.querySelector('.reader .reading-width')?.dataset?.ltPaged!=='1')return;
+   const offset=p.getBoundingClientRect?.()?.top;
+   if(!Number.isInteger(sentenceIndex)||sentenceIndex<0||
+      !Number.isFinite(offset)||typeof window.LinguaReflowReader!=='function')return;
+   window.LinguaReflowReader({paragraph:sentenceIndex,
+    viewportOffset:Math.max(-4096,Math.min(4096,offset))});
+  };
   const showTranslation=()=>{
    if(!source||p.nextElementSibling?.classList?.contains('stl-sentence-translation'))return;
    const translation=document.createElement('p');
@@ -1032,6 +1043,7 @@ renderReader=function(){
    if(old?.classList?.contains('stl-sentence-translation')){
     old.remove();
     revealedByChapter.get(key)?.delete(sentenceIndex);
+    repaginateRevealedText();
     return;
    }
    // Prevent unbounded retained sentence state on very large imported books.
@@ -1039,6 +1051,7 @@ renderReader=function(){
    if(shown.size>=200)shown.delete(shown.values().next().value);
    shown.add(sentenceIndex);
    showTranslation();
+   repaginateRevealedText();
   };
   p.addEventListener('contextmenu',toggleSentenceTranslation,true);
   // A focusable sentence must also be operable without a mouse or long-press.

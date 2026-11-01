@@ -94,3 +94,9 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 
 ### 2026-11-01 — QA01 second-stage comment token fix
 - Actions 41285595654 on 0321499f FAIL same CSS GPU assertion because initial match started **inside** the beginning CSS comment; replacing full /* ... */ comments could not strip a comment prefix already sliced off. Confirmed reproduction in actual production CSS: first-match old included 'scrolling animation:', corrected slice starts from the preceding /* and removes comments fully; verified corrected regex returns ZERO forbidden declarations on existing styles. All actual CSS property checks remain enabled. Next exact-HEAD CI PENDING.
+
+### 2026-11-01 — RD02/DICT01: repaginate after individual bilingual reveal/hide
+- Started from HEAD `838e8ee6a372c00d5d6c36f96fd662590f610bf9`, verified Actions 41285696545 SUCCESS and inspected recent concurrent chapters. Retained all staged real literary sources unchanged.
+- `reader-experience.js` now remeasures actual paper pages whenever a user reveals OR hides a contextual Arabic/English paragraph companion, using existing `LinguaReflowReader` and a bounded semantic source-paragraph viewport offset. Previously extra translation lines could overflow an already measured page and visually separate in-prose illustration and source paragraph. Runs **only for an actual paginated reader**, not in a scroll loop or nonpaged view.
+- `tools/reader-experience.test.cjs` now verifies precisely one repagination for each keyboard toggle at the original paragraph and preserved viewport, plus existing tests for text/direction and re-render state.
+- New exact-head Actions **PENDING**. Real Android device 120Hz, artistic review, staged book translations and final signed update remain NOT TESTED/OPEN.
