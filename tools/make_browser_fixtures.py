@@ -202,10 +202,10 @@ tests["lazy-content"] = r"""(async function(){
   if(loadedBookFiles().length)errors.push('dictionary request loaded book chapters');
   await window.LinguaContentLoader.ensureStory(id);
   if(story.chapters.length!==37)errors.push('book loader did not produce all 37 chapters');
-  if(!art[id+'_36'])errors.push('offline final-chapter illustration was not attached');
+  if(art[id+'_36'])errors.push('unsourced synthetic final-chapter vector must not be generated');
   if(loadedBookFiles().length!==36)errors.push('expected all 36 ordered chapter scripts after opening the book; got '+loadedBookFiles().length);
-  if(loadedArtFiles().length!==4)errors.push('expected four deferred editorial-art scripts; got '+loadedArtFiles().length);
-  if(loadedAssets().length!==41)errors.push('expected one dictionary plus 40 book/art assets; got '+loadedAssets().length);
+  if(loadedArtFiles().length!==1||loadedArtFiles()[0]!=='editorial-art.js')errors.push('expected only the shared legacy art engine; got '+loadedArtFiles().join(','));
+  if(loadedAssets().length!==38)errors.push('expected one dictionary plus 37 offline book/art assets; got '+loadedAssets().length);
  }catch(e){errors.push('loader exception: '+e.message)}
  document.body.setAttribute('data-lt-lazy-qa',errors.length?'FAIL':'PASS');
  document.body.setAttribute('data-lt-lazy-qa-errors',errors.join(' | '));

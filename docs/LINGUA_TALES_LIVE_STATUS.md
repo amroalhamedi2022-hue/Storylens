@@ -165,6 +165,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - The regression now compares removed manifest nodes to the actual declared `bookAssets.length + dictionaryAssets.length`, preserving truthful asynchronous loading checks; also normalizes a cross-realm JS Array before Node strict equality in the legacy-cover registry test.
 - No production code, original book, art asset, stored data, app identity or signer changed. New exact SHA CI PENDING.
 
+### 2026-11-01 — QA01: Chromium's deferred-loader gate now rejects discarded synthetic chapter art
+- Parent `5eb10e2b4d7fbf3d3f982eff1dabf084c733c1c9` exact-head Actions 41345024955 **FAILED only at new early Chromium deferred-content regression**. Node, literary content, identity and Android APK build already passed. The browser fixture wrongly required a generated `art[Verne_36]` SVG, four art scripts and 41 total assets; production deliberately removed three unused synthetic scripts to comply with the user's original-engraving-only policy.
+- The browser now positively rejects a generated final-chapter synthetic vector, asserts one shared old-story art engine and exactly 38 loaded assets including FreeDict (37 book/art + dictionary). The original source payload, real period images and user data remain unchanged.
+- New exact SHA CI PENDING; real Pad 5 and original signing gate still OPEN.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
