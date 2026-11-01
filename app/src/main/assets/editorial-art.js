@@ -561,7 +561,14 @@ function prairieSailsScene(){
 
 global.StoryLensMakeEditorialArt=function(stories){
  const assets={};
- for(const s of stories)for(let c=0;c<s.chapters.length;c++)assets[s.id+'_'+c]=scene(s,c);
+ for(const s of stories){
+  // Verified source-era engravings, not manufactured illustrations, are the
+  // only approved images for the complete historical Verne novel. Never
+  // allocate 37 large percent-encoded SVG scenes for chapters that hide them.
+  // Retain the legacy source module for saved older stories and old tests.
+  if(s.id==='around-the-world-in-eighty-days-towle')continue;
+  for(let c=0;c<s.chapters.length;c++)assets[s.id+'_'+c]=scene(s,c);
+ }
  return assets;
 };
 })(window);

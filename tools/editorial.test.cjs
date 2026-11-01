@@ -52,4 +52,18 @@ assert.ok(paragraphs>=640 && chapters>=90,'original core, eighteen editorial sto
 assert.equal(artCount,stories.reduce((sum,story)=>sum+story.chapters.length,0),'every editorial and novella chapter has a local illustration');
 assert.ok(html.includes('catalog.stories.push(...window.StoryLensEditorialStories)'),'stories registered before library render');
 assert.ok(html.includes('Object.assign(art,window.StoryLensMakeEditorialArt'),'art registered');
+
+// Real combined registry contract: archived full Verne book cannot create huge
+// synthetic SVG data URLs, while previously saved editorial stories keep art.
+const mixed=context.window.StoryLensMakeEditorialArt([
+ {id:'around-the-world-in-eighty-days-towle',genre:'historical',
+  chapters:Array.from({length:37},(_,i)=>({title:'Chapter '+(i+1)}))},
+ {id:'kept-editorial-book',genre:'mystery',
+  chapters:[{title:'Saved Chapter'}],title:'Saved Chapter'}
+]);
+assert.equal(Object.keys(mixed).filter(k=>k.startsWith('around-the-world-in-eighty-days-towle_')).length,0,
+ '37 unnecessary synthetic novel SVGs must not be generated');
+assert.ok(mixed['kept-editorial-book_0']?.startsWith('data:image/svg+xml'),
+ 'legacy saved-book art must remain available');
+
 console.log(JSON.stringify({result:'PASS',totalStories:all.length,totalChapters:chapters,totalBilingualParagraphs:paragraphs,illustratedNewChapters:artCount,perGenre:Object.fromEntries(genres)},null,2));

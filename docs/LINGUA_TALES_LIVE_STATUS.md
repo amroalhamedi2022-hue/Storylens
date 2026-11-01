@@ -185,6 +185,12 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - The visible unreviewed-Arabic / Towle-edition notice now uses semantic `aside role=note` instead of a `p` element, so it cannot be mistaken for source-aligned translated prose. Added an exact-source Node regression. No actual English/Arabic story paragraph, artwork, user progress, metadata or app signing changed.
 - New exact-head CI PENDING; real Xiaomi/phone acceptance and independent literary review remain OPEN.
 
+### 2026-11-01 — PERF01 / UX04: stop allocating 37 rejected synthetic scenes for complete Verne novel
+- Latest parent PR HEAD verified `77203caa87c583765878b20c18edf79fe04275bd`; exact HEAD workflow 41346305871 **SUCCESS** with Node, Android and Chromium.
+- The reader already shows archival WebP scans at five source-matched chapter positions and suppresses synthetic drawings elsewhere, but `editorial-art.js` still assembled 37 huge percent-encoded SVG scenes for the loaded classic in memory. Its base art registry now **skips Verne** while preserving every original editorial/novella art scene used by existing saved users. No chapter paragraph, translation, bitmap, storage key or package name changed.
+- Updated `tools/verne-towle.test.cjs` to prohibit the four historically rejected pseudo-art backgrounds, and added a mixed 37-chapter book + saved editorial-story regression in `tools/editorial.test.cjs`: there must be zero fabricated Verne images while the old story still gets its own offline artwork.
+- Source-bound local VM evaluation and new full CI pending at this checkpoint. Generated large SVG content remains in archived source for tests/backward compatibility; the improvement is runtime allocations, not APK bytes or measured device FPS. Next: actual CI and physical phone/tablet profiling; complete books/edited bilingual translations remain OPEN.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

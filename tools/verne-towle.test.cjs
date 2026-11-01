@@ -84,22 +84,14 @@ for(const term of story.terms){
  assert.ok((english+' '+english2+' '+english3+' '+english4).toLowerCase().includes(term.term.toLowerCase()),'term really occurs: '+term.term);
  assert.ok(term.literal&&term.context&&term.note,'edited literal/context/note');
 }
-const scene=context.window.StoryLensMakeEditorialArt(stories)[story.id+'_0'];
-assert.ok(scene?.startsWith('data:image/svg+xml;charset=utf-8,'));
-assert.match(decodeURIComponent(scene),/Victorian London street/);
-assert.match(decodeURIComponent(scene),/<svg/);
-const secondScene=context.window.StoryLensMakeEditorialArt(stories)[story.id+'_1'];
-assert.ok(secondScene?.startsWith('data:image/svg+xml;charset=utf-8,'));
-assert.match(decodeURIComponent(secondScene),/Victorian Saville Row interior/);
-assert.notEqual(scene,secondScene,'new chapter must have its own contextual illustration');
-const thirdScene=context.window.StoryLensMakeEditorialArt(stories)[story.id+'_2'];
-assert.ok(thirdScene?.startsWith('data:image/svg+xml;charset=utf-8,'));
-assert.match(decodeURIComponent(thirdScene),/Victorian Reform Club card table/);
-assert.notEqual(thirdScene,secondScene);
-const fourthScene=context.window.StoryLensMakeEditorialArt(stories)[story.id+'_3'];
-assert.ok(fourthScene?.startsWith('data:image/svg+xml;charset=utf-8,'));
-assert.match(decodeURIComponent(fourthScene),/Charing Cross railway platform/);
-assert.notEqual(fourthScene,thirdScene);
+// The historical classic now uses five authentic local archival engravings.
+const periodArt=context.window.StoryLensMakeEditorialArt(stories);
+for(let ch=0;ch<story.chapters.length;ch++){
+ assert.equal(periodArt[story.id+'_'+ch],undefined,
+  'cannot generate fake SVG art for a source-backed classic: chapter '+ch);
+}
+assert.ok(read('reader-experience.js').includes('verne-route-map-1872.webp'),
+ 'chapter scenes use the source-verified offline archive');
 const shell=read('lingua-shell.js'),css=read('lingua-shell.css'),backup=read('data-backup.js');
 assert.ok(shell.includes("'saville-clockwork'"));
 assert.ok(css.includes('body.theme-saville-clockwork'));
@@ -113,4 +105,4 @@ assert.ok(backup.includes("'reform-club-brass'"));
 assert.ok(shell.includes("'midnight-platform'"));
 assert.ok(css.includes('body.theme-midnight-platform'));
 assert.ok(backup.includes("'midnight-platform'"));
-console.log(JSON.stringify({result:'PASS',chapters:4,passages:passages.length+chapter2.length+chapter3.length+chapter4.length,englishWords:words+words2+english3.split(/\s+/).length+english4.split(/\s+/).length,contextualTerms:story.terms.length,illustrations:4,editorialReview:'NOT TESTED',device:'NOT TESTED'},null,2));
+console.log(JSON.stringify({result:'PASS',chapters:4,passages:passages.length+chapter2.length+chapter3.length+chapter4.length,englishWords:words+words2+english3.split(/\s+/).length+english4.split(/\s+/).length,contextualTerms:story.terms.length,illustrations:'verified historical scans only',editorialReview:'NOT TESTED',device:'NOT TESTED'},null,2));
