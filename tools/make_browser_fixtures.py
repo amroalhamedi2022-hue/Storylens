@@ -281,12 +281,14 @@ tests["translation-37"] = r"""(async function(){
 tests["paper-fold-browser"] = r"""(async function(){
  const errors=[];
  const check=(name,fn)=>{try{if(!fn())errors.push(name)}catch(e){errors.push(name+': '+e.message)}};
- const id='the-salt-meridian';
+ document.body.setAttribute('data-lt-paper-stage','begin');
+ const id='last-passenger';
  try{
-  await window.LinguaContentLoader.ensureEditorialArt();
+  // This base catalog book opens synchronously: keep the pointer test
+  // independent from the unrelated deferred illustration loader.
   put('chapter_'+id,0);
   openStory(id);
-  await new Promise(resolve=>setTimeout(resolve,140));
+  await new Promise(resolve=>setTimeout(resolve,80));
   check('full reader opens',()=>state.page==='reader'&&state.story?.id===id);
   async function holdAndTurn(dir){
    document.documentElement.dir=dir;
@@ -296,7 +298,8 @@ tests["paper-fold-browser"] = r"""(async function(){
    put('readpage_'+id+'_0',0);
    put('readpage_anchor_'+id+'_0',0);
    renderReader();
-   await new Promise(resolve=>requestAnimationFrame(resolve));
+   document.body.setAttribute('data-lt-paper-stage',dir+'-layout');
+   await new Promise(resolve=>setTimeout(resolve,60));
    const box=document.querySelector('.reader #sentences');
    const pages=box?[...box.querySelectorAll('.lt-book-page')]:[];
    check(dir+' multiple paper pages',()=>pages.length>=2);
@@ -314,7 +317,8 @@ tests["paper-fold-browser"] = r"""(async function(){
    }));
    pointer('pointerdown',start);
    pointer('pointermove',finish);
-   await new Promise(resolve=>requestAnimationFrame(resolve));
+   document.body.setAttribute('data-lt-paper-stage',dir+'-held');
+   await new Promise(resolve=>setTimeout(resolve,80));
    check(dir+' live crease follows hold',()=>box.classList.contains('lt-paper-grabbing')&&
     box.dataset.ltFoldEdge===(dir==='rtl'?'left':'right'));
    check(dir+' actual next page revealed',()=>!!box.querySelector('.lt-book-page.lt-paper-underlay'));
@@ -323,6 +327,7 @@ tests["paper-fold-browser"] = r"""(async function(){
     return !!moving&&getComputedStyle(moving).clipPath.includes('polygon(');
    });
    pointer('pointerup',finish);
+   document.body.setAttribute('data-lt-paper-stage',dir+'-released');
    await new Promise(resolve=>setTimeout(resolve,90));
    check(dir+' fold cleans up',()=>!box.classList.contains('lt-paper-grabbing')&&
     !box.querySelector('.lt-paper-reverse'));
@@ -332,6 +337,7 @@ tests["paper-fold-browser"] = r"""(async function(){
   await holdAndTurn('rtl');
   await holdAndTurn('ltr');
  }catch(e){errors.push('runtime: '+e.message)}
+ document.body.setAttribute('data-lt-paper-stage','complete');
  document.body.setAttribute('data-lt-paper-qa',errors.length?'FAIL':'PASS');
  document.body.setAttribute('data-lt-paper-errors',errors.join(' | '));
 })();""";

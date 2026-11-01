@@ -45,6 +45,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Injects no purchased images and does not change user progress keys, narrative, or runtime code. Exact browser CI and physical tablet/finger visuals **PENDING/NOT TESTED** at this checkpoint.
 - New browser CI must pass before QA01 can be recorded green. Visual 120Hz and actual finger touch need physical device acceptance.
 
+### 2026-11-01 — QA01: isolate real-browser paper drag from optional art and ensure diagnostics
+- Exact-head GitHub Actions 41309295773 on `b3a13eda280364f9bba4afadb5a5ab42ecaf7059` **FAILED** at `Browser render smoke and screenshot artifacts` after the earlier Node/Android/asset stages passed. The paper-fold fixture returned no PASS marker and no structured error attribute, so **gesture acceptance is NOT VERIFIED**; no assertion about production failure is justified.
+- Replaced dependency on asynchronous editorial-art registration with the base, synchronous 10-paragraph `last-passenger` reader. Replaced unbounded animation-frame awaits with bounded timers (while leaving the production rAF drawing path intact). Added `data-lt-paper-stage` at start/layout/held/released/complete and prints it on CI failure to distinguish not-executed from assertion failures.
+- New exact SHA CI PENDING; if the browser reports an actual curved-page or commit failure, investigate production code rather than weakening requirements. Physical touchscreen/120Hz still OPEN.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
