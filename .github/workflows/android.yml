@@ -51,6 +51,7 @@ jobs:
           python3 tools/validate_catalog.py
           node tools/literature-originals.test.cjs
           node tools/literature-sci-fi.test.cjs
+          node tools/literature-frankenstein.test.cjs
           python3 tools/check_js.py
           python3 tools/test_lingua_launcher.py
           python3 tools/test_lingua_audio_focus.py

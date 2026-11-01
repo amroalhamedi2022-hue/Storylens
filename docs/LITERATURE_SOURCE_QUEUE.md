@@ -54,3 +54,7 @@ ID, work/title/categories, author and **original language**; exact complete edit
 ## 2026-11-01 — Antique illustration intake (visual source references, not packaged)
 
 Three historically grounded archives and per-scan rights/scene-matching conditions are tracked in `docs/literature/HISTORIC_ILLUSTRATION_SOURCES.md`: 1310 illustrated Kalila Arabic manuscript (Library of Congress), 1887 A Study in Scarlet engravings (D. H. Friston, Wikimedia), 1912 The Lost World drawings (Harry Rountree, Strand). Period-style lightweight CSS book-plate framing is in production but authentic visual asset selection and licensing are **still open**.
+
+## 2026-11-01 — Full Gothic science/horror classic staged (NOT published)
+
+**Frankenstein; or, The Modern Prometheus** by Mary Shelley, original English novel (1818), from Standard Ebooks pinned Git source `3909a2b9d956377e797e235562cd237d3667fa9b` at https://standardebooks.org/ebooks/mary-shelley/frankenstein . Original source **four framing letters and all 24 chapters** are stored verbatim in `docs/literature/staging/frankenstein/`. Each of 28 XHTML files has exact upstream Git blob hash/size pinned in the manifest and checked in CI via `tools/literature-frankenstein.test.cjs`. This is **source acquisition, not publication**: complete natural/contextual Arabic, independent editorial approval, art/translation/territorial rights and device acceptance still open; book not in APK. Broadens genres to historical gothic horror/early philosophical science fiction without inventing fiction.
