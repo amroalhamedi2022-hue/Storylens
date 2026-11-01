@@ -359,7 +359,16 @@ tests["shelf-centered"] = r"""(function(){
     title.getBoundingClientRect().left>=cover.getBoundingClientRect().left&&
     title.getBoundingClientRect().right<=cover.getBoundingClientRect().right&&
     title.scrollHeight<=title.clientHeight+2);
-  check('cover has ink mask',()=>getComputedStyle(cover,'::before').backgroundImage.includes('linear-gradient'));
+  check('original cover still has local art',()=>cover?.classList.contains('art')===true);
+  check('cover ink mask is ACTUALLY painted',()=>{
+   const mask=cover&&getComputedStyle(cover,'::before');
+   return mask?.display!=='none'&&mask?.content!=='none'&&
+      mask?.backgroundImage.includes('linear-gradient')&&mask?.zIndex==='1';
+  });
+  check('cover archival frame is painted',()=>{
+   const frame=cover&&getComputedStyle(cover,'::after');
+   return frame?.display!=='none'&&frame?.zIndex==='3';
+  });
  }catch(e){errors.push('runtime: '+e.message)}
  document.body.setAttribute('data-lt-shelf-qa',errors.length?'FAIL':'PASS');
  document.body.setAttribute('data-lt-shelf-errors',errors.join(' | '));

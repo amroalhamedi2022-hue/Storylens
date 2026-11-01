@@ -106,6 +106,10 @@ a.match(css,/\.library \.shelf\.lt-novel-shelf \.lt-novel-card\{\s*width:100%!im
 a.match(css,/#051023ec 72%,#061525 85%,#061525 100%/,
  'bottom of historic cover hides duplicate baked title');
 a.match(css,/-webkit-line-clamp:3/,'title stays within readable lines');
+a.match(css,/\.library \.lt-book-cover\.art::before\{\s*display:block!important/,
+ 'CSS must reinstate cover ink mask even when .cover.art has display:none');
+a.match(css,/\.library \.lt-book-cover\.art::after\{display:block!important/,
+ 'cover decorative border is visible over the scanned art');
 a.match(css,/prefers-reduced-motion:reduce/);
 const touchSource=read('app/src/main/assets/lt-tap-feedback.js');
 a.match(touchSource,/heldPointers=new Map\(\)/,'water press tracks finger id');

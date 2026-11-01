@@ -56,6 +56,13 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Added documented historic Verne illustrator provenance leads in source queue and illustration guide, **NOT claiming that the candidate scans are already shipped**.
 - New full CI PENDING; screenshots must be inspected after build. Earlier real RTL/LTR paper-fold browser CI 41309609823 **FAILED** at visual crease checks while its actual release/turn assertions passed; handled in the next code batch.
 
+### 2026-11-01 — UX01 / QA01: remove duplicate historical cover lettering from actual Chromium screenshots
+- Parent HEAD inspected: `8b3bf79bd184ea5ef9a59b853ba1eca9cae6b9d0`; its exact-HEAD Android/Node/Chromium run **41310500799 SUCCESS**. Real downloaded artifact `StoryLens-UI-Screenshots` was examined at 460x860 and 1280x840; it still shows TWO overlapping text layers on the Verne cover, despite passing the prior simplistic browser check.
+- Root cause: base `index.html` declares `.cover.art:before,.cover.art:after{display:none}`. The later stylesheet had supplied an ink-mask background but **never restored display**, so computed background tests passed while no overlay was painted. Scoped new production CSS `.library .lt-book-cover.art::before/after` explicitly restores both pseudo-elements; the ink mask hides baked text only in the bottom cover band, while the real, accessible story title stays live text on top.
+- Extended exact asset/source regression and the real Chromium phone/tablet shelf fixture to assert computed pseudo-element `display`, `content`, `backgroundImage`, `zIndex` and authentic local `art` class; avoids future false-positive screenshots.
+- New exact-head Android/Chromium CI **PENDING** at commit creation. Need inspect new images afterward; no device/120Hz, literary-content or signed-update claim.
+- Next: confirm visual screenshot and CI then continue period, source-anchored internal book plates and Android-device acceptance.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

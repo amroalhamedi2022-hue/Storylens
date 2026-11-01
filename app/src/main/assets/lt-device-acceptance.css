@@ -300,3 +300,15 @@ button.lt-water-pressed,.lt-theme-choice.lt-water-pressed{
  font-family:var(--lt-ar-font,'Noto Naskh Arabic',system-ui),serif!important;
  line-height:1.5!important;max-height:4.5em!important;
 }
+
+/* UX01: the original .cover.art:before/:after rule sets display:none;
+   force the actual book ink-mask and period border back into the paint tree.
+   Without this, the SVG's baked-in title overlaps the accessible DOM title. */
+.library .lt-book-cover.art::before{
+ display:block!important;
+ content:""!important;
+ z-index:1!important;
+ background:linear-gradient(90deg,#02091352 0,transparent 9%),
+ linear-gradient(180deg,transparent 0%,transparent 69%,#071625d4 78%,#061525 85%,#061525 100%)!important;
+}
+.library .lt-book-cover.art::after{display:block!important;content:""!important}
