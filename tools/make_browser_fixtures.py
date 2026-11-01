@@ -424,6 +424,23 @@ tests["historic-verne-plates"] = r"""(async function(){
    // owns the real paragraph placement and local-only DOM wiring.
    check('chapter '+item.index+' image remains lazy',picture?.loading==='lazy'&&
      picture?.decoding==='async');
+   // Real Chromium must show the actual ARCHIVED local plate, not just have a
+   // passing JS stub: the image viewer must preserve its artwork and citation.
+   const scrollBefore=document.body.style.overflow;
+   picture?.click();
+   const viewer=document.querySelector('.lt-art-inspection-backdrop');
+   check('chapter '+item.index+' historic inspection opens',!!viewer);
+   check('chapter '+item.index+' inspection stays offline',
+    viewer?.querySelector('figure img')?.getAttribute('src')===item.src);
+   check('chapter '+item.index+' inspection retains image credit',
+    viewer?.querySelector('figcaption')?.textContent.trim()===
+      figure?.querySelector('figcaption')?.textContent.trim());
+   check('chapter '+item.index+' inspection disables background scroll',
+    document.body.style.overflow==='hidden');
+   viewer?.querySelector('.lt-art-inspection-close')?.click();
+   check('chapter '+item.index+' closes inspection without losing reader',
+    !document.querySelector('.lt-art-inspection-backdrop')&&
+      state.page==='reader'&&document.body.style.overflow===scrollBefore);
    const realHero=document.querySelector('.reader .reader-hero');
    check('chapter '+item.index+' top banner uses the same historic scan',
     realHero?.classList.contains('lt-historic-hero')&&realHero.style.backgroundImage.includes(item.src));
@@ -442,6 +459,15 @@ tests["historic-verne-plates"] = r"""(async function(){
     companionImage?.getAttribute('src')===item.src&&!!companionImage?.alt);
    check('chapter '+item.index+' translated plate keeps lazy decoding',
     companionImage?.loading==='lazy'&&companionImage?.decoding==='async');
+   companionImage?.click();
+   const companionViewer=document.querySelector('.lt-art-inspection-backdrop');
+   check('chapter '+item.index+' companion can inspect original plate',
+    companionViewer?.querySelector('figure img')?.getAttribute('src')===item.src);
+   companionViewer?.dispatchEvent(new KeyboardEvent('keydown',{
+    key:'Escape',bubbles:true,cancelable:true}));
+   check('chapter '+item.index+' Escape returns to translated chapter',
+    !document.querySelector('.lt-art-inspection-backdrop')&&
+      state.page==='translation');
    check('chapter '+item.index+' companion retains full prose',
     document.querySelectorAll('.lt-arabic-companion p[lang="ar"]').length===
       catalog.stories.find(s=>s.id===id).chapters[item.index].paragraphs.length);
