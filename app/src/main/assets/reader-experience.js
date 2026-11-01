@@ -770,8 +770,9 @@ function ltBuiltInChapterScene(chapter,sentenceCount){
 }
 // Keep complete-translation mode genuinely bilingual for Arabic originals:
  // English contextual companion instead of repeating the Arabic source.
+ if(typeof fullTranslation==='function'){
  const originalFullTranslation=fullTranslation;
- fullTranslation=function(){
+ window.fullTranslation=function(){
   if(state.story?.sourceLanguage!=='ar')return originalFullTranslation();
   closeSheet();
   state.page='translation';
@@ -787,6 +788,7 @@ function ltBuiltInChapterScene(chapter,sentenceCount){
    '</div></section>';
   window.scrollTo(0,0);
  };
+ }
 
 renderReader=function(){
  originalReader();
