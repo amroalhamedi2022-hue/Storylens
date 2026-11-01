@@ -112,7 +112,7 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
  const h=makeHarness();
  assert.equal(h.window.LinguaContentLoader.bookAssetCount,37);
  assert.equal(h.window.LinguaContentLoader.dictionaryAssetCount,1);
- assert.equal(h.removed.length,41,'inert manifest nodes are removed after their paths are captured');
+ assert.equal(h.removed.length,bookAssets.length+dictionaryAssets.length,'all inert declared manifests are removed without assuming obsolete synthetic scripts');
  h.window.openStory('the-salt-meridian');
  assert.deepEqual(h.opened,['the-salt-meridian'],'unrelated short stories still open synchronously');
  assert.equal(h.attempted.length,0,'neither payload is loaded during startup or unrelated story opens');
@@ -228,7 +228,7 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
  assert.equal(new Set(overlap.attempted).size,overlap.attempted.length,'a cancel/reopen race never requests a local asset twice');
 
  // Real progress covers only the 37 necessary offline chapter/legacy-art
- // scripts. It must survive a paused local script, finish at 40, and reset
+ // scripts. It must survive a paused local script, finish at 37, and reset
  // safely after an interrupted/retried user navigation.
  const progress=makeHarness({deferAsset:'classic-verne-towle-ch05.js'});
  progress.window.openStory('around-the-world-in-eighty-days-towle');

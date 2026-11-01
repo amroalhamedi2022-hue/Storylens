@@ -160,6 +160,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Added direct runtime filter and legacy compatibility coverage in illustrated-cover tests, warmup/reuse and 37-file progress tests, updated three standalone old-art tests to assert they are not shipped as executable tags.
 - **Exact new-HEAD CI PENDING**. Real 120Hz/device, complete editorial translation review, rights-by-territory, original installed signing certificate still OPEN.
 
+### 2026-11-01 — PERF01 / QA01: remove stale manifest assertion after eliminating synthetic chapter art
+- Previous code head `f7ed8109159c6b9fc6f1127cb41ed133880f5326`, exact-head Actions 41344825664 **FAIL** in `Validate curated offline content` at `tools/content-loader.test.cjs:115`: the obsolete test assumed 41 inert asset tags, while the correct 37 book + 1 dictionary tags now produce 38. The new source logic was not reported failing in production.
+- The regression now compares removed manifest nodes to the actual declared `bookAssets.length + dictionaryAssets.length`, preserving truthful asynchronous loading checks; also normalizes a cross-realm JS Array before Node strict equality in the legacy-cover registry test.
+- No production code, original book, art asset, stored data, app identity or signer changed. New exact SHA CI PENDING.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

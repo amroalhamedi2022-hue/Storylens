@@ -40,7 +40,7 @@ const registry={art:{},window:{
 vm.runInNewContext('window.LinguaAttachEditorialArt=function(){'+
  "\n if(typeof window.StoryLensMakeEditorialArt!=='function')return false;\n // Authentic classics rely on verified, local historical engravings.\n // The 37 now-unused synthetic SVG scene strings waste WebView memory.\n // Keep all earlier saved short-story scene art for backward compatibility.\n const eligible=(window.StoryLensEditorialStories||[])\n  .filter(story=>story?.id!=='around-the-world-in-eighty-days-towle');\n Object.assign(art,window.StoryLensMakeEditorialArt(eligible));\n window.LinguaHydrateStoryCovers();\n return true;"+'\n};',registry);
 assert.equal(registry.window.LinguaAttachEditorialArt(),true);
-assert.deepEqual(seen,['legacy-short-story'],'no synthetic 37-chapter artwork allocations');
+assert.deepEqual(Array.from(seen),['legacy-short-story'],'no synthetic 37-chapter artwork allocations');
 assert.equal(hydrated,1,'legacy library cover is still hydrated');
 assert.ok(registry.art['legacy-short-story_0']);
 assert.ok(!Object.keys(registry.art).some(k=>k.startsWith('around-the-world-in-eighty-days-towle_')),
