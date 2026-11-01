@@ -27,7 +27,10 @@ assert.ok(reader.includes('next.textContent=paragraph.en'));
 assert.ok(reader.includes("sourceLanguage==='ar'?source.en:source.ar"));
 assert.ok(fonts.includes('.reader[data-lt-source="ar"] .inline-en'));
 assert.ok(reader.includes('originalFullTranslation=fullTranslation'));
-assert.ok(reader.includes('escapeText(p.en)'));
+assert.ok(reader.includes('escapeText(paragraph.en)'),
+ 'full original-Arabic book companion still escapes the complete English paragraph');
+assert.ok(reader.includes('escapeText(paragraph.ar)'),
+ 'complete contextual Arabic companion remains escaped safely');
 assert.ok(read('app/src/main/assets/lingua-i18n.js').includes("state.story?.sourceLanguage === 'ar'"));
 assert.ok(read('app/src/main/assets/lt-offline-fonts.css').includes('.lt-english-companion .arabic-inner'));
 console.log('PASS: Arabic-original detective novella, contextual English in sentence and full-book reading, offline art');

@@ -122,6 +122,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Added lightweight period framing to translated-reader CSS, Node tests for three source-aligned scenes and unchanged paragraph counts, and extended Chromium chapter fixture to verify source AND translated figure per chapter. Full CI and real-device art alignment remain NOT VERIFIED until current exact-head action completes.
 - No stable APK signature or main merge.
 
+### 2026-11-01 — QA01: repair stale Arabic-origin bilingual test after period-art insertion
+- Previous HEAD `ffec8f8134a5a63fe8f6d94a32cadc9eba21d6ab`: Actions 41339676292 **FAILED** in `Validate curated offline content`, `tools/arabic-originals.test.cjs:30`, because it searched an obsolete source spelling `escapeText(p.en)`. The production reader now correctly uses `paragraph.en` and `paragraph.ar` while mounting an archival plate. The test had falsely treated a local variable name as an API.
+- Updated both assertions to confirm escaped complete source-paragraph branches; no data/translation/signing change. Dedicated companion production-source Node test already passed locally, including exact archival chapter and paragraph coverage.
+- Full next-HEAD CI PENDING. No automatic story approval.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
