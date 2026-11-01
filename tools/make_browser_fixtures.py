@@ -393,7 +393,9 @@ tests["historic-verne-plates"] = r"""(async function(){
   const items=[
    {index:2,src:'art/verne-route-map-1872.webp',anchor:27},
    {index:10,src:'art/verne-kiouni-1873.webp',anchor:43},
-   {index:20,src:'art/verne-tankadere-1872.webp',anchor:34}
+   {index:20,src:'art/verne-tankadere-1872.webp',anchor:34},
+   {index:4,src:'art/verne-news-readers-1873.webp',anchor:1},
+   {index:19,src:'art/verne-tankadere-cabin-1873.webp',anchor:66}
   ];
   for(const item of items){
    state.chapter=item.index;

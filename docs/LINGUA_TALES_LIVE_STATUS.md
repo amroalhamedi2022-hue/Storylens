@@ -132,6 +132,12 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - One-time GitHub Actions intake uses original JPG bytes, pinned source SHA-1, bounded WebP (<270KB each), manifest with SHA-256 for both original+optimized, and guarded git push back to existing PR branch; no outside artwork hotlink at runtime. Additional images are NOT shipped until the binary import commit actually appears. Upstream marks 'No known copyright restrictions' on the Flickr Commons 1873 scans (not an automatic worldwide licensing promise).
 - Next: verify archive intake and binary SHA manifest, then remove one-time workflow and wire both art scenes into English/Arabic reader, with exact-head browser tests. No release signer/physical-device acceptance.
 
+### 2026-11-01 — UX04 / C04 / QA01: five genuine period engravings aligned in both reader modes
+- Inspected parent `02ae2d4f93df26ff736e6c8ea27e1fa05e2d5ad5`, after successful one-time archive intake auto-commit `02ae2d4f9`. Both new 1873 original print scans have verified upstream SHA-1 and new compressed WebP SHA-256 in `docs/literature/HISTORIC_VERNES_ASSETS.json`. Both are genuine source-era illustrations, not generated vector artwork; Commons 'No known copyright restrictions' is NOT a blanket territory clearance.
+- Added original newspaper readers engraving after exact Towle chapter V paragraph 2 (index 1) and cabin of *Tankadere* after chapter XX paragraph 67 (index 66). Both figures now appear beside source and full-Arabic-companion paragraphs with bilingual contextual alt/credit, reserved 620px image geometry, lazy loading and no network runtime.
+- Historical manifest integrity test now validates **five** images with file sizes <270KB, original SHA-1 and packaged SHA-256; source/companion tests and real Chromium chapter/figure/paragraph tests now include both new chapters. Removed one-time workflow image publisher to prevent future overwrites or unnecessary network work.
+- New exact-head Android + Chromium CI PENDING. Xiaomi Pad 5 120Hz, editorial Arabic translation review and stable signing still OPEN.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

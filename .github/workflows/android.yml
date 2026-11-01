@@ -18,50 +18,6 @@ concurrency:
 
 jobs:
 
-  verne_additional_art_intake:
-    permissions:
-      contents: write
-    if: github.event_name == 'push' && github.ref == 'refs/heads/automation/storylens-dictionary-saved-words-20261023'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install pinned archive image encoder
-        run: python3 -m pip install --disable-pip-version-check --quiet 'Pillow==11.3.0'
-      - name: Verify two historic scan hashes and encode bounded offline WebP
-        run: python3 tools/intake_verne_additional_plates.py
-      - name: Commit only verified binary scans and updated provenance, with HEAD lease
-        shell: bash
-        env:
-          EXPECTED_HEAD: ${{ github.sha }}
-        run: |
-          set -euo pipefail
-          BRANCH='automation/storylens-dictionary-saved-words-20261023'
-          CURRENT="$(git ls-remote origin "refs/heads/$BRANCH" | cut -f1)"
-          test "$CURRENT" = "$EXPECTED_HEAD" || { echo "Concurrent write, refuse overwrite: $CURRENT"; exit 1; }
-          mkdir -p app/src/main/assets/art
-          cp /tmp/lt-verne-extra-intake/*.webp app/src/main/assets/art/
-          python3 - <<'PY'
-          import json,pathlib,hashlib
-          path=pathlib.Path('docs/literature/HISTORIC_VERNES_ASSETS.json')
-          existing=json.loads(path.read_text(encoding='utf8'))
-          new=json.loads(pathlib.Path('/tmp/lt-verne-extra-intake/new_manifest.json').read_text(encoding='utf8'))
-          assert len(existing)==3 and len(new)==2
-          for row in new:
-           data=(pathlib.Path('app/src/main/assets/art')/row['file']).read_bytes()
-           assert data[:4]==b'RIFF' and data[8:12]==b'WEBP'
-           assert hashlib.sha256(data).hexdigest()==row['webp_sha256']
-           assert not any(old['file']==row['file'] for old in existing)
-          path.write_text(json.dumps(existing+new,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
-          print('PASS: five original source/bitmaps accounted for')
-          PY
-          git config user.name 'lingua-tales-archive-bot'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add app/src/main/assets/art/verne-news-readers-1873.webp app/src/main/assets/art/verne-tankadere-cabin-1873.webp docs/literature/HISTORIC_VERNES_ASSETS.json
-          git commit -m 'assets(art): add two verified 1873 source-scene engravings [skip ci]'
-          git push origin "HEAD:refs/heads/$BRANCH"
-
-
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 25
