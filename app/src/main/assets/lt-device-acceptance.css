@@ -120,3 +120,14 @@ html[data-lt-english-font="hand"]{--lt-en-font:"Segoe Print","Bradley Hand",curs
 }
 .theme-meridian-epilogue .reader .lt-book-page .sentence{color:#f7f1e5!important}
 .theme-meridian-epilogue .reader .lt-book-page .inline-ar{color:#e8ede1!important}
+
+/* Hamburger drawn without text, preventing Android long-press text-selection handles. */
+.library .lt-menu-toggle .lt-menu-glyph{
+ display:block;position:relative;width:21px;height:16px;
+ border-block:2px solid currentColor;flex:none;
+ pointer-events:none;-webkit-user-select:none;user-select:none;
+}
+.library .lt-menu-toggle .lt-menu-glyph::before{
+ content:'';position:absolute;inset-inline:0;top:50%;height:2px;
+ background:currentColor;transform:translateY(-50%);
+}

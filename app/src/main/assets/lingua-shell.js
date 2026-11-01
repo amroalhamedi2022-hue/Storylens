@@ -782,7 +782,13 @@ function decorateLibrary(){
  }
  const header=section.querySelector('.header');
  if(!header)return;
- const toggle=addButton(header,'☰',()=>opened?closeDrawer():openDrawer(),'secondary lt-menu-toggle');
+ const toggle=addButton(header,'',()=>opened?closeDrawer():openDrawer(),'secondary lt-menu-toggle');
+ // The menu is a real graphic, not selectable text under Android long-press.
+ const menuGlyph=document.createElement('span');
+ menuGlyph.className='lt-menu-glyph';
+ menuGlyph.setAttribute('aria-hidden','true');
+ toggle.replaceChildren(menuGlyph);
+ toggle.type='button';
  toggle.id='lt-menu-toggle';toggle.setAttribute('aria-label',menuText());
  toggle.setAttribute('aria-controls','lt-drawer');toggle.setAttribute('aria-expanded','false');
  const backdrop=document.createElement('div');
