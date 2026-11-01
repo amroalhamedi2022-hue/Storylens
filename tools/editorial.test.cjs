@@ -53,17 +53,30 @@ assert.equal(artCount,stories.reduce((sum,story)=>sum+story.chapters.length,0),'
 assert.ok(html.includes('catalog.stories.push(...window.StoryLensEditorialStories)'),'stories registered before library render');
 assert.ok(html.includes('Object.assign(art,window.StoryLensMakeEditorialArt'),'art registered');
 
-// Real combined registry contract: archived full Verne book cannot create huge
-// synthetic SVG data URLs, while previously saved editorial stories keep art.
-const mixed=context.window.StoryLensMakeEditorialArt([
- {id:'around-the-world-in-eighty-days-towle',genre:'historical',
-  chapters:Array.from({length:37},(_,i)=>({title:'Chapter '+(i+1)}))},
- {id:'kept-editorial-book',genre:'mystery',
-  chapters:[{title:'Saved Chapter'}],title:'Saved Chapter'}
-]);
-assert.equal(Object.keys(mixed).filter(k=>k.startsWith('around-the-world-in-eighty-days-towle_')).length,0,
- '37 unnecessary synthetic novel SVGs must not be generated');
-assert.ok(mixed['kept-editorial-book_0']?.startsWith('data:image/svg+xml'),
- 'legacy saved-book art must remain available');
+const productionArtHook=html.match(/window\.LinguaAttachEditorialArt=function\(\)\{([\s\S]*?)\n\};/);
+assert.ok(productionArtHook,'actual current art installation function extracted');
+let requestedIds=null,hydrationCalls=0;
+const archiveStory={id:'around-the-world-in-eighty-days-towle',
+ title:'Around the World in Eighty Days',genre:'historical',
+ chapters:Array.from({length:37},(_,i)=>({title:'Chapter '+(i+1)}))};
+const savedStory={id:'saved-fiction-legacy',title:'Saved Fiction',genre:'mystery',
+ chapters:[{title:'Chapter'}]};
+const installed={};
+const registry={window:{
+ StoryLensEditorialStories:[archiveStory,savedStory],
+ StoryLensMakeEditorialArt(stories){requestedIds=stories.map(s=>s.id);
+  return {'saved-fiction-legacy_0':'data:image/svg+xml;charset=utf-8,%3Csvg'};
+ },
+ LinguaHydrateStoryCovers(){hydrationCalls++;}
+},art:installed};
+vm.runInNewContext('window.LinguaAttachEditorialArt=function(){'+productionArtHook[1]+'\n};',registry);
+assert.equal(registry.window.LinguaAttachEditorialArt(),true,'real app art attachment is successful');
+assert.deepEqual(Array.from(requestedIds),['saved-fiction-legacy'],
+ 'the real app never asks its SVG engine to generate any of the 37 historic novel drawings');
+assert.equal(installed['saved-fiction-legacy_0'],'data:image/svg+xml;charset=utf-8,%3Csvg',
+ 'previous saved-story illustrations remain available');
+assert.equal(hydrationCalls,1,'existing cover hydration still runs');
+assert.ok(!Object.keys(installed).some(key=>key.startsWith(archiveStory.id)),
+ 'there are no rejected historical synthetic pictures in the installed art map');
 
 console.log(JSON.stringify({result:'PASS',totalStories:all.length,totalChapters:chapters,totalBilingualParagraphs:paragraphs,illustratedNewChapters:artCount,perGenre:Object.fromEntries(genres)},null,2));

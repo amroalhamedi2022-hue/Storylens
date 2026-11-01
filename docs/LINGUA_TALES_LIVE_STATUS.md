@@ -191,6 +191,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Updated `tools/verne-towle.test.cjs` to prohibit the four historically rejected pseudo-art backgrounds, and added a mixed 37-chapter book + saved editorial-story regression in `tools/editorial.test.cjs`: there must be zero fabricated Verne images while the old story still gets its own offline artwork.
 - Source-bound local VM evaluation and new full CI pending at this checkpoint. Generated large SVG content remains in archived source for tests/backward compatibility; the improvement is runtime allocations, not APK bytes or measured device FPS. Next: actual CI and physical phone/tablet profiling; complete books/edited bilingual translations remain OPEN.
 
+### 2026-11-01 — PERF01 / QA01: resolve redundant SVG-generator change without losing the runtime optimisation
+- Latest branch HEAD `f9baca21866e258ab2b0f6213eff2bef6925c2b2`; Actions 41348178269 **FAILED** in `tools/verne-towle-ch05.test.cjs` because direct historical-legacy art-generator compatibility was removed. Inspected real `index.html`: it **already filters out** the Verne book before calling `StoryLensMakeEditorialArt`. The parent `77203caa87c583765878b20c18edf79fe04275bd` already had this runtime optimisation and had PASS CI 41346305871.
+- Restored the three legacy-generator/test files exactly to their previously passing parent state, **without deleting any original archived content** or changing the production art filter. Added integration assertions in `tools/editorial.test.cjs` that extract the actual `LinguaAttachEditorialArt` function, supply a 37-chapter historical novel plus old saved fiction, and verify only the saved fiction is passed into the SVG generator, that its art is preserved, and cover hydration works once.
+- This is a CI repair and regression reinforcement, not a new runtime speed claim. Exact-head CI PENDING; artwork five genuine period WebPs, translation drafts and device acceptance unchanged.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
