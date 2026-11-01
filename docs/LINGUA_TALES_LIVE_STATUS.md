@@ -209,3 +209,8 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Acquired original 1897 **Dracula** by Bram Stoker, pinned Standard Ebooks `e9968b274918e5a79b8e34cc93e50492363d1612`, all 27 full narrative chapters PLUS prefatory note and closing epilogue, 29 unchanged XHTML source Git blobs and metadata, executable source-integrity/approval-gate CI. Original FULL English novel is deliberately **staged, not shipped**; no complete natural/contextual Arabic translation, historical licensed scene art, territorial rights or physical-device approval yet.
 - Found edition alignment research https://www.theobeers.com/kwd-reader/info/ confirming multiple Arabic Kalila recensions differ; the existing 20-section Arabic source cannot be blindly paired with 18-section Knatchbull EN. Queue updated and release gate stays closed.
 - New exact-head CI **PENDING**; next steps editorial chapter mapping, full translation and verified antique in-page artwork + device QA. No signed APK claim.
+
+### 2026-11-01 — UX01 / UX04: original historic scans imported (binary checkpoint)
+- Historic intake downloaded and verified Kiouni elephant, itinerary map and Tankadere period engravings against original Commons SHA-1; recoded and checked exact WebP SHA-256; three offline files under app/src/main/assets/art.
+- Actual source URL, date, original/optimized hash, artist and scene records: docs/literature/HISTORIC_VERNES_ASSETS.json.
+- This is a binary-asset milestone, not yet a change to reader display. Wire historical cover and chapter illustrations in next code commit, remove temporary intake job and verify the new APK/Chromium.

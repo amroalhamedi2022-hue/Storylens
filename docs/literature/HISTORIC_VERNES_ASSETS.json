@@ -1,0 +1,50 @@
+[
+  {
+    "id": "verne-1873-kiouni",
+    "file": "verne-kiouni-1873.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Around_the_world_in_eighty_days_%281873%29_%2814781095701%29.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14781095701).jpg",
+    "expected_sha1": "3e6023d89833734936fd68b8163f5b13252a1339",
+    "year": 1873,
+    "scene": "Phileas Fogg and Passepartout meet Kiouni, the elephant, chapter XI",
+    "chapter": 10,
+    "source_sha256": "5171b022344c574f8df926fac794fa11c76f220068a2e697aec398d0f9464e6c",
+    "webp_sha256": "28c19c72487edb6b0b6d97e03a9dc6efd853a9dc77be15887cdc6db14994f85c",
+    "webp_bytes": 193560,
+    "width": 630,
+    "height": 921,
+    "rights": "Wikimedia Commons Public Domain Mark 1.0; per-file scan, verify territorial use"
+  },
+  {
+    "id": "verne-1872-itinerary",
+    "file": "verne-route-map-1872.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_01.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_01.jpg",
+    "expected_sha1": "4dad34a533511ec83929a2a973cfc844a141177a",
+    "year": 1872,
+    "scene": "Original printed route map for the journey timetable, chapter III",
+    "chapter": 2,
+    "source_sha256": "71569aa9452536a6b6ed7ea79bbc532aab291db57e150e81e490b72f02b4e176",
+    "webp_sha256": "242e8fb396e18157d9e17514505190fa81536a5db027f7a150befb955542258d",
+    "webp_bytes": 69262,
+    "width": 800,
+    "height": 650,
+    "rights": "Wikimedia Commons Public Domain Mark 1.0; per-file scan, verify territorial use"
+  },
+  {
+    "id": "verne-1872-tankadere",
+    "file": "verne-tankadere-1872.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_34.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_34.jpg",
+    "expected_sha1": "6cede9030b81f8312ace0da3aa3cfda0482328d4",
+    "year": 1872,
+    "scene": "The small sailing ship Tankadere battles high waves, chapter XXI",
+    "chapter": 20,
+    "source_sha256": "312365d70309a85c5325d4bfef9ba3ebc77878bc07701ad97acad47f2f2463e8",
+    "webp_sha256": "66c32c2069dbdcb6f74654a88755dc62f6c3591e88ed0db1ef5e9a31311eed57",
+    "webp_bytes": 167854,
+    "width": 640,
+    "height": 931,
+    "rights": "Wikimedia Commons Public Domain Mark 1.0; per-file scan, verify territorial use"
+  }
+]
