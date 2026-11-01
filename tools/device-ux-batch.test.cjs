@@ -103,3 +103,14 @@ a.match(css,/\.lt-novel-card\[hidden\]\{display:none!important\}/,'hidden book c
 a.match(shell,/function refreshNovelShelf\(section\)\{/,'counter state follows live novel cards');
 a.match(read('app/src/main/assets/library-experience.js'),/LinguaShell\?\.refreshNovelShelf/,'level, favorites and sorting update the novel shelf');
 console.log('PASS: filtered novels stay hidden, counters and empty states stay synchronized');
+
+// Vintage engraved-plate framing must not depend on heavy CSS filters or
+// replace original art; captions and bilingual reading remain selectable.
+a.match(css,/LT-UX04: tactile archival book plates/);
+a.match(css,/\.reader \.lt-inline-illustration\{/);
+a.match(css,/border:3px double #bba787!important/);
+a.match(css,/\.lt-inline-illustration figcaption\{/);
+a.match(css,/\.library \.lt-book-cover::after\{/);
+const vintage=css.slice(css.indexOf('LT-UX04: tactile archival book plates'));
+a.ok(!/filter\s*:|backdrop-filter\s*:|animation\s*:/.test(vintage),'avoid expensive GPU image filters and looping effects on long reading pages');
+console.log('PASS: low-overhead period book-plate framing for in-text illustrations and covers');
