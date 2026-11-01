@@ -235,6 +235,7 @@ function testPointerOwnership(){
  assert.deepEqual(turns,[],'dictionary tap without drag never flips the book');
  assert.equal(captures.length,initialCaptures,'dictionary tap remains click-targeted');
  down(71,tokenTarget);drag(71);
+ assert.equal(foldClasses.has('lt-paper-grabbing'),true,'first locked drag paints the crease without waiting for rAF');
  assert.equal(captures.at(-1),71,'actual drag from word ink captures only after lock');
  up(71);
  assert.deepEqual(turns,[1],'edge paper hold can start on a dictionary word');
@@ -255,15 +256,16 @@ function testPointerOwnership(){
  down(7);drag(7);
  frame();
  assert.ok(foldClasses.has('lt-paper-grabbing'),'primary finger retains visible fold');
- assert.equal(sheet.children.length,1,'one inert paper back is allocated for this held drag');
- const back=sheet.children[0];
+ const liveReverse=()=>sheet.children.filter(node=>node.className==='lt-paper-reverse'&&!node.wasRemoved);
+ assert.equal(liveReverse().length,1,'exactly one live reverse face is allocated');
+ const back=liveReverse()[0];
  assert.equal(back.className,'lt-paper-reverse','mirrored reverse of the real paper is visible');
  assert.equal(back.inert,true,'reverse cannot receive pointer or keyboard interaction');
  assert.equal(back.attributes['aria-hidden'],'true','reverse is not announced twice');
  assert.equal(back.children[0].children[0].textContent.length,420,'ink is bounded for long chapters');
  assert.equal(back.children[0].children[0].innerHTML,undefined,'no HTML/word buttons are copied');
  drag(7);frame();
- assert.equal(sheet.children.length,1,'repeated animation frames allocate no extra DOM');
+ assert.equal(liveReverse().length,1,'repeated animation frames do not allocate more reverse faces');
 
  up(7);
  assert.deepEqual(turns,[1],'primary release still commits a forward turn');

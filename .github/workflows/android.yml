@@ -285,6 +285,11 @@ jobs:
           grep -Fq 'storylens-hero' /tmp/storylens-dom.html || { echo 'Library hero failed to render'; exit 1; }
           echo "PASS: desktop-browser library render smoke"
           python3 tools/make_browser_fixtures.py
+          for viewport in 460,860 1280,840; do
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --window-size="$viewport" --virtual-time-budget=4600 --dump-dom "file://$PWD/app/src/main/assets/qa-shelf-centered.html" > "/tmp/lt-shelf-$viewport.html" 2>/tmp/lt-shelf.log
+            grep -Fq 'data-lt-shelf-qa="PASS"' "/tmp/lt-shelf-$viewport.html" || { echo "Library shelf $viewport QA failed"; grep -o 'data-lt-shelf-errors="[^"]*"' "/tmp/lt-shelf-$viewport.html" | head -1; exit 1; }
+          done
+          echo "PASS: real Chromium phone/tablet bookshelf centered, title bounded"
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=18000 --dump-dom "file://$PWD/app/src/main/assets/qa-lazy-content.html" > /tmp/storylens-lazy-content-dom.html 2>/tmp/chrome-lazy-content.log
           grep -Fq 'data-lt-lazy-qa="PASS"' /tmp/storylens-lazy-content-dom.html || { echo "Deferred offline content QA failed:"; grep -o 'data-lt-lazy-qa-errors="[^"]*"' /tmp/storylens-lazy-content-dom.html | head -1; exit 1; }
           echo "PASS: Chromium confirms long-book and FreeDict payloads are loaded only on demand"

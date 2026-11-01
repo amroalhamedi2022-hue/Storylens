@@ -342,6 +342,29 @@ tests["paper-fold-browser"] = r"""(async function(){
  document.body.setAttribute('data-lt-paper-errors',errors.join(' | '));
 })();""";
 
+tests["shelf-centered"] = r"""(function(){
+ const errors=[];
+ const check=(name,fn)=>{try{if(!fn())errors.push(name)}catch(e){errors.push(name+': '+e.message)}};
+ try{
+  const shelf=document.querySelector('.library .shelf.lt-novel-shelf');
+  const books=[...document.querySelectorAll('.library .lt-novel-card')].filter(n=>!n.hidden);
+  check('novel shelf exists',()=>!!shelf&&books.length>0);
+  if(shelf&&books.length===1){
+   const a=shelf.getBoundingClientRect(),b=books[0].getBoundingClientRect();
+   check('single book centered',()=>Math.abs((a.left+a.right)/2-(b.left+b.right)/2)<8);
+  }
+  const cover=books[0]?.querySelector('.lt-book-cover');
+  const title=cover?.querySelector('.lt-book-cover-title');
+  check('cover title stays inside book',()=>!!title&&!!cover&&title.textContent.trim()!==''&&
+    title.getBoundingClientRect().left>=cover.getBoundingClientRect().left&&
+    title.getBoundingClientRect().right<=cover.getBoundingClientRect().right&&
+    title.scrollHeight<=title.clientHeight+2);
+  check('cover has ink mask',()=>getComputedStyle(cover,'::before').backgroundImage.includes('linear-gradient'));
+ }catch(e){errors.push('runtime: '+e.message)}
+ document.body.setAttribute('data-lt-shelf-qa',errors.length?'FAIL':'PASS');
+ document.body.setAttribute('data-lt-shelf-errors',errors.join(' | '));
+})();""";
+
 for name,script in list(tests.items()):
  if "openStory('around-the-world-in-eighty-days-towle')" not in script:
   continue

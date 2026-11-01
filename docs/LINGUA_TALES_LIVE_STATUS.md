@@ -50,6 +50,12 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Replaced dependency on asynchronous editorial-art registration with the base, synchronous 10-paragraph `last-passenger` reader. Replaced unbounded animation-frame awaits with bounded timers (while leaving the production rAF drawing path intact). Added `data-lt-paper-stage` at start/layout/held/released/complete and prints it on CI failure to distinguish not-executed from assertion failures.
 - New exact SHA CI PENDING; if the browser reports an actual curved-page or commit failure, investigate production code rather than weakening requirements. Physical touchscreen/120Hz still OPEN.
 
+### 2026-11-01 — UX01: correct actual phone/tablet book-shelf screenshot defects
+- Verified current PR HEAD `06bac33e40b94eba0d7d96a3ecdd121a14be01cb` and genuine CI screenshots from previous successful run 41308776448. One full-length classic was aligned at the RTL right edge on both phone and tablet, leaving most of the shelf blank; the injected title overlapped lettering baked into the older SVG.
+- Production `lt-device-acceptance.css` now uses centered auto-fit book tracks and a max 235px cover, with an opaque shaded title base and bounded three-line readable title overlay. Added source regression. No source catalog, original art or user data changed.
+- Added documented historic Verne illustrator provenance leads in source queue and illustration guide, **NOT claiming that the candidate scans are already shipped**.
+- New full CI PENDING; screenshots must be inspected after build. Earlier real RTL/LTR paper-fold browser CI 41309609823 **FAILED** at visual crease checks while its actual release/turn assertions passed; handled in the next code batch.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

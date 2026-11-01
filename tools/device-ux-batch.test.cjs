@@ -99,6 +99,13 @@ a.match(source,/title\.textContent=story\.title/,'cover title uses safe DOM text
 a.match(source,/cover\.replaceChildren\(title\)/);
 a.match(css,/\.library \.shelf\.lt-novel-shelf\{/);
 a.match(css,/\.library \.lt-book-cover-title\{/);
+a.match(css,/grid-template-columns:repeat\(auto-fit,minmax\(min\(100%,190px\),1fr\)\)!important/,
+ 'single full-length book must be centered on RTL shelf');
+a.match(css,/\.library \.shelf\.lt-novel-shelf \.lt-novel-card\{\s*width:100%!important;max-width:235px!important/,
+ 'tablet book has bounded natural book width');
+a.match(css,/#051023ec 72%,#061525 85%,#061525 100%/,
+ 'bottom of historic cover hides duplicate baked title');
+a.match(css,/-webkit-line-clamp:3/,'title stays within readable lines');
 a.match(css,/prefers-reduced-motion:reduce/);
 const touchSource=read('app/src/main/assets/lt-tap-feedback.js');
 a.match(touchSource,/heldPointers=new Map\(\)/,'water press tracks finger id');

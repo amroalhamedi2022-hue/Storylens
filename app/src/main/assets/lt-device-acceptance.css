@@ -276,3 +276,27 @@ button.lt-water-pressed,.lt-theme-choice.lt-water-pressed{
  border:1px solid #f9e0a36b;border-inline-start:3px solid #f9e0a37d;
  border-radius:3px 9px 9px 3px;
 }
+
+/* Screenshot-derived UX01: one book centered, multiple books responsive. */
+.library .shelf.lt-novel-shelf{
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))!important;
+ justify-items:center!important;
+}
+.library .shelf.lt-novel-shelf .lt-novel-card{
+ width:100%!important;max-width:235px!important;
+}
+.library .lt-book-cover::before{
+ background:linear-gradient(90deg,#02091352 0,transparent 9%),
+ linear-gradient(180deg,#00000010 0%,transparent 52%,
+  #051023ec 72%,#061525 85%,#061525 100%)!important;
+}
+.library .lt-book-cover-title{
+ inset-inline:14px!important;bottom:18px!important;max-height:4.5em!important;
+ font:800 clamp(15px,2.4vw,20px)/1.23 Georgia,'Noto Naskh Arabic',serif!important;
+ display:-webkit-box!important;-webkit-line-clamp:3;-webkit-box-orient:vertical;
+ overflow:hidden!important;text-wrap:balance;overflow-wrap:normal;
+}
+.library .lt-book-cover-title[lang="ar"]{
+ font-family:var(--lt-ar-font,'Noto Naskh Arabic',system-ui),serif!important;
+ line-height:1.5!important;max-height:4.5em!important;
+}

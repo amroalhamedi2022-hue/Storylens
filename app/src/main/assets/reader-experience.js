@@ -670,6 +670,10 @@ function installPageTurn(){
   }
   drag.progress=Math.max(0,Math.min(1,horizontal/Math.max(115,drag.width*.68)));
   drag.lastY=event.clientY;
+  // Paint the first locked fold immediately. A suspended WebView animation
+  // frame must not show flat paper while the user's finger is already dragging.
+  // Subsequent frames remain requestAnimationFrame-coalesced.
+  if(!drag.firstPaint){drag.firstPaint=true;previewFold();}
   if(foldRaf===null){
    if(typeof window.requestAnimationFrame==='function')foldRaf=window.requestAnimationFrame(previewFold);
    else previewFold();
