@@ -736,7 +736,19 @@ function isFullLengthNovel(story){
  if(!story||typeof story!=='object')return false;
  const loaded=Array.isArray(story.chapters)?story.chapters.length:0;
  const declared=Number.isInteger(story.totalChapters)?story.totalChapters:0;
- return Math.max(loaded,declared)>=12;
+ const chapters=Math.max(loaded,declared);
+ // A twelve-part micro-story still isn't a full adult book when verified
+ // word count proves it is short.
+ const words=Number(story.fullWordCount);
+ if(story.fullWordCount!=null&&(!Number.isInteger(words)||words<25000))return false;
+ // Complete Arabic heritage volumes contain nested fables and belong
+ // beside novels, not under the false label of police fiction.
+ if(story.workType==='heritage-volume'){
+  return chapters>=1&&Number.isInteger(words)&&words>=25000&&
+   story.completeEdition===true&&story.companionComplete===true&&
+   story.editorialApproved===true&&story.rightsReviewed===true;
+ }
+ return chapters>=12;
 }
 // Keep live novel counts and empty-state accurate after favorite/level/sort filtering.
 // The legacy source catalog, bookmarks and saved words must not be touched.
@@ -746,14 +758,14 @@ function refreshNovelShelf(section){
  const cards=[...shelf.querySelectorAll('.lt-novel-card')];
  const visible=cards.filter(card=>!card.hidden).length;
  const counter=section.querySelector('.stl-visible-count');
- if(counter)counter.textContent=(rtl()?'الروايات الظاهرة: ':'Visible novels: ')+visible+' / '+cards.length;
+ if(counter)counter.textContent=(rtl()?'الكتب الظاهرة: ':'Visible books: ')+visible+' / '+cards.length;
  section.querySelector('.lt-novel-empty')?.remove();
  if(visible)return;
  const empty=document.createElement('p');
  empty.className='lt-novel-empty';
  empty.textContent=rtl()
-  ?'لا توجد روايات طويلة مطابقة للبحث أو مستوى اللغة أو المفضلة حاليًا. غيّر الفلاتر لعرض الروايات المتاحة.'
-  :'No full-length book matches this search, level, or favorites. Adjust filters to view available novels.';
+  ?'لا توجد كتب كلاسيكية مطابقة للبحث أو مستوى اللغة أو المفضلة حاليًا. غيّر الفلاتر لعرض الكتب المتاحة.'
+  :'No complete classic book matches this search, level, or favorites. Adjust filters to view available books.';
  shelf.parentNode.insertBefore(empty,shelf.nextSibling);
 }
 function decorateNovelShelf(section){
@@ -774,7 +786,7 @@ function decorateNovelShelf(section){
   card.classList.add('lt-novel-card');
   card.setAttribute('role','button');
   card.setAttribute('tabindex','0');
-  card.setAttribute('aria-label',(rtl()?'افتح رواية ':'Open novel ')+story.title);
+  card.setAttribute('aria-label',(rtl()?'افتح كتاب ':'Open book ')+story.title);
   card.addEventListener('keydown',event=>{
    if(event.target!==card||(event.key!=='Enter'&&event.key!==' '))return;
    event.preventDefault();openStory(story.id);
@@ -793,7 +805,10 @@ function decorateNovelShelf(section){
    const count=Math.max(story.chapters?.length||0,story.totalChapters||0);
    const detail=document.createElement('span');
    detail.className='lt-novel-volume';
-   detail.textContent=rtl()?count+' فصلًا · رواية طويلة':count+' chapters · Full-length novel';
+   const heritage=story.workType==='heritage-volume';
+   detail.textContent=heritage
+    ?(rtl()?count+' بابًا · كتاب تراثي كامل':count+' sections · Complete heritage volume')
+    :(rtl()?count+' فصلًا · رواية طويلة':count+' chapters · Full-length novel');
    content.appendChild(detail);
   }
  }
@@ -801,9 +816,9 @@ function decorateNovelShelf(section){
  const heading=document.createElement('div');
  heading.className='lt-novel-shelf-heading';
  const title=document.createElement('h2');
- title.textContent=rtl()?'مكتبة الروايات':'The Novel Library';
+ title.textContent=rtl()?'المكتبة الكلاسيكية':'The Classics Library';
  const subtitle=document.createElement('p');
- subtitle.textContent=rtl()?'كتب كاملة، لا قصص قصيرة':'Complete books, not short stories';
+ subtitle.textContent=rtl()?'روايات طويلة ومجلدات تراثية كاملة':'Complete novels and heritage volumes';
  heading.append(title,subtitle);
  shelf.parentNode.insertBefore(heading,shelf);
  refreshNovelShelf(section);

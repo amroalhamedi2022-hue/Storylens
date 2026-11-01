@@ -79,6 +79,15 @@ a.equal(novelContext.classify({chapters:[{},{},{},{},{}]}),false,'five-chapter n
 a.equal(novelContext.classify({chapters:[],totalChapters:37}),true,'37-chapter lazy novel appears immediately');
 a.equal(novelContext.classify({chapters:Array.from({length:20},()=>({}))}),true);
 a.equal(novelContext.classify({chapters:[],totalChapters:0}),false,'empty placeholders not promoted');
+a.equal(novelContext.classify({chapters:Array.from({length:12},()=>({})),fullWordCount:1900}),false,'Tiny works cannot appear by padding chapter slots');
+const heritage={workType:'heritage-volume',chapters:[{}],totalChapters:18,
+ fullWordCount:45769,completeEdition:true,companionComplete:true,editorialApproved:true,rightsReviewed:true};
+a.equal(novelContext.classify({...heritage,companionComplete:false}),false,'No heritage without full English companion');
+a.equal(novelContext.classify({...heritage,rightsReviewed:false}),false,'Independent rights approval required');
+a.equal(novelContext.classify({...heritage,fullWordCount:900}),false,'Short individual fables not promoted');
+a.equal(novelContext.classify(heritage),true,'Whole approved heritage volume eligible');
+a.match(source,/The Classics Library/,'Main shelf includes classics and heritage not novels alone');
+a.match(source,/Complete heritage volume/,'Heritage shown with proper volume classification');
 a.match(source,/decorateNovelShelf\(section\);/,'actual library is decorated');
 a.match(source,/card\.remove\(\);/,'short books removed only from the rendered shelf');
 a.match(source,/title\.textContent=story\.title/,'cover title uses safe DOM text, not injected HTML');

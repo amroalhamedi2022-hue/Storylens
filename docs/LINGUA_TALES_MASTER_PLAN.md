@@ -69,3 +69,7 @@ State: **SOURCE** exists in code only; **PARTIAL** incomplete; **OPEN** not done
 "Continue Lingua Tales from PR #1. Read AGENTS.md, docs/LINGUA_TALES_MASTER_PLAN.md, docs/LINGUA_TALES_LIVE_STATUS.md and docs/LITERATURE_SOURCE_QUEUE.md. Check latest HEAD/actions and Codex edits, implement the highest unmet ID without repetition, update live status in the same commit; no main merge, no invented fiction, no signed APK claims without verification."
 
 **PR:** https://github.com/amroalhamedi2022-hue/Storylens/pull/1
+
+## 2026-11-01 — C03/UX01 historical volumes are complete BOOKS, not novels
+
+Use `workType:'heritage-volume'` for complete Arabic historical volumes, including Kalila wa Dimna and One Thousand and One Nights. They qualify alongside adult long novels only with verified >25,000-word scale, complete primary edition, **complete contextual EN companion**, independent editorial acceptance and applicable redistribution-rights review. The product shelf labels heritage correctly (الأبواب/sections), not as police novels. Until those checks genuinely pass, keep staged sources out of the installed app. No older bookmarks or source records are deleted.
