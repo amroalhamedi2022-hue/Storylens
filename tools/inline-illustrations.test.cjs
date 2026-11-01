@@ -28,7 +28,10 @@ const document = {
  querySelector() {return null;},
  querySelectorAll(selector) {return selector === '.reader .sentence' ? sentences : [];},
  createElement(tag) {return {tag, style: {}, children: [], removed: false,
-  appendChild(child) {this.children.push(child);}, setAttribute() {}, remove() {this.removed=true;}};}
+  handlers:{},attributes:{},
+  appendChild(child) {this.children.push(child);}, setAttribute(k,v) {this.attributes[k]=v;},
+  addEventListener(k,fn){this.handlers[k]=fn;},focus(){this.focused=true;},
+  remove() {this.removed=true;}};}
 };
 const state = {story, page: 'reader', chapter: 0};
 const sandbox = {
@@ -47,6 +50,26 @@ assert.deepEqual(added.map(x => x.i), [0, 2]);
 assert.equal(added[0].figure.children[0].src, 'art/verne/station.webp');
 assert.equal(added[0].figure.children[0].alt, 'Railway station');
 assert.equal(added[0].figure.children[0].loading, 'lazy');
+assert.equal(added[0].figure.children[0].attributes.role,'button','real offline image is interactive');
+assert.equal(added[0].figure.children[0].attributes.tabindex,'0','historical plate is keyboard reachable');
+assert.equal(typeof added[0].figure.children[0].handlers.click,'function');
+const gallery=[];
+document.body={style:{overflow:'auto'},classList:{add(){},remove(){}},
+ appendChild(el){gallery.push(el);}};
+added[0].figure.children[0].handlers.click({stopPropagation(){}});
+assert.equal(gallery.length,1,'one native-size on-demand viewer');
+assert.equal(document.body.style.overflow,'hidden','prevent background page turn while inspecting');
+const inspection=gallery[0];
+assert.equal(inspection.children[0].children[2].children[0].src,'art/verne/station.webp',
+ 'enlargement reuses only the packaged image path');
+assert.equal(inspection.children[0].children[2].children[1].textContent,'CC0 illustration',
+ 'source credit remains beside enlarged engraving');
+inspection.handlers.keydown({key:'Escape',preventDefault(){},stopPropagation(){}});
+assert.equal(inspection.removed,true,'Escape closes inspection');
+assert.equal(document.body.style.overflow,'auto','reading scroll state restored');
+const css=fs.readFileSync(path.join(__dirname,'../app/src/main/assets/lt-device-acceptance.css'),'utf8');
+assert.match(css,/\.lt-art-inspection-dialog figure img\{[^}]*object-fit:contain/,
+ 'historical portrait cannot be cropped in enlarged view');
 assert.equal(added[0].figure.children[0].decoding, 'async');
 assert.equal(added[0].figure.children[1].textContent, 'CC0 illustration');
 assert.equal(added[0].figure.children[0].style.aspectRatio, '1.5', 'layout space reserved');

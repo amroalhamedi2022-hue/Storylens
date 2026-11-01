@@ -815,6 +815,86 @@ library=function(){
 // The existing offline editorial registry is chapter-specific, yet the old
 // reader showed its scene only in the hero/cover. Bring it into the prose.
 // Explicit approved image placements remain authoritative. Never hotlink.
+// UX04: inspect a genuine locally packaged engraving at native phone width.
+// Never open a remote URL, render untrusted HTML or attach a scroll listener.
+// The overlay is created on demand (one image), not for each long-book page.
+let ltCloseActiveArtInspection=null;
+function ltOpenArtInspection(picture){
+ const src=picture?.getAttribute?.('src')||picture?.src||'';
+ const safe=/^art\/[a-z0-9_-]+(?:\/[a-z0-9_-]+)*\.(?:webp|png|jpe?g)$/i;
+ const body=document.body;
+ if(!safe.test(src)||!body?.appendChild)return false;
+ if(ltCloseActiveArtInspection)ltCloseActiveArtInspection();
+ const arabic=document.documentElement?.lang==='ar';
+ const backdrop=document.createElement('div');
+ backdrop.className='lt-art-inspection-backdrop';
+ const dialog=document.createElement('section');
+ dialog.className='lt-art-inspection-dialog';
+ dialog.setAttribute('role','dialog');
+ dialog.setAttribute('aria-modal','true');
+ dialog.setAttribute('aria-label',arabic?'تفاصيل النقش الأصلي':'Original illustration details');
+ const heading=document.createElement('h2');
+ heading.textContent=arabic?'من صفحات الكتاب الأصلية':'From the original illustrated edition';
+ const dismiss=document.createElement('button');
+ dismiss.type='button';dismiss.className='lt-art-inspection-close';
+ dismiss.textContent=arabic?'إغلاق ×':'Close ×';
+ dismiss.setAttribute('aria-label',arabic?'إغلاق الصورة والعودة للقراءة':'Close image and return to reading');
+ const frame=document.createElement('figure');
+ const image=document.createElement('img');
+ image.src=src;image.alt=picture.alt||'';
+ image.loading='eager';image.decoding='async';
+ frame.appendChild(image);
+ const credit=picture.closest?.('figure')?.querySelector?.('figcaption')?.textContent||'';
+ if(credit.trim()){
+  const caption=document.createElement('figcaption');
+  caption.textContent=credit.trim();frame.appendChild(caption);
+ }
+ dialog.appendChild(heading);dialog.appendChild(dismiss);dialog.appendChild(frame);
+ backdrop.appendChild(dialog);
+ const priorOverflow=body.style?.overflow||'';
+ const close=()=>{
+  if(ltCloseActiveArtInspection!==close)return;
+  ltCloseActiveArtInspection=null;
+  backdrop.remove?.();
+  body.classList?.remove('lt-art-inspection-open');
+  if(body.style)body.style.overflow=priorOverflow;
+  if(picture.isConnected!==false)picture.focus?.({preventScroll:true});
+ };
+ ltCloseActiveArtInspection=close;
+ dismiss.addEventListener('click',close);
+ image.onerror=close;
+ backdrop.addEventListener('click',event=>{if(event.target===backdrop)close();});
+ backdrop.addEventListener('keydown',event=>{
+  if(event.key==='Escape'){
+   event.preventDefault();event.stopPropagation();close();
+  }else if(event.key==='Tab'){
+   event.preventDefault();dismiss.focus?.();
+  }
+ });
+ if(body.style)body.style.overflow='hidden';
+ body.classList?.add('lt-art-inspection-open');
+ body.appendChild(backdrop);
+ dismiss.focus?.();
+ return true;
+}
+function ltEnableArtInspection(picture){
+ const src=picture?.getAttribute?.('src')||picture?.src||'';
+ if(!/^art\/[a-z0-9_-]+(?:\/[a-z0-9_-]+)*\.(?:webp|png|jpe?g)$/i.test(src)||
+    typeof picture.addEventListener!=='function')return;
+ const arabic=document.documentElement?.lang==='ar';
+ picture.setAttribute('role','button');
+ picture.setAttribute('tabindex','0');
+ picture.setAttribute('aria-label',(picture.alt||'')+
+  (arabic?'، اضغط لعرض الصورة بحجم أكبر':', press to inspect the image'));
+ picture.addEventListener('click',event=>{
+  event.stopPropagation?.();ltOpenArtInspection(picture);
+ });
+ picture.addEventListener('keydown',event=>{
+  if(event.key!=='Enter'&&event.key!==' ')return;
+  event.preventDefault();event.stopPropagation();
+  ltOpenArtInspection(picture);
+ });
+}
 function ltBuiltInChapterScene(chapter,sentenceCount){
  if(!sentenceCount||!chapter||!state.story||typeof art==='undefined'||!art)return null;
  const src=art[state.story.id+'_'+state.chapter];
@@ -939,6 +1019,7 @@ function ltRenderTranslationChapter(){
   '</nav></div></section>';
  // The old select/Next button is destroyed by this rerender; move the
  // reading cursor to the NEW chapter heading for keyboard and TalkBack users.
+ root.querySelectorAll?.('.lt-companion-plate img')?.forEach(ltEnableArtInspection);
  root.querySelector?.('#lt-translation-chapter-title')?.focus({preventScroll:true});
  window.scrollTo(0,0);
 }
@@ -966,6 +1047,7 @@ if(typeof fullTranslation==='function'){
 }
 
 renderReader=function(){
+ if(ltCloseActiveArtInspection)ltCloseActiveArtInspection();
  originalReader();
  if(!state.story || state.page!=='reader')return;
  if(state.story.sourceLanguage==='ar'){
@@ -1110,6 +1192,7 @@ renderReader=function(){
   // figure in the reading flow. No network fallback or remote hotlink.
   picture.onerror=()=>figure.remove?.();
   figure.appendChild(picture);
+  ltEnableArtInspection(picture);
   if(typeof item.credit==='string'&&item.credit.trim()&&item.credit.length<=160){
    const caption=document.createElement('figcaption');
    caption.textContent=item.credit.trim();

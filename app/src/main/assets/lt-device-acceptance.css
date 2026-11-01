@@ -362,3 +362,35 @@ button.lt-water-pressed,.lt-theme-choice.lt-water-pressed{
  width:min(84vw,430px)!important;
 }
 .reader .reader-hero.lt-no-period-hero{display:none!important}
+
+
+/* UX04 — local historical engravings: touch/keyboard inspection only on demand. */
+.reader .lt-inline-illustration img[role="button"],
+.lt-companion-plate img[role="button"]{cursor:zoom-in;touch-action:manipulation}
+.reader .lt-inline-illustration img[role="button"]:focus-visible,
+.lt-companion-plate img[role="button"]:focus-visible{
+ outline:3px solid #247f80;outline-offset:3px;
+}
+.lt-art-inspection-backdrop{
+ position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;
+ padding:max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right))
+         max(14px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));
+ background:#101923e8;overscroll-behavior:contain;
+}
+.lt-art-inspection-dialog{
+ width:min(100%,820px);max-height:92dvh;overflow:auto;
+ background:#f1e7d4;color:#292820;border:2px double #9c8b6c;border-radius:9px;
+ box-shadow:0 16px 55px #0006;padding:clamp(10px,2vw,20px);text-align:center;
+}
+.lt-art-inspection-dialog h2{font:600 clamp(15px,3vw,19px)/1.45 Georgia,"Noto Naskh Arabic",serif;
+ margin:0 0 10px;color:#4a3925}
+.lt-art-inspection-close{display:inline-block;min-height:44px;padding:8px 20px;
+ border:1px solid #8b7654;border-radius:7px;background:#fffaf0;color:#342b20;font:inherit}
+.lt-art-inspection-close:focus-visible{outline:3px solid #287875;outline-offset:3px}
+.lt-art-inspection-dialog figure{margin:12px auto 0}
+.lt-art-inspection-dialog figure img{display:block;max-width:100%;width:auto;height:auto;
+ max-height:calc(92dvh - 175px);margin:auto;object-fit:contain}
+.lt-art-inspection-dialog figcaption{font:400 13px/1.6 Georgia,"Noto Naskh Arabic",serif;
+ margin:11px auto 2px;max-width:65ch}
+@media(max-width:420px){.lt-art-inspection-dialog{max-height:94dvh}
+ .lt-art-inspection-dialog figure img{max-height:calc(94dvh - 165px)}}
