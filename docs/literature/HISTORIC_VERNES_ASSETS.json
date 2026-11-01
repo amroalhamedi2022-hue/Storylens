@@ -80,5 +80,39 @@
     "width": 620,
     "height": 902,
     "rights": "1873 Boston original; Wikimedia Commons reviewed 'No known copyright restrictions'; territorial review pending"
+  },
+  {
+    "id": "verne-1873-calcutta-court",
+    "file": "verne-calcutta-court-1873.webp",
+    "commons": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14781888384).jpg",
+    "expected_sha1": "c4fffab7167cda36e68f5e505578f90829b204d0",
+    "year": 1873,
+    "chapter": 14,
+    "afterParagraph": 19,
+    "scene": "Calcutta courtroom: Passepartout's abandoned shoes are presented as evidence, Towle XV",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/79/Around_the_world_in_eighty_days_%281873%29_%2814781888384%29.jpg",
+    "source_sha256": "2ef101cb57b12ec8f8e77ea8b91582481e4e680f8e9d3d5a0ed6b2eef70bdb6f",
+    "webp_sha256": "287f2bb7e0e812dc71f5ef00742af9ea6046335fb66a3904c0b1dc206fdeed69",
+    "webp_bytes": 162796,
+    "width": 620,
+    "height": 812,
+    "rights": "1873 Boston print; Commons: no known copyright restrictions (territorial clearance pending)"
+  },
+  {
+    "id": "verne-1873-singapore-carriage",
+    "file": "verne-singapore-carriage-1873.webp",
+    "commons": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14804101583).jpg",
+    "expected_sha1": "3a7368c6cdd1a021493effb5a00f603abff6fe22",
+    "year": 1873,
+    "chapter": 16,
+    "afterParagraph": 7,
+    "scene": "Fogg and Aouda ride a horse-drawn carriage among tropical plants at Singapore, Towle XVII",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Around_the_world_in_eighty_days_%281873%29_%2814804101583%29.jpg",
+    "source_sha256": "d11e351a3ff4b5c75c55b34a4988ef53881893d098a5961acde107d81c24a7fc",
+    "webp_sha256": "f9c6caba35cf08b14fa8f5929d8184850af2118fc9b2c8450a819334dc504b20",
+    "webp_bytes": 192268,
+    "width": 620,
+    "height": 895,
+    "rights": "1873 Boston print; Commons: no known copyright restrictions (territorial clearance pending)"
   }
 ]
