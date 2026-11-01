@@ -86,6 +86,10 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Next: retrieve the real image artifact, inspect it, commit compact verified WebP files to `app/src/main/assets/art/`, wire honest real-image cover and passage-anchored in-page figure, remove temporary remote-intake job, add tests and run exact-head Android/Chromium.
 - Preserve no-network Android runtime, existing library data, full-book metadata and signature. No original APK update/physical 120Hz/territorial redistribution signoff claims.
 
+### 2026-11-01 — UX04: bounded WebP adjustment after actual CI archive fetch
+- Parent `4cdb673e161ac82dbde048b4c6388c1742825824` created intake run 41336822081. The dedicated intake job reached Wikimedia, verified the first original image SHA-1, decoded and encoded it successfully, but correctly rejected output **314,594 bytes >270,000-byte artwork budget**. Therefore no art was imported yet; no false success.
+- Reduced elephant rescale to max 630px and Tankadere to max 640px with WebP quality 67; all source SHA-1 verifications and strict size budget remain enforced. Retest exact-head intake and continue to offline APK assets. No application data or runtime changed.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

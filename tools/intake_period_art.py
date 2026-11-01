@@ -20,7 +20,7 @@ ITEMS=[
  "url":"https://upload.wikimedia.org/wikipedia/commons/1/1c/Around_the_world_in_eighty_days_%281873%29_%2814781095701%29.jpg",
  "commons":"https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14781095701).jpg",
  "expected_sha1":"3e6023d89833734936fd68b8163f5b13252a1339",
- "year":1873,"max_width":720,
+ "year":1873,"max_width":630,
  "scene":"Phileas Fogg and Passepartout meet Kiouni, the elephant, chapter XI",
  "chapter":10
  },
@@ -40,7 +40,7 @@ ITEMS=[
  "url":"https://upload.wikimedia.org/wikipedia/commons/c/cb/%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_34.jpg",
  "commons":"https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_34.jpg",
  "expected_sha1":"6cede9030b81f8312ace0da3aa3cfda0482328d4",
- "year":1872,"max_width":720,
+ "year":1872,"max_width":640,
  "scene":"The small sailing ship Tankadere battles high waves, chapter XXI",
  "chapter":20
  }
@@ -60,7 +60,7 @@ for item in ITEMS:
     height=round(original.height*item["max_width"]/original.width)
     original=original.resize((item["max_width"],height),Image.Resampling.LANCZOS)
   dest=OUT/item["file"]
-  original.save(dest,format="WEBP",quality=82,method=6)
+  original.save(dest,format="WEBP",quality=67,method=6)
   contents=dest.read_bytes()
   if not(contents.startswith(b"RIFF") and b"WEBP" in contents[:16]) or len(contents)>270000:
     raise RuntimeError(f"Invalid or oversized WebP {dest}: {len(contents)}")
