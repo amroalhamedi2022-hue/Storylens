@@ -68,3 +68,8 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Every source has original Git SHA-1 and size, is checked byte-for-byte through `tools/literature-originals.test.cjs` added to Android CI; license notice copied. Updates source queue and provenance.
 - Explicitly UNPUBLISHED: the complete natural Arabic translation, legal applicability beyond US, historic chapter-specific illustrations and device acceptance are all unresolved. This is genuine English source acquisition, not finished bilingual integration or authored fiction.
 - Exact new HEAD CI PENDING (prior UI fix CI may be canceled due concurrent workflow). No production signed APK claim.
+
+### 2026-11-01 — C01/C05: second full authentic classic in different genre
+- Parent HEAD `5e9122921edca7e898df9a1879c0e476605010f9`. Full original **The Lost World** (1912, science/adventure, 16 complete English chapters, 454904 upstream UTF-8 source bytes) staged byte-for-byte from Standard Ebooks pinned `77cda24ba881969982a09063e9f6c7651d87a728` in `docs/literature/staging/the-lost-world/`.
+- Each source file has upstream Git SHA-1/size locked in manifest and tested in new `tools/literature-sci-fi.test.cjs` via Android CI. Preserved source license from its publisher. **No AI-written stories, no shortened chapters.**
+- Not displayed in APK: missing entire contextual Arabic companion, editorial and distribution rights checks, period matched in-book illustrations, real device test. This is the SECOND truly full source, broadening beyond detective fiction. Exact new CI pending.

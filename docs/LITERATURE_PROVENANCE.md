@@ -449,3 +449,7 @@ merely because its title is present in a roadmap.
 ## 2026-11-01 — A Study in Scarlet 14-chapter exact-source staging
 
 Arthur Conan Doyle, English original, 1887. Complete narrative is 7 chapters Part I + 7 Part II. Standard Ebooks original source repo: https://github.com/standardebooks/arthur-conan-doyle_a-study-in-scarlet/tree/87889a2e628e720600cc1c4155428637c9ee35eb/src/epub/text . **14 upstream Git blob SHA-1 hashes preserved exactly** under `docs/literature/staging/a-study-in-scarlet` with a deterministic Node regression. All historical prose was copied byte-for-byte, not rewritten or synthesized. The complete EN-to-AR contextual companion is NOT available; license territorial applicability, old artwork and editorial quality still require checks. Stage is not included in APK.
+
+## 2026-11-01 — The Lost World: all 16 original chapters staged without rewriting
+
+Authentic unabridged original English 1912 novel, 16/16 chapters from pinned Standard Ebooks `77cda24ba881969982a09063e9f6c7651d87a728`; declared 75,964 words. Source exact XHTML bytes and SHA-1 checksums in `docs/literature/staging/the-lost-world/manifest.json`, verified by `tools/literature-sci-fi.test.cjs`. The work is categorized scientific exploration/classic adventure, not detective-only, and no images/modern illustrations have been copied. Unpublished until complete contextually written natural Arabic translation, rights per territory and licensed historical illustrations. US rights statement from Standard Ebooks does NOT prove worldwide rights.
