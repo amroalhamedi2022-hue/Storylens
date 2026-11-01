@@ -138,6 +138,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Historical manifest integrity test now validates **five** images with file sizes <270KB, original SHA-1 and packaged SHA-256; source/companion tests and real Chromium chapter/figure/paragraph tests now include both new chapters. Removed one-time workflow image publisher to prevent future overwrites or unnecessary network work.
 - New exact-head Android + Chromium CI PENDING. Xiaomi Pad 5 120Hz, editorial Arabic translation review and stable signing still OPEN.
 
+### 2026-11-01 — UX01 / UX04 / QA01: only source-backed Verne scenes, plus new screenshot evidence
+- Parent HEAD checked `a329a806f820556180c3836dba14954319970af6`. User's standing request forbids decorative SVG/abstract story pictures in the historical book. Production Verne reader no longer falls back to the legacy generic SVG chapter scene when no verified archival plate exists; older saved short-story art remains untouched for backward compatibility.
+- New real-Chromium screenshot fixtures create phone-sized evidence **focused on the new authentic archive engravings** in Towle V and XX, not merely the home-page cover. CI uploads `verne-original-news-ch05.png` and `verne-original-cabin-ch20.png` for independent inspection.
+- Corresponding static source test rejects abstract fallback reintroduction. Full exact-head CI and screenshot review PENDING; no claim of measured 120Hz or stable release signing.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

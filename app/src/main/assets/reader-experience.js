@@ -1020,7 +1020,12 @@ renderReader=function(){
    }[state.chapter]||[]):[];
  const approvedArt=periodArt.length>0||curatedArt.some(item=>item&&safeArtPath.test(item.src||'')&&
   typeof item.alt==='string'&&!!item.alt.trim());
- const chapterScene=approvedArt?null:ltBuiltInChapterScene(chapter,sentences.length);
+ // A sourced historical novel must never silently fall back to the
+ // geometric/modern SVG art catalog when that chapter lacks a verified plate.
+ // Preserve those older illustrations for legacy saved short stories only.
+ const chapterScene=(approvedArt||
+   state.story.id==='around-the-world-in-eighty-days-towle')
+  ?null:ltBuiltInChapterScene(chapter,sentences.length);
  const inlineArt=chapterScene?[chapterScene,...periodArt,...curatedArt]:[...periodArt,...curatedArt];
  const usedAnchors=new Set();
  // Ignore invalid catalog entries without allowing them to consume the 12-image budget.

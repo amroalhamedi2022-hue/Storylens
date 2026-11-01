@@ -38,6 +38,8 @@ assert.match(css,/background-image:url\("art\/verne-kiouni-1873\.webp"\)!importa
 assert.equal((scope.match(/credit:uiText\(/g)||[]).length,5,
  'all original archive illustration credits are localized in Arabic and English');
 assert.ok(!scope.includes('http:')&&!scope.includes('https:'),'art must never fetch online during reading');
+assert.match(js,/state\.story\.id==='around-the-world-in-eighty-days-towle'\)\s*\?null:ltBuiltInChapterScene/,
+ 'published historical classic cannot substitute abstract SVG for an unsourced scene');
 const yaml=fs.readFileSync('.github/workflows/android.yml','utf8');
 assert.ok(!yaml.includes('historic_art_intake:'),'one-time original downloader removed after asset commit');
 assert.ok(!yaml.includes('verne_additional_art_intake:'),'second batch archive downloader removed after source verification');

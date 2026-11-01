@@ -433,6 +433,38 @@ tests["historic-verne-plates"] = r"""(async function(){
  document.body.setAttribute('data-lt-historic-errors',errors.join(' | '));
 })();""";
 
+tests["historic-preview-news"] = r"""(async function(){
+ try{
+  await window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+  put('chapter_around-the-world-in-eighty-days-towle',4);
+  openStory('around-the-world-in-eighty-days-towle');
+  state.chapter=4;renderReader();
+  const picture=document.querySelector('.reader img[src="art/verne-news-readers-1873.webp"]');
+  if(!picture)throw Error('Historic chapter image not in rendered reader');
+  picture.loading='eager';
+  picture.scrollIntoView({block:'center',behavior:'instant'});
+  await new Promise(resolve=>setTimeout(resolve,500));
+  document.body.setAttribute('data-lt-historic-preview','PASS');
+ }catch(e){document.body.setAttribute('data-lt-historic-preview','FAIL');
+           document.body.setAttribute('data-lt-historic-preview-errors',e.message)}
+})();""";
+
+tests["historic-preview-cabin"] = r"""(async function(){
+ try{
+  await window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+  put('chapter_around-the-world-in-eighty-days-towle',19);
+  openStory('around-the-world-in-eighty-days-towle');
+  state.chapter=19;renderReader();
+  const picture=document.querySelector('.reader img[src="art/verne-tankadere-cabin-1873.webp"]');
+  if(!picture)throw Error('Historic chapter image not in rendered reader');
+  picture.loading='eager';
+  picture.scrollIntoView({block:'center',behavior:'instant'});
+  await new Promise(resolve=>setTimeout(resolve,500));
+  document.body.setAttribute('data-lt-historic-preview','PASS');
+ }catch(e){document.body.setAttribute('data-lt-historic-preview','FAIL');
+           document.body.setAttribute('data-lt-historic-preview-errors',e.message)}
+})();""";
+
 for name,script in list(tests.items()):
  if "openStory('around-the-world-in-eighty-days-towle')" not in script:
   continue
