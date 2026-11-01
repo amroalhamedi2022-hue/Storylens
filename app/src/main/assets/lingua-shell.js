@@ -725,6 +725,80 @@ function removeLegacyGenreFilters(section){
  filters.remove();
  return true;
 }
+
+/* Editorial promise: the primary library is NOVELS, never two-page stories.
+ * The complete source catalog stays in memory/storage for old reading progress,
+ * saved words and backups. The 37-chapter licensed classic is lazy metadata. */
+function isFullLengthNovel(story){
+ if(!story||typeof story!=='object')return false;
+ const loaded=Array.isArray(story.chapters)?story.chapters.length:0;
+ const declared=Number.isInteger(story.totalChapters)?story.totalChapters:0;
+ return Math.max(loaded,declared)>=12;
+}
+function decorateNovelShelf(section){
+ const shelf=section?.querySelector('.shelf');
+ if(!shelf)return;
+ shelf.classList.add('lt-novel-shelf');
+ const cards=Array.from(shelf.querySelectorAll('.card'));
+ let novels=0,visible=0;
+ for(const card of cards){
+  const cover=card.querySelector('[data-lt-cover-story]');
+  const id=cover?.getAttribute('data-lt-cover-story');
+  const story=catalog.stories.find(item=>item.id===id);
+  if(!isFullLengthNovel(story)){
+   // Remove only library DOM nodes. Never delete source/catalog/saved data.
+   card.remove();
+   continue;
+  }
+  novels++;
+  if(!card.hidden)visible++;
+  card.classList.add('lt-novel-card');
+  card.setAttribute('role','button');
+  card.setAttribute('tabindex','0');
+  card.setAttribute('aria-label',(rtl()?'افتح رواية ':'Open novel ')+story.title);
+  card.addEventListener('keydown',event=>{
+   if(event.target!==card||(event.key!=='Enter'&&event.key!==' '))return;
+   event.preventDefault();openStory(story.id);
+  });
+  if(cover){
+   cover.classList.add('lt-book-cover');
+   const title=document.createElement('span');
+   title.className='lt-book-cover-title';
+   title.textContent=story.title;
+   title.lang=story.sourceLanguage==='ar'?'ar':'en';
+   title.dir=story.sourceLanguage==='ar'?'rtl':'ltr';
+   cover.replaceChildren(title);
+  }
+  const content=card.querySelector('.card-content');
+  if(content){
+   const count=Math.max(story.chapters?.length||0,story.totalChapters||0);
+   const detail=document.createElement('span');
+   detail.className='lt-novel-volume';
+   detail.textContent=rtl()?count+' فصلًا · رواية طويلة':count+' chapters · Full-length novel';
+   content.appendChild(detail);
+  }
+ }
+ const counter=section.querySelector('.stl-visible-count');
+ if(counter)counter.textContent=(rtl()?'الروايات الظاهرة: ':'Visible novels: ')+visible+' / '+novels;
+ section.querySelector('.stl-empty-shelf')?.remove();
+ const heading=document.createElement('div');
+ heading.className='lt-novel-shelf-heading';
+ const title=document.createElement('h2');
+ title.textContent=rtl()?'مكتبة الروايات':'The Novel Library';
+ const subtitle=document.createElement('p');
+ subtitle.textContent=rtl()?'كتب كاملة، لا قصص قصيرة':'Complete books, not short stories';
+ heading.append(title,subtitle);
+ shelf.parentNode.insertBefore(heading,shelf);
+ if(!visible){
+  const empty=document.createElement('p');
+  empty.className='lt-novel-empty';
+  empty.textContent=rtl()
+   ?'لا توجد رواية طويلة مطابقة لهذا القسم أو مستوى اللغة حاليًا. اختر «الكل» من القائمة لعرض الروايات المتاحة.'
+   :'No full-length novel matches this category or level yet. Choose All stories from the menu to see available novels.';
+  shelf.parentNode.insertBefore(empty,shelf.nextSibling);
+ }
+}
+
 function decorateLibrary(){
  const section=document.querySelector('.library');
  if(!section||state.page!=='library')return;
@@ -746,6 +820,7 @@ function decorateLibrary(){
  section.querySelector('.stl-discovery-title')?.remove();
  section.querySelectorAll(':scope > p.quiet').forEach(p=>p.remove());
  section.querySelectorAll('.shelf .card .sub').forEach(p=>p.remove());
+ decorateNovelShelf(section);
  section.querySelectorAll('.shelf [data-lt-cover-story]').forEach(cover=>{
   const item=catalog.stories.find(story=>story.id===cover.getAttribute('data-lt-cover-story'));
   if(item?.sourceLanguage==='ar'){
@@ -830,7 +905,7 @@ function decorateLibrary(){
 
 }
 library=function(){originalLibrary();decorateLibrary();};
-global.LinguaShell={applyTheme,applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,
+global.LinguaShell={applyTheme,applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,isFullLengthNovel,
  isDrawerOpen:()=>opened,themeNames:[...themeNames],searchChapters,invalidateChapterSearch,openChapterSearch,jumpToChapterHit};
 /* LT-09/06 accessibility: a visible modal must own keyboard focus.
  * Trap Tab/Shift+Tab in Settings or the genre drawer; Escape dismisses the

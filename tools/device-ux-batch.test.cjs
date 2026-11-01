@@ -64,3 +64,31 @@ a.equal(headerClasses.has('lt-header-concealed'),false,'drawer restores header')
 scrollTo(70);
 a.equal(headerClasses.has('lt-header-concealed'),false,'near top header stays visible');
 console.log('PASS: menu icon nonselectable and smooth header slow-scroll hysteresis');
+
+
+/* Novel-only visual shelf. Existing short fiction stays saved in the catalog,
+   but only long-form books appear on the front-facing bookcase. */
+const source = read('app/src/main/assets/lingua-shell.js');
+const a1 = source.indexOf('function isFullLengthNovel(story){');
+const a2 = source.indexOf('\nfunction decorateNovelShelf(section){',a1);
+a.ok(a1>=0&&a2>a1,'real novel classifier is implemented');
+const novelContext={};
+vm.runInNewContext(source.slice(a1,a2)+'\nglobalThis.classify=isFullLengthNovel;',novelContext,{timeout:2000});
+a.equal(novelContext.classify({chapters:[{},{}]}),false,'two-chapter story is excluded');
+a.equal(novelContext.classify({chapters:[{},{},{},{},{}]}),false,'five-chapter novella is excluded');
+a.equal(novelContext.classify({chapters:[],totalChapters:37}),true,'37-chapter lazy novel appears immediately');
+a.equal(novelContext.classify({chapters:Array.from({length:20},()=>({}))}),true);
+a.equal(novelContext.classify({chapters:[],totalChapters:0}),false,'empty placeholders not promoted');
+a.match(source,/decorateNovelShelf\(section\);/,'actual library is decorated');
+a.match(source,/card\.remove\(\);/,'short books removed only from the rendered shelf');
+a.match(source,/title\.textContent=story\.title/,'cover title uses safe DOM text, not injected HTML');
+a.match(source,/cover\.replaceChildren\(title\)/);
+a.match(css,/\.library \.shelf\.lt-novel-shelf\{/);
+a.match(css,/\.library \.lt-book-cover-title\{/);
+a.match(css,/prefers-reduced-motion:reduce/);
+const touchSource=read('app/src/main/assets/lt-tap-feedback.js');
+a.match(touchSource,/heldPointers=new Map\(\)/,'water press tracks finger id');
+a.match(touchSource,/pointercancel',releaseWaterPress/,'cancelled touches clean up');
+a.match(touchSource,/Math\.min\(260,Math\.ceil/,'GPU work capped');
+a.match(css,/\.lt-novel-card\.lt-water-pressed \.lt-book-cover/,'water press feedback styles the cover');
+console.log('PASS: novel-first cover title, short-story exclusion, water-press lifecycle');

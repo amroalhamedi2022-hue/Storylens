@@ -131,3 +131,119 @@ html[data-lt-english-font="hand"]{--lt-en-font:"Segoe Print","Bradley Hand",curs
  content:'';position:absolute;inset-inline:0;top:50%;height:2px;
  background:currentColor;transform:translateY(-50%);
 }
+
+
+/* Novel-first library: premium real-book covers, not short-story list rows.
+   All overlays are local CSS/text; no artwork requests or layout-frame JS. */
+.library .lt-novel-shelf-heading{
+ display:flex;justify-content:space-between;align-items:baseline;
+ gap:12px;flex-wrap:wrap;margin:20px 2px 14px;
+}
+.library .lt-novel-shelf-heading h2{
+ color:var(--ink);font-size:clamp(21px,4vw,30px);letter-spacing:-.02em;
+ line-height:1.3;margin:0;font-weight:850;
+}
+.library .lt-novel-shelf-heading p{margin:0;color:var(--sub);font-size:12px;font-weight:600}
+.library .shelf.lt-novel-shelf{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:22px 13px!important;align-items:start;justify-items:stretch;
+}
+.library .shelf.lt-novel-shelf .lt-novel-card{
+ display:flex!important;flex-direction:column!important;align-items:stretch!important;
+ grid-template-columns:none!important;grid-template-rows:none!important;
+ gap:8px!important;padding:3px!important;min-height:0!important;
+ max-height:none!important;overflow:visible!important;
+ border:0!important;background:transparent!important;box-shadow:none!important;
+ border-radius:16px!important;content-visibility:auto;
+ contain-intrinsic-size:auto 310px;
+ position:relative;
+}
+.library .shelf.lt-novel-shelf .lt-novel-card .lt-book-cover{
+ box-sizing:border-box;display:block!important;
+ position:relative!important;grid-column:auto!important;grid-row:auto!important;
+ flex:none!important;min-height:0!important;max-height:none!important;
+ width:100%!important;height:auto!important;aspect-ratio:0.705;
+ border-radius:7px 14px 14px 7px!important;
+ background-color:#374963!important;background-size:cover!important;
+ background-position:center!important;
+ box-shadow:4px 11px 20px #080e3533,inset 5px 0 5px #05081865!important;
+ isolation:isolate;overflow:hidden;
+ transition:transform .21s ease,box-shadow .21s ease;
+ -webkit-user-select:none!important;user-select:none!important;
+}
+.library .lt-book-cover::before{
+ content:'';pointer-events:none;position:absolute;inset:0;z-index:1;
+ background:linear-gradient(90deg,#02091352 0,transparent 9%),
+ linear-gradient(180deg,#0002 0%,transparent 20%,#06142436 48%,#050a19d9 100%);
+}
+.library .lt-book-cover-title{
+ display:block;position:absolute;z-index:2;inset-inline:10px;
+ bottom:13px;max-height:65%;overflow:hidden;
+ font:800 clamp(14px,3.1vw,24px)/1.18 Georgia,'Noto Naskh Arabic',serif;
+ text-align:center;color:#fffdf5;text-shadow:0 2px 6px #000b,0 0 18px #0009;
+ overflow-wrap:break-word;word-break:normal;
+ -webkit-user-select:none!important;user-select:none!important;
+ pointer-events:none;
+}
+.library .lt-book-cover-title[lang="ar"]{
+ font-family:var(--lt-ar-font,'Noto Naskh Arabic',system-ui),serif;
+ font-weight:850;line-height:1.55;
+}
+.library .shelf.lt-novel-shelf .lt-novel-card .card-content{
+ display:flex!important;align-self:stretch!important;justify-content:start!important;
+ grid-column:auto!important;grid-row:auto!important;
+ padding:4px 2px!important;gap:5px!important;
+ min-width:0!important;text-align:start!important;direction:inherit!important;
+}
+.library .lt-novel-card .card-content h2{
+ position:absolute!important;width:1px!important;height:1px!important;
+ padding:0!important;margin:-1px!important;overflow:hidden!important;
+ clip:rect(0,0,0,0)!important;white-space:nowrap!important;
+}
+.library .lt-novel-card .card-content .lvl{font-size:11px!important;letter-spacing:.04em}
+.library .lt-novel-card .card-content .desc{
+ display:none!important;
+}
+.library .lt-novel-volume{
+ display:block;color:var(--sub);font-size:12px;
+ line-height:1.4;font-weight:650;
+}
+.library .lt-novel-card .stl-favorite{
+ position:absolute!important;z-index:5;top:12px!important;inset-inline-end:12px!important;
+ inset-inline-start:auto!important;bottom:auto!important;
+ min-width:35px;min-height:35px;
+ border-radius:50%;background:#162438bd;color:white;backdrop-filter:none;
+}
+.library .lt-novel-card:hover .lt-book-cover{
+ transform:translateY(-3px);box-shadow:5px 14px 24px #080e3546!important;
+}
+.library .lt-novel-card.lt-water-pressed .lt-book-cover{
+ transform:translateY(1px) scale(.986);
+ box-shadow:2px 5px 14px #080e3542,inset 0 0 22px #a0f3ff7a!important;
+}
+.library .lt-novel-card:focus-visible{outline:3px solid var(--accent)!important;outline-offset:5px!important}
+.library .lt-novel-empty{
+ grid-column:1/-1;font-size:14px;color:var(--sub);
+ line-height:1.7;margin:12px 0;padding:22px;
+ border:1px solid #8190a240;border-radius:18px;
+}
+@media(min-width:620px){
+ .library .shelf.lt-novel-shelf{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:28px 21px!important}
+}
+@media(min-width:940px){
+ .library .shelf.lt-novel-shelf{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:31px 25px!important}
+}
+@media(max-width:360px){
+ .library .shelf.lt-novel-shelf{gap:14px 10px!important}
+ .library .lt-book-cover-title{font-size:13px;inset-inline:7px;bottom:8px}
+}
+@media(prefers-reduced-motion:reduce){
+ .library .lt-novel-card .lt-book-cover{transition:none!important}
+ .library .lt-novel-card:hover .lt-book-cover{transform:none!important}
+}
+/* Water-press feedback is held until finger lift, then disappears immediately;
+   tiny composited transforms only, never an infinite animation. */
+button.lt-water-pressed,.lt-theme-choice.lt-water-pressed{
+ filter:brightness(1.09)!important;
+ box-shadow:inset 0 0 17px #bcf8ff8a,0 0 0 1px #b9fbff70!important;
+}
