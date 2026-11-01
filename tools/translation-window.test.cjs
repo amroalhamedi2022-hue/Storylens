@@ -33,7 +33,7 @@ window.fullTranslation();
 assert.equal(state.page,'translation');
 assert.equal(closed,1);
 assert.equal(originalCalls,0,'full book is not built by the old renderer');
-assert.match(root.innerHTML,/<h2 lang="ar" dir="rtl">الفصل 14<\/h2>/,\n 'Arabic companion chapter title remains Arabic, not source English');
+assert.match(root.innerHTML,/<h2 lang="ar" dir="rtl">الفصل 14<\/h2>/);
 assert.match(root.innerHTML,/الترجمة العربية 14/);
 assert.doesNotMatch(root.innerHTML,/الترجمة العربية 13/);
 assert.doesNotMatch(root.innerHTML,/English source 37/);

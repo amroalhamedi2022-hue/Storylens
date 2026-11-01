@@ -21,6 +21,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Updated the test to require the real Arabic `h2 lang="ar" dir="rtl"` heading. Production renderer, book data, original text, saved progress and app signing unchanged.
 - New exact-HEAD CI PENDING; do not mark this batch green until all jobs pass.
 
+### 2026-11-01 — QA01: correct escaped-newline test syntax from connector write
+- CI 41307420688 on 89d5b4 **FAILED** during `translation-window.test.cjs` parsing: prior test-only update accidentally inserted literal `\\n` between assertion arguments (Node `SyntaxError`). No app production error was reported; all preceding tests had passed.
+- Removed the bad literal sequence; parsed the **complete corrected test with V8 Function compiler** before commit. No renderer/content changes.
+- Exact-head full CI **PENDING**; follow up on the actual run before reporting pass.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
