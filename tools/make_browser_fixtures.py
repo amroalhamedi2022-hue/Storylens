@@ -13,7 +13,7 @@ tests={
  "backup":"""StoryLensBackup.open();document.body.setAttribute('data-stl-screenshot','backup');""",
  "verne14":r"""(function(){document.documentElement.lang='ar';document.documentElement.dir='rtl';const errors=[];try{openStory('around-the-world-in-eighty-days-towle');stlChapter(13)}catch(e){errors.push(e.message)}const reader=document.querySelector('.reader');if(reader&&(!reader.querySelector('.reader-label bdi[dir="ltr"]')||!reader.querySelector('.reader-label bdi[dir="rtl"]')))errors.push('Arabic reader label direction isolation missing');const ok=state.page==='reader'&&state.chapter===13&&state.story?.id==='around-the-world-in-eighty-days-towle'&&!!reader&&reader.textContent.includes('Calcutta');document.body.setAttribute('data-storylens-qa',ok?'PASS':'FAIL');document.body.setAttribute('data-storylens-qa-errors',errors.join(' | '));document.body.setAttribute('data-stl-screenshot','verne14')})();""",
  "flow":r"""
-(function(){
+(async function(){
  const passes=[],errors=[];
  function check(name,fn){try{if(!fn())throw Error('false');passes.push(name)}catch(err){errors.push(name+': '+err.message)}}
  // Underlying source catalog stays complete, but only long novels are discoverable.
@@ -47,7 +47,20 @@ tests={
  check('bookmark restored',()=>state.chapter===0);
  try{fullTranslation()}catch(e){errors.push('translation: '+e.message)}
  check('full translation',()=>state.page==='translation'&&document.querySelector('.arabic-page')?.textContent.includes('التحقيق'));
- try{backToReader();libraryBack();cycleVisualTheme()}catch(e){errors.push('theme: '+e.message)}
+ // The real reader exits asynchronously: history popstate or 480ms fallback,
+ // then up to 190ms closing motion. Await the library before theme assertions.
+ try{
+  backToReader();libraryBack();
+  await new Promise((resolve,reject)=>{
+   const deadline=Date.now()+1450;
+   const poll=()=>{
+    if(state.page==='library'&&document.querySelector('.library .shelf'))return resolve();
+    if(Date.now()>deadline)return reject(Error('reader exit timed out: '+JSON.stringify({page:state.page,closing:window.LinguaStoryNavigation?.isClosing?.(),waiting:window.LinguaStoryNavigation?.isWaitingForHistory?.()})));
+    setTimeout(poll,35);
+   };poll();
+  });
+  cycleVisualTheme();
+ }catch(e){errors.push('theme: '+e.message)}
  check('switch theme',()=>state.uiTheme==='aqua'&&document.body.classList.contains('theme-aqua'));
  // Theme navigation rebuilds the shelf; check actual visible book cards,
   // not a fragile equality to the whole source catalog (including hidden shorts).
