@@ -182,6 +182,39 @@ tests["lazy-content"] = r"""(async function(){
  document.body.setAttribute('data-lt-lazy-qa-errors',errors.join(' | '));
 })();""";
 
+
+# Real browser acceptance for native Arabic prose + contextual English.
+tests["arabic-first"] = r"""(async function(){
+ const errors=[];
+ const check=(label,fn)=>{try{if(!fn())errors.push(label)}catch(e){errors.push(label+': '+e.message)}};
+ try{
+  filterGenre('arabic-originals');
+  check('Arabic category visible',()=>state.genre==='arabic-originals'&&document.querySelector('.library .lt-location-title')?.textContent==='القصص العربية');
+  check('Arabic book in category',()=>!!document.querySelector('.library [data-lt-cover-story="thirteenth-bell-arabic"]'));
+  openStory('thirteenth-bell-arabic');
+  await new Promise(resolve=>setTimeout(resolve,650));
+  check('story is Arabic source',()=>state.story?.sourceLanguage==='ar'&&state.page==='reader');
+  check('Arabic passage is native RTL',()=>{
+   const p=document.querySelector('.reader .sentence');
+   return p?.getAttribute('lang')==='ar'&&p.getAttribute('dir')==='rtl'&&p.textContent.includes('المحققة مريم');
+  });
+  check('English is not falsely used as source',()=>!document.querySelector('.reader .sentence')?.textContent.includes('investigator Maryam'));
+  check('illustration stays inside the prose',()=>!!document.querySelector('.reader .lt-inline-illustration img[src^="data:image/svg+xml"]'));
+  state.inline=true;renderReader();
+  check('inline English contextual translation',()=>{
+   const p=document.querySelector('.reader .inline-en');
+   return p?.getAttribute('lang')==='en'&&p.getAttribute('dir')==='ltr'&&p.textContent.includes('investigator Maryam');
+  });
+  fullTranslation();
+  check('full English companion opens',()=>state.page==='translation'&&!!document.querySelector('.lt-english-companion .arabic-inner p[lang="en"]'));
+  check('English complete text',()=>document.querySelector('.lt-english-companion')?.textContent.includes('clock tower'));
+  backToReader();
+  check('back to Arabic original',()=>state.page==='reader'&&document.querySelector('.reader .sentence')?.getAttribute('lang')==='ar');
+ }catch(e){errors.push('runtime: '+e.message)}
+ document.body.setAttribute('data-lt-arabic-qa',errors.length?'FAIL':'PASS');
+ document.body.setAttribute('data-lt-arabic-errors',errors.join(' | '));
+})();""";
+
 for name,script in list(tests.items()):
  if "openStory('around-the-world-in-eighty-days-towle')" not in script:
   continue
