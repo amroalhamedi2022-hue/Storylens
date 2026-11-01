@@ -16,6 +16,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Source changes committed to this branch; new exact-HEAD CI is **PENDING** at commit creation (do not infer success). Physical Xiaomi Pad 5 120Hz/long-book memory and translation editorial acceptance **NOT TESTED**.
 - Next: verify exact-head CI and browser flow, then check companion chapter switching/bookmark return on real Android, continue period art and full licensed original translations.
 
+### 2026-11-01 — QA01: fix only the companion test's incorrect localized title expectation
+- Exact-parent CI 41307298055 on `fed668a` **FAILED** in `Validate curated offline content` at `translation-window.test.cjs:36`. The production actually rendered the correct Arabic companion heading `الفصل 14`, but the test incorrectly demanded `English chapter 14`. Verified failure against GitHub Actions job 124850198106 logs.
+- Updated the test to require the real Arabic `h2 lang="ar" dir="rtl"` heading. Production renderer, book data, original text, saved progress and app signing unchanged.
+- New exact-HEAD CI PENDING; do not mark this batch green until all jobs pass.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
