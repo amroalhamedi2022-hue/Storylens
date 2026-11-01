@@ -408,6 +408,14 @@ tests["historic-verne-plates"] = r"""(async function(){
    check('chapter '+item.index+' image preserves reserved aspect ratio',!!picture?.style?.aspectRatio);
    const source=document.querySelector('.reader [data-i="'+item.anchor+'"]');
    check('chapter '+item.index+' paragraph anchor',!!source);
+   // A real chapter-scene image is deliberately lazy. Ask Chromium to
+   // decode this offscreen image in QA without changing production loading.
+   if(picture){
+    picture.loading='eager';
+    if(typeof picture.decode==='function'){
+     try{await picture.decode()}catch(_){}
+    }
+   }
    check('chapter '+item.index+' image loaded from APK',!!picture?.complete&&picture?.naturalWidth>0);
   }
  }catch(e){errors.push('runtime: '+e.message)}

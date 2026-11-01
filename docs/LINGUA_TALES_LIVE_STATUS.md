@@ -106,6 +106,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Added Chromium integration fixture for chapters III, XI, XXI to verify actual mounted figures, their source `art/*.webp`, paragraph anchor, bilingual credit, reserved image aspect ratio and decoded local bitmap. Added the fixture to Android CI and strengthened static checks. This is source/asset behavior verification, not real-device art aesthetic sign-off.
 - CI for this new exact HEAD PENDING; 120Hz/tablet, full literary translations and stable signer still OPEN.
 
+### 2026-11-01 — UX04 / QA01: respect real-reader lazy image loading in browser verification
+- Latest parent SHA `2aed6993c407652473384e6987d8a278d9ed6cea` examined. CI 41338912289 **FAILED only at the newly added Chromium historic-plates test**: illustrations at chapter III and XXI existed with correct anchors/local paths, but `naturalWidth` was 0 because those figures were offscreen with intentional `loading="lazy"`; chapter XI bitmap passed. All Node, Kotlin, APK, source, editorial and earlier Chromium stages passed.
+- QA fixture now switches ONLY its own inspected image elements to `loading='eager'`, awaits their real `decode()`, then tests `complete && naturalWidth>0`. Production images remain `loading="lazy"` and `decoding="async"`, preserving lower memory/battery burden.
+- New exact-head CI PENDING. Physical device and editorial/art market rights unchanged.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
