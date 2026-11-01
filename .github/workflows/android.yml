@@ -17,6 +17,49 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  verne_third_original_art_intake:
+    permissions:
+      contents: write
+    if: github.event_name == 'push' && github.ref == 'refs/heads/automation/storylens-dictionary-saved-words-20261023'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned offline encoder
+        run: python3 -m pip install --disable-pip-version-check --quiet 'Pillow==11.3.0'
+      - name: Verify SHA-1 against individually reviewed Commons original files
+        run: python3 tools/intake_verne_third_plates.py
+      - name: Commit two verified compressed images and SHA-256 provenance
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          BRANCH='automation/storylens-dictionary-saved-words-20261023'
+          CURRENT="$(git ls-remote origin "refs/heads/$BRANCH" | cut -f1)"
+          test "$CURRENT" = "$EXPECTED_HEAD" || { echo "Other writer changed branch, abort"; exit 1; }
+          mkdir -p app/src/main/assets/art
+          cp /tmp/lt-verified-1873-third/*.webp app/src/main/assets/art/
+          python3 - <<'PY'
+          import json,pathlib,hashlib
+          path=pathlib.Path('docs/literature/HISTORIC_VERNES_ASSETS.json')
+          before=json.loads(path.read_text(encoding='utf-8'))
+          after=json.loads(pathlib.Path('/tmp/lt-verified-1873-third/manifest.json').read_text(encoding='utf-8'))
+          assert len(before)==5 and len(after)==2,'unexpected concurrent source inventory'
+          for row in after:
+           binary=(pathlib.Path('app/src/main/assets/art')/row['file']).read_bytes()
+           assert hashlib.sha256(binary).hexdigest()==row['webp_sha256']
+           assert binary[:4]==b'RIFF' and binary[8:12]==b'WEBP'
+           assert not any(old['file']==row['file'] for old in before)
+          path.write_text(json.dumps(before+after,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('PASS: 7 source-era engravings with hash and provenance records')
+          PY
+          git config user.name 'lingua-tales-archive-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/literature/HISTORIC_VERNES_ASSETS.json app/src/main/assets/art/verne-calcutta-court-1873.webp app/src/main/assets/art/verne-singapore-carriage-1873.webp
+          git commit -m 'assets(literature): add two source-verified 1873 book engravings [skip ci]'
+          git push origin "HEAD:refs/heads/$BRANCH"
+
 
   build:
     runs-on: ubuntu-latest

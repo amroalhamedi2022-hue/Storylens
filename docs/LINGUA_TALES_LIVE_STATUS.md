@@ -196,6 +196,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Restored the three legacy-generator/test files exactly to their previously passing parent state, **without deleting any original archived content** or changing the production art filter. Added integration assertions in `tools/editorial.test.cjs` that extract the actual `LinguaAttachEditorialArt` function, supply a 37-chapter historical novel plus old saved fiction, and verify only the saved fiction is passed into the SVG generator, that its art is preserved, and cover hydration works once.
 - This is a CI repair and regression reinforcement, not a new runtime speed claim. Exact-head CI PENDING; artwork five genuine period WebPs, translation drafts and device acceptance unchanged.
 
+### 2026-11-01 — UX04 / C04: original 1873 Calcutta + Singapore scenes staged for source-hash intake
+- Verified Commons original scans and edition metadata: Calcutta court (file 14781888384, SHA-1 c4fffab7167cda36e68f5e505578f90829b204d0) and carriage through Singapore (14804101583, SHA-1 3a7368c6cdd1a021493effb5a00f603abff6fe22); both 1873 J. R. Osgood book pictures from NYPL, not modern/generated images. Matched against exact English source chapter XV paragraph index 19 and chapter XVII paragraph index 7 already in repo.
+- One-time archive GitHub job **PENDING** verifies original bytes against pinned SHA-1, converts to compressed WebP <=270KB each, generates packed SHA-256 and appends to historical manifest only if parent has exactly five. Safe GitHub HEAD lease refuses to overwrite Codex work. No runtime URL fetching or live image attachments until verified output exists. Commons rights signal 'no known copyright restrictions', not automatic world-wide sign-off.
+- Parent action at `536c0e0a471ea7502991cadb569326ef1ba56e71` under verification, no claim new images shipped yet. After archive commit: connect new scenes to English+Arabic paragraphs, remove one-time intake job, update source/translator/rights QA and exact-head Chrome/Android.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
