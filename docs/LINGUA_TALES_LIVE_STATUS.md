@@ -62,3 +62,9 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Fixed actual CSS filter leak: `.lt-novel-card[hidden]` now uses `display:none!important`, overriding the novel-card flex !important that could show excluded favorites/level entries. Fixed stale visible/total novel count and empty state via `refreshNovelShelf`, invoked on every user favorite/level/sort change without altering legacy catalog or data.
 - Browser journey asserts the legacy Arabic original is absent from the visible novel-only shelf but **still preserved** in source and directly opens with original Arabic, contextual English, illustrated reading and full companion. Added regressions for CSS and filter-hook code.
 - Fresh exact-head CI pending; no user device or native signing/120Hz claim. Next: ensure green Chromium, then source real historic books and expand actual reading UX.
+
+### 2026-11-01 — C01/C04 authentic full-length Sherlock source acquisition
+- Parent HEAD before acquisition: `a6d4968d6da65343e0a8b6116cf3b8c056c39368`. Acquired **14/14** authentic English XHTML chapters for `A Study in Scarlet` (1887; Standard Ebooks upstream pinned `87889a2e628e720600cc1c4155428637c9ee35eb`), **264933 original UTF-8 bytes**, in `docs/literature/staging/a-study-in-scarlet`.
+- Every source has original Git SHA-1 and size, is checked byte-for-byte through `tools/literature-originals.test.cjs` added to Android CI; license notice copied. Updates source queue and provenance.
+- Explicitly UNPUBLISHED: the complete natural Arabic translation, legal applicability beyond US, historic chapter-specific illustrations and device acceptance are all unresolved. This is genuine English source acquisition, not finished bilingual integration or authored fiction.
+- Exact new HEAD CI PENDING (prior UI fix CI may be canceled due concurrent workflow). No production signed APK claim.

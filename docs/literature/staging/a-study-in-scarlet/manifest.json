@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "doyle-a-study-in-scarlet-1887",
+  "originalTitle": "A Study in Scarlet",
+  "author": "Arthur Conan Doyle",
+  "originalLanguage": "en",
+  "originalPublicationYear": 1887,
+  "genre": [
+    "classic detective",
+    "deduction",
+    "investigation",
+    "mystery"
+  ],
+  "originalSourceComplete": true,
+  "source": {
+    "publisher": "Standard Ebooks",
+    "editionURL": "https://standardebooks.org/ebooks/arthur-conan-doyle/a-study-in-scarlet",
+    "upstreamRepo": "standardebooks/arthur-conan-doyle_a-study-in-scarlet",
+    "upstreamCommit": "87889a2e628e720600cc1c4155428637c9ee35eb",
+    "gutenbergSource": "https://www.gutenberg.org/ebooks/244",
+    "declaredFullWordCount": 43367,
+    "rights": "Source text/art believed US public domain. Standard Ebooks contributions CC0; review redistribution territory separately."
+  },
+  "originalChapters": [
+    {
+      "number": 1,
+      "part": 1,
+      "file": "chapter-1-1.xhtml",
+      "upstreamGitBlobSha": "f90d85bc6f97d387cf20b06222f155a01d332a2a",
+      "bytes": 17368
+    },
+    {
+      "number": 2,
+      "part": 1,
+      "file": "chapter-1-2.xhtml",
+      "upstreamGitBlobSha": "018eeea10e589d21fcb8271e1eb7beb1a1ee1228",
+      "bytes": 22121
+    },
+    {
+      "number": 3,
+      "part": 1,
+      "file": "chapter-1-3.xhtml",
+      "upstreamGitBlobSha": "9d2469cf9a1f1aff54618a1b0b480c4d126cfef5",
+      "bytes": 24389
+    },
+    {
+      "number": 4,
+      "part": 1,
+      "file": "chapter-1-4.xhtml",
+      "upstreamGitBlobSha": "8c1d4a1dbe0b8c7ff592657e55bdd2cf768273c3",
+      "bytes": 15365
+    },
+    {
+      "number": 5,
+      "part": 1,
+      "file": "chapter-1-5.xhtml",
+      "upstreamGitBlobSha": "7eef9111c3071b1fe7ee606112f0ca01abc824dc",
+      "bytes": 15476
+    },
+    {
+      "number": 6,
+      "part": 1,
+      "file": "chapter-1-6.xhtml",
+      "upstreamGitBlobSha": "dbae2b8151d23c3013236004606a13025a7a2920",
+      "bytes": 21357
+    },
+    {
+      "number": 7,
+      "part": 1,
+      "file": "chapter-1-7.xhtml",
+      "upstreamGitBlobSha": "58ca48469ec109d4d477ebb28829554c0266b77f",
+      "bytes": 20151
+    },
+    {
+      "number": 8,
+      "part": 2,
+      "file": "chapter-2-1.xhtml",
+      "upstreamGitBlobSha": "7fac8faf0d3506807173e66c7ef1daefc1a7064b",
+      "bytes": 22300
+    },
+    {
+      "number": 9,
+      "part": 2,
+      "file": "chapter-2-2.xhtml",
+      "upstreamGitBlobSha": "d3adc5fc6edd1d9a52ead7795753b59678636d49",
+      "bytes": 15502
+    },
+    {
+      "number": 10,
+      "part": 2,
+      "file": "chapter-2-3.xhtml",
+      "upstreamGitBlobSha": "3bb5060a416b21de50e52d4ad82338d4210b2cf9",
+      "bytes": 11500
+    },
+    {
+      "number": 11,
+      "part": 2,
+      "file": "chapter-2-4.xhtml",
+      "upstreamGitBlobSha": "36636bea0a5130f4703a415194d35a3a37190496",
+      "bytes": 20214
+    },
+    {
+      "number": 12,
+      "part": 2,
+      "file": "chapter-2-5.xhtml",
+      "upstreamGitBlobSha": "7bd70c4a1a87b04810fcd67bdf1208349b29adf9",
+      "bytes": 20908
+    },
+    {
+      "number": 13,
+      "part": 2,
+      "file": "chapter-2-6.xhtml",
+      "upstreamGitBlobSha": "c1374d64df8c09ccef64fdd1aea287fed5ec51d9",
+      "bytes": 25123
+    },
+    {
+      "number": 14,
+      "part": 2,
+      "file": "chapter-2-7.xhtml",
+      "upstreamGitBlobSha": "faac06ec3b3c321c3211eb5e66d37f60b92b4353",
+      "bytes": 13159
+    }
+  ],
+  "requiredBeforeAppPublication": {
+    "completeContextualArabicTranslation": false,
+    "arabicEditorialReview": false,
+    "periodIllustrationsCleared": false,
+    "territorialRedistributionReviewed": false,
+    "wholeBookReadingQA": false
+  },
+  "publicationStatus": "STAGED_SOURCE_ONLY",
+  "publishable": false,
+  "notes": "Unmodified original source bytes retained and checked by Git SHA-1. This authentic long novel is NOT shown as a fully translated book until companion, rights and illustrations pass."
+}
