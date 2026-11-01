@@ -158,6 +158,7 @@ html[data-lt-english-font="hand"]{--lt-en-font:"Segoe Print","Bradley Hand",curs
  contain-intrinsic-size:auto 310px;
  position:relative;
 }
+.library .shelf.lt-novel-shelf .lt-novel-card[hidden]{display:none!important}
 .library .shelf.lt-novel-shelf .lt-novel-card .lt-book-cover{
  box-sizing:border-box;display:block!important;
  position:relative!important;grid-column:auto!important;grid-row:auto!important;

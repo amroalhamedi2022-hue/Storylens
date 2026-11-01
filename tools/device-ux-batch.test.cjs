@@ -97,3 +97,9 @@ console.log('PASS: novel-first cover title, short-story exclusion, water-press l
 a.match(source,/catalog\.stories\.filter\(isFullLengthNovel\)/);
 a.match(source,/catalog\.genres\.filter\(genre=>genresWithNovels\.has\(genre\.id\)\)/);
 a.match(source,/searchChapters\(q,40,true\)/,'visible search returns only novels');
+
+// Real novel-discovery filters cannot expose hidden cards through !important flex.
+a.match(css,/\.lt-novel-card\[hidden\]\{display:none!important\}/,'hidden book covers remain invisible');
+a.match(shell,/function refreshNovelShelf\(section\)\{/,'counter state follows live novel cards');
+a.match(read('app/src/main/assets/library-experience.js'),/LinguaShell\?\.refreshNovelShelf/,'level, favorites and sorting update the novel shelf');
+console.log('PASS: filtered novels stay hidden, counters and empty states stay synchronized');

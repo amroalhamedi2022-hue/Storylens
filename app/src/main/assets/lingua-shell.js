@@ -738,12 +738,30 @@ function isFullLengthNovel(story){
  const declared=Number.isInteger(story.totalChapters)?story.totalChapters:0;
  return Math.max(loaded,declared)>=12;
 }
+// Keep live novel counts and empty-state accurate after favorite/level/sort filtering.
+// The legacy source catalog, bookmarks and saved words must not be touched.
+function refreshNovelShelf(section){
+ const shelf=section?.querySelector('.shelf.lt-novel-shelf');
+ if(!shelf)return;
+ const cards=[...shelf.querySelectorAll('.lt-novel-card')];
+ const visible=cards.filter(card=>!card.hidden).length;
+ const counter=section.querySelector('.stl-visible-count');
+ if(counter)counter.textContent=(rtl()?'الروايات الظاهرة: ':'Visible novels: ')+visible+' / '+cards.length;
+ section.querySelector('.lt-novel-empty')?.remove();
+ if(visible)return;
+ const empty=document.createElement('p');
+ empty.className='lt-novel-empty';
+ empty.textContent=rtl()
+  ?'لا توجد روايات طويلة مطابقة للبحث أو مستوى اللغة أو المفضلة حاليًا. غيّر الفلاتر لعرض الروايات المتاحة.'
+  :'No full-length book matches this search, level, or favorites. Adjust filters to view available novels.';
+ shelf.parentNode.insertBefore(empty,shelf.nextSibling);
+}
 function decorateNovelShelf(section){
  const shelf=section?.querySelector('.shelf');
  if(!shelf)return;
  shelf.classList.add('lt-novel-shelf');
  const cards=Array.from(shelf.querySelectorAll('.card'));
- let novels=0,visible=0;
+
  for(const card of cards){
   const cover=card.querySelector('[data-lt-cover-story]');
   const id=cover?.getAttribute('data-lt-cover-story');
@@ -753,8 +771,6 @@ function decorateNovelShelf(section){
    card.remove();
    continue;
   }
-  novels++;
-  if(!card.hidden)visible++;
   card.classList.add('lt-novel-card');
   card.setAttribute('role','button');
   card.setAttribute('tabindex','0');
@@ -781,8 +797,6 @@ function decorateNovelShelf(section){
    content.appendChild(detail);
   }
  }
- const counter=section.querySelector('.stl-visible-count');
- if(counter)counter.textContent=(rtl()?'الروايات الظاهرة: ':'Visible novels: ')+visible+' / '+novels;
  section.querySelector('.stl-empty-shelf')?.remove();
  const heading=document.createElement('div');
  heading.className='lt-novel-shelf-heading';
@@ -792,14 +806,7 @@ function decorateNovelShelf(section){
  subtitle.textContent=rtl()?'كتب كاملة، لا قصص قصيرة':'Complete books, not short stories';
  heading.append(title,subtitle);
  shelf.parentNode.insertBefore(heading,shelf);
- if(!visible){
-  const empty=document.createElement('p');
-  empty.className='lt-novel-empty';
-  empty.textContent=rtl()
-   ?'لا توجد رواية طويلة مطابقة لهذا القسم أو مستوى اللغة حاليًا. اختر «الكل» من القائمة لعرض الروايات المتاحة.'
-   :'No full-length novel matches this category or level yet. Choose All stories from the menu to see available novels.';
-  shelf.parentNode.insertBefore(empty,shelf.nextSibling);
- }
+ refreshNovelShelf(section);
 }
 
 function decorateLibrary(){
@@ -915,7 +922,7 @@ function decorateLibrary(){
 
 }
 library=function(){originalLibrary();decorateLibrary();};
-global.LinguaShell={applyTheme,applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,isFullLengthNovel,
+global.LinguaShell={refreshNovelShelf,applyTheme,applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,isFullLengthNovel,
  isDrawerOpen:()=>opened,themeNames:[...themeNames],searchChapters,invalidateChapterSearch,openChapterSearch,jumpToChapterHit};
 /* LT-09/06 accessibility: a visible modal must own keyboard focus.
  * Trap Tab/Shift+Tab in Settings or the genre drawer; Escape dismisses the
