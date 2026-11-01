@@ -1,6 +1,6 @@
 # Lingua Tales — MASTER PROJECT PLAN / الخطة الرئيسية
 
-**Binding handoff for ALL future conversations, Codex, Claude, GitHub and other development agents.** Updated 2026-11-01. Repository: amroalhamedi2022-hue/Storylens. Work in draft PR #1 on branch automation/storylens-dictionary-saved-words-20261023, NOT main. The requirements here OVERRIDE contradictory older plans. For actual completion read **docs/LINGUA_TALES_LIVE_STATUS.md**; for real book links and edition/rights review read **docs/LITERATURE_SOURCE_QUEUE.md**. Always inspect latest PR HEAD and GitHub Actions before work.
+**Binding handoff for ALL future conversations, Codex, Claude, GitHub and other development agents.** Updated 2026-11-01. Repository: amroalhamedi2022-hue/Storylens. Explicit user approval on 2026-11-01 authorises merging CI-green source to main; keep release, translation, copyright and device approval gates independent of source merges. Continue development from the newest actual HEAD after merging PR #1, and do not repeat completed work. The requirements here OVERRIDE contradictory older plans. For actual completion read **docs/LINGUA_TALES_LIVE_STATUS.md**; for real book links and edition/rights review read **docs/LITERATURE_SOURCE_QUEUE.md**. Always inspect latest PR HEAD and GitHub Actions before work.
 
 ## 1. Non-negotiable product decisions
 

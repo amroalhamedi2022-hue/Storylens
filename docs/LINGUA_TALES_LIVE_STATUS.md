@@ -1,6 +1,6 @@
 # Lingua Tales — LIVE STATUS / آخر المنجز والمتبقي
 
-Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file MUST be updated in every meaningful code/content commit and reconciled with current HEAD/CI. Work on PR #1 branch automation/storylens-dictionary-saved-words-20261023, not main.
+Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file MUST be updated in every meaningful code/content commit and reconciled with current HEAD/CI. The user explicitly approved safe main merges on 2026-11-01. Check latest main and PR head plus CI before writing. Source promotion is separate from signed release, rights clearance and physical QA.
 
 ### 2026-11-01 — RD01 / QA01: edge-exit and multi-touch paper-fold reliability
 - Parent PR #1 HEAD checked: `71ed9cabe1b4af687729181443232f32ae7eb1da`. Existing exact-head Android/Chromium CI **PASS**: run 41305521088 on 71ed9cabe1b4af687729181443232f32ae7eb1da; no repeated content/source work.
@@ -342,3 +342,7 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Added an on-demand native-aspect portrait/landscape image inspection modal for locally bundled `art/*.webp/png/jpg` in both source reading pages and full companion reading. It reuses the same image and in-book caption; no new downloads, image generation, SVG ornaments, network calls, background scrolling or continuous animation. Tap, Enter/Space, Escape, outside-dismiss, focus return and a keyboard trap around the close control are supported. Entire reader repagination clears stale viewers.
 - Added production DOM regression in `tools/inline-illustrations.test.cjs` (already present in Android CI), including accessible image focus, offline-only source, portrait uncropped display, caption, Escape and scrolling restore. This is source/CI QA, **not** an actual device FPS/visual/signing or copyright-territory approval.
 - Exact-head GitHub CI result must be checked after commit. Other books remain staged pending complete contextual bilingual translation, authenticated period art and distribution review. Real physical Pad 5/phone testing, page curl deformation, signed in-place APK still OPEN.
+
+### 2026-11-01 — CI-green source reconciliation for authorised main promotion
+- User approved any ready features moving to main. Branch `00e434e29fc5` passed [Android Actions #41353504230](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/41353504230); older separate main launcher commit `23bf6b7b9edf` retained as a binary design reference while tested adaptive icon remains active.
+- Mainline source merge is allowed after the reconciliation commit passes Android CI; **NOT** a final release or rights/device/signer sign-off. See docs/MAINLINE_MERGE_GATE_2026-11-01.md.
