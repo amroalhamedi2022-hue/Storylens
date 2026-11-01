@@ -90,6 +90,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Parent `4cdb673e161ac82dbde048b4c6388c1742825824` created intake run 41336822081. The dedicated intake job reached Wikimedia, verified the first original image SHA-1, decoded and encoded it successfully, but correctly rejected output **314,594 bytes >270,000-byte artwork budget**. Therefore no art was imported yet; no false success.
 - Reduced elephant rescale to max 630px and Tankadere to max 640px with WebP quality 67; all source SHA-1 verifications and strict size budget remain enforced. Retest exact-head intake and continue to offline APK assets. No application data or runtime changed.
 
+### 2026-11-01 — UX04: safe archive image Git binary import
+- Actual historic intake job run 41336898248 **SUCCEEDED**, yielding three original-source-verified offline WebP images 193,560, 69,262 and 167,854 bytes; package artifact downloaded and hashes personally inspected.
+- GitHub Actions same-branch bot commit step now verifies current remote HEAD matches triggering commit, rehashes the binaries and copies them into app/src/main/assets/art/ with a provenance manifest. It will abort rather than overwrite concurrent user/agent changes; never push main or force-push.
+- This changes image intake only; historic images are NOT YET displayed in the app. Next: wire cover and chapter scenes once the actual binary Git commit appears, remove this temporary runner intake job, exact SHA CI.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
