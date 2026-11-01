@@ -127,6 +127,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Updated both assertions to confirm escaped complete source-paragraph branches; no data/translation/signing change. Dedicated companion production-source Node test already passed locally, including exact archival chapter and paragraph coverage.
 - Full next-HEAD CI PENDING. No automatic story approval.
 
+### 2026-11-01 — UX04: staged two independently identified original 1873 book scenes
+- Parent HEAD `3b5769fa2e326eaea88c14d9a5f059510564794f` and exact-head Actions 41339826393 SUCCESS verified first. New historic sources verified by Commons metadata (individual SHA-1 and 1873 Osgood illustrated edition): **London readers examining newspaper** (chapter V, paragraph index 1) and **Fogg/Aouda/Fix aboard the Tankadere cabin** (chapter XX, index 66). Those anchors were matched to the authentic Towle source text already in the app.
+- One-time GitHub Actions intake uses original JPG bytes, pinned source SHA-1, bounded WebP (<270KB each), manifest with SHA-256 for both original+optimized, and guarded git push back to existing PR branch; no outside artwork hotlink at runtime. Additional images are NOT shipped until the binary import commit actually appears. Upstream marks 'No known copyright restrictions' on the Flickr Commons 1873 scans (not an automatic worldwide licensing promise).
+- Next: verify archive intake and binary SHA manifest, then remove one-time workflow and wire both art scenes into English/Arabic reader, with exact-head browser tests. No release signer/physical-device acceptance.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
