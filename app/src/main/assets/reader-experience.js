@@ -854,9 +854,37 @@ function ltRenderTranslationChapter(){
   (index===ltTranslationIndex?' selected':'')+'>'+
   escapeText((index+1)+'. '+(sourceArabic?(item.titleEn||item.title):(item.titleAr||item.title)))+
   '</option>').join('');
- const translated=sourceArabic
-  ?chapter.paragraphs.map(p=>'<p lang="en" dir="ltr">'+escapeText(p.en)+'</p>').join('')
-  :chapter.paragraphs.map(p=>'<p lang="ar" dir="rtl">'+escapeText(p.ar)+'</p>').join('');
+ // Genuine historical imagery belongs inside the translated reading
+ // experience too. These are the SAME licensed local scans that the source
+ // reader anchors to identical paragraph indices, not generic generated art.
+ const plate=story.id==='around-the-world-in-eighty-days-towle'
+  ?({
+    2:{index:27,src:'art/verne-route-map-1872.webp',ratio:800/650,
+      alt:uiText('خريطة قديمة لمسار رحلة فيلياس فوغ حول العالم.',
+       'Historical printed route map of Phileas Fogg’s world journey.'),
+      credit:uiText('نوفيل وبنيت، ١٨٧٢ · خريطة المسار الأصلية',
+       'Neuville / Benett, 1872 · Original route map')},
+    10:{index:43,src:'art/verne-kiouni-1873.webp',ratio:630/921,
+      alt:uiText('فوغ وباسبارتو في مشهد الفيل كِيوني في الهند.',
+       'Phileas Fogg and Passepartout with Kiouni the elephant in India.'),
+      credit:uiText('طبعة أوسغود التاريخية المصوّرة، ١٨٧٣',
+       'Illustrated Osgood edition, 1873')},
+    20:{index:34,src:'art/verne-tankadere-1872.webp',ratio:640/931,
+      alt:uiText('السفينة تانكادير تصارع العاصفة في عرض البحر.',
+       'The Tankadere sailing through a heavy ocean storm.'),
+      credit:uiText('نوفيل وبنيت، ١٨٧٢ · نقش بحري تاريخي',
+       'Neuville / Benett, 1872 · Historic sea engraving')}
+   }[ltTranslationIndex]||null):null;
+ const translated=chapter.paragraphs.map((paragraph,index)=>{
+  const prose=sourceArabic
+   ?'<p lang="en" dir="ltr">'+escapeText(paragraph.en)+'</p>'
+   :'<p lang="ar" dir="rtl">'+escapeText(paragraph.ar)+'</p>';
+  if(!plate||index!==plate.index)return prose;
+  return prose+'<figure class="lt-companion-plate">'+
+   '<img src="'+plate.src+'" loading="lazy" decoding="async" alt="'+
+   escapeText(plate.alt)+'" style="aspect-ratio:'+plate.ratio+'">'+
+   '<figcaption>'+escapeText(plate.credit)+'</figcaption></figure>';
+ }).join('');
  const title=sourceArabic?(story.titleEn||story.title):(story.titleAr||story.title);
  const chapterTitle=sourceArabic?(chapter.titleEn||chapter.title):(chapter.titleAr||chapter.title);
  const root=$('root');

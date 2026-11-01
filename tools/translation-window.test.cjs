@@ -43,6 +43,8 @@ assert.match(root.innerHTML,/الترجمة العربية 14/);
 assert.doesNotMatch(root.innerHTML,/الترجمة العربية 13/);
 assert.doesNotMatch(root.innerHTML,/English source 37/);
 assert.match(root.innerHTML,/Test &lt;Book&gt;/,'user-visible titles are escaped');
+assert.equal((root.innerHTML.match(/lt-companion-plate/g)||[]).length,0,
+ 'chapters without archival scenes do not receive invented illustrations');
 assert.equal((root.innerHTML.match(/<option /g)||[]).length,37,'all 37 chapters stay selectable');
 assert.equal((root.innerHTML.match(/<p lang="ar" dir="rtl">/g)||[]).length,1,
  'the complete novel no longer becomes thousands of DOM paragraphs');
@@ -88,4 +90,25 @@ assert.match(css,/\.arabic-page \.lt-translation-nav select/);
 assert.match(css,/\.arabic-page \.lt-translation-nav :focus-visible/);
 assert.match(css,/\.arabic-page \.lt-translation-bottom :focus-visible/);
 assert.match(css,/@media\(max-width:560px\)/);
+
+// Historical chapters in production contain many more paragraph pairs than
+// this synthetic tiny fixture; create enough for exact original anchor indices.
+english.id='around-the-world-in-eighty-days-towle';
+for(const [chapterIndex,lastAnchor,src] of [
+ [2,27,'verne-route-map-1872.webp'],
+ [10,43,'verne-kiouni-1873.webp'],
+ [20,34,'verne-tankadere-1872.webp']
+]){
+ english.chapters[chapterIndex].paragraphs=Array.from({length:lastAnchor+1},(_,i)=>({
+  en:'English source '+(i+1),ar:'الترجمة العربية '+(i+1)
+ }));
+ state.story=english;state.page='reader';state.chapter=chapterIndex;
+ window.fullTranslation();
+ assert.match(root.innerHTML,/lt-companion-plate/,'chapter matching antique scan gets a picture');
+ assert.ok(root.innerHTML.includes('art/'+src),'the original local archive file is reused');
+ assert.equal((root.innerHTML.match(/class="lt-companion-plate"/g)||[]).length,1,
+  'one real engraving rather than decorative filler');
+ assert.equal((root.innerHTML.match(/<p lang="ar" dir="rtl">/g)||[]).length,lastAnchor+1,
+  'all contextual Arabic text survives scene insertion');
+}
 console.log('PASS: 37-chapter and Arabic-original companions render one escaped chapter at a time; all chapters available; source progress untouched');

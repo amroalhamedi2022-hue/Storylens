@@ -414,6 +414,17 @@ tests["historic-verne-plates"] = r"""(async function(){
    // owns the real paragraph placement and local-only DOM wiring.
    check('chapter '+item.index+' image remains lazy',picture?.loading==='lazy'&&
      picture?.decoding==='async');
+   fullTranslation();
+   const companion=document.querySelector('.lt-arabic-companion .lt-companion-plate');
+   const companionImage=companion?.querySelector('img');
+   check('chapter '+item.index+' translated page includes same historic plate',
+    companionImage?.getAttribute('src')===item.src&&!!companionImage?.alt);
+   check('chapter '+item.index+' translated plate keeps lazy decoding',
+    companionImage?.loading==='lazy'&&companionImage?.decoding==='async');
+   check('chapter '+item.index+' companion retains full prose',
+    document.querySelectorAll('.lt-arabic-companion p[lang="ar"]').length===
+      catalog.stories.find(s=>s.id===id).chapters[item.index].paragraphs.length);
+   backToReader();
   }
  }catch(e){errors.push('runtime: '+e.message)}
  document.body.setAttribute('data-lt-historic-qa',errors.length?'FAIL':'PASS');

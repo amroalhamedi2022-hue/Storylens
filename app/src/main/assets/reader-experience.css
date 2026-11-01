@@ -324,3 +324,23 @@ body.lt-high-contrast .storylens-hero,body.lt-high-contrast .storylens-header,bo
 .arabic-page .lt-translation-bottom [role="status"]{font-weight:650;font-size:13px}
 .arabic-page .lt-translation-bottom :focus-visible{outline:3px solid var(--accent,#638bc1);outline-offset:2px}
 @media(max-width:520px){.arabic-page .lt-translation-bottom button{flex:1 1 120px}.arabic-page .lt-translation-bottom [role="status"]{order:-1;flex-basis:100%;text-align:center}}
+
+/* Authentic engraved scene beside its matching paragraph in companion reading.
+   No continuous animation or external image fetch; geometry is reserved. */
+.arabic-page .lt-companion-plate{
+ display:block;box-sizing:border-box;max-width:470px;width:100%;
+ margin:20px auto 26px;padding:9px;
+ border:2px solid #c5b394;border-radius:7px;
+ background:#f5eedf;color:#3f372d;
+ box-shadow:0 5px 17px #20180e1d;
+ text-align:center;direction:inherit;
+}
+.arabic-page .lt-companion-plate img{
+ width:100%;height:auto;max-height:590px;object-fit:contain;
+ display:block;border-radius:3px;background:#ece3d2;
+}
+.arabic-page .lt-companion-plate figcaption{
+ font:500 12px/1.7 system-ui,sans-serif;
+ padding:8px 5px 2px;color:#554637;text-align:center;
+}
+@media(max-width:560px){.arabic-page .lt-companion-plate{padding:6px;margin:16px auto}}

@@ -116,6 +116,12 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Browser QA now asserts the real chapter/paragraph/figure, local WebP URL, contextual captions, and deliberate `loading=lazy`/`decoding=async`; the existing Node SHA-256/WebP-header test independently validates the packed binary. No eager loading or image changes in production.
 - New exact-head CI PENDING.
 
+### 2026-11-01 — UX04 / LANG01: historical chapter pictures also appear in full-translation reading
+- Prepared after parent HEAD `0caeff3863a555ca98b6c5a953f87c1954453945`, pending its precise Actions result. The full Arabic companion reader previously omitted the contextual source-era plates which were already present beside their authentic English source paragraphs.
+- Reused the same three **offline, checksum-verified original Verne engraving assets** (III route map, XI Kiouni, XXI Tankadere), inserting at the exact identical paragraph positions inside the chapter-at-a-time Arabic companion. Preserved every translated paragraph, chapter navigation, screen-reader focus and lazy image decoding; no modern filler or external URLs. Accessible scene-specific alternative text and bilingual credits are included.
+- Added lightweight period framing to translated-reader CSS, Node tests for three source-aligned scenes and unchanged paragraph counts, and extended Chromium chapter fixture to verify source AND translated figure per chapter. Full CI and real-device art alignment remain NOT VERIFIED until current exact-head action completes.
+- No stable APK signature or main merge.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
