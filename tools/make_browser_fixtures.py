@@ -437,7 +437,19 @@ tests["historic-verne-plates"] = r"""(async function(){
       figure?.querySelector('figcaption')?.textContent.trim());
    check('chapter '+item.index+' inspection disables background scroll',
     document.body.style.overflow==='hidden');
-   viewer?.querySelector('.lt-art-inspection-close')?.click();
+   // Invoke the SAME no-argument bridge as Android's actual Back dispatcher,
+   // not just the close button. Repeat for each of the 7 independently placed
+   // scans to ensure text, caption, state and scroll are never discarded.
+   const consumedBack=window.LinguaTalesArtInspection?.closeIfOpen?.();
+   check('chapter '+item.index+' Android Back dismisses only the plate',
+    consumedBack===true&&!document.querySelector('.lt-art-inspection-backdrop')&&
+      state.page==='reader'&&document.body.style.overflow===scrollBefore);
+   check('chapter '+item.index+' next Android Back remains available',
+    window.LinguaTalesArtInspection?.closeIfOpen?.()===false);
+   picture?.click();
+   const reopened=document.querySelector('.lt-art-inspection-backdrop');
+   check('chapter '+item.index+' reopens after Android Back',!!reopened);
+   reopened?.querySelector('.lt-art-inspection-close')?.click();
    check('chapter '+item.index+' closes inspection without losing reader',
     !document.querySelector('.lt-art-inspection-backdrop')&&
       state.page==='reader'&&document.body.style.overflow===scrollBefore);
