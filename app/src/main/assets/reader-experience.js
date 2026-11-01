@@ -768,6 +768,26 @@ function ltBuiltInChapterScene(chapter,sentenceCount){
   alt:('Chapter illustration: '+(state.story.title||'Story')+' — '+(chapter.title||'Chapter')).slice(0,240),
   position:'edge-start',aspectRatio:1000/620,crop:'cover'};
 }
+// Keep complete-translation mode genuinely bilingual for Arabic originals:
+ // English contextual companion instead of repeating the Arabic source.
+ const originalFullTranslation=fullTranslation;
+ fullTranslation=function(){
+  if(state.story?.sourceLanguage!=='ar')return originalFullTranslation();
+  closeSheet();
+  state.page='translation';
+  const story=state.story;
+  const heading=uiText('الترجمة الإنجليزية الكاملة','Complete English companion');
+  const returnLabel=uiText('← العودة للقصة العربية','← Back to Arabic story');
+  $('root').innerHTML='<section class="arabic-page lt-english-companion"><div class="arabic-inner">'+
+   '<button class="secondary" onclick="backToReader()">'+returnLabel+'</button>'+
+   '<h1 lang="en" dir="ltr">'+escapeText(story.titleEn||story.title)+'</h1>'+
+   '<p class="quiet">'+heading+'</p>'+
+   story.chapters.map(ch=>'<h2 lang="en" dir="ltr">'+escapeText(ch.titleEn||ch.title)+'</h2>'+
+     ch.paragraphs.map(p=>'<p lang="en" dir="ltr">'+escapeText(p.en)+'</p>').join('')).join('')+
+   '</div></section>';
+  window.scrollTo(0,0);
+ };
+
 renderReader=function(){
  originalReader();
  if(!state.story || state.page!=='reader')return;

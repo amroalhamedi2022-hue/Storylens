@@ -119,6 +119,11 @@ function localizeReview() {
 }
 function localizeTranslation() {
  if (state.page !== 'translation') return;
+ if (state.story?.sourceLanguage === 'ar') {
+  each('.lt-english-companion .arabic-inner > h2, .lt-english-companion .arabic-inner > p:not(.quiet)',
+    node => { node.lang = 'en'; node.dir = 'ltr'; });
+  return; // Do not mislabel English companion paragraphs as Arabic.
+ }
  if (english()) {
   label('.arabic-inner > button[onclick="backToReader()"]', '← Back to English story');
   label('.arabic-inner > p.quiet', 'Complete literary Arabic translation');
