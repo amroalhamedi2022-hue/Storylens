@@ -46,5 +46,39 @@
     "width": 640,
     "height": 931,
     "rights": "Wikimedia Commons Public Domain Mark 1.0; per-file scan, verify territorial use"
+  },
+  {
+    "id": "verne-1873-readers",
+    "file": "verne-news-readers-1873.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Around_the_world_in_eighty_days_%281873%29_%2814781086251%29.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14781086251).jpg",
+    "expected_sha1": "06e996151ae69a80a4e8d61ec5427c220199dc7b",
+    "year": 1873,
+    "chapter": 4,
+    "afterParagraph": 1,
+    "scene": "London readers follow reports of Phileas Fogg's wager; Towle V, paragraph 2",
+    "source_sha256": "2541c58ecd50b7571e53452e3ce4312045df4b80a38b30677ac990fb2fef4550",
+    "webp_sha256": "4fdd115a2eeb3aa528eb6684afa83f88b6d5e6c30d2408c60b468b8430aafec6",
+    "webp_bytes": 157394,
+    "width": 620,
+    "height": 898,
+    "rights": "1873 Boston original; Wikimedia Commons reviewed 'No known copyright restrictions'; territorial review pending"
+  },
+  {
+    "id": "verne-1873-tankadere-cabin",
+    "file": "verne-tankadere-cabin-1873.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Around_the_world_in_eighty_days_%281873%29_%2814597542130%29.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14597542130).jpg",
+    "expected_sha1": "29162c6b1037af214d1cba85f7939365d60d3259",
+    "year": 1873,
+    "chapter": 19,
+    "afterParagraph": 66,
+    "scene": "Fogg and Aouda meet Fix in the Tankadere cabin; Towle XX, paragraph 67",
+    "source_sha256": "5c3a5c4b9fa595b74fd7519b5d6d52bd33036838688429c68420a065fc30f56c",
+    "webp_sha256": "28411d6b045b92ff64035fe2cfb7b80a3d3f582df13f7af5069cc9dac81a0689",
+    "webp_bytes": 168782,
+    "width": 620,
+    "height": 902,
+    "rights": "1873 Boston original; Wikimedia Commons reviewed 'No known copyright restrictions'; territorial review pending"
   }
 ]
