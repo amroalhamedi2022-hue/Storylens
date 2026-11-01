@@ -180,6 +180,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Replaced the E2E requirement with a real browser computed-CSS verification of the **packaged Kiouni historical WebP book cover** and a negative check that the unlicensed-looking synthetic final SVG was NOT generated. No production artwork, story text or user data changed by this test-only repair.
 - Combined this with separately source-tested `C02` companion literary provenance/draft disclosure in the same next commit to avoid repeated CI churn. New exact SHA CI pending.
 
+### 2026-11-01 — C02 / QA01: separate edition notice from translated prose semantics
+- Previous parent `f48435fb0eb7835bff80ae6b9c231fbd7feea37b`, Actions 41346011868 **FAIL only at the Chromium full-translation fixture** after Node and Android build PASS. The new Arabic draft disclosure was inserted as an extra paragraph and polluted the browser's actual translated-paragraph count/first-paragraph selector under localization.
+- The visible unreviewed-Arabic / Towle-edition notice now uses semantic `aside role=note` instead of a `p` element, so it cannot be mistaken for source-aligned translated prose. Added an exact-source Node regression. No actual English/Arabic story paragraph, artwork, user progress, metadata or app signing changed.
+- New exact-head CI PENDING; real Xiaomi/phone acceptance and independent literary review remain OPEN.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

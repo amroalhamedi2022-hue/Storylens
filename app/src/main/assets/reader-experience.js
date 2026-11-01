@@ -908,7 +908,7 @@ function ltRenderTranslationChapter(){
   '<button type="button" class="secondary" onclick="backToReader()">'+returnLabel+'</button>'+
   '<h1 lang="'+sourceLang+'" dir="'+direction+'">'+escapeText(title)+'</h1>'+
   '<p class="quiet">'+heading+'</p>'+
-  (disclosure?'<p class="lt-literary-disclosure" role="note">'+escapeText(disclosure)+'</p>':'')+
+  (disclosure?'<aside class="lt-literary-disclosure" role="note">'+escapeText(disclosure)+'</aside>':'')+
   '<nav class="lt-translation-nav" aria-label="'+selectLabel+'">'+
   '<button type="button" class="secondary" onclick="ltTranslationChapter('+(ltTranslationIndex-1)+')"'+
   (ltTranslationIndex===0?' disabled':'')+'>'+previousLabel+'</button>'+

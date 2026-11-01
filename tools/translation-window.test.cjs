@@ -110,7 +110,8 @@ for(const [chapterIndex,lastAnchor,src] of [
  state.story=english;state.page='reader';state.chapter=chapterIndex;
  window.fullTranslation();
  assert.match(root.innerHTML,/lt-companion-plate/,'chapter matching antique scan gets a picture');
- assert.match(root.innerHTML,/lt-literary-disclosure/,'unreviewed companion is clearly identified');
+ assert.match(root.innerHTML,/<aside class="lt-literary-disclosure" role="note">/,'unreviewed draft is a separate reading note, not novel prose');
+ assert.doesNotMatch(root.innerHTML,/<p class="lt-literary-disclosure"/,'draft note must not join translated paragraph queries');
  assert.match(root.innerHTML,/مسودة لم تخضع/,'Arabic UI shows honest draft status');
  assert.ok(root.innerHTML.includes('art/'+src),'the original local archive file is reused');
  assert.equal((root.innerHTML.match(/class="lt-companion-plate"/g)||[]).length,1,
