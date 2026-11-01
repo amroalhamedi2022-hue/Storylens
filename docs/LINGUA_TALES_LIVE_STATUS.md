@@ -354,3 +354,8 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 
 ### 2026-11-01 — Sherlock historical scene matched, staged as provenance-only
 - Verified an original D. H. Friston 1887 drawing showing the `Rache` inscription and matched the precise English scene to Part I chapter III of the staged complete source. Added full source/artist/sha1/scene/AR-EN alt metadata under `docs/literature/staging/a-study-in-scarlet/HISTORIC_PLATE_QUEUE.json`. **No image binary downloaded, shipped or falsely claimed visible**, and no Arabic editorial review assumed. Existing seven embedded Verne images remain intact.
+
+### 2026-11-02 — LT-08/UX04: Android Back exits engraved-plate inspection first
+- Fixed native `MainActivity.onBackPressedDispatcher` to ask the reader's on-demand `window.LinguaTalesArtInspection.closeIfOpen()` to dismiss a historical enlarged image BEFORE checking legacy word-sheet/drawer/translation/reader history. A closed viewer returns false so the next Back follows unchanged navigation. Nothing writes localStorage or modifies user library/progress.
+- `reader-experience.js` exposes only a frozen, no-argument dismissal contract; existing lazy offline images, captions, source provenance and lightbox remain unchanged. `tools/inline-illustrations.test.cjs` exercises first and second hardware-Back behavior, scroll restoration, page retention and static native dispatch order.
+- Expected CI: Node regression + Android Kotlin compilation + existing 7-source image Chromium QA. Physical Xiaomi Pad 5 and real gesture-back/talkback/120Hz still require device acceptance. No new image falsely claimed packaged.

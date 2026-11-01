@@ -819,6 +819,16 @@ library=function(){
 // Never open a remote URL, render untrusted HTML or attach a scroll listener.
 // The overlay is created on demand (one image), not for each long-book page.
 let ltCloseActiveArtInspection=null;
+// Android's hardware/gesture Back must dismiss a full-screen historical
+// plate BEFORE closing a word sheet, opening the shelf or leaving the app.
+// Returning true also tells the host to consume only this one Back event.
+window.LinguaTalesArtInspection=Object.freeze({
+ closeIfOpen(){
+  if(typeof ltCloseActiveArtInspection!=='function')return false;
+  ltCloseActiveArtInspection();
+  return true;
+ }
+});
 function ltOpenArtInspection(picture){
  const src=picture?.getAttribute?.('src')||picture?.src||'';
  const safe=/^art\/[a-z0-9_-]+(?:\/[a-z0-9_-]+)*\.(?:webp|png|jpe?g)$/i;

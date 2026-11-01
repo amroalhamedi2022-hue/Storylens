@@ -59,10 +59,32 @@ assert.equal(typeof added[0].figure.children[0].handlers.click,'function');
 const gallery=[];
 document.body={style:{overflow:'auto'},classList:{add(){},remove(){}},
  appendChild(el){gallery.push(el);}};
+// Native hardware Back is dispatched before the reader's legacy sheet/drawer
+// navigation, so inspecting an engraving cannot accidentally exit the story.
+const native = fs.readFileSync(path.join(__dirname,
+ '../app/src/main/java/com/storylens/reader/MainActivity.kt'),'utf8');
+const back = native.slice(native.indexOf('override fun handleOnBackPressed()'),
+ native.indexOf('override fun onPause()'));
+assert.ok(back.indexOf('LinguaTalesArtInspection?.closeIfOpen?.()')>=0,
+ 'Android hardware Back must support the historic art inspection');
+assert.ok(back.indexOf('LinguaTalesArtInspection')<back.indexOf("document.getElementById('modals')"),
+ 'close historic engraving before legacy lookup sheets');
+assert.ok(back.indexOf("document.getElementById('modals')")<back.indexOf('window.LinguaShell.isDrawerOpen()'),
+ 'do not change existing lookup-sheet and drawer priority');
+assert.equal(sandbox.window.LinguaTalesArtInspection.closeIfOpen(),false,
+ 'without photo inspection Android Back is not consumed');
 added[0].figure.children[0].handlers.click({stopPropagation(){}});
 assert.equal(gallery.length,1,'one native-size on-demand viewer');
 assert.equal(document.body.style.overflow,'hidden','prevent background page turn while inspecting');
-const inspection=gallery[0];
+assert.equal(sandbox.window.LinguaTalesArtInspection.closeIfOpen(),true,
+ 'first Android Back is consumed by enlarged original engraving');
+assert.equal(gallery[0].removed,true,'Android Back closes photo without leaving reader');
+assert.equal(document.body.style.overflow,'auto','Back restores reading scroll lock');
+assert.equal(state.page,'reader','Back does not navigate out of current chapter');
+assert.equal(sandbox.window.LinguaTalesArtInspection.closeIfOpen(),false,
+ 'second Back is handed to existing reader navigation');
+added[0].figure.children[0].handlers.click({stopPropagation(){}});
+const inspection=gallery[1];
 assert.equal(inspection.children[0].children[2].children[0].src,'art/verne/station.webp',
  'enlargement reuses only the packaged image path');
 assert.equal(inspection.children[0].children[2].children[1].textContent,'CC0 illustration',
