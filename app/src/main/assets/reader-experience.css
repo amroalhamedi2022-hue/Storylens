@@ -295,3 +295,24 @@ body.lt-high-contrast .storylens-hero,body.lt-high-contrast .storylens-header,bo
 @media(prefers-reduced-transparency:reduce){.storylens-hero,.storylens-header,.reader-nav-panel,.lt-drawer,.sheet,.reader-nav-actions button,.lt-page-controls,.lt-font-panel,.lt-glass-panel,.library .card{-webkit-backdrop-filter:none;backdrop-filter:none;background:color-mix(in srgb,var(--lt-glass-a) 22%,#f7f8ff)}}
 @media(prefers-contrast:more){.storylens-hero,.storylens-header,.reader-nav-panel,.lt-drawer,.sheet,.lt-page-controls,.lt-glass-panel{border:2px solid currentColor}}
 @media(prefers-reduced-motion:reduce){.library .card{transition:none!important}.lt-glass-swatch{transition:none!important}}
+
+/* PERF01: chapter-at-a-time bilingual companion, accessible on narrow phones. */
+.arabic-page .lt-translation-nav{
+ display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+ padding:12px;margin:20px 0 24px;border:1px solid rgba(111,96,79,.28);
+ border-radius:16px;background:rgba(111,96,79,.075);
+}
+.arabic-page .lt-translation-nav label{font-size:14px;font-weight:650;color:inherit}
+.arabic-page .lt-translation-nav select{
+ flex:1 1 210px;min-width:0;max-width:100%;min-height:44px;
+ border-radius:10px;padding:8px 12px;border:1px solid rgba(111,96,79,.42);
+ color:inherit;background:var(--card,#fffaf1);font:inherit;
+}
+.arabic-page .lt-translation-nav button{min-height:44px}
+.arabic-page .lt-translation-nav button:disabled{opacity:.45;cursor:default}
+.arabic-page .lt-translation-nav :focus-visible{outline:3px solid var(--accent,#638bc1);outline-offset:2px}
+@media(max-width:560px){
+ .arabic-page .lt-translation-nav{gap:8px;padding:10px}
+ .arabic-page .lt-translation-nav select{flex-basis:100%;order:2}
+ .arabic-page .lt-translation-nav button{flex:1 1 120px}
+}

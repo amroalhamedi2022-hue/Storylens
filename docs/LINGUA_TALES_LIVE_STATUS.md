@@ -9,6 +9,13 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Exact-HEAD Node/Android/Chromium CI for this new change: **PENDING** at commit creation; device/120Hz/fold fidelity **NOT TESTED**. No stable-signature update/final APK claimed.
 - Next: verify new CI outcome; test 20 repeated gestures and RTL page curl on physical tablet/phone, then complete sourced translations, historical in-page illustrations and release signer acceptance.
 
+### 2026-11-01 — PERF01 / LANG01 / RD02: chapter-at-a-time full-book translation
+- Verified parent HEAD `39515e8c0bc0d468dc1db0555127d222a76e30a0` and **PASS** exact-head Actions 41306361360 (Node, Gradle, APK, Chromium). No concurrent PR branch writes when inspected; continued only from this HEAD.
+- The previous full-translation view synchronized an entire 37-chapter classic into one giant HTML string and WebView DOM, causing potentially heavy main-thread work and memory allocation. Production now mounts only the **selected chapter** in the Arabic or English companion view while exposing all available book chapters with an accessible selector, previous/next, original title, correct direction and sanitized paragraphs. Source/book progress keys, all authentic text, saved words and data untouched; the existing reader-return scroll hook is retained.
+- Added responsive companion navigation CSS, `tools/translation-window.test.cjs` executed by Android CI, verifying all 37 options, one chapter's paragraphs only, first/last boundaries, Arabic-origin reverse translation, escaping, invalid input and reader progress isolation.
+- Source changes committed to this branch; new exact-HEAD CI is **PENDING** at commit creation (do not infer success). Physical Xiaomi Pad 5 120Hz/long-book memory and translation editorial acceptance **NOT TESTED**.
+- Next: verify exact-head CI and browser flow, then check companion chapter switching/bookmark return on real Android, continue period art and full licensed original translations.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

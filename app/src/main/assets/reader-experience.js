@@ -822,27 +822,76 @@ function ltBuiltInChapterScene(chapter,sentenceCount){
   alt:('Chapter illustration: '+(state.story.title||'Story')+' — '+(chapter.title||'Chapter')).slice(0,240),
   position:'edge-start',aspectRatio:1000/620,crop:'cover'};
 }
-// Keep complete-translation mode genuinely bilingual for Arabic originals:
- // English contextual companion instead of repeating the Arabic source.
- if(typeof fullTranslation==='function'){
+// PERF01 / LANG01: reading a 37-chapter companion must not render a whole
+// novel into one enormous WebView DOM. All chapters remain accessible via the
+// chapter selector and Previous/Next; only the selected chapter is mounted.
+// Source text, original chapter progress and saved words are never mutated.
+let ltTranslationBook=null,ltTranslationIndex=0;
+function ltRenderTranslationChapter(){
+ const story=ltTranslationBook;
+ if(!story||state.page!=='translation'||state.story!==story)return;
+ const chapter=story.chapters[ltTranslationIndex];
+ if(!chapter||!Array.isArray(chapter.paragraphs))return;
+ const sourceArabic=story.sourceLanguage==='ar';
+ const sourceLang=sourceArabic?'en':'ar';
+ const direction=sourceArabic?'ltr':'rtl';
+ const heading=sourceArabic
+  ?uiText('الترجمة الإنجليزية الكاملة','Complete English companion')
+  :uiText('الترجمة العربية الكاملة','Complete Arabic companion');
+ const returnLabel=sourceArabic
+  ?uiText('← العودة للقصة العربية','← Back to Arabic story')
+  :uiText('← العودة للقصة الإنجليزية','← Back to English story');
+ const previousLabel=uiText('الفصل السابق','Previous chapter');
+ const nextLabel=uiText('الفصل التالي','Next chapter');
+ const selectLabel=uiText('اختر فصل الترجمة','Choose companion chapter');
+ const count=uiText('الفصل '+(ltTranslationIndex+1)+' من '+story.chapters.length,
+  'Chapter '+(ltTranslationIndex+1)+' of '+story.chapters.length);
+ const options=story.chapters.map((item,index)=>'<option value="'+index+'"'+
+  (index===ltTranslationIndex?' selected':'')+'>'+
+  escapeText((index+1)+'. '+(sourceArabic?(item.titleEn||item.title):(item.titleAr||item.title)))+
+  '</option>').join('');
+ const translated=sourceArabic
+  ?chapter.paragraphs.map(p=>'<p lang="en" dir="ltr">'+escapeText(p.en)+'</p>').join('')
+  :chapter.paragraphs.map(p=>'<p lang="ar" dir="rtl">'+escapeText(p.ar)+'</p>').join('');
+ const title=sourceArabic?(story.titleEn||story.title):(story.titleAr||story.title);
+ const chapterTitle=sourceArabic?(chapter.titleEn||chapter.title):(chapter.titleAr||chapter.title);
+ $('root').innerHTML='<section class="arabic-page '+(state.dark?'dark ':'')+
+  (sourceArabic?'lt-english-companion':'lt-arabic-companion')+'"><div class="arabic-inner">'+
+  '<button type="button" class="secondary" onclick="backToReader()">'+returnLabel+'</button>'+
+  '<h1 lang="'+sourceLang+'" dir="'+direction+'">'+escapeText(title)+'</h1>'+
+  '<p class="quiet">'+heading+'</p>'+
+  '<nav class="lt-translation-nav" aria-label="'+selectLabel+'">'+
+  '<button type="button" class="secondary" onclick="ltTranslationChapter('+(ltTranslationIndex-1)+')"'+
+  (ltTranslationIndex===0?' disabled':'')+'>'+previousLabel+'</button>'+
+  '<label for="lt-translation-chapter">'+count+'</label>'+
+  '<select id="lt-translation-chapter" aria-label="'+selectLabel+
+   '" onchange="ltTranslationChapter(this.value)">'+options+'</select>'+
+  '<button type="button" class="secondary" onclick="ltTranslationChapter('+(ltTranslationIndex+1)+')"'+
+  (ltTranslationIndex===story.chapters.length-1?' disabled':'')+'>'+nextLabel+'</button>'+
+  '</nav>'+
+  '<h2 lang="'+sourceLang+'" dir="'+direction+'">'+escapeText(chapterTitle)+'</h2>'+
+  translated+'</div></section>';
+ window.scrollTo(0,0);
+}
+window.ltTranslationChapter=function(index){
+ if(state.page!=='translation'||!ltTranslationBook||state.story!==ltTranslationBook)return;
+ const chapter=Number(index);
+ if(!Number.isInteger(chapter)||chapter<0||chapter>=ltTranslationBook.chapters.length)return;
+ ltTranslationIndex=chapter;
+ ltRenderTranslationChapter();
+};
+if(typeof fullTranslation==='function'){
  const originalFullTranslation=fullTranslation;
  window.fullTranslation=function(){
-  if(state.story?.sourceLanguage!=='ar')return originalFullTranslation();
+  if(!state.story?.chapters?.length)return originalFullTranslation();
   closeSheet();
+  ltTranslationBook=state.story;
+  ltTranslationIndex=Number.isInteger(state.chapter)
+   ?Math.max(0,Math.min(state.chapter,state.story.chapters.length-1)):0;
   state.page='translation';
-  const story=state.story;
-  const heading=uiText('الترجمة الإنجليزية الكاملة','Complete English companion');
-  const returnLabel=uiText('← العودة للقصة العربية','← Back to Arabic story');
-  $('root').innerHTML='<section class="arabic-page lt-english-companion"><div class="arabic-inner">'+
-   '<button class="secondary" onclick="backToReader()">'+returnLabel+'</button>'+
-   '<h1 lang="en" dir="ltr">'+escapeText(story.titleEn||story.title)+'</h1>'+
-   '<p class="quiet">'+heading+'</p>'+
-   story.chapters.map(ch=>'<h2 lang="en" dir="ltr">'+escapeText(ch.titleEn||ch.title)+'</h2>'+
-     ch.paragraphs.map(p=>'<p lang="en" dir="ltr">'+escapeText(p.en)+'</p>').join('')).join('')+
-   '</div></section>';
-  window.scrollTo(0,0);
+  ltRenderTranslationChapter();
  };
- }
+}
 
 renderReader=function(){
  originalReader();
