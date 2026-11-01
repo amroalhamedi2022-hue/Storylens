@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "kalila-arabic-wikisource-complete-candidate",
+  "title": "كليلة ودمنة",
+  "attributedArabicAuthor": "عبد الله بن المقفع",
+  "literarySourceLanguage": "ar",
+  "genre": [
+    "Arabic heritage",
+    "wisdom and allegory",
+    "classical animal fables",
+    "ethical reasoning"
+  ],
+  "status": "FULL_ARABIC_CANDIDATE_STAGED_ONLY",
+  "publishable": false,
+  "sourceEdition": {
+    "upstreamRepo": "7azmi/areader",
+    "upstreamCommit": "22402121d6dc30c4468a4bdb006bedfa877dd7e9",
+    "upstreamPath": "books/kalila.md",
+    "upstreamGitBlobSha": "7a1f6500f625b3d0507068b60cbc92b605e5bd8e",
+    "bytes": 432293,
+    "transcriptionLineage": "Wikisource Arabic, each chapter source revision listed in upstream-catalog-record.json",
+    "statedWords": 45769,
+    "bookHeadingsH2": 20,
+    "adaptationNote": "Markdown paragraph and navigation formatting made by upstream Riwaq authors. Not an image facsimile or certified critical Arabic edition. Exact correspondence to 1816 Silvestre de Sacy is UNVERIFIED.",
+    "textLicense": "Wikisource-derived CC BY-SA 4.0; keep attribution and source revision links, license downstream textual adaptations under share-alike conditions."
+  },
+  "rights": {
+    "permalinkAttributionRetained": true,
+    "shareAlikeComplianceForReleaseReviewed": false,
+    "imagesNotIncluded": true
+  },
+  "bilingual": {
+    "completeSourceArabicCandidate": true,
+    "allEnglishContextualTranslationPresent": false,
+    "alignableWith1819EnglishEdition": false,
+    "editoriallyVerified": false
+  },
+  "notes": "This is historical Arabic text from an attributed full book transcription, NOT a newly invented/modernized story. English historical Knatchbull translation refers to de Sacy 1816; chapter mapping must be checked before pairing. Never publish until edition, full translation, CC BY-SA obligations and art provenance verified."
+}

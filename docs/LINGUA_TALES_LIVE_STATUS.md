@@ -86,3 +86,8 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 
 ### 2026-11-01 — QA01: correct false-positive CSS regression
 - The 558e977b CI failed at device-ux-batch.test.cjs:115 because its forbidden animation declaration regex matched the words 'scrolling animation:' inside a CSS comment, not an actual style declaration. The test now removes CSS comments before checking for forbidden GPU-heavy declarations; real filter/backdrop-filter/animation style remains disallowed. New CI pending.
+
+### 2026-11-01 — C02/C03: real Arabic Kalila source, latest concurrent HEAD respected
+- Resumed from HEAD `0321499fe01b14a385703d38b32358d80b8fe8df` including concurrent UX test correction and Frankenstein source. Never rewrote those files. Acquired full-length authentic Arabic `كليلة ودمنة` transcription from Wikisource-derived Riwaq `7azmi/areader@22402121d6dc30c4468a4bdb006bedfa877dd7e9`. **432,293 UTF-8 bytes**, publisher-listed 45,769 words, 20 source-revision links, per-byte SHA pin, CC BY-SA 4.0 attribution and marked `publishable:false`.
+- Staged in `docs/literature/staging/kalila-arabic-wikisource/`, added `tools/literature-arabic-original.test.cjs` to CI and provenance/source queue. The digital Arabic text's 20 sections are **NOT automatically the 18 chapters of 1816 de Sacy / 1819 Knatchbull**. Complete contextual EN alignment, legal share-alike review and licensed antique images open. No false ready-for-reading claims.
+- New exact SHA CI PENDING, no safe signed production APK yet.
