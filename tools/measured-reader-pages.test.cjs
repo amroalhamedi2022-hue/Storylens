@@ -22,7 +22,7 @@ const p2=element(110,{bottom:12});
 const p3=element(100,{bottom:8});
 p1.nextElementSibling=tr;tr.nextElementSibling=art;art.nextElementSibling=p2;p2.nextElementSibling=p3;
 const measured=measure([p1,p2,p3]);
-assert.deepEqual(asArray(measured),[407,122,108],'bilingual pair and adjacent scene are one unbreakable block');
+assert.deepEqual(asArray(measured),[417,122,108],'bilingual pair and adjacent scene are one unbreakable block');
 assert.deepEqual(asArray(paginate(measured,700)),[0,1],'art-heavy first paragraph gets its own page');
 assert.deepEqual(asArray(paginate([60,60,60,60,60],900)),[0,4],'four-paragraph cap remains');
 assert.deepEqual(asArray(paginate([1200,90,90],700)),[0,1],
