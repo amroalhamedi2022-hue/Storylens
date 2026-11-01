@@ -73,9 +73,9 @@ function ltApplyFonts(){
  };
  const ar=arabic[get('fontArabic','sans')]||legacy.ar;
  const en=english[get('fontEnglish','serif')]||legacy.en;
- document.querySelectorAll('.reader .sentence,.reader .reader-hero,.reader .chapter-end,.reader .inline-ar,.reader .stl-sentence-translation').forEach(node=>{
-  // The English source remains English even if the UI is Arabic.
-  node.style.fontFamily=(node.matches('.inline-ar')||node.matches('.stl-sentence-translation'))?ar:en;
+ document.querySelectorAll('.reader .sentence,.reader .reader-hero,.reader .chapter-end,.reader .inline-ar,.reader .inline-en,.reader .stl-sentence-translation').forEach(node=>{
+  const sourceIsArabic=state.story?.sourceLanguage==='ar';
+  node.style.fontFamily=(node.matches('.inline-ar')||(sourceIsArabic&&node.matches('.sentence'))||(node.matches('.stl-sentence-translation')&&!sourceIsArabic))?ar:en;
  });
  const rootStyle=document.documentElement?.style;
  if(rootStyle&&typeof rootStyle.setProperty==='function'){
@@ -288,14 +288,14 @@ function installPageTurn(){
  // enough space to prevent image-heavy pages from overrunning the sheet.
  const illustrationHeights=sentences.map(node=>{
   const after=node.nextElementSibling;
-  const adjacent=after?.classList?.contains('inline-ar')?after.nextElementSibling:after;
+  const adjacent=(after?.classList?.contains('inline-ar')||after?.classList?.contains('inline-en'))?after.nextElementSibling:after;
   return adjacent?.classList?.contains('lt-inline-illustration')
    ?Math.min(260,Math.max(140,window.innerHeight*.26)):0;
  });
  const paragraphLengths=sentences.map(node=>{
   const translated=node.nextElementSibling;
-  const ar=translated?.classList?.contains('inline-ar')?(translated.textContent||'').length:0;
-  return (node.textContent||'').length+ar;
+  const companion=(translated?.classList?.contains('inline-ar')||translated?.classList?.contains('inline-en'))?(translated.textContent||'').length:0;
+  return (node.textContent||'').length+companion;
  });
  const starts=ltPageStarts(paragraphLengths,
   window.innerHeight,bounds?.width||window.innerWidth,
@@ -771,10 +771,30 @@ function ltBuiltInChapterScene(chapter,sentenceCount){
 renderReader=function(){
  originalReader();
  if(!state.story || state.page!=='reader')return;
+ if(state.story.sourceLanguage==='ar'){
+  const chapter=state.story.chapters[state.chapter],root=document.querySelector('.reader');
+  root?.setAttribute('data-lt-source','ar');
+  root?.querySelector('.reader-label bdi:first-of-type')?.setAttribute('dir','rtl');
+  const title=root?.querySelector('h2');
+  title?.setAttribute('lang','ar');title?.setAttribute('dir','rtl');
+  document.querySelectorAll('.reader .sentence').forEach(node=>{
+   const paragraph=chapter.paragraphs[Number(node.dataset.i)];
+   if(!paragraph)return;
+   node.textContent=paragraph.ar; // discard lookup tokens from secondary English
+   node.classList.add('lt-arabic-source');
+   node.setAttribute('lang','ar');node.setAttribute('dir','rtl');
+   const next=node.nextElementSibling;
+   if(next?.classList.contains('inline-ar')){
+    next.textContent=paragraph.en;next.classList.replace('inline-ar','inline-en');
+    next.setAttribute('lang','en');next.setAttribute('dir','ltr');
+   }
+  });
+ }
  ltApplyFonts();
  // UI language must not change pronunciation of English source paragraphs.
- document.querySelector('.reader h2')?.setAttribute('lang','en');
+ document.querySelector('.reader h2')?.setAttribute('lang',state.story?.sourceLanguage==='ar'?'ar':'en');
  document.querySelectorAll('.reader .inline-ar').forEach(node=>node.setAttribute('lang','ar'));
+ document.querySelectorAll('.reader .inline-en').forEach(node=>node.setAttribute('lang','en'));
  put('has_read_'+state.story.id,true);
  // LT-08: render only editorially approved, packaged images anchored to a
  // specific paragraph. No remote URLs, HTML injection, or network fallback.
@@ -828,7 +848,7 @@ renderReader=function(){
   // Keep a visible Arabic translation immediately beside its English source.
   // The illustration follows the bilingual pair, not between both languages.
   const translated=anchor.nextElementSibling;
-  if(translated?.classList?.contains('inline-ar')&&typeof translated.insertAdjacentElement==='function')
+  if((translated?.classList?.contains('inline-ar')||translated?.classList?.contains('inline-en'))&&typeof translated.insertAdjacentElement==='function')
    translated.insertAdjacentElement('afterend',figure);
   else anchor.insertAdjacentElement('afterend',figure);
   usedAnchors.add(item.afterParagraph);
@@ -920,11 +940,11 @@ renderReader=function(){
    sentences.forEach(node=>node.setAttribute('tabindex',node===next?'0':'-1'));
    next.focus?.();
   },true);
-  p.setAttribute('lang','en');
-  p.setAttribute('dir','ltr');
+  p.setAttribute('lang',state.story?.sourceLanguage==='ar'?'ar':'en');
+  p.setAttribute('dir',state.story?.sourceLanguage==='ar'?'rtl':'ltr');
   // Preserve the actual English sentence for screen readers: aria-label would
   // replace the sentence with generic instructions and hide its learning text.
-  p.setAttribute('aria-description',uiText('انقر كلمة لمعناها، أو اضغط مطولًا أو اضغط Enter أو Space لعرض الترجمة.','Tap a word for its meaning, or long-press, Enter or Space for Arabic translation.'));
+  p.setAttribute('aria-description',state.story?.sourceLanguage==='ar'?uiText('اضغط مطولًا أو Enter أو Space لعرض المعنى بالإنجليزية.','Long press, Enter or Space to show contextual English.'):uiText('انقر كلمة لمعناها، أو اضغط مطولًا أو اضغط Enter أو Space لعرض الترجمة.','Tap a word for its meaning, or long-press, Enter or Space for Arabic translation.'));
   const sentenceIndex=Number(p.dataset.i);
   const source=state.story.chapters[state.chapter]?.paragraphs?.[sentenceIndex];
   const key=revealKey();
@@ -932,9 +952,9 @@ renderReader=function(){
    if(!source||p.nextElementSibling?.classList?.contains('stl-sentence-translation'))return;
    const translation=document.createElement('p');
    translation.className='stl-sentence-translation';
-   translation.setAttribute('dir','rtl');
-   translation.setAttribute('lang','ar');
-   translation.textContent=source.ar;
+   translation.setAttribute('dir',state.story?.sourceLanguage==='ar'?'ltr':'rtl');
+   translation.setAttribute('lang',state.story?.sourceLanguage==='ar'?'en':'ar');
+   translation.textContent=state.story?.sourceLanguage==='ar'?source.en:source.ar;
    p.insertAdjacentElement('afterend',translation);
   };
   const toggleSentenceTranslation=event=>{

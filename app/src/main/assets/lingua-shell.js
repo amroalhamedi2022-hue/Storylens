@@ -733,7 +733,7 @@ function decorateLibrary(){
  section.querySelector('.header .brand')?.replaceChildren(document.createTextNode('LINGUA TALES'));
  const headerTitle=section.querySelector('.header h1');
  if(headerTitle){
- const category=state.genre==='all'?null:catalog.genres.find(g=>g.id===state.genre);
+ const category=state.genre==='all'?null:state.genre==='arabic-originals'?{ar:'القصص العربية',en:'Arabic Stories'}:catalog.genres.find(g=>g.id===state.genre);
  headerTitle.textContent=category?(rtl()?category.ar:category.en):(rtl()?'الصفحة الرئيسية':'Home');
  headerTitle.classList.add('lt-location-title');
 }
@@ -746,6 +746,13 @@ function decorateLibrary(){
  section.querySelector('.stl-discovery-title')?.remove();
  section.querySelectorAll(':scope > p.quiet').forEach(p=>p.remove());
  section.querySelectorAll('.shelf .card .sub').forEach(p=>p.remove());
+ section.querySelectorAll('.shelf [data-lt-cover-story]').forEach(cover=>{
+  const item=catalog.stories.find(story=>story.id===cover.getAttribute('data-lt-cover-story'));
+  if(item?.sourceLanguage==='ar'){
+   const title=cover.closest('.card')?.querySelector('h2');
+   title?.setAttribute('lang','ar');title?.setAttribute('dir','rtl');
+  }
+ });
  section.querySelector('.library-actions [aria-label="تغيير تصميم الواجهة"]')?.remove();
  const actions=section.querySelector('.library-actions');
  const searchLabel=section.querySelector('.search-label');
@@ -795,7 +802,7 @@ function decorateLibrary(){
  drawer.appendChild(title);
  const genres=document.createElement('nav');
  genres.className='lt-genre-list';genres.setAttribute('aria-label',rtl()?'أنواع القصص':'Story genres');
- const list=[{id:'all',ar:'الكل',en:'All stories'},...catalog.genres];
+ const list=[{id:'all',ar:'الكل',en:'All stories'},{id:'arabic-originals',ar:'القصص العربية',en:'Arabic Stories'},...catalog.genres];
  for(const genre of list){
   const button=addButton(genres,rtl()?genre.ar:genre.en,()=>{
    closeDrawer(false);

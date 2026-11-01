@@ -21,3 +21,10 @@ html[data-lt-english-font="humanist"]{--lt-en-font:"LT English Humanist",serif}
 html[data-lt-english-font="mono"]{--lt-en-font:"LT English Mono",serif}
 html[data-lt-english-font="hand"]{--lt-en-font:"LT English Hand",serif}
 .reader .inline-ar,.reader .stl-sentence-translation{font-family:var(--lt-ar-font)!important}
+
+/* Arabic-original prose is primary RTL with independently selectable offline font. */
+.reader[data-lt-source="ar"] h2,.reader[data-lt-source="ar"] .sentence{font-family:var(--lt-ar-font)!important;direction:rtl;text-align:right}
+.reader[data-lt-source="ar"] .sentence{font-size:var(--lt-ar-reading-size,20px)!important;line-height:var(--lt-ar-reading-leading,2)!important}
+.reader[data-lt-source="ar"] .inline-en{font-family:var(--lt-en-font)!important;direction:ltr;text-align:left;border-inline-start:3px solid var(--accent);padding:10px 15px;margin:5px 0 18px;color:var(--reader-ink);background:color-mix(in srgb,var(--reader) 88%,var(--accent) 12%);border-radius:9px}
+.reader[data-lt-source="ar"] .stl-sentence-translation{font-family:var(--lt-en-font)!important;direction:ltr;text-align:left;border-right:0;border-left:3px solid var(--accent)}
+.library .card h2[lang="ar"]{font-family:var(--lt-ar-font)!important;direction:rtl;text-align:right}

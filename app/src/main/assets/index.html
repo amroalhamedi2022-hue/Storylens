@@ -82,6 +82,7 @@ body.theme-monsoon-meridian::before,body.theme-monsoon-meridian::after{display:n
 <script src="novella-ninth-ledger.js"></script>
 <script src="novella-quiet-frequency.js"></script>
 <script src="novella-floor-between.js"></script>
+<script src="arabic-investigation.js"></script>
 <script type="application/x-lingua-lazy" data-lt-lazy="book" src="classic-verne-towle-ch01.js"></script>
 <script type="application/x-lingua-lazy" data-lt-lazy="book" src="classic-verne-towle-ch02.js"></script>
 <script type="application/x-lingua-lazy" data-lt-lazy="book" src="classic-verne-towle-ch03.js"></script>
@@ -128,7 +129,9 @@ body.theme-monsoon-meridian::before,body.theme-monsoon-meridian::after{display:n
 const catalog=JSON.parse(document.getElementById('libraryData').textContent);
 window.LinguaCatalog=catalog;
 if(Array.isArray(window.StoryLensEditorialStories)) catalog.stories.push(...window.StoryLensEditorialStories);
+if(Array.isArray(window.LinguaArabicStories)) catalog.stories.push(...window.LinguaArabicStories);
 const art=JSON.parse(document.getElementById('artData').textContent);
+if(window.LinguaArabicArt)Object.assign(art,window.LinguaArabicArt);
 window.LinguaHydrateStoryCovers=function(){
  // Existing story-specific packaged artwork only. Never request images online.
  // Update backgrounds in-place; do not recreate the library DOM, reset scroll,
@@ -165,7 +168,7 @@ function cycleVisualTheme(){const themes=['aurora','aqua','nebula'];const n=(the
 const safeKey=s=>encodeURIComponent(s).replace(/'/g,'%27');
 const cover=s=>`<div class="cover art" data-lt-cover-story="${esc(s.id)}" aria-hidden="true" style="background-image:url('${art[s.id+'_0']||''}')"></div>`;
 function library(){
- const available=catalog.stories.filter(s=>(state.genre==='all'||s.genre===state.genre) &&
+ const available=catalog.stories.filter(s=>(state.genre==='all'||(state.genre==='arabic-originals'?s.sourceLanguage==='ar':s.genre===state.genre)) &&
    (!state.query || (s.title+' '+s.subtitle+' '+s.description).toLowerCase().includes(state.query.toLowerCase())));
  $('root').innerHTML=`<section class="library page"><div class="header"><div><div class="brand">LINGUA TALES</div><h1>Read beyond the words.</h1><div class="quiet">قصص ناضجة ومشوّقة، مع ترجمة معنوية وقاموس سياقي</div></div><div class="library-actions"><button class="secondary" aria-label="تغيير تصميم الواجهة" onclick="cycleVisualTheme()">◈ ${state.uiTheme==='aurora'?'Liquid Aurora':state.uiTheme==='aqua'?'Aqua Glass':'Nebula Flow'}</button><button class="secondary" onclick="showWords()">مفرداتي ◀</button><button class="secondary" onclick="showReview()">مراجعة اليوم · ${state.cards.filter(c=>c.dueAt<=Date.now()).length}</button></div></div><label class="search-label">بحث في المكتبة<input aria-label="بحث عن قصة" id="story-search" placeholder="عنوان القصة أو موضوعها…" value="${esc(state.query)}" oninput="searchStories(this.value)" /></label><div class="filters"><button class="pill ${state.genre==='all'?'active':''}" onclick="filterGenre('all')">الكل</button>${catalog.genres.map(g=>`<button class="pill ${state.genre===g.id?'active':''}" onclick="filterGenre('${g.id}')">${esc(g.ar)}</button>`).join('')}</div><p class="quiet">المكتبة المختارة · ${available.length} قصص متاحة</p><div class="shelf">${available.map(s=>`<article class="card" onclick="openStory('${s.id}')">${cover(s)}<div class="card-content"><div class="lvl">${esc(s.level)}</div><h2>${esc(s.title)}</h2><div class="sub">${esc(s.subtitle)}</div><div class="desc">${esc(s.description)}</div></div></article>`).join('')}</div></section>`;
 }
