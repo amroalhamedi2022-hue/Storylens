@@ -207,6 +207,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Extended source/file hash regression to seven, per-chapter contextual companion paragraph counts and actual Chromium source/companion figure + hero checks. Removed one-time archive uploader job from GitHub Actions so it cannot repeat. Source/rights notes in `docs/LITERATURE_SOURCE_QUEUE.md`.
 - Exact-head Node/Android/Chromium CI **PENDING**; archive metadata signals 'no known copyright restrictions' but territory-specific release sign-off, natural literary translation review, 120Hz physical device tests and original installed signing key remain OPEN.
 
+### 2026-11-01 — QA01 / UX04: two original chapter-scene screenshot fixtures
+- Parent PR HEAD a8d30564f2c79d54a6f18a2bbe967e1b0279d1fe. Added actual Chromium image previews for 1873 Calcutta trial and Singapore carriage, both loaded from packed offline WebP and scrolled to the authentic source passage.
+- Browser DOM check refuses a missing picture; screenshots are generated at a phone-sized viewport and included in the normal CI screenshot artifact to support human visual inspection. No story text, chapter translations, signing or user data modified.
+- Current exact-head CI for new tests PENDING; hardware image quality and touch acceptance NOT TESTED.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

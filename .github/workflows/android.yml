@@ -311,6 +311,13 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne-original-news-ch05.png" "file://$PWD/app/src/main/assets/qa-historic-preview-news.html" >/tmp/lt-preview-news.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne-original-cabin-ch20.png" "file://$PWD/app/src/main/assets/qa-historic-preview-cabin.html" >/tmp/lt-preview-cabin.log 2>&1
           echo "PASS: saved two independent authentic 1873 chapter-scene screenshots for art-direction review"
+          for which in calcutta singapore; do
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=9000 --window-size=460,860 --dump-dom "file://$PWD/app/src/main/assets/qa-historic-preview-$which.html" > "/tmp/lt-original-$which.html" 2>/tmp/lt-original-$which.log
+            grep -Fq 'data-lt-historic-preview="PASS"' "/tmp/lt-original-$which.html" || { echo "Authentic $which book scene failed to mount"; grep -o 'data-lt-historic-preview-errors="[^"]*"' "/tmp/lt-original-$which.html" | head -1; exit 1; }
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=9000 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne-1873-$which.png" "file://$PWD/app/src/main/assets/qa-historic-preview-$which.html" >"/tmp/lt-shot-$which.log" 2>&1
+          done
+          echo "PASS: real-browser phone screenshots for both newly verified original book illustrations"
+
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne15-phone.png" "file://$PWD/app/src/main/assets/qa-verne15.html" >/tmp/chrome-verne15.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne15.html" > /tmp/storylens-verne15-dom.html 2>/tmp/chrome-verne15-dom.log
           grep -Fq 'data-storylens-qa="PASS"' /tmp/storylens-verne15-dom.html || { echo "Chapter XV reader screenshot failed:"; grep -o 'data-storylens-qa-errors="[^"]*"' /tmp/storylens-verne15-dom.html | head -1; exit 1; }

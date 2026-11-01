@@ -481,6 +481,44 @@ tests["historic-preview-cabin"] = r"""(async function(){
            document.body.setAttribute('data-lt-historic-preview-errors',e.message)}
 })();""";
 
+tests["historic-preview-calcutta"] = r"""(async function(){
+ try{
+  const id='around-the-world-in-eighty-days-towle';
+  await window.LinguaContentLoader.ensureStory(id);
+  put('chapter_'+id,14);
+  openStory(id);
+  state.chapter=14;renderReader();
+  const picture=document.querySelector('.reader img[src="art/verne-calcutta-court-1873.webp"]');
+  if(!picture)throw Error('Original chapter plate not mounted');
+  picture.loading='eager';
+  picture.scrollIntoView({block:'center',behavior:'instant'});
+  await new Promise(resolve=>setTimeout(resolve,450));
+  document.body.setAttribute('data-lt-historic-preview','PASS');
+ }catch(e){
+  document.body.setAttribute('data-lt-historic-preview','FAIL');
+  document.body.setAttribute('data-lt-historic-preview-errors',e.message);
+ }
+})();""";
+
+tests["historic-preview-singapore"] = r"""(async function(){
+ try{
+  const id='around-the-world-in-eighty-days-towle';
+  await window.LinguaContentLoader.ensureStory(id);
+  put('chapter_'+id,16);
+  openStory(id);
+  state.chapter=16;renderReader();
+  const picture=document.querySelector('.reader img[src="art/verne-singapore-carriage-1873.webp"]');
+  if(!picture)throw Error('Original chapter plate not mounted');
+  picture.loading='eager';
+  picture.scrollIntoView({block:'center',behavior:'instant'});
+  await new Promise(resolve=>setTimeout(resolve,450));
+  document.body.setAttribute('data-lt-historic-preview','PASS');
+ }catch(e){
+  document.body.setAttribute('data-lt-historic-preview','FAIL');
+  document.body.setAttribute('data-lt-historic-preview-errors',e.message);
+ }
+})();""";
+
 for name,script in list(tests.items()):
  if "openStory('around-the-world-in-eighty-days-towle')" not in script:
   continue
