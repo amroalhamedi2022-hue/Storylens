@@ -111,6 +111,6 @@ a.match(css,/\.reader \.lt-inline-illustration\{/);
 a.match(css,/border:3px double #bba787!important/);
 a.match(css,/\.lt-inline-illustration figcaption\{/);
 a.match(css,/\.library \.lt-book-cover::after\{/);
-const vintage=css.slice(css.indexOf('LT-UX04: tactile archival book plates')).replace(/\/\*[\s\S]*?\*\//g,'');
+const vintage=css.slice(css.lastIndexOf('/*',css.indexOf('LT-UX04: tactile archival book plates'))).replace(/\/\*[\s\S]*?\*\//g,'');
 a.ok(!/filter\s*:|backdrop-filter\s*:|animation\s*:/.test(vintage),'avoid expensive GPU image filters and looping effects on long reading pages');
 console.log('PASS: low-overhead period book-plate framing for in-text illustrations and covers');
