@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "id": "bram-stoker-dracula-1897",
+  "title": "Dracula",
+  "author": "Bram Stoker",
+  "originalLanguage": "en",
+  "originalPublicationYear": 1897,
+  "genres": [
+    "gothic horror",
+    "historical epistolary mystery",
+    "adult literary suspense"
+  ],
+  "originalSourceComplete": true,
+  "status": "FULL_ENGLISH_ORIGINAL_STAGED_ONLY",
+  "publishable": false,
+  "source": {
+    "publisher": "Standard Ebooks",
+    "editionURL": "https://standardebooks.org/ebooks/bram-stoker/dracula",
+    "upstreamRepository": "standardebooks/bram-stoker_dracula",
+    "upstreamCommit": "e9968b274918e5a79b8e34cc93e50492363d1612",
+    "upstreamTextPath": "src/epub/text",
+    "rightsNote": "Original 1897 text and art believed US public domain, Standard Ebooks editorial work CC0; OTHER TERRITORIES and independent images/translations must be verified"
+  },
+  "narrativeParts": [
+    {
+      "order": 1,
+      "file": "preface.xhtml",
+      "bytes": 1015,
+      "upstreamGitBlobSha": "9b93c7a6ab600803c440b4d883c10b2b60331a88"
+    },
+    {
+      "order": 2,
+      "file": "chapter-1.xhtml",
+      "bytes": 33085,
+      "upstreamGitBlobSha": "2b32ba94d8f749edff60707b484ca685928a017c"
+    },
+    {
+      "order": 3,
+      "file": "chapter-2.xhtml",
+      "bytes": 30622,
+      "upstreamGitBlobSha": "882bff5a09bbf4a32039217b066ff6db3c73adaf"
+    },
+    {
+      "order": 4,
+      "file": "chapter-3.xhtml",
+      "bytes": 31885,
+      "upstreamGitBlobSha": "0adf289cc6e2f1acf28a1a1385d073e1eb033cef"
+    },
+    {
+      "order": 5,
+      "file": "chapter-4.xhtml",
+      "bytes": 32809,
+      "upstreamGitBlobSha": "a9c73229b483433b3f574a3c9c7854842b035f91"
+    },
+    {
+      "order": 6,
+      "file": "chapter-5.xhtml",
+      "bytes": 22142,
+      "upstreamGitBlobSha": "768893cc48111b6439703658095b81217960b0ca"
+    },
+    {
+      "order": 7,
+      "file": "chapter-6.xhtml",
+      "bytes": 32946,
+      "upstreamGitBlobSha": "042b7bc009cf28d394ed2190b0607d8fc09d5220"
+    },
+    {
+      "order": 8,
+      "file": "chapter-7.xhtml",
+      "bytes": 33822,
+      "upstreamGitBlobSha": "0dcc299104ef03810212a54f2d162a3fa3d8cd04"
+    },
+    {
+      "order": 9,
+      "file": "chapter-8.xhtml",
+      "bytes": 37168,
+      "upstreamGitBlobSha": "3d42e32d02da260b22ee79f1a1dfdd6745bc5e33"
+    },
+    {
+      "order": 10,
+      "file": "chapter-9.xhtml",
+      "bytes": 35655,
+      "upstreamGitBlobSha": "77ef7ff32ebaa47dfe86844925faf0f044015633"
+    },
+    {
+      "order": 11,
+      "file": "chapter-10.xhtml",
+      "bytes": 34970,
+      "upstreamGitBlobSha": "a714ed8855bb90a26dda8044e34eb3c03b5cbfa1"
+    },
+    {
+      "order": 12,
+      "file": "chapter-11.xhtml",
+      "bytes": 31258,
+      "upstreamGitBlobSha": "ace449fa6ba6d00ed4e23ad156e31ed221560f34"
+    },
+    {
+      "order": 13,
+      "file": "chapter-12.xhtml",
+      "bytes": 42599,
+      "upstreamGitBlobSha": "c4efdf348c34d2bd70320f18d60f61acb6b53936"
+    },
+    {
+      "order": 14,
+      "file": "chapter-13.xhtml",
+      "bytes": 38378,
+      "upstreamGitBlobSha": "2ef8fd281cfa38df4423c6abd5725df334be537e"
+    },
+    {
+      "order": 15,
+      "file": "chapter-14.xhtml",
+      "bytes": 38163,
+      "upstreamGitBlobSha": "a3beb59fbfbd7c59903ea60cd425eb732317eff2"
+    },
+    {
+      "order": 16,
+      "file": "chapter-15.xhtml",
+      "bytes": 33497,
+      "upstreamGitBlobSha": "ed8bbd18976e6125140cc3a014075f7e8ee9d439"
+    },
+    {
+      "order": 17,
+      "file": "chapter-16.xhtml",
+      "bytes": 25796,
+      "upstreamGitBlobSha": "7298e3c3cb98dc17029a77e8013ff4ea0fdcba57"
+    },
+    {
+      "order": 18,
+      "file": "chapter-17.xhtml",
+      "bytes": 34481,
+      "upstreamGitBlobSha": "a0d4542e851fa36d6484d78aa2bbf1cb2896e554"
+    },
+    {
+      "order": 19,
+      "file": "chapter-18.xhtml",
+      "bytes": 41160,
+      "upstreamGitBlobSha": "bdf1f16a5d7adf8ffdf4a14c70fc8f597f84bcd0"
+    },
+    {
+      "order": 20,
+      "file": "chapter-19.xhtml",
+      "bytes": 32444,
+      "upstreamGitBlobSha": "c21daa48eddffe368fd736dcf0e6a7d29b0bc974"
+    },
+    {
+      "order": 21,
+      "file": "chapter-20.xhtml",
+      "bytes": 35542,
+      "upstreamGitBlobSha": "2d300dc0eb39e727582e042f450675daa12552d9"
+    },
+    {
+      "order": 22,
+      "file": "chapter-21.xhtml",
+      "bytes": 35123,
+      "upstreamGitBlobSha": "55776021a8350729716ca9b8209397ed2f0cd1c7"
+    },
+    {
+      "order": 23,
+      "file": "chapter-22.xhtml",
+      "bytes": 30522,
+      "upstreamGitBlobSha": "dc65c50381e89020227ecce800f1334be827fe00"
+    },
+    {
+      "order": 24,
+      "file": "chapter-23.xhtml",
+      "bytes": 32924,
+      "upstreamGitBlobSha": "1ea47c94b4874ffb5406fad72146325e12cbfa78"
+    },
+    {
+      "order": 25,
+      "file": "chapter-24.xhtml",
+      "bytes": 36134,
+      "upstreamGitBlobSha": "24a7217964afe45057893555d0c1a0e2869332ed"
+    },
+    {
+      "order": 26,
+      "file": "chapter-25.xhtml",
+      "bytes": 37659,
+      "upstreamGitBlobSha": "be146327a69f87bc60a0ffd7363faf7e7a5fa5c3"
+    },
+    {
+      "order": 27,
+      "file": "chapter-26.xhtml",
+      "bytes": 43031,
+      "upstreamGitBlobSha": "f45b2f8027ed4e649c549222e953b45de0fd0058"
+    },
+    {
+      "order": 28,
+      "file": "chapter-27.xhtml",
+      "bytes": 42843,
+      "upstreamGitBlobSha": "44a0c559b3f967ffff342360ed27494d870ce4de"
+    },
+    {
+      "order": 29,
+      "file": "epilogue.xhtml",
+      "bytes": 2474,
+      "upstreamGitBlobSha": "6569d1b31be6c019be57ffacdb23a17c8efd4f77"
+    }
+  ],
+  "acceptance": {
+    "completeArabicCompanion": false,
+    "contextualArabicEditorialReview": false,
+    "periodChapterArtCleared": false,
+    "nonUsRightsReviewed": false,
+    "offlineDeviceVerified": false
+  },
+  "releaseNote": "Preserve authentic preface, 27 complete chapters and final epilogue note. No unreviewed machine/literal Arabic translation; not packaged or displayed as finished."
+}

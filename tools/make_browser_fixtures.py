@@ -218,7 +218,7 @@ tests["arabic-first"] = r"""(async function(){
  const check=(label,fn)=>{try{if(!fn())errors.push(label)}catch(e){errors.push(label+': '+e.message)}};
  try{
   filterGenre('arabic-originals');
-  check('Arabic category visible',()=>state.genre==='arabic-originals'&&document.querySelector('.library .lt-location-title')?.textContent==='القصص العربية');
+  check('Arabic category visible',()=>state.genre==='arabic-originals'&&document.querySelector('.library .lt-location-title')?.textContent==='كتب أصلها عربي');
   // Keep original Arabic reading accessible to legacy bookmarks but OUT of the novel shelf.
   check('short Arabic original excluded from novel shelf',()=>!document.querySelector('.library [data-lt-cover-story="thirteenth-bell-arabic"]'));
   check('Arabic legacy data retained',()=>catalog.stories.some(s=>s.id==='thirteenth-bell-arabic'&&s.sourceLanguage==='ar'&&s.chapters.length===6));
