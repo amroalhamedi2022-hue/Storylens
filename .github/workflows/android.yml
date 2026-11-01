@@ -17,6 +17,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+
+  historic_art_intake:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/automation/storylens-dictionary-saved-words-20261023'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install offline archival image encoder
+        run: python3 -m pip install --disable-pip-version-check --quiet 'Pillow==11.3.0'
+      - name: Verify source hashes and encode 3 authentic historic book plates
+        run: python3 tools/intake_period_art.py
+      - name: Return verified WebP assets for direct commit
+        uses: actions/upload-artifact@v4
+        with:
+          name: Lingua-Historic-Art-Intake-VERIFIED
+          path: /tmp/lt-historic-intake/
+          retention-days: 2
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 25

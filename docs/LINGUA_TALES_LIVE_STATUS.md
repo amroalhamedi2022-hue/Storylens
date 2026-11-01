@@ -79,6 +79,13 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Scoped CSS now resets `background:none;clip-path:none;box-shadow:none` on the **art cover frame** and resets `border-radius:0;box-shadow:none` on the full-size ink mask; preserves artwork and the accessible DOM cover title. Unlike earlier naive CSS checks, the real Chromium phone/tablet fixture checks these *computed paint properties* plus full-sized pseudo-element geometry.
 - Staged with production change, source checks, and browser fixture; new exact-head CI and screenshot approval **PENDING**. Does not touch installed package data, content, or 120Hz device tuning.
 
+### 2026-11-01 — UX01 / UX04 real historic archive intake (source scan download stage)
+- Verified exact parent PR HEAD `a2d3970a924feb0d3d44b4151fe2e3247366d8f0`; GitHub Actions 41335213067 **success** (all tests) prior to this intake. User rejected the decorative and vector/line-pattern covers: only real historical images or scene-true archive photography/engraving are acceptable.
+- Authenticated three individual historical scans from Wikimedia Commons and original edition metadata: 1873 Phileas Fogg's Kiouni elephant purchase scene (Towle chapter XI), 1872 original world itinerary map (chapter III) and 1872 Tankadere storm engraving (chapter XXI). Each has a pinned upstream SHA-1, source page and documented PDM/US-old-publication rationale, not just a category title.
+- Added `tools/intake_period_art.py` to fetch those ORIGINAL IMAGE BYTES on the CI runner, fail on changed source checksums, encode individually bounded WebP assets and create per-asset source/optimized SHA-256 manifest. The temporary `historic_art_intake` GitHub workflow job returns the verified binary assets as an Actions artifact for subsequent direct Git object commit. **This first commit is the acquisition pipeline, NOT yet claiming images in the APK.**
+- Next: retrieve the real image artifact, inspect it, commit compact verified WebP files to `app/src/main/assets/art/`, wire honest real-image cover and passage-anchored in-page figure, remove temporary remote-intake job, add tests and run exact-head Android/Chromium.
+- Preserve no-network Android runtime, existing library data, full-book metadata and signature. No original APK update/physical 120Hz/territorial redistribution signoff claims.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
