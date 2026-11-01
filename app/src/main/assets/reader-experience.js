@@ -946,10 +946,32 @@ renderReader=function(){
  const sentences=Array.from(document.querySelectorAll('.reader .sentence'));
  const safeArtPath=/^art\/[a-z0-9_-]+(?:\/[a-z0-9_-]+)*\.(?:webp|png|jpe?g)$/i;
  const curatedArt=Array.isArray(chapter?.inlineArt)?chapter.inlineArt:[];
- const approvedArt=curatedArt.some(item=>item&&safeArtPath.test(item.src||'')&&
+ // UX04: historical plates are the REAL 1872/1873 engravings from the book,
+ // not gradients, generated illustrations, or unmatched decorative scenes.
+ // Paragraph indices are traced to George Makepeace Towle's packaged source.
+ // The source arrays/bookmarks stay byte-for-byte unchanged.
+ const periodArt=state.story.id==='around-the-world-in-eighty-days-towle'
+  ?({
+    2:[{afterParagraph:27,src:'art/verne-route-map-1872.webp',
+      alt:uiText('خريطة أصلية من طبعة القرن التاسع عشر توضح مسار الرحلة حول العالم.',
+        'Historical 1872 engraving of the complete route around the world.'),
+      credit:'Neuville / Benett, 1872 · Historical journey map',
+      aspectRatio:800/650,position:'wide'}],
+    10:[{afterParagraph:43,src:'art/verne-kiouni-1873.webp',
+      alt:uiText('فيلياس فوغ وباسبارتو أمام الفيل كِيوني ومالكه في الهند.',
+        'Phileas Fogg and Passepartout meeting Kiouni the elephant in India.'),
+      credit:'1873 J. R. Osgood illustrated edition · NYPL archive',
+      aspectRatio:630/921,position:'wide'}],
+    20:[{afterParagraph:34,src:'art/verne-tankadere-1872.webp',
+      alt:uiText('السفينة تانكادير تتقاذفها الأمواج العالية وسط العاصفة.',
+        'The Tankadere tossed on towering waves during the storm.'),
+      credit:'Neuville / Benett, 1872 · Historic engraved scene',
+      aspectRatio:640/931,position:'wide'}]
+   }[state.chapter]||[]):[];
+ const approvedArt=periodArt.length>0||curatedArt.some(item=>item&&safeArtPath.test(item.src||'')&&
   typeof item.alt==='string'&&!!item.alt.trim());
  const chapterScene=approvedArt?null:ltBuiltInChapterScene(chapter,sentences.length);
- const inlineArt=chapterScene?[chapterScene,...curatedArt]:curatedArt;
+ const inlineArt=chapterScene?[chapterScene,...periodArt,...curatedArt]:[...periodArt,...curatedArt];
  const usedAnchors=new Set();
  // Ignore invalid catalog entries without allowing them to consume the 12-image budget.
  // Bound candidate scanning so a corrupt chapter cannot stall the reader.

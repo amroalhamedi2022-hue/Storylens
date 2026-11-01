@@ -18,62 +18,6 @@ concurrency:
 
 jobs:
 
-  historic_art_intake:
-    permissions:
-      contents: write
-    if: github.event_name == 'push' && github.ref == 'refs/heads/automation/storylens-dictionary-saved-words-20261023'
-    runs-on: ubuntu-latest
-    timeout-minutes: 8
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install offline archival image encoder
-        run: python3 -m pip install --disable-pip-version-check --quiet 'Pillow==11.3.0'
-      - name: Verify source hashes and encode 3 authentic historic book plates
-        run: python3 tools/intake_period_art.py
-      - name: Return verified WebP assets for direct commit
-        uses: actions/upload-artifact@v4
-        with:
-          name: Lingua-Historic-Art-Intake-VERIFIED
-          path: /tmp/lt-historic-intake/
-          retention-days: 2
-      - name: Publish historic art directly into the current PR branch
-        shell: bash
-        env:
-          EXPECTED_HEAD: ${{ github.sha }}
-        run: |
-          set -euo pipefail
-          BRANCH='automation/storylens-dictionary-saved-words-20261023'
-          LATEST="$(git ls-remote origin "refs/heads/$BRANCH" | cut -f1)"
-          if [ "$LATEST" != "$EXPECTED_HEAD" ]; then
-            echo "Concurrent branch edit detected; refusing to overwrite newer HEAD: $LATEST"
-            exit 1
-          fi
-          mkdir -p app/src/main/assets/art docs/literature
-          cp /tmp/lt-historic-intake/*.webp app/src/main/assets/art/
-          cp /tmp/lt-historic-intake/manifest.json docs/literature/HISTORIC_VERNES_ASSETS.json
-          python3 - <<'PY'
-          import hashlib,json,pathlib
-          root=pathlib.Path('app/src/main/assets/art')
-          rows=json.loads(pathlib.Path('docs/literature/HISTORIC_VERNES_ASSETS.json').read_text())
-          assert len(rows)==3
-          for row in rows:
-            data=(root/row['file']).read_bytes()
-            assert hashlib.sha256(data).hexdigest()==row['webp_sha256']
-            assert len(data)<270000 and data[0:4]==b'RIFF' and data[8:12]==b'WEBP'
-          print('PASS: all three offline plates match archived checksums')
-          PY
-          cat >> docs/LINGUA_TALES_LIVE_STATUS.md <<'EOF'
-
-          ### 2026-11-01 — UX01 / UX04: original historic scans imported (binary checkpoint)
-          - Historic intake downloaded and verified Kiouni elephant, itinerary map and Tankadere period engravings against original Commons SHA-1; recoded and checked exact WebP SHA-256; three offline files under app/src/main/assets/art.
-          - Actual source URL, date, original/optimized hash, artist and scene records: docs/literature/HISTORIC_VERNES_ASSETS.json.
-          - This is a binary-asset milestone, not yet a change to reader display. Wire historical cover and chapter illustrations in next code commit, remove temporary intake job and verify the new APK/Chromium.
-          EOF
-          git add app/src/main/assets/art/verne-*.webp docs/literature/HISTORIC_VERNES_ASSETS.json docs/LINGUA_TALES_LIVE_STATUS.md
-          git config user.name 'lingua-tales-archive-bot'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'assets(art): import verified genuine Verne book engravings [skip ci]'
-          git push origin "HEAD:refs/heads/$BRANCH"
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 25
@@ -204,6 +148,7 @@ jobs:
           node tools/theme-live-gradient.test.cjs
           node tools/ux-2026-10-29.test.cjs
           node tools/device-ux-batch.test.cjs
+          node tools/historic-verne-art.test.cjs
       - name: Configure stable update signing (optional private repository secrets)
         env:
           LT_SIGNING_KEYSTORE_BASE64: ${{ secrets.LT_SIGNING_KEYSTORE_BASE64 }}

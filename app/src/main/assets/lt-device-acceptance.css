@@ -329,3 +329,13 @@ button.lt-water-pressed,.lt-theme-choice.lt-water-pressed{
 .library .lt-book-cover.art::after{
  background:none!important;clip-path:none!important;box-shadow:none!important;
 }
+
+/* AUTHENTIC COVER ART: 1873 Osgood book engraving, not decorative SVG.
+   The image is a local offline WebP and the live title remains selectable by
+   screen readers. No network URL, no repeated animation and no JPEG bloat. */
+.library .lt-novel-card .lt-book-cover[data-lt-cover-story="around-the-world-in-eighty-days-towle"]{
+ background-image:url("art/verne-kiouni-1873.webp")!important;
+ background-position:center 34%!important;
+ background-size:cover!important;
+ background-color:#d9c8a9!important;
+}

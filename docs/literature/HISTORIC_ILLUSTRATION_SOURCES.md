@@ -33,3 +33,12 @@
 - Keep each picture with the paragraph it depicts, adjacent to the original + contextual translation pair; never split a translation, bury the source, or overlap dictionary word selection.
 - Mobile 1-column adaptive plate, tablet side-float where legible; preserve page height measurement and accessible, source-specific alt text.
 - Lightweight CSS archival borders / parchment plate treatment shipped in lt-device-acceptance.css; no expensive continuous visual filters. **Existing legacy SVG assets still need historical accuracy review.** 
+
+## 2026-11-01 — Real 1872–1873 illustrations actually PACKAGED (source-checked)
+
+Three original period engravings have now been checksum-verified against individual Commons source images, compressed, stored as offline WebP binaries in `app/src/main/assets/art/`, and mapped to precise original Towle paragraphs:
+- **Chapter III, paragraph 28 (0-based 27):** original Neuville/Benett engraved journey map, `art/verne-route-map-1872.webp`, at the original eight-segment travel timetable.
+- **Chapter XI, paragraph 44 (0-based 43):** *Kiouni*, the elephant, Phileas Fogg and Passepartout, original 1873 Osgood image, `art/verne-kiouni-1873.webp`; also used for the actual scene-led BOOK COVER, replacing abstract patterns.
+- **Chapter XXI, paragraph 35 (0-based 34):** *Tankadere* tossed by heavy waves, original Neuville/Benett illustration, `art/verne-tankadere-1872.webp`.
+- Each image is credited in its in-reader figure; original Commons URLs, original SHA-1, actual downloaded SHA-256, packed WebP SHA-256, dimensions and image size are stored in `docs/literature/HISTORIC_VERNES_ASSETS.json`. All imagery loads exclusively from packaged APK assets. History/rights rationale: individual Wikimedia Commons Public Domain Mark for old original prints; confirm extra territorial requirements before public distribution.
+- The reader reserves image size, uses lazy decode, preserves inline Arabic/English pairing and avoids remote requests. No historical claims for older synthetic SVGs; other staged literature still awaiting complete rights-cleared bilingual translations. Physical device 120Hz and editorial acceptance remain open.

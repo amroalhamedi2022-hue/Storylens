@@ -95,6 +95,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - GitHub Actions same-branch bot commit step now verifies current remote HEAD matches triggering commit, rehashes the binaries and copies them into app/src/main/assets/art/ with a provenance manifest. It will abort rather than overwrite concurrent user/agent changes; never push main or force-push.
 - This changes image intake only; historic images are NOT YET displayed in the app. Next: wire cover and chapter scenes once the actual binary Git commit appears, remove this temporary runner intake job, exact SHA CI.
 
+### 2026-11-01 — UX01 / UX04: actual antique cover and three story-anchored reading pictures
+- Verified parent HEAD `010a315154fec055885e8cc8b0ff30ead3442868`; the previous GitHub Actions bot added three real image files under `app/src/main/assets/art/` plus a per-file SHA manifest. Their repository-visible byte lengths are 193,560 + 69,262 + 167,854; this is NOT a mock/remote URL.
+- Wired an authentic 1873 *Kiouni* / Phileas Fogg engraved scene to the book cover with locally packaged WebP CSS, replacing the abstract image appearance for the long novel. In-reader paragraph-matched pictures appear in original chapter III ¶28 (8-leg world route), XI ¶44 (elephant and Fogg), XXI ¶35 (Tankadere storm). Original English/Arabic text and bookmarks unchanged. Historial scans are 1872/1873, not AI-generated.
+- Added offline SHA-256/manifest and CSS/scene placement Node acceptance checks to the real Android CI; removed temporary network-enabled runner intake job. No runtime Internet permission/network fetch is added. Full exact-HEAD CI on this code commit **PENDING**, and physical Android 120Hz/device and territorial rights review remain OPEN. Other classics and genuine vintage art are still incomplete.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
