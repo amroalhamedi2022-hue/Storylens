@@ -341,13 +341,24 @@ button.lt-water-pressed,.lt-theme-choice.lt-water-pressed{
 }
 
 /* Actual archival chapter images: no geometric SVG masquerading as a scene. */
+/* Original print vignettes retain their intrinsic page proportions:
+   portrait scan should not be a tiny strip inside a wide empty banner. */
 .reader .reader-hero.lt-historic-hero{
- height:clamp(175px,28vw,285px);
+ width:min(58vw,265px)!important;
+ max-width:100%!important;
+ height:auto!important;
+ min-height:0!important;
+ aspect-ratio:auto;
+ margin-inline:auto!important;
  background-color:#e9deca!important;
  background-repeat:no-repeat!important;
  background-size:contain!important;
  background-position:center center!important;
- box-shadow:inset 0 -1px 0 #7d6d5142;
- border-bottom:1px solid #a7957680;
+ border:1px solid #b8a484!important;
+ border-radius:7px!important;
+ box-shadow:0 5px 16px #322b2317!important;
+}
+.reader .reader-hero.lt-historic-hero.lt-historic-landscape{
+ width:min(84vw,430px)!important;
 }
 .reader .reader-hero.lt-no-period-hero{display:none!important}

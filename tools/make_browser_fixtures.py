@@ -427,6 +427,14 @@ tests["historic-verne-plates"] = r"""(async function(){
    const realHero=document.querySelector('.reader .reader-hero');
    check('chapter '+item.index+' top banner uses the same historic scan',
     realHero?.classList.contains('lt-historic-hero')&&realHero.style.backgroundImage.includes(item.src));
+   check('chapter '+item.index+' original image ratio is retained',
+    realHero?.style?.aspectRatio&&parseFloat(realHero.style.aspectRatio)>0&&
+      Math.abs((realHero.getBoundingClientRect().width/
+        realHero.getBoundingClientRect().height)-parseFloat(realHero.style.aspectRatio))<0.045);
+   check('chapter '+item.index+' portrait no longer spans whole reader width',
+    realHero?.getBoundingClientRect().width<=Math.max(430,window.innerWidth*.86));
+   check('chapter '+item.index+' duplicated hero stays silent in TalkBack',
+    realHero?.getAttribute('aria-hidden')==='true');
    fullTranslation();
    const companion=document.querySelector('.lt-arabic-companion .lt-companion-plate');
    const companionImage=companion?.querySelector('img');

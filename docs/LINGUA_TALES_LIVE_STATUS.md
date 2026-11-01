@@ -212,6 +212,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Browser DOM check refuses a missing picture; screenshots are generated at a phone-sized viewport and included in the normal CI screenshot artifact to support human visual inspection. No story text, chapter translations, signing or user data modified.
 - Current exact-head CI for new tests PENDING; hardware image quality and touch acceptance NOT TESTED.
 
+### 2026-11-01 — UX04 / RD02 / QA01: remove empty widescreen bands around original 1873 portrait plates
+- Reviewed **actual generated phone screenshots** from fully green Actions 41349873363 at source parent `006f43dc3940eed75f27378e3087b264f731ede1`: new courtroom and Singapore scans were genuine, but their 620×812 / 620×895 portrait images appeared small in a 460px-wide, fixed-height beige header, leaving distracting horizontal empty space.
+- Historic chapter hero now uses its original manifest-reserved `aspectRatio`, a compact centered print-vignette frame for portrait art and wider sizing only for landscape maps. No image cropping, remote images, blur effect or continuously animated work. The passage's real figure still provides localized alt and citation; duplicate top decorative copy is now aria-hidden for TalkBack.
+- Added production-source and real Chromium browser geometry assertions to verify original image ratio, non-panoramic header width and accessible hidden repeated image. Actual CI/screenshot on new HEAD PENDING, physical Xiaomi Pad 5 and phone still OPEN.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

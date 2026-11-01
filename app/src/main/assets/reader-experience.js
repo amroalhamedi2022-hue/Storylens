@@ -1055,8 +1055,13 @@ renderReader=function(){
    const verified=periodArt[0];
    if(verified){
     hero.style.backgroundImage='url("'+verified.src+'")';
+    hero.style.aspectRatio=String(verified.aspectRatio);
     hero.classList.add('lt-historic-hero');
-    hero.setAttribute('aria-label',verified.alt);
+    hero.classList.toggle('lt-historic-landscape',verified.aspectRatio>1);
+    // The passage figure has the meaningful alt/caption; the repeated
+    // decorative chapter frontispiece should not be read twice by TalkBack.
+    hero.setAttribute('aria-hidden','true');
+    hero.removeAttribute('aria-label');
    }else{
     hero.style.backgroundImage='none';
     hero.classList.add('lt-no-period-hero');

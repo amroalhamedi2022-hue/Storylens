@@ -42,6 +42,13 @@ assert.equal((scope.match(/credit:uiText\(/g)||[]).length,7,
 assert.ok(!scope.includes('http:')&&!scope.includes('https:'),'art must never fetch online during reading');
 assert.match(js,/hero\.style\.backgroundImage='url\("['"]?\+verified\.src/,
  'real archival chapter plate overrides the decorative inline SVG hero');
+assert.match(js,/hero\.style\.aspectRatio=String\(verified\.aspectRatio\)/,
+ 'historic chapter photograph uses original ratio instead of an oversized wide banner');
+assert.match(js,/hero\.setAttribute\('aria-hidden','true'\)/,
+ 'repeated top picture is decorative; meaningful image caption remains in the paragraph figure');
+assert.match(css,/\.reader \.reader-hero\.lt-historic-hero\.lt-historic-landscape\{/);
+assert.match(css,/width:min\(58vw,265px\)!important/,
+ 'portrait picture uses compact page-sized vignette without blank panoramic band');
 assert.match(js,/hero\.classList\.add\('lt-no-period-hero'\)/,
  'historical chapters without genuine plates never show geometric filler');
 assert.match(css,/\.reader \.reader-hero\.lt-historic-hero\{/);
