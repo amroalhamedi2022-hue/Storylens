@@ -88,6 +88,11 @@ a.equal(novelContext.classify({...heritage,fullWordCount:900}),false,'Short indi
 a.equal(novelContext.classify(heritage),true,'Whole approved heritage volume eligible');
 a.match(source,/The Classics Library/,'Main shelf includes classics and heritage not novels alone');
 a.match(source,/Complete heritage volume/,'Heritage shown with proper volume classification');
+a.match(source,/hasHeritageVolume=novels.some/,'Only accepted historical volumes trigger their genre');
+a.match(source,/id:'heritage',ar:'التراث العربي',en:'Arabic Heritage'/,'Historical heritage gets dedicated drawer category');
+a.match(source,/id:'all',ar:'جميع الكتب',en:'All books'/,'All library genres remain broad');
+a.match(source,/Search inside books/,'full-content search not called novel-only');
+a.match(source,/genre==='heritage'\?/,'Arabic heritage title is displayed in header');
 a.match(source,/decorateNovelShelf\(section\);/,'actual library is decorated');
 a.match(source,/card\.remove\(\);/,'short books removed only from the rendered shelf');
 a.match(source,/title\.textContent=story\.title/,'cover title uses safe DOM text, not injected HTML');

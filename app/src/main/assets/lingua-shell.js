@@ -832,7 +832,8 @@ function decorateLibrary(){
  section.querySelector('.header .brand')?.replaceChildren(document.createTextNode('LINGUA TALES'));
  const headerTitle=section.querySelector('.header h1');
  if(headerTitle){
- const category=state.genre==='all'?null:state.genre==='arabic-originals'?{ar:'القصص العربية',en:'Arabic Stories'}:catalog.genres.find(g=>g.id===state.genre);
+ const category=state.genre==='all'?null:state.genre==='arabic-originals'?{ar:'كتب أصلها عربي',en:'Arabic Originals'}:
+  state.genre==='heritage'?{ar:'التراث العربي',en:'Arabic Heritage'}:catalog.genres.find(g=>g.id===state.genre);
  headerTitle.textContent=category?(rtl()?category.ar:category.en):(rtl()?'الصفحة الرئيسية':'Home');
  headerTitle.classList.add('lt-location-title');
 }
@@ -861,8 +862,8 @@ function decorateLibrary(){
   if(textNode)textNode.textContent=rtl()?'بحث في المكتبة':'Search the library';
   const input=searchLabel.querySelector('input');
   if(input){
-   input.setAttribute('aria-label',rtl()?'بحث عن قصة':'Search stories');
-   input.placeholder=rtl()?'عنوان القصة أو موضوعها…':'Story title or topic…';
+   input.setAttribute('aria-label',rtl()?'بحث عن كتاب':'Search books');
+   input.placeholder=rtl()?'عنوان الكتاب أو موضوعه…':'Book title or topic…';
   }
  }
  const words=actions?.querySelector('button[onclick="showWords()"]');
@@ -876,7 +877,7 @@ function decorateLibrary(){
  if(chapterSearchLabel){
   // Keep the button OUTSIDE the <label> containing the title-search input.
   // Nested interactive controls inside a label break mobile focus and a11y.
-  const searchButton=addButton(section,rtl()?'⌕ ابحث داخل الروايات':'⌕ Search novel text',
+  const searchButton=addButton(section,rtl()?'⌕ ابحث داخل الكتب':'⌕ Search inside books',
     openChapterSearch,'secondary lt-chapter-search-open');
   chapterSearchLabel.after(searchButton);
  }
@@ -907,14 +908,16 @@ function decorateLibrary(){
  addButton(title,'×',()=>closeDrawer(),'lt-drawer-close').setAttribute('aria-label',rtl()?'إغلاق القائمة':'Close menu');
  drawer.appendChild(title);
  const genres=document.createElement('nav');
- genres.className='lt-genre-list';genres.setAttribute('aria-label',rtl()?'أنواع القصص':'Story genres');
+ genres.className='lt-genre-list';genres.setAttribute('aria-label',rtl()?'تصنيفات الكتب':'Book categories');
  // Only offer categories containing a genuine long-form work. Other stories
  // remain in the source for prior bookmarks, backups and saved vocabulary.
  const novels=catalog.stories.filter(isFullLengthNovel);
  const genresWithNovels=new Set(novels.map(story=>story.genre));
  const hasArabicNovel=novels.some(story=>story.sourceLanguage==='ar');
- const list=[{id:'all',ar:'جميع الروايات',en:'All novels'},
-  ...(hasArabicNovel?[{id:'arabic-originals',ar:'روايات عربية',en:'Arabic novels'}]:[]),
+ const hasHeritageVolume=novels.some(story=>story.workType==='heritage-volume'&&story.genre==='heritage');
+ const list=[{id:'all',ar:'جميع الكتب',en:'All books'},
+  ...(hasArabicNovel?[{id:'arabic-originals',ar:'كتب عربية أصيلة',en:'Arabic Originals'}]:[]),
+  ...(hasHeritageVolume?[{id:'heritage',ar:'التراث العربي',en:'Arabic Heritage'}]:[]),
   ...catalog.genres.filter(genre=>genresWithNovels.has(genre.id))];
  for(const genre of list){
   const button=addButton(genres,rtl()?genre.ar:genre.en,()=>{
