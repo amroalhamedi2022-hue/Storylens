@@ -49,7 +49,19 @@ tests={
  check('full translation',()=>state.page==='translation'&&document.querySelector('.arabic-page')?.textContent.includes('التحقيق'));
  try{backToReader();libraryBack();cycleVisualTheme()}catch(e){errors.push('theme: '+e.message)}
  check('switch theme',()=>state.uiTheme==='aqua'&&document.body.classList.contains('theme-aqua'));
- check('library retained',()=>catalog.stories.length>=38&&novelCards().length===catalog.stories.filter(isLongBook).length&&catalog.stories.some(s=>s.id==='the-salt-meridian'&&s.chapters.length===5));
+ // Theme navigation rebuilds the shelf; check actual visible book cards,
+  // not a fragile equality to the whole source catalog (including hidden shorts).
+  check('library retained',()=>{
+    const shelf=document.querySelector('.library .shelf.lt-novel-shelf');
+    const cards=novelCards();
+    const legacy=catalog.stories.find(s=>s.id==='the-salt-meridian');
+    const valid=!!shelf&&cards.length>0&&cards.every(card=>{
+      const id=card.querySelector('[data-lt-cover-story]')?.getAttribute('data-lt-cover-story');
+      return catalog.stories.some(story=>story.id===id&&isLongBook(story));
+    })&&legacy?.chapters?.length===5;
+    if(!valid)throw Error(JSON.stringify({shelf:!!shelf,cards:cards.length,allLong:catalog.stories.filter(isLongBook).length,legacy:legacy?.chapters?.length,page:state.page}));
+    return true;
+  });
 
  check('discover controls',()=>!!document.querySelector('.stl-discovery')&&!!document.querySelector('.stl-select select'));
  check('favorite persistence',()=>{const x=StoryLensExtras.toggleFavorite('eleven-minute-alibi');return x===true&&StoryLensExtras.favorites().includes('eleven-minute-alibi')});

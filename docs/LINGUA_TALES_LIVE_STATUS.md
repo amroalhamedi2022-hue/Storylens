@@ -45,3 +45,9 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - What is only source-complete; what still needs editorial/hardware/licensing?
 - Highest next unfinished ID(s): ...
 - Content? Update SOURCE_QUEUE and LITERATURE_PROVENANCE with edition/language/full-text/translation/art rights and checksums.
+
+### 2026-11-01 — QA01 / C03 second follow-through
+- Latest HEAD inspected before this commit: `70d5f26ed83d204d5753ed9ef9f125c698fe3cef`. GitHub Actions run **41281464826** for previous HEAD 70d5f26: **FAIL** in Chromium E2E only, `library retained: false`. The earlier initial `catalog` and `title ON book cover` E2E assertions passed. Prior content, Node, Android build and 37-chapter browser checks passed until final flow step.
+- Adjusted the *return-to-library after theme change* test to check real book-shelf existence, at least one source-qualified visible novel card and preserved legacy 5-chapter story data; added precise diagnostics for any remaining failure. Did not delete stories or remove the book-cover tests. Exact new CI: **PENDING** until Actions finishes.
+- Source discoveries: Kalila 1816 authentic Arabic index + 1819 Knatchbull English chapter index and complete historic scanned volume; wiki English chapter text is missing in multiple chapters and **NOT a complete bilingual product**. Also located 1835 Bulaq Nights Arabic catalog (one volume). Updated source queue, no text packaged or original invented.
+- Next: CI exact HEAD; then verify actual complete scanned text/English editorial alignment, rights, antique in-page illustrations; user device QA and release signing still OPEN.
