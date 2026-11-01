@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "workId": "doyle-a-study-in-scarlet-1887",
+  "status": "SOURCE_ART_VERIFIED_CANDIDATE_NOT_PACKAGED",
+  "inspectionDate": "2026-11-01",
+  "releaseApproved": false,
+  "candidates": [
+    {
+      "id": "scarlet-1887-rache-friston-01",
+      "title": "The inscription Rache at Lauriston Gardens",
+      "originalCreator": "David Henry Friston (1820–1906)",
+      "originalPublication": "Beeton's Christmas Annual, 1887",
+      "sourceDescriptionPage": "https://commons.wikimedia.org/wiki/File:A_Study_in_Scarlet_Friston_01.jpg",
+      "sourceOriginalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/36/A_Study_in_Scarlet_Friston_01.jpg",
+      "commonsOriginalSha1": "fb810b2144b46e645d35b1326ac0f46d93422a9f",
+      "commonsOriginalByteCount": 402356,
+      "commonsDimensions": {
+        "width": 800,
+        "height": 1361
+      },
+      "rightsEvidence": "Wikimedia Commons Public Domain Mark 1.0; 1887 print by creator died in 1906. Recheck exact file and distribution territories.",
+      "originalTextPath": "docs/literature/staging/a-study-in-scarlet/chapter-1-3.xhtml",
+      "sourcePart": 1,
+      "sourceChapter": 3,
+      "anchor": "The word Rache appears as a separate inscription in the scene of Holmes and the detectives examining the wall.",
+      "sourceTextUniqueMarker": "<p class=\"inscription\">Rache</p>",
+      "artworkAltEnglish": "Victorian investigators examine the word Rache on the wall through a magnifying glass.",
+      "artworkAltArabic": "محققون من العصر الفيكتوري يفحصون كلمة «راشه» المكتوبة على الجدار باستخدام عدسة مكبّرة.",
+      "attributionEnglish": "D. H. Friston · Beeton's Christmas Annual, 1887",
+      "attributionArabic": "ديفيد هنري فريستون · مجلة بيتون السنوية، ١٨٨٧",
+      "intendedPlacement": "Adjacent to the matching original English paragraph and its fully edited Arabic companion; no image on an unfinished public book card.",
+      "actualImageDownloaded": false,
+      "requiredNext": [
+        "Download exact original and verify SHA-1 plus independent SHA-256",
+        "Optimize into local WebP without cropping scene or caption",
+        "Verify precise source-paragraph index and independently edit full Arabic companion",
+        "Verify jurisdiction-specific distribution rights and physical reader layouts",
+        "Only then make image and full book visible offline in production"
+      ]
+    }
+  ]
+}
