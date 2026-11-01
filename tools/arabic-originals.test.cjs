@@ -14,7 +14,7 @@ const images=scope.window.LinguaArabicArt;assert.equal(Object.keys(images).lengt
 for(let i=0;i<6;i++){
  const src=images[story.id+'_'+i];assert.match(src,/^data:image\/svg\+xml;charset=utf-8,%3Csvg/);
  const svg=decodeURIComponent(src);assert.ok(svg.includes('data-scene="'+story.id+'-'+i+'"'));
- assert.doesNotMatch(svg,/<image\b|<script\b|<foreignObject\b|https?:\/\//i);
+ assert.doesNotMatch(svg,/<image\b|<use\b|<script\b|<foreignObject\b|(?:xlink:)?href\s*=\s*["'](?:https?:|\/\/)/i);
 }
 const html=read('app/src/main/assets/index.html'),reader=read('app/src/main/assets/reader-experience.js');
 const shell=read('app/src/main/assets/lingua-shell.js'),fonts=read('app/src/main/assets/lt-offline-fonts.css');
