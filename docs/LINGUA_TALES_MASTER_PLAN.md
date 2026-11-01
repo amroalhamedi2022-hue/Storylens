@@ -1,0 +1,71 @@
+# Lingua Tales — MASTER PROJECT PLAN / الخطة الرئيسية
+
+**Binding handoff for ALL future conversations, Codex, Claude, GitHub and other development agents.** Updated 2026-11-01. Repository: amroalhamedi2022-hue/Storylens. Work in draft PR #1 on branch automation/storylens-dictionary-saved-words-20261023, NOT main. The requirements here OVERRIDE contradictory older plans. For actual completion read **docs/LINGUA_TALES_LIVE_STATUS.md**; for real book links and edition/rights review read **docs/LITERATURE_SOURCE_QUEUE.md**. Always inspect latest PR HEAD and GitHub Actions before work.
+
+## 1. Non-negotiable product decisions
+
+**CONTENT**
+- **NEVER invent or AI-write new stories for the library.** User wants genuinely pre-existing literary books from reliable internet sources, full authentic editions, not synthetic mini-stories. Previous authored short works may remain for backward data compatibility, but are NOT the new content pipeline.
+- Wide range of genres — not detective fiction only: criminal/detective investigation, deduction/intelligence, mystery and psychological thriller, adventure/exploration, history, mature science fiction, gothic horror, philosophy/wisdom/fables, Arabic/Eastern classics and other substantive categories. Genre labels must be accurate, culturally appropriate and each category backed by a real book.
+- **NO children's retellings, superficial modern stories, abridgements, tiny individual stories, or short-format filler.** Long complete novels are the default. **Kalila wa Dimna / كليلة ودمنة** and **One Thousand and One Nights / ألف ليلة وليلة** explicitly qualify as **whole historical books/collections/volumes**: their internal stories/fables do NOT disqualify the volume and must not be treated as juvenile content. User does not expect these to be police novels. Historical aspiration was ~120 substantial titles; NEVER pad numbers to meet it.
+- **Primary source language MUST be preserved.** An Arabic-origin book includes the **whole AUTHENTIC ORIGINAL ARABIC edition** and a **complete, natural, meaning/context-sensitive ENGLISH translation** (not literal, abridged, invented or merely a sample). English-origin books include full authentic English and complete, naturally written contextual Arabic. For French/Russian etc. identify each actual original/translated edition and never falsely label an English intermediary as original. Preserve ALL chapter/section order, names, nuance and book-wide translation coverage, original-facing text first; support full book/chapter/sentence and word-level translations. Editorial check is mandatory.
+- Source discovery: Project Gutenberg, Standard Ebooks, Wikisource, Internet Archive and any verified, legal, high-quality source. Free access is NOT blanket global redistribution permission: check author, original publication, edition, exact translator, correction editorial contributions, copyright territories, text/translation/art rights SEPARATELY. Capture provenance URL/date/hash/license, full unabridged chapter/word count, exact bilingual coverage and independent review before shipping. Do not copy protected modern translations or unverifiable artwork.
+
+**APPEARANCE & READING**
+- Timeless antique literary atmosphere: sepia/ink/parchment, period engravings, woodcuts, hand-printed illustrations; not new/childish/cartoony/modern stock. Use actual licensed historical artwork where possible, attribute creators/date, mark any newly styled art as modern interpretation rather than genuine historic scan. **Illustrations INSIDE reading pages**, embedded beside paragraphs of the relevant narrative scene with quiet edges/frame, not just book covers; do not sacrifice 120Hz-capable smoothness.
+- Show BOOK TITLE ON its real book-shaped cover, readable in RTL Arabic or English; historic feel and context-specific art. Cover-first mixture of Apple Books editorial shelves and Libby navigation, with distinct Lingua Tales brand. Home uncrowded, aesthetically styled gradient "الصفحة الرئيسية"/"Home" and translated genre titles, main header sticky/auto-hide on down-scroll and reappear up-scroll, clean drawer/menu/settings, search/favorites, responsive phone/tablet.
+- Water-bubble/liquid-glass animation for *tap and held press* on every actionable icon/book cover. No Android rectangular blue highlight or selectable-text menu glyph. Feedback releases on pointerup/cancel; reduced motion/keyboard/TalkBack and native text selection must work. Avoid infinite effects, expensive layers.
+- **Genuine deformable paper page curl**: press/grab left/right page edge and fold continuously with finger, including visible curved sheet, real reversal/cancel, right-to-left correctness. Current CSS rotation/shadow is only an intermediate implementation, NOT done. Keep accessible alternative and prevent page turning when selecting dictionary words/scrolling.
+- Whole offline AR/EN app UI, original-language headings, contextual tap translations/dictionary/idioms, word saves/SRS/chapters/search/semantic bookmarks, full Arabic/English companion reading, no clipped text/illustrations in measured page boundaries. Maintain saved progress and backups.
+- Multiple quiet polished customizable Liquid Glass themes, independent fonts/sizes/line spacing for Arabic and English, reversible hide/restore/recolor, icon correctly centered under Android mask; target smooth real device 120Hz, but never claim FPS without measurement.
+- Audio/SFX/music/ambience are **optional**, default silent; fix <1s playback, native audio focus and lifecycle races; perform >60-second phone tests. Old plans forbidding ALL audio are superseded; do not add microphone/voice input/TTS without explicit user approval.
+- APP UPDATE: no user-facing Preview in official main app; preserve **com.storylens.reader** ID and all WebView learning data. True in-place Android update needs SAME installed signing certificate and adequate versionCode. Never uninstall to bypass incompatibility without verified backup/restore; never disclose keystore, publish release or merge main without approval; no paid services.
+
+## 2. Definitive requirement + acceptance matrix
+
+State: **SOURCE** exists in code only; **PARTIAL** incomplete; **OPEN** not done; **DEVICE** device test pending; **BLOCKED** external prerequisite; **CI FAIL** failure on current functional SHA. Each requires exact commit/CI and physical sign-off when appropriate. Track actual latest state in LIVE_STATUS.
+
+| Stable ID | Priority | What user asked; release acceptance | Baseline 2026-11-01 |
+|---|---|---|---|
+| C01 | P0 | Actual sourced long, COMPLETE classic books, many genres, no new AI-written fiction/children/short filler; preserve older saved data | PARTIAL — 37-chapter Verne, previous shorts; many sourced books OPEN |
+| C02 | P0 | For Arabic-original complete authentic AR **plus complete context-aware EN**; for EN-origin complete EN plus natural AR; correct edition/order; paragraph, chapter, full-book | PARTIAL — some bilingual drafts; heritage coverage OPEN, human edit OPEN |
+| C03 | P0 | Full **كليلة ودمنة** + **ألف ليلة وليلة** editions as adult cultural/wisdom collections, not standalone tiny stories | OPEN — edition/source/translation rights and full coverage |
+| C04 | P0 | Reliable, documented book/text/translation/art rights by region, edition, translator, checksum, completeness; no fake public-domain claims | PARTIAL Verne; other queue OPEN |
+| C05 | P1 | Curated further classics: Sherlock novels, Wilkie Collins, Dumas, heritage, history, science, psychological, gothic and others | OPEN, candidates queued |
+| UX01 | P1 | Premium book-shaped covers, title ON cover, broad genre shelves, Apple Books/Libby-inspired uncluttered home | SOURCE on latest branch; Android DEVICE + screenshot review OPEN |
+| UX02 | P1 | Bubble-water tap and long hold, no square highlight/text-selectable hamburger; keyboard/reduced-motion | SOURCE; DEVICE OPEN |
+| UX03 | P1 | Gradient main/genre titles, sticky scrolling hide/show header, responsive drawer/filters/search and readable favorites | PARTIAL/SOURCE, DEVICE OPEN |
+| UX04 | P1 | Genuine *period* illustration on relevant cover and INSIDE paragraphs of each book | PARTIAL offline chapter art; authentic sourcing, alignment + rights OPEN |
+| RD01 | P1 | Finger-held physically curved paper with fold, RTL/LTR, reverse/cancel, not just 3D rotation | PARTIAL, true deformable curl OPEN |
+| RD02 | P1 | Page layout respects bilingual text + image sizes; full source/translation, word/idiom contextual popup, progress and bookmarks | SOURCE, editing/DEVICE OPEN |
+| LANG01 | P1 | Complete AR/EN localization, source-specific titles/reading direction, five Arabic and five English typefaces | SOURCE, DEVICE OPEN |
+| DICT01 | P1 | Accurate dictionary and contextual senses, natural sentence/full chapter/book translation, SRS, phrase search, saved words/backup | SOURCE, source coverage/editorial QA OPEN |
+| TH01 | P2 | Multiple quiet glass themes, recolor/hide/restore, font/size, icon clipping fix | SOURCE, DEVICE OPEN |
+| AU01 | P1 | Optional licensed audio and SFX, silence by default, >1 second playback, audio-focus interruption | SOURCE, DEVICE OPEN |
+| PERF01 | P1 | Real smooth navigation/press/pagination and 120Hz-capable behavior, memory/startup/battery | PARTIAL, measured device proof OPEN |
+| APK01 | P0 | Stable signed non-Preview same-package update, preserve all user data, backed-up restore | BLOCKED by original installed signing key/certificate identity |
+| QA01 | P0 | Exact-HEAD Node/content/Android/APK/Chromium Actions pass | **CI FAIL** for 24052f5 on browser catalog stale assertion; repair/test |
+| QA02 | P0 | Real Xiaomi Pad 5 and phone audio/gesture/offline/landscape/RTL/backup FPS regression | DEVICE OPEN |
+| HANDOFF01 | P0 | One portable GitHub master plan + independent living progress, update **every meaningful batch** | This checkpoint, CI pending |
+
+## 3. Every-session update protocol — MANDATORY
+
+1. Read AGENTS.md, this plan, LIVE_STATUS and SOURCE_QUEUE (plus relevant legacy details). Fetch **actual latest branch HEAD/PR #1, recent commits and GitHub Actions**; distinguish other Codex/agent commits, avoid repeats and unnecessary branches. Do not rely on old screenshot/README for current implementation.
+2. Work on highest unaccepted priority ID. Make tangible code/asset/editorial changes and add meaningful regression tests. When user adds/change instruction, add a new stable ID or update existing ID HERE with date, without deleting older requirements silently; newest user choice overrides conflicting older one.
+3. In the **SAME meaningful code commit** update **docs/LINGUA_TALES_LIVE_STATUS.md**: parent HEAD, implementation/commit, actual test commands and outcomes, CI exact-SHA run if finished or pending, what remains untested, book intake and rights, next ID. Follow up after CI finishes; never mark pending as PASS. Update SOURCE_QUEUE + LITERATURE_PROVENANCE on EACH imported book (text, translation, historical illustrations).
+4. Mark SOURCE not DONE until editorial check, rights, integration, automated CI and required hardware tests genuinely pass. Do not claim 120Hz, full literary translation quality, real-paper curvature or signed update if unproven. Avoid destructive changes to storage/app ID.
+5. In final report link commit(s), exact verified CI status, completed IDs and outstanding IDs. Any future chat should need only GitHub to resume.
+
+## 4. Priority sequence and checkpoints
+
+- **P0:** fix novel-first Chromium E2E assertion without weakening real novel-only visual checks, pass current CI.
+- **P0:** research actual Arabic editions + legally reusable full English contextual translations for Arabic classics; verify rights before ingestion; source long historic titles across genres.
+- **P1:** import complete rights-cleared originals, full contextual bilingual equivalents, old interior images, readable covers; test full novel loading and search.
+- **P1:** refine real deforming paper curl and text/art pagination, bubble/drawer/scroll interaction, audio and responsive UI on Android.
+- **P0 release gate:** real tablet+phone tests/profiling, stable signer and non-preview APK update with proven backup compatibility. Do not merge main automatically.
+
+## 5. Resume from any chat
+
+"Continue Lingua Tales from PR #1. Read AGENTS.md, docs/LINGUA_TALES_MASTER_PLAN.md, docs/LINGUA_TALES_LIVE_STATUS.md and docs/LITERATURE_SOURCE_QUEUE.md. Check latest HEAD/actions and Codex edits, implement the highest unmet ID without repetition, update live status in the same commit; no main merge, no invented fiction, no signed APK claims without verification."
+
+**PR:** https://github.com/amroalhamedi2022-hue/Storylens/pull/1

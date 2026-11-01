@@ -1,0 +1,47 @@
+# Lingua Tales — LIVE STATUS / آخر المنجز والمتبقي
+
+Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file MUST be updated in every meaningful code/content commit and reconciled with current HEAD/CI. Work on PR #1 branch automation/storylens-dictionary-saved-words-20261023, not main.
+
+## Observed evidence before this commit
+
+- Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
+- Last **confirmed green CI**: SHA **fccf9b21ffb772ea720c2339c83745ae937cdb47**, GitHub Actions **41278955713**: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/41278955713 .
+- Last **failed CI**: SHA **24052f5aef3878ede3f8fdb63026f341aa4468a8**, Actions **41279858663**: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/41279858663 . Android/Node/assets completed; Chromium E2E **FAIL** with "catalog: false" because fixture expected every saved catalog story to have a visible card. This violates new novel-only visible shelf, NOT evidence that the underlying stories were erased.
+- **Current documentation+fixture repair will trigger a NEW CI. Status: NOT YET VERIFIED.** Never report success until exact new SHA job finishes green.
+
+## Feature reconciliation (source state != release acceptance)
+
+| IDs | Actual source implementation | Open/untested |
+|---|---|---|
+| C01..C05 | Verne Towle English 37 chapters + Arabic draft; older original short stories retained for saved data; one short Arabic investigator draft; sourced book discovery queue | NEW USER DECISION: no synthetic stories; original Arabic FULL text + complete contextual EN for Kalila/Arabian Nights; many long authentic novels across broad genres; edition rights/provenance and editorial checks |
+| UX01..UX03 | New cover/title-on-book shelf, hides short stories without erasing catalog; novel drawer and search; nontext menu icon, accumulating header scroll, water bubble + held press | Exact CI new fixture pass pending; device/RTL/contrast/overflow/motion and polished home design |
+| UX04 | Offline editorial art framework and some chapter-specific SVG | Genuine period-style scene art inside text across imported books, verifiable sources/licensing |
+| RD01..RD02 | Touch drag/page rotation/shading, RTL handling, measured bilingual paragraph+illustration pagination, progress/bookmarks | TRUE deformable curvature/sheet mesh NOT implemented; user device turn and layout acceptance |
+| DICT01 / LANG01 | Context dictionary/idioms, whole translation UI, independent language fonts, word saves, SRS, reading search | End-to-end bilingual literary edit and physical UX, source coverage |
+| TH01 | Multiple themes and custom colors, saved/hide/restore, icon safe zone tweaks | Device visual/launcher and real performance QA |
+| AU01 | Optional licensed OGG ambience and SFX, range-serving, focus/lifecycle fixes in code | Actual >60s continuous sound and focus/Android device validation |
+| PERF01 | Lazy content and rendering, lighter tap compositing | 120Hz FPS measurements, RAM/startup/thermal not performed |
+| APK01 | Correct main package identity and signing/backup checks | BLOCKED: installed signer compatibility and stable private release key; cannot deliver .preview as update |
+| QA01/02 | Many Node/Android/Chromium tests; prior green fccf9b | Latest functional Chromium error found; exact new run pending; physical Xiaomi Pad 5 & phone acceptance NOT TESTED |
+| HANDOFF01 | Master plan, sourced book queue, status ledger, AGENTS and README linked in this checkpoint | Mandatory **next-session** living updates, not a one-time plan |
+
+## Priority queue
+
+1. **QA01 P0:** Update Chromium flow to verify only long novel cards on shelf, real titles ON covers, and legacy source catalog still intact; then run/check exact-head CI. Investigate any new independent failure.
+2. **C03/C02/C04 P0:** Actual full unabridged Arabic historical editions of Kalila and Arabian Nights and complete contextual English counterparts (not short/children/literal versions); verify text/translation/art rights.
+3. **C01/C05 P0:** More sourced substantial long books in mystery, historical, classic adventure, psychological, SF, gothic and wisdom; record exact provenance before import.
+4. **UX04/UX01 P1:** Period authentic artwork tied to paragraphs INSIDE chapters + readable old-book covers, broad categories/home visual QA.
+5. **RD01/RD02/UX02 P1:** Real deformable page curl and pairing of text/translation/illustration, water bubble behavior.
+6. **AU01/PERF01/QA02 P1:** Device audio >60s and focus, UI gestures, TalkBack, reading offline, FPS on supported phone/tablet.
+7. **APK01 P0:** Verified compatible signed main release update, backup/restore, production package and no user data loss.
+
+## Next developer append template — REQUIRED IN EVERY SIGNIFICANT COMMIT
+
+### YYYY-MM-DD — Work IDs
+- Latest PR HEAD and concurrent commits inspected: ...
+- Actual change, files, new commit: ...
+- Real tests run: PASS/FAIL/NOT RUN, details: ...
+- **Exact new HEAD** GitHub Actions run/URL/status: PASS/FAIL/PENDING; later update with observed result.
+- What is only source-complete; what still needs editorial/hardware/licensing?
+- Highest next unfinished ID(s): ...
+- Content? Update SOURCE_QUEUE and LITERATURE_PROVENANCE with edition/language/full-text/translation/art rights and checksums.

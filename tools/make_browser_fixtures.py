@@ -16,7 +16,11 @@ tests={
 (function(){
  const passes=[],errors=[];
  function check(name,fn){try{if(!fn())throw Error('false');passes.push(name)}catch(err){errors.push(name+': '+err.message)}}
- check('catalog',()=>catalog.stories.length>=38&&document.querySelectorAll('.card').length===catalog.stories.length);
+ // Underlying source catalog stays complete, but only long novels are discoverable.
+  const isLongBook=s=>Math.max(s.chapters?.length||0,s.totalChapters||0)>=12;
+  const novelCards=()=>Array.from(document.querySelectorAll('.shelf .card'));
+  check('catalog',()=>catalog.stories.length>=38&&novelCards().length===catalog.stories.filter(isLongBook).length&&novelCards().every(card=>{const id=card.querySelector('[data-lt-cover-story]')?.getAttribute('data-lt-cover-story');return catalog.stories.some(s=>s.id===id&&isLongBook(s));}));
+  check('title ON book cover',()=>novelCards().length>0&&novelCards().every(card=>{const cover=card.querySelector('.lt-book-cover');const id=cover?.getAttribute('data-lt-cover-story');const title=catalog.stories.find(s=>s.id===id)?.title;return !!title&&cover.querySelector('.lt-book-cover-title')?.textContent===title;}));
  check('hero',()=>!!document.querySelector('.storylens-hero'));
  check('dictionary',()=>FreeDictEnglishArabic.size>=80000&&FreeDictEnglishArabic.resolve('dog')?.literal.includes('كلب'));
  check('story art',()=>!!art['eleven-minute-alibi_0']);
@@ -45,7 +49,7 @@ tests={
  check('full translation',()=>state.page==='translation'&&document.querySelector('.arabic-page')?.textContent.includes('التحقيق'));
  try{backToReader();libraryBack();cycleVisualTheme()}catch(e){errors.push('theme: '+e.message)}
  check('switch theme',()=>state.uiTheme==='aqua'&&document.body.classList.contains('theme-aqua'));
- check('library retained',()=>document.querySelectorAll('.card').length===catalog.stories.length);
+ check('library retained',()=>catalog.stories.length>=38&&novelCards().length===catalog.stories.filter(isLongBook).length&&catalog.stories.some(s=>s.id==='the-salt-meridian'&&s.chapters.length===5));
 
  check('discover controls',()=>!!document.querySelector('.stl-discovery')&&!!document.querySelector('.stl-select select'));
  check('favorite persistence',()=>{const x=StoryLensExtras.toggleFavorite('eleven-minute-alibi');return x===true&&StoryLensExtras.favorites().includes('eleven-minute-alibi')});
