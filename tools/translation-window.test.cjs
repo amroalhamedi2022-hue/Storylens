@@ -43,12 +43,18 @@ assert.equal((root.innerHTML.match(/<p lang="ar" dir="rtl">/g)||[]).length,1,
  'the complete novel no longer becomes thousands of DOM paragraphs');
 assert.match(root.innerHTML,/ltTranslationChapter\(12\)/);
 assert.match(root.innerHTML,/ltTranslationChapter\(14\)/);
+const sameMarkup=root.innerHTML;
+window.ltTranslationChapter(13);
+assert.equal(root.innerHTML,sameMarkup,'reselecting the same chapter does not remount text');
+assert.equal((root.innerHTML.match(/class="lt-translation-bottom"/g)||[]).length,1,
+ 'one accessible bottom navigation remains after translated paragraphs');
+assert.match(root.innerHTML,/<nav class="lt-translation-bottom"[\s\S]*ltTranslationChapter\(14\)/);
 window.ltTranslationChapter(36);
 assert.match(root.innerHTML,/الترجمة العربية 37/);
 assert.match(root.innerHTML,/ltTranslationChapter\(37\)" disabled/,'last chapter has no phantom next');
 assert.equal(state.chapter,13,'translation browsing cannot overwrite original reading progress');
 const unchanged=root.innerHTML;
-for(const invalid of [-1,37,99,NaN,Infinity,1.7])window.ltTranslationChapter(invalid);
+for(const invalid of [-1,37,99,NaN,Infinity,1.7,'','  ','01',null,false,true])window.ltTranslationChapter(invalid);
 assert.equal(root.innerHTML,unchanged,'out-of-range chapter access cannot corrupt the screen');
 state.page='reader';
 window.ltTranslationChapter(5);
@@ -73,5 +79,6 @@ assert.deepEqual(scrolls.map(v=>Array.from(v)),Array(4).fill([0,0]),
 const css=fs.readFileSync('app/src/main/assets/reader-experience.css','utf8');
 assert.match(css,/\.arabic-page \.lt-translation-nav select/);
 assert.match(css,/\.arabic-page \.lt-translation-nav :focus-visible/);
+assert.match(css,/\.arabic-page \.lt-translation-bottom :focus-visible/);
 assert.match(css,/@media\(max-width:560px\)/);
 console.log('PASS: 37-chapter and Arabic-original companions render one escaped chapter at a time; all chapters available; source progress untouched');

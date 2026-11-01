@@ -26,6 +26,13 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Removed the bad literal sequence; parsed the **complete corrected test with V8 Function compiler** before commit. No renderer/content changes.
 - Exact-head full CI **PENDING**; follow up on the actual run before reporting pass.
 
+### 2026-11-01 — RD02 / PERF01 / QA01: complete-chapter companion navigation + Chromium acceptance
+- Verified parent HEAD `67df8d01659eddc65fe454e5d798ca9bc45ea5e6`; exact previous run 41307528688 **SUCCESS** (Node, Android, assets, Chromium).
+- Production companion view now provides accessible Previous/Next controls *at the end* of every translated chapter in addition to the selector at the top, eliminating scrolling back up. Malformed chapter values are rejected; selecting the already displayed chapter no longer rerenders the large text DOM.
+- Expanded Node regression for source-bound bottom navigation, same-chapter no-op and rejected empty/invalid values. New `qa-translation-37.html` Chromium fixture executes real complete Verne loading, confirms only chapter XIV's Arabic paragraphs are mounted, navigates to chapter XXXVII and back to original without altering source progress.
+- New exact-head Android/Chromium CI PENDING at commit creation. Physical Pad 5 120Hz, literary editing and stable release signing remain UNTESTED.
+- Next: verify CI, real-device swipe/page-turn performance, historical in-page art and licensed full bilingual books.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

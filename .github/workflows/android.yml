@@ -288,6 +288,9 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=18000 --dump-dom "file://$PWD/app/src/main/assets/qa-lazy-content.html" > /tmp/storylens-lazy-content-dom.html 2>/tmp/chrome-lazy-content.log
           grep -Fq 'data-lt-lazy-qa="PASS"' /tmp/storylens-lazy-content-dom.html || { echo "Deferred offline content QA failed:"; grep -o 'data-lt-lazy-qa-errors="[^"]*"' /tmp/storylens-lazy-content-dom.html | head -1; exit 1; }
           echo "PASS: Chromium confirms long-book and FreeDict payloads are loaded only on demand"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=22000 --dump-dom "file://$PWD/app/src/main/assets/qa-translation-37.html" > /tmp/lt-translation-37.html 2>/tmp/lt-translation-37.log
+          grep -Fq 'data-lt-translation-qa="PASS"' /tmp/lt-translation-37.html || { echo "Full-novel companion browser regression:"; grep -o 'data-lt-translation-errors="[^"]*"' /tmp/lt-translation-37.html | head -1; exit 1; }
+          echo "PASS: Chromium navigates a complete offline 37-chapter companion with stable source progress"
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/reader-phone.png" "file://$PWD/app/src/main/assets/qa-reader.html" >/tmp/chrome-reader.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne14-phone.png" "file://$PWD/app/src/main/assets/qa-verne14.html" >/tmp/chrome-verne14.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne14.html" > /tmp/storylens-verne14-dom.html 2>/tmp/chrome-verne14-dom.log

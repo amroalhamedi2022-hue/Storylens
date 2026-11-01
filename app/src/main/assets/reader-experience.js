@@ -870,13 +870,23 @@ function ltRenderTranslationChapter(){
   (ltTranslationIndex===story.chapters.length-1?' disabled':'')+'>'+nextLabel+'</button>'+
   '</nav>'+
   '<h2 lang="'+sourceLang+'" dir="'+direction+'">'+escapeText(chapterTitle)+'</h2>'+
-  translated+'</div></section>';
+  translated+
+  '<nav class="lt-translation-bottom" aria-label="'+selectLabel+'">'+
+  '<button type="button" class="secondary" onclick="ltTranslationChapter('+(ltTranslationIndex-1)+')"'+
+  (ltTranslationIndex===0?' disabled':'')+'>'+previousLabel+'</button>'+
+  '<span role="status">'+count+'</span>'+
+  '<button type="button" class="primary" onclick="ltTranslationChapter('+(ltTranslationIndex+1)+')"'+
+  (ltTranslationIndex===story.chapters.length-1?' disabled':'')+'>'+nextLabel+'</button>'+
+  '</nav></div></section>';
  window.scrollTo(0,0);
 }
 window.ltTranslationChapter=function(index){
  if(state.page!=='translation'||!ltTranslationBook||state.story!==ltTranslationBook)return;
+ if(typeof index==='string'&&!/^(0|[1-9][0-9]*)$/.test(index))return;
+ if(typeof index!=='string'&&typeof index!=='number')return;
  const chapter=Number(index);
- if(!Number.isInteger(chapter)||chapter<0||chapter>=ltTranslationBook.chapters.length)return;
+ if(!Number.isSafeInteger(chapter)||chapter<0||
+    chapter>=ltTranslationBook.chapters.length||chapter===ltTranslationIndex)return;
  ltTranslationIndex=chapter;
  ltRenderTranslationChapter();
 };

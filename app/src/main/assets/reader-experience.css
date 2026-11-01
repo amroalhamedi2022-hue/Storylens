@@ -316,3 +316,11 @@ body.lt-high-contrast .storylens-hero,body.lt-high-contrast .storylens-header,bo
  .arabic-page .lt-translation-nav select{flex-basis:100%;order:2}
  .arabic-page .lt-translation-nav button{flex:1 1 120px}
 }
+
+/* Chapter-end navigation remains accessible after the last translated paragraph. */
+.arabic-page .lt-translation-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:28px 0 14px;padding:14px 0;border-top:1px solid rgba(111,96,79,.3)}
+.arabic-page .lt-translation-bottom button{min-height:44px;flex:0 1 auto}
+.arabic-page .lt-translation-bottom button:disabled{opacity:.45;cursor:default}
+.arabic-page .lt-translation-bottom [role="status"]{font-weight:650;font-size:13px}
+.arabic-page .lt-translation-bottom :focus-visible{outline:3px solid var(--accent,#638bc1);outline-offset:2px}
+@media(max-width:520px){.arabic-page .lt-translation-bottom button{flex:1 1 120px}.arabic-page .lt-translation-bottom [role="status"]{order:-1;flex-basis:100%;text-align:center}}

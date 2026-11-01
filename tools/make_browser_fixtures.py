@@ -246,6 +246,38 @@ tests["arabic-first"] = r"""(async function(){
  document.body.setAttribute('data-lt-arabic-errors',errors.join(' | '));
 })();""";
 
+tests["translation-37"] = r"""(async function(){
+ const errors=[];
+ const check=(label,fn)=>{try{if(!fn())errors.push(label)}catch(e){errors.push(label+': '+e.message)}};
+ try{
+  const id='around-the-world-in-eighty-days-towle';
+  await window.LinguaContentLoader.ensureStory(id);
+  const book=catalog.stories.find(s=>s.id===id);
+  check('37 chapters available',()=>book?.chapters.length===37);
+  put('chapter_'+id,13);
+  openStory(id);
+  check('chapter 14 source open',()=>state.page==='reader'&&state.chapter===13);
+  fullTranslation();
+  check('Arabic companion rendered',()=>state.page==='translation'&&!!document.querySelector('.lt-arabic-companion'));
+  const panel=document.querySelector('.lt-arabic-companion');
+  check('correct title',()=>panel.querySelector('h2').textContent===(book.chapters[13].titleAr||book.chapters[13].title));
+  check('only source-aligned chapter 14 paragraphs',()=>panel.querySelectorAll('p[lang="ar"][dir="rtl"]').length===book.chapters[13].paragraphs.length&&
+    panel.querySelector('p[lang="ar"]').textContent===book.chapters[13].paragraphs[0].ar);
+  check('all chapter options',()=>panel.querySelectorAll('#lt-translation-chapter option').length===37);
+  check('bottom page navigation',()=>!!panel.querySelector('.lt-translation-bottom button.primary:not([disabled])'));
+  const previous=panel.querySelector('p[lang="ar"]').textContent;
+  window.ltTranslationChapter('36');
+  const last=document.querySelector('.lt-arabic-companion');
+  check('last chapter replaced text',()=>last.querySelector('p[lang="ar"]').textContent===book.chapters[36].paragraphs[0].ar&&last.querySelector('p[lang="ar"]').textContent!==previous);
+  check('last chapter bounded',()=>last.querySelector('.lt-translation-bottom button.primary').disabled===true);
+  check('reading progress untouched',()=>state.chapter===13&&get('chapter_'+id,-1)===13);
+  backToReader();
+  check('return to source chapter',()=>state.page==='reader'&&state.story?.id===id&&state.chapter===13);
+ }catch(e){errors.push('runtime: '+e.message)}
+ document.body.setAttribute('data-lt-translation-qa',errors.length?'FAIL':'PASS');
+ document.body.setAttribute('data-lt-translation-errors',errors.join(' | '));
+})();""";
+
 for name,script in list(tests.items()):
  if "openStory('around-the-world-in-eighty-days-towle')" not in script:
   continue
