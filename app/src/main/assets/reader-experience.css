@@ -81,3 +81,275 @@
  .library .filters{margin:10px 0 11px}
  .library .search-label input{padding:12px 14px}
 }
+
+/* LT-08: optional chapter art is never fetched remotely or laid over text. */
+.reader .lt-inline-illustration{display:block;clear:both;max-width:100%;margin:1.2rem auto 1.6rem;
+ padding:0;overflow:hidden;border-radius:16px;contain:layout style;}
+.reader .lt-inline-illustration img{display:block;width:100%;height:auto;max-height:420px;
+ object-fit:contain;background:color-mix(in srgb,var(--card) 75%,transparent);}
+.reader .lt-inline-illustration figcaption{padding:6px 10px;font-size:.75rem;
+ line-height:1.5;color:var(--sub);text-align:start;}
+@media(min-width:850px){
+ .reader .lt-inline-edge-start,.reader .lt-inline-edge-end{max-width:min(42%,330px);clear:none;}
+ .reader .lt-inline-edge-start{float:inline-start;margin:0.35rem 1.3rem 1rem 0;}
+ .reader .lt-inline-edge-end{float:inline-end;margin:0.35rem 0 1rem 1.3rem;}
+}
+@media(max-width:849px){.reader .lt-inline-illustration{float:none!important;max-width:100%;}}
+@media(prefers-reduced-motion:reduce){.reader .lt-inline-illustration{transition:none!important;}}
+
+/* LT-08: calm illustrated book pages, not large overlapping hero cards. */
+.reader .lt-inline-illustration{
+ border:1px solid color-mix(in srgb,var(--reader-ink) 13%,transparent);
+ box-shadow:0 10px 24px #101b2712,0 2px 5px #101b270b;
+ background:color-mix(in srgb,var(--reader) 85%,var(--card));
+}
+.reader .lt-inline-chapter-scene img{max-height:min(29vh,230px);object-fit:cover}
+.reader .lt-inline-chapter-scene{max-width:100%;margin-block:1rem 1.3rem}
+@media(min-width:850px){
+ .reader .lt-inline-chapter-scene.lt-inline-edge-start{
+  max-width:min(41%,300px);margin:0.5rem 1.25rem 0.8rem 0;
+ }
+}
+@media(max-width:849px){
+ .reader .lt-inline-chapter-scene{width:100%;margin:0.8rem auto 1.2rem}
+ .reader .lt-inline-chapter-scene img{max-height:min(27vh,220px)}
+}
+
+/* LT-06/07: keyboard dictionary focus without turning every word into a Tab stop. */
+.reader .sentence .tok[role="button"]:focus-visible{outline:2px solid #188b94;outline-offset:3px;border-radius:3px;background:color-mix(in srgb,#64cfc8 19%,transparent)}
+.reader.dark .sentence .tok[role="button"]:focus-visible{outline-color:#a5f1e5;background:#a5f1e522}
+
+/* Truthful progress for ongoing serialized classics; no change to reading font. */
+.lt-chapter-nav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin:0 0 24px}
+.lt-chapter-nav .lt-chapter-button{flex:1 1 145px;min-height:44px;padding:10px 14px;border-radius:12px}
+.lt-chapter-nav .lt-chapter-button:disabled{opacity:.45;cursor:not-allowed}
+.lt-serial-progress{display:block;max-width:760px;margin:.45rem auto 0;color:var(--sub);font-size:.88em;letter-spacing:normal;line-height:1.5;text-align:start}
+
+/* LT-07: direct chapter jump is bounded to available offline chapters. */
+.lt-chapter-picker{display:flex;flex:1 1 100%;align-items:center;gap:12px;flex-wrap:wrap;color:var(--ink);font-size:.92rem}
+.lt-chapter-picker select{flex:1 1 220px;min-width:0;max-width:100%;min-height:44px;padding:8px 12px;
+ border:1px solid color-mix(in srgb,var(--ink) 25%,transparent);border-radius:12px;
+ background:var(--card);color:var(--ink);font:inherit}
+.lt-chapter-picker select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* LT-07: keep mixed-script chapter progress readable inside an RTL interface. */
+.reader .reader-label{direction:ltr;letter-spacing:normal;line-height:1.5;unicode-bidi:isolate}
+.reader .reader-label>bdi:first-of-type{direction:ltr;unicode-bidi:isolate}
+.reader .reader-label>bdi:last-of-type{unicode-bidi:isolate;white-space:nowrap;letter-spacing:normal}
+
+
+/* Lingua Tales — Liquid Glass reading surfaces and physical page-turn illusion. */
+body.theme-aurora,body.theme-nebula{
+ background:
+  radial-gradient(ellipse at 12% 8%,rgba(255,91,185,.35),transparent 36%),
+  radial-gradient(ellipse at 88% 18%,rgba(42,225,239,.34),transparent 34%),
+  radial-gradient(ellipse at 65% 92%,rgba(255,163,91,.28),transparent 38%),
+  linear-gradient(135deg,#25115b,#4d3db7 43%,#0a728e 78%,#ed79b2);
+ background-attachment:fixed;
+}
+.storylens-header,.reader-nav-panel,.lt-drawer,.sheet,.reader-nav-actions button{
+ border:1px solid rgba(255,255,255,.32);
+ background:linear-gradient(135deg,rgba(255,255,255,.24),rgba(255,255,255,.10));
+ -webkit-backdrop-filter:blur(12px) saturate(135%);
+ backdrop-filter:blur(12px) saturate(135%);
+ box-shadow:0 14px 38px rgba(20,10,70,.18),inset 0 1px rgba(255,255,255,.45);
+}
+.library .card{border:1px solid rgba(255,255,255,.34);background:linear-gradient(135deg,rgba(255,255,255,.24),rgba(255,255,255,.08));border-radius:24px;overflow:hidden;transition:transform .22s ease,box-shadow .22s ease}
+.library .card:active{transform:scale(.985)}
+.reader .reading-width{perspective:1400px;transform-style:preserve-3d}
+.lt-book-page{
+ display:none;position:relative;min-height:min(68vh,760px);padding:clamp(20px,4vw,38px);
+ margin:14px 0 20px;border-radius:9px 22px 22px 9px;
+ color:var(--reader-ink);background:
+  linear-gradient(90deg,rgba(40,38,75,.08),transparent 18px),
+  linear-gradient(145deg,rgba(255,255,255,.95),rgba(246,244,255,.88) 72%,rgba(218,237,255,.78));
+ border:1px solid rgba(255,255,255,.76);
+ box-shadow:0 24px 48px rgba(20,12,66,.18),inset 7px 0 14px rgba(45,35,80,.06),inset 0 1px #fff;
+ transform-origin:left center;transform-style:preserve-3d;backface-visibility:hidden;
+}
+.lt-book-page.is-active{display:block}
+.lt-book-page:after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+ background:linear-gradient(90deg,rgba(40,38,75,.08),transparent 18px),
+  linear-gradient(110deg,rgba(255,255,255,.25),transparent 22%,transparent 76%,rgba(70,76,130,.05));
+}
+.lt-book-page .sentence{position:relative;z-index:1}
+.lt-page-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;
+ padding:12px;border:1px solid rgba(255,255,255,.35);border-radius:22px;
+ background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.lt-page-controls button{min-height:44px;max-width:46%}
+.lt-page-count{font-size:12px;font-weight:750;color:var(--ink);text-align:center}
+/* Turn the incoming sheet around its binding edge. Only transform/opacity animate. */
+.lt-turn-forward{animation:ltPageTurnForward .42s cubic-bezier(.2,.75,.25,1);transform-origin:right center}
+.lt-turn-back{animation:ltPageTurnBack .42s cubic-bezier(.2,.75,.25,1);transform-origin:left center}
+.lt-turn-forward:after{animation:ltPageShadeForward .42s ease-out}
+.lt-turn-back:after{animation:ltPageShadeBack .42s ease-out}
+html[dir="rtl"] .lt-turn-forward{animation-name:ltPageTurnForwardRtl;transform-origin:left center}
+html[dir="rtl"] .lt-turn-back{animation-name:ltPageTurnBackRtl;transform-origin:right center}
+html[dir="rtl"] .lt-turn-forward:after{animation-name:ltPageShadeForwardRtl}
+html[dir="rtl"] .lt-turn-back:after{animation-name:ltPageShadeBackRtl}
+@keyframes ltPageTurnForward{
+ 0%{opacity:.68;transform:rotateY(-42deg) translateX(24px);box-shadow:0 10px 24px rgba(36,22,74,.08)}
+ 36%{opacity:1;transform:rotateY(8deg) translateX(-3px);box-shadow:0 18px 36px rgba(20,12,66,.2)}
+ 70%{transform:rotateY(-2deg) translateX(1px)}
+ 100%{transform:rotateY(0) translateX(0);box-shadow:0 24px 48px rgba(20,12,66,.18)}
+}
+@keyframes ltPageTurnBack{
+ 0%{opacity:.68;transform:rotateY(42deg) translateX(-24px);box-shadow:0 10px 24px rgba(36,22,74,.08)}
+ 36%{opacity:1;transform:rotateY(-8deg) translateX(3px);box-shadow:0 18px 36px rgba(20,12,66,.2)}
+ 70%{transform:rotateY(2deg) translateX(-1px)}
+ 100%{transform:rotateY(0) translateX(0);box-shadow:0 24px 48px rgba(20,12,66,.18)}
+}
+@keyframes ltPageTurnForwardRtl{
+ 0%{opacity:.68;transform:rotateY(42deg) translateX(-24px);box-shadow:0 10px 24px rgba(36,22,74,.08)}
+ 36%{opacity:1;transform:rotateY(-8deg) translateX(3px);box-shadow:0 18px 36px rgba(20,12,66,.2)}
+ 70%{transform:rotateY(2deg) translateX(-1px)}
+ 100%{transform:rotateY(0) translateX(0);box-shadow:0 24px 48px rgba(20,12,66,.18)}
+}
+@keyframes ltPageTurnBackRtl{
+ 0%{opacity:.68;transform:rotateY(-42deg) translateX(24px);box-shadow:0 10px 24px rgba(36,22,74,.08)}
+ 36%{opacity:1;transform:rotateY(8deg) translateX(-3px);box-shadow:0 18px 36px rgba(20,12,66,.2)}
+ 70%{transform:rotateY(-2deg) translateX(1px)}
+ 100%{transform:rotateY(0) translateX(0);box-shadow:0 24px 48px rgba(20,12,66,.18)}
+}
+@keyframes ltPageShadeForward{0%{opacity:.82;transform:translateX(-9%) scaleX(.9)}50%{opacity:.12;transform:translateX(0) scaleX(1)}100%{opacity:1;transform:translateX(0) scaleX(1)}}
+@keyframes ltPageShadeBack{0%{opacity:.82;transform:translateX(9%) scaleX(.9)}50%{opacity:.12;transform:translateX(0) scaleX(1)}100%{opacity:1;transform:translateX(0) scaleX(1)}}
+@keyframes ltPageShadeForwardRtl{0%{opacity:.82;transform:translateX(9%) scaleX(.9)}50%{opacity:.12;transform:translateX(0) scaleX(1)}100%{opacity:1;transform:translateX(0) scaleX(1)}}
+@keyframes ltPageShadeBackRtl{0%{opacity:.82;transform:translateX(-9%) scaleX(.9)}50%{opacity:.12;transform:translateX(0) scaleX(1)}100%{opacity:1;transform:translateX(0) scaleX(1)}}
+.lt-context-editorial{border-inline-start:3px solid #22b8a7;padding-inline-start:12px}
+.lt-context-inferred{border-inline-start:3px solid #8c73e6;padding-inline-start:12px}
+.lt-context-missing{color:var(--sub);font-size:.94em}
+@media(prefers-reduced-motion:reduce){
+ .lt-turn-forward,.lt-turn-back,.lt-turn-forward:after,.lt-turn-back:after{animation:none!important}
+ .library .card{transition:none!important}
+}
+
+/* Offline Arabic/English type gallery; font stacks gracefully fall back per device. */
+.lt-font-panel{margin:16px 0 4px;padding:15px;border:1px solid color-mix(in srgb,var(--ink) 13%,transparent);border-radius:18px;background:linear-gradient(135deg,#ffffff14,#8c9dff0b)}
+.lt-font-panel h3{margin:0 0 7px;font-size:15px}
+.lt-font-panel .quiet{line-height:1.65;margin:0 0 12px}
+.lt-font-label{display:grid;gap:7px;font-size:13px;font-weight:700}
+.lt-font-label select{width:100%;min-height:46px;border:1px solid color-mix(in srgb,var(--ink) 20%,transparent);border-radius:12px;padding:10px 12px;background:var(--card,#fff);color:var(--ink);font:inherit}
+.reader .sentence{font-family:var(--lt-font-en,Georgia,serif)}
+.reader .sentence .inline-ar,[lang="ar"] .reader .sentence{font-family:var(--lt-font-ar,"Noto Sans Arabic",sans-serif)}
+@media (prefers-reduced-motion:reduce){.lt-font-panel *{transition:none!important}}
+
+
+/* LT Liquid Glass 27-inspired visual system: vivid tint families, diffused backplates,
+   darkened glass edges, crisp specular rims, and adjustable opacity/tint. */
+:root{
+ --lt-glass-opacity:.22;
+ --lt-glass-tint:1;
+ --lt-glass-a:#5a7dff;
+ --lt-glass-b:#c15cff;
+ --lt-glass-c:#ff78bd;
+ --lt-glass-d:#55e7e0;
+ --lt-glass-edge:rgba(19,18,48,.28);
+ --lt-glass-surface:rgba(255,255,255,.18);
+ --lt-glass-rim:rgba(255,255,255,.68);
+}
+body[data-lt-palette="sapphire"]{--lt-glass-a:#1768ff;--lt-glass-b:#6b4dff;--lt-glass-c:#28d9ff;--lt-glass-d:#b6f5ff}
+body[data-lt-palette="violet"]{--lt-glass-a:#5428d9;--lt-glass-b:#a34cff;--lt-glass-c:#f16acb;--lt-glass-d:#7ad9ff}
+body[data-lt-palette="rose"]{--lt-glass-a:#f33e8e;--lt-glass-b:#a744e8;--lt-glass-c:#ff9dba;--lt-glass-d:#ffc5e6}
+body[data-lt-palette="sunset"]{--lt-glass-a:#ff6c47;--lt-glass-b:#f43f83;--lt-glass-c:#ffbd59;--lt-glass-d:#8d63ff}
+body[data-lt-palette="ocean"]{--lt-glass-a:#006fba;--lt-glass-b:#00a9b7;--lt-glass-c:#5b80ff;--lt-glass-d:#8bf4e4}
+body[data-lt-palette="mint"]{--lt-glass-a:#00a98e;--lt-glass-b:#50c7b5;--lt-glass-c:#b0f1c6;--lt-glass-d:#71cfff}
+body[data-lt-palette="lavender"]{--lt-glass-a:#9381ff;--lt-glass-b:#d3a3ff;--lt-glass-c:#f7b9df;--lt-glass-d:#9de8ff}
+body[data-lt-palette="graphite"]{--lt-glass-a:#26364d;--lt-glass-b:#69788d;--lt-glass-c:#9a8da9;--lt-glass-d:#a6d8e2}
+body[data-lt-palette="pearl"]{--lt-glass-a:#b4c9ff;--lt-glass-b:#e1baff;--lt-glass-c:#ffc9df;--lt-glass-d:#b6f3f0}
+body[data-lt-palette="rainbow"]{--lt-glass-a:#ff5d9e;--lt-glass-b:#7b61ff;--lt-glass-c:#ffad57;--lt-glass-d:#3de4dc}
+body.theme-aurora,body.theme-nebula{
+ background:
+  radial-gradient(ellipse at 12% 8%,color-mix(in srgb,var(--lt-glass-c) 42%,transparent),transparent 38%),
+  radial-gradient(ellipse at 88% 18%,color-mix(in srgb,var(--lt-glass-d) 38%,transparent),transparent 36%),
+  radial-gradient(ellipse at 65% 92%,color-mix(in srgb,var(--lt-glass-b) 35%,transparent),transparent 40%),
+  linear-gradient(135deg,color-mix(in srgb,var(--lt-glass-a) 78%,#120d32),color-mix(in srgb,var(--lt-glass-b) 64%,#16143d) 48%,color-mix(in srgb,var(--lt-glass-d) 40%,#15254a) 78%,color-mix(in srgb,var(--lt-glass-c) 58%,#29134b));
+ background-attachment:fixed;
+}
+.storylens-hero,.storylens-header,.reader-nav-panel,.lt-drawer,.sheet,.reader-nav-actions button,.lt-page-controls,.lt-font-panel,.lt-glass-panel{
+ background:linear-gradient(145deg,
+  color-mix(in srgb,var(--lt-glass-a) var(--lt-glass-mix,19%),rgba(255,255,255,.17)),
+  color-mix(in srgb,var(--lt-glass-b) var(--lt-glass-mix,19%),rgba(255,255,255,.075)));
+ border:1px solid color-mix(in srgb,var(--lt-glass-rim) 72%,var(--lt-glass-a) 28%);
+ box-shadow:0 18px 44px color-mix(in srgb,var(--lt-glass-edge) 80%,transparent),
+  inset 0 1.5px 0 var(--lt-glass-rim),inset 0 -1px 0 rgba(13,15,42,.24);
+ -webkit-backdrop-filter:blur(var(--lt-glass-blur,31px)) saturate(155%);
+ backdrop-filter:blur(var(--lt-glass-blur,31px)) saturate(155%);
+}
+.storylens-hero{background-image:linear-gradient(145deg,rgba(255,255,255,var(--lt-glass-sheen,.35)),rgba(255,255,255,.035)),radial-gradient(ellipse at 12% 0%,color-mix(in srgb,var(--lt-glass-c) 36%,transparent),transparent 56%),linear-gradient(125deg,color-mix(in srgb,var(--lt-glass-a) 68%,transparent),color-mix(in srgb,var(--lt-glass-b) 46%,transparent) 60%,color-mix(in srgb,var(--lt-glass-d) 32%,transparent))}
+.storylens-hero:before,.storylens-header:before,.lt-glass-panel:before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(115deg,rgba(255,255,255,.25),transparent 27%,transparent 70%,rgba(8,10,35,.12));}
+.storylens-hero,.storylens-header,.lt-glass-panel{position:relative;isolation:isolate;overflow:hidden}
+.library .card{position:relative;border:1px solid color-mix(in srgb,var(--lt-glass-rim) 58%,var(--lt-glass-b) 42%);background:linear-gradient(145deg,rgba(255,255,255,calc(.06 + var(--lt-glass-opacity)*.55)),rgba(255,255,255,.045)),linear-gradient(135deg,color-mix(in srgb,var(--lt-glass-a) 21%,transparent),color-mix(in srgb,var(--lt-glass-b) 15%,transparent));box-shadow:0 14px 32px rgba(10,8,42,.14),inset 0 1px rgba(255,255,255,.5)}
+.lt-glass-panel{padding:16px;border-radius:22px;margin:14px 0}
+.lt-glass-panel h3{margin:0 0 8px;font-size:15px}
+.lt-glass-palette-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:10px 0 16px}
+.lt-glass-swatch{min-width:0;min-height:58px;padding:5px;border:1px solid rgba(255,255,255,.48);border-radius:15px;background:linear-gradient(135deg,var(--sw-a),var(--sw-b),var(--sw-c));box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 5px 13px rgba(10,10,35,.16);color:white;font-size:10px;font-weight:800;text-shadow:0 1px 4px #17102a;cursor:pointer}
+.lt-glass-swatch[aria-pressed="true"]{outline:3px solid white;outline-offset:2px;box-shadow:0 0 0 5px color-mix(in srgb,var(--lt-glass-d) 75%,transparent),inset 0 1px 0 white}
+.lt-glass-slider{display:grid;gap:8px;margin:12px 0}
+.lt-glass-slider label{display:flex;justify-content:space-between;gap:12px;font-size:13px;font-weight:700}
+.lt-glass-slider input{width:100%;accent-color:var(--lt-glass-c);min-height:30px}
+.lt-glass-preview{height:48px;border-radius:16px;margin-top:10px;background:linear-gradient(120deg,var(--lt-glass-a),var(--lt-glass-b) 48%,var(--lt-glass-c) 75%,var(--lt-glass-d));position:relative;overflow:hidden}
+.lt-glass-preview:after{content:"";position:absolute;inset:5px;border-radius:12px;border:1px solid rgba(255,255,255,.7);background:linear-gradient(130deg,rgba(255,255,255,.6),rgba(255,255,255,var(--lt-glass-preview-alpha,.3)),rgba(10,15,50,.1));box-shadow:inset 0 1px white,0 4px 12px #10102c30;backdrop-filter:blur(10px)}
+body.lt-reduce-transparency .storylens-hero,body.lt-reduce-transparency .storylens-header,body.lt-reduce-transparency .reader-nav-panel,body.lt-reduce-transparency .lt-drawer,body.lt-reduce-transparency .sheet,body.lt-reduce-transparency .reader-nav-actions button,body.lt-reduce-transparency .lt-page-controls,body.lt-reduce-transparency .lt-font-panel,body.lt-reduce-transparency .lt-glass-panel,body.lt-reduce-transparency .library .card{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:color-mix(in srgb,var(--lt-glass-a) 20%,#f6f7ff)!important}
+body.lt-high-contrast .storylens-hero,body.lt-high-contrast .storylens-header,body.lt-high-contrast .reader-nav-panel,body.lt-high-contrast .lt-drawer,body.lt-high-contrast .sheet,body.lt-high-contrast .lt-page-controls,body.lt-high-contrast .lt-glass-panel{border:2px solid currentColor;box-shadow:0 0 0 1px rgba(0,0,0,.28),0 12px 30px rgba(0,0,0,.22)}
+@media(max-width:520px){.lt-glass-palette-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.lt-glass-swatch{min-height:52px;font-size:9px;padding:3px}}
+@media(prefers-reduced-transparency:reduce){.storylens-hero,.storylens-header,.reader-nav-panel,.lt-drawer,.sheet,.reader-nav-actions button,.lt-page-controls,.lt-font-panel,.lt-glass-panel,.library .card{-webkit-backdrop-filter:none;backdrop-filter:none;background:color-mix(in srgb,var(--lt-glass-a) 22%,#f7f8ff)}}
+@media(prefers-contrast:more){.storylens-hero,.storylens-header,.reader-nav-panel,.lt-drawer,.sheet,.lt-page-controls,.lt-glass-panel{border:2px solid currentColor}}
+@media(prefers-reduced-motion:reduce){.library .card{transition:none!important}.lt-glass-swatch{transition:none!important}}
+
+/* PERF01: chapter-at-a-time bilingual companion, accessible on narrow phones. */
+.arabic-page .lt-translation-nav{
+ display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+ padding:12px;margin:20px 0 24px;border:1px solid rgba(111,96,79,.28);
+ border-radius:16px;background:rgba(111,96,79,.075);
+}
+.arabic-page .lt-translation-nav label{font-size:14px;font-weight:650;color:inherit}
+.arabic-page .lt-translation-nav select{
+ flex:1 1 210px;min-width:0;max-width:100%;min-height:44px;
+ border-radius:10px;padding:8px 12px;border:1px solid rgba(111,96,79,.42);
+ color:inherit;background:var(--card,#fffaf1);font:inherit;
+}
+.arabic-page .lt-translation-nav button{min-height:44px}
+.arabic-page .lt-translation-nav button:disabled{opacity:.45;cursor:default}
+.arabic-page .lt-translation-nav :focus-visible{outline:3px solid var(--accent,#638bc1);outline-offset:2px}
+@media(max-width:560px){
+ .arabic-page .lt-translation-nav{gap:8px;padding:10px}
+ .arabic-page .lt-translation-nav select{flex-basis:100%;order:2}
+ .arabic-page .lt-translation-nav button{flex:1 1 120px}
+}
+
+/* Chapter-end navigation remains accessible after the last translated paragraph. */
+.arabic-page .lt-translation-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:28px 0 14px;padding:14px 0;border-top:1px solid rgba(111,96,79,.3)}
+.arabic-page .lt-translation-bottom button{min-height:44px;flex:0 1 auto}
+.arabic-page .lt-translation-bottom button:disabled{opacity:.45;cursor:default}
+.arabic-page .lt-translation-bottom [role="status"]{font-weight:650;font-size:13px}
+.arabic-page .lt-translation-bottom :focus-visible{outline:3px solid var(--accent,#638bc1);outline-offset:2px}
+@media(max-width:520px){.arabic-page .lt-translation-bottom button{flex:1 1 120px}.arabic-page .lt-translation-bottom [role="status"]{order:-1;flex-basis:100%;text-align:center}}
+
+/* Authentic engraved scene beside its matching paragraph in companion reading.
+   No continuous animation or external image fetch; geometry is reserved. */
+.arabic-page .lt-companion-plate{
+ display:block;box-sizing:border-box;max-width:470px;width:100%;
+ margin:20px auto 26px;padding:9px;
+ border:2px solid #c5b394;border-radius:7px;
+ background:#f5eedf;color:#3f372d;
+ box-shadow:0 5px 17px #20180e1d;
+ text-align:center;direction:inherit;
+}
+.arabic-page .lt-companion-plate img{
+ width:100%;height:auto;max-height:590px;object-fit:contain;
+ display:block;border-radius:3px;background:#ece3d2;
+}
+.arabic-page .lt-companion-plate figcaption{
+ font:500 12px/1.7 system-ui,sans-serif;
+ padding:8px 5px 2px;color:#554637;text-align:center;
+}
+@media(max-width:560px){.arabic-page .lt-companion-plate{padding:6px;margin:16px auto}}
+
+/* Edition and translation status, without obscuring or abridging the novel. */
+.arabic-page .lt-literary-disclosure{
+ margin:12px 0 18px;padding:9px 12px;
+ border-inline-start:3px solid #b69b70;
+ background:rgba(173,144,98,.075);
+ border-radius:5px;color:inherit;
+ font:400 13px/1.75 system-ui,sans-serif;
+}

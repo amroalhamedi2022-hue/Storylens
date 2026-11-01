@@ -7,36 +7,122 @@
 const PREFIX='storylens_';
 const VERSION=1;
 const MAX_BYTES=1_500_000;
-const MAX_ENTRIES=900;
+// Count actual UTF-8 bytes, not JavaScript UTF-16 code units. Android SAF
+// writes UTF-8; non-ASCII vocabulary must obey the same bound end to end.
+// Unpaired surrogates are encoded as U+FFFD (three bytes), as in TextEncoder.
+function utf8ByteLength(value, limit=Infinity){
+ let bytes=0;
+ for(let i=0;i<value.length;i++){
+  const code=value.charCodeAt(i);
+  if(code<0x80)bytes++;
+  else if(code<0x800)bytes+=2;
+  else if(code>=0xd800&&code<=0xdbff&&i+1<value.length&&
+          value.charCodeAt(i+1)>=0xdc00&&value.charCodeAt(i+1)<=0xdfff){
+   bytes+=4;i++;
+  }else bytes+=3;
+  if(bytes>limit)return bytes;
+ }
+ return bytes;
+}
+function exceedsUtf8Limit(value, limit){
+ return utf8ByteLength(value,limit)>limit;
+}
+const MAX_ENTRIES=5000; // Full story/chapter reading positions can exceed the old 900-key cap.
 const simple=new Set(['saved','cards','favorites','bookmarks','last_story','uiTheme','readerPrefs',
- 'written_examples','discoveryLevel','discoverySort','favoritesOnly','wordSenses','dark','size']);
+ 'written_examples','discoveryLevel','discoverySort','favoritesOnly','wordSenses','dark','size',
+ 'fontArabic','fontEnglish','uiLocale','audioPrefs','licensedAudioPrefs',
+ 'libraryScroll','lt_glass_palette','lt_glass_tint','lt_reduce_transparency',
+ 'lt_high_contrast','lt_font_choice','ltThemeCustomColors','ltHiddenThemes']);
 function allowed(key){
  if(typeof key!=='string'||!key.startsWith(PREFIX))return false;
  const suffix=key.slice(PREFIX.length);
  return simple.has(suffix)||/^(chapter|has_read)_[a-z0-9-]{1,90}$/.test(suffix)||
-  /^scroll_[a-z0-9-]{1,90}_[0-9]{1,4}$/.test(suffix);
+  /^(scroll|readpage|readpage_anchor|reading_anchor)_[a-z0-9-]{1,90}_[0-9]{1,4}$/.test(suffix);
 }
 const safeText=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// A backup must not silently restore objects/arrays where the reader expects
+// plain user-authored text. Keep limits generous for legitimate older cards.
+function validStringMap(value,maxKeyChars,maxValueChars){
+ if(!value||typeof value!=='object'||Array.isArray(value))return false;
+ const entries=Object.entries(value);
+ return entries.length<=5000&&entries.every(([key,text])=>
+  key.length<=maxKeyChars&&typeof text==='string'&&text.length<=maxValueChars);
+}
 function validValue(key,val){
  const tail=key.slice(PREFIX.length);
  if(tail==='saved'||tail==='favorites'){
   return Array.isArray(val)&&val.length<=5000&&val.every(x=>typeof x==='string'&&x.length<=180);
  }
  if(tail==='cards'){
+  // Malformed SRS timestamps silently hide due reviews; nonnumeric counters
+  // can also corrupt the next review calculation. Older cards may omit fields.
+  const optionalNumber=(x,key,min,max)=>x[key]===undefined||
+   (typeof x[key]==='number'&&Number.isFinite(x[key])&&x[key]>=min&&x[key]<=max);
+  const optionalCount=(x,key)=>x[key]===undefined||
+   (Number.isSafeInteger(x[key])&&x[key]>=0&&x[key]<=100000);
   return Array.isArray(val)&&val.length<=5000&&val.every(x=>x&&typeof x==='object'&&
-   typeof x.term==='string'&&x.term.length<=180&&
-   ['sentence','translation','meaning'].every(k=>!x[k]||typeof x[k]==='string'&&x[k].length<5000));
+   typeof x.term==='string'&&x.term.trim().length>0&&x.term.length<=180&&
+   ['sentence','translation','meaning','surface'].every(k=>x[k]===undefined||x[k]===null||
+    (typeof x[k]==='string'&&x[k].length<5000))&&
+   optionalNumber(x,'dueAt',0,7258118400000)&&
+   optionalNumber(x,'intervalDays',0,36500)&&
+   optionalNumber(x,'ease',0,10)&&
+   optionalCount(x,'repetitions')&&optionalCount(x,'lapses'));
  }
  if(tail==='last_story')return typeof val==='string'&&val.length<=100;
- if(tail==='uiTheme')return ['aurora','aqua','nebula'].includes(val);
+ if(tail==='uiTheme')return ['liquid-27','aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre','celestial-atlas','harbor-ledger','circuit-notebook','terracotta-gallery','monochrome-zine','moonlit-margins','saffron-archive','bauhaus-studio','mosaic-courtyard','saville-clockwork','station-tickets','reform-club-brass','midnight-platform','exchange-gazette','suez-quays','consular-ledger'].includes(val)||val==='red-sea-dispatch'||val==='monsoon-meridian'||val==='deccan-timetable'||val==='kholby-crossing'||val==='vindhya-passage'||val==='dawn-escape'||val==='ganges-panorama'||val==='calcutta-ledger'||val==='rangoon-passage'||val==='singapore-lantern'||val==='typhoon-timetable'||val==='victoria-harbour-dispatch'||val==='shanghai-wind-ledger'||val==='typhoon-signal'||val==='yokohama-lantern'||val==='paper-lantern-circus'||val==='pacific-meridian'||val==='civic-panorama'||val==='prairie-signal'||val==='salt-lake-dispatch'||val==='medicine-bow-crossing'||val==='plum-creek-signal'||val==='snowbound-telegraph'||val==='prairie-sails'||val==='hudson-ledger'||val==='atlantic-passage'||val==='last-five-minutes'||val==='westminster-vows'||val==='reform-club-countdown'||val==='meridian-epilogue'||val==='stained-glass';
+ if(tail==='audioPrefs')return val!==null&&typeof val==='object'&&!Array.isArray(val)&&
+  Object.keys(val).sort().join(',')==='scene,sfx,sfxVolume,volume'&&
+  ['rain','thunder','forest','night','ocean','fire','wind','cabin','brook','waterfall','dawn','snow','train','library','window','cliffs','meadow','leaves','desert','stars'].includes(val.scene)&&
+  typeof val.sfx==='boolean'&&
+  [val.volume,val.sfxVolume].every(v=>typeof v==='number'&&Number.isFinite(v)&&v>=0&&v<=1);
+ // Licensed playback preferences are separate from procedural ambience preferences.
+ // A clean reinstall after an incompatible APK signature must preserve opt-ins
+ // and both volumes; reject unknown tracks and malformed archive payloads.
+ if(tail==='licensedAudioPrefs')return val!==null&&typeof val==='object'&&!Array.isArray(val)&&
+  Object.keys(val).sort().join(',')==='ambienceEnabled,sfxEnabled,sfxVolume,track,volume'&&
+  ['forest','night-forest','quiet-room','lake-shore','coastal-waves','underwater',
+   'distant-city','book-cafe','rain-cabin','forest-rain','city-rain','ocean-waves',
+   'river-flow','waterfall','wind-birds','wind-chimes','farm','european-city',
+   'creek-in-woods','water-lapping'].includes(val.track)&&
+  typeof val.ambienceEnabled==='boolean'&&typeof val.sfxEnabled==='boolean'&&
+  [val.volume,val.sfxVolume].every(v=>typeof v==='number'&&Number.isFinite(v)&&v>=0&&v<=1);
+ if(tail==='fontArabic')return ['sans','naskh'].includes(val);
+ if(tail==='fontEnglish')return ['serif','sans'].includes(val);
+ if(tail==='uiLocale')return ['ar','en'].includes(val);
  if(tail==='discoveryLevel')return ['all','A1','A2','B1','B2','C1','C2'].includes(val);
  if(tail==='discoverySort')return ['editorial','title','level'].includes(val);
  if(tail==='favoritesOnly'||tail==='dark'||tail.startsWith('has_read_'))return typeof val==='boolean';
+ if(tail==='libraryScroll')return typeof val==='number'&&Number.isFinite(val)&&val>=0&&val<1e9;
+ if(tail==='ltHiddenThemes')return Array.isArray(val)&&val.length<=90&&
+  new Set(val).size===val.length&&val.every(x=>typeof x==='string'&&/^[a-z0-9-]{1,60}$/.test(x));
+ if(tail==='ltThemeCustomColors')return val!==null&&typeof val==='object'&&!Array.isArray(val)&&
+  Object.keys(val).length<=90&&Object.entries(val).every(([id,colors])=>
+   /^[a-z0-9-]{1,60}$/.test(id)&&colors!==null&&typeof colors==='object'&&!Array.isArray(colors)&&
+   Object.keys(colors).length<=5&&Object.keys(colors).every(k=>['a','b','c','d','angle'].includes(k))&&
+   Object.entries(colors).every(([k,x])=>k==='angle'?
+    Number.isInteger(x)&&x>=0&&x<=360:
+    typeof x==='string'&&/^#[a-f0-9]{6}$/i.test(x)));
+ if(tail==='lt_glass_palette')return ['sapphire','violet','rose','sunset','ocean',
+  'mint','lavender','graphite','pearl','rainbow'].includes(val);
+ if(tail==='lt_glass_tint')return typeof val==='number'&&Number.isFinite(val)&&val>=0&&val<=100;
+ if(tail==='lt_reduce_transparency'||tail==='lt_high_contrast')return typeof val==='boolean';
+ if(tail==='lt_font_choice')return ['system','naskh','sans','serif','rounded','humanist',
+  'classic','mono','handwritten','casual-hand','calligraphy'].includes(val);
  if(tail==='size')return Number.isInteger(val)&&val>=16&&val<=32;
  if(tail.startsWith('chapter_'))return Number.isInteger(val)&&val>=0&&val<1000;
+ if(tail.startsWith('readpage_anchor_'))return Number.isInteger(val)&&val>=0&&val<=10000;
+ if(tail.startsWith('readpage_'))return Number.isInteger(val)&&val>=0&&val<=10000;
+ if(tail.startsWith('reading_anchor_'))return val===null||
+  (val!==null&&typeof val==='object'&&!Array.isArray(val)&&
+   Object.keys(val).sort().join(',')==='index,top'&&
+   Number.isInteger(val.index)&&val.index>=0&&val.index<10000&&
+   typeof val.top==='number'&&Number.isFinite(val.top)&&val.top>=-2000&&val.top<=2000);
  if(tail.startsWith('scroll_'))return Number.isFinite(val)&&val>=0&&val<1e9;
  if(tail==='readerPrefs')return val!==null&&typeof val==='object'&&!Array.isArray(val);
- if(['bookmarks','written_examples','wordSenses'].includes(tail)){
+ if(tail==='written_examples')return validStringMap(val,500,5000);
+ if(tail==='wordSenses')return validStringMap(val,4000,5000);
+ if(tail==='bookmarks'){
   return val!==null&&typeof val==='object'&&!Array.isArray(val)&&Object.keys(val).length<=5000;
  }
  return false;
@@ -48,18 +134,24 @@ function exportObject(){
   if(!allowed(key))continue;
   const raw=localStorage.getItem(key);
   if(raw===null)continue;
-  try{
-   const val=JSON.parse(raw);
-   if(validValue(key,val))entries[key]=raw;
-  }catch(_){}
+  // Never produce a backup that silently drops an existing learning key.
+  // A corrupt allowed entry needs explicit repair before export, otherwise
+  // restoring this apparently successful archive could lose saved progress.
+  let val;
+  try{val=JSON.parse(raw)}catch(_){
+   throw Error('تعذّر تصدير نسخة كاملة: بيانات تالفة في '+key);
+  }
+  if(!validValue(key,val))throw Error('تعذّر تصدير نسخة كاملة: بيانات غير صالحة في '+key);
+  entries[key]=raw;
  }
+ if(Object.keys(entries).length>MAX_ENTRIES)throw Error('عدد عناصر النسخة الاحتياطية يتجاوز الحد الآمن.');
  const payload={format:'storylens.backup',version:VERSION,createdAt:new Date().toISOString(),entries};
  const text=JSON.stringify(payload);
- if(text.length>MAX_BYTES)throw Error('حجم النسخة الاحتياطية يتجاوز الحد الآمن.');
+ if(exceedsUtf8Limit(text,MAX_BYTES))throw Error('حجم النسخة الاحتياطية يتجاوز الحد الآمن.');
  return text;
 }
 function parseBackup(input){
- if(typeof input!=='string'||input.length>MAX_BYTES)throw Error('ملف النسخة غير صالح أو كبير جدًا.');
+ if(typeof input!=='string'||exceedsUtf8Limit(input,MAX_BYTES))throw Error('ملف النسخة غير صالح أو كبير جدًا.');
  let obj;try{obj=JSON.parse(input)}catch(_){throw Error('هذا ليس ملف JSON صالحًا.');}
  if(!obj||obj.format!=='storylens.backup'||obj.version!==VERSION||
     !obj.entries||typeof obj.entries!=='object'||Array.isArray(obj.entries))throw Error('صيغة النسخة غير مدعومة.');
@@ -94,10 +186,24 @@ function restore(entries){
  for(const name of names)previous.set(name,localStorage.getItem(name));
  try {for(const name of names)localStorage.setItem(name,entries[name]);}
  catch(error){
-  for(const [name,raw] of previous){
-   try{if(raw===null)localStorage.removeItem(name);else localStorage.setItem(name,raw);}catch(_){}
+  // Revert changes that FREE space before those that need space. Restoring
+  // large old values first can itself fail under quota while newer imported
+  // values still occupy storage; silently swallowing that loses progress.
+  // Storage quota counts UTF-8 bytes, not JavaScript string code units.
+  const rollback=[...previous].map(([name,raw])=>{
+   const current=localStorage.getItem(name);
+   return {name,raw,delta:(raw===null?0:utf8ByteLength(raw))-(current===null?0:utf8ByteLength(current))};
+  }).sort((a,b)=>a.delta-b.delta);
+  let rollbackComplete=true;
+  for(const {name,raw} of rollback){
+   try{
+    if(raw===null)localStorage.removeItem(name);else localStorage.setItem(name,raw);
+    if(localStorage.getItem(name)!==raw)rollbackComplete=false;
+   }catch(_){rollbackComplete=false;}
   }
-  throw new Error('تعذّر الحفظ؛ قد تكون مساحة التخزين ممتلئة.');
+  throw new Error(rollbackComplete?
+   'تعذّر الحفظ؛ لم تتغير بياناتك السابقة. قد تكون مساحة التخزين ممتلئة.':
+   'تعذّر الحفظ واسترجاع بعض البيانات السابقة؛ لا تغلق التطبيق قبل حفظ نسخة من بياناتك.');
  }
  return names.length;
 }
@@ -107,39 +213,83 @@ function show(message){
  const box=document.getElementById('stl-backup-feedback');
  if(box)box.textContent=message;
 }
+const ui=(ar,en)=>document.documentElement.lang==='en'?en:ar;
+/* LT-06: backup validation errors are UI chrome, unlike imported learning
+ * content. Keep Arabic diagnostics in Arabic UI, and translate known errors
+ * (including dynamic storage-key details) before showing them in English UI. */
+function localizeBackupError(message){
+ const text=typeof message==='string'?message:String(message??'');
+ if(document.documentElement.lang!=='en'||!/[\u0600-\u06FF]/.test(text))return text;
+ const exact={
+  'ملف النسخة غير صالح أو كبير جدًا.':'The backup file is invalid or too large.',
+  'هذا ليس ملف JSON صالحًا.':'This is not valid JSON.',
+  'صيغة النسخة غير مدعومة.':'This backup format is not supported.',
+  'النسخة تتضمن عناصر أكثر من الحد الآمن.':'The backup contains more entries than the safe limit.',
+  'النسخة تحتوي على مفتاح غير مسموح به.':'The backup contains an unsupported field.',
+  'بيانات غير صالحة.':'The backup data is invalid.',
+  'عدد عناصر النسخة الاحتياطية يتجاوز الحد الآمن.':'The backup contains more items than the safe limit.',
+  'حجم النسخة الاحتياطية يتجاوز الحد الآمن.':'The backup exceeds the safe size limit.',
+  'انتهت صلاحية التأكيد؛ افحص النسخة مرة أخرى.':'Confirmation expired; validate the backup again.',
+  'تعذّر الحفظ؛ لم تتغير بياناتك السابقة. قد تكون مساحة التخزين ممتلئة.':'Restore failed; your previous data was preserved. Storage may be full.',
+  'تعذّر الحفظ واسترجاع بعض البيانات السابقة؛ لا تغلق التطبيق قبل حفظ نسخة من بياناتك.':'Restore and rollback both failed. Keep the app open and export a backup before leaving.'
+ };
+ if(Object.prototype.hasOwnProperty.call(exact,text))return exact[text];
+ if(text.startsWith('تعذّر تصدير نسخة كاملة: بيانات تالفة في '))
+  return 'Cannot export a complete backup because a saved field is corrupted. Repair it before retrying.';
+ if(text.startsWith('تعذّر تصدير نسخة كاملة: بيانات غير صالحة في '))
+  return 'Cannot export a complete backup because a saved field is invalid. Repair it before retrying.';
+ if(text.startsWith('بيانات JSON تالفة في '))return 'The backup contains a corrupted JSON field.';
+ if(text.startsWith('بيانات تالفة في '))return 'The backup contains corrupted data.';
+ if(text.startsWith('نوع البيانات غير صحيح في '))return 'The backup contains a field with an unsupported data type.';
+ return 'Backup operation failed. Please check the file or available storage and try again.';
+}
+const nativeStatusMessages={
+ saved:['تم حفظ النسخة الاحتياطية في الموقع الذي اخترته.','Backup saved to the selected location.'],
+ save_failed:['تعذّر حفظ النسخة الاحتياطية. تأكد من مساحة التخزين وأعد المحاولة.','Could not save the backup. Check storage space and try again.'],
+ import_failed:['تعذّر قراءة النسخة الاحتياطية. تأكد من الملف وأعد المحاولة.','Could not read the backup file. Check the file and try again.'],
+ export_too_large:['النسخة الاحتياطية أكبر من الحد المسموح.','The backup exceeds the allowed size.'],
+ picker_busy:['أغلق نافذة اختيار الملف الحالية قبل بدء عملية أخرى.','Finish or cancel the current file picker before starting another operation.']
+};
+function showNativeStatus(code){
+ const messages=nativeStatusMessages[code];
+ if(!messages)return false;
+ if(!document.getElementById('stl-backup-feedback'))renderBackup();
+ show(ui(messages[0],messages[1]));
+ return true;
+}
 function renderBackup(){
  const parent=document.getElementById('modals');
  if(!parent)return;
  parent.innerHTML='<div class="overlay" onclick="closeSheet(event)"><div class="sheet stl-backup-sheet" onclick="event.stopPropagation()">'+
-  '<div class="tag">OFFLINE · DATA SAFETY</div><h2>النسخ الاحتياطي</h2>'+
-  '<p class="quiet">احفظ المفردات والمفضلة ومواقع القراءة والإعدادات في ملف JSON خاص بك. لن يغادر جهازك.</p>'+
-  '<div class="stl-backup-actions"><button class="primary" id="stl-backup-export">تصدير نسخة</button>'+
-  '<button class="secondary" id="stl-backup-import">استيراد نسخة</button></div>'+
-  '<label for="stl-backup-paste">أو الصق نسخة JSON هنا لاسترجاعها يدويًا</label>'+
-  '<textarea id="stl-backup-paste" placeholder="Paste your StoryLens JSON here" spellcheck="false"></textarea>'+
-  '<button class="secondary" id="stl-backup-validate">فحص النسخة الملصوقة</button>'+
+  '<div class="tag">'+ui('بدون اتصال · حماية البيانات','OFFLINE · DATA SAFETY')+'</div><h2>'+ui('النسخ الاحتياطي','Backup & restore')+'</h2>'+
+  '<p class="quiet">'+ui('احفظ مفرداتك ومواقع القراءة والإعدادات محليًا. لن يغادر الملف جهازك.','Save your words, reading progress and settings locally. Nothing is uploaded.')+'</p>'+
+  '<div class="stl-backup-actions"><button class="primary" id="stl-backup-export">'+ui('تصدير نسخة','Export backup')+'</button>'+
+  '<button class="secondary" id="stl-backup-import">'+ui('استيراد نسخة','Import backup')+'</button></div>'+
+  '<label for="stl-backup-paste">'+ui('أو الصق نسخة JSON هنا','Or paste your JSON backup here')+'</label>'+
+  '<textarea id="stl-backup-paste" placeholder="'+ui('الصق ملف Lingua Tales هنا','Paste your Lingua Tales JSON here')+'" spellcheck="false"></textarea>'+
+  '<button class="secondary" id="stl-backup-validate">'+ui('فحص النسخة الملصوقة','Validate pasted backup')+'</button>'+
   '<p id="stl-backup-feedback" class="stl-backup-feedback" role="status" aria-live="polite"></p>'+
-  '<footer><button class="secondary" onclick="closeSheet()">إغلاق</button></footer></div></div>';
+  '<footer><button class="secondary" onclick="closeSheet()">'+ui('إغلاق','Close')+'</button></footer></div></div>';
  document.getElementById('stl-backup-export').addEventListener('click',()=>{
   try{
    const value=exportObject();
    if(global.StoryLensNative&&typeof global.StoryLensNative.saveBackup==='function'){
     global.StoryLensNative.saveBackup(value);
-    show('اختر مكان حفظ ملف النسخة الاحتياطية على جهازك.');
+    show(ui('اختر مكان حفظ ملف النسخة الاحتياطية على جهازك.','Choose where to save your backup file on this device.'));
    }else{
     const textarea=document.getElementById('stl-backup-paste');
     textarea.value=value;textarea.focus();textarea.select();
-    show('لا يوجد جسر حفظ ملفات في هذه المعاينة. انسخ النص المحدد واحتفظ به.');
+    show(ui('لا يوجد جسر حفظ ملفات في هذه المعاينة. انسخ النص المحدد واحتفظ به.','File saving is unavailable here. Copy the selected JSON and keep it safe.'));
    }
-  }catch(e){show(e.message)}
+  }catch(e){show(localizeBackupError(e.message))}
  });
  document.getElementById('stl-backup-import').addEventListener('click',()=>{
   if(global.StoryLensNative&&typeof global.StoryLensNative.openBackup==='function'){
    global.StoryLensNative.openBackup();
-   show('اختر ملف JSON من جهازك؛ لن تُستبدل البيانات قبل الموافقة.');
+   show(ui('اختر ملف JSON من جهازك؛ لن تُستبدل البيانات قبل الموافقة.','Choose a JSON backup; no data will change before you confirm.'));
   }else{
    document.getElementById('stl-backup-paste').focus();
-   show('الصق محتوى ملف النسخة في المربع ثم اضغط فحص.');
+   show(ui('الصق محتوى ملف النسخة في المربع ثم اضغط فحص.','Paste the backup JSON above, then choose Validate.'));
   }
  });
  document.getElementById('stl-backup-validate').addEventListener('click',()=>{
@@ -147,29 +297,41 @@ function renderBackup(){
  });
 }
 function showImport(value){
- let data;try{data=preview(value)}catch(e){if(!document.getElementById('stl-backup-feedback'))renderBackup();show(e.message);return false;}
+ let data;try{data=preview(value)}catch(e){staged=null;if(!document.getElementById('stl-backup-feedback'))renderBackup();show(localizeBackupError(e.message));return false;}
  staged=data.entries;
+ const approvedEntries=staged;
  if(!document.getElementById('stl-backup-feedback'))renderBackup();
  const box=document.getElementById('stl-backup-feedback');
- box.innerHTML='وجدت '+data.stats.words+' كلمة و'+data.stats.favorites+
-  ' قصة مفضلة و'+data.stats.cards+' بطاقة مراجعة ضمن '+data.stats.keys+
-  ' مجموعة بيانات. <strong>استيرادها سيستبدل المجموعات المماثلة الموجودة عندك.</strong>';
+ box.textContent=ui('وجدت ','Found ')+data.stats.words+ui(' كلمة، ',' words, ')+data.stats.favorites+
+  ui(' قصة مفضلة، ',' favorites, ')+data.stats.cards+ui(' بطاقة مراجعة في ',' review cards in ')+data.stats.keys+
+  ui(' مجموعة بيانات. الاستيراد سيستبدل البيانات المماثلة بعد التأكيد.',' groups. Import replaces matching data only after confirmation.');
  const go=document.createElement('button');go.type='button';go.className='primary stl-backup-confirm';
- go.textContent='نعم، استرجع بياناتي';
+ go.textContent=ui('نعم، استرجع بياناتي','Yes, restore my data');
  go.addEventListener('click',()=>{
-  try {const count=restore(staged);staged=null;close();state.saved=get('saved',[]);
+  try {
+   // A newer/invalid preview revokes this button's authorization. Never
+   // restore a different file than the one shown when this button appeared.
+   if(staged!==approvedEntries)throw Error(ui('انتهت صلاحية التأكيد؛ افحص النسخة مرة أخرى.','Confirmation expired; validate the backup again.'));
+   const count=restore(approvedEntries);staged=null;close();state.saved=get('saved',[]);
    state.cards=get('cards',[]);state.dark=get('dark',false);state.size=get('size',22);
    state.uiTheme=get('uiTheme','aurora');document.body.className='theme-'+state.uiTheme;
+   // Restore imported UI preferences immediately; no app restart or change to
+   // legacy storage keys. The shell is loaded later than this module.
+   if(global.LinguaShell){
+    global.LinguaShell.applyLocale(get('uiLocale','ar'),false);
+    global.LinguaShell.applyFont('ar',get('fontArabic','sans'));
+    global.LinguaShell.applyFont('en',get('fontEnglish','serif'));
+   }
    state.page='library';library();window.scrollTo(0,0);
    alertOnce(count);
-  }catch(e){show(e.message)}
+  }catch(e){show(localizeBackupError(e.message))}
  });
  box.appendChild(go);
  return true;
 }
 function alertOnce(count){
  const note=document.createElement('div');note.className='stl-backup-toast';note.role='status';
- note.textContent='تم استيراد '+count+' مجموعة بيانات بنجاح.';document.body.appendChild(note);
+ note.textContent=ui('تم استيراد ','Restored ')+count+ui(' مجموعة بيانات بنجاح.',' data groups successfully.');document.body.appendChild(note);
  setTimeout(()=>note.remove(),3800);
 }
 const baseLibrary=library;
@@ -178,12 +340,12 @@ library=function(){
  const bar=document.querySelector('.library-actions');
  if(!bar)return;
  const b=document.createElement('button');b.type='button';b.className='secondary stl-backup-open';
- b.textContent='⤓ نسخ احتياطي';b.setAttribute('aria-label','حفظ أو استعادة بيانات التعلم');
+ b.textContent=ui('⤓ نسخ احتياطي','⤓ Backup');b.setAttribute('aria-label',ui('حفظ أو استعادة بيانات التعلم','Save or restore learning data'));
  b.addEventListener('click',renderBackup);bar.appendChild(b);
 };
 global.StoryLensBackup={
  exportObject,parseBackup,preview,restore,
- receiveImport:showImport,nativeError:message=>{if(!document.getElementById('stl-backup-feedback'))renderBackup();show(message);},
+ receiveImport:showImport,nativeStatus:showNativeStatus,nativeError:message=>{if(!document.getElementById('stl-backup-feedback'))renderBackup();show(localizeBackupError(message));},
  open:renderBackup
 };
 library();

@@ -1,0 +1,262 @@
+'use strict';
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const vm=require('node:vm');
+const root=path.resolve(__dirname,'..');
+const html=fs.readFileSync(path.join(root,'app/src/main/assets/index.html'),'utf8');
+const source=fs.readFileSync(path.join(root,'app/src/main/assets/lingua-content-loader.js'),'utf8');
+const artMatch=html.match(/<script id="artData" type="application\/json">([\s\S]*?)<\/script>/);
+assert.ok(artMatch,'static library art catalog exists');
+const initialArt=JSON.parse(artMatch[1]);
+assert.ok(initialArt['around-the-world-in-eighty-days-towle_0']?.startsWith('data:image/svg+xml'), 'Verne has a lightweight library-cover illustration before chapter assets load');
+const libraryMatch=html.match(/<script id="libraryData" type="application\/json">([\s\S]*?)<\/script>/);
+assert.ok(libraryMatch,'static library metadata exists');
+const initialLibrary=JSON.parse(libraryMatch[1]);
+const verneEntry=initialLibrary.stories.find(item=>item.id==='around-the-world-in-eighty-days-towle');
+assert.ok(verneEntry,'the long novel is discoverable before its chapter assets load');
+assert.equal(verneEntry.lazyBook,true,'the library uses a lightweight lazy-book placeholder');
+assert.equal(verneEntry.totalChapters,37);
+assert.equal(verneEntry.chapters.length,0,'chapter payload remains deferred at startup');
+
+
+const tags=[...html.matchAll(/<script\b([^>]*)><\/script>/g)].map(m=>{
+ const attrs=m[1],src=attrs.match(/\bsrc="([^"]+)"/)?.[1],group=attrs.match(/\bdata-lt-lazy="([^"]+)"/)?.[1];
+ return {attrs,src,group};
+}).filter(x=>x.group);
+const bookAssets=tags.filter(x=>x.group==='book').map(x=>x.src);
+const dictionaryAssets=tags.filter(x=>x.group==='dictionary').map(x=>x.src);
+assert.equal(bookAssets.length,37,'36 source scripts plus one shared legacy art engine, without obsolete vector scenes');
+assert.equal(dictionaryAssets.length,1,'the generated FreeDict pack is declared lazy');
+assert.equal(bookAssets.filter(x=>/^classic-verne-towle-ch\d+\.js$/.test(x)).length,36);
+assert.deepEqual(bookAssets.slice(0,3),['classic-verne-towle-ch01.js','classic-verne-towle-ch02.js','classic-verne-towle-ch03.js']);
+assert.ok(bookAssets.indexOf('classic-verne-towle-ch31.js')<bookAssets.indexOf('classic-verne-towle-ch33.js'));
+assert.ok(bookAssets.indexOf('classic-verne-towle-ch37.js')<bookAssets.indexOf('editorial-art.js'));
+assert.ok(bookAssets.includes('editorial-art.js'),'offline legacy artwork engine still available');
+assert.ok(!bookAssets.some(name=>/^editorial-art-ch(?:35|36|37)\.js$/.test(name)),
+ 'old synthetic late-chapter Verne scenes are not requested');
+assert.ok(tags.every(x=>/\btype="application\/x-lingua-lazy"/.test(x.attrs)),'lazy payload tags must not execute as JavaScript during startup');
+assert.ok(html.includes('<script src="lingua-content-loader.js"></script>'));
+assert.ok(html.includes('window.LinguaAttachEditorialArt=function'));
+assert.ok(html.includes('src="freedict-en-ar.js"'),'dictionary remains a packaged local asset');
+assert.ok(!/<script\b(?![^>]*data-lt-lazy)[^>]*\bsrc="(?:classic-verne-towle-ch\d+\.js|editorial-art(?:-ch(?:35|36|37))?\.js|freedict-en-ar\.js)"/.test(html),
+ 'long-book and dictionary assets must not be eager executable scripts');
+
+function makeHarness({failOnce=null,lang='ar',deferAsset=null,extraEditorial=[],idleWarmup=false}={}) {
+ const attempted=[], successful=[], removed=[], opened=[], sheetEntries=[];
+ let failed=false, headingText=null, artAttached=0, hydrationCount=0, deferredOnce=false, deferredAsset=null;
+ const idleCallbacks=[];
+ const story={id:'around-the-world-in-eighty-days-towle',title:'Around the World in Eighty Days',subtitle:'A wager, a globe, and eighty days',genre:'historical',level:'C1',description:'Authentic long-form novel.',totalChapters:37,chapters:[],terms:[]};
+ const catalogStory={id:story.id,title:story.title,subtitle:story.subtitle,genre:story.genre,level:story.level,description:story.description,totalChapters:37,lazyBook:true,chapters:[],terms:[]};
+ const catalog={stories:[catalogStory]};
+ const openedChapterCounts=[];
+ const rootNode={inert:false,attrs:{},setAttribute(k,v){this.attrs[k]=String(v);},removeAttribute(k){delete this.attrs[k];}};
+ const bodyChildren=[];
+ function node(tag){
+  const listeners={};
+  return {tagName:String(tag).toUpperCase(),dataset:{},attrs:{},children:[],textContent:'',type:'',src:'',
+   setAttribute(k,v){this.attrs[k]=String(v);},removeAttribute(k){delete this.attrs[k];},
+   appendChild(child){this.children.push(child);return child;},
+   replaceChildren(...children){this.children=[...children];},
+   addEventListener(name,callback){listeners[name]=callback;},
+   remove(){this.removed=true;},
+   click(){listeners.click?.();},
+   get text(){return this.textContent+this.children.map(x=>x.text||x.textContent||'').join('');}
+  };
+ }
+ const manifestNodes=tags.map(item=>({
+  getAttribute(name){return name==='src'?item.src:name==='data-lt-lazy'?item.group:null;},
+  remove(){removed.push(item.src);}
+ }));
+ const window={
+  StoryLensEditorialStories:[story,...extraEditorial],
+  ...(idleWarmup?{requestIdleCallback(callback){idleCallbacks.push(callback);}}:{}),
+  LinguaHydrateStoryCovers(){hydrationCount++;return 1;},
+  LinguaCatalog:catalog,
+  LinguaAttachEditorialArt(){artAttached++;return true;},
+  openStory(id){opened.push(id);if(id===story.id)openedChapterCounts.push(catalog.stories.find(item=>item.id===id)?.chapters.length??-1);},
+  wordSheet(payload){headingText=payload.display;sheetEntries.push(payload);},
+ };
+ const document={
+  documentElement:{lang,dir:lang==='en'?'ltr':'rtl'},
+  querySelectorAll(selector){return selector==='script[data-lt-lazy]'?manifestNodes:[];},
+  getElementById(id){if(id==='root')return rootNode;return null;},
+  querySelector(selector){if(selector==='#modals .sheet h2'&&headingText!==null)return {textContent:headingText};return null;},
+  createElement(tag){return node(tag);},
+  body:{appendChild(n){bodyChildren.push(n);return n;}},
+  head:{appendChild(n){
+   if(n.tagName!=='SCRIPT')return n;
+   attempted.push(n.src);
+   if(failOnce===n.src&&!failed){failed=true;Promise.resolve().then(()=>n.onerror?.());return n;}
+   const finish=()=>{
+    if(n.src==='freedict-en-ar.js'){
+     window.FreeDictEnglishArabic={resolve(value){return value.toLowerCase()==='dog'?{term:'dog',literal:'كلب',meanings:['كلب'],context:'',type:'dictionary'}:null;}};
+    } else if(/^classic-verne-towle-ch\d+\.js$/.test(n.src)){
+     const number=Number(n.src.match(/ch(\d+)\.js$/)[1]);
+     const amount=number===31?2:1;
+     for(let i=0;i<amount;i++)story.chapters.push({title:'Chapter',paragraphs:[{en:'An English sentence.',ar:'جملة إنجليزية.'}]});
+    } else if(n.src==='editorial-art.js') window.StoryLensMakeEditorialArt=()=>({});
+    successful.push(n.src);
+    Promise.resolve().then(()=>n.onload?.());
+   };
+   if(deferAsset===n.src&&!deferredOnce){deferredOnce=true;deferredAsset={src:n.src,complete:finish};return n;}
+   finish();
+   return n;
+  }}
+ };
+ vm.runInNewContext(source,{window,document,Promise,Set,Array,Error,console},{filename:'lingua-content-loader.js',timeout:5000});
+  return {window,document,rootNode,story,catalog,catalogStory,openedChapterCounts,attempted,successful,removed,opened,sheetEntries,bodyChildren,completeDeferredAsset(){const pending=deferredAsset;assert.ok(pending,'no deferred script is waiting');deferredAsset=null;pending.complete();},get artAttached(){return artAttached;},get hydrationCount(){return hydrationCount;},flushIdle(){const cb=idleCallbacks.shift();assert.ok(cb,'warmup was scheduled');cb();},get idleCount(){return idleCallbacks.length;},get statusText(){return bodyChildren.map(x=>x.text||x.textContent||'').join(' ');}};
+}
+const tick=()=>new Promise(resolve=>setImmediate(resolve));
+(async()=>{
+ const h=makeHarness();
+ assert.equal(h.window.LinguaContentLoader.bookAssetCount,37);
+ assert.equal(h.window.LinguaContentLoader.dictionaryAssetCount,1);
+ assert.equal(h.removed.length,bookAssets.length+dictionaryAssets.length,'all inert declared manifests are removed without assuming obsolete synthetic scripts');
+ h.window.openStory('the-salt-meridian');
+ assert.deepEqual(h.opened,['the-salt-meridian'],'unrelated short stories still open synchronously');
+ assert.equal(h.attempted.length,0,'neither payload is loaded during startup or unrelated story opens');
+ h.window.openStory('around-the-world-in-eighty-days-towle');
+ assert.equal(h.rootNode.inert,true,'library controls are inert during the local chapter load');
+ await h.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ await tick();
+ assert.equal(h.story.chapters.length,37,'chapter XXXI script contributes chapters XXXI and XXXII in order');
+ assert.equal(h.catalogStory.chapters.length,37,'verified chapters are merged into the visible library entry');
+ assert.equal(h.catalogStory.lazyBook,false,'the placeholder becomes the loaded book after validation');
+ assert.deepEqual(h.openedChapterCounts,[37],'the reader opens only after the catalog entry contains all chapters');
+ assert.equal(h.opened[1],'around-the-world-in-eighty-days-towle','reader opens only after the bilingual book is ready');
+ assert.equal(h.rootNode.inert,false,'library becomes interactive after load');
+ h.window.openStory('around-the-world-in-eighty-days-towle');
+ assert.deepEqual(h.openedChapterCounts,[37,37],'reopening the verified long book renders synchronously without a loading overlay race');
+ assert.equal(h.rootNode.inert,false,'reopening a loaded book never leaves the library inert');
+ assert.equal(h.artAttached,1,'contextual offline illustrations attach after all chapter data');
+ assert.equal(h.window.FreeDictEnglishArabic,undefined,'opening the book does not force-load the separate dictionary');
+ assert.deepEqual(h.successful,bookAssets,'book chapters and art load sequentially in declared order');
+
+ // Initial library paints without loading the art engine. The first idle
+ // callback hydrates local illustration covers without opening the huge novel.
+ const idle=makeHarness({idleWarmup:true});
+ assert.equal(idle.idleCount,1,'one idle cover task scheduled');
+ assert.equal(idle.attempted.length,0,'never block first library paint');
+ idle.flushIdle();
+ await idle.window.LinguaContentLoader.ensureEditorialArt();
+ await tick();
+ assert.deepEqual(idle.successful,['editorial-art.js'],'idle art never fetches novel or dictionary');
+ assert.equal(idle.artAttached,1,'editorial registry attaches once');
+ assert.equal(idle.hydrationCount,1,'visible covers hydrate in place once');
+ await idle.window.LinguaContentLoader.ensureEditorialArt();
+ assert.deepEqual(idle.successful,['editorial-art.js'],'warmup and reader share the same art promise');
+ assert.equal(idle.story.chapters.length,0,'warmup never loads the long book');
+ await idle.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ assert.equal(idle.artAttached,1,'the novel reuses prewarmed art without regeneration');
+ assert.equal(idle.story.chapters.length,37,'art reuse does not skip any real chapters');
+
+ const scene={id:'original-mystery',title:'Original Mystery',chapters:[{title:'Open Door',paragraphs:[{en:'The locked door opened.',ar:'انفتح الباب المغلق.'}]}]};
+ const a=makeHarness({extraEditorial:[scene]});
+ a.window.openStory(scene.id);
+ assert.deepEqual(a.attempted,['editorial-art.js'],'opening an editorial story loads ONLY its local art engine');
+ assert.deepEqual(a.opened,[],'first illustrated open awaits scene registration');
+ await a.window.LinguaContentLoader.ensureEditorialArt();
+ await tick();
+ assert.deepEqual(a.opened,[scene.id],'story opens after chapter art is available');
+ assert.equal(a.artAttached,1,'art registry attached once to the first illustrated story');
+ assert.equal(a.story.chapters.length,0,'short story illustration does NOT load the long novel');
+ a.window.openStory(scene.id);
+ assert.deepEqual(a.opened,[scene.id,scene.id],'second story open remains synchronous and fast');
+ assert.deepEqual(a.attempted,['editorial-art.js'],'art engine is not loaded twice');
+
+ const aCancel=makeHarness({deferAsset:'editorial-art.js',extraEditorial:[scene]});
+ aCancel.window.openStory(scene.id);
+ aCancel.window.openStory('the-salt-meridian');
+ aCancel.completeDeferredAsset();
+ await tick();
+ assert.deepEqual(aCancel.opened,['the-salt-meridian'],'cancelled illustration request cannot steal navigation');
+
+ const d=makeHarness();
+ await d.window.LinguaContentLoader.ensureDictionary();
+ assert.ok(d.window.FreeDictEnglishArabic.resolve('dog'),'first dictionary request loads the local FreeDict pack');
+ assert.equal(d.story.chapters.length,0,'dictionary-only lookup does not load the long book');
+ assert.deepEqual(d.successful,['freedict-en-ar.js'],'dictionary load remains independent from book loading');
+
+ const w=makeHarness();
+ w.window.wordSheet({entry:null,display:'dog',source:{en:'A dog waited.',ar:'انتظر كلب.'}});
+ assert.equal(w.sheetEntries.length,1,'word sheet opens immediately with its honest context fallback');
+ await w.window.LinguaContentLoader.ensureDictionary();
+ await tick();
+ assert.equal(w.sheetEntries.length,2,'same still-open unknown word refreshes when dictionary is ready');
+ assert.equal(w.sheetEntries[1].entry.term,'dog');
+
+ const cancel=makeHarness();
+ cancel.window.openStory('around-the-world-in-eighty-days-towle');
+ assert.deepEqual(cancel.attempted,['classic-verne-towle-ch01.js'],'opening the long book begins with only its first local script');
+ cancel.window.openStory('the-salt-meridian');
+ await tick();
+ assert.deepEqual(cancel.opened,['the-salt-meridian'],'stale async open cannot steal navigation from a later story');
+ assert.deepEqual(cancel.attempted,['classic-verne-towle-ch01.js'],'leaving the book prevents the remaining chapter and art scripts from loading');
+
+ const interrupted=makeHarness({deferAsset:'classic-verne-towle-ch01.js'});
+ interrupted.window.openStory('around-the-world-in-eighty-days-towle');
+ const interruptedLoad=interrupted.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ assert.deepEqual(interrupted.attempted,['classic-verne-towle-ch01.js'],'only the active script may be pending when cancellation begins');
+ interrupted.window.LinguaContentLoader.cancel();
+ assert.equal(interrupted.rootNode.inert,false,'cancel restores library interaction immediately');
+ interrupted.completeDeferredAsset();
+ await assert.rejects(interruptedLoad,/cancelled/i,'cancelled load must stop before requesting the next chapter');
+ await tick();
+ assert.deepEqual(interrupted.attempted,['classic-verne-towle-ch01.js'],'no later chapter is requested after the in-flight script settles');
+ interrupted.window.openStory('around-the-world-in-eighty-days-towle');
+ await interrupted.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ await tick();
+ assert.equal(interrupted.story.chapters.length,37,'a later deliberate retry completes the book without duplicating the in-flight chapter');
+ assert.equal(interrupted.catalogStory.chapters.length,37,'retry publishes all chapters after successful validation');
+
+ // Cancel and immediately reopen while the first local script is still in flight.
+ // The new generation should share that one request, while the old generation rejects.
+ const overlap=makeHarness({deferAsset:'classic-verne-towle-ch01.js'});
+ overlap.window.openStory('around-the-world-in-eighty-days-towle');
+ const staleOverlapLoad=overlap.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ overlap.window.LinguaContentLoader.cancel();
+ overlap.window.openStory('around-the-world-in-eighty-days-towle');
+ const currentOverlapLoad=overlap.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ assert.deepEqual(overlap.attempted,['classic-verne-towle-ch01.js'],'immediate reopen reuses the in-flight local asset instead of injecting a duplicate script');
+ overlap.completeDeferredAsset();
+ await assert.rejects(staleOverlapLoad,/cancelled/i,'the superseded generation cannot publish the book');
+ await currentOverlapLoad;
+ await tick();
+ assert.equal(overlap.story.chapters.length,37,'the active generation completes after sharing the first script');
+ assert.equal(overlap.catalogStory.chapters.length,37,'only the active generation publishes the verified catalog');
+ assert.equal(new Set(overlap.attempted).size,overlap.attempted.length,'a cancel/reopen race never requests a local asset twice');
+
+ // Real progress covers only the 37 necessary offline chapter/legacy-art
+ // scripts. It must survive a paused local script, finish at 37, and reset
+ // safely after an interrupted/retried user navigation.
+ const progress=makeHarness({deferAsset:'classic-verne-towle-ch05.js'});
+ progress.window.openStory('around-the-world-in-eighty-days-towle');
+ const progressStatus=progress.bodyChildren.find(node=>node.id==='lt-content-load-status');
+ const progressBar=progressStatus?.children.find(node=>node.tagName==='PROGRESS');
+ assert.ok(progressBar,'book overlay exposes an accessible native progress bar');
+ assert.equal(progressBar.max,37,'progress excludes unused vector scene scripts');
+ assert.equal(progressBar.value,0,'initial book progress does not invent completed assets');
+ await tick();
+ assert.equal(progressBar.value,4,'only the first four finished chapter scripts are counted before the fifth completes');
+ assert.match(progress.statusText,/4 من 37/,'Arabic status displays truthful completed asset count');
+ progress.completeDeferredAsset();
+ await progress.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ await tick();
+ assert.equal(progressBar.value,37,'all necessary offline scripts complete before opening');
+ assert.equal(progress.rootNode.inert,false,'progress completion restores reader interaction');
+
+ const retry=makeHarness({failOnce:'classic-verne-towle-ch05.js'});
+ retry.window.openStory('around-the-world-in-eighty-days-towle');
+ await assert.rejects(retry.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle'));
+ await tick();
+ assert.equal(retry.rootNode.inert,false,'failed local asset load restores interaction');
+ assert.match(retry.statusText,/تعذّر تجهيز الكتاب/,'failure is announced in the selected UI language');
+ retry.window.openStory('around-the-world-in-eighty-days-towle');
+ await retry.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ await tick();
+ assert.equal(retry.story.chapters.length,37,'retry resumes after already loaded chapters without duplication');
+ assert.equal(retry.catalogStory.chapters.length,37,'retry also publishes the complete book into the catalog');
+ assert.ok(retry.opened.includes('around-the-world-in-eighty-days-towle'));
+ console.log('PASS: LT-03 deferred local payload, ordered chapter loading, dictionary-on-demand, cancellation and retry');
+})().catch(error=>{console.error(error);process.exitCode=1;});

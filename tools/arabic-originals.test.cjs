@@ -1,0 +1,36 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const read=p=>fs.readFileSync(p,'utf8');
+const scope={window:{}};
+vm.runInNewContext(read('app/src/main/assets/arabic-investigation.js'),scope,{timeout:3000});
+const story=scope.window.LinguaArabicStories?.[0];
+assert.equal(story.sourceLanguage,'ar');assert.equal(story.chapters.length,6);
+const all=story.chapters.flatMap(ch=>ch.paragraphs);
+assert.equal(all.length,36);
+assert.ok(all.every(p=>p.ar.length>100&&p.en.length>110));
+assert.ok(all.map(p=>p.ar).join(' ').split(/\s+/).length>=1000);
+assert.ok(all.map(p=>p.en).join(' ').split(/\s+/).length>=1000);
+const images=scope.window.LinguaArabicArt;assert.equal(Object.keys(images).length,6);
+for(let i=0;i<6;i++){
+ const src=images[story.id+'_'+i];assert.match(src,/^data:image\/svg\+xml;charset=utf-8,%3Csvg/);
+ const svg=decodeURIComponent(src);assert.ok(svg.includes('data-scene="'+story.id+'-'+i+'"'));
+ assert.doesNotMatch(svg,/<image\b|<use\b|<script\b|<foreignObject\b|(?:xlink:)?href\s*=\s*["'](?:https?:|\/\/)/i);
+}
+const html=read('app/src/main/assets/index.html'),reader=read('app/src/main/assets/reader-experience.js');
+const shell=read('app/src/main/assets/lingua-shell.js'),fonts=read('app/src/main/assets/lt-offline-fonts.css');
+assert.ok(html.indexOf('src="arabic-investigation.js"')<html.indexOf('const catalog=JSON.parse'));
+assert.ok(html.includes('catalog.stories.push(...window.LinguaArabicStories)'));
+assert.ok(html.includes("s.sourceLanguage==='ar'"));
+assert.ok(shell.includes("id:'arabic-originals'"));
+assert.ok(reader.includes('node.textContent=paragraph.ar'));
+assert.ok(reader.includes('next.textContent=paragraph.en'));
+assert.ok(reader.includes("sourceLanguage==='ar'?source.en:source.ar"));
+assert.ok(fonts.includes('.reader[data-lt-source="ar"] .inline-en'));
+assert.ok(reader.includes('originalFullTranslation=fullTranslation'));
+assert.ok(reader.includes('escapeText(paragraph.en)'),
+ 'full original-Arabic book companion still escapes the complete English paragraph');
+assert.ok(reader.includes('escapeText(paragraph.ar)'),
+ 'complete contextual Arabic companion remains escaped safely');
+assert.ok(read('app/src/main/assets/lingua-i18n.js').includes("state.story?.sourceLanguage === 'ar'"));
+assert.ok(read('app/src/main/assets/lt-offline-fonts.css').includes('.lt-english-companion .arabic-inner'));
+console.log('PASS: Arabic-original detective novella, contextual English in sentence and full-book reading, offline art');

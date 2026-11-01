@@ -13,6 +13,8 @@ assert.ok(dict,'FreeDict lookup object exists');
 assert.ok(dict.size>=15000,'dictionary has substantial Arabic headword coverage');
 const dog=dict.resolve('dog');
 assert.ok(dog && /[\u0600-\u06ff]/.test(dog.literal),'English headword returns Arabic gloss');
+assert.ok(Array.isArray(dog.meanings)&&dog.meanings.length>=1&&dog.meanings.length<=2,'dictionary returns up to two sourced senses');
+assert.equal(dog.context,'','generic dictionary meanings must not masquerade as story-specific sense');
 assert.ok(dict.resolve('dogs'),'regular plurals resolve');
 assert.equal(dict.resolve('notarealenglishwordzzqx'),null,'unknown word receives no invented definition');
 assert.match(dog.note,/FreeDict/,'source and context distinction remain visible');

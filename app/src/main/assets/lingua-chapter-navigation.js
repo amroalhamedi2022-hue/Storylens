@@ -1,0 +1,103 @@
+/* Lingua Tales — truthful serial-book progress and accessible chapter navigation.
+ * This decorates the fully installed reader pipeline without changing legacy
+ * chapter/progress storage, and never claims an unfinished book is complete. */
+(function(global){
+'use strict';
+const baseRender=renderReader;
+const localized=(ar,en)=>document.documentElement.lang==='en'?en:ar;
+function decorate(){
+ if(state.page!=='reader'||!state.story)return;
+ const story=state.story,chapters=story.chapters||[],index=state.chapter;
+ if(!Number.isInteger(index)||index<0||index>=chapters.length)return;
+ const end=document.querySelector('.reader .chapter-end');
+ const pageControls=document.querySelector('.reader .lt-page-controls');
+ if(!end||document.querySelector('.reader .lt-chapter-nav')||end.querySelector('.lt-chapter-nav'))return;
+ // In paged mode the base reader hides chapter-end. Insert chapter navigation
+ // after the visible page counter rather than into that hidden endpoint.
+ const incomplete=Number.isInteger(story.totalChapters)&&story.totalChapters>chapters.length;
+ const nav=document.createElement('nav');
+ nav.className='lt-chapter-nav';
+ nav.setAttribute('aria-label',localized('التنقل بين الفصول','Chapter navigation'));
+ const button=(label,target,enabled)=>{
+  const control=document.createElement('button');
+  control.type='button';control.className='secondary lt-chapter-button';
+  control.textContent=label;control.disabled=!enabled;
+  control.addEventListener('click',()=>{
+   if(enabled&&state.page==='reader'&&state.story===story&&state.chapter===index
+      &&typeof global.stlChapter==='function')global.stlChapter(target);
+  });
+  nav.appendChild(control);
+ };
+ button(localized('الفصل السابق →','← Previous chapter'),index-1,index>0);
+ button(localized('← الفصل التالي','Next chapter →'),index+1,index<chapters.length-1);
+ // Long books need direct chapter access without opening the settings sheet.
+ // Only offline/published chapters are selectable; never imply future chapters exist.
+ if(chapters.length>1){
+  const picker=document.createElement('label');
+  picker.className='lt-chapter-picker';
+  const caption=document.createElement('span');
+  caption.textContent=localized('انتقل إلى فصل','Jump to chapter');
+  const select=document.createElement('select');
+  select.setAttribute('aria-label',caption.textContent);
+  select.setAttribute('dir',document.documentElement.lang==='en'?'ltr':'rtl');
+  chapters.forEach((chapter,i)=>{
+   const option=document.createElement('option');
+   option.value=String(i);
+   option.selected=i===index;
+   option.textContent=(i+1)+' · '+(document.documentElement.lang==='en'
+    ?(chapter.title||chapter.titleAr||'Chapter')
+    :(chapter.titleAr||chapter.title||'فصل'));
+   select.appendChild(option);
+  });
+  select.value=String(index);
+  select.addEventListener('change',()=>{
+   // A stale or malformed selection must not leave the UI claiming that a
+   // chapter was opened when navigation was rejected.
+   const raw=select.value;
+   const target=/^(0|[1-9]\\d*)$/.test(raw)?Number(raw):NaN;
+   const active=state.page==='reader'&&state.story===story&&state.chapter===index;
+   if(!active||!Number.isSafeInteger(target)||target<0||target>=chapters.length){
+    select.value=String(index);
+    return;
+   }
+   if(target!==index&&typeof global.stlChapter==='function')global.stlChapter(target);
+   else if(target!==index)select.value=String(index);
+  });
+  picker.appendChild(caption);picker.appendChild(select);nav.appendChild(picker);
+ }
+ if(pageControls)pageControls.insertAdjacentElement('afterend',nav);
+ else end.prepend(nav);
+ if(!incomplete){
+  // Make the completed-book endpoint explicit in both locales; the base reader
+  // normally renders these labels, but this layer owns the chapter-end contract.
+  if(index===chapters.length-1){
+   const heading=end.querySelector('div');
+   if(heading)heading.textContent=localized('النهاية','The End');
+   const primary=end.querySelector('button.primary');
+   if(primary)primary.textContent=localized('العودة إلى المكتبة','Back to library');
+  }
+  return;
+ }
+ const progress=document.createElement('small');
+ progress.className='lt-serial-progress';
+ const english=document.documentElement.lang==='en';
+ progress.setAttribute('lang',english?'en':'ar');
+ progress.setAttribute('dir',english?'ltr':'rtl');
+ progress.textContent=localized(
+  'المتاح '+chapters.length+' من '+story.totalChapters+' فصلًا',
+  chapters.length+' of '+story.totalChapters+' chapters available');
+ const primaryAction=end.querySelector('button.primary');
+ if(pageControls)nav.appendChild(progress);
+ else if(primaryAction)end.insertBefore(progress,primaryAction);
+ else end.appendChild(progress);
+ if(index===chapters.length-1){
+  const heading=end.querySelector('div');
+  if(heading)heading.textContent=localized(
+   'يتبع — لم تكتمل الرواية بعد','To be continued — more chapters are coming');
+  const primary=end.querySelector('button.primary');
+  if(primary)primary.textContent=localized('العودة للمكتبة','Back to library');
+ }
+}
+renderReader=function(){baseRender();decorate();};
+global.LinguaChapterNavigation=Object.freeze({decorate});
+})(window);

@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "id": "mary-shelley-frankenstein-1818",
+  "originalTitle": "Frankenstein; or, The Modern Prometheus",
+  "author": "Mary Shelley",
+  "originalLanguage": "en",
+  "originalPublicationYear": 1818,
+  "genres": [
+    "gothic horror",
+    "philosophical science fiction",
+    "classic literary fiction"
+  ],
+  "completeOriginalSource": true,
+  "source": {
+    "publisher": "Standard Ebooks",
+    "editionUrl": "https://standardebooks.org/ebooks/mary-shelley/frankenstein",
+    "upstreamRepo": "standardebooks/mary-shelley_frankenstein",
+    "upstreamCommit": "3909a2b9d956377e797e235562cd237d3667fa9b",
+    "sourceDirectory": "src/epub/text",
+    "territoryNotice": "Redistribution rights outside documented original-publication jurisdictions and modern editorial materials require separate legal review"
+  },
+  "narrativeParts": [
+    {
+      "order": 1,
+      "file": "letter-1.xhtml",
+      "upstreamGitBlobSha": "a82ba10f67948430d347a143483e6328407c03fb",
+      "bytes": 8037
+    },
+    {
+      "order": 2,
+      "file": "letter-2.xhtml",
+      "upstreamGitBlobSha": "dca87beff3069fc2ea0b13fe3c4337a2327d2b3a",
+      "bytes": 8512
+    },
+    {
+      "order": 3,
+      "file": "letter-3.xhtml",
+      "upstreamGitBlobSha": "17ab715c66794c809fd488f72e1ac8c1253afadb",
+      "bytes": 2882
+    },
+    {
+      "order": 4,
+      "file": "letter-4.xhtml",
+      "upstreamGitBlobSha": "59db283d2675d4b599876523c4486aa36411a3dc",
+      "bytes": 16911
+    },
+    {
+      "order": 5,
+      "file": "chapter-1.xhtml",
+      "upstreamGitBlobSha": "e7c868a74c3176312635ebcefed67e230f096a79",
+      "bytes": 11035
+    },
+    {
+      "order": 6,
+      "file": "chapter-2.xhtml",
+      "upstreamGitBlobSha": "f060817a50c18123e0e6a7859a078766005d5ab4",
+      "bytes": 13622
+    },
+    {
+      "order": 7,
+      "file": "chapter-3.xhtml",
+      "upstreamGitBlobSha": "66c41749b994d8bb9935c10196486351755584af",
+      "bytes": 16740
+    },
+    {
+      "order": 8,
+      "file": "chapter-4.xhtml",
+      "upstreamGitBlobSha": "690458699a56061410869ebed0b4127fb3f180b7",
+      "bytes": 15408
+    },
+    {
+      "order": 9,
+      "file": "chapter-5.xhtml",
+      "upstreamGitBlobSha": "3dd8ac442629079d8cda801bb5f94f3eb9263527",
+      "bytes": 14380
+    },
+    {
+      "order": 10,
+      "file": "chapter-6.xhtml",
+      "upstreamGitBlobSha": "b90ca181a584a90bebc4259f5f93722958b94aca",
+      "bytes": 17071
+    },
+    {
+      "order": 11,
+      "file": "chapter-7.xhtml",
+      "upstreamGitBlobSha": "8036267012d8868a6266f855b11a666fcef39962",
+      "bytes": 21394
+    },
+    {
+      "order": 12,
+      "file": "chapter-8.xhtml",
+      "upstreamGitBlobSha": "9c5c6a463c9324cff3758d4f0654ea8145b7de99",
+      "bytes": 18471
+    },
+    {
+      "order": 13,
+      "file": "chapter-9.xhtml",
+      "upstreamGitBlobSha": "5cad2e503881636d68bbb0ae49f2c27085ee26b2",
+      "bytes": 13385
+    },
+    {
+      "order": 14,
+      "file": "chapter-10.xhtml",
+      "upstreamGitBlobSha": "ebb3f9015c7766167d6d1a8d3d5a2e176ea23295",
+      "bytes": 14210
+    },
+    {
+      "order": 15,
+      "file": "chapter-11.xhtml",
+      "upstreamGitBlobSha": "6ef55704d1ef1ab17fd922e1825c7eccb753c828",
+      "bytes": 16942
+    },
+    {
+      "order": 16,
+      "file": "chapter-12.xhtml",
+      "upstreamGitBlobSha": "a56a038c12d3656a7be810e01fc8cc56591aa4d0",
+      "bytes": 12976
+    },
+    {
+      "order": 17,
+      "file": "chapter-13.xhtml",
+      "upstreamGitBlobSha": "00201ab3ef92082629c387fb890ba006d333c503",
+      "bytes": 12617
+    },
+    {
+      "order": 18,
+      "file": "chapter-14.xhtml",
+      "upstreamGitBlobSha": "d21ff6a4f11f31fc74143101583c3d3ce140c275",
+      "bytes": 11403
+    },
+    {
+      "order": 19,
+      "file": "chapter-15.xhtml",
+      "upstreamGitBlobSha": "c1e92f1242bf6ee7f5f30959e12ae844bb4aaf1c",
+      "bytes": 18783
+    },
+    {
+      "order": 20,
+      "file": "chapter-16.xhtml",
+      "upstreamGitBlobSha": "5847fca12df7719f0b31e1a171b26b7733a84270",
+      "bytes": 18840
+    },
+    {
+      "order": 21,
+      "file": "chapter-17.xhtml",
+      "upstreamGitBlobSha": "ff82093d7874c589c20f590e66b36cd665940eeb",
+      "bytes": 11271
+    },
+    {
+      "order": 22,
+      "file": "chapter-18.xhtml",
+      "upstreamGitBlobSha": "0c8c97568b40d1e1bbefe45217b5308eee982669",
+      "bytes": 17524
+    },
+    {
+      "order": 23,
+      "file": "chapter-19.xhtml",
+      "upstreamGitBlobSha": "84ad286b609582394c0f12f9acad87e5f09c6f5a",
+      "bytes": 15839
+    },
+    {
+      "order": 24,
+      "file": "chapter-20.xhtml",
+      "upstreamGitBlobSha": "b3b9c65606135bb8d0190bdfe44fd80f209b7ed5",
+      "bytes": 20372
+    },
+    {
+      "order": 25,
+      "file": "chapter-21.xhtml",
+      "upstreamGitBlobSha": "9a5a653811a023672c318c14c3f7bc59e01a384d",
+      "bytes": 22261
+    },
+    {
+      "order": 26,
+      "file": "chapter-22.xhtml",
+      "upstreamGitBlobSha": "0cd5bcdc04636767495652d9df5acfebbb6ca807",
+      "bytes": 20434
+    },
+    {
+      "order": 27,
+      "file": "chapter-23.xhtml",
+      "upstreamGitBlobSha": "e1eaa56b3d454d121f343432f071846c235fc33d",
+      "bytes": 15135
+    },
+    {
+      "order": 28,
+      "file": "chapter-24.xhtml",
+      "upstreamGitBlobSha": "9aa54cafda9e8813899194fee820c48610865cd8",
+      "bytes": 48408
+    }
+  ],
+  "publishable": false,
+  "status": "SOURCE_STAGED_EDITORIAL_HOLD",
+  "acceptance": {
+    "completeArabicCompanion": false,
+    "contextualArabicEditorialReview": false,
+    "historicChapterArtCleared": false,
+    "territoryRightsReviewed": false,
+    "offlineDeviceVerified": false
+  }
+}

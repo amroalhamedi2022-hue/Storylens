@@ -1,0 +1,36 @@
+'use strict';
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const crypto=require('node:crypto');
+const path=require('node:path');
+const root=path.resolve(__dirname,'..');
+const dir=path.join(root,'docs/literature/staging/a-study-in-scarlet');
+const m=JSON.parse(fs.readFileSync(path.join(dir,'manifest.json'),'utf8'));
+assert.equal(m.originalSourceComplete,true);
+assert.equal(m.originalLanguage,'en');
+assert.equal(m.source.upstreamCommit,'87889a2e628e720600cc1c4155428637c9ee35eb');
+assert.equal(m.publicationStatus,'STAGED_SOURCE_ONLY');
+assert.equal(m.publishable,false);
+assert.equal(m.requiredBeforeAppPublication.completeContextualArabicTranslation,false);
+assert.equal(m.requiredBeforeAppPublication.arabicEditorialReview,false);
+assert.equal(m.requiredBeforeAppPublication.territorialRedistributionReviewed,false);
+assert.equal(m.requiredBeforeAppPublication.periodIllustrationsCleared,false);
+assert.equal(m.originalChapters.length,14);
+assert.deepEqual(m.originalChapters.map(c=>c.number),Array.from({length:14},(_,i)=>i+1));
+assert.deepEqual(m.originalChapters.map(c=>c.part),Array.from({length:14},(_,i)=>i<7?1:2));
+let total=0;
+for(const ch of m.originalChapters){
+  assert.match(ch.file,/^chapter-[12]-[1-7]\.xhtml$/);
+  const bytes=fs.readFileSync(path.join(dir,ch.file));
+  total+=bytes.length;
+  assert.equal(bytes.length,ch.bytes,'source chapter length altered: '+ch.file);
+  const got=crypto.createHash('sha1').update('blob '+bytes.length+'\0').update(bytes).digest('hex');
+  assert.equal(got,ch.upstreamGitBlobSha,'authentic source changed: '+ch.file);
+  const doc=bytes.toString('utf8');
+  assert.ok(doc.includes('<section ')&&doc.includes('</section>')&&doc.includes('</html>')&&doc.includes('<p>'),'not a full XHTML chapter: '+ch.file);
+}
+assert.ok(total>250000,'Staged book unexpectedly truncated');
+assert.match(fs.readFileSync(path.join(dir,'SOURCE_LICENSE.md'),'utf8'),/CC0 1\.0 Universal Public Domain Dedication/);
+const appAssets=fs.readFileSync(path.join(root,'app/src/main/assets/index.html'),'utf8');
+assert.ok(!appAssets.includes(m.id),'Untranslated manuscript must not appear as a completed bilingual app book');
+console.log('PASS authentic 1887 complete source: 14 unchanged upstream Git blobs; unpublished until full natural Arabic, rights and art review');

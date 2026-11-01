@@ -10,12 +10,12 @@ const match=html.match(/<script id="libraryData" type="application\/json">([\s\S
 assert.ok(match,'catalog present in index.html');
 const core=JSON.parse(match[1]);
 const context={window:{},encodeURIComponent};
-for(const file of ['editorial-stories-a.js','editorial-stories-b.js','editorial-stories-c.js','editorial-art.js']){
+for(const file of ['editorial-stories-a.js','editorial-stories-b.js','editorial-stories-c.js','novella-salt-meridian.js','novella-ninth-ledger.js','novella-quiet-frequency.js','novella-floor-between.js','editorial-art.js']){
  assert.ok(html.includes('src="'+file+'"'),file+' loaded before the primary app');
  vm.runInNewContext(fs.readFileSync(path.join(assets,file),'utf8'),context,{filename:file,timeout:2000});
 }
 const stories=context.window.StoryLensEditorialStories;
-assert.equal(stories.length,12,'twelve complete editorial adult stories');
+assert.equal(stories.length,22,'eighteen editorial stories plus four complete bilingual novellas');
 const all=[...core.stories,...stories],ids=new Set(),genres=new Map();
 let paragraphs=0,chapters=0,artCount=0;
 const art=context.window.StoryLensMakeEditorialArt(stories);
@@ -41,10 +41,42 @@ for(const story of all){
  }
  if(stories.includes(story))assert.ok(story.terms.length>=6,'context terms: '+story.id);
 }
-assert.equal(all.length,36);
-for(const [genre,count] of genres)assert.equal(count,6,genre+' now offers six distinct stories');
-assert.ok(paragraphs>=640 && chapters>=90,'original core and twelve editorial stories retained');
-assert.equal(artCount,24,'24 editorial chapter scenes rendered');
+assert.equal(all.length,47,'core library, lazy classic, eighteen editorial stories and four novellas remain discoverable');
+const lazyClassic=all.filter(story=>story.id==='around-the-world-in-eighty-days-towle');
+assert.equal(lazyClassic.length,1,'the long classic placeholder is registered exactly once');
+assert.equal(lazyClassic[0].lazyBook,true,'the classic remains a lazy entry in the startup catalog');
+assert.equal(lazyClassic[0].totalChapters,37,'the classic advertises its full chapter count without eager payload');
+assert.equal(lazyClassic[0].chapters.length,0,'the full-length chapter payload stays deferred until open');
+for(const [genre,count] of genres)assert.equal(count,genre==='historical'?9:genre==='mystery'?10:7,genre+' count includes the current core, both novellas and the classic');
+assert.ok(paragraphs>=640 && chapters>=90,'original core, eighteen editorial stories and the novella retained');
+assert.equal(artCount,stories.reduce((sum,story)=>sum+story.chapters.length,0),'every editorial and novella chapter has a local illustration');
 assert.ok(html.includes('catalog.stories.push(...window.StoryLensEditorialStories)'),'stories registered before library render');
 assert.ok(html.includes('Object.assign(art,window.StoryLensMakeEditorialArt'),'art registered');
+
+const productionArtHook=html.match(/window\.LinguaAttachEditorialArt=function\(\)\{([\s\S]*?)\n\};/);
+assert.ok(productionArtHook,'actual current art installation function extracted');
+let requestedIds=null,hydrationCalls=0;
+const archiveStory={id:'around-the-world-in-eighty-days-towle',
+ title:'Around the World in Eighty Days',genre:'historical',
+ chapters:Array.from({length:37},(_,i)=>({title:'Chapter '+(i+1)}))};
+const savedStory={id:'saved-fiction-legacy',title:'Saved Fiction',genre:'mystery',
+ chapters:[{title:'Chapter'}]};
+const installed={};
+const registry={window:{
+ StoryLensEditorialStories:[archiveStory,savedStory],
+ StoryLensMakeEditorialArt(stories){requestedIds=stories.map(s=>s.id);
+  return {'saved-fiction-legacy_0':'data:image/svg+xml;charset=utf-8,%3Csvg'};
+ },
+ LinguaHydrateStoryCovers(){hydrationCalls++;}
+},art:installed};
+vm.runInNewContext('window.LinguaAttachEditorialArt=function(){'+productionArtHook[1]+'\n};',registry);
+assert.equal(registry.window.LinguaAttachEditorialArt(),true,'real app art attachment is successful');
+assert.deepEqual(Array.from(requestedIds),['saved-fiction-legacy'],
+ 'the real app never asks its SVG engine to generate any of the 37 historic novel drawings');
+assert.equal(installed['saved-fiction-legacy_0'],'data:image/svg+xml;charset=utf-8,%3Csvg',
+ 'previous saved-story illustrations remain available');
+assert.equal(hydrationCalls,1,'existing cover hydration still runs');
+assert.ok(!Object.keys(installed).some(key=>key.startsWith(archiveStory.id)),
+ 'there are no rejected historical synthetic pictures in the installed art map');
+
 console.log(JSON.stringify({result:'PASS',totalStories:all.length,totalChapters:chapters,totalBilingualParagraphs:paragraphs,illustratedNewChapters:artCount,perGenre:Object.fromEntries(genres)},null,2));

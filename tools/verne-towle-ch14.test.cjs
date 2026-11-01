@@ -1,0 +1,21 @@
+/* Source-bound bilingual regression for authentic Towle Chapter XIV. */
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const assets=path.join(__dirname,'../app/src/main/assets'),read=n=>fs.readFileSync(path.join(assets,n),'utf8');
+const html=read('index.html');
+assert.ok(html.indexOf('classic-verne-towle-ch13.js')<html.indexOf('classic-verne-towle-ch14.js'));
+assert.ok(html.indexOf('classic-verne-towle-ch14.js')<html.indexOf('editorial-art.js'));
+const story={id:'around-the-world-in-eighty-days-towle',genre:'historical',chapters:Array.from({length:13},()=>({})),terms:[],totalChapters:37,provenance:''};
+const box={window:{StoryLensEditorialStories:[story]}};
+vm.runInNewContext(read('classic-verne-towle-ch14.js'),box,{filename:'classic-verne-towle-ch14.js'});
+const ch=story.chapters[13],english=ch.paragraphs.map(p=>p.en).join(' '),norm=s=>s.toLowerCase().replace(/\u2060/g,'').replace(/[^a-z0-9]+/g,' ').replace(/\s+/g,' ').trim();
+assert.equal(story.chapters.length,14);assert.equal(ch.paragraphs.length,27);assert.ok(ch.paragraphs.every(p=>p.en.trim()&&p.ar.trim()));
+const words=(english.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*/g)||[]).length;assert.equal(words,1917,'Chapter XIV English body must match the 27 source paragraphs');
+assert.equal(ch.title,"In which Phileas Fogg descends the whole length of the beautiful valley of the Ganges without ever thinking of seeing it.");
+for(const phrase of ['rash exploit','high commendation','complete prostration','interrupted line of railway','unlimited credit','junction of the two sacred rivers','secondhand articles','poetical rhapsody','not a farthing more','serviceable and devoted','eyes glistened','brave and faithful beast','whirling at full speed','rather with tears than words','hushed up','principal merchants of Hong Kong','quite unpoetically','bade adieu','valley of the Ganges','passed before their eyes like a flash','fitfully from the view','five hours before him','neither behindhand nor ahead of time'])assert.ok(norm(english).includes(norm(phrase)),'missing source phrase: '+phrase);
+assert.equal(story.terms.length,28);for(const term of story.terms)assert.ok(norm(english).includes(norm(term.term)),'term absent from source: '+term.term);
+assert.match(story.editorialStatus,/14 of 37/);
+vm.runInNewContext(read('editorial-art.js'),box,{filename:'editorial-art.js'});const art=box.window.StoryLensMakeEditorialArt([story]);
+assert.ok(decodeURIComponent(art[story.id+'_13']).includes('GANGES PANORAMA'));assert.notEqual(art[story.id+'_13'],art[story.id+'_12']);
+assert.ok(read('lingua-shell.js').includes("'ganges-panorama':'Ganges Panorama'"));assert.ok(read('data-backup.js').includes("val==='ganges-panorama'"));assert.ok(read('lingua-shell.css').includes('body.theme-ganges-panorama'));
+console.log('PASS Towle XIV: 27 aligned bilingual source paragraphs, '+words+' English words, 28 source-bound terms, unique offline Ganges scene and Ganges Panorama theme');

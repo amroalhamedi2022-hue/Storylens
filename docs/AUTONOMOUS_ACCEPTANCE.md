@@ -1,0 +1,1437 @@
+<!-- Latest dated evidence: docs/ACCEPTANCE_SUPPLEMENT_2026-10-28.md; preserve the historical acceptance ledger below. -->
+
+## 2026-10-28 — Accessible bilingual page-turn labels (source/test checkpoint)
+
+- **Production source:** each paged-reader group now exposes a localized accessible name ("صفحة N من M" / "Page N of M") and a localized aria-roledescription; the changing page counter uses aria-live="polite" with aria-atomic="true" so assistive technology receives the whole updated page label.
+- **Regression:** tools/contextual-page-turn.test.cjs directly exercises the production label helper in Arabic and English and checks the group/live-region wiring.
+- **Source/test SHA:** ac72f5a40573f9b9181bc6c848479d75081b5851.
+- **Android CI:** [run 40737942544](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40737942544) is still in progress. Curated content, dictionary/audio checks, Gradle tests, APK assembly and required-resource checks have passed in the current job; Chromium render smoke and artifact upload are not yet complete. No APK is claimed for this head until the run finishes.
+- **NOT TESTED:** TalkBack on Xiaomi Pad 5, physical RTL/LTR, focus/announcement quality, frame pacing/RAM/thermal, stable update signing and literary/territory-rights review. LT-01..LT-13 remain IN PROGRESS; this is not final acceptance.
+
+## 2026-10-28 — Prevent stale UI-sound resume after Android audio-focus loss (CI PASS)
+
+- **Production fix (LT-11):** the 24 procedural ambience/music presets now track one-shot UI SFX voices. A pause or native focus-loss event stops and disconnects active click tones; a delayed `AudioContext.resume()` completion is checked against the playback generation, cleaned up, and suspended again rather than restarting sound after focus loss. Focus is not released by a stale SFX completion when a newer playback owns it.
+- **Regression:** `tools/ambience.test.cjs` now delays a synthetic AudioContext resume, revokes native focus before it resolves, and verifies that the context ends suspended and focus is released exactly once. This is a lifecycle/control-flow regression, not an acoustic or physical-device test.
+- **Test-harness correction:** the first CI attempt exposed that the source edit had dropped the `onNativeAudioFocusLoss` callback; it was restored. The next run exposed Node 22 cross-realm `deepStrictEqual` failures in drawer snapshot tests despite equal values; the test now normalizes VM snapshots before comparison. Both corrections are included in the passing head.
+- **PASS — exact-head Android CI:** [run 40706495411](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40706495411), source/test SHA `d6b36821bea806030de30c6524b14a62bdcc052b`. The workflow passed the licensed audio and offline dictionary checks, curated catalog/theme/localization/reader regressions, Gradle tests + Debug assembly, required APK resource checks and Chromium phone/tablet reader journeys.
+- **PASS — independent APK integrity:** [Debug APK artifact 12825095100](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40706495411/artifacts/12825095100), extracted APK size **25,752,235 bytes**, SHA-256 `551661fafb756d0e114e3c15558a85b90bb739808c6d52d4d12161444cd72a67`; independently recalculated and matched `APK_SHA256.txt`. [Chromium screenshot artifact 12824501867](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40706495411/artifacts/12824501867).
+- **Package check:** adaptive foreground/background/monochrome icon resources, offline FreeDict and all 24 pinned licensed OGG assets are packaged. Existing CI contract confirms no microphone/TTS or INTERNET permission.
+- **NOT TESTED:** physical Xiaomi Pad 5 installation/upgrade, real Android audio focus/interruption and screen-off battery, TalkBack/physical RTL, frame pacing/RAM/thermal, stable update-signing continuity, independent Arabic literary proofreading and territory-specific redistribution review. Chromium screenshots are not device evidence. LT-01..LT-13 remain IN PROGRESS; Debug is not final.
+
+
+
+## Latest source checkpoint — 2026-10-28 (Settings modal accessibility)
+
+- **PASS source fix:** the custom Settings dialog now makes the background app root inert and restores its prior state and a safe focus target only when the dialog is dismissed. It does not return focus into an inert drawer or to a detached node.
+- **PASS direct production V8 smoke:** 10/10 focused checks on the actual extracted helper and its production wiring.
+- **Source/test commits:** `ac378284a0e5205e01616cbef600da8609ee844d` / `a036f97a2973c18eb3aa2d04183a77c8cd1ef8be`.
+- **Android CI NOT VERIFIED** for this exact source/test head; no new APK is claimed.
+- **NOT TESTED:** Xiaomi Pad 5, TalkBack, theme-by-theme modal rendering and final LT-01..LT-13 acceptance.
+
+## Latest source checkpoint — 2026-10-28 (contextual dictionary correctness)
+
+- **PASS source fix:** an English source excerpt in a historical story glossary can no longer be mislabeled as an Arabic contextual meaning; only Arabic-script authored context is treated as an Arabic gloss. Otherwise the resolver uses supported Arabic senses and sentence overlap, or honestly reports no verified gloss.
+- **PASS content fix:** Chapter XXXV “Never too late” now uses the natural Arabic idiom “لم يفت الأوان بعد”; English source text and its pinned source digest remain unchanged.
+- **PASS direct V8 production smoke:** English excerpt resolves to “سكان / قاطنو”; Arabic-authored context resolves to “ينطلق في رحلة”.
+- **Source/test head:** c8ca2ffb5af66655de91dd2ec23ec18cbac958d8. Exact-head CI is NOT VERIFIED; no APK is claimed for this correction.
+- **NOT TESTED:** full Node/Chromium CI, WebView sheet presentation, independent Arabic literary review, Xiaomi Pad 5, and territory-specific rights review.
+
+
+## Latest verified checkpoint — 2026-10-28 (page-turn bookmark continuity)
+
+- **Production + regression:** reader bookmarks now preserve the active page-turn index and restore it before the paragraph anchor is measured. Older paragraph bookmarks derive a page using the shared four-paragraph rule; scroll-only legacy bookmarks remain supported.
+- **PASS — exact source/test CI:** [run 40667188476](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40667188476), source/test SHA `70af49e18ba6d02faec7b7b37ea356bc249ccb2b`; content/Node regression suite, Gradle unit tests + Debug assembly, packaged-resource validation and browser render smoke passed.
+- **PASS — independent APK integrity:** Debug Artifact [12805779575](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40667188476/artifacts/12805779575), 25,749,207 bytes, SHA-256 `fcbd1396ee3b729663702d0bd42b3cc0e2a1f0d658f54657b7aab193164d5a88`, independently recalculated from the downloaded ZIP.
+- **NOT TESTED:** physical Xiaomi Pad 5, real swipe/button timing, TalkBack, performance/thermal and stable update signing. CI/source acceptance is not device acceptance; LT-01..LT-13 remain IN PROGRESS, Debug is not final.
+
+
+## 2026-10-26 — Chapter XXVII exact-source comparison and digest regression
+
+- **PASS — independent source comparison:** fetched the pinned Standard Ebooks chapter-27 XHTML (chapter blob `2475c77964fd4cdaf1a83b3e60a6c905e89d66f7`), extracted the 25 body paragraphs, removed inline markup, and normalized whitespace, non-breaking spaces and the editorial U+2060 word-joiner. All **25/25 English paragraphs match** the packaged source text; 1,952 English words.
+- **PASS — normalized source fingerprint:** SHA-256 `df283010b402b4c3f56d68e4cada2bb1265465ac2a9d3bfc034e7721ccbc9b0c`. Added a Node `crypto` regression so later edits cannot silently change any Chapter XXVII English paragraph while preserving only the word count and first/last sentence.
+- **Purposeful CI question:** does this stronger source-fidelity regression pass together with the complete Node suite, Gradle packaging, required-asset checks and both Arabic/English Chromium journeys? The external source comparison alone cannot prove workflow wiring or Android asset packaging.
+- **CI:** PENDING for test commit `84434c72013fd0b233a290a55bbf389e9973c6d6`; do not infer success from the direct comparison.
+- **NOT TESTED:** Xiaomi Pad 5, real RTL/TalkBack, frame pacing/RAM/thermal, independent Arabic literary review and territory-specific redistribution clearance. Arabic remains a draft; the novel is 27/37 chapters, not complete. Debug is not final; no main write or merge.
+
+## 2026-10-25 — Towle Chapter VI / Suez Quays integrated milestone
+- Production: 37 original English source paragraphs aligned to 37 newly drafted Arabic paragraphs; 17 source-occurring contextual entries; original offline SVG of the Mongolia at Suez; new visually distinct Suez Quays theme and backup allowlist. Script order, Chromium chapter fixture, Android asset packaging and source tests updated together.
+- Source: Standard Ebooks 1873 Towle transcription (CC0 editorial work); US public-domain translation; territory rights and independent Arabic literary review **NOT TESTED**. Six of 37 original chapters available; not the complete novel.
+- **PASS (direct production V8):** 9 source/asset assertions, including complete 37-paragraph bilingual Chapter VI, 1,302 English words, 17 source-occurring terms, distinct offline SVG, theme and backup registration, script order and test syntax. This is not native Node/Android/Pad 5 validation.
+- **Purposeful CI question:** do the new chapter, theme, browser fixture, Node regression and packaged APK work together in Android/Chromium? Source-only V8 cannot verify Gradle packaging or Chromium rendering. One targeted CI run is authorized.
+
+- **FAIL (first Android CI):** [run 40236665237](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40236665237) stopped in Node content validation because the older Chapter V regression asserted the theme allowlist ended exactly at `exchange-gazette`. Adding the new valid theme changed that suffix; production chapter VI and direct V8 assertions passed separately. Fix the brittle old test and rerun; no APK was produced in the failed run.
+- **PASS Android CI:** [run 40236765779](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40236765779) on functional source + test SHA `a6a353a16cc2eeeaa47d77cada79af33cfe72656`. Native Node tests, Gradle testDebugUnitTest + assembleDebug, required APK assets, and Chromium reader/word/theme journey succeeded after fixing the old Chapter V theme-tail assertion.
+- **PASS exact English source comparison:** all 37 committed Chapter VI English paragraphs match the Standard Ebooks XHTML paragraphs after removing formatting markup; 37/37 aligned Arabic drafts present. **NOT TESTED:** independent human literary proofreading.
+- **PASS independent APK verification:** downloaded Debug Artifact `12615222302`, extracted 4,341,845-byte APK, independently SHA-256 `2b12d325bc4a95ae3bac595c360a3a2c48b8362c0fd47f1125023589a3c9487d`, matching the CI checksum; Chapter VI and UI assets verified packaged. Screenshot Artifact `12615386751`.
+- **NOT TESTED:** Xiaomi Pad 5 install, real RTL/TalkBack, audio, frame pacing, final signed release. Debug APK is not final.
+- **NOT TESTED (historical first checkpoint; superseded by PASS above):** native Node tests, Chromium flow, Android Gradle, APK checksum, Pad 5 RTL/TalkBack/FPS and final acceptance. A build is justified to check full integration of 37 passages, asset packaging and browser chapter navigation, not routine compilation.
+- No main writes, PR merge, paid API, microphone/TTS, other repositories or Library/Handoff changes.
+
+## 2026-10-25 — LT-07 Chapter V / LT-08 Exchange Gazette art / LT-13 theme (validated)
+
+- **Final tested PR-head SHA:** `e9affbf84d3a5a2c88ea0830e99b29aa6d7d4f2c`. The first targeted run failed only because the Chromium fixture still required four chapters; updated the fixture and reran the complete workflow.
+- **PASS:** `tools/verne-towle-ch05.test.cjs` — 14 aligned English/Arabic paragraphs, 933 English source words, 18 source-occurring contextual entries, Chapter V-specific offline SVG, Exchange Gazette theme and backup allowlist.
+- **PASS Android CI:** [run 40232066464](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40232066464) completed SUCCESS on the final tested SHA. Native Node content/regression tests, Gradle unit tests + Debug assembly, required APK asset checks, and Chromium full reader journey all passed.
+- **Debug APK artifact:** `12613321921`; CI inner APK SHA-256 `52e065d99a08bea3f2f218508f964cf00c613c4c3d4d08b5833c4c394507dfea`. Artifact ZIP SHA-256 is separate and is not the APK hash. Independent APK re-hash NOT TESTED.
+- **Content:** Chapters I–V of 37 are available offline. Chapter V is transcribed from Standard Ebooks' CC0 editorial edition; the English translation is public domain in the US, but territorial redistribution rights and independent Arabic literary proofreading remain NOT TESTED.
+- **Device/final acceptance NOT TESTED:** Xiaomi Pad 5 installation, real frame pacing, RTL/TalkBack, audio-device acceptance and final signed release. This Debug build is not final.
+
+### Independent Debug APK verification — Chapter IV milestone
+- **PASS:** downloaded artifact **12609633627**, extracted 4,320,237-byte `app-debug.apk` and independently recalculated SHA-256 `62d7a0ed909df97c4ef5a4ab7ddc515e8ec4d84b6d0d3de60ed22bcad9bab294`, matching CI `APK_SHA256.txt`. Chapter IV script, reader index and contextual art are packaged. This supersedes the earlier pending independent-hash line for this run.
+- **NOT TESTED:** installation, visual/performance/RTL/TalkBack on Pad 5, independent literary editing, final signing.
+
+### Chapter IV targeted integration validation — 2026-10-25
+- **PASS:** [GitHub Actions 40222789455](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40222789455) on code+fixture SHA `4b4763f39084b1ef4eb2825579ea5a1fe2b7da26`: Node literary/content/dictionary regressions, Gradle Android Debug compilation and unit tests, explicit Chapter IV packaged-asset check, Chromium library and full reader/word/translation/theme journey.
+- **PASS (CI-calculated inner APK SHA-256):** `62d7a0ed909df97c4ef5a4ab7ddc515e8ec4d84b6d0d3de60ed22bcad9bab294`. Debug APK Artifact **12609633627**; screenshot Artifact **12609902605**. Independent artifact download and SHA-256 recomputation **NOT TESTED**.
+- **PASS (source-bound):** Chapter IV 43/43 exact English paragraphs, 942 words, 43 Arabic companion draft passages, 14 source-occurring contextual expressions, offline Charing Cross SVG, Midnight Platform theme/settings/backup.
+- **NOT TESTED:** actual Xiaomi Pad 5 installation, frame pacing, TalkBack, independent Arabic proofreading, territory-specific rights clearance, final signed release. Four of 37 chapters; never mark LT-07 complete.
+
+## 2026-10-25 — LT-07 Chapter IV / LT-08 Charing Cross art / LT-13 Midnight Platform
+- **Production SHA:** `de0b6b563273403ecfac6e41de032000f5c37a50` (first functional commit); browser fixture/workflow repair in this follow-up. PR #1 only.
+- **English:** all 43 original paragraphs / 942 words of Towle Chapter IV copied from the Standard Ebooks source and checked paragraph-by-paragraph (43/43 exact after XHTML tag/whitespace normalization).
+- **Arabic:** 43 newly written aligned draft translations; **independent editorial proofreading NOT TESTED**. Four chapters of 37 available, never claim a complete novel.
+- **Contextual learning:** 14 source-occurring new expressions, offline original Charing Cross rainy station SVG, new distinct Midnight Platform dark iron-and-lamplight theme with Settings/backup integration.
+- **PASS (direct production V8):** loaded real chapter I–IV and offline art scripts; 4 chapters, 43 Chapter IV paragraphs, 60 total edited contextual entries, unique SVG for Chapter IV. Compared all 43 source English paragraphs to upstream.
+- **FAIL then repaired:** [CI 40222614783](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40222614783) passed Node/Gradle/APK packaging but failed browser smoke due to stale fixture requiring exactly three chapters. Fixed fixture and explicitly required Chapter IV in APK assets; rerun pending.
+- **NOT TESTED:** new CI after repair, independent APK artifact hash, Pad 5 install/RTL/TalkBack/FPS, human Arabic literary review, rights by territory and final release. A browser smoke is not a device test.
+- **Build rationale:** Source V8 checks cannot verify Android asset packaging, Chromium reader flow and the full Node suite; this chapter/theme integration warrants a targeted CI build.
+
+## 2026-10-25 — Complete bilingual Towle Chapter III, itinerary, art and distinct theme
+
+- **Production:** complete Chapter III of the authentic Towle 1873 English
+  translation, 65 original prose paragraphs + eight-leg itinerary as one
+  extra aligned entry; 66 new Arabic draft passages, 1,980 English words,
+  18 new source-occurring contextual terms, bespoke offline Reform Club SVG,
+  and distinct `Reform Club Brass` theme wired into Settings and backup.
+  Reader now has **3 of 37** authentic chapters, not a finished novel.
+- **PASS direct V8 production:** all three scripts loaded in order; 66 aligned
+  English/Arabic entries, itinerary, term occurrence and offline illustration.
+- **FAIL initial CI:** [run 40217571565](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40217571565)
+  on SHA `8e1e5a78aef9edd8ca52d708aaec8597164e3baf` reached Node
+  regression but failed due to an overescaped test-only whitespace regex.
+  Corrected regex and Arabic Unicode test in SHA
+  `00b206fb8386777e683ca3255b1898259be0c2d0`.
+  [CI 40217753579](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40217753579)
+  **PASS (completed)** on source SHA `00b206fb8386777e683ca3255b1898259be0c2d0`: Node regressions, Android Gradle Debug build, APK offline asset check and Chromium reader journey.
+- **Build question:** does the new authentic chapter, theme, SVG and registration
+  survive the entire Node/Android asset packaging/Chromium reader pipeline?
+  Direct V8 source tests cannot establish APK integration.
+- **PASS (CI-calculated inner APK SHA-256):** `47fb8906def0eca5d80e4c9e9a7a408a05b9b42daf7ef453a8031a7cffd1dee8`; Debug artifact **12607598645**, screenshots **12607219655**. **PASS independent ZIP extraction and APK SHA-256:** downloaded artifact **12607598645**, extracted 4,310,321-byte APK and independently matched CI digest `47fb8906def0eca5d80e4c9e9a7a408a05b9b42daf7ef453a8031a7cffd1dee8`; confirmed Chapter III JS, offline art and theme CSS packaged. Pad 5 remains **NOT TESTED**.
+- **NOT TESTED:** human Arabic proofreading, international distribution
+  clearance, physical Pad 5 install/FPS/RTL/TalkBack, independently
+  downloaded APK hash and final signed release. No claim of completion.
+- Full edition/rights details: `docs/LITERATURE_PROVENANCE.md`.
+  No `main` merge, no unrelated repository or Library/Handoff changes.
+
+### Chapter II / Station Tickets targeted CI and independent artifact verification — 2026-10-25
+
+- **FAIL (initial browser regression):** [run 40203765741](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40203765741) passed Node/Gradle/APK asset checks but failed a stale Chromium fixture expecting exactly one Verne chapter. Corrected fixture to require both chapters and two distinct contextual illustrations.
+- **PASS (final targeted CI):** [run 40203941716](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40203941716) on functional SHA `052e33d826c389913ba5075f4f24833301c0b265`: Node tests, Android unit/Debug assembly, explicit chapter II APK asset gate, Chromium reader/word/translation/theme journey and screenshots.
+- **PASS (independent ZIP extraction and SHA-256):** Debug artifact **12603021648** contains `app-debug.apk` (**4,292,268 bytes**) with CI SHA-256 `146831a519894dec4a98ce286198429a90010dcc54a759d00971697658e15d91`; downloaded ZIP, independently recalculated APK digest and matched the CI checksum. Verified packaged `classic-verne-towle-ch02.js`, HTML registration, Station Tickets CSS and chapter II art.
+- **Screenshot artifact:** **12602707519**; no independent visual review of screenshot contents or physical Pad 5 was performed.
+- **NOT TESTED:** real Pad 5 install/upgrade/FPS/RTL/TalkBack, independent Arabic literary proofreading, territory-specific redistribution, remaining Chapters III–XXXVII and final release. Debug is test-only.
+
+## 2026-10-25 — LT-07 authentic Verne Chapter II + contextual interior art + Station Tickets
+
+- **Production:** complete Towle English Chapter II from the Standard Ebooks
+  CC0/public-domain transcription, 11 original source paragraphs and
+  **1,114 English words**, with 11 aligned original Arabic draft translations
+  and 14 new source-occurring contextual vocabulary/idiom entries. App now
+  contains **2 of 37 chapters**, not the full book. Existing chapter I, story
+  ID, bookmarks, vocabulary and reading history remain in place.
+- **Offline visual:** distinct locally drawn Victorian Saville Row interior
+  (numbered wardrobe, synchronized clock) for chapter II; existing chapter I
+  street illustration preserved. New Station Tickets theme uses railway
+  tickets/platform signage and contrasting blue/cream/coral layout, integrated
+  with Settings and backup; no remote art, fonts, audio or permissions.
+- **PASS (direct production V8):** 11/11 English chapter paragraphs
+  matched the upstream XHTML exactly after stripping HTML/typographic
+  whitespace, 11/11 Arabic aligned, 14/14 new terms source-occurring;
+  chapter load order, distinct offline SVG and theme/backup registration
+  checked against fetched production files. **This does not certify the
+  literary quality of the Arabic translation.**
+- **Source commit tested:** `40d703b41c25003d3ba7b3326490d682fc77aa5c`;
+  [Android CI 40203765741](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40203765741)
+  **IN PROGRESS at checkpoint**. Node/Gradle/asset verification steps
+  completed PASS; browser/screenshot/artifact steps pending. Do not claim
+  whole CI or APK artifact PASS before run completion.
+- **Purposeful build question:** can the two chapters, bilingual reader,
+  new illustration, theme, backups and dictionary survive Node, Android
+  packaging and Chromium navigation together? V8 alone cannot prove this.
+- **NOT TESTED:** real Xiaomi Pad 5 installation, scrolling/frame times,
+  screen-reader access, font/layout screenshots, independent APK rehash,
+  literary Arabic proofreading, rights in each redistribution territory,
+  Chapters III–XXXVII, final release. Debug is not final.
+- **Safety:** Draft PR #1 only; no main merge, other repositories,
+  Library/Handoff, paid API, microphone/TTS or private data.
+
+## 2026-10-25 — LT-07 authentic Verne chapter I + LT-08 contextual art + LT-13 Saville Clockwork
+
+- **Production:** bundled the complete authentic **1873 George Makepeace
+  Towle English translation of Chapter I** of Jules Verne's *Around the
+  World in Eighty Days*: 1,453 English words, 29 continuous bilingual
+  English/new Arabic draft passage groups, 14 source-occurring contextual
+  terms, one locally generated Victorian Saville Row SVG illustration.
+  This is **Chapter I of 37**, NOT the whole novel or a synopsis.
+- **Source provenance:** 1873 Towle translation from
+  https://en.wikisource.org/wiki/Around_the_World_in_Eighty_Days_(Towle)/Chapter_1
+  (Wikisource revision 13924990); Gutenberg ebook 103 lists US public-domain
+  status. No Gutenberg trademark/images/modern translations are packaged.
+  `docs/LITERATURE_PROVENANCE.md` records outstanding territory and
+  independent Arabic literary editorial review; both remain **NOT TESTED**.
+  Packaged source Git blob `4c2f137ba5eab8b5b3d4f1870acf33436cc92d4f`.
+- **Design:** distinct **Saville Clockwork** offline book/reader theme
+  (Victorian station/timetable geometry), registered in Settings and backup
+  whitelist. The new contextual SVG is an original local vector scene, not
+  a scraped/copyrighted image. No microphone, TTS, paid API or new permissions.
+- **PASS (source):** direct V8 execution of production chapter and artwork:
+  29 bilingual passages, 1,453 English words, 14 actual source-occurring
+  contextual entries, packaged HTML registration, offline scene, Settings,
+  theme CSS and backup integration.
+- **PASS (native Node/Android/Chromium CI):**
+  [run 40199465771](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40199465771)
+  on functional SHA `2b923d67292d4645c3760ef6b6bccaf9b4994ca4`:
+  new `tools/verne-towle.test.cjs`, existing dictionary/search/theme tests,
+  Gradle `testDebugUnitTest` and `assembleDebug`, APK offline assets
+  including the new classic, Chromium library and full reader/word/translation
+  journey **PASS**. Debug APK Artifact **12600997230**, screenshot Artifact
+  **12600857797**. CI-calculated APK SHA-256:
+  `84419a3a1d9cbc673468a060b4e5c3a7b274d5e2c609030ff5b2dc5ab884e4ab`.
+- **Repair evidence:** initial run 40199170622 **FAIL** on a brittle
+  backup theme assertion, corrected in `tools/phrase-lookup.test.cjs`.
+  Follow-up run 40199293266 **FAIL** on hard-coded 37-story Chromium fixture
+  counts, corrected to require 38+ and the current catalog count, plus
+  explicit Verne chapter/art checks. Final run above **PASS**.
+- **NOT TESTED:** independent APK download/rehash, Xiaomi Pad 5 installation,
+  upgrade/reader frame times, actual visual/crop and TalkBack inspection,
+  Arabic editorial accuracy, remaining 36 Verne chapters, territory-specific
+  copyright review and final signed APK. Source/CI PASS is not device PASS.
+- **Build rationale:** JavaScript/Node alone cannot prove new chapter/assets
+  were packaged in Android or that the expanded catalog still works through
+  Chromium; one purposeful Android validation was needed. Intermediate
+  commits' runs were cancelled by CI concurrency.
+- PR #1 remains Draft, no `main` write/merge; no other repositories or
+  ChatGPT Library/Handoff modified.
+
+## 2026-10-25 — LT-07 long-form editorial correction cache milestone
+
+- **Production:** `LinguaLookup` now refreshes same-length word/idiom edits when a content importer increments `story.lexiconRevision` or `dictionary.lexiconRevision`, with explicit `LinguaLookup.invalidate(story)` for importers without revision counters. Existing O(1) per-tap cache check remains; no full dictionary scan on every tap.
+- **Production:** bilingual chapter-search cache tracks `story.searchRevision` and `chapter.searchRevision`, plus explicit `LinguaShell.invalidateChapterSearch()`. A corrected Arabic translation or English paragraph can be reindexed even when chapter/paragraph counts do not change. Existing original reader text, translations and bookmarks are untouched.
+- **PASS (production V8):** executed actual `lingua-lookup.js` and `lingua-shell.js` with initial, same-length revision, and explicit invalidation scenarios. Added Node regressions to `tools/phrase-lookup.test.cjs` and `tools/chapter-search.test.cjs`.
+- **NOT TESTED:** complete Node/Android CI on this milestone, Pad 5 real search latency, reading performance, accessibility and editorial quality of longer books. Real licensed full-length classics and recordings remain open.
+- **Targeted build question:** do the updated production JS modules and regressions pass the existing Android/Node packaging workflow without breaking the offline dictionary or reading journey? Source V8 alone cannot establish the complete APK packaging and browser smoke. One CI validation run is justified; this is **not** a final APK release.
+- **Status:** IN_PROGRESS; PR #1 Draft, no main merge or unrelated repository/Library/Handoff writes.
+- **Additional regression fix:** the existing phrase test incorrectly dereferenced `boundary.entry` for a partial-token lookup that correctly returns `null`; fixed the assertion to match production contract. **PASS:** both complete committed `phrase-lookup.test.cjs` and `chapter-search.test.cjs` executed in V8 using Node compatibility shims, against the actual PR production modules. Native Node/Android CI remains NOT TESTED until a matching run completes.
+- **Targeted CI checkpoint:** latest corrected test and source must pass together; this non-skip checkpoint is intended to validate the fixed regression in Android CI, not to request a routine build or final APK.
+
+## 2026-10-25 — LT-07 bilingual in-book passage search + LT-13 Moonlit Margins
+- **Production:** offline English/Arabic paragraph search across all loaded story chapters, lazy corpus index (not built on library launch), 170 ms input debounce, 2–80 character query bound, max 40 results, exact source snippets, direct chapter/paragraph navigation through existing reader/history pipeline. No network, invented glosses or changes to English/Arabic literary text.
+- **UI:** a separate accessible chapter-search dialog, keyboard focus/escape, original English and Arabic passage excerpts, and a new **Moonlit Margins** night bookbinder theme with book-spine cards, double-border hero and bookplate reader; settings/backup theme whitelist updated. Background library is now inert during search, restored on Escape/outside tap/close/result jump; pending search timer is canceled. Native Chromium flow assertions were added for dialog cleanup and bilingual corpus results.
+- **PASS (source/V8):** production shell parsed after fixing duplicate declaration; executed actual shell with mock catalog and DOM: English and Arabic lookup, empty/short query refusal, direct paragraph jump and theme activation succeeded. Committed Node regression: `tools/chapter-search.test.cjs`.
+- **PASS (native Node + Android CI):** [run 40177935015](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40177935015) on functional SHA `7da65d2e350b56547434fd56f0d885c77be091a4`: native `chapter-search.test.cjs`, all content regressions, Gradle Debug build, required assets/adaptive icon and Chromium flow including bilingual search/modal Escape. Debug APK artifact **12592818634**, screenshots **12592683800**; inner APK SHA-256 calculated in CI `68e7598e2d6c8ff4769518cd8b55c21f8403dcbe9add9561749be7a20bfad3df`.
+- **PASS (independent artifact rehash):** downloaded Artifact `12592818634`, extracted `app-debug.apk` (4,262,992 bytes), independently computed SHA-256 `68e7598e2d6c8ff4769518cd8b55c21f8403dcbe9add9561749be7a20bfad3df`, matching CI `APK_SHA256.txt`; verified packaged search/theme JS/CSS, novella asset and adaptive launcher resource. This does **not** establish physical-device behavior.
+- **NOT TESTED:** real Pad 5 search scroll/focus/RTL/latency and TalkBack, editorial full-length literature and professional Arabic translation, recorded licensed audio, final LT-07/LT-13 acceptance.
+- **Build question:** does the new search/theme work under native Node and Android WebView packaging, and do existing reader journeys remain intact? V8 mocks cannot verify DOM/browser integration; one targeted Android CI build is justified.
+- **No final release:** PR #1 remains Draft; no `main` writes, no Handoff/Library changes.
+
+## 2026-10-25 — LT-08 inline illustration geometry and offline failure fallback
+- Production change: `reader-experience.js` reserves a bounded optional aspect ratio (0.5–3.5), applies explicit opt-in cover crop with bounded focal coordinates (0–100%), and removes missing offline images instead of leaving broken icons. Remote paths remain rejected; existing Arabic translations and paragraph anchors remain untouched.
+- Regression: `tools/inline-illustrations.test.cjs` now exercises valid/invalid geometry, safe focal points, missing-image cleanup and the existing allowlist; Android CI workflow now runs this test.
+- **PASS (source/V8):** executed the committed regression script against the committed production reader in a V8 Node-compatible harness; 19 assertions passed. This is not a real Android WebView rendering test.
+- **PASS (native Node/Android CI):** run 40173776262 on source/test SHA `328d64932564968da98876b268ac41bc3855c85b`; native Node inline-art regression, Android compilation, APK asset/adaptive-icon checks and Chromium reading journey succeeded. Debug Artifact `12591955199`; APK SHA-256 **calculated by CI** `32db36f07c7ff2fffb24317776aabd24e8b4cfabee09500f29cd7d9a3d9bee97`.
+- **NOT TESTED:** independent artifact download/SHA verification, visual crop/focal behavior, offline image-error behavior, frame stability and TalkBack on Xiaomi Pad 5, full LT-01..LT-13 acceptance. Debug APK is not a final release.
+- **Build question:** does the full Node/Android workflow compile and package the changed reader and pass the actual regression under native Node? Static/source checks cannot establish packaging or WebView behavior. One targeted CI run is justified, not a final release.
+- **Status:** IN_PROGRESS; PR #1 remains Draft; no main merge, no Handoff/Library access.
+
+# StoryLens — Autonomous acceptance evidence
+
+## 2026-10-24 — Strict UTF-8 import for offline SAF backups (source-only)
+- **Production commits:** `afd50fd9ab12ee6bd0684bb16b2b861398cc67f2` (decoder), `eab6efc0cde9456be0491a08074a99e949d11b6f` (native wiring); **test commits:** `4817fd7ae608127aa9b5f71980dab2bd6eef4d48`, `adf61b9f2fcb5aef69e003eccc08ef1e2b929123`, `c453befa539a9a0e8d86fa106072a01bbecabdb8` (draft PR #1 only).
+- **Fix:** Android Storage Access Framework import now strictly decodes UTF-8 and rejects malformed, truncated, overlong or surrogate byte sequences instead of silently replacing invalid bytes and potentially corrupting saved words. Optional UTF-8 BOM is stripped before JSON validation. The existing import size cap and confirmation gate remain.
+- **PASS:** Compiled the exact new pure-Kotlin `BackupUtf8.kt` helper with `kotlinc` and ran 6 JVM assertions (multilingual round-trip, BOM, four malformed sequences). Fetched the committed helper, Android caller, JUnit test and Node contract test from the PR branch; five static integration assertions passed. **FAIL:** 0 in these checks.
+- **NOT TESTED:** Running committed JUnit through Android Gradle, complete Node suite, Android SAF picker and import on physical devices, final launcher icon, offline/performance tests, APK and SHA-256. Static contract checks are not Android runtime tests.
+- **Build policy:** all commits `[skip ci]`; no APK or Actions build requested, no `main` modification, no merge. Final APK remains deferred.
+
+## 2026-10-24 — Review-card SRS backup integrity (source-only)
+- **Production commit:** `14ac316c9878ba8f7cf4892e4fcde9a6b9aba72f`; **regression commit:** `86e826c64ce1eb904c663e559371f3168bfc4a6f` (draft PR #1, no main modification).
+- **Fix:** Import/export of learning cards now checks optional SRS scheduling fields (`dueAt`, `intervalDays`, `ease`, `repetitions`, `lapses`) for finite, bounded numeric types. Rejects malformed `surface` and blank terms. Older cards with missing SRS fields remain valid. This prevents corrupted due timestamps from silently hiding scheduled reviews.
+- **PASS:** 9 checks against modified production JavaScript in V8, covering legacy/current cards and seven invalid inputs. Added matching Node regression cases to `tools/data-backup.test.cjs`.
+- **FAIL:** 0 in the 9 executed isolated checks. **NOT TESTED:** executing the complete Node test file, full source test suite, Android Gradle/lint, on-device backup/restore and SRS scheduling, approved launcher icon, performance, offline field testing, final APK and SHA-256.
+- **Build policy:** commits include `[skip ci]`; no APK or workflow build requested. Final build deferred until requirements complete.
+
+
+## 2026-10-24 — Concurrent Android file picker protection (source-only)
+- **Production commits:** Android SAF host `28cf730b298511ad41d33af50d712d45aecf6f87`; localized feedback `790c818f5fe0774c47c18b66230526860dc74799`; **regression commit:** `170fe16ffc8594dee0b1d0a349e94c75787e0a45` (Storylens PR #1 only).
+- **Fix:** Import/export now share one guarded Storage Access Framework picker. A second action cannot overwrite a pending backup payload; canceled or failed picker launches release the guard, and an export callback without retained bytes reports failure instead of success. Arabic and English users receive a specific busy status.
+- **PASS:** Executed the updated production `data-backup.js` in V8 with a fake DOM; validated busy/saved statuses in English and busy in Arabic. Four static assertions confirmed both picker entry guards, callback/failure cleanup and the committed test assertion (7 checks total).
+- **NOT TESTED:** Running the committed full Node suite, Kotlin Android compilation, concurrent picker behavior and lifecycle recreation on a real device, backup SAF interoperability, performance, icon, offline device, APK and SHA-256.
+- **Build policy:** All commits `[skip ci]`; no Actions build dispatched; `main` unchanged. Single final APK build deferred.
+
+
+## 2026-10-24 — Offline WebView fail-closed routing and bilingual SAF callbacks (source-only)
+- **Production commits:** Android host `e485d01f8e86979605626987082afcb03ec49725`; JS backup UI `a3856922ef9ad2c7d4987fbe74c2ce0f5b73f5b1`. **Regression commits:** `8b14dd23c8df954fbbbc4358c7ebc92d68d79f24`, `72554e75a1fbe41ae186e3eabee3d93e32cebc13`, draft PR #1 only.
+- **Change:** WebView explicitly returns HTTP 403 for off-origin or missing APK assets rather than falling through to WebView networking; top-level navigation is limited to local `/assets/`. Android Storage Access Framework export/import reports fixed status codes rendered in the chosen Arabic/English UI language; legacy backup keys, schema, app ID and offline permission policy unchanged.
+- **PASS:** Ran production `data-backup.js` in V8 with mocked storage/DOM and checked four English statuses, Arabic success, and unknown-code rejection (6 cases). Production JS and both committed Node test files parsed in V8; static assertions verify native status dispatch and fail-closed asset routing. No Android runtime implied.
+- **NOT TESTED:** Native Node execution of full regression scripts, Android/Kotlin compilation, SAF save/import on real device, WebView request interception behavior on Pad 5, physical offline test, approved icon, LT-01..LT-13 full gates, APK, SHA-256 and performance.
+- **Build policy:** All commits `[skip ci]`; no GitHub Actions build dispatched, no APK generated, `main` untouched. Final single APK build remains deferred.
+
+
+## 2026-10-24 — UTF-8 quota rollback safety (source-only)
+- **Production SHA:** `fefafc0207970863f818086821f842b3a4e0a4b7`; **regression SHA:** `7877943cb45847c6cf9218ad8ba2d8856c4314fe`, draft PR #1; `main` untouched.
+- **Fix:** Storage-quota rollback now sorts restoration by actual UTF-8 byte deltas rather than UTF-16 JavaScript string lengths. Emoji/CJK values can reverse which restore operation frees space; incorrect ordering could previously leave saved words unrestored after a failed import.
+- **PASS:** Executed the actual modified production backup module in V8 with a UTF-8-byte-limited localStorage mock. A three-key import fails at quota and all three original keys are restored; the test covers emoji vs ASCII byte-order inversion. Added the same regression to `tools/data-backup.test.cjs`.
+- **NOT TESTED:** Running the committed full Node test suite, Android WebView/SAF quota behavior, real device backup/restore, APK, performance, full LT-01..LT-13 gates and the final approved icon. No Actions or APK build.
+- **Build policy:** All commits `[skip ci]`; 0 PR-triggered workflow runs associated with the regression SHA when checked. Final one-time APK build deferred.
+
+
+## 2026-10-24 — LT-06 bilingual reader semantics and continuation controls (source-only)
+- **Production SHA:** `898fca0f641f2be7c2d5abcbb1d39409553971fa`; **test SHA:** `bf73cdeef7522e95cb635884acf904f4f7b0bb2c`, PR #1; `main` unchanged.
+- **Fix:** Continue-reading CTA and empty-library invitation now follow Arabic/English UI locale. English source sentences/chapter title are explicitly tagged `lang=en` / LTR even in Arabic UI. Inline, long-press and full-page Arabic learning translations carry `lang=ar`; source content, progress keys and backup format unchanged.
+- **PASS:** Executed the committed reader regression script against committed production JS inside a V8 CommonJS/VM compatibility harness (chapter/bookmark navigation, English/Arabic content-language attributes, long-press translation, interface controls). Also executed the production library wrapper with mocked DOM in Arabic and English; localized continue CTA and English empty-state invitation PASS.
+- **NOT TESTED:** Native Node regression suite, complete i18n audit, Android WebView/TalkBack pronunciation, physical device, APK, launch/exit animation performance, final icon and LT-01..LT-13 end-to-end acceptance.
+- **Build gate:** source-only `[skip ci]` commits; no APK build or Actions dispatch. Exact approved icon with text still unavailable as repository asset; do not substitute an invented design.
+
+## 2026-10-24 — Backup quota-safe rollback and malformed card-field rejection (source-only)
+- **Production commit:** `58a9f540e45eb26d82f7d72202ec6d7e2e1f0a5b`; **regression commit:** `fd395a46e8127bd5f1fa67ac224a4a4eb3d95f0b` on draft PR #1; `main` unchanged.
+- **Fix:** On a storage-quota failure during import, rollback now restores smaller previous values and removes newly created keys before restoring larger old values. This avoids losing previously saved words when a forward-order rollback itself exceeds quota. If rollback cannot finish, the user receives an explicit data-safety warning. Optional saved-card fields now reject numeric/boolean values while retaining absent/null/string compatibility.
+- **PASS:** Actual modified production JavaScript parsed and executed in V8 against a byte-limited localStorage mock. Import failed on the third write, all three original values were restored, and a malformed numeric card meaning was rejected. Regression assertions were committed to `tools/data-backup.test.cjs` and its syntax parsed.
+- **NOT TESTED:** Full Node test suite, committed regression script under Node, Android SAF quota behavior, physical device, APK, performance and offline acceptance. No APK or GitHub Actions dispatched.
+- **Outstanding:** Approved icon source not available in this run; do not invent replacement. LT-01..LT-13 and device gates remain IN_PROGRESS.
+
+
+## 2026-10-24 — Reader accessibility: preserve spoken story text (source-only)
+- **Production SHA:** `b90e164678903dc98153b94c22c7a15afea5b067`; **regression SHA:** `9234fd21681fb8e9d43aacc2dd696b868b0ea891` (draft PR #1; `main` untouched).
+- **Fix:** Replaced generic per-sentence `aria-label` with `aria-description` in `reader-experience.js`. An `aria-label` masks the actual English sentence for screen readers; the optional instructions now accompany, rather than replace, the source story text. Arabic translations remain unchanged.
+- **PASS:** Executed the committed reader, bookmark-navigation and inline-illustration regression scripts in a V8 CommonJS/VM compatibility harness using the actual committed production source (3 scripts). Production JavaScript and regression script syntax parsed successfully.
+- **NOT TESTED:** Native Node.js execution of the full suite, Android TalkBack behavior, Android packaging/installation, actual sentence pronunciation by screen reader, performance and offline device QA. V8 compatibility is not a device accessibility test.
+- **CI policy:** `[skip ci]` commits; 0 PR workflow runs reported for regression SHA when checked. No APK created or Actions build dispatched.
+- **Open:** LT-01..LT-13 remain incomplete; user-approved icon asset is not yet integrated. No Library/Handoff access.
+
+
+AUTOMATION_COMPLETE: IN_PROGRESS
+
+## 2026-10-24 — Backup consistency and bilingual control hardening (source-only)
+- **Production commit** `cb5a71fc8e1012ed293bda78abd800a627f16b02`; **test commit** `84a8e307e81bdca4eb1f8e2cbd82d1c5011728ac` (PR #1, no main write).
+- **Fix:** `data-backup.js` now refuses exports with more than 900 valid keys instead of producing a JSON archive its own importer rejects; English interface shows English Backup label/accessibility name; a superseded/invalid backup preview revokes its old confirmation button, preventing accidental restoration of another snapshot.
+- **PASS:** 6 direct V8 executions of the modified production backup module: English button and accessibility label, valid backup export, >900-entry export refusal, valid preview, stale confirmation refusing to mutate, latest confirmation restoring the intended snapshot. Test file JavaScript syntax checked in V8.
+- **NOT TESTED:** full Node regression suite (`node tools/data-backup.test.cjs`), Android CI, APK packaging, actual SAF import/export, physical device upgrade and independent recheck. Node regression assertions were committed but **not executed** in this run.
+- **Build policy:** all new commits carry `[skip ci]`; no build or workflow dispatch requested. PR head at source/test checkpoint `84a8e307` had no PR workflow runs when checked. The existing PR workflow assembles an APK, so source-only commits must continue to skip it until final acceptance.
+- **Outstanding:** exact user-approved **icon with its text** must be separated from the approved visual reference and integrated as Android launcher resources; do not substitute an invented icon. LT-01..LT-13 and real-device acceptance remain IN_PROGRESS.
+
+
+## 2026-10-23 — New user-requested Lingua Tales plan (documentation only)
+**No app code, icon, animations, localization or performance change was implemented in this planning update.** The screenshot is a visual reference; see `docs/LINGUA_TALES_REBRAND_UX_PERFORMANCE_I18N_PLAN.md` for detailed acceptance gates.
+
+| New requirement | Status | Evidence needed in future development runs |
+|---|---|---|
+| LT-01 Lingua Tales launcher/in-app rebrand and retained data | NOT TESTED | Code + migration/upgrade tests and on-device labels |
+| LT-02 smooth story open **and close** animations | NOT TESTED | Actual UI change, navigation regressions, repeated open/close device evidence |
+| LT-03 card-paint optimization / measurable performance | PASS (source/CI); NOT TESTED (device) | Scoped blur/animation reduction and lazy card painting verified in CI at `e64732a206d56c0ae4bcdf5350a6933041f53276`; no Android FPS/RAM baseline or visual parity measurement yet |
+| LT-04 modern distinctive Android adaptive icon inspired by Wen Sarafet design quality | NOT TESTED | Icon assets and real launcher mask/theme inspection |
+| LT-05 reduced marketing metadata/clutter without loss of features | PASS (source/browser CI); NOT TESTED (device) | Simplified homepage with hero metadata removed, cards prioritized; CI run 39972837571 screenshot artifacts |
+| LT-06 complete Arabic/English app UI language toggle; keep English story/Arabic translations | NOT TESTED | i18n catalogs, RTL/LTR, offline save/restore and bilingual flow tests |
+
+## 2026-10-23 — LT-03 paint budget (production code + test, not device benchmark)
+- **Production:** `app/src/main/assets/liquid-aurora.css` now disables repeated live `backdrop-filter` and card-reveal animations only on library shelf cards; replaces them with a translucent gradient retaining Liquid colors, cover art, hover transforms, hero/orb and modal glass. Uses `content-visibility:auto` with approximate intrinsic card size to skip offscreen card paint in compatible WebView. This is a targeted potential jank reduction, **not** a measured FPS improvement.
+- **Regression:** `tools/library-experience.test.cjs` asserts scoped paint override, gradient/cover retention and reduced-motion support; existing library, reader, offline dictionary and browser flow tests still run.
+- **PASS (CI on exact source+test SHA `e64732a206d56c0ae4bcdf5350a6933041f53276`):** [Actions run 39962712916](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/39962712916), job `120444495073`, confirmed log `PASS: LT-03 scoped card paint optimization retains Liquid visuals and reduced-motion support`, `BUILD SUCCESSFUL`, reader/browser journey PASS. APK artifact ID `12504174717`, screenshot artifact ID `12505351887`.
+- **NOT TESTED:** Xiaomi Pad 5 FPS/frame timing, RAM/CPU, user-perceived scroll jank, side-by-side screenshot review, repeated story open/close animations, RTL/i18n. Mark LT-03 fully PASS only after same-device baseline and improved measurements.
+- **Next:** LT-02 open/close transitions with reduced-motion and state/scroll preservation; do not add expensive animation layers.
+
+## 2026-10-23 — Reader navigation regression (production + tests)
+- **Production fix:** `app/src/main/assets/reader-experience.js` now routes chapter picker and bookmark jumps through the live `renderReader()` enhancement chain instead of bypassing it with the captured base `originalReader()`. This restores sentence keyboard focus, long-press sentence translation, bookmark marker, saved read progress, and later reader preferences after navigation. The fix is independent of dictionary edits and stays in existing PR #1.
+- **Regression:** `tools/reader-experience.test.cjs` runs the real enhancement script inside a deterministic Node VM, checks both navigation paths, sentence accessibility, translation listener binding, progress persistence and scroll restoration. CI workflow executes it before APK packaging.
+- **PASS on source+test SHA `f8bfdd99f2d69d9684783b588dbcaabbf2e1fd4e`:** [GitHub Actions run 39954824587](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/39954824587), job `120417924749`, verified log contains `PASS: chapter and bookmark navigation preserve enhanced reader accessibility, translation and progress`. Gradle unit tests, Android Debug APK build, APK asset verification and browser UI flow also succeeded. Artifact `StoryLens-Debug-APK` ID `12502321256`, screenshots ID `12502191746`.
+- **NOT TESTED:** physical Android installation, process death, TalkBack accessibility, actual long-press gesture on Xiaomi Pad 5, all content translations, visual fidelity to approved screenshot. The Node VM regression is not a physical-device test.
+- **Remaining:** continue auditing inflected idioms and dictionary coverage, curate full story catalog, test offline reading/saved vocabulary/backup on Android, then independent acceptance recheck. No auto-merge or public release.
+
+
+Last source review: 2026-10-23 (branch `automation/storylens-dictionary-saved-words-20261023`).
+Production code changed in this iteration: **YES** — `app/src/main/assets/index.html` and `tools/build_freedict.py`.
+Base reference: `main@c2117c5ca1a09afb8e923770857aa0dbfc777f20`.
+Verified PR CI for source+tests at `2a3dc0ec1fa6b26336488d70c20e446a9f8a5bc9`: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/39947411826 (SUCCESS, 2026-10-23). APK artifact #12498568304 and UI screenshot artifact #12498254394 uploaded. Later documentation-only commits require checking their own CI status; no on-device tests.
+This record does not assert any physical Android verification.
+
+| Requirement | Status | Evidence / limitation |
+|---|---|---|
+| Offline English–Arabic dictionary available in APK | PASS (CI packaging) | Verified pinned FreeDict 0.6.3 generated, syntax/functional tests passed, and dictionary + license found in PR APK, run #39947411826. Physical Android launch NOT TESTED. |
+| Show up to two distinct dictionary senses where present | PASS (CI) | `python3 tools/test_freedict.py` and `node tools/freedict.test.cjs` passed in run #39947411826. Ordering follows source, not frequency. |
+| Never confuse dictionary gloss with verified story-specific sense | PASS (CI) | `node tools/lexicon.test.cjs` executed actual word-sheet rendering for curated, generic, and unknown words, run #39947411826. Human review of all story contexts NOT TESTED. |
+| Saved vocabulary retains meaning and original sentence translation | PASS (CI) | `node tools/lexicon.test.cjs` exercised saved cards, dictionary lookup, source sentence and translation rendering, run #39947411826. Android process-death restoration NOT TESTED. |
+| Idiom/phrase longest match | NOT TESTED | Existing code examined; broader device and inflection cases still need coverage. |
+| Offline story and sentence translation | PASS (base content only) | Existing paired English/Arabic paragraphs and no INTERNET permission in base. No human translation audit of all paragraphs. |
+| Full 120-story professionally edited collection | FAIL | Base catalog 24 stories, target 120; editorial review outstanding. |
+| Liquid Aurora fidelity and phone/tablet UI | NOT TESTED | Screenshot reference and on-device visual comparison not completed in this iteration. |
+| Offline save/review/backup recovery | NOT TESTED | Unit regressions exist; Android cold start, process death, backup/restore and upgrade migration not tested. |
+| Android APK builds and installs on Xiaomi Pad 5 | PARTIAL | PR Android unit tests + assembleDebug and packaged assets PASS at run #39947411826, APK artifact #12498568304. Physical install and runtime NOT TESTED. |
+| Security, accessibility, performance, rotation and negative cases | NOT TESTED | Require full independent end-to-end QA. |
+
+Next action: obtain physical Android installation/reader tap/save/restart evidence for artifact #12498568304, then quantify remaining missing story-word glosses from the generated FreeDict pack and audit real contextual senses. This documentation update is not a new feature implementation. Do not claim release ready without physical Android install + independent recheck.
+
+## 2026-10-23 — Additional approved requirements (roadmap only)
+**Production code changed by this administrative update: NO.** GitHub roadmap file `docs/LINGUA_TALES_REBRAND_UX_PERFORMANCE_I18N_PLAN.md` is the source of truth for detailed acceptance.
+
+| Gate | Status | Future acceptance evidence |
+|---|---|---|
+| LT-07 real medium/long fiction; new reviewed batches, faithful public-domain edition verification and contextual Arabic translation | NOT TESTED | Chapter inventory, source/license records, editorial and dictionary tests |
+| LT-08 in-reader context-matched images with legal source/asset provenance and attractive focal-point cropping/feathering | NOT TESTED | Image catalog, chapter anchors, offline mobile screenshots and performance |
+| LT-09 category drawer at Arabic right/English left and corresponding edge swipe, without homepage clutter | PASS (source/VM/browser CI); NOT TESTED (device) | RTL/LTR swipe + Escape tests; categories, levels, sort, actions in drawer; run 39972837571 |
+| LT-10 centralize theme controls in Settings | PARTIAL PASS (source/CI); NOT TESTED (device) | Theme gallery and offline persistence implemented; audio/fonts/language settings still pending |
+| LT-11 optional playback-only UI effects and ~20 licensed music/nature ambiences; no microphone or TTS | NOT TESTED | License/asset audit, audio-focus, background, offline and CPU/RAM checks |
+| LT-12 selectable separate Arabic/English fonts and typography | NOT TESTED | RTL/LTR readability, licensed assets and preserved state |
+| LT-13 each substantive development/content batch adds one *genuinely visually different* functional theme, not just a palette shift, while runtime remains smooth | PARTIAL PASS (source/CI); NOT TESTED (theme visual/device performance) | Paper Atlas editorial layout, static compass, warm paper cards; run 39972837571; no Pad 5 FPS/RAM or Paper Atlas screenshot yet |
+
+A plan or screenshot is **not** proof of implementation, and not every small hourly task automatically creates a theme. Track real batched deliveries, with standalone independent recheck when all features are satisfied.
+
+
+## 2026-10-23 — LT-05 / LT-09 / LT-10 / LT-13: production shell and distinct Paper Atlas
+- **Production source SHA:** `ccc8da7a5ba9c5aef5db2173227af6e4323f7fe7` on existing draft PR #1. Added `lingua-shell.js` and `lingua-shell.css`; wired after backup/library/reader wrappers in `index.html`; `library-experience.js` rehomes refreshed discovery controls into the menu; `data-backup.js` accepts `paper-atlas` theme in validated backups.
+- **LT-05:** removed redundant brand copy, marketing metrics, repeated descriptions and oversized home controls, preserving cards, reader, offline words, review and backup behind the menu. Browser screenshots show a shorter, content-first library.
+- **LT-09:** category/genre drawer opens at top-right in Arabic and top-left in English (based on HTML dir), with corresponding right/left edge swipe, reverse swipe, backdrop click and Escape; favorite/level/sort/search and learning actions remain functional. Tests check directional swipes, closed-drawer inert state, rehome hook and no repeated move.
+- **LT-10:** theme picker moved to a dedicated Settings overlay; selection persists in the existing `storylens_uiTheme` key, and old themes remain selectable. Other Settings modules (fonts, language, audio) are **not implemented**.
+- **LT-13:** new **Paper Atlas** theme changes page geometry, editorial card orientation, header and hero layout, compass ornament and warm paper palette; not a hue-only swap. Static CSS art avoids animated full-screen filters. **No device performance evidence** yet.
+- **PASS GitHub CI on exact production SHA:** [Actions run 39972837571](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/39972837571) completed successfully: Node regression (`PASS: Lingua Tales shell RTL/LTR swipe, theme persistence, backup and Paper Atlas layout gates`), offline dictionary/content tests, Gradle unit tests and Debug APK, browser flow smoke and library/reader/backup screenshots. APK artifact **12509033991**, screenshots **12509473831**. Earlier APK at run 39971652217 was unpacked locally and verified to contain `assets/lingua-shell.js` and `assets/lingua-shell.css`; the latest run's artifact has not yet been unpacked in this record.
+- **Additional isolated V8 execution:** actual `lingua-shell.js` verified with RTL swipe, rehome-once, persisted theme, no unknown theme and Escape; **not a substitute** for Android gesture/device tests.
+- **NOT TESTED:** Xiaomi Pad 5 visual parity and real FPS/RAM/CPU, Android physical system back, full English locale switch (LT-06), Paper Atlas screenshot at selected theme, all 20 audio assets, fonts, story animations, long books and inline images. No claims of fully completed app or independent second-pass verification.
+- **Next:** implement LT-02 story open/close animations preserving scroll/back-stack and reduced-motion, then full LT-06/12 localization/fonts; continue a genuinely different theme per next substantial batch and measure device performance.
+
+
+## 2026-10-23 — LT-02 reader transitions and second distinct theme
+- **Actual production source** on draft PR #1: `lingua-shell.js` now wraps the existing reader open/back path with a cancellable 190ms composited entrance/exit, native same-document history Back handling with a bounded WebView fallback, saved reader chapter scroll and restored library scroll. The system-back handler first dismisses an open modal; translation Back returns to the reader. `prefers-reduced-motion` disables motion. No reader content/lexicon/SRS keys were changed.
+- **New LT-13 theme:** **Midnight Library**, fully selectable alongside Paper Atlas/Nebula/Aurora/Aqua. Unlike Paper Atlas, it uses ink-blue and brass, static bookshelf rails, narrow book-spine cards, a centered illuminated title plate and a dark reading treatment. No per-frame particles or live card blur. Offline backup validator accepts `midnight-library`.
+- **Source/test commit SHA:** `32f0759628154dc057122e6b03e6357145b76e95`; preceding production commits `cc932ce07a8a7375cc44b52135e6d51a40ca18a6` (navigation/theme registry), `a1871e4d39ead05712f8c06ebc29cd2cc811b7f3` (CSS), `c30f496318aa739e6339ed8a8f3139289f8ebb97` (backup).
+- **PASS CI on exact source/test SHA:** [GitHub Actions run 39980833626](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/39980833626) completed success: verified dictionary, offline catalog/JS including production navigation VM (rapid double-back, scroll restoration, modal back, reduced-motion), Gradle Debug APK, packaged-asset checks, Chrome smoke and screenshots. APK artifact **12512897827**, screenshots artifact **12513302194**.
+- **LT-02 status:** **PARTIAL PASS (source/CI)**; **NOT TESTED** on real Android system-back gestures, repeated physical transitions, long chapters, rotation, real Pad 5 jank/FPS/RAM and independent device recheck. Browser screenshots were not captured with Midnight Library selected; do not infer visual QA from default-theme screenshots.
+- **LT-13 status:** **PARTIAL PASS (source/CI)** for a second visually distinct functional theme, **NOT TESTED** device screenshots/contrast and performance. LT-03 measured CPU/RAM/FPS still NOT TESTED.
+- **Next:** exercise reader transitions and Midnight Library on Xiaomi Pad 5; implement LT-06 full bilingual UI and LT-12 font selectors, then LT-07 long books, LT-08 inline art and LT-11 licensed audio in substantive batches with a new distinct theme for each batch. No auto-merge, paid APIs or public release.
+
+
+## 2026-10-23 — LT-01 launcher and LT-09 native system Back integration
+- **Production changes on existing draft PR #1:** Android `MainActivity.kt` now checks `LinguaShell.isDrawerOpen()` and closes the library drawer before finishing the activity or navigating backward; the HTML/JS drawer gesture implementation remains unchanged. Android launcher label is now **Lingua Tales** in `AndroidManifest.xml`, native backup export filename becomes `LinguaTales-backup.json`, and offline document `<title>` is now Lingua Tales. **No change to `applicationId=com.storylens.reader`, localStorage keys, backup JSON format or package namespace.**
+- **Source commits:** native back/backup `db82ae74cee4ad1a1cfa63db9d314219b7604674`; launcher label `36c4ee684effdc17956d14d21385f3e8217333ca`; Node CI regression `6e6654036e4be75efbb542a473f5c2c60a8a3985`; document title `ecb6842a3711eb03582efb06b14510ccefd2ae35`.
+- **PASS GitHub CI** on exact earlier source/test SHA `6e6654036e4be75efbb542a473f5c2c60a8a3985`: [run 39988932481](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/39988932481), including Android Gradle debug APK, existing dictionary/reader/backup checks and new manifest/package/Back static contract checks. APK artifact `12516577711`, screenshots artifact `12517236287`. ZIP digest `sha256:9823dd17335025de35dcafd19b0e67038f92e9849e982fa325a173f3d1a3dac8`. This CI run **does not** cover the subsequent HTML title commit.
+- **PASS latest title-change source SHA** `ecb6842a3711eb03582efb06b14510ccefd2ae35`: [run 39989290251](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/39989290251) completed success with Android Gradle Debug APK, offline content/lexicon and native source-contract tests, browser smoke/screenshots. APK artifact **12516193613** (ZIP sha256 `fa8a0ab9fb615deebc9fe3be47ab9925f0dac910740d03e2ffe427d43df72279`), screenshot artifact **12516343329**. Extracted Debug APK integrity checked (sha256 `b45a5412201ff50f04b3b25681bcd51ab09aad5afb6ec4a2f7bdadc3432d4d80`). This is not a real-device test.
+- **LT-01 PARTIAL PASS** (Android launcher label, backup export name and HTML document title) but full legacy branding audit, UI translation and real update-in-place data continuity **NOT TESTED**.
+- **LT-09 PARTIAL PASS** (native Back routing source+static CI) but Android physical Back/gesture, modal priority and repeated rapid Back **NOT TESTED**.
+- **LT-03 NOT TESTED:** no Xiaomi Pad 5 CPU/RAM/FPS baseline or after-change measurements. This is a small compatibility batch, not a new LT-13 theme delivery. Previously completed Paper Atlas and Midnight Library remain.
+- **Next:** full bilingual UI LT-06 with Arabic translation preserved in English mode, font settings LT-12 and device-backed performance measurements. No auto-merge or release.
+
+
+## 2026-10-23 — LT-12 independent offline font selectors (production + tests)
+- **Production commits:** `e6497d099688d4f2b00470cf7844a3255e42d076` adds separate Arabic (modern/Naskh) and English (literary serif/modern sans) selectors inside Settings, with strict value allowlists and offline persistence under `storylens_fontArabic` and `storylens_fontEnglish`; `6adff243bf6d1016ae98d89f21b67c96c6a5f4ca` adds font-stack CSS for reader text and translations, no remote font requests; `844d6b91d5f4bdbe71d6e316ffb402db9ecc14d7` includes these keys in validated JSON backup/restore.
+- **Tests:** `7b4b89b9d3e5a1c6dc08387ee867b9b7e4fc0e04` exercises preference isolation, persistence and malicious value rejection in the real shell VM; `b2d208ec5cd50ad212105bf75f7b7186f154b085` adds backup roundtrip/invalid-font checks.
+- **PASS CI on exact source+test SHA `b2d208ec5cd50ad212105bf75f7b7186f154b085`:** [Actions run 39996774207](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/39996774207), build job `120562233677`, Android Gradle unit/build, offline dictionary/catalog tests, JS tests, APK asset verification and browser screenshot steps all succeeded. Debug APK artifact `12520381114`; screenshots artifact `12520700643`. Artifact ZIP and APK archives extracted and integrity-checked locally. Debug APK SHA-256 `72f5808108c2142b18ee506a66b72447c709d708a7b31bd17d4e3d0046818fd1` (4,211,874 bytes). ZIP SHA-256 `e58fd2b30b5f4d8d40ca32da54eaa468a29fafffd9c9390cdbb523e549901214`.
+- **PARTIAL PASS (source/CI)** for LT-12, **NOT TESTED** font availability/rendering and RTL shaping on Xiaomi Pad 5; fallback stacks are device-dependent, no bundled font licenses or binary assets. LT-06 full UI bilingual translation, LT-03 physical FPS/RAM, LT-04 approved icon integration, LT-07 long literature, LT-08 in-reader images, LT-11 licensed audio and full independent recheck remain **NOT TESTED**. No new LT-13 theme claimed: this was a focused typography batch.
+- **Automation state:** `IN_PROGRESS`. No main write, paid API, auto-merge or public release.
+
+## 2026-10-23 — LT-06 bounded bilingual shell implementation (no APK build)
+- **Production changed:** YES. Settings now offers an explicit Arabic/English interface-language selector; `uiLocale` persists under the existing `storylens_` storage prefix, restores on startup, changes `html[lang]`/`html[dir]`, re-renders the library without clearing progress, and localizes the shell header, menu, search and learning shortcuts. The English story body and Arabic learning translations are not rewritten.
+- **Backup:** the same version-1 backup format now includes `uiLocale` with an allowlist of `ar`/`en`; unknown locale values are rejected. No applicationId or storage migration.
+- **Tests added:** Node VM locale/direction/persistence/rejection and backup allowlist assertions in `tools/library-experience.test.cjs`. A JS syntax/VM smoke was performed in the development runner; full Node suite and Android runtime are **NOT TESTED** in this round.
+- **LT-06 status:** PARTIAL / NOT TESTED for full UI translation (reader, dictionary, review, errors and accessibility strings still need a full catalog and bilingual audit). **No APK build or GitHub Actions build requested** per user's final-only build policy.
+- **Next:** complete all remaining UI localization via a maintainable catalog, test both directions and persisted reading state, then continue LT-07/08/11 and the approved icon integration when its original asset is accessible.
+
+- **Exact production/test commit:** `0499c900f1c1f123b5b43ef86a6680216f298015` ([PR #1](https://github.com/amroalhamedi2022-hue/Storylens/pull/1)). V8 actual-shell locale smoke **PASS**; full Node suite, Android CI and device **NOT TESTED**. Commit used `[skip ci]` to honor the no-interim-APK policy.
+
+## 2026-10-23 — LT-06 reader-control bilingual pass (source-only; no APK)
+- **Production changed: YES.** `reader-experience.js` now chooses Arabic/English interface labels at render time for reader sentence accessibility, saved-bookmark tooltip, chapter progress, reader navigation, bookmark/jump buttons and help text. English source text and the existing Arabic sentence translations are untouched; the older user-facing StoryLens hero eyebrow was rebranded Lingua Tales.
+- **Production SHA:** `41ef0d45c0ac9e069cf6ccb92c4e770b825e0deb`; **regression SHA:** `06c7a02ba022307ecda3b1d9e455550c5ad93d32` on existing PR #1.
+- **PASS (source test, in-memory V8 harness):** executed committed `tools/reader-experience.test.cjs` against committed `reader-experience.js` with a Node filesystem/VM shim; **24 assertions** passed, including Arabic/English labels, bookmarks, chapter navigation, progress and unchanged Arabic translation. Also parsed production/test JavaScript successfully.
+- **NOT TESTED:** native `node tools/reader-experience.test.cjs` in full checkout, whole-suite tests, current SHA GitHub CI, Android compilation, physical Pad 5, complete LT-06 string inventory and offline device state/rotation. **No APK was built**; commits include `[skip ci]` to avoid triggering the PR Android packaging workflow. Current source SHA had no PR workflow run when checked.
+- **Next:** complete full LT-06 UI catalog (reader, dictionary, SRS, backup, errors), icon integration LT-04 and remaining LT-07..13, with source tests only until final acceptance build.
+
+
+## 2026-10-23 — LT-06 backup bilingual UI and immediate locale/font restore (source-only)
+- **Production changed: YES.** The real offline JSON backup sheet now renders Arabic or English labels, controls, confirmation and completion feedback from the active UI locale. It preserves version-1 backup compatibility and the legacy `storylens_` storage keys. After explicit restore confirmation, imported `uiLocale`, `fontArabic` and `fontEnglish` are reapplied through `LinguaShell` immediately, before the library redraw; no restart needed. Invalid follow-up import clears staged data. No network, permissions or app identity changes.
+- **Production + regression commit:** `02df291d373e7e050df6b09c5a058f25da158109` on draft PR #1. `tools/data-backup.test.cjs` adds a real-module VM bilingual dialog/confirmed-restore/invalid-input regression.
+- **PASS (isolated actual production JS):** executed the modified `data-backup.js` in an in-memory V8 DOM/storage harness; English and Arabic sheet text, confirmed restore of locale + both fonts, and malformed JSON rejection passed. JS syntax parsed successfully. **NOT TESTED:** native `node tools/data-backup.test.cjs` against a full checkout, full Node suite, Android CI on this SHA, real device import and restart. The repository test is authored but was not executed here.
+- **CI:** deliberately skipped via `[skip ci]` in the commit message under the final-only APK policy. **APK:** none built for this SHA. **LT-06/LT-12:** PARTIAL source PASS; full localization/font rendering remains NOT TESTED. No new LT-13 theme or icon is claimed.
+- **Next:** finish dictionary/review/error i18n, restore validation and all LT-01..13 requirements, then single final Android build and independent real-device recheck. `AUTOMATION_COMPLETE: IN_PROGRESS`.
+
+## 2026-10-24 — LT-06 Settings continuity and bilingual discovery/dictionary controls (source-only)
+- **Production:** `lingua-shell.js` now preserves the open Settings dialog when changing UI language, reopens it in the selected locale and restores focus to the language selector after a library redraw; preserves library scroll and offline `uiLocale` preference. Commit `128006dc6e3a98f4e91af174ffda7df92b7b9844`.
+- **Production:** `library-experience.js` now localizes discovery favorites, level/sort selectors, counts, empty states, accessibility labels, reading-comfort settings and dictionary sense-choice **UI labels** in Arabic/English. The underlying Arabic dictionary senses, original English stories, storage keys and translation content are unchanged. Commit `0ec872b0d6b86d813245aa6fab33be03e2c7dc24`.
+- **Tests authored:** `tools/library-experience.test.cjs` now exercises the exact locale-switch handler in a Node VM (Settings close/reopen/focus/scroll), bilingual helper behavior, label coverage and Arabic dictionary-sense preservation. Test commits `1ff528e0f496b5b4d96e5b2fd8500a16b39bd3f1`, `7a54d25ff9537bb63df75ac60d8cc7954b02440b`.
+- **PASS (isolated source execution):** production `applyLocale` extracted from latest branch and executed in V8; observed persisted `en`, close → library redraw → scroll restore → reopen Settings → focus locale selector. Parsed all three modified JavaScript files in V8; production locale helper returned Arabic/English correctly; nine new English labels and unchanged dictionary-sense assignment verified. **This is not a full Node suite run.**
+- **NOT TESTED:** native `node tools/library-experience.test.cjs` in complete checkout, full JS suite, Android CI/APK, actual Pad 5 UI, complete LT-06 localization audit, approved text-bearing adaptive icon, LT-07/08/11 content/media and independent device recheck.
+- **Build policy:** commits include `[skip ci]`; no interim APK or workflow was intentionally launched. `AUTOMATION_COMPLETE: IN_PROGRESS`.
+
+## 2026-10-24 — Keyboard-accessible dialogs (source-only)
+- **Production commit:** `339772e2c7dcf304a2b17e7d66474231e702c0f8` updates `lingua-shell.js`. Settings and genre drawer now trap forward/reverse Tab inside the active dialog; Escape dismisses the topmost dialog and restores menu focus after Settings. One global listener avoids multiplying handlers on library redraws.
+- **Regression commit:** `59ca73ad58a9119b1c3e18987ea04a22807fb9fa` extends the existing Node shell suite with Tab, Shift+Tab, Settings Escape and focus restoration cases.
+- **PASS (isolated V8):** syntax parse of the exact updated production JS; extracted production keyboard handler executed in 3 focused cases (Tab, reverse Tab, drawer Escape). **NOT TESTED:** complete repository Node test suite, new Settings regression execution, Android accessibility/TalkBack, keyboard hardware, actual launcher icon and device recheck. No APK, no GitHub Actions trigger, no main write or auto-merge.
+- **Next:** complete bilingual UI and exact approved text-bearing icon asset, test all navigation with keyboard/TalkBack and physical Pad 5 before the single final APK.
+
+
+## 2026-10-24 — LT-08 offline inline illustration rendering infrastructure (no APK)
+- **Production source:** `reader-experience.js` renders optional chapter `inlineArt` entries immediately after their matching `paragraphs[index]` sentences. Each entry may specify `afterParagraph`, packaged relative `src` under `art/`, mandatory accessible `alt`, optional `credit`, and `position` (`wide`, `edge-start`, `edge-end`). Rendering uses DOM `textContent`, not HTML interpolation. CSS has responsive no-overlap fallbacks and lazy image decoding.
+- **Security/offline:** external URLs, absolute paths, traversal, missing alt, duplicate paragraph anchors and unsupported formats are skipped; no `INTERNET` permission or remote image dependency added. Existing English text and Arabic translations are untouched.
+- **Source/test SHA:** production `5b2095b601d409c040a7721c5eb13e1792419433`, CSS `c57d96bab84a98f422f54003da1fd7bf836f23e1`, regression `9439ef0f191ced5601b465b928fae926cdd1ce69`.
+- **PASS:** executed actual committed reader JavaScript in V8 with simulated DOM: 2 valid images placed at expected anchors; rejected remote/traversal/duplicate; checked alt and lazy loading. **NOT TESTED:** committed Node test on Node, Android renderer, accessibility screen reader, image crop/contrast and offline loading from a packaged real illustration.
+- **LT-08 PARTIAL ONLY:** this is the renderer and safety contract; **no approved, licensed, scene-matched art files have been bundled**. No new LT-13 theme claimed for this narrowly scoped infrastructure batch. The original user-approved text-inclusive launcher icon is still **NOT INTEGRATED**. No interim APK or Actions build.
+
+## 2026-10-24 — LT-08 safe inline-art budget (source-only)
+- **Production SHA:** `02f0bb74d8bfcff284f1850c9b6dd5075dbd3b02`; **regression SHA:** `902c838da7a6285c935a99e4d96453d8db00dbd3` on draft PR #1.
+- **Fix:** invalid/remote/traversal/unlabeled illustration entries no longer consume the 12-valid-image budget. Reader scans at most 64 candidates to avoid unbounded work from a malformed catalog; duplicates remain excluded and local-path/alt allowlist is preserved.
+- **PASS:** executed the modified **actual production** `reader-experience.js` in V8 with a fake DOM: 14 rejected remote entries followed by two safe anchored illustrations both render; 20 valid illustrations render only the first 12. No original Arabic paragraph text was altered.
+- **NOT TESTED:** full Node test file execution, Android/WebView layout, image asset licensing and editorial review, physical-device scroll/memory, accessibility and independent recheck. No final licensed art has been supplied by this patch. **No APK build requested**; commits use `[skip ci]`.
+- **Status:** LT-08 remains PARTIAL / IN_PROGRESS; approved text-bearing launcher icon and full LT-01..13 acceptance remain pending.
+
+
+## 2026-10-24 — Corrupt bookmark navigation hardening (source-only)
+- **Production commit:** `97e95b8aa4d6816e978f4069cbdb6172566b2683` in `reader-experience.js`. Restoring an old/imported bookmark now rejects non-integer, NaN and negative chapter indices; clamps chapters removed by content updates; sanitizes non-finite/negative scroll offsets. Direct chapter navigation rejects non-integers. Existing numeric bookmarks remain supported.
+- **Regression commit:** `313a5425e0b9d78cd34c40731ae26ef1419e8fe1` adds `tools/bookmark-navigation.test.cjs` with invalid/valid chapter and scroll cases.
+- **PASS:** executed the **actual modified production JS** from the PR in a V8 harness: four bookmark restoration scenarios (invalid chapter, infinite scroll, out-of-range chapter/negative scroll, valid chapter/scroll). Production file blob SHA `8cae8d93557cb8c5e003ce8b8d342d64d125a642`.
+- **NOT TESTED:** Node test file through the full repository runner, Android browser/Pad 5, upgrade migration, device gestures, icon and media. No APK or Actions run intentionally triggered. Existing CI workflow remains unchanged. Status: **IN_PROGRESS**.
+
+
+## 2026-10-24 — Legacy chapter progress and scroll safety (source-only)
+- **Production commit:** `a4b74caea89612d34e2231d57fbcd3ded9134e97`; **regression commits:** `0564243b88ee532b2cf3c692f4e79073619b6694`, `c7f93cde9da14113212e5b983f1fad46bfe689b5` (draft PR #1, never main).
+- **Fix:** reader's library/continue chapter index rejects fractional, NaN and non-finite saved progress, clamps removed chapters; chapter-picker restores only finite, nonnegative, bounded scroll offsets. This complements the earlier bookmark jump guard and does not alter story text or saved data formats.
+- **PASS:** parsed and executed modified production JavaScript inside V8 with a mocked reader and storage; checked invalid/fractional/oversized chapter progress, infinite and negative scroll, and valid scroll restoration. Separately verified the committed regression test parses and its source-extraction regex matches the real production helper; 4 index cases passed in V8.
+- **NOT TESTED:** full committed Node test suite, Android WebView/Pad 5, live migration, FPS, icon integration, final licensed art, full bilingual UI, independent recheck.
+- **Build:** no APK, no workflow dispatch, no merge, no paid API; existing workflows unchanged. Status: **IN_PROGRESS**.
+
+## 2026-10-24 — Fail-closed offline backup export (source-only)
+- **Production commit:** `3304cdbf93aed5f20bc062d680290c0ead122851` updates `app/src/main/assets/data-backup.js`. An allowed learning/progress key with malformed JSON or an invalid schema now stops export with the exact key identified, rather than silently disappearing from an apparently successful backup. Unrelated storage keys remain excluded. Legacy `storylens_` keys and backup format remain unchanged.
+- **Regression commit:** `693fc80b0e016a6e26656470febff82e5277230a` adds malformed cards, wrong-shaped cards and invalid chapter progress tests to `tools/data-backup.test.cjs`.
+- **PASS (production V8 smoke):** executed the actual modified JavaScript export function with mock localStorage: corrupt JSON and wrong-shaped allowed values rejected; valid data exported; unrelated key excluded.
+- **NOT TESTED:** complete Node test suite, Android/WebView storage-quota behavior, real restore/device upgrade and independent QA. No APK build, no Actions dispatch, no paid API, no main write or merge. **IN_PROGRESS.**
+
+## 2026-10-24 — UTF-8-safe offline backup boundaries (source-only)
+- **Production commit:** `7ed6ce311b36f97951b284dc0cf618a04e6fa952`; **regression commit:** `10055cb720853fbe36b6f767ba0df97d2e454026` on Storylens PR #1 (not `main`).
+- **Fix:** backup export and pasted/imported JSON now enforce the 1,500,000 limit in actual UTF-8 bytes rather than UTF-16 code units. This prevents Arabic/CJK/emoji data from passing the WebView check only to exceed Android's UTF-8 SAF file limit. Correct surrogate-pair and malformed-surrogate replacement byte accounting; existing v1 format and `storylens_` storage identifiers unchanged.
+- **PASS:** executed the exact committed production JS inside V8 with fake offline localStorage; 5 checks: CJK oversized export/import, valid Arabic backup roundtrip, mixed-script backup, emoji oversized import. Regression file parsed successfully. **No Node/Android APK build.**
+- **NOT TESTED:** full `node tools/data-backup.test.cjs` in a complete checkout, full Node suite, Android SAF roundtrip, physical device, final approved icon and LT-01..LT-13 acceptance.
+- **CI:** no PR workflow run on code/test head when checked. All commits use `[skip ci]`. **Status:** IN_PROGRESS.
+
+
+## 2026-10-24 — Vocabulary backup schema and audio-free settings (source-only)
+- **Production commits:** `df9b5f4476aa61374847f214001d10090b36f0af` (backup text-map validation) and `2f012d87612d082b65ed8c9d67cfd95a6c59999c` (settings wording). **Regression commits:** `f26002958d032ce49d468a427d0a3ca7d4cdfcc9` and `2dd56b73c710f71a2241ebf74692312a3626b99d`, all on draft PR #1.
+- **Fix:** `written_examples` and `wordSenses` backups now reject nested objects, arrays, booleans, null, and oversized text keys/values; valid Arabic sense strings and ordinary English usage examples remain accepted. Export fails visibly for corrupt allowed keys instead of silently dropping learning data. Settings no longer advertise optional audio, which is outside the approved product scope.
+- **PASS:** executed the **actual modified production JavaScript** inside V8 with fake offline storage: 10 checks covering valid maps, malformed imports, invalid export and roundtrip. Parsed the committed Node test file in V8. **FAIL:** none observed in the checks run.
+- **NOT TESTED:** full committed Node suite, Android WebView backup import/export, real device upgrade, screenshot/launcher icon, complete LT-01..13 requirements, offline/performance/accessibility and final APK. The committed Node regressions are authored but not yet executed in the full project runner.
+- **Build/merge:** no APK or Actions dispatch; no main writes, merge, paid API or Library/Handoff. Status **IN_PROGRESS**. Do not run APK builds until final feature/test gates pass.
+
+## 2026-10-24 — Android SAF import callback execution regression
+- **Production SHA:** `8e4efdf6d51531ec9ae36927ced17595705665f3`; **test SHA:** `f6fc40bd5b1e1b3b475d154515326b6496afee4c`. The prior source contained literal `\\n` inside a Kotlin `//` comment, swallowing the entire `notifyBackup("receiveImport", BackupUtf8.decode(...))` statement. Successful file picks therefore never delivered backup JSON to the JavaScript importer. Restored real source newlines so the strict UTF-8 callback executes after reading.
+- **PASS (source/static):** 7 checks on actual PR-head `MainActivity.kt`, including exactly one executable `receiveImport` call, read-before-delivery, catch ordering, no escaped-newline comment, and JS regression test syntax. New regression lives in `tools/data-backup.test.cjs`.
+- **FAIL:** 0 in the completed source/static gate. **NOT TESTED:** full Node suite, Android Kotlin compilation, SAF picker on device, backup round-trip, upgrade and performance. No APK or workflow run; zero PR-triggered runs reported for the test commit. User-approved icon and other product gates remain incomplete.
+
+AUTOMATION_COMPLETE: IN_PROGRESS
+
+## 2026-10-24 — LT-13 Botanical Folio editorial theme (source milestone)
+- **Production:** `app/src/main/assets/lingua-shell.js` now registers **Botanical Folio** in the persisted Settings theme gallery; `lingua-shell.css` adds a distinct static field-journal composition: sage/moss palette, pressed-leaf hero, specimen-cover card geometry, botanical drawer, matte reading surface and responsive tablet/phone layout. No network images, downloaded fonts, continuous animation or new permissions.
+- **PASS (production JS):** executed the latest GitHub `lingua-shell.js` inside V8 with mocked DOM; **12 checks** covered theme registration, applying/persisting the selection, replacing the previous body class, rejecting invalid themes, and six required CSS surfaces. A committed Node regression `tools/botanical-theme.test.cjs` exercises the actual production JS and stylesheet.
+- **NOT TESTED:** committed Node suite as a complete repository checkout, Android CSS rendering, contrast screenshots, RTL/LTR visual comparison, reduced-motion, memory/FPS and real Pad 5 launcher. A static/CSS/V8 test is not device or visual acceptance.
+- **Gate:** LT-13 implementation for this theme **PASS (source)** / **NOT TESTED (device)**; all remaining LT-01..LT-13 gates stay open until evidenced. Do not count one new theme as full app completion.
+- **Commit checkpoint:** `31da47b49dcdec2791a499ed932dc1e95da1b369` (source + CSS + regression, PR #1 only). No APK/Actions build, no merge/main write.
+
+
+## 2026-10-24 — LT-01/LT-04/LT-13 launcher + Rain Glass milestone
+- **Source checkpoint before CI:** `596a8f95d5ee6f5684d84fe48025f20ce01b517f` was the prior head; subsequent commits on this PR add the milestone. Keep `applicationId=com.storylens.reader`, `storylens_` storage keys, backups and dictionary formats unchanged for upgrade continuity.
+- **Production:** User-facing catalog/hero brand now **Lingua Tales**; launcher manifest uses a real Android adaptive icon with separate gradient background, open-book/petals foreground and monochrome themed layer. These are new project-specific vector resources, not imported third-party marks. This approximates the approved Liquid Glass motif; exact match to the previously approved raster reference is **NOT TESTED** because that source image is not in this repository.
+- **Production:** **Rain Glass** is an additional selectable/persisted offline theme, with windowpane hero, horizontal framed cards, cool reading surfaces and RTL-aware existing drawer. No new network dependency, audio permission or per-frame animations.
+- **PASS (source only):** 22 V8 checks executing the actual `lingua-shell.js` from the PR, validating theme registration/application/persistence, invalid-theme rejection, six CSS surfaces, static/offline CSS, launcher resource references, manifest label, and unchanged storage/application ID. Added `tools/rain-glass.test.cjs` and `tools/test_lingua_launcher.py`.
+- **Build question:** Will Android 36 resource compilation accept the new adaptive vector/monochrome icon, package all layers, and retain the correct launcher label? Source-only checks cannot validate AAPT2 packaging. One purposeful PR CI build is justified for this milestone; record exact run/artifact/SHA separately once available. This is **not** a final APK or a physical device test.
+- **NOT TESTED:** Android icon masks on real launchers, actual tablet screenshots/FPS/RAM, app upgrade with saved user data, full Arabic/English journeys, remaining LT-07/08/11/12 content/media QA. No final release.
+
+## 2026-10-24 — LT-06 reader keyboard access to Arabic translations (source milestone)
+- **Production SHA:** `a796c28dd0946d3f6274119d9f80f43f43c8ea55`; **regression SHA:** `f04dad849c59538cc9ea730a168f753ab0c42828` on draft PR #1, not `main`.
+- **Change:** Focused English source sentences now support **Enter and Space** to toggle the exact same Arabic translation as long-press/context menu. Translation retains `lang=ar` and RTL; English sentence remains `lang=en` and LTR. Keyboard events from interactive descendants are ignored; Space prevents unwanted scrolling only when the sentence itself has focus. Accessibility help is bilingual. No new permission, microphone, TTS, content rewrite or storage migration.
+- **PASS (source/V8):** Executed the **committed reader regression script** against the **committed production reader JavaScript** using a V8 Node-API compatibility shim. The script checked chapter/bookmark navigation, long-press, Enter/Space translation toggle, descendant focus, Tab, bilingual instructions and unchanged source translations. Also parsed the production JS and exercised 4 direct keyboard/context-menu scenarios with a simulated DOM.
+- **FAIL:** None in the executed checks; an initial incomplete test mock lacked `classList` and was corrected before the successful production-script verification. This was not a product failure.
+- **NOT TESTED:** Native `node tools/reader-experience.test.cjs`, full Node suite, Android TalkBack/physical keyboard, Android compilation/installation, Xiaomi Pad 5 performance, RTL visual screenshots, remaining LT-01..LT-13 end-to-end gates, APK/SHA-256.
+- **CI:** Zero PR workflow runs reported at regression SHA when checked; commits use `[skip ci]`. **Build decision:** no APK build: this pure reader-interaction regression is testable at source level; a later purposeful APK must address native accessibility/visual/gesture questions with device evidence. **Status:** IN_PROGRESS.
+
+
+## 2026-10-24 — LT-06 bilingual reader + LT-13 Solar Atelier milestone
+- **Production:** `lingua-i18n.js` is loaded after the existing shell and reader wrappers. It localizes **app chrome only** for reader navigation, reader settings, dictionary word sheet, saved vocabulary, SRS review and full-translation navigation in English UI. It does **not** translate or mutate original English story paragraphs, Arabic glosses, saved card meaning or full Arabic translation. Existing `uiLocale` preference and legacy `storylens_` storage keys are retained.
+- **Production:** new **Solar Atelier** theme in the Settings gallery: static warm cut-paper editorial layout, asymmetric sun-disc hero, geometric cards, independent reader colors, RTL-compatible existing drawer, and phone/tablet responsive rules. No remote assets or continuous animations.
+- **PASS (source):** executed the **actual committed** `tools/locale-journeys.test.cjs` against actual committed `lingua-i18n.js` in V8 with limited Node API shims: **37 assertions**, including bilingual reader, dictionary labels, SRS, full Arabic translation, English source preservation and Arabic UI fallback. Executed the actual `tools/solar-atelier.test.cjs` against production `lingua-shell.js/css` with V8 shims: **16 assertions**. These are not native Node/Android runs.
+- **FAIL:** none in 53 executed V8 assertions. **NOT TESTED:** full Node test suite, Android packaging, TalkBack/RTL screenshots, physical Xiaomi Pad 5 UI/FPS/RAM, real upgrade, entire LT-01..LT-13 acceptance, final APK and SHA-256.
+- **Purposeful build question (authorized 2026-10-24):** do the new script and theme survive full native Node/Android CI, and does AAPT2 package the launcher/resources? Source-only V8 cannot answer Gradle compilation, APK asset packaging or integration with the real WebView. A single targeted CI run is justified for this milestone, **not a final release or device PASS**. Workflow and exact run/artifact must be recorded only if actually observed.
+- **Scope:** draft Storylens PR #1 only; no `main`, no auto-merge, no paid API, no Library/Handoff. **IN_PROGRESS.**
+
+
+### Targeted Android CI evidence for bilingual/Solar Atelier milestone
+- **PASS (GitHub Actions):** source SHA `5b399aa8dc090c759d1b8c09b1e2669e715f4e4b`, run **40126808076**, `push` event on Storylens PR #1 head only. URL: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40126808076 .
+- **Verified job logs:** actual Node `locale-journeys.test.cjs` and `solar-atelier.test.cjs` PASS; Gradle `:app:testDebugUnitTest :app:assembleDebug` **BUILD SUCCESSFUL (29s)**; AAPT2 adaptive icon and critical offline assets including `lingua-i18n.js` packaged; desktop Chrome reader/word/chapter/bookmark/translation/theme flow PASS.
+- **Real artifacts:** debug APK ZIP artifact **12573722602** (`StoryLens-Debug-APK`); browser screenshots artifact **12573652714** (`StoryLens-UI-Screenshots`). These are *CI debug artifacts*, not final release. APK inner-file SHA-256 **NOT TESTED** (not printed by this workflow). CI did not install it on Xiaomi Pad 5.
+- **NOT TESTED:** real Android install/upgrade, physical Pad 5 bilingual UX/animations, performance/thermal, TalkBack, 100% offline field verification and all remaining LT acceptance. No claim of final app. **IN_PROGRESS**.
+
+
+## 2026-10-24 — LT-02 resume/navigation continuity milestone
+- **Production changes (PR #1 only):** `reader-experience.js` sanitizes imported/stale chapter indices before the original reader indexes chapter data; `lingua-shell.js` resumes the saved per-story/per-chapter scroll offset, restores the library's previous scroll and keyboard focus on the rebuilt card after close, focuses the reader heading without scrolling, and restores the English reader position after viewing the full Arabic translation. A deferred frame captures the exact story ID so rapid navigation cannot apply an older story's scroll offset to another one.
+- **PASS (actual production navigation IIFE, V8):** 20 consecutive open/close cycles with synthetic browser history and DOM, persisted scroll and focus checks, plus chapter resume and Arabic-translation return; no stuck page or incorrect scroll in the executed scenarios. These checks execute the real production navigation function but simulate the DOM and Android history.
+- **Committed regression:** `tools/story-transitions.test.cjs` exercises the actual production navigation block, 20 cycles, repeated Back, chapter resume, focus, full Arabic translation, invalid scroll and reduced-motion behavior; registered in `.github/workflows/android.yml`.
+- **NOT TESTED:** native Node execution of the new committed regression, complete CI at this latest source SHA, Android system Back/gesture and real WebView timing, device upgrade/scroll FPS, accessibility/TalkBack, physical Pad 5. LT-02 is **PASS for the isolated production logic** but **NOT TESTED for real-device acceptance**.
+- **Build decision:** no new APK for this source milestone: browser navigation logic is independently testable in V8 and the prior Android build already passed. A later targeted device build must answer Android Back/gesture and visual timing questions, not merely repeat a routine APK compilation.
+- **Scope:** no main, auto-merge, paid API, private assets or Library/Handoff; LT-01..LT-13 final acceptance remains IN_PROGRESS.
+
+## 2026-10-25 — Reader sentence-reveal continuity (source milestone)
+- **Production SHA:** `102becb19ede1a472d92ec74b25b93a2a2b2ff5a`; **regression SHA:** `195ae8df186a7e1f577ee89aa0c73fcb755a0a57` on PR #1, not main.
+- English sentences and exact Arabic translations are unchanged. User-revealed Arabic sentence translations now survive reader re-render and return to the same chapter; hiding a reveal remains hidden. Chapter state is isolated. In-memory state is capped at 40 chapters / 200 reveals each and avoids synchronous per-tap storage writes. Reveals are intentionally **not** persisted across app restarts.
+- **PASS:** Six functional V8 checks executing the **fetched production reader-experience.js** with a synthetic reader DOM: first reveal, re-render restoration, explicit hide, hidden re-render, chapter isolation, return-to-chapter restoration. Added corresponding repository Node regression tests.
+- **NOT TESTED:** Committed Node suite, new Android APK compile, TalkBack, Pad 5 re-render/scroll/performance, offline physical device. Earlier CI run `40126808076` and APK artifact `12573722602` passed/exists on an **older SHA**; they do not validate these changes.
+- No new build requested: this round's question was isolated re-render state behavior; the existing production JS can be exercised without an APK. Device accessibility/performance remains a separate necessary acceptance gate.
+
+## 2026-10-25 — Indexed dictionary/idiom taps + Ink Workshop theme (LT-03/07/13)
+- **Functional source milestone:** new `app/src/main/assets/lingua-lookup.js` lazily indexes edited multiword phrases and dictionary headwords by clicked token, chooses the longest matching phrase at the exact occurrence (including repeated phrases), preserves inflection and licensed supplemental dictionary fallbacks, and returns unknown words without fabricated contextual definitions. `reader-experience.js` intercepts token taps in capture phase and reuses the existing word sheet/SRS path, avoiding the old full-phrase regex scan on every tap. This is a source-level performance improvement; no FPS or latency improvement is claimed without Pad 5 measurements.
+- **LT-13 theme:** new **Ink Workshop** uses asymmetric black/red print-studio hero, magazine-style side-cover cards, serif reader rules, a high-contrast drawer, responsive narrow layouts and no network textures or infinite animations. The Settings gallery persists it offline. Backup validation now accepts **all** currently supported themes (including Botanical Folio, Rain Glass, Solar Atelier and Ink Workshop) instead of silently rejecting newer selections.
+- **Regression and integration:** `tools/phrase-lookup.test.cjs` and `tools/ink-workshop.test.cjs` run against production modules in CI. A pre-existing synthetic LT-02 navigation fixture omitted `get` and `querySelectorAll`, which the real app supplies; the fixture was repaired without changing the production transition controller. Earlier run **40139684844 FAIL** in that fixture; do not misreport it as a reader runtime failure.
+- **Purposeful build question:** Does Android compilation package the new offline lookup module and adaptive launcher, and does the full reader/word sheet/backup journey still work after interception? Isolated JS tests cannot establish APK resource packaging or WebView integration. A single end-to-end branch build is justified for this connected milestone; not a final release.
+- **PASS CI on production SHA `ef9728546738b4874437407dfe6f18d15c25566a`:** [Actions run 40139926288](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40139926288) completed successfully. Logs show Ink Workshop and indexed idiom Node tests PASS, Gradle `BUILD SUCCESSFUL`, new asset and adaptive launcher packaged, and desktop-browser library + full reader/word sheet/chapter/bookmark/translation/theme journey PASS. Independent V8 fetch of production JS/CSS/backup recorded 11 focused assertions PASS.
+- **Artifacts:** Debug APK archive **12578540992** and UI screenshot archive **12578865623** exist on that run. CI wrote `APK_SHA256.txt` into the APK artifact, but **inner APK SHA-256 has NOT been independently read/verified** here; do not confuse archive hashes with APK hashes.
+- **NOT TESTED:** installation or upgrade on Xiaomi Pad 5, actual frame timing/jank, Android system Back, real-device icon masks, TalkBack, the theme's visual acceptance, editorial licensing/translation of new long works, licensed ~20 soundtracks, and independent second-pass device acceptance. **LT-01..13 remain IN_PROGRESS**, not all accepted.
+- **Scope:** Storylens draft PR #1 only; no main, release, paid API, personal assets or ChatGPT Library/Handoff. Documentation-only commit uses `[skip ci]` to avoid an unnecessary second APK build; CI above validates the exact preceding production SHA.
+
+### Independent Debug APK byte verification for LT milestone
+- Downloaded the actual Actions artifact **12578540992**, opened its ZIP, and independently SHA-256 hashed `app-debug.apk` (**4,233,456 bytes**): **`f0c0f9abe571ed2677c1e028a1e8d5814e7f8e70ad3f68a63e60fbfe718684de`**. It exactly matches the bundled `APK_SHA256.txt`.
+- Inspected the inner APK: `assets/lingua-lookup.js` and `res/mipmap-anydpi-v26/ic_launcher.xml` are present. **PASS artifact integrity/resource packaging.** Device installation, icon appearance and Pad 5 performance remain **NOT TESTED**. This is a Debug validation artifact, not a final release.
+
+
+## 2026-10-25 — LT-11 opt-in offline soundscapes + LT-13 Velvet Theatre (functional batch)
+- **Production source SHA:** `1baf327c9fc44781cfb4fc1ed219d8d10c6440c6`; **targeted CI/test workflow SHA:** `2a40d4b05abab880a0606f3349fa350b27909d0b`, draft PR #1 only.
+- Added `lingua-ambience.js`: 8 original *procedurally synthesized* ambience previews (rain, distant storm, forest, night, ocean, fire, wind, cabin) using a single lazily created Web Audio context and a reused 2-second mono noise buffer, plus independent opt-in button feedback. Separate ambient/SFX volume, scene selector, explicit Play/Pause, silent default, pause on page hide, no microphone/network permissions, no recording/TTS. The presets are **not** 8 licensed recorded tracks or a finished ~20-track music catalog; music/audio quality and Android audio focus remain open.
+- Added bilingual Settings controls and strict `audioPrefs` offline-backup validation. Added fully distinct **Velvet Theatre** theme: burgundy matte stage, gold marquee, ticket-shaped cards, opaque cream reading surface and responsive layout. Existing themes remain selectable.
+- **PASS isolated production-source checks:** 16 functional V8 checks on fetched exact JS/HTML/shell/CSS/backup: no audio context at startup, 8 scenes, invalid scene rejection, volume clamp, preference persistence, lazy audio graph start, context reuse, old node cleanup on scene change, explicit pause, visibility pause, no hidden autoplay, Settings wiring, theme and backup validation. These use a fake AudioContext, **not acoustic output or WebView hardware**.
+- Added `tools/ambience.test.cjs` and updated branch CI to run it and assert `assets/lingua-ambience.js` is packaged into Debug APK. **Purposeful build question:** does the complete Node test + Android resource/asset packaging and browser journey still pass after enabling optional Web Audio and a new theme? Isolated JS cannot prove Android asset inclusion or AAPT2 compatibility. Target [Actions run 40147334938](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40147334938) was **IN_PROGRESS at documentation time**; CI on the final SHA is **NOT TESTED pending completion**. Earlier run 40147250180 PASS on audio production SHA before adding targeted test.
+- **NOT TESTED:** sound on Xiaomi Pad 5, audio focus/silent-mode interruptions, power use, physical theme screenshots/contrast, long authentic licensed literature, licensed ~20 music/ambience files, and final LT-01..13 acceptance. No final APK or merge. Do not count synthesized previews as completed LT-11.
+
+
+### LT-11/LT-13 targeted CI completion (supersedes pending status above)
+- **PASS:** [Actions run 40147334938](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40147334938) completed successfully on exact functional/workflow SHA `2a40d4b05abab880a0606f3349fa350b27909d0b`. Job steps show PASS for `node tools/ambience.test.cjs` within curated offline content checks, Android Gradle unit tests/Debug assembly, asset packaging (including `lingua-ambience.js`), and browser library/reader smoke. The new audio module is included in a real Debug APK.
+- **Real artifacts:** Debug APK ZIP **12580578648**, screenshot ZIP **12580209339**. Archive digest is not the inner APK checksum; **inner APK SHA-256 independently verified: NOT TESTED**.
+- **NOT TESTED:** audible output on Xiaomi Pad 5, Android audio focus and background battery, independent visual theme review, licensed music/20 tracks and real device install. The source and CI gates do not complete LT-11 or LT-13 final acceptance.
+
+
+## 2026-10-25 — LT-11 expanded offline previews, lifecycle race and Celestial Atlas
+- **Functional/CI SHA:** `11e9bda882726b2cbe690032a8a135adfc74d9b7`, draft PR #1 only.
+- **Production:** expanded the **original procedurally synthesized** soundscape preview catalog from 8 to 20 bilingual selectable scenes; uses the existing single lazy Web Audio context, shared short noise buffer and one active graph at a time. These are **not** 20 licensed recordings, musical compositions, or verified acoustic-quality tracks; LT-11 recorded-music licensing, actual sound quality and Android audio focus remain open.
+- **Lifecycle correctness:** generation token prevents an in-flight `AudioContext.resume()` from starting a hidden/paused sound graph after a visibility change or Pause. The user must explicitly Play again. Existing opt-in/silent-default, no mic/TTS/network restrictions remain.
+- **LT-13:** **Celestial Atlas** is a new, static observatory/chart theme with brass grid, concentric compass hero, book-spine two-column cards, separate cream reading surface, RTL-compatible drawer and narrow responsive layout. Offline backup accepts its theme ID and all 20 scene IDs.
+- **PASS source (exact production JS blob `b8d21704a616dc49c4c4e8ec11bd63079d0331ba`):** 29 V8 assertions with synthetic AudioContext across all 20 scene switches, graph cleanup, silent start and pause; additional delayed-resume/visibility race PASS (0 sound nodes started). This is **NOT real audio playback**.
+- **New repository tests:** `tools/ambience.test.cjs` extended for 20 scenes/race, `tools/celestial-atlas.test.cjs` for real theme selection/persistence/CSS; CI workflow runs both.
+- **Purposeful Android CI question:** do new audio/theme/backup modules pass native Node regression, Gradle Android compile, APK asset packaging and browser journey? Isolated V8 cannot verify these. [Run 40151342993](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40151342993) was **IN_PROGRESS** when checked; **CI/Artifact: NOT TESTED pending completion**.
+- **NOT TESTED:** real Pad 5 audible output, focus/silent mode, battery/thermal, 20 licensed recordings/music, real visual screenshots/contrast, long literature/translation, end-to-end LT-01..LT-13, final signed APK. **IN_PROGRESS**. No main, auto-merge, paid APIs or Library/Handoff edits.
+
+
+### Targeted CI completion for 20-scene/Celestial Atlas milestone
+- **PASS** [GitHub Actions 40151342993](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40151342993) on exact functional/workflow SHA `11e9bda882726b2cbe690032a8a135adfc74d9b7`: curated offline Node suite including the new 20-scene audio/race regression and Celestial Atlas theme test; Gradle `:app:testDebugUnitTest :app:assembleDebug` **BUILD SUCCESSFUL**; APK packaged critical assets and adaptive launcher; Chrome library and full reader/word/chapter/bookmark/translation/theme journey PASS.
+- **Actual artifacts:** `StoryLens-Debug-APK` ID **12583060932**, `StoryLens-UI-Screenshots` ID **12582946080**. GitHub CI `sha256sum` of inner `app-debug.apk`: **`5382dd98ffdf13707aeaf644f99fad2a434c6670267b19e381cef92d7d4812ab`**. This digest was recorded by CI logs; **independent re-download/re-hash NOT TESTED**.
+- **NOT TESTED:** physical Xiaomi Pad 5 install/audio quality/volume/focus/performance, visual theme approval, licensed 20-track music catalog, all LT-01..LT-13 final acceptance. Debug APK is not a release. **IN_PROGRESS**.
+
+
+## 2026-10-25 — LT-07 complete original bilingual novella + LT-13 Harbor Ledger
+
+- **Functional branch SHA before evidence note:** `c00b5accb91e44bbded8137c0cdaae2000ad81bc`, draft PR #1 only; no `main` write.
+- **New production content:** `app/src/main/assets/novella-salt-meridian.js` adds **The Salt Meridian**, a complete original five-chapter maritime mystery with **50 aligned English/Arabic passages**, **1,470 English words**, **14 edited, source-occurring expressions**, original-provenance metadata and explicit **independent editorial review pending**. This is original fiction, **not** a Jules Verne translation or a public-domain classic. Existing 36 stories are retained, bringing the runtime catalog to **37 works**.
+- **Offline artwork:** five chapter-scene SVGs generated by the existing local editorial-art engine. These are chapter hero scenes, **not** independently licensed photographic/inline illustrations; LT-08 remains incomplete.
+- **LT-13:** new **Harbor Ledger** theme: maritime ruled-paper reading surface, nautical compass hero, brass-accent field-book cards, responsive layout and RTL-aware drawer. Settings and offline backup theme whitelist updated; no animated texture loop or remote font request.
+- **PASS source (production JS evaluated in V8):** novella registers, 5 chapters / 50 paired passages / 1,470 words, all 14 expressions occur in English passages, all Arabic pairs present, 5 local chapter SVG scenes, theme/backup/CI wiring. Additional committed Node regression `tools/salt-meridian.test.cjs`, editorial integration count updates and browser journey fixture updates.
+- **Purposeful Android build question:** Does the 37-work catalog pass actual Node/Chrome navigation tests and does Android package the new offline book, art generator and theme without breaking the existing reader? Source-only V8 checks cannot verify Chrome reader flow, AAPT2/Gradle packaging or screenshots. Target [Actions 40155296890](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40155296890) **IN_PROGRESS at this checkpoint**. Earlier intermediate run 40155202446 **FAIL** in browser QA because fixture still expected 36 works; corrected in `tools/make_browser_fixtures.py` and the newest run is the acceptance candidate.
+- **NOT TESTED:** independent bilingual literary editing, physical Xiaomi Pad 5 install/FPS, real licensed long classics (including Verne), per-scene inline licensed illustrations, ~20 licensed recordings/music, full LT-01..13 acceptance and final signed APK. **IN_PROGRESS**.
+- **CI economy:** branch workflow now cancels superseded intermediate builds; no paid services, no auto-merge, no Library/Handoff changes.
+
+
+### LT-07/13 purposeful CI result (supersedes pending status above)
+- **PASS:** [Actions 40155296890](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40155296890) on exact functional SHA `c00b5accb91e44bbded8137c0cdaae2000ad81bc`. Curated Node suite including `salt-meridian.test.cjs`, Android Gradle unit/Debug assembly, APK offline asset packaging and full Chromium reader/word/chapter/bookmark/translation/theme journey passed. The browser fixture's old 36-work assumption was corrected to 37; earlier intermediate CI failures were not counted as success.
+- **Real artifacts:** Debug APK ZIP **12583968311** and UI screenshot ZIP **12584407744**. CI-calculated SHA-256 of inner `app-debug.apk`: **`afd3cb4e6a1a741c9a781f9031c5eeeab0a0bdcd1712608027f8344f8f7fbf47`**. Independent download/re-hash **NOT TESTED**; this is not a final APK.
+- **NOT TESTED:** actual Pad 5 installation/reading FPS, professional bilingual editorial review, long licensed classics, licensed music/inline images and independent final acceptance. LT-07 and LT-13 remain **IN_PROGRESS**, not complete.
+
+
+## 2026-10-25 — Reader semantic bookmark recovery (LT-02/LT-03 continuity)
+
+- **Production:** `reader-experience.js` now records the first visible English paragraph index plus its viewport offset when the user saves a bookmark, alongside the original chapter/pixel scroll. On reopening, it restores relative to that paragraph after font/theme/tablet layout changes. Existing bookmarks/backups with only pixel scroll still work; invalid/out-of-range/non-finite anchors fall back to the original validated pixel value. No new storage key, permission, network request or change to English/Arabic source text.
+- **Tests committed:** `tools/semantic-bookmarks.test.cjs` exercises actual production reader navigation, reflowed paragraph geometry, legacy backup and corrupt anchor fallback; registered in Android workflow. **PASS isolated V8:** three direct executions of exact GitHub production JS verified paragraph capture, reflow restore and legacy fallback. **NOT TESTED:** the committed Node test through Node, full browser/device integration, TalkBack, font/theme visual changes, Android install/upgrade and Xiaomi Pad 5 performance.
+- **Purposeful build question:** does the new semantic bookmark navigation pass the full Node reader suite and Chrome journey, and remain packaged in an installable Android APK? V8 mocks cannot prove DOM layout, packaging or Android compatibility. CI requested by this non-skip documentation checkpoint; mark **CI/Artifact NOT TESTED until a completed run for this exact SHA is inspected**. Debug APK, if produced, is not final.
+- **LT-01..LT-13:** still **IN_PROGRESS**; the long licensed literature, professional Arabic editing, licensed recordings, real Pad 5 performance and final independent device acceptance remain outstanding. No main/merge/paid API/Library/Handoff changes.
+
+
+### Semantic bookmark milestone — targeted CI completion
+
+- **PASS:** [Actions 40159154937](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40159154937) completed successfully on exact production/test SHA `8a068821d6e010f5976be1cd30448fb9439f94a3`. The committed `tools/semantic-bookmarks.test.cjs` executed and logged PASS for layout reflow, legacy bookmark restore and invalid-anchor fallback. Full curated Node suite, Android Gradle tests/assemble, adaptive icon/offline asset packaging, and Chromium library/reader journey passed.
+- **Artifacts:** `StoryLens-Debug-APK` ID **12585704121**; `StoryLens-UI-Screenshots` ID **12585990112**. CI-calculated **inner** `app-debug.apk` SHA-256: `5889de05c43501f88f9a438a16892fae9aaf4b58330a511a9d4d38db472645c0`. The ZIP artifact's SHA is a different value; **independent artifact download/re-hash NOT TESTED**.
+- **NOT TESTED:** Xiaomi Pad 5 font reflow, real physical scroll restoration, upgrade continuity, FPS, full LT-01..13 acceptance and final signed APK. This is a validated debug milestone, not a final release.
+
+## 2026-10-25 — Inflected idiom lookup + Circuit Notebook (LT-07/LT-13 partial)
+- Production phrase lookup SHA `c7ddd8c89083047e0d9683caa3eae94beede3b82`: source-offset integrity check, story-authored multiword phrases matched through existing local lemma rules (e.g. *went on* → *go on*, *took off* → *take off*) without inventing glosses; punctuation cannot bridge unrelated words. Existing dictionary and exact phrase fallback preserved.
+- Distinct `Circuit Notebook` theme: technical diagram grid hero, indexed squared cards, annotated ruled-paper reader, responsive layouts and reduced-motion fallback. Registered in settings and versioned backup validation. CSS and assets remain offline.
+- Open-source review: evaluated MIT wink-lemmatizer / wink-nlp; avoided adding their extra runtime/model payload because the app already has a local lemma helper, preserving performance and avoiding dependency/security surface.
+- **PASS (source):** direct execution of production JavaScript in V8: 8 phrase/offset cases before write and 4 additional source cases after commit; theme registration, CSS surfaces and persistence passed 7 direct checks. Committed Node regressions `tools/phrase-lookup.test.cjs` and `tools/circuit-notebook.test.cjs`, wired to CI.
+- **CI/Android:** NOT TESTED at this checkpoint: no confirmed run on exact workflow SHA `fad08783c6c333c6d87c12d13aa051dd168334f6`. Build is purposeful to verify real Node regressions, Gradle packaging and the visual theme's assets; V8 checks alone cannot prove Android/WebView integration. No APK SHA or artifact can be claimed yet.
+- **Device/editorial:** NOT TESTED — Xiaomi Pad 5 theme visual/FPS, accessibility, full LT-01..13, real long licensed literature and recording quality. PR #1 stays Draft; no main merge or final APK.
+- **2026-10-25 follow-up verification:** corrected one pre-existing test fixture's click offset to the real token start (SHA `555ef25ee00dba8a8b26965ad146e12ecc1ed458`). Executed **the exact committed** `tools/phrase-lookup.test.cjs` and `tools/circuit-notebook.test.cjs` using production files in V8 with a Node compatibility shim: **PASS** for both. This is not native Node or Android CI. No confirmed CI run/artifact for this SHA; device NOT TESTED.
+
+
+## 2026-10-25 — Keyboard dictionary accessibility + Terracotta Gallery (LT-06/07/13 partial)
+- **Production:** shared `lookupToken` in `reader-experience.js` now serves click/touch and keyboard Enter/Space, using the same exact English source offsets, lemma/phrase resolver and existing saved-word sheet. Paragraph Tab focus + ArrowRight enters per-word navigation; ArrowLeft/Right/Home/End, Escape and visible focus outline support hardware keyboards without creating a Tab stop for every word. This follows the W3C WAI-ARIA keyboard-interface focus-management pattern; physical TalkBack/Pad 5 behavior remains **NOT TESTED**.
+- **Theme:** **Terracotta Gallery**, an offline museum-wall style with terracotta/cream/green palette, framed landscape-cover cards, diagonal hero, gallery-border reader, responsive geometry and reduced-motion fallback; registered in Settings and backup allowlist. Distinct from Circuit Notebook's technical grid.
+- **PASS (source):** executed the **exact committed** `tools/keyboard-lookup.test.cjs` and `tools/terracotta-gallery.test.cjs` with production JS/CSS in a V8 Node-compatible fixture. Both PASS; tests also wired into Android CI. No physical touch/keyboard/TalkBack evidence.
+- **CI investigation:** run [40166497055](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40166497055) failed on an obsolete click-handler regex; corrected it. Run [40166579375](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40166579375) passed the new tests but failed on a pre-existing novella test that assumed Harbor Ledger was the final theme; updated that brittle assertion without weakening its backup check. **Latest targeted CI:** [40166639849](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40166639849), **IN_PROGRESS** at this checkpoint on functional/test SHA `28ade1d082ab5e93cfef5bed4a2931f4944050d8`; Android compilation, APK SHA and artifacts **NOT TESTED until completed**.
+- **NOT TESTED:** Pad 5 actual keyboard and TalkBack focus, theme screenshots/contrast/FPS, licensed long novels and recorded audio, independent release/upgrade verification. LT-01..13 still **IN_PROGRESS**. No main/merge/Library/Handoff writes.
+
+
+### Keyboard dictionary + Terracotta Gallery — Android CI completed
+- **PASS:** [Actions 40166639849](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40166639849) on exact functional/test SHA `28ade1d082ab5e93cfef5bed4a2931f4944050d8`. Native Node suite including both new tests, catalog/offline dictionary validation, Android Gradle unit/assemble, adaptive icon and critical offline asset packaging, Chromium screenshots and full reader/word-sheet/chapter/bookmark/translation/theme journey succeeded.
+- **Artifacts:** `StoryLens-Debug-APK` ID **12588662750**; `StoryLens-UI-Screenshots` ID **12588577922**. CI-calculated **inner APK SHA-256** `ed3f643d5743a02ccb330efb48c1b4253ece637c080873fc003a3071e88fc0b9`; independent download/re-hash **NOT TESTED**. Debug artifact is **not** final.
+- **NOT TESTED:** physical keyboard/TalkBack on Pad 5, exact device FPS/memory, editorial licensing acceptance, final upgrade/signed release. LT-01..13 remain **IN_PROGRESS**.
+
+
+## 2026-10-25 — LT-03 keyboard navigation for long chapters + LT-13 Monochrome Zine
+- **Production SHA:** `9cf9a1c29876a2fd4a09fb3d48c504ac02b7e10e`; workflow/test SHA `82a509b7214c7cdec351c61e51e0bdcd981d0d29` on existing Storylens draft PR #1. `main` untouched.
+- **Functional reader improvement:** English paragraphs use a roving single `Tab` stop per chapter; `ArrowUp/ArrowDown` navigate between paragraphs, and the existing `ArrowRight/ArrowLeft` word navigation, `Enter/Space` dictionary, and sentence translation remain. Boundary arrows and Tab are not trapped. Pattern checked against W3C WAI-ARIA keyboard interface guidance: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/ .
+- **Distinct theme:** `Monochrome Zine` is a high-contrast black/off-white/lime indie-print layout with cut-paper masthead, staggered issue cards, squared cover frames, print-style reader margin, responsive mobile styles and reduced-motion override. Registered in Settings and offline backup allowlist; no remote resources.
+- **PASS** [GitHub Actions run 40169849998](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40169849998): actual `node tools/monochrome-zine.test.cjs` and `node tools/paragraph-roving.test.cjs` both logged PASS; existing curated Node suite, Android Gradle unit/Debug assembly, APK asset/adaptive-icon packaging, and Chromium library/reader smoke all succeeded. Previous intermediate run 40169836610 was canceled by concurrency; do not count it as a failure.
+- **Real Debug artifacts:** `StoryLens-Debug-APK` ID **12589033112**; `StoryLens-UI-Screenshots` ID **12588923583**. CI-calculated inner `app-debug.apk` SHA-256 **`527803e572d12ba0c904fdd59fbefeb803d7faa0af2e4fd2bc84b6e1dcd7748b`**. Independent artifact re-download/re-hash **NOT TESTED**.
+- **NOT TESTED:** Xiaomi Pad 5 physical keyboard/TalkBack, long-book frame pacing, visual theme acceptance, real device install/upgrade, full-length licensed literature/Arabic editorial review, recorded licensed music, final LT-01..13 acceptance. This is a tested Debug milestone, not a final APK. **IN_PROGRESS**.
+
+
+## 2026-10-25 — Arabic-tolerant bilingual chapter search + Saffron Archive (LT-07/03/13)
+- Production search now folds Arabic vowel marks, tatweel, hamza/alef, ya and taa-marbuta variants without altering the displayed source or Arabic translation. The lazily built index retains normalized strings but no redundant English/Arabic source copies, and rebuilds when a later catalog batch is appended.
+- New distinct **Saffron Archive** archival-folio theme: numbered-spine cards, green/gold manuscript desk, matte split hero and paper reader, responsive tablet/phone layout, static CSS only. Backup accepts and restores the theme.
+- **PASS (source V8):** executed the actual committed `lingua-shell.js` with eight focused checks: Arabic diacritics/variant search, English case, catalog growth, theme activation and persisted selection.
+- **NOT TESTED:** committed native Node test, Android CI/APK on this head, Xiaomi Pad 5 rendering, visual contrast, large-book memory/scroll performance, and full editorial acceptance. No device FPS claim.
+- **Purposeful build question:** Does the new theme/search pass the real Node test and package/compile inside Android? V8 source tests cannot verify AAPT/Android packaging or Chromium UI. Run one CI build for this functional milestone, not a routine build per file.
+
+
+### Validation closure for Arabic search / Saffron Archive (2026-10-25)
+- **PASS:** targeted Android CI [40181610305](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40181610305), functional SHA `996e7504ef5688d5cec1e016f302b85780bd5e7a`: native Node tests, Gradle, packaged assets and Chromium journey.
+- **PASS:** independently extracted 4,264,860-byte `app-debug.apk` from GitHub Artifact **12594795168**, SHA-256 `0b920f85f9caed4975c127a94737e467e4eebe4efb17d542c842090b91635236` matches CI. New JS/CSS theme and search modules confirmed inside APK.
+- **NOT TESTED:** Pad 5/Android installation, FPS/RAM, accessibility, editorial/long-book acceptance. This is a debug validation build, not a final release.
+
+
+## 2026-10-25 — LT-03/07/13 search-navigation and Bauhaus Studio milestone
+- Production changes: full-text search now refreshes when chapters/paragraphs are appended to an existing work (not only when the story count changes); a search hit visibly highlights and keyboard-focuses the exact English paragraph, with an ephemeral 2.6-second marker and no mutation of English/Arabic source text. Added the offline **Bauhaus Studio** poster-geometry theme, Settings gallery choice and backup whitelist.
+- Regression: `tools/chapter-search.test.cjs` now checks new chapter invalidation, paragraph focus/highlight/cleanup, theme geometry and persistence. **Source edits committed; CI/source test result PENDING** until workflow run completes.
+- **Purposeful Android build question:** Does Android package the changed JS/CSS/backup, pass the real Node VM search regression and Chrome reader flow, and render the new CSS without parse errors? Source string inspection cannot prove APK packaging or browser integration. One branch build, not per-file builds.
+- **NOT TESTED:** Xiaomi Pad 5 paragraph focus/TalkBack, theme contrast and real FPS/thermal; licensed long novels, editorial Arabic review and licensed audio remain open. Debug is not final. No main merge.
+
+### LT search/Bauhaus CI and artifact evidence — 2026-10-25
+- **PASS source/V8:** 5 direct production-script checks: bilingual search, appended chapter invalidation, paragraph focus/highlight/cleanup, theme selection and offline preference persistence. This is not a physical-device test.
+- **PASS Android CI:** [run 40185612369](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40185612369), source SHA `953437dbf67369f569c8939521952573a0c9958a`; Node regressions, Gradle APK, packaged assets, Chromium journey.
+- **PASS independent artifact rehash:** artifact `12595952491` contains `app-debug.apk` (4,266,184 bytes), SHA-256 `fe2d2b36d0d08fb486e24889b844be3c60a43cee270198a729c83f0b8ca0d6c3`, independently extracted and matched `APK_SHA256.txt`. New theme present in packaged JS/CSS/backup.
+- **NOT TESTED:** Pad 5/phone installation, TalkBack focus, theme contrast, FPS/thermal, editorial long books/audio; final release remains IN_PROGRESS.
+
+
+## 2026-10-25 — LT lexical source-boundary and Mosaic Courtyard checkpoint
+- **Production/tests SHA:** `0357d3804570816f65e0c5ba5772c8d90943f27d` on draft PR #1. No main changes.
+- **Production:** reject clicks selecting only part of a word/contraction; support combining marks in token spans; refresh lazy phrase/dictionary indexes when an existing story or dictionary array receives appended entries. This prevents missing later curated content batches while preserving original meanings. Added a distinct static, offline **Mosaic Courtyard** theme (ceramic-grid, arch hero, offset cards), selectable in Settings and accepted by backup validation.
+- **PASS (direct V8 execution on fetched production):** 14 checks for exact phrase selection, complete token boundaries, accented/combining forms, appended term/dictionary lookup, theme registration, CSS and backup whitelist. Regression assertions committed in `tools/phrase-lookup.test.cjs`.
+- **NOT TESTED:** native Node execution of the committed test, new SHA Android CI/APK packaging, visual theme screenshot, Pad 5 performance, TalkBack and full editorial content. No new verified APK or SHA-256 for this checkpoint; do not reuse earlier build fingerprints.
+- **Next:** verify Node/Android CI on this exact source; independent device acceptance and long licensed literature remain open.
+
+
+## 2026-10-25 — Serial chapter navigation and honest incomplete-book status
+- **Production:** `lingua-chapter-navigation.js` decorates the fully installed reader after locale wrappers. The reader exposes accessible previous/next chapter buttons through existing `stlChapter` navigation (which preserves legacy chapter/scroll storage). The Towle novel now declares `totalChapters=37`; when only 2 chapters are packaged, the final visible chapter says **To be continued** rather than falsely claiming **The End**. Arabic and English UI labels are supported; complete books retain their existing ending. Added responsive navigation CSS and `tools/chapter-navigation.test.cjs`.
+- **PASS (production V8 isolated):** fetched the committed production module and executed three DOM scenarios: ongoing English chapter 2/37, Arabic chapter 1/37, and a completed 2/2 book; navigation controls and status labels matched expectations.
+- **NOT TESTED:** execution of the committed Node test file, full Android CI on this branch SHA, Chromium, Xiaomi Pad 5, accessibility/TalkBack, app install and final APK. The isolated V8 harness is **not** device acceptance.
+- **Build question:** does the new script load after the locale wrappers in Android WebView, and do chapter controls preserve back navigation on device? Source inspection alone cannot prove this; a targeted Android/Chromium validation is justified, not a routine build after every edit.
+- **Open:** only 2/37 authentic Towle chapters; English/Arabic editorial review, full licensed audio catalog and independent device acceptance remain IN_PROGRESS.
+
+## 2026-10-25 — Serialized novel chapter progress and direct navigation
+- The library progress denominator now uses `totalChapters` when larger than the offline `chapters.length`. For the Towle novel, finishing the currently published second chapter must not display 100% of 37 chapters. The badge also reports the number available offline.
+- The reader chapter-end panel now offers a keyboard/touch chapter selector populated **only from locally available chapters**, preserving the existing `stlChapter` progress/scroll/bookmark path. Chapter titles use Arabic or English metadata without inserting HTML.
+- **PASS (direct production V8 smoke):** ran the committed chapter-navigation module with two available chapters out of 37, selected the first chapter, and rejected a jump to unpublished chapter 37. Checked that the library denominator uses total chapters. This is not an Android or full Node test.
+- **NOT TESTED:** complete Node test and Android/Chromium CI on the latest source SHA, Xiaomi Pad 5 navigation, TalkBack, portrait/landscape, real FPS, complete licensed literature and final acceptance.
+- **Purposeful Android build question:** does the updated reader/navigation JS pass the repository's actual Node test and does the WebView asset remain packaged in an Android Debug APK? Static/V8 checks cannot verify Gradle packaging or Chromium flow. No physical device is accessible in this run.
+
+
+## 2026-10-26 — Towle Chapter VII / Consular Ledger integrated milestone
+- **Functional source SHA:** `68d00fb3f8c81db6ea15d3db9a4bee30a5bd0f0c`. Added Chapter VII from Standard Ebooks' Towle 1873 XHTML, with **39/39 aligned English/Arabic draft paragraphs**, 778 English words and 19 source-occurring vocabulary/phrase entries. Added an original offline SVG consulate/passport scene and distinct **Consular Ledger** theme (docket margins, stamped-paper geometry, sober ink palette), registered in Settings and backup validation.
+- **Upstream XHTML SHA-256:** `02d79d84d624a78dc6ac239e8a565ea001cd5fa1559014479c09a18b99cfb836`. English text is source-extracted after stripping XHTML markup; the header bridgehead is used as the chapter title, not duplicated as a paragraph.
+- **PASS Node regression:** `tools/verne-towle-ch07.test.cjs` verifies chapter order, 39 aligned passages, minimum full-chapter length, 19 source-bound terms, unique offline illustration, theme registration and backup allowlist. First CI exposed an older Chapter VI test hard-coded to the old last theme; corrected it to include Consular Ledger, then reran the full workflow.
+- **PASS Android CI:** [run 40242081851](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40242081851) on tested SHA `68d00fb3f8c81db6ea15d3db9a4bee30a5bd0f0c`: Node regressions, Gradle unit tests/Debug APK assembly, required offline asset packaging and Chromium reader journey succeeded.
+- **Debug APK Artifact:** `12616169442`; CI inner APK SHA-256 `983400f219959b6ac7cef58db24cc3c1fb59a3d949072fe9b23e6d1ac29d37bf`. Artifact ZIP SHA-256 is separate. Independent APK re-hash **NOT TESTED**.
+- **NOT TESTED:** Xiaomi Pad 5 installation, frame pacing, RTL/TalkBack, independent Arabic literary proofreading and territory-specific redistribution clearance. Seven of 37 authentic chapters are packaged; this is not a complete novel or final release.
+
+
+## 2026-10-26 — Chapter VIII browser-smoke follow-up
+- **FAIL (first integrated run):** [Android CI 40246503473](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40246503473) passed curated content/Node tests, Gradle unit tests, Debug APK assembly and the packaged-asset gate, then failed the final Chromium E2E catalog assertion. The fixture checked Chapter VIII's 59 passages but still required `chapters.length===7`; this stale exact-count assertion contradicted the new eighth chapter.
+- **Repair:** updated the same browser fixture to require eight chapters. Chapter VIII's dedicated Node regression and APK asset gate had already passed in the failed run; the full browser/Android re-run is **PENDING**.
+- **Build rationale:** this re-run verifies the repaired real Chromium journey after the stale fixture gate; no physical Pad 5 claim is made.
+
+
+### Chapter VIII validation closure — 2026-10-26
+- **PASS full Android/Chromium CI:** [run 40246746697](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40246746697) completed SUCCESS on final tested SHA `7233ecd758509deea83ffc869f86ee6a2749b208`. Native Node content regressions (including `verne-towle-ch08.test.cjs`), Gradle unit tests + Debug assembly, required offline asset packaging and full Chromium reader/word/translation/theme/bookmark journey all passed. The only initial failure was the stale exact chapter count documented above; it was repaired before this passing run.
+- **PASS independent APK verification:** downloaded Debug artifact `12618723865`, extracted `app-debug.apk` (4,362,669 bytes), and independently recalculated SHA-256 `cec80e3327787fe9edbf35253deabc72ec125380ecfb72c4d777edd0e3ff8cf0`, matching the artifact's `APK_SHA256.txt`. Confirmed Chapter VIII, index and editorial-art assets are packaged.
+- **PASS source-bound checks:** 59/59 English source paragraphs and 59 aligned Arabic draft passages, 1,080 English words, 26 source-occurring phrases, original offline telegraph SVG, and Red Sea Dispatch theme/settings/backup registration. Eight of 37 authentic chapters are available; not a completed novel.
+- **NOT TESTED:** physical Xiaomi Pad 5 installation, real frame pacing, RTL/TalkBack, independent Arabic literary proofreading, territory-specific redistribution clearance, final signed release. This Debug APK is not final.
+
+
+## 2026-10-26 — LT-07 Chapter IX / LT-08 Indian Ocean art / LT-13 Monsoon Meridian (validated)
+
+- **Production/test source SHA:** c48e546c562b271c9659918b3a1494268bcff54b on the existing Storylens PR #1 branch. The earlier run [40248632883](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40248632883) exposed a stale Chromium fixture expecting eight chapters; the fixture was updated to require nine chapters and the Chapter IX scene, then the complete workflow passed.
+- **Source comparison PASS:** all **30/30** English paragraphs match the Standard Ebooks Chapter IX XHTML after normalizing markup and whitespace; 30/30 Arabic draft paragraphs align, **1,552 English words**, and 23 contextual entries occur in the source.
+- **Provenance:** https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-9.xhtml; raw source XHTML SHA-256 d61493072b960641c3bd7c0145dad1414b857dbcacabd058e09bf406b42fda1b. Standard Ebooks editorial transcription is CC0; Towle's 1873 English translation is public domain in the US. Territory-specific redistribution rights and independent Arabic literary proofreading remain **NOT TESTED**.
+- **Visual/offline PASS:** bespoke Indian Ocean / Mongolia SVG is distinct from Chapter VIII; **Monsoon Meridian** is registered in Settings and the backup allowlist. No remote art, fonts, audio or new permissions.
+- **PASS Android CI:** [run 40248798073](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40248798073) on source SHA above: Chapter IX Node regression, the curated Node suite, Android unit tests, Debug assembly, required offline-asset/adaptive-icon packaging and Chromium reader journey succeeded.
+- **Debug artifact:** [StoryLens-Debug-APK artifact 12619987119](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40248798073/artifacts/12619987119); screenshots artifact **12620221303**.
+- **PASS independent APK verification:** extracted 4,376,613-byte app-debug.apk; independently recalculated SHA-256 408e532b82e16a3de44dafd1e22109c5cc7c5010420173fdc9d20dcc763da043, matching the packaged APK_SHA256.txt. Chapter IX JS, illustration, shell, backup and adaptive launcher resource are present in the APK.
+- **Purposeful build question answered:** the new chapter, theme, illustration, backup registration and Android/Chromium integration work together in CI; this does not prove physical tablet performance.
+- **NOT TESTED:** Xiaomi Pad 5 installation, real frame times/scrolling, RTL/TalkBack, independent Arabic literary review, territory-specific redistribution clearance and final signed release. Nine of 37 chapters are present; LT-07 and overall LT-01..13 remain **IN PROGRESS**. PR remains Draft; no main write, merge, other repository or Library/Handoff change.
+
+
+## 2026-10-26 — Towle Chapter X / Deccan Timetable (functional source; CI pending)
+- Source: Standard Ebooks Towle 1873 Chapter X: https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle/blob/master/src/epub/text/chapter-10.xhtml
+- 24 narrative paragraphs, 1559 English words and 24 aligned Arabic companion drafts. Direct source comparison passed after XHTML tag/entity/whitespace normalization; upstream SHA-256 was not calculated in this run. Arabic drafts are not independently proofread.
+- Added 26 source-occurring vocabulary/phrase annotations, original offline Bombay railway/timetable/lost-shoe SVG, and distinct **Deccan Timetable** theme, wired into Settings and backup allowlist.
+- Standard Ebooks editorial work is CC0; Towle's 1873 translation is public domain in the US. Territory-specific redistribution clearance and independent Arabic review remain NOT TESTED.
+- Purposeful CI question: do the bilingual chapter, terms, SVG/theme, backup registry and reader catalog survive Node regressions, Gradle packaging and Chromium integration? Source-only checks cannot prove APK packaging/browser journey. Targeted CI justified; result pending.
+- NOT TESTED: Xiaomi Pad 5 install/frame timing, real RTL/TalkBack, literary review, territorial rights clearance and final signed release. Ten of 37 chapters are available; LT-07 and LT-01..LT-13 remain IN PROGRESS.
+
+
+### Chapter X first integration attempt — 2026-10-26
+- **FAIL:** [Android CI 40251445638](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40251445638) passed curated Node tests, Android JUnit/Gradle compilation, Debug APK assembly and packaged-asset checks; the final Chromium reader journey then failed its 'Verne authentic chapter' fixture because it still required exactly nine chapters and had no Chapter X paragraph/art assertion. No APK artifact was uploaded because the E2E step failed.
+- **Repair:** updated tools/make_browser_fixtures.py to require ten chapters, 24 Chapter X passages and the distinct Chapter X art. Re-run is pending; no physical Xiaomi Pad 5 claim.
+
+### Chapter X integration closure — 2026-10-26
+- PASS: Android CI run 40251658304 completed successfully on repaired branch head 4c8dcbed0e99426bc51cf6a594543cdb9b470b10. The Chapter X browser fixture now requires ten chapters and checks the 24-paragraph Chapter X payload/art instead of asserting the old nine-chapter count.
+- CI validates Node regressions, Android JUnit/Gradle packaging and Chromium reader flow after fixture repair. This closes the earlier pending checkpoint; it does not establish physical-tablet acceptance.
+- NOT TESTED: Xiaomi Pad 5 installation/frame pacing, RTL/TalkBack, independent Arabic proofreading, territory-specific redistribution clearance and final signed release.
+
+## 2026-10-26 — Towle Chapter XI / Kholby Crossing integrated milestone
+- Production/test SHA: 4a944534c8a8d0df574c406111111f451acc5a13 on the existing Storylens PR #1 branch. Added complete Chapter XI from the Standard Ebooks Towle transcription: 49/49 aligned English/Arabic draft paragraphs, 2,533 English words and 29 source-occurring lexical/phrase entries. Chapter XI describes the unfinished Kholby–Allahabad railway and Fogg's elephant negotiation.
+- Added original offline SVG of the Kholby forest/unfinished railway/elephant and a visually distinct Kholby Crossing theme with forest-contour surfaces, angular card geometry and amber travel-document accents. Registered in Settings and the backup allowlist; no network image, font or audio was added.
+- PASS source regression: extended tools/verne-towle-ch10.test.cjs with Chapter XI alignment, minimum length, phrase occurrence, 29 term/source matches, chapter ordering, SVG uniqueness, theme and backup registration. Browser fixture now requires 11 chapters and the Chapter XI scene.
+- Purposeful build question: do the new bilingual chapter, contextual illustration, theme, backup registry and reader catalog survive Node regressions, Android packaging and the real Chromium reader journey? Source-only checks cannot verify WebView asset order or rendered reader integration; a targeted CI build was warranted.
+- PASS Android CI: run 40253482067 on the production/test SHA above; Node tests, Android unit tests/Debug assembly, packaged offline-asset checks and Chromium reader journey succeeded.
+- PASS independent APK verification: downloaded artifact 12621805754, extracted the 4,408,785-byte app-debug.apk, and independently recalculated SHA-256 d5b70b14d80fb833ac38ed4956d9a853cedf0553a0c4d0269fb8254fc1e5e7b8, matching APK_SHA256.txt. Chapter XI, editorial art, shell and backup JS are present in the APK. Screenshot artifact: 12621586266.
+- Standard Ebooks' editorial transcription is CC0; the Towle 1873 English translation is public domain in the US. Territory-specific redistribution clearance and independent Arabic literary proofreading remain NOT TESTED. Eleven of 37 chapters are bundled, not the complete novel.
+- NOT TESTED: physical Xiaomi Pad 5 install, real frame times/scrolling, RTL/TalkBack, low-memory behavior, independent Arabic review, territory-specific rights clearance and final signed release. PR remains Draft; no main write/merge or unrelated project/Library/Handoff changes.
+
+
+## 2026-10-26 — Towle Chapter XII / Vindhya Passage (validated)
+- Functional/test SHA: `f0a6c4fdde1ec041d618f9d5f5e5e06f868e33b8` on the existing Storylens PR #1 branch. Chapter XII has 48 source-aligned paragraph blocks (including the bridgehead), 2,100 English words, 48 Arabic companion drafts and 28 contextual entries.
+- **PASS source/Node regressions:** bilingual alignment, chapter order, minimum source length, contextual term occurrence, offline SVG uniqueness, Settings theme label and backup allowlist.
+- **PASS Android CI:** [run 40255267937](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40255267937) completed SUCCESS. Curated Node tests, Gradle JUnit, Debug APK assembly, packaged asset/adaptive icon checks and Chromium reader journey passed.
+- **PASS APK verification:** downloaded Artifact [12622133083](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40255267937/artifacts/12622133083), extracted the 4,425,997-byte APK and independently recalculated SHA-256 `ef4254c16f7ae1c45f2e5a07bb38d2d81aac811c61362ba712ad3c61426fbe81`, matching `APK_SHA256.txt`. Chapter XII, art, theme CSS and backup module are present in the APK. Screenshot artifact: [12621853861](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40255267937/artifacts/12621853861).
+- Source: Standard Ebooks' CC0 editorial transcription of Towle's 1873 translation; English translation public-domain status is established for the US only. Territory-specific redistribution clearance and independent Arabic literary/sensitivity review remain **NOT TESTED**. Twelve of 37 chapters are packaged, not the complete novel.
+- **NOT TESTED:** physical Xiaomi Pad 5 installation, frame pacing/scrolling, real RTL/TalkBack, low-memory behavior, and final signed release. Debug build is not final; PR remains Draft.
+
+
+## 2026-10-26 — Towle Chapter XIII / Dawn Escape (validated)
+- **Production/test SHA:** `bd35893a1facae895716639c95841b6112717ec8` on the existing Storylens PR #1 branch. Added 48 source-aligned English/Arabic draft paragraphs (2,036 English words), 34 source-occurring contextual entries, an original offline dawn-rescue SVG, and the distinct Dawn Escape theme with Settings/backup registration. Arabic draft terminology was corrected from the misleading `الفقراوات` to `المتنسكون` for historical *fakirs*, with a regression assertion.
+- **PASS source regression:** bilingual alignment, minimum source length, source-bound terms, chapter order, distinct illustration, theme label, backup allowlist and the Arabic terminology correction. Browser fixture requires 13 chapters and the Chapter XIII scene.
+- **PASS Android CI:** [run 40261319574](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40261319574) completed successfully. Node regressions, Gradle unit tests/Debug assembly, required APK assets and Chromium reader journey passed.
+- **Scope note:** the Chromium interaction screenshot uses the generic reader story; Chapter XIII itself is source-tested and packaged, but chapter-specific on-screen rendering and RTL are still **NOT TESTED**.
+- **PASS independent APK verification:** Artifact [12623908761](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40261319574/artifacts/12623908761), extracted 4,442,713-byte APK, independently recalculated SHA-256 `a465f06347dc86b7d2f9062ecae866a4f6a3ce5f0d91a88391f802d29604dc1e`, matching `APK_SHA256.txt`. Chapter XIII, editorial art, theme CSS and backup module are packaged.
+- Source: Standard Ebooks Towle 1873 transcription; CC0 editorial work and US public-domain translation. Territory-specific redistribution clearance and independent Arabic literary/sensitivity review remain **NOT TESTED**. Thirteen of 37 chapters are bundled, not the complete novel.
+- **NOT TESTED:** physical Xiaomi Pad 5 installation, frame pacing/scrolling, RTL/TalkBack, low-memory behavior and final signed release. PR remains Draft; no main write/merge or unrelated repository/Library/Handoff changes.
+
+
+## 2026-10-26 — Towle Chapter XIV / Ganges Panorama (integration pending)
+- Added Chapter XIV from the Standard Ebooks Towle transcription: 27 aligned English/Arabic draft paragraphs (1,917 English words), 28 source-occurring contextual entries, a bespoke offline river/railway SVG, and a visually distinct Ganges Panorama theme with Settings and backup registration.
+- Browser fixture now requires 14 chapters and explicitly opens Chapter XIV in the Chromium reader, checking actual rendered content rather than relying only on catalog counts. Added a dedicated source-bound Chapter XIV regression and required APK asset packaging.
+- **Purposeful build question:** do the new chapter script, bilingual data, theme/backup wiring and chapter-specific reader journey work together in Android packaging and Chromium? Source-only checks cannot prove script order or actual reader rendering, so one targeted CI run is warranted.
+- **PASS Android CI:** [run 40266145893](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40266145893) on the Chapter XIV integration commit. Node content regression, Gradle unit tests/Debug assembly, critical-asset packaging and Chromium Chapter XIV reader DOM assertion all passed. Screenshot artifact [12626636801](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40266145893/artifacts/12626636801) includes `verne14-phone.png`, visually showing Chapter XIV and the Ganges scene in the reader.
+- **PASS independent APK verification:** Artifact [12626597198](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40266145893/artifacts/12626597198); APK size 4,458,901 bytes; independently recalculated SHA-256 `7a935f68cc542bdb4a23c8f8a46fa0fff0e09fad87f57c6afeb6cc8011a36afc`, matching `APK_SHA256.txt`.
+- Xiaomi Pad 5, real frame pacing, RTL/TalkBack, independent Arabic review, territory-specific rights clearance and final signed release remain NOT TESTED. Fourteen of 37 chapters are bundled, not the complete novel.
+
+
+## 2026-10-26 — Towle Chapter XV / Calcutta Ledger (validated)
+- **Production/test SHA:** `f27078b45c0081f9c18086e26f076a3ca4d7f27a` on the existing Storylens PR #1 branch. Added Chapter XV from the Standard Ebooks Towle 1873 transcription: 33 source-aligned English/Arabic draft passages, 36 contextual entries verified against the English body, an offline Calcutta courtroom SVG, and the distinct Calcutta Ledger theme with Settings/backup registration.
+- **PASS source regressions:** chapter order and bilingual alignment, minimum source length, all 36 terms occurring in the English text, unique scene, theme label/stylesheet, backup allowlist, and browser-fixture expectation for the localized continuation label.
+- **PASS purposeful Android CI:** [run 40274173182](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40274173182) completed SUCCESS. Node tests, Gradle unit tests/Debug assembly, critical-asset packaging, Chapter XIV and XV Chromium reader checks, and the full reader/word/translation/bookmark/theme journey passed.
+- **Fixture correction documented:** follow-up attempts exposed that the UI intentionally replaces the generic English boundary with the locale-aware Arabic label `يتبع — لم تكتمل الرواية بعد` (English locale: `To be continued — more chapters are coming`). Both the dedicated Chapter XV fixture and full-reader journey now assert the actual Arabic label and reject the false `The End` state. The test was corrected to reflect production behavior; this was not a change to story text.
+- **PASS independent APK verification:** downloaded artifact [12630155075](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40274173182/artifacts/12630155075), extracted `app-debug.apk` (4,474,873 bytes), and independently recalculated SHA-256 `e682ff98b87ef73f0d16547ce8d9b4d7ded65ff795c605a98e03f17db46e7040`, matching `APK_SHA256.txt`. Screenshot artifact [12629990467](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40274173182/artifacts/12629990467) includes `verne15-phone.png` showing the chapter and the 15-of-37 progress label.
+- **Content and release limits:** fifteen of 37 chapters are bundled, not the complete novel. Standard Ebooks' editorial transcription is CC0; Towle's 1873 English translation is established as public domain in the US, but territory-specific redistribution clearance and independent Arabic literary/sensitivity review remain **NOT TESTED**.
+- **NOT TESTED:** physical Xiaomi Pad 5 install, actual frame pacing/scrolling, RTL/TalkBack on device, low-memory behavior, and final signed release. Debug APK is test-only, not final.
+
+
+## 2026-10-26 — Towle Chapter XVI / Rangoon Passage (targeted CI pending)
+- Added Chapter XVI from the Standard Ebooks Towle transcription: 25 aligned English/Arabic draft passages, 1,614 English words, 32 contextual entries verified against the English body, an original offline Rangoon steamer SVG, and the distinct Rangoon Passage maritime theme registered in Settings and backup.
+- Added a Chapter XVI source regression and a dedicated Chromium reader fixture that checks the actual rendered Straits of Malacca passage and 16-of-37 continuation state. Workflow will verify APK packaging and capture the chapter-specific reader screenshot.
+- **Purposeful build question:** do the bilingual chapter, SVG scene, theme/backup wiring, and Chapter XVI reader journey integrate in Android packaging and Chromium? Source-only checks cannot prove script order, APK inclusion, or actual browser rendering, so one targeted CI build is justified.
+- **CI / independent APK verification: PENDING.** Xiaomi Pad 5, RTL/TalkBack, frame pacing, independent Arabic literary/sensitivity review, territory-specific rights clearance, and final signed release remain NOT TESTED. Sixteen of 37 chapters are bundled, not the complete novel; Arabic is an editorial draft.
+
+
+## Chapter XVI integration regression and correction — 2026-10-26
+- The first browser run after adding Chapter XVI passed source/Node/Gradle/APK packaging checks but failed in the **old Chapter XV fixture**: Chapter XV correctly stopped being the last available chapter, so the old fixture incorrectly expected the Arabic end-of-available-content label instead of the normal `End of Chapter 15` control.
+- Corrected the Chapter XV fixture and full-reader journey to assert its actual next-chapter boundary. The Chapter XVI fixture remains responsible for asserting the Arabic “more chapters coming” continuation label at 16 of 37. CI rerun pending.
+
+
+## Chapter XVI browser-fixture count correction — 2026-10-26
+- Chapter XV and Chapter XVI dedicated Chromium fixtures now pass, but the broader E2E fixture still had a stale novel-count assertion pinned to 15 chapters and only asserted distinct artwork through Chapter XV. Updated it to require all 16 bundled chapters, 25 aligned Chapter XVI passages, and the new Rangoon scene at index 15.
+- Rerun is pending; no device-performance claim is inferred from Chromium.
+
+
+## 2026-10-26 — Chapter XVII / Singapore Lantern source milestone
+- Added Chapter XVII from the Standard Ebooks Towle XHTML source `src/epub/text/chapter-17.xhtml`, source blob SHA-1 `9032cb0cbc51867336e21dfd73885a2f8bee7c66`. The editorial transcription is CC0; Towle's 1873 translation is public domain in the United States, while territory-specific redistribution rights remain **NOT TESTED**.
+- Source-level V8 verification matched **35/35 English paragraphs** after stripping XHTML and normalizing word-joiners/spacing; 1,723 English words, 35 aligned Arabic draft paragraphs, and 32 contextual terms all found in the English text.
+- Added original offline SVG art and the distinct **Singapore Lantern** theme; registered the theme in settings and backup validation; added a Chapter XVII Node regression, browser fixture, APK asset assertion, and Chromium render gate. The chapter script is loaded after Chapter XVI and before editorial art.
+- **PASS (source runtime):** chapter script executes, English source paragraphs match 35/35, all Arabic paragraphs are present, 32 terms are source-bound, and the chapter SVG is distinct from Chapter XVI. Node test syntax parses.
+- **CI / APK for head `19daa38f9ee99678d856b049e8bfa4d892293b37`: NOT VERIFIED.** No new run ID or artifact is recorded for this head; earlier APKs do **not** include Chapter XVII. Build question remains whether full Node regression, Chromium reader fixture, Android packaging and SHA manifest pass together.
+- **NOT TESTED:** Xiaomi Pad 5 install/performance, RTL/TalkBack device review, independent Arabic literary proofreading, and territory-specific rights clearance. PR remains Draft; no main merge.
+
+
+## 2026-10-26 — LT-06 serial-reader localization boundary (validated)
+
+- **Production fix:** `lingua-i18n.js` now localizes only `.reader .chapter-end > button.primary`; the former broad selector also matched the first accessible chapter-navigation button and could replace “Previous/Next chapter” with the primary return action in English UI.
+- **Regression coverage:** the locale journey verifies that the primary action changes while chapter-navigation labels remain intact. Chromium fixtures verify Chapter XVII remains a normal chapter with a next-chapter control, Chapter XVIII is truthfully marked as an incomplete serial in Arabic and English, and navigation to an unpublished future chapter is disabled.
+- **PASS Android CI:** [run 40297626205](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40297626205) on source/test SHA `bed69d985398db8c7d8dcca98df14fe714f0a2f6`: Node regressions, Android Gradle unit tests + Debug assembly, required offline asset packaging and Chromium reader journeys all passed.
+- **PASS independent APK verification:** artifact **12639301103**, `app-debug.apk` **4,517,673 bytes**, SHA-256 `2640e0a09120f4d1347ce1c6d516ca5b1d00d99bf0b1a1c5b046198f89563de5`; independently recalculated digest matches `APK_SHA256.txt`. Adaptive launcher icon, localization/navigation scripts and Towle Chapters I–XVIII were verified packaged. Screenshot artifact **12639470594** includes Chapter XVII, Chapter XVIII Arabic UI and Chapter XVIII English UI.
+- **NOT TESTED:** Xiaomi Pad 5 installation, physical-device frame times, RTL/TalkBack, keyboard and real touch acceptance, independent Arabic literary review, licensed recorded music/ambience and final signed release. Chromium is not a device benchmark.
+- **Visual review note:** the Chromium Chapter XVIII capture shows a strong focus outline around the chapter heading after scripted navigation. It may be intentional focus visibility; preserve accessibility, but review its contrast/geometry on Pad 5 before final UI sign-off.
+- No `main` writes or merge. Debug APK only; LT-01..LT-13 remain **IN PROGRESS**.
+
+
+## 2026-10-26 — Towle Chapter XIX / Victoria Harbour Dispatch (source + integration gate added)
+- **Source:** Standard Ebooks Towle XHTML Chapter XIX, blob SHA-1 `c1d30bba75d0a72629c6047d436c745ca8844b5e`. The chapter asset adds **71 aligned English/Arabic-draft paragraphs**, about 2,060 English words, and 34 contextual entries that must be found in the source body.
+- Added an original offline Victoria Harbour SVG scene and the distinct **Victoria Harbour Dispatch** theme (cobalt nautical chart / ivory dispatch paper / coral signal geometry). Theme is registered in Settings and the backup allowlist.
+- Added a dedicated Node source regression and Arabic + English Chromium reader fixtures, including the honest **19 of 37** progress state and disabled navigation to the not-yet-bundled Chapter XX. Android CI now checks the asset is packaged and runs both reader fixtures.
+- **Purposeful build question:** does the complete bilingual Chapter XIX, illustration, theme/backup registration, chapter navigation and both locale reader journeys integrate through Node, Chromium and Android packaging? Source-only checks cannot prove script load order, WebView/Chromium rendering or APK asset inclusion; one targeted CI build is justified.
+- **Source regression / CI / artifact verification: PENDING.** The Arabic is an editorial draft, not an independently reviewed translation. Towle's translation is public domain in the United States; territory-specific rights clearance remains **NOT TESTED**.
+- **NOT TESTED:** physical Xiaomi Pad 5 installation, scrolling/frame pacing, actual touch/edge-swipe behavior, RTL/TalkBack device checks, independent Arabic literary review and final signed release. Nineteen of 37 chapters are bundled, not the complete novel; Debug is not final.
+
+
+## 2026-10-26 — LT-13 theme catalog integrity repair (validated)
+- Functional source SHA: `6ec7df5987d2796ea85134ae22a3fc1c61bee9ea`.
+- Catalog audit found four real theme-delivery gaps: **Monsoon Meridian** had a label and backup allowlist entry but was omitted from selectable `themeNames`; **Red Sea Dispatch**, **Deccan Timetable**, and **Kholby Crossing** were selectable but lacked production `body.theme-…` styling.
+- Restored Monsoon Meridian to the selectable gallery and added distinct route-editorial palettes/layout treatment for all four themes, including gallery swatches and reduced-motion fallbacks. Decorative full-screen orb animations are disabled for these themes to avoid extra paint work.
+- Added `tools/theme-catalog.test.cjs` and wired it into Android CI. It verifies unique IDs, exact label/catalog parity, production body styling and backup allowlisting for every selectable theme; the four restored themes also require swatches and reduced-motion handling.
+- **PASS Android CI:** [run 40305864189](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40305864189). The new catalog regression, existing Node regressions, Gradle unit tests/Debug assembly, asset checks and Chromium journey completed successfully.
+- **PASS independent APK verification:** artifact [12643240435](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40305864189/artifacts/12643240435), extracted `app-debug.apk` size **4,536,977 bytes**, independently recalculated SHA-256 `a8924fde2d4fbb672d3000c457abbdebc10c291828c332258fe8661319e13cf6`, matching `APK_SHA256.txt`.
+- **NOT TESTED:** Xiaomi Pad 5 theme-switch/reading-progress preservation, visual contrast/TalkBack, device FPS/RAM and screenshots of every restored theme. CI proves source/catalog/packaging behavior, not physical-device acceptance. Debug APK is not final; PR remains Draft and unmerged.
+
+
+## 2026-10-26 — Unicode canonical-equivalence lookup regression
+
+- Latest branch CI [40309708469](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40309708469) **FAILED** at `tools/phrase-lookup.test.cjs:127`: a decomposed spelling of `café` returned no dictionary entry although the composed NFC entry existed.
+- Production comparison keys now normalize to NFC before case folding and again afterward. Source text and UTF-16 offsets are preserved; only comparison keys are normalized.
+- Existing regressions cover a decomposed single word and a decomposed token inside an authored multiword phrase, while requiring the displayed phrase to preserve the original source spelling.
+- **CI for the fix: NOT VERIFIED at commit time.** The next branch CI must pass the phrase lookup regression, content suite, Gradle/package checks and Chromium reader journey.
+- **NOT TESTED:** Xiaomi Pad 5 keyboard/TalkBack and actual Android taps on decomposed PDF text.
+
+
+### Unicode lookup CI closure — 2026-10-26
+
+- **PASS:** [Android CI run 40311875239](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40311875239) completed SUCCESS on source SHA `47c9819a8a4e08b9cbad0024e0b74611b46b2a6c`. The production phrase-lookup regression passed, including NFC-equivalent composed/decomposed single-word and phrase matching; Gradle unit tests, APK asset checks and Chromium reader journey passed.
+- **PASS independent APK verification:** downloaded Debug artifact [12645083213](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40311875239/artifacts/12645083213), extracted `app-debug.apk` (4,536,997 bytes), and independently recomputed SHA-256 `a7478fe24d429b617ed258c68a1d8fc7dfa5156e1615b036666c9c101424f819`, matching `APK_SHA256.txt`.
+- **NOT TESTED:** Xiaomi Pad 5 installation, actual taps against decomposed PDF-derived text, real frame pacing, TalkBack and final signed release. Debug APK is test-only; LT-01..LT-13 remain IN PROGRESS.
+
+## 2026-10-26 — Chapter XIX integration gate closed (CI + independent APK hash)
+
+- **PASS Android CI:** [run 40311875239](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40311875239) on source/test SHA `47c9819a8a4e08b9cbad0024e0b74611b46b2a6c`. The full content/regression suite, Chapter XIX-specific Node test, Gradle unit tests and Debug assembly, required offline asset gate, and Chromium reader journey all completed successfully.
+- **PASS independent APK verification:** downloaded artifact [12645083213](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40311875239/artifacts/12645083213), extracted `app-debug.apk` (**4,536,997 bytes**), independently recalculated SHA-256 `a7478fe24d429b617ed258c68a1d8fc7dfa5156e1615b036666c9c101424f819`, matching `APK_SHA256.txt`.
+- **PASS package inspection:** `assets/classic-verne-towle-ch19.js`, `assets/editorial-art.js`, and `assets/index.html` are present in the APK. This closes the prior source/CI/artifact uncertainty for Chapter XIX; it does not close device acceptance.
+- **Content scope:** 19 of 37 chapters bundled. The 71 Arabic passages are editorial drafts, not independently proofread literary translations. The 1873 Towle translation is public domain in the United States; territory-specific redistribution rights and independent Arabic review remain **NOT TESTED**.
+- **NOT TESTED:** Xiaomi Pad 5 installation, touch/edge-swipe and RTL/TalkBack, real frame pacing/RAM, literary proofreading, and final signed release. Chromium is not a device benchmark; Debug APK is not final. No main write or merge.
+
+### Chapter XIX Chromium visual inspection — 2026-10-26
+- Reviewed the actual Chapter XIX screenshots from [artifact 12645530424](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40311875239/artifacts/12645530424). The Victoria Harbour SVG is present, and the English/Arabic serial-progress labels render; the capture shows a visible focus rectangle around the chapter heading after scripted navigation.
+- Preserve keyboard/screen-reader focus visibility; **do not remove it merely to clean up the screenshot**. Review contrast and geometry on Xiaomi Pad 5 before deciding whether the outline should be refined. Chromium screenshot evidence is not device visual acceptance.
+
+## 2026-10-26 — Chapter XX source-bound vocabulary regression repair
+
+- **Detected by Android CI:** run [40318791346](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40318791346) failed during the curated-content gate, before Gradle or APK packaging. The production chapter's English text and bilingual alignment checks passed; two glossary lemmas were phrased differently from the exact source surface forms: “shuffle his hat” vs “shuffling his hat”, and “venture so far” vs “venturing so far”.
+- **Correction:** the two displayed glossary entries now use the exact source-occurring forms, without weakening the source-bound rule. The Chapter XX regression explicitly requires both source phrases and continues checking all 33 new terms against the chapter body.
+- **Content gate:** Chapter XX has 72 English/Arabic aligned paragraphs and 1,744 words in the committed transcription; Arabic is an unreviewed editorial draft. Shanghai Wind Ledger remains registered in Settings and backup, with local SVG art.
+- **Purposeful build question:** do the corrected production glossary and source-bound regression pass the complete Node content suite and then Android packaging/Chromium navigation? The prior failure stopped before those stages, so source-only checks cannot establish integration. A single targeted CI run is justified.
+- **Status at commit:** CI rerun pending; APK/artifact SHA, Pad 5 installation, RTL/TalkBack, frame pacing, independent Arabic proofreading and territory-specific redistribution review remain **NOT TESTED**. LT-01..LT-13 remain IN PROGRESS; Debug is not final. No main write or merge.
+
+## 2026-10-26 — Chapter XX bilingual reader integration closed (CI + independent APK verification)
+
+- **Purposeful build question:** after extending the authentic Towle serial to Chapter XX, do source-bound vocabulary, the 20-chapter reader/catalog, Settings/backup theme registration, offline illustration, Android packaging and both Arabic/LTR end-of-current-catalog journeys work together? Source/V8 checks alone cannot establish Android asset packaging or Chromium navigation.
+- **Initial failures retained for traceability:** [run 40318791346](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40318791346) caught two glossary lemmas that did not match exact source surface forms; [run 40319977657](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40319977657) then exposed stale Chapter XIX Chromium assertions that still treated it as the final available chapter. Both were repaired without weakening source-bound vocabulary or end-of-catalog checks.
+- **PASS final Android CI:** [run 40320546628](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40320546628) on source/test SHA `fc58650a25a2100fd17c1fba4ad7738fc5bce49b`. The full curated-content/Node suite, Gradle unit tests and Debug assembly, explicit Chapter XX asset packaging gate, and Chromium Arabic + English reader journeys for Chapters XIX and XX completed successfully.
+- **PASS content:** Chapter XX has 72 aligned English/Arabic draft passages, 1,744 English words and 33 source-occurring contextual entries. The glossary surface forms now match the source exactly (“shuffling his hat”; “venturing so far”). Chapter XX uses an original offline Shanghai/Tankadere SVG and distinct **Shanghai Wind Ledger** theme registered in Settings and backup.
+- **PASS independent APK verification:** downloaded Debug Artifact [12649001449](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40320546628/artifacts/12649001449), extracted `app-debug.apk` (**4,551,501 bytes**) and independently recomputed SHA-256 `0418f04cdc51dcc48c1cdec5086e8b6afc33e4bb20b799ec455c645797374e8c`, matching CI `APK_SHA256.txt`. Confirmed Chapters XIX and XX, reader shell, backup code and index are packaged; no GGUF/PDF payload exists in this app.
+- **PASS Chromium screenshot evidence:** artifact [12647839384](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40320546628/artifacts/12647839384) includes `verne19-phone.png`, `verne19-en-phone.png`, `verne20-phone.png`, and `verne20-en-phone.png`. The screenshots show Chapter XIX continues to XX, while Chapter XX honestly remains 20 of 37 and does not falsely mark the novel complete.
+- **NOT TESTED:** physical Xiaomi Pad 5 install/upgrade, real touch/edge gestures, TalkBack, frame pacing/RAM/battery, independent Arabic literary proofreading, territory-specific redistribution clearance and final signed release. The Arabic is a draft; 20 of 37 chapters are bundled, not the full novel. LT-01..LT-13 remain IN PROGRESS; Debug is not final. No main write/merge.
+
+
+## 2026-10-26 — Chapter XXI + Typhoon Signal milestone (CI pending at source checkpoint)
+
+- **Purposeful build question:** does the new 55-passage/2,500+-word source-bound chapter load after Chapter XX, preserve the 37-chapter book's honest continuation state, render in both Arabic and English, package its local SVG, and keep the new theme selectable/backup-safe? Source-only checks cannot prove Android asset packaging or Chromium reader navigation.
+- **Content source:** Standard Ebooks Towle Chapter XXI, source blob SHA-1 `47c6a1144e756752618e36c56f21832d1020f3fb`; 55 aligned Arabic draft passages and 33 contextual phrases.
+- **New regression:** `tools/verne-towle-ch21.test.cjs` checks source length/alignment, source-bound vocabulary, script order, generated offline art, theme registration and backup allowlist. Browser fixtures cover Chapter XX continuation and Chapter XXI terminal-catalog state in both locales.
+- **New visual batch:** Typhoon Signal adds storm-chart geometry, signal-red/brass accents, a readable light logbook surface, reduced-motion fallback and original offline chapter art.
+- **CI/APK/device status:** **PENDING** at this source checkpoint. Do not infer pass until the branch workflow completes and its APK/artifact/checksum are verified. Xiaomi Pad 5, TalkBack, real frame pacing, Arabic literary proofreading and territory-specific rights remain **NOT TESTED**. Chapter XXI is 21 of 37; the novel is not complete. No main write/merge; Debug is not final.
+
+
+### Chapter XXI source checkpoint — CI visibility
+
+- Latest functional/test head: `acfd5445af48d2d4e85ce035a1937cebeca6abe9`.
+- The GitHub connector returned no PR-triggered workflow run/status for that SHA at the time of this record. Therefore Android CI, packaged APK, SHA-256 and browser screenshots for Chapter XXI are **NOT VERIFIED**, not PASS. Existing Chapter XX artifact remains the last verified APK and does not contain Chapter XXI.
+
+
+### Chapter XXI direct V8 production smoke — 2026-10-26
+
+- **PASS source smoke:** executed the committed Chapter XXI production module and editorial-art generator in an isolated V8 runtime. 18 targeted assertions passed: 55 aligned paragraphs, 2,568 tokenized English words, 55 non-empty Arabic drafts, 33 source-occurring glossary entries, 21-of-37 metadata, script order, distinct encoded offline SVG, theme gallery label/style/reduced-motion and backup whitelist, test/workflow/asset wiring.
+- This is a direct source-runtime check, **not** native Node CI, Android Gradle/Chromium CI, APK verification or physical-device acceptance. Those gates remain **NOT VERIFIED / NOT TESTED** as recorded above.
+
+
+## 2026-10-26 — Chapter XXII + Yokohama Lantern: CI/browser acceptance PASS
+
+- **Content:** 31 aligned English/Arabic-draft passages, 2,072 English words, and 34 contextual terms verified to occur in the source. Arabic remains an editorial draft requiring independent proofreading.
+- **Artwork/theme:** original offline Yokohama harbour SVG; distinct Yokohama Lantern theme registered in Settings, theme gallery, reduced-motion styling and backup allowlist.
+- **Regression found and fixed:** run [40336187954](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40336187954) failed because the Chapter XXI Chromium fixture still treated XXI as the final available chapter. The fixture generator now asserts that XXI has a working next-chapter action and that XXII is the terminal bundled chapter. Added Arabic/English Chromium fixtures for XXII, and updated catalog/art checks to 22 chapters.
+- **PASS — CI:** [Run 40338750217](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40338750217), commit `1f40c4978cfc21ec5ddce1bffb450d057845fcf9`. Node content test, Gradle unit tests/build, required APK asset inspection, Chromium browser smoke, screenshots and artifact upload all passed.
+- **PASS — independent APK checksum:** 4,587,889 bytes; SHA-256 `dcba12d3545c5736b27d68d672d284c3d5d38f1bfec674c3f91e39d8b2253f6d`; [Debug APK artifact 12658901284](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40338750217/artifacts/12658901284).
+- **PASS — browser evidence:** [UI screenshot artifact 12658451869](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40338750217/artifacts/12658451869) includes `verne21-phone.png`, `verne21-en-phone.png`, `verne22-phone.png`, and `verne22-en-phone.png`. These are Chromium runner captures, not Xiaomi Pad 5 captures.
+- **NOT TESTED:** installation on Xiaomi Pad 5; real-device RTL/TalkBack/contrast; scroll/frame-time/RAM/thermal behavior; independent Arabic literary proofreading; territory-specific redistribution clearance. Chapter XXII is 22/37, not the full novel. No main write or PR merge; APK is Debug/test-only.
+
+
+## 2026-10-26 — Chapter XXIII + Paper Lantern Circus source checkpoint (CI pending)
+
+- **Purposeful build question:** does the complete source-transcribed Chapter XXIII (53 bilingual-aligned paragraphs, 1,933 English words), 35 source-bound lexical entries, new offline SVG, distinct selectable theme, backup allowlist and chapter navigation integrate into Android packaging and Arabic/English Chromium journeys? Source-only checks cannot prove asset packaging or browser rendering.
+- **Source:** Standard Ebooks CC0 editorial transcription, source blob SHA-1 `0757ba736579c0474a2e8e55b4dd4262a78da966`; Arabic is an editorial draft requiring independent literary review.
+- **Changes:** add Chapter XXIII to the production reader and APK asset gate; make Chapter XXII a navigable non-terminal chapter; add Arabic and English browser fixtures for Chapters XXII and XXIII; add **Paper Lantern Circus** to theme gallery/CSS/reduced-motion/backup contracts.
+- **PASS — source and CI:** [run 40344930773](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40344930773) on source SHA `ff1e2707f22ebd5085c57c0a1380ee809ac249a7`. Chapter XXIII content/lexicon regressions, full Node suite, Gradle unit/build, required APK assets and both Arabic-UI and English-UI Chromium journeys for Chapters XXII–XXIII passed.
+- **PASS — independent APK SHA-256:** [Debug artifact 12660114191](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40344930773/artifacts/12660114191) contains `app-debug.apk` (4,604,553 bytes), SHA-256 `c30c43b724388e3dc149b413cf8fc7d0d2fb416760cb1a275d62c1b475bbe131`; independently recomputed hash matches `APK_SHA256.txt`. Verified Chapter XXIII module, index, artwork, theme CSS and theme catalog are packaged; no GGUF/PDF payload is present.
+- **PASS — Chromium evidence:** [screenshot artifact 12660888022](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40344930773/artifacts/12660888022) contains `verne22-phone.png`, `verne22-en-phone.png`, `verne23-phone.png` and `verne23-en-phone.png`. These are runner/browser captures, not Xiaomi Pad 5 screenshots.
+- **NOT TESTED:** Xiaomi Pad 5 install/upgrade, real touch/RTL/TalkBack/contrast, frame pacing/RAM/thermal, independent Arabic literary proofreading and territory-specific redistribution clearance. Chapter XXIII brings the bundled novel to 23 of 37 chapters; Debug is not final. No main write/merge.
+
+
+## 2026-10-26 — Chapter XXIV + Pacific Meridian (functional CI checkpoint)
+
+- **Purposeful build question:** do the full source-transcribed Chapter XXIV (36 aligned paragraphs, 1,955 English words), 38 source-bound terms, new offline SVG, selectable theme/backup contract, chapter navigation, and Arabic/English Chromium fixtures integrate into the APK? Source-only checks cannot verify Android asset packaging or actual Chromium rendering.
+- **Source:** Standard Ebooks Towle transcription, Chapter XXIV; upstream blob SHA-1 dd14ef8731bcc974e5d7c8f025f50d408f58badc; Arabic is a draft requiring independent literary review.
+- **PASS — CI:** [run 40354034944](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40354034944), source SHA `a276604507c6cf9b36666f056585403a0a43c2ad`. Content/Node regressions, Gradle unit tests/build, required APK asset inspection, Arabic/English Chromium journeys for Chapters XIV–XXIV and the full reader/word-sheet/bookmark/translation/theme flow all passed.
+- **PASS — independent source comparison:** all 53/53 Chapter XXIII and 36/36 Chapter XXIV narrative paragraphs match their recorded Standard Ebooks XHTML after markup/entity/whitespace normalization. The sole Chapter XXIII punctuation drift (`etc. ,`) was corrected to `etc.,` and guarded by a regression assertion.
+- **PASS — Arabic/LTR progress and bidi:** Arabic browser fixtures explicitly set `lang=ar` and `dir=rtl`; English fixtures set `lang=en` and `dir=ltr`. Reader progress is localized, and the English title / Arabic progress segments are wrapped in direction-isolated `bdi` elements. Chapters XXII–XXIV navigation and terminal-state behavior passed in both languages.
+- **PASS — independently recomputed APK SHA-256:** Debug APK is 4,621,341 bytes; SHA-256 `2b6ef7d0b8b323c56f0fca372fb5cf3f6abc7f787cfed22288d8566469771dcb`, matching `APK_SHA256.txt`. [Debug APK artifact 12664738273](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40354034944/artifacts/12664738273).
+- **PASS — browser evidence:** [screenshot artifact 12665236971](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40354034944/artifacts/12665236971) contains Arabic and English Chromium captures for Chapters XXII, XXIII and XXIV. These are runner screenshots, not Xiaomi Pad 5 captures.
+- **Superseded FAILs:** intermediate runs 40350035414, 40351674534, 40352167103, 40352877527 and 40353277996 exposed stale chapter-progress / locale / navigation assertions while the new chapter and localized label were integrated. The fixtures and production label were corrected; the final source SHA above passes the complete workflow.
+- **NOT TESTED:** Xiaomi Pad 5 installation/upgrade, real touch/RTL/TalkBack/contrast, frame pacing/RAM/thermal, independent Arabic proofreading and territory-specific redistribution clearance. Chapter XXIV is 24/37, not the complete novel.
+
+
+## 2026-10-26 — Chapter XXV + Civic Panorama (integration gate pending)
+
+- **Purposeful build question:** does the complete Standard Ebooks/Towle Chapter XXV (50 source-derived English paragraphs, 2011 words), 50 aligned Arabic draft passages, 38 source-bound lexical entries, new offline SVG, distinct selectable theme/backup contract, script order and bilingual reader fixtures integrate into Android packaging and Chromium? Source-only checks cannot prove browser rendering or packaged asset presence.
+- **Source:** Standard Ebooks CC0 editorial transcription, Chapter XXV source blob `dd5e34efeaffca11b3b6aa3e9ef32a5f75639a0f`; the underlying 1873 Towle translation is treated as public domain in the United States. Arabic remains a draft; independent literary review and territory-specific rights clearance are separate gates.
+- **Changes:** Chapter XXIV becomes a normal navigable chapter; Chapter XXV is the honest current endpoint (25/37); Arabic/English Chromium fixtures check progress, mixed-script direction isolation, previous/next behavior and incomplete-book messaging.
+- **PASS — exact upstream source comparison:** all 50/50 English paragraphs match Standard Ebooks' Chapter XXV XHTML after stripping markup/entities and normalizing whitespace; 2,011 words. The 38 glossary surfaces all occur in the English body.
+- **PASS — Android CI:** [run 40363830394](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40363830394) on source SHA `aeec188d7401ea3781d92ad313a0b7791b2f7806`. Node/content regressions, Gradle unit tests/build, required APK asset inspection, and Arabic/English Chromium journeys for Chapters XXIV–XXV all passed. The Civic Panorama reduced-motion fallback is separately regression-tested.
+- **PASS — independently recomputed APK SHA-256:** Debug APK is 4,638,069 bytes; SHA-256 `6754bae4af6f9284b1336e47e0795899c1c5b5cd8cf92482b14e6c2efdc3c1b1`, matching `APK_SHA256.txt`. [APK artifact 12669048661](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40363830394/artifacts/12669048661).
+- **PASS — browser evidence:** [screenshot artifact 12668328632](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40363830394/artifacts/12668328632) includes Arabic and English captures for Chapters XXII–XXV. These are Chromium runner screenshots, not Pad 5 captures.
+- **NOT TESTED:** Xiaomi Pad 5 installation/upgrade, actual touch/RTL/TalkBack/contrast, device frame pacing/RAM/thermal, independent Arabic literary proofreading and territory-specific redistribution clearance. Chapter XXV is 25/37; the novel remains incomplete. Debug only; no main write or merge.
+- **NOT TESTED:** Xiaomi Pad 5 installation/upgrade, real touch/RTL/TalkBack/contrast, frame pacing/RAM/thermal, independent Arabic proofreading and territory-specific redistribution clearance. Debug only; no main write or merge.
+## 2026-10-26 — Chapter XXVI + Prairie Signal + reader-progress Bidi acceptance
+
+- **Purposeful build question:** do the authentic Chapter XXVI loader, 25 bilingual-aligned paragraphs, 36 source-bound lexical entries, original offline train scene, Prairie Signal theme/backup contract, and corrected mixed-script progress/status layout integrate in Android packaging and Chromium? Source-only checks cannot prove AAPT packaging or computed browser layout.
+- **Source:** Standard Ebooks CC0 editorial transcription, Towle Chapter XXVI; source blob d81f9235390ec9dac8c7e27ed08ba76ecf55a709. The 1873 Towle English text is treated as public domain in the United States; Arabic remains an editorial draft and territory-specific redistribution clearance is still a separate gate.
+- **PASS — source regressions and integration:** [Android CI run 40371715604](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40371715604) on code/test SHA 942bf86e4ac0c9727f54aa5d1e136336f83eddb4. Node/content tests, Gradle unit tests/build, APK asset verification, and Arabic/English Chromium journeys for Chapters XXV–XXVI plus the complete reader/word-sheet/bookmark/translation/theme journey passed.
+- **PASS — stale acceptance gate repaired:** the previous E2E check incorrectly required exactly 25 loaded chapters after XXVI was added. It now requires 26 chapters, 25 paragraphs in XXVI, and distinct XXV/XXVI offline scenes.
+- **PASS — visual bidi correction:** the English title/current-chapter label is isolated in an LTR container; the incomplete-book availability count is a separate, correctly directed note below the chapter-end heading rather than a duplicate inside the title. Arabic and English Chromium fixtures assert computed direction, wrapping, placement and localized text.
+- **PASS — independently recomputed APK SHA-256:** Debug APK is 4,653,761 bytes; SHA-256 8c41d05ea0239c11ecb948872e68002ac6a5219439db4c613c637bf9bb543709, matching APK_SHA256.txt. Artifact: [StoryLens-Debug-APK 12671654499](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40371715604/artifacts/12671654499). Verified classic-verne-towle-ch26.js, reader-experience.css, lingua-chapter-navigation.js and lingua-shell.css are packaged.
+- **PASS — browser evidence:** [screenshot artifact 12673281290](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40371715604/artifacts/12673281290) includes Arabic and English Chapter XXVI captures. These are CI/Chromium captures, not Xiaomi Pad 5 screenshots.
+- **NOT TESTED:** Xiaomi Pad 5 install/upgrade, actual touch gestures, real-device RTL/TalkBack/contrast, frame pacing/RAM/thermal, independent Arabic literary proofreading and territory-specific redistribution clearance. Chapter XXVI brings the bundled novel to 26/37; it remains incomplete. Debug is not final; no main write or merge.
+
+
+## 2026-10-26 — Chapter XXVII + Salt Lake Dispatch (CI pending at source checkpoint)
+- **Purposeful build question:** does the complete Towle Chapter XXVII (25 source-aligned English paragraphs), 25 Arabic translation drafts, 38 source-bound terms, original offline Salt Lake railway scene, new selectable Salt Lake Dispatch theme/backup whitelist, and honest 27-of-37 progress integrate into Android packaging and both Arabic/English Chromium journeys, including visible inline Arabic under all 25 English paragraphs? Source-only checks cannot prove asset packaging or computed browser layout.
+- **Source:** Standard Ebooks Towle transcription, pinned repository commit `56c82e97ff5d4f8950afca05b71af72688a8da34`, chapter blob `2475c77964fd4cdaf1a83b3e60a6c905e89d66f7`; 1,952 normalized English words. Arabic is a draft and historical claims remain attributed to the novel's narrator, not presented as current factual guidance.
+- **CI/APK:** PENDING at this checkpoint. Do not infer success until workflow completion, artifact inspection and independent APK SHA-256 verification.
+- **NOT TESTED:** Xiaomi Pad 5 installation/upgrade, real touch/RTL/TalkBack/contrast, frame pacing/RAM/thermal, independent Arabic literary proofreading and territory-specific redistribution clearance. The novel is 27/37, not complete; LT-01..LT-13 remain IN PROGRESS. Debug is not final; no main write/merge.
+## 2026-10-26 — Chapter XXVII integration CI verified
+
+- **PASS — Android CI:** [run 40380102845](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40380102845), successful on code/test commit `84434c72013fd0b233a290a55bbf389e9973c6d6`. The run executed the Node content/regression suite including the corrected normalized-source SHA-256 test, Gradle `:app:testDebugUnitTest` and `:app:assembleDebug`, required-asset checks, and Chromium reader journeys for Chapters XXVII in Arabic and English.
+- **PASS — independent APK checksum:** downloaded Debug Artifact `12677701920`, extracted the 4,671,593-byte `app-debug.apk`, and independently recomputed SHA-256 `5ae9aa1d9e11b1ad029addf0f33934189bde985c47c00e7b4db0198d689e47f3`; it matches the checksum recorded inside the artifact.
+- **PASS — Chromium evidence artifact:** [screenshots artifact 12678826576](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40380102845/artifacts/12678826576) contains Arabic/English chapter screenshots, including `verne27-phone.png` and `verne27-en-phone.png`. These are headless Chromium captures, not Xiaomi Pad 5 evidence.
+- The tested code commit `84434c72013fd0b233a290a55bbf389e9973c6d6` is followed by documentation-only commits `155cf272965108cf1891c75bb3a6a44dca82016b` and `7c90bd07667e93f30cada30c2b8e2457091b4f4c`; the workflow intentionally ignores docs-only changes. No production source change is claimed beyond the tested code SHA.
+- **NOT TESTED:** installation on Xiaomi Pad 5; real RTL/TalkBack behavior; frame pacing, RAM and thermal profiling; independent Arabic literary proofreading; territory-specific redistribution clearance; final release signing. The novel remains 27/37 chapters and this Debug APK is not a final release.
+
+## 2026-10-26 — Chapter XXVIII + Medicine Bow Crossing (CI pending at source checkpoint)
+
+- **Production content added:** Standard Ebooks Towle Chapter XXVIII, source commit `56c82e97ff5d4f8950afca05b71af72688a8da34`, XHTML blob `4e233a81707c90e3c70ae89cc66309049a012bee`. The complete body is 75 source-aligned English paragraphs / 2,444 tokenized words, with 75 aligned Arabic translation drafts and 40 contextual terms checked against the English body.
+- **Source integrity:** normalized English body SHA-256 `fa154177361886efcb93dd7d449f74afe30d266fb355382756a541158ee25ed6`; a committed regression compares the bundled text to this pinned digest and verifies chapter order, term occurrence, translation alignment, illustration, theme and backup allowlist.
+- **Visual batch:** original offline Medicine Bow Crossing SVG (winter bridge / locomotive / red signal) and a distinct engineering-blueprint theme registered in Settings, reduced-motion styling and backup validation.
+- **Purposeful build question:** does Chapter XXVIII, all 75 bilingual passages, the new local SVG and theme integrate into the Android APK, and do the Arabic/English Chromium journeys render 75 translations with honest 28-of-37 continuation? Source-only checks cannot prove packaged asset presence or browser rendering.
+- **CI/APK:** PENDING at this documentation checkpoint. Do not mark PASS until the branch workflow completes, the exact artifact is inspected and the APK SHA-256 is independently recomputed.
+- **NOT TESTED:** Xiaomi Pad 5 install/upgrade, real touch/RTL/TalkBack/contrast, device frame pacing/RAM/thermal, independent Arabic literary proofreading and territory-specific redistribution clearance. The Towle novel is 28/37 chapters, not complete; Debug is not final; no main write or PR merge.
+
+### Exact checkpoint record — 2026-10-26
+
+- Functional source commit: `9b1df385f44d5092062cc65a3bb44cfdabef20ca` (Chapter XXVIII asset/test/fixture workflow).
+- Current branch head also contains documentation-only provenance/acceptance updates.
+- Direct production-source V8 smoke: **PASS** — 28 loaded chapters, 75 bilingual passages, 2,444 English words, 40 source-occurring terms, unique offline SVG, theme/backup/reduced-motion and script order.
+- GitHub Actions run/check and APK artifact for this functional SHA: **NOT VERIFIED** by the available run/status lookup. Do not reuse an older chapter APK as proof for XXVIII.
+- Pad 5, TalkBack, FPS/RAM/thermal and Arabic editorial/legal review: **NOT TESTED**.
+
+
+## 2026-10-26 — LT-11 original procedural melodic presets (CI pending)
+
+- **Production source:** preserved all 20 existing offline ambience scenes and added four original procedural melodic presets: Quiet Keys, Moonlit Chimes, Lantern Motif and Paper Atlas Melody (24 selectable presets total).
+- **Lifecycle:** melodies use a single bounded interval, short note envelopes and a small active-node set; switching scenes, pausing, hiding the app and page teardown clear the timer/nodes. Playback remains opt-in, silent on cold start, offline and permission-free.
+- **Tests added:** the ambience regression now asserts 20 ambience + 4 music presets, exercises a real scheduled melody tick in a synthetic Web Audio context, and verifies timer cleanup on scene changes/pause. This harness does not assess acoustic quality or Android audio focus.
+- **Functional commits:** first source `359226a22ff6d0bbac4a424df1c484f606af95f3`; first regression `4d0f2231c7f83bc27e787e5bb7a456fcc9d004cd`; envelope cleanup fix `58cdb11fda144fbb6ac736d81561a33dab4f4bc5`; cleanup regression `a56cb69f97c22264477b2e5035140e920073944b`. The test now also asserts melodic gain envelopes are disconnected on scene change.
+- **CI/APK for the latest functional head:** NOT VERIFIED in the available workflow-status lookup. Do not reuse the Chapter XXVII APK as evidence for this audio change.
+- **Honest scope:** these four are original synthesized melodies, not licensed recordings. The app now offers a broader local music/ambience experience, but a separately curated licensed recording catalog and on-device acoustic/audio-focus validation remain open.
+- **NOT TESTED:** Xiaomi Pad 5 audio focus/background lifecycle, audible quality, power use, real frame pacing, and full LT-01..LT-13 final acceptance. No microphone/TTS/network/audio permission was added.
+
+
+## 2026-10-27 — Towle Chapter XXIX + Plum Creek Signal (functional batch)
+
+- Source: Standard Ebooks Towle edition, pinned commit `56c82e97ff5d4f8950afca05b71af72688a8da34`, chapter source blob `603fa34982062a3dbc86a79370980cad4df9d263`.
+- Added `app/src/main/assets/classic-verne-towle-ch29.js`: 68 source-aligned English paragraphs, 2,126 normalized words, 68 aligned Arabic translation drafts, and 42 glossary entries whose surfaces are checked against the chapter.
+- Normalized English paragraph SHA-256: `0e182c64f274d7afb3e502c40a887509103b409f5f84c6d4329300cbcaceb70c`.
+- Added a locally generated SVG scene for Plum Creek and a distinct **Plum Creek Signal** theme. The theme is registered in the picker, its offline CSS, and the backup allowlist.
+- Updated chapter navigation so Chapter XXVIII leads to XXIX, while Chapter XXIX honestly marks the current available-content boundary (29/37).
+- Added source hash, glossary, theme/art, navigation and bilingual browser fixtures; workflow now runs Chapter XXIX Chromium checks and packages the updated debug APK.
+- **Source/static checks:** implementation committed as `87de7e297bfb4fa61818e3fb642dfef45ab8cb44`; audio preset assertion fix `0d55ca77773ab64ae1b50b8cfd2ef77c18b8dec0`.
+- **CI:** latest run `40415287688` is queued/in progress at documentation time. Do not claim PASS until the run finishes.
+- **Rights:** Standard Ebooks editorial contribution is CC0; the Towle translation is treated as public domain in the USA. Territory-specific distribution clearance remains NOT TESTED. Arabic is an unreviewed draft, not a professionally proofread translation.
+- **Device:** Xiaomi Pad 5 rendering, TalkBack, frame pacing, memory and real-device audio focus remain NOT TESTED. No microphone/TTS or network permission was introduced.
+
+
+## 2026-10-27 — Verified LT-07/LT-08/LT-13 acceptance record
+
+| Gate | Result | Evidence / remaining boundary |
+|---|---|---|
+| Chapter XXX source integrity | **PASS — source/CI** | 67 paragraphs, 2,133 words; normalized SHA-256 `cc6571f506f550e03e3627476ae0c534bb9fc7cb8d179ed08809ba3e6c5575ef`; source blob `d26e028ef931fea90caa1a625b91ca8f4310f244`. |
+| Arabic paragraph alignment + contextual glossary | **PASS — structural tests** | 67 non-empty Arabic drafts; 41 source-bound terms including `groin / الأربية`. Independent literary review **NOT TESTED**. |
+| Original Chapter XXX scene packaged | **PASS — CI** | Offline SVG present in source and APK asset bundle. Physical GPU/memory performance **NOT TESTED**. |
+| Snowbound Telegraph theme | **PASS — source + Chromium** | Picker, CSS, backup allowlist and reduced-motion contract; RTL screenshot verifies 7px signal-red reader border. Xiaomi Pad 5 rendering **NOT TESTED**. |
+| Android Debug build / required assets | **PASS — CI** | Run 40419513853; APK SHA-256 `23ade4fe075f47bb374640920705b0b50b700cd2915386e6d5496e19ff7e3634`; Artifact 12696587055. |
+| Full project acceptance | **IN PROGRESS** | 30/37 novel chapters; Pad 5, accessibility/performance, translation review, and licensed audio catalog remain open. |
+
+CI: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40419513853
+APK artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40419513853/artifacts/12696587055
+Screenshot artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40419513853/artifacts/12696252319
+
+
+## 2026-10-27 — Towle Chapter XXXI + Prairie Sails (CI pending)
+
+- **Source:** Standard Ebooks / George Makepeace Towle, `src/epub/text/chapter-31.xhtml`, pinned commit `56c82e97ff5d4f8950afca05b71af72688a8da34`, source blob `3f96f87cf359251196f1a935314eaedce8d676fd`.
+- **Content gate:** 37 complete English body paragraphs, 1,843 words, 37 aligned Arabic draft translations and 34 source-occurring contextual glossary entries. Normalized English SHA-256: `155822a6e00d078984230cc6d8183e399b8f87333270ab530024b909de83c5a7`.
+- **UI/content integration:** Chapter XXXI is loaded after Chapter XXX; Chapter XXX becomes a normal navigable chapter. Chapter XXXI is the honest current endpoint (31/37) and keeps Chapter XXXII unavailable. Added original offline Prairie Sails art and a distinctive Settings theme with CSS, backup allowlist and reduced-motion styling.
+- **Tests added:** `tools/verne-towle-ch31.test.cjs`, updated complete-catalog/browser-fixture assertions, Arabic + English Chapter XXXI Chromium fixtures, and Prairie Sails RTL reader fixture.
+- **Purposeful build question:** do the new full chapter, 37 Arabic companions, offline SVG, theme/backup wiring and navigation fixtures work together in Android asset packaging and the Chromium reader? Source-only checks cannot prove AAPT asset inclusion or computed RTL/browser layout; one targeted CI build is justified.
+- **PASS — CI/build:** [Run 40422292232](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40422292232), source/test head `befe5dba7dd6318968d6acba5afbafb364e54798`. Content/Node tests, Gradle tests/build, packaged asset verification (including Chapter XXXI and the adaptive icon), Chromium Arabic/English Chapter XXX–XXXI journeys, Snowbound Telegraph and Prairie Sails visual fixtures, and the full reader/word-sheet/chapter/bookmark/translation/theme journey all passed.
+- **PASS — independently verified Debug APK:** 4,746,773 bytes; SHA-256 `c005a656dc805ae301baca689fa35011e3229b892ad35a25575dc60a207e8e68`. Recomputed from the downloaded artifact and matched the bundled `APK_SHA256.txt`. [Debug APK artifact 12698511127](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40422292232/artifacts/12698511127).
+- **PASS — browser evidence:** [Screenshot artifact 12698101837](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40422292232/artifacts/12698101837) includes the new Arabic/English Chapter XXXI and Prairie Sails fixtures.
+- **Historical FAIL superseded:** run 40422156149 failed because the new source test required every paragraph to exceed 20 characters, incorrectly rejecting concise dialogue. The test threshold was corrected to accept short dialogue; run 40422292232 passes.
+- **NOT TESTED:** Xiaomi Pad 5 installation/upgrade, real touch/RTL/TalkBack/contrast, frame pacing/RAM/thermal, independent Arabic literary proofreading and territory-specific redistribution clearance. Debug is not final; no main write or merge.
+
+
+- **Verified checkpoint note (2026-10-27):** the above CI result closes source/CI/packaging for Chapter XXXI only. It does not close LT-01..LT-13 globally; 31/37 chapters are bundled, and Pad 5, literary review, territory rights, full audio licensing and runtime performance remain open.
+
+
+## 2026-10-27 — Reform Club Brass gallery swatch regression
+
+- **Finding:** the gallery button uses the `lt-theme-reform-club-brass` class, but its swatch rule was scoped to `.theme-reform-club-brass`; the preview could therefore inherit the active theme instead of reliably showing its own brass/green palette.
+- **Change:** corrected the selector to `.lt-theme-reform-club-brass .lt-theme-swatch` and added regression assertions for the gallery swatch and the theme's reduced-motion fallback.
+- **Source commits:** CSS `fd819cbf90af770c6f5f77a60866dbcad1f76711`; regression test `f749a006faa3b8ea0c275f9e13932aac56be3ed8`.
+- **CI:** NOT VERIFIED for this source/test head. The connected commit-run/status lookup returned no run or check result; no PASS is inferred from source inspection.
+- **NOT TESTED:** visual gallery screenshot on Android, Xiaomi Pad 5 installation, RTL/TalkBack, frame pacing and final signed release.
+
+
+## 2026-10-27 — LT-11 late AudioContext resume guard
+
+| Gate | Result | Evidence / boundary |
+|---|---|---|
+| Stale resume after visibility pause | **PASS — Node regression** | Delayed fake AudioContext resume must return to `suspended`; no hidden sound graph starts. |
+| Android Debug build + offline asset/adaptive icon packaging | **PASS — CI** | Run 40427307659 on `bd16885cabe8490a7eb60129d253301710e768f7`. |
+| Browser reader journey | **PASS — CI** | Chromium full reader/word-sheet/chapter/bookmark/translation/theme journey completed. |
+| APK SHA-256 | **PASS — independently rehashed** | 4,746,929 bytes; `8fa1a7145080e8e453ebb24054fb9963f6cf94a7075f73021f359b4ddb9b657d`; Artifact 12699928561. |
+| Xiaomi Pad 5 / Android audio focus / screen-off / battery | **NOT TESTED** | Requires physical-device execution. |
+| Curated licensed audio library | **OPEN** | 24 procedural presets remain distinct from the requested licensed recordings/music collection. |
+
+
+
+## 2026-10-27 — Current 33-chapter reader acceptance checkpoint
+
+- Fixed stale browser acceptance fixtures after the novel grew to 33 available chapters. The test suite now validates the catalog's 37-paragraph Chapter XXXI, 50-paragraph Chapter XXXII and 67-paragraph Chapter XXXIII, plus current 33-of-37 availability, truthful navigation, bilingual RTL/LTR journeys and the Atlantic Passage theme.
+- **PASS — CI/build:** [run 40440113181](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40440113181), source/test SHA `22954f9b12f0db21d442ac0eaff88790fa1a3189). The prior stale-fixture failure is superseded; it was not a Gradle/content-packaging failure.
+- **PASS — APK SHA-256:** 4,776,817-byte Debug APK; `bf03553a8ed36d5a4e2a22098bfaf12784ea46972ac910e2a60e0ab754b86b59`; independently recalculated from Artifact `12705158884` and matched the embedded checksum.
+- **PASS — Chromium visual/browser evidence:** Artifact `12704999038`; new Chapter XXXII/XXXIII journeys and Atlantic Passage RTL styling all pass in CI.
+- **NOT TESTED:** physical Xiaomi Pad 5, audio focus/battery, TalkBack and real-device RTL/contrast, Arabic literary review, territory-specific rights, and a curated licensed audio library. Do not promote this Debug APK as final.
+
+
+## 2026-10-27 — Chapter XXXIV + The Last Five Minutes acceptance checkpoint
+
+- **Content/source commit:** `259e328dd7a856917ce0a5ffed218d01c3870f74`; **browser-fixture correction:** `cbb96b6ff8daa4ce77facdd33770d6c51c307d3f`.
+- Added authentic Standard Ebooks/Towle Chapter XXXIV: **22 English paragraphs / 972 words**, 22 aligned Arabic draft paragraphs and 20 source-occurring contextual word/phrase/idiom notes. Normalized English SHA-256: `b99d773a896ea121836a443ffc1290e67041718ccbb59f5341a19bc78246e6d9`.
+- Added original offline SVG art of the London terminus clock at 8:50 p.m. and a distinct `last-five-minutes` / **The Last Five Minutes** theme (clock-face wedge, timetable rules, square editorial cards, reduced-motion fallback, backup allowlist).
+- The first browser run after the chapter addition, 40446049539, failed because older fixtures still expected 33 available chapters. Corrected the catalog/availability assertions, enabled Chapter XXXIV from Chapter XXXIII, and added Arabic inline-translation, English-reader, and theme Chromium fixtures for Chapter XXXIV.
+- **PASS — CI Run 40446487903** on `cbb96b6ff8daa4ce77facdd33770d6c51c307d3f`: theme catalog (53 selectable themes), source/hash/glossary tests, offline APK asset checks, Android Debug build, Chromium reader journeys for Chapter XXXIV Arabic/English, and The Last Five Minutes theme.
+- **PASS — independently verified Debug APK:** 4,786,633 bytes; SHA-256 `d364e29aea175f2dbcd29885efd5878c203bdf3b8498ed266c76bf2245f09472`; matches `APK_SHA256.txt`.
+- Debug APK Artifact **12708781802**; Chromium screenshot Artifact **12708886547**.
+- CI: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40446487903
+- APK Artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40446487903/artifacts/12708781802
+- Screenshot Artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40446487903/artifacts/12708886547
+- **NOT TESTED:** physical Xiaomi Pad 5 installation, frame pacing/RAM/thermal, TalkBack and hardware RTL/contrast, full-translation review on device, independent Arabic literary review, territory-specific rights, and the curated licensed audio library. The screenshot evidence is Chromium/CI, not a device capture; Debug APK is not a final release.
+
+
+### Why this milestone used a build
+
+The build question was whether Chapter XXXIV and its new theme survive Android asset packaging and whether the packaged reader still renders the Arabic/English journey and theme correctly. Source/hash tests alone cannot prove that the new script is bundled in the APK or that the Chromium reader journey and screenshot fixtures work together. The build was therefore tied to this functional milestone, not a routine post-edit build.
+
+
+## 2026-10-27 — Chapter XXXV + Westminster Vows (CI PASS; physical device NOT TESTED)
+
+- Serial literature milestone: **35/37 chapters available**. Chapter XXXV adds **52 English narrative paragraphs / 1,573 words**, 52 aligned Arabic draft paragraphs, and 30 contextual word/phrase/idiom entries. The normalized English SHA-256 is `3746f6d1389e415cec8a093d32fa5bf7e0feca5970ccad59f69bfbb50943820a`.
+- Pinned source: Standard Ebooks Towle transcription, `src/epub/text/chapter-35.xhtml`; upstream commit `56c82e97ff5d4f8950afca05b71af72688a8da34`, source blob `8a39e6eaa78e1c14cca130353697f307f55e48d0`.
+- Added an original offline Westminster-clock / paired-rings SVG and the distinct **Westminster Vows** theme. The theme is registered in the selector, loaded from its own stylesheet, supports reduced-motion, and is accepted by backup validation. Chapter XXXIV navigation now leads to XXXV; XXXV remains the honest current endpoint with XXXVI–XXXVII unavailable.
+- **Purposeful build question:** do the new chapter, artwork wrapper and separate theme stylesheet survive APK asset packaging, and do the Arabic/English reader plus theme DOM journeys pass together? Source checks alone cannot establish that the files are packaged or that the rendered RTL/LTR theme works.
+- **PASS — CI Run 40448838238** on source commit `4bf6aa47be20ef4c1a95dcf6026eccb3d1fb6be0`: curated content/theme tests, Chapter XXXV hash/glossary/alignment test, Android Debug APK build and asset verification, browser fixtures for Chapters XXVI–XXXV, Chapter XXXV Arabic/English, Westminster Vows, and the full reader/word-sheet/bookmark/translation/theme journey.
+- **PASS — independently re-hashed Debug APK:** 4,802,164 bytes; SHA-256 `63a59994a24ab43366936f755f25e1d05b02858e0e41631557fb41a0021ba3c3`; matches `APK_SHA256.txt` from Artifact **12709542775**. Screenshot evidence: Artifact **12709138752**.
+- CI: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40448838238
+- APK Artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40448838238/artifacts/12709542775
+- Browser screenshots: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40448838238/artifacts/12709138752
+- **NOT TESTED:** physical Xiaomi Pad 5 install/touch, frame pacing/RAM/thermal, TalkBack and physical RTL/contrast, independent Arabic literary review, and territory-specific redistribution clearance. The curated externally licensed ~20-recording audio library remains open; procedural melodies do not satisfy it. This is a Debug test build, not a final release, and the milestone does not mark LT-01..LT-13 complete.
+
+
+## 2026-10-27 — Chapter XXXVI + Reform Club Countdown (CI pending; device NOT TESTED)
+
+- Added pinned Standard Ebooks Towle Chapter XXXVI: 30 narrative paragraphs / 1,060 English words, 30 aligned Arabic drafts and 26 contextual glossary entries. Normalized English SHA-256: `ebb586929c9c278c7191447c1bc99152e2ad83754a6c25844325372d3a9387cf`.
+- Added original offline Reform Club countdown artwork and the visually distinct **Reform Club Countdown** theme, including theme selection, backup validation and reduced-motion fallback.
+- Chapter XXXV navigation now leads to XXXVI; the serial remains explicitly incomplete at 36/37.
+- **Purposeful build question:** do the new chapter and theme survive APK asset packaging, and do Arabic/LTR reader journeys, the final chapter boundary and theme styling pass together? Source checks alone cannot establish packaging/rendered integration.
+- **CI:** pending run `40451608622` on source/test head `7d99deca03e98395b383876b3243241e6348a3eb`. No new APK is claimed until this run completes successfully.
+- **NOT TESTED:** Xiaomi Pad 5 installation/touch/performance, hardware RTL/accessibility, independent Arabic literary review, territory-specific redistribution rights, and the curated licensed audio library. This is not a final release; LT-01..LT-13 remain incomplete as a whole.
+
+## 2026-10-27 — 37/37 Towle chapters + Android audio-focus bridge (CI PASS; device NOT TESTED)
+
+- **Novel completeness:** Chapters I–XXXVII are now bundled in source. Chapter XXXVI is 30 aligned English/Arabic-draft paragraphs / 1,060 English words / 26 contextual terms (normalized English SHA-256 `ebb586929c9c278c7191447c1bc99152e2ad83754a6c25844325372d3a9387cf`). Chapter XXXVII is 41 aligned paragraphs / 947 English words / 29 contextual terms (normalized English SHA-256 `868ef0d51c18834255f7ca9aa79af2d18fb5f86809579880302753ff75056409`). Arabic remains draft and needs independent literary review; territory-specific redistribution rights are not established by the US public-domain assessment alone.
+- **LT-11 production change:** optional ambience and button SFX now request Android Audio Focus before creating/resuming Web Audio; focus denial stays silent, focus loss/background pauses and releases focus, and focus gain does not auto-resume. No microphone, TTS, recording or INTERNET permission was added. The 24 existing presets are still procedural, **not** the requested licensed recording/music catalog.
+- **PASS — source/CI:** run [40459964424](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40459964424) on functional source/test SHA `fd8a49ddc44d4025bf86075768e3cf56af0799a7`. The new native-focus source contract, Web Audio bridge regressions, Node/content suite, Gradle unit tests, APK asset verification and Chromium reader journeys all passed.
+- **PASS — independently re-hashed APK:** 4,828,914 bytes; SHA-256 `972be62ce158d6ff1261215a25af6b4d2dcdcdcdd760d552a9fde98991aa0c8f`, matching the downloaded artifact's `APK_SHA256.txt`. Debug APK Artifact [12714276409](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40459964424/artifacts/12714276409); screenshot Artifact [12713694229](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40459964424/artifacts/12713694229). The packaged APK contains chapters XXXV–XXXVII, their offline art scripts, the ambience module, chapter navigation and i18n assets.
+- **Purposeful build question:** can the playback-only JS/native bridge compile and package with the complete novel, and do tests prove denied focus stays silent and loss/background pauses playback? Source inspection alone cannot establish Android API compatibility, APK asset packaging or the browser lifecycle regression.
+- **NOT TESTED:** physical Xiaomi Pad 5 install/upgrade, actual Android audio focus/interruption behavior, acoustic quality, battery/thermal/frame timing, TalkBack/hardware RTL, independent Arabic proofreading, territory rights and licensed audio assets. Chromium is not device evidence; Debug is not final. LT-01..LT-13 remain IN PROGRESS overall.
+
+
+## 2026-10-27 — LT-11 audio-control event isolation (source/CI PASS; device NOT TESTED)
+
+- Fixed a bubbling-event race: the document-wide optional button SFX handler now ignores buttons inside `.lt-audio-settings`. Pressing Play/Pause could otherwise request a second native audio-focus grant while the explicit playback action was suspending/resuming the same AudioContext.
+- Added a regression to `tools/ambience.test.cjs`: after pausing the context, a synthetic click on an ambience control must not create another oscillator or restart sound. Generic button SFX and focus-denial tests remain in place.
+- **Purposeful build question:** does the real production audio module avoid a duplicate focus/playback action from bubbling clicks, while the existing focus, scene-switch and lifecycle tests still pass? Source inspection alone does not prove the bundled WebView asset/test journey together.
+- **PASS — CI run 40468220443** on source/test SHA `f4de186f78f5e25f31993aba999a87cff936d485`: Android workflow completed successfully; Node/content checks, ambience lifecycle regression, Gradle unit tests, APK assembly/asset verification and Chromium reader journeys passed.
+- CI-calculated Debug APK SHA-256: `d6a72b2fc900e3cf3d7ff292c563fac43cf5f5f76d3365a686f4bd33863de6a7`. Debug APK Artifact **12717732252**; screenshot Artifact **12717084335**. **Independent artifact re-hash NOT TESTED** for this run.
+- **NOT TESTED:** physical Xiaomi Pad 5 install, actual Android Audio Focus interruption, audible SFX quality, battery/thermal/frame timing, TalkBack/hardware RTL, Arabic literary review, territory-specific redistribution rights, and the required curated licensed recording/music catalog. The 24 procedural presets are not licensed recordings. This is a Debug build; LT-01..LT-13 remain IN PROGRESS overall.
+
+
+## 2026-10-27 — Full-novel composition gate (CI PASS; physical device NOT TESTED)
+
+- Added `tools/verne-complete-novel.test.cjs` and wired it into `.github/workflows/android.yml`. The test parses the actual WebView script order, requires the 36 pinned chapter scripts (the XXXI script intentionally contributes chapters XXXI and XXXII), executes them in sequence, and fails unless one continuous story contains all **37 chapters**, non-empty English titles, Arabic companion titles, and bilingual paragraph drafts throughout.
+- **PASS — integrated result:** 37 chapters, **1,575 bilingual paragraphs**, **62,345 English words**. This is a composition/continuity check; the individual chapter tests remain responsible for their source-specific regressions and digests.
+- **PASS — Android CI:** [run 40476252571](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40476252571) on source/test head `d0f3ec5135bc0184df57e15687975156ca8ece82`. Node/content suite, integrated novel gate, Gradle unit tests + Debug assembly, critical asset packaging, and Chromium Arabic/English journeys all succeeded.
+- **CI-calculated inner Debug APK SHA-256:** `8568ca4cf1c322f80db78b8b616041ee1c1d1a0a1b4e804907c4044aa6736c46`. Debug APK Artifact **12721376761**; screenshot Artifact **12721266821**. This SHA is from the CI build log; independent download/re-hash of this run's APK is NOT TESTED.
+- **NOT TESTED:** Xiaomi Pad 5 installation/upgrade, physical RTL/TalkBack and frame pacing, independent Arabic literary proofreading, territory-specific redistribution clearance, and the curated licensed recording/music library. The full novel being packaged does not mean LT-01..LT-13 are complete. Debug is not final; no main write or merge.
+
+
+## 2026-10-27 — Reduced-motion fallbacks for latest editorial themes (CI in progress)
+
+- **Production:** added a prefers-reduced-motion: reduce override for Mosaic Courtyard, Saville Clockwork and Station Tickets. The override suppresses card hover transforms, transitions and the hero-orb animation without changing normal-motion styling.
+- **Regression:** tools/theme-catalog.test.cjs now includes all three themes in the explicit swatch/reduced-motion acceptance set and allows grouped CSS selectors. A direct source-contract smoke checked all 56 theme labels/body styles/backup allowlist entries and all 23 routed-theme swatch/reduced-motion contracts: **PASS**. This source-level smoke is not Android/WebView/device evidence.
+- **Purposeful CI question:** does the committed CSS + catalog regression pass the full Node suite, Android packaging and Chromium reader journeys? Static source checks cannot verify the complete integration.
+- **PASS — Android CI:** [run 40482113172](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40482113172) completed successfully on source/test SHA `ae0fd6d62375816a6430e60e91e41c60c47b1a23`. All Node/content/theme tests passed (including the 56-theme catalog and the three new reduced-motion gates), Gradle unit tests + Debug assembly, required APK asset checks and Chromium reader journeys passed.
+- **PASS — independent APK verification:** downloaded Debug Artifact **12723348639**, extracted the 4,829,982-byte app-debug.apk and recalculated SHA-256 `32d0e80458612c1fd917dec376b15d0014c65a961c784a3279ecc963e236dc13`, matching APK_SHA256.txt. The APK contains the new reduced-motion CSS, Chapter XXXVII, and the offline ambience module. Screenshot Artifact **12723373330**.
+- **NOT TESTED:** Xiaomi Pad 5 reduced-motion behavior, real WebView frame pacing, TalkBack/RTL on device, Arabic literary review, territory-specific redistribution clearance, and the requested curated licensed recording/music catalog. This is a Debug build, not a final release.
+- **NOT TESTED:** Xiaomi Pad 5 reduced-motion behavior, actual WebView frame pacing, TalkBack/RTL on device, Arabic literary review, territory-specific redistribution clearance, and the requested curated licensed recording/music catalog. No final APK or release is claimed.
+
+
+## 2026-10-27 — Arabic theme gallery localization (source/CI PASS; device NOT TESTED)
+
+- **Production:** added Arabic display labels for all **56** selectable themes. Theme IDs, CSS class names, persisted theme keys, and backup compatibility are unchanged; the gallery chooses Arabic or English labels from the current UI locale.
+- **Regression:** `tools/theme-catalog.test.cjs` now requires complete English and Arabic label coverage, Arabic-script labels for every theme, production body styles, backup allowlist entries, and the existing routed-theme swatches/reduced-motion fallbacks.
+- **Purposeful build question:** does the localized catalog and regression pass the complete Node/content suite, Android unit tests and APK asset packaging, and Chromium reader journey? Source review alone cannot prove workflow integration or that the packaged reader still completes its browser journey.
+- **PASS — Android CI:** [run 40491000267](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40491000267), tested source/test SHA `dc9ec5046b3221937ccc44651f8667bab5f9971b`. Content/theme tests, `:app:testDebugUnitTest`, Debug APK assembly, critical asset packaging, and Chromium reader journeys all passed.
+- **Debug APK:** Artifact **12728807583**; CI-calculated inner APK SHA-256 `821eca40492acadc580d578327591e2df5ec86e9ef0643c06bace63c7c6898b5`. Artifact ZIP digest is separate; independent APK re-hash **NOT TESTED**.
+- **NOT TESTED:** Xiaomi Pad 5 installation, real-device bilingual theme selector/RTL/TalkBack, frame pacing/RAM/thermal, full UI localization audit, Arabic literary proofreading, territory-specific redistribution clearance, and the requested curated licensed audio library. The 24 procedural ambience presets are not licensed recordings. This Debug build is not final; LT-01..LT-13 remain IN PROGRESS overall.
+
+
+## 2026-10-27 — LT-06 vocabulary-practice dialog localization (CI pending)
+
+- **Production:** the English interface now localizes the saved-vocabulary writing-practice dialog: purpose note, input placeholder/accessibility label and LTR direction, save action, story-example label, close action, and the three post-save feedback messages.
+- **Content boundary:** the learner's typed English sentence, saved value, and original English example remain unchanged. Arabic interface strings remain Arabic; no translation is applied to learning content.
+- **Regression:** extended `tools/locale-journeys.test.cjs` with an open-usage journey, accessible input attributes, feedback-after-save behavior and a source-sentence preservation assertion.
+- **Purposeful CI question:** does this new wrapper work in the actual asset load order and pass the Node/Chromium/Android packaging gates? Static inspection alone cannot establish script-order and browser integration.
+- **First CI attempt FAIL (test harness only):** run [40502926618](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40502926618) stopped in `locale-journeys.test.cjs` because the new assertion referenced `usageSentence` instead of the already-created `sourceSentence` mock. The production localization wrapper loaded; the failure was a test variable typo, not a runtime assertion against app behavior. Corrected the test reference; the next targeted run is pending. LT-06 and overall LT-01..LT-13 remain **IN PROGRESS**; full app-wide UI audit, Pad 5 testing, Arabic literary review, territory-specific rights and licensed audio remain open.
+
+
+## 2026-10-27 — LT-06 locale persistence integration gate (CI PASS; device NOT TESTED)
+
+- Added `tools/locale-shell.test.cjs`, which executes the actual `localeChoices`, `loadLocale` and `applyLocale` functions extracted from production `lingua-shell.js` in a bounded VM harness.
+- Regression covers persisted Arabic/English, RTL/LTR direction, invalid stored-locale fallback to Arabic, rejection of unsupported locale values without corrupting storage, and preserving library scroll plus returning focus to the locale selector when Settings is open.
+- Wired the new test into `.github/workflows/android.yml`. The first integration attempt failed only because the isolated harness omitted the production IIFE's `global` binding; the harness was corrected and the final run passed.
+- **PASS — CI run 40505706036** on source/test SHA `82374cb360253dc5a12de0c47f55e83bd63e38de`: curated offline-content gates, all Node regressions including the new locale-shell test, Gradle unit tests + Debug APK, critical asset verification, and Chromium reader journeys passed.
+- Debug APK Artifact **12735505881**; CI-calculated inner APK SHA-256 `d376e7df1123437cd43ee379eb1de8ffef8191681029b27ef56d1e9db5dadb92`. **PASS — independent artifact verification:** downloaded Artifact **12735505881**, extracted `app-debug.apk` (4,831,838 bytes), and recalculated SHA-256 `d376e7df1123437cd43ee379eb1de8ffef8191681029b27ef56d1e9db5dadb92`; it matches `APK_SHA256.txt`.
+- **NOT TESTED:** Xiaomi Pad 5 locale-switch/restart, physical RTL/TalkBack, frame timing/RAM/thermal, full UI hard-coded-string audit, Arabic literary review, territory-specific redistribution clearance, and curated licensed audio. This is a Debug build; LT-01..LT-13 remain IN PROGRESS overall.
+
+
+## 2026-10-27 — LT-06 library hero locale coverage (targeted CI pending)
+
+- **Production:** the post-render locale wrapper now translates the library hero eyebrow, title, description, story/genre counts and offline badge in both Arabic and English. It leaves story titles, English passages and Arabic learning translations untouched.
+- **Regression:** `tools/locale-journeys.test.cjs` executes the real production wrapper and asserts the hero strings and metrics in both locales; the test is part of the Android workflow.
+- **Purposeful build question:** does the actual post-render wrapper localize the generated hero in both directions while the Node suite, Android packaging and Chromium journey remain integrated? Source inspection alone cannot prove script-order and browser behavior.
+- **PASS — CI run 40510897833** completed successfully on test-bearing commit `b50458e6a263bd39c26891393df529ebfc947176`; Node/content/theme tests, Gradle unit tests + Debug assembly, APK asset checks and Chromium render/screenshot all completed. The later drawer-layout change is validated separately by run 40520046330 below.
+- **NOT TESTED:** Xiaomi Pad 5, physical RTL/TalkBack, real frame timing/RAM/thermal, full app-wide hard-coded UI-string audit, independent Arabic literary review, territorial redistribution rights and the curated licensed recording catalog. This is not a final release.
+
+
+## 2026-10-27 — LT-06 single-surface genre drawer and focus lifecycle (CI PASS; physical device NOT TESTED)
+
+- **Production behavior under test:** the library removes the obsolete top-level `.filters` row before rendering the localized genre drawer; discovery controls stay in the drawer after re-render. This prevents two competing genre-navigation surfaces.
+- **Regression:** `tools/library-shell-layout.test.cjs` now executes the real `removeLegacyGenreFilters`, `openDrawer`, and `closeDrawer` functions in a bounded DOM contract. It verifies idempotent cleanup, open/close class state, `aria-hidden`, `inert`, backdrop, `aria-expanded`, focus entering the drawer and returning to the toggle, reader-page refusal, and safe missing-drawer handling.
+- **Purposeful build question:** do the drawer lifecycle regression, full Node/content suite, Android unit tests, APK packaging and Chromium journey pass together on the current branch head? Source inspection alone cannot prove the test is wired into CI or that the updated asset bundle builds.
+- **PASS — Android CI run 40520046330** on source/test SHA `2cb305bbec5048361e170a0660a5cb56cbfc2bc5`: curated offline-content checks, Node suite, Gradle unit tests + Debug APK, required asset verification and Chromium browser journey all passed.
+- **PASS — independent APK SHA-256:** Artifact `12740599357`; extracted `app-debug.apk` is 4,832,486 bytes, SHA-256 `4daf87cb043015b8cd4c2b24b666dd30846f4f0857b95e6cf239965549488fc3`, matching `APK_SHA256.txt`.
+- CI: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40520046330
+- Debug APK Artifact: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40520046330/artifacts/12740599357
+- **NOT TESTED:** Xiaomi Pad 5 installation, physical RTL/TalkBack, drawer swipe and focus behavior on Android WebView, real frame pacing/RAM/thermal, full UI string audit, Arabic literary review, territorial redistribution rights, and curated licensed audio. This is a Debug test build; LT-01..LT-13 remain IN PROGRESS overall.
+
+
+## 2026-10-27 — LT-11 licensed-audio failure recovery (CI PASS; physical device NOT TESTED)
+
+- **Production:** failed licensed Audio elements are evicted on media error and on a current play() rejection; playback state and focus ownership are cleared so a later tap creates a fresh player. Error handling checks the Audio element identity rather than a stale request ticket, so a late event from a replaced track cannot stop the new track.
+- **Regression:** tools/licensed-audio.test.cjs now covers rejected play(), media-error eviction, successful retry with a fresh Audio object, and stale error from an old track while the new track continues. Existing focus denial/loss, background pause, exclusive procedural/licensed playback, and manifest checks remain in the same suite.
+- **Purposeful build question:** does the updated production WebAudio/native-focus bridge recover from media failures without leaking focus or allowing an old track's error to interrupt a newer track, while the real asset-packaging and browser gates still pass? Source inspection alone cannot prove the suite is wired into the Android workflow or that all 20 pinned audio assets remain packaged.
+- **PASS — Android CI:** [run 40533628521](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40533628521) on source/test head cb102c186f7b5dabd5c9d444183809ffc56b2596. Pinned CC-BY audio fetch/verification, all Node/content/theme regressions, Gradle unit tests + Debug assembly, required APK asset/license/manifest checks, and Chromium reader journey passed.
+- **PASS — independently re-hashed Debug APK:** 20,050,454 bytes; SHA-256 e1bdd4eda45dcc90961957c252bbfd2f3ca7a044903cbd2f49dc66f5eabd5c62, matching APK_SHA256.txt in Debug artifact **12747891165**. Browser evidence artifact **12746174907**.
+- **NOT TESTED:** physical Xiaomi Pad 5 install, actual Android Audio Focus and screen-off interruption, audible quality, battery/thermal/frame pacing, physical RTL/TalkBack, Arabic literary review and territory-specific redistribution clearance. The pack contains 16 licensed ambience loops + 4 short effects; the device/acoustic gate remains open. Debug is not final and LT-01..LT-13 remain **IN PROGRESS**.
+
+
+## 2026-10-27 — LT-06 bilingual backup-validation failures
+
+- **Production:** backup/export/import error messages now follow the selected interface locale. Known malformed-JSON, unsupported-format, invalid-field, size-limit, and rollback failures receive English UI messages when the interface is English; Arabic UI retains the original Arabic diagnostics. Unknown Arabic internal errors use a safe generic English fallback instead of leaking an untranslated message. Imported story text, saved vocabulary, translations, and backup data are not rewritten.
+- **Regression:** `tools/data-backup.test.cjs` exercises the real production `receiveImport` path for malformed JSON and unsupported format in English, then confirms the same malformed input remains Arabic in Arabic UI. The test also retains the existing restore-confirmation and data-preservation cases.
+- **Source/test head:** `e4fd74fe31f12c7351d8bc083f38630454c0403b`.
+- **CI:** **NOT VERIFIED** for this exact head in this checkpoint; the connected status lookup did not expose the push-triggered Actions run. Do not infer PASS from the source changes alone.
+- **NOT TESTED:** physical Xiaomi Pad 5, actual Android WebView locale behavior, full UI string audit, RTL/TalkBack, frame pacing, Arabic literary review, territory-specific rights, and final release. LT-01..LT-13 remain **IN PROGRESS**.
+
+
+## 2026-10-27 — LT-06 backup safety badge follows interface locale (CI PASS; device NOT TESTED)
+
+- **Production:** the backup/restore sheet's “OFFLINE · DATA SAFETY” badge now uses the same Arabic/English locale helper as the rest of the sheet; Arabic UI shows “بدون اتصال · حماية البيانات” instead of leaking the English badge.
+- **Regression:** `tools/data-backup.test.cjs` asserts the English badge in English UI, the Arabic badge in Arabic UI, and the absence of the English badge from the Arabic-rendered sheet. Existing backup schema, stale-preview, data-preservation, and bilingual validation checks remain enabled.
+- **Purposeful build question:** does the actual bundled WebView sheet keep this visible safety label localized while the offline content, dictionary, audio, Android packaging, and reader browser gates still pass? Source inspection alone cannot prove the production asset bundle and browser journey together.
+- **PASS — Android CI:** [run 40553962157](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40553962157), source/test SHA `f0cd468314efc5b5e0ea5855cd5410a1c1eb6839`. Offline dictionary and pinned CC-BY audio verification, curated content/Node regressions, Gradle unit tests + Debug APK, packaged-asset verification, and Chromium journeys through Chapter XXXVII passed.
+- **PASS — independently re-hashed Debug APK:** 20,051,250 bytes; SHA-256 `a36eca44f070805532bfdb4b3e30f363508b4ba539ec7fc870d00cafacf862a1`, matching `APK_SHA256.txt` from Artifact **12756332646**. Screenshot Artifact **12756686459**.
+- **NOT TESTED:** Xiaomi Pad 5 install, actual Android RTL/TalkBack, device frame pacing/RAM/thermal, licensed-audio acoustics/Audio Focus with screen off, independent Arabic literary review, and territory-specific redistribution rights. Debug is not final; LT-01..LT-13 remain **IN PROGRESS**.
+
+
+## 2026-10-27 — LT-01/LT-03 long-book card and catalog merge (CI pending)
+
+- **Production change:** the library now contains a lightweight placeholder for *Around the World in Eighty Days* before any chapter script executes. The existing cover remains immediately available; all 37 chapter payloads and editorial art scripts remain inert until the user opens the book.
+- **Loader fix:** after sequential loading, the loader validates all 37 bilingual chapters, attaches offline editorial art, and merges the verified story into the same catalog object before calling the original `openStory`. This repairs a source-level discoverability/publication gap that isolated loader tests had not represented.
+- **Regression:** `tools/content-loader.test.cjs` asserts the startup placeholder, zero chapters before open, all 37 chapters on the catalog entry before reader open, and publication after retry. `tools/validate_catalog.py` validates lazy metadata without forcing the long payload into startup data.
+- **Purposeful build question:** does the actual lazy-script order and APK asset bundle now make the classic novel discoverable and openable, while the full content/Node suite, Gradle APK assembly, required-asset checks and Chromium journey pass? Static review alone cannot prove the cross-script catalog handoff.
+- **CI:** **NOT VERIFIED** for source/test head `948b4f48da44631968f25e69d3b4fc45071888ec`; the available status adapter returned no run/status rows, which does not prove Actions failed to run. **Independent in-memory integration simulation: PASS** — parsed the real library/art catalogs, executed the production lazy-loader code with the declared 40-script order, and verified 0 startup chapters → 37 validated/published chapters before reader open, root unlock, and dictionary remaining lazy. This simulation is not Chromium or device acceptance.
+- **NOT TESTED:** Xiaomi Pad 5 installation, physical first-open interaction, frame pacing/RAM/thermal, actual RTL/TalkBack, independent Arabic literary review and territory-specific redistribution clearance. LT-01..LT-13 remain IN PROGRESS; Debug is not final and no main write/merge was made.
+
+## 2026-10-27 — LT-01/LT-03 deferred long-book browser acceptance repaired (CI PASS; device NOT TESTED)
+
+- **Failure triage:** CI run 40569052053 had already passed curated content, Gradle tests/APK assembly, packaged asset checks, and Chromium rendering of Chapters XIV–XXXVII. It failed only at the broad library-flow fixture because that fixture eagerly calls the lazy loader before checking the startup placeholder. The separate `lazy-content` fixture still checks the true pre-load state.
+- **Fix:** `tools/make_browser_fixtures.py` now checks that the broad flow sees the verified 37-chapter book published after deferred loading, and that the cover/final-chapter art remain present after loading. The dedicated lazy-content journey continues to assert the empty 0-chapter placeholder, cover-only startup art, dictionary-on-demand behavior, and 36 ordered chapter scripts + four deferred art scripts after opening.
+- **PASS — Android CI:** [run 40570332057](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40570332057), exact source/test head `074d2f381b1c3bd9d51da4488057c6950e98162f`. Full Node/content/theme/dictionary/audio suite, Gradle unit tests + Debug APK, required packaged assets, and Chromium reader journeys through Chapter XXXVII passed.
+- **PASS — independently re-hashed Debug APK:** Artifact [12763938820](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40570332057/artifacts/12763938820), extracted `app-debug.apk` 20,056,319 bytes; SHA-256 `8060c6e1d2584ec2ab182b37e064c6df829ad1aba765ac6cf714788f65bd8123`, matching the artifact's `APK_SHA256.txt`.
+- **NOT TESTED:** Xiaomi Pad 5 install, first-open latency/frame pacing/RAM/thermal, physical RTL/TalkBack, audio focus/screen-off acoustics, independent Arabic literary review, territory-specific redistribution rights, and final signing. The novel is discoverable and all 37 chapter scripts pass Chromium journeys, but translation editorial quality and real-device acceptance are not inferred from CI. Debug is not final; LT-01..LT-13 remain IN PROGRESS.
+
+## 2026-10-27 — LT-12 independent typography profiles (CI NOT VERIFIED; device NOT TESTED)
+
+- Production shell adds separate persisted Arabic/English compact, comfortable and large reading-size/line-height profiles, preserving independent font choices and the current semantic reading anchor after a font/size change.
+- Arabic keeps `letter-spacing: 0`; the large English profile uses a restrained `0.012em`. Image elements and controls are outside the profile selectors.
+- Regression added: `tools/typography-profiles.test.cjs`, wired into `.github/workflows/android.yml`.
+- **PASS (isolated local smoke):** exercised the extracted production function/CSS slice for defaults, invalid values, independent persistence and anchor restoration. **This is not the full repository CI run.**
+- **CI NOT VERIFIED** for current source/test head `ec902fc2fbe680b43409f94c011480362fbfd5bf`; no CI PASS is inferred.
+- **NOT TESTED:** Xiaomi Pad 5, actual WebView wrapping/font availability, RTL/TalkBack, screenshot comparison, FPS/RAM/thermal. LT-01..LT-13 remain IN PROGRESS; Debug is not final.
+
+
+## 2026-10-27 — LT-12 production reader-anchor recovery (final CI PASS)
+
+- **Root cause discovered:** the new font/size path in `lingua-shell.js` referenced `safeOffset`, `savePosition`, `nextFrame` and `restoreReadingPosition` without defining them in the production shell. The first CI attempt exposed `safeOffset`; the fix replaced all four dangling dependencies with local, bounded helpers rather than only patching the test.
+- **Production behavior:** font and size changes save the existing `scroll_<story>_<chapter>` checkpoint, capture the first visible sentence's paragraph index + viewport offset, then restore that paragraph after reflow only while the same story/chapter is still active. If no reliable visible paragraph exists, it safely falls back to the bounded pixel offset. Restoration uses `requestAnimationFrame` where available and does not add permissions or network access.
+- **Regression:** `tools/typography-profiles.test.cjs` now supplies DOM query, animation and scroll primitives and simulates a paragraph whose top changes from 100px to 150px. It asserts the scroll target shifts by the same amount so the paragraph remains at the prior viewport offset. The full `library-experience.test.cjs` shell test also exercises this path.
+- **PASS — Android CI:** [run 40589998882](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40589998882), functional source/test head `6343133f1361757b08334f3b583779a892428c3a`. Curated content/dictionary/theme/audio checks, Node regression suite, Gradle unit tests + Debug assembly, required APK assets, Chromium reader journeys through Chapter XXXVII and screenshot generation passed.
+- **PASS — independent APK verification:** Debug artifact [12772819773](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40589998882/artifacts/12772819773), `app-debug.apk` size 20,057,883 bytes; SHA-256 `c79b4798ab48938e120cd68b72b4239a8b6d881f5f7b5ef9141b32e751887bf5`, independently recalculated after download and matching `APK_SHA256.txt`. Screenshot artifact [12773058804](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40589998882/artifacts/12773058804).
+- **NOT TESTED:** physical Xiaomi Pad 5, WebView typography/overflow, RTL and TalkBack on device, frame pacing/RAM/thermal, licensed font assets, independent Arabic literary proofreading, territory-specific redistribution rights and final signing. LT-01..LT-13 remain IN PROGRESS; Debug is not a final release.
+
+
+## 2026-10-28 — Liquid Glass reader pages, contextual gloss, icon and update-signing gate
+
+- **Production source:** added chapter-paragraph pagination with previous/next controls, touch-swipe navigation, per-story/chapter page persistence, a short 3D page-turn animation, and reduced-motion fallback. Arabic inline translations and editorial illustrations remain attached to their source paragraph groups.
+- **Contextual meaning:** the word sheet now prioritizes story-authored contextual definitions. For unannotated words it compares the licensed dictionary senses against meaningful words in the aligned Arabic sentence, shows the closest matching sense when evidence overlaps, and labels it as an estimate; when no reliable match exists it explicitly says no verified single-word sense is available instead of repeating the old generic boilerplate. This is a local heuristic, not an LLM or a guarantee of semantic correctness.
+- **Visual/performance:** refreshed the adaptive foreground vector with the approved open-book + language-petals motif and layered gloss; added colorful liquid gradients and frosted surfaces. Kept blur to selected shell/modal surfaces rather than every story card to avoid stacking expensive backdrop filters.
+- **Regression:** added `tools/contextual-page-turn.test.cjs` and wired it into Android CI. It executes the actual production contextual selector for authored, translation-overlap and no-match cases, and checks pagination persistence, gestures, animation and reduced-motion hooks.
+- **Versioning:** bumped `versionCode` 5 → 6 and `versionName` 0.5.0 → 0.6.0 while preserving `applicationId` and `namespace` = `com.storylens.reader`; do not change these identifiers during rebrand.
+- **Important update-signing blocker:** CI-generated debug APKs use ephemeral runner debug keystores, so separate workflow runs may be signed differently and Android reports “conflict with previous installation.” Gradle/CI now support an optional stable private release keystore through Actions secrets `LT_SIGNING_KEYSTORE_BASE64`, `LT_SIGNING_STORE_PASSWORD`, `LT_SIGNING_KEY_ALIAS`, and `LT_SIGNING_KEY_PASSWORD`. If those secrets are absent, CI intentionally produces a **debug/test APK only**, not an install-over-existing update. The private keystore must never be committed to this public repository. If the currently installed app was signed with a different/lost key, no new signature can update it in place; the matching original keystore is required, otherwise a one-time uninstall/reinstall is unavoidable.
+- **Source head:** `00e6708e93a757661bfa045db3824a4787541e76` (workflow/signing integration; earlier commits in this same PR contain the reader, icon and version changes).
+- **CI:** NOT VERIFIED for this exact head at ledger update time; no success is inferred from source edits. Debug APK build, test execution, stable-signed release path and actual artifact hash must be recorded after Actions completes.
+- **Device:** Xiaomi Pad 5 page-fit/page-turn smoothness, gesture conflicts with text selection, Arabic RTL/TalkBack, install-over-update signing, and real-world contextual-meaning accuracy remain **NOT TESTED**.
+- **Literature:** existing *Around the World in Eighty Days* is a long serialized book with chapter-by-chapter source/provenance checks. Further mystery novels should be added as coherent reviewed batches with bilingual alignment, source/license provenance and a non-fabricated completion state; no new copyrighted full text was copied in this UX fix batch.
+- **Acceptance status:** LT-01..LT-13 remain IN PROGRESS; this is not a final release.
+
+
+- **Follow-up:** page controls now follow English/Arabic UI labels and swipe direction (LTR: swipe left for next; RTL: swipe right for next). The selector's Unicode ranges were corrected to match actual Arabic characters rather than escaped literal text.
+- **Latest source head:** `df48a9fd8e6f31bb5ebf22d663b6b4009c88214a`.
+- **Workflow lookup:** the connected commit-run query returned no rows for this head; CI therefore remains **NOT VERIFIED**, not PASS. Confirm the actual Actions run and test output before distributing any APK.
+
+
+- **Launcher test follow-up:** the adaptive-icon regression now accepts the refined approved book/petal geometry (the petal apex moved by one vector unit); it still verifies adaptive foreground/background/monochrome resources, manifest branding, no network permissions and unchanged storage/package identity.
+- **Latest test/source commit:** `7b2fd419b6fc947d7041de6fcac4a6eb80f45476`.
+- **No new mystery-book payload was added in this UI-fix batch.** Existing long-form Verne content remains source-bound and chapter-based; the next content milestone should add a substantial, separately licensed or explicitly original detective serial with aligned Arabic translations, vocabulary/idioms, scene art and provenance checks rather than short filler entries.
+
+
+## 2026-10-28 — LT-02/LT-03 reader gesture safety follow-up
+
+- **Production change:** page-swipe gestures now refuse to navigate when a text selection is active or the gesture begins on a button/link/form/accessibility control; text-node targets are resolved to their parent element. Touch-cancel resets gesture state, and selection lookup tolerates a missing browser Selection object.
+- **Regression:** tools/contextual-page-turn.test.cjs extracts and executes the production guard against normal reading surfaces, selected text, interactive controls, nested text nodes and missing targets; it also checks the touch-cancel and null-safe Selection hooks.
+- **Source/test head:** 4777708a516dca1d2929a8b132549c4a9e57588b (production source commit 2c3cff557219013c363bb443488c45d3b6c0e98d; defensive Selection follow-up 4e4faf9ccf12ec00f6c6d5a753c61723ad2f38e9).
+- **CI NOT VERIFIED:** connected workflow/status surfaces returned no run/status rows for the latest source/test head; do not infer PASS from earlier builds. A new Android workflow result must exercise the updated Node regression, Gradle packaging and Chromium reader journey.
+- **NOT TESTED:** Xiaomi Pad 5 gesture/text-selection interaction, actual WebView touch cancellation, RTL swipe feel, TalkBack, frame pacing/RAM/thermal. No APK is claimed for this source/test head.
+- **Acceptance:** LT-01..LT-13 remain IN PROGRESS; this safety fix does not close story-transition, full bilingual UI, literary editorial, audio-license, device-performance or final-signing gates.
+
+
+- **Isolated production-helper smoke (2026-10-28): PASS, 5/5 checks** — executed the actual pageSwipeAllowed function extracted from the current branch source in V8 for ordinary reading, selected text, interactive targets, nested text nodes and a missing target. This does not replace repository Node CI, Chromium or Pad 5 testing.
+
+
+## 2026-10-28 — Page-turn/contextual meaning + Android integration gate (PASS; device NOT TESTED)
+
+- **Production UX in this branch:** bilingual chapter pages with swipe/previous/next navigation and reduced-motion page-turn animation; contextual word sheet prioritizes story-authored meaning, otherwise shows a clearly labelled translation-overlap estimate or admits no verified standalone sense. Swipe guards preserve text selection and interactive controls.
+- **Regression/build repairs:** isolated reader harnesses now provide the base `wordSheet` host dependency expected by `reader-experience.js`. The Android Kotlin DSL signing check now imports `java.io.File` rather than resolving `java.io.File` through Gradle's `java` extension. The earlier failures were corrected; production assertions were not weakened.
+- **PASS — Android CI:** [run 40603809099](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40603809099), exact source/test SHA `2a36ea47f0aaaa18416243d422a4c1eb18b32b63`. Curated-content/dictionary/theme/licensed-audio checks, Node regression suite, Gradle unit tests + Debug APK, critical packaged-resource verification, and Chromium library/reader journeys through Chapter XXXVII all passed.
+- **PASS — independent APK hash verification:** downloaded Debug Artifact [12780451234](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40603809099/artifacts/12780451234); extracted `app-debug.apk` is 20,062,103 bytes, SHA-256 `5cceffecca74e45ab6eb98dc802394ae24d6c475be91e581e72296a5c5522c45`, independently recalculated and matching `APK_SHA256.txt`.
+- **Signing/update limitation:** GitHub Actions stable-signing secrets were absent, so the stable-signed release APK step was skipped. This Debug APK is for testing and is **not** an in-place update package; it can conflict with an existing installation signed by a different/ephemeral key. Future data-preserving updates require the matching private keystore configured as Actions secrets. Otherwise export/verify a backup before a one-time uninstall/reinstall.
+- **NOT TESTED:** physical Xiaomi Pad 5 install/update, real frame pacing/RAM/thermal, page-turn feel, actual RTL/TalkBack, contextual-meaning editorial accuracy, and final signing/legal/editorial acceptance. LT-01..LT-13 remain IN PROGRESS overall; no final release or main merge.
+
+
+## 2026-10-28 — LT-11 licensed ambience expansion to 20 loops (CI PASS; device audio NOT TESTED)
+
+- Expanded the pinned Meta-open-sound/Oculus Audio Pack CC BY 4.0 set from 16 to **20 recorded ambience loops**, retaining the 4 short one-shot effects. New loop choices: farm ambience, European city daytime, creek in the woods, and water lapping at the shore. Source commit remains `facebookincubator/Meta-open-sound@251c0be57d5d1b3242b91f53e0cde62ab1cb42d9`; each file is pinned by exact size and Git blob SHA-1.
+- **PASS — full Android CI:** [run 40611408964](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40611408964), tested source/workflow SHA `fe7ea244dd0803ca9adf4c9bb5d94f3681e9b393`. Offline dictionary/audio fetching, all content/dictionary/theme/audio regressions, Gradle unit tests + Debug assembly, all required packaged-resource checks, and Chromium library/reader journeys passed.
+- The first attempts exposed stale integration expectations (manifest uniqueness still expected 20 total files; APK packaging still expected 20 OGG files). Corrected them to 24 total audio files = 20 loops + 4 effects, and added a regression for the exact attribution count. Production audio behavior was not weakened.
+- **PASS — independent APK verification:** Debug artifact [12782818143](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40611408964/artifacts/12782818143), extracted APK 25,721,483 bytes; SHA-256 `9a92c11ad2f6bfb6fb9c57bb0fea9655ced3c651148231145af94c9e21a010a9`, independently recalculated and matching `APK_SHA256.txt`. Inspected the APK archive directly: 24 OGG assets, manifest reports 20 `loop` + 4 `oneshot`, all four new IDs present, and `LICENSE_AUDIO.txt` packaged.
+- Pinned audio source payload totals **20,865,830 bytes** before APK compression. The procedural sound module remains separate (20 ambience scenes + 4 synthesized melody presets); those synthesized previews are not misrepresented as licensed recordings.
+- **NOT TESTED:** Xiaomi Pad 5 audible quality, actual Android Audio Focus/interruptions/screen-off playback, battery/thermal/FPS, physical RTL/TalkBack, and final update signing. Stable signing secrets are still absent, so this Debug APK uses the CI debug key and is **not guaranteed to update an existing installation in place**. LT-01..LT-13 remain IN PROGRESS; no final release or main merge.
+
+
+## 2026-10-28 — Editorial Collection D: six new bilingual original stories (source smoke PASS; Android CI NOT VERIFIED)
+
+- Added six original adult stories across the six target genres: **The Blue Room Ledger** (mystery), **The Quiet Orbit** (science fiction), **A Name in the Margin** (psychological), **The Glassmaker’s Map** (historical), **The Last Shift Swap** (contemporary), and **The House That Counted** (horror).
+- The batch contains **18 chapters, 108 aligned English/Arabic passage pairs, 2,083 English words, 48 contextual annotations, and 18 new self-contained SVG chapter scenes**. All stories identify themselves as original project fiction; Arabic remains a companion draft pending independent literary editing. No copyrighted book text or remote image/font dependency was added.
+- Existing Collection C regressions were preserved and the collection acceptance test now validates both C and D: genre coverage, chapter/passage counts, non-repeated English passages, minimum prose length, Arabic text, source-occurring vocabulary, and offline chapter illustrations.
+- **PASS — direct production V8 smoke:** loaded the actual story assets and art engine; all 18 Collection C/D stories and all 216 bilingual passages passed the targeted assertions. Collection C: 2,123 English words / 12 illustrations; Collection D: 2,083 English words / 18 illustrations.
+- Source changes: story asset commit `14b0b5ae26fd973922e825a6912511206ec20ff3`; illustration engine commit `a3d7f9640afe3bc9318e39f07f78a114de7711de`; latest content/test guard commit `a8df05f2fedc93e2f7fdd078d2aeac4d51e2bc2b` (includes cross-batch unique IDs, source-occurring vocabulary, and explicit provenance checks for the new batch).
+- **Android CI: NOT VERIFIED** for the latest head. The connected run/status surfaces returned no rows, so no Gradle, APK-packaging, or Chromium pass is inferred from the V8 smoke. A successful targeted workflow must exercise `tools/editorial-c.test.cjs`, packaged assets and the reader journey.
+- **NOT TESTED:** independent Arabic literary review, physical Xiaomi Pad 5 reading/RTL/TalkBack/frame pacing, and final release signing. The original library data has four short stories per genre; existing editorial batches A/B/C add three more per genre, and Collection D adds one, for eight original short stories per genre before counting the separate Salt Meridian novella and the long Verne novel. The plan target of twenty per genre is still incomplete. LT-01..LT-13 remain IN PROGRESS.
+
+
+## 2026-10-28 — LT-06 reader locale selector integration (Android CI + APK integrity PASS)
+
+- **Production:** moved the reader's Arabic/English selector into the existing lingua-i18n.js localization layer, avoiding a second translation dictionary. Reader Settings now exposes the same persistent locale choice as library Settings. Switching locale saves the chapter scroll checkpoint, applies the existing shell locale, rerenders the reader, reopens Settings and restores the prior offset; the selector cannot duplicate when Settings is reopened.
+- **Regression:** tools/full-localization.test.cjs executes the production selector helper against a DOM test double and checks Arabic/English choices, persistence key, scroll restoration, rerender/reopen and duplicate prevention. Existing locale-journeys.test.cjs still covers localized reader, dictionary, saved words, SRS and full Arabic translation while preserving the English source and Arabic learning text.
+- **PASS — Android CI:** [run 40640774324](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40640774324), exact source/test SHA 4162fcad840de4f8d021f381f07f0b021baf4154. Full Node/content/dictionary/theme/audio suite, Gradle unit tests + Debug APK assembly, required packaged-resource checks and Chromium library/reader journeys through Chapter XXXVII passed.
+- **PASS — independent APK SHA-256:** downloaded Debug Artifact [12796045904](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40640774324/artifacts/12796045904), extracted APK size 25,743,251 bytes; SHA-256 `4e6f20c0c33b86839058972c77cbd4c72a56a53be2e9cac6aa5d24c202c8df25`, independently recalculated and matching APK_SHA256.txt. Inspected the APK archive directly and confirmed the packaged lingua-i18n.js contains the reader locale selector; the redundant shell translation bridge is absent.
+- **Signing/update limitation:** stable-signed release artifact was skipped because the private update-signing secrets are not configured. This Debug APK is for testing and is not guaranteed to update an existing installation signed by another/ephemeral key.
+- **NOT TESTED:** physical Xiaomi Pad 5 locale switching, WebView RTL/LTR behavior, TalkBack, frame pacing/RAM/thermal, visual contrast on-device, Arabic literary review, licensed long-book editorial review, and final release signing. LT-01..LT-13 remain IN PROGRESS; no main write or merge.
+
+
+## 2026-10-28 — LT-03 immediate cancel/reopen race verified in Android CI
+
+- **PASS:** test commit `7cca6028f1b18b26003b8e9b5df2381490703767` is included in functional SHA `4162fcad840de4f8d021f381f07f0b021baf4154`; Android CI run [40640774324](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40640774324) passed the native Node loader regression, Gradle unit tests/Debug assembly, asset packaging and Chromium reader journey.
+- The test covers cancel/reopen while chapter 1 is still in flight, shared request reuse, stale-generation rejection, complete 37-chapter catalog publication, and no duplicate local asset URLs.
+- APK artifact [12796045904](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/40640774324/artifacts/12796045904) independently verified at 25,743,251 bytes, SHA-256 `4e6f20c0c33b86839058972c77cbd4c72a56a53be2e9cac6aa5d24c202c8df25`.
+- **NOT TESTED:** physical Xiaomi Pad 5/WebView performance, RTL/TalkBack, independent Arabic literary review and territory-specific redistribution rights. Debug is not final; no main write or merge.
+
+
+
+## 2026-10-28 — Page-swipe endpoint safety (CI NOT VERIFIED; device NOT TESTED)
+
+- **Production:** a page-turn gesture now checks both its starting surface and the element under the ending touch coordinates. A swipe that starts in ordinary text but finishes on a button/link/form/accessibility control is rejected rather than activating page navigation.
+- **Regression:** the committed production-helper test covers reading-surface gestures, selected text, controls at either endpoint, nested text targets and null-safe targets; it also asserts the touchend path resolves the ending element through `document.elementFromPoint`.
+- **Source commit:** `8138f7b7b94d2b61a7dfd4691150af1d86be378f`; test commit `949d25b42349723bfdd77fd637b4fb97f4a90f52`.
+- **CI:** NOT VERIFIED for this exact source/test head. The connected commit-run lookup returned no workflow rows; no Android/Chromium PASS or new APK is inferred. The existing workflow is expected to run Node regressions, Gradle, packaged-resource checks and Chromium reader journeys on the updated PR.
+- **NOT TESTED:** physical Xiaomi Pad 5 swipe/control interaction, RTL feel, TalkBack and frame pacing. LT-01..LT-13 remain IN PROGRESS; no final APK claim.

@@ -100,8 +100,8 @@ global.FreeDictEnglishArabic = {
   for(const key of candidates(surface)) {
    const meanings=data[key];
    if(!meanings)continue;
-   return {term:key,literal:meanings.join(' / '),context:meanings.slice(0,3).join(' / '),
-    type:'dictionary',note:'معانٍ من FreeDict. اختَر المعنى المناسب للجملة؛ الترجمة السياقية أسفل البطاقة ليست كلمة بكلمة.'};
+   return {term:key,meanings:meanings.slice(0,2),literal:meanings.slice(0,2).join(' / '),context:'',
+    type:'dictionary',note:'معانٍ من FreeDict (بترتيب المصدر لا بترتيب الشيوع). تحديد معنى الكلمة في هذه الجملة يحتاج مراجعة سياقية؛ ترجمة الجملة ليست تعريفًا للكلمة.'};
   }
   return null;
  }

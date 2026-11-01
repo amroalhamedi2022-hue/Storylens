@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "doyle-the-lost-world-1912",
+  "originalTitle": "The Lost World",
+  "author": "Arthur Conan Doyle",
+  "originalLanguage": "en",
+  "originalPublicationYear": 1912,
+  "genres": [
+    "historical science fiction",
+    "scientific exploration",
+    "adventure",
+    "classic suspense"
+  ],
+  "completeOriginalSource": true,
+  "source": {
+    "publisher": "Standard Ebooks",
+    "editionURL": "https://standardebooks.org/ebooks/arthur-conan-doyle/the-lost-world",
+    "upstreamRepo": "standardebooks/arthur-conan-doyle_the-lost-world",
+    "upstreamCommit": "77cda24ba881969982a09063e9f6c7651d87a728",
+    "gutenbergSource": "https://www.gutenberg.org/ebooks/139",
+    "declaredFullWordCount": 75964,
+    "territoryNotice": "Original source/art believed US public domain, editorial contributions CC0; separate other-territory review required"
+  },
+  "originalChapters": [
+    {
+      "number": 1,
+      "file": "chapter-1.xhtml",
+      "upstreamGitBlobSha": "98f3a32225f6e3b4226a94218374dc1bb84d8404",
+      "bytes": 12768
+    },
+    {
+      "number": 2,
+      "file": "chapter-2.xhtml",
+      "upstreamGitBlobSha": "1086dee58500a9d8ac607f9621f34da7979bc578",
+      "bytes": 15694
+    },
+    {
+      "number": 3,
+      "file": "chapter-3.xhtml",
+      "upstreamGitBlobSha": "724d42d71348380e889f14b82244f3844db28367",
+      "bytes": 15623
+    },
+    {
+      "number": 4,
+      "file": "chapter-4.xhtml",
+      "upstreamGitBlobSha": "12139883be01a0b50103b9240d046005910de60c",
+      "bytes": 33905
+    },
+    {
+      "number": 5,
+      "file": "chapter-5.xhtml",
+      "upstreamGitBlobSha": "41dfe820ac3d36c068e85e62d27adaf0e47db77f",
+      "bytes": 28526
+    },
+    {
+      "number": 6,
+      "file": "chapter-6.xhtml",
+      "upstreamGitBlobSha": "9f99abeaf98a01a4bf1e8e7506d70065ad699fcc",
+      "bytes": 20677
+    },
+    {
+      "number": 7,
+      "file": "chapter-7.xhtml",
+      "upstreamGitBlobSha": "6ccb880d52be82bae77d8196bb41b5286e660d10",
+      "bytes": 21196
+    },
+    {
+      "number": 8,
+      "file": "chapter-8.xhtml",
+      "upstreamGitBlobSha": "efbc7c102630b38be4e3b7f9d2ab422e17a4b187",
+      "bytes": 26969
+    },
+    {
+      "number": 9,
+      "file": "chapter-9.xhtml",
+      "upstreamGitBlobSha": "ba64ad302f7f5a592bd81307f6b886456b97d8df",
+      "bytes": 47906
+    },
+    {
+      "number": 10,
+      "file": "chapter-10.xhtml",
+      "upstreamGitBlobSha": "e8b19c0918cea3f4e6e73ed2d554dda50bb88c3b",
+      "bytes": 29549
+    },
+    {
+      "number": 11,
+      "file": "chapter-11.xhtml",
+      "upstreamGitBlobSha": "4abd98bc13fc2a7fb5e712acd46b644aa1f5042a",
+      "bytes": 33288
+    },
+    {
+      "number": 12,
+      "file": "chapter-12.xhtml",
+      "upstreamGitBlobSha": "37143dd2ff47d777ed79361be45cbca66aa6d29e",
+      "bytes": 31984
+    },
+    {
+      "number": 13,
+      "file": "chapter-13.xhtml",
+      "upstreamGitBlobSha": "41d9f8bffa0d3d9b13739554169a7e7f0d9f966f",
+      "bytes": 31480
+    },
+    {
+      "number": 14,
+      "file": "chapter-14.xhtml",
+      "upstreamGitBlobSha": "b30818c2b6d5ed826d9df3678f863f27db71612e",
+      "bytes": 30987
+    },
+    {
+      "number": 15,
+      "file": "chapter-15.xhtml",
+      "upstreamGitBlobSha": "f2c8f1e0cfc9ef032b65f1d4d1a7455500746051",
+      "bytes": 34758
+    },
+    {
+      "number": 16,
+      "file": "chapter-16.xhtml",
+      "upstreamGitBlobSha": "28d8f440c749e4688bf4841ff01e56aae42da143",
+      "bytes": 39594
+    }
+  ],
+  "publishable": false,
+  "status": "SOURCE_STAGED_EDITORIAL_HOLD",
+  "acceptance": {
+    "completeArabicCompanion": false,
+    "contextualArabicEditorialReview": false,
+    "historicChapterArtCleared": false,
+    "territoryRightsReviewed": false,
+    "offlineDeviceVerified": false
+  },
+  "disclaimer": "Unmodified 16 original EN XHTML chapters staged; never displayed in app as fully bilingual until entire natural Arabic translation and chapter-specific old art/rights checks."
+}

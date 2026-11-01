@@ -1,0 +1,159 @@
+'use strict';
+// Regression: navigation must re-run the enhanced reader, not the captured base renderer.
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+
+const js = fs.readFileSync(path.join(__dirname, '../app/src/main/assets/reader-experience.js'), 'utf8');
+const store = new Map();
+const story = {
+ id: 'book-one', title: 'Book One',
+ chapters: [
+  {title: 'Chapter One', paragraphs: [{en: 'First sentence.', ar: 'الجملة الأولى.'}]},
+  {title: 'Chapter Two', paragraphs: [{en: 'Second sentence.', ar: 'الجملة الثانية.'}]}
+ ]
+};
+let originalRenderCalls = 0, accessibleSentences = 0, contextMenuHandlers = 0, scrollTarget = null;
+const sentenceDescriptions = [], readerPanels = [], translations = [];
+const sentenceAttributes = {}, headingAttributes = {}, arabicAttributes = {}, pageAttributes = {};
+let contextHandler = null, keyboardHandler = null;
+const footer = {insertAdjacentElement(position, panel) {assert.equal(position, 'beforebegin'); readerPanels.push(panel.innerHTML);}};
+const sheet = {querySelector(selector) {return selector === 'footer' ? footer : null;}, appendChild(panel) {readerPanels.push(panel.innerHTML);}};
+const sentence = {
+ textContent: 'First sentence.', dataset: {i: '0'}, style:{},
+ matches(){return false;}, closest(){return null;}, getBoundingClientRect(){return {top:143};},
+ setAttribute(name, value) {sentenceAttributes[name] = value; if (name === 'tabindex') accessibleSentences++; if (name === 'aria-label') throw new Error('aria-label must not mask the English sentence'); if (name === 'aria-description') sentenceDescriptions.push(value);},
+ addEventListener(name, handler) {if (name === 'contextmenu') {contextMenuHandlers++; contextHandler = handler;} if (name === 'keydown') keyboardHandler = handler;}, 
+ insertAdjacentElement(position, node) {assert.equal(position, 'afterend'); translations.push(node); this.nextElementSibling = node;}, 
+ nextElementSibling: null
+};
+const document = {
+ documentElement: {lang: 'ar',style:{setProperty(){}}},
+ body:{dataset:{},classList:{toggle(){}}},
+ querySelector(selector) {
+  if (selector === '#modals .sheet') return sheet;
+  if (selector === '.reader-label') return {appendChild() {}};
+  if (selector === '.reader h2') return {setAttribute(k,v) {headingAttributes[k]=v;}};
+  if (selector === '.arabic-page') return {setAttribute(k,v) {pageAttributes[k]=v;}};
+  return null; // No library view while testing reader navigation.
+ },
+ querySelectorAll(selector) {return selector.includes('.reader .sentence') ? [sentence] :
+   selector === '.reader .inline-ar' ? [{setAttribute(k,v) {arabicAttributes[k]=v;}}] : [];},
+ createElement() {
+  return {attributes:{},dataset:{},style:{},children:[],setAttribute(k,v) {this.attributes[k]=v;},
+   addEventListener(){},appendChild(child){this.children.push(child);return child;},
+   querySelectorAll(){return [];},querySelector(){return null;},
+   textContent:'',className:'',innerHTML:'',
+   get classList(){return {contains:cls=>this.className.split(' ').includes(cls),toggle(){}};},
+   remove(){sentence.nextElementSibling=null;}};
+ }
+};
+const state = {story, page: 'reader', chapter: 0, toolbar: true};
+const sandbox = {
+ window: {scrollY: 175, scrollTo(x, y) {scrollTarget = [x, y];}},
+ document, state, catalog: {stories: [story]},
+ get: (key, fallback) => store.has(key) ? store.get(key) : fallback,
+ put: (key, value) => store.set(key, value),
+ library() {}, openStory() {}, settings() {}, theme() {}, inlineTranslate() {},
+ renderReader() {originalRenderCalls++;},
+ closeSheet() {}, wordSheet() {}, esc: String, console, Date
+};
+vm.runInNewContext(js, sandbox, {filename: 'reader-experience.js', timeout: 5000});
+
+sandbox.window.stlChapter(1);
+assert.equal(state.chapter, 1, 'chapter picker changes chapter');
+assert.equal(originalRenderCalls, 1, 'base renderer runs once');
+assert.equal(accessibleSentences, 1, 'enhanced reader sets sentence keyboard focus');
+assert.equal(sentenceAttributes.lang, 'en', 'English story language independent of Arabic interface');
+assert.equal(sentenceAttributes.dir, 'ltr', 'English story keeps LTR direction');
+assert.equal(headingAttributes.lang, 'en', 'chapter title has English language metadata');
+assert.equal(arabicAttributes.lang, 'ar', 'inline learning translation has Arabic language metadata');
+assert.equal(contextMenuHandlers, 1, 'enhanced reader rebinds translation context menu');
+assert.equal(sentence.textContent, 'First sentence.', 'spoken English story text remains present');
+assert.equal(store.get('has_read_book-one'), true, 'chapter navigation persists reading progress');
+assert.equal(store.get('scroll_book-one_0'), 175, 'prior chapter scroll is saved');
+assert.equal(store.get('chapter_book-one'), 1, 'selected chapter is saved');
+assert.deepEqual(scrollTarget, [0, 0], 'new chapter scroll resets');
+
+store.delete('has_read_book-one');
+store.set('bookmarks', {'book-one': {chapter: 0, scroll: 88}});
+sandbox.window.stlJumpBookmark();
+assert.equal(state.chapter, 0, 'bookmark restores chapter');
+assert.equal(originalRenderCalls, 2, 'bookmark re-renders once');
+assert.equal(accessibleSentences, 2, 'bookmark keeps accessibility annotations');
+assert.equal(contextMenuHandlers, 2, 'bookmark keeps translation interaction');
+assert.equal(store.get('has_read_book-one'), true, 'bookmark re-establishes reading progress');
+assert.deepEqual(scrollTarget, [0, 88], 'bookmark restores scroll position');
+assert.ok(sentenceDescriptions.at(-1).includes('انقر كلمة'), 'Arabic reader instructions are available without hiding English story text');
+contextHandler({preventDefault() {},stopImmediatePropagation() {}});
+assert.equal(translations.at(-1).textContent, 'الجملة الأولى.', 'translation content is unchanged');
+assert.equal(translations.at(-1).attributes.lang, 'ar', 'revealed translation is spoken in Arabic');
+assert.equal(translations.at(-1).attributes.dir, 'rtl', 'revealed translation keeps RTL');
+// Re-pagination only runs when there are real measured paper pages.
+const originalQuerySelector=document.querySelector;
+const repaginationAnchors=[];
+document.querySelector=selector=>selector==='.reader .reading-width'
+ ? {dataset:{ltPaged:'1'}}:originalQuerySelector(selector);
+sandbox.window.LinguaReflowReader=anchor=>repaginationAnchors.push(anchor);
+// A keyboard-focused sentence must reveal exactly the same Arabic text as
+// long-press, and Enter/Space must toggle without hijacking child controls.
+assert.equal(typeof keyboardHandler, 'function', 'keyboard handler bound to focused sentence');
+const keyEvent=(key,target=sentence)=>({key,target,prevented:false,preventDefault(){this.prevented=true;},stopImmediatePropagation(){}});
+const space=keyEvent(' ');
+keyboardHandler(space);
+assert.equal(space.prevented,true,'Space prevents page scrolling');
+assert.equal(sentence.nextElementSibling,null,'Space hides an existing translation');
+assert.deepEqual(repaginationAnchors.map(x=>[x.paragraph,x.viewportOffset]),[[0,143]],
+ 'Hiding an in-page companion repaginates once at the original source paragraph');
+const enter=keyEvent('Enter');
+keyboardHandler(enter);
+assert.equal(translations.at(-1).textContent,'الجملة الأولى.','Enter restores exact Arabic translation');
+assert.equal(translations.at(-1).attributes.lang,'ar','keyboard translation has Arabic language tag');
+assert.deepEqual(repaginationAnchors.map(x=>[x.paragraph,x.viewportOffset]),[[0,143],[0,143]],
+ 'Showing a contextual companion also repaginates exactly once');
+document.querySelector=originalQuerySelector;
+delete sandbox.window.LinguaReflowReader;
+// Theme/font re-renders replace the reader DOM. A revealed Arabic sentence
+// must be reconstructed from the original chapter, without storing it on disk.
+sentence.nextElementSibling=null;
+const beforeRestore=translations.length;
+sandbox.renderReader();
+assert.equal(translations.length,beforeRestore+1,'revealed sentence survives reader rerender');
+assert.equal(sentence.nextElementSibling.textContent,'الجملة الأولى.','restored translation is exact source Arabic');
+keyboardHandler(keyEvent(' '));
+assert.equal(sentence.nextElementSibling,null,'user can explicitly hide restored translation');
+sandbox.renderReader();
+assert.equal(sentence.nextElementSibling,null,'hidden sentence stays hidden after rerender');
+keyboardHandler(keyEvent('Enter'));
+sentence.nextElementSibling=null;
+sandbox.window.stlChapter(1);
+assert.equal(sentence.nextElementSibling,null,'chapter two does not inherit chapter one reveal');
+sentence.nextElementSibling=null;
+sandbox.window.stlChapter(0);
+assert.equal(sentence.nextElementSibling.textContent,'الجملة الأولى.','returning to chapter restores only its own reveal');
+
+const descendant=keyEvent('Enter',{});
+keyboardHandler(descendant);
+assert.equal(descendant.prevented,false,'nested interactive word keeps its own Enter');
+assert.equal(sentence.nextElementSibling,translations.at(-1),'nested Enter does not toggle translation');
+const tab=keyEvent('Tab');
+keyboardHandler(tab);
+assert.equal(tab.prevented,false,'Tab remains available for keyboard navigation');
+sandbox.inlineTranslate();
+assert.equal(pageAttributes.lang, 'ar', 'full-page Arabic translation has Arabic language metadata');
+document.documentElement.lang = 'en';
+sandbox.renderReader();
+assert.ok(sentenceDescriptions.at(-1).includes('Tap a word'), 'English reader instructions are translated without masking story text');
+sandbox.settings();
+assert.match(readerPanels.at(-1), /Reading tools/, 'reader navigation panel uses English');
+assert.match(readerPanels.at(-1), /Save bookmark/, 'bookmark action uses English');
+assert.match(readerPanels.at(-1), /Jump to bookmark/, 'jump action uses English');
+assert.match(readerPanels.at(-1), /Arabic translation/, 'English UI still explains Arabic translation');
+document.documentElement.lang = 'ar';
+sandbox.settings();
+assert.match(readerPanels.at(-1), /أدوات القراءة/, 'reader panel restores Arabic without losing state');
+assert.equal(story.chapters[0].paragraphs[0].ar, 'الجملة الأولى.', 'learning translation remains Arabic');
+assert.match(js, /Continue: /, 'English continue-reading CTA is localized');
+assert.match(js, /Choose a story from the library below/, 'English empty-state invitation is localized');
+console.log('PASS: chapter/bookmark navigation, bilingual CTAs, explicit English/Arabic reader language and translations');

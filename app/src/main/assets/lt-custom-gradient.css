@@ -1,0 +1,22 @@
+/* Apply an editable four-stop palette to real surfaces only.
+   Colors are mixed with each theme's own background to retain text contrast. */
+body.lt-has-custom-gradient{background:linear-gradient(var(--lt-theme-angle,135deg),
+ color-mix(in srgb,var(--lt-glass-a) 24%,var(--body)),
+ color-mix(in srgb,var(--lt-glass-b) 22%,var(--body)) 34%,
+ color-mix(in srgb,var(--lt-glass-c) 20%,var(--body)) 66%,
+ color-mix(in srgb,var(--lt-glass-d) 22%,var(--body)))!important;background-attachment:scroll!important}
+body.lt-has-custom-gradient .library .shelf .card{background:linear-gradient(var(--lt-theme-angle,135deg),
+ color-mix(in srgb,var(--lt-glass-a) 16%,var(--card)),
+ color-mix(in srgb,var(--lt-glass-b) 14%,var(--card)) 35%,
+ color-mix(in srgb,var(--lt-glass-c) 13%,var(--card)) 67%,
+ color-mix(in srgb,var(--lt-glass-d) 16%,var(--card)))!important}
+body.lt-has-custom-gradient .lt-drawer{background:linear-gradient(var(--lt-theme-angle,135deg),
+ color-mix(in srgb,var(--lt-glass-a) 28%,#161e36),
+ color-mix(in srgb,var(--lt-glass-b) 29%,#20203e) 36%,
+ color-mix(in srgb,var(--lt-glass-c) 24%,#1e2742) 70%,
+ color-mix(in srgb,var(--lt-glass-d) 24%,#111d31))!important;color:#fff!important}
+.lt-theme-live-preview{height:68px;margin:10px 0 14px;border-radius:17px;
+ border:1px solid #ffffff95;box-shadow:inset 0 1px #fff8,0 6px 17px #151c4030}
+.lt-theme-presets{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.lt-theme-presets .lt-theme-preset{font-size:11px;min-height:47px}
+@media(max-width:450px){.lt-theme-presets{grid-template-columns:repeat(2,minmax(0,1fr))}}

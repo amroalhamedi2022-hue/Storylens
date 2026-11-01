@@ -1,0 +1,381 @@
+(function(global){
+'use strict';
+/* LT-11: 20 pinned, licensed looped soundscapes + 4 short licensed sound effects.
+ * All files are packaged locally by tools/fetch_licensed_audio.py. No runtime network,
+ * autoplay, microphone or speech synthesis. Audio begins only after an explicit tap.
+ */
+const TRACKS = [
+ {id:"forest",en:"Forest canopy",ar:"أجواء الغابة",file:"forest-loop.ogg"},
+ {id:"night-forest",en:"Night forest",ar:"غابة ليلية",file:"night-forest.ogg"},
+ {id:"quiet-room",en:"Quiet room",ar:"غرفة هادئة",file:"quiet-room.ogg"},
+ {id:"lake-shore",en:"Lake shore",ar:"شاطئ البحيرة",file:"lake-shore.ogg"},
+ {id:"coastal-waves",en:"Coastal waves and birds",ar:"أمواج ساحلية وطيور",file:"coastal-waves.ogg"},
+ {id:"underwater",en:"Underwater hush",ar:"هدوء تحت الماء",file:"underwater.ogg"},
+ {id:"distant-city",en:"Distant city",ar:"مدينة بعيدة",file:"distant-city.ogg"},
+ {id:"book-cafe",en:"Book café murmur",ar:"همهمة مقهى الكتب",file:"book-cafe.ogg"},
+ {id:"rain-cabin",en:"Rain on a cabin",ar:"مطر على كوخ",file:"rain-cabin.ogg"},
+ {id:"forest-rain",en:"Forest rain",ar:"مطر الغابة",file:"forest-rain.ogg"},
+ {id:"city-rain",en:"City rain",ar:"مطر المدينة",file:"city-rain.ogg"},
+ {id:"ocean-waves",en:"Ocean waves",ar:"أمواج المحيط",file:"ocean-waves.ogg"},
+ {id:"river-flow",en:"River flow",ar:"جريان النهر",file:"river-flow.ogg"},
+ {id:"waterfall",en:"Waterfall",ar:"شلال",file:"waterfall.ogg"},
+ {id:"wind-birds",en:"Wind and birds",ar:"رياح وطيور",file:"wind-birds.ogg"},
+ {id:"wind-chimes",en:"Wind chimes",ar:"أجراس الرياح",file:"wind-chimes.ogg"},
+ {id:"farm",en:"Farm ambience",ar:"أجواء المزرعة",file:"farm.ogg"},
+ {id:"european-city",en:"European city daytime",ar:"أجواء مدينة أوروبية نهارًا",file:"european-city.ogg"},
+ {id:"creek-in-woods",en:"Creek in the woods",ar:"جدول ماء بين الأشجار",file:"creek-in-woods.ogg"},
+ {id:"water-lapping",en:"Water lapping at the shore",ar:"ماء يلامس الشاطئ",file:"water-lapping.ogg"}
+];
+const SFX = [
+ {id:"book-open",en:"Book opens",ar:"فتح كتاب",file:"book-open.ogg"},
+ {id:"page-turn",en:"Page turns",ar:"تقليب صفحات",file:"page-turn.ogg"},
+ {id:"clock-tick",en:"Old clock tick",ar:"دقات ساعة قديمة",file:"clock-tick.ogg"},
+ {id:"forest-birds",en:"Forest birds",ar:"طيور الغابة",file:"forest-birds.ogg"}
+];
+const LICENSE = 'CC BY 4.0';
+const KEY='licensedAudioPrefs';
+const DEFAULT={track:'forest',volume:0.24,sfxVolume:0.18,ambienceEnabled:false,sfxEnabled:false};
+const trackIds=new Set(TRACKS.map(x=>x.id)),sfxIds=new Set(SFX.map(x=>x.id));
+const clamp=v=>Math.max(0,Math.min(1,Number.isFinite(Number(v))?Number(v):0));
+function sanitize(raw){
+ const o=raw&&typeof raw==='object'&&!Array.isArray(raw)?raw:{};
+ return {track:trackIds.has(o.track)?o.track:DEFAULT.track,
+  volume:clamp(o.volume===undefined?DEFAULT.volume:o.volume),
+  sfxVolume:clamp(o.sfxVolume===undefined?DEFAULT.sfxVolume:o.sfxVolume),
+  ambienceEnabled:o.ambienceEnabled===true,sfxEnabled:o.sfxEnabled===true};
+}
+let prefs=sanitize(typeof global.get==='function'?global.get(KEY,DEFAULT):DEFAULT);
+let player=null,playerTrack=null,playing=false,focusOwned=false,generation=0;
+const sfxPlayers=new Set();
+let playButton=null,statusNote=null,rtlUi=false,ambienceToggle=null,sfxToggle=null;
+let playbackIssue=null; // Persistent visible failure until the next successful play.
+let playbackTimer=null,playbackMonitorPlayer=null,playbackPosition=null;
+let playbackStationary=0,playbackSawUpdate=false;
+let ambienceVolumeControl=null,sfxVolumeControl=null,sfxButtons=[];
+const doc=global.document;
+function persist(){if(typeof global.put==='function')global.put(KEY,{...prefs});}
+function proceduralPlaying(){
+ const a=global.LinguaAmbience;
+ try{return !!(a&&typeof a.isPlaying==='function'&&a.isPlaying());}catch(_){return false;}
+}
+function requestFocus(){
+ if(focusOwned)return true;
+ const bridge=global.LinguaTalesAudioFocus;
+ if(!bridge||typeof bridge.requestFocus!=='function')return true;
+ try{const ok=bridge.requestFocus()===true;if(ok)focusOwned=true;return ok;}catch(_){return false;}
+}
+function releaseFocus(){
+ if(!focusOwned)return;
+ focusOwned=false;
+ const bridge=global.LinguaTalesAudioFocus;
+ if(!bridge||typeof bridge.releaseFocus!=='function')return;
+ try{bridge.releaseFocus();}catch(_){}
+}
+function mediaFailure(code){
+ const names={1:'aborted',2:'offline audio load failed',3:'audio decoding failed',4:'unsupported audio format'};
+ const detail=names[code]||'unknown media error';
+ playbackIssue=rtlUi
+  ?'تعذّر تشغيل التسجيل المحلي (الرمز '+(code||0)+'). قد يكون السبب تنسيق الصوت أو WebView. حاول مجددًا، وأرسل رمز الخطأ للتشخيص.'
+  :'Local recording stopped ('+detail+', code '+(code||0)+'). Retry or share this code for diagnosis.';
+ syncUi();
+}
+function playFailure(error){
+ const detail=String(error?.name||error?.message||'playback unavailable').slice(0,100);
+ playbackIssue=rtlUi
+  ?'تعذّر تشغيل الصوت ('+detail+'). تحقق من الصوت أو حدّث Android System WebView ثم أعد المحاولة.'
+  :'Audio playback unavailable ('+detail+'). Check media volume or Android System WebView, then retry.';
+ syncUi();
+}
+function interruptedPlayback(){
+ playbackIssue=rtlUi
+  ?'توقف الصوت بشكل غير متوقع. افحص صوت الوسائط وأرسل هذه الرسالة إذا تكرر العطل.'
+  :'Playback was unexpectedly interrupted. Check media volume and report if this repeats.';
+ syncUi();
+}
+function syncUi(){
+ if(playButton)playButton.textContent=playing?(rtlUi?'إيقاف مؤقت':'Pause'):(rtlUi?'تشغيل الأجواء':'Play ambience');
+ if(ambienceToggle)ambienceToggle.checked=!!prefs.ambienceEnabled;
+ if(sfxToggle)sfxToggle.checked=!!prefs.sfxEnabled;
+ if(ambienceVolumeControl)ambienceVolumeControl.value=String(prefs.volume);
+ if(sfxVolumeControl)sfxVolumeControl.value=String(prefs.sfxVolume);
+ for(const button of sfxButtons)button.disabled=!prefs.sfxEnabled;
+ if(statusNote)statusNote.textContent=playbackIssue||(rtlUi
+  ?'20 أجواء مسجّلة ومرخّصة + 4 مؤثرات قصيرة؛ التشغيل اختياري ومحلي. CC BY 4.0.'
+  :'20 licensed recorded ambiences + 4 short effects; optional local playback. CC BY 4.0.');
+}
+// HTMLMediaElement can remain unpaused after decoder output stalls. Poll
+// playhead movement only for the current, explicitly started licensed loop.
+// Never auto-restart, jump tracks or silently ask for audio focus.
+// On some WebView/decoder failures Audio.play() never settles, leaving the
+// user-triggered Play button disabled indefinitely. Bound only that pending
+// startup; never auto-retry, change volume, or turn on sound in the background.
+function awaitAudioStart(playPromise){
+ if(typeof global.setTimeout!=='function')return Promise.resolve(playPromise);
+ return new Promise((resolve,reject)=>{
+  let settled=false;
+  const timer=global.setTimeout(()=>{
+   if(settled)return;
+   settled=true;
+   const error=new Error('Local audio did not start within 12 seconds. Retry or update Android System WebView.');
+   error.name='OfflineAudioStartTimeout';
+   reject(error);
+  },12000);
+  const finish=(ok,value)=>{
+   if(settled)return;
+   settled=true;global.clearTimeout?.(timer);
+   if(ok)resolve(value);else reject(value);
+  };
+  Promise.resolve(playPromise).then(value=>finish(true,value),error=>finish(false,error));
+ });
+}
+function stopPlaybackMonitor(){
+ if(playbackTimer!==null){global.clearInterval?.(playbackTimer);playbackTimer=null;}
+ playbackMonitorPlayer=null;playbackPosition=null;
+ playbackStationary=0;playbackSawUpdate=false;
+}
+function startPlaybackMonitor(active,ticket){
+ stopPlaybackMonitor();
+ if(typeof global.setInterval!=='function')return;
+ playbackMonitorPlayer=active;playbackPosition=Number(active.currentTime);
+ const timer=global.setInterval(()=>{
+  // Timers already queued by WebView cannot cancel the next playback owner.
+  if(playbackTimer!==timer)return;
+  if(ticket!==generation||player!==active||!playing||doc?.hidden){stopPlaybackMonitor();return;}
+  if(active.paused){
+   ++generation;playing=false;stopPlaybackMonitor();
+   releaseFocus();interruptedPlayback();return;
+  }
+  if(active.seeking||(typeof active.readyState==='number'&&active.readyState<2)){
+   playbackStationary=0;return;
+  }
+  const current=Number(active.currentTime);
+  const progressed=playbackSawUpdate||(Number.isFinite(current)&&
+   Number.isFinite(playbackPosition)&&Math.abs(current-playbackPosition)>.05);
+  playbackPosition=current;playbackSawUpdate=false;
+  if(progressed){playbackStationary=0;return;}
+  if(++playbackStationary<4)return;
+  ++generation;playing=false;stopPlaybackMonitor();
+  try{active.pause();}catch(_){}
+  if(player===active){player=null;playerTrack=null;}
+  releaseFocus();
+  playbackIssue=rtlUi
+   ?'توقف تقدّم التسجيل المحلي رغم ظهور حالة التشغيل. أعد المحاولة وأرسل هذه الرسالة لتشخيص WebView أو فك ترميز الصوت.'
+   :'Local recording stalled while the player still showed Play. Retry and report this message to diagnose WebView or audio decoding.';
+  syncUi();
+ },2000);
+ playbackTimer=timer;
+}
+function stopSfx(){
+ for(const audio of sfxPlayers){try{audio.pause();audio.currentTime=0;}catch(_){}}
+ sfxPlayers.clear();
+}
+async function pause(options){
+ ++generation;playing=false;stopPlaybackMonitor();
+ if(player){try{player.pause();}catch(_){}}
+ if(!options||options.stopSfx!==false)stopSfx();
+ if(!(options&&options.keepFocus)&&!proceduralPlaying()&&sfxPlayers.size===0)releaseFocus();
+ syncUi();
+}
+async function stopProceduralKeepingFocus(){
+ const a=global.LinguaAmbience;
+ if(a&&typeof a.isPlaying==='function'&&a.isPlaying()&&typeof a.pause==='function')
+  return a.pause({keepFocus:true});
+ return Promise.resolve();
+}
+async function playTrack(id){
+ const track=TRACKS.find(x=>x.id===id);
+ if(!track||doc?.hidden)return false;
+ // Calling Play is an explicit opt-in, never a startup side effect.
+ if(!prefs.ambienceEnabled){prefs.ambienceEnabled=true;persist();syncUi();}
+ if(playing&&playerTrack===id&&player&&!player.paused)return true;
+ const ticket=++generation;stopPlaybackMonitor();
+ const pausePromise=stopProceduralKeepingFocus(); // sync pause happens before Audio.play, preserving user gesture
+ if(!requestFocus()){await pausePromise;releaseFocus();playFailure({name:'AudioFocusUnavailable'});return false;}
+ if(playerTrack!==id||!player){
+  if(player){playing=false;try{player.pause();player.currentTime=0;}catch(_){}}
+  const createdPlayer=new global.Audio('licensed-audio/'+track.file);
+  player=createdPlayer;
+  playerTrack=id;createdPlayer.preload='none';createdPlayer.loop=true;
+  // A cached Audio element can fail on a later replay, after its original
+  // request ticket has expired. Tie recovery to element identity, not that
+  // one-shot ticket, and evict failed elements so the next tap gets a fresh one.
+  createdPlayer.addEventListener('error',()=>{
+   if(player!==createdPlayer)return;
+   ++generation;playing=false;stopPlaybackMonitor(); // invalidate a pending play() resolution
+   try{createdPlayer.pause();createdPlayer.currentTime=0;}catch(_){}
+   player=null;playerTrack=null;
+   releaseFocus();mediaFailure(createdPlayer.error?.code||0);
+  });
+  // Chromium may pause media because of platform focus changes or decoder
+  // failures without rejecting the already-resolved play() promise.
+  createdPlayer.addEventListener('pause',()=>{
+   if(player!==createdPlayer||!playing)return;
+   ++generation;playing=false;stopPlaybackMonitor();
+   releaseFocus();interruptedPlayback();
+  });
+  createdPlayer.addEventListener('timeupdate',()=>{
+   if(playbackMonitorPlayer===createdPlayer)playbackSawUpdate=true;
+  });
+ }
+ const active=player;
+ active.loop=true;active.volume=prefs.volume;
+ let playPromise;
+ try{playPromise=active.play();}catch(error){
+  if(ticket===generation){
+   playing=false;
+   try{active.pause();active.currentTime=0;}catch(_){}
+   if(player===active){player=null;playerTrack=null;}
+   releaseFocus();playFailure(error);
+  }
+  throw error;
+ }
+ try{await Promise.all([pausePromise,awaitAudioStart(playPromise)]);}
+ catch(error){
+  if(ticket===generation){
+   playing=false;
+   try{active.pause();active.currentTime=0;}catch(_){}
+   if(player===active){player=null;playerTrack=null;}
+   releaseFocus();playFailure(error);
+  }
+  throw error;
+ }
+ // Two taps on the same track can overlap while the first play() promise
+ // is pending. A stale promise must never pause the newer request's player.
+ if(ticket!==generation){
+  if(player!==active){try{active.pause();}catch(_){}}
+  return false;
+ }
+ if(doc?.hidden){
+  ++generation;playing=false;
+  try{active.pause();}catch(_){}
+  releaseFocus();syncUi();return false;
+ }
+ // Some WebView versions resolve play() even after the decoder/focus has
+ // already paused the element. Never display a false "playing" state.
+ if(active.paused){
+  ++generation;playing=false;
+  releaseFocus();interruptedPlayback();return false;
+ }
+ playbackIssue=null;playing=true;syncUi();startPlaybackMonitor(active,ticket);return true;
+}
+function selectTrack(id){
+ if(!trackIds.has(id))return false;
+ prefs.track=id;persist();
+ if(playing)playTrack(id).catch(error=>{if(statusNote)statusNote.textContent=(rtlUi?'تعذر تشغيل الصوت: ':'Audio unavailable: ')+(error?.message||String(error));});
+ return true;
+}
+function setVolume(value){prefs.volume=clamp(value);persist();if(player)player.volume=prefs.volume;syncUi();}
+async function setAmbienceEnabled(enabled){
+ prefs.ambienceEnabled=!!enabled;persist();syncUi();
+ if(!prefs.ambienceEnabled){
+  const proceduralStop=stopProceduralKeepingFocus();
+  await pause({keepFocus:true,stopSfx:false});
+  await proceduralStop;
+  if(!proceduralPlaying()&&sfxPlayers.size===0)releaseFocus();
+  syncUi();
+ }
+ return prefs.ambienceEnabled;
+}
+function setSfxEnabled(enabled){
+ prefs.sfxEnabled=!!enabled;persist();
+ if(!prefs.sfxEnabled)stopSfx();
+ if(!playing&&!proceduralPlaying()&&sfxPlayers.size===0)releaseFocus();
+ syncUi();return prefs.sfxEnabled;
+}
+function setSfxVolume(value){
+ prefs.sfxVolume=clamp(value);persist();
+ for(const audio of sfxPlayers){try{audio.volume=prefs.sfxVolume;}catch(_){}}
+ syncUi();
+}
+async function disableAll(){
+ prefs.ambienceEnabled=false;prefs.sfxEnabled=false;persist();syncUi();
+ const proceduralStop=stopProceduralKeepingFocus();
+ await pause({keepFocus:true,stopSfx:true});await proceduralStop;
+ if(!proceduralPlaying()&&sfxPlayers.size===0)releaseFocus();
+ syncUi();return true;
+}
+async function playSfx(id){
+ const sfx=SFX.find(x=>x.id===id);
+ if(!sfx||!prefs.sfxEnabled||doc?.hidden)return false;
+ const anotherLoop=playing||proceduralPlaying();
+ if(!anotherLoop&&!requestFocus())return false;
+ const audio=new global.Audio('licensed-audio/'+sfx.file);
+ audio.loop=false;audio.preload='none';audio.volume=prefs.sfxVolume;
+ sfxPlayers.add(audio);
+ const finish=()=>{
+  sfxPlayers.delete(audio);
+  if(!playing&&!proceduralPlaying()&&sfxPlayers.size===0)releaseFocus();
+ };
+ audio.addEventListener('ended',finish,{once:true});
+ audio.addEventListener('error',()=>{mediaFailure(audio.error?.code||0);finish();},{once:true});
+ let promise;
+ try{promise=audio.play();}catch(error){playFailure(error);finish();throw error;}
+ try{await promise;playbackIssue=null;syncUi();return prefs.sfxEnabled&&sfxPlayers.has(audio)&&!audio.paused;}catch(error){playFailure(error);finish();throw error;}
+}
+function controls(sheet,rtl){
+ rtlUi=!!rtl;
+ const section=doc.createElement('section');section.className='lt-audio-settings lt-licensed-audio-settings';
+ const heading=doc.createElement('h3');heading.textContent=rtl?'🎧 أجواء مسجّلة مرخّصة':'🎧 Licensed recorded ambience';section.appendChild(heading);
+ statusNote=doc.createElement('p');statusNote.className='quiet';section.appendChild(statusNote);
+ function toggleControl(id,text,value,onChange){
+  const label=doc.createElement('label');label.className='lt-audio-checkbox';
+  const input=doc.createElement('input');input.type='checkbox';input.id=id;input.checked=!!value;
+  input.setAttribute('aria-label',text);input.addEventListener('change',()=>onChange(input.checked));
+  const caption=doc.createElement('span');caption.textContent=text;label.appendChild(input);label.appendChild(caption);section.appendChild(label);return input;
+ }
+ function rangeControl(id,text,value,onChange){
+  const label=doc.createElement('label');label.className='lt-audio-range';label.textContent=text;
+  const input=doc.createElement('input');input.type='range';input.id=id;input.min='0';input.max='1';input.step='0.01';input.value=String(value);
+  input.setAttribute('aria-label',text);input.addEventListener('input',()=>onChange(input.value));label.appendChild(input);section.appendChild(label);return input;
+ }
+ ambienceToggle=toggleControl('lt-ambience-enabled',rtl?'السماح بأجواء القراءة':'Enable reading ambience',prefs.ambienceEnabled,setAmbienceEnabled);
+ const label=doc.createElement('label');label.className='lt-font-setting';
+ const caption=doc.createElement('span');caption.textContent=rtl?'أجواء القراءة':'Reading ambience';label.appendChild(caption);
+ const select=doc.createElement('select');select.setAttribute('aria-label',caption.textContent);
+ for(const track of TRACKS){const option=doc.createElement('option');option.value=track.id;option.textContent=rtl?track.ar:track.en;select.appendChild(option);}
+ select.value=prefs.track;select.addEventListener('change',()=>selectTrack(select.value));label.appendChild(select);section.appendChild(label);
+ const row=doc.createElement('div');row.className='lt-audio-buttons';
+ playButton=doc.createElement('button');playButton.type='button';playButton.className='secondary';
+ playButton.addEventListener('click',async()=>{playButton.disabled=true;try{if(playing)await pause();else await playTrack(prefs.track);}catch(error){if(statusNote)statusNote.textContent=(rtl?'تعذر تشغيل الصوت: ':'Audio unavailable: ')+(error?.message||String(error));}finally{playButton.disabled=false;syncUi();}});
+ row.appendChild(playButton);section.appendChild(row);
+ ambienceVolumeControl=rangeControl('lt-ambience-volume',rtl?'مستوى صوت الأجواء':'Ambience volume',prefs.volume,setVolume);
+ const sfxTitle=doc.createElement('h4');sfxTitle.textContent=rtl?'مؤثرات قصيرة (تشغيل يدوي)':'Short sound effects (tap to play)';section.appendChild(sfxTitle);
+ sfxToggle=toggleControl('lt-sfx-enabled',rtl?'السماح بالمؤثرات الصوتية':'Enable sound effects',prefs.sfxEnabled,setSfxEnabled);
+ sfxVolumeControl=rangeControl('lt-sfx-volume',rtl?'مستوى صوت المؤثرات':'Sound-effects volume',prefs.sfxVolume,setSfxVolume);
+ const sfxRow=doc.createElement('div');sfxRow.className='lt-audio-buttons';sfxButtons=[];
+ for(const sfx of SFX){const button=doc.createElement('button');button.type='button';button.className='secondary';button.textContent=rtl?sfx.ar:sfx.en;button.disabled=!prefs.sfxEnabled;button.setAttribute('aria-label',button.textContent);button.addEventListener('click',()=>playSfx(sfx.id).catch(error=>{if(statusNote)statusNote.textContent=(rtl?'تعذر تشغيل المؤثر: ':'Sound effect unavailable: ')+(error?.message||String(error));}));sfxButtons.push(button);sfxRow.appendChild(button);}
+ section.appendChild(sfxRow);
+ const disableAllButton=doc.createElement('button');disableAllButton.type='button';disableAllButton.className='secondary lt-audio-disable-all';disableAllButton.id='lt-audio-disable-all';disableAllButton.textContent=rtl?'إيقاف كل الصوت':'Disable all audio';
+ disableAllButton.addEventListener('click',()=>disableAll().catch(error=>{if(statusNote)statusNote.textContent=(rtl?'تعذر إيقاف الصوت: ':'Could not stop audio: ')+(error?.message||String(error));}));
+ section.appendChild(disableAllButton);sheet.appendChild(section);syncUi();return section;
+}
+function onNativeAudioFocusLoss(){focusOwned=false;pause({keepFocus:true}).catch(()=>{});}
+if(doc&&typeof doc.addEventListener==='function'){
+ doc.addEventListener('visibilitychange',()=>{if(doc.hidden)pause().catch(()=>{});});
+}
+if(typeof global.addEventListener==='function')global.addEventListener('pagehide',()=>pause().catch(()=>{}));
+const procedural=global.LinguaAmbience;
+if(procedural&&!procedural.__licensedAudioBridge){
+ const originalPlay=procedural.play;
+ procedural.play=async function(...args){
+  const pending=pause({keepFocus:true});
+  const result=originalPlay.apply(this,args);
+  focusOwned=false; // the procedural engine now owns native focus lifecycle
+  await pending;
+  return result;
+ };
+ const originalLoss=procedural.onNativeAudioFocusLoss;
+ procedural.onNativeAudioFocusLoss=function(...args){
+  pause({keepFocus:true}).catch(()=>{});
+  // The original procedural handler releases the native grant after this wrapper.
+  // Clear our local ownership bit so the next licensed play must reacquire focus.
+  focusOwned=false;
+  if(typeof originalLoss==='function')return originalLoss.apply(this,args);
+ };
+ procedural.__licensedAudioBridge=true;
+}
+global.LinguaLicensedAudio={
+ TRACKS,SFX,LICENSE,controls,playTrack,pause,selectTrack,setVolume,setAmbienceEnabled,setSfxEnabled,setSfxVolume,disableAll,playSfx,
+ isPlaying:()=>playing,prefs:()=>({...prefs}),onNativeAudioFocusLoss
+};
+})(window);

@@ -18,6 +18,8 @@ assert "bad123" not in result,result
 assert "image" in result,result  # fallback only when trans missing
 script = fd.render_js(result)
 assert "FreeDictEnglishArabic" in script
+assert "meanings:meanings.slice(0,2)" in script, "only two sourced dictionary senses displayed"
+assert "context:''" in script, "dictionary meanings are not mislabeled as edited context"
 assert "GPL-2.0-or-later" in script
 assert fd.EXPECTED_SHA512 and len(fd.EXPECTED_SHA512)==128
 print("PASS: TEI namespace, Arabic quote extraction, polysemy, input filtering, provenance and JS packaging")

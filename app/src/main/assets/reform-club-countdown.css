@@ -1,0 +1,24 @@
+/* LT-07/08/13 — Reform Club Countdown: midnight market ticker, scarlet clock and high-contrast editorial grid. */
+.lt-theme-reform-club-countdown .lt-theme-swatch{background:radial-gradient(circle at 50% 42%,#fff6dc 0 16%,#d94c4f 16.5% 21%,transparent 21.5%),repeating-linear-gradient(0deg,#101b31 0 7px,#253752 7px 9px);border:2px solid #d94c4f}
+body.theme-reform-club-countdown{--body:#0c1424;--card:#17243a;--ink:#fff6dc;--sub:#bdc8d9;--accent:#ff5a61;--reader:#101b31;--reader-ink:#fff6dc;background:linear-gradient(145deg,#070d19,#16243b 56%,#2c3e58);color:#fff6dc}
+body.theme-reform-club-countdown::before,body.theme-reform-club-countdown::after{display:none!important}
+.theme-reform-club-countdown .library .header{border:0;border-top:8px solid #ff5a61;border-bottom:1px solid #f2b85b;padding:18px 20px;background:repeating-linear-gradient(90deg,#101b31 0 44px,#15233a 44px 46px);position:relative}
+.theme-reform-club-countdown .library .header::after{content:'REFORM CLUB · THE LAST SECONDS';display:block;margin-top:9px;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.2em;color:#f2b85b}
+.theme-reform-club-countdown .library .brand{color:#ff7c7f;letter-spacing:.18em}
+.theme-reform-club-countdown .library .header h1{font-family:ui-monospace,monospace;text-transform:uppercase;letter-spacing:-.06em;color:#fff6dc}
+.theme-reform-club-countdown .library .storylens-hero{display:grid;grid-template-columns:minmax(0,1fr) 145px;align-items:center;border:1px solid #f2b85b;border-left:9px solid #ff5a61;border-radius:2px;background:linear-gradient(135deg,#17243a,#0b1323);box-shadow:0 12px 30px #0008;color:#fff6dc;min-height:190px;padding:23px 26px}
+.theme-reform-club-countdown .library .storylens-hero h2{font-family:ui-monospace,monospace;color:#f2b85b;text-transform:uppercase}
+.theme-reform-club-countdown .library .storylens-hero .hero-orb{position:relative;inset:auto;transform:none;width:132px;height:132px;border-radius:50%;border:8px solid #ff5a61;background:radial-gradient(circle,#fff6dc 0 3%,transparent 4%),repeating-conic-gradient(from 0deg,#f2b85b 0 2deg,transparent 2deg 30deg),#101b31;box-shadow:inset 0 0 0 8px #101b31,0 0 0 3px #f2b85b;opacity:1}
+.theme-reform-club-countdown .library .storylens-hero .hero-orb::before{content:'';position:absolute;left:49%;top:14%;height:38%;width:4px;background:#ff5a61;transform-origin:50% 100%;transform:rotate(3deg)}
+.theme-reform-club-countdown .library .storylens-hero .hero-orb::after{content:'';position:absolute;left:49%;top:49%;height:30%;width:4px;background:#fff6dc;transform-origin:50% 0;transform:rotate(55deg)}
+.theme-reform-club-countdown .library .storylens-hero .hero-orb-core{display:none}
+.theme-reform-club-countdown .library .card{border-radius:2px;border:1px solid #344761;border-top:4px solid #f2b85b;background:linear-gradient(145deg,#17243a,#101b31);box-shadow:0 8px 0 #05070d;color:#fff6dc}
+.theme-reform-club-countdown .library .card h2,.theme-reform-club-countdown .library .card h3{font-family:ui-monospace,monospace;color:#fff6dc}
+.theme-reform-club-countdown .library .secondary,.theme-reform-club-countdown .library .pill{border-radius:2px;border:1px solid #ff5a61;background:#18263d;color:#fff6dc}
+.theme-reform-club-countdown .lt-drawer{background:linear-gradient(160deg,#17243a,#070d19);border-inline-start:5px solid #ff5a61}
+.theme-reform-club-countdown .reader{border:1px solid #f2b85b;border-top:9px solid #ff5a61;border-radius:2px;background:linear-gradient(180deg,#101b31,#0c1424);color:#fff6dc;box-shadow:0 14px 32px #0008}
+.theme-reform-club-countdown .reader .reading-width{border-inline-start:4px solid #f2b85b;padding-inline-start:20px;background:repeating-linear-gradient(0deg,#fff6dc05 0 1px,transparent 1px 38px)}
+.theme-reform-club-countdown .lt-theme-choice{background:#17243a;color:#fff6dc;border-radius:2px;border:1px solid #344761}
+.theme-reform-club-countdown .lt-theme-choice.selected{outline:3px solid #ff5a61;outline-offset:2px}
+@media(max-width:600px){.theme-reform-club-countdown .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-reform-club-countdown .library .storylens-hero .hero-orb{width:70px;height:70px}.theme-reform-club-countdown .library .header::after{font-size:8px;letter-spacing:.1em}}
+@media(prefers-reduced-motion:reduce){.theme-reform-club-countdown .library .card{transition:none!important;transform:none!important}}
