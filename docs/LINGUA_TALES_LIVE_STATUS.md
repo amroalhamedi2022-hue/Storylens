@@ -170,6 +170,16 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - The browser now positively rejects a generated final-chapter synthetic vector, asserts one shared old-story art engine and exactly 38 loaded assets including FreeDict (37 book/art + dictionary). The original source payload, real period images and user data remain unchanged.
 - New exact SHA CI PENDING; real Pad 5 and original signing gate still OPEN.
 
+### 2026-11-01 — C02 / C04 / LANG01: identify authentic intermediary edition and unfinished literary review in reading UI
+- Based on parent `ad96ab68d61c12ff524851aea2ef193838c322e3` while its exact-head CI is running. The 37-chapter Verne source is George Makepeace Towle's **1873 English translation of the original French**, not the original French text. Current Arabic companion is complete but **not independently literary-edited**; it must not be falsely presented as an approved finished translation.
+- Added a quiet bilingual accessible `role=note` in the full-book Arabic companion identifying Towle/year/French original and clearly stating the Arabic is a draft awaiting independent review. The note appears only when Verne's editorial metadata explicitly marks Arabic draft review pending, and is absent from unrelated/Arabic-origin stories. No translation prose, saved progress, narration, images or original app ID changed.
+- Added localized source-actual Node checks and real-browser full-translation fixture assertions for the notice. Exact-head full CI PENDING; independent human review still OPEN.
+
+### 2026-11-01 — QA01: end-to-end novel cover proof rejects synthetic last-chapter art
+- Parent `ad96ab68d61c12ff524851aea2ef193838c322e3` run 41345317194 **FAILED near the end of Chromium QA**, after extensive chapter, translation, paper-fold, Android and offline search tests passed. E2E flow still incorrectly required `art[Verne_36]` to exist, contradicting the now-verified artwork policy and the 37-source-script memory optimisation.
+- Replaced the E2E requirement with a real browser computed-CSS verification of the **packaged Kiouni historical WebP book cover** and a negative check that the unlicensed-looking synthetic final SVG was NOT generated. No production artwork, story text or user data changed by this test-only repair.
+- Combined this with separately source-tested `C02` companion literary provenance/draft disclosure in the same next commit to avoid repeated CI churn. New exact SHA CI pending.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

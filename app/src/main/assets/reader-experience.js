@@ -842,6 +842,11 @@ function ltRenderTranslationChapter(){
  const heading=sourceArabic
   ?uiText('الترجمة الإنجليزية الكاملة','Complete English companion')
   :uiText('الترجمة العربية الكاملة','Complete Arabic companion');
+ const disclosure=(story.id==='around-the-world-in-eighty-days-towle' &&
+  !sourceArabic && /Arabic draft pending independent review/i.test(story.editorialStatus||''))
+  ?uiText('النص الإنجليزي ترجمة جورج ماكيبيس تاول (١٨٧٣) عن الأصل الفرنسي. الترجمة العربية مسودة لم تخضع بعد لمراجعة أدبية مستقلة.',
+   'The English reading text is George Makepeace Towle’s 1873 translation from French. The Arabic companion remains an editorial draft awaiting independent review.')
+  :'';
  const returnLabel=sourceArabic
   ?uiText('← العودة للقصة العربية','← Back to Arabic story')
   :uiText('← العودة للقصة الإنجليزية','← Back to English story');
@@ -903,6 +908,7 @@ function ltRenderTranslationChapter(){
   '<button type="button" class="secondary" onclick="backToReader()">'+returnLabel+'</button>'+
   '<h1 lang="'+sourceLang+'" dir="'+direction+'">'+escapeText(title)+'</h1>'+
   '<p class="quiet">'+heading+'</p>'+
+  (disclosure?'<p class="lt-literary-disclosure" role="note">'+escapeText(disclosure)+'</p>':'')+
   '<nav class="lt-translation-nav" aria-label="'+selectLabel+'">'+
   '<button type="button" class="secondary" onclick="ltTranslationChapter('+(ltTranslationIndex-1)+')"'+
   (ltTranslationIndex===0?' disabled':'')+'>'+previousLabel+'</button>'+

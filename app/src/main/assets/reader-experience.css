@@ -344,3 +344,12 @@ body.lt-high-contrast .storylens-hero,body.lt-high-contrast .storylens-header,bo
  padding:8px 5px 2px;color:#554637;text-align:center;
 }
 @media(max-width:560px){.arabic-page .lt-companion-plate{padding:6px;margin:16px auto}}
+
+/* Edition and translation status, without obscuring or abridging the novel. */
+.arabic-page .lt-literary-disclosure{
+ margin:12px 0 18px;padding:9px 12px;
+ border-inline-start:3px solid #b69b70;
+ background:rgba(173,144,98,.075);
+ border-radius:5px;color:inherit;
+ font:400 13px/1.75 system-ui,sans-serif;
+}

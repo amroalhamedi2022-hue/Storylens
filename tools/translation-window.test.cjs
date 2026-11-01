@@ -43,6 +43,8 @@ assert.match(root.innerHTML,/الترجمة العربية 14/);
 assert.doesNotMatch(root.innerHTML,/الترجمة العربية 13/);
 assert.doesNotMatch(root.innerHTML,/English source 37/);
 assert.match(root.innerHTML,/Test &lt;Book&gt;/,'user-visible titles are escaped');
+assert.doesNotMatch(root.innerHTML,/lt-literary-disclosure/,
+ 'synthetic non-editorial stories cannot inherit Verne edition warning');
 assert.equal((root.innerHTML.match(/lt-companion-plate/g)||[]).length,0,
  'chapters without archival scenes do not receive invented illustrations');
 assert.equal((root.innerHTML.match(/<option /g)||[]).length,37,'all 37 chapters stay selectable');
@@ -94,6 +96,7 @@ assert.match(css,/@media\(max-width:560px\)/);
 // Historical chapters in production contain many more paragraph pairs than
 // this synthetic tiny fixture; create enough for exact original anchor indices.
 english.id='around-the-world-in-eighty-days-towle';
+english.editorialStatus='English Chapters I–XXXVII source-transcribed; Arabic draft pending independent review; 37 of 37 chapters';
 for(const [chapterIndex,lastAnchor,src] of [
  [2,27,'verne-route-map-1872.webp'],
  [10,43,'verne-kiouni-1873.webp'],
@@ -107,6 +110,8 @@ for(const [chapterIndex,lastAnchor,src] of [
  state.story=english;state.page='reader';state.chapter=chapterIndex;
  window.fullTranslation();
  assert.match(root.innerHTML,/lt-companion-plate/,'chapter matching antique scan gets a picture');
+ assert.match(root.innerHTML,/lt-literary-disclosure/,'unreviewed companion is clearly identified');
+ assert.match(root.innerHTML,/مسودة لم تخضع/,'Arabic UI shows honest draft status');
  assert.ok(root.innerHTML.includes('art/'+src),'the original local archive file is reused');
  assert.equal((root.innerHTML.match(/class="lt-companion-plate"/g)||[]).length,1,
   'one real engraving rather than decorative filler');

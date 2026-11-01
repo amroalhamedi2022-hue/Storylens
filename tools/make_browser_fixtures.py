@@ -27,7 +27,11 @@ tests={
  check('novella catalog',()=>catalog.stories.some(s=>s.id==='the-salt-meridian'&&s.chapters.length===5));
  check('novella art',()=>!!art['the-salt-meridian_4']);
  check('Verne catalog publishes verified book after deferred load',()=>catalog.stories.some(s=>s.id==='around-the-world-in-eighty-days-towle'&&s.lazyBook===false&&s.totalChapters===37&&s.chapters.length===37));
- check('Verne cover and final-chapter art remain available after load',()=>!!art['around-the-world-in-eighty-days-towle_0']&&!!art['around-the-world-in-eighty-days-towle_36']);
+ check('original archived Verne cover is visible without synthetic final-chapter art',()=>{
+  const cover=document.querySelector('.library .lt-book-cover[data-lt-cover-story="around-the-world-in-eighty-days-towle"]');
+  return !!cover&&getComputedStyle(cover).backgroundImage.includes('art/verne-kiouni-1873.webp')&&
+   !art['around-the-world-in-eighty-days-towle_36'];
+ });
  check('in-book search entry',()=>!!document.querySelector('.lt-chapter-search-open'));
  check('offline chapter search',()=>{const hits=LinguaShell.searchChapters('harbor authority');return hits.some(x=>x.storyId==='the-salt-meridian'&&x.en.includes('harbor authority'))});
  check('Arabic source search',()=>LinguaShell.searchChapters('المنارة').some(x=>x.storyId==='the-salt-meridian'));
@@ -261,6 +265,8 @@ tests["translation-37"] = r"""(async function(){
   check('Arabic companion rendered',()=>state.page==='translation'&&!!document.querySelector('.lt-arabic-companion'));
   check('initial chapter heading accessible',()=>document.activeElement?.id==='lt-translation-chapter-title');
   const panel=document.querySelector('.lt-arabic-companion');
+  check('English intermediary and Arabic draft correctly identified',
+    ()=>panel?.querySelector('.lt-literary-disclosure')?.textContent.includes('مسودة'));
   check('correct title',()=>panel.querySelector('h2').textContent===(book.chapters[13].titleAr||book.chapters[13].title));
   check('only source-aligned chapter 14 paragraphs',()=>panel.querySelectorAll('p[lang="ar"][dir="rtl"]').length===book.chapters[13].paragraphs.length&&
     panel.querySelector('p[lang="ar"]').textContent===book.chapters[13].paragraphs[0].ar);
