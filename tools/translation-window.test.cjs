@@ -102,7 +102,9 @@ for(const [chapterIndex,lastAnchor,src] of [
  [10,43,'verne-kiouni-1873.webp'],
  [20,34,'verne-tankadere-1872.webp'],
  [4,1,'verne-news-readers-1873.webp'],
- [19,66,'verne-tankadere-cabin-1873.webp']
+ [19,66,'verne-tankadere-cabin-1873.webp'],
+ [14,19,'verne-calcutta-court-1873.webp'],
+ [16,7,'verne-singapore-carriage-1873.webp']
 ]){
  english.chapters[chapterIndex].paragraphs=Array.from({length:lastAnchor+1},(_,i)=>({
   en:'English source '+(i+1),ar:'الترجمة العربية '+(i+1)
