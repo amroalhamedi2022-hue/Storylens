@@ -278,6 +278,64 @@ tests["translation-37"] = r"""(async function(){
  document.body.setAttribute('data-lt-translation-errors',errors.join(' | '));
 })();""";
 
+tests["paper-fold-browser"] = r"""(async function(){
+ const errors=[];
+ const check=(name,fn)=>{try{if(!fn())errors.push(name)}catch(e){errors.push(name+': '+e.message)}};
+ const id='the-salt-meridian';
+ try{
+  await window.LinguaContentLoader.ensureEditorialArt();
+  put('chapter_'+id,0);
+  openStory(id);
+  await new Promise(resolve=>setTimeout(resolve,140));
+  check('full reader opens',()=>state.page==='reader'&&state.story?.id===id);
+  async function holdAndTurn(dir){
+   document.documentElement.dir=dir;
+   document.documentElement.lang=dir==='rtl'?'ar':'en';
+   state.chapter=0;
+   put('chapter_'+id,0);
+   put('readpage_'+id+'_0',0);
+   put('readpage_anchor_'+id+'_0',0);
+   renderReader();
+   await new Promise(resolve=>requestAnimationFrame(resolve));
+   const box=document.querySelector('.reader #sentences');
+   const pages=box?[...box.querySelectorAll('.lt-book-page')]:[];
+   check(dir+' multiple paper pages',()=>pages.length>=2);
+   if(pages.length<2)return;
+   box.scrollIntoView({block:'start',behavior:'instant'});
+   const rect=box.getBoundingClientRect();
+   const start=dir==='rtl'?rect.left+14:rect.right-14;
+   const distance=Math.min(rect.width-36,Math.max(110,rect.width*.56));
+   const finish=dir==='rtl'?start+distance:start-distance;
+   const y=Math.max(24,Math.min(window.innerHeight-65,rect.top+80));
+   const before=document.querySelector('.lt-page-count')?.textContent;
+   const pointer=(type,x)=>box.dispatchEvent(new PointerEvent(type,{
+    bubbles:true,cancelable:true,pointerId:41,pointerType:'touch',isPrimary:true,
+    button:0,buttons:type==='pointerup'?0:1,clientX:x,clientY:y
+   }));
+   pointer('pointerdown',start);
+   pointer('pointermove',finish);
+   await new Promise(resolve=>requestAnimationFrame(resolve));
+   check(dir+' live crease follows hold',()=>box.classList.contains('lt-paper-grabbing')&&
+    box.dataset.ltFoldEdge===(dir==='rtl'?'left':'right'));
+   check(dir+' actual next page revealed',()=>!!box.querySelector('.lt-book-page.lt-paper-underlay'));
+   check(dir+' curved page has polygon crop',()=>{
+    const moving=box.querySelector('.lt-book-page.lt-paper-grabbed');
+    return !!moving&&getComputedStyle(moving).clipPath.includes('polygon(');
+   });
+   pointer('pointerup',finish);
+   await new Promise(resolve=>setTimeout(resolve,90));
+   check(dir+' fold cleans up',()=>!box.classList.contains('lt-paper-grabbing')&&
+    !box.querySelector('.lt-paper-reverse'));
+   check(dir+' committed paper turn',()=>state.chapter!==0||
+    document.querySelector('.lt-page-count')?.textContent!==before);
+  }
+  await holdAndTurn('rtl');
+  await holdAndTurn('ltr');
+ }catch(e){errors.push('runtime: '+e.message)}
+ document.body.setAttribute('data-lt-paper-qa',errors.length?'FAIL':'PASS');
+ document.body.setAttribute('data-lt-paper-errors',errors.join(' | '));
+})();""";
+
 for name,script in list(tests.items()):
  if "openStory('around-the-world-in-eighty-days-towle')" not in script:
   continue

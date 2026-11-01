@@ -40,6 +40,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - This staged code+test commit is NOT published or CI-accepted until its parent full Chromium run is checked; Xiaomi Pad 5/TalkBack/real battery and signed release NOT TESTED.
 - Next: verify full exact-head CI, avoid redundant commits, continue licensed literature/period in-page art.
 
+### 2026-11-01 — RD01 / QA01: Chromium RTL/LTR paper-fold integration
+- Based on inspected parent PR HEAD `d822c79339a3e3b157474ff7a1164316a66754f8` without touching production rendering. Added real-browser fixture `paper-fold-browser` covering the actual source-backed reader, pointerdown/move/up, Arabic RTL left-edge and English LTR right-edge, active curved CSS polygon, neighboring paper, cleanup, and committed turn. This goes beyond the pre-existing VM-only ownership tests.
+- Injects no purchased images and does not change user progress keys, narrative, or runtime code. Exact browser CI and physical tablet/finger visuals **PENDING/NOT TESTED** at this checkpoint.
+- New browser CI must pass before QA01 can be recorded green. Visual 120Hz and actual finger touch need physical device acceptance.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
