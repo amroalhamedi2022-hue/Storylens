@@ -111,6 +111,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - QA fixture now switches ONLY its own inspected image elements to `loading='eager'`, awaits their real `decode()`, then tests `complete && naturalWidth>0`. Production images remain `loading="lazy"` and `decoding="async"`, preserving lower memory/battery burden.
 - New exact-head CI PENDING. Physical device and editorial/art market rights unchanged.
 
+### 2026-11-01 — QA01: no unbounded offscreen image decode in headless Chromium
+- Parent HEAD `be01ee1f02a4b550968858cd5993f33d813b616e` exact-head run 41339146636 **FAILED** at newly introduced plate QA, after Node source checksum/Android/APK tests succeeded. Forcing `HTMLImageElement.decode()` on an offscreen, intentionally lazy image did not resolve before Chromium dumped its DOM, producing no `data-lt-historic-qa` marker. This was a test synchronization defect, not verified production regression.
+- Browser QA now asserts the real chapter/paragraph/figure, local WebP URL, contextual captions, and deliberate `loading=lazy`/`decoding=async`; the existing Node SHA-256/WebP-header test independently validates the packed binary. No eager loading or image changes in production.
+- New exact-head CI PENDING.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
