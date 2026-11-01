@@ -178,6 +178,47 @@ function ltPageStarts(lengths,viewportHeight,readerWidth,fontSize,illustrationHe
  }
  return starts;
 }
+// Prefer actual laid-out paragraph and illustration heights to character
+// estimates. This operates only on one chapter's initially visible DOM; all
+// reads are grouped before any page nodes are created or styles modified.
+function ltMeasuredParagraphHeights(sentences){
+ const heights=[];
+ for(const sentence of sentences){
+  let node=sentence,total=0,parts=0;
+  while(node&&parts<16){
+   if(node!==sentence&&node.classList?.contains('sentence'))break;
+   const rectangle=node.getBoundingClientRect?.();
+   const style=window.getComputedStyle?.(node);
+   const height=Number(rectangle?.height);
+   if(!Number.isFinite(height)||height<1||!style)return null;
+   const top=Number.parseFloat(style.marginTop)||0;
+   const bottom=Number.parseFloat(style.marginBottom)||0;
+   total+=height+Math.max(0,top)+Math.max(0,bottom);
+   parts++;
+   node=node.nextElementSibling;
+  }
+  if(parts===16||!Number.isFinite(total)||total<=0)return null;
+  heights.push(total);
+ }
+ return heights;
+}
+function ltMeasuredPageStarts(heights,viewportHeight){
+ const vh=Number(viewportHeight);
+ const height=Number.isFinite(vh)&&vh>=320?vh:800;
+ const budget=Math.max(210,Math.min(800,height*.77)-80);
+ const starts=[];let used=0,count=0;
+ for(let i=0;i<heights.length;i++){
+  const raw=Number(heights[i]);
+  if(!Number.isFinite(raw)||raw<=0)return null;
+  // A single oversized paragraph remains intact and scrollable; never
+  // cut bilingual text, dictionary words or an illustration across sheets.
+  if(count===0||count>=LT_PAGE_PARAGRAPHS||used+raw>budget){
+   starts.push(i);used=0;count=0;
+  }
+  used+=raw;count++;
+ }
+ return starts;
+}
 function ltPageForParagraph(starts,paragraph){
  const target=Number.isInteger(paragraph)&&paragraph>=0?paragraph:0;
  let found=0;
@@ -297,9 +338,13 @@ function installPageTurn(){
   const companion=(translated?.classList?.contains('inline-ar')||translated?.classList?.contains('inline-en'))?(translated.textContent||'').length:0;
   return (node.textContent||'').length+companion;
  });
- const starts=ltPageStarts(paragraphLengths,
-  window.innerHeight,bounds?.width||window.innerWidth,
-  Number.isFinite(computedSize)?computedSize:preferredSize,illustrationHeights);
+ // Prefer real text metrics after the final fonts, translations and scene
+ // figures have entered the DOM. Fall back to safe length estimates in
+ // partial/older WebViews that cannot measure laid-out content.
+ const measured=ltMeasuredParagraphHeights(sentences);
+ const starts=(measured&&ltMeasuredPageStarts(measured,window.innerHeight))||
+  ltPageStarts(paragraphLengths,window.innerHeight,bounds?.width||window.innerWidth,
+   Number.isFinite(computedSize)?computedSize:preferredSize,illustrationHeights);
  const boundaries=new Set(starts);
  let page=null,paragraph=0;
  for(const node of originalNodes){
