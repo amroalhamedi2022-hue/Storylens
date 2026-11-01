@@ -114,6 +114,10 @@ a.match(css,/width:100%!important;height:100%!important/,
  'ink mask overrides obsolete 70px legacy circle dimensions');
 a.match(css,/width:auto!important;height:auto!important;inset:5px!important/,
  'archival border overrides legacy bottom half-height');
+a.match(css,/\.library \.lt-book-cover\.art::before\{\s*border-radius:0!important;box-shadow:none!important/,
+ 'ink mask cannot inherit the obsolete circular glow');
+a.match(css,/\.library \.lt-book-cover\.art::after\{\s*background:none!important;clip-path:none!important;box-shadow:none!important/,
+ 'full-cover period frame cannot inherit the dark clipped skyline');
 a.match(css,/prefers-reduced-motion:reduce/);
 const touchSource=read('app/src/main/assets/lt-tap-feedback.js');
 a.match(touchSource,/heldPointers=new Map\(\)/,'water press tracks finger id');

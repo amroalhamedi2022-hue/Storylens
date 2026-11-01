@@ -74,6 +74,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Scoped fix forces the production ink mask to fill 100% of the cover and the decorative border to use the actual full inset, without filters or continuous animations. Extended the real Chromium phone/tablet fixture to verify rendered pseudo widths/heights against `cover.clientWidth/clientHeight`; static source test rejects regressions.
 - Combined with the separately pre-tested companion chapter heading focus fix (staged earlier), both based on branch parent `661151785a3c5d5f7787b553ed8845fb8743d985`. Node source-bound translation focus regression previously passed under V8. Full exact-head CI **PENDING**; visual screenshot review and real Android device proof OPEN.
 
+### 2026-11-01 — UX01 / QA01: eliminate inherited circular glow and clipped skyline from real art covers
+- Source parent `3e432da57b54914375207e05a4cdd67a158e5f2c`. Inspected actual CI screenshot artifact from **run 41334336154** after the first mask restoration: a large black/angular clipped pattern appeared across the top of the historic globe, proving legacy `.cover:after` visual styling is still inherited. Existing period border pseudo-element must only draw a thin border, not the old skyline graphic.
+- Scoped CSS now resets `background:none;clip-path:none;box-shadow:none` on the **art cover frame** and resets `border-radius:0;box-shadow:none` on the full-size ink mask; preserves artwork and the accessible DOM cover title. Unlike earlier naive CSS checks, the real Chromium phone/tablet fixture checks these *computed paint properties* plus full-sized pseudo-element geometry.
+- Staged with production change, source checks, and browser fixture; new exact-head CI and screenshot approval **PENDING**. Does not touch installed package data, content, or 120Hz device tuning.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

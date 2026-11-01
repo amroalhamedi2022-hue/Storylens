@@ -319,3 +319,13 @@ button.lt-water-pressed,.lt-theme-choice.lt-water-pressed{
  display:block!important;content:""!important;
  width:auto!important;height:auto!important;inset:5px!important;
 }
+
+/* UX01 full reset of inherited book-art pseudoelements. The old .cover:before
+   is circular with a glow, and .cover:after contains a dark clipped skyline.
+   Once visible, BOTH must be stripped: they are not the book ink mask/frame. */
+.library .lt-book-cover.art::before{
+ border-radius:0!important;box-shadow:none!important;
+}
+.library .lt-book-cover.art::after{
+ background:none!important;clip-path:none!important;box-shadow:none!important;
+}

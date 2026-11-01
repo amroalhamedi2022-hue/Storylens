@@ -368,12 +368,14 @@ tests["shelf-centered"] = r"""(function(){
    return mask?.display!=='none'&&mask?.content!=='none'&&
       mask?.backgroundImage.includes('linear-gradient')&&mask?.zIndex==='1'&&
       Math.abs(parseFloat(mask.width)-cover.clientWidth)<3&&
-      Math.abs(parseFloat(mask.height)-cover.clientHeight)<3;
+      Math.abs(parseFloat(mask.height)-cover.clientHeight)<3&&
+      mask.borderRadius==='0px'&&mask.boxShadow==='none';
   });
   check('cover archival frame is painted',()=>{
    const frame=cover&&getComputedStyle(cover,'::after');
    return frame?.display!=='none'&&frame?.zIndex==='3'&&
-      parseFloat(frame.height)>=cover.clientHeight-14;
+      parseFloat(frame.height)>=cover.clientHeight-14&&
+      frame.backgroundImage==='none'&&frame.clipPath==='none'&&frame.boxShadow==='none';
   });
  }catch(e){errors.push('runtime: '+e.message)}
  document.body.setAttribute('data-lt-shelf-qa',errors.length?'FAIL':'PASS');
