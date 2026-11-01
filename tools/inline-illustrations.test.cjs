@@ -29,7 +29,10 @@ const document = {
  querySelectorAll(selector) {return selector === '.reader .sentence' ? sentences : [];},
  createElement(tag) {return {tag, style: {}, children: [], removed: false,
   handlers:{},attributes:{},
-  appendChild(child) {this.children.push(child);}, setAttribute(k,v) {this.attributes[k]=v;},
+  appendChild(child) {this.children.push(child);child.parent=this;},
+  closest(selector){return selector==='figure'&&this.parent?.tag==='figure'?this.parent:null;},
+  querySelector(selector){return this.children.find(child=>child.tag===selector)||null;},
+  setAttribute(k,v) {this.attributes[k]=v;},
   addEventListener(k,fn){this.handlers[k]=fn;},focus(){this.focused=true;},
   remove() {this.removed=true;}};}
 };
