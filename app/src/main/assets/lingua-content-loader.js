@@ -24,6 +24,9 @@ let openGeneration = 0;
 let bookLoadGeneration = 0;
 const inFlightAssets = new Map();
 let statusNode = null;
+let statusMessage = null;
+let statusProgress = null;
+let statusKind = null;
 const BOOK_ID = 'around-the-world-in-eighty-days-towle';
 
 function rootNode() { return document.getElementById('root'); }
@@ -47,12 +50,15 @@ function cancelledLoadError() {
 function clearStatus() {
   if (statusNode) statusNode.remove();
   statusNode = null;
+  statusMessage = null;
+  statusProgress = null;
+  statusKind = null;
 }
 function status() {
   if (statusNode) return statusNode;
   const style = document.createElement('style');
   style.id = 'lt-content-loader-style';
-  style.textContent = '.lt-content-load-status{position:fixed;z-index:10000;inset:auto 16px 18px;max-width:min(92vw,460px);margin-inline:auto;padding:14px 16px;border:1px solid #ffffff35;border-radius:18px;background:#171b35f5;color:#fff;font:500 15px/1.55 system-ui,sans-serif;box-shadow:0 12px 36px #0005;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.lt-content-load-status span{flex:1 1 180px}.lt-content-load-status button{border:1px solid #ffffff55;border-radius:12px;padding:8px 12px;background:#ffffff18;color:inherit;font:inherit}';
+  style.textContent = '.lt-content-load-status{position:fixed;z-index:10000;inset:auto 16px 18px;max-width:min(92vw,460px);margin-inline:auto;padding:14px 16px;border:1px solid #ffffff35;border-radius:18px;background:#171b35f5;color:#fff;font:500 15px/1.55 system-ui,sans-serif;box-shadow:0 12px 36px #0005;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.lt-content-load-status span{flex:1 1 180px}.lt-content-load-status button{border:1px solid #ffffff55;border-radius:12px;padding:8px 12px;background:#ffffff18;color:inherit;font:inherit}.lt-content-load-status progress{width:100%;height:9px;accent-color:#9de4e7;border-radius:10px}';
   if (!document.getElementById('lt-content-loader-style')) document.head.appendChild(style);
   statusNode = document.createElement('div');
   statusNode.id = 'lt-content-load-status';
@@ -69,6 +75,16 @@ function addAction(node, label, callback) {
   button.addEventListener('click', callback);
   node.appendChild(button);
 }
+// Display actual locally completed script assets, not fabricated byte or
+// elapsed-time progress. Previously loaded assets count on retry.
+function updateBookProgress() {
+  if (statusKind !== 'book' || !statusMessage || !statusProgress) return;
+  const done = bookAssets.reduce((count, src) => count + (loaded.has(src) ? 1 : 0), 0);
+  statusProgress.value = done;
+  statusMessage.textContent = document.documentElement.dir === 'ltr'
+    ? 'Preparing offline book files: ' + done + ' of ' + bookAssets.length
+    : 'جارٍ تجهيز ملفات الكتاب دون إنترنت: ' + done + ' من ' + bookAssets.length;
+}
 function showLoading(kind = 'book') {
   const node = status();
   node.setAttribute('role', 'status');
@@ -76,11 +92,23 @@ function showLoading(kind = 'book') {
   node.lang = document.documentElement.lang || 'ar';
   node.dir = document.documentElement.dir || 'rtl';
   node.replaceChildren();
+  statusKind = kind;
   const message = document.createElement('span');
+  statusMessage = message;
+  statusProgress = null;
   message.textContent = kind === 'art'
     ? (node.dir === 'ltr' ? 'Preparing this story’s offline illustrations…' : 'جارٍ تجهيز رسومات هذه القصة دون إنترنت…')
     : (node.dir === 'ltr' ? 'Preparing the book for offline reading…' : 'جارٍ تجهيز الكتاب للقراءة دون إنترنت…');
   node.appendChild(message);
+  if (kind === 'book') {
+    const progress = document.createElement('progress');
+    progress.max = bookAssets.length;
+    progress.value = 0;
+    progress.setAttribute('aria-label', node.dir === 'ltr' ? 'Offline book files loaded' : 'ملفات الكتاب المكتملة');
+    node.appendChild(progress);
+    statusProgress = progress;
+    updateBookProgress();
+  }
   addAction(node, node.dir === 'ltr' ? 'Cancel' : 'إلغاء', cancelPending);
 }
 function showError() {
@@ -90,6 +118,7 @@ function showError() {
   node.lang = document.documentElement.lang || 'ar';
   node.dir = document.documentElement.dir || 'rtl';
   node.replaceChildren();
+  statusKind = null;statusMessage = null;statusProgress = null;
   const message = document.createElement('span');
   message.textContent = node.dir === 'ltr'
     ? 'The offline book could not be prepared. Please retry.'
@@ -138,6 +167,10 @@ async function loadAssets(list, generation = null) {
   for (const src of list) {
     if (generation !== null && generation !== bookLoadGeneration) throw cancelledLoadError();
     await loadAsset(src);
+    if (generation !== null) {
+      if (generation !== bookLoadGeneration) throw cancelledLoadError();
+      updateBookProgress();
+    }
   }
   if (generation !== null && generation !== bookLoadGeneration) throw cancelledLoadError();
 }

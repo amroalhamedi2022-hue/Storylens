@@ -33,6 +33,13 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - New exact-head Android/Chromium CI PENDING at commit creation. Physical Pad 5 120Hz, literary editing and stable release signing remain UNTESTED.
 - Next: verify CI, real-device swipe/page-turn performance, historical in-page art and licensed full bilingual books.
 
+### 2026-11-01 — PERF01 / QA01: real offline book-loading progress
+- Based on exact PR HEAD `383741d992dff0d369f0f1dfd216e2dcad5530c2`, after prior Node/Android success and while Chromium regression was under check.
+- Long-book loader now shows an accessible native progress element and truthful count of actual completed local chapter/illustration scripts (0–40, including reused scripts after cancellation). It does not claim download bytes, time percentages, FPS or network activity. The overlay remains cancelable, and a stale generation cannot advance the visible counter after cancellation.
+- New existing-loader regression simulates a held fifth script, validates 4/40 shown with exact localized text, then verifies 40/40 after all scripts and restored reader interaction. Unrelated small stories and dictionary loading remain unchanged.
+- This staged code+test commit is NOT published or CI-accepted until its parent full Chromium run is checked; Xiaomi Pad 5/TalkBack/real battery and signed release NOT TESTED.
+- Next: verify full exact-head CI, avoid redundant commits, continue licensed literature/period in-page art.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

@@ -222,6 +222,25 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
  assert.equal(overlap.catalogStory.chapters.length,37,'only the active generation publishes the verified catalog');
  assert.equal(new Set(overlap.attempted).size,overlap.attempted.length,'a cancel/reopen race never requests a local asset twice');
 
+ // Real progress covers only the 40 verified offline chapter/illustration
+ // scripts. It must survive a paused local script, finish at 40, and reset
+ // safely after an interrupted/retried user navigation.
+ const progress=makeHarness({deferAsset:'classic-verne-towle-ch05.js'});
+ progress.window.openStory('around-the-world-in-eighty-days-towle');
+ const progressStatus=progress.bodyChildren.find(node=>node.id==='lt-content-load-status');
+ const progressBar=progressStatus?.children.find(node=>node.tagName==='PROGRESS');
+ assert.ok(progressBar,'book overlay exposes an accessible native progress bar');
+ assert.equal(progressBar.max,40,'bar counts the actual declared offline book files');
+ assert.equal(progressBar.value,0,'initial book progress does not invent completed assets');
+ await tick();
+ assert.equal(progressBar.value,4,'only the first four finished chapter scripts are counted before the fifth completes');
+ assert.match(progress.statusText,/4 من 40/,'Arabic status displays truthful completed asset count');
+ progress.completeDeferredAsset();
+ await progress.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ await tick();
+ assert.equal(progressBar.value,40,'all forty local source/art assets were verified before completion');
+ assert.equal(progress.rootNode.inert,false,'progress completion restores reader interaction');
+
  const retry=makeHarness({failOnce:'classic-verne-towle-ch05.js'});
  retry.window.openStory('around-the-world-in-eighty-days-towle');
  await assert.rejects(retry.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle'));
