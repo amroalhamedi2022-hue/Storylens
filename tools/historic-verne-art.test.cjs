@@ -33,6 +33,8 @@ for(const row of exact){
 assert.match(js,/const approvedArt=periodArt\.length>0\|\|curatedArt\.some/);
 assert.match(js,/const inlineArt=chapterScene\?\[chapterScene,\.\.\.periodArt,\.\.\.curatedArt\]:\[\.\.\.periodArt,\.\.\.curatedArt\]/);
 assert.match(css,/background-image:url\("art\/verne-kiouni-1873\.webp"\)!important/);
+assert.equal((scope.match(/credit:uiText\(/g)||[]).length,3,
+ 'all original archive illustration credits are localized in Arabic and English');
 assert.ok(!scope.includes('http:')&&!scope.includes('https:'),'art must never fetch online during reading');
 const yaml=fs.readFileSync('.github/workflows/android.yml','utf8');
 assert.ok(!yaml.includes('historic_art_intake:'),'one-time original downloader removed after asset commit');

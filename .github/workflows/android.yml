@@ -298,6 +298,9 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=22000 --dump-dom "file://$PWD/app/src/main/assets/qa-translation-37.html" > /tmp/lt-translation-37.html 2>/tmp/lt-translation-37.log
           grep -Fq 'data-lt-translation-qa="PASS"' /tmp/lt-translation-37.html || { echo "Full-novel companion browser regression:"; grep -o 'data-lt-translation-errors="[^"]*"' /tmp/lt-translation-37.html | head -1; exit 1; }
           echo "PASS: Chromium navigates a complete offline 37-chapter companion with stable source progress"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=22000 --dump-dom "file://$PWD/app/src/main/assets/qa-historic-verne-plates.html" > /tmp/lt-historic-plates.html 2>/tmp/lt-historic-plates.log
+          grep -Fq 'data-lt-historic-qa="PASS"' /tmp/lt-historic-plates.html || { echo "Authentic period plates browser QA failed:"; grep -o 'data-lt-historic-errors="[^"]*"' /tmp/lt-historic-plates.html | head -1; exit 1; }
+          echo "PASS: all three archived period illustrations render inside corresponding offline novel chapters"
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=10500 --window-size=460,860 --dump-dom "file://$PWD/app/src/main/assets/qa-paper-fold-browser.html" > /tmp/lt-paper-fold-dom.html 2>/tmp/lt-paper-fold.log
           grep -Fq 'data-lt-paper-qa="PASS"' /tmp/lt-paper-fold-dom.html || { echo "Real Chromium paper-fold regression failed:"; grep -o 'data-lt-paper-errors="[^"]*"' /tmp/lt-paper-fold-dom.html | head -1; grep -o 'data-lt-paper-stage="[^"]*"' /tmp/lt-paper-fold-dom.html | head -1; exit 1; }
           echo "PASS: Chromium holds curved paper RTL/LTR, reveals neighboring page and commits without leftover fold"

@@ -382,6 +382,39 @@ tests["shelf-centered"] = r"""(function(){
  document.body.setAttribute('data-lt-shelf-errors',errors.join(' | '));
 })();""";
 
+tests["historic-verne-plates"] = r"""(async function(){
+ const errors=[];
+ const check=(label,condition)=>{if(!condition)errors.push(label)};
+ try{
+  const id='around-the-world-in-eighty-days-towle';
+  await window.LinguaContentLoader.ensureStory(id);
+  put('chapter_'+id,2);
+  openStory(id);
+  const items=[
+   {index:2,src:'art/verne-route-map-1872.webp',anchor:27},
+   {index:10,src:'art/verne-kiouni-1873.webp',anchor:43},
+   {index:20,src:'art/verne-tankadere-1872.webp',anchor:34}
+  ];
+  for(const item of items){
+   state.chapter=item.index;
+   renderReader();
+   const figures=[...document.querySelectorAll('.reader figure.lt-inline-illustration')];
+   const figure=figures.find(f=>f.querySelector('img')?.getAttribute('src')===item.src);
+   const picture=figure?.querySelector('img');
+   check('chapter '+item.index+' original period plate exists',!!figure);
+   check('chapter '+item.index+' is offline',picture?.getAttribute('src')===item.src);
+   check('chapter '+item.index+' contextual alt text',!!picture?.alt?.trim());
+   check('chapter '+item.index+' historical caption',!!figure?.querySelector('figcaption')?.textContent.trim());
+   check('chapter '+item.index+' image preserves reserved aspect ratio',!!picture?.style?.aspectRatio);
+   const source=document.querySelector('.reader [data-i="'+item.anchor+'"]');
+   check('chapter '+item.index+' paragraph anchor',!!source);
+   check('chapter '+item.index+' image loaded from APK',!!picture?.complete&&picture?.naturalWidth>0);
+  }
+ }catch(e){errors.push('runtime: '+e.message)}
+ document.body.setAttribute('data-lt-historic-qa',errors.length?'FAIL':'PASS');
+ document.body.setAttribute('data-lt-historic-errors',errors.join(' | '));
+})();""";
+
 for name,script in list(tests.items()):
  if "openStory('around-the-world-in-eighty-days-towle')" not in script:
   continue

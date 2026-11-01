@@ -100,6 +100,12 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Wired an authentic 1873 *Kiouni* / Phileas Fogg engraved scene to the book cover with locally packaged WebP CSS, replacing the abstract image appearance for the long novel. In-reader paragraph-matched pictures appear in original chapter III ¶28 (8-leg world route), XI ¶44 (elephant and Fogg), XXI ¶35 (Tankadere storm). Original English/Arabic text and bookmarks unchanged. Historial scans are 1872/1873, not AI-generated.
 - Added offline SHA-256/manifest and CSS/scene placement Node acceptance checks to the real Android CI; removed temporary network-enabled runner intake job. No runtime Internet permission/network fetch is added. Full exact-HEAD CI on this code commit **PENDING**, and physical Android 120Hz/device and territorial rights review remain OPEN. Other classics and genuine vintage art are still incomplete.
 
+### 2026-11-01 — UX04 / QA01: original in-book illustrations and bilingual captions, real Chromium image QA
+- Verified latest PR HEAD `5680e3341d32c097a19e6121b4f268043f2b6f3f`; full CI run 41337477165 **SUCCESS**. Avoided repeating the three already-imported original Verne WebP scans and their SHA provenance.
+- Updated *existing* three historical plate credits to Arabic/English contextual captions, preserving original artist names and archival provenance. They remain paired with the actual chapter paragraph, with original local image assets and honest alternative text.
+- Added Chromium integration fixture for chapters III, XI, XXI to verify actual mounted figures, their source `art/*.webp`, paragraph anchor, bilingual credit, reserved image aspect ratio and decoded local bitmap. Added the fixture to Android CI and strengthened static checks. This is source/asset behavior verification, not real-device art aesthetic sign-off.
+- CI for this new exact HEAD PENDING; 120Hz/tablet, full literary translations and stable signer still OPEN.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

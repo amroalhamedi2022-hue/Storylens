@@ -955,17 +955,17 @@ renderReader=function(){
     2:[{afterParagraph:27,src:'art/verne-route-map-1872.webp',
       alt:uiText('خريطة أصلية من طبعة القرن التاسع عشر توضح مسار الرحلة حول العالم.',
         'Historical 1872 engraving of the complete route around the world.'),
-      credit:'Neuville / Benett, 1872 · Historical journey map',
+      credit:uiText('نوفيل وبنيت، ١٨٧٢ · خريطة الرحلة التاريخية','Neuville / Benett, 1872 · Historical journey map'),
       aspectRatio:800/650,position:'wide'}],
     10:[{afterParagraph:43,src:'art/verne-kiouni-1873.webp',
       alt:uiText('فيلياس فوغ وباسبارتو أمام الفيل كِيوني ومالكه في الهند.',
         'Phileas Fogg and Passepartout meeting Kiouni the elephant in India.'),
-      credit:'1873 J. R. Osgood illustrated edition · NYPL archive',
+      credit:uiText('طبعة أوسغود المصوّرة، ١٨٧٣ · أرشيف مكتبة نيويورك العامة','1873 J. R. Osgood illustrated edition · NYPL archive'),
       aspectRatio:630/921,position:'wide'}],
     20:[{afterParagraph:34,src:'art/verne-tankadere-1872.webp',
       alt:uiText('السفينة تانكادير تتقاذفها الأمواج العالية وسط العاصفة.',
         'The Tankadere tossed on towering waves during the storm.'),
-      credit:'Neuville / Benett, 1872 · Historic engraved scene',
+      credit:uiText('نوفيل وبنيت، ١٨٧٢ · نقش تاريخي من الرواية','Neuville / Benett, 1872 · Historic engraved scene'),
       aspectRatio:640/931,position:'wide'}]
    }[state.chapter]||[]):[];
  const approvedArt=periodArt.length>0||curatedArt.some(item=>item&&safeArtPath.test(item.src||'')&&
