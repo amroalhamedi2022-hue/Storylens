@@ -4,8 +4,8 @@ const root=path.resolve(__dirname,'..'),assets=path.join(root,'app/src/main/asse
 const html=read('index.html'),source=read('classic-verne-towle-ch37.js'),shell=read('lingua-shell.js'),css=read('lingua-shell.css'),backup=read('data-backup.js');
 assert.ok(html.indexOf('classic-verne-towle-ch36.js')<html.indexOf('classic-verne-towle-ch37.js'));
 assert.ok(html.indexOf('classic-verne-towle-ch37.js')<html.indexOf('editorial-art.js'));
-assert.ok(html.indexOf('editorial-art-ch36.js')<html.indexOf('editorial-art-ch37.js'));
-assert.ok(html.indexOf('editorial-art-ch37.js')<html.indexOf('lingua-lookup.js'));
+assert.ok(!html.includes('src="editorial-art-ch36.js"'),'obsolete vector 36 excluded');
+assert.ok(!html.includes('src="editorial-art-ch37.js"'),'obsolete vector 37 excluded');
 assert.ok(source.includes('src/epub/text/chapter-37.xhtml')&&source.includes('d6b1761b77004e1b00db04837c7b88f006b78c4d')&&source.includes('56c82e97ff5d4f8950afca05b71af72688a8da34'));
 const story={id:'around-the-world-in-eighty-days-towle',chapters:Array.from({length:36},()=>({paragraphs:[]})),terms:[],totalChapters:37,provenance:'Jules Verne / George Makepeace Towle 1873',editorialStatus:'36 of 37'};
 vm.runInNewContext(source,{window:{StoryLensEditorialStories:[story]}},{filename:'classic-verne-towle-ch37.js',timeout:5000});

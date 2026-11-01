@@ -6,8 +6,8 @@ assert.ok(html.includes("(chapter.title||'')"),'reader keeps the original Englis
 assert.ok(!html.includes('chapter.titleAr||chapter.title'),'Arabic translations must not replace original story headings');
 assert.ok(html.indexOf('classic-verne-towle-ch35.js')<html.indexOf('classic-verne-towle-ch36.js'));
 assert.ok(html.indexOf('classic-verne-towle-ch36.js')<html.indexOf('editorial-art.js'));
-assert.ok(html.indexOf('editorial-art.js')<html.indexOf('editorial-art-ch35.js'));
-assert.ok(html.indexOf('editorial-art-ch35.js')<html.indexOf('editorial-art-ch36.js'));
+assert.ok(!html.includes('src="editorial-art-ch35.js"'),'obsolete old vector 35 excluded');
+assert.ok(!html.includes('src="editorial-art-ch36.js"'),'obsolete old vector 36 excluded');
 const source=read('classic-verne-towle-ch36.js');
 assert.ok(source.includes('src/epub/text/chapter-36.xhtml')&&source.includes('04892fb62e2a79732e13ad18620a0d9ec8f98189')&&source.includes('56c82e97ff5d4f8950afca05b71af72688a8da34'));
 const story={id:'around-the-world-in-eighty-days-towle',chapters:Array.from({length:35},()=>({paragraphs:[]})),terms:[],totalChapters:37,provenance:'Jules Verne / George Makepeace Towle 1873',editorialStatus:'35 of 37'};

@@ -26,13 +26,15 @@ const tags=[...html.matchAll(/<script\b([^>]*)><\/script>/g)].map(m=>{
 }).filter(x=>x.group);
 const bookAssets=tags.filter(x=>x.group==='book').map(x=>x.src);
 const dictionaryAssets=tags.filter(x=>x.group==='dictionary').map(x=>x.src);
-assert.equal(bookAssets.length,40,'all 36 chapter files and four art scripts are declared lazy');
+assert.equal(bookAssets.length,37,'36 source scripts plus one shared legacy art engine, without obsolete vector scenes');
 assert.equal(dictionaryAssets.length,1,'the generated FreeDict pack is declared lazy');
 assert.equal(bookAssets.filter(x=>/^classic-verne-towle-ch\d+\.js$/.test(x)).length,36);
 assert.deepEqual(bookAssets.slice(0,3),['classic-verne-towle-ch01.js','classic-verne-towle-ch02.js','classic-verne-towle-ch03.js']);
 assert.ok(bookAssets.indexOf('classic-verne-towle-ch31.js')<bookAssets.indexOf('classic-verne-towle-ch33.js'));
 assert.ok(bookAssets.indexOf('classic-verne-towle-ch37.js')<bookAssets.indexOf('editorial-art.js'));
-assert.ok(bookAssets.indexOf('editorial-art.js')<bookAssets.indexOf('editorial-art-ch35.js'));
+assert.ok(bookAssets.includes('editorial-art.js'),'offline legacy artwork engine still available');
+assert.ok(!bookAssets.some(name=>/^editorial-art-ch(?:35|36|37)\.js$/.test(name)),
+ 'old synthetic late-chapter Verne scenes are not requested');
 assert.ok(tags.every(x=>/\btype="application\/x-lingua-lazy"/.test(x.attrs)),'lazy payload tags must not execute as JavaScript during startup');
 assert.ok(html.includes('<script src="lingua-content-loader.js"></script>'));
 assert.ok(html.includes('window.LinguaAttachEditorialArt=function'));
@@ -108,7 +110,7 @@ function makeHarness({failOnce=null,lang='ar',deferAsset=null,extraEditorial=[],
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 (async()=>{
  const h=makeHarness();
- assert.equal(h.window.LinguaContentLoader.bookAssetCount,40);
+ assert.equal(h.window.LinguaContentLoader.bookAssetCount,37);
  assert.equal(h.window.LinguaContentLoader.dictionaryAssetCount,1);
  assert.equal(h.removed.length,41,'inert manifest nodes are removed after their paths are captured');
  h.window.openStory('the-salt-meridian');
@@ -145,6 +147,9 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
  await idle.window.LinguaContentLoader.ensureEditorialArt();
  assert.deepEqual(idle.successful,['editorial-art.js'],'warmup and reader share the same art promise');
  assert.equal(idle.story.chapters.length,0,'warmup never loads the long book');
+ await idle.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
+ assert.equal(idle.artAttached,1,'the novel reuses prewarmed art without regeneration');
+ assert.equal(idle.story.chapters.length,37,'art reuse does not skip any real chapters');
 
  const scene={id:'original-mystery',title:'Original Mystery',chapters:[{title:'Open Door',paragraphs:[{en:'The locked door opened.',ar:'انفتح الباب المغلق.'}]}]};
  const a=makeHarness({extraEditorial:[scene]});
@@ -222,7 +227,7 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
  assert.equal(overlap.catalogStory.chapters.length,37,'only the active generation publishes the verified catalog');
  assert.equal(new Set(overlap.attempted).size,overlap.attempted.length,'a cancel/reopen race never requests a local asset twice');
 
- // Real progress covers only the 40 verified offline chapter/illustration
+ // Real progress covers only the 37 necessary offline chapter/legacy-art
  // scripts. It must survive a paused local script, finish at 40, and reset
  // safely after an interrupted/retried user navigation.
  const progress=makeHarness({deferAsset:'classic-verne-towle-ch05.js'});
@@ -230,15 +235,15 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
  const progressStatus=progress.bodyChildren.find(node=>node.id==='lt-content-load-status');
  const progressBar=progressStatus?.children.find(node=>node.tagName==='PROGRESS');
  assert.ok(progressBar,'book overlay exposes an accessible native progress bar');
- assert.equal(progressBar.max,40,'bar counts the actual declared offline book files');
+ assert.equal(progressBar.max,37,'progress excludes unused vector scene scripts');
  assert.equal(progressBar.value,0,'initial book progress does not invent completed assets');
  await tick();
  assert.equal(progressBar.value,4,'only the first four finished chapter scripts are counted before the fifth completes');
- assert.match(progress.statusText,/4 من 40/,'Arabic status displays truthful completed asset count');
+ assert.match(progress.statusText,/4 من 37/,'Arabic status displays truthful completed asset count');
  progress.completeDeferredAsset();
  await progress.window.LinguaContentLoader.ensureStory('around-the-world-in-eighty-days-towle');
  await tick();
- assert.equal(progressBar.value,40,'all forty local source/art assets were verified before completion');
+ assert.equal(progressBar.value,37,'all necessary offline scripts complete before opening');
  assert.equal(progress.rootNode.inert,false,'progress completion restores reader interaction');
 
  const retry=makeHarness({failOnce:'classic-verne-towle-ch05.js'});

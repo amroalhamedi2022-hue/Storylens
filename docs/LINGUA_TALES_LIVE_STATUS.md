@@ -153,6 +153,13 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - Replaced precisely 23 stale assertions in 17 late-chapter and six themed source-language browser fixtures with a positive accessibility/visual acceptance check: the unsourced Verne chapter hero must be tagged `lt-no-period-hero` and computed `display:none`. All narrative, bilingual paragraph, navigation, search and pagination assertions remain unchanged. The five genuine original archive chapters retain separate direct-art verification.
 - Exact-new-head Android/Chromium CI **PENDING**; physical Xiaomi Pad 5, translator editorial review, and original release keystore remain out-of-scope/OPEN.
 
+### 2026-11-01 — PERF01 / UX04 / QA01: prevent invisible synthetic classic art generation
+- Parent PR HEAD `caa501b15ff76664e10c0c2b1f7bee4e6a0727c4` and exact-head run 41343268268 **SUCCESS** before editing. The 37-chapter historical classic now has five authenticated original local period engravings. Its previous SVG chapter artworks are deliberately suppressed visually but the old `LinguaAttachEditorialArt` was still regenerating them after loading the book.
+- The runtime registration now passes ONLY older saved short stories to the existing SVG generator and never generates/retains 37 unnecessary vectors for Verne. Completed novel loads reuse the one existing warmed registry rather than rebuilding it after chapter ingestion, with explicit generation cancellation check.
+- Three synthetic chapter 35–37 art modules are excluded from the **runtime** lazy manifest (their source files remain for historical test isolation). The honest book progress count becomes **37 local scripts**: 36 original chapter source modules + one shared legacy art engine. Original English + draft Arabic paragraphs, actual engravings, stored user data, dictionary and app identity are unchanged.
+- Added direct runtime filter and legacy compatibility coverage in illustrated-cover tests, warmup/reuse and 37-file progress tests, updated three standalone old-art tests to assert they are not shipped as executable tags.
+- **Exact new-HEAD CI PENDING**. Real 120Hz/device, complete editorial translation review, rights-by-territory, original installed signing certificate still OPEN.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.

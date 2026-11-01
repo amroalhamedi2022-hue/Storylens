@@ -119,9 +119,6 @@ body.theme-monsoon-meridian::before,body.theme-monsoon-meridian::after{display:n
 <script type="application/x-lingua-lazy" data-lt-lazy="book" src="classic-verne-towle-ch36.js"></script>
 <script type="application/x-lingua-lazy" data-lt-lazy="book" src="classic-verne-towle-ch37.js"></script>
 <script type="application/x-lingua-lazy" data-lt-lazy="book" src="editorial-art.js"></script>
-<script type="application/x-lingua-lazy" data-lt-lazy="book" src="editorial-art-ch35.js"></script>
-<script type="application/x-lingua-lazy" data-lt-lazy="book" src="editorial-art-ch36.js"></script>
-<script type="application/x-lingua-lazy" data-lt-lazy="book" src="editorial-art-ch37.js"></script>
 <script src="lexicon-extra.js"></script>
 <script type="application/x-lingua-lazy" data-lt-lazy="dictionary" src="freedict-en-ar.js"></script>
 <script>
@@ -153,7 +150,12 @@ window.LinguaHydrateStoryCovers=function(){
 };
 window.LinguaAttachEditorialArt=function(){
  if(typeof window.StoryLensMakeEditorialArt!=='function')return false;
- Object.assign(art,window.StoryLensMakeEditorialArt(window.StoryLensEditorialStories||[]));
+ // Authentic classics rely on verified, local historical engravings.
+ // The 37 now-unused synthetic SVG scene strings waste WebView memory.
+ // Keep all earlier saved short-story scene art for backward compatibility.
+ const eligible=(window.StoryLensEditorialStories||[])
+  .filter(story=>story?.id!=='around-the-world-in-eighty-days-towle');
+ Object.assign(art,window.StoryLensMakeEditorialArt(eligible));
  window.LinguaHydrateStoryCovers();
  return true;
 };

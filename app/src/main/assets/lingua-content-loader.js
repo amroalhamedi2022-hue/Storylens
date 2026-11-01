@@ -193,9 +193,12 @@ async function loadBook(generation) {
   if (!bookAssets.length) throw new Error('Offline book manifest is empty');
   await loadAssets(bookAssets, generation);
   if (generation !== bookLoadGeneration) throw cancelledLoadError();
-  if (typeof global.LinguaAttachEditorialArt !== 'function' || global.LinguaAttachEditorialArt() !== true)
-    throw new Error('Offline illustration registry is unavailable');
-  editorialArtReady = true;
+  // Reuse the idle prewarmed illustration registry. An in-flight art
+  // request is deduplicated, never regenerated once the book is ready.
+  if (!editorialArtReady) {
+    await ensureEditorialArt();
+    if (generation !== bookLoadGeneration) throw cancelledLoadError();
+  }
   const story = (global.StoryLensEditorialStories || []).find(item => item.id === BOOK_ID);
   if (!story || story.totalChapters !== 37 || story.chapters.length !== 37 ||
       story.chapters.some(chapter => !Array.isArray(chapter.paragraphs) || !chapter.paragraphs.length ||
