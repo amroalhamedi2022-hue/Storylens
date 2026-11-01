@@ -631,6 +631,9 @@ function installPageTurn(){
   if(turn)move(delta,'gesture');
  }
  sentenceBox.addEventListener('pointerdown',event=>{
+  // A second contact invalidates a one-finger paper hold immediately.
+  // Some Android WebViews do not dispatch pointercancel for the first finger.
+  if(drag&&event.pointerId!==drag.id){finishPaperDrag(false);return;}
   if(event.isPrimary===false||event.button!==0||drag||state.page!=='reader'||
      state.story!==installedStory||state.chapter!==installedChapter||
      sentenceBox.isConnected===false)return;
@@ -673,6 +676,12 @@ function installPageTurn(){
   }
   if(event.cancelable)event.preventDefault();
  },{passive:false});
+ // Before pointer capture is established, leaving the sheet can otherwise
+ // strand an inactive hold and reject all subsequent gestures until a lost up.
+ // After capture, leaving the bounds is expected: keep the held fold alive.
+ sentenceBox.addEventListener('pointerleave',event=>{
+  if(drag&&!drag.locked&&event.pointerId===drag.id)finishPaperDrag(false);
+ });
  sentenceBox.addEventListener('pointerup',event=>{
   if(drag&&event.pointerId===drag.id)finishPaperDrag(true,event);
  });

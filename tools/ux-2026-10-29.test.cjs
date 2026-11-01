@@ -207,6 +207,27 @@ function testPointerOwnership(){
  const up=id=>events.pointerup({pointerId:id,clientX:210,clientY:52,target:sheet});
  // Dictionary ink near the page edge stays tappable on a short press: no
  // capture, preventDefault, reverse face or accidental navigation.
+ // Lost pointerup after leaving the sheet must not leave a phantom hold.
+ // Other fingers' pointerleave events cannot cancel the original gesture.
+ down(60);
+ events.pointerleave({pointerId:999});
+ events.pointerleave({pointerId:60});
+ down(61);
+ events.pointerup({pointerId:61,clientX:395,clientY:50,target:sheet});
+ assert.deepEqual(turns,[],'edge exit before capture frees the next paper grab');
+ // Captured folds legitimately cross the paper edge, so pointerleave must
+ // preserve the owner's active gesture until an explicit cancel/release.
+ down(62);drag(62);
+ events.pointerleave({pointerId:62});
+ assert.equal(typeof frame,'function','captured fold survives leaving the paper edge');
+ events.pointercancel({pointerId:62});
+ assert.deepEqual(turns,[],'leaving and cancelling a held fold never turns paper');
+ // Real multitouch must cancel the first finger even on WebViews that omit
+ // its pointercancel event, and never create a second captured page.
+ down(63);drag(63);
+ events.pointerdown({pointerId:64,isPrimary:false,button:0,clientX:390,clientY:60,target:plainTarget});
+ up(63);
+ assert.deepEqual(turns,[],'secondary touch cancels a potentially committed hold');
  const initialCaptures=captures.length;
  down(70,tokenTarget);
  assert.equal(captures.length,initialCaptures,'dictionary press never captures pointer');

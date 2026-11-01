@@ -2,6 +2,13 @@
 
 Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file MUST be updated in every meaningful code/content commit and reconciled with current HEAD/CI. Work on PR #1 branch automation/storylens-dictionary-saved-words-20261023, not main.
 
+### 2026-11-01 — RD01 / QA01: edge-exit and multi-touch paper-fold reliability
+- Parent PR #1 HEAD checked: `71ed9cabe1b4af687729181443232f32ae7eb1da`. Existing exact-head Android/Chromium CI **PASS**: run 41305521088 on 71ed9cabe1b4af687729181443232f32ae7eb1da; no repeated content/source work.
+- Production: `reader-experience.js` cancels a not-yet-captured edge hold when its owning pointer leaves the reading sheet, preventing phantom drags; a secondary contact cancels the original one-finger fold when Android WebView fails to emit the first pointer's cancel. Captured sheet can still legitimately travel beyond the edge. No change to text, translations, saved data, audio, or package ID.
+- Regression: extended real extracted production-pointer handler tests in `tools/ux-2026-10-29.test.cjs` for owner/foreign pointerleave, subsequent new gestures, captured-paper edge crossing, and secondary finger cancellation.
+- Exact-HEAD Node/Android/Chromium CI for this new change: **PENDING** at commit creation; device/120Hz/fold fidelity **NOT TESTED**. No stable-signature update/final APK claimed.
+- Next: verify new CI outcome; test 20 repeated gestures and RTL page curl on physical tablet/phone, then complete sourced translations, historical in-page illustrations and release signer acceptance.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
