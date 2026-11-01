@@ -148,6 +148,11 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 - For the Verne classic specifically, top-of-chapter art now reuses its exact verified original historical scan whenever one of the five chapter-scene plates is available; for the other 32 chapters, the false SVG banner is hidden instead of inventing a scene. Historical image framed with inexpensive CSS `background-size:contain` so original engravings are not severely cropped. Other historical/story content and older saved short-story art untouched.
 - Added Node source/CSS regression and real Chromium assertion that each original figure and its chapter hero share the same local scanned WebP; verifies an unsourced chapter has NO generic hero. New exact-head CI and re-reviewed screenshots PENDING. No stable release or measured real-device FPS claim.
 
+### 2026-11-01 — QA01: update obsolete browser assertions that demanded synthetic archive art
+- Parent HEAD `5a98cd185a6af2878ad873e2d4b8ca7fe627a506`: exact-head CI 41342718570 passed literature, dictionary, unit tests and Android APK but **FAILED** at Chapter XXIX Arabic Chromium journey. The obsolete fixture insisted the chapter header contain the OLD `data:image/svg+xml` background despite the accepted new product rule forbidding geometric/abstract filler in period classics.
+- Replaced precisely 23 stale assertions in 17 late-chapter and six themed source-language browser fixtures with a positive accessibility/visual acceptance check: the unsourced Verne chapter hero must be tagged `lt-no-period-hero` and computed `display:none`. All narrative, bilingual paragraph, navigation, search and pagination assertions remain unchanged. The five genuine original archive chapters retain separate direct-art verification.
+- Exact-new-head Android/Chromium CI **PENDING**; physical Xiaomi Pad 5, translator editorial review, and original release keystore remain out-of-scope/OPEN.
+
 ## Observed evidence before this commit
 
 - Inspected working HEAD **8db19e77742ff9f451325b5298e9a2b31d7fbdca**; newest functional commits: 93060aaa (novel-only cover-first shelf + touch hold) and 24052f5a (novel-only chapter search and genre drawer); 8db19e77 documented original visual contract.
