@@ -403,7 +403,9 @@ tests["historic-verne-plates"] = r"""(async function(){
    {index:4,src:'art/verne-news-readers-1873.webp',anchor:1},
    {index:19,src:'art/verne-tankadere-cabin-1873.webp',anchor:66},
    {index:14,src:'art/verne-calcutta-court-1873.webp',anchor:19},
-   {index:16,src:'art/verne-singapore-carriage-1873.webp',anchor:7}
+   {index:16,src:'art/verne-singapore-carriage-1873.webp',anchor:7},
+   {index:5,src:'art/verne-fix-watch-1873.webp',anchor:25},
+   {index:28,src:'art/verne-passepartout-train-1873.webp',anchor:64}
   ];
   for(const item of items){
    state.chapter=item.index;

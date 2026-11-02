@@ -1035,6 +1035,11 @@ function ltRenderTranslationChapter(){
        'London readers following newspaper reports about Fogg’s wager.'),
       credit:uiText('رسم أصلي من طبعة أوسغود، ١٨٧٣ · أرشيف نيويورك',
        '1873 Osgood illustrated edition · NYPL archive')},
+    5:{index:25,src:'art/verne-fix-watch-1873.webp',ratio:620/902,
+      alt:uiText('المحقق فيكس يتابع المسافرين بترقب شديد.',
+       'Detective Fix watching travellers with intense suspicion.'),
+      credit:uiText('نقش من طبعة أوسغود، ١٨٧٣ · أرشيف نيويورك',
+       '1873 Osgood original detective engraving · NYPL archive')},
     10:{index:43,src:'art/verne-kiouni-1873.webp',ratio:630/921,
       alt:uiText('فوغ وباسبارتو في مشهد الفيل كِيوني في الهند.',
        'Phileas Fogg and Passepartout with Kiouni the elephant in India.'),
@@ -1059,7 +1064,12 @@ function ltRenderTranslationChapter(){
       alt:uiText('السفينة تانكادير تصارع العاصفة في عرض البحر.',
        'The Tankadere sailing through a heavy ocean storm.'),
       credit:uiText('نوفيل وبنيت، ١٨٧٢ · نقش بحري تاريخي',
-       'Neuville / Benett, 1872 · Historic sea engraving')}
+       'Neuville / Benett, 1872 · Historic sea engraving')},
+    28:{index:64,src:'art/verne-passepartout-train-1873.webp',ratio:620/904,
+      alt:uiText('باسبارتو يتدلّى من القاطرة أثناء محاولته فصل عربات القطار وإنقاذ الركاب.',
+       'Passepartout hanging from the train as he works to uncouple its carriages.'),
+      credit:uiText('طبعة أوسغود المصوّرة الأصلية، ١٨٧٣ · أرشيف نيويورك',
+       '1873 J. R. Osgood illustrated edition · NYPL archive')}
    }[ltTranslationIndex]||null):null;
  const translated=chapter.paragraphs.map((paragraph,index)=>{
   const prose=sourceArabic
@@ -1180,6 +1190,12 @@ renderReader=function(){
       credit:uiText('طبعة أوسغود، ١٨٧٣ · أرشيف مكتبة نيويورك العامة',
         '1873 Osgood book engraving · NYPL archive'),
       aspectRatio:620/898,position:'wide'}],
+    5:[{afterParagraph:25,src:'art/verne-fix-watch-1873.webp',
+      alt:uiText('المحقق فيكس يراقب المسافرين بحثًا عن الرجل المشتبه به.',
+       'Detective Fix closely watches travellers in search of his suspect.'),
+      credit:uiText('نقش من طبعة أوسغود الأصلية، ١٨٧٣ · أرشيف مكتبة نيويورك العامة',
+       '1873 J. R. Osgood illustrated edition · NYPL archive'),
+      aspectRatio:620/902,position:'wide'}],
     10:[{afterParagraph:43,src:'art/verne-kiouni-1873.webp',
       alt:uiText('فيلياس فوغ وباسبارتو أمام الفيل كِيوني ومالكه في الهند.',
         'Phileas Fogg and Passepartout meeting Kiouni the elephant in India.'),
@@ -1207,7 +1223,13 @@ renderReader=function(){
       alt:uiText('السفينة تانكادير تتقاذفها الأمواج العالية وسط العاصفة.',
         'The Tankadere tossed on towering waves during the storm.'),
       credit:uiText('نوفيل وبنيت، ١٨٧٢ · نقش تاريخي من الرواية','Neuville / Benett, 1872 · Historic engraved scene'),
-      aspectRatio:640/931,position:'wide'}]
+      aspectRatio:640/931,position:'wide'}],
+    28:[{afterParagraph:64,src:'art/verne-passepartout-train-1873.webp',
+      alt:uiText('باسبارتو يتعلّق بيد واحدة بين عربة الأمتعة ومؤخرة القاطرة ليحرر وصلات القطار.',
+       'Passepartout hangs by one hand between the baggage car and tender, loosening the train connection.'),
+      credit:uiText('نقش أصلي من طبعة أوسغود، ١٨٧٣ · أرشيف مكتبة نيويورك العامة',
+       '1873 J. R. Osgood original train engraving · NYPL archive'),
+      aspectRatio:620/904,position:'wide'}]
    }[state.chapter]||[]):[];
  // UX04: a historical novel's top-of-chapter banner must also use a
  // REAL source-era scan. Old decorative SVG cards are never suitable here.

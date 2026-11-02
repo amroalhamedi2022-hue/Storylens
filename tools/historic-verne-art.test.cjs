@@ -9,9 +9,11 @@ const exact=[
  {chapter:4,index:1,file:'verne-news-readers-1873.webp',source:'06e996151ae69a80a4e8d61ec5427c220199dc7b'},
  {chapter:19,index:66,file:'verne-tankadere-cabin-1873.webp',source:'29162c6b1037af214d1cba85f7939365d60d3259'},
  {chapter:14,index:19,file:'verne-calcutta-court-1873.webp',source:'c4fffab7167cda36e68f5e505578f90829b204d0'},
- {chapter:16,index:7,file:'verne-singapore-carriage-1873.webp',source:'3a7368c6cdd1a021493effb5a00f603abff6fe22'}
+ {chapter:16,index:7,file:'verne-singapore-carriage-1873.webp',source:'3a7368c6cdd1a021493effb5a00f603abff6fe22'},
+ {chapter:5,index:25,file:'verne-fix-watch-1873.webp',source:'71d831d5522d1f69ee8622624e314c14e93e9ad7'},
+ {chapter:28,index:64,file:'verne-passepartout-train-1873.webp',source:'5fcdad5b0975f4b29254ae4e355a74655388c669'}
 ];
-assert.equal(manifest.length,exact.length,'all seven historical original scans');
+assert.equal(manifest.length,exact.length,'all nine verified original book engravings');
 for(const expected of exact){
  const row=manifest.find(x=>x.file===expected.file);
  assert.ok(row,'missing historic manifest '+expected.file);
@@ -37,7 +39,7 @@ for(const row of exact){
 assert.match(js,/const approvedArt=periodArt\.length>0\|\|curatedArt\.some/);
 assert.match(js,/const inlineArt=chapterScene\?\[chapterScene,\.\.\.periodArt,\.\.\.curatedArt\]:\[\.\.\.periodArt,\.\.\.curatedArt\]/);
 assert.match(css,/background-image:url\("art\/verne-kiouni-1873\.webp"\)!important/);
-assert.equal((scope.match(/credit:uiText\(/g)||[]).length,7,
+assert.equal((scope.match(/credit:uiText\(/g)||[]).length,9,
  'all original archive illustration credits are localized in Arabic and English');
 assert.ok(!scope.includes('http:')&&!scope.includes('https:'),'art must never fetch online during reading');
 assert.match(js,/hero\.style\.backgroundImage='url\("['"]?\+verified\.src/,
@@ -59,4 +61,12 @@ const yaml=fs.readFileSync('.github/workflows/android.yml','utf8');
 assert.ok(!yaml.includes('historic_art_intake:'),'one-time original downloader removed after asset commit');
 assert.ok(!yaml.includes('verne_additional_art_intake:'),'second batch archive downloader removed after source verification');
 assert.ok(!yaml.includes('verne_third_original_art_intake:'),'third single-shot downloader must be removed once verified');
-console.log('PASS: seven original source-era WebP assets verified by SHA-256 and mounted at exact chapter paragraphs');
+console.log('PASS: nine original source-era WebP assets verified by SHA-256 and mounted at exact chapter paragraphs');
+
+// Same verified local scans must accompany the *complete* opposite-language
+// chapter (never decorative cover-only art), without changing original prose.
+const companion=js.slice(js.indexOf("const plate=story.id==="),js.indexOf("}[ltTranslationIndex]||null"));
+for(const row of exact){
+ assert.ok(companion.includes(row.chapter+':{index:'+row.index+',src:\'art/'+row.file+'\''),
+   'source and translated chapter must point to same archived image: '+row.file);
+}
