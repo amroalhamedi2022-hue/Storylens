@@ -909,6 +909,9 @@ function ltOpenArtInspection(picture){
  let zoom=1,panX=0,panY=0;
  const contacts=new Map();
  let startPinch=null;
+ // Native Android touch double-tap complements desktop dblclick: two short,
+ // stationary releases zoom at the finger, not at the image centre.
+ let lastTouchTap=null,hadMultipleTouch=false,suppressDblclickUntil=0;
  function applyZoom(){
   const w=Number(viewport.clientWidth)||Number(image.clientWidth)||400;
   const h=Number(viewport.clientHeight)||Number(image.clientHeight)||600;
@@ -953,8 +956,10 @@ function ltOpenArtInspection(picture){
   // Third contacts are ignored; they cannot multiply zoom beyond the 4x
   // archival bounds or leave a ghost-held gesture behind.
   if(contacts.size>=2)return;
-  contacts.set(event.pointerId,{x:event.clientX,y:event.clientY});
+  contacts.set(event.pointerId,{x:event.clientX,y:event.clientY,
+   startX:event.clientX,startY:event.clientY});
   if(contacts.size===2){
+   hadMultipleTouch=true;lastTouchTap=null;
    const pair=fingerPair();
    startPinch={...pair,zoom,panX,panY};
   }
@@ -963,7 +968,7 @@ function ltOpenArtInspection(picture){
  viewport.addEventListener('pointermove',event=>{
   const previous=contacts.get(event.pointerId);
   if(!previous)return;
-  contacts.set(event.pointerId,{x:event.clientX,y:event.clientY});
+  contacts.set(event.pointerId,{...previous,x:event.clientX,y:event.clientY});
   if(contacts.size===2&&startPinch){
    const pair=fingerPair();
    const frame=ltArtPinchFrame(startPinch,pair,pair.width,pair.height,
@@ -976,13 +981,41 @@ function ltOpenArtInspection(picture){
   if(event.cancelable)event.preventDefault();
  });
  const endContact=event=>{
+  const held=contacts.get(event.pointerId);
+  const tap=event.type==='pointerup'&&event.pointerType==='touch'&&
+   contacts.size===1&&!hadMultipleTouch&&held&&
+   Math.hypot(event.clientX-held.startX,event.clientY-held.startY)<14;
+  if(tap){
+   const now=Date.now();
+   if(lastTouchTap&&now-lastTouchTap.at<=330&&
+      Math.hypot(event.clientX-lastTouchTap.x,
+       event.clientY-lastTouchTap.y)<=38){
+    if(zoom===1){
+     const rect=viewport.getBoundingClientRect?.();
+     const w=Number(rect?.width)||Number(viewport.clientWidth)||400;
+     const h=Number(rect?.height)||Number(viewport.clientHeight)||600;
+     const x=event.clientX-(Number(rect?.left)||0)-w/2;
+     const y=event.clientY-(Number(rect?.top)||0)-h/2;
+     const frame=ltArtPinchFrame({zoom:1,distance:1,x,y,panX,panY},
+      {distance:2,x,y},w,h,Number(image.clientWidth)||w,
+      Number(image.clientHeight)||h);
+     zoom=frame.zoom;panX=frame.panX;panY=frame.panY;applyZoom();
+    }else setZoom(1);
+    lastTouchTap=null;
+    // Android WebView can synthesize dblclick after the touch pair.
+    suppressDblclickUntil=now+400;
+   }else lastTouchTap={at:now,x:event.clientX,y:event.clientY};
+  }else lastTouchTap=null;
   contacts.delete(event.pointerId);
   if(contacts.size<2)startPinch=null;
+  if(!contacts.size)hadMultipleTouch=false;
  };
  for(const name of ['pointerup','pointercancel','lostpointercapture'])
   viewport.addEventListener(name,endContact);
  viewport.addEventListener('dblclick',event=>{
-  event.preventDefault();setZoom(zoom===1?2:1);
+  event.preventDefault();
+  if(Date.now()<suppressDblclickUntil)return;
+  setZoom(zoom===1?2:1);
  });
  // Native orientation/viewport changes must not strand an already zoomed
  // folio outside the readable view. One passive listener per open viewer.

@@ -166,6 +166,34 @@ assert.match(original.style.transform,/translate3d\(0\.00px/,
 viewport.handlers.pointercancel(evt(4,290,300));
 viewport.handlers.pointerup(evt(3,160,300));
 inspection.handlers.keydown({key:'0',preventDefault(){}});
+ // Two stationary touch releases magnify real in-page historical artwork.
+ // Android's synthetic dblclick must not undo the gesture.
+ viewport.handlers.pointerdown(evt(11,230,240));
+ viewport.handlers.pointerup(evt(11,230,240));
+ viewport.handlers.pointerdown(evt(12,230,240));
+ viewport.handlers.pointerup(evt(12,230,240));
+ assert.match(original.style.transform,/scale\\(2\\.000\\)/,
+  'two phone touch taps zoom real original to 2x');
+ viewport.handlers.dblclick({preventDefault(){}});
+ assert.match(original.style.transform,/scale\\(2\\.000\\)/,
+  'synthetic browser dblclick cannot invert double-tap');
+ viewport.handlers.pointerdown(evt(13,230,240));
+ viewport.handlers.pointerup(evt(13,230,240));
+ viewport.handlers.pointerdown(evt(14,230,240));
+ viewport.handlers.pointerup(evt(14,230,240));
+ assert.match(original.style.transform,/scale\\(1\\.000\\)/,
+  'second touch double-tap restores uncropped original');
+ // Movement and pointer cancellation may never count as two tap releases.
+ viewport.handlers.pointerdown(evt(15,160,220));
+ viewport.handlers.pointermove(evt(15,215,265));
+ viewport.handlers.pointerup(evt(15,215,265));
+ viewport.handlers.pointerdown(evt(16,160,220));
+ viewport.handlers.pointercancel(evt(16,160,220));
+ viewport.handlers.pointerdown(evt(17,160,220));
+ viewport.handlers.pointerup(evt(17,160,220));
+ assert.match(original.style.transform,/scale\\(1\\.000\\)/,
+  'drag and cancellation cannot synthesize a double-tap zoom');
+
 
 assert.equal(inspection.children[0].children[2].children[1].textContent,
  'CC0 illustration','caption is unchanged after zoom');
