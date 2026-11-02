@@ -81,3 +81,6 @@ A substantial **Arabic-language كليلة ودمنة** reading transcription is
 
 ## 2026-11-02 — Two more originals now bundled (actual images, not prospects)
 - Historic 1873 Boston/Osgood scans `verne-fix-watch-1873.webp` and `verne-passepartout-train-1873.webp`, individually hashed/pinned as documented in `docs/literature/HISTORIC_VERNES_ASSETS.json`; original manuscript placement Towle VI index 25 and XXIX index 64. Local WebP packaged and both-language reader mapping source-tested. Nine verified Verne period images in total. Wikimedia's no-known-restrictions status is not a guarantee of universal jurisdictional clearance. Full editorial translations, rights sign-off and physical device testing remain open.
+
+## 2026-11-02 — Colour is allowed when it is genuine period illustration
+- Two Met Open Access colour folios selected for complete Arabic *Kalila wa Dimna*: objects 453083 and 453084, explicit scene-aligned passages in the staged source, not inferred from animal similarity. Intake is staged until original bytes/sha256, edition disclaimer, full contextual English translation, editorial approval and physical RTL reader/rights review. Treat them as authentic colourful historical manuscript pages, NOT as replacement for a black-and-white original scan or decoration in a different book.

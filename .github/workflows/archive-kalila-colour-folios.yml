@@ -1,0 +1,43 @@
+name: One-time historic Kalila COLOR folio archive (STAGING ONLY)
+on:
+  push:
+    branches: [main]
+    paths:
+      - tools/intake_kalila_met_color.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install real-archive image encoder
+        run: python -m pip install "Pillow==11.3.0"
+      - name: Verify two actual historical folios and complete original Arabic story passages
+        run: python tools/intake_kalila_met_color.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kalila-two-public-domain-colour-folios-staging-only
+          path: |
+            docs/literature/staging/kalila-arabic-wikisource/COLOR_FOLIOS.json
+            docs/literature/staging/kalila-arabic-wikisource/art/*.webp
+          if-no-files-found: error
+      - name: Fast-forward stage records only; never touch APK source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Lingua Tales Source Archive'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/literature/staging/kalila-arabic-wikisource/COLOR_FOLIOS.json \
+                  docs/literature/staging/kalila-arabic-wikisource/art/*.webp
+          git commit -m 'assets(kalila): stage two verified original COLOUR 16th-century folios'
+          git push origin HEAD:main
