@@ -49,3 +49,11 @@ To compare APKs using Android Build Tools:
 
 CI metadata checks are not proof of installation onto an uninspected device.
 Pad 5 installation, backup restore, and physical performance remain NOT TESTED.
+
+## 2026-11-02 — explicit v1.0 stable release workflow
+
+- Source on `main` is NOT a publicly distributed final APK. When the original, retained private signing key is available, configure four `LT_SIGNING_*` secrets and a certificate fingerprint `LT_SIGNING_CERT_SHA256` in repository Settings → Secrets and variables → Actions. Never paste the keystore or passwords into a public issue/chat/commit.
+- Run GitHub Actions → **Android APK • validate • unit tests** → Run workflow → branch `main` → **release_channel = stable-release**. The workflow refuses a stable-release request if any required secret (including fingerprint) is absent. It builds Release `com.storylens.reader`, validates the signer and increasing `versionCode`, checks core asset parity with tested Debug, runs Chromium QA, and uploads **Lingua-Tales-Stable-Signed-Release**. No Preview download is published for this deliberate stable-release run.
+- `versionName=1.0.0` identifies the first intended stable update baseline; it is **NOT** a claim of complete books, human editorial approval, original physical-device tests or global redistribution rights. The signed APK is an installable private candidate only after the user verifies its certificate against the already installed app.
+- To preserve data with future updates, **retain that exact private key and its certificate for all later builds**; increment `versionCode` (CI derives it from the run number). Signing mismatch cannot be bypassed by renaming the APK or altering `versionName`. First-install migration from an incompatible existing preview/production signer requires an independently verified backup, then one controlled uninstall/import; never automate that step.
+- Without the retained signing credentials, the only CI output remains a side-by-side Preview QA artifact; there is NO verified signed production APK. Do not share it as the user's requested final release.

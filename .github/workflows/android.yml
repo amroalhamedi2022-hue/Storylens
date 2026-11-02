@@ -6,6 +6,15 @@ on:
   pull_request:
     paths-ignore: ['docs/**']
   workflow_dispatch:
+    inputs:
+      release_channel:
+        description: 'Verification only or private signed stable APK (requires matching signing secrets)'
+        type: choice
+        required: true
+        default: verify
+        options:
+          - verify
+          - stable-release
 
 permissions:
   contents: read
@@ -61,6 +70,7 @@ jobs:
           python3 tools/test_lingua_launcher.py
           python3 tools/test_lingua_audio_focus.py
           python3 tools/test_apk_update.py
+          node tools/release-gate.test.cjs
           node tools/botanical-theme.test.cjs
           node tools/rain-glass.test.cjs
           node tools/solar-atelier.test.cjs
@@ -158,11 +168,23 @@ jobs:
           LT_SIGNING_STORE_PASSWORD: ${{ secrets.LT_SIGNING_STORE_PASSWORD }}
           LT_SIGNING_KEY_ALIAS: ${{ secrets.LT_SIGNING_KEY_ALIAS }}
           LT_SIGNING_KEY_PASSWORD: ${{ secrets.LT_SIGNING_KEY_PASSWORD }}
+          LT_SIGNING_CERT_SHA256: ${{ secrets.LT_SIGNING_CERT_SHA256 }}
+          LT_RELEASE_REQUESTED: ${{ github.event_name == 'workflow_dispatch' && inputs.release_channel == 'stable-release' }}
         run: |
+          # Signed stable installs are an explicit, fail-closed release event.
+          # A normal push still checks the app without distributing a production APK.
+          if [ "$LT_RELEASE_REQUESTED" = "true" ] && [ -z "$LT_SIGNING_CERT_SHA256" ]; then
+            echo "::error::Stable release requires LT_SIGNING_CERT_SHA256 pinned to the retained certificate."
+            exit 1
+          fi
           configured=0
           for key in LT_SIGNING_KEYSTORE_BASE64 LT_SIGNING_STORE_PASSWORD LT_SIGNING_KEY_ALIAS LT_SIGNING_KEY_PASSWORD; do
             if [ -n "${!key}" ]; then configured=$((configured + 1)); fi
           done
+          if [ "$LT_RELEASE_REQUESTED" = "true" ] && [ "$configured" -ne 4 ]; then
+            echo "::error::No stable release is possible without all four retained private signing secrets."
+            exit 1
+          fi
           if [ "$configured" -gt 0 ] && [ "$configured" -lt 4 ]; then
             echo "::error::Only some signing secrets are configured. All four must be present; refusing an unsigned or misleading release."
             exit 1
@@ -277,6 +299,22 @@ jobs:
             echo "FAIL: adaptive icon not packaged"; exit 1;
           }
           echo "PASS: adaptive launcher resource and all critical offline modules packaged into $APK"
+      - name: Verify signed release contains the same complete offline reader
+        if: success() && github.event_name == 'workflow_dispatch' && inputs.release_channel == 'stable-release'
+        shell: bash
+        run: |
+          set -euo pipefail
+          PREVIEW="$(find app/build/outputs/apk/debug -type f -name '*.apk' | head -1)"
+          RELEASE="$(find app/build/outputs/apk/release -type f -name '*.apk' | head -1)"
+          test -s "$PREVIEW" && test -s "$RELEASE"
+          unzip -Z1 "$RELEASE" > "$RUNNER_TEMP/lt-release-entries.txt"
+          for file in index.html reader-experience.js reader-experience.css lingua-shell.js lingua-i18n.js lingua-lookup.js data-backup.js lt-device-acceptance.css lt-tap-feedback.js LICENSE_AUDIO.txt LICENSE_FREEDICT.txt; do
+            grep -Fxq "assets/$file" "$RUNNER_TEMP/lt-release-entries.txt" || { echo "::error::Stable release missing $file"; exit 1; }
+            # A final APK must carry exactly the content QA just tested in Debug,
+            # not an older source snapshot or an incomplete offline reader.
+            test "$(unzip -p "$PREVIEW" "assets/$file" | sha256sum | cut -d' ' -f1)" = "$(unzip -p "$RELEASE" "assets/$file" | sha256sum | cut -d' ' -f1)" || { echo "::error::Release content differs from QA for $file"; exit 1; }
+          done
+          echo "PASS: stable release contains identical tested offline reader files"
       - name: Browser render smoke and screenshot artifacts
         shell: bash
         run: |
@@ -584,7 +622,7 @@ jobs:
           path: qa-screenshots/*.png
           if-no-files-found: ignore
       - name: Upload debug APK
-        if: success()
+        if: success() && !(github.event_name == 'workflow_dispatch' && inputs.release_channel == 'stable-release')
         uses: actions/upload-artifact@v4
         with:
           name: Lingua-Tales-Preview-NOT-PRODUCTION-UPDATE
@@ -594,7 +632,7 @@ jobs:
             app/build/outputs/apk/debug/APK_INSTALL_IDENTITY.txt
           if-no-files-found: error
       - name: Upload stable-signed release APK
-        if: success() && env.LT_SIGNING_KEYSTORE != ''
+        if: success() && env.LT_SIGNING_KEYSTORE != '' && github.event_name == 'workflow_dispatch' && inputs.release_channel == 'stable-release'
         uses: actions/upload-artifact@v4
         with:
           name: Lingua-Tales-Stable-Signed-Release

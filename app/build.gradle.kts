@@ -9,7 +9,7 @@ val ltSigningKeyPassword = System.getenv("LT_SIGNING_KEY_PASSWORD")
 // GitHub Actions generates a new run number for each build. Keep this
 // monotonically increasing for sideloaded updates (versionCode regression
 // would cause INSTALL_FAILED_VERSION_DOWNGRADE even with a matching signer).
-// Local developers without GitHub metadata keep the original v0.6 identity.
+// Local developers without GitHub metadata retain the compatible v1 baseline code.
 val ltCiRun = System.getenv("GITHUB_RUN_NUMBER")?.toIntOrNull()?.takeIf { it in 1..1_000_000 }
 val ltVersionCode = if (ltCiRun != null) 100_000 + ltCiRun else 6
 
@@ -26,7 +26,7 @@ android {
         minSdk = 26
         targetSdk = 35
         versionCode = ltVersionCode
-        versionName = "0.6.0"
+        versionName = "1.0.0"
         manifestPlaceholders["ltAppLabel"] = "Lingua Tales"
     }
     signingConfigs {

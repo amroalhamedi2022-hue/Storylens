@@ -64,3 +64,7 @@ A one-time reinstall may be required in this case. This is **not** the same as a
 - GitHub Actions: Gradle build plus `apksigner verify --print-certs` and `aapt dump badging` for actual APK files.
 - Device, when available: test stable APK over **the installed version** without uninstall, then confirm saved words, SRS cards, chapter position, bookmarks, locale, font, and sound settings remain intact.
 - If no matching key is available: verify export → reinstall → import, **mark upgrade-in-place NOT TESTED / BLOCKED**, and retain backup.
+
+## Stable baseline and future updates (2026-11-02)
+
+Mainline code now uses visible version `1.0.0`; the production package remains `com.storylens.reader` and the Preview suffix only belongs to Debug CI. Release is an **explicit manual workflow option** `stable-release`, never inferred from successful source CI. All five secret inputs (keystore base64, store/key passwords, key alias, pinned SHA-256 certificate) are mandatory. The workflow enforces signature/version/content equivalence and produces a privately downloadable `Lingua-Tales-Stable-Signed-Release` artifact only after all tests pass. Without the original signer, an update **over the installed app** cannot be promised. Do not uninstall until the user's offline backup has been verified.

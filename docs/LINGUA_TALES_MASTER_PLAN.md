@@ -45,6 +45,7 @@ State: **SOURCE** exists in code only; **PARTIAL** incomplete; **OPEN** not done
 | AU01 | P1 | Optional licensed audio and SFX, silence by default, >1 second playback, audio-focus interruption | SOURCE, DEVICE OPEN |
 | PERF01 | P1 | Real smooth navigation/press/pagination and 120Hz-capable behavior, memory/startup/battery | PARTIAL, measured device proof OPEN |
 | APK01 | P0 | Stable signed non-Preview same-package update, preserve all user data, backed-up restore | BLOCKED by original installed signing key/certificate identity |
+| APK02 | P0 | User-approved v1.0 stable baseline; all later changes as same-app updates, private signed distribution after CI | SOURCE release-channel workflow; BLOCKED by private signer and installed certificate/device verification |
 | QA01 | P0 | Exact-HEAD Node/content/Android/APK/Chromium Actions pass | **CI FAIL** for 24052f5 on browser catalog stale assertion; repair/test |
 | QA02 | P0 | Real Xiaomi Pad 5 and phone audio/gesture/offline/landscape/RTL/backup FPS regression | DEVICE OPEN |
 | HANDOFF01 | P0 | One portable GitHub master plan + independent living progress, update **every meaningful batch** | This checkpoint, CI pending |
@@ -74,3 +75,7 @@ State: **SOURCE** exists in code only; **PARTIAL** incomplete; **OPEN** not done
 ## 2026-11-01 — C03/UX01 historical volumes are complete BOOKS, not novels
 
 Use `workType:'heritage-volume'` for complete Arabic historical volumes, including Kalila wa Dimna and One Thousand and One Nights. They qualify alongside adult long novels only with verified >25,000-word scale, complete primary edition, **complete contextual EN companion**, independent editorial acceptance and applicable redistribution-rights review. The product shelf labels heritage correctly (الأبواب/sections), not as police novels. Until those checks genuinely pass, keep staged sources out of the installed app. No older bookmarks or source records are deleted.
+
+## 2026-11-02 — User-selected stable baseline and same-app updates
+
+User explicitly requested a final non-Preview APK on `main` and that later improvements ship as updates to the same app. Retain Android `applicationId=com.storylens.reader`, no destructive local-storage migration or extra branches, use `versionName=1.0.0` as the intended baseline. Stable distribution requires explicit `workflow_dispatch` with `release_channel=stable-release`, five private signing secrets including pinned certificate fingerprint, complete CI/browser/asset parity and actual signature compatibility with the installed app. Never confuse source merged on main or a CI Preview with a safe production update. The repository currently has no configured stable-signing secrets (confirmed via successful run #41427432662), so the signed APK cannot yet be generated; record this limitation, not a fabricated download. Pending editorial/territory/device gates continue independently.
