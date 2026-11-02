@@ -372,3 +372,6 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 
 ### 2026-11-02 — UX04 exact Chromium CSS normalization
 - Corrected 4× zoom-browser assertions to read the actual numeric scale instead of matching CSS trailing zeroes; Chromium normalizes e.g. `scale(2.250)` to `scale(2.25)`. The same strict expected 2.25×, 1.5× and 1× thresholds remain. The original image source and its captions are verified unchanged. Exact HEAD CI pending; neither pixel fidelity nor device gestures are claimed without physical verification.
+
+### 2026-11-02 — Chromium JavaScript regex escaping
+- Found and fixed a double-escaped regex in the Python-authored raw fixture: JS needs a single backslash to match literal scale parentheses. New regex reads real CSS scale values and asserts 1×/1.5×/2.25× numerically. Previous CI is not considered passing; exact-new-head verification required.

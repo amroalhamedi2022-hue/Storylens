@@ -446,7 +446,7 @@ tests["historic-verne-plates"] = r"""(async function(){
    // Chromium canonicalizes numeric CSS: scale(2.250) serializes as
    // scale(2.25), so compare numeric CSS values, never raw string precision.
    const actualScale=()=>{
-    const match=zoomed?.style.transform.match(/scale\\(([0-9.]+)\\)/);
+    const match=zoomed?.style.transform.match(/scale\(([0-9.]+)\)/);
     return match?Number(match[1]):NaN;
    };
    zoomIn?.click();zoomIn?.click();
