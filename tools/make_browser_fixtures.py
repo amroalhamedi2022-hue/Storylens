@@ -436,12 +436,13 @@ tests["historic-verne-plates"] = r"""(async function(){
     viewer?.querySelector('figcaption')?.textContent.trim()===
       figure?.querySelector('figcaption')?.textContent.trim());
    const zoomed=viewer?.querySelector('figure img');
-   const zoomIn=viewer?.querySelector('.lt-art-zoom-controls [aria-label="Zoom in"]')||
-      viewer?.querySelector('.lt-art-zoom-controls [aria-label="تكبير الصورة"]');
-   const zoomOut=viewer?.querySelector('.lt-art-zoom-controls [aria-label="Zoom out"]')||
-      viewer?.querySelector('.lt-art-zoom-controls [aria-label="تصغير الصورة"]');
-   const zoomReset=viewer?.querySelector('.lt-art-zoom-controls [aria-label="Reset zoom"]')||
-      viewer?.querySelector('.lt-art-zoom-controls [aria-label="الحجم الأصلي"]');
+   const zoomButtons=[...(viewer?.querySelectorAll('.lt-art-zoom-controls button')||[])];
+   const zoomOut=zoomButtons[0],zoomIn=zoomButtons[1],zoomReset=zoomButtons[2];
+   check('chapter '+item.index+' zoom controls mounted and localized',
+    zoomButtons.length===3&&zoomButtons.every(b=>!!b.getAttribute('aria-label')));
+   // Browser locale is independent from the companion's source language.
+   // Stable DOM order is defined by production zoomButton calls; do not
+   // infer visible controls from exact translated labels in this fixture.
    zoomIn?.click();zoomIn?.click();
    check('chapter '+item.index+' zoom in',zoomed?.style.transform.includes('scale(2.250)'));
    zoomOut?.click();
