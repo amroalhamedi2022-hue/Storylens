@@ -100,6 +100,39 @@ assert.match(original.style.transform,/scale\(1\.000\)/,'zoom out');
 controls.children[1].handlers.click();
 controls.children[2].handlers.click();
 assert.match(original.style.transform,/scale\(1\.000\)/,'reset original scale');
+// Verify the real two-pointer handlers: historical zoom now tracks the actual
+// finger midpoint, with bounded scale; it never jumps back to viewport centre.
+const sourceStart=js.indexOf('function ltArtPinchFrame(');
+const sourceStop=js.indexOf('function ltOpenArtInspection(',sourceStart);
+assert.ok(sourceStart>=0&&sourceStop>sourceStart,'pure anchored pinch geometry');
+const pinchMath={};
+vm.runInNewContext(js.slice(sourceStart,sourceStop)+
+ '\nglobalThis.compute=ltArtPinchFrame;',pinchMath);
+const aroundFinger=pinchMath.compute(
+ {zoom:1,distance:100,x:50,y:0,panX:0,panY:0},
+ {distance:200,x:50,y:0},400,600);
+assert.equal(aroundFinger.zoom,2);
+assert.equal(aroundFinger.panX,-50,'pixel under off-centre fingertip stays anchored');
+assert.equal(pinchMath.compute(
+ {zoom:2,distance:100,x:0,y:0,panX:0,panY:0},
+ {distance:900,x:0,y:0},400,600).zoom,4,'4x upper limit');
+const viewport=inspection.children[0].children[2].children[0];
+viewport.clientWidth=400;viewport.clientHeight=600;
+viewport.getBoundingClientRect=()=>({left:0,top:0,width:400,height:600});
+const evt=(id,x,y)=>({pointerId:id,pointerType:'touch',button:0,
+ clientX:x,clientY:y,cancelable:true,preventDefault(){}});
+viewport.handlers.pointerdown(evt(1,160,300));
+viewport.handlers.pointerdown(evt(2,260,300));
+viewport.handlers.pointermove(evt(2,290,300));
+assert.match(original.style.transform,/scale\(1\.300\)/,
+ 'real two-finger spread enlarges the original offline photo');
+assert.match(original.style.transform,/translate3d\(12\.00px/,
+ 'anchored pinch shifts image around finger midpoint, rather than resetting centre');
+viewport.handlers.pointerup(evt(2,290,300));
+viewport.handlers.pointerup(evt(1,160,300));
+inspection.handlers.keydown({key:'0',preventDefault(){}});
+assert.match(original.style.transform,/scale\(1\.000\)/,
+ 'accessible keyboard 0 resets the original image after touch');
 assert.equal(inspection.children[0].children[2].children[1].textContent,
  'CC0 illustration','caption is unchanged after zoom');
 inspection.handlers.keydown({key:'Escape',preventDefault(){},stopPropagation(){}});

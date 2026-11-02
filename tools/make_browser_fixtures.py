@@ -551,6 +551,31 @@ tests["historic-verne-plates"] = r"""(async function(){
    check('chapter '+item.index+' zoom out',Math.abs(actualScale()-1.5)<.005);
    zoomReset?.click();
    check('chapter '+item.index+' zoom reset',Math.abs(actualScale()-1)<.005);
+   if(item.index===2){
+    // Real browser pointer events, not mocked geometry: asymmetric fingers
+    // must grow the original and translate it under the moving midpoint.
+    const vp=viewer?.querySelector('.lt-art-inspection-viewport');
+    const r=vp?.getBoundingClientRect();
+    if(vp&&r){
+     const cx=r.left+r.width/2,cy=r.top+r.height/2;
+     const spread=Math.min(44,r.width*.14);
+     const finger=(type,id,x)=>vp.dispatchEvent(new PointerEvent(type,{
+      bubbles:true,cancelable:true,pointerId:id,pointerType:'touch',
+      isPrimary:id===71,button:0,buttons:type==='pointerup'?0:1,
+      clientX:x,clientY:cy
+     }));
+     finger('pointerdown',71,cx-spread);
+     finger('pointerdown',72,cx+spread);
+     finger('pointermove',72,cx+spread*1.75);
+     check('anchored gesture really pinches the original scan',actualScale()>1.25);
+     check('two-finger midpoint pans original as it zooms',
+       /translate3d\\(-?[1-9]/.test(zoomed?.style.transform||''));
+     finger('pointerup',72,cx+spread*1.75);
+     finger('pointerup',71,cx-spread);
+     viewer?.dispatchEvent(new KeyboardEvent('keydown',{key:'0',bubbles:true,cancelable:true}));
+     check('keyboard reset works after touch pinch',Math.abs(actualScale()-1)<.005);
+    }
+   }
    check('chapter '+item.index+' inspection disables background scroll',
     document.body.style.overflow==='hidden');
    // Invoke the SAME no-argument bridge as Android's actual Back dispatcher,

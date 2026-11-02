@@ -845,6 +845,23 @@ window.LinguaTalesArtInspection=Object.freeze({
   return true;
  }
 });
+// A held two-finger pinch must magnify the actual pixel under the fingers,
+// not jump the entire archival painting toward the screen's center.
+function ltArtPinchFrame(start,next,width,height){
+ const initial=Math.max(1,Math.min(4,Number(start?.zoom)||1));
+ const distance=Math.max(1,Number(start?.distance)||1);
+ const measured=Math.max(1,Number(next?.distance)||1);
+ const zoom=Math.max(1,Math.min(4,initial*measured/distance));
+ const ratio=zoom/initial;
+ const projectedX=(Number(next?.x)||0)-((Number(start?.x)||0)-(Number(start?.panX)||0))*ratio;
+ // Always derive y from the original midpoint and image displacement.
+ const transformedY=(Number(next?.y)||0)-((Number(start?.y)||0)-(Number(start?.panY)||0))*ratio;
+ const w=Number.isFinite(width)&&width>0?width:400;
+ const h=Number.isFinite(height)&&height>0?height:600;
+ const maxX=w*(zoom-1)/2,maxY=h*(zoom-1)/2;
+ return {zoom,panX:Math.max(-maxX,Math.min(maxX,projectedX)),
+  panY:Math.max(-maxY,Math.min(maxY,transformedY))};
+}
 function ltOpenArtInspection(picture){
  const src=picture?.getAttribute?.('src')||picture?.src||'';
  const safe=/^art\/[a-z0-9_-]+(?:\/[a-z0-9_-]+)*\.(?:webp|png|jpe?g)$/i;
@@ -879,7 +896,7 @@ function ltOpenArtInspection(picture){
  // chapters, change art URLs or create more image elements.
  let zoom=1,panX=0,panY=0;
  const contacts=new Map();
- let startDistance=0,startZoom=1,startPanX=0,startPanY=0;
+ let startPinch=null;
  function applyZoom(){
   const w=Number(viewport.clientWidth)||Number(image.clientWidth)||400;
   const h=Number(viewport.clientHeight)||Number(image.clientHeight)||600;
@@ -905,16 +922,27 @@ function ltOpenArtInspection(picture){
  const zoomOut=zoomButton('−','Zoom out','تصغير الصورة',()=>setZoom(zoom/1.5));
  const zoomIn=zoomButton('+','Zoom in','تكبير الصورة',()=>setZoom(zoom*1.5));
  const zoomReset=zoomButton('1:1','Reset zoom','الحجم الأصلي',()=>setZoom(1));
- function distance(){
+ function fingerPair(){
   const points=Array.from(contacts.values());
-  return Math.hypot(points[0].x-points[1].x,points[0].y-points[1].y);
+  const rect=viewport.getBoundingClientRect?.();
+  const width=Number(rect?.width)||Number(viewport.clientWidth)||400;
+  const height=Number(rect?.height)||Number(viewport.clientHeight)||600;
+  const mx=(points[0].x+points[1].x)/2;
+  const my=(points[0].y+points[1].y)/2;
+  return {distance:Math.max(1,Math.hypot(points[0].x-points[1].x,
+    points[0].y-points[1].y)),
+   x:mx-(Number(rect?.left)||0)-width/2,
+   y:my-(Number(rect?.top)||0)-height/2,width,height};
  }
  viewport.addEventListener('pointerdown',event=>{
   if(event.pointerType==='mouse'&&event.button!==0)return;
+  // Third contacts are ignored; they cannot multiply zoom beyond the 4x
+  // archival bounds or leave a ghost-held gesture behind.
+  if(contacts.size>=2)return;
   contacts.set(event.pointerId,{x:event.clientX,y:event.clientY});
   if(contacts.size===2){
-   startDistance=Math.max(1,distance());startZoom=zoom;
-   startPanX=panX;startPanY=panY;
+   const pair=fingerPair();
+   startPinch={...pair,zoom,panX,panY};
   }
   try{viewport.setPointerCapture?.(event.pointerId);}catch(_){}
  });
@@ -922,9 +950,10 @@ function ltOpenArtInspection(picture){
   const previous=contacts.get(event.pointerId);
   if(!previous)return;
   contacts.set(event.pointerId,{x:event.clientX,y:event.clientY});
-  if(contacts.size===2&&startDistance>0){
-   zoom=Math.max(1,Math.min(4,startZoom*distance()/startDistance));
-   panX=startPanX;panY=startPanY;applyZoom();
+  if(contacts.size===2&&startPinch){
+   const pair=fingerPair();
+   const frame=ltArtPinchFrame(startPinch,pair,pair.width,pair.height);
+   zoom=frame.zoom;panX=frame.panX;panY=frame.panY;applyZoom();
   }else if(contacts.size===1&&zoom>1){
    panX+=event.clientX-previous.x;panY+=event.clientY-previous.y;
    applyZoom();
@@ -933,7 +962,7 @@ function ltOpenArtInspection(picture){
  });
  const endContact=event=>{
   contacts.delete(event.pointerId);
-  if(contacts.size<2)startDistance=0;
+  if(contacts.size<2)startPinch=null;
  };
  for(const name of ['pointerup','pointercancel','lostpointercapture'])
   viewport.addEventListener(name,endContact);
@@ -963,6 +992,12 @@ function ltOpenArtInspection(picture){
  backdrop.addEventListener('keydown',event=>{
   if(event.key==='Escape'){
    event.preventDefault();event.stopPropagation();close();
+  }else if(event.key==='+'||event.key==='='){
+   event.preventDefault();setZoom(zoom*1.5);
+  }else if(event.key==='-'||event.key==='_'){
+   event.preventDefault();setZoom(zoom/1.5);
+  }else if(event.key==='0'){
+   event.preventDefault();setZoom(1);
   }else if(event.key==='Tab'){
    const stops=[dismiss,zoomOut,zoomIn,zoomReset];
    const current=stops.indexOf(document.activeElement);
