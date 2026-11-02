@@ -47,3 +47,11 @@ assert.ok(js.includes("plate.visualTreatment==='original-colour'"),'colour trans
 assert.ok(css.includes('.lt-archive-colour-original'),'colour safe original layout');
 assert.ok(!js.includes('kalila-fox-drum-met-453083.webp'),'staged work is not a fake published volume');
 console.log('PASS: two original full-colour manuscript folios independently SHA256 pinned, exact Arabic scenes, no public APK leak');
+
+// Archive-review screenshots must never pretend that unfinished Kalila
+// translations are released. Browser preview is generated outside Android assets.
+const review=fs.readFileSync(path.join(root,'tools/make_kalila_colour_review.py'),'utf8');
+assert.match(review,/qa-screenshots/);
+assert.match(review,/معاينة قبل النشر/,'honest unpublished-preview disclaimer');
+assert.match(review,/lt-archive-colour-original/);
+assert.ok(!review.includes('app/src/main/assets/art/'),'stage remains outside APK');

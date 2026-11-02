@@ -287,6 +287,13 @@ jobs:
           grep -Fq 'storylens-hero' /tmp/storylens-dom.html || { echo 'Library hero failed to render'; exit 1; }
           echo "PASS: desktop-browser library render smoke"
           python3 tools/make_browser_fixtures.py
+          python3 tools/make_kalila_colour_review.py
+          for scene in fox lion; do
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=4200 --window-size=460,860 --dump-dom "file://$PWD/qa-screenshots/kalila-colour-$scene.html" > "/tmp/kalila-colour-$scene-dom.html" 2>/tmp/kalila-colour-browser.log
+            grep -Fq 'data-lt-colour-qa="PASS"' "/tmp/kalila-colour-$scene-dom.html" || { echo "Authentic colour folio browser acceptance failed: $scene"; exit 1; }
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4200 --window-size=460,860 --screenshot="$PWD/qa-screenshots/kalila-colour-$scene-phone.png" "file://$PWD/qa-screenshots/kalila-colour-$scene.html" >/tmp/kalila-colour-screenshot.log 2>&1
+          done
+          echo "PASS: 2 source-era coloured Arabic manuscript folios render uncropped and untinted on phone-sized Chromium, screenshot artifacts created"
           for viewport in 460,860 1280,840; do
             "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --window-size="$viewport" --virtual-time-budget=4600 --dump-dom "file://$PWD/app/src/main/assets/qa-shelf-centered.html" > "/tmp/lt-shelf-$viewport.html" 2>/tmp/lt-shelf.log
             grep -Fq 'data-lt-shelf-qa="PASS"' "/tmp/lt-shelf-$viewport.html" || { echo "Library shelf $viewport QA failed"; grep -o 'data-lt-shelf-errors="[^"]*"' "/tmp/lt-shelf-$viewport.html" | head -1; exit 1; }
