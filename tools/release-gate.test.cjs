@@ -6,6 +6,7 @@ const gradle = fs.readFileSync('app/build.gradle.kts','utf8');
 const workflow = fs.readFileSync('.github/workflows/android.yml','utf8');
 const manifest = fs.readFileSync('app/src/main/AndroidManifest.xml','utf8');
 const signingDocs = fs.readFileSync('docs/ANDROID_UPDATE_SIGNING.md','utf8');
+const setup = fs.readFileSync('tools/configure_stable_signing.ps1','utf8');
 
 assert.match(gradle,/applicationId = "com\.storylens\.reader"/,
  'Final update retains the original Android identity');
@@ -45,4 +46,12 @@ assert.match(workflow,/if: success\(\) && !\(github\.event_name == 'workflow_dis
  'final user-facing workflow must not offer Preview as the release');
 assert.match(signingDocs,/DO NOT uninstall|Do NOT uninstall|NEVER remove production/,
  'existing user data must never be discarded for a signing conflict');
+assert.match(setup,/Read-Host 'Enter the EXISTING keystore password' -AsSecureString/,
+ 'existing private signing password is requested locally, never published');
+assert.match(setup,/RedirectStandardInput = \$true/,
+ 'GitHub CLI receives secret data on stdin rather than the process command line');
+assert.match(setup,/LT_SIGNING_CERT_SHA256/,
+ 'retained public certificate fingerprint is also pinned');
+assert.match(setup,/Keep the signing keystore OUTSIDE/,
+ 'keystore must never be stored in the source repository');
 console.log('PASS: v1.0 production identity, explicit stable signing gate, package and SHA parity, separate Preview, no destructive update');

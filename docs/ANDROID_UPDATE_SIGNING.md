@@ -57,3 +57,19 @@ Pad 5 installation, backup restore, and physical performance remain NOT TESTED.
 - `versionName=1.0.0` identifies the first intended stable update baseline; it is **NOT** a claim of complete books, human editorial approval, original physical-device tests or global redistribution rights. The signed APK is an installable private candidate only after the user verifies its certificate against the already installed app.
 - To preserve data with future updates, **retain that exact private key and its certificate for all later builds**; increment `versionCode` (CI derives it from the run number). Signing mismatch cannot be bypassed by renaming the APK or altering `versionName`. First-install migration from an incompatible existing preview/production signer requires an independently verified backup, then one controlled uninstall/import; never automate that step.
 - Without the retained signing credentials, the only CI output remains a side-by-side Preview QA artifact; there is NO verified signed production APK. Do not share it as the user's requested final release.
+
+## Windows: configure the retained signing key without putting secrets in chat
+
+The local PowerShell 7 helper `tools/configure_stable_signing.ps1` takes an **existing, personally retained** keystore and alias, reads passwords locally, and writes all five GitHub Actions secrets using the official GitHub CLI via stdin, without storing passwords or keystore in the repository. Prerequisites: `gh auth login`, a JDK (`keytool`) and `pwsh` version 7+.
+
+```powershell
+pwsh -File tools/configure_stable_signing.ps1 -KeystorePath 'D:\PrivateKeys\lingua-release.p12' -KeyAlias 'lingua-release'
+```
+
+If the currently installed app was signed with another or lost key, **the helper cannot magically convert it into an update**. Export and verify a separate JSON app backup before choosing a migration. If the old private key is truly unavailable, create a NEW retained keystore **locally outside GitHub** (the following `keytool` call asks for the password interactively; do not pass the password on the command line):
+
+```powershell
+keytool -genkeypair -keystore 'D:\PrivateKeys\lingua-release.p12' -storetype PKCS12 -alias lingua-release -keyalg RSA -keysize 3072 -validity 12000 -dname 'CN=Lingua Tales,O=Private Android Release'
+```
+
+Back up the new protected keystore in a separate safe place. Run the helper above to register its secrets. After verifying the signed APK and your saved data, a **one-time** old-app uninstall/reinstall and offline backup import may be required because Android prohibits cross-signer in-place updates. Keep the same private key for **all later** `1.0.x`/future stable releases. Official GitHub CLI reference: https://cli.github.com/manual/gh_secret_set .
