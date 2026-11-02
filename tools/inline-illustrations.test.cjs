@@ -102,7 +102,7 @@ controls.children[2].handlers.click();
 assert.match(original.style.transform,/scale\(1\.000\)/,'reset original scale');
 // Verify the real two-pointer handlers: historical zoom now tracks the actual
 // finger midpoint, with bounded scale; it never jumps back to viewport centre.
-const sourceStart=js.indexOf('function ltArtPinchFrame(');
+const sourceStart=js.indexOf('function ltArtPanRange(');
 const sourceStop=js.indexOf('function ltOpenArtInspection(',sourceStart);
 assert.ok(sourceStart>=0&&sourceStop>sourceStart,'pure anchored pinch geometry');
 const pinchMath={};
