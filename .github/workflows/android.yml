@@ -131,6 +131,7 @@ jobs:
           node tools/verne-complete-novel.test.cjs
           node tools/chapter-navigation.test.cjs
           node tools/inline-illustrations.test.cjs
+          node tools/multi-companion-art.test.cjs
           node tools/assets.test.cjs
           node tools/library-experience.test.cjs
           node tools/bookmark-navigation.test.cjs

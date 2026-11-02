@@ -995,6 +995,45 @@ function ltBuiltInChapterScene(chapter,sentenceCount){
 // chapter selector and Previous/Next; only the selected chapter is mounted.
 // Source text, original chapter progress and saved words are never mutated.
 let ltTranslationBook=null,ltTranslationIndex=0;
+// The legacy Verne plate list is independently checksum pinned. Editorial
+// additions from completed books must be scene-verified, rights-reviewed,
+// offline, attributable and anchored to the same original paragraph index.
+// Never infer those checks from a pretty filename or from colour alone.
+function ltVerifiedCompanionPlates(chapter,periodPlate){
+ const paragraphs=Array.isArray(chapter?.paragraphs)?chapter.paragraphs:[];
+ const validSrc=/^art\/[a-z0-9_-]+(?:\/[a-z0-9_-]+)*\.(?:webp|png|jpe?g)$/i;
+ const plates=[],seen=new Set();
+ function push(plate){
+  if(!plate||!Number.isInteger(plate.index)||plate.index<0||
+   plate.index>=paragraphs.length||!validSrc.test(plate.src||'')||
+   typeof plate.alt!=='string'||!plate.alt.trim()||plate.alt.length>240||
+   typeof plate.credit!=='string'||!plate.credit.trim()||plate.credit.length>160||
+   !Number.isFinite(plate.ratio)||plate.ratio<.5||plate.ratio>3.5||
+   seen.has(plate.index)||plates.length>=12)return;
+  seen.add(plate.index);
+  plates.push({
+   index:plate.index,src:plate.src,alt:plate.alt.trim(),
+   credit:plate.credit.trim(),ratio:plate.ratio,
+   visualTreatment:plate.visualTreatment==='original-colour'?'original-colour':'period-original'
+  });
+ }
+ // Known original Verne source scans are already pinned by SHA-256 and
+ // verified exact-scene paragraph tests; keep their current positions.
+ push(periodPlate);
+ const extras=Array.isArray(chapter?.inlineArt)?chapter.inlineArt:[];
+ for(const item of extras.slice(0,64)){
+  if(!item||item.verifiedArchive!==true||
+   item.sourceParagraphExact!==true||item.distributionReviewApproved!==true||
+   typeof item.archiveSource!=='string'||
+   !/^https:\/\/(?:commons\.wikimedia\.org|www\.metmuseum\.org|www\.loc\.gov|gallica\.bnf\.fr|www\.gutenberg\.org|archive\.org)\//i.test(item.archiveSource))continue;
+  push({
+   index:item.afterParagraph,src:item.src,
+   alt:item.alt,credit:item.credit,ratio:item.aspectRatio,
+   visualTreatment:item.visualTreatment
+  });
+ }
+ return plates.sort((a,b)=>a.index-b.index);
+}
 function ltRenderTranslationChapter(){
  const story=ltTranslationBook;
  if(!story||state.page!=='translation'||state.story!==story)return;
@@ -1074,16 +1113,19 @@ function ltRenderTranslationChapter(){
       credit:uiText('طبعة أوسغود المصوّرة الأصلية، ١٨٧٣ · أرشيف نيويورك',
        '1873 J. R. Osgood illustrated edition · NYPL archive')}
    }[ltTranslationIndex]||null):null;
+ const plates=ltVerifiedCompanionPlates(chapter,plate);
+ const platesByParagraph=new Map(plates.map(item=>[item.index,item]));
  const translated=chapter.paragraphs.map((paragraph,index)=>{
   const prose=sourceArabic
    ?'<p lang="en" dir="ltr">'+escapeText(paragraph.en)+'</p>'
    :'<p lang="ar" dir="rtl">'+escapeText(paragraph.ar)+'</p>';
-  if(!plate||index!==plate.index)return prose;
+  const item=platesByParagraph.get(index);
+  if(!item)return prose;
   return prose+'<figure class="lt-companion-plate'+
-   (plate.visualTreatment==='original-colour'?' lt-archive-colour-original':'')+'">'+
-   '<img src="'+plate.src+'" loading="lazy" decoding="async" alt="'+
-   escapeText(plate.alt)+'" style="aspect-ratio:'+plate.ratio+'">'+
-   '<figcaption>'+escapeText(plate.credit)+'</figcaption></figure>';
+   (item.visualTreatment==='original-colour'?' lt-archive-colour-original':'')+'">'+
+   '<img src="'+item.src+'" loading="lazy" decoding="async" alt="'+
+   escapeText(item.alt)+'" style="aspect-ratio:'+item.ratio+';object-fit:contain">'+
+   '<figcaption>'+escapeText(item.credit)+'</figcaption></figure>';
  }).join('');
  const title=sourceArabic?(story.titleEn||story.title):(story.titleAr||story.title);
  const chapterTitle=sourceArabic?(chapter.titleEn||chapter.title):(chapter.titleAr||chapter.title);
