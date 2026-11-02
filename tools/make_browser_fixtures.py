@@ -608,6 +608,24 @@ tests["historic-verne-plates"] = r"""(async function(){
      finger('pointerup',71,cx-spread);
      viewer?.dispatchEvent(new KeyboardEvent('keydown',{key:'0',bubbles:true,cancelable:true}));
      check('keyboard reset works after touch pinch',Math.abs(actualScale()-1)<.005);
+     // ART03c: REAL Chromium PointerEvents through the existing viewer.
+     // The native touch pair must enlarge, suppress a synthetic browser
+     // dblclick, then return the complete uncropped historical image to 1x.
+     finger('pointerdown',73,cx+22);
+     finger('pointerup',73,cx+22);
+     finger('pointerdown',74,cx+22);
+     finger('pointerup',74,cx+22);
+     check('real Chromium touch double-tap enlarges archive plate',
+       Math.abs(actualScale()-2)<.005);
+     vp.dispatchEvent(new MouseEvent('dblclick',{bubbles:true,cancelable:true}));
+     check('synthetic double-click does not undo touch zoom',
+       Math.abs(actualScale()-2)<.005);
+     finger('pointerdown',75,cx+22);
+     finger('pointerup',75,cx+22);
+     finger('pointerdown',76,cx+22);
+     finger('pointerup',76,cx+22);
+     check('second live touch double-tap resets original picture',
+       Math.abs(actualScale()-1)<.005);
     }
    }
    check('chapter '+item.index+' inspection disables background scroll',

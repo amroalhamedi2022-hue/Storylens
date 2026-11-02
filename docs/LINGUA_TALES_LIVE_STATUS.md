@@ -468,3 +468,6 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 
 ### 2026-11-02 — ART03c remaining reset assertion escapes
 - Corrected the two 1× original-scale regex expectations in the same newly added touchscreen test, matching the already corrected 2× assertions; source reader implementation untouched. Exact latest CI required; pending device testing remains open.
+
+### 2026-11-02 — ART03c full Chromium touch acceptance extension
+- Added the same actual opened-original-painting **live Chromium** reader journey for short consecutive touch PointerEvents: enforce 2× zoom, suppression of a synthetic browser dblclick, and second two-tap return to 1×. Directly inspect rendered scale, never private JS internals. This supplements Node fake DOM and Android Gradle/packaging tests and does not alter story text, translation, image source, native package identity or saved state. Exact new HEAD browser CI PENDING and still no physical Pad 5 acceptance/signed in-place APK.
