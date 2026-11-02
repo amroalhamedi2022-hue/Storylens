@@ -39,7 +39,8 @@ assert.equal(plain[0].visualTreatment,'period-original');
 assert.equal(plain[1].visualTreatment,'original-colour');
 assert.equal(plain[2].src,'art/kalila/scene-two.webp');
 assert.equal(plain[1].credit,'Metropolitan Museum · 16th century');
-assert.equal(select(chapter,null).length,2,'no legacy source scan needed for verified contextual art');
+assert.deepEqual(Array.from(select(chapter,null)).map(p=>p.index),[1,3,6],
+ 'without a legacy scan, an independently approved art entry at that anchor is valid and correctly sorted');
 assert.equal(select({paragraphs:[]},primary).length,0,'no artworks without source paragraphs');
 assert.equal(select({paragraphs:chapter.paragraphs,inlineArt:[]},primary).length,1,
  'previous single-scan Verne chapters remain unchanged');
