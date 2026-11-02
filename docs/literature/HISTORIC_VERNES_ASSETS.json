@@ -114,5 +114,39 @@
     "width": 620,
     "height": 895,
     "rights": "1873 Boston print; Commons: no known copyright restrictions (territorial clearance pending)"
+  },
+  {
+    "id": "verne-1873-fix-on-watch",
+    "file": "verne-fix-watch-1873.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Around_the_world_in_eighty_days_%281873%29_%2814597588318%29.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14597588318).jpg",
+    "expected_sha1": "71d831d5522d1f69ee8622624e314c14e93e9ad7",
+    "year": 1873,
+    "chapter": 5,
+    "afterParagraph": 25,
+    "scene": "Detective Fix on watch for suspicious travellers; Towle VI, Suez surveillance paragraph index 25",
+    "source_sha256": "5aef68869c568fed7a06fd5277bbe6b1573dc855c4d0c15c5af441dbe3eaa4bc",
+    "webp_sha256": "7b6c96edbbe86d2294b573405d6c87d58b59dbd61264b72063e79a1d00d9ea27",
+    "webp_bytes": 155534,
+    "width": 620,
+    "height": 902,
+    "rights": "1873 Boston/Osgood print; individual Commons scan says No known copyright restrictions; geographic release review still required"
+  },
+  {
+    "id": "verne-1873-passepartout-train",
+    "file": "verne-passepartout-train-1873.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Around_the_world_in_eighty_days_%281873%29_%2814597621668%29.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14597621668).jpg",
+    "expected_sha1": "5fcdad5b0975f4b29254ae4e355a74655388c669",
+    "year": 1873,
+    "chapter": 28,
+    "afterParagraph": 64,
+    "scene": "Passepartout suspended by one hand between the baggage-car and locomotive tender; Towle XXIX, source paragraph index 64",
+    "source_sha256": "43f8586e3f941703fef1d3457d71ceb7a999e13b788097fa3188633b8e94e4ce",
+    "webp_sha256": "57d80ee6cee17e964fb9faeda04574faa649e9edd0d3280c6cad6ff6207dc2aa",
+    "webp_bytes": 135132,
+    "width": 620,
+    "height": 904,
+    "rights": "1873 Boston/Osgood print; individual Commons scan says No known copyright restrictions; geographic release review still required"
   }
 ]
