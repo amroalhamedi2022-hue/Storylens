@@ -7,6 +7,7 @@ const workflow = fs.readFileSync('.github/workflows/android.yml','utf8');
 const manifest = fs.readFileSync('app/src/main/AndroidManifest.xml','utf8');
 const signingDocs = fs.readFileSync('docs/ANDROID_UPDATE_SIGNING.md','utf8');
 const setup = fs.readFileSync('tools/configure_stable_signing.ps1','utf8');
+const bootstrap = fs.readFileSync('tools/bootstrap_first_release.ps1','utf8');
 
 assert.match(gradle,/applicationId = "com\.storylens\.reader"/,
  'Final update retains the original Android identity');
@@ -54,4 +55,14 @@ assert.match(setup,/LT_SIGNING_CERT_SHA256/,
  'retained public certificate fingerprint is also pinned');
 assert.match(setup,/Keep the signing keystore OUTSIDE/,
  'keystore must never be stored in the source repository');
+assert.match(bootstrap,/keytool -genkeypair/,'new initial private key generated locally');
+assert.match(bootstrap,/-keysize 3072 -validity 12000/,'new first-install signer has strong RSA key');
+assert.match(bootstrap,/if \(Test-Path -LiteralPath \$destination\)/,'never overwrite prior permanent signing key');
+assert.match(bootstrap,/configure_stable_signing\.ps1/,'bootstrap saves same private signer in GitHub encrypted secrets');
+assert.match(bootstrap,/gh workflow run android\.yml --repo \$Repository --ref main -f release_channel=stable-release/,'first release builds from latest main');
+assert.match(workflow,/archive_signed_candidate:/,'private signed GitHub Release archival job exists');
+assert.match(workflow,/permissions:\s+contents: write/,'publishing job alone receives write access');
+assert.match(workflow,/--draft/,'do not publicly publish before literary rights sign-off');
+assert.match(workflow,/grep -Fqx 'variant=release'/,'draft release accepts only actual signed production package');
+assert.match(workflow,/name: Lingua-Tales-Stable-Signed-Release/,'signed APK artifact has stable name');
 console.log('PASS: v1.0 production identity, explicit stable signing gate, package and SHA parity, separate Preview, no destructive update');

@@ -71,6 +71,7 @@ jobs:
           python3 tools/test_lingua_audio_focus.py
           python3 tools/test_apk_update.py
           node tools/release-gate.test.cjs
+          pwsh -NoProfile -Command '$t=$null; $e=$null; foreach($f in @("tools/bootstrap_first_release.ps1","tools/configure_stable_signing.ps1")) { [void][System.Management.Automation.Language.Parser]::ParseFile($f,[ref]$t,[ref]$e); if($e.Count -gt 0) { $e | Format-Table -AutoSize; exit 1 }; Write-Output "PASS PowerShell parse: $f" }'
           node tools/botanical-theme.test.cjs
           node tools/rain-glass.test.cjs
           node tools/solar-atelier.test.cjs
@@ -641,3 +642,42 @@ jobs:
             app/build/outputs/apk/release/APK_SHA256.txt
             app/build/outputs/apk/release/APK_INSTALL_IDENTITY.txt
           if-no-files-found: error
+
+  archive_signed_candidate:
+    # Source and territorial-rights gates are not complete. Keep release DRAFT.
+    if: github.event_name == 'workflow_dispatch' && inputs.release_channel == 'stable-release'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: Lingua-Tales-Stable-Signed-Release
+          path: private-release
+      - name: Verify archived stable package and create private draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          apks=(private-release/*.apk)
+          test "${#apks[@]}" -eq 1 || { echo "::error::Expected one signed release APK"; exit 1; }
+          test -s private-release/APK_SHA256.txt
+          test -s private-release/APK_INSTALL_IDENTITY.txt
+          expected="$(cut -d' ' -f1 < private-release/APK_SHA256.txt)"
+          actual="$(sha256sum "${apks[0]}" | cut -d' ' -f1)"
+          test "$expected" = "$actual" || { echo "::error::APK artifact hash mismatch"; exit 1; }
+          grep -Fqx 'variant=release' private-release/APK_INSTALL_IDENTITY.txt
+          grep -Fqx 'pinned_installed_signer=matched' private-release/APK_INSTALL_IDENTITY.txt
+          grep -Fxq "commit=$GITHUB_SHA" private-release/APK_INSTALL_IDENTITY.txt
+          tag="v1.0.0-build${GITHUB_RUN_NUMBER}"
+          gh release create "$tag" "${apks[0]}" private-release/APK_SHA256.txt private-release/APK_INSTALL_IDENTITY.txt \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "Lingua Tales 1.0.0 — build ${GITHUB_RUN_NUMBER}" \
+            --notes "Private draft of the new stable-signed Lingua Tales baseline. This candidate needs a fresh install if the previous app had a different signer. Export backups before uninstalling older apps. Historical content/translation/art, editorial and physical-device review remain separate gates. Retain the new private signer for all updates." \
+            --draft
+          echo "Draft signed release: https://github.com/$GITHUB_REPOSITORY/releases/tag/$tag"
