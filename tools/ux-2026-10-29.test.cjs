@@ -447,3 +447,10 @@ assert.match(reader,/delta>0&&current===pages\.length-1&&state\.chapter===state\
  'a completed book has no misleading empty page fold');
 
 console.log('PASS: English titles, compact library, live fold, safe final-page gesture, pointer ownership, Liquid 27 and touch feedback');
+
+assert.match(reader,/line\.setAttribute\('dir','auto'\)/,
+ 'fold-back copied plain ink supports Arabic, English and mixed RTL/LTR');
+assert.match(css,/\.lt-paper-reverse-ink p\{[^}]*unicode-bidi:plaintext/,
+ 'the reverse uses each original line’s bidi order');
+assert.ok(!/\.reader \.lt-paper-reverse-ink\{[^}]*filter:blur/.test(css),
+ 'fold back does not spend GPU cycles on per-frame image blur');

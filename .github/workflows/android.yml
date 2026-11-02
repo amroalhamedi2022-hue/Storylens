@@ -311,7 +311,13 @@ jobs:
           echo "PASS: all three archived period illustrations render inside corresponding offline novel chapters"
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=10500 --window-size=460,860 --dump-dom "file://$PWD/app/src/main/assets/qa-paper-fold-browser.html" > /tmp/lt-paper-fold-dom.html 2>/tmp/lt-paper-fold.log
           grep -Fq 'data-lt-paper-qa="PASS"' /tmp/lt-paper-fold-dom.html || { echo "Real Chromium paper-fold regression failed:"; grep -o 'data-lt-paper-errors="[^"]*"' /tmp/lt-paper-fold-dom.html | head -1; grep -o 'data-lt-paper-stage="[^"]*"' /tmp/lt-paper-fold-dom.html | head -1; exit 1; }
-          echo "PASS: Chromium holds curved paper RTL/LTR, reveals neighboring page and commits without leftover fold"
+          echo "PASS: Chromium held page RTL/LTR, vertical scroll, second touch and pointercancel all correctly handled"
+          for direction in rtl ltr; do
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=6200 --window-size=460,860 --dump-dom "file://$PWD/app/src/main/assets/qa-paper-fold-held-$direction.html" > "/tmp/lt-held-$direction.html" 2>/tmp/lt-held-fold-browser.log
+            grep -Fq 'data-lt-held-fold-qa="PASS"' "/tmp/lt-held-$direction.html" || { echo "Live held paper failed: $direction"; grep -o 'data-lt-held-fold-errors="[^"]*"' "/tmp/lt-held-$direction.html" | head -1; exit 1; }
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6200 --window-size=460,860 --screenshot="$PWD/qa-screenshots/reader-held-paper-$direction-phone.png" "file://$PWD/app/src/main/assets/qa-paper-fold-held-$direction.html" >/tmp/lt-held-screenshot.log 2>&1
+          done
+          echo "PASS: actual finger-held paper fold screenshots captured for RTL and LTR phones"
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=4500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/reader-phone.png" "file://$PWD/app/src/main/assets/qa-reader.html" >/tmp/chrome-reader.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=6500 --window-size=460,860 --screenshot="$PWD/qa-screenshots/verne14-phone.png" "file://$PWD/app/src/main/assets/qa-verne14.html" >/tmp/chrome-verne14.log 2>&1
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=6500 --dump-dom "file://$PWD/app/src/main/assets/qa-verne14.html" > /tmp/storylens-verne14-dom.html 2>/tmp/chrome-verne14-dom.log

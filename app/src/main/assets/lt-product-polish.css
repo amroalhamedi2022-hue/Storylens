@@ -162,10 +162,11 @@ body.theme-aurora,body.theme-nebula{background-attachment:scroll!important;}
 }
 .reader .lt-paper-reverse-ink{
  width:max(340px,100%);padding:12px 18px;
- transform:scaleX(-1);font:11px/1.55 Georgia,serif;filter:blur(.3px);
+ transform:scaleX(-1);font:11px/1.55 Georgia,"Noto Naskh Arabic",serif;
  overflow-wrap:anywhere;opacity:.49;
 }
-.reader .lt-paper-reverse-ink p{margin:0 0 12px;max-height:11em;overflow:hidden;}
+.reader .lt-paper-reverse-ink p{margin:0 0 12px;max-height:11em;overflow:hidden;
+ unicode-bidi:plaintext;text-align:start;}
 @media(prefers-reduced-motion:reduce){
  .reader #sentences > .lt-paper-reverse{display:none!important}
 }

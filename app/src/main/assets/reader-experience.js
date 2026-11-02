@@ -508,9 +508,13 @@ function installPageTurn(){
   face.inert=true;
   const ink=document.createElement('div');
   ink.className='lt-paper-reverse-ink';
+  // Do not force Latin bidi direction onto Arabic source text. The back is
+  // inert ink (NOT cloned interactive tokens), and each line determines its
+  // direction from the original characters without reversing word order.
   const paragraphs=active.querySelectorAll('.sentence');
   for(const source of Array.from(paragraphs).slice(0,4)){
    const line=document.createElement('p');
+   line.setAttribute('dir','auto');
    line.textContent=String(source.textContent||'').slice(0,420);
    ink.appendChild(line);
   }
