@@ -870,8 +870,9 @@ function ltArtPinchFrame(start,next,width,height,imageWidth=width,imageHeight=he
  const h=Number.isFinite(height)&&height>0?height:600;
  const maxX=ltArtPanRange(w,imageWidth,zoom);
  const maxY=ltArtPanRange(h,imageHeight,zoom);
- return {zoom,panX:Math.max(-maxX,Math.min(maxX,projectedX)),
-  panY:Math.max(-maxY,Math.min(maxY,transformedY))};
+ return {zoom,
+  panX:maxX>0?Math.max(-maxX,Math.min(maxX,projectedX)):0,
+  panY:maxY>0?Math.max(-maxY,Math.min(maxY,transformedY)):0};
 }
 function ltOpenArtInspection(picture){
  const src=picture?.getAttribute?.('src')||picture?.src||'';
@@ -913,8 +914,8 @@ function ltOpenArtInspection(picture){
   const h=Number(viewport.clientHeight)||Number(image.clientHeight)||600;
   const xLimit=ltArtPanRange(w,Number(image.clientWidth)||w,zoom);
   const yLimit=ltArtPanRange(h,Number(image.clientHeight)||h,zoom);
-  panX=Math.max(-xLimit,Math.min(xLimit,panX));
-  panY=Math.max(-yLimit,Math.min(yLimit,panY));
+  panX=xLimit>0?Math.max(-xLimit,Math.min(xLimit,panX)):0;
+  panY=yLimit>0?Math.max(-yLimit,Math.min(yLimit,panY)):0;
   image.style.transform='translate3d('+panX.toFixed(2)+'px,'+panY.toFixed(2)+'px,0) scale('+zoom.toFixed(3)+')';
  }
  function setZoom(next){

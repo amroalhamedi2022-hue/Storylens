@@ -445,3 +445,6 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 
 ### 2026-11-02 — ART03b isolated VM regression includes pan bounds helper
 - Unit VM extraction formerly started at `ltArtPinchFrame` alone. New implementation calls separate pure `ltArtPanRange`; its source must be included in VM extraction for the calculation to be defined, rather than accidentally testing against missing global. Updated test harness extraction start, not production behavior; full exact-main CI pending.
+
+### 2026-11-02 — ART03b zero-pan canonicalization
+- Exact source CI [#41421327412](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/41421327412) uncovered JavaScript negative-zero distinction in the intentional zero-clamp case: `Math.max(-0, negative)` yields `-0`; Node `assert.strictEqual` intentionally distinguishes -0 from +0. Corrected both immutable pure pan bounds and live image transform clipping to canonical positive zero when no panning is permitted. This also prevents emitting CSS `translate3d(-0.00px,...)`. Same physically valid clamping, source images, storage and layout untouched. Exact follow-up CI pending.
