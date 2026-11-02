@@ -145,5 +145,12 @@ a.match(css,/border:3px double #bba787!important/);
 a.match(css,/\.lt-inline-illustration figcaption\{/);
 a.match(css,/\.library \.lt-book-cover::after\{/);
 const vintage=css.slice(css.lastIndexOf('/*',css.indexOf('LT-UX04: tactile archival book plates'))).replace(/\/\*[\s\S]*?\*\//g,'');
-a.ok(!/filter\s*:|backdrop-filter\s*:|animation\s*:/.test(vintage),'avoid expensive GPU image filters and looping effects on long reading pages');
+// A cheap filter:none is the explicit archival-colour safeguard, NOT an
+// expensive GPU filter. Reject all actual colour effects (blur, sepia,
+// greyscale, hue-rotate, brightness, drop-shadow etc) and any animation.
+const vintageWithoutNoopFilters=vintage.replace(/(?:-webkit-)?filter\s*:\s*none\s*(?:!important)?\s*;?/g,'');
+a.ok(!/(?:-webkit-)?filter\s*:|animation\s*:/.test(vintageWithoutNoopFilters),
+ 'avoid expensive GPU image filters and looping effects on long reading pages');
+a.match(css,/\.lt-archive-colour-original img/,'real coloured manuscript images remain source-faithful');
+a.match(css,/filter:none!important/,'explicitly disable colour grading for verified originals');
 console.log('PASS: low-overhead period book-plate framing for in-text illustrations and covers');
