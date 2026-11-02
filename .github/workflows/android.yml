@@ -52,6 +52,7 @@ jobs:
           node tools/literature-originals.test.cjs
           node tools/literature-sci-fi.test.cjs
           node tools/literature-hound.test.cjs
+          node tools/literature-sign-of-four.test.cjs
           node tools/literature-frankenstein.test.cjs
           node tools/literature-dracula.test.cjs
           node tools/literature-arabic-original.test.cjs

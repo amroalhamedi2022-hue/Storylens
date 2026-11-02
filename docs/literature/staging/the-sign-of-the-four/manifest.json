@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "doyle-sign-of-the-four-1890",
+  "originalTitle": "The Sign of the Four",
+  "author": "Arthur Conan Doyle",
+  "originalLanguage": "en",
+  "originalPublicationYear": 1890,
+  "genres": [
+    "detective deduction",
+    "crime mystery",
+    "historical investigation"
+  ],
+  "completeOriginalSource": true,
+  "source": {
+    "publisher": "Standard Ebooks",
+    "editionURL": "https://standardebooks.org/ebooks/arthur-conan-doyle/the-sign-of-the-four",
+    "upstreamRepo": "standardebooks/arthur-conan-doyle_the-sign-of-the-four",
+    "upstreamCommit": "25466e1b77a718b0ad1d427fdad57642ec0bd9ca",
+    "gutenbergSource": "https://www.gutenberg.org/ebooks/2097",
+    "territoryNotice": "Source text and artwork believed US public domain; contributors CC0. Independent other-territory text, translation and art review required."
+  },
+  "originalChapters": [
+    {
+      "number": 1,
+      "file": "chapter-1.xhtml",
+      "bytes": 18297,
+      "upstreamGitBlobSha": "db3410aa4d18a940f49f4d4046fb0f4444b72a09"
+    },
+    {
+      "number": 2,
+      "file": "chapter-2.xhtml",
+      "bytes": 12322,
+      "upstreamGitBlobSha": "cf6cd88232d27484cc4ba6bdf24b241f5db4ae33"
+    },
+    {
+      "number": 3,
+      "file": "chapter-3.xhtml",
+      "bytes": 10911,
+      "upstreamGitBlobSha": "555b979035442cc0336f8504e2f2e0ac1ef1bd1c"
+    },
+    {
+      "number": 4,
+      "file": "chapter-4.xhtml",
+      "bytes": 22430,
+      "upstreamGitBlobSha": "15a2105b6504bb20a14da7b87bfee742f4f1f465"
+    },
+    {
+      "number": 5,
+      "file": "chapter-5.xhtml",
+      "bytes": 16150,
+      "upstreamGitBlobSha": "4c6e97ee194074b249662368ed4eda26c9f63cc2"
+    },
+    {
+      "number": 6,
+      "file": "chapter-6.xhtml",
+      "bytes": 19435,
+      "upstreamGitBlobSha": "944dc7d3aceb92862582913eb648662d13f49fc1"
+    },
+    {
+      "number": 7,
+      "file": "chapter-7.xhtml",
+      "bytes": 25323,
+      "upstreamGitBlobSha": "050842012264b86335b8109f0b55711862f8287a"
+    },
+    {
+      "number": 8,
+      "file": "chapter-8.xhtml",
+      "bytes": 21345,
+      "upstreamGitBlobSha": "aa8b31f56f70d38e872d4bfbf39324f407d3266c"
+    },
+    {
+      "number": 9,
+      "file": "chapter-9.xhtml",
+      "bytes": 22523,
+      "upstreamGitBlobSha": "62696ad18798f68254a3a2cdb462d160d7e9ac51"
+    },
+    {
+      "number": 10,
+      "file": "chapter-10.xhtml",
+      "bytes": 19786,
+      "upstreamGitBlobSha": "fda705255e7e0aed22c439ac40bf9364ba2590a3"
+    },
+    {
+      "number": 11,
+      "file": "chapter-11.xhtml",
+      "bytes": 13234,
+      "upstreamGitBlobSha": "eab9a53d4c27698ebb7729144ddbf56a9ef97489"
+    },
+    {
+      "number": 12,
+      "file": "chapter-12.xhtml",
+      "bytes": 56435,
+      "upstreamGitBlobSha": "583e49c3a251969b7b9a21bc6d2f810a8c2ebdbb"
+    }
+  ],
+  "publishable": false,
+  "status": "SOURCE_STAGED_EDITORIAL_HOLD",
+  "acceptance": {
+    "completeArabicCompanion": false,
+    "contextualArabicEditorialReview": false,
+    "historicChapterArtCleared": false,
+    "territoryRightsReviewed": false,
+    "offlineDeviceVerified": false
+  },
+  "disclaimer": "Complete authentic original English only; no reader listing or APK inclusion until full natural contextual Arabic companion and separate art, rights, editorial and physical-device acceptance."
+}
