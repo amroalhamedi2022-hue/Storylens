@@ -172,10 +172,10 @@ inspection.handlers.keydown({key:'0',preventDefault(){}});
  viewport.handlers.pointerup(evt(11,230,240));
  viewport.handlers.pointerdown(evt(12,230,240));
  viewport.handlers.pointerup(evt(12,230,240));
- assert.match(original.style.transform,/scale\\(2\\.000\\)/,
+ assert.match(original.style.transform,/scale\(2\.000\)/,
   'two phone touch taps zoom real original to 2x');
  viewport.handlers.dblclick({preventDefault(){}});
- assert.match(original.style.transform,/scale\\(2\\.000\\)/,
+ assert.match(original.style.transform,/scale\(2\.000\)/,
   'synthetic browser dblclick cannot invert double-tap');
  viewport.handlers.pointerdown(evt(13,230,240));
  viewport.handlers.pointerup(evt(13,230,240));
