@@ -569,7 +569,7 @@ tests["historic-verne-plates"] = r"""(async function(){
      finger('pointermove',72,cx+spread*1.75);
      check('anchored gesture really pinches the original scan',actualScale()>1.25);
      check('two-finger midpoint pans original as it zooms',
-       /translate3d\\(-?[1-9]/.test(zoomed?.style.transform||''));
+       /translate3d\(-?[1-9]/.test(zoomed?.style.transform||''));
      finger('pointerup',72,cx+spread*1.75);
      finger('pointerup',71,cx-spread);
      viewer?.dispatchEvent(new KeyboardEvent('keydown',{key:'0',bubbles:true,cancelable:true}));
