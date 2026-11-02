@@ -850,22 +850,89 @@ function ltOpenArtInspection(picture){
  dismiss.textContent=arabic?'إغلاق ×':'Close ×';
  dismiss.setAttribute('aria-label',arabic?'إغلاق الصورة والعودة للقراءة':'Close image and return to reading');
  const frame=document.createElement('figure');
+ const viewport=document.createElement('div');
+ viewport.className='lt-art-inspection-viewport';
  const image=document.createElement('img');
  image.src=src;image.alt=picture.alt||'';
- image.loading='eager';image.decoding='async';
- frame.appendChild(image);
+ image.loading='eager';image.decoding='async';image.draggable=false;
+ viewport.appendChild(image);frame.appendChild(viewport);
+ // Preserve the one genuine local bitmap; zoom and pan never mutate
+ // chapters, change art URLs or create more image elements.
+ let zoom=1,panX=0,panY=0;
+ const contacts=new Map();
+ let startDistance=0,startZoom=1,startPanX=0,startPanY=0;
+ function applyZoom(){
+  const w=Number(viewport.clientWidth)||Number(image.clientWidth)||400;
+  const h=Number(viewport.clientHeight)||Number(image.clientHeight)||600;
+  panX=Math.max(-w*(zoom-1)/2,Math.min(w*(zoom-1)/2,panX));
+  panY=Math.max(-h*(zoom-1)/2,Math.min(h*(zoom-1)/2,panY));
+  image.style.transform='translate3d('+panX.toFixed(2)+'px,'+panY.toFixed(2)+'px,0) scale('+zoom.toFixed(3)+')';
+ }
+ function setZoom(next){
+  zoom=Math.max(1,Math.min(4,Number(next)||1));
+  if(zoom===1){panX=0;panY=0;}
+  applyZoom();
+ }
+ const controls=document.createElement('div');
+ controls.className='lt-art-zoom-controls';
+ function zoomButton(symbol,en,ar,action){
+  const button=document.createElement('button');
+  button.type='button';button.className='lt-art-zoom-button';
+  button.textContent=symbol;
+  button.setAttribute('aria-label',document.documentElement?.lang==='ar'?ar:en);
+  button.addEventListener('click',action);controls.appendChild(button);
+  return button;
+ }
+ const zoomOut=zoomButton('−','Zoom out','تصغير الصورة',()=>setZoom(zoom/1.5));
+ const zoomIn=zoomButton('+','Zoom in','تكبير الصورة',()=>setZoom(zoom*1.5));
+ const zoomReset=zoomButton('1:1','Reset zoom','الحجم الأصلي',()=>setZoom(1));
+ function distance(){
+  const points=Array.from(contacts.values());
+  return Math.hypot(points[0].x-points[1].x,points[0].y-points[1].y);
+ }
+ viewport.addEventListener('pointerdown',event=>{
+  if(event.pointerType==='mouse'&&event.button!==0)return;
+  contacts.set(event.pointerId,{x:event.clientX,y:event.clientY});
+  if(contacts.size===2){
+   startDistance=Math.max(1,distance());startZoom=zoom;
+   startPanX=panX;startPanY=panY;
+  }
+  try{viewport.setPointerCapture?.(event.pointerId);}catch(_){}
+ });
+ viewport.addEventListener('pointermove',event=>{
+  const previous=contacts.get(event.pointerId);
+  if(!previous)return;
+  contacts.set(event.pointerId,{x:event.clientX,y:event.clientY});
+  if(contacts.size===2&&startDistance>0){
+   zoom=Math.max(1,Math.min(4,startZoom*distance()/startDistance));
+   panX=startPanX;panY=startPanY;applyZoom();
+  }else if(contacts.size===1&&zoom>1){
+   panX+=event.clientX-previous.x;panY+=event.clientY-previous.y;
+   applyZoom();
+  }
+  if(event.cancelable)event.preventDefault();
+ });
+ const endContact=event=>{
+  contacts.delete(event.pointerId);
+  if(contacts.size<2)startDistance=0;
+ };
+ for(const name of ['pointerup','pointercancel','lostpointercapture'])
+  viewport.addEventListener(name,endContact);
+ viewport.addEventListener('dblclick',event=>{
+  event.preventDefault();setZoom(zoom===1?2:1);
+ });
  const credit=picture.closest?.('figure')?.querySelector?.('figcaption')?.textContent||'';
  if(credit.trim()){
   const caption=document.createElement('figcaption');
   caption.textContent=credit.trim();frame.appendChild(caption);
  }
  dialog.appendChild(heading);dialog.appendChild(dismiss);dialog.appendChild(frame);
- backdrop.appendChild(dialog);
+ dialog.appendChild(controls);backdrop.appendChild(dialog);
  const priorOverflow=body.style?.overflow||'';
  const close=()=>{
   if(ltCloseActiveArtInspection!==close)return;
   ltCloseActiveArtInspection=null;
-  backdrop.remove?.();
+  contacts.clear();backdrop.remove?.();
   body.classList?.remove('lt-art-inspection-open');
   if(body.style)body.style.overflow=priorOverflow;
   if(picture.isConnected!==false)picture.focus?.({preventScroll:true});
@@ -878,7 +945,11 @@ function ltOpenArtInspection(picture){
   if(event.key==='Escape'){
    event.preventDefault();event.stopPropagation();close();
   }else if(event.key==='Tab'){
-   event.preventDefault();dismiss.focus?.();
+   const stops=[dismiss,zoomOut,zoomIn,zoomReset];
+   const current=stops.indexOf(document.activeElement);
+   const next=event.shiftKey?(current<=0?3:current-1):
+    (current<0||current===3?0:current+1);
+   event.preventDefault();stops[next].focus?.();
   }
  });
  if(body.style)body.style.overflow='hidden';

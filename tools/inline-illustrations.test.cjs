@@ -85,10 +85,23 @@ assert.equal(sandbox.window.LinguaTalesArtInspection.closeIfOpen(),false,
  'second Back is handed to existing reader navigation');
 added[0].figure.children[0].handlers.click({stopPropagation(){}});
 const inspection=gallery[1];
-assert.equal(inspection.children[0].children[2].children[0].src,'art/verne/station.webp',
+assert.equal(inspection.children[0].children[2].children[0].children[0].src,'art/verne/station.webp',
  'enlargement reuses only the packaged image path');
 assert.equal(inspection.children[0].children[2].children[1].textContent,'CC0 illustration',
  'source credit remains beside enlarged engraving');
+const controls=inspection.children[0].children[3];
+const original=inspection.children[0].children[2].children[0].children[0];
+assert.equal(controls.children.length,3,'offline original zoom controls');
+assert.equal(original.draggable,false,'not an HTML image drag');
+controls.children[1].handlers.click();
+assert.match(original.style.transform,/scale\(1\.500\)/,'zoom in');
+controls.children[0].handlers.click();
+assert.match(original.style.transform,/scale\(1\.000\)/,'zoom out');
+controls.children[1].handlers.click();
+controls.children[2].handlers.click();
+assert.match(original.style.transform,/scale\(1\.000\)/,'reset original scale');
+assert.equal(inspection.children[0].children[2].children[1].textContent,
+ 'CC0 illustration','caption is unchanged after zoom');
 inspection.handlers.keydown({key:'Escape',preventDefault(){},stopPropagation(){}});
 assert.equal(inspection.removed,true,'Escape closes inspection');
 assert.equal(document.body.style.overflow,'auto','reading scroll state restored');

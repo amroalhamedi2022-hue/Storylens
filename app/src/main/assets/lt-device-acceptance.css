@@ -394,3 +394,24 @@ button.lt-water-pressed,.lt-theme-choice.lt-water-pressed{
  margin:11px auto 2px;max-width:65ch}
 @media(max-width:420px){.lt-art-inspection-dialog{max-height:94dvh}
  .lt-art-inspection-dialog figure img{max-height:calc(94dvh - 165px)}}
+
+/* Genuine offline archive art detail; one GPU-composited image only. */
+.lt-art-inspection-viewport{position:relative;overflow:hidden;
+ max-width:100%;max-height:calc(92dvh - 220px);display:grid;
+ place-items:center;touch-action:none;overscroll-behavior:contain}
+.lt-art-inspection-dialog .lt-art-inspection-viewport img{
+ max-width:100%;max-height:calc(92dvh - 220px);
+ width:auto;height:auto;object-fit:contain;transform-origin:center center;
+ user-select:none;-webkit-user-select:none;-webkit-user-drag:none;touch-action:none}
+.lt-art-zoom-controls{display:flex;justify-content:center;align-items:center;
+ gap:12px;margin:10px auto 2px;direction:ltr}
+.lt-art-zoom-button{min-width:50px;min-height:46px;
+ border:1px solid #9c8b6c;border-radius:9px;
+ color:#342b20;background:#fffaf0;font:700 18px/1 Georgia,serif;
+ touch-action:manipulation}
+.lt-art-zoom-button:focus-visible{outline:3px solid #287875;outline-offset:3px}
+@media(max-width:420px){
+ .lt-art-inspection-viewport,.lt-art-inspection-dialog .lt-art-inspection-viewport img{
+ max-height:calc(94dvh - 212px)}}
+@media(prefers-reduced-motion:reduce){
+ .lt-art-inspection-viewport img{transition:none!important}}

@@ -435,6 +435,19 @@ tests["historic-verne-plates"] = r"""(async function(){
    check('chapter '+item.index+' inspection retains image credit',
     viewer?.querySelector('figcaption')?.textContent.trim()===
       figure?.querySelector('figcaption')?.textContent.trim());
+   const zoomed=viewer?.querySelector('figure img');
+   const zoomIn=viewer?.querySelector('.lt-art-zoom-controls [aria-label="Zoom in"]')||
+      viewer?.querySelector('.lt-art-zoom-controls [aria-label="تكبير الصورة"]');
+   const zoomOut=viewer?.querySelector('.lt-art-zoom-controls [aria-label="Zoom out"]')||
+      viewer?.querySelector('.lt-art-zoom-controls [aria-label="تصغير الصورة"]');
+   const zoomReset=viewer?.querySelector('.lt-art-zoom-controls [aria-label="Reset zoom"]')||
+      viewer?.querySelector('.lt-art-zoom-controls [aria-label="الحجم الأصلي"]');
+   zoomIn?.click();zoomIn?.click();
+   check('chapter '+item.index+' zoom in',zoomed?.style.transform.includes('scale(2.250)'));
+   zoomOut?.click();
+   check('chapter '+item.index+' zoom out',zoomed?.style.transform.includes('scale(1.500)'));
+   zoomReset?.click();
+   check('chapter '+item.index+' zoom reset',zoomed?.style.transform.includes('scale(1.000)'));
    check('chapter '+item.index+' inspection disables background scroll',
     document.body.style.overflow==='hidden');
    // Invoke the SAME no-argument bridge as Android's actual Back dispatcher,
