@@ -551,10 +551,39 @@ tests["historic-verne-plates"] = r"""(async function(){
    check('chapter '+item.index+' zoom out',Math.abs(actualScale()-1.5)<.005);
    zoomReset?.click();
    check('chapter '+item.index+' zoom reset',Math.abs(actualScale()-1)<.005);
-   check('chapter '+item.index+' portrait width clamp avoids blank margins',
-    ltArtPanRange(400,170,2)===0&&Math.abs(ltArtPanRange(400,170,4)-140)<.005);
-   check('chapter '+item.index+' portrait height clamp avoids blank margins',
-    ltArtPanRange(600,300,2)===0&&Math.abs(ltArtPanRange(600,300,4)-300)<.005);
+   if(item.index===10){
+    // Real archival portrait, real DOM and native image decode. The pan math
+    // is intentionally private to reader-experience.js; test its BEHAVIOUR,
+    // not a missing global function in the QA fixture.
+    const viewport=viewer?.querySelector('.lt-art-inspection-viewport');
+    try{await zoomed?.decode?.()}catch(_){}
+    const rect=viewport?.getBoundingClientRect();
+    const imageWidth=zoomed?.clientWidth||0;
+    check('historic portrait decoded and viewport has width',
+      imageWidth>0&&rect?.width>0);
+    if(imageWidth>0&&rect?.width>0){
+     zoomIn?.click();
+     const zoomFactor=actualScale();
+     const allowed=Math.max(0,(imageWidth*zoomFactor-rect.width)/2);
+     const x=rect.left+rect.width/2,y=rect.top+rect.height/2;
+     const gesture=(type,pos)=>viewport.dispatchEvent(new PointerEvent(type,{
+      bubbles:true,cancelable:true,pointerId:85,pointerType:'touch',
+      isPrimary:true,button:0,
+      buttons:type==='pointerup'?0:1,clientX:pos,clientY:y
+     }));
+     gesture('pointerdown',x);
+     gesture('pointermove',x+220);
+     const match=zoomed.style.transform.match(/translate3d\(([-0-9.]+)px/);
+     const shifted=match?Number(match[1]):NaN;
+     check('historic portrait cannot slide past actual bitmap edge',
+       Number.isFinite(shifted)&&Math.abs(shifted)<=allowed+1);
+     if(imageWidth*zoomFactor<=rect.width)
+      check('short-width historical portrait remains centered at 1.5x',
+       Math.abs(shifted)<.01);
+     gesture('pointerup',x+220);
+     zoomReset?.click();
+    }
+   }
 
    if(item.index===2){
     // Real browser pointer events, not mocked geometry: asymmetric fingers
