@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "id": "doyle-hound-of-the-baskervilles-1902",
+  "originalTitle": "The Hound of the Baskervilles",
+  "author": "Arthur Conan Doyle",
+  "originalLanguage": "en",
+  "originalPublicationYear": 1902,
+  "serializedFrom": 1901,
+  "genres": [
+    "detective deduction",
+    "gothic mystery",
+    "classic crime",
+    "psychological suspense"
+  ],
+  "completeOriginalSource": true,
+  "source": {
+    "publisher": "Standard Ebooks",
+    "editionURL": "https://standardebooks.org/ebooks/arthur-conan-doyle/the-hound-of-the-baskervilles",
+    "upstreamRepo": "standardebooks/arthur-conan-doyle_the-hound-of-the-baskervilles",
+    "upstreamCommit": "0097160e42afc58fa86337b8496de440267cf831",
+    "gutenbergSource": "https://www.gutenberg.org/ebooks/2852",
+    "territoryNotice": "Source book/text/art believed United States public domain, editorial contributions CC0. Other territory and any future illustration or translation license must be reviewed separately."
+  },
+  "originalChapters": [
+    {
+      "number": 1,
+      "file": "chapter-1.xhtml",
+      "upstreamGitBlobSha": "bdfb1a4949556677befe3a140cca6f001c0beb74",
+      "bytes": 15204
+    },
+    {
+      "number": 2,
+      "file": "chapter-2.xhtml",
+      "upstreamGitBlobSha": "288bea293960f203ef2ba497e29acfa9e4f641f6",
+      "bytes": 23612
+    },
+    {
+      "number": 3,
+      "file": "chapter-3.xhtml",
+      "upstreamGitBlobSha": "de4404d8c3ac11d0b56415d868254364e82957df",
+      "bytes": 19105
+    },
+    {
+      "number": 4,
+      "file": "chapter-4.xhtml",
+      "upstreamGitBlobSha": "ee96279f298cf7e5b4ca1b302a0c3b23cc74187b",
+      "bytes": 26558
+    },
+    {
+      "number": 5,
+      "file": "chapter-5.xhtml",
+      "upstreamGitBlobSha": "f8dbc44f6f7cdf74e360679e9ea27c438a1a5ec6",
+      "bytes": 22614
+    },
+    {
+      "number": 6,
+      "file": "chapter-6.xhtml",
+      "upstreamGitBlobSha": "afbc403ab92e098b4e933ee0c5546f38714412ce",
+      "bytes": 21243
+    },
+    {
+      "number": 7,
+      "file": "chapter-7.xhtml",
+      "upstreamGitBlobSha": "eb0de9bae04925ed3bbfebc192cef311e039d446",
+      "bytes": 29977
+    },
+    {
+      "number": 8,
+      "file": "chapter-8.xhtml",
+      "upstreamGitBlobSha": "df83ca83a7e93df75a32b19ff77132275bee3e2e",
+      "bytes": 16315
+    },
+    {
+      "number": 9,
+      "file": "chapter-9.xhtml",
+      "upstreamGitBlobSha": "1d550dc08a96338676564bbb1b20998c7e62f4c4",
+      "bytes": 37450
+    },
+    {
+      "number": 10,
+      "file": "chapter-10.xhtml",
+      "upstreamGitBlobSha": "a02c43482844ee263b5128e94b933d57eaf1a140",
+      "bytes": 21927
+    },
+    {
+      "number": 11,
+      "file": "chapter-11.xhtml",
+      "upstreamGitBlobSha": "4769a098a17feadb2c7d69443ee8a8c970f18a93",
+      "bytes": 27406
+    },
+    {
+      "number": 12,
+      "file": "chapter-12.xhtml",
+      "upstreamGitBlobSha": "1efed3e10b98d313617e63b33b509eae71e959ed",
+      "bytes": 28992
+    },
+    {
+      "number": 13,
+      "file": "chapter-13.xhtml",
+      "upstreamGitBlobSha": "932e05d04c2b8ccd1371b50eee45424844e70061",
+      "bytes": 21450
+    },
+    {
+      "number": 14,
+      "file": "chapter-14.xhtml",
+      "upstreamGitBlobSha": "fe18e863eddde24678cc77f222529847f9141f29",
+      "bytes": 24236
+    },
+    {
+      "number": 15,
+      "file": "chapter-15.xhtml",
+      "upstreamGitBlobSha": "453ef368ec2fd2807250731cf20ce1ec456b19db",
+      "bytes": 24248
+    }
+  ],
+  "publishable": false,
+  "status": "SOURCE_STAGED_EDITORIAL_HOLD",
+  "acceptance": {
+    "completeArabicCompanion": false,
+    "contextualArabicEditorialReview": false,
+    "historicChapterArtCleared": false,
+    "territoryRightsReviewed": false,
+    "offlineDeviceVerified": false
+  },
+  "disclaimer": "15 unmodified English source chapters only, staged outside Android assets. No app listing or release until every chapter has reviewed natural contextual Arabic, relevant licensed period artwork, territorial rights and device acceptance."
+}
