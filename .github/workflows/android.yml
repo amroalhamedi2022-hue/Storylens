@@ -54,6 +54,7 @@ jobs:
           node tools/literature-frankenstein.test.cjs
           node tools/literature-dracula.test.cjs
           node tools/literature-arabic-original.test.cjs
+          node tools/kalila-color-folios.test.cjs
           python3 tools/check_js.py
           python3 tools/test_lingua_launcher.py
           python3 tools/test_lingua_audio_focus.py

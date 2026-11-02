@@ -415,3 +415,29 @@ button.lt-water-pressed,.lt-theme-choice.lt-water-pressed{
  max-height:calc(94dvh - 212px)}}
 @media(prefers-reduced-motion:reduce){
  .lt-art-inspection-viewport img{transition:none!important}}
+
+/* 2026-11-02 user decision: real full-COLOUR manuscript paintings qualify.
+   The original folio, Arabic pen strokes, historical pigments and margins
+   must be shown without artificial sepia/greyscale/hue overlays or cropping.
+   This marker applies only to individually attributed local archival images,
+   never to unsourced/geometric placeholder art. No animations or extra layers. */
+.reader figure.lt-inline-illustration.lt-archive-colour-original,
+.lt-companion-plate.lt-archive-colour-original{
+ background:#f8f6f1!important;border:1px solid #c3b9a9!important;
+ border-radius:4px!important;padding:clamp(5px,1vw,9px)!important;
+ box-shadow:0 3px 12px #21170a16!important;isolation:isolate;
+}
+.reader figure.lt-inline-illustration.lt-archive-colour-original img,
+.lt-companion-plate.lt-archive-colour-original img,
+.lt-art-inspection-dialog.lt-archive-colour-original figure img{
+ filter:none!important;-webkit-filter:none!important;opacity:1!important;
+ mix-blend-mode:normal!important;object-fit:contain!important;
+ background:transparent!important;image-rendering:auto!important;
+}
+.lt-art-inspection-dialog.lt-archive-colour-original{
+ background:#f8f6f1!important;border-color:#bdb09c!important;
+}
+.lt-companion-plate.lt-archive-colour-original figcaption,
+.reader .lt-inline-illustration.lt-archive-colour-original figcaption{
+ color:#493f32!important;background:transparent!important;
+}

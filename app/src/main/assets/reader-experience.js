@@ -850,6 +850,9 @@ function ltOpenArtInspection(picture){
  dismiss.textContent=arabic?'إغلاق ×':'Close ×';
  dismiss.setAttribute('aria-label',arabic?'إغلاق الصورة والعودة للقراءة':'Close image and return to reading');
  const frame=document.createElement('figure');
+ const originalColour=String(picture?.closest?.('figure')?.className||'')
+  .split(/\s+/).includes('lt-archive-colour-original');
+ if(originalColour)dialog.className+=' lt-archive-colour-original';
  const viewport=document.createElement('div');
  viewport.className='lt-art-inspection-viewport';
  const image=document.createElement('img');
@@ -1076,7 +1079,8 @@ function ltRenderTranslationChapter(){
    ?'<p lang="en" dir="ltr">'+escapeText(paragraph.en)+'</p>'
    :'<p lang="ar" dir="rtl">'+escapeText(paragraph.ar)+'</p>';
   if(!plate||index!==plate.index)return prose;
-  return prose+'<figure class="lt-companion-plate">'+
+  return prose+'<figure class="lt-companion-plate'+
+   (plate.visualTreatment==='original-colour'?' lt-archive-colour-original':'')+'">'+
    '<img src="'+plate.src+'" loading="lazy" decoding="async" alt="'+
    escapeText(plate.alt)+'" style="aspect-ratio:'+plate.ratio+'">'+
    '<figcaption>'+escapeText(plate.credit)+'</figcaption></figure>';
@@ -1274,7 +1278,12 @@ renderReader=function(){
   if(!anchor||typeof anchor.insertAdjacentElement!=='function')continue;
   const position=['wide','edge-start','edge-end'].includes(item.position)?item.position:'wide';
   const figure=document.createElement('figure');
-  figure.className='lt-inline-illustration lt-inline-'+position+(item===chapterScene?' lt-inline-chapter-scene':'');
+  const originalColour=item.visualTreatment==='original-colour'&&
+    item!==chapterScene&&safeArtPath.test(item.src||'')&&
+    typeof item.credit==='string'&&!!item.credit.trim();
+  figure.className='lt-inline-illustration lt-inline-'+position+
+   (item===chapterScene?' lt-inline-chapter-scene':'')+
+   (originalColour?' lt-archive-colour-original':'');
   const picture=document.createElement('img');
   picture.src=item.src;picture.alt=item.alt.trim();
   picture.loading='lazy';picture.decoding='async';
@@ -1284,7 +1293,12 @@ renderReader=function(){
      Number.isFinite(item.aspectRatio) && item.aspectRatio>=0.5 && item.aspectRatio<=3.5){
    picture.style.aspectRatio=String(item.aspectRatio);
   }
-  if(picture.style && item.crop==='cover'){
+  if(picture.style && originalColour){
+   // Historical pigment and complete painted manuscript must remain visible:
+   // never crop, grayscale, sepia-filter or blend the actual original pixels.
+   picture.style.objectFit='contain';
+  }
+  if(picture.style && item.crop==='cover'&&!originalColour){
    picture.style.objectFit='cover';
    if(Number.isFinite(item.focalX)&&Number.isFinite(item.focalY)&&
       item.focalX>=0&&item.focalX<=100&&item.focalY>=0&&item.focalY<=100){

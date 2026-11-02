@@ -121,6 +121,38 @@ assert.equal(added[0].figure.removed, true, 'missing offline image removed witho
 assert.equal(added[1].figure.children[0].src, 'art/verne/map.png');
 assert.equal(added[1].figure.children.length, 1);
 assert.equal(chapter.paragraphs[0].ar, 'محطة.', 'Arabic learning text unchanged');
+// Authentic old full-colour folios are allowed ONLY with local path +
+// provenance credit; reserve original shape and ignore explicit crop=cover.
+chapter.inlineArt=[{afterParagraph:0,src:'art/kalila/fox-drum.webp',
+ alt:'16th-century coloured fox and drum manuscript',credit:'The Met · 16th century',
+ visualTreatment:'original-colour',aspectRatio:760/1045,crop:'cover'}];
+added.length=0;
+sandbox.renderReader();
+assert.equal(added.length,1,'stage-aware colour image can be placed in source prose');
+const colourFigure=added[0].figure,colourImg=colourFigure.children[0];
+assert.match(colourFigure.className,/lt-archive-colour-original/,'original pigment mode marked');
+assert.equal(colourImg.style.objectFit,'contain','full original manuscript cannot crop');
+assert.equal(colourImg.style.aspectRatio,String(760/1045),'original folio aspect');
+assert.equal(colourFigure.children[1].textContent,'The Met · 16th century','source credit retained');
+colourImg.handlers.click({stopPropagation(){}});
+assert.match(gallery.at(-1).children[0].className,/lt-archive-colour-original/,
+ 'zoom inspection preserves colour mode from the verified book figure');
+sandbox.window.LinguaTalesArtInspection.closeIfOpen();
+assert.equal(document.body.style.overflow,'auto','colour folio zoom returns reader');
+chapter.inlineArt=[{afterParagraph:0,src:'art/kalila/not-proven.webp',
+ alt:'Uncredited art',visualTreatment:'original-colour',crop:'cover'}];
+added.length=0;sandbox.renderReader();
+assert.equal(added.length,1,'ordinary safe local art remains available');
+assert.ok(!added[0].figure.className.includes('lt-archive-colour-original'),
+ 'uncredited colours cannot falsely signal authenticated original pigments');
+assert.equal(added[0].figure.children[0].style.objectFit,'cover',
+ 'uncredited item does not inherit archive-colour visual authority');
+const cssColour=fs.readFileSync(path.join(__dirname,
+ '../app/src/main/assets/lt-device-acceptance.css'),'utf8');
+assert.match(cssColour,/\.lt-archive-colour-original img[,\s]/,
+ 'historical manuscript colour must have explicit CSS preservation');
+assert.match(cssColour,/filter:none!important/,'original pigments cannot be graded by CSS');
+assert.match(cssColour,/object-fit:contain!important/,'original folio edges cannot be cropped');
 // Existing offline chapter art should appear even when no inlineArt is authored.
 chapter.inlineArt=[];
 added.length=0;
