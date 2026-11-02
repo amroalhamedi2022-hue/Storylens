@@ -454,3 +454,12 @@ assert.match(css,/\.lt-paper-reverse-ink p\{[^}]*unicode-bidi:plaintext/,
  'the reverse uses each original line’s bidi order');
 assert.ok(!/\.reader \.lt-paper-reverse-ink\{[^}]*filter:blur/.test(css),
  'fold back does not spend GPU cycles on per-frame image blur');
+
+// Archival paper curl uses warm neutral surfaces; original coloured folio
+// pigments and in-text images are NEVER recoloured by image filters.
+assert.match(css,/rgba\(255,253,246,\.99\) 12%/,
+ 'paper fold uses parchment tone rather than a violet plastic sheen');
+assert.ok(!css.includes('rgba(247,245,254,.99)'),
+ 'active curled leaf no longer has a bluish plastic band');
+assert.match(css,/rgba\(88,67,45,\.36\) 40%/,
+ 'crease shadow follows natural ink/paper colouring');
