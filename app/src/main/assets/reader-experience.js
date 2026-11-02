@@ -957,7 +957,7 @@ function ltOpenArtInspection(picture){
   // archival bounds or leave a ghost-held gesture behind.
   if(contacts.size>=2)return;
   contacts.set(event.pointerId,{x:event.clientX,y:event.clientY,
-   startX:event.clientX,startY:event.clientY});
+   startX:event.clientX,startY:event.clientY,startedAt:Date.now()});
   if(contacts.size===2){
    hadMultipleTouch=true;lastTouchTap=null;
    const pair=fingerPair();
@@ -982,7 +982,12 @@ function ltOpenArtInspection(picture){
  });
  const endContact=event=>{
   const held=contacts.get(event.pointerId);
-  const tap=event.type==='pointerup'&&event.pointerType==='touch'&&
+  // Pointer capture automatically emits lostpointercapture after pointerup;
+  // a stale callback must not clear the first recognized short touch.
+  if(!held)return;
+  const duration=Date.now()-held.startedAt;
+  const tap=duration>=0&&duration<=280&&
+   event.type==='pointerup'&&event.pointerType==='touch'&&
    contacts.size===1&&!hadMultipleTouch&&held&&
    Math.hypot(event.clientX-held.startX,event.clientY-held.startY)<14;
   if(tap){

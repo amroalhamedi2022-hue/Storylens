@@ -171,8 +171,10 @@ inspection.handlers.keydown({key:'0',preventDefault(){}});
  // Android's synthetic dblclick must not undo the gesture.
  viewport.handlers.pointerdown(evt(11,230,240));
  viewport.handlers.pointerup(touch('pointerup',11,230,240));
+ viewport.handlers.lostpointercapture(touch('lostpointercapture',11,230,240));
  viewport.handlers.pointerdown(evt(12,230,240));
  viewport.handlers.pointerup(touch('pointerup',12,230,240));
+ viewport.handlers.lostpointercapture(touch('lostpointercapture',12,230,240));
  assert.match(original.style.transform,/scale\(2\.000\)/,
   'two phone touch taps zoom real original to 2x');
  viewport.handlers.dblclick({preventDefault(){}});
@@ -194,6 +196,27 @@ inspection.handlers.keydown({key:'0',preventDefault(){}});
  viewport.handlers.pointerup(touch('pointerup',17,160,220));
  assert.match(original.style.transform,/scale\(1\.000\)/,
   'drag and cancellation cannot synthesize a double-tap zoom');
+ // Holding still is NOT a tap. Use a controlled clock rather than sleeping.
+ const originalDate=sandbox.Date;
+ let clock=Date.now()+1000;
+ sandbox.Date={now:()=>clock};
+ viewport.handlers.pointerdown(evt(21,230,240));clock+=400;
+ viewport.handlers.pointerup(touch('pointerup',21,230,240));
+ clock+=10;
+ viewport.handlers.pointerdown(evt(22,230,240));clock+=400;
+ viewport.handlers.pointerup(touch('pointerup',22,230,240));
+ assert.match(original.style.transform,/scale\(1\.000\)/,
+  'two long presses never count as a double tap');
+ clock+=50;
+ viewport.handlers.pointerdown(evt(23,230,240));clock+=40;
+ viewport.handlers.pointerup(touch('pointerup',23,230,240));
+ clock+=50;
+ viewport.handlers.pointerdown(evt(24,230,240));clock+=40;
+ viewport.handlers.pointerup(touch('pointerup',24,230,240));
+ assert.match(original.style.transform,/scale\(2\.000\)/,
+  'short taps still zoom after long presses were rejected');
+ sandbox.Date=originalDate;
+
 
 
 assert.equal(inspection.children[0].children[2].children[1].textContent,
