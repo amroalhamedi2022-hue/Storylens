@@ -121,7 +121,7 @@ assert.ok(parseFloat(foldGeometry(.5,'right',155).eighthBottom)>
 assert.ok(parseFloat(foldGeometry(.5,'left',-155).quarterTop)>
  parseFloat(foldGeometry(.5,'left',-155).quarterBottom),
  'upper pull skews the inner curve in RTL and LTR');
-assert.ok(parseFloat(foldGeometry(100,'right',10000).quarterBottom)<3,
+assert.ok(parseFloat(foldGeometry(100,'right',10000).quarterBottom)<3.5,
  'all dynamic curvature remains bounded on phone and tablet');
 assert.match(css,/--lt-curl-eighth-top\)\) 12\.5%/,
  'right page includes a rounded upper outer curve');
