@@ -369,3 +369,6 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 
 ### 2026-11-02 — UX04 Chromium zoom QA selector repair after 2 reproducible failures
 - The new zoom source/Android APK tests passed on `b907bd2951bb`, but browser QA run #41398117918 attempts 1 and 2 failed **all seven** zoom assertions while original image/open/back/caption checks passed. Test selector was brittle: it located buttons by exact English/Arabic aria-label strings even though both visible locales and production button order are already under test. Changed Chromium lookup to production toolbar's three fixed ordered buttons, requiring three nonempty accessible names, then driving actual buttons and validating actual 2.25×, 1.5×, 1× transforms. This change does NOT weaken visual assertions, source or archival provenance. Next exact-head CI remains pending.
+
+### 2026-11-02 — UX04 exact Chromium CSS normalization
+- Corrected 4× zoom-browser assertions to read the actual numeric scale instead of matching CSS trailing zeroes; Chromium normalizes e.g. `scale(2.250)` to `scale(2.25)`. The same strict expected 2.25×, 1.5× and 1× thresholds remain. The original image source and its captions are verified unchanged. Exact HEAD CI pending; neither pixel fidelity nor device gestures are claimed without physical verification.

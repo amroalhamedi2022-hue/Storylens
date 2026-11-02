@@ -443,12 +443,18 @@ tests["historic-verne-plates"] = r"""(async function(){
    // Browser locale is independent from the companion's source language.
    // Stable DOM order is defined by production zoomButton calls; do not
    // infer visible controls from exact translated labels in this fixture.
+   // Chromium canonicalizes numeric CSS: scale(2.250) serializes as
+   // scale(2.25), so compare numeric CSS values, never raw string precision.
+   const actualScale=()=>{
+    const match=zoomed?.style.transform.match(/scale\\(([0-9.]+)\\)/);
+    return match?Number(match[1]):NaN;
+   };
    zoomIn?.click();zoomIn?.click();
-   check('chapter '+item.index+' zoom in',zoomed?.style.transform.includes('scale(2.250)'));
+   check('chapter '+item.index+' zoom in',Math.abs(actualScale()-2.25)<.005);
    zoomOut?.click();
-   check('chapter '+item.index+' zoom out',zoomed?.style.transform.includes('scale(1.500)'));
+   check('chapter '+item.index+' zoom out',Math.abs(actualScale()-1.5)<.005);
    zoomReset?.click();
-   check('chapter '+item.index+' zoom reset',zoomed?.style.transform.includes('scale(1.000)'));
+   check('chapter '+item.index+' zoom reset',Math.abs(actualScale()-1)<.005);
    check('chapter '+item.index+' inspection disables background scroll',
     document.body.style.overflow==='hidden');
    // Invoke the SAME no-argument bridge as Android's actual Back dispatcher,
