@@ -182,7 +182,7 @@ inspection.handlers.keydown({key:'0',preventDefault(){}});
  viewport.handlers.pointerup(touch('pointerup',13,230,240));
  viewport.handlers.pointerdown(evt(14,230,240));
  viewport.handlers.pointerup(touch('pointerup',14,230,240));
- assert.match(original.style.transform,/scale\\(1\\.000\\)/,
+ assert.match(original.style.transform,/scale\(1\.000\)/,
   'second touch double-tap restores uncropped original');
  // Movement and pointer cancellation may never count as two tap releases.
  viewport.handlers.pointerdown(evt(15,160,220));
@@ -192,7 +192,7 @@ inspection.handlers.keydown({key:'0',preventDefault(){}});
  viewport.handlers.pointercancel(touch('pointercancel',16,160,220));
  viewport.handlers.pointerdown(evt(17,160,220));
  viewport.handlers.pointerup(touch('pointerup',17,160,220));
- assert.match(original.style.transform,/scale\\(1\\.000\\)/,
+ assert.match(original.style.transform,/scale\(1\.000\)/,
   'drag and cancellation cannot synthesize a double-tap zoom');
 
 

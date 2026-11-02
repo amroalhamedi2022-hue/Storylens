@@ -465,3 +465,6 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 
 ### 2026-11-02 — ART03c browser-event fixture correction
 - [#41424331789](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/41424331789) showed the newly added fake pointerup test did not supply the event `type` property, unlike actual browser-dispatched PointerEvent. Updated the test's touch helper to include the correct pointerup/pointercancel type and left production gesture logic unchanged. Exact follow-up CI PENDING. The earlier CSS/regular-expression correction alone was insufficient.
+
+### 2026-11-02 — ART03c remaining reset assertion escapes
+- Corrected the two 1× original-scale regex expectations in the same newly added touchscreen test, matching the already corrected 2× assertions; source reader implementation untouched. Exact latest CI required; pending device testing remains open.
