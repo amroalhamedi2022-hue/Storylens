@@ -462,3 +462,6 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 
 ### 2026-11-02 — ART03c assertion escape correction
 - Corrected two newly added Node regression regular expressions to use single regex escapes for literal parentheses and decimal dots. The preceding touch production implementation is unchanged; exact-main CI for this test-only follow-up is PENDING.
+
+### 2026-11-02 — ART03c browser-event fixture correction
+- [#41424331789](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/41424331789) showed the newly added fake pointerup test did not supply the event `type` property, unlike actual browser-dispatched PointerEvent. Updated the test's touch helper to include the correct pointerup/pointercancel type and left production gesture logic unchanged. Exact follow-up CI PENDING. The earlier CSS/regular-expression correction alone was insufficient.
