@@ -551,6 +551,11 @@ tests["historic-verne-plates"] = r"""(async function(){
    check('chapter '+item.index+' zoom out',Math.abs(actualScale()-1.5)<.005);
    zoomReset?.click();
    check('chapter '+item.index+' zoom reset',Math.abs(actualScale()-1)<.005);
+   check('chapter '+item.index+' portrait width clamp avoids blank margins',
+    ltArtPanRange(400,170,2)===0&&Math.abs(ltArtPanRange(400,170,4)-140)<.005);
+   check('chapter '+item.index+' portrait height clamp avoids blank margins',
+    ltArtPanRange(600,300,2)===0&&Math.abs(ltArtPanRange(600,300,4)-300)<.005);
+
    if(item.index===2){
     // Real browser pointer events, not mocked geometry: asymmetric fingers
     // must grow the original and translate it under the moving midpoint.

@@ -114,6 +114,30 @@ const aroundFinger=pinchMath.compute(
 assert.equal(aroundFinger.zoom,2);
 assert.equal(aroundFinger.panX,-50,'pixel under off-centre fingertip stays anchored');
 assert.equal(pinchMath.compute(
+ {zoom:1,distance:100,x:90,y:0,panX:0,panY:0},
+ {distance:200,x:90,y:0},400,600,170,560).panX,0,
+ 'narrow portrait art stays centred until its scaled raster fills the viewport');
+assert.equal(pinchMath.compute(
+ {zoom:1,distance:100,x:90,y:0,panX:0,panY:0},
+ {distance:400,x:90,y:0},400,600,170,560).panX,-140,
+ 'once magnified, portrait image pans only to its actual content edge');
+assert.equal(pinchMath.compute(
+ {zoom:1,distance:100,x:0,y:140,panX:0,panY:0},
+ {distance:200,x:0,y:140},400,600,170,300).panY,0,
+ 'short manuscript folio cannot pan into blank vertical margins');
+assert.equal(pinchMath.compute(
+ {zoom:1,distance:100,x:0,y:140,panX:0,panY:0},
+ {distance:400,x:0,y:140},400,600,170,300).panY,-300,
+ 'tall zoom may pan only up to its rendered image boundary');
+assert.equal(pinchMath.compute(
+ {zoom:1,distance:100,x:0,y:0,panX:0,panY:0},
+ {distance:100,x:0,y:0},400,600,170,300).zoom,1);
+assert.equal(pinchMath.compute(
+ {zoom:1,distance:100,x:0,y:0,panX:0,panY:0},
+ {distance:100,x:0,y:0},400,600,170,300).panX,0,
+ 'returning to 1x always resets side-to-side translation');
+
+assert.equal(pinchMath.compute(
  {zoom:2,distance:100,x:0,y:0,panX:0,panY:0},
  {distance:900,x:0,y:0},400,600).zoom,4,'4x upper limit');
 const viewport=inspection.children[0].children[2].children[0];
@@ -133,6 +157,16 @@ viewport.handlers.pointerup(evt(1,160,300));
 inspection.handlers.keydown({key:'0',preventDefault(){}});
 assert.match(original.style.transform,/scale\(1\.000\)/,
  'accessible keyboard 0 resets the original image after touch');
+original.clientWidth=170;original.clientHeight=500;
+viewport.handlers.pointerdown(evt(3,160,300));
+viewport.handlers.pointerdown(evt(4,260,300));
+viewport.handlers.pointermove(evt(4,290,300));
+assert.match(original.style.transform,/translate3d\(0\.00px/,
+ 'real portrait image cannot be pulled sideways into empty margins');
+viewport.handlers.pointercancel(evt(4,290,300));
+viewport.handlers.pointerup(evt(3,160,300));
+inspection.handlers.keydown({key:'0',preventDefault(){}});
+
 assert.equal(inspection.children[0].children[2].children[1].textContent,
  'CC0 illustration','caption is unchanged after zoom');
 inspection.handlers.keydown({key:'Escape',preventDefault(){},stopPropagation(){}});

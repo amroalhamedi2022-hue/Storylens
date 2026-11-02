@@ -845,9 +845,19 @@ window.LinguaTalesArtInspection=Object.freeze({
   return true;
  }
 });
+// The image can be narrower than its viewport (portrait book engravings).
+// Clamp based on the UNTRANSFORMED bitmap dimensions, not a synthetic full-
+// width canvas, or a drag can reveal large empty margins during a pinch.
+function ltArtPanRange(viewportSize,imageSize,zoom){
+ const frame=Number(viewportSize),raster=Number(imageSize),z=Number(zoom);
+ if(!Number.isFinite(frame)||frame<=0)return 0;
+ const intrinsic=Number.isFinite(raster)&&raster>0?raster:frame;
+ const factor=Number.isFinite(z)?Math.max(1,Math.min(4,z)):1;
+ return Math.max(0,(intrinsic*factor-frame)/2);
+}
 // A held two-finger pinch must magnify the actual pixel under the fingers,
 // not jump the entire archival painting toward the screen's center.
-function ltArtPinchFrame(start,next,width,height){
+function ltArtPinchFrame(start,next,width,height,imageWidth=width,imageHeight=height){
  const initial=Math.max(1,Math.min(4,Number(start?.zoom)||1));
  const distance=Math.max(1,Number(start?.distance)||1);
  const measured=Math.max(1,Number(next?.distance)||1);
@@ -858,7 +868,8 @@ function ltArtPinchFrame(start,next,width,height){
  const transformedY=(Number(next?.y)||0)-((Number(start?.y)||0)-(Number(start?.panY)||0))*ratio;
  const w=Number.isFinite(width)&&width>0?width:400;
  const h=Number.isFinite(height)&&height>0?height:600;
- const maxX=w*(zoom-1)/2,maxY=h*(zoom-1)/2;
+ const maxX=ltArtPanRange(w,imageWidth,zoom);
+ const maxY=ltArtPanRange(h,imageHeight,zoom);
  return {zoom,panX:Math.max(-maxX,Math.min(maxX,projectedX)),
   panY:Math.max(-maxY,Math.min(maxY,transformedY))};
 }
@@ -900,8 +911,10 @@ function ltOpenArtInspection(picture){
  function applyZoom(){
   const w=Number(viewport.clientWidth)||Number(image.clientWidth)||400;
   const h=Number(viewport.clientHeight)||Number(image.clientHeight)||600;
-  panX=Math.max(-w*(zoom-1)/2,Math.min(w*(zoom-1)/2,panX));
-  panY=Math.max(-h*(zoom-1)/2,Math.min(h*(zoom-1)/2,panY));
+  const xLimit=ltArtPanRange(w,Number(image.clientWidth)||w,zoom);
+  const yLimit=ltArtPanRange(h,Number(image.clientHeight)||h,zoom);
+  panX=Math.max(-xLimit,Math.min(xLimit,panX));
+  panY=Math.max(-yLimit,Math.min(yLimit,panY));
   image.style.transform='translate3d('+panX.toFixed(2)+'px,'+panY.toFixed(2)+'px,0) scale('+zoom.toFixed(3)+')';
  }
  function setZoom(next){
@@ -952,7 +965,8 @@ function ltOpenArtInspection(picture){
   contacts.set(event.pointerId,{x:event.clientX,y:event.clientY});
   if(contacts.size===2&&startPinch){
    const pair=fingerPair();
-   const frame=ltArtPinchFrame(startPinch,pair,pair.width,pair.height);
+   const frame=ltArtPinchFrame(startPinch,pair,pair.width,pair.height,
+    Number(image.clientWidth)||pair.width,Number(image.clientHeight)||pair.height);
    zoom=frame.zoom;panX=frame.panX;panY=frame.panY;applyZoom();
   }else if(contacts.size===1&&zoom>1){
    panX+=event.clientX-previous.x;panY+=event.clientY-previous.y;
@@ -969,6 +983,11 @@ function ltOpenArtInspection(picture){
  viewport.addEventListener('dblclick',event=>{
   event.preventDefault();setZoom(zoom===1?2:1);
  });
+ // Native orientation/viewport changes must not strand an already zoomed
+ // folio outside the readable view. One passive listener per open viewer.
+ const reflowArt=()=>applyZoom();
+ window.addEventListener?.('resize',reflowArt,{passive:true});
+ image.onload=applyZoom;
  const credit=picture.closest?.('figure')?.querySelector?.('figcaption')?.textContent||'';
  if(credit.trim()){
   const caption=document.createElement('figcaption');
@@ -980,7 +999,9 @@ function ltOpenArtInspection(picture){
  const close=()=>{
   if(ltCloseActiveArtInspection!==close)return;
   ltCloseActiveArtInspection=null;
-  contacts.clear();backdrop.remove?.();
+  contacts.clear();
+  window.removeEventListener?.('resize',reflowArt);
+  backdrop.remove?.();
   body.classList?.remove('lt-art-inspection-open');
   if(body.style)body.style.overflow=priorOverflow;
   if(picture.isConnected!==false)picture.focus?.({preventScroll:true});
