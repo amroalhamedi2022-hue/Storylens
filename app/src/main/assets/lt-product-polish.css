@@ -83,21 +83,31 @@ body.theme-aurora,body.theme-nebula{background-attachment:scroll!important;}
    at most once per animation frame and remains zero at rest. An inset fallback
    above still works on old Chromium versions without polygon clip paths. */
 @supports (clip-path:polygon(0 0,100% 0,100% 100%,0 100%)){
+ /* Nine finger-following contour points mirror between the RTL/LTR binding.
+    The live next page remains the real inert underlay, not a bitmap copy. */
  .reader #sentences.lt-paper-grabbing[data-lt-fold-edge="right"] .lt-book-page.lt-paper-grabbed{
   clip-path:polygon(0 0,
    calc(100% - var(--lt-fold-cut) + var(--lt-curl-top)) 0,
+   calc(100% - var(--lt-fold-cut) + var(--lt-curl-eighth-top)) 12.5%,
    calc(100% - var(--lt-fold-cut) + var(--lt-curl-shoulder)) 25%,
+   calc(100% - var(--lt-fold-cut) - var(--lt-curl-quarter-top)) 37.5%,
    calc(100% - var(--lt-fold-cut) - var(--lt-curl-belly)) 50%,
+   calc(100% - var(--lt-fold-cut) - var(--lt-curl-quarter-bottom)) 62.5%,
    calc(100% - var(--lt-fold-cut) + var(--lt-curl-shoulder)) 75%,
+   calc(100% - var(--lt-fold-cut) + var(--lt-curl-eighth-bottom)) 87.5%,
    calc(100% - var(--lt-fold-cut) + var(--lt-curl-bottom)) 100%,0 100%)!important;
  }
  .reader #sentences.lt-paper-grabbing[data-lt-fold-edge="left"] .lt-book-page.lt-paper-grabbed{
   clip-path:polygon(
    calc(var(--lt-fold-cut) - var(--lt-curl-top)) 0,100% 0,100% 100%,
    calc(var(--lt-fold-cut) - var(--lt-curl-bottom)) 100%,
+   calc(var(--lt-fold-cut) - var(--lt-curl-eighth-bottom)) 87.5%,
    calc(var(--lt-fold-cut) - var(--lt-curl-shoulder)) 75%,
+   calc(var(--lt-fold-cut) + var(--lt-curl-quarter-bottom)) 62.5%,
    calc(var(--lt-fold-cut) + var(--lt-curl-belly)) 50%,
-   calc(var(--lt-fold-cut) - var(--lt-curl-shoulder)) 25%)!important;
+   calc(var(--lt-fold-cut) + var(--lt-curl-quarter-top)) 37.5%,
+   calc(var(--lt-fold-cut) - var(--lt-curl-shoulder)) 25%,
+   calc(var(--lt-fold-cut) - var(--lt-curl-eighth-top)) 12.5%)!important;
  }
 }
 /* A soft moving cast shadow and bevel distinguish the reverse of the curling

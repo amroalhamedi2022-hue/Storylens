@@ -109,6 +109,30 @@ assert.equal(foldGeometry(.5,'right',220).skew,'-7.00deg');
 assert.equal(foldGeometry(.5,'left',220).skew,'7.00deg');
 assert.equal(foldGeometry(0,'right',0).top,'0.00%','no curve at rest');
 assert.ok(parseFloat(foldGeometry(.5,'right',0).belly)>0,'half-pulled sheet bows inward');
+assert.equal(foldGeometry(0,'right',0).eighthTop,'0.00%','flat paper has no intermediate arc');
+assert.equal(foldGeometry(0,'right',0).quarterTop,'0.00%','no crease at rest');
+assert.ok(parseFloat(foldGeometry(.5,'right',0).eighthTop)>
+ parseFloat(foldGeometry(.5,'right',0).shoulder),'outer arc rounds toward the paper corner');
+assert.ok(parseFloat(foldGeometry(.5,'right',0).quarterTop)>0,
+ 'quarter arc bows into the paper rather than a sharp V');
+assert.ok(parseFloat(foldGeometry(.5,'right',155).eighthBottom)>
+ parseFloat(foldGeometry(.5,'right',155).eighthTop),
+ 'lower finger pull skews outer arc toward the lower edge');
+assert.ok(parseFloat(foldGeometry(.5,'left',-155).quarterTop)>
+ parseFloat(foldGeometry(.5,'left',-155).quarterBottom),
+ 'upper pull skews the inner curve in RTL and LTR');
+assert.ok(parseFloat(foldGeometry(100,'right',10000).quarterBottom)<3,
+ 'all dynamic curvature remains bounded on phone and tablet');
+assert.match(css,/--lt-curl-eighth-top\)\) 12\.5%/,
+ 'right page includes a rounded upper outer curve');
+assert.match(css,/--lt-curl-quarter-bottom\)\) 62\.5%/,
+ 'right and left pages include rounded lower inner arcs');
+assert.match(css,/--lt-curl-eighth-bottom\)\) 87\.5%/,
+ 'smooth lower outer arc is not a five-point corner');
+assert.match(reader,/sentenceBox\.style\.setProperty\('--lt-curl-eighth-top',geometry\.eighthTop\)/);
+assert.match(reader,/sentenceBox\.style\.setProperty\('--lt-curl-quarter-bottom',geometry\.quarterBottom\)/);
+assert.match(reader,/--lt-curl-eighth-top','--lt-curl-eighth-bottom'/,
+ 'cancel or commit removes all newly added compositor parameters');
 assert.ok(parseFloat(foldGeometry(.5,'right',160).bottom)>
  parseFloat(foldGeometry(.5,'right',160).top),'drag height skews the curve toward the finger');
 assert.ok(parseFloat(foldGeometry(.5,'left',-160).top)>
