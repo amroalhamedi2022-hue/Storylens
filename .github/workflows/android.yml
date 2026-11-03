@@ -71,6 +71,7 @@ jobs:
           python3 tools/test_lingua_audio_focus.py
           python3 tools/test_apk_update.py
           node tools/release-gate.test.cjs
+          node tools/unsigned-production-gate.test.cjs
           pwsh -NoProfile -Command '$t=$null; $e=$null; foreach($f in @("tools/bootstrap_first_release.ps1","tools/configure_stable_signing.ps1")) { [void][System.Management.Automation.Language.Parser]::ParseFile($f,[ref]$t,[ref]$e); if($e.Count -gt 0) { $e | Format-Table -AutoSize; exit 1 }; Write-Output "PASS PowerShell parse: $f" }'
           node tools/botanical-theme.test.cjs
           node tools/rain-glass.test.cjs
@@ -202,13 +203,10 @@ jobs:
           fi
       - name: Run tests and assemble APK
         run: |
-          gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
-          if [ -n "$LT_SIGNING_KEYSTORE" ]; then
-            gradle --no-daemon :app:assembleRelease
-            APK="$(find app/build/outputs/apk/release -type f -name '*.apk' | head -1)"
-            test -n "$APK"
-            sha256sum "$APK" | tee app/build/outputs/apk/release/APK_SHA256.txt
-          fi
+          gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug :app:assembleRelease
+          APK="$(find app/build/outputs/apk/release -type f -name '*.apk' | head -1)"
+          test -s "$APK"
+          sha256sum "$APK" | tee app/build/outputs/apk/release/APK_SHA256.txt
       - name: Verify APK package, update version and certificate identity
         shell: bash
         env:
@@ -270,6 +268,43 @@ jobs:
           }
           inspect_variant debug
           if [ -n "${LT_SIGNING_KEYSTORE:-}" ]; then inspect_variant release; fi
+      - name: Verify unsigned production APK for offline personal signing
+        if: success() && env.LT_SIGNING_KEYSTORE == ''
+        shell: bash
+        run: |
+          set -euo pipefail
+          AAPT="$ANDROID_HOME/build-tools/36.0.0/aapt"
+          APKSIGNER="$ANDROID_HOME/build-tools/36.0.0/apksigner"
+          DEBUG="$(find app/build/outputs/apk/debug -type f -name '*.apk' | head -1)"
+          RELEASE="$(find app/build/outputs/apk/release -type f -name '*.apk' | head -1)"
+          test -s "$DEBUG" && test -s "$RELEASE"
+          IDENTITY="$("$AAPT" dump badging "$RELEASE" | grep '^package:' | head -1)"
+          [[ "$IDENTITY" == *"name='com.storylens.reader' "* ]] || { echo "::error::Unsigned release has wrong package"; exit 1; }
+          code="$(printf '%s\n' "$IDENTITY" | sed -n "s/.*versionCode='\\([0-9]*\\)'.*/\\1/p")"
+          test "$code" = "$((100000 + GITHUB_RUN_NUMBER))"
+          if "$APKSIGNER" verify "$RELEASE" >/dev/null 2>&1; then
+            echo "::error::Expected unsigned release; do not archive ambiguously signed APK"
+            exit 1
+          fi
+          unzip -Z1 "$RELEASE" > "$RUNNER_TEMP/unsigned-entries.txt"
+          unzip -Z1 "$DEBUG" > "$RUNNER_TEMP/debug-entries.txt"
+          for asset in index.html reader-experience.js reader-experience.css lingua-shell.js lingua-i18n.js lingua-lookup.js data-backup.js lt-tap-feedback.js LICENSE_AUDIO.txt LICENSE_FREEDICT.txt; do
+            grep -Fxq "assets/$asset" "$RUNNER_TEMP/unsigned-entries.txt"
+            grep -Fxq "assets/$asset" "$RUNNER_TEMP/debug-entries.txt"
+            test "$(unzip -p "$DEBUG" "assets/$asset" | sha256sum | cut -d' ' -f1)" = "$(unzip -p "$RELEASE" "assets/$asset" | sha256sum | cut -d' ' -f1)" || { echo "::error::Release offline content mismatch: $asset"; exit 1; }
+          done
+          {
+            echo "$IDENTITY"
+            echo "variant=unsigned-production"
+            echo "commit=$GITHUB_SHA"
+            echo "github_run=$GITHUB_RUN_ID"
+            echo "signing=NONE; MUST SIGN OFFLINE WITH RETAINED PRIVATE KEY"
+            echo "artifact_is_NOT_installable=TRUE"
+          } > app/build/outputs/apk/release/UNSIGNED_APK_IDENTITY.txt
+          test -s "$ANDROID_HOME/build-tools/36.0.0/lib/apksigner.jar"
+          mkdir -p app/build/outputs/apk/release/signing-tool
+          cp "$ANDROID_HOME/build-tools/36.0.0/lib/apksigner.jar" app/build/outputs/apk/release/signing-tool/apksigner.jar
+          echo "PASS: verified unsigned production package and content parity, ready for private offline signing"
       - name: Verify required files really exist inside APK
         shell: bash
         run: |
@@ -631,6 +666,17 @@ jobs:
             app/build/outputs/apk/debug/*.apk
             app/build/outputs/apk/debug/APK_SHA256.txt
             app/build/outputs/apk/debug/APK_INSTALL_IDENTITY.txt
+          if-no-files-found: error
+      - name: Upload unsigned production package for offline owner signing
+        if: success() && env.LT_SIGNING_KEYSTORE == ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: Lingua-Tales-Unsigned-Production-NOT-INSTALLABLE
+          path: |
+            app/build/outputs/apk/release/*.apk
+            app/build/outputs/apk/release/APK_SHA256.txt
+            app/build/outputs/apk/release/UNSIGNED_APK_IDENTITY.txt
+            app/build/outputs/apk/release/signing-tool/apksigner.jar
           if-no-files-found: error
       - name: Upload stable-signed release APK
         if: success() && env.LT_SIGNING_KEYSTORE != '' && github.event_name == 'workflow_dispatch' && inputs.release_channel == 'stable-release'
