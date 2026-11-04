@@ -1,0 +1,377 @@
+{
+  "schemaVersion": 1,
+  "id": "collins-the-moonstone-1868",
+  "originalTitle": "The Moonstone",
+  "arabicDisplayTitle": "حجر القمر",
+  "author": "Wilkie Collins",
+  "originalLanguage": "en",
+  "originalPublicationYear": 1868,
+  "genres": [
+    "detective mystery",
+    "psychological investigation",
+    "Victorian literature",
+    "historical intrigue"
+  ],
+  "completeOriginalSource": true,
+  "source": {
+    "publisher": "Standard Ebooks",
+    "editionType": "Standard Ebooks normalized XHTML transcription of the unabridged original English work, not a facsimile of 1868 print",
+    "upstreamRepo": "standardebooks/wilkie-collins_the-moonstone",
+    "upstreamCommit": "81eafac7022dbdb26f52fa90377fb7bba9996808",
+    "editionURL": "https://standardebooks.org/ebooks/wilkie-collins/the-moonstone",
+    "gutenbergURL": "https://www.gutenberg.org/ebooks/155",
+    "upstreamLicenseGitBlobSha": "87aa7d003e74ba350bcce690938ced732f96e06e",
+    "rightsScope": "US public-domain belief and CC0 editorial contributions in source license; translation, modern scan and non-US rights require separate approval"
+  },
+  "sourceParts": [
+    {
+      "file": "prologue.xhtml",
+      "kind": "narrative",
+      "bytes": 13640,
+      "upstreamGitBlobSha": "069d19c9b14ac7b90a35dd16f48f73530e6d84e9"
+    },
+    {
+      "file": "first-period.xhtml",
+      "kind": "structural-heading",
+      "bytes": 953,
+      "upstreamGitBlobSha": "0a3c2a65a0e06a9a69c3e027c6aff17342115fa4"
+    },
+    {
+      "file": "chapter-1-1.xhtml",
+      "kind": "narrative",
+      "bytes": 6596,
+      "upstreamGitBlobSha": "f79da92781e604650be7164d3adf2f69cdcda483"
+    },
+    {
+      "file": "chapter-1-2.xhtml",
+      "kind": "narrative",
+      "bytes": 10756,
+      "upstreamGitBlobSha": "1a7f8e2dc24d63b57eb22e469584577c5a0dbe84"
+    },
+    {
+      "file": "chapter-1-3.xhtml",
+      "kind": "narrative",
+      "bytes": 17326,
+      "upstreamGitBlobSha": "071eba6a2d9b126ae89aaef862ab6175b3b37d43"
+    },
+    {
+      "file": "chapter-1-4.xhtml",
+      "kind": "narrative",
+      "bytes": 19954,
+      "upstreamGitBlobSha": "6cd5a72590c1b551c1703af2638f608f60e955a7"
+    },
+    {
+      "file": "chapter-1-5.xhtml",
+      "kind": "narrative",
+      "bytes": 19029,
+      "upstreamGitBlobSha": "345c40dec80d516f6ba4ae34c36b251ee130c6d5"
+    },
+    {
+      "file": "chapter-1-6.xhtml",
+      "kind": "narrative",
+      "bytes": 29193,
+      "upstreamGitBlobSha": "0794137d99a96daeb2ff1ec23133732b6e2f86c7"
+    },
+    {
+      "file": "chapter-1-7.xhtml",
+      "kind": "narrative",
+      "bytes": 10703,
+      "upstreamGitBlobSha": "78c5e52989ac478e91700a91a12c68012cd03e24"
+    },
+    {
+      "file": "chapter-1-8.xhtml",
+      "kind": "narrative",
+      "bytes": 28506,
+      "upstreamGitBlobSha": "9ce5abef4f9f07eb294fb6aaff7a8301fd6832c6"
+    },
+    {
+      "file": "chapter-1-9.xhtml",
+      "kind": "narrative",
+      "bytes": 16779,
+      "upstreamGitBlobSha": "34183924dbacd08c571f44a4c2a3e244bb159b6f"
+    },
+    {
+      "file": "chapter-1-10.xhtml",
+      "kind": "narrative",
+      "bytes": 32196,
+      "upstreamGitBlobSha": "52e595628f9d4cbbd778d3ea6bd030e5937dbe2b"
+    },
+    {
+      "file": "chapter-1-11.xhtml",
+      "kind": "narrative",
+      "bytes": 50972,
+      "upstreamGitBlobSha": "58dfcf09ef5429b82ad5514e4e47972208b514f5"
+    },
+    {
+      "file": "chapter-1-12.xhtml",
+      "kind": "narrative",
+      "bytes": 29290,
+      "upstreamGitBlobSha": "1f4613834855cc6173e6c75dbe0a7760ffba3b96"
+    },
+    {
+      "file": "chapter-1-13.xhtml",
+      "kind": "narrative",
+      "bytes": 15120,
+      "upstreamGitBlobSha": "88e6360195332ed92db31201d8eec0514a30e0a9"
+    },
+    {
+      "file": "chapter-1-14.xhtml",
+      "kind": "narrative",
+      "bytes": 21267,
+      "upstreamGitBlobSha": "7bb310aa6cd5966ea1d4a737731c66e3b0872b0b"
+    },
+    {
+      "file": "chapter-1-15.xhtml",
+      "kind": "narrative",
+      "bytes": 34842,
+      "upstreamGitBlobSha": "ae75e6e6018493e8865e63d9d74df07a03df2298"
+    },
+    {
+      "file": "chapter-1-16.xhtml",
+      "kind": "narrative",
+      "bytes": 22905,
+      "upstreamGitBlobSha": "1ed010b6266a3877d5d9ef35134120ba91b508b2"
+    },
+    {
+      "file": "chapter-1-17.xhtml",
+      "kind": "narrative",
+      "bytes": 18308,
+      "upstreamGitBlobSha": "117a4bd76d55ebe66092321f072f935422d3614f"
+    },
+    {
+      "file": "chapter-1-18.xhtml",
+      "kind": "narrative",
+      "bytes": 16808,
+      "upstreamGitBlobSha": "7fbcb504ce68fd89ae1b2e36ba9794f3a066c002"
+    },
+    {
+      "file": "chapter-1-19.xhtml",
+      "kind": "narrative",
+      "bytes": 12242,
+      "upstreamGitBlobSha": "824da21cb89938776bcab05d28bd7faf2a35c2da"
+    },
+    {
+      "file": "chapter-1-20.xhtml",
+      "kind": "narrative",
+      "bytes": 8614,
+      "upstreamGitBlobSha": "b20dc8c53028db55666a08111aaff733c2de4987"
+    },
+    {
+      "file": "chapter-1-21.xhtml",
+      "kind": "narrative",
+      "bytes": 24532,
+      "upstreamGitBlobSha": "4b9208fa459ba5f0822563aee14013f59fed7ab7"
+    },
+    {
+      "file": "chapter-1-22.xhtml",
+      "kind": "narrative",
+      "bytes": 23292,
+      "upstreamGitBlobSha": "99c051b02e501d250fe09f9f5bb3f6f30829a1b3"
+    },
+    {
+      "file": "chapter-1-23.xhtml",
+      "kind": "narrative",
+      "bytes": 30305,
+      "upstreamGitBlobSha": "36125a8626a3ddf3576a5c879e484d2d0777a381"
+    },
+    {
+      "file": "second-period.xhtml",
+      "kind": "structural-heading",
+      "bytes": 928,
+      "upstreamGitBlobSha": "e2eb0d5ad8b121300d4559b6880ea836b18c1de5"
+    },
+    {
+      "file": "chapter-2-1-1.xhtml",
+      "kind": "narrative",
+      "bytes": 29040,
+      "upstreamGitBlobSha": "1b13bf5511f4fdcaa024a3ba15f6eedd8039cd0b"
+    },
+    {
+      "file": "chapter-2-1-2.xhtml",
+      "kind": "narrative",
+      "bytes": 27859,
+      "upstreamGitBlobSha": "244153bdbe0ca0c444337200221bdda65b684302"
+    },
+    {
+      "file": "chapter-2-1-3.xhtml",
+      "kind": "narrative",
+      "bytes": 26588,
+      "upstreamGitBlobSha": "01001bd850ce37912e09f55b0594bc9d0617830b"
+    },
+    {
+      "file": "chapter-2-1-4.xhtml",
+      "kind": "narrative",
+      "bytes": 20940,
+      "upstreamGitBlobSha": "e6625ea6460e88979c63f996f3eeb856ae63b3a2"
+    },
+    {
+      "file": "chapter-2-1-5.xhtml",
+      "kind": "narrative",
+      "bytes": 20963,
+      "upstreamGitBlobSha": "10f6110e94dc0bfb2351911c64eb01e3d9414f21"
+    },
+    {
+      "file": "chapter-2-1-6.xhtml",
+      "kind": "narrative",
+      "bytes": 5747,
+      "upstreamGitBlobSha": "c7562f986ba86cb7261951cbb6351b00a51901c6"
+    },
+    {
+      "file": "chapter-2-1-7.xhtml",
+      "kind": "narrative",
+      "bytes": 26406,
+      "upstreamGitBlobSha": "79aebf5131c6f11144b52c3d19e1c87e94fe047a"
+    },
+    {
+      "file": "chapter-2-1-8.xhtml",
+      "kind": "narrative",
+      "bytes": 37702,
+      "upstreamGitBlobSha": "839038cd61c9efa3a809ce105f955770b6d26db9"
+    },
+    {
+      "file": "chapter-2-2-1.xhtml",
+      "kind": "narrative",
+      "bytes": 27973,
+      "upstreamGitBlobSha": "300be8b00be314914deabc6e9b54772e6b128ced"
+    },
+    {
+      "file": "chapter-2-2-2.xhtml",
+      "kind": "narrative",
+      "bytes": 12256,
+      "upstreamGitBlobSha": "f738f6f78f54a5fe5fb371318a01200236c36dbd"
+    },
+    {
+      "file": "chapter-2-2-3.xhtml",
+      "kind": "narrative",
+      "bytes": 26643,
+      "upstreamGitBlobSha": "a64ad13da2e08b5f44de7b0fd122f7280e42cca3"
+    },
+    {
+      "file": "chapter-2-3-1.xhtml",
+      "kind": "narrative",
+      "bytes": 12891,
+      "upstreamGitBlobSha": "bbc642fc559c7880e9ccdd9e89e2cc49ce3f7c2f"
+    },
+    {
+      "file": "chapter-2-3-2.xhtml",
+      "kind": "narrative",
+      "bytes": 18837,
+      "upstreamGitBlobSha": "0251e0d96bc1d092339dc43f61109158fabc4d00"
+    },
+    {
+      "file": "chapter-2-3-3.xhtml",
+      "kind": "narrative",
+      "bytes": 20252,
+      "upstreamGitBlobSha": "786b59f0a39664557f82ea0d191afa319514fb9e"
+    },
+    {
+      "file": "chapter-2-3-4.xhtml",
+      "kind": "narrative",
+      "bytes": 35682,
+      "upstreamGitBlobSha": "bfb8c148b659026e6c6107cf577a3cf030c3fe5c"
+    },
+    {
+      "file": "chapter-2-3-5.xhtml",
+      "kind": "narrative",
+      "bytes": 21499,
+      "upstreamGitBlobSha": "9ed69bc7c33a95dc52d0198397963f024ab3530a"
+    },
+    {
+      "file": "chapter-2-3-6.xhtml",
+      "kind": "narrative",
+      "bytes": 23671,
+      "upstreamGitBlobSha": "7f3d8852e162525947cf65480112c12b80bde41a"
+    },
+    {
+      "file": "chapter-2-3-7.xhtml",
+      "kind": "narrative",
+      "bytes": 31341,
+      "upstreamGitBlobSha": "32ab8a420d58e37b29c8e1e04b5bd633e8e1bba5"
+    },
+    {
+      "file": "chapter-2-3-8.xhtml",
+      "kind": "narrative",
+      "bytes": 33955,
+      "upstreamGitBlobSha": "1ba3157b2f206e66250f8e869cedc85cc40beb99"
+    },
+    {
+      "file": "chapter-2-3-9.xhtml",
+      "kind": "narrative",
+      "bytes": 38222,
+      "upstreamGitBlobSha": "aad7ad24e0d8f6d49810a961c69927583cdb3db0"
+    },
+    {
+      "file": "chapter-2-3-10.xhtml",
+      "kind": "narrative",
+      "bytes": 37268,
+      "upstreamGitBlobSha": "44ff55602b168344c767ad245a082ba7f01fb052"
+    },
+    {
+      "file": "chapter-2-4.xhtml",
+      "kind": "narrative",
+      "bytes": 97558,
+      "upstreamGitBlobSha": "5d77eff9ea7508fd06985630a51904fe7867ff64"
+    },
+    {
+      "file": "chapter-2-5.xhtml",
+      "kind": "narrative",
+      "bytes": 47047,
+      "upstreamGitBlobSha": "9887e063779dd5913e8fce95ea28b5d631e65cd1"
+    },
+    {
+      "file": "chapter-2-6.xhtml",
+      "kind": "narrative",
+      "bytes": 31135,
+      "upstreamGitBlobSha": "f5cb749a6dd93138a39cd5ff8795c741d68944ad"
+    },
+    {
+      "file": "chapter-2-7.xhtml",
+      "kind": "narrative",
+      "bytes": 5865,
+      "upstreamGitBlobSha": "b4b9d9df215476717222a19525d75076c82d81fd"
+    },
+    {
+      "file": "chapter-2-8.xhtml",
+      "kind": "narrative",
+      "bytes": 6017,
+      "upstreamGitBlobSha": "5d6c948887f1d3746d59fa3218dd264b940ce5a5"
+    },
+    {
+      "file": "epilogue.xhtml",
+      "kind": "structural-heading",
+      "bytes": 709,
+      "upstreamGitBlobSha": "7498a56e1989d812660c163f76a57fbaf34e7ac4"
+    },
+    {
+      "file": "epilogue-1.xhtml",
+      "kind": "narrative",
+      "bytes": 2829,
+      "upstreamGitBlobSha": "ca8e71eec81b02eb21ee20fec48453592c71747a"
+    },
+    {
+      "file": "epilogue-2.xhtml",
+      "kind": "narrative",
+      "bytes": 3399,
+      "upstreamGitBlobSha": "6dd72ac337781ffdf60ba803da3d66e433372d64"
+    },
+    {
+      "file": "epilogue-3.xhtml",
+      "kind": "narrative",
+      "bytes": 8904,
+      "upstreamGitBlobSha": "1ec2e7b891b32d61cb17d506d16391e04f86a374"
+    }
+  ],
+  "narrativeParts": 53,
+  "structuralParts": 3,
+  "totalSourceBytes": 1254254,
+  "publishable": false,
+  "status": "SOURCE_STAGED_EDITORIAL_HOLD",
+  "acceptance": {
+    "completeArabicCompanion": false,
+    "contextualArabicEditorialReview": false,
+    "historicChapterArtCleared": false,
+    "territoryRightsReviewed": false,
+    "offlineDeviceVerified": false
+  },
+  "disclaimer": "Complete authentic English source text is staged outside Android assets. No complete contextual Arabic translation or verified illustration binaries, cover, bookshelf entry or APK update is included."
+}
