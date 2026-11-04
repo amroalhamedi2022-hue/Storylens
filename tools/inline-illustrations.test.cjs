@@ -302,4 +302,39 @@ assert.equal(added.length,0,'untrusted remote image is never fetched');
 added.length=0;delete sandbox.art.book_0;
 sandbox.renderReader();
 assert.equal(added.length,0,'missing chapter art does not insert a broken image');
+
+/* Source-verified artwork from the dedicated literature conversation is
+ * positioned by this reader, not by the content-intake pipeline. */
+const layoutStart=js.indexOf('function ltApprovedArchiveSceneLayout(');
+const layoutEnd=js.indexOf('function ltVerifiedCompanionPlates(',layoutStart);
+assert.ok(layoutStart>=0&&layoutEnd>layoutStart,'new scene layout contract exists');
+const layoutSandbox={};
+vm.runInNewContext(js.slice(layoutStart,layoutEnd)+
+ '\nglobalThis.layout=ltApprovedArchiveSceneLayout;',layoutSandbox);
+const layout=layoutSandbox.layout;
+const approved={
+ verifiedArchive:true,sourceParagraphExact:true,distributionReviewApproved:true,
+ archiveSource:'https://commons.wikimedia.org/wiki/File:Old_folio.jpg',
+ credit:'Historical manuscript folio',aspectRatio:.72,
+ visualTreatment:'original-colour'
+};
+assert.equal(layout(approved).position,'edge-start',
+ 'approved portrait painting wraps on tablet, stacks on phone');
+assert.equal(layout({...approved,position:'wide'}).position,'wide',
+ 'explicit archivist/editor placement remains authoritative');
+assert.equal(layout(approved).uncropped,true,
+ 'approved engraving and colour artwork can never be cropped');
+assert.equal(layout({...approved,distributionReviewApproved:false}),null,
+ 'rights review is mandatory before new archived scene appears');
+assert.equal(layout({...approved,sourceParagraphExact:false}),null,
+ 'nonmatching image cannot appear near a misleading paragraph');
+assert.equal(layout({...approved,archiveSource:'https://stock.invalid/scene'}),null,
+ 'untrusted provenance never qualifies as archival art');
+assert.equal(layout({position:'edge-end'}).position,'edge-end',
+ 'existing local source-era art placement stays compatible');
+assert.match(js,/layout\.archival\?' lt-archive-source-approved'/);
+assert.match(js,/item\.crop==='cover'&&!layout\.uncropped/);
+assert.match(fs.readFileSync(path.join(__dirname, '../app/src/main/assets/lt-device-acceptance.css'),'utf8'),
+ /\.lt-inline-illustration\.lt-archive-source-approved img\{/);
+
 console.log('PASS: inline art anchors, chapter-specific offline scenes, safe fallback and translations');
