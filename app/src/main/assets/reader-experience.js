@@ -1143,7 +1143,7 @@ function ltApprovedArchiveSceneLayout(item){
  const claimedArchive=item.verifiedArchive!==undefined||
   item.sourceParagraphExact!==undefined||
   item.distributionReviewApproved!==undefined||
-  item.archiveSource!==undefined||item.visualTreatment==='original-colour';
+  item.archiveSource!==undefined;
  const requested=['wide','edge-start','edge-end'].includes(item.position)
   ?item.position:'wide';
  if(!claimedArchive)return {position:requested,uncropped:false,archival:false};
