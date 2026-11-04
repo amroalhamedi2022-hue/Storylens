@@ -18,7 +18,7 @@ assert.match(css,/pointer-events:none!important/);
 assert.match(css,/\.reader :is\(\.sentence,\.tok,\.reading-width,\.lt-book-page/);
 assert.doesNotMatch(script,/localStorage|indexedDB|openStory\(|saveWord\(|sendSMS|fetch\(/);
 assert.match(fs.readFileSync('app/src/main/assets/qa-wen-glass.html','utf8'),
- /data\.ltWenGlassQa/,'Browser acceptance checks actual pointer UI');
+ /document\.documentElement\.dataset\.ltWenGlassQa/,'Browser acceptance checks actual pointer UI');
 
 function classes(initial=[]){
  const s=new Set(initial);
@@ -44,7 +44,7 @@ const doc={
  body,hidden:false,
  addEventListener(type,handler){const a=listeners.get(type)||[];a.push(handler);listeners.set(type,a)},
  createElement(){return {classList:classes(),style:style(),setAttribute(){},isConnected:true}},
- querySelectorAll(){return []}
+ querySelectorAll(selector){return selector==='.lt-wen-keyboard'&&el.classList.contains('lt-wen-keyboard')?[el]:[]}
 };
 const rafs=[];
 const win={document:doc,matchMedia:()=>({matches:false}),addEventListener(){},
