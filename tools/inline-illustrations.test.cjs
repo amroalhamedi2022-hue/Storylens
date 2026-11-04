@@ -334,7 +334,7 @@ assert.equal(layout({position:'edge-end'}).position,'edge-end',
  'existing local source-era art placement stays compatible');
 assert.match(js,/layout\.archival\?' lt-archive-source-approved'/);
 assert.match(js,/item\.crop==='cover'&&!layout\.uncropped/);
-assert.match(fs.readFileSync(root+'lt-device-acceptance.css','utf8'),
+assert.match(fs.readFileSync(path.join(__dirname, '../app/src/main/assets/lt-device-acceptance.css'),'utf8'),
  /\.lt-inline-illustration\.lt-archive-source-approved img\{/);
 
 console.log('PASS: inline art anchors, chapter-specific offline scenes, safe fallback and translations');
