@@ -310,7 +310,7 @@ const layoutEnd=js.indexOf('function ltVerifiedCompanionPlates(',layoutStart);
 assert.ok(layoutStart>=0&&layoutEnd>layoutStart,'new scene layout contract exists');
 const layoutSandbox={};
 vm.runInNewContext(js.slice(layoutStart,layoutEnd)+
- '\\nglobalThis.layout=ltApprovedArchiveSceneLayout;',layoutSandbox);
+ '\nglobalThis.layout=ltApprovedArchiveSceneLayout;',layoutSandbox);
 const layout=layoutSandbox.layout;
 const approved={
  verifiedArchive:true,sourceParagraphExact:true,distributionReviewApproved:true,
