@@ -261,6 +261,15 @@ function pageFoldReleaseAllowed(startTarget,endTarget,selectionText=''){
 // The book binding follows the interface direction. The fallback touch swipe
 // already does this; pointer-held paper must agree with it in Arabic UI.
 function pageEdgeDelta(edge,rtl){return (edge==='right')!==rtl?1:-1;}
+// Tablet/keyboard navigation mirrors the real book binding, never a swipe on
+// the ink or a dictionary token. Keep the mapping pure for regression tests.
+function pageKeyboardDelta(key,rtl){
+ if(key==='PageDown')return 1;
+ if(key==='PageUp')return -1;
+ if(key===(rtl?'ArrowLeft':'ArrowRight'))return 1;
+ if(key===(rtl?'ArrowRight':'ArrowLeft'))return -1;
+ return 0;
+}
 // A page bends at its crease: only the moving edge is uncovered. Keep the
 // geometry pure so LTR/RTL and slow finger movement can be regression-tested.
 function pageFoldGeometry(progress,edge,vertical){
@@ -460,6 +469,22 @@ function installPageTurn(){
  }
  prev.addEventListener('click',()=>move(-1));
  next.addEventListener('click',()=>move(1));
+ // Focus the PAPER, not its tokens. Bluetooth keyboards on tablets can turn
+ // pages using arrows/PageUp/PageDown without overriding word selection,
+ // search inputs, modal shortcuts or actual click handlers.
+ sentenceBox.setAttribute('tabindex','0');
+ sentenceBox.setAttribute('aria-keyshortcuts','PageDown PageUp ArrowLeft ArrowRight');
+ sentenceBox.addEventListener('keydown',event=>{
+  if(event.target!==sentenceBox||event.defaultPrevented||event.repeat||
+     event.isComposing||event.altKey||event.ctrlKey||event.metaKey||
+     event.shiftKey||window.getSelection?.()?.toString()?.trim())return;
+  const delta=pageKeyboardDelta(event.key,document.documentElement.dir==='rtl');
+  if(!delta)return;
+  event.preventDefault();
+  // 'keyboard' never exits the book on its final page; only the explicit
+  // Back-to-library button may do so. All progress persistence stays in move().
+  move(delta,'keyboard');
+ });
  let startX=null,startY=null,startTarget=null;
  const resetTouch=()=>{startX=null;startY=null;startTarget=null;};
  sentenceBox.addEventListener('touchstart',event=>{
