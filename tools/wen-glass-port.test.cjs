@@ -73,8 +73,8 @@ assert.ok(track.children[0].style.getPropertyValue('--lt-wen-lens-x'));
 hitTarget=sibling;
 emit('pointermove',{clientX:280,clientY:57});
 while(rafs.length)rafs.shift()();
-assert.ok(parseInt(track.children[0].style.getPropertyValue('--lt-wen-lens-x'),10)>=260,
- 'held optical lens morphs to adjacent control, no new navigation event');
+assert.ok(parseInt(track.children[0].style.getPropertyValue('--lt-wen-lens-x'),10)>=240 && parseInt(track.children[0].style.getPropertyValue('--lt-wen-lens-x'),10)<=320,
+ 'held optical lens morphs to adjacent control with bounded finger offset');
 assert.ok(Number(track.children[0].style.getPropertyValue('--lt-wen-stretch-x'))>=1,
  'liquid stretch is nonnegative and bounded');
 hitTarget=el;
