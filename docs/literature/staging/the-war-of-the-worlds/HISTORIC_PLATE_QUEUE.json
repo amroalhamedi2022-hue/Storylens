@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "bookId": "wells-war-of-the-worlds-1898",
+  "illustrator": "Henrique Alvim Corrêa (1876–1910)",
+  "illustratedEdition": "La Guerre des mondes, illustrated French-language edition (Brussels, 1906)",
+  "artSourceCollection": "https://publicdomainreview.org/collection/henrique-alvim-correa-war-of-the-worlds/",
+  "historicalReview": "https://graphicarts.princeton.edu/2018/10/21/the-war-of-the-worlds/",
+  "archiveCollection": "https://pdimagearchive.org/collections/henrique-alvim-correa-war-of-the-worlds/",
+  "rightsStatus": "PERIOD_ART_IDENTIFIED_NOT_BINARY_APPROVED",
+  "rightsNote": "The Public Domain Review marks historic 1906 illustration originals PD worldwide and reports no additional digital rights from Duke University Libraries; confirm individual master scan, page/scene, territory, and image checksum before redistribution. The French 1906 edition is NOT the English original text edition.",
+  "colourPolicy": "Preserve genuine scanned original monochrome/sepia/warm paper and any historical pigments. No invented digital colorization or coercive grayscale.",
+  "candidatePlates": [
+    {
+      "id": "wells-correa-1906-tripods-ruins",
+      "sourcePage": "https://pdimagearchive.org/images/1120c85a-ff99-4503-8c38-1e0aa10ef552/",
+      "scene": "Alien fighting machines loom over ruined human dwellings",
+      "possibleOriginalEnglishChapter": "chapter-2-7.xhtml",
+      "chapterMatch": "RESEARCH_LEAD_NOT_YET_TEXT_LOCKED",
+      "credit": "Henrique Alvim Corrêa, 1906; Duke University Libraries archival scan",
+      "localFile": null,
+      "imageSHA256": null
+    },
+    {
+      "id": "wells-correa-1906-attack",
+      "sourcePage": "https://pdimagearchive.org/images/953c9ed6-ece4-42e9-a965-126a2c4d6ebb/",
+      "scene": "Explosion and debris as Martians attack",
+      "possibleOriginalEnglishChapter": "chapter-1-5.xhtml",
+      "chapterMatch": "RESEARCH_LEAD_NOT_YET_TEXT_LOCKED",
+      "credit": "Henrique Alvim Corrêa, 1906; Duke University Libraries archival scan",
+      "localFile": null,
+      "imageSHA256": null
+    },
+    {
+      "id": "wells-correa-1906-flooded-city",
+      "sourcePage": "https://publicdomainreview.org/collection/henrique-alvim-correa-war-of-the-worlds/",
+      "scene": "Ruined urban landscape and fighting machines, historical illustrated French edition",
+      "possibleOriginalEnglishChapter": "chapter-2-9.xhtml",
+      "chapterMatch": "RESEARCH_LEAD_NOT_YET_TEXT_LOCKED",
+      "credit": "Henrique Alvim Corrêa, 1906; source/individual plate ID to locate",
+      "localFile": null,
+      "imageSHA256": null
+    }
+  ],
+  "acceptanceChecklist": [
+    "Find exact 1906 illustration plate scan from individual archival object and verify page event against pinned 1898 English scene",
+    "Confirm period artist, old edition, scan reuse rights and region",
+    "Compute SHA256 original and compact WebP maintaining historical colours and margins",
+    "Create exact chapter and paragraph anchor with bilingual captions/alt",
+    "Complete edited contextual Arabic across full 27 chapters and approve all other rights first",
+    "Run offline APK readers on phone/tablet with figure zoom, pagination and accessibility"
+  ]
+}
