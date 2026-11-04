@@ -1,0 +1,186 @@
+/*
+ * Lingua Tales — Wen Liquid Glass material system v1.
+ * Visual/physics port of Wen-sarafet GlassMotion (.60 follow, 265ms settle),
+ * WenNavigationLensDrawable and WenGlassBackdropDrawable; runtime shader
+ * optics are simulated with layered CSS, never falsely claimed AGSL native.
+ *
+ * Surfaces only: ink, translation, image and paper content remain unfiltered.
+ * One floating track lens, finite pointer-only motion, no list-row blur.
+ */
+body.lt-wen-optics{
+ --lt-wen-pearl:rgba(255,255,255,.64);
+ --lt-wen-line:rgba(255,255,255,.50);
+ --lt-wen-inner:rgba(255,255,255,.24);
+ --lt-wen-shadow:rgba(16,26,52,.13);
+ --lt-wen-tint:color-mix(in srgb,var(--accent,#4a91c8) 15%,transparent);
+ --lt-wen-edge:color-mix(in srgb,var(--accent,#4a91c8) 22%,transparent);
+ --lt-wen-release:265ms;
+}
+body.lt-wen-optics:is(.theme-midnight-library,.theme-aurora,.theme-nebula,.theme-ink-workshop,.theme-celestial-atlas){
+ --lt-wen-pearl:rgba(255,255,255,.29);
+ --lt-wen-line:rgba(255,255,255,.39);
+ --lt-wen-inner:rgba(255,255,255,.12);
+ --lt-wen-shadow:rgba(0,4,17,.34);
+}
+/* UI material: frosted crown + optical lower edge + chroma-free shadow.
+ * Paint gradients are static; do not add expensive row-by-row blur. */
+body.lt-wen-optics :is(.lt-drawer,.lt-settings-sheet,#modals .sheet){
+ border:1px solid var(--lt-wen-line);
+ border-radius:clamp(18px,2.4vw,30px);
+ box-shadow:inset 0 1px 1px var(--lt-wen-pearl),
+            inset 0 -1px 0 rgba(42,63,101,.12),
+            0 20px 65px var(--lt-wen-shadow),0 3px 8px rgba(12,22,46,.11);
+ background-image:linear-gradient(139deg,rgba(255,255,255,.15),transparent 38%,rgba(175,207,255,.07) 74%,rgba(255,255,255,.09));
+ -webkit-backdrop-filter:blur(17px) saturate(1.22);
+ backdrop-filter:blur(17px) saturate(1.22);
+}
+/* Preserve each theme's own colour underneath a translucent material film. */
+body.lt-wen-optics .library .header,
+body.lt-wen-optics .reader .toolbar,
+body.lt-wen-optics .reader .lt-page-controls,
+body.lt-wen-optics .reader .lt-chapter-nav,
+body.lt-wen-optics .stl-discovery,
+body.lt-wen-optics .lt-drawer .stl-discovery{
+ border-color:var(--lt-wen-line);
+ box-shadow:inset 0 1px 0 var(--lt-wen-inner),
+            0 8px 27px var(--lt-wen-shadow);
+}
+body.lt-wen-optics .library .header,
+body.lt-wen-optics .reader .toolbar,
+body.lt-wen-optics .reader .lt-page-controls,
+body.lt-wen-optics .reader .lt-chapter-nav{
+ border-radius:clamp(17px,2.6vw,28px);
+ background-image:linear-gradient(110deg,rgba(255,255,255,.17),rgba(255,255,255,.025) 48%,var(--lt-wen-tint));
+}
+/* Restrict live backdrop sampling to the SMALL fixed toolbar layer.
+ * No backdrop sampling for every story in the scrolling list. */
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ body.lt-wen-optics .reader .toolbar,
+ body.lt-wen-optics .library .header{
+  -webkit-backdrop-filter:blur(11px) saturate(1.18);
+  backdrop-filter:blur(11px) saturate(1.18);
+ }
+}
+body.lt-wen-optics :is(.library .card,.vitem,.review-card,.stl-favorite,
+ .lt-theme-choice,.lt-drawer .lt-genre,.lt-drawer .stl-choice,
+ .reader-nav-actions button,.reader .lt-chapter-button,
+ .reader .lt-page-controls button,.lt-settings-sheet .secondary){
+ border-color:color-mix(in srgb,var(--lt-wen-line) 70%,var(--accent,#7abdd0));
+ box-shadow:inset 0 1px 0 var(--lt-wen-inner),
+            0 7px 19px var(--lt-wen-shadow);
+}
+/* Glass cover: retain authentic illustrations and their saturation;
+ * covers are intentionally NOT backdrop-blurred. */
+body.lt-wen-optics .library .card{
+ border-radius:clamp(16px,3vw,27px);
+ overflow:hidden;
+}
+body.lt-wen-optics .library .card .cover,
+body.lt-wen-optics .reader .lt-inline-illustration,
+body.lt-wen-optics .reader .lt-inline-illustration img{
+ -webkit-backdrop-filter:none;backdrop-filter:none;
+ filter:none;
+}
+/* Touchable glass is optically thicker near the finger:
+ * moving radial focus imitates WenGlass lens droplet without sampling pixels.
+ * The existing bubble effect remains a separate foreground layer. */
+body.lt-wen-optics :is(button,.lt-theme-choice,.library .card,.lt-genre,.stl-choice,.stl-favorite,.stl-sense-button){
+ --lt-wen-touch-x:50%;
+ --lt-wen-touch-y:45%;
+ -webkit-tap-highlight-color:transparent;
+ transition:box-shadow var(--lt-wen-release) cubic-bezier(.2,.78,.22,1),
+            border-color var(--lt-wen-release) ease,
+            background-color var(--lt-wen-release) ease;
+}
+body.lt-wen-optics :is(button,.lt-theme-choice,.library .card,.lt-genre,.stl-choice,.stl-favorite,.stl-sense-button):where(.lt-wen-pressed,.lt-wen-keyboard){
+ border-color:rgba(255,255,255,.76);
+ background-image:radial-gradient(ellipse 120px 65px at var(--lt-wen-touch-x) var(--lt-wen-touch-y),
+   rgba(255,255,255,.31) 0%,rgba(215,247,255,.15) 38%,transparent 76%),
+   linear-gradient(135deg,rgba(255,255,255,.13),transparent 60%);
+ box-shadow:inset 0 2px 2px rgba(255,255,255,.65),
+            inset 0 -3px 7px rgba(44,97,156,.18),
+            0 0 0 1px rgba(255,255,255,.15),
+            0 9px 23px var(--lt-wen-shadow);
+}
+body.lt-wen-optics :is(.lt-menu-toggle,.hero-continue,.lt-drawer-close,.lt-theme-choice,
+ .stl-choice,.reader .lt-page-controls button,.reader .lt-chapter-button){
+ border-radius:clamp(14px,2.6vw,24px);
+}
+/* A SINGLE shared optical lens for navigable trays rather than one animated
+ * blurred layer per option. It follows touch by 60%, then settles in 265ms.
+ * pointer-events:none: native app buttons still own click, hold and keyboard. */
+body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery){
+ position:relative;
+ isolation:isolate;
+}
+body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery) > .lt-wen-follow-lens{
+ position:absolute;
+ left:0;top:0;
+ width:var(--lt-wen-lens-w,0px);
+ height:var(--lt-wen-lens-h,0px);
+ transform:translate3d(var(--lt-wen-lens-x,0px),var(--lt-wen-lens-y,0px),0);
+ border-radius:20px;
+ pointer-events:none!important;
+ z-index:0;
+ opacity:0;
+ background:
+  radial-gradient(ellipse 80% 45% at 30% 9%,rgba(255,255,255,.53),transparent 85%),
+  linear-gradient(150deg,rgba(255,255,255,.26),rgba(123,211,248,.07) 47%,rgba(255,255,255,.19));
+ border:1px solid rgba(255,255,255,.67);
+ box-shadow:inset 0 1px 1px rgba(255,255,255,.64),
+            inset 0 -2px 3px rgba(47,92,153,.17),
+            0 8px 20px rgba(15,39,85,.19);
+ transition:transform var(--lt-wen-release) cubic-bezier(.17,.78,.2,1.24),
+            opacity .16s ease,width var(--lt-wen-release) ease,height var(--lt-wen-release) ease;
+}
+body.lt-wen-optics .lt-wen-follow-lens.lt-wen-lens-live{opacity:.92}
+body.lt-wen-optics .lt-wen-follow-lens:not(.lt-wen-lens-moving){
+ transition-duration:.11s;
+}
+body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery) > :not(.lt-wen-follow-lens){
+ position:relative;z-index:1;
+}
+/* Focus must be obvious and not rendered underneath the translucent lens. */
+body.lt-wen-optics :is(button,.lt-theme-choice,.library .card,[role="button"]):focus-visible{
+ outline:3px solid var(--accent,#409db9)!important;
+ outline-offset:3px!important;
+}
+body.lt-wen-optics .reader :is(.sentence,.tok,.reading-width,.lt-book-page,
+ .lt-inline-illustration,.lt-inline-illustration img){
+ -webkit-backdrop-filter:none!important;
+ backdrop-filter:none!important;
+}
+/* The actual prose remains paper/ink: no translucent text, shader or glints. */
+body.lt-wen-optics .reader :is(.sentence,.tok,.reading-width,.lt-book-page){
+ text-shadow:none;
+}
+@media(max-width:600px){
+ body.lt-wen-optics .library .header{border-radius:19px}
+ body.lt-wen-optics .reader .lt-page-controls{margin-inline:auto}
+ body.lt-wen-optics :is(.lt-menu-toggle,.lt-drawer-close,.reader .lt-page-controls button){
+  min-height:44px;min-width:44px;
+ }
+}
+/* Power-saving, vestibular, vision and low-end WebView fallbacks. */
+@media(prefers-reduced-motion:reduce){
+ body.lt-wen-optics .lt-wen-follow-lens,
+ body.lt-wen-optics :is(button,.lt-theme-choice,.library .card,.lt-genre){
+  transition:none!important;animation:none!important;
+ }
+ body.lt-wen-optics .lt-wen-follow-lens{display:none!important}
+}
+@media(prefers-reduced-transparency:reduce){
+ body.lt-wen-optics :is(.lt-drawer,.lt-settings-sheet,#modals .sheet,
+  .library .header,.reader .toolbar,.reader .lt-page-controls,.reader .lt-chapter-nav){
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  background-image:none!important;
+  background-color:var(--card,#f3f7f8)!important;
+ }
+ body.lt-wen-optics .lt-wen-follow-lens{display:none!important}
+}
+@supports not (background:color-mix(in srgb,white,black)){
+ body.lt-wen-optics{
+  --lt-wen-tint:rgba(135,183,221,.12);
+  --lt-wen-edge:rgba(135,183,221,.20);
+ }
+}

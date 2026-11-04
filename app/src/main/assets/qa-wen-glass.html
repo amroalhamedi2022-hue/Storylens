@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lingua Tales — Wen Glass acceptance</title>
+<style>
+:root{--accent:#4b8bbc;--card:#f7faff;--body:#e6eef6;--ink:#203348}
+*{box-sizing:border-box}
+body{font:16px system-ui,sans-serif;margin:0;padding:20px;color:var(--ink);background:linear-gradient(145deg,#e6edf9,#e0f7ee)}
+.library{max-width:800px;margin:0 auto;padding:12px}
+.library .header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:rgba(255,255,255,.65)}
+button{font:inherit;cursor:pointer;border:1px solid #8fb5c6;background:#dcebf4;padding:13px 19px;border-radius:16px;color:inherit}
+.lt-drawer{background:rgba(223,241,255,.84);padding:22px;border-radius:23px;margin-top:20px}
+.lt-genre-list{display:flex;gap:12px;flex-wrap:wrap;padding:16px}
+.lt-genre{min-width:130px}
+.lt-settings-sheet{padding:15px;background:#edf5fd}
+.library .card{border-radius:25px;padding:22px;min-height:100px;margin:20px 0;background:rgba(255,255,255,.54)}
+.reader{background:#fff9ef;padding:18px;margin:18px auto;border-radius:24px;max-width:800px}
+.reader .toolbar,.reader .lt-page-controls{background:#fffdf9;padding:14px;display:flex;gap:12px}
+.reader .reading-width{background:#fff9ef;padding:18px}
+</style>
+<link rel="stylesheet" href="lt-wen-glass-engine.css">
+</head>
+<body class="theme-aqua">
+<main class="library">
+ <header class="header"><strong>Lingua Tales</strong><button class="lt-menu-toggle" id="qa-menu">القائمة</button></header>
+ <section class="lt-drawer"><h2>المكتبة</h2><nav class="lt-genre-list" aria-label="Book categories">
+  <button id="qa-first" class="lt-genre selected" type="button">تحقيق</button>
+  <button id="qa-second" class="lt-genre" type="button">مغامرات</button>
+  <button class="lt-genre" type="button">خيال علمي</button>
+ </nav></section>
+ <article class="card" tabindex="0"><strong>Historical mystery</strong><p>Authentic classic, historical illustration</p></article>
+ <section class="lt-settings-sheet"><button class="lt-theme-choice">Liquid glass</button><button>Settings</button></section>
+</main>
+<main class="reader"><nav class="toolbar"><button type="button">Back to shelf</button></nav>
+ <div class="reading-width"><p id="qa-ink" class="sentence">Reading ink must remain readable, opaque and untouched.</p></div>
+ <nav class="lt-page-controls"><button type="button" class="lt-page-prev">Previous</button><button type="button" class="lt-page-next">Next</button></nav>
+</main>
+<script src="lt-wen-glass-engine.js"></script>
+<script>
+(function(){
+ const errors=[];
+ const check=(value,name)=>{if(!value)errors.push(name)};
+ const first=document.getElementById('qa-first');
+ const nav=document.querySelector('.lt-genre-list');
+ const ink=document.getElementById('qa-ink');
+ let clicks=0;
+ first.addEventListener('click',()=>clicks++);
+ try{
+  check(document.body.classList.contains('lt-wen-optics'),'engine enabled');
+  const r=first.getBoundingClientRect();
+  const x=r.left+Math.min(20,r.width*.3),y=r.top+Math.min(20,r.height*.3);
+  const fire=(target,type,id,xx,yy)=>target.dispatchEvent(new PointerEvent(type,{bubbles:true,pointerId:id,
+    isPrimary:true,pointerType:'touch',button:0,clientX:xx,clientY:yy}));
+  fire(first,'pointerdown',81,x,y);
+  check(first.classList.contains('lt-wen-pressed'),'press lens activated');
+  check(window.LinguaWenGlass.activePointers===1,'one pointer registered');
+  check(!!nav.querySelector('.lt-wen-follow-lens'),'single shared nav lens');
+  fire(first,'pointermove',81,x+30,y+12);
+  requestAnimationFrame(()=>{
+   try{
+    const lens=nav.querySelector('.lt-wen-follow-lens');
+    check(lens.classList.contains('lt-wen-lens-live'),'lens follows pointer');
+    check(!!lens.style.getPropertyValue('--lt-wen-lens-x'),'lens coordinates');
+    fire(first,'pointerup',81,x+30,y+12);
+    fire(first,'lostpointercapture',81,x+30,y+12);
+    check(!first.classList.contains('lt-wen-pressed'),'pointer release clears press');
+    check(window.LinguaWenGlass.activePointers===0,'lost capture does not revive pointer');
+    first.click();
+    check(clicks===1,'no duplicate native category navigation');
+    check(ink.textContent==='Reading ink must remain readable, opaque and untouched.',
+     'book text unchanged');
+    check(getComputedStyle(ink).backdropFilter==='none','no glass blur on prose');
+    check(getComputedStyle(lens).pointerEvents==='none','lens never captures touch');
+    document.documentElement.dataset.ltWenGlassQa=errors.length?'FAIL':'PASS';
+    document.documentElement.dataset.ltWenGlassErrors=errors.join(',');
+   }catch(e){document.documentElement.dataset.ltWenGlassQa='FAIL';
+    document.documentElement.dataset.ltWenGlassErrors=String(e)}
+  });
+ }catch(e){document.documentElement.dataset.ltWenGlassQa='FAIL';
+  document.documentElement.dataset.ltWenGlassErrors=String(e)}
+})();
+</script>
+</body></html>
