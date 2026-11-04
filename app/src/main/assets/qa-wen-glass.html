@@ -62,18 +62,33 @@ button{font:inherit;cursor:pointer;border:1px solid #8fb5c6;background:#dcebf4;p
     const lens=nav.querySelector('.lt-wen-follow-lens');
     check(lens.classList.contains('lt-wen-lens-live'),'lens follows pointer');
     check(!!lens.style.getPropertyValue('--lt-wen-lens-x'),'lens coordinates');
-    fire(first,'pointerup',81,x+30,y+12);
-    fire(first,'lostpointercapture',81,x+30,y+12);
-    check(!first.classList.contains('lt-wen-pressed'),'pointer release clears press');
-    check(window.LinguaWenGlass.activePointers===0,'lost capture does not revive pointer');
-    first.click();
-    check(clicks===1,'no duplicate native category navigation');
-    check(ink.textContent==='Reading ink must remain readable, opaque and untouched.',
-     'book text unchanged');
-    check(getComputedStyle(ink).backdropFilter==='none','no glass blur on prose');
-    check(getComputedStyle(lens).pointerEvents==='none','lens never captures touch');
-    document.documentElement.dataset.ltWenGlassQa=errors.length?'FAIL':'PASS';
-    document.documentElement.dataset.ltWenGlassErrors=errors.join(',');
+    // Browser fixture also validates real hit-testing on adjacent tray buttons.
+    const second=document.getElementById('qa-second');
+    const sr=second.getBoundingClientRect();
+    fire(first,'pointermove',81,sr.left+sr.width/2,sr.top+sr.height/2);
+    requestAnimationFrame(()=>{
+     try{
+      const lensX=parseInt(lens.style.getPropertyValue('--lt-wen-lens-x'),10);
+      check(Number.isFinite(lensX)&&lensX>=sr.left-nav.getBoundingClientRect().left-20,
+       'held optical lens morphs to neighbouring category');
+      fire(first,'pointerup',81,sr.left+sr.width/2,sr.top+sr.height/2);
+      fire(first,'lostpointercapture',81,sr.left+sr.width/2,sr.top+sr.height/2);
+      check(!first.classList.contains('lt-wen-pressed'),'pointer release clears press');
+      check(window.LinguaWenGlass.activePointers===0,'lost capture does not revive pointer');
+      first.click();
+      check(clicks===1,'no duplicate native category navigation');
+      check(ink.textContent==='Reading ink must remain readable, opaque and untouched.',
+       'book text unchanged');
+      check(getComputedStyle(ink).backdropFilter==='none','no glass blur on prose');
+      check(getComputedStyle(lens).pointerEvents==='none','lens never captures touch');
+      fire(first,'pointerdown',82,x,y);
+      fire(first,'pointermove',82,x,y+64);
+      check(window.LinguaWenGlass.activePointers===0,'scroll gesture releases lens');
+      document.documentElement.dataset.ltWenGlassQa=errors.length?'FAIL':'PASS';
+      document.documentElement.dataset.ltWenGlassErrors=errors.join(',');
+     }catch(e){document.documentElement.dataset.ltWenGlassQa='FAIL';
+      document.documentElement.dataset.ltWenGlassErrors=String(e)}
+    });
    }catch(e){document.documentElement.dataset.ltWenGlassQa='FAIL';
     document.documentElement.dataset.ltWenGlassErrors=String(e)}
   });
