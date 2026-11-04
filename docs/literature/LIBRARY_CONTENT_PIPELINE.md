@@ -20,3 +20,8 @@ The user requested a recurring ChatGPT content-library check; enabled for aftern
 
 ## Priority after intake
 Finish full bilingual manuscript/book companion, historically accurate inside-text images and rights for existing 37-chapter Verne; then human-reviewed Holmes, *The Moonstone*, *Dracula*, *Frankenstein*, *The Lost World*; prioritise كاملة `كليلة ودمنة` and `ألف ليلة وليلة` from verified adult whole Arabic historical editions, without mixing different recensions. Do not update appearance, Wen financial repo, user reader data, app identity, signed APK or private signer from this content-only track.
+
+## 2026-11-04 — Concrete continuation
+- `The War of the Worlds` added as an authentic **full** 27-chapter source, two book dividers/dedication/epigraph, in `docs/literature/staging/the-war-of-the-worlds/` (31 original source documents, 371,298 bytes). Its original English is exact/byte pinned; zero approved Arabic translation, 1906 period illustrated image binaries not packaged. Follow the identical full staged/translated/art approved order as other genuine long novels. Regtest `tools/literature-war-of-worlds.test.cjs`.
+- `Around the World in Eighty Days` was already complete 37 chapters and 9 authentic offline period engravings. Do NOT re-fetch or replace them. Four new 1873 real image candidate sources, tied to four live paragraph anchors, are recorded in `docs/literature/VERNE_FOUR_ADDITIONAL_PLATES_QUEUE.json`, tested by `tools/verne-plate-queue.test.cjs`. The actual image binaries, reuse clearance and complete literary Arabic review are still pending.
+- The user allows original historic colour images as they really were: retain scan original pigmentation; never use fake modern colourisation and present it as an original plate. 

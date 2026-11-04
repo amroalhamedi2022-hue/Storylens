@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "workId": "around-the-world-in-eighty-days-towle",
+  "edition": "1873 Boston: James R. Osgood & Co., Towle English version",
+  "status": "FOUR_ADDITIONAL_AUTHENTIC_PERIOD_PLATES_RESEARCH_ONLY",
+  "alreadyShipped": "Nine original 1872-1873 WebP illustrations are in app/src/main/assets/art and must NOT be reimported. Their hashes are pinned in docs/literature/HISTORIC_VERNES_ASSETS.json.",
+  "colourPolicy": "B&W period engravings remain B&W. Historically coloured originals may be in full authentic original palette. No modern colorization masquerading as 1873.",
+  "rightsNotice": "Old Book Illustrations sources list likely US and life+70 public-domain status as guidance only. Confirm underlying public scan rights per file, integrity and regional release before packaging.",
+  "queue": [
+    {
+      "id": "verne-1873-a-cry-of-terror",
+      "sourcePage": "https://www.oldbookillustrations.com/illustrations/cry-terror/",
+      "year": 1873,
+      "illustrator": "Léon Benett",
+      "engraver": "Adolphe François Pannemaker",
+      "originalCaption": "There was a cry of terror.",
+      "chapterOneBased": 13,
+      "englishTextNeedle": "A cry of terror arose.",
+      "scene": "Passepartout rescues Aouda from the burning pyre",
+      "scanStatus": "NOT_DOWNLOADED",
+      "textAnchorStatus": "EXACT_PHRASE_VERIFIED",
+      "rights": "PENDING",
+      "altAr": "نقش من طبعة 1873 يصوّر إنقاذ عاودة من المحرقة وسط صرخات الحاضرين",
+      "altEn": "1873 engraving depicting the rescue of Aouda from the funeral pyre"
+    },
+    {
+      "id": "verne-1873-sleeping-car",
+      "sourcePage": "https://www.oldbookillustrations.com/illustrations/sleeping-car/",
+      "year": 1873,
+      "illustrator": "Léon Benett",
+      "engraver": "Adolphe François Pannemaker",
+      "originalCaption": "This was a sleeping car.",
+      "chapterOneBased": 26,
+      "englishTextNeedle": "berths were suddenly improvised",
+      "scene": "Passengers convert the transcontinental railway carriage into sleeping berths",
+      "scanStatus": "NOT_DOWNLOADED",
+      "textAnchorStatus": "SCENE_VERIFIED_PHRASE_DIFFERENT",
+      "rights": "PENDING",
+      "altAr": "رسم خشبي من طبعة 1873 يوضح أسرّة النوم داخل عربة القطار",
+      "altEn": "Original 1873 sleeper-car engraving showing stacked railway berths"
+    },
+    {
+      "id": "verne-1873-vessel",
+      "sourcePage": "https://www.oldbookillustrations.com/illustrations/looking-for-vessel/",
+      "year": 1873,
+      "illustrator": "Léon Benett",
+      "engraver": "Léon Prévost",
+      "originalCaption": "Is Your Honour looking for a vessel?",
+      "chapterOneBased": 20,
+      "englishTextNeedle": "Are you the master of the boat?",
+      "scene": "Fogg arranges a private vessel after the missed steamer",
+      "scanStatus": "NOT_DOWNLOADED",
+      "textAnchorStatus": "SCENE_VERIFIED_PHRASE_DIFFERENT",
+      "rights": "PENDING",
+      "altAr": "نقش أصلي من طبعة 1873 لفيلياس فوج وهو يتفاوض على استئجار قارب",
+      "altEn": "1873 dockside illustration of Fogg enquiring about a vessel"
+    },
+    {
+      "id": "verne-1873-crew",
+      "sourcePage": "https://www.oldbookillustrations.com/illustrations/astonished-crew/",
+      "year": 1873,
+      "illustrator": "Léon Benett",
+      "engraver": "Henri Théophile Hildibrand",
+      "originalCaption": "He took a hand at everything and astonished the crew.",
+      "chapterOneBased": 18,
+      "englishTextNeedle": "lending a hand with the crew",
+      "scene": "Passepartout helps sailors aboard the Rangoon",
+      "scanStatus": "NOT_DOWNLOADED",
+      "textAnchorStatus": "SCENE_VERIFIED_PHRASE_DIFFERENT",
+      "rights": "PENDING",
+      "altAr": "رسم أصلي من طبعة 1873 لباسبارتو وهو يساعد البحارة وسط أشرعة السفينة",
+      "altEn": "1873 book engraving of Passepartout assisting the ship crew"
+    }
+  ],
+  "remainingGates": [
+    "Download exact raw original print scans from reliable libraries",
+    "Independent original scan SHA256 + local WebP, identity and preservation checks",
+    "Per-image right to redistribute by territory including any scan credit",
+    "Anchor at exact English+Arabic paragraph and preserve original full image",
+    "Do not ship book art from unlicensed source or omit title on book cover",
+    "Independent 37-chapter Arabic literary editorial signoff remains open"
+  ]
+}
