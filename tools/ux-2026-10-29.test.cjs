@@ -463,3 +463,28 @@ assert.ok(!css.includes('rgba(247,245,254,.99)'),
  'active curled leaf no longer has a bluish plastic band');
 assert.match(css,/rgba\(88,67,45,\.36\) 40%/,
  'crease shadow follows natural ink/paper colouring');
+
+/* RD02/PERF01: exercise the production keyboard binding function, not a
+ * rewrite, and prove modal/token focus cannot be treated as paper focus. */
+const keyboardSource=reader.match(/function pageKeyboardDelta\(key,rtl\)\{[^}]+\}/);
+assert.ok(keyboardSource,'tablet paging keyboard direction helper exists');
+const pageKeyboardDelta=vm.runInNewContext('('+keyboardSource[0]+')');
+assert.equal(pageKeyboardDelta('PageDown',true),1,'paged down advances in RTL');
+assert.equal(pageKeyboardDelta('PageUp',false),-1,'paged up reverses in LTR');
+assert.equal(pageKeyboardDelta('ArrowLeft',true),1,'RTL next paper is to the left');
+assert.equal(pageKeyboardDelta('ArrowRight',true),-1,'RTL previous paper is to the right');
+assert.equal(pageKeyboardDelta('ArrowRight',false),1,'LTR next paper is to the right');
+assert.equal(pageKeyboardDelta('ArrowLeft',false),-1,'LTR previous paper is to the left');
+assert.equal(pageKeyboardDelta('Enter',false),0,'Enter remains owned by real controls');
+assert.match(reader,/sentenceBox\.setAttribute\('tabindex','0'\)/,
+ 'paper is a keyboard focus target');
+assert.match(reader,/event\.target!==sentenceBox/,
+ 'word/token/search controls must not trigger paper turn');
+assert.match(reader,/window\.getSelection\?\.\(\)\?\.toString\(\)\?\.trim\(\)/,
+ 'active text selection must not page');
+assert.match(reader,/move\(delta,'keyboard'\)/,
+ 'keyboard paging reuses existing progress and chapter movement');
+exits=0;
+realMove(1,'keyboard');
+assert.equal(exits,0,'keyboard forward at end of book never silently exits');
+console.log('PASS: RTL/LTR tablet keyboard paging is guarded and preserves the reader');

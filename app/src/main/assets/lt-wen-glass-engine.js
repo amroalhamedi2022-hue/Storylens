@@ -83,7 +83,13 @@
   lens.classList.add('lt-wen-lens-live');
  }
  function begin(e){
-  if(e.isPrimary===false||e.pointerType==='mouse'&&e.button!==0||state.has(e.pointerId))return;
+  // A second finger must cancel the decorative held lens immediately.
+  // Let Android/WebView retain native pinch, scrolling and text selection.
+  if(e.isPrimary===false||state.size&&!state.has(e.pointerId)){
+   if(state.size)allGone();
+   return;
+  }
+  if(e.pointerType==='mouse'&&e.button!==0||state.has(e.pointerId))return;
   const el=validTarget(e.target);
   if(!el)return;
   const rect=el.getBoundingClientRect?.();
@@ -152,14 +158,22 @@
   // event must not erase another gesture's touch feedback or double tap.
   clearForPointer(e.pointerId);
  }
+ function clearKeyboard(){
+  doc.querySelectorAll?.('.lt-wen-keyboard')?.forEach(el=>
+   el.classList.remove('lt-wen-keyboard'));
+ }
  function allGone(){
   for(const id of Array.from(state.keys()))clearForPointer(id);
   resetLens();
+  clearKeyboard();
  }
  doc.addEventListener('pointerdown',begin,{capture:true,passive:true});
  doc.addEventListener('pointermove',onMove,{capture:true,passive:true});
  for(const type of ['pointerup','pointercancel','lostpointercapture'])doc.addEventListener(type,end,{capture:true,passive:true});
  global.addEventListener?.('blur',allGone);
+ doc.addEventListener('focusout',e=>{
+  e.target?.classList?.remove('lt-wen-keyboard');
+ },true);
  doc.addEventListener('visibilitychange',()=>{if(doc.hidden)allGone();});
  doc.addEventListener('keydown',e=>{
   if(e.key==='Escape')allGone();

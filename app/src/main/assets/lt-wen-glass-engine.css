@@ -234,3 +234,10 @@ body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery)
  body.lt-wen-optics .lt-wen-follow-lens::before,
  body.lt-wen-optics .lt-wen-follow-lens::after{display:none!important}
 }
+
+/* Paged prose has a quiet, visible tablet keyboard focus target.
+ * No backdrop filter, opacity, transform or glass touches the paper/ink. */
+body.lt-wen-optics .reader #sentences:focus-visible{
+ outline:2px solid color-mix(in srgb,var(--accent,#4a91c8) 55%,transparent);
+ outline-offset:5px;
+}
