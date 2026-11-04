@@ -2,6 +2,8 @@
 
 **Living plan / الخطة الرئيسية للتنفيذ | 4 November 2026**
 
+**Current verified project checkpoint:** [docs/handoffs/LINGUA_TALES_HANDOFF_CURRENT.md](handoffs/LINGUA_TALES_HANDOFF_CURRENT.md), source `31b895e` passed [Android + real Chromium CI #41816102388](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/41816102388). The earlier new-test failure was fixed; do NOT reimplement initial port. Newer visual-only Wen branch also inspected at `f14f1d6e8ed3fb7629bfda7583f0b107f57ef4b8`.
+
 **Primary repository:** `amroalhamedi2022-hue/Storylens`, branch `main`. Existing documentation: `AGENTS.md`, `docs/LINGUA_TALES_MASTER_PLAN.md`, `docs/LINGUA_TALES_LIVE_STATUS.md`, `docs/LITERATURE_SOURCE_QUEUE.md`, and `docs/releases/LINGUA_TALES_1_0_0_INITIAL_SIGNED_HANDOFF_2026-11-03.md`.
 
 **Reference engine (read only):** `amroalhamedi2022-hue/Wen-sarafet`, `design/wen-full-unlocked-sandbox-20261101`, its `glass-engine/` Android Java library, `GlassMotion`, `WenNavigationLensDrawable`, `WenOpticalNavigationOverlay`, `WenLiquidRuntimeOptics`, `WenGlassBackdropDrawable`, `WenFabBubbleDrawable`, and `docs/design/wen-glass-design-tokens.json`. The newer `design/wen-188-visual-only-review-20261104` branch is a parallel visual review and must be checked for later advances before subsequent batches. **NEVER edit the financial app, financial logic, databases, encryption, SMS, or its protected Safe Zone** while porting visuals.
@@ -68,3 +70,7 @@ Wen Sarafet renders **native Android Views/Canvas/AGSL**; Lingua Tales renders i
 **Resume prompt:** “Continue Lingua Tales from `docs/LINGUA_TALES_WEN_LIQUID_GLASS_MASTER_PLAN_2026-11-04.md`. Compare current Storylens main and Wen-sarafet reference engine branches/Actions, implement the next unfinished GL ID in isolated WebView assets, update the plan + LIVE_STATUS in the same commit, run exact-HEAD CI and screenshot tests, and keep source/rights/device/signing gates honest.”
 ### Run log — 2026-11-04 GL01 corrective follow-up
 - Implementation landed on Storylens `main` at `1c0e84fa4b128c40af391d5bdcbc8d927e11fead`; its CI #41815804696 failed in a **new Node fixture text assertion**, before running full Android/browser tests. The first corrector commit updates only the test's static acceptance fixture marker and fake-DOM keyboard query; production behaviour is unchanged. Next exact-head CI and screenshots determine whether the entire batch is accepted. **Do not label GL01 CI-green until actual Actions success.**
+
+### 2026-11-04 verified checkpoint: first port accepted by CI, hardware acceptance still open
+
+Initial engine port landed `1c0e84f`, corrected synthetic DOM test only in `31b895e`. [Exact-source Android/Chromium CI #41816102388](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/41816102388) **SUCCESS**. This covers source/Node/Chrome/APK asset verification and phone/tablet synthetic screenshots, NOT physical screen/gesture or signed APK update acceptance. GL01 code + CI PASS, GL02–GL08 initial surface coverage PARTIAL, GL09 held slide-navigation and physical viscosity PARTIAL/OPEN, GL10 hardware and 58-theme visual comparison OPEN. For correct next work read the CURRENT handoff link at top. No duplicate commits, no reset of permanent signer or protected reader data.
