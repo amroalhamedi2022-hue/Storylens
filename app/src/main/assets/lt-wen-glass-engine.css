@@ -118,22 +118,18 @@ body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery)
  left:0;top:0;
  width:var(--lt-wen-lens-w,0px);
  height:var(--lt-wen-lens-h,0px);
- transform:translate3d(var(--lt-wen-lens-x,0px),var(--lt-wen-lens-y,0px),0)
-           scale(var(--lt-wen-stretch-x,1),var(--lt-wen-stretch-y,1));
- transform-origin:50% 50%;border-radius:20px;
+ transform:translate3d(var(--lt-wen-lens-x,0px),var(--lt-wen-lens-y,0px),0);
+ border-radius:20px;
  pointer-events:none!important;
  z-index:0;
  opacity:0;
  background:
-  radial-gradient(ellipse 100% 70% at 25% 0%,rgba(255,255,255,.73),transparent 71%),
-  radial-gradient(ellipse 85% 95% at 92% 105%,rgba(70,159,225,.25),transparent 75%),
-  linear-gradient(152deg,rgba(255,255,255,.40),rgba(123,211,248,.12) 47%,rgba(255,255,255,.27));
- border:1px solid rgba(255,255,255,.79);
- box-shadow:inset 0 2px 2px rgba(255,255,255,.76),
-            inset 1px 0 1px rgba(255,255,255,.46),
-            inset 0 -3px 4px rgba(47,92,153,.24),
-            0 2px 3px rgba(11,45,92,.11),
-            0 12px 29px rgba(15,39,85,.21);
+  radial-gradient(ellipse 80% 45% at 30% 9%,rgba(255,255,255,.53),transparent 85%),
+  linear-gradient(150deg,rgba(255,255,255,.26),rgba(123,211,248,.07) 47%,rgba(255,255,255,.19));
+ border:1px solid rgba(255,255,255,.67);
+ box-shadow:inset 0 1px 1px rgba(255,255,255,.64),
+            inset 0 -2px 3px rgba(47,92,153,.17),
+            0 8px 20px rgba(15,39,85,.19);
  transition:transform var(--lt-wen-release) cubic-bezier(.17,.78,.2,1.24),
             opacity .16s ease,width var(--lt-wen-release) ease,height var(--lt-wen-release) ease;
 }
@@ -187,50 +183,4 @@ body.lt-wen-optics .reader :is(.sentence,.tok,.reading-width,.lt-book-page){
   --lt-wen-tint:rgba(135,183,221,.12);
   --lt-wen-edge:rgba(135,183,221,.20);
  }
-}
-
-/* Tablet-first premium optics. One active glass layer; never blur paper, ink or
-   cover images. No idle keyframes, repaint timers or per-card backdrop filters. */
-body.lt-wen-optics .lt-wen-follow-lens::before,
-body.lt-wen-optics .lt-wen-follow-lens::after{
- content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-}
-body.lt-wen-optics .lt-wen-follow-lens::before{
- inset:2px;border:1px solid rgba(255,255,255,.38);
- background:linear-gradient(112deg,rgba(255,255,255,.35),transparent 43%,
- rgba(28,100,175,.10) 80%,rgba(255,255,255,.16));
- -webkit-mask-image:linear-gradient(to bottom,black,transparent 72%);
- mask-image:linear-gradient(to bottom,black,transparent 72%);
-}
-body.lt-wen-optics .lt-wen-follow-lens::after{
- inset:auto 12% -1px 12%;height:18%;border-bottom:2px solid rgba(255,255,255,.69);
- box-shadow:0 2px 5px rgba(47,119,173,.17);
-}
-body.lt-wen-optics .lt-wen-follow-lens.lt-wen-lens-live{will-change:transform;opacity:.96}
-/* Let the highlight show through the tray buttons without covering their labels. */
-body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery)
- > :is(button,.lt-genre,.lt-theme-choice,.stl-choice){
- background-color:color-mix(in srgb,var(--card,#f3f7f8) 77%,transparent);
-}
-@media(min-width:700px) and (prefers-reduced-motion:no-preference){
- body.lt-wen-optics{--lt-wen-release:330ms}
- body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery)
- > .lt-wen-follow-lens.lt-wen-lens-live{
-  border-radius:24px;
-  -webkit-backdrop-filter:blur(7px) saturate(1.38);
-  backdrop-filter:blur(7px) saturate(1.38);
-  transition-timing-function:cubic-bezier(.15,.82,.19,1.20);
- }
- body.lt-wen-optics .library .header,body.lt-wen-optics .reader .toolbar{
-  box-shadow:inset 0 1px 1px rgba(255,255,255,.38),
-   inset 0 -1px 0 rgba(40,95,159,.12),0 12px 37px var(--lt-wen-shadow);
- }
- body.lt-wen-optics .lt-settings-sheet,body.lt-wen-optics .lt-drawer{
-  box-shadow:inset 0 2px 1px rgba(255,255,255,.33),
-   inset 0 -1px 1px rgba(30,76,150,.13),0 24px 70px var(--lt-wen-shadow);
- }
-}
-@media(prefers-reduced-motion:reduce),(prefers-reduced-transparency:reduce){
- body.lt-wen-optics .lt-wen-follow-lens::before,
- body.lt-wen-optics .lt-wen-follow-lens::after{display:none!important}
 }

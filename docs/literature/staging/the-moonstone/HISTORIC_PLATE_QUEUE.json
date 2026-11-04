@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "workId": "collins-the-moonstone-1868",
+  "status": "HISTORIC_PLATES_DISCOVERED_NOT_PACKAGED",
+  "collectionURL": "https://victorianweb.org/art/illustration/jewett/index.html",
+  "originalPrint": "Harper's Weekly, 1868, original serialized engravings",
+  "scanRightsCaution": "Victorian Web has a credit and scholarly/educational reuse notice for its hosted scan; this does not automatically permit general Android app redistribution. Investigate an archive-hosted rights-cleared master scan or explicit permission, verify each individual plate's artist and source before use.",
+  "candidates": [
+    {
+      "id": "moonstone-plate-02",
+      "printYear": 1868,
+      "chapterFile": "prologue.xhtml",
+      "event": "Herncastle confronts the dying guardian in the armoury",
+      "sourcePage": "https://victorianweb.org/art/illustration/jewett/2.html",
+      "sourceTextAnchor": "I saw John Herncastle, with a torch in one hand, and a dagger dripping with blood in the other",
+      "artist": "1868 Harper & Brothers house engravers — specific credit unresolved",
+      "altEn": "An 1868 engraving illustrating John Herncastle and the dying guardian of the Moonstone",
+      "altAr": "نقش تاريخي من عام 1868 يصوّر جون هيرنكاسل وحارس حجر القمر المحتضر",
+      "rights": "PENDING",
+      "binary": "NOT_DOWNLOADED"
+    },
+    {
+      "id": "moonstone-plate-05",
+      "printYear": 1868,
+      "chapterFile": "chapter-1-4.xhtml",
+      "event": "Rosanna looks toward the quicksand and sea",
+      "sourcePage": "https://victorianweb.org/art/illustration/jewett/5.html",
+      "sourceTextAnchor": "Shivering Sand",
+      "artist": "William Jewett / C. B., per-plate attribution to verify",
+      "altEn": "An original 1868 engraving of Rosanna at the Shivering Sand",
+      "altAr": "رسم أصلي من عام 1868 لروزانا قرب الرمال المتحركة",
+      "rights": "PENDING",
+      "binary": "NOT_DOWNLOADED"
+    },
+    {
+      "id": "moonstone-plate-17",
+      "printYear": 1868,
+      "chapterFile": "chapter-1-11.xhtml",
+      "event": "The cabinet drawer is found empty",
+      "sourcePage": "https://victorianweb.org/art/illustration/jewett/17.html",
+      "sourceTextAnchor": "I went to the cabinet. The drawer was empty.",
+      "artist": "1868 Harper's Weekly engraver — confirm plate attribution",
+      "altEn": "An original 1868 engraving associated with the discovery of the empty drawer",
+      "altAr": "نقش أصلي من عام 1868 يرتبط باكتشاف الدرج الفارغ",
+      "rights": "PENDING",
+      "binary": "NOT_DOWNLOADED"
+    }
+  ],
+  "nextGate": [
+    "Clear per-image original plate, photographer/host scan, license and distribution territory",
+    "Download original master and independently hash SHA-256",
+    "Crop only safely; preserve original period colour and all meaningful historic margins",
+    "Verify exact narrative paragraph anchor within pinned XHTML",
+    "Pair in-reading figure with complete natural bilingual contextual text and alt/caption",
+    "Only then bundle offline with book-title cover after complete translation and device QA"
+  ]
+}
