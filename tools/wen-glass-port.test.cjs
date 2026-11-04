@@ -40,8 +40,12 @@ const el={classList:classes(),style:style(),disabled:false,isConnected:true,
  closest:(sel)=>sel.includes('button')?el:sel.includes('.lt-genre-list')?track:null,
  getBoundingClientRect:()=>({left:50,top:32,width:140,height:50})
 };
+let hitTarget=el;
+const sibling={classList:classes(),style:style(),disabled:false,isConnected:true,
+ matches:()=>false,closest:(sel)=>sel.includes('button')?sibling:sel.includes('.lt-genre-list')?track:null,
+ getBoundingClientRect:()=>({left:260,top:32,width:145,height:50})};
 const doc={
- body,hidden:false,
+ body,hidden:false,elementFromPoint:()=>hitTarget,
  addEventListener(type,handler){const a=listeners.get(type)||[];a.push(handler);listeners.set(type,a)},
  createElement(){return {classList:classes(),style:style(),setAttribute(){},isConnected:true}},
  querySelectorAll(selector){return selector==='.lt-wen-keyboard'&&el.classList.contains('lt-wen-keyboard')?[el]:[]}
@@ -66,6 +70,14 @@ emit('pointermove',{clientX:125,clientY:72});
 assert.equal(el.classList.contains('lt-wen-moving'),true);
 while(rafs.length)rafs.shift()();
 assert.ok(track.children[0].style.getPropertyValue('--lt-wen-lens-x'));
+hitTarget=sibling;
+emit('pointermove',{clientX:280,clientY:57});
+while(rafs.length)rafs.shift()();
+assert.ok(parseInt(track.children[0].style.getPropertyValue('--lt-wen-lens-x'),10)>=240 && parseInt(track.children[0].style.getPropertyValue('--lt-wen-lens-x'),10)<=320,
+ 'held optical lens morphs to adjacent control with bounded finger offset');
+assert.ok(Number(track.children[0].style.getPropertyValue('--lt-wen-stretch-x'))>=1,
+ 'liquid stretch is nonnegative and bounded');
+hitTarget=el;
 assert.equal(track.children[0].classList.contains('lt-wen-lens-live'),true);
 emit('pointerup');
 emit('lostpointercapture');
@@ -76,6 +88,13 @@ emit('pointerdown');
 assert.equal(lensCount,1,'reuses existing single lens');
 emit('pointercancel');
 assert.equal(win.LinguaWenGlass.activePointers,0);
+emit('pointerdown');emit('pointermove',{clientX:75,clientY:101});
+assert.equal(win.LinguaWenGlass.activePointers,0,'native vertical scroll releases optics');
+assert.equal(track.children[0].classList.contains('lt-wen-lens-live'),false);
+emit('pointerup');
+assert.match(css,/min-width:700px/,'premium tablet breakpoint is present');
+assert.match(css,/--lt-wen-stretch-x/,'liquid stretch is rendered');
+assert.doesNotMatch(script,/\.click\s*\(/,'optical layer must never synthesize clicks');
 emit('keydown',{key:'Enter',repeat:false});
 assert.equal(el.classList.contains('lt-wen-keyboard'),true);
 emit('keyup',{key:'Enter'});
