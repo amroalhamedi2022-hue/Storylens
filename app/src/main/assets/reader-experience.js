@@ -1135,6 +1135,31 @@ let ltTranslationBook=null,ltTranslationIndex=0;
 // additions from completed books must be scene-verified, rights-reviewed,
 // offline, attributable and anchored to the same original paragraph index.
 // Never infer those checks from a pretty filename or from colour alone.
+// A placement contract for new period images delivered by the separate
+// literature/art workflow. Legacy bundled pictures keep their established
+// positions. Newly declared archival items must carry scene+rights proof.
+function ltApprovedArchiveSceneLayout(item){
+ if(!item||typeof item!=='object')return null;
+ const claimedArchive=item.verifiedArchive!==undefined||
+  item.sourceParagraphExact!==undefined||
+  item.distributionReviewApproved!==undefined||
+  item.archiveSource!==undefined||item.visualTreatment==='original-colour';
+ const requested=['wide','edge-start','edge-end'].includes(item.position)
+  ?item.position:'wide';
+ if(!claimedArchive)return {position:requested,uncropped:false,archival:false};
+ if(item.verifiedArchive!==true||item.sourceParagraphExact!==true||
+    item.distributionReviewApproved!==true||
+    typeof item.archiveSource!=='string'||
+    !/^https:\/\/(?:commons\.wikimedia\.org|www\.metmuseum\.org|www\.loc\.gov|gallica\.bnf\.fr|www\.gutenberg\.org|archive\.org)\//i.test(item.archiveSource)||
+    typeof item.credit!=='string'||!item.credit.trim()||
+    !Number.isFinite(item.aspectRatio)||item.aspectRatio<.5||
+    item.aspectRatio>3.5)return null;
+ // Editorial preference wins. When no layout was chosen, portrait folios
+ // sit beside the exact passage on tablets and stack on smaller screens.
+ const position=['wide','edge-start','edge-end'].includes(item.position)
+  ?item.position:item.aspectRatio<.86?'edge-start':'wide';
+ return {position,uncropped:true,archival:true};
+}
 function ltVerifiedCompanionPlates(chapter,periodPlate){
  const paragraphs=Array.isArray(chapter?.paragraphs)?chapter.paragraphs:[];
  const validSrc=/^art\/[a-z0-9_-]+(?:\/[a-z0-9_-]+)*\.(?:webp|png|jpe?g)$/i;
@@ -1454,14 +1479,17 @@ renderReader=function(){
      typeof item.alt!=='string'||!item.alt.trim()||item.alt.length>240)continue;
   const anchor=sentences.find(node=>Number(node.dataset.i)===item.afterParagraph);
   if(!anchor||typeof anchor.insertAdjacentElement!=='function')continue;
-  const position=['wide','edge-start','edge-end'].includes(item.position)?item.position:'wide';
+  const layout=ltApprovedArchiveSceneLayout(item);
+  if(!layout)continue;
+  const position=layout.position;
   const figure=document.createElement('figure');
   const originalColour=item.visualTreatment==='original-colour'&&
     item!==chapterScene&&safeArtPath.test(item.src||'')&&
     typeof item.credit==='string'&&!!item.credit.trim();
   figure.className='lt-inline-illustration lt-inline-'+position+
    (item===chapterScene?' lt-inline-chapter-scene':'')+
-   (originalColour?' lt-archive-colour-original':'');
+   (originalColour?' lt-archive-colour-original':'')+
+   (layout.archival?' lt-archive-source-approved':'');
   const picture=document.createElement('img');
   picture.src=item.src;picture.alt=item.alt.trim();
   picture.loading='lazy';picture.decoding='async';
@@ -1471,12 +1499,12 @@ renderReader=function(){
      Number.isFinite(item.aspectRatio) && item.aspectRatio>=0.5 && item.aspectRatio<=3.5){
    picture.style.aspectRatio=String(item.aspectRatio);
   }
-  if(picture.style && originalColour){
-   // Historical pigment and complete painted manuscript must remain visible:
-   // never crop, grayscale, sepia-filter or blend the actual original pixels.
+  if(picture.style && (originalColour||layout.uncropped)){
+   // Authentic pigment, manuscript margins and engraving frame are immutable.
+   // Full frame wins over any stray legacy crop request.
    picture.style.objectFit='contain';
   }
-  if(picture.style && item.crop==='cover'&&!originalColour){
+  if(picture.style && item.crop==='cover'&&!layout.uncropped&&!originalColour){
    picture.style.objectFit='cover';
    if(Number.isFinite(item.focalX)&&Number.isFinite(item.focalY)&&
       item.focalX>=0&&item.focalX<=100&&item.focalY>=0&&item.focalY<=100){

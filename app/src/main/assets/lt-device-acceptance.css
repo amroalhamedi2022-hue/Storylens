@@ -441,3 +441,44 @@ button.lt-water-pressed,.lt-theme-choice.lt-water-pressed{
 .reader .lt-inline-illustration.lt-archive-colour-original figcaption{
  color:#493f32!important;background:transparent!important;
 }
+
+/* 2026-11-04: externally sourced, rights/scene-approved art belongs to the
+   passage, never to an invented glass carousel. Keep full ink/colour and
+   original paper margins, even if a content entry asks for a crop. */
+.reader .lt-inline-illustration.lt-archive-source-approved{
+ break-inside:avoid;
+ border:1px solid color-mix(in srgb,var(--reader-ink) 17%,transparent);
+ background:color-mix(in srgb,var(--reader) 92%,#e8ddc8);
+}
+.reader .lt-inline-illustration.lt-archive-source-approved img{
+ display:block;object-fit:contain!important;object-position:center!important;
+ filter:none!important;opacity:1!important;mix-blend-mode:normal!important;
+ max-height:min(65svh,590px);width:100%;height:auto;
+}
+.reader .lt-inline-illustration.lt-archive-source-approved figcaption{
+ max-width:66ch;margin-inline:auto;line-height:1.65;
+ padding:8px clamp(9px,1.6vw,17px);text-wrap:pretty;
+}
+@media(min-width:850px){
+ .reader .lt-inline-illustration.lt-archive-source-approved.lt-inline-edge-start,
+ .reader .lt-inline-illustration.lt-archive-source-approved.lt-inline-edge-end{
+  max-width:min(39%,360px);margin-block:.5rem 1.15rem;
+ }
+ .reader .lt-inline-illustration.lt-archive-source-approved.lt-inline-edge-start{
+  margin-inline-end:clamp(14px,2vw,25px);margin-inline-start:0;
+ }
+ .reader .lt-inline-illustration.lt-archive-source-approved.lt-inline-edge-end{
+  margin-inline-start:clamp(14px,2vw,25px);margin-inline-end:0;
+ }
+}
+@media(max-width:849px){
+ .reader .lt-inline-illustration.lt-archive-source-approved{
+  float:none!important;width:100%;max-width:min(100%,580px);
+  margin:1.05rem auto 1.4rem;clear:both;
+ }
+}
+@media(prefers-reduced-transparency:reduce){
+ .reader .lt-inline-illustration.lt-archive-source-approved{
+  background:var(--reader,#fff9ef)!important;
+ }
+}
