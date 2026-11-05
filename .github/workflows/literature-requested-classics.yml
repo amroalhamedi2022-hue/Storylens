@@ -50,6 +50,11 @@ jobs:
               echo "REUSED verified identical historical edition $slug"
             else
               git commit -m "Literature: stage full original $slug with local source illustration binaries and hash manifests"
+              # Other independent content editors may update this branch while
+              # source intake runs. Rebase the source-only commit before pushing;
+              # never use a force push or discard already verified book data.
+              git fetch origin "${GITHUB_REF_NAME}"
+              git rebase "origin/${GITHUB_REF_NAME}"
               git push origin "HEAD:${GITHUB_REF_NAME}"
             fi
             echo "::endgroup::"
