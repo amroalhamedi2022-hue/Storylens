@@ -482,3 +482,30 @@ button.lt-water-pressed,.lt-theme-choice.lt-water-pressed{
   background:var(--reader,#fff9ef)!important;
  }
 }
+
+/* 2026-11-05 RDR-04/05/06/11: Quiet paper and first-party controls.
+ * OS clipboard selection is suppressed for displayed reader text but native
+ * edit fields remain editable. Real DRM/OCR prevention is not claimed. */
+#reading-progress{display:none!important}
+.reader :is(.sentence,.tok,.inline-ar,.inline-en,.stl-sentence-translation,
+ .reader-label,.chapter-end,.lt-page-count,.lt-book-page,.lt-inline-illustration figcaption){
+ -webkit-user-select:none!important;user-select:none!important;
+}
+.reader :is(input,textarea,[contenteditable="true"]),
+#modals :is(input,textarea,[contenteditable="true"]){
+ -webkit-user-select:text!important;user-select:text!important;
+}
+/* True optical centring of isolated glyph-only controls, with safe targets.
+ * Do not change page-turn gestures or the Codex-owned page engine. */
+body .lt-menu-toggle,body .lt-drawer-close{
+ display:grid!important;place-items:center!important;
+ min-width:44px;min-height:44px;
+ padding:8px!important;line-height:1!important;
+}
+body .lt-menu-toggle .lt-menu-glyph{
+ margin:0 auto!important;align-self:center;justify-self:center;
+}
+.reader .lt-art-zoom-button{
+ display:inline-grid;place-items:center;
+ min-height:44px;min-width:44px;
+}

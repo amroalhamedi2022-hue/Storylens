@@ -21,9 +21,13 @@ const labelsAr = [...labelsArSource.matchAll(/'([^']+)'\s*:/g)].map(m => m[1]);
 const arabicThemeLabels = [...labelsArSource.matchAll(/'([^']+)'\s*:\s*\"([^\"]+)\"/g)];
 const unique = values => [...new Set(values)].sort();
 assert.equal(new Set(names).size, names.length, 'duplicate selectable theme IDs');
-assert.deepEqual(unique(names), unique(labels), 'every selectable theme needs an English gallery label');
-assert.deepEqual(unique(names), unique(labelsAr), 'every selectable theme needs an Arabic gallery label');
-assert.equal(arabicThemeLabels.length, names.length, 'each theme needs exactly one Arabic label');
+assert.deepEqual(names,
+ ['liquid-27','aurora','aqua','nebula','paper-atlas','midnight-library'],
+ 'only the first six user-approved themes can be selected, in the required order');
+assert.ok(names.every(n=>labels.includes(n)),
+ 'every selectable theme needs an English gallery label');
+assert.ok(names.every(n=>labelsAr.includes(n)), 'every selectable theme needs an Arabic gallery label');
+assert.ok(arabicThemeLabels.length>=names.length, 'each approved theme needs an Arabic label');
 for (const [, name, label] of arabicThemeLabels) {
   assert.ok(/[\u0600-\u06FF]/u.test(label), 'Arabic theme label missing Arabic text: ' + name);
   assert.ok(label.trim().length >= 3, 'Arabic theme label is too short: ' + name);
@@ -52,4 +56,6 @@ assert.ok(stainedGlass.includes('repeating-linear-gradient(135deg'), 'Stained Gl
 assert.ok(!/https?:\/\//.test(stainedGlass), 'Stained Glass must work offline');
 assert.ok(!/\banimation\s*:\s*[^;]*infinite/i.test(stainedGlass), 'Stained Glass must not add infinite repaint work');
 assert.match(shellCss, /@media\(prefers-reduced-motion:reduce\)\{\s*\.theme-reform-club-brass\b/, 'Reform Club Brass must retain a reduced-motion fallback');
-console.log('PASS theme catalog: ' + names.length + ' selectable themes have labels, production body styles and backup allowlist; routed themes have swatches and reduced-motion fallbacks.');
+assert.match(shell,/if\(!validTheme\(state\.uiTheme\)\)/,
+ 'previously selected legacy themes migrate without losing reading data');
+console.log('PASS theme catalog: exactly six selectable themes + safe legacy restore, old CSS retained only for compatibility');
