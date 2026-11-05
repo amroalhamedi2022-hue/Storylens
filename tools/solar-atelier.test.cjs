@@ -19,14 +19,14 @@ const sandbox={window,document,state,library:()=>{},openStory:()=>{},libraryBack
  get:(k,f)=>store.has(k)?store.get(k):f,put:(k,v)=>store.set(k,v),
  closeSheet:()=>{},Date,console};
 vm.runInNewContext(script,sandbox,{timeout:5000});
-assert.ok(window.LinguaShell.themeNames.includes('solar-atelier'));
-assert.equal(window.LinguaShell.applyTheme('solar-atelier'),true);
-assert.equal(state.uiTheme,'solar-atelier');
-assert.equal(store.get('uiTheme'),'solar-atelier');
-assert.ok(added.includes('theme-solar-atelier'));
-assert.ok(removed.includes('theme-aurora'));
-assert.equal(window.LinguaShell.applyTheme('remote-url'),false);
-assert.equal(state.uiTheme,'solar-atelier');
+assert.ok(window.LinguaShell.themeNames.includes('solar-atelier'),
+ 'legacy style remains available for safe backup imports');
+assert.equal(window.LinguaShell.applyTheme('solar-atelier'),false,
+ 'retired theme cannot be selected after the six-theme redesign');
+assert.equal(state.uiTheme,'aurora','existing active theme is preserved');
+assert.notEqual(store.get('uiTheme'),'solar-atelier',
+ 'removed styles must not be saved as an active preference');
+assert.equal(window.LinguaShell.applyTheme('https://untrusted'),false);
 for(const selector of [
  'body.theme-solar-atelier',
  '.theme-solar-atelier .library .storylens-hero',

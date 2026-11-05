@@ -19,14 +19,14 @@ const sandbox={window,document,state,library:()=>{},openStory:()=>{},libraryBack
  get:(k,f)=>store.has(k)?store.get(k):f,put:(k,v)=>store.set(k,v),
  closeSheet:()=>{},Date,console};
 vm.runInNewContext(script,sandbox,{timeout:5000});
-assert.ok(window.LinguaShell.themeNames.includes('botanical-folio'));
-assert.equal(window.LinguaShell.applyTheme('botanical-folio'),true);
-assert.equal(state.uiTheme,'botanical-folio');
-assert.equal(store.get('uiTheme'),'botanical-folio');
-assert.ok(added.includes('theme-botanical-folio'));
-assert.ok(removed.includes('theme-aurora'));
-assert.equal(window.LinguaShell.applyTheme('remote-url'),false);
-assert.equal(state.uiTheme,'botanical-folio');
+assert.ok(window.LinguaShell.themeNames.includes('botanical-folio'),
+ 'legacy style remains available for safe backup imports');
+assert.equal(window.LinguaShell.applyTheme('botanical-folio'),false,
+ 'retired theme cannot be selected after the six-theme redesign');
+assert.equal(state.uiTheme,'aurora','existing active theme is preserved');
+assert.notEqual(store.get('uiTheme'),'botanical-folio',
+ 'removed styles must not be saved as an active preference');
+assert.equal(window.LinguaShell.applyTheme('https://untrusted'),false);
 for(const selector of [
  'body.theme-botanical-folio',
  '.theme-botanical-folio .library .storylens-hero',

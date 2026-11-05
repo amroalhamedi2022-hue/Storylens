@@ -93,8 +93,10 @@ const audio=window.LinguaLicensedAudio;
  assert.equal(audio.SFX.length,4);
  assert.equal(audio.isPlaying(),false);
  assert.equal(audio.prefs().ambienceEnabled,false,'legacy preferences default to silent ambience');
- assert.equal(audio.prefs().sfxEnabled,false,'legacy preferences default to silent SFX');
- const mutedBefore=instances.length;assert.equal(await audio.playSfx('page-turn'),false,'SFX cannot play until explicitly enabled');assert.equal(instances.length,mutedBefore,'disabled SFX creates no Audio instance');
+ assert.equal(audio.prefs().sfxEnabled,true,'new users and unset legacy keys get gentle SFX by default');
+ assert.equal(instances.length,0,'enabled SFX must never autoplay on page load');
+ audio.setSfxEnabled(false); // An explicit opt-out persists and remains silent.
+ const mutedBefore=instances.length;assert.equal(await audio.playSfx('page-turn'),false,'explicit OFF blocks audio');assert.equal(instances.length,mutedBefore,'disabled SFX creates no Audio instance');
  const controlsRoot=new FakeElement('section');audio.controls(controlsRoot,false);
  function findNode(node,predicate){if(predicate(node))return node;for(const child of node.children||[]){const found=findNode(child,predicate);if(found)return found;}return null;}
  const audioStatus=findNode(controlsRoot,node=>node.tag==='p'&&node.className==='quiet');
@@ -162,7 +164,7 @@ const audio=window.LinguaLicensedAudio;
  assert.equal(audio.isPlaying(),false,'unexpected Chromium pause reconciles UI with actual audio state');
  assert.match(audioStatus.textContent,/unexpectedly interrupted/i,'unexpected pause is explained visibly');
  assert.equal(await audio.playTrack('forest'),true,'paused player is retryable');
- assert.match(audioStatus.textContent,/licensed recorded ambiences/i,'successful retry clears the diagnostic');
+ assert.match(audioStatus.textContent,/Ambience is optional/i,'successful retry clears the diagnostic');
  await audio.pause();
 
  // Overlapping taps on one track must not let an older play() completion
@@ -230,5 +232,5 @@ const audio=window.LinguaLicensedAudio;
  await window.LinguaAmbience.play();assert.equal(proceduralPlaying,true);
  assert.equal(await audio.disableAll(),true);assert.equal(audio.prefs().ambienceEnabled,false);assert.equal(audio.prefs().sfxEnabled,false);assert.equal(audio.isPlaying(),false);assert.equal(proceduralPlaying,false,'disable-all also stops the procedural ambience engine');
  assert.equal(ambienceToggle.checked,false);assert.equal(sfxToggle.checked,false);assert.equal(findNode(controlsRoot,node=>node.textContent==='Page turns').disabled,true);
- console.log('PASS LT-11: 20 pinned CC-BY ambience loops + 4 licensed one-shot effects, independent opt-in switches/volumes, disable-all, retry-safe player errors, focus and lifecycle.');
+ console.log('PASS LT-11: gentle new-install SFX default, explicit OFF preserved, no automatic ambience, 20 pinned recordings, focus and lifecycle');
 })().catch(error=>{console.error(error);process.exitCode=1});

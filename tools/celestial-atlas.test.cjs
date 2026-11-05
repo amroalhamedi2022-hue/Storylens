@@ -15,12 +15,13 @@ const window={addEventListener:()=>{},innerWidth:1000,scrollY:0,matchMedia:()=>(
 vm.runInNewContext(script,{window,document,state,library:()=>{},openStory:()=>{},libraryBack:()=>{},
  get:(k,f)=>store.has(k)?store.get(k):f,put:(k,v)=>store.set(k,v),
  closeSheet:()=>{},Date,console},{timeout:5000});
-assert.ok(window.LinguaShell.themeNames.includes('celestial-atlas'));
-assert.equal(window.LinguaShell.applyTheme('celestial-atlas'),true);
-assert.equal(state.uiTheme,'celestial-atlas');
-assert.equal(store.get('uiTheme'),'celestial-atlas');
-assert.ok(classes.includes('+theme-celestial-atlas'));
-assert.ok(classes.includes('-theme-aurora'));
+assert.ok(window.LinguaShell.themeNames.includes('celestial-atlas'),
+ 'legacy style remains available for safe backup imports');
+assert.equal(window.LinguaShell.applyTheme('celestial-atlas'),false,
+ 'retired theme cannot be selected after the six-theme redesign');
+assert.equal(state.uiTheme,'aurora','existing active theme is preserved');
+assert.notEqual(store.get('uiTheme'),'celestial-atlas',
+ 'removed styles must not be saved as an active preference');
 assert.equal(window.LinguaShell.applyTheme('https://untrusted'),false);
 for(const selector of ['body.theme-celestial-atlas','.theme-celestial-atlas .library .storylens-hero',
  '.theme-celestial-atlas .library .shelf .card','.theme-celestial-atlas .lt-drawer',

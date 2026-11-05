@@ -34,7 +34,7 @@ const SFX = [
 ];
 const LICENSE = 'CC BY 4.0';
 const KEY='licensedAudioPrefs';
-const DEFAULT={track:'forest',volume:0.24,sfxVolume:0.18,ambienceEnabled:false,sfxEnabled:false};
+const DEFAULT={track:'forest',volume:0.24,sfxVolume:0.14,ambienceEnabled:false,sfxEnabled:true};
 const trackIds=new Set(TRACKS.map(x=>x.id)),sfxIds=new Set(SFX.map(x=>x.id));
 const clamp=v=>Math.max(0,Math.min(1,Number.isFinite(Number(v))?Number(v):0));
 function sanitize(raw){
@@ -42,7 +42,10 @@ function sanitize(raw){
  return {track:trackIds.has(o.track)?o.track:DEFAULT.track,
   volume:clamp(o.volume===undefined?DEFAULT.volume:o.volume),
   sfxVolume:clamp(o.sfxVolume===undefined?DEFAULT.sfxVolume:o.sfxVolume),
-  ambienceEnabled:o.ambienceEnabled===true,sfxEnabled:o.sfxEnabled===true};
+  ambienceEnabled:o.ambienceEnabled===true,
+  // Missing legacy key means no deliberate decision; enable a gentle SFX
+  // default without auto-playing audio. Explicit saved false remains OFF.
+  sfxEnabled:o.sfxEnabled!==false};
 }
 let prefs=sanitize(typeof global.get==='function'?global.get(KEY,DEFAULT):DEFAULT);
 let player=null,playerTrack=null,playing=false,focusOwned=false,generation=0;
@@ -100,8 +103,8 @@ function syncUi(){
  if(sfxVolumeControl)sfxVolumeControl.value=String(prefs.sfxVolume);
  for(const button of sfxButtons)button.disabled=!prefs.sfxEnabled;
  if(statusNote)statusNote.textContent=playbackIssue||(rtlUi
-  ?'20 أجواء مسجّلة ومرخّصة + 4 مؤثرات قصيرة؛ التشغيل اختياري ومحلي. CC BY 4.0.'
-  :'20 licensed recorded ambiences + 4 short effects; optional local playback. CC BY 4.0.');
+  ?'الأجواء اختيارية؛ مؤثرات اللمس قابلة للإيقاف.'
+  :'Ambience is optional; touch sounds can be switched off.');
 }
 // HTMLMediaElement can remain unpaused after decoder output stalls. Poll
 // playhead movement only for the current, explicitly started licensed loop.
