@@ -280,11 +280,29 @@ function show(id,{historyEntry=true}={}){
  prepare(id,entry);
  return true;
 }
-global.openStory=function(id,...args){
- const story=storyById(id);
- if(hasChapters(story)){show(id);return;}
- return originalOpen.apply(this,[id,...args]);
-};
+// IMPORTANT: direct openStory(id) is intentionally left alone. Deep-link,
+// automated bilingual-translation journeys, bookmark restore, study exercises
+// and previously installed integrations call it to enter the reader directly.
+// Intercept only REAL click activation of a library book card/Continue button.
+// This preserves the old programmatic API without conflicting with the UX.
+function activateBookCard(event){
+ if(event.defaultPrevented)return;
+ const target=event.target?.nodeType===1?event.target:event.target?.parentElement;
+ if(!target?.closest)return;
+ // The favorite, discovery dropdown and other nested library controls must
+ // never be mistaken for the book cover.
+ if(target.closest('.stl-favorite,.stl-discovery button,input,select,textarea,a'))return;
+ const card=target.closest('.library .card[onclick],.library .hero-continue[onclick]');
+ if(!card)return;
+ const handler=card.getAttribute?.('onclick')||'';
+ const match=handler.match(/^openStory\('([a-z0-9-]{1,95})'\);?$/);
+ const id=match?.[1];
+ if(!id||!hasChapters(storyById(id)))return;
+ event.preventDefault?.();
+ event.stopPropagation?.();
+ show(id);
+}
+document.addEventListener?.('click',activateBookCard,true);
  // Provide an always-accessible way back to chapter thumbnails from inside
  // the reader. The existing paging/selection/page-fold renderer is untouched.
 const baseRender=global.renderReader;
