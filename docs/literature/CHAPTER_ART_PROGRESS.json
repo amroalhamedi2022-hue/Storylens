@@ -4,9 +4,9 @@
   "scope": "checked-in main branch only; open PR 16 artifacts NOT counted as main",
   "policy": "at least one distinct locally stored, sourced, chapter-matched and rights-cleared primary image per chapter",
   "counts": {
-    "localCandidateChapterCards": 150,
+    "localCandidateChapterCards": 153,
     "readyChapterCards": 0,
-    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 459
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 463
   },
   "books": [
     {
@@ -14,22 +14,25 @@
       "title": "Around the World in Eighty Days",
       "sourceState": "37 source chapters plus Arabic draft",
       "chapterCount": 37,
-      "archivedLocalHistoricArt": 9,
+      "archivedLocalHistoricArt": 13,
       "mappedChapterNumbers": [
         3,
         5,
         6,
         11,
+        13,
         15,
         17,
+        18,
         20,
         21,
+        26,
         29
       ],
       "readyChapterNumbers": [],
-      "localCandidateChapters": 9,
+      "localCandidateChapters": 12,
       "readyForUICards": 0,
-      "missingImageChapters": 28,
+      "missingImageChapters": 25,
       "missingReadyChapters": 37,
       "imageMap": "docs/literature/staging/verne-chapter-cards/chapter-image-map.json"
     },

@@ -6,15 +6,15 @@
 
 ## Current totals
 
-- Locally mapped chapter candidates: **150**.
+- Locally mapped chapter candidates: **153**.
 - Chapter cards with both territorial rights and editorial approval: **0**.
-- Verified historical art binaries retained in audited archives (all editions): **459**; NOT necessarily chapter-aligned.
+- Verified historical art binaries retained in audited archives (all editions): **463**; NOT necessarily chapter-aligned.
 
 ## Book-by-book audit
 
 | Book | Actual chapters | Local primary image candidates | Approved chapter cards | Missing candidates | Source / blocker |
 | --- | ---: | ---: | ---: | ---: | --- |
-| Around the World in Eighty Days | 37 | 9 | 0 | 28 | 37 source chapters plus Arabic draft |
+| Around the World in Eighty Days | 37 | 12 | 0 | 25 | 37 source chapters plus Arabic draft |
 | The Moonstone | Needs segmentation | 0 | 0 | Unknown | staged English; chapter segmentation/rights pending |
 | The War of the Worlds | 27 | 0 | 0 | 27 | 27 original chapters staged; bilingual/rights pending |
 | Treasure Island | 34 | 34 | 0 | 0 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
