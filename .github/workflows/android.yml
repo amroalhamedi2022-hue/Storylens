@@ -65,6 +65,7 @@ jobs:
           node tools/literature-moonstone.test.cjs
           node tools/literature-war-of-worlds.test.cjs
           node tools/verne-plate-queue.test.cjs
+          python3 tools/test_prepare_verne_plate_intake.py
           node tools/literature-frankenstein.test.cjs
           node tools/literature-dracula.test.cjs
           node tools/literature-arabic-original.test.cjs
