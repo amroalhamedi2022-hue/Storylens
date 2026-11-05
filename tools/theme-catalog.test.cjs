@@ -21,9 +21,16 @@ const labelsAr = [...labelsArSource.matchAll(/'([^']+)'\s*:/g)].map(m => m[1]);
 const arabicThemeLabels = [...labelsArSource.matchAll(/'([^']+)'\s*:\s*\"([^\"]+)\"/g)];
 const unique = values => [...new Set(values)].sort();
 assert.equal(new Set(names).size, names.length, 'duplicate selectable theme IDs');
-assert.deepEqual(names,
+const visibleList=(shell.match(/const selectableThemeNames=\\[([^\\]]+)\\]/)||[])[1];
+assert.ok(visibleList,'six-theme gallery allowlist is explicit');
+const visible=[...visibleList.matchAll(/'([^']+)'/g)].map(m=>m[1]);
+assert.deepEqual(visible,
  ['liquid-27','aurora','aqua','nebula','paper-atlas','midnight-library'],
- 'only the first six user-approved themes can be selected, in the required order');
+ 'only first six themes are available in the UI, in fixed user order');
+assert.match(shell,/const validTheme=name=>selectableThemeNames\\.includes\\(name\\)/,
+ 'removed themes cannot be applied from gallery or settings');
+assert.match(shell,/for\\(const name of selectableThemeNames\\)/,
+ 'gallery must not render the historical theme registry');
 assert.ok(names.every(n=>labels.includes(n)),
  'every selectable theme needs an English gallery label');
 assert.ok(names.every(n=>labelsAr.includes(n)), 'every selectable theme needs an Arabic gallery label');
@@ -58,4 +65,4 @@ assert.ok(!/\banimation\s*:\s*[^;]*infinite/i.test(stainedGlass), 'Stained Glass
 assert.match(shellCss, /@media\(prefers-reduced-motion:reduce\)\{\s*\.theme-reform-club-brass\b/, 'Reform Club Brass must retain a reduced-motion fallback');
 assert.match(shell,/if\(!validTheme\(state\.uiTheme\)\)/,
  'previously selected legacy themes migrate without losing reading data');
-console.log('PASS theme catalog: exactly six selectable themes + safe legacy restore, old CSS retained only for compatibility');
+console.log('PASS theme catalog: six selectable themes and 58 historical records retained for offline compatibility');
