@@ -1,0 +1,142 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 6,
+  "chapterTitle": "In Which Fix, the Detective, Betrays a Very Natural Impatience",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 8,
+  "sourceSha256": "bf567c625d41f37efb6ac06e71a483a8240a78e14064b3a012d0a9a05540c51e",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "This observation furnished the detective food for thought, and meanwhile the consul went away to his office. Fix, left alone, was more impatient than ever, having a presentiment that the robber was on board the Mongolia. If he had indeed left London intending to reach the New World, he would naturally take the route via India, which was less watched and more difficult to watch than that of the Atlantic. But Fix’s reflections were soon interrupted by a succession of sharp whistles, which announced the arrival of the Mongolia. The porters and fellahs rushed down the quay, and a dozen boats pushed off from the shore to go and meet the steamer. Soon her gigantic hull appeared passing along between the banks, and eleven o’clock struck as she anchored in the road. She brought an unusual number of passengers, some of whom remained on deck to scan the picturesque panorama of the town, while the greater part disembarked in the boats, and landed on the quay.",
+      "existingArabicDraft": "أعطت هذه الملاحظة المحقق مادة للتفكير، بينما عاد القنصل إلى مكتبه. بقي فيكس وحده أشد نفادًا للصبر، وقد ساوره إحساس بأن السارق على متن «منغوليا». فإذا كان قد غادر لندن قاصدًا العالم الجديد، فمن الطبيعي أن يسلك طريق الهند، لأنه أقل مراقبة وأصعب تتبعًا من طريق الأطلسي. لكن أفكاره انقطعت على وقع صفارات حادة متتابعة تعلن وصول «منغوليا». اندفع الحمالون والفلاحون إلى الرصيف، وانطلقت عشرات القوارب من الشاطئ لاستقبال السفينة. وسرعان ما ظهر هيكلها الهائل بين الضفتين، ودقت الحادية عشرة عندما رست في المرسى. كانت تقل عددًا غير معتاد من الركاب؛ فبقي بعضهم على السطح يتأمل منظر المدينة، ونزل معظمهم في القوارب إلى الرصيف."
+    },
+    {
+      "index": 25,
+      "en": "Fix took up a position, and carefully examined each face and figure which made its appearance. Presently one of the passengers, after vigorously pushing his way through the importunate crowd of porters, came up to him and politely asked if he could point out the English consulate, at the same time showing a passport which he wished to have visaed. Fix instinctively took the passport, and with a rapid glance read the description of its bearer. An involuntary motion of surprise nearly escaped him, for the description in the passport was identical with that of the bank robber which he had received from Scotland Yard.",
+      "existingArabicDraft": "اتخذ فيكس موضعًا يتيح له فحص كل وجه وقامة تظهر أمامه. وبعد قليل تقدم منه أحد الركاب بعدما شق طريقه بصعوبة بين الحمالين الملحّين، وسأله بأدب عن مكان القنصلية الإنجليزية، وهو يريه جواز سفر يريد تأشيرته. أخذ فيكس الجواز تلقائيًا وقرأ وصف صاحبه بنظرة سريعة. وكاد يفضح دهشته بحركة لا إرادية، لأن الوصف في الجواز كان مطابقًا لوصف سارق البنك الذي تلقاه من سكوتلاند يارد."
+    },
+    {
+      "index": 26,
+      "en": "“Is this your passport?” asked he.",
+      "existingArabicDraft": "سأله: «هل هذا جواز سفرك؟»"
+    },
+    {
+      "index": 27,
+      "en": "“No, it’s my master’s.”",
+      "existingArabicDraft": "«لا، إنه جواز سيدي»."
+    },
+    {
+      "index": 28,
+      "en": "“And your master is—”",
+      "existingArabicDraft": "«وسيدك هو...؟»"
+    },
+    {
+      "index": 29,
+      "en": "“He stayed on board.”",
+      "existingArabicDraft": "«بقي على متن السفينة»."
+    },
+    {
+      "index": 30,
+      "en": "“But he must go to the consul’s in person, so as to establish his identity.”",
+      "existingArabicDraft": "«لكن عليه أن يحضر بنفسه إلى القنصلية لإثبات هويته»."
+    },
+    {
+      "index": 31,
+      "en": "“Oh, is that necessary?”",
+      "existingArabicDraft": "«آه، أهذا ضروري؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "منحت هذه الملاحظة المحقق مادةً للتفكير، وفي غضون ذلك انصرف القنصل إلى مكتبه. أما فيكس، الذي تُرك وحيدًا، فقد كان أكثر نفادًا للصبر من أي وقت مضى، إذ ساوره حدس بأن السارق على متن السفينة «منغوليا». فلو أنه غادر لندن بالفعل قاصدًا العالم الجديد، فمن الطبيعي أن يسلك الطريق عبر الهند، وهو طريق أقل مراقبة وأصعب في التتبع من طريق المحيط الأطلسي. لكن تأملات فيكس سرعان ما قاطعتها سلسلة من الصفارات الحادة التي أعلنت وصول «منغوليا». اندفع الحمالون والفلاحون نحو الرصيف، وانطلقت اثنتا عشرة قاربًا من الشاطئ لتلاقي السفينة. وسرعان ما ظهر هيكلها الضخم وهو يمر بين الضفتين، ودقت الساعة الحادية عشرة حين ألقت مراسيها في الميناء. كانت السفينة تقل عددًا غير معتاد من الركاب، بقي بعضهم على السطح ليتأملوا البانوراما الخلابة للمدينة، بينما نزل معظمهم في القوارب ووصلوا إلى الرصيف."
+    },
+    {
+      "index": 1,
+      "ar": "اتخذ فيكس موقعًا مناسبًا، وأخذ يفحص بعناية كل وجه وقامة تظهر أمامه. وبعد قليل، تقدم منه أحد الركاب بعد أن شق طريقه بقوة وسط حشد الحمالين الملحّين، وسأله بأدب عما إذا كان بإمكانه إرشاده إلى القنصلية الإنجليزية، مظهرًا في الوقت ذاته جواز سفر يرغب في الحصول على تأشيرة له. أخذ فيكس الجواز بغريزته، وقرأ بنظرة سريعة وصف حامله. وكادت حركة مفاجئة من الدهشة تفلت منه، لأن الوصف الوارد في جواز السفر كان مطابقًا تمامًا لوصف سارق البنك الذي تلقاه من سكوتلاند يارد."
+    },
+    {
+      "index": 2,
+      "ar": "سأله فيكس: «هل هذا جواز سفرك؟»"
+    },
+    {
+      "index": 3,
+      "ar": "أجاب: «لا، إنه جواز سفر سيدي»."
+    },
+    {
+      "index": 4,
+      "ar": "قال فيكس: «وسيدك هو...؟»"
+    },
+    {
+      "index": 5,
+      "ar": "أجاب: «لقد بقي على متن السفينة»."
+    },
+    {
+      "index": 6,
+      "ar": "قال فيكس: «لكن يجب عليه أن يذهب إلى القنصلية بشخصه، لكي يثبت هويته»."
+    },
+    {
+      "index": 7,
+      "ar": "رد الرجل: «آه، أهذا ضروري؟»"
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

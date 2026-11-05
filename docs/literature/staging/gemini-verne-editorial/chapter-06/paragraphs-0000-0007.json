@@ -1,0 +1,142 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 6,
+  "chapterTitle": "In Which Fix, the Detective, Betrays a Very Natural Impatience",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "dff87a8ff271cbf3b0e22c88f3274d2b2afa9f1f2c73e79fbd21ee2552564976",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The circumstances under which this telegraphic dispatch about Phileas Fogg was sent were as follows:",
+      "existingArabicDraft": "كانت الظروف التي أُرسلت فيها هذه البرقية بشأن فيلياس فوغ على النحو الآتي:"
+    },
+    {
+      "index": 1,
+      "en": "The steamer Mongolia, belonging to the Peninsular and Oriental Company, built of iron, of two thousand eight hundred tons burden, and five hundred horsepower, was due at eleven o’clock a.m. on Wednesday, the 9th of October, at Suez. The Mongolia plied regularly between Brindisi and Bombay via the Suez Canal, and was one of the fastest steamers belonging to the company, always making more than ten knots an hour between Brindisi and Suez, and nine and a half between Suez and Bombay.",
+      "existingArabicDraft": "كان من المقرر أن تصل الباخرة «منغوليا»، التابعة لشركة الملاحة شبه الجزيرة والشرقية، إلى السويس في الحادية عشرة صباح الأربعاء التاسع من أكتوبر. وكانت سفينة حديدية حمولتها ألفان وثمانمئة طن، بقوة خمسمئة حصان. تبحر بانتظام بين برينديزي وبومباي عبر قناة السويس، وهي من أسرع سفن الشركة؛ إذ تتجاوز سرعتها عشر عقد بحرية في الساعة بين برينديزي والسويس، وتسع عقد ونصف بين السويس وبومباي."
+    },
+    {
+      "index": 2,
+      "en": "Two men were promenading up and down the wharves, among the crowd of natives and strangers who were sojourning at this once straggling village—now, thanks to the enterprise of M. Lesseps, a fast-growing town. One was the British consul at Suez, who, despite the prophecies of the English Government, and the unfavourable predictions of Stephenson, was in the habit of seeing, from his office window, English ships daily passing to and fro on the great canal, by which the old roundabout route from England to India by the Cape of Good Hope was abridged by at least a half. The other was a small, slight-built personage, with a nervous, intelligent face, and bright eyes peering out from under eyebrows which he was incessantly twitching. He was just now manifesting unmistakable signs of impatience, nervously pacing up and down, and unable to stand still for a moment. This was Fix, one of the detectives who had been dispatched from England in search of the bank robber; it was his task to narrowly watch every passenger who arrived at Suez, and to follow up all who seemed to be suspicious characters, or bore a resemblance to the description of the criminal, which he had received two days before from the police headquarters at London. The detective was evidently inspired by the hope of obtaining the splendid reward which would be the prize of success, and awaited with a feverish impatience, easy to understand, the arrival of the steamer Mongolia.",
+      "existingArabicDraft": "كان رجلان يتمشيان ذهابًا وإيابًا على الأرصفة وسط حشود السكان والغرباء المقيمين في قرية كانت يومًا متناثرة البيوت، ثم غدت مدينة سريعة النمو بفضل مشروع السيد دي لسبس. أحدهما القنصل البريطاني في السويس؛ وكان يرى من نافذة مكتبه كل يوم السفن الإنجليزية تعبر القناة العظيمة ذهابًا وإيابًا، رغم تشاؤم الحكومة الإنجليزية وتنبؤات ستيفنسون، بعدما اختصرت القناة الطريق القديم حول رأس الرجاء الصالح إلى الهند بما لا يقل عن النصف. أما الثاني فكان رجلًا صغير القامة نحيل البنية، على وجهه ملامح ذكاء وتوتر، وعيناه اللامعتان تترقبان من تحت حاجبين لا يكف عن تحريكهما. بدت عليه علامات نفاد الصبر بوضوح؛ يمشي بعصبية ولا يطيق الثبات لحظة. كان ذلك فيكس، أحد المحققين الذين أُرسلوا من إنجلترا للبحث عن سارق البنك. مهمته مراقبة كل راكب يصل إلى السويس وملاحقة كل من يثير الريبة أو يشبه وصف المجرم الذي تلقاه قبل يومين من مقر الشرطة في لندن. وكان يأمل في المكافأة الكبيرة لمن ينجح في القبض عليه، وينتظر وصول «منغوليا» بلهفة محمومة مفهومة."
+    },
+    {
+      "index": 3,
+      "en": "“So you say, consul,” asked he for the twentieth time, “that this steamer is never behind time?”",
+      "existingArabicDraft": "سأله للمرة العشرين: «إذن أنت تقول يا سعادة القنصل إن هذه الباخرة لا تتأخر أبدًا؟»"
+    },
+    {
+      "index": 4,
+      "en": "“No, Mr. Fix,” replied the consul. “She was bespoken yesterday at Port Said, and the rest of the way is of no account to such a craft. I repeat that the Mongolia has been in advance of the time required by the company’s regulations, and gained the prize awarded for excess of speed.”",
+      "existingArabicDraft": "أجاب القنصل: «لا يا سيد فيكس. لقد رُصدت أمس عند بورسعيد، وما بقي من الطريق يسير على سفينة كهذه. أكرر لك أن منغوليا تسبق عادة الموعد المحدد في لوائح الشركة، وقد نالت جائزة لتجاوزها السرعة المطلوبة»."
+    },
+    {
+      "index": 5,
+      "en": "“Does she come directly from Brindisi?”",
+      "existingArabicDraft": "«وهل تأتي مباشرة من برينديزي؟»"
+    },
+    {
+      "index": 6,
+      "en": "“Directly from Brindisi; she takes on the Indian mails there, and she left there Saturday at five p.m. Have patience, Mr. Fix; she will not be late. But really, I don’t see how, from the description you have, you will be able to recognise your man, even if he is on board the Mongolia.”",
+      "existingArabicDraft": "«مباشرة من برينديزي؛ تحمل البريد الهندي هناك، وقد غادرت السبت عند الخامسة مساءً. تحلَّ بالصبر يا سيد فيكس، فلن تتأخر. لكنني لا أرى كيف ستتعرف إلى الرجل اعتمادًا على الوصف الذي معك، حتى لو كان على متن منغوليا»."
+    },
+    {
+      "index": 7,
+      "en": "“A man rather feels the presence of these fellows, consul, than recognises them. You must have a scent for them, and a scent is like a sixth sense which combines hearing, seeing, and smelling. I’ve arrested more than one of these gentlemen in my time, and, if my thief is on board, I’ll answer for it; he’ll not slip through my fingers.”",
+      "existingArabicDraft": "«إن المرء يستشعر وجود أمثال هؤلاء يا سعادة القنصل أكثر مما يتعرف إلى وجوههم. لا بد من حاسة خاصة بهم، كأنها حاسة سادسة تجمع السمع والبصر والشم. لقد ألقيت القبض على أكثر من واحد منهم، وإذا كان لصّي على متن السفينة فأضمن لك أنه لن يفلت من يدي»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كانت الظروف التي أُرسلت فيها هذه البرقية بشأن فيلياس فوغ على النحو الآتي:"
+    },
+    {
+      "index": 1,
+      "ar": "كان من المقرر أن تصل الباخرة «منغوليا»، التابعة لشركة شبه الجزيرة والشرقية، وهي مصنوعة من الحديد وتبلغ حمولتها ألفين وثمانمئة طن وقوتها خمسمئة حصان، إلى السويس في الساعة الحادية عشرة من صباح يوم الأربعاء الموافق التاسع من أكتوبر. وكانت الباخرة منغوليا تقطتع بانتظام الرحلة بين برينديزي وبومباي عبر قناة السويس، وتُعدُّ إحدى أسرع البواخر التابعة للشركة، إذ كانت دائمًا تحقق سرعة تزيد على عشر عقد في الساعة بين برينديزي والسويس، وتسع عقد ونصف بين السويس وبومباي."
+    },
+    {
+      "index": 2,
+      "ar": "كان رجلان يتمشيان ذهابًا وإيابًا على الأرصفة وسط حشود السكان المحليين والغرباء الذين كانوا يقيمون في هذه القرية التي كانت متناثرة البيوت في الماضي، وأصبحت اليوم بفضل جهود السيد دي لسبس مدينة سريعة النمو. أحدهما القنصل البريطاني في السويس، والذي كان، على الرغم من تنبؤات الحكومة الإنجليزية وتوقعات ستيفنسون غير المواتية، معتادًا على أن يرى من نافذة مكتبه السفن الإنجليزية تمر يوميًا ذهابًا وإيابًا في القناة الكبرى، التي اختصرت بفضلها طريق السفر القديم والتفافي من إنجليزية إلى الهند عبر رأس الرجاء الصالح بما لا يقل عن النصف. أما الآخر فكان شخصية صغيرة نحيلة البنية، ذا وجه عصبى ذكي، وعينين براقتين تتطلعان من تحت حاجبين كان يحركهما بلا انقطاع. وكان يظهر في تلك اللحظة علامات لا تقبل الشك على نفاد الصبر، إذ كان يمشى ذهابًا وإيابًا بعصبية وغير قادر على الوقوف ساكنًا لثانية واحدة. وكان هذا هو فيكس، أحد المحققين الذين أُرسلوا من إنجلترا بحثًا عن سارق البنك؛ وكانت مهمته مراقبة كل راكب يصل إلى السويس بدقة، ومتابعة كل من يبدو أنه شخصية مشبوهة، أو يشبه وصف المجرم الذي تلقاه قبل يومين من مقر الشرطة الرئيسي في لندن. وكان المحقق مستوحى بوضوح من الأمل في الحصول على المكافأة الرائعة التي ستكون جائزة النجاح، وكان ينتظر بلهفة محمومة يسهل فهمها وصول الباخرة منغوليا."
+    },
+    {
+      "index": 3,
+      "ar": "سأله للمرة العشرين: «إذن أنت تقول يا حضرة القنصل إن هذه الباخرة لا تتأخر أبدًا عن موعدها؟»"
+    },
+    {
+      "index": 4,
+      "ar": "فأجاب القنصل: «لا يا سيد فيكس. لقد رُصدت أمس في بورسعيد، وبقية الطريق لا قيمة لها بالنسبة لمثل هذه السفينة. أكرر أن منغوليا كانت متقدمة عن الوقت المطلوب وفق لوائح الشركة، وفازت بالجائزة الممنوحة لتجاوز السرعة»."
+    },
+    {
+      "index": 5,
+      "ar": "«هل تأتي مباشرة من برينديزي؟»"
+    },
+    {
+      "index": 6,
+      "ar": "«مباشرة من برينديزي؛ فهي تأخذ البريد الهندي من هناك، وغادرت هناك يوم السبت في تمام الساعة الخامسة مساءً. تحلَّ بالصبر يا سيد فيكس؛ فلن تتأخر. لكنني حقًا لا أرى كيف ستتمكن، من خلال الوصف الذي بحوزتك، من التعرف على رجلك، حتى لو كان على متن منغوليا»."
+    },
+    {
+      "index": 7,
+      "ar": "«إن المرء يشعر بوجود هؤلاء الأفراد يا حضرة القنصل أكثر مما يتعرف عليهم. يجب أن تكون لديك حاسة تشمهم بها، والحاسة تشبه حاسة سادسة تجمع بين السمع والرؤية والشم. لقد ألغيت القبض على أكثر من واحد من هؤلاء السادة في حياتي، وإذا كان لصي على متن السفينة فأنا أضمن ذلك؛ ولن يفلت من بين أصابعي»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "خطأ مطبعي في عبارة \"من إنجليزية إلى الهند\" والصحيح \"من إنجلترا إلى الهند\"."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "خطأ مطبعي في كلمة \"ألغيت\" والصحيح \"ألقت\" في عبارة \"لقد ألغيت القبض\"."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

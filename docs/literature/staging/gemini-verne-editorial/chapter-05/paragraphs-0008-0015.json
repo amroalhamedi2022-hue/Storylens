@@ -1,0 +1,113 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 5,
+  "chapterTitle": "In Which a New Species of Funds, Unknown to the Moneyed Men, Appears on ’Change",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 6,
+  "sourceSha256": "d8692084af9738f176252d0465c1156a15c5fc411d45df3656bad1404c982529",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "The commissioner of police was sitting in his office at nine o’clock one evening, when the following telegraphic dispatch was put into his hands:",
+      "existingArabicDraft": "كان مفوض الشرطة جالسًا في مكتبه عند التاسعة مساءً، حين وُضعت بين يديه البرقية التالية:"
+    },
+    {
+      "index": 9,
+      "en": "Suez to London.",
+      "existingArabicDraft": "من السويس إلى لندن."
+    },
+    {
+      "index": 10,
+      "en": "Rowan, Commissioner of Police, Scotland Yard:",
+      "existingArabicDraft": "إلى روان، مفوض الشرطة في سكوتلاند يارد:"
+    },
+    {
+      "index": 11,
+      "en": "I’ve found the bank robber, Phileas Fogg. Send without delay warrant of arrest to Bombay.",
+      "existingArabicDraft": "عثرت على سارق البنك، فيلياس فوغ. أرسلوا مذكرة توقيف إلى بومباي دون تأخير."
+    },
+    {
+      "index": 12,
+      "en": "Fix, Detective.",
+      "existingArabicDraft": "فيكس، المحقق."
+    },
+    {
+      "index": 13,
+      "en": "The effect of this dispatch was instantaneous. The polished gentleman disappeared to give place to the bank robber. His photograph, which was hung with those of the rest of the members at the Reform Club, was minutely examined, and it betrayed, feature by feature, the description of the robber which had been provided to the police. The mysterious habits of Phileas Fogg were recalled; his solitary ways, his sudden departure; and it seemed clear that, in undertaking a tour round the world on the pretext of a wager, he had had no other end in view than to elude the detectives, and throw them off his track.",
+      "existingArabicDraft": "كان أثر البرقية فوريًا؛ فقد اختفت صورة الرجل المهذب لتحل محلها صورة سارق البنك. وفُحصت صورته المعلقة بين صور أعضاء نادي الإصلاح بدقة، فبدت ملامحه متطابقة مع وصف السارق الذي وصل إلى الشرطة. وتذكّر الناس عادات فوغ الغامضة، وانعزاله، ومغادرته المفاجئة؛ وبدا لهم أنه لم يقم برحلة حول العالم بحجة الرهان إلا ليفلت من المحققين ويضللهم عن أثره."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كان مفوض الشرطة جالسًا في مكتبه عند التاسعة مساءً، حين وُضعت بين يديه البرقية التالية:"
+    },
+    {
+      "index": 1,
+      "ar": "من السويس إلى لندن."
+    },
+    {
+      "index": 2,
+      "ar": "إلى روان، مفوض الشرطة في سكوتلاند يارد:"
+    },
+    {
+      "index": 3,
+      "ar": "عثرت على سارق البنك، فيلياس فوغ. أرسلوا مذكرة توقيف إلى بومباي دون تأخير."
+    },
+    {
+      "index": 4,
+      "ar": "فيكس، المحقق."
+    },
+    {
+      "index": 5,
+      "ar": "كان أثر البرقية فوريًا؛ فقد اختفت صورة الرجل المهذب لتحل محلها صورة سارق البنك. وفُحصت صورته المعلقة مع بقية صور الأعضاء في نادي الإصلاح بدقة، فوافقت ملامحها وصف السارق الذي زُوّدت به الشرطة. واستُدعيت عادات فيلياس فوغ الغامضة، وطرقه المنعزلة، ورحيله المفاجئ؛ وبدا جليًا أنه في شروعه في جولة حول العالم تحت ذريعة الرهان، لم يكن له غاية أخرى سوى الإفلات من المحققين وتضليلهم عن تتبّع أثره."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

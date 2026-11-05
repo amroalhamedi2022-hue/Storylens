@@ -1,0 +1,142 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 6,
+  "chapterTitle": "In Which Fix, the Detective, Betrays a Very Natural Impatience",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "bf8c14d552f4c045bad1836bdc7818461a082930ed1b5b9e6caea9213391edf2",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "“The steamer doesn’t come!” he exclaimed, as the port clock struck.",
+      "existingArabicDraft": "صاح حين دقت ساعة الميناء: «الباخرة لم تصل!»"
+    },
+    {
+      "index": 17,
+      "en": "“She can’t be far off now,” returned his companion.",
+      "existingArabicDraft": "أجابه رفيقه: «لا بد أنها باتت قريبة الآن»."
+    },
+    {
+      "index": 18,
+      "en": "“How long will she stop at Suez?”",
+      "existingArabicDraft": "«كم ستبقى في السويس؟»"
+    },
+    {
+      "index": 19,
+      "en": "“Four hours; long enough to get in her coal. It is thirteen hundred and ten miles from Suez to Aden, at the other end of the Red Sea, and she has to take in a fresh coal supply.”",
+      "existingArabicDraft": "«أربع ساعات، تكفي لتزويدها بالفحم. المسافة من السويس إلى عدن، عند الطرف الآخر للبحر الأحمر، ألف وثلاثمئة وعشرة أميال، ولا بد لها من التزود بمخزون جديد من الفحم»."
+    },
+    {
+      "index": 20,
+      "en": "“And does she go from Suez directly to Bombay?”",
+      "existingArabicDraft": "«وهل تتجه من السويس إلى بومباي مباشرة؟»"
+    },
+    {
+      "index": 21,
+      "en": "“Without putting in anywhere.”",
+      "existingArabicDraft": "«دون أن تتوقف في أي مكان»."
+    },
+    {
+      "index": 22,
+      "en": "“Good!” said Fix. “If the robber is on board he will no doubt get off at Suez, so as to reach the Dutch or French colonies in Asia by some other route. He ought to know that he would not be safe an hour in India, which is English soil.”",
+      "existingArabicDraft": "قال فيكس: «جيد! إن كان السارق على متنها فسينزل بلا شك في السويس ليصل إلى المستعمرات الهولندية أو الفرنسية في آسيا عبر طريق آخر. لا بد أنه يعلم أنه لن يكون آمنًا ساعة واحدة في الهند الخاضعة للإنجليز»."
+    },
+    {
+      "index": 23,
+      "en": "“Unless,” objected the consul, “he is exceptionally shrewd. An English criminal, you know, is always better concealed in London than anywhere else.”",
+      "existingArabicDraft": "اعترض القنصل: «إلا إذا كان شديد الدهاء؛ فأنت تعلم أن المجرم الإنجليزي يستطيع الاختباء في لندن أفضل من أي مكان آخر»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "صاح حين دقت ساعة الميناء: «الباخرة لم تصل!»"
+    },
+    {
+      "index": 1,
+      "ar": "أجابه رفيقه: «لا بد أنها باتت قريبة الآن»."
+    },
+    {
+      "index": 2,
+      "ar": "«كم ستبقى في السويس؟»"
+    },
+    {
+      "index": 3,
+      "ar": "«أربع ساعات؛ وهي مدة كافية لتزويدها بالفحم. فالمسافة من السويس إلى عدن، عند الطرف الآخر للبحر الأحمر، تبلغ ألفاً وثلاثمئة وعشرة أميال، ولا بد لها من التزود بمخزون جديد من الفحم»."
+    },
+    {
+      "index": 4,
+      "ar": "«وهل تتجه من السويس إلى بومباي مباشرة؟»"
+    },
+    {
+      "index": 5,
+      "ar": "«دون أن تتوقف في أي مكان»."
+    },
+    {
+      "index": 6,
+      "ar": "قال فيكس: «جيد! إن كان السارق على متنها فسينزل بلا شك في السويس، كي يصل إلى المستعمرات الهولندية أو الفرنسية في آسيا عبر طريق آخر. لا بد أنه يعلم أنه لن يكون في مأمن لساعة واحدة في الهند، التي هي أرض إنجليزية»."
+    },
+    {
+      "index": 7,
+      "ar": "اعترض القنصل قائلاً: «إلا إذا كان شديد الدهاء؛ فأنت تعلم أن المجرم الإنجليزي يسهل اختفاؤه في لندن أكثر من أي مكان آخر»."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "ترجمة غير دقيقة؛ النص الأصلي يشير إلى أن المجرم الإنجليزي يختبئ في لندن أفضل من أي مكان آخر، بينما الترجمة العربية توحي بأن اختفاءه سهل، مما يغير المعنى المقصود."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

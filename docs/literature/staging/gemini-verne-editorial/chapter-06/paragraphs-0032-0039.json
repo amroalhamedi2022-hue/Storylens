@@ -1,0 +1,100 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 6,
+  "chapterTitle": "In Which Fix, the Detective, Betrays a Very Natural Impatience",
+  "startParagraphZeroBased": 32,
+  "paragraphCount": 5,
+  "sourceSha256": "a148f7ed39f90c9e9d4db3ace4b021348859094a3f5811865408f1ecddad0d63",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 32,
+      "en": "“Quite indispensable.”",
+      "existingArabicDraft": "«ضروري تمامًا»."
+    },
+    {
+      "index": 33,
+      "en": "“And where is the consulate?”",
+      "existingArabicDraft": "«وأين تقع القنصلية؟»"
+    },
+    {
+      "index": 34,
+      "en": "“There, on the corner of the square,” said Fix, pointing to a house two hundred steps off.",
+      "existingArabicDraft": "قال فيكس مشيرًا إلى منزل على بعد مئتي خطوة: «هناك، عند زاوية الساحة»."
+    },
+    {
+      "index": 35,
+      "en": "“I’ll go and fetch my master, who won’t be much pleased, however, to be disturbed.”",
+      "existingArabicDraft": "«سأذهب لأحضر سيدي، مع أنه لن يُسر كثيرًا إذا أزعجته»."
+    },
+    {
+      "index": 36,
+      "en": "The passenger bowed to Fix, and returned to the steamer.",
+      "existingArabicDraft": "انحنى الراكب تحيةً لفيكس، ثم عاد إلى الباخرة."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«لا غنى عنه تمامًا»."
+    },
+    {
+      "index": 1,
+      "ar": "«وأين تقع القنصلية؟»"
+    },
+    {
+      "index": 2,
+      "ar": "قال فيكس مشيرًا إلى منزلٍ يقع على بعد مئتي خطوة: «هناك، عند زاوية الساحة»."
+    },
+    {
+      "index": 3,
+      "ar": "«سأذهب لأحضر سيدي، الذي لن يسرّه كثيرًا، على أية حال، أن يتم إزعاجه»."
+    },
+    {
+      "index": 4,
+      "ar": "انحنى الراكب لفيكس، ثم عاد أدراجه إلى الباخرة."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات."
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات."
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

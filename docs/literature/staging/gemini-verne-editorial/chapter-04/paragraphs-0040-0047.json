@@ -1,0 +1,70 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 4,
+  "chapterTitle": "In Which Phileas Fogg Astounds Passepartout, His Servant",
+  "startParagraphZeroBased": 40,
+  "paragraphCount": 3,
+  "sourceSha256": "572c14fe02fbb39214c81ec7552fff6437d084f7c699c8bc193f806c814e3066",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 40,
+      "en": "“What?”",
+      "existingArabicDraft": "«ماذا؟»"
+    },
+    {
+      "index": 41,
+      "en": "“To turn off the gas in my room!”",
+      "existingArabicDraft": "«نسيت أن أطفئ مصباح الغاز في غرفتي!»"
+    },
+    {
+      "index": 42,
+      "en": "“Very well, young man,” returned Mr. Fogg, coolly; “it will burn⁠—at your expense.”",
+      "existingArabicDraft": "أجابه فوغ ببرود: «حسنًا يا فتى، سيظل مشتعلًا... وعلى حسابك!»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«ماذا؟»"
+    },
+    {
+      "index": 1,
+      "ar": "«أن أغلق صنبور الغاز في غرفتي!»"
+    },
+    {
+      "index": 2,
+      "ar": "«حسنًا يا بني،» أجاب مستر فوغ ببرود، «سيظل محترقاً... وعلى حسابك.»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "تمت إضافة كلمة صنبور التي لم تكن موجودة في النص الأصلي."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

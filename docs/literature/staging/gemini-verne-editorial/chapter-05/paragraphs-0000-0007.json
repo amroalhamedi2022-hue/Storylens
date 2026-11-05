@@ -1,0 +1,141 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 5,
+  "chapterTitle": "In Which a New Species of Funds, Unknown to the Moneyed Men, Appears on ’Change",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "88057475717a9693cec45ea3d790a6a9a422b86f2381160d1f74e0bc60f230ec",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "Phileas Fogg rightly suspected that his departure from London would create a lively sensation at the West End. The news of the bet spread through the Reform Club, and afforded an exciting topic of conversation to its members. From the club it soon got into the papers throughout England. The boasted “tour of the world” was talked about, disputed, argued with as much warmth as if the subject were another Alabama claim. Some took sides with Phileas Fogg, but the large majority shook their heads and declared against him; it was absurd, impossible, they declared, that the tour of the world could be made, except theoretically and on paper, in this minimum of time, and with the existing means of travelling. The Times, Standard, Morning Post, and Daily News, and twenty other highly respectable newspapers scouted Mr. Fogg’s project as madness; the Daily Telegraph alone hesitatingly supported him. People in general thought him a lunatic, and blamed his Reform Club friends for having accepted a wager which betrayed the mental aberration of its proposer.",
+      "existingArabicDraft": "كان فيلياس فوغ محقًا في توقع أن مغادرته لندن ستثير ضجة كبيرة في الطرف الغربي من المدينة. انتشر خبر الرهان في نادي الإصلاح، وأصبح موضوعًا مثيرًا لأحاديث أعضائه. وسرعان ما تناقلت الصحف في أنحاء إنجلترا الخبر. وأخذ الناس يتحدثون عن «الطواف حول العالم» المزعوم، ويجادلون فيه بحماسة كأنهم يناقشون قضية ألاباما. أيد بعضهم فوغ، لكن الغالبية هزّت رؤوسها ورفضت فكرته؛ إذ رأوا أن إتمام الطواف في هذه المدة القصيرة، وبوسائل السفر المتاحة، أمر مستحيل إلا على الورق. ووصفت صحف مرموقة عديدة مشروعه بالجنون، ولم تؤيده بتردد إلا صحيفة ديلي تلغراف. أما عامة الناس فظنوه مختل العقل، ولاموا أصدقاءه في نادي الإصلاح لقبول رهان يكشف، في نظرهم، اضطراب صاحبه."
+    },
+    {
+      "index": 1,
+      "en": "Articles no less passionate than logical appeared on the question, for geography is one of the pet subjects of the English; and the columns devoted to Phileas Fogg’s venture were eagerly devoured by all classes of readers. At first some rash individuals, principally of the gentler sex, espoused his cause, which became still more popular when the Illustrated London News came out with his portrait, copied from a photograph in the Reform Club. A few readers of the Daily Telegraph even dared to say, “Why not, after all? Stranger things have come to pass.”",
+      "existingArabicDraft": "ظهرت مقالات لا تقل حماسة عن منطقها في مناقشة القضية، فالجغرافيا من الموضوعات المفضلة لدى الإنجليز، وكانت جميع فئات القراء تلتهم بشغف الأعمدة المخصصة لمغامرة فوغ. وفي البداية، دافع عن فكرته بعض المتحمسين، ومعظمهم من النساء، وازدادت شعبيتها عندما نشرت صحيفة إلوستريتد لندن نيوز صورته المأخوذة من صورة فوتوغرافية في نادي الإصلاح. بل تجرأ بعض قراء ديلي تلغراف على القول: «ولمَ لا، في نهاية المطاف؟ لقد حدثت أمور أغرب من ذلك»."
+    },
+    {
+      "index": 2,
+      "en": "At last a long article appeared, on the 7th of October, in the bulletin of the Royal Geographical Society, which treated the question from every point of view, and demonstrated the utter folly of the enterprise.",
+      "existingArabicDraft": "وأخيرًا، نُشر في السابع من أكتوبر مقال مطوّل في نشرة الجمعية الملكية الجغرافية، تناول المسألة من جميع جوانبها وبرهن، بحسب رأيه، على الحماقة التامة لهذه المغامرة."
+    },
+    {
+      "index": 3,
+      "en": "Everything, it said, was against the travellers, every obstacle imposed alike by man and by nature. A miraculous agreement of the times of departure and arrival, which was impossible, was absolutely necessary to his success. He might, perhaps, reckon on the arrival of trains at the designated hours, in Europe, where the distances were relatively moderate; but when he calculated upon crossing India in three days, and the United States in seven, could he rely beyond misgiving upon accomplishing his task? There were accidents to machinery, the liability of trains to run off the line, collisions, bad weather, the blocking up by snow⁠—were not all these against Phileas Fogg? Would he not find himself, when travelling by steamer in winter, at the mercy of the winds and fogs? Is it uncommon for the best ocean steamers to be two or three days behind time? But a single delay would suffice to fatally break the chain of communication; should Phileas Fogg once miss, even by an hour; a steamer, he would have to wait for the next, and that would irrevocably render his attempt vain.",
+      "existingArabicDraft": "وجاء في المقال أن كل شيء يقف ضد المسافرين، من العقبات التي يفرضها البشر إلى ما تفرضه الطبيعة. وكان نجاح فوغ يتطلب توافقًا خارقًا، بل مستحيلًا، بين مواعيد المغادرة والوصول. ربما أمكنه الاعتماد على القطارات الأوروبية التي تسير بين مسافات متقاربة نسبيًا، لكن هل يستطيع ضمان عبور الهند في ثلاثة أيام والولايات المتحدة في سبعة؟ فقد تتعطل الآلات، أو تنحرف القطارات عن مسارها، أو تقع التصادمات، أو يسوء الطقس، أو يسد الثلج الطريق. أليست كل هذه المخاطر ضده؟ ألن يصبح، حين يسافر بالبواخر في الشتاء، تحت رحمة الرياح والضباب؟ أليس من المعتاد أن تتأخر أفضل البواخر العابرة للمحيطات يومين أو ثلاثة؟ وكان يكفي تأخير واحد ليقطع سلسلة المواصلات كلها؛ فإذا فات فوغ موعد باخرة، ولو بساعة واحدة، لاضطر إلى انتظار التالية، وعندها ستفشل محاولته نهائيًا."
+    },
+    {
+      "index": 4,
+      "en": "This article made a great deal of noise, and, being copied into all the papers, seriously depressed the advocates of the rash tourist.",
+      "existingArabicDraft": "أثار المقال ضجة كبيرة، ولما أعادت الصحف نشره، أحبط بشدة مؤيدي المسافر المتهور."
+    },
+    {
+      "index": 5,
+      "en": "Everybody knows that England is the world of betting men, who are of a higher class than mere gamblers; to bet is in the English temperament. Not only the members of the Reform, but the general public, made heavy wagers for or against Phileas Fogg, who was set down in the betting books as if he were a racehorse. Bonds were issued, and made their appearance on ’Change; “Phileas Fogg bonds” were offered at par or at a premium, and a great business was done in them. But five days after the article in the bulletin of the Geographical Society appeared, the demand began to subside: “Phileas Fogg” declined. They were offered by packages, at first of five, then of ten, until at last nobody would take less than twenty, fifty, a hundred!",
+      "existingArabicDraft": "يعرف الجميع أن إنجلترا موطن المراهنين، وهم في نظر النص أرفع شأنًا من المقامرين العاديين؛ فالمراهنة جزء من الطبع الإنجليزي. ولم يقتصر الرهان على أعضاء نادي الإصلاح، بل شارك عامة الناس بمبالغ كبيرة مؤيدين فوغ أو معارضين له، وسُجّل اسمه في دفاتر المراهنات كما لو كان حصان سباق. وأُصدرت سندات وظهرت في البورصة، وعُرضت «سندات فيلياس فوغ» بالقيمة الاسمية أو بسعر أعلى، وازدهرت تجارتها. لكن بعد خمسة أيام من نشر مقال الجمعية الجغرافية بدأ الطلب يتراجع، وانخفضت قيمة «فوغ». وصاروا يعرضون السندات في حزم من خمس ثم عشر، حتى لم يعد أحد يقبل شراء أقل من عشرين أو خمسين أو مئة!"
+    },
+    {
+      "index": 6,
+      "en": "Lord Albemarle, an elderly paralytic gentleman, was now the only advocate of Phileas Fogg left. This noble lord, who was fastened to his chair, would have given his fortune to be able to make the tour of the world, if it took ten years; and he bet five thousand pounds on Phileas Fogg. When the folly as well as the uselessness of the adventure was pointed out to him, he contented himself with replying, “If the thing is feasible, the first to do it ought to be an Englishman.”",
+      "existingArabicDraft": "لم يبقَ من مؤيدي فوغ سوى اللورد ألبمارل، وهو رجل مسنّ مصاب بالشلل. كان هذا اللورد المقعد على كرسيه مستعدًا للتخلي عن ثروته لو استطاع القيام بالطواف حول العالم، حتى لو استغرق عشر سنوات؛ وقد راهن بخمسة آلاف جنيه على فوغ. وحين أشاروا إليه بحماقة المغامرة وعديم جدواها، اكتفى بالرد: «إذا كان الأمر ممكنًا، فينبغي أن يكون أول من ينجزه إنجليزيًا»."
+    },
+    {
+      "index": 7,
+      "en": "The Fogg party dwindled more and more, everybody was going against him, and the bets stood a hundred and fifty and two hundred to one; and a week after his departure an incident occurred which deprived him of backers at any price.",
+      "existingArabicDraft": "أخذ أنصار فوغ يتناقصون أكثر فأكثر، وانقلب الجميع ضده، حتى بلغت نسب المراهنة مئة وخمسين إلى واحد ثم مئتين إلى واحد. وبعد أسبوع من مغادرته، وقع حادث أفقده آخر من كان مستعدًا لدعمه مهما كان الثمن."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كان فيلياس فوغ محقًا في توقع أن مغادرته لندن ستثير ضجة كبيرة في الطرف الغربي من المدينة. انتشر خبر الرهان في نادي الإصلاح، وأصبح موضوعًا مثيرًا لأحاديث أعضائه. وسرعان ما تناقلت الصحف في أنحاء إنجلترا الخبر. وأخذ الناس يتحدثون عن «الطواف حول العالم» المزعوم، ويجادلون فيه بحماسة كأنهم يناقشون قضية ألاباما. أيد بعضهم فيلياس فوغ، لكن الغالبية هزّت رؤوسها ورفضت فكرته؛ إذ رأوا أن إتمام الطواف في هذه المدة القصيرة، وبوسائل السفر المتاحة، أمر مستحيل إلا نظريًا وعلى الورق. ووصفت صحف التايمز، والستاندرد، ومورنينغ بوست، وديلي نيوز، وعشرون صحيفة أخرى مرموقة مشروعه بالجنون، ولم تؤيده بتردد إلا صحيفة ديلي تلغراف وحدها. أما عامة الناس فظنوه مختل العقل، ولاموا أصدقاءه في نادي الإصلاح لقبول رهان يكشف عن اضطراب عقلي لدى صاحبه."
+    },
+    {
+      "index": 1,
+      "ar": "ظهرت مقالات لا تقل حماسة عن منطقها في مناقشة القضية، فالجغرافيا من الموضوعات المفضلة لدى الإنجليز، وكانت جميع فئات القراء تلتهم بشغف الأعمدة المخصصة لمغامرة فيلياس فوغ. وفي البداية، دافع عن فكرته بعض المتحمسين، ومعظمهم من النساء، وازدادت شعبيتها عندما نشرت صحيفة إلوستريتد لندن نيوز صورته المأخوذة من صورة فوتوغرافية في نادي الإصلاح. بل إن بضعة من قراء ديلي تلغراف جرؤوا على القول: «ولمَ لا، في نهاية المطاف؟ لقد حدثت أمور أغرب من ذلك»."
+    },
+    {
+      "index": 2,
+      "ar": "وأخيرًا، نُشر في السابع من أكتوبر مقال مطوّل في نشرة الجمعية الملكية الجغرافية، تناول المسألة من جميع جوانبها وبرهن على الحماقة التامة لهذه المغامرة."
+    },
+    {
+      "index": 3,
+      "ar": "وجاء في المقال أن كل شيء يقف ضد المسافرين، من العقبات التي يفرضها البشر إلى ما تفرضه الطبيعة. وكان نجاحه يتطلب توافقًا خارقًا ومستحيلًا بين مواعيد المغادرة والوصول. ربما أمكنه الاعتماد على وصول القطارات في المواعيد المحددة داخل أوروبا، حيث المسافات متقاربة نسبيًا؛ لكن حين يعتمد على عبور الهند في ثلاثة أيام والولايات المتحدة في سبعة، فهل يمكنه الاعتماد دون أدنى شك على إتمام مهمته؟ فقد تتعطل الآلات، أو تنحرف القطارات عن مسارها، أو تقع التصادمات، أو يسوء الطقس، أو يسد الثلج الطريق؛ أليست كل هذه العوامل ضد فيلياس فوغ؟ ألن يجد نفسه، حين يسافر بالسفن البخارية في الشتاء، تحت رحمة الرياح والضباب؟ أليس من المعتاد أن تتأخر أفضل سفن المحيطات يومين أو ثلاثة عن مواعيدها؟ لكن تأخيرًا واحدًا سيکفي لقطع سلسلة المواصلات بلا هوادة؛ فإذا فات فيلياس فوغ موعد باخرة واحدة، ولو لساعة واحدة، لاضطر إلى انتظار التالية، وعندها ستفشل محاولته بلا شك."
+    },
+    {
+      "index": 4,
+      "ar": "أثار هذا المقال ضجة كبيرة، ولما أعادت جميع الصحف نشره، أحبط بشدة أنصار المسافر المتهور."
+    },
+    {
+      "index": 5,
+      "ar": "يعرف الجميع أن إنجلترا هي عالم المراهنين، وهم طبقة أرقى من مجرد المقامرين العاديين؛ فالمراهنة جزء من الطبع الإنجليزي. ولم يقتصر الرهان على أعضاء نادي الإصلاح، بل شارك عامة الناس بمبالغ كبيرة مؤيدين فيلياس فوغ أو معارضين له، وسُجّل اسمه في دفاتر المراهنات كما لو كان حصان سباق. وأُصدرت سندات وظهرت في البورصة، وعُرضت «سندات فيلياس فوغ» بالقيمة الاسمية أو بزيادة عليها، وازدهرت تجارتها ازدهارًا كبيرًا. لكن بعد خمسة أيام من نشر المقال في نشرة الجمعية الجغرافية، بدأ الطلب يتراجع، وانخفضت قيمة «فيلياس فوغ». وصاروا يعرضون السندات في حزم، أولاً من خمس، ثم من عشر، حتى لم يعد أحد يقبل بأقل من عشرين، أو خمسين، أو مئة!"
+    },
+    {
+      "index": 6,
+      "ar": "كان اللورد ألبمارل، وهو رجل مسن مصاب بالشلل، هو المؤيد الوحيد المتبقي لفيلياس فوغ. وهذا اللورد النبيل، الذي كان مقيداً إلى كرسيه، كان مستعداً للتخلي عن ثروته لو استطاع القيام بالطواف حول العالم، حتى لو استغرق ذلك عشر سنوات؛ وقد راهن بخمسة آلاف جنيه على فيلياس فوغ. وحين أشاروا عليه بحماقة المغامرة وعدم جدواها، اكتفى بالرد قائلاً: «إذا كان الأمر قابلاً للتنفيذ، فينبغي أن يكون أول من ينجزه إنجليزياً»."
+    },
+    {
+      "index": 7,
+      "ar": "أخذ أنصار فوغ يتناقصون أكثر فأكثر، وانقلب الجميع ضده، حتى بلغت نسب الرهان مئة وخمسين ومئتين إلى واحد؛ وبعد أسبوع من مغادرته، وقع حادث أفقده آخر من كان مستعداً لدعمه بأي ثمن."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

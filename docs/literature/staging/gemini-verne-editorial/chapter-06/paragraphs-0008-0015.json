@@ -1,0 +1,142 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 6,
+  "chapterTitle": "In Which Fix, the Detective, Betrays a Very Natural Impatience",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "23bd9462d066a68f90e3ecc6179fecb14e6a43f53ae3a265abf61d20f2d37b42",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "“I hope so, Mr. Fix, for it was a heavy robbery.”",
+      "existingArabicDraft": "«آمل ذلك يا سيد فيكس، فقد كانت سرقة كبيرة»."
+    },
+    {
+      "index": 9,
+      "en": "“A magnificent robbery, consul; fifty-five thousand pounds! We don’t often have such windfalls. Burglars are getting to be so contemptible nowadays! A fellow gets hung for a handful of shillings!”",
+      "existingArabicDraft": "«بل سرقة هائلة يا سعادة القنصل: خمسة وخمسون ألف جنيه! لا نصادف مثل هذه الغنائم كثيرًا. لقد صار اللصوص في أيامنا مثيرين للازدراء؛ فقد يُشنق أحدهم من أجل حفنة شلنات!»"
+    },
+    {
+      "index": 10,
+      "en": "“Mr. Fix,” said the consul, “I like your way of talking, and hope you’ll succeed; but I fear you will find it far from easy. Don’t you see, the description which you have there has a singular resemblance to an honest man?”",
+      "existingArabicDraft": "قال القنصل: «يعجبني أسلوبك في الكلام يا سيد فيكس، وأتمنى أن تنجح، لكنني أخشى ألا تكون المهمة سهلة. ألا ترى أن الوصف الذي تحمله يشبه إلى حد بعيد رجلًا شريفًا؟»"
+    },
+    {
+      "index": 11,
+      "en": "“Consul,” remarked the detective, dogmatically, “great robbers always resemble honest folks. Fellows who have rascally faces have only one course to take, and that is to remain honest; otherwise they would be arrested offhand. The artistic thing is, to unmask honest countenances; it’s no light task, I admit, but a real art.”",
+      "existingArabicDraft": "قال المحقق بثقة قاطعة: «يا سعادة القنصل، كبار اللصوص يشبهون دائمًا الشرفاء. أما أصحاب الوجوه التي توحي بالإجرام فلا خيار أمامهم سوى الاستقامة، وإلا قُبض عليهم فورًا. البراعة الحقيقية أن تكشف القناع عن وجه يبدو أمينًا؛ أعترف بأنها مهمة صعبة، لكنها فن قائم بذاته»."
+    },
+    {
+      "index": 12,
+      "en": "Mr. Fix evidently was not wanting in a tinge of self-conceit.",
+      "existingArabicDraft": "ومن الواضح أن السيد فيكس لم يكن يفتقر إلى شيء من الغرور."
+    },
+    {
+      "index": 13,
+      "en": "Little by little the scene on the quay became more animated; sailors of various nations, merchants, ship-brokers, porters, fellahs, bustled to and fro as if the steamer were immediately expected. The weather was clear, and slightly chilly. The minarets of the town loomed above the houses in the pale rays of the sun. A jetty pier, some two thousand yards along, extended into the roadstead. A number of fishing-smacks and coasting boats, some retaining the fantastic fashion of ancient galleys, were discernible on the Red Sea.",
+      "existingArabicDraft": "شيئًا فشيئًا ازدادت الحركة على الرصيف؛ فبحارة من جنسيات مختلفة، وتجار وسماسرة سفن وحمالون وفلاحون، يروحون ويجيئون كأن الباخرة ستصل في أي لحظة. كان الجو صافيًا مائلًا إلى البرودة، وتلوح مآذن المدينة فوق البيوت في أشعة الشمس الباهتة. وامتد حاجز بحري إلى عرض المرسى نحو ألفي ياردة، بينما ظهرت في البحر الأحمر قوارب صيد وسفن ساحلية، ما زال بعضها يحتفظ بهيئة القوادس القديمة الغريبة."
+    },
+    {
+      "index": 14,
+      "en": "As he passed among the busy crowd, Fix, according to habit, scrutinised the passersby with a keen, rapid glance.",
+      "existingArabicDraft": "وأثناء مرور فيكس وسط الزحام، كان يفحص وجوه المارة بنظرات حادة سريعة، على عادته."
+    },
+    {
+      "index": 15,
+      "en": "It was now half-past ten.",
+      "existingArabicDraft": "كانت الساعة قد بلغت العاشرة والنصف."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«آمل ذلك يا سيد فيكس، فقد كانت سرقة ضخمة.»"
+    },
+    {
+      "index": 1,
+      "ar": "«بل سرقة رائعة يا حضرة القنصل! خمسة وخمسون ألف جنيه! لا نقع على مثل هذه الغنائم المفاجئة إلا نادراً. لقد أصبح اللصوص في أيامنا هذه مثيرين للازدراء؛ إذ يُشنق المرء من أجل حفنة من الشلنات!»"
+    },
+    {
+      "index": 2,
+      "ar": "قال القنصل: «يعجبني أسلوبك في الحديث يا سيد فيكس، وأرجو لك النجاح؛ ولكني أخشى أن تجد الأمر بعيداً كل البعد عن السهولة. ألا ترى أن الوصف الذي بين يديك يحمل تشابهاً عجيباً مع رجل شريف؟»"
+    },
+    {
+      "index": 3,
+      "ar": "عقّب المحقق بجزم قاطع: «يا حضرة القنصل، كبار اللصوص يشبهون دائماً الرجال الشرفاء. أما أصحاب الوجوه التي توحي بالإجرام فليس أمامهم سوى مسلك واحد، وهو أن يظلوا أمناء، وإلا أُلقي القبض عليهم فوراً. إن اللمسة الفنية تكمن في إماطة اللثام عن الوجوه الشريفة؛ وأنا أعترف بأنها ليست بالمهمة الهينة، بل هي فن حقيقي.»"
+    },
+    {
+      "index": 4,
+      "ar": "وكان من الجلي أن السيد فيكس لا يفتقر إلى مسحة من الإعجاب بالنفس."
+    },
+    {
+      "index": 5,
+      "ar": "شيئاً فشيئاً دبت الحيوية على رصيف الميناء؛ فصار بحارة من مختلف الجنسيات، وتجار، وسماسرة سفن، وحمالون، وفلاحون، يروحون ويجيئون في نشاط وكأن الباخرة متوقعة في أية لحظة. كان الجو صافياً ومائلاً إلى البرودة قليلاً، وتراءت مآذن المدينة فوق البيوت تحت أشعة الشمس الباهتة. وامتد حاجز الأمواج نحو ألفي ياردة داخل المرسى. كما أمكن تمييز عدد من قوارب الصيد وسفن الملاحة الساحلية في البحر الأحمر، ما زال بعضها يحتفظ بالهيئة العجيبة للقوادس القديمة."
+    },
+    {
+      "index": 6,
+      "ar": "وبينما كان فيكس يمر بين ذلك الجمع المنشغل، كان يتفحص المارة بنظرة حادة وسريعة، كعادته."
+    },
+    {
+      "index": 7,
+      "ar": "كانت الساعة الآن العاشرة والنصف."
+    }
+  ],
+  "model": "gemini-3.5-flash",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
