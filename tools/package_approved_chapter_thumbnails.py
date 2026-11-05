@@ -63,6 +63,14 @@ def image_source(repo: Path, source_path: str, expected_sha: str) -> tuple[Path,
         raise ValueError(f"Source picture SHA mismatch: {source_path}")
     if len(data) < 300 or len(data) > 26_000_000:
         raise ValueError("Unsupported approved image byte size")
+    suffix = f.suffix.lower()
+    signature = (
+        suffix == ".webp" and data[:4] == b"RIFF" and data[8:12] == b"WEBP"
+    ) or (suffix == ".png" and data[:8] == b"\x89PNG\r\n\x1a\n") or (
+        suffix in (".jpg", ".jpeg") and data[:3] == b"\xff\xd8\xff"
+    )
+    if not signature:
+        raise ValueError(f"Approved image extension and real bytes disagree: {source_path}")
     return f, data
 
 
