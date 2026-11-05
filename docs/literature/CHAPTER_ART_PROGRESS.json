@@ -6,8 +6,8 @@
   "counts": {
     "localCandidateChapterCards": 268,
     "readyChapterCards": 0,
-    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1026,
-    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1026
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1047,
+    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1047
   },
   "books": [
     {
@@ -15,8 +15,8 @@
       "title": "Around the World in Eighty Days",
       "sourceState": "37 source chapters plus Arabic draft",
       "chapterCount": 37,
-      "archivedLocalHistoricArt": 67,
-      "unassignedHistoricalCommonsImageFiles": 54,
+      "archivedLocalHistoricArt": 70,
+      "unassignedHistoricalCommonsImageFiles": 57,
       "mappedChapterNumbers": [
         3,
         5,
@@ -59,8 +59,8 @@
       "readyForUICards": 0,
       "missingImageChapters": 27,
       "missingReadyChapters": 27,
-      "unassignedHistoricalCorreaImageFiles": 36,
-      "archivedLocalHistoricArt": 36
+      "unassignedHistoricalCorreaImageFiles": 54,
+      "archivedLocalHistoricArt": 54
     },
     {
       "bookId": "treasure-island",
