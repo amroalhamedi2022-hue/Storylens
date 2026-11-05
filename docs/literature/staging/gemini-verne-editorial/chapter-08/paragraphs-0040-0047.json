@@ -1,0 +1,144 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 8,
+  "chapterTitle": "In which Passepartout talks rather more, perhaps, than is prudent.",
+  "startParagraphZeroBased": 40,
+  "paragraphCount": 8,
+  "sourceSha256": "4ce061fdad3a863a74cbf37a7bfb4a3a0fe8471076c977ceaa7aea1fdcc34570",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 40,
+      "en": "“And in what country is Bombay?”",
+      "existingArabicDraft": "«وفي أي بلد تقع بومباي؟»"
+    },
+    {
+      "index": 41,
+      "en": "“India.”",
+      "existingArabicDraft": "«في الهند»."
+    },
+    {
+      "index": 42,
+      "en": "“In Asia?”",
+      "existingArabicDraft": "«في آسيا؟»"
+    },
+    {
+      "index": 43,
+      "en": "“Certainly.”",
+      "existingArabicDraft": "«بالتأكيد»."
+    },
+    {
+      "index": 44,
+      "en": "“The deuce! I was going to tell you there’s one thing that worries me—my burner!”",
+      "existingArabicDraft": "«يا للعجب! كنت أريد أن أخبرك بأن ثمة أمرًا يقلقني—موقد الغاز!»"
+    },
+    {
+      "index": 45,
+      "en": "“What burner?”",
+      "existingArabicDraft": "«أي موقد؟»"
+    },
+    {
+      "index": 46,
+      "en": "“My gas-burner, which I forgot to turn off, and which is at this moment burning at my expense. I have calculated, monsieur, that I lose two shillings every four and twenty hours, exactly sixpence more than I earn; and you will understand that the longer our journey—”",
+      "existingArabicDraft": "«موقد الغاز الذي نسيت إطفاءه، وهو يحرق المال الآن على حسابي! حسبت يا سيدي أنني أخسر شلنين كل أربع وعشرين ساعة، أي ستة بنسات أكثر مما أكسبه بالضبط؛ وستفهم أن كلما طالت رحلتنا—»"
+    },
+    {
+      "index": 47,
+      "en": "Did Fix pay any attention to Passepartout’s trouble about the gas? It is not probable. He was not listening, but was cogitating a project. Passepartout and he had now reached the shop, where Fix left his companion to make his purchases, after recommending him not to miss the steamer, and hurried back to the consulate. Now that he was fully convinced, Fix had quite recovered his equanimity.",
+      "existingArabicDraft": "هل اهتم فيكس بمشكلة باسبارتو المتعلقة بالغاز؟ لا يُرجّح ذلك. لم يكن يصغي إليه، بل كان يدبّر خطة في ذهنه. وكان باسبارتو وفيكس قد وصلا إلى المتجر، حيث ترك فيكس رفيقه يشتري حاجاته بعد أن أوصاه بألا يفوّت الباخرة، ثم أسرع عائدًا إلى القنصلية. وما إن اطمأن إلى صحة ظنّه حتى استعاد هدوءه ورباطة جأشه."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«وفي أي بلد تقع بومباي؟»"
+    },
+    {
+      "index": 1,
+      "ar": "«في الهند». احنا"
+    },
+    {
+      "index": 2,
+      "ar": "«في آسيا؟»"
+    },
+    {
+      "index": 3,
+      "ar": "«بالتأكيد». احنا"
+    },
+    {
+      "index": 4,
+      "ar": "«يا للعجب! كنت أريد أن أخبرك بأن ثمة أمرًا يقلقني—موقدي!»"
+    },
+    {
+      "index": 5,
+      "ar": "«أي موقد؟»"
+    },
+    {
+      "index": 6,
+      "ar": "«موقد الغاز الذي نسيت إطفاءه، وهو يحرق الغاز في هذه اللحظة على حسابي الخاص. لقد حسبت يا سيدي أنني أخسر شلنين كل أربع وعشرين ساعة، أي ستة بنسات أكثر مما أجنيه بالضبط؛ وستفهم أن كلما طالت رحلتنا—»"
+    },
+    {
+      "index": 7,
+      "ar": "هل اهتم فيكس بأي شكل من الأشكال بمشكلة باسبارتو المتعلقة بالغاز؟ ليس مرجحًا البتة. فلم يكن يستمع إليه، بل كان يمعن التفكير في مشروع ما. كان باسبارتو وفيكس قد وصلا الآن إلى المتجر، حيث ترك فيكس رفقه ليقوم بمشترياته، بعد أن نصحه بألا يفوت الباخرة، ثم أسرع عائدًا إلى القنصلية. والآن بعد أن اقتنع تمامًا، استعاد فيكس هدوءه كاملاً."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "تمت إضافة عبارة احنا غير الموجودة في النص الأصلي"
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": false,
+      "issues": "تمت إضافة عبارة احنا غير الموجودة في النص الأصلي"
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "يوجد خطأ إملائي في كلمة رفقه والصحيح رفيقه"
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

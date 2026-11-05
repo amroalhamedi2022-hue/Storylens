@@ -1,0 +1,144 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 8,
+  "chapterTitle": "In which Passepartout talks rather more, perhaps, than is prudent.",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 8,
+  "sourceSha256": "81907b8c1bcee5c5bc6f008f1feb6809103e92755afd9af3f994b33f1b0a44b0",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "“So much the worse for the sun, monsieur. The sun will be wrong, then!”",
+      "existingArabicDraft": "«فلتتحمل الشمس العاقبة يا سيدي! عندها ستكون الشمس هي المخطئة!»"
+    },
+    {
+      "index": 25,
+      "en": "And the worthy fellow returned the watch to its fob with a defiant gesture. After a few minutes silence, Fix resumed: “You left London hastily, then?”",
+      "existingArabicDraft": "وأعاد الرجل الطيب ساعته إلى جيبها بحركة متحدية. وبعد صمت بضع دقائق، استأنف فيكس الحديث: «إذن غادرت لندن على عجل؟»"
+    },
+    {
+      "index": 26,
+      "en": "“I rather think so! Last Friday at eight o’clock in the evening, Monsieur Fogg came home from his club, and three-quarters of an hour afterwards we were off.”",
+      "existingArabicDraft": "«أظن ذلك! عاد السيد فوغ من ناديه مساء الجمعة الماضية عند الثامنة، وبعد ثلاثة أرباع الساعة كنا قد انطلقنا»."
+    },
+    {
+      "index": 27,
+      "en": "“But where is your master going?”",
+      "existingArabicDraft": "«لكن إلى أين يتجه سيدك؟»"
+    },
+    {
+      "index": 28,
+      "en": "“Always straight ahead. He is going round the world.”",
+      "existingArabicDraft": "«إلى الأمام دائمًا. إنه يدور حول العالم»."
+    },
+    {
+      "index": 29,
+      "en": "“Round the world?” cried Fix.",
+      "existingArabicDraft": "هتف فيكس: «حول العالم؟»"
+    },
+    {
+      "index": 30,
+      "en": "“Yes, and in eighty days! He says it is on a wager; but, between us, I don’t believe a word of it. That wouldn’t be common sense. There’s something else in the wind.”",
+      "existingArabicDraft": "«نعم، وفي ثمانين يومًا! يقول إن الأمر رهان، لكن بيني وبينك لا أصدّق كلمة واحدة. فهذا لا يعقل. لا بد أن هناك أمرًا آخر يُدبَّر في الخفاء»."
+    },
+    {
+      "index": 31,
+      "en": "“Ah! Mr. Fogg is a character, is he?”",
+      "existingArabicDraft": "«آه! إذن السيد فوغ شخصية غريبة الأطوار؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«فليكن الأسوأ بالنسبة للشمس إذن يا سيدي. ستكون الشمس مخطئة!»"
+    },
+    {
+      "index": 1,
+      "ar": "وأعاد الرجل الفاضل ساعته إلى جيبها بحركة تحدٍ. وبعد بضع دقائق من الصمت، استأنف فيكس حديثه قائلًا: «إذن، لقد غادرت لندن على عجل؟»"
+    },
+    {
+      "index": 2,
+      "ar": "«أعتقد ذلك حقًا! في يوم الجمعة الماضي في تمام الساعة الثامنة مساءً، عاد السيد فوغ من ناديه، وبعد ثلاثة أرباع الساعة كنا قد انطلقنا.»"
+    },
+    {
+      "index": 3,
+      "ar": "«ولكن إلى أين ذهب سيدك؟»"
+    },
+    {
+      "index": 4,
+      "ar": "«دائماً إلى الأمام مباشرة. إنه يقوم برحلة حول العالم.»"
+    },
+    {
+      "index": 5,
+      "ar": "هتف فيكس: «حول العالم؟»"
+    },
+    {
+      "index": 6,
+      "ar": "«نعم، وفي غضون ثمانين يومًا! إنه يزعم أن الأمر يتعلق برهان؛ ولكن بيننا، أنا لا أصدق حرفًا واحدًا من ذلك. فليست هذه هي الفطرة السليمة. لابد أن هناك سرًا آخر وراء الأمر.»"
+    },
+    {
+      "index": 7,
+      "ar": "«حقًا! أإذن السيد فوغ شخصية فريدة؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": false,
+      "issues": "الترجمة الدقيقة لـ is going هي 'إلى أين يذهب سيدك؟' وليست 'أين ذهب'."
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

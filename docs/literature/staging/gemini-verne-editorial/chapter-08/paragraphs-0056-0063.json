@@ -1,0 +1,74 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 8,
+  "chapterTitle": "In which Passepartout talks rather more, perhaps, than is prudent.",
+  "startParagraphZeroBased": 56,
+  "paragraphCount": 3,
+  "sourceSha256": "65084fddb77c1a72c1a677e3e46f7075ed0cc883a6cb38b91756d081520f2eae",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 56,
+      "en": "“In short,” said the consul, “appearances are wholly against this man. And what are you going to do?”",
+      "existingArabicDraft": "قال القنصل: «باختصار، كل المظاهر تقف ضد هذا الرجل. ماذا تنوي أن تفعل؟»"
+    },
+    {
+      "index": 57,
+      "en": "“Send a dispatch to London for a warrant of arrest to be dispatched instantly to Bombay, take passage on board the Mongolia, follow my rogue to India, and there, on English ground, arrest him politely, with my warrant in my hand, and my hand on his shoulder.”",
+      "existingArabicDraft": "«سأرسل برقية إلى لندن لطلب إرسال مذكرة توقيف فورًا إلى بومباي، ثم أستقل الباخرة منغوليا، وأتبع مطلوبي إلى الهند، وهناك، على أرض إنجليزية، أقبض عليه بأدب، والمذكرة في يدي ويدي على كتفه»."
+    },
+    {
+      "index": 58,
+      "en": "Having uttered these words with a cool, careless air, the detective took leave of the consul, and repaired to the telegraph office, whence he sent the dispatch which we have seen to the London police office. A quarter of an hour later found Fix, with a small bag in his hand, proceeding on board the Mongolia; and, ere many moments longer, the noble steamer rode out at full steam upon the waters of the Red Sea.",
+      "existingArabicDraft": "وبعد أن نطق بهذه الكلمات ببرود واستخفاف، ودّع المحقق القنصل واتجه إلى مكتب التلغراف، حيث أرسل البرقية التي رأيناها إلى مركز شرطة لندن. وبعد ربع ساعة، كان فيكس يحمل حقيبة صغيرة وهو يصعد إلى الباخرة منغوليا؛ ولم تمضِ لحظات أخرى حتى أبحرت السفينة النبيلة بأقصى سرعتها فوق مياه البحر الأحمر."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«باختصار»، قال القنصل: «المظاهر كلها ضد هذا الرجل تماماً. وماذا أنت فاعل؟»"
+    },
+    {
+      "index": 1,
+      "ar": "«سأرسل برقية إلى لندن لأجل مذكرة توقيف تُرسل فوراً إلى بومباي، وأحجز مقعداً على متن المونغوليا، وأتعقب لصوصي إلى الهند، وهناك، على أرض إنجليزية، أقبض عليه بلطف، ومذكريتي في يدي، ويدي على كتفه»."
+    },
+    {
+      "index": 2,
+      "ar": "وبعد أن تلفظ بهذه الكلمات ببيان هادئ ومستهتر، ودّع المحقق القنصل، وتوجه إلى مكتب البرق، حيث أرسل البرقية التي عرفناها إلى شرطة لندن. وبعد ربع ساعة وُجد فيكس، وبصحبته حقيبة صغيرة، متجهاً إلى ظهر المونغوليا؛ وبعد لحظات قليلة أخرى، انطلقت الباخرة الفخمة بأقصى بخارها لتشق مياه البحر الأحمر."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "ترجمة 'my rogue' بصيغة الجمع 'لصوصي' بدلاً من المفرد 'لصي'، ووجود خطأ إملائي في كلمة 'ومذكريتي' والصواب 'ومذكرتي'."
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "ترجمة غير دقيقة لـ 'cool, careless air' إلى 'ببيان هادئ ومستهتر'، والصواب 'بهيئة هادئة وغير مبالية'؛ إذ تعني كلمة 'air' الهيئة أو المظهر، وتفيد 'careless' هنا عدم المبالاة لا الاستهتار."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

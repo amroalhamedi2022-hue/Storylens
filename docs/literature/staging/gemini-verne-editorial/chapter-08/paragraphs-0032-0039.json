@@ -1,0 +1,144 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 8,
+  "chapterTitle": "In which Passepartout talks rather more, perhaps, than is prudent.",
+  "startParagraphZeroBased": 32,
+  "paragraphCount": 8,
+  "sourceSha256": "f02274ca3123b6ce5e29745bafb9fad930f3db99a235cedd1f2d1f73cf3eb88d",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 32,
+      "en": "“I should say he was.”",
+      "existingArabicDraft": "«بل أقول إنه كذلك بالتأكيد»."
+    },
+    {
+      "index": 33,
+      "en": "“Is he rich?”",
+      "existingArabicDraft": "«أهو ثري؟»"
+    },
+    {
+      "index": 34,
+      "en": "“No doubt, for he is carrying an enormous sum in brand new banknotes with him. And he doesn’t spare the money on the way, either: he has offered a large reward to the engineer of the Mongolia if he gets us to Bombay well in advance of time.”",
+      "existingArabicDraft": "«لا شك في ذلك، فهو يحمل معه مبلغًا هائلًا من الأوراق النقدية الجديدة تمامًا. ولا يبخل بالمال في الطريق أيضًا؛ فقد وعد مهندس الباخرة منغوليا بمكافأة كبيرة إذا أوصلنا إلى بومباي قبل الموعد بوقت وافر»."
+    },
+    {
+      "index": 35,
+      "en": "“And you have known your master a long time?”",
+      "existingArabicDraft": "«وهل تعرف سيدك منذ زمن طويل؟»"
+    },
+    {
+      "index": 36,
+      "en": "“Why, no; I entered his service the very day we left London.”",
+      "existingArabicDraft": "«كلا، فقد بدأت العمل لديه في اليوم نفسه الذي غادرنا فيه لندن»."
+    },
+    {
+      "index": 37,
+      "en": "The effect of these replies upon the already suspicious and excited detective may be imagined. The hasty departure from London soon after the robbery; the large sum carried by Mr. Fogg; his eagerness to reach distant countries; the pretext of an eccentric and foolhardy bet—all confirmed Fix in his theory. He continued to pump poor Passepartout, and learned that he really knew little or nothing of his master, who lived a solitary existence in London, was said to be rich, though no one knew whence came his riches, and was mysterious and impenetrable in his affairs and habits. Fix felt sure that Phileas Fogg would not land at Suez, but was really going on to Bombay.",
+      "existingArabicDraft": "يمكن تخيّل أثر هذه الإجابات في المحقق الذي كان أصلًا مرتابًا ومضطربًا. فمغادرة لندن على عجل بعد السرقة بوقت قصير، والمبلغ الكبير الذي يحمله السيد فوغ، ولهفته على بلوغ بلدان بعيدة، وذريعة الرهان الغريب المتهور—كل ذلك عزّز نظرية فيكس. واصل استدراج باسبارتو المسكين بالكلام، فعلم أنه لا يعرف عن سيده إلا القليل، بل يكاد لا يعرف شيئًا؛ فهو يعيش حياة منعزلة في لندن، ويُقال إنه ثري، مع أن أحدًا لا يعرف مصدر ثروته، كما أن شؤونه وعاداته غامضة لا تُخترق. وتأكد فيكس أن فيلياس فوغ لن ينزل في السويس، بل سيمضي فعلًا إلى بومباي."
+    },
+    {
+      "index": 38,
+      "en": "“Is Bombay far from here?” asked Passepartout.",
+      "existingArabicDraft": "سأل باسبارتو: «هل بومباي بعيدة من هنا؟»"
+    },
+    {
+      "index": 39,
+      "en": "“Pretty far. It is a ten days’ voyage by sea.”",
+      "existingArabicDraft": "«بعيدة إلى حدّ ما؛ فالرحلة بحرًا تستغرق عشرة أيام»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«بل أقول إنه كذلك بالتأكيد»."
+    },
+    {
+      "index": 1,
+      "ar": "«أهو ثري؟»"
+    },
+    {
+      "index": 2,
+      "ar": "«لا شك في ذلك، فهو يحمل معه مبلغًا هائلًا من الأوراق النقدية الجديدة تمامًا. ولا يبخل بالمال في الطريق أيضًا؛ فقد وعد مهندس الباخرة منغوليا بمكافأة كبيرة إذا أوصلنا إلى بومباي قبل الموعد بوقت وافر»."
+    },
+    {
+      "index": 3,
+      "ar": "«وهل تعرف سيدك منذ زمن طويل؟»"
+    },
+    {
+      "index": 4,
+      "ar": "«كلا، فقد بدأت العمل لديه في اليوم نفسه الذي غادرنا فيه لندن»."
+    },
+    {
+      "index": 5,
+      "ar": "يمكن تخيّل أثر هذه الإجابات في المحقق الذي كان أصلًا مرتابًا ومضطربًا. فمغادرة لندن على عجل بعد السرقة بوقت قصير، والمبلغ الكبير الذي يحمله السيد فوغ، ولهفته على بلوغ بلدان بعيدة، وذريعة الرهان الغريب المتهور—كل ذلك عزّز نظرية فيكس. واصل استدراج باسبارتو المسكين بالكلام، فعلم أنه لا يعرف عن سيده إلا القليل، بل يكاد لا يعرف شيئًا؛ فهو يعيش حياة منعزلة في لندن، ويُقال إنه ثري، مع أن أحدًا لا يعرف مصدر ثروته، كما أن شؤونه وعاداته غامضة لا تُخترق. وتأكد فيكس أن فيلياس فوغ لن ينزل في السويس، بل سيمضي فعلًا إلى بومباي."
+    },
+    {
+      "index": 6,
+      "ar": "سأل باسبارتو: «هل بومباي بعيدة من هنا؟»"
+    },
+    {
+      "index": 7,
+      "ar": "«بعيدة إلى حدّ ما؛ فالرحلة بحرًا تستغرق عشرة أيام»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
