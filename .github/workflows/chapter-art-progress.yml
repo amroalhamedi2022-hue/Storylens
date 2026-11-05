@@ -17,7 +17,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: lingua-chapter-art-progress-main
+  group: lingua-tales-historic-commons-serial
   cancel-in-progress: false
 
 jobs:
@@ -30,9 +30,13 @@ jobs:
         with:
           ref: main
           persist-credentials: true
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Reconcile latest main before measuring actual local binaries
+        shell: bash
+        run: git pull --ff-only origin main
       - name: Measure real chapter card coverage and verify all archived image hashes
         run: python tools/report_chapter_art_progress.py --write
       - name: Commit only changed progress snapshots
