@@ -126,10 +126,22 @@ function openSelected(id,index){
  close(false);
  return originalOpen.call(global,id);
 }
+function distinctChapterImages(story){
+ // The same artwork must NEVER appear as a distinct chapter thumbnail twice,
+ // even when a future source map accidentally repeats a file.
+ const seen=new Set();
+ return (story.chapters||[]).map((_,index)=>{
+  const item=chapterImage(story,index);
+  if(!item||seen.has(item.src))return null;
+  seen.add(item.src);
+  return item;
+ });
+}
 function renderCards(entry,story){
  if(!active||active!==entry||!entry.track?.isConnected)return;
  entry.track.replaceChildren();
  const chapters=story.chapters||[];
+ const distinctImages=distinctChapterImages(story);
  const resume=typeof get==='function'?Number(get('chapter_'+story.id,0)):0;
  for(let i=0;i<chapters.length;i++){
   const chapter=chapters[i];
@@ -140,7 +152,7 @@ function renderCards(entry,story){
   if(i===resume)card.classList.add('lt-chapter-resume');
   card.setAttribute('aria-label',locale('اقرأ الفصل ','Read chapter ')+(i+1)+' · '+titleFor(chapter,i));
   const cover=document.createElement('span');cover.className='lt-chapter-tile-visual';
-  const source=chapterImage(story,i);
+  const source=distinctImages[i];
   if(source){
    const img=document.createElement('img');
    img.src=source.src;
@@ -179,7 +191,7 @@ function renderCards(entry,story){
   :locale(chapters.length+' من '+total+' فصلًا متاحًا',
     chapters.length+' of '+total+' chapters available');
  entry.title.textContent=bookTitle(story);
- const missing=chapters.filter((_,i)=>!chapterImage(story,i)).length;
+ const missing=distinctImages.filter(item=>!item).length;
  entry.missing.textContent=missing?locale(
   'صور الفصول قيد الاستكمال: '+missing+' من '+chapters.length,
   'Chapter images pending: '+missing+' of '+chapters.length
