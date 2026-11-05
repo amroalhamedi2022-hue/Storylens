@@ -1,24 +1,23 @@
 #!/usr/bin/env python3
-"""Regression checks for historical image archival/report GitHub Actions races.
+"""Prevent repeat of historical-art upload, report-rebase and queue cancellation bugs.
 
-These static workflow invariants catch the concrete November 2026 failure:
-two independent writers calculated and committed the same progress snapshot
-before reconciling main, so git rebase failed despite real downloaded images.
-No network, images, rights approvals, Android code or credentials required.
+No image/metadata changes or network calls. The actual SHA-256 auditor is
+tools/report_chapter_art_progress.py; this test checks job ownership and
+GITHUB_TOKEN dispatch semantics before each PR can be merged.
 """
 from pathlib import Path
+import re
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 WF = ROOT / ".github" / "workflows"
-LOCK = "group: lingua-tales-historic-commons-serial"
-WORKFLOWS = (
+SOURCE = (
     "verne-commons-period-art-intake.yml",
     "war-worlds-original-1906-art.yml",
     "archived-chapter-art-maps.yml",
     "monte-cristo-chapter-art.yml",
-    "chapter-art-progress.yml",
 )
+REPORT = "chapter-art-progress.yml"
 
 
 def read(name: str) -> str:
@@ -26,47 +25,73 @@ def read(name: str) -> str:
 
 
 class HistoricalArtRaceRegression(unittest.TestCase):
-    def test_all_current_main_art_writers_use_one_shared_lock(self) -> None:
-        for name in WORKFLOWS:
+    def test_isolated_workflow_queues_do_not_cancel_unrelated_jobs(self) -> None:
+        names = (*SOURCE, REPORT)
+        groups = []
+        for name in names:
+            text = read(name)
+            found = re.search(r"^  group: (.+)$", text, re.MULTILINE)
+            self.assertIsNotNone(found, name)
+            groups.append(found.group(1))
+            self.assertIn("cancel-in-progress: false", text)
+        self.assertEqual(len(set(groups)), len(groups),
+                         "Shared concurrency groups cancel intermediate pending jobs")
+
+    def test_archival_jobs_commit_real_sources_only(self) -> None:
+        for name in SOURCE[:2]:
             with self.subTest(name=name):
-                contents = read(name)
-                self.assertIn(LOCK, contents)
-                self.assertIn("cancel-in-progress: false", contents)
+                text = read(name)
+                self.assertIn("git add -f docs/literature/staging/", text)
+                self.assertIn("git pull --rebase origin", text)
+                self.assertNotIn("python tools/report_chapter_art_progress.py --write", text)
+                self.assertNotIn("git add docs/literature/CHAPTER_ART_PROGRESS", text)
+                self.assertIn("fetch-depth: 0", text)
+                self.assertIn("if [ \"$changed\" -eq 1 ]; then", text)
 
-    def test_archival_intake_checkpoints_binaries_before_rebase_report(self) -> None:
-        for name in WORKFLOWS[:2]:
+    def test_all_source_writers_dispatch_after_successful_push(self) -> None:
+        for name in SOURCE:
             with self.subTest(name=name):
-                source = read(name)
-                self.assertLess(source.index("git add -f docs/literature/staging/"),
-                                source.index('git pull --rebase origin "$GITHUB_REF_NAME"'))
-                self.assertLess(source.index('git pull --rebase origin "$GITHUB_REF_NAME"'),
-                                source.index("python tools/report_chapter_art_progress.py --write"))
-                self.assertIn("fetch-depth: 0", source)
+                text = read(name)
+                self.assertIn("  actions: write", text)
+                self.assertIn('gh workflow run chapter-art-progress.yml --ref main', text)
+                self.assertIn("GH_TOKEN: ${{ github.token }}", text)
+                self.assertIn('if [ "$GITHUB_REF_NAME" = "main" ]; then', text)
+                self.assertLess(text.index("git push origin"),
+                                text.index("gh workflow run chapter-art-progress.yml"))
+                for line in text.splitlines():
+                    if "git commit -m" in line:
+                        self.assertNotIn("[skip ci]", line)
 
-    def test_archived_map_checkpoint_is_saved_before_report(self) -> None:
-        content = read("archived-chapter-art-maps.yml")
-        self.assertLess(content.index("git add docs/literature/staging/illustrated-five-20261105/"),
-                        content.index('git pull --rebase origin "$GITHUB_REF_NAME"'))
-        self.assertLess(content.index('git pull --rebase origin "$GITHUB_REF_NAME"'),
-                        content.index("python tools/report_chapter_art_progress.py --write"))
-        self.assertEqual(content.count("python tools/report_chapter_art_progress.py --write"), 1)
-        self.assertIn("python tools/map_archived_five_chapter_art.py --verify", content)
-        self.assertIn("fetch-depth: 0", content)
+    def test_mapping_jobs_never_rewrite_progress_while_staging_maps(self) -> None:
+        for name in SOURCE[2:]:
+            text = read(name)
+            self.assertNotIn("python tools/report_chapter_art_progress.py --write", text)
+            self.assertNotIn("git add docs/literature/CHAPTER_ART_PROGRESS", text)
+            self.assertIn(" --verify", text)
+        self.assertIn("illustrated-five-20261105/*/chapter-image-map.json",
+                      read(SOURCE[2]))
+        self.assertIn("the-count-of-monte-cristo/chapter-image-map.json",
+                      read(SOURCE[3]))
 
-    def test_daily_inventory_updates_checkout_before_audit(self) -> None:
-        content = read("chapter-art-progress.yml")
-        self.assertLess(content.index("git pull --ff-only origin main"),
-                        content.index("python tools/report_chapter_art_progress.py --write"))
-        self.assertIn("fetch-depth: 0", content)
-        self.assertIn("git diff --cached --quiet", content)
-        self.assertIn("git push origin HEAD:main", content)
+    def test_one_reporter_reaudits_current_main_after_push_races(self) -> None:
+        text = read(REPORT)
+        self.assertIn("      - 'docs/literature/staging/**'", text)
+        self.assertIn("  workflow_dispatch:", text)
+        self.assertIn("git fetch origin main", text)
+        self.assertIn("git reset --hard origin/main", text)
+        self.assertEqual(text.count("python tools/report_chapter_art_progress.py --write"), 1)
+        self.assertLess(text.index("git reset --hard origin/main"),
+                        text.index("python tools/report_chapter_art_progress.py --write"))
+        self.assertIn("git push origin HEAD:main", text)
+        self.assertIn("for attempt in 1 2 3 4 5; do", text)
+        self.assertIn("fetch-depth: 0", text)
 
-    def test_art_approval_remains_human_gated(self) -> None:
-        for name in WORKFLOWS:
+    def test_human_editorial_release_is_never_automatically_granted(self) -> None:
+        for name in (*SOURCE, REPORT):
             with self.subTest(name=name):
-                content = read(name)
-                self.assertNotIn("editoriallyApproved: true", content)
-                self.assertNotIn("APPROVED_FOR_TARGET_TERRITORIES", content)
+                text = read(name)
+                self.assertNotIn("editoriallyApproved: true", text)
+                self.assertNotIn("APPROVED_FOR_TARGET_TERRITORIES", text)
 
 
 if __name__ == "__main__":

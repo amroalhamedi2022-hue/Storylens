@@ -13,9 +13,10 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
-  group: lingua-tales-historic-commons-serial
+  group: lingua-war-correa-intake-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -33,7 +34,7 @@ jobs:
       - run: python -m pip install requests==2.32.5 Pillow==11.3.0
       - name: Acquire up to 18 genuine 1906 original period art images safely
         run: python tools/intake_war_worlds_correa_period_gallery.py --max-new 18
-      - name: Preserve authentic Correa scans and regenerate progress after Git reconciliation
+      - name: Preserve authentic Correa scans and hand off fresh inventory to the central audit
         if: always()
         shell: bash
         run: |
@@ -44,33 +45,40 @@ jobs:
             git add -f docs/literature/staging/war-of-worlds-correa-period-plates/
           fi
           git diff --cached --check
+          changed=0
           if git diff --cached --quiet; then
-            echo "No new source binaries; do not commit duplicate art."
+            echo "No new verified source images; no redundant source commit."
           else
-            git commit -m "Literature: checkpoint authentic 1906 Correa scans [skip ci]"
+            # Commit only evidence-backed images and source manifest.
+            # Do NOT use [skip ci]: central chapter-art-progress.yml must be
+            # triggered by the staged-image push to regenerate the report.
+            changed=1
+            git commit -m "Literature: checkpoint authentic 1906 Correa scans"
           fi
-          # Reconcile SOURCE FILES before generating the snapshot. A previous
-          # runner generated progress before pulling concurrent main changes,
-          # causing a report add/add conflict, even after 18 real downloads.
-          git pull --rebase origin "$GITHUB_REF_NAME"
-          # The report is regenerated from the reconciled set of actual image
-          # files. Failure to compute a report must NOT discard verified scans.
-          report_status=0
-          python tools/report_chapter_art_progress.py --write || report_status=$?
-          if [ "$report_status" -eq 0 ]; then
-            git add docs/literature/CHAPTER_ART_PROGRESS.json docs/literature/CHAPTER_ART_PROGRESS.md
-            git diff --cached --check
-            if ! git diff --cached --quiet; then
-              git commit -m "Literature: refresh audited chapter-art inventory after image intake [skip ci]"
+          if [ "$changed" -eq 1 ]; then
+            # Other independent source writers may push concurrently.
+            # Retry ordinary fast-forward races without rewriting history.
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 2
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Verified images committed locally but remote push still failing"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = "main" ]; then
+              # GITHUB_TOKEN-created pushes do not trigger downstream push
+              # workflows. Explicit workflow_dispatch is required.
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
             fi
           else
-            echo "::warning::Progress audit failed; source images will still be preserved"
+            echo "No new source content; scheduled daily central audit remains active."
           fi
-          git push origin "HEAD:$GITHUB_REF_NAME"
-          if [ "$report_status" -ne 0 ]; then
-            echo "::error::Source images saved, but audit requires correction"
-            exit "$report_status"
-          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Retain original archive evidence
         if: always()
         uses: actions/upload-artifact@v4
