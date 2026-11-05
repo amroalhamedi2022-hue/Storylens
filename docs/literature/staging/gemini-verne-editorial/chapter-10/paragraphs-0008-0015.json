@@ -1,0 +1,146 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 10,
+  "chapterTitle": "In which Passepartout is only too glad to get off with the loss of his shoes.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "4853c9dd015f824d23fe6be4b6fd5f7d28e55b2499d36a16bbdcc931fa8413c3",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "“Yes, my lord,” the rogue boldly replied, “rabbit from the jungles.”",
+      "existingArabicDraft": "أجاب المحتال بجرأة: «نعم يا سيدي، أرنب من الأدغال»."
+    },
+    {
+      "index": 9,
+      "en": "“And this rabbit did not mew when he was killed?”",
+      "existingArabicDraft": "«وهذا الأرنب لم يُمْئْ حين قُتل؟»"
+    },
+    {
+      "index": 10,
+      "en": "“Mew, my lord! What, a rabbit mew! I swear to you—”",
+      "existingArabicDraft": "«يُمئّ، يا سيدي؟ أرنب يُمئّ؟ أقسم لك—»"
+    },
+    {
+      "index": 11,
+      "en": "“Be so good, landlord, as not to swear, but remember this: cats were formerly considered, in India, as sacred animals. That was a good time.”",
+      "existingArabicDraft": "قال فوغ: «أرجوك ألا تقسم، وتذكّر أن القطط كانت تُعدّ في الهند حيوانات مقدسة. كانت تلك أيامًا طيبة»."
+    },
+    {
+      "index": 12,
+      "en": "“For the cats, my lord?”",
+      "existingArabicDraft": "«بالنسبة إلى القطط يا سيدي؟»"
+    },
+    {
+      "index": 13,
+      "en": "“Perhaps for the travellers as well!”",
+      "existingArabicDraft": "«ربما بالنسبة إلى المسافرين أيضًا!»"
+    },
+    {
+      "index": 14,
+      "en": "After which Mr. Fogg quietly continued his dinner. Fix had gone on shore shortly after Mr. Fogg, and his first destination was the headquarters of the Bombay police. He made himself known as a London detective, told his business at Bombay, and the position of affairs relative to the supposed robber, and nervously asked if a warrant had arrived from London. It had not reached the office; indeed, there had not yet been time for it to arrive. Fix was sorely disappointed, and tried to obtain an order of arrest from the director of the Bombay police. This the director refused, as the matter concerned the London office, which alone could legally deliver the warrant. Fix did not insist, and was fain to resign himself to await the arrival of the important document; but he was determined not to lose sight of the mysterious rogue as long as he stayed in Bombay. He did not doubt for a moment, any more than Passepartout, that Phileas Fogg would remain there, at least until it was time for the warrant to arrive.",
+      "existingArabicDraft": "بعد ذلك واصل السيد فوغ عشاءه بهدوء. وكان فيكس قد نزل إلى البر بعده بقليل، وتوجّه أولًا إلى مقر شرطة بومباي. عرّف بنفسه بوصفه محققًا من لندن، وشرح مهمته وما يتعلق باللص المزعوم، ثم سأل بقلق إن كان أمر القبض قد وصل من لندن. لم يكن قد وصل، إذ لم يمض وقت كافٍ لوصوله. خاب أمل فيكس بشدة، وحاول الحصول على أمر اعتقال من مدير الشرطة في بومباي، لكن المدير رفض لأن القضية من اختصاص مكتب لندن وحده، وهو المخوّل قانونًا بإصدار الأمر. ولم يُلحّ فيكس، بل اضطر إلى انتظار الوثيقة المهمة، عازمًا في الوقت نفسه على ألا يفقد أثر ذلك الرجل الغامض ما دام في بومباي. ولم يشك لحظة، مثل باسبارتو، في أن فوغ سيبقى هناك إلى أن يحين موعد وصول الأمر."
+    },
+    {
+      "index": 15,
+      "en": "Passepartout, however, had no sooner heard his master’s orders on leaving the Mongolia than he saw at once that they were to leave Bombay as they had done Suez and Paris, and that the journey would be extended at least as far as Calcutta, and perhaps beyond that place. He began to ask himself if this bet that Mr. Fogg talked about was not really in good earnest, and whether his fate was not in truth forcing him, despite his love of repose, around the world in eighty days!",
+      "existingArabicDraft": "لكن باسبارتو، ما إن سمع أوامر سيده عند مغادرة منغوليا، حتى أدرك أنهما سيغادران بومباي كما غادرا السويس وباريس، وأن الرحلة ستمتد إلى كلكتا على الأقل، وربما إلى ما بعدها. وبدأ يتساءل إن كان الرهان الذي يتحدث عنه السيد فوغ جادًا حقًا، وإن كان قدره يدفعه بالفعل، رغم حبه للراحة، إلى الدوران حول العالم في ثمانين يومًا!"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«نعم يا سيدي،» أجاب المحتال بجرأة، «أرنب من الأدغال.»"
+    },
+    {
+      "index": 1,
+      "ar": "«وهذا الأرنب لم يُمئْ حين قُتل؟»"
+    },
+    {
+      "index": 2,
+      "ar": "«يُمئْ، يا سيدي! ما هذا، أرنب يُمئْ! أقسم لك—»"
+    },
+    {
+      "index": 3,
+      "ar": "«كن لطيفاً يا صاحب الفندق، ولا تقسم، بل تذكّر هذا: كانت القطط تُعدّ قديماً في الهند حيوانات مقدسة. كانت تلك أياماً طيبة.»"
+    },
+    {
+      "index": 4,
+      "ar": "«بالنسبة إلى القطط، يا سيدي؟»"
+    },
+    {
+      "index": 5,
+      "ar": "«ربما بالنسبة إلى المسافرين أيضاً!»"
+    },
+    {
+      "index": 6,
+      "ar": "بعد ذلك واصل السيد فوغ عشاءه بهدوء. وكان فيكس قد نزل إلى الشاطئ بعد السيد فوغ بقليل، وتوجّه أولاً إلى مقر شرطة بومباي. عرّف بنفسه بوصفه محققاً من لندن، وشرح مهمته في بومباي وموقف الأمور المتعلق باللص المفترض، ثم سأل بعصبية إن كان أمر إلقاء القبض قد وصل من لندن. لم يكن الأمر قد وصل إلى المكتب؛ بل الواقع أنه لم يتسع الوقت بعد لوصوله. شعر فيكس بخيبة أمل مريرة، وحاول الحصول على أمر اعتقال من مدير شرطة بومباي. لكن المدير رفض ذلك، لأن الأمر يخص مكتب لندن وحده، وهو الجهة الوحيدة القادرة قانوناً على إصدار أمر القبض. لم يصرّ فيكس، واضطر راضياً صاغراً إلى انتظار وصول الوثيقة المهمة؛ غير أنه عزم على ألا يفقد بصر اللص الغامض طالما بقي في بومباي. ولم يشكّ لحظة واحدة، شأنه شأن باسبارتو، في أن فيلياس فوغ سيبقى هناك، على الأقل إلى أن يحين وقت وصول أمر القبض."
+    },
+    {
+      "index": 7,
+      "ar": "أما باسبارتو، فما إن سمع أوامر سيده عند مغادرة السفينة «منغوليا» حتى أدرك فوراً أنهما سيغادران بومباي تماماً كما غادرا السويس وباريس، وأن الرحلة ستمتد على الأقل حتى كلكتا، وربما إلى ما بعد ذلك المكان. وبدأ يتساءل عما إذا كان هذا الرهان الذي يتحدث عنه السيد فوغ جاداً حقاً، وعما إذا كان قدره يدفعه حقاً، على الرغم من حبه للراحة والاستجمام، لدور حول العالم في ثمانين يوماً!"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "يوجد خطأ مطبعي في عبارة «لدور حول العالم» والصحيح «ليدور حول العالم»."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

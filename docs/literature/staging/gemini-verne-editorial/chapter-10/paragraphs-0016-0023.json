@@ -1,0 +1,146 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 10,
+  "chapterTitle": "In which Passepartout is only too glad to get off with the loss of his shoes.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "43c2d17e2003bc4169941578e235a11c3b2127da22310fe31ed1081ec358fd3d",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "Having purchased the usual quota of shirts and shoes, he took a leisurely promenade about the streets, where crowds of people of many nationalities—Europeans, Persians with pointed caps, Banyas with round turbans, Sindes with square bonnets, Parsees with black mitres, and long-robed Armenians—were collected. It happened to be the day of a Parsee festival. These descendants of the sect of Zoroaster—the most thrifty, civilised, intelligent, and austere of the East Indians, among whom are counted the richest native merchants of Bombay—were celebrating a sort of religious carnival, with processions and shows, in the midst of which Indian dancing-girls, clothed in rose-coloured gauze, looped up with gold and silver, danced airily, but with perfect modesty, to the sound of viols and the clanging of tambourines. It is needless to say that Passepartout watched these curious ceremonies with staring eyes and gaping mouth, and that his countenance was that of the greenest booby imaginable.",
+      "existingArabicDraft": "اشترى حصته المعتادة من القمصان والأحذية، ثم خرج يتمشى على مهل في الشوارع المكتظة بأناس من جنسيات شتى: أوروبيين وفرس بقبعات مدببة، وبانيا بعمائم مستديرة، وسنديين بقبعات مربعة، وبارسيين بعمائم سوداء، وأرمنيين يرتدون أردية طويلة. وصادف أن ذلك اليوم كان عيدًا للبارسيين، أحفاد أتباع زرادشت، المعروفين بالاقتصاد والتمدن والذكاء والتقشف، ومن بينهم أغنى تجار بومباي المحليين. كانوا يحتفلون بما يشبه مهرجانًا دينيًا، تتخلله المواكب والعروض، وترقص فيه فتيات هنديات بملابس من الشيفون الوردي الموشى بالذهب والفضة بخفة واحتشام على أنغام آلات وترية وقرع الدفوف. ولا حاجة إلى القول إن باسبارتو راقب هذه الطقوس بعينين جاحظتين وفم فاغر، كأنه أبسط الناس سذاجة."
+    },
+    {
+      "index": 17,
+      "en": "Unhappily for his master, as well as himself, his curiosity drew him unconsciously farther off than he intended to go. At last, having seen the Parsee carnival wind away in the distance, he was turning his steps towards the station, when he happened to espy the splendid pagoda on Malabar Hill, and was seized with an irresistible desire to see its interior. He was quite ignorant that it is forbidden to Christians to enter certain Indian temples, and that even the faithful must not go in without first leaving their shoes outside the door. It may be said here that the wise policy of the British Government severely punishes a disregard of the practices of the native religions.",
+      "existingArabicDraft": "ولسوء حظ سيده وحظه هو أيضًا، قادته فضوليته من حيث لا يدري إلى أبعد مما قصد. وبعد أن شاهد موكب عيد البارسيين يبتعد في الأفق، كان عائدًا نحو المحطة حين لمح المعبد الفخم على تل مالابار، فاستولى عليه شوق لا يقاوم لرؤية داخله. ولم يكن يعلم أن دخول بعض المعابد الهندية محظور على المسيحيين، وأن حتى المؤمنين بها عليهم خلع أحذيتهم عند الباب. ويُذكر هنا أن الحكومة البريطانية كانت تعاقب بشدة على مخالفة شعائر الأديان المحلية."
+    },
+    {
+      "index": 18,
+      "en": "Passepartout, however, thinking no harm, went in like a simple tourist, and was soon lost in admiration of the splendid Brahmin ornamentation which everywhere met his eyes, when of a sudden he found himself sprawling on the sacred flagging. He looked up to behold three enraged priests, who forthwith fell upon him; tore off his shoes, and began to beat him with loud, savage exclamations. The agile Frenchman was soon upon his feet again, and lost no time in knocking down two of his long-gowned adversaries with his fists and a vigorous application of his toes; then, rushing out of the pagoda as fast as his legs could carry him, he soon escaped the third priest by mingling with the crowd in the streets.",
+      "existingArabicDraft": "دخل باسبارتو، من غير أن يقصد إساءة، كما يدخل سائح بسيط، وأخذ يتأمل الزخارف البراهمانية البديعة حوله، فإذا به يسقط فجأة على أرضية المعبد المقدسة. رفع رأسه فرأى ثلاثة كهنة غاضبين انقضوا عليه، فانتزعوا حذاءيه وراحوا يضربونه وسط صيحات عنيفة. نهض الفرنسي الخفيف بسرعة، وأسقط اثنين من خصومه ذوي الأردية الطويلة بقبضتيه وركلات قوية، ثم اندفع خارج المعبد بأقصى ما تستطيع ساقاه، ولم ينجُ من الكاهن الثالث إلا بالاندساس بين حشود الشارع."
+    },
+    {
+      "index": 19,
+      "en": "At five minutes before eight, Passepartout, hatless, shoeless, and having in the squabble lost his package of shirts and shoes, rushed breathlessly into the station.",
+      "existingArabicDraft": "قبل الثامنة بخمس دقائق، اندفع باسبارتو إلى المحطة لاهثًا، بلا قبعة ولا حذاء، وقد فقد في الشجار أيضًا رزمة القمصان والأحذية التي اشتراها."
+    },
+    {
+      "index": 20,
+      "en": "Fix, who had followed Mr. Fogg to the station, and saw that he was really going to leave Bombay, was there, upon the platform. He had resolved to follow the supposed robber to Calcutta, and farther, if necessary. Passepartout did not observe the detective, who stood in an obscure corner; but Fix heard him relate his adventures in a few words to Mr. Fogg.",
+      "existingArabicDraft": "كان فيكس على الرصيف بعدما تبع السيد فوغ إلى المحطة ورآه يستعد فعلًا لمغادرة بومباي. وقد عزم على ملاحقة اللص المزعوم إلى كلكتا وما بعدها إن لزم الأمر. لم يلحظ باسبارتو المحقق الواقف في زاوية معتمة، لكن فيكس سمعه يروي مغامرته لسيده باختصار."
+    },
+    {
+      "index": 21,
+      "en": "“I hope that this will not happen again,” said Phileas Fogg coldly, as he got into the train. Poor Passepartout, quite crestfallen, followed his master without a word. Fix was on the point of entering another carriage, when an idea struck him which induced him to alter his plan.",
+      "existingArabicDraft": "قال فيلياس فوغ ببرود وهو يصعد إلى القطار: «آمل ألا يتكرر هذا الأمر». تبعه باسبارتو المسكين مطأطئ الرأس ومن دون كلمة. وكان فيكس على وشك دخول عربة أخرى حين خطرت له فكرة جعلته يغيّر خطته."
+    },
+    {
+      "index": 22,
+      "en": "“No, I’ll stay,” muttered he. “An offence has been committed on Indian soil. I’ve got my man.”",
+      "existingArabicDraft": "تمتم فيكس: «لا، سأبقى. لقد ارتُكبت مخالفة على أرض الهند. لقد ظفرت بالرجل»."
+    },
+    {
+      "index": 23,
+      "en": "Just then the locomotive gave a sharp screech, and the train passed out into the darkness of the night.",
+      "existingArabicDraft": "وفي تلك اللحظة أطلق القاطرة صفيرًا حادًا، وانطلق القطار مبتعدًا في ظلام الليل."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "اشترى حصته المعتادة من القمصان والأحذية، ثم خرج يتمشى على مهل في الشوارع المكتظة بأناس من جنسيات شتى: أوروبيين وفرس بقبعات مدببة، وبانيا بعمائم مستديرة، وسنديين بقبعات مربعة، وبارسيين بعمائم سوداء، وأرمنيين يرتدون أردية طويلة. وصادف أن ذلك اليوم كان عيدًا للبارسيين، أحفاد أتباع زرادشت، المعروفين بالاقتصاد والتمدن والذكاء والتقشف، ومن بينهم أغنى تجار بومباي المحليين. كانوا يحتفلون بما يشبه مهرجانًا دينيًا، تتخلله المواكب والعروض، وترقص فيه فتيات هنديات بملابس من الشيفون الوردي الموشى بالذهب والفضة بخفة واحتشام على أنغام آلات وترية وقرع الدفوف. ولا حاجة إلى القول إن باسبارتو راقب هذه الطقوس بعينين جاحظتين وفم فاغر، كأنه أبسط الناس سذاجة."
+    },
+    {
+      "index": 1,
+      "ar": "ولسوء حظ سيده وحظه هو أيضًا، قادته فضوليته من حيث لا يدري إلى أبعد مما قصد. وبعد أن شاهد موكب عيد البارسيين يبتعد في الأفق، كان عائدًا نحو المحطة حين لمح المعبد الفخم على تل مالابار، فاستولى عليه شوق لا يقاوم لرؤية داخله. ولم يكن يعلم أن دخول بعض المعابد الهندية محظور على المسيحيين، وأن حتى المؤمنين بها عليهم خلع أحذيتهم عند الباب. ويُذكر هنا أن الحكومة البريطانية كانت تعاقب بشدة على مخالفة شعائر الأديان المحلية."
+    },
+    {
+      "index": 2,
+      "ar": "دخل باسبارتو، من غير أن يقصد إساءة، كما يدخل سائح بسيط، وأخذ يتأمل الزخارف البراهمانية البديعة حوله، فإذا به يسقط فجأة على أرضية المعبد المقدسة. رفع رأسه فرأى ثلاثة كهنة غاضبين انقضوا عليه، فانتزعوا حذاءيه وراحوا يضربونه وسط صيحات عنيفة. نهض الفرنسي الخفيف بسرعة، وأسقط اثنين من خصومه ذوي الأردية الطويلة بقبضتيه وركلات قوية، ثم اندفع خارج المعبد بأقصى ما تستطيع ساقاه، ولم ينجُ من الكاهن الثالث إلا بالاندساس بين حشود الشارع."
+    },
+    {
+      "index": 3,
+      "ar": "قبل الثامنة بخمس دقائق، اندفع باسبارتو إلى المحطة لاهثًا، بلا قبعة ولا حذاء، وقد فقد في الشجار أيضًا رزمة القمصان والأحذية التي اشتراها."
+    },
+    {
+      "index": 4,
+      "ar": "كان فيكس على الرصيف بعدما تبع السيد فوغ إلى المحطة ورآه يستعد فعلًا لمغادرة بومباي. وقد عزم على ملاحقة اللص المزعوم إلى كلكتا وما بعدها إن لزم الأمر. لم يلحظ باسبارتو المحقق الواقف في زاوية معتمة، لكن فيكس سمعه يروي مغامرته لسيده باختصار."
+    },
+    {
+      "index": 5,
+      "ar": "قال فيلياس فوغ ببرود وهو يصعد إلى القطار: «آمل ألا يتكرر هذا الأمر». تبعه باسبارتو المسكين مطأطئ الرأس ومن دون كلمة. وكان فيكس على وشك دخول عربة أخرى حين خطرت له فكرة جعلته يغيّر خطته."
+    },
+    {
+      "index": 6,
+      "ar": "تمتم فيكس: «لا، سأبقى. لقد ارتُكبت مخالفة على أرض الهند. لقد ظفرت بالرجل»."
+    },
+    {
+      "index": 7,
+      "ar": "وفي تلك اللحظة أطلقت القاطرة صفيرًا حادًا، وانطلق القطار مبتعدًا في ظلام الليل."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

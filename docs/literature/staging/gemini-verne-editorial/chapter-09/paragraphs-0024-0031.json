@@ -1,0 +1,117 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 9,
+  "chapterTitle": "In which the Red Sea and the Indian Ocean prove propitious to the designs of Phileas Fogg.",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 6,
+  "sourceSha256": "1c98dd1e17065ca0701800813fde3d9b2f53a445ba7d52b92d79a3232afa9476",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "Meanwhile the Mongolia was pushing forward rapidly; on the 13th, Mocha, surrounded by its ruined walls whereon date-trees were growing, was sighted, and on the mountains beyond were espied vast coffee-fields. Passepartout was ravished to behold this celebrated place, and thought that, with its circular walls and dismantled fort, it looked like an immense coffee-cup and saucer. The following night they passed through the Strait of Bab-el-Mandeb, which means in Arabic The Bridge of Tears, and the next day they put in at Steamer Point, northwest of Aden harbour, to take in coal. This matter of fuelling steamers is a serious one at such distances from the coalmines; it costs the Peninsular Company some eight hundred thousand pounds a year. In these distant seas, coal is worth three or four pounds sterling a ton.",
+      "existingArabicDraft": "في هذه الأثناء، واصلت منغوليا تقدمها السريع. وفي اليوم الثالث عشر، ظهرت المخا، تحيط بها أسوار متهدمة تنمو فوقها أشجار النخيل، وبدت وراءها حقول واسعة للقهوة على الجبال. ابتهج باسبارتو برؤية هذه المدينة الشهيرة، وظن أن أسوارها الدائرية وحصنها المتهدم يشبهان فنجان قهوة وصحنًا هائلين. وفي الليلة التالية عبروا مضيق باب المندب، الذي يعني اسمه بالعربية «جسر الدموع»، ثم توقفت السفينة في اليوم التالي عند ستيـمر بوينت، شمال غربي ميناء عدن، للتزود بالفحم. وكان تموين البواخر بالوقود في هذه المسافات البعيدة عن مناجم الفحم أمرًا مكلفًا؛ إذ يكلف شركة شبه الجزيرة نحو ثمانمئة ألف جنيه سنويًا، ويبلغ ثمن طن الفحم في تلك البحار النائية ثلاثة أو أربعة جنيهات إسترلينية."
+    },
+    {
+      "index": 25,
+      "en": "The Mongolia had still sixteen hundred and fifty miles to traverse before reaching Bombay, and was obliged to remain four hours at Steamer Point to coal up. But this delay, as it was foreseen, did not affect Phileas Fogg’s programme; besides, the Mongolia, instead of reaching Aden on the morning of the 15th, when she was due, arrived there on the evening of the 14th, a gain of fifteen hours.",
+      "existingArabicDraft": "كان لا يزال على منغوليا قطع ألف وستمئة وخمسين ميلًا قبل بلوغ بومباي، وكان عليها البقاء أربع ساعات في ستيـمر بوينت لتعبئة الفحم. لكن هذا التأخير، كما كان متوقعًا، لم يؤثر في برنامج فوغ؛ بل إن منغوليا وصلت عدن مساء الرابع عشر بدل صباح الخامس عشر، موعد وصولها المقرر، فربحت خمس عشرة ساعة."
+    },
+    {
+      "index": 26,
+      "en": "Mr. Fogg and his servant went ashore at Aden to have the passport again visaed; Fix, unobserved, followed them. The visa procured, Mr. Fogg returned on board to resume his former habits; while Passepartout, according to custom, sauntered about among the mixed population of Somalis, Banyans, Parsees, Jews, Arabs, and Europeans who comprise the twenty-five thousand inhabitants of Aden. He gazed with wonder upon the fortifications which make this place the Gibraltar of the Indian Ocean, and the vast cisterns where the English engineers were still at work, two thousand years after the engineers of Solomon.",
+      "existingArabicDraft": "نزل السيد فوغ وخادمه إلى عدن لتجديد ختم التأشيرة على جوازيهما، وتبعهما فيكس دون أن يلحظاه. وبعد إتمام التأشيرة، عاد فوغ إلى السفينة ليستأنف عاداته المعتادة، بينما تجول باسبارتو كعادته بين السكان المتنوعين في عدن: الصوماليين والبانيان والبارسيين واليهود والعرب والأوروبيين، الذين بلغ عددهم نحو خمسة وعشرين ألفًا. وتأمل بدهشة التحصينات التي جعلت من عدن «جبل طارق المحيط الهندي»، والخزانات المائية الضخمة التي ظل المهندسون الإنجليز يعملون فيها، بعد ألفي سنة من أعمال مهندسي سليمان."
+    },
+    {
+      "index": 27,
+      "en": "“Very curious, very curious,” said Passepartout to himself, on returning to the steamer. “I see that it is by no means useless to travel, if a man wants to see something new.” At six p.m. the Mongolia slowly moved out of the roadstead, and was soon once more on the Indian Ocean. She had a hundred and sixty-eight hours in which to reach Bombay, and the sea was favourable, the wind being in the northwest, and all sails aiding the engine. The steamer rolled but little, the ladies, in fresh toilets, reappeared on deck, and the singing and dancing were resumed. The trip was being accomplished most successfully, and Passepartout was enchanted with the congenial companion which chance had secured him in the person of the delightful Fix. On Sunday, October 20th, towards noon, they came in sight of the Indian coast: two hours later the pilot came on board. A range of hills lay against the sky in the horizon, and soon the rows of palms which adorn Bombay came distinctly into view. The steamer entered the road formed by the islands in the bay, and at half-past four she hauled up at the quays of Bombay.",
+      "existingArabicDraft": "قال باسبارتو لنفسه وهو يعود إلى الباخرة: «عجيب، عجيب! أرى أن السفر ليس بلا فائدة على الإطلاق لمن يريد أن يرى شيئًا جديدًا». وعند السادسة مساءً، خرجت منغوليا ببطء من المرسى، وسرعان ما عادت إلى المحيط الهندي. كان أمامها مئة وثماني وستون ساعة للوصول إلى بومباي، وكان البحر مواتيًا والريح شمالية غربية، والأشرعة كلها تساعد المحرك. لم تتمايل الباخرة إلا قليلًا، فعادت السيدات إلى السطح بملابس جديدة، واستؤنف الغناء والرقص. كانت الرحلة تسير بأفضل صورة، وكان باسبارتو مسرورًا برفيقه اللطيف الذي جمعته به المصادفة، أي فيكس. وفي يوم الأحد، العشرين من أكتوبر، ظهر الساحل الهندي قرابة الظهر؛ وبعد ساعتين صعد المرشد البحري إلى السفينة. وارتفعت سلسلة من التلال على الأفق، ثم ظهرت بوضوح صفوف النخيل التي تزيّن بومباي. ودخلت الباخرة الممر الذي تشكله الجزر في الخليج، ورست عند أرصفة بومباي في الرابعة والنصف."
+    },
+    {
+      "index": 28,
+      "en": "Phileas Fogg was in the act of finishing the thirty-third rubber of the voyage, and his partner and himself having, by a bold stroke, captured all thirteen of the tricks, concluded this fine campaign with a brilliant victory.",
+      "existingArabicDraft": "كان فيلياس فوغ منهمكًا في إنهاء الجولة الثالثة والثلاثين من لعبة الوست في الرحلة. وبفضل حركة جريئة، فاز هو وشريكه باللفات الثلاث عشرة كلها، واختتما هذه المباراة بانتصار باهر."
+    },
+    {
+      "index": 29,
+      "en": "The Mongolia was due at Bombay on the 22nd; she arrived on the 20th. This was a gain to Phileas Fogg of two days since his departure from London, and he calmly entered the fact in the itinerary, in the column of gains.",
+      "existingArabicDraft": "كان من المقرر أن تصل منغوليا إلى بومباي في الثاني والعشرين، لكنها وصلت في العشرين. وهكذا كسب فوغ يومين منذ مغادرته لندن، وسجّل ذلك بهدوء في جدول الرحلة، في خانة المكاسب."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "في هذه الأثناء، واصلت الباخرة منغوليا تقدمها السريع؛ وفي اليوم الثالث عشر، ظهرت مدينة المخا، تحيط بها أسوارها المتهدمة التي تنمو فوقها أشجار النخيل، وبدت على الجبال الواقعة وراءها حقول واسعة للقهوة. ابتهج باسبارتو برؤية هذا المكان الشهير، وظن أنه، بأسفاره الدائرية وحصنه المتهدم، يبدو كفنجان قهوة وصحن هائلين. وفي الليلة التالية، عبروا مضيق باب المندب، الذي يعني اسمه بالعربية جسر الدموع، وفي اليوم التالي توقفت الباخرة في ستيـمر بوينت، إلى الشمال الغربي من ميناء عدن، لتعبئة الفحم. إن أمر تموين البواخر بالوقود هذا يُعدّ مسألة بالغة الأهمية على مثل هذه المسافات البعيدة عن مناجم الفحم؛ فهو يكلف شركة شبه الجزيرة نحو ثمانمئة ألف جنيه سنويًا. وفي هذه البحار النائية، يبلغ ثمن طن الفحم ثلاثة أو أربعة جنيهات إسترلينية."
+    },
+    {
+      "index": 1,
+      "ar": "كان لا يزال على الباخرة منغوليا أن تقطع ألف وستمئة وخمسين ميلًا قبل بلوغ بومباي، وكان عليها البقاء أربع ساعات في ستيـمر بوينت لتعبئة الفحم. ولكن هذا التأخير، كما كان متوقعًا، لم يؤثر على برنامج فيلياس فوغ؛ وعلاوة على ذلك، فإن منغوليا، بدلًا من الوصول إلى عدن في صباح اليوم الخامس عشر وهو موعدها المقرر، وصلت هناك في مساء اليوم الرابع عشر، محققة ربحًا قدره خمس عشرة ساعة."
+    },
+    {
+      "index": 2,
+      "ar": "نزل السيد فوغ وخادمه إلى البر في عدن لتجديد ختم جواز السفر؛ وتبعهما فيكس دون أن يلحظه أحد. وبعد الحصول على التأشيرة، عاد السيد فوغ إلى ظهر السفينة ليستأنف عاداته السابقة؛ بينما تجول باسبارتو، وفقًا لعادته، بين السكان المختلطين من الصوماليين، والبانيان، والبارسيين، واليهود، والعرب، والأوروبيين، الذين يمثلون السكان البالغ عددهم خمسة وعشرين ألف نسمة في عدن. وتأمل بدهشة التحصينات التي تجعل من هذا المكان جبل طارق المحيط الهندي، والخزانات الواسعة حيث كان المهندسون الإنجليز ما زالوا يعملون، بعد ألفي عام من مهندسي سليمان."
+    },
+    {
+      "index": 3,
+      "ar": "قال باسبارتو لنفسه وهو يعود إلى الباخرة: «أمر عجيب حقًا، أمر عجيب». «أرى أنه ليس عبثًا على الإطلاق أن يسافر المرء، إذا أراد أن يرى شيئًا جديدًا». وفي تمام الساعة السادسة مساءً، خرجت منغوليا ببطء من المرسى، وسرعان ما وجدت نفسها مرة أخرى في المحيط الهندي. كان أمامها مئة وثماني وستون ساعة للوصول إلى بومباي، وكان البحر مواتيًا، إذ كانت الريح شمالية غربية، وساعدت جميع الأشرعة المحرك. لم تتمايل الباخرة إلا قليلًا، فعادت السيدات، بملابسهن الجديدة، للظهور على السطح، واستُأنف الغناء والرقص. كانت الرحلة تسري بنجاح تام، وكان باسبارتو مسرورًا بالرفيق اللطيف الذي وفّرته له المصادفة في شخص فيكس البديع. وفي يوم الأحد، العشرين من أكتوبر، قارب الظهر، لوح في الأفق الساحل الهندي؛ وبعد ساعتين صعد المرشد البحري إلى السفينة. وارتسمت سلسلة من التلال على صفحة السماء في الأفق، وسرعان ما ظهرت بوضوح صفوف النخيل التي تزيّن بومباي. ودخلت الباخرة المرسى الذي تشفره الجزر في الخليج، وفي تمام الساعة الرابعة والنصف رست عند أرصفة بومباي."
+    },
+    {
+      "index": 4,
+      "ar": "كان فيلياس فوغ على وشك الانتهاء من الجولة الثالثة والثلاثين من لعبة الوست في الرحلة، وبعد أن نجح هو وشريكه، بضربة جريئة، في الفوز بالأوراق الثلاث عشرة كلها، اختتما هذه الحملة الرائعة بانتصار باهر."
+    },
+    {
+      "index": 5,
+      "ar": "كان من المقرر أن تصل منغوليا إلى بومباي في الثاني والعشرين؛ لكنها وصلت في العشرين. وقد مثّل هذا لفيلياس فوغ ربحًا مدته يومان منذ مغادرته لندن، فسجّل ذلك بهدوء في جدول الرحلة، ضمن خانة المكاسب."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": false,
+      "issues": "خطأ في الترجمة: كلمة 'walls' ترجمت إلى 'أسفار' بدلاً من 'أسوار' في عبارة 'بأسفاره الدائرية'."
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": false,
+      "issues": "خطأ في الترجمة: كلمة 'formed' ترجمت خطأً إلى 'تشفره' بدلاً من 'تكونه' أو 'تشكله' في عبارة 'المرسى الذي تشفره الجزر'."
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

@@ -1,0 +1,145 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 9,
+  "chapterTitle": "In which the Red Sea and the Indian Ocean prove propitious to the designs of Phileas Fogg.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "8678668d0857b10af59ee6807f0acb43be5fe47cb97055c2e4f8bd78bcba19f3",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "“Monsieur Fix,” resumed Passepartout, “I’m charmed to find you on board. Where are you bound?”",
+      "existingArabicDraft": "استأنف باسبارتو: «السيد فيكس، يسعدني أن أجدك على متن السفينة. إلى أين أنت ذاهب؟»"
+    },
+    {
+      "index": 9,
+      "en": "“Like you, to Bombay.”",
+      "existingArabicDraft": "«إلى بومباي مثلك»"
+    },
+    {
+      "index": 10,
+      "en": "“That’s capital! Have you made this trip before?”",
+      "existingArabicDraft": "«رائع! هل قمت بهذه الرحلة من قبل؟»"
+    },
+    {
+      "index": 11,
+      "en": "“Several times. I am one of the agents of the Peninsular Company.”",
+      "existingArabicDraft": "«عدة مرات. أنا أحد وكلاء شركة شبه الجزيرة»"
+    },
+    {
+      "index": 12,
+      "en": "“Then you know India?”",
+      "existingArabicDraft": "«إذن أنت تعرف الهند؟»"
+    },
+    {
+      "index": 13,
+      "en": "“Why yes,” replied Fix, who spoke cautiously.",
+      "existingArabicDraft": "أجاب فيكس بحذر: «نعم، بالطبع»"
+    },
+    {
+      "index": 14,
+      "en": "“A curious place, this India?”",
+      "existingArabicDraft": "«وهل الهند مكان عجيب؟»"
+    },
+    {
+      "index": 15,
+      "en": "“Oh, very curious. Mosques, minarets, temples, fakirs, pagodas, tigers, snakes, elephants! I hope you will have ample time to see the sights.”",
+      "existingArabicDraft": "«عجيب جدًا! مساجد ومآذن ومعابد وفقهاء متجولون ومعابد بوذية ونمور وثعابين وفيلة! آمل أن يتاح لك وقت وافٍ لمشاهدة المعالم»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«السيد فيكس،» استأنف باسبارتو قائلاً: «يسعدني حقاً أن أجدك على متن هذه السفينة. إلى أين أنت متوجه؟»"
+    },
+    {
+      "index": 1,
+      "ar": "«مثلما أنت متوجه، إلى بومباي.»"
+    },
+    {
+      "index": 2,
+      "ar": "«هذا رائع حقاً! هل قمت بهذه الرحلة من قبل؟»"
+    },
+    {
+      "index": 3,
+      "ar": "«عدة مرات. أنا أحد وكلاء شركة شبه الجزيرة.»"
+    },
+    {
+      "index": 4,
+      "ar": "«إذن أنت تعرف الهند؟»"
+    },
+    {
+      "index": 5,
+      "ar": "«أجل، بالطبع،» أجاب فيكس الذي كان يتحدث بحذر."
+    },
+    {
+      "index": 6,
+      "ar": "«وهل هي مكان عجيب، هذه الهند؟»"
+    },
+    {
+      "index": 7,
+      "ar": "«أوه، عجيبة للغاية! مساجد ومآذن ومعابد ونسّاك ومعابد وثنية ونمور وثعابين وفيلة! آمل أن يحالفك الحظ بوقت كافٍ لمشاهدة معالمها.»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "الترجمة الحرفية جعلت الجملة ركيكة مقارنة بالاصل"
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

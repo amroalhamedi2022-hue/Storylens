@@ -1,0 +1,146 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 10,
+  "chapterTitle": "In which Passepartout is only too glad to get off with the loss of his shoes.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "42bc48482ab8cf5982f66c8e0bcac68a46374e2d5f6996f5894831a1bbef6aa6",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "Everybody knows that the great reversed triangle of land, with its base in the north and its apex in the south, which is called India, embraces fourteen hundred thousand square miles, upon which is spread unequally a population of one hundred and eighty millions of souls. The British Crown exercises a real and despotic dominion over the larger portion of this vast country, and has a governor-general stationed at Calcutta, governors at Madras, Bombay, and in Bengal, and a lieutenant-governor at Agra.",
+      "existingArabicDraft": "يعرف الجميع أن الهند، تلك الأرض التي تشبه مثلثًا مقلوبًا قاعدته في الشمال ورأسه في الجنوب، تمتد على مليون وأربعمئة ألف ميل مربع، ويتوزع عليها نحو مئة وثمانين مليون نسمة. ويمارس التاج البريطاني سيطرة فعلية مستبدة على القسم الأكبر من هذا البلد الشاسع؛ إذ يقيم الحاكم العام في كلكتا، وحكام في مدراس وبومباي والبنغال، ونائب حاكم في أغرا."
+    },
+    {
+      "index": 1,
+      "en": "But British India, properly so called, only embraces seven hundred thousand square miles, and a population of from one hundred to one hundred and ten millions of inhabitants. A considerable portion of India is still free from British authority; and there are certain ferocious rajahs in the interior who are absolutely independent. The celebrated East India Company was all-powerful from 1756, when the English first gained a foothold on the spot where now stands the city of Madras, down to the time of the great Sepoy insurrection. It gradually annexed province after province, purchasing them of the native chiefs, whom it seldom paid, and appointed the governor-general and his subordinates, civil and military. But the East India Company has now passed away, leaving the British possessions in India directly under the control of the Crown. The aspect of the country, as well as the manners and distinctions of race, is daily changing.",
+      "existingArabicDraft": "أما الهند البريطانية بالمعنى الدقيق، فلا تشمل سوى سبعمئة ألف ميل مربع، ويبلغ سكانها ما بين مئة ومئة وعشرة ملايين. وما زالت أجزاء معتبرة من الهند خارج السلطة البريطانية، وفي الداخل ملوك راج مستقلون تمام الاستقلال. وكانت شركة الهند الشرقية صاحبة النفوذ الأكبر منذ عام 1756، حين وطئ الإنجليز أول موطئ قدم في موقع مدراس الحالية، حتى انتفاضة السيبوي الكبرى. ثم ضمت الأقاليم واحدًا بعد آخر، واشترتها من الزعماء المحليين الذين نادرًا ما دفعت لهم، وعيّنت الحاكم العام ومرؤوسيه المدنيين والعسكريين. لكن الشركة زالت، وأصبحت الممتلكات البريطانية في الهند خاضعة مباشرة للتاج؛ فيما تتغير صورة البلاد وعادات سكانها والفوارق بين جماعاتها يومًا بعد يوم."
+    },
+    {
+      "index": 2,
+      "en": "Formerly one was obliged to travel in India by the old cumbrous methods of going on foot or on horseback, in palanquins or unwieldy coaches; now fast steamboats ply on the Indus and the Ganges, and a great railway, with branch lines joining the main line at many points on its route, traverses the peninsula from Bombay to Calcutta in three days. This railway does not run in a direct line across India. The distance between Bombay and Calcutta, as the bird flies, is only from one thousand to eleven hundred miles; but the deflections of the road increase this distance by more than a third.",
+      "existingArabicDraft": "كان السفر في الهند قديمًا يتطلب السير على الأقدام أو ركوب الخيل أو المحفات والعربات الثقيلة؛ أما الآن فتجوب البواخر السريعة نهري السند والغانج، ويعبر شبه القارة خط حديدي كبير يصل بين بومباي وكلكتا خلال ثلاثة أيام، وتتصل به خطوط فرعية في محطات كثيرة. غير أن السكة لا تسلك خطًا مستقيمًا. فالمسافة بين بومباي وكلكتا، كما يقطعها الطائر، لا تتجاوز ألفًا إلى ألف ومئة ميل، لكن تعرجات الطريق تزيدها بأكثر من الثلث."
+    },
+    {
+      "index": 3,
+      "en": "The general route of the Great Indian Peninsula Railway is as follows: Leaving Bombay, it passes through Salcette, crossing to the continent opposite Tannah, goes over the chain of the Western Ghauts, runs thence northeast as far as Burhampoor, skirts the nearly independent territory of Bundelcund, ascends to Allahabad, turns thence eastwardly, meeting the Ganges at Benares, then departs from the river a little, and, descending southeastward by Burdivan and the French town of Chandernagor, has its terminus at Calcutta.",
+      "existingArabicDraft": "ويسير خط سكة حديد شبه الجزيرة الهندية الكبير على النحو الآتي: يغادر بومباي مارًّا بسالسيت، ثم يعبر إلى البر المقابل لتانه، ويجتاز سلسلة الغات الغربية، ويتجه شمالًا شرقيًا حتى بورهمبور، ويلتف حول إقليم بوندلكند شبه المستقل، ثم يصعد إلى الله آباد ويتجه شرقًا حتى يلتقي الغانج في بنارس. وبعد أن يبتعد قليلًا عن النهر، يهبط جنوبًا شرقيًا عبر بردوان ومدينة شانديرناغور الفرنسية، لينتهي في كلكتا."
+    },
+    {
+      "index": 4,
+      "en": "The passengers of the Mongolia went ashore at half-past four p.m.; at exactly eight the train would start for Calcutta.",
+      "existingArabicDraft": "نزل ركاب منغوليا إلى البر عند الرابعة والنصف بعد الظهر؛ وكان موعد انطلاق القطار إلى كلكتا الثامنة تمامًا."
+    },
+    {
+      "index": 5,
+      "en": "Mr. Fogg, after bidding goodbye to his whist partners, left the steamer, gave his servant several errands to do, urged it upon him to be at the station promptly at eight, and, with his regular step, which beat to the second, like an astronomical clock, directed his steps to the passport office. As for the wonders of Bombay—its famous city hall, its splendid library, its forts and docks, its bazaars, mosques, synagogues, its Armenian churches, and the noble pagoda on Malabar Hill, with its two polygonal towers—he cared not a straw to see them. He would not deign to examine even the masterpieces of Elephanta, or the mysterious hypogea, concealed southeast from the docks, or those fine remains of Buddhist architecture, the Kanherian grottoes of the island of Salcette.",
+      "existingArabicDraft": "ودّع السيد فوغ شركاءه في لعبة الوست وغادر الباخرة، وكلّف خادمه بعدة مهمات وشدد عليه أن يكون في المحطة عند الثامنة بالضبط. ثم مضى بخطوات منتظمة تضبط الثواني كساعة فلكية، قاصدًا مكتب الجوازات. أما عجائب بومباي—من دار البلدية الشهيرة ومكتبتها الفخمة إلى الحصون والأرصفة والأسواق والمساجد والمعابد اليهودية والكنائس الأرمنية والمعبد المهيب على تل مالابار ذي برجيه المثمنين—فلم يكن يكترث لرؤيتها. ولم يتفضل حتى بزيارة روائع إليفانتا أو السراديب الغامضة جنوب شرقي الميناء، ولا كهوف كانهيري التي تضم بقايا معمار بوذي عريق."
+    },
+    {
+      "index": 6,
+      "en": "Having transacted his business at the passport office, Phileas Fogg repaired quietly to the railway station, where he ordered dinner. Among the dishes served up to him, the landlord especially recommended a certain giblet of “native rabbit,” on which he prided himself.",
+      "existingArabicDraft": "بعد أن أنهى معاملته في مكتب الجوازات، توجّه فيلياس فوغ بهدوء إلى محطة القطار وطلب العشاء. ومن بين الأطباق، أوصى صاحب المكان خصوصًا بطبق من أحشاء ما سماه «أرنبًا محليًا»، وكان يفخر به."
+    },
+    {
+      "index": 7,
+      "en": "Mr. Fogg accordingly tasted the dish, but, despite its spiced sauce, found it far from palatable. He rang for the landlord, and, on his appearance, said, fixing his clear eyes upon him, “Is this rabbit, sir?”",
+      "existingArabicDraft": "تذوّق السيد فوغ الطبق، لكنه وجده بعيدًا كل البعد عن الاستساغة رغم صلصته المتبلة. فطلب صاحب المكان، وحين حضر سأله وهو يثبّت عينيه الصافيتين عليه: «أهذا أرنب يا سيدي؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "يعرف الجميع أن الهند، تلك الأرض التي تشبه مثلثًا مقلوبًا قاعدته في الشمال ورأسه في الجنوب، تمتد على مليون وأربعمئة ألف ميل مربع، ويتوزع عليها نحو مئة وثمانين مليون نسمة. ويمارس التاج البريطاني سيطرة فعلية مستبدة على القسم الأكبر من هذا البلد الشاسع؛ إذ يقيم الحاكم العام في كلكتا، وحكام في مدراس وبومباي والبنغال، ونائب حاكم في أغرا."
+    },
+    {
+      "index": 1,
+      "ar": "أما الهند البريطانية بالمعنى الدقيق، فلا تشمل سوى سبعمئة ألف ميل مربع، ويبلغ سكانها ما بين مئة ومئة وعشرة ملايين. وما زالت أجزاء معتبرة من الهند خارج السلطة البريطانية، وفي الداخل ملوك راج مستقلون تمام الاستقلال. وكانت شركة الهند الشرقية صاحبة النفوذ الأكبر منذ عام 1756، حين وطئ الإنجليز أول موطئ قدم في موقع مدراس الحالية، حتى انتفاضة السيبوي الكبرى. ثم ضمت الأقاليم واحدًا بعد آخر، واشترتها من الزعماء المحليين الذين نادرًا ما دفعت لهم، وعيّنت الحاكم العام ومرؤوسيه المدنيين والعسكريين. لكن الشركة زالت، وأصبحت الممتلكات البريطانية في الهند خاضعة مباشرة للتاج؛ فيما تتغير صورة البلاد وعادات سكانها والفوارق بين جماعاتها يومًا بعد يوم."
+    },
+    {
+      "index": 2,
+      "ar": "كان السفر في الهند قديمًا يتطلب السير على الأقدام أو ركوب الخيل أو المحفات والعربات الثقيلة؛ أما الآن فتجوب البواخر السريعة نهري السند والغانج، ويعبر شبه القارة خط حديدي كبير يصل بين بومباي وكلكتا خلال ثلاثة أيام، وتتصل به خطوط فرعية في محطات كثيرة. غير أن السكة لا تسلك خطًا مستقيمًا. فالمسافة بين بومباي وكلكتا، كما يقطعها الطائر، لا تتجاوز ألفًا إلى ألف ومئة ميل، لكن تعرجات الطريق تزيدها بأكثر من الثلث."
+    },
+    {
+      "index": 3,
+      "ar": "ويسير خط سكة حديد شبه الجزيرة الهندية الكبير على النحو الآتي: يغادر بومباي مارًّا بسالسيت، ثم يعبر إلى البر المقابل لتانه، ويجتاز سلسلة الغات الغربية، ويتجه شمالًا شرقيًا حتى بورهمبور، ويلتف حول إقليم بوندلكند شبه المستقل، ثم يصعد إلى الله آباد ويتجه شرقًا حتى يلتقي الغانج في بنارس. وبعد أن يبتعد قليلًا عن النهر، يهبط جنوبًا شرقيًا عبر بردوان ومدينة شانديرناغور الفرنسية، لينتهي في كلكتا."
+    },
+    {
+      "index": 4,
+      "ar": "نزل ركاب منغوليا إلى البر عند الرابعة والنصف بعد الظهر؛ وكان موعد انطلاق القطار إلى كلكتا الثامنة تمامًا."
+    },
+    {
+      "index": 5,
+      "ar": "ودّع السيد فوغ شركاءه في لعبة الوست وغادر الباخرة، وكلّف خادمه بعدة مهمات وشدد عليه أن يكون في المحطة عند الثامنة بالضبط. ثم مضى بخطوات منتظمة تضبط الثواني كساعة فلكية، قاصدًا مكتب الجوازات. أما عجائب بومباي—من دار البلدية الشهيرة ومكتبتها الفخمة إلى الحصون والأرصفة والأسواق والمساجد والمعابد اليهودية والكنائس الأرمنية والمعبد المهيب على تل مالابار ذي برجيه المثمنين—فلم يكن يكترث لرؤيتها. ولم يتفضل حتى بزيارة روائع إليفانتا أو السراديب الغامضة جنوب شرقي الميناء، ولا كهوف كانهيري التي تضم بقايا معمار بوذي عريق."
+    },
+    {
+      "index": 6,
+      "ar": "بعد أن أنهى معاملته في مكتب الجوازات، توجّه فيلياس فوغ بهدوء إلى محطة القطار وطلب العشاء. ومن بين الأطباق، أوصى صاحب المكان خصوصًا بطبق من أحشاء ما سماه «أرنبًا محليًا»، وكان يفخر به."
+    },
+    {
+      "index": 7,
+      "ar": "تذوّق السيد فوغ الطبق، لكنه وجده بعيدًا كل البعد عن الاستساغة رغم صلصته المتبلة. فطلب صاحب المكان، وحين حضر سأله وهو يثبّت عينيه الصافيتين عليه: «أهذا أرنب يا سيدي؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

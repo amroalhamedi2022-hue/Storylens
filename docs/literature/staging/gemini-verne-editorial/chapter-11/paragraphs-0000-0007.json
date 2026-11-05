@@ -1,0 +1,147 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 11,
+  "chapterTitle": "In which Phileas Fogg secures a curious means of conveyance at a fabulous price.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "f381c5deafbc3d5fbc7dfd84579ff636074563bde77b64f7f6deb8f5ab2bc433",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The train had started punctually. Among the passengers were a number of officers, Government officials, and opium and indigo merchants, whose business called them to the eastern coast. Passepartout rode in the same carriage with his master, and a third passenger occupied a seat opposite to them. This was Sir Francis Cromarty, one of Mr. Fogg’s whist partners on the Mongolia, now on his way to join his corps at Benares. Sir Francis was a tall, fair man of fifty, who had greatly distinguished himself in the last Sepoy revolt. He made India his home, only paying brief visits to England at rare intervals; and was almost as familiar as a native with the customs, history, and character of India and its people. But Phileas Fogg, who was not travelling, but only describing a circumference, took no pains to inquire into these subjects; he was a solid body, traversing an orbit around the terrestrial globe, according to the laws of rational mechanics. He was at this moment calculating in his mind the number of hours spent since his departure from London, and, had it been in his nature to make a useless demonstration, would have rubbed his hands for satisfaction. Sir Francis Cromarty had observed the oddity of his travelling companion—although the only opportunity he had for studying him had been while he was dealing the cards, and between two rubbers—and questioned himself whether a human heart really beat beneath this cold exterior, and whether Phileas Fogg had any sense of the beauties of nature. The brigadier-general was free to mentally confess that, of all the eccentric persons he had ever met, none was comparable to this product of the exact sciences.",
+      "existingArabicDraft": "كان القطار قد انطلق في موعده. وبين الركاب ضباط وموظفو حكومة وتجار أفيون ونيلي قصدوا الساحل الشرقي لأعمالهم. ركب باسبارتو العربة نفسها مع سيده، وجلس قبالتهما مسافر ثالث هو السير فرانسيس كرومارتي، أحد شركاء فوغ في لعبة الوست على متن «منغوليا»، وكان في طريقه إلى فوجه في بنارس. كان فرانسيس طويلًا أشقر في الخمسين، وقد تميز في التمرد الهندي الأخير. اتخذ الهند موطنًا ولم يزر إنجلترا إلا نادرًا، فأصبح خبيرًا بعادات الهند وتاريخها وطباع أهلها. أما فوغ فلم يكن، في نظر الراوي، مسافرًا بقدر ما كان جسمًا يرسم دائرة حول الأرض وفق قوانين الميكانيكا العقلانية؛ لم يسأل عن البلاد، بل حسب الساعات منذ مغادرته لندن. ولاحظ فرانسيس غرابة رفيقه، الذي لم يدرسه إلا أثناء لعب الورق، وتساءل إن كان قلب بشري ينبض تحت مظهره البارد وإن كان يشعر بجمال الطبيعة. واعترف في نفسه أن هذا الرجل المحكوم بالدقة لا يشبه أي غريب أطوار عرفه من قبل."
+    },
+    {
+      "index": 1,
+      "en": "Phileas Fogg had not concealed from Sir Francis his design of going round the world, nor the circumstances under which he set out; and the general only saw in the wager a useless eccentricity and a lack of sound common sense. In the way this strange gentleman was going on, he would leave the world without having done any good to himself or anybody else.",
+      "existingArabicDraft": "لم يُخفِ فوغ على فرانسيس عزمه على الدوران حول العالم ولا ظروف انطلاقه؛ لكن الجنرال رأى في الرهان نزوة لا طائل منها وافتقارًا للحس السليم. وخشي أن يغادر هذا الرجل الدنيا من دون أن ينفع نفسه أو غيره."
+    },
+    {
+      "index": 2,
+      "en": "An hour after leaving Bombay the train had passed the viaducts and the Island of Salcette, and had got into the open country. At Callyan they reached the junction of the branch line which descends towards southeastern India by Kandallah and Pounah; and, passing Pauwell, they entered the defiles of the mountains, with their basalt bases, and their summits crowned with thick and verdant forests. Phileas Fogg and Sir Francis Cromarty exchanged a few words from time to time, and now Sir Francis, reviving the conversation, observed, “Some years ago, Mr. Fogg, you would have met with a delay at this point which would probably have lost you your wager.”",
+      "existingArabicDraft": "بعد ساعة من مغادرة بومباي، تجاوز القطار الجسور وجزيرة سالسيت إلى الريف المفتوح. وعند كاليان بلغ تقاطع الخط المتجه جنوب شرقي الهند عبر كاندالا وبونا، ثم مر بباويل ودخل الممرات الجبلية ذات القواعد البازلتية والقمم المغطاة بالغابات. تبادل فوغ وفرانسيس كلمات قليلة، ثم قال فرانسيس: «قبل سنوات يا سيد فوغ، كان تأخير هنا كفيلًا بإضاعة رهانك»."
+    },
+    {
+      "index": 3,
+      "en": "“How so, Sir Francis?”",
+      "existingArabicDraft": "«كيف ذلك يا سير فرانسيس؟»"
+    },
+    {
+      "index": 4,
+      "en": "“Because the railway stopped at the base of these mountains, which the passengers were obliged to cross in palanquins or on ponies to Kandallah, on the other side.”",
+      "existingArabicDraft": "«لأن السكة كانت تنتهي عند سفح الجبال، وكان على الركاب عبورها إلى كاندالا في الجهة الأخرى بمحفات أو على ظهور المهور»."
+    },
+    {
+      "index": 5,
+      "en": "“Such a delay would not have deranged my plans in the least,” said Mr. Fogg. “I have constantly foreseen the likelihood of certain obstacles.”",
+      "existingArabicDraft": "قال فوغ: «لم يكن هذا التأخير ليعطل خططي. لقد توقعت احتمال ظهور عقبات»."
+    },
+    {
+      "index": 6,
+      "en": "“But, Mr. Fogg,” pursued Sir Francis, “you run the risk of having some difficulty about this worthy fellow’s adventure at the pagoda.” Passepartout, his feet comfortably wrapped in his travelling-blanket, was sound asleep and did not dream that anybody was talking about him. “The Government is very severe upon that kind of offence. It takes particular care that the religious customs of the Indians should be respected, and if your servant were caught—”",
+      "existingArabicDraft": "قال فرانسيس: «قد تواجه مشكلة بسبب مغامرة خادمك في المعبد». كان باسبارتو نائمًا وقد لف قدميه ببطانية السفر، ولا يعلم أن الحديث يدور عنه. تابع فرانسيس: «الحكومة صارمة في هذه المخالفات، وتحرص على احترام العادات الدينية الهندية؛ فإذا قُبض على خادمك—»"
+    },
+    {
+      "index": 7,
+      "en": "“Very well, Sir Francis,” replied Mr. Fogg; “if he had been caught he would have been condemned and punished, and then would have quietly returned to Europe. I don’t see how this affair could have delayed his master.”",
+      "existingArabicDraft": "أجاب فوغ: «لو قُبض عليه لأُدين وعوقب، ثم عاد بهدوء إلى أوروبا. لا أرى كيف يؤخر ذلك سيده»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كان القطار قد انطلق في موعده بدقة. وكان من بين الركاب عدد من الضباط وموظفي الحكومة وتجار الأفيون والنيل، الذين كانت أعمالهم تدعوهم إلى الساحل الشرقي. ركب باسبارتو في العربة نفسها مع سيده، وشغل مسافر ثالث مقعداً في مواجهتهما. وكان هذا مسافراً هو السير فرانسيس كرومارتي، أحد شركاء السيد فوغ في لعبة الوست على متن السفينة «منغوليا»، والذي كان في طريقه الآن للالتحاق بفوجه في بنارس. كان السير فرانسيس رجلاً طويلاً ذا بشرة فاتحة في الخمسين من عمره، وقد أبدى شجاعة فائقة وتميزاً كبير في التمرد الأخير للسيبي. لقد اتخذ من الهند وطناً له، ولم يكن يزور إنجلترا إلا في زيارات قصيرة على فترات متباعدة؛ وكان ملماً تقريباً مثل ابن البلد بعادات الهند وتاريخها وطابع أهلها وشعبها. غير أن فيلياس فوغ، الذي لم يكن مسافراً بل كان يكتفي برسم محيط دائري، لم يبذل أي جهد للاستفسار عن هذه الموضوعات؛ فقد كان جسداً صلباً يجتاز مداراً حول الكرة الأرضية وفقاً لقوانين الميكانيكا العقلانية. وكان يحسب في عقله في هذه اللحظة عدد الساعات التي انقضت منذ مغادرته لندن، ولو كان في طبعه أن يقوم بتعبير عديم الفائدة عن شعوره، لفرك يديه ارتياباً وابتهاجاً بالرضا. وكان السير فرانسيس كرومارتي قد لاحظ غرابة رفيقه في السفر ـ على الرغم من أن الفرصة الوحيدة التي أتيحت له لدراسته كانت أثناء توزيع ورق اللعب، وبين شوطين ـ وتساءل عما إذا كان قلب بشري ينبض حقاً تحت هذا المظهر الخارجي البارد، وعما إذا كان لدى فيلياس فوغ أي إحساس بجمال الطبيعة. وكان العميد حراً في أن يعترف لنفسه ذهنياً بأنه من بين جميع الأشخاص غريبي الأطوار الذين قابلهم طوال حياته، لم يكن أي منهم يضاهي هذا المنتج للعلوم الدقيقة."
+    },
+    {
+      "index": 1,
+      "ar": "لم يُخفِ فيلياس فوغ عن السير فرانسيس خطته في الدوران حول العالم، ولا الظروف التي انطلق فيها؛ ولم يرَ الجنرال في الرهان سوى نزوة عديمة الفائدة وافتقاراً للحس السليم السليم. وبالطريقة التي كان يسير بها هذا السيد الغريب، فإنه سيترك العالم من دون أن يصنع أي خير لنفسه أو لأي شخص آخر."
+    },
+    {
+      "index": 2,
+      "ar": "بعد ساعة من مغادرة بومباي، كان القطار قد تجاوز الجسور وجزيرة سالسيت، ودخل إلى الريف المفتوح. وعند كاليان وصلوا إلى تقاطع الخط الفرعي الذي ينحدر نحو جنوب شرق الهند عبر كاندالا وبونا؛ ومروراً بباويل، دخلوا مضايق الجبال ذات القواعد البازلتية، والتي توجت قممها بغابات كثيفة وخضراء. تبادل فيلياس فوغ والسير فرانسيس كرومارتي بضع كلمات من حين لآخر، والآن قال السير فرانسيس، مستأنفاً الحديث: «قبل بضع سنوات يا سيد فوغ، كنت ستواجه تأخيراً في هذه النقطة كان من المحتمل جداً أن يجعلك تخسر رهأنك»."
+    },
+    {
+      "index": 3,
+      "ar": "«كيف ذلك يا سير فرانسيس؟»"
+    },
+    {
+      "index": 4,
+      "ar": "«لأن خط السكة الحديدية كان يتوقف عند قاعدة هذه الجبال، وكان على الركاب عبورها في محفات أو على ظهور المهور للوصول إلى كاندالا، على الجانب الآخر»."
+    },
+    {
+      "index": 5,
+      "ar": "«مثل هذا التأخير لم يكن ليُخلَّ بخططي على الإطلاق»، قال السيد فوغ. «لقد توقعت باستمرار احتمال وقوع عقبات معينة»."
+    },
+    {
+      "index": 6,
+      "ar": "«لكن يا سيد فوغ»، تابع السير فرانسيس، «أنت تخاطر بمواجهة بعض الصعوبة بخصوص مغامرة هذا الرفيق الطيب في المعبد». كان باسبارتو، وقد لُفَّت قدماه براحة في بطانية سفره، نائماً بعمق ولم يكن يخطر بباله أن أحداً يتحدث عنه. «إن الحكومة شديدة الصرامة للغاية تجاه هذا النوع من المخالفات. فهي تحرص بشكل خاص على احترام العادات الدينية للهنود، وإذا تم القبض على خادمك—»"
+    },
+    {
+      "index": 7,
+      "ar": "«حسناً جداً يا سير فرانسيس»، رد السيد فوغ؛ «لو تم القبض عليه لكان قد أُدين وعُوقب، ثم عاد بهدوء إلى أوروبا. لست أرى كيف كان يمكن لهذه القضية أن تأخر سيده»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": false,
+      "issues": "تمت ترجمة 'indigo' إلى 'النيل' خطأً بدلاً من 'النيلة' أو 'العُصْفُر'. وفي عبارة 'للتمرد الأخير للسيبي'، الأفضل 'تمرد السيبي (الجنود الهندوس)' أو 'ثورة السيبي'. وعبارة 'لفرك يديه ارتياباً وابتهاجاً بالرضا' غير دقيقة، فالأصل يعني فرك يديه ارتياحاً لا ارتياباً."
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "توجد تكرار غير عربي في عبارة 'الحس السليم السليم' حيث ترجمت كلمة 'common' و'sound' بشكل مكرر."
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "تمت ترجمة 'رهأنك' بخطأ إملائي (همزة متطرفة غير صائبة) والأصح 'رهانك'."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "توجد خطأ مطبعي في كلمة 'تأخر' والأصح 'تؤخر' (أن تؤخر سيده)."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

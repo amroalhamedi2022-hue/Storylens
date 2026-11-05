@@ -1,0 +1,145 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 9,
+  "chapterTitle": "In which the Red Sea and the Indian Ocean prove propitious to the designs of Phileas Fogg.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "b7d3ad0103b8a1a7285ef63ef10e9f52bd831e8d90a0302d035de13e733fb75f",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "“I hope so, Monsieur Fix. You see, a man of sound sense ought not to spend his life jumping from a steamer upon a railway train, and from a railway train upon a steamer again, pretending to make the tour of the world in eighty days! No; all these gymnastics, you may be sure, will cease at Bombay.”",
+      "existingArabicDraft": "قال باسبارتو: «آمل ذلك يا سيد فيكس. أتعلم، إن العاقل لا ينبغي أن يقضي حياته متنقلًا من باخرة إلى قطار، ومن قطار إلى باخرة أخرى، مدّعيًا أنه سيطوف العالم في ثمانين يومًا! لا، يمكنك أن تتأكد أن كل هذه الحركات البهلوانية ستنتهي في بومباي»"
+    },
+    {
+      "index": 17,
+      "en": "“And Mr. Fogg is getting on well?” asked Fix, in the most natural tone in the world.",
+      "existingArabicDraft": "سأل فيكس، بنبرة طبيعية تمامًا: «وهل تسير أمور السيد فوغ على ما يرام؟»"
+    },
+    {
+      "index": 18,
+      "en": "“Quite well, and I too. I eat like a famished ogre; it’s the sea air.”",
+      "existingArabicDraft": "«على خير ما يرام، وكذلك أنا. آكل كغول جائع؛ لا بد أن هواء البحر هو السبب»"
+    },
+    {
+      "index": 19,
+      "en": "“But I never see your master on deck.”",
+      "existingArabicDraft": "«لكنني لا أرى سيدك على السطح أبدًا»"
+    },
+    {
+      "index": 20,
+      "en": "“Never; he hasn’t the least curiosity.”",
+      "existingArabicDraft": "«أبدًا؛ فهو لا يملك أدنى فضول»"
+    },
+    {
+      "index": 21,
+      "en": "“Do you know, Mr. Passepartout, that this pretended tour in eighty days may conceal some secret errand—perhaps a diplomatic mission?”",
+      "existingArabicDraft": "«هل تعلم يا سيد باسبارتو أن هذه الجولة المزعومة في ثمانين يومًا قد تخفي مهمة سرية، ربما مهمة دبلوماسية؟»"
+    },
+    {
+      "index": 22,
+      "en": "“Faith, Monsieur Fix, I assure you I know nothing about it, nor would I give half a crown to find out.”",
+      "existingArabicDraft": "«أقسم لك يا سيد فيكس أنني لا أعرف شيئًا عن ذلك، ولا أدفع نصف كرونة لأكتشفه»"
+    },
+    {
+      "index": 23,
+      "en": "After this meeting, Passepartout and Fix got into the habit of chatting together, the latter making it a point to gain the worthy man’s confidence. He frequently offered him a glass of whiskey or pale ale in the steamer barroom, which Passepartout never failed to accept with graceful alacrity, mentally pronouncing Fix the best of good fellows.",
+      "existingArabicDraft": "بعد هذا اللقاء، اعتاد باسبارتو وفيكس التحدث معًا، وكان فيكس يتعمد كسب ثقة الرجل الطيب. وكثيرًا ما عرض عليه كأسًا من الويسكي أو الجعة الشاحبة في حانة السفينة، ولم يكن باسبارتو يرفض العرض قط، بل يقبله بحماس مهذب، ويقول في نفسه إن فيكس خير رفيق."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "قال باسبارتو: «آمل ذلك يا سيد فيكس. أتعلم، إن العاقل لا ينبغي أن يقضي حياته متنقلًا من باخرة إلى قطار، ومن قطار إلى باخرة أخرى، مدّعيًا أنه سيطوف العالم في ثمانين يومًا! لا، يمكنك أن تتأكد أن كل هذه الحركات البهلوانية ستنتهي في بومباي»"
+    },
+    {
+      "index": 1,
+      "ar": "سأل فيكس، بنبرة طبيعية تمامًا: «وهل تسير أمور السيد فوغ على ما يرام؟»"
+    },
+    {
+      "index": 2,
+      "ar": "«على خير ما يرام، وكذلك أنا. آكل كغول جائع؛ لا بد أن هواء البحر هو السبب»"
+    },
+    {
+      "index": 3,
+      "ar": "«لكنني لا أرى سيدك على السطح أبدًا»"
+    },
+    {
+      "index": 4,
+      "ar": "«أبدًا؛ فهو لا يملك أدنى فضول»"
+    },
+    {
+      "index": 5,
+      "ar": "«هل تعلم يا سيد باسبارتو أن هذه الجولة المزعومة في ثمانين يومًا قد تخفي مهمة سرية، ربما مهمة دبلوماسية؟»"
+    },
+    {
+      "index": 6,
+      "ar": "«أقسم لك يا سيد فيكس أنني لا أعرف شيئًا عن ذلك، ولا أدفع نصف كرونة لأكتشفه»"
+    },
+    {
+      "index": 7,
+      "ar": "بعد هذا اللقاء، اعتاد باسبارتو وفيكس التحدث معًا، وكان فيكس يتعمد كسب ثقة الرجل الطيب. وكثيرًا ما عرض عليه كأسًا من الويسكي أو الجعة الشاحبة في حانة السفينة، ولم يكن باسبارتو يرفض العرض قط، بل يقبله بحماس مهذب، ويقول في نفسه إن فيكس خير رفيق."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

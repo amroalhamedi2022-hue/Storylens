@@ -1,0 +1,145 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 9,
+  "chapterTitle": "In which the Red Sea and the Indian Ocean prove propitious to the designs of Phileas Fogg.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "7f7027cff26ff9952f0079cbed4f90c8042a7bedcd66cb72477932aa55046cf4",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The distance between Suez and Aden is precisely thirteen hundred and ten miles, and the regulations of the company allow the steamers one hundred and thirty-eight hours in which to traverse it. The Mongolia, thanks to the vigorous exertions of the engineer, seemed likely, so rapid was her speed, to reach her destination considerably within that time. The greater part of the passengers from Brindisi were bound for India some for Bombay, others for Calcutta by way of Bombay, the nearest route thither, now that a railway crosses the Indian peninsula. Among the passengers was a number of officials and military officers of various grades, the latter being either attached to the regular British forces or commanding the Sepoy troops, and receiving high salaries ever since the central government has assumed the powers of the East India Company: for the sublieutenants get 280 pounds, brigadiers, 2,400 pounds, and generals of divisions, 4,000 pounds. What with the military men, a number of rich young Englishmen on their travels, and the hospitable efforts of the purser, the time passed quickly on the Mongolia. The best of fare was spread upon the cabin tables at breakfast, lunch, dinner, and the eight o’clock supper, and the ladies scrupulously changed their toilets twice a day; and the hours were whirled away, when the sea was tranquil, with music, dancing, and games.",
+      "existingArabicDraft": "المسافة بين السويس وعدن تبلغ بالضبط ألفًا وثلاثمئة وعشرة أميال، وتمنح لوائح الشركة البواخر مئة وثمانيًا وثلاثين ساعة لقطعها. وبفضل الجهود الحثيثة للمهندس، بدا أن منغوليا، لسرعتها الكبيرة، ستصل إلى وجهتها قبل انقضاء هذه المدة بوقت معتبر. كان معظم الركاب القادمين من برينديزي متجهين إلى الهند؛ فمنهم من يقصد بومباي، ومنهم من يواصل إلى كلكتا عبر بومباي، وهو أقرب طريق منذ امتداد السكك الحديدية عبر شبه القارة الهندية. وكان بينهم موظفون وضباط عسكريون من رتب مختلفة، بعضهم في القوات البريطانية النظامية وبعضهم يقود قوات السيبوي، وقد ارتفعت رواتبهم منذ تولت الحكومة المركزية صلاحيات شركة الهند الشرقية: فالملازمون يحصلون على 280 جنيهًا، والعميد على 2,400، والجنرالات على 4,000. وبين العسكريين والشبان الإنجليز الأثرياء الذين يسافرون للمتعة، وجهود رئيس المضيفين في حسن الضيافة، مرّ الوقت سريعًا على منغوليا. وامتلأت موائد الصالون بأجود الطعام في الإفطار والغداء والعشاء ووجبة الثامنة مساءً، وكانت السيدات يبدّلن ملابسهن بعناية مرتين كل يوم؛ وحين يهدأ البحر، كانت الساعات تمضي بالموسيقى والرقص والألعاب."
+    },
+    {
+      "index": 1,
+      "en": "But the Red Sea is full of caprice, and often boisterous, like most long and narrow gulfs. When the wind came from the African or Asian coast the Mongolia, with her long hull, rolled fearfully. Then the ladies speedily disappeared below; the pianos were silent; singing and dancing suddenly ceased. Yet the good ship ploughed straight on, unretarded by wind or wave, towards the straits of Bab-el-Mandeb. What was Phileas Fogg doing all this time? It might be thought that, in his anxiety, he would be constantly watching the changes of the wind, the disorderly raging of the billows—every chance, in short, which might force the Mongolia to slacken her speed, and thus interrupt his journey. But, if he thought of these possibilities, he did not betray the fact by any outward sign.",
+      "existingArabicDraft": "لكن البحر الأحمر متقلب المزاج، وكثيرًا ما يهيج، شأنه شأن الخلجان الطويلة والضيقة. فإذا هبّت الرياح من الساحل الإفريقي أو الآسيوي، تمايل بدن منغوليا الطويل بعنف. عندها كانت السيدات يسرعن إلى الطوابق السفلى، وتصمت آلات البيانو ويتوقف الغناء والرقص فجأة. ومع ذلك، واصلت السفينة الجيدة شق طريقها بثبات نحو مضيق باب المندب، لا تعوقها الرياح ولا الأمواج. ماذا كان يفعل فيلياس فوغ طوال ذلك الوقت؟ قد يظن المرء أن قلقه سيدفعه إلى مراقبة تغير الرياح واضطراب الأمواج باستمرار، وكل ما قد يجبر منغوليا على إبطاء سرعتها ويعطل رحلته. لكنه، حتى لو فكّر في هذه الاحتمالات، لم يُظهر ذلك بأي علامة خارجية."
+    },
+    {
+      "index": 2,
+      "en": "Always the same impassible member of the Reform Club, whom no incident could surprise, as unvarying as the ship’s chronometers, and seldom having the curiosity even to go upon the deck, he passed through the memorable scenes of the Red Sea with cold indifference; did not care to recognise the historic towns and villages which, along its borders, raised their picturesque outlines against the sky; and betrayed no fear of the dangers of the Arabic Gulf, which the old historians always spoke of with horror, and upon which the ancient navigators never ventured without propitiating the gods by ample sacrifices. How did this eccentric personage pass his time on the Mongolia? He made his four hearty meals every day, regardless of the most persistent rolling and pitching on the part of the steamer; and he played whist indefatigably, for he had found partners as enthusiastic in the game as himself. A tax-collector, on the way to his post at Goa; the Rev. Decimus Smith, returning to his parish at Bombay; and a brigadier-general of the English army, who was about to rejoin his brigade at Benares, made up the party, and, with Mr. Fogg, played whist by the hour together in absorbing silence.",
+      "existingArabicDraft": "ظل فوغ عضو نادي الإصلاح نفسه، جامد الملامح لا يفاجئه حادث، وثابتًا كأجهزة قياس الوقت في السفينة، ونادرًا ما تدفعه الفضولية إلى الصعود للسطح. مرّ بمشاهد البحر الأحمر اللافتة بلامبالاة باردة؛ فلم يهتم بالتعرف إلى المدن والقرى التاريخية التي ارتفعت ملامحها الخلابة على امتداد الساحل، ولم يُبدِ خوفًا من أخطار الخليج العربي التي تحدث عنها المؤرخون القدماء برعب، وكان الملاحون الأوائل لا يخوضونها دون تقديم قرابين سخية للآلهة. وكيف أمضى هذا الرجل الغريب وقته على منغوليا؟ تناول أربع وجبات دسمة كل يوم، غير مكترث بتمايل السفينة واهتزازها المتواصل، ولعب الوست بلا كلل، إذ وجد شركاء يشاركونه حماسه للعبة. وكان رفاقه جابي ضرائب في طريقه إلى منصبه في غوا، والقس ديكيموس سميث العائد إلى رعيته في بومباي، وعميد في الجيش الإنجليزي متجه للالتحاق بلوائه في بنارس؛ وكانوا يلعبون مع السيد فوغ ساعات طويلة في صمت مستغرق."
+    },
+    {
+      "index": 3,
+      "en": "As for Passepartout, he, too, had escaped seasickness, and took his meals conscientiously in the forward cabin. He rather enjoyed the voyage, for he was well fed and well lodged, took a great interest in the scenes through which they were passing, and consoled himself with the delusion that his master’s whim would end at Bombay. He was pleased, on the day after leaving Suez, to find on deck the obliging person with whom he had walked and chatted on the quays.",
+      "existingArabicDraft": "أما باسبارتو، فقد نجا هو الآخر من دوار البحر، وكان يتناول وجباته بانتظام في المقصورة الأمامية. وقد استمتع بالرحلة إلى حد ما، إذ توفر له الطعام الجيد والمسكن المريح، وكان مهتمًا بالمشاهد التي يمرون بها، ويعزّي نفسه بوهم أن نزوة سيده ستنتهي في بومباي. وسرّ، في اليوم التالي لمغادرة السويس، حين رأى على السطح الرجل اللطيف الذي سار معه وتحدث إليه على الرصيف."
+    },
+    {
+      "index": 4,
+      "en": "“If I am not mistaken,” said he, approaching this person, with his most amiable smile, “you are the gentleman who so kindly volunteered to guide me at Suez?”",
+      "existingArabicDraft": "اقترب من الرجل بابتسامته الودودة وقال: «إن لم أكن مخطئًا، فأنت السيد الذي تكرّم بعرض إرشادي في السويس؟»"
+    },
+    {
+      "index": 5,
+      "en": "“Ah! I quite recognise you. You are the servant of the strange Englishman—”",
+      "existingArabicDraft": "قال الرجل: «آه، عرفتك تمامًا. أنت خادم الإنجليزي الغريب—»"
+    },
+    {
+      "index": 6,
+      "en": "“Just so, monsieur—”",
+      "existingArabicDraft": "«صحيح يا سيدي—»"
+    },
+    {
+      "index": 7,
+      "en": "“Fix.”",
+      "existingArabicDraft": "«فيكس»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "المسافة بين السويس وعدن تبلغ بالضبط ألفًا وثلاثمئة وعشرة أميال، وتمنح لوائح الشركة البواخر مئة وثمانيًا وثلاثين ساعة لقطعها. وبفضل الجهود الحثيثة للمهندس، بدا أن منغوليا، لسرعتها الكبيرة، ستصل إلى وجهتها قبل انقضاء هذه المدة بوقت معتبر. كان معظم الركاب القادمين من برينديزي متجهين إلى الهند؛ فمنهم من يقصد بومباي، ومنهم من يواصل إلى كلكتا عبر بومباي، وهو أقرب طريق منذ امتداد السكك الحديدية عبر شبه القارة الهندية. وكان بينهم موظفون وضباط عسكريون من رتب مختلفة، بعضهم في القوات البريطانية النظامية وبعضهم يقود قوات السيبوي، وقد ارتفعت رواتبهم منذ تولت الحكومة المركزية صلاحيات شركة الهند الشرقية: فالملازمون يحصلون على 280 جنيهًا، والعميد على 2,400، والجنرالات على 4,000. وبين العسكريين والشبان الإنجليز الأثرياء الذين يسافرون للمتعة، وجهود رئيس المضيفين في حسن الضيافة، مرّ الوقت سريعًا على منغوليا. وامتلأت موائد الصالون بأجود الطعام في الإفطار والغداء والعشاء ووجبة الثامنة مساءً، وكانت السيدات يبدّلن ملابسهن بعناية مرتين كل يوم؛ وحين يهدأ البحر، كانت الساعات تمضي بالموسيقى والرقص والألعاب."
+    },
+    {
+      "index": 1,
+      "ar": "لكن البحر الأحمر متقلب المزاج، وكثيرًا ما يهيج، شأنه شأن الخلجان الطويلة والضيقة. فإذا هبّت الرياح من الساحل الإفريقي أو الآسيوي، تمايل بدن منغوليا الطويل بعنف. عندها كانت السيدات يسرعن إلى الطوابق السفلى، وتصمت آلات البيانو ويتوقف الغناء والرقص فجأة. ومع ذلك، واصلت السفينة الجيدة شق طريقها بثبات نحو مضيق باب المندب، لا تعوقها الرياح ولا الأمواج. ماذا كان يفعل فيلياس فوغ طوال ذلك الوقت؟ قد يظن المرء أن قلقه سيدفعه إلى مراقبة تغير الرياح واضطراب الأمواج باستمرار، وكل ما قد يجبر منغوليا على إبطاء سرعتها ويعطل رحلته. لكنه، حتى لو فكّر في هذه الاحتمالات، لم يُظهر ذلك بأي علامة خارجية."
+    },
+    {
+      "index": 2,
+      "ar": "ظل فوغ عضو نادي الإصلاح نفسه، جامد الملامح لا يفاجئه حادث، وثابتًا كأجهزة قياس الوقت في السفينة، ونادرًا ما تدفعه الفضولية إلى الصعود للسطح. مرّ بمشاهد البحر الأحمر اللافتة بلامبالاة باردة؛ فلم يهتم بالتعرف إلى المدن والقرى التاريخية التي ارتفعت ملامحها الخلابة على امتداد الساحل، ولم يُبدِ خوفًا من أخطار الخليج العربي التي تحدث عنها المؤرخون القدماء برعب، وكان الملاحون الأوائل لا يخوضونها دون تقديم قرابين سخية للآلهة. وكيف أمضى هذا الرجل الغريب وقته على منغوليا؟ تناول أربع وجبات دسمة كل يوم، غير مكترث بتمايل السفينة واهتزازها المتواصل، ولعب الوست بلا كلل، إذ وجد شركاء يشاركونه حماسه للعبة. وكان رفاقه جابي ضرائب في طريقه إلى منصبه في غوا، والقس ديكيموس سميث العائد إلى رعيته في بومباي، وعميد في الجيش الإنجليزي متجه للالتحاق بلوائه في بنارس؛ وكانوا يلعبون مع السيد فوغ ساعات طويلة في صمت مستغرق."
+    },
+    {
+      "index": 3,
+      "ar": "أما باسبارتو، فقد نجا هو الآخر من دوار البحر، وكان يتناول وجباته بانتظام في المقصورة الأمامية. وقد استمتع بالرحلة إلى حد ما، إذ توفر له الطعام الجيد والمسكن المريح، وكان مهتمًا بالمشاهد التي يمرون بها، ويعزّي نفسه بوهم أن نزوة سيده ستنتهي في بومباي. وسرّ، في اليوم التالي لمغادرة السويس، حين رأى على السطح الرجل اللطيف الذي سار معه وتحدث إليه على الرصيف."
+    },
+    {
+      "index": 4,
+      "ar": "اقترب من الرجل بابتسامته الودودة وقال: «إن لم أكن مخطئًا، فأنت السيد الذي تكرّم بعرض إرشادي في السويس؟»"
+    },
+    {
+      "index": 5,
+      "ar": "قال الرجل: «آه، عرفتك تمامًا. أنت خادم الإنجليزي الغريب—»"
+    },
+    {
+      "index": 6,
+      "ar": "«صحيح يا سيدي—»"
+    },
+    {
+      "index": 7,
+      "ar": "«فيكس»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
