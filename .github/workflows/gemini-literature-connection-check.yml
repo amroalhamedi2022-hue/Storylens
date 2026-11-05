@@ -1,0 +1,43 @@
+name: Lingua Tales - Gemini connection check
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-gemini:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Verify secret availability without revealing it
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        shell: bash
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "::error::GEMINI_API_KEY is not accessible to this repository"
+            exit 1
+          fi
+          echo "GEMINI_API_KEY is available (value hidden)"
+      - name: Test Gemini API authentication (no story generation)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python - <<'PY'
+          import os, json, urllib.request, urllib.error
+          req = urllib.request.Request(
+              "https://generativelanguage.googleapis.com/v1beta/models",
+              headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]},
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=25) as response:
+                  data = json.load(response)
+                  print("Gemini API authentication OK; models returned:", len(data.get("models", [])))
+          except urllib.error.HTTPError as e:
+              print(f"Gemini API request failed with HTTP {e.code}; response suppressed to avoid secrets")
+              raise SystemExit(1)
+          except Exception as e:
+              print("Gemini connection failed:", type(e).__name__)
+              raise SystemExit(1)
+          PY

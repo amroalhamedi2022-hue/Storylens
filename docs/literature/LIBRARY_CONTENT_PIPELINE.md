@@ -1,3 +1,9 @@
+## New permanent chapter-card condition — 5 Nov 2026
+
+**Mandatory for old AND new sources:** one independently sourced, **unique local chapter thumbnail with SHA-256** per narrative chapter/section, with scene matching and original artist/edition/source/territorial rights plus Arabic/English alt; separate readable-title cover; distinct from in-prose art. Required for the other UI conversation's book → horizontally arranged ordered chapter cards → chapter reader. Never certify archival stock, reused covers or unreviewed public scans as complete chapter art. Canonical spec: `docs/literature/CHAPTER_IMAGE_CONTRACT.md`; live progress with per-book gaps: `docs/literature/CHAPTER_ART_PROGRESS.md`, machine JSON and `tools/report_chapter_art_progress.py`. This also includes the earlier five complete illustrated staged classics and ALL older books.
+
+---
+
 # Lingua Tales — Dedicated genuine-book & image workstream (4 November 2026)
 
 This content-only track owns full authentic pre-existing literary text, source/translation editions, copyrights and real period art provenance. The project's other threads own design/Wen Liquid Glass, gestures and platform. Always read `docs/handoffs/LINGUA_TALES_HANDOFF_CURRENT.md`, MASTER_PLAN, LIVE_STATUS and SOURCE_QUEUE before work.

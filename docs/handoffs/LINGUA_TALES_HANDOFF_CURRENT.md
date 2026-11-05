@@ -1,3 +1,16 @@
+# PRIORITY HANDOFF — chapter images per chapter, ALL historic books (5 Nov 2026)
+
+The user requested this requirement in ALL future conversations and in the persistent Library. **Read these files FIRST for content work:**
+- `docs/literature/CHAPTER_IMAGE_CONTRACT.md` — permanent rule: distinct sourced historical primary image for every actual chapter of every existing/new book, locally stored; extra in-prose art allowed but does not count until mapped. Cover + title separate.
+- `docs/literature/CHAPTER_ART_PROGRESS.md` and `CHAPTER_ART_PROGRESS.json` — dynamically generated report with per-book gaps. Automatic verification script `tools/report_chapter_art_progress.py`; GitHub Action `chapter-art-progress.yml` runs on content changes/daily.
+- `docs/literature/staging/verne-chapter-cards/chapter-image-map.json` — 37 correctly ordered chapter slots; nine existing chapter-scene local WebP candidates; 28 missing. As of the contract addition **0 of 37 thumbnails** have both final territory rights and human editorial release approval. Do not say 9 ready.
+
+**Previous works MUST also be backfilled**: The Moonstone; War of the Worlds; Treasure Island; Kidnapped; Black Arrow; Last of the Mohicans; Gilded Age; Sherlock novels; Dracula; Frankenstein; Lost World; Kalila; Arabian Nights and other staged/open PR sources. Five complete illustrated English sources and 450 stored historical art binaries already existed; map them to true chapter boundaries without counting their archive totals as cards. Source authoring, rights, subtitles, chapter image imports belong to content track; the separate reader/design track must only build the book → horizontally ordered image-backed chapters → tap opens a chapter UI based on the stable mapping, without touching source evidence.
+
+**Progress reporting rule:** after each meaningful content/images commit, refresh the SHA-verified coverage report; report per book true chapter count (or explicitly unverified), mapped local candidates, editorial/rights approved UI-ready chapter cards, missing and newly added real files/commits, open blockers. Update this handoff when an actual milestone changes; don't overwrite device/release/UI ownership checkpoints. ChatGPT literature automation must check the latest GitHub status and keep private Library handoff in sync when it has Library access; never promise automatically synchronized Library without a successful upload.
+
+---
+
 # Four new offline manuscript fonts workstream — CI pending
 
 

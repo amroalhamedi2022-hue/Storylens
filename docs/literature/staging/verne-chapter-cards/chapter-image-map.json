@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "sourceEdition": "George Makepeace Towle English translation (1873); original Jules Verne French (1872)",
+  "chapterCount": 37,
+  "releaseApproved": false,
+  "sourceStatus": "37-original-Towle-chapters; Arabic draft needs independent editorial review",
+  "chapterImagePolicy": "distinct_primary_original_period_art_per_chapter",
+  "chapterReadiness": "9_LOCAL_ART_CANDIDATES_NOT_YET_APPROVED__28_CHAPTERS_NO_PRIMARY_IMAGE",
+  "artProvenanceManifest": "docs/literature/HISTORIC_VERNES_ASSETS.json",
+  "chapters": [
+    {
+      "chapterOneBased": 1,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 2,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 3,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": {
+        "imagePath": "app/src/main/assets/art/verne-route-map-1872.webp",
+        "sha256": "242e8fb396e18157d9e17514505190fa81536a5db027f7a150befb955542258d",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_01.jpg",
+        "sourceEdition": "Jules Verne, period engraving 1872-1873; original plate/source attribution pending individual review",
+        "sceneAnchor": "Original printed route map for the journey timetable, chapter III",
+        "credit": "Original historical engraved illustration; see per-image provenance in docs/literature/HISTORIC_VERNES_ASSETS.json",
+        "license": "Wikimedia Commons Public Domain Mark 1.0; per-file scan, verify territorial use",
+        "rightsStatus": "PENDING_TERRITORIAL_REVIEW",
+        "altAr": "خريطة تاريخية لمسار رحلة فيلياس فوغ حول العالم",
+        "altEn": "Original printed route map for the journey timetable, chapter III",
+        "editoriallyApproved": false
+      }
+    },
+    {
+      "chapterOneBased": 4,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 5,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": {
+        "imagePath": "app/src/main/assets/art/verne-news-readers-1873.webp",
+        "sha256": "4fdd115a2eeb3aa528eb6684afa83f88b6d5e6c30d2408c60b468b8430aafec6",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14781086251).jpg",
+        "sourceEdition": "Jules Verne, period engraving 1872-1873; original plate/source attribution pending individual review",
+        "sceneAnchor": "London readers follow reports of Phileas Fogg's wager; Towle V, paragraph 2",
+        "credit": "Original historical engraved illustration; see per-image provenance in docs/literature/HISTORIC_VERNES_ASSETS.json",
+        "license": "1873 Boston original; Wikimedia Commons reviewed 'No known copyright restrictions'; territorial review pending",
+        "rightsStatus": "PENDING_TERRITORIAL_REVIEW",
+        "altAr": "قرّاء لندن يتابعون أخبار رهان فوغ على الرحلة حول العالم",
+        "altEn": "London readers follow reports of Phileas Fogg's wager; Towle V, paragraph 2",
+        "editoriallyApproved": false
+      }
+    },
+    {
+      "chapterOneBased": 6,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": {
+        "imagePath": "app/src/main/assets/art/verne-fix-watch-1873.webp",
+        "sha256": "7b6c96edbbe86d2294b573405d6c87d58b59dbd61264b72063e79a1d00d9ea27",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14597588318).jpg",
+        "sourceEdition": "Jules Verne, period engraving 1872-1873; original plate/source attribution pending individual review",
+        "sceneAnchor": "Detective Fix on watch for suspicious travellers; Towle VI, Suez surveillance paragraph index 25",
+        "credit": "Original historical engraved illustration; see per-image provenance in docs/literature/HISTORIC_VERNES_ASSETS.json",
+        "license": "1873 Boston/Osgood print; individual Commons scan says No known copyright restrictions; geographic release review still required",
+        "rightsStatus": "PENDING_TERRITORIAL_REVIEW",
+        "altAr": "المحقق فيكس يراقب وصول المسافرين في السويس",
+        "altEn": "Detective Fix on watch for suspicious travellers; Towle VI, Suez surveillance paragraph index 25",
+        "editoriallyApproved": false
+      }
+    },
+    {
+      "chapterOneBased": 7,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 8,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 9,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 10,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 11,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": {
+        "imagePath": "app/src/main/assets/art/verne-kiouni-1873.webp",
+        "sha256": "28c19c72487edb6b0b6d97e03a9dc6efd853a9dc77be15887cdc6db14994f85c",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14781095701).jpg",
+        "sourceEdition": "Jules Verne, period engraving 1872-1873; original plate/source attribution pending individual review",
+        "sceneAnchor": "Phileas Fogg and Passepartout meet Kiouni, the elephant, chapter XI",
+        "credit": "Original historical engraved illustration; see per-image provenance in docs/literature/HISTORIC_VERNES_ASSETS.json",
+        "license": "Wikimedia Commons Public Domain Mark 1.0; per-file scan, verify territorial use",
+        "rightsStatus": "PENDING_TERRITORIAL_REVIEW",
+        "altAr": "فيلياس فوغ وباسبارتو مع الفيل كيوني خلال الرحلة في الهند",
+        "altEn": "Phileas Fogg and Passepartout meet Kiouni, the elephant, chapter XI",
+        "editoriallyApproved": false
+      }
+    },
+    {
+      "chapterOneBased": 12,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 13,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 14,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 15,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": {
+        "imagePath": "app/src/main/assets/art/verne-calcutta-court-1873.webp",
+        "sha256": "287f2bb7e0e812dc71f5ef00742af9ea6046335fb66a3904c0b1dc206fdeed69",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14781888384).jpg",
+        "sourceEdition": "Jules Verne, period engraving 1872-1873; original plate/source attribution pending individual review",
+        "sceneAnchor": "Calcutta courtroom: Passepartout's abandoned shoes are presented as evidence, Towle XV",
+        "credit": "Original historical engraved illustration; see per-image provenance in docs/literature/HISTORIC_VERNES_ASSETS.json",
+        "license": "1873 Boston print; Commons: no known copyright restrictions (territorial clearance pending)",
+        "rightsStatus": "PENDING_TERRITORIAL_REVIEW",
+        "altAr": "جلسة المحكمة في كلكتا وعرض حذاء باسبارتو دليلًا",
+        "altEn": "Calcutta courtroom: Passepartout's abandoned shoes are presented as evidence, Towle XV",
+        "editoriallyApproved": false
+      }
+    },
+    {
+      "chapterOneBased": 16,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 17,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": {
+        "imagePath": "app/src/main/assets/art/verne-singapore-carriage-1873.webp",
+        "sha256": "f9c6caba35cf08b14fa8f5929d8184850af2118fc9b2c8450a819334dc504b20",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14804101583).jpg",
+        "sourceEdition": "Jules Verne, period engraving 1872-1873; original plate/source attribution pending individual review",
+        "sceneAnchor": "Fogg and Aouda ride a horse-drawn carriage among tropical plants at Singapore, Towle XVII",
+        "credit": "Original historical engraved illustration; see per-image provenance in docs/literature/HISTORIC_VERNES_ASSETS.json",
+        "license": "1873 Boston print; Commons: no known copyright restrictions (territorial clearance pending)",
+        "rightsStatus": "PENDING_TERRITORIAL_REVIEW",
+        "altAr": "فوغ وعاودة يستقلان عربة تجرها الخيول في سنغافورة",
+        "altEn": "Fogg and Aouda ride a horse-drawn carriage among tropical plants at Singapore, Towle XVII",
+        "editoriallyApproved": false
+      }
+    },
+    {
+      "chapterOneBased": 18,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 19,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 20,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": {
+        "imagePath": "app/src/main/assets/art/verne-tankadere-cabin-1873.webp",
+        "sha256": "28411d6b045b92ff64035fe2cfb7b80a3d3f582df13f7af5069cc9dac81a0689",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14597542130).jpg",
+        "sourceEdition": "Jules Verne, period engraving 1872-1873; original plate/source attribution pending individual review",
+        "sceneAnchor": "Fogg and Aouda meet Fix in the Tankadere cabin; Towle XX, paragraph 67",
+        "credit": "Original historical engraved illustration; see per-image provenance in docs/literature/HISTORIC_VERNES_ASSETS.json",
+        "license": "1873 Boston original; Wikimedia Commons reviewed 'No known copyright restrictions'; territorial review pending",
+        "rightsStatus": "PENDING_TERRITORIAL_REVIEW",
+        "altAr": "فيلياس فوغ وعاودة والمحقق فيكس داخل مقصورة تانكادير",
+        "altEn": "Fogg and Aouda meet Fix in the Tankadere cabin; Towle XX, paragraph 67",
+        "editoriallyApproved": false
+      }
+    },
+    {
+      "chapterOneBased": 21,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": {
+        "imagePath": "app/src/main/assets/art/verne-tankadere-1872.webp",
+        "sha256": "66c32c2069dbdcb6f74654a88755dc62f6c3591e88ed0db1ef5e9a31311eed57",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_34.jpg",
+        "sourceEdition": "Jules Verne, period engraving 1872-1873; original plate/source attribution pending individual review",
+        "sceneAnchor": "The small sailing ship Tankadere battles high waves, chapter XXI",
+        "credit": "Original historical engraved illustration; see per-image provenance in docs/literature/HISTORIC_VERNES_ASSETS.json",
+        "license": "Wikimedia Commons Public Domain Mark 1.0; per-file scan, verify territorial use",
+        "rightsStatus": "PENDING_TERRITORIAL_REVIEW",
+        "altAr": "السفينة الصغيرة تانكادير تقاوم الأمواج العاتية",
+        "altEn": "The small sailing ship Tankadere battles high waves, chapter XXI",
+        "editoriallyApproved": false
+      }
+    },
+    {
+      "chapterOneBased": 22,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 23,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 24,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 25,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 26,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 27,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 28,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 29,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": {
+        "imagePath": "app/src/main/assets/art/verne-passepartout-train-1873.webp",
+        "sha256": "57d80ee6cee17e964fb9faeda04574faa649e9edd0d3280c6cad6ff6207dc2aa",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Around_the_world_in_eighty_days_(1873)_(14597621668).jpg",
+        "sourceEdition": "Jules Verne, period engraving 1872-1873; original plate/source attribution pending individual review",
+        "sceneAnchor": "Passepartout suspended by one hand between the baggage-car and locomotive tender; Towle XXIX, source paragraph index 64",
+        "credit": "Original historical engraved illustration; see per-image provenance in docs/literature/HISTORIC_VERNES_ASSETS.json",
+        "license": "1873 Boston/Osgood print; individual Commons scan says No known copyright restrictions; geographic release review still required",
+        "rightsStatus": "PENDING_TERRITORIAL_REVIEW",
+        "altAr": "باسبارتو يتدلّى بين قاطرة القطار وعربة الأمتعة",
+        "altEn": "Passepartout suspended by one hand between the baggage-car and locomotive tender; Towle XXIX, source paragraph index 64",
+        "editoriallyApproved": false
+      }
+    },
+    {
+      "chapterOneBased": 30,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 31,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 32,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 33,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 34,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 35,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 36,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 37,
+      "titleAr": "",
+      "titleEn": "",
+      "primaryImage": null
+    }
+  ]
+}

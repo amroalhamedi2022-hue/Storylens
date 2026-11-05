@@ -1,0 +1,38 @@
+name: Lingua Tales - Gemini literature editorial review
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gemini-literature-review-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  review-staged-period-art:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate Gemini secret
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          test -n "$GEMINI_API_KEY" || { echo "::error::Missing Actions secret GEMINI_API_KEY"; exit 1; }
+      - name: Review existing Verne plate scene metadata with Gemini
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-2.5-flash
+        run: python tools/gemini_literature_review.py
+      - name: Upload editorial suggestions (not publication assets)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gemini-verne-editorial-review
+          path: docs/literature/staging/gemini-reviews/verne-four-review.json
+          if-no-files-found: error
+          retention-days: 30

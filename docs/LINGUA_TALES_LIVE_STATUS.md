@@ -1,3 +1,9 @@
+## Binding chapter-art coverage snapshot (5 Nov 2026)
+
+Canonical machine-verified **LIVE** coverage/status is now `docs/literature/CHAPTER_ART_PROGRESS.md` and `docs/literature/CHAPTER_ART_PROGRESS.json`; real image hashes and per-chapter mapping checked by `tools/report_chapter_art_progress.py`. Permanent policy is `docs/literature/CHAPTER_IMAGE_CONTRACT.md`. Prior staged works are NOT exempt. Baseline at introduction: **9 locally mapped Verne historical images for 9 of 37 chapters; 28 Verne chapters still without a candidate; 0 images approved for chapter-card publication; 450 historical art files archived across five older novels but not yet formally mapped by chapter**. Last figure does not mean those novels are visually complete. For latest numbers read the generated files, not this historical note. The other chat implements the book → ordered image chapter cards → tap opens reader UI; content ownership supplies the binaries and mapping.
+
+---
+
 # Lingua Tales — LIVE STATUS / آخر المنجز والمتبقي
 
 Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file MUST be updated in every meaningful code/content commit and reconciled with current HEAD/CI. The user explicitly approved safe main merges on 2026-11-01. Check latest main and PR head plus CI before writing. Source promotion is separate from signed release, rights clearance and physical QA.
