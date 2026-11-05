@@ -102,6 +102,7 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null}={}){
  assert.equal(s.api.openSelected('missing',0),false);
  // System Back from reader returns to its previous chapter overview (without
  // extra history entry) after the existing 190ms reader exit.
+ s.W.history.state={page:'chapter-gallery',storyId:'example-story'};
  s.listeners.popstate({state:{page:'chapter-gallery',storyId:'example-story'}});
  assert.equal(s.timerQueue.length,1);
  s.timerQueue.shift()();
