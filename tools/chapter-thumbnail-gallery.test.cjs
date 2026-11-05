@@ -41,7 +41,7 @@ function element(tag='div') {
  };
  return node;
 }
-const tick=async()=>{await Promise.resolve();await Promise.resolve();await Promise.resolve();};
+const tick=async()=>{await new Promise(resolve=>setImmediate(resolve));};
 function scenario({en=false,lazy=false,artSrc=null,approved=null}={}){
  const chapter=(n)=>({title:'Chapter '+n,titleAr:'الفصل '+n,paragraphs:[{en:'Original source.',ar:'ترجمة.'}]});
  const story={id:'example-story',title:'Example Story',titleAr:'قصة تجريبية',
