@@ -1,3 +1,11 @@
+## Binding chapter-card image directive — 5 November 2026 (applies to ALL previous books)
+
+**Canonical specification:** `docs/literature/CHAPTER_IMAGE_CONTRACT.md`. Every chaptered book — historical staging, reader-integrated, open PRs and future intake — requires **one distinct, local, scene-accurate, SHA-256-verified historical image as primary card image for EACH chapter**, in addition to the book cover, plus chapter mapping (1-based chapter number, source URL/edition/creator/rights, altAr/altEn). The reader/UI conversation owns rendering the book → ordered horizontal/grid image-backed chapter list → tap to open chapter. Literature conversation owns finding, downloading, checking source/rights, mapping and preserving images. Do NOT claim a chapter card ready until its real local image, source, individual rights and editorial approval pass. Unassigned illustrations and source-only leads do not count.
+
+**Cross-chat source of truth for progress:** `docs/literature/CHAPTER_ART_PROGRESS.md` + `CHAPTER_ART_PROGRESS.json`, SHA-tested by `tools/report_chapter_art_progress.py` and refreshed by `.github/workflows/chapter-art-progress.yml` when content changes and daily. **All earlier staged books must be backfilled; no grandfathering.** Handoff: `docs/handoffs/LINGUA_TALES_HANDOFF_CURRENT.md`. The machine snapshot is evidence-only and MUST NOT conflate staging, approved cards and publication.
+
+---
+
 **NEW USER DIRECTIVE 2026-11-05:** Canonical 13-point reader rebuild `docs/plans/LINGUA_TALES_READER_REDESIGN_2026-11-05.md`; Codex only physical curl `docs/prompts/CODEX_PHYSICAL_PAGE_CURL_2026-11-05.md`. Supersedes old conflicting 58-themes, default silent SFX and nonimmersive paper choices. Docs changes only; NONE of the features in this new checklist implemented by this commit.
 
 # Lingua Tales — MASTER PROJECT PLAN / الخطة الرئيسية
