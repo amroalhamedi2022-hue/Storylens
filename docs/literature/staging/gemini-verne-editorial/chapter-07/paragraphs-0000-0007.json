@@ -1,0 +1,143 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 7,
+  "chapterTitle": "Which once more demonstrates the uselessness of passports as aids to detectives",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "73370bd2f1a9932a3c23ccf0fba39f49cbbef1e9578cae1dd780129f464f0348",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The detective passed down the quay, and rapidly made his way to the consul’s office, where he was at once admitted to the presence of that official.",
+      "existingArabicDraft": "مضى المحقق على الرصيف مسرعًا إلى مكتب القنصل، حيث سُمح له فورًا بمقابلة المسؤول."
+    },
+    {
+      "index": 1,
+      "en": "“Consul,” said he, without preamble, “I have strong reasons for believing that my man is a passenger on the Mongolia.” And he narrated what had just passed concerning the passport.",
+      "existingArabicDraft": "قال بلا مقدمات: «يا سعادة القنصل، لدي أسباب قوية تجعلني أعتقد أن الرجل الذي أبحث عنه راكب على متن منغوليا». ثم روى له ما حدث بشأن جواز السفر."
+    },
+    {
+      "index": 2,
+      "en": "“Well, Mr. Fix,” replied the consul, “I shall not be sorry to see the rascal’s face; but perhaps he won’t come here⁠—that is, if he is the person you suppose him to be. A robber doesn’t quite like to leave traces of his flight behind him; and, besides, he is not obliged to have his passport countersigned.”",
+      "existingArabicDraft": "أجاب القنصل: «حسنًا يا سيد فيكس، لن أمانع رؤية وجه ذلك المحتال؛ لكنه ربما لن يأتي إلى هنا، إن كان أصلًا الشخص الذي تظنه. فاللص لا يحب أن يترك آثار هروبه وراءه، وفوق ذلك ليس ملزمًا بأن يصدّق أحدٌ جواز سفره بتوقيع إضافي»."
+    },
+    {
+      "index": 3,
+      "en": "“If he is as shrewd as I think he is, consul, he will come.”",
+      "existingArabicDraft": "قال فيكس: «إذا كان داهية كما أعتقد يا سعادة القنصل، فسيأتي»."
+    },
+    {
+      "index": 4,
+      "en": "“To have his passport visaed?”",
+      "existingArabicDraft": "«ليضع تأشيرة على جوازه؟»"
+    },
+    {
+      "index": 5,
+      "en": "“Yes. Passports are only good for annoying honest folks, and aiding in the flight of rogues. I assure you it will be quite the thing for him to do; but I hope you will not visa the passport.”",
+      "existingArabicDraft": "«نعم. جوازات السفر لا تفعل سوى إزعاج الشرفاء ومساعدة الأوغاد على الفرار. أؤكد لك أن هذا بالضبط ما سيفعله، لكنني أرجو ألا تضع التأشيرة على الجواز»."
+    },
+    {
+      "index": 6,
+      "en": "“Why not? If the passport is genuine I have no right to refuse.”",
+      "existingArabicDraft": "«ولماذا؟ إذا كان الجواز أصليًا، فلا يحق لي أن أرفض»."
+    },
+    {
+      "index": 7,
+      "en": "“Still, I must keep this man here until I can get a warrant to arrest him from London.”",
+      "existingArabicDraft": "«ومع ذلك، يجب أن أبقي هذا الرجل هنا إلى أن أحصل من لندن على مذكرة توقيف»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "مضى المحقق على الرصيف مسرعًا إلى مكتب القنصل، حيث سُمح له فورًا بمقابلة المسؤول."
+    },
+    {
+      "index": 1,
+      "ar": "قال بلا مقدمات: «يا سعادة القنصل، لدي أسباب قوية تجعلني أعتقد أن الرجل الذي أبحث عنه راكب على متن منغوليا». ثم روى له ما حدث بشأن جواز السفر."
+    },
+    {
+      "index": 2,
+      "ar": "أجاب القنصل: «حسنًا يا سيد فيكس، لن أمانع رؤية وجه ذلك المحتال؛ لكنه ربما لن يأتي إلى هنا، إن كان أصلًا الشخص الذي تظنه. فاللص لا يحب أن يترك آثار هروبه وراءه، وفوق ذلك ليس ملزمًا بأن يصدّق أحدٌ جواز سفره بتوقيع إضافي»."
+    },
+    {
+      "index": 3,
+      "ar": "قال فيكس: «إذا كان داهية كما أعتقد يا سعادة القنصل، فسيأتي»."
+    },
+    {
+      "index": 4,
+      "ar": "«ليضع تأشيرة على جوازه؟»"
+    },
+    {
+      "index": 5,
+      "ar": "«نعم. جوازات السفر لا تفعل سوى إزعاج الشرفاء ومساعدة الأوغاد على الفرار. أؤكد لك أن هذا بالضبط ما سيفعله، لكنني أرجو ألا تضع التأشيرة على الجواز»."
+    },
+    {
+      "index": 6,
+      "ar": "«ولماذا؟ إذا كان الجواز أصليًا، فلا يحق لي أن أرفض»."
+    },
+    {
+      "index": 7,
+      "ar": "«ومع ذلك، يجب أن أبقي هذا الرجل هنا إلى أن أحصل من لندن على مذكرة توقيف»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

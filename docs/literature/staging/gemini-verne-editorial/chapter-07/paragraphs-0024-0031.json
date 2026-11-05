@@ -1,0 +1,143 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 7,
+  "chapterTitle": "Which once more demonstrates the uselessness of passports as aids to detectives",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 8,
+  "sourceSha256": "e36ca314dc50a40377c5242385a64f474d66c8e519bb6c100ba6caac195a8b86",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "“Possibly; but that is not the question. Do you think, consul, that this phlegmatic gentleman resembles, feature by feature, the robber whose description I have received?”",
+      "existingArabicDraft": "قال فيكس: «ربما، لكن هذا ليس موضع السؤال. هل ترى يا سعادة القنصل أن هذا الرجل الهادئ يشبه، سمةً بسمة، اللص الذي وصلني وصفه؟»"
+    },
+    {
+      "index": 25,
+      "en": "“I concede that; but then, you know, all descriptions⁠—”",
+      "existingArabicDraft": "«أقرّ بذلك، لكنك تعلم أن كل الأوصاف—»"
+    },
+    {
+      "index": 26,
+      "en": "“I’ll make certain of it,” interrupted Fix. “The servant seems to me less mysterious than the master; besides, he’s a Frenchman, and can’t help talking. Excuse me for a little while, consul.”",
+      "existingArabicDraft": "قاطعه فيكس: «سأتحقق من الأمر بنفسي. يبدو الخادم أقل غموضًا من سيده؛ ثم إنه فرنسي، ولا يستطيع منع نفسه من الكلام. اعذرني قليلًا يا سعادة القنصل»."
+    },
+    {
+      "index": 27,
+      "en": "Fix started off in search of Passepartout.",
+      "existingArabicDraft": "انطلق فيكس بحثًا عن باسبارتو."
+    },
+    {
+      "index": 28,
+      "en": "Meanwhile Mr. Fogg, after leaving the consulate, repaired to the quay, gave some orders to Passepartout, went off to the Mongolia in a boat, and descended to his cabin. He took up his notebook, which contained the following memoranda:",
+      "existingArabicDraft": "في هذه الأثناء، عاد السيد فوغ بعد مغادرة القنصلية إلى الرصيف، وأعطى باسبارتو بعض التعليمات، ثم استقل قاربًا إلى منغوليا ونزل إلى مقصورته. وأخرج دفتر ملاحظاته الذي احتوى على السجلات التالية:"
+    },
+    {
+      "index": 29,
+      "en": "“Left London, Wednesday, October 2nd, at 8:45 p.m.",
+      "existingArabicDraft": "«غادرت لندن، الأربعاء الثاني من أكتوبر، الساعة 8:45 مساءً»."
+    },
+    {
+      "index": 30,
+      "en": "“Reached Paris, Thursday, October 3rd, at 7:20 a.m.",
+      "existingArabicDraft": "«وصلت باريس، الخميس الثالث من أكتوبر، الساعة 7:20 صباحًا»."
+    },
+    {
+      "index": 31,
+      "en": "“Left Paris, Thursday, at 8:40 a.m.",
+      "existingArabicDraft": "«غادرت باريس، الخميس، الساعة 8:40 صباحًا»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«ربما؛ ولكن ليس هذا هو السؤال. هل تعتقد يا سعادة القنصل أن هذا السيد المتبلد يشبه، سمةً بسمة، اللص الذي تلقيت وصفه؟»"
+    },
+    {
+      "index": 1,
+      "ar": "«أقر بذلك؛ ولكنك تعلم أن كل الأوصاف—»"
+    },
+    {
+      "index": 2,
+      "ar": "قاطعه فيكس قائلًا: «سأتحقق من الأمر. يبدو لي الخادم أقل غموضًا من سيده؛ فضلًا عن أنه فرنسي، ولا يسعه إلا أن يتحدث. اعذرني قليلًا يا سعادة القنصل»."
+    },
+    {
+      "index": 3,
+      "ar": "انطلق فيكس باحثًا عن باسبارتو."
+    },
+    {
+      "index": 4,
+      "ar": "في هذه الأثناء، وبعد مغادرة القنصلية، توجه السيد فوغ إلى الرصيف، وأعطى بعض التعليمات لباسبارتو، ثم استقل قاربًا إلى السفينة «منغوليا» ونزل إلى مقصورته. أخرج دفتر ملاحظاته الذي كان يحتوي على المذكرات التالية:"
+    },
+    {
+      "index": 5,
+      "ar": "«غادرت لندن، الأربعاء، الثاني من أكتوبر، في الساعة 8:45 مساءً."
+    },
+    {
+      "index": 6,
+      "ar": "«وصلت باريس، الخميس، الثالث من أكتوبر، في الساعة 7:20 صباحًا."
+    },
+    {
+      "index": 7,
+      "ar": "«غادرت باريس، الخميس، في الساعة 8:40 صباحًا."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

@@ -1,0 +1,144 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 8,
+  "chapterTitle": "In which Passepartout talks rather more, perhaps, than is prudent.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "567523dc61371b44b67e33b256cafbfb14cc28729d5474293d44bbeb081f2187",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "“And in Africa?”",
+      "existingArabicDraft": "«وفي أفريقيا؟»"
+    },
+    {
+      "index": 9,
+      "en": "“In Africa.”",
+      "existingArabicDraft": "«في أفريقيا»."
+    },
+    {
+      "index": 10,
+      "en": "“In Africa!” repeated Passepartout. “Just think, monsieur, I had no idea that we should go farther than Paris; and all that I saw of Paris was between twenty minutes past seven and twenty minutes before nine in the morning, between the Northern and the Lyons stations, through the windows of a car, and in a driving rain! How I regret not having seen once more Père la Chaise and the circus in the Champs Élysées!”",
+      "existingArabicDraft": "«في أفريقيا!» كرر باسبارتو. «تخيّل يا سيدي، لم أكن أظن أننا سنتجاوز باريس! وكل ما رأيته من باريس كان بين السابعة وعشرين دقيقة وخمس دقائق قبل التاسعة صباحًا، بين محطتي الشمال وليون، من نافذة عربة وفي مطر غزير! كم أندم لأنني لم أزر مرة أخرى مقبرة بير لاشيز والسيرك في الشانزليزيه!»"
+    },
+    {
+      "index": 11,
+      "en": "“You are in a great hurry, then?”",
+      "existingArabicDraft": "«إذن أنت في عجلة شديدة؟»"
+    },
+    {
+      "index": 12,
+      "en": "“I am not, but my master is. By the way, I must buy some shoes and shirts. We came away without trunks, only with a carpetbag.”",
+      "existingArabicDraft": "«لست أنا، بل سيدي. وبالمناسبة، عليّ شراء بعض الأحذية والقمصان. غادرنا من دون حقائب سفر، ولم يكن معنا سوى حقيبة صغيرة من السجاد»."
+    },
+    {
+      "index": 13,
+      "en": "“I will show you an excellent shop for getting what you want.”",
+      "existingArabicDraft": "«سأدلك على متجر ممتاز تجد فيه ما تحتاج إليه»."
+    },
+    {
+      "index": 14,
+      "en": "“Really, monsieur, you are very kind.”",
+      "existingArabicDraft": "«حقًا يا سيدي، هذا لطف كبير منك»."
+    },
+    {
+      "index": 15,
+      "en": "And they walked off together, Passepartout chatting volubly as they went along.",
+      "existingArabicDraft": "ومضيا معًا، بينما ظل باسبارتو يتحدث بطلاقة طوال الطريق."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«وفي أفريقيا؟»"
+    },
+    {
+      "index": 1,
+      "ar": "«في أفريقيا»."
+    },
+    {
+      "index": 2,
+      "ar": "«في أفريقيا!» كرر باسبارتو. «تخيّل يا سيدي، لم أكن أظن أننا سنتجاوز باريس؛ وكل ما رأيته من باريس كان بين السابعة وعشرين دقيقة والثامنة وأربعين دقيقة صباحًا، بين محطتي الشمال وليون، من نافذة عربة وفي مطر غزير! كم أندم لأنني لم أزر مرة أخرى مقبرة بير لاشيز والسيرك في الشانزليزيه!»"
+    },
+    {
+      "index": 3,
+      "ar": "«إذن أنت في عجلة شديدة؟»"
+    },
+    {
+      "index": 4,
+      "ar": "«لست أنا، بل سيدي. وبالمناسبة، عليّ شراء بعض الأحذية والقمصان. لقد غادرنا من دون حقائب سفر، ولم يكن معنا سوى حقيبة يد صغيرة»."
+    },
+    {
+      "index": 5,
+      "ar": "«سأدلك على متجر ممتاز تجد فيه ما تحتاج إليه»."
+    },
+    {
+      "index": 6,
+      "ar": "«حقًا يا سيدي، هذا لطف كبير منك»."
+    },
+    {
+      "index": 7,
+      "ar": "ومضيا معًا، بينما ظل باسبارتو يتحدث بطلاقة طوال الطريق."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "خطأ في ترجمة التوقيت: 'twenty minutes before nine' تعني الثامنة وأربعين دقيقة، والترجمة العربية كتبت 'الثامنة وأربعين دقيقة' ولكن السياق الزمني يحتاج دقة أكبر في الصياغة."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

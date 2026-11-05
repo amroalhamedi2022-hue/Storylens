@@ -1,0 +1,144 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 8,
+  "chapterTitle": "In which Passepartout talks rather more, perhaps, than is prudent.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "a55b28b32a28d705c2f08c63a29480b990be77351b6e2172b4ed328d195e2c34",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "Fix soon rejoined Passepartout, who was lounging and looking about on the quay, as if he did not feel that he, at least, was obliged not to see anything.",
+      "existingArabicDraft": "سرعان ما عاد فيكس إلى باسبارتو، الذي كان يتمشّى على الرصيف ويتلفّت حوله، كأنه لا يشعر بأنه هو، على الأقل، مطالب بألا يرى شيئًا."
+    },
+    {
+      "index": 1,
+      "en": "“Well, my friend,” said the detective, coming up with him, “is your passport visaed?”",
+      "existingArabicDraft": "قال المحقق وهو يقترب منه: «حسنًا يا صديقي، هل وُضعت تأشيرة على جواز سفرك؟»"
+    },
+    {
+      "index": 2,
+      "en": "“Ah, it’s you, is it, monsieur?” responded Passepartout. “Thanks, yes, the passport is all right.”",
+      "existingArabicDraft": "أجاب باسبارتو: «آه، أأنت يا سيدي؟ شكرًا، نعم، جواز السفر على ما يرام»."
+    },
+    {
+      "index": 3,
+      "en": "“And you are looking about you?”",
+      "existingArabicDraft": "«وأنت تتفقد ما حولك؟»"
+    },
+    {
+      "index": 4,
+      "en": "“Yes; but we travel so fast that I seem to be journeying in a dream. So this is Suez?”",
+      "existingArabicDraft": "«نعم، لكننا نسافر بسرعة حتى أشعر كأنني أحلم برحلة. أهذه السويس إذن؟»"
+    },
+    {
+      "index": 5,
+      "en": "“Yes.”",
+      "existingArabicDraft": "«نعم»."
+    },
+    {
+      "index": 6,
+      "en": "“In Egypt?”",
+      "existingArabicDraft": "«في مصر؟»"
+    },
+    {
+      "index": 7,
+      "en": "“Certainly, in Egypt.”",
+      "existingArabicDraft": "«بالتأكيد، في مصر»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "سرعان ما عاد فيكس إلى باسبارتو، الذي كان يتسكع ويتلفت حوله على الرصيف، كأنه لا يشعر بأنه هو، على الأقل، ملزم بألا يرى شيئًا."
+    },
+    {
+      "index": 1,
+      "ar": "قال المحقق وهو يقترب منه: «حسنًا يا صديقي، هل خُتم جواز سفرك بالتأشيرة؟»"
+    },
+    {
+      "index": 2,
+      "ar": "أجاب باسبارتو: «آه، أأنت يا سيدي؟ شكرًا، نعم، جواز السفر على ما يرام»."
+    },
+    {
+      "index": 3,
+      "ar": "«وأنت تتفقد ما حولك؟»"
+    },
+    {
+      "index": 4,
+      "ar": "«نعم، لكننا نسافر بسرعة كبيرة حتى يخيل إلي أنني في حلم. أهذه هي السويس إذن؟»"
+    },
+    {
+      "index": 5,
+      "ar": "«نعم»."
+    },
+    {
+      "index": 6,
+      "ar": "«في مصر؟»"
+    },
+    {
+      "index": 7,
+      "ar": "«بالتأكيد، في مصر»."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

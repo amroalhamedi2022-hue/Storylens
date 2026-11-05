@@ -1,0 +1,143 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 7,
+  "chapterTitle": "Which once more demonstrates the uselessness of passports as aids to detectives",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "883f6b79da2edabab1f351a17c869f7df7ee9180047ced2b74ee69e63026d1f6",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "“And you are going⁠—”",
+      "existingArabicDraft": "«ووجهتك هي—»"
+    },
+    {
+      "index": 17,
+      "en": "“To Bombay.”",
+      "existingArabicDraft": "«بومباي»."
+    },
+    {
+      "index": 18,
+      "en": "“Very good, sir. You know that a visa is useless, and that no passport is required?”",
+      "existingArabicDraft": "«حسنًا يا سيدي. أتعلم أن التأشيرة لا فائدة منها، وأنك لا تحتاج إلى جواز سفر؟»"
+    },
+    {
+      "index": 19,
+      "en": "“I know it, sir,” replied Phileas Fogg; “but I wish to prove, by your visa, that I came by Suez.”",
+      "existingArabicDraft": "أجاب فيلياس فوغ: «أعلم ذلك يا سيدي، لكنني أريد أن تثبت تأشيرتك أنني مررت بالسويس»."
+    },
+    {
+      "index": 20,
+      "en": "“Very well, sir.”",
+      "existingArabicDraft": "«حسنًا يا سيدي»."
+    },
+    {
+      "index": 21,
+      "en": "The consul proceeded to sign and date the passport, after which he added his official seal. Mr. Fogg paid the customary fee, coldly bowed, and went out, followed by his servant.",
+      "existingArabicDraft": "وقّع القنصل جواز السفر ودوّن التاريخ، ثم أضاف ختمه الرسمي. دفع السيد فوغ الرسوم المعتادة، وانحنى ببرود وغادر، يتبعه خادمه."
+    },
+    {
+      "index": 22,
+      "en": "“Well?” queried the detective.",
+      "existingArabicDraft": "سأل المحقق: «حسنًا؟»"
+    },
+    {
+      "index": 23,
+      "en": "“Well, he looks and acts like a perfectly honest man,” replied the consul.",
+      "existingArabicDraft": "أجاب القنصل: «حسنًا، يبدو الرجل ويتصرف كما لو كان شريفًا تمامًا»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«ووجهتك هي—»"
+    },
+    {
+      "index": 1,
+      "ar": "«إلى بومباي.»"
+    },
+    {
+      "index": 2,
+      "ar": "«حسنٌ جدًّا يا سيدي. أتعلم أن التأشيرة لا لزوم لها، وأن جواز السفر غير مطلوب؟»"
+    },
+    {
+      "index": 3,
+      "ar": "أجاب فيلياس فوغ: «أعلم ذلك يا سيدي؛ ولكنني أود أن أثبت، بتأشيرتكم، أنني مررت بالسويس.»"
+    },
+    {
+      "index": 4,
+      "ar": "«حسنٌ جدًّا يا سيدي.»"
+    },
+    {
+      "index": 5,
+      "ar": "شرع القنصل في توقيع جواز السفر وتأريخه، ثم أضاف ختمه الرسمي. ودفع السيد فوغ الرسوم المعتادة، وانحنى في برود وغادر، يتبعه خادمه."
+    },
+    {
+      "index": 6,
+      "ar": "تساءل المحقق: «حسنًا؟»"
+    },
+    {
+      "index": 7,
+      "ar": "أجاب القنصل: «حسنًا، يبدو الرجل ويتصرف كأنه رجلٌ شريفٌ تمامًا.»"
+    }
+  ],
+  "model": "gemini-3.5-flash",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": "لا توجد مشكلات."
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": "لا توجد مشكلات."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": "لا توجد مشكلات."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": "لا توجد مشكلات."
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": "لا توجد مشكلات."
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": "لا توجد مشكلات."
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": "لا توجد مشكلات."
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": "لا توجد مشكلات."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

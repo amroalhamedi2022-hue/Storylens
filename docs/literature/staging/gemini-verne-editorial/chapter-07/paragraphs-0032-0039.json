@@ -1,0 +1,129 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 7,
+  "chapterTitle": "Which once more demonstrates the uselessness of passports as aids to detectives",
+  "startParagraphZeroBased": 32,
+  "paragraphCount": 7,
+  "sourceSha256": "eb464c92f06405684250b68f8b9a7040f69ffcddb7b5909b2d42e019580fa252",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 32,
+      "en": "“Reached Turin by Mont Cenis, Friday, October 4th, at 6:35 a.m.",
+      "existingArabicDraft": "«وصلت تورينو عبر مون سيني، الجمعة الرابع من أكتوبر، الساعة 6:35 صباحًا»."
+    },
+    {
+      "index": 33,
+      "en": "“Left Turin, Friday, at 7:20 a.m.",
+      "existingArabicDraft": "«غادرت تورينو، الجمعة، الساعة 7:20 صباحًا»."
+    },
+    {
+      "index": 34,
+      "en": "“Arrived at Brindisi, Saturday, October 5th, at 4 p.m.",
+      "existingArabicDraft": "«وصلت برينديزي، السبت الخامس من أكتوبر، الساعة الرابعة مساءً»."
+    },
+    {
+      "index": 35,
+      "en": "“Sailed on the Mongolia, Saturday, at 5 p.m.",
+      "existingArabicDraft": "«أبحرت على متن منغوليا، السبت، الساعة الخامسة مساءً»."
+    },
+    {
+      "index": 36,
+      "en": "“Reached Suez, Wednesday, October 9th, at 11 a.m.",
+      "existingArabicDraft": "«وصلت السويس، الأربعاء التاسع من أكتوبر، الساعة الحادية عشرة صباحًا»."
+    },
+    {
+      "index": 37,
+      "en": "“Total of hours spent, 158+; or, in days, six days and a half.”",
+      "existingArabicDraft": "«إجمالي الوقت المستغرق: أكثر من 158 ساعة، أي ستة أيام ونصف»."
+    },
+    {
+      "index": 38,
+      "en": "These dates were inscribed in an itinerary divided into columns, indicating the month, the day of the month, and the day for the stipulated and actual arrivals at each principal point Paris, Brindisi, Suez, Bombay, Calcutta, Singapore, Hong Kong, Yokohama, San Francisco, New York, and London⁠—from the 2nd of October to the 21st of December; and giving a space for setting down the gain made or the loss suffered on arrival at each locality. This methodical record thus contained an account of everything needed, and Mr. Fogg always knew whether he was behindhand or in advance of his time. On this Friday, October 9th, he noted his arrival at Suez, and observed that he had as yet neither gained nor lost. He sat down quietly to breakfast in his cabin, never once thinking of inspecting the town, being one of those Englishmen who are wont to see foreign countries through the eyes of their domestics.",
+      "existingArabicDraft": "كانت هذه التواريخ مسجلة في جدول ذي أعمدة للشهر واليوم ومواعيد الوصول المحددة والفعلية إلى المدن الرئيسية: باريس وبرينديزي والسويس وبومباي وكلكتا وسنغافورة وهونغ كونغ ويوكوهاما وسان فرانسيسكو ونيويورك ولندن، من الثاني من أكتوبر حتى الحادي والعشرين من ديسمبر، مع خانة لتسجيل الوقت المكتسب أو المفقود عند الوصول إلى كل مكان. وقد جمع هذا السجل المنظم كل ما يحتاج إليه فوغ، فكان يعرف دائمًا إن كان متأخرًا عن موعده أم متقدمًا عليه. وفي يوم الجمعة التاسع من أكتوبر، دوّن وصوله إلى السويس ولاحظ أنه لم يكسب وقتًا ولم يخسره بعد. ثم جلس بهدوء ليتناول إفطاره في مقصورته، من غير أن يفكر في زيارة المدينة؛ فقد كان من أولئك الإنجليز الذين اعتادوا رؤية البلدان الأجنبية من خلال أعين خدمهم."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«وصلتُ إلى تورينو عبر مون سيني، يوم الجمعة الرابع من أكتوبر، في الساعة السادسة وخمس وثلاثين دقيقة صباحًا»."
+    },
+    {
+      "index": 1,
+      "ar": "«غادرتُ تورينو، يوم الجمعة، في الساعة السابعة وعشرين دقيقة صباحًا»."
+    },
+    {
+      "index": 2,
+      "ar": "«وصلتُ إلى برينديزي، يوم السبت الخامس من أكتوبر، في الساعة الرابعة مساءً»."
+    },
+    {
+      "index": 3,
+      "ar": "«أبحرتُ على متن السفينة منغوليا، يوم السبت، في الساعة الخامسة مساءً»."
+    },
+    {
+      "index": 4,
+      "ar": "«وصلتُ إلى السويس، يوم الأربعاء التاسع من أكتوبر، في الساعة الحادية عشرة صباحًا»."
+    },
+    {
+      "index": 5,
+      "ar": "«إجمالي الساعات المستغرقة: أكثر من 158 ساعة، أو ما يعادل ستة أيام ونصف»."
+    },
+    {
+      "index": 6,
+      "ar": "كانت هذه التواريخ مدونة في جدول رحلة مقسم إلى أعمدة، يوضح الشهر، ويوم الشهر، ومواعيد الوصول المقررة والفعلية إلى كل نقطة رئيسية: باريس، وبرينديزي، والسويس، وبومباي، وكلكتا، وسنغافورة، وهونغ كونغ، ويوكوهاما، وسان فرانسيسكو، ونيويورك، ولندن؛ وذلك من الثاني من أكتوبر حتى الحادي والعشرين من ديسمبر، مع ترك مساحة لتسجيل الوقت المكتسب أو المفقود عند الوصول إلى كل موقع. وهكذا احتوى هذا السجل المنهجي على كل ما يلزم، وكان السيد فوغ يعرف دائمًا ما إذا كان متأخرًا عن جدوله الزمني أو متقدمًا عليه. وفي يوم الجمعة التاسع من أكتوبر، دوّن وصوله إلى السويس، ولاحظ أنه لم يكسب وقتًا ولم يخسره بعد. جلس بهدوء ليتناول إفطاره في مقصورته، دون أن يفكر ولو لمرة واحدة في تفقد المدينة، إذ كان من أولئك الإنجليز الذين اعتادوا رؤية البلدان الأجنبية من خلال أعين خدمهم."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": false,
+      "issues": "ورد في النص الأصلي أن التاريخ هو الأربعاء 9 أكتوبر، بينما ذكرت الترجمة يوم الجمعة 9 أكتوبر، وهو خطأ تاريخي يتناقض مع سياق الرحلة."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

@@ -1,0 +1,143 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 7,
+  "chapterTitle": "Which once more demonstrates the uselessness of passports as aids to detectives",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "0d3791d47b0e5956130bf2b32ced559aeb1e2fc276f2eb8838cfea1098929b35",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "“Ah, that’s your lookout. But I cannot⁠—”",
+      "existingArabicDraft": "«آه، تلك مسؤوليتك أنت. لكنني لا أستطيع—»"
+    },
+    {
+      "index": 9,
+      "en": "The consul did not finish his sentence, for as he spoke a knock was heard at the door, and two strangers entered, one of whom was the servant whom Fix had met on the quay. The other, who was his master, held out his passport with the request that the consul would do him the favour to visa it. The consul took the document and carefully read it, whilst Fix observed, or rather devoured, the stranger with his eyes from a corner of the room.",
+      "existingArabicDraft": "لم يُكمل القنصل عبارته؛ إذ سُمع طرق على الباب ودخل غريبان. كان أحدهما الخادم الذي قابله فيكس على الرصيف، أما الآخر، سيده، فمدّ جواز سفره طالبًا من القنصل التكرم بوضع التأشيرة عليه. أخذ القنصل الوثيقة وقرأها بعناية، بينما كان فيكس يراقب الغريب من زاوية الغرفة، بل يلتهمه بعينيه."
+    },
+    {
+      "index": 10,
+      "en": "“You are Mr. Phileas Fogg?” said the consul, after reading the passport.",
+      "existingArabicDraft": "سأل القنصل بعد قراءة الجواز: «أأنت السيد فيلياس فوغ؟»"
+    },
+    {
+      "index": 11,
+      "en": "“I am.”",
+      "existingArabicDraft": "«أنا هو»."
+    },
+    {
+      "index": 12,
+      "en": "“And this man is your servant?”",
+      "existingArabicDraft": "«وهذا الرجل خادمك؟»"
+    },
+    {
+      "index": 13,
+      "en": "“He is: a Frenchman, named Passepartout.”",
+      "existingArabicDraft": "«نعم، إنه فرنسي يُدعى باسبارتو»."
+    },
+    {
+      "index": 14,
+      "en": "“You are from London?”",
+      "existingArabicDraft": "«أنت قادم من لندن؟»"
+    },
+    {
+      "index": 15,
+      "en": "“Yes.”",
+      "existingArabicDraft": "«نعم»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«آه، تلك مسؤوليتك أنت. لكنني لا أستطيع—»"
+    },
+    {
+      "index": 1,
+      "ar": "لم يُكمل القنصل عبارته؛ إذ سُمع طرق على الباب ودخل غريبان. كان أحدهما الخادم الذي قابله فيكس على الرصيف، أما الآخر، سيده، فمدّ جواز سفره طالبًا من القنصل التكرم بوضع التأشيرة عليه. أخذ القنصل الوثيقة وقرأها بعناية، بينما كان فيكس يراقب الغريب من زاوية الغرفة، بل يلتهمه بعينيه."
+    },
+    {
+      "index": 2,
+      "ar": "سأل القنصل بعد قراءة الجواز: «أأنت السيد فيلياس فوغ؟»"
+    },
+    {
+      "index": 3,
+      "ar": "«أنا هو»."
+    },
+    {
+      "index": 4,
+      "ar": "«وهذا الرجل خادمك؟»"
+    },
+    {
+      "index": 5,
+      "ar": "«نعم، إنه فرنسي يُدعى باسبارتو»."
+    },
+    {
+      "index": 6,
+      "ar": "«أنت قادم من لندن؟»"
+    },
+    {
+      "index": 7,
+      "ar": "«نعم»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

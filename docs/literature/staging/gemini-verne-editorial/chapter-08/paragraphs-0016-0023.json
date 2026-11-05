@@ -1,0 +1,144 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 8,
+  "chapterTitle": "In which Passepartout talks rather more, perhaps, than is prudent.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "91d2a6327b3f69ecb27258e56b0640eaa2fb8f95322814b07c7593c89f8a8131",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "“Above all,” said he; “don’t let me lose the steamer.”",
+      "existingArabicDraft": "قال: «أهم شيء ألا تدعني أفوّت الباخرة»."
+    },
+    {
+      "index": 17,
+      "en": "“You have plenty of time; it’s only twelve o’clock.”",
+      "existingArabicDraft": "«لديك متسع من الوقت؛ فالساعة لا تزال الثانية عشرة»."
+    },
+    {
+      "index": 18,
+      "en": "Passepartout pulled out his big watch. “Twelve!” he exclaimed; “why, it’s only eight minutes before ten.”",
+      "existingArabicDraft": "أخرج باسبارتو ساعته الكبيرة وقال متعجبًا: «الثانية عشرة! لكنها لم تبلغ العاشرة إلا بثماني دقائق!»"
+    },
+    {
+      "index": 19,
+      "en": "“Your watch is slow.”",
+      "existingArabicDraft": "«ساعتك متأخرة»."
+    },
+    {
+      "index": 20,
+      "en": "“My watch? A family watch, monsieur, which has come down from my great-grandfather! It doesn’t vary five minutes in the year. It’s a perfect chronometer, look you.”",
+      "existingArabicDraft": "«ساعتي؟ إنها ساعة عائلية ورثناها عن جدّي الأكبر يا سيدي! لا يتجاوز اختلافها خمس دقائق في السنة. إنها كرونومتر مثالي، أقول لك!»"
+    },
+    {
+      "index": 21,
+      "en": "“I see how it is,” said Fix. “You have kept London time, which is two hours behind that of Suez. You ought to regulate your watch at noon in each country.”",
+      "existingArabicDraft": "قال فيكس: «فهمت الأمر. لقد أبقيت ساعتك على توقيت لندن، الذي يتأخر ساعتين عن توقيت السويس. ينبغي أن تضبط ساعتك عند الظهر في كل بلد تزوره»."
+    },
+    {
+      "index": 22,
+      "en": "“I regulate my watch? Never!”",
+      "existingArabicDraft": "«أضبط ساعتي؟ أبدًا!»"
+    },
+    {
+      "index": 23,
+      "en": "“Well, then, it will not agree with the sun.”",
+      "existingArabicDraft": "«إذن لن تتوافق مع الشمس»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "قال: «قبل كل شيء، لا تدعني أفوّت الباخرة»."
+    },
+    {
+      "index": 1,
+      "ar": "«لديك متسع من الوقت؛ فالساعة لا تزال الثانية عشرة»."
+    },
+    {
+      "index": 2,
+      "ar": "أخرج باسبارتو ساعته الكبيرة، وهتف قائلًا: «الثانية عشرة! كيف ذلك؟ إنها لم تبلغ العاشرة إلا بثماني دقائق!»"
+    },
+    {
+      "index": 3,
+      "ar": "«ساعتك متأخرة»."
+    },
+    {
+      "index": 4,
+      "ar": "«ساعتي؟ إنها ساعة عائلية يا سيدي، توارثناها عن جدّي الأكبر! لا يتجاوز تفاوتها خمس دقائق في السنة. إنها كرونومتر مثالي، انظر بنفسك»."
+    },
+    {
+      "index": 5,
+      "ar": "قال فيكس: «فهمت الأمر. لقد أبقيت ساعتك على توقيت لندن، الذي يتأخر ساعتين عن توقيت السويس. ينبغي عليك أن تضبط ساعتك عند الظهر في كل بلد تزوره»."
+    },
+    {
+      "index": 6,
+      "ar": "«أضبط ساعتي؟ أبدًا!»"
+    },
+    {
+      "index": 7,
+      "ar": "«حسنًا، إذن لن تتوافق مع الشمس»."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
