@@ -17,13 +17,13 @@ function extract(n, dir = path.join(__dirname, '..', 'app', 'src', 'main', 'asse
   const ctx = vm.createContext({ window: sandbox });
   const sourceHashes = [];
   for (let i = 1; i <= n; i++) {
-    const file = path.join(dir, 'classic-verne-towle-ch' + String(i).padStart(2, '0') + '.js');
+    // The historical chapters XXXI and XXXII are intentionally in a single file.\n    if (i === 32) continue;\n    const file = path.join(dir, 'classic-verne-towle-ch' + String(i).padStart(2, '0') + '.js');
     const bytes = fs.readFileSync(file);
     sourceHashes.push(crypto.createHash('sha256').update(bytes).digest('hex'));
     vm.runInContext(bytes.toString('utf8'), ctx, { filename: path.basename(file), timeout: 2500 });
   }
   const story = sandbox.StoryLensEditorialStories.find(s => s.id === 'around-the-world-in-eighty-days-towle');
-  if (!story || story.chapters.length !== n) throw Error('Source chapter count is inconsistent');
+  if (!story || story.chapters.length < n || story.chapters.length > n + (n === 31 ? 1 : 0)) {\n    throw Error('Source chapter count is inconsistent');\n  }
   const chapter = story.chapters[n - 1];
   const paragraphs = chapter.paragraphs;
   if (!Array.isArray(paragraphs) || paragraphs.length < 8) throw Error('Missing or abridged chapter paragraphs');
