@@ -68,6 +68,17 @@ const themeLabelsAr={
 const themeLabelFor=name=>rtl()?themeLabelsAr[name]:themeLabels[name];
 /* LT-12: separate, offline typography preferences. System font stacks avoid
  * font downloads and extra memory. Unsupported values never reach CSS. */
+const readerMaterialChoices=['book','fibre','white','cream','comfort','night'];
+function applyReaderMaterial(name){
+ if(!readerMaterialChoices.includes(name))return false;
+ document.documentElement.dataset.ltReaderMaterial=name;
+ put('ltReaderMaterial',name);return true;
+}
+function loadReaderMaterial(){
+ const saved=typeof get==='function'?get('ltReaderMaterial','book'):'book';
+ document.documentElement.dataset.ltReaderMaterial=
+  readerMaterialChoices.includes(saved)?saved:'book';
+}
 const fontChoices={ar:['sans','naskh','ruqaa','kufi','hand'],en:['serif','sans','humanist','mono','hand']};
 const fontDefaults={ar:'sans',en:'serif'};
 const fontKeys={ar:'fontArabic',en:'fontEnglish'};
@@ -478,6 +489,27 @@ function openSettings(){
    closeSheet();openSettings();
   },'secondary lt-themes-restore');
  }
+ // Materials change paper, not the six app themes nor physical curl.
+ const materialLabel=document.createElement('label');
+ materialLabel.className='lt-font-setting lt-paper-material-setting';
+ const materialTitle=document.createElement('span');
+ materialTitle.textContent=rtl()?'شكل صفحة القراءة':'Reading paper';
+ materialLabel.appendChild(materialTitle);
+ const materialSelect=document.createElement('select');
+ materialSelect.id='lt-reader-material-select';
+ materialSelect.setAttribute('aria-label',materialTitle.textContent);
+ const materialText={
+  book:['كتاب طبيعي','Bound book'],fibre:['ورق حقيقي','Textured paper'],
+  white:['ورقة بيضاء','Clean white'],cream:['ورقة صفراء','Warm cream'],
+  comfort:['رمادي مريح للعين','Soft grey'],night:['ليلي مريح للعين','Low-glare night']
+ };
+ for(const id of readerMaterialChoices){
+  const item=document.createElement('option');item.value=id;
+  item.textContent=materialText[id][rtl()?0:1];materialSelect.appendChild(item);
+ }
+ materialSelect.value=document.documentElement.dataset.ltReaderMaterial||'book';
+ materialSelect.addEventListener('change',()=>applyReaderMaterial(materialSelect.value));
+ materialLabel.appendChild(materialSelect);sheet.appendChild(materialLabel);
  const fontsHeading=document.createElement('h3');
  fontsHeading.textContent=rtl()?'خطوط القراءة':'Reading fonts';
  sheet.appendChild(fontsHeading);
@@ -941,7 +973,7 @@ function decorateLibrary(){
 
 }
 library=function(){originalLibrary();decorateLibrary();};
-global.LinguaShell={refreshNovelShelf,applyTheme,applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,isFullLengthNovel,
+global.LinguaShell={refreshNovelShelf,applyTheme,applyReaderMaterial,readerMaterialChoices:[...readerMaterialChoices],applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,isFullLengthNovel,
  isDrawerOpen:()=>opened,themeNames:[...themeNames],searchChapters,invalidateChapterSearch,openChapterSearch,jumpToChapterHit};
 /* LT-09/06 accessibility: a visible modal must own keyboard focus.
  * Trap Tab/Shift+Tab in Settings or the genre drawer; Escape dismisses the
@@ -1188,6 +1220,7 @@ document.addEventListener('click',event=>{
 loadLocale();
 loadFonts();
 loadReadingSizes();
+loadReaderMaterial();
 applyCustomThemeColors();
 library();
 })(window);

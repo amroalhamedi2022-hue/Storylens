@@ -67,3 +67,9 @@ Not done because a plan or CSS mockup exists. Every RDR item requires implemente
 - RDR-05: obsolete 2px top `#reading-progress` is visually suppressed while actual reading anchors remain persisted; actual scroll listener removal is separate cleanup. RDR-04 PARTIAL: visual text selection disabled on reader paragraphs, translations and captions but not editable inputs, maintaining first-party dictionary clicks; native WebView action-mode verification still OPEN and OCR from other apps cannot be blocked.
 - RDR-11 PARTIAL: isolated menu/drawer and art viewer zoom glyphs centred in 44px+ targets; full-screen device audit still OPEN. RDR-06 and RDR-10 labels shortened; immersive 2-page layout is dependent on Codex engine and native rotation stream.
 - Tests updated to expect six choices, legacy migrator, no autoplay and preserved opt-out. This is a source batch, not an approved installable signed APK. NEED exact new-SHA CI, merge, then sign from green main using permanent cert and versionCode >100866.
+
+
+### 2026-11-05 — RDR-03 reader materials source implementation (CI pending)
+- Branch `design/reader-paper-material-presets-20261105` builds on PR #9 source `2869739a435077f2ff73d91820869811047ba10c`. Merge PR #9 first, then recheck newest main and CI before merging this batch.
+- Six independent materials `book/fibre/white/cream/comfort/night`, exposed in Settings, saved in `ltReaderMaterial`. Only opaque paper/ink colors or light texture change; no page-turn geometry/layout transforms, book content or images touched.
+- Added strictly validated backup allowlist+restore and Node regression; full CI, real tablets and Codex engine integration still OPEN. This is NOT a new signed APK.

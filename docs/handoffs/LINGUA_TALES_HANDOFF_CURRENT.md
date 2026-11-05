@@ -1,3 +1,13 @@
+# Reading-material presets work branch (not yet merged)
+
+
+### 2026-11-05 — RDR-03 reader materials source implementation (CI pending)
+- Branch `design/reader-paper-material-presets-20261105` builds on PR #9 source `2869739a435077f2ff73d91820869811047ba10c`. Merge PR #9 first, then recheck newest main and CI before merging this batch.
+- Six independent materials `book/fibre/white/cream/comfort/night`, exposed in Settings, saved in `ltReaderMaterial`. Only opaque paper/ink colors or light texture change; no page-turn geometry/layout transforms, book content or images touched.
+- Added strictly validated backup allowlist+restore and Node regression; full CI, real tablets and Codex engine integration still OPEN. This is NOT a new signed APK.
+
+---
+
 # CURRENT 2026-11-05 SOURCE WORK — six-theme / SFX / clean reader batch (NOT YET RELEASED)
 
 
