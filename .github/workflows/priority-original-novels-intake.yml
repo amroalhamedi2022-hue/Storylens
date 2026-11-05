@@ -1,0 +1,58 @@
+name: Priority classics full originals - independent intake
+on:
+  push:
+    branches:
+      - content/priority-moonstone-warworlds-originals-20261105
+    paths:
+      - 'tools/intake_priority_original_novels.py'
+      - '.github/workflows/priority-original-novels-intake.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: priority-originals-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'requests==2.32.5' 'beautifulsoup4==4.14.2' 'Pillow==11.3.0'
+      - name: Acquire complete original editions independently, never mark as published
+        shell: bash
+        run: |
+          set -uo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          failures=0
+          for book in the-moonstone the-war-of-the-worlds the-time-machine the-invisible-man dracula; do
+            echo "::group::Full source $book"
+            if python tools/intake_priority_original_novels.py --book "$book" && python tools/intake_priority_original_novels.py --verify --book "$book"; then
+              git add -f "docs/literature/staging/priority-classics-20261105/$book"
+              if ! git diff --cached --quiet; then
+                git commit -m "Literature: stage complete verified original $book with available edition illustrations"
+                if ! git push origin "HEAD:${GITHUB_REF_NAME}"; then
+                  echo "::error::Push failed for $book"
+                  failures=$((failures + 1))
+                fi
+              fi
+            else
+              echo "::warning::Source $book did not pass full original validation, not staged as complete"
+              failures=$((failures + 1))
+            fi
+            echo "::endgroup::"
+          done
+          echo "Original intake failures: $failures"
+          test "$failures" -eq 0
+      - name: Preserve acquired sources for investigation if pushes blocked
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: priority-complete-original-source-staging
+          path: docs/literature/staging/priority-classics-20261105/
+          if-no-files-found: warn
+          retention-days: 14
