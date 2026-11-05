@@ -1,0 +1,75 @@
+name: Lingua Tales - skeptical War of the Worlds original 1906 engraving scene reviews
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/export_war_source_for_art.py'
+      - 'tools/gemini_suggest_war_plate_scenes.py'
+      - 'tools/gemini_suggest_verne_plate_scenes.py'
+      - '.github/workflows/war-correa-gemini-scene-match.yml'
+  schedule:
+    - cron: '37 1,5,9,13,17,21 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lingua-war-correa-gemini-real-scene-QA
+  cancel-in-progress: false
+
+jobs:
+  visually-check-real-1906-plates-against-pinned-1898-book:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify original complete text and inspect comparison engine
+        run: |
+          python tools/export_war_source_for_art.py --check
+          python tools/gemini_suggest_war_plate_scenes.py --self-test
+      - name: Real image vision + exact-prose match + skeptical second visual inspection
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python tools/gemini_suggest_war_plate_scenes.py --max-new 4
+      - name: Persist evidence checkpoints without publishing or approval
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -d docs/literature/staging/war-of-worlds-correa-scene-reviews ]; then
+            git add -f docs/literature/staging/war-of-worlds-correa-scene-reviews/
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No new actual image review records; no empty commit."
+          else
+            git commit -m "Literature: checkpoint skeptical Correa real-image source verification [skip ci]"
+            # Other image archives may write main independently; retry safely.
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 3
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Visual evidence saved locally but push failed"
+              exit 1
+            fi
+          fi
+      - name: Preserve records even if GitHub push or model API fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: correa-original-1906-scene-evidence-not-rights-cleared
+          path: docs/literature/staging/war-of-worlds-correa-scene-reviews/
+          if-no-files-found: ignore
+          retention-days: 30
