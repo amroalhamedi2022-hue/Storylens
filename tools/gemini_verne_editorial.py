@@ -28,8 +28,9 @@ DEFAULT_MAX_SEGMENTS = 4
 MAX_RESPONSE_BYTES = 900_000
 MODEL_PREFERENCES = (
     # New AI Studio projects often cannot generate with 2.5 despite models.list.
-    "gemini-3.8-flash", "gemini-3.5-flash", "gemini-3.5-flash-lite",
-    "gemini-3.1-flash-lite", "gemini-2.5-flash", "gemini-2.5-flash-lite",
+    "gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-3.1-flash-lite",
+    "gemini-3.6-flash", "gemini-3.7-flash", "gemini-3.8-flash",
+    "gemini-2.5-flash", "gemini-2.5-flash-lite",
 )
 
 
@@ -192,13 +193,13 @@ def run(max_segments: int) -> int:
             try:
                 return generate(key, model, task)
             except RuntimeError as exc:
-                if "HTTP 404" not in str(exc):
+                if not any(("HTTP " + code) in str(exc) for code in ("404", "503")):
                     raise
                 idx = models.index(model)
                 if idx + 1 >= len(models):
-                    raise RuntimeError("All available Gemini models refused generation (HTTP 404)") from None
+                    raise RuntimeError("All supported Gemini models refused generation (404 or 503)") from None
                 model = models[idx + 1]
-                print("Model unavailable for generation (404); trying fallback:", model, flush=True)
+                print("Model unavailable for generation (404/503); trying fallback:", model, flush=True)
 
     produced = 0
     for ch in range(1, CHAPTER_COUNT + 1):
