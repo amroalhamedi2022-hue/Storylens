@@ -150,6 +150,9 @@ jobs:
           node tools/verne-towle-ch37.test.cjs
           node tools/verne-complete-novel.test.cjs
           node tools/chapter-navigation.test.cjs
+          node tools/chapter-thumbnail-gallery.test.cjs
+          python3 tools/package_approved_chapter_thumbnails.py --check
+          python3 tools/test_approved_thumbnail_packaging.py
           node tools/inline-illustrations.test.cjs
           node tools/multi-companion-art.test.cjs
           node tools/assets.test.cjs
