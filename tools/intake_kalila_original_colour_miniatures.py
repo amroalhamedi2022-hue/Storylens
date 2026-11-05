@@ -55,7 +55,7 @@ def limited_download(sess, url, max_bytes=18_000_000):
     with sess.get(url, timeout=(20, 90), stream=True, allow_redirects=True) as response:
         response.raise_for_status()
         end = urlparse(response.url)
-        if end.scheme != "https" or end.hostname not in ("upload.wikimedia.org", "commons.wikimedia.org"):
+        if end.scheme != "https" or end.hostname not in ("upload.wikimedia.org", "thumb.wikimedia.org", "commons.wikimedia.org"):
             raise ValueError(f"Redirect leaves Commons: {response.url}")
         data, size = [], 0
         for chunk in response.iter_content(131072):
