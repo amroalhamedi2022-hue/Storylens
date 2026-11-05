@@ -1,3 +1,13 @@
+# Four new offline manuscript fonts workstream — CI pending
+
+
+### 2026-11-05 — RDR-12 additional handwriting fonts (separate feature PR, CI pending)
+- Four **new genuinely bundled, unmodified and source SHA-verified** Google Fonts SIL OFL 1.1 families: Arabic `Lateef` and `Katibeh`, English `Caveat` and `Kalam`. Full original `OFL.txt` files copied into `assets/fonts/`; provenance/source SHA recorded in `fonts/README.md`. Existing five choices per language preserved, now seven each, without runtime network.
+- New Settings labels; `lt-offline-fonts.css` applies selected Arabic/English typeface across library/drawer/settings and mixed original/companion reader text; leaves native graphic icons and historical figures unchanged. Existing semantic paragraph anchor restore in `applyFont()` retained.
+- Corrected a pre-existing backup bug that rejected 3 already-shipped fonts in each language, now validates all seven names for each. Font regression and binary signature/licence/backup tests added. **No changes to Codex physical page-turn source, content assets, original signing or package data.** Device QA, screenshots and exact commit Actions pending. No APK issued by this PR.
+
+---
+
 # Reading-material presets work branch (not yet merged)
 
 

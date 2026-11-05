@@ -79,7 +79,7 @@ function loadReaderMaterial(){
  document.documentElement.dataset.ltReaderMaterial=
   readerMaterialChoices.includes(saved)?saved:'book';
 }
-const fontChoices={ar:['sans','naskh','ruqaa','kufi','hand'],en:['serif','sans','humanist','mono','hand']};
+const fontChoices={ar:['sans','naskh','ruqaa','kufi','hand','lateef','katibeh'],en:['serif','sans','humanist','mono','hand','caveat','kalam']};
 const fontDefaults={ar:'sans',en:'serif'};
 const fontKeys={ar:'fontArabic',en:'fontEnglish'};
 function safeOffset(value){
@@ -523,10 +523,14 @@ function openSettings(){
   const options=lang==='ar'?
    [{value:'sans',ar:'نسخ عصري',en:'Modern Arabic'},{value:'naskh',ar:'نسخ تقليدي',en:'Classic Naskh'},
     {value:'ruqaa',ar:'رقعة',en:'Ruqaa'},{value:'kufi',ar:'كوفي',en:'Kufi'},
-    {value:'hand',ar:'خط يدوي',en:'Handwriting'}]:
+    {value:'hand',ar:'خط يدوي',en:'Handwriting'},
+    {value:'lateef',ar:'لطيف ـ نسخ مخطوط',en:'Lateef manuscript'},
+    {value:'katibeh',ar:'كاتبة ـ خط أصيل',en:'Katibeh calligraphy'}]:
    [{value:'serif',ar:'أدبي',en:'Literary serif'},{value:'sans',ar:'عصري',en:'Modern sans'},
     {value:'humanist',ar:'إنساني',en:'Humanist'},{value:'mono',ar:'آلة كاتبة',en:'Monospace'},
-    {value:'hand',ar:'خط يدوي',en:'Handwriting'}];
+    {value:'hand',ar:'خط يدوي',en:'Handwriting'},
+    {value:'caveat',ar:'كافيات ـ خط يدوي',en:'Caveat handwriting'},
+    {value:'kalam',ar:'قلم ـ كتابة باليد',en:'Kalam handwritten'}];
   for(const option of options){
    const item=document.createElement('option');
    item.value=option.value;item.textContent=rtl()?option.ar:option.en;

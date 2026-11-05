@@ -73,3 +73,9 @@ Not done because a plan or CSS mockup exists. Every RDR item requires implemente
 - Branch `design/reader-paper-material-presets-20261105` builds on PR #9 source `2869739a435077f2ff73d91820869811047ba10c`. Merge PR #9 first, then recheck newest main and CI before merging this batch.
 - Six independent materials `book/fibre/white/cream/comfort/night`, exposed in Settings, saved in `ltReaderMaterial`. Only opaque paper/ink colors or light texture change; no page-turn geometry/layout transforms, book content or images touched.
 - Added strictly validated backup allowlist+restore and Node regression; full CI, real tablets and Codex engine integration still OPEN. This is NOT a new signed APK.
+
+
+### 2026-11-05 — RDR-12 additional handwriting fonts (separate feature PR, CI pending)
+- Four **new genuinely bundled, unmodified and source SHA-verified** Google Fonts SIL OFL 1.1 families: Arabic `Lateef` and `Katibeh`, English `Caveat` and `Kalam`. Full original `OFL.txt` files copied into `assets/fonts/`; provenance/source SHA recorded in `fonts/README.md`. Existing five choices per language preserved, now seven each, without runtime network.
+- New Settings labels; `lt-offline-fonts.css` applies selected Arabic/English typeface across library/drawer/settings and mixed original/companion reader text; leaves native graphic icons and historical figures unchanged. Existing semantic paragraph anchor restore in `applyFont()` retained.
+- Corrected a pre-existing backup bug that rejected 3 already-shipped fonts in each language, now validates all seven names for each. Font regression and binary signature/licence/backup tests added. **No changes to Codex physical page-turn source, content assets, original signing or package data.** Device QA, screenshots and exact commit Actions pending. No APK issued by this PR.
