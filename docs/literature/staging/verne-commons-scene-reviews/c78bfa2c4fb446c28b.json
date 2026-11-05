@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_06.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-c78bfa2c4fb446c2.webp",
+  "imageSha256": "4c2792cf468d9b1b58194e14fc083e908c4356e5cbddd281a6ca96210a36b3af",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a group of men in formal 19th-century attire gathered in an ornate room. Three men are seated around a small table playing a card game with chips, while several other men stand nearby observing or conversing. The room features a large framed painting on the wall, a decorative candelabra, and a statue.",
+    "visualObjectsEn": "Card table, playing cards, gaming chips, ornate chairs, large framed painting on the wall, tall candelabra, statue of a figure, patterned carpet, wallpaper.",
+    "recognizableCharactersOrPeopleEn": "A group of eight men in total, all dressed in formal suits, waistcoats, and cravats, typical of mid-to-late 19th-century European fashion. Some have beards and mustaches.",
+    "uncertaintyNotes": "The specific identities of the men are not provided in the image. The exact nature of the card game is not clear, though it appears to be a social gambling or parlor game. The historical context of the room and the specific painting on the wall are not explicitly identified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 28,
+    "paragraphIndexZeroBased": 22,
+    "exactSourceQuotation": "Well, here are three of us, and a dummy⁠—",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The scene depicts a group of men in formal attire gathered around a card table with chips, which aligns with the context of a card game being discussed in the provided source text.",
+    "suggestedAltArNotApproved": "A group of men in 19th-century formal attire playing cards at a table in an ornate room.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a group of gentlemen gathered around a small table with playing cards and gaming chips, matching the dialogue about playing a game with three players and a dummy.",
+    "visualContradictions": "None",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
