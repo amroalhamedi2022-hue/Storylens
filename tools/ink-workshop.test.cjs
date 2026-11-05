@@ -15,12 +15,13 @@ const window={addEventListener:()=>{},innerWidth:1000,scrollY:0,matchMedia:()=>(
 vm.runInNewContext(script,{window,document,state,library:()=>{},openStory:()=>{},libraryBack:()=>{},
  get:(k,f)=>store.has(k)?store.get(k):f,put:(k,v)=>store.set(k,v),
  closeSheet:()=>{},Date,console},{timeout:5000});
-assert.ok(window.LinguaShell.themeNames.includes('ink-workshop'));
-assert.equal(window.LinguaShell.applyTheme('ink-workshop'),true);
-assert.equal(state.uiTheme,'ink-workshop');
-assert.equal(store.get('uiTheme'),'ink-workshop');
-assert.ok(classes.includes('+theme-ink-workshop'));
-assert.ok(classes.includes('-theme-aurora'));
+assert.ok(window.LinguaShell.themeNames.includes('ink-workshop'),
+ 'legacy style remains available for safe backup imports');
+assert.equal(window.LinguaShell.applyTheme('ink-workshop'),false,
+ 'retired theme cannot be selected after the six-theme redesign');
+assert.equal(state.uiTheme,'aurora','existing active theme is preserved');
+assert.notEqual(store.get('uiTheme'),'ink-workshop',
+ 'removed styles must not be saved as an active preference');
 assert.equal(window.LinguaShell.applyTheme('https://untrusted'),false);
 for(const selector of ['body.theme-ink-workshop','.theme-ink-workshop .library .storylens-hero',
  '.theme-ink-workshop .library .shelf .card','.theme-ink-workshop .lt-drawer',

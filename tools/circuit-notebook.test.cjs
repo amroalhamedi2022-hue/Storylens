@@ -19,12 +19,13 @@ const window={addEventListener:()=>{},innerWidth:1000,scrollY:0,matchMedia:()=>(
 vm.runInNewContext(script,{window,document,state,library:()=>{},openStory:()=>{},libraryBack:()=>{},
  get:(k,f)=>store.has(k)?store.get(k):f,put:(k,v)=>store.set(k,v),
  closeSheet:()=>{},Date,console},{timeout:5000});
-assert.ok(window.LinguaShell.themeNames.includes('circuit-notebook'));
-assert.equal(window.LinguaShell.applyTheme('circuit-notebook'),true);
-assert.equal(state.uiTheme,'circuit-notebook');
-assert.equal(store.get('uiTheme'),'circuit-notebook');
-assert.ok(classes.includes('+theme-circuit-notebook'));
-assert.ok(classes.includes('-theme-aurora'));
+assert.ok(window.LinguaShell.themeNames.includes('circuit-notebook'),
+ 'legacy style remains available for safe backup imports');
+assert.equal(window.LinguaShell.applyTheme('circuit-notebook'),false,
+ 'retired theme cannot be selected after the six-theme redesign');
+assert.equal(state.uiTheme,'aurora','existing active theme is preserved');
+assert.notEqual(store.get('uiTheme'),'circuit-notebook',
+ 'removed styles must not be saved as an active preference');
 assert.equal(window.LinguaShell.applyTheme('https://untrusted'),false);
 for(const selector of ['body.theme-circuit-notebook',
  '.theme-circuit-notebook .storylens-hero',
