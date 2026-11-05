@@ -9,6 +9,9 @@ const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const css=fs.readFileSync(path.join(root,'lt-chapter-gallery.css'),'utf8');
 assert.ok(html.includes('<link rel="stylesheet" href="lt-chapter-gallery.css">'));
 assert.ok(html.includes('<script src="lt-chapter-gallery.js"></script>'));
+assert.ok(html.includes('<script src="lt-chapter-thumbnail-registry.js"></script>'));
+assert.ok(html.indexOf('lt-chapter-thumbnail-registry.js')<html.indexOf('lt-chapter-gallery.js'));
+
 assert.ok(html.indexOf('<script src="lingua-content-loader.js"></script>')<
   html.indexOf('<script src="lt-chapter-gallery.js"></script>'),
   'gallery must wrap the FINAL lazy-loaded story opener');
