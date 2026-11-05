@@ -1,3 +1,12 @@
+# CI glass renderer diagnostic / three-attempt strict acceptance
+
+
+### 2026-11-05 — Optical browser CI runner nondeterminism isolated (no product engine edits)
+- Two identical QA fixture blobs `qa-wen-glass.html`, `lt-wen-glass-engine.js/css` on previously green PR source `f63e43a`, current main `1e9a07b`, and source PR `dc21e2a`; failing post-merge main run [#41986301641](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/41986301641) and PR #11 run [#41986752531](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/41986752531) reached browser glass smoke after other Chromium fixtures passed, but returned no `data-lt-wen-glass-qa` marker in dumped DOM. This indicates a headless timing/runner issue is plausible, **not proven**.
+- Tightened CI to retry fresh headless processes up to three times with stable virtual-time flags, REQUIRE actual `data-lt-wen-glass-qa="PASS"` on at least one attempt, and print stderr/fixture errors on failure. True consistent fixture failures STILL fail red. Page-curl, content/art, production app logic unchanged. **CI for this correction PENDING.**
+
+---
+
 # Current UX branch: copy guard, always-six gallery, global fonts and quiet reader
 
 

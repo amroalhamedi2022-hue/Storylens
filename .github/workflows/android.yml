@@ -665,11 +665,28 @@ jobs:
             echo "::error::Chrome is required for Liquid Glass gesture acceptance"
             exit 1
           fi
-          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=3600 --window-size=460,860 --dump-dom \
-            "file://$PWD/app/src/main/assets/qa-wen-glass.html" > /tmp/lt-wen-glass-dom.html 2> /tmp/lt-wen-glass-browser.log
-          if ! grep -Fq 'data-lt-wen-glass-qa="PASS"' /tmp/lt-wen-glass-dom.html; then
-            echo "::error::Wen Glass live pointer/RTL/reader ink visual acceptance failed"
+          # Headless Chromium sometimes dumps its DOM before the nested
+          # requestAnimationFrame optics probe finishes. Retry fresh renderer
+          # processes, but NEVER bypass the real fixture's PASS assertion.
+          success=0
+          for attempt in 1 2 3; do
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu \
+              --disable-background-timer-throttling --disable-renderer-backgrounding \
+              --run-all-compositor-stages-before-draw --virtual-time-budget=7000 \
+              --window-size=460,860 --dump-dom \
+              "file://$PWD/app/src/main/assets/qa-wen-glass.html" \
+              > /tmp/lt-wen-glass-dom.html 2> /tmp/lt-wen-glass-browser.log || true
+            if grep -Fq 'data-lt-wen-glass-qa="PASS"' /tmp/lt-wen-glass-dom.html; then
+              success=1
+              break
+            fi
+            echo "::warning::Wen Glass optical browser attempt $attempt did not report PASS"
             grep -o 'data-lt-wen-glass-errors="[^"]*"' /tmp/lt-wen-glass-dom.html | head -1 || true
+            tail -n 5 /tmp/lt-wen-glass-browser.log || true
+            sleep 1
+          done
+          if [ "$success" -ne 1 ]; then
+            echo "::error::Wen Glass live pointer/RTL/reader ink visual acceptance failed on all 3 attempts"
             exit 1
           fi
           mkdir -p qa-screenshots
