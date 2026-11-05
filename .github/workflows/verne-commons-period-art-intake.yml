@@ -15,7 +15,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: lingua-tales-commons-period-gallery
+  group: lingua-tales-historic-commons-serial
   cancel-in-progress: false
 
 jobs:
@@ -35,6 +35,9 @@ jobs:
       - name: Download up to 18 unique genuinely historic scans with source hashes
         id: acquire
         run: python tools/intake_verne_commons_period_gallery.py --max-new 18
+      - name: Refresh real per-chapter art coverage after source acquisition
+        if: always()
+        run: python tools/report_chapter_art_progress.py --write
       - name: Preserve every acquired image even if later network request fails
         if: always()
         shell: bash
@@ -44,6 +47,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ -d docs/literature/staging/verne-commons-period-plates ]; then
             git add -f docs/literature/staging/verne-commons-period-plates/
+            git add docs/literature/CHAPTER_ART_PROGRESS.json docs/literature/CHAPTER_ART_PROGRESS.md
           fi
           git diff --cached --check
           if git diff --cached --quiet; then
