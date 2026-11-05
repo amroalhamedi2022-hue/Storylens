@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "contract": "docs/literature/CHAPTER_IMAGE_CONTRACT.md",
+  "scope": "checked-in main branch only; open PR 16 artifacts NOT counted as main",
+  "policy": "at least one distinct locally stored, sourced, chapter-matched and rights-cleared primary image per chapter",
+  "counts": {
+    "localCandidateChapterCards": 9,
+    "readyChapterCards": 0,
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 459
+  },
+  "books": [
+    {
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "title": "Around the World in Eighty Days",
+      "sourceState": "37 source chapters plus Arabic draft",
+      "chapterCount": 37,
+      "archivedLocalHistoricArt": 9,
+      "mappedChapterNumbers": [
+        3,
+        5,
+        6,
+        11,
+        15,
+        17,
+        20,
+        21,
+        29
+      ],
+      "readyChapterNumbers": [],
+      "localCandidateChapters": 9,
+      "readyForUICards": 0,
+      "missingImageChapters": 28,
+      "missingReadyChapters": 37,
+      "imageMap": "docs/literature/staging/verne-chapter-cards/chapter-image-map.json"
+    },
+    {
+      "bookId": "collins-the-moonstone-1868",
+      "title": "The Moonstone",
+      "sourceState": "staged English; chapter segmentation/rights pending",
+      "chapterCount": null,
+      "narrativeSourceUnitsNotChapterCount": 53,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": null,
+      "missingReadyChapters": null,
+      "archivedLocalHistoricArt": 0
+    },
+    {
+      "bookId": "wells-war-of-the-worlds-1898",
+      "title": "The War of the Worlds",
+      "sourceState": "27 original chapters staged; bilingual/rights pending",
+      "chapterCount": 27,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": 27,
+      "missingReadyChapters": 27,
+      "archivedLocalHistoricArt": 0
+    },
+    {
+      "bookId": "treasure-island",
+      "title": "Treasure Island",
+      "sourceState": "full illustrated English original staged; distinct chapter map pending",
+      "chapterCount": null,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": null,
+      "missingReadyChapters": null,
+      "archivedLocalHistoricArt": 115,
+      "allArchivedImageTags": 156,
+      "originalChapterMarkerOccurrencesNotVerifiedChapterCount": 34
+    },
+    {
+      "bookId": "kidnapped",
+      "title": "Kidnapped",
+      "sourceState": "full illustrated English original staged; distinct chapter map pending",
+      "chapterCount": null,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": null,
+      "missingReadyChapters": null,
+      "archivedLocalHistoricArt": 98,
+      "allArchivedImageTags": 98,
+      "originalChapterMarkerOccurrencesNotVerifiedChapterCount": 60
+    },
+    {
+      "bookId": "the-black-arrow",
+      "title": "The Black Arrow",
+      "sourceState": "full illustrated English original staged; distinct chapter map pending",
+      "chapterCount": null,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": null,
+      "missingReadyChapters": null,
+      "archivedLocalHistoricArt": 13,
+      "allArchivedImageTags": 13,
+      "originalChapterMarkerOccurrencesNotVerifiedChapterCount": 32
+    },
+    {
+      "bookId": "the-last-of-the-mohicans",
+      "title": "The Last of the Mohicans",
+      "sourceState": "full illustrated English original staged; distinct chapter map pending",
+      "chapterCount": null,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": null,
+      "missingReadyChapters": null,
+      "archivedLocalHistoricArt": 12,
+      "allArchivedImageTags": 12,
+      "originalChapterMarkerOccurrencesNotVerifiedChapterCount": 33
+    },
+    {
+      "bookId": "the-gilded-age",
+      "title": "The Gilded Age",
+      "sourceState": "full illustrated English original staged; distinct chapter map pending",
+      "chapterCount": null,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": null,
+      "missingReadyChapters": null,
+      "archivedLocalHistoricArt": 212,
+      "allArchivedImageTags": 212,
+      "originalChapterMarkerOccurrencesNotVerifiedChapterCount": 127
+    },
+    {
+      "bookId": "a-study-in-scarlet",
+      "title": "A Study in Scarlet",
+      "sourceState": "older staged work; chapter-card coverage audit pending",
+      "chapterCount": null,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": null,
+      "missingReadyChapters": null
+    },
+    {
+      "bookId": "dracula",
+      "title": "Dracula",
+      "sourceState": "older staged work; chapter-card coverage audit pending",
+      "chapterCount": null,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": null,
+      "missingReadyChapters": null
+    },
+    {
+      "bookId": "frankenstein",
+      "title": "Frankenstein",
+      "sourceState": "older staged work; chapter-card coverage audit pending",
+      "chapterCount": null,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": null,
+      "missingReadyChapters": null
+    },
+    {
+      "bookId": "the-hound-of-the-baskervilles",
+      "title": "The Hound of the Baskervilles",
+      "sourceState": "older staged work; chapter-card coverage audit pending",
+      "chapterCount": null,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": null,
+      "missingReadyChapters": null
+    },
+    {
+      "bookId": "the-lost-world",
+      "title": "The Lost World",
+      "sourceState": "older staged work; chapter-card coverage audit pending",
+      "chapterCount": null,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": null,
+      "missingReadyChapters": null
+    },
+    {
+      "bookId": "the-sign-of-the-four",
+      "title": "The Sign of the Four",
+      "sourceState": "older staged work; chapter-card coverage audit pending",
+      "chapterCount": null,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": null,
+      "missingReadyChapters": null
+    },
+    {
+      "bookId": "kalila-arabic-wikisource",
+      "title": "Kalila wa Dimna",
+      "sourceState": "older staged work; chapter-card coverage audit pending",
+      "chapterCount": null,
+      "localCandidateChapters": 0,
+      "readyForUICards": 0,
+      "missingImageChapters": null,
+      "missingReadyChapters": null
+    }
+  ],
+  "nextWork": [
+    "Backfill 28 Verne chapters without any locally sourced primary image; editorial/territory clearance of the nine candidates is still pending",
+    "Derive exact narrative chapter indexes for five staged English illustrated books and The Moonstone, map original art to actual chapter scenes",
+    "Source contextual art for all 27 The War of the Worlds chapters",
+    "Revisit all older staged books and incoming PR book collections without counting unmerged materials on main",
+    "Have reader/UI thread implement image-backed ordered chapter cards only from approved local chapter-image maps"
+  ],
+  "releaseStatus": "NOT_READY_FOR_CHAPTER_CARDS; DO_NOT_PUBLISH_PENDING_RIGHTS_AND_EDITORIAL"
+}
