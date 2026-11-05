@@ -35,10 +35,7 @@ jobs:
       - name: Download up to 18 unique genuinely historic scans with source hashes
         id: acquire
         run: python tools/intake_verne_commons_period_gallery.py --max-new 18
-      - name: Refresh real per-chapter art coverage after source acquisition
-        if: always()
-        run: python tools/report_chapter_art_progress.py --write
-      - name: Preserve every acquired image even if later network request fails
+      - name: Preserve authentic Verne scans and regenerate progress after Git reconciliation
         if: always()
         shell: bash
         run: |
@@ -47,15 +44,34 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ -d docs/literature/staging/verne-commons-period-plates ]; then
             git add -f docs/literature/staging/verne-commons-period-plates/
-            git add docs/literature/CHAPTER_ART_PROGRESS.json docs/literature/CHAPTER_ART_PROGRESS.md
           fi
           git diff --cached --check
           if git diff --cached --quiet; then
-            echo "No new verified historic images; no empty commit."
+            echo "No new source binaries; do not commit duplicate art."
           else
-            git commit -m "Literature: preserve new real Commons original-period art with individual provenance, hashes and rights holds [skip ci]"
-            git pull --rebase origin "$GITHUB_REF_NAME"
-            git push origin "HEAD:$GITHUB_REF_NAME"
+            git commit -m "Literature: checkpoint authentic Verne Commons scans [skip ci]"
+          fi
+          # Reconcile SOURCE FILES before generating the snapshot. A previous
+          # runner generated progress before pulling concurrent main changes,
+          # causing a report add/add conflict, even after 18 real downloads.
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          # The report is regenerated from the reconciled set of actual image
+          # files. Failure to compute a report must NOT discard verified scans.
+          report_status=0
+          python tools/report_chapter_art_progress.py --write || report_status=$?
+          if [ "$report_status" -eq 0 ]; then
+            git add docs/literature/CHAPTER_ART_PROGRESS.json docs/literature/CHAPTER_ART_PROGRESS.md
+            git diff --cached --check
+            if ! git diff --cached --quiet; then
+              git commit -m "Literature: refresh audited chapter-art inventory after image intake [skip ci]"
+            fi
+          else
+            echo "::warning::Progress audit failed; source images will still be preserved"
+          fi
+          git push origin "HEAD:$GITHUB_REF_NAME"
+          if [ "$report_status" -ne 0 ]; then
+            echo "::error::Source images saved, but audit requires correction"
+            exit "$report_status"
           fi
       - name: Keep inspectable art and attribution records if repository push fails
         if: always()
