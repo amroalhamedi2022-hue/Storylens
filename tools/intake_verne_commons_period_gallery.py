@@ -29,6 +29,8 @@ DEST = ROOT / "docs/literature/staging/verne-commons-period-plates"
 MANIFEST = DEST / "manifest.json"
 IMAGES = DEST / "plates"
 SOURCE_CATEGORY = "Category:Illustrations from Around the World in Eighty Days by Neuville and Benett"
+ORIGINAL_YEAR = 1873
+OUTPUT_PREFIX = "verne-commons"
 API = "https://commons.wikimedia.org/w/api.php"
 MAX_DOWNLOAD_BYTES = 5_000_000
 MAX_IMAGE_PIXELS = 24_000_000
@@ -178,8 +180,8 @@ def load_existing() -> dict:
         "schemaVersion": 1,
         "status": "STAGED_ORIGINAL_HISTORICAL_PLATES__NO_CHAPTER_MAP_OR_RIGHTS_APPROVAL",
         "category": SOURCE_CATEGORY,
-        "categoryURL": "https://commons.wikimedia.org/wiki/Category:Illustrations_from_Around_the_World_in_Eighty_Days_by_Neuville_and_Benett",
-        "originalEditionYear": 1873,
+        "categoryURL": "https://commons.wikimedia.org/wiki/" + SOURCE_CATEGORY.replace(" ", "_"),
+        "originalEditionYear": ORIGINAL_YEAR,
         "rightsStatus": "INDIVIDUAL_IMAGE_AND_TERRITORY_REVIEW_PENDING",
         "chapterSceneMatchingComplete": False,
         "publicationApproved": False,
@@ -211,7 +213,7 @@ def run(max_new: int) -> int:
         if metadata is None or metadata["wikiFile"] in seen:
             continue
         remote_id = metadata["originalCommonsSHA1MetadataOnly"]
-        output = f"plates/verne-commons-{remote_id[:16]}.webp"
+        output = f"plates/{OUTPUT_PREFIX}-{remote_id[:16]}.webp"
         try:
             raw, packed, width, height = download_image(s, metadata)
         except (requests.RequestException, OSError, ValueError) as exc:
