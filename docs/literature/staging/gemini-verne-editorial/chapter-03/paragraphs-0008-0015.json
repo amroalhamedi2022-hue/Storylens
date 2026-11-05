@@ -1,0 +1,139 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 3,
+  "chapterTitle": "In Which a Conversation Takes Place Which Seems Likely to Cost Phileas Fogg Dear",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "6fcf00b42895f33640eba41102d49818e14cd6bc8c09d5c74cabd1e89f1ddeb6",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "“Perhaps he’s a manufacturer, then.”",
+      "existingArabicDraft": "«لعلّه رجل صناعة إذن»."
+    },
+    {
+      "index": 9,
+      "en": "“The Daily Telegraph says that he is a gentleman.”",
+      "existingArabicDraft": "«تقول صحيفة ديلي تلغراف إنه رجل نبيل»."
+    },
+    {
+      "index": 10,
+      "en": "It was Phileas Fogg, whose head now emerged from behind his newspapers, who made this remark. He bowed to his friends, and entered into the conversation. The affair which formed its subject, and which was town talk, had occurred three days before at the Bank of England. A package of banknotes, to the value of fifty-five thousand pounds, had been taken from the principal cashier’s table, that functionary being at the moment engaged in registering the receipt of three shillings and sixpence. Of course, he could not have his eyes everywhere. Let it be observed that the Bank of England reposes a touching confidence in the honesty of the public. There are neither guards nor gratings to protect its treasures; gold, silver, banknotes are freely exposed, at the mercy of the first comer. A keen observer of English customs relates that, being in one of the rooms of the Bank one day, he had the curiosity to examine a gold ingot weighing some seven or eight pounds. He took it up, scrutinised it, passed it to his neighbour, he to the next man, and so on until the ingot, going from hand to hand, was transferred to the end of a dark entry; nor did it return to its place for half an hour. Meanwhile, the cashier had not so much as raised his head. But in the present instance things had not gone so smoothly. The package of notes not being found when five o’clock sounded from the ponderous clock in the “drawing office,” the amount was passed to the account of profit and loss. As soon as the robbery was discovered, picked detectives hastened off to Liverpool, Glasgow, Havre, Suez, Brindisi, New York, and other ports, inspired by the proffered reward of two thousand pounds, and five percent on the sum that might be recovered. Detectives were also charged with narrowly watching those who arrived at or left London by rail, and a judicial examination was at once entered upon.",
+      "existingArabicDraft": "كان فيلياس فوغ هو من قال ذلك بعدما أطلّ برأسه من خلف صحفه. حيّا أصدقاءه وانضم إلى الحديث. وقعت الحادثة التي شغلت المدينة قبل ثلاثة أيام في بنك إنجلترا: اختفت رزمة أوراق نقدية قيمتها خمسة وخمسون ألف جنيه من طاولة أمين الصندوق الرئيسي، بينما كان منشغلًا بتسجيل مبلغ ثلاثة شلنات وستة بنسات. وبالطبع لا يستطيع مراقبة كل شيء. كان البنك يثق بأمانة الجمهور ثقة لافتة؛ فلا حراس ولا قضبان تحمي الذهب والفضة والأوراق النقدية المعروضة أمام الزائرين. وروى مراقب لعادات الإنجليز أنه تناول ذات يوم سبيكة ذهب وزنها سبعة أو ثمانية أرطال في إحدى قاعات البنك، وتفحصها ثم ناولها لجاره، فانتقلت من شخص إلى آخر حتى بلغت نهاية ممر مظلم، ولم تعد إلى مكانها إلا بعد نصف ساعة، بينما لم يرفع أمين الصندوق رأسه. لكن الأمر هذه المرة لم ينتهِ بسلام؛ فلما دقت الخامسة ولم تُعثر على الرزمة، سُجلت قيمتها في حساب الأرباح والخسائر. وانطلق محققون مختارون إلى ليفربول وغلاسكو ولوهافر والسويس وبرينديزي ونيويورك وموانئ أخرى، طمعًا في مكافأة قدرها ألفا جنيه وخمسة بالمئة مما يُسترد. وكُلّف آخرون بمراقبة القادمين إلى لندن والمغادرين بالقطار، وبدأ التحقيق القضائي فورًا."
+    },
+    {
+      "index": 11,
+      "en": "There were real grounds for supposing, as the Daily Telegraph said, that the thief did not belong to a professional band. On the day of the robbery a well-dressed gentleman of polished manners, and with a well-to-do air, had been observed going to and fro in the paying room where the crime was committed. A description of him was easily procured and sent to the detectives; and some hopeful spirits, of whom Ralph was one, did not despair of his apprehension. The papers and clubs were full of the affair, and everywhere people were discussing the probabilities of a successful pursuit; and the Reform Club was especially agitated, several of its members being Bank officials.",
+      "existingArabicDraft": "كانت هناك أسباب وجيهة للاعتقاد، كما قالت «ديلي تلغراف»، بأن الفاعل ليس من عصابة محترفة. فقد شوهد يوم السرقة رجل أنيق الثياب، مهذب السلوك، تبدو عليه علامات اليسر، يتردد على صالة الدفع حيث وقعت الجريمة. أمكن الحصول على وصفه وإرساله إلى المحققين، ولم يفقد المتفائلون، ومنهم رالف، الأمل في القبض عليه. شغلت القضية الصحف والنوادي، وراح الناس يتناقشون في فرص نجاح المطاردة؛ وكان نادي الإصلاح أكثر انشغالًا بها لأن عددًا من أعضائه يعملون في البنك."
+    },
+    {
+      "index": 12,
+      "en": "Ralph would not concede that the work of the detectives was likely to be in vain, for he thought that the prize offered would greatly stimulate their zeal and activity. But Stuart was far from sharing this confidence; and, as they placed themselves at the whist-table, they continued to argue the matter. Stuart and Flanagan played together, while Phileas Fogg had Fallentin for his partner. As the game proceeded the conversation ceased, excepting between the rubbers, when it revived again.",
+      "existingArabicDraft": "رفض رالف التسليم بأن جهود المحققين ستذهب سدى، إذ رأى أن المكافأة ستحفز نشاطهم. أما ستيوارت فلم يشاركه الثقة، واستمر الجدال حين جلسوا إلى طاولة «ويست». لعب ستيوارت مع فلاناغان، وكان فالنتين شريك فوغ. سكت الحديث أثناء اللعب، ثم عاد بين الجولات."
+    },
+    {
+      "index": 13,
+      "en": "“I maintain,” said Stuart, “that the chances are in favour of the thief, who must be a shrewd fellow.”",
+      "existingArabicDraft": "قال ستيوارت: «أصرّ على أن الاحتمالات في صالح اللص؛ فلا بد أنه رجل شديد الدهاء»."
+    },
+    {
+      "index": 14,
+      "en": "“Well, but where can he fly to?” asked Ralph. “No country is safe for him.”",
+      "existingArabicDraft": "رد رالف: «لكن إلى أين يهرب؟ لا بلد آمنًا له»."
+    },
+    {
+      "index": 15,
+      "en": "“Pshaw!”",
+      "existingArabicDraft": "«هراء!»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«لعلّه رجل صناعة إذن»."
+    },
+    {
+      "index": 1,
+      "ar": "«تقول صحيفة ديلي تلغراف إنه رجل نبيل»."
+    },
+    {
+      "index": 2,
+      "ar": "كان فيلياس فوغ هو من أدلى بهذا التعليق، وقد أطلّ برأسه الآن من خلف صحفه. انحنى لأصدقائه وشارك في الحديث. كانت القضية التي تشكل موضوع نقاشهم، والتي أصبحت حديث المدينة، قد وقعت قبل ثلاثة أيام في بنك إنجلترا. فقد سُرقت رزمة من الأوراق النقدية، تبلغ قيمتها خمسة وخمسين ألف جنيه، من طاولة أمين الصندوق الرئيسي، بينما كان ذلك الموظف منشغلًا في تلك اللحظة بتسجيل استلام مبلغ ثلاثة شلنات وستة بنسات. وبالطبع، لم يكن بوسعه أن يراقب كل شيء في آن واحد. تجدر الإشارة إلى أن بنك إنجلترا يولي ثقة مؤثرة في أمانة الجمهور؛ فلا توجد حراس ولا قضبان حديدية لحماية كنوزه، فالذهب والفضة والأوراق النقدية معروضة بحرية تحت رحمة أول قادم. ويروي مراقب دقيق لعادات الإنجليز أنه في أحد الأيام، وبينما كان في إحدى قاعات البنك، دفعته الفضول لفحص سبيكة ذهبية تزن حوالي سبعة أو ثمانية أرطال. التقطها، وتفحصها، ثم ناولها لجاره، الذي ناولها بدوره للشخص التالي، وهكذا دواليك حتى انتقلت السبيكة من يد إلى يد إلى أن وصلت إلى نهاية ممر مظلم، ولم تعد إلى مكانها إلا بعد نصف ساعة. وفي غضون ذلك، لم يرفع أمين الصندوق رأسه حتى. لكن في هذه الحالة، لم تسر الأمور بهذه السلاسة. فبما أن رزمة الأوراق النقدية لم يُعثر عليها حين دقت الساعة الخامسة في «مكتب الرسم» الضخم، فقد أُدرج المبلغ في حساب الأرباح والخسائر. وفور اكتشاف السرقة، سارع محققون بارعون إلى ليفربول وغلاسكو ولوهافر والسويس وبرينديزي ونيويورك وموانئ أخرى، مدفوعين بالمكافأة المعروضة التي بلغت ألفي جنيه، بالإضافة إلى خمسة بالمئة من المبلغ الذي قد يُسترد. كما كُلّف محققون بمراقبة القادمين إلى لندن والمغادرين منها بالقطار بدقة، وبدأ التحقيق القضائي على الفور."
+    },
+    {
+      "index": 3,
+      "ar": "كانت هناك أسباب حقيقية للافتراض، كما ذكرت صحيفة «ديلي تلغراف»، بأن اللص لا ينتمي إلى عصابة محترفة. ففي يوم السرقة، شوهد رجل أنيق المظهر، يتمتع بأخلاق مهذبة وبمظهر يوحي بالثراء، وهو يتردد على صالة الدفع حيث وقعت الجريمة. وقد تم الحصول على وصف له بسهولة وإرساله إلى المحققين؛ ولم تفقد بعض النفوس المتفائلة، التي كان رالف واحدًا منها، الأمل في القبض عليه. كانت الصحف والنوادي تعج بالقضية، وكان الناس في كل مكان يناقشون احتمالات نجاح المطاردة؛ وكان نادي الإصلاح مضطربًا بشكل خاص، نظرًا لأن العديد من أعضائه كانوا من موظفي البنك."
+    },
+    {
+      "index": 4,
+      "ar": "لم يكن رالف ليقر بأن عمل المحققين من المرجح أن يذهب سدى، إذ كان يعتقد أن الجائزة المعروضة ستحفز حماسهم ونشاطهم بشكل كبير. لكن ستيوارت كان بعيدًا كل البعد عن مشاركته هذه الثقة؛ وبينما كانوا يجلسون إلى طاولة «الويست»، استمروا في مناقشة الأمر. لعب ستيوارت وفلاناغان معًا، بينما كان فيلياس فوغ شريكًا لفالنتين. ومع تقدم اللعبة، توقف الحديث، باستثناء ما بين الجولات، حيث كان يعود للظهور مجددًا."
+    },
+    {
+      "index": 5,
+      "ar": "قال ستيوارت: «أنا أصر على أن الاحتمالات في صالح اللص، الذي لا بد أنه رجل شديد الدهاء»."
+    },
+    {
+      "index": 6,
+      "ar": "سأل رالف: «حسنًا، ولكن إلى أين يمكنه أن يفر؟ لا يوجد بلد آمن له»."
+    },
+    {
+      "index": 7,
+      "ar": "«هراء!»"
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

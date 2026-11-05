@@ -1,0 +1,139 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 3,
+  "chapterTitle": "In Which a Conversation Takes Place Which Seems Likely to Cost Phileas Fogg Dear",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "ba53475f13db433d95d08678c365d73400f8e898bf333cfa010a20ded3a5b913",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "Phileas Fogg, having shut the door of his house at half-past eleven, and having put his right foot before his left five hundred and seventy-five times, and his left foot before his right five hundred and seventy-six times, reached the Reform Club, an imposing edifice in Pall Mall, which could not have cost less than three millions. He repaired at once to the dining-room, the nine windows of which open upon a tasteful garden, where the trees were already gilded with an autumn colouring; and took his place at the habitual table, the cover of which had already been laid for him. His breakfast consisted of a side-dish, a broiled fish with Reading sauce, a scarlet slice of roast beef garnished with mushrooms, a rhubarb and gooseberry tart, and a morsel of Cheshire cheese, the whole being washed down with several cups of tea, for which the Reform is famous. He rose at thirteen minutes to one, and directed his steps towards the large hall, a sumptuous apartment adorned with lavishly-framed paintings. A flunkey handed him an uncut Times, which he proceeded to cut with a skill which betrayed familiarity with this delicate operation. The perusal of this paper absorbed Phileas Fogg until a quarter before four, whilst the Standard, his next task, occupied him till the dinner hour. Dinner passed as breakfast had done, and Mr. Fogg reappeared in the reading-room and sat down to the Pall Mall at twenty minutes before six. Half an hour later several members of the Reform came in and drew up to the fireplace, where a coal fire was steadily burning. They were Mr. Fogg’s usual partners at whist: Andrew Stuart, an engineer; John Sullivan and Samuel Fallentin, bankers; Thomas Flanagan, a brewer; and Gauthier Ralph, one of the Directors of the Bank of England—all rich and highly respectable personages, even in a club which comprises the princes of English trade and finance.",
+      "existingArabicDraft": "أغلق فيلياس فوغ باب منزله عند الحادية عشرة والنصف، وبعد أن قدّم قدمه اليمنى على اليسرى خمسمئة وخمسًا وسبعين مرة، واليسرى على اليمنى خمسمئة وستًا وسبعين مرة، وصل إلى نادي الإصلاح في بال مال، وهو بناء فخم لا بد أن تكلفته بلغت ثلاثة ملايين على الأقل. دخل غرفة الطعام ذات النوافذ التسع المطلة على حديقة بدأت أشجارها تكتسي ألوان الخريف، وجلس إلى مائدته المعتادة المعدّة سلفًا. تناول سمكًا مشويًا بصلصة ريدنغ، وشريحة لحم بقري محمرّة مع الفطر، وفطيرة راوند وعنب الثعلب، وقطعة من جبن تشيشاير، وشرب عدة أكواب من الشاي الذي اشتهر به النادي. نهض في الثانية عشرة وسبع وأربعين دقيقة واتجه إلى القاعة الكبيرة المزينة بلوحات مؤطرة بإسراف. ناوله أحد الخدم نسخة من صحيفة «التايمز» لم تُفصل صفحاتها بعد، ففصلها بمهارة تنم عن تمرّسه بهذه المهمة الدقيقة. انشغل بالصحيفة حتى الثالثة وخمس وأربعين دقيقة، ثم قرأ «ستاندرد» حتى موعد العشاء. وبعد العشاء عاد إلى غرفة القراءة ليتصفح «بال مال» عند الخامسة وأربعين دقيقة تقريبًا. وبعد نصف ساعة اجتمع قرب المدفأة شركاؤه المعتادون في لعبة الورق «ويست»: المهندس أندرو ستيوارت، والمصرفيان جون سوليفان وصموئيل فالنتين، وصانع الجعة توماس فلاناغان، وغوتييه رالف أحد مديري بنك إنجلترا؛ وكلهم أثرياء محترمون حتى بمقاييس نادٍ يضم كبار رجال المال والتجارة."
+    },
+    {
+      "index": 1,
+      "en": "“Well, Ralph,” said Thomas Flanagan, “what about that robbery?”",
+      "existingArabicDraft": "قال توماس فلاناغان: «حسنًا يا رالف، ما أخبار تلك السرقة؟»"
+    },
+    {
+      "index": 2,
+      "en": "“Oh,” replied Stuart, “the Bank will lose the money.”",
+      "existingArabicDraft": "أجاب ستيوارت: «أوه، سيخسر البنك المال»."
+    },
+    {
+      "index": 3,
+      "en": "“On the contrary,” broke in Ralph, “I hope we may put our hands on the robber. Skilful detectives have been sent to all the principal ports of America and the Continent, and he’ll be a clever fellow if he slips through their fingers.”",
+      "existingArabicDraft": "قاطعه رالف: «بل آمل أن نقبض على السارق. أُرسل محققون مهرة إلى الموانئ الرئيسية في أمريكا والقارة الأوروبية، وسيكون بارعًا حقًا إن أفلت من أيديهم»."
+    },
+    {
+      "index": 4,
+      "en": "“But have you got the robber’s description?” asked Stuart.",
+      "existingArabicDraft": "سأل ستيوارت: «ولكن هل لديكم وصف للسارق؟»"
+    },
+    {
+      "index": 5,
+      "en": "“In the first place, he is no robber at all,” returned Ralph, positively.",
+      "existingArabicDraft": "أجاب رالف بثقة: «أولًا، إنه ليس سارقًا أصلًا»."
+    },
+    {
+      "index": 6,
+      "en": "“What! a fellow who makes off with fifty-five thousand pounds, no robber?”",
+      "existingArabicDraft": "«ماذا؟ رجل يهرب بخمسة وخمسين ألف جنيه وليس سارقًا؟»"
+    },
+    {
+      "index": 7,
+      "en": "“No.”",
+      "existingArabicDraft": "«لا»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "أغلق فيلياس فوغ باب منزله في تمام الحادية عشرة والنصف، وبعد أن خطى بقدمه اليمنى أمام اليسرى خمسمئة وخمسًا وسبعين خطوة، وبقدمه اليسرى أمام اليمنى خمسمئة وستًا وسبعين خطوة، وصل إلى نادي الإصلاح، وهو صرح مهيب في شارع بال مال، لا بد أن تكلفة بنائه لم تقل عن ثلاثة ملايين. توجه مباشرة إلى غرفة الطعام، التي تطل نوافذها التسع على حديقة أنيقة بدأت أشجارها تكتسي بحلة الخريف الذهبية، وجلس إلى مائدته المعتادة التي كانت قد أُعدت له سلفًا. تألفت وجبة إفطاره من طبق جانبي، وسمك مشوي بصلصة ريدنغ، وشريحة حمراء من لحم البقر المشوي مزينة بالفطر، وفطيرة الراوند وعنب الثعلب، وقطعة من جبن تشيشاير، وأتبع ذلك كله بعدة أكواب من الشاي الذي يشتهر به النادي. نهض في تمام الساعة الثانية عشرة وسبع وأربعين دقيقة، واتجه نحو القاعة الكبيرة، وهي ردهة فخمة مزينة بلوحات ذات إطارات باذخة. ناوله أحد الخدم نسخة من صحيفة «التايمز» لم تُفصل صفحاتها بعد، فشرع في فصلها بمهارة كشفت عن اعتياده على هذه المهمة الدقيقة. استغرقت قراءة هذه الصحيفة كل اهتمام فيلياس فوغ حتى الساعة الثالثة وخمس وأربعين دقيقة، بينما شغلت صحيفة «ستاندرد»، وهي مهمته التالية، وقته حتى موعد العشاء. مر العشاء كما مر الإفطار، وعاد السيد فوغ ليظهر في غرفة القراءة ويجلس لمطالعة صحيفة «بال مال» في الساعة الخامسة وأربعين دقيقة. وبعد نصف ساعة، دخل العديد من أعضاء النادي واقتربوا من المدفأة حيث كانت نار الفحم تشتعل بانتظام. كانوا شركاء السيد فوغ المعتادين في لعبة الورق «ويست»: أندرو ستيوارت، المهندس؛ وجون سوليفان وصموئيل فالنتين، المصرفيان؛ وتوماس فلاناغان، صانع الجعة؛ وغوتييه رالف، أحد مديري بنك إنجلترا؛ وجميعهم شخصيات ثرية ومحترمة للغاية، حتى في نادٍ يضم أقطاب التجارة والمال في إنجلترا."
+    },
+    {
+      "index": 1,
+      "ar": "قال توماس فلاناغان: «حسنًا يا رالف، ماذا عن تلك السرقة؟»"
+    },
+    {
+      "index": 2,
+      "ar": "أجاب ستيوارت: «أوه، سيخسر البنك المال»."
+    },
+    {
+      "index": 3,
+      "ar": "قاطعه رالف قائلًا: «على العكس من ذلك، آمل أن نتمكن من وضع أيدينا على السارق. فقد أُرسل محققون مهرة إلى جميع الموانئ الرئيسية في أمريكا والقارة الأوروبية، وسيكون شخصًا بارعًا حقًا إن تمكن من الإفلات من قبضتهم»."
+    },
+    {
+      "index": 4,
+      "ar": "سأل ستيوارت: «ولكن هل لديكم وصف للسارق؟»"
+    },
+    {
+      "index": 5,
+      "ar": "أجاب رالف بثقة: «أولًا، إنه ليس سارقًا على الإطلاق»."
+    },
+    {
+      "index": 6,
+      "ar": "«ماذا! رجل يهرب بخمسة وخمسين ألف جنيه، وليس سارقًا؟»"
+    },
+    {
+      "index": 7,
+      "ar": "«لا»."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

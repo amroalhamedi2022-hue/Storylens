@@ -1,0 +1,139 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 3,
+  "chapterTitle": "In Which a Conversation Takes Place Which Seems Likely to Cost Phileas Fogg Dear",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 8,
+  "sourceSha256": "7dae17860a0c8df149768ab78abd76774e8c2f82bd34e39ba96cc376c3fe771f",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "But the incredulous Stuart was not convinced, and when the hand was finished, said eagerly: “You have a strange way, Ralph, of proving that the world has grown smaller. So, because you can go round it in three months—”",
+      "existingArabicDraft": "لكن ستيوارت المتشكك لم يقتنع، وما إن انتهت الجولة حتى قال بحماسة: «هذه طريقة غريبة يا رالف لإثبات أن العالم صغر! أتقصد أن المرء يستطيع الدوران حوله في ثلاثة أشهر...»."
+    },
+    {
+      "index": 25,
+      "en": "“In eighty days,” interrupted Phileas Fogg.",
+      "existingArabicDraft": "قاطعه فوغ: «في ثمانين يومًا»."
+    },
+    {
+      "index": 26,
+      "en": "“That is true, gentlemen,” added John Sullivan. “Only eighty days, now that the section between Rothal and Allahabad, on the Great Indian Peninsula Railway, has been opened. Here is the estimate made by the Daily Telegraph:",
+      "existingArabicDraft": "قال جون سوليفان: «هذا صحيح يا سادة. ثمانون يومًا فقط بعد افتتاح الجزء الواصل بين روثال والله آباد من سكة حديد شبه الجزيرة الهندية الكبرى. وإليكم تقدير صحيفة ديلي تلغراف:»."
+    },
+    {
+      "index": 27,
+      "en": "From London to Suez via Mont Cenis and Brindisi, by rail and steamboats: 7 days; From Suez to Bombay, by steamer: 13 days; From Bombay to Calcutta, by rail: 3 days; From Calcutta to Hong Kong, by steamer: 13 days; From Hong Kong to Yokohama (Japan), by steamer: 6 days; From Yokohama to San Francisco, by steamer: 22 days; From San Francisco to New York, by rail: 7 days; From New York to London, by steamer and rail: 9 days. Total: 80 days.",
+      "existingArabicDraft": "من لندن إلى السويس عبر مون سيني وبرينديزي بالقطار والباخرة: 7 أيام؛ من السويس إلى بومباي بالباخرة: 13 يومًا؛ من بومباي إلى كلكتا بالقطار: 3 أيام؛ من كلكتا إلى هونغ كونغ بالباخرة: 13 يومًا؛ من هونغ كونغ إلى يوكوهاما في اليابان بالباخرة: 6 أيام؛ من يوكوهاما إلى سان فرانسيسكو بالباخرة: 22 يومًا؛ من سان فرانسيسكو إلى نيويورك بالقطار: 7 أيام؛ من نيويورك إلى لندن بالباخرة والقطار: 9 أيام. المجموع: 80 يومًا."
+    },
+    {
+      "index": 28,
+      "en": "“Yes, in eighty days!” exclaimed Stuart, who in his excitement made a false deal. “But that doesn’t take into account bad weather, contrary winds, shipwrecks, railway accidents, and so on.”",
+      "existingArabicDraft": "صاح ستيوارت، وقد أخطأ في توزيع الأوراق من شدة انفعاله: «نعم، في ثمانين يومًا! لكن الحساب لا يشمل سوء الطقس والرياح المعاكسة وحوادث الغرق والسكك الحديدية وما إلى ذلك»."
+    },
+    {
+      "index": 29,
+      "en": "“All included,” returned Phileas Fogg, continuing to play despite the discussion.",
+      "existingArabicDraft": "أجاب فوغ، وهو يواصل اللعب: «كل ذلك محسوب»."
+    },
+    {
+      "index": 30,
+      "en": "“But suppose the Hindus or Indians pull up the rails,” replied Stuart; “suppose they stop the trains, pillage the luggage-vans, and scalp the passengers!”",
+      "existingArabicDraft": "قال ستيوارت: «وماذا لو اقتلع الهنود القضبان، أو أوقفوا القطارات ونهبوا عربات الأمتعة واعتدوا على الركاب؟»"
+    },
+    {
+      "index": 31,
+      "en": "“All included,” calmly retorted Fogg; adding, as he threw down the cards, “Two trumps.”",
+      "existingArabicDraft": "رد فوغ بهدوء، وهو يلقي أوراقه: «كل ذلك محسوب. ورقتان رابحتان»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "لكن ستيوارت المتشكك لم يقتنع، وما إن انتهت الجولة حتى قال بحماسة: «يا رالف، إن لديك طريقة غريبة في إثبات أن العالم قد صغر. أتقصد أنك تستطيع الدوران حوله في ثلاثة أشهر...»"
+    },
+    {
+      "index": 1,
+      "ar": "قاطعه فيلياس فوغ قائلاً: «في ثمانين يومًا»."
+    },
+    {
+      "index": 2,
+      "ar": "وأضاف جون سوليفان: «هذا صحيح يا سادة. ثمانون يومًا فقط، الآن وقد تم افتتاح الجزء الواصل بين روثال والله آباد على خط سكة حديد شبه الجزيرة الهندية الكبرى. وإليكم التقدير الذي وضعته صحيفة ديلي تلغراف:»"
+    },
+    {
+      "index": 3,
+      "ar": "من لندن إلى السويس عبر مون سيني وبرينديزي، بالقطار والباخرة: 7 أيام؛ من السويس إلى بومباي، بالباخرة: 13 يومًا؛ من بومباي إلى كلكتا، بالقطار: 3 أيام؛ من كلكتا إلى هونغ كونغ، بالباخرة: 13 يومًا؛ من هونغ كونغ إلى يوكوهاما (اليابان)، بالباخرة: 6 أيام؛ من يوكوهاما إلى سان فرانسيسكو، بالباخرة: 22 يومًا؛ من سان فرانسيسكو إلى نيويورك، بالقطار: 7 أيام؛ من نيويورك إلى لندن، بالباخرة والقطار: 9 أيام. المجموع: 80 يومًا."
+    },
+    {
+      "index": 4,
+      "ar": "صاح ستيوارت، الذي أخطأ في توزيع الأوراق من شدة انفعاله: «نعم، في ثمانين يومًا! لكن هذا الحساب لا يأخذ في الاعتبار سوء الأحوال الجوية، والرياح المعاكسة، وحوادث غرق السفن، وحوادث السكك الحديدية، وما إلى ذلك»."
+    },
+    {
+      "index": 5,
+      "ar": "أجاب فيلياس فوغ، وهو يواصل اللعب رغم النقاش: «كل ذلك محسوب»."
+    },
+    {
+      "index": 6,
+      "ar": "رد ستيوارت: «ولكن افترض أن الهنود اقتلعوا القضبان، أو أوقفوا القطارات، ونهبوا عربات الأمتعة، وسلخوا فروة رؤوس الركاب!»"
+    },
+    {
+      "index": 7,
+      "ar": "رد فوغ بهدوء: «كل ذلك محسوب»؛ ثم أضاف وهو يلقي أوراقه: «ورقتان رابحتان»."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

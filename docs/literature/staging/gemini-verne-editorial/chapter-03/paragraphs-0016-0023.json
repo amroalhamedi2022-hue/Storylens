@@ -1,0 +1,139 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 3,
+  "chapterTitle": "In Which a Conversation Takes Place Which Seems Likely to Cost Phileas Fogg Dear",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "ef121c743d43891e30775b8549e715926c74c2d819a47590976ee6f8524d18a2",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "“Where could he go, then?”",
+      "existingArabicDraft": "«فإلى أين يستطيع الذهاب؟»"
+    },
+    {
+      "index": 17,
+      "en": "“Oh, I don’t know that. The world is big enough.”",
+      "existingArabicDraft": "«لا أعرف. العالم واسع بما يكفي»."
+    },
+    {
+      "index": 18,
+      "en": "“It was once,” said Phileas Fogg, in a low tone. “Cut, sir,” he added, handing the cards to Thomas Flanagan.",
+      "existingArabicDraft": "قال فوغ بصوت خفيض: «كان كذلك في الماضي». ثم ناول فلاناغان الأوراق وأضاف: «اقطع الأوراق يا سيدي»."
+    },
+    {
+      "index": 19,
+      "en": "The discussion fell during the rubber, after which Stuart took up its thread.",
+      "existingArabicDraft": "توقف النقاش أثناء الجولة، وبعد انتهائها عاد ستيوارت إلى الموضوع."
+    },
+    {
+      "index": 20,
+      "en": "“What do you mean by ‘once’? Has the world grown smaller?”",
+      "existingArabicDraft": "«ماذا تعني بقولك: كان؟ هل صار العالم أصغر؟»"
+    },
+    {
+      "index": 21,
+      "en": "“Certainly,” returned Ralph. “I agree with Mr. Fogg. The world has grown smaller, since a man can now go round it ten times more quickly than a hundred years ago. And that is why the search for this thief will be more likely to succeed.”",
+      "existingArabicDraft": "أجاب رالف: «بالتأكيد. أتفق مع السيد فوغ؛ لقد صار العالم أصغر لأن المرء يستطيع الآن الدوران حوله أسرع بعشر مرات مما كان يستطيع قبل قرن. ولهذا تزيد فرص العثور على اللص»."
+    },
+    {
+      "index": 22,
+      "en": "“And also why the thief can get away more easily.”",
+      "existingArabicDraft": "«وتزيد أيضًا فرص هرب اللص بسهولة أكبر»."
+    },
+    {
+      "index": 23,
+      "en": "“Be so good as to play, Mr. Stuart,” said Phileas Fogg.",
+      "existingArabicDraft": "قال فوغ: «تفضل باللعب يا سيد ستيوارت»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«إلى أين يمكنه الذهاب إذًا؟»"
+    },
+    {
+      "index": 1,
+      "ar": "«أوه، لا أعلم ذلك. فالعالم واسع بما يكفي»."
+    },
+    {
+      "index": 2,
+      "ar": "قال فيلياس فوغ بصوت خفيض: «كان كذلك في الماضي». ثم أضاف وهو يناول أوراق اللعب إلى توماس فلاناغان: «اقطع الأوراق يا سيدي»."
+    },
+    {
+      "index": 3,
+      "ar": "توقف النقاش أثناء جولة اللعب، وبعد انتهائها عاد ستيوارت إلى استكمال الحديث."
+    },
+    {
+      "index": 4,
+      "ar": "«ما الذي تعنيه بقولك: كان؟ هل صار العالم أصغر؟»"
+    },
+    {
+      "index": 5,
+      "ar": "أجاب رالف: «بالتأكيد. أنا أتفق مع السيد فوغ. لقد صار العالم أصغر، إذ يستطيع المرء الآن الدوران حوله أسرع بعشر مرات مما كان عليه الحال قبل مئة عام. ولهذا السبب ستكون فرص العثور على هذا اللص أكثر نجاحًا»."
+    },
+    {
+      "index": 6,
+      "ar": "«وهذا هو السبب أيضًا في أن اللص يمكنه الإفلات بسهولة أكبر»."
+    },
+    {
+      "index": 7,
+      "ar": "قال فيلياس فوغ: «كن لطيفًا وقم باللعب يا سيد ستيوارت»."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

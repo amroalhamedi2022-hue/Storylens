@@ -1,0 +1,139 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 3,
+  "chapterTitle": "In Which a Conversation Takes Place Which Seems Likely to Cost Phileas Fogg Dear",
+  "startParagraphZeroBased": 32,
+  "paragraphCount": 8,
+  "sourceSha256": "c07a4a389d20fc64b8d12fe3f4465e43b6a95fa9c9edfa1ed13494d630e7bf13",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 32,
+      "en": "Stuart, whose turn it was to deal, gathered them up, and went on: “You are right, theoretically, Mr. Fogg, but practically—”",
+      "existingArabicDraft": "جمع ستيوارت الأوراق وقد جاء دوره في التوزيع، ثم قال: «أنت محق نظريًا يا سيد فوغ، لكن عمليًا...»."
+    },
+    {
+      "index": 33,
+      "en": "“Practically also, Mr. Stuart.”",
+      "existingArabicDraft": "«وعمليًا أيضًا يا سيد ستيوارت»."
+    },
+    {
+      "index": 34,
+      "en": "“I’d like to see you do it in eighty days.”",
+      "existingArabicDraft": "«أود أن أراك تفعلها في ثمانين يومًا»."
+    },
+    {
+      "index": 35,
+      "en": "“It depends on you. Shall we go?”",
+      "existingArabicDraft": "«الأمر يتوقف عليك. هل ننطلق؟»"
+    },
+    {
+      "index": 36,
+      "en": "“Heaven preserve me! But I would wager four thousand pounds that such a journey, made under these conditions, is impossible.”",
+      "existingArabicDraft": "«ليحفظني الله! لكنني أراهن بأربعة آلاف جنيه على استحالة رحلة كهذه في هذه الظروف»."
+    },
+    {
+      "index": 37,
+      "en": "“Quite possible, on the contrary,” returned Mr. Fogg.",
+      "existingArabicDraft": "أجاب فوغ: «بل هي ممكنة تمامًا»."
+    },
+    {
+      "index": 38,
+      "en": "“Well, make it, then!”",
+      "existingArabicDraft": "«إذن قم بها!»"
+    },
+    {
+      "index": 39,
+      "en": "“The journey round the world in eighty days?”",
+      "existingArabicDraft": "«رحلة حول العالم في ثمانين يومًا؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "جمع ستيوارت الأوراق، وقد كان دوره في التوزيع، ثم تابع قائلًا: «أنت محق من الناحية النظرية يا سيد فوغ، ولكن من الناحية العملية...»"
+    },
+    {
+      "index": 1,
+      "ar": "«ومن الناحية العملية أيضًا يا سيد ستيوارت»."
+    },
+    {
+      "index": 2,
+      "ar": "«أود أن أراك تفعل ذلك في ثمانين يومًا»."
+    },
+    {
+      "index": 3,
+      "ar": "«الأمر يتوقف عليك. هل نبدأ؟»"
+    },
+    {
+      "index": 4,
+      "ar": "«ليحفظني الله! لكنني أراهن بأربعة آلاف جنيه على أن القيام بمثل هذه الرحلة، في ظل هذه الظروف، أمر مستحيل»."
+    },
+    {
+      "index": 5,
+      "ar": "رد السيد فوغ: «بل هي ممكنة تمامًا على العكس من ذلك»."
+    },
+    {
+      "index": 6,
+      "ar": "«حسنًا، إذن قم بها!»"
+    },
+    {
+      "index": 7,
+      "ar": "«القيام برحلة حول العالم في ثمانين يومًا؟»"
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

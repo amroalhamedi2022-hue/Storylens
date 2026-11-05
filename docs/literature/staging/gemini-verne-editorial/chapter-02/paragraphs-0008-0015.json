@@ -1,0 +1,68 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 2,
+  "chapterTitle": "In Which Passepartout Is Convinced That He Has at Last Found His Ideal",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 3,
+  "sourceSha256": "5fc1e8e0371b3f35eb7569bd0582e65591a8a3a9cb363a7d9d9e08ecab51a79e",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "He suddenly observed, hung over the clock, a card which, upon inspection, proved to be a programme of the daily routine of the house. It comprised all that was required of the servant, from eight in the morning, exactly at which hour Phileas Fogg rose, till half-past eleven, when he left the house for the Reform Club—all the details of service, the tea and toast at twenty-three minutes past eight, the shaving-water at thirty-seven minutes past nine, and the toilet at twenty minutes before ten. Everything was regulated and foreseen that was to be done from half-past eleven a.m. till midnight, the hour at which the methodical gentleman retired.",
+      "existingArabicDraft": "ثم لمح فجأة بطاقة معلقة فوق الساعة. وما إن تفحصها حتى تبين أنها جدول الأعمال اليومية في المنزل. احتوت كل ما ينبغي على الخادم فعله، من الثامنة صباحًا، ساعة استيقاظ فيلياس فوغ بالضبط، حتى الحادية عشرة والنصف، موعد مغادرته إلى نادي الإصلاح؛ بما في ذلك أصغر التفاصيل: الشاي والخبز المحمص عند الثامنة وثلاث وعشرين دقيقة، وماء الحلاقة عند التاسعة وسبع وثلاثين دقيقة، والاستعداد للملابس عند العاشرة إلا عشرين دقيقة. وكل ما يجب إنجازه من الحادية عشرة والنصف صباحًا حتى منتصف الليل، موعد خلود الرجل المنظم إلى النوم، كان مقررًا ومحسوبًا سلفًا."
+    },
+    {
+      "index": 9,
+      "en": "Mr. Fogg’s wardrobe was amply supplied and in the best taste. Each pair of trousers, coat, and vest bore a number, indicating the time of year and season at which they were in turn to be laid out for wearing; and the same system was applied to the master’s shoes. In short, the house in Saville Row, which must have been a very temple of disorder and unrest under the illustrious but dissipated Sheridan, was cosiness, comfort, and method idealised. There was no study, nor were there books, which would have been quite useless to Mr. Fogg; for at the Reform two libraries, one of general literature and the other of law and politics, were at his service. A moderate-sized safe stood in his bedroom, constructed so as to defy fire as well as burglars; but Passepartout found neither arms nor hunting weapons anywhere; everything betrayed the most tranquil and peaceable habits.",
+      "existingArabicDraft": "كانت خزانة ملابس السيد فوغ زاخرة بالثياب المختارة بذوق رفيع. وكل سروال ومعطف وسترة يحمل رقمًا يدل على الفصل والوقت من السنة الذي يحين فيه ارتداؤه؛ وامتد النظام نفسه إلى أحذيته. وباختصار، فإن منزل سافيل رو، الذي لا بد أنه كان معبدًا للفوضى والاضطراب أيام ساكنه الشهير شيريدان، المعروف بإسرافه، أصبح مثالًا للراحة والهدوء والنظام. لم تكن فيه غرفة دراسة ولا كتب، إذ لم يكن فوغ بحاجة إليها؛ ففي نادي الإصلاح مكتبتان تحت تصرفه، إحداهما للأدب العام والأخرى للقانون والسياسة. وفي غرفة نومه خزنة متوسطة الحجم صُممت لمقاومة النار واللصوص؛ لكن باسبارتو لم يجد في المنزل سلاحًا أو أدوات صيد، بل كان كل شيء يدل على عادات مسالمة هادئة."
+    },
+    {
+      "index": 10,
+      "en": "Having scrutinised the house from top to bottom, he rubbed his hands, a broad smile overspread his features, and he said joyfully, “This is just what I wanted! Ah, we shall get on together, Mr. Fogg and I! What a domestic and regular gentleman! A real machine; well, I don’t mind serving a machine.”",
+      "existingArabicDraft": "وبعد أن تفحص المنزل من أعلاه إلى أسفله، فرك يديه، وارتسمت على وجهه ابتسامة عريضة، وقال فرحًا: «هذا بالضبط ما أردته! آه، سنتفاهم أنا والسيد فوغ! يا له من رجل منزلي منظم! آلة حقيقية؛ حسنًا، لا مانع لدي من خدمة آلة»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "لاحظ فجأة بطاقة معلقة فوق الساعة، تبين له عند فحصها أنها برنامج للروتين اليومي في المنزل. كانت تتضمن كل ما هو مطلوب من الخادم، بدءًا من الساعة الثامنة صباحًا، وهي الساعة التي يستيقظ فيها فيلياس فوغ بالضبط، وحتى الحادية عشرة والنصف، حين يغادر المنزل متوجهًا إلى نادي الإصلاح؛ بما في ذلك كل تفاصيل الخدمة، من الشاي والخبز المحمص في الساعة الثامنة وثلاث وعشرين دقيقة، وماء الحلاقة في الساعة التاسعة وسبع وثلاثين دقيقة، والملابس في الساعة العاشرة إلا عشرين دقيقة. كان كل شيء منظمًا ومحسوبًا مما يجب القيام به من الحادية عشرة والنصف صباحًا حتى منتصف الليل، وهي الساعة التي يأوي فيها هذا الرجل المنهجي إلى فراشه."
+    },
+    {
+      "index": 1,
+      "ar": "كانت خزانة ملابس السيد فوغ مجهزة تجهيزًا وافرًا وبأفضل ذوق. فكل زوج من السراويل والمعاطف والسترات يحمل رقمًا يشير إلى وقت السنة والموسم الذي يجب فيه إخراجها بالدور لارتدائها؛ وطُبق النظام نفسه على أحذية السيد. باختصار، كان منزل سافيل رو، الذي لا بد أنه كان معبدًا للفوضى وعدم الاستقرار في عهد شيريدان الشهير والمبذر، مثالًا للراحة والهدوء والنظام المثالي. لم تكن هناك غرفة للمطالعة، ولا كتب، والتي كانت ستكون عديمة الفائدة تمامًا للسيد فوغ؛ ففي نادي الإصلاح كانت هناك مكتبتان، إحداهما للأدب العام والأخرى للقانون والسياسة، تحت تصرفه. كانت توجد خزنة متوسطة الحجم في غرفة نومه، صُممت لتتحدى الحريق واللصوص على حد سواء؛ لكن باسبارتو لم يجد أي أسلحة أو أدوات صيد في أي مكان؛ فكل شيء كان يشي بعادات هادئة ومسالمة للغاية."
+    },
+    {
+      "index": 2,
+      "ar": "بعد أن فحص المنزل من أعلاه إلى أسفله، فرك يديه، وانتشرت ابتسامة عريضة على ملامحه، وقال بفرح: «هذا بالضبط ما كنت أريده! آه، سنتفق معًا، أنا والسيد فوغ! يا له من رجل منزلي ومنتظم! آلة حقيقية؛ حسنًا، لا أمانع في خدمة آلة»."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": false,
+      "issues": "ترجمة 'toilet' بـ 'الملابس' غير دقيقة في هذا السياق، حيث تشير إلى العناية الشخصية أو الهندام وليس الملابس فقط."
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "ترجمة 'dissipated' بـ 'المبذر' غير دقيقة تاريخياً؛ الكلمة تشير إلى الانغماس في الملذات أو حياة اللهو، و'cosiness' تُرجمت بـ 'الراحة' بينما كان يمكن تعزيزها بكلمة تعبر عن الدفء المنزلي."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

@@ -1,0 +1,139 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 3,
+  "chapterTitle": "In Which a Conversation Takes Place Which Seems Likely to Cost Phileas Fogg Dear",
+  "startParagraphZeroBased": 40,
+  "paragraphCount": 8,
+  "sourceSha256": "605f759940ecd0b0132c4950fa0ba409afb28f7851673d6116c4e8bcf60e5e2e",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 40,
+      "en": "“Yes.”",
+      "existingArabicDraft": "«نعم»."
+    },
+    {
+      "index": 41,
+      "en": "“I should like nothing better.”",
+      "existingArabicDraft": "«لا أريد شيئًا أكثر من ذلك»."
+    },
+    {
+      "index": 42,
+      "en": "“When?”",
+      "existingArabicDraft": "«متى؟»"
+    },
+    {
+      "index": 43,
+      "en": "“At once. Only I warn you that I shall do it at your expense.”",
+      "existingArabicDraft": "«في الحال. لكنني أنبهك إلى أنني سأقوم بها على نفقتك»."
+    },
+    {
+      "index": 44,
+      "en": "“It’s absurd!” cried Stuart, who was beginning to be annoyed at the persistency of his friend. “Come, let’s go on with the game.”",
+      "existingArabicDraft": "صاح ستيوارت وقد بدأ يضيق بإصرار صديقه: «هذا عبث! هيا نكمل اللعب»."
+    },
+    {
+      "index": 45,
+      "en": "“Deal over again, then,” said Phileas Fogg. “There’s a false deal.”",
+      "existingArabicDraft": "قال فوغ: «أعد توزيع الأوراق إذن؛ فقد أخطأت في التوزيع»."
+    },
+    {
+      "index": 46,
+      "en": "Stuart took up the pack with a feverish hand; then suddenly put them down again.",
+      "existingArabicDraft": "أمسك ستيوارت رزمة الأوراق بيد مرتجفة، ثم وضعها فجأة."
+    },
+    {
+      "index": 47,
+      "en": "“Well, Mr. Fogg,” said he, “it shall be so: I will wager the four thousand on it.”",
+      "existingArabicDraft": "قال: «حسنًا يا سيد فوغ، ليكن ما تريد. سأراهن بالأربعة آلاف»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«أجل»."
+    },
+    {
+      "index": 1,
+      "ar": "«لا شيء يروق لي أكثر من ذلك»."
+    },
+    {
+      "index": 2,
+      "ar": "«متى؟»"
+    },
+    {
+      "index": 3,
+      "ar": "«في الحال. لكنني أحذرك من أنني سأفعل ذلك على نفقتك الخاصة»."
+    },
+    {
+      "index": 4,
+      "ar": "هتف ستيوارت، الذي بدأ يشعر بالضيق من إصرار صديقه: «هذا محض عبث! هيا، لنكمل اللعب»."
+    },
+    {
+      "index": 5,
+      "ar": "قال فيلياس فوغ: «أعد توزيع الأوراق إذن. لقد حدث خطأ في التوزيع»."
+    },
+    {
+      "index": 6,
+      "ar": "تناول ستيوارت رزمة الأوراق بيد مضطربة، ثم سرعان ما وضعها مجددًا."
+    },
+    {
+      "index": 7,
+      "ar": "قال: «حسنًا يا سيد فوغ، ليكن ذلك. سأراهن بالأربعة آلاف على هذا»."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات."
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات."
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات."
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات."
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات."
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
