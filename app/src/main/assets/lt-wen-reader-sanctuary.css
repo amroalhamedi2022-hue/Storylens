@@ -38,7 +38,7 @@ body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
 }
 /* Quiet museum shelf: original cover imagery is never filtered or recoloured. */
 body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
-        .theme-paper-atlas,.theme-midnight-library) .library .shelf .card{
+        .theme-paper-atlas,.theme-midnight-library) .library .shelf:not(.lt-novel-shelf) .card:not(.lt-novel-card){
  border:1px solid color-mix(in srgb,var(--lt-sanctuary-rim) 60%,
        var(--lt-sanctuary-a) 40%)!important;
  border-radius:clamp(18px,2vw,27px)!important;
@@ -47,7 +47,7 @@ body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
 }
 body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
-        .theme-paper-atlas,.theme-midnight-library) .library .shelf .card .cover{
+        .theme-paper-atlas,.theme-midnight-library) .library .shelf:not(.lt-novel-shelf) .card:not(.lt-novel-card) .cover{
  border:1px solid color-mix(in srgb,var(--lt-sanctuary-rim) 40%,transparent);
  border-radius:clamp(12px,1.3vw,17px)!important;
  filter:none!important;mix-blend-mode:normal!important;opacity:1!important;
@@ -59,24 +59,24 @@ body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
   padding-inline:clamp(16px,2.2vw,36px)!important;
  }
  body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
-         .theme-paper-atlas,.theme-midnight-library) .library .shelf{
+         .theme-paper-atlas,.theme-midnight-library) .library .shelf:not(.lt-novel-shelf){
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
   gap:clamp(13px,1.35vw,22px)!important;
  }
  body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
-         .theme-paper-atlas,.theme-midnight-library) .library .shelf .card{
+         .theme-paper-atlas,.theme-midnight-library) .library .shelf:not(.lt-novel-shelf) .card:not(.lt-novel-card){
   min-width:0!important;min-height:178px!important;max-height:none!important;
   grid-template-columns:minmax(0,1fr) clamp(96px,10vw,144px)!important;
   padding:clamp(10px,1.1vw,16px)!important;
  }
  body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
-         .theme-paper-atlas,.theme-midnight-library) .library .shelf .card .cover{
+         .theme-paper-atlas,.theme-midnight-library) .library .shelf:not(.lt-novel-shelf) .card:not(.lt-novel-card) .cover{
   min-height:148px!important;aspect-ratio:3/4;
  }
 }
 @media(max-width:849px){
  body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
-         .theme-paper-atlas,.theme-midnight-library) .library .shelf{
+         .theme-paper-atlas,.theme-midnight-library) .library .shelf:not(.lt-novel-shelf){
   grid-template-columns:minmax(0,1fr)!important;gap:11px!important;
  }
 }
@@ -151,7 +151,7 @@ body .reader :is(.reading-width,.lt-book-page,.sentence,.tok,.inline-ar,
  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
 }
 @media(prefers-reduced-motion:reduce){
- body .library .shelf .card,body .lt-wen-follow-lens,
+ body .library .shelf:not(.lt-novel-shelf) .card:not(.lt-novel-card),body .lt-wen-follow-lens,
  body :is(.lt-theme-choice,.lt-menu-toggle,.lt-drawer-close){
   animation:none!important;transition:none!important;
  }

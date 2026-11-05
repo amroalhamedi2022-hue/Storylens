@@ -13,6 +13,8 @@ for(const name of names){
  a.ok(fixture.includes("'"+name+"'"),'Chromium QA exercises theme '+name);
 }
 a.ok(css.includes('grid-template-columns:repeat(2,minmax(0,1fr))!important'));
+a.ok(css.includes('.shelf:not(.lt-novel-shelf)'), 'original illustrated book shelf retains its auto-fit centring');
+a.doesNotMatch(css,/\.library \.shelf(?!:not\(\.lt-novel-shelf\)) \.card/, 'do not overwrite special novel cover layout');
 a.ok(css.includes('@media(max-width:849px)'));
 a.match(css,/\.lt-wen-follow-lens/);
 a.match(wen,/const FOLLOW=\.60, RELEASE_MS=265/);
