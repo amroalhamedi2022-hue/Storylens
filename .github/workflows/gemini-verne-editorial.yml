@@ -60,6 +60,12 @@ jobs:
           else
             git switch -c "$BRANCH"
           fi
+          # Use the EXACT tested source implementation from this workflow run,
+          # not an old script previously committed in the checkpoint branch.
+          # "git show" changes only the working tree; generated output commits
+          # do not accidentally include unreviewed tooling edits.
+          git show "$GITHUB_SHA:tools/export_verne_chapter.cjs" > tools/export_verne_chapter.cjs
+          git show "$GITHUB_SHA:tools/gemini_verne_editorial.py" > tools/gemini_verne_editorial.py
       - name: Generate and independently audit bounded bilingual segments
         id: generate
         env:
