@@ -196,6 +196,28 @@ def generate() -> dict:
             )
             war_hashes.add(original_hash)
         war_historic_count = len(war_metadata["images"])
+    mohicans_extra_count = 0
+    mohicans_gallery = STAGING / "mohicans-andriolli-period-plates" / "manifest.json"
+    if mohicans_gallery.is_file():
+        mo = jload(mohicans_gallery)
+        if (mo.get("category") != "Category:Illustrations from Last of Mohicans by Michał Elwiro Andriolli"
+                or mo.get("chapterSceneMatchingComplete") is not False
+                or mo.get("publicationApproved") is not False):
+            raise ValueError("Mohicans nineteenth-century staging claims unverified approval or wrong category")
+        checked_source_hashes, checked_webp_hashes = set(), set()
+        for plate in mo["images"]:
+            source_hash = plate["originalCommonsSHA1MetadataOnly"]
+            webp_hash = plate["webpSha256"]
+            if source_hash in checked_source_hashes or webp_hash in checked_webp_hashes:
+                raise ValueError("Duplicate Mohicans Andriolli source scan/image")
+            if (plate.get("editoriallyApproved") is not False
+                    or plate.get("rightsStatus") != "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW"
+                    or not plate.get("originalCreator") or not plate.get("commonsPage")):
+                raise ValueError("Andriolli archive missing provenance or falsely approved")
+            check_binary(str((mohicans_gallery.parent / plate["localPath"]).relative_to(ROOT)), webp_hash)
+            checked_source_hashes.add(source_hash)
+            checked_webp_hashes.add(webp_hash)
+        mohicans_extra_count = len(mo["images"])
     rows = [
         {"bookId": "around-the-world-in-eighty-days-towle",
          "title": "Around the World in Eighty Days", "sourceState": "37 source chapters plus Arabic draft",
@@ -217,6 +239,10 @@ def generate() -> dict:
     for slug, title in FIVE:
         archive = STAGING / "illustrated-five-20261105" / slug
         data = archived_illustrations(archive)
+        if slug == "the-last-of-the-mohicans":
+            # Archive availability is not scene-matched chapter-card coverage.
+            data["unassignedHistoricalAndriolliImageFiles"] = mohicans_extra_count
+            data["archivedLocalHistoricArt"] += mohicans_extra_count
         mapped_path = archive / "chapter-image-map.json"
         if mapped_path.is_file():
             mapped = jload(mapped_path)
