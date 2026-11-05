@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_05.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-a4d16b72024d772c.webp",
+  "imageSha256": "ffedabf8955d602627347be68338a65f15e819e308aa6d36dc565c6e700721f7",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a young man standing in front of a large, paneled wooden door. The man is dressed in formal 19th-century attire, including a frock coat, waistcoat, and trousers. He is holding a hat in his left hand and looking off to the side. The style is characteristic of 19th-century book or periodical illustrations.",
+    "visualObjectsEn": "A man, a paneled wooden door, a hat, a waistcoat with a watch chain, a frock coat, trousers, and a tiled floor.",
+    "recognizableCharactersOrPeopleEn": "A single young man with short, dark, curly hair and a mustache.",
+    "uncertaintyNotes": "The identity of the man is not stated in the image. The specific historical context or the publication source of the engraving is unknown."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 1,
+    "paragraphIndexZeroBased": 27,
+    "exactSourceQuotation": "Phileas Fogg got up, took his hat in his left hand",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The engraving depicts a man in formal 19th-century attire holding a hat in his left hand, which directly corresponds to the action described in the selected text where Phileas Fogg takes his hat in his left hand.",
+    "suggestedAltArNotApproved": "A 19th-century engraving of a man in a frock coat holding a hat in his left hand, standing before a paneled door.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_PARAGRAPH_QUOTE_VERIFIED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite"
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_03.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-3416b18f43e0a630.webp",
+  "imageSha256": "22e060afb67d7b6516183d4cafe73c8966ad8954c8ea4d34e7741ef066076f0b",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a man in 19th-century attire standing in a dimly lit room. He is reaching toward a wall-mounted light fixture or gas jet, blowing a stream of air or breath toward it to ignite or extinguish it. Beside him is a wooden chair with a basket or bag containing what appears to be a skull and some feathers or foliage.",
+    "visualObjectsEn": "Man, wall-mounted light fixture, wooden chair, basket, skull, feathers, clothing (coat, trousers).",
+    "recognizableCharactersOrPeopleEn": "A single adult male figure.",
+    "uncertaintyNotes": "The exact nature of the object the man is interacting with on the wall is ambiguous, though it resembles a gas lamp or candle sconce. The contents of the basket are stylized and could be interpreted as a skull and feathers, but the artistic hatching makes the exact identification of these items slightly uncertain."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 27,
+    "paragraphIndexZeroBased": 10,
+    "exactSourceQuotation": "his ruined creditors gave him a coat of tar and feathers",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The engraving depicts a man with a basket containing a skull and feathers. While the skull is a specific artistic choice, the mention of 'tar and feathers' in the text provides a thematic link to the visual inclusion of feathers in the basket, which is a rare and specific detail to find in the source text.",
+    "suggestedAltArNotApproved": "A man in 19th-century clothing stands in a room, blowing toward a wall fixture, with a basket containing a skull and feathers nearby.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_PARAGRAPH_QUOTE_VERIFIED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite"
+}

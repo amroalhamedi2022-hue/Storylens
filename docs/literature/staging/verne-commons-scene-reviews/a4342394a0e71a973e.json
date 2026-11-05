@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_02.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-a4342394a0e71a97.webp",
+  "imageSha256": "cfd01e16a0eb7400581c155a6944980bce1200e39e693009eda6dc59e72bf1ac",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a composite landscape scene. In the foreground, two men stand on a rocky cliff, looking out toward the sea. To the left, a steam train travels along a cliffside track through a forest. In the middle ground, a sailing ship is visible on the water. To the right, an elephant stands on a rocky outcrop near a palm tree. Above the scene, a large circular globe graphic is superimposed, featuring a glowing point at the top.",
+    "visualObjectsEn": "Steam train, forest, rocky cliffs, sailing ship, elephant, palm tree, globe graphic with grid lines, glowing light point, two men in coats and hats.",
+    "recognizableCharactersOrPeopleEn": "Two men standing in the foreground, viewed from behind, wearing coats and hats.",
+    "uncertaintyNotes": "The image is a composite illustration, likely intended as a book cover or frontispiece, so the scene does not represent a single coherent geographical location. The exact identity of the two men is not specified in the image itself."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 14,
+    "exactSourceQuotation": "The Parsee jumped to the ground, fastened the elephant to a tree, and plunged into the thicket.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene description includes an elephant and a palm tree, which aligns with the narrative context of the characters traveling by elephant through a forest in Chapter 12. While the image is a composite, this specific paragraph provides the textual anchor for the elephant and the forest setting.",
+    "suggestedAltArNotApproved": "A composite engraving showing a steam train in a forest, a sailing ship at sea, and an elephant standing near a palm tree, with two men observing from a rocky cliff in the foreground.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_PARAGRAPH_QUOTE_VERIFIED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite"
+}
