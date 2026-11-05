@@ -177,7 +177,7 @@ def main():
             "windowCount": len(all_windows), "reviewedWindowOffsets": sorted(matched),
             "sourceSha256": source["sourceFileShas256"][-1],
             "rightsVerified": False, "published": False
-        }, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+        }, ensure_ascii=False, indent=2) + chr(10), encoding="utf-8")
         print("Chapter", args.chapter, "AI editorial review coverage complete; human review still pending")
     print("New editorial review batches:", completed, "new books: 0, new images: 0")
 
