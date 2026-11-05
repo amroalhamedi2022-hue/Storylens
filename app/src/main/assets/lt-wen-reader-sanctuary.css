@@ -1,0 +1,170 @@
+/*
+ * Lingua Tales — Wen Reader Sanctuary | DESIGN ONLY
+ * Inspired by Wen-sarafet/glass-engine (GlassMotion,
+ * WenNavigationLensDrawable and WenGlassBackdropDrawable).
+ * Reuses Lingua's existing single WebView lens / 60% follow / 265ms release.
+ * Android AGSL refraction is NOT available in CSS. No new page-turn physics.
+ * No glass on paper, dictionary words or original historical image pixels.
+ */
+body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
+        .theme-paper-atlas,.theme-midnight-library){
+ --lt-sanctuary-a:#b7edfa;--lt-sanctuary-b:#a29fea;
+ --lt-sanctuary-rim:rgba(255,255,255,.54);
+ --lt-sanctuary-crown:rgba(255,255,255,.64);
+ --lt-sanctuary-shadow:rgba(16,26,55,.16);
+}
+body.theme-liquid-27{--lt-sanctuary-a:#a8e9f6;--lt-sanctuary-b:#d7b7ff}
+body.theme-aurora{--lt-sanctuary-a:#78dfc8;--lt-sanctuary-b:#9ca8f4}
+body.theme-aqua{--lt-sanctuary-a:#80dbe7;--lt-sanctuary-b:#96bff7}
+body.theme-nebula{--lt-sanctuary-a:#c5b0ef;--lt-sanctuary-b:#8fcfe4}
+body.theme-paper-atlas{--lt-sanctuary-a:#d8be8a;--lt-sanctuary-b:#86c2b1}
+body.theme-midnight-library{
+ --lt-sanctuary-a:#7f9dc6;--lt-sanctuary-b:#d2b179;
+ --lt-sanctuary-rim:rgba(241,246,255,.30);
+ --lt-sanctuary-crown:rgba(255,255,255,.28);
+ --lt-sanctuary-shadow:rgba(0,4,17,.36);
+}
+/* Static, low-cost atmospheric gradients match WenGlassBackdropDrawable.
+ * Never animate the background or sample the glass behind every card. */
+body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
+        .theme-paper-atlas,.theme-midnight-library) .library{
+ background-image:
+ radial-gradient(ellipse 68% 35% at 2% 8%,
+  color-mix(in srgb,var(--lt-sanctuary-a) 17%,transparent),transparent 77%),
+ radial-gradient(ellipse 60% 37% at 98% 22%,
+  color-mix(in srgb,var(--lt-sanctuary-b) 15%,transparent),transparent 77%);
+ background-repeat:no-repeat;
+ isolation:isolate;
+}
+/* Quiet museum shelf: original cover imagery is never filtered or recoloured. */
+body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
+        .theme-paper-atlas,.theme-midnight-library) .library .shelf .card{
+ border:1px solid color-mix(in srgb,var(--lt-sanctuary-rim) 60%,
+       var(--lt-sanctuary-a) 40%)!important;
+ border-radius:clamp(18px,2vw,27px)!important;
+ box-shadow:inset 0 1px 0 var(--lt-sanctuary-crown),
+    0 8px 24px var(--lt-sanctuary-shadow)!important;
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
+        .theme-paper-atlas,.theme-midnight-library) .library .shelf .card .cover{
+ border:1px solid color-mix(in srgb,var(--lt-sanctuary-rim) 40%,transparent);
+ border-radius:clamp(12px,1.3vw,17px)!important;
+ filter:none!important;mix-blend-mode:normal!important;opacity:1!important;
+}
+@media(min-width:850px){
+ body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
+         .theme-paper-atlas,.theme-midnight-library) .library{
+  max-width:min(96vw,1320px)!important;
+  padding-inline:clamp(16px,2.2vw,36px)!important;
+ }
+ body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
+         .theme-paper-atlas,.theme-midnight-library) .library .shelf{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:clamp(13px,1.35vw,22px)!important;
+ }
+ body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
+         .theme-paper-atlas,.theme-midnight-library) .library .shelf .card{
+  min-width:0!important;min-height:178px!important;max-height:none!important;
+  grid-template-columns:minmax(0,1fr) clamp(96px,10vw,144px)!important;
+  padding:clamp(10px,1.1vw,16px)!important;
+ }
+ body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
+         .theme-paper-atlas,.theme-midnight-library) .library .shelf .card .cover{
+  min-height:148px!important;aspect-ratio:3/4;
+ }
+}
+@media(max-width:849px){
+ body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
+         .theme-paper-atlas,.theme-midnight-library) .library .shelf{
+  grid-template-columns:minmax(0,1fr)!important;gap:11px!important;
+ }
+}
+/* Optical material is restricted to UI, using the existing single shared
+ * lens from Wen's WebView port, not an extra lens or JS frame loop. */
+body.lt-wen-optics:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
+ .theme-paper-atlas,.theme-midnight-library)
+ :is(.library .header,.lt-settings-sheet,.lt-drawer,#modals .sheet){
+ border:1px solid var(--lt-sanctuary-rim)!important;
+ box-shadow:inset 0 1px 1px var(--lt-sanctuary-crown),
+  inset 0 -1px 0 color-mix(in srgb,var(--lt-sanctuary-a) 20%,transparent),
+  0 12px 30px var(--lt-sanctuary-shadow)!important;
+}
+body.lt-wen-optics:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
+ .theme-paper-atlas,.theme-midnight-library)
+ :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery) > .lt-wen-follow-lens{
+ background:
+ radial-gradient(ellipse 104% 76% at 25% -8%,rgba(255,255,255,.74),transparent 68%),
+ radial-gradient(ellipse 82% 77% at 94% 109%,
+   color-mix(in srgb,var(--lt-sanctuary-b) 30%,transparent),transparent 78%),
+ linear-gradient(146deg,rgba(255,255,255,.35),
+   color-mix(in srgb,var(--lt-sanctuary-a) 15%,transparent) 48%,rgba(255,255,255,.20));
+ border:1px solid var(--lt-sanctuary-rim)!important;
+ box-shadow:inset 0 2px 2px rgba(255,255,255,.65),
+  inset 0 -2px 4px color-mix(in srgb,var(--lt-sanctuary-b) 24%,transparent),
+  0 9px 25px var(--lt-sanctuary-shadow)!important;
+ pointer-events:none!important;
+}
+body.lt-wen-optics :is(.lt-menu-toggle,.lt-drawer-close,.lt-theme-choice,
+ .lt-genre,.stl-choice,.stl-favorite,.reader-nav-actions button).lt-wen-pressed{
+ box-shadow:inset 0 2px 2px rgba(255,255,255,.58),
+  inset 0 -3px 5px color-mix(in srgb,var(--lt-sanctuary-b) 25%,transparent),
+  0 6px 19px var(--lt-sanctuary-shadow)!important;
+ transition-duration:265ms!important;
+}
+body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
+ .theme-paper-atlas,.theme-midnight-library)
+ :is(.lt-menu-toggle,.lt-drawer-close,.lt-art-zoom-button){
+ display:grid!important;place-items:center!important;
+ min-width:44px!important;min-height:44px!important;
+ padding:8px!important;line-height:1!important;
+}
+body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
+ .theme-paper-atlas,.theme-midnight-library) :is(.lt-theme-choice,.lt-genre){
+ min-height:44px;touch-action:manipulation;
+}
+/* Authentic manuscript and photo art: exhibit full original colour and
+ * edges; never create crop, blend, tint, blur or animation for printed ink. */
+body :is(.reader .lt-inline-illustration,.arabic-page .lt-companion-plate){
+ border:1px solid color-mix(in srgb,var(--lt-paper-ink,#5c5040) 22%,transparent);
+ background:var(--lt-paper-bg,var(--reader,#f8f3e6));
+ box-shadow:0 2px 11px rgba(32,24,15,.09);
+ padding:clamp(5px,.8vw,10px);break-inside:avoid;
+}
+body :is(.reader .lt-inline-illustration img,
+ .arabic-page .lt-companion-plate img,.reader .lt-art-inspection-viewport img){
+ display:block;max-width:100%;height:auto;
+ object-fit:contain!important;object-position:center!important;
+ filter:none!important;mix-blend-mode:normal!important;opacity:1!important;
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+body :is(.reader .lt-inline-illustration figcaption,
+ .arabic-page .lt-companion-plate figcaption){
+ color:var(--lt-paper-ink,var(--reader-ink,#554637));
+ text-align:center;line-height:1.6;text-wrap:pretty;
+ max-width:65ch;margin-inline:auto;padding:7px 7px 1px;
+ font-size:clamp(11px,1vw,13px);
+}
+/* Reader content is NOT a glass layer; no change to Codex page-fold geometry. */
+body .reader :is(.reading-width,.lt-book-page,.sentence,.tok,.inline-ar,
+ .inline-en,.stl-sentence-translation,.lt-inline-illustration img){
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+@media(prefers-reduced-motion:reduce){
+ body .library .shelf .card,body .lt-wen-follow-lens,
+ body :is(.lt-theme-choice,.lt-menu-toggle,.lt-drawer-close){
+  animation:none!important;transition:none!important;
+ }
+}
+@media(prefers-reduced-transparency:reduce){
+ body.lt-wen-optics :is(.library .header,.lt-settings-sheet,.lt-drawer,#modals .sheet){
+  backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+  background:var(--card,#f6f5f2)!important;
+ }
+ body.lt-wen-optics .lt-wen-follow-lens{display:none!important}
+}
+@media(prefers-contrast:more){
+ body :is(.lt-genre,.lt-theme-choice,.lt-menu-toggle,.lt-drawer-close):focus-visible{
+  outline:3px solid currentColor!important;outline-offset:3px!important;
+ }
+}
