@@ -1,0 +1,27 @@
+name: Lingua Tales - original 1874 Moonstone scan intake integrity tests
+on:
+  pull_request:
+    paths:
+      - 'tools/intake_verne_commons_period_gallery.py'
+      - 'tools/intake_moonstone_1874_period_gallery.py'
+      - 'tools/test_moonstone_scan_intake.py'
+      - 'tools/report_chapter_art_progress.py'
+      - '.github/workflows/moonstone-1874-original-scan-*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-original-scan-contract-without-downloading:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify PNG source constraints and unapproved facsimile-only reports
+        run: |
+          python tools/test_moonstone_scan_intake.py
+          python tools/report_chapter_art_progress.py

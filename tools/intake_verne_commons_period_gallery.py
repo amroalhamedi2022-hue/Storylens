@@ -30,6 +30,8 @@ MANIFEST = DEST / "manifest.json"
 IMAGES = DEST / "plates"
 SOURCE_CATEGORY = "Category:Illustrations from Around the World in Eighty Days by Neuville and Benett"
 ORIGINAL_YEAR = 1873
+PERIOD_MIME = "image/jpeg"
+PERIOD_MAGIC = b"\xff\xd8\xff"
 OUTPUT_PREFIX = "verne-commons"
 API = "https://commons.wikimedia.org/w/api.php"
 MAX_DOWNLOAD_BYTES = 5_000_000
@@ -104,7 +106,7 @@ def permit_candidate(entry: dict, existing_sha1: set[str]) -> dict | None:
         return None
     if remote_sha1 in existing_sha1:
         return None
-    if info.get("mime") != "image/jpeg":
+    if info.get("mime") != PERIOD_MIME:
         return None
     rights = metadata_text(info, "LicenseShortName")
     copyright_flag = metadata_text(info, "Copyrighted").strip().lower()
@@ -146,7 +148,7 @@ def download_image(s: requests.Session, entry: dict) -> tuple[bytes, bytes, int,
                     raise ValueError("Oversized image excluded from bounded archive")
                 raw_chunks.append(chunk)
     raw = b"".join(raw_chunks)
-    if len(raw) < 5000 or not raw.startswith(b"\xff\xd8\xff"):
+    if len(raw) < 5000 or not raw.startswith(PERIOD_MAGIC):
         raise ValueError("Historical JPG source has unexpected bytes")
     try:
         image = ImageOps.exif_transpose(Image.open(BytesIO(raw)))
