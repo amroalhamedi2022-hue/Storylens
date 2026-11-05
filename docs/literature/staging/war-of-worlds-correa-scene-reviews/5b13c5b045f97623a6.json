@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_023_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-5b13c5b045f97623.webp",
+  "imageSha256": "6360efea0ba7620a336fde9bfe52ce6a5de2b6145b2ec3ddfeb8f9f0e1b8a0a3",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting an outdoor scene with a large crowd gathered near a long, low, curved wall or embankment. In the foreground, a woman in a hat and long dress stands near a stout man in a suit and hat. To the right, a man sits at a table with bottles and glasses. The background shows many figures, some near ladders leaning against the wall, under a dark, stormy-looking sky.",
+    "visualObjectsEn": "A long curved wall or embankment, ladders, bottles, glasses, a table, hats, umbrellas, clothing from the late 19th or early 20th century.",
+    "recognizableCharactersOrPeopleEn": "A woman in a hat and long dress, a stout man in a suit, a man sitting at a table, and a large crowd of people in the background.",
+    "uncertaintyNotes": "The exact nature of the structure (wall, embankment, or fortification) is unclear. The specific historical event or context is not identifiable from the visual evidence alone. The style is consistent with late 19th-century satirical or journalistic illustration."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 3,
+    "paragraphIndexZeroBased": 9,
+    "exactSourceQuotation": "There were half a dozen flies or more from the Woking station standing in the road by the sand pits, a basket-chaise from Chobham, and a rather lordly carriage. Besides that, there was quite a heap of bicycles. In addition, a large number of people must have walked, in spite of the heat of the day, from Woking and Chertsey, so that there was altogether quite a considerable crowd⁠—one or two gaily dressed ladies among the others.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a crowd gathered near a structure (sand pit embankment) with various figures including a woman in a hat and a man in a suit, which aligns with the description of the crowd gathered at the sand pits in Chapter 3, including the mention of 'gaily dressed ladies' and a 'considerable crowd'.",
+    "suggestedAltArNotApproved": "A black and white illustration showing a crowd of people gathered near a curved embankment or sand pit, with figures in period clothing, including a woman in a hat and a man in a suit, reflecting the gathering at the Woking sand pits.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a large crowd gathered near sand pits and an embankment, with a woman in a gaily dressed hat and dress in the foreground, matching the description of the crowd and gaily dressed ladies arriving at the scene.",
+    "visualContradictions": "None significant; while specific horse-drawn vehicles like the basket-chaise are not clearly delineated in the foreground, the general crowd and setting around the sand pits match the passage well.",
+    "confidenceSelfReported": 0.9,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

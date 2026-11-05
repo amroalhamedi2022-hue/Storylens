@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_027_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-abd0d086221e6503.webp",
+  "imageSha256": "9fb60324dc82c4992b2c5275189c46c3cf702241fe2fabeae673b8695223d432",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink drawing depicting two figures in a dynamic, outdoor setting, likely a rocky or uneven terrain. The figure in the foreground is in a wide stance, throwing a rock upward with their right hand. The second figure, slightly behind and to the right, is in a forward-leaning posture, also appearing to be in motion or throwing. There is a sense of dust or movement indicated by sketchy lines around the figures. A large, curved, shaded object is visible in the bottom right corner.",
+    "visualObjectsEn": "Two human figures, rocks, dust clouds, uneven ground, a large curved object in the foreground.",
+    "recognizableCharactersOrPeopleEn": "Two male figures wearing caps and what appear to be casual or work clothing.",
+    "uncertaintyNotes": "The exact nature of the large curved object in the bottom right is unclear; it could be a large rock, a piece of machinery, or part of a structure. The specific historical context or the exact activity (e.g., fighting, playing, or working) is not explicitly stated in the image."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 18,
+    "paragraphIndexZeroBased": 12,
+    "exactSourceQuotation": "Four or five little black figures hurried before it across the green-grey of the field, and in a moment it was evident this Martian pursued them. In three strides he was among them, and they ran radiating from his feet in all directions. He used no Heat-Ray to destroy them, but picked them up one by one. Apparently he tossed them into the great metallic carrier which projected behind him",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts two figures in a dynamic, outdoor setting, appearing to be in motion or throwing objects, which aligns with the description of figures fleeing and being handled by the Martian machine in this passage. The 'large, curved, shaded object' in the image corresponds to the 'great metallic carrier' mentioned in the text.",
+    "suggestedAltArNotApproved": "Two figures in a field fleeing from a Martian fighting-machine, with one figure captured and being tossed into a large metallic carrier.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows two men throwing rocks or running in a rocky landscape.",
+    "visualContradictions": "The passage describes a Martian fighting-machine pursuing four or five people and picking them up to toss into a metallic carrier, which is completely absent from this image showing only two men throwing rocks.",
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
