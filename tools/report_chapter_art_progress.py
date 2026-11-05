@@ -194,6 +194,35 @@ def generate() -> dict:
                          "chapterCount": None, "localCandidateChapters": 0,
                          "readyForUICards": 0, "missingImageChapters": None,
                          "missingReadyChapters": None, **data})
+    monte_folder = STAGING / "user-requested-classics-20261105" / "the-count-of-monte-cristo"
+    if monte_folder.is_dir():
+        monte_art = verify_recovered_illustrated_source("the-count-of-monte-cristo")
+        monte_map = monte_folder / "chapter-image-map.json"
+        if monte_map.is_file():
+            monte = map_coverage(monte_map, 117)
+            rows.append({"bookId": "the-count-of-monte-cristo",
+                         "title": "The Count of Monte Cristo",
+                         "sourceState": "complete 117-chapter historical English translation staged; original French edition/visual scene and rights review pending",
+                         "chapterCount": 117, **monte, **monte_art})
+        else:
+            rows.append({"bookId": "the-count-of-monte-cristo", "title": "The Count of Monte Cristo",
+                         "sourceState": "complete original historical English edition archived; mapping pending",
+                         "chapterCount": 117, "localCandidateChapters": 0,
+                         "readyForUICards": 0, "missingImageChapters": 117,
+                         "missingReadyChapters": 117, **monte_art})
+    valley_folder = STAGING / "user-requested-classics-20261105" / "the-valley-of-fear"
+    if valley_folder.is_dir():
+        valley_art = verify_recovered_illustrated_source("the-valley-of-fear")
+        rows.append({"bookId": "the-valley-of-fear", "title": "The Valley of Fear",
+                     "sourceState": "full English original plus seven period illustrations staged; chapter scene mapping pending",
+                     "chapterCount": None, "localCandidateChapters": 0,
+                     "readyForUICards": 0, "missingImageChapters": None,
+                     "missingReadyChapters": None, **valley_art})
+    kalila_colours = (
+        verify_kalila_miniatures()
+        if (STAGING / "kalila-original-colour-miniatures-20261105" / "manifest.json").is_file()
+        else 0
+    )
     for slug, title in OLDER:
         archive = STAGING / slug
         if archive.is_dir():
@@ -201,16 +230,19 @@ def generate() -> dict:
                          "sourceState": "older staged work; chapter-card coverage audit pending",
                          "chapterCount": None, "localCandidateChapters": 0,
                          "readyForUICards": 0, "missingImageChapters": None,
-                         "missingReadyChapters": None})
+                         "missingReadyChapters": None,
+                         "archivedLocalHistoricArt": kalila_colours if slug == "kalila-arabic-wikisource" else 0})
     available = sum(r["localCandidateChapters"] for r in rows)
     ready = sum(r["readyForUICards"] for r in rows)
     return {
         "schemaVersion": 1,
         "contract": "docs/literature/CHAPTER_IMAGE_CONTRACT.md",
-        "scope": "checked-in main branch only; open PR 16 artifacts NOT counted as main",
+        "scope": "checked-in main only; recovered PR16 historical source is counted only after merged",
         "policy": "at least one distinct locally stored, sourced, chapter-matched and rights-cleared primary image per chapter",
         "counts": {"localCandidateChapterCards": available, "readyChapterCards": ready,
                    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks":
+                       sum(r.get("archivedLocalHistoricArt", 0) for r in rows),
+                   "verifiedHistoricalArtBinaryFilesAcrossAuditedSources":
                        sum(r.get("archivedLocalHistoricArt", 0) for r in rows)},
         "books": rows,
         "nextWork": [
