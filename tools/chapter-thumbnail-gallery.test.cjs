@@ -131,6 +131,16 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null}={}){
  const valid=scenario({approved:{...pending,editoriallyApproved:true,
   releaseApproved:true,distributionReviewApproved:true,rightsStatus:'APPROVED'}});
  assert.equal(valid.api.chapterImage(valid.story,0).src,'art/old-folio.webp');
+ const duplicateImage={...pending,editoriallyApproved:true,
+  releaseApproved:true,distributionReviewApproved:true,rightsStatus:'APPROVED'};
+ const dup=scenario({approved:duplicateImage});
+ dup.story.chapterThumbnails[1]=duplicateImage;
+ dup.W.openStory('example-story');
+ await tick();
+ const dupTiles=dup.cards[0].children[0].children[1].children;
+ assert.equal(dupTiles[0].dataset.thumbnailState,'approved');
+ assert.equal(dupTiles[1].dataset.thumbnailState,'missing-or-pending-approval',
+  'identical source image cannot be presented as unique chapter II art');
  const inline=scenario();
  inline.story.chapters[1].inlineArt=[{src:'art/folio.webp',verifiedArchive:true,
   sourceParagraphExact:true,distributionReviewApproved:true,editoriallyApproved:true,
