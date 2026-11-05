@@ -1,0 +1,63 @@
+name: Lingua Tales - ingest authentic Commons Verne engravings
+on:
+  push:
+    branches:
+      - content/verne-commons-plate-collection-20261105
+      - main
+    paths:
+      - 'tools/intake_verne_commons_period_gallery.py'
+      - '.github/workflows/verne-commons-period-art-intake.yml'
+  schedule:
+    - cron: '14 */2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lingua-tales-commons-period-gallery
+  cancel-in-progress: false
+
+jobs:
+  acquire-real-archival-plates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 38
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install bounded image/archive decoder
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0
+      - name: Download up to 18 unique genuinely historic scans with source hashes
+        id: acquire
+        run: python tools/intake_verne_commons_period_gallery.py --max-new 18
+      - name: Preserve every acquired image even if later network request fails
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -d docs/literature/staging/verne-commons-period-plates ]; then
+            git add -f docs/literature/staging/verne-commons-period-plates/
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No new verified historic images; no empty commit."
+          else
+            git commit -m "Literature: preserve new real Commons original-period art with individual provenance, hashes and rights holds [skip ci]"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - name: Keep inspectable art and attribution records if repository push fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-verne-commons-historic-plates-quarantine
+          path: docs/literature/staging/verne-commons-period-plates/
+          if-no-files-found: warn
+          retention-days: 30
