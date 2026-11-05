@@ -26,6 +26,14 @@
     "suggestedAltArNotApproved": "A man in 19th-century clothing stands in a room, blowing toward a wall fixture, with a basket containing a skull and feathers nearby.",
     "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
   },
-  "evidenceStatus": "EXACT_ORIGINAL_PARAGRAPH_QUOTE_VERIFIED",
-  "sourceSelectionModel": "gemini-3.1-flash-lite"
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a single man in a room interacting with a wall fixture and a chair containing miscellaneous objects.",
+    "visualContradictions": "The passage describes an Elder telling a story to an audience about Joseph Smith, bankruptcy, tar and feathers, and retirement into the Far West, none of which correspond to the solitary man blowing air toward a light fixture as depicted in the illustration.",
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
 }

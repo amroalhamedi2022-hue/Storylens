@@ -26,6 +26,14 @@
     "suggestedAltArNotApproved": "A composite engraving showing a steam train in a forest, a sailing ship at sea, and an elephant standing near a palm tree, with two men observing from a rocky cliff in the foreground.",
     "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
   },
-  "evidenceStatus": "EXACT_ORIGINAL_PARAGRAPH_QUOTE_VERIFIED",
-  "sourceSelectionModel": "gemini-3.1-flash-lite"
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a composite frontispiece or cover design containing multiple elements from the entire journey, including an elephant near a palm tree, a steam train, ships on the water, and a large globe graphic with the book title.",
+    "visualContradictions": "The passage describes a specific moment where the Parsee jumps to the ground, fastens the elephant to a tree, and plunges into the thicket while Fogg and Passepartout wait and listen to distant human voices. The engraving is a generic composite cover illustration rather than a depiction of this specific narrative scene.",
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
 }

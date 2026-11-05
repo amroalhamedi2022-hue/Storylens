@@ -26,6 +26,14 @@
     "suggestedAltArNotApproved": "A 19th-century engraving of a tall, dark-haired man in formal attire, including a frock coat, waistcoat, and cravat, standing in a room next to an ornate table with a top hat and an upholstered armchair.",
     "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
   },
-  "evidenceStatus": "EXACT_ORIGINAL_PARAGRAPH_QUOTE_VERIFIED",
-  "sourceSelectionModel": "gemini-3.1-flash-lite"
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts a man standing indoors next to a table and an armchair, wearing formal 19th-century attire including a frock coat, trousers, and cravat, with a top hat on the table.",
+    "visualContradictions": "The passage describes the man walking from one end of the train to the other and affixing a manuscript notice to the door of each car. The image shows him stationary indoors next to furniture, with no train car, doors, or manuscript notices visible.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
 }
