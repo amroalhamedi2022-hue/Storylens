@@ -1,0 +1,23 @@
+/* Only the paper renderer; shell themes and paper presets remain independent. */
+.reader #sentences.lt-curl-book{position:relative;isolation:isolate;touch-action:pan-y;display:grid;grid-template-columns:1fr;gap:0;direction:ltr;overflow:visible}
+.reader #sentences.lt-curl-book[data-spread="2"]{grid-template-columns:1fr 1fr}
+.reader .lt-curl-book>.lt-book-page{box-sizing:border-box;width:100%;margin:0;min-width:0;border-radius:2px;min-height:min(72vh,850px);transform:none;animation:none}
+.reader .lt-curl-book>.lt-book-page.is-active{grid-row:1;grid-column:var(--lt-page-column,1)}
+.reader .lt-curl-book>.lt-book-page.lt-curl-under{display:block;position:absolute;top:0;left:var(--lt-under-left);width:var(--lt-under-width);z-index:0;pointer-events:none}
+.lt-curl-stage{position:absolute;z-index:5;pointer-events:none;transform-style:preserve-3d;direction:ltr}
+.lt-curl-facet{position:absolute;inset:0;transform-origin:0 0;transform-style:preserve-3d;will-change:transform;pointer-events:none}
+.lt-curl-front,.lt-curl-back{position:absolute;inset:0;backface-visibility:visible;background:var(--lt-curl-paper-image,none) var(--lt-curl-paper,#f7f1e3);overflow:hidden;box-shadow:inset 0 0 0 .6px #948774;transform:none}
+.lt-curl-back{transform:none}
+.lt-curl-front:after,.lt-curl-back:after{content:"";position:absolute;inset:0;background:rgba(35,29,20,var(--lt-curl-shade));pointer-events:none}
+.lt-curl-ink{display:block!important;box-sizing:border-box;margin:0!important;min-height:0!important;border:0!important;position:absolute;inset:0;overflow:hidden;background:transparent!important;box-shadow:none!important}
+.lt-curl-ink:after{display:none!important}
+.lt-curl-back>.lt-curl-ink{transform:scaleX(-1)}
+.lt-curl-ghost{opacity:.07}
+.lt-curl-contact{position:absolute;top:0;height:100%;transform-origin:center;background:linear-gradient(90deg,transparent,rgba(27,22,17,.65),transparent);pointer-events:none}
+@media (orientation:landscape) and (min-width:700px){.reader:has(.lt-curl-book) .reading-width{max-width:1500px!important;width:100%}}
+@media(prefers-reduced-motion:reduce){.lt-curl-stage{display:none}}
+
+/* Defeat legacy paper-only spacing on the engine's local visual facets. */
+.reader .lt-curl-book .lt-curl-stage .lt-curl-ink{margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;height:100%!important;padding:var(--lt-curl-padding)!important}
+.reader #sentences.lt-curl-book>.lt-book-page{margin:0!important;border-radius:2px!important;min-height:min(72vh,850px)!important}
+.lt-curl-stage{transform-style:flat}

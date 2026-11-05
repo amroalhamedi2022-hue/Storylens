@@ -11,10 +11,10 @@ const end=reader.indexOf('\n function move(delta',start);
 assert.ok(start>0&&end>start,'production page renderer can be exercised');
 const scrolls=[],turns=[],saved=[];
 const sheet={scrollIntoView(options){scrolls.push(['paper',options]);}};
-const makePage=()=>({classList:{toggle(){}},setAttribute(){},inert:false});
+const makePage=()=>({classList:{toggle(){}},setAttribute(){},style:{setProperty(){}},inert:false});
 const pages=[makePage(),makePage()];
 const env={
- current:0,pages,sentenceBox:sheet,
+ current:0,spread:1,bindingRtl:false,pages,sentenceBox:sheet,
  prev:{},next:{},countLabel:{},chapterEnd:{},key:'readpage_test_0',
  anchorKey:'readpage_anchor_test_0',starts:[0,1],
  state:{chapter:0,story:{chapters:[{paragraphs:[{},{}]}]}},

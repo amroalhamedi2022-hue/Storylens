@@ -58,3 +58,10 @@ Use existing approved `app/src/main/res/drawable-nodpi/lingua_tales_approved.png
 
 ## Definition of done
 Not done because a plan or CSS mockup exists. Every RDR item requires implemented source, explicit regression test, linked exact-head CI, physical reader acceptance if needed, updated `docs/LINGUA_TALES_LIVE_STATUS.md`, and traceable same-signer release. Maintain open/partial/done per item in this document as work proceeds. The separate literature chat supplies images; this stream positions source-verified art in context without cropping.
+
+### 2026-11-05 — RDR-01 physical HTML curl (source branch; CI pending)
+
+- Isolated `feature/physical-page-curl-20261105`, originally based on green main `15fd0facfe625946150d46c3adb37008c49da1e8` (Actions #41976705425). Refreshed concurrent main to `d0fc13a`; its fonts/materials/six-theme work is being preserved through a merge, not overwritten.
+- Adds a tapered 22-facet HTML sheet, visible adjacent-page reverse, actual underpage, velocity-aware spring release, correct source-language binding and two-page landscape spreads. Original dictionary nodes and existing storage remain intact. Native Back gets only the narrow fold-cancel hook. API and StPageFlip 2.0.7 research: `docs/PHYSICAL_PAGE_CURL_API.md`.
+- Local validation before concurrent-main integration: all 106 Node test files PASS; new real Chromium acceptance PASS in LTR/RTL portrait/spread, including no-commit cancellation, exactly-one commit, dictionary single invocation, chapter boundaries and rotation/rebuild/saved anchors. Existing Python signing/update contract (5 cases), JS syntax and audio-focus checks PASS. Full existing Chromium suite and Android/Actions are still pending.
+- Not a signed APK or device acceptance. Xiaomi Pad 5 touch feel, 120Hz/frame pacing, GPU memory/thermal and TalkBack remain unverified. The model is a ruled geometric approximation, not finite-element physics; adjacent-chapter previews are bounded source text. No key/package/content/user-data changes.

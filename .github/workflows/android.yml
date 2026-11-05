@@ -160,6 +160,7 @@ jobs:
           node tools/measured-reader-pages.test.cjs
           node tools/page-turn-sfx.test.cjs
           node tools/contextual-page-turn.test.cjs
+          node tools/physical-page-curl.test.cjs
           node tools/story-transitions.test.cjs
           node tools/data-backup.test.cjs
           node tools/four-stop-theme.test.cjs
@@ -680,6 +681,14 @@ jobs:
           test -s qa-screenshots/wen-glass-phone-rtl.png
           test -s qa-screenshots/wen-glass-tablet-rtl.png
           echo "PASS: real Chromium Wen Glass pointer lifecycle, single lens, native click and unblurred reader ink"
+      - name: Physical HTML curl browser acceptance and visual evidence
+        shell: bash
+        run: |
+          npm install --prefix /tmp/lt-curl-browser --no-audit --no-fund playwright@1.56.1
+          export NODE_PATH=/tmp/lt-curl-browser/node_modules
+          export CHROME="$(command -v google-chrome || command -v chromium)"
+          node tools/physical-page-curl-browser.cjs
+
       - name: Upload UI screenshot evidence
         if: success()
         uses: actions/upload-artifact@v4
