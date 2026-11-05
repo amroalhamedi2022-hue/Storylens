@@ -53,24 +53,24 @@ jobs:
           BRANCH=content/gemini-verne-editorial-output
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # This output branch carries durable AI drafts, not main code merges.
+          # It predates the source-only merge and has add/add duplicate code paths.
+          # NEVER merge main into it, which caused fatal conflicts overnight.
           if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null; then
             git fetch origin "$BRANCH"
             git switch -C "$BRANCH" FETCH_HEAD
-            git fetch origin main
-            if ! git merge --no-edit origin/main; then
-              git merge --abort || true
-              echo "::error::Checkpoint branch cannot safely merge newest main; no overwrite"
-              exit 1
-            fi
           else
             git switch -c "$BRANCH"
           fi
-          # Use the EXACT tested source implementation from this workflow run,
-          # not an old script previously committed in the checkpoint branch.
-          # "git show" changes only the working tree; generated output commits
-          # do not accidentally include unreviewed tooling edits.
-          git show "$GITHUB_SHA:tools/export_verne_chapter.cjs" > tools/export_verne_chapter.cjs
-          git show "$GITHUB_SHA:tools/gemini_verne_editorial.py" > tools/gemini_verne_editorial.py
+          # Restore the EXACT source/text and extractor pinned to the
+          # trigger commit into the WORKTREE ONLY. Do not stage these files;
+          # commit only generated JSON under docs/literature/staging.
+          git restore --source="$GITHUB_SHA" --worktree -- \
+            tools/export_verne_chapter.cjs \
+            tools/gemini_verne_editorial.py \
+            'app/src/main/assets/classic-verne-towle-ch*.js'
+          node tools/export_verne_chapter.cjs 37 --check
+          python tools/gemini_verne_editorial.py --self-test
       - name: Generate and independently audit bounded bilingual segments
         id: generate
         env:
