@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'tools/map_archived_five_chapter_art.py'
+      - 'tools/report_chapter_art_progress.py'
       - '.github/workflows/archived-chapter-art-maps.yml'
   schedule:
     - cron: '9 2 * * *'
@@ -38,13 +39,17 @@ jobs:
           set -euo pipefail
           python tools/map_archived_five_chapter_art.py --write
           python tools/map_archived_five_chapter_art.py --verify
+      - name: Recalculate actual chapter image progress from verified maps
+        run: |
+          python tools/report_chapter_art_progress.py --write
+          python tools/report_chapter_art_progress.py --write
       - name: Commit genuine source-chapter image mappings only if changed
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/literature/staging/illustrated-five-20261105/*/chapter-image-map.json
+          git add docs/literature/staging/illustrated-five-20261105/*/chapter-image-map.json docs/literature/CHAPTER_ART_PROGRESS.json docs/literature/CHAPTER_ART_PROGRESS.md
           git diff --cached --check
           if git diff --cached --quiet; then
             echo "No missing chapter image maps; no duplicate commit."
@@ -58,6 +63,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: five-original-classics-chapter-image-candidates
-          path: docs/literature/staging/illustrated-five-20261105/*/chapter-image-map.json
+          path: |
+            docs/literature/staging/illustrated-five-20261105/*/chapter-image-map.json
+            docs/literature/CHAPTER_ART_PROGRESS.md
+            docs/literature/CHAPTER_ART_PROGRESS.json
           if-no-files-found: warn
           retention-days: 30
