@@ -6,8 +6,8 @@
   "counts": {
     "localCandidateChapterCards": 268,
     "readyChapterCards": 0,
-    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 954,
-    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 954
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 972,
+    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 972
   },
   "books": [
     {
@@ -59,7 +59,8 @@
       "readyForUICards": 0,
       "missingImageChapters": 27,
       "missingReadyChapters": 27,
-      "archivedLocalHistoricArt": 0
+      "unassignedHistoricalCorreaImageFiles": 18,
+      "archivedLocalHistoricArt": 18
     },
     {
       "bookId": "treasure-island",
@@ -511,7 +512,7 @@
   "nextWork": [
     "Scene-match new Commons original Verne engravings to the actual text for remaining chapter gaps; verify every file's artist, edition and territorial rights before promotion",
     "Review the five backfilled historic chapter maps and 117 Monte Cristo chapter slots; get original contextual plates for remaining holes and editorial/territorial clearance",
-    "Source contextual art for all 27 The War of the Worlds chapters",
+    "Scene-verify and assign real 1906 Correa historical engravings to 27 War of the Worlds chapters (all currently unassigned), then source original extras for uncovered chapters",
     "Backfill Valley of Fear, Kalila, Arabian Nights and remaining previous works with verified edition-specific chapter images",
     "Have reader/UI thread implement image-backed ordered chapter cards only from approved local chapter-image maps"
   ],
