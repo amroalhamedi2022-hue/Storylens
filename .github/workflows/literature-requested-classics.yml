@@ -1,0 +1,67 @@
+name: Literature - user-requested complete classics and Arabian Nights ten-volume intake
+on:
+  push:
+    branches:
+      - content/prior-requested-classics-20261105
+    paths:
+      - 'tools/intake_user_requested_classics.py'
+      - '.github/workflows/literature-requested-classics.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: requested-classics-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  original-works:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    if: github.ref == 'refs/heads/content/prior-requested-classics-20261105'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install strictly-scoped source validation packages
+        run: python -m pip install 'requests==2.32.5' 'beautifulsoup4==4.14.2' 'Pillow==11.3.0'
+      - name: Download and verify each original complete source; commit independently
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for slug in the-woman-in-white the-valley-of-fear the-count-of-monte-cristo \
+            arabian-nights-burton-v01 arabian-nights-burton-v02 arabian-nights-burton-v03 \
+            arabian-nights-burton-v04 arabian-nights-burton-v05 arabian-nights-burton-v06 \
+            arabian-nights-burton-v07 arabian-nights-burton-v08 arabian-nights-burton-v09 \
+            arabian-nights-burton-v10; do
+            echo "::group::Full verified original: $slug"
+            python tools/intake_user_requested_classics.py --book "$slug"
+            python tools/intake_user_requested_classics.py --book "$slug" --verify
+            git add -f "docs/literature/staging/user-requested-classics-20261105/$slug"
+            # Preserve the original Project Gutenberg source byte-for-byte,
+            # including historic source trailing spaces; never run git diff --check.
+            if git diff --cached --quiet; then
+              echo "REUSED verified identical historical edition $slug"
+            else
+              git commit -m "Literature: stage full original $slug with local source illustration binaries and hash manifests"
+              git push origin "HEAD:${GITHUB_REF_NAME}"
+            fi
+            echo "::endgroup::"
+          done
+          python tools/intake_user_requested_classics.py --verify
+          echo "13 complete-source editions checked: 3 novels plus all TEN adult historical Burton volumes"
+          echo "ZERO claims about Arabic pairing, regional image rights or Android shelf deployment"
+      - name: Retain actual files even if another source becomes unavailable
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: user-requested-full-classics-source-archive
+          path: docs/literature/staging/user-requested-classics-20261105/
+          if-no-files-found: warn
+          retention-days: 21
