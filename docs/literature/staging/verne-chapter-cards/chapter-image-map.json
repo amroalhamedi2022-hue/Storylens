@@ -6,7 +6,7 @@
   "releaseApproved": false,
   "sourceStatus": "37-original-Towle-chapters; Arabic draft needs independent editorial review",
   "chapterImagePolicy": "distinct_primary_original_period_art_per_chapter",
-  "chapterReadiness": "9_LOCAL_ART_CANDIDATES_NOT_YET_APPROVED__28_CHAPTERS_NO_PRIMARY_IMAGE",
+  "chapterReadiness": "12_LOCAL_SCENE_CANDIDATES_FROM_13_LOCAL_PERIOD_IMAGES__25_CHAPTERS_NO_PRIMARY_IMAGE__0_RIGHTS_APPROVED",
   "artProvenanceManifest": "docs/literature/HISTORIC_VERNES_ASSETS.json",
   "chapters": [
     {
@@ -133,7 +133,19 @@
       "chapterOneBased": 13,
       "titleAr": "",
       "titleEn": "",
-      "primaryImage": null
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/verne-period-plates-20261105/cry-terror.jpg",
+        "sha256": "411c80a5e756e97339b2cc14848a983f9da6d6440bf203a19c5cda8f5e789154",
+        "sourceUrl": "https://www.oldbookillustrations.com/illustrations/cry-terror/",
+        "sourceEdition": "1873 James R. Osgood & Co. original illustrated Towle edition",
+        "sceneAnchor": "Passepartout rescues Aouda from the burning pyre; source anchor: EXACT_PHRASE_VERIFIED",
+        "credit": "Leon Benett",
+        "license": "Period original engraving; individual scan and country-specific rights pending",
+        "rightsStatus": "PENDING_TERRITORIAL_AND_INDIVIDUAL_SCAN_REVIEW",
+        "altAr": "نقش من طبعة 1873 يصوّر إنقاذ عاودة من المحرقة وسط صرخات الحاضرين",
+        "altEn": "1873 engraving depicting the rescue of Aouda from the funeral pyre",
+        "editoriallyApproved": false
+      }
     },
     {
       "chapterOneBased": 14,
@@ -187,7 +199,19 @@
       "chapterOneBased": 18,
       "titleAr": "",
       "titleEn": "",
-      "primaryImage": null
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/verne-period-plates-20261105/astonished-crew.jpg",
+        "sha256": "ff4209480e81754c243120e37914eb22f2e518dc2a510e7b79f4a322cc7233a9",
+        "sourceUrl": "https://www.oldbookillustrations.com/illustrations/astonished-crew/",
+        "sourceEdition": "1873 James R. Osgood & Co. original illustrated Towle edition",
+        "sceneAnchor": "Passepartout helps sailors aboard the Rangoon; source anchor: SCENE_VERIFIED_PHRASE_DIFFERENT",
+        "credit": "Leon Benett",
+        "license": "Period original engraving; individual scan and country-specific rights pending",
+        "rightsStatus": "PENDING_TERRITORIAL_AND_INDIVIDUAL_SCAN_REVIEW",
+        "altAr": "رسم أصلي من طبعة 1873 لباسبارتو وهو يساعد البحارة وسط أشرعة السفينة",
+        "altEn": "1873 book engraving of Passepartout assisting the ship crew",
+        "editoriallyApproved": false
+      }
     },
     {
       "chapterOneBased": 19,
@@ -211,7 +235,22 @@
         "altAr": "فيلياس فوغ وعاودة والمحقق فيكس داخل مقصورة تانكادير",
         "altEn": "Fogg and Aouda meet Fix in the Tankadere cabin; Towle XX, paragraph 67",
         "editoriallyApproved": false
-      }
+      },
+      "secondaryImageCandidates": [
+        {
+          "imagePath": "docs/literature/staging/verne-period-plates-20261105/looking-for-vessel.jpg",
+          "sha256": "84291cf564cc0e3f31fcbb42aa74825b95f09d968aee6c62d933f458f096af27",
+          "sourceUrl": "https://www.oldbookillustrations.com/illustrations/looking-for-vessel/",
+          "sourceEdition": "1873 James R. Osgood & Co. original illustrated Towle edition",
+          "sceneAnchor": "Fogg arranges a private vessel after the missed steamer; source anchor: SCENE_VERIFIED_PHRASE_DIFFERENT",
+          "credit": "Leon Benett",
+          "license": "Period original engraving; individual scan and country-specific rights pending",
+          "rightsStatus": "PENDING_TERRITORIAL_AND_INDIVIDUAL_SCAN_REVIEW",
+          "altAr": "نقش أصلي من طبعة 1873 لفيلياس فوج وهو يتفاوض على استئجار قارب",
+          "altEn": "1873 dockside illustration of Fogg enquiring about a vessel",
+          "editoriallyApproved": false
+        }
+      ]
     },
     {
       "chapterOneBased": 21,
@@ -259,7 +298,19 @@
       "chapterOneBased": 26,
       "titleAr": "",
       "titleEn": "",
-      "primaryImage": null
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/verne-period-plates-20261105/sleeping-car.jpg",
+        "sha256": "38d2198d345078be1c6ac5a0f5317b15f5f746691beef7586835cb87690ca530",
+        "sourceUrl": "https://www.oldbookillustrations.com/illustrations/sleeping-car/",
+        "sourceEdition": "1873 James R. Osgood & Co. original illustrated Towle edition",
+        "sceneAnchor": "Passengers convert the transcontinental railway carriage into sleeping berths; source anchor: SCENE_VERIFIED_PHRASE_DIFFERENT",
+        "credit": "Leon Benett",
+        "license": "Period original engraving; individual scan and country-specific rights pending",
+        "rightsStatus": "PENDING_TERRITORIAL_AND_INDIVIDUAL_SCAN_REVIEW",
+        "altAr": "رسم خشبي من طبعة 1873 يوضح أسرّة النوم داخل عربة القطار",
+        "altEn": "Original 1873 sleeper-car engraving showing stacked railway berths",
+        "editoriallyApproved": false
+      }
     },
     {
       "chapterOneBased": 27,
@@ -339,5 +390,9 @@
       "titleEn": "",
       "primaryImage": null
     }
+  ],
+  "artProvenanceManifests": [
+    "docs/literature/HISTORIC_VERNES_ASSETS.json",
+    "docs/literature/staging/verne-period-plates-20261105/manifest.json"
   ]
 }
