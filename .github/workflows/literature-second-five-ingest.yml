@@ -1,0 +1,55 @@
+name: Literature second five independent original illustrated intake
+on:
+  push:
+    branches: [content/literature-image-network-fix-20261105]
+    paths:
+      - 'tools/intake_second_five_illustrated_books.py'
+      - '.github/workflows/literature-second-five-ingest.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: literature-second-five-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  acquire-source-and-art:
+    if: github.ref == 'refs/heads/content/literature-image-network-fix-20261105'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'requests==2.32.5' 'beautifulsoup4==4.14.2' 'Pillow==11.3.0'
+      - name: Acquire independently, never fabricate successful source coverage
+        shell: bash
+        run: |
+          set -uo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          failures=0
+          for book in around-the-world-in-eighty-days the-moonstone the-war-of-the-worlds tom-sawyer huckleberry-finn; do
+            if python tools/intake_second_five_illustrated_books.py --book "$book"; then
+              git add -f "docs/literature/staging/illustrated-second-five-20261105/$book"
+              if ! git diff --cached --quiet; then
+                git commit -m "Literature: stage original illustrated $book with verified local source hashes"
+                git pull --rebase origin "${GITHUB_REF_NAME}" || exit 1
+                git push origin "HEAD:${GITHUB_REF_NAME}" || exit 1
+              fi
+            else
+              echo "::warning::NOT COMPLETE: $book (edition lacks verified full images or source validation failed)"
+              failures=$((failures+1))
+            fi
+          done
+          echo "Source acquisition failures: $failures"
+          test "$failures" -eq 0
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: second-five-staging-not-published
+          path: docs/literature/staging/illustrated-second-five-20261105/
+          if-no-files-found: warn
+          retention-days: 21
