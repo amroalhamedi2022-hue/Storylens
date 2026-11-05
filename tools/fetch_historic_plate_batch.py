@@ -99,8 +99,12 @@ def main():
             raise RuntimeError(f"No verified scan for {ident}: {'; '.join(errors)}")
         filename = f"{slug}.jpg"
         if (DEST / filename).exists():
-            raise ValueError(f"Refusing to overwrite an existing scan: {filename}")
-        staged_bytes.append((filename, raw))
+            existing = (DEST / filename).read_bytes()
+            if hashlib.sha256(existing).digest() != hashlib.sha256(raw).digest():
+                raise ValueError(f"Previously acquired scan has changed: {filename}")
+            print(f"REUSED {ident}: identical source image; no duplicate import", flush=True)
+        else:
+            staged_bytes.append((filename, raw))
         output.append({
             "id": ident,
             "bookId": "around-the-world-in-eighty-days-towle",
@@ -125,10 +129,12 @@ def main():
     DEST.mkdir(parents=True, exist_ok=True)
     for name, raw in staged_bytes:
         (DEST / name).write_bytes(raw)
-    (DEST / "manifest.json").write_text(
-        json.dumps({"status": "STAGED_NOT_PUBLISHED", "images": output}, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
+    manifest_path = DEST / "manifest.json"
+    new_manifest = json.dumps({"status": "STAGED_NOT_PUBLISHED", "images": output}, indent=2, ensure_ascii=False) + "\n"
+    if manifest_path.exists() and manifest_path.read_text(encoding="utf-8") != new_manifest:
+        raise ValueError("Archive metadata changed; review manually before updating manifest")
+    if not manifest_path.exists():
+        manifest_path.write_text(new_manifest, encoding="utf-8")
     print("STAGED 4 verified-format real image binaries; publication and editorial clearance pending.")
 
 
