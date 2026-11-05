@@ -6,8 +6,8 @@
   "counts": {
     "localCandidateChapterCards": 268,
     "readyChapterCards": 0,
-    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 972,
-    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 972
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 990,
+    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 990
   },
   "books": [
     {
@@ -15,8 +15,8 @@
       "title": "Around the World in Eighty Days",
       "sourceState": "37 source chapters plus Arabic draft",
       "chapterCount": 37,
-      "archivedLocalHistoricArt": 31,
-      "unassignedHistoricalCommonsImageFiles": 18,
+      "archivedLocalHistoricArt": 49,
+      "unassignedHistoricalCommonsImageFiles": 36,
       "mappedChapterNumbers": [
         3,
         5,
