@@ -75,7 +75,7 @@ function applyReaderMaterial(name){
  put('ltReaderMaterial',name);return true;
 }
 function loadReaderMaterial(){
- const saved=get('ltReaderMaterial','book');
+ const saved=typeof get==='function'?get('ltReaderMaterial','book'):'book';
  document.documentElement.dataset.ltReaderMaterial=
   readerMaterialChoices.includes(saved)?saved:'book';
 }
