@@ -6,8 +6,8 @@
   "counts": {
     "localCandidateChapterCards": 268,
     "readyChapterCards": 0,
-    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 936,
-    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 936
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 954,
+    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 954
   },
   "books": [
     {
@@ -15,7 +15,8 @@
       "title": "Around the World in Eighty Days",
       "sourceState": "37 source chapters plus Arabic draft",
       "chapterCount": 37,
-      "archivedLocalHistoricArt": 13,
+      "archivedLocalHistoricArt": 31,
+      "unassignedHistoricalCommonsImageFiles": 18,
       "mappedChapterNumbers": [
         3,
         5,
@@ -508,7 +509,7 @@
     }
   ],
   "nextWork": [
-    "Backfill the remaining Verne chapter image gaps; secure rights and individual scene approval for all authentic plates",
+    "Scene-match new Commons original Verne engravings to the actual text for remaining chapter gaps; verify every file's artist, edition and territorial rights before promotion",
     "Review the five backfilled historic chapter maps and 117 Monte Cristo chapter slots; get original contextual plates for remaining holes and editorial/territorial clearance",
     "Source contextual art for all 27 The War of the Worlds chapters",
     "Backfill Valley of Fear, Kalila, Arabian Nights and remaining previous works with verified edition-specific chapter images",
