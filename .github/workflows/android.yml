@@ -64,6 +64,7 @@ jobs:
           node tools/literature-sign-of-four.test.cjs
           node tools/literature-moonstone.test.cjs
           node tools/literature-war-of-worlds.test.cjs
+          node tools/literature-five-originals-integrity.test.cjs
           node tools/verne-plate-queue.test.cjs
           node tools/literature-frankenstein.test.cjs
           node tools/literature-dracula.test.cjs
