@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Acquire genuine Commons-hosted Verne period plates into quarantine; never publish."""
 import hashlib, io, json, os, re, time
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 from pathlib import Path
 from urllib.parse import urlencode, urlparse
 from urllib.request import Request, urlopen
@@ -35,17 +35,26 @@ def main():
     old=json.loads(manifest.read_text()) if manifest.exists() else {"images":[]}
     known={x["commonsTitle"]:x for x in old["images"]}
     members=[]; cont={}
-    while True:
-        payload=api({"action":"query","list":"categorymembers","cmtitle":CATEGORY,"cmtype":"file","cmlimit":100,**cont})
-        members += [m["title"] for m in payload["query"]["categorymembers"]]
-        if "continue" not in payload: break
-        cont=payload["continue"]
+    try:
+        while True:
+            payload=api({"action":"query","list":"categorymembers","cmtitle":CATEGORY,"cmtype":"file","cmlimit":100,**cont})
+            members += [m["title"] for m in payload["query"]["categorymembers"]]
+            if "continue" not in payload: break
+            cont=payload["continue"]
+    except (HTTPError, URLError, TimeoutError) as exc:
+        save_manifest(known)
+        print("SOURCE_API_UNAVAILABLE; existing verified assets preserved:",repr(exc),flush=True)
+        return
     # Keep a reproducible lexicographic source order, no chapter-placement inference.
     added=0
     for title in sorted(set(members)):
         if added>=30: break
         if title in known: continue
-        record=api({"action":"query","titles":title,"prop":"imageinfo","iiprop":"url|size|mime|extmetadata","iiurlwidth":1200})
+        try:
+            record=api({"action":"query","titles":title,"prop":"imageinfo","iiprop":"url|size|mime|extmetadata","iiurlwidth":1200})
+        except (HTTPError, URLError, TimeoutError) as exc:
+            print("SOURCE_METADATA_UNAVAILABLE; preserving progress:",repr(exc),flush=True)
+            break
         pages=record.get("query",{}).get("pages",[])
         info=pages[0].get("imageinfo",[{}])[0] if pages else {}
         url=info.get("url","")
