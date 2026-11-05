@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_04.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-a95cdb18dd50f823.webp",
+  "imageSha256": "00dc661442705a8dfca77baed675773e957c7647353fd8c188e78e70a303ecb8",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black-and-white line engraving depicting a man standing in an interior room. He is dressed in formal 19th-century attire, standing between an ornate table with a top hat on it and an upholstered armchair. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "A man, a top hat, an ornate wooden table with carved legs, an upholstered armchair, a walking stick leaning against the chair, a curtain or drapery in the background, and a wall with architectural molding.",
+    "recognizableCharactersOrPeopleEn": "A single adult male with curly hair and sideburns, wearing a frock coat, waistcoat, cravat, and trousers.",
+    "uncertaintyNotes": "The specific identity of the man is not provided in the image. The exact historical period is inferred from the clothing style as mid-to-late 19th century."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 27,
+    "paragraphIndexZeroBased": 2,
+    "exactSourceQuotation": "This personage, who had taken the train at Elko, was tall and dark, with black moustache, black stockings, a black silk hat, a black waistcoat, black trousers, a white cravat, and dogskin gloves.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The description of the man in the text (tall, dark, black silk hat, black waistcoat, black trousers, white cravat) matches the visual depiction of the man in formal 19th-century attire in the engraving. The scene describes a personage who is standing and interacting with his environment, which aligns with the man standing in an interior room with furniture.",
+    "suggestedAltArNotApproved": "A 19th-century engraving of a tall, dark-haired man in formal attire, including a frock coat, waistcoat, and cravat, standing in a room next to an ornate table with a top hat and an upholstered armchair.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts a man standing indoors next to a table and an armchair, wearing formal 19th-century attire including a frock coat, trousers, and cravat, with a top hat on the table.",
+    "visualContradictions": "The passage describes the man walking from one end of the train to the other and affixing a manuscript notice to the door of each car. The image shows him stationary indoors next to furniture, with no train car, doors, or manuscript notices visible.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
