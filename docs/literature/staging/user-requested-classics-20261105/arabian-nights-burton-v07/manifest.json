@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "workId": "arabian-nights-burton-v07",
+  "title": "The Book of the Thousand Nights and a Night — Volume 07 of 10",
+  "author": "Traditional Arabic storytellers; English translation by Richard F. Burton",
+  "sourceLanguage": "en",
+  "originalLanguage": "ar",
+  "originalPublicationYear": 1885,
+  "sourceEditionNote": "Adult historical Richard F. Burton 1885 English edition; NOT a matching bilingual Arabic transcription, nor a children's adaptation",
+  "translator": "Richard Francis Burton",
+  "seriesId": "arabian-nights-burton-ten-volume-edition",
+  "seriesVolume": 7,
+  "seriesVolumeCount": 10,
+  "source": {
+    "provider": "Project Gutenberg",
+    "ebookNumber": 3441,
+    "url": "https://www.gutenberg.org/cache/epub/3441/pg3441-images.html",
+    "catalog": "https://www.gutenberg.org/ebooks/3441",
+    "sha256": "aa47f2b603e9ba8732466ae1e0f856eab9b2a9c9ae642fbe2c9e74c4939c8237",
+    "bytes": 1001605,
+    "narrativeWords": 171548,
+    "allTextSha256": "075cb828831e7e933448531557858ed8f970a2e511e71f153db0e859a84fc35c",
+    "completeGutenbergMarkers": true,
+    "originalFullEditionPreservedVerbatim": true
+  },
+  "sourceImages": [],
+  "historicalArtworkCandidates": 0,
+  "imagesWithExactRelativePositions": 0,
+  "acceptance": {
+    "fullOriginalOrUnabridgedHistoricalTranslation": true,
+    "fullNaturalArabicTranslation": false,
+    "bilingualOriginalEnglishEditionAligned": false,
+    "illustrationRightsApproved": false,
+    "allRequestedHistoricalColouredArtworkPresent": false,
+    "appIntegrated": false,
+    "androidDeviceVerified": false
+  },
+  "status": "COMPLETE_SOURCE_STAGED_ONLY_NOT_PUBLISHED",
+  "note": "Unabridged cited source, NOT bilingual or APK-ready. No invented images or missing-book equivalence. Burton Arabic-origin source not aligned to any Arabic edition."
+}
