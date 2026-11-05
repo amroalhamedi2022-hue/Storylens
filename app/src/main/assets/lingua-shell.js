@@ -320,13 +320,6 @@ function openThemeEditor(name,origin){
   const custom=customThemeColors();delete custom[name];put('ltThemeCustomColors',custom);
   applyCustomThemeColors();openThemeEditor(name,origin);
  },'secondary');
- addButton(actions,rtl()?'إخفاء الثيم من القائمة':'Hide theme',()=>{
-  const hidden=hiddenThemeNames();
-  if(!hidden.includes(name))hidden.push(name);
-  put('ltHiddenThemes',hidden);
-  origin?.remove();panel.remove();
-  if(state.uiTheme===name)applyTheme(selectableThemeNames.find(id=>!hidden.includes(id))||'aurora');
- },'secondary');
  panel.appendChild(actions);sheet.querySelector('.lt-theme-gallery')?.after(panel);
  panel.querySelector('input')?.focus();
 }
@@ -447,7 +440,7 @@ function openSettings(){
  sheet.appendChild(themeHeading);
  const gallery=document.createElement('div');gallery.className='lt-theme-gallery';
  for(const name of selectableThemeNames){
-  if(hiddenThemeNames().includes(name))continue;
+  // Exactly the six approved designs are always visible, including after old backups.
   let longPressTimer=null,longPressed=false,startX=0,startY=0;
   const b=addButton(gallery,themeLabelFor(name),()=>{
    if(longPressed){longPressed=false;return;}
@@ -481,14 +474,8 @@ function openSettings(){
  }
  sheet.appendChild(gallery);
  const themeHint=document.createElement('p');themeHint.className='quiet';
- themeHint.textContent=rtl()?'اضغط مطوّلًا على أي ثيم لتغيير ألوانه أو إخفائه.':'Long-press any theme to recolor or hide it.';
+ themeHint.textContent=rtl()?'اضغط مطوّلًا لتعديل الألوان.':'Hold to adjust colours.';
  sheet.appendChild(themeHint);
- if(hiddenThemeNames().length){
-  addButton(sheet,rtl()?'استرجاع جميع الثيمات المخفية':'Restore hidden themes',()=>{
-   put('ltHiddenThemes',[]);
-   closeSheet();openSettings();
-  },'secondary lt-themes-restore');
- }
  // Materials change paper, not the six app themes nor physical curl.
  const materialLabel=document.createElement('label');
  materialLabel.className='lt-font-setting lt-paper-material-setting';
@@ -1217,10 +1204,38 @@ document.addEventListener('click',event=>{
   document.body.classList.add('theme-aurora');
   put('uiTheme','aurora');
  }
+
+/* RDR-04 — Keep prose as live, accessible HTML for the built-in dictionary
+ * while suppressing Android/WebView's generic selection/copy context menu.
+ * This does not prevent external camera/screenshot OCR. */
+function ltEditableTextTarget(node){
+ const el=node?.nodeType===3?node.parentElement:node;
+ return !!(el?.isContentEditable||el?.closest?.(
+  'input,textarea,[contenteditable="true"],[role="textbox"]'));
+}
+function ltReaderTextTarget(node){
+ const el=node?.nodeType===3?node.parentElement:node;
+ return !!el?.closest?.('.reader');
+}
+function installReaderTextGuards(){
+ const paperDoc=global.document;
+ if(!paperDoc?.addEventListener||paperDoc.__ltReaderTextGuardsInstalled)return;
+ paperDoc.__ltReaderTextGuardsInstalled=true;
+ function guard(event){
+  const anchor=global.getSelection?.()?.anchorNode;
+  const paper=ltReaderTextTarget(event.target)||ltReaderTextTarget(anchor);
+  if(!paper||ltEditableTextTarget(event.target)||ltEditableTextTarget(anchor))return;
+  event.preventDefault?.();
+ }
+ for(const name of ['selectstart','contextmenu','copy','cut','dragstart'])
+  paperDoc.addEventListener(name,guard,true);
+}
+
 loadLocale();
 loadFonts();
 loadReadingSizes();
 loadReaderMaterial();
+installReaderTextGuards();
 applyCustomThemeColors();
 library();
 })(window);

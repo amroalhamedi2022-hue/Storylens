@@ -595,3 +595,11 @@ Source baseline reviewed: main 064258074b4a3c4d5fb139aa4c163a28ca27b66a / CI #41
 - Branch `design/reader-paper-material-presets-20261105` builds on PR #9 source `2869739a435077f2ff73d91820869811047ba10c`. Merge PR #9 first, then recheck newest main and CI before merging this batch.
 - Six independent materials `book/fibre/white/cream/comfort/night`, exposed in Settings, saved in `ltReaderMaterial`. Only opaque paper/ink colors or light texture change; no page-turn geometry/layout transforms, book content or images touched.
 - Added strictly validated backup allowlist+restore and Node regression; full CI, real tablets and Codex engine integration still OPEN. This is NOT a new signed APK.
+
+
+### 2026-11-05 — RDR-04/06/07/10/12 source batch #2 (PR and CI pending at initial write)
+- Independent branch `design/reader-copy-guard-global-font-six-locked-20261105` from merged main `1e9a07ba42a53544d2e8f3b504f59564d3bcd0f7`; does NOT edit Codex physical curl, Android native host, literary sources or content image assets.
+- **Six app themes guaranteed visible** even after imported old backups with `ltHiddenThemes`; preserved legacy values solely for backup compatibility. Removed obsolete hide/restore controls from editor/settings while retaining optional recolour.
+- Blocked native WebView-style `selectstart/contextmenu/copy/cut/dragstart` capture **for live reader text only**; original dictionary word-taps, translations, illustrations and editable input fields still use actual DOM. It is NOT device-level DRM and cannot stop external OCR. Android OS screenshot OCR/native menu hardware verification remains OPEN.
+- Visually hides old bottom page-number counter while leaving state/aria accessible, reduces unnecessary reader chrome; widens portrait tablet paper without changing page-turn geometry. App-wide Arabic/English font selectors propagate selected installed fonts to library/drawer/settings and language-tagged reading, retaining mixed-language text.
+- New Node tests verify live guard semantics, editable controls, exactly six always-visible themes and CSS. Exact Android+Chromium CI and real-device visual/functional acceptance remain OPEN. No new signed APK.

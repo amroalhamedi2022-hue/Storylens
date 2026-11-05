@@ -86,6 +86,7 @@ jobs:
           node tools/licensed-audio-start-timeout.test.cjs
           node tools/theme-catalog.test.cjs
           node tools/reader-material-presets.test.cjs
+          node tools/reader-copy-guard-typography.test.cjs
           node tools/celestial-atlas.test.cjs
           node tools/circuit-notebook.test.cjs
           node tools/terracotta-gallery.test.cjs

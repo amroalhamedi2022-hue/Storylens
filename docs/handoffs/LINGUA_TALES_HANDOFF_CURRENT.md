@@ -1,3 +1,15 @@
+# Current UX branch: copy guard, always-six gallery, global fonts and quiet reader
+
+
+### 2026-11-05 — RDR-04/06/07/10/12 source batch #2 (PR and CI pending at initial write)
+- Independent branch `design/reader-copy-guard-global-font-six-locked-20261105` from merged main `1e9a07ba42a53544d2e8f3b504f59564d3bcd0f7`; does NOT edit Codex physical curl, Android native host, literary sources or content image assets.
+- **Six app themes guaranteed visible** even after imported old backups with `ltHiddenThemes`; preserved legacy values solely for backup compatibility. Removed obsolete hide/restore controls from editor/settings while retaining optional recolour.
+- Blocked native WebView-style `selectstart/contextmenu/copy/cut/dragstart` capture **for live reader text only**; original dictionary word-taps, translations, illustrations and editable input fields still use actual DOM. It is NOT device-level DRM and cannot stop external OCR. Android OS screenshot OCR/native menu hardware verification remains OPEN.
+- Visually hides old bottom page-number counter while leaving state/aria accessible, reduces unnecessary reader chrome; widens portrait tablet paper without changing page-turn geometry. App-wide Arabic/English font selectors propagate selected installed fonts to library/drawer/settings and language-tagged reading, retaining mixed-language text.
+- New Node tests verify live guard semantics, editable controls, exactly six always-visible themes and CSS. Exact Android+Chromium CI and real-device visual/functional acceptance remain OPEN. No new signed APK.
+
+---
+
 # Reading-material presets work branch (not yet merged)
 
 
