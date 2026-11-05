@@ -1,0 +1,75 @@
+name: Lingua Tales - compare genuine Andriolli art with original 33 Mohicans chapters
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/export_mohicans_original_source_for_art.py'
+      - 'tools/gemini_suggest_mohicans_plate_scenes.py'
+      - '.github/workflows/mohicans-andriolli-original-scene-review.yml'
+  schedule:
+    - cron: '17 3,7,11,15,19,23 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lingua-mohicans-andriolli-skeptical-chapter-vision
+  cancel-in-progress: false
+
+jobs:
+  investigate-real-original-image-source-correspondences:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install only original page HTML parser
+        run: python -m pip install beautifulsoup4==4.13.4
+      - name: Verify 33 exact source chapters and original scene inspection engine
+        run: |
+          python tools/export_mohicans_original_source_for_art.py --check
+          python tools/gemini_suggest_mohicans_plate_scenes.py --self-test
+      - name: Actually view 4 original period images and compare to precise English book paragraphs
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python tools/gemini_suggest_mohicans_plate_scenes.py --max-new 4
+      - name: Save skeptical model evidence ONLY, without chapter cards or rights approval
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -d docs/literature/staging/mohicans-andriolli-scene-reviews ]; then
+            git add -f docs/literature/staging/mohicans-andriolli-scene-reviews/
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No new real source/vision verification records."
+          else
+            git commit -m "Literature: checkpoint actual Andriolli plate visual scene evidence [skip ci]"
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 3
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Image inspection evidence not pushed"
+              exit 1
+            fi
+          fi
+      - name: Keep partial model evidence if GitHub/API unavailable
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mohicans-genuine-original-engraving-scene-evidence-unapproved
+          path: docs/literature/staging/mohicans-andriolli-scene-reviews/
+          if-no-files-found: ignore
+          retention-days: 30
