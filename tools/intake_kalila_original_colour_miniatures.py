@@ -50,7 +50,7 @@ def verify():
 
 def limited_download(sess, url, max_bytes=18_000_000):
     u = urlparse(url)
-    if u.scheme != "https" or u.hostname not in ("upload.wikimedia.org", "commons.wikimedia.org"):
+    if u.scheme != "https" or u.hostname not in ("upload.wikimedia.org", "thumb.wikimedia.org", "commons.wikimedia.org"):
         raise ValueError(f"Not a Commons upload endpoint: {url}")
     with sess.get(url, timeout=(20, 90), stream=True, allow_redirects=True) as response:
         response.raise_for_status()
@@ -101,19 +101,15 @@ def get_metadata(sess):
         # Machine-readable PD metadata is often absent even for medieval
         # faithful reproductions: stage such scans with explicit rights HOLD.
         if not file_name.startswith("File:"):
-            print(f"DIAG skip nonfile {file_name}", flush=True)
             continue
         if info.get("mime", "image/jpeg") not in ("image/jpeg", "image/png", "image/webp"):
-            print(f"DIAG skip mime {file_name}: {info.get('mime')}", flush=True)
             continue
         # Wikimedia explicitly recommends thumbnail derivatives rather than
         # repeatedly fetching full-resolution master scans (HTTP 429 policy).
         original_url = info.get("url")
         url = info.get("thumburl") or original_url
-        if not url or not url.startswith("https://upload.wikimedia.org/"):
-            print(f"DIAG skip image url {file_name}: {str(url)[:100]}", flush=True)
+        if not url or not (url.startswith("https://upload.wikimedia.org/") or url.startswith("https://thumb.wikimedia.org/")):
             continue
-        print(f"DIAG accept {file_name}: license={license_label}, url={str(url)[:75]}",flush=True)
         candidates.append(dict(title=file_name, url=url, originalUrl=original_url, info=info, license=license_label))
     if not candidates:
         raise ValueError("No individually tagged public-domain manuscript folios were found")
