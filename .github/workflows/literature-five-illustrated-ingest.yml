@@ -42,7 +42,8 @@ jobs:
             python tools/intake_five_complete_illustrated_books.py --book "$book"
             python tools/intake_five_complete_illustrated_books.py --book "$book" --verify
             git add -f "docs/literature/staging/illustrated-five-20261105/$book"
-            git diff --cached --check
+            # Never lint/normalise byte-for-byte historical HTML: source has authentic
+            # trailing whitespace. The ingestion verifier checks original SHA-256.
             if git diff --cached --quiet; then
               echo "Already staged; no duplicate commit for $book"
             else
