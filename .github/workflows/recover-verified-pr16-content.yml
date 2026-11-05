@@ -1,0 +1,62 @@
+name: Lingua Tales - recover verified historical content assets from PR16
+on:
+  push:
+    branches:
+      - content/recover-pr16-source-assets-20261105
+    paths:
+      - '.github/workflows/recover-verified-pr16-content.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lingua-restore-pr16-content
+  cancel-in-progress: false
+
+jobs:
+  restore-content-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Recover content-only files from fixed, previously verified PR16 source SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          SOURCE_SHA=b2905454df7c285dcc829f8b5e10e9bc3303bc21
+          TARGETS=(
+            docs/literature/staging/user-requested-classics-20261105
+            docs/literature/staging/arabian-nights-arabic-wikisource-20261105
+            docs/literature/staging/kalila-original-colour-miniatures-20261105
+            docs/literature/USER_NAMED_WORKS_DELIVERY_2026-11-05.json
+            tools/literature-prior-requests-integrity.test.cjs
+          )
+          if [ -d "${TARGETS[0]}" ] || [ -d "${TARGETS[1]}" ] || [ -d "${TARGETS[2]}" ]; then
+            echo "::error::These source directories already exist; refusing to overwrite concurrent content"
+            exit 1
+          fi
+          git fetch --no-tags --depth=1 origin "$SOURCE_SHA"
+          test "$(git rev-parse FETCH_HEAD)" = "$SOURCE_SHA"
+          git checkout "$SOURCE_SHA" -- "${TARGETS[@]}"
+          node tools/literature-prior-requests-integrity.test.cjs
+          git diff --cached --check
+          git diff --cached --stat | tail -15
+          git commit -m 'Literature: stage 13 historical editions, 456 edition art plates, 17 medieval colour folios and Arabic source sections [skip ci]'
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Verify source integrity after checkpoint
+        run: node tools/literature-prior-requests-integrity.test.cjs
+      - name: Retain detailed logs
+        if: failure()
+        run: |
+          echo "Source content remains in the original PR16 if restore failed."
+          echo "Do not claim additional books/photos merged to main unless checked in the branch and follow-up merge succeeds."
