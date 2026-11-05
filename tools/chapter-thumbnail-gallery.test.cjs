@@ -53,6 +53,8 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null}={}){
  const fakeArt=artSrc?{'example-story_0':artSrc}:{};
  const cards=[],historyCalls=[],baseOpens=[],writes=[];
  const document={documentElement:{lang:en?'en':'ar'},body:element('body'),activeElement:element('button'),
+  clickListeners:[],
+  addEventListener(type,fn,capture){if(type==='click'){assert.equal(capture,true);this.clickListeners.push(fn);}},
   createElement(tag){const x=element(tag);if(tag==='dialog')cards.push(x);return x;}};
  const history={state:{page:'library'},pushState(payload,_title,hash){this.state=payload;historyCalls.push({type:'push',payload,hash})},
   back(){historyCalls.push({type:'back'});this.state={page:'library'};}};
@@ -70,12 +72,29 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null}={}){
  vm.runInNewContext(source,sandbox,{filename:'lt-chapter-gallery.js'});
  const api=W.LinguaChapterGallery;
  assert.ok(api);
- return {W,api,story,document,cards,historyCalls,baseOpens,writes,listeners,timerQueue};
+ const clickBook=(id=story.id,{favorite=false}={})=>{
+  const card={getAttribute(name){return name==='onclick'?"openStory('"+id+"')":null;}};
+  const target={nodeType:1,closest(selector){
+   if(selector.startsWith('.stl-favorite'))return favorite?{}:null;
+   if(selector.startsWith('.library .card'))return card;
+   return null;
+  }};
+  const event={target,defaultPrevented:false,
+   prevented:false,stopped:false,
+   preventDefault(){this.prevented=true;},
+   stopPropagation(){this.stopped=true;}
+  };
+  for(const listener of document.clickListeners)listener(event);
+  return event;
+ };
+ return {W,api,story,document,cards,historyCalls,baseOpens,writes,listeners,timerQueue,clickBook};
 }
 (async()=>{
  const s=scenario({artSrc:'data:image/svg+xml;charset=utf-8,%3Csvg%3E%3C%2Fsvg%3E'});
  assert.equal(s.api.hasChapters(s.story),true);
- s.W.openStory('example-story');
+ const activated=s.clickBook();
+ assert.equal(activated.prevented,true);
+ assert.equal(activated.stopped,true);
  assert.equal(s.api.isOpen,true);
  assert.equal(s.baseOpens.length,0,'book click MUST open ordered chapter list rather than start reading');
  assert.equal(s.historyCalls[0].payload.page,'chapter-gallery');
@@ -135,7 +154,7 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null}={}){
   releaseApproved:true,distributionReviewApproved:true,rightsStatus:'APPROVED'};
  const dup=scenario({approved:duplicateImage});
  dup.story.chapterThumbnails[1]=duplicateImage;
- dup.W.openStory('example-story');
+ dup.clickBook();
  await tick();
  const dupTiles=dup.cards[0].children[0].children[1].children;
  assert.equal(dupTiles[0].dataset.thumbnailState,'approved');
@@ -150,15 +169,23 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null}={}){
   releaseApproved:true,distributionReviewApproved:true,rightsStatus:'APPROVED',credit:''}});
  assert.equal(noCredit.api.chapterImage(noCredit.story,0),null);
  const queued=scenario({lazy:true});
- queued.W.openStory('example-story');
+ queued.clickBook();
  await tick();
  assert.equal(queued.cards[0].children[0].children[1].children.length,3,
   'offline long book must finish lazy loading BEFORE presenting chapter choices');
  assert.equal(queued.baseOpens.length,0,'lazy loading must not auto-open the book');
  const one=scenario();
  one.story.chapters=[one.story.chapters[0]];
+ assert.equal(one.clickBook().prevented,false,'one-chapter click falls through to old handler');
  one.W.openStory('example-story');
  assert.equal(one.baseOpens.length,1,'single-chapter story retains original direct reader');
+ const direct=scenario();
+ direct.W.openStory('example-story');
+ assert.equal(direct.baseOpens.length,1,'programmatic deep links MUST retain original reading route');
+ assert.equal(direct.api.isOpen,false,'programmatic source/translation QA must not open a gallery');
+ const favorite=scenario();
+ assert.equal(favorite.clickBook('example-story',{favorite:true}).prevented,false,
+  'nested favorite action must not be hijacked by book gallery');
  const noExtra=scenario({artSrc:'https://host.invalid/photo.jpg'});
  assert.equal(noExtra.api.chapterImage(noExtra.story,0),null,'remote sources never used as thumbnails');
  console.log('PASS: 3 ordered RTL/LTR chapter cards, real bundled image and approval-gated source images, lazy 37-chapter contract, safe reader/progress/back, missing-art and a11y checks');
