@@ -51,12 +51,13 @@ with tempfile.TemporaryDirectory() as name:
     image = png_fixture()
     assert len(image) > 300
     (art_dir / "original-colour.png").write_bytes(image)
+    original_path = "docs/literature/staging/sample-classic/art/original-colour.png"
     proof = hashlib.sha256(image).hexdigest()
 
     entry = {
         "chapterOneBased": 1,
         "primaryImage": {
-            "imagePath": "docs/literature/staging/sample-classic/art/original-colour.png",
+            "imagePath": original_path,
             "sha256": proof,
             "sourceUrl": "https://commons.wikimedia.org/wiki/File:Real_source_page.png",
             "sceneAnchor": "Source chapter one scene exact passage",
@@ -108,7 +109,7 @@ with tempfile.TemporaryDirectory() as name:
     map_data["chapters"][0]["primaryImage"]["imagePath"] = "../../outside.png"
     write()
     invoke(root, "--write", success=False)
-    map_data["chapters"][0]["primaryImage"]["imagePath"] = entry["primaryImage"]["imagePath"]
+    map_data["chapters"][0]["primaryImage"]["imagePath"] = original_path
     map_data["chapters"][0]["primaryImage"]["sha256"] = "0" * 64
     write()
     invoke(root, "--write", success=False)
