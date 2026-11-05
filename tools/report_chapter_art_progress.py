@@ -111,20 +111,59 @@ def archived_illustrations(folder: Path) -> dict:
                 manifest.get("source", {}).get("chapterMarkerOccurrences")}
 
 
+def verify_recovered_illustrated_source(slug: str) -> dict:
+    folder = STAGING / "user-requested-classics-20261105" / slug
+    manifest = jload(folder / "manifest.json")
+    if manifest["workId"] != slug:
+        raise ValueError("Recovered source ID mismatch: " + slug)
+    images = manifest["sourceImages"]
+    if len(images) != int(manifest["historicalArtworkCandidates"]):
+        raise ValueError("Historical image source counts mismatch: " + slug)
+    for image in images:
+        check_binary(str((folder / image["localPath"]).relative_to(ROOT)), image["sha256"])
+    return {"archivedLocalHistoricArt": len(images), "sourceImageCount": len(images)}
+
+
+def verify_kalila_miniatures() -> int:
+    folder = STAGING / "kalila-original-colour-miniatures-20261105"
+    manifest = jload(folder / "manifest.json")
+    images = manifest["plates"]
+    for image in images:
+        if image.get("colourWasAdded") is not False or image.get("colourRemoved") is not False:
+            raise ValueError("Historically authentic Kalila colour was altered")
+        check_binary(str((folder / image["localPath"]).relative_to(ROOT)), image["webpSha256"])
+    return len(images)
+
+
 def generate() -> dict:
     manifest = jload(HIST)
     if not manifest or len({x["file"] for x in manifest}) != len(manifest):
         raise ValueError("Verne pinned historical sources are missing/duplicated; audit before refresh")
     for item in manifest:
         check_binary("app/src/main/assets/art/" + item["file"], item["webp_sha256"])
+    additional = jload(STAGING / "verne-period-plates-20261105" / "manifest.json")["images"]
+    allowed = {
+        "app/src/main/assets/art/" + item["file"]: (item["webp_sha256"], item["chapter"] + 1)
+        for item in manifest
+    }
+    for item in additional:
+        original_path = "docs/literature/staging/verne-period-plates-20261105/" + item["localFile"]
+        check_binary(original_path, item["sourceSha256"])
+        if original_path in allowed:
+            raise ValueError("Duplicate Verne historic source image path")
+        allowed[original_path] = (item["sourceSha256"], item["chapterOneBased"])
+    for row in jload(MAP)["chapters"]:
+        art = row.get("primaryImage")
+        for image in ([art] if art else []) + row.get("secondaryImageCandidates", []):
+            if image["imagePath"] not in allowed or (
+                image["sha256"], row["chapterOneBased"]
+            ) != allowed[image["imagePath"]]:
+                raise ValueError("Verne map contains an unpinned historical source image")
     verne = map_coverage(MAP, 37)
-    expected = sorted({x["chapter"] + 1 for x in manifest})
-    if not set(verne["mappedChapterNumbers"]).issubset(set(expected)):
-        raise ValueError("Verne chapter map uses images absent from checked source manifest")
     rows = [
         {"bookId": "around-the-world-in-eighty-days-towle",
          "title": "Around the World in Eighty Days", "sourceState": "37 source chapters plus Arabic draft",
-         "chapterCount": 37, "archivedLocalHistoricArt": len(manifest), **verne},
+         "chapterCount": 37, "archivedLocalHistoricArt": len(manifest) + len(additional), **verne},
         {"bookId": "collins-the-moonstone-1868", "title": "The Moonstone",
          "sourceState": "staged English; chapter segmentation/rights pending",
          "chapterCount": None, "narrativeSourceUnitsNotChapterCount": 53,
