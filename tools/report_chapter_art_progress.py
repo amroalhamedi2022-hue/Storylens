@@ -218,6 +218,32 @@ def generate() -> dict:
             checked_source_hashes.add(source_hash)
             checked_webp_hashes.add(webp_hash)
         mohicans_extra_count = len(mo["images"])
+    moonstone_facsimile_scans = 0
+    moonstone_scan_gallery = STAGING / "moonstone-1874-original-scans" / "manifest.json"
+    if moonstone_scan_gallery.is_file():
+        mo = jload(moonstone_scan_gallery)
+        if (mo.get("category") != "Category:The Moonstone (1874)"
+                or mo.get("sourceEdition") !=
+                "The Moonstone, 1874 Harper & Brothers period facsimile; individual plate imagery unclassified"
+                or mo.get("publicationApproved") is not False
+                or mo.get("chapterSceneMatchingComplete") is not False
+                or mo.get("historicalPrintScanInventoryOnly") is not True):
+            raise ValueError("1874 Moonstone facsimiles have unsupported source or approval state")
+        seen_moonstone_sources, seen_moonstone_local_hashes = set(), set()
+        for scan in mo["images"]:
+            original = scan["originalCommonsSHA1MetadataOnly"]
+            local_hash = scan["webpSha256"]
+            if original in seen_moonstone_sources or local_hash in seen_moonstone_local_hashes:
+                raise ValueError("Duplicate Moonstone facsimile image")
+            if (scan.get("artworkClassificationStatus") != "PRINT_SCAN_UNCLASSIFIED_MAY_INCLUDE_TEXT"
+                    or scan.get("editoriallyApproved") is not False
+                    or scan.get("rightsStatus") != "PENDING_HUMAN_TERRITORY_AND_SCENE_REVIEW"
+                    or not scan.get("commonsPage") or scan.get("sourceEdition") != mo["sourceEdition"]):
+                raise ValueError("1874 Moonstone print scan lacks provenance or falsifies rights")
+            check_binary(str((moonstone_scan_gallery.parent / scan["localPath"]).relative_to(ROOT)), local_hash)
+            seen_moonstone_sources.add(original)
+            seen_moonstone_local_hashes.add(local_hash)
+        moonstone_facsimile_scans = len(mo["images"])
     rows = [
         {"bookId": "around-the-world-in-eighty-days-towle",
          "title": "Around the World in Eighty Days", "sourceState": "37 source chapters plus Arabic draft",
@@ -226,6 +252,7 @@ def generate() -> dict:
         {"bookId": "collins-the-moonstone-1868", "title": "The Moonstone",
          "sourceState": "staged English; chapter segmentation/rights pending",
          "chapterCount": None, "narrativeSourceUnitsNotChapterCount": 53,
+         "unassignedHistorical1874FacsimileScans": moonstone_facsimile_scans,
          "localCandidateChapters": 0, "readyForUICards": 0,
          "missingImageChapters": None, "missingReadyChapters": None,
          "archivedLocalHistoricArt": 0},
