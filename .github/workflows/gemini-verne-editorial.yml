@@ -29,6 +29,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: true
+          # Full commit ancestry is necessary to find the merge base with
+          # the durable draft checkpoint branch. fetch-depth:1 made real
+          # related histories appear unrelated after main source merges.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
