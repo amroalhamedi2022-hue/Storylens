@@ -77,7 +77,7 @@ def colour_fraction(image):
 def get_metadata(sess):
     params = dict(
         action="query", format="json", generator="categorymembers",
-        gcmtitle=CATEGORY, gcmlimit=200, gcmtype="file",
+        gcmtitle=CATEGORY, gcmlimit=200, gcmtype="file", iiurlwidth=960,
         prop="imageinfo", iiprop="url|size|sha1|extmetadata",
         iiextmetadatalanguage="en",
     )
@@ -100,10 +100,13 @@ def get_metadata(sess):
             continue
         if info.get("mime", "image/jpeg") not in ("image/jpeg", "image/png", "image/webp"):
             continue
-        url = info.get("url")
+        # Wikimedia explicitly recommends thumbnail derivatives rather than
+        # repeatedly fetching full-resolution master scans (HTTP 429 policy).
+        original_url = info.get("url")
+        url = info.get("thumburl") or original_url
         if not url or not url.startswith("https://upload.wikimedia.org/"):
             continue
-        candidates.append(dict(title=file_name, url=url, info=info, license=license_label))
+        candidates.append(dict(title=file_name, url=url, originalUrl=original_url, info=info, license=license_label))
     if not candidates:
         raise ValueError("No individually tagged public-domain manuscript folios were found")
     # Manually staged historical folios, not an automatic reader-chapter mapping.
@@ -130,7 +133,21 @@ def main():
         if info.get("width", 0) < 350 or info.get("height", 0) < 350:
             continue
         try:
-            original = limited_download(sess, c["url"])
+            # Archive permits thumbnails; respect the public host by spacing
+            # requests and using exponential 429 backoff, never a request storm.
+            original = None
+            for attempt in range(5):
+                try:
+                    original = limited_download(sess, c["url"])
+                    break
+                except requests.HTTPError as exc:
+                    if exc.response is None or exc.response.status_code != 429 or attempt == 4:
+                        raise
+                    pause = min(50, 7 * (attempt + 1))
+                    print(f"Commons rate limit: sleeping {pause}s before retry", flush=True)
+                    time.sleep(pause)
+            if original is None:
+                raise ValueError("No image bytes obtained")
             with Image.open(BytesIO(original)) as src:
                 score = colour_fraction(src)
                 if score < .022:
@@ -146,7 +163,8 @@ def main():
             records.append(dict(
                 localPath=local, webpBytes=len(converted), webpSha256=hash_bytes(converted),
                 sourceCommonsFile=c["title"], sourceCommonsFilePage="https://commons.wikimedia.org/wiki/" + c["title"].replace(" ", "_"),
-                sourceUrl=c["url"], sourceSha256=hash_bytes(original), sourceByteCount=len(original),
+                sourceUrl=c["originalUrl"], actualDownloadedWikimediaDerivativeUrl=c["url"],
+                downloadedDerivativeSha256=hash_bytes(original), downloadedDerivativeBytes=len(original),
                 colourFraction=round(score, 4), colourWasAdded=False, colourRemoved=False,
                 originalArtistPublicDomainMetadataChecked=True,
                 individualCommonsLicenseShortName=c["license"],
@@ -161,7 +179,7 @@ def main():
             print(f"ORIGINAL COLOURED FOLIO {number}: {c['title']} ({score:.1%} colour)", flush=True)
         except (requests.RequestException, OSError, ValueError) as exc:
             print(f"SKIP source image failure {c['title']}: {exc}", flush=True)
-        time.sleep(.15)
+        time.sleep(2.1)
     if len(records) < 6:
         raise ValueError(f"Only {len(records)} qualifying authentic coloured folios, require >=6")
     OUT.mkdir(parents=True, exist_ok=False)
