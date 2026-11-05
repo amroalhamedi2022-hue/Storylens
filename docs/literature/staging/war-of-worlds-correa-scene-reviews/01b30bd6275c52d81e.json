@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_009_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-01b30bd6275c52d8.webp",
+  "imageSha256": "2322db02ccf64cf8e8b63ca566298dff815eb9dc3127a9253a04dabab605e844",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a man with a beard looking through a large telescope mounted on a stand. The setting appears to be an attic or an observatory with wooden beams visible. In the lower left foreground, there is a spherical object with horizontal bands, possibly a lantern or a scientific instrument.",
+    "visualObjectsEn": "Large telescope, telescope mount, wooden beams, spherical object with bands, man's clothing, ink lines representing shading and texture.",
+    "recognizableCharactersOrPeopleEn": "A single adult male with a beard and short hair, wearing a collared shirt or jacket.",
+    "uncertaintyNotes": "The exact nature of the spherical object in the foreground is unclear; it could be a lantern, a globe, or a specialized scientific device. The specific historical context or identity of the man is not provided in the image."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 1,
+    "paragraphIndexZeroBased": 10,
+    "exactSourceQuotation": "the black and silent observatory, the shadowed lantern throwing a feeble glow upon the floor in the corner, the steady ticking of the clockwork of the telescope",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a man with a telescope in an observatory setting with wooden beams, which aligns perfectly with the description of the observatory in Chapter 1, Paragraph 10. The 'spherical object with horizontal bands' in the image corresponds to the 'shadowed lantern' mentioned in the text.",
+    "suggestedAltArNotApproved": "A man with a beard observing through a telescope in a dark, wooden-beamed observatory, with a lantern glowing in the foreground.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts an observatory interior with a bearded man (Ogilvy) looking through a large mounted telescope, matching the scene described in the passage.",
+    "visualContradictions": "None",
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

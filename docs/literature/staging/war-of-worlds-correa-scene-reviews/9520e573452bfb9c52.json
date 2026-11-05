@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_017_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-9520e573452bfb9c.webp",
+  "imageSha256": "0f94e320271efd85b7f424d39e1e4cd9c87d4df3c6738a405408709348083529",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a man sitting at a desk, reading or writing in a large open book. The style is characterized by heavy cross-hatching and loose, expressive lines typical of 19th-century book illustrations. The man is seated in a high-backed chair, leaning forward over a table. In the background, there is a suggestion of a stone wall or architectural structure.",
+    "visualObjectsEn": "A man, a high-backed chair, a desk or table, an open book, an inkwell or small container, and a stone wall in the background.",
+    "recognizableCharactersOrPeopleEn": "A single male figure with dark, messy hair, wearing a collared coat or jacket.",
+    "uncertaintyNotes": "The exact identity of the person is not provided in the image. The background is abstract and could represent an interior or exterior setting, though it appears to be an interior room with stone walls. The specific activity (reading vs. writing) is ambiguous as the man's hand is resting on the book."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 26,
+    "paragraphIndexZeroBased": 12,
+    "exactSourceQuotation": "I followed them to my study, and found lying on my writing-table still, with the selenite paper weight upon it, the sheet of work I had left on the afternoon of the opening of the cylinder. For a space I stood reading over my abandoned arguments.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a man at a desk with an open book, which aligns perfectly with the narrator returning to his study to find his writing-table and the manuscript he was working on before the invasion.",
+    "suggestedAltArNotApproved": "A man sitting at a desk in a study, leaning over an open manuscript on a writing table, surrounded by the remnants of his pre-invasion life.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a man sitting at a writing-table in his study, reading over the abandoned manuscript of his paper on Moral Ideas, exactly as described in the passage.",
+    "visualContradictions": "None. The setting matches the narrator's study and writing-table perfectly.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

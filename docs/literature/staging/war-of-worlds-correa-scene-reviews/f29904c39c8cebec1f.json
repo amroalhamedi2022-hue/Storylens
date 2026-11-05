@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_016_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-f29904c39c8cebec.webp",
+  "imageSha256": "19319bf20f813cf3a420591a12ab207e896f737492d59929c820aa7fe5ced119",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a cylindrical spacecraft or projectile traveling through space, surrounded by a large cloud of smoke or exhaust. The background features celestial bodies including a crescent moon, a ringed planet, and a smaller spherical planet, along with scattered dots representing stars.",
+    "visualObjectsEn": "Cylindrical spacecraft, smoke cloud, crescent moon, ringed planet, small spherical planet, stars.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The style resembles a 19th-century woodcut or ink engraving, but the exact origin or historical context is not verifiable from the image alone. The 'smoke' in space is a stylistic artistic choice rather than a scientifically accurate depiction of vacuum propulsion."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 1,
+    "paragraphIndexZeroBased": 12,
+    "exactSourceQuotation": "flying swiftly and steadily towards me across that incredible distance, drawing nearer every minute by so many thousands of miles, came the Thing they were sending us",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a cylindrical projectile traveling through space, which aligns with the narrator's description of the 'Thing' (the Martian cylinder) flying through the 'unfathomable darkness of empty space' toward Earth. The celestial bodies in the background match the astronomical context of the passage.",
+    "suggestedAltArNotApproved": "A black and white engraving showing a cylindrical Martian spacecraft hurtling through the dark void of space, with a crescent moon and planets visible in the background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a cylindrical missile or 'Thing' flying swiftly through space amidst stars, a crescent moon, and other planets, directly matching the description of the missile rushing towards Earth across the distance.",
+    "visualContradictions": "None, the imagery aligns well with the narrator describing the invisible-at-first missile flying through space.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
