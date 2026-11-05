@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "workId": "the-woman-in-white",
+  "title": "The Woman in White",
+  "author": "Wilkie Collins",
+  "sourceLanguage": "en",
+  "originalLanguage": "en",
+  "originalPublicationYear": 1860,
+  "sourceEditionNote": "Gutenberg complete English-original novel, not a children's adaptation",
+  "translator": null,
+  "seriesId": null,
+  "seriesVolume": null,
+  "seriesVolumeCount": null,
+  "source": {
+    "provider": "Project Gutenberg",
+    "ebookNumber": 583,
+    "url": "https://www.gutenberg.org/cache/epub/583/pg583-images.html",
+    "catalog": "https://www.gutenberg.org/ebooks/583",
+    "sha256": "d4f2546d9fbf4e1115d47e1cf4777ef26416088f525654ff1f091ef3feee5ec2",
+    "bytes": 1632554,
+    "narrativeWords": 246996,
+    "allTextSha256": "ecccb7bd239e40ecc0cbd89dec373b052cc35eeaee9309792421d3d75e303adc",
+    "completeGutenbergMarkers": true,
+    "originalFullEditionPreservedVerbatim": true
+  },
+  "sourceImages": [],
+  "historicalArtworkCandidates": 0,
+  "imagesWithExactRelativePositions": 0,
+  "acceptance": {
+    "fullOriginalOrUnabridgedHistoricalTranslation": true,
+    "fullNaturalArabicTranslation": false,
+    "bilingualOriginalEnglishEditionAligned": false,
+    "illustrationRightsApproved": false,
+    "allRequestedHistoricalColouredArtworkPresent": false,
+    "appIntegrated": false,
+    "androidDeviceVerified": false
+  },
+  "status": "COMPLETE_SOURCE_STAGED_ONLY_NOT_PUBLISHED",
+  "note": "Unabridged cited source, NOT bilingual or APK-ready. No invented images or missing-book equivalence. Burton Arabic-origin source not aligned to any Arabic edition."
+}
