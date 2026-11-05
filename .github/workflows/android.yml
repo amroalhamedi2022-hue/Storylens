@@ -99,6 +99,7 @@ jobs:
           node tools/full-localization.test.cjs
           node tools/typography-profiles.test.cjs
           node tools/five-font-reader.test.cjs
+          node tools/offline-handwriting-extra.test.cjs
           node tools/offline-font-pack.test.cjs
           node tools/content-loader.test.cjs
           node tools/illustrated-covers.test.cjs

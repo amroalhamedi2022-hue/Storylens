@@ -88,8 +88,8 @@ function validValue(key,val){
   typeof val.ambienceEnabled==='boolean'&&typeof val.sfxEnabled==='boolean'&&
   [val.volume,val.sfxVolume].every(v=>typeof v==='number'&&Number.isFinite(v)&&v>=0&&v<=1);
  if(tail==='ltReaderMaterial')return ['book','fibre','white','cream','comfort','night'].includes(val);
- if(tail==='fontArabic')return ['sans','naskh'].includes(val);
- if(tail==='fontEnglish')return ['serif','sans'].includes(val);
+ if(tail==='fontArabic')return ['sans','naskh','ruqaa','kufi','hand','lateef','katibeh'].includes(val);
+ if(tail==='fontEnglish')return ['serif','sans','humanist','mono','hand','caveat','kalam'].includes(val);
  if(tail==='uiLocale')return ['ar','en'].includes(val);
  if(tail==='discoveryLevel')return ['all','A1','A2','B1','B2','C1','C2'].includes(val);
  if(tail==='discoverySort')return ['editorial','title','level'].includes(val);
