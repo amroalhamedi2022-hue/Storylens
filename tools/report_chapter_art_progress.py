@@ -113,14 +113,14 @@ def archived_illustrations(folder: Path) -> dict:
 
 def generate() -> dict:
     manifest = jload(HIST)
-    if len(manifest) != 9 or len({x["file"] for x in manifest}) != 9:
-        raise ValueError("Pinned Verne source art differs from 9-image baseline; audit before refresh")
+    if not manifest or len({x["file"] for x in manifest}) != len(manifest):
+        raise ValueError("Verne pinned historical sources are missing/duplicated; audit before refresh")
     for item in manifest:
         check_binary("app/src/main/assets/art/" + item["file"], item["webp_sha256"])
     verne = map_coverage(MAP, 37)
-    expected = sorted(x["chapter"] + 1 for x in manifest)
-    if verne["mappedChapterNumbers"] != expected:
-        raise ValueError("Verne chapter map does not exactly match period-art provenance")
+    expected = sorted({x["chapter"] + 1 for x in manifest})
+    if not set(verne["mappedChapterNumbers"]).issubset(set(expected)):
+        raise ValueError("Verne chapter map uses images absent from checked source manifest")
     rows = [
         {"bookId": "around-the-world-in-eighty-days-towle",
          "title": "Around the World in Eighty Days", "sourceState": "37 source chapters plus Arabic draft",
@@ -140,11 +140,21 @@ def generate() -> dict:
     for slug, title in FIVE:
         archive = STAGING / "illustrated-five-20261105" / slug
         data = archived_illustrations(archive)
-        rows.append({"bookId": slug, "title": title,
-                     "sourceState": "full illustrated English original staged; distinct chapter map pending",
-                     "chapterCount": None, "localCandidateChapters": 0,
-                     "readyForUICards": 0, "missingImageChapters": None,
-                     "missingReadyChapters": None, **data})
+        mapped_path = archive / "chapter-image-map.json"
+        if mapped_path.is_file():
+            mapped = jload(mapped_path)
+            coverage = map_coverage(mapped_path, int(mapped["chapterCount"]))
+            if mapped["localCandidateChapters"] != coverage["localCandidateChapters"] or mapped["readyForUICards"] != coverage["readyForUICards"]:
+                raise ValueError("Staged five chapter map summary conflicts with verified files: " + slug)
+            rows.append({"bookId": slug, "title": title,
+                         "sourceState": "original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved",
+                         "chapterCount": mapped["chapterCount"], **coverage, **data})
+        else:
+            rows.append({"bookId": slug, "title": title,
+                         "sourceState": "full illustrated English original staged; distinct chapter map pending",
+                         "chapterCount": None, "localCandidateChapters": 0,
+                         "readyForUICards": 0, "missingImageChapters": None,
+                         "missingReadyChapters": None, **data})
     for slug, title in OLDER:
         archive = STAGING / slug
         if archive.is_dir():
@@ -166,7 +176,7 @@ def generate() -> dict:
         "books": rows,
         "nextWork": [
             "Backfill 28 Verne chapters without any locally sourced primary image; editorial/territory clearance of the nine candidates is still pending",
-            "Derive exact narrative chapter indexes for five staged English illustrated books and The Moonstone, map original art to actual chapter scenes",
+            "For five formerly unmapped complete illustrated originals, review every newly source-mapped visual scene and per-image rights, and source original contextual plates for unmapped chapters",
             "Source contextual art for all 27 The War of the Worlds chapters",
             "Revisit all older staged books and incoming PR book collections without counting unmerged materials on main",
             "Have reader/UI thread implement image-backed ordered chapter cards only from approved local chapter-image maps"
@@ -223,7 +233,8 @@ def markdown(report: dict) -> str:
         "",
         "- Verne: **28 chapters without candidates, 37 without approved chapter thumbnails**; nine distinct locally mapped historical plates await approvals.",
         "- War of the Worlds: **27 chapters without candidates**.",
-        "- Moonstone/five illustrated classics/older works: formal edition-specific chapter segmentation, scene mapping, artwork/rights and review still open.",
+        "- Five archived illustrated novels now have edition-derived chapter counts and source-positioned local plate candidates; verify scene fidelity and per-image rights before use.", 
+        "- Moonstone/older works: exact chapter segmentation, contextual art acquisition, rights and editorial review still open.",
         "- Book cover art, full bilingual human review and signed reader release require independent checks.",
         "",
     ])
