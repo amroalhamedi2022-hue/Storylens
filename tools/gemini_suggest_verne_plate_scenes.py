@@ -55,6 +55,18 @@ MATCH_SCHEMA = {
 }
 
 
+CROSSCHECK_SCHEMA = {
+    "type": "object", "properties": {
+        "actuallyDepictsSelectedPassage": {"type": "boolean"},
+        "specificVisibleEvidence": {"type": "string"},
+        "visualContradictions": {"type": "string"},
+        "confidence": {"type": "number"},
+    },
+    "required": ["actuallyDepictsSelectedPassage", "specificVisibleEvidence",
+                 "visualContradictions", "confidence"],
+}
+
+
 def sha(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
 
@@ -152,6 +164,73 @@ def atomic_store(path: Path, data: dict) -> None:
     scratch.replace(path)
 
 
+def visual_crosscheck(key: str, models: list[str], chapters: list[dict],
+                      raw: bytes, record: dict, path: Path) -> str:
+    """Independent image+paragraph reality check. False positives stay rejected."""
+    if "visualCrosscheck" in record:
+        return "SKIPPED_ALREADY_CROSSCHECKED"
+    match = record.get("suggestedMatch")
+    if match is None:
+        record["visualCrosscheck"] = {
+            "passes": False, "reason": "No source-backed scene candidate",
+            "requiresHumanEditorialAndRightsReview": True,
+        }
+        atomic_store(path, record)
+        return "NO_MATCH_RETAINED"
+    n = match["chapterOneBased"]
+    index = match["paragraphIndexZeroBased"]
+    paragraph = chapters[n - 1]["paragraphs"][index]
+    if match["exactSourceQuotation"] not in normalized(paragraph):
+        raise ValueError("Earlier AI evidence no longer matches original source paragraph")
+    cross, model = gemini_json(
+        key,
+        models[1:] + models[:1] if len(models) > 1 else models,
+        [{"text": json.dumps({
+            "task": (
+                "Independent, skeptical visual comparison: SEE the actual historical engraving. "
+                "Does it CLEARLY depict the SPECIFIC action, people and objects described by the "
+                "selected novel passage? Merely sharing generic clothing, a gentleman or a location "
+                "does NOT suffice. Reject on contradictory object/action/setting. "
+                "If uncertain, actuallyDepictsSelectedPassage=false. Do not infer missing details, "
+                "validate copyright, or claim final editorial approval."
+            ),
+            "originalWork": record["workId"],
+            "originalExactPassage": normalized(paragraph)[:1200],
+            "earlierImageDescriptionForContextNotEvidence": record["visualDescription"],
+            "suggestedSourceChapterOneBased": n,
+        }, ensure_ascii=False)},
+         {"inlineData": {"mimeType": "image/webp", "data": base64.b64encode(raw).decode("ascii")}}],
+        CROSSCHECK_SCHEMA,
+        "skeptical-original-engraving-crosscheck",
+    )
+    score = cross["confidence"]
+    if type(score) not in (int, float) or not 0 <= score <= 1:
+        raise ValueError("Second visual model returned invalid confidence")
+    passed = (
+        cross["actuallyDepictsSelectedPassage"] is True
+        and score >= 0.80
+        and len(cross["specificVisibleEvidence"].strip()) >= 14
+        and not cross["visualContradictions"].strip()
+    )
+    record["visualCrosscheck"] = {
+        "passesConservativeModelComparison": passed,
+        "model": model,
+        "specificVisibleEvidenceNotHumanVerified": cross["specificVisibleEvidence"],
+        "visualContradictions": cross["visualContradictions"],
+        "confidenceSelfReported": score,
+        "requiresHumanEditorialAndRightsReview": True,
+    }
+    record["evidenceStatus"] = (
+        "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED"
+        if passed else "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED"
+    )
+    record["publicationApproved"] = False
+    record["sceneMatchHumanApproved"] = False
+    record["rightsVerifiedForTerritories"] = False
+    atomic_store(path, record)
+    return "SECOND_MODEL_SUPPORTED_NONPUBLISHABLE" if passed else "SECOND_MODEL_REJECTED_OR_UNCERTAIN"
+
+
 def make_review(key: str, models: list[str], chapters: list[dict], corpus_sha: str, image: dict) -> str:
     path = record_file(image)
     imgpath = GALLERY / image["localPath"]
@@ -165,7 +244,7 @@ def make_review(key: str, models: list[str], chapters: list[dict], corpus_sha: s
         if existing.get("imageSha256") != sha(raw) or existing.get("sourceCorpusSha256") != corpus_sha:
             raise ValueError("Previously-reviewed scene checksum differs; refusing overwrite")
         if existing.get("status") == "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED":
-            return "SKIPPED_ALREADY_REVIEWED"
+            return visual_crosscheck(key, models, chapters, raw, existing, path)
     rec = existing or {
         "schemaVersion": 1,
         "status": "VISION_REVIEW_PENDING",
@@ -208,7 +287,7 @@ def make_review(key: str, models: list[str], chapters: list[dict], corpus_sha: s
         rec["suggestedMatch"] = None
         rec["evidenceStatus"] = "NO_PLAUSIBLE_TEXT_CANDIDATE"
         atomic_store(path, rec)
-        return "NO_SCENE_EVIDENCE"
+        return visual_crosscheck(key, models, chapters, raw, rec, path)
 
     suggestion, model = gemini_json(
         key, models,
@@ -252,7 +331,7 @@ def make_review(key: str, models: list[str], chapters: list[dict], corpus_sha: s
     rec["evidenceStatus"] = "EXACT_ORIGINAL_PARAGRAPH_QUOTE_VERIFIED" if choice else "NO_STRONG_SOURCE_MATCH"
     rec["sourceSelectionModel"] = model
     atomic_store(path, rec)
-    return "SUPPORTED_SUGGESTION" if choice else "NO_SCENE_EVIDENCE"
+    return visual_crosscheck(key, models, chapters, raw, rec, path)
 
 
 def run(max_new: int) -> None:
@@ -274,7 +353,8 @@ def run(max_new: int) -> None:
         path = record_file(image)
         if path.exists():
             previous = json.loads(path.read_text("utf-8"))
-            if previous.get("status") == "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED":
+            if (previous.get("status") == "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED"
+                    and "visualCrosscheck" in previous):
                 continue
         print("EXAMINING", image["wikiFile"], flush=True)
         result = make_review(key, models, paragraphs, corpus_sha, image)
@@ -298,6 +378,7 @@ def self_test() -> None:
     assert all("englishSource" in h and "chapterOneBased" in h for h in hits)
     assert len(IMG_SCHEMA["required"]) == 4
     assert len(MATCH_SCHEMA["required"]) == 7
+    assert len(CROSSCHECK_SCHEMA["required"]) == 4
     print("PASS: image source text candidates, schema and chapter extraction assertions")
 
 
