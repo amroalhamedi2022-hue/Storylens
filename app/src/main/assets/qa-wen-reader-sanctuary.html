@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-lt-reader-material="cream">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wen Reader Sanctuary — real browser acceptance</title>
+<style>
+:root{--reader:#fff3d1;--reader-ink:#302a21;--card:#f7faff;--accent:#6e9cc1}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font:16px system-ui,sans-serif}
+body{background:#e9eef8;color:#192b43}
+.library{max-width:1120px;margin:auto;padding:26px}
+.library .header{padding:16px;display:flex;align-items:center;justify-content:space-between;border-radius:18px;background:#ced9ee}
+.library .shelf{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+.library .card{display:grid;grid-template-columns:1fr 110px;align-items:center;gap:14px;min-height:158px;background:#f4f6ff;padding:11px;border-radius:16px}
+.library .card .cover{grid-column:2;min-height:134px;background:linear-gradient(120deg,#264b60,#aab6c7)}
+.reader{background:#fff3d1;max-width:840px;margin:20px auto;padding:18px}
+.reader .lt-inline-illustration{margin:0 auto 15px;max-width:420px}
+.reader .lt-inline-illustration img{width:100%;height:90px;object-fit:contain}
+.reader .sentence{color:#302a21}
+.lt-genre-list{display:flex;gap:9px;position:relative}
+button{padding:12px;border:1px solid #a8bed0;border-radius:15px}
+</style>
+<link rel="stylesheet" href="lt-wen-glass-engine.css">
+<link rel="stylesheet" href="lt-device-acceptance.css">
+<link rel="stylesheet" href="lt-wen-reader-sanctuary.css">
+</head>
+<body class="theme-liquid-27 lt-wen-optics">
+<main class="library">
+<header class="header"><strong>Lingua Tales</strong><button class="lt-menu-toggle">☰</button></header>
+<nav class="lt-genre-list"><button class="lt-genre">رحلات</button><button class="lt-genre">روايات</button></nav>
+<section class="shelf">
+ <article class="card"><div class="card-content"><h2>حول العالم في ثمانين يوماً</h2><p>Illustrated historical classic</p></div><div class="cover"></div></article>
+ <article class="card"><div class="card-content"><h2>كليلة ودمنة</h2><p>Authentic old manuscript art</p></div><div class="cover"></div></article>
+</section></main>
+<main class="reader">
+ <div class="reading-width"><figure class="lt-inline-illustration"><img id="scene" alt="Historic archival plate" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='420'%20height='90'%3E%3Crect%20width='420'%20height='90'%20fill='%23d7b87f'/%3E%3C/svg%3E"><figcaption>Original archival scene</figcaption></figure>
+ <p class="sentence" id="ink">قراءة مريحة — The actual text stays completely opaque.</p></div>
+</main>
+<script>
+(function(){
+ const errors=[],check=(ok,label)=>{if(!ok)errors.push(label)};
+ const themes=['liquid-27','aurora','aqua','nebula','paper-atlas','midnight-library'];
+ const shelf=document.querySelector('.shelf'),scene=document.querySelector('#scene'),ink=document.querySelector('#ink');
+ const palettes=[];
+ for(const t of themes){
+  document.body.className='theme-'+t+' lt-wen-optics';
+  const name=getComputedStyle(document.body).getPropertyValue('--lt-sanctuary-a').trim();
+  palettes.push(name);
+  check(!!name,'missing palette '+t);
+ }
+ check(new Set(palettes).size===6,'six distinct atmospheres');
+ const columns=getComputedStyle(shelf).gridTemplateColumns.trim().split(/\s+/);
+ check(columns.length===(innerWidth>=850?2:1),'responsive bookshelf columns');
+ const pic=getComputedStyle(scene);
+ check(pic.objectFit==='contain','historic art not cropped');
+ check(pic.filter==='none','historic art not tinted');
+ check(pic.mixBlendMode==='normal','historic art not blended');
+ check(pic.opacity==='1','historic art remains opaque');
+ const label=getComputedStyle(ink);
+ check(label.backdropFilter==='none'||label.webkitBackdropFilter==='none',
+       'ink has no glass backdrop');
+ const lens=document.createElement('span');lens.className='lt-wen-follow-lens';
+ document.querySelector('.lt-genre-list').append(lens);
+ check(getComputedStyle(lens).pointerEvents==='none','optical lens never captures touch');
+ document.documentElement.dataset.ltSanctuaryQa=errors.length?'FAIL':'PASS';
+ document.documentElement.dataset.ltSanctuaryErrors=errors.join(',');
+})();
+</script></body></html>

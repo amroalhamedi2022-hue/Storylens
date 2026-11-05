@@ -86,6 +86,7 @@ jobs:
           node tools/licensed-audio-monitor.test.cjs
           node tools/licensed-audio-start-timeout.test.cjs
           node tools/theme-catalog.test.cjs
+          node tools/wen-reader-sanctuary.test.cjs
           node tools/reader-material-presets.test.cjs
           node tools/celestial-atlas.test.cjs
           node tools/circuit-notebook.test.cjs
@@ -686,6 +687,30 @@ jobs:
           test -s qa-screenshots/wen-glass-phone-rtl.png
           test -s qa-screenshots/wen-glass-tablet-rtl.png
           echo "PASS: real Chromium Wen Glass pointer lifecycle, single lens, native click and unblurred reader ink"
+      - name: Wen Reader Sanctuary visual browser acceptance
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || true)"
+          test -n "$CHROME"
+          for size in 460,860 1280,840; do
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu \
+              --virtual-time-budget=1600 --window-size="$size" --dump-dom \
+              "file://$PWD/app/src/main/assets/qa-wen-reader-sanctuary.html" \
+              > "/tmp/lt-sanctuary-$size.html" 2> /tmp/lt-sanctuary-chrome.log
+            if ! grep -Fq 'data-lt-sanctuary-qa="PASS"' "/tmp/lt-sanctuary-$size.html"; then
+              echo "::error::Reader Sanctuary appearance failed at $size"
+              grep -o 'data-lt-sanctuary-errors="[^"]*"' "/tmp/lt-sanctuary-$size.html" | head -1 || true
+              exit 1
+            fi
+          done
+          mkdir -p qa-screenshots
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu \
+            --window-size=1280,840 --virtual-time-budget=1600 \
+            --screenshot="$PWD/qa-screenshots/wen-reader-sanctuary-tablet.png" \
+            "file://$PWD/app/src/main/assets/qa-wen-reader-sanctuary.html" >/dev/null 2>/dev/null
+          test -s qa-screenshots/wen-reader-sanctuary-tablet.png
+          echo "PASS: six scenes, tablet shelf, original artwork, non-glass ink"
       - name: Upload UI screenshot evidence
         if: success()
         uses: actions/upload-artifact@v4

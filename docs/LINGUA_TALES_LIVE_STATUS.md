@@ -623,3 +623,9 @@ Source baseline reviewed: main 064258074b4a3c4d5fb139aa4c163a28ca27b66a / CI #41
 - Four **new genuinely bundled, unmodified and source SHA-verified** Google Fonts SIL OFL 1.1 families: Arabic `Lateef` and `Katibeh`, English `Caveat` and `Kalam`. Full original `OFL.txt` files copied into `assets/fonts/`; provenance/source SHA recorded in `fonts/README.md`. Existing five choices per language preserved, now seven each, without runtime network.
 - New Settings labels; `lt-offline-fonts.css` applies selected Arabic/English typeface across library/drawer/settings and mixed original/companion reader text; leaves native graphic icons and historical figures unchanged. Existing semantic paragraph anchor restore in `applyFont()` retained.
 - Corrected a pre-existing backup bug that rejected 3 already-shipped fonts in each language, now validates all seven names for each. Font regression and binary signature/licence/backup tests added. **No changes to Codex physical page-turn source, content assets, original signing or package data.** Device QA, screenshots and exact commit Actions pending. No APK issued by this PR.
+
+
+### 2026-11-05 — DESIGN ONLY: Wen Reader Sanctuary source batch (not yet accepted)
+- User scopes this conversation to visual design / UI / theme appearance only, separate from Codex page-turn PR #19, chapter gallery PR #18, literary ingestion and audio functionality.
+- New Wen source-inspired stylesheet with six existing app theme visual atmospheres, more dimensional single shared lens, 2-column tablet / 1-column phone bookshelf, centre-aligned control circles, original unfiltered historic images and no glass on paper/ink. No new theme registry IDs or JavaScript events.
+- Node source invariant and actual Chromium 460x860 + 1280x840 CSS acceptance/screenshots wired to Android CI; exact SHA and hardware tablet validation pending. Special handoff: docs/handoffs/LINGUA_TALES_DESIGN_ONLY_HANDOFF_CURRENT.md.
