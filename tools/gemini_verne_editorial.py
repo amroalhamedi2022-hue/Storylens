@@ -27,8 +27,9 @@ PARAGRAPHS_PER_SEGMENT = 8
 DEFAULT_MAX_SEGMENTS = 4
 MAX_RESPONSE_BYTES = 900_000
 MODEL_PREFERENCES = (
-    "gemini-2.5-flash", "gemini-2.5-flash-lite",
-    "gemini-2.0-flash", "gemini-2.0-flash-lite",
+    # New AI Studio projects often cannot generate with 2.5 despite models.list.
+    "gemini-3.8-flash", "gemini-3.5-flash", "gemini-3.5-flash-lite",
+    "gemini-3.1-flash-lite", "gemini-2.5-flash", "gemini-2.5-flash-lite",
 )
 
 
@@ -122,19 +123,24 @@ def http_json(url: str, key: str, payload: dict | None = None) -> dict:
     raise RuntimeError("Gemini retries exhausted")
 
 
-def choose_model(key: str) -> str:
+def choose_models(key: str) -> list[str]:
     models = http_json(BASE_API + "/models", key).get("models", [])
     available = {
         m.get("name", "").removeprefix("models/") for m in models
         if "generateContent" in m.get("supportedGenerationMethods", [])
     }
     user_choice = os.environ.get("GEMINI_MODEL", "").strip()
-    choices = ([user_choice] if user_choice else []) + list(MODEL_PREFERENCES)
-    for model in choices:
-        if model in available:
-            print("Selected model:", model, flush=True)
-            return model
-    raise RuntimeError("No approved Gemini text-generation model available for this API key")
+    ordered = ([user_choice] if user_choice else []) + list(MODEL_PREFERENCES)
+    # Discover future supported Flash text models without guessing names.
+    ordered += sorted(
+        (m for m in available if re.match(r"^gemini-[0-9.]+-flash(?:-lite)?$", m)),
+        reverse=True,
+    )
+    choices = list(dict.fromkeys(m for m in ordered if m in available))
+    if not choices:
+        raise RuntimeError("No supported Gemini text-generation models returned for this key")
+    print("Discovered", len(choices), "allowed Gemini text models; first:", choices[0], flush=True)
+    return choices
 
 
 def generate(key: str, model: str, task: dict) -> dict:
@@ -177,7 +183,23 @@ def run(max_segments: int) -> int:
     key = os.environ.get("GEMINI_API_KEY", "").strip()
     if not key:
         raise RuntimeError("GEMINI_API_KEY Actions secret is missing")
-    model = choose_model(key)
+    models = choose_models(key)
+    model = models[0]
+
+    def guarded_generate(task: dict) -> dict:
+        nonlocal model
+        while True:
+            try:
+                return generate(key, model, task)
+            except RuntimeError as exc:
+                if "HTTP 404" not in str(exc):
+                    raise
+                idx = models.index(model)
+                if idx + 1 >= len(models):
+                    raise RuntimeError("All available Gemini models refused generation (HTTP 404)") from None
+                model = models[idx + 1]
+                print("Model unavailable for generation (404); trying fallback:", model, flush=True)
+
     produced = 0
     for ch in range(1, CHAPTER_COUNT + 1):
         source = chapter_source(ch)
@@ -205,12 +227,12 @@ def run(max_segments: int) -> int:
                 "originalTextAndDraft": rows,
             }
             if "proposedArabic" not in record:
-                proposal = generate(key, model, translate_task(rows, ch))
+                proposal = guarded_generate(translate_task(rows, ch))
                 record["proposedArabic"] = validate_entries(proposal, "translations", len(rows))
                 record["model"] = model
                 atomic_write(path, record)  # keep draft even if independent review fails
                 print("SAVED provisional chapter", ch, "paragraphs", start, "to", start + len(rows) - 1, flush=True)
-            review = generate(key, model, review_task(rows, record["proposedArabic"], ch))
+            review = guarded_generate(review_task(rows, record["proposedArabic"], ch))
             record["independentAiChecks"] = validate_entries(review, "checks", len(rows))
             record["status"] = "AI_DRAFT_REVIEWED_NOT_APPROVED"
             record["autoPublishAllowed"] = False
