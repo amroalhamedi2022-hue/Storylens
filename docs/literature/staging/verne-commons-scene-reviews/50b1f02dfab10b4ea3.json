@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_13.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-50b1f02dfab10b4e.webp",
+  "imageSha256": "419a37c5c3e3339524277bb2e92a3669a126606c39af7c92edc23e01e62684eb",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black-and-white line engraving depicting a desert scene with a group of people and camels. One person is mounted on a standing camel, another person is kneeling beside a resting camel, and a man in Western-style clothing stands nearby. The background features rugged, mountainous terrain.",
+    "visualObjectsEn": "Camels, a woven basket or container, rocky mountains, desert ground, clothing including head coverings and a Western-style suit.",
+    "recognizableCharactersOrPeopleEn": "Several individuals, including a person mounted on a camel, a person kneeling by a camel, a man wearing a suit and hat, and other figures in traditional or local attire.",
+    "uncertaintyNotes": "The specific cultural or historical context of the figures is not explicitly stated in the image. The exact nature of the interaction between the Western-dressed man and the others is ambiguous."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

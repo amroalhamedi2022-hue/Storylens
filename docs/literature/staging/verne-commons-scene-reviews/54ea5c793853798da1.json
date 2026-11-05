@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_11.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-54ea5c793853798d.webp",
+  "imageSha256": "28c2e40eab13776be53f1fbab4f5522b239a00dd68eef72bb853a8eb89efd353",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a street scene in an urban environment with architectural elements like a large stone column and a distant minaret. Two men in Western-style suits and hats stand in the foreground, one appearing to show something to the other. Several other figures, including women in traditional veils and children, are seated or standing nearby in a market-like setting.",
+    "visualObjectsEn": "Stone column with decorative capital, minaret in the background, Western-style suits, hats, vests, trousers, veils, long robes, large water jug or container, cobblestone-like ground, architectural arches.",
+    "recognizableCharactersOrPeopleEn": "Two men dressed in 19th-century Western attire, several women wearing veils or head coverings, and multiple young children.",
+    "uncertaintyNotes": "The exact geographic location is not explicitly stated, though the architecture and attire suggest a Middle Eastern or North African setting. The specific activity between the two men is ambiguous, though it appears to be a casual interaction or transaction."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 22,
+    "paragraphIndexZeroBased": 23,
+    "exactSourceQuotation": "The streets were crowded with people. Priests were passing in processions, beating their dreary tambourines; police and customhouse officers with pointed hats encrusted with lac and carrying two sabres hung to their waists; soldiers, clad in blue cotton with white stripes, and bearing guns; the Mikado’s guards, enveloped in silken doubles, hauberks and coats of mail; and numbers of military folk of all ranks",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The engraving depicts a busy urban street scene with architectural elements (arches, columns) and a diverse crowd including men in Western-style suits and women in traditional attire, which aligns with the description of a crowded street scene in Japan where various social classes and military figures are present.",
+    "suggestedAltArNotApproved": "A 19th-century engraving of a bustling Japanese street scene featuring men in Western suits, women in traditional robes, and architectural details like arches and a distant minaret-like structure.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows two men in Western-style suits and hats interacting in a Middle Eastern or North African street setting with minarets, veiled women, and children.",
+    "visualContradictions": "The passage describes Japanese crowds, priests with tambourines, police with pointed hats and sabres, soldiers in blue cotton with white stripes, and Japanese architecture/people in Yokohama, whereas the image clearly shows an Islamic/Middle Eastern street scene with Western travelers.",
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
