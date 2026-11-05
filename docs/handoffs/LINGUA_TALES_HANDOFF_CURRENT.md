@@ -1,3 +1,11 @@
+# 2026-11-05 — NEW 13-REQUEST READER REDESIGN PLAN (NOT CODE)
+
+**NEW USER DIRECTIVE 2026-11-05:** Canonical 13-point reader rebuild `docs/plans/LINGUA_TALES_READER_REDESIGN_2026-11-05.md`; Codex only physical curl `docs/prompts/CODEX_PHYSICAL_PAGE_CURL_2026-11-05.md`. Supersedes old conflicting 58-themes, default silent SFX and nonimmersive paper choices. Docs changes only; NONE of the features in this new checklist implemented by this commit.
+
+Codex owns physical curl engine ONLY; separate design/functionality workstream owns orientation, theme six-only migration, paper presets, no-copy WebView, UI, audio/fonts/icon and signed release, while literature chat owns authentic content and source art. Check latest main SHA/CI before code. Last signed baseline remains 100866; no new APK created by this documentation commit.
+
+---
+
 # Lingua Tales — CURRENT HANDOFF (newest release checkpoint)
 
 ## CURRENT CHECKPOINT — 4 November 2026 · tablet art integration + signed update 100866
