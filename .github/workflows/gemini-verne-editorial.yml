@@ -2,6 +2,7 @@ name: Lingua Tales - resumable Gemini chapter production
 on:
   push:
     branches:
+      - main
       - content/gemini-verne-resumable-editorial-20261105
     paths:
       - 'tools/export_verne_chapter.cjs'
