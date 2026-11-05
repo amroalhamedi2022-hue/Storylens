@@ -3,6 +3,7 @@
 (function(global){
 'use strict';
 const themeNames=['liquid-27','aurora','aqua','nebula','paper-atlas','midnight-library','botanical-folio','rain-glass','solar-atelier','ink-workshop','velvet-theatre','celestial-atlas','harbor-ledger','circuit-notebook','terracotta-gallery','monochrome-zine','moonlit-margins','saffron-archive','bauhaus-studio','mosaic-courtyard','saville-clockwork','station-tickets','reform-club-brass','midnight-platform','exchange-gazette','suez-quays','consular-ledger','red-sea-dispatch','monsoon-meridian','deccan-timetable','kholby-crossing','vindhya-passage','dawn-escape','ganges-panorama','calcutta-ledger','rangoon-passage','singapore-lantern','typhoon-timetable','victoria-harbour-dispatch','shanghai-wind-ledger','typhoon-signal','yokohama-lantern','paper-lantern-circus','pacific-meridian','civic-panorama','prairie-signal','salt-lake-dispatch','medicine-bow-crossing','plum-creek-signal','snowbound-telegraph','prairie-sails','hudson-ledger','atlantic-passage', 'last-five-minutes','westminster-vows','reform-club-countdown','meridian-epilogue','stained-glass'];
+const selectableThemeNames=['liquid-27','aurora','aqua','nebula','paper-atlas','midnight-library'];
 const themeLabels={'liquid-27':'Liquid Glass 27',aurora:'Liquid Aurora',aqua:'Aqua Glass',nebula:'Nebula Flow','paper-atlas':'Paper Atlas','midnight-library':'Midnight Library','botanical-folio':'Botanical Folio','rain-glass':'Rain Glass','solar-atelier':'Solar Atelier','ink-workshop':'Ink Workshop','velvet-theatre':'Velvet Theatre','celestial-atlas':'Celestial Atlas','harbor-ledger':'Harbor Ledger','circuit-notebook':'Circuit Notebook','terracotta-gallery':'Terracotta Gallery','monochrome-zine':'Monochrome Zine','moonlit-margins':'Moonlit Margins','saffron-archive':'Saffron Archive','bauhaus-studio':'Bauhaus Studio','mosaic-courtyard':'Mosaic Courtyard','saville-clockwork':'Saville Clockwork','station-tickets':'Station Tickets','reform-club-brass':'Reform Club Brass','midnight-platform':'Midnight Platform','exchange-gazette':'Exchange Gazette','suez-quays':'Suez Quays','consular-ledger':'Consular Ledger','red-sea-dispatch':'Red Sea Dispatch','monsoon-meridian':'Monsoon Meridian','deccan-timetable':'Deccan Timetable','kholby-crossing':'Kholby Crossing','vindhya-passage':'Vindhya Passage','dawn-escape':'Dawn Escape','ganges-panorama':'Ganges Panorama','calcutta-ledger':'Calcutta Ledger','rangoon-passage':'Rangoon Passage','singapore-lantern':'Singapore Lantern','typhoon-timetable':'Typhoon Timetable','victoria-harbour-dispatch':'Victoria Harbour Dispatch','shanghai-wind-ledger':'Shanghai Wind Ledger','typhoon-signal':'Typhoon Signal','yokohama-lantern':'Yokohama Lantern','paper-lantern-circus':'Paper Lantern Circus','pacific-meridian':'Pacific Meridian','civic-panorama':'Civic Panorama','prairie-signal':'Prairie Signal','salt-lake-dispatch':'Salt Lake Dispatch','medicine-bow-crossing':'Medicine Bow Crossing','plum-creek-signal':'Plum Creek Signal','snowbound-telegraph':'Snowbound Telegraph','prairie-sails':'Prairie Sails','hudson-ledger':'Hudson Ledger','atlantic-passage':'Atlantic Passage','last-five-minutes':'The Last Five Minutes','westminster-vows':'Westminster Vows','reform-club-countdown':'Reform Club Countdown','meridian-epilogue':'Meridian Epilogue','stained-glass':'Stained Glass'};
 const themeLabelsAr={
  'liquid-27':"زجاج سائل 27",
@@ -67,7 +68,18 @@ const themeLabelsAr={
 const themeLabelFor=name=>rtl()?themeLabelsAr[name]:themeLabels[name];
 /* LT-12: separate, offline typography preferences. System font stacks avoid
  * font downloads and extra memory. Unsupported values never reach CSS. */
-const fontChoices={ar:['sans','naskh','ruqaa','kufi','hand'],en:['serif','sans','humanist','mono','hand']};
+const readerMaterialChoices=['book','fibre','white','cream','comfort','night'];
+function applyReaderMaterial(name){
+ if(!readerMaterialChoices.includes(name))return false;
+ document.documentElement.dataset.ltReaderMaterial=name;
+ put('ltReaderMaterial',name);return true;
+}
+function loadReaderMaterial(){
+ const saved=typeof get==='function'?get('ltReaderMaterial','book'):'book';
+ document.documentElement.dataset.ltReaderMaterial=
+  readerMaterialChoices.includes(saved)?saved:'book';
+}
+const fontChoices={ar:['sans','naskh','ruqaa','kufi','hand','lateef','katibeh'],en:['serif','sans','humanist','mono','hand','caveat','kalam']};
 const fontDefaults={ar:'sans',en:'serif'};
 const fontKeys={ar:'fontArabic',en:'fontEnglish'};
 function safeOffset(value){
@@ -192,7 +204,7 @@ const rtl=()=>isArabic();
 const menuText=()=>rtl()?'التصنيفات والقائمة':'Categories & menu';
 const settingsText=()=>rtl()?'الإعدادات':'Settings';
 const menuSide=()=>rtl()?'right':'left';
-const validTheme=name=>themeNames.includes(name);
+const validTheme=name=>selectableThemeNames.includes(name);
 function applyTheme(name){
  if(!validTheme(name))return false;
  const old=validTheme(state.uiTheme)?state.uiTheme:'aurora';
@@ -313,7 +325,7 @@ function openThemeEditor(name,origin){
   if(!hidden.includes(name))hidden.push(name);
   put('ltHiddenThemes',hidden);
   origin?.remove();panel.remove();
-  if(state.uiTheme===name)applyTheme(themeNames.find(id=>!hidden.includes(id))||'aurora');
+  if(state.uiTheme===name)applyTheme(selectableThemeNames.find(id=>!hidden.includes(id))||'aurora');
  },'secondary');
  panel.appendChild(actions);sheet.querySelector('.lt-theme-gallery')?.after(panel);
  panel.querySelector('input')?.focus();
@@ -434,7 +446,7 @@ function openSettings(){
  themeHeading.textContent=rtl()?'تصميم الواجهة':'Appearance';
  sheet.appendChild(themeHeading);
  const gallery=document.createElement('div');gallery.className='lt-theme-gallery';
- for(const name of themeNames){
+ for(const name of selectableThemeNames){
   if(hiddenThemeNames().includes(name))continue;
   let longPressTimer=null,longPressed=false,startX=0,startY=0;
   const b=addButton(gallery,themeLabelFor(name),()=>{
@@ -477,6 +489,27 @@ function openSettings(){
    closeSheet();openSettings();
   },'secondary lt-themes-restore');
  }
+ // Materials change paper, not the six app themes nor physical curl.
+ const materialLabel=document.createElement('label');
+ materialLabel.className='lt-font-setting lt-paper-material-setting';
+ const materialTitle=document.createElement('span');
+ materialTitle.textContent=rtl()?'شكل صفحة القراءة':'Reading paper';
+ materialLabel.appendChild(materialTitle);
+ const materialSelect=document.createElement('select');
+ materialSelect.id='lt-reader-material-select';
+ materialSelect.setAttribute('aria-label',materialTitle.textContent);
+ const materialText={
+  book:['كتاب طبيعي','Bound book'],fibre:['ورق حقيقي','Textured paper'],
+  white:['ورقة بيضاء','Clean white'],cream:['ورقة صفراء','Warm cream'],
+  comfort:['رمادي مريح للعين','Soft grey'],night:['ليلي مريح للعين','Low-glare night']
+ };
+ for(const id of readerMaterialChoices){
+  const item=document.createElement('option');item.value=id;
+  item.textContent=materialText[id][rtl()?0:1];materialSelect.appendChild(item);
+ }
+ materialSelect.value=document.documentElement.dataset.ltReaderMaterial||'book';
+ materialSelect.addEventListener('change',()=>applyReaderMaterial(materialSelect.value));
+ materialLabel.appendChild(materialSelect);sheet.appendChild(materialLabel);
  const fontsHeading=document.createElement('h3');
  fontsHeading.textContent=rtl()?'خطوط القراءة':'Reading fonts';
  sheet.appendChild(fontsHeading);
@@ -490,10 +523,14 @@ function openSettings(){
   const options=lang==='ar'?
    [{value:'sans',ar:'نسخ عصري',en:'Modern Arabic'},{value:'naskh',ar:'نسخ تقليدي',en:'Classic Naskh'},
     {value:'ruqaa',ar:'رقعة',en:'Ruqaa'},{value:'kufi',ar:'كوفي',en:'Kufi'},
-    {value:'hand',ar:'خط يدوي',en:'Handwriting'}]:
+    {value:'hand',ar:'خط يدوي',en:'Handwriting'},
+    {value:'lateef',ar:'لطيف ـ نسخ مخطوط',en:'Lateef manuscript'},
+    {value:'katibeh',ar:'كاتبة ـ خط أصيل',en:'Katibeh calligraphy'}]:
    [{value:'serif',ar:'أدبي',en:'Literary serif'},{value:'sans',ar:'عصري',en:'Modern sans'},
     {value:'humanist',ar:'إنساني',en:'Humanist'},{value:'mono',ar:'آلة كاتبة',en:'Monospace'},
-    {value:'hand',ar:'خط يدوي',en:'Handwriting'}];
+    {value:'hand',ar:'خط يدوي',en:'Handwriting'},
+    {value:'caveat',ar:'كافيات ـ خط يدوي',en:'Caveat handwriting'},
+    {value:'kalam',ar:'قلم ـ كتابة باليد',en:'Kalam handwritten'}];
   for(const option of options){
    const item=document.createElement('option');
    item.value=option.value;item.textContent=rtl()?option.ar:option.en;
@@ -940,7 +977,7 @@ function decorateLibrary(){
 
 }
 library=function(){originalLibrary();decorateLibrary();};
-global.LinguaShell={refreshNovelShelf,applyTheme,applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,isFullLengthNovel,
+global.LinguaShell={refreshNovelShelf,applyTheme,applyReaderMaterial,readerMaterialChoices:[...readerMaterialChoices],applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,isFullLengthNovel,
  isDrawerOpen:()=>opened,themeNames:[...themeNames],searchChapters,invalidateChapterSearch,openChapterSearch,jumpToChapterHit};
 /* LT-09/06 accessibility: a visible modal must own keyboard focus.
  * Trap Tab/Shift+Tab in Settings or the genre drawer; Escape dismisses the
@@ -1173,9 +1210,21 @@ document.addEventListener('click',event=>{
  });
  global.LinguaStoryNavigation={isClosing:()=>closing,isWaitingForHistory:()=>waitingPop};
 })();
+// RDR-07: old installed users can carry a removed theme in localStorage.
+ // Migrate ONLY the selected theme without touching bookmarks/reader progress,
+ // backup data or independent custom palettes. Old styles can remain as
+ // compatibility code but never surface as selectable application themes.
+ if(!validTheme(state.uiTheme)){
+  const legacy=state.uiTheme;
+  document.body.classList.remove('theme-'+legacy);
+  state.uiTheme='aurora';
+  document.body.classList.add('theme-aurora');
+  put('uiTheme','aurora');
+ }
 loadLocale();
 loadFonts();
 loadReadingSizes();
+loadReaderMaterial();
 applyCustomThemeColors();
 library();
 })(window);

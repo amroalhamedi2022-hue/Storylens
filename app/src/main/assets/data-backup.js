@@ -32,7 +32,7 @@ const simple=new Set(['saved','cards','favorites','bookmarks','last_story','uiTh
  'written_examples','discoveryLevel','discoverySort','favoritesOnly','wordSenses','dark','size',
  'fontArabic','fontEnglish','uiLocale','audioPrefs','licensedAudioPrefs',
  'libraryScroll','lt_glass_palette','lt_glass_tint','lt_reduce_transparency',
- 'lt_high_contrast','lt_font_choice','ltThemeCustomColors','ltHiddenThemes']);
+ 'lt_high_contrast','lt_font_choice','ltThemeCustomColors','ltHiddenThemes','ltReaderMaterial']);
 function allowed(key){
  if(typeof key!=='string'||!key.startsWith(PREFIX))return false;
  const suffix=key.slice(PREFIX.length);
@@ -87,8 +87,9 @@ function validValue(key,val){
    'creek-in-woods','water-lapping'].includes(val.track)&&
   typeof val.ambienceEnabled==='boolean'&&typeof val.sfxEnabled==='boolean'&&
   [val.volume,val.sfxVolume].every(v=>typeof v==='number'&&Number.isFinite(v)&&v>=0&&v<=1);
- if(tail==='fontArabic')return ['sans','naskh'].includes(val);
- if(tail==='fontEnglish')return ['serif','sans'].includes(val);
+ if(tail==='ltReaderMaterial')return ['book','fibre','white','cream','comfort','night'].includes(val);
+ if(tail==='fontArabic')return ['sans','naskh','ruqaa','kufi','hand','lateef','katibeh'].includes(val);
+ if(tail==='fontEnglish')return ['serif','sans','humanist','mono','hand','caveat','kalam'].includes(val);
  if(tail==='uiLocale')return ['ar','en'].includes(val);
  if(tail==='discoveryLevel')return ['all','A1','A2','B1','B2','C1','C2'].includes(val);
  if(tail==='discoverySort')return ['editorial','title','level'].includes(val);
@@ -321,6 +322,7 @@ function showImport(value){
     global.LinguaShell.applyLocale(get('uiLocale','ar'),false);
     global.LinguaShell.applyFont('ar',get('fontArabic','sans'));
     global.LinguaShell.applyFont('en',get('fontEnglish','serif'));
+     global.LinguaShell.applyReaderMaterial?.(get('ltReaderMaterial','book'));
    }
    state.page='library';library();window.scrollTo(0,0);
    alertOnce(count);

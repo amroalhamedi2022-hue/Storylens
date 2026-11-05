@@ -482,3 +482,72 @@ button.lt-water-pressed,.lt-theme-choice.lt-water-pressed{
   background:var(--reader,#fff9ef)!important;
  }
 }
+
+/* 2026-11-05 RDR-04/05/06/11: Quiet paper and first-party controls.
+ * OS clipboard selection is suppressed for displayed reader text but native
+ * edit fields remain editable. Real DRM/OCR prevention is not claimed. */
+#reading-progress{display:none!important}
+.reader :is(.sentence,.tok,.inline-ar,.inline-en,.stl-sentence-translation,
+ .reader-label,.chapter-end,.lt-page-count,.lt-book-page,.lt-inline-illustration figcaption){
+ -webkit-user-select:none!important;user-select:none!important;
+}
+.reader :is(input,textarea,[contenteditable="true"]),
+#modals :is(input,textarea,[contenteditable="true"]){
+ -webkit-user-select:text!important;user-select:text!important;
+}
+/* True optical centring of isolated glyph-only controls, with safe targets.
+ * Do not change page-turn gestures or the Codex-owned page engine. */
+body .lt-menu-toggle,body .lt-drawer-close{
+ display:grid!important;place-items:center!important;
+ min-width:44px;min-height:44px;
+ padding:8px!important;line-height:1!important;
+}
+body .lt-menu-toggle .lt-menu-glyph{
+ margin:0 auto!important;align-self:center;justify-self:center;
+}
+.reader .lt-art-zoom-button{
+ display:inline-grid;place-items:center;
+ min-height:44px;min-width:44px;
+}
+
+/* RDR-03 — independently selected paper and opaque live book ink.
+   No layout transforms; Codex owns the folding/shadow geometry. */
+html[data-lt-reader-material] body .reader{
+ --lt-paper-bg:#f2e9d6;--lt-paper-ink:#292820;
+ --reader:var(--lt-paper-bg)!important;--reader-ink:var(--lt-paper-ink)!important;
+ background:var(--lt-paper-bg)!important;color:var(--lt-paper-ink)!important;
+}
+html[data-lt-reader-material="fibre"] body .reader{
+ --lt-paper-bg:#f4efdf;--lt-paper-ink:#2e302c;
+}
+html[data-lt-reader-material="white"] body .reader{
+ --lt-paper-bg:#ffffff;--lt-paper-ink:#22292d;
+}
+html[data-lt-reader-material="cream"] body .reader{
+ --lt-paper-bg:#fff3d1;--lt-paper-ink:#302a21;
+}
+html[data-lt-reader-material="comfort"] body .reader{
+ --lt-paper-bg:#e4e7df;--lt-paper-ink:#273530;
+}
+html[data-lt-reader-material="night"] body .reader{
+ --lt-paper-bg:#172127;--lt-paper-ink:#d7e2dd;
+}
+html[data-lt-reader-material] body .reader .lt-book-page{
+ background:var(--lt-paper-bg)!important;color:var(--lt-paper-ink)!important;
+}
+html[data-lt-reader-material="book"] body .reader .lt-book-page{
+ background:linear-gradient(90deg,#66513412,transparent 14%),
+  linear-gradient(145deg,#f7eedd,#efe1c8)!important;
+}
+html[data-lt-reader-material="fibre"] body .reader .lt-book-page{
+ background:repeating-linear-gradient(92deg,transparent 0 8px,#40321804 9px 10px),
+ linear-gradient(#f8f2e4,#f0e8d6)!important;
+}
+html[data-lt-reader-material] body .reader :is(.sentence,.inline-ar,.inline-en,.lt-book-page p){
+ color:var(--lt-paper-ink)!important;text-shadow:none!important;
+}
+html[data-lt-reader-material] body .reader :is(.lt-inline-illustration img,.lt-art-inspection-viewport img){
+ filter:none!important;mix-blend-mode:normal!important;opacity:1!important;
+}
+html[data-lt-reader-material] body .reader .reading-width{background:transparent!important}
+.lt-paper-material-setting select{min-height:44px}

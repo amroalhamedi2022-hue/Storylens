@@ -1,3 +1,36 @@
+# Four new offline manuscript fonts workstream — CI pending
+
+
+### 2026-11-05 — RDR-12 additional handwriting fonts (separate feature PR, CI pending)
+- Four **new genuinely bundled, unmodified and source SHA-verified** Google Fonts SIL OFL 1.1 families: Arabic `Lateef` and `Katibeh`, English `Caveat` and `Kalam`. Full original `OFL.txt` files copied into `assets/fonts/`; provenance/source SHA recorded in `fonts/README.md`. Existing five choices per language preserved, now seven each, without runtime network.
+- New Settings labels; `lt-offline-fonts.css` applies selected Arabic/English typeface across library/drawer/settings and mixed original/companion reader text; leaves native graphic icons and historical figures unchanged. Existing semantic paragraph anchor restore in `applyFont()` retained.
+- Corrected a pre-existing backup bug that rejected 3 already-shipped fonts in each language, now validates all seven names for each. Font regression and binary signature/licence/backup tests added. **No changes to Codex physical page-turn source, content assets, original signing or package data.** Device QA, screenshots and exact commit Actions pending. No APK issued by this PR.
+
+---
+
+# Reading-material presets work branch (not yet merged)
+
+
+### 2026-11-05 — RDR-03 reader materials source implementation (CI pending)
+- Branch `design/reader-paper-material-presets-20261105` builds on PR #9 source `2869739a435077f2ff73d91820869811047ba10c`. Merge PR #9 first, then recheck newest main and CI before merging this batch.
+- Six independent materials `book/fibre/white/cream/comfort/night`, exposed in Settings, saved in `ltReaderMaterial`. Only opaque paper/ink colors or light texture change; no page-turn geometry/layout transforms, book content or images touched.
+- Added strictly validated backup allowlist+restore and Node regression; full CI, real tablets and Codex engine integration still OPEN. This is NOT a new signed APK.
+
+---
+
+# CURRENT 2026-11-05 SOURCE WORK — six-theme / SFX / clean reader batch (NOT YET RELEASED)
+
+
+### 2026-11-05 — RDR-04/05/07/08/10/11 code batch #1 (feature branch; CI pending)
+- Base `main` `15fd0facfe625946150d46c3adb37008c49da1e8` passed Android/Node/Chromium Actions #41976705425. Codex exclusively owns RDR-01 physical page curl; this batch **does not touch curl geometry, gesture engine, orientation, story images, translation or stored progress**. Content conversation owns source material and art.
+- RDR-07: app-level theme gallery is now **exactly six** in mandated order: `liquid-27`, `aurora`, `aqua`, `nebula`, `paper-atlas`, `midnight-library`. A previously persisted theme outside this set migrates to `aurora` safely at startup. Historical labels/styles and backup allowlists remain for backward compatibility only, not selectable UI; safe asset removal needs later detailed dependency review.
+- RDR-08: new/no-explicit-preference installs receive soft SFX default ON at volume 0.14; old explicit `false` remains OFF, settings disable-all remains, ambience remains OFF/not autoplayed. Existing licensed audio and pause/focus still intact. Exact visual page-turn sync must use Codex's future one-time committed event.
+- RDR-05: obsolete 2px top `#reading-progress` is visually suppressed while actual reading anchors remain persisted; actual scroll listener removal is separate cleanup. RDR-04 PARTIAL: visual text selection disabled on reader paragraphs, translations and captions but not editable inputs, maintaining first-party dictionary clicks; native WebView action-mode verification still OPEN and OCR from other apps cannot be blocked.
+- RDR-11 PARTIAL: isolated menu/drawer and art viewer zoom glyphs centred in 44px+ targets; full-screen device audit still OPEN. RDR-06 and RDR-10 labels shortened; immersive 2-page layout is dependent on Codex engine and native rotation stream.
+- Tests updated to expect six choices, legacy migrator, no autoplay and preserved opt-out. This is a source batch, not an approved installable signed APK. NEED exact new-SHA CI, merge, then sign from green main using permanent cert and versionCode >100866.
+
+---
+
 # 2026-11-05 — NEW 13-REQUEST READER REDESIGN PLAN (NOT CODE)
 
 **NEW USER DIRECTIVE 2026-11-05:** Canonical 13-point reader rebuild `docs/plans/LINGUA_TALES_READER_REDESIGN_2026-11-05.md`; Codex only physical curl `docs/prompts/CODEX_PHYSICAL_PAGE_CURL_2026-11-05.md`. Supersedes old conflicting 58-themes, default silent SFX and nonimmersive paper choices. Docs changes only; NONE of the features in this new checklist implemented by this commit.

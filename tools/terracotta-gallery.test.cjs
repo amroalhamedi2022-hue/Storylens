@@ -12,12 +12,14 @@ const window={addEventListener:()=>{},innerWidth:1200,scrollY:0,matchMedia:()=>(
 const state={page:'reader',uiTheme:'aurora'};
 vm.runInNewContext(shell,{window,document,state,library(){},openStory(){},libraryBack(){},
  get:(k,f)=>store.has(k)?store.get(k):f,put:(k,v)=>store.set(k,v),closeSheet(){},Date,console},{timeout:5000});
-assert.ok(window.LinguaShell.themeNames.includes('terracotta-gallery'));
-assert.equal(window.LinguaShell.applyTheme('terracotta-gallery'),true);
-assert.equal(state.uiTheme,'terracotta-gallery');
-assert.equal(store.get('uiTheme'),'terracotta-gallery');
-assert.ok(classes.includes('+theme-terracotta-gallery'));
-assert.equal(window.LinguaShell.applyTheme('untrusted'),false);
+assert.ok(window.LinguaShell.themeNames.includes('terracotta-gallery'),
+ 'legacy style remains available for safe backup imports');
+assert.equal(window.LinguaShell.applyTheme('terracotta-gallery'),false,
+ 'retired theme cannot be selected after the six-theme redesign');
+assert.equal(state.uiTheme,'aurora','existing active theme is preserved');
+assert.notEqual(store.get('uiTheme'),'terracotta-gallery',
+ 'removed styles must not be saved as an active preference');
+assert.equal(window.LinguaShell.applyTheme('https://untrusted'),false);
 for(const selector of ['body.theme-terracotta-gallery','.theme-terracotta-gallery .storylens-hero',
  '.theme-terracotta-gallery .shelf .card','.theme-terracotta-gallery .shelf .card .cover',
  '.theme-terracotta-gallery .lt-drawer','.theme-terracotta-gallery .reader:not(.dark)',

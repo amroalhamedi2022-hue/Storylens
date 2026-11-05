@@ -31,3 +31,31 @@ html[data-lt-english-font="hand"]{--lt-en-font:"LT English Hand",serif}
 
 .lt-english-companion .arabic-inner{direction:ltr!important;text-align:left!important;font-family:var(--lt-en-font)!important}
 .lt-english-companion .arabic-inner h1,.lt-english-companion .arabic-inner h2,.lt-english-companion .arabic-inner p{font-family:var(--lt-en-font)!important;direction:ltr;text-align:left;unicode-bidi:plaintext}
+
+/* Additional offline-only, individually licensed handwriting book faces. */
+@font-face{font-family:"LT Arabic Lateef";src:url("fonts/ar-lateef.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"LT Arabic Katibeh";src:url("fonts/ar-katibeh.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"LT English Caveat";src:url("fonts/en-caveat.ttf") format("truetype");font-weight:400 700;font-style:normal;font-display:swap}
+@font-face{font-family:"LT English Kalam";src:url("fonts/en-kalam.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+html[data-lt-arabic-font="lateef"]{--lt-ar-font:"LT Arabic Lateef",serif}
+html[data-lt-arabic-font="katibeh"]{--lt-ar-font:"LT Arabic Katibeh",serif}
+html[data-lt-english-font="caveat"]{--lt-en-font:"LT English Caveat",cursive}
+html[data-lt-english-font="kalam"]{--lt-en-font:"LT English Kalam",cursive}
+/* Respect the two independent language preferences across every normal
+ * book-facing screen. Graphic icon vector paths remain unaffected. */
+html[lang="ar"] body :is(.library,.lt-drawer,.sheet,.lt-settings-sheet,
+ .reader-nav-panel,.review-card,.vitem),
+html[lang="ar"] body :is(button,select,textarea,input){
+ font-family:var(--lt-ar-font,"LT Arabic Modern",sans-serif)!important;
+}
+html[lang="en"] body :is(.library,.lt-drawer,.sheet,.lt-settings-sheet,
+ .reader-nav-panel,.review-card,.vitem),
+html[lang="en"] body :is(button,select,textarea,input){
+ font-family:var(--lt-en-font,"LT English Serif",serif)!important;
+}
+body :lang(ar):not(svg),.reader[data-lt-source="ar"] :is(h2,.sentence){
+ font-family:var(--lt-ar-font,"LT Arabic Naskh",serif)!important;
+}
+body :lang(en):not(svg),.reader[data-lt-source="en"] :is(h2,.sentence){
+ font-family:var(--lt-en-font,"LT English Serif",serif)!important;
+}

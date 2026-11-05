@@ -85,6 +85,7 @@ jobs:
           node tools/licensed-audio-monitor.test.cjs
           node tools/licensed-audio-start-timeout.test.cjs
           node tools/theme-catalog.test.cjs
+          node tools/reader-material-presets.test.cjs
           node tools/celestial-atlas.test.cjs
           node tools/circuit-notebook.test.cjs
           node tools/terracotta-gallery.test.cjs
@@ -98,6 +99,7 @@ jobs:
           node tools/full-localization.test.cjs
           node tools/typography-profiles.test.cjs
           node tools/five-font-reader.test.cjs
+          node tools/offline-handwriting-extra.test.cjs
           node tools/offline-font-pack.test.cjs
           node tools/content-loader.test.cjs
           node tools/illustrated-covers.test.cjs

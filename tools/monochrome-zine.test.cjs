@@ -12,11 +12,14 @@ const window={addEventListener:()=>{},innerWidth:1200,scrollY:0,matchMedia:()=>(
 const state={page:'reader',uiTheme:'aurora'};
 vm.runInNewContext(shell,{window,document,state,library(){},openStory(){},libraryBack(){},
  get:(k,f)=>store.has(k)?store.get(k):f,put:(k,v)=>store.set(k,v),closeSheet(){},Date,console},{timeout:5000});
-assert.ok(window.LinguaShell.themeNames.includes('monochrome-zine'));
-assert.equal(window.LinguaShell.applyTheme('monochrome-zine'),true);
-assert.equal(state.uiTheme,'monochrome-zine');
-assert.equal(store.get('uiTheme'),'monochrome-zine');
-assert.ok(classes.includes('+theme-monochrome-zine'));
+assert.ok(window.LinguaShell.themeNames.includes('monochrome-zine'),
+ 'legacy style remains available for safe backup imports');
+assert.equal(window.LinguaShell.applyTheme('monochrome-zine'),false,
+ 'retired theme cannot be selected after the six-theme redesign');
+assert.equal(state.uiTheme,'aurora','existing active theme is preserved');
+assert.notEqual(store.get('uiTheme'),'monochrome-zine',
+ 'removed styles must not be saved as an active preference');
+assert.equal(window.LinguaShell.applyTheme('https://untrusted'),false);
 for(const selector of ['body.theme-monochrome-zine','.theme-monochrome-zine .storylens-hero',
  '.theme-monochrome-zine .shelf .card','.theme-monochrome-zine .shelf .card .cover',
  '.theme-monochrome-zine .lt-drawer','.theme-monochrome-zine .reader:not(.dark)',

@@ -92,16 +92,17 @@ chapters[0].searchRevision=2;
 assert.equal(search('الخريطة').length,1,'restored source reindexed');
 assert.equal(chapters[0].paragraphs[0].ar,'فتح القبطان الخريطة السرية عند شروق الشمس.');
 assert.equal(window.LinguaShell.themeNames.includes('moonlit-margins'),true);
-assert.equal(window.LinguaShell.applyTheme('moonlit-margins'),true);
-assert.equal(saved.get('uiTheme'),'moonlit-margins');
-assert.ok(classes.includes('+theme-moonlit-margins'));
+assert.equal(window.LinguaShell.applyTheme('moonlit-margins'),false);
+assert.notEqual(saved.get('uiTheme'),'moonlit-margins','retired theme must not be selected');
+assert.ok(!classes.includes('+theme-moonlit-margins'));
+assert.equal(state.uiTheme,'aurora','six-theme policy preserves active theme');
 for(const selector of ['body.theme-moonlit-margins','.theme-moonlit-margins .storylens-hero',
  '.theme-moonlit-margins .shelf .card','.theme-moonlit-margins .reader.dark',
  '.lt-chapter-results','.lt-chapter-hit'])assert.ok(css.includes(selector),selector);
 assert.ok(backup.includes("'moonlit-margins'"));
 assert.ok(window.LinguaShell.themeNames.includes('saffron-archive'));
-assert.equal(window.LinguaShell.applyTheme('saffron-archive'),true);
-assert.equal(saved.get('uiTheme'),'saffron-archive');
+assert.equal(window.LinguaShell.applyTheme('saffron-archive'),false);
+assert.notEqual(saved.get('uiTheme'),'saffron-archive','retired theme must not be selected');
 for(const selector of ['body.theme-saffron-archive',
  '.theme-saffron-archive .library .storylens-hero',
  '.theme-saffron-archive .library .shelf .card',
@@ -112,8 +113,8 @@ assert.ok(backup.includes("'saffron-archive'"));
 assert.ok(!/https?:\/\//.test(css.slice(css.indexOf('/* LT-13: Moonlit Margins'))));
 assert.equal(chapters[0].paragraphs[0].ar,'فتح القبطان الخريطة السرية عند شروق الشمس.');
 assert.ok(window.LinguaShell.themeNames.includes('bauhaus-studio'));
-assert.equal(window.LinguaShell.applyTheme('bauhaus-studio'),true);
-assert.equal(saved.get('uiTheme'),'bauhaus-studio');
+assert.equal(window.LinguaShell.applyTheme('bauhaus-studio'),false);
+assert.notEqual(saved.get('uiTheme'),'bauhaus-studio','retired theme must not be selected');
 assert.ok(backup.includes("'bauhaus-studio'"));
 for(const selector of ['body.theme-bauhaus-studio','.theme-bauhaus-studio .library .storylens-hero',
  '.theme-bauhaus-studio .library .shelf .card','.theme-bauhaus-studio .reader.dark',
