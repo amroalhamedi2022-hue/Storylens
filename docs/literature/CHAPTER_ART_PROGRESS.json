@@ -208,7 +208,8 @@
       "imageMap": "docs/literature/staging/illustrated-five-20261105/the-last-of-the-mohicans/chapter-image-map.json",
       "archivedLocalHistoricArt": 12,
       "allArchivedImageTags": 12,
-      "originalChapterMarkerOccurrencesNotVerifiedChapterCount": 33
+      "originalChapterMarkerOccurrencesNotVerifiedChapterCount": 33,
+      "unassignedHistoricalAndriolliImageFiles": 0
     },
     {
       "bookId": "the-gilded-age",
