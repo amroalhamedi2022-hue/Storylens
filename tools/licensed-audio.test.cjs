@@ -164,7 +164,7 @@ const audio=window.LinguaLicensedAudio;
  assert.equal(audio.isPlaying(),false,'unexpected Chromium pause reconciles UI with actual audio state');
  assert.match(audioStatus.textContent,/unexpectedly interrupted/i,'unexpected pause is explained visibly');
  assert.equal(await audio.playTrack('forest'),true,'paused player is retryable');
- assert.match(audioStatus.textContent,/licensed recorded ambiences/i,'successful retry clears the diagnostic');
+ assert.match(audioStatus.textContent,/Ambience is optional/i,'successful retry clears the diagnostic');
  await audio.pause();
 
  // Overlapping taps on one track must not let an older play() completion
