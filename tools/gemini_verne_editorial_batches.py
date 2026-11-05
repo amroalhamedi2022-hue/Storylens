@@ -154,6 +154,31 @@ def main():
         temp.replace(output)
         print("STAGED", output.relative_to(ROOT), "SHA256", digest(data), flush=True)
         completed += 1
+    all_windows = list(range(0, len(rows), BATCH_SIZE))
+    checkpoint_files = sorted(dest.glob("review-*.json"))
+    matched = set()
+    for file in checkpoint_files:
+        record = json.loads(file.read_text("utf-8"))
+        indices = record.get("paragraphIndices", [])
+        if indices and indices[0] in all_windows:
+            expected_window = rows[indices[0]:indices[0] + BATCH_SIZE]
+            identity = {"version": PROMPT_VERSION, "chapter": args.chapter,
+                        "sourceFileShas256": source["sourceFileShas256"],
+                        "paragraphs": expected_window}
+            expected_hash = digest(json.dumps(identity, ensure_ascii=False,
+                                              sort_keys=True).encode("utf-8"))
+            if record.get("inputSha256") == expected_hash:
+                matched.add(indices[0])
+    if set(all_windows) == matched:
+        marker = dest / "complete.json"
+        marker.write_text(json.dumps({
+            "status": "AI_REVIEW_COMPLETE_HUMAN_APPROVAL_PENDING",
+            "chapter": args.chapter, "paragraphCount": len(rows),
+            "windowCount": len(all_windows), "reviewedWindowOffsets": sorted(matched),
+            "sourceSha256": source["sourceFileShas256"][-1],
+            "rightsVerified": False, "published": False
+        }, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+        print("Chapter", args.chapter, "AI editorial review coverage complete; human review still pending")
     print("New editorial review batches:", completed, "new books: 0, new images: 0")
 
 if __name__ == "__main__":
