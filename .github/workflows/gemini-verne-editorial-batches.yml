@@ -1,0 +1,99 @@
+name: Lingua Tales - Gemini Verne chapter editorial batches
+on:
+  workflow_dispatch:
+    inputs:
+      chapter:
+        description: 'Verne chapter (1-37)'
+        required: false
+        default: '1'
+      max_batches:
+        description: 'New 5-paragraph windows per run (1-15)'
+        required: false
+        default: '4'
+  schedule:
+    - cron: '17 */3 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lingua-gemini-verne-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  editorial:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Select next unfinished chapter automatically
+        id: choose
+        env:
+          INPUT_CHAPTER: ${{ inputs.chapter }}
+          INPUT_MAX_BATCHES: ${{ inputs.max_batches }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os, pathlib
+          base=pathlib.Path("docs/literature/staging/verne-gemini-editorial")
+          requested=os.environ.get("INPUT_CHAPTER", "").strip()
+          if requested:
+              chapter=int(requested)
+          else:
+              chapter=37
+              for n in range(1,38):
+                  # A completed chapter is signaled by a checksum-verified index
+                  # produced after every five-paragraph review window exists.
+                  if not (base/f"chapter-{n:02d}"/"complete.json").exists():
+                      chapter=n
+                      break
+          if not 1<=chapter<=37:
+              raise SystemExit("Invalid chapter")
+          batches=int(os.environ.get("INPUT_MAX_BATCHES") or "4")
+          if not 1<=batches<=15:
+              raise SystemExit("Invalid max_batches")
+          with open(os.environ["GITHUB_OUTPUT"],"a") as f:
+              f.write(f"chapter={chapter}\nmax_batches={batches}\n")
+          print("Selected chapter",chapter,"batch budget",batches)
+          PY
+      - name: Run bounded Gemini bilingual editorial check
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          CHAPTER: ${{ steps.choose.outputs.chapter }}
+          MAX_BATCHES: ${{ steps.choose.outputs.max_batches }}
+        shell: bash
+        run: |
+          test -n "$GEMINI_API_KEY" || { echo "::error::GEMINI_API_KEY unavailable"; exit 1; }
+          python tools/gemini_verne_editorial_batches.py --chapter "$CHAPTER" --max-batches "$MAX_BATCHES"
+      - name: Persist immutable review checkpoints in repository
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f docs/literature/staging/verne-gemini-editorial/ || true
+          if git diff --cached --quiet; then
+            echo "No new editorial checkpoints"
+          else
+            git commit -m "Literature: checkpoint Gemini Verne bilingual editorial reviews [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Archive checkpoints even when push fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verne-gemini-editorial-checkpoints
+          path: docs/literature/staging/verne-gemini-editorial/
+          if-no-files-found: ignore
+          retention-days: 30
