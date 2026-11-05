@@ -14,9 +14,10 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
-  group: lingua-tales-historic-commons-serial
+  group: lingua-original-five-art-map-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -40,41 +41,42 @@ jobs:
           set -euo pipefail
           python tools/map_archived_five_chapter_art.py --write
           python tools/map_archived_five_chapter_art.py --verify
-      - name: Checkpoint genuine chapter maps, rebase, then calculate the current main inventory
+      - name: Save authentic chapter maps and request a separate verified report
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Preserve the source-linked chapter map before touching the shared report.
+          # Only commit source-matched chapter maps; this job must never
+          # overwrite the common progress report or fake human approval.
           git add docs/literature/staging/illustrated-five-20261105/*/chapter-image-map.json
           git diff --cached --check
           if git diff --cached --quiet; then
-            echo "Source chapter maps already present; no duplicate map commit."
+            echo "Chapter maps unchanged; no duplicate commit or dispatch."
           else
-            git commit -m "Literature: checkpoint source-anchored historical chapter maps [skip ci]"
+            git commit -m "Literature: checkpoint genuine five-classic chapter image candidate maps"
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              python tools/map_archived_five_chapter_art.py --verify
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 2
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Could not push verified chapter maps"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = "main" ]; then
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
           fi
-          # A previous implementation committed a report from stale checkout
-          # and then rebased it over concurrent archival intake, causing conflicts.
-          git pull --rebase origin "$GITHUB_REF_NAME"
-          python tools/map_archived_five_chapter_art.py --verify
-          python tools/report_chapter_art_progress.py --write
-          git add docs/literature/CHAPTER_ART_PROGRESS.json docs/literature/CHAPTER_ART_PROGRESS.md
-          git diff --cached --check
-          if git diff --cached --quiet; then
-            echo "Audited report unchanged; no redundant report commit."
-          else
-            git commit -m "Literature: refresh SHA-audited chapter-art progress after map reconciliation [skip ci]"
-          fi
-          git push origin "HEAD:$GITHUB_REF_NAME"
+        env:
+          GH_TOKEN: ${{ github.token }}
       - name: Retain chapter maps even if push blocked
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: five-original-classics-chapter-image-candidates
-          path: |
-            docs/literature/staging/illustrated-five-20261105/*/chapter-image-map.json
-            docs/literature/CHAPTER_ART_PROGRESS.md
-            docs/literature/CHAPTER_ART_PROGRESS.json
+          path: docs/literature/staging/illustrated-five-20261105/*/chapter-image-map.json
           if-no-files-found: warn
           retention-days: 30
