@@ -179,6 +179,23 @@ def generate() -> dict:
                 raise ValueError("Commons image falsely promoted to a verified chapter card")
             sha1s.add(original_sha1)
         commons_candidates = len(commons_archive["images"])
+    war_gallery = STAGING / "war-of-worlds-correa-period-plates" / "manifest.json"
+    war_historic_count = 0
+    if war_gallery.is_file():
+        war_metadata = jload(war_gallery)
+        if war_metadata.get("chapterSceneMatchingComplete") is not False:
+            raise ValueError("War 1906 original gallery falsely marked chapter verified")
+        war_hashes = set()
+        for entry in war_metadata["images"]:
+            original_hash = entry["originalCommonsSHA1MetadataOnly"]
+            if original_hash in war_hashes or entry["sceneChapterMatchStatus"] != "UNREVIEWED__NO_CHAPTER_CARD":
+                raise ValueError("Duplicate or incorrectly approved War 1906 plate")
+            check_binary(
+                str((war_gallery.parent / entry["localPath"]).relative_to(ROOT)),
+                entry["webpSha256"],
+            )
+            war_hashes.add(original_hash)
+        war_historic_count = len(war_metadata["images"])
     rows = [
         {"bookId": "around-the-world-in-eighty-days-towle",
          "title": "Around the World in Eighty Days", "sourceState": "37 source chapters plus Arabic draft",
@@ -194,7 +211,8 @@ def generate() -> dict:
          "sourceState": "27 original chapters staged; bilingual/rights pending",
          "chapterCount": 27, "localCandidateChapters": 0, "readyForUICards": 0,
          "missingImageChapters": 27, "missingReadyChapters": 27,
-         "archivedLocalHistoricArt": 0},
+         "unassignedHistoricalCorreaImageFiles": war_historic_count,
+         "archivedLocalHistoricArt": war_historic_count},
     ]
     for slug, title in FIVE:
         archive = STAGING / "illustrated-five-20261105" / slug
@@ -268,7 +286,7 @@ def generate() -> dict:
         "nextWork": [
             "Scene-match new Commons original Verne engravings to the actual text for remaining chapter gaps; verify every file's artist, edition and territorial rights before promotion",
             "Review the five backfilled historic chapter maps and 117 Monte Cristo chapter slots; get original contextual plates for remaining holes and editorial/territorial clearance",
-            "Source contextual art for all 27 The War of the Worlds chapters",
+            "Scene-verify and assign real 1906 Correa historical engravings to 27 War of the Worlds chapters (all currently unassigned), then source original extras for uncovered chapters",
             "Backfill Valley of Fear, Kalila, Arabian Nights and remaining previous works with verified edition-specific chapter images",
             "Have reader/UI thread implement image-backed ordered chapter cards only from approved local chapter-image maps"
         ],
@@ -319,6 +337,8 @@ def markdown(report: dict) -> str:
         "- Exact historic scan/rights source list: docs/literature/HISTORIC_VERNES_ASSETS.json.",
         "- New original Commons period images in quarantine, NOT chapter-mapped: **" +
           str(report["books"][0].get("unassignedHistoricalCommonsImageFiles", 0)) + "**.",
+        "- Original 1906 Correa War of the Worlds files in quarantine, NOT chapter-mapped: **" +
+          str(report["books"][2].get("unassignedHistoricalCorreaImageFiles", 0)) + "**.",
         "- GitHub handoff: docs/handoffs/LINGUA_TALES_HANDOFF_CURRENT.md.",
         "- Story content automation is separate from the scheduled GitHub report; inspect latest Actions SHA and output before claiming any new image.",
         "- This inventory does NOT assert that a chapter card exists for any staged book lacking a verified chapter-to-image map, even if its archive contains hundreds of figures.",
