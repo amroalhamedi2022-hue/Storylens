@@ -75,7 +75,11 @@ Not done because a plan or CSS mockup exists. Every RDR item requires implemente
 - Added strictly validated backup allowlist+restore and Node regression; full CI, real tablets and Codex engine integration still OPEN. This is NOT a new signed APK.
 
 
-### 2026-11-05 — RDR-04/06/07/10/12 source batch #2 (PR and CI pending at initial write)
+### 2026-11-05 — RDR-12 additional handwriting fonts (separate feature PR, CI pending)
+- Four **new genuinely bundled, unmodified and source SHA-verified** Google Fonts SIL OFL 1.1 families: Arabic `Lateef` and `Katibeh`, English `Caveat` and `Kalam`. Full original `OFL.txt` files copied into `assets/fonts/`; provenance/source SHA recorded in `fonts/README.md`. Existing five choices per language preserved, now seven each, without runtime network.
+- New Settings labels; `lt-offline-fonts.css` applies selected Arabic/English typeface across library/drawer/settings and mixed original/companion reader text; leaves native graphic icons and historical figures unchanged. Existing semantic paragraph anchor restore in `applyFont()` retained.
+- Corrected a pre-existing backup bug that rejected 3 already-shipped fonts in each language, now validates all seven names for each. Font regression and binary signature/licence/backup tests added. **No changes to Codex physical page-turn source, content assets, original signing or package data.** Device QA, screenshots and exact commit Actions pending. No APK issued by this PR.
+04/06/07/10/12 source batch #2 (PR and CI pending at initial write)
 - Independent branch `design/reader-copy-guard-global-font-six-locked-20261105` from merged main `1e9a07ba42a53544d2e8f3b504f59564d3bcd0f7`; does NOT edit Codex physical curl, Android native host, literary sources or content image assets.
 - **Six app themes guaranteed visible** even after imported old backups with `ltHiddenThemes`; preserved legacy values solely for backup compatibility. Removed obsolete hide/restore controls from editor/settings while retaining optional recolour.
 - Blocked native WebView-style `selectstart/contextmenu/copy/cut/dragstart` capture **for live reader text only**; original dictionary word-taps, translations, illustrations and editable input fields still use actual DOM. It is NOT device-level DRM and cannot stop external OCR. Android OS screenshot OCR/native menu hardware verification remains OPEN.

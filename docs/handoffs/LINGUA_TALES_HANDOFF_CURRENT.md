@@ -15,7 +15,13 @@
 - **Six app themes guaranteed visible** even after imported old backups with `ltHiddenThemes`; preserved legacy values solely for backup compatibility. Removed obsolete hide/restore controls from editor/settings while retaining optional recolour.
 - Blocked native WebView-style `selectstart/contextmenu/copy/cut/dragstart` capture **for live reader text only**; original dictionary word-taps, translations, illustrations and editable input fields still use actual DOM. It is NOT device-level DRM and cannot stop external OCR. Android OS screenshot OCR/native menu hardware verification remains OPEN.
 - Visually hides old bottom page-number counter while leaving state/aria accessible, reduces unnecessary reader chrome; widens portrait tablet paper without changing page-turn geometry. App-wide Arabic/English font selectors propagate selected installed fonts to library/drawer/settings and language-tagged reading, retaining mixed-language text.
-- New Node tests verify live guard semantics, editable controls, exactly six always-visible themes and CSS. Exact Android+Chromium CI and real-device visual/functional acceptance remain OPEN. No new signed APK.
+- New Node tests verify live guard semantics, editable controls, exactly six always-visible themes and CSS. Exact Android+Chromium CI and real-device visual/functional acceptance remain OPEN. No new signed APK# Four new offline manuscript fonts workstream — CI pending
+
+
+### 2026-11-05 — RDR-12 additional handwriting fonts (separate feature PR, CI pending)
+- Four **new genuinely bundled, unmodified and source SHA-verified** Google Fonts SIL OFL 1.1 families: Arabic `Lateef` and `Katibeh`, English `Caveat` and `Kalam`. Full original `OFL.txt` files copied into `assets/fonts/`; provenance/source SHA recorded in `fonts/README.md`. Existing five choices per language preserved, now seven each, without runtime network.
+- New Settings labels; `lt-offline-fonts.css` applies selected Arabic/English typeface across library/drawer/settings and mixed original/companion reader text; leaves native graphic icons and historical figures unchanged. Existing semantic paragraph anchor restore in `applyFont()` retained.
+- Corrected a pre-existing backup bug that rejected 3 already-shipped fonts in each language, now validates all seven names for each. Font regression and binary signature/licence/backup tests added. **No changes to Codex physical page-turn source, content assets, original signing or package data.** Device QA, screenshots and exact commit Actions pending. No APK issued by this PR.
 
 ---
 
