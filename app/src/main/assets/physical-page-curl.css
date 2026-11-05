@@ -1,5 +1,5 @@
 /* Only the paper renderer; shell themes and paper presets remain independent. */
-.reader #sentences.lt-curl-book{position:relative;isolation:isolate;touch-action:pan-y;display:grid;grid-template-columns:1fr;gap:0;direction:ltr;overflow:visible}
+.reader #sentences.lt-curl-book{position:relative;isolation:isolate;touch-action:pan-y;display:grid;grid-template-columns:1fr;gap:0;direction:ltr;overflow:hidden;overflow:clip;overflow-clip-margin:0}
 .reader #sentences.lt-curl-book[data-spread="2"]{grid-template-columns:1fr 1fr}
 .reader .lt-curl-book>.lt-book-page{box-sizing:border-box;width:100%;margin:0;min-width:0;border-radius:2px;min-height:min(72vh,850px);transform:none;animation:none}
 .reader .lt-curl-book>.lt-book-page.is-active{grid-row:1;grid-column:var(--lt-page-column,1)}

@@ -404,7 +404,7 @@ jobs:
           echo "PASS: all three archived period illustrations render inside corresponding offline novel chapters"
           "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=10500 --window-size=460,860 --dump-dom "file://$PWD/app/src/main/assets/qa-paper-fold-browser.html" > /tmp/lt-paper-fold-dom.html 2>/tmp/lt-paper-fold.log
           grep -Fq 'data-lt-paper-qa="PASS"' /tmp/lt-paper-fold-dom.html || { echo "Real Chromium paper-fold regression failed:"; grep -o 'data-lt-paper-errors="[^"]*"' /tmp/lt-paper-fold-dom.html | head -1; grep -o 'data-lt-paper-stage="[^"]*"' /tmp/lt-paper-fold-dom.html | head -1; exit 1; }
-          echo "PASS: Chromium held page RTL/LTR, vertical scroll, second touch and pointercancel all correctly handled"
+          echo "PASS: Chromium source-backed mesh and pointercancel; full language/layout/touch matrix follows in dedicated acceptance"
           for direction in rtl ltr; do
             "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=6200 --window-size=460,860 --dump-dom "file://$PWD/app/src/main/assets/qa-paper-fold-held-$direction.html" > "/tmp/lt-held-$direction.html" 2>/tmp/lt-held-fold-browser.log
             grep -Fq 'data-lt-held-fold-qa="PASS"' "/tmp/lt-held-$direction.html" || { echo "Live held paper failed: $direction"; grep -o 'data-lt-held-fold-errors="[^"]*"' "/tmp/lt-held-$direction.html" | head -1; exit 1; }

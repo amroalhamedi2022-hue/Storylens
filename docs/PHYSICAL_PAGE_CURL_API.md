@@ -23,7 +23,7 @@ cloned; only the current sheet and its reverse are copied during a turn.
 A new primary contact can catch a settling sheet without creating a second turn.
 Repeated keyboard/button turns replace an unfinished turn, cancelling it before
 starting the next; they do not queue unbounded animations. Layout replacement,
-modal opening, resize, pointer cancellation, a second finger, lost capture,
+modal opening, resize, pointer cancellation, a second finger, lost host capture,
 window blur and page visibility loss cancel safely. Vertical scrolling wins
 before horizontal lock. Taps on words remain dictionary taps until an actual
 edge drag crosses the lock threshold. Escape cancels; arrows and PageUp/PageDown
@@ -82,7 +82,8 @@ The opposite edge lags at a corner hold, then the taper relaxes across the bindi
 Lighting follows surface angle, with a narrow contact shadow and paper edge.
 The reverse displays actual adjacent-page HTML; artwork is never recoloured or
 rasterized. Spring integration uses elapsed time with <=8ms integration steps,
-not a fixed assumed refresh rate. Only movement and release schedule rAF.
+not a fixed assumed refresh rate. Only movement and release schedule rAF. The visual container clips transformed
+layout overflow so a left-edge fold cannot shift an RTL viewport sideways.
 
 This is not a finite-element paper/material solver. Facets can be discernible at
 extreme zoom; actual WebView GPU memory, finger feel, TalkBack and Xiaomi Pad 5
@@ -114,7 +115,8 @@ there is no additional runtime licence dependency. turn.js was not used.
 - `node tools/physical-page-curl-browser.cjs` with Playwright and Chromium installed:
   actual app, local server, all nonlocal requests blocked; four language/layout
   combinations, live mesh screenshots, cancellation, dictionary, chapter and
-  saved-anchor checks. `CHROME` can select the executable; `CURL_SCREENSHOTS`
+  saved-anchor checks, plus browser-generated touch, implicit capture transfer,
+  vertical edge scroll, real second contact, rapid turns and original image inspection. `CHROME` can select the executable; `CURL_SCREENSHOTS`
   selects the artifact directory.
 - The existing Android workflow runs all Node/Android/Chromium checks and the new
   browser acceptance, uploading `StoryLens-UI-Screenshots`. Generated QA HTML and

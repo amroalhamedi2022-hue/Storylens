@@ -28,4 +28,4 @@ assert.equal(shouldCommit(100,600,0),false);
 assert.equal(shouldCommit(100,600,.8),true);
 assert.equal(shouldCommit(350,600,-.8),false,'reversed fast release cancels');
 assert.equal(shouldCommit(10,600,2),false,'tiny accidental flick does not turn');
-console.log('PASS: 972 geometric configurations, complete sheet coverage, finite corner matrices, mirror binding, spreads and release intent');
+console.log('PASS: 324 geometric configurations and their mirrors, complete sheet coverage, finite corner matrices, mirror binding, spreads and release intent');

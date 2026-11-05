@@ -19,7 +19,7 @@ function clip(poly,n,limit,above){
 // are planar; the belly consists of joined tangent facets, tapering at the
 // opposite edge. This is a geometric model, not a finite-element paper solver.
 function geometry(width,height,distance,vertical,grabY,edge='right',segments=20){
- const w=Math.max(1,width),h=Math.max(1,height),d=clamp(distance,0,2*w);
+ const w=Math.max(1,Number.isFinite(width)?width:1),h=Math.max(1,Number.isFinite(height)?height:1),d=clamp(distance,0,2*w);
  const p=d/(2*w),dy=clamp(vertical,-d*.65,d*.65)*(1-p*p);
  const length=Math.hypot(d,dy)||1,n={x:d/length||1,y:-dy/length};
  const radius=Math.min(w*.085, d/(Math.PI+2))*Math.sin(Math.PI*p)**.55;
@@ -108,7 +108,8 @@ function mount(options){
   Object.assign(stage.style,{left:rect.left-hostRect.left+'px',top:rect.top-hostRect.top+'px',width:rect.width+'px',height:rect.height+'px'});
   const style=win.getComputedStyle(h.page);
   stage.style.setProperty('--lt-curl-paper',style.backgroundColor==='rgba(0, 0, 0, 0)'?'#f7f1e3':style.backgroundColor);
-  stage.style.setProperty('--lt-curl-padding',style.padding);
+  const inset=['Top','Right','Bottom','Left'].map(side=>(parseFloat(style['padding'+side])+parseFloat(style['border'+side+'Width']))+'px').join(' ');
+  stage.style.setProperty('--lt-curl-padding',inset);
   stage.style.setProperty('--lt-curl-paper-image',style.backgroundImage);
   const front=inertCopy(h.page),back=h.back?inertCopy(h.back):null;
   // Match computed paper padding/font; the copies inherit all reader language styles.
@@ -192,7 +193,7 @@ function mount(options){
  }
  function start(h){h.started=true;if(!reduced.matches)makeVisual(h);emit('start',h);}
  function turn(delta,source='control'){
-  if(dead||(delta!==1&&delta!==-1))return false;
+  if(dead||!host.isConnected||(delta!==1&&delta!==-1))return false;
   if(hold)cancel('superseded');
   const h=begin(delta,(delta>0)!==rtl?'right':'left',source);if(!h)return false;
   h.grabY=h.height*.84;start(h);settle(true);return true;
@@ -216,7 +217,7 @@ function mount(options){
   h.pointer=e.pointerId;h.startX=e.clientX;h.startY=e.clientY;h.grabY=clamp(e.clientY-h.top,0,h.height);h.lastAt=e.timeStamp;
  });
  // A second finger elsewhere (e.g. over an illustration) cancels as well.
- on(doc,'pointerdown',e=>{if(hold&&!hold.settling&&hold.pointer!==undefined&&e.pointerId!==hold.pointer)cancel('second-pointer');},true);
+ on(doc,'pointerdown',e=>{if(hold&&(e.isPrimary===false||(!hold.settling&&hold.pointer!==undefined&&e.pointerId!==hold.pointer)))cancel('second-pointer');},true);
  on(host,'pointermove',e=>{
   const h=hold;if(!h||h.pointer!==e.pointerId||h.settling)return;
   let first=false;
@@ -231,9 +232,11 @@ function mount(options){
   h.distance=clamp(d,0,2*h.width);h.vertical=dy;suppressUntil=Date.now()+450;
   if(first)paint(h);else request();if(e.cancelable)e.preventDefault();
  },{passive:false});
- on(doc,'pointerup',e=>{if(hold?.pointer===e.pointerId){const h=hold;const v=e.timeStamp-h.lastAt>100?0:h.velocity;settle(shouldCommit(h.distance,h.width,v));}},true);
+ on(doc,'pointerup',e=>{if(hold?.pointer===e.pointerId){const h=hold;if(h.started)suppressUntil=Date.now()+450;const v=e.timeStamp-h.lastAt>100?0:h.velocity;settle(shouldCommit(h.distance,h.width,v));}},true);
  on(doc,'pointercancel',e=>{if(hold?.pointer===e.pointerId)cancel('pointercancel');},true);
- on(host,'lostpointercapture',e=>{if(hold?.pointer===e.pointerId&&!hold.settling)cancel('capture-lost');});
+ // Touch implicitly captures on the original child. Its bubbling loss during
+ // transfer to host is expected; only a loss on our actual owner cancels.
+ on(host,'lostpointercapture',e=>{if(e.target===host&&hold?.pointer===e.pointerId&&!hold.settling)cancel('capture-lost');});
  on(host,'pointerleave',e=>{if(hold?.pointer===e.pointerId&&!hold.started)cancel('leave');});
  on(host,'click',e=>{if(Date.now()<suppressUntil){e.preventDefault();e.stopImmediatePropagation();}},{capture:true});
  on(doc,'keydown',e=>{if(e.key==='Escape'&&hold){cancel('escape');e.preventDefault();e.stopImmediatePropagation();}},true);
@@ -241,7 +244,7 @@ function mount(options){
  on(win,'resize',()=>cancel('resize'));
  on(doc,'visibilitychange',()=>{if(doc.hidden)cancel('hidden');});
  const preference=()=>cancel('motion-preference');reduced.addEventListener?.('change',preference);
- const observer=new win.MutationObserver(()=>{if(!host.isConnected)api.destroy();else if(doc.querySelector('#modals .sheet,.lt-art-inspector'))cancel('modal');});
+ const observer=new win.MutationObserver(()=>{if(!host.isConnected)api.destroy();else if(doc.querySelector('#modals .sheet,.lt-art-inspection-backdrop'))cancel('modal');});
  observer.observe(doc.body,{childList:true,subtree:true});
  const api={turn,cancel,cancelIfActive(){if(!hold)return false;cancel('back');return true;},get active(){return !!hold?.started;},destroy(){if(dead)return;cancel('destroy');dead=true;listeners.forEach(off=>off());observer.disconnect();reduced.removeEventListener?.('change',preference);}};
  return api;

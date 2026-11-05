@@ -50,6 +50,10 @@ const server=http.createServer((req,res)=>{
    // Actual held mesh, source HTML, real underpage; save visual evidence.
    await gesture(.75,80,'pointerup',true);await page.waitForTimeout(80);
    assert.equal(await page.locator('.lt-curl-facet').count(),22);
+   assert.ok(await page.evaluate(()=>{
+    const r=document.querySelector('#sentences').getBoundingClientRect();
+    return r.left>=-1&&r.right<=innerWidth+1&&Math.abs(scrollX)<1;
+   }),'holding either edge must not expand horizontal scroll or shift the reader off screen');
    assert.equal(await page.locator('.lt-curl-under').count(),1);
    assert.equal(await page.locator('.lt-curl-stage .tok').count(),0,'no duplicate dictionary buttons');
    assert.equal(await page.locator('.lt-curl-stage [id]').count(),0,'no duplicate DOM identities');
@@ -103,5 +107,58 @@ const server=http.createServer((req,res)=>{
    assert.deepEqual(errors,[]);
    console.log('PASS browser',rtl?'RTL':'LTR',landscape?'spread':'portrait');await page.close();
   }
+  // Real browser touch dispatch (not only synthetic DOM PointerEvents).
+  const touch=await browser.newPage({viewport:{width:460,height:860},hasTouch:true});
+  await touch.goto(url);await touch.evaluate(()=>openStory('last-passenger'));
+  await touch.evaluate(()=>document.fonts.ready);await touch.waitForTimeout(400);
+  await touch.evaluate(()=>{window.realCommits=0;document.addEventListener('lingua:turncommit',()=>realCommits++);document.querySelector('#sentences').scrollIntoView({block:'start',behavior:'instant'})});
+  const bounds=await touch.locator('#sentences').boundingBox(),cdp=await touch.context().newCDPSession(touch);
+  let x=bounds.x+bounds.width-8,y=Math.max(20,bounds.y+50);
+  // Vertical movement from the edge remains native scroll, not a paper turn.
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x-2,y:y+100}]});
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  assert.equal(await touch.evaluate(()=>realCommits),0);
+  assert.equal(await touch.evaluate(()=>LinguaReaderCurl.active),false);
+  await touch.waitForTimeout(300);
+  await touch.evaluate(()=>document.querySelector('#sentences').scrollIntoView({block:'start',behavior:'instant'}));
+  const resetBounds=await touch.locator('#sentences').boundingBox();x=resetBounds.x+resetBounds.width-8;y=resetBounds.y+50;
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
+  for(let i=1;i<=8;i++){
+   await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x-bounds.width*.7*i/8,y:y+4}]});
+   await touch.waitForTimeout(20);
+  }
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  await touch.waitForFunction(()=>realCommits===1,{},{timeout:5000});
+  assert.equal(await touch.locator('.lt-curl-stage').count(),0);
+  // Browser-generated second contact cancels even after capture has transferred.
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y,id:0}]});
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x-90,y,id:0}]});
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:x-90,y,id:0},{x:x-110,y:y+30,id:1}]});
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  assert.equal(await touch.evaluate(()=>LinguaReaderCurl.active),false);
+  assert.equal(await touch.evaluate(()=>realCommits),1);
+  // Rapid controls: superseded turns cancel, exactly one final intent commits.
+  await touch.evaluate(()=>{LinguaReaderCurl.turn(-1,'keyboard');LinguaReaderCurl.turn(-1,'keyboard');LinguaReaderCurl.turn(-1,'keyboard')});
+  await touch.waitForFunction(()=>!LinguaReaderCurl.active,{},{timeout:5000});
+  assert.equal(await touch.evaluate(()=>realCommits),2);
+  // Illustration opens on its original node; a fold never owns its tap.
+  await touch.evaluate(()=>{const id='around-the-world-in-eighty-days-towle';put('chapter_'+id,10);put('readpage_anchor_'+id+'_10',43);openStory(id)});
+  await touch.waitForFunction(()=>state.story?.id==='around-the-world-in-eighty-days-towle'&&state.page==='reader',{},{timeout:15000});
+  const picture=touch.locator('#sentences > .is-active .lt-inline-illustration img[src^="art/"]').first();
+  await picture.click();await touch.waitForSelector('.lt-art-inspection-dialog',{timeout:3000});assert.equal(await touch.locator('.lt-art-inspection-dialog').count(),1);
+  assert.equal(await touch.evaluate(()=>LinguaReaderCurl.active),false);
+  await touch.evaluate(()=>LinguaTalesArtInspection.closeIfOpen());
+  await touch.evaluate(()=>openStory('last-passenger'));await touch.evaluate(()=>document.fonts.ready);
+  await touch.waitForTimeout(400);
+  // Catch a moving sheet without a second start or commit, then cancel it.
+  await touch.evaluate(()=>{LinguaReaderCurl.turn(1,'control')});await touch.waitForTimeout(100);
+  await touch.evaluate(()=>{
+   const box=document.querySelector('#sentences'),r=box.getBoundingClientRect();
+   box.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,pointerId:97,isPrimary:true,button:0,clientX:r.right-15,clientY:r.top+60}));
+   LinguaReaderCurl.cancel('catch-test');
+  });
+  await touch.waitForTimeout(200);assert.equal(await touch.evaluate(()=>realCommits),2);
+  await touch.close();console.log('PASS browser real touch, rapid controls, original illustration and catch/cancel');
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1});
