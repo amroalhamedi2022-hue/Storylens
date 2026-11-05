@@ -1,0 +1,41 @@
+name: Verne original Commons plates quarantine
+on:
+  push:
+    branches:
+      - content/verne-commons-original-plates-20261105
+    paths:
+      - 'tools/intake_verne_commons_plates.py'
+      - '.github/workflows/verne-commons-plates.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow==11.3.0
+      - run: python tools/intake_verne_commons_plates.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verne-commons-quarantine
+          path: docs/literature/staging/verne-commons-plates-20261105/
+          if-no-files-found: warn
+      - name: Commit actual source image binaries and SHA manifest only
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f docs/literature/staging/verne-commons-plates-20261105/
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m "content: quarantine original Verne Commons image files and source SHA256"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
