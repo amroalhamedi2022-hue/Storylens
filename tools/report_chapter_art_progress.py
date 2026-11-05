@@ -246,10 +246,10 @@ def generate() -> dict:
                        sum(r.get("archivedLocalHistoricArt", 0) for r in rows)},
         "books": rows,
         "nextWork": [
-            "Backfill 28 Verne chapters without any locally sourced primary image; editorial/territory clearance of the nine candidates is still pending",
-            "For five formerly unmapped complete illustrated originals, review every newly source-mapped visual scene and per-image rights, and source original contextual plates for unmapped chapters",
+            "Backfill the remaining Verne chapter image gaps; secure rights and individual scene approval for all authentic plates",
+            "Review the five backfilled historic chapter maps and 117 Monte Cristo chapter slots; get original contextual plates for remaining holes and editorial/territorial clearance",
             "Source contextual art for all 27 The War of the Worlds chapters",
-            "Revisit all older staged books and incoming PR book collections without counting unmerged materials on main",
+            "Backfill Valley of Fear, Kalila, Arabian Nights and remaining previous works with verified edition-specific chapter images",
             "Have reader/UI thread implement image-backed ordered chapter cards only from approved local chapter-image maps"
         ],
         "releaseStatus": "NOT_READY_FOR_CHAPTER_CARDS; DO_NOT_PUBLISH_PENDING_RIGHTS_AND_EDITORIAL"
@@ -302,9 +302,10 @@ def markdown(report: dict) -> str:
         "- This inventory does NOT assert that a chapter card exists for any staged book lacking a verified chapter-to-image map, even if its archive contains hundreds of figures.",
         "", "## Remaining counts",
         "",
-        "- Verne: **28 chapters without candidates, 37 without approved chapter thumbnails**; nine distinct locally mapped historical plates await approvals.",
+        "- Verne: **" + str(report["books"][0]["missingImageChapters"]) + " chapters without image candidates, " + str(report["books"][0]["missingReadyChapters"]) + " without approved thumbnails**; historical art requires territory/scene approvals.",
         "- War of the Worlds: **27 chapters without candidates**.",
         "- Five archived illustrated novels now have edition-derived chapter counts and source-positioned local plate candidates; verify scene fidelity and per-image rights before use.", 
+        "- Monte Cristo: **" + str(next((r["missingImageChapters"] for r in report["books"] if r["bookId"] == "the-count-of-monte-cristo"), "not indexed")) + " chapter candidates missing**; the historical English translation's original French edition and rights still need verification.",
         "- Moonstone/older works: exact chapter segmentation, contextual art acquisition, rights and editorial review still open.",
         "- Book cover art, full bilingual human review and signed reader release require independent checks.",
         "",
