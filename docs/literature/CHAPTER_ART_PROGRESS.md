@@ -8,7 +8,7 @@
 
 - Locally mapped chapter candidates: **268**.
 - Chapter cards with both territorial rights and editorial approval: **0**.
-- Verified historical art binaries retained in audited archives (all editions): **990**; NOT necessarily chapter-aligned.
+- Verified historical art binaries retained in audited archives (all editions): **1008**; NOT necessarily chapter-aligned.
 
 ## Book-by-book audit
 
@@ -45,7 +45,7 @@
 - Machine-readable counts: docs/literature/CHAPTER_ART_PROGRESS.json.
 - Chapter-level Verne candidate map: docs/literature/staging/verne-chapter-cards/chapter-image-map.json.
 - Exact historic scan/rights source list: docs/literature/HISTORIC_VERNES_ASSETS.json.
-- New original Commons period images in quarantine, NOT chapter-mapped: **36**.
+- New original Commons period images in quarantine, NOT chapter-mapped: **54**.
 - Original 1906 Correa War of the Worlds files in quarantine, NOT chapter-mapped: **18**.
 - GitHub handoff: docs/handoffs/LINGUA_TALES_HANDOFF_CURRENT.md.
 - Story content automation is separate from the scheduled GitHub report; inspect latest Actions SHA and output before claiming any new image.
