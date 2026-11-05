@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p171.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-1456bd6fe943e063.webp",
+  "imageSha256": "2490fda9c0d7caa1bac430b82ed8f8964e5bfaef9ebe1d1e90d3c018a824a2fb",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraved illustration depicting three figures in a wooded area, observing a partially collapsed wooden structure or shelter in the background. The figures are positioned in the foreground, looking toward the structure. The style is characteristic of 19th-century book illustration, featuring detailed cross-hatching and line work.",
+    "visualObjectsEn": "Three human figures, tall trees, dense foliage, a dilapidated wooden structure with exposed beams, long rifles, belts with pouches or knives, and grass.",
+    "recognizableCharactersOrPeopleEn": "Three individuals dressed in attire that appears to be buckskin or frontier-style clothing, with some wearing feathers in their hair, suggesting a depiction of Native Americans or frontiersmen.",
+    "uncertaintyNotes": "The specific identity of the figures is not explicitly stated, though their clothing and accessories suggest a frontier or indigenous context. The exact nature of the structure in the background is ambiguous, appearing as either a ruin or a makeshift shelter."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 18,
+    "paragraphIndexZeroBased": 8,
+    "exactSourceQuotation": "the forms of five men might have been seen issuing from the narrow vista of trees, where the path to the Hudson entered the forest, and advancing in the direction of the ruined works.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts three figures in a wooded area observing a ruined structure, which aligns with the narrative context of Chapter 18 where characters approach the 'ruined works' (Fort William Henry) through the forest. While the text mentions five men, the visual focus on three figures in the foreground is a common artistic choice in 19th-century engravings to simplify complex scenes, and the setting of a 'ruined works' in a forest matches the description of the dilapidated structure.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing three figures in frontier attire standing in a forest, looking toward a partially ruined wooden structure, illustrating the approach to the site of the ruined works.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows three figures in a wooded area examining ruins, but the passage describes a party of five men (three white men and two Indians) advancing cautiously towards ruined works near the Hudson.",
+    "visualContradictions": "The engraving only shows three figures instead of the five men mentioned in the text (three white men and two Indians).",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p141.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-84b3f2de71f61f85.webp",
+  "imageSha256": "6f11cff1a18ccafd6fa8c62947ca9f174b84a1017e1f8301a702c708b1e1669c",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraved illustration depicting a tense scene in a dense forest. A group of people, including men in colonial-era European clothing and several Indigenous men, are gathered. One Indigenous man in the foreground is in the act of throwing a tomahawk toward a woman who is cowering with her hands to her head. Another man in colonial attire stands nearby, looking on.",
+    "visualObjectsEn": "Trees, forest floor with branches, tomahawk in mid-air, colonial-style coats, hats, breeches, Indigenous-style clothing, loincloths, feathers, belts, pouches.",
+    "recognizableCharactersOrPeopleEn": "A woman with long hair, a man in colonial attire standing to the left, a man in colonial attire partially obscured in the center, and several Indigenous men, one of whom is throwing a weapon.",
+    "uncertaintyNotes": "The specific identities of the individuals are not explicitly stated in the image itself, though the style suggests a 19th-century historical or literary illustration. The exact nature of the interaction is inferred from the action of the weapon in flight."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
