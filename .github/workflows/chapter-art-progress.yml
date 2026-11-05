@@ -17,7 +17,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: lingua-tales-historic-commons-serial
+  group: lingua-chapter-art-progress-main
   cancel-in-progress: false
 
 jobs:
@@ -34,26 +34,36 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Reconcile latest main before measuring actual local binaries
-        shell: bash
-        run: git pull --ff-only origin main
-      - name: Measure real chapter card coverage and verify all archived image hashes
-        run: python tools/report_chapter_art_progress.py --write
-      - name: Commit only changed progress snapshots
+      - name: Regenerate verified progress from newest main and retry concurrent source pushes
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/literature/CHAPTER_ART_PROGRESS.json docs/literature/CHAPTER_ART_PROGRESS.md
-          git diff --cached --check
-          if git diff --cached --quiet; then
-            echo "Progress counts unchanged; no redundant commit."
-          else
+          # This workflow is the ONLY automated writer of progress MD/JSON.
+          # The archive/mapping jobs commit source evidence and dispatch this
+          # workflow explicitly; GITHUB_TOKEN source pushes cannot chain CI.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            # Regenerate only from files physically present on latest main.
+            python tools/report_chapter_art_progress.py --write
+            git add docs/literature/CHAPTER_ART_PROGRESS.json docs/literature/CHAPTER_ART_PROGRESS.md
+            git diff --cached --check
+            if git diff --cached --quiet; then
+              echo "Latest main already has matching SHA-audited report."
+              exit 0
+            fi
             git commit -m "Literature: refresh checksum-audited chapter-image coverage [skip ci]"
-            git pull --rebase origin main
-            git push origin HEAD:main
-          fi
+            if git push origin HEAD:main; then
+              echo "Committed audit from current verified source inventory."
+              exit 0
+            fi
+            echo "::warning::main advanced while measuring; audit latest image files again"
+            sleep 2
+          done
+          echo "::error::Could not publish fresh image inventory after bounded retries"
+          exit 1
       - name: Upload snapshot for handoff even if branch push unavailable
         if: always()
         uses: actions/upload-artifact@v4
