@@ -1,4 +1,21 @@
-# Four new offline manuscript fonts workstream — CI pending
+# CI glass renderer diagnostic / three-attempt strict acceptance
+
+
+### 2026-11-05 — Optical browser CI runner nondeterminism isolated (no product engine edits)
+- Two identical QA fixture blobs `qa-wen-glass.html`, `lt-wen-glass-engine.js/css` on previously green PR source `f63e43a`, current main `1e9a07b`, and source PR `dc21e2a`; failing post-merge main run [#41986301641](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/41986301641) and PR #11 run [#41986752531](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/41986752531) reached browser glass smoke after other Chromium fixtures passed, but returned no `data-lt-wen-glass-qa` marker in dumped DOM. This indicates a headless timing/runner issue is plausible, **not proven**.
+- Tightened CI to retry fresh headless processes up to three times with stable virtual-time flags, REQUIRE actual `data-lt-wen-glass-qa="PASS"` on at least one attempt, and print stderr/fixture errors on failure. True consistent fixture failures STILL fail red. Page-curl, content/art, production app logic unchanged. **CI for this correction PENDING.**
+
+---
+
+# Current UX branch: copy guard, always-six gallery, global fonts and quiet reader
+
+
+### 2026-11-05 — RDR-04/06/07/10/12 source batch #2 (PR and CI pending at initial write)
+- Independent branch `design/reader-copy-guard-global-font-six-locked-20261105` from merged main `1e9a07ba42a53544d2e8f3b504f59564d3bcd0f7`; does NOT edit Codex physical curl, Android native host, literary sources or content image assets.
+- **Six app themes guaranteed visible** even after imported old backups with `ltHiddenThemes`; preserved legacy values solely for backup compatibility. Removed obsolete hide/restore controls from editor/settings while retaining optional recolour.
+- Blocked native WebView-style `selectstart/contextmenu/copy/cut/dragstart` capture **for live reader text only**; original dictionary word-taps, translations, illustrations and editable input fields still use actual DOM. It is NOT device-level DRM and cannot stop external OCR. Android OS screenshot OCR/native menu hardware verification remains OPEN.
+- Visually hides old bottom page-number counter while leaving state/aria accessible, reduces unnecessary reader chrome; widens portrait tablet paper without changing page-turn geometry. App-wide Arabic/English font selectors propagate selected installed fonts to library/drawer/settings and language-tagged reading, retaining mixed-language text.
+- New Node tests verify live guard semantics, editable controls, exactly six always-visible themes and CSS. Exact Android+Chromium CI and real-device visual/functional acceptance remain OPEN. No new signed APK# Four new offline manuscript fonts workstream — CI pending
 
 
 ### 2026-11-05 — RDR-12 additional handwriting fonts (separate feature PR, CI pending)
