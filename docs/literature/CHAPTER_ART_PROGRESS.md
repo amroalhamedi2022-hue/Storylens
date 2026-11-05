@@ -6,7 +6,7 @@
 
 ## Current totals
 
-- Locally mapped chapter candidates: **9**.
+- Locally mapped chapter candidates: **150**.
 - Chapter cards with both territorial rights and editorial approval: **0**.
 - Verified historical art binaries retained in audited archives (all editions): **459**; NOT necessarily chapter-aligned.
 
@@ -17,11 +17,11 @@
 | Around the World in Eighty Days | 37 | 9 | 0 | 28 | 37 source chapters plus Arabic draft |
 | The Moonstone | Needs segmentation | 0 | 0 | Unknown | staged English; chapter segmentation/rights pending |
 | The War of the Worlds | 27 | 0 | 0 | 27 | 27 original chapters staged; bilingual/rights pending |
-| Treasure Island | Needs segmentation | 0 | 0 | Unknown | full illustrated English original staged; distinct chapter map pending |
-| Kidnapped | Needs segmentation | 0 | 0 | Unknown | full illustrated English original staged; distinct chapter map pending |
-| The Black Arrow | Needs segmentation | 0 | 0 | Unknown | full illustrated English original staged; distinct chapter map pending |
-| The Last of the Mohicans | Needs segmentation | 0 | 0 | Unknown | full illustrated English original staged; distinct chapter map pending |
-| The Gilded Age | Needs segmentation | 0 | 0 | Unknown | full illustrated English original staged; distinct chapter map pending |
+| Treasure Island | 34 | 34 | 0 | 0 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
+| Kidnapped | 30 | 30 | 0 | 0 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
+| The Black Arrow | 32 | 8 | 0 | 24 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
+| The Last of the Mohicans | 33 | 8 | 0 | 25 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
+| The Gilded Age | 63 | 61 | 0 | 2 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
 | A Study in Scarlet | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
 | Dracula | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
 | Frankenstein | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
@@ -33,7 +33,7 @@
 ## Next actions (highest to lowest priority)
 
 1. Backfill 28 Verne chapters without any locally sourced primary image; editorial/territory clearance of the nine candidates is still pending
-2. Derive exact narrative chapter indexes for five staged English illustrated books and The Moonstone, map original art to actual chapter scenes
+2. For five formerly unmapped complete illustrated originals, review every newly source-mapped visual scene and per-image rights, and source original contextual plates for unmapped chapters
 3. Source contextual art for all 27 The War of the Worlds chapters
 4. Revisit all older staged books and incoming PR book collections without counting unmerged materials on main
 5. Have reader/UI thread implement image-backed ordered chapter cards only from approved local chapter-image maps
@@ -51,5 +51,6 @@
 
 - Verne: **28 chapters without candidates, 37 without approved chapter thumbnails**; nine distinct locally mapped historical plates await approvals.
 - War of the Worlds: **27 chapters without candidates**.
-- Moonstone/five illustrated classics/older works: formal edition-specific chapter segmentation, scene mapping, artwork/rights and review still open.
+- Five archived illustrated novels now have edition-derived chapter counts and source-positioned local plate candidates; verify scene fidelity and per-image rights before use.
+- Moonstone/older works: exact chapter segmentation, contextual art acquisition, rights and editorial review still open.
 - Book cover art, full bilingual human review and signed reader release require independent checks.

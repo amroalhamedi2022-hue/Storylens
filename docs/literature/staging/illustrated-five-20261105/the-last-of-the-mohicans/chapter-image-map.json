@@ -1,0 +1,392 @@
+{
+  "schemaVersion": 1,
+  "bookId": "the-last-of-the-mohicans",
+  "source": "https://www.gutenberg.org/cache/epub/27681/pg27681-images.html",
+  "sourceTextSha256": "5513559d52e49c7ba68c4f61d54c62191b01212eb78f5da77949abace42e2f6f",
+  "chapterCount": 33,
+  "localCandidateChapters": 8,
+  "missingCandidateChapters": 25,
+  "readyForUICards": 0,
+  "releaseApproved": false,
+  "rightsStatus": "PENDING_INDIVIDUAL_ARTWORK_AND_TERRITORIAL_CLEARANCE",
+  "mappingMethod": "EXACT_AUTHENTIC_SOURCE_HEADING_AND_ORDERED_INLINE_IMAGE_TAG_PROVENANCE",
+  "editorialCaution": "Candidate images are real local, SHA-verified and originally positioned under these chapters, but exact depicted scene, individual scan rights, book-wide translation and chapter thumbnail visual/editorial review are NOT cleared. Do NOT publish into app until verified.",
+  "sourceArchiveManifest": "docs/literature/staging/illustrated-five-20261105/the-last-of-the-mohicans/manifest.json",
+  "chapters": [
+    {
+      "chapterOneBased": 1,
+      "titleEn": "CHAPTER I",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 2,
+      "titleEn": "CHAPTER II.",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 3,
+      "titleEn": "CHAPTER III.",
+      "titleAr": "",
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/illustrated-five-20261105/the-last-of-the-mohicans/art/plate-003.webp",
+        "sha256": "a9166287d5fb85122cbf78e78b8a0436395ba8f4b8c0859693472170ca3f8b49",
+        "originalSourceSha256": "3f9db8c7d86f24f6e708e7dc0d56940a5897d33227a15ed372a00ebffdb015aa",
+        "sourceUrl": "https://www.gutenberg.org/cache/epub/27681/images/illus1.jpg",
+        "sourceEdition": "N. C. Wyeth (1919 illustration edition)",
+        "sourceBookEditionURL": "https://www.gutenberg.org/cache/epub/27681/pg27681-images.html",
+        "sourceChapterHeading": "CHAPTER III.",
+        "sourceOriginalImageOrdinal": 3,
+        "sceneAnchor": "Chapter-local original illustration, heading: CHAPTER III.; original illustration caption: UNCAS SLAYS A DEER; preceding prose: \"He's a boy!\" said the white man, shaking his head while he spoke, and addressing the father. \"Does he think when a hunter sees a part of th",
+        "sceneVerificationStatus": "SOURCE_DOM_CHAPTER_MATCHED__IMAGE_SUBJECT_REQUIRES_HUMAN_REVIEW",
+        "originalCaption": "UNCAS SLAYS A DEER",
+        "credit": "N. C. Wyeth (1919 illustration edition)",
+        "license": "PENDING_INDIVIDUAL_FIGURE_AND_TERRITORIAL_REVIEW",
+        "rightsStatus": "PENDING_PER_SCAN_AND_TERRITORY_REVIEW",
+        "altEn": "UNCAS SLAYS A DEER",
+        "altAr": "رسم من الطبعة التاريخية للفصل 3؛ تفاصيل المشهد تحتاج تحققًا بصريًا قبل النشر.",
+        "editoriallyApproved": false
+      },
+      "imageStatus": "SOURCE_ANCHORED_LOCAL_CANDIDATE_NOT_APPROVED"
+    },
+    {
+      "chapterOneBased": 4,
+      "titleEn": "CHAPTER IV.",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 5,
+      "titleEn": "CHAPTER V.",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 6,
+      "titleEn": "CHAPTER VI.",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 7,
+      "titleEn": "CHAPTER VII.",
+      "titleAr": "",
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/illustrated-five-20261105/the-last-of-the-mohicans/art/plate-004.webp",
+        "sha256": "69ea7303dfdb3d9948cdb806e7416805478e2e55204bc20d5887a1d202ea2e3b",
+        "originalSourceSha256": "52ae8c2e672a7fb5b637060106dc7b0baac4e0e056611dbda0767819b9b0802c",
+        "sourceUrl": "https://www.gutenberg.org/cache/epub/27681/images/illus2.jpg",
+        "sourceEdition": "N. C. Wyeth (1919 illustration edition)",
+        "sourceBookEditionURL": "https://www.gutenberg.org/cache/epub/27681/pg27681-images.html",
+        "sourceChapterHeading": "CHAPTER VII.",
+        "sourceOriginalImageOrdinal": 4,
+        "sceneAnchor": "Chapter-local original illustration, heading: CHAPTER VII.; original illustration caption: THE BATTLE AT GLENS FALLS; preceding prose: He was interrupted by the low but expressive \"Hugh!\" of Uncas.",
+        "sceneVerificationStatus": "SOURCE_DOM_CHAPTER_MATCHED__IMAGE_SUBJECT_REQUIRES_HUMAN_REVIEW",
+        "originalCaption": "THE BATTLE AT GLENS FALLS",
+        "credit": "N. C. Wyeth (1919 illustration edition)",
+        "license": "PENDING_INDIVIDUAL_FIGURE_AND_TERRITORIAL_REVIEW",
+        "rightsStatus": "PENDING_PER_SCAN_AND_TERRITORY_REVIEW",
+        "altEn": "THE BATTLE AT GLENS FALLS",
+        "altAr": "رسم من الطبعة التاريخية للفصل 7؛ تفاصيل المشهد تحتاج تحققًا بصريًا قبل النشر.",
+        "editoriallyApproved": false
+      },
+      "imageStatus": "SOURCE_ANCHORED_LOCAL_CANDIDATE_NOT_APPROVED"
+    },
+    {
+      "chapterOneBased": 8,
+      "titleEn": "CHAPTER VIII.",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 9,
+      "titleEn": "CHAPTER IX.",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 10,
+      "titleEn": "CHAPTER X.",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 11,
+      "titleEn": "CHAPTER XI",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 12,
+      "titleEn": "CHAPTER XII",
+      "titleAr": "",
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/illustrated-five-20261105/the-last-of-the-mohicans/art/plate-005.webp",
+        "sha256": "560ae48fd3925490dedda5fdd5bbf96cbb9e8dab5db4ccc2481fd4b41b4116b4",
+        "originalSourceSha256": "963e9c7b42dbbf336135048bad931fcc51a06327a08a7d5a1f634d3b12387383",
+        "sourceUrl": "https://www.gutenberg.org/cache/epub/27681/images/illus3.jpg",
+        "sourceEdition": "N. C. Wyeth (1919 illustration edition)",
+        "sourceBookEditionURL": "https://www.gutenberg.org/cache/epub/27681/pg27681-images.html",
+        "sourceChapterHeading": "CHAPTER XII",
+        "sourceOriginalImageOrdinal": 5,
+        "sceneAnchor": "Chapter-local original illustration, heading: CHAPTER XII; original illustration caption: THE FIGHT IN THE FOREST; preceding prose: \"'Twas like himself,\" cried the inveterate forester, whose prejudices contributed so largely to veil his natural sense of justice in all mat",
+        "sceneVerificationStatus": "SOURCE_DOM_CHAPTER_MATCHED__IMAGE_SUBJECT_REQUIRES_HUMAN_REVIEW",
+        "originalCaption": "THE FIGHT IN THE FOREST",
+        "credit": "N. C. Wyeth (1919 illustration edition)",
+        "license": "PENDING_INDIVIDUAL_FIGURE_AND_TERRITORIAL_REVIEW",
+        "rightsStatus": "PENDING_PER_SCAN_AND_TERRITORY_REVIEW",
+        "altEn": "THE FIGHT IN THE FOREST",
+        "altAr": "رسم من الطبعة التاريخية للفصل 12؛ تفاصيل المشهد تحتاج تحققًا بصريًا قبل النشر.",
+        "editoriallyApproved": false
+      },
+      "imageStatus": "SOURCE_ANCHORED_LOCAL_CANDIDATE_NOT_APPROVED"
+    },
+    {
+      "chapterOneBased": 13,
+      "titleEn": "CHAPTER XIII",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 14,
+      "titleEn": "CHAPTER XIV",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 15,
+      "titleEn": "CHAPTER XV",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 16,
+      "titleEn": "CHAPTER XVI",
+      "titleAr": "",
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/illustrated-five-20261105/the-last-of-the-mohicans/art/plate-006.webp",
+        "sha256": "36cf496965f9098d747f643a1ddd1f41f117f28b43b14f4fd43ff8ee7e925e69",
+        "originalSourceSha256": "977065c42c726531a48b7257d04c5f8886653fda827c9846c05c49889fa1a4b9",
+        "sourceUrl": "https://www.gutenberg.org/cache/epub/27681/images/illus4.jpg",
+        "sourceEdition": "N. C. Wyeth (1919 illustration edition)",
+        "sourceBookEditionURL": "https://www.gutenberg.org/cache/epub/27681/pg27681-images.html",
+        "sourceChapterHeading": "CHAPTER XVI",
+        "sourceOriginalImageOrdinal": 6,
+        "sceneAnchor": "Chapter-local original illustration, heading: CHAPTER XVI; original illustration caption: THE MEETING OF THE GENERALS; preceding prose: He was interrupted by the clamor of a drum from the approaching Frenchmen, which was immediately answered, when each party pushed an orderly",
+        "sceneVerificationStatus": "SOURCE_DOM_CHAPTER_MATCHED__IMAGE_SUBJECT_REQUIRES_HUMAN_REVIEW",
+        "originalCaption": "THE MEETING OF THE GENERALS",
+        "credit": "N. C. Wyeth (1919 illustration edition)",
+        "license": "PENDING_INDIVIDUAL_FIGURE_AND_TERRITORIAL_REVIEW",
+        "rightsStatus": "PENDING_PER_SCAN_AND_TERRITORY_REVIEW",
+        "altEn": "THE MEETING OF THE GENERALS",
+        "altAr": "رسم من الطبعة التاريخية للفصل 16؛ تفاصيل المشهد تحتاج تحققًا بصريًا قبل النشر.",
+        "editoriallyApproved": false
+      },
+      "imageStatus": "SOURCE_ANCHORED_LOCAL_CANDIDATE_NOT_APPROVED"
+    },
+    {
+      "chapterOneBased": 17,
+      "titleEn": "CHAPTER XVII",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 18,
+      "titleEn": "CHAPTER XVIII",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 19,
+      "titleEn": "CHAPTER XIX",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 20,
+      "titleEn": "CHAPTER XX",
+      "titleAr": "",
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/illustrated-five-20261105/the-last-of-the-mohicans/art/plate-007.webp",
+        "sha256": "7411d454d0989255d06468d02b1913747ceedf476a63b09b9d27513067b5905a",
+        "originalSourceSha256": "76832ba1e5d04bfc533c25c24339d5742f7f8898744da7e38414192a2b82ba61",
+        "sourceUrl": "https://www.gutenberg.org/cache/epub/27681/images/illus5.jpg",
+        "sourceEdition": "N. C. Wyeth (1919 illustration edition)",
+        "sourceBookEditionURL": "https://www.gutenberg.org/cache/epub/27681/pg27681-images.html",
+        "sourceChapterHeading": "CHAPTER XX",
+        "sourceOriginalImageOrdinal": 7,
+        "sceneAnchor": "Chapter-local original illustration, heading: CHAPTER XX; original illustration caption: THE FLIGHT ACROSS THE LAKE; preceding prose: \"Lord! Lord! That is now a white man's courage!\" exclaimed the scout; \"and like too many of his notions, not to be maintained by reason. Do ",
+        "sceneVerificationStatus": "SOURCE_DOM_CHAPTER_MATCHED__IMAGE_SUBJECT_REQUIRES_HUMAN_REVIEW",
+        "originalCaption": "THE FLIGHT ACROSS THE LAKE",
+        "credit": "N. C. Wyeth (1919 illustration edition)",
+        "license": "PENDING_INDIVIDUAL_FIGURE_AND_TERRITORIAL_REVIEW",
+        "rightsStatus": "PENDING_PER_SCAN_AND_TERRITORY_REVIEW",
+        "altEn": "THE FLIGHT ACROSS THE LAKE",
+        "altAr": "رسم من الطبعة التاريخية للفصل 20؛ تفاصيل المشهد تحتاج تحققًا بصريًا قبل النشر.",
+        "editoriallyApproved": false
+      },
+      "imageStatus": "SOURCE_ANCHORED_LOCAL_CANDIDATE_NOT_APPROVED"
+    },
+    {
+      "chapterOneBased": 21,
+      "titleEn": "CHAPTER XXI",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 22,
+      "titleEn": "CHAPTER XXII",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 23,
+      "titleEn": "CHAPTER XXIII",
+      "titleAr": "",
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/illustrated-five-20261105/the-last-of-the-mohicans/art/plate-008.webp",
+        "sha256": "89530a27a298fb0cdc3a0d378dc40b0c67acd8c62986e555f3e90603ee871bc7",
+        "originalSourceSha256": "905a1809fed592bf7b388b065a9e252d03337946e2533926bbcb345c542522bb",
+        "sourceUrl": "https://www.gutenberg.org/cache/epub/27681/images/illus6.jpg",
+        "sourceEdition": "N. C. Wyeth (1919 illustration edition)",
+        "sourceBookEditionURL": "https://www.gutenberg.org/cache/epub/27681/pg27681-images.html",
+        "sourceChapterHeading": "CHAPTER XXIII",
+        "sourceOriginalImageOrdinal": 8,
+        "sceneAnchor": "Chapter-local original illustration, heading: CHAPTER XXIII; preceding prose: Infuriated at the self-command of the captive, the woman placed her arms akimbo; and throwing herself into a posture of defiance, she broke ",
+        "sceneVerificationStatus": "SOURCE_DOM_CHAPTER_MATCHED__IMAGE_SUBJECT_REQUIRES_HUMAN_REVIEW",
+        "originalCaption": "THE TERMAGANT",
+        "credit": "N. C. Wyeth (1919 illustration edition)",
+        "license": "PENDING_INDIVIDUAL_FIGURE_AND_TERRITORIAL_REVIEW",
+        "rightsStatus": "PENDING_PER_SCAN_AND_TERRITORY_REVIEW",
+        "altEn": "Original edition artwork within chapter 23; exact pictured subject not yet visually verified.",
+        "altAr": "رسم من الطبعة التاريخية للفصل 23؛ تفاصيل المشهد تحتاج تحققًا بصريًا قبل النشر.",
+        "editoriallyApproved": false
+      },
+      "imageStatus": "SOURCE_ANCHORED_LOCAL_CANDIDATE_NOT_APPROVED"
+    },
+    {
+      "chapterOneBased": 24,
+      "titleEn": "CHAPTER XXIV",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 25,
+      "titleEn": "CHAPTER XXV",
+      "titleAr": "",
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/illustrated-five-20261105/the-last-of-the-mohicans/art/plate-009.webp",
+        "sha256": "d2bd1075aced1298cb134a87f8d4e2e9856d95388f8e9fc349f6627b1b86208e",
+        "originalSourceSha256": "1e2b0b49a24de34fc9c7ca027d6aa446eb31b88aa92658ef9cd38aade4a4b2aa",
+        "sourceUrl": "https://www.gutenberg.org/cache/epub/27681/images/illus7.jpg",
+        "sourceEdition": "N. C. Wyeth (1919 illustration edition)",
+        "sourceBookEditionURL": "https://www.gutenberg.org/cache/epub/27681/pg27681-images.html",
+        "sourceChapterHeading": "CHAPTER XXV",
+        "sourceOriginalImageOrdinal": 9,
+        "sceneAnchor": "Chapter-local original illustration, heading: CHAPTER XXV; preceding prose: \"To my great grief! he is captive, and condemned to die at the rising of the sun.\"",
+        "sceneVerificationStatus": "SOURCE_DOM_CHAPTER_MATCHED__IMAGE_SUBJECT_REQUIRES_HUMAN_REVIEW",
+        "originalCaption": "THE MASQUERADER",
+        "credit": "N. C. Wyeth (1919 illustration edition)",
+        "license": "PENDING_INDIVIDUAL_FIGURE_AND_TERRITORIAL_REVIEW",
+        "rightsStatus": "PENDING_PER_SCAN_AND_TERRITORY_REVIEW",
+        "altEn": "Original edition artwork within chapter 25; exact pictured subject not yet visually verified.",
+        "altAr": "رسم من الطبعة التاريخية للفصل 25؛ تفاصيل المشهد تحتاج تحققًا بصريًا قبل النشر.",
+        "editoriallyApproved": false
+      },
+      "imageStatus": "SOURCE_ANCHORED_LOCAL_CANDIDATE_NOT_APPROVED"
+    },
+    {
+      "chapterOneBased": 26,
+      "titleEn": "CHAPTER XXVI",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 27,
+      "titleEn": "CHAPTER XXVII",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 28,
+      "titleEn": "CHAPTER XXVIII",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 29,
+      "titleEn": "CHAPTER XXIX",
+      "titleAr": "",
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/illustrated-five-20261105/the-last-of-the-mohicans/art/plate-011.webp",
+        "sha256": "2001fe1aab3acb7c48f2cd3f7472301f7b4cdcb0fff3c3b6878035942137ab98",
+        "originalSourceSha256": "6acb793621eea367462a450529f767cb5f90107980d681014c38c90cf901f89f",
+        "sourceUrl": "https://www.gutenberg.org/cache/epub/27681/images/illus9.jpg",
+        "sourceEdition": "N. C. Wyeth (1919 illustration edition)",
+        "sourceBookEditionURL": "https://www.gutenberg.org/cache/epub/27681/pg27681-images.html",
+        "sourceChapterHeading": "CHAPTER XXIX",
+        "sourceOriginalImageOrdinal": 11,
+        "sceneAnchor": "Chapter-local original illustration, heading: CHAPTER XXIX; preceding prose: \"Was it when the Yengeese and the Dutchmanne fought for the hunting-grounds of the Delawares? Then Tamenund was a chief, and first laid asid",
+        "sceneVerificationStatus": "SOURCE_DOM_CHAPTER_MATCHED__IMAGE_SUBJECT_REQUIRES_HUMAN_REVIEW",
+        "originalCaption": "THE SUPPLICANT",
+        "credit": "N. C. Wyeth (1919 illustration edition)",
+        "license": "PENDING_INDIVIDUAL_FIGURE_AND_TERRITORIAL_REVIEW",
+        "rightsStatus": "PENDING_PER_SCAN_AND_TERRITORY_REVIEW",
+        "altEn": "Original edition artwork within chapter 29; exact pictured subject not yet visually verified.",
+        "altAr": "رسم من الطبعة التاريخية للفصل 29؛ تفاصيل المشهد تحتاج تحققًا بصريًا قبل النشر.",
+        "editoriallyApproved": false
+      },
+      "imageStatus": "SOURCE_ANCHORED_LOCAL_CANDIDATE_NOT_APPROVED"
+    },
+    {
+      "chapterOneBased": 30,
+      "titleEn": "CHAPTER XXX",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 31,
+      "titleEn": "CHAPTER XXXI",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 32,
+      "titleEn": "CHAPTER XXXII",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    },
+    {
+      "chapterOneBased": 33,
+      "titleEn": "CHAPTER XXXIII",
+      "titleAr": "",
+      "primaryImage": null,
+      "imageStatus": "NO_SOURCE_MATCHED_LOCAL_PRIMARY"
+    }
+  ]
+}
