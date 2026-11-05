@@ -13,9 +13,10 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
-  group: lingua-tales-historic-commons-serial
+  group: lingua-war-correa-intake-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -44,17 +45,40 @@ jobs:
             git add -f docs/literature/staging/war-of-worlds-correa-period-plates/
           fi
           git diff --cached --check
+          changed=0
           if git diff --cached --quiet; then
             echo "No new verified source images; no redundant source commit."
           else
             # Commit only evidence-backed images and source manifest.
             # Do NOT use [skip ci]: central chapter-art-progress.yml must be
             # triggered by the staged-image push to regenerate the report.
+            changed=1
             git commit -m "Literature: checkpoint authentic 1906 Correa scans"
           fi
-          git pull --rebase origin "$GITHUB_REF_NAME"
-          git push origin "HEAD:$GITHUB_REF_NAME"
-          echo "SHA-audited chapter inventory is owned by chapter-art-progress.yml."
+          if [ "$changed" -eq 1 ]; then
+            # Other independent source writers may push concurrently.
+            # Retry ordinary fast-forward races without rewriting history.
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 2
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Verified images committed locally but remote push still failing"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = "main" ]; then
+              # GITHUB_TOKEN-created pushes do not trigger downstream push
+              # workflows. Explicit workflow_dispatch is required.
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
+          else
+            echo "No new source content; scheduled daily central audit remains active."
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Retain original archive evidence
         if: always()
         uses: actions/upload-artifact@v4
