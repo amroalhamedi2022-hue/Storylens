@@ -118,7 +118,15 @@ def load_and_validate_html(raw: bytes, metadata: dict) -> tuple[str, BeautifulSo
         raise ValueError(f"Novel unexpectedly short: {words} words")
     chapters = len(CHAPTER.findall(narrative))
     if chapters < 12:
-        raise ValueError(f"Could not confirm original complete chapter structure: {chapters} chapter markers")
+        # Several authentic 19th-century editions (e.g. Treasure Island) label
+        # narrative chapters 'I', 'II', 'III' directly, without 'CHAPTER'.
+        roman_or_numbered = re.compile(
+            r"^(?:CHAPTER\s+)?(?:[IVXLCDM]{1,9}|\d{1,3})(?:\.|\s+|$)", re.I
+        )
+        headings = [h.get_text(" ", strip=True) for h in soup.find_all(["h1", "h2", "h3", "h4", "h5"])]
+        chapters = max(chapters, sum(bool(roman_or_numbered.match(t)) for t in headings))
+    if chapters < 12:
+        raise ValueError(f"Could not confirm chapter headings in the full source: {chapters}")
     return html, soup, words, chapters
 
 
