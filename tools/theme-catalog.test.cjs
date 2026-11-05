@@ -21,15 +21,15 @@ const labelsAr = [...labelsArSource.matchAll(/'([^']+)'\s*:/g)].map(m => m[1]);
 const arabicThemeLabels = [...labelsArSource.matchAll(/'([^']+)'\s*:\s*\"([^\"]+)\"/g)];
 const unique = values => [...new Set(values)].sort();
 assert.equal(new Set(names).size, names.length, 'duplicate selectable theme IDs');
-const visibleList=(shell.match(/const selectableThemeNames=\\[([^\\]]+)\\]/)||[])[1];
+const visibleList=(shell.match(/const selectableThemeNames=\[([^\]]+)\]/)||[])[1];
 assert.ok(visibleList,'six-theme gallery allowlist is explicit');
 const visible=[...visibleList.matchAll(/'([^']+)'/g)].map(m=>m[1]);
 assert.deepEqual(visible,
  ['liquid-27','aurora','aqua','nebula','paper-atlas','midnight-library'],
  'only first six themes are available in the UI, in fixed user order');
-assert.match(shell,/const validTheme=name=>selectableThemeNames\\.includes\\(name\\)/,
+assert.match(shell,/const validTheme=name=>selectableThemeNames\.includes\(name\)/,
  'removed themes cannot be applied from gallery or settings');
-assert.match(shell,/for\\(const name of selectableThemeNames\\)/,
+assert.match(shell,/for\(const name of selectableThemeNames\)/,
  'gallery must not render the historical theme registry');
 assert.ok(names.every(n=>labels.includes(n)),
  'every selectable theme needs an English gallery label');
