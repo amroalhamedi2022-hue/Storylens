@@ -6,7 +6,7 @@ const backup=fs.readFileSync('app/src/main/assets/data-backup.js','utf8');
 const names=['book','fibre','white','cream','comfort','night'];
 const saved=new Map(),dataset={};
 const document={documentElement:{dataset,lang:'ar',dir:'rtl'},
- body:{classList:{add(){},remove(){}},style:{removeProperty(){},setProperty(){}}},
+ body:{classList:{add(){},remove(){},toggle(){}},style:{removeProperty(){},setProperty(){}}},
  querySelectorAll(){return []},querySelector(){return null},getElementById(){return null},addEventListener(){}};
 const window={addEventListener(){},innerWidth:1000,scrollY:0,matchMedia(){return {matches:false}}};
 const state={page:'library',uiTheme:'aurora'};
