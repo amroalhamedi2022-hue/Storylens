@@ -48,7 +48,11 @@ jobs:
           test "$(git rev-parse FETCH_HEAD)" = "$SOURCE_SHA"
           git checkout "$SOURCE_SHA" -- "${TARGETS[@]}"
           node tools/literature-prior-requests-integrity.test.cjs
-          git diff --cached --check
+          # Source HTML is a BYTE-EXACT historical transcription and contains
+          # authentic trailing whitespace. A blanket diff --check floods logs
+          # and rejects valid originals. The offline integrity test above
+          # instead checks complete source hashes and all image hashes.
+          git diff --cached --check -- tools/literature-prior-requests-integrity.test.cjs docs/literature/USER_NAMED_WORKS_DELIVERY_2026-11-05.json
           git diff --cached --stat | tail -15
           git commit -m 'Literature: stage 13 historical editions, 456 edition art plates, 17 medieval colour folios and Arabic source sections [skip ci]'
           git pull --rebase origin "$GITHUB_REF_NAME"
