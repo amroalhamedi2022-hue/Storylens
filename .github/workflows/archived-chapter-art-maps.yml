@@ -16,7 +16,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: lingua-original-five-art-map-${{ github.ref }}
+  group: lingua-tales-historic-commons-serial
   cancel-in-progress: false
 
 jobs:
@@ -28,6 +28,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: true
+          fetch-depth: 0
       - name: Setup Python and HTML original-edition parser
         uses: actions/setup-python@v5
         with:
@@ -39,25 +40,33 @@ jobs:
           set -euo pipefail
           python tools/map_archived_five_chapter_art.py --write
           python tools/map_archived_five_chapter_art.py --verify
-      - name: Recalculate actual chapter image progress from verified maps
-        run: |
-          python tools/report_chapter_art_progress.py --write
-          python tools/report_chapter_art_progress.py --write
-      - name: Commit genuine source-chapter image mappings only if changed
+      - name: Checkpoint genuine chapter maps, rebase, then calculate the current main inventory
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/literature/staging/illustrated-five-20261105/*/chapter-image-map.json docs/literature/CHAPTER_ART_PROGRESS.json docs/literature/CHAPTER_ART_PROGRESS.md
+          # Preserve the source-linked chapter map before touching the shared report.
+          git add docs/literature/staging/illustrated-five-20261105/*/chapter-image-map.json
           git diff --cached --check
           if git diff --cached --quiet; then
-            echo "No missing chapter image maps; no duplicate commit."
+            echo "Source chapter maps already present; no duplicate map commit."
           else
-            git commit -m "Literature: checkpoint source-anchored historical chapter image candidate maps [skip ci]"
-            git pull --rebase origin "$GITHUB_REF_NAME"
-            git push origin "HEAD:$GITHUB_REF_NAME"
+            git commit -m "Literature: checkpoint source-anchored historical chapter maps [skip ci]"
           fi
+          # A previous implementation committed a report from stale checkout
+          # and then rebased it over concurrent archival intake, causing conflicts.
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          python tools/map_archived_five_chapter_art.py --verify
+          python tools/report_chapter_art_progress.py --write
+          git add docs/literature/CHAPTER_ART_PROGRESS.json docs/literature/CHAPTER_ART_PROGRESS.md
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "Audited report unchanged; no redundant report commit."
+          else
+            git commit -m "Literature: refresh SHA-audited chapter-art progress after map reconciliation [skip ci]"
+          fi
+          git push origin "HEAD:$GITHUB_REF_NAME"
       - name: Retain chapter maps even if push blocked
         if: always()
         uses: actions/upload-artifact@v4
