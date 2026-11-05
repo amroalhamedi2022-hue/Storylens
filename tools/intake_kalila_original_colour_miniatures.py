@@ -41,7 +41,9 @@ def verify():
         assert data[:4] == b"RIFF" and data[8:12] == b"WEBP"
         assert plate["colourWasAdded"] is False
         assert plate["manuscriptFolioChapterAligned"] is False
-        assert plate["originalArtistPublicDomainMetadataChecked"] is True
+        assert plate["individualFileRightsStatus"] in (
+            "PUBLIC_DOMAIN_TAG_FOUND_PENDING_TERRITORIAL_REVIEW", "RIGHTS_METADATA_MISSING_NO_APP_PUBLICATION"
+        )
     print(f"VERIFIED {len(manifest['plates'])} genuine COLOURED manuscript miniature files; "
           "all WebP SHA-256 checked, original hues preserved; chapter anchors pending.", flush=True)
 
@@ -94,9 +96,11 @@ def get_metadata(sess):
         meta = info.get("extmetadata") or {}
         license_label = str((meta.get("LicenseShortName") or {}).get("value") or "")
         pub = str((meta.get("Copyrighted") or {}).get("value") or "").strip().lower()
-        if not re.search("kalila.*(?:arabe|dimna)", file_name, re.I):
-            continue
-        if "public domain" not in license_label.lower() and pub != "false":
+        # Wikimedia category membership and manuscript identification are
+        # evidence of origin, NOT independent per-scan legal clearance.
+        # Machine-readable PD metadata is often absent even for medieval
+        # faithful reproductions: stage such scans with explicit rights HOLD.
+        if not file_name.startswith("File:"):
             continue
         if info.get("mime", "image/jpeg") not in ("image/jpeg", "image/png", "image/webp"):
             continue
@@ -124,7 +128,7 @@ def main():
     sess = requests.Session()
     sess.headers["User-Agent"] = USER_AGENT
     candidates = get_metadata(sess)
-    print(f"Candidate PD folios from authenticated BnF manuscript: {len(candidates)}", flush=True)
+    print(f"Authentic 13th-century BnF manuscript folio candidates (rights gated): {len(candidates)}", flush=True)
     records, encoded = [], []
     for c in candidates:
         if len(records) >= LIMIT:
@@ -166,8 +170,9 @@ def main():
                 sourceUrl=c["originalUrl"], actualDownloadedWikimediaDerivativeUrl=c["url"],
                 downloadedDerivativeSha256=hash_bytes(original), downloadedDerivativeBytes=len(original),
                 colourFraction=round(score, 4), colourWasAdded=False, colourRemoved=False,
-                originalArtistPublicDomainMetadataChecked=True,
+                originalArtistPublicDomainMetadataChecked=(bool(c["license"]) and "public domain" in c["license"].lower()),
                 individualCommonsLicenseShortName=c["license"],
+                individualFileRightsStatus=("PUBLIC_DOMAIN_TAG_FOUND_PENDING_TERRITORIAL_REVIEW" if "public domain" in c["license"].lower() else "RIGHTS_METADATA_MISSING_NO_APP_PUBLICATION"),
                 originalSourceCollection="BnF Arabe 3465 medieval Kalila wa Dimna manuscript, ca. 1200–1220",
                 originalManuscriptURL="https://commons.wikimedia.org/wiki/" + CATEGORY.replace(" ", "_"),
                 originalWikimediaSha1=info.get("sha1"),
@@ -193,7 +198,7 @@ def main():
         status="COLOURED_HISTORIC_PLATES_STAGED_NOT_CHAPTER_PUBLISHED",
         fullSourceTextAlreadyStagedInOtherFolder=True,
         colourReconstruction="NONE; original source colours preserved",
-        imageRights="COMMONS_PER_FILE_PUBLIC_DOMAIN_METADATA_CHECKED; TERRITORIAL_REVIEW_OPEN",
+        imageRights="COMMONS_PER_FILE_METADATA_RECORDED_WHEN_AVAILABLE; ALL_INDIVIDUAL_AND_TERRITORIAL_REVIEW_OPEN",
         completeEnglishContextualTranslation=False,
         everyMiniatureSceneMatched=False,
         chapterIntegration=False,
