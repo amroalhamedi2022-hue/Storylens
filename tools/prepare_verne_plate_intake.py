@@ -33,7 +33,7 @@ def check_submission(submission, queue, existing):
         parsed = urlparse(url)
         assert parsed.scheme == "https" and parsed.hostname in ALLOWED_HOSTS, "Unapproved image host"
         assert not parsed.username and not parsed.password and not parsed.fragment, "Unexpected URL component"
-        assert re.search(r"\\.(jpe?g|png|webp)$", parsed.path, re.I), "Use a direct image URL, not a source webpage"
+        assert re.search(r"\.(jpe?g|png|webp)$", parsed.path, re.I), "Use a direct image URL, not a source webpage"
         assert re.fullmatch(r"[a-f0-9]{64}", row.get("independentSourceSha256", "")), "Independent SHA-256 required"
         assert row.get("rightsStatus") == "PENDING", "Intake cannot approve territorial redistribution"
         assert row.get("chapterOneBased") == by_id[ident]["chapterOneBased"], "Scene/chapter mismatch"
@@ -47,7 +47,7 @@ def download_verified(row):
         raw = response.read(MAX_BYTES + 1)
     assert MIN_BYTES <= len(raw) <= MAX_BYTES, "Unexpected image size"
     assert hashlib.sha256(raw).hexdigest() == row["independentSourceSha256"], "Source image hash mismatch"
-    assert raw.startswith((b"\\xff\\xd8\\xff", b"\\x89PNG\\r\\n\\x1a\\n", b"RIFF")), "Unexpected image format"
+    assert raw.startswith((b"\xff\xd8\xff", b"\x89PNG\r\n\x1a\n", b"RIFF")), "Unexpected image format"
     return raw
 
 def main():
@@ -81,7 +81,7 @@ def main():
                        "scanStatus": "DOWNLOADED_UNREVIEWED", "rights": "PENDING",
                        "distributionReviewApproved": False, "published": False})
         records.append(record)
-    (args.output / "candidate-manifest.json").write_text(json.dumps(records, indent=2, ensure_ascii=False) + "\\n", encoding="utf-8")
+    (args.output / "candidate-manifest.json").write_text(json.dumps(records, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"STAGED {len(records)} hash-verified image binaries; NOT rights-cleared, NOT published")
 
 if __name__ == "__main__":
