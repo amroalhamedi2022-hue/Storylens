@@ -273,6 +273,29 @@ global.openStory=function(id,...args){
  if(hasChapters(story)){show(id);return;}
  return originalOpen.apply(this,[id,...args]);
 };
+ // Provide an always-accessible way back to chapter thumbnails from inside
+ // the reader. The existing paging/selection/page-fold renderer is untouched.
+const baseRender=global.renderReader;
+if(typeof baseRender==='function'){
+ global.renderReader=function(...args){
+  const result=baseRender.apply(this,args);
+  if(state.page!=='reader'||!hasChapters(state.story))return result;
+  const nav=document.querySelector('.reader .lt-chapter-nav')||
+   document.querySelector('.reader .toolbar');
+  if(!nav||nav.querySelector('.lt-open-chapter-gallery'))return result;
+  const button=document.createElement('button');
+  button.type='button';
+  button.className='secondary lt-open-chapter-gallery';
+  button.textContent=locale('▦ الفصول المصوّرة','▦ Illustrated chapters');
+  button.setAttribute('aria-label',locale('عرض جميع فصول القصة وصورها','Show story chapters and their images'));
+  button.addEventListener('click',()=>{
+   if(state.page==='reader'&&state.story)show(state.story.id);
+  });
+  nav.appendChild(button);
+  return result;
+ };
+}
+
 // Reader stays untouched. A book icon in the existing reader's chapter nav
 // can open exactly this image-backed gallery without discarding its scroll.
 global.LinguaChapterGallery=Object.freeze({
