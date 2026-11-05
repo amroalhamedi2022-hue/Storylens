@@ -1,0 +1,27 @@
+name: Lingua Tales - original Cooper prose and real Andriolli image code tests
+on:
+  pull_request:
+    paths:
+      - 'tools/export_mohicans_original_source_for_art.py'
+      - 'tools/gemini_suggest_mohicans_plate_scenes.py'
+      - 'tools/gemini_suggest_verne_plate_scenes.py'
+      - '.github/workflows/mohicans-andriolli-*scene*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  authentic-source-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install beautifulsoup4==4.13.4
+      - name: Verify 33 original chapters against archived HTML checksum and image-scene schema
+        run: |
+          python tools/export_mohicans_original_source_for_art.py --check
+          python tools/gemini_suggest_mohicans_plate_scenes.py --self-test
