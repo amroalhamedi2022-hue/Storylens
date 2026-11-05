@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "workId": "alf-layla-wa-layla",
+  "segment": "part-01",
+  "arabicPartTitle": "الجزء الأول",
+  "sourceURL": "https://ar.wikisource.org/wiki/%D8%A3%D9%84%D9%81_%D9%84%D9%8A%D9%84%D8%A9_%D9%88%D9%84%D9%8A%D9%84%D8%A9/%D8%A7%D9%84%D8%AC%D8%B2%D8%A1_%D8%A7%D9%84%D8%A3%D9%88%D9%84",
+  "originalPageSha256": "de8c9f6a360ec77e12e0fbb331f3609611720f24568fbf9a385d63c6b9a49caa",
+  "originalPageBytes": 350805,
+  "transcriptionSha256": "3c527518d5dbd11bc6f95f4764fec22cbbe02ab8187f7b64ab99a6547b755bc7",
+  "transcriptionBytes": 234342,
+  "arabicWordTokens": 24641,
+  "transcriptionProvider": "Arabic Wikisource",
+  "textualProvenance": "The exact four-part Arabic Wikisource transcription, not identified as Bulaq 1835 or another guaranteed critical edition",
+  "transcriptionTerms": "Arabic Wikisource site text licensed CC BY-SA; preserve attribution and source URL",
+  "sourceEditionBibliographicalAlignment": "PENDING_PRINT_EDITION_COMPARISON",
+  "verifiedAsMatchingBurtonEnglishEdition": false,
+  "arabicSourceCompletenessReview": "FOUR_PARTS_PLUS_FINAL_NIGHT_CHECK; MISSING_EPISODES_NOT_INDEPENDENTLY_AUDITED",
+  "colouredHistoricalChapterArtworkIntegrated": false,
+  "publication": "STAGED_ONLY; DO NOT LABEL COMPLETE BILINGUAL APP BOOK"
+}
