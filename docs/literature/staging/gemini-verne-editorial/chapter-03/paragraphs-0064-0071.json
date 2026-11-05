@@ -1,0 +1,55 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 3,
+  "chapterTitle": "In Which a Conversation Takes Place Which Seems Likely to Cost Phileas Fogg Dear",
+  "startParagraphZeroBased": 64,
+  "paragraphCount": 2,
+  "sourceSha256": "170bcfca0f4f3e8099a68de245f647a7ae0d4784a9c139afdbeb4506cd94556a",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 64,
+      "en": "The clock struck seven, and the party offered to suspend the game so that Mr. Fogg might make his preparations for departure.",
+      "existingArabicDraft": "دقت الساعة السابعة، واقترحوا إيقاف اللعب كي يتمكن فوغ من الاستعداد للسفر."
+    },
+    {
+      "index": 65,
+      "en": "“I am quite ready now,” was his tranquil response. “Diamonds are trumps: be so good as to play, gentlemen.”",
+      "existingArabicDraft": "أجاب بطمأنينته المعهودة: «أنا مستعد من الآن. ورق الديناري هو الرابح؛ تفضلوا باللعب يا سادة»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "دقت الساعة السابعة، وعرض الحاضرون تعليق اللعبة كي يتمكن السيد فوغ من إعداد مستلزمات سفره."
+    },
+    {
+      "index": 1,
+      "ar": "«أنا مستعد تماماً الآن»، كان ذلك رده الهادئ. «ورق الديناري هو الرابح؛ تفضلوا باللعب يا سادة»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

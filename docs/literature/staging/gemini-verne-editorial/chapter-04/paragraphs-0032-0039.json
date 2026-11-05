@@ -1,0 +1,140 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 4,
+  "chapterTitle": "In Which Phileas Fogg Astounds Passepartout, His Servant",
+  "startParagraphZeroBased": 32,
+  "paragraphCount": 8,
+  "sourceSha256": "417766a80d5f43a288df424f5ef3df63dde18b5a709f44095aa1fb0a8b16b823",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 32,
+      "en": "“Oh, that would be quite unnecessary, Mr. Fogg,” said Ralph politely. “We will trust your word, as a gentleman of honour.”",
+      "existingArabicDraft": "أجاب رالف بأدب: «لا داعي إلى ذلك يا سيد فوغ؛ سنثق بكلمتك بوصفك رجل شرف»."
+    },
+    {
+      "index": 33,
+      "en": "“You do not forget when you are due in London again?” asked Stuart.",
+      "existingArabicDraft": "سأل ستيوارت: «ألم تنس موعد عودتك إلى لندن؟»"
+    },
+    {
+      "index": 34,
+      "en": "“In eighty days; on Saturday, the 21st of December, 1872, at a quarter before nine p.m. Goodbye, gentlemen.”",
+      "existingArabicDraft": "أجاب: «بعد ثمانين يومًا، يوم السبت الحادي والعشرين من ديسمبر سنة 1872، عند الثامنة وخمس وأربعين دقيقة مساءً. وداعًا يا سادة»."
+    },
+    {
+      "index": 35,
+      "en": "Phileas Fogg and his servant seated themselves in a first-class carriage at twenty minutes before nine; five minutes later the whistle screamed, and the train slowly glided out of the station.",
+      "existingArabicDraft": "جلس فيلياس فوغ وخادمه في عربة من الدرجة الأولى عند الثامنة وأربعين دقيقة، وبعد خمس دقائق دوّت صفارة القطار وانطلق ببطء خارج المحطة."
+    },
+    {
+      "index": 36,
+      "en": "The night was dark, and a fine, steady rain was falling. Phileas Fogg, snugly ensconced in his corner, did not open his lips. Passepartout, not yet recovered from his stupefaction, clung mechanically to the carpetbag, with its enormous treasure.",
+      "existingArabicDraft": "كان الليل مظلمًا والمطر يهطل بخفة وانتظام. جلس فوغ مستريحًا في زاويته ولم ينطق بكلمة. أما باسبارتو، الذي لم يفق من دهشته بعد، فظل ممسكًا بالحقيبة آليًا، وفيها تلك الثروة الهائلة."
+    },
+    {
+      "index": 37,
+      "en": "Just as the train was whirling through Sydenham, Passepartout suddenly uttered a cry of despair.",
+      "existingArabicDraft": "وحين اندفع القطار عبر سيدنهام، أطلق باسبارتو فجأة صرخة يائسة."
+    },
+    {
+      "index": 38,
+      "en": "“What’s the matter?” asked Mr. Fogg.",
+      "existingArabicDraft": "سأله السيد فوغ: «ما الأمر؟»"
+    },
+    {
+      "index": 39,
+      "en": "“Alas! In my hurry⁠—I⁠—I forgot⁠—”",
+      "existingArabicDraft": "قال: «آه! من شدة استعجالي... أنا... نسيت...»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«أوه، سيكون ذلك غير ضروري البتة يا سيد فوغ»، قال رالف بأدب. «سنثق بكلمتك، بصفتك رجل شرف»."
+    },
+    {
+      "index": 1,
+      "ar": "«ألا تنسى موعد عودتك إلى لندن؟» سأل ستيوارت."
+    },
+    {
+      "index": 2,
+      "ar": "«في ثمانين يومًا؛ يوم السبت، الحادي والعشرين من ديسمبر عام 1872، في تمام الساعة التاسعة إلا ربعًا مساءً. وداعًا ايها السادة»."
+    },
+    {
+      "index": 3,
+      "ar": "استقر فيلياس فوغ وخادمه في عربة من الدرجة الأولى قبل التاسعة بعشرين دقيقة؛ وبعد خمس دقائق دوّت صفارة القطار، وانزلق القطار ببطء خارج المحطة."
+    },
+    {
+      "index": 4,
+      "ar": "كان الليل مظلمًا، وكان مطر خفيف وثابت يهطل. أما فيلياس فوغ، المستقر بارتياح في زاويته، فلم يتفوه بكلمة. وكان باسبارتو، الذي لم يفق بعد من ذهوله، يتمسك آليًا بحقيبة السفر التي تحتوي على الثروة الطائلة."
+    },
+    {
+      "index": 5,
+      "ar": "وما إن شق القطار طريقه بسرعة عبر سيدنهام حتى أطلق باسبارتو فجأة صرخة يأس."
+    },
+    {
+      "index": 6,
+      "ar": "«ما الأمر؟» سأل السيد فوغ."
+    },
+    {
+      "index": 7,
+      "ar": "«يا للأسف! في عجالتي... أنا... لقد نسيت...»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

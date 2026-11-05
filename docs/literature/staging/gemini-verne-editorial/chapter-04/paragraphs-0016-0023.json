@@ -1,0 +1,140 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 4,
+  "chapterTitle": "In Which Phileas Fogg Astounds Passepartout, His Servant",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "d75e8edf73d6420b3bb6a58ae7847bf46c614341379b48ec8cea3cde081070a0",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "“We’ll have no trunks; only a carpetbag, with two shirts and three pairs of stockings for me, and the same for you. We’ll buy our clothes on the way. Bring down my mackintosh and traveling-cloak, and some stout shoes, though we shall do little walking. Make haste!”",
+      "existingArabicDraft": "قال فوغ: «لن نحمل صناديق؛ حقيبة سفر صغيرة فحسب، فيها قميصان وثلاثة أزواج من الجوارب لي، ومثلها لك. سنشتري ثيابنا في الطريق. أحضر معطفي الواقي من المطر وعباءة السفر وحذاءً متينًا، وإن كنا لن نمشي كثيرًا. أسرع!»"
+    },
+    {
+      "index": 17,
+      "en": "Passepartout tried to reply, but could not. He went out, mounted to his own room, fell into a chair, and muttered: “That’s good, that is! And I, who wanted to remain quiet!”",
+      "existingArabicDraft": "حاول باسبارتو أن يرد فلم يستطع. خرج وصعد إلى غرفته، ثم ارتمى على كرسي وتمتم: «يا لها من مفاجأة! وأنا الذي كنت أريد حياة هادئة!»"
+    },
+    {
+      "index": 18,
+      "en": "He mechanically set about making the preparations for departure. Around the world in eighty days! Was his master a fool? No. Was this a joke, then? They were going to Dover; good! To Calais; good again! After all, Passepartout, who had been away from France five years, would not be sorry to set foot on his native soil again. Perhaps they would go as far as Paris, and it would do his eyes good to see Paris once more. But surely a gentleman so chary of his steps would stop there; no doubt⁠—but, then, it was none the less true that he was going away, this so domestic person hitherto!",
+      "existingArabicDraft": "بدأ يستعد للمغادرة بصورة آلية. حول العالم في ثمانين يومًا! أجنّ سيده؟ لا. أهي مزحة؟ سيذهبان إلى دوفر، حسنًا؛ ثم إلى كاليه، حسنًا أيضًا. ولم يكن باسبارتو، الذي ابتعد عن فرنسا خمس سنوات، ليكره أن تطأ قدماه أرض وطنه من جديد. وربما بلغا باريس فيسعد برؤيتها مرة أخرى. لكن رجلًا يقتصد في خطواته إلى هذا الحد لا بد أن يتوقف هناك؛ هكذا ظن. ومع ذلك كانت الحقيقة أنه سيغادر منزله، هذا الرجل الذي لم يعرف عنه إلا ملازمة البيت!"
+    },
+    {
+      "index": 19,
+      "en": "By eight o’clock Passepartout had packed the modest carpetbag, containing the wardrobes of his master and himself; then, still troubled in mind, he carefully shut the door of his room, and descended to Mr. Fogg.",
+      "existingArabicDraft": "بحلول الثامنة كان باسبارتو قد حزم الحقيبة الصغيرة بما يلزم سيده ويلزمه من ثياب، ثم أغلق باب غرفته بعناية ونزل، وما زال القلق يشغل باله، إلى السيد فوغ."
+    },
+    {
+      "index": 20,
+      "en": "Mr. Fogg was quite ready. Under his arm might have been observed a red-bound copy of Bradshaw’s Continental Railway Steam Transit and General Guide, with its timetables showing the arrival and departure of steamers and railways. He took the carpetbag, opened it, and slipped into it a goodly roll of Bank of England notes, which would pass wherever he might go.",
+      "existingArabicDraft": "كان السيد فوغ مستعدًا تمامًا. وتحت ذراعه نسخة حمراء الغلاف من دليل برادشو لسكك الحديد والبواخر الأوروبية، وفيه مواعيد الوصول والمغادرة. أخذ الحقيبة وفتحها ووضع فيها رزمة كبيرة من أوراق بنك إنجلترا النقدية، تصلح للإنفاق حيثما ذهب."
+    },
+    {
+      "index": 21,
+      "en": "“You have forgotten nothing?” asked he.",
+      "existingArabicDraft": "سأل فوغ: «هل نسيت شيئًا؟»"
+    },
+    {
+      "index": 22,
+      "en": "“Nothing, monsieur.”",
+      "existingArabicDraft": "أجاب: «لا شيء يا سيدي»."
+    },
+    {
+      "index": 23,
+      "en": "“My mackintosh and cloak?”",
+      "existingArabicDraft": "«ومعطفي الواقي من المطر وعباءة السفر؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«لن نحمل صناديق؛ حقيبة سفر صغيرة فحسب، فيها قميصان وثلاثة أزواج من الجوارب لي، ومثلها لك. سنشتري ثيابنا في الطريق. أحضر معطفي الواقي من المطر وعباءة السفر وحذاءً متينًا، وإن كنا لن نمشي كثيرًا. أسرع!»"
+    },
+    {
+      "index": 1,
+      "ar": "حاول باسبارتو أن يرد فلم يستطع. خرج وصعد إلى غرفته، ثم ارتمى على كرسي وتمتم: «يا لها من مفاجأة! وأنا الذي كنت أريد حياة هادئة!»"
+    },
+    {
+      "index": 2,
+      "ar": "بدأ يستعد للمغادرة بصورة آلية. حول العالم في ثمانين يومًا! أجنّ سيده؟ لا. أهي مزحة؟ سيذهبان إلى دوفر، حسنًا؛ ثم إلى كاليه، حسنًا أيضًا. ولم يكن باسبارتو، الذي ابتعد عن فرنسا خمس سنوات، ليكره أن تطأ قدماه أرض وطنه من جديد. وربما بلغا باريس فيسعد برؤيتها مرة أخرى. لكن رجلًا يقتصد في خطواته إلى هذا الحد لا بد أن يتوقف هناك؛ هكذا ظن. ومع ذلك كانت الحقيقة أنه سيغادر، هذا الرجل الذي لم يعرف عنه إلا ملازمة البيت حتى الآن!"
+    },
+    {
+      "index": 3,
+      "ar": "بحلول الثامنة كان باسبارتو قد حزم الحقيبة الصغيرة بما يلزم سيده ويلزمه من ثياب، ثم أغلق باب غرفته بعناية ونزل، وما زال القلق يشغل باله، إلى السيد فوغ."
+    },
+    {
+      "index": 4,
+      "ar": "كان السيد فوغ مستعدًا تمامًا. وتحت ذراعه نسخة حمراء الغلاف من دليل برادشو لسكك الحديد والبواخر الأوروبية، وفيه مواعيد وصول ومغادرة البواخر والقطارات. أخذ الحقيبة وفتحها ودس فيها رزمة كبيرة من أوراق بنك إنجلترا النقدية التي تقبل في كل مكان يقصده."
+    },
+    {
+      "index": 5,
+      "ar": "سأل: «ألم تنس شيئًا؟»"
+    },
+    {
+      "index": 6,
+      "ar": "«لا شيء يا سيدي»."
+    },
+    {
+      "index": 7,
+      "ar": "«ومعطفي الواقي من المطر وعباءتي؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

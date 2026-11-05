@@ -1,0 +1,140 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 4,
+  "chapterTitle": "In Which Phileas Fogg Astounds Passepartout, His Servant",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "ad27ba531bf8f6214ae83aa8ac8c38073ce830fdcb296202091afe65e737f610",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "“I know it; I don’t blame you. We start for Dover and Calais in ten minutes.”",
+      "existingArabicDraft": "قال فوغ: «أعرف ذلك ولا ألومك. سننطلق إلى دوفر وكاليه بعد عشر دقائق»."
+    },
+    {
+      "index": 9,
+      "en": "A puzzled grin overspread Passepartout’s round face; clearly he had not comprehended his master.",
+      "existingArabicDraft": "ارتسمت على وجه باسبارتو المستدير ابتسامة حائرة؛ فمن الواضح أنه لم يفهم ما يقصده سيده."
+    },
+    {
+      "index": 10,
+      "en": "“Monsieur is going to leave home?”",
+      "existingArabicDraft": "سأل: «هل سيغادر سيدي المنزل؟»"
+    },
+    {
+      "index": 11,
+      "en": "“Yes,” returned Phileas Fogg. “We are going round the world.”",
+      "existingArabicDraft": "أجاب فيلياس فوغ: «نعم، سنطوف حول العالم»."
+    },
+    {
+      "index": 12,
+      "en": "Passepartout opened wide his eyes, raised his eyebrows, held up his hands, and seemed about to collapse, so overcome was he with stupefied astonishment.",
+      "existingArabicDraft": "اتسعت عينا باسبارتو وارتفع حاجباه، ورفع يديه وكاد يسقط أرضًا من فرط الدهشة والذهول."
+    },
+    {
+      "index": 13,
+      "en": "“Round the world!” he murmured.",
+      "existingArabicDraft": "تمتم: «حول العالم!»"
+    },
+    {
+      "index": 14,
+      "en": "“In eighty days,” responded Mr. Fogg. “So we haven’t a moment to lose.”",
+      "existingArabicDraft": "قال السيد فوغ: «في ثمانين يومًا؛ ولذلك ليس لدينا لحظة نضيعها»."
+    },
+    {
+      "index": 15,
+      "en": "“But the trunks?” gasped Passepartout, unconsciously swaying his head from right to left.",
+      "existingArabicDraft": "شهق باسبارتو وهو يهز رأسه لا شعوريًا: «لكن ماذا عن صناديق الأمتعة؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«أعرف ذلك، ولا ألومك. سننطلق إلى دوفر وكاليه بعد عشر دقائق»."
+    },
+    {
+      "index": 1,
+      "ar": "ارتسمت على وجه باسبارتو المستدير ابتسامة حائرة؛ فمن الواضح أنه لم يفهم سيده."
+    },
+    {
+      "index": 2,
+      "ar": "«أسيغادر السيد المنزل؟»"
+    },
+    {
+      "index": 3,
+      "ar": "أجاب فيلياس فوغ: «نعم، سنطوف حول العالم»."
+    },
+    {
+      "index": 4,
+      "ar": "اتسعت عينا باسبارتو، وارتفع حاجباه، ورفع يديه، وبدا وكأنه على وشك الانهيار من فرط ذهوله ودهشته."
+    },
+    {
+      "index": 5,
+      "ar": "تمتم قائلًا: «حول العالم!»"
+    },
+    {
+      "index": 6,
+      "ar": "رد السيد فوغ: «في ثمانين يومًا. إذن ليس لدينا لحظة لنضيعها»."
+    },
+    {
+      "index": 7,
+      "ar": "شهق باسبارتو وهو يهز رأسه لا شعوريًا يمنة ويسرة: «ولكن الحقائب؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

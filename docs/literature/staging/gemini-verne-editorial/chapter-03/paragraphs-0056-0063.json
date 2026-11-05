@@ -1,0 +1,139 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 3,
+  "chapterTitle": "In Which a Conversation Takes Place Which Seems Likely to Cost Phileas Fogg Dear",
+  "startParagraphZeroBased": 56,
+  "paragraphCount": 8,
+  "sourceSha256": "4451d56a2063cb5801279b6b2895c0fea713a674a48824f55672d39f0b79a06d",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 56,
+      "en": "“I will jump—mathematically.”",
+      "existingArabicDraft": "«سأقفز... بحساب دقيق»."
+    },
+    {
+      "index": 57,
+      "en": "“You are joking.”",
+      "existingArabicDraft": "«إنك تمزح»."
+    },
+    {
+      "index": 58,
+      "en": "“A true Englishman doesn’t joke when he is talking about so serious a thing as a wager,” replied Phileas Fogg, solemnly. “I will bet twenty thousand pounds against anyone who wishes that I will make the tour of the world in eighty days or less; in nineteen hundred and twenty hours, or a hundred and fifteen thousand two hundred minutes. Do you accept?”",
+      "existingArabicDraft": "قال فوغ بوقار: «الإنجليزي الحق لا يمزح في أمر جاد مثل الرهان. أراهن بعشرين ألف جنيه أمام أي شخص يشاء أنني سأطوف العالم في ثمانين يومًا أو أقل؛ أي ألف وتسعمئة وعشرين ساعة، أو مئة وخمسة عشر ألفًا ومئتي دقيقة. هل تقبلون؟»"
+    },
+    {
+      "index": 59,
+      "en": "“We accept,” replied Messrs. Stuart, Fallentin, Sullivan, Flanagan, and Ralph, after consulting each other.",
+      "existingArabicDraft": "قال السادة ستيوارت وفالنتين وسوليفان وفلاناغان ورالف، بعد التشاور: «نقبل»."
+    },
+    {
+      "index": 60,
+      "en": "“Good,” said Mr. Fogg. “The train leaves for Dover at a quarter before nine. I will take it.”",
+      "existingArabicDraft": "قال فوغ: «جيد. يغادر القطار إلى دوفر في الثامنة وخمس وأربعين دقيقة. سأستقله»."
+    },
+    {
+      "index": 61,
+      "en": "“This very evening?” asked Stuart.",
+      "existingArabicDraft": "سأل ستيوارت: «هذا المساء بالذات؟»"
+    },
+    {
+      "index": 62,
+      "en": "“This very evening,” returned Phileas Fogg. He took out and consulted a pocket almanac, and added, “As today is Wednesday, the 2nd of October, I shall be due in London in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.; or else the twenty thousand pounds, now deposited in my name at Baring’s, will belong to you, in fact and in right, gentlemen. Here is a cheque for the amount.”",
+      "existingArabicDraft": "أجاب فوغ: «هذا المساء». وأخرج مفكرة صغيرة، ثم قال: «بما أن اليوم الأربعاء الثاني من أكتوبر، فسأعود إلى لندن، إلى هذه الغرفة نفسها في نادي الإصلاح، يوم السبت الحادي والعشرين من ديسمبر عند الثامنة وخمس وأربعين دقيقة مساءً؛ وإلا أصبحت العشرون ألف جنيه المودعة باسمي لدى بارينغ ملكًا لكم حقًا وقانونًا يا سادة. وهذا شيك بالمبلغ»."
+    },
+    {
+      "index": 63,
+      "en": "A memorandum of the wager was at once drawn up and signed by the six parties, during which Phileas Fogg preserved a stoical composure. He certainly did not bet to win, and had only staked the twenty thousand pounds, half of his fortune, because he foresaw that he might have to expend the other half to carry out this difficult, not to say unattainable, project. As for his antagonists, they seemed much agitated; not so much by the value of their stake, as because they had some scruples about betting under conditions so difficult to their friend.",
+      "existingArabicDraft": "حُررت وثيقة الرهان فورًا ووقّعها الأطراف الستة، فيما حافظ فوغ على رباطة جأشه. لم يكن يراهن طمعًا في الربح؛ بل وضع عشرين ألف جنيه، وهي نصف ثروته، لأنه توقع أن يحتاج إلى إنفاق النصف الآخر لتنفيذ هذا المشروع العسير، بل الذي يبدو مستحيلًا. أما خصومه فبدوا مضطربين، لا لقيمة المبلغ وحدها، بل لأنهم شعروا بشيء من الحرج وهم يراهنون صديقهم على شروط بالغة الصعوبة."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«سأقفز... رياضياً»."
+    },
+    {
+      "index": 1,
+      "ar": "«إنك تمزح»."
+    },
+    {
+      "index": 2,
+      "ar": "«إن الإنجليزي الحقيقي لا يمزح حين يتحدث عن أمر خطير كرهان» هكذا أجاب فيلياس فوغ بوقار. «أراهن بعشرين ألف جنيه إسترليني في مواجهة أي شخص يرغب في أنني سأطوف حول العالم في ثمانين يومًا أو أقل؛ أي في تسعة عشر ومئتي ساعة، أو مئة وخمسة عشر ألفًا ومئتي دقيقة. فهل تقبلون؟»"
+    },
+    {
+      "index": 3,
+      "ar": "«إننا نقبل»، هكذا أجاب السادة ستيوارت، وفالنتين، وسوليفان، وفلاناغان، ورالف، بعد أن تشاوروا فيما بينهم."
+    },
+    {
+      "index": 4,
+      "ar": "«حسنًا»، قال السيد فوغ. «يغادر القطار المتجه إلى دوفر في الثامنة والربع. وسأستقله»."
+    },
+    {
+      "index": 5,
+      "ar": "«في هذا المساء بالذات؟» هكذا سأل ستيوارت."
+    },
+    {
+      "index": 6,
+      "ar": "«في هذا المساء بالذات»، هكذا رد فيلياس فوغ. وقد أخرج مفكرة جيب واطلع عليها، ثم أضاف: «بما أن اليوم هو الأربعاء، الثاني من أكتوبر، فسيكون موعد وصولي إلى لندن، إلى هذه الغرفة بالذات من نادي الإصلاح، يوم السبت، الحادي والعشرين من ديسمبر، في تمام الساعة الثامنة وخمس وأربعين دقيقة مساءً؛ وإلا فإن العشرين ألف جنيه، المودعة الآن باسمي لدى بنك بارينغ، ستصبح ملكًا لكم، فعلاً وحقاً، أيها السادة. وها هوذا شيك بالمبلغ»."
+    },
+    {
+      "index": 7,
+      "ar": "لقد حُررت مذكرة بالرهان في الحال ووقّعها الأطراف الستة، وخلال ذلك حافظ فيلياس فوغ على هدوء رواقي. إنه لم يكن يراهن ليفوز فحسب، ولم يخاطر بالعشرين ألف جنيه التي تمثل نصف ثروته إلا لأنه توقع أنه قد يضطر لإنفاق النصف الآخر لتنفيذ هذا المشروع الشاق، بل وغير القابل للتحقق. أما خصومه فقد بدوا في حالة اضطراب شديد، ولم يكن ذلك بسبب قيمة رهانهم، بل لأنهم كانوا يشعرون بشيء من التحفظ تجاه الدخول في رهان في ظل ظروف صعبة للغاية لصديقهم."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": false,
+      "issues": "خطأ في الترجمة: 'a quarter before nine' تعني الثامنة والربع إلا ربعاً أو الثامنة والربع؟ الأصح الثامنة والربع هو a quarter past eight، أما a quarter before nine فهي الثامنة والربع (أي الثامنة وخمس وأربعون دقيقة). المترجم كتب 'في الثامنة والربع' والصواب هو الثامنة وخمس وأربعون دقيقة."
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

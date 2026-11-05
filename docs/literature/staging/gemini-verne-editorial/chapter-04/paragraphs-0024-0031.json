@@ -1,0 +1,140 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 4,
+  "chapterTitle": "In Which Phileas Fogg Astounds Passepartout, His Servant",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 8,
+  "sourceSha256": "c9349c8f0e126cb9c6a6d67fb55075de0cbcc6d0b450877b1f2620d3da525b7d",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "“Here they are.”",
+      "existingArabicDraft": "«ها هما»."
+    },
+    {
+      "index": 25,
+      "en": "“Good! Take this carpetbag,” handing it to Passepartout. “Take good care of it, for there are twenty thousand pounds in it.”",
+      "existingArabicDraft": "قال فوغ وهو يناوله الحقيبة: «جيد! خذ هذه الحقيبة واعتنِ بها جيدًا؛ ففيها عشرون ألف جنيه»."
+    },
+    {
+      "index": 26,
+      "en": "Passepartout nearly dropped the bag, as if the twenty thousand pounds were in gold, and weighed him down.",
+      "existingArabicDraft": "كاد باسبارتو يسقط الحقيبة من يده، كأن العشرين ألف جنيه قطع ذهبية ثقيلة تشدها إلى الأرض."
+    },
+    {
+      "index": 27,
+      "en": "Master and man then descended, the street-door was double-locked, and at the end of Saville Row they took a cab and drove rapidly to Charing Cross. The cab stopped before the railway station at twenty minutes past eight. Passepartout jumped off the box and followed his master, who, after paying the cabman, was about to enter the station, when a poor beggar-woman, with a child in her arms, her naked feet smeared with mud, her head covered with a wretched bonnet, from which hung a tattered feather, and her shoulders shrouded in a ragged shawl, approached, and mournfully asked for alms.",
+      "existingArabicDraft": "نزل السيد وخادمه، وأُحكم إغلاق باب المنزل بقفلين. وعند نهاية سافيل رو استقلا عربة أجرة أسرعت بهما إلى تشارينغ كروس. توقفت العربة أمام محطة القطار في الثامنة وعشرين دقيقة. قفز باسبارتو عن مقعده وتبع سيده بعد أن دفع أجرة السائق. وبينما كان فوغ يهم بدخول المحطة، اقتربت منه امرأة فقيرة تحمل طفلًا، وقد تلطخت قدماها الحافيتان بالطين، وعلى رأسها قبعة بالية تتدلى منها ريشة ممزقة، وعلى كتفيها شال رث، وسألته صدقة بصوت حزين."
+    },
+    {
+      "index": 28,
+      "en": "Mr. Fogg took out the twenty guineas he had just won at whist, and handed them to the beggar, saying, “Here, my good woman. I’m glad that I met you;” and passed on.",
+      "existingArabicDraft": "أخرج السيد فوغ الجنيهات الذهبية العشرين التي ربحها قبل قليل، وأعطاها للمتسولة قائلًا: «خذي يا سيدتي الطيبة. يسعدني أنني التقيتك»، ثم مضى."
+    },
+    {
+      "index": 29,
+      "en": "Passepartout had a moist sensation about the eyes; his master’s action touched his susceptible heart.",
+      "existingArabicDraft": "شعر باسبارتو بأن عينيه تدمعان؛ فقد مسّ تصرف سيده قلبه الرقيق."
+    },
+    {
+      "index": 30,
+      "en": "Two first-class tickets for Paris having been speedily purchased, Mr. Fogg was crossing the station to the train, when he perceived his five friends of the Reform.",
+      "existingArabicDraft": "بعد شراء تذكرتين من الدرجة الأولى إلى باريس بسرعة، كان فوغ يعبر المحطة نحو القطار حين لمح أصدقاءه الخمسة من نادي الإصلاح."
+    },
+    {
+      "index": 31,
+      "en": "“Well, gentlemen,” said he, “I’m off, you see; and, if you will examine my passport when I get back, you will be able to judge whether I have accomplished the journey agreed upon.”",
+      "existingArabicDraft": "قال لهم: «ها أنا راحل كما ترون يا سادة. وحين أعود يمكنكم فحص جواز سفري لتحكموا هل أتممت الرحلة المتفق عليها»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«هها هما ذا»."
+    },
+    {
+      "index": 1,
+      "ar": "«جيد! خذ هذه الحقيبة اليدوية» ناولها لباسبارتو. «واعتنِ بها جيدًا، ففيها عشرون ألف جنيه»."
+    },
+    {
+      "index": 2,
+      "ar": "كاد باسبارتو يسقط الحقيبة، وكأن العشرين ألف جنيه صُمّمت من الذهب وكانت تثقله."
+    },
+    {
+      "index": 3,
+      "ar": "ثم نزل السيد وخادمه، وأُقفل باب الشارع بمزلاج مزدوج، وفي نهاية شارع سافيل رو استقلا عربة أجرة واتجها بسرعة إلى تشارينغ كروس. وتوقفت العربة أمام محطة القطار في تمام الساعة الثامنة وعشرين دقيقة. قفز باسبارتو من على الصندوق وتبع سيده، الذي كان -بعد أن دفع أجرة السائق- على وشك دخول المحطة، عندما اقتربت امرأة فقيرة متسولة، تحمل طفلًا بين ذراعيها، وقد تلطخت قدماها الحافيتان بالطين، وغُطّي رأسها بقبعة بائسة تتدلى منها ريشة ممزقة، واختبأت كتفاها تحت شال رث، وسألت بإمعان حزين أن تحصل على صدقة."
+    },
+    {
+      "index": 4,
+      "ar": "أخرج السيد فوغ الجنيهات الذهب العشرين التي فاز بها للتو في لعبة اللعبة، وسلمها للمتسولة قائلًا: «هاكِ يا امرأة يا طيبة. أنا سعيد بلقائك»، ثم مضى في طريقه."
+    },
+    {
+      "index": 5,
+      "ar": "شعر باسبارتو بغباشة رطبة في عينيه؛ فقد أثر فعل سيده في قلبه الحساس."
+    },
+    {
+      "index": 6,
+      "ar": "بعد أن اشترى بسرعة تذكرتين من الدرجة الأولى إلى باريس، كان السيد فوغ يعبر المحطة باتجاه القطار، عندما لمح أصدقاءه الخمسة من نادي الإصلاح."
+    },
+    {
+      "index": 7,
+      "ar": "قال لهم: «حسنًا أيها السادة، كما ترون أنا مغادر؛ وإذا تفضلتم بفحص جواز سفري عندما أعود، فسوف تكونوا قادرين على الحكم عما إذا كنت قد أنجزت الرحلة المتفق عليها»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": false,
+      "issues": "الترجمة غير دقيقة وتعاني من ركاكة في الصياغة العربية."
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "تمت إضافة عبارة صُممت من الذهب وهي غير موجودة في النص الأصلي."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": false,
+      "issues": "ترجمة لعبة اللعبة تكرار غير مبرر للفظة whist الإنجليزية."
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

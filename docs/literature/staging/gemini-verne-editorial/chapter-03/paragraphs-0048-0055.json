@@ -1,0 +1,139 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 3,
+  "chapterTitle": "In Which a Conversation Takes Place Which Seems Likely to Cost Phileas Fogg Dear",
+  "startParagraphZeroBased": 48,
+  "paragraphCount": 8,
+  "sourceSha256": "a336b9f80ddc6f4a1393646be0113a1263668cd3a5d9a99651c4df1e25f1ef00",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 48,
+      "en": "“Calm yourself, my dear Stuart,” said Fallentin. “It’s only a joke.”",
+      "existingArabicDraft": "قال فالنتين: «اهدأ يا ستيوارت العزيز، إنها مجرد مزحة»."
+    },
+    {
+      "index": 49,
+      "en": "“When I say I’ll wager,” returned Stuart, “I mean it.”",
+      "existingArabicDraft": "رد ستيوارت: «حين أقول إنني أراهن فأنا أعني ذلك»."
+    },
+    {
+      "index": 50,
+      "en": "“All right,” said Mr. Fogg; and, turning to the others, he continued: “I have a deposit of twenty thousand at Baring’s which I will willingly risk upon it.”",
+      "existingArabicDraft": "قال فوغ: «حسنًا». ثم التفت إلى الآخرين وأضاف: «لديّ وديعة قدرها عشرون ألف جنيه لدى بنك بارينغ، وأنا مستعد للمخاطرة بها»."
+    },
+    {
+      "index": 51,
+      "en": "“Twenty thousand pounds!” cried Sullivan. “Twenty thousand pounds, which you would lose by a single accidental delay!”",
+      "existingArabicDraft": "صاح سوليفان: «عشرون ألف جنيه! قد تخسرها بسبب تأخير عارض واحد!»"
+    },
+    {
+      "index": 52,
+      "en": "“The unforeseen does not exist,” quietly replied Phileas Fogg.",
+      "existingArabicDraft": "أجاب فوغ بهدوء: «لا وجود لما هو غير متوقع»."
+    },
+    {
+      "index": 53,
+      "en": "“But, Mr. Fogg, eighty days are only the estimate of the least possible time in which the journey can be made.”",
+      "existingArabicDraft": "«لكن يا سيد فوغ، ثمانون يومًا ليست إلا تقديرًا لأقصر مدة ممكنة لهذه الرحلة»."
+    },
+    {
+      "index": 54,
+      "en": "“A well-used minimum suffices for everything.”",
+      "existingArabicDraft": "«الحد الأدنى، إذا استُخدم جيدًا، يكفي لكل شيء»."
+    },
+    {
+      "index": 55,
+      "en": "“But, in order not to exceed it, you must jump mathematically from the trains upon the steamers, and from the steamers upon the trains again.”",
+      "existingArabicDraft": "«ولكيلا تتجاوزه، عليك أن تقفز بحساب دقيق من القطار إلى الباخرة، ومن الباخرة إلى القطار»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«اهدأ يا عزيزي ستيوارت»، قال فالنتين: «إنها مجرد مزحة»."
+    },
+    {
+      "index": 1,
+      "ar": "«حين أقول إنني أراهن»، رد ستيوارت، «فأنا أعني ذلك»."
+    },
+    {
+      "index": 2,
+      "ar": "«حسنًا»، قال السيد فوغ؛ ثم التفت إلى الآخرين، وأكمل: «لديّ وديعة بعشرين ألفًا لدى بنك بارينغ، وأنا مستعد للمخاطرة بها في ذلك»."
+    },
+    {
+      "index": 3,
+      "ar": "«عشرون ألف جنيه!» صاح سوليفان. «عشرون ألف جنيه ستخسرها بسبب تأخير عارض واحد!»"
+    },
+    {
+      "index": 4,
+      "ar": "«لا وجود للمفاجآت»، أجاب فيلياس فوغ بهدوء."
+    },
+    {
+      "index": 5,
+      "ar": "«ولكن، يا سيد فوغ، ثمانون يومًا ليست سوى تقدير لأقل وقت ممكن لإتمام الرحلة»."
+    },
+    {
+      "index": 6,
+      "ar": "«إن الحد الأدنى المستغل بحكمة يكفي لكل شيء»."
+    },
+    {
+      "index": 7,
+      "ar": "«ولكن، لكيلا تتجاوزه، يجب أن تنتقل بطريقة رياضية من القطارات إلى البواخر، ومن البواخر إلى القطارات مرة أخرى»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

@@ -1,0 +1,140 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 4,
+  "chapterTitle": "In Which Phileas Fogg Astounds Passepartout, His Servant",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "441049fd3eaf50cd9f5b5d23b15060ef9f2c855f398d58f5a0b911360b16b27a",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "Having won twenty guineas at whist, and taken leave of his friends, Phileas Fogg, at twenty-five minutes past seven, left the Reform Club.",
+      "existingArabicDraft": "بعد أن ربح عشرين جنيهًا ذهبيًا في لعبة «ويست» وودّع أصدقاءه، غادر فيلياس فوغ نادي الإصلاح عند السابعة وخمس وعشرين دقيقة مساءً."
+    },
+    {
+      "index": 1,
+      "en": "Passepartout, who had conscientiously studied the programme of his duties, was more than surprised to see his master guilty of the inexactness of appearing at this unaccustomed hour; for, according to rule, he was not due in Saville Row until precisely midnight.",
+      "existingArabicDraft": "كان باسبارتو قد درس برنامج واجباته بعناية، ففوجئ أشد المفاجأة بعودة سيده في ساعة غير معتادة؛ إذ لم يكن مقررًا أن يصل إلى منزله في سافيل رو قبل منتصف الليل تمامًا."
+    },
+    {
+      "index": 2,
+      "en": "Mr. Fogg repaired to his bedroom, and called out, “Passepartout!”",
+      "existingArabicDraft": "دخل السيد فوغ غرفة نومه ونادى: «باسبارتو!»"
+    },
+    {
+      "index": 3,
+      "en": "Passepartout did not reply. It could not be he who was called; it was not the right hour.",
+      "existingArabicDraft": "لم يُجب باسبارتو؛ فلم يخطر له أنه المقصود بالنداء، فالوقت لم يحن بعد."
+    },
+    {
+      "index": 4,
+      "en": "“Passepartout!” repeated Mr. Fogg, without raising his voice.",
+      "existingArabicDraft": "كرر السيد فوغ من دون أن يرفع صوته: «باسبارتو!»"
+    },
+    {
+      "index": 5,
+      "en": "Passepartout made his appearance.",
+      "existingArabicDraft": "حضر باسبارتو إلى الغرفة."
+    },
+    {
+      "index": 6,
+      "en": "“I’ve called you twice,” observed his master.",
+      "existingArabicDraft": "قال سيده: «ناديتك مرتين»."
+    },
+    {
+      "index": 7,
+      "en": "“But it is not midnight,” responded the other, showing his watch.",
+      "existingArabicDraft": "أجاب الخادم وهو يشير إلى ساعته: «لكن الساعة لم تبلغ منتصف الليل»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "بعد أن ربح عشرين جنيهًا في لعبة الويست، وودّع أصدقاءه، غادر فيلياس فوغ نادي الإصلاح في تمام الساعة السابعة وخمس وعشرين دقيقة."
+    },
+    {
+      "index": 1,
+      "ar": "وكان باسبارتو، الذي درس برنامج واجباته بضمير حي، أكثر من متفاجئ لرؤية سيده مذنبًا بعدم الدقة لظهوره في هذه الساعة غير المعتادة؛ فوفقًا للقواعد، لم يكن متوقعًا في شارع سافيل رو حتى منتصف الليل تمامًا."
+    },
+    {
+      "index": 2,
+      "ar": "توجه السيد فوغ إلى غرفة نومه، ونادى: «باسبارتو!»"
+    },
+    {
+      "index": 3,
+      "ar": "لم يرد باسبارتو. لم يكن هو من يُنادى؛ فلم يكن الوقت المناسب."
+    },
+    {
+      "index": 4,
+      "ar": "كرر السيد فوغ قائلًا: «باسبارتو!» من دون أن يرفع صوته."
+    },
+    {
+      "index": 5,
+      "ar": "ظهر باسبارتو."
+    },
+    {
+      "index": 6,
+      "ar": "لاحظ سيده قائلًا: «لقد ناديتك مرتين»."
+    },
+    {
+      "index": 7,
+      "ar": "فأجاب الآخر وهو يري ساعته: «لكنها ليست منتصف الليل»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
