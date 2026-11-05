@@ -508,10 +508,10 @@
     }
   ],
   "nextWork": [
-    "Backfill 28 Verne chapters without any locally sourced primary image; editorial/territory clearance of the nine candidates is still pending",
-    "For five formerly unmapped complete illustrated originals, review every newly source-mapped visual scene and per-image rights, and source original contextual plates for unmapped chapters",
+    "Backfill the remaining Verne chapter image gaps; secure rights and individual scene approval for all authentic plates",
+    "Review the five backfilled historic chapter maps and 117 Monte Cristo chapter slots; get original contextual plates for remaining holes and editorial/territorial clearance",
     "Source contextual art for all 27 The War of the Worlds chapters",
-    "Revisit all older staged books and incoming PR book collections without counting unmerged materials on main",
+    "Backfill Valley of Fear, Kalila, Arabian Nights and remaining previous works with verified edition-specific chapter images",
     "Have reader/UI thread implement image-backed ordered chapter cards only from approved local chapter-image maps"
   ],
   "releaseStatus": "NOT_READY_FOR_CHAPTER_CARDS; DO_NOT_PUBLISH_PENDING_RIGHTS_AND_EDITORIAL"

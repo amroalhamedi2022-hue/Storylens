@@ -34,10 +34,10 @@
 
 ## Next actions (highest to lowest priority)
 
-1. Backfill 28 Verne chapters without any locally sourced primary image; editorial/territory clearance of the nine candidates is still pending
-2. For five formerly unmapped complete illustrated originals, review every newly source-mapped visual scene and per-image rights, and source original contextual plates for unmapped chapters
+1. Backfill the remaining Verne chapter image gaps; secure rights and individual scene approval for all authentic plates
+2. Review the five backfilled historic chapter maps and 117 Monte Cristo chapter slots; get original contextual plates for remaining holes and editorial/territorial clearance
 3. Source contextual art for all 27 The War of the Worlds chapters
-4. Revisit all older staged books and incoming PR book collections without counting unmerged materials on main
+4. Backfill Valley of Fear, Kalila, Arabian Nights and remaining previous works with verified edition-specific chapter images
 5. Have reader/UI thread implement image-backed ordered chapter cards only from approved local chapter-image maps
 
 ## Data & handoff
@@ -51,8 +51,9 @@
 
 ## Remaining counts
 
-- Verne: **28 chapters without candidates, 37 without approved chapter thumbnails**; nine distinct locally mapped historical plates await approvals.
+- Verne: **25 chapters without image candidates, 37 without approved thumbnails**; historical art requires territory/scene approvals.
 - War of the Worlds: **27 chapters without candidates**.
 - Five archived illustrated novels now have edition-derived chapter counts and source-positioned local plate candidates; verify scene fidelity and per-image rights before use.
+- Monte Cristo: **2 chapter candidates missing**; the historical English translation's original French edition and rights still need verification.
 - Moonstone/older works: exact chapter segmentation, contextual art acquisition, rights and editorial review still open.
 - Book cover art, full bilingual human review and signed reader release require independent checks.
