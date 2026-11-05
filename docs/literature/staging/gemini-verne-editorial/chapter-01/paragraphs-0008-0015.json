@@ -1,0 +1,137 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 1,
+  "chapterTitle": "In Which Phileas Fogg and Passepartout Accept Each Other, the One as Master, the Other as Man",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "da8d827c2c432ca5acd2496ffec176f73c384d344d563ae758033c90e1351792",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "His daily habits were quite open to observation; but whatever he did was so exactly the same thing that he had always done before, that the wits of the curious were fairly puzzled.",
+      "existingArabicDraft": "كانت عاداته اليومية واضحة لكل من يراقبه، لكنه كان يكرر أفعاله بالدقة نفسها يومًا بعد يوم، حتى حيّرت رتابته أذهان الفضوليين."
+    },
+    {
+      "index": 9,
+      "en": "Had he travelled? It was likely, for no one seemed to know the world more familiarly; there was no spot so secluded that he did not appear to have an intimate acquaintance with it. He often corrected, with a few clear words, the thousand conjectures advanced by members of the club as to lost and unheard-of travellers, pointing out the true probabilities, and seeming as if gifted with a sort of second sight, so often did events justify his predictions.",
+      "existingArabicDraft": "هل سافر من قبل؟ الأغلب نعم، فما من أحد بدا أدرى منه بالعالم؛ حتى الأماكن النائية كان يتحدث عنها كأنه يعرفها عن قرب. وكثيرًا ما صحّح بكلمات قليلة واضحة تخمينات أعضاء النادي عن رحالة فُقدوا أو انقطعت أخبارهم، فيبيّن الاحتمالات الأقرب إلى الواقع، وكأنه يملك بصيرة تستشرف الغيب، إذ كثيرًا ما أثبتت الأحداث صحة توقعاته."
+    },
+    {
+      "index": 10,
+      "en": "He must have travelled everywhere, at least in the spirit.",
+      "existingArabicDraft": "لا بد أنه جاب العالم كله، ولو بخياله على الأقل."
+    },
+    {
+      "index": 11,
+      "en": "It was at least certain that Phileas Fogg had not absented himself from London for many years. Those who were honoured by a better acquaintance with him than the rest, declared that nobody could pretend to have ever seen him anywhere else. His sole pastimes were reading the papers and playing whist. He often won at this game, which, as a silent one, harmonized with his nature; but his winnings never went into his purse, being reserved as a fund for his charities. Mr. Fogg played, not to win, but for the sake of playing. The game was in his eyes a contest, a struggle with a difficulty, yet a motionless, unwearying struggle, congenial to his tastes.",
+      "existingArabicDraft": "لكن المؤكد أن فيلياس فوغ لم يغادر لندن منذ سنوات طويلة. وأكد الذين عرفوه أكثر من غيرهم أن أحدًا لا يستطيع الادعاء بأنه رآه في مكان آخر. ولم تكن له تسلية سوى قراءة الصحف ولعب الورق من نوع «ويست». وكان كثيرًا ما يفوز، وهي لعبة هادئة تلائم طبعه، لكنه لم يضع أرباحه في جيبه، بل خصصها لأعماله الخيرية. لم يكن فوغ يلعب من أجل الربح، وإنما من أجل اللعبة ذاتها؛ فقد رآها منافسة وصراعًا مع الصعوبات، لكنه صراع ساكن لا يبعث على التعب، ويناسب ذوقه."
+    },
+    {
+      "index": 12,
+      "en": "Phileas Fogg was not known to have either wife or children, which may happen to the most honest people; either relatives or near friends, which is certainly more unusual. He lived alone in his house in Saville Row, whither none penetrated. A single domestic sufficed to serve him.",
+      "existingArabicDraft": "ولم يكن معروفًا أن لفيلياس فوغ زوجة أو أبناء، وهذا قد يحدث حتى لأكثر الناس استقامة؛ ولم يُعرف له أقارب أو أصدقاء مقربون، وهو أمر أشد غرابة. كان يعيش وحده في منزله بسافيل رو، ولا يكاد يدخله أحد. وكان خادم واحد يكفي لتلبية حاجاته."
+    },
+    {
+      "index": 13,
+      "en": "He breakfasted and dined at the club, at hours mathematically fixed, in the same room, at the same table, never taking his meals with other members, much less bringing a guest with him; and went home at exactly midnight, only to retire at once to bed. He never used the cosy chambers which the Reform provides for its favoured members. He passed ten hours out of the twenty-four in Saville Row, either in sleeping or making his toilet.",
+      "existingArabicDraft": "كان يتناول فطوره وعشاءه في النادي في مواعيد مضبوطة كالمعادلات الرياضية، وفي الغرفة نفسها وعلى الطاولة نفسها، من غير أن يشارك الأعضاء الطعام، فضلًا عن أن يصطحب ضيفًا. وكان يعود إلى بيته عند منتصف الليل تمامًا ليخلد إلى النوم فورًا. ولم يستخدم قط الغرف المريحة التي يوفرها النادي لأعضائه المميزين. وكان يقضي عشر ساعات من كل أربع وعشرين ساعة في سافيل رو، نائمًا أو معتنيًا بهندامه."
+    },
+    {
+      "index": 14,
+      "en": "When he chose to take a walk it was with a regular step in the entrance hall with its mosaic flooring, or in the circular gallery with its dome supported by twenty red porphyry Ionic columns, and illumined by blue painted windows.",
+      "existingArabicDraft": "وحين يقرر المشي، يسير بخطوات منتظمة في بهو المدخل ذي الأرضية الفسيفسائية، أو في الرواق الدائري تحت قبة تحملها عشرون أسطوانة أيونية من حجر السماق الأحمر، وتضيئه نوافذ زرقاء ملونة."
+    },
+    {
+      "index": 15,
+      "en": "When he breakfasted or dined all the resources of the club—its kitchens and pantries, its buttery and dairy—aided to crowd his table with their most succulent stores; he was served by the gravest waiters, in dress coats, and shoes with swan-skin soles, who proffered the viands in special porcelain, and on the finest linen; club decanters, of a lost mould, contained his sherry, his port, and his cinnamon-spiced claret; while his beverages were refreshingly cooled with ice, brought at great cost from the American lakes.",
+      "existingArabicDraft": "وحين يفطر أو يتعشى، تسهم جميع مرافق النادي، من مطابخ ومخازن ومرافق للألبان والزبدة، في ملء مائدته بأشهى الأطعمة. وكان يخدمه نُدُل وقورون يرتدون المعاطف الرسمية وأحذية بنعال من جلد البجع، ويقدمون الأطباق في أوانٍ خزفية خاصة وعلى أفخر مفارش الكتان. واحتوت قوارير النادي ذات الطراز القديم على أنواع من النبيذ، بعضها ممزوج بالقرفة؛ وكانت مشروباته تُبرّد بقطع ثلج جُلبت بتكلفة باهظة من بحيرات أمريكا."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كانت عاداته اليومية واضحة تمامًا لمن يراقبه؛ لكن كل ما كان يفعله كان مطابقًا تمامًا لما اعتاد فعله دائمًا من قبل، لدرجة أن عقول الفضوليين كانت في حيرة تامة."
+    },
+    {
+      "index": 1,
+      "ar": "هل سافر؟ كان ذلك مرجحًا، إذ لم يبدُ أحدٌ أكثر منه دراية بالعالم؛ فلم يكن هناك مكانٌ منعزلٌ لدرجة أنه لم يبدُ وكأنه على معرفة وثيقة به. وكثيرًا ما كان يصحح، ببضع كلمات واضحة، آلاف التخمينات التي يطرحها أعضاء النادي حول رحالة مفقودين أو غير معروفين، مشيرًا إلى الاحتمالات الحقيقية، وبدا وكأنه يتمتع بنوع من البصيرة، فكثيرًا ما كانت الأحداث تثبت صحة توقعاته."
+    },
+    {
+      "index": 2,
+      "ar": "لا بد أنه سافر إلى كل مكان، على الأقل في روحه."
+    },
+    {
+      "index": 3,
+      "ar": "كان من المؤكد على الأقل أن فيلياس فوغ لم يغادر لندن منذ سنوات عديدة. وأكد أولئك الذين حظوا بمعرفة أفضل به من البقية، أنه لا يمكن لأحد أن يدعي أنه رآه في أي مكان آخر. كانت تسليته الوحيدة هي قراءة الصحف ولعب الورق (الويست). وكثيرًا ما كان يفوز في هذه اللعبة، التي كانت تتناغم مع طبيعته لكونها لعبة صامتة؛ لكن أرباحه لم تكن تدخل جيبه أبدًا، بل كانت تُخصص كصندوق لأعماله الخيرية. لم يكن السيد فوغ يلعب ليفوز، بل من أجل اللعبة ذاتها. كانت اللعبة في عينيه منافسة، وصراعًا مع صعوبة ما، ومع ذلك كان صراعًا ساكنًا لا يبعث على التعب، ومناسبًا لذوقه."
+    },
+    {
+      "index": 4,
+      "ar": "لم يكن معروفًا عن فيلياس فوغ أن لديه زوجة أو أطفالًا، وهو أمر قد يحدث لأكثر الناس استقامة؛ ولم يُعرف له أقارب أو أصدقاء مقربون، وهو أمر بالتأكيد أكثر غرابة. كان يعيش وحيدًا في منزله في سافيل رو، حيث لم يدخله أحد. وكان خادم واحد يكفي لخدمته."
+    },
+    {
+      "index": 5,
+      "ar": "كان يتناول فطوره وعشاءه في النادي، في ساعات محددة رياضيًا، في الغرفة نفسها، وعلى الطاولة نفسها، دون أن يتناول وجباته مع أعضاء آخرين، ناهيك عن اصطحاب ضيف معه؛ وكان يعود إلى المنزل في منتصف الليل تمامًا، ليخلد إلى النوم فورًا. لم يستخدم قط الغرف المريحة التي يوفرها نادي «ريفورم» لأعضائه المفضلين. كان يقضي عشر ساعات من الأربع والعشرين ساعة في سافيل رو، إما نائمًا أو في العناية بهندامه."
+    },
+    {
+      "index": 6,
+      "ar": "عندما كان يختار المشي، كان يفعل ذلك بخطوات منتظمة في بهو المدخل ذي الأرضية الفسيفسائية، أو في الرواق الدائري ذي القبة التي تدعمها عشرون عمودًا أيونيًا من حجر السماق الأحمر، والتي تضيئها نوافذ زجاجية ملونة باللون الأزرق."
+    },
+    {
+      "index": 7,
+      "ar": "عندما كان يتناول فطوره أو عشاءه، كانت جميع موارد النادي - مطابخه ومخازنه، ومخزن الزبدة ومنتجات الألبان - تساعد في ملء طاولته بأشهى مخزوناته؛ وكان يخدمه أكثر النُدُل وقارًا، ببدلاتهم الرسمية وأحذيتهم ذات النعال المصنوعة من جلد البجع، الذين كانوا يقدمون الأطعمة في أوانٍ خزفية خاصة، وعلى أرقى أنواع الكتان؛ وكانت قوارير النادي، ذات الطراز القديم، تحتوي على نبيذ الشيري، ونبيذ البورت، ونبيذ الكلاريت المتبل بالقرفة؛ بينما كانت مشروباته تُبرّد بشكل منعش بالثلج، الذي كان يُجلب بتكلفة باهظة من البحيرات الأمريكية."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "ترجمة 'swan-skin' بـ 'جلد البجع' غير دقيقة تاريخياً؛ المقصود هو جلد حيوان 'السمور' أو 'الخُلد' (swan-skin كان نوعاً من القماش الصوفي الناعم وليس جلد طائر)."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

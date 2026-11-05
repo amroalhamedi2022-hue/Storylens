@@ -1,0 +1,137 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 1,
+  "chapterTitle": "In Which Phileas Fogg and Passepartout Accept Each Other, the One as Master, the Other as Man",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "153316fdde19a961c225d699554598a8474b82ae90868b9e558954185d2163a8",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "If to live in this style is to be eccentric, it must be confessed that there is something good in eccentricity!",
+      "existingArabicDraft": "وإذا كان العيش على هذا النحو يُعد غرابة أطوار، فلا بد من الاعتراف بأن في الغرابة جانبًا حسنًا!"
+    },
+    {
+      "index": 17,
+      "en": "The mansion in Saville Row, though not sumptuous, was exceedingly comfortable. The habits of its occupant were such as to demand but little from the sole domestic, but Phileas Fogg required him to be almost superhumanly prompt and regular. On this very 2nd of October he had dismissed James Forster, because that luckless youth had brought him shaving-water at eighty-four degrees Fahrenheit instead of eighty-six; and he was awaiting his successor, who was due at the house between eleven and half-past.",
+      "existingArabicDraft": "كان منزل سافيل رو مريحًا للغاية، وإن لم يكن فخمًا. ولم تكن عادات ساكنه تتطلب من خادمه الوحيد الكثير، لكن فوغ كان يشترط دقة وانتظامًا يكادان يفوقان قدرة البشر. وفي الثاني من أكتوبر نفسه صرف خادمه جيمس فورستر لأن الشاب التعس أحضر له ماء الحلاقة بدرجة أربع وثمانين فهرنهايت بدلًا من ست وثمانين. وكان ينتظر خادمه الجديد الذي يفترض أن يصل بين الحادية عشرة والحادية عشرة والنصف."
+    },
+    {
+      "index": 18,
+      "en": "Phileas Fogg was seated squarely in his armchair, his feet close together like those of a grenadier on parade, his hands resting on his knees, his body straight, his head erect; he was steadily watching a complicated clock which indicated the hours, the minutes, the seconds, the days, the months, and the years. At exactly half-past eleven Mr. Fogg would, according to his daily habit, quit Saville Row, and repair to the Reform.",
+      "existingArabicDraft": "جلس فيلياس فوغ مستقيمًا في كرسيه الوثير، وقد ضم قدميه كجندي في عرض عسكري، ووضع يديه على ركبتيه، وأبقى ظهره ورأسه منتصبين. وكان يراقب ساعة معقدة تعرض الساعات والدقائق والثواني والأيام والشهور والسنوات. وفي الحادية عشرة والنصف تمامًا كان سيغادر سافيل رو، كعادته اليومية، متجهًا إلى نادي الإصلاح."
+    },
+    {
+      "index": 19,
+      "en": "A rap at this moment sounded on the door of the cosy apartment where Phileas Fogg was seated, and James Forster, the dismissed servant, appeared. \"The new servant,\" said he. A young man of thirty advanced and bowed.",
+      "existingArabicDraft": "في تلك اللحظة سُمعت طرقة على باب الغرفة المريحة التي يجلس فيها فوغ، وظهر جيمس فورستر، الخادم الذي صُرف من عمله. قال: «الخادم الجديد». فتقدم شاب في الثلاثين من عمره وانحنى احترامًا."
+    },
+    {
+      "index": 20,
+      "en": "\"You are a Frenchman, I believe,\" asked Phileas Fogg, \"and your name is John?\"",
+      "existingArabicDraft": "سأله فيلياس فوغ: «أظنك فرنسيًا، واسمك جون، أليس كذلك؟»"
+    },
+    {
+      "index": 21,
+      "en": "\"Jean, if Monsieur pleases,\" replied the newcomer, \"Jean Passepartout, a surname which has clung to me because I have a natural aptness for going out of one business into another. I believe I'm honest, Monsieur, but, to be outspoken, I've had several trades. I've been an itinerant singer, a circus-rider, when I used to vault like Leotard, and dance on a rope like Blondin.",
+      "existingArabicDraft": "أجاب القادم الجديد: «جان، إذا سمح السيد. جان باسبارتو؛ وهو لقب لازمَني لأن لدي موهبة فطرية في الانتقال من مهنة إلى أخرى. أعتقد أنني أمين يا سيدي، لكنني، بصراحة، مارست أعمالًا كثيرة. كنت مغنيًا متجولًا وفارسًا في السيرك، أقفز مثل ليوتار وأمشي على الحبل مثل بلوندان."
+    },
+    {
+      "index": 22,
+      "en": "Then I got to be a professor of gymnastics, so as to make better use of my talents; and then I was a sergeant fireman at Paris, and assisted at many a big fire. But I quitted France five years ago, and, wishing to taste the sweets of domestic life, took service as a valet here in England.",
+      "existingArabicDraft": "ثم أصبحت مدربًا للجمباز لأستفيد من مواهبي على نحو أفضل، وبعدها عملت رقيبًا في فرقة الإطفاء بباريس، وشاركت في إخماد حرائق كبيرة كثيرة. لكنني غادرت فرنسا قبل خمس سنوات، ورغبت في تذوق هدوء الحياة المنزلية، فعملت خادمًا شخصيًا هنا في إنجلترا."
+    },
+    {
+      "index": 23,
+      "en": "Finding myself out of place, and hearing that Monsieur Phileas Fogg was the most exact and settled gentleman in the United Kingdom, I have come to Monsieur in the hope of living with him a tranquil life, and forgetting even the name of Passepartout.\"",
+      "existingArabicDraft": "ولما شعرت أنني لست في مكاني المناسب، وسمعت أن السيد فيلياس فوغ أدق الرجال وأكثرهم استقرارًا في المملكة المتحدة، جئت إليه أملًا في أن أعيش حياة هادئة في خدمته، وأن أنسى حتى لقب باسبارتو»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "إذا كان العيش على هذا النحو يُعد غرابة أطوار، فلا بد من الاعتراف بأن في الغرابة جانبًا حسنًا!"
+    },
+    {
+      "index": 1,
+      "ar": "كان المنزل الكائن في شارع سافيل رو، وإن لم يكن فخمًا، مريحًا للغاية. لم تكن عادات ساكنه تتطلب من خادمه الوحيد الكثير، لكن فيلياس فوغ كان يشترط فيه دقة وانتظامًا يكادان يفوقان قدرة البشر. وفي هذا اليوم، الثاني من أكتوبر، كان قد صرف جيمس فورستر، لأن ذلك الشاب التعس أحضر له ماء الحلاقة بدرجة حرارة أربع وثمانين فهرنهايت بدلًا من ست وثمانين؛ وكان ينتظر خادمه الجديد الذي كان من المفترض أن يصل إلى المنزل بين الحادية عشرة والحادية عشرة والنصف."
+    },
+    {
+      "index": 2,
+      "ar": "كان فيلياس فوغ جالسًا بانتصاب في كرسيه الوثير، وقد ضم قدميه كجندي في عرض عسكري، ووضع يديه على ركبتيه، وأبقى جسده مستقيمًا ورأسه مرفوعًا؛ وكان يراقب بتركيز ساعة معقدة تعرض الساعات والدقائق والثواني والأيام والشهور والسنوات. وفي الحادية عشرة والنصف تمامًا، كان السيد فوغ سيغادر شارع سافيل رو، وفقًا لعادته اليومية، ويتجه إلى نادي الإصلاح."
+    },
+    {
+      "index": 3,
+      "ar": "في تلك اللحظة، سُمعت طرقة على باب الغرفة المريحة التي يجلس فيها فيلياس فوغ، وظهر جيمس فورستر، الخادم الذي صُرف من عمله، وقال: «الخادم الجديد». فتقدم شاب في الثلاثين من عمره وانحنى."
+    },
+    {
+      "index": 4,
+      "ar": "سأله فيلياس فوغ: «أظنك فرنسيًا، واسمك جون، أليس كذلك؟»"
+    },
+    {
+      "index": 5,
+      "ar": "أجاب القادم الجديد: «جان، إذا سمح السيد. جان باسبارتو؛ وهو لقب لازمَني لأن لدي موهبة فطرية في الانتقال من مهنة إلى أخرى. أعتقد أنني أمين يا سيدي، لكنني، بصراحة، مارست أعمالًا كثيرة. كنت مغنيًا متجولًا، وفارسًا في السيرك، حين كنت أقفز مثل ليوتار، وأرقص على الحبل مثل بلوندان."
+    },
+    {
+      "index": 6,
+      "ar": "ثم أصبحت مدربًا للجمباز لأستفيد من مواهبي على نحو أفضل؛ وبعدها عملت رقيبًا في فرقة الإطفاء بباريس، وشاركت في إخماد حرائق كبيرة كثيرة. لكنني غادرت فرنسا قبل خمس سنوات، ورغبت في تذوق هدوء الحياة المنزلية، فعملت خادمًا شخصيًا هنا في إنجلترا."
+    },
+    {
+      "index": 7,
+      "ar": "ولما وجدت نفسي بلا عمل، وسمعت أن السيد فيلياس فوغ هو أدق الرجال وأكثرهم استقرارًا في المملكة المتحدة، جئت إلى السيد أملًا في أن أعيش معه حياة هادئة، وأن أنسى حتى اسم باسبارتو»."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

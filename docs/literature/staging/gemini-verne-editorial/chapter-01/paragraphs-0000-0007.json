@@ -1,0 +1,137 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 1,
+  "chapterTitle": "In Which Phileas Fogg and Passepartout Accept Each Other, the One as Master, the Other as Man",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "e671f78dffcf1ee97ff33b93ec39024d8631585d92e853efb263aceb96a49581",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "Mr. Phileas Fogg lived, in 1872, at No. 7, Saville Row, Burlington Gardens, the house in which Sheridan died in 1814. He was one of the most noticeable members of the Reform Club, though he seemed always to avoid attracting attention; an enigmatical personage, about whom little was known, except that he was a polished man of the world. People said that he resembled Byron—at least that his head was Byronic; but he was a bearded, tranquil Byron, who might live on a thousand years without growing old.",
+      "existingArabicDraft": "كان السيد فيلياس فوغ يعيش سنة 1872 في المنزل رقم 7 بشارع سافيل رو، في برلنغتون غاردنز، وهو المنزل الذي توفي فيه شيريدان سنة 1814. وكان من أبرز أعضاء نادي الإصلاح، مع أنه بدا حريصًا على ألّا يلفت الأنظار؛ شخصية غامضة لا يُعرف عنها سوى أنه رجل مهذّب واسع الخبرة بأحوال المجتمع. وقيل إنه يشبه الشاعر بايرون، على الأقل في ملامح وجهه؛ لكنه كان بايرون ملتحيًا هادئًا، كأنه قادر على العيش ألف سنة دون أن يشيخ."
+    },
+    {
+      "index": 1,
+      "en": "Certainly an Englishman, it was more doubtful whether Phileas Fogg was a Londoner. He was never seen on 'Change, nor at the Bank, nor in the counting-rooms of the \"City\"; no ships ever came into London docks of which he was the owner; he had no public employment; he had never been entered at any of the Inns of Court, either at the Temple, or Lincoln's Inn, or Gray's Inn; nor had his voice ever resounded in the Court of Chancery, or in the Exchequer, or the Queen's Bench, or the Ecclesiastical Courts.",
+      "existingArabicDraft": "كان إنجليزيًا بلا شك، لكن كونه من أهل لندن أمر أقل يقينًا. فلم يره أحد في البورصة أو البنك أو مكاتب المال في حيّ السيتي؛ ولم تدخل موانئ لندن سفينة يملكها، ولم يشغل وظيفة عامة، ولم ينتسب إلى أي من جمعيات المحامين في تمبل أو لنكولنز إن أو غريز إن؛ ولم يُسمع صوته قط في محاكم المستشارية أو الخزانة أو مجلس الملكة أو المحاكم الكنسية."
+    },
+    {
+      "index": 2,
+      "en": "He certainly was not a manufacturer; nor was he a merchant or a gentleman farmer. His name was strange to the scientific and learned societies, and he never was known to take part in the sage deliberations of the Royal Institution or the London Institution, the Artisan's Association, or the Institution of Arts and Sciences.",
+      "existingArabicDraft": "ولم يكن بالتأكيد صاحب مصنع أو تاجرًا أو مالك أرض زراعية. وكان اسمه مجهولًا لدى الجمعيات العلمية والثقافية، ولم يُعرف عنه أنه شارك في مداولات المؤسسة الملكية أو مؤسسة لندن أو جمعية الحرفيين أو مؤسسة الفنون والعلوم."
+    },
+    {
+      "index": 3,
+      "en": "He belonged, in fact, to none of the numerous societies which swarm in the English capital, from the Harmonic to that of the Entomologists, founded mainly for the purpose of abolishing pernicious insects.",
+      "existingArabicDraft": "والواقع أنه لم ينتمِ إلى أي من الجمعيات الكثيرة التي تعج بها العاصمة الإنجليزية، من الجمعية الموسيقية إلى جمعية علماء الحشرات التي أُسست أساسًا لمكافحة الحشرات الضارة."
+    },
+    {
+      "index": 4,
+      "en": "Phileas Fogg was a member of the Reform, and that was all.",
+      "existingArabicDraft": "كان فيلياس فوغ عضوًا في نادي الإصلاح، لا أكثر."
+    },
+    {
+      "index": 5,
+      "en": "The way in which he got admission to this exclusive club was simple enough.",
+      "existingArabicDraft": "أما طريقة قبوله في هذا النادي النخبوي فكانت بسيطة تمامًا."
+    },
+    {
+      "index": 6,
+      "en": "He was recommended by the Barings, with whom he had an open credit. His cheques were regularly paid at sight from his account current, which was always flush.",
+      "existingArabicDraft": "فقد زكّته مؤسسة بارينغ المصرفية، التي كان يتمتع لديها بتسهيلات ائتمانية مفتوحة. وكانت شيكاته تُصرف فور تقديمها من حسابه الجاري الذي لم يكن ينقصه المال."
+    },
+    {
+      "index": 7,
+      "en": "Was Phileas Fogg rich? Undoubtedly. But those who knew him best could not imagine how he had made his fortune, and Mr. Fogg was the last person to whom to apply for the information. He was not lavish, nor, on the contrary, avaricious; for, whenever he knew that money was needed for a noble, useful, or benevolent purpose, he supplied it quietly and sometimes anonymously. He was, in short, the least communicative of men. He talked very little, and seemed all the more mysterious for his taciturn manner.",
+      "existingArabicDraft": "هل كان فيلياس فوغ ثريًا؟ بلا ريب. لكن حتى أقرب معارفه لم يستطيعوا تخمين مصدر ثروته، وكان فوغ آخر شخص يمكن سؤاله عن ذلك. لم يكن مسرفًا ولا بخيلًا؛ فإذا علم أن المال مطلوب لغرض نبيل أو نافع أو خيري، قدّمه بهدوء، وأحيانًا من دون الكشف عن اسمه. وباختصار، كان من أقل الناس حديثًا؛ قلّما يتكلم، ويزيد صمته من غموضه."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كان السيد فيلياس فوغ يعيش في عام 1872 في المنزل رقم 7 بشارع سافيل رو، في برلنغتون غاردنز، وهو المنزل الذي توفي فيه شيريدان عام 1814. وكان من أبرز أعضاء نادي الإصلاح، مع أنه بدا دائمًا حريصًا على ألّا يلفت الأنظار؛ شخصية غامضة لا يُعرف عنها سوى أنه رجل مهذّب واسع الخبرة بأحوال المجتمع. وقيل إنه يشبه الشاعر بايرون، أو على الأقل أن رأسه يحمل ملامح بايرونية؛ لكنه كان بايرون ملتحيًا هادئًا، كأنه قادر على العيش ألف سنة دون أن يشيخ."
+    },
+    {
+      "index": 1,
+      "ar": "كان إنجليزيًا بلا شك، لكن كونه من أهل لندن أمر أقل يقينًا. فلم يره أحد في البورصة، ولا في البنك، ولا في مكاتب المحاسبة في حيّ السيتي؛ ولم تدخل موانئ لندن سفينة يملكها؛ ولم يشغل وظيفة عامة؛ ولم ينتسب إلى أي من جمعيات المحامين في تمبل، أو لنكولنز إن، أو غريز إن؛ ولم يُسمع صوته قط في محكمة المستشارية، أو في الخزانة، أو مجلس الملكة، أو المحاكم الكنسية."
+    },
+    {
+      "index": 2,
+      "ar": "لم يكن بالتأكيد صاحب مصنع، ولا تاجرًا، ولا مالك أرض زراعية. وكان اسمه غريبًا على الجمعيات العلمية والثقافية، ولم يُعرف عنه قط أنه شارك في المداولات الحكيمة للمؤسسة الملكية أو مؤسسة لندن، أو جمعية الحرفيين، أو مؤسسة الفنون والعلوم."
+    },
+    {
+      "index": 3,
+      "ar": "والواقع أنه لم ينتمِ إلى أي من الجمعيات الكثيرة التي تعج بها العاصمة الإنجليزية، من الجمعية الموسيقية إلى جمعية علماء الحشرات التي أُسست أساسًا لغرض القضاء على الحشرات الضارة."
+    },
+    {
+      "index": 4,
+      "ar": "كان فيلياس فوغ عضوًا في نادي الإصلاح، وذلك كل ما في الأمر."
+    },
+    {
+      "index": 5,
+      "ar": "كانت الطريقة التي حصل بها على عضوية هذا النادي الحصري بسيطة للغاية."
+    },
+    {
+      "index": 6,
+      "ar": "فقد زكّته مؤسسة بارينغ المصرفية، التي كان يتمتع لديها برصيد مفتوح. وكانت شيكاته تُصرف بانتظام عند الاطلاع من حسابه الجاري، الذي كان دائمًا ممتلئًا."
+    },
+    {
+      "index": 7,
+      "ar": "هل كان فيلياس فوغ ثريًا؟ بلا ريب. لكن أولئك الذين عرفوه جيدًا لم يستطيعوا تخمين كيف كوّن ثروته، وكان السيد فوغ آخر شخص يمكن اللجوء إليه للحصول على هذه المعلومة. لم يكن مسرفًا، ولا كان على العكس من ذلك بخيلًا؛ فكلما علم أن المال مطلوب لغرض نبيل أو نافع أو خيري، قدّمه بهدوء وأحيانًا دون الكشف عن اسمه. كان باختصار من أقل الناس حديثًا، وقلّما يتكلم، وبدا أكثر غموضًا بسبب طباعه الصامتة."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

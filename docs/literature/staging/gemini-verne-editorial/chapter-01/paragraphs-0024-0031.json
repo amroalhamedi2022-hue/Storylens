@@ -1,0 +1,95 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 1,
+  "chapterTitle": "In Which Phileas Fogg and Passepartout Accept Each Other, the One as Master, the Other as Man",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 5,
+  "sourceSha256": "367bd1a81b4a0c510b178bb5bac0a00f562b937eeb6612f20788712226d40330",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "\"Passepartout suits me,\" responded Mr. Fogg. \"You are well recommended to me; I hear a good report of you. You know my conditions?\" \"Yes, Monsieur.\" \"Good! What time is it?\"",
+      "existingArabicDraft": "أجاب السيد فوغ: «باسبارتو اسم يناسبني. لقد أوصوا بك خيرًا، وسمعت عنك كلامًا طيبًا. أتعرف شروطي؟» قال: «نعم يا سيدي». فسأله: «جيد! كم الساعة؟»"
+    },
+    {
+      "index": 25,
+      "en": "\"Twenty-two minutes after eleven,\" returned Passepartout, drawing an enormous silver watch from the depths of his pocket. \"You are too slow,\" said Mr. Fogg. \"Pardon me, Monsieur, it is impossible—\"",
+      "existingArabicDraft": "أجاب باسبارتو وهو يخرج ساعة فضية ضخمة من أعماق جيبه: «الحادية عشرة واثنتان وعشرون دقيقة». قال فوغ: «ساعتك متأخرة». فقال: «اعذرني يا سيدي، هذا مستحيل...»"
+    },
+    {
+      "index": 26,
+      "en": "\"You are four minutes too slow. No matter; it's enough to mention the error. Now from this moment, twenty-nine minutes after eleven, a.m., this Wednesday, 2nd October, you are in my service.\"",
+      "existingArabicDraft": "«إنها متأخرة أربع دقائق. لا بأس؛ يكفي أن ننبه إلى الخطأ. والآن، اعتبارًا من هذه اللحظة، الساعة الحادية عشرة وتسع وعشرين دقيقة صباحًا من يوم الأربعاء الثاني من أكتوبر، أصبحت في خدمتي»."
+    },
+    {
+      "index": 27,
+      "en": "Phileas Fogg got up, took his hat in his left hand, put it on his head with an automatic motion, and went off without a word.",
+      "existingArabicDraft": "نهض فيلياس فوغ، وأخذ قبعته بيده اليسرى ووضعها على رأسه بحركة آلية، ثم خرج دون أن ينبس بكلمة."
+    },
+    {
+      "index": 28,
+      "en": "Passepartout heard the street door shut once; it was his new master going out. He heard it shut again; it was his predecessor, James Forster, departing in his turn. Passepartout remained alone in the house in Saville Row.",
+      "existingArabicDraft": "سمع باسبارتو باب الشارع يُغلق مرة، فقد خرج سيده الجديد. ثم سمعه يُغلق ثانية، إذ غادر سلفه جيمس فورستر بدوره. وبقي باسبارتو وحده في منزل سافيل رو."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "أجاب السيد فوغ: «اسم باسبارتو يناسبني. لقد تلقيت توصية جيدة بشأنك؛ وسمعت عنك تقارير طيبة. أتعرف شروطي؟» أجاب: «نعم يا سيدي». فقال: «جيد! كم الساعة الآن؟»"
+    },
+    {
+      "index": 1,
+      "ar": "أجاب باسبارتو وهو يستخرج ساعة فضية ضخمة من أعماق جيبه: «الحادية عشرة واثنتان وعشرون دقيقة». قال السيد فوغ: «ساعتك بطيئة للغاية». فرد عليه: «اعذرني يا سيدي، هذا مستحيل...»"
+    },
+    {
+      "index": 2,
+      "ar": "«ساعتك متأخرة أربع دقائق. لا يهم؛ يكفي أن نشير إلى الخطأ. والآن، من هذه اللحظة، الحادية عشرة وتسع وعشرون دقيقة صباحًا، يوم الأربعاء الثاني من أكتوبر، أصبحت في خدمتي»."
+    },
+    {
+      "index": 3,
+      "ar": "نهض فيلياس فوغ، وأخذ قبعته بيده اليسرى، ووضعها على رأسه بحركة آلية، ثم انصرف دون أن ينبس ببنت شفة."
+    },
+    {
+      "index": 4,
+      "ar": "سمع باسبارتو باب الشارع يُغلق مرة؛ فقد كان ذلك خروج سيده الجديد. ثم سمعه يُغلق ثانية؛ فقد كان ذلك رحيل سلفه جيمس فورستر بدوره. بقي باسبارتو وحيدًا في المنزل الكائن في شارع سافيل رو."
+    }
+  ],
+  "model": "gemini-3.1-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": "لا توجد ملاحظات"
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
