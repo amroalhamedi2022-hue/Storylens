@@ -23,6 +23,10 @@ from gemini_verne_editorial import choose_models, http_json, BASE_API
 
 ROOT = Path(__file__).resolve().parents[1]
 GALLERY = ROOT / "docs/literature/staging/verne-commons-period-plates"
+WORK_ID = "around-the-world-in-eighty-days-towle"
+EDITION_CONTEXT = "Historian/editor comparing real engraved plate with its 1873 English Towle novel text"
+ORIGINAL_ARTIST = "Alphonse de Neuville and Léon Benett"
+ILLUSTRATED_EDITION = "Around the World in Eighty Days, nineteenth-century illustrated editions"
 OUTPUT = ROOT / "docs/literature/staging/verne-commons-scene-reviews"
 MAX_ITEMS = 4
 MAX_IMAGE_BYTES = 1_000_000
@@ -248,7 +252,11 @@ def make_review(key: str, models: list[str], chapters: list[dict], corpus_sha: s
     rec = existing or {
         "schemaVersion": 1,
         "status": "VISION_REVIEW_PENDING",
-        "workId": "around-the-world-in-eighty-days-towle",
+        "workId": WORK_ID,
+        "originalCreator": ORIGINAL_ARTIST,
+        "historicIllustratedEdition": ILLUSTRATED_EDITION,
+        "individualSourceLicense": image.get("individualCommonsLicense", "UNVERIFIED"),
+        "rightsStatus": image.get("rightsStatus", "PENDING_TERRITORIAL_REVIEW"),
         "originalIllustrationPage": image["commonsPage"],
         "imagePath": str(imgpath.relative_to(ROOT)),
         "imageSha256": sha(raw),
@@ -292,7 +300,7 @@ def make_review(key: str, models: list[str], chapters: list[dict], corpus_sha: s
     suggestion, model = gemini_json(
         key, models,
         [{"text": json.dumps({
-            "role": "Historian/editor comparing real engraved plate with its 1873 English Towle novel text",
+            "role": EDITION_CONTEXT,
             "task": ("Find only a visually plausible illustration-to-passage correspondence using the actual "
                      "image description and the provided EXACT original paragraph excerpts. Select exactly one "
                      "provided chapter/paragraph pair and quote EXACT contiguous words from its englishSource; "
