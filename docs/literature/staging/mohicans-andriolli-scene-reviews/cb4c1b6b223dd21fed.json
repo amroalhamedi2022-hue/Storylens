@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p108.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-cb4c1b6b223dd21f.webp",
+  "imageSha256": "90b17f79c1b90776213d29af0070fc6de4621fad95f641c0fb768ffbf5dc72bf",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting four figures in 18th-century attire gathered in a rocky, cave-like setting. One man stands to the left, looking away, while another man sits on a rock to the right, holding an open book and gesturing as if reading aloud. Two women sit between them, listening. The style is characteristic of late 19th-century book illustration.",
+    "visualObjectsEn": "18th-century coats, breeches, tricorn hats, an open book, rocky cave walls, foliage on the ground.",
+    "recognizableCharactersOrPeopleEn": "Two men dressed in 18th-century gentleman's clothing and two women dressed in 18th-century gowns and bonnets.",
+    "uncertaintyNotes": "The specific identities of the characters and the exact narrative context are not provided in the image itself, though the style is consistent with 19th-century historical fiction illustrations."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

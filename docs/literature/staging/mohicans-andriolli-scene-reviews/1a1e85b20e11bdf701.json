@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p141_2.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-1a1e85b20e11bdf7.webp",
+  "imageSha256": "1b9c4c7c6670c51dd4185b4bb29d870a3c3c3431617c41f2e96d7b47d1ddfa11",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a group of people in a dense forest. A man in 18th-century European attire stands near a tree on the left, looking upward. In the foreground, a woman with long hair is hunched over, seemingly distressed or bound, while another person in period clothing stands beside her. To the right, a group of indigenous men, some wearing feathered headdresses and carrying weapons like rifles and tomahawks, are gesturing and surrounding the others. The composition is dramatic, with high-contrast hatching and cross-hatching typical of 19th-century book illustrations.",
+    "visualObjectsEn": "Trees, forest floor with branches, 18th-century European-style coats, tricorn hats, rifles, tomahawks, feathered headdresses, long hair, period-appropriate dresses.",
+    "recognizableCharactersOrPeopleEn": "A man in European colonial-style clothing, a woman with long hair, a second person in colonial-style clothing, and several indigenous men depicted in a style common to 19th-century historical illustrations.",
+    "uncertaintyNotes": "The specific identities of the individuals and the exact historical or literary event being depicted are not explicitly stated in the image, though the style is characteristic of 19th-century romanticized historical engravings. The exact nature of the interaction (e.g., capture, confrontation, or guidance) is open to interpretation based on the visual cues."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 11,
+    "paragraphIndexZeroBased": 54,
+    "exactSourceQuotation": "He was then bound and fastened to the body of the sapling, on whose branches Magua had acted the pantomime of the falling Huron. When the young soldier regained his recollection, he had the painful certainty before his eyes that a common fate was intended for the whole party. On his right was Cora, in a durance similar to his own, pale and agitated, but with an eye, whose steady look still read the proceedings of their enemies. On his left, the withes which bound her to a pine, performed that office for Alice",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description matches the capture of Heyward, Cora, and Alice by the Hurons in Chapter 11. The engraving depicts the European characters bound or distressed in a forest setting surrounded by indigenous warriors, which aligns with the text describing Heyward and the women being bound to trees while the Hurons surround them.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a group of colonial captives bound to trees in a forest, surrounded by indigenous warriors in feathered headdresses, illustrating a scene of capture from The Last of the Mohicans.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows the captured characters bound to trees in the forest as described in the passage: Heyward is bound and fastened to a sapling while looking around, Cora and Alice are bound to trees near him, and David (the singing-master) stands nearby on the left looking upward, surrounded by indigenous warriors including one gesturing towards them.",
+    "visualContradictions": "None detected; the scene precisely matches the grouping, the binding to trees, and the characters present in the passage.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

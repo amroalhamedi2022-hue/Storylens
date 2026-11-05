@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p102.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-e2826f458c992589.webp",
+  "imageSha256": "5804826d64d9f75f0ddc86fedeba4fcf0326f9e2bc610de5262d5c4938ea3cbf",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting three figures in a wooded, outdoor setting near a stream. A man dressed in fringed buckskin clothing stands in the foreground, holding the hand of a woman wearing a long, dark dress and a veil or head covering. Behind them, standing near a large rock and tree, is a man wearing feathers in his hair and traditional indigenous-style clothing with a sheathed knife at his waist. The style is characteristic of 19th-century book illustration.",
+    "visualObjectsEn": "Fringed buckskin clothing, long dark dress, veil, feathers, sheathed knives, rocky terrain, stream, trees, foliage.",
+    "recognizableCharactersOrPeopleEn": "A man in buckskin, a woman in a dark dress, and a man with feathers in his hair.",
+    "uncertaintyNotes": "The specific identities of the figures are not provided in the image, though the style suggests a 19th-century literary illustration. The exact nature of the interaction between the figures is open to interpretation."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
