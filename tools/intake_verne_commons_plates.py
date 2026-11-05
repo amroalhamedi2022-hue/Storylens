@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Acquire genuine Commons-hosted Verne period plates into quarantine; never publish."""
 import hashlib, io, json, os, re, time
+from urllib.error import HTTPError
 from pathlib import Path
 from urllib.parse import urlencode, urlparse
 from urllib.request import Request, urlopen
@@ -24,6 +25,10 @@ def request(url,limit):
             time.sleep(2+attempt)
 def api(params):
     return json.loads(request(API+"?"+urlencode({"format":"json","formatversion":2,**params}),3_000_000))
+def save_manifest(known):
+    manifest=OUT/"manifest.json"
+    manifest.write_text(json.dumps({"status":"QUARANTINE_NOT_PUBLISHED","sourceCategory":CATEGORY,"images":[known[k] for k in sorted(known)]},ensure_ascii=False,indent=2)+"\n")
+
 def main():
     OUT.mkdir(parents=True,exist_ok=True)
     manifest=OUT/"manifest.json"
@@ -40,14 +45,22 @@ def main():
     for title in sorted(set(members)):
         if added>=30: break
         if title in known: continue
-        record=api({"action":"query","titles":title,"prop":"imageinfo","iiprop":"url|size|mime|extmetadata"})
+        record=api({"action":"query","titles":title,"prop":"imageinfo","iiprop":"url|size|mime|extmetadata","iiurlwidth":1200})
         pages=record.get("query",{}).get("pages",[])
         info=pages[0].get("imageinfo",[{}])[0] if pages else {}
         url=info.get("url","")
         host=urlparse(url).hostname or ""
         if host not in ("upload.wikimedia.org",) or info.get("mime") not in ("image/jpeg","image/png","image/webp"): continue
         if info.get("size",MAX+1)>MAX: continue
-        raw=request(url,MAX)
+        download_url=info.get("thumburl") or url
+        try:
+            raw=request(download_url,MAX)
+        except HTTPError as exc:
+            if exc.code in (429,503):
+                print("RATE_LIMIT_STOP; preserving verified files",flush=True)
+                break
+            print("SKIP_HTTP",title,exc.code,flush=True)
+            continue
         with Image.open(io.BytesIO(raw)) as im:
             im.verify()
         with Image.open(io.BytesIO(raw)) as im:
@@ -60,10 +73,11 @@ def main():
         if target.exists() and hashlib.sha256(target.read_bytes()).hexdigest()!=sha: raise ValueError("hash mismatch")
         if not target.exists(): target.write_bytes(raw)
         meta=info.get("extmetadata",{})
-        known[title]={"commonsTitle":title,"commonsDescriptionPage":"https://commons.wikimedia.org/wiki/"+title.replace(" ","_"),"sourceUrl":url,"sourceSha256":sha,"localFile":name,"bytes":len(raw),"width":width,"height":height,"mime":info["mime"],"licenseShortName":meta.get("LicenseShortName",{}).get("value","UNVERIFIED"),"artistMetadata":meta.get("Artist",{}).get("value",""),"creditMetadata":meta.get("Credit",{}).get("value",""),"rightsStatus":"PENDING_INDIVIDUAL_AND_TERRITORIAL_REVIEW","chapterAnchorStatus":"NOT_REVIEWED","publicationStatus":"STAGED_ONLY_NOT_IN_APP"}
+        known[title]={"commonsTitle":title,"commonsDescriptionPage":"https://commons.wikimedia.org/wiki/"+title.replace(" ","_"),"sourceUrl":url,"downloadUrl":download_url,"sourceSha256":sha,"localFile":name,"bytes":len(raw),"width":width,"height":height,"mime":info["mime"],"licenseShortName":meta.get("LicenseShortName",{}).get("value","UNVERIFIED"),"artistMetadata":meta.get("Artist",{}).get("value",""),"creditMetadata":meta.get("Credit",{}).get("value",""),"rightsStatus":"PENDING_INDIVIDUAL_AND_TERRITORIAL_REVIEW","chapterAnchorStatus":"NOT_REVIEWED","publicationStatus":"STAGED_ONLY_NOT_IN_APP"}
         added+=1
+        save_manifest(known)
         print("STAGED",title,sha,flush=True)
         time.sleep(0.4)
-    manifest.write_text(json.dumps({"status":"QUARANTINE_NOT_PUBLISHED","sourceCategory":CATEGORY,"images":[known[k] for k in sorted(known)]},ensure_ascii=False,indent=2)+"\n")
+    save_manifest(known)
     print("NEW_REAL_IMAGE_FILES",added,"TOTAL",len(known),flush=True)
 if __name__=="__main__": main()
