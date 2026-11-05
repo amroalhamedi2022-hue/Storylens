@@ -144,18 +144,49 @@ def choose_models(key: str) -> list[str]:
     return choices
 
 
+def output_schema(task: dict) -> dict:
+    field = next(iter(task["outputStrictJSON"]))
+    count = len(task["paragraphs"])
+    if field == "translations":
+        props = {"index": {"type": "integer"}, "ar": {"type": "string"}}
+        required = ["index", "ar"]
+    elif field == "checks":
+        props = {"index": {"type": "integer"}, "adequate": {"type": "boolean"},
+                 "issues": {"type": "string"}}
+        required = ["index", "adequate", "issues"]
+    else:
+        raise ValueError("Unknown output schema type")
+    return {
+        "type": "object",
+        "properties": {
+            field: {
+                "type": "array", "minItems": count, "maxItems": count,
+                "items": {"type": "object", "properties": props, "required": required},
+            },
+        },
+        "required": [field],
+    }
+
+
 def generate(key: str, model: str, task: dict) -> dict:
     result = http_json(
         BASE_API + "/models/" + model + ":generateContent", key,
         {"contents": [{"role": "user", "parts": [{"text": json.dumps(task, ensure_ascii=False)}]}],
-         "generationConfig": {"temperature": 0.1, "responseMimeType": "application/json",
-                              "maxOutputTokens": 8192}},
+         "generationConfig": {
+             "temperature": 0.1,
+             "responseMimeType": "application/json",
+             "responseJsonSchema": output_schema(task),
+             "maxOutputTokens": 8192,
+         }},
     )
     try:
         reply = "".join(p["text"] for p in result["candidates"][0]["content"]["parts"] if "text" in p)
-        return json.loads(reply)
+        parsed = json.loads(reply)
+        expected = next(iter(task["outputStrictJSON"]))
+        validate_entries(parsed, expected, len(task["paragraphs"]))
+        return parsed
     except (KeyError, IndexError, ValueError, TypeError) as exc:
-        raise ValueError("Gemini returned invalid or truncated structured JSON") from exc
+        raise ValueError("Gemini structured result was incomplete or violated paragraph count") from exc
 
 
 def translate_task(rows: list[dict], chapter: int) -> dict:
@@ -250,6 +281,7 @@ def self_test() -> None:
     rows = [{"en": "The time had come.", "existingArabicDraft": "حان الوقت."}]
     payload = translate_task(rows, 1)
     assert payload["paragraphs"][0]["index"] == 0
+    assert output_schema(payload)["properties"]["translations"]["minItems"] == 1
     assert len(validate_entries({"translations": [{"index": 0, "ar": "لقد حان الوقت."}]}, "translations", 1)) == 1
     assert len(validate_entries({"checks": [{"index": 0, "adequate": True, "issues": ""}]}, "checks", 1)) == 1
     for invalid in ({"translations": []}, {"translations": [{"index": 0, "ar": "English only"}]},
