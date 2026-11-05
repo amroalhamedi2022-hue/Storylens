@@ -160,10 +160,30 @@ def generate() -> dict:
             ) != allowed[image["imagePath"]]:
                 raise ValueError("Verne map contains an unpinned historical source image")
     verne = map_coverage(MAP, 37)
+    commons_gallery = STAGING / "verne-commons-period-plates" / "manifest.json"
+    commons_candidates = 0
+    if commons_gallery.is_file():
+        commons_archive = jload(commons_gallery)
+        if commons_archive.get("chapterSceneMatchingComplete") is not False:
+            raise ValueError("Staged Commons gallery status unexpectedly claims chapter clearance")
+        sha1s = set()
+        for image in commons_archive["images"]:
+            check_binary(
+                str((commons_gallery.parent / image["localPath"]).relative_to(ROOT)),
+                image["webpSha256"],
+            )
+            original_sha1 = image["originalCommonsSHA1MetadataOnly"]
+            if original_sha1 in sha1s or original_sha1 in {x.get("expected_sha1") for x in manifest}:
+                raise ValueError("Commons image duplicates a staged Verne original image")
+            if image.get("sceneChapterMatchStatus") != "UNREVIEWED__NO_CHAPTER_CARD":
+                raise ValueError("Commons image falsely promoted to a verified chapter card")
+            sha1s.add(original_sha1)
+        commons_candidates = len(commons_archive["images"])
     rows = [
         {"bookId": "around-the-world-in-eighty-days-towle",
          "title": "Around the World in Eighty Days", "sourceState": "37 source chapters plus Arabic draft",
-         "chapterCount": 37, "archivedLocalHistoricArt": len(manifest) + len(additional), **verne},
+         "chapterCount": 37, "archivedLocalHistoricArt": len(manifest) + len(additional) + commons_candidates,
+         "unassignedHistoricalCommonsImageFiles": commons_candidates, **verne},
         {"bookId": "collins-the-moonstone-1868", "title": "The Moonstone",
          "sourceState": "staged English; chapter segmentation/rights pending",
          "chapterCount": None, "narrativeSourceUnitsNotChapterCount": 53,
@@ -246,7 +266,7 @@ def generate() -> dict:
                        sum(r.get("archivedLocalHistoricArt", 0) for r in rows)},
         "books": rows,
         "nextWork": [
-            "Backfill the remaining Verne chapter image gaps; secure rights and individual scene approval for all authentic plates",
+            "Scene-match new Commons original Verne engravings to the actual text for remaining chapter gaps; verify every file's artist, edition and territorial rights before promotion",
             "Review the five backfilled historic chapter maps and 117 Monte Cristo chapter slots; get original contextual plates for remaining holes and editorial/territorial clearance",
             "Source contextual art for all 27 The War of the Worlds chapters",
             "Backfill Valley of Fear, Kalila, Arabian Nights and remaining previous works with verified edition-specific chapter images",
@@ -297,6 +317,8 @@ def markdown(report: dict) -> str:
         "- Machine-readable counts: docs/literature/CHAPTER_ART_PROGRESS.json.",
         "- Chapter-level Verne candidate map: docs/literature/staging/verne-chapter-cards/chapter-image-map.json.",
         "- Exact historic scan/rights source list: docs/literature/HISTORIC_VERNES_ASSETS.json.",
+        "- New original Commons period images in quarantine, NOT chapter-mapped: **" +
+          str(report["books"][0].get("unassignedHistoricalCommonsImageFiles", 0)) + "**.",
         "- GitHub handoff: docs/handoffs/LINGUA_TALES_HANDOFF_CURRENT.md.",
         "- Story content automation is separate from the scheduled GitHub report; inspect latest Actions SHA and output before claiming any new image.",
         "- This inventory does NOT assert that a chapter card exists for any staged book lacking a verified chapter-to-image map, even if its archive contains hundreds of figures.",
