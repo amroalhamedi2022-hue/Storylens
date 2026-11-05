@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_16.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-899021d144520b46.webp",
+  "imageSha256": "de4d4163767277dd772d98f0233b631cce47f6d1544f33c508723a10bf650578",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a tropical landscape with a steam train passing in the background near an ornate temple complex. In the foreground, two tigers are resting or prowling near a body of water surrounded by dense jungle vegetation.",
+    "visualObjectsEn": "Steam train, railway cars, smoke, ornate temple towers, palm trees, dense jungle foliage, water, two tigers, birds in the sky.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The specific geographical location is not explicitly stated, though the architecture suggests an Indian temple style. The exact historical origin of the engraving is unknown, though it follows the style of 19th-century book illustrations."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 11,
+    "paragraphIndexZeroBased": 9,
+    "exactSourceQuotation": "jungles inhabited by snakes and tigers, which fled at the noise of the train",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The passage explicitly describes a train passing through Indian jungles inhabited by tigers, which aligns perfectly with the visual elements of the engraving (steam train, jungle, tigers).",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a steam train traveling through an Indian jungle landscape with tigers in the foreground and temple architecture in the distance.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a steam train passing through a tropical landscape in India, with smoke rising near palm trees, dense jungle foliage, ornate Indian-style temples in the background, and tigers in the foreground, directly matching Passepartout's observations from the train window in the passage.",
+    "visualContradictions": "None.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

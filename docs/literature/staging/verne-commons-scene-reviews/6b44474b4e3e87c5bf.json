@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_15.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-6b44474b4e3e87c5.webp",
+  "imageSha256": "5e9264132e771e141c6ad8667180ebaf25c3cae33f46484909feacd3f7f49010",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a dramatic, violent confrontation inside a stone building with architectural columns. A young man in Western-style clothing is in the center, lunging forward and grabbing an older man wearing a turban and robes by the throat. To the left, another man in a turban and robes is raising a long, thin weapon or stick above his head as if to strike. In the lower left, a figure is crouched or fallen on the ground. The background features stone walls and a decorative relief sculpture of a figure on a pillar.",
+    "visualObjectsEn": "Stone columns, architectural relief sculpture, robes, turbans, long thin weapon or staff, stone floor, clothing with folds and textures.",
+    "recognizableCharactersOrPeopleEn": "A young man in a jacket and trousers, an older man in a turban and robes being choked, a man in a turban and robes holding a weapon, a figure crouched on the floor.",
+    "uncertaintyNotes": "The specific identities of the figures and the exact nature of the weapon are not explicitly stated in the image. The architectural style is ambiguous, suggesting a historical or fantasy setting."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 34,
+    "paragraphIndexZeroBased": 16,
+    "exactSourceQuotation": "Fix, who found himself on the floor, did not utter a word. He had only received his deserts.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The scene depicts a violent confrontation where a man is on the floor and another is being grabbed by the throat. While the text describes the aftermath of a fight (Fix on the floor after being struck by Fogg), it is the only passage provided that explicitly mentions a character being on the floor in a context of a physical confrontation involving the main characters.",
+    "suggestedAltArNotApproved": "A dramatic illustration of Phileas Fogg confronting Fix, with Fix on the floor after the altercation.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a violent physical confrontation inside a stone building, with a young man choking an older man in robes and another man raising a weapon, while a figure lies on the floor.",
+    "visualContradictions": "The passage describes Fix on the floor, and Fogg, Aouda, and Passepartout leaving the Custom House to get into a cab and go to the station. The engraving depicts a violent scuffle or attack involving individuals in turbans and robes, which completely contradicts the specified calm departure and the specific characters involved in the text.",
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

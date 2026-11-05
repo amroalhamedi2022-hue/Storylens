@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_14.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-84c01dde597d980d.webp",
+  "imageSha256": "dab05ea6f4a165be0fcd28a9f92cef338debd81a1ffc77633d59dccf5b242957",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a woman dancing in an open-air pavilion with ornate columns. She is surrounded by a group of seated and standing people, including musicians playing instruments. The background shows hints of architectural structures, possibly temples or palaces, under a sky.",
+    "visualObjectsEn": "Ornate stone columns, arched ceiling, patterned floor, a metal vessel or ewer, musical instruments (small cymbals and a drum), draped clothing, jewelry on the dancer's ankles.",
+    "recognizableCharactersOrPeopleEn": "A central female dancer in motion, a group of women standing and watching, seated musicians, and a seated figure in the foreground wearing a turban.",
+    "uncertaintyNotes": "The specific cultural or historical context of the scene is not explicitly stated in the image, though the attire and architecture suggest a South Asian setting. The exact nature of the event (performance, ritual, or social gathering) is inferred from the visual cues."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 10,
+    "paragraphIndexZeroBased": 16,
+    "exactSourceQuotation": "Indian dancing-girls, clothed in rose-coloured gauze, looped up with gold and silver, danced airily, but with perfect modesty, to the sound of viols and the clanging of tambourines.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description of a woman dancing in an open-air pavilion with musicians playing cymbals and drums matches the text describing Indian dancing-girls performing to the sound of viols and tambourines during a religious carnival in Bombay.",
+    "suggestedAltArNotApproved": "An engraving of an Indian dancing-girl performing in an open-air pavilion, surrounded by musicians and spectators.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts an Indian dancing-girl in motion within an open-air pavilion or festive setting, surrounded by crowds of onlookers and musicians playing instruments such as small cymbals and a drum, matching the description of the Parsee festival and dancing-girls in the passage.",
+    "visualContradictions": "None",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
