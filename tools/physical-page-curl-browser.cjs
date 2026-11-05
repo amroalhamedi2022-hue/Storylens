@@ -26,7 +26,8 @@ const server=http.createServer((req,res)=>{
     const id=rtl?'thirteenth-bell-arabic':'last-passenger';
     put('chapter_'+id,0);put('readpage_anchor_'+id+'_0',0);openStory(id);
    },rtl);
-   await page.waitForTimeout(500);
+   await page.evaluate(()=>document.fonts.ready);
+   await page.waitForTimeout(400);
    const spread=landscape?2:1;
    assert.equal(await page.locator('#sentences').getAttribute('data-spread'),String(spread));
    assert.equal(await page.locator('#sentences > .is-active').count(),spread);
@@ -52,8 +53,13 @@ const server=http.createServer((req,res)=>{
    assert.equal(await page.locator('.lt-curl-under').count(),1);
    assert.equal(await page.locator('.lt-curl-stage .tok').count(),0,'no duplicate dictionary buttons');
    assert.equal(await page.locator('.lt-curl-stage [id]').count(),0,'no duplicate DOM identities');
+   assert.ok(await page.evaluate(()=>{
+    const ink=document.querySelector('.lt-curl-facet:last-child .lt-curl-back .lt-curl-ink');
+    const style=getComputedStyle(ink),width=ink.getBoundingClientRect().width;
+    return ink.textContent.trim().length>10&&style.backfaceVisibility==='visible'&&parseFloat(style.transformOrigin)>0&&width>0;
+   }),'reverse ink remains visible and reflected about the centre, not moved off paper');
    await page.screenshot({path:path.join(out,`curl-${rtl?'rtl':'ltr'}-${landscape?'spread':'portrait'}-held.png`)});
-   await page.evaluate(()=>endCurl());await page.waitForTimeout(1400);
+   await page.evaluate(()=>endCurl());await page.waitForFunction(()=>!LinguaReaderCurl.active,{},{timeout:5000});
    assert.equal(await page.evaluate(()=>testEvents.filter(e=>e.event==='commit').length),1);
    assert.equal(await page.locator('.lt-curl-stage').count(),0);
    await page.screenshot({path:path.join(out,`curl-${rtl?'rtl':'ltr'}-${landscape?'spread':'portrait'}-landed.png`)});

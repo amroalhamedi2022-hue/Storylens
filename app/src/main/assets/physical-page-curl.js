@@ -64,7 +64,18 @@ function geometry(width,height,distance,vertical,grabY,edge='right',segments=20)
    m=[m[0],-m[1],-m[2],0,-m[4],m[5],m[6],0,-m[8],m[9],m[10],0,w-w*m[0]-tx,w*m[1]+ty,w*m[2]+tz,1];
    poly.forEach(q=>q.x=w-q.x);
   }
-  return {polygon:poly,matrix:m,angle,shade:clamp(.07+.36*Math.sin(angle)-.06*Math.cos(angle),0,.48)};
+  const shadeAt=t=>clamp(.07+.36*Math.sin(t)-.06*Math.cos(t),0,.48);
+  const shade=shadeAt(angle);
+  let light='rgba(35,29,20,'+shade.toFixed(3)+')';
+  if(i>0&&i<ranges.length-1){
+   const midV=tangent.x*w/2+tangent.y*h/2;
+   const offset=edge==='left'?n.x*w:0;
+   const minProjection=Math.min(0,(edge==='left'?-1:1)*n.x*w)+Math.min(0,n.y*h);
+   const position=t=>crease+slopeC*midV+(baseR+slopeR*midV)*t-offset-minProjection;
+   const degrees=90+Math.atan2(n.y,edge==='left'?-n.x:n.x)*180/Math.PI;
+   light='linear-gradient('+degrees+'deg,rgba(35,29,20,'+shadeAt(a).toFixed(3)+') '+position(a).toFixed(2)+'px,rgba(35,29,20,'+shadeAt(b).toFixed(3)+') '+position(b).toFixed(2)+'px)';
+  }
+  return {polygon:poly,matrix:m,angle,shade,light};
  });
  return {facets,progress:p,radius,crease,normal:n};
 }
@@ -124,6 +135,7 @@ function mount(options){
    node.style.clipPath='polygon('+g.polygon.map(p=>p.x.toFixed(2)+'px '+p.y.toFixed(2)+'px').join(',')+')';
    node.style.transform='matrix3d('+g.matrix.map(x=>x.toFixed(6)).join(',')+')';
    node.style.setProperty('--lt-curl-shade',g.shade.toFixed(3));
+   node.style.setProperty('--lt-curl-light',g.light);
    node.firstElementChild.style.display=g.angle<=Math.PI/2?'block':'none';
    node.lastElementChild.style.display=g.angle>Math.PI/2?'block':'none';
   });
@@ -154,7 +166,7 @@ function mount(options){
   const h=hold;if(!h)return;
   if(!h.started){hold=null;return;}
   h.settling=true;h.target=success?2*h.width:0;h.success=success;
-  h.velocity=clamp(h.velocity*1000,-h.width*4,h.width*4);h.time=0;h.elapsed=0;
+  h.velocity=clamp(h.velocity*1000,-h.width*4,h.width*4);h.time=0;h.startedAt=0;h.elapsed=0;
   if(reduced.matches){finish(success,'release');return;}
   request();
  }
@@ -162,7 +174,7 @@ function mount(options){
   frame=0;const h=hold;if(!h)return;
   if(!host.isConnected||dead){cancel('detached');return;}
   if(h.settling){
-   const dt=h.time?Math.min(.032,(time-h.time)/1000):1/60;h.time=time;h.elapsed+=dt;
+   const dt=h.time?Math.min(.032,(time-h.time)/1000):1/60;h.time=time;if(!h.startedAt)h.startedAt=time;h.elapsed=(time-h.startedAt)/1000;
    // Stable semi-implicit integration in <=8ms steps, independent of refresh rate.
    const steps=Math.ceil(dt/.008),step=dt/steps;
    for(let i=0;i<steps;i++){h.velocity+=((h.target-h.distance)*210-h.velocity*29)*step;h.distance=clamp(h.distance+h.velocity*step,0,2*h.width);}
