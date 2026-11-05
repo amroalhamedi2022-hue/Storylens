@@ -13,9 +13,10 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
-  group: lingua-tales-historic-commons-serial
+  group: lingua-monte-original-chapter-art-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -37,7 +38,7 @@ jobs:
           set -euo pipefail
           python tools/map_monte_cristo_chapter_art.py --write
           python tools/map_monte_cristo_chapter_art.py --verify
-      - name: Checkpoint genuine picture-to-chapter map
+      - name: Save genuine Monte Cristo chapter image map and request central audit
         shell: bash
         run: |
           set -euo pipefail
@@ -46,12 +47,26 @@ jobs:
           git add docs/literature/staging/user-requested-classics-20261105/the-count-of-monte-cristo/chapter-image-map.json
           git diff --cached --check
           if git diff --cached --quiet; then
-            echo "Map unchanged; no duplicate commit"
+            echo "Historical Monte Cristo map unchanged; no duplicate commit."
           else
-            git commit -m 'Literature: checkpoint 117 original chapter slots and historical local plate candidates [skip ci]'
-            git pull --rebase origin "$GITHUB_REF_NAME"
-            git push origin "HEAD:$GITHUB_REF_NAME"
+            git commit -m 'Literature: checkpoint source-anchored Monte Cristo chapter image candidates'
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              python tools/map_monte_cristo_chapter_art.py --verify
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 2
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Could not push verified Monte Cristo chapter map"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = "main" ]; then
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
           fi
+        env:
+          GH_TOKEN: ${{ github.token }}
       - name: Retain generated map for inspection
         if: always()
         uses: actions/upload-artifact@v4
