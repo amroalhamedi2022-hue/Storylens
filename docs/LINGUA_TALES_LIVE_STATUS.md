@@ -580,3 +580,9 @@ Checkpoint: 2026-11-01. Read MASTER PLAN for immutable scope and IDs; this file 
 
 ## 2026-11-05 — RDR-01..RDR-13 user request CAPTURED as PLAN only
 Source baseline reviewed: main 064258074b4a3c4d5fb139aa4c163a28ca27b66a / CI #41866847856 success. Saved docs/plans/LINGUA_TALES_READER_REDESIGN_2026-11-05.md and docs/prompts/CODEX_PHYSICAL_PAGE_CURL_2026-11-05.md. Codex exclusively implements paper curl; this stream handles rest. No 13-item code marked DONE, no APK built or signed, no new audio downloaded; signed 100866 remains last deliverable. The 20 existing ambient loops + 4 SFX, 10 offline fonts, exact 6 retained themes, current immersive WebView and adaptive approved icon paths have been inspected; follow precise acceptance gates.
+
+
+### 2026-11-05 — Content-only historical image coverage integrity gate (PR pending)
+- Added `tools/literature-art-coverage.test.cjs` to CI. It reads actual local 1872–1873 Verne WebP binaries, verifies every recorded SHA-256/byte size and source/scene metadata, checks uniqueness, and prints chapter-by-chapter image counts with `--json` (or writes to `LT_ART_COVERAGE_OUTPUT`).
+- Current pinned baseline: **9 verified local images across 9 of 37 Verne chapters**, **0 chapters with 2+ verified historical images**; 28 chapters have none. Four additional Verne art candidates and three Moonstone candidates remain **NOT DOWNLOADED / RIGHTS PENDING**, and are deliberately excluded from shipped-image totals. Moonstone 53 narrative units and War of the Worlds 27 narrative units remain staged only with zero approved local chapter images in this audit.
+- This is an actual executable content QA addition, **not** a new novel, translation, image download, release clearance or publication. Exact PR CI must pass before merging; territorial distribution and bilingual editorial approval remain open. No UI, reader storage, signed APK or keys changed.
