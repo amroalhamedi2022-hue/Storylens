@@ -1,0 +1,99 @@
+name: Lingua Tales - resumable Gemini chapter production
+on:
+  push:
+    branches:
+      - content/gemini-verne-resumable-editorial-20261105
+    paths:
+      - 'tools/export_verne_chapter.cjs'
+      - 'tools/gemini_verne_editorial.py'
+      - '.github/workflows/gemini-verne-editorial.yml'
+  schedule:
+    - cron: '37 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lingua-tales-gemini-verne-editorial
+  cancel-in-progress: false
+
+jobs:
+  verify-and-generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout original literature source
+        id: checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify source extractor and Gemini response guards without API key
+        run: |
+          set -euo pipefail
+          node tools/export_verne_chapter.cjs 1 --check
+          node tools/export_verne_chapter.cjs 13 --check
+          node tools/export_verne_chapter.cjs 37 --check
+          python tools/gemini_verne_editorial.py --self-test
+      - name: Checkout durable editorial checkpoint branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          BRANCH=content/gemini-verne-editorial-output
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null; then
+            git fetch origin "$BRANCH"
+            git switch -C "$BRANCH" FETCH_HEAD
+            git fetch origin main
+            if ! git merge --no-edit origin/main; then
+              git merge --abort || true
+              echo "::error::Checkpoint branch cannot safely merge newest main; no overwrite"
+              exit 1
+            fi
+          else
+            git switch -c "$BRANCH"
+          fi
+      - name: Generate and independently audit bounded bilingual segments
+        id: generate
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/gemini_verne_editorial.py --max-segments 4
+      - name: Checkpoint completed segments even if later API calls fail
+        if: ${{ always() && steps.checkout.outcome == 'success' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          BRANCH=content/gemini-verne-editorial-output
+          if [ "$(git branch --show-current)" != "$BRANCH" ]; then
+            echo "Safe checkpoint branch not checked out; skipping output commit"
+            exit 0
+          fi
+          DIR=docs/literature/staging/gemini-verne-editorial
+          if [ -d "$DIR" ]; then
+            git add -f "$DIR"
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No new Gemini output to checkpoint"
+          else
+            git commit -m "Literature: checkpoint source-hashed Gemini chapter draft and QA segments"
+          fi
+          git push origin "HEAD:$BRANCH"
+      - name: Keep inspectable artifacts on successful or partial output
+        if: ${{ always() && steps.checkout.outcome == 'success' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gemini-verne-editorial-checkpoint
+          path: docs/literature/staging/gemini-verne-editorial/
+          if-no-files-found: ignore
+          retention-days: 21
