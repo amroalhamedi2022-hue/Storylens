@@ -158,7 +158,9 @@ def verify(folder: Path) -> dict:
             if list(img.size) != [row["width"], row["height"]]:
                 raise ValueError(f"Image dimensions drift: {row['localPath']}")
     print(f"VERIFIED {folder.name}: original COMPLETE, {manifest['source']['narrativeWords']} words, "
-          f"{len(manifest['art'])} real local period illustrations, exact HTML scene positions", flush=True)
+          f"{manifest['historicArtFiles']} real local period illustrations "
+          f"(plus {len(manifest['art']) - manifest['historicArtFiles']} original document UI graphics), "
+          f"exact HTML scene positions", flush=True)
     return manifest
 
 
@@ -199,7 +201,7 @@ def acquire(book_slug: str) -> None:
                 with Image.open(BytesIO(data)) as pic:
                     original_format = pic.format
                     original_dimensions = list(pic.size)
-                    if pic.width < 40 or pic.height < 40 or pic.width * pic.height > 80_000_000:
+                    if pic.width < 1 or pic.height < 1 or pic.width * pic.height > 80_000_000:
                         raise ValueError(f"Unreasonable image dimensions {url}: {pic.size}")
                     pic = ImageOps.exif_transpose(pic)
                     pic.thumbnail((1280, 1600), Image.Resampling.LANCZOS)
@@ -230,6 +232,7 @@ def acquire(book_slug: str) -> None:
             "sourceSha256": sha(source_data),
             "sourceBytes": len(source_data),
             "sourceFormat": fmt,
+            "literaryArtwork": raw_dims[0] >= 70 and raw_dims[1] >= 70 and "enlarge" not in url.lower(),
             "sourceWidth": raw_dims[0],
             "sourceHeight": raw_dims[1],
             "localPath": relative,
@@ -272,7 +275,8 @@ def acquire(book_slug: str) -> None:
             "totalTextIntegritySha256": sha(original_soup.get_text(" ", strip=True).encode("utf-8")),
         },
         "offlineHTMLFile": "offline-illustrated-edition.html",
-        "historicArtFiles": len(image_rows),
+        "historicArtFiles": sum(1 for entry in image_rows if entry["literaryArtwork"]),
+        "allOriginalHTMLImageTagsPreserved": len(image_rows),
         "allOriginalImageTagPositionsPreserved": True,
         "art": image_rows,
         "acceptance": {
