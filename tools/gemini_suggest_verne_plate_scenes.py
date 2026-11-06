@@ -79,6 +79,25 @@ def normalized(text: str) -> str:
     return " ".join(str(text).split())
 
 
+def explicitly_no_visual_contradictions(value: str) -> bool:
+    """Treat only unambiguous 'none' answers as absent contradictions.
+
+    Gemini response schema asks for a STRING, so a valid contradiction-free
+    reviewer may answer 'None' instead of ''. The old check accidentally
+    rejected those answers as if they described a visual inconsistency.
+    Ambiguous phrases and mixed statements stay FAILED, not auto-published.
+    """
+    if not isinstance(value, str):
+        return False
+    normalized_status = " ".join(value.strip().casefold().strip(" .!:;").split())
+    return normalized_status in {
+        "", "none", "none detected", "none observed", "none apparent",
+        "no contradictions", "no visual contradictions",
+        "no visible contradictions", "no contradictions detected",
+        "no contradictions observed", "no visible contradictions detected",
+    }
+
+
 def corpus() -> dict:
     result = subprocess.run(
         ["node", str(ROOT / "tools/export_complete_verne_source_for_art.cjs")],
@@ -214,13 +233,14 @@ def visual_crosscheck(key: str, models: list[str], chapters: list[dict],
         cross["actuallyDepictsSelectedPassage"] is True
         and score >= 0.80
         and len(cross["specificVisibleEvidence"].strip()) >= 14
-        and not cross["visualContradictions"].strip()
+        and explicitly_no_visual_contradictions(cross["visualContradictions"])
     )
     record["visualCrosscheck"] = {
         "passesConservativeModelComparison": passed,
         "model": model,
         "specificVisibleEvidenceNotHumanVerified": cross["specificVisibleEvidence"],
         "visualContradictions": cross["visualContradictions"],
+        "contradictionTextConservativelyCleared": explicitly_no_visual_contradictions(cross["visualContradictions"]),
         "confidenceSelfReported": score,
         "requiresHumanEditorialAndRightsReview": True,
     }
@@ -387,6 +407,11 @@ def self_test() -> None:
     assert len(IMG_SCHEMA["required"]) == 4
     assert len(MATCH_SCHEMA["required"]) == 7
     assert len(CROSSCHECK_SCHEMA["required"]) == 4
+    assert explicitly_no_visual_contradictions("")
+    assert explicitly_no_visual_contradictions("None")
+    assert explicitly_no_visual_contradictions("None detected.")
+    assert not explicitly_no_visual_contradictions("None, but a missing witness.")
+    assert not explicitly_no_visual_contradictions("A different room and different people")
     print("PASS: image source text candidates, schema and chapter extraction assertions")
 
 
