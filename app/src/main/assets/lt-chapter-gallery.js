@@ -54,7 +54,9 @@ function validatedArt(entry,{inline=false,paragraphCount=0}={}){
     Number.isInteger(entry.afterParagraph)&&entry.afterParagraph>=0&&
     entry.afterParagraph<paragraphCount&&
     Number.isFinite(entry.aspectRatio)&&entry.aspectRatio>=.5&&entry.aspectRatio<=3.5;
- if(!ready&&!inlineReady)return null;
+ // An inline figure cannot bypass its exact passage proof by also carrying
+ // chapter-level release flags. The two approval classes are NOT interchangeable.
+ if(inline?!inlineReady:!ready)return null;
  const alt=locale(entry.altAr||entry.alt||'',entry.altEn||entry.alt||'');
  if(typeof alt!=='string'||!alt.trim())return null;
  if(typeof entry.credit!=='string'||!entry.credit.trim())return null;
@@ -65,9 +67,14 @@ function chapterImage(story,index){
  if(!chapter)return null;
  const map=global.LinguaChapterThumbnailRegistry?.[story.id];
  const record=map?.chapters?.[index];
- const explicit=chapter.chapterThumbnail||story.chapterThumbnails?.[index]||record?.primaryImage;
- const direct=validatedArt(explicit);
- if(direct)return direct;
+ // SOURCE-VERIFIED packaged art gets priority, then in-app approved metadata.
+ // A rejected old candidate must never mask a later approved replacement.
+ for(const candidate of [
+  record?.primaryImage,chapter.chapterThumbnail,story.chapterThumbnails?.[index]
+ ]){
+  const direct=validatedArt(candidate);
+  if(direct)return direct;
+ }
  // Reuse already-approved in-prose art only if its original source and
  // exact passage check passed. Never borrow a picture from another chapter.
  const inline=Array.isArray(chapter.inlineArt)?chapter.inlineArt:[];
@@ -139,6 +146,14 @@ function openSelected(id,index){
  close(false);
  if(inSameReader){
   global.stlChapter(index);
+  // The old modal opener may have been destroyed by the new chapter render.
+  // Make the destination heading available to keyboard/TalkBack without
+  // scrolling away from a saved semantic reading position.
+  const heading=document.querySelector?.('.reader h2');
+  if(heading){
+   heading.setAttribute('tabindex','-1');
+   heading.focus?.({preventScroll:true});
+  }
   return true;
  }
  // Coming from the library: the current source reader resumes the selected
@@ -174,7 +189,7 @@ function buildChapterCard(entry,story,i){
  card.type='button';
  card.className='lt-chapter-tile';
  card.dataset.chapterIndex=String(i);
- if(i===entry.resume)card.classList.add('lt-chapter-resume');
+ if(i===entry.resume&&entry.hasProgress)card.classList.add('lt-chapter-resume');
  card.setAttribute('aria-label',locale('اقرأ الفصل ','Read chapter ')+(i+1)+' · '+titleFor(chapter,i));
  const cover=document.createElement('span');cover.className='lt-chapter-tile-visual';
  const source=entry.images[i];
@@ -199,11 +214,20 @@ function buildChapterCard(entry,story,i){
  }
  addText(cover,'span','lt-chapter-tile-kicker',locale('الفصل '+(i+1),'CHAPTER '+(i+1)));
  if(i===entry.resume)addText(cover,'span','lt-chapter-tile-continue',
-  locale('موضع القراءة','Resume'));
+  entry.hasProgress?locale('موضع القراءة','Resume'):locale('ابدأ هنا','Start here'));
  card.appendChild(cover);
  addText(card,'strong','lt-chapter-tile-heading',titleFor(chapter,i));
  if(!source)addText(card,'small','lt-chapter-tile-pending',
   locale('الصورة لم تُعتمد بعد','Image pending approval'));
+ // A stored page/scroll confirms reading started, NOT finished.
+ // Never fabricate a completion percentage or badge.
+ const lastPage=typeof get==='function'?get('readpage_'+story.id+'_'+i,0):0;
+ const lastScroll=typeof get==='function'?get('scroll_'+story.id+'_'+i,0):0;
+ if((Number.isInteger(lastPage)&&lastPage>0)||
+    (typeof lastScroll==='number'&&Number.isFinite(lastScroll)&&lastScroll>80)){
+  addText(card,'span','lt-chapter-tile-visited',
+   locale('سبق أن قرأت من هذا الفصل','Reading started'));
+ }
  card.addEventListener('click',()=>openSelected(story.id,i));
  return card;
 }
@@ -318,10 +342,11 @@ function renderCards(entry,story){
  entry.images=distinctChapterImages(story);
  const count=story.chapters.length;
  const raw=typeof get==='function'?get('chapter_'+story.id,null):null;
- entry.resume=Number.isSafeInteger(raw)&&raw>=0&&raw<count?raw:0;
+ entry.hasProgress=Number.isSafeInteger(raw)&&raw>=0&&raw<count;
+ entry.resume=entry.hasProgress?raw:0;
  entry.search.disabled=false;
  entry.continue.disabled=count===0;
- entry.continue.textContent=raw===null?
+ entry.continue.textContent=!entry.hasProgress?
   locale('ابدأ القراءة من الفصل الأول','Start from chapter 1'):
   locale('متابعة القراءة من الفصل '+(entry.resume+1),
          'Resume reading at chapter '+(entry.resume+1));
@@ -553,10 +578,20 @@ global.addEventListener?.('popstate',event=>{
  // history entry, only when the reader really has returned to library.
  if(event.state?.page==='chapter-gallery'&&lastReaderBook===event.state.storyId){
   const id=lastReaderBook;
-  global.setTimeout?.(()=>{
-   if(!active&&state.page==='library'&&storyById(id))
+  // The existing animated reader close can take 190ms; older Android
+  // WebViews may instead use the shell's 480ms history fallback. Poll for
+  // the actual library state, never force an early second reader/overlay.
+  const recover=(attempt)=>{
+   if(active||lastReaderBook!==id||!storyById(id)||
+      global.history?.state?.page!=='chapter-gallery'||
+      global.history?.state?.storyId!==id)return;
+   if(state.page==='library'){
     show(id,{historyEntry:false});
-  },270);
+    return;
+   }
+   if(attempt<12)global.setTimeout?.(()=>recover(attempt+1),120);
+  };
+  global.setTimeout?.(()=>recover(0),270);
  }
 });
 })(window);

@@ -57,7 +57,7 @@ function element(tag='div') {
  return node;
 }
 const tick=async()=>{await new Promise(resolve=>setImmediate(resolve));};
-function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null,renderMock=false}={}){
+function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null,renderMock=false,visitedIndex=null,registryArt=null}={}){
  const chapter=(n)=>({title:'Chapter '+n,titleAr:'الفصل '+n,paragraphs:[{en:'Original source.',ar:'ترجمة.'}]});
  const story={id:'example-story',title:'Example Story',titleAr:'قصة تجريبية',
   chapters:lazy?[]:Array.from({length:count},(_,i)=>chapter(i+1)),totalChapters:count,
@@ -86,7 +86,9 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  const history={state:{page:'library'},pushState(payload,_title,hash){this.state=payload;historyCalls.push({type:'push',payload,hash})},
   back(){historyCalls.push({type:'back'});this.state={page:'library'};}};
  const timerQueue=[],listeners={};
- const W={LinguaCatalog:{stories:[story]},history,addEventListener(n,cb){listeners[n]=cb;},
+ const W={LinguaCatalog:{stories:[story]},
+  LinguaChapterThumbnailRegistry:registryArt?{'example-story':{chapters:[{primaryImage:registryArt}]}}:{},
+  history,addEventListener(n,cb){listeners[n]=cb;},
   setTimeout(cb){timerQueue.push(cb);return timerQueue.length;},
   openStory(id){baseOpens.push(id);history.pushState({page:'reader'},'', '#read-'+id);},
   ...(renderMock?{renderReader(){this.mockRenders=(this.mockRenders||0)+1;}}:{}),
@@ -96,7 +98,11 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
   }
  };
  const sandbox={window:W,document,history,art:fakeArt,put(k,v){writes.push([k,v])},
-  get(k,def){return k==='chapter_example-story'&&resume!==null?resume:def},
+  get(k,def){
+   if(k==='chapter_example-story'&&resume!==null)return resume;
+   if(visitedIndex!==null&&k==='readpage_example-story_'+visitedIndex)return 2;
+   return def;
+  },
   state:{page:'library'},console};
  vm.runInNewContext(source,sandbox,{filename:'lt-chapter-gallery.js'});
  const api=W.LinguaChapterGallery;
@@ -168,6 +174,34 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  s.api.close();
  assert.equal(s.historyCalls.at(-1).type,'back');
  assert.equal(s.api.isOpen,false);
+ // Reader exit timing can vary by WebView. Recover the actual previous
+ // gallery only AFTER the shell has completed its state transition.
+ const slowBack=scenario();
+ slowBack.clickBook();await tick();
+ slowBack.cards[0].children[0].children[1].children[0].emit('click');
+ slowBack.sandbox.state.page='reader';
+ slowBack.sandbox.state.story=slowBack.story;
+ slowBack.W.history.state={page:'chapter-gallery',storyId:'example-story'};
+ slowBack.listeners.popstate({state:{page:'chapter-gallery',storyId:'example-story'}});
+ assert.equal(slowBack.timerQueue.length,1);
+ slowBack.timerQueue.shift()();
+ assert.equal(slowBack.api.isOpen,false,'gallery must NOT overlay an active reader');
+ assert.equal(slowBack.timerQueue.length,1,'reader exit rescheduled while still animating');
+ slowBack.sandbox.state.page='library';
+ slowBack.timerQueue.shift()();
+ assert.equal(slowBack.api.isOpen,true,'gallery recovers after actual reader transition');
+ assert.equal(slowBack.historyCalls.filter(x=>x.type==='push').length,2,
+  'restoration never invents additional browser history entries');
+ const escaped=scenario();
+ escaped.clickBook();await tick();
+ escaped.cards[0].children[0].children[1].children[0].emit('click');
+ escaped.sandbox.state.page='reader';
+ escaped.W.history.state={page:'chapter-gallery',storyId:'example-story'};
+ escaped.listeners.popstate({state:{page:'chapter-gallery',storyId:'example-story'}});
+ escaped.W.history.state={page:'another-book'};
+ escaped.timerQueue.shift()();
+ assert.equal(escaped.api.isOpen,false,'stale delayed Back must not reopen prior story');
+
  // Force specifically APPROVED local source metadata; remote, traversal and
  // original artwork pending legal/editorial approval MUST stay hidden.
  const pending={imagePath:'art/old-folio.webp',editoriallyApproved:false,
@@ -184,6 +218,19 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  const valid=scenario({approved:{...pending,editoriallyApproved:true,
   releaseApproved:true,distributionReviewApproved:true,rightsStatus:'APPROVED'}});
  assert.equal(valid.api.chapterImage(valid.story,0).src,'art/old-folio.webp');
+ // A previously staged unapproved in-book candidate must not hide an
+ // authenticated later thumbnail supplied by the source-image conversation.
+ const approvedReplacement={...pending,imagePath:'art/reviewed-colour-folio.webp',
+  editoriallyApproved:true,releaseApproved:true,
+  distributionReviewApproved:true,rightsStatus:'APPROVED'};
+ const replaced=scenario({approved:pending,registryArt:approvedReplacement});
+ assert.equal(replaced.api.chapterImage(replaced.story,0).src,'art/reviewed-colour-folio.webp',
+  'approved release registry wins over stale rejected chapter art');
+ const registryDenied=scenario({approved:approvedReplacement,registryArt:pending});
+ assert.equal(registryDenied.api.chapterImage(registryDenied.story,0).src,
+  'art/reviewed-colour-folio.webp',
+  'a bad registry entry must not block separately approved in-book metadata');
+
  const duplicateImage={...pending,editoriallyApproved:true,
   releaseApproved:true,distributionReviewApproved:true,rightsStatus:'APPROVED'};
  const dup=scenario({approved:duplicateImage});
@@ -211,6 +258,11 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
   afterParagraph:52}];
  assert.equal(wrongParagraph.api.chapterImage(wrongParagraph.story,1),null,
   'misaligned paragraph cannot be used as chapter thumbnail');
+ const maskedInline=scenario();
+ maskedInline.story.chapters[1].inlineArt=[{...inline.story.chapters[1].inlineArt[0],
+  sourceParagraphExact:false,releaseApproved:true,rightsStatus:'APPROVED'}];
+ assert.equal(maskedInline.api.chapterImage(maskedInline.story,1),null,
+  'chapter-level approval must NOT bypass exact inline art paragraph matching');
  assert.equal(s.api.openSelected('example-story',0),false,
   'after closing the gallery old external callers must not overwrite progress');
 
@@ -318,6 +370,27 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  deniedReader.W.renderReader();
  assert.equal(deniedReader.hero.children.length,0,
   'stage-only picture NEVER reaches actual reader hero');
+ const visited=scenario({count:5,resume:2,visitedIndex:1});
+ visited.clickBook();await tick();
+ const visitedTiles=visited.cards[0].children[0].children[1].children;
+ assert.ok(visitedTiles[1].children.some(c=>c.className==='lt-chapter-tile-visited'),
+  'saved reading page creates a visited-only label');
+ assert.ok(!visitedTiles[4].children.some(c=>c.className==='lt-chapter-tile-visited'),
+  'unread chapter cannot be presented as completed');
+ assert.ok(!visitedTiles[1].children.some(c=>/100%|completed/i.test(c.textContent||'')),
+  'no fabricated reading percentages');
+ const newReader=scenario({count:3});
+ newReader.clickBook();await tick();
+ const newCover=newReader.cards[0].children[0].children[1].children[0].children[0];
+ assert.ok(newCover.children.some(c=>c.textContent==='ابدأ هنا'),
+  'unopened story says Start here, never falsely Resume');
+ const corruptProgress=scenario({count:3,resume:'999'});
+ corruptProgress.clickBook();await tick();
+ const corruptControls=corruptProgress.cards[0].children[0].children[0].children[0]
+  .children.find(c=>c.className==='lt-chapter-gallery-tools');
+ assert.match(corruptControls.children[1].textContent,/ابدأ القراءة/,
+  'corrupt saved chapter should safely start at chapter one');
+
  // Native keyboard navigation advances in page direction, with no
  // activation or unexpected chapter progress writes.
  const keyRtl=scenario({count:85});
