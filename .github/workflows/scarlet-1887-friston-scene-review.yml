@@ -1,0 +1,73 @@
+name: Lingua Tales - crosscheck real Friston 1887 plates against exact Sherlock chapters
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/export_study_scarlet_original_for_art.py'
+      - 'tools/gemini_suggest_study_scarlet_friston_scenes.py'
+      - '.github/workflows/scarlet-1887-friston-scene-review.yml'
+  schedule:
+    - cron: '46 2,10,18 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lingua-1887-scarlet-friston-original-multimodal-scene-qa
+  cancel-in-progress: false
+
+jobs:
+  genuine-1887-image-and-english-source-double-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate full original 1887 novel and independent image-scene rules
+        run: |
+          python tools/export_study_scarlet_original_for_art.py --check
+          python tools/gemini_suggest_study_scarlet_friston_scenes.py --self-test
+      - name: Inspect up to four genuine Friston images with two passes and verbatim Doyle source evidence
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python tools/gemini_suggest_study_scarlet_friston_scenes.py --max-new 4
+      - name: Save nonpublishable source-matched evidence without editing original art or chapter maps
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -d docs/literature/staging/study-in-scarlet-friston-1887-scene-reviews ]; then
+            git add -f docs/literature/staging/study-in-scarlet-friston-1887-scene-reviews/
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No new genuine source/vision comparison records; no empty commit."
+          else
+            git commit -m "Literature: checkpoint real 1887 Friston art visual-source evidence [skip ci]"
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 3
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Historical source review evidence could not be pushed"
+              exit 1
+            fi
+          fi
+      - name: Keep authentic media-sourced evidence even if API or git push fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-1887-friston-scene-reviews-not-human-or-rights-approved
+          path: docs/literature/staging/study-in-scarlet-friston-1887-scene-reviews/
+          if-no-files-found: ignore
+          retention-days: 30
