@@ -492,6 +492,35 @@ function show(id,{historyEntry=true}={}){
  continueButton.className='lt-chapter-gallery-continue';
  continueButton.textContent=locale('متابعة القراءة','Resume reading');
  tools.appendChild(continueButton);
+ // Filters preserve the original narrative order, and never approve sources.
+ const filterLabel=document.createElement('label');
+ filterLabel.className='lt-chapter-gallery-filter-label';
+ filterLabel.textContent=locale('عرض الفصول حسب','Show chapters by');
+ const filter=document.createElement('select');
+ filter.className='lt-chapter-gallery-filter';
+ filter.disabled=true;filter.value='all';
+ filter.setAttribute('aria-label',locale('تصفية حسب الصورة وحالة القراءة',
+  'Filter chapters by image and reading status'));
+ for(const [value,ar,en] of [
+  ['all','كل الفصول','All chapters'],
+  ['illustrated','لها صورة متاحة','Available images'],
+  ['pending','تحتاج صورة','Images missing'],
+  ['started','بدأت قراءتها','Reading started']
+ ]){
+  const option=document.createElement('option');
+  option.value=value;option.textContent=locale(ar,en);
+  filter.appendChild(option);
+ }
+ filterLabel.appendChild(filter);
+ tools.appendChild(filterLabel);
+ const layoutButton=document.createElement('button');
+ layoutButton.type='button';layoutButton.disabled=true;
+ layoutButton.className='lt-chapter-gallery-layout';
+ layoutButton.textContent=locale('عرض قائمة','List view');
+ layoutButton.setAttribute('aria-label',locale('تغيير عرض الفصول',
+  'Switch horizontal cards or list layout'));
+ layoutButton.setAttribute('aria-pressed','false');
+ tools.appendChild(layoutButton);
  copy.appendChild(tools);
  const searchSummary=addText(copy,'small','lt-chapter-gallery-results','');
  searchSummary.setAttribute('role','status');
@@ -520,9 +549,18 @@ function show(id,{historyEntry=true}={}){
  dialog.addEventListener('cancel',event=>{event.preventDefault();close(true);});
  dialog.addEventListener('click',event=>{if(event.target===dialog)close(true);});
  document.body.appendChild(dialog);
- const entry={dialog,track,title,count,missing,search,continue:continueButton,
-  searchSummary,restoreFocus,token:++serial,id,rendered:0,more:null,fromReader};
+ const storedLayout=typeof get==='function'?
+  get('lt_chapter_gallery_layout','rail'):'rail';
+ const entry={dialog,track,title,count,missing,search,filter,layoutButton,
+  layout:storedLayout==='list'?'list':'rail',
+  continue:continueButton,searchSummary,restoreFocus,
+  token:++serial,id,rendered:0,more:null,fromReader};
  search.addEventListener('input',()=>updateChapterFilter(entry));
+ filter.addEventListener('change',()=>updateChapterFilter(entry));
+ layoutButton.addEventListener('click',()=>{
+  if(active!==entry||layoutButton.disabled)return;
+  setChapterLayout(entry,entry.layout==='list'?'rail':'list',{save:true});
+ });
  active=entry;
  if(historyEntry&&!fromReader&&global.history?.pushState)
   global.history.pushState({page:'chapter-gallery',storyId:id},'','#chapters-'+encodeURIComponent(id));
