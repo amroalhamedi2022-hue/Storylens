@@ -103,5 +103,29 @@ class RealOriginalChapterIndexes(unittest.TestCase):
                         audit.valley_of_fear_original_chapter_coverage(folder)
 
 
+    def test_wells_27_original_chapter_titles_and_four_structure_files(self):
+        data = audit.war_of_worlds_original_chapter_coverage()
+        self.assertEqual(data["missingImageChapters"], 27)
+        self.assertEqual(data["localCandidateChapters"], 0)
+        self.assertEqual(data["readyForUICards"], 0)
+        self.assertEqual(data["sourceStructuralUnits"], 4)
+
+    def test_wells_rejects_invented_title_or_wrong_original_part(self):
+        path = audit.STAGING / "the-war-of-the-worlds" / "chapter-image-map.json"
+        original, loader = audit.jload(path), audit.jload
+        for label, change in (
+            ("invalid-original-title", lambda m: m["chapters"][0].__setitem__("titleEn", "Modern invented chapter")),
+            ("wrong-structural-part", lambda m: m["chapters"][17].__setitem__("sourceBookOneBased", 1)),
+            ("missing-chapter", lambda m: m["chapters"].pop()),
+            ("fake-release", lambda m: m.__setitem__("releaseApproved", True)),
+        ):
+            with self.subTest(label=label):
+                fake = copy.deepcopy(original)
+                change(fake)
+                with patch.object(audit, "jload", side_effect=lambda p: fake if Path(p) == path else loader(p)):
+                    with self.assertRaises(ValueError):
+                        audit.war_of_worlds_original_chapter_coverage()
+
+
 if __name__ == "__main__":
     unittest.main()
