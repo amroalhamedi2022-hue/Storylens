@@ -29,7 +29,7 @@ engine.IMAGES = engine.DEST / "plates"
 engine.SOURCE_CATEGORY = "Category:The Sign of Four illustrated by F. H. Townsend"
 engine.ORIGINAL_YEAR = 1903
 engine.OUTPUT_PREFIX = "sign-four-townsend"
-engine.PERIOD_NAME = re.compile(r"^File:Sign-t[1-8]\\.jpg$", re.IGNORECASE)
+engine.PERIOD_NAME = re.compile(r"^File:Sign-t[1-8]\.jpg$", re.IGNORECASE)
 # The 1903 Commons scans are 254–265px wide; the 350px generic Verne floor
 # otherwise rejects ALL authentic plates. Keep this exception source-specific.
 engine.MIN_CATEGORY_MEMBERS = 8
