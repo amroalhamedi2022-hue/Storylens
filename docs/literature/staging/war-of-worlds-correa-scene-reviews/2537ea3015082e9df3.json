@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "VISION_REVIEW_PENDING",
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
   "workId": "wells-war-of-the-worlds-1898",
   "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
   "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
@@ -20,5 +20,15 @@
     "recognizableCharactersOrPeopleEn": "Two seated figures in the foreground wearing hats; a group of small, indistinct figures in the middle ground; one figure standing and gesturing.",
     "uncertaintyNotes": "The nature of the dark object in the distance is ambiguous; it could be a ship, a train, or a piece of industrial machinery obscured by smoke. The specific historical context or identity of the figures cannot be determined from the image alone."
   },
-  "visionModel": "gemini-3.1-flash-lite"
+  "visionModel": "gemini-3.1-flash-lite",
+  "modelOriginalQuotationRejected": true,
+  "modelOriginalQuotationRejectReason": "Model chapter/paragraph/quotation not verifiable verbatim against pinned original candidate excerpt",
+  "suggestedMatch": null,
+  "evidenceStatus": "INVALID_MODEL_SOURCE_QUOTE_REJECTED_NONPUBLISHABLE",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
 }

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_042_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-b25bc9a07b50d7c0.webp",
+  "imageSha256": "2fc5f6d02966e09d295b83e496747c0f6a08f90348608dd92c648cb7e448e819",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a surreal, chaotic scene. A central human figure with their head in their hands is surrounded by several strange, tentacled, blob-like creatures and mechanical or household objects, including a pot or kettle emitting steam. The style is sketchy and expressive, characteristic of early 20th-century pen-and-ink editorial or literary illustration.",
+    "visualObjectsEn": "Tentacled creatures, a steaming pot or kettle, a human figure with head in hands, abstract dark shapes, smoke or steam clouds.",
+    "recognizableCharactersOrPeopleEn": "A single human figure, possibly male, sitting with their head bowed in their hands, surrounded by non-human, monstrous, or surreal entities.",
+    "uncertaintyNotes": "The exact nature of the creatures is ambiguous; they appear to be a mix of organic tentacles and inanimate objects. The setting is abstract and lacks specific architectural or environmental markers."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 20,
+    "paragraphIndexZeroBased": 4,
+    "exactSourceQuotation": "And while within we fought out our dark, dim contest of whispers, snatched food and drink, and gripping hands and blows, without, in the pitiless sunlight of that terrible June, was the strange wonder, the unfamiliar routine of the Martians in the pit.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a human figure in distress (head in hands) amidst a surreal, mechanical, and tentacled environment. This aligns with the narrator's claustrophobic, desperate experience inside the ruined house while observing the 'strange wonder' and 'unfamiliar routine' of the Martians and their mechanical appliances (like the milk-can-shaped device) in the pit described in Chapter 20.",
+    "suggestedAltArNotApproved": "A surreal, dark ink illustration showing a person sitting with their head in their hands, surrounded by abstract, tentacled Martian machinery and steaming vessels, reflecting the narrator's psychological distress while observing the alien activity.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving illustrates the narrator hiding inside the ruined house or pit shelter, holding his head in despair while surrounded by bizarre Martian handling-machines, tentacles, and steaming apparatuses corresponding to the enclosed space and tense atmosphere described in the passage.",
+    "visualContradictions": "None significant; the depiction of the narrator hiding amidst strange Martian machinery and tentacled entities matches the mood and enclosed setting of the passage.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

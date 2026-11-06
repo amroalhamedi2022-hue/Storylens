@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_041_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-93c97d7a7b113dce.webp",
+  "imageSha256": "eff1df85d6ba97df66385a1c6fa378b6553bc1d8729e2d3e45613ca0f92e8806",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch depicting a chaotic, violent scene of a crowd or riot. Numerous figures are shown in motion, some running, some fighting, and one figure is fallen on the ground in the foreground. A horse-drawn carriage or wagon is visible in the background with a driver holding a whip. The style is loose, expressive, and illustrative, typical of 19th or early 20th-century newspaper or book engravings.",
+    "visualObjectsEn": "Crowd of people, horse-drawn carriage, whip, fallen figure, scattered debris or weapons, ground, dust or smoke clouds.",
+    "recognizableCharactersOrPeopleEn": "A large group of indistinct human figures, a driver on a carriage, a fallen person in the foreground.",
+    "uncertaintyNotes": "The specific historical event, location, or context of the riot is not identifiable from the image alone. The figures are stylized and lack specific facial features or period-accurate clothing details that would allow for precise identification."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 16,
+    "paragraphIndexZeroBased": 70,
+    "exactSourceQuotation": "The driver of the cart slashed his whip at my brother, who ran round behind the cart. The multitudinous shouting confused his ears. The man was writhing in the dust among his scattered money, unable to rise, for the wheel had broken his back",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description explicitly mentions a horse-drawn carriage, a driver with a whip, a fallen figure in the foreground, and a chaotic crowd. This paragraph from Chapter 16 describes a specific incident involving a cart driver using a whip, a person fallen in the dust, and a chaotic, crowded environment, which aligns perfectly with the visual elements of the engraving.",
+    "suggestedAltArNotApproved": "A chaotic scene of a riot with a horse-drawn cart, a driver wielding a whip, and a person fallen in the dust.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a chaotic scene matching the passage: a horse-drawn cart with a driver holding up a whip, a fallen figure in the foreground surrounded by scattered objects, and a panicked crowd running amid dust clouds.",
+    "visualContradictions": "None identified; key elements like the cart with the whip, the fallen person in the dust, and the chaotic crowd directly correspond to the specified passage.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
