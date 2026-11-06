@@ -1,0 +1,29 @@
+name: Literature - cross-book source image integrity audit
+on:
+  pull_request:
+    paths:
+      - 'tools/audit_all_literature_chapter_image_maps.py'
+      - 'tools/test_all_literature_chapter_image_maps.py'
+      - 'docs/literature/staging/**/chapter-image-map.json'
+      - '.github/workflows/literature-global-image-integrity.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/audit_all_literature_chapter_image_maps.py'
+      - 'docs/literature/staging/**/chapter-image-map.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-all-original-images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify actual source image bytes and cross-book originality
+        run: |
+          python -m unittest tools.test_all_literature_chapter_image_maps -v
+          python tools/audit_all_literature_chapter_image_maps.py
