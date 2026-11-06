@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_25.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-a3ac7b51a12e007b.webp",
+  "imageSha256": "1901b496783f4a6c7b10a5eaefd225f0bc41aca3deec25a5acae77ac6fb90af2",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a man and a woman standing on the deck of a ship, looking out toward the horizon. To their left, a crew member is working with ropes. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "Ship deck, lifebuoy with partial text, ropes, ship rigging, distant sailboat on the horizon, wooden railing.",
+    "recognizableCharactersOrPeopleEn": "A man with a beard wearing a dark coat and trousers, a woman in a long dress, and a crew member in work clothes.",
+    "uncertaintyNotes": "The text on the lifebuoy is partially obscured and illegible. The specific identity of the individuals and the exact type of ship cannot be determined from the image alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 21,
+    "paragraphIndexZeroBased": 6,
+    "exactSourceQuotation": "Phileas Fogg, with body erect and legs wide apart, standing like a sailor, gazed without staggering at the swelling waters. The young woman, who was seated aft, was profoundly affected as she looked out upon the ocean",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene depicts a man and woman on a ship deck looking at the horizon, which aligns perfectly with the description of Phileas Fogg standing like a sailor and Aouda looking out upon the ocean in Chapter 21.",
+    "suggestedAltArNotApproved": "A black and white engraving of Phileas Fogg and Aouda on the deck of the Tankadere, with a crew member working in the background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows Phileas Fogg standing with body erect and legs wide apart at the ship's rail, while the young woman stands nearby on the deck looking out toward the ocean as described in the passage.",
+    "visualContradictions": "The passage mentions the young woman was seated aft, whereas in the visual she is standing next to Fogg, but this is a minor narrative condensation common in 19th-century illustrations and does not invalidate the core scene depiction.",
+    "confidenceSelfReported": 0.9,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

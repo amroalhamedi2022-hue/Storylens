@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_22.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-0ad834b0b8377caa.webp",
+  "imageSha256": "ef05af9bf2c8688081d39cdc972937a3a7c4b1d8d0756baf434589310e45b80d",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a young man clinging to the back of a large elephant. The elephant is moving through a dense, tropical-looking environment with foliage visible in the background. The man is positioned horizontally across the elephant's back, holding on with his hands, while the elephant's trunk is raised in the air.",
+    "visualObjectsEn": "Elephant, tusks, tropical foliage, trees, man in period clothing (jacket and trousers).",
+    "recognizableCharactersOrPeopleEn": "A single young male figure.",
+    "uncertaintyNotes": "The exact species of the elephant is not explicitly identifiable, though it appears to be an Asian elephant based on the ear shape. The specific historical context or narrative source of the engraving is not provided and remains uncertain."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 2,
+    "exactSourceQuotation": "As for Passepartout, who was mounted on the beast’s back, and received the direct force of each concussion as he trod along, he was very careful, in accordance with his master’s advice, to keep his tongue from between his teeth, as it would otherwise have been bitten off short. The worthy fellow bounced from the elephant’s neck to his rump, and vaulted like a clown on a springboard",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The engraving depicts a man clinging to the back of an elephant in a tropical environment, which aligns with the description of Passepartout riding the elephant Kiouni through the Indian jungle in Chapter 12.",
+    "suggestedAltArNotApproved": "A black and white engraving showing Passepartout riding on the back of the elephant Kiouni as they travel through the Indian forest.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows Passepartout bouncing and mounted on the elephant's back/neck, holding on as described in the passage where he experiences the direct force of each concussion, bouncing like a clown on a springboard.",
+    "visualContradictions": "None. The scene precisely aligns with Passepartout riding the elephant's back while the other characters are in howdahs out of clear view or obscured by the angle.",
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

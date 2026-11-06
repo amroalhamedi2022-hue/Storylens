@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_24.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-c7e8c07bd1e55ccb.webp",
+  "imageSha256": "1b603db9af3efef814a68c58fc4ce9a28188d4fe3d2948942b6d0ec02a9d7bbe",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a courtroom scene. A central figure in 18th-century style clothing stands and holds up a small, dark object, possibly a piece of fabric or a shoe, for the court to see. A judge sits on an elevated bench to the left. Other figures, including men in suits and a woman, are seated or standing in the courtroom. A beam of light shines down from the upper left corner.",
+    "visualObjectsEn": "Courtroom furniture, judge's bench, wooden paneling, small object held by the central figure, hats, clothing with period-appropriate collars and coats, inkwell on the bench.",
+    "recognizableCharactersOrPeopleEn": "A judge wearing a wig, a central male figure in a frock coat, a woman in the background, several men in the gallery or jury area.",
+    "uncertaintyNotes": "The exact nature of the object being held is ambiguous due to the engraving style. The historical period is suggested by the clothing and wigs, but the specific event or legal context is not explicitly identifiable from the visual evidence alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 15,
+    "paragraphIndexZeroBased": 10,
+    "exactSourceQuotation": "Mr. Fogg and his two companions took their places on a bench opposite the desks of the magistrate and his clerk. Immediately after, Judge Obadiah, a fat, round man, followed by the clerk, entered. He proceeded to take down a wig which was hanging on a nail and put it hurriedly on his head.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The text describes a courtroom scene with a judge, a bench, and a magistrate, which aligns perfectly with the visual elements of the engraving (judge's bench, courtroom furniture, and the judge wearing a wig).",
+    "suggestedAltArNotApproved": "A black and white engraving of a courtroom scene featuring a judge in a wig and a central figure standing before a bench, illustrating the legal proceedings in Chapter 15 of Around the World in Eighty Days.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a courtroom scene with a central figure holding up a shoe or piece of fabric, and a judge seated on a bench to the left.",
+    "visualContradictions": "The passage describes Judge Obadiah taking down a wig hanging on a nail and putting it hurriedly on his head, while the image depicts a central figure holding up an object and does not show the judge putting on his wig.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
