@@ -308,11 +308,29 @@ def generate() -> dict:
     valley_folder = STAGING / "user-requested-classics-20261105" / "the-valley-of-fear"
     if valley_folder.is_dir():
         valley_art = verify_recovered_illustrated_source("the-valley-of-fear")
-        rows.append({"bookId": "the-valley-of-fear", "title": "The Valley of Fear",
-                     "sourceState": "full English original plus seven period illustrations staged; chapter scene mapping pending",
-                     "chapterCount": None, "localCandidateChapters": 0,
-                     "readyForUICards": 0, "missingImageChapters": None,
-                     "missingReadyChapters": None, **valley_art})
+        valley_map = valley_folder / "chapter-image-map.json"
+        if valley_map.is_file():
+            data = jload(valley_map)
+            if (data.get("bookId") != "the-valley-of-fear" or
+                    data.get("novelChapterCountExcludingEpilogue") != 14 or
+                    data.get("sourceTextSha256") != jload(valley_folder / "manifest.json")["source"]["sha256"] or
+                    data.get("releaseApproved") is not False):
+                raise ValueError("Valley of Fear canonical 14+epilogue structure/source/rights drift")
+            valley_cover = map_coverage(valley_map, 15)
+            if (data.get("localCandidateChapters") != valley_cover["localCandidateChapters"]
+                    or data.get("readyForUICards") != valley_cover["readyForUICards"]
+                    or data.get("missingCandidateChapters") != valley_cover["missingImageChapters"]):
+                raise ValueError("Valley of Fear map claims more images than genuinely stored")
+            rows.append({"bookId": "the-valley-of-fear", "title": "The Valley of Fear",
+                         "sourceState": "14 complete original English chapters plus epilogue; 7 locally pinned edition-image positions; scene/rights/Arabic pending",
+                         "chapterCount": 15, "novelChapterCountExcludingEpilogue": 14,
+                         **valley_cover, **valley_art})
+        else:
+            rows.append({"bookId": "the-valley-of-fear", "title": "The Valley of Fear",
+                         "sourceState": "full English original plus seven period illustrations staged; chapter scene mapping pending",
+                         "chapterCount": None, "localCandidateChapters": 0,
+                         "readyForUICards": 0, "missingImageChapters": None,
+                         "missingReadyChapters": None, **valley_art})
     kalila_colours = (
         verify_kalila_miniatures()
         if (STAGING / "kalila-original-colour-miniatures-20261105" / "manifest.json").is_file()
