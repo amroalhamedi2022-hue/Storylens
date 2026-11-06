@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:width="62dp" android:height="62dp" android:gravity="center"
-android:drawable="@drawable/lingua_icon_mark"/>
+    <!-- The original approved colourful open book/petals, cropped above the typography.
+         Keep inside the adaptive icon mask's central safe zone. -->
+    <item android:width="72dp" android:height="72dp"
+        android:gravity="center"
+        android:drawable="@drawable/lingua_tales_textless"/>
 </layer-list>
