@@ -27,7 +27,7 @@ def entry(n: int, *, license_name: str = "Public domain") -> dict:
     return {
         "title": name,
         "imageinfo": [{
-            "sha1": f"{n:040x}",
+            "sha1": f"{n:016x}" + "0" * 24,
             "mime": "image/jpeg",
             "url": f"https://upload.wikimedia.org/wikipedia/commons/0/00/Sign-t{n}.jpg",
             "descriptionurl": f"https://commons.wikimedia.org/wiki/File:Sign-t{n}.jpg",
@@ -83,7 +83,7 @@ class TownsendSourceContract(unittest.TestCase):
     def test_licensing_original_filename_and_sha1_are_mandatory(self):
         self.assertIsNotNone(engine.permit_candidate(entry(1), set()))
         self.assertIsNone(engine.permit_candidate(entry(1, license_name="All rights reserved"), set()))
-        self.assertIsNone(engine.permit_candidate(entry(1), {f"{1:040x}"}))
+        self.assertIsNone(engine.permit_candidate(entry(1), {f"{1:016x}" + "0" * 24}))
         bad = entry(2)
         bad["imageinfo"][0]["extmetadata"]["Copyrighted"]["value"] = "true"
         self.assertIsNone(engine.permit_candidate(bad, set()))
@@ -132,7 +132,7 @@ class TownsendSourceContract(unittest.TestCase):
                  mock.patch.object(engine, "MANIFEST", dest / "manifest.json"), \
                  mock.patch.object(engine, "IMAGES", dest / "plates"), \
                  mock.patch.object(engine, "category_members", return_value=[entry(n) for n in range(1, 9)]), \
-                 mock.patch.object(engine, "download_image", return_value=(b"source", b"RIFF1234WEBPbytes", 257, 376)), \
+                 mock.patch.object(engine, "download_image", side_effect=[(f"source-{n}".encode(), f"RIFF{n:04d}WEBPbytes".encode(), 257, 376) for n in range(1, 9)]), \
                  mock.patch.object(engine.time, "sleep", return_value=None):
                 self.assertEqual(sign.run(max_new=8), 8)
                 manifest = json.loads((dest / "manifest.json").read_text(encoding="utf-8"))
