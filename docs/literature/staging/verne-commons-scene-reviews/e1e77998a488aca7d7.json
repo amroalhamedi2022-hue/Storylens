@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_31.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-e1e77998a488aca7.webp",
+  "imageSha256": "8822fdc7f1d720f876642dc97f94a1b3b08f95b0101ce8f54172f93e10dde8f5",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a harbor scene with a wooden pier. In the foreground, a group of people are gathered on the pier, including a man in a striped shirt and light trousers, a man in a top hat and long coat, a woman in a long dress, and another man standing behind them. To the left, a person is sitting in a small boat near the pier, and another person is crouching on the pier. In the background, several sailing ships with masts and rigging are docked. A large tree is visible on the right side, and barrels are placed on the pier in the foreground.",
+    "visualObjectsEn": "Sailing ships, masts, rigging, wooden pier, small boat, barrels, tree, clothing including top hat, long coat, long dress, striped shirt.",
+    "recognizableCharactersOrPeopleEn": "A group of four people standing on a pier, a person sitting in a small boat, and a person crouching on the pier.",
+    "uncertaintyNotes": "The exact historical period or specific location is not explicitly stated in the image, though the clothing and ships suggest a 19th-century maritime setting. The identities of the individuals are not provided."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 20,
+    "paragraphIndexZeroBased": 65,
+    "exactSourceQuotation": "The Tankadere was a neat little craft of twenty tons, as gracefully built as if she were a racing yacht. Her shining copper sheathing, her galvanised ironwork, her deck, white as ivory, betrayed the pride taken by John Bunsby in making her presentable. Her two masts leaned a trifle backward; she carried brigantine, foresail, storm-jib, and standing-jib, and was well rigged for running before the wind",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The image depicts a harbor scene with sailing ships, masts, rigging, and a wooden pier, which aligns with the description of the Tankadere and its maritime setting in Chapter 20. While the specific characters in the engraving are not named in the text, the setting of a small craft at a pier matches the context of the Tankadere's description.",
+    "suggestedAltArNotApproved": "A black and white engraving of a 19th-century harbor scene featuring a wooden pier with people in period clothing, including a man in a top hat and a woman in a long dress, with sailing ships and masts visible in the background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts a group of characters on a wooden pier near harbor vessels, matching the meeting with the pilot John Bunsby and his craft Tankadere described in the passage.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.9,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

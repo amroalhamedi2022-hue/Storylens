@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_32.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-58f496e6771b0cf1.webp",
+  "imageSha256": "0f60feb389cfdb99038604019c4871aaf1cca4dc91ba5a8a2791a41218a7840c",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting an indoor scene with four figures. A woman in a long dress stands on the left, facing a man in a suit. Behind them stands another man, and to the right, a bearded man in a long coat stands near a doorway or staircase. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "A woman in a long, textured dress, three men in formal 19th-century attire (suits, coats), a wooden floor, a doorway or staircase in the background, and wall paneling.",
+    "recognizableCharactersOrPeopleEn": "One woman and three men, all dressed in 19th-century European or American fashion.",
+    "uncertaintyNotes": "The specific identities of the individuals and the exact setting cannot be determined from the image alone. The signature 'L. Bennett' is visible in the bottom right corner, suggesting the artist's name."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 1,
+    "paragraphIndexZeroBased": 15,
+    "exactSourceQuotation": "he was served by the gravest waiters, in dress coats, and shoes with swan-skin soles",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The image depicts an indoor scene with four figures in formal 19th-century attire, including men in suits/coats and a woman in a long dress, consistent with the description of a formal club setting where waiters in dress coats serve patrons.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a formal indoor scene with a woman in a long dress and three men in formal suits, likely representing a club or high-society setting.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows four individuals (a woman and three men) standing indoors conversing or meeting.",
+    "visualContradictions": "The passage describes a solitary man dining at a club table being served by waiters, with food, wine, and tableware present. None of these dining elements, tables, food, or waiters are visible in the engraving.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.99,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

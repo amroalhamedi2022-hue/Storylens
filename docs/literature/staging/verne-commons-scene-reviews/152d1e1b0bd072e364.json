@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_33.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-152d1e1b0bd072e3.webp",
+  "imageSha256": "129034a3c604aae16d98ba960494e5ecd56629e820bf1a4ae39cd22a72d54295",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a woman sitting on the deck of a boat, looking out over a calm sea toward a distant, low-lying landmass or island under a cloudy sky. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "A woman in a long dress, a boat deck with a railing, a bollard or post, the surface of the sea, a distant horizon with a landform, and a cloudy sky.",
+    "recognizableCharactersOrPeopleEn": "A single woman, shown in profile, wearing a dress with a textured bodice and a full skirt.",
+    "uncertaintyNotes": "The exact nature of the boat (whether it is a small vessel or a larger ship) is ambiguous due to the framing. The identity of the woman is not specified in the image."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 21,
+    "paragraphIndexZeroBased": 46,
+    "exactSourceQuotation": "There were some signs of a calm at noon, and these became more distinct as the sun descended toward the horizon.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The engraving depicts a woman on a boat deck looking toward a calm sea and a distant horizon as the sun sets or the light fades, which aligns with the description of the calm sea and the sun descending toward the horizon in this passage.",
+    "suggestedAltArNotApproved": "A woman in a long dress stands on the deck of a boat, gazing across a calm sea toward a distant horizon under a cloudy sky.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "A woman is sitting on the deck of a boat looking out at a calm sea after a tempest.",
+    "visualContradictions": "The passage describes passengers eating and taking repose after a brief tempest, but the image only shows a single woman looking out over the sea without depicting any specific actions like eating or resting.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.8,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

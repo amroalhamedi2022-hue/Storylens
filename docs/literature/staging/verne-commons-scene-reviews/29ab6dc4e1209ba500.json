@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "VISION_REVIEW_PENDING",
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
   "workId": "around-the-world-in-eighty-days-towle",
   "originalCreator": "Alphonse de Neuville and Léon Benett",
   "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
@@ -20,5 +20,15 @@
     "recognizableCharactersOrPeopleEn": "Two men in 19th-century attire (coats, cravats) seated at the table, and a third figure standing behind them in the shadows.",
     "uncertaintyNotes": "The exact setting is not explicitly labeled, though it appears to be a social establishment. The identity of the individuals is not provided in the image. The signature 'L. Huard' is visible in the bottom right corner."
   },
-  "visionModel": "gemini-3.1-flash-lite"
+  "visionModel": "gemini-3.1-flash-lite",
+  "modelOriginalQuotationRejected": true,
+  "modelOriginalQuotationRejectReason": "Model chapter/paragraph/quotation not verifiable verbatim against pinned original candidate excerpt",
+  "suggestedMatch": null,
+  "evidenceStatus": "INVALID_MODEL_SOURCE_QUOTE_REJECTED_NONPUBLISHABLE",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
 }
