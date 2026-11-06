@@ -36,6 +36,11 @@ OUTPUT_PREFIX = "verne-commons"
 API = "https://commons.wikimedia.org/w/api.php"
 MAX_DOWNLOAD_BYTES = 5_000_000
 MAX_IMAGE_PIXELS = 24_000_000
+# Edition-specific scan floors may be stricter or allow documented small old plates.
+# Defaults retain the historical Verne/War/Mohicans intake requirements.
+MIN_CATEGORY_MEMBERS = 10
+MIN_IMAGE_WIDTH = 350
+MIN_IMAGE_HEIGHT = 350
 Image.MAX_IMAGE_PIXELS = MAX_IMAGE_PIXELS
 PERIOD_NAME = re.compile(
     r"^File:(?:(?:Around the world in eighty days \(1873\) \(\d+\))|"
@@ -83,7 +88,7 @@ def category_members(s: requests.Session) -> list[dict]:
             break
         if len(result) > 350:
             raise ValueError("Unexpected Commons category expansion")
-    if len(result) < 10:
+    if len(result) < MIN_CATEGORY_MEMBERS:
         raise RuntimeError("Commons did not return expected historical image category members")
     return sorted(result, key=lambda x: x.get("title", ""))
 
@@ -155,7 +160,7 @@ def download_image(s: requests.Session, entry: dict) -> tuple[bytes, bytes, int,
         image.load()
     except (UnidentifiedImageError, OSError) as exc:
         raise ValueError("Invalid image decoder result") from exc
-    if image.width < 350 or image.height < 350 or image.width * image.height > MAX_IMAGE_PIXELS:
+    if image.width < MIN_IMAGE_WIDTH or image.height < MIN_IMAGE_HEIGHT or image.width * image.height > MAX_IMAGE_PIXELS:
         raise ValueError("Historical scan size/dimensions outside bounds")
     if image.width > 950 or image.height > 1400:
         image.thumbnail((950, 1400), Image.Resampling.LANCZOS)
