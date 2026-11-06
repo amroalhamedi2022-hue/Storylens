@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_27.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-b449077009e775be.webp",
+  "imageSha256": "cd4fe4fa53c4a5d0f151af9d6256632b82bfc833b14806788a08253a4a85f969",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a dense, tropical jungle landscape. In the foreground, lush vegetation and trees with hanging moss frame a path. In the middle ground, a small group of people on horseback are traveling along a trail near a body of water. In the background, a calm river or lake stretches toward a distant, hazy shoreline under a bright sky.",
+    "visualObjectsEn": "Dense tropical trees, hanging moss, palm-like foliage, a path or trail, a body of water, a small boat on the water, a group of riders on horseback, distant landmass.",
+    "recognizableCharactersOrPeopleEn": "A small group of figures on horseback, appearing as silhouettes or dark shapes against the lighter background.",
+    "uncertaintyNotes": "The exact geographical location is not specified in the image. The identity of the riders is unclear due to the small scale and the engraving style."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 17,
+    "paragraphIndexZeroBased": 7,
+    "exactSourceQuotation": "A handsome carriage, drawn by a sleek pair of New Holland horses, carried Phileas Fogg and Aouda into the midst of rows of palms with brilliant foliage",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The engraving depicts a tropical landscape with dense trees, palm-like foliage, and a path where a group of riders/carriages are traveling. Chapter 17, paragraph 7 describes Phileas Fogg and Aouda traveling through a tropical park in Singapore filled with palms and foliage, which aligns with the visual elements of the engraving.",
+    "suggestedAltArNotApproved": "A black and white engraving of a tropical jungle path with lush palm trees and hanging moss, featuring a group of travelers on horseback moving through the dense vegetation toward a distant river.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a dense tropical landscape with trees, a body of water in the distance, and tiny indistinct figures near the water.",
+    "visualContradictions": "The passage specifically describes Phileas Fogg and Aouda riding in a handsome carriage drawn by a sleek pair of horses through rows of palms and spice trees in Singapore. The figures in the engraving are too distant and indistinct to identify as Fogg and Aouda, and the specific details of a carriage and named tropical plants are not clearly depicted.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
