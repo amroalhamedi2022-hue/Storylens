@@ -1,0 +1,148 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 12,
+  "chapterTitle": "In which Phileas Fogg and his companions venture across the Indian forests, and what ensued.",
+  "startParagraphZeroBased": 40,
+  "paragraphCount": 8,
+  "sourceSha256": "b6cda4a067ef909edfdf3d74f64a178971378b746ea766c9ab962a538648a563",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 40,
+      "en": "“To the pagoda of Pillaji, two miles from here; she will pass the night there.”",
+      "existingArabicDraft": "«إلى معبد بيلاجي، على بعد ميلين من هنا؛ وستقضي الليل هناك.»"
+    },
+    {
+      "index": 41,
+      "en": "“And the sacrifice will take place⁠—”",
+      "existingArabicDraft": "«وستحدث التضحية—»"
+    },
+    {
+      "index": 42,
+      "en": "“Tomorrow, at the first light of dawn.”",
+      "existingArabicDraft": "«غدًا، مع أول ضوء للفجر.»"
+    },
+    {
+      "index": 43,
+      "en": "The guide now led the elephant out of the thicket, and leaped upon his neck. Just at the moment that he was about to urge Kiouni forward with a peculiar whistle, Mr. Fogg stopped him, and, turning to Sir Francis Cromarty, said, “Suppose we save this woman.”",
+      "existingArabicDraft": "قاد الدليل الفيل خارج الشجيرات وقفز إلى عنقه. وبينما كان يستعد لحث كيوني على السير بصفيرته الخاصة، أوقفه السيد فوغ، ثم التفت إلى السير فرانسيس كرومارتي وقال: «ما رأيك أن ننقذ هذه المرأة؟»"
+    },
+    {
+      "index": 44,
+      "en": "“Save the woman, Mr. Fogg!”",
+      "existingArabicDraft": "«ننقذ المرأة يا سيد فوغ!»"
+    },
+    {
+      "index": 45,
+      "en": "“I have yet twelve hours to spare; I can devote them to that.”",
+      "existingArabicDraft": "«ما زال لدي اثنتا عشرة ساعة فائضة؛ أستطيع أن أخصصها لهذا الأمر.»"
+    },
+    {
+      "index": 46,
+      "en": "“Why, you are a man of heart!”",
+      "existingArabicDraft": "قال السير فرانسيس بإعجاب: «إذن أنت رجل ذو قلب!»"
+    },
+    {
+      "index": 47,
+      "en": "“Sometimes,” replied Phileas Fogg, quietly; “when I have the time.”",
+      "existingArabicDraft": "أجاب فيلياس فوغ بهدوء: «أحيانًا، حين يتوفر لدي الوقت.»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«إلى معبد بيلاجي، على بعد ميلين من هنا؛ وستقضي الليل هناك.»"
+    },
+    {
+      "index": 1,
+      "ar": "«وستحدث التضحية—»"
+    },
+    {
+      "index": 2,
+      "ar": "«غدًا، مع أول ضوء للفجر.»"
+    },
+    {
+      "index": 3,
+      "ar": "قاد الدليل الفيل خارج الشجيرات وقفز إلى عنقه. وبينما كان يستعد لحث كيوني على السير بصفيرته الخاصة، أوقفه السيد فوغ، ثم التفت إلى السير فرانسيس كرومارتي وقال: «ما رأيك أن ننقذ هذه المرأة؟»"
+    },
+    {
+      "index": 4,
+      "ar": "«ننقذ المرأة يا سيد فوغ!»"
+    },
+    {
+      "index": 5,
+      "ar": "«ما زال لدي اثنتا عشرة ساعة فائضة؛ أستطيع أن أخصصها لهذا الأمر.»"
+    },
+    {
+      "index": 6,
+      "ar": "«لماذا، أنت رجل ذو قلب!»"
+    },
+    {
+      "index": 7,
+      "ar": "أجاب فيلياس فوغ بهدوء: «أحيانًا، حين يتوفر لدي الوقت.»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

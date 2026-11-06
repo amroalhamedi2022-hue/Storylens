@@ -1,0 +1,149 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 13,
+  "chapterTitle": "In which Passepartout receives a new proof that fortune favors the brave.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "77c4da5525cbc0b3d14a48b4b86ddc922cf90de7ecb9d10e60c8c870952be4f1",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The project was a bold one, full of difficulty, perhaps impracticable. Mr. Fogg was going to risk life, or at least liberty, and therefore the success of his tour. But he did not hesitate, and he found in Sir Francis Cromarty an enthusiastic ally.",
+      "existingArabicDraft": "كانت الخطة جريئة، محفوفة بالصعوبات، وربما مستحيلة التنفيذ. فقد كان السيد فوغ على وشك أن يعرّض حياته للخطر، أو حريته على الأقل، وبذلك يعرّض نجاح رحلته كله للخطر. ومع ذلك لم يتردد، ووجد في السير فرانسيس كرومارتي حليفًا متحمسًا."
+    },
+    {
+      "index": 1,
+      "en": "As for Passepartout, he was ready for anything that might be proposed. His master’s idea charmed him; he perceived a heart, a soul, under that icy exterior. He began to love Phileas Fogg.",
+      "existingArabicDraft": "أما باسبارتو فكان مستعدًا لأي أمر قد يُقترح. لقد سحرته فكرة سيده؛ إذ لمح قلبًا وروحًا خلف ذلك المظهر الجليدي. وبدأ يحب فيلياس فوغ."
+    },
+    {
+      "index": 2,
+      "en": "There remained the guide: what course would he adopt? Would he not take part with the Indians? In default of his assistance, it was necessary to be assured of his neutrality.",
+      "existingArabicDraft": "لم يبقَ سوى الدليل: أي مسلك سيسلك؟ ألن ينحاز إلى الهنود؟ وإذا لم يقدّم المساعدة، كان لا بد من التأكد من حياده."
+    },
+    {
+      "index": 3,
+      "en": "Sir Francis frankly put the question to him.",
+      "existingArabicDraft": "طرح السير فرانسيس عليه السؤال بصراحة."
+    },
+    {
+      "index": 4,
+      "en": "“Officers,” replied the guide, “I am a Parsee, and this woman is a Parsee. Command me as you will.”",
+      "existingArabicDraft": "«أيها الضابطان،» أجاب الدليل، «أنا بارسي، وهذه المرأة بارسية. فمُراني بما تريدان.»"
+    },
+    {
+      "index": 5,
+      "en": "“Excellent!” said Mr. Fogg.",
+      "existingArabicDraft": "«ممتاز!» قال السيد فوغ."
+    },
+    {
+      "index": 6,
+      "en": "“However,” resumed the guide, “it is certain, not only that we shall risk our lives, but horrible tortures, if we are taken.”",
+      "existingArabicDraft": "«لكن،» تابع الدليل، «من المؤكد أننا لن نعرّض حياتنا للخطر فحسب، بل قد نتعرض لتعذيب مروّع إذا قُبض علينا.»"
+    },
+    {
+      "index": 7,
+      "en": "“That is foreseen,” replied Mr. Fogg. “I think we must wait till night before acting.”",
+      "existingArabicDraft": "«هذا في الحسبان،» أجاب فوغ. «أرى أن علينا الانتظار حتى الليل قبل أن نتحرك.»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كان المشروع جريئاً، مليئاً بالصعوبات، وربما غير قابل للتنفيذ. كان السيد فوغ على وشك المخاطرة بحياته، أو على الأقل بحريته، وبالتالي بنجاح جولته. لكنه لم يتردد، ووجد في السير فرانسيس كرومارتي حليفاً متحمسًا."
+    },
+    {
+      "index": 1,
+      "ar": "أما باسبارتو، فكان مستعداً لأي شيء قد يُقترح. لقد سحرته فكرة سيده؛ فقد لمح قلباً وروحاً تحت ذلك المظهر الجليدي. بدأ يحب فيلياس فوغ."
+    },
+    {
+      "index": 2,
+      "ar": "وبقي الدليل: ما هو المسلك الذي سيتبعه؟ ألن يقف إلى جانب الهنود؟ وفي حال غياب مساعدته، كان لابد من ضمان حياده."
+    },
+    {
+      "index": 3,
+      "ar": "طرح السير فرانسيس السؤال عليه بكل صراحة."
+    },
+    {
+      "index": 4,
+      "ar": "أجاب الدليل: «أيها الضابطان، أنا بارسي، وهذه المرأة بارسية. مراني بما شئتم»."
+    },
+    {
+      "index": 5,
+      "ar": "«ممتاز!» قال السيد فوغ."
+    },
+    {
+      "index": 6,
+      "ar": "«ومع ذلك،» استأنف الدليل حديثه، «من المؤكد ليس فقط أننا سنخاطر بحياتنا، بل بوقوع تعذيب مروع إن تم القبض علينا»."
+    },
+    {
+      "index": 7,
+      "ar": "«هذا أمر متوقع،» أجاب السيد فوغ. «أعتقد أنه يجب علينا الانتظار حتى حلول الليل قبل التحرك»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

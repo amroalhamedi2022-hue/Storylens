@@ -1,0 +1,149 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 13,
+  "chapterTitle": "In which Passepartout receives a new proof that fortune favors the brave.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "7af5c6debf26fe17883a89eec104a5a617275c80d879a5ea9f7af2652ab11174",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "“I think so,” said the guide.",
+      "existingArabicDraft": "قال الدليل: «أرى ذلك أيضًا.»"
+    },
+    {
+      "index": 9,
+      "en": "The worthy Indian then gave some account of the victim, who, he said, was a celebrated beauty of the Parsee race, and the daughter of a wealthy Bombay merchant. She had received a thoroughly English education in that city, and, from her manners and intelligence, would be thought a European. Her name was Aouda. Left an orphan, she was married against her will to the old rajah of Bundelcund; and, knowing the fate that awaited her, she escaped, was retaken, and devoted by the rajah’s relatives, who had an interest in her death, to the sacrifice from which it seemed she could not escape.",
+      "existingArabicDraft": "ثم قدّم الهندي الجدير بالثقة بعض المعلومات عن الضحية. قال إنها امرأة مشهورة بجمالها من قوم البارسيين، وابنة تاجر ثري من بومباي. تلقت في تلك المدينة تعليمًا إنجليزيًا كاملًا، وكان من الممكن أن يظنها المرء أوروبية من سلوكها وذكائها. كان اسمها عودة. وبعد أن أصبحت يتيمة، زُوّجت قسرًا من راجا بونديلكند المسن؛ وحين عرفت المصير الذي ينتظرها، هربت، لكنهم أمسكوا بها مجددًا، ثم قرر أقارب الراجا، الذين كانت لهم مصلحة في موتها، تقديمها للطقس الذي بدا أنها لن تفلت منه."
+    },
+    {
+      "index": 10,
+      "en": "The Parsee’s narrative only confirmed Mr. Fogg and his companions in their generous design. It was decided that the guide should direct the elephant towards the pagoda of Pillaji, which he accordingly approached as quickly as possible. They halted, half an hour afterwards, in a copse, some five hundred feet from the pagoda, where they were well concealed; but they could hear the groans and cries of the fakirs distinctly.",
+      "existingArabicDraft": "لم تزد رواية البارسي فوغ ورفاقه إلا إصرارًا على خطتهم النبيلة. واتفقوا على أن يوجّه الدليل الفيل نحو معبد بيلاجي، فتوجه إليه بأقصى سرعة ممكنة. وبعد نصف ساعة توقفوا في مجموعة أشجار تبعد نحو خمسمئة قدم عن المعبد، حيث اختبأوا جيدًا، لكنهم كانوا يسمعون بوضوح أنين المتنسكين وصيحاتهم."
+    },
+    {
+      "index": 11,
+      "en": "They then discussed the means of getting at the victim. The guide was familiar with the pagoda of Pillaji, in which, as he declared, the young woman was imprisoned. Could they enter any of its doors while the whole party of Indians was plunged in a drunken sleep, or was it safer to attempt to make a hole in the walls? This could only be determined at the moment and the place themselves; but it was certain that the abduction must be made that night, and not when, at break of day, the victim was led to her funeral pyre. Then no human intervention could save her.",
+      "existingArabicDraft": "ثم ناقشوا كيفية الوصول إلى الضحية. كان الدليل يعرف معبد بيلاجي، حيث قال إن الشابة محتجزة. فهل يستطيعون الدخول من أحد أبوابه بينما يغرق الهنود جميعًا في نوم عميق من السكر، أم أن محاولة إحداث فتحة في الجدران أكثر أمانًا؟ لم يكن ممكنًا حسم الأمر إلا في المكان واللحظة نفسيهما. لكن المؤكد أن إنقاذها يجب أن يتم تلك الليلة، لا عند الفجر حين تُقاد إلى محرقة جنازتها؛ ففي ذلك الوقت لن يستطيع أي تدخل بشري إنقاذها."
+    },
+    {
+      "index": 12,
+      "en": "As soon as night fell, about six o’clock, they decided to make a reconnaissance around the pagoda. The cries of the fakirs were just ceasing; the Indians were in the act of plunging themselves into the drunkenness caused by liquid opium mingled with hemp, and it might be possible to slip between them to the temple itself.",
+      "existingArabicDraft": "ما إن حل الليل، قرابة السادسة، حتى قرروا استطلاع محيط المعبد. كانت صيحات المتنسكين توشك أن تخمد؛ وكان الهنود يغرقون في سُكر أحدثه الأفيون السائل الممزوج بالقنب، وربما أمكن التسلل بينهم حتى المعبد نفسه."
+    },
+    {
+      "index": 13,
+      "en": "The Parsee, leading the others, noiselessly crept through the wood, and in ten minutes they found themselves on the banks of a small stream, whence, by the light of the rosin torches, they perceived a pyre of wood, on the top of which lay the embalmed body of the rajah, which was to be burned with his wife. The pagoda, whose minarets loomed above the trees in the deepening dusk, stood a hundred steps away.",
+      "existingArabicDraft": "تسلل البارسي في المقدمة عبر الغابة دون صوت، وبعد عشر دقائق وصلوا إلى ضفة جدول صغير، ورأوا على ضوء مشاعل الصمغ كومة حطب أُعدت محرقة، وفوقها جسد الراجا المحنط الذي كان مقررًا أن يُحرق مع زوجته. وكان المعبد، الذي علت مآذنه فوق الأشجار في عتمة المساء المتزايدة، يبعد مئة خطوة."
+    },
+    {
+      "index": 14,
+      "en": "“Come!” whispered the guide.",
+      "existingArabicDraft": "همس الدليل: «هيا!»"
+    },
+    {
+      "index": 15,
+      "en": "He slipped more cautiously than ever through the brush, followed by his companions; the silence around was only broken by the low murmuring of the wind among the branches.",
+      "existingArabicDraft": "توغل بحذر أكبر بين الشجيرات، وتبعه رفاقه؛ ولم يكسر الصمت سوى همهمة الريح الخافتة بين الأغصان."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "قال الدليل: «أرى ذلك أيضًا.»"
+    },
+    {
+      "index": 1,
+      "ar": "ثم قدم الهندي الجدير بالثقة بعض التفاصيل عن الضحية، وقال إنها امرأة فائقة الجمال من قوم البارسيين، وابنة تاجر ثري في بومباي. لقد تلقت تعليمًا إنجليزيًا تامًا في تلك المدينة، وبفضل آدابها وذكائها، كان يمكن للمرء أن يحسبها أوروبية. وكان اسمها عودة. ولما أصبحت يتيمة، زوجت بغير رضاها من راجا بونديلكند العجوز؛ فلما علمت بالمصير الذي ينتظرها، هربت فأُعيد القبض عليها، ليقرر أقارب الراجا، الذين كانت لهم مصلحة في موتها، تقديمها ضحيةً بدا أنه لا محيد لها عنها."
+    },
+    {
+      "index": 2,
+      "ar": "لم تزد رواية البارسي السيد فوغ ورفاقه إلا تصميمًا على عزمهم النبيْل. وتقرر أن يوجه الدليل الفيل نحو معبد بيلاجي، فتوجه إليه بالفعل في أسرع وقت ممكن. وتوقفوا بعد نصف ساعة في أجمة تبعد نحو خمسمئة قدم عن المعبد، حيث كانوا في مخبأحصين، غير أنهم كانوا يسمعون بوضوح أنين المتنسكين وصيحاتهم."
+    },
+    {
+      "index": 3,
+      "ar": "ثم أخذوا يتناقشون في الوسائل الكفيلة بالوصول إلى الضحية. كان الدليل مطلعًا على معبد بيلاجي الذي زعم أن الشابة محتجزة فيه. فهل يدخلون من أحد أبوابه بينما كان جمع الهنود بأكمله يغرق في نوم مخمور، أم أن محاولة إحداث ثقب في الجدران كانت أدنى مخاطرة؟ لم يكن لتتحدد تلك المسألة إلا في الموضع واللحظة أنفسهما، بيد أنه كان مؤكدًا أن اختطافها يجب أن يتم في تلك الليلة، لا عند بزوغ الفجر حين تُقاد الضحية إلى محرقتها؛ ففي ذلك الحين لن يستطيع أي تدخل بشري إنقاذها."
+    },
+    {
+      "index": 4,
+      "ar": "وما إن أقبل الليل، في حدود الساعة السادسة، حتى عزموا على إجراء استطلاع حول المعبد. كانت صيحات المتنسكين توشك أن تخبو، وكان الهنود منهمكين في الاستغراق في السكر الناجم عن الأفيون السائل الممزوج بالقنب، وربما كان التسلل من بين صفوفهم إلى داخل المعبد نفسه أمرًا ممكنًا."
+    },
+    {
+      "index": 5,
+      "ar": "تسلل البارسي، متصدرًا رفاقه، بلا صوت عبر الغابة، وبعد عشر دقائق وجدوا أنفسهم على ضفة جدول صغير، ومن هناك، على ضوء مشاعل الصمغ، عاينوا محرقة خشبية يعتليها جثمان الراجا المحنط الذي كان مقدرًا أن يُحرق مع زوجه. أما المعبد، الذي تعالت مآذنه فوق الأشجار في غسق المساء المتكاثف، فكان على بعد مئة خطوة."
+    },
+    {
+      "index": 6,
+      "ar": "همس الدليل: «تعالوا!»"
+    },
+    {
+      "index": 7,
+      "ar": "انسلّ عبر الأدغال بحذر أشد من ذي قبل، وتلاه رفاقه؛ ولم يكد يقطع سكون المكان سوى خرير الريح الخافت بين الأغصان."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "تمت ترجمة 'worthy' إلى 'الجدير بالثقة' والصحيح 'النبيل' أو 'الجليل'، وترجمة 'Parsee race' إلى 'قوم البارسيين' غير دقيقة تماماً مقارنة بالسياق التاريخي."
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "هناك خطأ مطبعي في كلمة 'مخبأحصين' حيث تلصقت الكلمتان، والصحيح 'مخبأ حصين'."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": false,
+      "issues": "تمت ترجمة 'minarets' إلى 'مآذنه' والصحيح 'أبراج' أو 'قباب' لأن المعبد الهندوسي لا يحتوي على مآذع إسلامية."
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "استخدام كلمة 'خرير' غير مناسب للرياح، والصحيح 'حفيف الريح الخافت'."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

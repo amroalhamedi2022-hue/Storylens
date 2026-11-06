@@ -1,0 +1,148 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 12,
+  "chapterTitle": "In which Phileas Fogg and his companions venture across the Indian forests, and what ensued.",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 8,
+  "sourceSha256": "bee41e92e61d1f839c84df6546002765b2ab01640387b0b65d3a0cbd29923bb3",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "The Parsee nodded, and put his finger to his lips. The procession slowly wound under the trees, and soon its last ranks disappeared in the depths of the wood. The songs gradually died away; occasionally cries were heard in the distance, until at last all was silence again.",
+      "existingArabicDraft": "أومأ البارسي ووضع إصبعه على شفتيه. وانساب الموكب ببطء بين الأشجار حتى اختفت صفوفه الأخيرة في أعماق الغابة. وخفتت الأغاني تدريجيًا، وظلت تسمع صيحات متفرقة من بعيد إلى أن عاد الصمت."
+    },
+    {
+      "index": 25,
+      "en": "Phileas Fogg had heard what Sir Francis said, and, as soon as the procession had disappeared, asked: “What is a sati?”",
+      "existingArabicDraft": "كان فيلياس فوغ قد سمع ما قاله السير فرانسيس، فسأل فور اختفاء الموكب: «ما الساتي؟»"
+    },
+    {
+      "index": 26,
+      "en": "“A sati,” returned the general, “is a human sacrifice, but a voluntary one. The woman you have just seen will be burned tomorrow at the dawn of day.”",
+      "existingArabicDraft": "أجاب الجنرال: «الساتي تضحية بشرية، لكنها توصف بأنها طوعية. المرأة التي رأيناها ستُحرق غدًا عند الفجر.»"
+    },
+    {
+      "index": 27,
+      "en": "“Oh, the scoundrels!” cried Passepartout, who could not repress his indignation.",
+      "existingArabicDraft": "صرخ باسبارتو، عاجزًا عن كبح غضبه: «يا لهم من أوغاد!»"
+    },
+    {
+      "index": 28,
+      "en": "“And the corpse?” asked Mr. Fogg.",
+      "existingArabicDraft": "سأل السيد فوغ: «وماذا عن الجثة؟»"
+    },
+    {
+      "index": 29,
+      "en": "“Is that of the prince, her husband,” said the guide; “an independent rajah of Bundelcund.”",
+      "existingArabicDraft": "قال الدليل: «إنها جثة الأمير زوجها، وهو راجا مستقل من بونديلكند.»"
+    },
+    {
+      "index": 30,
+      "en": "“Is it possible,” resumed Phileas Fogg, his voice betraying not the least emotion, “that these barbarous customs still exist in India, and that the English have been unable to put a stop to them?”",
+      "existingArabicDraft": "وتابع فيلياس فوغ، من دون أن يظهر في صوته أدنى انفعال: «أيمكن أن تظل هذه العادات الهمجية قائمة في الهند، وأن يعجز الإنجليز عن وضع حد لها؟»"
+    },
+    {
+      "index": 31,
+      "en": "“These sacrifices do not occur in the larger portion of India,” replied Sir Francis; “but we have no power over these savage territories, and especially here in Bundelcund. The whole district north of the Vindhias is the theatre of incessant murders and pillage.”",
+      "existingArabicDraft": "رد السير فرانسيس: «لا تحدث هذه التضحيات في معظم أنحاء الهند، لكن سلطتنا لا تمتد إلى هذه المناطق النائية، ولا سيما هنا في بونديلكند. فالمنطقة الواقعة شمال جبال فينديا مسرح لجرائم قتل ونهب متواصلة.»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "أومأ البارسي ووضع إصبعه على شفتيه، فانساب الموكب ببطء تحت الأشجار، وما لبثت صفوفه الأخيرة أن اختفت في أعماق الغابة. وخفتت الأغاني تدريجياً، لتُسمع أحياناً صيحات في البعيد، إلى أن عاد الصمت التام من جديد."
+    },
+    {
+      "index": 1,
+      "ar": "كان فيلياس فوغ قد سمع ما قاله السير فرانسيس، وما إن اختفى الموكب حتى سأل: «ما هي الساتي؟»"
+    },
+    {
+      "index": 2,
+      "ar": "فأجاب الجنرال: «الساتي هي تضحية بشرية، ولكنها طوعية. تلك المرأة التي رأيناها للتو ستُحرق غداً عند طلوع الفجر.»"
+    },
+    {
+      "index": 3,
+      "ar": "فهتف باسبارتو، غير قادر على كبح غضبه: «يا لهم من أوغاد!»"
+    },
+    {
+      "index": 4,
+      "ar": "فسأل السيد فوغ: «وماذا عن الجثة؟»"
+    },
+    {
+      "index": 5,
+      "ar": "فأجاب الدليل: «إنها جثة الأمير زوجها، وهو راجا مستقل من بونديلكند.»"
+    },
+    {
+      "index": 6,
+      "ar": "وتابع فيلياس فوغ، دون أن ينم صوته عن أدنى انفعال: «أمن المعقول أن تظل هذه العادات الهمجية قائمة في الهند، وأن يعجز الإنجليز عن وضع حد لها؟»"
+    },
+    {
+      "index": 7,
+      "ar": "فرد السير فرانسيس: «إن هذه التضحيات لا تحدث في الجزء الأكبر من الهند، غير أننا لا نملك سلطة على هذه الأراضي المتوحشة، وخاصة هنا في بونديلكند. فالمنطقة بأسرها الواقعة شمال جبال فينديا تُعد مسرحاً للقتل والنهب المستمرين.»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

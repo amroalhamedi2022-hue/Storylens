@@ -1,0 +1,148 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 12,
+  "chapterTitle": "In which Phileas Fogg and his companions venture across the Indian forests, and what ensued.",
+  "startParagraphZeroBased": 32,
+  "paragraphCount": 8,
+  "sourceSha256": "e890eb72b1ee228d11bf986630d2b4f3cfc3d6252e686ba4d372df438ebcf75d",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 32,
+      "en": "“The poor wretch!” exclaimed Passepartout, “to be burned alive!”",
+      "existingArabicDraft": "صاح باسبارتو: «يا للمسكينة! سيحرقونها حية!»"
+    },
+    {
+      "index": 33,
+      "en": "“Yes,” returned Sir Francis, “burned alive. And, if she were not, you cannot conceive what treatment she would be obliged to submit to from her relatives. They would shave off her hair, feed her on a scanty allowance of rice, treat her with contempt; she would be looked upon as an unclean creature, and would die in some corner, like a scurvy dog. The prospect of so frightful an existence drives these poor creatures to the sacrifice much more than love or religious fanaticism. Sometimes, however, the sacrifice is really voluntary, and it requires the active interference of the Government to prevent it. Several years ago, when I was living at Bombay, a young widow asked permission of the governor to be burned along with her husband’s body; but, as you may imagine, he refused. The woman left the town, took refuge with an independent rajah, and there carried out her self-devoted purpose.”",
+      "existingArabicDraft": "أجاب السير فرانسيس: «نعم، سيحرقونها حية. ولو لم يحدث ذلك، فلا يمكنك تصور المعاملة التي ستلقاها من أقاربها؛ سيحلقون شعرها، ويطعمونها مقدارًا ضئيلًا من الأرز، ويعاملونها باحتقار، وينظرون إليها كأنها نجسة، حتى تموت في زاوية منسية. إن توقع حياة مروعة كهذه يدفع بعض النساء إلى التضحية بأنفسهن أكثر مما يفعل الحب أو التعصب الديني. ومع ذلك، تكون التضحية طوعية فعلًا في بعض الحالات، وعندها يتطلب الأمر تدخل الحكومة لمنعها. قبل سنوات، حين كنت أقيم في بومباي، طلبت أرملة شابة من الحاكم الإذن بأن تُحرق مع جثمان زوجها، لكنه رفض كما تتوقع. فغادرت المدينة ولجأت إلى راجا مستقل، وهناك نفذت عزمها على التضحية بنفسها.»"
+    },
+    {
+      "index": 34,
+      "en": "While Sir Francis was speaking, the guide shook his head several times, and now said: “The sacrifice which will take place tomorrow at dawn is not a voluntary one.”",
+      "existingArabicDraft": "وبينما كان السير فرانسيس يتحدث، هز الدليل رأسه مرات عدة وقال: «التضحية التي ستقع غدًا عند الفجر ليست طوعية.»"
+    },
+    {
+      "index": 35,
+      "en": "“How do you know?”",
+      "existingArabicDraft": "«كيف عرفت ذلك؟»"
+    },
+    {
+      "index": 36,
+      "en": "“Everybody knows about this affair in Bundelcund.”",
+      "existingArabicDraft": "«الجميع يعرفون أمر هذه الحادثة في بونديلكند.»"
+    },
+    {
+      "index": 37,
+      "en": "“But the wretched creature did not seem to be making any resistance,” observed Sir Francis.",
+      "existingArabicDraft": "لاحظ السير فرانسيس: «لكن المرأة المسكينة لم تبدُ وكأنها تقاوم.»"
+    },
+    {
+      "index": 38,
+      "en": "“That was because they had intoxicated her with fumes of hemp and opium.”",
+      "existingArabicDraft": "أجاب الدليل: «لأنهم خدروها بأبخرة القنب والأفيون.»"
+    },
+    {
+      "index": 39,
+      "en": "“But where are they taking her?”",
+      "existingArabicDraft": "«إلى أين يأخذونها؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "صاح باسبارتو: «يا للمسكينة! سيحرقونها حية!»"
+    },
+    {
+      "index": 1,
+      "ar": "أجاب السير فرانسيس: «نعم، سيحرقونها حية. ولو لم يحدث ذلك، فلا يمكنك تصور المعاملة القاسية التي ستجبر على تحملها من قبل أقاربها؛ سيحلقون شعرها، ويطعمونها مقدارًا زهيدًا من الأرز، ويعاملونها بازدراء، وينظرون إليها كأنها مخلوق نجس، وستموت في إحدى الزوايا مثل كلب أجرب. إن احتمال عيش حياة مروعة إلى هذا الحد هو ما يدفع هؤلاء النسوة المسكينات إلى التضحية بأنفسهن بأضعاف ما يفعله الحب أو التعصب الديني. ومع ذلك، تكون التضحية في بعض الأحيان اختيارية حقًا، وتستوجب تدخلاً نشطًا من الحكومة لمنعها. فقبل عدة سنوات، عندما كنت أعيش في بومباي، طلبت أرملة شابة إذن الحاكم لكي تحرق مع جثمان زوجها؛ ولكن كما يمكنك أن تتخيل، فقد رفض طلبها. غادرت المرأة المدينة، ولجأت إلى أحد المهراجا المستقلين، وهناك نفذت غايتها النبيلة.»"
+    },
+    {
+      "index": 2,
+      "ar": "وبينما كان السير فرانسيس يتحدث، هز الدليل رأسه عدة مرات، ثم قال: «إن التضحية التي ستتم غداً عند الفجر ليست اختيارية.»"
+    },
+    {
+      "index": 3,
+      "ar": "«كيف عرفت ذلك؟»"
+    },
+    {
+      "index": 4,
+      "ar": "«الجميع يعلمون أمر هذه القضية في بونديلكند.»"
+    },
+    {
+      "index": 5,
+      "ar": "«لكن المرأة المسكينة لم تكن تبدو كأنها تبدي أي مقاومة»"
+    },
+    {
+      "index": 6,
+      "ar": "«كان ذلك لأنهم سكروها بأبخرة القنب والأفيون.»"
+    },
+    {
+      "index": 7,
+      "ar": "«ولكن إلى أين يأخذونها؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "تمت ترجمة self-devoted purpose إلى غايتها النبيلة بدلاً من غايتها المكرسة ذاتياً أو تضحيتها"
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": false,
+      "issues": "تعبير سكروها بأبخرة القنب غير دقيق والأفضل خدرولها بأبخرة القنب والأفيون"
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

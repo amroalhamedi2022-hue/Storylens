@@ -1,0 +1,149 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 13,
+  "chapterTitle": "In which Passepartout receives a new proof that fortune favors the brave.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "43e9b1212622a900b60363ca2540888a221603f8711ca57060a0612c0fa2b35f",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "Soon the Parsee stopped on the borders of the glade, which was lit up by the torches. The ground was covered by groups of the Indians, motionless in their drunken sleep; it seemed a battlefield strewn with the dead. Men, women, and children lay together.",
+      "existingArabicDraft": "سرعان ما توقف البارسي عند حافة فسحة مضاءة بالمشاعل. كانت الأرض مغطاة بمجموعات من الهنود الغارقين في نوم السكر بلا حراك، حتى بدا المكان كساحة معركة تناثر فيها القتلى. رجال ونساء وأطفال كانوا ممددين معًا."
+    },
+    {
+      "index": 17,
+      "en": "In the background, among the trees, the pagoda of Pillaji loomed distinctly. Much to the guide’s disappointment, the guards of the rajah, lighted by torches, were watching at the doors and marching to and fro with naked sabres; probably the priests, too, were watching within.",
+      "existingArabicDraft": "وفي الخلف، بين الأشجار، ظهر معبد بيلاجي بوضوح. ولخيبة أمل الدليل، كان حراس الراجا، المضاؤون بالمشاعل، يراقبون الأبواب ويمشون ذهابًا وإيابًا وسيوفهم العارية في أيديهم؛ وربما كان الكهنة أيضًا يراقبون من الداخل."
+    },
+    {
+      "index": 18,
+      "en": "The Parsee, now convinced that it was impossible to force an entrance to the temple, advanced no farther, but led his companions back again. Phileas Fogg and Sir Francis Cromarty also saw that nothing could be attempted in that direction. They stopped, and engaged in a whispered colloquy.",
+      "existingArabicDraft": "اقتنَع البارسي بأن اقتحام المعبد مستحيل، فلم يتقدم أكثر، بل قاد رفاقه عائدين. وأدرك فوغ والسير فرانسيس كذلك أن المحاولة من تلك الجهة غير ممكنة. فتوقفوا وتبادلوا حديثًا هامسًا."
+    },
+    {
+      "index": 19,
+      "en": "“It is only eight now,” said the brigadier, “and these guards may also go to sleep.”",
+      "existingArabicDraft": "قال ضابط اللواء: «لم تتجاوز الساعة الثامنة، وربما ينام هؤلاء الحراس أيضًا.»"
+    },
+    {
+      "index": 20,
+      "en": "“It is not impossible,” returned the Parsee.",
+      "existingArabicDraft": "أجاب البارسي: «هذا ليس مستحيلًا.»"
+    },
+    {
+      "index": 21,
+      "en": "They lay down at the foot of a tree, and waited.",
+      "existingArabicDraft": "تمدّدوا عند أسفل شجرة وانتظروا."
+    },
+    {
+      "index": 22,
+      "en": "The time seemed long; the guide ever and anon left them to take an observation on the edge of the wood, but the guards watched steadily by the glare of the torches, and a dim light crept through the windows of the pagoda.",
+      "existingArabicDraft": "بدا الوقت طويلًا؛ فكان الدليل يغادرهم من حين إلى آخر ليتفقد حافة الغابة، لكن الحراس ظلوا يقظين تحت وهج المشاعل، وبدأ ضوء خافت يتسلل من نوافذ المعبد."
+    },
+    {
+      "index": 23,
+      "en": "They waited till midnight; but no change took place among the guards, and it became apparent that their yielding to sleep could not be counted on. The other plan must be carried out; an opening in the walls of the pagoda must be made. It remained to ascertain whether the priests were watching by the side of their victim as assiduously as were the soldiers at the door.",
+      "existingArabicDraft": "انتظروا حتى منتصف الليل، لكن الحراس لم يطرأ عليهم أي تغير، واتضح أنه لا يمكن التعويل على استسلامهم للنوم. فلا بد من تنفيذ الخطة الأخرى: فتح ثغرة في جدار المعبد. وبقي أن يتأكدوا مما إذا كان الكهنة يراقبون الضحية عن قرب كما يفعل الجنود عند الباب."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "سرعان ما توقف البارسي عند حافة الفسحة التي كانت مشاعل الضوء تضيئها. وكانت الأرض مغطاة بمجموعات من الهنود الساكنين في نومهم السكران؛ فبدت وكأنها ساحة معركة تناثر فيها القتلى. وكان الرجال والنساء والأطفال ممددين معًا."
+    },
+    {
+      "index": 1,
+      "ar": "وفي الخلف، بين الأشجار، برز معبد بيلاجي بوضوح. ومما أثار خيبة أمل الدليل، أن حراس الراجا، الذين أنارتهم المشاعل، كانوا يراقبون عند الأبواب ويطوفون ذهابًا وإيابًا بسيوف مسلولة؛ بل لعل الكهنة كانوا يراقبون من الداخل أيضًا."
+    },
+    {
+      "index": 2,
+      "ar": "ولم يعد البارسي، وقد ايقن الآن باستحالة اقتحام المعبد، يتقدم إلى أبعد من ذلك، بل قاد رفاقه للعودة. وقد رأى فيلياس فوغ والسير فرانسيس كرومارتي أيضًا أنه لا فائدة تُرجى من محاولة أي شيء في ذلك الاتجاه. فتوقفوا وانخرطوا في حديث هامس."
+    },
+    {
+      "index": 3,
+      "ar": "قال العميد: «الساعة الآن الثامنة فقط، ومن الممكن أن يخلد هؤلاء الحراس إلى النوم أيضًا»."
+    },
+    {
+      "index": 4,
+      "ar": "فأجاب البارسي: «ليس ذلك بمستحيل»."
+    },
+    {
+      "index": 5,
+      "ar": "واستلقوا عند أصل شجرة، وأخذوا ينتظرون."
+    },
+    {
+      "index": 6,
+      "ar": "وبدا الوقت طويلًا؛ فكان الدليل يفارقهم بين الحين والآخر ليستطلع الوضع عند حافة الغابة، غير أن الحراس ظلوا يقظين بثبات تحت وميض المشاعل، بينما تسلل ضوء شاحب عبر نوافذ المعبد."
+    },
+    {
+      "index": 7,
+      "ar": "وظلوا ينتظرون حتى منتصف الليل؛ لكن أي تغيير لم يطرأ على الحراس، وبات واضحًا أنه لا يمكن التعويل على استسلامهم للنوم. إذن فلا بد من تنفيذ الخطة البديلة: أي إحداث فتحة في جدال المعبد. وبقي التحقق مما إذا كان الكهنة يحرصون على مراقبة ضحيتهم باليقظة نفسها التي يبديها الجنود عند الباب."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "يوجد خطأ مطبعي في كلمة 'جدال' والصواب 'جدران'."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

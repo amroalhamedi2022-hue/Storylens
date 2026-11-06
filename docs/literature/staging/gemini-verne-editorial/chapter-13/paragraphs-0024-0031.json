@@ -1,0 +1,149 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 13,
+  "chapterTitle": "In which Passepartout receives a new proof that fortune favors the brave.",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 8,
+  "sourceSha256": "a71fe57cda5f12368f3b60e3c04d05f75903f75cae6b4ed13535d49ecdf1ad6c",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "After a last consultation, the guide announced that he was ready for the attempt, and advanced, followed by the others. They took a roundabout way, so as to get at the pagoda on the rear. They reached the walls about half-past twelve, without having met anyone; here there was no guard, nor were there either windows or doors.",
+      "existingArabicDraft": "بعد مشاورة أخيرة، أعلن الدليل استعداده للمحاولة، وتقدم يتبعه الآخرون. سلكوا طريقًا ملتويًا ليصلوا إلى الجانب الخلفي من المعبد. وبلغوا الجدار قرابة الثانية عشرة والنصف دون أن يلتقوا أحدًا؛ فلم يكن هناك حارس ولا نوافذ ولا أبواب."
+    },
+    {
+      "index": 25,
+      "en": "The night was dark. The moon, on the wane, scarcely left the horizon, and was covered with heavy clouds; the height of the trees deepened the darkness.",
+      "existingArabicDraft": "كان الليل شديد الظلمة. والقمر المتناقص بالكاد ارتفع عن الأفق، وقد حجبته سحب كثيفة؛ وزاد ارتفاع الأشجار العتمة."
+    },
+    {
+      "index": 26,
+      "en": "It was not enough to reach the walls; an opening in them must be accomplished, and to attain this purpose the party only had their pocketknives. Happily the temple walls were built of brick and wood, which could be penetrated with little difficulty; after one brick had been taken out, the rest would yield easily.",
+      "existingArabicDraft": "لم يكن الوصول إلى الجدار كافيًا؛ بل كان عليهم فتح ثغرة فيه، ولم يكن معهم لتحقيق ذلك سوى سكاكين الجيب. ولحسن الحظ، كانت جدران المعبد مبنية من الطوب والخشب، ويمكن اختراقها بسهولة نسبية؛ فبعد نزع طوبة واحدة، ستسهل إزالة البقية."
+    },
+    {
+      "index": 27,
+      "en": "They set noiselessly to work, and the Parsee on one side and Passepartout on the other began to loosen the bricks so as to make an aperture two feet wide. They were getting on rapidly, when suddenly a cry was heard in the interior of the temple, followed almost instantly by other cries replying from the outside. Passepartout and the guide stopped. Had they been heard? Was the alarm being given? Common prudence urged them to retire, and they did so, followed by Phileas Fogg and Sir Francis. They again hid themselves in the wood, and waited till the disturbance, whatever it might be, ceased, holding themselves ready to resume their attempt without delay. But, awkwardly enough, the guards now appeared at the rear of the temple, and there installed themselves, in readiness to prevent a surprise.",
+      "existingArabicDraft": "بدأوا العمل دون صوت؛ أخذ البارسي يفك الطوب من جهة، وباسبارتو من الجهة الأخرى، ليصنعا فتحة بعرض قدمين. وكانا يتقدمان بسرعة حين سمعوا فجأة صرخة من داخل المعبد، أعقبتها على الفور صرخات أخرى من الخارج. توقف باسبارتو والدليل. هل سمعهما أحد؟ هل انطلقت صيحة الإنذار؟ اقتضى الحذر أن ينسحبوا، ففعلوا، وتبعهما فوغ والسير فرانسيس. واختبأوا ثانية في الغابة وانتظروا حتى يهدأ الاضطراب، مستعدين لاستئناف المحاولة بلا تأخير. لكن لسوء الحظ ظهر الحراس الآن عند الجهة الخلفية للمعبد، واستقروا هناك لمنع أي مباغتة."
+    },
+    {
+      "index": 28,
+      "en": "It would be difficult to describe the disappointment of the party, thus interrupted in their work. They could not now reach the victim; how, then, could they save her? Sir Francis shook his fists, Passepartout was beside himself, and the guide gnashed his teeth with rage. The tranquil Fogg waited, without betraying any emotion.",
+      "existingArabicDraft": "يصعب وصف خيبة أمل المجموعة بعد أن انقطع عملهم. لم يعد بإمكانهم الوصول إلى الضحية؛ فكيف سينقذونها إذن؟ قبض السير فرانسيس يديه غاضبًا، وفقد باسبارتو صوابه، وصرّ الدليل على أسنانه من شدة الغيظ. أما فوغ الهادئ فانتظر دون أن يُظهر أي انفعال."
+    },
+    {
+      "index": 29,
+      "en": "“We have nothing to do but to go away,” whispered Sir Francis.",
+      "existingArabicDraft": "همس السير فرانسيس: «ليس أمامنا إلا أن نغادر.»"
+    },
+    {
+      "index": 30,
+      "en": "“Nothing but to go away,” echoed the guide.",
+      "existingArabicDraft": "وردد الدليل: «ليس أمامنا إلا الرحيل.»"
+    },
+    {
+      "index": 31,
+      "en": "“Stop,” said Fogg. “I am only due at Allahabad tomorrow before noon.”",
+      "existingArabicDraft": "قال فوغ: «تمهلوا. ليس عليّ الوصول إلى الله آباد إلا قبل ظهر الغد.»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "بعد مشاورة أخيرة، أعلن الدليل استعداده للمحاولة، وتقدم يتبعه الآخرون. سلكوا طريقًا ملتويًا ليصلوا إلى المعبد من الخلف. وبلغوا الجدار قرابة الثانية عشرة والنصف دون أن يلتقوا أحدًا؛ فلم يكن هناك حارس ولا نوافذ ولا أبواب."
+    },
+    {
+      "index": 1,
+      "ar": "كان الليل مظلمًا. والقمر في محاقه المتناقص بالكاد بان في الأفق، وقد حجبتْه سحب كثيفة؛ وزادت عتمةَ المكان أشجارُه السامقة."
+    },
+    {
+      "index": 2,
+      "ar": "لم يكن الوصول إلى الجدار كافيًا؛ بل كان لزامًا صنع فتحة فيه، ولم تملك المجموعة لتحقيق ذلك سوى سكاكين الجيب. ولحسن الحظ، كانت جدران المعبد مبنية من الطوب والخشب، مما يسهل اختراقه بلا مشقة تذكر؛ فما إن تُنزع طوبة واحدة حتى يسهل استخراج ما تبقى."
+    },
+    {
+      "index": 3,
+      "ar": "بدأوا العمل بلا صخب، وأخذ البارسي من جهة وباسبارتو من الجهة الأخرى يحلان الطوب لصنع فتحة عرضها قدمان. وكانا يتقدمان بسرعة، حين سُمعت فجأة صرخة من داخل المعبد، أعقبتها على الفور صرخات أخرى تجيبها من الخارج. توقف باسبارتو والدليل. هل سُمِعا؟ هل أُطلق الإنذار؟ دفعهم الحذر المعتاد إلى الانسحاب، ففعلوا، وتَبِعهم فيلياس فوغ والسير فرانسيس. واختبأوا مرة أخرى في الغابة، وانتظروا حتى يهدأ الاضطراب أياً كان سببه، مستعدين لاستئناف محاولتهم دون إبطاء. لكن الحراس ظهروا -لسوء الحظ- عند مؤخرة المعبد، واتخذوا أماكنهم هناك تأهباً لصد أي مباغتة."
+    },
+    {
+      "index": 4,
+      "ar": "يصعب وصف خيبة أمل المجموعة التي قُطع عليها عملها هكذا. لم يعد بإمكانهم الوصول إلى الضحية؛ فكيف لهم إذن أن ينقذوها؟ هزَّ السير فرانسيس قبضتيه، وفقد باسبارتو صوابه، وصرَّ الدليل على أسنانه بغيظ. أما فوغ الهادئ فانتظر دون أن يبدي أي تأثر."
+    },
+    {
+      "index": 5,
+      "ar": "همس السير فرانسيس: «ليس لدينا خيار سوى الذهاب.»"
+    },
+    {
+      "index": 6,
+      "ar": "واردد الدليل: «لا خيار سوى الذهاب.»"
+    },
+    {
+      "index": 7,
+      "ar": "قال فوغ: «تمهلوا. إن موعد وصولي إلى الله آباد هو غداً قبل الظهر فقط.»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
