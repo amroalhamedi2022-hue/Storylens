@@ -139,6 +139,75 @@ def verify_kalila_miniatures() -> int:
     return len(images)
 
 
+
+def staged_original_chapter_coverage(archive: Path) -> dict:
+    """Verify full staged source chapters and their non-release image-map slots.
+
+    The manifest's original upstream Git blob SHA-1 is checked against every
+    staged XHTML byte string, independently of the image SHA-256 contract.
+    Prologue, epilogue and framing letters are preserved but not miscounted
+    as numbered chapters.
+    """
+    import re
+
+    original_manifest = jload(archive / "manifest.json")
+    source_rows = original_manifest.get("originalChapters")
+    if source_rows is None:
+        source_rows = original_manifest.get("narrativeParts")
+    if not isinstance(source_rows, list) or not source_rows:
+        raise ValueError("Missing complete original narrative manifest: " + archive.name)
+    if original_manifest.get("completeOriginalSource") is not True and original_manifest.get("originalSourceComplete") is not True:
+        raise ValueError("Original source not marked complete: " + archive.name)
+
+    image_map_path = archive / "chapter-image-map.json"
+    image_map = jload(image_map_path)
+    if image_map.get("schemaVersion") != 1 or image_map.get("bookId") != archive.name:
+        raise ValueError("Incorrect original book ID or map schema: " + archive.name)
+    if image_map.get("releaseApproved") is not False:
+        raise ValueError("Unreviewed original book falsely marked publishable: " + archive.name)
+    if image_map.get("sourceManifestPath") != str((archive / "manifest.json").relative_to(ROOT)):
+        raise ValueError("Unpinned original source manifest: " + archive.name)
+
+    expected_chapters = []
+    expected_other_units = []
+    for part in source_rows:
+        name = part["file"]
+        if not isinstance(name, str) or not re.fullmatch(
+                r"(?:chapter-[0-9]+(?:-[0-9]+)?|letter-[0-9]+|preface|epilogue)\.xhtml", name):
+            raise ValueError("Unexpected/unsafe original unit: " + str(name))
+        data = (archive / name).read_bytes()
+        expected_sha = part.get("upstreamGitBlobSha")
+        if (len(data) != part.get("bytes") or
+            hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\x00" + data).hexdigest() != expected_sha):
+            raise ValueError("Staged original source changed from pinned Git blob: " + name)
+        if name.startswith("chapter-"):
+            expected_chapters.append(part)
+        else:
+            expected_other_units.append(part)
+
+    chapters = image_map.get("chapters", [])
+    if len(chapters) != len(expected_chapters) or image_map.get("chapterCount") != len(chapters):
+        raise ValueError("Original chapter list not complete: " + archive.name)
+    if len(image_map.get("nonChapterNarrativeUnits", [])) != len(expected_other_units):
+        raise ValueError("Original framing/closing narrative was dropped: " + archive.name)
+    for i, (mapped, source) in enumerate(zip(chapters, expected_chapters), 1):
+        if (mapped.get("chapterOneBased") != i or
+            mapped.get("sourceFilePath") != str((archive / source["file"]).relative_to(ROOT)) or
+            mapped.get("sourceGitBlobSha") != source["upstreamGitBlobSha"] or
+            mapped.get("sourceByteCount") != source["bytes"]):
+            raise ValueError("Misordered/misattributed original source chapter: " + archive.name)
+    for mapped, source in zip(image_map["nonChapterNarrativeUnits"], expected_other_units):
+        if (mapped.get("sourceFilePath") != str((archive / source["file"]).relative_to(ROOT)) or
+            mapped.get("sourceGitBlobSha") != source["upstreamGitBlobSha"] or
+            mapped.get("sourceByteCount") != source["bytes"]):
+            raise ValueError("Missing or mismatched source framing/epilogue: " + archive.name)
+
+    coverage = map_coverage(image_map_path, len(chapters))
+    return {**coverage, "nonChapterNarrativeSourceUnits": len(expected_other_units),
+            "sourceManifest": str((archive / "manifest.json").relative_to(ROOT)),
+            "sourceHashAudit": "UPSTREAM_GIT_BLOB_SHA1_AND_EXACT_BYTES"}
+
+
 def generate() -> dict:
     manifest = jload(HIST)
     if not manifest or len({x["file"] for x in manifest}) != len(manifest):
@@ -321,12 +390,20 @@ def generate() -> dict:
     for slug, title in OLDER:
         archive = STAGING / slug
         if archive.is_dir():
-            rows.append({"bookId": slug, "title": title,
-                         "sourceState": "older staged work; chapter-card coverage audit pending",
-                         "chapterCount": None, "localCandidateChapters": 0,
-                         "readyForUICards": 0, "missingImageChapters": None,
-                         "missingReadyChapters": None,
-                         "archivedLocalHistoricArt": kalila_colours if slug == "kalila-arabic-wikisource" else 0})
+            original_map = archive / "chapter-image-map.json"
+            if original_map.is_file() and slug != "kalila-arabic-wikisource":
+                coverage = staged_original_chapter_coverage(archive)
+                rows.append({"bookId": slug, "title": title,
+                             "sourceState": "complete original chapters and non-chapter narrative byte-verified; all chapter-scene images and complete contextual Arabic/territorial clearance pending",
+                             "chapterCount": jload(original_map)["chapterCount"], **coverage,
+                             "archivedLocalHistoricArt": 0})
+            else:
+                rows.append({"bookId": slug, "title": title,
+                             "sourceState": "staged source; edition-specific narrative segmentation/art mapping pending",
+                             "chapterCount": None, "localCandidateChapters": 0,
+                             "readyForUICards": 0, "missingImageChapters": None,
+                             "missingReadyChapters": None,
+                             "archivedLocalHistoricArt": kalila_colours if slug == "kalila-arabic-wikisource" else 0})
     available = sum(r["localCandidateChapters"] for r in rows)
     ready = sum(r["readyForUICards"] for r in rows)
     return {
@@ -405,7 +482,8 @@ def markdown(report: dict) -> str:
         "- War of the Worlds: **27 chapters without candidates**.",
         "- Five archived illustrated novels now have edition-derived chapter counts and source-positioned local plate candidates; verify scene fidelity and per-image rights before use.", 
         "- Monte Cristo: **" + str(next((r["missingImageChapters"] for r in report["books"] if r["bookId"] == "the-count-of-monte-cristo"), "not indexed")) + " chapter candidates missing**; the historical English translation's original French edition and rights still need verification.",
-        "- Moonstone/older works: exact chapter segmentation, contextual art acquisition, rights and editorial review still open.",
+        "- Six complete Standard Ebooks originals are now source- and SHA-pinned chapter-indexed (108 chapters); primary images, contextual Arabic, art/territory rights and editorial approval remain missing.",
+        "- Moonstone, Kalila and other edition-specific works still require responsible narrative segmentation and rights/art review.",
         "- Book cover art, full bilingual human review and signed reader release require independent checks.",
         "",
     ])
