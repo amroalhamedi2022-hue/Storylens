@@ -31,7 +31,8 @@ const legacyArt=(story,index)=>{
   credited:true,kind:'existing-legacy'
  }:null;
 };
-function validatedArt(entry){
+const VALID_ARCHIVE=/^https:\/\/(?:commons\.wikimedia\.org|www\.metmuseum\.org|www\.loc\.gov|gallica\.bnf\.fr|www\.gutenberg\.org|archive\.org)\//i;
+function validatedArt(entry,{inline=false,paragraphCount=0}={}){
  if(!entry||typeof entry!=='object')return null;
  const src=entry.src||entry.imagePath;
  if(typeof src!=='string')return null;
@@ -45,10 +46,14 @@ function validatedArt(entry){
     entry.releaseApproved===true &&
     entry.distributionReviewApproved===true &&
     (entry.rightsStatus==='APPROVED'||entry.rightsStatus==='CLEARED');
- const inlineReady=entry.verifiedArchive===true &&
+ const inlineReady=inline&&entry.verifiedArchive===true &&
     entry.sourceParagraphExact===true &&
     entry.distributionReviewApproved===true &&
-    entry.editoriallyApproved===true;
+    entry.editoriallyApproved===true &&
+    typeof entry.archiveSource==='string'&&VALID_ARCHIVE.test(entry.archiveSource)&&
+    Number.isInteger(entry.afterParagraph)&&entry.afterParagraph>=0&&
+    entry.afterParagraph<paragraphCount&&
+    Number.isFinite(entry.aspectRatio)&&entry.aspectRatio>=.5&&entry.aspectRatio<=3.5;
  if(!ready&&!inlineReady)return null;
  const alt=locale(entry.altAr||entry.alt||'',entry.altEn||entry.alt||'');
  if(typeof alt!=='string'||!alt.trim())return null;
@@ -67,7 +72,10 @@ function chapterImage(story,index){
  // exact passage check passed. Never borrow a picture from another chapter.
  const inline=Array.isArray(chapter.inlineArt)?chapter.inlineArt:[];
  for(const candidate of inline){
-  const result=validatedArt(candidate);
+  const result=validatedArt(candidate,{
+   inline:true,
+   paragraphCount:Array.isArray(chapter.paragraphs)?chapter.paragraphs.length:0
+  });
   if(result)return result;
  }
  // For released legacy short fiction, only existing bundled art is eligible.
@@ -118,7 +126,10 @@ function close(pushBack=true){
 }
 function openSelected(id,index){
  const story=storyById(id);
- if(!story||!Number.isSafeInteger(index)||index<0||index>=available(story))return false;
+ // A stale gallery tile, unresolved lazy load or external caller must never
+ // overwrite chapter progress or open a different book.
+ if(!active||active.id!==id||!story||
+    !Number.isSafeInteger(index)||index<0||index>=available(story))return false;
  // Existing per-story progress key and reader pipeline are preserved.
  // A selected chapter starts/resumes at its saved scroll/page semantic anchor.
  if(typeof put==='function')put('chapter_'+story.id,index);
