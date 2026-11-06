@@ -299,6 +299,55 @@ def valley_of_fear_original_chapter_coverage(archive: Path) -> dict:
             "sourceHashAudit": "GUTENBERG_SHA256_AND_EXACT_DOM_CHAPTER_ANCHORS"}
 
 
+
+def war_of_worlds_original_chapter_coverage() -> dict:
+    """Hash-pin the complete 17+10 original Wells chapters and exact headings."""
+    import re
+
+    folder = STAGING / "the-war-of-the-worlds"
+    manifest = jload(folder / "manifest.json")
+    map_path = folder / "chapter-image-map.json"
+    book_map = jload(map_path)
+    originals = manifest["originalChapters"]
+    structural = manifest["structuralParts"]
+    if (manifest.get("completeOriginalSource") is not True or
+        len(originals) != 27 or
+        book_map.get("chapterCount") != 27 or
+        book_map.get("releaseApproved") is not False or
+        book_map.get("bookId") != manifest.get("id") or
+        book_map.get("sourceUpstreamCommit") != manifest["source"]["upstreamCommit"] or
+        book_map.get("sourceStructuralUnits") != structural or
+        len(book_map.get("chapters", [])) != 27):
+        raise ValueError("Wells source book map or text structure inconsistent")
+    for original in originals + structural:
+        name = original["file"]
+        if not re.fullmatch(r"(?:chapter-[12]-[0-9]+|book-[12]|dedication|epigraph)\.xhtml", name):
+            raise ValueError("Unsafe/unexpected Wells narrative file: " + name)
+        data = (folder / name).read_bytes()
+        if (len(data) != original["bytes"] or
+            hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\x00" + data).hexdigest() != original["upstreamGitBlobSha"]):
+            raise ValueError("Wells original text SHA changed: " + name)
+    for i, (source, row) in enumerate(zip(originals, book_map["chapters"]), 1):
+        expected_id = f'chapter-{source["book"]}-{source["number"]}'
+        raw = (folder / source["file"]).read_bytes().decode("utf-8")
+        title = re.search(r"<title>([^<]+)</title>", raw)
+        section = re.search(r'<section\b[^>]*\bid="(chapter-[12]-[0-9]+)"', raw)
+        if (not title or not section or section.group(1) != expected_id or
+            row.get("chapterOneBased") != i or
+            row.get("sourceBookOneBased") != source["book"] or
+            row.get("chapterWithinBookOneBased") != source["number"] or
+            row.get("sourceFilePath") != str((folder / source["file"]).relative_to(ROOT)) or
+            row.get("sourceGitBlobSha") != source["upstreamGitBlobSha"] or
+            row.get("sourceByteCount") != source["bytes"] or
+            row.get("sourceXhtmlSectionId") != expected_id or
+            row.get("originalXhtmlTitle") != title.group(1) or
+            row.get("titleEn") != title.group(1).split(": ", 1)[-1]):
+            raise ValueError("Wells original chapter title/order not exact: " + str(i))
+    return {**map_coverage(map_path, 27),
+            "sourceHashAudit": "UPSTREAM_GIT_BLOB_SHA1_AND_ACTUAL_XHTML_TITLES",
+            "sourceStructuralUnits": len(structural)}
+
+
 def generate() -> dict:
     manifest = jload(HIST)
     if not manifest or len({x["file"] for x in manifest}) != len(manifest):
@@ -422,9 +471,8 @@ def generate() -> dict:
          "missingImageChapters": None, "missingReadyChapters": None,
          "archivedLocalHistoricArt": 0},
         {"bookId": "wells-war-of-the-worlds-1898", "title": "The War of the Worlds",
-         "sourceState": "27 original chapters staged; bilingual/rights pending",
-         "chapterCount": 27, "localCandidateChapters": 0, "readyForUICards": 0,
-         "missingImageChapters": 27, "missingReadyChapters": 27,
+         "sourceState": "17+10 original English source chapters and true XHTML headings SHA-pinned; Correa plates remain scene/rights unassigned",
+         "chapterCount": 27, **war_of_worlds_original_chapter_coverage(),
          "unassignedHistoricalCorreaImageFiles": war_historic_count,
          "archivedLocalHistoricArt": war_historic_count},
     ]
