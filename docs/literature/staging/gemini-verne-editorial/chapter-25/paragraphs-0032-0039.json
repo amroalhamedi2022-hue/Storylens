@@ -1,0 +1,161 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 25,
+  "chapterTitle": "In which a slight glimpse is had of San Francisco.",
+  "startParagraphZeroBased": 32,
+  "paragraphCount": 8,
+  "sourceSha256": "6ea6e4bbae581d8a4913fd33fda52176c9b8754fdb5c95450ac96aa78ee24ca6",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 32,
+      "en": "The human tide now swept by, after overturning Fix, who speedily got upon his feet again, though with tattered clothes. Happily, he was not seriously hurt. His travelling overcoat was divided into two unequal parts, and his trousers resembled those of certain Indians, which fit less compactly than they are easy to put on. Aouda had escaped unharmed, and Fix alone bore marks of the fray in his black and blue bruise.",
+      "existingArabicDraft": "جرف المد البشري الجميع بعد أن طرح فيكس أرضًا، لكنه نهض سريعًا رغم تمزق ملابسه. ولحسن الحظ لم يُصب بأذى خطير؛ فقد انقسم معطف سفره إلى جزأين غير متساويين، وصار سرواله يشبه سراويل بعض السكان الأصليين الفضفاضة. أما أودا فنجت بلا إصابة، بينما بقيت على فيكس كدمة زرقاء وسوداء."
+    },
+    {
+      "index": 33,
+      "en": "“Thanks,” said Mr. Fogg to the detective, as soon as they were out of the crowd.",
+      "existingArabicDraft": "قال فوغ للمحقق بعد ابتعادهما عن الحشد: «شكرًا لك»."
+    },
+    {
+      "index": 34,
+      "en": "“No thanks are necessary,” replied Fix; “but let us go.”",
+      "existingArabicDraft": "أجاب فيكس: «لا داعي للشكر، لكن لنذهب»."
+    },
+    {
+      "index": 35,
+      "en": "“Where?”",
+      "existingArabicDraft": "«إلى أين؟»"
+    },
+    {
+      "index": 36,
+      "en": "“To a tailor’s.”",
+      "existingArabicDraft": "«إلى خياط»."
+    },
+    {
+      "index": 37,
+      "en": "Such a visit was, indeed, opportune. The clothing of both Mr. Fogg and Fix was in rags, as if they had themselves been actively engaged in the contest between Camerfield and Mandiboy. An hour after, they were once more suitably attired, and with Aouda returned to the International Hotel.",
+      "existingArabicDraft": "كانت الزيارة في محلها؛ فقد تمزقت ملابس فوغ وفيكس وكأنهما شاركا في الشجار. وبعد ساعة ارتديا ملابس مناسبة من جديد وعادا مع أودا إلى فندق إنترناشونال."
+    },
+    {
+      "index": 38,
+      "en": "Passepartout was waiting for his master, armed with half a dozen six-barrelled revolvers. When he perceived Fix, he knit his brows; but Aouda having, in a few words, told him of their adventure, his countenance resumed its placid expression. Fix evidently was no longer an enemy, but an ally; he was faithfully keeping his word.",
+      "existingArabicDraft": "كان باسبارتو ينتظر سيده مسلحًا بستة مسدسات ذات ست فوهات. وعندما رأى فيكس عقد حاجبيه، لكن أودا شرحت ما حدث باختصار فعاد الهدوء إلى وجهه. لم يعد فيكس عدوًا بل حليفًا، إذ كان يفي بوعده بأمانة."
+    },
+    {
+      "index": 39,
+      "en": "Dinner over, the coach which was to convey the passengers and their luggage to the station drew up to the door. As he was getting in, Mr. Fogg said to Fix, “You have not seen this Colonel Proctor again?”",
+      "existingArabicDraft": "بعد العشاء، وصلت العربة التي ستنقل المسافرين وأمتعتهم إلى المحطة. وبينما كان فوغ يصعد إليها، سأل فيكس: «ألم ترَ الكولونيل بروكتور مرة أخرى؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "جرف المد البشري الجميع بعد أن طرح فيكس أرضًا، لكنه نهض سريعًا رغم تمزق ملابسه. ولحسن الحظ لم يُصب بأذى خطير؛ فقد انقسم معطف سفره إلى جزأين غير متساويين، وصار سرواله يشبه سراويل بعض الهنود الفضفاضة. أما أودا فنجت بلا إصابة، بينما حمل فيكس وحده آثار المعركة في شكل كدمة زرقاء وسوداء."
+    },
+    {
+      "index": 1,
+      "ar": "قال السيد فوغ للمحقق، بمجرد أن ابتعدا عن الحشد: «شكرًا لك»."
+    },
+    {
+      "index": 2,
+      "ar": "أجاب فيكس: «لا داعي للشكر، ولكن لنذهب»."
+    },
+    {
+      "index": 3,
+      "ar": "«إلى أين؟»"
+    },
+    {
+      "index": 4,
+      "ar": "«إلى خياط»."
+    },
+    {
+      "index": 5,
+      "ar": "كانت تلك الزيارة في محلها بالفعل. فقد كانت ملابس كل من السيد فوغ وفيكس ممزقة وكأنهما شاركا بأنفسهما بنشاط في الصراع بين كاميرفيلد ومانديبوي. وبعد ساعة، كانا يرتديان ملابس مناسبة من جديد، وعادا مع أودا إلى الفندق الدولي."
+    },
+    {
+      "index": 6,
+      "ar": "كان باسبارتو ينتظر سيده، مسلحًا بنصف دزينة من المسدسات ذات الاسطوانات الستة. وعندما لمح فيكس، عقد حاجبيه؛ ولكن بعد أن أخبرته أودا ببضع كلمات بمغامرتهما، استعاد وجهه تعبيره الوديع. من الواضح أن فيكس لم يعد عدوًا، بل أصبح حليفًا؛ فقد كان يفي بكلمته بأمانة."
+    },
+    {
+      "index": 7,
+      "ar": "بعد انتهاء العشاء، توقف العربة التي كانت ستنقل الركاب وأمتعتهم إلى المحطة أمام الباب. وبينما كان يستقلها، قال السيد فوغ لفيكس: «ألم ترَ هذا الكولونيل بروكتور مرة أخرى؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "خطأ نحوي في استخدام التذكير والتأنيث، الصواب 'توقفتا' أو 'توقفت العربة' وقد وردت في النص 'توقف العربة'."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

@@ -1,0 +1,162 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 26,
+  "chapterTitle": "In which Phileas Fogg and party travel by the Pacific Railroad.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "8394d561ad47ecae8274da61804ccaa9a6500d1cd9dcf1b867f7991803a7aa98",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "From this point the road, running along Humboldt River, passed northward for several miles by its banks; then it turned eastward, and kept by the river until it reached the Humboldt Range, nearly at the extreme eastern limit of Nevada.",
+      "existingArabicDraft": "ومن هناك سار الخط بمحاذاة نهر هامبولت شمالًا عدة أميال، ثم انعطف شرقًا وظل يتبع النهر حتى بلغ سلسلة هامبولت قرب الطرف الشرقي الأقصى من نيفادا."
+    },
+    {
+      "index": 17,
+      "en": "Having breakfasted, Mr. Fogg and his companions resumed their places in the car, and observed the varied landscape which unfolded itself as they passed along the vast prairies, the mountains lining the horizon, and the creeks, with their frothy, foaming streams. Sometimes a great herd of buffaloes, massing together in the distance, seemed like a moveable dam. These innumerable multitudes of ruminating beasts often form an insurmountable obstacle to the passage of the trains; thousands of them have been seen passing over the track for hours together, in compact ranks. The locomotive is then forced to stop and wait till the road is once more clear.",
+      "existingArabicDraft": "بعد الإفطار عاد السيد فوغ ورفاقه إلى مقاعدهم، وراحوا يراقبون المشاهد المتنوعة التي تنكشف أمامهم: براري شاسعة، وجبالًا ترسم خط الأفق، وجداول تتدفق مياهها في رغوة. وأحيانًا كان قطيع هائل من الجاموس يتجمع في البعيد حتى يبدو كأنه سد متحرك. وكانت هذه الحيوانات المجترة الكثيرة تشكل أحيانًا عائقًا لا يمكن تجاوزه أمام القطارات؛ فقد شوهدت آلاف منها تعبر السكة لساعات في صفوف متراصة، فتُجبر القاطرة على التوقف والانتظار حتى يخلو الطريق من جديد."
+    },
+    {
+      "index": 18,
+      "en": "This happened, indeed, to the train in which Mr. Fogg was travelling. About twelve o’clock a troop of ten or twelve thousand head of buffalo encumbered the track. The locomotive, slackening its speed, tried to clear the way with its cowcatcher; but the mass of animals was too great. The buffaloes marched along with a tranquil gait, uttering now and then deafening bellowings. There was no use of interrupting them, for, having taken a particular direction, nothing can moderate and change their course; it is a torrent of living flesh which no dam could contain.",
+      "existingArabicDraft": "وهذا ما حدث بالفعل للقطار الذي كان السيد فوغ يستقله. ففي نحو الظهر، سدّ الطريق قطيع يضم عشرة آلاف رأس من الجاموس أو اثني عشر ألفًا. خففت القاطرة سرعتها وحاولت فتح الطريق بمصدّ الماشية، لكن كتلة الحيوانات كانت أكبر من أن تُزاح. وسارت قطعان الجاموس بهدوء، مطلقة بين حين وآخر خوارًا يصم الآذان. ولم يكن من المجدي مقاطعتها؛ فمتى اتخذت اتجاهًا معينًا تعذر كبحها أو تغيير مسارها، إذ كانت أشبه بسيل من الأجساد الحية لا يستطيع أي سد احتواءه."
+    },
+    {
+      "index": 19,
+      "en": "The travellers gazed on this curious spectacle from the platforms; but Phileas Fogg, who had the most reason of all to be in a hurry, remained in his seat, and waited philosophically until it should please the buffaloes to get out of the way.",
+      "existingArabicDraft": "تأمل المسافرون هذا المشهد الغريب من المنصات، لكن فيلياس فوغ، وهو أكثرهم سببًا للاستعجال، بقي في مقعده وانتظر برباطة جأش حتى تقرر قطعان الجاموس إفساح الطريق."
+    },
+    {
+      "index": 20,
+      "en": "Passepartout was furious at the delay they occasioned, and longed to discharge his arsenal of revolvers upon them.",
+      "existingArabicDraft": "استشاط باسبارتو غضبًا من التأخير، وتمنى لو يفرغ مخزونه من المسدسات في أجساد الحيوانات."
+    },
+    {
+      "index": 21,
+      "en": "“What a country!” cried he. “Mere cattle stop the trains, and go by in a procession, just as if they were not impeding travel! Parbleu! I should like to know if Mr. Fogg foresaw this mishap in his programme! And here’s an engineer who doesn’t dare to run the locomotive into this herd of beasts!”",
+      "existingArabicDraft": "«يا له من بلد!» صاح. «مجرد ماشية توقف القطارات وتسير في موكب كأنها لا تعرقل السفر! يا للعجب! أود أن أعرف هل توقع السيد فوغ هذه الورطة في برنامجه! وها هو المهندس لا يجرؤ على توجيه القاطرة مباشرة إلى قطيع الحيوانات!»"
+    },
+    {
+      "index": 22,
+      "en": "The engineer did not try to overcome the obstacle, and he was wise. He would have crushed the first buffaloes, no doubt, with the cowcatcher; but the locomotive, however powerful, would soon have been checked, the train would inevitably have been thrown off the track, and would then have been helpless.",
+      "existingArabicDraft": "لم يحاول المهندس التغلب على العائق، وكان محقًا في ذلك. فربما سحق أولى قطعان الجاموس بمصدّ الماشية، لكن القاطرة، مهما بلغت قوتها، كانت ستتوقف سريعًا أمام الكتلة، ولانحرف القطار حتمًا عن القضبان، ثم أصبح عاجزًا عن الحركة."
+    },
+    {
+      "index": 23,
+      "en": "The best course was to wait patiently, and regain the lost time by greater speed when the obstacle was removed. The procession of buffaloes lasted three full hours, and it was night before the track was clear. The last ranks of the herd were now passing over the rails, while the first had already disappeared below the southern horizon.",
+      "existingArabicDraft": "كان أفضل حل هو الانتظار بصبر، ثم تعويض الوقت الضائع بزيادة السرعة بعد زوال العائق. واستمر موكب الجاموس ثلاث ساعات كاملة، وحلّ الليل قبل أن يخلو المسار. وكانت آخر صفوف القطيع لا تزال تعبر القضبان، بينما اختفت الصفوف الأولى بالفعل وراء الأفق الجنوبي."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "ومن هذه النقطة، كان الطريق الممتد بمحاذاة نهر هامبولت يتجه شمالاً عدة أميال على ضفافه، ثم ينعطف شرقاً ويظل ملازماً للنهر حتى بلغ سلسلة جبال هامبولت، قرب الطرف الشرقي الأقصى لولاية نيفادا."
+    },
+    {
+      "index": 1,
+      "ar": "وبعد أن تناول السيد فوغ ورفاقه طعام الإفطار، عادوا إلى مقاعدهم في العربة، وأخذوا يتأملون المناظر المتنوعة التي تراءت لهم بينما كانوا يجتازون البراري الشاسعة، والجبال التي ترسم خط الأفق، والجداول المائية ذات المياه المزبدة والرغوة. وأحيانًا، كان قطيع ضخم من الجاموس يتجمع في الأفق البعيد ليبدو وكأنه سد متحرك. إن هذه الأعداد الهائلة من الحيوانات المجترة طالما شكلت عقبة لا يمكن تخطيها أمام مرور القطارات؛ فقد شوهدت آلاف منها وهي تعبر سكة الحديد لساعات متواصلة في صفوف متراصة. وحينئذ تُضطر القاطرة إلى التوقف والانتظار حتى يخلو الطريق مرة أخرى."
+    },
+    {
+      "index": 2,
+      "ar": "وقد حدث هذا الأمر بالفعل مع القطار الذي كان يستقله السيد فوغ. ففي نحو الساعة الثانية عشرة ظهراً، سد الطريق قطيع يتراوح عدده بين عشرة وثني عشر ألف رأس من الجاموس. وخففت القاطرة من سرعتها محاولةً إزاحة الطريق باستخدام مجرفتها الأمامية، لكن كتلة الحيوانات كانت أكبر من أن تُدفع. فقد كانت حيوانات الجاموس تسير بخطى هادئة، مطلقة بين الحين والآخر خوارًا يصم الآذان. ولم تكن هناك فائدة من محاولة قطع طريقها؛ إذ إنها متى اتخذت اتجاهًا معينًا، فلا شيء يستطيع تهدئتها أو تغيير مسارها، فهي أشبه بسيل من اللحم الحي لا يستطيع أي سد احتواؤه."
+    },
+    {
+      "index": 3,
+      "ar": "تأمل المسافرون هذا المشهد العجيب من منصات العربات، لكن فيلياس فوغ، الذي كان أكثرهم استعجالاً، بقي في مقعده وانتظر بصبر فلسفي إلى أن يحلو لحيوانات الجاموس أن تزيح نفسها عن الطريق."
+    },
+    {
+      "index": 4,
+      "ar": "أما باسبارتو فاستشاط غضباً بسبب هذا التأخير الذي تسببت فيه الحيوانات، وتمنى لو أفرغ ترسانته من المسدسات في أجسادها."
+    },
+    {
+      "index": 5,
+      "ar": "هتف قائلًا: «يا له من بلد! مجرد ماشية توقف القطارات وتسير في موكب عظيم كأنها لا تعرقل السفر! يا للعجب! ليتني أعرف إن كان السيد فوغ قد توقع هذا الحادث المفاجئ في برنامجه! وها هو السائق لا يجرؤ على دفع القاطرة وسط قطيع الحيوانات هذا!»"
+    },
+    {
+      "index": 6,
+      "ar": "لم يحاول السائق التغلب على تلك العقبة، وكان محقاً في صنيعه. فلاشك أنه كان سيسحق أولى حيوانات الجاموس بمجرفة القاطرة، لكن القاطرة، مهما بلغت من القوة، كانت ستتعرض للتوقف سريعاً، وسينحرف القطار حتمًا عن القضبان ليصبح بعدها عاجزًا تمامًا عن الحراك."
+    },
+    {
+      "index": 7,
+      "ar": "وكان الخيار الأفضل هو الانتظار بصبر، وتعويض الوقت الضائع بزيادة السرعة بمجرد زوال العقبة. لقد استمر موكب الجاموس ثلاث ساعات كاملة، وحل الظلام قبل أن تتفرغ سكة الحديد. وكانت الصفوف الأخيرة من القطيع لا تزال تعبر القضبان، بينما كانت الصفوف الأولى قد اختفت بالفعل تحت الأفق الجنوبي."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

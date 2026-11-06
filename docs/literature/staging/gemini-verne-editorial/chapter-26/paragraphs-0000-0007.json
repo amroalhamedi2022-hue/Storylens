@@ -1,0 +1,162 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 26,
+  "chapterTitle": "In which Phileas Fogg and party travel by the Pacific Railroad.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "f51eb82fb5a38fda9c5f92fb4113ff85df0417cf67fa937a4b34eee9bc7c7101",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "“From ocean to ocean”⁠—so say the Americans; and these four words compose the general designation of the “great trunk line” which crosses the entire width of the United States. The Pacific Railroad is, however, really divided into two distinct lines: the Central Pacific, between San Francisco and Ogden, and the Union Pacific, between Ogden and Omaha. Five main lines connect Omaha with New York.",
+      "existingArabicDraft": "«من محيط إلى محيط»؛ هكذا يقول الأمريكيون، وهذه الكلمات الأربع هي الوصف العام للخط الرئيسي الطويل الذي يعبر الولايات المتحدة من طرف إلى آخر. لكن سكة حديد المحيط الهادئ تتألف في الحقيقة من خطين منفصلين: خط وسط المحيط الهادئ بين سان فرانسيسكو وأوغدن، وخط اتحاد المحيط الهادئ بين أوغدن وأوماها. وتربط خمسة خطوط رئيسية أوماها بنيويورك."
+    },
+    {
+      "index": 1,
+      "en": "New York and San Francisco are thus united by an uninterrupted metal ribbon, which measures no less than three thousand seven hundred and eighty-six miles. Between Omaha and the Pacific the railway crosses a territory which is still infested by Indians and wild beasts, and a large tract which the Mormons, after they were driven from Illinois in 1845, began to colonise.",
+      "existingArabicDraft": "وهكذا اتصلت نيويورك وسان فرانسيسكو بشريط معدني متصل من السكك يمتد مسافة لا تقل عن ثلاثة آلاف وسبعمئة وستة وثمانين ميلًا. وبين أوماها والمحيط الهادئ يعبر القطار أرضًا ما زالت، وفق وصف الرواية التاريخي، موطنًا لمخاطر من حيوانات برية وصراعات مع السكان الأصليين، كما يمر بمنطقة بدأ المورمون استعمارها بعد طردهم من إلينوي سنة 1845."
+    },
+    {
+      "index": 2,
+      "en": "The journey from New York to San Francisco consumed, formerly, under the most favourable conditions, at least six months. It is now accomplished in seven days.",
+      "existingArabicDraft": "كانت الرحلة من نيويورك إلى سان فرانسيسكو تستغرق في السابق ستة أشهر على الأقل، حتى في أفضل الظروف. أما الآن فيمكن إتمامها خلال سبعة أيام."
+    },
+    {
+      "index": 3,
+      "en": "It was in 1862 that, in spite of the Southern Members of Congress, who wished a more southerly route, it was decided to lay the road between the forty-first and forty-second parallels. President Lincoln himself fixed the end of the line at Omaha, in Nebraska. The work was at once commenced, and pursued with true American energy; nor did the rapidity with which it went on injuriously affect its good execution. The road grew, on the prairies, a mile and a half a day. A locomotive, running on the rails laid down the evening before, brought the rails to be laid on the morrow, and advanced upon them as fast as they were put in position.",
+      "existingArabicDraft": "في عام 1862، ورغم اعتراض أعضاء الكونغرس الجنوبيين الذين أرادوا مسارًا أبعد إلى الجنوب، تقرر مد الخط بين دائرتي العرض الحادية والأربعين والثانية والأربعين. وحدد الرئيس لينكولن بنفسه أوماها في نبراسكا نهايةً للخط. وبدأ العمل فورًا بطاقة كبيرة، من دون أن تؤثر السرعة سلبًا في جودة التنفيذ. وكان المسار يمتد فوق البراري بمعدل ميل ونصف يوميًا؛ إذ تسير قاطرة على القضبان التي وُضعت مساء اليوم السابق، حاملةً معها قضبان اليوم التالي، وتتقدم كلما ثُبتت القضبان في مكانها."
+    },
+    {
+      "index": 4,
+      "en": "The Pacific Railroad is joined by several branches in Iowa, Kansas, Colorado, and Oregon. On leaving Omaha, it passes along the left bank of the Platte River as far as the junction of its northern branch, follows its southern branch, crosses the Laramie territory and the Wahsatch Mountains, turns the Great Salt Lake, and reaches Salt Lake City, the Mormon capital, plunges into the Tuilla Valley, across the American Desert, Cedar and Humboldt Mountains, the Sierra Nevada, and descends, via Sacramento, to the Pacific⁠—its grade, even on the Rocky Mountains, never exceeding one hundred and twelve feet to the mile.",
+      "existingArabicDraft": "وتتصل بسكة حديد المحيط الهادئ فروع عدة في آيوا وكانساس وكولورادو وأوريغون. وبعد مغادرة أوماها تسير بمحاذاة الضفة اليسرى لنهر بلات حتى ملتقى فرعه الشمالي، ثم تتبع فرعه الجنوبي، وتعبر إقليم لارامي وجبال واهساتش، وتلتف حول البحيرة المالحة الكبرى وتصل إلى سولت ليك سيتي، عاصمة المورمون. ثم تخترق وادي تويلا والصحراء الأمريكية وجبال سيدار وهامبولت وسلسلة سييرا نيفادا، وتهبط عبر ساكرامنتو إلى المحيط الهادئ. وحتى في جبال روكي لا يتجاوز انحدار المسار مئة واثني عشر قدمًا لكل ميل."
+    },
+    {
+      "index": 5,
+      "en": "Such was the road to be traversed in seven days, which would enable Phileas Fogg⁠—at least, so he hoped⁠—to take the Atlantic steamer at New York on the 11th for Liverpool.",
+      "existingArabicDraft": "كان ذلك هو الطريق الذي ينبغي اجتيازه في سبعة أيام، وهو ما قد يتيح لفيلياس فوغ—كما كان يأمل—أن يلحق بالباخرة الأطلسية في نيويورك يوم الحادي عشر متجهًا إلى ليفربول."
+    },
+    {
+      "index": 6,
+      "en": "The car which he occupied was a sort of long omnibus on eight wheels, and with no compartments in the interior. It was supplied with two rows of seats, perpendicular to the direction of the train on either side of an aisle which conducted to the front and rear platforms. These platforms were found throughout the train, and the passengers were able to pass from one end of the train to the other. It was supplied with saloon cars, balcony cars, restaurants, and smoking-cars; theatre cars alone were wanting, and they will have these some day.",
+      "existingArabicDraft": "كانت العربة التي استقلها أشبه بحافلة طويلة تسير على ثماني عجلات، من دون مقصورات داخلية. واصطف فيها صفان من المقاعد عموديًا على اتجاه القطار، على جانبي ممر يصل إلى المنصتين الأمامية والخلفية. وكانت هذه المنصات موجودة في أنحاء القطار، فيستطيع الركاب الانتقال من طرفه إلى الطرف الآخر. كما ضم القطار عربات صالون وشرفات ومطاعم وتدخين؛ ولم تكن عربات المسرح موجودة بعد، لكن الراوي يتخيل أنها ستظهر يومًا ما."
+    },
+    {
+      "index": 7,
+      "en": "Book and news dealers, sellers of edibles, drinkables, and cigars, who seemed to have plenty of customers, were continually circulating in the aisles.",
+      "existingArabicDraft": "وكان باعة الكتب والصحف، وباعة الأطعمة والمشروبات والسيجار، يتنقلون باستمرار بين الممرات، ويبدو أن الزبائن كانوا كثيرين."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«من محيط إلى محيط»؛ هكذا يقول الأمريكيون، وهاتان الكلمات الأربع تؤلفان التسمية العامة «للخط الرئيسي الكبير» الذي يعبر عرض الولايات المتحدة بأسرها. غير أن سكة حديد المحيط الهادئ مقسمة حقًا إلى خطين متميزين: وسط المحيط الهادئ، بين سان فرانسيسكو وأوغدن، واتحاد المحيط الهادئ، بين أوغدن وأوماها. وخمسة خطوط رئيسية تربط أوماها بنيويورك."
+    },
+    {
+      "index": 1,
+      "ar": "وهكذا تتحد نيويورك وسان فرانسيسكو بشريط معدني متصل لا يقل قياسه عن ثلاثة آلاف وسبعمئة وستة وثمانين ميلًا. وبين أوماها والمحيط الهادئ، تعبر السكة حديد إقليمًا لا يزال موبوءًا بالهنود والوحوش الضارية، وقطاعًا واسعًا بدأ المورمون استعماره بعد طردهم من إلينوي سنة 1845."
+    },
+    {
+      "index": 2,
+      "ar": "وكانت الرحلة من نيويورك إلى سان فرانسيسكو تستغرق في السابق، في ظل أفضل الظروف، ستة أشهر على الأقل. أما الآن فتُقطع في سبعة أيام."
+    },
+    {
+      "index": 3,
+      "ar": "وفي عام 1862، وعلى الرغم من أعضاء الكونغرس الجنوبيين الذين أرادوا مسارًا أبعد جنوبًا، تقرر مد الطريق بين دائرتي العرض الحادية والأربعين والثانية والأربعين. وحدد الرئيس لينكولن بنفسه نهاية الخط في أوماها بنبراسكا. وقد بدأ العمل فورًا ومارَسوه بطاقة أمريكية حقيقية، ولم تؤثر السرعة التي سار بها العمل سلبًا على إتقانه الجيد. فقد نما الطريق فوق البراري بمعدل ميل ونصف في اليوم. وكانت قاطرة تسير على القضبان التي وُضعت في المساء السابق، تجلب القضبان التي ستُوضع في الغد، وتتقدم عليها بالسرعة التي تُرصّب بها في مواضعها."
+    },
+    {
+      "index": 4,
+      "ar": "وتنضم إلى سكة حديد المحيط الهادئ فروع عدة في آيوا وكانساس وكولورادو وأوريغون. وعند مغادرتها أوماها، تمر على طول الضفة اليسرى لنهر بلات حتى ملتقى فرعه الشمالي، وتتبع فرعه الجنوبي، وتعبر إقليم لارامي وجبال واهساتش، وتلتف حول البحيرة المالحة الكبرى وتصل إلى سولت ليك سيتي، عاصمة المورمون، وتغوص في وادي تويلا، عبر الصحراء الأمريكية، وجبال سيدار وهامبولت، وسييرا نيفادا، وتهبط عبر ساكرامنتو إلى المحيط الهادئ؛ إذ إن انحدارها، حتى في جبال روكي، لا يتجاوز أبدًا مئة واثني عشر قدمًا في الميل الواحد."
+    },
+    {
+      "index": 5,
+      "ar": "هذا هو الطريق الذي كان ينبغي اجتعازه في سبعة أيام، وهو ما سيسمح لفيلياس فوغ —أو هكذا كان يأمل— باللحاق بالباخرة الأطلسية في نيويورك يوم الحادي عشر متوجهاً إلى ليفربول."
+    },
+    {
+      "index": 6,
+      "ar": "وكانت العربة التي استقلها تشبه حافلة طويلة ذات ثماني عجلات، ومن دون مقصورات في الداخل. وكانت مزودة بصفي مقاعد متعامدين مع اتجاه القطار على جانبي ممر يؤدي إلى المنصتين الأمامية والخلفية. ووجدت هذه المنصات في جميع أنحاء القطار، وكان الركاب قادرين على الانتقال من طرف القطار إلى الطرف الآخر. وكانت مزودة بعربات صالون، وعربات ذات شرفات، ومطاعم، وعربات للتدخين؛ ولم تكن تنقصها سوى عربات المسرح، وستكون لهم تلك في يوم ما."
+    },
+    {
+      "index": 7,
+      "ar": "وكان باعة الكتب والصحف، وباعة المأكل والمشرب والسيجار، الذين بدت عليهم وفرة الزبائن، يترددون باستمرار في الممرات."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": false,
+      "issues": "خطأ في ترجمة 'هاتان الكلمات الأربع' والصحيح 'هذه الكلمات الأربع'."
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": false,
+      "issues": "استخدام كلمة 'تُرصّب' غير دقيق في سياق وضع القضبان والصحيح 'تُوضع'."
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": false,
+      "issues": "خطأ مطبعي في كلمة 'اجتعازه' والصحيح 'اجتيازه'."
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

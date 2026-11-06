@@ -1,0 +1,162 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 26,
+  "chapterTitle": "In which Phileas Fogg and party travel by the Pacific Railroad.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "581efef4e04583c7829fc919cce8be0fe78fb09cd23936993cf0785e83c11843",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "The train left Oakland station at six o’clock. It was already night, cold and cheerless, the heavens being overcast with clouds which seemed to threaten snow. The train did not proceed rapidly; counting the stoppages, it did not run more than twenty miles an hour, which was a sufficient speed, however, to enable it to reach Omaha within its designated time.",
+      "existingArabicDraft": "غادر القطار محطة أوكلاند عند السادسة مساءً. كان الليل قد حل، والجو باردًا كئيبًا، والسماء ملبدة بغيوم توحي باحتمال تساقط الثلج. لم تكن سرعة القطار كبيرة؛ فمع احتساب التوقفات لم يتجاوز متوسطه عشرين ميلًا في الساعة، وهي سرعة كافية مع ذلك للوصول إلى أوماها في الموعد المحدد."
+    },
+    {
+      "index": 9,
+      "en": "There was but little conversation in the car, and soon many of the passengers were overcome with sleep. Passepartout found himself beside the detective; but he did not talk to him. After recent events, their relations with each other had grown somewhat cold; there could no longer be mutual sympathy or intimacy between them. Fix’s manner had not changed; but Passepartout was very reserved, and ready to strangle his former friend on the slightest provocation.",
+      "existingArabicDraft": "كان الحديث داخل العربة قليلًا، وسرعان ما غلب النوم كثيرًا من الركاب. وجد باسبارتو نفسه جالسًا إلى جانب المحقق فيكس، لكنه لم يتحدث إليه. فقد بردت علاقتهما بعد الأحداث الأخيرة، ولم يعد بينهما ودّ أو ألفة. ظل سلوك فيكس على حاله، أما باسبارتو فكان متحفظًا للغاية، ومستعدًا لخنق صديقه السابق عند أدنى استفزاز."
+    },
+    {
+      "index": 10,
+      "en": "Snow began to fall an hour after they started, a fine snow, however, which happily could not obstruct the train; nothing could be seen from the windows but a vast, white sheet, against which the smoke of the locomotive had a greyish aspect.",
+      "existingArabicDraft": "بدأ الثلج يتساقط بعد ساعة من انطلاقهم، لكنه كان ناعمًا لا يعيق القطار لحسن الحظ. ولم يكن يُرى من النوافذ سوى صفحة بيضاء واسعة، بدا دخان القاطرة أمامها رماديًا."
+    },
+    {
+      "index": 11,
+      "en": "At eight o’clock a steward entered the car and announced that the time for going to bed had arrived; and in a few minutes the car was transformed into a dormitory. The backs of the seats were thrown back, bedsteads carefully packed were rolled out by an ingenious system, berths were suddenly improvised, and each traveller had soon at his disposition a comfortable bed, protected from curious eyes by thick curtains. The sheets were clean and the pillows soft. It only remained to go to bed and sleep which everybody did⁠—while the train sped on across the State of California.",
+      "existingArabicDraft": "عند الثامنة دخل المشرف إلى العربة وأعلن أن موعد النوم قد حان. وخلال دقائق تحولت العربة إلى غرفة نوم: أُرجعت ظهور المقاعد إلى الخلف، وأُخرجت الأسرّة المطوية بعناية بآلية مبتكرة، ثم جُهزت أماكن للنوم بسرعة، وأصبح لكل مسافر سرير مريح تحجبه ستائر سميكة عن الأنظار. كانت الملاءات نظيفة والوسائد ناعمة؛ فلم يبقَ إلا أن ينام الجميع، وهو ما فعلوه بينما واصل القطار اندفاعه عبر كاليفورنيا."
+    },
+    {
+      "index": 12,
+      "en": "The country between San Francisco and Sacramento is not very hilly. The Central Pacific, taking Sacramento for its starting-point, extends eastward to meet the road from Omaha. The line from San Francisco to Sacramento runs in a northeasterly direction, along the American River, which empties into San Pablo Bay. The one hundred and twenty miles between these cities were accomplished in six hours, and towards midnight, while fast asleep, the travellers passed through Sacramento; so that they saw nothing of that important place, the seat of the State government, with its fine quays, its broad streets, its noble hotels, squares, and churches.",
+      "existingArabicDraft": "لم تكن الأرض بين سان فرانسيسكو وساكرامنتو كثيرة التلال. وينطلق خط وسط المحيط الهادئ من ساكرامنتو شرقًا ليلتقي بالخط القادم من أوماها. أما الخط بين سان فرانسيسكو وساكرامنتو فيتجه نحو الشمال الشرقي بمحاذاة النهر الأمريكي الذي يصب في خليج سان بابلو. وقد قطعت المسافة البالغة مئة وعشرين ميلًا بين المدينتين في ست ساعات، وعند منتصف الليل مر المسافرون بساكرامنتو وهم نائمون، فلم يشاهدوا شيئًا من المدينة المهمة التي تضم مقر حكومة الولاية وأرصفة جميلة وشوارع واسعة وفنادق وساحات وكنائس مهيبة."
+    },
+    {
+      "index": 13,
+      "en": "The train, on leaving Sacramento, and passing the junction, Roclin, Auburn, and Colfax, entered the range of the Sierra Nevada. ’Cisco was reached at seven in the morning; and an hour later the dormitory was transformed into an ordinary car, and the travellers could observe the picturesque beauties of the mountain region through which they were steaming. The railway track wound in and out among the passes, now approaching the mountainsides, now suspended over precipices, avoiding abrupt angles by bold curves, plunging into narrow defiles, which seemed to have no outlet. The locomotive, its great funnel emitting a weird light, with its sharp bell, and its cowcatcher extended like a spur, mingled its shrieks and bellowings with the noise of torrents and cascades, and twined its smoke among the branches of the gigantic pines.",
+      "existingArabicDraft": "وعندما غادر القطار ساكرامنتو ومرّ بالمفترق وروكلين وأوبورن وكولفاكس، دخل سلسلة سييرا نيفادا. ووصل إلى «سيسكو» عند السابعة صباحًا، وبعد ساعة تحولت عربة النوم مجددًا إلى عربة عادية، فأمكن للمسافرين تأمل جمال الجبال الخلاب. كان خط السكك يتلوى بين الممرات؛ يقترب تارة من سفوح الجبال، ويعلو تارة فوق هاويات، ويتجنب الزوايا الحادة بمنحنيات جريئة، ثم ينفذ إلى ممرات ضيقة تبدو بلا مخرج. وكانت القاطرة، وهي تطلق ضوءًا غريبًا من مدخنتها الكبيرة وتقرع جرسها الحاد، تدفع مصدّ الماشية أمامها كأنه مهماز، وتمزج صفيرها وزئيرها بأصوات السيول والشلالات، وتلف دخانها حول أغصان أشجار الصنوبر العملاقة."
+    },
+    {
+      "index": 14,
+      "en": "There were few or no bridges or tunnels on the route. The railway turned around the sides of the mountains, and did not attempt to violate nature by taking the shortest cut from one point to another.",
+      "existingArabicDraft": "لم يكن في الطريق إلا عدد قليل جدًا من الجسور أو الأنفاق. فقد كان خط السكك يلتف حول جوانب الجبال، ولم يحاول شق الطبيعة بعنف عبر اختيار أقصر طريق بين نقطتين."
+    },
+    {
+      "index": 15,
+      "en": "The train entered the State of Nevada through the Carson Valley about nine o’clock, going always northeasterly; and at midday reached Reno, where there was a delay of twenty minutes for breakfast.",
+      "existingArabicDraft": "دخل القطار ولاية نيفادا عبر وادي كارسون نحو التاسعة، مواصلًا سيره باتجاه الشمال الشرقي، ثم بلغ رينو عند الظهر، حيث توقف عشرين دقيقة لتناول الإفطار."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "غادر القطار محطة أوكلاند عند السادسة مساءً. كان الليل قد حل، والجو باردًا كئيبًا، والسماء ملبدة بغيوم توحي باحتمال تساقط الثلج. لم تكن سرعة القطار كبيرة؛ فمع احتساب التوقفات لم يتجاوز متوسطه عشرين ميلًا في الساعة، وهي سرعة كافية مع ذلك للوصول إلى أوماها في الموعد المحدد."
+    },
+    {
+      "index": 1,
+      "ar": "كان الحديث داخل العربة قليلًا، وسرعان ما غلب النوم كثيرًا من الركاب. وجد باسبارتو نفسه جالسًا إلى جانب المحقق فيكس، لكنه لم يتحدث إليه. فقد بردت علاقتهما بعد الأحداث الأخيرة، ولم يعد بينهما ودّ أو ألفة. ظل سلوك فيكس على حاله، أما باسبارتو فكان متحفظًا للغاية، ومستعدًا لخنق صديقه السابق عند أدنى استفزاز."
+    },
+    {
+      "index": 2,
+      "ar": "بدأ الثلج يتساقط بعد ساعة من انطلاقهم، لكنه كان ناعمًا لا يعيق القطار لحسن الحظ. ولم يكن يُرى من النوافذ سوى صفحة بيضاء واسعة، بدا دخان القاطرة أمامها رماديًا."
+    },
+    {
+      "index": 3,
+      "ar": "عند الثامنة دخل المشرف إلى العربة وأعلن أن موعد النوم قد حان. وخلال دقائق تحولت العربة إلى غرفة نوم: أُرجعت ظهور المقاعد إلى الخلف، وأُخرجت الأسرّة المطوية بعناية بآلية مبتكرة، ثم جُهزت أماكن للنوم بسرعة، وأصبح لكل مسافر سرير مريح تحجبه ستائر سميكة عن الأنظار. كانت الملاءات نظيفة والوسائد ناعمة؛ فلم يبقَ إلا أن ينام الجميع، وهو ما فعلوه بينما واصل القطار اندفاعه عبر كاليفورنيا."
+    },
+    {
+      "index": 4,
+      "ar": "لم تكن الأرض بين سان فرانسيسكو وساكرامنتو كثيرة التلال. وينطلق خط وسط المحيط الهادئ من ساكرامنتو شرقًا ليلتقي بالخط القادم من أوماها. أما الخط بين سان فرانسيسكو وساكرامنتو فيتجه نحو الشمال الشرقي بمحاذاة النهر الأمريكي الذي يصب في خليج سان بابلو. وقد قطعت المسافة البالغة مئة وعشرين ميلًا بين المدينتين في ست ساعات، وعند منتصف الليل مر المسافرون بساكرامنتو وهم نائمون، فلم يشاهدوا شيئًا من المدينة المهمة التي تضم مقر حكومة الولاية وأرصفة جميلة وشوارع واسعة وفنادق وساحات وكنائس مهيبة."
+    },
+    {
+      "index": 5,
+      "ar": "وعندما غادر القطار ساكرامنتو ومرّ بالمفترق وروكلين وأوبورن وكولفاكس، دخل سلسلة سييرا نيفادا. ووصل إلى «سيسكو» عند السابعة صباحًا، وبعد ساعة تحولت عربة النوم مجددًا إلى عربة عادية، فأمكن للمسافرين تأمل جمال الجبال الخلاب. كان خط السكك يتلوى بين الممرات؛ يقترب تارة من سفوح الجبال، ويعلو تارة فوقهاويات، ويتجنب الزوايا الحادة بمنحنيات جريئة، ثم ينفذ إلى ممرات ضيقة تبدو بلا مخرج. وكانت القاطرة، وهي تطلق ضوءًا غريبًا من مدخنتها الكبيرة وتقرع جرسها الحاد، تدفع مصدّ الماشية أمامها كأنه مهماز، وتمزج صفيرها وزئيرها بأصوات السيول والشلالات، وتلف دخانها حول أغصان أشجار الصنوبر العملاقة."
+    },
+    {
+      "index": 6,
+      "ar": "لم يكن في الطريق إلا عدد قليل جدًا من الجسور أو الأنفاق. فقد كان خط السكك يلتف حول جوانب الجبال، ولم يحاول شق الطبيعة بعنف عبر اختيار أقصر طريق بين نقطتين."
+    },
+    {
+      "index": 7,
+      "ar": "دخل القطار ولاية نيفادا عبر وادي كارسون نحو التاسعة، مواصلًا سيره باتجاه الشمال الشرقي، ثم بلغ رينو عند الظهر، حيث توقف عشرين دقيقة لتناول الإفطار."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": false,
+      "issues": "تمت ترجمة 'cowcatcher' بشكل غير دقيق إلى 'مصد الماشية' دون توضيح معناه السياقي، وهناك خطأ بسيط في نقل بعض التفاصيل التقنية للقاطرة."
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
