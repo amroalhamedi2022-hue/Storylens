@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p259.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-e3f27d7aa26a1619.webp",
+  "imageSha256": "4816557e6dcc473f10bc3c5efe6963c26f6898313dc2ab7ec9274e2c94496f01",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a solitary man, appearing to be a Native American, sitting outdoors at night near a fire. He is resting his head on his hand, looking towards the viewer with a somber expression. He is dressed in traditional-style clothing, including a headband and fringed garments. A long rifle rests against his body, and a tomahawk lies on the ground in the foreground. The background features a rough, rocky or earthen wall and brush, with light from the fire illuminating the scene.",
+    "visualObjectsEn": "Man, rifle, tomahawk, fire, rocky wall, brush, clothing, headband, fringed fabric.",
+    "recognizableCharactersOrPeopleEn": "A single adult male figure, depicted in a style consistent with 19th-century illustrations of Native Americans.",
+    "uncertaintyNotes": "The specific identity of the individual is not provided in the image. The exact nature of the setting (e.g., a specific historical location or camp) is ambiguous, though it suggests a wilderness or frontier environment. The date '1883' is visible in the bottom right corner, indicating the year of the engraving."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 19,
+    "paragraphIndexZeroBased": 27,
+    "exactSourceQuotation": "The head of Chingachgook was resting on a hand, as he sat musing by himself; but the moment he heard the warning of the animal whose name he bore, it arose to an upright position and his dark eyes glanced swiftly and keenly on every side of him. With this sudden and perhaps involuntary movement, every appearance of surprise or alarm ended. His rifle lay untouched, and apparently unnoticed, within reach of his hand. The tomahawk that he had loosened in his belt for the sake of ease, was even suffered to fall from its usual situation to the ground",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The passage explicitly describes Chingachgook sitting by himself, resting his head on his hand, with his rifle within reach and his tomahawk having fallen to the ground, which perfectly matches the visual elements of the engraving.",
+    "suggestedAltArNotApproved": "A 19th-century engraving of a Native American man sitting alone at night by a fire, resting his head on his hand, with a rifle and tomahawk nearby, illustrating a scene from The Last of the Mohicans.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts Chingachgook sitting by himself with his head resting on his hand, exactly as described in the passage. His rifle is nearby within reach, and a tomahawk has fallen to the ground in the foreground. The solitary, resting posture and setting match the specific moment when he hears the scout's warning hiss.",
+    "visualContradictions": "None. The visual elements align precisely with the specific character's actions, pose, and nearby objects described in the passage.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.98,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

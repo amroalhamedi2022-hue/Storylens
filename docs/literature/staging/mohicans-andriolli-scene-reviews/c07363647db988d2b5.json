@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p267.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-c07363647db988d2.webp",
+  "imageSha256": "4ef835935d67db5a3b0ad917e92de002c0340445965b4a251e5389807a20eaa7",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraved illustration depicting two men sitting together in a natural, outdoor setting, possibly near a campfire. The man on the right is seated upright, looking forward, while the man on the left is leaning back, looking toward the other. Two long rifles or muskets are propped up against a rock or mound in the foreground.",
+    "visualObjectsEn": "Two men, two long rifles or muskets, a large rock or mound, and faint indications of fire or foliage in the foreground.",
+    "recognizableCharactersOrPeopleEn": "Two men, both appearing to be dressed in attire often associated with 18th or 19th-century frontier or indigenous styles, including headbands and loose-fitting clothing.",
+    "uncertaintyNotes": "The specific cultural or historical identity of the figures is not explicitly stated in the image, though their appearance suggests a frontier or historical context. The exact nature of the ground they are sitting on is ambiguous, appearing as a mix of rock and foliage."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 3,
+    "paragraphIndexZeroBased": 3,
+    "exactSourceQuotation": "The former was seated on the end of a mossy log, in a [Pg 21] posture that permitted him to heighten the effect of his earnest language, by the calm but expressive gestures of an Indian engaged in debate.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts two men in a natural setting, one leaning back and one seated upright, which aligns with the description of the two men (one native, one white) engaged in earnest dialogue while seated on a log in Chapter 3. The presence of rifles propped nearby is consistent with the foresters' equipment described in the context of their dialogue.",
+    "suggestedAltArNotApproved": "Two men, one appearing to be a native warrior and the other a white scout, engaged in a serious conversation while seated in a forest setting, with their rifles resting against a nearby object.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts two men outdoors sitting on a mossy log/rock, where one man is bare-chested with painted markings, a shaved head featuring a scalping tuft and a single eagle's plume, matching the description of the Indian in the passage, while the other man beside him has European features and frontier attire.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

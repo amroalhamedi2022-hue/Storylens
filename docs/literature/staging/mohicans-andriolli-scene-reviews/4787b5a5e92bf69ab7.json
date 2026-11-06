@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p247.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-4787b5a5e92bf69a.webp",
+  "imageSha256": "f199137e9c11769dfd4f349fc245f4be6f1b1d831f6b39e6c73b2171038db76d",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a group of four men moving through a dense, wooded forest. The figures are positioned in a line, partially obscured by foliage and branches. The style is characteristic of late 19th-century book illustration, featuring cross-hatching and detailed line work.",
+    "visualObjectsEn": "Muskets or long rifles, leather or fringed clothing, headbands, trees, dense undergrowth, branches, and signature marks in the bottom corners.",
+    "recognizableCharactersOrPeopleEn": "Four men, appearing to be a mix of European settlers and Indigenous North Americans based on their attire, including fringed tunics, headbands, and long hair.",
+    "uncertaintyNotes": "The specific identities of the individuals are not explicitly stated in the image. The exact nature of their activity (scouting, hunting, or traveling) is inferred from their posture and weapons. The signature 'Andriolli 1883' and 'Huyot' indicate the artist and engraver, but the specific literary or historical context is not provided."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 18,
+    "paragraphIndexZeroBased": 8,
+    "exactSourceQuotation": "the forms of five men might have been seen issuing from the narrow vista of trees, where the path to the Hudson entered the forest, and advancing in the direction of the ruined works.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a group of men moving through a dense forest, which aligns with the narrative description of a party of men (scouts/warriors) advancing through the woods in Chapter 18. While the text mentions five men and the image shows four, the visual composition of figures moving in a line through a wooded environment matches the scene described in this specific paragraph.",
+    "suggestedAltArNotApproved": "A 19th-century engraving by Andriolli showing a group of four men, including figures in fringed attire and headbands, moving in a line through a dense, wooded forest, carrying rifles.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a group of armed men moving through a forest, which matches the general theme of scouts or travellers in the wilderness.",
+    "visualContradictions": "The passage specifies the forms of 'five men' advancing with a light figure preceding the rest and another Indian on one flank. The visible engraving depicts only four men grouped closely together rather than five distinctly positioned men as described in the text.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p277.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-4d7ba480cf323f94.webp",
+  "imageSha256": "20724b07cbc38d4afde883eb5ef9ada093f14a2218a521d50bcde49ae39f3114",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a group of five individuals in a canoe on a river, navigating through a rugged, mountainous landscape with pine trees. One figure stands at the back of the canoe, raising a rifle high in the air, while others are actively paddling. Another canoe is visible in the background.",
+    "visualObjectsEn": "Canoe, paddles, rifles, rocky cliffs, pine trees, water, river, distant mountains.",
+    "recognizableCharactersOrPeopleEn": "Five individuals in the primary canoe, appearing to be a mix of indigenous people and frontiersmen based on their clothing and hairstyles. One figure in the background is also visible in a second canoe.",
+    "uncertaintyNotes": "The specific cultural or historical identity of the individuals is not explicitly labeled, though their attire suggests a North American frontier or colonial-era setting. The exact nature of the activity—whether it is a conflict, a hunt, or a journey—is ambiguous, though the raised rifle suggests a signal or a threat."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 20,
+    "paragraphIndexZeroBased": 50,
+    "exactSourceQuotation": "A ball soon struck the light and polished paddle from the hands of the chief, and drove it through the air, far in the advance. A shout arose from the Hurons, who seized the opportunity to fire another volley. Uncas described an arc in the water with his own blade, and as th",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene describes a canoe journey involving multiple individuals, rifles, and paddles, set against a backdrop of rugged terrain. Paragraph 50 of Chapter 20 explicitly describes a canoe scene where a paddle is struck from a hand, rifles are fired, and the characters are navigating water while under fire, which aligns with the visual elements of the engraving.",
+    "suggestedAltArNotApproved": "An engraving showing a canoe on a river with figures holding rifles and paddles, navigating a rocky, mountainous landscape.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a group in a canoe with one figure standing and flourishing a rifle high in the air, while other individuals are paddling.",
+    "visualContradictions": "The passage describes Chingachgook recovering his paddle and flourishing it on high while giving the war-whoop, but the engraving depicts a standing figure flourishing a long rifle high in the air instead of a paddle.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
