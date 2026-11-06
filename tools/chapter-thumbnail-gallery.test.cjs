@@ -60,7 +60,7 @@ function element(tag='div') {
  return node;
 }
 const tick=async()=>{await new Promise(resolve=>setImmediate(resolve));};
-function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null,renderMock=false,visitedIndex=null,registryArt=null,layoutPref='rail',withObserver=false}={}){
+function scenario({en=false,lazy=false,slowLazy=false,artSrc=null,approved=null,count=3,resume=null,renderMock=false,visitedIndex=null,registryArt=null,layoutPref='rail',withObserver=false}={}){
  const chapter=(n)=>({title:'Chapter '+n,titleAr:'الفصل '+n,paragraphs:[{en:'Original source.',ar:'ترجمة.'}]});
  const story={id:'example-story',title:'Example Story',titleAr:'قصة تجريبية',
   chapters:lazy?[]:Array.from({length:count},(_,i)=>chapter(i+1)),totalChapters:count,
@@ -89,6 +89,7 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  const history={state:{page:'library'},pushState(payload,_title,hash){this.state=payload;historyCalls.push({type:'push',payload,hash})},
   back(){historyCalls.push({type:'back'});this.state={page:'library'};}};
  const timerQueue=[],listeners={},observers=[];
+ const pendingBook={resolve:null,cancelCalls:0};
  class FakeIntersectionObserver{
   constructor(callback,options){
    this.callback=callback;this.options=options;this.active=true;
@@ -105,8 +106,22 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
   setTimeout(cb){timerQueue.push(cb);return timerQueue.length;},
   openStory(id){baseOpens.push(id);history.pushState({page:'reader'},'', '#read-'+id);},
   ...(renderMock?{renderReader(){this.mockRenders=(this.mockRenders||0)+1;}}:{}),
-  LinguaContentLoader:{ensureStory(id){assert.equal(id,story.id);story.lazyBook=false;
-     story.chapters=[chapter(1),chapter(2),chapter(3)];return Promise.resolve()},
+  LinguaContentLoader:{ensureStory(id){
+    assert.equal(id,story.id);
+    if(slowLazy){
+     return new Promise(resolve=>{
+      pendingBook.resolve=()=>{
+       story.lazyBook=false;
+       story.chapters=[chapter(1),chapter(2),chapter(3)];
+       resolve(true);
+      };
+     });
+    }
+    story.lazyBook=false;
+    story.chapters=[chapter(1),chapter(2),chapter(3)];
+    return Promise.resolve(true);
+   },
+   cancel(){pendingBook.cancelCalls++;},
    ensureEditorialArt(){return Promise.resolve(true)}
   }
  };
@@ -137,7 +152,7 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
   for(const listener of document.clickListeners)listener(event);
   return event;
  };
- return {W,api,story,document,bookCard,reader,hero,readerNav,sandbox,cards,historyCalls,baseOpens,writes,reads,listeners,timerQueue,observers,clickBook};
+ return {W,api,story,document,bookCard,reader,hero,readerNav,sandbox,cards,historyCalls,baseOpens,writes,reads,listeners,timerQueue,observers,pendingBook,clickBook};
 }
 (async()=>{
  const s=scenario({artSrc:'data:image/svg+xml;charset=utf-8,%3Csvg%3E%3C%2Fsvg%3E'});
@@ -577,6 +592,33 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  assert.equal(filteredAuto.observers[1].active,false,'closing gallery releases intersection observer');
  filteredAuto.observers[1].emit(true);
  assert.equal(filteredAuto.api.isOpen,false,'a late observer cannot re-open closed gallery');
+
+ // CHG-04: dismissing the chooser mid-way through a 37-file local novel
+ // must cancel the loader's generation (not necessarily abort one already
+ // started script). A late Promise may NEVER resurrect a closed dialog.
+ const abandoned=scenario({lazy:true,slowLazy:true});
+ abandoned.clickBook();
+ assert.equal(abandoned.api.isOpen,true);
+ assert.equal(typeof abandoned.pendingBook.resolve,'function',
+  'slow local book has a genuine pending async loading Promise');
+ abandoned.api.close();
+ assert.equal(abandoned.pendingBook.cancelCalls,1,
+  'closing a pending long-book gallery cancels future offline script requests');
+ abandoned.pendingBook.resolve();
+ await tick();
+ assert.equal(abandoned.api.isOpen,false,'late script cannot re-open closed reader UI');
+ assert.equal(abandoned.baseOpens.length,0,'abandoned book never enters actual reader');
+ assert.equal(abandoned.writes.length,0,'abandoned book never writes chapter progress');
+ assert.equal(abandoned.cards[0].removed,true,'stale gallery dialog stays removed');
+ const loadedFirst=scenario({lazy:true,slowLazy:true});
+ loadedFirst.clickBook();
+ loadedFirst.pendingBook.resolve();
+ await tick();
+ assert.equal(loadedFirst.cards[0].children[0].children[1].children.length,3,
+  'source chapters displayed only after complete loader resolves');
+ loadedFirst.api.close();
+ assert.equal(loadedFirst.pendingBook.cancelCalls,0,
+  'closing an already loaded book never cancels unrelated loader activity');
 
  // Long-book typing can generate dozens of filter events per second.
  // Never perform 130 x localStorage reads for EACH character typed.
