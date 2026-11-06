@@ -130,11 +130,20 @@ function openSelected(id,index){
  // overwrite chapter progress or open a different book.
  if(!active||active.id!==id||!story||
     !Number.isSafeInteger(index)||index<0||index>=available(story))return false;
- // Existing per-story progress key and reader pipeline are preserved.
- // A selected chapter starts/resumes at its saved scroll/page semantic anchor.
- if(typeof put==='function')put('chapter_'+story.id,index);
+ // When already reading this very book, navigate through the EXISTING chapter
+ // system. Re-opening the same reader with openStory() would append a second
+ // history entry, disturb the saved paragraph and strand Android Back.
+ const inSameReader=state.page==='reader'&&state.story?.id===id &&
+    typeof global.stlChapter==='function';
  lastReaderBook=id;
  close(false);
+ if(inSameReader){
+  global.stlChapter(index);
+  return true;
+ }
+ // Coming from the library: the current source reader resumes the selected
+ // chapter's existing semantic page/scroll anchors, with no fake completion.
+ if(typeof put==='function')put('chapter_'+story.id,index);
  return originalOpen.call(global,id);
 }
 function distinctChapterImages(story){
@@ -373,6 +382,9 @@ function show(id,{historyEntry=true}={}){
  if(!hasChapters(story))return false;
  const current=active;
  if(current)close(false);
+ // A reader-opened chapter chooser is a modal reader control, not a new
+ // top-level history page. This preserves in-reader Close/Android Back.
+ const fromReader=state.page==='reader';
  const restoreFocus=document.activeElement;
  const dialog=document.createElement('dialog');
  dialog.className='lt-chapter-gallery';
@@ -431,10 +443,10 @@ function show(id,{historyEntry=true}={}){
  dialog.addEventListener('click',event=>{if(event.target===dialog)close(true);});
  document.body.appendChild(dialog);
  const entry={dialog,track,title,count,missing,search,continue:continueButton,
-  searchSummary,restoreFocus,token:++serial,id,rendered:0,more:null};
+  searchSummary,restoreFocus,token:++serial,id,rendered:0,more:null,fromReader};
  search.addEventListener('input',()=>updateChapterFilter(entry));
  active=entry;
- if(historyEntry&&global.history?.pushState)
+ if(historyEntry&&!fromReader&&global.history?.pushState)
   global.history.pushState({page:'chapter-gallery',storyId:id},'','#chapters-'+encodeURIComponent(id));
  try{dialog.showModal();}catch(_){dialog.setAttribute('open','');}
  prepare(id,entry);
