@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "bookId": "the-sign-of-the-four",
+  "chapterCount": 12,
+  "releaseApproved": false,
+  "sourceIndexStatus": "VERIFIED_BYTE_IDENTICAL_ORIGINAL_CHAPTERS__NO_IMAGE_RELEASE",
+  "sourceManifestPath": "docs/literature/staging/the-sign-of-the-four/manifest.json",
+  "sourceEditionURL": "https://standardebooks.org/ebooks/arthur-conan-doyle/the-sign-of-the-four",
+  "sourceUpstreamCommit": "25466e1b77a718b0ad1d427fdad57642ec0bd9ca",
+  "editorialStatus": "UNREVIEWED_SOURCE_INDEX__COMPLETE_ARABIC_PENDING",
+  "rightsStatus": "PENDING_INDEPENDENT_TERRITORIAL_AND_IMAGE_REVIEW",
+  "chapterTitlesStatus": "NUMBERED_ONLY__ORIGINAL_TITLES_NOT_YET_EDITED",
+  "nonChapterNarrativeUnits": [],
+  "chapters": [
+    {
+      "chapterOneBased": 1,
+      "titleAr": "الفصل 1",
+      "titleEn": "Chapter 1",
+      "sourceFilePath": "docs/literature/staging/the-sign-of-the-four/chapter-1.xhtml",
+      "sourceGitBlobSha": "db3410aa4d18a940f49f4d4046fb0f4444b72a09",
+      "sourceByteCount": 18297,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 2,
+      "titleAr": "الفصل 2",
+      "titleEn": "Chapter 2",
+      "sourceFilePath": "docs/literature/staging/the-sign-of-the-four/chapter-2.xhtml",
+      "sourceGitBlobSha": "cf6cd88232d27484cc4ba6bdf24b241f5db4ae33",
+      "sourceByteCount": 12322,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 3,
+      "titleAr": "الفصل 3",
+      "titleEn": "Chapter 3",
+      "sourceFilePath": "docs/literature/staging/the-sign-of-the-four/chapter-3.xhtml",
+      "sourceGitBlobSha": "555b979035442cc0336f8504e2f2e0ac1ef1bd1c",
+      "sourceByteCount": 10911,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 4,
+      "titleAr": "الفصل 4",
+      "titleEn": "Chapter 4",
+      "sourceFilePath": "docs/literature/staging/the-sign-of-the-four/chapter-4.xhtml",
+      "sourceGitBlobSha": "15a2105b6504bb20a14da7b87bfee742f4f1f465",
+      "sourceByteCount": 22430,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 5,
+      "titleAr": "الفصل 5",
+      "titleEn": "Chapter 5",
+      "sourceFilePath": "docs/literature/staging/the-sign-of-the-four/chapter-5.xhtml",
+      "sourceGitBlobSha": "4c6e97ee194074b249662368ed4eda26c9f63cc2",
+      "sourceByteCount": 16150,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 6,
+      "titleAr": "الفصل 6",
+      "titleEn": "Chapter 6",
+      "sourceFilePath": "docs/literature/staging/the-sign-of-the-four/chapter-6.xhtml",
+      "sourceGitBlobSha": "944dc7d3aceb92862582913eb648662d13f49fc1",
+      "sourceByteCount": 19435,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 7,
+      "titleAr": "الفصل 7",
+      "titleEn": "Chapter 7",
+      "sourceFilePath": "docs/literature/staging/the-sign-of-the-four/chapter-7.xhtml",
+      "sourceGitBlobSha": "050842012264b86335b8109f0b55711862f8287a",
+      "sourceByteCount": 25323,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 8,
+      "titleAr": "الفصل 8",
+      "titleEn": "Chapter 8",
+      "sourceFilePath": "docs/literature/staging/the-sign-of-the-four/chapter-8.xhtml",
+      "sourceGitBlobSha": "aa8b31f56f70d38e872d4bfbf39324f407d3266c",
+      "sourceByteCount": 21345,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 9,
+      "titleAr": "الفصل 9",
+      "titleEn": "Chapter 9",
+      "sourceFilePath": "docs/literature/staging/the-sign-of-the-four/chapter-9.xhtml",
+      "sourceGitBlobSha": "62696ad18798f68254a3a2cdb462d160d7e9ac51",
+      "sourceByteCount": 22523,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 10,
+      "titleAr": "الفصل 10",
+      "titleEn": "Chapter 10",
+      "sourceFilePath": "docs/literature/staging/the-sign-of-the-four/chapter-10.xhtml",
+      "sourceGitBlobSha": "fda705255e7e0aed22c439ac40bf9364ba2590a3",
+      "sourceByteCount": 19786,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 11,
+      "titleAr": "الفصل 11",
+      "titleEn": "Chapter 11",
+      "sourceFilePath": "docs/literature/staging/the-sign-of-the-four/chapter-11.xhtml",
+      "sourceGitBlobSha": "eab9a53d4c27698ebb7729144ddbf56a9ef97489",
+      "sourceByteCount": 13234,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 12,
+      "titleAr": "الفصل 12",
+      "titleEn": "Chapter 12",
+      "sourceFilePath": "docs/literature/staging/the-sign-of-the-four/chapter-12.xhtml",
+      "sourceGitBlobSha": "583e49c3a251969b7b9a21bc6d2f810a8c2ebdbb",
+      "sourceByteCount": 56435,
+      "primaryImage": null
+    }
+  ]
+}
