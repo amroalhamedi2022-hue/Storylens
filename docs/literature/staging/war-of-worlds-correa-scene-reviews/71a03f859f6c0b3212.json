@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_036_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-71a03f859f6c0b32.webp",
+  "imageSha256": "c986ed912b25cfd92cbab9e7157623309ef39ac4a3b95c46559be44cd9a40a6c",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink drawing depicting three figures lying on the ground in a chaotic, possibly battlefield or disaster setting. The figures appear to be deceased or incapacitated, with wisps of smoke or vapor rising from their bodies or the immediate area. The style is expressive and sketch-like with heavy cross-hatching.",
+    "visualObjectsEn": "Three human figures, smoke or vapor trails, ground surface, ink lines representing debris or atmospheric disturbance.",
+    "recognizableCharactersOrPeopleEn": "Three unidentified male figures dressed in what appear to be trousers and shirts.",
+    "uncertaintyNotes": "The exact nature of the event (battle, explosion, or other tragedy) is not explicitly stated in the image. The smoke could represent gunfire, explosions, or a supernatural element. The artist's signature is present in the bottom right corner but is not fully legible."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 8,
+    "paragraphIndexZeroBased": 0,
+    "exactSourceQuotation": "three or four cyclists or London people lying dead on the common",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts three figures lying on the ground in a chaotic setting with smoke or vapor, which aligns with the description of people lying dead on the common following the initial Martian events. The cross-hatching and sketch-like style are characteristic of Alvim Corrêa's work, and the scene captures the aftermath of the initial conflict described in this passage.",
+    "suggestedAltArNotApproved": "A sketch by Henrique Alvim Corrêa depicting three figures lying dead on the ground, representing the casualties on the common during the Martian invasion.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts three figures lying dead on the common, with smoke rising from them, directly corresponding to the passage's mention of 'the three or four cyclists or London people lying dead on the common'.",
+    "visualContradictions": "None, the depiction precisely matches the text description of the dead bodies on the common.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

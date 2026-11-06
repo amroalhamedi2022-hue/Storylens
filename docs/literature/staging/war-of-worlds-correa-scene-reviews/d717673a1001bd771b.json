@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_034_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-d717673a1001bd77.webp",
+  "imageSha256": "231f12ab1ad306baeaf5ee9d5d7dd83597948744d600637bd4a8ab2420c53bf6",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch depicting a person standing in the foreground, holding a flag aloft with their right hand and a hat in their left hand. The background is filled with sketchy, indistinct figures suggesting a crowd or a group of people. The style is illustrative with loose, expressive lines.",
+    "visualObjectsEn": "A flag on a pole, a hat, a jacket with buttons, and a skirt.",
+    "recognizableCharactersOrPeopleEn": "A single central figure, appearing to be a person with shoulder-length hair, dressed in a jacket and skirt, surrounded by a crowd of indistinct figures.",
+    "uncertaintyNotes": "The gender of the central figure is ambiguous, though the clothing suggests a skirt. The specific historical context or identity of the person is not explicitly stated in the image. The signature 'A. Currier' is visible at the bottom right."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 5,
+    "paragraphIndexZeroBased": 9,
+    "exactSourceQuotation": "Flutter, flutter, went the flag, first to the right, then to the left.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The image depicts a central figure holding a flag aloft, which directly corresponds to the narrative action of the deputation attempting communication with the Martians using a white flag in Chapter 5.",
+    "suggestedAltArNotApproved": "A central figure standing in a crowd, holding a white flag aloft to signal the Martians, with indistinct figures in the background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a single foreground figure holding up a flag on a pole and a hat in the other hand, with indistinct figures in the background.",
+    "visualContradictions": "The passage describes a group of men (Ogilvy, Stent, and Henderson) attempting communication while a crowd watches from a distance, whereas the engraving prominently features a single central figure wearing a skirt and jacket rather than the specific gentlemen described.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
