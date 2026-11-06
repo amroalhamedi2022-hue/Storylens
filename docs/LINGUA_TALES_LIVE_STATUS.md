@@ -654,3 +654,11 @@ Source baseline reviewed: main 064258074b4a3c4d5fb139aa4c163a28ca27b66a / CI #41
 
 ### 2026-11-06 — Physical curl delivery verification
 Functional source `81243624283e05f8335c649a83e9af3a686ea533` passed complete Android/Node/Chromium Actions https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42092717975 . PR #19 retains screenshots and API documentation. Concurrent main `183c7f9` integration preserves its gallery registry and Sanctuary QA; merged-source CI is pending. Device feel/120Hz remains unverified.
+
+### 2026-11-06 — FINAL INTEGRATED SAME-SIGNER OWNER BUILD DELIVERED
+
+- Actual [PR #49](https://github.com/amroalhamedi2022-hue/Storylens/pull/49) merged to `main` `6ef75d4b32decf972423840b8ed96b71a63dfc1f`: physical HTML page curl with real reverse HTML and two-page RTL/LTR spreads, chapter gallery search/resume/incremental cards, reader text guard and six stable themes, and word-free approved original icon. Preserves all newer main literature/source commits.
+- Exact-source Android, Node, Chromium visual + gesture CI [#42180776260](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42180776260) **SUCCESS**; identical 153 app tree entries between integrated branch and merged main.
+- Independently produced real official **same-signer** production APK `Lingua-Tales-1.0.0-v101038-Official-SIGNED.apk` SHA256 `ab77dea0955551307464568ddae9a7110b8bdce80dda7121fedd7243a096b4b3`. v2/v3 verification PASS; same private permanent certificate `3df6489eacea84e78b715943ca4d014abb24e3159641e0bf80890ecedcf9da31`; `com.storylens.reader` versionCode 101038 > prior 100866. Saved in owner's private Library `/Lingua Tales/Releases/`. Private PKCS12/recovery unchanged in `/Lingua Tales/Private Signing/`.
+- Original approved colourful book icon generated in `tools/GenerateTextlessLauncher.java` without **any words**; build-time Android resource is reproducible and checked.
+- **OPEN**: actual device installation/120Hz/thermal/backup upgrade not witnessed. Translation and per-image historical/art territorial/editorial clearance remains separate and unfinished; source staging is not publication. For source/asset inventory consult content-specific live reports; for complete release proof see `docs/releases/LINGUA_TALES_1_0_0_FULL_SIGNED_RELEASE_2026-11-06.md`.
