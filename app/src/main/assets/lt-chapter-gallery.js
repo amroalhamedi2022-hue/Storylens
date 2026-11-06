@@ -197,6 +197,16 @@ function hasChapterReadingStart(story,index){
  return (Number.isInteger(lastPage)&&lastPage>0)||
   (typeof lastScroll==='number'&&Number.isFinite(lastScroll)&&lastScroll>80);
 }
+function startedInEntry(entry,index){
+ // A very long anthology may have 1001+ chapter positions. Cache the actual
+ // saved-source state once per gallery, rather than scanning local storage on
+ // every title-filter keystroke, swipe or re-render.
+ if(!entry.readingStartedCache)entry.readingStartedCache=new Map();
+ if(entry.readingStartedCache.has(index))return entry.readingStartedCache.get(index);
+ const value=hasChapterReadingStart(entry.story,index);
+ entry.readingStartedCache.set(index,value);
+ return value;
+}
 function artAvailability(entry){
  const shown=entry.images.filter(Boolean).length;
  const count=entry.images.length;
@@ -275,7 +285,7 @@ function buildChapterCard(entry,story,i){
  else if(source.kind==='approved'&&source.credit)
   addText(card,'small','lt-chapter-tile-credit',source.credit);
  // Stored reader position means reading started, NOT that a chapter was finished.
- if(hasChapterReadingStart(story,i))
+ if(startedInEntry(entry,i))
   addText(card,'span','lt-chapter-tile-visited',
    locale('سبق أن قرأت من هذا الفصل','Reading started'));
  card.addEventListener('click',()=>openSelected(story.id,i));
@@ -391,7 +401,7 @@ function updateChapterFilter(entry){
   const matchesFilter=mode==='all'||
    (mode==='illustrated'&&Boolean(entry.images[i]))||
    (mode==='pending'&&!entry.images[i])||
-   (mode==='started'&&hasChapterReadingStart(entry.story,i));
+   (mode==='started'&&startedInEntry(entry,i));
   if(matchesQuery&&matchesFilter)entry.visible.push(i);
  }
  entry.moreObserver?.disconnect?.();
@@ -414,6 +424,7 @@ function renderCards(entry,story){
  if(!active||active!==entry||!entry.track?.isConnected)return;
  if(!Array.isArray(story.chapters))return;
  entry.story=story;
+ entry.readingStartedCache=new Map();
  entry.images=distinctChapterImages(story);
  const count=story.chapters.length;
  const raw=typeof get==='function'?get('chapter_'+story.id,null):null;
