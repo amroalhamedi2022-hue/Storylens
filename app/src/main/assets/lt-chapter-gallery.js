@@ -407,6 +407,10 @@ function renderCards(entry,story){
  entry.continue.onclick=()=>{
   if(active===entry)openSelected(story.id,entry.resume);
  };
+ entry.locate.disabled=!entry.hasProgress;
+ entry.locate.textContent=entry.hasProgress?
+  locale('حدّد الفصل '+(entry.resume+1),'Find chapter '+(entry.resume+1)):
+  locale('لا يوجد موضع قراءة محفوظ','No saved reading position');
  entry.title.textContent=bookTitle(story);
  const total=declared(story);
  entry.count.textContent=total===count
@@ -544,6 +548,13 @@ function show(id,{historyEntry=true}={}){
  sheet.appendChild(track);
  const footer=document.createElement('footer');footer.className='lt-chapter-gallery-footer';
  const missing=addText(footer,'span','lt-chapter-gallery-status','');
+ const locate=document.createElement('button');
+ locate.type='button';locate.disabled=true;
+ locate.className='lt-chapter-gallery-locate';
+ locate.textContent=locale('حدّد موضع القراءة','Find saved chapter');
+ locate.setAttribute('aria-label',locale('اعرض بطاقة الفصل الذي توقفت عنده',
+   'Locate the chapter where you stopped reading'));
+ footer.appendChild(locate);
  sheet.appendChild(footer);
  dialog.appendChild(sheet);
  dialog.addEventListener('cancel',event=>{event.preventDefault();close(true);});
@@ -551,10 +562,21 @@ function show(id,{historyEntry=true}={}){
  document.body.appendChild(dialog);
  const storedLayout=typeof get==='function'?
   get('lt_chapter_gallery_layout','rail'):'rail';
- const entry={dialog,track,title,count,missing,search,filter,layoutButton,
+ const entry={dialog,track,title,count,missing,locate,search,filter,layoutButton,
   layout:storedLayout==='list'?'list':'rail',
   continue:continueButton,searchSummary,restoreFocus,
   token:++serial,id,rendered:0,more:null,fromReader};
+ locate.addEventListener('click',()=>{
+  if(active!==entry||!entry.story||!entry.hasProgress)return;
+  // Locate without selecting or changing reading progress. On a 1000-chapter
+  // anthology only the bookmarked card mounts, not 1000 heavy images.
+  entry.filter.value='all';
+  entry.search.value=String(entry.resume+1);
+  updateChapterFilter(entry);
+  const card=entry.track.querySelector?.('.lt-chapter-tile');
+  card?.focus?.({preventScroll:true});
+  card?.scrollIntoView?.({block:'nearest',inline:'center',behavior:'auto'});
+ });
  search.addEventListener('input',()=>updateChapterFilter(entry));
  filter.addEventListener('change',()=>updateChapterFilter(entry));
  layoutButton.addEventListener('click',()=>{
