@@ -6,8 +6,8 @@
   "counts": {
     "localCandidateChapterCards": 268,
     "readyChapterCards": 0,
-    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1083,
-    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1083
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1101,
+    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1101
   },
   "books": [
     {
@@ -60,8 +60,8 @@
       "readyForUICards": 0,
       "missingImageChapters": 27,
       "missingReadyChapters": 27,
-      "unassignedHistoricalCorreaImageFiles": 72,
-      "archivedLocalHistoricArt": 72
+      "unassignedHistoricalCorreaImageFiles": 90,
+      "archivedLocalHistoricArt": 90
     },
     {
       "bookId": "treasure-island",
