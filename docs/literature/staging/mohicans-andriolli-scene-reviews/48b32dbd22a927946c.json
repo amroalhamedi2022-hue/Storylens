@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p213.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-48b32dbd22a92794.webp",
+  "imageSha256": "a260c07da03a77fef36a3d28081ab68aea1cb68d67eff0064da8bbae22226b77",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting two men in 18th-century style military or formal attire sitting in high-backed chairs in an interior room. The man on the right is seated in a larger chair, gesturing with his right hand as if speaking, while the man on the left sits in profile, listening. The background features an arched architectural element, possibly a fireplace or doorway, and a stand with long objects, possibly muskets or poles, to the right.",
+    "visualObjectsEn": "Two high-backed upholstered chairs, a large arched architectural feature in the background, a stand holding long slender objects, and the clothing of the two men including coats with lapels, breeches, and boots.",
+    "recognizableCharactersOrPeopleEn": "Two adult men, both dressed in historical attire consistent with the 18th century.",
+    "uncertaintyNotes": "The exact identity of the individuals is not provided in the image. The specific historical context or narrative source is not explicitly stated, though the style is characteristic of 19th-century book illustrations. The signature 'Andriolli 1883' is visible at the bottom right."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.5-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

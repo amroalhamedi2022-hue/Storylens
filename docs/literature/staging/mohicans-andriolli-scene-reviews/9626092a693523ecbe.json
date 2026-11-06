@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p237.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-9626092a693523ec.webp",
+  "imageSha256": "10073b72ca5fa182024886ff88f7164d9cce3d36d1ab281fd7caa82213e68935",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white historical-style engraving depicting a chaotic scene of conflict. In the foreground, a man in 18th-century European colonial attire stands with his arm raised, appearing to shout or protest. Beside him, a woman in a long dress and bonnet looks distressed. They are being led or escorted by a shirtless man wearing a feathered headdress and a loincloth, who carries a musket and a bundle of fabric. In the background, there is a stone fort or building, and other figures are engaged in a skirmish or battle, with some individuals lying on the ground.",
+    "visualObjectsEn": "18th-century colonial coat, breeches, tricorn hat, musket, feathered headdress, loincloth, long dress, bonnet, stone fort, weapons, fabric bundle.",
+    "recognizableCharactersOrPeopleEn": "A man in colonial European clothing, a woman in period dress, and a man in indigenous-style attire.",
+    "uncertaintyNotes": "The specific historical event, the identities of the individuals, and the exact nature of the conflict (whether it is a capture, a rescue, or a forced march) are not explicitly stated in the image and remain uncertain."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

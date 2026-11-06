@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p229.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-13fdbd220a12a0b0.webp",
+  "imageSha256": "1140675e038ae10a3a0cb0474a30c6891b6d9ef7d12b663a873d432cef94c8cc",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "An engraved illustration showing a procession or military column of soldiers in historical uniforms, led by two mounted officers on horseback in the foreground, with foot soldiers marching alongside and behind them. In the background, a large stone fortification or gate with an archway rises up, and a flag is visible on top of the structure. The composition is executed in a sketch-like, engraved line-art style with a signature and year 'Andriolle 1882' in the bottom left corner.",
+    "visualObjectsEn": "Mounted officers on horses, foot soldiers carrying rifles with bayonets, historical military uniforms with tricorn hats and peaked caps, standard or flag being carried, large stone gateway or fortification structure, flag flying atop the fortress, grassy ground terrain, artist signature and date in the lower left.",
+    "recognizableCharactersOrPeopleEn": "Group of historical military soldiers and officers, including two prominent mounted officers leading the formation.",
+    "uncertaintyNotes": "The exact historical context, specific military unit, and real identities of the characters cannot be definitively determined from the visual elements alone, though the style suggests a late 19th-century historical engraving."
+  },
+  "visionModel": "gemini-3.5-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 16,
+    "paragraphIndexZeroBased": 43,
+    "exactSourceQuotation": "A very few minutes only were necessary to parade a few files, and to despatch an orderly with a flag to announce the approach of the commandant of the fort. When Duncan had done both these, he led the guard to the sally-port, near which he found his superior ready, waiting his appearance. As soon as the usual ceremonials of a military departure were observed, the veteran and his more youthful companion left the fortress, attended by the escort.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a military column led by mounted officers exiting a stone fortification, which aligns with the scene in Chapter 16 where Duncan Heyward leads a guard and his superior out of the fort via the sally-port, accompanied by an escort and a flag.",
+    "suggestedAltArNotApproved": "A nineteenth-century engraving by Andriolli showing a military procession with mounted officers leading foot soldiers out of a stone fortress gate, consistent with the departure of the garrison in The Last of the Mohicans.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a military departure from a fortress with a sally-port archway, featuring two officers on horseback (representing Duncan and the veteran commandant) leading an escort of foot soldiers carrying rifles and a flag, matching the exact events described in the passage.",
+    "visualContradictions": "None.",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

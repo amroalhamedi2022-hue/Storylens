@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p217.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-81c78db49f458449.webp",
+  "imageSha256": "e69812b290198c296ea751d85e8c884966c51972f0684b7fd3cdba891a8c8e27",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a military or historical scene outdoors, possibly an inspection or meeting between two groups of soldiers or officers. On the left side, three prominent figures stand with several soldiers lined up behind them holding muskets or pikes; the central figure in the foreground on the left is raising his tricorn hat. Facing them on the right is a lone officer in detailed period uniform holding his own hat, with a row of soldiers standing at attention behind him.",
+    "visualObjectsEn": "Tricorn hats, long military coats, sashes, swords, muskets, pikes, tent-like structure in the background, artist signatures in the bottom corners including 'Andriollo 1883' on the left and another signature on the right.",
+    "recognizableCharactersOrPeopleEn": "Multiple figures of men dressed in 18th-century military uniforms with breeches, coats, and hats. No specific real historical personalities can be definitively verified solely from visual evidence without external context.",
+    "uncertaintyNotes": "The exact historical event, campaign, and identities of the depicted figures cannot be determined with certainty from the engraving alone, and the signature 'Andriollo 1883' suggests a late 19th-century artistic recreation of an earlier period."
+  },
+  "visionModel": "gemini-3.5-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 17,
+    "paragraphIndexZeroBased": 58,
+    "exactSourceQuotation": "At a little distance on the right, and somewhat in the rear, the French army stood to their arms, [Pg 179] Montcalm having collected his parties, so soon as his guards had possession of the works. They were attentive but silent observers of the proceedings of the vanquished, failing in none of the stipulated military honors, and offering no taunt or insult, in their success, to their less fortunate foes. Living masses of the English, to the amount in the whole of near three thousand, were moving slowly across the plain",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The engraving illustrates the formal military presence and interaction during the surrender or departure of forces as described in Chapter 17, showing officers meeting or observing lines of soldiers with military coats and tricorn hats.",
+    "suggestedAltArNotApproved": "رسم توضيحي يظهر فيه جنود وضباط بالزي العسكري في مشهد خارجي يمثل لقاءً أو اصطفافاً عسكرياً.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.5-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows two groups of 18th-century officers and soldiers facing each other, with one officer raising his tricorn hat and another holding a hat in his hand.",
+    "visualContradictions": "The passage describes a large, confused throng of three thousand English moving across a plain with French troops standing at a little distance and a cloud of savages along the borders of the woods. The image shows a staged, close-up formal meeting or surrender between two individual officers and small squads of soldiers, entirely omitting the massive crowds, the plain, the fort mounds, and the surrounding Native American savages.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
