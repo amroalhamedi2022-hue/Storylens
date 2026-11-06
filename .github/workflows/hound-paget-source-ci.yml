@@ -1,0 +1,26 @@
+name: Lingua Tales - original Sidney Paget 1901-02 archived plates integrity
+on:
+  pull_request:
+    paths:
+      - 'tools/intake_hound_paget_original_period_plates.py'
+      - 'tools/test_hound_paget_period_intake.py'
+      - 'tools/report_chapter_art_progress.py'
+      - '.github/workflows/hound-paget-*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-original-art-source-no-fake-chapter-cards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate all original image source/territorial holds without network requests
+        run: |
+          python tools/test_hound_paget_period_intake.py
+          python tools/report_chapter_art_progress.py
