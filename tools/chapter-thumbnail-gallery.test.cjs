@@ -57,7 +57,7 @@ function element(tag='div') {
  return node;
 }
 const tick=async()=>{await new Promise(resolve=>setImmediate(resolve));};
-function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null,renderMock=false,visitedIndex=null}={}){
+function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null,renderMock=false,visitedIndex=null,registryArt=null}={}){
  const chapter=(n)=>({title:'Chapter '+n,titleAr:'الفصل '+n,paragraphs:[{en:'Original source.',ar:'ترجمة.'}]});
  const story={id:'example-story',title:'Example Story',titleAr:'قصة تجريبية',
   chapters:lazy?[]:Array.from({length:count},(_,i)=>chapter(i+1)),totalChapters:count,
@@ -86,7 +86,9 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  const history={state:{page:'library'},pushState(payload,_title,hash){this.state=payload;historyCalls.push({type:'push',payload,hash})},
   back(){historyCalls.push({type:'back'});this.state={page:'library'};}};
  const timerQueue=[],listeners={};
- const W={LinguaCatalog:{stories:[story]},history,addEventListener(n,cb){listeners[n]=cb;},
+ const W={LinguaCatalog:{stories:[story]},
+  LinguaChapterThumbnailRegistry:registryArt?{'example-story':{chapters:[{primaryImage:registryArt}]}}:{},
+  history,addEventListener(n,cb){listeners[n]=cb;},
   setTimeout(cb){timerQueue.push(cb);return timerQueue.length;},
   openStory(id){baseOpens.push(id);history.pushState({page:'reader'},'', '#read-'+id);},
   ...(renderMock?{renderReader(){this.mockRenders=(this.mockRenders||0)+1;}}:{}),
@@ -216,6 +218,19 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  const valid=scenario({approved:{...pending,editoriallyApproved:true,
   releaseApproved:true,distributionReviewApproved:true,rightsStatus:'APPROVED'}});
  assert.equal(valid.api.chapterImage(valid.story,0).src,'art/old-folio.webp');
+ // A previously staged unapproved in-book candidate must not hide an
+ // authenticated later thumbnail supplied by the source-image conversation.
+ const approvedReplacement={...pending,imagePath:'art/reviewed-colour-folio.webp',
+  editoriallyApproved:true,releaseApproved:true,
+  distributionReviewApproved:true,rightsStatus:'APPROVED'};
+ const replaced=scenario({approved:pending,registryArt:approvedReplacement});
+ assert.equal(replaced.api.chapterImage(replaced.story,0).src,'art/reviewed-colour-folio.webp',
+  'approved release registry wins over stale rejected chapter art');
+ const registryDenied=scenario({approved:approvedReplacement,registryArt:pending});
+ assert.equal(registryDenied.api.chapterImage(registryDenied.story,0).src,
+  'art/reviewed-colour-folio.webp',
+  'a bad registry entry must not block separately approved in-book metadata');
+
  const duplicateImage={...pending,editoriallyApproved:true,
   releaseApproved:true,distributionReviewApproved:true,rightsStatus:'APPROVED'};
  const dup=scenario({approved:duplicateImage});
