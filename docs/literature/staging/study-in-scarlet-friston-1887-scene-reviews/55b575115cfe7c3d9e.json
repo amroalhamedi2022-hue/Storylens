@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "a-study-in-scarlet",
+  "originalCreator": "David Henry Friston (1820–1906)",
+  "historicIllustratedEdition": "A Study in Scarlet original 1887 Beeton's Christmas Annual",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:A_Study_in_Scarlet_Friston_02.jpg",
+  "imagePath": "docs/literature/staging/study-in-scarlet-friston-1887-period-plates/plates/scarlet-friston-55b575115cfe7c3d.webp",
+  "imageSha256": "7f71cc846a8ea965692449f9e98491c61a076e9f6ada786b0c61cfce83946ac5",
+  "sourceCorpusSha256": "abbc734525aacb1653e40fb165650dce74f65442d6b440f8a303e152d68d2a9a",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting three men standing over a fourth man who is lying on the ground. One man stands on the left holding a small notebook and a pencil, looking towards the center. A second man stands in the middle, looking down. A third man is bent over, examining the person on the ground. The person on the ground is lying on their back, appearing unconscious or deceased. The setting appears to be an indoor room with a plain wall in the background.",
+    "visualObjectsEn": "Three standing men, one prone man, a notebook, a pencil, a top hat on the floor, a pocket watch chain on the prone man, and a wooden door or wall paneling in the background.",
+    "recognizableCharactersOrPeopleEn": "Four adult males dressed in 19th-century style clothing, including coats, waistcoats, and hats.",
+    "uncertaintyNotes": "The exact identity of the individuals is not provided in the image itself. The nature of the scene (whether it is a crime scene, a medical emergency, or a staged event) is ambiguous. The historical context is inferred from the artistic style of the engraving."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

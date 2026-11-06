@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "a-study-in-scarlet",
+  "originalCreator": "David Henry Friston (1820–1906)",
+  "historicIllustratedEdition": "A Study in Scarlet original 1887 Beeton's Christmas Annual",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:A_Study_in_Scarlet_Friston_04.jpg",
+  "imagePath": "docs/literature/staging/study-in-scarlet-friston-1887-period-plates/plates/scarlet-friston-51a8d68fb9c2a169.webp",
+  "imageSha256": "3a8b419b1cd9841363ab141b32cf0de41569c8a50d18426f84c3721c944e4d86",
+  "sourceCorpusSha256": "abbc734525aacb1653e40fb165650dce74f65442d6b440f8a303e152d68d2a9a",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting an interior scene. A man with a long beard and a dark suit stands in a doorway, looking down with a concerned or startled expression. On the floor in the foreground, a man wearing a hat and coat is lying prone, appearing to be in distress or writhing. The background room contains a wooden table, a chair, a hat hanging on the wall, and some small objects on the table.",
+    "visualObjectsEn": "Doorway, wooden table, wooden chair, hat hanging on a wall, small objects on the table, floorboards, clothing (suits, hats).",
+    "recognizableCharactersOrPeopleEn": "An older man with a full beard and a younger man lying on the floor.",
+    "uncertaintyNotes": "The exact nature of the man on the floor's condition is ambiguous; he could be injured, ill, or under some supernatural influence. The historical context of the engraving is not identified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 3,
+    "paragraphIndexZeroBased": 47,
+    "exactSourceQuotation": "At present my attention was centred upon the single grim motionless figure which lay stretched upon the boards, with vacant sightless eyes staring up at the discoloured ceiling.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The engraving depicts a man lying prone on the floorboards in a room with a table and chair, which aligns with the discovery of the body in the Brixton Road house as described in Chapter 3. The 'grim motionless figure' on the 'boards' matches the visual of the man on the floor.",
+    "suggestedAltArNotApproved": "A black and white engraving of a crime scene in a Victorian room, showing a man lying prone on the floorboards while another man stands in the doorway looking down at him.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a bearded man standing in a doorway looking down at a man lying on the floor with a hat on, which matches a different caption (\"AS HE WATCHED IT HE SAW IT WRITHE ALONG THE GROUND\") rather than the specific details of the corpse described in the passage.",
+    "visualContradictions": "The caption and visual style depict an active scene rather than the static, dead victim described in the exact passage where the narrator observes the motionless corpse with specific facial contortions.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

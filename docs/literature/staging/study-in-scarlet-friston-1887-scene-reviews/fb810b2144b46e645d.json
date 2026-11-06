@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "a-study-in-scarlet",
+  "originalCreator": "David Henry Friston (1820–1906)",
+  "historicIllustratedEdition": "A Study in Scarlet original 1887 Beeton's Christmas Annual",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:A_Study_in_Scarlet_Friston_01.jpg",
+  "imagePath": "docs/literature/staging/study-in-scarlet-friston-1887-period-plates/plates/scarlet-friston-fb810b2144b46e64.webp",
+  "imageSha256": "f716179af7ad667635138865b905a50e54ae2ef1877c4489aef3ce40cc91820d",
+  "sourceCorpusSha256": "abbc734525aacb1653e40fb165650dce74f65442d6b440f8a303e152d68d2a9a",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting four men in 19th-century attire standing in an indoor setting, likely a room with wallpaper. One man is using a magnifying glass to examine a word written on the wall, while another man points at it. A third man stands to the left, and a fourth stands to the right, observing the scene.",
+    "visualObjectsEn": "Magnifying glass, wallpaper, clothing including top hats, frock coats, and trousers, a handkerchief held by the man on the right, and the handwritten word 'Roche' on the wall.",
+    "recognizableCharactersOrPeopleEn": "Four adult men dressed in Victorian-era clothing.",
+    "uncertaintyNotes": "The exact identity of the individuals is not provided in the image itself. The specific location is ambiguous, though it appears to be an interior room. The engraving style is consistent with 19th-century book illustrations."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 4,
+    "paragraphIndexZeroBased": 10,
+    "exactSourceQuotation": "The writing on the wall was done with a man’s forefinger dipped in blood. My glass allowed me to observe that the plaster was slightly scratched in doing it",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The engraving depicts Sherlock Holmes using a magnifying glass to examine the word 'Rache' (or 'Roche' as noted in the description) on the wall, while other men (likely Lestrade and Gregson) observe. This directly corresponds to Holmes's explanation of his investigation of the crime scene in Chapter 4, where he describes using his glass to examine the writing on the wall.",
+    "suggestedAltArNotApproved": "Sherlock Holmes examining the word 'Rache' written in blood on the wall with a magnifying glass, observed by Lestrade and Gregson.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts a detective examining writing on the wall with a magnifying glass ('glass'), as described in the passage discussing the writing on the wall done with blood and examined with a glass.",
+    "visualContradictions": "None",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

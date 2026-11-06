@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "a-study-in-scarlet",
+  "originalCreator": "David Henry Friston (1820–1906)",
+  "historicIllustratedEdition": "A Study in Scarlet original 1887 Beeton's Christmas Annual",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:A_Study_in_Scarlet_Friston_03.jpg",
+  "imagePath": "docs/literature/staging/study-in-scarlet-friston-1887-period-plates/plates/scarlet-friston-3699941cbf79e45d.webp",
+  "imageSha256": "787f8e31907aea17a1d44385257543951e8ac0ba6a19a656264029f3af8d2d71",
+  "sourceCorpusSha256": "abbc734525aacb1653e40fb165650dce74f65442d6b440f8a303e152d68d2a9a",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a group of men walking across a rugged, outdoor landscape. One man in the center is carrying a young girl on his shoulders. The men are dressed in 19th-century style clothing, including hats, jackets, and trousers, and some carry rifles slung over their shoulders. The style is characteristic of a 19th-century book illustration.",
+    "visualObjectsEn": "Men, young girl, rifles, hats, jackets, trousers, rugged terrain, clouds in the sky.",
+    "recognizableCharactersOrPeopleEn": "A group of five men and one young girl.",
+    "uncertaintyNotes": "The specific historical context, location, or narrative source of the illustration is not provided and cannot be determined from the image alone. The exact nature of the interaction between the figures is ambiguous beyond the visual depiction of them walking together."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 8,
+    "paragraphIndexZeroBased": 9,
+    "exactSourceQuotation": "As he spoke he unwrapped the grey shawl and extricated a pretty little girl of about five years of age",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The engraving depicts a group of men in 19th-century attire traversing a rugged landscape, with one man carrying a young girl. This aligns with the narrative of the pioneers crossing the desert in Chapter 8, where the girl (Lucy Ferrier) is being carried or protected by the group during their arduous journey.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a group of men in rugged outdoor clothing walking across a desolate, mountainous landscape, with one man carrying a young girl on his shoulders.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows men walking outdoors in a rugged landscape with a little girl hoisted upon one of the men's shoulders, accompanied by a caption that reads 'ONE OF THEM SEIZED THE LITTLE GIRL, AND HOISTED HER UPON HIS SHOULDER.'",
+    "visualContradictions": "The passage describes a man unwrapping a grey shawl to extricate a little girl who wears dainty shoes, a smart pink frock, and a little linen apron, whereas the image depicts a group of armed men outdoors with the girl already hoisted on a man's shoulders, and lacks the specific action of unwrapping a shawl from her.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
