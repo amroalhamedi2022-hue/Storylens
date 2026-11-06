@@ -463,12 +463,51 @@ function activateBookCard(event){
  show(id);
 }
 document.addEventListener?.('click',activateBookCard,true);
- // Provide an always-accessible way back to chapter thumbnails from inside
- // the reader. The existing paging/selection/page-fold renderer is untouched.
+// A per-chapter approved picture is visible INSIDE the actual book chapter,
+// not just as a thumbnail in the chapter chooser. We use the EXISTING hero
+// surface to avoid reflowing the paper page grid and Codex-owned page curl.
+// Artwork already anchored inside prose is not duplicated in a second place.
+function attachApprovedChapterHero(){
+ if(state.page!=='reader'||!state.story)return;
+ const approved=chapterImage(state.story,state.chapter);
+ if(!approved||approved.kind!=='approved')return;
+ const reader=document.querySelector('.reader');
+ const hero=reader?.querySelector?.('.reader-hero');
+ if(!hero||hero.querySelector?.('.lt-approved-chapter-figure'))return;
+ // Avoid a duplicate if this approved historical print is already used by the
+ // in-prose chapter art system, with its own exact paragraph placement.
+ const images=Array.from(reader.querySelectorAll?.('img[src]')||[]);
+ if(images.some(img=>img.getAttribute?.('src')===approved.src))return;
+ const figure=document.createElement('figure');
+ figure.className='lt-approved-chapter-figure';
+ const img=document.createElement('img');
+ img.className='lt-approved-chapter-picture';
+ img.alt=approved.alt;
+ img.loading='eager';img.decoding='async';
+ img.setAttribute('draggable','false');
+ const credit=document.createElement('figcaption');
+ credit.className='lt-approved-chapter-credit';
+ credit.textContent=locale('صورة الفصل · ','Chapter illustration · ')+approved.credit;
+ img.addEventListener('error',()=>{
+  figure.remove();
+  hero.classList.remove('lt-chapter-primary-hero');
+  hero.style.backgroundImage=hero.dataset.ltOriginalHeroBg||'';
+  delete hero.dataset.ltOriginalHeroBg;
+ },{once:true});
+ figure.appendChild(img);figure.appendChild(credit);
+ hero.dataset.ltOriginalHeroBg=hero.style.backgroundImage||'';
+ hero.classList.add('lt-chapter-primary-hero');
+ hero.style.backgroundImage='none';
+ hero.appendChild(figure);
+ img.src=approved.src;
+}
+// Provide an always-accessible way back to chapter thumbnails from inside
+// the reader. The existing paging/selection/page-fold renderer is untouched.
 const baseRender=global.renderReader;
 if(typeof baseRender==='function'){
  global.renderReader=function(...args){
   const result=baseRender.apply(this,args);
+  attachApprovedChapterHero();
   if(state.page!=='reader'||!hasChapters(state.story))return result;
   const nav=document.querySelector('.reader .lt-chapter-nav')||
    document.querySelector('.reader .toolbar');
