@@ -1,0 +1,156 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 20,
+  "chapterTitle": "In which Fix comes face to face with Phileas Fogg.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "fd02c7cca3790f50a0f586eb26336652a9e68d1f1505d0a5aaddd0e6a3a10994",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "While these events were passing at the opium-house, Mr. Fogg, unconscious of the danger he was in of losing the steamer, was quietly escorting Aouda about the streets of the English quarter, making the necessary purchases for the long voyage before them. It was all very well for an Englishman like Mr. Fogg to make the tour of the world with a carpetbag; a lady could not be expected to travel comfortably under such conditions. He acquitted his task with characteristic serenity, and invariably replied to the remonstrances of his fair companion, who was confused by his patience and generosity:",
+      "existingArabicDraft": "بينما كانت هذه الأحداث تجري في بيت الأفيون، كان السيد فوغ، غير مدرك لخطر فوات السفينة عليه، يرافق أودا بهدوء في شوارع الحي الإنجليزي، ويشتري ما يلزم للرحلة الطويلة المقبلة. كان بوسع رجل إنجليزي مثل فوغ أن يطوف العالم بحقيبة صغيرة، أما السيدة فلا يُتوقع منها أن تسافر براحة في مثل تلك الظروف. أنجز مهمته بهدوئه المعهود، وكان يجيب دائمًا عن اعتراضات رفيقته، التي أربكها صبره وكرمه، قائلًا:"
+    },
+    {
+      "index": 1,
+      "en": "“It is in the interest of my journey—a part of my programme.”",
+      "existingArabicDraft": "«إن ذلك من مصلحة رحلتي؛ إنه جزء من برنامجي»"
+    },
+    {
+      "index": 2,
+      "en": "The purchases made, they returned to the hotel, where they dined at a sumptuously served table-d’hôte; after which Aouda, shaking hands with her protector after the English fashion, retired to her room for rest. Mr. Fogg absorbed himself throughout the evening in the perusal of the Times and Illustrated London News.",
+      "existingArabicDraft": "بعد إتمام المشتريات، عادا إلى الفندق وتناولا عشاءً فاخرًا على مائدة مشتركة، ثم صافحت أودا حاميها على الطريقة الإنجليزية وانصرفت إلى غرفتها لترتاح. أما السيد فوغ فقضى المساء كله منكبًا على قراءة صحيفتي «التايمز» و«إيلوستريتد لندن نيوز»."
+    },
+    {
+      "index": 3,
+      "en": "Had he been capable of being astonished at anything, it would have been not to see his servant return at bedtime. But, knowing that the steamer was not to leave for Yokohama until the next morning, he did not disturb himself about the matter. When Passepartout did not appear the next morning to answer his master’s bell, Mr. Fogg, not betraying the least vexation, contented himself with taking his carpetbag, calling Aouda, and sending for a palanquin.",
+      "existingArabicDraft": "لو كان فوغ ممن يندهشون من الأمور، لربما أدهشه ألا يعود خادمه عند موعد النوم. لكنه كان يعلم أن السفينة لن تغادر إلى يوكوهاما قبل صباح اليوم التالي، فلم يقلق. وعندما لم يظهر باسبارتو صباحًا ليلبي جرس سيده، لم يُبدِ فوغ أدنى انزعاج؛ اكتفى بحمل حقيبته، ودعوة أودا، وطلب محفة."
+    },
+    {
+      "index": 4,
+      "en": "It was then eight o’clock; at half-past nine, it being then high tide, the Carnatic would leave the harbour. Mr. Fogg and Aouda got into the palanquin, their luggage being brought after on a wheelbarrow, and half an hour later stepped upon the quay whence they were to embark. Mr. Fogg then learned that the Carnatic had sailed the evening before. He had expected to find not only the steamer, but his domestic, and was forced to give up both; but no sign of disappointment appeared on his face, and he merely remarked to Aouda, “It is an accident, madam; nothing more.”",
+      "existingArabicDraft": "كانت الساعة الثامنة، وكان من المقرر أن تغادر «كارناتيك» الميناء في التاسعة والنصف مع المد العالي. ركب فوغ وأودا المحفة، وحُمِلت أمتعتهما على عربة يد، وبعد نصف ساعة وصلا إلى الرصيف الذي سيصعدان منه إلى السفينة. هناك علم فوغ أن «كارناتيك» أبحرت مساء اليوم السابق. كان يتوقع أن يجد السفينة وخادمه معًا، لكنه اضطر إلى التخلي عن كليهما؛ ومع ذلك لم يظهر خيبة أمل، بل قال لأودا: «إنه حادث يا سيدتي، لا أكثر»."
+    },
+    {
+      "index": 5,
+      "en": "At this moment a man who had been observing him attentively approached. It was Fix, who, bowing, addressed Mr. Fogg: “Were you not, like me, sir, a passenger by the Rangoon, which arrived yesterday?”",
+      "existingArabicDraft": "في تلك اللحظة اقترب رجل كان يراقبه باهتمام. كان فيكس، فحيّا السيد فوغ وقال: «ألم تكن، مثلي، من ركاب سفينة رانغون التي وصلت أمس؟»"
+    },
+    {
+      "index": 6,
+      "en": "“I was, sir,” replied Mr. Fogg coldly. “But I have not the honour—”",
+      "existingArabicDraft": "أجاب فوغ ببرود: «بلى يا سيدي، لكنني لا أتشرف...»"
+    },
+    {
+      "index": 7,
+      "en": "“Pardon me; I thought I should find your servant here.”",
+      "existingArabicDraft": "قال فيكس: «اعذرني؛ ظننت أنني سأجد خادمك هنا»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "بينما كانت هذه الأحداث تجري في بيت الأفيون، كان السيد فوغ، غير مدرك لخطر فوات السفينة عليه، يرافق أودا بهدوء في شوارع الحي الإنجليزي، ويشتري ما يلزم للرحلة الطويلة المقبلة. كان بوسع رجل إنجليزي مثل فوغ أن يطوف العالم بحقيبة صغيرة، أما السيدة فلا يُتوقع منها أن تسافر براحة في مثل تلك الظروف. أنجز مهمته بهدوئه المعهود، وكان يجيب دائمًا عن اعتراضات رفيقته، التي أربكها صبره وكرمه، قائلًا:"
+    },
+    {
+      "index": 1,
+      "ar": "«إن ذلك من مصلحة رحلتي؛ إنه جزء من برنامجي»."
+    },
+    {
+      "index": 2,
+      "ar": "بعد إتمام المشتريات، عادا إلى الفندق وتناولا عشاءً فاخرًا على مائدة مشتركة، ثم صافحت أودا حاميها على الطريقة الإنجليزية وانصرفت إلى غرفتها لترتاح. أما السيد فوغ فقضى المساء كله منكبًا على قراءة صحيفتي «التايمز» و«إيلوستريتد لندن نيوز»."
+    },
+    {
+      "index": 3,
+      "ar": "لو كان فوغ ممن يندهشون من الأمور، لربما أدهشه ألا يعود خادمه عند موعد النوم. لكنه كان يعلم أن السفينة لن تغادر إلى يوكوهاما قبل صباح اليوم التالي، فلم يقلق بشأن الأمر. وعندما لم يظهر باسبارتو صباح اليوم التالي ليلبي جرس سيده، لم يُبدِ فوغ أدنى انزعاج؛ اكتفى بحمل حقيبته، ودعوة أودا، وطلب محفة."
+    },
+    {
+      "index": 4,
+      "ar": "كانت الساعة آنذاك الثامنة؛ وفي التاسعة والنصف، تزامناً مع المد العالي، كان من المقرر أن تغادر سفينة كارناتيك الميناء. ركب فوغ وأودا المحفة، وحُمِلت أمتعتهما خلفهما على عربة يد، وبعد نصف ساعة صعدا على الرصيف الذي سيبحران منه. عندها علم السيد فوغ أن سفينة كارناتيك قد أبحرت في المساء السابق. كان يتوقع أن يجد ليس السفينة وحدها بل وخادمه أيضًا، فاضطر إلى التخلي عن كليهما؛ ومع ذلك لم تظهر أي علامة خيبة أمل على وجهه، واكتفى بأن قال لأودا: «إنه حادث يا سيدتي، لا أكثر»."
+    },
+    {
+      "index": 5,
+      "ar": "في تلك اللحظة اقترب رجل كان يراقبه باهتمام. كان ذلك فيكس، الذي انحنى مخاطباً السيد فوغ: «ألم تكن، مثلي يا سيدي، مسافراً على متن سفينة رانغون التي وصلت أمس؟»"
+    },
+    {
+      "index": 6,
+      "ar": "أجاب السيد فوغ ببرود: «كنت كذلك يا سيدي، ولكن ليس لي الشرف...»"
+    },
+    {
+      "index": 7,
+      "ar": "«عذراً؛ ظننت أنني سأجد خادمك هنا»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

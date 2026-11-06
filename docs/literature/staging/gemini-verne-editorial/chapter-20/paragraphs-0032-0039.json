@@ -1,0 +1,156 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 20,
+  "chapterTitle": "In which Fix comes face to face with Phileas Fogg.",
+  "startParagraphZeroBased": 32,
+  "paragraphCount": 8,
+  "sourceSha256": "cab014a0f57224e5818297d62279e43735214ada12d4f0f3fe361426cc5a8b6a",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 32,
+      "en": "“Very much so.”",
+      "existingArabicDraft": "«جاد تمامًا»."
+    },
+    {
+      "index": 33,
+      "en": "The pilot walked away a little distance, and gazed out to sea, evidently struggling between the anxiety to gain a large sum and the fear of venturing so far. Fix was in mortal suspense.",
+      "existingArabicDraft": "ابتعد قائد القارب قليلًا وحدّق في البحر، مترددًا بين رغبته في كسب مبلغ كبير وخوفه من خوض رحلة بعيدة كهذه. وكان فيكس في ترقّب يائس."
+    },
+    {
+      "index": 34,
+      "en": "Mr. Fogg turned to Aouda and asked her, “You would not be afraid, would you, madam?”",
+      "existingArabicDraft": "التفت فوغ إلى أودا وسألها: «لن تخافي، أليس كذلك يا سيدتي؟»"
+    },
+    {
+      "index": 35,
+      "en": "“Not with you, Mr. Fogg,” was her answer.",
+      "existingArabicDraft": "أجابته: «لن أخاف ما دمت معك يا سيد فوغ»."
+    },
+    {
+      "index": 36,
+      "en": "The pilot now returned, shuffling his hat in his hands.",
+      "existingArabicDraft": "عاد قائد القارب وهو يعبث بقبعته بين يديه."
+    },
+    {
+      "index": 37,
+      "en": "“Well, pilot?” said Mr. Fogg.",
+      "existingArabicDraft": "قال فوغ: «إذن يا قائد القارب؟»"
+    },
+    {
+      "index": 38,
+      "en": "“Well, your honour,” replied he, “I could not risk myself, my men, or my little boat of scarcely twenty tons on so long a voyage at this time of year. Besides, we could not reach Yokohama in time, for it is sixteen hundred and sixty miles from Hong Kong.”",
+      "existingArabicDraft": "أجاب الرجل: «لا أستطيع المخاطرة بنفسي أو برجالي أو بقاربي الصغير، الذي لا تزيد حمولته على عشرين طنًا، في رحلة طويلة كهذه في هذا الوقت من السنة. ثم إننا لن نصل إلى يوكوهاما في الموعد؛ فهي تبعد ألفًا وستمئة وستين ميلًا عن هونغ كونغ»."
+    },
+    {
+      "index": 39,
+      "en": "“Only sixteen hundred,” said Mr. Fogg.",
+      "existingArabicDraft": "قال فوغ: «ألف وستمئة فقط»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«حقًا بالتأكيد»."
+    },
+    {
+      "index": 1,
+      "ar": "ابتعد الملاح مسافة قصيرة وحدق في البحر، وبدو عليه جليًا التنازع بين حرصه على ربح مبلغ كبير والخوف من المجامرة بمثل هذه المسافة البعيدة. وكان فيكس يعيش في حالة من القلق الشديد."
+    },
+    {
+      "index": 2,
+      "ar": "التفت السيد فوغ نحو أودا وسألها: «ألن تخافي، يا سيدتي؟»"
+    },
+    {
+      "index": 3,
+      "ar": "فأجابت قائلة: «ليس معك يا سيد فوغ»."
+    },
+    {
+      "index": 4,
+      "ar": "وعندئذ عاد الملاح وهو يفرك قبعته بين يديه."
+    },
+    {
+      "index": 5,
+      "ar": "فسأله السيد فوغ: «إذن، أيها الملاح؟»"
+    },
+    {
+      "index": 6,
+      "ar": "فأجاب قائلًا: «يا سعادة الباشا، لا يمكنني المخاطرة بنفسي ولا برجالي ولا بقاربي الصغير الذي بالكاد يبلغ وزنه عشرين طنًا في مثل هذه الرحلة الطويلة في هذا الوقت من السنة. علاوة على ذلك، لن نتمكن من بلوغ يوكوهاما في الوقت المناسب، إذ إنها تبعد ألفًا وستمائة وستين ميلًا عن هونغ كونغ»."
+    },
+    {
+      "index": 7,
+      "ar": "فقال السيد فوغ: «ألف وستمائة ميل فقط»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": false,
+      "issues": "استخدام مصطلح 'الباشا' غير مناسب تاريخيا وجغرافيا في السياق البريطاني والهونغ كونغي لرواية جول فيرن."
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

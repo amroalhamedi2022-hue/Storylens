@@ -1,0 +1,156 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 20,
+  "chapterTitle": "In which Fix comes face to face with Phileas Fogg.",
+  "startParagraphZeroBased": 40,
+  "paragraphCount": 8,
+  "sourceSha256": "b3dd6508579c1d3cf356c2173d66c7f3e321b38a96fe83ed76d8a4333036f087",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 40,
+      "en": "“It’s the same thing.”",
+      "existingArabicDraft": "أجاب البحّار: «لا فرق في ذلك»."
+    },
+    {
+      "index": 41,
+      "en": "Fix breathed more freely.",
+      "existingArabicDraft": "تنفّس فيكس الصعداء."
+    },
+    {
+      "index": 42,
+      "en": "“But,” added the pilot, “it might be arranged another way.”",
+      "existingArabicDraft": "لكن قائد القارب أضاف: «قد نجد حلًا بطريقة أخرى»."
+    },
+    {
+      "index": 43,
+      "en": "Fix ceased to breathe at all.",
+      "existingArabicDraft": "كاد فيكس يتوقف عن التنفس تمامًا."
+    },
+    {
+      "index": 44,
+      "en": "“How?” asked Mr. Fogg.",
+      "existingArabicDraft": "سأل فوغ: «كيف؟»"
+    },
+    {
+      "index": 45,
+      "en": "“By going to Nagasaki, at the extreme south of Japan, or even to Shanghai, which is only eight hundred miles from here. In going to Shanghai we should not be forced to sail wide of the Chinese coast, which would be a great advantage, as the currents run northward, and would aid us.”",
+      "existingArabicDraft": "قال البحّار: «بالذهاب إلى ناغاساكي في أقصى جنوب اليابان، أو حتى إلى شنغهاي التي لا تبعد سوى ثمانمئة ميل من هنا. وإذا اتجهنا إلى شنغهاي فلن نضطر إلى الابتعاد كثيرًا عن الساحل الصيني، وهذا أفضل لأن التيارات تتجه شمالًا وستساعدنا»."
+    },
+    {
+      "index": 46,
+      "en": "“Pilot,” said Mr. Fogg, “I must take the American steamer at Yokohama, and not at Shanghai or Nagasaki.”",
+      "existingArabicDraft": "قال فوغ: «أيها القائد، يجب أن أستقل السفينة الأمريكية في يوكوهاما، لا في شنغهاي أو ناغاساكي»."
+    },
+    {
+      "index": 47,
+      "en": "“Why not?” returned the pilot. “The San Francisco steamer does not start from Yokohama. It puts in at Yokohama and Nagasaki, but it starts from Shanghai.”",
+      "existingArabicDraft": "ردّ البحّار: «لماذا؟ سفينة سان فرانسيسكو لا تبدأ رحلتها من يوكوهاما؛ إنها تتوقف في يوكوهاما وناغاساكي، لكنها تنطلق من شنغهاي»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«لا فرق في ذلك»."
+    },
+    {
+      "index": 1,
+      "ar": "تنفّس فيكس بصورة أعمق."
+    },
+    {
+      "index": 2,
+      "ar": "لكنّ القائد أضاف: «قد يكون بالإمكان ترتيب الأمر بطريقة أخرى»."
+    },
+    {
+      "index": 3,
+      "ar": "توقّف فيكس عن التنفّس كليّاً."
+    },
+    {
+      "index": 4,
+      "ar": "سأل السيد فوغ: «كيف؟»."
+    },
+    {
+      "index": 5,
+      "ar": "«بالتوجه إلى ناغاساكي، في أقصى جنوب اليابان، أو حتى إلى شنغهاي التي تبعد ثمانمئة ميل فقط من هنا. ولدى ذهابنا إلى شنغهاي لن نكون مضطرين للإبحار بعيداً عن الساحل الصيني، وستكون تلك ميزة كبيرة، إذ إن التيارات تتجه شمالاً وستساعدنا»."
+    },
+    {
+      "index": 6,
+      "ar": "قال السيد فوغ: «أيها القائد، يجب عليّ أن أستقل الباخرة الأمريكية في يوكوهاما، لا في شنغهاي ولا في ناغاساكي»."
+    },
+    {
+      "index": 7,
+      "ar": "ردّ القائد: «لم لا؟ إن باخرة سان فرانسيسكو لا تنطلق من يوكوهاما. إنها تتوقف في يوكوهاما وناغاساكي، لكن نقطة انطلاقها هي شنغهاي»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "الترجمة غير دقيقة، النص الأصلي يعني أن فيكس تنفّس بارتياح وليس بصورة أعمق"
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
