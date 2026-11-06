@@ -208,6 +208,51 @@ def staged_original_chapter_coverage(archive: Path) -> dict:
             "sourceHashAudit": "UPSTREAM_GIT_BLOB_SHA1_AND_EXACT_BYTES"}
 
 
+
+def moonstone_source_unit_coverage() -> dict:
+    """Audit the exact 53 Moonstone source narrative units, NOT 53 invented chapters."""
+    folder = STAGING / "the-moonstone"
+    manifest = jload(folder / "manifest.json")
+    index = jload(folder / "narrative-unit-index.json")
+    sources = manifest["sourceParts"]
+    narratives = [x for x in sources if x["kind"] == "narrative"]
+    structural = [x for x in sources if x["kind"] == "structural-heading"]
+    if (manifest.get("completeOriginalSource") is not True or
+        len(narratives) != manifest.get("narrativeParts") or
+        len(structural) != manifest.get("structuralParts") or
+        index.get("bookId") != manifest.get("id") or
+        index.get("normativeChapterCount") is not None or
+        index.get("releaseApproved") is not False or
+        index.get("sourceManifestPath") != str((folder / "manifest.json").relative_to(ROOT)) or
+        index.get("narrativeSourceUnitCount") != len(narratives) or
+        index.get("sourceStructuralHeadingCount") != len(structural)):
+        raise ValueError("Moonstone narrative-unit totals or release safeguards corrupted")
+    if (len(index.get("narrativeUnits", [])) != len(narratives) or
+        len(index.get("structuralHeadingUnits", [])) != len(structural)):
+        raise ValueError("Moonstone skipped a narrative passage or source heading")
+    by_kind = (("narrativeUnits", narratives), ("structuralHeadingUnits", structural))
+    for key, source_units in by_kind:
+        for i, (mapped, source) in enumerate(zip(index[key], source_units), 1):
+            name = source["file"]
+            if "/" in name or "\\" in name or name.startswith(".") or not name.endswith(".xhtml"):
+                raise ValueError("Unsafe Moonstone original unit path")
+            raw = (folder / name).read_bytes()
+            actual_sha = hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\x00" + raw).hexdigest()
+            if (len(raw) != source.get("bytes") or actual_sha != source.get("upstreamGitBlobSha") or
+                mapped.get("sourceFilePath") != str((folder / name).relative_to(ROOT)) or
+                mapped.get("sourceGitBlobSha") != actual_sha or
+                mapped.get("sourceByteCount") != len(raw)):
+                raise ValueError("Moonstone original source text or order mismatch: " + name)
+            if key == "narrativeUnits" and (mapped.get("narrativeUnitOneBased") != i or
+                                             mapped.get("primaryImage") is not None):
+                raise ValueError("Moonstone source unit falsely remapped as an approved image/chapter")
+    return {"narrativeSourceUnitsNotChapterCount": len(narratives),
+            "originalStructuralHeadingUnits": len(structural),
+            "narrativeUnitsWithoutMappedArt": len(narratives),
+            "sourceUnitIndex": str((folder / "narrative-unit-index.json").relative_to(ROOT)),
+            "sourceHashAudit": "UPSTREAM_GIT_BLOB_SHA1_AND_EXACT_BYTES"}
+
+
 def generate() -> dict:
     manifest = jload(HIST)
     if not manifest or len({x["file"] for x in manifest}) != len(manifest):
@@ -317,14 +362,15 @@ def generate() -> dict:
             seen_moonstone_sources.add(original)
             seen_moonstone_local_hashes.add(local_hash)
         moonstone_facsimile_scans = len(mo["images"])
+    moonstone_source = moonstone_source_unit_coverage()
     rows = [
         {"bookId": "around-the-world-in-eighty-days-towle",
          "title": "Around the World in Eighty Days", "sourceState": "37 source chapters plus Arabic draft",
          "chapterCount": 37, "archivedLocalHistoricArt": len(manifest) + len(additional) + commons_candidates,
          "unassignedHistoricalCommonsImageFiles": commons_candidates, **verne},
         {"bookId": "collins-the-moonstone-1868", "title": "The Moonstone",
-         "sourceState": "staged English; chapter segmentation/rights pending",
-         "chapterCount": None, "narrativeSourceUnitsNotChapterCount": 53,
+         "sourceState": "53 original XHTML narrative units SHA-pinned incl. prologue and epilogue; precise narrative hierarchy indexed, final chapter-card segmentation/rights pending",
+         "chapterCount": None, **moonstone_source,
          "unassignedHistorical1874FacsimileScans": moonstone_facsimile_scans,
          "localCandidateChapters": 0, "readyForUICards": 0,
          "missingImageChapters": None, "missingReadyChapters": None,
