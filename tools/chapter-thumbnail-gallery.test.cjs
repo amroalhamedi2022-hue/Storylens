@@ -60,7 +60,7 @@ function element(tag='div') {
  return node;
 }
 const tick=async()=>{await new Promise(resolve=>setImmediate(resolve));};
-function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null,renderMock=false,visitedIndex=null,registryArt=null,layoutPref='rail'}={}){
+function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null,renderMock=false,visitedIndex=null,registryArt=null,layoutPref='rail',withObserver=false}={}){
  const chapter=(n)=>({title:'Chapter '+n,titleAr:'الفصل '+n,paragraphs:[{en:'Original source.',ar:'ترجمة.'}]});
  const story={id:'example-story',title:'Example Story',titleAr:'قصة تجريبية',
   chapters:lazy?[]:Array.from({length:count},(_,i)=>chapter(i+1)),totalChapters:count,
@@ -88,8 +88,18 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
   createElement(tag){const x=element(tag);if(tag==='dialog')cards.push(x);return x;}};
  const history={state:{page:'library'},pushState(payload,_title,hash){this.state=payload;historyCalls.push({type:'push',payload,hash})},
   back(){historyCalls.push({type:'back'});this.state={page:'library'};}};
- const timerQueue=[],listeners={};
+ const timerQueue=[],listeners={},observers=[];
+ class FakeIntersectionObserver{
+  constructor(callback,options){
+   this.callback=callback;this.options=options;this.active=true;
+   this.node=null;observers.push(this);
+  }
+  observe(node){this.node=node;}
+  disconnect(){this.active=false;}
+  emit(isIntersecting){this.callback([{isIntersecting}]);}
+ }
  const W={LinguaCatalog:{stories:[story]},
+  ...(withObserver?{IntersectionObserver:FakeIntersectionObserver}:{}),
   LinguaChapterThumbnailRegistry:registryArt?{'example-story':{chapters:[{primaryImage:registryArt}]}}:{},
   history,addEventListener(n,cb){listeners[n]=cb;},
   setTimeout(cb){timerQueue.push(cb);return timerQueue.length;},
@@ -126,7 +136,7 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
   for(const listener of document.clickListeners)listener(event);
   return event;
  };
- return {W,api,story,document,bookCard,reader,hero,readerNav,sandbox,cards,historyCalls,baseOpens,writes,listeners,timerQueue,clickBook};
+ return {W,api,story,document,bookCard,reader,hero,readerNav,sandbox,cards,historyCalls,baseOpens,writes,listeners,timerQueue,observers,clickBook};
 }
 (async()=>{
  const s=scenario({artSrc:'data:image/svg+xml;charset=utf-8,%3Csvg%3E%3C%2Fsvg%3E'});
@@ -525,6 +535,47 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  disabledLocator.emit('click');
  assert.equal(firstOpen.cards[0].children[0].children[1].children.length,11,
   'locate for a new reader does not change chapter list');
+
+ // One intersection sentinel dynamically appends exactly 36 real chapter
+ // cards, with bounded memory and no timers/network. Older WebViews still
+ // retain the manual "Show more" fallback from the existing regression.
+ const auto=scenario({count:101,withObserver:true});
+ auto.clickBook();await tick();
+ const autoTrack=auto.cards[0].children[0].children[1];
+ assert.equal(autoTrack.children.length,37,'initial 36 plus sentinel with observer');
+ assert.equal(auto.observers.length,1,'only one observer, not one per card');
+ assert.equal(auto.observers[0].options.root,autoTrack);
+ assert.equal(auto.observers[0].node.className,'lt-chapter-gallery-more');
+ auto.observers[0].emit(false);
+ assert.equal(autoTrack.children.length,37,'non-intersecting sentinel must do nothing');
+ auto.observers[0].emit(true);
+ assert.equal(autoTrack.children.length,73,'intersection extends to chapter 72');
+ assert.equal(autoTrack.children[71].dataset.chapterIndex,'71');
+ assert.equal(auto.observers[0].active,false,'old sentinel observer must disconnect');
+ assert.equal(auto.observers.length,2,'new sentinel reuses single observer role');
+ auto.observers[1].emit(true);
+ assert.equal(autoTrack.children.length,101,'end of 101-chapter source, no invented chapters');
+ assert.equal(autoTrack.children[100].dataset.chapterIndex,'100');
+ assert.equal(auto.observers[1].active,false,'observer released at final chapter');
+ assert.equal(auto.observers.length,2,'no observer retained for absent sentinel');
+ assert.equal(auto.writes.length,0,'automatically showing more chapters never writes progress');
+ const filteredAuto=scenario({count:90,withObserver:true});
+ filteredAuto.clickBook();await tick();
+ const filteredSheet=filteredAuto.cards[0].children[0];
+ const filteredTrack=filteredSheet.children[1];
+ const filterOption=filteredSheet.children[0].children[0].children
+  .find(c=>c.className==='lt-chapter-gallery-tools').children[2].children[0];
+ assert.equal(filteredAuto.observers.length,1);
+ filterOption.value='illustrated';filterOption.emit('change');
+ assert.equal(filteredAuto.observers[0].active,false,'changing filters disconnects obsolete image-load sentinel');
+ filteredAuto.observers[0].emit(true);
+ assert.equal(filteredTrack.children.length,1,'stale sentinels cannot append old chapters');
+ filterOption.value='all';filterOption.emit('change');
+ assert.equal(filteredAuto.observers.length,2,'new valid filter gets exactly one new observer');
+ filteredAuto.api.close();
+ assert.equal(filteredAuto.observers[1].active,false,'closing gallery releases intersection observer');
+ filteredAuto.observers[1].emit(true);
+ assert.equal(filteredAuto.api.isOpen,false,'a late observer cannot re-open closed gallery');
 
  const noExtra=scenario({artSrc:'https://host.invalid/photo.jpg'});
  assert.equal(noExtra.api.chapterImage(noExtra.story,0),null,'remote sources never used as thumbnails');
