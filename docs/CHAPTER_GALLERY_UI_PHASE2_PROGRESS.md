@@ -1,3 +1,5 @@
+> 2026-11-07 VERIFIED MAINLINE: PR #52 merged as af7c15dd6c04c76e63c1d5c00fcf5a400565c3a7; older conflicting PR #40 safely closed. Genuine Chrome phone/tablet UI & screenshot checks SUCCESS: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42308601475 . 280 local chapter artwork candidates, ZERO territorial/editorial approvals, ZERO released thumbnails; Verne 12 candidate image chapters out of 37, zero approved. No signed APK, physical Android validation or paper-curl changes. Run python3 tools/report_chapter_gallery_ui_progress.py --report for fresh source counts.
+
 # Lingua Tales — CHG-02 Chapter Gallery UI Handoff
 Last verified: **2026-11-07**. Scope: **APP UI / images positioning / reading navigation / QA only**. The other conversation exclusively sources and translates novels and source artwork.
 
