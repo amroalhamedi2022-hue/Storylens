@@ -147,3 +147,40 @@ html[data-lt-reader-material] body.theme-meridian-epilogue .reader .lt-book-page
 html[data-lt-reader-material] body.theme-meridian-epilogue .reader .lt-book-page :is(.sentence,.inline-ar,.inline-en,p) {
  color:#f7f1e5!important;
 }
+
+/* Owner QA 2026-11-06: screenshots exposed low-contrast pale-cyan controls
+   against cream. Put navigation in the dark navy/gold book-chrome frame.
+   Touch areas, semantics and page switching logic are unchanged. */
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .lt-page-controls {
+ background:linear-gradient(140deg,#132d40,#091d2c 94%)!important;
+ border:1px solid #bd9c65!important;
+ color:#f7e9ce!important;
+ box-shadow:0 9px 21px rgba(6,18,31,.26),inset 0 1px 0 rgba(255,244,222,.18)!important;
+}
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .lt-page-controls button {
+ color:#fff1d2!important;
+ -webkit-text-fill-color:#fff1d2!important;
+ background:linear-gradient(140deg,rgba(255,247,224,.12),rgba(210,164,90,.08))!important;
+ border:1px solid rgba(231,192,125,.5)!important;
+ text-shadow:none!important;
+ box-shadow:none!important;
+ font-weight:700!important;
+}
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .lt-page-controls button:disabled {
+ color:#bbaf9c!important;
+ -webkit-text-fill-color:#bbaf9c!important;
+ opacity:.67!important;
+}
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .lt-page-controls :is(.lt-page-count,select,label) {
+ color:#f5e3c0!important;
+ -webkit-text-fill-color:#f5e3c0!important;
+ text-shadow:none!important;
+}
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .lt-page-controls select {
+ background:#253e4c!important;
+ border:1px solid #9e845d!important;
+ color-scheme:dark;
+}
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .lt-page-controls :is(button,select):focus-visible {
+ outline:3px solid #f4cd7e!important;outline-offset:2px!important;
+}
