@@ -57,7 +57,7 @@ function element(tag='div') {
  return node;
 }
 const tick=async()=>{await new Promise(resolve=>setImmediate(resolve));};
-function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null}={}){
+function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null,renderMock=false}={}){
  const chapter=(n)=>({title:'Chapter '+n,titleAr:'الفصل '+n,paragraphs:[{en:'Original source.',ar:'ترجمة.'}]});
  const story={id:'example-story',title:'Example Story',titleAr:'قصة تجريبية',
   chapters:lazy?[]:Array.from({length:count},(_,i)=>chapter(i+1)),totalChapters:count,
@@ -66,8 +66,20 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  const cards=[],historyCalls=[],baseOpens=[],writes=[];
  const bookCard=element('article');
  bookCard.getAttribute=name=>name==='onclick'?"openStory('example-story')":null;
+ const reader=element('article');
+ reader.className='reader';
+ const hero=element('div');
+ hero.className='reader-hero';
+ hero.style.backgroundImage='url("data:existing")';
+ reader.appendChild(hero);
+ const readerNav=element('nav');readerNav.className='lt-chapter-nav';
+ reader.appendChild(readerNav);
  const document={documentElement:{lang:en?'en':'ar'},body:element('body'),activeElement:element('button'),
   querySelectorAll(selector){return selector==='.library .card[onclick]'?[bookCard]:[]},
+  querySelector(selector){
+   return renderMock?(selector==='.reader'?reader:
+      selector==='.reader .lt-chapter-nav'?readerNav:null):null;
+  },
   clickListeners:[],
   addEventListener(type,fn,capture){if(type==='click'){assert.equal(capture,true);this.clickListeners.push(fn);}},
   createElement(tag){const x=element(tag);if(tag==='dialog')cards.push(x);return x;}};
@@ -77,6 +89,7 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  const W={LinguaCatalog:{stories:[story]},history,addEventListener(n,cb){listeners[n]=cb;},
   setTimeout(cb){timerQueue.push(cb);return timerQueue.length;},
   openStory(id){baseOpens.push(id);history.pushState({page:'reader'},'', '#read-'+id);},
+  ...(renderMock?{renderReader(){this.mockRenders=(this.mockRenders||0)+1;}}:{}),
   LinguaContentLoader:{ensureStory(id){assert.equal(id,story.id);story.lazyBook=false;
      story.chapters=[chapter(1),chapter(2),chapter(3)];return Promise.resolve()},
    ensureEditorialArt(){return Promise.resolve(true)}
@@ -103,7 +116,7 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
   for(const listener of document.clickListeners)listener(event);
   return event;
  };
- return {W,api,story,document,bookCard,cards,historyCalls,baseOpens,writes,listeners,timerQueue,clickBook};
+ return {W,api,story,document,bookCard,reader,hero,readerNav,sandbox,cards,historyCalls,baseOpens,writes,listeners,timerQueue,clickBook};
 }
 (async()=>{
  const s=scenario({artSrc:'data:image/svg+xml;charset=utf-8,%3Csvg%3E%3C%2Fsvg%3E'});
@@ -270,6 +283,41 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  assert.equal(untouched.api.isOpen,false,'cancel is safe');
  assert.equal(untouched.writes.length,0,'closing gallery never updates chapter progress');
 
+ // Approved locally packaged primary art must be visible INSIDE the book
+ // chapter, not just in the chooser; paper pagination must not be altered.
+ const chapterApproved={imagePath:'art/old-folio.webp',editoriallyApproved:true,
+  releaseApproved:true,distributionReviewApproved:true,rightsStatus:'APPROVED',
+  altAr:'لوحة أصلية ملوّنة من الفصل',altEn:'Original-colour chapter scene',
+  credit:'Historic archive'};
+ const inReader=scenario({renderMock:true,approved:chapterApproved});
+ inReader.sandbox.state.page='reader';
+ inReader.sandbox.state.story=inReader.story;
+ inReader.sandbox.state.chapter=0;
+ inReader.W.renderReader();
+ assert.equal(inReader.W.mockRenders,1,'original reader renders before decoration');
+ assert.equal(inReader.hero.children.length,1,'first approved image is placed inside source reader hero');
+ assert.equal(inReader.hero.children[0].className,'lt-approved-chapter-figure');
+ const approvedFigure=inReader.hero.children[0];
+ const approvedImage=approvedFigure.children[0];
+ assert.equal(approvedImage.tagName,'IMG');
+ assert.equal(approvedImage.src,'art/old-folio.webp');
+ assert.equal(approvedImage.alt,'لوحة أصلية ملوّنة من الفصل');
+ assert.equal(approvedFigure.children[1].textContent.includes('Historic archive'),true);
+ assert.equal(inReader.hero.style.backgroundImage,'none');
+ inReader.W.renderReader();
+ assert.equal(inReader.hero.children.length,1,'re-renders must NOT duplicate the primary chapter image');
+ assert.equal(inReader.readerNav.children.length,1,'only one illustrated-chapter button in reader nav');
+ approvedImage.emit('error');
+ assert.equal(approvedFigure.removed,true,'broken chapter image safely removed');
+ assert.equal(inReader.hero.style.backgroundImage,'url("data:existing")',
+   'failed local image restores original paper hero, never a blank chapter');
+ const deniedReader=scenario({renderMock:true,approved:{...chapterApproved,editoriallyApproved:false}});
+ deniedReader.sandbox.state.page='reader';
+ deniedReader.sandbox.state.story=deniedReader.story;
+ deniedReader.sandbox.state.chapter=0;
+ deniedReader.W.renderReader();
+ assert.equal(deniedReader.hero.children.length,0,
+  'stage-only picture NEVER reaches actual reader hero');
  // Native keyboard navigation advances in page direction, with no
  // activation or unexpected chapter progress writes.
  const keyRtl=scenario({count:85});
