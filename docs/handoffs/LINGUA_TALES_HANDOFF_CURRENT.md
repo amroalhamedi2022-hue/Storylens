@@ -1,3 +1,14 @@
+# 2026-11-07 — CHG-02 CHAPTER GALLERY UI — VERIFIED AND MERGED
+- **Actual merged feature:** original UI phase2 from PR #40 was already in main byte-for-byte (chapter search, RTL keyboard/Focus, 36-card batches, same-reader navigation, actual reader source-approved hero); old PR #40 **safely closed** rather than risk replacing other content changes.
+- **Remaining missing delivery merged** via conflict-free [PR #52](https://github.com/amroalhamedi2022-hue/Storylens/pull/52), squash commit `af7c15dd6c04c76e63c1d5c00fcf5a400565c3a7`. Source-only image intake and original page curl code NOT touched.
+- Real separate Node/Python/Chromium **PHONE 460×860 + TABLET 1280×840** source-image/reader acceptance all SUCCESS: https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42308601475 (screenshots archived under this run). Does not claim a manual phone or tablet test. Earlier full Android workflow failed only in unrelated Wen Glass optical gesture acceptance and is **not** falsely called green.
+- Stable progress script `python3 tools/report_chapter_gallery_ui_progress.py --report`. Latest machine-readable source-of-truth `docs/CHAPTER_GALLERY_PROGRESS_CURRENT.json`; new human report `docs/CHAPTER_GALLERY_UI_PHASE2_PROGRESS.md`.
+- Current audited content (**2026-11-07**): `280` chapter-scene local source-image **candidates**, `0` editorial/rights-cleared chapter cards, `0` images published in app-approved chapter registry. Verne `12` local candidates across `37` actual chapters; not `12` approved. Missing cards remain honestly numbered.
+- Packaging hard gates in `tools/package_approved_chapter_thumbnails.py`: SHA, real image signature, valid local path, source edition/licence, archival HTTPS host, duplicate prevention across all books, and no silently retained images once their rights approval is revoked. Existing local photos are copied into the app ONLY after explicit editorial/territory approval. No network access or image AI generation in this UI workstream.
+- **Remaining:** other chat completes picture sourcing/rights/scene mapping and bilingual text; this chat handles approved local placement and chapter UI; physical phone/Xiaomi Pad 5 QA; eventual unchanged-key signed APK update; coordinate separately with page-curl PR #19.
+- Preserve current `main` head; do not resurrect old PR40 or overwrite newly merged literature resources. Continue from actual latest commit and real CI, not static old count.
+---
+
 # 2026-11-05 — ORIGINAL CHAPTER ART DELIVERY: ACTUAL BINARIES, SOURCE VISION AND NO FAKE APPROVAL (LATEST)
 
 **Check HEAD, active PRs, exact-head Actions and `docs/literature/CHAPTER_ART_PROGRESS.json` FIRST; this timestamp is only an evidence snapshot.** No application UI/reader/DB/signing/liquid glass was modified. Do not treat image archives, facsimile pages, AI correspondence, or quoted text as an approved scene or territory rights clearance.
