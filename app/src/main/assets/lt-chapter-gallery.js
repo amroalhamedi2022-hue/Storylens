@@ -67,9 +67,14 @@ function chapterImage(story,index){
  if(!chapter)return null;
  const map=global.LinguaChapterThumbnailRegistry?.[story.id];
  const record=map?.chapters?.[index];
- const explicit=chapter.chapterThumbnail||story.chapterThumbnails?.[index]||record?.primaryImage;
- const direct=validatedArt(explicit);
- if(direct)return direct;
+ // SOURCE-VERIFIED packaged art gets priority, then in-app approved metadata.
+ // A rejected old candidate must never mask a later approved replacement.
+ for(const candidate of [
+  record?.primaryImage,chapter.chapterThumbnail,story.chapterThumbnails?.[index]
+ ]){
+  const direct=validatedArt(candidate);
+  if(direct)return direct;
+ }
  // Reuse already-approved in-prose art only if its original source and
  // exact passage check passed. Never borrow a picture from another chapter.
  const inline=Array.isArray(chapter.inlineArt)?chapter.inlineArt:[];
