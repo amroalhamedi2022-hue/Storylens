@@ -39,6 +39,18 @@ function element(tag='div') {
   addEventListener(type,callback){(this.listeners[type]??=[]).push(callback)},
   emit(type,event={}){for(const cb of this.listeners[type]||[])cb({target:this,preventDefault(){},...event});},
   focus(){this.focused=true;},
+  scrollIntoView(){this.scrolled=true;},
+  closest(selector){return selector==='.lt-chapter-tile'&&this.className.split(' ').includes('lt-chapter-tile')?this:null;},
+  querySelector(selector){return this.querySelectorAll(selector)[0]||null;},
+  querySelectorAll(selector){
+   const css=selector.replace(/^\./,'');
+   const nodes=[];const visit=parent=>{
+    for(const child of parent.children){
+     if(child.className?.split(' ').includes(css))nodes.push(child);
+     visit(child);
+    }
+   };visit(this);return nodes;
+  },
   showModal(){this.open=true;},
   close(){this.open=false;},
  };
@@ -52,7 +64,10 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
   lazyBook:lazy,chapterThumbnails:approved?[approved,null,null]:undefined};
  const fakeArt=artSrc?{'example-story_0':artSrc}:{};
  const cards=[],historyCalls=[],baseOpens=[],writes=[];
+ const bookCard=element('article');
+ bookCard.getAttribute=name=>name==='onclick'?"openStory('example-story')":null;
  const document={documentElement:{lang:en?'en':'ar'},body:element('body'),activeElement:element('button'),
+  querySelectorAll(selector){return selector==='.library .card[onclick]'?[bookCard]:[]},
   clickListeners:[],
   addEventListener(type,fn,capture){if(type==='click'){assert.equal(capture,true);this.clickListeners.push(fn);}},
   createElement(tag){const x=element(tag);if(tag==='dialog')cards.push(x);return x;}};
@@ -88,11 +103,16 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
   for(const listener of document.clickListeners)listener(event);
   return event;
  };
- return {W,api,story,document,cards,historyCalls,baseOpens,writes,listeners,timerQueue,clickBook};
+ return {W,api,story,document,bookCard,cards,historyCalls,baseOpens,writes,listeners,timerQueue,clickBook};
 }
 (async()=>{
  const s=scenario({artSrc:'data:image/svg+xml;charset=utf-8,%3Csvg%3E%3C%2Fsvg%3E'});
  assert.equal(s.api.hasChapters(s.story),true);
+ assert.equal(s.bookCard.children.length,1,'all chaptered cards get one real keyboard-access button');
+ assert.equal(s.bookCard.children[0].tagName,'BUTTON');
+ assert.equal(s.bookCard.children[0].className,'lt-chapter-card-access');
+ assert.match(s.bookCard.children[0].attrs['aria-label'],/فصول/);
+
  const activated=s.clickBook();
  assert.equal(activated.prevented,true);
  assert.equal(activated.stopped,true);
@@ -250,6 +270,25 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  assert.equal(untouched.api.isOpen,false,'cancel is safe');
  assert.equal(untouched.writes.length,0,'closing gallery never updates chapter progress');
 
+ // Native keyboard navigation advances in page direction, with no
+ // activation or unexpected chapter progress writes.
+ const keyRtl=scenario({count:85});
+ keyRtl.clickBook();await tick();
+ const rtrack=keyRtl.cards[0].children[0].children[1];
+ rtrack.emit('keydown',{key:'ArrowLeft',target:rtrack.children[0]});
+ assert.equal(rtrack.children[1].focused,true,'RTL ArrowLeft moves to next chronological chapter');
+ assert.equal(keyRtl.writes.length,0);
+ rtrack.emit('keydown',{key:'End',target:rtrack.children[0]});
+ assert.equal(rtrack.children[35].focused,true,'End focuses last mounted chapter');
+ assert.equal(rtrack.children.length,37,'End must not eagerly mount 85 chapter card DOM nodes');
+ rtrack.emit('keydown',{key:'ArrowLeft',target:rtrack.children[35]});
+ assert.equal(rtrack.children[36].focused,true,'keyboard advances through next batch');
+ assert.equal(rtrack.children.length,73);
+ const keyLtr=scenario({count:42,en:true});
+ keyLtr.clickBook();await tick();
+ const ltrack=keyLtr.cards[0].children[0].children[1];
+ ltrack.emit('keydown',{key:'ArrowRight',target:ltrack.children[0]});
+ assert.equal(ltrack.children[1].focused,true,'LTR ArrowRight advances to next chapter');
  const noExtra=scenario({artSrc:'https://host.invalid/photo.jpg'});
  assert.equal(noExtra.api.chapterImage(noExtra.story,0),null,'remote sources never used as thumbnails');
  console.log('PASS: offline RTL/LTR chapter gallery, genuine art approval, 85-chapter lazy batches/title+number search, resume, and no progress mutations while browsing');
