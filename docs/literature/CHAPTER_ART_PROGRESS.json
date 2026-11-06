@@ -6,8 +6,8 @@
   "counts": {
     "localCandidateChapterCards": 280,
     "readyChapterCards": 0,
-    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1177,
-    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1177
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1188,
+    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1188
   },
   "books": [
     {
@@ -75,8 +75,8 @@
       "imageMap": "docs/literature/staging/the-war-of-the-worlds/chapter-image-map.json",
       "sourceHashAudit": "UPSTREAM_GIT_BLOB_SHA1_AND_ACTUAL_XHTML_TITLES",
       "sourceStructuralUnits": 4,
-      "unassignedHistoricalCorreaImageFiles": 126,
-      "archivedLocalHistoricArt": 126
+      "unassignedHistoricalCorreaImageFiles": 137,
+      "archivedLocalHistoricArt": 137
     },
     {
       "bookId": "treasure-island",
