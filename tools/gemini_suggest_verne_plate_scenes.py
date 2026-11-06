@@ -255,6 +255,31 @@ def visual_crosscheck(key: str, models: list[str], chapters: list[dict],
     return "SECOND_MODEL_SUPPORTED_NONPUBLISHABLE" if passed else "SECOND_MODEL_REJECTED_OR_UNCERTAIN"
 
 
+def supported_exact_source_selection(suggestion: dict, rows: list[dict]) -> dict | None:
+    """Reject a model-supplied bad quote without crashing other image reviews.
+
+    The quote must be a long, contiguous substring of the ACTUAL submitted
+    original passage and use its exact chapter and paragraph coordinates.
+    AI confidence never replaces proof, editorial approval, or visual review.
+    """
+    if suggestion.get("imageSceneMatchesSource") is not True:
+        return None
+    n, idx = suggestion.get("chapterOneBased"), suggestion.get("paragraphIndexZeroBased")
+    quote = suggestion.get("exactSourceQuotation")
+    confidence = suggestion.get("confidence")
+    if (type(n) is not int or type(idx) is not int
+            or not isinstance(quote, str) or len(normalized(quote)) < 12
+            or type(confidence) not in (int, float) or not 0 <= confidence <= 1):
+        return None
+    aligned = next((row for row in rows if
+                    row["chapterOneBased"] == n and
+                    row["paragraphIndexZeroBased"] == idx), None)
+    if aligned is None or normalized(quote) not in aligned["englishSource"]:
+        return None
+    return {"chapterOneBased": n, "paragraphIndexZeroBased": idx,
+            "exactSourceQuotation": normalized(quote)}
+
+
 def make_review(key: str, models: list[str], chapters: list[dict], corpus_sha: str, image: dict) -> str:
     path = record_file(image)
     imgpath = GALLERY / image["localPath"]
@@ -332,31 +357,32 @@ def make_review(key: str, models: list[str], chapters: list[dict], corpus_sha: s
         }, ensure_ascii=False)}],
         MATCH_SCHEMA, "scene-source-evidence",
     )
-    accepted = suggestion["imageSceneMatchesSource"] is True
+    supported = supported_exact_source_selection(suggestion, source_rows)
     choice = None
-    if accepted:
-        n = suggestion["chapterOneBased"]
-        idx = suggestion["paragraphIndexZeroBased"]
-        quote = normalized(suggestion["exactSourceQuotation"])
-        located = next((r for r in source_rows if r["chapterOneBased"] == n
-                        and r["paragraphIndexZeroBased"] == idx), None)
-        if (located is None or len(quote) < 12 or
-            quote not in located["englishSource"] or
-            type(suggestion["confidence"]) not in (int, float) or
-            not 0 <= suggestion["confidence"] <= 1):
-            raise ValueError("Gemini match lacks a verified exact original excerpt; no candidate saved")
+    if supported is not None:
         choice = {
-            "chapterOneBased": n,
-            "paragraphIndexZeroBased": idx,
-            "exactSourceQuotation": quote,
+            **supported,
             "confidenceModelEstimateNotVerified": suggestion["confidence"],
             "modelRationaleNotVerified": suggestion["rationale"],
             "suggestedAltArNotApproved": suggestion["suggestedAltAr"],
             "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING",
         }
+    elif suggestion.get("imageSceneMatchesSource") is True:
+        # A wrong quotation is a rejected image-scene suggestion, NOT a fatal
+        # condition. Checkpoint the rejection so this one plate cannot trap
+        # scheduled runs in an infinite repeat loop.
+        rec["modelOriginalQuotationRejected"] = True
+        rec["modelOriginalQuotationRejectReason"] = (
+            "Model chapter/paragraph/quotation not verifiable verbatim "
+            "against pinned original candidate excerpt"
+        )
     rec["status"] = "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED"
     rec["suggestedMatch"] = choice
-    rec["evidenceStatus"] = "EXACT_ORIGINAL_PARAGRAPH_QUOTE_VERIFIED" if choice else "NO_STRONG_SOURCE_MATCH"
+    rec["evidenceStatus"] = (
+        "EXACT_ORIGINAL_PARAGRAPH_QUOTE_VERIFIED" if choice
+        else ("INVALID_MODEL_SOURCE_QUOTE_REJECTED_NONPUBLISHABLE"
+              if rec.get("modelOriginalQuotationRejected") else "NO_STRONG_SOURCE_MATCH")
+    )
     rec["sourceSelectionModel"] = model
     atomic_store(path, rec)
     return visual_crosscheck(key, models, chapters, raw, rec, path)
