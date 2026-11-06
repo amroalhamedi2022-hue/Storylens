@@ -1,0 +1,76 @@
+name: Lingua Tales - acquire 1887 original Friston A Study in Scarlet engravings
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/intake_study_scarlet_friston_1887.py'
+      - '.github/workflows/study-scarlet-friston-1887-intake.yml'
+  schedule:
+    - cron: '29 4,12,20 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: lingua-scarlet-friston-original-1887-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  preserve-original-historic-sherlock-plates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install archive source and image validation dependencies
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0
+      - name: Verify exact original 1887 filename and rights quarantine contract offline
+        run: python tools/test_study_scarlet_friston_intake.py
+      - name: Acquire up to four actual original illustrated-edition Friston images and SHA256 metadata
+        run: python tools/intake_study_scarlet_friston_1887.py --max-new 4
+      - name: Preserve only actual original artwork and attributable source records
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -d docs/literature/staging/study-in-scarlet-friston-1887-period-plates ]; then
+            git add -f docs/literature/staging/study-in-scarlet-friston-1887-period-plates/
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No genuinely new Friston source; no empty commit."
+          else
+            git commit -m "Literature: archive authenticated original 1887 Friston plates"
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 3
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Authentic original images could not be pushed after retries"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = "main" ]; then
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
+          fi
+      - name: Upload historic evidence files if Commons API or GitHub push fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scarlet-1887-original-friston-art-needs-human-chapter-and-rights-review
+          path: docs/literature/staging/study-in-scarlet-friston-1887-period-plates/
+          if-no-files-found: ignore
+          retention-days: 30
