@@ -248,3 +248,71 @@ dialog.lt-chapter-gallery::backdrop{
  .lt-chapter-tile:hover,.lt-chapter-tile:active{transform:none!important}
  .lt-chapter-gallery-track{scroll-behavior:auto!important}
 }
+
+
+/* CHG-02 — search the whole ORIGINAL ordered chapter index without mounting
+   hundreds of illustrated cards. The source artwork itself is not altered. */
+.lt-chapter-gallery-tools{
+ display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;
+ margin-block-start:14px;
+}
+.lt-chapter-gallery-search-label{
+ display:flex;flex:1 1 170px;min-width:0;flex-direction:column;gap:5px;
+ color:#5d4e3d;font:600 12px/1.3 system-ui,sans-serif;
+}
+.lt-chapter-gallery-search{
+ display:block;width:100%;min-width:0;min-height:44px;
+ border:1px solid rgba(91,77,59,.34);border-radius:12px;
+ background:#fffdf7;color:#2d3540;padding:10px 12px;
+ font:500 15px/1.35 system-ui,sans-serif;
+ direction:inherit;
+}
+.lt-chapter-gallery-search::placeholder{color:#7c6f61;opacity:1}
+.lt-chapter-gallery-continue,.lt-chapter-gallery-more{
+ min-height:44px;border-radius:12px;border:1px solid #416471;
+ background:#244e60;color:#fff;padding:10px 14px;
+ font:600 13px/1.45 system-ui,sans-serif;cursor:pointer;
+}
+.lt-chapter-gallery-continue:disabled{
+ opacity:.55;cursor:default;
+}
+.lt-chapter-gallery-results{
+ display:block;margin-block-start:8px;color:#746754;
+ font:500 12px/1.5 system-ui,sans-serif;
+}
+.lt-chapter-gallery-more{
+ align-self:stretch;flex:0 0 160px;
+ display:grid;place-items:center;text-align:center;
+ margin-block-start:2px;
+ background:rgba(255,255,255,.75);color:#244e60;
+ box-shadow:0 8px 25px rgba(42,33,21,.07);
+}
+.lt-chapter-gallery-empty{
+ flex:1 1 auto;min-width:190px;align-self:center;
+ text-align:center;color:#6b5d4c;
+ padding:35px 15px;font:500 15px/1.8 system-ui,sans-serif;
+}
+.lt-chapter-gallery-more:focus-visible,
+.lt-chapter-gallery-search:focus-visible,
+.lt-chapter-gallery-continue:focus-visible{
+ outline:3px solid #246c92;outline-offset:3px;
+}
+@media(max-width:650px){
+ .lt-chapter-gallery-header{position:relative;padding-inline-end:105px;}
+ .lt-chapter-gallery-copy{max-width:100%}
+ .lt-chapter-gallery-close{
+  position:absolute;top:16px;inset-inline-end:14px;
+  min-width:76px;padding-inline:9px;
+ }
+ .lt-chapter-gallery-tools{gap:8px}
+ .lt-chapter-gallery-search-label{flex:1 1 100%}
+ .lt-chapter-gallery-continue{width:100%}
+ .lt-chapter-gallery-more{flex-basis:155px}
+}
+@media(orientation:landscape) and (max-height:580px){
+ .lt-chapter-gallery-tools{margin-block-start:6px;flex-wrap:nowrap}
+ .lt-chapter-gallery-search-label{min-width:120px;flex:1 1 auto}
+ .lt-chapter-gallery-search,.lt-chapter-gallery-continue{min-height:38px;padding:7px 9px}
+ .lt-chapter-gallery-results{margin-block-start:3px}
+ .lt-chapter-gallery-more{min-height:140px}
+}
