@@ -1,0 +1,19 @@
+name: Literature - 51 verified original Dracula and Frankenstein chapters + Nights source integrity
+on:
+  pull_request:
+    paths:
+      - 'docs/literature/staging/dracula/chapter-image-map.json'
+      - 'docs/literature/staging/frankenstein/chapter-image-map.json'
+      - 'tools/test_dracula_frankenstein_nights_sources.py'
+      - '.github/workflows/dracula-frankenstein-original-source-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check all 51 byte-pinned original chapters, preserved framing text, ten full Nights volumes and 4 separate Arabic sources
+        run: python3 tools/test_dracula_frankenstein_nights_sources.py
