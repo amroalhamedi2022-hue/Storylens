@@ -1,0 +1,155 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 19,
+  "chapterTitle": "In which Passepartout takes a too great interest in his master, and what comes of it.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "b19b5190d2f64f3e0259f8b76be62e3693492e92d7a90f832ce41e1153d675c5",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "“Stay! What I have to say concerns your master.”",
+      "existingArabicDraft": "قال فيكس: «تمهّل! ما أريد قوله يتعلق بسيدك»"
+    },
+    {
+      "index": 17,
+      "en": "Passepartout, at this, looked attentively at his companion. Fix’s face seemed to have a singular expression. He resumed his seat.",
+      "existingArabicDraft": "نظر باسبارتو عندئذ إلى رفيقه باهتمام. فقد كان على وجه فيكس تعبير غريب، فعاد وجلس."
+    },
+    {
+      "index": 18,
+      "en": "“What is it that you have to say?”",
+      "existingArabicDraft": "«ما الذي تريد أن تقوله؟»"
+    },
+    {
+      "index": 19,
+      "en": "Fix placed his hand upon Passepartout’s arm, and, lowering his voice, said, “You have guessed who I am?”",
+      "existingArabicDraft": "وضع فيكس يده على ذراع باسبارتو، وخفّض صوته قائلًا: «هل خمنت من أكون؟»"
+    },
+    {
+      "index": 20,
+      "en": "“Parbleu!” said Passepartout, smiling.",
+      "existingArabicDraft": "ابتسم باسبارتو وقال: «بالطبع!»"
+    },
+    {
+      "index": 21,
+      "en": "“Then I’m going to tell you everything—”",
+      "existingArabicDraft": "قال فيكس: «إذًا سأخبرك بكل شيء—»"
+    },
+    {
+      "index": 22,
+      "en": "“Now that I know everything, my friend! Ah! that’s very good. But go on, go on. First, though, let me tell you that those gentlemen have put themselves to a useless expense.”",
+      "existingArabicDraft": "قاطعه باسبارتو: «ما دمت أعرف كل شيء يا صديقي! هذا جيد جدًا. لكن تابع، تابع. وقبل ذلك دعني أخبرك أن أولئك السادة أنفقوا مالهم عبثًا»"
+    },
+    {
+      "index": 23,
+      "en": "“Useless!” said Fix. “You speak confidently. It’s clear that you don’t know how large the sum is.”",
+      "existingArabicDraft": "قال فيكس: «عبثًا! تتكلم بثقة، ويبدو أنك لا تعرف مقدار المبلغ»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«تمهّل! ما أريد قوله يتعلق بسيدك»"
+    },
+    {
+      "index": 1,
+      "ar": "نظر باسبارتو عندئذ إلى رفيقه باهتمام. فقد كان على وجه فيكس تعبير غريب، فعاد وجلس."
+    },
+    {
+      "index": 2,
+      "ar": "«ما الذي تريد أن تقوله؟»"
+    },
+    {
+      "index": 3,
+      "ar": "وضع فيكس يده على ذراع باسبارتو، وخفّض صوته قائلًا: «هل خمنت من أكون؟»"
+    },
+    {
+      "index": 4,
+      "ar": "«باربلو!» قال باسبارتو مبتسمًا."
+    },
+    {
+      "index": 5,
+      "ar": "«إذًا سأخبرك بكل شيء—»"
+    },
+    {
+      "index": 6,
+      "ar": "«الآن بعد أن عرفت كل شيء يا صديقي! آه! هذا جيد جدًا. لكن تابع، تابع. وقبل ذلك دعني أخبرك أن أولئك السادة قد تكبدوا نفقة بلا فائدة»"
+    },
+    {
+      "index": 7,
+      "ar": "قال فيكس: «بلا فائدة! إنك تتكلم بثقة. ومن الواضح أنك لا تعرف كم هو كبير ذلك المبلغ»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

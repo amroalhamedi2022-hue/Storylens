@@ -1,0 +1,155 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 19,
+  "chapterTitle": "In which Passepartout takes a too great interest in his master, and what comes of it.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "c41babab4c82b8891732c9f0be7c43c46e13da11fa859076e32b7dc249fc84e6",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "Hong Kong is an island which came into the possession of the English by the Treaty of Nankin, after the war of 1842; and the colonising genius of the English has created upon it an important city and an excellent port. The island is situated at the mouth of the Canton River, and is separated by about sixty miles from the Portuguese town of Macao, on the opposite coast. Hong Kong has beaten Macao in the struggle for the Chinese trade, and now the greater part of the transportation of Chinese goods finds its depot at the former place. Docks, hospitals, wharves, a Gothic cathedral, a government house, macadamised streets, give to Hong Kong the appearance of a town in Kent or Surrey transferred by some strange magic to the antipodes.",
+      "existingArabicDraft": "هونغ كونغ جزيرة آلت إلى الإنجليز بموجب معاهدة نانكين بعد حرب عام 1842؛ وقد حوّلت مهارتهم الاستعمارية الجزيرة إلى مدينة مهمة وميناء ممتاز. تقع عند مصب نهر كانتون، وتبعد نحو ستين ميلًا عن مدينة ماكاو البرتغالية على الساحل المقابل. تفوقت هونغ كونغ على ماكاو في التنافس على التجارة الصينية، وأصبحت معظم البضائع الصينية المنقولة تجد مستودعها هناك. وكانت الأرصفة والمستشفيات والمرافئ والكاتدرائية القوطية ومقر الحكومة والشوارع المرصوفة تجعلها تبدو كمدينة من مقاطعتي كِنت أو سَري نُقلت بسحر غريب إلى الطرف الآخر من العالم."
+    },
+    {
+      "index": 1,
+      "en": "Passepartout wandered, with his hands in his pockets, towards the Victoria port, gazing as he went at the curious palanquins and other modes of conveyance, and the groups of Chinese, Japanese, and Europeans who passed to and fro in the streets. Hong Kong seemed to him not unlike Bombay, Calcutta, and Singapore, since, like them, it betrayed everywhere the evidence of English supremacy. At the Victoria port he found a confused mass of ships of all nations: English, French, American, and Dutch, men-of-war and trading vessels, Japanese and Chinese junks, sempas, tankas, and flower-boats, which formed so many floating parterres. Passepartout noticed in the crowd a number of the natives who seemed very old and were dressed in yellow. On going into a barber’s to get shaved he learned that these ancient men were all at least eighty years old, at which age they are permitted to wear yellow, which is the Imperial colour. Passepartout, without exactly knowing why, thought this very funny.",
+      "existingArabicDraft": "راح باسبارتو يتجول ويداه في جيبيه باتجاه ميناء فيكتوريا، يتأمل المحامل الغريبة ووسائل النقل الأخرى، ومجموعات الصينيين واليابانيين والأوروبيين الذين يتحركون في الشوارع. بدت له هونغ كونغ شبيهة ببومباي وكلكتا وسنغافورة؛ إذ كانت، مثلها، تكشف في كل مكان عن مظاهر الهيمنة الإنجليزية. وفي ميناء فيكتوريا رأى خليطًا مزدحمًا من سفن شتى الأمم: إنجليزية وفرنسية وأمريكية وهولندية، وسفنًا حربية وتجارية، وقوارب صينية ويابانية تقليدية، وقوارب صغيرة وقوارب مزينة كأنها أحواض زهور عائمة. ولاحظ بين الحشد عددًا من السكان بدوا شديدي الكِبر في السن ويرتدون الأصفر. وحين دخل حلاقًا ليحلق ذقنه، علم أن هؤلاء الرجال تجاوزوا الثمانين، وهو العمر الذي يُسمح لهم عنده بارتداء الأصفر، لون الإمبراطور. ولم يعرف باسبارتو السبب تمامًا، لكنه وجد الأمر طريفًا للغاية."
+    },
+    {
+      "index": 2,
+      "en": "On reaching the quay where they were to embark on the Carnatic, he was not astonished to find Fix walking up and down. The detective seemed very much disturbed and disappointed.",
+      "existingArabicDraft": "حين وصل إلى الرصيف الذي سيصعدون منه إلى باخرة كارناتيك، لم يدهشه أن يجد فيكس يتمشى ذهابًا وإيابًا. فقد بدا المحقق مضطربًا وخائب الأمل بشدة."
+    },
+    {
+      "index": 3,
+      "en": "“This is bad,” muttered Passepartout, “for the gentlemen of the Reform Club!” He accosted Fix with a merry smile, as if he had not perceived that gentleman’s chagrin. The detective had, indeed, good reasons to inveigh against the bad luck which pursued him. The warrant had not come! It was certainly on the way, but as certainly it could not now reach Hong Kong for several days; and, this being the last English territory on Mr. Fogg’s route, the robber would escape, unless he could manage to detain him.",
+      "existingArabicDraft": "تمتم باسبارتو: «هذا سيئ بالنسبة إلى سادة نادي الإصلاح!» ثم اقترب من فيكس بابتسامة مرحة، كأنه لم يلحظ ضيقه. وكان لدى المحقق بالفعل أسباب كثيرة للتذمر من سوء الحظ الذي يلاحقه. لم يصل أمر القبض! كان في الطريق، لكنه لن يبلغ هونغ كونغ قبل عدة أيام على الأرجح؛ وبما أن هذه آخر أرض إنجليزية على مسار السيد فوغ، فسيفلت الرجل الذي يشتبه في سرقته ما لم يتمكن فيكس من احتجازه."
+    },
+    {
+      "index": 4,
+      "en": "“Well, Monsieur Fix,” said Passepartout, “have you decided to go with us so far as America?”",
+      "existingArabicDraft": "قال باسبارتو: «إذًا يا سيد فيكس، هل قررت أن تسافر معنا حتى أمريكا؟»"
+    },
+    {
+      "index": 5,
+      "en": "“Yes,” returned Fix, through his set teeth.",
+      "existingArabicDraft": "أجاب فيكس من بين أسنانه المطبقة: «نعم»؛"
+    },
+    {
+      "index": 6,
+      "en": "“Good!” exclaimed Passepartout, laughing heartily. “I knew you could not persuade yourself to separate from us. Come and engage your berth.”",
+      "existingArabicDraft": "هتف باسبارتو ضاحكًا: «رائع! كنت أعرف أنك لن تطيق فراقنا. تعال واحجز مقصورتك»"
+    },
+    {
+      "index": 7,
+      "en": "They entered the steamer office and secured cabins for four persons. The clerk, as he gave them the tickets, informed them that, the repairs on the Carnatic having been completed, the steamer would leave that very evening, and not next morning, as had been announced.",
+      "existingArabicDraft": "دخلا مكتب الباخرة وحجزا مقصورات لأربعة أشخاص. وأخبرهما الموظف، وهو يسلمهما التذاكر، أن إصلاحات كارناتيك قد اكتملت، وأن الباخرة ستغادر في تلك الأمسية نفسها، لا في صباح اليوم التالي كما أُعلن من قبل."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "هونغ كونغ جزيرة آلت إلى الإنجليز بموجب معاهدة نانكين بعد حرب عام 1842؛ وقد حوّلت مهارتهم الاستعمارية الجزيرة إلى مدينة مهمة وميناء ممتاز. تقع عند مصب نهر كانتون، وتبعد نحو ستين ميلًا عن مدينة ماكاو البرتغالية على الساحل المقابل. تفوقت هونغ كونغ على ماكاو في التنافس على التجارة الصينية، وأصبحت معظم البضائع الصينية المنقولة تجد مستودعها هناك. وكانت الأرصفة والمستشفيات والمرافئ والكاتدرائية القوطية ومقر الحكومة والشوارع المرصوفة تجعلها تبدو كمدينة من مقاطعتي كِنت أو سَري نُقلت بسحر غريب إلى الطرف الآخر من العالم."
+    },
+    {
+      "index": 1,
+      "ar": "راح باسبارتو يتجول ويداه في جيبيه باتجاه ميناء فيكتوريا، يتأمل المحامل الغريبة ووسائل النقل الأخرى، ومجموعات الصينيين واليابانيين والأوروبيين الذين يتحركون في الشوارع. بدت له هونغ كونغ شبيهة ببومباي وكلكتا وسنغافورة؛ إذ كانت، مثلها، تكشف في كل مكان عن مظاهر الهيمنة الإنجليزية. وفي ميناء فيكتوريا رأى خليطًا مزدحمًا من سفن شتى الأمم: إنجليزية وفرنسية وأمريكية وهولندية، وسفنًا حربية وتجارية، وقوارب صينية ويابانية تقليدية، وقوارب صغيرة وقوارب مزينة كأنها أحواض زهور عائمة. ولاحظ بين الحشد عددًا من السكان بدوا شديدي الكِبر في السن ويرتدون الأصفر. وحين دخل حلاقًا ليحلق ذقنه، علم أن هؤلاء الرجال تجاوزوا الثمانين، وهو العمر الذي يُسمح لهم عنده بارتداء الأصفر، لون الإمبراطور. ولم يعرف باسبارتو السبب تمامًا، لكنه وجد الأمر طريفًا للغاية."
+    },
+    {
+      "index": 2,
+      "ar": "حين وصل إلى الرصيف الذي سيصعدون منه إلى باخرة كارناتيك، لم يدهشه أن يجد فيكس يتمشى ذهابًا وإيابًا. فقد بدا المحقق مضطربًا وخائب الأمل بشدة."
+    },
+    {
+      "index": 3,
+      "ar": "تمتم باسبارتو: «هذا سيئ بالنسبة إلى سادة نادي الإصلاح!» ثم اقترب من فيكس بابتسامة مرحة، كأنه لم يلحظ ضيقه. وكان لدى المحقق بالفعل أسباب كثيرة للتذمر من سوء الحظ الذي يلاحقه. لم يصل أمر القبض! كان في الطريق، لكنه لن يبلغ هونغ كونغ قبل عدة أيام على الأرجح؛ وبما أن هذه آخر أرض إنجليزية على مسار السيد فوغ، فسيفلت الرجل الذي يشتبه في سرقته ما لم يتمكن فيكس من احتجازه."
+    },
+    {
+      "index": 4,
+      "ar": "قال باسبارتو: «إذًا يا سيد فيكس، هل قررت أن تسافر معنا حتى أمريكا؟»"
+    },
+    {
+      "index": 5,
+      "ar": "أجاب فيكس من بين أسنانه المطبقة: «نعم»."
+    },
+    {
+      "index": 6,
+      "ar": "هتف باسبارتو ضاحكًا: «رائع! كنت أعرف أنك لن تطيق فراقنا. تعال واحجز مقصورتك»."
+    },
+    {
+      "index": 7,
+      "ar": "دخلا مكتب الباخرة وحجزا مقصورات لأربعة أشخاص. وأخبرهما الموظف، وهو يسلمهما التذاكر، أن إصلاحات كارناتيك قد اكتملت، وأن الباخرة ستغادر في تلك الأمسية نفسها، لا في صباح اليوم التالي كما أُعلن من قبل."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

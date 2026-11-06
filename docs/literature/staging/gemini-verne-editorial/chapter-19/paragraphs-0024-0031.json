@@ -1,0 +1,155 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 19,
+  "chapterTitle": "In which Passepartout takes a too great interest in his master, and what comes of it.",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 8,
+  "sourceSha256": "d00bb5fae5e1a48dcf0640b8e7a5f37947aebf4e7ecec602bcde3469ec9b6b43",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "“Of course I do,” returned Passepartout. “Twenty thousand pounds.”",
+      "existingArabicDraft": "أجاب باسبارتو: «بلى، عشرون ألف جنيه»"
+    },
+    {
+      "index": 25,
+      "en": "“Fifty-five thousand!” answered Fix, pressing his companion’s hand.",
+      "existingArabicDraft": "قال فيكس وهو يضغط على يد رفيقه: «خمسة وخمسون ألفًا!»"
+    },
+    {
+      "index": 26,
+      "en": "“What!” cried the Frenchman. “Has Monsieur Fogg dared—fifty-five thousand pounds! Well, there’s all the more reason for not losing an instant,” he continued, getting up hastily.",
+      "existingArabicDraft": "صاح الفرنسي: «ماذا! أجرؤ فوغ على رهن خمسة وخمسين ألف جنيه؟ إذًا لا بد من الإسراع أكثر!» ونهض على عجل."
+    },
+    {
+      "index": 27,
+      "en": "Fix pushed Passepartout back in his chair, and resumed: “Fifty-five thousand pounds; and if I succeed, I get two thousand pounds. If you’ll help me, I’ll let you have five hundred of them.”",
+      "existingArabicDraft": "أعاده فيكس إلى مقعده وتابع: «خمسة وخمسون ألف جنيه، وإذا نجحت فسأحصل على ألفي جنيه. وإذا ساعدتني فسأعطيك خمسمئة منها»"
+    },
+    {
+      "index": 28,
+      "en": "“Help you?” cried Passepartout, whose eyes were standing wide open.",
+      "existingArabicDraft": "صاح باسبارتو وعيناه جاحظتان: «أساعدك؟»"
+    },
+    {
+      "index": 29,
+      "en": "“Yes; help me keep Mr. Fogg here for two or three days.”",
+      "existingArabicDraft": "«نعم؛ ساعدني على إبقاء السيد فوغ هنا يومين أو ثلاثة»"
+    },
+    {
+      "index": 30,
+      "en": "“Why, what are you saying? Those gentlemen are not satisfied with following my master and suspecting his honour, but they must try to put obstacles in his way! I blush for them!”",
+      "existingArabicDraft": "قال باسبارتو غاضبًا: «ماذا تقول؟ ألا يكفي أولئك السادة أنهم يلاحقون سيدي ويشككون في شرفه؟ بل يريدون أيضًا وضع العراقيل في طريقه! إنني أخجل منهم!»"
+    },
+    {
+      "index": 31,
+      "en": "“What do you mean?”",
+      "existingArabicDraft": "«ماذا تقصد؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«طبعاً، أعرف ذلك،» رد باسبارتو. «عشرون ألف جنيه.»"
+    },
+    {
+      "index": 1,
+      "ar": "«خمسة وخمسون ألفاً!» أجاب فيكس، وهو يضغط على يد مرافقه."
+    },
+    {
+      "index": 2,
+      "ar": "«ماذا!» صرخ الفرنسي. «أجرا السيد فوغ على... خمسة وخمسين ألف جنيه! حسن إذن، فهناك سبب أكبر إذن لعدم إضاعة لحظة واحدة،» وتابع كلامه وهو ينهض في عجلة."
+    },
+    {
+      "index": 3,
+      "ar": "دفع فيكس باسبارتو ليجلس مجدداً على كرسيه، واستأنف حديثه قائلاً: «خمسة وخمسون ألف جنيه؛ وإذا نجحت، فسأحصل على ألفي جنيه. وإذا ساعدتني، فسأعطيك خمسمائة منها.»"
+    },
+    {
+      "index": 4,
+      "ar": "«أساعدك؟» صرخ باسبارتو، وقد جحظت عيناه من شدة الدهشة."
+    },
+    {
+      "index": 5,
+      "ar": "«نعم؛ ساعدني في إبقاء السيد فوغ هنا لمدة يومين أو ثلاثة أيتام.»"
+    },
+    {
+      "index": 6,
+      "ar": "«يا للروعة، ماذا تقول بحق الجحيم؟ ألا يكتفي هؤلاء السادة بملاحقة سيدي والتشكيك في شرفه، حتى يحاولوا أيضاً وضع العقبات في طريقه! إنني أخجل منهم حقاً!»"
+    },
+    {
+      "index": 7,
+      "ar": "«ماذا تقصد بكلامك؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": false,
+      "issues": "خطأ في الترجمة: تم ترجمة كلمة days إلى أيتام بدلاً من أيام"
+    },
+    {
+      "index": 6,
+      "adequate": false,
+      "issues": "ترجمة غير دقيقة وتعابير مضافة غير موجودة في النص الأصلي مثل بحق الجحيم ويا للروعة"
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
