@@ -78,5 +78,30 @@ class RealOriginalChapterIndexes(unittest.TestCase):
                         audit.moonstone_source_unit_coverage()
 
 
+    def test_valley_of_fear_14_real_gutenberg_chapters_plus_epilogue(self):
+        folder = audit.STAGING / "user-requested-classics-20261105" / "the-valley-of-fear"
+        data = audit.valley_of_fear_original_chapter_coverage(folder)
+        self.assertEqual(data["localCandidateChapters"], 0)
+        self.assertEqual(data["missingImageChapters"], 14)
+        self.assertEqual(data["nonChapterNarrativeSourceUnits"], 1)
+
+    def test_valley_of_fear_rejects_invalid_historical_chapter_anchor(self):
+        folder = audit.STAGING / "user-requested-classics-20261105" / "the-valley-of-fear"
+        path = folder / "chapter-image-map.json"
+        original, loader = audit.jload(path), audit.jload
+        for label, damage in (
+            ("bad-anchor", lambda m: m["chapters"][7].__setitem__("sourceAnchorId", "chap01")),
+            ("bad-title", lambda m: m["chapters"][0].__setitem__("titleEn", "An invented title")),
+            ("missing-end", lambda m: m["nonChapterNarrativeUnits"].clear()),
+            ("fake-release", lambda m: m.__setitem__("releaseApproved", True)),
+        ):
+            with self.subTest(label=label):
+                fake = copy.deepcopy(original)
+                damage(fake)
+                with patch.object(audit, "jload", side_effect=lambda p: fake if Path(p) == path else loader(p)):
+                    with self.assertRaises(ValueError):
+                        audit.valley_of_fear_original_chapter_coverage(folder)
+
+
 if __name__ == "__main__":
     unittest.main()
