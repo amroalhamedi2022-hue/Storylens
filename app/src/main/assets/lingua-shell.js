@@ -301,9 +301,22 @@ function openThemeEditor(name,origin){
  ['forest','#183e35','#4b8c6c','#a1d9b1','#e7f3d9'],
  ['peach','#8c4e6d','#d7809b','#ffc3aa','#fff1d8'],
  ['ice','#1c577a','#6d95c5','#b0e6ee','#f0fbff'],
- ['ember','#682f31','#b95139','#e9a756','#ffe0a4']];
+ ['ember','#682f31','#b95139','#e9a756','#ffe0a4'],
+ // Wen Sarafet visual references, refined for Lingua (NOT new theme IDs).
+ ['royal-gold','#221c19','#715128','#d3ae68','#f4e0ae'],
+ ['imperial-gold','#171a21','#54442d','#bd9452','#e9c889'],
+ ['champagne','#6d5d53','#bda487','#f3dfbc','#fff7e8'],
+ ['orange-sage','#9b613f','#eeaa80','#80bca5','#e9f6e6'],
+ ['orchid-rose','#483369','#a367be','#eaa4c8','#f6dbec']];
  for(const [id,a,b,c,d] of presets){
-  const button=addButton(presetRow,id,()=>{
+  const premiumLabels={
+   'royal-gold':['ذهب ملكي','Royal Gold'],
+   'imperial-gold':['ذهب إمبراطوري','Imperial Gold'],
+   champagne:['شامبانيا','Champagne'],
+   'orange-sage':['برتقالي وزجاج أخضر','Orange & Sage'],
+   'orchid-rose':['أرجواني ووردي','Orchid & Rose']
+  };
+  const button=addButton(presetRow,premiumLabels[id]?.[rtl()?0:1]||id,()=>{
    const updated=customThemeColors();
    updated[name]={a,b,c,d,angle:Number(angleInput.value)};
    put('ltThemeCustomColors',updated);applyTheme(name);
@@ -311,7 +324,8 @@ function openThemeEditor(name,origin){
    syncPreview();
   },'lt-theme-preset');
   button.style.background='linear-gradient(135deg,'+[a,b,c,d].join(',')+')';
-  button.setAttribute('aria-label',rtl()?'تدرج '+id:'Gradient '+id);
+  button.setAttribute('aria-label',rtl()?'تدرج '+(premiumLabels[id]?.[0]||id):
+   'Gradient '+(premiumLabels[id]?.[1]||id));
  }
  panel.appendChild(presetRow);
  const actions=document.createElement('div');actions.className='lt-theme-editor-actions';
@@ -319,13 +333,6 @@ function openThemeEditor(name,origin){
  addButton(actions,rtl()?'إعادة الألوان الأصلية':'Reset colors',()=>{
   const custom=customThemeColors();delete custom[name];put('ltThemeCustomColors',custom);
   applyCustomThemeColors();openThemeEditor(name,origin);
- },'secondary');
- addButton(actions,rtl()?'إخفاء الثيم من القائمة':'Hide theme',()=>{
-  const hidden=hiddenThemeNames();
-  if(!hidden.includes(name))hidden.push(name);
-  put('ltHiddenThemes',hidden);
-  origin?.remove();panel.remove();
-  if(state.uiTheme===name)applyTheme(selectableThemeNames.find(id=>!hidden.includes(id))||'aurora');
  },'secondary');
  panel.appendChild(actions);sheet.querySelector('.lt-theme-gallery')?.after(panel);
  panel.querySelector('input')?.focus();
@@ -447,7 +454,7 @@ function openSettings(){
  sheet.appendChild(themeHeading);
  const gallery=document.createElement('div');gallery.className='lt-theme-gallery';
  for(const name of selectableThemeNames){
-  if(hiddenThemeNames().includes(name))continue;
+  // All six user-approved designs always remain visible, including old imports.
   let longPressTimer=null,longPressed=false,startX=0,startY=0;
   const b=addButton(gallery,themeLabelFor(name),()=>{
    if(longPressed){longPressed=false;return;}
@@ -481,14 +488,8 @@ function openSettings(){
  }
  sheet.appendChild(gallery);
  const themeHint=document.createElement('p');themeHint.className='quiet';
- themeHint.textContent=rtl()?'اضغط مطوّلًا على أي ثيم لتغيير ألوانه أو إخفائه.':'Long-press any theme to recolor or hide it.';
+ themeHint.textContent=rtl()?'اضغط مطوّلًا لتخصيص الألوان.':'Hold to customise colours.';
  sheet.appendChild(themeHint);
- if(hiddenThemeNames().length){
-  addButton(sheet,rtl()?'استرجاع جميع الثيمات المخفية':'Restore hidden themes',()=>{
-   put('ltHiddenThemes',[]);
-   closeSheet();openSettings();
-  },'secondary lt-themes-restore');
- }
  // Materials change paper, not the six app themes nor physical curl.
  const materialLabel=document.createElement('label');
  materialLabel.className='lt-font-setting lt-paper-material-setting';
