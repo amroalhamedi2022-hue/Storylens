@@ -1,0 +1,40 @@
+name: Lingua Tales - original 15-section Valley of Fear chapter-image provenance
+on:
+  pull_request:
+    paths:
+      - 'tools/map_valley_of_fear_chapter_art.py'
+      - 'tools/test_valley_of_fear_chapter_art.py'
+      - 'docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/**'
+      - 'tools/report_chapter_art_progress.py'
+      - '.github/workflows/valley-of-fear-image-map-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/map_valley_of_fear_chapter_art.py'
+      - 'tools/test_valley_of_fear_chapter_art.py'
+      - 'docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/chapter-image-map.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lingua-valley-of-fear-art-check-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify-authentic-edition-positioned-art:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact historical original HTML parser
+        run: python -m pip install beautifulsoup4==4.13.4
+      - name: Verify pinned original full text, 7 locally present images and 15-section map
+        run: |
+          python tools/map_valley_of_fear_chapter_art.py --verify
+          python tools/test_valley_of_fear_chapter_art.py
+          python tools/report_chapter_art_progress.py
