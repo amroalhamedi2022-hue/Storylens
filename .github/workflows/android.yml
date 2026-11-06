@@ -91,6 +91,7 @@ jobs:
           node tools/theme-catalog.test.cjs
           node tools/wen-reader-sanctuary.test.cjs
           node tools/reader-material-presets.test.cjs
+          node tools/antique-book-paper.test.cjs
           node tools/celestial-atlas.test.cjs
           node tools/circuit-notebook.test.cjs
           node tools/terracotta-gallery.test.cjs
