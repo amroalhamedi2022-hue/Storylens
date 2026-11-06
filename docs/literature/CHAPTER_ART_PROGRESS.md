@@ -25,12 +25,24 @@
 | The Count of Monte Cristo | 117 | 115 | 0 | 2 | complete 117-chapter historical English translation staged; original French edition/visual scene and rights review pending |
 | The Valley of Fear | 15 | 7 | 0 | 8 | 14 complete original English chapters plus epilogue; 7 locally pinned edition-image positions; scene/rights/Arabic pending |
 | A Study in Scarlet | 14 | 0 | 0 | 14 | full unabridged English original with 14 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending; 4 original Friston artwork files archived |
-| Dracula | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
-| Frankenstein | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
+| Dracula | 27 | 0 | 0 | 27 | full byte-verified original English narrative and framing units; all specific historic chapter art, complete contextual Arabic, individual image rights, and human editorial clearance remain unavailable |
+| Frankenstein | 24 | 0 | 0 | 24 | full byte-verified original English narrative and framing units; all specific historic chapter art, complete contextual Arabic, individual image rights, and human editorial clearance remain unavailable |
 | The Hound of the Baskervilles | 15 | 0 | 0 | 15 | full unabridged English original with 15 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending |
 | The Lost World | 16 | 0 | 0 | 16 | full unabridged English original with 16 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending |
 | The Sign of the Four | 12 | 0 | 0 | 12 | full unabridged English original with 12 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending |
 | Kalila wa Dimna | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
+| The Woman in White | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
+| Arabian Nights — Burton Volume 01/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
+| Arabian Nights — Burton Volume 02/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
+| Arabian Nights — Burton Volume 03/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
+| Arabian Nights — Burton Volume 04/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
+| Arabian Nights — Burton Volume 05/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
+| Arabian Nights — Burton Volume 06/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
+| Arabian Nights — Burton Volume 07/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
+| Arabian Nights — Burton Volume 08/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
+| Arabian Nights — Burton Volume 09/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
+| Arabian Nights — Burton Volume 10/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
+| ألف ليلة وليلة — four Arabic Wikisource transcription parts | Needs segmentation | 0 | 0 | Unknown | four exact Arabic Wikisource transcripts staged; no accepted alignment to Burton EN ten volumes; narrative/night segmentation and share-alike compliance pending |
 
 ## Next actions (highest to lowest priority)
 
