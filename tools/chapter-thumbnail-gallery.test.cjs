@@ -501,6 +501,31 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  assert.deepEqual(failingTrack.children.map(c=>c.dataset.chapterIndex),['0','1','2'],
   'broken image is immediately reported as missing, not repeatedly retried');
 
+ // CHG-03: pinpoint chapter 933 of a thousand-one-chapter anthology
+ // WITHOUT mounting 933 cards, opening the reader, or changing bookmarks.
+ const locateSaved=scenario({count:1001,en:true,resume:932});
+ locateSaved.clickBook();await tick();
+ const locSheet=locateSaved.cards[0].children[0];
+ const locTrack=locSheet.children[1];
+ assert.equal(locTrack.children.length,37,'bounded initial chapter DOM in long anthology');
+ const jumpSaved=locSheet.children[2].children[1];
+ assert.equal(jumpSaved.tagName,'BUTTON');
+ assert.equal(jumpSaved.disabled,false,'valid saved chapter enables locate');
+ jumpSaved.emit('click');
+ assert.equal(locTrack.children.length,1,'locator does not materialize 1001 cards');
+ assert.equal(locTrack.children[0].dataset.chapterIndex,'932');
+ assert.equal(locTrack.children[0].focused,true,'keyboard focus is on saved chapter card');
+ assert.equal(locTrack.children[0].scrolled,true,'real reader scrolls saved card into view');
+ assert.equal(locateSaved.baseOpens.length,0,'locator must NOT open the book');
+ assert.equal(locateSaved.writes.length,0,'locator must not alter chapter or layout settings');
+ const firstOpen=scenario({count:11});
+ firstOpen.clickBook();await tick();
+ const disabledLocator=firstOpen.cards[0].children[0].children[2].children[1];
+ assert.equal(disabledLocator.disabled,true,'new readers have no invented saved chapter');
+ disabledLocator.emit('click');
+ assert.equal(firstOpen.cards[0].children[0].children[1].children.length,11,
+  'locate for a new reader does not change chapter list');
+
  const noExtra=scenario({artSrc:'https://host.invalid/photo.jpg'});
  assert.equal(noExtra.api.chapterImage(noExtra.story,0),null,'remote sources never used as thumbnails');
  console.log('PASS: offline RTL/LTR chapter gallery, genuine art approval, 85-chapter lazy batches/title+number search, resume, and no progress mutations while browsing');
