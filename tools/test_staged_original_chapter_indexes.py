@@ -56,8 +56,8 @@ class RealOriginalChapterIndexes(unittest.TestCase):
 
     def test_wells_27_original_chapter_titles_and_four_structure_files(self):
         data = audit.war_of_worlds_original_chapter_coverage()
-        self.assertEqual(data["missingImageChapters"], 24)
-        self.assertEqual(data["localCandidateChapters"], 3)
+        self.assertEqual(data["missingImageChapters"], 22)
+        self.assertEqual(data["localCandidateChapters"], 5)
         self.assertEqual(data["readyForUICards"], 0)
         self.assertEqual(data["sourceStructuralUnits"], 4)
 
@@ -116,13 +116,13 @@ class RealOriginalChapterIndexes(unittest.TestCase):
                         audit.verify_unpublished_gutenberg_edition("arabian-nights-burton-v01", 1)
 
 
-    def test_three_real_correa_images_have_unique_original_page_and_source_evidence(self):
+    def test_five_real_correa_images_have_unique_original_page_and_source_evidence(self):
         import re
         book = audit.jload(audit.STAGING / "the-war-of-the-worlds" / "chapter-image-map.json")
         art_archive = audit.STAGING / "war-of-worlds-correa-period-plates"
         originals = audit.jload(art_archive / "manifest.json")["images"]
         art_by_path = {str((art_archive / a["localPath"]).relative_to(audit.ROOT)): a for a in originals}
-        expected = {9: 59, 23: 181, 25: 233}
+        expected = {5: 34, 9: 59, 16: 122, 23: 181, 25: 233}
         actual = {}
         digests = set()
         for chapter in book["chapters"]:
