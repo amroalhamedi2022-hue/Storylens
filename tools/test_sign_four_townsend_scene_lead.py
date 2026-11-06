@@ -18,7 +18,7 @@ TEXT = STAGE / "the-sign-of-the-four"
 
 
 def git_blob_sha(raw: bytes) -> str:
-    return hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\\0" + raw).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
 
 
 class ActualTownsendCaptionSceneLead(unittest.TestCase):
