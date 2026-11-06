@@ -141,6 +141,14 @@ function openSelected(id,index){
  close(false);
  if(inSameReader){
   global.stlChapter(index);
+  // The old modal opener may have been destroyed by the new chapter render.
+  // Make the destination heading available to keyboard/TalkBack without
+  // scrolling away from a saved semantic reading position.
+  const heading=document.querySelector?.('.reader h2');
+  if(heading){
+   heading.setAttribute('tabindex','-1');
+   heading.focus?.({preventScroll:true});
+  }
   return true;
  }
  // Coming from the library: the current source reader resumes the selected
