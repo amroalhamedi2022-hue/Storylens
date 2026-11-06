@@ -57,7 +57,7 @@ function element(tag='div') {
  return node;
 }
 const tick=async()=>{await new Promise(resolve=>setImmediate(resolve));};
-function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null,renderMock=false}={}){
+function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null,renderMock=false,visitedIndex=null}={}){
  const chapter=(n)=>({title:'Chapter '+n,titleAr:'الفصل '+n,paragraphs:[{en:'Original source.',ar:'ترجمة.'}]});
  const story={id:'example-story',title:'Example Story',titleAr:'قصة تجريبية',
   chapters:lazy?[]:Array.from({length:count},(_,i)=>chapter(i+1)),totalChapters:count,
@@ -96,7 +96,11 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
   }
  };
  const sandbox={window:W,document,history,art:fakeArt,put(k,v){writes.push([k,v])},
-  get(k,def){return k==='chapter_example-story'&&resume!==null?resume:def},
+  get(k,def){
+   if(k==='chapter_example-story'&&resume!==null)return resume;
+   if(visitedIndex!==null&&k==='readpage_example-story_'+visitedIndex)return 2;
+   return def;
+  },
   state:{page:'library'},console};
  vm.runInNewContext(source,sandbox,{filename:'lt-chapter-gallery.js'});
  const api=W.LinguaChapterGallery;
@@ -351,6 +355,27 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  deniedReader.W.renderReader();
  assert.equal(deniedReader.hero.children.length,0,
   'stage-only picture NEVER reaches actual reader hero');
+ const visited=scenario({count:5,resume:2,visitedIndex:1});
+ visited.clickBook();await tick();
+ const visitedTiles=visited.cards[0].children[0].children[1].children;
+ assert.ok(visitedTiles[1].children.some(c=>c.className==='lt-chapter-tile-visited'),
+  'saved reading page creates a visited-only label');
+ assert.ok(!visitedTiles[4].children.some(c=>c.className==='lt-chapter-tile-visited'),
+  'unread chapter cannot be presented as completed');
+ assert.ok(!visitedTiles[1].children.some(c=>/100%|completed/i.test(c.textContent||'')),
+  'no fabricated reading percentages');
+ const newReader=scenario({count:3});
+ newReader.clickBook();await tick();
+ const newCover=newReader.cards[0].children[0].children[1].children[0].children[0];
+ assert.ok(newCover.children.some(c=>c.textContent==='ابدأ هنا'),
+  'unopened story says Start here, never falsely Resume');
+ const corruptProgress=scenario({count:3,resume:'999'});
+ corruptProgress.clickBook();await tick();
+ const corruptControls=corruptProgress.cards[0].children[0].children[0].children[0]
+  .children.find(c=>c.className==='lt-chapter-gallery-tools');
+ assert.match(corruptControls.children[1].textContent,/ابدأ القراءة/,
+  'corrupt saved chapter should safely start at chapter one');
+
  // Native keyboard navigation advances in page direction, with no
  // activation or unexpected chapter progress writes.
  const keyRtl=scenario({count:85});
