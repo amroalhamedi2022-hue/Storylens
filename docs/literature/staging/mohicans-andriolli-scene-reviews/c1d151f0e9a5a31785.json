@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "status": "VISION_REVIEW_PENDING",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p294.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-c1d151f0e9a5a317.webp",
+  "imageSha256": "f7f2202c00d76e0e222fa767d988eb818cf20afbc7da8bb71ef5edb290b6f109",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a person kneeling in a wooded area, holding a long rifle and looking toward a standing figure in the distance. The scene is set in a natural, outdoor environment with trees and brush.",
+    "visualObjectsEn": "A long rifle, trees, bushes, grass, and a distant landscape with faint hills.",
+    "recognizableCharactersOrPeopleEn": "A person in the foreground kneeling and holding a rifle, and a standing figure in the background wearing what appears to be a feather or headdress.",
+    "uncertaintyNotes": "The specific identities of the figures are not explicitly stated in the image. The exact nature of the interaction between the two figures is ambiguous, though the kneeling figure appears to be observing the standing figure."
+  },
+  "visionModel": "gemini-3.1-flash-lite"
+}

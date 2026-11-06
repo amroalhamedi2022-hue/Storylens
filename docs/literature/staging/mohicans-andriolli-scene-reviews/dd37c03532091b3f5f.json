@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p281.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-dd37c03532091b3f.webp",
+  "imageSha256": "1abebd44f8ab9adca868a2cb983d7cb1e88a07ea79758d3bfd5003d9dc939c9d",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting four figures carrying a large, overturned bark canoe on their shoulders across a rugged, wooded landscape near a body of water. The figures are dressed in frontier-style clothing, including tunics, leggings, and headgear, and are equipped with long rifles and knives. The style is characteristic of late 19th-century book illustration.",
+    "visualObjectsEn": "Large bark canoe, long rifles, knives, sheaths, tunics, leggings, moccasins, rocky terrain, trees, water.",
+    "recognizableCharactersOrPeopleEn": "Four individuals, appearing to be men, dressed in 18th or 19th-century frontier attire.",
+    "uncertaintyNotes": "The specific cultural or historical identity of the figures is not explicitly stated in the image, though they appear to be depicted as frontiersmen or scouts. The signature 'Andriolli 1883' is visible in the lower left corner."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p289.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-b308e1327d4b23c7.webp",
+  "imageSha256": "a736630c7b4de6a52b75345bdbc6db102e5931f9661615457e38ecee829aa681",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a person in traditional attire standing in a wooded area, holding the reins of two horses. In the background, partially obscured by trees, two other figures are watching. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "Two horses with saddles and bridles, trees, forest undergrowth, clothing worn by the figures, reins.",
+    "recognizableCharactersOrPeopleEn": "One central figure standing between two horses, and two figures partially visible in the background among the trees.",
+    "uncertaintyNotes": "The specific cultural or historical identity of the figures is not explicitly stated in the image, though the attire suggests a Native American or frontier-era context. The exact nature of the interaction between the figures is ambiguous."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 21,
+    "paragraphIndexZeroBased": 14,
+    "exactSourceQuotation": "the trees bore evident marks of having been browsed by the horses.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The scene description mentions a person holding the reins of two horses in a wooded area with other figures watching in the background. Chapter 21, paragraph 14 describes a location where a party had halted, specifically noting that 'the trees bore evident marks of having been browsed by the horses', which aligns with the visual presence of horses in a forest setting and the context of tracking or encountering a party in the woods.",
+    "suggestedAltArNotApproved": "A nineteenth-century engraving showing a figure standing in a forest holding the reins of two horses, with two other figures partially visible in the background among the trees.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a figure standing in a forest holding the reins of two saddled horses, with other figures observing from behind trees.",
+    "visualContradictions": "The passage describes finding a halted campsite with extinguished brands, offals of a deer, a small bower, and a trail that suddenly ends, while the image focuses entirely on a person handling horses and observers in the woods rather than the specific campsite remnants and lost trail detailed in the text.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

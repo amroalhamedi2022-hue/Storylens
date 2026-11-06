@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p29.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-70188c4a4e74f6af.webp",
+  "imageSha256": "2383c9a459d19dff8d2c7e6f02a56e08696f8821b8f12ecc6eac56e65664b0c2",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting two men in a dense forest setting by a riverbank. One man stands with his arms crossed, wearing fringed buckskin clothing and a fur cap. The other man is seated on a rock, wearing traditional indigenous-style clothing with a feathered headpiece, holding a long rifle. The background features thick trees and foliage.",
+    "visualObjectsEn": "Trees, forest, river, rocks, fringed buckskin clothing, fur cap, feathered headpiece, long rifle, powder horn, knife, axe.",
+    "recognizableCharactersOrPeopleEn": "Two men, one standing and one seated, both dressed in frontier or indigenous-style attire.",
+    "uncertaintyNotes": "The specific identities of the figures are based on the text printed at the bottom of the image, but I cannot independently verify if these are historical portraits or fictional characters. The date 1883 is visible in the engraving."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 32,
+    "paragraphIndexZeroBased": 44,
+    "exactSourceQuotation": "The chief was seated on a rock, with nothing visible but his calm visage, considering the spectacle with an eye as deliberate as if he were posted there merely to view the struggle.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene description matches the visual of a man seated on a rock in a forest setting, which corresponds to the text describing Chingachgook seated on a rock observing the battle. While the engraving depicts two men, the text in this paragraph specifically highlights the seated figure in a forest/battle context, aligning with the visual composition of the Andriolli illustration.",
+    "suggestedAltArNotApproved": "An engraving of a seated indigenous warrior on a rock in a forest, observing a battle, with a standing frontiersman nearby.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows two men standing/seated by a riverbank in a forest, one with arms crossed and one seated holding a rifle.",
+    "visualContradictions": "The passage describes a battle scene with warriors rallying in a clearing and Heyward turning to look at Chingachgook seated on a rock observing the struggle. The image only shows two static figures posing by a river in the woods with no battle, clearing, or other warriors visible.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
