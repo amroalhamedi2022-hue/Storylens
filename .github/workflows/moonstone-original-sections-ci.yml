@@ -1,0 +1,38 @@
+name: Lingua Tales - exact Moonstone 53-section source integrity audit
+on:
+  pull_request:
+    paths:
+      - 'tools/map_moonstone_narrative_sections.py'
+      - 'tools/test_moonstone_narrative_sections.py'
+      - 'docs/literature/staging/the-moonstone/chapter-image-map.json'
+      - 'tools/report_chapter_art_progress.py'
+      - '.github/workflows/moonstone-original-sections-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/map_moonstone_narrative_sections.py'
+      - 'tools/test_moonstone_narrative_sections.py'
+      - 'docs/literature/staging/the-moonstone/chapter-image-map.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lingua-moonstone-53-verified-sections-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify-full-original-english-53-narrative-units:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate all 53 complete XHTML source blobs and edition-specific canonical section order
+        run: |
+          python tools/map_moonstone_narrative_sections.py --verify
+          python tools/test_moonstone_narrative_sections.py
+          python tools/report_chapter_art_progress.py

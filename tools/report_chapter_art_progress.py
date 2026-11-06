@@ -248,18 +248,40 @@ def generate() -> dict:
             seen_moonstone_sources.add(original)
             seen_moonstone_local_hashes.add(local_hash)
         moonstone_facsimile_scans = len(mo["images"])
+    moonstone_map = STAGING / "the-moonstone" / "chapter-image-map.json"
+    moonstone_row = {
+        "bookId": "collins-the-moonstone-1868", "title": "The Moonstone",
+        "sourceState": "original English source staged; 53 source-accurate narrative units including prologue and epilogue; all chapter images/editorial rights pending",
+        "chapterCount": None, "narrativeSourceUnitsNotChapterCount": 53,
+        "unassignedHistorical1874FacsimileScans": moonstone_facsimile_scans,
+        "localCandidateChapters": 0, "readyForUICards": 0,
+        "missingImageChapters": None, "missingReadyChapters": None,
+        "archivedLocalHistoricArt": 0,
+    }
+    if moonstone_map.is_file():
+        staged = jload(moonstone_map)
+        if (staged.get("bookId") != "collins-the-moonstone-1868" or
+                staged.get("chapterCount") != 53 or
+                staged.get("countSemantics") !=
+                "NARRATIVE_SECTIONS_INCLUDING_PROLOGUE_AND_EPILOGUE__NOT_53_ORDINARY_CHAPTERS" or
+                staged.get("releaseApproved") is not False or
+                staged.get("sourceEditionCommit") !=
+                jload(STAGING / "the-moonstone" / "manifest.json")["source"]["upstreamCommit"]):
+            raise ValueError("Moonstone chapter segmentation/provenance/release gate altered")
+        coverage = map_coverage(moonstone_map, 53)
+        if (staged.get("localCandidateChapters") != coverage["localCandidateChapters"] or
+                staged.get("readyForUICards") != coverage["readyForUICards"] or
+                staged.get("missingCandidateChapters") != coverage["missingImageChapters"]):
+            raise ValueError("Moonstone primary images claimed without a real local valid map")
+        moonstone_row.update(coverage)
+        moonstone_row["chapterCount"] = 53
+        moonstone_row["chapterCountUnitLabel"] = "53 narrative sections (includes Prologue and three Epilogue statements)"
     rows = [
         {"bookId": "around-the-world-in-eighty-days-towle",
          "title": "Around the World in Eighty Days", "sourceState": "37 source chapters plus Arabic draft",
          "chapterCount": 37, "archivedLocalHistoricArt": len(manifest) + len(additional) + commons_candidates,
          "unassignedHistoricalCommonsImageFiles": commons_candidates, **verne},
-        {"bookId": "collins-the-moonstone-1868", "title": "The Moonstone",
-         "sourceState": "staged English; chapter segmentation/rights pending",
-         "chapterCount": None, "narrativeSourceUnitsNotChapterCount": 53,
-         "unassignedHistorical1874FacsimileScans": moonstone_facsimile_scans,
-         "localCandidateChapters": 0, "readyForUICards": 0,
-         "missingImageChapters": None, "missingReadyChapters": None,
-         "archivedLocalHistoricArt": 0},
+        moonstone_row,
         {"bookId": "wells-war-of-the-worlds-1898", "title": "The War of the Worlds",
          "sourceState": "27 original chapters staged; bilingual/rights pending",
          "chapterCount": 27, "localCandidateChapters": 0, "readyForUICards": 0,
@@ -396,7 +418,7 @@ def markdown(report: dict) -> str:
         "| --- | ---: | ---: | ---: | ---: | --- |",
     ]
     for r in report["books"]:
-        total = str(r["chapterCount"]) if r["chapterCount"] is not None else "Needs segmentation"
+        total = r.get("chapterCountUnitLabel") or (str(r["chapterCount"]) if r["chapterCount"] is not None else "Needs segmentation")
         missing = str(r["missingImageChapters"]) if r["missingImageChapters"] is not None else "Unknown"
         lines.append("| " + r["title"] + " | " + total + " | " +
                      str(r["localCandidateChapters"]) + " | " + str(r["readyForUICards"]) +
