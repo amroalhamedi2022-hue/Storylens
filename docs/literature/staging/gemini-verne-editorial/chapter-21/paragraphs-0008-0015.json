@@ -1,0 +1,157 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 21,
+  "chapterTitle": "In which the master of the Tankadere runs great risk of losing a reward of two hundred pounds.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "bfd5abda8ea7923478ac2ad12a39917fc686242ce4329d9d21d99bfc20898d7b",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "The pilot had hung out his lights, which was very necessary in these seas crowded with vessels bound landward; for collisions are not uncommon occurrences, and, at the speed she was going, the least shock would shatter the gallant little craft.",
+      "existingArabicDraft": "علّق قائد القارب مصابيحه، وكان ذلك ضروريًا في هذه البحار المزدحمة بالسفن المتجهة إلى اليابسة؛ فالاصطدامات ليست نادرة، وأي صدمة عند سرعتهم قد تحطم القارب الصغير الشجاع."
+    },
+    {
+      "index": 9,
+      "en": "Fix, seated in the bow, gave himself up to meditation. He kept apart from his fellow-travellers, knowing Mr. Fogg’s taciturn tastes; besides, he did not quite like to talk to the man whose favours he had accepted. He was thinking, too, of the future. It seemed certain that Fogg would not stop at Yokohama, but would at once take the boat for San Francisco; and the vast extent of America would ensure him impunity and safety. Fogg’s plan appeared to him the simplest in the world. Instead of sailing directly from England to the United States, like a common villain, he had traversed three quarters of the globe, so as to gain the American continent more surely; and there, after throwing the police off his track, he would quietly enjoy himself with the fortune stolen from the bank. But, once in the United States, what should he, Fix, do? Should he abandon this man? No, a hundred times no! Until he had secured his extradition, he would not lose sight of him for an hour. It was his duty, and he would fulfil it to the end. At all events, there was one thing to be thankful for; Passepartout was not with his master; and it was above all important, after the confidences Fix had imparted to him, that the servant should never have speech with his master.",
+      "existingArabicDraft": "جلس فيكس عند مقدمة القارب مستغرقًا في التفكير، وابتعد عن رفاقه لأنه يعرف ميل فوغ إلى الصمت، ولأنه لم يكن مرتاحًا إلى الحديث مع الرجل الذي قبل مساعدته. كان يفكر في المستقبل أيضًا: بدا له أن فوغ لن يتوقف في يوكوهاما، بل سيستقل السفينة إلى سان فرانسيسكو فورًا، وهناك ستضمن المسافة الشاسعة في أمريكا إفلاته وأمانه. وبدت خطة فوغ في نظره بسيطة: بدلًا من الإبحار مباشرة من إنجلترا إلى الولايات المتحدة كأي مجرم عادي، دار حول ثلاثة أرباع الكرة الأرضية ليصل إلى القارة الأمريكية بأمان أكبر، ثم يضلل الشرطة ويتمتع بالمال المسروق من البنك. لكن ماذا سيفعل فيكس هناك؟ هل يتخلى عن الرجل؟ كلا، ألف مرة كلا؛ لن يغيب عنه ساعة قبل أن يحصل على تسليمه. كان ذلك واجبه وسيؤديه حتى النهاية. وكان ثمة أمر يبعث على الارتياح: باسبارتو ليس مع سيده، ومن المهم للغاية، بعد ما أسرّ به فيكس إليه، ألا تتاح للخادم فرصة الحديث مع سيده."
+    },
+    {
+      "index": 10,
+      "en": "Phileas Fogg was also thinking of Passepartout, who had so strangely disappeared. Looking at the matter from every point of view, it did not seem to him impossible that, by some mistake, the man might have embarked on the Carnatic at the last moment; and this was also Aouda’s opinion, who regretted very much the loss of the worthy fellow to whom she owed so much. They might then find him at Yokohama; for, if the Carnatic was carrying him thither, it would be easy to ascertain if he had been on board.",
+      "existingArabicDraft": "وكان فوغ بدوره يفكر في باسبارتو الذي اختفى على نحو غريب. وبعد أن نظر إلى الأمر من كل جوانبه، لم يستبعد أن يكون الخادم قد صعد إلى «كارناتيك» في اللحظة الأخيرة عن طريق الخطأ. وكان هذا رأي أودا أيضًا، التي حزنت لغياب الرجل الجدير الذي تدين له بالكثير. وربما يجدانه في يوكوهاما؛ فإذا كانت «كارناتيك» قد حملته إلى هناك، فلن يصعب التأكد من وجوده على متنها."
+    },
+    {
+      "index": 11,
+      "en": "A brisk breeze arose about ten o’clock; but, though it might have been prudent to take in a reef, the pilot, after carefully examining the heavens, let the craft remain rigged as before. The Tankadere bore sail admirably, as she drew a great deal of water, and everything was prepared for high speed in case of a gale.",
+      "existingArabicDraft": "هبّت نسمة قوية نحو الساعة العاشرة، ورغم أن تقليل مساحة الشراع كان قد يكون أحكم، فإن القائد فحص السماء بعناية وترك الأشرعة كما هي. كان «تانكادير» يشق الماء ببراعة، وكانت كل الاستعدادات جاهزة لزيادة السرعة إذا هبّت عاصفة."
+    },
+    {
+      "index": 12,
+      "en": "Mr. Fogg and Aouda descended into the cabin at midnight, having been already preceded by Fix, who had lain down on one of the cots. The pilot and crew remained on deck all night.",
+      "existingArabicDraft": "نزل فوغ وأودا إلى المقصورة عند منتصف الليل، وكان فيكس قد سبقهما واستلقى على أحد الأسرّة. أما القائد والبحّارة فبقوا على السطح طوال الليل."
+    },
+    {
+      "index": 13,
+      "en": "At sunrise the next day, which was 8th November, the boat had made more than one hundred miles. The log indicated a mean speed of between eight and nine miles. The Tankadere still carried all sail, and was accomplishing her greatest capacity of speed. If the wind held as it was, the chances would be in her favour. During the day she kept along the coast, where the currents were favourable; the coast, irregular in profile, and visible sometimes across the clearings, was at most five miles distant. The sea was less boisterous, since the wind came off land—a fortunate circumstance for the boat, which would suffer, owing to its small tonnage, by a heavy surge on the sea.",
+      "existingArabicDraft": "عند شروق الشمس في اليوم التالي، الثامن من نوفمبر، كان القارب قد قطع أكثر من مئة ميل، وأظهر سجل الرحلة متوسط سرعة بين ثمانية وتسعة أميال. وظل «تانكادير» يرفع أشرعته كلها ويبلغ أقصى سرعته. وإذا استمرت الريح، فستكون الفرصة في صالحهم. وأبحر خلال النهار بمحاذاة الساحل، حيث تساعد التيارات؛ وكان الساحل المتعرج يظهر أحيانًا عبر صفاء الجو، ولا يبعد أكثر من خمسة أميال. وهدأ البحر لأن الريح جاءت من البر، وهو أمر مناسب لقارب صغير كهذا قد تتضرر بنيته من الأمواج العاتية."
+    },
+    {
+      "index": 14,
+      "en": "The breeze subsided a little towards noon, and set in from the southwest. The pilot put up his poles, but took them down again within two hours, as the wind freshened up anew.",
+      "existingArabicDraft": "خفّت النسمة قليلًا قرب الظهر، وتحولت إلى الجنوب الغربي. فرفع القائد الصواري الإضافية، لكنه أنزلها بعد أقل من ساعتين حين اشتدت الريح من جديد."
+    },
+    {
+      "index": 15,
+      "en": "Mr. Fogg and Aouda, happily unaffected by the roughness of the sea, ate with a good appetite, Fix being invited to share their repast, which he accepted with secret chagrin. To travel at this man’s expense and live upon his provisions was not palatable to him. Still, he was obliged to eat, and so he ate.",
+      "existingArabicDraft": "تناول فوغ وأودا الطعام بشهية، إذ لم يتأثرا كثيرًا بخشونة البحر، ودعوا فيكس إلى مشاركتهما الوجبة، فقبل وهو يشعر بالضيق في داخله. لم يكن يطيب له أن يسافر على نفقة هذا الرجل ويأكل من مؤونته، لكنه كان مضطرًا إلى الأكل، فأكل."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "علّق الملاح مصابيحه، وكان ذلك ضروريًا للغاية في هذه البحار المزدحمة بالسفن المتجهة نحو اليابسة؛ فالاصطدامات ليست بالأمور النادرة، وأي صدمة طفيفة، بالسرعة التي كان يسير بها، كانت ستكفي لتحطم القارب الصغير الباسل."
+    },
+    {
+      "index": 1,
+      "ar": "استسلم فيكس، الجالس في مقدمة القارب، للتأمل والتدبر. لقد ظل بمعزل عن رفاقه في الرحلة، عارفًا بطبع فيلياس فوغ الصامت، فضلاً عن أنه لم يكن يشعر بالارتياح التام للحديث إلى الرجل الذي قبل إحسانه. وكان يفكر في المستقبل أيضًا. بدا له أمرًا مؤكدًا أن فوغ لن يتوقف في يوكوهاما، بل سيستقل على الفور السفينة المتجهة إلى سان فرانسيسكو؛ وإن الامتداد الشاسع لأمريكا سيضمن له الإفلات من العقاب والسلامة. وارتسمت خطة فوغ في نظره أبسط ما تكون في العالم. فبدلاً من الإبحار مباشرة من إنجلترا إلى الولايات المتحدة شأن أيغوي شرير عادي، راح يجتاز ثلاثة أرباع الكرة الأرضية، لكي يصل إلى القارة الأمريكية بمزيد من الضمان؛ وهناك، بعد أن يضلل الشرطة ويبعد آثارها عن تعقبه، سينعم بالاستمتاع الهادئ بالثروة المسروقة من البنك. ولكن، بمجرد بلوغه الولايات المتحدة، ماذا سيفعل هو، فيكس؟ أيتخلي عن هذا الرجل؟ كلا، بل مئة مرة كلا! إلى أن يظفر بقرار تسليمه، لن يغيب عن بصره ساعة واحدة. لقد كان ذلك واجبه، وسيؤديه حتى النهاية. وعلى كل حال، كان ثمة أمر واحد يشكر عليه؛ فباسبارتو لم يكن مع سيده، وكان الأهم فوق كل اعتبار، بعد الثقة التي أودعها فيكس إياه، ألا يتحدث الخادم أبدًا إلى سيده."
+    },
+    {
+      "index": 2,
+      "ar": "وكان فيلياس فوغ يفكر هو الآخر في باسبارتو الذي اختفى على نحو شديد الغرابة. وإذ تأمل الأمر من كل زاوية، لم يبدو له مستحيلاً أن يكون الخادم، نتيجة لبعض الغلط، قد صعد على متن سفينة «كارناتيك» في اللحظة الأخيرة؛ وقد وافقته أودا على هذا الرأي أيضًا، إذ كانت تأسف أشد الأسف لفقدان ذلك الرجل النبيل الذي تدين له بالكثير والكثير. وربما يتمكنان إذن من العثور عليه في يوكوهاما؛ فإذا كانت سفينة «كارناتيك» تحمله إلى هناك، فسيكون من السهل التحقق مما إذا كان على متنها."
+    },
+    {
+      "index": 3,
+      "ar": "وهبت ريح نشطة نحو الساعة العاشرة؛ ورغم أنه ربما كان من الحصافة تقليص الشراع بربط جزء منه، فإن الملاح، بعد أن فحص السماوات بعناية، ترك القارب مجهزًا بأشرعته كما كان من قبل. لقد احتملت السفينة «تانكادير» الأشرعة ببراعة فائقة، إذ كانت تغوص بعمق في الماء، وكل شيء كان مهيأ لتحقيق سرعة فائقة في حال هبوب عاصفة."
+    },
+    {
+      "index": 4,
+      "ar": "ونزل السيد فوغ وأودا إلى المقصورة عند منتصف الليل، وكان فيكس قد سبقهما إليها، إذ استلقى على أحد الأسرّة. أما الملاح وطاقم البحارة فقد بقوا على السطح طوال الليل."
+    },
+    {
+      "index": 5,
+      "ar": "عند شروق شمس اليوم التالي، الذي صادف الثامن من نوفمبر، كان القارب قد قطع أكثر من مئة ميل. وأشار سجل السرعة إلى متوسط سرعة يتراوح بين ثمانية وتسعة أميال. وظلت السفينة «تانكادير» ترفع أشرعتها كلها، محققة أقصى طاقة لسرعتها. وإن ظلت الريح على حالها، فستكون الحظوظ في صالحها. وخلال النهار ظلت السفينة تبحر محاذاة الساحل، حيث كانت التيارات ملائمة؛ وكان الساحل، المتعرج في تضاريسه والذي كان يُرى أحياناً عبر الفسحات الواضحة، على مسافة خمسة أميال كحد أقصى. وكان البحر أقل اضطراباً، نظراً لأن الريح كانت تهب من ناحية البر - وهو ظرف محظوظ بالنسبة للقارب الذي كان ليعاني، بسبب صغر حمولته، من الأمواج العاتية العالية في عرض البحر."
+    },
+    {
+      "index": 6,
+      "ar": "وخفت النسيم قليلًا نحو الظهر، وهبّ من الجنوب الغربي. فنصب الملاح صواريه الإضافية، لكنه عاد فأنزلها في غضون ساعتين، مع تجدد هبوب الريح بقوة من جديد."
+    },
+    {
+      "index": 7,
+      "ar": "وتناول السيد فوغ وأودا، اللذان لم يتأثرا بوعورة البحر، الطعام بشهية طيبة، ودُعي فيكس لمشاركة وجبتهما، فقبِل الدعوة وفي صدره غيظ خفي. لم يكن السفر على نفقة هذا الرجل والعيش على مؤونته بالأمر المستساغ عنده. ومع ذلك، كان مجبراً على الأكل، فأكل."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "تمت ترجمة 'like a common villain' بشكل غير دقيق إلى 'شأن أيغوي شرير عادي' وهناك خطأ مطبعي في كلمة 'أيغوي'."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

@@ -1,0 +1,156 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 20,
+  "chapterTitle": "In which Fix comes face to face with Phileas Fogg.",
+  "startParagraphZeroBased": 64,
+  "paragraphCount": 8,
+  "sourceSha256": "a6fb0df01669540e9ba1bdcd57f2b608ca08483f1bf504333b71fe562bdcadfc",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 64,
+      "en": "It was now three o’clock; and pilot-boat No. 43, with its crew on board, and its provisions stored away, was ready for departure.",
+      "existingArabicDraft": "كانت الساعة الثالثة، وأصبح قارب الإرشاد رقم 43 جاهزًا للمغادرة، بعد صعود طاقمه وتخزين المؤن."
+    },
+    {
+      "index": 65,
+      "en": "The Tankadere was a neat little craft of twenty tons, as gracefully built as if she were a racing yacht. Her shining copper sheathing, her galvanised ironwork, her deck, white as ivory, betrayed the pride taken by John Bunsby in making her presentable. Her two masts leaned a trifle backward; she carried brigantine, foresail, storm-jib, and standing-jib, and was well rigged for running before the wind; and she seemed capable of brisk speed, which, indeed, she had already proved by gaining several prizes in pilot-boat races. The crew of the Tankadere was composed of John Bunsby, the master, and four hardy mariners, who were familiar with the Chinese seas. John Bunsby, himself, a man of forty-five or thereabouts, vigorous, sunburnt, with a sprightly expression of the eye, and energetic and self-reliant countenance, would have inspired confidence in the most timid.",
+      "existingArabicDraft": "كانت «تانكادير» سفينة صغيرة أنيقة، حمولتها عشرون طنًا، مصممة برشاقة كأنها يخت سباق. دلّ غلافها النحاسي اللامع وتجهيزاتها الحديدية المجلفنة وسطحها الأبيض كالعاج على اعتزاز جون بنسبي بإعدادها. مال صاريَاها قليلًا إلى الخلف، وحملت شراع بريغنتين وشراعًا أماميًا وشراعي عاصفة وإبحار، وكانت مجهزة جيدًا للإبحار مع الريح؛ وبدا أنها سريعة، وقد فازت بالفعل بعدة سباقات لقوارب الإرشاد. تألف طاقمها من جون بنسبي وأربعة بحّارة أقوياء خبروا بحار الصين. وكان بنسبي، في نحو الخامسة والأربعين، قوي البنية مسمرّ البشرة، يقظ النظرة، ذا ملامح نشيطة وواثقة، يوحي بالثقة حتى إلى أشد الناس خوفًا."
+    },
+    {
+      "index": 66,
+      "en": "Phileas Fogg and Aouda went on board, where they found Fix already installed. Below deck was a square cabin, of which the walls bulged out in the form of cots, above a circular divan; in the centre was a table provided with a swinging lamp. The accommodation was confined, but neat.",
+      "existingArabicDraft": "صعد فيلياس فوغ وأودا إلى متن السفينة، فوجدا فيكس قد استقر فيها بالفعل. وتحت السطح مقصورة مربعة تنتفخ جدرانها على هيئة أسرّة ضيقة تعلو أريكة دائرية، وفي وسطها طاولة عليها مصباح معلّق. كانت المساحة محدودة، لكنها مرتبة."
+    },
+    {
+      "index": 67,
+      "en": "“I am sorry to have nothing better to offer you,” said Mr. Fogg to Fix, who bowed without responding.",
+      "existingArabicDraft": "قال السيد فوغ لفيكس، الذي انحنى دون أن يجيب: «يؤسفني ألا أستطيع أن أقدم لك مكانًا أفضل»."
+    },
+    {
+      "index": 68,
+      "en": "The detective had a feeling akin to humiliation in profiting by the kindness of Mr. Fogg.",
+      "existingArabicDraft": "شعر المحقق بشيء يشبه الإهانة لأنه ينتفع من كرم السيد فوغ."
+    },
+    {
+      "index": 69,
+      "en": "“It’s certain,” thought he, “though rascal as he is, he is a polite one!”",
+      "existingArabicDraft": "وقال في نفسه: «لا شك أنه وغد، لكنه مهذب!»"
+    },
+    {
+      "index": 70,
+      "en": "The sails and the English flag were hoisted at ten minutes past three. Mr. Fogg and Aouda, who were seated on deck, cast a last glance at the quay, in the hope of espying Passepartout. Fix was not without his fears lest chance should direct the steps of the unfortunate servant, whom he had so badly treated, in this direction; in which case an explanation the reverse of satisfactory to the detective must have ensued. But the Frenchman did not appear, and, without doubt, was still lying under the stupefying influence of the opium.",
+      "existingArabicDraft": "رُفعت الأشرعة والعلم الإنجليزي عند الثالثة وعشر دقائق. وكان فوغ وأودا جالسين على السطح، فألقيا نظرة أخيرة على الرصيف أملًا في رؤية باسبارتو. ولم يخلُ قلب فيكس من الخوف من أن تقوده المصادفة إلى هناك خطوات الخادم التعيس الذي أساء معاملته؛ فلو ظهر لاضطر المحقق إلى تفسير يصعب أن يكون مُرضيًا. لكن الفرنسي لم يظهر، ولا شك أنه ما زال تحت تأثير الأفيون المخدّر."
+    },
+    {
+      "index": 71,
+      "en": "John Bunsby, master, at length gave the order to start, and the Tankadere, taking the wind under her brigantine, foresail, and standing-jib, bounded briskly forward over the waves.",
+      "existingArabicDraft": "وأخيرًا أصدر جون بنسبي أمر الإبحار، فالتقطت «تانكادير» الريح بأشرعتها واندفعت بخفة فوق الأمواج."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كانت الساعة الآن الثالثة؛ وكان قارب الإرشاد رقم 43، بطاقمه ومؤونه المخزنة، مستعداً للمغادرة."
+    },
+    {
+      "index": 1,
+      "ar": "كانت التانكادير سفينة صغيرة أنيقة حمولتها عشرون طناً، وبنية تصميمها برشاقة يخت سباق. وكان غلافها النحاسي اللامع، وتجهيزاتها من الحديد المجلفن، وسطحها الأبيض كالعاج، دليلاً على فخر جون بنسبي بجعلها في أبهى حلة. وكان صارياها يميلان قليلاً نحو الخلف؛ وهي تحمل شراعاً بريغنتيّاً، وشراعاً أماميّاً، وشراع عاصفة، وشراعاً ثابتاً، وكانت مجهزة تجهيزاً جيداً للإبحار مع الريح؛ وبدا أنها قادرة على سرعة فائقة، وهو ما أثبتته بالفعل بفوزها بعدة جوائز في سباقات قوارب الإرشاد. وكان طاقم التانكادير يتألف من جون بنسبي، المربّي، وأربعة بحارة أشداء مألوفين ببحر الصين. وكان جون بنسبي نفسه، وهو رجل في الخامسة والأربعين أو نحو ذلك، قوي البنية، ملسوعاً بالشمس، وله نظرة حية ووجه ينبض بالحيوية والثقة بالنفس، مما كان ليوحي بالثقة حتى لأكثر الناس جبناً."
+    },
+    {
+      "index": 2,
+      "ar": "صعد فيلياس فوغ وأودا على متن السفينة، حيث وجدا فيكس مستقراً فيها بالفعل. وتحت سطح السفينة كانت هناك مقصورة مربعة، تبرز جدرانها على شكل أسرّة فوق أريكة دائرية؛ وفي المنتصف طاولة مزودة بمصباح معلق. وكانت المرافق ضيقة، لكنها أنيقة."
+    },
+    {
+      "index": 3,
+      "ar": "قال السيد فوغ لفيكس، الذي انحنى دون أن يرد: «يؤسفني ألا أملك شيئاً أفضل لأقدمه لك»."
+    },
+    {
+      "index": 4,
+      "ar": "كان شعور المحقق أقرب إلى الإهانة لكونه يستفيد من لطف السيد فوغ."
+    },
+    {
+      "index": 5,
+      "ar": "فكر قائلاً: «هذا مؤكد، رغم أنه وغد، إلا أنه وغد مهذب!»"
+    },
+    {
+      "index": 6,
+      "ar": "رُفعت الأشرعة والعلم الإنجليزي في الدقيقة العاشرة بعد الثالثة. وألقى السيد فوغ وأودا، اللذان كانا جالسين على السطح، نظرة أخيرة على الرصيف، على أمل لمس باسبارتو. ولم يخلُ فيكس من مخاوف لئلا تقود الصدفة خطوات الخادم المسكين، الذي أساء معاملته بشدة، إلى هذا الاتجاه؛ وفي هذه الحالة كان لا بد أن يتبع ذلك توضيح يعاكس تماماً ما يرضي المحقق. لكن الفرنسي لم يظهر، ولا شك أنه كان ما زال واقعاً تحت تأثير الأفيون المخدر."
+    },
+    {
+      "index": 7,
+      "ar": "أصدر جون بنسبي، القبطان، أمره بالإبحار أخيراً، فانطلقت التانكادير، مستفيدة من الريح تحت شراعها البريغنتي، والشراع الأمامي، والشراع الثابت، فوثبت بخفة إلى الأمام فوق الأمواج."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "تمت ترجمة كلمة master (المعلم أو القبطان) إلى المربّي خطأً، وكلمة familiar (عالمين أو مطلعين) إلى مألوفين خطأً."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": false,
+      "issues": "تمت ترجمة espying (رؤية أو لمح) إلى لمس خطأً."
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
