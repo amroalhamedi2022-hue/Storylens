@@ -12,6 +12,7 @@ on:
       - 'tools/package_approved_chapter_thumbnails.py'
       - 'tools/test_approved_thumbnail_packaging.py'
       - 'tools/make_chapter_gallery_browser_fixture.py'
+      - 'tools/make_chapter_gallery_cancel_browser_fixture.py'
       - 'tools/report_chapter_gallery_ui_progress.py'
       - 'docs/literature/**/chapter-image-map.json'
       - '.github/workflows/chapter-gallery-fast-checks.yml'
@@ -25,6 +26,7 @@ on:
       - 'tools/package_approved_chapter_thumbnails.py'
       - 'tools/test_approved_thumbnail_packaging.py'
       - 'tools/make_chapter_gallery_browser_fixture.py'
+      - 'tools/make_chapter_gallery_cancel_browser_fixture.py'
       - 'tools/report_chapter_gallery_ui_progress.py'
       - '.github/workflows/chapter-gallery-fast-checks.yml'
 
@@ -101,5 +103,47 @@ jobs:
         with:
           name: chapter-gallery-real-browser-screenshots
           path: qa-screenshots/chapter-gallery-*.png
+          if-no-files-found: warn
+          retention-days: 14
+
+  real-browser-lazy-cancel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Generate true local source-reader cancellation fixture
+        run: python3 tools/make_chapter_gallery_cancel_browser_fixture.py
+      - name: Validate cancellation, safe late file arrival, and real 37-chapter retry
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || true)"
+          test -n "$CHROME" || { echo "::error::Chromium is required for the real Android reader cancellation gate"; exit 1; }
+          mkdir -p qa-screenshots
+          for viewport in 460,860 1280,840; do
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu \
+              --virtual-time-budget=45000 --window-size="$viewport" --dump-dom \
+              "file://$PWD/app/src/main/assets/qa-chapter-gallery-lazy-cancel.html" \
+              > "/tmp/lt-lazy-cancel-$viewport.html" 2>/tmp/lt-lazy-cancel-chrome.log
+            if ! grep -Fq 'data-lt-lazy-cancel-qa="PASS"' "/tmp/lt-lazy-cancel-$viewport.html"; then
+              echo "::error::Real lazy-book abort/reopen/source-reader acceptance failed at $viewport"
+              grep -o 'data-lt-lazy-cancel-errors="[^"]*"' "/tmp/lt-lazy-cancel-$viewport.html" | head -1 || true
+              tail -n 20 /tmp/lt-lazy-cancel-chrome.log || true
+              exit 1
+            fi
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars \
+              --virtual-time-budget=45000 --window-size="$viewport" \
+              --screenshot="$PWD/qa-screenshots/chapter-lazy-cancel-$viewport.png" \
+              "file://$PWD/app/src/main/assets/qa-chapter-gallery-lazy-cancel.html" >/dev/null 2>&1
+          done
+          file qa-screenshots/chapter-lazy-cancel-*.png
+          echo "PASS: real Android-size browser source-book abort → retry → exact chapter → reader"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter-gallery-lazy-cancel-real-browser-evidence
+          path: qa-screenshots/chapter-lazy-cancel-*.png
           if-no-files-found: warn
           retention-days: 14
