@@ -316,3 +316,25 @@ dialog.lt-chapter-gallery::backdrop{
  .lt-chapter-gallery-results{margin-block-start:3px}
  .lt-chapter-gallery-more{min-height:140px}
 }
+
+
+/* Make every long-book card reachable with TalkBack and hardware keyboards
+   without adding another visually crowded button to the bookshelf. */
+.library .card:has(>.lt-chapter-card-access){position:relative}
+.library .card .lt-chapter-card-access{
+ position:absolute!important;inset:auto auto auto 0;
+ inline-size:1px!important;block-size:1px!important;
+ border:0;padding:0;margin:0;overflow:hidden;
+ clip-path:inset(50%);white-space:nowrap;opacity:0;
+}
+.library .card .lt-chapter-card-access:focus-visible{
+ inset:12px auto auto 12px!important;
+ z-index:20;inline-size:auto!important;block-size:auto!important;
+ min-height:44px;max-width:calc(100% - 24px);
+ clip-path:none;opacity:1;white-space:normal;
+ padding:9px 15px;border:2px solid #246c92;
+ border-radius:12px;background:#fff9ee;color:#253947;
+ box-shadow:0 5px 19px rgba(20,35,47,.25);
+ font:700 13px/1.4 system-ui,sans-serif;
+ outline:3px solid #246c92;outline-offset:2px;
+}
