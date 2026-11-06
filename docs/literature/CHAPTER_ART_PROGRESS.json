@@ -41,15 +41,19 @@
     {
       "bookId": "collins-the-moonstone-1868",
       "title": "The Moonstone",
-      "sourceState": "staged English; chapter segmentation/rights pending",
-      "chapterCount": null,
+      "sourceState": "original English source staged; 53 source-accurate narrative units including prologue and epilogue; all chapter images/editorial rights pending",
+      "chapterCount": 53,
       "narrativeSourceUnitsNotChapterCount": 53,
       "unassignedHistorical1874FacsimileScans": 18,
       "localCandidateChapters": 0,
       "readyForUICards": 0,
-      "missingImageChapters": null,
-      "missingReadyChapters": null,
-      "archivedLocalHistoricArt": 0
+      "missingImageChapters": 53,
+      "missingReadyChapters": 53,
+      "archivedLocalHistoricArt": 0,
+      "mappedChapterNumbers": [],
+      "readyChapterNumbers": [],
+      "imageMap": "docs/literature/staging/the-moonstone/chapter-image-map.json",
+      "chapterCountUnitLabel": "53 narrative sections (includes Prologue and three Epilogue statements)"
     },
     {
       "bookId": "wells-war-of-the-worlds-1898",

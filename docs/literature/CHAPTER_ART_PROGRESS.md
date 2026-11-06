@@ -15,7 +15,7 @@
 | Book | Actual chapters | Local primary image candidates | Approved chapter cards | Missing candidates | Source / blocker |
 | --- | ---: | ---: | ---: | ---: | --- |
 | Around the World in Eighty Days | 37 | 12 | 0 | 25 | 37 source chapters plus Arabic draft |
-| The Moonstone | Needs segmentation | 0 | 0 | Unknown | staged English; chapter segmentation/rights pending |
+| The Moonstone | 53 narrative sections (includes Prologue and three Epilogue statements) | 0 | 0 | 53 | original English source staged; 53 source-accurate narrative units including prologue and epilogue; all chapter images/editorial rights pending |
 | The War of the Worlds | 27 | 0 | 0 | 27 | 27 original chapters staged; bilingual/rights pending |
 | Treasure Island | 34 | 34 | 0 | 0 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
 | Kidnapped | 30 | 30 | 0 | 0 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
