@@ -55,12 +55,14 @@ assert len(data) >= 120000, "do not replace approved 3D icon with placeholder ar
 generator = ROOT / "tools/GenerateTextlessLauncher.java"
 assert generator.is_file(), "deterministic textless original-art generator is required"
 generator_source = generator.read_text(encoding="utf-8")
-assert "1120,835" in generator_source, "crop must stop before original artwork's text"
+assert "757427720c7e9669aaae1de0f9e86ae67a8c9c6f89bb6e945dd8e2a4e73d38ef" in generator_source, "launcher must verify the exact approved golden art"
 before = __import__("hashlib").sha256(data).hexdigest()
 subprocess.run(["java", "-Djava.awt.headless=true", str(generator)], cwd=ROOT, check=True)
 assert __import__("hashlib").sha256(approved.read_bytes()).hexdigest() == before, "must not overwrite source icon"
+assert before == "757427720c7e9669aaae1de0f9e86ae67a8c9c6f89bb6e945dd8e2a4e73d38ef", "official golden art SHA-256 must remain pinned"
 generated = RES / "drawable-nodpi/lingua_tales_textless.png"
 output = generated.read_bytes()
+assert output == approved.read_bytes(), "generated icon must be byte-identical to owner gold source"
 assert output[:8] == b"\x89PNG\r\n\x1a\n" and len(output) > 120000, "real textless colour PNG required"
 import struct
 assert struct.unpack(">II", output[16:24]) == (1024, 1024), "adaptive source must be 1024px square"
