@@ -24,7 +24,7 @@
 | The Gilded Age | 63 | 61 | 0 | 2 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
 | The Count of Monte Cristo | 117 | 115 | 0 | 2 | complete 117-chapter historical English translation staged; original French edition/visual scene and rights review pending |
 | The Valley of Fear | 15 | 7 | 0 | 8 | 14 complete original English chapters plus epilogue; 7 locally pinned edition-image positions; scene/rights/Arabic pending |
-| A Study in Scarlet | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
+| A Study in Scarlet | Needs segmentation | 0 | 0 | Unknown | complete original English novel staged; original 1887 Friston plates archived but not visually matched to chapters |
 | Dracula | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
 | Frankenstein | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
 | The Hound of the Baskervilles | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |

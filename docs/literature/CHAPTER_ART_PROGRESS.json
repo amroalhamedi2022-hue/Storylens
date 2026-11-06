@@ -452,13 +452,14 @@
     {
       "bookId": "a-study-in-scarlet",
       "title": "A Study in Scarlet",
-      "sourceState": "older staged work; chapter-card coverage audit pending",
+      "sourceState": "complete original English novel staged; original 1887 Friston plates archived but not visually matched to chapters",
       "chapterCount": null,
       "localCandidateChapters": 0,
       "readyForUICards": 0,
       "missingImageChapters": null,
       "missingReadyChapters": null,
-      "archivedLocalHistoricArt": 0
+      "archivedLocalHistoricArt": 0,
+      "unassignedHistorical1887FristonImageFiles": 0
     },
     {
       "bookId": "dracula",
