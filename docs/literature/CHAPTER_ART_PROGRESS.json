@@ -6,8 +6,8 @@
   "counts": {
     "localCandidateChapterCards": 275,
     "readyChapterCards": 0,
-    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1137,
-    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1137
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1141,
+    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1141
   },
   "books": [
     {
@@ -458,8 +458,8 @@
       "readyForUICards": 0,
       "missingImageChapters": null,
       "missingReadyChapters": null,
-      "archivedLocalHistoricArt": 0,
-      "unassignedHistorical1887FristonImageFiles": 0
+      "archivedLocalHistoricArt": 4,
+      "unassignedHistorical1887FristonImageFiles": 4
     },
     {
       "bookId": "dracula",
