@@ -808,6 +808,28 @@ tests["chapter-gallery-journey"] = r"""(async function(){
   check('reader has genuine source chapter body',()=>!!document.querySelector('.reader .sentence'));
   check('reader progress stores the selected chapter only',()=>get('chapter_'+id,-1)===33);
   check('gallery closed on chapter selection',()=>!document.querySelector('.lt-chapter-gallery'));
+  // Choosing a chapter from inside the open book must use stlChapter (no
+  // second reader history entry); dismissing it must NOT close the reader.
+  const insideButton=document.querySelector('.reader .lt-open-chapter-gallery');
+  check('chapter chooser accessible inside the real reader',()=>!!insideButton);
+  insideButton?.click();
+  check('in-reader chooser opens',()=>!!document.querySelector('dialog.lt-chapter-gallery'));
+  check('in-reader chooser does not change history',()=>history.state?.page==='reader');
+  const inner=document.querySelector('dialog.lt-chapter-gallery');
+  const innerSearch=inner?.querySelector('.lt-chapter-gallery-search');
+  if(innerSearch){
+   innerSearch.value='2';
+   innerSearch.dispatchEvent(new Event('input',{bubbles:true}));
+   check('in-reader chapter 2 search works',()=>inner.querySelectorAll('.lt-chapter-tile').length===1);
+   inner.querySelector('.lt-chapter-tile')?.click();
+   check('reader chapter changes without reopening app',()=>state.page==='reader'&&state.chapter===1);
+   check('in-reader stlChapter stores actual new progress',()=>get('chapter_'+id,-1)===1);
+   check('no duplicate reader history after in-reader chapter jump',()=>history.state?.page==='reader');
+   document.querySelector('.reader .lt-open-chapter-gallery')?.click();
+   document.querySelector('dialog.lt-chapter-gallery .lt-chapter-gallery-close')?.click();
+   check('dismiss in-reader chooser keeps reader open',()=>state.page==='reader');
+   check('dismiss does not pop reader history',()=>history.state?.page==='reader');
+  }
   history.back();
   await new Promise(resolve=>setTimeout(resolve,950));
   check('system Back restores chapter gallery',()=>window.LinguaChapterGallery?.isOpen===true);
