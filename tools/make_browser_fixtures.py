@@ -639,6 +639,90 @@ tests["historic-preview-singapore"] = r"""(async function(){
  }
 })();""";
 
+# CHG-02: exercise a genuine click on the library card, the real 37-chapter
+# deferred original, ordered search, selected source chapter and Android Back.
+# Keep this distinct from existing programmatic openStory tests, which MUST
+# continue to bypass the gallery for deep links and translation tools.
+tests["chapter-gallery-journey"] = r"""(async function(){
+ const errors=[];
+ const check=(label,test)=>{try{if(!test())errors.push(label)}
+  catch(e){errors.push(label+': '+e.message)}};
+ try{
+  const id='around-the-world-in-eighty-days-towle';
+  document.documentElement.lang='ar';
+  document.documentElement.dir='rtl';
+  await window.LinguaContentLoader.ensureStory(id);
+  put('chapter_'+id,13);
+  const card=Array.from(document.querySelectorAll('.library .card'))
+   .find(el=>el.getAttribute('onclick')==="openStory('"+id+"')");
+  check('library card exists',()=>!!card);
+  if(!card)throw Error('book card missing');
+  card.click();
+  await new Promise(resolve=>setTimeout(resolve,160));
+  const gallery=document.querySelector('dialog.lt-chapter-gallery');
+  check('library tap presents chapter gallery',()=>gallery?.open===true&&
+    window.LinguaChapterGallery?.isOpen===true);
+  check('book tap must not jump to reader',()=>state.page==='library');
+  const title=gallery?.querySelector('.lt-chapter-gallery-title');
+  check('correct source book selected',()=>title?.textContent.includes('Around the World'));
+  const search=gallery?.querySelector('.lt-chapter-gallery-search');
+  check('search entire available chapter index',()=>!!search&&!search.disabled);
+  const cards=gallery?.querySelectorAll('.lt-chapter-tile')||[];
+  check('bounded initial DOM',()=>cards.length===36);
+  check('explicit load-more for 37th chapter',()=>!!gallery?.querySelector('.lt-chapter-gallery-more'));
+  const track=gallery?.querySelector('.lt-chapter-gallery-track');
+  check('horizontal scrolling enabled',()=>track&&getComputedStyle(track).overflowX==='auto');
+  check('RT/LT visual orientation',()=>gallery?.dir==='rtl');
+  const count=gallery?.querySelector('.lt-chapter-gallery-subtitle')?.textContent||'';
+  check('37 real chapters displayed as available',()=>count.includes('37'));
+  check('no unapproved historical image falsely published',()=>cards.length&&
+    Array.from(cards).every(c=>c.dataset.thumbnailState==='missing-or-pending-approval'));
+  const resume=gallery?.querySelector('.lt-chapter-gallery-continue');
+  check('resume recognises actual saved chapter',()=>resume?.textContent.includes('14'));
+  search.value='34';search.dispatchEvent(new Event('input',{bubbles:true}));
+  check('search chapter 34 from unrendered range',()=>track.querySelectorAll('.lt-chapter-tile').length===1&&
+    track.querySelector('.lt-chapter-tile').dataset.chapterIndex==='33');
+  check('search never writes chapter progress',()=>get('chapter_'+id,-1)===13);
+  const target=track.querySelector('.lt-chapter-tile');
+  target.click();
+  check('selected real chapter 34 opened',()=>state.page==='reader'&&state.story?.id===id&&state.chapter===33);
+  check('reader has genuine source chapter body',()=>!!document.querySelector('.reader .sentence'));
+  check('reader progress stores the selected chapter only',()=>get('chapter_'+id,-1)===33);
+  check('gallery closed on chapter selection',()=>!document.querySelector('.lt-chapter-gallery'));
+  // Choosing a chapter from inside the open book must use stlChapter (no
+  // second reader history entry); dismissing it must NOT close the reader.
+  const insideButton=document.querySelector('.reader .lt-open-chapter-gallery');
+  check('chapter chooser accessible inside the real reader',()=>!!insideButton);
+  insideButton?.click();
+  check('in-reader chooser opens',()=>!!document.querySelector('dialog.lt-chapter-gallery'));
+  check('in-reader chooser does not change history',()=>history.state?.page==='reader');
+  const inner=document.querySelector('dialog.lt-chapter-gallery');
+  const innerSearch=inner?.querySelector('.lt-chapter-gallery-search');
+  if(innerSearch){
+   innerSearch.value='2';
+   innerSearch.dispatchEvent(new Event('input',{bubbles:true}));
+   check('in-reader chapter 2 search works',()=>inner.querySelectorAll('.lt-chapter-tile').length===1);
+   inner.querySelector('.lt-chapter-tile')?.click();
+   check('reader chapter changes without reopening app',()=>state.page==='reader'&&state.chapter===1);
+   check('in-reader stlChapter stores actual new progress',()=>get('chapter_'+id,-1)===1);
+   check('no duplicate reader history after in-reader chapter jump',()=>history.state?.page==='reader');
+   document.querySelector('.reader .lt-open-chapter-gallery')?.click();
+   document.querySelector('dialog.lt-chapter-gallery .lt-chapter-gallery-close')?.click();
+   check('dismiss in-reader chooser keeps reader open',()=>state.page==='reader');
+   check('dismiss does not pop reader history',()=>history.state?.page==='reader');
+  }
+  history.back();
+  await new Promise(resolve=>setTimeout(resolve,950));
+  check('system Back restores chapter gallery',()=>window.LinguaChapterGallery?.isOpen===true);
+  check('reader closed safely on Back',()=>state.page==='library');
+  const reopened=document.querySelector('.lt-chapter-gallery');
+  check('reopened gallery contains available chapters',()=>!!reopened?.querySelector('.lt-chapter-tile'));
+  document.body.setAttribute('data-lt-gallery-preview','READY');
+ }catch(e){errors.push('runtime: '+e.message)}
+ document.body.setAttribute('data-lt-chapter-gallery-qa',errors.length?'FAIL':'PASS');
+ document.body.setAttribute('data-lt-chapter-gallery-errors',errors.join(' | '));
+})();""";
+
 for name,script in list(tests.items()):
  if "openStory('around-the-world-in-eighty-days-towle')" not in script:
   continue
