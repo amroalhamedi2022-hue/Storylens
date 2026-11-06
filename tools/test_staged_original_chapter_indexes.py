@@ -54,5 +54,29 @@ class RealOriginalChapterIndexes(unittest.TestCase):
                         audit.staged_original_chapter_coverage(folder)
 
 
+    def test_moonstone_preserves_53_narrative_units_without_fictitious_chapter_count(self):
+        data = audit.moonstone_source_unit_coverage()
+        self.assertEqual(data["narrativeSourceUnitsNotChapterCount"], 53)
+        self.assertEqual(data["originalStructuralHeadingUnits"], 3)
+        self.assertEqual(data["narrativeUnitsWithoutMappedArt"], 53)
+
+    def test_moonstone_rejects_false_approval_or_missing_epilogue(self):
+        path = audit.STAGING / "the-moonstone" / "narrative-unit-index.json"
+        original = audit.jload(path)
+        loader = audit.jload
+        for kind, change in (
+            ("release", lambda m: m.__setitem__("releaseApproved", True)),
+            ("non-original", lambda m: m["narrativeUnits"][2].__setitem__("sourceGitBlobSha", "0" * 40)),
+            ("missing-epilogue", lambda m: m["narrativeUnits"].pop()),
+            ("false-image", lambda m: m["narrativeUnits"][0].__setitem__("primaryImage", {"fake": True})),
+        ):
+            with self.subTest(kind=kind):
+                fake = copy.deepcopy(original)
+                change(fake)
+                with patch.object(audit, "jload", side_effect=lambda p: fake if Path(p) == path else loader(p)):
+                    with self.assertRaises(ValueError):
+                        audit.moonstone_source_unit_coverage()
+
+
 if __name__ == "__main__":
     unittest.main()
