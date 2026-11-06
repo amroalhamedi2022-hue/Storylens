@@ -331,6 +331,33 @@ def generate() -> dict:
                          "chapterCount": None, "localCandidateChapters": 0,
                          "readyForUICards": 0, "missingImageChapters": None,
                          "missingReadyChapters": None, **valley_art})
+    scarlet_originals = 0
+    scarlet_manifest_path = STAGING / "study-in-scarlet-friston-1887-period-plates" / "manifest.json"
+    if scarlet_manifest_path.is_file():
+        scarlet_manifest = jload(scarlet_manifest_path)
+        if (scarlet_manifest.get("category") != "Category:A Study in Scarlet illustrated by D. H. Friston"
+                or scarlet_manifest.get("publicationApproved") is not False
+                or scarlet_manifest.get("chapterSceneMatchingComplete") is not False):
+            raise ValueError("1887 Sherlock Friston art archive source or rights changed unexpectedly")
+        originals_seen, binaries_seen = set(), set()
+        for art in scarlet_manifest["images"]:
+            source_sha1, webp_hash = art["originalCommonsSHA1MetadataOnly"], art["webpSha256"]
+            name = art.get("wikiFile", "")
+            if (name not in {f"File:A Study in Scarlet Friston 0{n}.jpg" for n in range(1, 5)}
+                    or art.get("sourceEdition") != scarlet_manifest.get("sourceEdition")
+                    or art.get("editoriallyApproved") is not False
+                    or art.get("rightsStatus") != "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW"
+                    or not art.get("originalCreator") or not art.get("commonsPage")
+                    or not art.get("individualCommonsLicense")):
+                raise ValueError("Unattributed, unlicensed, or incorrectly cleared Friston illustration")
+            if source_sha1 in originals_seen or webp_hash in binaries_seen:
+                raise ValueError("Duplicate Friston Sherlock illustration content")
+            check_binary(str((scarlet_manifest_path.parent / art["localPath"]).relative_to(ROOT)), webp_hash)
+            originals_seen.add(source_sha1)
+            binaries_seen.add(webp_hash)
+        scarlet_originals = len(scarlet_manifest["images"])
+        if scarlet_originals > 4:
+            raise ValueError("Nonoriginal Scarlet files counted as period artwork")
     kalila_colours = (
         verify_kalila_miniatures()
         if (STAGING / "kalila-original-colour-miniatures-20261105" / "manifest.json").is_file()
@@ -339,12 +366,18 @@ def generate() -> dict:
     for slug, title in OLDER:
         archive = STAGING / slug
         if archive.is_dir():
-            rows.append({"bookId": slug, "title": title,
-                         "sourceState": "older staged work; chapter-card coverage audit pending",
-                         "chapterCount": None, "localCandidateChapters": 0,
-                         "readyForUICards": 0, "missingImageChapters": None,
-                         "missingReadyChapters": None,
-                         "archivedLocalHistoricArt": kalila_colours if slug == "kalila-arabic-wikisource" else 0})
+            art_count = kalila_colours if slug == "kalila-arabic-wikisource" else (
+                scarlet_originals if slug == "a-study-in-scarlet" else 0
+            )
+            data = {"bookId": slug, "title": title,
+                    "sourceState": "older staged work; chapter-card coverage audit pending",
+                    "chapterCount": None, "localCandidateChapters": 0,
+                    "readyForUICards": 0, "missingImageChapters": None,
+                    "missingReadyChapters": None, "archivedLocalHistoricArt": art_count}
+            if slug == "a-study-in-scarlet":
+                data["unassignedHistorical1887FristonImageFiles"] = scarlet_originals
+                data["sourceState"] = "complete original English novel staged; original 1887 Friston plates archived but not visually matched to chapters"
+            rows.append(data)
     available = sum(r["localCandidateChapters"] for r in rows)
     ready = sum(r["readyForUICards"] for r in rows)
     return {
