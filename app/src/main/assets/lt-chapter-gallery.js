@@ -227,6 +227,57 @@ function appendChapterBatch(entry){
   entry.track.appendChild(more);
  }
 }
+// Keyboard arrows follow the actual book direction. Focus advances without
+// selecting a chapter; Enter/Space on the focused tile is still a native
+// button activation. This is independent of the reader's paper-fold engine.
+function focusChapterByArrow(entry,event){
+ const current=event.target?.closest?.('.lt-chapter-tile');
+ if(!current||!active||active!==entry)return;
+ const key=event.key,rtl=entry.dialog.dir==='rtl';
+ if(!['ArrowLeft','ArrowRight','Home','End'].includes(key))return;
+ const rendered=Array.from(entry.track.querySelectorAll?.('.lt-chapter-tile')||[]);
+ const index=rendered.indexOf(current);
+ if(index<0)return;
+ let target;
+ if(key==='Home')target=0;
+ else if(key==='End')target=entry.visible.length-1;
+ else target=index+((key==='ArrowLeft')==rtl?1:-1);
+ if(target<0||target>=entry.visible.length)return;
+ event.preventDefault?.();
+ // A keyboard user can reach the final chapter even if it was not in the
+ // first DOM batch; append only the necessary next slice(s).
+ while(target>=entry.rendered&&entry.more)appendChapterBatch(entry);
+ const tiles=Array.from(entry.track.querySelectorAll?.('.lt-chapter-tile')||[]);
+ tiles[target]?.focus?.({preventScroll:true});
+ tiles[target]?.scrollIntoView?.({block:'nearest',inline:'nearest',behavior:'auto'});
+}
+function decorateLibraryChapterAccess(){
+ // Legacy cards are clickable <article>s; they are NOT keyboard focusable.
+ // Add a genuine button for keyboard/TalkBack, revealed visually on focus,
+ // while leaving the full existing card tap and favorites untouched.
+ document.querySelectorAll?.('.library .card[onclick]').forEach(card=>{
+  if(card.querySelector?.('.lt-chapter-card-access'))return;
+  const handler=card.getAttribute?.('onclick')||'';
+  const id=handler.match(/^openStory\('([a-z0-9-]{1,95})'\);?$/)?.[1];
+  const story=id&&storyById(id);
+  if(!hasChapters(story))return;
+  const button=document.createElement('button');
+  button.className='lt-chapter-card-access';button.type='button';
+  button.textContent=locale('عرض الفصول','Show chapters');
+  button.setAttribute('aria-label',locale('عرض فصول ','Show chapters of ')+bookTitle(story));
+  card.appendChild(button);
+ });
+}
+const baseLibrary=global.library;
+if(typeof baseLibrary==='function'){
+ global.library=function(...args){
+  const result=baseLibrary.apply(this,args);
+  decorateLibraryChapterAccess();
+  return result;
+ };
+}
+decorateLibraryChapterAccess();
+
 function updateChapterFilter(entry){
  if(!active||active!==entry||!entry.story)return;
  const query=normalizedQuery(entry.search?.value);
@@ -368,6 +419,8 @@ function show(id,{historyEntry=true}={}){
  track.setAttribute('role','group');
  track.setAttribute('aria-label',locale('الفصول بالترتيب','Chapters in order'));
  track.setAttribute('aria-busy','true');
+ track.setAttribute('aria-keyshortcuts','ArrowLeft ArrowRight Home End');
+ track.addEventListener('keydown',event=>{if(active)focusChapterByArrow(active,event)});
  addText(track,'p','lt-chapter-gallery-loading',locale('جارٍ تجهيز الفصول المحلية…','Loading offline chapters…'));
  sheet.appendChild(track);
  const footer=document.createElement('footer');footer.className='lt-chapter-gallery-footer';
