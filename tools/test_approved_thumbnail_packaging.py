@@ -60,6 +60,8 @@ with tempfile.TemporaryDirectory() as name:
             "imagePath": original_path,
             "sha256": proof,
             "sourceUrl": "https://commons.wikimedia.org/wiki/File:Real_source_page.png",
+            "sourceEdition": "13th-century illustrated Arabic source, exact folio recorded",
+            "license": "Reviewed public-domain historical folio scan and territorial reuse",
             "sceneAnchor": "Source chapter one scene exact passage",
             "credit": "Original collection credited",
             "altAr": "صورة مخطوطة تاريخية ملوّنة",
@@ -114,12 +116,45 @@ with tempfile.TemporaryDirectory() as name:
     write()
     invoke(root, "--write", success=False)
     map_data["chapters"][0]["primaryImage"]["sha256"] = proof
+    for k, invalid in [
+        ("sourceUrl", "https://untrusted.example/folio.png"),
+        ("license", ""),
+        ("sourceEdition", ""),
+    ]:
+        original = map_data["chapters"][0]["primaryImage"][k]
+        map_data["chapters"][0]["primaryImage"][k] = invalid
+        write()
+        invoke(root, "--write", success=False)
+        map_data["chapters"][0]["primaryImage"][k] = original
+
+    # A picture must NOT be reused to illustrate a DIFFERENT book, even when
+    # both sources separately claim permission.
+    second_dir = root / "docs/literature/staging/other-book"
+    second_dir.mkdir(parents=True)
+    second = second_dir / "chapter-image-map.json"
+    second.write_text(json.dumps({
+        "schemaVersion": 1, "bookId": "other-book", "chapterCount": 1,
+        "releaseApproved": True, "chapters": [entry],
+    }), encoding="utf-8")
+    write()
+    invoke(root, "--write", success=False)
+    second.unlink()
+
+    # A historical scan that loses redistribution approval must NOT stay in
+    # the Android APK as an unused orphan; both --write and --check fail until
+    # the previously approved generated source copy is manually reviewed.
     map_data["chapters"][0]["primaryImage"]["distributionReviewApproved"] = False
     write()
+    invoke(root, "--check", success=False)
+    invoke(root, "--write", success=False)
+    assert expected.exists(), "revoked picture must not be silently erased by a tool"
+    expected.unlink()  # fixture represents deliberate human-reviewed removal
     invoke(root, "--write")
+    invoke(root, "--check")
     assert "Object.freeze({})" not in registry.read_text("utf-8"), (
-        "A globally released book with no approved images must still have a 2-chapter empty map"
+        "A released book with no approved images retains a 2-chapter empty map"
     )
-    assert '"primaryImage":null' in registry.read_text("utf-8")
+    assert result.count('"primaryImage":null') == 1
+    assert registry.read_text("utf-8").count('"primaryImage":null') == 2
 
-print("PASS: original-colour genuine-image binary intact, no premature art, correct chapter order, no duplicate source or traversal, strict rights and integrity checks")
+print("PASS: original-colour image integrity, archival edition/licence URL, safe chapter order, cross-book SHA dedupe, and orphaned revoked-art hard gate")
