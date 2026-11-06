@@ -8,7 +8,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from audit_unassigned_commons_original_art import audit, check_archive, is_trusted_https
+from audit_unassigned_commons_original_art import audit, check_archive, is_trusted_https, trusted_commons_download
 
 
 class OriginalArchiveAudit(unittest.TestCase):
@@ -68,6 +68,18 @@ class OriginalArchiveAudit(unittest.TestCase):
                     audit(self.root)
                 self.manifest["images"][0][field] = orig
                 self.write()
+
+    def test_authentic_wikimedia_thumbnail_cdn_is_allowed_but_impostor_rejected(self):
+        self.manifest["images"][0]["downloadURL"] = (
+            "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/original.jpg/960px-original.jpg"
+        )
+        self.write()
+        self.assertEqual(audit(self.root)["verifiedOriginalImageFiles"], 1)
+        self.assertTrue(trusted_commons_download(self.manifest["images"][0]["downloadURL"]))
+        self.manifest["images"][0]["downloadURL"] = "https://thumb.wikimedia.org.evil.test/img"
+        self.write()
+        with self.assertRaises(ValueError):
+            audit(self.root)
 
     def test_path_escape_and_unauthorised_publication_rejected(self):
         for field, value in (("localPath", "../outside.webp"),
