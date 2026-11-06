@@ -168,6 +168,34 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  s.api.close();
  assert.equal(s.historyCalls.at(-1).type,'back');
  assert.equal(s.api.isOpen,false);
+ // Reader exit timing can vary by WebView. Recover the actual previous
+ // gallery only AFTER the shell has completed its state transition.
+ const slowBack=scenario();
+ slowBack.clickBook();await tick();
+ slowBack.cards[0].children[0].children[1].children[0].emit('click');
+ slowBack.sandbox.state.page='reader';
+ slowBack.sandbox.state.story=slowBack.story;
+ slowBack.W.history.state={page:'chapter-gallery',storyId:'example-story'};
+ slowBack.listeners.popstate({state:{page:'chapter-gallery',storyId:'example-story'}});
+ assert.equal(slowBack.timerQueue.length,1);
+ slowBack.timerQueue.shift()();
+ assert.equal(slowBack.api.isOpen,false,'gallery must NOT overlay an active reader');
+ assert.equal(slowBack.timerQueue.length,1,'reader exit rescheduled while still animating');
+ slowBack.sandbox.state.page='library';
+ slowBack.timerQueue.shift()();
+ assert.equal(slowBack.api.isOpen,true,'gallery recovers after actual reader transition');
+ assert.equal(slowBack.historyCalls.filter(x=>x.type==='push').length,2,
+  'restoration never invents additional browser history entries');
+ const escaped=scenario();
+ escaped.clickBook();await tick();
+ escaped.cards[0].children[0].children[1].children[0].emit('click');
+ escaped.sandbox.state.page='reader';
+ escaped.W.history.state={page:'chapter-gallery',storyId:'example-story'};
+ escaped.listeners.popstate({state:{page:'chapter-gallery',storyId:'example-story'}});
+ escaped.W.history.state={page:'another-book'};
+ escaped.timerQueue.shift()();
+ assert.equal(escaped.api.isOpen,false,'stale delayed Back must not reopen prior story');
+
  // Force specifically APPROVED local source metadata; remote, traversal and
  // original artwork pending legal/editorial approval MUST stay hidden.
  const pending={imagePath:'art/old-folio.webp',editoriallyApproved:false,
