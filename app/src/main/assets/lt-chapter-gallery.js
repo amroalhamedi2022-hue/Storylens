@@ -123,6 +123,13 @@ function close(pushBack=true){
  if(!current)return false;
  current.moreObserver?.disconnect?.();
  current.moreObserver=null;
+ // A big offline novel is loaded sequentially. Closing the chooser before
+ // completion must stop future local script loads, not burn battery/RAM on
+ // a book the reader abandoned. The loader's own cancellation generation
+ // prevents a late resolve from re-opening or mutating the reader.
+ if(current.loadingLongBook&&!current.fromReader){
+  global.LinguaContentLoader?.cancel?.();
+ }
  ++serial;
  active=null;
  current.dialog?.close?.();
@@ -462,8 +469,14 @@ async function prepare(id,entry){
  // Only the previously installed offline loader may provide lazy chapters and
  // existing art; no new network request, API or literature import is added.
  try{
-  if(story.lazyBook===true&&global.LinguaContentLoader?.ensureStory)
-   await global.LinguaContentLoader.ensureStory(id);
+  if(story.lazyBook===true&&global.LinguaContentLoader?.ensureStory){
+   entry.loadingLongBook=true;
+   try{
+    await global.LinguaContentLoader.ensureStory(id);
+   }finally{
+    entry.loadingLongBook=false;
+   }
+  }
   // For legacy packaged scenes, reuse the existing idle art renderer on demand.
   const refreshed=storyById(id);
   const classic=refreshed?.lazyBook||refreshed?.fullWordCount>=25000||
@@ -597,7 +610,7 @@ function show(id,{historyEntry=true}={}){
  const entry={dialog,track,title,count,missing,locate,search,filter,layoutButton,
   layout:storedLayout==='list'?'list':'rail',
   continue:continueButton,searchSummary,restoreFocus,
-  token:++serial,id,rendered:0,more:null,fromReader};
+  token:++serial,id,rendered:0,more:null,fromReader,loadingLongBook:false};
  locate.addEventListener('click',()=>{
   if(active!==entry||!entry.story||!entry.hasProgress)return;
   // Locate without selecting or changing reading progress. On a 1000-chapter
