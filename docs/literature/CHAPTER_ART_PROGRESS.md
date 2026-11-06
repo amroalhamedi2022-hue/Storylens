@@ -8,7 +8,7 @@
 
 - Locally mapped chapter candidates: **280**.
 - Chapter cards with both territorial rights and editorial approval: **0**.
-- Verified historical art binaries retained in audited archives (all editions): **1188**; NOT necessarily chapter-aligned.
+- Verified historical art binaries retained in audited archives (all editions): **1192**; NOT necessarily chapter-aligned.
 
 ## Book-by-book audit
 

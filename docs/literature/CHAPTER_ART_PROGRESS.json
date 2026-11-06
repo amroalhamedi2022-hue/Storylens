@@ -6,8 +6,8 @@
   "counts": {
     "localCandidateChapterCards": 280,
     "readyChapterCards": 0,
-    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1188,
-    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1188
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1192,
+    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1192
   },
   "books": [
     {
@@ -222,10 +222,10 @@
       "missingImageChapters": 25,
       "missingReadyChapters": 33,
       "imageMap": "docs/literature/staging/illustrated-five-20261105/the-last-of-the-mohicans/chapter-image-map.json",
-      "archivedLocalHistoricArt": 66,
+      "archivedLocalHistoricArt": 70,
       "allArchivedImageTags": 12,
       "originalChapterMarkerOccurrencesNotVerifiedChapterCount": 33,
-      "unassignedHistoricalAndriolliImageFiles": 54
+      "unassignedHistoricalAndriolliImageFiles": 58
     },
     {
       "bookId": "the-gilded-age",
