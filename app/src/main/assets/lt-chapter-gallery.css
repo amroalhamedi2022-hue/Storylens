@@ -373,3 +373,12 @@ dialog.lt-chapter-gallery::backdrop{
  .reader .reader-hero .lt-approved-chapter-figure{padding:3px 6px}
  .reader .reader-hero .lt-approved-chapter-credit{font-size:10px;padding:2px}
 }
+
+/* Stored-progress labels distinguish a visited chapter from a completed one. */
+.lt-chapter-tile-visited{
+ display:block;margin:4px 12px 14px;
+ padding:5px 8px;align-self:flex-start;
+ border-radius:9px;border:1px solid rgba(48,104,89,.25);
+ background:rgba(48,104,89,.08);color:#275849;
+ font:600 11px/1.45 system-ui,sans-serif;
+}
