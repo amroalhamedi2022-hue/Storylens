@@ -1,0 +1,57 @@
+name: Literature - authentic four-part Arabic Arabian Nights transcription
+on:
+  push:
+    branches: [content/prior-requested-classics-20261105]
+    paths:
+      - 'tools/intake_arabian_nights_arabic_wikisource.py'
+      - '.github/workflows/literature-arabian-nights-arabic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: alf-layla-arabic-source-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  acquire-arabic:
+    if: github.ref == 'refs/heads/content/prior-requested-classics-20261105'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'requests==2.32.5' 'beautifulsoup4==4.14.2'
+      - name: Acquire four original Arabic literary source parts and verify every SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for part in 1 2 3 4; do
+            python tools/intake_arabian_nights_arabic_wikisource.py --part "$part"
+            python tools/intake_arabian_nights_arabic_wikisource.py --part "$part" --verify
+            printf -v folder 'part-%02d' "$part"
+            git add -f "docs/literature/staging/arabian-nights-arabic-wikisource-20261105/$folder"
+            if ! git diff --cached --quiet; then
+              git commit -m "Literature: archive Arabic Alf Layla wa Layla original part $part with exact source metadata"
+              git fetch origin "${GITHUB_REF_NAME}"
+              git rebase "origin/${GITHUB_REF_NAME}"
+              git push origin "HEAD:${GITHUB_REF_NAME}"
+            fi
+          done
+          python tools/intake_arabian_nights_arabic_wikisource.py --verify
+          echo "Four authentic transcriptions, not falsely aligned to Burton/1835 Bulaq."
+      - name: Keep source artifacts for verification on failed network
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: arabian-nights-four-arabic-source-parts
+          path: docs/literature/staging/arabian-nights-arabic-wikisource-20261105/
+          if-no-files-found: warn
+          retention-days: 21
