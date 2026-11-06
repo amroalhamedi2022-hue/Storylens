@@ -1,17 +1,17 @@
 /*
  * LT Antique Bound Book — approved owner reference, 2026-11-06.
  * Restrict the rich archival grain to material="book"; keep the other five
- * paper presets unchanged. Static layers, no animated filter, no canvas loop.
+ * paper presets unchanged and excludes standalone scene/night visual themes. Static layers, no animated filter, no canvas loop.
  * Do not touch real art, its rights gate, dictionary interactions or pagination.
  */
-html[data-lt-reader-material="book"] body .reader {
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader {
  --lt-paper-bg:#f2e3c7;
  --lt-paper-ink:#2a241d;
  --lt-antique-shadow:rgba(73,43,20,.34);
 }
-html[data-lt-reader-material="book"] body .reader #sentences.lt-curl-book>.lt-book-page,
-html[data-lt-reader-material="book"] body .reader #sentences:not(.lt-curl-book)>.lt-book-page,
-html[data-lt-reader-material="book"] body .reader .lt-book-page {
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader #sentences.lt-curl-book>.lt-book-page,
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader #sentences:not(.lt-curl-book)>.lt-book-page,
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .lt-book-page {
  background-color:#f3e6cc!important;
  background-image:
    linear-gradient(90deg,rgba(84,48,17,.17),rgba(120,78,36,.055) 3.5%,transparent 15%,transparent 83%,rgba(104,59,21,.065) 97%,rgba(81,48,20,.14)),
@@ -32,7 +32,7 @@ html[data-lt-reader-material="book"] body .reader .lt-book-page {
    inset -7px 0 13px rgba(80,45,20,.07),
    inset 0 0 15px rgba(133,84,35,.10)!important;
 }
-html[data-lt-reader-material="book"] body .reader .lt-book-page:after {
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .lt-book-page:after {
  /* A quiet printed-page falloff only: never covers or recolours ink. */
  background:
   linear-gradient(90deg,rgba(73,42,15,.075),transparent 8%,transparent 91%,rgba(73,42,15,.04)),
@@ -42,33 +42,33 @@ html[data-lt-reader-material="book"] body .reader .lt-book-page:after {
 /* Show left/right leaves as one open book, retaining the DOM and curl engine's
    independent RTL binding, touch targets, focus and sentence dimensions. */
 @media (orientation:landscape) and (min-width:700px) {
- html[data-lt-reader-material="book"] body .reader #sentences.lt-curl-book[data-spread="2"] {
+ html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader #sentences.lt-curl-book[data-spread="2"] {
   gap:0!important;
   box-shadow:0 12px 35px rgba(4,9,16,.25),0 3px 0 rgba(93,54,27,.28);
   border-radius:11px;
  }
- html[data-lt-reader-material="book"] body .reader #sentences.lt-curl-book[data-spread="2"]>.lt-book-page {
+ html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader #sentences.lt-curl-book[data-spread="2"]>.lt-book-page {
   margin:0!important;
   border-radius:4px!important;
   min-width:0;
   box-shadow:inset 0 0 15px rgba(100,62,31,.12)!important;
  }
- html[data-lt-reader-material="book"] body .reader #sentences.lt-curl-book[data-spread="2"]>.lt-book-page:first-child {
+ html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader #sentences.lt-curl-book[data-spread="2"]>.lt-book-page:first-child {
   box-shadow:inset -16px 0 21px rgba(77,49,31,.13),inset 0 0 15px rgba(100,62,31,.1)!important;
  }
- html[data-lt-reader-material="book"] body .reader #sentences.lt-curl-book[data-spread="2"]>.lt-book-page:nth-child(2) {
+ html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader #sentences.lt-curl-book[data-spread="2"]>.lt-book-page:nth-child(2) {
   box-shadow:inset 16px 0 21px rgba(77,49,31,.13),inset 0 0 15px rgba(100,62,31,.1)!important;
  }
 }
 /* Typographic hierarchy closer to the reference illustration: generous,
    crisp black printing without text shadows or forced page reflow. */
-html[data-lt-reader-material="book"] body .reader .lt-book-page :is(.sentence,.inline-ar,.inline-en),
-html[data-lt-reader-material="book"] body .reader .lt-book-page p {
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .lt-book-page :is(.sentence,.inline-ar,.inline-en),
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .lt-book-page p {
  color:#29241e!important;
  text-shadow:none!important;
  -webkit-text-stroke:0!important;
 }
-html[data-lt-reader-material="book"] body .reader .reading-width>h2 {
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .reading-width>h2 {
  font-family:var(--lt-ar-font,"Noto Naskh Arabic",Georgia,serif);
  text-align:center;
  color:#2c251d;
@@ -76,14 +76,14 @@ html[data-lt-reader-material="book"] body .reader .reading-width>h2 {
  letter-spacing:0;
  margin-block:12px 18px!important;
 }
-html[data-lt-reader-material="book"] body .reader .reading-width>.reader-label {
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .reading-width>.reader-label {
  text-align:center;letter-spacing:.055em;
  color:#665238!important;
  margin-block:18px 3px!important;
 }
 /* Archival engravings sit in the text flow with paper-coloured matte and no
    distracting glossy frame. Original plate pixels remain full-colour/uncropped. */
-html[data-lt-reader-material="book"] body .reader figure.lt-inline-illustration {
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader figure.lt-inline-illustration {
  max-width:min(100%,620px);
  margin:clamp(13px,2.3vw,25px) auto!important;
  box-shadow:0 3px 9px rgba(68,43,18,.10)!important;
@@ -93,7 +93,7 @@ html[data-lt-reader-material="book"] body .reader figure.lt-inline-illustration 
  padding:clamp(5px,1vw,10px)!important;
  break-inside:avoid;
 }
-html[data-lt-reader-material="book"] body .reader figure.lt-inline-illustration img {
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader figure.lt-inline-illustration img {
  display:block;
  width:100%;
  height:auto;
@@ -107,7 +107,7 @@ html[data-lt-reader-material="book"] body .reader figure.lt-inline-illustration 
  mix-blend-mode:normal!important;
  opacity:1!important;
 }
-html[data-lt-reader-material="book"] body .reader figure.lt-inline-illustration figcaption {
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader figure.lt-inline-illustration figcaption {
  background:transparent!important;
  color:#514436!important;
  font:normal clamp(11px,1.7vw,13px)/1.6 Georgia,"Noto Naskh Arabic",serif!important;
@@ -116,17 +116,17 @@ html[data-lt-reader-material="book"] body .reader figure.lt-inline-illustration 
 }
 /* Full historical manuscript margins, shades and rights-gated reproductions
    are not transformed or masked even when the default page has paper grain. */
-html[data-lt-reader-material="book"] body .reader figure.lt-inline-illustration:is(.lt-archive-colour-original,.lt-archive-source-approved) img {
+html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader figure.lt-inline-illustration:is(.lt-archive-colour-original,.lt-archive-source-approved) img {
  width:100%;max-height:min(65svh,590px);
  object-fit:contain!important;mask-image:none!important;
  -webkit-mask-image:none!important;filter:none!important;
 }
 @media(max-width:650px) {
- html[data-lt-reader-material="book"] body .reader #sentences>.lt-book-page {
+ html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader #sentences>.lt-book-page {
   padding:clamp(16px,5vw,26px)!important;
  }
- html[data-lt-reader-material="book"] body .reader figure.lt-inline-illustration {
+ html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader figure.lt-inline-illustration {
   max-width:100%!important;float:none!important;clear:both;
  }
 }
-/* Night/white/cream/comfort/fibre materials are intentionally unaffected. */
+/* Other materials and scene-specific dark chapters are deliberately unaffected. */
