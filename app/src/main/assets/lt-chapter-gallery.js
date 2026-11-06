@@ -555,10 +555,20 @@ global.addEventListener?.('popstate',event=>{
  // history entry, only when the reader really has returned to library.
  if(event.state?.page==='chapter-gallery'&&lastReaderBook===event.state.storyId){
   const id=lastReaderBook;
-  global.setTimeout?.(()=>{
-   if(!active&&state.page==='library'&&storyById(id))
+  // The existing animated reader close can take 190ms; older Android
+  // WebViews may instead use the shell's 480ms history fallback. Poll for
+  // the actual library state, never force an early second reader/overlay.
+  const recover=(attempt)=>{
+   if(active||lastReaderBook!==id||!storyById(id)||
+      global.history?.state?.page!=='chapter-gallery'||
+      global.history?.state?.storyId!==id)return;
+   if(state.page==='library'){
     show(id,{historyEntry:false});
-  },270);
+    return;
+   }
+   if(attempt<12)global.setTimeout?.(()=>recover(attempt+1),120);
+  };
+  global.setTimeout?.(()=>recover(0),270);
  }
 });
 })(window);
