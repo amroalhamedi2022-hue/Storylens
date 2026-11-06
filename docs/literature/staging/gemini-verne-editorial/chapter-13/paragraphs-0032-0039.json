@@ -1,0 +1,149 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 13,
+  "chapterTitle": "In which Passepartout receives a new proof that fortune favors the brave.",
+  "startParagraphZeroBased": 32,
+  "paragraphCount": 8,
+  "sourceSha256": "c714225e3847543880041ec4f9fd44b4e40c47584b70fbd2ed1d2c47e12d7568",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 32,
+      "en": "“But what can you hope to do?” asked Sir Francis. “In a few hours it will be daylight, and—”",
+      "existingArabicDraft": "سأله السير فرانسيس: «لكن ما الذي تأمل فعله؟ لن تمضي سوى ساعات قليلة حتى يطلع النهار، و...»"
+    },
+    {
+      "index": 33,
+      "en": "“The chance which now seems lost may present itself at the last moment.”",
+      "existingArabicDraft": "قال فوغ: «قد تظهر الفرصة التي تبدو الآن ضائعة في اللحظة الأخيرة.»"
+    },
+    {
+      "index": 34,
+      "en": "Sir Francis would have liked to read Phileas Fogg’s eyes. What was this cool Englishman thinking of? Was he planning to make a rush for the young woman at the very moment of the sacrifice, and boldly snatch her from her executioners?",
+      "existingArabicDraft": "تمنى السير فرانسيس لو استطاع قراءة عيني فيلياس فوغ. ما الذي يفكر فيه هذا الإنجليزي الهادئ؟ أكان ينوي الاندفاع نحو الشابة لحظة إقامة الطقس، وانتزاعها بجرأة من أيدي منفذي الحكم؟"
+    },
+    {
+      "index": 35,
+      "en": "This would be utter folly, and it was hard to admit that Fogg was such a fool. Sir Francis consented, however, to remain to the end of this terrible drama. The guide led them to the rear of the glade, where they were able to observe the sleeping groups.",
+      "existingArabicDraft": "كان ذلك سيبدو تهورًا محضًا، وصعبًا أن يُصدّق المرء أن فوغ قد يكون أحمق إلى هذا الحد. ومع ذلك وافق السير فرانسيس على البقاء حتى نهاية هذا المشهد المروّع. وقادهم الدليل إلى مؤخرة الفسحة، حيث استطاعوا مراقبة المجموعات النائمة."
+    },
+    {
+      "index": 36,
+      "en": "Meanwhile Passepartout, who had perched himself on the lower branches of a tree, was resolving an idea which had at first struck him like a flash, and which was now firmly lodged in his brain.",
+      "existingArabicDraft": "في هذه الأثناء، كان باسبارتو قد اعتلى الأغصان المنخفضة لشجرة، وراح يفكر في فكرة خطرت له أول مرة كالبرق، ثم استقرت في ذهنه."
+    },
+    {
+      "index": 37,
+      "en": "He had commenced by saying to himself, “What folly!” and then he repeated, “Why not, after all? It’s a chance—perhaps the only one; and with such sots!” Thinking thus, he slipped, with the suppleness of a serpent, to the lowest branches, the ends of which bent almost to the ground.",
+      "existingArabicDraft": "بدأ يقول لنفسه: «يا لها من حماقة!» ثم عاد يكرر: «ولمَ لا في النهاية؟ إنها فرصة، وربما الوحيدة، ومع هؤلاء المخمورين!» وبينما يفكر، انزلق بمرونة أفعى إلى أدنى الأغصان، حتى كادت أطرافها تلامس الأرض."
+    },
+    {
+      "index": 38,
+      "en": "The hours passed, and the lighter shades now announced the approach of day, though it was not yet light. This was the moment. The slumbering multitude became animated, the tambourines sounded, songs and cries arose; the hour of the sacrifice had come. The doors of the pagoda swung open, and a bright light escaped from its interior, in the midst of which Mr. Fogg and Sir Francis espied the victim. She seemed, having shaken off the stupor of intoxication, to be striving to escape from her executioner. Sir Francis’s heart throbbed; and, convulsively seizing Mr. Fogg’s hand, found in it an open knife. Just at this moment the crowd began to move. The young woman had again fallen into a stupor caused by the fumes of hemp, and passed among the fakirs, who escorted her with their wild, religious cries.",
+      "existingArabicDraft": "مضت الساعات، وبدأت درجات الضوء الأخف تعلن اقتراب الفجر، مع أن النهار لم يكن قد أشرق بعد. كانت تلك اللحظة. دبّ النشاط في الحشود النائمة، وصدحت الدفوف، وارتفعت الأغاني والصيحات؛ فقد حان موعد الطقس. انفتحت أبواب المعبد، وانبعث منها ضوء ساطع رأى في وسطه فوغ والسير فرانسيس الضحية. بدت وكأنها، بعد أن بدأت تستعيد وعيها من أثر التخدير، تحاول الفرار من منفذ الحكم. خفق قلب السير فرانسيس، وأمسك يد فوغ بشدة، فوجد فيها سكينًا مفتوحًا. وفي تلك اللحظة بدأت الحشود تتحرك. لكن الشابة عادت إلى غيبوبة أحدثتها أبخرة القنب، ومُررت بين المتنسكين الذين رافقوها بصيحاتهم الدينية الجامحة."
+    },
+    {
+      "index": 39,
+      "en": "Phileas Fogg and his companions, mingling in the rear ranks of the crowd, followed; and in two minutes they reached the banks of the stream, and stopped fifty paces from the pyre, upon which still lay the rajah’s corpse. In the semi-obscurity they saw the victim, quite senseless, stretched out beside her husband’s body. Then a torch was brought, and the wood, heavily soaked with oil, instantly took fire.",
+      "existingArabicDraft": "سار فيلياس فوغ ورفاقه خلف الصفوف الأخيرة من الحشد، ووصلوا خلال دقيقتين إلى ضفة الجدول، وتوقفوا على بعد خمسين خطوة من المحرقة التي ظل جسد الراجا ممددًا فوقها. وفي شبه الظلام رأوا الضحية فاقدة الوعي تمامًا، ممددة بجوار جسد زوجها. ثم أُحضرت شعلة، فاشتعل الحطب المشبع بالزيت فورًا."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "سأله السير فرانسيس: «لكن ما الذي تأمل فعله؟ لن تمضي سوى ساعات قليلة حتى يطلع النهار، و...»"
+    },
+    {
+      "index": 1,
+      "ar": "«قد تظهر الفرصة التي تبدو الآن ضائعة في اللحظة الأخيرة.»"
+    },
+    {
+      "index": 2,
+      "ar": "تمنى السير فرانسيس لو استطاع قراءة عيني فيلياس فوغ. ما الذي يفكر فيه هذا الإنجليزي الهادئ؟ أكان ينوي الاندفاع نحو الشابة لحظة تقديم القرابين، وانتزاعها بجرأة من أيدي جلاديها؟"
+    },
+    {
+      "index": 3,
+      "ar": "كان ذلك سيبدو تهورًا محضًا، وصعبًا أن يُصدّق المرء أن فوغ قد يكون أحمق إلى هذا الحد. ومع ذلك وافق السير فرانسيس على البقاء حتى نهاية هذه الدراما المروّعة. وقادهم الدليل إلى مؤخرة الفسحة، حيث استطاعوا مراقبة المجموعات النائمة."
+    },
+    {
+      "index": 4,
+      "ar": "في هذه الأثناء، كان باسبارتو، الذي استقر على الأغصان المنخفضة لشجرة، يعالج في ذهنها فكرة خطرت له أول مرة كالبرق، ثم استقرت الآن بجدية في رأسه."
+    },
+    {
+      "index": 5,
+      "ar": "بدأ يقول لنفسه: «يا لها من حماقة!» ثم عاد يكرر: «ولمَ لا بعد كل شيء؟ إنها فرصة، وربما الوحيدة، ومع هؤلاء السكارى!» وبينما كان يفكر على هذا النحو، انزلق بمرونة أفعى إلى أدنى الأغصان التي كانت أطرافها تنحني حتى تكاد تلامس الأرض."
+    },
+    {
+      "index": 6,
+      "ar": "مضت الساعات، وبدأت الألوان الخافتة تعلن اقتراب النهار، مع أنه لم يكن قد أنار بعد. كانت تلك اللحظة المناسبة. دبّ النشاط في الحشود النائمة، وصدحت الدفوف، وارتفعت الأغاني والصيحات؛ فقد حان موعد تقديم القربان. انفتحت أبواب المعبد، وانبعث ضوء ساطع من داخله، أبصر في وسطه السيد فوغ والسير فرانسيس الضحية. بدت، بعد أن تخلصت من بلادة التخدير، وكأنها تحاول الفرار من جلاّدها. خفق قلب السير فرانسيس، وبحركة متشنجة أمسك يد السيد فوغ، فوجد فيها سكينًا مفتوحًا. وفي تلك اللحظة بالذات بدأت الحشود في التحرك. كانت الشابة قد سقطت مرة أخرى في غيبوبة سببتها أبخرة القنب، وسارت وسط المتنسكين الذين رافقوها بصيحاتهم الدينية الجامحة."
+    },
+    {
+      "index": 7,
+      "ar": "تخلل فيلياس فوغ ورفاقه الصفوف الخلفية للحشد وتابعوهما؛ وفي غضون دقيقتين بلغوا ضفة الجدول، وتوقفوا على بعد خمسين خطوة من المحرقة التي كان جثمان الراجا ممدداً فوقها. وفي شبه الظلام، أبصروا الضحية فاقدة الوعي تماماً وممددة إلى جوار جثة زوجها. ثم جيء بشعلة، فاشتعل الحطب المغمور بغزارة بالزيت على الفور."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": false,
+      "issues": "خطأ نحوي في عبارة «في ذهنها» والصحيح «في ذهنه»."
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "خطأ في الترجمة في عبارة «تخلل فيلياس فوغ ورفاقه الصفوف» حيث أن الأصل يعني اختلطوا أو اندمجوا مع الحشد، وترجمة «تابعوهما» غير دقيقة."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

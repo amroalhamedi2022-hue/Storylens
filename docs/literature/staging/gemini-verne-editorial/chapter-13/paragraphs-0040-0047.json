@@ -1,0 +1,149 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 13,
+  "chapterTitle": "In which Passepartout receives a new proof that fortune favors the brave.",
+  "startParagraphZeroBased": 40,
+  "paragraphCount": 8,
+  "sourceSha256": "0861a4ac40417307f68e772511ea9c4119d8ddf21ca2e034ce8e1e7c05327ebc",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 40,
+      "en": "At this moment Sir Francis and the guide seized Phileas Fogg, who, in an instant of mad generosity, was about to rush upon the pyre. But he had quickly pushed them aside, when the whole scene suddenly changed. A cry of terror arose. The whole multitude prostrated themselves, terror-stricken, on the ground.",
+      "existingArabicDraft": "في تلك اللحظة أمسك السير فرانسيس والدليل بفيلياس فوغ، الذي كان على وشك الاندفاع نحو المحرقة بدافع من شجاعة متهورة. لكنه دفعهما جانبًا بسرعة، وفجأة تبدل المشهد كله. علت صيحة رعب، وانطرحت الجموع كلها على الأرض وقد استولى عليها الذعر."
+    },
+    {
+      "index": 41,
+      "en": "The old rajah was not dead, then, since he rose of a sudden, like a spectre, took up his wife in his arms, and descended from the pyre in the midst of the clouds of smoke, which only heightened his ghostly appearance.",
+      "existingArabicDraft": "لم يكن الراجا المسن ميتًا إذن؛ فقد نهض فجأة كالشبح، وحمل زوجته بين ذراعيه ونزل عن المحرقة وسط سحب الدخان التي زادت مظهره غرابة ورهبة."
+    },
+    {
+      "index": 42,
+      "en": "Fakirs and soldiers and priests, seized with instant terror, lay there, with their faces on the ground, not daring to lift their eyes and behold such a prodigy.",
+      "existingArabicDraft": "وارتمى المتنسكون والجنود والكهنة على وجوههم، وقد استولى عليهم الرعب المفاجئ، ولم يجرؤوا على رفع أعينهم لرؤية هذه المعجزة."
+    },
+    {
+      "index": 43,
+      "en": "The inanimate victim was borne along by the vigorous arms which supported her, and which she did not seem in the least to burden. Mr. Fogg and Sir Francis stood erect, the Parsee bowed his head, and Passepartout was, no doubt, scarcely less stupefied.",
+      "existingArabicDraft": "حُملت الضحية التي بدت بلا حراك بين ذراعين قويتين، ولم يبدُ أنها تثقل عليهما إطلاقًا. وقف السيد فوغ والسير فرانسيس منتصبين، وأطرق البارسي برأسه، أما باسبارتو فكان مذهولًا، على الأرجح، بقدرهم جميعًا."
+    },
+    {
+      "index": 44,
+      "en": "The resuscitated rajah approached Sir Francis and Mr. Fogg, and, in an abrupt tone, said, “Let us be off!”",
+      "existingArabicDraft": "اقترب الراجا الذي بدا وكأنه عاد إلى الحياة من السير فرانسيس والسيد فوغ، وقال بلهجة مقتضبة: «هيا بنا!»"
+    },
+    {
+      "index": 45,
+      "en": "It was Passepartout himself, who had slipped upon the pyre in the midst of the smoke and, profiting by the still overhanging darkness, had delivered the young woman from death! It was Passepartout who, playing his part with a happy audacity, had passed through the crowd amid the general terror.",
+      "existingArabicDraft": "كان باسبارتو نفسه هو من تسلل إلى المحرقة وسط الدخان، مستفيدًا من الظلام الذي ما زال يخيم على المكان، وأنقذ الشابة من الموت! هو باسبارتو الذي شق طريقه بين الحشد بجرأة ذكية بينما كان الجميع غارقين في الرعب."
+    },
+    {
+      "index": 46,
+      "en": "A moment after all four of the party had disappeared in the woods, and the elephant was bearing them away at a rapid pace. But the cries and noise, and a ball which whizzed through Phileas Fogg’s hat, apprised them that the trick had been discovered.",
+      "existingArabicDraft": "وبعد لحظات، اختفى الأربعة في الغابة، وكان الفيل يحملهم مبتعدًا بسرعة. لكن الصيحات والضجيج، ورصاصة مرت قرب قبعة فيلياس فوغ، أبلغتهم أن الحيلة قد كُشفت."
+    },
+    {
+      "index": 47,
+      "en": "The old rajah’s body, indeed, now appeared upon the burning pyre; and the priests, recovered from their terror, perceived that an abduction had taken place. They hastened into the forest, followed by the soldiers, who fired a volley after the fugitives; but the latter rapidly increased the distance between them, and ere long found themselves beyond the reach of the bullets and arrows.",
+      "existingArabicDraft": "ظهر جسد الراجا المسن على المحرقة المشتعلة بالفعل، وأدرك الكهنة، بعد أن استعادوا رشدهم من الرعب، أن عملية اختطاف قد وقعت. فأسرعوا إلى الغابة يتبعهم الجنود الذين أطلقوا وابلًا من الرصاص وراء الفارين؛ لكن الفارين زادوا المسافة بينهم وبين مطارديهم بسرعة، وسرعان ما خرجوا من مدى الرصاص والسهام."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "في تلك اللحظة أمسك السير فرانسيس والدليل بفيلياس فوغ، الذي كان على وشك الاندفاع نحو المحرقة بدافع من كرم متهور. لكنه دفعهما جانبًا بسرعة، وفجأة تبدل المشهد كله. علت صيحة رعب، وانطرحت الجموع كلها على الأرض وقد استولى عليها الذعر."
+    },
+    {
+      "index": 1,
+      "ar": "لم يكن الراجا المسن ميتًا إذن؛ فقد نهض فجأة كالشبح، وحمل زوجته بين ذراعيه، ونزل عن المحرقة وسط سحب الدخان التي زادت مظهره الشبحي هيبة."
+    },
+    {
+      "index": 2,
+      "ar": "وارتمى المتنسكون والجنود والكهنة على وجوههم، وقد استولى عليهم الرعب المفاجئ، ولم يجرؤوا على رفع أعينهم لرؤية هذه المعجزة."
+    },
+    {
+      "index": 3,
+      "ar": "حُملت الضحية التي كانت بلا حراك بين ذراعين قويتين دعتاها، ولم يبدُ أنها تثقل عليهما إطلاقًا. وقف السيد فوغ والسير فرانسيس منتصبين، وأطرق البارسي برأسه، أما باسبارتو فكان مذهولًا، بلا شك، بدرجة لا تقل عنهم."
+    },
+    {
+      "index": 4,
+      "ar": "اقترب الراجا الذي بعث من جديد من السير فرانسيس والسيد فوغ، وقال بلهجة حادة: «لننطلق!»"
+    },
+    {
+      "index": 5,
+      "ar": "كان باسبارتو نفسه هو من تسلل إلى المحرقة وسط الدخان، مستفيدًا من الظلام الذي كان لا يزال يخيم على المكان، فأنقذ الشابة من الموت! هو باسبارتو الذي أدى دوره بجرأة سعيدة، مخترقًا الحشد وسط الرعب العام."
+    },
+    {
+      "index": 6,
+      "ar": "وبعد لحظات، اختفى الأفراد الأربعة في الغابة، وكان الفيل يحملهم مبتعدًا بخطى سريعة. لكن الصيحات والضجيج، ورصاصة مرّت بصوت صفير عبر قبعة فيلياس فوغ، أبلغتهم أن الحيلة قد كُشفت."
+    },
+    {
+      "index": 7,
+      "ar": "فقد ظهر جسد الراجا المسن بالفعل فوق المحرقة المشتعلة؛ وأدرك الكهنة، بعد أن أفاقوا من رعبهم، أن عملية اختطاف قد تمت. فأسرعوا إلى داخل الغابة يتبعهم الجنود الذين أطلقوا وابلًا من الرصاص وراء الهاربين؛ بيد أن هؤلاء الأخيرين وسّعوا الفارق بينهم وبين مطارديهم بسرعة، وسرعان ما وجدوا أنفسهم خارج مدى الرصاص والسهام."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

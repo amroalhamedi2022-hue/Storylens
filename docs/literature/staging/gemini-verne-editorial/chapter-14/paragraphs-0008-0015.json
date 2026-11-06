@@ -1,0 +1,150 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 14,
+  "chapterTitle": "In which Phileas Fogg descends the whole length of the beautiful valley of the Ganges without ever thinking of seeing it.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "f55e488dd5ea8e92dd86a4ddd3160e85985cdb65df52c0c456c59165b502648e",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "“Her shining tresses, divided in two parts, encircle the harmonious contour of her white and delicate cheeks, brilliant in their glow and freshness. Her ebony brows have the form and charm of the bow of Kama, the god of love, and beneath her long silken lashes the purest reflections and a celestial light swim, as in the sacred lakes of Himalaya, in the black pupils of her great clear eyes. Her teeth, fine, equal, and white, glitter between her smiling lips like dewdrops in a passionflower’s half-enveloped breast. Her delicately formed ears, her vermilion hands, her little feet, curved and tender as the lotus-bud, glitter with the brilliancy of the loveliest pearls of Ceylon, the most dazzling diamonds of Golconda. Her narrow and supple waist, which a hand may clasp around, sets forth the outline of her rounded figure and the beauty of her bosom, where youth in its flower displays the wealth of its treasures; and beneath the silken folds of her tunic she seems to have been modelled in pure silver by the godlike hand of Vicvarcarma, the immortal sculptor.”",
+      "existingArabicDraft": "«تنسدل خصلات شعرها اللامع في قسمين، فتطوّق انحناءة خديها الأبيضين الرقيقين، المتوهّجين نضارةً وإشراقًا. وحاجباها الأبنوسيان يشبهان قوس كاما، إله الحب، في شكلهما وسحرهما؛ وتحت رموشها الحريرية الطويلة تسبح في سواد حدقتيها الصافيتين انعكاسات نقية ونور سماوي، كما في بحيرات الهيمالايا المقدسة. وتتلألأ أسنانها المتساوية البيضاء بين شفتيها المبتسمتين كقطرات الندى في قلب زهرة الآلام نصف المنغلقة. أما أذناها المصوغتان بدقة، ويداها القرمزيتان، وقدماها الصغيرتان المقوّستان الرقيقتان كبرعم اللوتس، فتلمع كأجمل لآلئ سيلان وأبهى ألماس غولكوندا. ويُبرز خصرها الضيق المرن، الذي تكاد اليد تطوّقه، استدارة قوامها وجمال صدرها، حيث يتفتح الشباب بكل ثرائه؛ وتحت طيات ثوبها الحريري تبدو كأن يد الإله فيشفاكارما، النحّات الخالد، قد صاغتها من فضة خالصة.»"
+    },
+    {
+      "index": 9,
+      "en": "It is enough to say, without applying this poetical rhapsody to Aouda, that she was a charming woman, in all the European acceptation of the phrase. She spoke English with great purity, and the guide had not exaggerated in saying that the young Parsee had been transformed by her bringing up.",
+      "existingArabicDraft": "يكفي أن نقول، دون إسقاط هذه المبالغة الشعرية على عودة، إنها امرأة فاتنة بالمعنى الأوروبي للكلمة. وكانت تتحدث الإنجليزية بصفاء كبير، ولم يكن الدليل مبالغًا حين قال إن تربيتها جعلت الشابة البارسية أقرب إلى الأوروبيات في سلوكها."
+    },
+    {
+      "index": 10,
+      "en": "The train was about to start from Allahabad, and Mr. Fogg proceeded to pay the guide the price agreed upon for his service, and not a farthing more; which astonished Passepartout, who remembered all that his master owed to the guide’s devotion. He had, indeed, risked his life in the adventure at Pillaji, and, if he should be caught afterwards by the Indians, he would with difficulty escape their vengeance. Kiouni, also, must be disposed of. What should be done with the elephant, which had been so dearly purchased? Phileas Fogg had already determined this question.",
+      "existingArabicDraft": "كان القطار يستعد للمغادرة من الله آباد، فتقدّم السيد فوغ لدفع الأجر المتفق عليه للدليل، لا فلسًا واحدًا فوقه. أثار ذلك دهشة باسبارتو، إذ تذكّر أن الدليل خاطر بحياته وفاءً لهم، وأنه قد لا ينجو من انتقام الهنود إن وقع في أيديهم لاحقًا. وكان لا بد أيضًا من التصرف بالفيل كيوني الذي اشتروه بثمن باهظ. ماذا سيفعلون به؟ كان فيلياس فوغ قد حسم الأمر بالفعل."
+    },
+    {
+      "index": 11,
+      "en": "“Parsee,” said he to the guide, “you have been serviceable and devoted. I have paid for your service, but not for your devotion. Would you like to have this elephant? He is yours.”",
+      "existingArabicDraft": "قال فوغ للدليل: «لقد كنت نافعًا ومخلصًا يا بارسي. دفعت لك أجر خدمتك، لكنني لم أدفع ثمن وفائك. هل ترغب في أن تأخذ هذا الفيل؟ إنه لك.»"
+    },
+    {
+      "index": 12,
+      "en": "The guide’s eyes glistened.",
+      "existingArabicDraft": "لمعت عينا الدليل."
+    },
+    {
+      "index": 13,
+      "en": "“Your honour is giving me a fortune!” cried he.",
+      "existingArabicDraft": "صاح الدليل: «إنك تمنحني ثروة يا سيدي!»"
+    },
+    {
+      "index": 14,
+      "en": "“Take him, guide,” returned Mr. Fogg, “and I shall still be your debtor.”",
+      "existingArabicDraft": "أجابه السيد فوغ: «خذه يا دليل، وسأظل مدينًا لك مع ذلك.»"
+    },
+    {
+      "index": 15,
+      "en": "“Good!” exclaimed Passepartout. “Take him, friend. Kiouni is a brave and faithful beast.” And, going up to the elephant, he gave him several lumps of sugar, saying, “Here, Kiouni, here, here.”",
+      "existingArabicDraft": "هتف باسبارتو: «رائع! خذه يا صديقي؛ فكيوني حيوان شجاع وفيّ.» ثم اقترب من الفيل وأعطاه عدة قطع من السكر، وهو يقول: «تعال يا كيوني، تعال، تعال.»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«تنسدل خصلات شعرها اللامع في قسمين، فتطوّق انحناءة خديها الأبيضين الرقيقين، المتوهّجين نضارةً وإشراقًا. وحاجباها الأبنوسيان يشبهان قوس كاما، إله الحب، في شكلهما وسحرهما؛ وتحت رموشها الحريرية الطويلة تسبح في سواد حدقتيها الصافيتين انعكاسات نقية ونور سماوي، كما في بحيرات الهيمالايا المقدسة. وتتلألأ أسنانها المتساوية البيضاء بين شفتيها المبتسمتين كقطرات الندى في قلب زهرة الآلام نصف المنغلقة. أما أذناها المصوغتان بدقة، ويداها القرمزيتان، وقدماها الصغيرتان المقوّستان الرقيقتان كبرعم اللوتس، فتلمع كأجمل لآلئ سيلان وأبهى ألماس غولكوندا. ويُبرز خصرها الضيق المرن، الذي تكاد اليد تطوّقه، استدارة قوامها وجمال صدرها، حيث يتفتح الشباب بكل ثرائه؛ وتحت طيات ثوبها الحريري تبدو كأن يد الإله فيشفاكارما، النحّات الخالد، قد صاغتها من فضة خالصة.»"
+    },
+    {
+      "index": 1,
+      "ar": "يكفي أن نقول، دون إسقاط هذه المبالغة الشعرية على عودة، إنها كانت امرأة فاتنة بكل ما تعنيه الكلمة في المفهوم الأوروبي. وكانت تتحدث الإنجليزية بطلاقة فائقة، ولم يكن الدليل مبالغًا حين قال إن الشابة البارسية قد تغيرت كليًا بفعل تربيتها."
+    },
+    {
+      "index": 2,
+      "ar": "كان القطار على وشك التحرك من الله آباد، فشرع السيد فوغ في دفع المبلغ المتفق عليه لقاء خدمة الدليل، دون زيادة فلس واحد؛ وهو ما أثار دهشة باسبارتو الذي تذكر كل ما يَدين به سيده لإخلاص الدليل. فقد كان هذا الأخير قد خاطب بحياته في مغامرة بيلاجي، وإذا تم القبض عليه لاحقًا من قِبل الهنود، فلن ينجو بسهولة من انتقامهم. وكان لا بد أيضًا من التصرف بأمر كيوني. فماذا ينبغي العمل بالفيل الذي تم شراؤه بثمن باهظ؟ كان فيلياس فوغ قد حسم هذه المسألة سلفًا."
+    },
+    {
+      "index": 3,
+      "ar": "قال الدليل: «أيها البارسِي، لقد كنت نافعًا ومخلصًا. لقد دفعت ثمن خدمتك، لا ثمن إخلاصك. أترغب في الحصول على هذا الفيل؟ إنه ملكك.»"
+    },
+    {
+      "index": 4,
+      "ar": "برقت عيناك الدليل."
+    },
+    {
+      "index": 5,
+      "ar": "هتف قائلًا: «إن سعادتك تمنحني ثروة!»"
+    },
+    {
+      "index": 6,
+      "ar": "رد السيد فوغ: «خذه، أيها الدليل، وسأظل مع ذلك مدينًا لك.»"
+    },
+    {
+      "index": 7,
+      "ar": "هتف باسبارتو: «حسناً! خذه يا صديقي. فكيوني حيوان شجاع وأمين.» واقترب من الفيل مقدماً إليه بضع قطع من السكر، وهو يقول: «هيا يا كيوني، هيا، هيا.»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "خطأ مطبعي: وردت كلمة 'فخاطب' والصواب 'فخاطر' بحياته."
+    },
+    {
+      "index": 3,
+      "adequate": false,
+      "issues": "خطأ في الحوار: المتحدث هو السيد فوغ وليس الدليل، والخطاب موجه إلى البارسي."
+    },
+    {
+      "index": 4,
+      "adequate": false,
+      "issues": "خطأ نحوي: وردت 'عيناك الدليل' والصواب 'عينا الدليل'."
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

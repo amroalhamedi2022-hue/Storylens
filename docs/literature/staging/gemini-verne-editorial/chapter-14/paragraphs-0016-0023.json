@@ -1,0 +1,150 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 14,
+  "chapterTitle": "In which Phileas Fogg descends the whole length of the beautiful valley of the Ganges without ever thinking of seeing it.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "12a98133ad5ab70078d477beeb82695dd7287fce9a14283115ebf87860ee6304",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "The elephant grunted out his satisfaction, and, clasping Passepartout around the waist with his trunk, lifted him as high as his head. Passepartout, not in the least alarmed, caressed the animal, which replaced him gently on the ground.",
+      "existingArabicDraft": "أطلق الفيل صوتًا يدل على رضاه، ثم لفّ خرطومه حول خصر باسبارتو ورفعه حتى مستوى رأسه. ولم يفزع باسبارتو على الإطلاق؛ بل أخذ يربّت على الحيوان، الذي أعاده برفق إلى الأرض."
+    },
+    {
+      "index": 17,
+      "en": "Soon after, Phileas Fogg, Sir Francis Cromarty, and Passepartout, installed in a carriage with Aouda, who had the best seat, were whirling at full speed towards Benares. It was a run of eighty miles, and was accomplished in two hours. During the journey, the young woman fully recovered her senses. What was her astonishment to find herself in this carriage, on the railway, dressed in European habiliments, and with travellers who were quite strangers to her! Her companions first set about fully reviving her with a little liquor, and then Sir Francis narrated to her what had passed, dwelling upon the courage with which Phileas Fogg had not hesitated to risk his life to save her, and recounting the happy sequel of the venture, the result of Passepartout’s rash idea. Mr. Fogg said nothing; while Passepartout, abashed, kept repeating that “it wasn’t worth telling.”",
+      "existingArabicDraft": "بعد قليل، ركب فيلياس فوغ والسير فرانسيس وباسبارتو عربةً مع عودة التي مُنحت أفضل مقعد، وانطلقوا بأقصى سرعة نحو بنارس. قطعوا مسافة ثمانين ميلًا في ساعتين. وخلال الرحلة استعادت الشابة وعيها تمامًا، فدهشت حين وجدت نفسها في عربة قطار، ترتدي ثيابًا أوروبية وترافق غرباء لا تعرفهم. وبعد أن ساعدوها على استعادة قواها بقليل من الشراب، روى لها السير فرانسيس ما حدث، وأثنى على شجاعة فوغ الذي خاطر بحياته لإنقاذها، ثم شرح كيف نجحت الخطة بفضل فكرة باسبارتو الجريئة. لم يقل السيد فوغ شيئًا، بينما ظل باسبارتو مرتبكًا يكرر أن الأمر «لا يستحق كل هذا الحديث»."
+    },
+    {
+      "index": 18,
+      "en": "Aouda pathetically thanked her deliverers, rather with tears than words; her fine eyes interpreted her gratitude better than her lips. Then, as her thoughts strayed back to the scene of the sacrifice, and recalled the dangers which still menaced her, she shuddered with terror.",
+      "existingArabicDraft": "شكرت عودة منقذيها بتأثر، وكانت دموعها أبلغ من كلماتها؛ فقد عبّرت عيناها عن امتنانها أكثر مما استطاعت شفتاها. ثم عادت بذاكرتها إلى مشهد التضحية والمخاطر التي ما زالت تهددها، فارتجفت رعبًا."
+    },
+    {
+      "index": 19,
+      "en": "Phileas Fogg understood what was passing in Aouda’s mind, and offered, in order to reassure her, to escort her to Hong Kong, where she might remain safely until the affair was hushed up⁠—an offer which she eagerly and gratefully accepted. She had, it seems, a Parsee relation, who was one of the principal merchants of Hong Kong, which is wholly an English city, though on an island on the Chinese coast.",
+      "existingArabicDraft": "فهم فيلياس فوغ ما يدور في ذهن عودة، وعرض أن يرافقها إلى هونغ كونغ لتقيم هناك بأمان إلى أن تهدأ القضية؛ فقبلت عرضه بامتنان ولهفة. وكان لها، كما اتضح، قريب بارسي من كبار تجار هونغ كونغ، وهي مدينة يغلب عليها الطابع الإنجليزي وتقع في جزيرة قبالة الساحل الصيني."
+    },
+    {
+      "index": 20,
+      "en": "At half-past twelve the train stopped at Benares. The Brahmin legends assert that this city is built on the site of the ancient Casi, which, like Muhammad’s tomb, was once suspended between heaven and earth; though the Benares of today, which the Orientalists call the Athens of India, stands quite unpoetically on the solid earth, Passepartout caught glimpses of its brick houses and clay huts, giving an aspect of desolation to the place, as the train entered it.",
+      "existingArabicDraft": "توقف القطار في بنارس عند الثانية عشرة والنصف. وتقول أساطير البراهمة إن المدينة بُنيت في موقع كاسي القديمة، التي قيل إنها كانت معلّقة بين السماء والأرض مثل قبر محمد. أما بنارس الحديثة، التي يسميها المستشرقون أثينا الهند، فهي قائمة على الأرض الصلبة بلا شاعرية؛ وقد لمح باسبارتو بيوتًا من الطوب وأكواخًا طينية بدت كئيبة حين دخلها القطار."
+    },
+    {
+      "index": 21,
+      "en": "Benares was Sir Francis Cromarty’s destination, the troops he was rejoining being encamped some miles northward of the city. He bade adieu to Phileas Fogg, wishing him all success, and expressing the hope that he would come that way again in a less original but more profitable fashion. Mr. Fogg lightly pressed him by the hand. The parting of Aouda, who did not forget what she owed to Sir Francis, betrayed more warmth; and, as for Passepartout, he received a hearty shake of the hand from the gallant general.",
+      "existingArabicDraft": "كانت بنارس وجهة السير فرانسيس كرومارتي، إذ كان الجنود الذين سيعود إليهم يخيمون على بُعد أميال شمال المدينة. ودّع فوغ متمنيًا له النجاح، ومعربًا عن أمله في أن يمر من هناك مرة أخرى في ظروف أقل غرابة وأكثر نفعًا. صافحه فوغ بخفة. أما وداع عودة للسير فرانسيس فكان أدفأ، لأنها لم تنسَ فضله عليها، وتلقى باسبارتو بدوره مصافحة حارة من الجنرال الشجاع."
+    },
+    {
+      "index": 22,
+      "en": "The railway, on leaving Benares, passed for a while along the valley of the Ganges. Through the windows of their carriage the travellers had glimpses of the diversified landscape of Behar, with its mountains clothed in verdure, its fields of barley, wheat, and corn, its jungles peopled with green alligators, its neat villages, and its still thickly-leaved forests. Elephants were bathing in the waters of the sacred river, and groups of Indians, despite the advanced season and chilly air, were performing solemnly their pious ablutions. These were fervent Brahmins, the bitterest foes of Buddhism, their deities being Vishnu, the solar god, Shiva, the divine impersonation of natural forces, and Brahma, the supreme ruler of priests and legislators. What would these divinities think of India, anglicised as it is today, with steamers whistling and scudding along the Ganges, frightening the gulls which float upon its surface, the turtles swarming along its banks, and the faithful dwelling upon its borders?",
+      "existingArabicDraft": "تابع القطار طريقه بعد بنارس بمحاذاة وادي الغانج لبعض الوقت. ومن نوافذ العربة شاهد المسافرون مشاهد متنوعة من بيهار: جبالًا تكسوها الخضرة، وحقول الشعير والقمح والذرة، وأدغالًا تعيش فيها تماسيح خضراء، وقرى مرتبة وغابات كثيفة الأوراق. وكانت الفيلة تستحم في مياه النهر المقدس، فيما يؤدي الهنود، رغم برودة الجو وتقدم الموسم، طقوس اغتسالهم الدينية بخشوع. وكان هؤلاء من البراهمة المتحمسين، أشد خصوم البوذية، ويعبدون فيشنو إله الشمس، وشيفا تجسيد قوى الطبيعة، وبراهما سيد الكهنة والمشرّعين. وتساءل الراوي: ماذا ستقول هذه الآلهة عن الهند التي غدت إنجليزية الطابع، حيث تصفر البواخر في الغانج وتخيف النوارس الطافية على سطحه، وتتزاحم السلاحف على ضفافه، بينما يقيم المؤمنون بمحاذاته؟"
+    },
+    {
+      "index": 23,
+      "en": "The panorama passed before their eyes like a flash, save when the steam concealed it fitfully from the view; the travellers could scarcely discern the fort of Chupenie, twenty miles southwestward from Benares, the ancient stronghold of the rajahs of Behar; or Ghazipur and its famous rosewater factories; or the tomb of Lord Cornwallis, rising on the left bank of the Ganges; the fortified town of Buxar, or Patna, a large manufacturing and trading-place, where is held the principal opium market of India; or Monghir, a more than European town, for it is as English as Manchester or Birmingham, with its iron foundries, edgetool factories, and high chimneys puffing clouds of black smoke heavenward.",
+      "existingArabicDraft": "مرّت اللوحة الطبيعية أمام أعينهم كلمحة خاطفة، ولم يحجبها عنهم البخار إلا على نحو متقطع. وبالكاد لمح المسافرون حصن تشوبيني، على بُعد عشرين ميلًا جنوب غرب بنارس، وهو معقل قديم لراجات بيهار؛ أو غازيپور ومصانع ماء الورد الشهيرة فيها؛ أو ضريح اللورد كورنواليس القائم على الضفة اليسرى للغانج؛ أو بلدة بوكسار المحصنة، أو باتنا، مركز التصنيع والتجارة الذي يضم أكبر سوق للأفيون في الهند؛ أو مونغير، المدينة التي بدت أوروبية بل إنجليزية مثل مانشستر وبرمنغهام، بمسابك الحديد ومصانع الأدوات والمداخن العالية التي تنفث سحب الدخان الأسود نحو السماء."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "أطلق الفيل صوتًا يدل على رضاه، ثم لفّ خرطومه حول خصر باسبارتو ورفعه حتى مستوى رأسه. ولم يفزع باسبارتو على الإطلاق؛ بل أخذ يربّت على الحيوان، الذي أعاده برفق إلى الأرض."
+    },
+    {
+      "index": 1,
+      "ar": "بعد قليل، ركب فيلياس فوغ والسير فرانسيس وباسبارتو عربةً مع عودة التي مُنحت أفضل مقعد، وانطلقوا بأقصى سرعة نحو بنارس. قطعوا مسافة ثمانين ميلًا في ساعتين. وخلال الرحلة استعادت الشابة وعيها تمامًا، فدهشت حين وجدت نفسها في عربة قطار، ترتدي ثيابًا أوروبية وترافق غرباء لا تعرفهم. وبعد أن ساعدوها على استعادة قواها بقليل من الشراب، روى لها السير فرانسيس ما حدث، وأثنى على شجاعة فوغ الذي خاطر بحياته لإنقاذها، ثم شرح كيف نجحت الخطة بفضل فكرة باسبارتو الجريئة. لم يقل السيد فوغ شيئًا، بينما ظل باسبارتو مرتبكًا يكرر أن الأمر «لا يستحق كل هذا الحديث»."
+    },
+    {
+      "index": 2,
+      "ar": "شكرت عودة منقذيها بتأثر، وكانت دموعها أبلغ من كلماتها؛ فقد عبّرت عيناها عن امتنانها أكثر مما استطاعت شفتاها. ثم عادت بذاكرتها إلى مشهد التضحية والمخاطر التي ما زالت تهددها، فارتجفت رعبًا."
+    },
+    {
+      "index": 3,
+      "ar": "فهم فيلياس فوغ ما يدور في ذهن عودة، وعرض أن يرافقها إلى هونغ كونغ لتقيم هناك بأمان إلى أن تهدأ القضية؛ فقبلت عرضه بامتنان ولهفة. وكان لها، كما اتضح، قريب بارسي من كبار تجار هونغ كونغ، وهي مدينة يغلب عليها الطابع الإنجليزي وتقع في جزيرة قبالة الساحل الصيني."
+    },
+    {
+      "index": 4,
+      "ar": "توقف القطار في بنارس عند الثانية عشرة والنصف. وتقول أساطير البراهمة إن المدينة بُنيت في موقع كاسي القديمة، التي قيل إنها كانت معلّقة بين السماء والأرض مثل قبر محمد. أما بنارس الحديثة، التي يسميها المستشرقون أثينا الهند، فهي قائمة على الأرض الصلبة بلا شاعرية؛ وقد لمح باسبارتو بيوتًا من الطوب وأكواخًا طينية بدت كئيبة حين دخلها القطار."
+    },
+    {
+      "index": 5,
+      "ar": "كانت بنارس وجهة السير فرانسيس كرومارتي، إذ كان الجنود الذين سيعود إليهم يخيمون على بُعد أميال شمال المدينة. ودّع فوغ متمنيًا له النجاح، ومعربًا عن أمله في أن يمر من هناك مرة أخرى في ظروف أقل غرابة وأكثر نفعًا. صافحه فوغ بخفة. أما وداع عودة للسير فرانسيس فكان أدفأ، لأنها لم تنسَ فضله عليها، وتلقى باسبارتو بدوره مصافحة حارة من الجنرال الشجاع."
+    },
+    {
+      "index": 6,
+      "ar": "تابع القطار طريقه بعد بنارس بمحاذاة وادي الغانج لبعض الوقت. ومن نوافذ العربة شاهد المسافرون مشاهد متنوعة من بيهار: جبالًا تكسوها الخضرة، وحقول الشعير والقمح والذرة، وأدغالًا تعيش فيها تماسيح خضراء، وقرى مرتبة وغابات كثيفة الأوراق. وكانت الفيلة تستحم في مياه النهر المقدس، فيما يؤدي الهنود، رغم برودة الجو وتقدم الموسم، طقوس اغتسالهم الدينية بخشوع. وكان هؤلاء من البراهمة المتحمسين، أشد خصوم البوذية، ويعبدون فيشنو إله الشمس، وشيفا تجسيد قوى الطبيعة، وبراهما سيد الكهنة والمشرّعين. وتساءل الراوي: ماذا ستقول هذه الآلهة عن الهند التي غدت إنجليزية الطابع، حيث تصفر البواخر في الغانج وتخيف النوارس الطافية على سطحه، وتتزاحم السلاحف على ضفافه، بينما يقيم المؤمنون بمحاذاته؟"
+    },
+    {
+      "index": 7,
+      "ar": "مرّت اللوحة الطبيعية أمام أعينهم كلمحة خاطفة، ولم يحجبها عنهم البخار إلا على نحو متقطع. وبالكاد لمح المسافرون حصن تشوبيني، على بُعد عشرين ميلًا جنوب غرب بنارس، وهو معقل قديم لراجات بيهار؛ أو غازيپور ومصانع ماء الورد الشهيرة فيها؛ أو ضريح اللورد كورنواليس القائم على الضفة اليسرى للغانج؛ أو بلدة بوكسار المحصنة، أو باتنا، مركز التصنيع والتجارة الذي يضم أكبر سوق للأفيون في الهند؛ أو مونغير، المدينة التي بدت أوروبية بل إنجليزية مثل مانشستر وبرمنغهام، بمسابك الحديد ومصانع الأدوات والمداخن العالية التي تنفث سحب الدخان الأسود نحو السماء."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

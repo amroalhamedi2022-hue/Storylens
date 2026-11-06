@@ -1,0 +1,151 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 15,
+  "chapterTitle": "In which the bag of bank-notes disgorges some thousands of pounds more.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "11725e2e651e932df0b43fa0555519526701d765affc4cd9831485c8507365f9",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The train entered the station, and Passepartout, jumping out first, was followed by Mr. Fogg, who assisted his fair companion to descend. Phileas Fogg intended to proceed at once to the Hong Kong steamer, in order to get Aouda comfortably settled for the voyage. He was unwilling to leave her while they were still on dangerous ground.",
+      "existingArabicDraft": "دخل القطار المحطة، فقفز باسبارتو إلى الرصيف أولًا، ثم تبعه السيد فوغ الذي ساعد رفيقته الشابة على النزول. كان فيلياس فوغ ينوي التوجه فورًا إلى الباخرة المتجهة إلى هونغ كونغ كي يهيئ لعودة مكانًا مريحًا في الرحلة. ولم يكن يريد تركها ما دام الخطر يحيط بها."
+    },
+    {
+      "index": 1,
+      "en": "Just as he was leaving the station a policeman came up to him and said, “Mr. Phileas Fogg?” “I am he.” “Is this man your servant?” added the policeman, pointing to Passepartout. “Yes.” “Be so good, both of you, as to follow me.”",
+      "existingArabicDraft": "وما إن همّ بمغادرة المحطة حتى اقترب منه شرطي وسأله: «أأنت السيد فيلياس فوغ؟» فأجاب: «أنا هو». ثم أشار الشرطي إلى باسبارتو وسأل: «وهل هذا الرجل خادمك؟» قال فوغ: «نعم». فقال الشرطي: «تفضلا، أنت وهو، واتبعاني»."
+    },
+    {
+      "index": 2,
+      "en": "Mr. Fogg betrayed no surprise whatever. The policeman was a representative of the law, and law is sacred to an Englishman. Passepartout tried to reason about the matter, but the policeman tapped him with his stick, and Mr. Fogg made him a signal to obey. “May this young lady go with us?” asked he. “She may,” replied the policeman.",
+      "existingArabicDraft": "لم يُبدِ فوغ أي دهشة. فالشرطي ممثل للقانون، والقانون عند الإنجليزي أمر مقدس. حاول باسبارتو الاعتراض وإقناع الشرطي، لكن الأخير نقره بعصاه، وأشار فوغ إلى خادمه أن يطيع. وسأل فوغ: «هل يمكن لهذه الشابة أن تأتي معنا؟» فأجابه الشرطي: «يمكنها ذلك»."
+    },
+    {
+      "index": 3,
+      "en": "Mr. Fogg, Aouda, and Passepartout were conducted to a “palki-gahri,” a sort of four-wheeled carriage drawn by two horses, in which they took their places and were driven away. No one spoke during the twenty minutes which elapsed before they reached their destination.",
+      "existingArabicDraft": "اقتيد فوغ وعودة وباسبارتو إلى عربة تُسمّى «بالكي غاري»، وهي مركبة ذات أربع عجلات تجرها خيلان. جلسوا فيها وانطلقت بهم. ولم يتبادل أحد منهم كلمة واحدة طوال الدقائق العشرين التي انقضت قبل وصولهم إلى وجهتهم."
+    },
+    {
+      "index": 4,
+      "en": "They first passed through the “black town,” with its narrow streets, its miserable, dirty huts, and squalid population; then through the “European town,” which presented a relief in its bright brick mansions, shaded by coconut trees and bristling with masts, where, although it was early morning, elegantly dressed horsemen and handsome equipages were passing back and forth.",
+      "existingArabicDraft": "مرّوا أولًا بالمدينة السوداء، بشوارعها الضيقة وأكواخها القذرة البائسة وسكانها الذين يعيشون في شقاء؛ ثم دخلوا المدينة الأوروبية، فبدت كأنها استراحة للعين ببيوتها المبنية من الطوب الفاتح، وظلال أشجار جوز الهند والصواري الكثيرة. وعلى الرغم من أن الصباح كان لا يزال مبكرًا، كانت الخيالة الأنيقة والعربات الفاخرة تتنقل ذهابًا وإيابًا."
+    },
+    {
+      "index": 5,
+      "en": "The carriage stopped before a modest-looking house, which, however, did not have the appearance of a private mansion. The policeman, having requested his prisoners—for so, truly, they might be called—to descend, conducted them into a room with barred windows and said, “You will appear before Judge Obadiah at half-past eight.” He then retired and closed the door.",
+      "existingArabicDraft": "توقفت العربة أمام منزل متواضع المظهر، لكنه لم يكن يشبه منزلًا خاصًا. طلب الشرطي من «السجناء» النزول—وكان من الممكن حقًا وصفهم بذلك—ثم قادهم إلى غرفة نوافذها ذات قضبان، وقال: «ستمثلون أمام القاضي أوباديا عند الثامنة والنصف». ثم انسحب وأغلق الباب."
+    },
+    {
+      "index": 6,
+      "en": "“Why, we are prisoners!” exclaimed Passepartout, falling into a chair. Aouda, with an emotion she tried to conceal, said to Mr. Fogg, “Sir, you must leave me to my fate! It is on my account that you receive this treatment; it is for having saved me!”",
+      "existingArabicDraft": "صاح باسبارتو وهو يهوي على كرسي: «ماذا؟ نحن سجناء!» وقالت عودة للسيد فوغ، وهي تحاول إخفاء اضطرابها: «سيدي، عليك أن تتركني لمصيري! إنما أُعامل بهذه الطريقة بسبب إنقاذك لي!»"
+    },
+    {
+      "index": 7,
+      "en": "Phileas Fogg contented himself with saying that it was impossible. It was quite unlikely that he should be arrested for preventing a suttee. The complainants would not dare present themselves with such a charge. There was some mistake. Moreover, he would not, in any event, abandon Aouda, but would escort her to Hong Kong.",
+      "existingArabicDraft": "اكتفى فيلياس فوغ بالقول إن ذلك مستحيل. فمن المستبعد جدًا أن يُعتقل لأنه منع طقس إحراق أرملة. ولم يكن المشتكون ليجرؤوا على تقديم اتهام كهذا؛ لا بد أن هناك خطأ. وعلى أي حال، لم يكن سيترك عودة، بل سيصطحبها إلى هونغ كونغ."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "دخل القطار المحطة، فقفز باسبارتو إلى الرصيف أولًا، ثم تبعه السيد فوغ الذي ساعد رفيقته الشابة على النزول. كان فيلياس فوغ ينوي التوجه فورًا إلى الباخرة المتجهة إلى هونغ كونغ كي يهيئ لعودة مكانًا مريحًا في الرحلة. ولم يكن يريد تركها ما دام الخطر يحيط بها."
+    },
+    {
+      "index": 1,
+      "ar": "وما إن همّ بمغادرة المحطة حتى اقترب منه شرطي وسأله: «أأنت السيد فيلياس فوغ؟» فأجاب: «أنا هو». ثم أشار الشرطي إلى باسبارتو وسأل: «وهل هذا الرجل خادمك؟» قال فوغ: «نعم». فقال الشرطي: «تفضلا، أنت وهو، واتبعاني»."
+    },
+    {
+      "index": 2,
+      "ar": "لم يُبدِ فوغ أي دهشة. فالشرطي ممثل للقانون، والقانون عند الإنجليزي أمر مقدس. حاول باسبارتو الاعتراض وإقناع الشرطي، لكن الأخير نقره بعصاه، وأشار فوغ إلى خادمه أن يطيع. وسأل فوغ: «هل يمكن لهذه الشابة أن تأتي معنا؟» فأجابه الشرطي: «يمكنها ذلك»."
+    },
+    {
+      "index": 3,
+      "ar": "اقتيد فوغ وعودة وباسبارتو إلى عربة تُسمّى «بالكي غاري»، وهي مركبة ذات أربع عجلات تجرها خيلان. جلسوا فيها وانطلقت بهم. ولم يتبادل أحد منهم كلمة واحدة طوال الدقائق العشرين التي انقضت قبل وصولهم إلى وجهتهم."
+    },
+    {
+      "index": 4,
+      "ar": "مرّوا أولًا بالمدينة السوداء، بشوارعها الضيقة وأكواخها القذرة البائسة وسكانها الذين يعيشون في شقاء؛ ثم دخلوا المدينة الأوروبية، فبدت كأنها استراحة للعين ببيوتها المبنية من الطوب الفاتح، وظلال أشجار جوز الهند والصواري الكثيرة. وعلى الرغم من أن الصباح كان لا يزال مبكرًا، كانت الخيالة الأنيقة والعربات الفاخرة تنقل ذهابًا وإيابًا."
+    },
+    {
+      "index": 5,
+      "ar": "توقفت العربة أمام منزل متواضع المظهر، لكنه لم يكن يشبه منزلًا خاصًا. طلب الشرطي من «السجناء» النزول—وكان من الممكن حقًا وصفهم بذلك—ثم قادهم إلى غرفة نوافذها ذات قضبان، وقال: «ستمثلون أمام القاضي أوباديا عند الثامنة والنصف». ثم انسحب وأغلق الباب."
+    },
+    {
+      "index": 6,
+      "ar": "صاح باسبارتو وهو يهوي على كرسي: «ماذا؟ نحن سجناء!» وقالت عودة للسيد فوغ، وهي تحاول إخفاء اضطرابها: «سيدي، عليك أن تتركني لمصيري! إنما أُعامل بهذه الطريقة بسبب إنقاذك لي!»"
+    },
+    {
+      "index": 7,
+      "ar": "اكتفى فيلياس فوغ بالقول إن ذلك مستحيل. فمن المستبعد جدًا أن يُعتقل لأنه منع طقس إحراق أرملة. ولم يكن المشتكون ليجرؤوا على تقديم اتهام كهذا؛ لا بد أن هناك خطأ. وعلى أي حال، لم يكن سيترك عودة، بل سيصطحبها إلى هونغ كونغ."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": false,
+      "issues": "خطأ في الترجمة: تم ترجمة Aouda إلى عودة بدلا من أودا"
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": false,
+      "issues": "خطأ في الترجمة: تم ترجمة Aouda إلى عودة بدلا من أودا"
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "خطأ في الترجمة: تم ترجمة Aouda إلى عودة بدلا من أودا"
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

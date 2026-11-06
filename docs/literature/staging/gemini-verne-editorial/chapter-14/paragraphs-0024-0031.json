@@ -1,0 +1,80 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 14,
+  "chapterTitle": "In which Phileas Fogg descends the whole length of the beautiful valley of the Ganges without ever thinking of seeing it.",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 3,
+  "sourceSha256": "368e906d1fd35b6e14c53219ffa7dcdae6333d345a1a98ed64361b3fc755359f",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "Night came on; the train passed on at full speed, in the midst of the roaring of the tigers, bears, and wolves which fled before the locomotive; and the marvels of Bengal, Golconda ruined Gour, Murshedabad, the ancient capital, Burdwan, Hugly, and the French town of Chandernagor, where Passepartout would have been proud to see his country’s flag flying, were hidden from their view in the darkness.",
+      "existingArabicDraft": "حلّ الليل، وظل القطار يندفع بأقصى سرعة وسط زئير النمور والدببة والذئاب التي تهرب أمام القاطرة. واختفت عن الأنظار في الظلام عجائب البنغال، وغولكوندا، وغور المدمّرة، ومرشد آباد العاصمة القديمة، وبردوان، وهوغلي، ومدينة تشانديرناغور الفرنسية التي كان باسبارتو سيفخر برؤية علم بلاده يرفرف فيها."
+    },
+    {
+      "index": 25,
+      "en": "Calcutta was reached at seven in the morning, and the packet left for Hong Kong at noon; so that Phileas Fogg had five hours before him.",
+      "existingArabicDraft": "وصلوا إلى كلكتا عند السابعة صباحًا، وكانت الباخرة إلى هونغ كونغ تغادر ظهرًا؛ لذلك بقي أمام فيلياس فوغ خمس ساعات."
+    },
+    {
+      "index": 26,
+      "en": "According to his journal, he was due at Calcutta on the 25th of October, and that was the exact date of his actual arrival. He was therefore neither behindhand nor ahead of time. The two days gained between London and Bombay had been lost, as has been seen, in the journey across India. But it is not to be supposed that Phileas Fogg regretted them.",
+      "existingArabicDraft": "بحسب دفتر رحلته، كان موعد وصوله إلى كلكتا هو الخامس والعشرين من أكتوبر، وهذا هو بالضبط تاريخ وصوله الفعلي. فلم يكن متأخرًا عن الوقت ولا متقدمًا عليه. وكان اليومان اللذان كسبهما بين لندن وبومباي قد ضاعا، كما رأينا، خلال عبور الهند. لكن لا ينبغي أن يُظن أن فيلياس فوغ ندم على ضياعهما."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "حلّ الليل، وظل القطار يندفع بأقصى سرعة وسط زئير النمور والدببة والذئاب التي تهرب أمام القاطرة. واختفت عن الأنظار في الظلام عجائب البنغال، وغولكوندا، وغور المدمّرة، ومرشد آباد العاصمة القديمة، وبردوان، وهوغلي، ومدينة تشانديرناغور الفرنسية التي كان باسبارتو سيفخر برؤية علم بلاده يرفرف فيها."
+    },
+    {
+      "index": 1,
+      "ar": "وصلوا إلى كلكتا عند السابعة صباحًا، وكانت الباخرة إلى هونغ كونغ تغادر ظهرًا؛ لذلك بقي أمام فيلياس فوغ خمس ساعات."
+    },
+    {
+      "index": 2,
+      "ar": "بحسب دفتر رحلته، كان موعد وصوله إلى كلكتا هو الخامس والعشرين من أكتوبر، وهذا هو بالضبط تاريخ وصوله الفعلي. فلم يكن متأخرًا عن الوقت ولا متقدمًا عليه. وكان اليومان اللذان كسبهما بين لندن وبومباي قد ضاعا، كما رأينا، خلال عبور الهند. لكن لا ينبغي أن يُظن أن فيلياس فوغ ندم على ضياعهما."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

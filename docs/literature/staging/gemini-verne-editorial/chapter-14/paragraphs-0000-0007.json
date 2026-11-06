@@ -1,0 +1,150 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 14,
+  "chapterTitle": "In which Phileas Fogg descends the whole length of the beautiful valley of the Ganges without ever thinking of seeing it.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "82727ebf5314e9f95805d613ac19de6119d213d0fe64930a088b558ccaeb0880",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The rash exploit had been accomplished; and for an hour Passepartout laughed gaily at his success. Sir Francis pressed the worthy fellow’s hand, and his master said, “Well done!” which, from him, was high commendation; to which Passepartout replied that all the credit of the affair belonged to Mr. Fogg. As for him, he had only been struck with a “queer” idea; and he laughed to think that for a few moments he, Passepartout, the ex-gymnast, ex-sergeant fireman, had been the spouse of a charming woman, a venerable, embalmed rajah! As for the young Indian woman, she had been unconscious throughout of what was passing, and now, wrapped up in a travelling-blanket, was reposing in one of the howdahs.",
+      "existingArabicDraft": "كانت المغامرة المتهوّرة قد نجحت، وظل باسبارتو يضحك مبتهجًا طوال ساعة. وصافح السير فرانسيس يد الرجل الطيب، وقال له سيده: «أحسنت!»؛ وكانت تلك منه شهادة ثناء كبيرة. فأجاب باسبارتو بأن الفضل كله يعود إلى السيد فوغ، وأنه لم يفعل سوى أن خطرت له فكرة «غريبة». وضحك حين تذكّر أنه، وهو لاعب الجمباز ورجل الإطفاء السابق، صار للحظات زوجًا لامرأة فاتنة هي زوجة راجا مهيب محنّط. أما الشابة الهندية فكانت فاقدة الوعي طوال ما جرى، وهي الآن تستريح داخل أحد الهوادج ملفوفة ببطانية سفر."
+    },
+    {
+      "index": 1,
+      "en": "The elephant, thanks to the skilful guidance of the Parsee, was advancing rapidly through the still darksome forest, and, an hour after leaving the pagoda, had crossed a vast plain. They made a halt at seven o’clock, the young woman being still in a state of complete prostration. The guide made her drink a little brandy and water, but the drowsiness which stupefied her could not yet be shaken off. Sir Francis, who was familiar with the effects of the intoxication produced by the fumes of hemp, reassured his companions on her account. But he was more disturbed at the prospect of her future fate. He told Phileas Fogg that, should Aouda remain in India, she would inevitably fall again into the hands of her executioners. These fanatics were scattered throughout the county, and would, despite the English police, recover their victim at Madras, Bombay, or Calcutta. She would only be safe by quitting India forever.",
+      "existingArabicDraft": "واصل الفيل تقدّمه سريعًا عبر الغابة المظلمة بفضل قيادة البارسي الماهرة. وبعد ساعة من مغادرة المعبد، عبر سهلًا واسعًا، ثم توقفوا عند السابعة صباحًا، وكانت عودة لا تزال في إنهاك شديد. جعلها الدليل تشرب قليلًا من البراندي الممزوج بالماء، لكن النعاس الثقيل لم يفارقها بعد. طمأن السير فرانسيس رفاقه بشأن أثر أبخرة القنب، إلا أنه كان قلقًا على مصيرها لاحقًا؛ فإذا بقيت في الهند، فستقع حتمًا مرة أخرى في أيدي جلاديها. كان أتباع تلك الجماعات منتشرِين في أنحاء البلاد، وقد يعثرون عليها في مدراس أو بومباي أو كلكتا رغم الشرطة الإنجليزية. ولن تكون آمنة إلا إذا غادرت الهند إلى الأبد."
+    },
+    {
+      "index": 2,
+      "en": "Phileas Fogg replied that he would reflect upon the matter.",
+      "existingArabicDraft": "أجاب فيلياس فوغ بأنه سيفكر في الأمر."
+    },
+    {
+      "index": 3,
+      "en": "The station at Allahabad was reached about ten o’clock, and, the interrupted line of railway being resumed, would enable them to reach Calcutta in less than twenty-four hours. Phileas Fogg would thus be able to arrive in time to take the steamer which left Calcutta the next day, October 25th, at noon, for Hong Kong.",
+      "existingArabicDraft": "وصلوا إلى محطة الله آباد قرابة العاشرة. ومع استئناف خط السكك الحديدية الذي انقطع، أصبح بوسعهم بلوغ كلكتا في أقل من أربع وعشرين ساعة. وهكذا كان في وسع فوغ أن يلحق بالبَاخرة التي تغادر كلكتا إلى هونغ كونغ ظهر اليوم التالي، الخامس والعشرين من أكتوبر."
+    },
+    {
+      "index": 4,
+      "en": "The young woman was placed in one of the waiting-rooms of the station, whilst Passepartout was charged with purchasing for her various articles of toilet, a dress, shawl, and some furs; for which his master gave him unlimited credit. Passepartout started off forthwith, and found himself in the streets of Allahabad, that is, the City of God, one of the most venerated in India, being built at the junction of the two sacred rivers, Ganges and Jumna, the waters of which attract pilgrims from every part of the peninsula. The Ganges, according to the legends of the Ramayana, rises in heaven, whence, owing to Brahma’s agency, it descends to the earth.",
+      "existingArabicDraft": "أُجلست الشابة في غرفة انتظار بالمحطة، وكُلّف باسبارتو بشراء بعض مستلزمات اللباس لها: فستان وشال وبعض الفراء؛ ومنحه سيده حرية الإنفاق بلا حد. انطلق باسبارتو إلى شوارع الله آباد، أي «مدينة الله»، وهي من أقدس مدن الهند، إذ تقوم عند ملتقى نهري الغانج وجمنا المقدسين، اللذين يقصدهما الحجاج من أنحاء شبه القارة. وتقول أساطير الرامايانا إن الغانج ينبع في السماء، ثم أنزله براهما إلى الأرض."
+    },
+    {
+      "index": 5,
+      "en": "Passepartout made it a point, as he made his purchases, to take a good look at the city. It was formerly defended by a noble fort, which has since become a state prison; its commerce has dwindled away, and Passepartout in vain looked about him for such a bazaar as he used to frequent in Regent Street. At last he came upon an elderly, crusty Jew, who sold secondhand articles, and from whom he purchased a dress of Scotch stuff, a large mantle, and a fine otter-skin pelisse, for which he did not hesitate to pay seventy-five pounds. He then returned triumphantly to the station.",
+      "existingArabicDraft": "حرص باسبارتو، وهو يتسوّق، على إلقاء نظرة متأنية على المدينة. كانت تحميها قديمًا قلعة نبيلة تحولت لاحقًا إلى سجن للدولة، كما تراجعت تجارتها؛ ولم يجد فيها سوقًا يشبه الأسواق التي اعتاد ارتيادها في شارع ريجنت. وأخيرًا عثر على تاجر يهودي مسنّ فظّ يبيع أشياء مستعملة، فاشترى منه فستانًا من قماش اسكتلندي وعباءة واسعة ومعطفًا أنيقًا من جلد ثعلب الماء، ودفع ثمنها خمسة وسبعين جنيهًا دون تردد. ثم عاد إلى المحطة منتشيًا بانتصاره."
+    },
+    {
+      "index": 6,
+      "en": "The influence to which the priests of Pillaji had subjected Aouda began gradually to yield, and she became more herself, so that her fine eyes resumed all their soft Indian expression.",
+      "existingArabicDraft": "بدأ أثر المواد التي أخضع كهنة بيلاجي عودة لها يتلاشى تدريجيًا، فعادت إلى وعيها شيئًا فشيئًا، واستعادت عيناها الجميلتان رقة التعبير الهندي."
+    },
+    {
+      "index": 7,
+      "en": "When the poet-king, Ucaf Uddaul, celebrates the charms of the queen of Ahmehnagara, he speaks thus:",
+      "existingArabicDraft": "وحين يصف الملك الشاعر عكّاف الدوّال محاسن ملكة أحمدناغارا، يقول:"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كانت المغامرة المتهوّرة قد نجحت، وظل باسبارتو يضحك مبتهجًا طوال ساعة. وصافح السير فرانسيس يد الرجل الطيب، وقال له سيده: «أحسنت!»؛ وكانت تلك منه شهادة ثناء كبيرة. فأجاب باسبارتو بأن الفضل كله يعود إلى السيد فوغ، وأنه لم يفعل سوى أن خطرت له فكرة «غريبة». وضحك حين تذكّر أنه، وهو لاعب الجمباز ورجل الإطفاء السابق، صار للحظات زوجًا لامرأة فاتنة هي زوجة راجا مهيب محنّط. أما الشابة الهندية فكانت فاقدة الوعي طوال ما جرى، وهي الآن تستريح داخل أحد الهوادج ملفوفة ببطانية سفر."
+    },
+    {
+      "index": 1,
+      "ar": "واصل الفيل تقدّمه سريعًا عبر الغابة المظلمة بفضل قيادة البارسي الماهرة. وبعد ساعة من مغادرة المعبد، عبر سهلًا واسعًا، ثم توقفوا عند السابعة صباحًا، وكانت الشابة لا تزال في حالة إنهاك شديد. جعلها الدليل تشرب قليلًا من البراندي الممزوج بالماء، لكن النعاس الثقيل الذي خدرها لم يفارقها بعد. طمأن السير فرانسيس رفاقه بشأنها استنادًا إلى معرفته بأثر التسمم الناتج عن أبخرة القنب، إلا أنه كان أشد قلقًا على مصيرها المستقبلي؛ فأخبر فيلياس فوغ بأنه، لو ظلت أودا في الهند، فسيلتقطها جلادوها مجددًا لا محالة. كان هؤلاء المتعصبون منتشرين في أنحاء المقاطعة، وسيعيدون الإمساك بضحيتهم في مدراس أو بومباي أو كلكتا رغم الشرطة الإنجليزية. ولن تكون آمنة إلا بمغادرة الهند إلى الأبد."
+    },
+    {
+      "index": 2,
+      "ar": "أجاب فيلياس فوغ بأنه سيتدبّر الأمر."
+    },
+    {
+      "index": 3,
+      "ar": "وصلوا إلى محطة الله آباد قرابة العاشرة، ومع استئناف خط السكك الحديدية المنقطع، صار بإمكانهم بلوغ كلكتا في أقل من أربع وعشرين ساعة. وهكذا سيتمكن فيلياس فوغ من الوصول في الوقت المناسب للحاق بالباخرة التي تغادر كلكتا في اليوم التالي، الخامس والعشرين من أكتوبر، عند الظهر متوجهة إلى هونغ كونغ."
+    },
+    {
+      "index": 4,
+      "ar": "أُجلست الشابة في إحدى غرف الانتظار بالمحطة، بينما كُلّف باسبارتو بشراء متفرقات لتزينها، كفستان وشال وبعض الفراء، ومنحه سيده اعتمادًا ماليًا بلا حدود. انطلق باسبارتو على الفور ووجد نفسه في شوارع الله آباد، أي «مدينة الله»، وهي إحدى أكثر مدن الهند تقديسًا، إذ بُنيت عند ملتقى النهرين المقدسين، الغانج وجمنا، اللذين تجذب مياههما الحجاج من كل أنحاء شبه القارة. وينبع نهر الغانج، بحسب أساطير الرامايانا، من السماء، ومنها ينزل إلى الأرض بفعل براهما."
+    },
+    {
+      "index": 5,
+      "ar": "حرص باسبارتو، خلال تسوقه، على إمعان النظر في المدينة. كانت تحميها قديمًا قلعة نبيلة تحولت لاحقًا إلى سجن للدولة، وقد خبت تجارتها، وأخذ باسبارتو يبعبث عبثًا باحثًا عن سوق يشبه تلك التي اعتاد ارتيادها في شارع ريجنت. وأخيرًا صادف تاجرًا يهوديًا مسنًّا فظًّا يبيع سلعًا مستعملة، فاشترى منه فستانًا من قماش اسكتلندي، وعباءة واسعة، ومعطفًا فاخرًا من جلد ثعلب الماء، ولم يتوانَ عن دفع خمسة وسبعين جنيهًا ثمنًا لها. ثم عاد إلى المحطة ظافرًا."
+    },
+    {
+      "index": 6,
+      "ar": "بدأ التأثير الذي أخضع كهنة بيلاجي أودا له يزول تدريجيًا، فاستعادت وعيها شيئًا فشيئًا حتى استردت عيناها الجميلتان كل نعومتهما الهندية المعهودة."
+    },
+    {
+      "index": 7,
+      "ar": "حين أنشد الملك الشاعر عكّاف الدوّال متغزلاً بمحاسن ملكة أحمدناغارا، قال ما يلي:"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
