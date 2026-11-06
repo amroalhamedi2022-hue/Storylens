@@ -1,0 +1,76 @@
+name: Lingua Tales - archive genuine 1912 Lost World period illustrations
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/intake_lost_world_original_1912_plate_gallery.py'
+      - '.github/workflows/lost-world-1912-original-plates.yml'
+  schedule:
+    - cron: '52 3,11,19 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: lingua-original-1912-lost-world-plate-research-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  preserve-real-genuine-original-1912-illustrations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned period archive/image verification dependencies
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0
+      - name: Check original 1912 book illustrator and file/source whitelist
+        run: python tools/test_lost_world_1912_source_intake.py
+      - name: Actually fetch up to ten original 1912 drawings via verified Commons source metadata
+        run: python tools/intake_lost_world_original_1912_plate_gallery.py --max-new 10
+      - name: Retain only real original period image files with source hashes
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -d docs/literature/staging/lost-world-original-1912-period-plates ]; then
+            git add -f docs/literature/staging/lost-world-original-1912-period-plates/
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No new original printed illustrated Lost World period art to checkpoint"
+          else
+            git commit -m "Literature: checkpoint genuine 1912 Lost World original drawings"
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 3
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Original genuine 1912 art saved locally but remote source push failed"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = "main" ]; then
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
+          fi
+      - name: Retain individually attributed historic art after API or Git failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: 1912-genuine-lost-world-plates-not-chapter-scene-approved
+          path: docs/literature/staging/lost-world-original-1912-period-plates/
+          if-no-files-found: ignore
+          retention-days: 30
