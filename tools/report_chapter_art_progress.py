@@ -428,6 +428,57 @@ def generate() -> dict:
         scarlet_originals = len(scarlet_manifest["images"])
         if scarlet_originals > 4:
             raise ValueError("Nonoriginal Scarlet files counted as period artwork")
+    townsend_originals = 0
+    townsend_path = STAGING / "sign-four-townsend-1903-period-plates" / "manifest.json"
+    if townsend_path.is_file():
+        gallery = jload(townsend_path)
+        expected_names = {f"File:Sign-t{n}.jpg" for n in range(1, 9)}
+        expected_edition = (
+            "The Sign of Four, G. Newnes Ltd. illustrated souvenir edition (1903); "
+            "individual scan rights and edition context require review"
+        )
+        if (gallery.get("category") != "Category:The Sign of Four illustrated by F. H. Townsend"
+                or gallery.get("sourceEdition") != expected_edition
+                or gallery.get("originalCreator") != "Frederick Henry Townsend (1868–1920)"
+                or gallery.get("originalEditionYear") != 1903
+                or gallery.get("sourceWork") != "The Sign of Four — Arthur Conan Doyle (original publication 1890)"
+                or gallery.get("publicationApproved") is not False
+                or gallery.get("chapterSceneMatchingComplete") is not False
+                or gallery.get("humanChapterSceneVerificationComplete") is not False):
+            raise ValueError("Townsend original 1903 archive provenance or clearance gate changed")
+        seen_titles, seen_originals, seen_webps = set(), set(), set()
+        for plate in gallery.get("images", []):
+            title = plate.get("wikiFile")
+            original_sha = plate.get("originalCommonsSHA1MetadataOnly")
+            webp_sha = plate.get("webpSha256")
+            source_sha = plate.get("downloadedResourceSha256")
+            if (title not in expected_names or title in seen_titles
+                    or not isinstance(original_sha, str)
+                    or not re.fullmatch("[0-9a-f]{40}", original_sha)
+                    or original_sha in seen_originals or webp_sha in seen_webps
+                    or not isinstance(source_sha, str)
+                    or not re.fullmatch("[0-9a-f]{64}", source_sha)
+                    or plate.get("originalCreator") != gallery["originalCreator"]
+                    or plate.get("sourceEdition") != expected_edition
+                    or not str(plate.get("commonsPage", "")).startswith(
+                        "https://commons.wikimedia.org/wiki/File:Sign-t")
+                    or "public domain" not in str(plate.get("individualCommonsLicense", "")).lower()
+                    or plate.get("artworkClassificationStatus") != "1903_ORIGINAL_ENGRAVING__SCENE_UNREVIEWED"
+                    or plate.get("sceneChapterMatchStatus") != "UNREVIEWED__NO_CHAPTER_CARD"
+                    or plate.get("rightsStatus") != "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW"
+                    or plate.get("editoriallyApproved") is not False
+                    or plate.get("publishedToApp") is not False
+                    or plate.get("cropped") is not False
+                    or plate.get("recolouring") is not False
+                    or plate.get("altAr") is not None or plate.get("altEn") is not None):
+                raise ValueError("Unlicensed/duplicated/already-approved original Sign of Four plate")
+            check_binary(str((townsend_path.parent / plate["localPath"]).relative_to(ROOT)), webp_sha)
+            seen_titles.add(title)
+            seen_originals.add(original_sha)
+            seen_webps.add(webp_sha)
+        townsend_originals = len(seen_titles)
+        if townsend_originals > 8:
+            raise ValueError("Townsend 1903 plate archive contains extra non-original files")
     kalila_colours = (
         verify_kalila_miniatures()
         if (STAGING / "kalila-original-colour-miniatures-20261105" / "manifest.json").is_file()
@@ -437,7 +488,9 @@ def generate() -> dict:
         archive = STAGING / slug
         if archive.is_dir():
             art_count = kalila_colours if slug == "kalila-arabic-wikisource" else (
-                scarlet_originals if slug == "a-study-in-scarlet" else 0
+                scarlet_originals if slug == "a-study-in-scarlet" else (
+                    townsend_originals if slug == "the-sign-of-the-four" else 0
+                )
             )
             data = {"bookId": slug, "title": title,
                     "sourceState": "older staged work; chapter-card coverage audit pending",
@@ -447,6 +500,14 @@ def generate() -> dict:
             if slug == "a-study-in-scarlet":
                 data["unassignedHistorical1887FristonImageFiles"] = scarlet_originals
                 data["sourceState"] = "complete original English novel staged; original 1887 Friston plates archived but not visually matched to chapters"
+            if slug == "the-sign-of-the-four":
+                data["unassignedHistorical1903TownsendImageFiles"] = townsend_originals
+                data["sourceState"] = (
+                    "complete authentic 12-chapter English original staged; "
+                    + str(townsend_originals)
+                    + " genuine 1903 Townsend engravings locally archived; "
+                    "chapter-scene mapping and territory/editorial rights pending"
+                )
             chaptered_doyle = {
                 "a-study-in-scarlet": 14,
                 "the-lost-world": 16,
@@ -477,6 +538,8 @@ def generate() -> dict:
                     )
                     if slug == "a-study-in-scarlet" and scarlet_originals:
                         data["sourceState"] += "; " + str(scarlet_originals) + " original Friston artwork files archived"
+                    if slug == "the-sign-of-the-four" and townsend_originals:
+                        data["sourceState"] += "; " + str(townsend_originals) + " verified original 1903 Townsend plates in quarantine"
             rows.append(data)
     available = sum(r["localCandidateChapters"] for r in rows)
     ready = sum(r["readyForUICards"] for r in rows)
@@ -547,6 +610,10 @@ def markdown(report: dict) -> str:
           str(report["books"][0].get("unassignedHistoricalCommonsImageFiles", 0)) + "**.",
         "- Original 1906 Correa War of the Worlds files in quarantine, NOT chapter-mapped: **" +
           str(report["books"][2].get("unassignedHistoricalCorreaImageFiles", 0)) + "**.",
+        "- Original F. H. Townsend 1903 *The Sign of Four* chapter-scene-unreviewed engravings: **" +
+          str(next((b.get("unassignedHistorical1903TownsendImageFiles", 0) for b in report["books"]
+                    if b["bookId"] == "the-sign-of-the-four"), 0)) +
+          "** local originals, NOT chapter cards.",
         "- GitHub handoff: docs/handoffs/LINGUA_TALES_HANDOFF_CURRENT.md.",
         "- Story content automation is separate from the scheduled GitHub report; inspect latest Actions SHA and output before claiming any new image.",
         "- This inventory does NOT assert that a chapter card exists for any staged book lacking a verified chapter-to-image map, even if its archive contains hundreds of figures.",
