@@ -492,3 +492,27 @@ dialog.lt-chapter-gallery::backdrop{
  .lt-chapter-gallery-list-view .lt-chapter-tile-visual{height:90px;min-height:90px}
  .lt-chapter-gallery-list-view .lt-chapter-tile{min-height:90px}
 }
+
+
+/* Source-accurate quick locator: shows the saved chapter card without
+   committing progress or allocating the entire historical collection. */
+.lt-chapter-gallery-status{flex:1 1 140px;min-width:0}
+.lt-chapter-gallery-locate{
+ flex:0 1 auto;min-height:44px;max-width:52%;
+ border:1px solid rgba(41,83,96,.32);
+ border-radius:12px;padding:9px 13px;
+ background:rgba(255,253,247,.85);color:#254b5d;
+ font:700 12px/1.35 system-ui,sans-serif;
+ white-space:normal;cursor:pointer;
+}
+.lt-chapter-gallery-locate:disabled{display:none}
+.lt-chapter-gallery-locate:focus-visible{
+ outline:3px solid #246c92;outline-offset:2px;
+}
+@media(max-width:650px){
+ .lt-chapter-gallery-footer{flex-wrap:wrap;gap:8px;align-items:center}
+ .lt-chapter-gallery-locate{min-width:120px;max-width:55%;padding:8px}
+}
+@media(orientation:landscape) and (max-height:580px){
+ .lt-chapter-gallery-locate{min-height:36px;padding:5px 10px}
+}
