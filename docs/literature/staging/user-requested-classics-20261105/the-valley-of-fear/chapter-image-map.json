@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "bookId": "the-valley-of-fear",
+  "chapterCount": 14,
+  "releaseApproved": false,
+  "originalSourceURL": "https://www.gutenberg.org/ebooks/3289",
+  "sourceExactGutenbergSHA256": "99a34f08c37eb12be2b01f2639e4f7da9cd83f3d22087945434f4d6d1260a5d2",
+  "sourceManifestPath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/manifest.json",
+  "sourceFullTextFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/original-edition.html",
+  "sourceOfflineReadingFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+  "chapterTitlesStatus": "GROUNDED_IN_EXACT_SOURCE_HTML_HEADING",
+  "sceneArtStatus": "ZERO_VERIFIED_CHAPTER_SCENES__SEVEN_ORIGINAL_IMAGES_UNASSIGNED",
+  "translationRightsStatus": "NOT_EDITORIALLY_OR_TERRITORIALLY_CLEARED",
+  "partLabelsEn": [
+    "The Tragedy of Birlstone",
+    "The Scowrers"
+  ],
+  "nonChapterNarrativeUnits": [
+    {
+      "kind": "epilogue",
+      "titleEn": "Epilogue",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap15",
+      "originalHeadingHTML": "<h2><a id=\"chap15\"></a>Epilogue</h2>"
+    }
+  ],
+  "chapters": [
+    {
+      "chapterOneBased": 1,
+      "sourcePartOneBased": 1,
+      "chapterWithinPartOneBased": 1,
+      "titleEn": "The Warning",
+      "titleAr": "الفصل 1",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap01",
+      "originalHeadingHTML": "<h2><a id=\"chap01\"></a>Chapter I<br/>\r\nThe Warning</h2>",
+      "originalHeadingText": "Chapter I The Warning",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 2,
+      "sourcePartOneBased": 1,
+      "chapterWithinPartOneBased": 2,
+      "titleEn": "Sherlock Holmes Discourses",
+      "titleAr": "الفصل 2",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap02",
+      "originalHeadingHTML": "<h2><a id=\"chap02\"></a>Chapter II<br/>\r\nSherlock Holmes Discourses</h2>",
+      "originalHeadingText": "Chapter II Sherlock Holmes Discourses",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 3,
+      "sourcePartOneBased": 1,
+      "chapterWithinPartOneBased": 3,
+      "titleEn": "The Tragedy of Birlstone",
+      "titleAr": "الفصل 3",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap03",
+      "originalHeadingHTML": "<h2><a id=\"chap03\"></a>Chapter III<br/>\r\nThe Tragedy of Birlstone</h2>",
+      "originalHeadingText": "Chapter III The Tragedy of Birlstone",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 4,
+      "sourcePartOneBased": 1,
+      "chapterWithinPartOneBased": 4,
+      "titleEn": "Darkness",
+      "titleAr": "الفصل 4",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap04",
+      "originalHeadingHTML": "<h2><a id=\"chap04\"></a>Chapter IV<br/>\r\nDarkness</h2>",
+      "originalHeadingText": "Chapter IV Darkness",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 5,
+      "sourcePartOneBased": 1,
+      "chapterWithinPartOneBased": 5,
+      "titleEn": "The People of the Drama",
+      "titleAr": "الفصل 5",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap05",
+      "originalHeadingHTML": "<h2><a id=\"chap05\"></a>Chapter V<br/>\r\nThe People of the Drama</h2>",
+      "originalHeadingText": "Chapter V The People of the Drama",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 6,
+      "sourcePartOneBased": 1,
+      "chapterWithinPartOneBased": 6,
+      "titleEn": "A Dawning Light",
+      "titleAr": "الفصل 6",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap06",
+      "originalHeadingHTML": "<h2><a id=\"chap06\"></a>Chapter VI<br/>\r\nA Dawning Light</h2>",
+      "originalHeadingText": "Chapter VI A Dawning Light",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 7,
+      "sourcePartOneBased": 1,
+      "chapterWithinPartOneBased": 7,
+      "titleEn": "The Solution",
+      "titleAr": "الفصل 7",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap07",
+      "originalHeadingHTML": "<h2><a id=\"chap07\"></a>Chapter VII<br/>\r\nThe Solution</h2>",
+      "originalHeadingText": "Chapter VII The Solution",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 8,
+      "sourcePartOneBased": 2,
+      "chapterWithinPartOneBased": 1,
+      "titleEn": "The Man",
+      "titleAr": "الفصل 1",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap08",
+      "originalHeadingHTML": "<h2><a id=\"chap08\"></a>Chapter I<br/>\r\nThe Man</h2>",
+      "originalHeadingText": "Chapter I The Man",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 9,
+      "sourcePartOneBased": 2,
+      "chapterWithinPartOneBased": 2,
+      "titleEn": "The Bodymaster",
+      "titleAr": "الفصل 2",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap09",
+      "originalHeadingHTML": "<h2><a id=\"chap09\"></a>Chapter II<br/>\r\nThe Bodymaster</h2>",
+      "originalHeadingText": "Chapter II The Bodymaster",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 10,
+      "sourcePartOneBased": 2,
+      "chapterWithinPartOneBased": 3,
+      "titleEn": "Lodge 341, Vermissa",
+      "titleAr": "الفصل 3",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap10",
+      "originalHeadingHTML": "<h2><a id=\"chap10\"></a>Chapter III<br/>\r\nLodge 341, Vermissa</h2>",
+      "originalHeadingText": "Chapter III Lodge 341, Vermissa",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 11,
+      "sourcePartOneBased": 2,
+      "chapterWithinPartOneBased": 4,
+      "titleEn": "The Valley of Fear",
+      "titleAr": "الفصل 4",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap11",
+      "originalHeadingHTML": "<h2><a id=\"chap11\"></a>Chapter IV<br/>\r\nThe Valley of Fear</h2>",
+      "originalHeadingText": "Chapter IV The Valley of Fear",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 12,
+      "sourcePartOneBased": 2,
+      "chapterWithinPartOneBased": 5,
+      "titleEn": "The Darkest Hour",
+      "titleAr": "الفصل 5",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap12",
+      "originalHeadingHTML": "<h2><a id=\"chap12\"></a>Chapter V<br/>\r\nThe Darkest Hour</h2>",
+      "originalHeadingText": "Chapter V The Darkest Hour",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 13,
+      "sourcePartOneBased": 2,
+      "chapterWithinPartOneBased": 6,
+      "titleEn": "Danger",
+      "titleAr": "الفصل 6",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap13",
+      "originalHeadingHTML": "<h2><a id=\"chap13\"></a>Chapter VI<br/>\r\nDanger</h2>",
+      "originalHeadingText": "Chapter VI Danger",
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 14,
+      "sourcePartOneBased": 2,
+      "chapterWithinPartOneBased": 7,
+      "titleEn": "The Trapping of Birdy Edwards",
+      "titleAr": "الفصل 7",
+      "sourceFilePath": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/offline-edition.html",
+      "sourceAnchorId": "chap14",
+      "originalHeadingHTML": "<h2><a id=\"chap14\"></a>Chapter VII<br/>\r\nThe Trapping of Birdy Edwards</h2>",
+      "originalHeadingText": "Chapter VII The Trapping of Birdy Edwards",
+      "primaryImage": null
+    }
+  ]
+}
