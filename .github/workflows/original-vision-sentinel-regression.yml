@@ -1,0 +1,30 @@
+name: Lingua Tales - skeptical original-image contradiction interpretation regression
+on:
+  pull_request:
+    paths:
+      - 'tools/gemini_suggest_verne_plate_scenes.py'
+      - 'tools/test_original_image_crosscheck_sentinels.py'
+      - '.github/workflows/original-vision-sentinel-regression.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/gemini_suggest_verne_plate_scenes.py'
+      - 'tools/test_original_image_crosscheck_sentinels.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  conservative-no-fake-image-approval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm explicit "None" isn't a false contradiction but narrative doubt is rejected
+        run: |
+          python tools/test_original_image_crosscheck_sentinels.py
+          python tools/gemini_suggest_verne_plate_scenes.py --self-test
