@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p196.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-33f4be66e7a0a0a4.webp",
+  "imageSha256": "9abdf85b3c1b26c529b87cb03efd671099de9097b79f92de38b179136e6c32f5",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a person in 18th-century military-style attire riding a horse. The rider is positioned in profile, facing right, while a second figure stands to the left of the horse, facing the rider. In the background, there is a faint outline of a building or fortification and another small, distant figure. The style is that of a 19th-century pen-and-ink engraving.",
+    "visualObjectsEn": "Horse, rider in military uniform with a tricorn hat, standing figure in a long coat or tunic, building structure in the background, distant figure on a hill, ground with light hatching.",
+    "recognizableCharactersOrPeopleEn": "A mounted rider, a standing figure, and a distant figure on a hill.",
+    "uncertaintyNotes": "The specific historical identity of the figures is not explicitly stated in the image. The exact nature of the building in the background is ambiguous due to the light, sketchy line work."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 16,
+    "paragraphIndexZeroBased": 44,
+    "exactSourceQuotation": "the little array which attended the French general to the conference, was seen issuing from the hollow way",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene describes a military figure (the French general) and his entourage, which aligns with the illustration of a mounted military rider and a standing figure in a formal setting near a fortification (the fort mentioned in the text).",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a French military officer on horseback meeting a representative near the fortifications of Fort William Henry.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a single figure on horseback in profile facing right, with another standing figure to the left, which does not depict the meeting or conference between Munro and Montcalm as described in the passage.",
+    "visualContradictions": "The passage describes Munro leaving his works to appear in front of enemies and catching a glimpse of Montcalm's white plume, whereas the illustration only shows a single rider and a standing attendant without depicting the second general or the encounter described.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

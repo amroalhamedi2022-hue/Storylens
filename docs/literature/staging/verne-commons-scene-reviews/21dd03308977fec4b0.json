@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_10.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-21dd03308977fec4.webp",
+  "imageSha256": "cac464c4d59a9a89967c7ec517723ba171c914f7958d5e076a6aa1d6c6eceea6",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a confrontation on the deck of a ship. A man in a dark coat and light trousers stands in the center, appearing to be in a struggle or altercation with two other men. The man on the left wears a dark, textured garment and a head covering, while the man on the right wears a light-colored wrap or dhoti and a turban. The background shows ship rigging, masts, and a crowded deck with other indistinct figures.",
+    "visualObjectsEn": "Ship deck, masts, rigging, ropes, clothing (coats, trousers, turbans, wraps), wooden structures, indistinct crowd of people.",
+    "recognizableCharactersOrPeopleEn": "Three primary figures in the foreground: a man in a Western-style coat and hat, a man in a dark textured outfit, and a man in a light-colored wrap and turban. A crowd of indistinct figures is visible in the background.",
+    "uncertaintyNotes": "The specific identities of the individuals and the exact nature of the conflict are not explicitly stated in the image. The historical context or narrative source of the engraving is not provided and cannot be confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

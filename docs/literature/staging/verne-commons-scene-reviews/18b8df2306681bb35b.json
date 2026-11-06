@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_07.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-18b8df2306681bb3.webp",
+  "imageSha256": "290a11e73c792a51504eb7c6ef03e4709b67a1528f1cd3aa1524a0b9924c8d0a",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a woman and a young child standing against a rough brick wall. The woman is wearing a tattered shawl and has her hand extended as if begging. The child stands beside her, looking upward with a distressed expression. The background wall features partially visible text reading 'PALE AL... GIN & SPIRITS'. The style is characteristic of 19th-century illustrative wood engraving.",
+    "visualObjectsEn": "Brick wall, tattered shawl, clothing, text on wall, ground surface.",
+    "recognizableCharactersOrPeopleEn": "An adult woman with long hair and a shawl, and a young child with curly hair.",
+    "uncertaintyNotes": "The exact identity of the figures is not stated in the image. The text on the wall is partially obscured, making the full sign illegible."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 4,
+    "paragraphIndexZeroBased": 27,
+    "exactSourceQuotation": "a poor beggar-woman, with a child in her arms, her naked feet smeared with mud, her head covered with a wretched bonnet, from which hung a tattered feather, and her shoulders shrouded in a ragged shawl, approached, and mournfully asked for alms.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The text describes a beggar-woman with a child in her arms, wearing a ragged shawl, which matches the visual depiction of the woman and child in the engraving. While the text mentions a bonnet and the image does not clearly show one, the core elements of the beggar-woman, child, and tattered shawl align with the scene.",
+    "suggestedAltArNotApproved": "A 19th-century engraving of a beggar-woman with a child in her arms, wearing a tattered shawl, standing before a brick wall with partially visible signage.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a poor beggar-woman with a tattered shawl and a child standing beside her, holding her hand out to ask for alms, matching the exact description in the passage.",
+    "visualContradictions": "None",
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

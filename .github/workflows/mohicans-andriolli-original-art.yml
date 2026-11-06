@@ -1,0 +1,74 @@
+name: Lingua Tales - acquire real nineteenth-century Mohicans Andriolli engravings
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/intake_mohicans_andriolli_period_gallery.py'
+      - '.github/workflows/mohicans-andriolli-original-art.yml'
+  schedule:
+    - cron: '52 2,8,14,20 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: lingua-mohicans-andriolli-period-original-art-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  acquire-original-mohicans-period-engravings:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned image and Wikimedia client
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0
+      - name: Fetch up to 18 real original French-edition Mohicans engravings
+        run: python tools/intake_mohicans_andriolli_period_gallery.py --max-new 18
+      - name: Publish ONLY verified source binaries plus origin/rights manifest
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -d docs/literature/staging/mohicans-andriolli-period-plates ]; then
+            git add -f docs/literature/staging/mohicans-andriolli-period-plates/
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No new verified historical binary assets; no empty commit"
+          else
+            git commit -m "Literature: archive original Andriolli illustrated Mohicans sources"
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 3
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Original art saved locally but source push failed"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = "main" ]; then
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
+          fi
+      - name: Evidence artifact even if Commons or push fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: historic-mohicans-andriolli-not-human-approved
+          path: docs/literature/staging/mohicans-andriolli-period-plates/
+          if-no-files-found: ignore
+          retention-days: 30

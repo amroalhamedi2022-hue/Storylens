@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p17.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-452dafaf95944566.webp",
+  "imageSha256": "0b855d810cba09ac6d2bba728a89b1ac1e7dd874548f8e05b9643b0897315257",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a person riding a horse through a wooded area, with a second horse partially visible behind them. The style is that of a 19th-century engraving or sketch.",
+    "visualObjectsEn": "A person wearing a tricorn hat and 18th-century style clothing, two horses, a saddle, bridle, reins, and a background of trees.",
+    "recognizableCharactersOrPeopleEn": "A single rider, appearing to be an adult male, is the primary figure.",
+    "uncertaintyNotes": "The exact identity of the rider is not provided in the image. The signature 'Andriolli 1883' is visible in the bottom right corner, indicating the artist and date of the work."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 2,
+    "paragraphIndexZeroBased": 15,
+    "exactSourceQuotation": "The industry and movements of the rider were not less remarkable than those of the ridden. At each change in the evolutions of the latter, the former raised his tall person in the stirrups; producing, in this manner, by the undue elongation of his legs, such sudden growths and diminishings of the stature, as baffled every conjecture that might be made as to his dimensions.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The passage describes a rider on horseback with specific attention to the movement of the rider and the horse, which aligns with the visual depiction of a person riding through a wooded area. The description of the rider's stature and the horse's movement matches the detailed, somewhat caricature-like style often found in Andriolli's engravings for this specific scene involving David Gamut.",
+    "suggestedAltArNotApproved": "An engraving by Andriolli depicting David Gamut riding his horse, capturing the awkward posture and movement described in the text.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving visually captures David Gamut's comical and awkward riding posture on his nag as described in the text, showing his tall person perched in the stirrups with exceptionally long, thin legs, and the mare's tail being brandished.",
+    "visualContradictions": "None",
+    "confidenceSelfReported": 0.98,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

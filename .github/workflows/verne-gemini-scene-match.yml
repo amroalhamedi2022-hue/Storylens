@@ -1,0 +1,70 @@
+name: Lingua Tales - match genuine Verne plate scenes to exact book passages
+on:
+  push:
+    branches:
+      - content/verne-gemini-image-scene-align-20261105
+      - main
+    paths:
+      - 'tools/export_complete_verne_source_for_art.cjs'
+      - 'tools/gemini_suggest_verne_plate_scenes.py'
+      - '.github/workflows/verne-gemini-scene-match.yml'
+  schedule:
+    - cron: '9 */2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lingua-verne-gemini-visual-scene-qa
+  cancel-in-progress: false
+
+jobs:
+  see-real-original-scans-and-verify-prose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm all 37 authentic original text chapters and validate matching
+        run: |
+          node tools/export_complete_verne_source_for_art.cjs --check
+          python tools/gemini_suggest_verne_plate_scenes.py --self-test
+      - name: Visually inspect up to four genuine engravings and test source quotations
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python tools/gemini_suggest_verne_plate_scenes.py --max-new 4
+      - name: Persist any verified original scene suggestions even after API failure
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -d docs/literature/staging/verne-commons-scene-reviews ]; then
+            git add -f docs/literature/staging/verne-commons-scene-reviews/
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No new evidence; no empty progress commit"
+          else
+            git commit -m "Literature: checkpoint Gemini visual scene review grounded to authentic original prose [skip ci]"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - name: Keep original visual-prose comparison checkpoint if push fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verne-gemini-source-anchored-scene-suggestions-not-approved
+          path: docs/literature/staging/verne-commons-scene-reviews/
+          if-no-files-found: ignore
+          retention-days: 30

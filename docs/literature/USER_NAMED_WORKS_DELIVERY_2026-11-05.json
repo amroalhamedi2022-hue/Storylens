@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "generatedOn": "2026-11-05",
+  "sourceOfTruth": "GitHub content manifests; do not count staged sources as published Android books",
+  "scope": "Authentic earlier user-named literary requests only. No synthetic writing, short-child abridgements, unlicensed art or invented translations.",
+  "books": [
+    {
+      "id": "kalila-wa-dimna",
+      "titleAr": "كليلة ودمنة",
+      "status": "ARABIC_SOURCE_AND_17_COLOURED_MEDIEVAL_PLATES_STAGED",
+      "sources": [
+        "docs/literature/staging/kalila-arabic-wikisource/",
+        "docs/literature/staging/kalila-original-colour-miniatures-20261105/"
+      ],
+      "available": {
+        "arabicSource": true,
+        "colouredAuthenticPlates": 17,
+        "englishFullyTranslated": false
+      },
+      "releaseHold": [
+        "Verify chosen Arabic recension and full contextual English",
+        "align each BnF medieval folio to real chapter events",
+        "review scan-specific regional rights",
+        "Android shelf integration and device verification"
+      ]
+    },
+    {
+      "id": "alf-layla-wa-layla",
+      "titleAr": "ألف ليلة وليلة",
+      "status": "FOUR_ARABIC_WIKISOURCE_PARTS_AND_TEN_ENGLISH_BURTON_VOLUMES_STAGED_NOT_ALIGNED",
+      "sources": [
+        "docs/literature/staging/arabian-nights-arabic-wikisource-20261105/",
+        "docs/literature/staging/user-requested-classics-20261105/arabian-nights-burton-v01/"
+      ],
+      "englishBurtonVolumeCount": 10,
+      "englishBurtonWords": 1599851,
+      "arabicWikiSourceParts": 4,
+      "arabicWikiSourceWordTokens": 125920,
+      "editionAlignmentConfirmed": false,
+      "releaseHold": [
+        "Determine Arabic full-edition gaps by comparing primary historical 1835 Bulaq print",
+        "Do NOT align Burton chapters to Arabic by ordinal numbers",
+        "Secure or source narrative-specific period colour art",
+        "Check territorial rights and source-specific reuse",
+        "Assemble verified bilingual chapter-linked reader"
+      ]
+    },
+    {
+      "id": "sherlock-a-study-in-scarlet",
+      "titleAr": "دراسة في القرمزي",
+      "status": "FULL_14_CHAPTER_ENGLISH_SOURCE_PREVIOUSLY_STAGED",
+      "source": "docs/literature/staging/a-study-in-scarlet/",
+      "releaseHold": [
+        "Natural complete Arabic",
+        "Period illustration binaries and rights",
+        "Reader publication"
+      ]
+    },
+    {
+      "id": "sherlock-sign-of-four",
+      "titleAr": "علامة الأربعة",
+      "status": "FULL_12_CHAPTER_ENGLISH_SOURCE_PREVIOUSLY_STAGED",
+      "source": "docs/literature/staging/the-sign-of-the-four/",
+      "releaseHold": [
+        "Natural complete Arabic",
+        "Period illustration binaries and rights",
+        "Reader publication"
+      ]
+    },
+    {
+      "id": "sherlock-hound-of-baskervilles",
+      "titleAr": "كلب آل باسكرفيل",
+      "status": "FULL_15_CHAPTER_ENGLISH_SOURCE_PREVIOUSLY_STAGED",
+      "source": "docs/literature/staging/the-hound-of-the-baskervilles/",
+      "releaseHold": [
+        "Natural complete Arabic",
+        "Period illustration binaries and rights",
+        "Reader publication"
+      ]
+    },
+    {
+      "id": "sherlock-the-valley-of-fear",
+      "titleAr": "وادي الخوف",
+      "status": "FULL_ENGLISH_SOURCE_AND_7_ORIGINAL_EDITION_IMAGES_STAGED",
+      "source": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/",
+      "englishWords": 58089,
+      "sourceIllustrations": 7,
+      "releaseHold": [
+        "Complete Arabic",
+        "Rights",
+        "App integration"
+      ]
+    },
+    {
+      "id": "woman-in-white",
+      "titleAr": "المرأة ذات الرداء الأبيض",
+      "status": "FULL_ENGLISH_SOURCE_STAGED_NO_ORIGINAL_INLINE_ART_IN_THIS_EDITION",
+      "source": "docs/literature/staging/user-requested-classics-20261105/the-woman-in-white/",
+      "englishWords": 246996,
+      "sourceIllustrations": 0,
+      "releaseHold": [
+        "Complete Arabic",
+        "Source period visual art from suitable edition",
+        "Rights",
+        "App integration"
+      ]
+    },
+    {
+      "id": "count-of-monte-cristo",
+      "titleAr": "الكونت دي مونت كريستو",
+      "status": "FULL_ENGLISH_HISTORICAL_TRANSLATION_AND_449_SOURCE_ILLUSTRATIONS_STAGED",
+      "source": "docs/literature/staging/user-requested-classics-20261105/the-count-of-monte-cristo/",
+      "englishWords": 463095,
+      "sourceIllustrations": 449,
+      "releaseHold": [
+        "Get full 4-volume French original and exact translator edition metadata",
+        "Complete Arabic",
+        "Individual plate rights and exact chapter match",
+        "App integration"
+      ]
+    },
+    {
+      "id": "around-world-in-80-days",
+      "titleAr": "حول العالم في ثمانين يومًا",
+      "status": "37_ENGLISH_CHAPTERS_WITH_DRAFT_ARABIC_PREVIOUSLY_STAGED_9_IMAGES_PUBLISHED_AND_4_SEPARATELY_QUARANTINED",
+      "source": "docs/literature/staging/verne-period-plates-20261105/",
+      "releaseHold": [
+        "Complete and proof full translation",
+        "Review four new 1873 engraving rights and source anchors",
+        "Integrate images only when rights accepted"
+      ]
+    },
+    {
+      "id": "moonstone",
+      "titleAr": "حجر القمر",
+      "status": "FULL_53_PART_ENGLISH_SOURCE_PREVIOUSLY_STAGED",
+      "source": "docs/literature/staging/the-moonstone/",
+      "releaseHold": [
+        "Arabic",
+        "Period art binaries",
+        "Rights",
+        "App integration"
+      ]
+    },
+    {
+      "id": "war-of-the-worlds",
+      "titleAr": "حرب العوالم",
+      "status": "FULL_27_CHAPTER_ENGLISH_SOURCE_PREVIOUSLY_STAGED",
+      "source": "docs/literature/staging/the-war-of-the-worlds/",
+      "releaseHold": [
+        "Arabic",
+        "Period art binaries",
+        "Rights",
+        "App integration"
+      ]
+    },
+    {
+      "id": "frankenstein",
+      "titleAr": "فرانكنشتاين",
+      "status": "FULL_24_CHAPTER_ENGLISH_SOURCE_PREVIOUSLY_STAGED",
+      "source": "docs/literature/staging/frankenstein/",
+      "releaseHold": [
+        "Arabic",
+        "Period art binaries",
+        "Rights",
+        "App integration"
+      ]
+    },
+    {
+      "id": "dracula",
+      "titleAr": "دراكولا",
+      "status": "FULL_27_CHAPTER_ENGLISH_SOURCE_PREVIOUSLY_STAGED",
+      "source": "docs/literature/staging/dracula/",
+      "releaseHold": [
+        "Arabic",
+        "Period art binaries",
+        "Rights",
+        "App integration"
+      ]
+    },
+    {
+      "id": "the-lost-world",
+      "titleAr": "العالم المفقود",
+      "status": "FULL_16_CHAPTER_ENGLISH_SOURCE_PREVIOUSLY_STAGED",
+      "source": "docs/literature/staging/the-lost-world/",
+      "releaseHold": [
+        "Arabic",
+        "Period art binaries",
+        "Rights",
+        "App integration"
+      ]
+    }
+  ],
+  "nonnegotiableChecks": [
+    "Deduplicate by canonical work and edition, never by local filename",
+    "Separate complete original source, complete contextual counterpart, coloured artwork, legal clearance, editor scene positioning, offline Android acceptance",
+    "Prioritise many real historical COLOURED images, not only black-and-white; preserve original hues, never misrepresent recolouring",
+    "Do not claim any of these newly staged source items as published in Android until every release hold is cleared",
+    "Do not re-import previously acquired source books to inflate per-run count"
+  ]
+}

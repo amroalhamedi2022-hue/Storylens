@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p187.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-475ca78b836f7850.webp",
+  "imageSha256": "9a3fb046695d1fd075693f3cd0eaf69e2d998f58512b519524151682d1d1aad7",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A group of five figures moving through an outdoor, possibly wilderness, setting. The composition is a sketch-style engraving showing a mix of individuals in colonial-era European attire and others in indigenous-style clothing, all carrying long rifles and moving in a coordinated direction.",
+    "visualObjectsEn": "Long rifles, colonial-style coats, breeches, boots, fringed garments, headbands, feathers, and simple footwear.",
+    "recognizableCharactersOrPeopleEn": "A group of five people: one man in a colonial coat and tricorn hat, two women in period dresses, and two men dressed in attire often associated with indigenous peoples of North America, including fringed clothing and headbands.",
+    "uncertaintyNotes": "The specific cultural or historical identity of the figures is inferred from their clothing styles; the exact nature of their activity (e.g., hunting, scouting, or fleeing) is not explicitly stated in the image. The signature 'Andriolli 1883' is visible."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 18,
+    "paragraphIndexZeroBased": 8,
+    "exactSourceQuotation": "the forms of five men might have been seen issuing from the narrow vista of trees, where the path to the Hudson entered the forest, and advancing in the direction of the ruined works.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description specifies a group of five figures moving through a wilderness setting, including individuals in colonial attire and indigenous-style clothing, all carrying rifles. Chapter 18, paragraph 8 explicitly describes 'the forms of five men' issuing from a forest path, which aligns with the composition of the engraving.",
+    "suggestedAltArNotApproved": "A group of five figures, including colonial men and indigenous warriors, moving through a forest path with rifles.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts five figures moving through a landscape, including two individuals dressed as Native Americans and three white individuals, but the group visibly includes two women in period dresses rather than the three white men specified in the passage.",
+    "visualContradictions": "The passage specifies 'The remaining three were white... male' and describes a group of five men. However, the visual clearly shows at least two female figures wearing dresses among the party, contradicting the text.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

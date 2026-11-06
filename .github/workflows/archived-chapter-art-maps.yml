@@ -1,0 +1,82 @@
+name: Lingua Tales - original edition chapter image backfill
+on:
+  push:
+    branches:
+      - content/archived-five-chapter-map-20261105
+      - main
+    paths:
+      - 'tools/map_archived_five_chapter_art.py'
+      - 'tools/report_chapter_art_progress.py'
+      - '.github/workflows/archived-chapter-art-maps.yml'
+  schedule:
+    - cron: '9 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: lingua-original-five-art-map-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify-original-chapters-and-plates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact branch being audited
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - name: Setup Python and HTML original-edition parser
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned source HTML parser
+        run: python -m pip install 'beautifulsoup4==4.14.2'
+      - name: Extract all genuine chapter headings and verify selected image binaries
+        run: |
+          set -euo pipefail
+          python tools/map_archived_five_chapter_art.py --write
+          python tools/map_archived_five_chapter_art.py --verify
+      - name: Save authentic chapter maps and request a separate verified report
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Only commit source-matched chapter maps; this job must never
+          # overwrite the common progress report or fake human approval.
+          git add docs/literature/staging/illustrated-five-20261105/*/chapter-image-map.json
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "Chapter maps unchanged; no duplicate commit or dispatch."
+          else
+            git commit -m "Literature: checkpoint genuine five-classic chapter image candidate maps"
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              python tools/map_archived_five_chapter_art.py --verify
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 2
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Could not push verified chapter maps"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = "main" ]; then
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Retain chapter maps even if push blocked
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: five-original-classics-chapter-image-candidates
+          path: docs/literature/staging/illustrated-five-20261105/*/chapter-image-map.json
+          if-no-files-found: warn
+          retention-days: 30

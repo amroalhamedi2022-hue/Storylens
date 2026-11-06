@@ -1,0 +1,77 @@
+name: Lingua Tales - Monte Cristo original chapter picture map
+on:
+  push:
+    branches:
+      - content/monte-cristo-chapter-art-20261105
+      - main
+    paths:
+      - 'tools/map_monte_cristo_chapter_art.py'
+      - '.github/workflows/monte-cristo-chapter-art.yml'
+  schedule:
+    - cron: '28 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: lingua-monte-original-chapter-art-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verified-monte-chapters:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install beautifulsoup4==4.14.2
+      - name: Verify 117 original chapter headings and selected illustration SHA256
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/map_monte_cristo_chapter_art.py --write
+          python tools/map_monte_cristo_chapter_art.py --verify
+      - name: Save genuine Monte Cristo chapter image map and request central audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/literature/staging/user-requested-classics-20261105/the-count-of-monte-cristo/chapter-image-map.json
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "Historical Monte Cristo map unchanged; no duplicate commit."
+          else
+            git commit -m 'Literature: checkpoint source-anchored Monte Cristo chapter image candidates'
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              python tools/map_monte_cristo_chapter_art.py --verify
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 2
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Could not push verified Monte Cristo chapter map"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = "main" ]; then
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Retain generated map for inspection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: monte-cristo-original-chapter-card-candidates
+          path: docs/literature/staging/user-requested-classics-20261105/the-count-of-monte-cristo/chapter-image-map.json
+          if-no-files-found: warn
+          retention-days: 30

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_08.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-7638aada1186bbf9.webp",
+  "imageSha256": "0c8e5ff9941cc642ec2f60393db1ad02d43531ddbeec9f5ce83799ac033c795f",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a group of men standing on a cobblestone street in a city, gathered around a large newspaper. The men are dressed in 19th-century style clothing, including hats and coats. In the background, there are tall urban buildings and a street lamp.",
+    "visualObjectsEn": "Newspaper, cobblestone street, tall buildings, street lamp, hats, coats, trousers, boots.",
+    "recognizableCharactersOrPeopleEn": "A group of approximately six men, some wearing top hats or flat caps, engaged in reading or discussing the contents of a newspaper.",
+    "uncertaintyNotes": "The exact historical period, location, and specific identity of the individuals are not explicitly stated in the image and cannot be determined with certainty. The style is consistent with 19th-century European book illustration."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 3,
+    "paragraphIndexZeroBased": 11,
+    "exactSourceQuotation": "The papers and clubs were full of the affair, and everywhere people were discussing the probabilities of a successful pursuit",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene depicts a group of men in 19th-century attire gathered around a newspaper on a city street, which aligns with the narrative context of the public and the clubs being agitated and discussing the bank robbery news in Chapter 3.",
+    "suggestedAltArNotApproved": "A group of 19th-century gentlemen in hats and coats gathered on a cobblestone street, reading and discussing a newspaper.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a group of working-class men gathered on a cobblestone street reading a large newspaper together.",
+    "visualContradictions": "The passage describes the Bank robbery, a well-dressed gentleman in the paying room, and members of the Reform Club discussing the pursuit. The image depicts ordinary working-class men on an outdoor street rather than gentlemen inside a club or bank paying room.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

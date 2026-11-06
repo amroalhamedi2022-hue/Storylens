@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_09.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-94181c97a4b28657.webp",
+  "imageSha256": "c11b5942b5fb222e819b7ad192b59ce1e0a8425ba6a125154af40764e39caecc",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a man in 19th-century European attire standing on a wooden pier or dock, looking out over a body of water. He is accompanied by two figures wearing turbans and loose-fitting clothing who are standing slightly behind him. Several birds are flying in the sky above the water, and a small boat is visible in the distance.",
+    "visualObjectsEn": "Wooden pier, wooden post with rope, man in a suit and hat with a monocle, two figures in turbans and traditional garments, birds in flight, distant boat, water surface.",
+    "recognizableCharactersOrPeopleEn": "A man with a beard and monocle wearing a hat and coat, and two individuals wearing turbans and loose clothing.",
+    "uncertaintyNotes": "The specific identity of the individuals and the exact geographical location are not explicitly stated in the image. The style is consistent with 19th-century book illustrations."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 6,
+    "paragraphIndexZeroBased": 13,
+    "exactSourceQuotation": "A jetty pier, some two thousand yards along, extended into the roadstead. A number of fishing-smacks and coasting boats, some retaining the fantastic fashion of ancient galleys, were discernible on the Red Sea.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The scene description matches the setting of a jetty pier and coastal water activity described in Chapter 6. While the specific figures in the engraving (man with monocle and turbaned individuals) are not explicitly detailed in this paragraph, the setting of a pier, water, and boats aligns with the narrative context of the port scene in Suez.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a man in a suit and monocle standing on a wooden pier with two turbaned figures, overlooking a harbor with birds and a distant boat.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a gentleman with a monocle and hat standing on a wooden pier with two other figures, looking out over the water with distant boats and flying birds.",
+    "visualContradictions": "The passage describes an animated scene on the quay with sailors, merchants, ship-brokers, porters, fellahs bustling, minarets looming above houses, and a long jetty pier with fishing-smacks on the Red Sea. The image focuses almost exclusively on a single prominent European traveler standing on a simple wooden dock rather than the bustling multi-ethnic crowd and urban background specified in the text.",
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

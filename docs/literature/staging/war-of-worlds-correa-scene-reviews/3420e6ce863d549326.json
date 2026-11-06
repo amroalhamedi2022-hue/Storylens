@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_028_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-3420e6ce863d5493.webp",
+  "imageSha256": "5d952b1889bb45f1fd1446254b4f1b4703fe6827c62e411ab14bff69b13390a9",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a chaotic scene of people fleeing in panic. In the foreground, a young man runs toward the viewer with his arms raised in alarm. To the left, a vehicle is partially obscured by thick clouds of smoke or dust. To the right, a crowd of people is running away, with some individuals appearing to fall or stumble. The background shows a hazy, indistinct landscape with a tree and a distant structure.",
+    "visualObjectsEn": "A vehicle, thick clouds of smoke or dust, a low wall or curb, a fallen hat, an umbrella, a tree, and a crowd of people.",
+    "recognizableCharactersOrPeopleEn": "A young man in the foreground with a startled expression, and a group of men and women in period clothing running in the background.",
+    "uncertaintyNotes": "The exact nature of the event (e.g., an accident, a riot, or a military attack) is not explicitly stated in the image. The smoke could be from an explosion, a vehicle exhaust, or fire. The historical context is inferred from the clothing style but not confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 16,
+    "paragraphIndexZeroBased": 34,
+    "exactSourceQuotation": "For the main road was a boiling stream of people, a torrent of human beings rushing northward, one pressing on another. A great bank of dust, white and luminous in the blaze of the sun, made everything within twenty feet of the ground grey and indistinct and was perpetually renewed by the hurrying feet of a dense crowd of horses and of men and women on foot, and by the wheels of vehicles of every description.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a chaotic scene of people fleeing in panic, which aligns perfectly with the description of a 'boiling stream of people' and a 'torrent of human beings' in the selected passage. The presence of a 'great bank of dust' in the text matches the 'thick clouds of smoke or dust' noted in the scene description, and the mention of 'vehicles of every description' corresponds to the vehicle partially obscured in the illustration.",
+    "suggestedAltArNotApproved": "A chaotic scene of people fleeing in panic, with a young man running toward the viewer in the foreground, a crowd of people running in the background, and a vehicle partially obscured by thick clouds of dust.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a dense crowd of people rushing and fleeing in panic amidst clouds of dust and smoke, with vehicles visible on the left and various people on foot running.",
+    "visualContradictions": "None.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "workId": "the-valley-of-fear",
+  "title": "The Valley of Fear",
+  "author": "Arthur Conan Doyle",
+  "sourceLanguage": "en",
+  "originalLanguage": "en",
+  "originalPublicationYear": 1915,
+  "sourceEditionNote": "Fourth complete Sherlock Holmes novel, original English",
+  "translator": null,
+  "seriesId": null,
+  "seriesVolume": null,
+  "seriesVolumeCount": null,
+  "source": {
+    "provider": "Project Gutenberg",
+    "ebookNumber": 3289,
+    "url": "https://www.gutenberg.org/cache/epub/3289/pg3289-images.html",
+    "catalog": "https://www.gutenberg.org/ebooks/3289",
+    "sha256": "99a34f08c37eb12be2b01f2639e4f7da9cd83f3d22087945434f4d6d1260a5d2",
+    "bytes": 377413,
+    "narrativeWords": 58089,
+    "allTextSha256": "78cafd8ef2573e16b2718ecad1841838d6ee96f93e5147f34bfb024b12fb7a50",
+    "completeGutenbergMarkers": true,
+    "originalFullEditionPreservedVerbatim": true
+  },
+  "sourceImages": [
+    {
+      "number": 1,
+      "localPath": "art/image-001.webp",
+      "bytes": 143454,
+      "sha256": "bc1a6196fe0cca10fe7829423e2e64eb9bb743ed4dd809248c52f5eae9d88a46",
+      "originalUrl": "https://www.gutenberg.org/cache/epub/3289/images/img01.jpg",
+      "originalSha256": "d412bb917d631b977bca33f70fbd7ae5af0fc9240a22d7c6fc239003939b12ac",
+      "originalBytes": 417475,
+      "originalImageFormat": "JPEG",
+      "originalImageDimensions": [
+        760,
+        1000
+      ],
+      "historicalArtworkCandidate": true,
+      "originalAltOrCaption": "[Illustration: ]",
+      "nearestPreviousHeading": "Chapter I The Warning",
+      "previousParagraphContext": "“Douglas!” he stammered. “Birlstone! What’s this, Mr. Holmes? Man, it’s\r\nwitchcraft! Where in the name of all that is wonderful did you get those\r\nnames?”",
+      "placementStatus": "SOURCE_DOM_EXACT; STORY_SCENE_EDITORIAL_CHECK_PENDING",
+      "rightsStatus": "INDIVIDUAL_IMAGE_AND_TERRITORY_REVIEW_PENDING"
+    },
+    {
+      "number": 2,
+      "localPath": "art/image-002.webp",
+      "bytes": 223152,
+      "sha256": "6cf540a0f40dbd8e8fccc1e0e915404a87f9ca6466eaf6dc597dd2fb34696c96",
+      "originalUrl": "https://www.gutenberg.org/cache/epub/3289/images/img02.jpg",
+      "originalSha256": "bd2373b0fdcc94f21e4e3c4e37910888ef4e586995819773a6c8b16eff4a32c2",
+      "originalBytes": 544604,
+      "originalImageFormat": "JPEG",
+      "originalImageDimensions": [
+        1000,
+        767
+      ],
+      "historicalArtworkCandidate": true,
+      "originalAltOrCaption": "[Illustration: ]",
+      "nearestPreviousHeading": "Chapter V The People of the Drama",
+      "previousParagraphContext": "For an instant I could have sworn that the faintest shadow of a smile flickered\r\nover the woman’s lips.",
+      "placementStatus": "SOURCE_DOM_EXACT; STORY_SCENE_EDITORIAL_CHECK_PENDING",
+      "rightsStatus": "INDIVIDUAL_IMAGE_AND_TERRITORY_REVIEW_PENDING"
+    },
+    {
+      "number": 3,
+      "localPath": "art/image-003.webp",
+      "bytes": 115368,
+      "sha256": "cf97c121725c023b5092e6292b250c29222caedb57dd4f0363ecd0e7915c8bd8",
+      "originalUrl": "https://www.gutenberg.org/cache/epub/3289/images/img03.jpg",
+      "originalSha256": "4bbed1deef2a88c67dd97deb889c686f43f435d1b7bb9017b2f1faf639ca2e82",
+      "originalBytes": 368841,
+      "originalImageFormat": "JPEG",
+      "originalImageDimensions": [
+        716,
+        1000
+      ],
+      "historicalArtworkCandidate": true,
+      "originalAltOrCaption": "[Illustration: ]",
+      "nearestPreviousHeading": "Chapter VI A Dawning Light",
+      "previousParagraphContext": "He stood beside me in silence, his candle in his hand. Then the tall, lean\r\nfigure inclined towards me. “I say, Watson,” he whispered, “would you be afraid\r\nto sleep in the same room with a lunatic, a man with ",
+      "placementStatus": "SOURCE_DOM_EXACT; STORY_SCENE_EDITORIAL_CHECK_PENDING",
+      "rightsStatus": "INDIVIDUAL_IMAGE_AND_TERRITORY_REVIEW_PENDING"
+    },
+    {
+      "number": 4,
+      "localPath": "art/image-004.webp",
+      "bytes": 217352,
+      "sha256": "241d6956bb9921c3d5a4a0ea157ab9a604a65c5e92ad43c548d1bea4b0e12d4b",
+      "originalUrl": "https://www.gutenberg.org/cache/epub/3289/images/img04.jpg",
+      "originalSha256": "f485c846fab6f0a36db8035aff952aebdff5f3627dea0b5781fb2ca2b9e3196f",
+      "originalBytes": 547127,
+      "originalImageFormat": "JPEG",
+      "originalImageDimensions": [
+        1000,
+        841
+      ],
+      "historicalArtworkCandidate": true,
+      "originalAltOrCaption": "[Illustration: ]",
+      "nearestPreviousHeading": "Chapter II The Bodymaster",
+      "previousParagraphContext": "“Well, it’s early days. If your heart is as big as your body, and your soul as\r\nfine as your face, then I’d ask for nothing better,” said McMurdo.",
+      "placementStatus": "SOURCE_DOM_EXACT; STORY_SCENE_EDITORIAL_CHECK_PENDING",
+      "rightsStatus": "INDIVIDUAL_IMAGE_AND_TERRITORY_REVIEW_PENDING"
+    },
+    {
+      "number": 5,
+      "localPath": "art/image-005.webp",
+      "bytes": 139158,
+      "sha256": "2dcef3bc8dfca7e17b988796cf4ff60d69e7396de745c453a5cc9892c0cd7ffe",
+      "originalUrl": "https://www.gutenberg.org/cache/epub/3289/images/img05.jpg",
+      "originalSha256": "a5eb7080b07c2fbbd2d9f239d0d2f676f56c3a7f0374fbaf1efc1e73a2a42de9",
+      "originalBytes": 391257,
+      "originalImageFormat": "JPEG",
+      "originalImageDimensions": [
+        1000,
+        676
+      ],
+      "historicalArtworkCandidate": true,
+      "originalAltOrCaption": "[Illustration: ]",
+      "nearestPreviousHeading": "Chapter III Lodge 341, Vermissa",
+      "previousParagraphContext": "It was all he could do to keep himself from screaming out, for an agonizing\r\npain shot through his forearm. He nearly fainted at the sudden shock of it; but\r\nhe bit his lip and clenched his hands to hide his ag",
+      "placementStatus": "SOURCE_DOM_EXACT; STORY_SCENE_EDITORIAL_CHECK_PENDING",
+      "rightsStatus": "INDIVIDUAL_IMAGE_AND_TERRITORY_REVIEW_PENDING"
+    },
+    {
+      "number": 6,
+      "localPath": "art/image-006.webp",
+      "bytes": 212342,
+      "sha256": "0b703f744f103b642e969c6c5f46dc0eb2477ffae42c32ebfaa9347793f98a2e",
+      "originalUrl": "https://www.gutenberg.org/cache/epub/3289/images/img06.jpg",
+      "originalSha256": "352d455f8117034c8d7db8ff6fd9ce386fcf7e7573ecd908f742d959b9334e3e",
+      "originalBytes": 526366,
+      "originalImageFormat": "JPEG",
+      "originalImageDimensions": [
+        806,
+        1000
+      ],
+      "historicalArtworkCandidate": true,
+      "originalAltOrCaption": "[Illustration: ]",
+      "nearestPreviousHeading": "Chapter V The Darkest Hour",
+      "previousParagraphContext": "Ettie threw her arms round her lover’s neck. “Give it up, Jack! For my sake,\r\nfor God’s sake, give it up! It was to ask you that I came here to-day. Oh,\r\nJack, see—I beg it of you on my bended knees! Kneeling h",
+      "placementStatus": "SOURCE_DOM_EXACT; STORY_SCENE_EDITORIAL_CHECK_PENDING",
+      "rightsStatus": "INDIVIDUAL_IMAGE_AND_TERRITORY_REVIEW_PENDING"
+    },
+    {
+      "number": 7,
+      "localPath": "art/image-007.webp",
+      "bytes": 175172,
+      "sha256": "1c1cc291bcd7a701890f3629fdcfda99b6fa2d427eb02dc7c339ffaaad54dab6",
+      "originalUrl": "https://www.gutenberg.org/cache/epub/3289/images/img07.jpg",
+      "originalSha256": "28200c4b8f47b50b4833739c0f1840dcb6c38d6ff722edc938973b08fa951c77",
+      "originalBytes": 470815,
+      "originalImageFormat": "JPEG",
+      "originalImageDimensions": [
+        1000,
+        740
+      ],
+      "historicalArtworkCandidate": true,
+      "originalAltOrCaption": "[Illustration: ]",
+      "nearestPreviousHeading": "Chapter VII The Trapping of Birdy Edwards",
+      "previousParagraphContext": "“Not a sound, for your lives!” McMurdo whispered, as he went from the room,\r\nclosing the door carefully behind him.",
+      "placementStatus": "SOURCE_DOM_EXACT; STORY_SCENE_EDITORIAL_CHECK_PENDING",
+      "rightsStatus": "INDIVIDUAL_IMAGE_AND_TERRITORY_REVIEW_PENDING"
+    }
+  ],
+  "historicalArtworkCandidates": 7,
+  "imagesWithExactRelativePositions": 7,
+  "acceptance": {
+    "fullOriginalOrUnabridgedHistoricalTranslation": true,
+    "fullNaturalArabicTranslation": false,
+    "bilingualOriginalEnglishEditionAligned": false,
+    "illustrationRightsApproved": false,
+    "allRequestedHistoricalColouredArtworkPresent": false,
+    "appIntegrated": false,
+    "androidDeviceVerified": false
+  },
+  "status": "COMPLETE_SOURCE_STAGED_ONLY_NOT_PUBLISHED",
+  "note": "Unabridged cited source, NOT bilingual or APK-ready. No invented images or missing-book equivalence. Burton Arabic-origin source not aligned to any Arabic edition."
+}

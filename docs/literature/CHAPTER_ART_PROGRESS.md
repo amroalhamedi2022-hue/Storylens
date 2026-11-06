@@ -6,22 +6,24 @@
 
 ## Current totals
 
-- Locally mapped chapter candidates: **9**.
+- Locally mapped chapter candidates: **268**.
 - Chapter cards with both territorial rights and editorial approval: **0**.
-- Verified historical art binaries retained in audited archives (all editions): **459**; NOT necessarily chapter-aligned.
+- Verified historical art binaries retained in audited archives (all editions): **1137**; NOT necessarily chapter-aligned.
 
 ## Book-by-book audit
 
 | Book | Actual chapters | Local primary image candidates | Approved chapter cards | Missing candidates | Source / blocker |
 | --- | ---: | ---: | ---: | ---: | --- |
-| Around the World in Eighty Days | 37 | 9 | 0 | 28 | 37 source chapters plus Arabic draft |
+| Around the World in Eighty Days | 37 | 12 | 0 | 25 | 37 source chapters plus Arabic draft |
 | The Moonstone | Needs segmentation | 0 | 0 | Unknown | staged English; chapter segmentation/rights pending |
 | The War of the Worlds | 27 | 0 | 0 | 27 | 27 original chapters staged; bilingual/rights pending |
-| Treasure Island | Needs segmentation | 0 | 0 | Unknown | full illustrated English original staged; distinct chapter map pending |
-| Kidnapped | Needs segmentation | 0 | 0 | Unknown | full illustrated English original staged; distinct chapter map pending |
-| The Black Arrow | Needs segmentation | 0 | 0 | Unknown | full illustrated English original staged; distinct chapter map pending |
-| The Last of the Mohicans | Needs segmentation | 0 | 0 | Unknown | full illustrated English original staged; distinct chapter map pending |
-| The Gilded Age | Needs segmentation | 0 | 0 | Unknown | full illustrated English original staged; distinct chapter map pending |
+| Treasure Island | 34 | 34 | 0 | 0 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
+| Kidnapped | 30 | 30 | 0 | 0 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
+| The Black Arrow | 32 | 8 | 0 | 24 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
+| The Last of the Mohicans | 33 | 8 | 0 | 25 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
+| The Gilded Age | 63 | 61 | 0 | 2 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
+| The Count of Monte Cristo | 117 | 115 | 0 | 2 | complete 117-chapter historical English translation staged; original French edition/visual scene and rights review pending |
+| The Valley of Fear | Needs segmentation | 0 | 0 | Unknown | full English original plus seven period illustrations staged; chapter scene mapping pending |
 | A Study in Scarlet | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
 | Dracula | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
 | Frankenstein | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
@@ -32,10 +34,10 @@
 
 ## Next actions (highest to lowest priority)
 
-1. Backfill 28 Verne chapters without any locally sourced primary image; editorial/territory clearance of the nine candidates is still pending
-2. Derive exact narrative chapter indexes for five staged English illustrated books and The Moonstone, map original art to actual chapter scenes
-3. Source contextual art for all 27 The War of the Worlds chapters
-4. Revisit all older staged books and incoming PR book collections without counting unmerged materials on main
+1. Scene-match new Commons original Verne engravings to the actual text for remaining chapter gaps; verify every file's artist, edition and territorial rights before promotion
+2. Review the five backfilled historic chapter maps and 117 Monte Cristo chapter slots; get original contextual plates for remaining holes and editorial/territorial clearance
+3. Scene-verify and assign real 1906 Correa historical engravings to 27 War of the Worlds chapters (all currently unassigned), then source original extras for uncovered chapters
+4. Backfill Valley of Fear, Kalila, Arabian Nights and remaining previous works with verified edition-specific chapter images
 5. Have reader/UI thread implement image-backed ordered chapter cards only from approved local chapter-image maps
 
 ## Data & handoff
@@ -43,13 +45,17 @@
 - Machine-readable counts: docs/literature/CHAPTER_ART_PROGRESS.json.
 - Chapter-level Verne candidate map: docs/literature/staging/verne-chapter-cards/chapter-image-map.json.
 - Exact historic scan/rights source list: docs/literature/HISTORIC_VERNES_ASSETS.json.
+- New original Commons period images in quarantine, NOT chapter-mapped: **57**.
+- Original 1906 Correa War of the Worlds files in quarantine, NOT chapter-mapped: **108**.
 - GitHub handoff: docs/handoffs/LINGUA_TALES_HANDOFF_CURRENT.md.
 - Story content automation is separate from the scheduled GitHub report; inspect latest Actions SHA and output before claiming any new image.
 - This inventory does NOT assert that a chapter card exists for any staged book lacking a verified chapter-to-image map, even if its archive contains hundreds of figures.
 
 ## Remaining counts
 
-- Verne: **28 chapters without candidates, 37 without approved chapter thumbnails**; nine distinct locally mapped historical plates await approvals.
+- Verne: **25 chapters without image candidates, 37 without approved thumbnails**; historical art requires territory/scene approvals.
 - War of the Worlds: **27 chapters without candidates**.
-- Moonstone/five illustrated classics/older works: formal edition-specific chapter segmentation, scene mapping, artwork/rights and review still open.
+- Five archived illustrated novels now have edition-derived chapter counts and source-positioned local plate candidates; verify scene fidelity and per-image rights before use.
+- Monte Cristo: **2 chapter candidates missing**; the historical English translation's original French edition and rights still need verification.
+- Moonstone/older works: exact chapter segmentation, contextual art acquisition, rights and editorial review still open.
 - Book cover art, full bilingual human review and signed reader release require independent checks.

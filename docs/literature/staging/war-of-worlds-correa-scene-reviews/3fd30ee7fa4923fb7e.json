@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_030_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-3fd30ee7fa4923fb.webp",
+  "imageSha256": "e0fb3d7bde48cbbbbe001ad7e3fae77a7ba6447998a7f8b9bce8689c9e0ddd3b",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch depicting a man in a suit falling or struggling on the ground. He is being entangled by long, thin, whip-like or tentacle-like appendages that wrap around his body and limbs. The man has a distressed expression, with his mouth open and one hand raised in a defensive or startled gesture. The background is minimal, suggesting a rough or uneven terrain.",
+    "visualObjectsEn": "A man wearing a suit, long whip-like or tentacle-like appendages, ground surface with small rocks or debris, signature initials 'A.C.' in the bottom right corner.",
+    "recognizableCharactersOrPeopleEn": "A single male figure dressed in formal 19th or early 20th-century attire.",
+    "uncertaintyNotes": "The nature of the appendages is ambiguous; they could represent whips, ropes, vines, or supernatural tentacles. The exact historical context or specific artistic source is not identified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 20,
+    "paragraphIndexZeroBased": 8,
+    "exactSourceQuotation": "Then something⁠—something struggling violently⁠—was lifted high against the sky, a black, vague enigma against the starlight; and as this black object came down again, I saw by the green brightness that it was a man.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a man in a suit struggling while being entangled by tentacle-like appendages. This matches the specific scene in Chapter 20 where the narrator observes a Martian fighting-machine lifting a man into the air with a tentacle, describing him as a well-dressed man struggling violently.",
+    "suggestedAltArNotApproved": "A man in a suit being lifted and entangled by a Martian tentacle.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a well-dressed middle-aged man lying on the ground being entangled by whip-like tentacles.",
+    "visualContradictions": "The passage describes the man being lifted high against the sky by a tentacle reaching from the fighting-machine's back cage, whereas the illustration shows the man already on the ground with tentacles wrapping around him from above or nearby.",
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p179_2.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-5bf60bbef81b5c9d.webp",
+  "imageSha256": "ff08bc09f4ab928851aa0a917bd0b82713c1f7fe4daba5ec5d76c2721c7afbf9",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a group of people in a wooded area near a body of water. In the foreground, a soldier in a military uniform and tricorn hat sits on horseback, facing away from the viewer. To his right, another soldier in a similar uniform stands on the ground, looking toward the viewer. In the background, two women in period dresses and bonnets are mounted on horses. The style is that of a 19th-century book illustration.",
+    "visualObjectsEn": "Horses, military uniforms, tricorn hats, period dresses, bonnets, trees, water, bedroll strapped to a horse, swords, foliage.",
+    "recognizableCharactersOrPeopleEn": "Two soldiers in 18th-century style military uniforms and two women in 18th-century style riding attire.",
+    "uncertaintyNotes": "The specific historical period or narrative context is not explicitly stated in the image, though the clothing suggests the 18th century. The exact identity of the individuals is unknown."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 18,
+    "paragraphIndexZeroBased": 58,
+    "exactSourceQuotation": "here have been them one-sided horses again! Now the whole secret is out, and all is plain as the north star at midnight. Yes, here they have mounted. There the beasts have been bound to a sapling, in waiting; and yonder runs the broad path away to the north, in full sweep for the Canadas.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts soldiers and women on horseback in a wooded area, which aligns with the scout's discovery of tracks and evidence of horses being mounted and bound to saplings in this specific passage. The mention of 'one-sided horses' and the context of a journey toward the Canadas matches the visual elements of period-appropriate military and civilian figures in a forest setting.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing two soldiers and two women on horseback in a forest, reflecting the discovery of a trail and mounted horses as described in the text.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows soldiers and women on horseback in a wooded area, which corresponds generally to characters from the novel, but it does not depict the specific discovery of tracks (\"the little foot\") or the scout examining the ground as described in the passage.",
+    "visualContradictions": "The characters in the image are primarily mounted on horses or standing upright looking around, whereas the text describes the scout examining the ground, finding footprints (\"one-sided horses\"), and deducing the mounting spot and trail.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

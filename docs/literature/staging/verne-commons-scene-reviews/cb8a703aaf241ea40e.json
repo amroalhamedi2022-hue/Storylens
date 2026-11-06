@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_28.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-cb8a703aaf241ea4.webp",
+  "imageSha256": "9c94afc6e8eab3c8678acdec6b25ab1758238ad9cc3552ac20e6867e64c7084d",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting three men working on the rigging of a sailing ship. The central figure is a man looking upward while clinging to a mast and a spar. Above him, another man is positioned near the mast, and a third figure is partially visible in the upper left corner. The background consists of a complex network of ropes and sails.",
+    "visualObjectsEn": "Sailing ship mast, wooden spars, rigging ropes, pulleys, clothing including vests and trousers, textured cross-hatching shading.",
+    "recognizableCharactersOrPeopleEn": "Three male sailors or crew members.",
+    "uncertaintyNotes": "The exact historical context or specific narrative source of the engraving is not provided. The identities of the individuals are not specified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 33,
+    "paragraphIndexZeroBased": 6,
+    "exactSourceQuotation": "He formed warm friendships with the sailors, and amazed them with his acrobatic feats.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The engraving depicts sailors working on the rigging of a ship, which aligns with the narrative context of Passepartout interacting with the crew and performing acrobatic feats on the ship Henrietta in Chapter 33.",
+    "suggestedAltArNotApproved": "An engraving of three sailors working on the rigging of a ship, with one man clinging to the mast and others assisting, illustrating the crew of the Henrietta.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a character (Passepartout) performing acrobatic feats and interacting with the crew on the rigging of a sailing ship, matching the description where he amazed the sailors with his acrobatic feats.",
+    "visualContradictions": "None observed; the scene accurately captures Passepartout's described interaction and acrobatic presence among the ship's rigging.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

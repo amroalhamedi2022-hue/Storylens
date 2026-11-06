@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_26.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-419bd06a4233917f.webp",
+  "imageSha256": "e50ad10c0a7775a1338f0a202125cca71419353c56d685c87e91331074cfa8f8",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting an interior scene, likely a train carriage or a formal room. A man in a long coat and hat stands in the foreground, looking toward a group of men seated around a table in the background. The room has paneled walls and a wooden floor.",
+    "visualObjectsEn": "A long rectangular table, wooden chairs, paneled walls, a doorway or archway, floorboards, and clothing including frock coats, vests, and hats.",
+    "recognizableCharactersOrPeopleEn": "A man in the foreground wearing a hat and long coat, and a group of four to five men seated or standing around a table in the background, all dressed in 19th-century formal attire.",
+    "uncertaintyNotes": "The exact setting is ambiguous; it could be a train carriage, a ship's cabin, or a private room. The specific identities of the individuals are not provided in the image."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 15,
+    "paragraphIndexZeroBased": 5,
+    "exactSourceQuotation": "conducted them into a room with barred windows",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The image depicts a man in a long coat (likely the policeman) leading others into a room with paneled walls and a wooden floor, where men are seated around a table. This aligns with the scene in Chapter 15 where the policeman conducts the prisoners into a room.",
+    "suggestedAltArNotApproved": "A black and white engraving showing a man in a long coat and hat standing in a room with paneled walls, gesturing toward a group of men seated at a wooden table.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a man standing in the foreground in a long coat and hat, looking toward a group of men seated around a long table in what appears to be a railway carriage or a ship cabin interior.",
+    "visualContradictions": "The passage describes a room with barred windows in a modest-looking house where prisoners are conducted by a policeman before Judge Obadiah. The engraving instead depicts an interior with long wooden paneling typical of a train carriage or ship interior with multiple men gathered around a long table, lacking the specific architectural features of a detention room or police station cell with barred windows.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

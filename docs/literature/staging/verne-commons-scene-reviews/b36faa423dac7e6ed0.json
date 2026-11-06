@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_29.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-b36faa423dac7e6e.webp",
+  "imageSha256": "62754e504879983ce6cb8cceab446e0bc9dca0cb187e45c19482efb3efea9ea6",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a street scene in an East Asian setting. Several figures are gathered, including a man holding an umbrella, an elderly person with a cane, and a seated man with a large conical hat next to a carrying pole with containers. In the background, there are simple structures, one with a sign featuring characters, and a tree.",
+    "visualObjectsEn": "Umbrella, walking cane, carrying pole with two containers, conical hats, wooden structures, sign with characters, lantern, clothing with traditional robes, ground surface.",
+    "recognizableCharactersOrPeopleEn": "A group of men, including an elderly man leaning on a cane, a man holding an umbrella, a seated man wearing a wide conical hat, and a child sitting on the ground.",
+    "uncertaintyNotes": "The specific geographic location and historical period are not explicitly stated in the image, though the style and attire suggest an East Asian context, likely 19th-century China or a similar region. The exact nature of the interaction between the figures is ambiguous."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 22,
+    "paragraphIndexZeroBased": 23,
+    "exactSourceQuotation": "Passepartout saw, too, begging friars, long-robed pilgrims, and simple civilians",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The engraving depicts a street scene in an East Asian setting with various figures including civilians and traditional attire, which aligns with the description of the Japanese quarter and the diverse types of people Passepartout observes in this passage.",
+    "suggestedAltArNotApproved": "A black and white engraving of a 19th-century East Asian street scene featuring civilians, a man with an umbrella, and an elderly person with a cane.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts a crowded Japanese street scene featuring various local figures described in the passage, including civilians in traditional robes, a person holding an umbrella, individuals wearing distinct conical hats, and a man seated near a carrying pole with containers, matching Passepartout's observations of the street life in Yokohama.",
+    "visualContradictions": "None significant; the visual elements align with the general descriptions of Japanese attire and street life in the passage.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

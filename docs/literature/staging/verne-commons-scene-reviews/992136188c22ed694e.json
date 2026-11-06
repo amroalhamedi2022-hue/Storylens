@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_17.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-992136188c22ed69.webp",
+  "imageSha256": "5676b0ef983044b631fa7e8e95044a660c6d220dacaf94cc9da1727e4393df8e",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a tropical outdoor scene where two men in Western-style suits are interacting with two local men wearing turbans and traditional clothing. A large elephant stands in the background near palm trees and dense foliage. The composition is a detailed line engraving typical of 19th-century book illustrations.",
+    "visualObjectsEn": "Elephant, palm trees, dense tropical vegetation, top hat held by one of the men, walking stick, turbans, long robes, Western-style frock coats, trousers.",
+    "recognizableCharactersOrPeopleEn": "Two men dressed in 19th-century Western formal attire (suits and coats) and two men dressed in traditional South Asian or Middle Eastern attire including turbans and robes.",
+    "uncertaintyNotes": "The specific identities of the individuals and the exact geographical location are not explicitly stated in the image, though the attire and the elephant suggest a South Asian setting. The engraving style is characteristic of 19th-century European illustration, but the specific artist or publication cannot be confirmed from the image alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 16,
+    "exactSourceQuotation": "The guide unloosed the elephant and led him into a thicket, at the same time asking the travellers not to stir. He held himself ready to bestride the animal at a moment’s notice, should flight become necessary; but he evidently thought that the procession of the faithful would pass without perceiving them amid the thick foliage, in which they were wholly concealed.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The engraving depicts an elephant in a tropical setting with men in Western attire and local guides, which aligns perfectly with the narrative context of Chapter 12 where the guide leads the travelers (Fogg and Passepartout) into a thicket with an elephant to hide from a procession.",
+    "suggestedAltArNotApproved": "An engraving showing an elephant in a tropical forest with two Western men and local guides, illustrating a scene of concealment in the jungle.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows the guide (in traditional attire and turban) standing near an elephant in a thicket, instructing the travellers (two gentlemen in Western suits, one holding a hat and stick) to stay put while hiding among the dense tropical foliage, perfectly matching the described scene.",
+    "visualContradictions": "None",
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

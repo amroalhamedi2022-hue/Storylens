@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p124.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-e5e68d24d1d66cec.webp",
+  "imageSha256": "912de1fae41f30b2aed42dbdeb0763576d5249e27343e70ef643fc6eba272cb2",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraved illustration depicting a group of people traveling through a wilderness area. The group includes two women on horseback, a man in 18th-century military-style uniform, a Native American man walking in the foreground, and two other Native American figures in the background. The style is that of a 19th-century book illustration.",
+    "visualObjectsEn": "Two horses, long rifles, a tomahawk, a walking stick, 18th-century military coats, tricorn hats, feathered headdresses, leather leggings, and period-appropriate clothing.",
+    "recognizableCharactersOrPeopleEn": "Two women riding horses, one man in a military uniform, one Native American man in the foreground, and two other Native American figures in the background.",
+    "uncertaintyNotes": "The specific identities of the individuals are not provided in the image, and the exact historical context or narrative source is unknown. The date '1883' and names 'Andriolli' and 'Huyot' are visible as signatures or credits."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

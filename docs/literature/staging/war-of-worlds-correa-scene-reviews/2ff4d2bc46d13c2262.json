@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_033_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-2ff4d2bc46d13c22.webp",
+  "imageSha256": "112b51dff6415128f3ba0d10f16bd081377af9b239ae098d3e6f30952a5c7d4d",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a large, rounded, possibly metallic object or machine on the left emitting a bright, thin beam of light or energy toward the right. The beam strikes a landscape, causing a large, billowing cloud of smoke or explosion to rise. The style is reminiscent of early 20th-century pen-and-ink book illustrations.",
+    "visualObjectsEn": "A large rounded machine or object, a thin straight beam of light, a large cloud of smoke or explosion, a barren landscape, and a signature in the bottom left corner.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The nature of the object on the left is ambiguous; it could be a futuristic weapon, a celestial body, or a stylized representation of a technological device. The exact medium is likely a pen-and-ink drawing or a woodcut-style engraving."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 5,
+    "paragraphIndexZeroBased": 12,
+    "exactSourceQuotation": "Slowly a humped shape rose out of the pit, and the ghost of a beam of light seemed to flicker out from it.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a machine emitting a beam of light toward a landscape, causing an explosion or smoke. This aligns with the description of the Martian machine rising from the pit and emitting a beam of light in Chapter 5.",
+    "suggestedAltArNotApproved": "A black and white ink illustration showing a Martian fighting-machine rising from a pit and firing a Heat-Ray beam that causes an explosion in the landscape.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a large rounded machine or cylinder on the left emitting a thin beam toward billowing clouds of smoke and a barren landscape.",
+    "visualContradictions": "The passage describes the little wedge of people with the white flag standing near the pit, whose faces flash green from the smoke, and a humped shape rising out of the pit with a ghost of a beam of light. The illustration focuses primarily on a mechanical device firing a direct thin ray rather than capturing the specific group of people with the white flag or the green smoke effect on their faces as described.",
+    "confidenceSelfReported": 0.9,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

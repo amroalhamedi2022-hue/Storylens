@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "updatedOn": "2026-11-05",
+  "role": "chapter-organizer-ui-not-literature-or-image-acquisition",
+  "repository": "amroalhamedi2022-hue/Storylens",
+  "mainMergedFeatureCommit": "9b32529b47f441447a3b21e0c18b2fd339261be7",
+  "pullRequest": "https://github.com/amroalhamedi2022-hue/Storylens/pull/18",
+  "exactFeatureCI": "https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42092432267",
+  "exactFeatureCIResult": "success",
+  "sourceBranches": "merged main",
+  "workstreamBoundaries": {
+    "thisConversation": [
+      "book cover to chapter chooser",
+      "ordered swipeable RTL/LTR chapter tiles",
+      "approved per-chapter image arrangement",
+      "reader navigation and bookmarks",
+      "QA progress and transfer"
+    ],
+    "separateLiteratureConversation": [
+      "original real text sourcing",
+      "historical art sourcing",
+      "full bilingual literary translation",
+      "source and chapter image rights and provenance"
+    ],
+    "codexOwner": [
+      "physical paper mesh page curl gestures"
+    ]
+  },
+  "completed": [
+    "source-safe delegated library-card click chapter opener without breaking programmatic openStory",
+    "adaptive ordered horizontal chapter carousel, chapter selection into original reader",
+    "back navigation and in-reader illustrated chapters button",
+    "original-color uncropped display with strict app-local approval gates",
+    "fail-closed missing image numbered cards, no wrong-chapter reused art",
+    "safe SHA256 checked packager for source-approved artwork from other workstream",
+    "Node gallery and Python asset-packaging tests passed",
+    "Android assembly and existing full Chromium/browser smoke passed"
+  ],
+  "implementation": [
+    "app/src/main/assets/lt-chapter-gallery.js",
+    "app/src/main/assets/lt-chapter-gallery.css",
+    "app/src/main/assets/lt-chapter-thumbnail-registry.js",
+    "tools/package_approved_chapter_thumbnails.py",
+    "tools/test_approved_thumbnail_packaging.py",
+    "tools/chapter-thumbnail-gallery.test.cjs"
+  ],
+  "imageReadiness": [
+    {
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "narrativeChapters": 37,
+      "sourceMappedLocalCandidateThumbnails": 9,
+      "editorialTerritoryApprovedChapterThumbnails": 0,
+      "missingSourceMappedChapters": 28,
+      "missingApprovedChapterThumbnails": 37,
+      "approvedImageRegistryEntries": 0
+    }
+  ],
+  "pending": [
+    "content team supplies one distinct genuine colour-preferred image per chapter, maps precise scene and rights",
+    "verify territory/editorial decisions and package only approved local art",
+    "import/publish complete contextual bilingual prose outside this UI workstream",
+    "test actual Android phone and Xiaomi Pad 5 in portrait/landscape and accessibility",
+    "build signed stable production update with existing private certificate and data-preserving package",
+    "do not claim 37 thumbnail images or new APK while approvals/device/signing remain open"
+  ],
+  "canonicalPlan": "docs/plans/LINGUA_TALES_CHAPTER_GALLERY_MASTER_2026-11-05.md",
+  "privateLibrary": "/Lingua Tales/Plans/LINGUA_TALES_CHAPTER_GALLERY_HANDOFF_CURRENT.md"
+}

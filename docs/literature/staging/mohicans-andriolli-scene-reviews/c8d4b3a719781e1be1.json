@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p179.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-c8d4b3a719781e1b.webp",
+  "imageSha256": "7e272cd3f35ad782e57a95797fe0bab9b90e0d8ecb6573b9a31c231cb35c9a4f",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white historical-style engraving depicting a forest scene. A soldier on horseback is positioned in the center, facing away from the viewer, while another soldier stands on the ground to the right, facing the rider. Behind the rider, two women are mounted on horses. The setting appears to be a wooded area near a body of water or a path.",
+    "visualObjectsEn": "Horses, military uniforms, tricorn hats, bedroll attached to a saddle, swords, trees, forest foliage, ground vegetation.",
+    "recognizableCharactersOrPeopleEn": "A mounted soldier in uniform, a standing soldier in uniform, and two women riding horses.",
+    "uncertaintyNotes": "The specific historical period or conflict is not explicitly identifiable from the visual evidence alone, though the attire suggests an 18th or early 19th-century military context. The exact nature of the interaction between the figures is implied by the composition but not definitively confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 1,
+    "paragraphIndexZeroBased": 20,
+    "exactSourceQuotation": "No sooner were these females seated, than their attendant sprang lightly into the saddle of the war-horse, when the whole three bowed to Webb, who, in courtesy, awaited their parting on the threshold of his cabin, and turning their horses' heads, they proceeded at a slow amble",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene describes a departure from a military encampment involving women on horseback and a soldier (attendant/Heyward) leading or accompanying them, which aligns with the visual elements of soldiers and women on horses in a forest/military setting.",
+    "suggestedAltArNotApproved": "A nineteenth-century engraving showing a military departure scene with women on horseback and soldiers in uniform, set against a backdrop of forest trees.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows two women on horses, a mounted soldier, and a soldier standing on the ground near a forest and water body.",
+    "visualContradictions": "The passage describes the females starting to proceed from Webb's cabin with an Indian runner unexpectedly gliding by, but the image shows a French sentry scene with the caption 'Qui vive?' and lacks the Indian runner, the specific cabin threshold, and the detailed facial/veil interaction described.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,3 +1,6 @@
+## BINDING USER ROLE SPLIT — 2026-11-05 · CHG-01
+**THIS UI conversation** exclusively owns the presentation, ordering, chapter thumbnails, gallery, chapter-to-reader navigation, approved local image placement, progress and cross-chat handoff; a DIFFERENT conversation exclusively owns researching/acquiring the **literary texts and image binaries**. Read **docs/plans/LINGUA_TALES_CHAPTER_GALLERY_MASTER_2026-11-05.md** before any gallery/image layout work. One authentic, distinct, source-verified and rights/editorially approved chapter thumbnail per true narrative chapter; prefer genuine original colour, no grayscale/cropping/reuse from a different chapter. Book cover tap → horizontally ordered chapter tiles → tap chapter opens same existing reader. Never treat a staged source image or unapproved mapped candidate as reader-ready. Current PR #18 branch feature/chapter-thumbnail-gallery-20261105 owns isolated gallery UI; physical paper-curl is Codex-owned, DO NOT edit curl engine concurrently. Update the living status and private Library handoff with exact SHA/CI and remaining missing art before ending work.
+
 # Lingua Tales — persistent instructions for Codex/Claude/Copilot/ChatGPT
 
 ## USER-APPROVED NEW 2026-11-05 reader redesign — binding scope update

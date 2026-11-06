@@ -1,0 +1,76 @@
+name: Lingua Tales - stage original 1874 Moonstone historical print scans
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/intake_moonstone_1874_period_gallery.py'
+      - '.github/workflows/moonstone-1874-original-scan-intake.yml'
+  schedule:
+    - cron: '21 3,9,15,21 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: lingua-moonstone-1874-original-scan-intake-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  stage-source-hashed-period-scans:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate source rules offline
+        run: python tools/test_moonstone_scan_intake.py
+      - name: Install archive and image decoders
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0
+      - name: Download up to 12 original Commons PNG facsimile scans with hashes
+        run: python tools/intake_moonstone_1874_period_gallery.py --max-new 12
+      - name: Preserve ONLY real signed-source file evidence; explicitly request refreshed audit
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -d docs/literature/staging/moonstone-1874-original-scans ]; then
+            git add -f docs/literature/staging/moonstone-1874-original-scans/
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No verified new original print scans"
+          else
+            git commit -m "Literature: archive original 1874 Moonstone print facsimiles"
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 3
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Real Commons source acquired but cannot push after retries"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = "main" ]; then
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
+          fi
+      - name: Retain source image evidence on API/push failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: moonstone-1874-original-facsimile-pages-not-yet-chapter-art
+          path: docs/literature/staging/moonstone-1874-original-scans/
+          if-no-files-found: ignore
+          retention-days: 30
