@@ -4,7 +4,7 @@
   "scope": "checked-in main only; recovered PR16 historical source is counted only after merged",
   "policy": "at least one distinct locally stored, sourced, chapter-matched and rights-cleared primary image per chapter",
   "counts": {
-    "localCandidateChapterCards": 268,
+    "localCandidateChapterCards": 275,
     "readyChapterCards": 0,
     "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1137,
     "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1137
@@ -424,12 +424,24 @@
     {
       "bookId": "the-valley-of-fear",
       "title": "The Valley of Fear",
-      "sourceState": "full English original plus seven period illustrations staged; chapter scene mapping pending",
-      "chapterCount": null,
-      "localCandidateChapters": 0,
+      "sourceState": "14 complete original English chapters plus epilogue; 7 locally pinned edition-image positions; scene/rights/Arabic pending",
+      "chapterCount": 15,
+      "novelChapterCountExcludingEpilogue": 14,
+      "mappedChapterNumbers": [
+        1,
+        5,
+        6,
+        9,
+        10,
+        12,
+        14
+      ],
+      "readyChapterNumbers": [],
+      "localCandidateChapters": 7,
       "readyForUICards": 0,
-      "missingImageChapters": null,
-      "missingReadyChapters": null,
+      "missingImageChapters": 8,
+      "missingReadyChapters": 15,
+      "imageMap": "docs/literature/staging/user-requested-classics-20261105/the-valley-of-fear/chapter-image-map.json",
       "archivedLocalHistoricArt": 7,
       "sourceImageCount": 7
     },

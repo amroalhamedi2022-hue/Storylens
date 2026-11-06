@@ -6,7 +6,7 @@
 
 ## Current totals
 
-- Locally mapped chapter candidates: **268**.
+- Locally mapped chapter candidates: **275**.
 - Chapter cards with both territorial rights and editorial approval: **0**.
 - Verified historical art binaries retained in audited archives (all editions): **1137**; NOT necessarily chapter-aligned.
 
@@ -23,7 +23,7 @@
 | The Last of the Mohicans | 33 | 8 | 0 | 25 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
 | The Gilded Age | 63 | 61 | 0 | 2 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
 | The Count of Monte Cristo | 117 | 115 | 0 | 2 | complete 117-chapter historical English translation staged; original French edition/visual scene and rights review pending |
-| The Valley of Fear | Needs segmentation | 0 | 0 | Unknown | full English original plus seven period illustrations staged; chapter scene mapping pending |
+| The Valley of Fear | 15 | 7 | 0 | 8 | 14 complete original English chapters plus epilogue; 7 locally pinned edition-image positions; scene/rights/Arabic pending |
 | A Study in Scarlet | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
 | Dracula | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
 | Frankenstein | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
