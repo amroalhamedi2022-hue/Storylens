@@ -1,0 +1,331 @@
+/* Lingua Tales — Reading Sanctuary v2; VISUAL ONLY, 2026-11-06.
+   Wen Sarafet optics are shared, not duplicated. No curl transforms,
+   new gesture handlers, content changes, audio/DB or signing here. */
+
+/* Custom theme editor palettes must tint the existing optical atmosphere
+   without making the navigation lens itself a coloured opaque bubble. */
+body.lt-has-custom-gradient:is(.theme-liquid-27,.theme-aurora,.theme-aqua,
+ .theme-nebula,.theme-paper-atlas,.theme-midnight-library){
+ --lt-sanctuary-a:var(--lt-glass-a,#b4def2);
+ --lt-sanctuary-b:var(--lt-glass-b,#b8a8e6);
+}
+body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery)
+ > .lt-wen-follow-lens{
+ background:radial-gradient(ellipse 105% 70% at 25% -9%,
+     rgba(255,255,255,.72),rgba(255,255,255,.1) 46%,transparent 73%),
+     linear-gradient(140deg,rgba(255,255,255,.24),
+      rgba(244,250,255,.055) 53%,rgba(255,255,255,.16))!important;
+ border-color:color-mix(in srgb,var(--lt-sanctuary-rim,white) 85%,
+   var(--lt-sanctuary-a,#b4def2) 15%)!important;
+ box-shadow:inset 0 2px 2px rgba(255,255,255,.54),
+   inset 1px 0 1px rgba(255,255,255,.32),
+   inset 0 -2px 5px rgba(45,70,112,.14),
+   0 10px 26px var(--lt-sanctuary-shadow,rgba(12,24,45,.14))!important;
+ pointer-events:none!important;
+}
+body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery)
+ > .lt-wen-follow-lens::after{
+ inset:auto 15% -1px 15%!important;height:14%!important;
+ border-bottom:2px solid rgba(255,255,255,.76)!important;
+}
+body.lt-wen-optics :is(.lt-menu-toggle,.lt-drawer-close,.lt-theme-choice,
+ .lt-settings-sheet button,.lt-chapter-gallery-close){
+ border-color:color-mix(in srgb,var(--lt-sanctuary-rim,rgba(255,255,255,.50))
+  72%,var(--lt-sanctuary-a,#b7cfe6) 28%)!important;
+ box-shadow:inset 0 1px 0 var(--lt-sanctuary-crown,rgba(255,255,255,.55)),
+   inset 0 -1px 0 rgba(30,65,96,.10),
+   0 7px 21px var(--lt-sanctuary-shadow,rgba(0,0,0,.16));
+}
+body.lt-wen-optics :is(.lt-menu-toggle,.lt-drawer-close,
+ .lt-settings-sheet button,.lt-chapter-gallery-close):where(:active,.lt-wen-pressed){
+ box-shadow:inset 0 2px 2px rgba(255,255,255,.68),
+  inset 0 -3px 6px rgba(33,81,112,.18),
+  0 5px 16px var(--lt-sanctuary-shadow,rgba(0,0,0,.14))!important;
+}
+body:is(.theme-midnight-library,.theme-nebula).lt-wen-optics
+ :is(.lt-drawer,.lt-settings-sheet,#modals .sheet){
+ --lt-sanctuary-crown:rgba(255,255,255,.23);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.25),
+  0 18px 48px rgba(5,9,28,.35)!important;
+}
+/* Six approved theme choices: visual preview and compact, legible swatches. */
+.lt-theme-gallery{gap:clamp(9px,1.2vw,16px)!important}
+.lt-theme-choice{
+ min-width:0!important;min-height:108px!important;
+ padding:12px 9px!important;line-height:1.4!important;
+ text-align:center!important;justify-content:center!important;
+}
+.lt-theme-choice .lt-theme-swatch{
+ position:relative;isolation:isolate;overflow:hidden;
+ height:clamp(47px,5.1vw,66px)!important;
+ border-radius:clamp(11px,1.5vw,17px)!important;
+ border:1px solid rgba(255,255,255,.55)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.83),
+  inset 0 -2px 4px rgba(18,38,70,.15),0 4px 13px rgba(12,22,44,.13)!important;
+}
+.lt-theme-choice .lt-theme-swatch::after{
+ content:"";position:absolute;inset:2px;border-radius:inherit;
+ background:linear-gradient(118deg,rgba(255,255,255,.55),
+  rgba(255,255,255,.10) 27%,transparent 56%,rgba(255,255,255,.16) 98%);
+ pointer-events:none;
+}
+.lt-theme-choice.selected{
+ outline:2px solid var(--accent,#2a9bb9)!important;outline-offset:2px!important;
+}
+.lt-theme-live-preview{
+ position:relative;isolation:isolate;overflow:hidden;
+ border-radius:clamp(16px,2vw,22px)!important;
+ min-height:86px;border:1px solid rgba(255,255,255,.55);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.75),
+  0 7px 20px rgba(14,24,47,.15);
+}
+.lt-theme-live-preview::after{
+ content:"";pointer-events:none;position:absolute;inset:3px;border-radius:inherit;
+ background:linear-gradient(124deg,rgba(255,255,255,.39),
+  transparent 36%,rgba(255,255,255,.12) 82%);
+}
+.lt-theme-presets{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:clamp(7px,.9vw,12px)!important;
+}
+.lt-theme-presets .lt-theme-preset{
+ display:grid!important;place-items:center!important;
+ min-height:48px!important;padding:8px 4px!important;
+ color:#fff!important;font-size:clamp(10px,1.05vw,12px)!important;
+ line-height:1.25!important;text-align:center!important;
+ text-shadow:0 1px 4px rgba(0,0,0,.90),0 0 12px rgba(0,0,0,.62)!important;
+ white-space:normal!important;overflow-wrap:anywhere;
+ border:1px solid rgba(255,255,255,.63)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.48),
+  0 4px 13px rgba(0,0,0,.10)!important;
+}
+@media(max-width:390px){
+ .lt-theme-presets{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+/* No persistent tracking text or progress stripe on reading paper.
+   Keep the actual accessibility tree and saved progress untouched. */
+body .reader{
+ box-sizing:border-box;min-height:100dvh;
+ padding-block:clamp(8px,1.3dvh,22px);
+ padding-inline:clamp(8px,1.5vw,22px);
+ overscroll-behavior-x:contain;
+}
+body .reader .reading-width{margin-inline:auto;min-width:0}
+body .reader .reader-label,body .reader .lt-serial-progress{
+ position:absolute!important;width:1px!important;height:1px!important;
+ padding:0!important;margin:-1px!important;
+ overflow:hidden!important;clip-path:inset(50%)!important;
+ white-space:nowrap!important;pointer-events:none;
+}
+body #reading-progress{display:none!important}
+body .reader h2{
+ text-wrap:balance;margin-block:clamp(8px,1.8vh,19px)!important;
+ letter-spacing:normal;
+}
+body .reader .sentence{
+ overflow-wrap:break-word;word-break:normal;
+ text-rendering:optimizeLegibility;font-kerning:normal;
+}
+body .reader .sentence[dir="ltr"]{hyphens:auto}
+body .reader .sentence[dir="rtl"],body .reader .inline-ar{
+ hyphens:manual;letter-spacing:normal!important;
+}
+/* Give the old unmounted paged reader more room in tablet portrait, but do
+   not override Codex's curl book geometry when the new engine is present. */
+@media(min-width:780px) and (orientation:portrait){
+ body .reader:not(:has(#sentences.lt-curl-book)) .reading-width{
+  width:100%;max-width:min(93vw,950px)!important;
+  padding-inline:clamp(12px,2vw,28px)!important;
+ }
+}
+@media(orientation:landscape){
+ body .reader{padding-block:clamp(5px,.9dvh,13px)}
+ body .reader:has(#sentences.lt-curl-book){
+  padding-inline:clamp(2px,.6vw,12px);
+ }
+}
+/* Six real book materials, independent of the SIX app themes. Night ink
+   remains readable even with the old unrelated reader.dark class present. */
+html[data-lt-reader-material="book"]{
+ --lt-v2-paper:#f2e9d6;--lt-v2-ink:#292820;
+ --lt-v2-border:#c3b28f;--lt-v2-caption:#5b4b35;
+}
+html[data-lt-reader-material="fibre"]{
+ --lt-v2-paper:#f4efdf;--lt-v2-ink:#2e302c;
+ --lt-v2-border:#b8ad92;--lt-v2-caption:#655947;
+}
+html[data-lt-reader-material="white"]{
+ --lt-v2-paper:#fff;--lt-v2-ink:#22292d;
+ --lt-v2-border:#d0d7d9;--lt-v2-caption:#48555a;
+}
+html[data-lt-reader-material="cream"]{
+ --lt-v2-paper:#fff3d1;--lt-v2-ink:#302a21;
+ --lt-v2-border:#d9c99d;--lt-v2-caption:#67553a;
+}
+html[data-lt-reader-material="comfort"]{
+ --lt-v2-paper:#e4e7df;--lt-v2-ink:#273530;
+ --lt-v2-border:#bac6bc;--lt-v2-caption:#4b6055;
+}
+html[data-lt-reader-material="night"]{
+ --lt-v2-paper:#172127;--lt-v2-ink:#d7e2dd;
+ --lt-v2-border:#485b65;--lt-v2-caption:#afc5b9;
+}
+html[data-lt-reader-material] body .reader{
+ --lt-paper-bg:var(--lt-v2-paper)!important;
+ --lt-paper-ink:var(--lt-v2-ink)!important;
+ background:var(--lt-v2-paper)!important;color:var(--lt-v2-ink)!important;
+}
+html[data-lt-reader-material] body .reader .lt-book-page{
+ background:var(--lt-v2-paper)!important;
+ border:1px solid var(--lt-v2-border)!important;
+ color:var(--lt-v2-ink)!important;
+ box-shadow:0 9px 24px rgba(26,24,25,.105),
+  inset 0 1px 0 rgba(255,255,255,.18)!important;
+}
+html[data-lt-reader-material="book"] body .reader .lt-book-page{
+ background:linear-gradient(90deg,rgba(88,69,35,.07),transparent 15%),
+  linear-gradient(150deg,#f8efdf,var(--lt-v2-paper) 88%)!important;
+ box-shadow:0 9px 25px rgba(58,40,18,.13),
+  inset 5px 0 12px rgba(89,62,27,.08)!important;
+}
+html[dir="rtl"][data-lt-reader-material="book"] body .reader .lt-book-page{
+ background:linear-gradient(270deg,rgba(88,69,35,.07),transparent 15%),
+  linear-gradient(150deg,#f8efdf,var(--lt-v2-paper) 88%)!important;
+}
+html[data-lt-reader-material="fibre"] body .reader .lt-book-page{
+ background:repeating-linear-gradient(89deg,transparent 0 11px,
+   rgba(91,66,28,.018) 12px 13px),
+   linear-gradient(155deg,#f9f4e9,var(--lt-v2-paper) 85%)!important;
+}
+html[data-lt-reader-material="night"] body .reader .lt-book-page{
+ box-shadow:0 7px 22px rgba(0,0,0,.21),
+  inset 0 1px 0 rgba(255,255,255,.07)!important;
+}
+html[data-lt-reader-material] body .reader .lt-book-page .sentence,
+html[data-lt-reader-material] body .reader .lt-book-page .inline-ar,
+html[data-lt-reader-material] body .reader .lt-book-page .inline-en,
+html[data-lt-reader-material] body .reader .reading-width > h2{
+ color:var(--lt-v2-ink)!important;
+}
+html[data-lt-reader-material] body .reader .lt-inline-illustration figcaption{
+ color:var(--lt-v2-caption)!important;
+}
+html[data-lt-reader-material="night"] body .reader .lt-book-page :is(.tok:focus-visible,a:focus-visible){
+ outline-color:#b2d8cc!important;
+}
+/* Full authentic historic scene, intact colour, unmodified paragraph anchor. */
+body .reader .lt-inline-illustration,
+body .arabic-page .lt-companion-plate{
+ background:var(--lt-v2-paper,var(--reader,#f6efe1))!important;
+ border-color:var(--lt-v2-border,#c3b9a2)!important;
+ border-radius:clamp(7px,.9vw,12px)!important;
+ box-shadow:0 3px 13px rgba(35,25,13,.09)!important;
+ break-inside:avoid;
+}
+body .reader .lt-inline-illustration img,
+body .arabic-page .lt-companion-plate img,
+body .reader .lt-art-inspection-viewport img,
+body .lt-chapter-tile-visual img{
+ object-fit:contain!important;object-position:center!important;
+ filter:none!important;-webkit-filter:none!important;
+ mix-blend-mode:normal!important;opacity:1!important;
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+}
+body .reader .lt-inline-illustration:not(.lt-inline-chapter-scene) img{
+ max-height:min(58dvh,600px)!important;
+}
+body .reader .lt-inline-chapter-scene img{
+ max-height:min(37dvh,390px)!important;
+}
+body .reader .lt-inline-illustration figcaption{
+ max-width:68ch;margin-inline:auto;
+ font-size:clamp(11px,1.15vw,13px)!important;
+ line-height:1.65!important;
+ padding:8px clamp(5px,.9vw,12px)!important;
+ text-align:center!important;
+}
+@media(max-width:650px){
+ body .reader .lt-inline-illustration img{max-height:48dvh!important}
+ body .reader .lt-inline-chapter-scene img{max-height:31dvh!important}
+}
+body .reader .reader-hero.lt-historic-hero{
+ background-size:contain!important;background-position:center!important;
+ border-radius:clamp(6px,.8vw,12px)!important;
+ /* Never cap the rendered historical hero height: the engine provides a
+    precise aspect-ratio inline, and the museum original must stay intact. */
+ box-shadow:0 3px 13px rgba(35,25,13,.09)!important;
+}
+/* Chapter images are on quiet paper, while the outside dialog is glass. */
+dialog.lt-chapter-gallery{
+ border:1px solid rgba(244,231,206,.75)!important;
+ box-shadow:0 18px 58px rgba(6,12,22,.34),
+  inset 0 1px rgba(255,255,255,.65)!important;
+}
+dialog.lt-chapter-gallery::backdrop{
+ background:rgba(8,13,25,.61)!important;
+ -webkit-backdrop-filter:blur(9px)!important;backdrop-filter:blur(9px)!important;
+}
+.lt-chapter-gallery-header{
+ border-bottom:1px solid rgba(120,102,80,.18)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.78)!important;
+}
+.lt-chapter-tile{
+ border-color:rgba(92,77,58,.20)!important;
+ box-shadow:0 7px 24px rgba(42,33,21,.12),
+  inset 0 1px 0 rgba(255,255,255,.75)!important;
+}
+.lt-chapter-tile-visual{
+ background:linear-gradient(150deg,#ead8b7,#ddc5a6 57%,#f4e7d1)!important;
+}
+.lt-chapter-tile-visual img{
+ width:100%!important;height:100%!important;background:transparent!important;
+}
+.lt-chapter-gallery-eyebrow{display:none!important}
+/* Target size is 48px or larger; icon-centering is independent from text. */
+body :is(.lt-menu-toggle,.lt-drawer-close,.lt-settings-open,
+ .lt-drawer-actions button,.lt-chapter-gallery-close,.reader-nav-actions button,
+ .lt-art-zoom-button,.lt-theme-preset,.lt-chapter-nav button){
+ min-width:48px!important;min-height:48px!important;
+}
+body :is(.lt-menu-toggle,.lt-drawer-close,.lt-art-zoom-button){
+ display:grid!important;place-items:center!important;
+ padding:8px!important;line-height:1!important;
+}
+body .lt-drawer-close{border-radius:15px!important}
+body :is(.lt-menu-toggle,.lt-drawer-close,.lt-art-zoom-button)
+ :is(svg,i,.lt-menu-glyph){
+ display:block;justify-self:center;align-self:center;margin:auto;
+}
+body .lt-settings-sheet :is(input[type="color"],select){
+ min-height:48px!important;
+}
+body .reader .reader-label{pointer-events:none}
+body .reader .lt-page-controls .lt-page-count{
+ position:absolute!important;width:1px!important;height:1px!important;
+ overflow:hidden!important;clip-path:inset(50%)!important;
+}
+@media(prefers-reduced-motion:reduce){
+ body .lt-theme-choice,body .lt-chapter-tile,body .library .card{
+  transition:none!important;animation:none!important;
+ }
+}
+@media(prefers-reduced-transparency:reduce){
+ body.lt-wen-optics :is(.lt-drawer,.lt-settings-sheet,#modals .sheet,
+ .library .header,dialog.lt-chapter-gallery){
+  backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+ }
+ body .lt-wen-follow-lens{display:none!important}
+}
+@media(prefers-contrast:more){
+ body .lt-theme-choice.selected{border:3px solid currentColor!important}
+ html[data-lt-reader-material] body .reader .lt-book-page{
+  border-width:2px!important;
+ }
+}
+@media(forced-colors:active){
+ body .lt-wen-follow-lens{display:none!important}
+ body .reader .lt-book-page{forced-color-adjust:auto}
+ body :is(.lt-theme-choice,.lt-chapter-tile,.lt-menu-toggle):focus-visible{
+  outline:3px solid Highlight!important;outline-offset:3px!important;
+ }
+}

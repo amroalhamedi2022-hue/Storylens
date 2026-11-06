@@ -1,3 +1,16 @@
+# Design-only visual recheck — 2026-11-06
+
+### 2026-11-06 — visual recheck + Wen Reader Sanctuary V2 (CI pending)
+- DESIGN ONLY, no Codex curl or chapter navigation edits, no data/content/audio/signing changes.
+- All six user-approved app themes are guaranteed visible in settings, regardless of old hidden preference; added five Wen Sarafet-inspired editorial colour presets to the **existing** theme editor, not five extra themes.
+- New late CSS has clearer neutral liquid-lens highlights and user custom gradient propagation; corrects old reader.dark/selected-paper text contrast, shows original historical images without crop/tint, centres 48px controls, gives tablet portrait more usable book width and hides redundant metadata visually without changing saved progress.
+- Node plus true headless Chromium visual gate at 460x860, 768x1024, 1280x840; checks six theme appearances, six papers, contrast >=7:1, RTL, uncropped art, novel shelf isolation and reduced-effects. QA screenshot is a fixture, not an installed-app capture.
+- `docs/design/LINGUA_TALES_VISUAL_RECHECK_2026-11-06.md` is the persistent request-by-request audit. Exact-head CI and hardware Pad 5 testing still OPEN.
+
+See docs/design/LINGUA_TALES_VISUAL_RECHECK_2026-11-06.md
+
+---
+
 # Lingua Tales — Design Only Handoff (2026-11-05)
 
 **Permanent ownership:** This conversation edits ONLY visual design/themes, reader comfort, optical materials, image presentation, accessibility of visual controls, and UI layout. Codex owns functional physical page curl (PR #19); the separate chapter/gallery workstream owns chapter navigation (PR #18); literature chats own authentic text and art acquisition. Do not modify app storage, user data, dictionary, audio functions, Kotlin financial code, signing or Android package identity here.

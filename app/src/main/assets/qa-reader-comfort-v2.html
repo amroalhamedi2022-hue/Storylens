@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-lt-reader-material="book">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lingua Tales — Reading Sanctuary V2 QA</title>
+<style>
+:root{--reader:#fff7ec;--reader-ink:#283234;--accent:#438f9f;--card:#f5f2ec;--ink:#243138}
+*{box-sizing:border-box}body{margin:0;background:#d4d9df;color:#203039;font:16px system-ui}
+.library{max-width:1120px;margin:0 auto;padding:20px}
+.header{display:flex;justify-content:space-between;align-items:center;padding:15px;border-radius:18px;background:#cfdbeb}
+.shelf{display:grid;grid-template-columns:1fr;gap:14px;margin:14px 0}
+.card{display:grid;grid-template-columns:1fr 110px;gap:12px;align-items:center;
+ min-height:158px;padding:11px;border-radius:18px;background:#f4f6fd}
+.card .cover{grid-column:2;min-height:135px;background:linear-gradient(120deg,#25435e,#b4c8d4)}
+.reader{max-width:1080px;min-height:220px;margin:0 auto;padding:14px;background:#f4eedb}
+.reader .reading-width{margin:auto;max-width:780px}
+.reader .lt-book-page{display:block;padding:20px;border:1px solid #bbb;min-height:120px;
+ background:#fdfcf9;color:#26333c}
+.reader .lt-book-page .sentence{font-size:20px;color:#26333c}
+.reader .lt-inline-illustration{margin:18px auto;max-width:360px}
+.reader .lt-inline-illustration img{display:block;width:100%;height:115px;object-fit:cover}
+button{font:inherit;border:1px solid #aaa;background:#e8edf7;padding:6px;border-radius:12px}
+.lt-genre-list{display:flex;position:relative;gap:8px}
+.lt-chapter-gallery{display:none}
+</style>
+<link rel="stylesheet" href="reader-experience.css">
+<link rel="stylesheet" href="lt-device-acceptance.css">
+<link rel="stylesheet" href="lt-wen-glass-engine.css">
+<link rel="stylesheet" href="lt-wen-reader-sanctuary.css">
+<link rel="stylesheet" href="lt-chapter-gallery.css">
+<link rel="stylesheet" href="lt-reader-comfort-v2.css">
+</head>
+<body class="theme-liquid-27 lt-wen-optics">
+<main class="library">
+<header class="header"><strong>Lingua Tales</strong><button class="lt-menu-toggle"><span class="lt-menu-glyph"></span></button></header>
+<nav class="lt-genre-list"><button class="lt-genre">روايات</button><button class="lt-genre">تاريخية</button></nav>
+<div class="lt-theme-gallery"><button class="lt-theme-choice">Liquid Glass 27<span class="lt-theme-swatch"></span></button></div>
+<section class="shelf">
+ <article class="card"><div class="card-content"><h2>حول العالم في ثمانين يوماً</h2></div><div class="cover"></div></article>
+ <article class="card"><div class="card-content"><h2>كليلة ودمنة</h2></div><div class="cover"></div></article>
+</section>
+<section class="shelf lt-novel-shelf">
+ <article class="card lt-novel-card"><div class="lt-book-cover" style="height:110px;background:#987;display:block"></div></article>
+ <article class="card lt-novel-card"><div class="lt-book-cover" style="height:110px;background:#987;display:block"></div></article>
+</section>
+</main>
+<main class="reader dark" id="reading">
+<div class="reading-width">
+<div class="reader-label">Chapter 1 — duplicate metadata</div>
+<h2>جزء من الكتاب الحقيقي</h2>
+<section id="sentences"><div class="lt-book-page is-active">
+<p class="sentence" dir="ltr" id="ink">A long pleasant sentence should remain high contrast, readable and fully opaque in every paper mode.</p>
+<figure class="lt-inline-illustration">
+<img id="archival-art" alt="Old manuscript plate" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='360'%20height='115'%3E%3Crect%20width='360'%20height='115'%20fill='%23d9b783'/%3E%3C/svg%3E">
+<figcaption>Historic scene — original manuscript, without tint</figcaption></figure>
+</div></section>
+</div></main>
+<script>
+(function(){
+ var fail=[],ok=function(test,name){if(!test)fail.push(name)};
+ var root=document.documentElement,body=document.body;
+ var reader=document.querySelector('.reader'),ink=document.getElementById('ink');
+ var photo=document.getElementById('archival-art');
+ function rgb(s){var x=s.match(/[\d.]+/g)||[];return x.slice(0,3).map(Number)}
+ function linear(v){v=v/255;return v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4)}
+ function lum(c){return .2126*linear(c[0])+.7152*linear(c[1])+.0722*linear(c[2])}
+ function contrast(a,b){var h=lum(rgb(a)),l=lum(rgb(b));return (Math.max(h,l)+.05)/(Math.min(h,l)+.05)}
+ var papers=['book','fibre','white','cream','comfort','night'];
+ var paperContrast={};
+ papers.forEach(function(p){
+  root.dataset.ltReaderMaterial=p;
+  var bg=getComputedStyle(reader).backgroundColor;
+  var text=getComputedStyle(ink).color;
+  var score=contrast(bg,text);
+  paperContrast[p]=Math.round(score*100)/100;
+  ok(score>=7,'low reading contrast '+p+':'+score.toFixed(2));
+  ok(getComputedStyle(photo).objectFit==='contain','cropped photo '+p);
+  ok(getComputedStyle(photo).filter==='none','altered photo '+p);
+  ok(getComputedStyle(photo).opacity==='1','transparent photo '+p);
+ });
+ var themes=['liquid-27','aurora','aqua','nebula','paper-atlas','midnight-library'];
+ var values=[];
+ themes.forEach(function(t){
+  body.className='theme-'+t+' lt-wen-optics';
+  var v=getComputedStyle(body).getPropertyValue('--lt-sanctuary-a').trim();
+  values.push(v);ok(!!v,'missing Wen atmosphere '+t);
+ });
+ ok(new Set(values).size===6,'six distinct theme surfaces');
+ body.className='theme-liquid-27 lt-wen-optics lt-has-custom-gradient';
+ body.style.setProperty('--lt-glass-a','#ffd9af');
+ ok(getComputedStyle(body).getPropertyValue('--lt-sanctuary-a').trim()==='#ffd9af',
+    'custom editor gradient not connected to Wen glass');
+ var shelf=document.querySelector('.shelf:not(.lt-novel-shelf)');
+ var columns=getComputedStyle(shelf).gridTemplateColumns.trim().split(/\s+/);
+ ok(columns.length===(innerWidth>=850?2:1),'tablet or phone shelf columns');
+ ok(getComputedStyle(document.querySelector('.lt-novel-card')).display==='flex',
+   'historic novel cover layout changed');
+ var lens=document.createElement('span');lens.className='lt-wen-follow-lens';
+ document.querySelector('.lt-genre-list').appendChild(lens);
+ ok(getComputedStyle(lens).pointerEvents==='none','shared lens intercepts click');
+ ok(document.querySelector('.lt-menu-toggle').getBoundingClientRect().height>=48,
+   'menu touch target below 48px');
+ ok(getComputedStyle(document.querySelector('.reader-label')).clipPath==='inset(50%)',
+   'reading metadata not visually hidden');
+ ok(root.scrollWidth<=innerWidth+5,'horizontal page overflow');
+ root.dataset.ltReaderComfortQa=fail.length?'FAIL':'PASS';
+ root.dataset.ltReaderComfortErrors=fail.join(';');
+ root.dataset.ltReaderContrast=JSON.stringify(paperContrast);
+})();
+</script></body></html>

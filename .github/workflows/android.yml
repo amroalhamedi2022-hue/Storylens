@@ -90,6 +90,7 @@ jobs:
           node tools/licensed-audio-start-timeout.test.cjs
           node tools/theme-catalog.test.cjs
           node tools/wen-reader-sanctuary.test.cjs
+          node tools/reader-comfort-v2.test.cjs
           node tools/reader-material-presets.test.cjs
           node tools/celestial-atlas.test.cjs
           node tools/circuit-notebook.test.cjs
@@ -714,6 +715,32 @@ jobs:
             "file://$PWD/app/src/main/assets/qa-wen-reader-sanctuary.html" >/dev/null 2>/dev/null
           test -s qa-screenshots/wen-reader-sanctuary-tablet.png
           echo "PASS: six scenes, tablet shelf, original artwork, non-glass ink"
+      - name: Reading Sanctuary V2 six-theme six-paper visual acceptance
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || true)"
+          test -n "$CHROME"
+          mkdir -p qa-screenshots
+          for size in 460,860 768,1024 1280,840; do
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu \
+              --disable-background-timer-throttling --virtual-time-budget=1800 \
+              --window-size="$size" --dump-dom \
+              "file://$PWD/app/src/main/assets/qa-reader-comfort-v2.html" \
+              > "/tmp/lt-reader-comfort-$size.html" 2>/tmp/lt-reader-comfort-chrome.log
+            if ! grep -Fq 'data-lt-reader-comfort-qa="PASS"' "/tmp/lt-reader-comfort-$size.html"; then
+              echo "::error::Reader comfort failed at $size"
+              grep -o 'data-lt-reader-comfort-errors="[^"]*"' "/tmp/lt-reader-comfort-$size.html" | head -1 || true
+              grep -o 'data-lt-reader-contrast="[^"]*"' "/tmp/lt-reader-comfort-$size.html" | head -1 || true
+              exit 1
+            fi
+          done
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu \
+            --window-size=1280,840 --virtual-time-budget=1800 \
+            --screenshot="$PWD/qa-screenshots/reader-comfort-v2-tablet.png" \
+            "file://$PWD/app/src/main/assets/qa-reader-comfort-v2.html" >/dev/null 2>/dev/null
+          test -s qa-screenshots/reader-comfort-v2-tablet.png
+          echo "PASS: all paper modes, six atmospheres and 48px optical controls"
       - name: Upload UI screenshot evidence
         if: success()
         uses: actions/upload-artifact@v4
