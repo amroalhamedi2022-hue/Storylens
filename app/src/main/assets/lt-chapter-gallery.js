@@ -176,12 +176,52 @@ function distinctChapterImages(story){
 // only a few dozen cards per slice, with a chapter-title/number search across
 // ALL available chapters. More cards append without resetting scroll/focus.
 const CHAPTER_BATCH_SIZE=36;
+const CHAPTER_FILTERS=Object.freeze(['all','illustrated','pending','started']);
 function normalizedQuery(value){
  return String(value||'').toLocaleLowerCase()
   .normalize('NFKD')
   .replace(/[\u064b-\u065f\u0670\u0640]/g,'')
   .replace(/[أإآ]/g,'ا').replace(/ى/g,'ي')
+  // Normalize Arabic-Indic and Eastern-Arabic chapter numerals for search.
+  // A reader typing ٣٤ or ۳۴ must reach the same source chapter as "34".
+  .replace(/[\u0660-\u0669\u06f0-\u06f9]/g,ch=>
+    String(ch.charCodeAt(0)-(ch.charCodeAt(0)<=0x0669?0x0660:0x06f0)))
   .replace(/\s+/g,' ').trim().slice(0,100);
+}
+function hasChapterReadingStart(story,index){
+ if(typeof get!=='function')return false;
+ const lastPage=get('readpage_'+story.id+'_'+index,0);
+ const lastScroll=get('scroll_'+story.id+'_'+index,0);
+ return (Number.isInteger(lastPage)&&lastPage>0)||
+  (typeof lastScroll==='number'&&Number.isFinite(lastScroll)&&lastScroll>80);
+}
+function artAvailability(entry){
+ const shown=entry.images.filter(Boolean).length;
+ const count=entry.images.length;
+ return {shown,pending:count-shown,count};
+}
+function updateArtStatus(entry){
+ const coverage=artAvailability(entry);
+ entry.missing.textContent=coverage.pending?
+  locale('صور الفصول المعتمدة متاحة: '+coverage.shown+' من '+coverage.count+
+         ' · المتبقي دون صورة: '+coverage.pending,
+         'Available chapter images: '+coverage.shown+' of '+coverage.count+
+         ' · Missing: '+coverage.pending):
+  locale('جميع الفصول لها صور متاحة','Every chapter has an available image');
+}
+function setChapterLayout(entry,mode,{save=false}={}){
+ if(!active||active!==entry)return;
+ const next=mode==='list'?'list':'rail';
+ entry.layout=next;
+ entry.track.classList.remove('lt-chapter-gallery-list-view');
+ if(next==='list')entry.track.classList.add('lt-chapter-gallery-list-view');
+ entry.layoutButton.textContent=next==='list'?
+  locale('العرض الأفقي','Horizontal cards'):locale('عرض قائمة','List view');
+ entry.layoutButton.setAttribute('aria-pressed',next==='list'?'true':'false');
+ entry.track.setAttribute('aria-label',next==='list'?
+  locale('الفصول كقائمة مرتبة','Chapters as ordered list'):
+  locale('الفصول بالترتيب','Chapters in order'));
+ if(save&&typeof put==='function')put('lt_chapter_gallery_layout',next);
 }
 function buildChapterCard(entry,story,i){
  const chapter=story.chapters[i];
@@ -199,11 +239,22 @@ function buildChapterCard(entry,story,i){
   img.loading='lazy';img.decoding='async';
   img.setAttribute('draggable','false');
   img.addEventListener('error',()=>{
+   // Real APK file missing/corrupt: treat this image as unavailable in BOTH
+   // the card and coverage filters for the rest of this gallery session.
+   if(active!==entry||entry.images[i]===null)return;
    img.remove();
    cover.classList.add('lt-chapter-image-missing');
    addText(cover,'span','lt-chapter-tile-number',String(i+1).padStart(2,'0'));
    card.classList.add('lt-chapter-art-unavailable');
    card.dataset.thumbnailState='missing-file';
+   entry.images[i]=null;
+   const creditNode=card.querySelector?.('.lt-chapter-tile-credit');
+   if(creditNode)creditNode.textContent=locale('الصورة غير متوفرة على الجهاز',
+     'Image unavailable on device');
+   else addText(card,'small','lt-chapter-tile-pending',
+     locale('الصورة غير متوفرة على الجهاز','Image unavailable on device'));
+   updateArtStatus(entry);
+   if(entry.filter?.value==='illustrated')updateChapterFilter(entry);
   },{once:true});
   cover.appendChild(img);
   card.dataset.thumbnailState=source.kind;
@@ -219,15 +270,12 @@ function buildChapterCard(entry,story,i){
  addText(card,'strong','lt-chapter-tile-heading',titleFor(chapter,i));
  if(!source)addText(card,'small','lt-chapter-tile-pending',
   locale('الصورة لم تُعتمد بعد','Image pending approval'));
- // A stored page/scroll confirms reading started, NOT finished.
- // Never fabricate a completion percentage or badge.
- const lastPage=typeof get==='function'?get('readpage_'+story.id+'_'+i,0):0;
- const lastScroll=typeof get==='function'?get('scroll_'+story.id+'_'+i,0):0;
- if((Number.isInteger(lastPage)&&lastPage>0)||
-    (typeof lastScroll==='number'&&Number.isFinite(lastScroll)&&lastScroll>80)){
+ else if(source.kind==='approved'&&source.credit)
+  addText(card,'small','lt-chapter-tile-credit',source.credit);
+ // Stored reader position means reading started, NOT that a chapter was finished.
+ if(hasChapterReadingStart(story,i))
   addText(card,'span','lt-chapter-tile-visited',
    locale('سبق أن قرأت من هذا الفصل','Reading started'));
- }
  card.addEventListener('click',()=>openSelected(story.id,i));
  return card;
 }
@@ -314,23 +362,29 @@ decorateLibraryChapterAccess();
 function updateChapterFilter(entry){
  if(!active||active!==entry||!entry.story)return;
  const query=normalizedQuery(entry.search?.value);
+ const mode=CHAPTER_FILTERS.includes(entry.filter?.value)?entry.filter.value:'all';
  entry.visible=[];
  for(let i=0;i<entry.story.chapters.length;i++){
   const chapter=entry.story.chapters[i];
-  const titles=normalizedQuery([chapter.title,chapter.titleAr,chapter.titleEn].filter(Boolean).join(' '));
-  if(!query||titles.includes(query)||String(i+1)===query)
-   entry.visible.push(i);
+  const titles=normalizedQuery([chapter.title,chapter.titleAr,chapter.titleEn]
+   .filter(Boolean).join(' '));
+  const matchesQuery=!query||titles.includes(query)||String(i+1)===query;
+  const matchesFilter=mode==='all'||
+   (mode==='illustrated'&&Boolean(entry.images[i]))||
+   (mode==='pending'&&!entry.images[i])||
+   (mode==='started'&&hasChapterReadingStart(entry.story,i));
+  if(matchesQuery&&matchesFilter)entry.visible.push(i);
  }
  entry.rendered=0;entry.more=null;
  entry.track.replaceChildren();
  if(!entry.visible.length){
   addText(entry.track,'p','lt-chapter-gallery-empty',
-   locale('لا يوجد فصل مطابق. جرّب رقمه أو عنوانه.',
-    'No matching chapter. Try its number or title.'));
+   locale('لا توجد فصول مطابقة لهذا البحث أو الفلتر.',
+          'No chapters match this search and filter.'));
  }else appendChapterBatch(entry);
- entry.searchSummary.textContent=query?
-  locale('نتائج البحث: '+entry.visible.length+' من '+entry.story.chapters.length,
-         'Search results: '+entry.visible.length+' of '+entry.story.chapters.length):
+ entry.searchSummary.textContent=(query||mode!=='all')?
+  locale('الفصول المعروضة: '+entry.visible.length+' من '+entry.story.chapters.length,
+         'Visible chapters: '+entry.visible.length+' of '+entry.story.chapters.length):
   locale('الفصول مرتبة بحسب النسخة الأصلية',
          'Chapters follow the original edition order');
  entry.track.setAttribute('aria-busy','false');
@@ -359,11 +413,10 @@ function renderCards(entry,story){
   ?locale(count+' فصلًا متاحًا',count+' available chapters')
   :locale(count+' من '+total+' فصلًا متاحًا',
     count+' of '+total+' chapters available');
- const missing=entry.images.filter(item=>!item).length;
- entry.missing.textContent=missing?
-  locale('صور الفصول قيد الاستكمال: '+missing+' من '+count,
-         'Chapter images pending: '+missing+' of '+count):
-  locale('جميع الفصول لها صور متاحة','Every chapter has an available image');
+ updateArtStatus(entry);
+ entry.filter.disabled=false;
+ entry.layoutButton.disabled=false;
+ setChapterLayout(entry,entry.layout);
  updateChapterFilter(entry);
 }
 async function prepare(id,entry){
