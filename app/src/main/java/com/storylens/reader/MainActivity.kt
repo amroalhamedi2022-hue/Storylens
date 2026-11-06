@@ -279,6 +279,7 @@ class MainActivity : ComponentActivity() {
                 // surface but is not one of the legacy #modals sheets. Consume
                 // the first Back press here rather than leaving the book.
                 reader.evaluateJavascript(
+                    "Boolean(window.LinguaReaderCurl?.cancelIfActive?.()) || " +
                     "Boolean(window.LinguaTalesArtInspection?.closeIfOpen?.())"
                 ) { artClosed ->
                     if (artClosed != "true") {

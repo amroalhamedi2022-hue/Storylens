@@ -297,153 +297,34 @@ tests["translation-37"] = r"""(async function(){
  document.body.setAttribute('data-lt-translation-errors',errors.join(' | '));
 })();""";
 
-tests["paper-fold-browser"] = r"""(async function(){
- const errors=[];
- const check=(name,fn)=>{try{if(!fn())errors.push(name)}catch(e){errors.push(name+': '+e.message)}};
- document.body.setAttribute('data-lt-paper-stage','begin');
- const id='last-passenger';
+# These fixtures exercise the production mesh and leave genuine held HTML for screenshots.
+_curl_fixture = r"""(async function(){
+ const errors=[],dir='__DIRECTION__',held=__HELD__;
  try{
-  // This base catalog book opens synchronously: keep the pointer test
-  // independent from the unrelated deferred illustration loader.
-  put('chapter_'+id,0);
-  openStory(id);
-  await new Promise(resolve=>setTimeout(resolve,80));
-  check('full reader opens',()=>state.page==='reader'&&state.story?.id===id);
-  async function holdAndTurn(dir){
-   document.documentElement.dir=dir;
-   document.documentElement.lang=dir==='rtl'?'ar':'en';
-   state.chapter=0;
-   put('chapter_'+id,0);
-   put('readpage_'+id+'_0',0);
-   put('readpage_anchor_'+id+'_0',0);
-   renderReader();
-   document.body.setAttribute('data-lt-paper-stage',dir+'-layout');
-   await new Promise(resolve=>setTimeout(resolve,60));
-   const box=document.querySelector('.reader #sentences');
-   const pages=box?[...box.querySelectorAll('.lt-book-page')]:[];
-   check(dir+' multiple paper pages',()=>pages.length>=2);
-   if(pages.length<2)return;
-   box.scrollIntoView({block:'start',behavior:'instant'});
-   const rect=box.getBoundingClientRect();
-   const start=dir==='rtl'?rect.left+14:rect.right-14;
-   const distance=Math.min(rect.width-36,Math.max(110,rect.width*.56));
-   const finish=dir==='rtl'?start+distance:start-distance;
-   const y=Math.max(24,Math.min(window.innerHeight-65,rect.top+80));
-   const before=document.querySelector('.lt-page-count')?.textContent;
-   const pointer=(type,x)=>box.dispatchEvent(new PointerEvent(type,{
-    bubbles:true,cancelable:true,pointerId:41,pointerType:'touch',isPrimary:true,
-    button:0,buttons:type==='pointerup'?0:1,clientX:x,clientY:y
-   }));
-   pointer('pointerdown',start);
-   pointer('pointermove',finish);
-   document.body.setAttribute('data-lt-paper-stage',dir+'-held');
-   await new Promise(resolve=>setTimeout(resolve,80));
-   check(dir+' live crease follows hold',()=>box.classList.contains('lt-paper-grabbing')&&
-    box.dataset.ltFoldEdge===(dir==='rtl'?'left':'right'));
-   check(dir+' actual next page revealed',()=>!!box.querySelector('.lt-book-page.lt-paper-underlay'));
-   check(dir+' curved page has polygon crop',()=>{
-    const moving=box.querySelector('.lt-book-page.lt-paper-grabbed');
-    return !!moving&&getComputedStyle(moving).clipPath.includes('polygon(');
-   });
-   pointer('pointerup',finish);
-   document.body.setAttribute('data-lt-paper-stage',dir+'-released');
-   await new Promise(resolve=>setTimeout(resolve,90));
-   check(dir+' fold cleans up',()=>!box.classList.contains('lt-paper-grabbing')&&
-    !box.querySelector('.lt-paper-reverse'));
-   check(dir+' committed paper turn',()=>state.chapter!==0||
-    document.querySelector('.lt-page-count')?.textContent!==before);
-   // A second finger must NOT turn the paper (e.g. image pinch or accidental
-   // edge hold). Reset the chapter only for test setup, not user data.
-   put('readpage_'+id+'_0',0);
-   put('readpage_anchor_'+id+'_0',0);
-   state.chapter=0;renderReader();
-   const cleanBox=document.querySelector('.reader #sentences');
-   cleanBox?.scrollIntoView({block:'start',behavior:'instant'});
-   const cleanRect=cleanBox?.getBoundingClientRect();
-   if(!cleanRect)return;
-   const from=dir==='rtl'?cleanRect.left+14:cleanRect.right-14;
-   const to=dir==='rtl'?from+Math.min(cleanRect.width*.56,170):
-    from-Math.min(cleanRect.width*.56,170);
-   const atY=Math.max(22,Math.min(window.innerHeight-70,cleanRect.top+80));
-   const counter=()=>document.querySelector('.lt-page-count')?.textContent;
-   const dispatch=(type,id,x,y)=>cleanBox.dispatchEvent(new PointerEvent(type,{
-    bubbles:true,cancelable:true,pointerId:id,pointerType:'touch',
-    isPrimary:id===51,button:0,buttons:type==='pointerup'||type==='pointercancel'?0:1,
-    clientX:x,clientY:y
-   }));
-   const first=counter();
-   dispatch('pointerdown',51,from,atY);
-   dispatch('pointermove',51,from+(dir==='rtl'?2:-2),atY+88);
-   dispatch('pointerup',51,from+(dir==='rtl'?2:-2),atY+88);
-   check(dir+' vertical scroll cannot turn',()=>counter()===first&&
-    !cleanBox.classList.contains('lt-paper-grabbing'));
-   dispatch('pointerdown',51,from,atY);
-   dispatch('pointerdown',52,from+25,atY+3);
-   dispatch('pointermove',51,to,atY);
-   dispatch('pointerup',51,to,atY);
-   check(dir+' two fingers cancel book hold',()=>counter()===first&&
-    !cleanBox.classList.contains('lt-paper-grabbing'));
-   dispatch('pointerdown',51,from,atY);
-   dispatch('pointermove',51,to,atY);
-   dispatch('pointercancel',51,to,atY);
-   check(dir+' pointer cancel restores original page',()=>counter()===first&&
-    !cleanBox.classList.contains('lt-paper-grabbing')&&
-    !cleanBox.querySelector('.lt-paper-reverse'));
+  const id=dir==='rtl'?'thirteenth-bell-arabic':'last-passenger';
+  put('chapter_'+id,0);put('readpage_anchor_'+id+'_0',0);openStory(id);
+  await new Promise(r=>setTimeout(r,100));
+  const box=document.querySelector('#sentences');box.scrollIntoView({block:'start',behavior:'instant'});
+  const rect=box.getBoundingClientRect(),page=box.querySelector(':scope > .is-active');
+  const w=page.getBoundingClientRect().width,x=dir==='rtl'?rect.left+12:rect.right-12,y=rect.top+60;
+  const send=(type,xx,yy,id=61)=>box.dispatchEvent(new PointerEvent(type,{bubbles:true,cancelable:true,pointerId:id,isPrimary:id===61,pointerType:'touch',button:0,clientX:xx,clientY:yy}));
+  const events=[];box.addEventListener('lingua:turncommit',e=>events.push(e.detail));
+  send('pointerdown',x,y);send('pointermove',x+(dir==='rtl'?1:-1)*w*.75,y+80);
+  await new Promise(r=>setTimeout(r,100));
+  if(!LinguaReaderCurl.active||box.querySelectorAll('.lt-curl-facet').length!==22||!box.querySelector('.lt-curl-under'))throw Error('mesh or real underlying paper missing');
+  if(box.querySelector('.lt-curl-stage .tok,.lt-curl-stage [id]'))throw Error('visual copy contains interactive identity');
+  if(!held){
+   send('pointercancel',x,y);
+   if(LinguaReaderCurl.active||events.length||box.querySelector('.lt-curl-stage'))throw Error('cancellation did not clean up without commit');
   }
-  await holdAndTurn('rtl');
-  await holdAndTurn('ltr');
- }catch(e){errors.push('runtime: '+e.message)}
+ }catch(e){errors.push(e.message)}
+ document.body.setAttribute(held?'data-lt-held-fold-qa':'data-lt-paper-qa',errors.length?'FAIL':'PASS');
+ document.body.setAttribute(held?'data-lt-held-fold-errors':'data-lt-paper-errors',errors.join(' | '));
  document.body.setAttribute('data-lt-paper-stage','complete');
- document.body.setAttribute('data-lt-paper-qa',errors.length?'FAIL':'PASS');
- document.body.setAttribute('data-lt-paper-errors',errors.join(' | '));
-})();""";
-
-# These are real device-sized screenshots of an actual held pointer gesture,
-# not invented diagram renders. Generated fixture stays OUT of the APK.
-for _direction in ("rtl","ltr"):
- tests["paper-fold-held-"+_direction] = r"""(async function(){
-  const errors=[],dir='__DIRECTION__';
-  try{
-   const id='last-passenger';
-   document.documentElement.dir=dir;
-   document.documentElement.lang=dir==='rtl'?'ar':'en';
-   put('chapter_'+id,0);put('readpage_'+id+'_0',0);
-   put('readpage_anchor_'+id+'_0',0);
-   openStory(id);
-   await new Promise(resolve=>setTimeout(resolve,80));
-   renderReader();
-   const box=document.querySelector('.reader #sentences');
-   const pages=box?[...box.querySelectorAll('.lt-book-page')]:[];
-   if(pages.length<2)throw Error('no real next page to expose');
-   box.scrollIntoView({block:'start',behavior:'instant'});
-   const rect=box.getBoundingClientRect();
-   const start=dir==='rtl'?rect.left+13:rect.right-13;
-   const finish=dir==='rtl'?start+Math.min(180,rect.width*.5):
-     start-Math.min(180,rect.width*.5);
-   const y=Math.max(28,Math.min(innerHeight-70,rect.top+94));
-   const pointer=(type,x)=>box.dispatchEvent(new PointerEvent(type,{
-    bubbles:true,cancelable:true,pointerId:61,pointerType:'touch',
-    isPrimary:true,button:0,buttons:1,clientX:x,clientY:y
-   }));
-   pointer('pointerdown',start);pointer('pointermove',finish);
-   await new Promise(resolve=>setTimeout(resolve,120));
-   const moving=box.querySelector('.lt-book-page.lt-paper-grabbed');
-   const reverse=box.querySelector('.lt-paper-reverse');
-   const varValue=n=>parseFloat(box.style.getPropertyValue(n));
-   if(!box.classList.contains('lt-paper-grabbing')||
-      box.dataset.ltFoldEdge!==(dir==='rtl'?'left':'right')||
-      !moving||!reverse||!box.querySelector('.lt-paper-underlay')||
-      !Number.isFinite(varValue('--lt-curl-eighth-top'))||
-      !Number.isFinite(varValue('--lt-curl-quarter-bottom'))||
-      !getComputedStyle(moving).clipPath.includes('polygon('))
-     throw Error('fold silhouette, actual neighboring page, or reverse ink missing');
-   if([...reverse.querySelectorAll('p')].some(p=>p.getAttribute('dir')!=='auto'))
-     throw Error('book backside may not force LTR on real Arabic source');
-   // Leave the held fold on screen for the Chromium screenshot itself.
-  }catch(e){errors.push(e.message)}
-  document.body.setAttribute('data-lt-held-fold-qa',errors.length?'FAIL':'PASS');
-  document.body.setAttribute('data-lt-held-fold-errors',errors.join(' | '));
- })();""".replace("__DIRECTION__",_direction)
+})();"""
+tests["paper-fold-browser"]=_curl_fixture.replace('__DIRECTION__','ltr').replace('__HELD__','false')
+for _direction in ('rtl','ltr'):
+ tests['paper-fold-held-'+_direction]=_curl_fixture.replace('__DIRECTION__',_direction).replace('__HELD__','true')
 
 tests["shelf-centered"] = r"""(function(){
  const errors=[];

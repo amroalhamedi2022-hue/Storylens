@@ -422,12 +422,12 @@ testPointerOwnership();
 /* The last page is not a swipe-to-exit trap. Exercise the production move()
  * closure with both gesture and explicit-control sources, not a copy of its logic. */
 const moveStart=reader.indexOf(" function move(delta,source='control'){");
-const moveEnd=reader.indexOf(" prev.addEventListener('click'",moveStart);
+const moveEnd=reader.indexOf(" function requestMove(",moveStart);
 assert.ok(moveStart>0&&moveEnd>moveStart,'production move handler can be extracted');
 const moveSource=reader.slice(moveStart,moveEnd).trim();
 let exits=0,advances=0,turnSounds=0;
 const moveState={chapter:0,story:{id:'book',chapters:[{paragraphs:[{en:'End',ar:'النهاية'}]}]}};
-const moveContext={current:0,pages:[{}],state:moveState,
+const moveContext={current:0,spread:1,pages:[{}],state:moveState,
  nextChapter:()=>advances++,libraryBack:()=>exits++,ltPlayPageTurnSfx:()=>turnSounds++,
  renderPage(){},renderReader(){},put(){},window:{scrollTo(){}},
  LT_PAGE_PARAGRAPHS:4};
@@ -482,7 +482,7 @@ assert.match(reader,/event\.target!==sentenceBox/,
  'word/token/search controls must not trigger paper turn');
 assert.match(reader,/window\.getSelection\?\.\(\)\?\.toString\(\)\?\.trim\(\)/,
  'active text selection must not page');
-assert.match(reader,/move\(delta,'keyboard'\)/,
+assert.match(reader,/requestMove\(delta,'keyboard'\)/,
  'keyboard paging reuses existing progress and chapter movement');
 exits=0;
 realMove(1,'keyboard');
