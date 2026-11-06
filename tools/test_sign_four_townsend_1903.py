@@ -128,11 +128,11 @@ class TownsendSourceContract(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
             dest = root / "images"
-            with mock.patch.object(engine, "DEST", dest), \\
-                 mock.patch.object(engine, "MANIFEST", dest / "manifest.json"), \\
-                 mock.patch.object(engine, "IMAGES", dest / "plates"), \\
-                 mock.patch.object(engine, "category_members", return_value=[entry(n) for n in range(1, 9)]), \\
-                 mock.patch.object(engine, "download_image", return_value=(b"source", b"RIFF1234WEBPbytes", 257, 376)), \\
+            with mock.patch.object(engine, "DEST", dest), \
+                 mock.patch.object(engine, "MANIFEST", dest / "manifest.json"), \
+                 mock.patch.object(engine, "IMAGES", dest / "plates"), \
+                 mock.patch.object(engine, "category_members", return_value=[entry(n) for n in range(1, 9)]), \
+                 mock.patch.object(engine, "download_image", return_value=(b"source", b"RIFF1234WEBPbytes", 257, 376)), \
                  mock.patch.object(engine.time, "sleep", return_value=None):
                 self.assertEqual(sign.run(max_new=8), 8)
                 manifest = json.loads((dest / "manifest.json").read_text(encoding="utf-8"))
