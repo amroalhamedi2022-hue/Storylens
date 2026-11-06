@@ -399,6 +399,36 @@ def generate() -> dict:
             if slug == "a-study-in-scarlet":
                 data["unassignedHistorical1887FristonImageFiles"] = scarlet_originals
                 data["sourceState"] = "complete original English novel staged; original 1887 Friston plates archived but not visually matched to chapters"
+            chaptered_doyle = {
+                "a-study-in-scarlet": 14,
+                "the-lost-world": 16,
+                "the-hound-of-the-baskervilles": 15,
+                "the-sign-of-the-four": 12,
+            }
+            if slug in chaptered_doyle:
+                chapter_map = archive / "chapter-image-map.json"
+                if chapter_map.is_file():
+                    total = chaptered_doyle[slug]
+                    source = jload(archive / "manifest.json")
+                    mapped = jload(chapter_map)
+                    if (mapped.get("bookId") != slug or mapped.get("chapterCount") != total or
+                            mapped.get("countSemantics") != "AUTHENTIC_UNABRIDGED_ORIGINAL_ENGLISH_CHAPTERS" or
+                            mapped.get("sourceEditionCommit") != source["source"]["upstreamCommit"] or
+                            mapped.get("releaseApproved") is not False):
+                        raise ValueError("Complete original Doyle chapter-map count/edition/rights drift: " + slug)
+                    coverage = map_coverage(chapter_map, total)
+                    if (coverage["localCandidateChapters"] != mapped.get("localCandidateChapters") or
+                            coverage["readyForUICards"] != mapped.get("readyForUICards") or
+                            coverage["missingImageChapters"] != mapped.get("missingCandidateChapters")):
+                        raise ValueError("Source chapter images counted without real original art: " + slug)
+                    data.update(coverage)
+                    data["chapterCount"] = total
+                    data["sourceState"] = (
+                        "full unabridged English original with " + str(total) +
+                        " SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending"
+                    )
+                    if slug == "a-study-in-scarlet" and scarlet_originals:
+                        data["sourceState"] += "; " + str(scarlet_originals) + " original Friston artwork files archived"
             rows.append(data)
     available = sum(r["localCandidateChapters"] for r in rows)
     ready = sum(r["readyForUICards"] for r in rows)

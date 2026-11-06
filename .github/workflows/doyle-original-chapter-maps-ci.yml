@@ -1,0 +1,40 @@
+name: Lingua Tales - 57 real original Doyle chapter source maps and safety tests
+on:
+  pull_request:
+    paths:
+      - 'tools/map_doyle_four_original_chapters.py'
+      - 'tools/test_doyle_original_chapter_maps.py'
+      - 'docs/literature/staging/a-study-in-scarlet/chapter-image-map.json'
+      - 'docs/literature/staging/the-lost-world/chapter-image-map.json'
+      - 'docs/literature/staging/the-hound-of-the-baskervilles/chapter-image-map.json'
+      - 'docs/literature/staging/the-sign-of-the-four/chapter-image-map.json'
+      - 'tools/report_chapter_art_progress.py'
+      - '.github/workflows/doyle-original-chapter-maps-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/map_doyle_four_original_chapters.py'
+      - 'docs/literature/staging/*/chapter-image-map.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lingua-original-57-doyle-chapters-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate-57-real-chapter-boundaries-with-zero-fake-art:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify all original Github blob hashes, section titles and saved chapter indexes
+        run: |
+          python tools/map_doyle_four_original_chapters.py --verify
+          python tools/test_doyle_original_chapter_maps.py
+          python tools/report_chapter_art_progress.py
