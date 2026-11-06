@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "bookId": "dracula",
+  "chapterCount": 27,
+  "releaseApproved": false,
+  "sourceIndexStatus": "VERIFIED_BYTE_IDENTICAL_ORIGINAL_CHAPTERS__NO_IMAGE_RELEASE",
+  "sourceManifestPath": "docs/literature/staging/dracula/manifest.json",
+  "sourceEditionURL": "https://standardebooks.org/ebooks/bram-stoker/dracula",
+  "sourceUpstreamCommit": "e9968b274918e5a79b8e34cc93e50492363d1612",
+  "editorialStatus": "UNREVIEWED_SOURCE_INDEX__COMPLETE_ARABIC_PENDING",
+  "rightsStatus": "PENDING_INDEPENDENT_TERRITORIAL_AND_IMAGE_REVIEW",
+  "chapterTitlesStatus": "NUMBERED_ONLY__ORIGINAL_TITLES_NOT_YET_EDITED",
+  "nonChapterNarrativeUnits": [
+    {
+      "sourceFilePath": "docs/literature/staging/dracula/preface.xhtml",
+      "sourceGitBlobSha": "9b93c7a6ab600803c440b4d883c10b2b60331a88",
+      "sourceByteCount": 1015,
+      "sourceUnitName": "preface"
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/dracula/epilogue.xhtml",
+      "sourceGitBlobSha": "6569d1b31be6c019be57ffacdb23a17c8efd4f77",
+      "sourceByteCount": 2474,
+      "sourceUnitName": "epilogue"
+    }
+  ],
+  "chapters": [
+    {
+      "chapterOneBased": 1,
+      "titleAr": "الفصل 1",
+      "titleEn": "Chapter 1",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-1.xhtml",
+      "sourceGitBlobSha": "2b32ba94d8f749edff60707b484ca685928a017c",
+      "sourceByteCount": 33085,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 2,
+      "titleAr": "الفصل 2",
+      "titleEn": "Chapter 2",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-2.xhtml",
+      "sourceGitBlobSha": "882bff5a09bbf4a32039217b066ff6db3c73adaf",
+      "sourceByteCount": 30622,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 3,
+      "titleAr": "الفصل 3",
+      "titleEn": "Chapter 3",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-3.xhtml",
+      "sourceGitBlobSha": "0adf289cc6e2f1acf28a1a1385d073e1eb033cef",
+      "sourceByteCount": 31885,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 4,
+      "titleAr": "الفصل 4",
+      "titleEn": "Chapter 4",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-4.xhtml",
+      "sourceGitBlobSha": "a9c73229b483433b3f574a3c9c7854842b035f91",
+      "sourceByteCount": 32809,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 5,
+      "titleAr": "الفصل 5",
+      "titleEn": "Chapter 5",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-5.xhtml",
+      "sourceGitBlobSha": "768893cc48111b6439703658095b81217960b0ca",
+      "sourceByteCount": 22142,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 6,
+      "titleAr": "الفصل 6",
+      "titleEn": "Chapter 6",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-6.xhtml",
+      "sourceGitBlobSha": "042b7bc009cf28d394ed2190b0607d8fc09d5220",
+      "sourceByteCount": 32946,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 7,
+      "titleAr": "الفصل 7",
+      "titleEn": "Chapter 7",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-7.xhtml",
+      "sourceGitBlobSha": "0dcc299104ef03810212a54f2d162a3fa3d8cd04",
+      "sourceByteCount": 33822,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 8,
+      "titleAr": "الفصل 8",
+      "titleEn": "Chapter 8",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-8.xhtml",
+      "sourceGitBlobSha": "3d42e32d02da260b22ee79f1a1dfdd6745bc5e33",
+      "sourceByteCount": 37168,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 9,
+      "titleAr": "الفصل 9",
+      "titleEn": "Chapter 9",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-9.xhtml",
+      "sourceGitBlobSha": "77ef7ff32ebaa47dfe86844925faf0f044015633",
+      "sourceByteCount": 35655,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 10,
+      "titleAr": "الفصل 10",
+      "titleEn": "Chapter 10",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-10.xhtml",
+      "sourceGitBlobSha": "a714ed8855bb90a26dda8044e34eb3c03b5cbfa1",
+      "sourceByteCount": 34970,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 11,
+      "titleAr": "الفصل 11",
+      "titleEn": "Chapter 11",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-11.xhtml",
+      "sourceGitBlobSha": "ace449fa6ba6d00ed4e23ad156e31ed221560f34",
+      "sourceByteCount": 31258,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 12,
+      "titleAr": "الفصل 12",
+      "titleEn": "Chapter 12",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-12.xhtml",
+      "sourceGitBlobSha": "c4efdf348c34d2bd70320f18d60f61acb6b53936",
+      "sourceByteCount": 42599,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 13,
+      "titleAr": "الفصل 13",
+      "titleEn": "Chapter 13",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-13.xhtml",
+      "sourceGitBlobSha": "2ef8fd281cfa38df4423c6abd5725df334be537e",
+      "sourceByteCount": 38378,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 14,
+      "titleAr": "الفصل 14",
+      "titleEn": "Chapter 14",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-14.xhtml",
+      "sourceGitBlobSha": "a3beb59fbfbd7c59903ea60cd425eb732317eff2",
+      "sourceByteCount": 38163,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 15,
+      "titleAr": "الفصل 15",
+      "titleEn": "Chapter 15",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-15.xhtml",
+      "sourceGitBlobSha": "ed8bbd18976e6125140cc3a014075f7e8ee9d439",
+      "sourceByteCount": 33497,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 16,
+      "titleAr": "الفصل 16",
+      "titleEn": "Chapter 16",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-16.xhtml",
+      "sourceGitBlobSha": "7298e3c3cb98dc17029a77e8013ff4ea0fdcba57",
+      "sourceByteCount": 25796,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 17,
+      "titleAr": "الفصل 17",
+      "titleEn": "Chapter 17",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-17.xhtml",
+      "sourceGitBlobSha": "a0d4542e851fa36d6484d78aa2bbf1cb2896e554",
+      "sourceByteCount": 34481,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 18,
+      "titleAr": "الفصل 18",
+      "titleEn": "Chapter 18",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-18.xhtml",
+      "sourceGitBlobSha": "bdf1f16a5d7adf8ffdf4a14c70fc8f597f84bcd0",
+      "sourceByteCount": 41160,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 19,
+      "titleAr": "الفصل 19",
+      "titleEn": "Chapter 19",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-19.xhtml",
+      "sourceGitBlobSha": "c21daa48eddffe368fd736dcf0e6a7d29b0bc974",
+      "sourceByteCount": 32444,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 20,
+      "titleAr": "الفصل 20",
+      "titleEn": "Chapter 20",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-20.xhtml",
+      "sourceGitBlobSha": "2d300dc0eb39e727582e042f450675daa12552d9",
+      "sourceByteCount": 35542,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 21,
+      "titleAr": "الفصل 21",
+      "titleEn": "Chapter 21",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-21.xhtml",
+      "sourceGitBlobSha": "55776021a8350729716ca9b8209397ed2f0cd1c7",
+      "sourceByteCount": 35123,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 22,
+      "titleAr": "الفصل 22",
+      "titleEn": "Chapter 22",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-22.xhtml",
+      "sourceGitBlobSha": "dc65c50381e89020227ecce800f1334be827fe00",
+      "sourceByteCount": 30522,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 23,
+      "titleAr": "الفصل 23",
+      "titleEn": "Chapter 23",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-23.xhtml",
+      "sourceGitBlobSha": "1ea47c94b4874ffb5406fad72146325e12cbfa78",
+      "sourceByteCount": 32924,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 24,
+      "titleAr": "الفصل 24",
+      "titleEn": "Chapter 24",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-24.xhtml",
+      "sourceGitBlobSha": "24a7217964afe45057893555d0c1a0e2869332ed",
+      "sourceByteCount": 36134,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 25,
+      "titleAr": "الفصل 25",
+      "titleEn": "Chapter 25",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-25.xhtml",
+      "sourceGitBlobSha": "be146327a69f87bc60a0ffd7363faf7e7a5fa5c3",
+      "sourceByteCount": 37659,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 26,
+      "titleAr": "الفصل 26",
+      "titleEn": "Chapter 26",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-26.xhtml",
+      "sourceGitBlobSha": "f45b2f8027ed4e649c549222e953b45de0fd0058",
+      "sourceByteCount": 43031,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 27,
+      "titleAr": "الفصل 27",
+      "titleEn": "Chapter 27",
+      "sourceFilePath": "docs/literature/staging/dracula/chapter-27.xhtml",
+      "sourceGitBlobSha": "44a0c559b3f967ffff342360ed27494d870ce4de",
+      "sourceByteCount": 42843,
+      "primaryImage": null
+    }
+  ]
+}

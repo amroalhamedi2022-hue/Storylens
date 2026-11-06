@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "bookId": "frankenstein",
+  "chapterCount": 24,
+  "releaseApproved": false,
+  "sourceIndexStatus": "VERIFIED_BYTE_IDENTICAL_ORIGINAL_CHAPTERS__NO_IMAGE_RELEASE",
+  "sourceManifestPath": "docs/literature/staging/frankenstein/manifest.json",
+  "sourceEditionURL": "https://standardebooks.org/ebooks/mary-shelley/frankenstein",
+  "sourceUpstreamCommit": "3909a2b9d956377e797e235562cd237d3667fa9b",
+  "editorialStatus": "UNREVIEWED_SOURCE_INDEX__COMPLETE_ARABIC_PENDING",
+  "rightsStatus": "PENDING_INDEPENDENT_TERRITORIAL_AND_IMAGE_REVIEW",
+  "chapterTitlesStatus": "NUMBERED_ONLY__ORIGINAL_TITLES_NOT_YET_EDITED",
+  "nonChapterNarrativeUnits": [
+    {
+      "sourceFilePath": "docs/literature/staging/frankenstein/letter-1.xhtml",
+      "sourceGitBlobSha": "a82ba10f67948430d347a143483e6328407c03fb",
+      "sourceByteCount": 8037,
+      "sourceUnitName": "letter-1"
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/frankenstein/letter-2.xhtml",
+      "sourceGitBlobSha": "dca87beff3069fc2ea0b13fe3c4337a2327d2b3a",
+      "sourceByteCount": 8512,
+      "sourceUnitName": "letter-2"
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/frankenstein/letter-3.xhtml",
+      "sourceGitBlobSha": "17ab715c66794c809fd488f72e1ac8c1253afadb",
+      "sourceByteCount": 2882,
+      "sourceUnitName": "letter-3"
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/frankenstein/letter-4.xhtml",
+      "sourceGitBlobSha": "59db283d2675d4b599876523c4486aa36411a3dc",
+      "sourceByteCount": 16911,
+      "sourceUnitName": "letter-4"
+    }
+  ],
+  "chapters": [
+    {
+      "chapterOneBased": 1,
+      "titleAr": "الفصل 1",
+      "titleEn": "Chapter 1",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-1.xhtml",
+      "sourceGitBlobSha": "e7c868a74c3176312635ebcefed67e230f096a79",
+      "sourceByteCount": 11035,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 2,
+      "titleAr": "الفصل 2",
+      "titleEn": "Chapter 2",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-2.xhtml",
+      "sourceGitBlobSha": "f060817a50c18123e0e6a7859a078766005d5ab4",
+      "sourceByteCount": 13622,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 3,
+      "titleAr": "الفصل 3",
+      "titleEn": "Chapter 3",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-3.xhtml",
+      "sourceGitBlobSha": "66c41749b994d8bb9935c10196486351755584af",
+      "sourceByteCount": 16740,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 4,
+      "titleAr": "الفصل 4",
+      "titleEn": "Chapter 4",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-4.xhtml",
+      "sourceGitBlobSha": "690458699a56061410869ebed0b4127fb3f180b7",
+      "sourceByteCount": 15408,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 5,
+      "titleAr": "الفصل 5",
+      "titleEn": "Chapter 5",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-5.xhtml",
+      "sourceGitBlobSha": "3dd8ac442629079d8cda801bb5f94f3eb9263527",
+      "sourceByteCount": 14380,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 6,
+      "titleAr": "الفصل 6",
+      "titleEn": "Chapter 6",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-6.xhtml",
+      "sourceGitBlobSha": "b90ca181a584a90bebc4259f5f93722958b94aca",
+      "sourceByteCount": 17071,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 7,
+      "titleAr": "الفصل 7",
+      "titleEn": "Chapter 7",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-7.xhtml",
+      "sourceGitBlobSha": "8036267012d8868a6266f855b11a666fcef39962",
+      "sourceByteCount": 21394,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 8,
+      "titleAr": "الفصل 8",
+      "titleEn": "Chapter 8",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-8.xhtml",
+      "sourceGitBlobSha": "9c5c6a463c9324cff3758d4f0654ea8145b7de99",
+      "sourceByteCount": 18471,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 9,
+      "titleAr": "الفصل 9",
+      "titleEn": "Chapter 9",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-9.xhtml",
+      "sourceGitBlobSha": "5cad2e503881636d68bbb0ae49f2c27085ee26b2",
+      "sourceByteCount": 13385,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 10,
+      "titleAr": "الفصل 10",
+      "titleEn": "Chapter 10",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-10.xhtml",
+      "sourceGitBlobSha": "ebb3f9015c7766167d6d1a8d3d5a2e176ea23295",
+      "sourceByteCount": 14210,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 11,
+      "titleAr": "الفصل 11",
+      "titleEn": "Chapter 11",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-11.xhtml",
+      "sourceGitBlobSha": "6ef55704d1ef1ab17fd922e1825c7eccb753c828",
+      "sourceByteCount": 16942,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 12,
+      "titleAr": "الفصل 12",
+      "titleEn": "Chapter 12",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-12.xhtml",
+      "sourceGitBlobSha": "a56a038c12d3656a7be810e01fc8cc56591aa4d0",
+      "sourceByteCount": 12976,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 13,
+      "titleAr": "الفصل 13",
+      "titleEn": "Chapter 13",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-13.xhtml",
+      "sourceGitBlobSha": "00201ab3ef92082629c387fb890ba006d333c503",
+      "sourceByteCount": 12617,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 14,
+      "titleAr": "الفصل 14",
+      "titleEn": "Chapter 14",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-14.xhtml",
+      "sourceGitBlobSha": "d21ff6a4f11f31fc74143101583c3d3ce140c275",
+      "sourceByteCount": 11403,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 15,
+      "titleAr": "الفصل 15",
+      "titleEn": "Chapter 15",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-15.xhtml",
+      "sourceGitBlobSha": "c1e92f1242bf6ee7f5f30959e12ae844bb4aaf1c",
+      "sourceByteCount": 18783,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 16,
+      "titleAr": "الفصل 16",
+      "titleEn": "Chapter 16",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-16.xhtml",
+      "sourceGitBlobSha": "5847fca12df7719f0b31e1a171b26b7733a84270",
+      "sourceByteCount": 18840,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 17,
+      "titleAr": "الفصل 17",
+      "titleEn": "Chapter 17",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-17.xhtml",
+      "sourceGitBlobSha": "ff82093d7874c589c20f590e66b36cd665940eeb",
+      "sourceByteCount": 11271,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 18,
+      "titleAr": "الفصل 18",
+      "titleEn": "Chapter 18",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-18.xhtml",
+      "sourceGitBlobSha": "0c8c97568b40d1e1bbefe45217b5308eee982669",
+      "sourceByteCount": 17524,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 19,
+      "titleAr": "الفصل 19",
+      "titleEn": "Chapter 19",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-19.xhtml",
+      "sourceGitBlobSha": "84ad286b609582394c0f12f9acad87e5f09c6f5a",
+      "sourceByteCount": 15839,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 20,
+      "titleAr": "الفصل 20",
+      "titleEn": "Chapter 20",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-20.xhtml",
+      "sourceGitBlobSha": "b3b9c65606135bb8d0190bdfe44fd80f209b7ed5",
+      "sourceByteCount": 20372,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 21,
+      "titleAr": "الفصل 21",
+      "titleEn": "Chapter 21",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-21.xhtml",
+      "sourceGitBlobSha": "9a5a653811a023672c318c14c3f7bc59e01a384d",
+      "sourceByteCount": 22261,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 22,
+      "titleAr": "الفصل 22",
+      "titleEn": "Chapter 22",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-22.xhtml",
+      "sourceGitBlobSha": "0cd5bcdc04636767495652d9df5acfebbb6ca807",
+      "sourceByteCount": 20434,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 23,
+      "titleAr": "الفصل 23",
+      "titleEn": "Chapter 23",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-23.xhtml",
+      "sourceGitBlobSha": "e1eaa56b3d454d121f343432f071846c235fc33d",
+      "sourceByteCount": 15135,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 24,
+      "titleAr": "الفصل 24",
+      "titleEn": "Chapter 24",
+      "sourceFilePath": "docs/literature/staging/frankenstein/chapter-24.xhtml",
+      "sourceGitBlobSha": "9aa54cafda9e8813899194fee820c48610865cd8",
+      "sourceByteCount": 48408,
+      "primaryImage": null
+    }
+  ]
+}
