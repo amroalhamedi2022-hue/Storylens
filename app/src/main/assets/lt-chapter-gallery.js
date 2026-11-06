@@ -184,7 +184,7 @@ function buildChapterCard(entry,story,i){
  card.type='button';
  card.className='lt-chapter-tile';
  card.dataset.chapterIndex=String(i);
- if(i===entry.resume)card.classList.add('lt-chapter-resume');
+ if(i===entry.resume&&entry.hasProgress)card.classList.add('lt-chapter-resume');
  card.setAttribute('aria-label',locale('اقرأ الفصل ','Read chapter ')+(i+1)+' · '+titleFor(chapter,i));
  const cover=document.createElement('span');cover.className='lt-chapter-tile-visual';
  const source=entry.images[i];
@@ -209,11 +209,20 @@ function buildChapterCard(entry,story,i){
  }
  addText(cover,'span','lt-chapter-tile-kicker',locale('الفصل '+(i+1),'CHAPTER '+(i+1)));
  if(i===entry.resume)addText(cover,'span','lt-chapter-tile-continue',
-  locale('موضع القراءة','Resume'));
+  entry.hasProgress?locale('موضع القراءة','Resume'):locale('ابدأ هنا','Start here'));
  card.appendChild(cover);
  addText(card,'strong','lt-chapter-tile-heading',titleFor(chapter,i));
  if(!source)addText(card,'small','lt-chapter-tile-pending',
   locale('الصورة لم تُعتمد بعد','Image pending approval'));
+ // A stored page/scroll confirms reading started, NOT finished.
+ // Never fabricate a completion percentage or badge.
+ const lastPage=typeof get==='function'?get('readpage_'+story.id+'_'+i,0):0;
+ const lastScroll=typeof get==='function'?get('scroll_'+story.id+'_'+i,0):0;
+ if((Number.isInteger(lastPage)&&lastPage>0)||
+    (typeof lastScroll==='number'&&Number.isFinite(lastScroll)&&lastScroll>80)){
+  addText(card,'span','lt-chapter-tile-visited',
+   locale('سبق أن قرأت من هذا الفصل','Reading started'));
+ }
  card.addEventListener('click',()=>openSelected(story.id,i));
  return card;
 }
@@ -328,10 +337,11 @@ function renderCards(entry,story){
  entry.images=distinctChapterImages(story);
  const count=story.chapters.length;
  const raw=typeof get==='function'?get('chapter_'+story.id,null):null;
- entry.resume=Number.isSafeInteger(raw)&&raw>=0&&raw<count?raw:0;
+ entry.hasProgress=Number.isSafeInteger(raw)&&raw>=0&&raw<count;
+ entry.resume=entry.hasProgress?raw:0;
  entry.search.disabled=false;
  entry.continue.disabled=count===0;
- entry.continue.textContent=raw===null?
+ entry.continue.textContent=!entry.hasProgress?
   locale('ابدأ القراءة من الفصل الأول','Start from chapter 1'):
   locale('متابعة القراءة من الفصل '+(entry.resume+1),
          'Resume reading at chapter '+(entry.resume+1));
