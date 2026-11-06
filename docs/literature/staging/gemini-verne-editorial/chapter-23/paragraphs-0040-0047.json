@@ -1,0 +1,159 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 23,
+  "chapterTitle": "In which Passepartout’s nose becomes outrageously long.",
+  "startParagraphZeroBased": 40,
+  "paragraphCount": 8,
+  "sourceSha256": "8d44ebd33f06074296c5fe03cf58931a840a9a284b9b54a3201e62551389af61",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 40,
+      "en": "One, with a fan and some bits of paper, performed the graceful trick of the butterflies and the flowers; another traced in the air, with the odorous smoke of his pipe, a series of blue words, which composed a compliment to the audience; while a third juggled with some lighted candles, which he extinguished successively as they passed his lips, and relit again without interrupting for an instant his juggling. Another reproduced the most singular combinations with a spinning-top; in his hands the revolving tops seemed to be animated with a life of their own in their interminable whirling; they ran over pipe-stems, the edges of sabres, wires and even hairs stretched across the stage; they turned around on the edges of large glasses, crossed bamboo ladders, dispersed into all the corners, and produced strange musical effects by the combination of their various pitches of tone. The jugglers tossed them in the air, threw them like shuttlecocks with wooden battledores, and yet they kept on spinning; they put them into their pockets, and took them out still whirling as before.",
+      "existingArabicDraft": "قام أحدهم، مستخدمًا مروحة وقطعًا من الورق، بخدعة رشيقة تحاكي الفراشات والزهور؛ ورسم آخر في الهواء، بدخان غليونه العطِر، سلسلة من الكلمات الزرقاء التي شكّلت مجاملة للجمهور؛ أما ثالث فكان يتلاعب بشموع مشتعلة، يطفئها تباعًا حين تمر من بين شفتيه ثم يعيد إشعالها، من دون أن يقطع لعبه لحظة واحدة. وقدم آخر تشكيلات غريبة باستخدام دوّامة؛ فبدت الدوّامات الدائرة بين يديه كأنها كائنات حية لا تكف عن الدوران، وكانت تمر فوق سيقان الغلايين وحواف السيوف والأسلاك، بل وحتى الشعيرات المشدودة عبر المسرح. وكانت تدور على حواف الكؤوس الكبيرة، وتعبر سلالم الخيزران، وتتفرق إلى أركان المسرح، وتصدر نغمات موسيقية عجيبة من اختلاف درجات أصواتها. وكان اللاعبون يقذفونها في الهواء، ويرمونها بمضارب خشبية كما تُرمى كرات الريشة، ومع ذلك تظل تدور؛ ثم يضعونها في جيوبهم ويخرجونها وهي لا تزال تدور كما كانت."
+    },
+    {
+      "index": 41,
+      "en": "It is useless to describe the astonishing performances of the acrobats and gymnasts. The turning on ladders, poles, balls, barrels, etc., was executed with wonderful precision.",
+      "existingArabicDraft": "لا حاجة إلى وصف العروض المذهلة التي قدمها البهلوانيون ولاعبو الجمباز. فقد نُفذت الحركات على السلالم والعصي والكرات والبراميل وغيرها بدقة رائعة."
+    },
+    {
+      "index": 42,
+      "en": "But the principal attraction was the exhibition of the Long Noses, a show to which Europe is as yet a stranger.",
+      "existingArabicDraft": "لكن الفقرة الأهم كانت عرض «أصحاب الأنوف الطويلة»، وهو مشهد لم تعرفه أوروبا بعد."
+    },
+    {
+      "index": 43,
+      "en": "The Long Noses form a peculiar company, under the direct patronage of the god Tingou. Attired after the fashion of the Middle Ages, they bore upon their shoulders a splendid pair of wings; but what especially distinguished them was the long noses which were fastened to their faces, and the uses which they made of them. These noses were made of bamboo, and were five, six, and even ten feet long, some straight, others curved, some ribboned, and some having imitation warts upon them. It was upon these appendages, fixed tightly on their real noses, that they performed their gymnastic exercises. A dozen of these sectaries of Tingou lay flat upon their backs, while others, dressed to represent lightning-rods, came and frolicked on their noses, jumping from one to another, and performing the most skilful leapings and somersaults.",
+      "existingArabicDraft": "كانت فرقة الأنوف الطويلة جماعة مميزة تحظى برعاية مباشرة من الإله تينغو. ارتدى أفرادها أزياء على طراز العصور الوسطى، وحملوا على أكتافهم زوجًا رائعًا من الأجنحة؛ لكن أكثر ما ميّزهم الأنوف الطويلة المثبتة على وجوههم والطريقة التي يستخدمونها بها. صُنعت تلك الأنوف من الخيزران، وتراوح طولها بين خمسة وستة أقدام، بل بلغ بعضها عشرة أقدام؛ فمنها المستقيم ومنها المنحني، ومنها المزخرف بالأشرطة ومنها ما زُيّن بثآليل مقلدة. وكانوا يؤدون تمارينهم البهلوانية على هذه الزوائد المثبتة بإحكام فوق أنوفهم الحقيقية. استلقى اثنا عشر من أتباع تينغو على ظهورهم، بينما أخذ آخرون، متنكرين في هيئة قضبان صواعق، يقفزون ويلهون فوق الأنوف، وينتقلون من واحد إلى آخر في وثبات وشقلبات بالغة المهارة."
+    },
+    {
+      "index": 44,
+      "en": "As a last scene, a “human pyramid” had been announced, in which fifty Long Noses were to represent the Car of Juggernaut. But, instead of forming a pyramid by mounting each other’s shoulders, the artists were to group themselves on top of the noses. It happened that the performer who had hitherto formed the base of the Car had quitted the troupe, and as, to fill this part, only strength and adroitness were necessary, Passepartout had been chosen to take his place.",
+      "existingArabicDraft": "أُعلن أن المشهد الختامي سيكون «هرمًا بشريًا» يشكّل فيه خمسون من أصحاب الأنوف الطويلة عربة جاغرنات. لكن بدلًا من بناء الهرم بتسلق أكتاف بعضهم، كان الفنانون سيصطفون فوق الأنوف نفسها. وكان المؤدي الذي يشكل قاعدة العربة قد ترك الفرقة، ولأن هذا الدور لا يحتاج إلا إلى القوة والمهارة، اختير باسبارتو ليحل محله."
+    },
+    {
+      "index": 45,
+      "en": "The poor fellow really felt sad when—melancholy reminiscence of his youth!—he donned his costume, adorned with varicoloured wings, and fastened to his natural feature a false nose six feet long. But he cheered up when he thought that this nose was winning him something to eat.",
+      "existingArabicDraft": "شعر المسكين بالحزن حقًا عندما ارتدى زيه المزين بأجنحة متعددة الألوان، وثبّت على أنفه الطبيعي أنفًا زائفًا طوله ستة أقدام؛ فقد أعاد ذلك إليه ذكرى كئيبة من شبابه. لكنه استعاد معنوياته حين تذكر أن هذا الأنف سيكسبه ما يأكله."
+    },
+    {
+      "index": 46,
+      "en": "He went upon the stage, and took his place beside the rest who were to compose the base of the Car of Juggernaut. They all stretched themselves on the floor, their noses pointing to the ceiling. A second group of artists disposed themselves on these long appendages, then a third above these, then a fourth, until a human monument reaching to the very cornices of the theatre soon arose on top of the noses. This elicited loud applause, in the midst of which the orchestra was just striking up a deafening air, when the pyramid tottered, the balance was lost, one of the lower noses vanished from the pyramid, and the human monument was shattered like a castle built of cards!",
+      "existingArabicDraft": "صعد إلى المسرح واتخذ مكانه إلى جانب بقية المشاركين الذين سيشكلون قاعدة العربة. تمددوا جميعًا على الأرض وأنوفهم تشير إلى السقف. ثم صعدت مجموعة ثانية فوق هذه الزوائد الطويلة، تلتها ثالثة ثم رابعة، حتى ارتفع فوق الأنوف صرح بشري بلغ تقريبًا أفاريز المسرح. دوّى التصفيق، وكانت الأوركسترا توشك أن تبدأ لحنًا صاخبًا، حين تمايل الهرم واختل توازنه واختفى أحد الأنوف السفلية من التشكيلة، فانهار الصرح البشري مثل قلعة من ورق اللعب!"
+    },
+    {
+      "index": 47,
+      "en": "It was Passepartout’s fault. Abandoning his position, clearing the footlights without the aid of his wings, and, clambering up to the right-hand gallery, he fell at the feet of one of the spectators, crying, “Ah, my master! my master!”",
+      "existingArabicDraft": "كان الخطأ خطأ باسبارتو. فقد ترك مكانه، وقفز فوق أضواء مقدمة المسرح من دون أن يستعين بجناحيه، ثم تسلق إلى الشرفة اليمنى، وسقط عند قدمي أحد المتفرجين وهو يصيح: «آه، سيدي! سيدي!»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "قام أحدهم، مستخدماً مروحة وقطعاً من الورق، بخدعة رشيقة تحاكي الفراشات والزهور؛ ورسم آخر في الهواء، بدخان غليونه العطر، سلسلة من الكلمات الزرقاء التي شكلت مجاملة للجمهور؛ أما ثالث فكان يتلاعب بشموع مشتعلة، يطفئها تباعاً حين تمر من بين شفتيه ثم يعيد إشعالها، من دون أن يقطع لعبه لحظة واحدة. وقدم آخر تشكيلات غريبة باستخدام دوامة؛ فبدت الدوامات الدائرة بين يديه كأنها كائنات حية لا تكف عن الدوران، وكانت تمر فوق سيقان الغلايين وحواف السيوف والأسلاك، بل وحتى الشعيرات المشدودة عبر المسرح. وكانت تدور على حواف الكؤوس الكبيرة، وتعبر سلالم الخيزران، وتتفرق إلى أركان المسرح، وتصدر نغمات موسيقية عجيبة من اختلاف درجات أصواتها. وكان اللاعبون يقذفونها في الهواء، ويرمونها بمضارب خشبية كما ترمى كرات الريشة، ومع ذلك تظل تدور؛ ثم يضعونها في جيوبهم ويخرجونها وهي لا تزال تدور كما كانت."
+    },
+    {
+      "index": 1,
+      "ar": "لا حاجة إلى وصف العروض المذهلة التي قدمها البهلوانيون ولاعبو الجمباز. فقد نفذت الحركات على السلالم والعصي والكرات والبراميل وغيرها بدقة رائعة."
+    },
+    {
+      "index": 2,
+      "ar": "لكن الفقرة الأهم كانت عرض أصحاب الأنوف الطويلة، وهو مشهد لم تعرفه أوروبا بعد."
+    },
+    {
+      "index": 3,
+      "ar": "تكون فرقة الأنوف الطويلة جماعة مميزة تحظى برعاية مباشرة من الإله تينغو. ارتدى أفرادها أزياء على طراز العصور الوسطى، وحملوا على أكتافهم زوجاً رائعاً من الأجنحة؛ لكن أكثر ما ميزهم هو الأنوف الطويلة المثبتة على وجوههم والطريقة التي يستخدمونها بها. صنعت تلك الأنوف من الخيزران، وتراوح طولها بين خمسة وستة أقدام، بل بلغ بعضها عشرة أقدام؛ فمنها المستقيم ومنها المنحني، ومنها المزخرف بالأشرطة ومنها ما زين بثآليل مقلدة. وكانوا يؤدون تمارينهم البهلوانية على هذه الزوائد المثبتة بإحكام فوق أنوفهم الحقيقية. استلقى اثنا عشر من أتباع تينغو على ظهورهم، بينما أخذ آخرون، متنكرين في هيئة قضبان صواعق، يقفزون ويلهون فوق الأنوف، وينتقلون من واحد إلى آخر في وثبات وشقلبات بالغة المهارة."
+    },
+    {
+      "index": 4,
+      "ar": "وكخاتمة، أعلن عن هرم بشري سيمثل فيه خمسون من أصحاب الأنوف الطويلة عربة جاغرنات. لكن بدلاً من بناء الهرم بتسلق أكتاف بعضهم، كان الفنانون سيصطفون فوق الأنوف نفسها. ولأن المؤدي الذي شكل قاعدة العربة قد ترك الفرقة، وحيث إن هذا الدور لا يتطلب سوى القوة والمهارة، فقد اختير باسبارتو ليحل محله."
+    },
+    {
+      "index": 5,
+      "ar": "شعر المسكين بالحزن حقاً عندما ارتدى زيه -يا لها من ذكرى كئيبة لشبابه!- المزين بأجنحة متعددة الألوان، وثبت على أنفه الطبيعي أنفاً زائفاً طوله ستة أقدام. لكنه استعاد معنوياته حين تذكر أن هذا الأنف سيكسبه ما يأكله."
+    },
+    {
+      "index": 6,
+      "ar": "صعد إلى المسرح واتخذ مكانه إلى جانب بقية المشاركين الذين سيشكلون قاعدة عربة جاغرنات. تمددوا جميعاً على الأرض وأنوفهم تشير إلى السقف. ثم صعدت مجموعة ثانية فوق هذه الزوائد الطويلة، تلتها ثالثة ثم رابعة، حتى ارتفع فوق الأنوف صرح بشري بلغ تقريباً أفاريز المسرح. دوى التصفيق، وكانت الأوركسترا توشك أن تبدأ لحناً صاخباً، حين تمايل الهرم واختل توازنه، واختفى أحد الأنوف السفلية من التشكيلة، فانهار الصرح البشري مثل قلعة من ورق اللعب!"
+    },
+    {
+      "index": 7,
+      "ar": "كان الخطأ خطأ باسبارتو. فقد ترك مكانه، وقفز فوق أضواء مقدمة المسرح من دون أن يستعين بجناحيه، ثم تسلق إلى الشرفة اليمنى، وسقط عند قدمي أحد المتفرجين وهو يصيح: آه، سيدي! سيدي!"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

@@ -1,0 +1,159 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 23,
+  "chapterTitle": "In which Passepartout’s nose becomes outrageously long.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "48ee97d6857e15d8f9726199d31c3c9050794047925b589739ca12d04f9fdbcb",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "As he was reflecting in this wise, his eyes fell upon an immense placard which a sort of clown was carrying through the streets. This placard, which was in English, read as follows:",
+      "existingArabicDraft": "وبينما كان يفكر على هذا النحو، وقعت عيناه على لافتة ضخمة يحملها شخص يشبه المهرّج وهو يجوب الشوارع. وكانت اللافتة مكتوبة بالإنجليزية، ونصّها كما يلي:"
+    },
+    {
+      "index": 9,
+      "en": "Acrobatic Japanese Troupe, Honourable William Batulcar, Proprietor, Last Representations, Prior to Their Departure to the United States of the Long Noses! Long Noses! Under the Direct Patronage of the God Tingou! Great Attraction!",
+      "existingArabicDraft": "«فرقة يابانية للألعاب البهلوانية؛ صاحبها السيد المحترم ويليام باتولكار؛ العروض الأخيرة قبل السفر إلى الولايات المتحدة؛ أصحاب الأنوف الطويلة! الأنوف الطويلة! برعاية مباشرة من الإله تينغو! عرض مذهل!»"
+    },
+    {
+      "index": 10,
+      "en": "“The United States!” said Passepartout; “that’s just what I want!”",
+      "existingArabicDraft": "«الولايات المتحدة!» قال باسبارتو. «هذا بالضبط ما أريده!»"
+    },
+    {
+      "index": 11,
+      "en": "He followed the clown, and soon found himself once more in the Japanese quarter. A quarter of an hour later he stopped before a large cabin, adorned with several clusters of streamers, the exterior walls of which were designed to represent, in violent colours and without perspective, a company of jugglers.",
+      "existingArabicDraft": "تبع المهرّج، وسرعان ما وجد نفسه من جديد في الحي الياباني. وبعد ربع ساعة، توقف أمام مبنى كبير مزين بعناقيد من الرايات، ورُسمت على جدرانه الخارجية، بألوان فاقعة ومن دون مراعاة للمنظور، صور لفرقة من لاعبي الخفة."
+    },
+    {
+      "index": 12,
+      "en": "This was the Honourable William Batulcar’s establishment. That gentleman was a sort of Barnum, the director of a troupe of mountebanks, jugglers, clowns, acrobats, equilibrists, and gymnasts, who, according to the placard, was giving his last performances before leaving the Empire of the Sun for the States of the Union.",
+      "existingArabicDraft": "كان ذلك مقر السيد المحترم ويليام باتولكار. وكان الرجل أشبه ببارنوم، يدير فرقة من المشعوذين ولاعبي الخفة والمهرجين والبهلوانيين ولاعبي التوازن والجمباز، وكانوا، وفق اللافتة، يقدمون عروضهم الأخيرة قبل مغادرة إمبراطورية الشمس إلى الولايات المتحدة."
+    },
+    {
+      "index": 13,
+      "en": "Passepartout entered and asked for Mr. Batulcar, who straightway appeared in person.",
+      "existingArabicDraft": "دخل باسبارتو وطلب مقابلة السيد باتولكار، الذي ظهر أمامه على الفور."
+    },
+    {
+      "index": 14,
+      "en": "“What do you want?” said he to Passepartout, whom he at first took for a native.",
+      "existingArabicDraft": "«ماذا تريد؟» سأله، بعدما ظنه في البداية أحد السكان المحليين."
+    },
+    {
+      "index": 15,
+      "en": "“Would you like a servant, sir?” asked Passepartout.",
+      "existingArabicDraft": "«هل تحتاج إلى خادم يا سيدي؟» سأل باسبارتو."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "وبينما كان يفكر على هذا النحو، وقعت عيناه على لافتة ضخمة يحملها شخص يشبه المهرّج وهو يجوب الشوارع. وكانت اللافتة مكتوبة بالإنجليزية، ونصّها كما يلي:"
+    },
+    {
+      "index": 1,
+      "ar": "«فرقة يابانية للألعاب البهلوانية؛ صاحبها السيد المحترم ويليام باتولكار؛ العروض الأخيرة قبل السفر إلى الولايات المتحدة؛ أصحاب الأنوف الطويلة! الأنوف الطويلة! برعاية مباشرة من الإله تينغو! عرض مذهل!»"
+    },
+    {
+      "index": 2,
+      "ar": "«الولايات المتحدة!» قال باسبارتو. «هذا بالضبط ما أريده!»"
+    },
+    {
+      "index": 3,
+      "ar": "تبع المهرّج، وسرعان ما وجد نفسه من جديد في الحي الياباني. وبعد ربع ساعة، توقف أمام مبنى كبير مزين بعناقيد من الرايات، ورُسمت على جدرانه الخارجية، بألوان فاقعة ومن دون مراعاة للمنظور، صور لفرقة من لاعبي الخفة."
+    },
+    {
+      "index": 4,
+      "ar": "كان ذلك مقر السيد المحترم ويليام باتولكار. وكان الرجل أشبه ببارنوم، يدير فرقة من المشعوذين ولاعبي الخفة والمهرجين والبهلوانيين ولاعبي التوازن والجمباز، وكانوا، وفق اللافتة، يقدمون عروضهم الأخيرة قبل مغادرة إمبراطورية الشمس إلى الولايات المتحدة."
+    },
+    {
+      "index": 5,
+      "ar": "دخل باسبارتو وطلب مقابلة السيد باتولكار، الذي ظهر أمامه على الفور."
+    },
+    {
+      "index": 6,
+      "ar": "«ماذا تريد؟» سأله، بعدما ظنه في البداية أحد السكان المحليين."
+    },
+    {
+      "index": 7,
+      "ar": "«هل تحتاج إلى خادم يا سيدي؟» سأل باسبارتو."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

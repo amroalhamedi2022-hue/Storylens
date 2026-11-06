@@ -1,0 +1,159 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 23,
+  "chapterTitle": "In which Passepartout’s nose becomes outrageously long.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "f6f27e34fcb39e57cfd9ef4fcd016332845ce7a48a573849b8998401082aaf81",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The next morning poor, jaded, famished Passepartout said to himself that he must get something to eat at all hazards, and the sooner he did so the better. He might, indeed, sell his watch; but he would have starved first. Now or never he must use the strong, if not melodious voice which nature had bestowed upon him. He knew several French and English songs, and resolved to try them upon the Japanese, who must be lovers of music, since they were forever pounding on their cymbals, tam-tams, and tambourines, and could not but appreciate European talent.",
+      "existingArabicDraft": "في صباح اليوم التالي، قال باسبارتو المسكين المنهك والجائع لنفسه إنه لا بد أن يحصل على شيء يأكله مهما كلّفه الأمر، وكلما أسرع كان ذلك أفضل. كان يستطيع، في الواقع، أن يبيع ساعته، لكنه كان سيفضّل الجوع على ذلك. لم يعد أمامه وقت؛ فعليه أن يستخدم صوته القوي، وإن لم يكن عذبًا، وهو الصوت الذي وهبته له الطبيعة. وكان يعرف عددًا من الأغاني الفرنسية والإنجليزية، فعزم على تجربتها أمام اليابانيين؛ فهم، كما ظن، يحبون الموسيقى، إذ لا يكفون عن قرع الصنوج والطبول والدفوف، ولا بد أنهم سيقدّرون موهبته الأوروبية."
+    },
+    {
+      "index": 1,
+      "en": "It was, perhaps, rather early in the morning to get up a concert, and the audience prematurely aroused from their slumbers, might not possibly pay their entertainer with coin bearing the Mikado’s features. Passepartout therefore decided to wait several hours; and, as he was sauntering along, it occurred to him that he would seem rather too well dressed for a wandering artist. The idea struck him to change his garments for clothes more in harmony with his project; by which he might also get a little money to satisfy the immediate cravings of hunger. The resolution taken, it remained to carry it out.",
+      "existingArabicDraft": "ربما كان الوقت مبكرًا جدًا لإقامة حفلة، وقد لا يسرّ الجمهور الذي يُوقَظ من نومه قبل أوانه بأن يدفع لمؤدّيه نقودًا تحمل صورة الميكادو. لذلك قرر باسبارتو أن ينتظر بضع ساعات. وبينما كان يتمشّى على مهل، خطر له أنه يبدو أنيقًا أكثر مما ينبغي لفنان جوّال. ففكر في استبدال ملابسه بأخرى تلائم خطته، وربما يحصل من الصفقة على بعض المال يسدّ به جوعه العاجل. وبعد أن اتخذ قراره، لم يبقَ إلا أن ينفذه."
+    },
+    {
+      "index": 2,
+      "en": "It was only after a long search that Passepartout discovered a native dealer in old clothes, to whom he applied for an exchange. The man liked the European costume, and ere long Passepartout issued from his shop accoutred in an old Japanese coat, and a sort of one-sided turban, faded with long use. A few small pieces of silver, moreover, jingled in his pocket.",
+      "existingArabicDraft": "لم يعثر باسبارتو على تاجر محلي للملابس المستعملة إلا بعد بحث طويل، وطلب منه مبادلة ثيابه. أعجب الرجل بالزي الأوروبي، وبعد وقت قصير خرج باسبارتو من متجره مرتديًا معطفًا يابانيًا قديمًا وعمامة مائلة باهتة من طول الاستعمال. وكانت بضع قطع فضية ترنّ في جيبه."
+    },
+    {
+      "index": 3,
+      "en": "“Good!” thought he. “I will imagine I am at the Carnival!”",
+      "existingArabicDraft": "«ممتاز!» قال في نفسه. «سأتخيّل أنني في الكرنفال!»"
+    },
+    {
+      "index": 4,
+      "en": "His first care, after being thus “Japanesed,” was to enter a teahouse of modest appearance, and, upon half a bird and a little rice, to breakfast like a man for whom dinner was as yet a problem to be solved.",
+      "existingArabicDraft": "كان أول ما فعله بعد أن صار يابانيّ الهيئة أن دخل بيت شاي متواضعًا، وتناول نصف طائر وقليلًا من الأرز على الفطور، كأنه رجل لم يعرف بعد كيف سيحصل على عشاء ذلك اليوم."
+    },
+    {
+      "index": 5,
+      "en": "“Now,” thought he, when he had eaten heartily, “I mustn’t lose my head. I can’t sell this costume again for one still more Japanese. I must consider how to leave this country of the Sun, of which I shall not retain the most delightful of memories, as quickly as possible.”",
+      "existingArabicDraft": "«والآن»، فكّر بعد أن أكل حتى شبع، «يجب ألا أفقد صوابي. لا يمكنني أن أبيع هذا الزي لأشتري زيًا أشد يابانية منه. عليّ أن أفكر في مغادرة بلد الشمس بأسرع ما يمكن؛ فلن أحتفظ منه بذكريات ممتعة كثيرة»."
+    },
+    {
+      "index": 6,
+      "en": "It occurred to him to visit the steamers which were about to leave for America. He would offer himself as a cook or servant, in payment of his passage and meals. Once at San Francisco, he would find some means of going on. The difficulty was, how to traverse the four thousand seven hundred miles of the Pacific which lay between Japan and the New World.",
+      "existingArabicDraft": "خطرت له زيارة السفن البخارية التي كانت تستعد للإبحار إلى أمريكا. وكان سيعرض العمل طاهيًا أو خادمًا مقابل الرحلة والطعام. وما إن يصل إلى سان فرانسيسكو حتى يجد وسيلة لمواصلة الطريق. لكن المشكلة كانت في كيفية عبور أربعة آلاف وسبعمئة ميل من المحيط الهادئ تفصل اليابان عن العالم الجديد."
+    },
+    {
+      "index": 7,
+      "en": "Passepartout was not the man to let an idea go begging, and directed his steps towards the docks. But, as he approached them, his project, which at first had seemed so simple, began to grow more and more formidable to his mind. What need would they have of a cook or servant on an American steamer, and what confidence would they put in him, dressed as he was? What references could he give?",
+      "existingArabicDraft": "لم يكن باسبارتو ممن يتركون فكرةً تضيع هباءً، فتوجه إلى الأرصفة. غير أن خطته التي بدت بسيطة في البداية أخذت تبدو له أصعب فأصعب كلما اقترب. ما الذي قد يدفع سفينة أمريكية إلى استخدام طاهٍ أو خادم؟ وكيف سيطمئنون إليه وهو يرتدي هذه الثياب؟ وأي مراجع أو توصيات يستطيع تقديمها؟"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "في صباح اليوم التالي، قال باسبارتو المسكين المنهك والجائع لنفسه إنه لا بد أن يحصل على شيء يأكله مهما كلّفه الأمر، وكلما أسرع كان ذلك أفضل. كان يستطيع، في الواقع، أن يبيع ساعته، لكنه كان سيفضّل الجوع على ذلك. لم يعد أمامه وقت؛ فعليه أن يستخدم صوته القوي، وإن لم يكن عذبًا، وهو الصوت الذي وهبته له الطبيعة. وكان يعرف عددًا من الأغاني الفرنسية والإنجليزية، فعزم على تجربتها أمام اليابانيين؛ فهم، كما ظن، يحبون الموسيقى، إذ لا يكفون عن قرع الصنوج والطبول والدفوف، ولا بد أنهم سيقدّرون موهبته الأوروبية."
+    },
+    {
+      "index": 1,
+      "ar": "ربما كان الوقت مبكرًا جدًا لإقامة حفلة، وقد لا يسرّ الجمهور الذي يُوقَظ من نومه قبل أوانه بأن يدفع لمؤدّيه نقودًا تحمل صورة الميكادو. لذلك قرر باسبارتو أن ينتظر بضع ساعات. وبينما كان يتمشّى على مهل، خطر له أنه يبدو أنيقًا أكثر مما ينبغي لفنان جوّال. ففكر في استبدال ملابسه بأخرى تلائم خطته، وربما يحصل من الصفقة على بعض المال يسدّ به جوعه العاجل. وبعد أن اتخذ قراره، لم يبقَ إلا أن ينفذه."
+    },
+    {
+      "index": 2,
+      "ar": "لم يعثر باسبارتو على تاجر محلي للملابس المستعملة إلا بعد بحث طويل، وطلب منه مبادلة ثيابه. أعجب الرجل بالزي الأوروبي، وبعد وقت قصير خرج باسبارتو من متجره مرتديًا معطفًا يابانيًا قديمًا وعمامة مائلة باهتة من طول الاستعمال. وكانت بضع قطع فضية ترنّ في جيبه."
+    },
+    {
+      "index": 3,
+      "ar": "«ممتاز!» قال في نفسه. «سأتخيّل أنني في الكرنفال!»"
+    },
+    {
+      "index": 4,
+      "ar": "كان أول ما فعله بعد أن صار يابانيّ الهيئة أن دخل بيت شاي متواضعًا، وتناول نصف طائر وقليلًا من الأرز على الفطور، كأنه رجل لم يعرف بعد كيف سيحصل على عشاء ذلك اليوم."
+    },
+    {
+      "index": 5,
+      "ar": "«والآن»، فكّر بعد أن أكل حتى شبع، «يجب ألا أفقد صوابي. لا يمكنني أن أبيع هذا الزي لأشتري زيًا أشد يابانية منه. عليّ أن أفكر في مغادرة بلد الشمس بأسرع ما يمكن؛ فلن أحتفظ منه بذكريات ممتعة كثيرة»."
+    },
+    {
+      "index": 6,
+      "ar": "خطرت له زيارة السفن البخارية التي كانت تستعد للإبحار إلى أمريكا. وكان سيعرض العمل طاهيًا أو خادمًا مقابل الرحلة والطعام. وما إن يصل إلى سان فرانسيسكو حتى يجد وسيلة لمواصلة الطريق. لكن المشكلة كانت في كيفية عبور أربعة آلاف وسبعمئة ميل من المحيط الهادئ تفصل اليابان عن العالم الجديد."
+    },
+    {
+      "index": 7,
+      "ar": "لم يكن باسبارتو ممن يتركون فكرةً تضيع هباءً، فتوجه إلى الأرصفة. غير أن خطته التي بدت بسيطة في البداية أخذت تبدو له أصعب فأصعب كلما اقترب. ما الذي قد يدفع سفينة أمريكية إلى استخدام طاهٍ أو خادم؟ وكيف سيطمئنون إليه وهو يرتدي هذه الثياب؟ وأي مراجع أو توصيات يستطيع تقديمها؟"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

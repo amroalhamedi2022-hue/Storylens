@@ -1,0 +1,144 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 22,
+  "chapterTitle": "In which Passepartout finds out that, even at the antipodes, it is convenient to have some money in one’s pocket.",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 7,
+  "sourceSha256": "3f1dff8bb4e9e08eb98821abeae306282038b59ecc72161b87429bac66de3d7b",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "Passepartout wandered for several hours in the midst of this motley crowd, looking in at the windows of the rich and curious shops, the jewellery establishments glittering with quaint Japanese ornaments, the restaurants decked with streamers and banners, the teahouses, where the odorous beverage was being drunk with saki, a liquor concocted from the fermentation of rice, and the comfortable smoking-houses, where they were puffing, not opium, which is almost unknown in Japan, but a very fine, stringy tobacco. He went on till he found himself in the fields, in the midst of vast rice plantations. There he saw dazzling camellias expanding themselves, with flowers which were giving forth their last colours and perfumes, not on bushes, but on trees, and within bamboo enclosures, cherry, plum, and apple trees, which the Japanese cultivate rather for their blossoms than their fruit, and which queerly-fashioned, grinning scarecrows protected from the sparrows, pigeons, ravens, and other voracious birds. On the branches of the cedars were perched large eagles; amid the foliage of the weeping willows were herons, solemnly standing on one leg; and on every hand were crows, ducks, hawks, wild birds, and a multitude of cranes, which the Japanese consider sacred, and which to their minds symbolise long life and prosperity.",
+      "existingArabicDraft": "ظل باسبارتو يتجول ساعات وسط ذلك الحشد المتنوع، يتطلع إلى واجهات المتاجر الغنية والغريبة، ومحال المجوهرات التي تتلألأ فيها الزخارف اليابانية العجيبة، والمطاعم المزينة بالأعلام والشرائط، وبيوت الشاي حيث يُشرب الشراب العطري مع الساكي المصنوع من تخمير الأرز، ومقاهي التدخين المريحة التي يدخن روادها تبغًا رفيعًا متماسكًا بدل الأفيون، الذي يكاد يكون مجهولًا في اليابان. ومضى حتى بلغ الحقول وسط مزارع أرز شاسعة. وهناك رأى أزهار الكاميليا المتلألئة وقد قاربت ألوانها وعطورها على الأفول، تنمو على أشجار لا شجيرات، وبين أسوار الخيزران أشجار الكرز والبرقوق والتفاح التي يزرعها اليابانيون من أجل أزهارها أكثر من ثمارها. وكانت فزاعات غريبة مبتسمة تحميها من العصافير والحمام والغربان وسائر الطيور الشرهة. وعلى أغصان الأرز وقفت نسور كبيرة، وبين الصفصاف الباكي وقفت مالك الحزين على ساق واحدة، وانتشرت الغربان والبط والصقور والطيور البرية وقطعان من الكركي الذي يعده اليابانيون مقدسًا ويرمز عندهم إلى طول العمر والرخاء."
+    },
+    {
+      "index": 25,
+      "en": "As he was strolling along, Passepartout espied some violets among the shrubs.",
+      "existingArabicDraft": "وبينما كان يتجول، لمح باسبارتو بعض زهور البنفسج بين الشجيرات."
+    },
+    {
+      "index": 26,
+      "en": "“Good!” said he; “I’ll have some supper.”",
+      "existingArabicDraft": "«جيد!» قال، «سأتناول العشاء إذن»."
+    },
+    {
+      "index": 27,
+      "en": "But, on smelling them, he found that they were odourless.",
+      "existingArabicDraft": "لكنه حين شمّها اكتشف أنها بلا رائحة."
+    },
+    {
+      "index": 28,
+      "en": "“No chance there,” thought he.",
+      "existingArabicDraft": "فقال في نفسه: «لا حظ لي هنا»."
+    },
+    {
+      "index": 29,
+      "en": "The worthy fellow had certainly taken good care to eat as hearty a breakfast as possible before leaving the Carnatic; but, as he had been walking about all day, the demands of hunger were becoming importunate. He observed that the butchers stalls contained neither mutton, goat, nor pork; and, knowing also that it is a sacrilege to kill cattle, which are preserved solely for farming, he made up his mind that meat was far from plentiful in Yokohama—nor was he mistaken; and, in default of butcher’s meat, he could have wished for a quarter of wild boar or deer, a partridge, or some quails, some game or fish, which, with rice, the Japanese eat almost exclusively. But he found it necessary to keep up a stout heart, and to postpone the meal he craved till the following morning. Night came, and Passepartout reentered the native quarter, where he wandered through the streets, lit by varicoloured lanterns, looking on at the dancers, who were executing skilful steps and boundings, and the astrologers who stood in the open air with their telescopes. Then he came to the harbour, which was lit up by the resin torches of the fishermen, who were fishing from their boats.",
+      "existingArabicDraft": "كان الرجل المسكين قد حرص على تناول فطور مشبع قبل مغادرة كارنيتيك، لكنه مشى طوال اليوم حتى صار الجوع يلح عليه بشدة. ولاحظ أن محال الجزارة لا تعرض لحم الضأن أو الماعز أو الخنزير؛ وكان يعرف أن ذبح الأبقار يُعد تدنيسًا لأنها تُترك لأعمال الزراعة، فاستنتج أن اللحم نادر في يوكوهاما، ولم يكن مخطئًا. ولأنه لم يجد لحمًا، تمنى لو حصل على قطعة من الخنزير البري أو الغزال، أو طائر الحجل أو السمان، أو بعض الصيد أو السمك، وهي أطعمة يتناولها اليابانيون غالبًا مع الأرز. لكنه اضطر إلى التحلي بالصبر وتأجيل وجبته إلى الصباح التالي. وحين حل الليل عاد إلى الحي الياباني، وتجول في شوارعه المضاءة بفوانيس متعددة الألوان، يتأمل الراقصين وهم يؤدون خطوات وقفزات متقنة، والمنجمين الذين نصبوا تلسكوباتهم في الهواء الطلق. ثم وصل إلى الميناء، حيث كانت مشاعل الراتنج تضيء صيادي السمك وهم يصطادون من قواربهم."
+    },
+    {
+      "index": 30,
+      "en": "The streets at last became quiet, and the patrol, the officers of which, in their splendid costumes, and surrounded by their suites, Passepartout thought seemed like ambassadors, succeeded the bustling crowd. Each time a company passed, Passepartout chuckled, and said to himself: “Good! another Japanese embassy departing for Europe!”",
+      "existingArabicDraft": "وأخيرًا هدأت الشوارع، وحلت الدوريات محل الجموع الصاخبة. وكان باسبارتو يرى ضباطها، بملابسهم الفاخرة وحاشيتهم، أشبه بالسفراء. وكلما مرت مجموعة، ضحك في نفسه وقال: «حسنًا! سفارة يابانية أخرى تغادر إلى أوروبا!»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "ظل باسبارتو يتجول ساعات وسط ذلك الحشد المتنوع، يتطلع إلى واجهات المتاجر الغنية والغريبة، ومحال المجوهرات التي تتلألأ فيها الزخارف اليابانية العجيبة، والمطاعم المزينة بالأعلام والشرائط، وبيوت الشاي حيث يُشرب الشراب العطري مع الساكي، وهو خمر مصنوع من تخمير الأرز، ومقاهي التدخين المريحة التي يدخن روادها، لا الأفيون الذي يكاد يكون مجهولًا في اليابان، بل تبغًا رفيعًا متماسكًا. ومضى حتى بلغ الحقول وسط مزارع أرز شاسعة. وهناك رأى أزهار الكاميليا المتلألئة وهي تتفتح بألوانها وعطورها الأخيرة، لا على شجيرات، بل على أشجار، وبين أسوار الخيزران أشجار الكرز والبرقوق والتفاح التي يزرعها اليابانيون من أجل أزهارها أكثر من ثمارها. وكانت فزاعات غريبة مبتسمة تحميها من العصافير والحمام والغربان وسائر الطيور الشرهة. وعلى أغصان الأرز وقفت نسور كبيرة، وبين الصفصاف الباكي وقفت طيور مالك الحزين بوقار على ساق واحدة، وانتشرت في كل مكان الغربان والبط والصقور والطيور البرية وقطعان من طيور الكركي التي يعدها اليابانيون مقدسة والتي ترمز في أذهانهم إلى طول العمر والرخاء."
+    },
+    {
+      "index": 1,
+      "ar": "وبينما كان يتجول، لمح باسبارتو بعض زهور البنفسج بين الشجيرات."
+    },
+    {
+      "index": 2,
+      "ar": "قال: «جيد! سأتناول بعض العشاء»."
+    },
+    {
+      "index": 3,
+      "ar": "لكنه حين شمّها اكتشف أنها بلا رائحة."
+    },
+    {
+      "index": 4,
+      "ar": "فقال في نفسه: «لا حظ لي هنا»."
+    },
+    {
+      "index": 5,
+      "ar": "كان الرجل الطيب قد حرص بالتأكيد على تناول فطور مشبع قدر الإمكان قبل مغادرة السفينة كارنيتيك، لكنه لما كان يمشي طوال اليوم، فقد صار الجوع يلح عليه بشدة. ولاحظ أن أكاخ الجزارين لا تحتوي على لحم الضأن أو الماعز أو الخنزير؛ وعلمًا منه بأن ذبح الأبقار يُعد جريمة مقدسة إذ تُحفظ وحدها للزراعة، فقد أيقن أن اللحم نادر للغاية في يوكوهاما، ولم يكن مخطئًا في ذلك. وفضلاً عن عدم وجود لحوم المتاجر، لود لو حصل على ربع خنزير بري أو غزال، أو طائر حجل أو بعض السمان، أو أي صيد بري أو سمك، وهي أطعمة يتناولها اليابانيون مع الأرز تقريبًا بشكل حصري. لكنه وجد لزامًا عليه أن يتحلى بجلد قوي، وأن يؤجل الوجبة التي تشوق إليها حتى الصباح التالي. وحل الليل، فدخل باسبارتو الحي المحلي مجددًا حيث تجول في الشوارع المضاءة بالفوانيس متعددة الألوان، يتأمل الراقصين وهم يؤدون خطوات وقفزات بارعة، والمنجمين الذين يقفون في الهواء الطلق بمقاربهم. ثم بلغ الميناء الذي كانت تضيئه مشاعل الراتنج الخاصة بالصيادين وهم يصطادون من قواربهم."
+    },
+    {
+      "index": 6,
+      "ar": "وهدأت الشوارع أخيرًا، وخلف الحشد الصاخب دوريات من الضباط بملابسهم الفاخرة والمحيطين بحاشيتهم، حتى بدا لباسبارتو أنهم أشبه بالسفراء. وكلما مرت جماعة، ضحك باسبارتو في سرّه وقال لنفسه: «حسنًا! سفارة يابانية أخرى تغادر إلى أوروبا!»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": false,
+      "issues": "وجود خطأ مطبعي في كلمة 'أكاخ' والصواب 'أكواخ' أو 'محال'."
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
