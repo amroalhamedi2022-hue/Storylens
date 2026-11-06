@@ -1,0 +1,76 @@
+name: Lingua Tales - acquire genuine 1901-02 Sidney Paget Hound originals
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/intake_hound_paget_original_period_plates.py'
+      - '.github/workflows/hound-paget-original-period-intake.yml'
+  schedule:
+    - cron: '48 1,5,9,13,17,21 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: lingua-hound-paget-original-1901-art-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  preserve-actual-paget-1901-art-and-unique-sha:
+    runs-on: ubuntu-latest
+    timeout-minutes: 48
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned original source and image archive decoders
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0
+      - name: Check original Sidney Paget Hound plate selection rules
+        run: python tools/test_hound_paget_period_intake.py
+      - name: Acquire up to eighteen historic Paget artwork source files and local WebP hashes
+        run: python tools/intake_hound_paget_original_period_plates.py --max-new 18
+      - name: Persist original artwork binaries before central progress report recomputation
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -d docs/literature/staging/hound-paget-original-1901-period-plates ]; then
+            git add -f docs/literature/staging/hound-paget-original-1901-period-plates/
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No new genuine Sidney Paget original plates; no empty commit."
+          else
+            git commit -m "Literature: checkpoint original Paget period Hound of Baskervilles art"
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 3
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Original verified period art push failed after bounded retries"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = "main" ]; then
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
+          fi
+      - name: Retain original Commons historical art in CI even if API or push fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hound-paget-1901-original-period-art-research-not-approved
+          path: docs/literature/staging/hound-paget-original-1901-period-plates/
+          if-no-files-found: ignore
+          retention-days: 30

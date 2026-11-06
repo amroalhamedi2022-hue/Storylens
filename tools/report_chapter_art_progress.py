@@ -428,6 +428,34 @@ def generate() -> dict:
         scarlet_originals = len(scarlet_manifest["images"])
         if scarlet_originals > 4:
             raise ValueError("Nonoriginal Scarlet files counted as period artwork")
+    # Historical Sidney Paget artwork is SOURCE evidence only, never chapter approval.
+    hound_paget_count = 0
+    hound_gallery = STAGING / "hound-paget-original-1901-period-plates" / "manifest.json"
+    if hound_gallery.is_file():
+        hound_archive = jload(hound_gallery)
+        if (hound_archive.get("category") !=
+                "Category:The Hound of the Baskervilles illustrated by Sidney Paget"
+                or hound_archive.get("chapterSceneMatchingComplete") is not False
+                or hound_archive.get("publicationApproved") is not False):
+            raise ValueError("Hound Paget historical period source is wrong or falsely approved")
+        originals, binaries = set(), set()
+        for plate in hound_archive["images"]:
+            title = plate.get("wikiFile", "")
+            original_sha1, webp_sha = plate["originalCommonsSHA1MetadataOnly"], plate["webpSha256"]
+            if (not title.startswith("File:Houn-")
+                    or plate.get("sceneChapterMatchStatus") != "UNREVIEWED__NO_CHAPTER_CARD"
+                    or plate.get("editoriallyApproved") is not False
+                    or plate.get("rightsStatus") != "PENDING_INDIVIDUAL_PAGET_1902_TERRITORY_AND_SCENE_REVIEW"
+                    or not plate.get("originalCreator")
+                    or not plate.get("commonsPage")
+                    or not plate.get("individualCommonsLicense")):
+                raise ValueError("Unsigned or foreign historical Sidney Paget artwork")
+            if original_sha1 in originals or webp_sha in binaries:
+                raise ValueError("Duplicate Sidney Paget Hound plate source or image bytes")
+            check_binary(str((hound_gallery.parent / plate["localPath"]).relative_to(ROOT)), webp_sha)
+            originals.add(original_sha1)
+            binaries.add(webp_sha)
+        hound_paget_count = len(hound_archive["images"])
     kalila_colours = (
         verify_kalila_miniatures()
         if (STAGING / "kalila-original-colour-miniatures-20261105" / "manifest.json").is_file()
@@ -437,7 +465,9 @@ def generate() -> dict:
         archive = STAGING / slug
         if archive.is_dir():
             art_count = kalila_colours if slug == "kalila-arabic-wikisource" else (
-                scarlet_originals if slug == "a-study-in-scarlet" else 0
+                scarlet_originals if slug == "a-study-in-scarlet" else (
+                    hound_paget_count if slug == "the-hound-of-the-baskervilles" else 0
+                )
             )
             data = {"bookId": slug, "title": title,
                     "sourceState": "older staged work; chapter-card coverage audit pending",
@@ -447,6 +477,13 @@ def generate() -> dict:
             if slug == "a-study-in-scarlet":
                 data["unassignedHistorical1887FristonImageFiles"] = scarlet_originals
                 data["sourceState"] = "complete original English novel staged; original 1887 Friston plates archived but not visually matched to chapters"
+            if slug == "the-hound-of-the-baskervilles":
+                data["unassignedHistoricalSidneyPagetFiles"] = hound_paget_count
+                if hound_paget_count:
+                    data["sourceState"] = (
+                        "complete English original; genuine Sidney Paget 1901–02 plates "
+                        "preserved but chapter scene/rights clearance pending"
+                    )
             chaptered_doyle = {
                 "a-study-in-scarlet": 14,
                 "the-lost-world": 16,
