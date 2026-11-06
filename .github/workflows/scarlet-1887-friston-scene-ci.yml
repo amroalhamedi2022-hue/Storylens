@@ -1,0 +1,27 @@
+name: Lingua Tales - original 1887 Friston image scene QA source integration
+on:
+  pull_request:
+    paths:
+      - 'tools/export_study_scarlet_original_for_art.py'
+      - 'tools/gemini_suggest_study_scarlet_friston_scenes.py'
+      - 'tools/test_study_scarlet_scene_qa.py'
+      - '.github/workflows/scarlet-1887-friston-scene-*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-real-source-and-no-auto-approval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit pinned full 1887 English source and real-image model isolation offline
+        run: |
+          python tools/export_study_scarlet_original_for_art.py --check
+          python tools/gemini_suggest_study_scarlet_friston_scenes.py --self-test
+          python tools/test_study_scarlet_scene_qa.py
