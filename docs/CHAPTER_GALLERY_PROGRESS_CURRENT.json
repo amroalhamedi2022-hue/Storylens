@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "updatedOn": "2026-11-05",
+  "updatedOn": "2026-11-07",
   "role": "chapter-organizer-ui-not-literature-or-image-acquisition",
   "repository": "amroalhamedi2022-hue/Storylens",
-  "mainMergedFeatureCommit": "9b32529b47f441447a3b21e0c18b2fd339261be7",
-  "pullRequest": "https://github.com/amroalhamedi2022-hue/Storylens/pull/18",
-  "exactFeatureCI": "https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42092432267",
+  "mainMergedFeatureCommit": "af7c15dd6c04c76e63c1d5c00fcf5a400565c3a7",
+  "pullRequest": "https://github.com/amroalhamedi2022-hue/Storylens/pull/52",
+  "exactFeatureCI": "https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42308601475",
   "exactFeatureCIResult": "success",
-  "sourceBranches": "merged main",
+  "sourceBranches": "CHG-02 merged main; original conflicted PR #40 safely closed",
   "workstreamBoundaries": {
     "thisConversation": [
       "book cover to chapter chooser",
@@ -34,7 +34,11 @@
     "fail-closed missing image numbered cards, no wrong-chapter reused art",
     "safe SHA256 checked packager for source-approved artwork from other workstream",
     "Node gallery and Python asset-packaging tests passed",
-    "Android assembly and existing full Chromium/browser smoke passed"
+    "Android assembly and existing full Chromium/browser smoke passed",
+    "CHG-02 chapter title/number search across all originals, 36-card incremental rail, stored progress and RTL keyboard chapter selection already integrated in main",
+    "CHG-02 safer historical art package with edition/licence/SHA matching, cross-book dedupe and revoked image orphan hard gate",
+    "Standalone real browser phone/tablet gallery journey and PNG screenshot artifacts PASSED in CI run 42308601475",
+    "CHG-02 conflict-free PR #52 merged after detecting original UI files had already landed byte-for-byte on main"
   ],
   "implementation": [
     "app/src/main/assets/lt-chapter-gallery.js",
@@ -42,15 +46,19 @@
     "app/src/main/assets/lt-chapter-thumbnail-registry.js",
     "tools/package_approved_chapter_thumbnails.py",
     "tools/test_approved_thumbnail_packaging.py",
-    "tools/chapter-thumbnail-gallery.test.cjs"
+    "tools/chapter-thumbnail-gallery.test.cjs",
+    "tools/report_chapter_gallery_ui_progress.py",
+    "tools/make_chapter_gallery_browser_fixture.py",
+    ".github/workflows/chapter-gallery-fast-checks.yml",
+    "docs/CHAPTER_GALLERY_UI_PHASE2_PROGRESS.md"
   ],
   "imageReadiness": [
     {
       "bookId": "around-the-world-in-eighty-days-towle",
       "narrativeChapters": 37,
-      "sourceMappedLocalCandidateThumbnails": 9,
+      "sourceMappedLocalCandidateThumbnails": 12,
       "editorialTerritoryApprovedChapterThumbnails": 0,
-      "missingSourceMappedChapters": 28,
+      "missingSourceMappedChapters": 25,
       "missingApprovedChapterThumbnails": 37,
       "approvedImageRegistryEntries": 0
     }
@@ -61,8 +69,18 @@
     "import/publish complete contextual bilingual prose outside this UI workstream",
     "test actual Android phone and Xiaomi Pad 5 in portrait/landscape and accessibility",
     "build signed stable production update with existing private certificate and data-preserving package",
-    "do not claim 37 thumbnail images or new APK while approvals/device/signing remain open"
+    "do not claim 37 thumbnail images or new APK while approvals/device/signing remain open",
+    "Individual book and image clearance remains separate; do not present 280 mapped candidates as approved",
+    "Physical Android phone+tablet chapter UI tests remain unperformed",
+    "Wen Glass full-Android browser QA failure is separate and unchanged in this UI workstream"
   ],
   "canonicalPlan": "docs/plans/LINGUA_TALES_CHAPTER_GALLERY_MASTER_2026-11-05.md",
-  "privateLibrary": "/Lingua Tales/Plans/LINGUA_TALES_CHAPTER_GALLERY_HANDOFF_CURRENT.md"
+  "privateLibrary": "/Lingua Tales/Plans/LINGUA_TALES_CHAPTER_GALLERY_HANDOFF_CURRENT.md",
+  "currentSourceArtAudit": {
+    "sourceCoverageFile": "docs/literature/CHAPTER_ART_PROGRESS.json",
+    "locallyMappedCandidates": 280,
+    "rightsAndEditorialReady": 0,
+    "actualPackagedApprovedChapterImages": 0,
+    "note": "source-image candidates are NOT approved nor APK-published historical chapter art"
+  }
 }
