@@ -1,0 +1,83 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 17,
+  "chapterTitle": "Showing what happened on the voyage from Singapore to Hong Kong.",
+  "startParagraphZeroBased": 32,
+  "paragraphCount": 3,
+  "sourceSha256": "25f9f76435347708d156ba31911faaa7e94400c80a2b9e459f8aecd7ffedfddf",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 32,
+      "en": "It was every day an increasing wonder to Passepartout, who read in Aouda’s eyes the depths of her gratitude to his master. Phileas Fogg, though brave and gallant, must be, he thought, quite heartless. As to the sentiment which this journey might have awakened in him, there was clearly no trace of such a thing; while poor Passepartout existed in perpetual reveries.",
+      "existingArabicDraft": "وكان باسبارتو يزداد دهشة كل يوم، إذ كان يقرأ في عيني أودا عمق امتنانها لسيده. وكان يظن أن فوغ، رغم شجاعته ونبله، رجل عديم الإحساس. ولم يرَ أي أثر لمشاعر قد تكون هذه الرحلة قد أيقظتها فيه، بينما عاش باسبارتو المسكين في أحلام يقظة دائمة."
+    },
+    {
+      "index": 33,
+      "en": "One day he was leaning on the railing of the engine-room, and was observing the engine, when a sudden pitch of the steamer threw the screw out of the water. The steam came hissing out of the valves; and this made Passepartout indignant.",
+      "existingArabicDraft": "وفي أحد الأيام كان يتكئ على درابزين غرفة المحركات ويراقب المحرك، حين رفعت حركة مفاجئة للباخرة المروحة خارج الماء. واندفع البخار من الصمامات بصوت فحيح، فأغضب ذلك باسبارتو."
+    },
+    {
+      "index": 34,
+      "en": "“The valves are not sufficiently charged!” he exclaimed. “We are not going. Oh, these English! If this was an American craft, we should blow up, perhaps, but we should at all events go faster!”",
+      "existingArabicDraft": "صاح: «الصمامات ليست مشحونة بما يكفي! نحن لا نتقدم. آه، هؤلاء الإنجليز! لو كان هذا مركبًا أمريكيًا لانفجر ربما، لكنه كان سيسير أسرع على الأقل!»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "وكان باسبارتو يزداد دهشة كل يوم، إذ كان يقرأ في عيني أودا عمق امتنانها لسيده. وكان يظن أن فيلياس فوغ، رغم شجاعته ونبله، لابد أنه رجل عديم القلب تماماً. وأما عن المشاعر التي قد تكون هذه الرحلة قد أيقظتها فيه، فلم يكن هناك أي أثر لمثل هذا الشيء؛ بينما كان باسبارتو المسكين غارقاً في أحلام يقظة دائمة."
+    },
+    {
+      "index": 1,
+      "ar": "وفي أحد الأيام كان يتكئ على درابزين غرفة المحركات ويراقب المحرك، حين أدت حركة ميل مفاجئة للباخرة إلى خروج المروحة من الماء. واندفع البخار صاخباً من الصمامات؛ وأثار ذلك حنق باسبارتو."
+    },
+    {
+      "index": 2,
+      "ar": "هتف قائلاً: «الصمامات ليست مشحونة بما يكفي! نحن لا نتحرك. آه، هؤلاء الإنجليز! لو كان هذا مركباً أمريكياً، لانفجرنا ربما، لكننا كنا سنمضي أسرع على أي حال!»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": "لا توجد مشاكل، الترجمة دقيقة ومتوافقة تماماً مع النص الأصلي."
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": "لا توجد مشاكل، النص العربي يعكس النص الأصلي بشكل دقيق."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": "لا توجد مشاكل، الحوار والمفردات مترجمة بشكل صحيح وبليغ."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

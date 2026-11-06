@@ -1,0 +1,140 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 18,
+  "chapterTitle": "In which Phileas Fogg, Passepartout, and Fix go each about his business.",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 7,
+  "sourceSha256": "7b225183e3e4725f717fd8995cc749e5419a8a2371f7a86408f2de390e294680",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "Aouda at first said nothing. She passed her hand across her forehead, and reflected a few moments. Then, in her sweet, soft voice, she said: “What ought I to do, Mr. Fogg?”",
+      "existingArabicDraft": "لم تقل أودا شيئًا في البداية. مررت يدها على جبينها وظلت تفكر بضع لحظات، ثم قالت بصوتها العذب الهادئ: «ماذا ينبغي أن أفعل يا سيد فوغ؟»"
+    },
+    {
+      "index": 25,
+      "en": "“It is very simple,” responded the gentleman. “Go on to Europe.”",
+      "existingArabicDraft": "أجاب الرجل: «الأمر بسيط جدًا. تابعي الرحلة إلى أوروبا»."
+    },
+    {
+      "index": 26,
+      "en": "“But I cannot intrude—”",
+      "existingArabicDraft": "قالت: «لكنني لا أريد أن أكون عبئًا عليك—»"
+    },
+    {
+      "index": 27,
+      "en": "“You do not intrude, nor do you in the least embarrass my project. Passepartout!”",
+      "existingArabicDraft": "فأجاب: «أنت لست عبئًا، ولا تعرقلين خطتي أدنى عرقلة. باسبارتو!»"
+    },
+    {
+      "index": 28,
+      "en": "“Monsieur.”",
+      "existingArabicDraft": "«أمرك يا سيدي»."
+    },
+    {
+      "index": 29,
+      "en": "“Go to the Carnatic, and engage three cabins.”",
+      "existingArabicDraft": "«اذهب إلى كارناتيك واحجز ثلاث مقصورات»."
+    },
+    {
+      "index": 30,
+      "en": "Passepartout, delighted that the young woman, who was very gracious to him, was going to continue the journey with them, went off at a brisk gait to obey his master’s order.",
+      "existingArabicDraft": "وانطلق باسبارتو بخطى سريعة لينفذ أمر سيده، مسرورًا بأن الشابة التي عاملته بلطف ستواصل الرحلة معهم."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "لم تقل أودا شيئًا في البداية. مررت يدها على جبينها وظلت تفكر بضع لحظات، ثم قالت بصوتها العذب الهادئ: «ماذا ينبغي أن أفعل يا سيد فوغ؟»"
+    },
+    {
+      "index": 1,
+      "ar": "أجاب الرجل: «الأمر بسيط جدًا. تابعي الرحلة إلى أوروبا»."
+    },
+    {
+      "index": 2,
+      "ar": "«لكنني لا أريد أن أكون عبئًا...»"
+    },
+    {
+      "index": 3,
+      "ar": "«أنت لست عبئًا، ولا تعرقلين خطتي أدنى عرقلة. باسبارتو!»"
+    },
+    {
+      "index": 4,
+      "ar": "«سيدي»."
+    },
+    {
+      "index": 5,
+      "ar": "«اذهب إلى السفينة كارناتيك، واحجز ثلاث مقصورات»."
+    },
+    {
+      "index": 6,
+      "ar": "انطلق باسبارتو بخطى حثيثة لتنفيذ أمر سيده، وهو في غاية السرور لأن الشابة، التي كانت لطيفة للغاية معه، ستواصل الرحلة برفقتهما."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

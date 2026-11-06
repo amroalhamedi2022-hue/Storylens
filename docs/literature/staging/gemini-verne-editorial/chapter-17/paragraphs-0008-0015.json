@@ -1,0 +1,153 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 17,
+  "chapterTitle": "Showing what happened on the voyage from Singapore to Hong Kong.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "458c7f238cf9478167768a64b3e97c58e41dcfc72b0212516bc310d4929245c7",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "After a drive of two hours through the country, Aouda and Mr. Fogg returned to the town, which is a vast collection of heavy-looking, irregular houses, surrounded by charming gardens rich in tropical fruits and plants; and at ten o’clock they reembarked, closely followed by the detective, who had kept them constantly in sight.",
+      "existingArabicDraft": "وبعد جولة استغرقت ساعتين في الريف، عاد فوغ وأودا إلى المدينة، وهي مجموعة واسعة من البيوت الضخمة غير المنتظمة، تحيط بها حدائق ساحرة غنية بالنباتات والثمار الاستوائية. وعند العاشرة صعدا إلى الباخرة مجددًا، وتبعهما المحقق الذي لم يرفع عينيه عنهما."
+    },
+    {
+      "index": 9,
+      "en": "Passepartout, who had been purchasing several dozen mangoes—a fruit as large as good-sized apples, of a dark-brown colour outside and a bright red within, and whose white pulp, melting in the mouth, affords gourmands a delicious sensation—was waiting for them on deck. He was only too glad to offer some mangoes to Aouda, who thanked him very gracefully for them.",
+      "existingArabicDraft": "كان باسبارتو قد اشترى عدة عشرات من المانجو، وهي ثمار بحجم التفاح الكبير، بنية داكنة من الخارج وحمراء زاهية من الداخل، ولبّها الأبيض يذوب في الفم ويمنح الذوّاقة متعة لذيذة. وكان ينتظرهما على السطح، فسُرّ بأن يقدم بعض المانجو لأودا، التي شكرته برقة."
+    },
+    {
+      "index": 10,
+      "en": "At eleven o’clock the Rangoon rode out of Singapore harbour, and in a few hours the high mountains of Malacca, with their forests, inhabited by the most beautifully-furred tigers in the world, were lost to view. Singapore is distant some thirteen hundred miles from the island of Hong Kong, which is a little English colony near the Chinese coast. Phileas Fogg hoped to accomplish the journey in six days, so as to be in time for the steamer which would leave on the 6th of November for Yokohama, the principal Japanese port.",
+      "existingArabicDraft": "عند الحادية عشرة خرجت رانغون من ميناء سنغافورة، وبعد ساعات اختفت جبال ملقا العالية وغاباتها التي تسكنها أجمل النمور فراءً في العالم عن الأنظار. وتبعد سنغافورة نحو ألف وثلاثمئة ميل عن هونغ كونغ، وهي مستعمرة إنجليزية صغيرة قرب الساحل الصيني. وأمل فوغ أن يقطع المسافة في ستة أيام ليصل في الوقت المناسب إلى باخرة السادس من نوفمبر المتجهة إلى يوكوهاما، الميناء الياباني الرئيس."
+    },
+    {
+      "index": 11,
+      "en": "The Rangoon had a large quota of passengers, many of whom disembarked at Singapore, among them a number of Indians, Ceylonese, Chinamen, Malays, and Portuguese, mostly second-class travellers.",
+      "existingArabicDraft": "كان على متن رانغون عدد كبير من المسافرين، نزل كثير منهم في سنغافورة، ومن بينهم هنود وسيلانيون وصينيون وملايو وبرتغاليون، وكان معظمهم من ركاب الدرجة الثانية."
+    },
+    {
+      "index": 12,
+      "en": "The weather, which had hitherto been fine, changed with the last quarter of the moon. The sea rolled heavily, and the wind at intervals rose almost to a storm, but happily blew from the southwest, and thus aided the steamer’s progress. The captain as often as possible put up his sails, and under the double action of steam and sail the vessel made rapid progress along the coasts of Anam and Cochin China. Owing to the defective construction of the Rangoon, however, unusual precautions became necessary in unfavourable weather; but the loss of time which resulted from this cause, while it nearly drove Passepartout out of his senses, did not seem to affect his master in the least. Passepartout blamed the captain, the engineer, and the crew, and consigned all who were connected with the ship to the land where the pepper grows. Perhaps the thought of the gas, which was remorselessly burning at his expense in Saville Row, had something to do with his hot impatience.",
+      "existingArabicDraft": "تغيّر الطقس الذي ظل جميلًا حتى ذلك الحين مع الربع الأخير من القمر. وارتفع الموج، واشتدت الرياح أحيانًا حتى قاربت العاصفة، لكنها هبّت لحسن الحظ من الجنوب الغربي، فساعدت الباخرة على التقدم. وكان القبطان يرفع الأشرعة كلما أمكن، فتسارع المركب بفعل البخار والريح معًا بمحاذاة سواحل أنام وكوشين الصين. لكن عيوب بناء رانغون فرضت احتياطات غير مألوفة في الطقس السيئ. وكان التأخير الناتج عن ذلك يكاد يفقد باسبارتو صوابه، بينما لم يبدُ أنه يؤثر في سيده مطلقًا. فراح يلوم القبطان والمهندس والطاقم، ويرسل كل من له صلة بالباخرة إلى «البلاد التي ينمو فيها الفلفل». وربما زادت غازات الإضاءة المشتعلة بلا رحمة على نفقته في شارع سافيل رو من حدة نفاد صبره."
+    },
+    {
+      "index": 13,
+      "en": "“You are in a great hurry, then,” said Fix to him one day, “to reach Hong Kong?”",
+      "existingArabicDraft": "قال له فيكس يومًا: «يبدو أنك شديد الاستعجال للوصول إلى هونغ كونغ؟»"
+    },
+    {
+      "index": 14,
+      "en": "“A very great hurry!”",
+      "existingArabicDraft": "«شديد الاستعجال جدًا!»"
+    },
+    {
+      "index": 15,
+      "en": "“Mr. Fogg, I suppose, is anxious to catch the steamer for Yokohama?”",
+      "existingArabicDraft": "«أفأفهم أن السيد فوغ حريص على اللحاق بالباخرة المتجهة إلى يوكوهاما؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "وبعد جولة استغرقت ساعتين في الريف، عاد فوغ وأودا إلى المدينة، وهي مجموعة واسعة من البيوت الضخمة غير المنتظمة، تحيط بها حدائق ساحرة غنية بالنباتات والثمار الاستوائية. وعند العاشرة صعدا إلى الباخرة مجددًا، وتبعهما المحقق الذي لم يغفل عن مراقبتهما لحظة."
+    },
+    {
+      "index": 1,
+      "ar": "كان باسبارتو قد اشترى عدة عشرات من المانجو، وهي ثمار بحجم التفاح الكبير، بنية داكنة من الخارج وحمراء زاهية من الداخل، ولبّها الأبيض يذوب في الفم ليمنح الذوّاقة متعة لذيذة. وكان ينتظرهما على السطح، فسُرّ أشد السرور بأن يقدم بعض المانجو لأودا، التي شكرته برقة بالغة."
+    },
+    {
+      "index": 2,
+      "ar": "عند الحادية عشرة، غادرت الباخرة «رانغون» ميناء سنغافورة، وبعد بضع ساعات اختفت جبال ملقا الشامخة وغاباتها التي تأوي أجمل نمور العالم فراءً عن الأنظار. تبعد سنغافورة نحو ألف وثلاثمئة ميل عن جزيرة هونغ كونغ، وهي مستعمرة إنجليزية صغيرة قرب الساحل الصيني. وأمل فيلياس فوغ أن يقطع هذه الرحلة في ستة أيام، ليكون في الوقت المناسب للاستقلال عن باخرة السادس من نوفمبر المتجهة إلى يوكوهاما، الميناء الياباني الرئيس."
+    },
+    {
+      "index": 3,
+      "ar": "كان على متن «رانغون» عدد كبير من المسافرين، نزل كثير منهم في سنغافورة، ومن بين هؤلاء عدد من الهنوك، والسيلانيين، والصينيين، والملايويين، والبرتغاليين، وكان أغلبهم من ركاب الدرجة الثانية."
+    },
+    {
+      "index": 4,
+      "ar": "تغيّر الطقس، الذي ظل صافياً حتى ذلك الحين، مع الربع الأخير من القمر. وهاج البحر بارتفاع الأمواج، واشتدت الرياح أحيانًا حتى كادت تقارب العاصفة، لكنها هبّت لحسن الحظ من الجنوب الغربي فساعدت في تقدم الباخرة. وكان القبطان ينشر أشرعته كلما أمكن ذلك، فتحركت السفينة بسرعة بفضل التأثير المزدوج للبخار والريح على طول سواحل أنام وكوشين الصين. غير أن التصميم المعيب للـ«رانغون» جعل اتخاذ احتياطات استثنائية أمراً حتمياً في ظل الطقس غير الاستوائي السيئ؛ ومع أن التأخير الناجم عن ذلك كاد يفقد باسبارتو صوابه، فإنه لم يبدُ مؤثراً على سيده قط. أخذ باسبارتو يكيل اللوم للقبطان، والمهندس، وطاقم البحارة، مرسلاً كل من له صلة بالسفينة إلى أقاصي الأرض. وربما كان لتفكير الفتى بمصابيح الغاز التي تشتعل بلا رحمة على حسابه في شارع سافيل رو دور في تأجيج نفاد صبره."
+    },
+    {
+      "index": 5,
+      "ar": "قال له فيكس ذات يوم: «إذن، أنت في عجلة شديدة للوصول إلى هونغ كونغ؟»"
+    },
+    {
+      "index": 6,
+      "ar": "«عجلة شديدة للغاية!»"
+    },
+    {
+      "index": 7,
+      "ar": "«وأظن أن السيد فوغ حريص على اللحاق بالباخرة المتجهة إلى يوكوهاما؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "تمت ترجمة 'for the steamer which would leave' بشكل خاطئ إلى 'للاستقلال عن باخرة' بدلاً من 'اللحاق بالباخرة'."
+    },
+    {
+      "index": 3,
+      "adequate": false,
+      "issues": "يوجد خطأ مطبعي في كلمة 'الهنوك' والصحيح 'الهنود'."
+    },
+    {
+      "index": 4,
+      "adequate": false,
+      "issues": "تمت ترجمة 'unfavourable weather' إلى 'الطقس غير الاستوائي السيئ' بدلاً من 'الطقس غير الملائم'، كما أن 'consigned all who were connected with the ship to the land where the pepper grows' تורْجَمَت بشكل غير دقيق ('إلى أقاصي الأرض' بدلاً من تعبيرها المجازي الأصلي)."
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

@@ -1,0 +1,154 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 18,
+  "chapterTitle": "In which Phileas Fogg, Passepartout, and Fix go each about his business.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "f0c2d06e8816e1c4d76e4a9f2075f2c666d82fd04b5949e97ede2051cc2e2131",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "Passepartout clasped the pilot’s hand and shook it heartily in his delight, exclaiming, “Pilot, you are the best of good fellows!”",
+      "existingArabicDraft": "أمسك باسبارتو بيد المرشد وصافحه بحرارة من شدة فرحته، وهو يهتف: «أيها المرشد، أنت أطيب الرجال!»"
+    },
+    {
+      "index": 17,
+      "en": "The pilot probably does not know to this day why his responses won him this enthusiastic greeting. He remounted the bridge, and guided the steamer through the flotilla of junks, tankas, and fishing boats which crowd the harbour of Hong Kong.",
+      "existingArabicDraft": "ولعل المرشد لا يعرف حتى اليوم لماذا نالت إجاباته منه ذلك الترحيب الحماسي. ثم عاد إلى الجسر وقاد الباخرة بين أسطول صغير من سفن الجنك والتانكا وقوارب الصيد التي تملأ ميناء هونغ كونغ."
+    },
+    {
+      "index": 18,
+      "en": "At one o’clock the Rangoon was at the quay, and the passengers were going ashore.",
+      "existingArabicDraft": "عند الساعة الواحدة كانت رانغون قد وصلت إلى رصيف الميناء، وبدأ الركاب النزول إلى البر."
+    },
+    {
+      "index": 19,
+      "en": "Chance had strangely favoured Phileas Fogg, for had not the Carnatic been forced to lie over for repairing her boilers, she would have left on the 6th of November, and the passengers for Japan would have been obliged to await for a week the sailing of the next steamer. Mr. Fogg was, it is true, twenty-four hours behind his time; but this could not seriously imperil the remainder of his tour.",
+      "existingArabicDraft": "لقد حالف الحظ فيلياس فوغ على نحو غريب؛ فلولا اضطرار كارناتيك إلى التوقف لإصلاح غلاياتها، لغادرت في السادس من نوفمبر، ولاضطر المسافرون المتجهون إلى اليابان إلى انتظار أسبوع حتى تبحر الباخرة التالية. صحيح أن السيد فوغ كان متأخرًا أربعًا وعشرين ساعة عن موعده، لكن ذلك لم يكن ليعرّض بقية جولته للخطر على نحو خطير."
+    },
+    {
+      "index": 20,
+      "en": "The steamer which crossed the Pacific from Yokohama to San Francisco made a direct connection with that from Hong Kong, and it could not sail until the latter reached Yokohama; and if Mr. Fogg was twenty-four hours late on reaching Yokohama, this time would no doubt be easily regained in the voyage of twenty-two days across the Pacific. He found himself, then, about twenty-four hours behindhand, thirty-five days after leaving London.",
+      "existingArabicDraft": "كانت الباخرة التي تعبر المحيط الهادئ من يوكوهاما إلى سان فرانسيسكو ترتبط مباشرة بالباخرة القادمة من هونغ كونغ، ولم يكن بوسعها الإبحار قبل وصول الأخيرة إلى يوكوهاما. وحتى لو وصل السيد فوغ إلى يوكوهاما متأخرًا أربعًا وعشرين ساعة، فمن المرجح أن يعوّض هذا التأخير بسهولة خلال الرحلة التي تستغرق اثنين وعشرين يومًا عبر المحيط الهادئ. وهكذا وجد نفسه متأخرًا نحو أربع وعشرين ساعة، بعد خمسة وثلاثين يومًا من مغادرته لندن."
+    },
+    {
+      "index": 21,
+      "en": "The Carnatic was announced to leave Hong Kong at five the next morning. Mr. Fogg had sixteen hours in which to attend to his business there, which was to deposit Aouda safely with her wealthy relative.",
+      "existingArabicDraft": "أُعلن أن كارناتيك ستغادر هونغ كونغ في الخامسة من صباح اليوم التالي. وكان أمام السيد فوغ ست عشرة ساعة لإنجاز ما جاء من أجله إلى المدينة: أن يضع أودا بأمان في رعاية قريبها الثري."
+    },
+    {
+      "index": 22,
+      "en": "On landing, he conducted her to a palanquin, in which they repaired to the Club Hotel. A room was engaged for the young woman, and Mr. Fogg, after seeing that she wanted for nothing, set out in search of her cousin Jeejeeh. He instructed Passepartout to remain at the hotel until his return, that Aouda might not be left entirely alone.",
+      "existingArabicDraft": "عند نزولهما إلى البر، اصطحبها إلى محمل نقلاهما به إلى فندق النادي. وحُجزت غرفة للشابة، وبعد أن تأكد السيد فوغ من أنها لا تحتاج إلى شيء، انطلق يبحث عن ابن عمها جيجيه. وطلب من باسبارتو البقاء في الفندق حتى يعود، كيلا تُترك أودا وحدها تمامًا."
+    },
+    {
+      "index": 23,
+      "en": "Mr. Fogg repaired to the Exchange, where, he did not doubt, everyone would know so wealthy and considerable a personage as the Parsee merchant. Meeting a broker, he made the inquiry, to learn that Jeejeeh had left China two years before, and, retiring from business with an immense fortune, had taken up his residence in Europe—in Holland the broker thought, with the merchants of which country he had principally traded. Phileas Fogg returned to the hotel, begged a moment’s conversation with Aouda, and without more ado, apprised her that Jeejeeh was no longer at Hong Kong, but probably in Holland.",
+      "existingArabicDraft": "توجه السيد فوغ إلى البورصة، واثقًا أن الجميع سيعرفون تاجر البارسيين ذا الثراء والنفوذ. والتقى وسيطًا وسأله عنه، فعلم أن جيجيه غادر الصين قبل عامين، وأنه اعتزل التجارة بثروة هائلة وانتقل للإقامة في أوروبا؛ وربما في هولندا، بحسب ظن الوسيط، لكثرة تعاملاته التجارية مع تجار ذلك البلد. عاد فيلياس فوغ إلى الفندق وطلب التحدث إلى أودا قليلًا، ثم أخبرها مباشرة أن جيجيه لم يعد في هونغ كونغ، وأنه على الأرجح في هولندا."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "أمسك باسبارتو بيد المرشد وصافحه بحرارة من شدة فرحته، وهو يهتف: «أيها المرشد، أنت أطيب الرجال!»"
+    },
+    {
+      "index": 1,
+      "ar": "ولعل المرشد لا يعرف حتى اليوم لماذا نالت إجاباته منه ذلك الترحيب الحماسي. ثم عاد إلى الجسر وقاد الباخرة بين أسطول صغير من سفن الجنك والتانكا وقوارب الصيد التي تملأ ميناء هونغ كونغ."
+    },
+    {
+      "index": 2,
+      "ar": "وعند الساعة الواحدة كانت رانغون قد وصلت إلى رصيف الميناء، وبدأ الركاب النزول إلى البر."
+    },
+    {
+      "index": 3,
+      "ar": "لقد حالف الحظ فيلياس فوغ على نحو غريب؛ فلولا اضطرار كارناتيك إلى التوقف لإصلاح غلاياتها، لغادرت في السادس من نوفمبر، ولاضطر المسافرون المتجهون إلى اليابان إلى انتظار أسبوع حتى تبحر الباخرة التالية. صحيح أن السيد فوغ كان متأخرًا أربعًا وعشرين ساعة عن موعده، لكن ذلك لم يكن ليعرّض بقية جولته للخطر على نحو خطير."
+    },
+    {
+      "index": 4,
+      "ar": "كانت الباخرة التي تعبر المحيط الهادئ من يوكوهاما إلى سان فرانسيسكو ترتبط مباشرة بالباخرة القادمة من هونغ كونغ، ولم يكن بوسعها الإبحار قبل وصول الأخيرة إلى يوكوهاما؛ وحتى لو وصل السيد فوغ إلى يوكوهاما متأخرًا أربعًا وعشرين ساعة، فمن المرجح أن يعوّض هذا التأخير بسهولة خلال الرحلة التي تستغرق اثنين وعشرين يومًا عبر المحيط الهادئ. وهكذا وجد نفسه متأخرًا نحو أربع وعشرين ساعة، بعد خمسة وثلاثين يومًا من مغادرته لندن."
+    },
+    {
+      "index": 5,
+      "ar": "أُعلن أن كارناتيك ستغادر هونغ كونغ في الخامسة من صباح اليوم التالي. وكان أمام السيد فوغ ست عشرة ساعة لإنجاز أعماله هناك، والتي تمثلت في إيصال أودا بأمان إلى قريبها الثري."
+    },
+    {
+      "index": 6,
+      "ar": "عند نزولهما إلى البر، اصطحبها إلى محمل نقلتهما إلى فندق النادي. وحُجزت غرفة للشابة، وبعد أن تأكد السيد فوغ من أنها لا تحتاج إلى شيء، انطلق يبحث عن قريبها جيجيه. وأوعز إلى باسبارتو بالبقاء في الفندق حتى عودته، كيلا تُترك أودا وحدها تمامًا."
+    },
+    {
+      "index": 7,
+      "ar": "توجه السيد فوغ إلى البورصة، واثقًا من أن الجميع سيعرفون شخصية بثراء وأهمية التاجر البارسي. والتقى وسيطًا واستفسر منه، فعلم أن جيجيه قد غادر الصين قبل عامين، وأنه بعد اعتزاله التجارة بثروة طائلة استقر في أوروبا؛ وكان الوسيط يرجح أنه في هولندا، نظراً لتعامله التجاري الرئيسي مع تجار ذلك البلد. عاد فيلياس فوغ إلى الفندق، وطلب إجراء حديث قصير مع أودا، ومن دون إبطاء، أخبرها بأن جيجيه لم يعد في هونغ كونغ، بل لعله في هولندا."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
