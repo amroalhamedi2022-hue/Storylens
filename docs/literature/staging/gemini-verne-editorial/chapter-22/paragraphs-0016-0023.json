@@ -1,0 +1,158 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 22,
+  "chapterTitle": "In which Passepartout finds out that, even at the antipodes, it is convenient to have some money in one’s pocket.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "4920edd0fd3f1829e809034aa219deffa8f1c7831d837a86f70ed4c598dff930",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "Passepartout had for an instant feared that he was on the wrong boat; but, though he was really on the Carnatic, his master was not there.",
+      "existingArabicDraft": "خشِي باسبارتو للحظة أن يكون على متن سفينة أخرى؛ لكنه، رغم وجوده فعلًا على كارنيتيك، أدرك أن سيده ليس على متنها."
+    },
+    {
+      "index": 17,
+      "en": "He fell thunderstruck on a seat. He saw it all now. He remembered that the time of sailing had been changed, that he should have informed his master of that fact, and that he had not done so. It was his fault, then, that Mr. Fogg and Aouda had missed the steamer. Yes, but it was still more the fault of the traitor who, in order to separate him from his master, and detain the latter at Hong Kong, had inveigled him into getting drunk! He now saw the detective’s trick; and at this moment Mr. Fogg was certainly ruined, his bet was lost, and he himself perhaps arrested and imprisoned! At this thought Passepartout tore his hair. Ah, if Fix ever came within his reach, what a settling of accounts there would be!",
+      "existingArabicDraft": "هوى على المقعد مذهولًا. الآن فهم كل شيء. تذكر أن موعد الإبحار قد تغير، وأنه كان يجب أن يبلغ سيده بذلك، لكنه لم يفعل. إذن كان هو السبب في فوات الباخرة على السيد فوغ وأودا. نعم، لكن الذنب الأكبر يقع على عاتق الخائن الذي خدعه ودفعه إلى السكر ليعزله عن سيده ويُبقي الأخير في هونغ كونغ! لقد أدرك حيلة المحقق؛ وفي تلك اللحظة، تخيل أن السيد فوغ قد خسر كل شيء، وأن رهانه ضاع، وأنه هو نفسه قد يُقبض عليه ويُسجن. مزق شعره من شدة اليأس. آه، لو وقع فيكس بين يديه، لحان وقت تصفية الحساب!"
+    },
+    {
+      "index": 18,
+      "en": "After his first depression, Passepartout became calmer, and began to study his situation. It was certainly not an enviable one. He found himself on the way to Japan, and what should he do when he got there? His pocket was empty; he had not a solitary shilling, not so much as a penny. His passage had fortunately been paid for in advance; and he had five or six days in which to decide upon his future course. He fell to at meals with an appetite, and ate for Mr. Fogg, Aouda, and himself. He helped himself as generously as if Japan were a desert, where nothing to eat was to be looked for.",
+      "existingArabicDraft": "بعد انكساره الأول، استعاد باسبارتو هدوءه وبدأ يدرس موقفه. لم يكن موقفًا يُحسد عليه. فقد وجد نفسه في طريقه إلى اليابان، ولا يعرف ماذا سيفعل عند وصوله. كانت جيوبه خاوية، لا يملك شلنًا واحدًا، بل ولا فلسًا. ولحسن الحظ كانت أجرة السفر مدفوعة سلفًا، وبقي لديه خمسة أو ستة أيام ليقرر خطوته التالية. أما في الوجبات، فقد أقبل على الطعام بشهية، وأكل نيابة عن السيد فوغ وأودا وعن نفسه، وكأن اليابان صحراء لا يُعثر فيها على ما يؤكل."
+    },
+    {
+      "index": 19,
+      "en": "At dawn on the 13th the Carnatic entered the port of Yokohama. This is an important port of call in the Pacific, where all the mail-steamers, and those carrying travellers between North America, China, Japan, and the Oriental islands put in. It is situated in the bay of Edo, and at but a short distance from that second capital of the Japanese Empire, and the residence of the Tycoon, the civil Emperor, before the Mikado, the spiritual Emperor, absorbed his office in his own. The Carnatic anchored at the quay near the customhouse, in the midst of a crowd of ships bearing the flags of all nations.",
+      "existingArabicDraft": "عند فجر الثالث عشر من نوفمبر، دخلت كارنيتيك ميناء يوكوهاما. كان الميناء محطة مهمة لسفن البريد والسفن التي تنقل المسافرين بين أمريكا الشمالية والصين واليابان وجزر الشرق. ويقع في خليج إيدو، على مسافة قصيرة من تلك العاصمة الثانية للإمبراطورية اليابانية، حيث كان يقيم التايكون، الإمبراطور المدني، قبل أن يستأثر الميكادو، الإمبراطور الروحي، بمنصبه. ورست كارنيتيك عند الرصيف قرب مبنى الجمارك، وسط حشد من السفن التي ترفع أعلام أمم مختلفة."
+    },
+    {
+      "index": 20,
+      "en": "Passepartout went timidly ashore on this so curious territory of the Sons of the Sun. He had nothing better to do than, taking chance for his guide, to wander aimlessly through the streets of Yokohama. He found himself at first in a thoroughly European quarter, the houses having low fronts, and being adorned with verandas, beneath which he caught glimpses of neat peristyles. This quarter occupied, with its streets, squares, docks, and warehouses, all the space between the “promontory of the Treaty” and the river. Here, as at Hong Kong and Calcutta, were mixed crowds of all races—Americans and English, Chinamen and Dutchmen, mostly merchants ready to buy or sell anything. The Frenchman felt himself as much alone among them as if he had dropped down in the midst of Hottentots.",
+      "existingArabicDraft": "نزل باسبارتو إلى البر بحذر في هذه الأرض الغريبة التي يسميها أهلها أرض أبناء الشمس. ولم يجد ما يفعله سوى أن يترك المصادفة تقوده ويتجول بلا هدف في شوارع يوكوهاما. وجد نفسه أولًا في حي أوروبي الطابع، ببيوت منخفضة الواجهات وشرفات تطل من تحتها أروقة أنيقة. وكان الحي، بشوارعه وساحاته وأحواضه ومستودعاته، يشغل المساحة بين «رأس المعاهدة» والنهر. وكما في هونغ كونغ وكلكتا، اختلطت فيه جموع من أعراق شتى: أمريكيون وإنجليز وصينيون وهولنديون، ومعظمهم تجار مستعدون لشراء أي شيء أو بيعه. وشعر الفرنسي بينهم بالوحدة كما لو أُلقي في وسط قوم لا يعرفهم."
+    },
+    {
+      "index": 21,
+      "en": "He had, at least, one resource—to call on the French and English consuls at Yokohama for assistance. But he shrank from telling the story of his adventures, intimately connected as it was with that of his master; and, before doing so, he determined to exhaust all other means of aid. As chance did not favour him in the European quarter, he penetrated that inhabited by the native Japanese, determined, if necessary, to push on to Edo.",
+      "existingArabicDraft": "كان لديه، على الأقل، حل واحد: أن يطلب المساعدة من القنصلين الفرنسي والإنجليزي في يوكوهاما. لكنه تردد في سرد مغامراته، لأنها متشابكة تمامًا مع مغامرات سيده؛ لذلك قرر أن يستنفد سبل المساعدة الأخرى قبل اللجوء إليهما. ولما لم يحالفه الحظ في الحي الأوروبي، دخل الحي الياباني، مصممًا على مواصلة طريقه إلى إيدو إذا اضطر."
+    },
+    {
+      "index": 22,
+      "en": "The Japanese quarter of Yokohama is called Benten, after the goddess of the sea, who is worshipped on the islands round about. There Passepartout beheld beautiful fir and cedar groves, sacred gates of a singular architecture, bridges half hid in the midst of bamboos and reeds, temples shaded by immense cedar-trees, holy retreats where were sheltered Buddhist priests and sectaries of Confucius, and interminable streets, where a perfect harvest of rose-tinted and red-cheeked children, who looked as if they had been cut out of Japanese screens, and who were playing in the midst of short-legged poodles and yellowish cats, might have been gathered.",
+      "existingArabicDraft": "يُسمى الحي الياباني في يوكوهاما «بينتن»، نسبة إلى إلهة البحر التي يعبدها سكان الجزر المجاورة. وهناك شاهد باسبارتو بساتين جميلة من أشجار التنوب والأرز، وبوابات مقدسة ذات طراز معماري غريب، وجسورًا تختبئ جزئيًا بين الخيزران والقصب، ومعابد تظللها أشجار أرز هائلة، وخلوات مقدسة تؤوي الرهبان البوذيين وأتباع كونفوشيوس، وشوارع لا تكاد تنتهي، تزخر بأطفال خدودهم وردية ووجوههم مشرقة، كأنهم قصاصات من شاشات يابانية، يلعبون بين كلاب صغيرة قصيرة الأرجل وقطط مصفرة."
+    },
+    {
+      "index": 23,
+      "en": "The streets were crowded with people. Priests were passing in processions, beating their dreary tambourines; police and customhouse officers with pointed hats encrusted with lac and carrying two sabres hung to their waists; soldiers, clad in blue cotton with white stripes, and bearing guns; the Mikado’s guards, enveloped in silken doubles, hauberks and coats of mail; and numbers of military folk of all ranks—for the military profession is as much respected in Japan as it is despised in China—went hither and thither in groups and pairs. Passepartout saw, too, begging friars, long-robed pilgrims, and simple civilians, with their warped and jet-black hair, big heads, long busts, slender legs, short stature, and complexions varying from copper-colour to a dead white, but never yellow, like the Chinese, from whom the Japanese widely differ. He did not fail to observe the curious equipages—carriages and palanquins, barrows supplied with sails, and litters made of bamboo; nor the women—whom he thought not especially handsome—who took little steps with their little feet, whereon they wore canvas shoes, straw sandals, and clogs of worked wood, and who displayed tight-looking eyes, flat chests, teeth fashionably blackened, and gowns crossed with silken scarfs, tied in an enormous knot behind an ornament which the modern Parisian ladies seem to have borrowed from the dames of Japan.",
+      "existingArabicDraft": "كانت الشوارع مكتظة بالناس: كهنة يسيرون في مواكب ويقرعون دفوفًا كئيبة؛ وشرطة وموظفو جمارك بقبعات مدببة مطعمة باللك، تتدلى من أحزمتهم سيوف؛ وجنود يرتدون قطنًا أزرق مخططًا بالأبيض ويحملون البنادق؛ وحرس الميكادو في ثياب حريرية ودروع ومعاطف معدنية؛ وعسكريون من رتب شتى يتحركون في جماعات وأزواج، إذ تحظى المهنة العسكرية في اليابان باحترام كبير، على خلاف الصين. كما رأى رهبانًا متسولين وحجاجًا بثياب طويلة ومدنيين بوجوه وهيئات متباينة. ولم تفته المركبات الغريبة: عربات ومحفات، وعربات يد مزودة بأشرعة، وهوادج من الخيزران. ورأى النساء أيضًا، ولم يجدهن جميلات على نحو خاص، ولاحظ خطواتهن الصغيرة وأحذيتهن القماشية ونعالهن القشية وأحذيتهن الخشبية المزخرفة، وعيونهن الضيقة وأسنانهن المصبوغة بالأسود وثيابهن المشدودة بأوشحة حريرية تعقد خلفها عقدة ضخمة، وهي زينة رأى أن سيدات باريس الحديثات اقتبسنها من نساء اليابان."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "خشِي باسبارتو للحظة أن يكون على متن سفينة أخرى؛ لكنه، رغم وجوده فعلًا على كارنيتيك، أدرك أن سيده ليس على متنها."
+    },
+    {
+      "index": 1,
+      "ar": "هوى على المقعد مذهولًا. الآن فهم كل شيء. تذكر أن موعد الإبحار قد تغير، وأنه كان يجب أن يُبلغ سيده بذلك، لكنه لم يفعل. إذن كان هو السبب في فوات الباخرة على السيد فوغ وأودا. نعم، لكن الذنب الأكبر يقع على عاتق الخائن الذي خدعه ودفعه إلى السكر ليعزله عن سيده ويُبقي الأخير في هونغ كونغ! لقد أدرك حيلة المحقق؛ وفي تلك اللحظة، تخيل أن السيد فوغ قد خسر كل شيء، وأن رهانه ضاع، وأنه هو نفسه قد يُقبض عليه ويُسجن. مزق شعره من شدة اليأس. آه، لو وقع فيكس بين يديه، لحان وقت تصفية الحساب!"
+    },
+    {
+      "index": 2,
+      "ar": "بعد انكساره الأول، استعاد باسبارتو هدوءه وبدأ يدرس موقفه. لم يكن موقفًا يُحسد عليه. فقد وجد نفسه في طريقه إلى اليابان، ولا يعرف ماذا سيفعل عند وصوله. كانت جيوبه خاوية، لا يملك شلنًا واحدًا، بل ولا فلسًا. ولحسن الحظ كانت أجرة السفر مدفوعة سلفًا، وبقي لديه خمسة أو ستة أيام ليقرر خطوته التالية. أما في الوجبات، فقد أقبل على الطعام بشهية، وأكل نيابة عن السيد فوغ وأودا وعن نفسه، وكأن اليابان صحراء لا يُعثر فيها على ما يؤكل."
+    },
+    {
+      "index": 3,
+      "ar": "عند فجر الثالث عشر من نوفمبر، دخلت كارنيتيك ميناء يوكوهاما. كان الميناء محطة مهمة لسفن البريد والسفن التي تنقل المسافرين بين أمريكا الشمالية والصين واليابان وجزر الشرق. ويقع في خليج إيدو، على مسافة قصيرة من تلك العاصمة الثانية للإمبراطورية اليابانية، حيث كان يقيم التايكون، الإمبراطور المدني، قبل أن يستأثر الميكادو، الإمبراطور الروحي، بمنصبه. ورست كارنيتيك عند الرصيف قرب مبنى الجمارك، وسط حشد من السفن التي ترفع أعلام أمم مختلفة."
+    },
+    {
+      "index": 4,
+      "ar": "نزل باسبارتو إلى البر بحذر في هذه الأرض الغريبة التي يسميها أهلها أرض أبناء الشمس. ولم يجد ما يفعله سوى أن يترك المصادفة تقوده ويتجول بلا هدف في شوارع يوكوهاما. وجد نفسه أولًا في حي أوروبي الطابع، ببيوت منخفضة الواجهات وشرفات تطل من تحتها أروقة أنيقة. وكان الحي، بشوارعه وساحاته وأحواضه ومستودعاته، يشغل المساحة بين «رأس المعاهدة» والنهر. وكما في هونغ كونغ وكلكتا، اختلطت فيه جموع من أعراق شتى: أمريكيون وإنجليز وصينيون وهولنديون، ومعظمهم تجار مستعدون لشراء أي شيء أو بيعه. وشعر الفرنسي بينهم بالوحدة كما لو أُلقي في وسط قوم لا يعرفهم."
+    },
+    {
+      "index": 5,
+      "ar": "كان لديه، على الأقل، حل واحد: أن يطلب المساعدة من القنصلين الفرنسي والإنجليزي في يوكوهاما. لكنه تردد في سرد مغامراته، لأنها متشابكة تمامًا مع مغامرات سيده؛ لذلك قرر أن يستنفد سبل المساعدة الأخرى قبل اللجوء إليهما. ولما لم يحالفه الحظ في الحي الأوروبي، دخل الحي الياباني، مصممًا على مواصلة طريقه إلى إيدو إذا اضطر."
+    },
+    {
+      "index": 6,
+      "ar": "يُسمى الحي الياباني في يوكوهاما «بينتن»، نسبة إلى إلهة البحر التي يعبدها سكان الجزر المجاورة. وهناك شاهد باسبارتو بساتين جميلة من أشجار التنوب والأرز، وبوابات مقدسة ذات طراز معماري غريب، وجسورًا تختبئ جزئيًا بين الخيزران والقصب، ومعابد تظللها أشجار أرز هائلة، وخلوات مقدسة تؤوي الرهبان البوذيين وأتباع كونفوشيوس، وشوارع لا تكاد تنتهي، تزخر بأطفال خدودهم وردية ووجوههم مشرقة، كأنهم قصاصات من شاشات يابانية، يلعبون بين كلاب صغيرة قصيرة الأرجل وقطط مصفرة."
+    },
+    {
+      "index": 7,
+      "ar": "كانت الشوارع مكتظة بالناس: كهنة يسيرون في مواكب ويقرعون دفوفًا كئيبة؛ وشرطة وموظفو جمارك بقبعات مدببة مطعمة باللك، تتدلى من أحزمتهم سيوف؛ وجنود يرتدون قطنًا أزرق مخططًا بالأبيض ويحملون البنادق؛ وحرس الميكادو في ثياب حريرية ودروع ومعاطف معدنية؛ وعسكريون من رتب شتى يتحركون في جماعات وأزواج، إذ تحظى المهنة العسكرية في اليابان باحترام كبير، على خلاف الصين. كما رأى رهبانًا متسولين وحجاجًا بثياب طويلة ومدنيين بوجوه وهيئات متباينة. ولم تفته المركبات الغريبة: عربات ومحفات، وعربات يد مزودة بأشرعة، وهوادج من الخيزران. ورأى النساء أيضًا، ولم يجدهن جميلات على نحو خاص، ولاحظ خطواتهن الصغيرة وأحذيتهن القماشية ونعالهن القشية وأحذيتهن الخشبية المزخرفة، وعيونهن الضيقة وأسنانهن المصبوغة بالأسود وثيابهن المشدودة بأوشحة حريرية تعقد خلفها عقدة ضخمة، وهي زينة رأى أن سيدات باريس الحديثات اقتبسنها من نساء اليابان."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

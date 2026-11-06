@@ -1,0 +1,143 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 21,
+  "chapterTitle": "In which the master of the Tankadere runs great risk of losing a reward of two hundred pounds.",
+  "startParagraphZeroBased": 48,
+  "paragraphCount": 7,
+  "sourceSha256": "a6d334d293573062833479c7240b96b1a7fbb9f9ee0d660a12e1d2878ae1c7e2",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 48,
+      "en": "The wind grew decidedly calmer, and happily the sea fell with it. All sails were now hoisted, and at noon the Tankadere was within forty-five miles of Shanghai. There remained yet six hours in which to accomplish that distance. All on board feared that it could not be done, and everyone—Phileas Fogg, no doubt, excepted—felt his heart beat with impatience. The boat must keep up an average of nine miles an hour, and the wind was becoming calmer every moment! It was a capricious breeze, coming from the coast, and after it passed the sea became smooth. Still, the Tankadere was so light, and her fine sails caught the fickle zephyrs so well, that, with the aid of the currents John Bunsby found himself at six o’clock not more than ten miles from the mouth of Shanghai River. Shanghai itself is situated at least twelve miles up the stream. At seven they were still three miles from Shanghai. The pilot swore an angry oath; the reward of two hundred pounds was evidently on the point of escaping him. He looked at Mr. Fogg. Mr. Fogg was perfectly tranquil; and yet his whole fortune was at this moment at stake.",
+      "existingArabicDraft": "هدأت الريح أكثر، وانخفض اضطراب البحر معها. رُفعت الأشرعة كلها، وبحلول الظهر لم يبقَ بين «تانكادير» وشنغهاي سوى خمسة وأربعين ميلًا، وكان أمامهم ست ساعات. خشي الجميع أنهم لن يقطعوا المسافة، باستثناء فوغ الذي بقي هادئًا. وكان عليهم الحفاظ على متوسط تسعة أميال في الساعة، فيما كانت الريح تضعف لحظة بعد أخرى. ثم ساعدهم نسيم متقلب قادم من الساحل والتيارات البحرية؛ وعند السادسة لم يبقَ بينهم وبين مصب نهر شنغهاي سوى عشرة أميال، مع أن المدينة تبعد اثني عشر ميلًا داخل النهر. وعند السابعة كانوا على بعد ثلاثة أميال، فأطلق القائد شتيمة غاضبة؛ فقد بدت مكافأة المئتي جنيه على وشك الضياع. ونظر إلى فوغ، فوجده ساكنًا تمامًا، مع أن ثروته كلها كانت على المحك."
+    },
+    {
+      "index": 49,
+      "en": "At this moment, also, a long black funnel, crowned with wreaths of smoke, appeared on the edge of the waters. It was the American steamer, leaving for Yokohama at the appointed time.",
+      "existingArabicDraft": "في تلك اللحظة ظهر عند حافة المياه مدخن أسود طويل تتوجّه سحب الدخان. كانت تلك السفينة الأمريكية التي ستغادر إلى يوكوهاما في الموعد المحدد."
+    },
+    {
+      "index": 50,
+      "en": "“Confound her!” cried John Bunsby, pushing back the rudder with a desperate jerk.",
+      "existingArabicDraft": "صاح جون بنسبي وهو يدير الدفة بعنف: «تبًا لها!»"
+    },
+    {
+      "index": 51,
+      "en": "“Signal her!” said Phileas Fogg quietly.",
+      "existingArabicDraft": "قال فوغ بهدوء: «أرسلوا إشارة إليها!»"
+    },
+    {
+      "index": 52,
+      "en": "A small brass cannon stood on the forward deck of the Tankadere, for making signals in the fogs. It was loaded to the muzzle; but just as the pilot was about to apply a red-hot coal to the touchhole, Mr. Fogg said, “Hoist your flag!”",
+      "existingArabicDraft": "كان على مقدمة «تانكادير» مدفع نحاسي صغير لإطلاق الإشارات في الضباب. وكان محشوًا حتى فوهته، لكن قبل أن يضع القائد جمرة متوهجة في فتيل الإشعال، قال فوغ: «ارفعوا العلم!»"
+    },
+    {
+      "index": 53,
+      "en": "The flag was run up at half-mast, and, this being the signal of distress, it was hoped that the American steamer, perceiving it, would change her course a little, so as to succour the pilot-boat.",
+      "existingArabicDraft": "رُفع العلم إلى نصف السارية، وهي إشارة استغاثة، على أمل أن تراه السفينة الأمريكية فتغيّر مسارها قليلًا لمساعدة قارب الإرشاد."
+    },
+    {
+      "index": 54,
+      "en": "“Fire!” said Mr. Fogg. And the booming of the little cannon resounded in the air.",
+      "existingArabicDraft": "قال فوغ: «أطلقوا!» فدوّى صوت المدفع الصغير في الهواء."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "هدأت الريح بصورة واضحة، وانخفض اضطراب البحر بسعادة معها. رُفعت جميع الأشرعة الآن، وفي الظهيرة كانت السفينة «تانكادير» على بعد خمسة وأربعين ميلًا فقط من شنغهاي. ولم يتبقَ سوى ست ساعات لإنجاز تلك المسافة. كان الجميع على متن السفينة يخشون ألا يُنجز ذلك، وشعر كل شخص -باستثناء فيلياس فوغ بلا شك- بنبض قلبه من جراء نفاد الصبر. وكان يجب على القارب الحفاظ على متوسط تسع أميال في الساعة، بينما كانت الريح تزداد هدوءًا في كل لحظة! لقد كان نسيمًا متقلبًا قادمًا من الساحل، وبعد مروره أصبح البحر هادئًا. ومع ذلك، كانت «تانكادير» خفيفة للغاية، وكانت أشرعتها الجميلة تلتقط تلك النسائم المتقلبة ببراعة شديدة، لدرجة أنه بمساعدة التيارات وجد جون بنسبي نفسه في تمام الساعة السادسة على مسافة لا تزيد عن عشرة أميال من مصب نهر شنغهاي. وتقع شنغهاي نفسها على مسافة لا تقل عن اثني عشر ميلًا في مجرى النهر. وفي تمام الساعة السابعة، كانوا ما زالوا على بعد ثلاثة أميال من شنغهاي. وأطلق الملاح شتيمة غاضبة؛ إذ كان من الواضح أن مكافأة المئتي جنيه على وشك الإفلات من بين يديه. ونظر إلى السيد فوغ. وكان السيد فوغ هادئًا تمامًا؛ ومع ذلك كانت ثروته بأكملها على المحك في هذه اللحظة."
+    },
+    {
+      "index": 1,
+      "ar": "وفي هذه اللحظة أيضًا، ظهر مدخن أسود طويل، تتوجّه أكاليل من الدخان، على حافة المياه. وكانت تلك هي الباخرة الأمريكية المغادرة إلى يوكوهاما في الوقت المحدد."
+    },
+    {
+      "index": 2,
+      "ar": "صاح جون بنسبي قائلًا: «تبًا لها!» وهو يدفع الدفة إلى الخلف بحركة يائسة."
+    },
+    {
+      "index": 3,
+      "ar": "قال فيلياس فوغ بهدوء: «أشِرْ لها!»"
+    },
+    {
+      "index": 4,
+      "ar": "كان هناك مدفع نحاسي صغير على السطح الأمامي للسفينة «تانكادير» لإطلاق الإشارات في الضباب. وكان محشوًا حتى فوهته، ولكن تمامًا عندما كان الملاح على وشك وضع جمرة حمراء متوهجة على ثقب الإشعال، قال السيد فوغ: «ارفعوا علمكم!»"
+    },
+    {
+      "index": 5,
+      "ar": "رُفع العلم إلى نصف السارية، ونظرًا لكون هذه إشارة استغاثة، فقد كان يُملى الأمل في أن الباخرة الأمريكية، عندما تلاحظها، ستغير مسارها قليلًا لكي تُغيث قارب الإرشاد."
+    },
+    {
+      "index": 6,
+      "ar": "قال السيد فوغ: «أطلقوا النار!» وتردد صدى صوت المدفع الصغير في الهواء."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "خطأ ترجمة في الكلمة الأولى حيث ترجمت funnel إلى مدخن بدلاً من مدخنة بخارية."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

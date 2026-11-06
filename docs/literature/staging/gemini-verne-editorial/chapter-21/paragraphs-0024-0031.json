@@ -1,0 +1,157 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 21,
+  "chapterTitle": "In which the master of the Tankadere runs great risk of losing a reward of two hundred pounds.",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 8,
+  "sourceSha256": "d73d194421bf9dba45b61d80ff53d6431442829fb14dfade19e2f029f40ecd2a",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "At daybreak the wind began to blow hard again, and the heavens seemed to predict a gale. The barometer announced a speedy change, the mercury rising and falling capriciously; the sea also, in the southeast, raised long surges which indicated a tempest. The sun had set the evening before in a red mist, in the midst of the phosphorescent scintillations of the ocean.",
+      "existingArabicDraft": "عند الفجر، اشتدت الرياح من جديد وبدا أن السماء تنذر بعاصفة. وأعلن البارومتر تغيرًا وشيكًا، إذ أخذ الزئبق يرتفع وينخفض على نحو متقلب. كما ارتفعت أمواج طويلة في الجنوب الشرقي تنذر بعاصفة هوجاء. وكان غروب الشمس في المساء السابق قد جاء وسط ضباب أحمر وبريق فسفوري متلألئ فوق المحيط."
+    },
+    {
+      "index": 25,
+      "en": "John Bunsby long examined the threatening aspect of the heavens, muttering indistinctly between his teeth. At last he said in a low voice to Mr. Fogg, “Shall I speak out to your honour?”",
+      "existingArabicDraft": "ظل جون بنسبي يحدق في السماء المهددة، ويتمتم بين أسنانه. ثم قال أخيرًا بصوت خافت لفوغ: «هل تسمح لي أن أقول ما عندي بصراحة يا سيدي؟»"
+    },
+    {
+      "index": 26,
+      "en": "“Of course.”",
+      "existingArabicDraft": "«بالطبع»."
+    },
+    {
+      "index": 27,
+      "en": "“Well, we are going to have a squall.”",
+      "existingArabicDraft": "«سنواجه زوبعة قوية»."
+    },
+    {
+      "index": 28,
+      "en": "“Is the wind north or south?” asked Mr. Fogg quietly.",
+      "existingArabicDraft": "سأل فوغ بهدوء: «هل تأتي الريح من الشمال أم الجنوب؟»"
+    },
+    {
+      "index": 29,
+      "en": "“South. Look! a typhoon is coming up.”",
+      "existingArabicDraft": "أجاب القائد: «من الجنوب. انظر! إعصار مداري قادم»."
+    },
+    {
+      "index": 30,
+      "en": "“Glad it’s a typhoon from the south, for it will carry us forward.”",
+      "existingArabicDraft": "قال فوغ: «يسرني أنه يأتي من الجنوب، لأنه سيدفعنا إلى الأمام»."
+    },
+    {
+      "index": 31,
+      "en": "“Oh, if you take it that way,” said John Bunsby, “I’ve nothing more to say.” John Bunsby’s suspicions were confirmed. At a less advanced season of the year the typhoon, according to a famous meteorologist, would have passed away like a luminous cascade of electric flame; but in the winter equinox it was to be feared that it would burst upon them with great violence.",
+      "existingArabicDraft": "قال جون بنسبي: «إذا كنت تنظر إلى الأمر بهذه الطريقة، فلا شيء آخر عندي أقوله». وقد تأكدت مخاوفه؛ فلو كان الوقت أبكر من هذا الموسم، لربما مر الإعصار كالشلال المضيء من اللهب الكهربائي، لكن في هذا الوقت كان يُخشى أن يضربهم بعنف شديد."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "عند الفجر، اشتدت الرياح من جديد وبدا أن السماء تنذر بعاصفة. وأعلن البارومتر عن تغير وشيك، إذ كان الزئبق يرتفع وينخفض بطريقة نزوية؛ كما رفعت البحر أيضاً، في الجهة الجنوبية الشرقية، أمواجاً طويلة تنذر بالعاصفة. وكانت الشمس قد غابت في المساء السابق وسط ضباب أحمر، وسط الوميض الفسفوري للمحيط."
+    },
+    {
+      "index": 1,
+      "ar": "أمعن جون بنسبي النظر طويلاً في المظهر المهدد للسماء، وهو يتمتم بكلام غير مفهوم بين أسنان، ثم قال أخيراً بصوت منخفض للسيد فوغ: \"هل أتكلم بصراحة يا حضرة النائب؟\""
+    },
+    {
+      "index": 2,
+      "ar": "\"بالطبع.\""
+    },
+    {
+      "index": 3,
+      "ar": "\"حسنًا، نحن مقبلون على عاصفة هوجاء.\""
+    },
+    {
+      "index": 4,
+      "ar": "\"أرياح شمالية أم جنوبية؟\" سأل السيد فوغ بهدوء."
+    },
+    {
+      "index": 5,
+      "ar": "\"جنوبية. انظر! إعصار مداري في طريقه إلينا.\""
+    },
+    {
+      "index": 6,
+      "ar": "\"يسرني أنه إعصار من الجنوب، لأنه سيدفعنا إلى الأمام.\""
+    },
+    {
+      "index": 7,
+      "ar": "\"آه، إذا كنت تنظر إلى الأمر هكذا\"، قال جون بنسبي، \"فليس لدي ما أقوله بعد ذلك.\" لقد تأكدت شكوك جون بنسبي. ففي وقت أبكر من السنة، كان الإعصار، وفقاً لعالم أرصاد شهير، سيمر كشلال مضيء من اللهب الكهربائي؛ ولكن في اعتدال الشتاء، كان يُخشى أن ينفجر عليهم بعنف شديد."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "تمت ترجمة لقب your honour بشكل غير دقيق إلى 'يا حضرة النائب' والصحيح 'يا سيدي' أو 'سعادتكم'."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

@@ -1,0 +1,158 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 22,
+  "chapterTitle": "In which Passepartout finds out that, even at the antipodes, it is convenient to have some money in one’s pocket.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "70808d34e4b8dcd22503200e653bb7530a1cc206166ef1fe63ca80f77f701352",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The Carnatic, setting sail from Hong Kong at half-past six on the 7th of November, directed her course at full steam towards Japan. She carried a large cargo and a well-filled cabin of passengers. Two staterooms in the rear were, however, unoccupied—those which had been engaged by Phileas Fogg.",
+      "existingArabicDraft": "أبحرت «كارنيتيك» من هونغ كونغ عند السادسة والنصف مساء يوم السابع من نوفمبر، واتجهت بأقصى سرعة نحو اليابان. كانت تحمل شحنة كبيرة ومقصورة عامرة بالمسافرين. غير أن حجرتين في مؤخرة السفينة ظلّتا خاليتين، وهما الحجرتان اللتان حجزهما فيلياس فوغ."
+    },
+    {
+      "index": 1,
+      "en": "The next day a passenger with a half-stupefied eye, staggering gait, and disordered hair, was seen to emerge from the second cabin, and to totter to a seat on deck.",
+      "existingArabicDraft": "وفي اليوم التالي، شوهد مسافر بعينين نصف غائبتين، وخطوات مترنحة، وشعر أشعث، يخرج من المقصورة الثانية ويتهادى حتى جلس على سطح السفينة."
+    },
+    {
+      "index": 2,
+      "en": "It was Passepartout; and what had happened to him was as follows: Shortly after Fix left the opium den, two waiters had lifted the unconscious Passepartout, and had carried him to the bed reserved for the smokers. Three hours later, pursued even in his dreams by a fixed idea, the poor fellow awoke, and struggled against the stupefying influence of the narcotic. The thought of a duty unfulfilled shook off his torpor, and he hurried from the abode of drunkenness. Staggering and holding himself up by keeping against the walls, falling down and creeping up again, and irresistibly impelled by a kind of instinct, he kept crying out, “The Carnatic! The Carnatic!”",
+      "existingArabicDraft": "كان ذلك باسبارتو، وهذه قصة ما حدث له: بعد وقت قصير من مغادرة فيكس وكر الأفيون، حمله نادلان فاقد الوعي إلى سرير مخصص للمدخنين. وبعد ثلاث ساعات، استيقظ المسكين وما زالت فكرة واحدة تطارده حتى في أحلامه، وراح يقاوم أثر المخدر الذي أثقل حواسه. لقد أيقظه تذكّره بواجب لم يؤدّه، فانتزع نفسه من خمولِه وأسرع يغادر ذلك المكان الذي غرق في السكر. كان يتعثر متشبثًا بالجدران، يسقط ثم ينهض زاحفًا، وكأن غريزة لا تقاوم تدفعه، وهو يكرر: «كارنيتيك! كارنيتيك!»"
+    },
+    {
+      "index": 3,
+      "en": "The steamer lay puffing alongside the quay, on the point of starting. Passepartout had but few steps to go; and, rushing upon the plank, he crossed it, and fell unconscious on the deck, just as the Carnatic was moving off. Several sailors, who were evidently accustomed to this sort of scene, carried the poor Frenchman down into the second cabin, and Passepartout did not wake until they were one hundred and fifty miles away from China. Thus he found himself the next morning on the deck of the Carnatic, and eagerly inhaling the exhilarating sea-breeze. The pure air sobered him. He began to collect his sense, which he found a difficult task; but at last he recalled the events of the evening before, Fix’s revelation, and the opium-house.",
+      "existingArabicDraft": "كانت الباخرة راسية بمحاذاة الرصيف، تصدر هدير محركاتها وتوشك على الإبحار. لم يكن يفصل باسبارتو عنها إلا خطوات قليلة؛ فاندفع فوق الممر الخشبي وعبره، ثم سقط فاقد الوعي على السطح في اللحظة التي بدأت فيها كارنيتيك تبتعد. حمله بحارة اعتادوا مثل هذه المشاهد إلى المقصورة الثانية، ولم يستفق الفرنسي إلا بعد أن ابتعدت السفينة مئة وخمسين ميلًا عن الصين. وهكذا وجد نفسه في صباح اليوم التالي على سطح كارنيتيك، يستنشق نسيم البحر المنعش بشغف. أعاده الهواء النقي إلى وعيه، وراح يحاول جمع أفكاره بصعوبة، حتى استعاد أخيرًا أحداث الليلة السابقة: كشف فيكس، وبيت الأفيون."
+    },
+    {
+      "index": 4,
+      "en": "“It is evident,” said he to himself, “that I have been abominably drunk! What will Mr. Fogg say? At least I have not missed the steamer, which is the most important thing.”",
+      "existingArabicDraft": "قال في نفسه: «من الواضح أنني سكرتُ سُكرًا فظيعًا! ماذا سيقول السيد فوغ؟ لكنني، على الأقل، لم أفوّت الباخرة، وهذا هو الأهم»."
+    },
+    {
+      "index": 5,
+      "en": "Then, as Fix occurred to him: “As for that rascal, I hope we are well rid of him, and that he has not dared, as he proposed, to follow us on board the Carnatic. A detective on the track of Mr. Fogg, accused of robbing the Bank of England! Pshaw! Mr. Fogg is no more a robber than I am a murderer.”",
+      "existingArabicDraft": "ثم تذكر فيكس فقال: «أما ذلك الوغد، فآمل أن نكون قد تخلصنا منه، وألا يكون قد تجرأ على اللحاق بنا كما هدد. محقق يلاحق السيد فوغ متهمًا إياه بسرقة بنك إنجلترا! يا للسخف! فوغ ليس لصًا أكثر مما أنا قاتل»."
+    },
+    {
+      "index": 6,
+      "en": "Should he divulge Fix’s real errand to his master? Would it do to tell the part the detective was playing? Would it not be better to wait until Mr. Fogg reached London again, and then impart to him that an agent of the metropolitan police had been following him round the world, and have a good laugh over it? No doubt; at least, it was worth considering. The first thing to do was to find Mr. Fogg, and apologise for his singular behaviour.",
+      "existingArabicDraft": "هل يكشف لسيده حقيقة مهمة فيكس؟ وهل يخبره بالدور الذي يؤديه المحقق؟ أليس الأفضل أن ينتظر حتى يعود السيد فوغ إلى لندن، ثم يروي له كيف ظل عميل من شرطة العاصمة يطارده حول العالم، ليضحكا معًا على الأمر؟ لا شك أن ذلك أفضل، أو يستحق التفكير على الأقل. لكن أول ما ينبغي فعله هو العثور على السيد فوغ والاعتذار له عن تصرفه الغريب."
+    },
+    {
+      "index": 7,
+      "en": "Passepartout got up and proceeded, as well as he could with the rolling of the steamer, to the afterdeck. He saw no one who resembled either his master or Aouda. “Good!” muttered he; “Aouda has not got up yet, and Mr. Fogg has probably found some partners at whist.”",
+      "existingArabicDraft": "نهض باسبارتو، وسار بما استطاع مع تمايل الباخرة نحو السطح الخلفي. لم يرَ أحدًا يشبه سيده أو أودا. فتمتم: «حسنًا! لا بد أن أودا لم تستيقظ بعد، ولعل السيد فوغ وجد شركاء للعب الوِست»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "أبحرت «كارنيتيك» من هونغ كونغ عند السادسة والنصف مساء يوم السابع من نوفمبر، واتجهت بأقصى سرعة نحو اليابان. كانت تحمل شحنة كبيرة ومقصورة عامرة بالمسافرين. غير أن حجرتين في مؤخرة السفينة ظلّتا خاليتين، وهما الحجرتان اللتان حجزهما فيلياس فوغ."
+    },
+    {
+      "index": 1,
+      "ar": "وفي اليوم التالي، شوهد مسافر بعينين نصف غائبتين، وخطوات مترنحة، وشعر أشعث، يخرج من المقصورة الثانية ويتهادى حتى جلس على سطح السفينة."
+    },
+    {
+      "index": 2,
+      "ar": "كان ذلك باسبارتو، وهذه قصة ما حدث له: بعد وقت قصير من مغادرة فيكس وكر الأفيون، حمله نادلان فاقد الوعي إلى سرير مخصص للمدخنين. وبعد ثلاث ساعات، استيقظ المسكين وما زالت فكرة واحدة تطارده حتى في أحلامه، وراح يقاوم أثر المخدر الذي أثقل حواسه. لقد أيقظه تذكّره بواجب لم يؤدّه، فانتزع نفسه من خمولِه وأسرع يغادر ذلك المكان الذي غرق في السكر. كان يتعثر متشبثًا بالجدران، يسقط ثم ينهض زاحفًا، وكأن غريزة لا تقاوم تدفعه، وهو يكرر: «كارنيتيك! كارنيتيك!»"
+    },
+    {
+      "index": 3,
+      "ar": "كانت الباخرة راسية بمحاذاة الرصيف، تصدر هدير محركاتها وتوشك على الإبحار. لم يكن يفصل باسبارتو عنها إلا خطوات قليلة؛ فاندفع فوق الممر الخشبي وعبره، ثم سقط فاقد الوعي على السطح في اللحظة التي بدأت فيها كارنيتيك تبتعد. حمله بحارة اعتادوا مثل هذه المشاهد إلى المقصورة الثانية، ولم يستفق الفرنسي إلا بعد أن ابتعدت السفينة مئة وخمسين ميلًا عن الصين. وهكذا وجد نفسه في صباح اليوم التالي على سطح كارنيتيك، يستنشق نسيم البحر المنعش بشغف. أعاده الهواء النقي إلى وعيه، وراح يحاول جمع أفكاره بصعوبة، حتى استعاد أخيرًا أحداث الليلة السابقة: كشف فيكس، وبيت الأفيون."
+    },
+    {
+      "index": 4,
+      "ar": "قال في نفسه: «من الواضح أنني سكرتُ سُكرًا فظيعًا! ماذا سيقول السيد فوغ؟ لكنني، على الأقل، لم أفوّت الباخرة، وهذا هو الأهم»."
+    },
+    {
+      "index": 5,
+      "ar": "ثم تذكر فيكس فقال: «أما ذلك الوغد، فآمل أن نكون قد تخلصنا منه، وألا يكون قد تجرأ على اللحاق بنا كما هدد. محقق يلاحق السيد فوغ متهمًا إياه بسرقة بنك إنجلترا! يا للسخف! فوغ ليس لصًا أكثر مما أنا قاتل»."
+    },
+    {
+      "index": 6,
+      "ar": "هل يكشف لسيده حقيقة مهمة فيكس؟ وهل يخبره بالدور الذي يؤديه المحقق؟ أليس الأفضل أن ينتظر حتى يعود السيد فوغ إلى لندن، ثم يروي له كيف ظل عميل من شرطة العاصمة يطارده حول العالم، ليضحكا معًا على الأمر؟ لا شك أن ذلك أفضل، أو يستحق التفكير على الأقل. لكن أول ما ينبغي فعله هو العثور على السيد فوغ والاعتذار له عن تصرفه الغريب."
+    },
+    {
+      "index": 7,
+      "ar": "نهض باسبارتو، وسار بما استطاع مع تمايل الباخرة نحو السطح الخلفي. لم يرَ أحدًا يشبه سيده أو أودا. فتمتم: «حسنًا! لا بد أن أودا لم تستيقظ بعد، ولعل السيد فوغ وجد شركاء للعب الوِست»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

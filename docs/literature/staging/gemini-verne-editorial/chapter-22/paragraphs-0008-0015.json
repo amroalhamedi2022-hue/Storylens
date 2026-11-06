@@ -1,0 +1,158 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 22,
+  "chapterTitle": "In which Passepartout finds out that, even at the antipodes, it is convenient to have some money in one’s pocket.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "87693f3da72d58a3db49880b5c460ae4577d09cf12b23213a4c25fee190474c5",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "He descended to the saloon. Mr. Fogg was not there. Passepartout had only, however, to ask the purser the number of his master’s stateroom. The purser replied that he did not know any passenger by the name of Fogg.",
+      "existingArabicDraft": "نزل إلى الصالون، لكن السيد فوغ لم يكن هناك. ولم يكن عليه سوى سؤال مسؤول السفينة عن رقم مقصورة سيده، فأجابه الرجل بأنه لا يعرف أي مسافر اسمه فوغ."
+    },
+    {
+      "index": 9,
+      "en": "“I beg your pardon,” said Passepartout persistently. “He is a tall gentleman, quiet, and not very talkative, and has with him a young lady—”",
+      "existingArabicDraft": "قال باسبارتو بإصرار: «أرجو المعذرة، إنه رجل طويل، هادئ، قليل الكلام، ويرافقه شابة—»."
+    },
+    {
+      "index": 10,
+      "en": "“There is no young lady on board,” interrupted the purser. “Here is a list of the passengers; you may see for yourself.”",
+      "existingArabicDraft": "قاطعه مسؤول السفينة: «لا توجد أي شابة على متن السفينة. هذه قائمة المسافرين، ويمكنك التحقق بنفسك»."
+    },
+    {
+      "index": 11,
+      "en": "Passepartout scanned the list, but his master’s name was not upon it. All at once an idea struck him.",
+      "existingArabicDraft": "تفحّص باسبارتو القائمة، فلم يجد اسم سيده. وفجأة خطرت له فكرة."
+    },
+    {
+      "index": 12,
+      "en": "“Ah! Am I on the Carnatic?”",
+      "existingArabicDraft": "«آه! هل أنا على متن كارنيتيك؟»"
+    },
+    {
+      "index": 13,
+      "en": "“Yes.”",
+      "existingArabicDraft": "«نعم»."
+    },
+    {
+      "index": 14,
+      "en": "“On the way to Yokohama?”",
+      "existingArabicDraft": "«وفي الطريق إلى يوكوهاما؟»"
+    },
+    {
+      "index": 15,
+      "en": "“Certainly.”",
+      "existingArabicDraft": "«بالتأكيد»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "نزل إلى الصالون. لم يكن السيد فوغ هناك. ومع ذلك، لم يكن على باسبارتو سوى أن يسأل موظف الاستقبال عن رقم مقصورة سيده. فأجابه الموظف بأنه لا يعرف أي مسافر يحمل اسم فوغ."
+    },
+    {
+      "index": 1,
+      "ar": "قال باسبارتو بإصرار: «أرجو المعذرة، إنه رجل طويل القامة، هادئ، وليس كثير الكلام، ومعه شابة—»"
+    },
+    {
+      "index": 2,
+      "ar": "قاطعه الموظف قائلاً: «لا توجد شابة على متن السفينة. هذه قائمة الركاب؛ ويمكنك أن ترى بنفسك»."
+    },
+    {
+      "index": 3,
+      "ar": "تفرّس باسبارتو في القائمة، فلم يكن اسم سيده مدرجاً فيها. وفجأة، خطرت له فكرة."
+    },
+    {
+      "index": 4,
+      "ar": "«آه! هل أنا على متن السفينة كارنيتيك؟»"
+    },
+    {
+      "index": 5,
+      "ar": "«نعم.»"
+    },
+    {
+      "index": 6,
+      "ar": "«في الطريق إلى يوكوهاما؟»"
+    },
+    {
+      "index": 7,
+      "ar": "«بالتأكيد.»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

@@ -1,0 +1,157 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 21,
+  "chapterTitle": "In which the master of the Tankadere runs great risk of losing a reward of two hundred pounds.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "0426df2ec949f5797eb808f02a0d72af3a232165027854d7b20e4a81c20f16b2",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "When the meal was over, he took Mr. Fogg apart, and said, “sir”—this “sir” scorched his lips, and he had to control himself to avoid collaring this “gentleman”—“sir, you have been very kind to give me a passage on this boat. But, though my means will not admit of my expending them as freely as you, I must ask to pay my share—”",
+      "existingArabicDraft": "بعد انتهاء الطعام، أخذ فيكس فوغ جانبًا وقال: «يا سيدي»؛ وكانت الكلمة تحرق شفتيه، وكاد يفقد أعصابه كيلا يمسك بهذا «السيد المحترم» من ياقة ثوبه. ثم تابع: «لقد أحسنت إليّ حين سمحت لي بالسفر على هذا القارب، لكن مواردي لا تسمح لي بالإنفاق مثلك، ولذلك أطلب أن أدفع حصتي...»"
+    },
+    {
+      "index": 17,
+      "en": "“Let us not speak of that, sir,” replied Mr. Fogg.",
+      "existingArabicDraft": "أجاب فوغ: «دعنا لا نتحدث في هذا الأمر يا سيدي»."
+    },
+    {
+      "index": 18,
+      "en": "“But, if I insist—”",
+      "existingArabicDraft": "قال فيكس: «لكن إن أصررت...»"
+    },
+    {
+      "index": 19,
+      "en": "“No, sir,” repeated Mr. Fogg, in a tone which did not admit of a reply. “This enters into my general expenses.”",
+      "existingArabicDraft": "كرر فوغ بنبرة لا تقبل الرد: «لا يا سيدي. فهذا يدخل ضمن نفقاتي العامة»."
+    },
+    {
+      "index": 20,
+      "en": "Fix, as he bowed, had a stifled feeling, and, going forward, where he ensconced himself, did not open his mouth for the rest of the day.",
+      "existingArabicDraft": "انحنى فيكس، وشعر باختناق في داخله، ثم مضى إلى مقدمة القارب وجلس في مكانه، ولم يفتح فمه بقية اليوم."
+    },
+    {
+      "index": 21,
+      "en": "Meanwhile they were progressing famously, and John Bunsby was in high hope. He several times assured Mr. Fogg that they would reach Shanghai in time; to which that gentleman responded that he counted upon it. The crew set to work in good earnest, inspired by the reward to be gained. There was not a sheet which was not tightened, not a sail which was not vigorously hoisted; not a lurch could be charged to the man at the helm. They worked as desperately as if they were contesting in a Royal yacht regatta.",
+      "existingArabicDraft": "في أثناء ذلك، كانوا يحرزون تقدمًا ممتازًا، وكان جون بنسبي متفائلًا. أكد لفوغ مرارًا أنهم سيبلغون شنغهاي في الموعد، وكان فوغ يجيبه بأنه يعتمد على ذلك. وعمل الطاقم بجدية كبيرة، تحركهم المكافأة المنتظرة؛ فلم يتركوا حبل شراع مرتخيًا، ولم يقصروا في رفع أي شراع، ولم يكن في إمكان أحد لوم الرجل عند الدفة. لقد عملوا بعزيمة من يتنافس في سباق لليخوت الملكية."
+    },
+    {
+      "index": 22,
+      "en": "By evening, the log showed that two hundred and twenty miles had been accomplished from Hong Kong, and Mr. Fogg might hope that he would be able to reach Yokohama without recording any delay in his journal; in which case, the many misadventures which had overtaken him since he left London would not seriously affect his journey.",
+      "existingArabicDraft": "مع حلول المساء، أظهر سجل الرحلة أنهم قطعوا مئتين وعشرين ميلًا من هونغ كونغ. واستطاع فوغ أن يأمل في بلوغ يوكوهاما دون تسجيل تأخير في يومياته، بحيث لا تفسد المصاعب التي واجهته منذ مغادرة لندن رحلته على نحو خطير."
+    },
+    {
+      "index": 23,
+      "en": "The Tankadere entered the Straits of Fo-Kien, which separate the island of Formosa from the Chinese coast, in the small hours of the night, and crossed the Tropic of Cancer. The sea was very rough in the straits, full of eddies formed by the countercurrents, and the chopping waves broke her course, whilst it became very difficult to stand on deck.",
+      "existingArabicDraft": "دخل «تانكادير» مضيق فو-كيين، الذي يفصل جزيرة فورموزا عن الساحل الصيني، في الساعات الأولى من الليل، وعبر مدار السرطان. وكان البحر شديد الاضطراب في المضيق، مليئًا بالدوامات التي تصنعها التيارات المتعاكسة، وكانت الأمواج القصيرة تعرقل سير القارب وتجعل الوقوف على سطحه صعبًا للغاية."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "عندما انتهت الوجبة، استفرز السيد فوغ على حدة وقال له: «يا سيدي»؛ وكانت هذه الكلمة «يا سيدي» تحرق شفتيه، واضطر إلى كبح جماح نفسه لكي يتجنب الإمساك بهذا «السيد المحترم» من تلابيبه: «يا سيدي، لقد كنت بالغ اللطف عندما أذنت لي بالصعود معك على هذه القارب. ولكن، مع أن إمكانياتي لا تسمح لي بالإنفاق بحرية مثلما تفعل، إلا أنني يجب ألا أتوانى عن سداد حصتي...»"
+    },
+    {
+      "index": 1,
+      "ar": "أجاب السيد فوغ: «دعنا لا نأتي على ذكر ذلك يا سيدي»."
+    },
+    {
+      "index": 2,
+      "ar": "قال فيكس: «ولكن، إن أصررت...»"
+    },
+    {
+      "index": 3,
+      "ar": "كرر السيد فوغ، بنبرة لا تحتمل الجدل: «لا يا سيدي. فهذا يدخل ضمن نفقاتي العامة»."
+    },
+    {
+      "index": 4,
+      "ar": "شعر فيكس، وهو ينحني، باختناق مكتوم، فتوجه نحو المقدمة حيث اتخذ له مجلسًا، ولم ينطق بحرف واحد طوال ما تبقى من اليوم."
+    },
+    {
+      "index": 5,
+      "ar": "وفي أثناء ذلك، كانوا يحرزون تقدمًا باهراً، وكان جون بنسبي يعقد آمالاً عراضاً. فقد أكد للسيد فوغ مراراً وتكراراً أنهم سيصلون إلى شنغهاي في الوقت المناسب، وكان ذلك السيد يرد بأنه يعتمد على ذلك تماماً. وقد شرع الطاقم في العمل بجد واجتهاد تامين، محفوفين بحافز المكافأة المنتظرة. لم يكن هناك حبل شراع لم يُشد، ولا شراع لم يُرفع بحماسة؛ ولم يكن بمقدور الدفان أن يُلام على أي انحراف طفيف. لقد عملوا بعزيمة مستميتة وكأنهم يخوضون غمار سباق لليخوت الملكية."
+    },
+    {
+      "index": 6,
+      "ar": "وبحلول المساء، أظهر سجل السرعة أنهم قطعوا مئتين وعشرين ميلاً منذ مغادرة هونغ كونغ، وبات بإمكان السيد فوغ أن يأمل في بلوغ يوكوهاما دون تسجيل أي تأخير في دفتر يومياته؛ وفي هذه الحالة، فإن المتاعب العديدة التي واجهته منذ مغادرته لندن لن تؤثر تأثيراً خطيراً على رحلته."
+    },
+    {
+      "index": 7,
+      "ar": "دخلت السفينة تانكادير مضيق فو-كيين، الذي يفصل جزيرة فورموزا عن الساحل الصيني، في الساعات الأولى من الليل، وعبدت مدار السرطان. وكان البحر هائجاً للغاية في المضيق، يضج بالدوامات الناشئة عن تيارات الماء المتقابلة، وكانت الأمواج المتطاطمة تعرقل مسارها، بينما أصبح الوقوف على السطح أمراً بالغ الصعوبة."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": false,
+      "issues": "خطأ في الترجمة: كلمة took Mr. Fogg apart ترجمت بشكل خاطئ إلى استفرز السيد فوغ بدلاً من أخذ السيد فوغ على حدة، كما أن this boat ترجمت إلى هذه القارب والصواب هذا القارب"
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "خطأ مطبعي في الترجمة: عبارة وعبدت مدار السرطان والصواب وعبدت أو وقطعت، والأصح وعبرا مدار السرطان بناءً على سياق الرحلة والسفينة"
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

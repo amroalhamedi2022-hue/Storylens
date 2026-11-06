@@ -1,0 +1,157 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 21,
+  "chapterTitle": "In which the master of the Tankadere runs great risk of losing a reward of two hundred pounds.",
+  "startParagraphZeroBased": 32,
+  "paragraphCount": 8,
+  "sourceSha256": "26625ca3836a820a4cf8ec00c8b48721819b89d22a8828db3d0357ed27e1b088",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 32,
+      "en": "The pilot took his precautions in advance. He reefed all sail, the pole-masts were dispensed with; all hands went forward to the bows. A single triangular sail, of strong canvas, was hoisted as a storm-jib, so as to hold the wind from behind. Then they waited.",
+      "existingArabicDraft": "اتخذ القائد احتياطاته مسبقًا؛ فقلّص الأشرعة، واستغنى عن الصواري الإضافية، وأمر الجميع بالتوجه إلى مقدمة القارب. ثم رفع شراعًا مثلثًا قويًا ليعمل شراعًا أماميًا للعاصفة ويستفيد من الريح الدافعة من الخلف. وبعد ذلك انتظروا."
+    },
+    {
+      "index": 33,
+      "en": "John Bunsby had requested his passengers to go below; but this imprisonment in so narrow a space, with little air, and the boat bouncing in the gale, was far from pleasant. Neither Mr. Fogg, Fix, nor Aouda consented to leave the deck.",
+      "existingArabicDraft": "طلب جون بنسبي من ركابه النزول إلى الأسفل، لكن البقاء في مكان ضيق قليل الهواء بينما يتقاذف القارب في العاصفة لم يكن مريحًا. ولم يوافق فوغ أو فيكس أو أودا على مغادرة السطح."
+    },
+    {
+      "index": 34,
+      "en": "The storm of rain and wind descended upon them towards eight o’clock. With but its bit of sail, the Tankadere was lifted like a feather by a wind, an idea of whose violence can scarcely be given. To compare her speed to four times that of a locomotive going on full steam would be below the truth.",
+      "existingArabicDraft": "هبّت عاصفة المطر والريح نحو الساعة الثامنة. ومع بقاء قطعة صغيرة من الشراع، رفعت الريح «تانكادير» كأنها ريشة؛ ومن الصعب وصف شدة الريح، بل إن مقارنة سرعتها بسرعة قاطرة تعمل بأقصى طاقتها ستكون أقل من الحقيقة."
+    },
+    {
+      "index": 35,
+      "en": "The boat scudded thus northward during the whole day, borne on by monstrous waves, preserving always, fortunately, a speed equal to theirs. Twenty times she seemed almost to be submerged by these mountains of water which rose behind her; but the adroit management of the pilot saved her. The passengers were often bathed in spray, but they submitted to it philosophically. Fix cursed it, no doubt; but Aouda, with her eyes fastened upon her protector, whose coolness amazed her, showed herself worthy of him, and bravely weathered the storm. As for Phileas Fogg, it seemed just as if the typhoon were a part of his programme.",
+      "existingArabicDraft": "اندفع القارب شمالًا طوال اليوم، تحمله أمواج هائلة، ولحسن الحظ حافظ على سرعة تقارب سرعة الأمواج نفسها. وكاد عشرين مرة أن يغوص تحت جبال الماء التي ترتفع خلفه، لكن مهارة القائد أنقذته. وغمر الرذاذ الركاب مرارًا، فتحملوه بصبر. وربما لعن فيكس العاصفة، لكن أودا ظلت تنظر إلى حاميها بدهشة من رباطة جأشه، وأظهرت شجاعة في مواجهة البحر. أما فوغ، فبدا وكأن الإعصار جزء من برنامجه المعتاد."
+    },
+    {
+      "index": 36,
+      "en": "Up to this time the Tankadere had always held her course to the north; but towards evening the wind, veering three quarters, bore down from the northwest. The boat, now lying in the trough of the waves, shook and rolled terribly; the sea struck her with fearful violence. At night the tempest increased in violence. John Bunsby saw the approach of darkness and the rising of the storm with dark misgivings. He thought awhile, and then asked his crew if it was not time to slacken speed. After a consultation he approached Mr. Fogg, and said, “I think, your honour, that we should do well to make for one of the ports on the coast.”",
+      "existingArabicDraft": "ظل «تانكادير» حتى ذلك الوقت يسير شمالًا، لكن الريح انحرفت مساءً ثلاث زوايا كاملة وجاءت من الشمال الغربي. فصار القارب في قاع الأمواج، يتمايل بعنف وتضربه المياه بقوة مخيفة. واشتدت العاصفة ليلًا، ونظر جون بنسبي إلى الظلام المتقدم والريح المتصاعدة بقلق. وبعد تفكير ومشاورة طاقمه، اقترب من فوغ وقال: «أرى أن الأفضل أن نتجه إلى أحد الموانئ على الساحل»."
+    },
+    {
+      "index": 37,
+      "en": "“I think so too.”",
+      "existingArabicDraft": "قال فوغ: «أرى ذلك أيضًا»."
+    },
+    {
+      "index": 38,
+      "en": "“Ah!” said the pilot. “But which one?”",
+      "existingArabicDraft": "قال القائد: «آه! لكن أي ميناء؟»"
+    },
+    {
+      "index": 39,
+      "en": "“I know of but one,” returned Mr. Fogg tranquilly.",
+      "existingArabicDraft": "أجاب فوغ بهدوء: «لا أعرف سوى واحد»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "اتخذ الملاح احتياطاته مسبقًا. فقلّص جميع الأشرعة، واستغنى عن الصواري الطويلة؛ وتوجه جميع أفراد الطاقم إلى المقدمة. ورُفع شراع مثلث الشكل، مصنوع من قماش متين، ليعمل شراعًا طوارئ أماميًا، بحيث يمسك بالرياح من الخلف. ثم انتظروا."
+    },
+    {
+      "index": 1,
+      "ar": "كان جون بنسبي قد طلب من ركابه النزول إلى المقصورة الداخلية؛ لكن هذا الاحتجاز في مكان ضيق للغاية، مع قلة الهواء، والقارب يتقاذفه الألِجّ، لم يكن بالأمر المبهج على الإطلاق. ولم يوافق أي من السيد فوغ، أو فيكس، أو أودا على مغادرة السطح."
+    },
+    {
+      "index": 2,
+      "ar": "هبطت عاصفة المطر والرياح عليهم نحو الساعة الثامنة. ومع الاكتفاء بتلك القطعة الصغيرة من الشراع، رُفعت السفينة تانكادير مثل الريشة بفعل رياح يصعب تكوين فكرة عن مدى قسوتها. وإن مقارنة سرعتها بأربعة أمثال سرعة قاطرة تسير بكامل قوتها البخارية لستكون أقل من الحقيقة."
+    },
+    {
+      "index": 3,
+      "ar": "اندفع القارب هكذا نحو الشمال طوال اليوم، محمولًا على أمواج هائلة، ومحافظًا دائمًا، لحسن الحظ، على سرعة مساوية لسرعتها. ولقد بدا عشرين مرة وكأنها على وشك أن تغرق تحت جبال الماء التي كانت ترتفع من خلفها؛ إلا أن الإدارة البارعة للملاح أنقذتها. وكان الركاب يتعرضون كثيرًا لرذاذ الماء، لكنهم تحملوه برباطة جأش. ومما لا شك فيه أن فيكس قد لعن الأمر؛ أما أودا، التي ثبتت عينيها على منقذها الذي أدهشتها برودة أعصابه، فقد أثبتت أنها جديرة به، واجتازت العاصفة بشجاعة. أما فيلياس فوغ، فبدا الأمر وكأن الإعصار جزء لا يتجزأ من برنامجه."
+    },
+    {
+      "index": 4,
+      "ar": "حتى ذلك الوقت، كانت السفينة تانكادير مسيرةً على خط سيرها نحو الشمال؛ ولكن نحو المساء انحرفت الرياح ثلاثة أرباع الدائرة، وهبت من الشمال الغربي. وأصبح القارب، الراسي الآن في قاع الأمواج، يهتز ويتقلب بعنف شديد؛ وضرب البحر السفينة بعنف مخيف. وفي الليل اشتدت العاصفة شراسةً. ورأى جون بنسبي اقتراب الظلام واشتداد العاصفة بمخاوف سوداء. وفكر قليلاً، ثم سأل طاقمه عما إذا كان قد حان الوقت لإبطاء السرعة. وبعد التشاور، اقترب من السيد فوغ وقال: «أعتقد، يا سيدي، أنه سيكون من الأفضل لنا أن نتجه نحو أحد الموانئ الواقعة على الساحل»."
+    },
+    {
+      "index": 5,
+      "ar": "«أنا أعتقد ذلك أيضًا»."
+    },
+    {
+      "index": 6,
+      "ar": "قال الملاح: «آه! ولكن أيها؟»"
+    },
+    {
+      "index": 7,
+      "ar": "أجاب السيد فوغ بهدوء: «لا أعرف سوى ميناء واحد»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "تم ترجمة كلمة gale بشكل خاطئ إلى الألِج، والصحيح العاصفة أو الريح الشديدة."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": false,
+      "issues": "ترجمة trough of the waves بـ قاع الأمواج غير دقيقة، والصحيح قعر أو بين امواج البحر."
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
