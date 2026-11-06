@@ -45,10 +45,10 @@ function element(tag='div') {
  return node;
 }
 const tick=async()=>{await new Promise(resolve=>setImmediate(resolve));};
-function scenario({en=false,lazy=false,artSrc=null,approved=null}={}){
+function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null}={}){
  const chapter=(n)=>({title:'Chapter '+n,titleAr:'الفصل '+n,paragraphs:[{en:'Original source.',ar:'ترجمة.'}]});
  const story={id:'example-story',title:'Example Story',titleAr:'قصة تجريبية',
-  chapters:lazy?[]:[chapter(1),chapter(2),chapter(3)],totalChapters:3,
+  chapters:lazy?[]:Array.from({length:count},(_,i)=>chapter(i+1)),totalChapters:count,
   lazyBook:lazy,chapterThumbnails:approved?[approved,null,null]:undefined};
  const fakeArt=artSrc?{'example-story_0':artSrc}:{};
  const cards=[],historyCalls=[],baseOpens=[],writes=[];
@@ -68,7 +68,8 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null}={}){
   }
  };
  const sandbox={window:W,document,history,art:fakeArt,put(k,v){writes.push([k,v])},
-  get(_k,def){return def},state:{page:'library'},console};
+  get(k,def){return k==='chapter_example-story'&&resume!==null?resume:def},
+  state:{page:'library'},console};
  vm.runInNewContext(source,sandbox,{filename:'lt-chapter-gallery.js'});
  const api=W.LinguaChapterGallery;
  assert.ok(api);
@@ -201,7 +202,55 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null}={}){
  const favorite=scenario();
  assert.equal(favorite.clickBook('example-story',{favorite:true}).prevented,false,
   'nested favorite action must not be hijacked by book gallery');
+ // Real full-book navigation cannot allocate 1,001 heavy image cards at once.
+ const huge=scenario({count:85,en:true,resume:70});
+ huge.clickBook();
+ await tick();
+ const rail=huge.cards[0].children[0].children[1];
+ assert.equal(rail.children.length,37,'initial large edition renders 36 tiles and one more button');
+ assert.equal(rail.children[35].dataset.chapterIndex,'35');
+ assert.equal(rail.children[36].className,'lt-chapter-gallery-more');
+ rail.children[36].emit('click');
+ assert.equal(rail.children.length,73,'next 36 append, preserving original order');
+ assert.equal(rail.children[71].dataset.chapterIndex,'71');
+ rail.children[72].emit('click');
+ assert.equal(rail.children.length,85,'last 13 chapters append without an extra button');
+ assert.equal(rail.children[84].dataset.chapterIndex,'84');
+ const copy=huge.cards[0].children[0].children[0].children[0];
+ const tools=copy.children.find(x=>x.className==='lt-chapter-gallery-tools');
+ assert.ok(tools,'gallery header has chapter search and resume');
+ const search=tools.children[0].children[0];
+ assert.equal(search.disabled,false);
+ search.value='85';search.emit('input');
+ assert.equal(rail.children.length,1,'search across all unrendered 85 chapters');
+ assert.equal(rail.children[0].dataset.chapterIndex,'84');
+ search.value='NONSENSE';search.emit('input');
+ assert.equal(rail.children.length,1);
+ assert.equal(rail.children[0].className,'lt-chapter-gallery-empty','nonexistent chapter produces accurate empty state');
+ search.value='الفصل 72';search.emit('input');
+ assert.equal(rail.children.length,1,'Arabic title search works in English UI');
+ assert.equal(rail.children[0].dataset.chapterIndex,'71');
+ search.value='';search.emit('input');
+ assert.equal(rail.children.length,37,'clearing filter returns to first page with no stale appended cards');
+ const resumeButton=tools.children[1];
+ assert.match(resumeButton.textContent,/Resume reading at chapter 71/);
+ resumeButton.onclick();
+ assert.equal(huge.writes[0][1],70,'resume launches saved chapter, not first tile or last searched');
+ assert.equal(huge.api.isOpen,false);
+ // Cancelling search does not mutate the existing saved chapter or story data.
+ const untouched=scenario({count:42,resume:40});
+ untouched.clickBook();await tick();
+ const input=untouched.cards[0].children[0].children[0].children[0].children
+  .find(x=>x.className==='lt-chapter-gallery-tools').children[0].children[0];
+ input.value='0';input.emit('input');
+ assert.equal(untouched.writes.length,0,'chapter search never writes to reading progress');
+ assert.equal(untouched.story.chapters.length,42,'chapter ordering/data remains intact');
+ const closeButton=untouched.cards[0].children[0].children[0].children[1];
+ closeButton.emit('click');
+ assert.equal(untouched.api.isOpen,false,'cancel is safe');
+ assert.equal(untouched.writes.length,0,'closing gallery never updates chapter progress');
+
  const noExtra=scenario({artSrc:'https://host.invalid/photo.jpg'});
  assert.equal(noExtra.api.chapterImage(noExtra.story,0),null,'remote sources never used as thumbnails');
- console.log('PASS: 3 ordered RTL/LTR chapter cards, real bundled image and approval-gated source images, lazy 37-chapter contract, safe reader/progress/back, missing-art and a11y checks');
+ console.log('PASS: offline RTL/LTR chapter gallery, genuine art approval, 85-chapter lazy batches/title+number search, resume, and no progress mutations while browsing');
 })().catch(e=>{console.error(e);process.exitCode=1;});
