@@ -47,6 +47,7 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             # Regenerate only from files physically present on latest main.
+            python tools/test_staged_original_chapter_indexes.py
             python tools/report_chapter_art_progress.py --write
             git add docs/literature/CHAPTER_ART_PROGRESS.json docs/literature/CHAPTER_ART_PROGRESS.md
             git diff --cached --check
