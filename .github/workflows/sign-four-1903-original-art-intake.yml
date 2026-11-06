@@ -1,0 +1,81 @@
+name: Lingua Tales - acquire original Townsend 1903 Sign of Four engravings
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/intake_sign_four_townsend_1903.py'
+      - 'tools/intake_verne_commons_period_gallery.py'
+      - '.github/workflows/sign-four-1903-original-art-intake.yml'
+  schedule:
+    - cron: '38 5 * * 2,5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: lingua-sign-four-townsend-1903-intake-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  authenticate-preserve-and-checkpoint-original-townsend-1903-art:
+    runs-on: ubuntu-latest
+    timeout-minutes: 32
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install bounded Commons HTTPS client and original-JPEG validator
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0
+      - name: Prove strict eight-image historical source policy offline
+        run: python tools/test_sign_four_townsend_1903.py
+      - name: Fetch up to eight actual 1903 F. H. Townsend source images; no chapter approval
+        run: python tools/intake_sign_four_townsend_1903.py --max-new 8
+      - name: Commit only real source files and attribution; dispatch separate inventory
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          folder=docs/literature/staging/sign-four-townsend-1903-period-plates
+          if [ -d "$folder" ]; then
+            git add -f "$folder"
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No new genuine art; nothing to commit or reclassify."
+          else
+            git commit -m "Literature: preserve SHA-verified original 1903 Townsend Sign of Four plates"
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              python tools/test_sign_four_townsend_1903.py
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 3
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Original art preserved in artifact; GitHub branch push unavailable"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = main ]; then
+              # A push made using GITHUB_TOKEN cannot trigger another push
+              # workflow; explicitly invoke the one SHA-audited report writer.
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
+          fi
+      - name: Preserve archive evidence even if Commons is temporarily unavailable
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sign-four-original-1903-townsend-pending-human-rights-and-chapter-review
+          path: docs/literature/staging/sign-four-townsend-1903-period-plates/
+          if-no-files-found: ignore
+          retention-days: 30

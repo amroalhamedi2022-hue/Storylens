@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "bookId": "the-sign-of-the-four",
+  "purpose": "INDEPENDENT_CAPTION_TO_ORIGINAL_TEXT_LEAD_ONLY__NOT_A_CHAPTER_CARD",
+  "workFirstPublishedYear": 1890,
+  "visualEdition": "G. Newnes Ltd. souvenir illustrated edition (1903), Frederick Henry Townsend",
+  "sourceTextEditionCommit": "25466e1b77a718b0ad1d427fdad57642ec0bd9ca",
+  "archiveSource": "docs/literature/staging/sign-four-townsend-1903-period-plates/manifest.json",
+  "releaseApproved": false,
+  "humanSceneReviewApproved": false,
+  "territorialRightsCleared": false,
+  "discoveredSourceCaptionLeads": [
+    {
+      "sourceFileName": "File:Sign-t1.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sign-t1.jpg",
+      "localImagePath": "docs/literature/staging/sign-four-townsend-1903-period-plates/plates/sign-four-townsend-8ecadcc05008471d.webp",
+      "localWebpSha256": "380da056acba4f21510f0c7c1f9c76e1e9b91275eefa2c3e8c6448a2b91926fa",
+      "originalArtist": "Frederick Henry Townsend (1868–1920)",
+      "captionFromCommons": "\"HOLMES,\" I SAID, \"A CHILD HAS DONE THIS HORRID THING\".",
+      "candidateChapterOneBased": 6,
+      "chapterOriginalTitle": "VI: Sherlock Holmes Gives a Demonstration",
+      "originalTextPath": "docs/literature/staging/the-sign-of-the-four/chapter-6.xhtml",
+      "originalTextGitBlobSha": "944dc7d3aceb92862582913eb648662d13f49fc1",
+      "originalChapterTextExcerpt": "Holmes,” I said, in a whisper, “a child has done the horrid thing.",
+      "editionVariationNote": "The 1903 illustration caption says 'this horrid thing'; the independently pinned English chapter says 'the horrid thing'. The passage is narratively corresponding, NOT an exact-quote identity or independent visual sign-off.",
+      "evidenceCategory": "HISTORICAL_CAPTION_MATCHES_CHAPTER_NARRATIVE__PENDING_HUMAN_VISUAL_CONFIRMATION",
+      "candidateCardMapped": false,
+      "editorialApproval": false,
+      "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW"
+    }
+  ],
+  "otherSevenOriginalTownsendPlatesStatus": "UNMAPPED; no invented chapter assignment, no generic stock substitution",
+  "approvedPrimaryChapterImageCount": 0
+}
