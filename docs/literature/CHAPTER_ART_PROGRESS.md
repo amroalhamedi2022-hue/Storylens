@@ -24,12 +24,12 @@
 | The Gilded Age | 63 | 61 | 0 | 2 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
 | The Count of Monte Cristo | 117 | 115 | 0 | 2 | complete 117-chapter historical English translation staged; original French edition/visual scene and rights review pending |
 | The Valley of Fear | 15 | 7 | 0 | 8 | 14 complete original English chapters plus epilogue; 7 locally pinned edition-image positions; scene/rights/Arabic pending |
-| A Study in Scarlet | Needs segmentation | 0 | 0 | Unknown | complete original English novel staged; original 1887 Friston plates archived but not visually matched to chapters |
+| A Study in Scarlet | 14 | 0 | 0 | 14 | full unabridged English original with 14 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending; 4 original Friston artwork files archived |
 | Dracula | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
 | Frankenstein | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
-| The Hound of the Baskervilles | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
-| The Lost World | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
-| The Sign of the Four | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
+| The Hound of the Baskervilles | 15 | 0 | 0 | 15 | full unabridged English original with 15 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending |
+| The Lost World | 16 | 0 | 0 | 16 | full unabridged English original with 16 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending |
+| The Sign of the Four | 12 | 0 | 0 | 12 | full unabridged English original with 12 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending |
 | Kalila wa Dimna | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
 
 ## Next actions (highest to lowest priority)

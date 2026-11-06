@@ -452,14 +452,17 @@
     {
       "bookId": "a-study-in-scarlet",
       "title": "A Study in Scarlet",
-      "sourceState": "complete original English novel staged; original 1887 Friston plates archived but not visually matched to chapters",
-      "chapterCount": null,
+      "sourceState": "full unabridged English original with 14 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending; 4 original Friston artwork files archived",
+      "chapterCount": 14,
       "localCandidateChapters": 0,
       "readyForUICards": 0,
-      "missingImageChapters": null,
-      "missingReadyChapters": null,
+      "missingImageChapters": 14,
+      "missingReadyChapters": 14,
       "archivedLocalHistoricArt": 4,
-      "unassignedHistorical1887FristonImageFiles": 4
+      "unassignedHistorical1887FristonImageFiles": 4,
+      "mappedChapterNumbers": [],
+      "readyChapterNumbers": [],
+      "imageMap": "docs/literature/staging/a-study-in-scarlet/chapter-image-map.json"
     },
     {
       "bookId": "dracula",
@@ -486,35 +489,44 @@
     {
       "bookId": "the-hound-of-the-baskervilles",
       "title": "The Hound of the Baskervilles",
-      "sourceState": "older staged work; chapter-card coverage audit pending",
-      "chapterCount": null,
+      "sourceState": "full unabridged English original with 15 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending",
+      "chapterCount": 15,
       "localCandidateChapters": 0,
       "readyForUICards": 0,
-      "missingImageChapters": null,
-      "missingReadyChapters": null,
-      "archivedLocalHistoricArt": 0
+      "missingImageChapters": 15,
+      "missingReadyChapters": 15,
+      "archivedLocalHistoricArt": 0,
+      "mappedChapterNumbers": [],
+      "readyChapterNumbers": [],
+      "imageMap": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-image-map.json"
     },
     {
       "bookId": "the-lost-world",
       "title": "The Lost World",
-      "sourceState": "older staged work; chapter-card coverage audit pending",
-      "chapterCount": null,
+      "sourceState": "full unabridged English original with 16 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending",
+      "chapterCount": 16,
       "localCandidateChapters": 0,
       "readyForUICards": 0,
-      "missingImageChapters": null,
-      "missingReadyChapters": null,
-      "archivedLocalHistoricArt": 0
+      "missingImageChapters": 16,
+      "missingReadyChapters": 16,
+      "archivedLocalHistoricArt": 0,
+      "mappedChapterNumbers": [],
+      "readyChapterNumbers": [],
+      "imageMap": "docs/literature/staging/the-lost-world/chapter-image-map.json"
     },
     {
       "bookId": "the-sign-of-the-four",
       "title": "The Sign of the Four",
-      "sourceState": "older staged work; chapter-card coverage audit pending",
-      "chapterCount": null,
+      "sourceState": "full unabridged English original with 12 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending",
+      "chapterCount": 12,
       "localCandidateChapters": 0,
       "readyForUICards": 0,
-      "missingImageChapters": null,
-      "missingReadyChapters": null,
-      "archivedLocalHistoricArt": 0
+      "missingImageChapters": 12,
+      "missingReadyChapters": 12,
+      "archivedLocalHistoricArt": 0,
+      "mappedChapterNumbers": [],
+      "readyChapterNumbers": [],
+      "imageMap": "docs/literature/staging/the-sign-of-the-four/chapter-image-map.json"
     },
     {
       "bookId": "kalila-arabic-wikisource",
