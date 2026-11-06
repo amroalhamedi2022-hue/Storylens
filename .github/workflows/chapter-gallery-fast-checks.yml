@@ -11,7 +11,8 @@ on:
       - 'tools/chapter-thumbnail-gallery.test.cjs'
       - 'tools/package_approved_chapter_thumbnails.py'
       - 'tools/test_approved_thumbnail_packaging.py'
-      - 'tools/make_browser_fixtures.py'
+      - 'tools/make_chapter_gallery_browser_fixture.py'
+      - 'tools/report_chapter_gallery_ui_progress.py'
       - 'docs/literature/**/chapter-image-map.json'
       - '.github/workflows/chapter-gallery-fast-checks.yml'
   pull_request:
@@ -23,7 +24,8 @@ on:
       - 'tools/chapter-thumbnail-gallery.test.cjs'
       - 'tools/package_approved_chapter_thumbnails.py'
       - 'tools/test_approved_thumbnail_packaging.py'
-      - 'tools/make_browser_fixtures.py'
+      - 'tools/make_chapter_gallery_browser_fixture.py'
+      - 'tools/report_chapter_gallery_ui_progress.py'
       - '.github/workflows/chapter-gallery-fast-checks.yml'
 
 permissions:
@@ -51,12 +53,53 @@ jobs:
           node tools/chapter-navigation.test.cjs
       - name: Keep original-colour historical image supply and app release strictly separate
         run: |
-          python3 -m py_compile tools/package_approved_chapter_thumbnails.py tools/test_approved_thumbnail_packaging.py tools/make_browser_fixtures.py
+          python3 -m py_compile tools/package_approved_chapter_thumbnails.py tools/test_approved_thumbnail_packaging.py tools/make_chapter_gallery_browser_fixture.py
           python3 tools/package_approved_chapter_thumbnails.py --check
           python3 tools/test_approved_thumbnail_packaging.py
+      - name: Report actual source-mapped vs rights-cleared vs app-packaged chapter art
+        run: |
+          python3 -m py_compile tools/report_chapter_gallery_ui_progress.py
+          python3 tools/report_chapter_gallery_ui_progress.py --report
       - name: Confirm no secret signing key or remote image URL entered the reader
         shell: bash
         run: |
           test -f app/src/main/assets/lt-chapter-thumbnail-registry.js
           node -e 'const s=require("fs").readFileSync("app/src/main/assets/lt-chapter-thumbnail-registry.js","utf8");if(/"src":"(?:https?:|data:)/i.test(s)){throw Error("External/inline image source in offline chapter thumbnail registry")}'
           test -f docs/CHAPTER_GALLERY_PROGRESS_CURRENT.json
+
+  real-browser-chapters:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Generate actual offline application browser journey fixture
+        run: python3 tools/make_chapter_gallery_browser_fixture.py
+      - name: Real user click through book shelf, 37 chapters, selected page, and Android Back
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || true)"
+          test -n "$CHROME" || { echo "::error::Real Chromium missing; cannot claim a passed browser UI"; exit 1; }
+          mkdir -p qa-screenshots
+          for viewport in 460,860 1280,840; do
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=30000 --window-size="$viewport" --dump-dom "file://$PWD/app/src/main/assets/qa-chapter-gallery-journey.html" > "/tmp/lt-chapter-$viewport.html" 2> /tmp/lt-chapter-chrome.log
+            if ! grep -Fq 'data-lt-chapter-gallery-qa="PASS"' "/tmp/lt-chapter-$viewport.html"; then
+              echo "::error::Real source-reader/gallery navigation failed: $viewport"
+              grep -o 'data-lt-chapter-gallery-errors="[^"]*"' "/tmp/lt-chapter-$viewport.html" | head -1 || true
+              tail -n 15 /tmp/lt-chapter-chrome.log || true
+              exit 1
+            fi
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --virtual-time-budget=30000 --window-size="$viewport" --screenshot="$PWD/qa-screenshots/chapter-gallery-$viewport.png" "file://$PWD/app/src/main/assets/qa-chapter-gallery-journey.html" > /tmp/lt-gallery-shot.log 2>&1
+          done
+          file qa-screenshots/chapter-gallery-*.png
+          echo "PASS real Android-size Chrome portrait and tablet-width chapter user journey"
+      - name: Preserve actual browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter-gallery-real-browser-screenshots
+          path: qa-screenshots/chapter-gallery-*.png
+          if-no-files-found: warn
+          retention-days: 14
