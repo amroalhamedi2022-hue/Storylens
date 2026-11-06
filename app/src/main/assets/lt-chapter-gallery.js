@@ -240,7 +240,7 @@ function focusChapterByArrow(entry,event){
  if(index<0)return;
  let target;
  if(key==='Home')target=0;
- else if(key==='End')target=entry.visible.length-1;
+ else if(key==='End')target=rendered.length-1;
  else target=index+((key==='ArrowLeft')==rtl?1:-1);
  if(target<0||target>=entry.visible.length)return;
  event.preventDefault?.();
