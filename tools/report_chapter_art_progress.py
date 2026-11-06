@@ -70,7 +70,7 @@ def map_coverage(path: Path, total: int) -> dict:
     nums = [r.get("chapterOneBased") for r in chapters]
     if nums != list(range(1, total + 1)):
         raise ValueError("Chapter order must be 1..N with no gaps or duplicates")
-    mapped, approved, names = [], [], set()
+    mapped, approved, names, hashes = [], [], set(), set()
     for chapter in chapters:
         photo = chapter.get("primaryImage")
         if not photo:
@@ -79,7 +79,11 @@ def map_coverage(path: Path, total: int) -> dict:
         if name in names:
             raise ValueError("One image was reused as primary for several chapters: " + str(name))
         names.add(name)
-        check_binary(name, photo.get("sha256"))
+        image_hash = photo.get("sha256")
+        if isinstance(image_hash, str) and image_hash.lower() in hashes:
+            raise ValueError("One image binary was reused as primary for several chapters: " + str(name))
+        check_binary(name, image_hash)
+        hashes.add(image_hash.lower())
         if not photo.get("sourceUrl") or not photo.get("sceneAnchor"):
             raise ValueError("Missing image provenance or chapter scene: " + name)
         mapped.append(chapter["chapterOneBased"])
