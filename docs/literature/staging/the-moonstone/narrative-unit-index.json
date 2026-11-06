@@ -1,0 +1,562 @@
+{
+  "schemaVersion": 1,
+  "bookId": "collins-the-moonstone-1868",
+  "originalSourceEditionURL": "https://standardebooks.org/ebooks/wilkie-collins/the-moonstone",
+  "originalSourceCommit": "81eafac7022dbdb26f52fa90377fb7bba9996808",
+  "sourceManifestPath": "docs/literature/staging/the-moonstone/manifest.json",
+  "status": "EXACT_ORIGINAL_NARRATIVE_UNIT_ORDER__NOT_A_53_CHAPTER_CLAIM",
+  "releaseApproved": false,
+  "normativeChapterCount": null,
+  "narrativeSourceUnitCount": 53,
+  "sourceStructuralHeadingCount": 3,
+  "translationStatus": "COMPLETE_CONTEXTUAL_ARABIC_NOT_VERIFIED",
+  "sceneArtRightsStatus": "ALL_53_UNASSIGNED__HUMAN_TERRITORIAL_REVIEW_PENDING",
+  "warning": "53 authentic narrative XHTML units, including prologue and three epilogue sections; this is NOT a claim of 53 chapters or 53 image cards ready for release.",
+  "narrativeUnits": [
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/prologue.xhtml",
+      "sourceGitBlobSha": "069d19c9b14ac7b90a35dd16f48f73530e6d84e9",
+      "sourceByteCount": 13640,
+      "narrativeUnitOneBased": 1,
+      "unitKind": "prologue",
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-1.xhtml",
+      "sourceGitBlobSha": "f79da92781e604650be7164d3adf2f69cdcda483",
+      "sourceByteCount": 6596,
+      "narrativeUnitOneBased": 2,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 1,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-2.xhtml",
+      "sourceGitBlobSha": "1a7f8e2dc24d63b57eb22e469584577c5a0dbe84",
+      "sourceByteCount": 10756,
+      "narrativeUnitOneBased": 3,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 2,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-3.xhtml",
+      "sourceGitBlobSha": "071eba6a2d9b126ae89aaef862ab6175b3b37d43",
+      "sourceByteCount": 17326,
+      "narrativeUnitOneBased": 4,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 3,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-4.xhtml",
+      "sourceGitBlobSha": "6cd5a72590c1b551c1703af2638f608f60e955a7",
+      "sourceByteCount": 19954,
+      "narrativeUnitOneBased": 5,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 4,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-5.xhtml",
+      "sourceGitBlobSha": "345c40dec80d516f6ba4ae34c36b251ee130c6d5",
+      "sourceByteCount": 19029,
+      "narrativeUnitOneBased": 6,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 5,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-6.xhtml",
+      "sourceGitBlobSha": "0794137d99a96daeb2ff1ec23133732b6e2f86c7",
+      "sourceByteCount": 29193,
+      "narrativeUnitOneBased": 7,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 6,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-7.xhtml",
+      "sourceGitBlobSha": "78c5e52989ac478e91700a91a12c68012cd03e24",
+      "sourceByteCount": 10703,
+      "narrativeUnitOneBased": 8,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 7,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-8.xhtml",
+      "sourceGitBlobSha": "9ce5abef4f9f07eb294fb6aaff7a8301fd6832c6",
+      "sourceByteCount": 28506,
+      "narrativeUnitOneBased": 9,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 8,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-9.xhtml",
+      "sourceGitBlobSha": "34183924dbacd08c571f44a4c2a3e244bb159b6f",
+      "sourceByteCount": 16779,
+      "narrativeUnitOneBased": 10,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 9,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-10.xhtml",
+      "sourceGitBlobSha": "52e595628f9d4cbbd778d3ea6bd030e5937dbe2b",
+      "sourceByteCount": 32196,
+      "narrativeUnitOneBased": 11,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 10,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-11.xhtml",
+      "sourceGitBlobSha": "58dfcf09ef5429b82ad5514e4e47972208b514f5",
+      "sourceByteCount": 50972,
+      "narrativeUnitOneBased": 12,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 11,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-12.xhtml",
+      "sourceGitBlobSha": "1f4613834855cc6173e6c75dbe0a7760ffba3b96",
+      "sourceByteCount": 29290,
+      "narrativeUnitOneBased": 13,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 12,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-13.xhtml",
+      "sourceGitBlobSha": "88e6360195332ed92db31201d8eec0514a30e0a9",
+      "sourceByteCount": 15120,
+      "narrativeUnitOneBased": 14,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 13,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-14.xhtml",
+      "sourceGitBlobSha": "7bb310aa6cd5966ea1d4a737731c66e3b0872b0b",
+      "sourceByteCount": 21267,
+      "narrativeUnitOneBased": 15,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 14,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-15.xhtml",
+      "sourceGitBlobSha": "ae75e6e6018493e8865e63d9d74df07a03df2298",
+      "sourceByteCount": 34842,
+      "narrativeUnitOneBased": 16,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 15,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-16.xhtml",
+      "sourceGitBlobSha": "1ed010b6266a3877d5d9ef35134120ba91b508b2",
+      "sourceByteCount": 22905,
+      "narrativeUnitOneBased": 17,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 16,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-17.xhtml",
+      "sourceGitBlobSha": "117a4bd76d55ebe66092321f072f935422d3614f",
+      "sourceByteCount": 18308,
+      "narrativeUnitOneBased": 18,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 17,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-18.xhtml",
+      "sourceGitBlobSha": "7fbcb504ce68fd89ae1b2e36ba9794f3a066c002",
+      "sourceByteCount": 16808,
+      "narrativeUnitOneBased": 19,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 18,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-19.xhtml",
+      "sourceGitBlobSha": "824da21cb89938776bcab05d28bd7faf2a35c2da",
+      "sourceByteCount": 12242,
+      "narrativeUnitOneBased": 20,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 19,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-20.xhtml",
+      "sourceGitBlobSha": "b20dc8c53028db55666a08111aaff733c2de4987",
+      "sourceByteCount": 8614,
+      "narrativeUnitOneBased": 21,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 20,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-21.xhtml",
+      "sourceGitBlobSha": "4b9208fa459ba5f0822563aee14013f59fed7ab7",
+      "sourceByteCount": 24532,
+      "narrativeUnitOneBased": 22,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 21,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-22.xhtml",
+      "sourceGitBlobSha": "99c051b02e501d250fe09f9f5bb3f6f30829a1b3",
+      "sourceByteCount": 23292,
+      "narrativeUnitOneBased": 23,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 22,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-1-23.xhtml",
+      "sourceGitBlobSha": "36125a8626a3ddf3576a5c879e484d2d0777a381",
+      "sourceByteCount": 30305,
+      "narrativeUnitOneBased": 24,
+      "periodOneBased": 1,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 23,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-1-1.xhtml",
+      "sourceGitBlobSha": "1b13bf5511f4fdcaa024a3ba15f6eedd8039cd0b",
+      "sourceByteCount": 29040,
+      "narrativeUnitOneBased": 25,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 1,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-1-2.xhtml",
+      "sourceGitBlobSha": "244153bdbe0ca0c444337200221bdda65b684302",
+      "sourceByteCount": 27859,
+      "narrativeUnitOneBased": 26,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 2,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-1-3.xhtml",
+      "sourceGitBlobSha": "01001bd850ce37912e09f55b0594bc9d0617830b",
+      "sourceByteCount": 26588,
+      "narrativeUnitOneBased": 27,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 3,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-1-4.xhtml",
+      "sourceGitBlobSha": "e6625ea6460e88979c63f996f3eeb856ae63b3a2",
+      "sourceByteCount": 20940,
+      "narrativeUnitOneBased": 28,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 4,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-1-5.xhtml",
+      "sourceGitBlobSha": "10f6110e94dc0bfb2351911c64eb01e3d9414f21",
+      "sourceByteCount": 20963,
+      "narrativeUnitOneBased": 29,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 5,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-1-6.xhtml",
+      "sourceGitBlobSha": "c7562f986ba86cb7261951cbb6351b00a51901c6",
+      "sourceByteCount": 5747,
+      "narrativeUnitOneBased": 30,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 6,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-1-7.xhtml",
+      "sourceGitBlobSha": "79aebf5131c6f11144b52c3d19e1c87e94fe047a",
+      "sourceByteCount": 26406,
+      "narrativeUnitOneBased": 31,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 7,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-1-8.xhtml",
+      "sourceGitBlobSha": "839038cd61c9efa3a809ce105f955770b6d26db9",
+      "sourceByteCount": 37702,
+      "narrativeUnitOneBased": 32,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 1,
+      "chapterWithinSectionOneBased": 8,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-2-1.xhtml",
+      "sourceGitBlobSha": "300be8b00be314914deabc6e9b54772e6b128ced",
+      "sourceByteCount": 27973,
+      "narrativeUnitOneBased": 33,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 2,
+      "chapterWithinSectionOneBased": 1,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-2-2.xhtml",
+      "sourceGitBlobSha": "f738f6f78f54a5fe5fb371318a01200236c36dbd",
+      "sourceByteCount": 12256,
+      "narrativeUnitOneBased": 34,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 2,
+      "chapterWithinSectionOneBased": 2,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-2-3.xhtml",
+      "sourceGitBlobSha": "a64ad13da2e08b5f44de7b0fd122f7280e42cca3",
+      "sourceByteCount": 26643,
+      "narrativeUnitOneBased": 35,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 2,
+      "chapterWithinSectionOneBased": 3,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-3-1.xhtml",
+      "sourceGitBlobSha": "bbc642fc559c7880e9ccdd9e89e2cc49ce3f7c2f",
+      "sourceByteCount": 12891,
+      "narrativeUnitOneBased": 36,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 3,
+      "chapterWithinSectionOneBased": 1,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-3-2.xhtml",
+      "sourceGitBlobSha": "0251e0d96bc1d092339dc43f61109158fabc4d00",
+      "sourceByteCount": 18837,
+      "narrativeUnitOneBased": 37,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 3,
+      "chapterWithinSectionOneBased": 2,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-3-3.xhtml",
+      "sourceGitBlobSha": "786b59f0a39664557f82ea0d191afa319514fb9e",
+      "sourceByteCount": 20252,
+      "narrativeUnitOneBased": 38,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 3,
+      "chapterWithinSectionOneBased": 3,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-3-4.xhtml",
+      "sourceGitBlobSha": "bfb8c148b659026e6c6107cf577a3cf030c3fe5c",
+      "sourceByteCount": 35682,
+      "narrativeUnitOneBased": 39,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 3,
+      "chapterWithinSectionOneBased": 4,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-3-5.xhtml",
+      "sourceGitBlobSha": "9ed69bc7c33a95dc52d0198397963f024ab3530a",
+      "sourceByteCount": 21499,
+      "narrativeUnitOneBased": 40,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 3,
+      "chapterWithinSectionOneBased": 5,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-3-6.xhtml",
+      "sourceGitBlobSha": "7f3d8852e162525947cf65480112c12b80bde41a",
+      "sourceByteCount": 23671,
+      "narrativeUnitOneBased": 41,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 3,
+      "chapterWithinSectionOneBased": 6,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-3-7.xhtml",
+      "sourceGitBlobSha": "32ab8a420d58e37b29c8e1e04b5bd633e8e1bba5",
+      "sourceByteCount": 31341,
+      "narrativeUnitOneBased": 42,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 3,
+      "chapterWithinSectionOneBased": 7,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-3-8.xhtml",
+      "sourceGitBlobSha": "1ba3157b2f206e66250f8e869cedc85cc40beb99",
+      "sourceByteCount": 33955,
+      "narrativeUnitOneBased": 43,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 3,
+      "chapterWithinSectionOneBased": 8,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-3-9.xhtml",
+      "sourceGitBlobSha": "aad7ad24e0d8f6d49810a961c69927583cdb3db0",
+      "sourceByteCount": 38222,
+      "narrativeUnitOneBased": 44,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 3,
+      "chapterWithinSectionOneBased": 9,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-3-10.xhtml",
+      "sourceGitBlobSha": "44ff55602b168344c767ad245a082ba7f01fb052",
+      "sourceByteCount": 37268,
+      "narrativeUnitOneBased": 45,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 3,
+      "chapterWithinSectionOneBased": 10,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-4.xhtml",
+      "sourceGitBlobSha": "5d77eff9ea7508fd06985630a51904fe7867ff64",
+      "sourceByteCount": 97558,
+      "narrativeUnitOneBased": 46,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 4,
+      "singleChapterNarrativeSection": true,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-5.xhtml",
+      "sourceGitBlobSha": "9887e063779dd5913e8fce95ea28b5d631e65cd1",
+      "sourceByteCount": 47047,
+      "narrativeUnitOneBased": 47,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 5,
+      "singleChapterNarrativeSection": true,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-6.xhtml",
+      "sourceGitBlobSha": "f5cb749a6dd93138a39cd5ff8795c741d68944ad",
+      "sourceByteCount": 31135,
+      "narrativeUnitOneBased": 48,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 6,
+      "singleChapterNarrativeSection": true,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-7.xhtml",
+      "sourceGitBlobSha": "b4b9d9df215476717222a19525d75076c82d81fd",
+      "sourceByteCount": 5865,
+      "narrativeUnitOneBased": 49,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 7,
+      "singleChapterNarrativeSection": true,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/chapter-2-8.xhtml",
+      "sourceGitBlobSha": "5d6c948887f1d3746d59fa3218dd264b940ce5a5",
+      "sourceByteCount": 6017,
+      "narrativeUnitOneBased": 50,
+      "periodOneBased": 2,
+      "narrativeSectionOneBased": 8,
+      "singleChapterNarrativeSection": true,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/epilogue-1.xhtml",
+      "sourceGitBlobSha": "ca8e71eec81b02eb21ee20fec48453592c71747a",
+      "sourceByteCount": 2829,
+      "narrativeUnitOneBased": 51,
+      "unitKind": "epilogue",
+      "epilogueUnitOneBased": 1,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/epilogue-2.xhtml",
+      "sourceGitBlobSha": "6dd72ac337781ffdf60ba803da3d66e433372d64",
+      "sourceByteCount": 3399,
+      "narrativeUnitOneBased": 52,
+      "unitKind": "epilogue",
+      "epilogueUnitOneBased": 2,
+      "primaryImage": null
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/epilogue-3.xhtml",
+      "sourceGitBlobSha": "1ec2e7b891b32d61cb17d506d16391e04f86a374",
+      "sourceByteCount": 8904,
+      "narrativeUnitOneBased": 53,
+      "unitKind": "epilogue",
+      "epilogueUnitOneBased": 3,
+      "primaryImage": null
+    }
+  ],
+  "structuralHeadingUnits": [
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/first-period.xhtml",
+      "sourceGitBlobSha": "0a3c2a65a0e06a9a69c3e027c6aff17342115fa4",
+      "sourceByteCount": 953,
+      "unitKind": "structural-heading"
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/second-period.xhtml",
+      "sourceGitBlobSha": "e2eb0d5ad8b121300d4559b6880ea836b18c1de5",
+      "sourceByteCount": 928,
+      "unitKind": "structural-heading"
+    },
+    {
+      "sourceFilePath": "docs/literature/staging/the-moonstone/epilogue.xhtml",
+      "sourceGitBlobSha": "7498a56e1989d812660c163f76a57fbaf34e7ac4",
+      "sourceByteCount": 709,
+      "unitKind": "structural-heading"
+    }
+  ]
+}
