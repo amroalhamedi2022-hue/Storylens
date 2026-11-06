@@ -58,5 +58,5 @@ jobs:
         shell: bash
         run: |
           test -f app/src/main/assets/lt-chapter-thumbnail-registry.js
-          ! grep -Eq '(https?://|data:image/.*src=)' app/src/main/assets/lt-chapter-thumbnail-registry.js
+          node -e 'const s=require("fs").readFileSync("app/src/main/assets/lt-chapter-thumbnail-registry.js","utf8");if(/"src":"(?:https?:|data:)/i.test(s)){throw Error("External/inline image source in offline chapter thumbnail registry")}'
           test -f docs/CHAPTER_GALLERY_PROGRESS_CURRENT.json
