@@ -29,6 +29,12 @@ def is_trusted_https(value: object, host: str) -> bool:
         return False
 
 
+def trusted_commons_download(value: object) -> bool:
+    """Wikimedia delivers full originals via upload and scaled previews via thumb."""
+    return (is_trusted_https(value, "upload.wikimedia.org")
+            or is_trusted_https(value, "thumb.wikimedia.org"))
+
+
 def check_archive(path: Path, root: Path) -> list[dict]:
     data = json.loads(path.read_text("utf-8"))
     if (not isinstance(data, dict) or not isinstance(data.get("images"), list)
@@ -66,7 +72,7 @@ def check_archive(path: Path, root: Path) -> list[dict]:
             raise ValueError("Period image binary/hash/WEBP signature mismatch: " + rel)
         if (not is_trusted_https(row.get("commonsPage"), "commons.wikimedia.org")
                 or not is_trusted_https(row.get("commonsOriginalImageURL"), "upload.wikimedia.org")
-                or not is_trusted_https(row.get("downloadURL"), "upload.wikimedia.org")
+                or not trusted_commons_download(row.get("downloadURL"))
                 or not isinstance(row.get("individualCommonsLicense"), str)
                 or not row["individualCommonsLicense"].strip()
                 or row.get("sourceProofStatus") != "INDIVIDUAL_COMMONS_METADATA_AND_HASH_RECORDED"
