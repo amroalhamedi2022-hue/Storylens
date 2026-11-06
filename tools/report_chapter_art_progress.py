@@ -253,6 +253,52 @@ def moonstone_source_unit_coverage() -> dict:
             "sourceHashAudit": "UPSTREAM_GIT_BLOB_SHA1_AND_EXACT_BYTES"}
 
 
+
+def valley_of_fear_original_chapter_coverage(archive: Path) -> dict:
+    """Validate genuine Part I/II 7+7 chapter headings and separate epilogue."""
+    import re
+
+    manifest = jload(archive / "manifest.json")
+    mapped_path = archive / "chapter-image-map.json"
+    mapped = jload(mapped_path)
+    source_bytes = (archive / "original-edition.html").read_bytes()
+    if sha256(source_bytes) != manifest["source"]["sha256"] or len(source_bytes) != manifest["source"]["bytes"]:
+        raise ValueError("Valley of Fear exact Gutenberg original changed")
+    local_html = (archive / "offline-edition.html").read_bytes().decode("utf-8")
+    headings = []
+    epilogues = []
+    for match in re.finditer(r"<h([1-6])\b[^>]*>[\s\S]*?</h\1>", local_html, re.IGNORECASE):
+        markup = match.group(0)
+        value = " ".join(re.sub(r"<[^>]+>", " ", markup).split())
+        if re.fullmatch(r"Chapter (?:I|II|III|IV|V|VI|VII) .+", value):
+            headings.append((markup, value))
+        elif value == "Epilogue" and 'id="chap15"' in markup:
+            epilogues.append(markup)
+    if (len(headings) != 14 or len(epilogues) != 1 or
+        mapped.get("chapterCount") != 14 or mapped.get("bookId") != "the-valley-of-fear" or
+        mapped.get("releaseApproved") is not False or
+        mapped.get("sourceExactGutenbergSHA256") != manifest["source"]["sha256"] or
+        mapped.get("sourceFullTextFilePath") != str((archive / "original-edition.html").relative_to(ROOT)) or
+        mapped.get("sourceOfflineReadingFilePath") != str((archive / "offline-edition.html").relative_to(ROOT))):
+        raise ValueError("Valley of Fear original chapter/epilogue index mismatch")
+    source_units = mapped["chapters"]
+    for i, (row, (markup, heading)) in enumerate(zip(source_units, headings), 1):
+        expected_id = f"chap{i:02d}"
+        if (row.get("chapterOneBased") != i or row.get("sourcePartOneBased") != (1 if i <= 7 else 2) or
+            row.get("chapterWithinPartOneBased") != ((i - 1) % 7) + 1 or
+            row.get("sourceAnchorId") != expected_id or
+            row.get("originalHeadingHTML") != markup or
+            row.get("originalHeadingText") != heading or
+            row.get("titleEn") != re.sub(r"^Chapter [IVXLCDM]+ ", "", heading) or
+            f'id="{expected_id}"' not in markup):
+            raise ValueError("Valley of Fear chapter source anchor differs from original: " + str(i))
+    last = mapped.get("nonChapterNarrativeUnits", [])
+    if len(last) != 1 or last[0].get("originalHeadingHTML") != epilogues[0] or last[0].get("sourceAnchorId") != "chap15":
+        raise ValueError("Valley of Fear epilogue was omitted")
+    return {**map_coverage(mapped_path, 14), "nonChapterNarrativeSourceUnits": 1,
+            "sourceHashAudit": "GUTENBERG_SHA256_AND_EXACT_DOM_CHAPTER_ANCHORS"}
+
+
 def generate() -> dict:
     manifest = jload(HIST)
     if not manifest or len({x["file"] for x in manifest}) != len(manifest):
@@ -423,11 +469,18 @@ def generate() -> dict:
     valley_folder = STAGING / "user-requested-classics-20261105" / "the-valley-of-fear"
     if valley_folder.is_dir():
         valley_art = verify_recovered_illustrated_source("the-valley-of-fear")
-        rows.append({"bookId": "the-valley-of-fear", "title": "The Valley of Fear",
-                     "sourceState": "full English original plus seven period illustrations staged; chapter scene mapping pending",
-                     "chapterCount": None, "localCandidateChapters": 0,
-                     "readyForUICards": 0, "missingImageChapters": None,
-                     "missingReadyChapters": None, **valley_art})
+        valley_map = valley_folder / "chapter-image-map.json"
+        if valley_map.is_file():
+            indexed = valley_of_fear_original_chapter_coverage(valley_folder)
+            rows.append({"bookId": "the-valley-of-fear", "title": "The Valley of Fear",
+                         "sourceState": "14 original Gutenberg chapter headings (two seven-chapter parts) and epilogue source-pinned; seven historical images unassigned and rights pending",
+                         "chapterCount": 14, **indexed, **valley_art})
+        else:
+            rows.append({"bookId": "the-valley-of-fear", "title": "The Valley of Fear",
+                         "sourceState": "full English original plus seven period illustrations staged; chapter scene mapping pending",
+                         "chapterCount": None, "localCandidateChapters": 0,
+                         "readyForUICards": 0, "missingImageChapters": None,
+                         "missingReadyChapters": None, **valley_art})
     kalila_colours = (
         verify_kalila_miniatures()
         if (STAGING / "kalila-original-colour-miniatures-20261105" / "manifest.json").is_file()
