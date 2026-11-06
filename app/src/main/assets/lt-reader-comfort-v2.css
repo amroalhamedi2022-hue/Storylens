@@ -251,7 +251,8 @@ body .reader .lt-inline-illustration figcaption{
 body .reader .reader-hero.lt-historic-hero{
  background-size:contain!important;background-position:center!important;
  border-radius:clamp(6px,.8vw,12px)!important;
- max-height:32dvh!important;
+ /* Never cap the rendered historical hero height: the engine provides a
+    precise aspect-ratio inline, and the museum original must stay intact. */
  box-shadow:0 3px 13px rgba(35,25,13,.09)!important;
 }
 /* Chapter images are on quiet paper, while the outside dialog is glass. */
