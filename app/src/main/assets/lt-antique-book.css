@@ -130,3 +130,20 @@ html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.the
  }
 }
 /* Other materials and scene-specific dark chapters are deliberately unaffected. */
+
+/* Cross-theme regression repair: Meridian Epilogue deliberately prints ivory
+   ink on a DARK deep-teal sheet. The global material selector used to override
+   its dark background but kept ivory ink, violating the real-browser >=7:1
+   contrast gate. Higher specificity restores both colours together, without
+   touching the six selectable paper materials on other stories. */
+html[data-lt-reader-material] body.theme-meridian-epilogue .reader .lt-book-page {
+ --lt-paper-bg:#102d29;
+ --lt-paper-ink:#f7f1e5;
+ background-color:#102d29!important;
+ background-image:linear-gradient(130deg,#0b2523,#183c35 95%)!important;
+ color:#f7f1e5!important;
+ border-color:#b68e63!important;
+}
+html[data-lt-reader-material] body.theme-meridian-epilogue .reader .lt-book-page :is(.sentence,.inline-ar,.inline-en,p) {
+ color:#f7f1e5!important;
+}
