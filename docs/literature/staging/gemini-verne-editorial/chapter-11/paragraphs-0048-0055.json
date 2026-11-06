@@ -1,0 +1,49 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 11,
+  "chapterTitle": "In which Phileas Fogg secures a curious means of conveyance at a fabulous price.",
+  "startParagraphZeroBased": 48,
+  "paragraphCount": 1,
+  "sourceSha256": "841e2f90aca2002061a1b4a7260272ca0e75d6c4029192a164553bd347cee196",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 48,
+      "en": "It only remained now to find a guide, which was comparatively easy. A young Parsee, with an intelligent face, offered his services, which Mr. Fogg accepted, promising so generous a reward as to materially stimulate his zeal. The elephant was led out and equipped. The Parsee, who was an accomplished elephant driver, covered his back with a sort of saddlecloth, and attached to each of his flanks some curiously uncomfortable howdahs. Phileas Fogg paid the Indian with some banknotes which he extracted from the famous carpetbag, a proceeding that seemed to deprive poor Passepartout of his vitals. Then he offered to carry Sir Francis to Allahabad, which the brigadier gratefully accepted, as one traveller the more would not be likely to fatigue the gigantic beast. Provisions were purchased at Kholby, and, while Sir Francis and Mr. Fogg took the howdahs on either side, Passepartout got astride the saddlecloth between them. The Parsee perched himself on the elephant’s neck, and at nine o’clock they set out from the village, the animal marching off through the dense forest of palms by the shortest cut.",
+      "existingArabicDraft": "لم يبق إلا العثور على دليل، وكان ذلك سهلًا نسبيًا. عرض شاب بارسي ذكي خدماته، فقبله فوغ ووعده بمكافأة سخية. أُخرج الفيل وجُهز؛ ووضع البارسي الخبير غطاءً شبيهًا بالسرج على ظهره وثبّت محفتين غير مريحتين على جانبيه. دفع فوغ للهندي أوراقًا نقدية من حقيبة السجاد، وكاد باسبارتو يفقد صوابه من المبلغ. ثم عرض حمل فرانسيس إلى الله آباد، فقبل الجنرال شاكرًا، إذ لن يرهق مسافر إضافي الحيوان العملاق. اشتروا المؤن في خولبي؛ جلس فوغ وفرانسيس في المحفتين، وجلس باسبارتو على غطاء السرج بينهما، واعتلى البارسي عنق الفيل. وعند التاسعة غادروا القرية، وشق الفيل غابة النخيل الكثيفة عبر أقصر طريق."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "لم يبق الآن سوى العثور على دليل، وكان ذلك أمراً سهلاً نسبياً. عرض شاب بارسي ذو وجه ذكي خدماته، فقبلها السيد فوغ، واعداً إياه بمكافأة سخية إلى درجة تحفز حماسه بشكل ملحوظ. أُخرج الفيل وجُهز. وغطى البارسي، الذي كان سائق فيلة ماهراً، ظهر الفيل بنوع من السرج، وثبّت على كل من جانبيها محفتين غير مريحتين بعجْب. دفع فيلياس فوغ للهندي ببعض الأوراق النقدية التي استخرجها من حقيبة السجاد الشهيرة، وهو تصرف بدا وكأنه ينتزع أحشاء المسكين باسبارتو. ثم عرض نقل السير فرانسيس إلى الله آباد، وهو ما قبله البريغادير باعتنان، إذ إن مسافراً إضافياً لن يُرهق على الأرجح ذلك الحيوان العملاق. شُريت المؤن في خولبي، وبينما أخذ كل من السير فرانسيس والسيد فوغ مقعديهما في المحفتين على الجانبين، امتطاء باسبارتو السرج الواقع بينهما. وتمنطق البارسي فوق عنق الفيل، وفي تمام الساعة التاسعة انطلقوا من القرية، بينما شق الحيوان طريقه عبر غابة النخيل الكثيفة بأقصر الطرق."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": false,
+      "issues": "توجد أخطاء نحوية وطباعية في النص المترجم مثل 'باستعان' بدلاً من 'باحتنان'، و'امتطاء' بدلاً من 'امتطى' أو 'اعتلى'، بالإضافة إلى صياغة غير دقيقة لعبارة 'تمنطق البارسي فوق عنق الفيل'."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

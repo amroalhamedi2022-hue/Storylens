@@ -1,0 +1,148 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 12,
+  "chapterTitle": "In which Phileas Fogg and his companions venture across the Indian forests, and what ensued.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "d572b1de2d3d927a22348b8b174257cf2970d12cecc47e2cc441f902769c5816",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "The night was cold. The Parsee lit a fire in the bungalow with a few dry branches, and the warmth was very grateful, provisions purchased at Kholby sufficed for supper, and the travellers ate ravenously. The conversation, beginning with a few disconnected phrases, soon gave place to loud and steady snores. The guide watched Kiouni, who slept standing, bolstering himself against the trunk of a large tree. Nothing occurred during the night to disturb the slumberers, although occasional growls from panthers and chatterings of monkeys broke the silence; the more formidable beasts made no cries or hostile demonstration against the occupants of the bungalow. Sir Francis slept heavily, like an honest soldier overcome with fatigue. Passepartout was wrapped in uneasy dreams of the bouncing of the day before. As for Mr. Fogg, he slumbered as peacefully as if he had been in his serene mansion in Saville Row.",
+      "existingArabicDraft": "كان الليل باردًا. أشعل البارسي نارًا في البنغلو ببعض الأغصان الجافة، فكان دفؤها موضع امتنانهم. وكفت المؤن التي اشتروها في خولبي للعشاء، فأكل المسافرون بنهم. بدأ الحديث بعبارات متقطعة، ثم حل محله شخير مرتفع متواصل. وراقب الدليل كيوني وهو ينام واقفًا مستندًا إلى جذع شجرة كبيرة. لم يقع خلال الليل ما يوقظ النائمين، مع أن زمجرة الفهود وثرثرة القرود كانتا تقطعان الصمت أحيانًا؛ أما الحيوانات الأشد خطرًا فلم تصدر أصواتًا ولم تهدد من في البنغلو. نام السير فرانسيس نومًا عميقًا كجندي أمين أنهكه التعب. أما باسبارتو فغرق في أحلام مضطربة عن قفزات النهار السابق، في حين نام السيد فوغ بسلام كما لو كان في منزله الهادئ بشارع سافيل رو."
+    },
+    {
+      "index": 9,
+      "en": "The journey was resumed at six in the morning; the guide hoped to reach Allahabad by evening. In that case, Mr. Fogg would only lose a part of the forty-eight hours saved since the beginning of the tour. Kiouni, resuming his rapid gait, soon descended the lower spurs of the Vindhias, and towards noon they passed by the village of Kallenger, on the Cani, one of the branches of the Ganges. The guide avoided inhabited places, thinking it safer to keep the open country, which lies along the first depressions of the basin of the great river. Allahabad was now only twelve miles to the northeast. They stopped under a clump of bananas, the fruit of which, as healthy as bread and as succulent as cream, was amply partaken of and appreciated.",
+      "existingArabicDraft": "استؤنفت الرحلة في السادسة صباحًا، وكان الدليل يأمل الوصول إلى الله آباد مساءً. عندئذ لن يخسر السيد فوغ سوى جزء من الساعات الثماني والأربعين التي كسبها منذ بداية جولته. واستعاد كيوني هرولته السريعة، فنزل قريبًا من سفوح جبال فينديا، وقرب الظهر مروا بقرية كالينجر على نهر كاني، أحد فروع الغانج. تجنب الدليل القرى المأهولة، إذ رأى أن البقاء في الأراضي المفتوحة أكثر أمانًا، بمحاذاة الانخفاضات الأولى لحوض النهر العظيم. ولم تعد الله آباد تبعد سوى اثني عشر ميلًا إلى الشمال الشرقي. فتوقفوا تحت مجموعة من أشجار الموز، وأكلوا من ثمارها بوفرة؛ فهي مغذية كالخبز وغنية بالعصارة كالقشدة."
+    },
+    {
+      "index": 10,
+      "en": "At two o’clock the guide entered a thick forest which extended several miles; he preferred to travel under cover of the woods. They had not as yet had any unpleasant encounters, and the journey seemed on the point of being successfully accomplished, when the elephant, becoming restless, suddenly stopped.",
+      "existingArabicDraft": "عند الساعة الثانية دخل الدليل غابة كثيفة تمتد عدة أميال، مفضلًا مواصلة الطريق تحت غطاء الأشجار. لم يصادفوا حتى ذلك الحين أي حادث مزعج، وبدا أن الرحلة ستنجح أخيرًا، حين اضطرب الفيل وتوقف فجأة."
+    },
+    {
+      "index": 11,
+      "en": "It was then four o’clock.",
+      "existingArabicDraft": "كان الوقت آنذاك الرابعة."
+    },
+    {
+      "index": 12,
+      "en": "“What’s the matter?” asked Sir Francis, putting out his head.",
+      "existingArabicDraft": "أخرج السير فرانسيس رأسه وسأل: «ما الأمر؟»"
+    },
+    {
+      "index": 13,
+      "en": "“I don’t know, officer,” replied the Parsee, listening attentively to a confused murmur which came through the thick branches.",
+      "existingArabicDraft": "أجاب البارسي وهو يصغي باهتمام إلى همهمة مبهمة تتسلل عبر الأغصان الكثيفة: «لا أعرف يا سيدي الضابط.»"
+    },
+    {
+      "index": 14,
+      "en": "The murmur soon became more distinct; it now seemed like a distant concert of human voices accompanied by brass instruments. Passepartout was all eyes and ears. Mr. Fogg patiently waited without a word. The Parsee jumped to the ground, fastened the elephant to a tree, and plunged into the thicket. He soon returned, saying:",
+      "existingArabicDraft": "سرعان ما أصبحت الهمهمة أوضح؛ فقد بدت كأنها حفل بعيد لأصوات بشرية ترافقها آلات نحاسية. أصغى باسبارتو بكل جوارحه، بينما انتظر السيد فوغ بصبر ومن دون كلام. قفز البارسي إلى الأرض، وربط الفيل بشجرة، ثم اندفع داخل الشجيرات. وعاد بعد قليل قائلًا:"
+    },
+    {
+      "index": 15,
+      "en": "“A procession of Brahmins is coming this way. We must prevent their seeing us, if possible.”",
+      "existingArabicDraft": "«موكب من البراهمة قادم من هذا الاتجاه. علينا أن نمنعهم من رؤيتنا إن أمكن.»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كان الليل باردًا. أشعل البارسي نارًا في البنغلو ببعض الأغصان الجافة، فكان دفؤها موضع امتنانهم. وكفت المؤن التي اشتروها في خولبي للعشاء، فأكل المسافرون بنهم. بدأ الحديث بعبارات متقطعة، ثم حل محله شخير مرتفع متواصل. وراقب الدليل كيوني وهو ينام واقفًا مستندًا إلى جذع شجرة كبيرة. لم يقع خلال الليل ما يوقظ النائمين، مع أن زمجرة الفهود وثرثرة القرود كانتا تقطعان الصمت أحيانًا؛ أما الحيوانات الأشد خطرًا فلم تصدر أصواتًا ولم تهدد من في البنغلو. نام السير فرانسيس نومًا عميقًا كجندي أمين أنهكه التعب. أما باسبارتو فغرق في أحلام مضطربة عن قفزات النهار السابق، في حين نام السيد فوغ بسلام كما لو كان في منزله الهادئ بشارع سافيل رو."
+    },
+    {
+      "index": 1,
+      "ar": "استؤنفت الرحلة في السادسة صباحًا، وكان الدليل يأمل الوصول إلى الله آباد مساءً. عندئذ لن يخسر السيد فوغ سوى جزء من الساعات الثماني والأربعين التي كسبها منذ بداية جولته. واستعاد كيوني هرولته السريعة، فنزل قريبًا من سفوح جبال فينديا، وقرب الظهر مروا بقرية كالينجر على نهر كاني، أحد فروع الغانج. تجنب الدليل القرى المأهولة، إذ رأى أن البقاء في الأراضي المفتوحة أكثر أمانًا، بمحاذاة الانخفاضات الأولى لحوض النهر العظيم. ولم تعد الله آباد تبعد سوى اثني عشر ميلًا إلى الشمال الشرقي. فتوقفوا تحت مجموعة من أشجار الموز، وأكلوا من ثمارها بوفرة؛ فهي مغذية كالخبز وغنية بالعصارة كالقشدة."
+    },
+    {
+      "index": 2,
+      "ar": "عند الساعة الثانية دخل الدليل غابة كثيفة تمتد عدة أميال، مفضلًا مواصلة الطريق تحت غطاء الأشجار. لم يصادفوا حتى ذلك الحين أي حادث مزعج، وبدا أن الرحلة ستنجح أخيرًا، حين اضطرب الفيل وتوقف فجأة."
+    },
+    {
+      "index": 3,
+      "ar": "كان الوقت آنذاك الرابعة."
+    },
+    {
+      "index": 4,
+      "ar": "أخرج السير فرانسيس رأسه وسأل: «ما الأمر؟»"
+    },
+    {
+      "index": 5,
+      "ar": "أجاب البارسي وهو يصغي باهتمام إلى همهمة مبهمة تتسلل عبر الأغصان الكثيفة: «لا أعرف يا سيدي الضابط.»"
+    },
+    {
+      "index": 6,
+      "ar": "سرعان ما أصبحت الهمهمة أوضح؛ فقد بدت كأنها حفل بعيد لأصوات بشرية ترافقها آلات نحاسية. أصغى باسبارتو بكل جوارحه، بينما انتظر السيد فوغ بصبر ومن دون كلام. قفز البارسي إلى الأرض، وربط الفيل بشجرة، ثم اندفع داخل الشجيرات. وعاد بعد قليل قائلًا:"
+    },
+    {
+      "index": 7,
+      "ar": "«موكب من البراهمة قادم من هذا الاتجاه. علينا أن نمنعهم من رؤيتنا إن أمكن.»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

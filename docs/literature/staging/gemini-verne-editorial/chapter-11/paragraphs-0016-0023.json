@@ -1,0 +1,147 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 11,
+  "chapterTitle": "In which Phileas Fogg secures a curious means of conveyance at a fabulous price.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "c2d6b8402f8beecdea5272992e0203df7a3b51d6c7a02cad4cd93eba30823cbe",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "“What do you mean?” asked Sir Francis.",
+      "existingArabicDraft": "سأل فرانسيس: «ماذا تقصد؟»"
+    },
+    {
+      "index": 17,
+      "en": "“I mean to say that the train isn’t going on.”",
+      "existingArabicDraft": "«أعني أن القطار لن يتابع السير»."
+    },
+    {
+      "index": 18,
+      "en": "The general at once stepped out, while Phileas Fogg calmly followed him, and they proceeded together to the conductor.",
+      "existingArabicDraft": "نزل الجنرال فورًا، وتبعه فوغ بهدوء، وتوجها إلى مراقب القطار."
+    },
+    {
+      "index": 19,
+      "en": "“Where are we?” asked Sir Francis.",
+      "existingArabicDraft": "سأل فرانسيس: «أين نحن؟»"
+    },
+    {
+      "index": 20,
+      "en": "“At the hamlet of Kholby.”",
+      "existingArabicDraft": "«في قرية خولبي»."
+    },
+    {
+      "index": 21,
+      "en": "“Do we stop here?”",
+      "existingArabicDraft": "«هل نتوقف هنا؟»"
+    },
+    {
+      "index": 22,
+      "en": "“Certainly. The railway isn’t finished.”",
+      "existingArabicDraft": "«نعم. السكة الحديدية لم تكتمل»."
+    },
+    {
+      "index": 23,
+      "en": "“What! not finished?”",
+      "existingArabicDraft": "«ماذا! لم تكتمل؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«ماذا تقصد؟» سأل السير فرانسيس."
+    },
+    {
+      "index": 1,
+      "ar": "«أعني أن القطار لن يتابع السير»."
+    },
+    {
+      "index": 2,
+      "ar": "نزل الجنرال فورًا، بينما تبعه فيلياس فوغ بهدوء، وتوجها معًا إلى مراقب القطار."
+    },
+    {
+      "index": 3,
+      "ar": "«أين نحن؟» سأل السير فرانسيس."
+    },
+    {
+      "index": 4,
+      "ar": "«في قرية خولبي الصغيرة»."
+    },
+    {
+      "index": 5,
+      "ar": "«هل نتوقف هنا؟»"
+    },
+    {
+      "index": 6,
+      "ar": "«بالتحديد. فخط السكة الحديدية لم يكتمل بعد»."
+    },
+    {
+      "index": 7,
+      "ar": "«ماذا! ألم يكتمل؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

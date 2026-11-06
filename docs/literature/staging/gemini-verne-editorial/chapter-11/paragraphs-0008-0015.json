@@ -1,0 +1,147 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 11,
+  "chapterTitle": "In which Phileas Fogg secures a curious means of conveyance at a fabulous price.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "c91516a6ac87c213839deefd00275be66eae1c9ba61395f6cd423e611614de53",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "The conversation fell again. During the night the train left the mountains behind, and passed Nassik, and the next day proceeded over the flat, well-cultivated country of the Khandeish, with its straggling villages, above which rose the minarets of the pagodas. This fertile territory is watered by numerous small rivers and limpid streams, mostly tributaries of the Godavery.",
+      "existingArabicDraft": "انقطع الحديث. وخلال الليل ابتعد القطار عن الجبال ومر بناسيك، ثم سار في اليوم التالي عبر سهول خاندِيش المزروعة، حيث تتناثر القرى وترتفع مآذن المعابد. وكانت الأرض الخصبة ترويها أنهار صغيرة وجداول صافية، معظمها روافد غودافاري."
+    },
+    {
+      "index": 9,
+      "en": "Passepartout, on waking and looking out, could not realise that he was actually crossing India in a railway train. The locomotive, guided by an English engineer and fed with English coal, threw out its smoke upon cotton, coffee, nutmeg, clove, and pepper plantations, while the steam curled in spirals around groups of palm-trees, in the midst of which were seen picturesque bungalows, viharis (sort of abandoned monasteries), and marvellous temples enriched by the exhaustless ornamentation of Indian architecture. Then they came upon vast tracts extending to the horizon, with jungles inhabited by snakes and tigers, which fled at the noise of the train; succeeded by forests penetrated by the railway, and still haunted by elephants which, with pensive eyes, gazed at the train as it passed. The travellers crossed, beyond Milligaum, the fatal country so often stained with blood by the sectaries of the goddess Kali. Not far off rose Ellora, with its graceful pagodas, and the famous Aurungabad, capital of the ferocious Aureng-Zeb, now the chief town of one of the detached provinces of the kingdom of the Nizam. It was thereabouts that Feringhea, the Thuggee chief, king of the stranglers, held his sway. These ruffians, united by a secret bond, strangled victims of every age in honour of the goddess Death, without ever shedding blood; there was a period when this part of the country could scarcely be travelled over without corpses being found in every direction. The English Government has succeeded in greatly diminishing these murders, though the Thuggees still exist, and pursue the exercise of their horrible rites.",
+      "existingArabicDraft": "استيقظ باسبارتو ونظر من النافذة، فلم يصدق أنه يعبر الهند بالقطار. كان القاطرة، يقودها مهندس إنجليزي ويغذيها الفحم الإنجليزي، تنفث دخانها فوق مزارع القطن والبن وجوزة الطيب والقرنفل والفلفل. والتف البخار حول النخيل والأكواخ والأديرة المهجورة والمعابد المزخرفة بفن العمارة الهندية. امتدت الأدغال حتى الأفق، فهربت منها الأفاعي والنمور من ضجيج القطار، ثم جاءت الغابات التي تجوبها الفيلة. وبعد ميليغاوم مروا بأرض لطالما سالت فيها الدماء على أيدي أتباع كالي. وبالقرب ارتفعت معابد إلورا وأورنك آباد، عاصمة أورنك زيب سابقًا. وفي تلك النواحي حكم فيرينغيا، زعيم جماعة الخنّاقين؛ كانوا يقتلون ضحاياهم خنقًا تكريمًا لإلهة الموت، من دون إراقة الدم. ونجحت الحكومة الإنجليزية في تقليص جرائمهم، مع أن بعضهم ظل يمارس طقوسه المروعة."
+    },
+    {
+      "index": 10,
+      "en": "At half-past twelve the train stopped at Burhampoor where Passepartout was able to purchase some Indian slippers, ornamented with false pearls, in which, with evident vanity, he proceeded to encase his feet. The travellers made a hasty breakfast and started off for Assurghur, after skirting for a little the banks of the small river Tapty, which empties into the Gulf of Cambray, near Surat.",
+      "existingArabicDraft": "توقف القطار عند الثانية عشرة والنصف في برهانبور، فاشترى باسبارتو نعالًا هندية مزينة بلآلئ مقلدة ولبسها بزهو. تناول المسافرون فطورًا سريعًا وانطلقوا إلى أسورغار بعد السير قليلًا بمحاذاة نهر تابتي المتجه إلى خليج كامباي قرب سورات."
+    },
+    {
+      "index": 11,
+      "en": "Passepartout was now plunged into absorbing reverie. Up to his arrival at Bombay, he had entertained hopes that their journey would end there; but, now that they were plainly whirling across India at full speed, a sudden change had come over the spirit of his dreams. His old vagabond nature returned to him; the fantastic ideas of his youth once more took possession of him. He came to regard his master’s project as intended in good earnest, believed in the reality of the bet, and therefore in the tour of the world and the necessity of making it without fail within the designated period. Already he began to worry about possible delays, and accidents which might happen on the way. He recognised himself as being personally interested in the wager, and trembled at the thought that he might have been the means of losing it by his unpardonable folly of the night before. Being much less cool-headed than Mr. Fogg, he was much more restless, counting and recounting the days passed over, uttering maledictions when the train stopped, and accusing it of sluggishness, and mentally blaming Mr. Fogg for not having bribed the engineer. The worthy fellow was ignorant that, while it was possible by such means to hasten the rate of a steamer, it could not be done on the railway.",
+      "existingArabicDraft": "غرق باسبارتو في شرود عميق. كان يأمل حتى بومباي أن تنتهي الرحلة هناك، لكنه أدرك الآن أنه يعبر الهند بسرعة. عادت إليه روحه الجوالة وأفكار شبابه، فاقتنع بجدية مشروع فوغ وبحقيقة الرهان وضرورة إكمال الدوران حول العالم في الموعد المحدد. صار يقلق من التأخير والحوادث، وخشي أن تكون حماقته في الليلة الماضية قد أضاعت الرهان. ولأنه أقل هدوءًا من فوغ، أخذ يعد الأيام ويلعن توقف القطار ويتهمه بالبطء، بل لام سيده لأنه لم يرشُ السائق. ولم يكن يعلم أن الرشوة قد تسرّع باخرة أحيانًا، لكنها لا تسرّع قطارًا."
+    },
+    {
+      "index": 12,
+      "en": "The train entered the defiles of the Sutpour Mountains, which separate the Khandeish from Bundelcund, towards evening. The next day Sir Francis Cromarty asked Passepartout what time it was; to which, on consulting his watch, he replied that it was three in the morning. This famous timepiece, always regulated on the Greenwich meridian, which was now some seventy-seven degrees westward, was at least four hours slow. Sir Francis corrected Passepartout’s time, whereupon the latter made the same remark that he had done to Fix; and upon the general insisting that the watch should be regulated in each new meridian, since he was constantly going eastward, that is in the face of the sun, and therefore the days were shorter by four minutes for each degree gone over, Passepartout obstinately refused to alter his watch, which he kept at London time. It was an innocent delusion which could harm no one.",
+      "existingArabicDraft": "دخل القطار ممرات جبال سوتبور بين خاندِيش وبونديلخاند عند المساء. وفي اليوم التالي سأل فرانسيس باسبارتو عن الوقت، فقال إنها الثالثة صباحًا وفق ساعته المضبوطة على غرينتش. لكنها كانت متأخرة أربع ساعات، لأنهم صاروا بعيدين نحو سبع وسبعين درجة غربًا. شرح فرانسيس أن السفر شرقًا في مواجهة الشمس يجعل اليوم أقصر أربع دقائق لكل درجة، لكن باسبارتو رفض تغيير ساعته وأبقاها على توقيت لندن. كان ذلك وهمًا بريئًا لا يؤذي أحدًا."
+    },
+    {
+      "index": 13,
+      "en": "The train stopped, at eight o’clock, in the midst of a glade some fifteen miles beyond Rothal, where there were several bungalows, and workmen’s cabins. The conductor, passing along the carriages, shouted, “Passengers will get out here!”",
+      "existingArabicDraft": "توقف القطار عند الثامنة في فسحة غابية تبعد نحو خمسة عشر ميلًا بعد روثال، حيث أكواخ ومساكن عمال. صاح المراقب وهو يمر بالعربات: «على الركاب النزول هنا!»"
+    },
+    {
+      "index": 14,
+      "en": "Phileas Fogg looked at Sir Francis Cromarty for an explanation; but the general could not tell what meant a halt in the midst of this forest of dates and acacias.",
+      "existingArabicDraft": "نظر فوغ إلى فرانسيس طالبًا تفسيرًا، لكن الجنرال لم يفهم سبب التوقف وسط غابة من النخيل والسنط."
+    },
+    {
+      "index": 15,
+      "en": "Passepartout, not less surprised, rushed out and speedily returned, crying: “Monsieur, no more railway!”",
+      "existingArabicDraft": "اندفع باسبارتو إلى الخارج ثم عاد مسرعًا وهو يصيح: «سيدي، لا مزيد من القطار!»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "انقطع الحديث مجددًا. وخلال الليل ترك القطار الجبال وراءه ومر بناسيك، ثم سار في اليوم التالي عبر سهول خاندِيش المستوية والمزرعة جيدًا، حيث تتناثر القرى وترتفع فوقها مآذن المعابد. وكانت هذه الأرض الخصبة ترويها أنهار صغيرة عديدة وجداول صافية، معظمها روافد لنهر غودافاري."
+    },
+    {
+      "index": 1,
+      "ar": "أما باسبارتو، فعندما استيقظ ونظر إلى الخارج، لم يستطع أن يصدق أنه كان يعبر الهند فعليًا في قطار سكة حديد. كانت القاطرة، بقيادة مهندس إنجليزي وتعمل بالفحم الإنجليزي، تنفث دخانها فوق مزارع القطن والبن وجوزة الطيب والقرنفل والفلفل، بينما التف البخار في حلزونات حول تجمعات أشجار النخيل التي شوهدت وسطها أكواخ خلابة، وأديرة مهجورة، ومعابد مذهلة غنية بالزخارف التي لا تنضب للعمارة الهندية. ثم صادفوا مساحات شاسعة تمتد حتى الأفق، مع أدغال تسكنها الأفاعي والنمور التي فرت من ضجيج القطار؛ تلتها غابات اخترقتها السكة الحديد، وما زالت ترتادها الفيلة التي كانت تنظر إلى القطار بعيون شاردة وهو يمر. عبر المسافرون، بعد ميليغاوم، تلك الأرض المشؤومة التي طالما لطختها بالدماء جماعات أتباع الإلهة كالي. وغير بعيد عن هناك ارتفعت إلورا بمعابدها الرشيقة، وأورنك آباد الشهيرة، عاصمة أورنك زيب الشرس, والتي أصبحت الآن المدينة الرئيسية لإحدى المقاطعات المنفصلة في مملكة النيزام. وفي تلك الأنحاء فرض فيرينغيا، زعيم الخنّاقين وملك الخانقين، سيطرته. هؤلاء الأوغاد، المرتبطون برابطة سرية، كانوا يخنقون الضحايا من كل عمر إكرامًا لإلهة الموت دون إراقة دماء قط؛ وكانت هناك فترة يكاد لا يُسافر فيها عبر هذا الجزء من البلاد دون العثور على جثث في كل اتجاه. وقد نجحت الحكومة الإنجليزية في تقليص هذه القرائن والجرائم بشكل كبير، رغم أن الخنّاقين ما زالوا موجودين ويمارسون طقوسهم المرعبة."
+    },
+    {
+      "index": 2,
+      "ar": "في تمام الساعة الثانية عشرة والنصف، توقف القطار في برهانبور حيث استطاع باسبارتو شراء بعض النعال الهندية المزينّة بلآلئ مزيفة، والتي شرع يلبسها في قدميه بزهو واضح. وتناول المسافرون إفطارًا سريعين وانطلقوا نحو أسورغار، بعد أن ساروا لفترة وجيزة بمحاذاة نهر تابتي الصغير الذي يصب في خليج كامباي بالقرب من سورات."
+    },
+    {
+      "index": 3,
+      "ar": "غرق باسبارتو الآن في أحلام يقظة مستغرفة. وحتى وصوله إلى بومباي، كان يراوده الأمل في أن تنتهي رحلتهما هناك؛ ولكن، الآن بعد أن كانا يندفعان بوضوح عبر الهند بأقصى سرعة، طرأ تغير مفاجئ على روح أحلامه. عادت إليه طبيعته القديمة كمتجول؛ واستولت عليه مرة أخرى أفكار شبابه الخيالية. وأصبح ينظر إلى مشروع سيده على أنه جاد تمامًا، فآمن بحقيقة الرهان ومن ثم بجولة العالم وضرورة إتمامها حتمًا خلال المدة المحددة. وقد بدأ بالفعل يقلق بشأن التأخيرات المحتملة والحوادث التي قد تقع على طول الطريق. وأدرك أنه معني شخصيًا بالرهان، وارتعد فزعًا من فكرة أنه قد يكون سبب خسارته بسبب حماقته التي لا تُغتفر في الليلة السابقة. وبكونه أقل هدوءًا بكثير من السيد فوغ، فقد كان أكثر اضطرابًا، حيث عاد فعدّ الأيام المنقضية وكرر عدها، مطلقًا اللعنات عندما يتوقف القطار ومتهمًا إياه بالبطء، وموبخًا السيد فوغ في سرّه لعدم رشوته للمهندس. وكان هذا الرفيق الجيد يجهل أنه في حين كان من الممكن بمثل هذه الوسائل تسريع وتيرة الباخرة، فإن ذلك لا يمكن فعله على السكة الحديد."
+    },
+    {
+      "index": 4,
+      "ar": "دخل القطار مضايق جبال سوتبور، التي تفصل خاندِيش عن بونديلخاند، نحو المساء. وفي اليوم التالي سأل السير فرانسيس كرومارتي باسبارتو عن الوقت؛ فردّ عليه، بعد استشراف ساعته، بأن الوقت هو الثالثة صباحًا. هذه الساعة الشهيرة، المضبوطة دائمًا على خط غرينتش الذي كان يبعد الآن حوالي سبع وسبعين درجة غربًا، كانت متأخرة أربع ساعات على الأقل. صحح السير فرانسيس وقت باسبارتو، وبناءً على ذلك أبدى الأخير نفس الملاحظة التي أبداها لـفيكس؛ ومع إصرار الجنرال العام على ضرورة ضبط الساعة في كل خط طول جديد، بما أنهما كانا يتجهان باستمرار شرقًا أي في مواجهة الشمس وبالتالي تكون الأيام أقصر بأربع دقائق لكل درجة مقطوعة، فقد رفض باسبارتو بعناد تعديل ساعته التي أبقى عليها بتوقيت لندن. لقد كان وهماً بريئاً لا يضر أحداً."
+    },
+    {
+      "index": 5,
+      "ar": "توقف القطار في تمام الساعة الثامنة، وسط مساحة خالية على بعد نحو خمسة عشر ميلًا بعد روثال، حيث وُجدت عدة أكواخ ومقصورات للعمال. صاح مراقب القطار، وهو يمر عبر العربات: «على الركاب النزول هنا!»"
+    },
+    {
+      "index": 6,
+      "ar": "نظر فيلياس فوغ إلى السير فرانسيس كرومارتي بحثاً عن تفسير؛ لكن الجنرال لم يستطع معرفة ما يعنيه توقف في وسط غابة النخيل والسنط هذه."
+    },
+    {
+      "index": 7,
+      "ar": "أما باسبارتو، فلم يكن أقل منه دهشة، فاندفع إلى الخارج وعاد مسرعًا وهو يصيح: «سيدي، لا مزيد من القطار!»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "ترجمة خاطئة في كلمة القرائن بدلاً من الجرائم أو القتلى عن التخريب، وهناك خطأ بسيط في الترجمة لبعض التفاصيل."
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "خطأ مطبعي في كلمة 'إفطارًا سريعين' والصحيح إفطارًا سريعًا."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": false,
+      "issues": "ترجمة غير دقيقة لكلمة استشراف ساعته والصحيح استشارة ساعته."
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

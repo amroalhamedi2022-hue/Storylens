@@ -1,0 +1,148 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 12,
+  "chapterTitle": "In which Phileas Fogg and his companions venture across the Indian forests, and what ensued.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "bb5be1d68dccbd894b00580185cb1e16a6fcda26bade302d1dcd8c6df6cde51e",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "In which Phileas Fogg and his companions venture across the indian forests, and what ensued.",
+      "existingArabicDraft": "حيث يخوض فيلياس فوغ ورفاقه مغامرة عبر غابات الهند، وما الذي أعقب ذلك."
+    },
+    {
+      "index": 1,
+      "en": "In order to shorten the journey, the guide passed to the left of the line where the railway was still in process of being built. This line, owing to the capricious turnings of the Vindhia Mountains, did not pursue a straight course. The Parsee, who was quite familiar with the roads and paths in the district, declared that they would gain twenty miles by striking directly through the forest.",
+      "existingArabicDraft": "ولكي يختصروا الرحلة، انعطف الدليل إلى يسار خط السكة الحديدية الذي كان لا يزال قيد الإنشاء. وبسبب تعرجات جبال فينديا المتقلبة، لم يكن الخط يسير في مسار مستقيم. وأكد البارسي، العارف جيدًا بطرق المنطقة ودروبها، أنهم سيوفرون عشرين ميلًا إذا عبروا الغابة مباشرة."
+    },
+    {
+      "index": 2,
+      "en": "Phileas Fogg and Sir Francis Cromarty, plunged to the neck in the peculiar howdahs provided for them, were horribly jostled by the swift trotting of the elephant, spurred on as he was by the skilful Parsee; but they endured the discomfort with true British phlegm, talking little, and scarcely able to catch a glimpse of each other. As for Passepartout, who was mounted on the beast’s back, and received the direct force of each concussion as he trod along, he was very careful, in accordance with his master’s advice, to keep his tongue from between his teeth, as it would otherwise have been bitten off short. The worthy fellow bounced from the elephant’s neck to his rump, and vaulted like a clown on a springboard; yet he laughed in the midst of his bouncing, and from time to time took a piece of sugar out of his pocket, and inserted it in Kiouni’s trunk, who received it without in the least slackening his regular trot.",
+      "existingArabicDraft": "كان فيلياس فوغ والسير فرانسيس كرومارتي غارقين حتى أعناقهما في المحفتين الغريبتين المثبتتين على الفيل، وكان هرول الحيوان السريعة، التي يحثه عليها البارسي الماهر، تقذفهما بعنف. ومع ذلك تحملا المشقة ببرود بريطاني لافت، فلا يكاد أحدهما يرى الآخر أو يتحدث إليه. أما باسبارتو، الجالس على ظهر الفيل، فكان يتلقى كل ارتطام مباشرة؛ لذا حرص، عملًا بنصيحة سيده، على إبقاء لسانه بعيدًا عن أسنانه كيلا يعضه فيقطعه. كان الرجل المسكين يقفز من عنق الفيل إلى مؤخرته كالمهرج فوق لوح نابض، لكنه ظل يضحك وسط قفزاته، ويخرج بين حين وآخر قطعة سكر من جيبه فيضعها في خرطوم كيوني، الذي يتناولها دون أن يبطئ خطوه المنتظم."
+    },
+    {
+      "index": 3,
+      "en": "After two hours the guide stopped the elephant, and gave him an hour for rest, during which Kiouni, after quenching his thirst at a neighbouring spring, set to devouring the branches and shrubs round about him. Neither Sir Francis nor Mr. Fogg regretted the delay, and both descended with a feeling of relief. “Why, he’s made of iron!” exclaimed the general, gazing admiringly on Kiouni.",
+      "existingArabicDraft": "بعد ساعتين أوقف الدليل الفيل ومنحه ساعة للراحة. وبعد أن روى كيوني عطشه من نبع قريب، أخذ يلتهم الأغصان والشجيرات المحيطة به. ولم يأسف السير فرانسيس ولا السيد فوغ على التوقف، بل ترجلا وهما يشعران بالارتياح. قال الجنرال وهو ينظر إلى كيوني بإعجاب: «يا له من حيوان مصنوع من الحديد!»"
+    },
+    {
+      "index": 4,
+      "en": "“Of forged iron,” replied Passepartout, as he set about preparing a hasty breakfast.",
+      "existingArabicDraft": "أجاب باسبارتو وهو يشرع في إعداد فطور سريع: «بل من الحديد المصبوب!»"
+    },
+    {
+      "index": 5,
+      "en": "At noon the Parsee gave the signal of departure. The country soon presented a very savage aspect. Copses of dates and dwarf-palms succeeded the dense forests; then vast, dry plains, dotted with scanty shrubs, and sown with great blocks of syenite. All this portion of Bundelcund, which is little frequented by travellers, is inhabited by a fanatical population, hardened in the most horrible practices of the Hindu faith. The English have not been able to secure complete dominion over this territory, which is subjected to the influence of rajahs, whom it is almost impossible to reach in their inaccessible mountain fastnesses. The travellers several times saw bands of ferocious Indians, who, when they perceived the elephant striding across-country, made angry and threatening motions. The Parsee avoided them as much as possible. Few animals were observed on the route; even the monkeys hurried from their path with contortions and grimaces which convulsed Passepartout with laughter.",
+      "existingArabicDraft": "عند الظهر أعطى البارسي إشارة الانطلاق. وسرعان ما اكتسبت المنطقة مظهرًا بريًا قاسيًا؛ فقد أعقبت الغابات الكثيفة مجموعات من أشجار النخيل القزمية، ثم سهول جافة شاسعة تتناثر فيها الشجيرات القليلة وكتل كبيرة من صخر السيانيت. وكان هذا الجزء من بونديلكند قليل ارتياد المسافرين، تسكنه جماعات متشددة اعتادت ممارسات مروعة باسم العقيدة الهندوسية. ولم يتمكن الإنجليز من إحكام سيطرتهم على الإقليم، الخاضع لنفوذ راجات يصعب الوصول إلى حصونهم الجبلية المنيعة. ورأى المسافرون مرارًا جماعات من الهنود الغاضبين يلوحون بتهديد حين يشاهدون الفيل يشق البرية. وكان البارسي يتجنبهم قدر الإمكان. ولم يظهر على الطريق إلا قليل من الحيوانات؛ حتى القرود كانت تفر أمامهم، وتلوّي أجسادها وتكشّر بوجوه مضحكة جعلت باسبارتو ينفجر ضحكًا."
+    },
+    {
+      "index": 6,
+      "en": "In the midst of his gaiety, however, one thought troubled the worthy servant. What would Mr. Fogg do with the elephant when he got to Allahabad? Would he carry him on with him? Impossible! The cost of transporting him would make him ruinously expensive. Would he sell him, or set him free? The estimable beast certainly deserved some consideration. Should Mr. Fogg choose to make him, Passepartout, a present of Kiouni, he would be very much embarrassed; and these thoughts did not cease worrying him for a long time.",
+      "existingArabicDraft": "لكن فكرة واحدة كانت تقلق الخادم وسط مرحِه: ماذا سيفعل السيد فوغ بالفيل حين يصل إلى الله آباد؟ هل سيأخذه معه؟ ذلك مستحيل؛ إذ إن نقله سيجعله باهظ الكلفة إلى حد الإفلاس. هل سيبيعه أم يطلقه؟ لقد استحق الحيوان النبيل بعض الاعتبار بالتأكيد. ولو قرر السيد فوغ أن يهبه كيوني، لوقع باسبارتو في حرج شديد؛ وظلت هذه الأفكار تزعجه طويلًا."
+    },
+    {
+      "index": 7,
+      "en": "The principal chain of the Vindhias was crossed by eight in the evening, and another halt was made on the northern slope, in a ruined bungalow. They had gone nearly twenty-five miles that day, and an equal distance still separated them from the station of Allahabad.",
+      "existingArabicDraft": "اجتازوا السلسلة الرئيسية لجبال فينديا عند الثامنة مساءً، وتوقفوا مرة أخرى على المنحدر الشمالي داخل بنغلو متهدم. كانوا قد قطعوا نحو خمسة وعشرين ميلًا في ذلك اليوم، وما زال يفصلهم عن محطة الله آباد مقدار مماثل."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "حيث يخوض فيلياس فوغ ورفاقه مغامرة عبر غابات الهند، وما الذي أعقب ذلك."
+    },
+    {
+      "index": 1,
+      "ar": "ولكي يختصروا الرحلة، انعطف الدليل إلى يسار خط السكة الحديدية الذي كان لا يزال قيد الإنشاء. وبسبب تعرجات جبال فينديا المتقلبة، لم يكن الخط يسير في مسار مستقيم. وأكد البارسي، العارف جيدًا بتضاريس المنطقة ودروبها، أنهم سيوفرون عشرين ميلًا إذا عبروا الغابة مباشرة."
+    },
+    {
+      "index": 2,
+      "ar": "كان فيلياس فوغ والسير فرانسيس كرومارتي غارقين حتى أعناقهما في المحفتين الغريبتين المثبتتين على الفيل، وكان هرولة الحيوان السريعة، التي يحثه عليها البارسي الماهر، تقذفهما بعنف شديد. ومع ذلك، تحملا المشقة ببرود بريطاني لافت، فلا يكاد أحدهما يرى الآخر أو يتحدث إليه إلا نادراً. أما باسبارتو، الجالس على ظهر الفيل، فكان يتلقى كل ارتطام بشكل مباشر مع كل خطوة يخطوها، لذا حرص، عملًا بنصيحة سيده، على إبقاء لسانه بعيدًا عن أسنانه كيلا يعضه فيقطع نصفه. كان الرجل المسكين يقفز من عنق الفيل إلى مؤخرته فوثب كالمهرج فوق لوح نابض؛ لكنه ظل يضحك وسط قفزاته، ويخرج بين حين وآخر قطعة سكر من جيبه فيضعها في خرطوم كيوني، الذي كان يتلقاها دون أن يبطئ خطوه المنتظم بأي شكل."
+    },
+    {
+      "index": 3,
+      "ar": "بعد ساعتين، أوقف الدليل الفيل ومنحه ساعة للراحة، روى كيوني خلالها عطشه من نبع قريب، ثم أخذ يلتهم الأغصان والشجيرات المحيطة به. ولم يأسف السير فرانسيس ولا السيد فوغ على هذا التوقف، بل ترجلا وهما يشعران بارتياح كبير. قال الجنرال وهو يمعن النظر في كيوني بإعجاب: «يا له من حيوان مصنوع من الحديد!»"
+    },
+    {
+      "index": 4,
+      "ar": "أجاب باسبارتو، وهو يشرع في إعداد وجبة فطور سريعة: «بل من الحديد المطاوع»."
+    },
+    {
+      "index": 5,
+      "ar": "عند الظهر، أعطى البارسي إشارة الانطلاق. وسرعان ما اكتسبت المنطقة مظهرًا بريًا قاسيًا للغاية؛ فقد أعقبت الغابات الكثيفة تجمعات من أشجار النخيل القزمية، تلتها سهول جافة شاسعة تتناثر فيها الشجيرات الشحيحة وتنتشر فيها كتل ضخمة من صخر السيانيت. وكان هذا الجزء بأسره من إقليم بونديلكند، الذي نادراً ما يرتاده المسافرون، تسكنه جماعات متشددة اعتادت أداء الممارسات الأكثر رعباً للعقيدة الهندوسية. ولم يتمكن الإنجليز من إحكام سيطرتهم التامة على هذا الإقليم الخاضع لنفوذ راجات يكاد يستحيل الوصول إليهم في حصونهم الجبلية المنيعة. وشاهد المسافرون مرارًا جماعات من الهنود المتوحشين الذين، ما إن لاحظوا الفيل وهو يشق طريقه عبر البرية، حتى أبدو حركات غاضبة ومميتة التهديد. وكان البارسي يتجنبهم قدر الإمكان. ولم يُرَ إلا القليل من الحيوانات على طول الطريق؛ حتى القرود كانت تفر هاربة من طريقهم ملوية أجسادها ومرتسمة بتجاعيد وتكشيرات جعلت باسبارتو ينفجر ضحكًا هستيرياً."
+    },
+    {
+      "index": 6,
+      "ar": "ولكن في خضم مرحه، كانت فكرة واحدة تقلق الخادم المسكين: ماذا سيفعل السيد فوغ بالفيل عندما يصل إلى الله آباد؟ هل سيأخذه معه في سفره؟ مستحيل! إن تكلفة نقله ستجعله باهظ الثمن بشكل مدمر. هل سيبيعه، أم سيطلقه حرًا؟ لقد استحق الحيوان النبيل بعض الاعتبار بالتأكيد. ولو أن السيد فوغ قرر أن يهدي كيوني لباسبارتو، لكان الأخير قد وقع في حرج شديد؛ ولم تتوقف هذه الأفكار عن إزعاجه لفترة طويلة."
+    },
+    {
+      "index": 7,
+      "ar": "تم اجتياز السلسلة الرئيسية لجبال فينديا بحلول الثامنة مساءً، وتم التوقف مرة أخرى على المنحدر الشمالي داخل منزل استراحة متهدم. وكانوا قد قطعوا نحو خمسة وعشرين ميلًا في ذلك اليوم، وما زالت مسافة مماثلة تفصلهم عن محطة الله آباد."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "تمت ترجمة 'bitten off short' إلى 'فيقطع نصفه' وهي إضافة غير دقيقة وغير موجودة في النص الأصلي."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": false,
+      "issues": "تمت ترجمة 'threatening motions' إلى 'مميتة التهديد' وهي إضافة مبالغ فيها، كما أضيفت كلمة 'هستيرياً' في نهاية الفقرة."
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

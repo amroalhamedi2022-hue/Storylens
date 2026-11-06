@@ -1,0 +1,147 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 11,
+  "chapterTitle": "In which Phileas Fogg secures a curious means of conveyance at a fabulous price.",
+  "startParagraphZeroBased": 40,
+  "paragraphCount": 8,
+  "sourceSha256": "1fa4185f8f4dd3e7f612cfc04c4367b9d75df8222b5e27ba667ce2c89ef60d90",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 40,
+      "en": "“What?”",
+      "existingArabicDraft": "«ما هي؟»"
+    },
+    {
+      "index": 41,
+      "en": "“An elephant! An elephant that belongs to an Indian who lives but a hundred steps from here.”",
+      "existingArabicDraft": "«فيل! يملكه هندي يسكن على بعد مئة خطوة من هنا»."
+    },
+    {
+      "index": 42,
+      "en": "“Let’s go and see the elephant,” replied Mr. Fogg.",
+      "existingArabicDraft": "قال فوغ: «فلنذهب لرؤية الفيل»."
+    },
+    {
+      "index": 43,
+      "en": "They soon reached a small hut, near which, enclosed within some high palings, was the animal in question. An Indian came out of the hut, and, at their request, conducted them within the enclosure. The elephant, which its owner had reared, not for a beast of burden, but for warlike purposes, was half domesticated. The Indian had begun already, by often irritating him, and feeding him every three months on sugar and butter, to impart to him a ferocity not in his nature, this method being often employed by those who train the Indian elephants for battle. Happily, however, for Mr. Fogg, the animal’s instruction in this direction had not gone far, and the elephant still preserved his natural gentleness. Kiouni—this was the name of the beast—could doubtless travel rapidly for a long time, and, in default of any other means of conveyance, Mr. Fogg resolved to hire him. But elephants are far from cheap in India, where they are becoming scarce, the males, which alone are suitable for circus shows, are much sought, especially as but few of them are domesticated. When therefore Mr. Fogg proposed to the Indian to hire Kiouni, he refused pointblank. Mr. Fogg persisted, offering the excessive sum of ten pounds an hour for the loan of the beast to Allahabad. Refused. Twenty pounds? Refused also. Forty pounds? Still refused. Passepartout jumped at each advance; but the Indian declined to be tempted. Yet the offer was an alluring one, for, supposing it took the elephant fifteen hours to reach Allahabad, his owner would receive no less than six hundred pounds sterling.",
+      "existingArabicDraft": "وصلوا إلى كوخ صغير قرب حظيرة مسوّرة، وخرج صاحبه الهندي واصطحبهم إلى الحيوان. كان الفيل، واسمه كيونِي، قد رُبي للحرب لا لحمل الأثقال، وكان نصف أليف. حاول صاحبه إكسابه شراسة بإغاظته وإطعامه السكر والزبدة كل ثلاثة أشهر، وهي طريقة يستخدمها بعض مدربي الفيلة للحرب؛ لكن التدريب لم ينجح كثيرًا، فظل الفيل لطيفًا. وبدا قادرًا على السير بسرعة لمسافة طويلة، فقرر فوغ استئجاره لعدم وجود بديل. غير أن الفيلة كانت نادرة وغالية في الهند، ولا سيما الذكور المستأنسة المناسبة للعروض. رفض صاحب الفيل التأجير، فقدم فوغ عشرة جنيهات عن كل ساعة حتى الله آباد؛ فرفض. عشرون؟ رفض أيضًا. أربعون؟ ظل رافضًا. وكان باسبارتو يقفز مع كل زيادة، لكن الهندي لم يقتنع. وكان العرض مغريًا، إذ إن رحلة تستغرق خمس عشرة ساعة ستدر ستمئة جنيه إسترليني."
+    },
+    {
+      "index": 44,
+      "en": "Phileas Fogg, without getting in the least flurried, then proposed to purchase the animal outright, and at first offered a thousand pounds for him. The Indian, perhaps thinking he was going to make a great bargain, still refused.",
+      "existingArabicDraft": "ثم عرض فوغ شراء الفيل نهائيًا من دون أن يفقد هدوءه، وبدأ بألف جنيه. لكن الهندي رفض، طامعًا بصفقة أكبر."
+    },
+    {
+      "index": 45,
+      "en": "Sir Francis Cromarty took Mr. Fogg aside, and begged him to reflect before he went any further; to which that gentleman replied that he was not in the habit of acting rashly, that a bet of twenty thousand pounds was at stake, that the elephant was absolutely necessary to him, and that he would secure him if he had to pay twenty times his value. Returning to the Indian, whose small, sharp eyes, glistening with avarice, betrayed that with him it was only a question of how great a price he could obtain. Mr. Fogg offered first twelve hundred, then fifteen hundred, eighteen hundred, two thousand pounds. Passepartout, usually so rubicund, was fairly white with suspense.",
+      "existingArabicDraft": "سحب فرانسيس فوغ جانبًا وطلب منه التريث. فأجابه فوغ أنه لا يتصرف بطيش، وأن رهانًا بقيمة عشرين ألف جنيه على المحك، وأن الفيل ضروري، وسيحصل عليه حتى لو دفع عشرين ضعف قيمته. عاد إلى الهندي، الذي فضحت عيناه اللامعتان بالطمع أنه يريد أعلى سعر. عرض فوغ ألفًا ومئتي جنيه، ثم ألفًا وخمسمئة، ثم ألفًا وثمانمئة، ثم ألفي جنيه. وشحب باسبارتو من شدة الترقب."
+    },
+    {
+      "index": 46,
+      "en": "At two thousand pounds the Indian yielded.",
+      "existingArabicDraft": "عند ألفي جنيه، وافق الهندي."
+    },
+    {
+      "index": 47,
+      "en": "“What a price, good heavens!” cried Passepartout, “for an elephant.”",
+      "existingArabicDraft": "صرخ باسبارتو: «يا إلهي، أي ثمن باهظ لفيل!»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«ماذا؟»"
+    },
+    {
+      "index": 1,
+      "ar": "«فيل! فيل يملكه هندي يسكن على بعد مئة خطوة من هنا فقط!»"
+    },
+    {
+      "index": 2,
+      "ar": "أجاب السيد فوغ: «فلنذهب لرؤية الفيل»."
+    },
+    {
+      "index": 3,
+      "ar": "وسرعان ما وصلوا إلى كوخ صغير، قربه، محاط ببعض السياج العالية، كان الحيوان المعنيّ. خرج هندي من الكوخ، وبناءً على طلبهما، أدخلهما إلى السياج. كان الفيل، الذي رباه صاحبه لا ليكون دابة حمل، بل لأغراض حربية، أليفاً بنصفه. وكان الهندي قد بدأ بالفعل، بإزعاجه متكرراً، وإطعامه كل ثلاثة أشهر السكر والزبدة، في غرس شراسة فيه ليست في طبيعته، وهي طريقة غالباً ما يستخدمها أولئك الذين يدربون الفيلة الهندية للقتال. لكن لحسن الحظ بالنسبة للس السيد فوغ، لم يكن تدريب الحيوان في هذا الاتجاه قد مضى بعيداً، ولا يزال الفيل يحافظ على لطفه الطبيعي. وكان كيوني -هذا هو اسم الوحش- قادراً بلا شك على السفر بسرعة لفترة طويلة، وفي غياب أي وسيلة نقل أخرى، عزم السيد فوغ على استئجاره. لكن الفيلة بعيدة كل البعد عن الرخص في الهند، حيث أصبحت نادرة، والذكور وحدها، وهي المناسبة لعروض السيرك، مطلوبة بشدة، لا سيما أن القليل منها فقط مؤنس. ولما اقترح السيد فوغ على الهندي استئجار كيوني، رفض بشكل قاطع. وأصر السيد فوغ، عارضاً مبلغاً مفرطاً قدره عشرة جنيهات في الساعة مقابل استعارة الوحش إلى الله آباد. رفض. عشرون جنيهاً؟ رُفضت أيضاً. أربعون جنيهاً؟ رُفضت ولا زالت. وثب باسبارتو مع كل زيادة؛ لكن الهندي أبى أن يغتر. ومع ذلك كان العرض مغرياً، إذ إنه على فرض أن الفيل استغرق خمس عشرة ساعة للوصول إلى الله آباد، فإن صاحبه سيحصل على ما لا يقل عن ستمئة جنيه إسترليني."
+    },
+    {
+      "index": 4,
+      "ar": "فيلياس فوغ، ودون أن يرتبك بأي شكل من الأشكال، اقترح بعد ذلك شراء الحيوان تماماً، وعرض في البداية ألف جنيه مقابل له. الهندي، ربما ظناً منه أنه مقبل على صفقة كبرى، رفض مرة أخرى."
+    },
+    {
+      "index": 5,
+      "ar": "أخذ السير فرانسيس كرومارتي السيد فوغ جانباً، وتوسل إليه أن يتأمل قبل أن يمضي أبعد من ذلك؛ فأجابه ذلك السيد بأنه ليس معتاداً على التصرف بتهور، وأن رهاناً بعشرين ألف جنيه على المحك، وأن الفيل ضروري له تماماً، وأنه سيضمنه ولو اضطر لدفع عشرين ضعف قيمته. وعائداً إلى الهندي، الذي كشفت عيناه الصغيرتان الحادتان المتألققتان بالجشع أن الأمر بالنسبة له لم يكن سوى مسألة السعر الأكبر الذي يمكنه الحصول عليه، عرض السيد فوغ أولاً ألفاً ومئتي جنيه، ثم ألفاً وخمسمئة، وثمانمئة، وألفي جنيه. وكان باسبارتو، الذي عادة ما يكون محمر الوجه، شاحباً تماماً من شدة الترقب."
+    },
+    {
+      "index": 6,
+      "ar": "وعند ألفي جنيه استسلم الهندي."
+    },
+    {
+      "index": 7,
+      "ar": "صاح باسبارتو: «يا له من ثمن، يا الهي! لفيل»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": false,
+      "issues": "توجد أخطاء نحوية وطباعية مثل 'بالنسبة للس السيد فوغ' و'ألفي جنيه. وكان باسبارتو' تحتاج إلى دقة أكبر في الصياغة العربية."
+    },
+    {
+      "index": 4,
+      "adequate": false,
+      "issues": "وجود ركاكة في عبارة 'مقابل له' والأفضل 'مقابله'."
+    },
+    {
+      "index": 5,
+      "adequate": false,
+      "issues": "تم حذف ذكر مبلغ 'ألف وثمانمئة' (eighteen hundred) في الترجمة حيث كتبت 'ثثمانمئة' مباشرة."
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

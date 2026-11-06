@@ -1,0 +1,147 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 11,
+  "chapterTitle": "In which Phileas Fogg secures a curious means of conveyance at a fabulous price.",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 8,
+  "sourceSha256": "05d940be6ea01fba2f7e51f31f291098e1649754ef699604051efdf2673557eb",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "“No. There’s still a matter of fifty miles to be laid from here to Allahabad, where the line begins again.”",
+      "existingArabicDraft": "«لا. بقي نحو خمسين ميلًا حتى الله آباد، حيث يستأنف الخط من جديد»."
+    },
+    {
+      "index": 25,
+      "en": "“But the papers announced the opening of the railway throughout.”",
+      "existingArabicDraft": "«لكن الصحف أعلنت افتتاح الخط كله»."
+    },
+    {
+      "index": 26,
+      "en": "“What would you have, officer? The papers were mistaken.”",
+      "existingArabicDraft": "قال المراقب: «ماذا تريد يا سيدي؟ لقد أخطأت الصحف»."
+    },
+    {
+      "index": 27,
+      "en": "“Yet you sell tickets from Bombay to Calcutta,” retorted Sir Francis, who was growing warm.",
+      "existingArabicDraft": "احتد فرانسيس: «ومع ذلك تبيعون تذاكر من بومباي إلى كلكتا!»"
+    },
+    {
+      "index": 28,
+      "en": "“No doubt,” replied the conductor; “but the passengers know that they must provide means of transportation for themselves from Kholby to Allahabad.”",
+      "existingArabicDraft": "أجاب المراقب: «بالتأكيد، لكن الركاب يعلمون أنهم مسؤولون عن تدبير وسيلة نقل من خولبي إلى الله آباد»."
+    },
+    {
+      "index": 29,
+      "en": "Sir Francis was furious. Passepartout would willingly have knocked the conductor down, and did not dare to look at his master.",
+      "existingArabicDraft": "غضب فرانسيس بشدة. وكان باسبارتو يود طرح المراقب أرضًا، لكنه لم يجرؤ على النظر إلى سيده."
+    },
+    {
+      "index": 30,
+      "en": "“Sir Francis,” said Mr. Fogg quietly, “we will, if you please, look about for some means of conveyance to Allahabad.”",
+      "existingArabicDraft": "قال فوغ بهدوء: «سير فرانسيس، فلنبحث عن وسيلة نقل إلى الله آباد»."
+    },
+    {
+      "index": 31,
+      "en": "“Mr. Fogg, this is a delay greatly to your disadvantage.”",
+      "existingArabicDraft": "قال فرانسيس: «هذا تأخير يضرك كثيرًا يا سيد فوغ»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«لا. بقي نحو خمسين ميلًا ليتم مد الخط من هنا إلى الله آباد، حيث يبدأ الخط من جديد»."
+    },
+    {
+      "index": 1,
+      "ar": "«لكن الصحف أعلنت افتتاح خط السكة الحديد بكامله»."
+    },
+    {
+      "index": 2,
+      "ar": "«ماذا تتوقع يا حضرة الضابط؟ لقد كانت الصحف مخطئة»."
+    },
+    {
+      "index": 3,
+      "ar": "«ومع ذلك، فإنكم تبيعون تذاكر السفر من بومباي إلى كلكتا» هكذا رد السير فرانسيس، وقد بدأ الغضب يتسرب إليه."
+    },
+    {
+      "index": 4,
+      "ar": "«لا شك في ذلك» أجاب المحصل؛ «ولكن الركاب يعلمون أنه يتعين عليهم توفير وسائل نقل بأنفسهم من خولبي إلى الله آباد»."
+    },
+    {
+      "index": 5,
+      "ar": "كان السير فرانسيس في قمة غضبه. وكان باسبارتو يود لو أنه أطاح بالمحصل أرضاً، ومع ذلك لم يجرؤ على النظر إلى سيده."
+    },
+    {
+      "index": 6,
+      "ar": "قال السيد فوغ بهدوء: «يا سير فرانسيس، إذا سمحت، دعنا نبحث عن وسيلة نقل توصلنا إلى الله آباد»."
+    },
+    {
+      "index": 7,
+      "ar": "«يا سيد فوغ، إن هذا لتعطيل يضر بمصلحتك كثيراً»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

@@ -1,0 +1,147 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 11,
+  "chapterTitle": "In which Phileas Fogg secures a curious means of conveyance at a fabulous price.",
+  "startParagraphZeroBased": 32,
+  "paragraphCount": 8,
+  "sourceSha256": "e14b1268751e7d5aa73855f78c37e7f5b0cf4b259036c7621bdbc2358f0e9767",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 32,
+      "en": "“No, Sir Francis; it was foreseen.”",
+      "existingArabicDraft": "«لا يا سير فرانسيس؛ لقد كان متوقعًا»."
+    },
+    {
+      "index": 33,
+      "en": "“What! You knew that the way—”",
+      "existingArabicDraft": "«ماذا! كنت تعرف أن الطريق—»"
+    },
+    {
+      "index": 34,
+      "en": "“Not at all; but I knew that some obstacle or other would sooner or later arise on my route. Nothing, therefore, is lost. I have two days, which I have already gained, to sacrifice. A steamer leaves Calcutta for Hong Kong at noon, on the 25th. This is the 22nd, and we shall reach Calcutta in time.”",
+      "existingArabicDraft": "«كلا، لكنني علمت أن عقبة ما ستظهر عاجلًا أو آجلًا. لذلك لم نخسر شيئًا؛ لدي يومان كسبتهما ويمكنني التضحية بهما. ستغادر باخرة من كلكتا إلى هونغ كونغ ظهر الخامس والعشرين. واليوم الثاني والعشرون، وسنصل إلى كلكتا في الوقت المناسب»."
+    },
+    {
+      "index": 35,
+      "en": "There was nothing to say to so confident a response.",
+      "existingArabicDraft": "لم يكن ثمة ما يقال أمام هذا الرد الواثق."
+    },
+    {
+      "index": 36,
+      "en": "It was but too true that the railway came to a termination at this point. The papers were like some watches, which have a way of getting too fast, and had been premature in their announcement of the completion of the line. The greater part of the travellers were aware of this interruption, and, leaving the train, they began to engage such vehicles as the village could provide four-wheeled palkigharis, wagons drawn by zebus, carriages that looked like perambulating pagodas, palanquins, ponies, and whatnot.",
+      "existingArabicDraft": "كان صحيحًا أن السكة تنتهي هنا؛ فقد استعجلت الصحف إعلان اكتمالها، كساعة تتقدم عن وقتها. وكان معظم الركاب يعرفون بالانقطاع، فنزلوا وراحوا يستأجرون ما توفره القرية من عربات بأربع عجلات تجرها الثيران، ومركبات تشبه المعابد المتنقلة، ومحفات ومهور وغيرها."
+    },
+    {
+      "index": 37,
+      "en": "Mr. Fogg and Sir Francis Cromarty, after searching the village from end to end, came back without having found anything.",
+      "existingArabicDraft": "عاد فوغ وفرانسيس بعد أن بحثا القرية من طرف إلى طرف دون أن يجدا شيئًا."
+    },
+    {
+      "index": 38,
+      "en": "“I shall go afoot,” said Phileas Fogg.",
+      "existingArabicDraft": "قال فوغ: «سأتابع سيرًا على الأقدام»."
+    },
+    {
+      "index": 39,
+      "en": "Passepartout, who had now rejoined his master, made a wry grimace, as he thought of his magnificent, but too frail Indian shoes. Happily he too had been looking about him, and, after a moment’s hesitation, said, “Monsieur, I think I have found a means of conveyance.”",
+      "existingArabicDraft": "قطّب باسبارتو، الذي لحق بسيده، وجهه حين تذكر نعاله الهندية الفاخرة لكنها الهشة. ولحسن الحظ كان يبحث هو أيضًا، فقال بعد تردد: «سيدي، أظن أنني وجدت وسيلة نقل»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«لا يا سير فرانسيس؛ لقد كان متوقعاً»."
+    },
+    {
+      "index": 1,
+      "ar": "«ماذا! كنت تعلم أن الطريق—»"
+    },
+    {
+      "index": 2,
+      "ar": "«كلا، لكنني علمت أن عقبة ما ستظهر عاجلاً أو آجلاً على طريقي. لذلك، لم يُفقد شيء قط. لدي يومان قد كسبتهما مسبقاً لأضحي بهما. ستغادر باخرة من كلكتا إلى هونغ كونغ عند الظهر في الخامس والعشرين. اليوم هو الثاني والعشرون، وسنصل إلى كلكتا في الوقت المناسب»."
+    },
+    {
+      "index": 3,
+      "ar": "لم يكن هناك ما يقال رداً على مثل هذا الجواب الواثق."
+    },
+    {
+      "index": 4,
+      "ar": "كان حقيقياً جداً أن خط السكة الحديدية قد بلغ نهايته عند هذه النقطة. كانت الصحف تشبه بعض الساعات التي تتقدم عن وقتها، وقد تسرعت في إعلان اكتمال الخط. وكان غالبية المسافرين على دراية بهذا الانقطاع، فتراركو القطار وشرعوا في استئجار ما تيسر للقرية من وسائل النقل: عربات \"بالكيه غاري\" ذات العجلات الأربع، وعربات تجرها ثيران الزيبو، ومركبات تبدو وكأنها معابد متجولة، ومحفات، ومهوراً، وما إلى ذلك."
+    },
+    {
+      "index": 5,
+      "ar": "عاد السيد فوغ والسير فرانسيس كرومارتي، بعد أن بحثا القرية من طرفها إلى طرفها، دون أن يجدا شيئاً."
+    },
+    {
+      "index": 6,
+      "ar": "«سأذهب سيراً على الأقدام»، قال فيلياس فوغ."
+    },
+    {
+      "index": 7,
+      "ar": "صنع باسبارتو، الذي كان قد التقى بسيده مجدداً، تعبيراً عبوساً بوجهه وهو يفكر في حذائه الهندي الفاخر ولكن الهش للغاية. ويا للبطولات، فقد كان هو الآخر يفتش حوله، وبعد لحظة تردد قال: «يا سيدي، أظن أنني وجدت وسيلة نقل»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": false,
+      "issues": "خطأ مطبعي في كلمة فتراركو والصحيح فتركوا."
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "ترجمة خاطئة لعبارة 'Happily he too' حيث ترجمت إلى 'ويا للبطولات' والصحيح 'ولحسن الححظ'."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
