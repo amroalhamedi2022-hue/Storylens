@@ -139,6 +139,178 @@ def verify_kalila_miniatures() -> int:
     return len(images)
 
 
+def staged_original_chapter_coverage(archive: Path) -> dict:
+    """Verify full staged source chapters and their non-release image-map slots.
+
+    The manifest's original upstream Git blob SHA-1 is checked against every
+    staged XHTML byte string, independently of the image SHA-256 contract.
+    Prologue, epilogue and framing letters are preserved but not miscounted
+    as numbered chapters.
+    """
+    import re
+
+    original_manifest = jload(archive / "manifest.json")
+    source_rows = original_manifest.get("originalChapters")
+    if source_rows is None:
+        source_rows = original_manifest.get("narrativeParts")
+    if not isinstance(source_rows, list) or not source_rows:
+        raise ValueError("Missing complete original narrative manifest: " + archive.name)
+    if original_manifest.get("completeOriginalSource") is not True and original_manifest.get("originalSourceComplete") is not True:
+        raise ValueError("Original source not marked complete: " + archive.name)
+
+    image_map_path = archive / "chapter-image-map.json"
+    image_map = jload(image_map_path)
+    if image_map.get("schemaVersion") != 1 or image_map.get("bookId") != archive.name:
+        raise ValueError("Incorrect original book ID or map schema: " + archive.name)
+    if image_map.get("releaseApproved") is not False:
+        raise ValueError("Unreviewed original book falsely marked publishable: " + archive.name)
+    if image_map.get("sourceManifestPath") != str((archive / "manifest.json").relative_to(ROOT)):
+        raise ValueError("Unpinned original source manifest: " + archive.name)
+
+    expected_chapters = []
+    expected_other_units = []
+    for part in source_rows:
+        name = part["file"]
+        if not isinstance(name, str) or not re.fullmatch(
+                r"(?:chapter-[0-9]+(?:-[0-9]+)?|letter-[0-9]+|preface|epilogue)\.xhtml", name):
+            raise ValueError("Unexpected/unsafe original unit: " + str(name))
+        data = (archive / name).read_bytes()
+        expected_sha = part.get("upstreamGitBlobSha")
+        if (len(data) != part.get("bytes") or
+            hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\x00" + data).hexdigest() != expected_sha):
+            raise ValueError("Staged original source changed from pinned Git blob: " + name)
+        if name.startswith("chapter-"):
+            expected_chapters.append(part)
+        else:
+            expected_other_units.append(part)
+
+    chapters = image_map.get("chapters", [])
+    if len(chapters) != len(expected_chapters) or image_map.get("chapterCount") != len(chapters):
+        raise ValueError("Original chapter list not complete: " + archive.name)
+    if len(image_map.get("nonChapterNarrativeUnits", [])) != len(expected_other_units):
+        raise ValueError("Original framing/closing narrative was dropped: " + archive.name)
+    for i, (mapped, source) in enumerate(zip(chapters, expected_chapters), 1):
+        if (mapped.get("chapterOneBased") != i or
+            mapped.get("sourceFilePath") != str((archive / source["file"]).relative_to(ROOT)) or
+            mapped.get("sourceGitBlobSha") != source["upstreamGitBlobSha"] or
+            mapped.get("sourceByteCount") != source["bytes"]):
+            raise ValueError("Misordered/misattributed original source chapter: " + archive.name)
+    for mapped, source in zip(image_map["nonChapterNarrativeUnits"], expected_other_units):
+        if (mapped.get("sourceFilePath") != str((archive / source["file"]).relative_to(ROOT)) or
+            mapped.get("sourceGitBlobSha") != source["upstreamGitBlobSha"] or
+            mapped.get("sourceByteCount") != source["bytes"]):
+            raise ValueError("Missing or mismatched source framing/epilogue: " + archive.name)
+
+    coverage = map_coverage(image_map_path, len(chapters))
+    return {**coverage, "nonChapterNarrativeSourceUnits": len(expected_other_units),
+            "sourceManifest": str((archive / "manifest.json").relative_to(ROOT)),
+            "sourceHashAudit": "UPSTREAM_GIT_BLOB_SHA1_AND_EXACT_BYTES"}
+
+
+
+def war_of_worlds_original_chapter_coverage() -> dict:
+    """Hash-pin the complete 17+10 original Wells chapters and exact headings."""
+    import re
+
+    folder = STAGING / "the-war-of-the-worlds"
+    manifest = jload(folder / "manifest.json")
+    map_path = folder / "chapter-image-map.json"
+    book_map = jload(map_path)
+    originals = manifest["originalChapters"]
+    structural = manifest["structuralParts"]
+    if (manifest.get("completeOriginalSource") is not True or
+        len(originals) != 27 or
+        book_map.get("chapterCount") != 27 or
+        book_map.get("releaseApproved") is not False or
+        book_map.get("bookId") != manifest.get("id") or
+        book_map.get("sourceUpstreamCommit") != manifest["source"]["upstreamCommit"] or
+        book_map.get("sourceStructuralUnits") != structural or
+        len(book_map.get("chapters", [])) != 27):
+        raise ValueError("Wells source book map or text structure inconsistent")
+    for original in originals + structural:
+        name = original["file"]
+        if not re.fullmatch(r"(?:chapter-[12]-[0-9]+|book-[12]|dedication|epigraph)\.xhtml", name):
+            raise ValueError("Unsafe/unexpected Wells narrative file: " + name)
+        data = (folder / name).read_bytes()
+        if (len(data) != original["bytes"] or
+            hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\x00" + data).hexdigest() != original["upstreamGitBlobSha"]):
+            raise ValueError("Wells original text SHA changed: " + name)
+    for i, (source, row) in enumerate(zip(originals, book_map["chapters"]), 1):
+        expected_id = f'chapter-{source["book"]}-{source["number"]}'
+        raw = (folder / source["file"]).read_bytes().decode("utf-8")
+        title = re.search(r"<title>([^<]+)</title>", raw)
+        section = re.search(r'<section\b[^>]*\bid="(chapter-[12]-[0-9]+)"', raw)
+        if (not title or not section or section.group(1) != expected_id or
+            row.get("chapterOneBased") != i or
+            row.get("sourceBookOneBased") != source["book"] or
+            row.get("chapterWithinBookOneBased") != source["number"] or
+            row.get("sourceFilePath") != str((folder / source["file"]).relative_to(ROOT)) or
+            row.get("sourceGitBlobSha") != source["upstreamGitBlobSha"] or
+            row.get("sourceByteCount") != source["bytes"] or
+            row.get("sourceXhtmlSectionId") != expected_id or
+            row.get("originalXhtmlTitle") != title.group(1) or
+            row.get("titleEn") != title.group(1).split(": ", 1)[-1]):
+            raise ValueError("Wells original chapter title/order not exact: " + str(i))
+    return {**map_coverage(map_path, 27),
+            "sourceHashAudit": "UPSTREAM_GIT_BLOB_SHA1_AND_ACTUAL_XHTML_TITLES",
+            "sourceStructuralUnits": len(structural)}
+
+
+
+def verify_unpublished_gutenberg_edition(slug: str, volume: int | None = None) -> dict:
+    """Integrity audit of a REAL complete Gutenberg text; not its chapter/translation readiness."""
+    folder = STAGING / "user-requested-classics-20261105" / slug
+    meta = jload(folder / "manifest.json")
+    source = meta["source"]
+    original = (folder / "original-edition.html").read_bytes()
+    if (sha256(original) != source["sha256"] or
+        len(original) != source["bytes"] or
+        source.get("originalFullEditionPreservedVerbatim") is not True or
+        source.get("completeGutenbergMarkers") is not True or
+        meta["acceptance"].get("fullNaturalArabicTranslation") is not False or
+        meta["acceptance"].get("appIntegrated") is not False or
+        (volume is not None and
+         (meta.get("seriesVolume") != volume or meta.get("seriesVolumeCount") != 10))):
+        raise ValueError("Source or publication flag differs from pinned original edition: " + slug)
+    if meta.get("historicalArtworkCandidates") != len(meta.get("sourceImages", [])):
+        raise ValueError("Archive artwork count inaccurate: " + slug)
+    return {"sourceOriginalSha256": source["sha256"],
+            "originalNarrativeWordsClaimFromSource": source["narrativeWords"],
+            "localCandidateChapters": 0, "readyForUICards": 0,
+            "chapterCount": None, "missingImageChapters": None,
+            "missingReadyChapters": None, "archivedLocalHistoricArt": 0,
+            "sourceHashAudit": "BYTE_EXACT_GUTENBERG_SHA256",
+            "sourceState": "complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance"}
+
+
+def verify_arabian_wikisource_arabic_segments() -> dict:
+    """Keep original four Arabic parts distinct from Burton's ten English volumes."""
+    archive = STAGING / "arabian-nights-arabic-wikisource-20261105"
+    total_words = 0
+    for number in range(1, 5):
+        folder = archive / f"part-{number:02d}"
+        meta = jload(folder / "manifest.json")
+        original = (folder / "wikisource-original-page.html").read_bytes()
+        transcript = (folder / "arabic-transcription.txt").read_bytes()
+        if (meta.get("segment") != f"part-{number:02d}" or
+            meta.get("workId") != "alf-layla-wa-layla" or
+            len(original) != meta["originalPageBytes"] or
+            sha256(original) != meta["originalPageSha256"] or
+            len(transcript) != meta["transcriptionBytes"] or
+            sha256(transcript) != meta["transcriptionSha256"] or
+            meta.get("verifiedAsMatchingBurtonEnglishEdition") is not False or
+            meta.get("colouredHistoricalChapterArtworkIntegrated") is not False):
+            raise ValueError("Arabic Nights original source or bilingual rights claim changed: " + folder.name)
+        total_words += meta.get("arabicWordTokens", 0)
+    return {"arabicSourceSegments": 4,
+            "arabicWordTokensInSource": total_words,
+            "sourceHashAudit": "FOUR_ARABIC_ORIGINAL_PAGE_AND_TRANSCRIPTION_SHA256",
+            "sourceState": "four exact Arabic Wikisource transcripts staged; no accepted alignment to Burton EN ten volumes; narrative/night segmentation and share-alike compliance pending",
+            "chapterCount": None, "localCandidateChapters": 0,
+            "readyForUICards": 0, "missingImageChapters": None,
+            "missingReadyChapters": None, "archivedLocalHistoricArt": 0}
+
+
 def generate() -> dict:
     manifest = jload(HIST)
     if not manifest or len({x["file"] for x in manifest}) != len(manifest):
@@ -283,9 +455,8 @@ def generate() -> dict:
          "unassignedHistoricalCommonsImageFiles": commons_candidates, **verne},
         moonstone_row,
         {"bookId": "wells-war-of-the-worlds-1898", "title": "The War of the Worlds",
-         "sourceState": "27 original chapters staged; bilingual/rights pending",
-         "chapterCount": 27, "localCandidateChapters": 0, "readyForUICards": 0,
-         "missingImageChapters": 27, "missingReadyChapters": 27,
+         "sourceState": "27 original English source chapters SHA-pinned in authentic 17+10 structure; staged Corrêa plates are NOT chapter-mapped",
+         "chapterCount": 27, **war_of_worlds_original_chapter_coverage(),
          "unassignedHistoricalCorreaImageFiles": war_historic_count,
          "archivedLocalHistoricArt": war_historic_count},
     ]
@@ -399,7 +570,28 @@ def generate() -> dict:
             if slug == "a-study-in-scarlet":
                 data["unassignedHistorical1887FristonImageFiles"] = scarlet_originals
                 data["sourceState"] = "complete original English novel staged; original 1887 Friston plates archived but not visually matched to chapters"
+            original_map = archive / "chapter-image-map.json"
+            if original_map.is_file() and slug != "kalila-arabic-wikisource":
+                coverage = staged_original_chapter_coverage(archive)
+                data.update({"sourceState": "complete byte-verified original chapter index; source/scene/Arabic/territorial editorial clearance still pending",
+                             "chapterCount": jload(original_map)["chapterCount"], **coverage})
             rows.append(data)
+    # Include every staged complete original English edition without inventing night counts.
+    woman = STAGING / "user-requested-classics-20261105" / "the-woman-in-white"
+    if woman.is_dir():
+        rows.append({"bookId": "the-woman-in-white", "title": "The Woman in White",
+                     **verify_unpublished_gutenberg_edition("the-woman-in-white")})
+    for volume in range(1, 11):
+        slug = f"arabian-nights-burton-v{volume:02d}"
+        folder = STAGING / "user-requested-classics-20261105" / slug
+        if folder.is_dir():
+            rows.append({"bookId": slug, "title": f"Arabian Nights — Burton Volume {volume:02d}/10",
+                         "sourceSeriesVolume": volume,
+                         **verify_unpublished_gutenberg_edition(slug, volume)})
+    if (STAGING / "arabian-nights-arabic-wikisource-20261105").is_dir():
+        rows.append({"bookId": "alf-layla-wa-layla-arabic-fourparts",
+                     "title": "ألف ليلة وليلة — four Arabic Wikisource transcription parts",
+                     **verify_arabian_wikisource_arabic_segments()})
     available = sum(r["localCandidateChapters"] for r in rows)
     ready = sum(r["readyForUICards"] for r in rows)
     return {

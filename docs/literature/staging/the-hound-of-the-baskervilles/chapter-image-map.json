@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "bookId": "the-hound-of-the-baskervilles",
+  "chapterCount": 15,
+  "releaseApproved": false,
+  "sourceIndexStatus": "VERIFIED_BYTE_IDENTICAL_ORIGINAL_CHAPTERS__NO_IMAGE_RELEASE",
+  "sourceManifestPath": "docs/literature/staging/the-hound-of-the-baskervilles/manifest.json",
+  "sourceEditionURL": "https://standardebooks.org/ebooks/arthur-conan-doyle/the-hound-of-the-baskervilles",
+  "sourceUpstreamCommit": "0097160e42afc58fa86337b8496de440267cf831",
+  "editorialStatus": "UNREVIEWED_SOURCE_INDEX__COMPLETE_ARABIC_PENDING",
+  "rightsStatus": "PENDING_INDEPENDENT_TERRITORIAL_AND_IMAGE_REVIEW",
+  "chapterTitlesStatus": "NUMBERED_ONLY__ORIGINAL_TITLES_NOT_YET_EDITED",
+  "nonChapterNarrativeUnits": [],
+  "chapters": [
+    {
+      "chapterOneBased": 1,
+      "titleAr": "الفصل 1",
+      "titleEn": "Chapter 1",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-1.xhtml",
+      "sourceGitBlobSha": "bdfb1a4949556677befe3a140cca6f001c0beb74",
+      "sourceByteCount": 15204,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 2,
+      "titleAr": "الفصل 2",
+      "titleEn": "Chapter 2",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-2.xhtml",
+      "sourceGitBlobSha": "288bea293960f203ef2ba497e29acfa9e4f641f6",
+      "sourceByteCount": 23612,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 3,
+      "titleAr": "الفصل 3",
+      "titleEn": "Chapter 3",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-3.xhtml",
+      "sourceGitBlobSha": "de4404d8c3ac11d0b56415d868254364e82957df",
+      "sourceByteCount": 19105,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 4,
+      "titleAr": "الفصل 4",
+      "titleEn": "Chapter 4",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-4.xhtml",
+      "sourceGitBlobSha": "ee96279f298cf7e5b4ca1b302a0c3b23cc74187b",
+      "sourceByteCount": 26558,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 5,
+      "titleAr": "الفصل 5",
+      "titleEn": "Chapter 5",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-5.xhtml",
+      "sourceGitBlobSha": "f8dbc44f6f7cdf74e360679e9ea27c438a1a5ec6",
+      "sourceByteCount": 22614,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 6,
+      "titleAr": "الفصل 6",
+      "titleEn": "Chapter 6",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-6.xhtml",
+      "sourceGitBlobSha": "afbc403ab92e098b4e933ee0c5546f38714412ce",
+      "sourceByteCount": 21243,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 7,
+      "titleAr": "الفصل 7",
+      "titleEn": "Chapter 7",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-7.xhtml",
+      "sourceGitBlobSha": "eb0de9bae04925ed3bbfebc192cef311e039d446",
+      "sourceByteCount": 29977,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 8,
+      "titleAr": "الفصل 8",
+      "titleEn": "Chapter 8",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-8.xhtml",
+      "sourceGitBlobSha": "df83ca83a7e93df75a32b19ff77132275bee3e2e",
+      "sourceByteCount": 16315,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 9,
+      "titleAr": "الفصل 9",
+      "titleEn": "Chapter 9",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-9.xhtml",
+      "sourceGitBlobSha": "1d550dc08a96338676564bbb1b20998c7e62f4c4",
+      "sourceByteCount": 37450,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 10,
+      "titleAr": "الفصل 10",
+      "titleEn": "Chapter 10",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-10.xhtml",
+      "sourceGitBlobSha": "a02c43482844ee263b5128e94b933d57eaf1a140",
+      "sourceByteCount": 21927,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 11,
+      "titleAr": "الفصل 11",
+      "titleEn": "Chapter 11",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-11.xhtml",
+      "sourceGitBlobSha": "4769a098a17feadb2c7d69443ee8a8c970f18a93",
+      "sourceByteCount": 27406,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 12,
+      "titleAr": "الفصل 12",
+      "titleEn": "Chapter 12",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-12.xhtml",
+      "sourceGitBlobSha": "1efed3e10b98d313617e63b33b509eae71e959ed",
+      "sourceByteCount": 28992,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 13,
+      "titleAr": "الفصل 13",
+      "titleEn": "Chapter 13",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-13.xhtml",
+      "sourceGitBlobSha": "932e05d04c2b8ccd1371b50eee45424844e70061",
+      "sourceByteCount": 21450,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 14,
+      "titleAr": "الفصل 14",
+      "titleEn": "Chapter 14",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-14.xhtml",
+      "sourceGitBlobSha": "fe18e863eddde24678cc77f222529847f9141f29",
+      "sourceByteCount": 24236,
+      "primaryImage": null
+    },
+    {
+      "chapterOneBased": 15,
+      "titleAr": "الفصل 15",
+      "titleEn": "Chapter 15",
+      "sourceFilePath": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-15.xhtml",
+      "sourceGitBlobSha": "453ef368ec2fd2807250731cf20ce1ec456b19db",
+      "sourceByteCount": 24248,
+      "primaryImage": null
+    }
+  ]
+}

@@ -59,6 +59,7 @@ jobs:
         run: |
           python3 tools/validate_catalog.py
           python3 tools/test_chapter_art_workflows.py
+          python3 tools/test_staged_original_chapter_indexes.py
           python3 tools/test_war_art_scene_pipeline.py
           python3 tools/test_mohicans_period_art.py
           node tools/literature-originals.test.cjs
