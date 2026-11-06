@@ -127,5 +127,43 @@ class RealOriginalChapterIndexes(unittest.TestCase):
                         audit.war_of_worlds_original_chapter_coverage()
 
 
+    def test_all_ten_burton_volumes_and_woman_in_white_are_real_complete_source(self):
+        words = 0
+        for volume in range(1, 11):
+            with self.subTest(volume=volume):
+                slug = f"arabian-nights-burton-v{volume:02d}"
+                status = audit.verify_unpublished_gutenberg_edition(slug, volume)
+                self.assertEqual(status["localCandidateChapters"], 0)
+                self.assertEqual(status["readyForUICards"], 0)
+                self.assertIsNone(status["chapterCount"])
+                words += status["originalNarrativeWordsClaimFromSource"]
+        self.assertEqual(words, 1599851)
+        woman = audit.verify_unpublished_gutenberg_edition("the-woman-in-white")
+        self.assertEqual(woman["chapterCount"], None)
+        self.assertEqual(woman["originalNarrativeWordsClaimFromSource"], 246996)
+
+    def test_four_arabic_nights_transcriptions_remain_unpaired(self):
+        data = audit.verify_arabian_wikisource_arabic_segments()
+        self.assertEqual(data["arabicSourceSegments"], 4)
+        self.assertIsNone(data["chapterCount"])
+        self.assertEqual(data["readyForUICards"], 0)
+
+    def test_fake_burton_edition_approval_or_volume_is_rejected(self):
+        folder = audit.STAGING / "user-requested-classics-20261105" / "arabian-nights-burton-v01"
+        manifest_path = folder / "manifest.json"
+        original, loader = audit.jload(manifest_path), audit.jload
+        for label, change in (
+            ("false-arabic-translation", lambda m: m["acceptance"].__setitem__("fullNaturalArabicTranslation", True)),
+            ("false-number", lambda m: m.__setitem__("seriesVolume", 2)),
+            ("altered-text-sha", lambda m: m["source"].__setitem__("sha256", "0" * 64)),
+        ):
+            with self.subTest(label=label):
+                bad = copy.deepcopy(original)
+                change(bad)
+                with patch.object(audit, "jload", side_effect=lambda p: bad if Path(p) == manifest_path else loader(p)):
+                    with self.assertRaises(ValueError):
+                        audit.verify_unpublished_gutenberg_edition("arabian-nights-burton-v01", 1)
+
+
 if __name__ == "__main__":
     unittest.main()
