@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_21.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-124c0a8c01bf6ac2.webp",
+  "imageSha256": "3cdd6a57b367229679674cec0bf0d9ec20498723c44faa247e701d0a58d1033d",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a dramatic scene in a dense, dark forest. A lone male figure stands atop a burning pyre of wood, surrounded by smoke and light. Below him, a large crowd of people is gathered, many with their arms raised or gesturing towards the figure on the pyre. The style is characteristic of 19th-century book illustrations, featuring heavy cross-hatching and high-contrast lighting.",
+    "visualObjectsEn": "A burning pyre, dense forest trees, smoke, foliage, ground, clothing of the figures.",
+    "recognizableCharactersOrPeopleEn": "A single male figure standing on the pyre, and a large group of onlookers or participants in the foreground and mid-ground.",
+    "uncertaintyNotes": "The specific identity of the figures and the exact narrative context are not explicitly stated in the image. The scene could represent a ritual, an execution, or a dramatic sacrifice, but the exact nature of the event is open to interpretation."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 13,
+    "paragraphIndexZeroBased": 13,
+    "exactSourceQuotation": "perceived a pyre of wood, on the top of which lay the embalmed body of the rajah, which was to be burned with his wife.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The image depicts a figure on a burning pyre surrounded by a crowd in a forest setting, which directly corresponds to the narrative description of the suttee ritual scene in Chapter 13 where the characters observe the pyre prepared for the rajah and his wife.",
+    "suggestedAltArNotApproved": "A dramatic 19th-century engraving showing a figure atop a burning pyre in a dark forest, with a crowd of onlookers gathered below.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts a forest clearing with a stream nearby, a burning funeral pyre with a body on top, and a large crowd of onlookers and participants surrounding the scene, matching the description of the Parsee and others discovering the pyre in the woods.",
+    "visualContradictions": "None",
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_18.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-9bcfd4d60775720e.webp",
+  "imageSha256": "dea1f7d46e37dd45e243cf22523739c7dabfb6e9b827797766c574b1480887d4",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting three men riding on the back of an elephant. One man, wearing a turban and traditional clothing, sits in front holding a long stick or goad. Behind him sits a man in a bowler hat and suit. Below them, seated in a separate section of the howdah or harness, is a man wearing a top hat, suit, and sideburns. The background shows a sparse, flat landscape under a sky with light clouds.",
+    "visualObjectsEn": "Elephant, howdah, turban, bowler hat, top hat, suit, long stick, goad, landscape, clouds.",
+    "recognizableCharactersOrPeopleEn": "Three men of varying attire, including one in a turban and two in Western-style suits and hats.",
+    "uncertaintyNotes": "The exact identity of the individuals and the specific geographical location are not explicitly stated in the image. The style is consistent with 19th-century book illustrations."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 11,
+    "paragraphIndexZeroBased": 43,
+    "exactSourceQuotation": "The elephant, which its owner had reared, not for a beast of burden, but for warlike purposes, was half domesticated.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene depicts three men riding an elephant, which aligns with the narrative in Chapter 11 where Phileas Fogg and his companions hire an elephant named Kiouni to travel through the Indian jungle.",
+    "suggestedAltArNotApproved": "A black and white engraving of three men riding an elephant, with one man in a turban leading and two men in Western suits and hats seated in the howdah.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows Phileas Fogg (in top hat and suit), Passepartout (in bowler hat), and the Indian guide (in turban holding a goad) riding atop the elephant Kiouni as described in the narrative text when they secure him for travel.",
+    "visualContradictions": "None.",
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

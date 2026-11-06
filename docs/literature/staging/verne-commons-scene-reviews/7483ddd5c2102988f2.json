@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_19.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-7483ddd5c2102988.webp",
+  "imageSha256": "61dfca84aa5a6657f2cfa306b7af972692f723c4738393a5111882f28fd87e95",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A colored engraving depicting a group of people in a dense, dark forest setting. A central female figure is being escorted or held by two men wearing turbans and traditional robes. Behind them is an ornate, domed structure or palanquin. To the right, a figure is seen in motion, possibly carrying a shield or weapon. The overall composition is dark and atmospheric, characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "Dense forest trees, ornate domed palanquin, traditional robes, turbans, shield, foliage, ground vegetation.",
+    "recognizableCharactersOrPeopleEn": "A central woman in traditional attire, two men in turbans flanking her, a figure on the right carrying a shield, and other indistinct figures in the background.",
+    "uncertaintyNotes": "The exact cultural or historical context of the figures is not explicitly stated in the image. The nature of the interaction between the figures (whether it is a rescue, an abduction, or a procession) is ambiguous and open to interpretation."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 22,
+    "exactSourceQuotation": "The guards who followed the young woman presented a violent contrast to her, armed as they were with naked sabres hung at their waists, and long damascened pistols, and bearing a corpse on a palanquin.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description matches the narrative of the Sati procession in Chapter 12, where a woman (Aouda) is escorted by guards in traditional attire (turbans/robes) and a palanquin is present. While the text mentions a corpse in the palanquin, the visual depiction of the woman being escorted by armed guards in a forest setting aligns with the dramatic tension of this specific sequence in the novel.",
+    "suggestedAltArNotApproved": "A colored engraving showing a woman in traditional attire being escorted by two men in turbans and robes through a dense forest, with a palanquin visible in the background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts the central young woman escorted by guards with turbans and robes, an ornate palanquin carrying the deceased rajah, and musicians or attendants in a forest procession matching the description.",
+    "visualContradictions": "None noted; the visual elements directly align with the text detailing the funeral procession of the rajah, the guards, and the young woman.",
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
