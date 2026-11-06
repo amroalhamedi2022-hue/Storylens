@@ -54,7 +54,9 @@ function validatedArt(entry,{inline=false,paragraphCount=0}={}){
     Number.isInteger(entry.afterParagraph)&&entry.afterParagraph>=0&&
     entry.afterParagraph<paragraphCount&&
     Number.isFinite(entry.aspectRatio)&&entry.aspectRatio>=.5&&entry.aspectRatio<=3.5;
- if(!ready&&!inlineReady)return null;
+ // An inline figure cannot bypass its exact passage proof by also carrying
+ // chapter-level release flags. The two approval classes are NOT interchangeable.
+ if(inline?!inlineReady:!ready)return null;
  const alt=locale(entry.altAr||entry.alt||'',entry.altEn||entry.alt||'');
  if(typeof alt!=='string'||!alt.trim())return null;
  if(typeof entry.credit!=='string'||!entry.credit.trim())return null;
