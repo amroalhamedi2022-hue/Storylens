@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p209.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-ae92d0b5f34f89f2.webp",
+  "imageSha256": "bfb737602695319df4f16daf4c7185c61f208b466a93402895a125a5f556c663",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting an interior scene with a fireplace, a bookshelf, and three figures. A woman sits in a chair on the left, looking toward a man seated on a bench in the center, who is being embraced by another woman standing behind him. A man in military-style uniform stands to the right. There is a framed portrait on the wall above the fireplace.",
+    "visualObjectsEn": "Fireplace, bookshelf, wooden chair, wooden bench, framed portrait, clothing with 18th or 19th-century style, tricorn hat held by the standing man.",
+    "recognizableCharactersOrPeopleEn": "Three adults: one seated woman, one standing woman embracing a seated man, and one standing man in uniform.",
+    "uncertaintyNotes": "The identities of the figures are based on the provided caption, but the historical accuracy of the depiction of specific characters cannot be verified. The exact era of the clothing style is an estimation based on visual cues."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
