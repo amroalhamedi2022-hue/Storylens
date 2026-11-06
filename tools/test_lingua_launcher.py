@@ -61,7 +61,7 @@ subprocess.run(["java", "-Djava.awt.headless=true", str(generator)], cwd=ROOT, c
 assert __import__("hashlib").sha256(approved.read_bytes()).hexdigest() == before, "must not overwrite source icon"
 generated = RES / "drawable-nodpi/lingua_tales_textless.png"
 output = generated.read_bytes()
-assert output[:8] == b"\\x89PNG\\r\\n\\x1a\\n" and len(output) > 120000, "real textless colour PNG required"
+assert output[:8] == b"\x89PNG\r\n\x1a\n" and len(output) > 120000, "real textless colour PNG required"
 import struct
 assert struct.unpack(">II", output[16:24]) == (1024, 1024), "adaptive source must be 1024px square"
 
