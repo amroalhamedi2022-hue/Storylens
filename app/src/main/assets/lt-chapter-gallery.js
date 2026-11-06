@@ -121,6 +121,8 @@ function addText(parent,tag,cls,text){
 function close(pushBack=true){
  const current=active;
  if(!current)return false;
+ current.moreObserver?.disconnect?.();
+ current.moreObserver=null;
  ++serial;
  active=null;
  current.dialog?.close?.();
@@ -176,12 +178,62 @@ function distinctChapterImages(story){
 // only a few dozen cards per slice, with a chapter-title/number search across
 // ALL available chapters. More cards append without resetting scroll/focus.
 const CHAPTER_BATCH_SIZE=36;
+const CHAPTER_FILTERS=Object.freeze(['all','illustrated','pending','started']);
 function normalizedQuery(value){
  return String(value||'').toLocaleLowerCase()
   .normalize('NFKD')
   .replace(/[\u064b-\u065f\u0670\u0640]/g,'')
   .replace(/[أإآ]/g,'ا').replace(/ى/g,'ي')
+  // Normalize Arabic-Indic and Eastern-Arabic chapter numerals for search.
+  // A reader typing ٣٤ or ۳۴ must reach the same source chapter as "34".
+  .replace(/[\u0660-\u0669\u06f0-\u06f9]/g,ch=>
+    String(ch.charCodeAt(0)-(ch.charCodeAt(0)<=0x0669?0x0660:0x06f0)))
   .replace(/\s+/g,' ').trim().slice(0,100);
+}
+function hasChapterReadingStart(story,index){
+ if(typeof get!=='function')return false;
+ const lastPage=get('readpage_'+story.id+'_'+index,0);
+ const lastScroll=get('scroll_'+story.id+'_'+index,0);
+ return (Number.isInteger(lastPage)&&lastPage>0)||
+  (typeof lastScroll==='number'&&Number.isFinite(lastScroll)&&lastScroll>80);
+}
+function startedInEntry(entry,index){
+ // A very long anthology may have 1001+ chapter positions. Cache the actual
+ // saved-source state once per gallery, rather than scanning local storage on
+ // every title-filter keystroke, swipe or re-render.
+ if(!entry.readingStartedCache)entry.readingStartedCache=new Map();
+ if(entry.readingStartedCache.has(index))return entry.readingStartedCache.get(index);
+ const value=hasChapterReadingStart(entry.story,index);
+ entry.readingStartedCache.set(index,value);
+ return value;
+}
+function artAvailability(entry){
+ const shown=entry.images.filter(Boolean).length;
+ const count=entry.images.length;
+ return {shown,pending:count-shown,count};
+}
+function updateArtStatus(entry){
+ const coverage=artAvailability(entry);
+ entry.missing.textContent=coverage.pending?
+  locale('صور الفصول المعتمدة متاحة: '+coverage.shown+' من '+coverage.count+
+         ' · المتبقي دون صورة: '+coverage.pending,
+         'Available chapter images: '+coverage.shown+' of '+coverage.count+
+         ' · Missing: '+coverage.pending):
+  locale('جميع الفصول لها صور متاحة','Every chapter has an available image');
+}
+function setChapterLayout(entry,mode,{save=false}={}){
+ if(!active||active!==entry)return;
+ const next=mode==='list'?'list':'rail';
+ entry.layout=next;
+ entry.track.classList.remove('lt-chapter-gallery-list-view');
+ if(next==='list')entry.track.classList.add('lt-chapter-gallery-list-view');
+ entry.layoutButton.textContent=next==='list'?
+  locale('العرض الأفقي','Horizontal cards'):locale('عرض قائمة','List view');
+ entry.layoutButton.setAttribute('aria-pressed',next==='list'?'true':'false');
+ entry.track.setAttribute('aria-label',next==='list'?
+  locale('الفصول كقائمة مرتبة','Chapters as ordered list'):
+  locale('الفصول بالترتيب','Chapters in order'));
+ if(save&&typeof put==='function')put('lt_chapter_gallery_layout',next);
 }
 function buildChapterCard(entry,story,i){
  const chapter=story.chapters[i];
@@ -199,11 +251,22 @@ function buildChapterCard(entry,story,i){
   img.loading='lazy';img.decoding='async';
   img.setAttribute('draggable','false');
   img.addEventListener('error',()=>{
+   // Real APK file missing/corrupt: treat this image as unavailable in BOTH
+   // the card and coverage filters for the rest of this gallery session.
+   if(active!==entry||entry.images[i]===null)return;
    img.remove();
    cover.classList.add('lt-chapter-image-missing');
    addText(cover,'span','lt-chapter-tile-number',String(i+1).padStart(2,'0'));
    card.classList.add('lt-chapter-art-unavailable');
    card.dataset.thumbnailState='missing-file';
+   entry.images[i]=null;
+   const creditNode=card.querySelector?.('.lt-chapter-tile-credit');
+   if(creditNode)creditNode.textContent=locale('الصورة غير متوفرة على الجهاز',
+     'Image unavailable on device');
+   else addText(card,'small','lt-chapter-tile-pending',
+     locale('الصورة غير متوفرة على الجهاز','Image unavailable on device'));
+   updateArtStatus(entry);
+   if(entry.filter?.value==='illustrated')updateChapterFilter(entry);
   },{once:true});
   cover.appendChild(img);
   card.dataset.thumbnailState=source.kind;
@@ -219,45 +282,59 @@ function buildChapterCard(entry,story,i){
  addText(card,'strong','lt-chapter-tile-heading',titleFor(chapter,i));
  if(!source)addText(card,'small','lt-chapter-tile-pending',
   locale('الصورة لم تُعتمد بعد','Image pending approval'));
- // A stored page/scroll confirms reading started, NOT finished.
- // Never fabricate a completion percentage or badge.
- const lastPage=typeof get==='function'?get('readpage_'+story.id+'_'+i,0):0;
- const lastScroll=typeof get==='function'?get('scroll_'+story.id+'_'+i,0):0;
- if((Number.isInteger(lastPage)&&lastPage>0)||
-    (typeof lastScroll==='number'&&Number.isFinite(lastScroll)&&lastScroll>80)){
+ else if(source.kind==='approved'&&source.credit)
+  addText(card,'small','lt-chapter-tile-credit',source.credit);
+ // Stored reader position means reading started, NOT that a chapter was finished.
+ if(startedInEntry(entry,i))
   addText(card,'span','lt-chapter-tile-visited',
    locale('سبق أن قرأت من هذا الفصل','Reading started'));
- }
  card.addEventListener('click',()=>openSelected(story.id,i));
  return card;
 }
 function appendChapterBatch(entry){
- if(!active||active!==entry||!entry.story)return;
- // Remove the old "more" button BEFORE appending to ensure real chapter
- // tiles remain in strict original order for keyboard/screenreader users.
- if(entry.more?.remove)entry.more.remove();
- entry.more=null;
- const until=Math.min(entry.visible.length,entry.rendered+CHAPTER_BATCH_SIZE);
- for(let j=entry.rendered;j<until;j++){
-  const index=entry.visible[j];
-  entry.track.appendChild(buildChapterCard(entry,entry.story,index));
- }
- entry.rendered=until;
- if(entry.rendered<entry.visible.length){
-  const more=document.createElement('button');
-  more.type='button';more.className='lt-chapter-gallery-more';
-  const remaining=entry.visible.length-entry.rendered;
-  more.textContent=locale('عرض المزيد من الفصول · '+remaining,
-   'Show more chapters · '+remaining);
-  more.addEventListener('click',()=>{
-   appendChapterBatch(entry);
-   // Preserve scroll and keyboard location: focus first newly appended tile,
-   // not the removed Load More button nor the start of a long book.
-   const tiles=entry.track.querySelectorAll?.('.lt-chapter-tile')||[];
-   tiles[until]?.focus?.({preventScroll:true});
-  });
-  entry.more=more;
-  entry.track.appendChild(more);
+ if(!active||active!==entry||!entry.story||entry.isAppending)return;
+ entry.isAppending=true;
+ try{
+  // One observer for one optional sentinel, never one per chapter/card.
+  entry.moreObserver?.disconnect?.();
+  entry.moreObserver=null;
+  if(entry.more?.remove)entry.more.remove();
+  entry.more=null;
+  const until=Math.min(entry.visible.length,entry.rendered+CHAPTER_BATCH_SIZE);
+  for(let j=entry.rendered;j<until;j++){
+   const index=entry.visible[j];
+   entry.track.appendChild(buildChapterCard(entry,entry.story,index));
+  }
+  entry.rendered=until;
+  if(entry.rendered<entry.visible.length){
+   const more=document.createElement('button');
+   more.type='button';more.className='lt-chapter-gallery-more';
+   const remaining=entry.visible.length-entry.rendered;
+   more.textContent=locale('عرض المزيد من الفصول · '+remaining,
+    'Show more chapters · '+remaining);
+   more.addEventListener('click',()=>{
+    appendChapterBatch(entry);
+    // Native keyboard users keep their place when a sentinel is replaced.
+    const tiles=entry.track.querySelectorAll?.('.lt-chapter-tile')||[];
+    tiles[until]?.focus?.({preventScroll:true});
+   });
+   entry.more=more;
+   entry.track.appendChild(more);
+   // Smooth touch/trackpad scrolling through long books. A manual 'More'
+   // button ALWAYS remains available for older WebViews/no observer support.
+   // The image count stays bounded: only one 36-card batch per intersection.
+   if(typeof global.IntersectionObserver==='function'){
+    const observer=new global.IntersectionObserver(records=>{
+     if(active!==entry||entry.more!==more||
+        !records.some(item=>item.isIntersecting))return;
+     appendChapterBatch(entry);
+    },{root:entry.track,rootMargin:'0px 180px 0px 180px',threshold:.01});
+    entry.moreObserver=observer;
+    observer.observe(more);
+   }
+  }
+ }finally{
+  entry.isAppending=false;
  }
 }
 // Keyboard arrows follow the actual book direction. Focus advances without
@@ -314,23 +391,31 @@ decorateLibraryChapterAccess();
 function updateChapterFilter(entry){
  if(!active||active!==entry||!entry.story)return;
  const query=normalizedQuery(entry.search?.value);
+ const mode=CHAPTER_FILTERS.includes(entry.filter?.value)?entry.filter.value:'all';
  entry.visible=[];
  for(let i=0;i<entry.story.chapters.length;i++){
   const chapter=entry.story.chapters[i];
-  const titles=normalizedQuery([chapter.title,chapter.titleAr,chapter.titleEn].filter(Boolean).join(' '));
-  if(!query||titles.includes(query)||String(i+1)===query)
-   entry.visible.push(i);
+  const titles=normalizedQuery([chapter.title,chapter.titleAr,chapter.titleEn]
+   .filter(Boolean).join(' '));
+  const matchesQuery=!query||titles.includes(query)||String(i+1)===query;
+  const matchesFilter=mode==='all'||
+   (mode==='illustrated'&&Boolean(entry.images[i]))||
+   (mode==='pending'&&!entry.images[i])||
+   (mode==='started'&&startedInEntry(entry,i));
+  if(matchesQuery&&matchesFilter)entry.visible.push(i);
  }
+ entry.moreObserver?.disconnect?.();
+ entry.moreObserver=null;
  entry.rendered=0;entry.more=null;
  entry.track.replaceChildren();
  if(!entry.visible.length){
   addText(entry.track,'p','lt-chapter-gallery-empty',
-   locale('لا يوجد فصل مطابق. جرّب رقمه أو عنوانه.',
-    'No matching chapter. Try its number or title.'));
+   locale('لا توجد فصول مطابقة لهذا البحث أو الفلتر.',
+          'No chapters match this search and filter.'));
  }else appendChapterBatch(entry);
- entry.searchSummary.textContent=query?
-  locale('نتائج البحث: '+entry.visible.length+' من '+entry.story.chapters.length,
-         'Search results: '+entry.visible.length+' of '+entry.story.chapters.length):
+ entry.searchSummary.textContent=(query||mode!=='all')?
+  locale('الفصول المعروضة: '+entry.visible.length+' من '+entry.story.chapters.length,
+         'Visible chapters: '+entry.visible.length+' of '+entry.story.chapters.length):
   locale('الفصول مرتبة بحسب النسخة الأصلية',
          'Chapters follow the original edition order');
  entry.track.setAttribute('aria-busy','false');
@@ -339,6 +424,7 @@ function renderCards(entry,story){
  if(!active||active!==entry||!entry.track?.isConnected)return;
  if(!Array.isArray(story.chapters))return;
  entry.story=story;
+ entry.readingStartedCache=new Map();
  entry.images=distinctChapterImages(story);
  const count=story.chapters.length;
  const raw=typeof get==='function'?get('chapter_'+story.id,null):null;
@@ -353,17 +439,20 @@ function renderCards(entry,story){
  entry.continue.onclick=()=>{
   if(active===entry)openSelected(story.id,entry.resume);
  };
+ entry.locate.disabled=!entry.hasProgress;
+ entry.locate.textContent=entry.hasProgress?
+  locale('حدّد الفصل '+(entry.resume+1),'Find chapter '+(entry.resume+1)):
+  locale('لا يوجد موضع قراءة محفوظ','No saved reading position');
  entry.title.textContent=bookTitle(story);
  const total=declared(story);
  entry.count.textContent=total===count
   ?locale(count+' فصلًا متاحًا',count+' available chapters')
   :locale(count+' من '+total+' فصلًا متاحًا',
     count+' of '+total+' chapters available');
- const missing=entry.images.filter(item=>!item).length;
- entry.missing.textContent=missing?
-  locale('صور الفصول قيد الاستكمال: '+missing+' من '+count,
-         'Chapter images pending: '+missing+' of '+count):
-  locale('جميع الفصول لها صور متاحة','Every chapter has an available image');
+ updateArtStatus(entry);
+ entry.filter.disabled=false;
+ entry.layoutButton.disabled=false;
+ setChapterLayout(entry,entry.layout);
  updateChapterFilter(entry);
 }
 async function prepare(id,entry){
@@ -439,6 +528,35 @@ function show(id,{historyEntry=true}={}){
  continueButton.className='lt-chapter-gallery-continue';
  continueButton.textContent=locale('متابعة القراءة','Resume reading');
  tools.appendChild(continueButton);
+ // Filters preserve the original narrative order, and never approve sources.
+ const filterLabel=document.createElement('label');
+ filterLabel.className='lt-chapter-gallery-filter-label';
+ filterLabel.textContent=locale('عرض الفصول حسب','Show chapters by');
+ const filter=document.createElement('select');
+ filter.className='lt-chapter-gallery-filter';
+ filter.disabled=true;filter.value='all';
+ filter.setAttribute('aria-label',locale('تصفية حسب الصورة وحالة القراءة',
+  'Filter chapters by image and reading status'));
+ for(const [value,ar,en] of [
+  ['all','كل الفصول','All chapters'],
+  ['illustrated','لها صورة متاحة','Available images'],
+  ['pending','تحتاج صورة','Images missing'],
+  ['started','بدأت قراءتها','Reading started']
+ ]){
+  const option=document.createElement('option');
+  option.value=value;option.textContent=locale(ar,en);
+  filter.appendChild(option);
+ }
+ filterLabel.appendChild(filter);
+ tools.appendChild(filterLabel);
+ const layoutButton=document.createElement('button');
+ layoutButton.type='button';layoutButton.disabled=true;
+ layoutButton.className='lt-chapter-gallery-layout';
+ layoutButton.textContent=locale('عرض قائمة','List view');
+ layoutButton.setAttribute('aria-label',locale('تغيير عرض الفصول',
+  'Switch horizontal cards or list layout'));
+ layoutButton.setAttribute('aria-pressed','false');
+ tools.appendChild(layoutButton);
  copy.appendChild(tools);
  const searchSummary=addText(copy,'small','lt-chapter-gallery-results','');
  searchSummary.setAttribute('role','status');
@@ -462,14 +580,41 @@ function show(id,{historyEntry=true}={}){
  sheet.appendChild(track);
  const footer=document.createElement('footer');footer.className='lt-chapter-gallery-footer';
  const missing=addText(footer,'span','lt-chapter-gallery-status','');
+ const locate=document.createElement('button');
+ locate.type='button';locate.disabled=true;
+ locate.className='lt-chapter-gallery-locate';
+ locate.textContent=locale('حدّد موضع القراءة','Find saved chapter');
+ locate.setAttribute('aria-label',locale('اعرض بطاقة الفصل الذي توقفت عنده',
+   'Locate the chapter where you stopped reading'));
+ footer.appendChild(locate);
  sheet.appendChild(footer);
  dialog.appendChild(sheet);
  dialog.addEventListener('cancel',event=>{event.preventDefault();close(true);});
  dialog.addEventListener('click',event=>{if(event.target===dialog)close(true);});
  document.body.appendChild(dialog);
- const entry={dialog,track,title,count,missing,search,continue:continueButton,
-  searchSummary,restoreFocus,token:++serial,id,rendered:0,more:null,fromReader};
+ const storedLayout=typeof get==='function'?
+  get('lt_chapter_gallery_layout','rail'):'rail';
+ const entry={dialog,track,title,count,missing,locate,search,filter,layoutButton,
+  layout:storedLayout==='list'?'list':'rail',
+  continue:continueButton,searchSummary,restoreFocus,
+  token:++serial,id,rendered:0,more:null,fromReader};
+ locate.addEventListener('click',()=>{
+  if(active!==entry||!entry.story||!entry.hasProgress)return;
+  // Locate without selecting or changing reading progress. On a 1000-chapter
+  // anthology only the bookmarked card mounts, not 1000 heavy images.
+  entry.filter.value='all';
+  entry.search.value=String(entry.resume+1);
+  updateChapterFilter(entry);
+  const card=entry.track.querySelector?.('.lt-chapter-tile');
+  card?.focus?.({preventScroll:true});
+  card?.scrollIntoView?.({block:'nearest',inline:'center',behavior:'auto'});
+ });
  search.addEventListener('input',()=>updateChapterFilter(entry));
+ filter.addEventListener('change',()=>updateChapterFilter(entry));
+ layoutButton.addEventListener('click',()=>{
+  if(active!==entry||layoutButton.disabled)return;
+  setChapterLayout(entry,entry.layout==='list'?'rail':'list',{save:true});
+ });
  active=entry;
  if(historyEntry&&!fromReader&&global.history?.pushState)
   global.history.pushState({page:'chapter-gallery',storyId:id},'','#chapters-'+encodeURIComponent(id));
