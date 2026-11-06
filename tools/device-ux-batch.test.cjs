@@ -8,7 +8,7 @@ a.match(css,/\.lt-drawer-backdrop\.open\{pointer-events:none/);
 a.match(css,/\.reader \.lt-book-page\{\s*min-height:0!important/);
 a.match(read('app/src/main/assets/lt-tap-feedback.js'),/--lt-bubble-size/);
 a.match(read('app/build.gradle.kts'),/applicationIdSuffix = "\.preview"/);
-a.match(read('app/src/main/res/drawable/lingua_icon_foreground.xml'),/lingua_icon_mark/);
+a.match(read('app/src/main/res/drawable/lingua_icon_foreground.xml'),/lingua_tales_textless/);
 console.log('PASS: reader/device UX feedback regression');
 
 const touchCss=require('node:fs').readFileSync('app/src/main/assets/lt-device-acceptance.css','utf8');
