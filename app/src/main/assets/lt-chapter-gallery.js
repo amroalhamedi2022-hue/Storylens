@@ -121,6 +121,8 @@ function addText(parent,tag,cls,text){
 function close(pushBack=true){
  const current=active;
  if(!current)return false;
+ current.moreObserver?.disconnect?.();
+ current.moreObserver=null;
  ++serial;
  active=null;
  current.dialog?.close?.();
@@ -280,32 +282,49 @@ function buildChapterCard(entry,story,i){
  return card;
 }
 function appendChapterBatch(entry){
- if(!active||active!==entry||!entry.story)return;
- // Remove the old "more" button BEFORE appending to ensure real chapter
- // tiles remain in strict original order for keyboard/screenreader users.
- if(entry.more?.remove)entry.more.remove();
- entry.more=null;
- const until=Math.min(entry.visible.length,entry.rendered+CHAPTER_BATCH_SIZE);
- for(let j=entry.rendered;j<until;j++){
-  const index=entry.visible[j];
-  entry.track.appendChild(buildChapterCard(entry,entry.story,index));
- }
- entry.rendered=until;
- if(entry.rendered<entry.visible.length){
-  const more=document.createElement('button');
-  more.type='button';more.className='lt-chapter-gallery-more';
-  const remaining=entry.visible.length-entry.rendered;
-  more.textContent=locale('عرض المزيد من الفصول · '+remaining,
-   'Show more chapters · '+remaining);
-  more.addEventListener('click',()=>{
-   appendChapterBatch(entry);
-   // Preserve scroll and keyboard location: focus first newly appended tile,
-   // not the removed Load More button nor the start of a long book.
-   const tiles=entry.track.querySelectorAll?.('.lt-chapter-tile')||[];
-   tiles[until]?.focus?.({preventScroll:true});
-  });
-  entry.more=more;
-  entry.track.appendChild(more);
+ if(!active||active!==entry||!entry.story||entry.isAppending)return;
+ entry.isAppending=true;
+ try{
+  // One observer for one optional sentinel, never one per chapter/card.
+  entry.moreObserver?.disconnect?.();
+  entry.moreObserver=null;
+  if(entry.more?.remove)entry.more.remove();
+  entry.more=null;
+  const until=Math.min(entry.visible.length,entry.rendered+CHAPTER_BATCH_SIZE);
+  for(let j=entry.rendered;j<until;j++){
+   const index=entry.visible[j];
+   entry.track.appendChild(buildChapterCard(entry,entry.story,index));
+  }
+  entry.rendered=until;
+  if(entry.rendered<entry.visible.length){
+   const more=document.createElement('button');
+   more.type='button';more.className='lt-chapter-gallery-more';
+   const remaining=entry.visible.length-entry.rendered;
+   more.textContent=locale('عرض المزيد من الفصول · '+remaining,
+    'Show more chapters · '+remaining);
+   more.addEventListener('click',()=>{
+    appendChapterBatch(entry);
+    // Native keyboard users keep their place when a sentinel is replaced.
+    const tiles=entry.track.querySelectorAll?.('.lt-chapter-tile')||[];
+    tiles[until]?.focus?.({preventScroll:true});
+   });
+   entry.more=more;
+   entry.track.appendChild(more);
+   // Smooth touch/trackpad scrolling through long books. A manual 'More'
+   // button ALWAYS remains available for older WebViews/no observer support.
+   // The image count stays bounded: only one 36-card batch per intersection.
+   if(typeof global.IntersectionObserver==='function'){
+    const observer=new global.IntersectionObserver(records=>{
+     if(active!==entry||entry.more!==more||
+        !records.some(item=>item.isIntersecting))return;
+     appendChapterBatch(entry);
+    },{root:entry.track,rootMargin:'0px 180px 0px 180px',threshold:.01});
+    entry.moreObserver=observer;
+    observer.observe(more);
+   }
+  }
+ }finally{
+  entry.isAppending=false;
  }
 }
 // Keyboard arrows follow the actual book direction. Focus advances without
@@ -375,6 +394,8 @@ function updateChapterFilter(entry){
    (mode==='started'&&hasChapterReadingStart(entry.story,i));
   if(matchesQuery&&matchesFilter)entry.visible.push(i);
  }
+ entry.moreObserver?.disconnect?.();
+ entry.moreObserver=null;
  entry.rendered=0;entry.more=null;
  entry.track.replaceChildren();
  if(!entry.visible.length){
