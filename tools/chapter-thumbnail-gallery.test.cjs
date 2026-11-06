@@ -211,6 +211,11 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
   afterParagraph:52}];
  assert.equal(wrongParagraph.api.chapterImage(wrongParagraph.story,1),null,
   'misaligned paragraph cannot be used as chapter thumbnail');
+ const maskedInline=scenario();
+ maskedInline.story.chapters[1].inlineArt=[{...inline.story.chapters[1].inlineArt[0],
+  sourceParagraphExact:false,releaseApproved:true,rightsStatus:'APPROVED'}];
+ assert.equal(maskedInline.api.chapterImage(maskedInline.story,1),null,
+  'chapter-level approval must NOT bypass exact inline art paragraph matching');
  assert.equal(s.api.openSelected('example-story',0),false,
   'after closing the gallery old external callers must not overwrite progress');
 
