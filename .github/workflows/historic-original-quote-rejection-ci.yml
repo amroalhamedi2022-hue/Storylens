@@ -1,0 +1,30 @@
+name: Lingua Tales - reject invalid AI source excerpts without blocking historic art pipeline
+on:
+  pull_request:
+    paths:
+      - 'tools/gemini_suggest_verne_plate_scenes.py'
+      - 'tools/test_original_quote_rejection_nonblocking.py'
+      - '.github/workflows/historic-original-quote-rejection-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/gemini_suggest_verne_plate_scenes.py'
+      - 'tools/test_original_quote_rejection_nonblocking.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-fail-closed-resumable-image-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test exact original literal quotes and reject hallucinations without stalling batches
+        run: |
+          python tools/test_original_quote_rejection_nonblocking.py
+          python tools/gemini_suggest_verne_plate_scenes.py --self-test
