@@ -4,7 +4,7 @@
   "scope": "checked-in main only; recovered PR16 historical source is counted only after merged",
   "policy": "at least one distinct locally stored, sourced, chapter-matched and rights-cleared primary image per chapter",
   "counts": {
-    "localCandidateChapterCards": 275,
+    "localCandidateChapterCards": 280,
     "readyChapterCards": 0,
     "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1141,
     "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1141
@@ -58,12 +58,23 @@
     {
       "bookId": "wells-war-of-the-worlds-1898",
       "title": "The War of the Worlds",
-      "sourceState": "27 original chapters staged; bilingual/rights pending",
+      "sourceState": "27 original English 17+10 chapters pinned to exact source titles and SHA, five authentic 1906 Correa scene candidate plates, all release rights pending",
       "chapterCount": 27,
-      "localCandidateChapters": 0,
+      "mappedChapterNumbers": [
+        5,
+        9,
+        16,
+        23,
+        25
+      ],
+      "readyChapterNumbers": [],
+      "localCandidateChapters": 5,
       "readyForUICards": 0,
-      "missingImageChapters": 27,
+      "missingImageChapters": 22,
       "missingReadyChapters": 27,
+      "imageMap": "docs/literature/staging/the-war-of-the-worlds/chapter-image-map.json",
+      "sourceHashAudit": "UPSTREAM_GIT_BLOB_SHA1_AND_ACTUAL_XHTML_TITLES",
+      "sourceStructuralUnits": 4,
       "unassignedHistoricalCorreaImageFiles": 108,
       "archivedLocalHistoricArt": 108
     },
