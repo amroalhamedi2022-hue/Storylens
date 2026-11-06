@@ -1,0 +1,161 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 25,
+  "chapterTitle": "In which a slight glimpse is had of San Francisco.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "e2e699dece7af134650c3be298eb848552c8ca9adc171539c5bd62177f654f04",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "It was seven in the morning when Mr. Fogg, Aouda, and Passepartout set foot upon the American continent, if this name can be given to the floating quay upon which they disembarked. These quays, rising and falling with the tide, thus facilitate the loading and unloading of vessels. Alongside them were clippers of all sizes, steamers of all nationalities, and the steamboats, with several decks rising one above the other, which ply on the Sacramento and its tributaries. There were also heaped up the products of a commerce which extends to Mexico, Chile, Peru, Brazil, Europe, Asia, and all the Pacific islands.",
+      "existingArabicDraft": "كانت الساعة السابعة صباحًا حين وطئت أقدام السيد فوغ وأودا وباسبارتو القارة الأمريكية، إن صح إطلاق هذا الاسم على الرصيف العائم الذي نزلوا عليه. وكانت هذه الأرصفة ترتفع وتهبط مع المد فتسهّل تحميل السفن وتفريغها. وبجوارها سفن شراعية سريعة وبواخر من جنسيات شتى وسفن بخارية متعددة الطوابق تعمل على نهر ساكرامنتو وروافده، إلى جانب بضائع تجارة تمتد إلى المكسيك وتشيلي وبيرو والبرازيل وأوروبا وآسيا وجزر المحيط الهادئ."
+    },
+    {
+      "index": 1,
+      "en": "Passepartout, in his joy on reaching at last the American continent, thought he would manifest it by executing a perilous vault in fine style; but, tumbling upon some worm-eaten planks, he fell through them. Put out of countenance by the manner in which he thus “set foot” upon the New World, he uttered a loud cry, which so frightened the innumerable cormorants and pelicans that are always perched upon these movable quays, that they flew noisily away.",
+      "existingArabicDraft": "ومن شدة فرح باسبارتو بوصوله أخيرًا إلى القارة الأمريكية، أراد التعبير عن سروره بقفزة بهلوانية خطرة؛ لكنه سقط على ألواح متآكلة من الديدان، فانهار اللوح تحته. وأحرجه أن تكون تلك طريقته في «وطء» العالم الجديد، فأطلق صرخة عالية أفزعت طيور الغاق والبجع الكثيرة التي تقف عادة على الأرصفة العائمة، فطارَت صاخبة."
+    },
+    {
+      "index": 2,
+      "en": "Mr. Fogg, on reaching shore, proceeded to find out at what hour the first train left for New York, and learned that this was at six o’clock p.m.; he had, therefore, an entire day to spend in the Californian capital. Taking a carriage at a charge of three dollars, he and Aouda entered it, while Passepartout mounted the box beside the driver, and they set out for the International Hotel.",
+      "existingArabicDraft": "عند وصول السيد فوغ إلى الشاطئ، سأل عن موعد أول قطار إلى نيويورك، فعلم أنه يغادر السادسة مساءً، وبذلك بقي له يوم كامل في عاصمة كاليفورنيا. استأجر عربة بثلاثة دولارات، فركبها هو وأودا، بينما جلس باسبارتو بجوار السائق، وانطلقوا إلى فندق إنترناشونال."
+    },
+    {
+      "index": 3,
+      "en": "From his exalted position Passepartout observed with much curiosity the wide streets, the low, evenly ranged houses, the Anglo-Saxon Gothic churches, the great docks, the palatial wooden and brick warehouses, the numerous conveyances, omnibuses, horsecars, and upon the sidewalks, not only Americans and Europeans, but Chinese and Indians. Passepartout was surprised at all he saw. San Francisco was no longer the legendary city of 1849⁠—a city of banditti, assassins, and incendiaries, who had flocked hither in crowds in pursuit of plunder; a paradise of outlaws, where they gambled with gold-dust, a revolver in one hand and a bowie-knife in the other: it was now a great commercial emporium.",
+      "existingArabicDraft": "ومن موضعه المرتفع، راح باسبارتو يتأمل الشوارع الواسعة والمنازل المنخفضة المتراصة والكنائس القوطية الأنغلوسكسونية والأحواض والمخازن الخشبية والطوبية الفخمة ووسائل النقل الكثيرة. وعلى الأرصفة رأى أمريكيين وأوروبيين وصينيين وسكانًا أصليين. أدهشه كل ما رآه؛ فسان فرانسيسكو لم تعد مدينة 1849 الأسطورية التي اشتهرت باللصوص والقتلة ومشعلي الحرائق الباحثين عن النهب، ولا جنة الخارجين على القانون الذين يقامرون بغبار الذهب ومسدس في يد وسكين في الأخرى؛ بل غدت مركزًا تجاريًا عظيمًا."
+    },
+    {
+      "index": 4,
+      "en": "The lofty tower of its City Hall overlooked the whole panorama of the streets and avenues, which cut each other at right-angles, and in the midst of which appeared pleasant, verdant squares, while beyond appeared the Chinese quarter, seemingly imported from the Celestial Empire in a toy-box. Sombreros and red shirts and plumed Indians were rarely to be seen; but there were silk hats and black coats everywhere worn by a multitude of nervously active, gentlemanly-looking men. Some of the streets⁠—especially Montgomery Street, which is to San Francisco what Regent Street is to London, the Boulevard des Italiens to Paris, and Broadway to New York⁠—were lined with splendid and spacious stores, which exposed in their windows the products of the entire world.",
+      "existingArabicDraft": "كان برج مبنى البلدية الشاهق يطل على شوارع تتقاطع بزوايا قائمة وتفصل بينها ساحات خضراء. وبدا الحي الصيني كأنه قطعة من الإمبراطورية السماوية داخل صندوق ألعاب. قلّ أن ترى قبعات السومبريرو والقمصان الحمراء والسكان الأصليين ذوي الريش؛ أما القبعات الحريرية والمعاطف السوداء فكانت منتشرة بين رجال نشيطين مهذبين. واصطفت المتاجر الفخمة الواسعة، ولا سيما في شارع مونتغمري، الذي يقابل ريجنت في لندن والبولفار دي إيتاليان في باريس وبرودواي في نيويورك، وكانت واجهاتها تعرض منتجات العالم كله."
+    },
+    {
+      "index": 5,
+      "en": "When Passepartout reached the International Hotel, it did not seem to him as if he had left England at all.",
+      "existingArabicDraft": "عندما وصل باسبارتو إلى فندق إنترناشونال، لم يشعر كأنه غادر إنجلترا أصلًا."
+    },
+    {
+      "index": 6,
+      "en": "The ground floor of the hotel was occupied by a large bar, a sort of restaurant freely open to all passersby, who might partake of dried beef, oyster soup, biscuits, and cheese, without taking out their purses. Payment was made only for the ale, porter, or sherry which was drunk. This seemed “very American” to Passepartout. The hotel refreshment-rooms were comfortable, and Mr. Fogg and Aouda, installing themselves at a table, were abundantly served on diminutive plates by negroes of darkest hue.",
+      "existingArabicDraft": "كان الطابق الأرضي حانة كبيرة أشبه بمطعم مفتوح لكل عابر سبيل؛ يمكن للمرء تناول اللحم المجفف وحساء المحار والبسكويت والجبن دون إخراج محفظته، ولا يدفع إلا ثمن الجعة أو البيرة الداكنة أو نبيذ الشيري. بدا ذلك لباسبارتو «أمريكيًا جدًا». وكانت قاعات الطعام مريحة، وجلس السيد فوغ وأودا إلى مائدة قُدمت لهما عليها وجبات وافرة في أطباق صغيرة على أيدي رجال سود ذوي بشرة داكنة."
+    },
+    {
+      "index": 7,
+      "en": "After breakfast, Mr. Fogg, accompanied by Aouda, started for the English consulate to have his passport visaed. As he was going out, he met Passepartout, who asked him if it would not be well, before taking the train, to purchase some dozens of Enfield rifles and Colt’s revolvers. He had been listening to stories of attacks upon the trains by the Sioux and Pawnees. Mr. Fogg thought it a useless precaution, but told him to do as he thought best, and went on to the consulate.",
+      "existingArabicDraft": "بعد الإفطار، انطلق السيد فوغ وأودا إلى القنصلية الإنجليزية لتصديق جواز سفره. وعند خروجه قابله باسبارتو وسأله إن كان ينبغي شراء بنادق إنفيلد ومسدسات كولت قبل ركوب القطار؛ فقد سمع قصصًا عن هجمات أفراد من قبيلتي السيو والباوني على القطارات. رأى السيد فوغ أن ذلك احتياط لا داعي له، لكنه ترك له حرية التصرف ومضى إلى القنصلية."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كانت الساعة السابعة صباحًا حين وطئت أقدام السيد فوغ وأودا وباسبارتو القارة الأمريكية، إن صح إطلاق هذا الاسم على الرصيف العائم الذي نزلوا عليه. وكانت هذه الأرصفة ترتفع وتهبط مع المد فتسهّل تحميل السفن وتفريغها. وبجوارها سفن شراعية سريعة وبواخر من جنسيات شتى وسفن بخارية متعددة الطوابق تعمل على نهر ساكرامنتو وروافده، إلى جانب بضائع تجارة تمتد إلى المكسيك وتشيلي وبيرو والبرازيل وأوروبا وآسيا وجزر المحيط الهادئ."
+    },
+    {
+      "index": 1,
+      "ar": "ومن شدة فرح باسبارتو بوصوله أخيرًا إلى القارة الأمريكية، أراد التعبير عن سروره بقفزة بهلوانية خطرة؛ لكنه سقط على ألواح متآكلة من الديدان، فانهار اللوح تحته. وأحرجه أن تكون تلك طريقته في «وطء» العالم الجديد، فأطلق صرخة عالية أفزعت طيور الغاق والبجع الكثيرة التي تقف عادة على الأرصفة العائمة، فطارَت صاخبة."
+    },
+    {
+      "index": 2,
+      "ar": "عند وصول السيد فوغ إلى الشاطئ، سأل عن موعد أول قطار إلى نيويورك، فعلم أنه يغادر السادسة مساءً، وبذلك بقي له يوم كامل في عاصمة كاليفورنيا. استأجر عربة بثلاثة دولارات، فركبها هو وأودا، بينما جلس باسبارتو بجوار السائق، وانطلقوا إلى فندق إنترناشونال."
+    },
+    {
+      "index": 3,
+      "ar": "ومن موضعه المرتفع، راح باسبارتو يتأمل الشوارع الواسعة والمنازل المنخفضة المتراصة والكنائس القوطية الأنغلوسكسونية والأحواض والمخازن الخشبية والطوبية الفخمة ووسائل النقل الكثيرة. وعلى الأرصفة رأى أمريكيين وأوروبيين وصينيين وسكانًا أصليين. أدهشه كل ما رآه؛ فسان فرانسيسكو لم تعد مدينة 1849 الأسطورية التي اشتهرت باللصوص والقتلة ومشعلي الحرائق الباحثين عن النهب، ولا جنة الخارجين على القانون الذين يقامرون بغبار الذهب ومسدس في يد وسكين في الأخرى؛ بل غدت مركزًا تجاريًا عظيمًا."
+    },
+    {
+      "index": 4,
+      "ar": "كان برج مبنى البلدية الشاهق يطل على شوارع تتقاطع بزوايا قائمة وتفصل بينها ساحات خضراء. وبدا الحي الصيني كأنه قطعة من الإمبراطورية السماوية داخل صندوق ألعاب. قلّ أن ترى قبعات السومبريرو والقمصان الحمراء والسكان الأصليين ذوي الريش؛ أما القبعات الحريرية والمعاطف السوداء فكانت منتشرة بين رجال نشيطين مهذبين. واصطفت المتاجر الفخمة الواسعة، ولا سيما في شارع مونتغمري، الذي يقابل ريجنت في لندن والبولفار دي إيتاليان في باريس وبرودواي في نيويورك، وكانت واجهاتها تعرض منتجات العالم كله."
+    },
+    {
+      "index": 5,
+      "ar": "عندما وصل باسبارتو إلى فندق إنترناشونال، لم يشعر كأنه غادر إنجلترا أصلًا."
+    },
+    {
+      "index": 6,
+      "ar": "كان الطابق الأرضي حانة كبيرة أشبه بمطعم مفتوح لكل عابر سبيل؛ يمكن للمرء تناول اللحم المجفف وحساء المحار والبسكويت والجبن دون إخراج محفظته، ولا يدفع إلا ثمن الجعة أو البيرة الداكنة أو نبيذ الشيري. بدا ذلك لباسبارتو «أمريكيًا جدًا». وكانت قاعات الطعام مريحة، وجلس السيد فوغ وأودا إلى مائدة قُدمت لهما عليها وجبات وافرة في أطباق صغيرة على أيدي رجال سود ذوي بشرة داكنة."
+    },
+    {
+      "index": 7,
+      "ar": "بعد الإفطار، انطلق السيد فوغ وأودا إلى القنصلية الإنجليزية لتصديق جواز سفره. وعند خروجه قابله باسبارتو وسأله إن كان ينبغي شراء بنادق إنفيلد ومسدسات كولت قبل ركوب القطار؛ فقد سمع قصصًا عن هجمات أفراد من قبيلتي السيو والباوني على القطارات. رأى السيد فوغ أن ذلك احتياط لا داعي له، لكنه ترك له حرية التصرف ومضى إلى القنصلية."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "تمت ترجمة worm-eaten planks (ألواح متآكلة بسبب الدود) إلى (ألواح متآكلة من الديدان) وهو خطأ طفيف في صياغة المعنى."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

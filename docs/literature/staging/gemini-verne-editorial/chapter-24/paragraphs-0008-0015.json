@@ -1,0 +1,160 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 24,
+  "chapterTitle": "During which Mr. Fogg and party cross the Pacific Ocean.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "de34d05844aadd04fe541ec2ee11d973d9b24b735401c5bb16b22d24c1051322",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "She often chatted with Passepartout, who did not fail to perceive the state of the lady’s heart; and, being the most faithful of domestics, he never exhausted his eulogies of Phileas Fogg’s honesty, generosity, and devotion. He took pains to calm Aouda’s doubts of a successful termination of the journey, telling her that the most difficult part of it had passed, that now they were beyond the fantastic countries of Japan and China, and were fairly on their way to civilised places again. A railway train from San Francisco to New York, and a transatlantic steamer from New York to Liverpool, would doubtless bring them to the end of this impossible journey round the world within the period agreed upon.",
+      "existingArabicDraft": "كثيرًا ما كانت تتحدث مع باسبارتو، الذي أدرك مشاعرها، وبصفته أكثر الخدم وفاءً لم يتوقف عن الثناء على أمانة فوغ وكرمه وإخلاصه. وكان يحرص على تبديد شكوك أودا في نجاح الرحلة، ويخبرها أن الجزء الأصعب قد انقضى، وأنهم تجاوزوا الآن غرائب اليابان والصين وهم في طريقهم إلى بلاد مألوفة من جديد. فلا شك أن قطارًا من سان فرانسيسكو إلى نيويورك، ثم باخرة تعبر الأطلسي من نيويورك إلى ليفربول، سيُكملان هذه الرحلة المستحيلة حول العالم ضمن المدة المتفق عليها."
+    },
+    {
+      "index": 9,
+      "en": "On the ninth day after leaving Yokohama, Phileas Fogg had traversed exactly one half of the terrestrial globe. The General Grant passed, on the 23rd of November, the one hundred and eightieth meridian, and was at the very antipodes of London. Mr. Fogg had, it is true, exhausted fifty-two of the eighty days in which he was to complete the tour, and there were only twenty-eight left. But, though he was only halfway by the difference of meridians, he had really gone over two-thirds of the whole journey; for he had been obliged to make long circuits from London to Aden, from Aden to Bombay, from Calcutta to Singapore, and from Singapore to Yokohama. Could he have followed without deviation the fiftieth parallel, which is that of London, the whole distance would only have been about twelve thousand miles; whereas he would be forced, by the irregular methods of locomotion, to traverse twenty-six thousand, of which he had, on the 23rd of November, accomplished seventeen thousand five hundred. And now the course was a straight one, and Fix was no longer there to put obstacles in their way!",
+      "existingArabicDraft": "في اليوم التاسع بعد مغادرة يوكوهاما، كان فوغ قد قطع نصف الكرة الأرضية تمامًا. ففي الثالث والعشرين من نوفمبر اجتازت جنرال غرانت خط الطول المئة والثمانين، وأصبحت عند النقطة المقابلة تمامًا للندن على الجانب الآخر من الأرض. صحيح أن فوغ استنفد اثنين وخمسين يومًا من أصل الثمانين المخصصة للرحلة، ولم يبقَ له سوى ثمانية وعشرين يومًا. لكنه، رغم أنه قطع نصف المسافة وفق فرق خطوط الطول، كان قد اجتاز فعليًا ثلثي الرحلة؛ إذ اضطر إلى اتخاذ مسارات التفافية طويلة من لندن إلى عدن، ومن عدن إلى بومباي، ومن كلكتا إلى سنغافورة، ومن سنغافورة إلى يوكوهاما. ولو استطاع السير دون انحراف على خط العرض الخمسين، وهو خط لندن، لما تجاوزت المسافة نحو اثني عشر ألف ميل؛ لكنه سيضطر بسبب وسائل النقل غير المنتظمة إلى قطع ستة وعشرين ألف ميل، وقد أنجز منها في الثالث والعشرين من نوفمبر سبعة عشر ألفًا وخمسمئة. أما الآن فكان المسار مستقيمًا، ولم يعد فيكس موجودًا ليضع العقبات في طريقهم!"
+    },
+    {
+      "index": 10,
+      "en": "It happened also, on the 23rd of November, that Passepartout made a joyful discovery. It will be remembered that the obstinate fellow had insisted on keeping his famous family watch at London time, and on regarding that of the countries he had passed through as quite false and unreliable. Now, on this day, though he had not changed the hands, he found that his watch exactly agreed with the ship’s chronometers. His triumph was hilarious. He would have liked to know what Fix would say if he were aboard!",
+      "existingArabicDraft": "حدث أيضًا في الثالث والعشرين من نوفمبر أن باسبارتو توصل إلى اكتشاف أسعده. فقد سبق أن أصرّ هذا العنيد على الاحتفاظ بساعته العائلية مضبوطة على توقيت لندن، معتبرًا توقيت البلدان التي مرّ بها خاطئًا لا يُعتمد عليه. وفي ذلك اليوم، ورغم أنه لم يحرّك عقاربها، وجد أن ساعته تطابق تمامًا كرونومترات السفينة. فغمره انتصار مرح، وتمنى لو يعرف ما الذي سيقوله فيكس لو كان على متنها!"
+    },
+    {
+      "index": 11,
+      "en": "“The rogue told me a lot of stories,” repeated Passepartout, “about the meridians, the sun, and the moon! Moon, indeed! moonshine more likely! If one listened to that sort of people, a pretty sort of time one would keep! I was sure that the sun would some day regulate itself by my watch!”",
+      "existingArabicDraft": "«لقد أغرقني ذلك المحتال بالحكايات»، كرر باسبارتو، «عن خطوط الطول والشمس والقمر! القمر؟ بل كلام فارغ على الأرجح! لو استمع المرء إلى أمثال هؤلاء، لما عرف كيف يضبط وقته! كنت واثقًا أن الشمس ستضطر يومًا إلى ضبط نفسها على ساعتي!»"
+    },
+    {
+      "index": 12,
+      "en": "Passepartout was ignorant that, if the face of his watch had been divided into twenty-four hours, like the Italian clocks, he would have no reason for exultation; for the hands of his watch would then, instead of as now indicating nine o’clock in the morning, indicate nine o’clock in the evening, that is, the twenty-first hour after midnight precisely the difference between London time and that of the one hundred and eightieth meridian. But if Fix had been able to explain this purely physical effect, Passepartout would not have admitted, even if he had comprehended it. Moreover, if the detective had been on board at that moment, Passepartout would have joined issue with him on a quite different subject, and in an entirely different manner.",
+      "existingArabicDraft": "لم يكن باسبارتو يعلم أنه لو قُسم وجه ساعته إلى أربع وعشرين ساعة، مثل الساعات الإيطالية، لما كان هناك ما يدعو إلى ابتهاجه؛ إذ كانت العقارب ستشير، بدلًا من التاسعة صباحًا كما الآن، إلى التاسعة مساءً، أي إلى الساعة الحادية والعشرين بعد منتصف الليل، وهو بالضبط فرق التوقيت بين لندن وخط الطول المئة والثمانين. ولو استطاع فيكس شرح هذه الظاهرة الفيزيائية البحتة له، لما اقتنع باسبارتو حتى لو فهمها. ثم إن وجود المحقق على متن السفينة في تلك اللحظة كان سيقود باسبارتو إلى مجادلته في موضوع آخر تمامًا وبطريقة مختلفة كليًا."
+    },
+    {
+      "index": 13,
+      "en": "Where was Fix at that moment?",
+      "existingArabicDraft": "أين كان فيكس في تلك اللحظة؟"
+    },
+    {
+      "index": 14,
+      "en": "He was actually on board the General Grant.",
+      "existingArabicDraft": "كان في الواقع على متن جنرال غرانت."
+    },
+    {
+      "index": 15,
+      "en": "On reaching Yokohama, the detective, leaving Mr. Fogg, whom he expected to meet again during the day, had repaired at once to the English consulate, where he at last found the warrant of arrest. It had followed him from Bombay, and had come by the Carnatic, on which steamer he himself was supposed to be. Fix’s disappointment may be imagined when he reflected that the warrant was now useless. Mr. Fogg had left English ground, and it was now necessary to procure his extradition!",
+      "existingArabicDraft": "عندما وصل فيكس إلى يوكوهاما، ترك السيد فوغ، متوقعًا أن يلتقيه مجددًا خلال النهار، واتجه فورًا إلى القنصلية الإنجليزية حيث عثر أخيرًا على مذكرة التوقيف. كانت قد لحقته من بومباي ووصلت على متن كارنيتيك، وهي السفينة التي كان يُفترض أنه سافر عليها. ويمكن تخيّل خيبة أمل فيكس حين أدرك أن المذكرة أصبحت عديمة الفائدة؛ فقد غادر فوغ الأراضي الإنجليزية، وأصبح من الضروري طلب تسليمه!"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كثيرًا ما كانت تتحدث مع باسبارتو، الذي أدرك مشاعرها، وبصفته أكثر الخدم وفاءً لم يتوقف عن الثناء على أمانة فوغ وكرمه وإخلاصه. وكان يحرص على تبديد شكوك أودا في نجاح الرحلة، ويخبرها أن الجزء الأصعب قد انقضى، وأنهم تجاوزوا الآن غرائب اليابان والصين وهم في طريقهم إلى بلاد مألوفة من جديد. فلا شك أن قطارًا من سان فرانسيسكو إلى نيويورك، ثم باخرة تعبر الأطلسي من نيويورك إلى ليفربول، سيُكملان هذه الرحلة المستحيلة حول العالم ضمن المدة المتفق عليها."
+    },
+    {
+      "index": 1,
+      "ar": "في اليوم التاسع بعد مغادرة يوكوهاما، كان فيلياس فوغ قد قطع نصف الكرة الأرضية تمامًا. ففي الثالث والعشرين من نوفمبر اجتازت جنرال غرانت خط الطول المئة والثمانين، وأصبحت عند النقطة المقابلة تمامًا للندن على الجانب الآخر من الأرض. صحيح أن السيد فوغ استنفد اثنين وخمسين يومًا من أصل الثمانين المخصصة للرحلة، ولم يبقَ له سوى ثمانية وعشرين يومًا. لكنه، رغم أنه قطع نصف المسافة وفق فرق خطوط الطول، كان قد اجتاز فعليًا ثلثي الرحلة؛ إذ اضطر إلى اتخاذ مسارات التفافية طويلة من لندن إلى عدن، ومن عدن إلى بومباي، ومن كلكتا إلى سنغافورة، ومن سنغافورة إلى يوكوهاما. ولو استطاع السير دون انحراف على خط العرض الخمسين، وهو خط لندن، لما تجاوزت المسافة نحو اثني عشر ألف ميل؛ لكنه سيضطر بسبب وسائل النقل غير المنتظمة إلى قطع ستة وعشرين ألف ميل، وقد أنجز منها في الثالث والعشرين من نوفمبر سبعة عشر ألفًا وخمسمئة. أما الآن فكان المسار مستقيمًا، ولم يعد فيكس موجودًا ليضع العقبات في طريقهم!"
+    },
+    {
+      "index": 2,
+      "ar": "حدث أيضًا في الثالث والعشرين من نوفمبر أن باسبارتو توصل إلى اكتشاف أسعده. فقد سبق أن أصرّ هذا العنيد على الاحتفاظ بساعته العائلية مضبوطة على توقيت لندن، معتبرًا توقيت البلدان التي مرّ بها خاطئًا لا يُعتمد عليه. وفي ذلك اليوم، ورغم أنه لم يحرّك عقاربها، وجد أن ساعته تطابق تمامًا كرونومترات السفينة. فغمره انتصار مرح، وتمنى لو يعرف ما الذي سيقوله فيكس لو كان على متنها!"
+    },
+    {
+      "index": 3,
+      "ar": "«لقد أغرقني ذلك المحتال بالحكايات»، كرر باسبارتو، «عن خطوط الطول والشمس والقمر! القمر؟ بل كلام فارغ على الأرجح! لو استمع المرء إلى أمثال هؤلاء، لما عرف كيف يضبط وقته! كنت واثقًا أن الشمس ستضطر يومًا إلى ضبط نفسها على ساعتي!»"
+    },
+    {
+      "index": 4,
+      "ar": "لم يكن باسبارتو يعلم أنه لو قُسم وجه ساعته إلى أربع وعشرين ساعة، مثل الساعات الإيطالية، لما كان هناك ما يدعو إلى ابتهاجه؛ إذ كانت العقارب ستشير، بدلًا من التاسعة صباحًا كما الآن، إلى التاسعة مساءً، أي إلى الساعة الحادية والعشرين بعد منتصف الليل، وهو بالضبط فرق التوقيت بين لندن وخط الطول المئة والثمانين. ولو استطاع فيكس شرح هذه الظاهرة الفيزيائية البحتة له، لما اقتنع باسبارتو حتى لو فهمها. ثم إن وجود المحقق على متن السفينة في تلك اللحظة كان سيقود باسبارتو إلى مجادلته في موضوع آخر تمامًا وبطريقة مختلفة كليًا."
+    },
+    {
+      "index": 5,
+      "ar": "أين كان فيكس في تلك اللحظة؟"
+    },
+    {
+      "index": 6,
+      "ar": "كان في الواقع على متن جنرال غرانت."
+    },
+    {
+      "index": 7,
+      "ar": "عندما وصل فيكس إلى يوكوهاما، ترك السيد فوغ، متوقعًا أن يلتقيه مجددًا خلال النهار، واتجه فورًا إلى القنصلية الإنجليزية حيث عثر أخيرًا على مذكرة التوقيف. كانت قد لحقته من بومباي ووصلت على متن كارنيتيك، وهي السفينة التي كان يُفترض أنه سافر عليها. ويمكن تخيّل خيبة أمل فيكس حين أدرك أن المذكرة أصبحت عديمة الفائدة؛ فقد غادر فوغ الأراضي الإنجليزية، وأصبح من الضروري طلب تسليمه!"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

@@ -1,0 +1,161 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 25,
+  "chapterTitle": "In which a slight glimpse is had of San Francisco.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "de9878ebbc76313bec70b7591eefebd77bcbd658179ac7c126b6f2444ac8fb2c",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "For what purpose was this meeting? What was the occasion of this excited assemblage? Phileas Fogg could not imagine. Was it to nominate some high official⁠—a governor or member of Congress? It was not improbable, so agitated was the multitude before them.",
+      "existingArabicDraft": "ما الغرض من هذا الاجتماع؟ وما سبب هذا التجمع المتحمس؟ لم يستطع فوغ تخمين ذلك. أكانوا يرشحون مسؤولًا كبيرًا، كحاكم أو عضو في الكونغرس؟ لم يكن ذلك مستبعدًا، نظرًا إلى اضطراب الجموع أمامهم."
+    },
+    {
+      "index": 17,
+      "en": "Just at this moment there was an unusual stir in the human mass. All the hands were raised in the air. Some, tightly closed, seemed to disappear suddenly in the midst of the cries⁠—an energetic way, no doubt, of casting a vote. The crowd swayed back, the banners and flags wavered, disappeared an instant, then reappeared in tatters. The undulations of the human surge reached the steps, while all the heads floundered on the surface like a sea agitated by a squall. Many of the black hats disappeared, and the greater part of the crowd seemed to have diminished in height.",
+      "existingArabicDraft": "في تلك اللحظة دبّت حركة غير مألوفة في الحشد وارتفعت الأيدي. اختفت بعض القبضات المغلقة وسط الصيحات، ولعلها طريقة حماسية للإدلاء بالأصوات. تراجع الناس وتموجت الرايات والأعلام واختفت لحظة ثم عادت ممزقة. وصلت أمواج البشر إلى الدرج، وتخبطت الرؤوس على السطح كبحر هائج. اختفت قبعات سوداء كثيرة وبدا الحشد أقصر قامة."
+    },
+    {
+      "index": 18,
+      "en": "“It is evidently a meeting,” said Fix, “and its object must be an exciting one. I should not wonder if it were about the Alabama, despite the fact that that question is settled.”",
+      "existingArabicDraft": "قال فيكس: «إنه اجتماع بلا شك، ولا بد أن موضوعه مثير. لن أستغرب إن كان عن قضية ألاباما، رغم أن المسألة حُسمت»."
+    },
+    {
+      "index": 19,
+      "en": "“Perhaps,” replied Mr. Fogg, simply.",
+      "existingArabicDraft": "أجاب فوغ ببساطة: «ربما»."
+    },
+    {
+      "index": 20,
+      "en": "“At least, there are two champions in presence of each other, the Honourable Mr. Camerfield and the Honourable Mr. Mandiboy.”",
+      "existingArabicDraft": "قال فيكس: «على الأقل هناك خصمان متواجهان: حضرة السيد كامرفيلد وحضرة السيد مندي بوي»."
+    },
+    {
+      "index": 21,
+      "en": "Aouda, leaning upon Mr. Fogg’s arm, observed the tumultuous scene with surprise, while Fix asked a man near him what the cause of it all was. Before the man could reply, a fresh agitation arose; hurrahs and excited shouts were heard; the staffs of the banners began to be used as offensive weapons; and fists flew about in every direction. Thumps were exchanged from the tops of the carriages and omnibuses which had been blocked up in the crowd. Boots and shoes went whirling through the air, and Mr. Fogg thought he even heard the crack of revolvers mingling in the din, the rout approached the stairway, and flowed over the lower step. One of the parties had evidently been repulsed; but the mere lookers-on could not tell whether Mandiboy or Camerfield had gained the upper hand.",
+      "existingArabicDraft": "كانت أودا تتكئ على ذراع فوغ وتراقب المشهد المضطرب بدهشة، بينما سأل فيكس رجلًا قريبًا عن السبب. وقبل أن يجيب الرجل، اندلع اضطراب جديد وتعالت الهتافات، وبدأت أعمدة الرايات تُستخدم للهجوم وتطايرت اللكمات. وتبادل الناس الضربات فوق العربات والحافلات المحاصرة، وراحت الأحذية تطير في الهواء. وظن فوغ أنه سمع طلقات مسدسات وسط الضجيج، حتى اندفعت الفوضى نحو الدرج. تراجع أحد الطرفين، لكن المتفرجين لم يعرفوا هل انتصر مندي بوي أم كامرفيلد."
+    },
+    {
+      "index": 22,
+      "en": "“It would be prudent for us to retire,” said Fix, who was anxious that Mr. Fogg should not receive any injury, at least until they got back to London. “If there is any question about England in all this, and we were recognised, I fear it would go hard with us.”",
+      "existingArabicDraft": "قال فيكس، خائفًا على فوغ قبل عودتهم إلى لندن: «من الحكمة أن ننسحب. إن تعلق الأمر بإنجلترا وانكشفنا، فستكون العواقب وخيمة»."
+    },
+    {
+      "index": 23,
+      "en": "“An English subject⁠—” began Mr. Fogg.",
+      "existingArabicDraft": "بدأ فوغ يقول: «إن الرعية الإنجليزية—»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "ما الغرض من هذا الاجتماع؟ وما سبب هذا التجمع المتحمس؟ لم يستطع فيلياس فوغ تخمين ذلك. أكانوا يرشحون مسؤولًا كبيرًا، كحاكم أو عضو في الكونغرس؟ لم يكن ذلك مستبعدًا، نظرًا إلى اضطراب الجموع أمامهم."
+    },
+    {
+      "index": 1,
+      "ar": "في تلك اللحظة بالذات، حدث اضطراب غير مألوف في الكتلة البشرية. رُفعت الأيدي جميعها في الهواء. وبدت بعض القبضات المغلقة بإحكام كأنها تختفي فجأة وسط الصيحات؛ وهي بلا شك طريقة حماسية للإدلاء بالصوت. تراجع الحشد إلى الخلف، وتموجت الرايات والأعلام واختفت لبرهة ثم عادت ممزقة. وصلت تموجات الموج البشري إلى الدرجات، بينما كانت الرؤوس تتخبط على السطح كبحر هيّجته العاصفة. اختفت العديد من القبعات السوداء، وبدو أن الجزء الأكبر من الحشد قد انخفضت قامته."
+    },
+    {
+      "index": 2,
+      "ar": "قال فيكس: «إنه اجتماع بلا شك، ولا بد أن موضوعه مثير. ولن أستغرب إن كان الأمر يتعلق بسفينة ألاباما، على الرغم من أن تلك المسألة قد حُسمت»."
+    },
+    {
+      "index": 3,
+      "ar": "أجاب السيد فوغ ببساطة: «ربما»."
+    },
+    {
+      "index": 4,
+      "ar": "«على الأقل، هناك خصمان في مواجهة بعضهما البعض، وهما المحترم السيد كامرفيلد والمحترم السيد مندي بوي»."
+    },
+    {
+      "index": 5,
+      "ar": "كانت أودا، وهي تتكئ على ذراع السيد فوغ، تراقب المشهد الصاخب بدهشة، بينما سأل فيكس رجلاً يقف بالقرب منه عن سبب كل ما يحدث. وقبل أن يتمكن الرجل من الرد، نشب اضطراب جديد؛ وسُمعت هتافات وصيحات متحمسة؛ وبدأت عصي الرايات تُستخدم كأدوات هجومية، وتطايرت اللكمات في كل اتجاه. وتم تبادل الضربات من فوق العربات والحافلات التي حוصرت وسط الحشد. وكانت البوتات والأحذية تدور في الهواء، واعتقد السيد فوغ أنه سمع حتى دوي المسدسات يتخلل الضجيج، واقتربت الهزيمة نحو السلم وفيضت فوق الدرجة السفلى. وكان واضحاً أن أحد الطرفين قد تم دحره؛ غير أن المتفرجين العاديين لم يتمكنوا من معرفة ما إذا كان مندي بوي أو كامرفيلد هو من اليد العليا."
+    },
+    {
+      "index": 6,
+      "ar": "قال فيكس، الذي كان حريصاً على ألا يصاب السيد فوغ بأي أذى، على الأقل إلى أن يعودا إلى لندن: «سيكون من الحكمة أن ننسحب. وإذا كان هناك أي أمر يتعلق بإنجلترا في كل هذا، وتم التعرف علينا، فأخشى أن ساءت أمورنا كثيراً»."
+    },
+    {
+      "index": 7,
+      "ar": "بدأ السيد فوغ يقول: «إن مواطناً بريطانياً—»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "خطأ مطبعي في كلمة وبدو والصحيح وبدو أن."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": false,
+      "issues": "خطأ إملائي في كلمة حוصرت وتعبير غير دقيق في 'الروت اقتربت' أو 'وفيضت فوق الدرجة' حيث الترجمة غير دقيقة."
+    },
+    {
+      "index": 6,
+      "adequate": false,
+      "issues": "خطأ نحوي في جملة 'فأخشى أن ساءت أمورنا كثيراً' والصحيح 'فأخشى أن تسوء أمورنا'."
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
