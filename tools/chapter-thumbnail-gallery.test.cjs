@@ -163,8 +163,23 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null}={}){
  const inline=scenario();
  inline.story.chapters[1].inlineArt=[{src:'art/folio.webp',verifiedArchive:true,
   sourceParagraphExact:true,distributionReviewApproved:true,editoriallyApproved:true,
+  archiveSource:'https://commons.wikimedia.org/wiki/File:Archive_Folio.jpg',
+  afterParagraph:0,aspectRatio:.75,
   alt:'Scene',credit:'Historic museum'}];
  assert.equal(inline.api.chapterImage(inline.story,1).src,'art/folio.webp');
+ const wrongSource=scenario();
+ wrongSource.story.chapters[1].inlineArt=[{...inline.story.chapters[1].inlineArt[0],
+   archiveSource:'https://untrusted.example/unknown.jpg'}];
+ assert.equal(wrongSource.api.chapterImage(wrongSource.story,1),null,
+  'untrusted historic image source must never qualify as chapter thumbnail');
+ const wrongParagraph=scenario();
+ wrongParagraph.story.chapters[1].inlineArt=[{...inline.story.chapters[1].inlineArt[0],
+  afterParagraph:52}];
+ assert.equal(wrongParagraph.api.chapterImage(wrongParagraph.story,1),null,
+  'misaligned paragraph cannot be used as chapter thumbnail');
+ assert.equal(s.api.openSelected('example-story',0),false,
+  'after closing the gallery old external callers must not overwrite progress');
+
  const noCredit=scenario({approved:{...pending,editoriallyApproved:true,
   releaseApproved:true,distributionReviewApproved:true,rightsStatus:'APPROVED',credit:''}});
  assert.equal(noCredit.api.chapterImage(noCredit.story,0),null);
