@@ -1,7 +1,7 @@
 name: Lingua Tales - acquire original Townsend 1903 Sign of Four engravings
 on:
   push:
-    branches: [main]
+    branches: [main, content/sign-four-1903-townsend-original-art-20261107]
     paths:
       - 'tools/intake_sign_four_townsend_1903.py'
       - 'tools/intake_verne_commons_period_gallery.py'
