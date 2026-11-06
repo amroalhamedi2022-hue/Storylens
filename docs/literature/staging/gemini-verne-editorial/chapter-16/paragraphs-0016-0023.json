@@ -1,0 +1,152 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 16,
+  "chapterTitle": "In which Fix does not seem to understand in the least what is said to him.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "81cab8365f48fd9e81d339ebd0ec694021a3b78d6223f3da90ecf25d36f82ed9",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "“Hum!” said Passepartout, who seemed for an instant perplexed. “But how is it I have not seen you on board since we left Calcutta?”",
+      "existingArabicDraft": "قال باسبارتو، وقد بدا حائرًا للحظة: «همم! لكن كيف لم أرك على متن السفينة منذ غادرنا كلكتا؟»"
+    },
+    {
+      "index": 17,
+      "en": "“Oh, a trifle of seasickness—I’ve been staying in my berth. The Gulf of Bengal does not agree with me as well as the Indian Ocean. And how is Mr. Fogg?”",
+      "existingArabicDraft": "أجاب فيكس: «مجرد دوار بحر بسيط؛ فقد بقيت في مرقدي. خليج البنغال لا يناسبني بقدر ما يناسبني المحيط الهندي. وكيف حال السيد فوغ؟»"
+    },
+    {
+      "index": 18,
+      "en": "“As well and as punctual as ever, not a day behind time! But, Monsieur Fix, you don’t know that we have a young lady with us.”",
+      "existingArabicDraft": "قال باسبارتو: «إنه بخير ومنضبط كعادته، ولم يتأخر يومًا واحدًا عن موعده! لكنك لا تعرف، يا سيد فيكس، أن معنا شابة»."
+    },
+    {
+      "index": 19,
+      "en": "“A young lady?” replied the detective, not seeming to comprehend what was said.",
+      "existingArabicDraft": "قال المفتش، وكأنه لا يستوعب ما سمعه: «شابة؟»"
+    },
+    {
+      "index": 20,
+      "en": "Passepartout thereupon recounted Aouda’s history, the affair at the Bombay pagoda, the purchase of the elephant for two thousand pounds, the rescue, the arrest, and sentence of the Calcutta court, and the restoration of Mr. Fogg and himself to liberty on bail. Fix, who was familiar with the last events, seemed to be equally ignorant of all that Passepartout related; and the latter was charmed to find so interested a listener.",
+      "existingArabicDraft": "راح باسبارتو عندئذ يروي قصة أودا، وحادثة المعبد في بومباي، وشراء الفيل بألفي جنيه، وعملية الإنقاذ، والاعتقال، والحكم الصادر عن محكمة كلكتا، ثم إطلاق سراحه هو والسيد فوغ بكفالة. وكان فيكس يعرف الأحداث الأخيرة، لكنه تظاهر بالجهل بكل ما رواه باسبارتو؛ وسُرّ الخادم لأنه وجد مستمعًا شديد الاهتمام."
+    },
+    {
+      "index": 21,
+      "en": "“But does your master propose to carry this young woman to Europe?”",
+      "existingArabicDraft": "سأل فيكس: «وهل ينوي سيدك اصطحاب هذه الشابة إلى أوروبا؟»"
+    },
+    {
+      "index": 22,
+      "en": "“Not at all. We are simply going to place her under the protection of one of her relatives, a rich merchant at Hong Kong.”",
+      "existingArabicDraft": "أجاب باسبارتو: «كلا. نحن ذاهبون فقط لنضعها تحت حماية أحد أقاربها، وهو تاجر ثري في هونغ كونغ»."
+    },
+    {
+      "index": 23,
+      "en": "“Nothing to be done there,” said Fix to himself, concealing his disappointment. “A glass of gin, Mr. Passepartout?”",
+      "existingArabicDraft": "قال فيكس في نفسه، مخفيًا خيبة أمله: «إذن لا فائدة من ذلك». ثم سأل: «كأس من الجن، يا سيد باسبارتو؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«همم!» قال باسبارتو، الذي بدا حائرًا للحظة. «ولكن كيف لم أرك على متن السفينة منذ أن غادرنا كلكتا؟»"
+    },
+    {
+      "index": 1,
+      "ar": "«أه، مجرد نوبة دوار بحر بسيطة؛ لقد بقيت في مقصورتي. إن خليج البنغال لا يوافق مزاجي مثل المحيط الهندي. وكيف حال السيد فوغ؟»"
+    },
+    {
+      "index": 2,
+      "ar": "«بصحة جيدة ومنضبط كعادته، ولم يتأخر يومًا واحدًا! ولكن، يا سيد فيكس، أنت لا تعلم أن معنا شابة.»"
+    },
+    {
+      "index": 3,
+      "ar": "«شابة؟» هكذا أجاب المحقق، ويبدو وكأنه لم يستوعب ما قيل."
+    },
+    {
+      "index": 4,
+      "ar": "عندئذ سرد باسبارتو قصة أودا، ومسألة معبد بومباي، وشراء الفيل بألفي جنيه، وعملية الإنقاذ، والقبض عليهما، وحكم محكمة كلكتا، واستعادة السيد فوغ ونفسه لحريتهما بكفالة. وبدا فيكس، الذي كان على دراية بالأحداث الأخيرة، جاهلاً بكل ما رواه باسبارتو؛ وكان الأخير مسرورًا لإيجاده مستمعًا مهتمًا إلى هذا الحد."
+    },
+    {
+      "index": 5,
+      "ar": "«ولكن هل ينوي سيدك اصطحاب هذه الفتاة إلى أوروبا؟»"
+    },
+    {
+      "index": 6,
+      "ar": "«إطلاقًا. فنحن سنقوم فقط بوضعها تحت حماية أحد أقاربها، وهو تاجر ثري في هونغ كونغ.»"
+    },
+    {
+      "index": 7,
+      "ar": "«لا شيء يمكن فعله هناك» قال فيكس في نفسه، محاولاً إخفاء خيبة أمله. «كأس من الجن، يا سيد باسبارتو؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

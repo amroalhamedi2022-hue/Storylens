@@ -1,0 +1,151 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 15,
+  "chapterTitle": "In which the bag of bank-notes disgorges some thousands of pounds more.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "f2af6f4248d6b82129245136034981d28c8ba9caf789a5c9b455bb1ee05be599",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "The priests took their places in front of the judge, and the clerk proceeded to read in a loud voice a complaint of sacrilege against Phileas Fogg and his servant, who were accused of having violated a place held consecrated by the Brahmin religion.",
+      "existingArabicDraft": "تقدم الكهنة ووقفوا أمام القاضي، وبدأ الكاتب يقرأ بصوت مرتفع شكوى بتدنيس المقدسات ضد فيلياس فوغ وخادمه، إذ اتُّهما بانتهاك مكان تعدّه الديانة البراهمية مقدسًا."
+    },
+    {
+      "index": 17,
+      "en": "“You hear the charge?” asked the judge. “Yes, sir,” replied Mr. Fogg, consulting his watch, “and I admit it.” “You admit it?” “I admit it, and I wish to hear these priests admit, in their turn, what they were going to do at the pagoda of Pillaji.”",
+      "existingArabicDraft": "سأل القاضي: «هل سمعتما التهمة؟» فأجاب فوغ وهو ينظر إلى ساعته: «نعم يا سيدي، وأنا أقرّ بها». فقال القاضي: «تقرّ بها؟» قال فوغ: «أقرّ بها، وأريد أن أسمع هؤلاء الكهنة يقرّون بدورهم بما كانوا ينوون فعله في معبد بيلاجي»."
+    },
+    {
+      "index": 18,
+      "en": "The priests looked at each other; they did not seem to understand what was said. “Yes,” cried Passepartout, warmly; “at the pagoda of Pillaji, where they were on the point of burning their victim.” The judge stared with astonishment, and the priests were stupefied. “What victim?” said Judge Obadiah. “Burn whom? In Bombay itself?”",
+      "existingArabicDraft": "تبادل الكهنة النظرات، وبدا أنهم لم يفهموا ما قيل. صاح باسبارتو بحرارة: «نعم، في معبد بيلاجي، حيث كانوا على وشك إحراق ضحيتهم!» حدّق القاضي مذهولًا، وبدا الذهول على الكهنة أيضًا. وسأل القاضي أوباديا: «أي ضحية؟ إحراق من؟ في بومباي نفسها؟»"
+    },
+    {
+      "index": 19,
+      "en": "“Bombay?” cried Passepartout. “Certainly. We are not talking of the pagoda of Pillaji, but of the pagoda of Malabar Hill, at Bombay.” “And as a proof,” added the clerk, “here are the desecrator’s very shoes, which he left behind him.” Whereupon he placed a pair of shoes on his desk. “My shoes!” cried Passepartout, in his surprise permitting this imprudent exclamation to escape him.",
+      "existingArabicDraft": "صاح باسبارتو: «بومباي؟» فأجابوه: «بالتأكيد. نحن لا نتحدث عن معبد بيلاجي، بل عن معبد مالابار هيل في بومباي». وأضاف الكاتب: «وهذا دليل على ذلك؛ ها هما حذاءا المدنس اللذان تركهما خلفه». ووضع زوجًا من الأحذية على مكتبه. فصرخ باسبارتو من شدة المفاجأة: «حذائي!» وأفلتت منه هذه العبارة المتهورة."
+    },
+    {
+      "index": 20,
+      "en": "The confusion of master and man, who had quite forgotten the affair at Bombay, for which they were now detained at Calcutta, may be imagined. Fix the detective had foreseen the advantage which Passepartout’s escapade gave him and, delaying his departure for twelve hours, had consulted the priests of Malabar Hill. Knowing that the English authorities dealt very severely with this kind of misdemeanour, he promised them a goodly sum in damages and sent them forward to Calcutta by the next train. Owing to the delay caused by the rescue of the young widow, Fix and the priests reached the Indian capital before Mr. Fogg and his servant, the magistrates having already been warned by a despatch to arrest them should they arrive. Fix’s disappointment when he learned that Phileas Fogg had not made his appearance in Calcutta may be imagined. He made up his mind that the robber had stopped somewhere on the route and taken refuge in the southern provinces. For twenty-four hours Fix watched the station with feverish anxiety; at last he was rewarded by seeing Mr. Fogg and Passepartout arrive, accompanied by a young woman whose presence he was wholly at a loss to explain. He hastened for a policeman, and this was how the party came to be arrested and brought before Judge Obadiah.",
+      "existingArabicDraft": "يمكن تخيل ارتباك السيد وخادمه؛ فقد نسيا تمامًا حادثة بومباي التي احتُجزا في كلكتا بسببها. كان المحقق فيكس قد أدرك الفائدة التي منحتها له مغامرة باسبارتو، فأخّر رحيله اثنتي عشرة ساعة واستشار كهنة مالابار هيل. ولأنه يعرف شدة السلطات الإنجليزية في التعامل مع هذا النوع من المخالفات، وعدهم بتعويض سخي وأرسلهم إلى كلكتا في القطار التالي. وبسبب التأخير الناجم عن إنقاذ الأرملة الشابة، وصل فيكس والكهنة إلى العاصمة الهندية قبل فوغ وخادمه؛ وكانت السلطات قد تلقت برقية تحذّرها من وصولهما وتأمر باعتقالهما. ويمكن تخيل خيبة فيكس حين علم أن فوغ لم يظهر في كلكتا. فظن أن اللص توقف في مكان ما ولجأ إلى الأقاليم الجنوبية. وظل يراقب المحطة أربعًا وعشرين ساعة بقلق محموم، إلى أن كوفئ أخيرًا برؤية فوغ وباسبارتو يصلان ومعهما شابة لم يفهم سبب وجودها. فأسرع لاستدعاء شرطي، وهكذا اعتُقلت المجموعة وأُحضرت أمام القاضي أوباديا."
+    },
+    {
+      "index": 21,
+      "en": "Had Passepartout been a little less preoccupied, he would have espied the detective ensconced in a corner of the court-room, watching the proceedings with an interest easily understood; for the warrant had failed to reach him at Calcutta, as it had done at Bombay and Suez.",
+      "existingArabicDraft": "لو كان باسبارتو أقل انشغالًا، لانتبه إلى المحقق الجالس في زاوية قاعة المحكمة يراقب الإجراءات باهتمام مفهوم؛ فقد أخفق أمر الاعتقال في الوصول إليه في كلكتا، بخلاف ما حدث في بومباي والسويس."
+    },
+    {
+      "index": 22,
+      "en": "Judge Obadiah had unfortunately caught Passepartout’s rash exclamation, which the poor fellow would have given the world to recall. “The facts are admitted?” asked the judge. “Admitted,” replied Mr. Fogg, coldly.",
+      "existingArabicDraft": "كان القاضي أوباديا قد التقط، لسوء الحظ، عبارة باسبارتو المتهورة التي كان المسكين يتمنى لو استطاع استرجاعها. سأل القاضي: «هل الوقائع معترف بها؟» فأجاب السيد فوغ ببرود: «معترف بها»."
+    },
+    {
+      "index": 23,
+      "en": "“Inasmuch,” resumed the judge, “as the English law protects equally and sternly the religions of the Indian people, and as the man Passepartout has admitted that he violated the sacred pagoda of Malabar Hill, at Bombay, on the twentieth of October, I condemn the said Passepartout to imprisonment for fifteen days and a fine of three hundred pounds.” “Three hundred pounds!” cried Passepartout, startled at the largeness of the sum. “Silence!” shouted the constable.",
+      "existingArabicDraft": "تابع القاضي: «بما أن القانون الإنجليزي يحمي أديان سكان الهند على قدم المساواة وبصرامة، وبما أن باسبارتو أقرّ بانتهاك المعبد المقدس في مالابار هيل ببومباي يوم العشرين من أكتوبر، أحكم على المذكور بالسجن خمسة عشر يومًا وغرامة ثلاثمئة جنيه». صرخ باسبارتو مذهولًا من ضخامة المبلغ: «ثلاثمئة جنيه!» فزجره الحارس: «صمتًا!»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "تقدم الكهنة ووقفوا أمام القاضي، وبدأ الكاتب يقرأ بصوت مرتفع شكوى بتدنيس المقدسات ضد فيلياس فوغ وخادمه، إذ اتُّهما بانتهاك مكان تعدّه الديانة البراهمية مقدسًا."
+    },
+    {
+      "index": 1,
+      "ar": "سأل القاضي: «هل سمعتما التهمة؟» فأجاب فوغ وهو ينظر إلى ساعته: «نعم يا سيدي، وأنا أقرّ بها». فقال القاضي: «تقرّ بها؟» قال فوغ: «أقرّ بها، وأريد أن أسمع هؤلاء الكهنة يقرّون بدورهم بما كانوا ينوون فعله في معبد بيلاجي»."
+    },
+    {
+      "index": 2,
+      "ar": "تبادل الكهنة النظرات، وبدا أنهم لم يفهموا ما قيل. صاح باسبارتو بحرارة: «نعم، في معبد بيلاجي، حيث كانوا على وشك إحراق ضحيتهم!» حدّق القاضي مذهولًا، وبدا الذهول على الكهنة أيضًا. وسأل القاضي أوباديا: «أي ضحية؟ إحراق من؟ في بومباي نفسها؟»"
+    },
+    {
+      "index": 3,
+      "ar": "صاح باسبارتو: «بومباي؟» فأجابوه: «بالتأكيد. نحن لا نتحدث عن معبد بيلاجي، بل عن معبد مالابار هيل في بومباي». وأضاف الكاتب: «وهذا دليل على ذلك؛ ها هما حذاءا المدنس اللذان تركهما خلفه». ووضع زوجًا من الأحذية على مكتبه. فصرخ باسبارتو من شدة المفاجأة: «حذائي!» وأفلتت منه هذه العبارة المتهورة."
+    },
+    {
+      "index": 4,
+      "ar": "يمكن تخيل ارتباك السيد وخادمه؛ فقد نسيا تمامًا حادثة بومباي التي احتُجزا في كلكتا بسببها. كان المحقق فيكس قد أدرك الفائدة التي منحتها له مغامرة باسبارتو، فأخّر رحيله اثنتي عشرة ساعة واستشار كهنة مالابار هيل. ولأنه يعرف شدة السلطات الإنجليزية في التعامل مع هذا النوع من المخالفات، وعدهم بتعويض سخي وأرسلهم إلى كلكتا في القطار التالي. وبسبب التأخير الناجم عن إنقاذ الأرملة الشابة، وصل فيكس والكهنة إلى العاصمة الهندية قبل فوغ وخادمه؛ وكانت السلطات قد تلقت برقية تحذّرها من وصولهما وتأمر باعتقالهما. ويمكن تخيل خيبة فيكس حين علم أن فوغ لم يظهر في كلكتا. فظن أن اللص توقف في مكان ما ولجأ إلى الأقاليم الجنوبية. وظل يراقب المحطة أربعًا وعشرين ساعة بقلق محموم، إلى أن كوفئ أخيرًا برؤية فوغ وباسبارتو يصلان ومعهما شابة لم يفهم سبب وجودها. فأسرع لاستدعاء شرطي، وهكذا اعتُقلت المجموعة وأُحضرت أمام القاضي أوباديا."
+    },
+    {
+      "index": 5,
+      "ar": "لو كان باسبارتو أقل انشغالًا، لانتبه إلى المحقق الجالس في زاوية قاعة المحكمة يراقب الإجراءات باهتمام مفهوم؛ فقد أخفق أمر الاعتقال في الوصول إليه في كلكتا، بخلاف ما حدث في بومباي والسويس."
+    },
+    {
+      "index": 6,
+      "ar": "كان القاضي أوباديا قد التقط، لسوء الحظ، عبارة باسبارتو المتهورة التي كان المسكين يتمنى لو استطاع استرجاعها. سأل القاضي: «هل الوقائع معترف بها؟» فأجاب السيد فوغ ببرود: «معترف بها»."
+    },
+    {
+      "index": 7,
+      "ar": "تابع القاضي: «بما أن القانون الإنجليزي يحمي أديان سكان الهند على قدم المساواة وبصرامة، وبما أن باسبارتو أقرّ بانتهاك المعبد المقدس في مالابار هيل ببومباي يوم العشرين من أكتوبر، أحكم على المذكور بالسجن خمسة عشر يومًا وغرامة ثلاثمئة جنيه». صرخ باسبارتو مذهولًا من ضخامة المبلغ: «ثلاثمئة جنيه!» فزجره الحارس: «صمتًا!»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

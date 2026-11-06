@@ -1,0 +1,153 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 17,
+  "chapterTitle": "Showing what happened on the voyage from Singapore to Hong Kong.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "30c4e382e441f6c19e169b53fc0af209413dcaf7714830abac97d118b693fac5",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The detective and Passepartout met often on deck after this interview, though Fix was reserved, and did not attempt to induce his companion to divulge any more facts concerning Mr. Fogg. He caught a glimpse of that mysterious gentleman once or twice; but Mr. Fogg usually confined himself to the cabin, where he kept Aouda company, or, according to his inveterate habit, took a hand at whist.",
+      "existingArabicDraft": "التقى المحقق فيكس وباسبارتو كثيرًا على سطح السفينة بعد ذلك اللقاء، لكن فيكس ظل متحفظًا ولم يحاول استدراج رفيقه إلى كشف مزيد من التفاصيل عن السيد فوغ. ولمح الرجل الغامض مرة أو مرتين؛ غير أن فوغ كان يلزم المقصورة غالبًا، يصاحب أودا أو يلعب الورق وفق عادته الراسخة."
+    },
+    {
+      "index": 1,
+      "en": "Passepartout began very seriously to conjecture what strange chance kept Fix still on the route that his master was pursuing. It was really worth considering why this certainly very amiable and complacent person, whom he had first met at Suez, had then encountered on board the Mongolia, who disembarked at Bombay, which he announced as his destination, and now turned up so unexpectedly on the Rangoon, was following Mr. Fogg’s tracks step by step. What was Fix’s object? Passepartout was ready to wager his Indian shoes—which he religiously preserved—that Fix would also leave Hong Kong at the same time with them, and probably on the same steamer.",
+      "existingArabicDraft": "بدأ باسبارتو يتساءل بجدية عن المصادفة الغريبة التي أبقت فيكس على الطريق نفسه الذي يسلكه سيده. وكان من المعقول أن يتساءل لماذا يواصل هذا الرجل الودود المتسامح، الذي قابله أول مرة في السويس ثم صادفه على متن منغوليا، والذي نزل في بومباي وقال إنها وجهته، الظهور الآن على متن رانغون، متتبعًا خطوات السيد فوغ خطوة بخطوة. ما غرض فيكس؟ كان باسبارتو مستعدًا للمراهنة بحذائه الهندي الذي حافظ عليه بعناية على أن فيكس سيغادر هونغ كونغ معهم في الوقت نفسه، وربما على الباخرة نفسها."
+    },
+    {
+      "index": 2,
+      "en": "Passepartout might have cudgelled his brain for a century without hitting upon the real object which the detective had in view. He never could have imagined that Phileas Fogg was being tracked as a robber around the globe. But, as it is in human nature to attempt the solution of every mystery, Passepartout suddenly discovered an explanation of Fix’s movements, which was in truth far from unreasonable. Fix, he thought, could only be an agent of Mr. Fogg’s friends at the Reform Club, sent to follow him up, and to ascertain that he really went round the world as had been agreed upon.",
+      "existingArabicDraft": "كان يمكن لباسبارتو أن يكد ذهنه قرنًا كاملًا دون أن يدرك الغرض الحقيقي للمحقق. فلم يخطر له قط أن فيلياس فوغ مطارد حول العالم بوصفه لصًا. لكن الإنسان بطبعه يحاول حل كل لغز، فاكتشف باسبارتو فجأة تفسيرًا لتحركات فيكس لم يكن بعيدًا عن المنطق. ظن أن فيكس ليس إلا عميلًا لأصدقاء السيد فوغ في نادي الإصلاح، أُرسل لمراقبته والتأكد من أنه يدور حول العالم كما اتُّفق."
+    },
+    {
+      "index": 3,
+      "en": "“It’s clear!” repeated the worthy servant to himself, proud of his shrewdness. “He’s a spy sent to keep us in view! That isn’t quite the thing, either, to be spying Mr. Fogg, who is so honourable a man! Ah, gentlemen of the Reform, this shall cost you dear!”",
+      "existingArabicDraft": "«الأمر واضح!» كرر الخادم الطيب في نفسه، فخورًا بذكائه. «إنه جاسوس كُلّف بإبقائنا تحت المراقبة! وهذا ليس لائقًا، أن يتجسسوا على السيد فوغ، وهو رجل شريف إلى هذا الحد! آه يا سادة نادي الإصلاح، ستدفعون ثمن ذلك غاليًا!»"
+    },
+    {
+      "index": 4,
+      "en": "Passepartout, enchanted with his discovery, resolved to say nothing to his master, lest he should be justly offended at this mistrust on the part of his adversaries. But he determined to chaff Fix, when he had the chance, with mysterious allusions, which, however, need not betray his real suspicions.",
+      "existingArabicDraft": "وقد ابتهج باسبارتو باكتشافه، فقرر ألا يخبر سيده، خشية أن يغضب بحق من انعدام ثقة خصومه. لكنه عزم على ممازحة فيكس عند أول فرصة بتلميحات غامضة لا تكشف شكوكه الحقيقية."
+    },
+    {
+      "index": 5,
+      "en": "During the afternoon of Wednesday, 30th October, the Rangoon entered the Strait of Malacca, which separates the peninsula of that name from Sumatra. The mountainous and craggy islets intercepted the beauties of this noble island from the view of the travellers. The Rangoon weighed anchor at Singapore the next day at four a.m., to receive coal, having gained half a day on the prescribed time of her arrival. Phileas Fogg noted this gain in his journal, and then, accompanied by Aouda, who betrayed a desire for a walk on shore, disembarked.",
+      "existingArabicDraft": "بعد ظهر الأربعاء، 30 أكتوبر، دخلت رانغون مضيق ملقا، الفاصل بين شبه الجزيرة التي تحمل الاسم نفسه وسومطرة. وحجبت الجزر الصغيرة الجبلية الوعرة عن المسافرين جمال هذه الجزيرة العظيمة. وألقت رانغون مرساتها في سنغافورة في الرابعة صباح اليوم التالي للتزود بالفحم، بعدما سبقت موعد وصولها المقرر بنصف يوم. سجّل فوغ هذا التقدم في مفكرته، ثم نزل إلى الشاطئ برفقة أودا التي رغبت في التنزه."
+    },
+    {
+      "index": 6,
+      "en": "Fix, who suspected Mr. Fogg’s every movement, followed them cautiously, without being himself perceived; while Passepartout, laughing in his sleeve at Fix’s manoeuvres, went about his usual errands.",
+      "existingArabicDraft": "تبع فيكس، الذي كان يشك في كل حركة يقوم بها السيد فوغ، الاثنين بحذر من دون أن يلحظاه؛ بينما انشغل باسبارتو بمهماته المعتادة وهو يضحك سرًا على مناورات فيكس."
+    },
+    {
+      "index": 7,
+      "en": "The island of Singapore is not imposing in aspect, for there are no mountains; yet its appearance is not without attractions. It is a park checkered by pleasant highways and avenues. A handsome carriage, drawn by a sleek pair of New Holland horses, carried Phileas Fogg and Aouda into the midst of rows of palms with brilliant foliage, and of clove-trees, whereof the cloves form the heart of a half-open flower. Pepper plants replaced the prickly hedges of European fields; sago-bushes, large ferns with gorgeous branches, varied the aspect of this tropical clime; while nutmeg-trees in full foliage filled the air with a penetrating perfume. Agile and grinning bands of monkeys skipped about in the trees, nor were tigers wanting in the jungles.",
+      "existingArabicDraft": "لا تبدو جزيرة سنغافورة مهيبة، إذ لا جبال فيها، لكن لها جاذبيتها. فهي أشبه بحديقة تتخللها طرق وممرات جميلة. حملت عربة أنيقة تجرها جوادان قويان من نيو هولاند فوغ وأودا بين صفوف النخيل ذي الأوراق اللامعة وأشجار القرنفل، التي تشكّل براعمها المفتوحة قلب الزهرة. وحلّت نباتات الفلفل محل الأسيجة الشائكة في الحقول الأوروبية، وزيّنت السراخس الضخمة وشجيرات الساغو المشهد الاستوائي، فيما ملأت أشجار جوزة الطيب المورقة الهواء بعطر نافذ. وكانت جماعات من القرود النشيطة العابسة تقفز بين الأشجار، كما لم تخلُ الأدغال من النمور."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "التقى المحقق وباسبارتو كثيرًا على سطح السفينة بعد هذا اللقاء، رغم أن فيكس كان متحفظًا ولم يحاول دفع رفيقه للكشف عن أي حقائق أخرى تتعلق بالس السيد فوغ. وقد لمح ذلك السيد الغامض مرة أو مرتين؛ لكن السيد فوغ كان يقتصر في العادة على المقصورة حيث يرافق أودا، أو يلعب الورق وفقاً لعادته الراسخة."
+    },
+    {
+      "index": 1,
+      "ar": "بدأ باسبارتو يتساءل بجدية عن تلك المصادفة الغريبة التي أبقت فيكس مستمرًا في الطريق الذي يسلكه سيده. كان الأمر يستحق حقًا التفكير في سبب تتبع هذا الشخص اللطيف والمجامل بلا شك — الذي قابله لأول مرة في السويس، ثم التقاه مجددًا على متن السفينة منغوليا، ونزل في بومباي التي أعلن أنها وجهته، ثم ظهر الآن فجأة وبشكل غير متوقع على متن الرانغون — لخطوات السيد فوغ خطوة بخطوة. ما هو هدف فيكس؟ كان باسبارتو مستعدًا للمراهنة بحذائه الهندي الذي احتفظ به بخشوع على أن فيكس سيغادر هونغ كونغ أيضًا في نفس الوقت معهم، وعلى نفس الباخرة غالباً."
+    },
+    {
+      "index": 2,
+      "ar": "كان بإمكان باسبارتو أن يُجهد عقده لقرن كامل دون أن يهتدي إلى الهدف الحقيقي الذي وضعه المحقق نصب عينيه. ولم يكن ليخطر بباله أبدًا أن فيلياس فوغ يُطارد حول العالم بوصفه لصًا. ولكن، نظرًا لأن من طبيعة الإنسان محاولة حل كل لغز، فقد اكتشف باسبارتو فجأة تفسيرًا لتحركات فيكس، وهو تفسير لم يكن في حقيقة الأمر بعيدًا عن المنطق. فقد اعتقد أن فيكس لا بد أن يكون عميلًا لأصدقاء السيد فوغ في نادي الإصلاح، أُرسل لمتابعته وللتأكد من أنه قام حقًا بالدوران حول العالم كما تم الاتفاق."
+    },
+    {
+      "index": 3,
+      "ar": "«الأمر واضح!» كرر الخادم الجدير لنفسه وهو فخور بذكائه. «إنه جاسوس أُرسل ليبقينا تحت بصره! وهذا ليس أمرًا لائقًا تمامًا أيضًا، أن يتجسس المرء على السيد فوغ، وهو رجل نبيل إلى هذا الحد! آه، يا سادة نادي الإصلاح، سيكلفكم هذا غاليًا!»"
+    },
+    {
+      "index": 4,
+      "ar": "أبدى باسبارتو إعجابه الشديد باكتشافه، وعزم على ألا يقول شيئًا لسيده، لكيلا يشعر بالإهانة بحق بسبب هذا الشك من جانب خصومه. ولكنه عزم على السخرية من فيكس، متى سنحت له الفرصة، بتلميحات غامضة، والتي لا ينبغي لها مع ذلك أن تفضح شكوكه الحقيقية."
+    },
+    {
+      "index": 5,
+      "ar": "بعد ظهر يوم الأربعاء، الثلاثين من أكتوبر، دخلت السفينة رانغون مضيق ملقا، الذي يفصل شبه الجزيرة التي تحمل نفس الاسم عن سومطرة. لقد حجبت الجزر الصغيرة الجبلية الوعرة جمال هذه الجزيرة النبيلة عن أنظار المسافرين. رفعت رانغون مرساتها في سنغافورة في اليوم التالي في تمام الساعة الرابعة فجراً لتتزود بالفحم، بعد أن كسبت نصف يوم من وقت وصولها المقرر. سجّل فيلياس فوغ هذا المكسب في دفتره، ثم نزل إلى الشاطئ برفقة أودا التي أظهرت رغبة في التنزه مشياً على الأقدام."
+    },
+    {
+      "index": 6,
+      "ar": "تبعهم فيكس، الذي كان يشك في كل حركات السيد فوغ، بحذر ودون أن يُلاحظه أحد؛ بينما ذهب باسبارتو، الذي كان يضحك في سرّه على مناورات فيكس، لإنجاز مهامه المعتادة."
+    },
+    {
+      "index": 7,
+      "ar": "لا تبدو جزيرة سنغافورة مهيبة المظهر، إذ لا توجد جبال فيها؛ ومع ذلك فإن مظهرها ليس خالياً من الجاذبية. إنها متنزه تتخلله الطرق السريعة والممرات الممتعة. حملت عربة وسيمة تجرها زوجان أملسان من خيول نيو هولاند فيلياس فوغ وأودا إلى وسط صفوف من النخيل ذات الأوراق اللامعة، وأشجار القرنفل التي تشكل براعمها قلب زهرة شبه مفتوحة. وحلت نباتات الفلفل محل السياج الشائك للحقول الأوروبية؛ وتنوعت شجيرات الساغو، والسرخس الكبيرة ذات الأفرع الرائعة، في مظهر هذا المناخ الاستوائي؛ بينما ملأت أشجار جوزة الطيب المورقة الهواء بعطر نافذ. وكانت عصابات مرنة ومبتسمة من القرود تقفز هنا وهناك بين الأشجار، ولم تكن النمور غائبة عن الأدغال أيضاً."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": false,
+      "issues": "خطأ مطبعي في كلمة 'الس السيد' بدلاً من 'السيد'."
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "خطأ مطبعي في عبارة 'يُجهد عقده' والصواب 'يُجهد عقله'."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": false,
+      "issues": "ترجمة خاطئة لكلمة 'enchanted' حيث ترجمت إلى 'أبدى إعجابه' بدلاً من 'مسوروراً أو مغتبطاً'."
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "ترجمة غير دقيقة لـ 'a sleek pair of New Holland horses' حيث ترجمت إلى 'زوجان أملسان' والصواب 'زوج أصيل أو أملس من الخيول'."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

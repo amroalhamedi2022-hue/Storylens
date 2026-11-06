@@ -1,0 +1,152 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 16,
+  "chapterTitle": "In which Fix does not seem to understand in the least what is said to him.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "bf946a95eb8b273088ac3e14acbbdd2f4f1305f6e8552d4fc6624094a1b35f6c",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The Rangoon —one of the Peninsular and Oriental Company’s boats plying in the Chinese and Japanese seas—was a screw steamer, built of iron, weighing about seventeen hundred and seventy tons, and with engines of four hundred horsepower. She was as fast, but not as well fitted up, as the Mongolia, and Aouda was not as comfortably provided for on board of her as Phileas Fogg could have wished. However, the trip from Calcutta to Hong Kong only comprised some three thousand five hundred miles, occupying from ten to twelve days, and the young woman was not difficult to please.",
+      "existingArabicDraft": "كانت «رانغون»—إحدى سفن شركة شبه الجزيرة والشرق التي تجوب بحار الصين واليابان—باخرةً حديدية تعمل بالمروحة، تزن نحو ألف وسبعمئة وسبعين طنًا، وتبلغ قوة محركاتها أربعمئة حصان. وكانت سريعة مثل «منغوليا»، وإن كانت أقل تجهيزًا وراحةً، ولم تجد أودا على متنها ما كان فيليس فوغ يتمناه لها من أسباب الرفاه. ومع ذلك، لم تتجاوز الرحلة من كلكتا إلى هونغ كونغ نحو ثلاثة آلاف وخمسمئة ميل، تستغرق من عشرة أيام إلى اثني عشر، ولم تكن الشابة كثيرة المطالب."
+    },
+    {
+      "index": 1,
+      "en": "During the first days of the journey Aouda became better acquainted with her protector, and constantly gave evidence of her deep gratitude for what he had done. The phlegmatic gentleman listened to her, apparently at least, with coldness, neither his voice nor his manner betraying the slightest emotion; but he seemed to be always on the watch that nothing should be wanting to Aouda’s comfort. He visited her regularly each day at certain hours, not so much to talk himself, as to sit and hear her talk. He treated her with the strictest politeness, but with the precision of an automaton, the movements of which had been arranged for this purpose. Aouda did not quite know what to make of him, though Passepartout had given her some hints of his master’s eccentricity, and made her smile by telling her of the wager which was sending him round the world. After all, she owed Phileas Fogg her life, and she always regarded him through the exalting medium of her gratitude.",
+      "existingArabicDraft": "خلال الأيام الأولى من الرحلة، ازدادت أودا معرفةً بمن تولّى حمايتها، وكانت تُظهر باستمرار عميق امتنانها لما فعله من أجلها. كان الرجل الهادئ يستمع إليها ببرود، على ما يبدو؛ فلا صوته ولا ملامحه يكشفان عن أدنى انفعال، لكنه بدا دائم الانتباه إلى ألا ينقص أودا شيء من راحتها. وكان يزورها كل يوم في أوقات محددة، لا ليكثر الحديث، بل ليجلس ويصغي إليها. عاملها بأقصى درجات التهذيب، لكن بدقة آلة آلية رُتبت حركاتها مسبقًا لهذا الغرض. لم تعرف أودا تمامًا كيف تفهم شخصيته، مع أن باسبارتو لمح لها بشيء من غرابة أطوار سيده وأضحكها حين حكى لها عن الرهان الذي يدفعه إلى الدوران حول العالم. وفي نهاية الأمر، كانت تدين لفيليس فوغ بحياتها، ولذلك ظلت تنظر إليه من خلال عدسة امتنانها العميق."
+    },
+    {
+      "index": 2,
+      "en": "Aouda confirmed the Parsee guide’s narrative of her touching history. She did, indeed, belong to the highest of the native races of India. Many of the Parsee merchants have made great fortunes there by dealing in cotton; and one of them, Sir Jametsee Jeejeebhoy, was made a baronet by the English government. Aouda was a relative of this great man, and it was his cousin, Jeejeeh, whom she hoped to join at Hong Kong. Whether she would find a protector in him she could not tell; but Mr. Fogg essayed to calm her anxieties, and to assure her that everything would be mathematically—he used the very word—arranged. Aouda fastened her great eyes, “clear as the sacred lakes of the Himalaya,” upon him; but the intractable Fogg, as reserved as ever, did not seem at all inclined to throw himself into this lake.",
+      "existingArabicDraft": "أكّدت أودا رواية دليل البارسيين عن قصتها المؤثرة. فقد كانت بالفعل تنتمي إلى أرفع طبقات المجتمع الهندي المحلي. وحقق كثير من تجار البارسيين ثروات كبيرة من تجارة القطن؛ حتى إن أحدهم، السير جاميتسي جيجيبهوي، منحته الحكومة الإنجليزية لقب بارونيت. وكانت أودا قريبةً لهذا الرجل العظيم، وكانت تأمل أن تلتحق في هونغ كونغ بابن عمه جيجيه. لم تكن تعرف إن كانت ستجد لديه من يحميها، لكن السيد فوغ حاول تهدئة مخاوفها وأكد لها أن كل شيء سيُرتّب بدقة حسابية. حدّقت أودا بعينيها الواسعتين، «الصافيتين كبحيرات الهيمالايا المقدسة»، نحوه؛ غير أن فوغ، الذي ظل متحفظًا كما عهدته، لم يبدُ راغبًا في أن يلقي بنفسه في تلك البحيرة."
+    },
+    {
+      "index": 3,
+      "en": "The first few days of the voyage passed prosperously, amid favourable weather and propitious winds, and they soon came in sight of the great Andaman, the principal of the islands in the Bay of Bengal, with its picturesque Saddle Peak, two thousand four hundred feet high, looming above the waters. The steamer passed along near the shores, but the savage Papuans, who are in the lowest scale of humanity, but are not, as has been asserted, cannibals, did not make their appearance.",
+      "existingArabicDraft": "مرّت الأيام الأولى من الرحلة بسلام، وسط طقس ملائم ورياح مواتية، وسرعان ما لاح لهم أندامان الكبرى، أكبر جزر خليج البنغال، وقمتها الخلابة سادل بيك التي ترتفع ألفين وأربعمئة قدم فوق الماء. سارت الباخرة بمحاذاة الشاطئ، لكن سكان بابوا الذين وصفهم الراوي بلغة عصره وصفًا مهينًا لم يظهروا لهم؛ ويضيف النص أنهم، خلافًا لما قيل، ليسوا آكلي لحوم البشر."
+    },
+    {
+      "index": 4,
+      "en": "The panorama of the islands, as they steamed by them, was superb. Vast forests of palms, arecs, bamboo, teakwood, of the gigantic mimosa, and treelike ferns covered the foreground, while behind, the graceful outlines of the mountains were traced against the sky; and along the coasts swarmed by thousands the precious swallows whose nests furnish a luxurious dish to the tables of the Celestial Empire. The varied landscape afforded by the Andaman Islands was soon passed, however, and the Rangoon rapidly approached the Straits of Malacca, which gave access to the China seas.",
+      "existingArabicDraft": "كان مشهد الجزر وهي تمر بمحاذاتهم رائعًا. فقد غطّت المقدمة غابات شاسعة من النخيل والأريكا والخيزران وخشب الساج والميموزا العملاقة والسراخس الشبيهة بالأشجار، بينما ارتسمت خلفها خطوط الجبال الرشيقة على صفحة السماء. وعلى السواحل احتشدت آلاف طيور السنونو التي كانت أعشاشها تُقدّم طبقًا فاخرًا على موائد إمبراطورية الصين. لكن المناظر المتنوعة لجزر أندامان سرعان ما ابتعدت، وأخذت «رانغون» تقترب سريعًا من مضيق ملقا، المدخل إلى بحار الصين."
+    },
+    {
+      "index": 5,
+      "en": "What was detective Fix, so unluckily drawn on from country to country, doing all this while? He had managed to embark on the Rangoon at Calcutta without being seen by Passepartout, after leaving orders that, if the warrant should arrive, it should be forwarded to him at Hong Kong; and he hoped to conceal his presence to the end of the voyage. It would have been difficult to explain why he was on board without awakening Passepartout’s suspicions, who thought him still at Bombay. But necessity impelled him, nevertheless, to renew his acquaintance with the worthy servant, as will be seen.",
+      "existingArabicDraft": "ماذا كان يفعل المفتش فيكس، الذي ساقه سوء الحظ من بلد إلى آخر، طوال ذلك الوقت؟ لقد استطاع الصعود إلى «رانغون» في كلكتا من دون أن يراه باسبارتو، بعد أن ترك تعليمات بإرسال مذكرة القبض إليه في هونغ كونغ إن وصلت. وكان يأمل أن يخفي وجوده حتى نهاية الرحلة. وكان تفسير سبب وجوده على متن السفينة صعبًا من دون إثارة شكوك باسبارتو، الذي ظن أنه ما زال في بومباي. لكن الضرورة دفعته مع ذلك إلى تجديد معرفته بالخادم الطيب، كما سنرى."
+    },
+    {
+      "index": 6,
+      "en": "All the detective’s hopes and wishes were now centred on Hong Kong; for the steamer’s stay at Singapore would be too brief to enable him to take any steps there. The arrest must be made at Hong Kong, or the robber would probably escape him forever. Hong Kong was the last English ground on which he would set foot; beyond, China, Japan, America offered to Fogg an almost certain refuge. If the warrant should at last make its appearance at Hong Kong, Fix could arrest him and give him into the hands of the local police, and there would be no further trouble. But beyond Hong Kong, a simple warrant would be of no avail; an extradition warrant would be necessary, and that would result in delays and obstacles, of which the rascal would take advantage to elude justice.",
+      "existingArabicDraft": "تركّزت آمال المفتش ورغباته كلها الآن على هونغ كونغ؛ فمدة توقف السفينة في سنغافورة أقصر من أن تسمح له باتخاذ أي إجراء هناك. لا بد أن يتم القبض في هونغ كونغ، وإلا أفلت اللص منه على الأرجح إلى الأبد. وكانت هونغ كونغ آخر أرض إنجليزية تطأها قدم فوغ؛ فما وراءها—الصين واليابان وأمريكا—يوفر له ملاذًا شبه مضمون. فإذا وصلت مذكرة القبض أخيرًا إلى هونغ كونغ، أمكن لفيكس اعتقاله وتسليمه إلى الشرطة المحلية، وتنتهي المشكلة. أما بعد هونغ كونغ فلن تكفي مذكرة عادية؛ إذ سيحتاج إلى مذكرة تسليم، وهو ما سيجر وراءه تأخيرات وعقبات قد يستغلها الرجل الماكر للفرار من العدالة."
+    },
+    {
+      "index": 7,
+      "en": "Fix thought over these probabilities during the long hours which he spent in his cabin, and kept repeating to himself, “Now, either the warrant will be at Hong Kong, in which case I shall arrest my man, or it will not be there; and this time it is absolutely necessary that I should delay his departure. I have failed at Bombay, and I have failed at Calcutta; if I fail at Hong Kong, my reputation is lost: Cost what it may, I must succeed! But how shall I prevent his departure, if that should turn out to be my last resource?”",
+      "existingArabicDraft": "ظل فيكس يقلّب هذه الاحتمالات في ذهنه خلال الساعات الطويلة التي قضاها في مقصورته، ويردد لنفسه: «إما أن تصل مذكرة القبض إلى هونغ كونغ، فأعتقل الرجل، وإما ألا تصل؛ وعندها يصبح من الضروري هذه المرة أن أؤخر رحيله. لقد أخفقت في بومباي ثم أخفقت في كلكتا؛ وإذا أخفقت في هونغ كونغ ضاعت سمعتي. مهما كلّف الأمر، يجب أن أنجح! لكن كيف أمنعه من المغادرة إذا اضطررت إلى اللجوء إلى هذا الخيار الأخير؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كانت «رانغون»—إحدى سفن شركة شبه الجزيرة والشرق التي تجوب بحار الصين واليابان—باخرةً حديدية تعمل بالمروحة، تزن نحو ألف وسبعمئة وسبعين طنًا، وتبلغ قوة محركاتها أربعمئة حصان. وكانت سريعة مثل «منغوليا»، وإن كانت أقل تجهيزًا وراحةً، ولم تجد أودا على متنها ما كان فيليس فوغ يتمناه لها من أسباب الرفاه. ومع ذلك، لم تتجاوز الرحلة من كلكتا إلى هونغ كونغ نحو ثلاثة آلاف وخمسمئة ميل، تستغرق من عشرة أيام إلى اثني عشر، ولم تكن الشابة كثيرة المطالب."
+    },
+    {
+      "index": 1,
+      "ar": "خلال الأيام الأولى من الرحلة، ازدادت أودا معرفةً بمن تولّى حمايتها، وكانت تُظهر باستمرار عميق امتنانها لما فعله من أجلها. كان الرجل الهادئ يستمع إليها ببرود، على ما يبدو؛ فلا صوته ولا ملامحه يكشفان عن أدنى انفعال، لكنه بدا دائم الانتباه إلى ألا ينقص أودا شيء من راحتها. وكان يزورها كل يوم في أوقات محددة، لا ليكثر الحديث، بل ليجلس ويصغي إليها. عاملها بأقصى درجات التهذيب، لكن بدقة آلة آلية رُتبت حركاتها مسبقًا لهذا الغرض. لم تعرف أودا تمامًا كيف تفهم شخصيته، مع أن باسبارتو لمح لها بشيء من غرابة أطوار سيده وأضحكها حين حكى لها عن الرهان الذي يدفعه إلى الدوران حول العالم. وفي نهاية الأمر، كانت تدين لفيليس فوغ بحياتها، ولذلك ظلت تنظر إليه من خلال عدسة امتنانها العميق."
+    },
+    {
+      "index": 2,
+      "ar": "أكّدت أودا رواية دليل البارسيين عن قصتها المؤثرة. فقد كانت بالفعل تنتمي إلى أرفع طبقات المجتمع الهندي المحلي. وحقق كثير من تجار البارسيين ثروات كبيرة من تجارة القطن؛ حتى إن أحدهم، السير جاميتسي جيجيبهوي، منحته الحكومة الإنجليزية لقب بارونيت. وكانت أودا قريبةً لهذا الرجل العظيم، وكانت تأمل أن تلتحق في هونغ كونغ بابن عمه جيجيه. لم تكن تعرف إن كانت ستجد لديه من يحميها، لكن السيد فوغ حاول تهدئة مخاوفها وأكد لها أن كل شيء سيُرتّب بدقة حسابية. حدّقت أودا بعينيها الواسعتين، «الصافيتين كبحيرات الهيمالايا المقدسة»، نحوه؛ غير أن فوغ، الذي ظل متحفظًا كما عهدته، لم يبدُ راغبًا في أن يلقي بنفسه في تلك البحيرة."
+    },
+    {
+      "index": 3,
+      "ar": "مرّت الأيام الأولى من الرحلة بسلام، وسط طقس ملائم ورياح مواتية، وسرعان ما لاح لهم أندامان الكبرى، أكبر جزر خليج البنغال، وقمتها الخلابة سادل بيك التي ترتفع ألفين وأربعمئة قدم فوق الماء. سارت الباخرة بمحاذاة الشاطئ، لكن سكان بابوا الذين هم في أدنى درجات الإنسانية، ولكنهم ليسوا آكلي لحوم البشر كما زُعم، لم يظهروا."
+    },
+    {
+      "index": 4,
+      "ar": "كان مشهد الجزر وهي تمر بمحاذاتهم رائعًا. فقد غطّت المقدمة غابات شاسعة من النخيل والأريكا والخيزران وخشب الساج والميموزا العملاقة والسراخس الشبيهة بالأشجار، بينما ارتسمت خلفها خطوط الجبال الرشيقة على صفحة السماء. وعلى السواحل احتشدت آلاف طيور السنونو التي تُشكّل أعشاشها طبقًا فاخرًا على موائد الإمبراطورية السماوية. لكن المناظر المتنوعة لجزر أندامان سرعان ما ابتعدت، وأخذت «رانغون» تقترب سريعًا من مضيق ملقا، المؤدي إلى بحار الصين."
+    },
+    {
+      "index": 5,
+      "ar": "ماذا كان يفعل المفتش فيكس، الذي ساقه سوء الحظ من بلد إلى آخر، طوال ذلك الوقت؟ لقد استطاع الصعود إلى «رانغون» في كلكتا من دون أن يراه باسبارتو، بعد أن ترك تعليمات بإرسال مذكرة القبض إليه في هونغ كونغ إن وصلت. وكان يأمل أن يخفي وجوده حتى نهاية الرحلة. وكان تفسير سبب وجوده على متن السفينة صعبًا من دون إثارة شكوك باسبارتو، الذي ظن أنه ما زال في بومباي. لكن الضرورة دفعته مع ذلك إلى تجديد معرفته بالخادم الطيب، كما سنرى."
+    },
+    {
+      "index": 6,
+      "ar": "تركّزت آمال المفتش ورغباته كلها الآن على هونغ كونغ؛ فمدة توقف السفينة في سنغافورة أقصر من أن تسمح له باتخاذ أي إجراء هناك. لا بد أن يتم القبض في هونغ كونغ، وإلا أفلت اللص منه على الأرجح إلى الأبد. وكانت هونغ كونغ آخر أرض إنجليزية تطأها قدمه؛ فما وراءها—الصين واليابان وأمريكا—توفر لفوغ ملاذًا شبه مضمون. فإذا وصلت مذكرة القبض أخيرًا إلى هونغ كونغ، أمكن لفيكس اعتقاله وتسليمه إلى الشرطة المحلية، ولن تهبّ مشكلات أخرى. أما بعد هونغ كونغ فلن تفيد مذكرة بسيطة؛ إذ ستكون هناك حاجة إلى مذكرة تسليم، وهو ما سيجر وراءه تأخيرات وعقبات سيستغلها الرجل الماكر للفرار من العدالة."
+    },
+    {
+      "index": 7,
+      "ar": "ظل فيكس يقلّب هذه الاحتمالات في ذهنه خلال الساعات الطويلة التي قضاها في مقصورته، ويردد لنفسه: «إما أن تصل مذكرة القبض إلى هونغ كونغ، فأعتقل الرجل، وإما ألا تصل؛ وعندها يصبح من الضروري تمامًا هذه المرة أن أؤخر رحيله. لقد أخفقت في بومباي، وأخفقت في كلكتا؛ وإذا أخفقت في هونغ كونغ ضاعت سمعتي: مهما كلّف الأمر، يجب أن أنجح! لكن كيف أمنعه من المغادرة إذا تبيّن أن ذلك هو ملجئي الأخير؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

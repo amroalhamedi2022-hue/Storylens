@@ -1,0 +1,151 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 15,
+  "chapterTitle": "In which the bag of bank-notes disgorges some thousands of pounds more.",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 8,
+  "sourceSha256": "9b2041c2fb837f7dc3c0af8ad600f901953031561754194583747286576272f4",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "“And inasmuch,” continued the judge, “as it is not proved that the act was not done by the connivance of the master with the servant, and as the master in any case must be held responsible for the acts of his paid servant, I condemn Phileas Fogg to a week’s imprisonment and a fine of one hundred and fifty pounds.”",
+      "existingArabicDraft": "ثم تابع القاضي: «وبما أنه لم يثبت أن الفعل لم يقع بتواطؤ السيد مع خادمه، وبما أن السيد يُحمَّل في كل الأحوال مسؤولية أفعال خادمه المأجور، أحكم على فيلياس فوغ بالسجن أسبوعًا وغرامة مئة وخمسين جنيهًا»."
+    },
+    {
+      "index": 25,
+      "en": "Fix rubbed his hands softly with satisfaction; if Phileas Fogg could be detained in Calcutta a week, it would be more than time for the warrant to arrive. Passepartout was stupefied. This sentence ruined his master. A wager of twenty thousand pounds was lost because he, like a precious fool, had gone into that abominable pagoda!",
+      "existingArabicDraft": "فرك فيكس يديه بهدوء ورضا؛ فإذا أمكن احتجاز فوغ في كلكتا أسبوعًا، فسيكون ذلك وقتًا كافيًا لوصول أمر الاعتقال. أما باسبارتو فقد أصابه الذهول. لقد دمّر هذا الحكم فرصة سيده للفوز بالرهان، وضاعت عشرون ألف جنيه لأنه، مثل أحمق كبير، دخل ذلك المعبد البغيض!"
+    },
+    {
+      "index": 26,
+      "en": "Phileas Fogg, as self-composed as if the judgment did not in the least concern him, did not even lift his eyebrows while it was being pronounced. Just as the clerk was calling the next case, he rose and said, “I offer bail.” “You have that right,” returned the judge.",
+      "existingArabicDraft": "ظل فيلياس فوغ متماسكًا، كأن الحكم لا يعنيه مطلقًا، ولم يرفع حاجبيه حتى أثناء النطق به. وما إن همّ الكاتب ببدء القضية التالية حتى نهض فوغ وقال: «أعرض تقديم كفالة». فأجابه القاضي: «لك هذا الحق»."
+    },
+    {
+      "index": 27,
+      "en": "Fix’s blood ran cold, but he resumed his composure when he heard the judge announce that the bail required for each prisoner would be one thousand pounds. “I will pay it at once,” said Mr. Fogg, taking a roll of bank-bills from the carpet-bag, which Passepartout had by him, and placing them on the clerk’s desk.",
+      "existingArabicDraft": "تجمد الدم في عروق فيكس، لكنه استعاد هدوءه عندما سمع القاضي يعلن أن الكفالة المطلوبة لكل سجين تبلغ ألف جنيه. قال فوغ: «سأدفعها فورًا»، وأخرج رزمة من الأوراق النقدية من حقيبة السفر التي كانت بجانب باسبارتو، ووضعها على مكتب الكاتب."
+    },
+    {
+      "index": 28,
+      "en": "“This sum will be restored to you upon your release from prison,” said the judge. “Meanwhile, you are liberated on bail.” “Come!” said Phileas Fogg to his servant. “But let them at least give me back my shoes!” cried Passepartout angrily. “Ah, these are pretty dear shoes!” he muttered, as they were handed to him. “More than a thousand pounds apiece; besides, they pinch my feet.”",
+      "existingArabicDraft": "قال القاضي: «سيُعاد إليك هذا المبلغ عند الإفراج عنك من السجن. أما الآن فأنتما مطلقا السراح بكفالة». ثم قال فوغ لخادمه: «هيا بنا». فصرخ باسبارتو غاضبًا: «لكن أعيدوا إليّ حذائي على الأقل!» وتمتم حين أعطوه إياه: «يا له من حذاء باهظ! ثمن كل فردة أكثر من ألف جنيه، وفوق ذلك إنها تضغط على قدميّ»."
+    },
+    {
+      "index": 29,
+      "en": "Mr. Fogg, offering his arm to Aouda, then departed, followed by the crestfallen Passepartout. Fix still nourished hopes that the robber would not, after all, leave the two thousand pounds behind him, but would decide to serve out his week in jail, and issued forth on Mr. Fogg’s traces. That gentleman took a carriage, and the party were soon landed on one of the quays.",
+      "existingArabicDraft": "غادر فوغ وهو يعرض ذراعه على عودة، وتبعه باسبارتو منكّس الرأس. وظل فيكس يأمل أن يقرر اللص البقاء في السجن وقضاء أسبوعه بدلًا من ترك ألفي جنيه، فانطلق يقتفي أثر السيد فوغ. استأجر فوغ عربة، وسرعان ما وصل أفراد المجموعة إلى أحد الأرصفة."
+    },
+    {
+      "index": 30,
+      "en": "The “Rangoon” was moored half a mile off in the harbour, its signal of departure hoisted at the masthead. Eleven o’clock was striking; Mr. Fogg was an hour in advance of time. Fix saw them leave the carriage and push off in a boat for the steamer, and stamped his feet with disappointment.",
+      "existingArabicDraft": "كانت الباخرة «رانغون» راسية على بُعد نصف ميل في الميناء، وقد رُفع علم المغادرة على ساريتها. دقت الساعة الحادية عشرة، وكان فوغ متقدمًا على موعده بساعة. رأى فيكس المجموعة تغادر العربة وتستقل قاربًا نحو الباخرة، فراح يضرب الأرض بقدميه من شدة خيبة الأمل."
+    },
+    {
+      "index": 31,
+      "en": "“The rascal is off, after all!” he exclaimed. “Two thousand pounds sacrificed! He’s as prodigal as a thief! I’ll follow him to the end of the world if necessary; but, at the rate he is going on, the stolen money will soon be exhausted.”",
+      "existingArabicDraft": "صاح فيكس: «لقد أفلت الوغد في النهاية! ألفا جنيه ضاعا! إنه مبذّر مثل اللص تمامًا. سأتبع أثره إلى آخر العالم إن لزم الأمر، لكن المال المسروق سينفد قريبًا، بهذا المعدل الذي ينفق به!»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "ثم تابع القاضي: «وبما أنه لم يثبت أن الفعل لم يقع بتواطؤ السيد مع خادمه، وبما أن السيد يُحمَّل في كل الأحوال مسؤولية أفعال خادمه المأجور، أحكم على فيلياس فوغ بالسجن أسبوعًا وغرامة مئة وخمسين جنيهًا»."
+    },
+    {
+      "index": 1,
+      "ar": "فرك فيكس يديه بهدوء ورضا؛ فإذا أمكن احتجاز فوغ في كلكتا أسبوعًا، فسيكون ذلك وقتًا كافيًا لوصول أمر الاعتقال. أما باسبارتو فقد أصابه الذهول. لقد دمّر هذا الحكم فرصة سيده للفوز بالرهان، وضاعت عشرون ألف جنيه لأنه، مثل أحمق كبير، دخل ذلك المعبد البغيض!"
+    },
+    {
+      "index": 2,
+      "ar": "ظل فيلياس فوغ متماسكًا، كأن الحكم لا يعنيه مطلقًا، ولم يرفع حاجبيه حتى أثناء النطق به. وما إن همّ الكاتب ببدء القضية التالية حتى نهض فوغ وقال: «أعرض تقديم كفالة». فأجابه القاضي: «لك هذا الحق»."
+    },
+    {
+      "index": 3,
+      "ar": "تجمد الدم في عروق فيكس، لكنه استعاد هدوءه عندما سمع القاضي يعلن أن الكفالة المطلوبة لكل سجين تبلغ ألف جنيه. قال فوغ: «سأدفعها فورًا»، وأخرج رزمة من الأوراق النقدية من حقيبة السفر التي كانت بجانب باسبارتو، ووضعها على مكتب الكاتب."
+    },
+    {
+      "index": 4,
+      "ar": "قال القاضي: «سيُعاد إليك هذا المبلغ عند الإفراج عنك من السجن. أما الآن فأنتما مطلقا السراح بكفالة». ثم قال فوغ لخادمه: «هيا بنا». فصرخ باسبارتو غاضبًا: «لكن أعيدوا إليّ حذائي على الأقل!» وتمتم حين أعطوه إياه: «يا له من حذاء باهظ! ثمن كل فردة أكثر من ألف جنيه، وفوق ذلك إنها تضغط على قدميّ»."
+    },
+    {
+      "index": 5,
+      "ar": "غادر فوغ وهو يعرض ذراعه على عودة، وتبعه باسبارتو منكّس الرأس. وظل فيكس يأمل أن يقرر اللص البقاء في السجن وقضاء أسبوعه بدلًا من ترك ألفي جنيه، فانطلق يقتفي أثر السيد فوغ. استأجر فوغ عربة، وسرعان ما وصل أفراد المجموعة إلى أحد الأرصفة."
+    },
+    {
+      "index": 6,
+      "ar": "كانت الباخرة «رانغون» راسية على بُعد نصف ميل في الميناء، وقد رُفع علم المغادرة على ساريتها. دقت الساعة الحادية عشرة، وكان فوغ متقدمًا على موعده بساعة. رأى فيكس المجموعة تغادر العربة وتستقل قاربًا نحو الباخرة، فراح يضرب الأرض بقدميه من شدة خيبة الأمل."
+    },
+    {
+      "index": 7,
+      "ar": "صاح فيكس: «لقد أفلت الوغد في النهاية! ألفا جنيه ضاعا! إنه مبذّر مثل اللص تمامًا. سأتبع أثره إلى آخر العالم إن لزم الأمر، لكن المال المسروق سينفد قريبًا، بهذا المعدل الذي ينفق به!»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

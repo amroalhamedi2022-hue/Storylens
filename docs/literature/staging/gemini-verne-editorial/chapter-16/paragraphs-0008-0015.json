@@ -1,0 +1,152 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 16,
+  "chapterTitle": "In which Fix does not seem to understand in the least what is said to him.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "23d85115d6feda2ca136c27de9e043ac23bd4e6301e78ad85445609525838619",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "Fix made up his mind that, if worst came to worst, he would make a confidant of Passepartout, and tell him what kind of a fellow his master really was. That Passepartout was not Fogg’s accomplice, he was very certain. The servant, enlightened by his disclosure, and afraid of being himself implicated in the crime, would doubtless become an ally of the detective. But this method was a dangerous one, only to be employed when everything else had failed. A word from Passepartout to his master would ruin all. The detective was therefore in a sore strait. But suddenly a new idea struck him. The presence of Aouda on the Rangoon, in company with Phileas Fogg, gave him new material for reflection.",
+      "existingArabicDraft": "قرّر فيكس أنه إذا وصلت الأمور إلى أسوأ الاحتمالات، فسيجعل من باسبارتو موضع ثقة ويخبره بحقيقة سيده. كان واثقًا من أن باسبارتو ليس شريكًا لفوغ في الجريمة. ولا شك أن الخادم، بعد أن تنكشف له الحقيقة ويخشى أن يُورّط هو نفسه في القضية، سيصبح حليفًا للمفتش. لكن هذه الطريقة خطرة، ولا ينبغي استخدامها إلا بعد فشل كل الوسائل الأخرى؛ فكلمة واحدة من باسبارتو إلى سيده ستفسد كل شيء. لذلك وجد المفتش نفسه في مأزق شديد. وفجأة خطرت له فكرة جديدة: إن وجود أودا على «رانغون» برفقة فيليس فوغ يفتح بابًا جديدًا للتفكير."
+    },
+    {
+      "index": 9,
+      "en": "Who was this woman? What combination of events had made her Fogg’s travelling companion? They had evidently met somewhere between Bombay and Calcutta; but where? Had they met accidentally, or had Fogg gone into the interior purposely in quest of this charming damsel? Fix was fairly puzzled. He asked himself whether there had not been a wicked elopement; and this idea so impressed itself upon his mind that he determined to make use of the supposed intrigue. Whether the young woman were married or not, he would be able to create such difficulties for Mr. Fogg at Hong Kong that he could not escape by paying any amount of money.",
+      "existingArabicDraft": "من تكون هذه المرأة؟ وأي سلسلة من الأحداث جعلتها رفيقة سفر فوغ؟ لا بد أنهما التقيا في مكان ما بين بومباي وكلكتا، لكن أين؟ أكان لقاؤهما مصادفة، أم أن فوغ توغّل إلى الداخل عمدًا بحثًا عن هذه الشابة الجميلة؟ لقد أصاب الارتباك فيكس. وسأل نفسه إن لم تكن هناك هربة غرامية سرية؛ وقد استحوذت الفكرة على ذهنه حتى قرر استغلال هذه العلاقة المزعومة. وسواء أكانت الشابة متزوجة أم لا، فقد استطاع أن يخلق لفوغ في هونغ كونغ مشكلات لا يستطيع التخلص منها مهما دفع من المال."
+    },
+    {
+      "index": 10,
+      "en": "But could he even wait till they reached Hong Kong? Fogg had an abominable way of jumping from one boat to another, and, before anything could be effected, might get full under way again for Yokohama.",
+      "existingArabicDraft": "لكن هل يمكنه حتى الانتظار إلى أن يصلا هونغ كونغ؟ كان فوغ بارعًا على نحو مزعج في الانتقال من سفينة إلى أخرى، وربما تنطلق سفينته مجددًا إلى يوكوهاما قبل أن يتمكن أحد من تنفيذ أي شيء."
+    },
+    {
+      "index": 11,
+      "en": "Fix decided that he must warn the English authorities, and signal the Rangoon before her arrival. This was easy to do, since the steamer stopped at Singapore, whence there is a telegraphic wire to Hong Kong. He finally resolved, moreover, before acting more positively, to question Passepartout. It would not be difficult to make him talk; and, as there was no time to lose, Fix prepared to make himself known.",
+      "existingArabicDraft": "قرّر فيكس أن عليه تحذير السلطات الإنجليزية وإرسال إشارة إلى «رانغون» قبل وصولها. وكان ذلك سهلًا، لأن السفينة ستتوقف في سنغافورة، ومنها يمتد خط تلغرافي إلى هونغ كونغ. كما حسم أمره، قبل أن يقدم على خطوة أكثر حزمًا، بأن يستجوب باسبارتو. لن يصعب عليه جعله يتكلم، ولم يكن هناك وقت يضيّعه؛ فاستعد فيكس للكشف عن نفسه."
+    },
+    {
+      "index": 12,
+      "en": "It was now the 30th of October, and on the following day the Rangoon was due at Singapore.",
+      "existingArabicDraft": "كان التاريخ الآن الثلاثين من أكتوبر، وكان من المقرر أن تصل «رانغون» إلى سنغافورة في اليوم التالي."
+    },
+    {
+      "index": 13,
+      "en": "Fix emerged from his cabin and went on deck. Passepartout was promenading up and down in the forward part of the steamer. The detective rushed forward with every appearance of extreme surprise, and exclaimed, “You here, on the Rangoon?”",
+      "existingArabicDraft": "خرج فيكس من مقصورته وصعد إلى السطح. وكان باسبارتو يتمشّى ذهابًا وإيابًا في مقدمة السفينة. فأسرع المفتش نحوه متظاهرًا بدهشة شديدة، وصاح: «أأنت هنا على متن رانغون؟»"
+    },
+    {
+      "index": 14,
+      "en": "“What, Monsieur Fix, are you on board?” returned the really astonished Passepartout, recognising his crony of the Mongolia. “Why, I left you at Bombay, and here you are, on the way to Hong Kong! Are you going round the world too?”",
+      "existingArabicDraft": "أجاب باسبارتو، وقد بدا عليه الذهول الحقيقي: «ماذا، يا سيد فيكس، أأنت على متنها؟ لقد تركتك في بومباي، وها أنت في طريقك إلى هونغ كونغ! أتنوي أنت أيضًا الدوران حول العالم؟»"
+    },
+    {
+      "index": 15,
+      "en": "“No, no,” replied Fix; “I shall stop at Hong Kong—at least for some days.”",
+      "existingArabicDraft": "قال فيكس: «لا، لا؛ سأبقى في هونغ كونغ، على الأقل بضعة أيام»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "قرّر فيكس أنه إذا وصلت الأمور إلى أسوأ الاحتمالات، فسيجعل من باسبارتو موضع ثقة ويخبره بحقيقة سيده الحقيقي. وكان واثقًا تمامًا من أن باسبارتو ليس شريكًا لفوغ. ولا شك أن الخادم، بعد أن تنكشف له الحقيقة ويخشى أن يُورّط هو نفسه في الجريمة، سيصبح حليفًا للمفتش. لكن هذه الطريقة كانت خطرة، ولا ينبغي استخدامها إلا بعد فشل كل الوسائل الأخرى. فكلمة واحدة من باسبارتو إلى سيده ستفسد كل شيء. ولذلك وجد المفتش نفسه في مأزق شديد. وفجأة خطرت له فكرة جديدة: إن وجود أودا على متن الرانغون، برفقة فيليس فوغ، منحها مادة جديدة للتفكير."
+    },
+    {
+      "index": 1,
+      "ar": "من تكون هذه المرأة؟ وأي سلسلة من الأحداث جعلتها رفيقة سفر فوغ؟ لا بد أنهما التقيا في مكان ما بين بومباي وكلكتا؛ لكن أين؟ أكان لقاؤهما مصادفة، أم أن فوغ توغّل في الداخل عمدًا بحثًا عن هذه الشابة الساحرة؟ لقد أصاب الارتباك فيكس تمامًا. وسأل نفسه إن لم تكن هناك هربة غرامية آثمة؛ وقد استحوذت هذه الفكرة على ذهنه إلى حد جعله يقرر استغلال تلك العلاقة المزعومة. وسواء أكانت الشابة متزوجة أم لا، فسيتمكن من خلق صعوبات بالغة للسيد فوغ في هونغ كونغ بحيث لا يمكنه الإفلات منها مهما دفع من المال."
+    },
+    {
+      "index": 2,
+      "ar": "ولكن هل كان بإمكانياته حتى الانتظار إلى أن يصلوا إلى هونغ كونغ؟ كان فوغ بارعًا بصورة مزعجة في الانتقال من سفينة إلى أخرى، وربما انطلق مجددًا بكامل سرعته نحو يوكوهاما قبل أن يُنجز أي شيء."
+    },
+    {
+      "index": 3,
+      "ar": "قرّر فيكس أن عليه تحذير السلطات الإنجليزية، وإرسال إشارة إلى الرانغون قبل وصولها. وكان ذلك أمرًا سهلًا، إذ إن الباخرة ستتوقف في سنغافورة، ومنها يمتد خط تلغرافي إلى هونغ كونغ. وعزم أخيرًا، قبل أن يُقدم على خطوة أكثر حزمًا، على استجواب باسبارتو. ولن يكون صعبًا حمله على الكلام؛ ونظرًا لعدم وجود وقت يضيّعه، استعد فيكس للكشف عن هويته."
+    },
+    {
+      "index": 4,
+      "ar": "لقد كان التاريخ الآن الثلاثين من أكتوبر، وكان من المقرر أن تصل الرانغون إلى سنغافورة في اليوم التالي."
+    },
+    {
+      "index": 5,
+      "ar": "خرج فيكس من مقصورته وصعد إلى السطح. وكان باسبارتو يتمشّى ذهابًا وإيابًا في القسم الأمامي من الباخرة. فأسرع المفتش نحوه متظاهرًا بأقصى درجات الدهشة، وصاح قائلاً: «أأنت هنا على متن الرانغون؟»"
+    },
+    {
+      "index": 6,
+      "ar": "أجاب باسبارتو، وقد بدا عليه الذهول الحقيقي وهو يتعرف على رفيقه القديم من المونغوليا: «ماذا، يا سيد فيكس، أأنت على متن السفينة؟ حقًا، لقد تركتك في بومباي، وها أنت ذا في طريقك إلى هونغ كونغ! أتنوي أنت أيضًا الدوران حول العالم؟»"
+    },
+    {
+      "index": 7,
+      "ar": "أجاب فيكس: «لا، لا؛ سأتوقف في هونغ كونغ، على الأقل لمدة بضعة أيام»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": false,
+      "issues": "خطأ في الضمير في نهاية النص (منحها مادة جديدة للتفكير بدلاً من منحه مادة جديدة للتفكير حيث العائد على فيكس)."
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "خطأ في الضمير (هل كان بإمكانياته بدلاً من هل كان بوسعه الانتظار أو هل يستطيع الانتظار)."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
