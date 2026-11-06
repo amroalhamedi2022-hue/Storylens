@@ -331,6 +331,14 @@ function installPageTurn(){
  const sentences=Array.from(sentenceBox.querySelectorAll(':scope > .sentence'));
  if(!sentences.length)return;
  width.dataset.ltPaged='1';
+ const spread=window.LinguaPageCurl&&window.innerWidth>=700&&window.innerWidth>window.innerHeight?2:1;
+ const bindingRtl=state.story?.sourceLanguage==='ar';
+ if(window.LinguaPageCurl){
+  sentenceBox.classList.add('lt-curl-book');sentenceBox.dataset.spread=String(spread);
+  // Measure at final sheet width, before moving the original interactive nodes.
+  sentenceBox.style.display='block';
+  sentenceBox.style.width=(100/spread)+'%';
+ }
  const chapterEnd=width.querySelector('.chapter-end');
  if(chapterEnd)chapterEnd.hidden=true;
  const originalNodes=Array.from(sentenceBox.childNodes);
@@ -377,6 +385,7 @@ function installPageTurn(){
   page.appendChild(node);
  }
  sentenceBox.replaceChildren(...pages);
+ if(window.LinguaPageCurl){sentenceBox.style.removeProperty('display');sentenceBox.style.removeProperty('width');}
  const pageControls=document.createElement('nav');
  pageControls.className='lt-page-controls';
  pageControls.setAttribute('aria-label',uiText('التنقل بين صفحات القصة','Story page navigation'));
@@ -394,27 +403,31 @@ function installPageTurn(){
  const firstParagraph=Number.isInteger(savedAnchor)&&savedAnchor>=0&&
   savedAnchor<sentences.length?savedAnchor:legacyParagraph;
  let current=ltPageForParagraph(starts,firstParagraph);
+ current=Math.floor(current/spread)*spread;
+ let curl=null;
  const prev=pageControls.querySelector('.lt-page-prev');
  const next=pageControls.querySelector('.lt-page-next');
  const countLabel=pageControls.querySelector('.lt-page-count');
  function renderPage(direction,animate){
   current=Math.max(0,Math.min(pages.length-1,current));
   pages.forEach((item,index)=>{
-   item.classList.toggle('is-active',index===current);
+   const visible=index>=current&&index<current+spread;
+   item.classList.toggle('is-active',visible);
+   item.style.setProperty('--lt-page-column',String(bindingRtl?spread-(index-current):index-current+1));
    item.setAttribute('aria-label',pageGroupLabel(index,pages.length));
    item.setAttribute('aria-roledescription',uiText('صفحة من القصة','story page'));
-   item.setAttribute('aria-hidden',index===current?'false':'true');
-   item.inert=index!==current;
+   item.setAttribute('aria-hidden',visible?'false':'true');
+   item.inert=!visible;
   });
   prev.disabled=current===0&&state.chapter===0;
-  next.textContent=current===pages.length-1
+  next.textContent=current+spread>=pages.length
    ?(state.chapter<state.story.chapters.length-1?uiText('الفصل التالي','Next chapter'):uiText('العودة للمكتبة','Back to library'))
    :uiText('الصفحة التالية','Next page');
   countLabel.textContent=uiText('الصفحة '+(current+1)+' من '+pages.length,'Page '+(current+1)+' of '+pages.length);
   put(key,current);
   put(anchorKey,starts[current]||0);
-  if(chapterEnd)chapterEnd.hidden=current!==pages.length-1;
-  if(animate&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  if(chapterEnd)chapterEnd.hidden=current+spread<pages.length;
+  if(animate&&!window.LinguaPageCurl&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
    animatePageTurn(pages[current],direction);
   }
   // Show the new paper after a turn, rather than scrolling back to the cover
@@ -444,7 +457,7 @@ function installPageTurn(){
   }catch(_){return false;}
  }
  function move(delta,source='control'){
-  if(delta>0&&current===pages.length-1){
+  if(delta>0&&current+spread>=pages.length){
    if(state.chapter<state.story.chapters.length-1){ltPlayPageTurnSfx();nextChapter();}
    // A casual edge swipe at The End must not discard the reading view.
    // The explicit chapter-end and keyboard-accessible Back buttons still exit.
@@ -465,10 +478,16 @@ function installPageTurn(){
    ltPlayPageTurnSfx();renderReader();window.scrollTo(0,0);
    return;
   }
+  delta*=spread;
   current+=delta;ltPlayPageTurnSfx();renderPage(delta>0?'next':'back',true);
  }
- prev.addEventListener('click',()=>move(-1));
- next.addEventListener('click',()=>move(1));
+ function requestMove(delta,source='control'){
+  if(curl){
+   if(!curl.turn(delta,source)&&source==='control'&&delta>0&&current+spread>=pages.length&&state.chapter===state.story.chapters.length-1)libraryBack();
+  }else move(delta,source);
+ }
+ prev.addEventListener('click',()=>requestMove(-1));
+ next.addEventListener('click',()=>requestMove(1));
  // Focus the PAPER, not its tokens. Bluetooth keyboards on tablets can turn
  // pages using arrows/PageUp/PageDown without overriding word selection,
  // search inputs, modal shortcuts or actual click handlers.
@@ -478,13 +497,55 @@ function installPageTurn(){
   if(event.target!==sentenceBox||event.defaultPrevented||event.repeat||
      event.isComposing||event.altKey||event.ctrlKey||event.metaKey||
      event.shiftKey||window.getSelection?.()?.toString()?.trim())return;
-  const delta=pageKeyboardDelta(event.key,document.documentElement.dir==='rtl');
+  const delta=pageKeyboardDelta(event.key,bindingRtl);
   if(!delta)return;
   event.preventDefault();
   // 'keyboard' never exits the book on its final page; only the explicit
   // Back-to-library button may do so. All progress persistence stays in move().
-  move(delta,'keyboard');
+  requestMove(delta,'keyboard');
  });
+ // The engine owns gestures and animations when available. The legacy path
+ // below is only a compatibility fallback; never install both sets of handlers.
+ if(window.LinguaPageCurl){
+  const curlStory=state.story,curlChapter=state.chapter;
+  let boundaryPreview=null;
+  function boundaryPage(delta){
+   boundaryPreview?.remove();
+   const chapter=state.story.chapters[state.chapter+delta];
+   if(!chapter)return null;
+   const preview=document.createElement('section');preview.className='lt-book-page';
+   preview.inert=true;preview.setAttribute('aria-hidden','true');
+   const from=delta>0?0:Math.max(0,chapter.paragraphs.length-1);
+   // Bounded preview from real source, never a fabricated or full-novel snapshot.
+   for(const paragraph of chapter.paragraphs.slice(from,from+1)){
+    const p=document.createElement('p');p.className='sentence';
+    p.dir=bindingRtl?'rtl':'ltr';p.lang=bindingRtl?'ar':'en';
+    p.textContent=bindingRtl?paragraph.ar:paragraph.en;preview.appendChild(p);
+   }
+   sentenceBox.appendChild(preview);boundaryPreview=preview;return preview;
+  }
+  curl=window.LinguaPageCurl.mount({host:sentenceBox,rtl:bindingRtl,
+   allowed:target=>pageFoldStartAllowed(target,window.getSelection?.()?.toString()||''),
+   getTurn(delta){
+    const target=current+delta*spread;
+    const boundary=target<0||target>=pages.length;
+    if(boundary&&!state.story.chapters[state.chapter+delta])return null;
+    const moving=delta>0?Math.min(current+spread-1,pages.length-1):current;
+    return {page:pages[moving],
+     under:boundary?boundaryPage(delta):pages[target+(delta>0?Math.min(spread-1,pages.length-1-target):0)],
+     back:!boundary?pages[target+(spread===2&&delta<0?1:0)]:boundaryPreview,
+     info:{storyId:curlStory.id,chapter:curlChapter,fromPage:current,toPage:boundary?null:target,spread}};
+   },
+   commit(delta,source){
+    if(state.page!=='reader'||state.story!==curlStory||state.chapter!==curlChapter||!sentenceBox.isConnected)return false;
+    move(delta,source);boundaryPreview?.remove();boundaryPreview=null;return true;
+   }
+  });
+  sentenceBox.addEventListener('lingua:turncancel',()=>{boundaryPreview?.remove();boundaryPreview=null;});
+  // Public bridge for native Back and immersive shell integration.
+  window.LinguaReaderCurl=curl;
+  renderPage('next',false);return;
+ }
  let startX=null,startY=null,startTarget=null;
  const resetTouch=()=>{startX=null;startY=null;startTarget=null;};
  sentenceBox.addEventListener('touchstart',event=>{
@@ -747,6 +808,7 @@ const bookmarkKey=()=> 'bookmarks';
 function captureParagraphAnchor(){
  const viewport=Number.isFinite(window.innerHeight)?window.innerHeight:800;
  for(const node of document.querySelectorAll('.reader .sentence')){
+  if(node.closest?.('[aria-hidden="true"],.lt-curl-stage'))continue;
   const paragraph=Number(node.dataset?.i);
   const box=node.getBoundingClientRect?.();
   if(!Number.isInteger(paragraph)||paragraph<0||!box||
