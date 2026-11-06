@@ -1,0 +1,26 @@
+name: Lingua Tales - original 1887 Sherlock Friston source validation
+on:
+  pull_request:
+    paths:
+      - 'tools/intake_study_scarlet_friston_1887.py'
+      - 'tools/test_study_scarlet_friston_intake.py'
+      - 'tools/report_chapter_art_progress.py'
+      - '.github/workflows/study-scarlet-friston-1887-*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-strict-original-plate-provenance-without-network:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate only original 1887 period image selection and storage policy
+        run: |
+          python tools/test_study_scarlet_friston_intake.py
+          python tools/report_chapter_art_progress.py
