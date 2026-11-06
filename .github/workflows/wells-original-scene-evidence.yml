@@ -1,0 +1,21 @@
+name: Literature - five source-matched original 1906 Wells scene candidates
+on:
+  pull_request:
+    paths:
+      - 'docs/literature/staging/the-war-of-the-worlds/chapter-image-map.json'
+      - 'tools/report_chapter_art_progress.py'
+      - 'tools/test_wells_real_1906_scenes.py'
+      - '.github/workflows/wells-original-scene-evidence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-plate-and-prose-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify exact original English prose, five actual artist plates, source SHA, unapproved rights
+        run: python3 tools/test_wells_real_1906_scenes.py
+      - name: Recheck entire historical image inventory without modifying generated reports
+        run: python3 tools/report_chapter_art_progress.py
