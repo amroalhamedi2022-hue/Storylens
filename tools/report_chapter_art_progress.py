@@ -348,6 +348,61 @@ def war_of_worlds_original_chapter_coverage() -> dict:
             "sourceStructuralUnits": len(structural)}
 
 
+
+def verify_unpublished_gutenberg_edition(slug: str, volume: int | None = None) -> dict:
+    """Integrity audit of a REAL complete Gutenberg text; not its chapter/translation readiness."""
+    folder = STAGING / "user-requested-classics-20261105" / slug
+    meta = jload(folder / "manifest.json")
+    source = meta["source"]
+    original = (folder / "original-edition.html").read_bytes()
+    if (sha256(original) != source["sha256"] or
+        len(original) != source["bytes"] or
+        source.get("originalFullEditionPreservedVerbatim") is not True or
+        source.get("completeGutenbergMarkers") is not True or
+        meta["acceptance"].get("fullNaturalArabicTranslation") is not False or
+        meta["acceptance"].get("appIntegrated") is not False or
+        (volume is not None and
+         (meta.get("seriesVolume") != volume or meta.get("seriesVolumeCount") != 10))):
+        raise ValueError("Source or publication flag differs from pinned original edition: " + slug)
+    if meta.get("historicalArtworkCandidates") != len(meta.get("sourceImages", [])):
+        raise ValueError("Archive artwork count inaccurate: " + slug)
+    return {"sourceOriginalSha256": source["sha256"],
+            "originalNarrativeWordsClaimFromSource": source["narrativeWords"],
+            "localCandidateChapters": 0, "readyForUICards": 0,
+            "chapterCount": None, "missingImageChapters": None,
+            "missingReadyChapters": None, "archivedLocalHistoricArt": 0,
+            "sourceHashAudit": "BYTE_EXACT_GUTENBERG_SHA256",
+            "sourceState": "complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance"}
+
+
+def verify_arabian_wikisource_arabic_segments() -> dict:
+    """Keep original four Arabic parts distinct from Burton's ten English volumes."""
+    archive = STAGING / "arabian-nights-arabic-wikisource-20261105"
+    total_words = 0
+    for number in range(1, 5):
+        folder = archive / f"part-{number:02d}"
+        meta = jload(folder / "manifest.json")
+        original = (folder / "wikisource-original-page.html").read_bytes()
+        transcript = (folder / "arabic-transcription.txt").read_bytes()
+        if (meta.get("segment") != f"part-{number:02d}" or
+            meta.get("workId") != "alf-layla-wa-layla" or
+            len(original) != meta["originalPageBytes"] or
+            sha256(original) != meta["originalPageSha256"] or
+            len(transcript) != meta["transcriptionBytes"] or
+            sha256(transcript) != meta["transcriptionSha256"] or
+            meta.get("verifiedAsMatchingBurtonEnglishEdition") is not False or
+            meta.get("colouredHistoricalChapterArtworkIntegrated") is not False):
+            raise ValueError("Arabic Nights original source or bilingual rights claim changed: " + folder.name)
+        total_words += meta.get("arabicWordTokens", 0)
+    return {"arabicSourceSegments": 4,
+            "arabicWordTokensInSource": total_words,
+            "sourceHashAudit": "FOUR_ARABIC_ORIGINAL_PAGE_AND_TRANSCRIPTION_SHA256",
+            "sourceState": "four exact Arabic Wikisource transcripts staged; no accepted alignment to Burton EN ten volumes; narrative/night segmentation and share-alike compliance pending",
+            "chapterCount": None, "localCandidateChapters": 0,
+            "readyForUICards": 0, "missingImageChapters": None,
+            "missingReadyChapters": None, "archivedLocalHistoricArt": 0}
+
+
 def generate() -> dict:
     manifest = jload(HIST)
     if not manifest or len({x["file"] for x in manifest}) != len(manifest):
@@ -551,6 +606,22 @@ def generate() -> dict:
                              "readyForUICards": 0, "missingImageChapters": None,
                              "missingReadyChapters": None,
                              "archivedLocalHistoricArt": kalila_colours if slug == "kalila-arabic-wikisource" else 0})
+    # All previously staged full Gutenberg editions must appear in this report.
+    woman = STAGING / "user-requested-classics-20261105" / "the-woman-in-white"
+    if woman.is_dir():
+        rows.append({"bookId": "the-woman-in-white", "title": "The Woman in White",
+                     **verify_unpublished_gutenberg_edition("the-woman-in-white")})
+    for volume in range(1, 11):
+        slug = f"arabian-nights-burton-v{volume:02d}"
+        folder = STAGING / "user-requested-classics-20261105" / slug
+        if folder.is_dir():
+            rows.append({"bookId": slug, "title": f"Arabian Nights — Burton Volume {volume:02d}/10",
+                         "sourceSeriesVolume": volume,
+                         **verify_unpublished_gutenberg_edition(slug, volume)})
+    if (STAGING / "arabian-nights-arabic-wikisource-20261105").is_dir():
+        rows.append({"bookId": "alf-layla-wa-layla-arabic-fourparts",
+                     "title": "ألف ليلة وليلة — four Arabic Wikisource transcription parts",
+                     **verify_arabian_wikisource_arabic_segments()})
     available = sum(r["localCandidateChapters"] for r in rows)
     ready = sum(r["readyForUICards"] for r in rows)
     return {
@@ -630,7 +701,7 @@ def markdown(report: dict) -> str:
         "- Five archived illustrated novels now have edition-derived chapter counts and source-positioned local plate candidates; verify scene fidelity and per-image rights before use.", 
         "- Monte Cristo: **" + str(next((r["missingImageChapters"] for r in report["books"] if r["bookId"] == "the-count-of-monte-cristo"), "not indexed")) + " chapter candidates missing**; the historical English translation's original French edition and rights still need verification.",
         "- Six complete Standard Ebooks originals are now source- and SHA-pinned chapter-indexed (108 chapters); primary images, contextual Arabic, art/territory rights and editorial approval remain missing.",
-        "- Moonstone, Kalila and other edition-specific works still require responsible narrative segmentation and rights/art review.",
+        "- Moonstone, Kalila, Woman in White and Arabian Nights still require edition-specific chapter/night boundaries, contextual bilingual correspondence and art/territory clearance.",
         "- Book cover art, full bilingual human review and signed reader release require independent checks.",
         "",
     ])
