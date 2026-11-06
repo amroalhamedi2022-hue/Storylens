@@ -66,7 +66,7 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
   chapters:lazy?[]:Array.from({length:count},(_,i)=>chapter(i+1)),totalChapters:count,
   lazyBook:lazy,chapterThumbnails:approved?[approved,null,null]:undefined};
  const fakeArt=artSrc?{'example-story_0':artSrc}:{};
- const cards=[],historyCalls=[],baseOpens=[],writes=[];
+ const cards=[],historyCalls=[],baseOpens=[],writes=[],reads=[];
  const bookCard=element('article');
  bookCard.getAttribute=name=>name==='onclick'?"openStory('example-story')":null;
  const reader=element('article');
@@ -112,6 +112,7 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  };
  const sandbox={window:W,document,history,art:fakeArt,put(k,v){writes.push([k,v])},
   get(k,def){
+   reads.push(k);
    if(k==='chapter_example-story'&&resume!==null)return resume;
    if(k==='lt_chapter_gallery_layout')return layoutPref;
    if(visitedIndex!==null&&k==='readpage_example-story_'+visitedIndex)return 2;
@@ -136,7 +137,7 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
   for(const listener of document.clickListeners)listener(event);
   return event;
  };
- return {W,api,story,document,bookCard,reader,hero,readerNav,sandbox,cards,historyCalls,baseOpens,writes,listeners,timerQueue,observers,clickBook};
+ return {W,api,story,document,bookCard,reader,hero,readerNav,sandbox,cards,historyCalls,baseOpens,writes,reads,listeners,timerQueue,observers,clickBook};
 }
 (async()=>{
  const s=scenario({artSrc:'data:image/svg+xml;charset=utf-8,%3Csvg%3E%3C%2Fsvg%3E'});
@@ -576,6 +577,26 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  assert.equal(filteredAuto.observers[1].active,false,'closing gallery releases intersection observer');
  filteredAuto.observers[1].emit(true);
  assert.equal(filteredAuto.api.isOpen,false,'a late observer cannot re-open closed gallery');
+
+ // Long-book typing can generate dozens of filter events per second.
+ // Never perform 130 x localStorage reads for EACH character typed.
+ const cached=scenario({count:130,visitedIndex:121});
+ cached.clickBook();await tick();
+ const cachedTools=cached.cards[0].children[0].children[0].children[0].children
+  .find(x=>x.className==='lt-chapter-gallery-tools');
+ const cachedFilter=cachedTools.children[2].children[0];
+ const cachedSearch=cachedTools.children[0].children[0];
+ cachedFilter.value='started';cachedFilter.emit('change');
+ const storedReads=cached.reads.filter(k=>k.startsWith('readpage_')).length;
+ assert.equal(storedReads,130,'first started filter reads each chapter once');
+ assert.equal(cached.cards[0].children[0].children[1].children[0].dataset.chapterIndex,'121');
+ for(const value of ['1','12','121','','الفصل ١٢١']){
+  cachedSearch.value=value;cachedSearch.emit('input');
+ }
+ assert.equal(cached.reads.filter(k=>k.startsWith('readpage_')).length,storedReads,
+  'filter keystrokes reuse immutable per-gallery reading cache');
+ cached.api.close();
+ assert.equal(cached.writes.length,0,'checking started chapters never writes progress');
 
  const noExtra=scenario({artSrc:'https://host.invalid/photo.jpg'});
  assert.equal(noExtra.api.chapterImage(noExtra.story,0),null,'remote sources never used as thumbnails');
