@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "status": "VISION_REVIEW_PENDING",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_039_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-2537ea3015082e9d.webp",
+  "imageSha256": "4aac14329bd137314a3622efbe207f70c221af46a8448f517d91042f0ca6e39b",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a scene in a wooded area. In the foreground, two figures are seated on a grassy bank, observing a distant, dark, low-profile vessel or structure emitting large plumes of smoke. In the middle ground, a group of smaller figures stands near the edge of the smoke, with one individual gesturing toward the vessel. The style is that of a 19th-century woodcut or pen-and-ink engraving.",
+    "visualObjectsEn": "Trees, grassy bank, smoke clouds, a distant dark vessel or platform with a mast-like structure, a group of small figures, two seated figures in the foreground.",
+    "recognizableCharactersOrPeopleEn": "Two seated figures in the foreground wearing hats; a group of small, indistinct figures in the middle ground; one figure standing and gesturing.",
+    "uncertaintyNotes": "The nature of the dark object in the distance is ambiguous; it could be a ship, a train, or a piece of industrial machinery obscured by smoke. The specific historical context or identity of the figures cannot be determined from the image alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite"
+}
