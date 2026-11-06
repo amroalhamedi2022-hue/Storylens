@@ -334,6 +334,27 @@ function show(id,{historyEntry=true}={}){
  addText(copy,'span','lt-chapter-gallery-eyebrow',locale('مكتبة الفصول','CHAPTER LIBRARY'));
  const title=addText(copy,'h2','lt-chapter-gallery-title',bookTitle(story));
  const count=addText(copy,'p','lt-chapter-gallery-subtitle',locale('جارٍ ترتيب الفصول…','Preparing chapters…'));
+ const tools=document.createElement('div');tools.className='lt-chapter-gallery-tools';
+ const searchLabel=document.createElement('label');searchLabel.className='lt-chapter-gallery-search-label';
+ searchLabel.textContent=locale('ابحث عن فصل','Find a chapter');
+ const search=document.createElement('input');
+ search.className='lt-chapter-gallery-search';
+ search.type='search';search.value='';search.maxLength=100;
+ search.autocomplete='off';search.spellcheck=false;search.disabled=true;
+ search.placeholder=locale('رقم الفصل أو عنوانه…','Chapter number or title…');
+ search.setAttribute('aria-label',locale('البحث في عناوين جميع الفصول',
+                                     'Search every chapter title and number'));
+ search.setAttribute('aria-controls','lt-chapter-gallery-track');
+ searchLabel.appendChild(search);tools.appendChild(searchLabel);
+ const continueButton=document.createElement('button');
+ continueButton.type='button';continueButton.disabled=true;
+ continueButton.className='lt-chapter-gallery-continue';
+ continueButton.textContent=locale('متابعة القراءة','Resume reading');
+ tools.appendChild(continueButton);
+ copy.appendChild(tools);
+ const searchSummary=addText(copy,'small','lt-chapter-gallery-results','');
+ searchSummary.setAttribute('role','status');
+ searchSummary.setAttribute('aria-live','polite');
  head.appendChild(copy);
  const dismiss=document.createElement('button');
  dismiss.type='button';dismiss.className='lt-chapter-gallery-close';
@@ -343,6 +364,7 @@ function show(id,{historyEntry=true}={}){
  head.appendChild(dismiss);
  sheet.appendChild(head);
  const track=document.createElement('div');track.className='lt-chapter-gallery-track';
+ track.id='lt-chapter-gallery-track';
  track.setAttribute('role','group');
  track.setAttribute('aria-label',locale('الفصول بالترتيب','Chapters in order'));
  track.setAttribute('aria-busy','true');
@@ -355,7 +377,9 @@ function show(id,{historyEntry=true}={}){
  dialog.addEventListener('cancel',event=>{event.preventDefault();close(true);});
  dialog.addEventListener('click',event=>{if(event.target===dialog)close(true);});
  document.body.appendChild(dialog);
- const entry={dialog,track,title,count,missing,restoreFocus,token:++serial,id};
+ const entry={dialog,track,title,count,missing,search,continue:continueButton,
+  searchSummary,restoreFocus,token:++serial,id,rendered:0,more:null};
+ search.addEventListener('input',()=>updateChapterFilter(entry));
  active=entry;
  if(historyEntry&&global.history?.pushState)
   global.history.pushState({page:'chapter-gallery',storyId:id},'','#chapters-'+encodeURIComponent(id));
