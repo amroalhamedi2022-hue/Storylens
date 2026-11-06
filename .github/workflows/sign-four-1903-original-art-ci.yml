@@ -4,6 +4,8 @@ on:
     paths:
       - 'tools/intake_sign_four_townsend_1903.py'
       - 'tools/test_sign_four_townsend_1903.py'
+      - 'tools/test_sign_four_townsend_scene_lead.py'
+      - 'docs/literature/staging/sign-four-townsend-1903-period-plates/**'
       - 'tools/intake_verne_commons_period_gallery.py'
       - 'tools/report_chapter_art_progress.py'
       - '.github/workflows/sign-four-1903-*.yml'
@@ -26,4 +28,5 @@ jobs:
       - name: Check real original image whitelist, local data signature and rights
         run: |
           python tools/test_sign_four_townsend_1903.py
+          python tools/test_sign_four_townsend_scene_lead.py
           python tools/report_chapter_art_progress.py
