@@ -633,3 +633,10 @@ Source baseline reviewed: main 064258074b4a3c4d5fb139aa4c163a28ca27b66a / CI #41
 ### 2026-11-05 — PR #22 Wen Reader Sanctuary VISUAL design MERGED
 - [PR #22](https://github.com/amroalhamedi2022-hue/Storylens/pull/22) merged at `4714ae728e8fe0d2f54dc5bcfd994b14b4aaa82c`; exact green source `73083ef16f0b1601507e13b564a88d6a61b7494d`, [Android/Node/Chromium CI #42095101320](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42095101320) SUCCESS. Fixed single novel centring failed in previous run with actual CSS, never disabled tests. This chat owns only visual design, not physical curling, chapter logic or sources.
 - Six themes, passive Wen atmosphere, real untinted original-colour art display, centred controls, responsive shelves; no user data, backup or sound changes. Hardware tablet 120Hz and post-merge main CI still independent gates. See `docs/handoffs/LINGUA_TALES_DESIGN_ONLY_HANDOFF_CURRENT.md`.
+
+### 2026-11-06 — visual recheck + Wen Reader Sanctuary V2 (CI pending)
+- DESIGN ONLY, no Codex curl or chapter navigation edits, no data/content/audio/signing changes.
+- All six user-approved app themes are guaranteed visible in settings, regardless of old hidden preference; added five Wen Sarafet-inspired editorial colour presets to the **existing** theme editor, not five extra themes.
+- New late CSS has clearer neutral liquid-lens highlights and user custom gradient propagation; corrects old reader.dark/selected-paper text contrast, shows original historical images without crop/tint, centres 48px controls, gives tablet portrait more usable book width and hides redundant metadata visually without changing saved progress.
+- Node plus true headless Chromium visual gate at 460x860, 768x1024, 1280x840; checks six theme appearances, six papers, contrast >=7:1, RTL, uncropped art, novel shelf isolation and reduced-effects. QA screenshot is a fixture, not an installed-app capture.
+- `docs/design/LINGUA_TALES_VISUAL_RECHECK_2026-11-06.md` is the persistent request-by-request audit. Exact-head CI and hardware Pad 5 testing still OPEN.
