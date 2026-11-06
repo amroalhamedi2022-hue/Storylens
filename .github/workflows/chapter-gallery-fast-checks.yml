@@ -1,0 +1,62 @@
+name: Lingua Tales • Chapter Gallery Fast Checks
+
+on:
+  push:
+    branches:
+      - 'reader/chapter-gallery-*'
+    paths:
+      - 'app/src/main/assets/lt-chapter-gallery.js'
+      - 'app/src/main/assets/lt-chapter-gallery.css'
+      - 'app/src/main/assets/lt-chapter-thumbnail-registry.js'
+      - 'tools/chapter-thumbnail-gallery.test.cjs'
+      - 'tools/package_approved_chapter_thumbnails.py'
+      - 'tools/test_approved_thumbnail_packaging.py'
+      - 'tools/make_browser_fixtures.py'
+      - 'docs/literature/**/chapter-image-map.json'
+      - '.github/workflows/chapter-gallery-fast-checks.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/src/main/assets/lt-chapter-gallery.js'
+      - 'app/src/main/assets/lt-chapter-gallery.css'
+      - 'app/src/main/assets/lt-chapter-thumbnail-registry.js'
+      - 'tools/chapter-thumbnail-gallery.test.cjs'
+      - 'tools/package_approved_chapter_thumbnails.py'
+      - 'tools/test_approved_thumbnail_packaging.py'
+      - 'tools/make_browser_fixtures.py'
+      - '.github/workflows/chapter-gallery-fast-checks.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: chapter-gallery-fast-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reader-gallery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check real gallery JavaScript and offline chapter navigation
+        run: |
+          node --check app/src/main/assets/lt-chapter-gallery.js
+          node tools/chapter-thumbnail-gallery.test.cjs
+          node tools/chapter-navigation.test.cjs
+      - name: Keep original-colour historical image supply and app release strictly separate
+        run: |
+          python3 -m py_compile tools/package_approved_chapter_thumbnails.py tools/test_approved_thumbnail_packaging.py tools/make_browser_fixtures.py
+          python3 tools/package_approved_chapter_thumbnails.py --check
+          python3 tools/test_approved_thumbnail_packaging.py
+      - name: Confirm no secret signing key or remote image URL entered the reader
+        shell: bash
+        run: |
+          test -f app/src/main/assets/lt-chapter-thumbnail-registry.js
+          node -e 'const s=require("fs").readFileSync("app/src/main/assets/lt-chapter-thumbnail-registry.js","utf8");if(/"src":"(?:https?:|data:)/i.test(s)){throw Error("External/inline image source in offline chapter thumbnail registry")}'
+          test -f docs/CHAPTER_GALLERY_PROGRESS_CURRENT.json

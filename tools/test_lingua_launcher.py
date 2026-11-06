@@ -39,9 +39,9 @@ foreground = xml(RES / "drawable/lingua_icon_foreground.xml")
 assert foreground.tag == "layer-list", "icon foreground must remain inside Android adaptive icon safe zone"
 icon_item = foreground.find("item")
 assert icon_item is not None and icon_item.get(ANDROID+"gravity") == "center"
-assert icon_item.get(ANDROID+"width") == "62dp"
-assert icon_item.get(ANDROID+"height") == "62dp"
-assert icon_item.get(ANDROID+"drawable") == "@drawable/lingua_icon_mark"
+assert icon_item.get(ANDROID+"width") == "72dp"
+assert icon_item.get(ANDROID+"height") == "72dp"
+assert icon_item.get(ANDROID+"drawable") == "@drawable/lingua_tales_textless"
 assert icon_item.find("bitmap") is None, "final icon must not contain text-printed artwork"
 mark = xml(RES / "drawable/lingua_icon_mark.xml")
 assert mark.tag == "vector" and len(mark.findall("path")) >= 5
@@ -52,6 +52,18 @@ assert approved.is_file(), "approved Lingua Tales reference artwork must be pack
 data = approved.read_bytes()
 assert data[:8] == b"\x89PNG\r\n\x1a\n", "approved icon must be a real PNG"
 assert len(data) >= 120000, "do not replace approved 3D icon with placeholder artwork"
+generator = ROOT / "tools/GenerateTextlessLauncher.java"
+assert generator.is_file(), "deterministic textless original-art generator is required"
+generator_source = generator.read_text(encoding="utf-8")
+assert "1120,835" in generator_source, "crop must stop before original artwork's text"
+before = __import__("hashlib").sha256(data).hexdigest()
+subprocess.run(["java", "-Djava.awt.headless=true", str(generator)], cwd=ROOT, check=True)
+assert __import__("hashlib").sha256(approved.read_bytes()).hexdigest() == before, "must not overwrite source icon"
+generated = RES / "drawable-nodpi/lingua_tales_textless.png"
+output = generated.read_bytes()
+assert output[:8] == b"\x89PNG\r\n\x1a\n" and len(output) > 120000, "real textless colour PNG required"
+import struct
+assert struct.unpack(">II", output[16:24]) == (1024, 1024), "adaptive source must be 1024px square"
 
 for name in ("lingua_icon_monochrome",):
     vector = xml(RES / "drawable" / (name + ".xml"))

@@ -551,3 +551,49 @@ html[data-lt-reader-material] body .reader :is(.lt-inline-illustration img,.lt-a
 }
 html[data-lt-reader-material] body .reader .reading-width{background:transparent!important}
 .lt-paper-material-setting select{min-height:44px}
+
+/* RDR-04, RDR-06 and RDR-12: live, uncluttered, accessible reading ink. */
+.reader :is(.reading-width,.sentence,.tok,.lt-book-page,.inline-ar,.inline-en,
+ .lt-inline-illustration figcaption,.reader-label){
+ -webkit-user-select:none!important;user-select:none!important;
+ -webkit-touch-callout:none!important;
+}
+.reader :is(input,textarea,[contenteditable="true"],[role="textbox"]){
+ -webkit-user-select:text!important;user-select:text!important;
+ -webkit-touch-callout:default!important;
+}
+/* Page position remains available to screen readers and saved-state logic;
+   visually hide the obsolete caption without removing its live DOM label. */
+.reader .lt-page-controls .lt-page-count{
+ position:absolute!important;width:1px!important;height:1px!important;
+ padding:0!important;margin:-1px!important;overflow:hidden!important;
+ clip-path:inset(50%)!important;white-space:nowrap!important;
+}
+.reader .lt-page-controls:not(:focus-within){
+ min-height:0!important;padding-block:0!important;margin-block:0!important;
+ border:0!important;box-shadow:none!important;background:none!important;
+}
+@media (min-width:800px) and (orientation:portrait){
+ .reader .reading-width{
+  max-width:min(96vw,980px)!important;
+  padding-inline:clamp(12px,2vw,26px)!important;
+ }
+}
+/* Shared typography on the entire app UI (not graphic icons or genuine
+   historical figures); nested opposite-language text uses its own family. */
+html[lang="ar"] body :is(.library,.lt-drawer,.sheet,.lt-settings-sheet,
+ .reader-nav-panel,.review-card,.vitem,.lt-chapter-nav),
+html[lang="ar"] body :is(button,select,textarea,input):not(.lt-menu-glyph){
+ font-family:var(--lt-ar-font,"LT Arabic Modern",Tahoma,sans-serif)!important;
+}
+html[lang="en"] body :is(.library,.lt-drawer,.sheet,.lt-settings-sheet,
+ .reader-nav-panel,.review-card,.vitem,.lt-chapter-nav),
+html[lang="en"] body :is(button,select,textarea,input):not(.lt-menu-glyph){
+ font-family:var(--lt-en-font,"LT English Serif",Georgia,serif)!important;
+}
+body :lang(ar):not(svg),.reader[data-lt-source="ar"] :is(h2,.sentence){
+ font-family:var(--lt-ar-font,"LT Arabic Naskh",serif)!important;
+}
+body :lang(en):not(svg),.reader[data-lt-source="en"] :is(h2,.sentence){
+ font-family:var(--lt-en-font,"LT English Serif",Georgia,serif)!important;
+}

@@ -68,3 +68,17 @@ dependencies {
     implementation("androidx.webkit:webkit:1.18.0")
     testImplementation("junit:junit:4.13.2")
 }
+
+ 
+// Generate the approved word-free 3D launcher from its retained historical reference.
+// This is a build-time resource only: it does not touch signing, application ID or user data.
+// Java source mode avoids an extra image library/download dependency.
+val generateTextlessLauncher = tasks.register<Exec>("generateTextlessLauncher") {
+    workingDir(rootProject.projectDir)
+    commandLine("java", "-Djava.awt.headless=true", "tools/GenerateTextlessLauncher.java")
+    inputs.file(rootProject.file("app/src/main/res/drawable-nodpi/lingua_tales_approved.png"))
+    inputs.file(rootProject.file("tools/GenerateTextlessLauncher.java"))
+    outputs.file(rootProject.file("app/src/main/res/drawable-nodpi/lingua_tales_textless.png"))
+}
+tasks.matching { it.name == "preBuild" || (it.name.startsWith("merge") && it.name.endsWith("Resources")) }
+    .configureEach { dependsOn(generateTextlessLauncher) }
