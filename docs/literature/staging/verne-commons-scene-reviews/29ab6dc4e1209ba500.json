@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "status": "VISION_REVIEW_PENDING",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_30.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-29ab6dc4e1209ba5.webp",
+  "imageSha256": "2d8886d8793c9ee11c045a9cec70ae2725d855223985d88fce4f70e42d95f14d",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting an indoor scene, likely a tavern or public house. Two men are seated at a wooden table, engaged in conversation while drinking. A third person, possibly a server or another patron, stands in the background. The style is characteristic of 19th-century book illustrations, featuring cross-hatching and detailed line work.",
+    "visualObjectsEn": "A wooden table, two chairs (one with a person leaning back), a bottle, two glasses, a piece of paper or document on the table, and architectural details like wall panels or a bar counter in the background.",
+    "recognizableCharactersOrPeopleEn": "Two men in 19th-century attire (coats, cravats) seated at the table, and a third figure standing behind them in the shadows.",
+    "uncertaintyNotes": "The exact setting is not explicitly labeled, though it appears to be a social establishment. The identity of the individuals is not provided in the image. The signature 'L. Huard' is visible in the bottom right corner."
+  },
+  "visionModel": "gemini-3.1-flash-lite"
+}
