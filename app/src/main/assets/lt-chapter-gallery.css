@@ -382,3 +382,113 @@ dialog.lt-chapter-gallery::backdrop{
  background:rgba(48,104,89,.08);color:#275849;
  font:600 11px/1.45 system-ui,sans-serif;
 }
+
+
+/* CHG-03 • Picture coverage + long-book chapter index.
+   Default remains the owner's side-by-side horizontal image card shelf.
+   The optional compact list never changes chapters or the reader state. */
+.lt-chapter-gallery-filter-label{
+ display:flex;flex:1 1 142px;min-width:118px;
+ flex-direction:column;gap:5px;color:#5d4e3d;
+ font:600 12px/1.3 system-ui,sans-serif;
+}
+.lt-chapter-gallery-filter{
+ display:block;width:100%;max-width:100%;min-height:44px;
+ border:1px solid rgba(91,77,59,.34);border-radius:12px;
+ background:#fffdf7;color:#2d3540;padding:9px 10px;
+ font:500 14px/1.35 system-ui,sans-serif;
+ direction:inherit;
+}
+.lt-chapter-gallery-layout{
+ flex:0 1 auto;min-width:92px;min-height:44px;
+ border-radius:12px;border:1px solid rgba(36,78,96,.38);
+ background:rgba(255,253,247,.86);color:#244e60;
+ font:700 12px/1.4 system-ui,sans-serif;
+ padding:9px 12px;cursor:pointer;
+}
+.lt-chapter-gallery-layout[aria-pressed="true"]{
+ background:#244e60;color:#fff;border-color:#244e60;
+}
+.lt-chapter-gallery-layout:disabled,
+.lt-chapter-gallery-filter:disabled{opacity:.6;cursor:default}
+.lt-chapter-gallery-layout:focus-visible,
+.lt-chapter-gallery-filter:focus-visible{
+ outline:3px solid #246c92;outline-offset:3px;
+}
+.lt-chapter-tile-credit{
+ display:-webkit-box;-webkit-box-orient:vertical;
+ -webkit-line-clamp:2;
+ max-height:3em;overflow:hidden;overflow-wrap:anywhere;
+ margin:0 12px 14px;color:#6d6253;
+ font:500 11px/1.48 system-ui,sans-serif;
+}
+.lt-chapter-gallery-track.lt-chapter-gallery-list-view{
+ display:flex;flex-direction:column;align-items:stretch;
+ overflow-x:hidden;overflow-y:auto;
+ scroll-snap-type:y proximity;scroll-padding-block:16px;
+ gap:9px;padding:16px clamp(14px,3.5vw,42px);
+}
+.lt-chapter-gallery-list-view .lt-chapter-tile{
+ flex:0 0 auto;display:grid;width:100%;max-width:100%;
+ min-height:106px;grid-template-columns:clamp(84px,16vw,115px) minmax(0,1fr);
+ grid-auto-rows:min-content;
+ gap:0 12px;align-content:start;align-items:center;
+ border-radius:14px;
+ scroll-snap-align:start;
+}
+.lt-chapter-gallery-list-view .lt-chapter-tile-visual{
+ grid-column:1;grid-row:1 / span 4;
+ width:100%;height:106px;min-height:106px;
+ align-self:stretch;border-block-end:0;
+ border-inline-end:1px solid rgba(100,70,34,.17);
+}
+.lt-chapter-gallery-list-view .lt-chapter-tile-number{
+ font-size:43px;
+}
+.lt-chapter-gallery-list-view .lt-chapter-tile-kicker{
+ inset:auto 4px 5px;
+ padding:4px 3px;font-size:9px;
+}
+.lt-chapter-gallery-list-view .lt-chapter-tile-continue{
+ inset:4px auto auto 4px;
+ padding:3px 5px;border-radius:5px;
+ font-size:9px;
+}
+.lt-chapter-gallery-list-view .lt-chapter-tile-heading{
+ grid-column:2;grid-row:auto;
+ min-height:0;margin:8px 12px 4px 0;
+ font-size:clamp(14px,1.5vw,17px);
+ line-height:1.35;-webkit-line-clamp:2;
+}
+[dir="rtl"] .lt-chapter-gallery-list-view .lt-chapter-tile-heading{
+ margin:8px 0 4px 12px;
+}
+.lt-chapter-gallery-list-view .lt-chapter-tile-pending,
+.lt-chapter-gallery-list-view .lt-chapter-tile-credit,
+.lt-chapter-gallery-list-view .lt-chapter-tile-visited{
+ grid-column:2;
+ max-height:2.8em;overflow:hidden;
+ margin:0 12px 5px 0;
+}
+[dir="rtl"] .lt-chapter-gallery-list-view .lt-chapter-tile-pending,
+[dir="rtl"] .lt-chapter-gallery-list-view .lt-chapter-tile-credit,
+[dir="rtl"] .lt-chapter-gallery-list-view .lt-chapter-tile-visited{
+ margin:0 0 5px 12px;
+}
+.lt-chapter-gallery-list-view .lt-chapter-gallery-more{
+ flex:0 0 auto;align-self:stretch;
+ width:100%;min-height:52px;
+}
+@media(max-width:650px){
+ .lt-chapter-gallery-filter-label{flex:1 1 130px}
+ .lt-chapter-gallery-layout{flex:0 1 auto;min-width:92px}
+ .lt-chapter-gallery-list-view .lt-chapter-tile{
+  grid-template-columns:94px minmax(0,1fr)
+ }
+}
+@media(orientation:landscape) and (max-height:580px){
+ .lt-chapter-gallery-filter-label{min-width:90px;flex:1 1 110px}
+ .lt-chapter-gallery-filter,.lt-chapter-gallery-layout{min-height:38px;padding:7px}
+ .lt-chapter-gallery-list-view .lt-chapter-tile-visual{height:90px;min-height:90px}
+ .lt-chapter-gallery-list-view .lt-chapter-tile{min-height:90px}
+}
