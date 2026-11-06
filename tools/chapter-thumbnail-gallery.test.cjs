@@ -21,6 +21,9 @@ assert.doesNotMatch(css,/grayscale\s*\(/);
 assert.doesNotMatch(css,/saturate\s*\(/);
 assert.match(css,/prefers-reduced-motion/);
 assert.match(css,/:focus-visible/);
+assert.match(css,/lt-chapter-gallery-list-view/,'optional compact index should exist');
+assert.match(css,/lt-chapter-gallery-filter/,'image-coverage filter should be styled');
+assert.match(css,/lt-chapter-tile-credit/,'approved historical art credit should be visible');
 assert.ok(!source.includes('fetch(')&&!source.includes('XMLHttpRequest'),
   'UI must never download books or remote photos');
 
@@ -57,7 +60,7 @@ function element(tag='div') {
  return node;
 }
 const tick=async()=>{await new Promise(resolve=>setImmediate(resolve));};
-function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null,renderMock=false,visitedIndex=null,registryArt=null}={}){
+function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=null,renderMock=false,visitedIndex=null,registryArt=null,layoutPref='rail'}={}){
  const chapter=(n)=>({title:'Chapter '+n,titleAr:'الفصل '+n,paragraphs:[{en:'Original source.',ar:'ترجمة.'}]});
  const story={id:'example-story',title:'Example Story',titleAr:'قصة تجريبية',
   chapters:lazy?[]:Array.from({length:count},(_,i)=>chapter(i+1)),totalChapters:count,
@@ -100,6 +103,7 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  const sandbox={window:W,document,history,art:fakeArt,put(k,v){writes.push([k,v])},
   get(k,def){
    if(k==='chapter_example-story'&&resume!==null)return resume;
+   if(k==='lt_chapter_gallery_layout')return layoutPref;
    if(visitedIndex!==null&&k==='readpage_example-story_'+visitedIndex)return 2;
    return def;
   },
@@ -410,6 +414,93 @@ function scenario({en=false,lazy=false,artSrc=null,approved=null,count=3,resume=
  const ltrack=keyLtr.cards[0].children[0].children[1];
  ltrack.emit('keydown',{key:'ArrowRight',target:ltrack.children[0]});
  assert.equal(ltrack.children[1].focused,true,'LTR ArrowRight advances to next chapter');
+ // CHG-03: book images are ORIGINAL authentic approved files; filters and
+ // layout must operate only on the already approved source records.
+ const coverFilter=scenario({
+  artSrc:'data:image/svg+xml;charset=utf-8,%3Csvg%3E%3C%2Fsvg%3E',
+  count:4,visitedIndex:2
+ });
+ coverFilter.clickBook();await tick();
+ const chooser=coverFilter.cards[0],bookBody=chooser.children[0];
+ const listTrack=bookBody.children[1],statusLabel=bookBody.children[2].children[0];
+ const controlGroup=bookBody.children[0].children[0].children
+  .find(c=>c.className==='lt-chapter-gallery-tools');
+ const kind=controlGroup.children[2].children[0];
+ const layout=controlGroup.children[3];
+ assert.equal(kind.tagName,'SELECT','chapter art coverage filter must be a native select');
+ assert.equal(kind.value,'all','all chapters remain the default');
+ assert.equal(kind.disabled,false);
+ assert.equal(kind.children.length,4,'four semantic filter options: all/illustrated/pending/started');
+ assert.match(statusLabel.textContent,/1 من 4/,
+  'chapter footer reports ONE actual packaged image, never source-candidate counts');
+ kind.value='illustrated';kind.emit('change');
+ assert.equal(listTrack.children.length,1,'only one real existing artwork chapter shown');
+ assert.equal(listTrack.children[0].dataset.chapterIndex,'0');
+ kind.value='pending';kind.emit('change');
+ assert.deepEqual(listTrack.children.map(c=>c.dataset.chapterIndex),['1','2','3'],
+  'pending shows precisely those chapters without actually usable images');
+ kind.value='started';kind.emit('change');
+ assert.equal(listTrack.children.length,1,'started filters by actual saved page position');
+ assert.equal(listTrack.children[0].dataset.chapterIndex,'2');
+ kind.value='all';kind.emit('change');
+ assert.equal(listTrack.children.length,4);
+ assert.equal(layout.attrs['aria-pressed'],'false','default remains the requested horizontal cards');
+ assert.equal(listTrack.classList.contains('lt-chapter-gallery-list-view'),false);
+ layout.emit('click');
+ assert.equal(layout.attrs['aria-pressed'],'true','compact index is opt-in');
+ assert.equal(listTrack.classList.contains('lt-chapter-gallery-list-view'),true);
+ assert.deepEqual(coverFilter.writes,[['lt_chapter_gallery_layout','list']],
+  'layout preference is the only saved setting changed by browsing');
+ layout.emit('click');
+ assert.equal(listTrack.classList.contains('lt-chapter-gallery-list-view'),false);
+ assert.deepEqual(coverFilter.writes,[['lt_chapter_gallery_layout','list'],
+  ['lt_chapter_gallery_layout','rail']]);
+ assert.equal(coverFilter.baseOpens.length,0,
+  'filter/layout browsing must never enter reader or alter chapter progress');
+ const savedCompact=scenario({layoutPref:'list',count:40});
+ savedCompact.clickBook();await tick();
+ assert.equal(savedCompact.cards[0].children[0].children[1].classList.contains('lt-chapter-gallery-list-view'),true,
+  'reader layout restored from existing local preference without changing source content');
+ assert.equal(savedCompact.writes.length,0,
+  'restoring layout must not re-write preferences');
+ const arabicNumerals=scenario({count:45});
+ arabicNumerals.clickBook();await tick();
+ const arabicInput=arabicNumerals.cards[0].children[0].children[0].children[0]
+  .children.find(c=>c.className==='lt-chapter-gallery-tools').children[0].children[0];
+ const arabicTrack=arabicNumerals.cards[0].children[0].children[1];
+ arabicInput.value='٣٤';arabicInput.emit('input');
+ assert.equal(arabicTrack.children.length,1);
+ assert.equal(arabicTrack.children[0].dataset.chapterIndex,'33',
+  'Arabic-Indic numeral ٣٤ opens same source Chapter 34');
+ arabicInput.value='۳۴';arabicInput.emit('input');
+ assert.equal(arabicTrack.children[0].dataset.chapterIndex,'33',
+  'Eastern Arabic number also finds Chapter 34');
+ const brokenArt={imagePath:'art/genuine-colour-chapter.webp',
+  editoriallyApproved:true,releaseApproved:true,
+  distributionReviewApproved:true,rightsStatus:'APPROVED',
+  altAr:'لوحة أصلية',altEn:'Source plate',credit:'Verified original collection'};
+ // Keep this synthetic fixture APPROVAL ONLY, not a claim that a real file
+ // was acquired or published to Android.
+ brokenArt.editoriallyApproved=true;
+ const failing=scenario({approved:brokenArt,count:3});
+ failing.clickBook();await tick();
+ const failingSheet=failing.cards[0].children[0];
+ const failingTrack=failingSheet.children[1];
+ const failingKind=failingSheet.children[0].children[0].children
+  .find(c=>c.className==='lt-chapter-gallery-tools').children[2].children[0];
+ const imageElement=failingTrack.children[0].children[0].children[0];
+ assert.equal(imageElement.tagName,'IMG');
+ assert.match(failingSheet.children[2].children[0].textContent,/1 من 3/);
+ failingKind.value='illustrated';failingKind.emit('change');
+ imageElement.emit('error');
+ assert.equal(failingTrack.children[0].className,'lt-chapter-gallery-empty',
+  'failed local image must leave the available-only image filter');
+ assert.match(failingSheet.children[2].children[0].textContent,/0 من 3/,
+  'failed image decrements verified AVAILABLE photos count in this session');
+ failingKind.value='pending';failingKind.emit('change');
+ assert.deepEqual(failingTrack.children.map(c=>c.dataset.chapterIndex),['0','1','2'],
+  'broken image is immediately reported as missing, not repeatedly retried');
+
  const noExtra=scenario({artSrc:'https://host.invalid/photo.jpg'});
  assert.equal(noExtra.api.chapterImage(noExtra.story,0),null,'remote sources never used as thumbnails');
  console.log('PASS: offline RTL/LTR chapter gallery, genuine art approval, 85-chapter lazy batches/title+number search, resume, and no progress mutations while browsing');
