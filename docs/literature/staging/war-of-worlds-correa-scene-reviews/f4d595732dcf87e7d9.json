@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_048_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-f4d595732dcf87e7.webp",
+  "imageSha256": "62b3562ee5059094e496d34805cabb5b47deea0b0f2e09a36aa8d705d75fe8c4",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a multi-story building exterior at night, featuring a large, dark, mechanical or architectural structure emitting a massive plume of smoke or steam into the sky. The building has multiple levels with railings and what appear to be small, indistinct objects or figures on the balconies. A large, circular, glowing orb, possibly a moon or lamp, is visible in the upper left corner.",
+    "visualObjectsEn": "Multi-story building with balconies, railings, stairs, large mechanical structure, thick plume of smoke or steam, large circular orb (moon or light source), dark sky with cross-hatched shading.",
+    "recognizableCharactersOrPeopleEn": "None. There are small, indistinct shapes on the balconies that could be interpreted as people or objects, but they are not clearly defined.",
+    "uncertaintyNotes": "The exact nature of the mechanical structure is ambiguous; it could be a chimney, a piece of industrial machinery, or part of a fantastical building. The small shapes on the balconies are too indistinct to definitively identify as human figures."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 15,
+    "paragraphIndexZeroBased": 23,
+    "exactSourceQuotation": "on the roofs and upper stories of high houses and on great trees, there was a chance of escaping its poison altogether",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a multi-story building with balconies and a large mechanical structure emitting smoke, which aligns with the narrative context of people seeking refuge on the upper stories of high houses to escape the Martian black smoke.",
+    "suggestedAltArNotApproved": "A black and white illustration showing a multi-story building at night with a large mechanical structure emitting a thick plume of smoke, with small figures visible on the balconies.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a multi-story structure with balconies and staircases, beside a mechanical structure emitting smoke, under a dark sky with a moon.",
+    "visualContradictions": "The passage discusses the black smoke clinging closely to the ground and people escaping it by being fifty feet up on roofs and upper stories, but the illustration predominantly shows industrial machinery, steam, and indistinct shapes rather than specific narrative action or people clearly positioned on high roofs avoiding ground-level smoke.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

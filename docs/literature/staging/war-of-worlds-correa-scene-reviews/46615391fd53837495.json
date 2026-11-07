@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_047_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-46615391fd538374.webp",
+  "imageSha256": "43271212bd1a42cd9d14e82b0f909007a1440d69cb9e1419776e89aabc630ee6",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a man and a woman in an indoor setting, likely a dining room. The man is standing, leaning forward with an expressive, possibly agitated or dramatic posture, gesturing with his hands. The woman is seated on a chair, looking down or away with a contemplative or somber expression. Between them is a table with a bottle and glassware. The style is reminiscent of late 19th or early 20th-century book illustration.",
+    "visualObjectsEn": "Two wooden chairs, a table, a bottle, glassware, a plant or decorative foliage in the background, clothing including a jacket and tie for the man and a long dress for the woman.",
+    "recognizableCharactersOrPeopleEn": "A man with short hair wearing a jacket and tie, and a woman with an updo hairstyle wearing a long dress.",
+    "uncertaintyNotes": "The exact nature of the interaction between the two figures is ambiguous; it could be a heated argument, a dramatic confession, or a tense conversation. The specific historical context or source of the illustration is not identified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 7,
+    "paragraphIndexZeroBased": 18,
+    "exactSourceQuotation": "I went into the dining room, sat down, drank some wine, and so soon as I could collect myself sufficiently I told her the things I had seen. The dinner, which was a cold one, had already been served, and remained neglected on the table while I told my story.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a man and woman in a dining room with a table, glassware, and a bottle, matching the scene where the narrator returns home to his wife to recount his experiences. The man's agitated posture and the woman's contemplative expression align with the narrative context of the narrator telling his wife about the Martian invasion.",
+    "suggestedAltArNotApproved": "An illustration of the narrator and his wife in their dining room, with the narrator gesturing while recounting the Martian invasion to his somber wife.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a haggard-looking man standing and gesticulating intently towards a seated woman at a dining table. On the table, a cold dinner and bottles/glassware remain served and neglected, matching the exact narrative beat where the protagonist returns home, drinks wine, and tells his wife what he has seen while the dinner sits untouched.",
+    "visualContradictions": "None.",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

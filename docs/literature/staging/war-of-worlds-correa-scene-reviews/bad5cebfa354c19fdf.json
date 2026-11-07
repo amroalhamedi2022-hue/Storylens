@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_053_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-bad5cebfa354c19f.webp",
+  "imageSha256": "dfab0f0a33d277475ca4114593c924e69be38fff3287eb39005d2119392ffa98",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a landscape at night. On the left, two tall, tripod-like mechanical structures with domed tops stand in a dark, smoky area. On the right, a building is engulfed in flames and smoke. In the foreground, a group of small human figures stands observing the scene, while other figures and what appears to be a cannon are positioned near the burning structure.",
+    "visualObjectsEn": "Tripod machines, burning building, smoke, cannon, landscape, ground, sky.",
+    "recognizableCharactersOrPeopleEn": "Several small, indistinct human figures standing in the foreground and near the burning building.",
+    "uncertaintyNotes": "The exact nature of the tripod machines and the specific historical or fictional context of the scene is not explicitly stated in the image itself. The style is consistent with late 19th or early 20th-century pen and ink book illustrations."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 64,
+    "exactSourceQuotation": "The air was full of sound, a deafening and confusing conflict of noises⁠—the clangorous din of the Martians, the crash of falling houses, the thud of trees, fences, sheds flashing into flame, and the crackling and roaring of fire. Dense black smoke was leaping up to mingle with the steam from the river, and as the Heat-Ray went to and fro over Weybridge its impact was marked by flashes of incandescent white, that gave place at once to a smoky dance of lurid flames. The nearer houses still stood intact, awaiting their fate, shadowy, faint and pallid in the steam, with the fire behind them going to and fro.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts tripod machines (Martians), a burning building, and human figures observing the destruction, which aligns with the chaotic scene described in Chapter 12 where the Heat-Ray causes houses to burn and the Martians are active. While the specific mention of a cannon is not in this exact paragraph, the overall atmosphere of the 'clangorous din' and 'crash of falling houses' matches the visual intensity of the engraving.",
+    "suggestedAltArNotApproved": "A black and white illustration showing Martian tripod machines looming over a landscape where a building is burning, with human figures observing the destruction.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows Martian tripod machines on the left, a building engulfed in flames and smoke on the right, and a beam representing the Heat-Ray sweeping across the scene, directly matching the description of the destruction at Weybridge.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

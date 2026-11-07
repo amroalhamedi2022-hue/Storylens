@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_052_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-ff14be1c49c27718.webp",
+  "imageSha256": "9b599a4b74f95fa590044fb519b21506bab5f9773f85bf1f2e738ac15aaade32",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch depicting a crowd of people gathered outdoors near a large, dark, angular structure, possibly a building or a tent. The scene is dominated by heavy, dramatic cross-hatching and diagonal lines suggesting a stormy sky or a bright light source emanating from above. In the foreground, two figures are positioned as if interacting or gesturing toward each other, while a larger group of indistinct figures stands in the background.",
+    "visualObjectsEn": "A large, dark, triangular-roofed structure on the right, a crowd of people, two prominent foreground figures, and heavy atmospheric shading representing light or weather.",
+    "recognizableCharactersOrPeopleEn": "A group of unidentified people, including two figures in the foreground who appear to be the focal point of the composition.",
+    "uncertaintyNotes": "The exact nature of the structure (tent vs. building) and the specific activity of the figures are ambiguous due to the impressionistic, high-contrast style of the drawing. The light source is stylized and could represent lightning, a spotlight, or a symbolic illumination."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 4,
+    "paragraphIndexZeroBased": 0,
+    "exactSourceQuotation": "The crowd about the pit had increased, and stood out black against the lemon yellow of the sky",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a crowd of people gathered outdoors near a large, dark, angular structure (the pit/cylinder area) with heavy atmospheric shading representing a dramatic sky. This aligns well with the description of the crowd standing out black against the sky near the pit in Chapter 4.",
+    "suggestedAltArNotApproved": "A black and white ink sketch showing a crowd of people gathered near a dark, angular structure under a dramatic, stormy sky, with two figures in the foreground gesturing toward each other.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a large crowd gathered outdoors near a pit or structure with dramatic lighting in the sky, reflecting the description of the crowd about the pit as the narrator draws nearer at sunset.",
+    "visualContradictions": "None significant; the scene captures the general atmosphere of the gathering crowd and the dramatic lighting described in the passage.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
