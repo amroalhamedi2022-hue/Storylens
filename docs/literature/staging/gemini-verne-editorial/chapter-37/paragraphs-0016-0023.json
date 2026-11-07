@@ -1,0 +1,172 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 37,
+  "chapterTitle": "In which it is shown that Phileas Fogg gained nothing by his tour around the world, unless it were happiness.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "500c858bb50436d264ced7212ead6adbe16e7c189df99ed7d8c35b40c03883c5",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505",
+    "729d8c5dd8d3c581f01e96e13765f242da5e621dbae93c63f8bb9360acb738a4",
+    "18db25afe8a1bee362576ba192d7651067c9dc377e0308809ecda6491fda9d58",
+    "eef93d7ffbcdcdd0a314a14466894430cc6ddf41d4881e4e77249138bbb98771",
+    "4e758755927cdfd93357c10f42cbb958fe5972d16709f2d8393b627b9facc534",
+    "82f344098ef691dd31ea4818ab8e1c60b009ddd512e57ac3baab2f26c4415470",
+    "76b4f334f15c9a5951d56efb0798527eb3691e82378827e78321768f364df930"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "Phileas Fogg, thus kidnapped, without having time to think, left his house, jumped into a cab, promised a hundred pounds to the cabman, and, having run over two dogs and overturned five carriages, reached the Reform Club.",
+      "existingArabicDraft": "خرج فيلياس فوج، وكأنه اختُطف، من منزله من دون أن تتاح له فرصة للتفكير؛ فقفز إلى عربة أجرة، ووعد سائقها بمئة جنيه، وبعد أن دهس كلبين وقلب خمس عربات، وصل إلى نادي الإصلاح."
+    },
+    {
+      "index": 17,
+      "en": "The clock indicated a quarter before nine when he appeared in the great saloon.",
+      "existingArabicDraft": "كانت الساعة تشير إلى التاسعة إلا ربعًا حين ظهر في الصالون الكبير."
+    },
+    {
+      "index": 18,
+      "en": "Phileas Fogg had accomplished the journey round the world in eighty days!",
+      "existingArabicDraft": "لقد أتم فيلياس فوج رحلته حول العالم في ثمانين يومًا!"
+    },
+    {
+      "index": 19,
+      "en": "Phileas Fogg had won his wager of twenty thousand pounds!",
+      "existingArabicDraft": "لقد ربح فيلياس فوج رهانه البالغ عشرين ألف جنيه!"
+    },
+    {
+      "index": 20,
+      "en": "How was it that a man so exact and fastidious could have made this error of a day? How came he to think that he had arrived in London on Saturday, the twenty-first day of December, when it was really Friday, the twentieth, the seventy-ninth day only from his departure?",
+      "existingArabicDraft": "كيف يمكن لرجل شديد الدقة والتأنق أن يخطئ في حساب يوم؟ وكيف ظن أنه وصل لندن يوم السبت، الحادي والعشرين من ديسمبر، بينما كان في الحقيقة يوم الجمعة، العشرين، أي اليوم التاسع والسبعين فقط منذ انطلاقه؟"
+    },
+    {
+      "index": 21,
+      "en": "The cause of the error is very simple.",
+      "existingArabicDraft": "سبب الخطأ بسيط للغاية."
+    },
+    {
+      "index": 22,
+      "en": "Phileas Fogg had, without suspecting it, gained one day on his journey, and this merely because he had travelled constantly eastward; he would, on the contrary, have lost a day had he gone in the opposite direction, that is, westward.",
+      "existingArabicDraft": "لقد كسب فيلياس فوج، من دون أن يدري، يومًا خلال رحلته، وذلك لأنه سافر باستمرار نحو الشرق؛ أما لو سار في الاتجاه المعاكس، أي نحو الغرب، لخسر يومًا."
+    },
+    {
+      "index": 23,
+      "en": "In journeying eastward he had gone towards the sun, and the days therefore diminished for him as many times four minutes as he crossed degrees in this direction. There are three hundred and sixty degrees on the circumference of the earth; and these three hundred and sixty degrees, multiplied by four minutes, gives precisely twenty-four hours—that is, the day unconsciously gained. In other words, while Phileas Fogg, going eastward, saw the sun pass the meridian eighty times, his friends in London only saw it pass the meridian seventy-nine times. This is why they awaited him at the Reform Club on Saturday, and not Sunday, as Mr. Fogg thought.",
+      "existingArabicDraft": "أثناء سفره شرقًا، كان يتجه نحو الشمس، ولذلك كانت الأيام تقصر لديه أربع دقائق عن كل درجة يعبرها في هذا الاتجاه. ومحيط الأرض 360 درجة؛ وضرب هذه الدرجات في أربع دقائق يعطي أربعًا وعشرين ساعة بالضبط—أي اليوم الذي كسبه من دون أن ينتبه. بعبارة أخرى، رأى فوج الشمس تعبر خط الزوال ثمانين مرة، بينما لم يرها أصدقاؤه في لندن تعبره إلا تسعًا وسبعين مرة. لذلك انتظروه في نادي الإصلاح يوم السبت، لا الأحد كما اعتقد."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "خرج فيلياس فوج، وكأنه اختُطف، من منزله من دون أن تتاح له فرصة للتفكير؛ فقفز إلى عربة أجرة، ووعد سائقها بمئة جنيه، وبعد أن دهس كلبين وقلب خمس عربات، وصل إلى نادي الإصلاح."
+    },
+    {
+      "index": 1,
+      "ar": "كانت الساعة تشير إلى التاسعة إلا ربعًا حين ظهر في الصالون الكبير."
+    },
+    {
+      "index": 2,
+      "ar": "لقد أتم فيلياس فوج رحلته حول العالم في ثمانين يومًا!"
+    },
+    {
+      "index": 3,
+      "ar": "لقد ربح فيلياس فوج رهانه البالغ عشرين ألف جنيه!"
+    },
+    {
+      "index": 4,
+      "ar": "كيف يمكن لرجل شديد الدقة والتأنق أن يخطئ في حساب يوم؟ وكيف ظن أنه وصل لندن يوم السبت، الحادي والعشرين من ديسمبر، بينما كان في الحقيقة يوم الجمعة، العشرين، أي اليوم التاسع والسبعين فقط منذ انطلاقه؟"
+    },
+    {
+      "index": 5,
+      "ar": "سبب الخطأ بسيط للغاية."
+    },
+    {
+      "index": 6,
+      "ar": "لقد كسب فيلياس فوج، من دون أن يدري، يومًا خلال رحلته، وذلك لأنه سافر باستمرار نحو الشرق؛ أما لو سار في الاتجاه المعاكس، أي نحو الغرب، لخسر يومًا."
+    },
+    {
+      "index": 7,
+      "ar": "أثناء سفره شرقًا، كان يتجه نحو الشمس، ولذلك كانت الأيام تقصر لديه أربع دقائق عن كل درجة يعبرها في هذا الاتجاه. ومحيط الأرض 360 درجة؛ وضرب هذه الدرجات في أربع دقائق يعطي أربعًا وعشرين ساعة بالضبط—أي اليوم الذي كسبه من دون أن ينتبه. بعبارة أخرى، رأى فوج الشمس تعبر خط الزوال ثمانين مرة، بينما لم يرها أصدقاؤه في لندن تعبره إلا تسعًا وسبعين مرة. لذلك انتظروه في نادي الإصلاح يوم السبت، لا الأحد كما اعتقد السيد فوج."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
