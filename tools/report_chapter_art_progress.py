@@ -625,7 +625,9 @@ def generate() -> dict:
                 from test_kalila_original_sections import verify_kalila_sections
                 real_sections = verify_kalila_sections()
                 data.update({
-                    "sourceState": "19 distinct source-accurate Arabic editorial sections (4 introductory, 15 narrative); one zero-text duplicate title folded into its original section; 17 original colour miniatures unassigned pending exact scene match, contextual English and individual rights",
+                    "sourceState": "19 byte-verified Arabic source sections (4 intro, 15 narrative); one genuine c.1220 colour manuscript folio source-scene matched to exact Lion/Bull embedded geese-tortoise fable; remaining 16 folios, all contextual English and publishing rights pending",
+                    "sourceMatchedHistoricFolioCandidatesNotApproved": 1,
+                    "sourceUnassignedOriginalColourFolioFiles": 16,
                     "originalArabicSourceSectionCountNotChapterCardCount": real_sections,
                     "sourcePrefatorySectionCount": 4,
                     "sourceNarrativeSectionCount": 15,
