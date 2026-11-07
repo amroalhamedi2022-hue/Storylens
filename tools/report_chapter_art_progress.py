@@ -802,7 +802,7 @@ def generate() -> dict:
             + " real 1861 frontispiece(s), plus "
             + str(original_illustrations["historical1860PublisherBookCovers"])
             + " genuine 1860 book cover(s) locally archived; "
-            "no exact chapter-scene map, full edited Arabic, territorial rights or editorial approval"
+            "eight printed-caption-matched original-unit pictures remain UNAPPROVED; 54 further art gaps; no full edited Arabic, territorial rights or editorial approval"
         )
         rows.append({"bookId": "the-woman-in-white", "title": "The Woman in White", **staged})
     for volume in range(1, 11):
