@@ -32,12 +32,25 @@ All ten scans are staged **unapproved**. Individual Commons Public Domain metada
 
 The unmodified original Gutenberg #583 HTML is byte-verified and indexed into **62 authentic narrative units**: 59 original H3 sections and three standalone substantial narrator H2 prose blocks, distributed across its **three epochs**. These are not falsely described as 62 ordinary numbered chapters. The independently audited original source is `docs/literature/staging/user-requested-classics-20261105/the-woman-in-white/original-edition.html`. The new canonical `chapter-image-map.json` in the *same* book directory pins each actual source byte-range with its own SHA256, narrator heading, epoch, and image approval state.
 
-**First actual image scene candidate:** the preserved unaltered Macklin plate `Illustration by Thomas Eyre Macklin for The Woman in White (1).jpg`, caption **"Is that the road to London?"**, has the exact same unique narrative dialogue in source original **Walter Hartright section IV**. Its genuine local binary, Commons URL, edition, picture caption and story source-byte offset are pinned as a `primaryImage` **candidate**. Its `editoriallyApproved` remains `false`; `rightsStatus` remains pending human territorial and editorial review. The 1860 title-bearing book cover, 1861 frontispiece and the other seven Macklin lithographs are not used as chapter substitutes. **1 pending original scene candidate, 61 original narrative-unit pictures missing, 0 approved**.
+**Eight separate source-caption-matched original lithograph candidates (NOT approved):** each caption was read from the genuine 1903 plate and matched to an independently unique phrase in the original unmodified English source. The 62-unit canonical `chapter-image-map.json` stores local SHA256 checks, original page/caption, verified source narrative-unit SHA256 and explicit human review holds. Differences in quotation boundaries across editions are documented, not masked.
+
+| Original plate | Actual printed caption | Original narrative unit | Original printed page |
+| --- | --- | ---: | ---: |
+| Macklin (1) | Is that the road to London? | 4 | 19 |
+| Macklin (2) | Why do I sit here still? | 31 | 276 |
+| Macklin (3) | I started up from the ottoman. | 8 | 51 |
+| Macklin (4) | Drop your hold of my arms. | 49 | 415 |
+| Macklin (5) | I handed it to him at arm’s length. | 58 | 455 |
+| Macklin (6) | What can you possibly mean? | 19 | 130 |
+| Macklin (7) | We saw the lady laid on the sofa. | 35 | 329 |
+| Macklin (8) | Sign your name there. | 25 | 200 |
+
+**Status: 8 distinct local candidates across 62 authentic narrative units, 54 missing; 0 human editorial + territorial rights approved, 0 published to the app.** The original 1860 publisher cover and authentic 1861 Gilbert frontispiece remain separately archived, NOT substituted into a chapter.
 
 ## Binding distribution gates
 
-- These ten originals are **archival sources**. **Exactly one** 1903 Macklin picture is source-caption verified as a **pending** primary image candidate for authentic narrative unit IV; the other nine originals remain unassigned. No source scan is approved or present in the Android APK.
-- Neither the original cover nor the frontispiece is automatically assigned to a chapter; all eight Macklin images still need independent book-scene confirmation.
+- These ten originals are **archival sources**. **Eight distinct** Macklin 1903 pictures are original printed-caption-to-original-narrative matches for eight different units; the Gilbert frontispiece and Harper cover remain unassigned. Every image is pending human scene/editorial/territorial approval. No source scan is approved or present in the Android APK.
+- Neither the original cover nor the frontispiece is automatically assigned to a chapter; all eight caption-matched Macklin images still require independent visual/editorial sign-off.
 - No original novel paragraphs, translations, reader UI, signed package, app icons, finance logic or existing PR content were modified.
 - Repeatable offline checks: `python tools/test_woman_white_original_art.py` and `python tools/report_chapter_art_progress.py`. Audit central report classifies **nine art files** and **one historical cover**, without mixing their counts.
-- Before release, obtain a complete contextual Arabic translation and human confirmation of the 62 original-unit segmentation, source 61 further distinct **scene-specific** historical plates, confirm original print captions, verify bilingual alt text and obtain explicit human editorial + territorial rights approval. Until then the book remains unpublished.
+- Before release, obtain a complete contextual Arabic translation and human confirmation of the 62 original-unit segmentation, source 54 further distinct **scene-specific** historical plates, confirm original print captions, verify bilingual alt text and obtain explicit human editorial + territorial rights approval. Until then the book remains unpublished.
