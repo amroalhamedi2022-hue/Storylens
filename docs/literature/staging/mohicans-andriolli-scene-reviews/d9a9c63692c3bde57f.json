@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p441.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-d9a9c63692c3bde5.webp",
+  "imageSha256": "5cb1a5799b0b905600c3d6ab75e9276b08dab02c0e7b609f77b182d39b506882",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a forest scene where two figures are hiding behind a large tree, observing a third figure standing in the distance. The two figures in the foreground are crouched and aiming a long rifle toward the third figure. The style is illustrative with detailed cross-hatching and shading.",
+    "visualObjectsEn": "A large tree trunk, a long rifle, forest foliage, roots, and ground cover.",
+    "recognizableCharactersOrPeopleEn": "Two figures in the foreground, one standing and one kneeling, both dressed in attire suggestive of 18th or 19th-century frontier or indigenous clothing, and one figure in the background standing alone.",
+    "uncertaintyNotes": "The specific cultural or historical identity of the figures is not explicitly stated in the image, though they appear to be depicted in a style common to 19th-century illustrations of North American frontier life. The exact nature of the interaction (hostile or otherwise) is implied by the rifle but not confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 8,
+    "paragraphIndexZeroBased": 16,
+    "exactSourceQuotation": "The quick eye of the Mohicans caught the dark line of his lower limbs incautiously exposed through the thin foliage, a few inches from the trunk of the tree. Their rifles made a common report",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene description of two figures hiding behind a tree, aiming a rifle at a third figure in the distance, aligns with the tactical action described in Chapter 8, Paragraph 16, where the Mohicans and Hawkeye observe and fire upon a Huron hidden near a tree trunk.",
+    "suggestedAltArNotApproved": "An engraving showing two figures in frontier attire crouched behind a large tree, aiming rifles at a distant figure in the forest.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows two figures crouching and aiming a rifle from behind a tree toward a standing figure in the distance in an open forest setting.",
+    "visualContradictions": "The passage describes a wounded Huron savage who has been shot, falling and swinging in the wind while grasping a branch of a tree high up. The image instead shows the preliminary moment of two figures aiming at a completely unharmed and standing figure in the distance before any shot has struck.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

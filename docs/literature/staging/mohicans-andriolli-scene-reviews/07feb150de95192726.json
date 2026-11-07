@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p453.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-07feb150de951927.webp",
+  "imageSha256": "3b66b8214c8cca3fc15c07ad84c82c813b039ea296184d5108e6609312e6630e",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a chaotic, close-quarters skirmish in a forest setting. Several figures are engaged in hand-to-hand combat and shooting. One figure is lying on the ground in the foreground with arms raised, while another figure stands over them. Other figures are seen grappling, wielding knives, and holding long-barreled firearms. The background shows dense trees and additional figures partially obscured by the foliage.",
+    "visualObjectsEn": "Long-barreled muskets or rifles, knives, trees, forest undergrowth, clothing typical of 18th or 19th-century frontier attire including leggings and tunics.",
+    "recognizableCharactersOrPeopleEn": "A group of men, some appearing to be Indigenous warriors and others appearing to be European-style frontiersmen or soldiers, engaged in a violent struggle.",
+    "uncertaintyNotes": "The specific historical event, the identities of the individuals, and the exact cultural affiliation of the figures are not explicitly stated in the image and remain uncertain. The engraving style is characteristic of late 19th-century book illustration."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 3,
+    "exactSourceQuotation": "he unsheathed his long and dangerous knife, and rushed with a loud whoop upon the expecting Chingachgook. It was the signal for [Pg 112] a general combat. Neither party had fire-arms, and the contest was to be decided in the deadliest manner; hand to hand, with weapons of offence, and none of defence.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description details a chaotic, close-quarters skirmish in a forest with figures grappling and wielding knives, which directly corresponds to the text describing the hand-to-hand combat between the Hurons and Mohicans where they unsheathe knives for a general combat.",
+    "suggestedAltArNotApproved": "A chaotic forest skirmish depicting hand-to-hand combat between Indigenous warriors and frontiersmen, featuring figures grappling with knives and firearms amidst dense trees.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a chaotic melee with multiple figures wielding firearms such as long rifles being aimed and fired.",
+    "visualContradictions": "The passage explicitly states 'Neither party had fire-arms', whereas the image clearly depicts several figures holding and firing long-barreled muskets or rifles.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

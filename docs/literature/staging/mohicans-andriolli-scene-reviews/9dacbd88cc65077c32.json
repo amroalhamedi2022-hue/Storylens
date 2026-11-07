@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p46.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-9dacbd88cc65077c.webp",
+  "imageSha256": "101d3fd7beb44fd387b610ba48aadc1ba6775b24cd23ccb3c57a38c17245abcb",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink engraving depicting a physical struggle in a dense forest. A man dressed in 18th-century European military attire is grappling with a Native American man who wears a feathered headdress and traditional clothing. A horse stands in the background behind them.",
+    "visualObjectsEn": "A horse with a saddle, trees, foliage, a feathered headdress, a belt with a knife or tomahawk, 18th-century military coat with cuffs, breeches, and boots.",
+    "recognizableCharactersOrPeopleEn": "A Native American man and a European man in 18th-century military uniform.",
+    "uncertaintyNotes": "The specific identities of the individuals are not provided in the image, and the exact nature of the conflict is open to interpretation. The artist's signature 'Andriolli 1883' is visible in the bottom right corner."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 56,
+    "exactSourceQuotation": "he beheld his enemy with his two arms pinned to his side by the iron muscles of the scout, he rushed upon him, and effectually secured them there.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The engraving depicts a physical struggle between a European man (Heyward or the scout) and a Native American man in a forest setting, which aligns with the described action in Chapter 25 where the scout and Heyward grapple with and secure a Huron warrior. The presence of a horse in the background is consistent with the context of the scene where the characters are traveling with horses.",
+    "suggestedAltArNotApproved": "A black and white engraving showing a physical struggle in a forest between a man in 18th-century military attire and a Native American man, with a horse standing in the background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows Hawkeye (the scout in buckskins with a tomahawk and knife at his belt) holding the Huron captive from behind with his arms pinned to his sides, while Major Duncan Heyward is actively rushing in and wrapping a buckskin thong around the Huron to secure him, matching the exact events described in the passage.",
+    "visualContradictions": "None. The action, characters, objects (such as the buckskin thongs, weapons, and military uniform), and setting align precisely with the textual description.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

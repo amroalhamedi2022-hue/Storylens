@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p459.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-7a0c5d32cc94c8f9.webp",
+  "imageSha256": "a9aea8c4516a464297fb564bf349c93be2dc167d9437690a61c32c221088ff98",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A dramatic, high-contrast black and white engraving depicting a violent confrontation on a rocky, mountainous terrain. A male figure leaps down from a rock ledge with a knife in hand, while two other male figures, appearing to be indigenous warriors, are engaged in a struggle with a woman in a long dress. In the background, another male figure is visible on a slope, raising an axe or weapon.",
+    "visualObjectsEn": "Knives, rifles, rocky cliff face, long dress, loincloths, moccasins, vegetation, engraved lines indicating texture and shadow.",
+    "recognizableCharactersOrPeopleEn": "One leaping male figure, two male figures engaged in a struggle, one female figure in a long dress, and one male figure in the background.",
+    "uncertaintyNotes": "The specific identities of the characters are not visually confirmed by the image itself, despite the provided caption. The exact historical period is not explicitly stated, though the clothing and weaponry suggest an 18th or 19th-century frontier setting."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 32,
+    "paragraphIndexZeroBased": 68,
+    "exactSourceQuotation": "Uncas appeared, leaping frantically, from a fearful height, upon the ledge.",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The scene description matches the climactic moment in Chapter 32 where Uncas leaps from a height onto a ledge to confront Magua, who is threatening Cora. The visual elements of a leaping figure, a struggle involving a woman in a long dress, and the rocky terrain align perfectly with this specific narrative event.",
+    "suggestedAltArNotApproved": "A dramatic engraving showing Uncas leaping from a high rocky ledge toward Magua, who is struggling with Cora, set against a mountainous frontier background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts a male figure leaping dramatically from a rocky height with a knife in hand toward a scene where a woman in a long dress (Cora) is being confronted by indigenous warriors, with one warrior holding a knife ready to strike, matching Uncas leaping to rescue Cora as described in the passage.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
