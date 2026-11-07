@@ -1,0 +1,168 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 33,
+  "chapterTitle": "In which Phileas Fogg shows himself equal to the occasion.",
+  "startParagraphZeroBased": 56,
+  "paragraphCount": 8,
+  "sourceSha256": "f4a1e309ee2617c2ea54beb1ac6517a52db04eb3b4b1eb504cd6b385eef517d7",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505",
+    "729d8c5dd8d3c581f01e96e13765f242da5e621dbae93c63f8bb9360acb738a4",
+    "18db25afe8a1bee362576ba192d7651067c9dc377e0308809ecda6491fda9d58"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 56,
+      "en": "“Can we enter the harbour?”",
+      "existingArabicDraft": "«ليس قبل ثلاث ساعات، عند المد العالي فقط»."
+    },
+    {
+      "index": 57,
+      "en": "“Not under three hours. Only at high tide.”",
+      "existingArabicDraft": "«انتظر»، قال فوج بهدوء، دون أن يكشف وجهه أنه يستعد، بإلهام حاسم، لمحاولة جديدة لقهر سوء الحظ."
+    },
+    {
+      "index": 58,
+      "en": "“Stay,” replied Mr. Fogg calmly, without betraying in his features that by a supreme inspiration he was about to attempt once more to conquer ill-fortune.",
+      "existingArabicDraft": "كوينزتاون ميناء إيرلندي تتوقف عنده السفن العابرة للأطلسي لتسليم البريد. وتنقل القطارات السريعة هذه الرسائل إلى دبلن، وتكون جاهزة للانطلاق، ثم تُرسل من دبلن إلى ليفربول بأسرع السفن، فتختصر اثنتي عشرة ساعة مقارنة بالسفن القادمة مباشرة عبر الأطلسي."
+    },
+    {
+      "index": 59,
+      "en": "Queenstown is the Irish port at which the trans-Atlantic steamers stop to put off the mails. These mails are carried to Dublin by express trains always held in readiness to start; from Dublin they are sent on to Liverpool by the most rapid boats, and thus gain twelve hours on the Atlantic steamers.",
+      "existingArabicDraft": "كان فوج يخطط لكسب الاثنتي عشرة ساعة نفسها. فبدلًا من الوصول إلى ليفربول مساء اليوم التالي على متن «هنرييتا»، سيصل عند الظهر، وبذلك يتاح له الوقت لبلوغ لندن قبل التاسعة إلا ربعًا مساءً."
+    },
+    {
+      "index": 60,
+      "en": "Phileas Fogg counted on gaining twelve hours in the same way. Instead of arriving at Liverpool the next evening by the Henrietta, he would be there by noon, and would therefore have time to reach London before a quarter before nine in the evening.",
+      "existingArabicDraft": "دخلت «هنرييتا» مرفأ كوينزتاون في الواحدة صباحًا، حين كان المد عاليًا. وبعد أن صافح فوج القبطان سبيدي بحرارة، تركه فوق الهيكل المسطّح لسفينته، الذي ظلّ يساوي نصف الثمن الذي باعه به."
+    },
+    {
+      "index": 61,
+      "en": "The Henrietta entered Queenstown Harbour at one o’clock in the morning, it then being high tide; and Phileas Fogg, after being grasped heartily by the hand by Captain Speedy, left that gentleman on the levelled hulk of his craft, which was still worth half what he had sold it for.",
+      "existingArabicDraft": "نزلت المجموعة إلى البر فورًا. كاد فيكس يعتقل فوج في المكان، لكنه لم يفعل. لماذا؟ أي صراع كان يدور في داخله؟ هل غيّر رأيه في الرجل الذي يطارده؟ هل أدرك أنه ارتكب خطأ جسيمًا؟ ومع ذلك لم يبتعد عن فوج. استقل الجميع القطار المستعد للمغادرة في الواحدة والنصف، ووصلوا دبلن عند الفجر، ثم أسرعوا إلى سفينة لم تكن ترتفع فوق الأمواج بقدر ما تشقّها مباشرة."
+    },
+    {
+      "index": 62,
+      "en": "The party went on shore at once. Fix was greatly tempted to arrest Mr. Fogg on the spot; but he did not. Why? What struggle was going on within him? Had he changed his mind about “his man”? Did he understand that he had made a grave mistake? He did not, however, abandon Mr. Fogg. They all got upon the train, which was just ready to start, at half-past one; at dawn of day they were in Dublin; and they lost no time in embarking on a steamer which, disdaining to rise upon the waves, invariably cut through them.",
+      "existingArabicDraft": "وأخيرًا نزل فوج على رصيف ليفربول عند الساعة الثانية عشرة إلا عشرين دقيقة، في الحادي والعشرين من ديسمبر. ولم يعد يفصله عن لندن سوى ست ساعات."
+    },
+    {
+      "index": 63,
+      "en": "Phileas Fogg at last disembarked on the Liverpool quay, at twenty minutes before twelve, 21st December. He was only six hours distant from London.",
+      "existingArabicDraft": "لكن في هذه اللحظة اقترب فيكس ووضع يده على كتف السيد فوج، وأبرز مذكرة الاعتقال وقال:"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«هل يمكننا دخول الميناء؟»"
+    },
+    {
+      "index": 1,
+      "ar": "«ليس قبل ثلاث ساعات، عند المد العالي فقط»."
+    },
+    {
+      "index": 2,
+      "ar": "«انتظر»، قال مستر فوج بهدوء، دون أن يُظهر على ملامحه أنه على وشك أن يحاول، بإلهام عظيم، قهر سوء الحظ مرة أخرى."
+    },
+    {
+      "index": 3,
+      "ar": "كوينزتاون هي الميناء الإيرلندي الذي تتوقف عنده السفن العابرة للأطلسي لإنزال البريد. تُنقل هذه البريد إلى دبلن بواسطة قطارات سريعة تكون دائماً مستعدة للانطلاق؛ ومن دبلن تُرسل إلى ليفربول بأسرع القوارب، وبذلك توفر اثنتي عشرة ساعة مقارنة بالسفن القادمة مباشرة عبر الأطلسي."
+    },
+    {
+      "index": 4,
+      "ar": "كان فيلياس فوج يعول على كسب اثنتي عشرة ساعة بالطريقة نفسها. فبدلاً من الوصول إلى ليفربول في المساء التالي على متن سفينة «هنرييتا»، سيصل هناك عند الظهر، وبالتالي سيكون لديه الوقت الكافي للوصول إلى لندن قبل التاسعة إلا ربعاً في المساء."
+    },
+    {
+      "index": 5,
+      "ar": "دخلت سفينة «هنرييتا» ميناء كوينزتاون في تمام الساعة الواحدة صباحاً، وكان الوقت حينئذ وقت المد العالي؛ وفيلياس فوج، بعد أن صافحه القبطان سبيدي بحرارة على يده، ترك ذلك الرجل على الهيكل المسطح لسفينته، الذي كان لا يزال يساوي نصف الثمن الذي باعه به."
+    },
+    {
+      "index": 6,
+      "ar": "نزلت المجموعة إلى البر فوراً. شعر فيكس بإغراء شديد لاعتقال مستر فوج على الفور؛ لكنه لم يفعل. لماذا؟ أي صراع كان يدور داخله؟ هل غير رأيَه بشأن «رجله»؟ هل فهم أنه ارتكب خطأً فادحاً؟ ومع ذلك، لم يتخلى عن مستر فوج. ركب الجميع القطار الذي كان على وشك الانطلاق في تمام الساعة الواحدة والنصف؛ ومع تباشير الفجر كانوا في دبلن؛ ولم يضيّعوا وقتاً في صعود على متن باخرة كانت، تأنف من الارتفاع فوق الأمواج، بل تشقها بلا هوادة."
+    },
+    {
+      "index": 7,
+      "ar": "نزل فيلياس فوج أخيراً على رصيف ليفربول في تمام الساعة الثانية عشرة إلا عشرين دقيقة، في الحادي والعشرين من ديسمبر. ولم يكن يفصله عن لندن سوى ست ساعات فقط."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

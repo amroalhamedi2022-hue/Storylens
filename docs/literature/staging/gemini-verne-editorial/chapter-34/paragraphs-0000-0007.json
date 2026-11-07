@@ -1,0 +1,169 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 34,
+  "chapterTitle": "In which Phileas Fogg at last reaches London.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "e3f2fe54b55dd25252aa0af892c2f7bd6bc54ad3a5b2aae5395d25f014fffd53",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505",
+    "729d8c5dd8d3c581f01e96e13765f242da5e621dbae93c63f8bb9360acb738a4",
+    "18db25afe8a1bee362576ba192d7651067c9dc377e0308809ecda6491fda9d58",
+    "eef93d7ffbcdcdd0a314a14466894430cc6ddf41d4881e4e77249138bbb98771"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "Phileas Fogg was in prison. He had been shut up in the Custom House, and he was to be transferred to London the next day.",
+      "existingArabicDraft": "كان فيلياس فوج في السجن؛ فقد احتُجز في دار الجمارك، وكان مقررًا نقله إلى لندن في اليوم التالي."
+    },
+    {
+      "index": 1,
+      "en": "Passepartout, when he saw his master arrested, would have fallen upon Fix had he not been held back by some policemen. Aouda was thunderstruck at the suddenness of an event which she could not understand. Passepartout explained to her how it was that the honest and courageous Fogg was arrested as a robber. The young woman’s heart revolted against so heinous a charge, and when she saw that she could attempt to do nothing to save her protector, she wept bitterly.",
+      "existingArabicDraft": "كاد باسبارتو، حين رأى سيده يُعتقل، يهجم على فيكس لولا أن بعض رجال الشرطة أمسكوا به. أما أودا فصُعقت من مفاجأة حدث لم تستطع فهمه. شرح لها باسبارتو كيف اعتُقل فوج، الرجل النزيه الشجاع، بتهمة السرقة. ورفض قلبها اتهامًا بهذه الفظاعة، وحين أدركت أنها لا تستطيع فعل شيء لإنقاذ من حماها، انفجرت في بكاء مرير."
+    },
+    {
+      "index": 2,
+      "en": "As for Fix, he had arrested Mr. Fogg because it was his duty, whether Mr. Fogg were guilty or not.",
+      "existingArabicDraft": "أما فيكس، فقد اعتقل السيد فوج لأن ذلك كان واجبه، سواء أكان السيد فوج مذنبًا أم بريئًا."
+    },
+    {
+      "index": 3,
+      "en": "The thought then struck Passepartout, that he was the cause of this new misfortune! Had he not concealed Fix’s errand from his master? When Fix revealed his true character and purpose, why had he not told Mr. Fogg? If the latter had been warned, he would no doubt have given Fix proof of his innocence, and satisfied him of his mistake; at least, Fix would not have continued his journey at the expense and on the heels of his master, only to arrest him the moment he set foot on English soil. Passepartout wept till he was blind, and felt like blowing his brains out.",
+      "existingArabicDraft": "أدرك باسبارتو فجأة أنه سبب هذه المصيبة الجديدة! ألم يُخفِ عن سيده مهمة فيكس؟ وحين كشف فيكس عن حقيقته وغرضه، لماذا لم يخبر السيد فوج؟ لو حُذّر فوج، لأثبت على الأرجح براءته وأقنع فيكس بخطئه؛ ولما واصل المحقق رحلته على نفقة سيده مقتفيًا أثره، فقط ليعتقله لحظة تطأ قدماه أرض إنجلترا. بكى باسبارتو حتى كاد يعمى، واستولى عليه يأس شديد جعله يتمنى لو ينهي حياته."
+    },
+    {
+      "index": 4,
+      "en": "Aouda and he had remained, despite the cold, under the portico of the Custom House. Neither wished to leave the place; both were anxious to see Mr. Fogg again.",
+      "existingArabicDraft": "ظلّت أودا وباسبارتو، رغم البرد، تحت رواق دار الجمارك. لم يرغب أيٌّ منهما في مغادرة المكان؛ فقد كانا يتوقان إلى رؤية السيد فوج مرة أخرى."
+    },
+    {
+      "index": 5,
+      "en": "That gentleman was really ruined, and that at the moment when he was about to attain his end. This arrest was fatal. Having arrived at Liverpool at twenty minutes before twelve on the 21st of December, he had till a quarter before nine that evening to reach the Reform Club, that is, nine hours and a quarter; the journey from Liverpool to London was six hours.",
+      "existingArabicDraft": "كان ذلك الرجل قد خسر كل شيء فعلًا، وفي اللحظة نفسها التي أوشك فيها على بلوغ غايته. كان الاعتقال ضربة قاضية. فقد وصل إلى ليفربول في الحادية عشرة وأربعين دقيقة من صباح الحادي والعشرين من ديسمبر، وكان أمامه حتى الثامنة وخمس وأربعين دقيقة مساءً ليبلغ نادي الإصلاح؛ أي تسع ساعات وخمس عشرة دقيقة، مع أن الرحلة من ليفربول إلى لندن تستغرق ست ساعات."
+    },
+    {
+      "index": 6,
+      "en": "If anyone, at this moment, had entered the Custom House, he would have found Mr. Fogg seated, motionless, calm, and without apparent anger, upon a wooden bench. He was not, it is true, resigned; but this last blow failed to force him into an outward betrayal of any emotion. Was he being devoured by one of those secret rages, all the more terrible because contained, and which only burst forth, with an irresistible force, at the last moment? No one could tell. There he sat, calmly waiting—for what? Did he still cherish hope? Did he still believe, now that the door of this prison was closed upon him, that he would succeed?",
+      "existingArabicDraft": "لو دخل أحد دار الجمارك في تلك اللحظة، لرأى السيد فوج جالسًا على مقعد خشبي، ساكنًا هادئًا لا يبدو عليه الغضب. لم يكن مستسلمًا حقًا، لكن الضربة الأخيرة لم تنتزع منه أي انفعال ظاهر. أكانت نيران غضب خفي تلتهمه، تزداد رهبة لأنها مكبوتة ولا تنفجر إلا في اللحظة الأخيرة بقوة لا تُقاوم؟ لم يستطع أحد أن يعرف. ظل جالسًا ينتظر بهدوء—لكن ماذا ينتظر؟ أكان لا يزال يتشبث بالأمل؟ وهل بقي يعتقد أنه سينجح بعدما أُغلق باب السجن عليه؟"
+    },
+    {
+      "index": 7,
+      "en": "However that may have been, Mr. Fogg carefully put his watch upon the table, and observed its advancing hands. Not a word escaped his lips, but his look was singularly set and stern. The situation, in any event, was a terrible one, and might be thus stated: if Phileas Fogg was honest he was ruined; if he was a knave, he was caught.",
+      "existingArabicDraft": "ومهما يكن، وضع السيد فوج ساعته بعناية على الطاولة وراح يراقب عقاربها المتقدمة. لم تفلت من شفتيه كلمة، لكن نظرته بدت حازمة صارمة على نحو لافت. كان الموقف فادحًا: إن كان فيلياس فوج نزيهًا فقد انتهى أمره، وإن كان محتالًا فقد أُمسك به."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كان فيلياس فوج في السجن. فقد أُغلق عليه الباب في دار الجمارك، وكان من المقرر أن يُنقَل إلى لندن في اليوم التالي."
+    },
+    {
+      "index": 1,
+      "ar": "باسبارتو، عندما رأى سيده يُعتقل، كاد يهجم على فيكس لولا أن بعض رجال الشرطة أمسكوا به. أما أودا فصُعقت من فجائية حدث لم تستطع فهمه. شرح لها باسبارتو كيف جرى اعتقال فوج النزيه والشجاع بوصفه لصوصاً. ورفض قلب الشابة اتهاماً بهذه الفظاعة، وحين رأت أنها لا تستطيع فعل أي شيء لإنقاذ من حماها، بكت بمرارة."
+    },
+    {
+      "index": 2,
+      "ar": "أما فيكس، فقد اعتقل السيد فوج لأن ذلك كان واجبه، سواء أكان السيد فوج مذنبًا أم بريئًا."
+    },
+    {
+      "index": 3,
+      "ar": "ثم خطر ببال باسبارتو أنه هو سبب هذه المصيبة الجديدة! ألم يُخفِ عن سيده مهمة فيكس؟ وعندما كشف فيكس عن حقيقته وغرضه، لماذا لم يخبر السيد فوج؟ لو حُذِّر الأخير، لما تردد في تقديم الدليل على براءته وإقناع فيكس بخطئه؛ وعلى الأقل، لما واصل فيكس رحلته على نفقة سيده ومقتفيًا أثره، فقط ليعتقله اللحظة التي تطأ فيها قدماه أرض إنجلترا. بكى باسبارتو حتى كاد يعمى، وشعر برغبة في تفجير رأسه."
+    },
+    {
+      "index": 4,
+      "ar": "بقيت أودا وباسبارتو، رغم البرد، تحت رواق دار الجمارك. لم يرغب أي منهما في مغادرة المكان؛ وكانا متلهفين لرؤية السيد فوج مرة أخرى."
+    },
+    {
+      "index": 5,
+      "ar": "كان ذلك الرجل مفلساً حقًا، وذلك في اللحظة التي أوشك فيها على بلوغ غايته. لقد كان هذا الاعتقال قاتلاً. فإذ وصل إلى ليفربول قبل الثانية عشرة بعشرين دقيقة في الحادي والعشرين من ديسمبر، كان لديه حتى ربع التاسعة من تلك المساء ليبلغ نادي الإصلاح، أي تسع ساعات وربعاً؛ وكانت الرحلة من ليفربول إلى لندن تستغرق ست ساعات."
+    },
+    {
+      "index": 6,
+      "ar": "لو أن أحداً دخل دار الجمارك في هذه اللحظة، لوجد السيد فوج جالسًا، ساكنًا، هادئًا، من غير غضب ظاهر، على مقعد خشبي. ولم يكن، الحق يقال، مستسلمًا؛ لكن هذه الضربة الأخيرة أخفقت في دفعه إلى إظهار أي انفعال علني. أكان يلتهمه غضب خفي من تلك الغضاب الأشد هولاً لأنها مكتومة، والتي لا تنفجر بقوة لا تُقاوَم إلا في اللحظة الأخيرة؟ لم يكن أحد يستطيع الجزم. لقد جلس هناك ينتظر في هدوء—ولماذا؟ أكان ما زال يحتفظ بالأمل؟ أكان ما زال يعتقد، الآن بعد أن أُغلق باب السجن دونه، أنه سينجح؟"
+    },
+    {
+      "index": 7,
+      "ar": "مهما يكن الأمر، فقد وضع السيد فوج ساعته بعناية على الطاولة، وأخذ يراقب عقاربها المتحركة. ولم تبرح شفتيه كلمة، لكن نظرته كانت ثابتة وصارمة بطريقة عجيبة. كان الوضع، على أي حال، فظيعاً، ويمكن تلخيصه هكذا: إن كان فيلياس فوج نزيهاً فقد خسر كل شيء؛ وإن كان لصاً، فقد وقع في الشباك."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": false,
+      "issues": "خطأ في الترجمة: عبارة 'بوصفه لصوصاً' غير دقيقة مقارنة بالأصل 'as a robber'."
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": false,
+      "issues": "خطأ مطبعي: وردت كلمة 'المساء' والأصل 'evening' والمفروض 'المساء' مؤنثة ولكن السياق يتطلب 'تلك الليلة' أو 'ذلك المساء'."
+    },
+    {
+      "index": 6,
+      "adequate": false,
+      "issues": "خطأ في علامات الترقيم والترجمة في عبارة 'ولماذا؟' بينما الأصل 'for what؟' وتعني 'لأجل ماذا؟' أو 'بانتظار ماذا؟'."
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

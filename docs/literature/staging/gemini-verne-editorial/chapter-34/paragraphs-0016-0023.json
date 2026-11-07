@@ -1,0 +1,141 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 34,
+  "chapterTitle": "In which Phileas Fogg at last reaches London.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 6,
+  "sourceSha256": "d6d50c333a7e1955ca31afd840007cfd46e5830ed3e30c182c464123d0e3d50d",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505",
+    "729d8c5dd8d3c581f01e96e13765f242da5e621dbae93c63f8bb9360acb738a4",
+    "18db25afe8a1bee362576ba192d7651067c9dc377e0308809ecda6491fda9d58",
+    "eef93d7ffbcdcdd0a314a14466894430cc6ddf41d4881e4e77249138bbb98771"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "Fix, who found himself on the floor, did not utter a word. He had only received his deserts. Mr. Fogg, Aouda, and Passepartout left the Custom House without delay, got into a cab, and in a few moments descended at the station.",
+      "existingArabicDraft": "لم ينبس فيكس، الذي وجد نفسه على الأرض، بكلمة. لقد نال ما يستحقه. وغادر السيد فوج وأودا وباسبارتو دار الجمارك بلا تأخير، واستقلوا عربة أجرة، ثم نزلوا بعد دقائق عند المحطة."
+    },
+    {
+      "index": 17,
+      "en": "Phileas Fogg asked if there was an express train about to leave for London. It was forty minutes past two. The express train had left thirty-five minutes before. Phileas Fogg then ordered a special train.",
+      "existingArabicDraft": "سأل فيلياس فوج إن كان هناك قطار سريع يستعد للمغادرة إلى لندن. كانت الساعة الثانية وأربعين دقيقة، لكن القطار السريع انطلق قبل خمس وثلاثين دقيقة. لذلك أمر فوج بتجهيز قطار خاص."
+    },
+    {
+      "index": 18,
+      "en": "There were several rapid locomotives on hand; but the railway arrangements did not permit the special train to leave until three o’clock.",
+      "existingArabicDraft": "كانت هناك عدة قاطرات سريعة جاهزة، لكن ترتيبات السكك الحديدية لم تسمح للقطار الخاص بالمغادرة قبل الساعة الثالثة."
+    },
+    {
+      "index": 19,
+      "en": "At that hour Phileas Fogg, having stimulated the engineer by the offer of a generous reward, at last set out towards London with Aouda and his faithful servant.",
+      "existingArabicDraft": "في تلك الساعة انطلق فيلياس فوج نحو لندن مع أودا وخادمه الوفي، بعدما حفّز المهندس بوعده بمكافأة سخية."
+    },
+    {
+      "index": 20,
+      "en": "It was necessary to make the journey in five hours and a half; and this would have been easy on a clear road throughout. But there were forced delays, and when Mr. Fogg stepped from the train at the terminus, all the clocks in London were striking ten minutes before nine.",
+      "existingArabicDraft": "كان لا بد من قطع الرحلة في خمس ساعات ونصف؛ وكان ذلك سهلًا لو ظل الطريق مفتوحًا طوال الوقت. لكن تأخيرات قسرية وقعت، وحين نزل السيد فوج من القطار في المحطة النهائية، كانت كل ساعات لندن تشير إلى العاشرة إلا عشر دقائق."
+    },
+    {
+      "index": 21,
+      "en": "Having made the tour of the world, he was behindhand five minutes. He had lost the wager!",
+      "existingArabicDraft": "بعد أن طاف حول العالم، كان متأخرًا خمس دقائق. لقد خسر الرهان!"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "لم ينبس فيكس، الذي وجد نفسه ملقى على الأرض، بكلمة واحدة. لقد نال ما يستحقه فحسب. غادر السيد فوج وأودا وباسبارتو دار الجمارك بلا إبطاء، واستقلوا عربة أجرة، وترجلوا بعد لحظات في المحطة."
+    },
+    {
+      "index": 1,
+      "ar": "سأل فيلياس فوج عما إذا كان هناك قطار سريع على وشك المغادرة إلى لندن. كانت الساعة تشير إلى الثانية واربعين دقيقة. وكان القطار السريع قد غادر قبل خمس وثلاثين دقيقة. وحينئذ أمر فيلياس فوج بتخصيص قطار خاص."
+    },
+    {
+      "index": 2,
+      "ar": "كانت هناك عدة قاطرات سريعة متاحة، غير أن نظام السكك الحديدية لم يسمح للقطار الخاص بالمغادرة حتى الساعة الثالثة."
+    },
+    {
+      "index": 3,
+      "ar": "وفي تلك الساعة، انطلق فيلياس فوج رفقة أودا وخادمه الوفي متوجهاً نحو لندن، بعد أن حزّ في نفس السائق وحفّزه بعرض مكافأة سخية."
+    },
+    {
+      "index": 4,
+      "ar": "كان لزاماً قطع الرحلة في خمس ساعات ونصف، وكان هذا ليصبح أمراً يسيراً لو خلا الطريق طوال المسير. بيد أنه حدثت تأخيرات اضطرارية، وحين ترجل السيد فوج من القطار في المحطة النهائية، كانت كل ساعات لندن تدق معلنة التاسعة إلا عشر دقائق."
+    },
+    {
+      "index": 5,
+      "ar": "لقد قام بجولة حول العالم، ولكنه وصل متأخراً بخمس دقائق. لقد خسر الرهان!"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": false,
+      "issues": "خطأ في الترجمة: عبارة 'بعد أن حزّ في نفس السائق' هي اختراع غير موجود في النص الأصلي (stimulated the engineer meaning encouraged or motivated him)."
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
