@@ -60,7 +60,7 @@ def verify_kalila_sections(data=None):
                 or row["sectionRole"] != (
                     "INTRODUCTORY_FRAME_OR_EDITORIAL_CONTEXT" if i < 4
                     else "ORIGINAL_ARABIC_NARRATIVE_SECTION")
-                or (row["primaryImage"] is not None if i not in (4, 6, 7) else row["primaryImage"] is None)
+                or (row["primaryImage"] is not None if i not in (1, 4, 6, 7) else row["primaryImage"] is None)
                 or row["completeContextualEnglishTranslationVerified"] is not False
                 or row["chapterSceneImageHumanApproved"] is not False):
             raise ValueError(f"Arabic chapter boundary, title or approval altered: {i + 1}")
@@ -76,7 +76,7 @@ def verify_kalila_sections(data=None):
     # Real manuscript-specific visual scene matches, not duplicate pictures,
     # not editorial approval or identical textual editions.
     folio_manifest = json.loads((ROOT / "docs/literature/staging/kalila-original-colour-miniatures-20261105/manifest.json").read_text("utf-8"))
-    approved_original_indices = {4: (1, "67r"), 6: (10, "86r"), 7: (11, "95v")}
+    approved_original_indices = {1: (6, "20v"), 4: (1, "67r"), 6: (10, "86r"), 7: (11, "95v")}
     image_hashes = set()
     for section_zero_based, (folio_zero_based, manuscript_folio) in approved_original_indices.items():
         row = sections[section_zero_based]
@@ -110,9 +110,9 @@ def verify_kalila_sections(data=None):
                 or picture.get("sha256") in image_hashes):
             raise ValueError("Kalila medieval miniature source, scene, rights or uniqueness mismatch")
         image_hashes.add(picture["sha256"])
-    if (data.get("sourceMatchedHistoricFolioCandidatesNotApproved") != 3
+    if (data.get("sourceMatchedHistoricFolioCandidatesNotApproved") != 4
             or data.get("imageHumanApprovedCount") != 0
-            or len(image_hashes) != 3):
+            or len(image_hashes) != 4):
         raise ValueError("Kalila source-scenic miniatures miscounted or falsely approved")
     # Exact-byte SHA-256 alone cannot detect different crops of one painting:
     # inspect the documented same-scene clusters and disallow two primaries
