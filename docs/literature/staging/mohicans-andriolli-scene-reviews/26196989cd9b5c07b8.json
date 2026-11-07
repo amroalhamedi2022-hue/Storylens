@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p368.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-26196989cd9b5c07.webp",
+  "imageSha256": "8ff26c55660e070102284fe67102c0ef92ebe839c1d0b1c4005b7f6b41297de2",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "An engraved illustration depicting a dark forest or cave opening where a large bear stands upright behind two figures. One figure leans over and appears to stab or strike another person who is kneeling or seated on the ground.",
+    "visualObjectsEn": "Large bear, tree trunks, branches, rocks, sticks on the ground, clothing, a dagger or sharp implement held by the standing figure.",
+    "recognizableCharactersOrPeopleEn": "A large bear, a standing male figure wielding a weapon, and another figure kneeling or seated.",
+    "uncertaintyNotes": "It is uncertain what exact historical event, narrative, or artwork this engraving depicts, and the exact nature of the interaction between the two human figures (whether it is an attack, rescue, or struggle) is ambiguous due to the artistic shading and style."
+  },
+  "visionModel": "gemini-3.5-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 24,
+    "paragraphIndexZeroBased": 43,
+    "exactSourceQuotation": "the beast, whose shaggy form immediately darkened the passage",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene describes a dark passage/cave where a large bear stands upright behind a figure, matching the text in chapter 24 where Duncan is confronted by the shaggy form of the bear in the rocky chasm.",
+    "suggestedAltArNotApproved": "رسم توضيحي يظهر فيه الدب الضخم واقفاً بشكل قائم داخل كهف مظلم خلف شخصين.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.5-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a large bear standing behind a standing male figure who is aggressively wielding a weapon or striking another person who is kneeling or seated on the ground.",
+    "visualContradictions": "The passage describes Duncan following the bear into a long, straight gallery in a rock chasm where retreat is impossible, with the bear growling at his heels and placing paws on him, whereas the image depicts a violent struggle involving human figures wielding weapons in a forest-like setting.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p355.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-c24f4186ddce8756.webp",
+  "imageSha256": "aecd8dd41c9883c30fbaa554ac32ac1d885d37db8165dad14e32dede7c0af8a6",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "An engraved illustration showing a dramatic scene inside a dimly lit rocky cave or enclosure. In the center, a bare-chested man with a feathered headdress is being grabbed from behind by a large bear, while a man in European-style colonial clothing pulls on a rope or tether tied to him. To the right, another person appears to be lying down or fallen on the ground. In the foreground, various weapons, rolled packs, and equipment are scattered on the ground.",
+    "visualObjectsEn": "Rocks, cave walls, a bear, rope, feathered headdress, colonial-style clothing, scattered weapons, rolled packs, books or boxes, fallen figure on the right, signature markings in the lower left and right corners, and a caption line at the bottom.",
+    "recognizableCharactersOrPeopleEn": "Three visible human figures: one bare-chested individual being embraced or attacked by a bear, one colonial-dressed man pulling a rope, and a third figure lying down or fallen on the ground to the right. A large bear is also prominently featured.",
+    "uncertaintyNotes": "The exact identities of the characters cannot be definitively determined purely from visual observation without external knowledge, though the caption text at the bottom provides names in French. The nature of the interaction between the characters and the bear is depicted as a struggle or capture."
+  },
+  "visionModel": "gemini-3.5-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 23,
+    "exactSourceQuotation": "\"The simpleton was frightened, and blundered through his message; but he had a deeper meaning. Here are walls enough to separate the whole settlement. A bear ought to climb; therefore will I take a look above them. There may be honey-pots hid in these rocks, and I am a beast you know, that has a hankering for the sweets.\"",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The illustration depicts a scene inside a rocky cave where a man is dressed as a bear (or interacting with a bear) with a rope, corresponding directly to the context of Chapter 25 where the character disguises himself as a bear or discusses bear actions among rocks and honey-pots.",
+    "suggestedAltArNotApproved": "رسم توضيحي يظهر مشهداً درامياً داخل كهف صخري مظلم، حيث يظهر رجل يرتدي لباس الدب أو يتفاعل معه بينما يمسك آخر بحبل، وتظهر معدات وأسلحة مبعثرة على الأرض.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.5-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a man in a bear costume grabbing another man in a feathered headdress inside a cave, with a caption in French at the bottom mentioning Hawkeye and Magua.",
+    "visualContradictions": "The passage describes dialogue involving a character speaking about climbing rocks like a bear and honey-pots, whereas the image depicts a physical struggle and restraint involving a bear costume.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

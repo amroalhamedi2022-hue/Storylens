@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p359.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-08653e252d916d14.webp",
+  "imageSha256": "f38a7135da89093c781e5672ae200350f2ffc1546d2262294d041295ebc17720",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black-and-white engraving showing a human figure standing and carrying bundled fabric or clothing draped over their arms and body, accompanied by a large bear walking alongside them outdoors on uneven ground. A signature and date reading 'Andriolli 1883' are visible at the bottom right.",
+    "visualObjectsEn": "Engraved lines, shaded ground, bear, human figure, draped fabric or garment, artist signature 'Andriolli' with year '1883'",
+    "recognizableCharactersOrPeopleEn": "One human figure and one bear, exact fictional or historical identities are uncertain.",
+    "uncertaintyNotes": "It is uncertain which specific story or historical event this 1883 engraving by Andriolli illustrates, and whether the bear is a real animal, a person in a costume, or a symbolic figure."
+  },
+  "visionModel": "gemini-3.5-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 24,
+    "paragraphIndexZeroBased": 41,
+    "exactSourceQuotation": "A large black ball, which at first seemed stationary, now began to move in a manner that to the latter was inexplicable. Again the fire brightened, and its glare fell more distinctly on the object. Then even Duncan knew it, by its restless and sideling attitudes, which kept the upper part of its form in constant motion, while the animal itself appeared seated, to be a bear.",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The scene describes a bear moving alongside or near a human figure (Duncan/Huron) in an outdoor nighttime/firelit setting with a seated bear, which matches the description of a human figure accompanied by a large bear.",
+    "suggestedAltArNotApproved": "رسم توضيحي يظهر شخصية بشرية ودبًا كبيرًا في بيئة خارجية.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.5-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a person carrying bundled garments or fabric alongside a bear standing upright or walking nearby, perfectly matching the famous scene in Chapter 24 of The Last of the Mohicans where Hawkeye disguised in a bear skin approaches Duncan and the Huron while carrying rescued clothing/fabrics.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.98,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

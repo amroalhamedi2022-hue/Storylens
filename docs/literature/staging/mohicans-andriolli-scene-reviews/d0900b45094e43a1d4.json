@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p35.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-d0900b45094e43a1.webp",
+  "imageSha256": "4f9c55dcefc58323e75c2422f2af0841a232bc68b404cb2cc9fa93472823e573",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black-and-white historical woodcut style engraving showing a wooded area near a body of water. An Indigenous figure wearing feathers in their hair and fringed clothing stands on a rocky, tree-rooted bank holding a bow, aiming or watching a large antlered stag leap away into the forest cover.",
+    "visualObjectsEn": "Indigenous hunter figure, feathers, fringed garments, bow, quiver of arrows, rifle-like weapon strapped to the back, large antlered deer or stag leaping, water, forest trees, foliage, exposed roots, fallen tree branches, rocky ground, artist signature and year 1883 in the lower left corner.",
+    "recognizableCharactersOrPeopleEn": "An unidentified Indigenous hunter or warrior depicted from behind and the side.",
+    "uncertaintyNotes": "The exact literary source, specific tribal affiliation of the depicted character, and the artist's full name beyond the visible signature 'Andread' or similar are uncertain."
+  },
+  "visionModel": "gemini-3.5-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.5-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
