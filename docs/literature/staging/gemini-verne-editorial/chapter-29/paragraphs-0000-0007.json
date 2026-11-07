@@ -1,0 +1,165 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 29,
+  "chapterTitle": "In which certain incidents are narrated which are only to be met with on American railroads.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "c64fcec6cdb71186814e1d2b32009c3f16ed41100e4aec3e55f2a6ba061811de",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The train pursued its course, that evening, without interruption, passing Fort Saunders, crossing Cheyne Pass, and reaching Evans Pass. The road here attained the highest elevation of the journey, eight thousand and ninety-two feet above the level of the sea. The travellers had now only to descend to the Atlantic by limitless plains, levelled by nature. A branch of the “grand trunk” led off southward to Denver, the capital of Colorado. The country round about is rich in gold and silver, and more than fifty thousand inhabitants are already settled there.",
+      "existingArabicDraft": "واصل القطار سيره في ذلك المساء بلا انقطاع، فمرّ بحصن سوندرز، واجتاز ممر شايِن، ثم بلغ ممر إيفانز. وهنا وصل الخط إلى أعلى ارتفاع في الرحلة، إذ بلغ ثمانية آلاف واثنين وتسعين قدمًا فوق سطح البحر. ولم يبق أمام المسافرين سوى الهبوط نحو الأطلسي عبر سهول شاسعة سوّتها الطبيعة. وكان خط فرعي من «الخط الرئيسي الكبير» يتجه جنوبًا إلى دنفر، عاصمة كولورادو. وكانت المنطقة غنية بالذهب والفضة، وقد استقر فيها بالفعل أكثر من خمسين ألف نسمة."
+    },
+    {
+      "index": 1,
+      "en": "Thirteen hundred and eighty-two miles had been passed over from San Francisco, in three days and three nights; four days and nights more would probably bring them to New York. Phileas Fogg was not as yet behindhand.",
+      "existingArabicDraft": "كان القطار قد قطع من سان فرانسيسكو ألفًا وثلاثمئة واثنين وثمانين ميلًا خلال ثلاثة أيام وثلاث ليالٍ؛ وربما احتاج إلى أربعة أيام وليالٍ أخرى ليصل إلى نيويورك. ومع ذلك، لم يكن فيلياس فوغ قد تأخر عن موعده بعد."
+    },
+    {
+      "index": 2,
+      "en": "During the night Camp Walbach was passed on the left; Lodge Pole Creek ran parallel with the road, marking the boundary between the territories of Wyoming and Colorado. They entered Nebraska at eleven, passed near Sedgwick, and touched at Julesburg, on the southern branch of the Platte River.",
+      "existingArabicDraft": "خلال الليل مرّ القطار بحصن فالباخ على اليسار، وسار جدول لودج بول بمحاذاة السكة، محددًا الحدود بين إقليمي وايومنغ وكولورادو. ودخل المسافرون نبراسكا عند الحادية عشرة، ومروا بالقرب من سيدجويك، ثم توقفوا في جولزبيرغ عند الفرع الجنوبي لنهر بلات."
+    },
+    {
+      "index": 3,
+      "en": "It was here that the Union Pacific Railroad was inaugurated on the 23rd of October, 1867, by the chief engineer, General Dodge. Two powerful locomotives, carrying nine cars of invited guests, amongst whom was Thomas C. Durant, vice-president of the road, stopped at this point; cheers were given, the Sioux and Pawnees performed an imitation Indian battle, fireworks were let off, and the first number of the Railway Pioneer was printed by a press brought on the train. Thus was celebrated the inauguration of this great railroad, a mighty instrument of progress and civilisation, thrown across the desert, and destined to link together cities and towns which do not yet exist. The whistle of the locomotive, more powerful than Amphion’s lyre, was about to bid them rise from American soil.",
+      "existingArabicDraft": "وفي هذا الموضع افتُتح خط يونيون باسيفيك للسكك الحديدية في الثالث والعشرين من أكتوبر سنة 1867 على يد كبير المهندسين، الجنرال دودج. وتوقفت قاطرتان قويتان تحملان تسع عربات من الضيوف المدعوين، بينهم توماس سي. ديورانت نائب رئيس الشركة. وتعالت الهتافات، ومثّل أفراد من السيو والبوني معركةً هندية، وأُطلقت الألعاب النارية، وطُبع العدد الأول من صحيفة «رايلواي بايونير» بمطبعة أُحضرت على متن القطار. هكذا احتُفل بافتتاح هذا الخط العظيم، أداةً جبارة للتقدم والحضارة شُقّت عبر الصحراء، وكان مقدرًا لها أن تصل بين مدن وبلدات لم تكن موجودة بعد. وكان صفير القاطرة، الأقوى من قيثارة أمفيون، يستعد لأن يودّعهم أرض أمريكا."
+    },
+    {
+      "index": 4,
+      "en": "Fort McPherson was left behind at eight in the morning, and three hundred and fifty-seven miles had yet to be traversed before reaching Omaha. The road followed the capricious windings of the southern branch of the Platte River, on its left bank. At nine the train stopped at the important town of North Platte, built between the two arms of the river, which rejoin each other around it and form a single artery, a large tributary, whose waters empty into the Missouri a little above Omaha.",
+      "existingArabicDraft": "ترك القطار حصن ماكفرسون خلفه عند الثامنة صباحًا، وكان لا يزال أمامه ثلاثمئة وسبعة وخمسون ميلًا قبل بلوغ أوماها. واتبع الخط التعرجات المتقلبة للفرع الجنوبي من نهر بلات على ضفته اليسرى. وعند التاسعة توقف في بلدة نورث بلات المهمة، القائمة بين ذراعي النهر اللذين يلتقيان حولها ليشكّلا مجرى واحدًا كبيرًا يصب في نهر ميزوري إلى الشمال قليلًا من أوماها."
+    },
+    {
+      "index": 5,
+      "en": "The one hundred and first meridian was passed.",
+      "existingArabicDraft": "اجتاز القطار خط الطول المئة والأول."
+    },
+    {
+      "index": 6,
+      "en": "Mr. Fogg and his partners had resumed their game; no one—not even the dummy—complained of the length of the trip. Fix had begun by winning several guineas, which he seemed likely to lose; but he showed himself a not less eager whist-player than Mr. Fogg. During the morning, chance distinctly favoured that gentleman. Trumps and honours were showered upon his hands.",
+      "existingArabicDraft": "عاد السيد فوج ورفاقه إلى لعب الورق؛ فلم يشتكِ أحد، حتى اللاعب الوهمي، من طول الرحلة. وكان فيكس قد بدأ بفوزٍ بعدة جنيهات ذهبية بدا أنه على وشك خسارتها، لكنه أثبت أنه لاعب ويست لا يقل حماسة عن السيد فوج. وخلال الصباح مالت الحظوظ بوضوح إلى ذلك الرجل، فتوالت الأوراق الرابحة وأوراق الشرف في يده."
+    },
+    {
+      "index": 7,
+      "en": "Once, having resolved on a bold stroke, he was on the point of playing a spade, when a voice behind him said, “I should play a diamond.”",
+      "existingArabicDraft": "وفي إحدى المرات، بعدما عزم على لعب ورقة جريئة، أوشك أن يلعب بستّة البستوني، حين سمع صوتًا خلفه يقول: «كنت سأختار ورقة الديناري»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "واصل القطار سيره في ذلك المساء بلا انقطاع، فمرّ بحصن سوندرز، واجتاز ممر شايِن، ثم بلغ ممر إيفانز. وهنا وصل الخط إلى أعلى ارتفاع في الرحلة، إذ بلغ ثمانية آلاف واثنين وتسعين قدمًا فوق سطح البحر. ولم يبق أمام المسافرين سوى الهبوط نحو الأطلسي عبر سهول شاسعة سوّتها الطبيعة. وكان خط فرعي من «الخط الرئيسي الكبير» يتجه جنوبًا إلى دنفر، عاصمة كولورادو. وكانت المنطقة غنية بالذهب والفضة، وقد استقر فيها بالفعل أكثر من خمسين ألف نسمة."
+    },
+    {
+      "index": 1,
+      "ar": "كان القطار قد قطع من سان فرانسيسكو ألفًا وثلاثمئة واثنين وثمانين ميلًا خلال ثلاثة أيام وثلاث ليالٍ؛ وربما احتاج إلى أربعة أيام وليالٍ أخرى ليصل إلى نيويورك. ومع ذلك، لم يكن فيلياس فوغ قد تأخر عن موعده بعد."
+    },
+    {
+      "index": 2,
+      "ar": "خلال الليل مرّ القطار بحصن فالباخ على اليسار، وسار جدول لودج بول بمحاذاة السكة، محددًا الحدود بين إقليمي وايومنغ وكولورادو. ودخل المسافرون نبراسكا عند الحادية عشرة، ومروا بالقرب من سيدجويك، ثم توقفوا في جولزبيرغ عند الفرع الجنوبي لنهر بلات."
+    },
+    {
+      "index": 3,
+      "ar": "وفي هذا الموضع افتُتح خط يونيون باسيفيك للسكك الحديدية في الثالث والعشرين من أكتوبر سنة 1867 على يد كبير المهندسين، الجنرال دودج. وتوقفت قاطرتان قويتان تحملان تسع عربات من الضيوف المدعوين، بينهم توماس سي. ديورانت نائب رئيس الشركة. وتعالت الهتافات، ومثّل أفراد من السيو والبوني معركةً هندية، وأُطلقت الألعاب النارية، وطُبع العدد الأول من صحيفة «رايلواي بايونير» بمطبعة أُحضرت على متن القطار. هكذا احتُفل بافتتاح هذا الخط العظيم، أداةً جبارة للتقدم والحضارة شُقّت عبر الصحراء، وكان مقدرًا لها أن تصل بين مدن وبلدات لم تكن موجودة بعد. وكان صفير القاطرة، الأقوى من قيثارة أمفيون، يستعد لأن يودّعهم أرض أمريكا."
+    },
+    {
+      "index": 4,
+      "ar": "ترك القطار حصن ماكفرسون خلفه عند الثامنة صباحًا، وكان لا يزال أمامه ثلاثمئة وسبعة وخمسون ميلًا قبل بلوغ أوماها. واتبع الخط التعرجات المتقلبة للفرع الجنوبي لنهر بلات على ضفته اليسرى. وعند التاسعة توقف في بلدة نورث بلات المهمة، القائمة بين ذراعي النهر اللذين يلتقيان حولها ليشكّلا مجرى واحدًا كبيرًا يصب في نهر ميزوري إلى الشمال قليلًا من أوماها."
+    },
+    {
+      "index": 5,
+      "ar": "اجتاز القطار خط الطول المئة والأول."
+    },
+    {
+      "index": 6,
+      "ar": "عاد السيد فوج ورفاقه إلى لعب الورق؛ فلم يشتكِ أحد، حتى اللاعب الوهمي، من طول الرحلة. وكان فيكس قد بدأ بفوزٍ بعدة جنيهات ذهبية بدا أنه على وشك خسارتها، لكنه أثبت أنه لاعب ويست لا يقل حماسة عن السيد فوج. وخلال الصباح مالت الحظوظ بوضوح إلى ذلك الرجل، فتوالت الأوراق الرابحة وأوراق الشرف في يده."
+    },
+    {
+      "index": 7,
+      "ar": "وفي إحدى المرات، بعدما عزم على لعب ورقة جريئة، أوشك أن يلعب بشتى البستوني، حين سمع صوتًا خلفه يقول: «كنت سأختار ورقة الديناري»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": false,
+      "issues": "تمت ترجمة عبارتي 'American soil' بشكل غير دقيق حيث وُضعت 'أرض أمريكا' بدلاً من التربة أو الأرض الأمريكية، والترجمة العامة صحيحة ولكن هناك اختلاف طفيف في السياق الأدبي."
+    },
+    {
+      "index": 4,
+      "adequate": false,
+      "issues": "تمت ترجمة 'a little above Omaha' إلى 'إلى الشمال قليلًا من أوماها' والصحيح أنها تعني أعلى أو فوق أوماها وليس بالضرورة شمالاً."
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "ترجمة مصطلحات الورق كانت غير دقيقة، حيث استخدمت عبارات مثل 'بشتى البستوني' و'ورقة الديناري' وهي غير شائعة في ترجمة أوراق اللعب (الويست) مقارنة بالمصطلحات المتعارف عليها مثل البستوني والديناري أو الكبة والسباتي بشكل أدق."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

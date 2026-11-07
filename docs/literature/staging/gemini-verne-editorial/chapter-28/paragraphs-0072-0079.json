@@ -1,0 +1,94 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 28,
+  "chapterTitle": "In which Passepartout does not succeed in making anybody listen to reason.",
+  "startParagraphZeroBased": 72,
+  "paragraphCount": 3,
+  "sourceSha256": "b43ea5026ddb7b3c7b1be9f979223b91a5914d00f5ec4f438bf5b7d76e1e0e81",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 72,
+      "en": "But no one heard this sage reflection, nor would anyone have acknowledged its justice. The passengers resumed their places in the cars. Passepartout took his seat without telling what had passed. The whist-players were quite absorbed in their game.",
+      "existingArabicDraft": "لكن أحدًا لم يسمع هذه الملاحظة الحكيمة، ولم يكن أحد ليعترف بصوابها. عاد الركاب إلى عرباتهم، وجلس باسبارتو من دون أن يخبر الآخرين بما دار، فيما ظل لاعبو الوِست مستغرقين في لعبتهم."
+    },
+    {
+      "index": 73,
+      "en": "The locomotive whistled vigorously; the engineer, reversing the steam, backed the train for nearly a mile⁠—retiring, like a jumper, in order to take a longer leap. Then, with another whistle, he began to move forward; the train increased its speed, and soon its rapidity became frightful; a prolonged screech issued from the locomotive; the piston worked up and down twenty strokes to the second. They perceived that the whole train, rushing on at the rate of a hundred miles an hour, hardly bore upon the rails at all.",
+      "existingArabicDraft": "أطلقت القاطرة صفيرًا قويًا، وعكس المهندس اتجاه البخار وأرجع القطار قرابة ميل إلى الخلف، كأن عدّاءً يتراجع ليأخذ مسافة أطول للقفز. ثم أطلق صفيرًا آخر وانطلق إلى الأمام؛ وازدادت السرعة حتى أصبحت مرعبة، وخرج من القاطرة صرير طويل، فيما تحرك المكبس صعودًا وهبوطًا عشرين مرة في الثانية. وأدرك الركاب أن القطار كله، وهو يندفع بسرعة مئة ميل في الساعة، يكاد لا يلامس القضبان."
+    },
+    {
+      "index": 74,
+      "en": "And they passed over! It was like a flash. No one saw the bridge. The train leaped, so to speak, from one bank to the other, and the engineer could not stop it until it had gone five miles beyond the station. But scarcely had the train passed the river, when the bridge, completely ruined, fell with a crash into the rapids of Medicine Bow.",
+      "existingArabicDraft": "واجتازوا الجسر! حدث الأمر في لمح البصر، فلم ير أحد الجسر. قفز القطار، إن صح التعبير، من ضفة إلى الأخرى، ولم يتمكن المهندس من إيقافه إلا بعد أن تجاوز المحطة بخمسة أميال. وما إن عبر القطار النهر حتى انهار الجسر المتداعي تمامًا وسقط بصوت مدوٍّ في مياه ميديسين بو السريعة."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "لكن أحدًا لم يسمع هذه الملاحظة الحكيمة، ولم يكن أحد ليعترف بصوابها. عاد الركاب إلى أماكنهم في العربات. جلس باسبارتو دون أن يروي ما جرى، وكان لاعبو الوِست مستغرقين تمامًا في لعبتهم."
+    },
+    {
+      "index": 1,
+      "ar": "أطلقت القاطرة صفيرًا قويًا؛ وعكس السائق حركة البخار، فأرجع القطار نحو ميل إلى الوراء؛ متراجعًا، مثل القافز، لكي يأخذ وثبة أطول. ثم، بصفير آخر، شرع في التحرك للأمام؛ وزادت سرعة القطار، وسرعان ما أصبحت وتيرته مخيفة؛ وانبعث صرير متواصل من القاطرة؛ وعمل المكبس صعودًا وهبوطًا عشرين ضربة في الثانية. وأدركوا أن القطار بأسره، وهو مندفع بسرعة مئة ميل في الساعة، بالكاد كان يلامس القضبان."
+    },
+    {
+      "index": 2,
+      "ar": "وعبروا! لقد كان الأمر أشبه بلمحة بصر. لم ير أحد الجسر. لقد قفز القطار، إن صح التعبير، من ضفة إلى أخرى، ولم يستطع السائق إيقافه حتى تجاوز المحطة بخمسة أميال. ولكن ما إن تجاوز القطار النهر، حتى هبط الجسر، وقد تحطم كليًا، مدويًا في منحدرات مياه ميديسين بو."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
