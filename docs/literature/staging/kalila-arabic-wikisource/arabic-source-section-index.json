@@ -464,5 +464,24 @@
   ],
   "knownArchivedVisualCropDuplicateGroups": 4,
   "historicArchiveFileCount": 17,
-  "uniqueVisualScenesAtMostIfTheseAreOnlyDuplicates": 13
+  "uniqueVisualScenesAtMostIfTheseAreOnlyDuplicates": 13,
+  "bookCoverCandidate": {
+    "imagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-014.webp",
+    "sha256": "dd6624e17784e862beed156ed8eb1702e72a0a2b596a910d032ea6f752dafdf5",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kalila-wa-Dimna_1.jpg",
+    "sourceURL": "https://commons.wikimedia.org/wiki/File:Kalila-wa-Dimna_1.jpg",
+    "creator": "Unknown painter of the original medieval Arabic Kalila wa Dimna manuscript, circa 1200–1220; source collection BnF Arabe 3465 (attribution not independently cleared)",
+    "originalManuscriptCollection": "BnF Arabe 3465 medieval Kalila wa Dimna manuscript, ca. 1200–1220",
+    "originalCommonsFile": "File:Kalila-wa-Dimna 1.jpg",
+    "imageDescriptionAr": "منمنمة تاريخية أصلية ملوّنة تجمع كليلة ودمنة، ويتضح اسماهما فوق رأسي الشخصيتين في صفحة المخطوطة.",
+    "altAr": "رسم أصلي ملون من مخطوطة كليلة ودمنة يصوّر الحيوانين كليلة ودمنة متقابلين بجوار شجرة مزهرة.",
+    "altEn": "Original coloured medieval Kalila wa Dimna manuscript illustration of the two named jackals facing each other beside a flowering tree.",
+    "coverTitleOriginalAr": "كليلة ودمنة",
+    "sourceArtOriginalColourUnmodified": true,
+    "coverStatus": "ORIGINAL_HISTORIC_ART_CANDIDATE__NOT_PUBLISHED",
+    "editorApproved": false,
+    "territoryRightsStatus": "PENDING_MANUSCRIPT_AND_TERRITORIAL_HUMAN_REVIEW",
+    "sourceManuscriptTextEditionEqualToWikisourceDerivedEdition": false,
+    "duplicateOfMappedChapterPrimaryImage": false
+  }
 }
