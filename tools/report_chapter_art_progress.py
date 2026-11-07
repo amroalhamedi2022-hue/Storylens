@@ -774,6 +774,26 @@ def generate() -> dict:
         staged = verify_unpublished_gutenberg_edition("the-woman-in-white")
         original_illustrations = verify_woman_white_authentic_period_art()
         staged.update(original_illustrations)
+        # The original is NOT a 62-chapter conventionally numbered novel.
+        # The 62 actually present narratorial narrative units are separately
+        # byte-SHA-indexed from unmodified 1.6MB Gutenberg original.
+        from map_woman_white_original_narratives import generate as woman_narrative_index
+        index_path = woman / "chapter-image-map.json"
+        if index_path.is_file():
+            source_narratives = woman_narrative_index()
+            if jload(index_path) != source_narratives:
+                raise ValueError("Woman in White original 3-epoch section map differs from actual pinned book")
+            sections = map_coverage(index_path, 62)
+            if (source_narratives.get("localCandidateChapters") != sections["localCandidateChapters"]
+                    or source_narratives.get("missingCandidateChapters") != sections["missingImageChapters"]
+                    or source_narratives.get("readyForUICards") != sections["readyForUICards"]
+                    or source_narratives.get("releaseApproved") is not False):
+                raise ValueError("Woman in White original narrative artwork or release counts misreported")
+            staged.update(sections)
+            staged["chapterCount"] = 62
+            staged["chapterCountUnitLabel"] = source_narratives["chapterCountUnitLabel"]
+            staged["originalNarrativeUnitsIncludingNonChapterSections"] = 62
+            staged["sourceSectionClassification"] = source_narratives["countSemantics"]
         staged["sourceState"] = (
             "complete English 1860 novel source SHA-pinned; "
             + str(original_illustrations["unassigned1903MacklinIllustrations"])
