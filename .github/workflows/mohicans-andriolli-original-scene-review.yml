@@ -5,6 +5,14 @@ on:
     paths:
       - 'tools/export_mohicans_original_source_for_art.py'
       - 'tools/gemini_suggest_mohicans_plate_scenes.py'
+      - 'tools/gemini_suggest_verne_plate_scenes.py'
+      - 'tools/test_original_quote_rejection_nonblocking.py'
+      - '.github/workflows/mohicans-andriolli-original-scene-review.yml'
+  pull_request:
+    paths:
+      - 'tools/gemini_suggest_mohicans_plate_scenes.py'
+      - 'tools/gemini_suggest_verne_plate_scenes.py'
+      - 'tools/test_original_quote_rejection_nonblocking.py'
       - '.github/workflows/mohicans-andriolli-original-scene-review.yml'
   schedule:
     - cron: '17 3,7,11,15,19,23 * * *'
@@ -35,12 +43,14 @@ jobs:
         run: |
           python tools/export_mohicans_original_source_for_art.py --check
           python tools/gemini_suggest_mohicans_plate_scenes.py --self-test
+          python tools/test_original_quote_rejection_nonblocking.py
       - name: Actually view 4 original period images and compare to precise English book paragraphs
+        if: github.event_name != 'pull_request'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python tools/gemini_suggest_mohicans_plate_scenes.py --max-new 4
       - name: Save skeptical model evidence ONLY, without chapter cards or rights approval
-        if: always()
+        if: ${{ always() && github.event_name != 'pull_request' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -66,7 +76,7 @@ jobs:
             fi
           fi
       - name: Keep partial model evidence if GitHub/API unavailable
-        if: always()
+        if: ${{ always() && github.event_name != 'pull_request' }}
         uses: actions/upload-artifact@v4
         with:
           name: mohicans-genuine-original-engraving-scene-evidence-unapproved
