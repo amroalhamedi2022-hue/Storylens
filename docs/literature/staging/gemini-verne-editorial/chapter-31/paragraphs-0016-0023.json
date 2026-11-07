@@ -1,0 +1,167 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 31,
+  "chapterTitle": "In which Fix, the detective, considerably furthers the interests of Phileas Fogg.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "7386ef9c2517da4af6d92001a47e35be519525d74cfd5b6109c11a13c526fc12",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505",
+    "729d8c5dd8d3c581f01e96e13765f242da5e621dbae93c63f8bb9360acb738a4"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "It would be difficult to guess the detective’s thoughts. Was this conviction shaken by Phileas Fogg’s return, or did he still regard him as an exceedingly shrewd rascal, who, his journey round the world completed, would think himself absolutely safe in England? Perhaps Fix’s opinion of Phileas Fogg was somewhat modified; but he was nevertheless resolved to do his duty, and to hasten the return of the whole party to England as much as possible.",
+      "existingArabicDraft": "كان من الصعب تخمين ما يدور في ذهن المحقق. هل اهتز يقينه بعد عودة فيلياس فوج، أم ما زال يراه محتالًا شديد الدهاء سيظن نفسه في مأمن تام في إنجلترا بعد إتمام رحلته حول العالم؟ ربما تبدّل رأي فيكس في فوج بعض الشيء، لكنه ظل مصممًا على أداء واجبه وتعجيل عودة المجموعة كلها إلى إنجلترا قدر الإمكان."
+    },
+    {
+      "index": 17,
+      "en": "At eight o’clock the sledge was ready to start. The passengers took their places on it, and wrapped themselves up closely in their travelling-cloaks. The two great sails were hoisted, and under the pressure of the wind the sledge slid over the hardened snow with a velocity of forty miles an hour.",
+      "existingArabicDraft": "عند الثامنة كانت الزلّاجة جاهزة للانطلاق. جلس المسافرون عليها والتفوا بإحكام في عباءاتهم. رُفع الشراعان الكبيران، وتحت ضغط الريح انزلقت الزلّاجة فوق الثلج المتصلب بسرعة بلغت أربعين ميلًا في الساعة."
+    },
+    {
+      "index": 18,
+      "en": "The distance between Fort Kearney and Omaha, as the birds fly, is at most two hundred miles. If the wind held good, the distance might be traversed in five hours; if no accident happened the sledge might reach Omaha by one o’clock.",
+      "existingArabicDraft": "لا تزيد المسافة بخط مستقيم بين حصن كيرني وأوماها على مئتي ميل. فإذا استمرت الريح مواتية أمكن قطعها في خمس ساعات، وقد تصل الزلّاجة إلى أوماها عند الواحدة إذا لم يقع حادث."
+    },
+    {
+      "index": 19,
+      "en": "What a journey! The travellers, huddled close together, could not speak for the cold, intensified by the rapidity at which they were going. The sledge sped on as lightly as a boat over the waves. When the breeze came skimming the earth the sledge seemed to be lifted off the ground by its sails. Mudge, who was at the rudder, kept in a straight line, and by a turn of his hand checked the lurches which the vehicle had a tendency to make. All the sails were up, and the jib was so arranged as not to screen the brigantine. A topmast was hoisted, and another jib, held out to the wind, added its force to the other sails. Although the speed could not be exactly estimated, the sledge could not be going at less than forty miles an hour.",
+      "existingArabicDraft": "يا لها من رحلة! التصق المسافرون بعضهم ببعض، ولم يستطيعوا الكلام من شدة البرد الذي ضاعفته سرعة الحركة. اندفعت الزلّاجة بخفة قارب فوق الأمواج. وحين هب النسيم ملاصقًا للأرض بدا كأن الأشرعة ترفعها عن سطحها. حافظ مادج، عند الدفة، على خط مستقيم، وكان يخفف بلفّة من يده تمايل المركبة. رُفعت الأشرعة كلها، وضُبط الشراع الأمامي كيلا يحجب شراع البريغنتين. ثم رُفعت سارية علوية وأضاف شراع أمامي آخر قوة إلى بقية الأشرعة. ومع أن السرعة لم تكن قابلة للقياس الدقيق، فلا بد أنها بلغت أربعين ميلًا في الساعة على الأقل."
+    },
+    {
+      "index": 20,
+      "en": "“If nothing breaks,” said Mudge, “we shall get there!”",
+      "existingArabicDraft": "قال مادج: «إن لم ينكسر شيء، فسنصل!»"
+    },
+    {
+      "index": 21,
+      "en": "Mr. Fogg had made it for Mudge’s interest to reach Omaha within the time agreed on, by the offer of a handsome reward.",
+      "existingArabicDraft": "وكان فوج قد حفّز مادج على بلوغ أوماها في الموعد المتفق عليه، إذ وعده بمكافأة سخية."
+    },
+    {
+      "index": 22,
+      "en": "The prairie, across which the sledge was moving in a straight line, was as flat as a sea. It seemed like a vast frozen lake. The railroad which ran through this section ascended from the southwest to the northwest by Great Island, Columbus, an important Nebraska town, Schuyler, and Fremont, to Omaha. It followed throughout the right bank of the Platte River. The sledge, shortening this route, took a chord of the arc described by the railway. Mudge was not afraid of being stopped by the Platte River, because it was frozen. The road, then, was quite clear of obstacles, and Phileas Fogg had but two things to fear—an accident to the sledge, and a change or calm in the wind.",
+      "existingArabicDraft": "امتد المرج الذي شقته الزلّاجة في خط مستقيم مستويًا كالبحر، حتى بدا بحيرة متجمدة شاسعة. أما خط السكة الحديدية في تلك المنطقة فكان يتجه من الجنوب الغربي إلى الشمال الغربي مرورًا بجريت آيلاند وكولومبوس، وهي بلدة مهمة في نبراسكا، ثم شيلر وفريمونت وصولًا إلى أوماها، متبعًا الضفة اليمنى لنهر بلات طوال الطريق. اختصرت الزلّاجة المسافة بسلوك وتر القوس الذي رسمته السكة. ولم يخشَ مادج أن يوقفه نهر بلات لأنه كان متجمدًا. وهكذا خلا الطريق من العوائق، ولم يبقَ أمام فوج سوى خطرين: عطل في الزلّاجة أو تغيّر الريح أو سكونها."
+    },
+    {
+      "index": 23,
+      "en": "But the breeze, far from lessening its force, blew as if to bend the mast, which, however, the metallic lashings held firmly. These lashings, like the chords of a stringed instrument, resounded as if vibrated by a violin bow. The sledge slid along in the midst of a plaintively intense melody.",
+      "existingArabicDraft": "لكن النسيم لم يضعف؛ بل اشتد حتى كاد يثني السارية، غير أن الأربطة المعدنية أمسكت بها بإحكام. وأصدرت الأربطة رنينًا كأوتار آلة موسيقية يهتز عليها قوس كمان. وانزلقت الزلّاجة وسط لحن حزين نافذ."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "كان من الصعب تخمين ما يدور في ذهن المحقق. هل اهتز يقينه بعد عودة فيلياس فوج، أم ما زال يراه محتالًا شديد الدهاء سيظن نفسه في مأمن تام في إنجلترا بعد إتمام رحلته حول العالم؟ ربما تبدّل رأي فيكس في فوج بعض الشيء، لكنه ظل مصممًا على أداء واجبه وتعجيل عودة المجموعة كلها إلى إنجلترا قدر الإمكان."
+    },
+    {
+      "index": 1,
+      "ar": "عند الثامنة كانت الزلّاجة جاهزة للانطلاق. جلس المسافرون عليها والتفوا بإحكام في عباءاتهم. رُفع الشراعان الكبيران، وتحت ضغط الريح انزلقت الزلّاجة فوق الثلج المتصلب بسرعة بلغت أربعين ميلًا في الساعة."
+    },
+    {
+      "index": 2,
+      "ar": "لا تزيد المسافة بخط مستقيم بين حصن كيرني وأوماها على مئتي ميل. فإذا استمرت الريح مواتية أمكن قطعها في خمس ساعات، وقد تصل الزلّاجة إلى أوماها عند الواحدة إذا لم يقع حادث."
+    },
+    {
+      "index": 3,
+      "ar": "يا لها من رحلة! التصق المسافرون بعضهم ببعض، ولم يستطيعوا الكلام من شدة البرد الذي ضاعفته سرعة الحركة. اندفعت الزلّاجة بخفة قارب فوق الأمواج. وحين هب النسيم ملاصقًا للأرض بدا كأن الأشرعة ترفعها عن سطحها. حافظ مادج، عند الدفة، على خط مستقيم، وكان يخفف بلفّة من يده تمايل المركبة. رُفعت الأشرعة كلها، وضُبط الشراع الأمامي كيلا يحجب شراع البريغنتين. ثم رُفعت سارية علوية وأضاف شراع أمامي آخر قوة إلى بقية الأشرعة. ومع أن السرعة لم تكن قابلة للقياس الدقيق، فلا بد أنها بلغت أربعين ميلًا في الساعة على الأقل."
+    },
+    {
+      "index": 4,
+      "ar": "قال مادج: «إن لم ينكسر شيء، فسنصل!»"
+    },
+    {
+      "index": 5,
+      "ar": "وكان فوج قد حفّز مادج على بلوغ أوماها في الموعد المتفق عليه، إذ وعده بمكافأة سخية."
+    },
+    {
+      "index": 6,
+      "ar": "امتد المرج الذي شقته الزلّاجة في خط مستقيم مستويًا كالبحر، حتى بدا بحيرة متجمدة شاسعة. أما خط السكة الحديدية في تلك المنطقة فكان يتجه من الجنوب الغربي إلى الشمال الغربي مرورًا بجريت آيلاند وكولومبوس، وهي بلدة مهمة في نبراسكا، ثم شيلر وفريمونت وصولًا إلى أوماها، متبعًا الضفة اليمنى لنهر بلات طوال الطريق. اختصرت الزلّاجة المسافة بسلوك وتر القوس الذي رسمته السكة. ولم يخشَ مادج أن يوقفه نهر بلات لأنه كان متجمدًا. وهكذا خلا الطريق من العوائق، ولم يبقَ أمام فوج سوى خطرين: عطل في الزلّاجة أو تغيّر الريح أو سكونها."
+    },
+    {
+      "index": 7,
+      "ar": "لكن النسيم لم يضعف؛ بل اشتد حتى كاد يثني السارية، غير أن الأربطة المعدنية أمسكت بها بإحكام. وأصدرت الأربطة رنينًا كأوتار آلة موسيقية يهتز عليها قوس كمان. وانزلقت الزلّاجة وسط لحن حزين نافذ."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

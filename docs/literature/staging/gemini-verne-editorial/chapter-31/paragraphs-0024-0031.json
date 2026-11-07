@@ -1,0 +1,167 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 31,
+  "chapterTitle": "In which Fix, the detective, considerably furthers the interests of Phileas Fogg.",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 8,
+  "sourceSha256": "fd35f3da28cb11c05a83ecf6e5c186a824cce075b0855b987327545494e6f4ae",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505",
+    "729d8c5dd8d3c581f01e96e13765f242da5e621dbae93c63f8bb9360acb738a4"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "“Those chords give the fifth and the octave,” said Mr. Fogg.",
+      "existingArabicDraft": "قال السيد فوج: «هذه الأوتار تعطي الخامسة والأوكتاف.»"
+    },
+    {
+      "index": 25,
+      "en": "These were the only words he uttered during the journey. Aouda, cosily packed in furs and cloaks, was sheltered as much as possible from the attacks of the freezing wind. As for Passepartout, his face was as red as the sun’s disc when it sets in the mist, and he laboriously inhaled the biting air. With his natural buoyancy of spirits, he began to hope again. They would reach New York on the evening, if not on the morning, of the 11th, and there was still some chances that it would be before the steamer sailed for Liverpool.",
+      "existingArabicDraft": "كانت تلك الكلمات الوحيدة التي نطق بها طوال الرحلة. وكانت أودا ملفوفة بالفراء والعباءات لتحتمي قدر الإمكان من الريح المتجمدة. أما باسبارتو، فاحمر وجهه كقرص الشمس عند الغروب وسط الضباب، وكان يتنفس الهواء اللاسع بصعوبة. وبفضل روحه المتفائلة عاد الأمل إليه؛ فقد يصلون إلى نيويورك مساء الحادي عشر، إن لم يكن صباحه، وربما يلحقون بالباخرة قبل إبحارها إلى ليفربول."
+    },
+    {
+      "index": 26,
+      "en": "Passepartout even felt a strong desire to grasp his ally, Fix, by the hand. He remembered that it was the detective who procured the sledge, the only means of reaching Omaha in time; but, checked by some presentiment, he kept his usual reserve. One thing, however, Passepartout would never forget, and that was the sacrifice which Mr. Fogg had made, without hesitation, to rescue him from the Sioux. Mr. Fogg had risked his fortune and his life. No! His servant would never forget that!",
+      "existingArabicDraft": "وشعر باسبارتو برغبة قوية في مصافحة حليفه فيكس. فقد تذكر أن المحقق هو من دبر الزلّاجة، وهي الوسيلة الوحيدة للوصول إلى أوماها في الوقت المناسب؛ لكنه كبح اندفاعه بدافع من حدس غامض، ولزم تحفظه المعتاد. ومع ذلك، لن ينسى باسبارتو أبدًا التضحية التي قدمها السيد فوج بلا تردد لإنقاذه من قبيلة السيو. لقد خاطر فوج بثروته وحياته. كلا، لن ينسى خادمه ذلك أبدًا!"
+    },
+    {
+      "index": 27,
+      "en": "While each of the party was absorbed in reflections so different, the sledge flew past over the vast carpet of snow. The creeks it passed over were not perceived. Fields and streams disappeared under the uniform whiteness. The plain was absolutely deserted. Between the Union Pacific road and the branch which unites Kearney with Saint Joseph it formed a great uninhabited island. Neither village, station, nor fort appeared. From time to time they sped by some phantom-like tree, whose white skeleton twisted and rattled in the wind. Sometimes flocks of wild birds rose, or bands of gaunt, famished, ferocious prairie-wolves ran howling after the sledge. Passepartout, revolver in hand, held himself ready to fire on those which came too near. Had an accident then happened to the sledge, the travellers, attacked by these beasts, would have been in the most terrible danger; but it held on its even course, soon gained on the wolves, and ere long left the howling band at a safe distance behind.",
+      "existingArabicDraft": "وبينما غرق كل فرد في أفكاره المختلفة، كانت الزلّاجة تطير فوق بساط الثلج الشاسع. لم يشعروا بالجداول التي عبروا فوقها؛ فقد اختفت الحقول والمجاري تحت البياض المتجانس، وكانت السهول مهجورة تمامًا. وبين خط الاتحاد الهادئ والفرع الذي يصل كيرني بسانت جوزيف، امتدت مساحة واسعة خالية من السكان؛ فلا قرية ولا محطة ولا حصن يظهر. وكانوا يمرون أحيانًا بشجرة تبدو كالشبح، يلتوي هيكلها الأبيض ويخشخش في الريح. وأحيانًا تنهض أسراب الطيور البرية، أو تطارد الزلّاجة قطعان من ذئاب البراري الهزيلة الجائعة المفترسة وهي تعوي. أمسك باسبارتو بمسدسه استعدادًا لإطلاق النار على ما يقترب منها. ولو تعطلت الزلّاجة آنذاك لوقع المسافرون في خطر بالغ بين أنياب تلك الوحوش؛ لكنها واصلت سيرها المنتظم، وتجاوزت الذئاب، وتركت عواءها بعيدًا خلفها."
+    },
+    {
+      "index": 28,
+      "en": "About noon Mudge perceived by certain landmarks that he was crossing the Platte River. He said nothing, but he felt certain that he was now within twenty miles of Omaha. In less than an hour he left the rudder and furled his sails, whilst the sledge, carried forward by the great impetus the wind had given it, went on half a mile further with its sails unspread.",
+      "existingArabicDraft": "نحو الظهر، استدل مادج بعلامات في الطريق على أنه يعبر نهر بلات. لم يقل شيئًا، لكنه تيقن أنه لم يعد يبعد عن أوماها سوى عشرين ميلًا. وبعد أقل من ساعة ترك الدفة ولفّ الأشرعة، بينما واصلت الزلّاجة سيرها نصف ميل آخر بفعل الدفع القوي الذي منحته الريح، حتى وهي بلا أشرعة منشورة."
+    },
+    {
+      "index": 29,
+      "en": "It stopped at last, and Mudge, pointing to a mass of roofs white with snow, said: “We have got there!”",
+      "existingArabicDraft": "توقفت أخيرًا، وأشار مادج إلى مجموعة من الأسطح البيضاء بالثلج وقال: «لقد وصلنا!»"
+    },
+    {
+      "index": 30,
+      "en": "Arrived! Arrived at the station which is in daily communication, by numerous trains, with the Atlantic seaboard!",
+      "existingArabicDraft": "وصلوا! وصلوا إلى المحطة التي تربطها كل يوم قطارات عديدة بساحل الأطلسي!"
+    },
+    {
+      "index": 31,
+      "en": "Passepartout and Fix jumped off, stretched their stiffened limbs, and aided Mr. Fogg and the young woman to descend from the sledge. Phileas Fogg generously rewarded Mudge, whose hand Passepartout warmly grasped, and the party directed their steps to the Omaha railway station.",
+      "existingArabicDraft": "قفز باسبارتو وفيكس من الزلّاجة ومدّا أطرافهما المتصلبة، ثم ساعدا السيد فوج والشابة على النزول. كافأ فيلياس فوج مادج بسخاء، وصافحه باسبارتو بحرارة، ثم توجه الجميع إلى محطة أوماها للسكك الحديدية."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "قال السيد فوج: «هذه الأوتار تعطي الخامسة والأوكتاف.»"
+    },
+    {
+      "index": 1,
+      "ar": "كانت تلك الكلمات الوحيدة التي نطق بها طوال الرحلة. وكانت أودا ملفوفة بالفراء والعباءات لتحتمي قدر الإمكان من الريح المتجمدة. أما باسبارتو، فاحمر وجهه كقرص الشمس عند الغروب وسط الضباب، وكان يتنفس الهواء اللاسع بصعوبة. وبفضل روحه المتفائلة عاد الأمل إليه؛ فقد يصلون إلى نيويورك مساء الحادي عشر، إن لم يكن صباحه، وربما يلحقون بالباخرة قبل إبحارها إلى ليفربول."
+    },
+    {
+      "index": 2,
+      "ar": "وشعر باسبارتو برغبة قوية في مصافحة حليفه فيكس. فقد تذكر أن المحقق هو من دبر الزلّاجة، وهي الوسيلة الوحيدة للوصول إلى أوماها في الوقت المناسب؛ لكنه كبح اندفاعه بدافع من حدس غامض، ولزم تحفظه المعتاد. ومع ذلك، لن ينسى باسبارتو أبدًا التضحية التي قدمها السيد فوج بلا تردد لإنقاذه من قبيلة السيو. لقد خاطر فوج بثروته وحياته. كلا، لن ينسى خادمه ذلك أبدًا!"
+    },
+    {
+      "index": 3,
+      "ar": "وبينما غرق كل فرد في أفكاره المختلفة، كانت الزلّاجة تطير فوق بساط الثلج الشاسع. لم يشعروا بالجداول التي عبروا فوقها؛ فقد اختفت الحقول والمجاري تحت البياض المتجانس، وكانت السهول مهجورة تمامًا. وبين خط الاتحاد والفرع الذي يصل كيرني بسانت جوزيف، امتدت مساحة واسعة خالية من السكان؛ فلا قرية ولا محطة ولا حصن يظهر. وكانوا يمرون أحيانًا بشجرة تبدو كالشبح، يلتوي هيكلها الأبيض ويخشخش في الريح. وأحيانًا تنهض أسراب الطيور البرية، أو تطارد الزلّاجة قطعان من ذئاب البراري الهزيلة الجائعة المفترسة وهي تعوي. أمسك باسبارتو بمسدسه استعدادًا لإطلاق النار على ما يقترب منها. ولو تعطلت الزلّاجة آنذاك لوقع المسافرون في خطر بالغ بين أنياب تلك الوحوش؛ لكنها واصلت سيرها المنتظم، وتجاوزت الذئاب، وتركت عواءها بعيدًا خلفها."
+    },
+    {
+      "index": 4,
+      "ar": "نحو الظهر، استدل مادج بعلامات في الطريق على أنه يعبر نهر بلات. لم يقل شيئًا، لكنه تيقن أنه لم يعد يبعد عن أوماها سوى عشرين ميلًا. وبعد أقل من ساعة ترك الدفة ولفّ الأشرعة، بينما واصلت الزلّاجة سيرها نصف ميل آخر بفعل الدفع القوي الذي منحته الريح، حتى وهي بلا أشرعة منشورة."
+    },
+    {
+      "index": 5,
+      "ar": "توقفت أخيرًا، وأشار مادج إلى مجموعة من الأسطح البيضاء بالثلج وقال: «لقد وصلنا!»"
+    },
+    {
+      "index": 6,
+      "ar": "وصلوا! وصلوا إلى المحطة التي تربطها كل يوم قطارات عديدة بساحل الأطلسي!"
+    },
+    {
+      "index": 7,
+      "ar": "قفز باسبارتو وفيكس من الزلّاجة ومدّا أطرافهما المتصلبة، ثم ساعدا السيد فوج والشابة على النزول. كافأ فيلياس فوج مادج بسخاء، وصافحه باسبارتو بحرارة، ثم توجه الجميع إلى محطة أوماها للسكك الحديدية."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

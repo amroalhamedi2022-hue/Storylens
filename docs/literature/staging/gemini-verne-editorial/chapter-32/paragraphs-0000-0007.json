@@ -1,0 +1,167 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 32,
+  "chapterTitle": "In which Phileas Fogg engages in a direct struggle with bad fortune.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "95d41ab613a149f15ec5f10f59cc9f463c225acd70c45101e2542142e14719fb",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505",
+    "729d8c5dd8d3c581f01e96e13765f242da5e621dbae93c63f8bb9360acb738a4"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The China, in leaving, seemed to have carried off Phileas Fogg’s last hope. None of the other steamers were able to serve his projects. The Pereire, of the French Transatlantic Company, whose admirable steamers are equal to any in speed and comfort, did not leave until the 14th; the Hamburg boats did not go directly to Liverpool or London, but to Havre; and the additional trip from Havre to Southampton would render Phileas Fogg’s last efforts of no avail. The Inman steamer did not depart till the next day, and could not cross the Atlantic in time to save the wager.",
+      "existingArabicDraft": "بدت «تشاينا» وهي تغادر وكأنها حملت معها آخر أمل لفيلياس فوج. ولم تكن أي سفينة أخرى قادرة على خدمة خطته. فسفينة «بيرير» التابعة للشركة الفرنسية العابرة للأطلسي، التي تضاهي سفنها الرائعة غيرها سرعةً وراحةً، لم تكن ستغادر قبل الرابع عشر؛ أما سفن هامبورغ فلم تكن تتجه مباشرة إلى ليفربول أو لندن، بل إلى لوهافر، وكانت الرحلة الإضافية من لوهافر إلى ساوثهامبتون ستجعل آخر محاولات فوج بلا جدوى. ولم تكن سفينة إنمان ستغادر إلا في اليوم التالي، ولن تستطيع عبور الأطلسي في الوقت المناسب لإنقاذ الرهان."
+    },
+    {
+      "index": 1,
+      "en": "Mr. Fogg learned all this in consulting his Bradshaw, which gave him the daily movements of the trans-Atlantic steamers.",
+      "existingArabicDraft": "عرف السيد فوج كل ذلك حين راجع دليل برادشو، الذي كان يسرد مواعيد رحلات السفن العابرة للأطلسي يومًا بيوم."
+    },
+    {
+      "index": 2,
+      "en": "Passepartout was crushed; it overwhelmed him to lose the boat by three-quarters of an hour. It was his fault, for, instead of helping his master, he had not ceased putting obstacles in his path! And when he recalled all the incidents of the tour, when he counted up the sums expended in pure loss and on his own account, when he thought that the immense stake, added to the heavy charges of this useless journey, would completely ruin Mr. Fogg, he overwhelmed himself with bitter self-accusations. Mr. Fogg, however, did not reproach him; and, on leaving the Cunard pier, only said: “We will consult about what is best tomorrow. Come.”",
+      "existingArabicDraft": "كان باسبارتو محطّمًا؛ فقد سحقه أن السفينة فاتته بثلاثة أرباع الساعة. وكان يحمّل نفسه المسؤولية، لأنه بدلًا من مساعدة سيده لم يكفّ عن وضع العقبات في طريقه! وكلما استعاد أحداث الرحلة، وحسب الأموال التي أُنفقت سدى وبسببه، وتذكّر أن الرهان الضخم، مضافًا إليه نفقات هذه الرحلة التي بدت بلا جدوى، سيُفلس السيد فوج تمامًا، غرق في لوم نفسه بمرارة. لكن السيد فوج لم يوبّخه، وقال فقط عند مغادرته رصيف كونارد: «سنتشاور غدًا بشأن أفضل ما يمكن فعله. هيا.»"
+    },
+    {
+      "index": 3,
+      "en": "The party crossed the Hudson in the Jersey City ferryboat, and drove in a carriage to the St. Nicholas Hotel, on Broadway. Rooms were engaged, and the night passed, briefly to Phileas Fogg, who slept profoundly, but very long to Aouda and the others, whose agitation did not permit them to rest.",
+      "existingArabicDraft": "عبر أفراد المجموعة نهر هدسون على متن عبّارة جيرسي سيتي، ثم استقلوا عربة إلى فندق سانت نيكولاس في برودواي. حُجزت لهم غرف، ومضت الليلة قصيرةً بالنسبة إلى فيلياس فوج، إذ نام نومًا عميقًا، لكنها بدت طويلة جدًا لأودا والآخرين الذين منعهم القلق من الراحة."
+    },
+    {
+      "index": 4,
+      "en": "The next day was the 12th of December. From seven in the morning of the 12th to a quarter before nine in the evening of the 21st there were nine days, thirteen hours, and forty-five minutes. If Phileas Fogg had left in the China, one of the fastest steamers on the Atlantic, he would have reached Liverpool, and then London, within the period agreed upon.",
+      "existingArabicDraft": "كان اليوم التالي هو الثاني عشر من ديسمبر. ومن السابعة صباحًا في ذلك اليوم إلى الثامنة وخمس وأربعين دقيقة مساءً في الحادي والعشرين، كانت هناك تسعة أيام وثلاث عشرة ساعة وخمس وأربعون دقيقة. ولو غادر السيد فوج على متن «تشاينا»، إحدى أسرع السفن البخارية في الأطلسي، لوصل إلى ليفربول ثم لندن ضمن المهلة المتفق عليها."
+    },
+    {
+      "index": 5,
+      "en": "Mr. Fogg left the hotel alone, after giving Passepartout instructions to await his return, and inform Aouda to be ready at an instant’s notice. He proceeded to the banks of the Hudson, and looked about among the vessels moored or anchored in the river, for any that were about to depart. Several had departure signals, and were preparing to put to sea at morning tide; for in this immense and admirable port there is not one day in a hundred that vessels do not set out for every quarter of the globe. But they were mostly sailing vessels, of which, of course, Phileas Fogg could make no use.",
+      "existingArabicDraft": "غادر السيد فوج الفندق وحده، بعد أن طلب من باسبارتو انتظار عودته وإبلاغ أودا بأن تكون مستعدة في أي لحظة. واتجه إلى ضفاف هدسون، يتفحّص السفن الراسية أو المربوطة في النهر بحثًا عن سفينة تستعد للمغادرة. كانت عدة سفن ترفع إشارات الرحيل وتتهيأ للإبحار مع مدّ الصباح؛ ففي هذا الميناء الهائل الرائع تكاد السفن تنطلق إلى كل أرجاء العالم كل يوم. غير أن معظمها كان شراعيًا، وهو ما لم يكن يفيد فوج بالطبع."
+    },
+    {
+      "index": 6,
+      "en": "He seemed about to give up all hope, when he espied, anchored at the Battery, a cable’s length off at most, a trading vessel, with a screw, well-shaped, whose funnel, puffing a cloud of smoke, indicated that she was getting ready for departure.",
+      "existingArabicDraft": "كاد يفقد الأمل تمامًا، إلى أن لمح عند ذا باتري سفينة تجارية راسية لا تبعد أكثر من طول حبل تقريبًا، مزوّدة بمروحة دفع وهيكل أنيق، وكان دخان يتصاعد من مدخنتها يشير إلى استعدادها للمغادرة."
+    },
+    {
+      "index": 7,
+      "en": "Phileas Fogg hailed a boat, got into it, and soon found himself on board the Henrietta, iron-hulled, wood-built above. He ascended to the deck, and asked for the captain, who forthwith presented himself. He was a man of fifty, a sort of sea-wolf, with big eyes, a complexion of oxidised copper, red hair and thick neck, and a growling voice.",
+      "existingArabicDraft": "استوقف فيلياس فوج قاربًا وصعد إليه، وسرعان ما وجد نفسه على متن «هنرييتا»، ذات الهيكل الحديدي والسطح العلوي الخشبي. صعد إلى السطح وطلب مقابلة القبطان، الذي حضر فورًا. كان رجلًا في الخمسين، أشبه بذئب بحر، بعينين كبيرتين وبشرة بلون النحاس المؤكسد وشعر أحمر وعنق غليظ وصوت أجش."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "بدت «تشاينا» وهي تغادر وكأنها حملت معها آخر أمل لفيلياس فوج. ولم تكن أي سفينة أخرى قادرة على تلبية متطلبات خطته. فسفينة «بيرير» التابعة للشركة الفرنسية العابرة للأطلسي، التي تضاهي سفنها الرائعة غيرها سرعةً وراحةً، لم تكن ستغادر قبل الرابع عشر؛ أما سفن هامبورغ فلم تكن تتجه مباشرة إلى ليفربول أو لندن، بل إلى لوهافر، وكانت الرحلة الإضافية من لوهافر إلى ساوثهامبتون ستجعل آخر محاولات فيلياس فوج بلا جدوى. ولم تكن سفينة إنمان ستغادر إلا في اليوم التالي، ولن تستطيع عبور الأطلسي في الوقت المناسب لإنقاذ الرهان."
+    },
+    {
+      "index": 1,
+      "ar": "عرف السيد فوج كل ذلك حين راجع دليل برادشو خاصته، الذي كان يسرد مواعيد رحلات السفن البخارية العابرة للأطلسي يومًا بيوم."
+    },
+    {
+      "index": 2,
+      "ar": "كان باسبارتو محطّمًا؛ فقد سحقه أن السفينة فاتته بثلاثة أرباع الساعة. وكان هو الملوم، لأنه بدلًا من مساعدة سيده لم يكفّ عن وضع العراقيل في طريقه! وكلما استعاد أحداث هذه الجولة، وحسب الأموال التي أُنفقت سدى ومن حسابه الخاص، وتذكّر أن الرهان الضخم، مضافًا إليه النفقات الباهظة لهذه الرحلة التي بلا جدوى، سيؤدي إلى إفلاس السيد فوج تمامًا، غرق في لوم نفسه بمرارة. لكن السيد فوج لم يوبّخه، وعند مغادرته رصيف كونارد، اكتفى بقوله: «سنتشاور فيما هو أفضل غدًا. هيا.»"
+    },
+    {
+      "index": 3,
+      "ar": "عبر أفراد المجموعة نهر هدسون على متن عبّارة جيرسي سيتي، واستقلوا عربة إلى فندق سانت نيكولاس في برودواي. حُجزت الغرف، ومضت الليلة قصيرة للغاية بالنسبة إلى فيلياس فوج، إذ استغرق في نوم عميق، لكنها بدت طويلة جدًا لأودا والآخرين الذين منعهم قلقهم من الراحة."
+    },
+    {
+      "index": 4,
+      "ar": "كان اليوم التالي هو الثاني عشر من ديسمبر. ومن السابعة صباحًا من اليوم الثاني عشر حتى قبل ربع ساعة من تسع في مساء الحادي والعشرين، كان هناك تسعة أيام وثلاث عشرة ساعة وخمس وأربعون دقيقة. ولو أن فيلياس فوج غادر على متن «تشاينا»، إحدى أسرع السفن في الأطلسي، لبلغ ليفربول ثم لندن ضمن المدة المتفق عليها."
+    },
+    {
+      "index": 5,
+      "ar": "غادر السيد فوج الفندق وحده، بعد أن أعطى باسبارتو تعليماته بانتظار عودته وإبلاغ أودا بأن تكون مستعدة في أي لحظة. واتجه نحو ضفاف نهر هدسون، يتفحّص بين السفن الراسية أو المربوطة في النهر بحثًا عن أي سفينة توشك على المغادرة. كانت عدة سفن ترفع إشارات المغادرة وتتهيأ للإبحار مع مدّ الصباح؛ ففي هذا الميناء الهائل الرائع لا يمضي يوم في المئة دون أن تنطلق السفن إلى كل أصقاع الأرض. غير أن معظمها كان سفنًا شراعية، وهو ما لم يكن بوسع فيلياس فوج الانتفاع به بالطبع."
+    },
+    {
+      "index": 6,
+      "ar": "وكأنه كان على وشك اليأس تمامًا، حين لمح عند ذا باتري سفينة تجارية راسية، لا تبعد أكثر من طول حبل على الأكثر، ذات محرك لولبي وهيكل متناسق، وكان دخان مدخنتها المتصاعد يشير إلى أنها تستعد للمغادرة."
+    },
+    {
+      "index": 7,
+      "ar": "استوقف فيلياس فوج قاربًا وصعد إليه، وسرعان ما وجد نفسه على متن «هنرييتا»، التي كانت ذات هيكل حديدي وسطح خشبي. صعد إلى السطح وطلب مقابلة القبطان، فتقدم للقائه فورًا. كان رجلًا في الخمسين من عمره، أشبه بذئب بحر، بعينين واسعتين وبشرة بلون النحاس المؤكسد وشعر أحمر وعنق غليظ وصوت غاضب أبحش."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
