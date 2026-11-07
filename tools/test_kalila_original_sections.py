@@ -60,7 +60,7 @@ def verify_kalila_sections(data=None):
                 or row["sectionRole"] != (
                     "INTRODUCTORY_FRAME_OR_EDITORIAL_CONTEXT" if i < 4
                     else "ORIGINAL_ARABIC_NARRATIVE_SECTION")
-                or row["primaryImage"] is not None
+                or (row["primaryImage"] is not None if i != 4 else row["primaryImage"] is None)
                 or row["completeContextualEnglishTranslationVerified"] is not False
                 or row["chapterSceneImageHumanApproved"] is not False):
             raise ValueError(f"Arabic chapter boundary, title or approval altered: {i + 1}")
@@ -73,6 +73,37 @@ def verify_kalila_sections(data=None):
             raise ValueError("Fictitious duplicate or extra Arabic section")
         if not origin[begin:end].strip():
             raise ValueError("Empty canonical narrative unit")
+    # The FIRST genuine, nonpublishable original-colour scene match is a nested
+    # tortoise/geese fable inside the authentic Lion and Bull Arabic narrative.
+    folio_manifest = json.loads((ROOT / "docs/literature/staging/kalila-original-colour-miniatures-20261105/manifest.json").read_text("utf-8"))
+    folio = folio_manifest["plates"][1]
+    picture = sections[4]["primaryImage"]
+    photo_path = "docs/literature/staging/kalila-original-colour-miniatures-20261105/" + folio["localPath"]
+    raw_photo = (ROOT / photo_path).read_bytes()
+    original_section = origin[sections[4]["sourceStartByte"]:sections[4]["sourceEndByteExclusive"]].decode("utf-8")
+    if (picture.get("imagePath") != photo_path
+            or picture.get("sha256") != folio["webpSha256"]
+            or picture.get("sourceURL") != folio["sourceCommonsFilePage"]
+            or picture.get("originalCommonsFile") != folio["sourceCommonsFile"]
+            or len(raw_photo) != folio["webpBytes"]
+            or hashlib.sha256(raw_photo).hexdigest() != folio["webpSha256"]
+            or raw_photo[:4] != b"RIFF" or raw_photo[8:12] != b"WEBP"
+            or picture.get("sourcePassageAr") not in original_section
+            or picture.get("sceneAnchor") != picture.get("sourcePassageAr")
+            or picture.get("sourceWorkNarrativeSectionOneBased") != 5
+            or picture.get("originalColourArtworkModified", False)
+            or picture.get("imageOriginalColourUnmodified") is not True
+            or picture.get("sourceArabicEditionDifferentFromIllustratedManuscript") is not True
+            or folio["individualCommonsLicenseShortName"] != "Public domain"
+            or picture.get("rightsStatus") != "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW"
+            or picture.get("humanEditorApproved") is not False
+            or picture.get("editoriallyApproved") is not False
+            or picture.get("chapterArtPublished") is not False
+            or picture.get("publicationStatus") != "STAGING_ONLY_NOT_PUBLISHED"
+            or not picture.get("altAr") or not picture.get("altEn")
+            or data.get("sourceMatchedHistoricFolioCandidatesNotApproved") != 1
+            or data.get("imageHumanApprovedCount") != 0):
+        raise ValueError("Kalila original 1220 manuscript miniature mismatched, duplicated or falsely approved")
     return len(sections)
 
 
