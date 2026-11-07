@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p311.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-306a5dd4ec02e57c.webp",
+  "imageSha256": "bac678e4f8b1384aba2a7231b7ce56ec7f38ba1ad1f3518c4cb5503069f9bbbd",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting two men standing on a hillside, looking out over a landscape. One man, dressed in indigenous-style clothing with a feathered headdress, gestures with his arm toward a group of people in the distance below. The second man, dressed in European-style colonial or period attire including a hat and carrying a walking stick, stands beside him. In the background, there are trees and what appear to be small structures or huts on the hillside.",
+    "visualObjectsEn": "Two men, walking stick, trees, hillside, small huts or structures, distant figures with raised arms, rocks, vegetation.",
+    "recognizableCharactersOrPeopleEn": "Two adult males, one appearing to be an indigenous person and the other appearing to be a European colonist or explorer.",
+    "uncertaintyNotes": "The specific identities of the figures and the exact geographical location are not explicitly stated in the image. The nature of the structures in the background is somewhat ambiguous due to the sketch-like style of the engraving."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 14,
+    "paragraphIndexZeroBased": 45,
+    "exactSourceQuotation": "At length the party began slowly to climb a steep and rugged ascent by a path that curiously wound among rocks and trees, avoiding the one, and supported by the other, in a manner that showed it had been devised by men long practised in the arts of the wilderness.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene description matches the narrative of Hawkeye leading his party up a steep, rugged mountain path through rocks and trees, which is a recurring visual motif in Andriolli's illustrations for this specific chapter where the characters navigate the mountainous terrain.",
+    "suggestedAltArNotApproved": "An engraving showing a scout and an indigenous guide navigating a steep, rocky mountain path surrounded by trees, consistent with the wilderness travel described in Chapter 14.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows two figures standing on a mountain path looking at a landscape with structures and figures in the distance.",
+    "visualContradictions": "The passage describes Hawkeye and his party climbing to a summit at dawn, but the illustration depicts a different perspective with specific figures looking down at huts and people gesturing below, which does not uniquely correspond to the specific action described in the text.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.8,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

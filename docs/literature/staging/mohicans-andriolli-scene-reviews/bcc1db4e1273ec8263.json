@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p308.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-bcc1db4e1273ec82.webp",
+  "imageSha256": "4e5b68c047b8f3a6f6b4d12f31b04c7cd554c6e3d67ab14b8c093b9a227ea469",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a group of men in a wooded setting. In the foreground, a man with long hair, wearing a loincloth and leggings, stands and touches the face of a seated man who is dressed in European-style clothing, including a collared shirt and trousers. Behind them, three other men stand in the background, appearing to observe the interaction. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "Trees, foliage, ground, clothing (loincloths, leggings, collared shirts, trousers), belts, pouches, and a signature/date mark.",
+    "recognizableCharactersOrPeopleEn": "Five male figures: one seated man in European-style attire and four men in indigenous-style attire, including one standing in the foreground and three standing in the background.",
+    "uncertaintyNotes": "The specific cultural or historical identity of the figures is not explicitly stated in the image, though the attire suggests a depiction of indigenous people and a European settler or explorer. The exact nature of the interaction (e.g., medical examination, threat, or greeting) is ambiguous."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 29,
+    "paragraphIndexZeroBased": 57,
+    "exactSourceQuotation": "four or five of the younger warriors, stepping behind Heyward and the scout, passed thongs so dexterously and rapidly around their arms, as to hold them both in instant bondage.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a group of men in a wooded setting with a seated European-style figure and indigenous figures interacting. Chapter 29, paragraph 57 describes the moment where warriors (indigenous) approach Heyward (European-style clothing) to bind him, which aligns with the visual of a group of men surrounding a seated figure in a forest setting.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a seated man in European clothing being approached by indigenous warriors in a forest, reflecting the scene where Heyward is taken into custody by the Delawares.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a seated European-style man being touched or examined on the face by an indigenous warrior, with other observers in the background, which depicts a different scene or moment rather than the specific binding of Heyward and the scout with thongs.",
+    "visualContradictions": "The passage describes younger warriors passing thongs around the arms of Heyward and the scout to hold them in instant bondage, but the engraving shows an interaction touching the face of a seated individual rather than binding arms with thongs.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

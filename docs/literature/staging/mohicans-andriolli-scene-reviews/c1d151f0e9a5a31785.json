@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "VISION_REVIEW_PENDING",
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
   "workId": "the-last-of-the-mohicans",
   "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
   "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
@@ -20,5 +20,15 @@
     "recognizableCharactersOrPeopleEn": "A person in the foreground kneeling and holding a rifle, and a standing figure in the background wearing what appears to be a feather or headdress.",
     "uncertaintyNotes": "The specific identities of the figures are not explicitly stated in the image. The exact nature of the interaction between the two figures is ambiguous, though the kneeling figure appears to be observing the standing figure."
   },
-  "visionModel": "gemini-3.1-flash-lite"
+  "visionModel": "gemini-3.1-flash-lite",
+  "modelOriginalQuotationRejected": true,
+  "modelOriginalQuotationRejectReason": "Model chapter/paragraph/quotation not verifiable verbatim against pinned original candidate excerpt",
+  "suggestedMatch": null,
+  "evidenceStatus": "INVALID_MODEL_SOURCE_QUOTE_REJECTED_NONPUBLISHABLE",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
 }

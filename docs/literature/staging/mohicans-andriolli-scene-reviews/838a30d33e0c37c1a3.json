@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p297.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-838a30d33e0c37c1.webp",
+  "imageSha256": "3d0b232c8a37a9b55bbf3535aaf12dee7a93473d12e55ead68def7554819563a",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting two men standing on a rocky outcrop near a riverbank in a wooded area. One man, dressed in fringed buckskin clothing and a fur cap, holds a long rifle and places his hand on the shoulder of the other man. The second man is depicted with a lean build, wearing a loincloth and a feathered headdress, standing with his back to the viewer and looking toward the forest. The style is that of a 19th-century book illustration.",
+    "visualObjectsEn": "Long rifle, fringed buckskin clothing, fur cap, feathered headdress, rocky terrain, river, forest, trees, fallen logs.",
+    "recognizableCharactersOrPeopleEn": "Two men, one appearing to be a frontiersman or hunter and the other appearing to be a Native American man.",
+    "uncertaintyNotes": "The specific identities of the figures are based on the provided caption text, but the visual representation is a stylized artistic interpretation from 1883 and may not reflect historical accuracy."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 3,
+    "paragraphIndexZeroBased": 3,
+    "exactSourceQuotation": "While one of these loiterers showed the red skin and wild accoutrements of a native of the woods, the other exhibited, through the mask of his rude and nearly savage equipments, the brighter, though sunburnt and long-faded complexion of one who might claim descent from a European parentage.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The paragraph describes two men in the woods: one a native with wild accoutrements and the other a white man with savage equipment (fringed buckskin/hunting shirt). This aligns with the visual depiction of a frontiersman and a Native American man standing together in a wooded, rocky setting.",
+    "suggestedAltArNotApproved": "An engraving of a frontiersman in buckskin with a long rifle standing beside a Native American man in a feathered headdress on a rocky riverbank.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows two men standing on a rocky outcrop, with one man placing his hand on the other's shoulder, accompanied by a French caption below referencing a completely different scene (\"Oeil de Faucon frappa sur l'épaule de David la Gamme\").",
+    "visualContradictions": "The passage describes an Indian seated on the end of a mossy log engaged in debate with a white man in forest equipments. In contrast, the engraving depicts two men standing upright on a rocky outcrop, with one touching the other's shoulder, corresponding to a different event in the novel rather than the text provided.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.99,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
