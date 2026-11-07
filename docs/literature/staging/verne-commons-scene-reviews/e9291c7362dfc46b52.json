@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_58.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-e9291c7362dfc46b.webp",
+  "imageSha256": "17cdb19e7d3e9b024558d79d3761ae8d5a3d5ad129e194be5e13095b71e9cfc1",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraved illustration depicting a street scene at night. In the foreground, a man in a dark suit is captured in a dynamic, lunging pose, stepping over a man who is crouched or kneeling on the ground. To the left, a man in a long coat and top hat stands leaning against a stone wall with a decorative corbel. In the background, other figures are visible, including a woman and a man walking away, set against a backdrop of multi-story urban buildings.",
+    "visualObjectsEn": "Stone wall with corbel, top hats, long coats, cobblestone-like ground, urban buildings, umbrella or cane held by the standing man.",
+    "recognizableCharactersOrPeopleEn": "A man in a top hat leaning against a wall, a man in a suit lunging forward, a man crouching on the ground, a woman in the background, and a man walking in the distance.",
+    "uncertaintyNotes": "The exact historical context, specific identities of the figures, and the precise nature of the interaction (whether it is a fight, a stumble, or a comedic scene) are not explicitly stated and remain open to interpretation based on the visual evidence."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_55.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-49fd00030c0533bf.webp",
+  "imageSha256": "5e2707491fedd328bc8767ea1d56344d0bc9a06ad7b36a130b9de6d63b03631a",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a group of men working on the deck of a ship or industrial structure. Several figures are engaged in manual labor, including sawing wood, bending over, and operating machinery near large cylindrical metal structures. The style is characteristic of 19th-century book illustrations, featuring cross-hatching and detailed line work.",
+    "visualObjectsEn": "Men, wooden planks, saw, bench, large cylindrical metal structures (possibly smokestacks or tanks), ropes, deck floor, tools, wood logs.",
+    "recognizableCharactersOrPeopleEn": "A group of six or seven men dressed in simple, rugged work clothing, appearing to be laborers or sailors.",
+    "uncertaintyNotes": "The exact nature of the machinery or the specific type of vessel cannot be determined with certainty. The signature 'L. Bennett' is visible in the bottom right corner, but the specific historical context or publication source is not confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 18,
+    "paragraphIndexZeroBased": 4,
+    "exactSourceQuotation": "Passepartout remained on deck as long as the tempest lasted, being unable to remain quiet below, and taking it into his head to aid the progress of the ship by lending a hand with the crew.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The engraving depicts men working on a ship's deck, including manual labor and handling equipment. The selected passage describes Passepartout actively helping the crew on deck during a storm, which aligns with the visual theme of laborers working on a ship's deck.",
+    "suggestedAltArNotApproved": "A black and white engraving showing a group of laborers working on the deck of a ship, with men engaged in manual tasks near machinery and wooden structures.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows several sailors or laborers working on the deck of a ship, sawing wood and handling equipment near large metal structures.",
+    "visualContradictions": "The passage specifically describes Passepartout staying on deck during a tempest, questioning the captain and officers, and shaking a barometer. None of these specific actions (conversing with officers, questioning, shaking a barometer) are depicted; instead, the men are engaged in manual labor like sawing wood.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

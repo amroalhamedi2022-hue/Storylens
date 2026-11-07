@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_57.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-b8200d52af887807.webp",
+  "imageSha256": "d5bd550e52eedccc65a02e33bda36d86de1bb41f9f2bf3ba3205794bfe0fb9ef",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a man sitting in a room, reading a long scroll. On the wall behind him are a pair of large bird wings, a cane, and a pair of shoes hanging. To his left is a washstand with a pitcher and basin, and on the floor sits a large satchel or bag.",
+    "visualObjectsEn": "Man, scroll, bird wings, cane, shoes, washstand, pitcher, basin, satchel, wallpaper with diamond pattern.",
+    "recognizableCharactersOrPeopleEn": "A single adult male with curly hair, wearing a suit and tie.",
+    "uncertaintyNotes": "The exact nature of the objects on the wall (whether they are real wings or decorative items) is ambiguous. The text on the scroll is partially illegible and appears to be written in a stylized or possibly reversed script."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 23,
+    "paragraphIndexZeroBased": 43,
+    "exactSourceQuotation": "Attired after the fashion of the Middle Ages, they bore upon their shoulders a splendid pair of wings",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description mentions a man with a scroll and specific items on the wall including a pair of bird wings. Chapter 23, paragraph 43 explicitly describes the 'Long Noses' characters who are 'Attired after the fashion of the Middle Ages' and 'bore upon their shoulders a splendid pair of wings', which matches the visual elements of the engraving.",
+    "suggestedAltArNotApproved": "A black and white engraving of a man in a suit reading a scroll in a room decorated with theatrical props, including a pair of large bird wings, a cane, and shoes hanging on the wall.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a single man sitting in a room, reading a scroll, with wings, shoes, and a cane hanging on the wall behind him.",
+    "visualContradictions": "The passage describes the Long Noses performing gymnastic exercises on bamboo noses and somersaults with dozens of participants, whereas the image only shows one individual indoors reading a scroll.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

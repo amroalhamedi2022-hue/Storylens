@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_56.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-23cb205e44054c49.webp",
+  "imageSha256": "14747f0588ecbe707910c4d1086b7b35dfe1c69222f6392bb26a10906c28b39d",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a crowded indoor public space, likely a railway station or terminal, with a vaulted ceiling and a prominent support pillar. In the foreground, a man in a top hat and a woman in a long dress and cape are standing together, engaged in conversation with another man wearing a bowler hat. The background is filled with a dense crowd of people, many wearing hats, suggesting a busy transit environment.",
+    "visualObjectsEn": "Top hat, bowler hat, long dress with cape, walking stick, luggage or crates, vaulted ceiling, support pillar, crowd of people, clothing typical of the mid-to-late 19th century.",
+    "recognizableCharactersOrPeopleEn": "A man in a top hat, a woman in a cape, and a man in a bowler hat are the primary figures in the foreground. The rest of the figures are indistinct members of a crowd.",
+    "uncertaintyNotes": "The exact location is not explicitly labeled, though the architecture and crowd suggest a 19th-century railway station or port terminal. The specific identities of the individuals are not provided in the image."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 4,
+    "paragraphIndexZeroBased": 27,
+    "exactSourceQuotation": "The cab stopped before the railway station at twenty minutes past eight.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene depicts a busy railway station with a man in a top hat and a woman in a cape, which aligns with the arrival of Phileas Fogg and Aouda at the Charing Cross railway station in Chapter 4.",
+    "suggestedAltArNotApproved": "A black and white engraving of a bustling 19th-century railway station interior, featuring a man in a top hat and a woman in a cape standing near a support pillar amidst a crowd of travelers.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a man in a top hat standing with a woman in a long dress and cape inside a crowded railway station, conversing with another man in a bowler hat.",
+    "visualContradictions": "The passage describes Phileas Fogg and Passepartout arriving at the station and being approached by a poor beggar-woman asking for alms. The image instead prominently features a woman in a cape/long dress accompanying the gentleman, with no beggar-woman or child present.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
