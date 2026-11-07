@@ -6,7 +6,7 @@
 
 ## Current totals
 
-- Locally mapped chapter candidates: **280**.
+- Locally mapped chapter candidates: **281**.
 - Chapter cards with both territorial rights and editorial approval: **0**.
 - Verified historical art binaries retained in audited archives (all editions): **1200**; NOT necessarily chapter-aligned.
 
@@ -21,7 +21,7 @@
 | Kidnapped | 30 | 30 | 0 | 0 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
 | The Black Arrow | 32 | 8 | 0 | 24 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
 | The Last of the Mohicans | 33 | 8 | 0 | 25 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
-| The Gilded Age | 63 | 61 | 0 | 2 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
+| The Gilded Age | 63 | 62 | 0 | 1 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
 | The Count of Monte Cristo | 117 | 115 | 0 | 2 | complete 117-chapter historical English translation staged; original French edition/visual scene and rights review pending |
 | The Valley of Fear | 15 | 7 | 0 | 8 | 14 complete original English chapters plus epilogue; 7 locally pinned edition-image positions; scene/rights/Arabic pending |
 | A Study in Scarlet | 14 | 0 | 0 | 14 | full unabridged English original with 14 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending; 4 original Friston artwork files archived |
