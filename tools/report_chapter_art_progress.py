@@ -621,6 +621,28 @@ def generate() -> dict:
                     "chapterCount": None, "localCandidateChapters": 0,
                     "readyForUICards": 0, "missingImageChapters": None,
                     "missingReadyChapters": None, "archivedLocalHistoricArt": art_count}
+            if slug == "kalila-arabic-wikisource" and (archive / "arabic-source-section-index.json").is_file():
+                from test_kalila_original_sections import verify_kalila_sections
+                real_sections = verify_kalila_sections()
+                data.update({
+                    "sourceState": "19 byte-verified Arabic source sections (4 intro, 15 narrative); 3 actual c.1220 original-colour manuscript folios source-scene matched (geese/tortoise, crow/mouse, crow council); remaining 14 folios, full contextual English and all territorial/human release approval pending",
+                    "sourceMatchedHistoricFolioCandidatesNotApproved": 3,
+                    "sourceUnassignedOriginalColourFolioFiles": 14,
+                    "originalColourArchiveVisualDuplicateCropGroups": 4,
+                    "originalColourDistinctScenesUpperBoundFromVerifiedCrops": 13,
+                    "historicBookCoverCandidateFilesNotApproved": 1,
+                    "bookCoverReadyForPublication": False,
+                    "originalArabicSourceSectionCountNotChapterCardCount": real_sections,
+                    "sourcePrefatorySectionCount": 4,
+                    "sourceNarrativeSectionCount": 15,
+                    "sourceRedundantEmptyH2Headings": 1,
+                    "sourceEditionIntegrity": "UPSTREAM_GIT_BLOB_SHA1_AND_EXACT_SECTION_BYTE_RANGES",
+                    "chapterCount": None,
+                    "localCandidateChapters": 0,
+                    "readyForUICards": 0,
+                    "missingImageChapters": None,
+                    "missingReadyChapters": None
+                })
             if slug == "a-study-in-scarlet":
                 data["unassignedHistorical1887FristonImageFiles"] = scarlet_originals
                 data["sourceState"] = "complete original English novel staged; original 1887 Friston plates archived but not visually matched to chapters"

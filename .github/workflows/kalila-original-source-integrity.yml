@@ -1,0 +1,28 @@
+name: Literature - Kalila authentic Arabic full-source section integrity
+on:
+  pull_request:
+    paths:
+      - 'docs/literature/staging/kalila-arabic-wikisource/arabic-source-section-index.json'
+      - 'tools/test_kalila_original_sections.py'
+      - 'tools/report_chapter_art_progress.py'
+      - '.github/workflows/kalila-original-source-integrity.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/literature/staging/kalila-arabic-wikisource/arabic-source-section-index.json'
+      - 'tools/test_kalila_original_sections.py'
+permissions:
+  contents: read
+jobs:
+  verify-original-arabic-sections:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit all unchanged Arabic bytes, 19 actual sections and empty heading without false art rights
+        run: |
+          python tools/test_kalila_original_sections.py
+          python tools/report_chapter_art_progress.py
