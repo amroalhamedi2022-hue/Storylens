@@ -7,7 +7,7 @@ Updated 2026-11-01. All links are **candidates**, not legal redistribution clear
 | Genre | Original work | Trusted textual source | Verified source/translation status |
 |---|---|---|---|
 | Deduction/detective | The Moonstone — Wilkie Collins (EN) | https://www.gutenberg.org/ebooks/155 | DISCOVERED; AR complete companion, edition rights, inline art OPEN |
-| Gothic mystery/investigation | The Woman in White — Wilkie Collins (EN) | https://standardebooks.org/ebooks/wilkie-collins/the-woman-in-white ; https://www.gutenberg.org/ebooks/583 | DISCOVERED, rights/AR/art OPEN |
+| Gothic mystery/investigation | The Woman in White — Wilkie Collins (EN) | https://standardebooks.org/ebooks/wilkie-collins/the-woman-in-white ; https://www.gutenberg.org/ebooks/583 | COMPLETE 246,996-word EN ORIGINAL SHA-STAGED; 62 exact 3-epoch original narrative units indexed, 8 genuine Macklin 1903 plate-caption source candidates, 54 missing; 1861 Gilbert frontispiece + 1860 Harper historic cover separately archived. 0 editorial/territorial approvals; contextual AR and reader release OPEN. PR #66 merged; original images SHA-verified in main |
 | Sherlock Holmes/deduction | A Study in Scarlet — Arthur Conan Doyle (EN) | https://www.gutenberg.org/ebooks/244 | DISCOVERED; rights/AR/art OPEN |
 | Sherlock Holmes/crime | The Sign of the Four — Arthur Conan Doyle (EN) | https://www.gutenberg.org/ebooks/2097 | **FULL 12/12 original EN SOURCE STAGED outside APK**; complete AR/rights/art/device OPEN |
 | Sherlock Holmes/gothic mystery | The Hound of the Baskervilles — Arthur Conan Doyle (EN) | https://www.gutenberg.org/ebooks/2852 | **FULL 15/15 original EN SOURCE STAGED outside APK**; complete AR/rights/art/device OPEN |
