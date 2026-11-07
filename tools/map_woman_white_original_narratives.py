@@ -31,6 +31,73 @@ def text(raw: bytes) -> str:
     return SPACES.sub(" ", html.unescape(TAG.sub(" ", raw.decode("utf-8")))).strip()
 
 
+
+def attach_exact_original_lithograph_candidate(indexed: list[dict], source: bytes) -> int:
+    """Only a REAL original plate with a caption also present once in the
+    checked original English scene may be a pending chapter image *candidate*.
+    All other original scans remain unassigned archival evidence.
+    """
+    manifest_path = ROOT / "docs/literature/staging/woman-white-original-1860-1903-plates/manifest.json"
+    if not manifest_path.exists():
+        return 0
+    archive = json.loads(manifest_path.read_text("utf-8"))
+    if archive.get("publicationApproved") is not False:
+        raise ValueError("Original art archive must never imply release")
+    source_name = "File:Illustration by Thomas Eyre Macklin for The Woman in White (1).jpg"
+    matching = [x for x in archive.get("images", []) if x.get("wikiFile") == source_name]
+    if len(matching) != 1:
+        raise ValueError("1860 novel caption candidate has no uniquely pinned 1903 real art")
+    art = matching[0]
+    picture = ROOT / "docs/literature/staging/woman-white-original-1860-1903-plates" / art["localPath"]
+    binary = picture.read_bytes()
+    expected_hash = art["webpSha256"]
+    if (not picture.is_relative_to(ROOT)
+            or binary[:4] != b"RIFF" or binary[8:12] != b"WEBP"
+            or hashlib.sha256(binary).hexdigest() != expected_hash
+            or art.get("originalCreator") != "Thomas Eyre Macklin (1867–1943)"
+            or art.get("sourceArtworkYear") != 1903
+            or art.get("artworkClassificationStatus") !=
+                "ORIGINAL_1903_NOVEL_LITHOGRAPH__NO_VERIFIED_CHAPTER_SCENE"
+            or art.get("sceneChapterMatchStatus") != "UNREVIEWED__NO_CHAPTER_CARD"
+            or art.get("editoriallyApproved") is not False
+            or art.get("rightsStatus") != "PENDING_INDIVIDUAL_TERRITORIAL_AND_EDITORIAL_REVIEW"
+            or art.get("publishedToApp") is not False
+            or not art.get("individualCommonsLicense")
+            or not str(art.get("commonsPage", "")).startswith("https://commons.wikimedia.org/wiki/File:")):
+        raise ValueError("Macklin original plate source, checksum or rights evidence invalid")
+    source_caption = b"Is that the road to London?"
+    if source.count(source_caption) != 1:
+        raise ValueError("Caption does not match one actual source scene")
+    original_byte_offset = source.index(source_caption)
+    rows = [r for r in indexed if
+            r["sourceHtmlStartByte"] <= original_byte_offset < r["sourceHtmlEndByteExclusive"]]
+    if len(rows) != 1 or rows[0]["sourceOriginalHeading"] != "IV" or rows[0]["chapterOneBased"] != 4:
+        raise ValueError("Historic Macklin scene anchor not in source-authentic opening section IV")
+    chapter = rows[0]
+    chapter["primaryImage"] = {
+        "imagePath": picture.relative_to(ROOT).as_posix(),
+        "sha256": expected_hash,
+        "sourceUrl": art["commonsPage"],
+        "sourceEdition": art["sourceEdition"],
+        "sourceBookEditionURL": archive["categoryURL"],
+        "sourceCaption": "Is that the road to London?",
+        "sourceTextOriginalSha256": hashlib.sha256(source).hexdigest(),
+        "sourceTextByteOffset": original_byte_offset,
+        "sceneAnchor": "Original 1860 English section IV: Is that the road to London?",
+        "sceneVerificationStatus":
+            "ORIGINAL_1903_PRINTED_CAPTION_AND_ACTUAL_1860_SOURCE_PROSE_MATCHED__HUMAN_SCENE_REVIEW_PENDING",
+        "credit": art["originalCreator"],
+        "license": art["individualCommonsLicense"],
+        "rightsStatus": "PENDING_INDIVIDUAL_TERRITORIAL_AND_EDITORIAL_REVIEW",
+        "altEn": "Historical lithograph of Walter Hartright meeting the woman in white on the road; she points toward London. Editorial review pending.",
+        "altAr": "رسم تاريخي للقاء والتر هارترايت بالمرأة ذات الثياب البيضاء على الطريق وهي تشير باتجاه لندن. الوصف قيد المراجعة.",
+        "editoriallyApproved": False,
+        "publishedToApp": False,
+    }
+    chapter["imageStatus"] = "REAL_ORIGINAL_SCENE_MATCHED_CANDIDATE__NOT_APPROVED_FOR_APP"
+    return 1
+
+
 def generate() -> dict:
     manifest = json.loads(MANIFEST.read_text("utf-8"))
     source = manifest["source"]
@@ -118,6 +185,7 @@ def generate() -> dict:
     for before, after in zip(indexed, indexed[1:]):
         if before["sourceHtmlEndByteExclusive"] > after["sourceHtmlStartByte"]:
             raise ValueError("Source narrative byte ranges overlap")
+    mapped_original_illustrations = attach_exact_original_lithograph_candidate(indexed, raw)
     return {
         "schemaVersion": 1,
         "bookId": "the-woman-in-white",
@@ -132,8 +200,8 @@ def generate() -> dict:
         "sourceMarkedH3Narratives": h3_count,
         "sourceSubstantiveH2Narratives": h2_count,
         "releaseApproved": False,
-        "localCandidateChapters": 0,
-        "missingCandidateChapters": 62,
+        "localCandidateChapters": mapped_original_illustrations,
+        "missingCandidateChapters": 62 - mapped_original_illustrations,
         "readyForUICards": 0,
         "chapters": indexed,
     }
