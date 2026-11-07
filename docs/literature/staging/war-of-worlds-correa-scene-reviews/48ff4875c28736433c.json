@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_067_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-48ff4875c2873643.webp",
+  "imageSha256": "c7ff2a0993b3d77d7746ea65f7ce81acb06d9a7076918524c881d2273018e7bb",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a dramatic train derailment or crash. A steam locomotive is tilted at a sharp angle, appearing to have left the tracks, with smoke billowing from its chimney. Behind it, a passenger carriage is also tilted and partially obscured by debris or smoke. In the foreground, a railway signal lever is visible, and the ground appears uneven or broken.",
+    "visualObjectsEn": "Steam locomotive, passenger carriage, railway tracks, railway signal lever, smoke, debris, ground.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the event (whether it is a collision, a derailment, or a scene of destruction) is inferred from the visual cues of the tilted train and smoke. The artist's signature 'Alvim Corrêa' is visible in the bottom left corner."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 11,
+    "paragraphIndexZeroBased": 33,
+    "exactSourceQuotation": "a white railway signal here",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a train derailment with a prominent railway signal lever in the foreground. While the text in Chapter 11, Paragraph 33 describes the aftermath of destruction, it explicitly mentions a 'white railway signal' surviving amidst the wreckage, which aligns with the specific visual detail of the signal lever in the engraving.",
+    "suggestedAltArNotApproved": "A black and white engraving showing a derailed steam locomotive and carriage amidst debris, with a railway signal lever in the foreground.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image clearly shows a wrecked steam locomotive and railway carriages in a crash or derailment scene with a railway signal lever in the foreground.",
+    "visualContradictions": "The passage describes looking out of a study window at dawn over a valley of ashes with three metallic giants (tripods) standing about a pit, whereas the illustration depicts a train wreck scene without the narrator viewing it from a study and without any Martian tripods.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

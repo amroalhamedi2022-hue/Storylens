@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_064_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-16c2ef6d54c29a39.webp",
+  "imageSha256": "ef4400e4e8c2ac73f2d435b3786eac3765b7142dfd7801142b8f4939cfde8b56",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a person sitting alone on what appears to be a stone step or ledge. The figure is hunched over with their head resting in their hand, suggesting a mood of sadness, exhaustion, or contemplation. The style is sketch-like with heavy cross-hatching and loose lines.",
+    "visualObjectsEn": "A person, a stone step or ledge, clothing including a shirt and trousers, shoes.",
+    "recognizableCharactersOrPeopleEn": "A single individual, likely a young man or boy, shown in a seated, dejected posture.",
+    "uncertaintyNotes": "The exact age and gender of the figure are ambiguous due to the loose artistic style. The setting is minimal, so the exact location is not clearly defined beyond the suggestion of a step or ledge. The signature at the bottom right is partially legible but not definitively identified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 36,
+    "exactSourceQuotation": "I and the artilleryman, seated on the step of the drinking fountain, made a very passable meal upon what we had brought with us.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a figure sitting on a stone step or ledge in a dejected or contemplative posture. The provided text explicitly describes the narrator and the artilleryman sitting on the step of a drinking fountain, which aligns with the visual representation of a person seated on a stone ledge.",
+    "suggestedAltArNotApproved": "A person sitting on a stone step, hunched over in a dejected posture, representing the narrator or the artilleryman resting on the step of a drinking fountain.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a single lone figure sitting dejectedly on a step or ledge with their head in their hand.",
+    "visualContradictions": "The passage specifically describes two characters (the narrator and the artilleryman) seated together eating a meal, while the engraving shows only a single individual alone, with no food, drinking fountain, soldiers, or crowds visible.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_060_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-d3f76fbd48f490ae.webp",
+  "imageSha256": "18fd87c4921baa58ca2a6e3ef9101260cca0f3c1cc394ef4f5921572965289af",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a large, mechanical, three-legged tripod machine looming over a rural landscape. The machine is positioned above trees and a road where people are running away in panic. The style is reminiscent of late 19th or early 20th-century pen and ink engraving or etching.",
+    "visualObjectsEn": "A large tripod machine with a rounded top and long, thin legs; trees and foliage; a road; a building on the right side; smoke or clouds in the background; small figures of people running.",
+    "recognizableCharactersOrPeopleEn": "Several small, indistinct human figures shown in motion, appearing to flee from the mechanical tripod.",
+    "uncertaintyNotes": "The exact nature of the mechanical object is ambiguous, though it resembles science fiction depictions of extraterrestrial or advanced technology. The specific historical origin or artist is not identified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 46,
+    "exactSourceQuotation": "Quickly, one after the other, one, two, three, four of the armoured Martians appeared, far away over the little trees, across the flat meadows that stretched towards Chertsey, and striding hurriedly towards the river.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a large tripod machine looming over a rural landscape with trees and people fleeing, which aligns well with the description of the Martians striding over trees and meadows in this passage.",
+    "suggestedAltArNotApproved": "A black and white ink illustration showing a towering, three-legged mechanical tripod machine striding over a rural landscape with trees, while small figures of people run away in panic.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a single large tripod machine looming over trees and fleeing people in a close-up setting.",
+    "visualContradictions": "The passage describes four armored Martians appearing far away over trees and flat meadows towards Chertsey, whereas the image only shows one dominant tripod machine in what appears to be a closer road or forest setting.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
