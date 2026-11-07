@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p33.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-978714cd0fae32da.webp",
+  "imageSha256": "93ec6eadf0c74214cc466bb376c6dc92d8f8f74df2874a7a9786c98e94023721",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting three figures in a wooded, forest setting. One figure stands on the right, looking off into the distance, while another sits on a fallen log in the center. A third figure stands in the background to the left. The style is characteristic of 19th-century book illustrations, featuring cross-hatching and detailed line work.",
+    "visualObjectsEn": "Trees, forest foliage, a large fallen log, long rifles or muskets, fringed clothing, headbands, belts, and pouches.",
+    "recognizableCharactersOrPeopleEn": "Three individuals dressed in attire often associated with 18th or 19th-century frontier scouts or Native American warriors, including fringed tunics and leggings.",
+    "uncertaintyNotes": "The specific cultural or historical identity of the figures is not explicitly stated in the image, though the clothing and weapons suggest a frontier or colonial-era North American context. The date '1883' is visible in the lower left, likely indicating the year of the engraving's creation."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 7,
+    "paragraphIndexZeroBased": 15,
+    "exactSourceQuotation": "Uncas, with instinctive quickness, receded, and the three foresters held another of their low, earnest conferences.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description specifies three figures in a forest setting, one sitting on a log, one standing, and one in the background, which aligns perfectly with the narrative context of the three foresters (Hawkeye, Chingachgook, and Uncas) holding a conference in the woods.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing three frontier scouts in a forest; one sits on a fallen log while the others stand, engaged in a tense, quiet discussion.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows three figures standing or sitting in a wooded area, with one figure holding a rifle and another holding a sheathed blade or tool, but there is no body of water visible, nor any action depicting descent to the water or reacting to a distant howl.",
+    "visualContradictions": "The passage describes Uncas descending to the water and immediately receding after a long howl is raised, followed by a conference. The image depicts a static forest scene with no water, river edge, or visual cue of a sudden sound causing a retreat.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

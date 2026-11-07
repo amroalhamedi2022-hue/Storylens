@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p325.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-c08c6c2cb57298d1.webp",
+  "imageSha256": "71659f5768ef6124efb7d1ba2f89894e52d44960bb861c51578ee05605f207f2",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a central male figure standing bound to a wooden post. He is surrounded by a crowd of people, including men, women, and children. A woman in the foreground is gesturing toward him, while a young boy on the left holds a hatchet. The setting appears to be a village with a thatched-roof structure in the background.",
+    "visualObjectsEn": "Wooden post, thatched-roof hut, hatchet, traditional clothing, feathers, trees in the background.",
+    "recognizableCharactersOrPeopleEn": "A central male figure, a woman gesturing, a young boy with a hatchet, a crowd of indigenous people.",
+    "uncertaintyNotes": "The specific cultural or historical identity of the figures is not explicitly verifiable from the image alone, though the style suggests a 19th-century illustration of indigenous North American themes. The exact nature of the interaction is open to interpretation based on the visual cues of the figures' expressions and gestures."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 23,
+    "paragraphIndexZeroBased": 31,
+    "exactSourceQuotation": "He found him, standing with one arm cast about the protecting post, and breathing thick and hard, after his exertions, but disdaining to permit a single sign of suffering to escape. His person was now protected by immemorial and sacred usage, until the tribe in council had deliberated and determined on his fate.",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The scene description matches the specific moment in Chapter 23 where a character (Duncan) observes a prisoner bound to a post, surrounded by a crowd of indigenous people, while the prisoner maintains a stoic demeanor despite the surrounding threat. The text explicitly mentions the 'protecting post' and the crowd's presence, which aligns with the visual elements of the engraving.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a prisoner bound to a wooden post in an indigenous village, surrounded by a crowd of men, women, and children, with a woman gesturing and a boy holding a hatchet nearby.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts a male figure (Uncas, based on the caption) standing with one arm cast about a protecting post in a village setting, surrounded by a gloomy crowd of onlookers as described in the passage.",
+    "visualContradictions": "None of significant contradiction; the scene matches the specific details of Uncas at the post surrounded by the disappointed crowd near the lodges.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

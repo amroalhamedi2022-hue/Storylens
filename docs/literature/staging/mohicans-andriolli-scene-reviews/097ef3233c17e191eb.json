@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p339.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-097ef3233c17e191.webp",
+  "imageSha256": "e51d17689c3be8afd1517ce9dfe0446782dffea35152d970d12b48de7aaa2d6e",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a group of Indigenous people in a gathering. A central figure stands with one arm raised, holding a tomahawk, while another figure stands beside him. Several other individuals are seated or standing in the foreground and background, appearing to listen or participate in a council or meeting. The style is that of a 19th-century engraved book illustration.",
+    "visualObjectsEn": "Tomahawk, clothing with patterns, feathers in hair, seated figures, standing figures, signature 'Andriolli 1883' in the bottom right corner.",
+    "recognizableCharactersOrPeopleEn": "A group of Indigenous people, including men with traditional hairstyles and clothing, and some figures who appear to be women or younger individuals in the background.",
+    "uncertaintyNotes": "The specific cultural or tribal identity of the figures is not explicitly stated in the image. The exact nature of the activity (e.g., war council, diplomatic meeting, or ceremony) is open to interpretation based on the gestures and expressions."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 24,
+    "paragraphIndexZeroBased": 13,
+    "exactSourceQuotation": "Several pipes, that had been extinguished, were lighted again; while the newcomer, without speaking a word, drew his tomahawk from his girdle, and filling the bowl on its head, began to inhale the vapors of the weed through the hollow handle",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description details a group of Indigenous people in a council setting with a central figure holding a tomahawk. Chapter 24, paragraph 13 describes a council meeting where warriors are gathered, pipes are being smoked, and a chief draws his tomahawk from his girdle, which aligns with the visual elements of the engraving.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a council of Indigenous people, with a central warrior holding a tomahawk, reflecting a scene of deliberation and smoking in a tribal meeting.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a central figure standing with one arm raised holding a tomahawk aloft, surrounded by a group of assembled warriors and other individuals in a council or gathering setting.",
+    "visualContradictions": "The passage describes the newcomer sitting down quietly, drawing his tomahawk from his girdle, and immediately filling the bowl and smoking it through the hollow handle. In the image, the central figure is standing with his arm raised triumphantly holding the tomahawk in the air, rather than quietly smoking it.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

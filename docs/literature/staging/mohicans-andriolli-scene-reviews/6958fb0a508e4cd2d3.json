@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p343.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-6958fb0a508e4cd2.webp",
+  "imageSha256": "3006ad841a8bd75ae71bd291a60159e04e645032f0a410db08c9fbd44601451c",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a group of people inside a rocky cave or grotto. A person is lying on the ground, possibly injured or deceased, covered in foliage. A man with glasses and a feather in his hair sits nearby, holding an open book and gesturing with his hand. Another man stands to the right, looking down at the person on the ground, while a third man stands to the left, wearing a cloak and a feather in his hair. A large bear-like shape is visible in the shadows in the background.",
+    "visualObjectsEn": "Engraving, cave walls, open book, foliage, clothing, feathers, glasses, bear silhouette.",
+    "recognizableCharactersOrPeopleEn": "Three men, one of whom is wearing glasses and holding a book, and one person lying on the ground.",
+    "uncertaintyNotes": "The exact identity of the figures and the nature of the scene are not explicitly stated in the image. The bear-like shape in the background could be a real animal or a rock formation resembling an animal."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 26,
+    "paragraphIndexZeroBased": 46,
+    "exactSourceQuotation": "Put on the skin; I doubt not you can play the bear nearly as well as myself.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene depicts a character (Hawkeye) instructing another to wear a bear skin to infiltrate the Huron camp, which aligns with the dialogue in Chapter 26. The 'bear-like shape' in the background of the engraving corresponds to the disguise mentioned in the text.",
+    "suggestedAltArNotApproved": "An engraving showing Hawkeye instructing Uncas to wear a bear skin disguise, with a bear-like figure visible in the background of the cave setting.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows men in a cave with a body on the ground, a bear silhouette in the background, and a seated man holding a book, which does not depict Hawkeye and Uncas discussing putting on a bear skin for circumvention.",
+    "visualContradictions": "The passage describes Hawkeye telling Uncas to put on a bear skin to play the bear, whereas the image shows a literal bear shape or separate animal in the background and men engaged in a completely different dramatic scene involving a book and a body.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.99,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
