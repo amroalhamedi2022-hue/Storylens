@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p467.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-6444db525756ab4b.webp",
+  "imageSha256": "617ba0d441b4c62f76236bbfff3642386566775fb026dafa8a02d4f325f3f35e",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a group of people in a natural, outdoor setting. In the foreground, a person is reclining against a rocky slope, while another person stands nearby holding a long rifle. A third figure, dressed in a military-style uniform, stands in the center. Behind them, a larger group of people is gathered. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "Rifles, rocky terrain, military uniform, feathered headdresses, fringed clothing, vegetation, engraved lines.",
+    "recognizableCharactersOrPeopleEn": "A group of individuals including one person in a European-style military uniform and several others in attire suggestive of Indigenous North American cultures, including feathered headgear and fringed garments.",
+    "uncertaintyNotes": "The specific identities of the individuals and the exact historical or fictional event being depicted are not explicitly stated in the image. The date '83' and the name 'Andruet' are visible, but their context is ambiguous."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 32,
+    "paragraphIndexZeroBased": 44,
+    "exactSourceQuotation": "The chief was seated on a rock, with nothing visible but his calm visage, considering the spectacle with an eye as deliberate as if he were posted there merely to view the struggle.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene description matches the visual elements of a person (the chief) seated on a rocky slope/terrain observing a battle or group, which aligns with the specific action of Chingachgook in this paragraph. The presence of rifles and military-style figures in the broader context of the chapter supports the engraving's depiction of a mix of military and Indigenous figures.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a figure seated on a rocky outcrop observing a group of people, including individuals in military and Indigenous attire, consistent with the scene where Chingachgook watches the battle from a rock.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image depicts a seated figure reclining on a slope/rock while others stand nearby, including a military-uniformed officer and several Indigenous figures.",
+    "visualContradictions": "The passage describes Chingachgook seated calmly on a rock watching a battle and a line of warriors clinging to the cover of the forest. The engraving shows a seated figure resting or posed defensively rather than observing a battle scene unfold, and lacks the clear depiction of the battle line described.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.8,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

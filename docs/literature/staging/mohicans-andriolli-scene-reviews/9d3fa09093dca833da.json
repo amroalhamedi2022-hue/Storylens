@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p473.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-9d3fa09093dca833.webp",
+  "imageSha256": "4ea52bdc221ca1a221d286a4b7a8fa36c6783a8f684117927f73470e491b3b5c",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a solemn outdoor funeral or burial scene. A group of people are gathered in an open field. In the center, a figure in 18th-century attire stands reading from an open book. Behind them, several figures are carrying a shrouded body on a stretcher or bier. In the foreground, a man in buckskin clothing stands with his back to the viewer, holding a long rifle, while another man in a frock coat and breeches stands to the left, also facing away from the viewer, holding a hat. Other figures, including some appearing to be Indigenous people, stand in the background.",
+    "visualObjectsEn": "Engraving, open book, long rifle, shrouded body, stretcher, frock coat, breeches, buckskin clothing, hat, field, trees in the distance.",
+    "recognizableCharactersOrPeopleEn": "A group of men and women in 18th-century style clothing, including a man reading a book, a man with a rifle, and several figures carrying a body.",
+    "uncertaintyNotes": "The specific historical event or literary context is not explicitly stated in the image. The clothing styles suggest an 18th-century setting, but the exact identities of the individuals are not provided. The signature 'Gendriolli 1883' is visible at the bottom left."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 18,
+    "paragraphIndexZeroBased": 14,
+    "exactSourceQuotation": "Look to him, Delaware; it may be one of your missing people; and he should have burial like a stout warrior.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene description depicts a solemn burial or funeral in an open field with figures in 18th-century attire and Indigenous people, which aligns with the context of the aftermath of the massacre at Fort William Henry where the characters are tasked with identifying and burying the dead. The selected paragraph explicitly mentions the scout instructing the Delaware to look to a fallen warrior and provide him with a burial.",
+    "suggestedAltArNotApproved": "A solemn burial scene in an 18th-century wilderness setting, featuring a group of men in period clothing and Indigenous warriors gathered around a shrouded body on a stretcher, with a man reading from a book and another holding a rifle.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a formal outdoor funeral or burial ceremony with a figure reading from an open book, a shrouded body on a bier carried by people, and a group gathered in mourning.",
+    "visualContradictions": "The passage describes the scout spotting a single dead body ('yonder lies a redskin, without the hair of his head') on a plain and speaking to the Delaware/Sagamore about it, whereas the image depicts an organized burial procession with a casket/shrouded body being carried and a man reading from a book.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

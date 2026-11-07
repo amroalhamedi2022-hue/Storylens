@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p477.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-a07a4998d58208ac.webp",
+  "imageSha256": "c5fe086540cada3a95ed583cac38f81d60004aa3789f6c8287c6dfa3be671612",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraved illustration depicting a group of Indigenous North American men gathered outdoors. A central figure stands with one arm raised, appearing to address the others. The men are dressed in traditional clothing, including cloaks, leggings, and feathered headpieces, and several are carrying long rifles. The style is that of a 19th-century book illustration with cross-hatching techniques.",
+    "visualObjectsEn": "Rifles, cloaks, feathered headpieces, leggings, moccasins, pouches, belts, and a textured ground surface.",
+    "recognizableCharactersOrPeopleEn": "A group of Indigenous men, with one central figure gesturing upward, surrounded by others in a semi-circle.",
+    "uncertaintyNotes": "The specific cultural or tribal identity of the figures is not explicitly stated in the image, though the attire suggests a 19th-century depiction of Native American peoples. The exact context of the gathering—whether it is a war council, a meeting, or a ceremonial event—is open to interpretation."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 28,
+    "paragraphIndexZeroBased": 3,
+    "exactSourceQuotation": "When in full view of the Delawares he stopped, and made a gesture of amity, by throwing his arm upward towards heaven, and then letting it fall impressively on his breast.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a central figure gesturing upward while addressing a group of Indigenous men in a gathering, which aligns perfectly with the description of the character in Chapter 28, Paragraph 3, who stands before the Delawares and makes a gesture of amity by throwing his arm upward.",
+    "suggestedAltArNotApproved": "A central Indigenous figure stands before a gathering of men, gesturing upward with one arm in a gesture of amity, while the surrounding men observe in a semi-circle.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a central figure with one arm raised in greeting, surrounded by Indigenous men, some holding long rifles and weapons.",
+    "visualContradictions": "The passage explicitly states the arriving man was 'without arms', whereas multiple figures in the engraving clearly carry rifles and other weapons strapped across their bodies or held in their hands.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

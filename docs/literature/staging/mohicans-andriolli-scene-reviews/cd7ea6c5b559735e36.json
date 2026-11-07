@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p5.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-cd7ea6c5b559735e.webp",
+  "imageSha256": "c2c54e13d22454dba05e159fd5f94a3ac218d34d15f9134dce7302f3d6ad1393",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting an interaction between two men in an outdoor setting. In the foreground, a man dressed in 18th-century European military uniform stands with his back to the viewer, accompanied by a dog. He is facing a man depicted as an Indigenous person wearing feathers in his hair and traditional clothing. In the background, a second soldier stands guard near a stone archway. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "18th-century military uniform, feathered headdress, dog, stone archway, sword, document or paper, ground with sparse vegetation.",
+    "recognizableCharactersOrPeopleEn": "A European soldier in uniform, an Indigenous man, and a soldier standing guard in the background.",
+    "uncertaintyNotes": "The specific historical identities of the individuals are not explicitly stated in the image. The exact era of the engraving is not provided, though the style suggests a 19th-century illustration of an earlier historical period."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "modelOriginalQuotationRejected": true,
+  "modelOriginalQuotationRejectReason": "Model chapter/paragraph/quotation not verifiable verbatim against pinned original candidate excerpt",
+  "suggestedMatch": null,
+  "evidenceStatus": "INVALID_MODEL_SOURCE_QUOTE_REJECTED_NONPUBLISHABLE",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
