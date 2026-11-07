@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_093_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-69d78fd577f31025.webp",
+  "imageSha256": "f281521f3e04f25c7fe42541c467068b7600bde78f02d44c171d759d224d35b9",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting an urban scene at night. On the right, a man and a woman stand on a balcony looking out. Across a street or gap, there is a multi-story building with lit windows showing silhouettes of people inside. In the background, above the rooftops, a large, strange, mechanical or alien-like structure with circular features looms over the city.",
+    "visualObjectsEn": "Multi-story residential buildings, balcony, windows, street, mechanical structure with circular elements, architectural details, cross-hatching shading.",
+    "recognizableCharactersOrPeopleEn": "A man and a woman on a balcony in the foreground; several indistinct figures visible through the windows of the building across the street.",
+    "uncertaintyNotes": "The nature of the mechanical structure in the background is ambiguous; it could be interpreted as a futuristic machine, a tripod-like entity, or a stylized architectural element. The exact historical context or artistic style is not definitively identified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 17,
+    "exactSourceQuotation": "On the summit, towering up to the fading stars, was a t",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a night scene with a man and woman on a balcony observing a city, with a large, looming mechanical structure in the background. This aligns with the narrator's perspective in Chapter 25, where he observes the Martian machine on Primrose Hill while navigating the silent, desolate streets of London at dawn.",
+    "suggestedAltArNotApproved": "A black and white engraving showing a man and woman on a balcony overlooking a dark city at night, with a large, ominous Martian tripod looming over the rooftops in the background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a man and a woman looking out from a balcony or window at an urban street, with a Martian machine visible in the background over rooftops.",
+    "visualContradictions": "The passage describes the narrator wandering alone through London streets at dawn, encountering a dead body, hiding in a cabmen's shelter, and eventually seeing the Martian on Primrose Hill. The image depicts people looking out of a building window/balcony together, which contradicts the solitary wandering narrative.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

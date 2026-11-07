@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_088_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-de1a577ef461c7d6.webp",
+  "imageSha256": "fa95d68468497b0164eeb5975e78dea1a2c9ba6decc5d2e426dcc79defef1c53",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch depicting a riverside scene. In the foreground, a person is rowing a small boat on the water. In the background, on the riverbank, there is a two-story building, some trees, and a large piece of artillery or a cannon positioned near the shore.",
+    "visualObjectsEn": "A small boat, a person rowing, a river, a two-story house, trees, a large cannon or artillery piece, and grassy riverbank terrain.",
+    "recognizableCharactersOrPeopleEn": "A single person, seen from behind, wearing dark shorts or trousers, rowing the boat.",
+    "uncertaintyNotes": "The exact nature of the artillery piece is difficult to determine due to the sketchy style. The historical context or specific location of the scene is not identifiable from the image alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 13,
+    "paragraphIndexZeroBased": 4,
+    "exactSourceQuotation": "I saw an abandoned boat, very small and remote, drifting downstream; and throwing off the most of my sodden clothes, I went after it, gained it, and so escaped out of that destruction. There were no oars in the boat, but I contrived to paddle",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a person rowing a small boat on a river near a riverbank with houses and trees, which aligns with the narrator's escape by boat down the river in Chapter 13. While the cannon is not explicitly mentioned in this specific paragraph, the scene captures the essence of the narrator's river journey amidst the destruction described in the chapter.",
+    "suggestedAltArNotApproved": "A black and white ink sketch showing a person rowing a small boat on a river, with a riverbank featuring a two-story house, trees, and a large artillery piece in the background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a lone narrator in a small boat on a river, having cast off sodden clothes, paddling with his hands or an improvised tool down the river past buildings and a destroyed cannon on the riverbank, exactly matching the description of escaping down the river towards Halliford.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

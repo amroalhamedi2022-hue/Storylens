@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_092_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-b12cec2dd5f3b53b.webp",
+  "imageSha256": "17aae487719b1cfdf678fa5bbe53fe3f46b81b2259c4b9bc92704641792ec0c9",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting two figures moving across an open, possibly dusty or smoky landscape. The figure in the foreground is a shirtless, lean young man leaning forward as if running or straining. Behind him, an older, stooped figure wearing a long coat or robe is following closely, with their hand seemingly reaching toward or holding onto the back of the younger man's clothing. The style is that of a 19th or early 20th-century pen-and-ink sketch.",
+    "visualObjectsEn": "Ink lines, cross-hatching for shading, stylized smoke or dust clouds, ground texture, signature initials 'A.C.' in the bottom right corner.",
+    "recognizableCharactersOrPeopleEn": "A younger, shirtless male figure and an older, stooped figure dressed in a long coat.",
+    "uncertaintyNotes": "The exact nature of the interaction between the two figures is ambiguous; it is unclear if the older figure is helping, restraining, or merely following the younger man. The setting is abstract and lacks specific architectural or geographical markers."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 21,
+    "paragraphIndexZeroBased": 14,
+    "exactSourceQuotation": "Before he was halfway across the kitchen I had overtaken him. With one last touch of humanity I turned the blade back and struck him with the butt. He went headlong forward and lay stretched on the ground. I stumbled over him and stood panting.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a younger man leaning forward in a strained, running posture, followed by an older, stooped figure in a long coat who appears to be interacting with him. This aligns with the narrative tension in Chapter 21 where the narrator pursues and strikes the curate, resulting in the curate falling to the ground while the narrator stands over him, panting.",
+    "suggestedAltArNotApproved": "A dramatic ink illustration showing a younger man in a strained, forward-leaning posture, followed closely by an older, stooped figure in a long coat, capturing a moment of intense pursuit or struggle.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows an older figure in a long coat following or holding onto the back of a younger, shirtless man running across an outdoor smoky landscape.",
+    "visualContradictions": "The passage describes the narrator grabbing a meat chopper from the wall to strike the artilleryman from behind in a kitchen, causing him to fall headlong on the ground. The engraving depicts an outdoor running scene with completely different character appearances and actions, lacking any kitchen setting, meat chopper, or the specific striking action described.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
