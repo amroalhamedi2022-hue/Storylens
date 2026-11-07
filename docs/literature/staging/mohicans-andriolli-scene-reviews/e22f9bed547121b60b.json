@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p408.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-e22f9bed547121b6.webp",
+  "imageSha256": "a939d57435f97898a2f42570888d98a03d4d07cfe236561c50ffd4489aa138af",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a group of men in a natural outdoor setting. In the foreground, a man stands with his back to the viewer, facing a group of other men. One of the men in the group is aiming a long rifle toward a small object hanging from a bare tree branch in the background. The style is illustrative, with cross-hatching and fine lines typical of 19th-century book illustrations.",
+    "visualObjectsEn": "Long rifle, bare tree, small hanging object, clothing including tunics and feathered headgear, uneven ground, signature and date at the bottom.",
+    "recognizableCharactersOrPeopleEn": "A group of men, some appearing to be dressed in attire associated with indigenous peoples of North America, and others in colonial-style clothing.",
+    "uncertaintyNotes": "The specific identities of the individuals and the exact nature of the activity (e.g., target practice, a ritual, or a confrontation) are not explicitly stated in the image. The historical context is inferred from the artistic style and clothing."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 29,
+    "paragraphIndexZeroBased": 34,
+    "exactSourceQuotation": "The gourd was one of the usual little vessels used by the Indians, and it was suspended from a dead branch of a small pine, by a thong of deer-skin, at the full distance of a hundred yards.",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The scene description matches the target practice event in Chapter 29 where Duncan Heyward attempts to shoot a gourd hanging from a branch. The visual elements of a man aiming a rifle at an object hanging from a bare tree branch align perfectly with the text.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a group of men in a forest, with one man aiming a rifle at a small gourd hanging from a bare pine branch, while others observe.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a man aiming a long rifle toward a small gourd suspended from a bare pine tree branch in the background, matching Duncan's shooting contest described in the passage. Other men are watching intently, and an observer stands in the foreground viewing the target area.",
+    "visualContradictions": "None. The visual elements align precisely with the specific actions, objects, and setting described in the text.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

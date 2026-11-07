@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p379.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-3d37b240a0106684.webp",
+  "imageSha256": "07e63b325653c8d34fa74f0e0bf22554745d5970485c12b482e982b7e26f0d81",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a group of Indigenous men in a rocky, cave-like setting. One man is bound and gagged, sitting on the ground, while several others stand around him, some holding weapons like tomahawks or rifles. The style is that of a 19th-century engraving or sketch.",
+    "visualObjectsEn": "Tomahawks, rifles, rocky cave walls, ropes used for binding, traditional clothing including leggings and headpieces.",
+    "recognizableCharactersOrPeopleEn": "Five men depicted in a style consistent with 19th-century artistic representations of Native Americans.",
+    "uncertaintyNotes": "The specific cultural or tribal identity of the figures is not explicitly stated in the image. The exact nature of the interaction (e.g., capture, ritual, or conflict) is open to interpretation based on the visual cues of binding and weaponry."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 32,
+    "paragraphIndexZeroBased": 63,
+    "exactSourceQuotation": "The supporters of the maiden raised their ready tomahawks with the impious joy that fiends are thought to take in mischief, but Magua stayed the uplifted arms. The Huron chief, after casting the weapons he had wrested from his companions over the rock, drew his knife, and turned to his captive, with a look in which conflicting passions fiercely contended.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description matches the dramatic moment in the cave where Magua and his warriors confront their captives. The mention of 'rock', 'tomahawks', and the 'captive' aligns with the visual elements of the engraving depicting a rocky cave setting with armed men and a bound/restrained figure.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a group of warriors in a rocky cave environment, with one figure restrained and others brandishing weapons, illustrating a tense confrontation from The Last of the Mohicans.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a bound and gagged captive sitting on the ground surrounded by several armed men, one standing with a rifle and another leaning in a threatening posture.",
+    "visualContradictions": "The passage describes Magua staying the uplifted arms of others, casting weapons over a rock, and turning to his captive with a knife. The engraving does not clearly depict weapons being cast over a rock or the specific dynamic of Magua holding back an excited group while wielding a knife against a bound captive in the exact manner described.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.8,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

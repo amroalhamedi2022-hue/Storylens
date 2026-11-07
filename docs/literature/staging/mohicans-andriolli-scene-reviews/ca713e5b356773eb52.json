@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p389.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-ca713e5b356773eb.webp",
+  "imageSha256": "234307e1831233e67001edc784bc909460a04f31af237eb174db32fd35ee6c8b",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a Native American man standing on a rocky outcrop in the foreground, gesturing with one arm raised toward the sky. In the background, a small encampment with several other figures and tents is visible near a wooded area.",
+    "visualObjectsEn": "Rocky outcrop, Native American man in traditional attire with feathers in his hair and a cloak, other figures in the background, tents, trees, grass.",
+    "recognizableCharactersOrPeopleEn": "A central male figure dressed in indigenous North American attire, and a group of smaller figures in the background.",
+    "uncertaintyNotes": "The specific identity of the central figure and the exact cultural or historical context of the scene are not explicitly stated in the image, though the style is consistent with 19th-century illustrations of Native Americans."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 31,
+    "paragraphIndexZeroBased": 2,
+    "exactSourceQuotation": "A young warrior at length issued from the lodge of Uncas; and moving deliberately, with a sort of grave march, towards a dwarf pine that grew in the crevices of the rocky terrace, he tore the bark from its body",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene describes a Native American warrior on a rocky terrace (rocky outcrop) near a lodge (encampment) performing a ritualistic gesture (tearing bark/preparing for war), which aligns with the visual elements of the engraving.",
+    "suggestedAltArNotApproved": "A Native American warrior standing on a rocky terrace near an encampment, gesturing toward a tree.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a Native American man standing on a rocky outcrop with one arm raised toward the sky, wearing a cloak, leggings, and feathers in his hair, while other figures stand in the background near tents.",
+    "visualContradictions": "The passage describes warriors sequentially tearing bark from a pine tree, stripping a sapling of branches, coloring posts with dark red paint, and the Mohican appearing divested of all attire except his girdle and leggings with his face partly darkened. The image instead shows a central figure fully clothed in a cloak and headdress with an arm raised, lacking the specific actions of stripping bark, painting posts, or the specific attire described.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

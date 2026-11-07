@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p397.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-2a33714ffdb6e7c2.webp",
+  "imageSha256": "df1635f40d34f6ab251bcbc588bcf56097cbcd286a5d35ac73b95e10e57d659a",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white historical-style engraving depicting a central elderly figure seated on a large rock, surrounded by a group of Indigenous people in a camp setting. The central figure wears an ornate headdress and robes. Several figures stand around him, one kneeling at his feet, while a larger crowd of people and several conical tents are visible in the background.",
+    "visualObjectsEn": "Engraving, rock, conical tents, headdresses, robes, weapons (tomahawks/knives), grass, crowd of people.",
+    "recognizableCharactersOrPeopleEn": "An elderly man seated in the center, several men standing around him in traditional attire, one man kneeling, and a large gathering of people in the background.",
+    "uncertaintyNotes": "The specific historical identity of the figures is based on the provided caption, but the artistic representation is a 19th-century interpretation and may not be historically accurate to the actual individuals or events depicted."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 30,
+    "paragraphIndexZeroBased": 28,
+    "exactSourceQuotation": "Then permitting his looks to wander over the silent throng that crowded around the elevated seat of Tamenund, he first perceived Hawkeye in his bonds.",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The scene description matches the gathering around Tamenund, the elderly leader seated on an elevated rock (often depicted as a throne or prominent seat in illustrations of this chapter), surrounded by a crowd of Indigenous people, with tents and camp settings typical of the Delaware village described in this sequence.",
+    "suggestedAltArNotApproved": "An engraving of Tamenund seated on a rock throne, surrounded by a crowd of Lenape warriors and conical lodges.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows an elderly seated figure identified as Tamenund surrounded by Indigenous people and a large crowd with tents in the background.",
+    "visualContradictions": "The passage describes Uncas cutting Hawkeye's bonds and leading him to the feet of Tamenund. Neither Hawkeye nor the specific action of Uncas cutting his bonds is depicted in the engraving.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
