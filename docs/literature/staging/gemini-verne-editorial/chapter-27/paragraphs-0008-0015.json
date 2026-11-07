@@ -1,0 +1,163 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 27,
+  "chapterTitle": "In which Passepartout undergoes, at a speed of twenty miles an hour, a course of Mormon history.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "07f8260617eb0bd0f50c6272e5222cd9f29b99dce1461c572b68c5a781a7d106",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "Then, emphasising his words with his loud voice and frequent gestures, he related the history of the Mormons from Biblical times: how that, in Israel, a Mormon prophet of the tribe of Joseph published the annals of the new religion, and bequeathed them to his son Mormon; how, many centuries later, a translation of this precious book, which was written in Egyptian, was made by Joseph Smith, junior, a Vermont farmer, who revealed himself as a mystical prophet in 1825; and how, in short, the celestial messenger appeared to him in an illuminated forest, and gave him the annals of the Lord.",
+      "existingArabicDraft": "ثم شدّد على كلماته بصوته المرتفع وإيماءاته المتكررة، وراح يروي تاريخ المورمون منذ الأزمنة التوراتية: زاعمًا أن نبيًا مورمونيًا من سبط يوسف في إسرائيل نشر سجلات الدين الجديد وتركها لابنه مورمون؛ وأن ترجمة ذلك الكتاب الثمين، المكتوب بالمصرية، أُنجزت بعد قرون على يد جوزيف سميث الابن، وهو مزارع من فيرمونت أعلن نفسه نبيًا غيبيًا عام 1825؛ وأن رسولًا سماويًا ظهر له في غابة مضاءة وسلّمه سجلات الرب."
+    },
+    {
+      "index": 9,
+      "en": "Several of the audience, not being much interested in the missionary’s narrative, here left the car; but Elder Hitch, continuing his lecture, related how Smith, junior, with his father, two brothers, and a few disciples, founded the church of the “Latter Day Saints,” which, adopted not only in America, but in England, Norway and Sweden, and Germany, counts many artisans, as well as men engaged in the liberal professions, among its members; how a colony was established in Ohio, a temple erected there at a cost of two hundred thousand dollars, and a town built at Kirkland; how Smith became an enterprising banker, and received from a simple mummy showman a papyrus scroll written by Abraham and several famous Egyptians.",
+      "existingArabicDraft": "غادر بعض الحاضرين العربة لأن رواية المبشّر لم تثر اهتمامهم كثيرًا، لكن الشيخ هيتش واصل المحاضرة. وروى كيف أسّس سميث الابن، مع أبيه وأخويه وقلة من الأتباع، كنيسة «قديسي الأيام الأخيرة»، التي انتشرت في أمريكا وإنجلترا والنرويج والسويد وألمانيا، وضمت حرفيين وأصحاب مهن فكرية. ثم تحدث عن مستعمرة في أوهايو ومعبد كلف بناؤه مئتي ألف دولار وبلدة في كيركلاند، وكيف أصبح سميث مصرفيًا طموحًا وتسلّم من عارض مومياوات بسيط لفافة بردي قال إنها كُتبت بيد إبراهيم وعدد من المصريين المشهورين."
+    },
+    {
+      "index": 10,
+      "en": "The Elder’s story became somewhat wearisome, and his audience grew gradually less, until it was reduced to twenty passengers. But this did not disconcert the enthusiast, who proceeded with the story of Joseph Smith’s bankruptcy in 1837, and how his ruined creditors gave him a coat of tar and feathers; his reappearance some years afterwards, more honourable and honoured than ever, at Independence, Missouri, the chief of a flourishing colony of three thousand disciples, and his pursuit thence by outraged Gentiles, and retirement into the Far West.",
+      "existingArabicDraft": "أصبحت حكاية الشيخ مملّة بعض الشيء، وبدأ جمهوره يتناقص حتى بقي عشرون راكبًا. لكن ذلك لم يثنِ المتحمّس؛ فتابع قصة إفلاس جوزيف سميث عام 1837، وكيف ألبسه دائِنوه الذين خسروا أموالهم معطفًا من القطران والريش. ثم عاد بعد سنوات، أكثر وجاهة واحترامًا من قبل، في إندبندنس بولاية ميزوري، زعيمًا لمستعمرة مزدهرة تضم ثلاثة آلاف تابع، قبل أن يطارده غير المنتمين إلى جماعته ويضطر إلى التراجع نحو الغرب البعيد."
+    },
+    {
+      "index": 11,
+      "en": "Ten hearers only were now left, among them honest Passepartout, who was listening with all his ears. Thus he learned that, after long persecutions, Smith reappeared in Illinois, and in 1839 founded a community at Nauvoo, on the Mississippi, numbering twenty-five thousand souls, of which he became mayor, chief justice, and general-in-chief; that he announced himself, in 1843, as a candidate for the Presidency of the United States; and that finally, being drawn into ambuscade at Carthage, he was thrown into prison, and assassinated by a band of men disguised in masks.",
+      "existingArabicDraft": "لم يبقَ سوى عشرة مستمعين، بينهم باسبارتو الصادق الذي كان يصغي بكل جوارحه. وتعلّم أن سميث عاد إلى إلينوي بعد اضطهاد طويل، وأسّس عام 1839 مجتمعًا في ناوفو على نهر المسيسيبي بلغ خمسة وعشرين ألف نسمة، وأصبح رئيس بلديته وقاضيه الأعلى وقائده العام. ثم أعلن ترشحه لرئاسة الولايات المتحدة عام 1843، قبل أن يُستدرج أخيرًا إلى كمين في كارثاج ويُلقى في السجن ويُغتال على يد مجموعة رجال ملثمين."
+    },
+    {
+      "index": 12,
+      "en": "Passepartout was now the only person left in the car, and the Elder, looking him full in the face, reminded him that, two years after the assassination of Joseph Smith, the inspired prophet, Brigham Young, his successor, left Nauvoo for the banks of the Great Salt Lake, where, in the midst of that fertile region, directly on the route of the emigrants who crossed Utah on their way to California, the new colony, thanks to the polygamy practised by the Mormons, had flourished beyond expectations.",
+      "existingArabicDraft": "أصبح باسبارتو المستمع الوحيد في العربة. ونظر الشيخ إليه مباشرة وذكّره بأن بريغهام يونغ، النبي الذي خلف جوزيف سميث، غادر ناوفو بعد اغتيال سميث بعامين متجهًا إلى ضفاف البحيرة المالحة الكبرى. وهناك، في منطقة خصبة تقع على طريق المهاجرين العابرين يوتا نحو كاليفورنيا، ازدهرت المستعمرة الجديدة، بحسب رواية الشيخ، بفضل تعدد الزوجات الذي مارسه المورمون."
+    },
+    {
+      "index": 13,
+      "en": "“And this,” added Elder William Hitch, “this is why the jealousy of Congress has been aroused against us! Why have the soldiers of the Union invaded the soil of Utah? Why has Brigham Young, our chief, been imprisoned, in contempt of all justice? Shall we yield to force? Never! Driven from Vermont, driven from Illinois, driven from Ohio, driven from Missouri, driven from Utah, we shall yet find some independent territory on which to plant our tents. And you, my brother,” continued the Elder, fixing his angry eyes upon his single auditor, “will you not plant yours there, too, under the shadow of our flag?”",
+      "existingArabicDraft": "وأضاف الشيخ ويليام هيتش: «لهذا أثارنا حقد الكونغرس! لماذا غزت جنود الاتحاد أرض يوتا؟ ولماذا سُجن بريغهام يونغ زعيمنا في ازدراء للعدالة؟ أَنخضع للقوة؟ أبدًا! طُردنا من فيرمونت، ثم إلينوي، ثم أوهايو، ثم ميزوري، ثم يوتا؛ ومع ذلك سنجد أرضًا مستقلة ننصب فيها خيامنا. وأنت يا أخي»، تابع الشيخ محدقًا بعينين غاضبتين في مستمعه الوحيد، «ألن تنصب خيمتك هناك تحت رايتنا؟»"
+    },
+    {
+      "index": 14,
+      "en": "“No!” replied Passepartout courageously, in his turn retiring from the car, and leaving the Elder to preach to vacancy.",
+      "existingArabicDraft": "أجاب باسبارتو بشجاعة: «لا!» ثم خرج بدوره من العربة، تاركًا الشيخ يعظ الفراغ."
+    },
+    {
+      "index": 15,
+      "en": "During the lecture the train had been making good progress, and towards half-past twelve it reached the northwest border of the Great Salt Lake. Thence the passengers could observe the vast extent of this interior sea, which is also called the Dead Sea, and into which flows an American Jordan. It is a picturesque expanse, framed in lofty crags in large strata, encrusted with white salt—a superb sheet of water, which was formerly of larger extent than now, its shores having encroached with the lapse of time, and thus at once reduced its breadth and increased its depth.",
+      "existingArabicDraft": "كان القطار يحرز تقدمًا جيدًا أثناء المحاضرة، ونحو الثانية عشرة والنصف بلغ الطرف الشمالي الغربي للبحيرة المالحة الكبرى. ومن هناك استطاع الركاب مشاهدة امتداد هذا البحر الداخلي الهائل، الذي يُسمّى أيضًا البحر الميت، ويصب فيه نهر يشبه الأردن الأمريكي. كان منظرًا خلابًا تحيط به صخور شاهقة ذات طبقات كبيرة مكسوّة بقشرة من الملح الأبيض؛ صفحة ماء رائعة كانت مساحتها أكبر في الماضي، ثم تراجعت شواطئها مع مرور الزمن، فقلّ عرضها وازداد عمقها."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "ثم شدّد على كلماته بصوته المرتفع وإيماءاته المتكررة، وراح يروي تاريخ المورمون منذ الأزمنة التوراتية: كيف أن نبيًا مورمونيًا من سبط يوسف في إسرائيل نشر سجلات الدين الجديد وتركها لابنه مورمون؛ وكيف أن ترجمة ذلك الكتاب الثمين، المكتوب بالمصرية، أُنجزت بعد قرون على يد جوزيف سميث الابن، وهو مزارع من فيرمونت أعلن نفسه نبيًا غيبيًا عام 1825؛ وكيف أن رسولًا سماويًا ظهر له في غابة مضاءة باختصار، وسلّمه سجلات الرب."
+    },
+    {
+      "index": 1,
+      "ar": "غادر بعض الحاضرين العربة هنا لعدم اهتمامهم الكبير برواية المبشّر، لكن الشيخ هيتش واصل المحاضرة، وروى كيف أسّس سميث الابن، مع أبيه وأخويه وقلة من الأتباع، كنيسة «قديسي الأيام الأخيرة»، التي انتشرت لا في أمريكا وحدها، بل في إنجلترا والنرويج والسويد وألمانيا أيضًا، وتضم في عضويتها العديد من الحرفيين وكذلك المشتغلين بالمهن الحرة؛ وكيف أُسست مستعمرة في أوهايو، وبُنِي فيها معبد بتكلفة مئتي ألف دولار، وأُقيمت بلدة في كيركلاند؛ وكيف أصبح سميث مصرفيًا طموحًا، وتلقى من عارض مومياوات بسيط لفافة بردي كُتبت بيد إبراهيم وعدد من المصريين المشهورين."
+    },
+    {
+      "index": 2,
+      "ar": "أصبحت قصة الشيخ مملّة بعض الشيء، وبدأت جماهيره تتناقص تدريجيًا حتى تقلصت إلى عشرين راكبًا. غير أن ذلك لم يزعج ذلك المتحمّس، الذي تابع سرد قصة إفلاس جوزيف سميث عام 1837، وكيف أن دائنيه المفلسين ألبسوه معطفًا من القطران والريش؛ ثم عهور ظهوره بعد سنوات قليلة، أكثر وجاهة واحترامًا من أي وقت مضى، في إندبندنس بولاية ميزوري، بوصفه زعيمًا لمستعمرة مزدهرة تضم ثلاثة آلاف تابع، وكيف طارده من هناك غير المنتمين المغتاظين، مما اضطره للانسحاب نحو الغرب البعيد."
+    },
+    {
+      "index": 3,
+      "ar": "لم يبقَ سوى عشرة مستمعين فحسب، كان من بينهم باسبارتو النزيه الذي كان يصغي بكل جوارحه. وهكذا علم أنه بعد اضطرابات طويلة، عاود سميث الظهور في إلينوي، وأسس عام 1839 مجتمعًا في ناوفو على نهر المسيسيبي، يبلغ عدده خمسة وعشرين ألف نسمة، وأصبح هو نفسه رئيس بلديته وقاضيه الأعلى وقائده العام؛ وأنه أعلن عن نفسه عام 1843 مرشحًا لرئاسة الولايات المتحدة؛ وأنه أخيرًا، إثر استدراجه إلى كمين في كارثاج، أُلقي في السجن واُغتيل على يد جماعة من الرجال المتنكرين بأقنعة."
+    },
+    {
+      "index": 4,
+      "ar": "بات باسبارتو الآن الشخص الوحيد المتبقي في العربة، فأمعن الشيخ النظر في وجهه مذكرًا إياه بأنه بعد عامين من اغتيال جوزيف سميث، غادر النبي الملهم بريغهام يونغ، خليفته، ناوفو متجهاً نحو ضفاف البحيرة المالحة الكبرى، حيث ازدهرت المستعمرة الجديدة فوق ما كان متوقعاً -بفضل تعدد الزوجات الذي مارسه المورمون- وسط تلك المنطقة الخصبة الواقعة مباشرة على طريق المهاجرين الذين يعبرون يوتا في طريقهم إلى كاليفورنيا."
+    },
+    {
+      "index": 5,
+      "ar": "وأضاف الشيخ ويليام هيتش: «لهذا السبب أُثيرت غيرة الكونغرس ضدنا! ولماذا غزت جنود الاتحاد أرض يوتا؟ ولماذا سُجن بريغهام يونغ، زعيمنا، احتقاراً لكل قواعد العدالة؟ أَنخضع للقوة؟ أبدًا! لقد طُردنا من فيرمونت، وطُردنا من إلينوي، وطُردنا من أوهايو، وطُردنا من ميزوري، وطُردنا من يوتا، ومع ذلك سنجد أرضًا مستقلة ننصب فيها خيامنا. وأنت يا أخي» -وتابع الشيخ مسددًا نظراته الغاضبة نحو مستمعه الوحيد- «ألن تنصب خيمتك هناك أيضًا، تحت ظل رايتنا؟»"
+    },
+    {
+      "index": 6,
+      "ar": "أجاب باسبارتو بشجاعة: «لا!»، منسحباً بدوره من العربة وتاركاَ الشيخ يعظ مكاناً خالياً."
+    },
+    {
+      "index": 7,
+      "ar": "كان القطار يحرز تقدماً جيداً طوال فترة المحاضرة، وبلغ نحو الثانية عشرة والنصف الحد الشمالي الغربي للبحيرة المالحة الكبرى. ومن هناك تمكن الركاب من تأمل الامتداد الواسع لهذا البحر الداخلي، الذي يُدعى أيضاً البحر الميت، وتصب فيه أردن أمريكي. إنه مسطح مائي بديع تحوطه جراف عالية ذات طبقات ضخمة ومكسوة بالملح الأبيض؛ وهو بحر رائع كان أوسع مساحة في الماضي، إذ تمددت شواطئه مع مرور الزمن مما أدى في الوقت ذاته إلى انكماش عرضه وزيادة عمقه."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "وجود خطأ مطبعي في كلمة 'عهور ظهوره' والصحيح حذف كلمة 'عهور'."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": false,
+      "issues": "ترجمة عبارة 'in contempt of all justice' بـ 'احتقاراً لكل قواعد العدالة' غير دقيقة، والأصح 'تحدياً لكل قواعد العدالة' أو 'بازدراء لكل عدالة'."
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "ترجمة 'great crags' بـ 'جراف' غير دقيقة، والأصح 'صخور منحدرة' أو 'مرتفعات صخرية'، وترجمة 'encrusted with white salt' بـ 'مكسوة' تحتاج لدقة أكثر مثل 'متلألئة بالملح الأبيض' أو 'المغطاة بقشرة من الملح الأبيض'."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

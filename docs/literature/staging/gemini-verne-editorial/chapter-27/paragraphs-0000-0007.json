@@ -1,0 +1,163 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 27,
+  "chapterTitle": "In which Passepartout undergoes, at a speed of twenty miles an hour, a course of Mormon history.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "859e309d4304fdde551c163a2a858ebf6717483c6a749f16e64cff11e28d66ee",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "During the night of the 5th of December, the train ran southeasterly for about fifty miles; then rose an equal distance in a northeasterly direction, towards the Great Salt Lake.",
+      "existingArabicDraft": "في ليلة الخامس من ديسمبر، سار القطار نحو الجنوب الشرقي قرابة خمسين ميلًا، ثم قطع مسافة مماثلة باتجاه الشمال الشرقي نحو البحيرة المالحة الكبرى."
+    },
+    {
+      "index": 1,
+      "en": "Passepartout, about nine o’clock, went out upon the platform to take the air. The weather was cold, the heavens grey, but it was not snowing. The sun’s disc, enlarged by the mist, seemed an enormous ring of gold, and Passepartout was amusing himself by calculating its value in pounds sterling, when he was diverted from this interesting study by a strange-looking personage who made his appearance on the platform.",
+      "existingArabicDraft": "نحو الساعة التاسعة، خرج باسبارتو إلى منصة القطار ليستنشق الهواء. كان الجو باردًا والسماء رمادية، من دون تساقط للثلج. وبدت قرص الشمس، وقد كبّر الضباب صورتها، كحلقة ذهبية هائلة. وكان باسبارتو يتسلى بحساب قيمتها بالجنيه الإسترليني حين شغله عن هذه الدراسة شخص غريب المظهر ظهر على المنصة."
+    },
+    {
+      "index": 2,
+      "en": "This personage, who had taken the train at Elko, was tall and dark, with black moustache, black stockings, a black silk hat, a black waistcoat, black trousers, a white cravat, and dogskin gloves. He might have been taken for a clergyman. He went from one end of the train to the other, and affixed to the door of each car a notice written in manuscript.",
+      "existingArabicDraft": "كان الرجل قد استقل القطار في إلكو؛ طويلًا، داكن البشرة، ذا شارب أسود وجوارب سوداء وقبعة حريرية سوداء وسترة سوداء وسروال أسود وربطة عنق بيضاء وقفازين من جلد الكلب. وكان يمكن أن يُظن رجل دين. تنقّل بين طرفي القطار وثبّت على باب كل عربة إعلانًا مكتوبًا بخط اليد."
+    },
+    {
+      "index": 3,
+      "en": "Passepartout approached and read one of these notices, which stated that Elder William Hitch, Mormon missionary, taking advantage of his presence on train No. 48, would deliver a lecture on Mormonism in car No. 117, from eleven to twelve o’clock; and that he invited all who were desirous of being instructed concerning the mysteries of the religion of the “Latter Day Saints” to attend.",
+      "existingArabicDraft": "اقترب باسبارتو وقرأ أحد الإعلانات، وفيه أن الشيخ ويليام هيتش، المبشّر المورموني، سيستغل وجوده على القطار رقم 48 لإلقاء محاضرة عن المورمونية في العربة رقم 117 من الحادية عشرة حتى الثانية عشرة، ودعا كل من يرغب في معرفة أسرار ديانة «قديسي الأيام الأخيرة» إلى الحضور."
+    },
+    {
+      "index": 4,
+      "en": "“I’ll go,” said Passepartout to himself. He knew nothing of Mormonism except the custom of polygamy, which is its foundation.",
+      "existingArabicDraft": "قال باسبارتو لنفسه: «سأذهب». فلم يكن يعرف عن المورمونية شيئًا سوى عادة تعدد الزوجات التي اعتقد أنها أساسها."
+    },
+    {
+      "index": 5,
+      "en": "The news quickly spread through the train, which contained about one hundred passengers, thirty of whom, at most, attracted by the notice, ensconced themselves in car No. 117. Passepartout took one of the front seats. Neither Mr. Fogg nor Fix cared to attend.",
+      "existingArabicDraft": "انتشر الخبر سريعًا في القطار الذي كان يقل نحو مئة مسافر. وجذب الإعلان ثلاثين شخصًا على الأكثر، فاستقروا في العربة رقم 117. وجلس باسبارتو في أحد المقاعد الأمامية، أما السيد فوغ وفيكس فلم يرغبا في الحضور."
+    },
+    {
+      "index": 6,
+      "en": "At the appointed hour Elder William Hitch rose, and, in an irritated voice, as if he had already been contradicted, said, “I tell you that Joe Smith is a martyr, that his brother Hiram is a martyr, and that the persecutions of the United States Government against the prophets will also make a martyr of Brigham Young. Who dares to say the contrary?”",
+      "existingArabicDraft": "عند الموعد المحدد، نهض الشيخ ويليام هيتش وقال بصوت غاضب، كأنه تعرّض للاعتراض مسبقًا: «أقول لكم إن جو سميث شهيد، وإن أخاه هيرام شهيد، وإن اضطهاد حكومة الولايات المتحدة للأنبياء سيجعل من بريغهام يونغ شهيدًا أيضًا. من يجرؤ على قول غير ذلك؟»"
+    },
+    {
+      "index": 7,
+      "en": "No one ventured to gainsay the missionary, whose excited tone contrasted curiously with his naturally calm visage. No doubt his anger arose from the hardships to which the Mormons were actually subjected. The government had just succeeded, with some difficulty, in reducing these independent fanatics to its rule. It had made itself master of Utah, and subjected that territory to the laws of the Union, after imprisoning Brigham Young on a charge of rebellion and polygamy. The disciples of the prophet had since redoubled their efforts, and resisted, by words at least, the authority of Congress. Elder Hitch, as is seen, was trying to make proselytes on the very railway trains.",
+      "existingArabicDraft": "لم يجرؤ أحد على مخالفة المبشّر، وكان انفعاله لافتًا مقارنة بملامحه الهادئة بطبيعتها. ولعل غضبه نبع من المشقات التي تعرّض لها المورمون فعلًا. فقد نجحت الحكومة، بعد صعوبة، في إخضاع هذه الجماعة المستقلة لقوانين الاتحاد؛ وسيطرت على يوتا وأخضعتها للقانون بعد سجن بريغهام يونغ بتهمتي التمرد وتعدد الزوجات. ومنذ ذلك الحين ضاعف أتباع النبي جهودهم وقاوموا سلطة الكونغرس بالكلام على الأقل. وكما يتضح، كان الشيخ هيتش يحاول استقطاب أتباع حتى داخل قطارات السكك الحديدية."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "في ليلة الخامس من ديسمبر، سار القطار نحو الجنوب الشرقي قرابة خمسين ميلًا، ثم صعد مسافة مساوية باتجاه الشمال الشرقي نحو البحيرة المالحة الكبرى."
+    },
+    {
+      "index": 1,
+      "ar": "في نحو الساعة التاسعة، خرج باسبارتو إلى منصة القطار ليستنشق الهواء. كان الجو باردًا، والسماء رمادية، ولكن لم يكن هناك تساقط للثلج. وبدا قرص الشمس، وقد كبّره الضباب، كأنه خاتم ذهبي ضخم، وكان باسبارتو يتسلى بحساب قيمته بالجنيه الإسترليني، حين شغله عن هذه الدراسة الممتعة شخص غريب المظهر ظهر على المنصة."
+    },
+    {
+      "index": 2,
+      "ar": "هذا الشخص، الذي كان قد استقل القطار في إلكو، كان طويلاً وداكن البشرة، وذو شارب أسود، وجوارب سوداء، وقبعة حريرية سوداء، وسترة سوداء، وسروال أسود، وربطة عنق بيضاء، وقمصان يد من جلد الكلاب. وكان يمكن أن يُظن رجل دين. لقد تنقل من طرف القطار إلى آخره، وثبّت على باب كل عربة إعلانًا مكتوبًا بخط اليد."
+    },
+    {
+      "index": 3,
+      "ar": "اقترب باسبارتو وقرأ أحد هذه الإعلانات، والذي نص على أن الشيخ ويليام هيتش، المبشر المورموني، مستغلاً وجوده على القطار رقم 48، سيُلقي محاضرة عن المورمونية في العربة رقم 117، من الحادية عشرة إلى الثانية عشرة؛ وأنه يدعو كل من يرغب في التعلم بشأن أسرار دين «قديسي الأيام الأخيرة» للحضور."
+    },
+    {
+      "index": 4,
+      "ar": "قال باسبارتو في نفسه: «سأذهب». لم يكن يعرف شيئًا عن المورمونية سوى عادة تعدد الزوجات التي تشكل أساسها."
+    },
+    {
+      "index": 5,
+      "ar": "انتشر الخبر بسرعة في جميع أنحاء القطار، الذي كان يضم نحو مئة مسافر، استقر منهم نحو ثلاثين على الأكثر، جلبهم الإعلان، في العربة رقم 117. أخذ باسبارتو أحد المقاعد الأمامية. ولم يهتم لا السيد فوغ ولا فيكس بالحضور."
+    },
+    {
+      "index": 6,
+      "ar": "في الساعة المحددة، نهض الشيخ ويليام هيتش وبصوت منפعل، كأنه قد عُوكس من قبل، قال: «أقول لكم إن جو سميث شهيد، وإن أخاه هيرام شهيد، وإن اضطهادات حكومة الولايات المتحدة ضد الأنبياء ستجعل أيضًا من بريغهام يونغ شهيدًا. من يجرؤ على قول العكس؟»"
+    },
+    {
+      "index": 7,
+      "ar": "لم يجسر أحد على معارضة المبشر، الذي كانت نبرته المتحمسة تتناقض بشكل غريب مع وجهه الهادئ بطبيعته. ومما لا شك فيه أن غضبه نشأ عن الصعاب التي تعرض لها المورمون فعليًا. فقد نجحت الحكومة للتو، وببعض الصعوبة، في إخضاع هؤلاء التعصبين المستقلين لقواعدها. لقد جعلت نفسها سيدة على يوتا، وأخضعت تلك المقاطعة لقوانين الاتحاد، بعد سجن بريغهام يونغ بتهمة التمرد وتعدد الزوجات. ومنذ ذلك الحين، ضاعف تلاميذ النبي جهودهم، وقاوموا، بالأقوال على الأقل، سلطة الكونغرس. وكما يُرى، كان الشيخ هيتش يحاول كسب أتباع على متن قطارات السكك الحديدية ذاتها."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "تمت ترجمة dogskin gloves إلى 'قمصان يد من جلد الكلاب' وهو خطأ جسيم، والصحيح 'قفازات من جلد الكلاب'."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": false,
+      "issues": "تمت ترجمة independent fanatics إلى 'التعصبين المستقلين' وهو صياغة ركيكة وغير دقيقة، والأصح 'المتعصبين المستقلين'."
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

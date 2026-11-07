@@ -1,0 +1,163 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 27,
+  "chapterTitle": "In which Passepartout undergoes, at a speed of twenty miles an hour, a course of Mormon history.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "15848ad656e1d366e293bddf506995a5871ef25a7e258d5d4e27e35953f0bd92",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "The Salt Lake, seventy miles long and thirty-five wide, is situated three miles eight hundred feet above the sea. Quite different from Lake Asphaltite, whose depression is twelve hundred feet below the sea, it contains considerable salt, and one quarter of the weight of its water is solid matter, its specific weight being 1,170, and, after being distilled, 1,000. Fishes are, of course, unable to live in it, and those which descend through the Jordan, the Weber, and other streams soon perish.",
+      "existingArabicDraft": "يبلغ طول البحيرة المالحة سبعين ميلًا وعرضها خمسة وثلاثين، وتقع على ارتفاع ثلاثة آلاف وثمانمئة قدم فوق سطح البحر. وهي تختلف تمامًا عن بحيرة الأسفلت، التي يقع سطحها على عمق ألف ومئتي قدم تحت مستوى البحر؛ إذ تحتوي البحيرة المالحة على قدر كبير من الملح، ويشكّل الملح والمواد الصلبة ربع وزن مياهها، وتبلغ كثافتها النوعية 1.170، وتنخفض إلى 1.000 بعد التقطير. وبالطبع لا تستطيع الأسماك العيش فيها، وتموت سريعًا تلك التي تنزل إليها عبر نهر الأردن ونهر ويبر والجداول الأخرى."
+    },
+    {
+      "index": 17,
+      "en": "The country around the lake was well cultivated, for the Mormons are mostly farmers; while ranches and pens for domesticated animals, fields of wheat, corn, and other cereals, luxuriant prairies, hedges of wild rose, clumps of acacias and milkwort, would have been seen six months later. Now the ground was covered with a thin powdering of snow.",
+      "existingArabicDraft": "كانت الأراضي المحيطة بالبحيرة مزروعة جيدًا، فمعظم المورمون مزارعون. وكان يمكن رؤية المزارع وأحواش الحيوانات المستأنسة وحقول القمح والذرة والحبوب الأخرى والبراري الغنية بالغطاء النباتي وأسوار الورد البري ومجموعات السنط ونباتات اللبن، لو كان الفصل بعد ستة أشهر. أما الآن فقد غطّت الأرض طبقة رقيقة من الثلج."
+    },
+    {
+      "index": 18,
+      "en": "The train reached Ogden at two o’clock, where it rested for six hours, Mr. Fogg and his party had time to pay a visit to Salt Lake City, connected with Ogden by a branch road; and they spent two hours in this strikingly American town, built on the pattern of other cities of the Union, like a checkerboard, “with the sombre sadness of right-angles,” as Victor Hugo expresses it. The founder of the City of the Saints could not escape from the taste for symmetry which distinguishes the Anglo-Saxons. In this strange country, where the people are certainly not up to the level of their institutions, everything is done “squarely”—cities, houses, and follies.",
+      "existingArabicDraft": "وصل القطار إلى أوغدن في الثانية، وتوقف ست ساعات. وأتاح ذلك للسيد فوغ ورفاقه زيارة سولت ليك سيتي المتصلة بأوغدن بخط فرعي؛ فقضوا ساعتين في هذه المدينة ذات الطابع الأمريكي الواضح، المبنية على هيئة رقعة شطرنج، «بكآبة زواياها القائمة» على حد تعبير فيكتور هوغو. ولم يستطع مؤسس مدينة القديسين الإفلات من الميل إلى التناظر الذي يميز الأنغلوسكسونيين. ففي هذا البلد الغريب، حيث لا يبدو الناس على قدر مؤسساتهم، تُنفّذ الأمور كلها «بزوايا قائمة»؛ المدن والبيوت وحتى الحماقات."
+    },
+    {
+      "index": 19,
+      "en": "The travellers, then, were promenading, at three o’clock, about the streets of the town built between the banks of the Jordan and the spurs of the Wahsatch Range. They saw few or no churches, but the prophet’s mansion, the courthouse, and the arsenal, blue-brick houses with verandas and porches, surrounded by gardens bordered with acacias, palms, and locusts. A clay and pebble wall, built in 1853, surrounded the town; and in the principal street were the market and several hotels adorned with pavilions. The place did not seem thickly populated. The streets were almost deserted, except in the vicinity of the temple, which they only reached after having traversed several quarters surrounded by palisades. There were many women, which was easily accounted for by the “peculiar institution” of the Mormons; but it must not be supposed that all the Mormons are polygamists. They are free to marry or not, as they please; but it is worth noting that it is mainly the female citizens of Utah who are anxious to marry, as, according to the Mormon religion, maiden ladies are not admitted to the possession of its highest joys. These poor creatures seemed to be neither well off nor happy. Some—the more well-to-do, no doubt—wore short, open, black silk dresses, under a hood or modest shawl; others were habited in Indian fashion.",
+      "existingArabicDraft": "وفي الثالثة، كان المسافرون يتنزّهون في شوارع المدينة المبنية بين ضفاف الأردن وسفوح سلسلة واهساتش. لم يروا إلا قليلًا من الكنائس، لكنهم شاهدوا قصر النبي والمحكمة والترسانة وبيوتًا من الطوب الأزرق ذات شرفات وحدائق تحدّها أشجار السنط والنخيل والجراد. وكان سور من الطين والحصى بُني عام 1853 يحيط بالمدينة، وفي الشارع الرئيسي سوق وعدة فنادق مزينة بأجنحة. بدت المدينة قليلة السكان؛ فالشوارع شبه خالية إلا قرب المعبد الذي وصلوا إليه بعد عبور أحياء عديدة تحيط بها الأسوار. وكانت النساء كثيرات، وهو ما ربطه الراوي بالعُرف الاجتماعي المورموني آنذاك، لكن النص نفسه ينبه إلى أن المورمون لم يكونوا جميعًا متعددي الزوجات. كان لهم أن يتزوجوا أو لا يتزوجوا كما يشاؤون؛ ومع ذلك يذكر الراوي أن نساء يوتا كنّ أكثر حرصًا على الزواج، إذ إن الديانة المورمونية، وفق وصفه، لا تمنح غير المتزوجات أعلى مراتب النعيم. وبدت هؤلاء النساء فقيرات أو غير سعيدات؛ ارتدت بعضهن فساتين حريرية سوداء قصيرة ومفتوحة تحت غطاء أو شال محتشم، فيما لبست أخريات ملابس على الطراز الهندي."
+    },
+    {
+      "index": 20,
+      "en": "Passepartout could not behold without a certain fright these women, charged, in groups, with conferring happiness on a single Mormon. His common sense pitied, above all, the husband. It seemed to him a terrible thing to have to guide so many wives at once across the vicissitudes of life, and to conduct them, as it were, in a body to the Mormon paradise with the prospect of seeing them in the company of the glorious Smith, who doubtless was the chief ornament of that delightful place, to all eternity. He felt decidedly repelled from such a vocation, and he imagined—perhaps he was mistaken—that the fair ones of Salt Lake City cast rather alarming glances on his person. Happily, his stay there was but brief. At four the party found themselves again at the station, took their places in the train, and the whistle sounded for starting. Just at the moment, however, that the locomotive wheels began to move, cries of “Stop! stop!” were heard.",
+      "existingArabicDraft": "لم يستطع باسبارتو النظر بلا خوف إلى النساء اللواتي وُصفن بأنهن يجتمعن لإسعاد رجل مورموني واحد. وقد أشفق بحسه السليم، قبل الجميع، على الزوج نفسه. بدا له أمرًا مرعبًا أن يقود هذا العدد من الزوجات معًا خلال تقلبات الحياة، وأن يسوقهن جماعةً إلى الفردوس المورموني، حيث سيجدن جوزيف سميث، الذي تخيله الراوي زينة ذلك المكان إلى الأبد. شعر بنفور شديد من مثل هذه الحياة، وخُيّل إليه — وربما أخطأ — أن نساء سولت ليك سيتي يرمقنه بنظرات مقلقة. ولحسن حظه، كانت إقامته قصيرة. ففي الرابعة عاد الرفاق إلى المحطة واستقلوا القطار، ودوّى صفير الانطلاق. لكن ما إن بدأت العجلات تتحرك حتى تعالت صيحات: «توقفوا! توقفوا!»"
+    },
+    {
+      "index": 21,
+      "en": "Trains, like time and tide, stop for no one. The gentleman who uttered the cries was evidently a belated Mormon. He was breathless with running. Happily for him, the station had neither gates nor barriers. He rushed along the track, jumped on the rear platform of the train, and fell, exhausted, into one of the seats.",
+      "existingArabicDraft": "القطارات، مثل الزمن والمد والجزر، لا تتوقف لأحد. كان الرجل الذي أطلق الصيحات متأخرًا بوضوح؛ لا بد أنه مورموني، وكان يلهث من شدة الركض. ولحسن حظه لم تكن المحطة مزودة ببوابات أو حواجز، فاندفع بمحاذاة السكة وقفز إلى المنصة الخلفية للقطار، ثم هوى منهكًا في أحد المقاعد."
+    },
+    {
+      "index": 22,
+      "en": "Passepartout, who had been anxiously watching this amateur gymnast, approached him with lively interest, and learned that he had taken flight after an unpleasant domestic scene.",
+      "existingArabicDraft": "اقترب منه باسبارتو، الذي كان يراقب هذا البهلوان الهاوي بقلق واهتمام، وعرف أنه فرّ بعد مشادة منزلية غير سارة."
+    },
+    {
+      "index": 23,
+      "en": "When the Mormon had recovered his breath, Passepartout ventured to ask him politely how many wives he had; for, from the manner in which he had decamped, it might be thought that he had twenty at least.",
+      "existingArabicDraft": "وبعد أن استعاد المورموني أنفاسه، تجرأ باسبارتو على سؤاله بأدب عن عدد زوجاته؛ إذ إن طريقة هروبه جعلت المرء يظن أن لديه عشرين زوجة على الأقل."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "يبلغ طول البحيرة المالحة سبعين ميلًا وعرضها خمسة وثلاثين، وتقع على ارتفاع ثلاثة آلاف وثمانمئة قدم فوق سطح البحر. وهي تختلف تمامًا عن بحيرة الأسفلت، التي يقع سطحها على عمق ألف ومئتي قدم تحت مستوى البحر؛ إذ تحتوي البحيرة المالحة على قدر كبير من الملح، ويشكّل الملح والمواد الصلبة ربع وزن مياهها، وتبلغ كثافتها النوعية 1.170، وتنخفض إلى 1.000 بعد التقطير. وبالطبع لا تستطيع الأسماك العيش فيها، وتموت سريعًا تلك التي تنزل إليها عبر نهر الأردن ونهر ويبر والجداول الأخرى."
+    },
+    {
+      "index": 1,
+      "ar": "كانت الأراضي المحيطة بالبحيرة مزروعة جيدًا، فمعظم المورمون مزارعون. وكان يمكن رؤية المزارع وأحواش الحيوانات المستأنسة وحقول القمح والذرة والحبوب الأخرى والبراري الغنية بالغطاء النباتي وأسوار الورد البري ومجموعات السنط ونباتات اللبن، لو كان الفصل بعد ستة أشهر. أما الآن فقد غطّت الأرض طبقة رقيقة من الثلج."
+    },
+    {
+      "index": 2,
+      "ar": "وصل القطار إلى أوغدن في الثانية، وتوقف ست ساعات. وأتاح ذلك للسيد فوغ ورفاقه زيارة سولت ليك سيتي المتصلة بأوغدن بخط فرعي؛ فقضوا ساعتين في هذه المدينة ذات الطابع الأمريكي الواضح، المبنية على هيئة رقعة شطرنج، «بكآبة زواياها القائمة» على حد تعبير فيكتور هوغو. ولم يستطع مؤسس مدينة القديسين الإفلات من الميل إلى التناظر الذي يميز الأنغلوسكسونيين. ففي هذا البلد الغريب، حيث لا يبدو الناس على قدر مؤسساتهم، تُنفّذ الأمور كلها «بزوايا قائمة»؛ المدن والبيوت وحتى الحماقات."
+    },
+    {
+      "index": 3,
+      "ar": "وفي الثالثة، كان المسافرون يتنزّهون في شوارع المدينة المبنية بين ضفاف الأردن وسفوح سلسلة واهساتش. لم يروا إلا قليلًا من الكنائس، لكنهم شاهدوا قصر النبي والمحكمة والترسانة وبيوتًا من الطوب الأزرق ذات شرفات وحدائق تحدّها أشجار السنط والنخيل والجراد. وكان سور من الطين والحصى بُني عام 1853 يحيط بالمدينة، وفي الشارع الرئيسي سوق وعدة فنادق مزينة بأجنحة. بدت المدينة قليلة السكان؛ فالشوارع شبه خالية إلا قرب المعبد الذي وصلوا إليه بعد عبور أحياء عديدة تحيط بها الأسوار. وكانت النساء كثيرات، وهو ما ربطه الراوي بالعُرف الاجتماعي المورموني آنذاك، لكن النص نفسه ينبه إلى أن المورمون لم يكونوا جميعًا متعددي الزوجات. كان لهم أن يتزوجوا أو لا يتزوجوا كما يشاؤون؛ ومع ذلك يذكر الراوي أن نساء يوتا كنّ أكثر حرصًا على الزواج، إذ إن الديانة المورمونية، وفق وصفه، لا تمنح غير المتزوجات أعلى مراتب النعيم. وبدت هؤلاء النساء فقيرات أو غير سعيدات؛ ارتدت بعضهن فساتين حريرية سوداء قصيرة ومفتوحة تحت غطاء أو شال محتشم، فيما لبست أخريات ملابس على الطراز الهندي."
+    },
+    {
+      "index": 4,
+      "ar": "لم يستطع باسبارتو النظر بلا خوف إلى النساء اللواتي وُصفن بأنهن يجتمعن لإسعاد رجل مورموني واحد. وقد أشفق بحسه السليم، قبل الجميع، على الزوج نفسه. بدا له أمرًا مرعبًا أن يقود هذا العدد من الزوجات معًا خلال تقلبات الحياة، وأن يسوقهن جماعةً إلى الفردوس المورموني، حيث سيجدن جوزيف سميث، الذي تخيله الراوي زينة ذلك المكان إلى الأبد. شعر بنفور شديد من مثل هذه الحياة، وخُيّل إليه — وربما أخطأ — أن نساء سولت ليك سيتي يرمقنه بنظرات مقلقة. ولحسن حظه، كانت إقامته قصيرة. ففي الرابعة عاد الرفاق إلى المحطة واستقلوا القطار، ودوّى صفير الانطلاق. لكن ما إن بدأت العجلات تتحرك حتى تعالت صيحات: «توقفوا! توقفوا!»"
+    },
+    {
+      "index": 5,
+      "ar": "القطارات، مثل الزمن والمد والجزر، لا تتوقف لأحد. كان الرجل الذي أطلق الصيحات متأخرًا بوضوح؛ لا بد أنه مورموني، وكان يلهث من شدة الركض. ولحسن حظه لم تكن المحطة مزودة ببوابات أو حواجز، فاندفع بمحاذاة السكة وقفز إلى المنصة الخلفية للقطار، ثم هوى منهكًا في أحد المقاعد."
+    },
+    {
+      "index": 6,
+      "ar": "اقترب منه باسبارتو، الذي كان يراقب هذا البهلوان الهاوي بقلق واهتمام، وعرف أنه فرّ بعد مشادة منزلية غير سارة."
+    },
+    {
+      "index": 7,
+      "ar": "وبعد أن استعاد المورموني أنفاسه، تجرأ باسبارتو على سؤاله بأدب عن عدد زوجاته؛ إذ إن طريقة هروبه جعلت المرء يظن أن لديه عشرين زوجة على الأقل."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

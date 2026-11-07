@@ -1,0 +1,164 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 28,
+  "chapterTitle": "In which Passepartout does not succeed in making anybody listen to reason.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "8782f4b3cf137651af6022bfd8c3668541aaded3b54df00b138aae7ded8391fd",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "The train, on leaving Great Salt Lake at Ogden, passed northward for an hour as far as Weber River, having completed nearly nine hundred miles from San Francisco. From this point it took an easterly direction towards the jagged Wahsatch Mountains. It was in the section included between this range and the Rocky Mountains that the American engineers found the most formidable difficulties in laying the road, and that the government granted a subsidy of forty-eight thousand dollars per mile, instead of sixteen thousand allowed for the work done on the plains. But the engineers, instead of violating nature, avoided its difficulties by winding around, instead of penetrating the rocks. One tunnel only, fourteen thousand feet in length, was pierced in order to arrive at the great basin.",
+      "existingArabicDraft": "غادر القطار بحيرة الملح الكبرى عند أوجدن، واتجه شمالًا ساعة كاملة حتى نهر ويبر، بعدما قطع قرابة تسعمئة ميل من سان فرانسيسكو. ثم انعطف شرقًا نحو جبال واشاتش الوعرة. وفي المنطقة الواقعة بين هذه السلسلة وجبال روكي واجه المهندسون الأمريكيون أصعب مشكلات مدّ السكة؛ لذلك منحت الحكومة دعمًا قدره ثمانية وأربعون ألف دولار لكل ميل، بدلًا من ستة عشر ألفًا للأعمال المنجزة في السهول. لكن المهندسين التفّوا حول العوائق بدلًا من شقّ الصخور وانتهاك طبيعة الأرض، ولم يحفروا سوى نفق واحد يبلغ طوله أربعة عشر ألف قدم للوصول إلى الحوض الكبير."
+    },
+    {
+      "index": 1,
+      "en": "The track up to this time had reached its highest elevation at the Great Salt Lake. From this point it described a long curve, descending towards Bitter Creek Valley, to rise again to the dividing ridge of the waters between the Atlantic and the Pacific. There were many creeks in this mountainous region, and it was necessary to cross Muddy Creek, Green Creek, and others, upon culverts.",
+      "existingArabicDraft": "بلغ خط السكة حتى ذلك الوقت أعلى ارتفاع له عند بحيرة الملح الكبرى. ومن هناك أخذ منعطفًا طويلًا هابطًا نحو وادي بيتر كريك، ثم ارتفع مجددًا إلى الحافة الفاصلة بين مجاري المياه المتجهة إلى الأطلسي وتلك المتجهة إلى الهادئ. وكانت الجداول كثيرة في هذه المنطقة الجبلية، فاضطروا إلى عبور مَدي كريك وغرين كريك وغيرها بواسطة قنوات وجسور تصريف."
+    },
+    {
+      "index": 2,
+      "en": "Passepartout grew more and more impatient as they went on, while Fix longed to get out of this difficult region, and was more anxious than Phileas Fogg himself to be beyond the danger of delays and accidents, and set foot on English soil.",
+      "existingArabicDraft": "ازداد نفاد صبر باسبارتو كلما واصلوا السير، بينما كان فيكس يتوق إلى مغادرة هذه المنطقة الصعبة. بل إن قلقه من التأخير والحوادث ورغبته في الوصول إلى أرض إنجلترا سبقا قلق فيلياس فوغ نفسه."
+    },
+    {
+      "index": 3,
+      "en": "At ten o’clock at night the train stopped at Fort Bridger station, and twenty minutes later entered Wyoming Territory, following the valley of Bitter Creek throughout. The next day, 7th December, they stopped for a quarter of an hour at Green River station. Snow had fallen abundantly during the night, but, being mixed with rain, it had half melted, and did not interrupt their progress. The bad weather, however, annoyed Passepartout; for the accumulation of snow, by blocking the wheels of the cars, would certainly have been fatal to Mr. Fogg’s tour.",
+      "existingArabicDraft": "توقف القطار عند محطة فورت بريدجر في العاشرة ليلًا، وبعد عشرين دقيقة دخل إقليم وايومنغ وتابع سيره في وادي بيتر كريك. وفي اليوم التالي، السابع من ديسمبر، توقف ربع ساعة في محطة غرين ريفر. كان الثلج قد تساقط بكثرة خلال الليل، لكنه اختلط بالمطر وذاب نصفه، فلم يعرقل الرحلة. ومع ذلك أزعج الطقس السيئ باسبارتو؛ إذ كان تراكم الثلج وانسداد عجلات العربات به كفيلين بإفساد رحلة السيد فوغ."
+    },
+    {
+      "index": 4,
+      "en": "“What an idea!” he said to himself. “Why did my master make this journey in winter? Couldn’t he have waited for the good season to increase his chances?”",
+      "existingArabicDraft": "قال في نفسه: «يا لها من فكرة! لماذا اختار سيدي السفر في الشتاء؟ ألم يكن بوسعه انتظار الفصل الأفضل ليزيد فرص نجاحه؟»"
+    },
+    {
+      "index": 5,
+      "en": "While the worthy Frenchman was absorbed in the state of the sky and the depression of the temperature, Aouda was experiencing fears from a totally different cause.",
+      "existingArabicDraft": "وبينما كان الفرنسي الطيب منشغلًا بحالة السماء وانخفاض الحرارة، كانت أودا تعيش مخاوف من سبب مختلف تمامًا."
+    },
+    {
+      "index": 6,
+      "en": "Several passengers had got off at Green River, and were walking up and down the platforms; and among these Aouda recognised Colonel Stamp Proctor, the same who had so grossly insulted Phileas Fogg at the San Francisco meeting. Not wishing to be recognised, the young woman drew back from the window, feeling much alarm at her discovery. She was attached to the man who, however coldly, gave her daily evidences of the most absolute devotion. She did not comprehend, perhaps, the depth of the sentiment with which her protector inspired her, which she called gratitude, but which, though she was unconscious of it, was really more than that. Her heart sank within her when she recognised the man whom Mr. Fogg desired, sooner or later, to call to account for his conduct. Chance alone, it was clear, had brought Colonel Proctor on this train; but there he was, and it was necessary, at all hazards, that Phileas Fogg should not perceive his adversary.",
+      "existingArabicDraft": "نزل عدد من الركاب في غرين ريفر وأخذوا يتمشون على الأرصفة، فرأت أودا بينهم العقيد ستامب بروكتور، الرجل نفسه الذي أهان فيلياس فوغ بفظاظة في اجتماع سان فرانسيسكو. وتراجعت الشابة عن النافذة كيلا يتعرف إليها، وقد أصابها اكتشافه بقلق شديد. كانت متعلقة بالرجل الذي يمنحها، رغم بروده الظاهر، دلائل يومية على إخلاص لا حدود له. وربما لم تدرك عمق الشعور الذي أثاره فيها حاميها، وسمّته امتنانًا، مع أنه كان في الحقيقة أكثر من ذلك من دون أن تعي. وانقبض قلبها حين تذكرت أن السيد فوغ يريد عاجلًا أم آجلًا محاسبة الرجل على تصرفه. ومن الواضح أن المصادفة وحدها جاءت بالعقيد بروكتور إلى القطار، لكن وجوده جعل من الضروري، مهما كلّف الأمر، ألا يراه فوغ."
+    },
+    {
+      "index": 7,
+      "en": "Aouda seized a moment when Mr. Fogg was asleep to tell Fix and Passepartout whom she had seen.",
+      "existingArabicDraft": "استغلت أودا لحظة كان فيها السيد فوغ نائمًا لتخبر فيكس وباسبارتو بمن رأته."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "غادر القطار بحيرة الملح الكبرى عند أوجدن، واتجه شمالًا ساعة كاملة حتى نهر ويبر، بعدما قطع قرابة تسعمئة ميل من سان فرانسيسكو. ثم انعطف شرقًا نحو جبال واشاتش الوعرة. وفي المنطقة الواقعة بين هذه السلسلة وجبال روكي واجه المهندسون الأمريكيون أصعب مشكلات مدّ السكة؛ لذلك منحت الحكومة دعمًا قدره ثامنة وأربعون ألف دولار لكل ميل، بدلًا من ستة عشر ألفًا للأعمال المنجزة في السهول. لكن المهندسين التفّوا حول العوائق بدلًا من شقّ الصخور وانتهاك طبيعة الأرض، ولم يحفروا سوى نفق واحد يبلغ طوله أربعة عشر ألف قدم للوصول إلى الحوض الكبير."
+    },
+    {
+      "index": 1,
+      "ar": "بلغ خط السكة حتى ذلك الوقت أعلى ارتفاع له عند بحيرة الملح الكبرى. ومن هناك أخذ منعطفًا طويلًا هابطًا نحو وادي بيتر كريك، ثم ارتفع مجددًا إلى الحافة الفاصلة بين مجاري المياه المتجهة إلى الأطلسي وتلك المتجهة إلى الهادئ. وكانت الجداول كثيرة في هذه المنطقة الجبلية، فاضطروا إلى عبور مَدي كريك وغرين كريك وغيرها بواسطة قنوات وجسور تصريف."
+    },
+    {
+      "index": 2,
+      "ar": "ازداد نفاد صبر باسبارتو كلما واصلوا السير، بينما كان فيكس يتوق إلى مغادرة هذه المنطقة الصعبة، وكان أكثر قلقًا من فيلياس فوغ نفسه بشأن تجنب التأخير والحوادث، ولكي تطأ قدمه الأرض الإنجليزية."
+    },
+    {
+      "index": 3,
+      "ar": "توقف القطار عند محطة فورت بريدجر في العاشرة ليلًا، وبعد عشرين دقيقة دخل إقليم وايومنغ وتابع سيره في وادي بيتر كريك طوال الوقت. وفي اليوم التالي، السابع من ديسمبر، توقفوا مدة ربع ساعة في محطة غرين ريفر. كان الثلج قد تساقط بغزارة خلال الليل، لكنه اختلط بالمطر فذاب نصفه ولم يعرقل مسيرتهم. ومع ذلك، فقد أزعج الطقس السيئ باسبارتو؛ إذ إن تراكم الثلج، بانسداده لعجلات العربات، كان سيكون كارثيًا لا محالة على رحلة السيد فوغ."
+    },
+    {
+      "index": 4,
+      "ar": "قال في نفسه: \"يا لها من فكرة! لماذا اختار سيدي القيام بهذه الرحلة في الشتاء؟ ألم يكن بوسعها انتظار الفصل المواتي لزيادة فرص نجاحه؟\""
+    },
+    {
+      "index": 5,
+      "ar": "وبينما كان الفرنسي الجدير منشغلًا بحالة السماء وانخفاض درجات الحرارة، كانت أودا تعاني مخاوف ناتجة عن سبب مختلف تمامًا."
+    },
+    {
+      "index": 6,
+      "ar": "نزل عدد من الركاب في غرين ريفر وأخذوا يتجولون ذهابًا وإيابًا على الأرصفة؛ وبين هؤلاء تعرفت أودا على العقيد ستامب بروكتور، وهو الشخص نفسه الذي أهان فيلياس فوغ بفظاظة في اجتماع سان فرانسيسكو. وإذا لم تكن ترغب في أن يتعرف إليها أحد، تراجعت الشابة بعيدًا عن النافذة، وقد انتابها فزع شديد بسبب اكتشافها. لقد تعلق قلبها بالرجل الذي كان يقدم لها يوميًا، مهما بدا جافًا، دلائل على أقصى درجات الإخلاص. وربما لم تدرك عمق المشاعر التي زرعها فيها حاميها، والتي سمتها امتنانًا، غير أنها كانت في الواقع، ودون أن تدري، أكثر من ذلك بكثير. وانقبض قلبها حين تذكرت الرجل الذي كان السيد فوغ يتمنى، عاجلًا أو آجلًا، أن يحاسبه على تصرفه. ومن الواضح أن المصادفة وحدها هي التي جاءت بالعقيد بروكتور على متن هذا القطار؛ لكنه كان هناك، وكان لزامًا بأي ثمن ألا يلمح فيلياس فوغ خصمه."
+    },
+    {
+      "index": 7,
+      "ar": "استغلت أودا لحظة كان فيها السيد فوغ نائمًا لتخبر فيكس وباسبارتو بمن رأته."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": false,
+      "issues": "خطأ في الضمير؛ الترجمة كتبت ألم يكن بوسعها بدل ألم يكن بوسعه"
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": false,
+      "issues": "ترجمة خاطئة لعبارة حين تذكرت، والأصل هو حين تعرفت على أو رأت"
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
