@@ -88,7 +88,8 @@ def verify_kalila_sections(data=None):
             or len(raw_photo) != folio["webpBytes"]
             or hashlib.sha256(raw_photo).hexdigest() != folio["webpSha256"]
             or raw_photo[:4] != b"RIFF" or raw_photo[8:12] != b"WEBP"
-            or picture.get("sourcePassageAr") not in original_section
+            or not isinstance(picture.get("sourcePassageAr"), str)
+            or picture["sourcePassageAr"] not in original_section
             or picture.get("sceneAnchor") != picture.get("sourcePassageAr")
             or picture.get("sourceWorkNarrativeSectionOneBased") != 5
             or picture.get("originalColourArtworkModified", False)
