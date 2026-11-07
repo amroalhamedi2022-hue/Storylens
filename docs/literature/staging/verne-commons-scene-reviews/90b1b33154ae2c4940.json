@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_47.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-90b1b33154ae2c49.webp",
+  "imageSha256": "e44d34e677fcdf89191684ffb7c070de2221efc21d13e560242ca1d220a5e1fd",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a group of people inside what appears to be a train carriage or a ship cabin. Four individuals are seated around a small table playing cards, while a fifth person stands to the right, observing them. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "A rectangular table, playing cards, chairs, a train or cabin interior with paneled walls and windows, a top hat worn by the standing man, formal Victorian-era clothing including coats and dresses.",
+    "recognizableCharactersOrPeopleEn": "Four seated adults (three men and one woman) and one standing man wearing a top hat.",
+    "uncertaintyNotes": "The exact setting (train vs. ship) is ambiguous, though the interior architecture suggests a transport vehicle. The specific identities of the individuals are not provided in the image and cannot be determined."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 11,
+    "paragraphIndexZeroBased": 0,
+    "exactSourceQuotation": "Passepartout rode in the same carriage with his master, and a third passenger occupied a seat opposite to them. This was Sir Francis Cromarty, one of Mr. Fogg’s whist partners",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The image depicts a group of people in a train carriage playing cards (whist) at a table, which aligns with the description of Phileas Fogg, Passepartout, and Sir Francis Cromarty sharing a carriage and playing whist during their journey in India.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing Phileas Fogg, Passepartout, and Sir Francis Cromarty playing cards inside a train carriage.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a group of four people playing cards around a table indoors with an observer standing, which matches a scene of playing whist on the steamer earlier in the journey (such as on the Mongolia), not the train compartment described in this specific passage where Sir Francis Cromarty is sharing a seat opposite Fogg and Passepartout.",
+    "visualContradictions": "The passage describes Phileas Fogg, Passepartout, and Sir Francis Cromarty inside a train carriage where Fogg is mentally calculating time and Sir Francis is observing him. The engraving shows a card game involving multiple players including a woman, which corresponds to earlier events on the ship, not this specific train scene.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
