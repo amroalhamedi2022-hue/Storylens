@@ -1,0 +1,165 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 29,
+  "chapterTitle": "In which certain incidents are narrated which are only to be met with on American railroads.",
+  "startParagraphZeroBased": 16,
+  "paragraphCount": 8,
+  "sourceSha256": "bd94c713e49bbdbe06f3b4951541ac0259ed45604081eb99613e779b49da4ae2",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 16,
+      "en": "Aouda turned pale, and her blood ran cold. She seized Mr. Fogg’s arm and gently pulled him back. Passepartout was ready to pounce upon the American, who was staring insolently at his opponent. But Fix got up, and, going to Colonel Proctor said, “You forget that it is I with whom you have to deal, sir; for it was I whom you not only insulted, but struck!”",
+      "existingArabicDraft": "شحبت أودا وشعرت ببرودة تسري في دمها. أمسكت بذراع السيد فوج وسحبته برفق إلى الخلف. وكان باسبارتو مستعدًا للانقضاض على الأمريكي الذي يحدق في خصمه بتعالٍ. لكن فيكس نهض وتقدم إلى العقيد بروكتور قائلًا: «يبدو أنك نسيت أن خصمك هو أنا يا سيدي؛ فأنا الذي أهنته وضربته أيضًا!»"
+    },
+    {
+      "index": 17,
+      "en": "“Mr. Fix,” said Mr. Fogg, “pardon me, but this affair is mine, and mine only. The colonel has again insulted me, by insisting that I should not play a spade, and he shall give me satisfaction for it.”",
+      "existingArabicDraft": "قال السيد فوج: «اعذرني يا سيد فيكس، لكن هذه المسألة تخصني وحدي. لقد أهانني العقيد مرة أخرى بإصراره على أنني لا ينبغي أن ألعب البستوني، وعليه أن يمنحني حق الرد»."
+    },
+    {
+      "index": 18,
+      "en": "“When and where you will,” replied the American, “and with whatever weapon you choose.”",
+      "existingArabicDraft": "أجاب الأمريكي: «متى وأينما شئت، وبأي سلاح تختاره»."
+    },
+    {
+      "index": 19,
+      "en": "Aouda in vain attempted to retain Mr. Fogg; as vainly did the detective endeavour to make the quarrel his. Passepartout wished to throw the colonel out of the window, but a sign from his master checked him. Phileas Fogg left the car, and the American followed him upon the platform. “Sir,” said Mr. Fogg to his adversary, “I am in a great hurry to get back to Europe, and any delay whatever will be greatly to my disadvantage.”",
+      "existingArabicDraft": "حاولت أودا عبثًا أن تمنع السيد فوج، كما حاول المحقق عبثًا أن يجعل الشجار شأنه هو. وأراد باسبارتو أن يقذف العقيد من النافذة، لكن إشارة من سيده أوقفته. غادر فيلياس فوج العربة، وتبعه الأمريكي إلى المنصة. وقال فوج لخصمه: «أنا في عجلة كبيرة للعودة إلى أوروبا، وأي تأخير سيضر بمصالحي كثيرًا»."
+    },
+    {
+      "index": 20,
+      "en": "“Well, what’s that to me?” replied Colonel Proctor.",
+      "existingArabicDraft": "ردّ العقيد: «وما شأن ذلك بي؟»"
+    },
+    {
+      "index": 21,
+      "en": "“Sir,” said Mr. Fogg, very politely, “after our meeting at San Francisco, I determined to return to America and find you as soon as I had completed the business which called me to England.”",
+      "existingArabicDraft": "قال السيد فوج بتهذيب شديد: «بعد لقائنا في سان فرانسيسكو، قررت أن أعود إلى أمريكا وأبحث عنك فور إنجاز العمل الذي استدعاني إلى إنجلترا»."
+    },
+    {
+      "index": 22,
+      "en": "“Really!”",
+      "existingArabicDraft": "«حقًا!»"
+    },
+    {
+      "index": 23,
+      "en": "“Will you appoint a meeting for six months hence?”",
+      "existingArabicDraft": "«هل تحدد موعدًا للقاء بعد ستة أشهر؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "شحبت أودا وشعرت ببرودة تسري في دمها. أمسكت بذراع السيد فوج وسحبته برفق إلى الخلف. وكان باسبارتو مستعدًا للانقضاض على الأمريكي الذي كان يحدق في خصمه بتعالٍ. لكن فيكس نهض، وتقدم نحو العقيد بروكتور قائلًا: «يبدو أنك نسيت أنني أنا من يتعين عليك مواجهته يا سيدي؛ فأنا لست الشخص الذي أهنته فحسب، بل ضربته أيضًا!»"
+    },
+    {
+      "index": 1,
+      "ar": "قال السيد فوج: «اعذرني يا سيد فيكس، لكن هذه المسألة تخصني وحدي. لقد أعاد العقيد إهانتي بالإصرار على ألا ألعَب بورقة البستوني، وعليه أن يرضيني لقاء ذلك»."
+    },
+    {
+      "index": 2,
+      "ar": "أجاب الأمريكي: «متى شئت وأين شئت، وبأي سلاح تختاره»."
+    },
+    {
+      "index": 3,
+      "ar": "حاولت أودا عبثًا أن تستبقي السيد فوج، وكذا حاول المحقق عبثًا أن يجعل الشجار خاصًا به. وود باسبارتو لو يقذف العقيد من النافذة، غير أن إشارة من سيده كبحته. غادر فيلياس فوج العربة وتبعه الأمريكي إلى المنصة. فقال السيد فوج لخصمه: «أنا في عجلة شديدة للعودة إلى أوروبا، وأي تأخير مهما كان شأنه سيلحق بي ضررًا بالغًا»."
+    },
+    {
+      "index": 4,
+      "ar": "رد العقيد بروكتور: «حسنًا، وما شأني أنا بذلك؟»"
+    },
+    {
+      "index": 5,
+      "ar": "قال السيد فوج بكل تهذيب: «بعد لقائنا في سان فرانسيسكو، عقدت العزم على العودة إلى أمريكا لأبحث عنك فور الانتهاء من الأمر الذي استدعى ذهابي إلى إنجلترا»."
+    },
+    {
+      "index": 6,
+      "ar": "«حقًا!»"
+    },
+    {
+      "index": 7,
+      "ar": "«هل لك أن تحدد موعدًا للقاء بعد ستة أشهر من الآن؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": false,
+      "issues": "خطأ في الترجمة حيث ترجمت عبارة for it was I whom you not only insulted, but struck إلى فأنا لست الشخص الذي أهنته فحسب، بل ضربته أيضًا، والصحيح أنه هو من أهان وضَرَب."
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": false,
+      "issues": "خطأ في المعنى الزمني والجغرافي، حيث أن فوج ذهب إلى إنجلترا وليس العكس في سياق القصة، والترجمة حرفية ومغلوطة في قول العودة إلى أمريكا."
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

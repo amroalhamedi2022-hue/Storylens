@@ -1,0 +1,165 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 29,
+  "chapterTitle": "In which certain incidents are narrated which are only to be met with on American railroads.",
+  "startParagraphZeroBased": 32,
+  "paragraphCount": 8,
+  "sourceSha256": "d6a4b95c19840b9fbcb924c185bbdf602f61cccc013bfc1bc53c32ccc94250ca",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 32,
+      "en": "“What difference is it to you? Do you know Plum Creek?”",
+      "existingArabicDraft": "قال العقيد: «ما شأنك؟ هل تعرف بلَم كريك؟»"
+    },
+    {
+      "index": 33,
+      "en": "“No,” replied Mr. Fogg.",
+      "existingArabicDraft": "أجاب السيد فوج: «لا»."
+    },
+    {
+      "index": 34,
+      "en": "“It’s the next station. The train will be there in an hour, and will stop there ten minutes. In ten minutes several revolver-shots could be exchanged.”",
+      "existingArabicDraft": "قال الأمريكي: «إنها المحطة التالية. سيصل القطار إليها خلال ساعة ويتوقف عشر دقائق. ويمكن تبادل عدة طلقات من المسدسات في عشر دقائق»."
+    },
+    {
+      "index": 35,
+      "en": "“Very well,” said Mr. Fogg. “I will stop at Plum Creek.”",
+      "existingArabicDraft": "قال السيد فوج: «حسنًا، سأتوقف في بلَم كريك»."
+    },
+    {
+      "index": 36,
+      "en": "“And I guess you’ll stay there too,” added the American insolently.",
+      "existingArabicDraft": "وأضاف الأمريكي بوقاحة: «وأظن أنك ستبقى هناك أيضًا»."
+    },
+    {
+      "index": 37,
+      "en": "“Who knows?” replied Mr. Fogg, returning to the car as coolly as usual. He began to reassure Aouda, telling her that blusterers were never to be feared, and begged Fix to be his second at the approaching duel, a request which the detective could not refuse. Mr. Fogg resumed the interrupted game with perfect calmness.",
+      "existingArabicDraft": "أجاب فوج: «من يدري؟» ثم عاد إلى العربة بهدوئه المعتاد. وبدأ يطمئن أودا، قائلًا إن أصحاب الضجيج والتهديد لا يستحقون الخوف، وطلب من فيكس أن يكون شاهدَه في المبارزة المقبلة، وهو طلب لم يستطع المحقق رفضه. ثم استأنف فوج لعبة الورق التي انقطعت، بكل هدوء."
+    },
+    {
+      "index": 38,
+      "en": "At eleven o’clock the locomotive’s whistle announced that they were approaching Plum Creek station. Mr. Fogg rose, and, followed by Fix, went out upon the platform. Passepartout accompanied him, carrying a pair of revolvers. Aouda remained in the car, as pale as death.",
+      "existingArabicDraft": "عند الساعة الحادية عشرة أعلن صفير القاطرة اقترابهم من محطة بلَم كريك. نهض السيد فوج، وخرج إلى المنصة يتبعه فيكس. ورافقهما باسبارتو حاملًا مسدسين، بينما بقيت أودا في العربة شاحبة كالموت."
+    },
+    {
+      "index": 39,
+      "en": "The door of the next car opened, and Colonel Proctor appeared on the platform, attended by a Yankee of his own stamp as his second. But just as the combatants were about to step from the train, the conductor hurried up, and shouted, “You can’t get off, gentlemen!”",
+      "existingArabicDraft": "انفتح باب العربة التالية وظهر العقيد بروكتور على المنصة، يرافقه رجل أمريكي يشبهه في طباعه ليكون شاهدَه. لكن بينما كان المتبارزان يستعدان للنزول من القطار، أسرع المحصل نحوهما وصاح: «لا يمكنكم النزول، أيها السادة!»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "«ما شأنك أنت بذلك؟ هل تعرف بلَم كريك؟»"
+    },
+    {
+      "index": 1,
+      "ar": "أجاب السيد فوج: «لا»."
+    },
+    {
+      "index": 2,
+      "ar": "«إنها المحطة القادمة. سيصل القطار إليها خلال ساعة، وسيتوقف هناك لمدة عشر دقائق. وفي غضون عشر دقائق، يمكن تبادل عدة طلقات من المسدسات»."
+    },
+    {
+      "index": 3,
+      "ar": "قال السيد فوج: «حسنًا، سأنزل في بلَم كريك»."
+    },
+    {
+      "index": 4,
+      "ar": "وأضاف الأمريكي بوقاحة: «وأظن أنك ستبقى هناك نهائياً أيضاً»."
+    },
+    {
+      "index": 5,
+      "ar": "أجاب السيد فوج: «من يدري؟»، وعاد إلى العربة بهدوئه المعتاد كالعادة. ثم شرع يطمئن أودا، مؤكداً لها أنه لا داعي أبداً لخوف المتبجحين، وطلب من فيكس أن يكون مُمثله في المبارزة الوشيحة، وهو طلب لم يستطع المحقق رفضه. واستأنف السيد فوج لعبته التي انقطعت بتمام الهدوء والسكينة."
+    },
+    {
+      "index": 6,
+      "ar": "في تمام الساعة الحادية عشرة، أعلن صفير القاطرة أنهم يقتربون من محطة بلَم كريك. نهض السيد فوج، وتبعه فيكس، فخَرجَا إلى الرصيف. ورافقهم باسبارتو حاملاً زوجاً من المسدسات. أما أودا فبقيت في العربة شاحبة كالموت."
+    },
+    {
+      "index": 7,
+      "ar": "انفتح باب العربة المجاورة وظهر العقيد بروكتور على الرصيف، ويرافقه يانكي من طينته ذاتها ليكون ثانيه. ولكنْ، ما إن همَّ المتبارزان بالنزول من القطار، حتى أسرع الكمساري محتدماً وصاح قائلاً: «لا يمكنكما النزول، أيها السادة!»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": false,
+      "issues": "تمت ترجمة كلمة dueling second إلى 'ممثل' بدلاً من 'شاهد' أو 'صاحب' في سياق المبارزة، وتوجد ركاكة في عبارة 'المبارزة الوشيحة'."
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

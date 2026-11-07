@@ -1,0 +1,166 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 30,
+  "chapterTitle": "In which Phileas Fogg simply does his duty.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "2697685c719feffa4a43366c6092457236d3ae6d55f3c2d1864ecbe8b9dce26a",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "Three passengers including Passepartout had disappeared. Had they been killed in the struggle? Were they taken prisoners by the Sioux? It was impossible to tell.",
+      "existingArabicDraft": "اختفى ثلاثة ركاب، بينهم باسبارتو. هل قُتلوا في الاشتباك؟ أم أخذهم أفراد السيو أسرى؟ تعذّر معرفة ذلك."
+    },
+    {
+      "index": 1,
+      "en": "There were many wounded, but none mortally. Colonel Proctor was one of the most seriously hurt; he had fought bravely, and a ball had entered his groin. He was carried into the station with the other wounded passengers, to receive such attention as could be of avail.",
+      "existingArabicDraft": "كان هناك كثير من الجرحى، لكن لم تكن إصابة أحد منهم قاتلة. وكان العقيد بروكتور من أشدهم إصابة؛ فقد قاتل بشجاعة ودخلت رصاصة في منطقة الأربية. نُقل إلى المحطة مع بقية الجرحى ليتلقى ما يمكن تقديمه من عناية."
+    },
+    {
+      "index": 2,
+      "en": "Aouda was safe; and Phileas Fogg, who had been in the thickest of the fight, had not received a scratch. Fix was slightly wounded in the arm. But Passepartout was not to be found, and tears coursed down Aouda’s cheeks.",
+      "existingArabicDraft": "كانت أودا سالمة، ولم يُصب فيلياس فوج، الذي كان في قلب القتال، بخدش. أما فيكس فأصيب إصابة طفيفة في ذراعه. لكنهم لم يعثروا على باسبارتو، وانحدرت الدموع على خدي أودا."
+    },
+    {
+      "index": 3,
+      "en": "All the passengers had got out of the train, the wheels of which were stained with blood. From the tyres and spokes hung ragged pieces of flesh. As far as the eye could reach on the white plain behind, red trails were visible. The last Sioux were disappearing in the south, along the banks of Republican River.",
+      "existingArabicDraft": "خرج جميع الركاب من القطار، وكانت عجلاته ملطخة بالدماء. وتدلّت من الإطارات والأسلاك قطع ممزقة من اللحم. وعلى السهل الأبيض خلفهم، حتى مدى البصر، ظهرت آثار حمراء. وكان آخر أفراد السيو يبتعدون جنوبًا بمحاذاة نهر ريببليكان."
+    },
+    {
+      "index": 4,
+      "en": "Mr. Fogg, with folded arms, remained motionless. He had a serious decision to make. Aouda, standing near him, looked at him without speaking, and he understood her look. If his servant was a prisoner, ought he not to risk everything to rescue him from the Indians? “I will find him, living or dead,” said he quietly to Aouda.",
+      "existingArabicDraft": "وقف السيد فوج ساكنًا وذراعاه مطويتان. كان عليه اتخاذ قرار خطير. وقفت أودا بالقرب منه تنظر إليه دون كلام، ففهم ما تعنيه نظرتها. إن كان خادمه أسيرًا، أفلا ينبغي له أن يخاطر بكل شيء لإنقاذه من المهاجمين؟ قال لها بهدوء: «سأعثر عليه، حيًا كان أم ميتًا»."
+    },
+    {
+      "index": 5,
+      "en": "“Ah, Mr.⁠—Mr. Fogg!” cried she, clasping his hands and covering them with tears.",
+      "existingArabicDraft": "صاحت وهي تقبض على يديه وتغمرهما بدموعها: «آه، سيّد—سيّد فوج!»"
+    },
+    {
+      "index": 6,
+      "en": "“Living,” added Mr. Fogg, “if we do not lose a moment.”",
+      "existingArabicDraft": "وأضاف السيد فوج: «حيًا، إن لم نُضع لحظة واحدة»."
+    },
+    {
+      "index": 7,
+      "en": "Phileas Fogg, by this resolution, inevitably sacrificed himself; he pronounced his own doom. The delay of a single day would make him lose the steamer at New York, and his bet would be certainly lost. But as he thought, “It is my duty,” he did not hesitate.",
+      "existingArabicDraft": "كان هذا القرار يعني أن فيلياس فوج يضحّي بنفسه حتمًا، وكأنه حكم على رحلته بالفشل. فتأخر يوم واحد سيجعله يفوّت الباخرة في نيويورك ويخسر رهانه قطعًا. لكنه لم يتردد، إذ قال في نفسه: «هذا واجبي»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "اختفى ثلاثة ركاب، بينهم باسبارتو. هل قُتلوا في الاشتباك؟ أم أخذهم أفراد السيو أسرى؟ تعذّر معرفة ذلك."
+    },
+    {
+      "index": 1,
+      "ar": "كان هناك كثير من الجرحى، لكن لم تكن إصابة أحد منهم قاتلة. وكان العقيد بروكتور من أشدهم إصابة؛ فقد قاتل بشجاعة ودخلت رصاصة في منطقة الأربية. نُقل إلى المحطة مع بقية الجرحى ليتلقى ما يمكن تقديمه من عناية."
+    },
+    {
+      "index": 2,
+      "ar": "كانت أودا سالمة، ولم يُصب فيلياس فوج، الذي كان في قلب القتال، بخدش. أما فيكس فأصيب إصابة طفيفة في ذراعه. لكنهم لم يعثروا على باسبارتو، وانحدرت الدموع على خدي أودا."
+    },
+    {
+      "index": 3,
+      "ar": "خرج جميع الركاب من القطار، وكانت عجلاته ملطخة بالدماء. وتدلّت من الإطارات والأسلاك قطع ممزقة من اللحم. وعلى السهل الأبيض خلفهم، حتى مدى البصر، ظهرت آثار حمراء. وكان آخر أفراد السيو يبتعدون جنوبًا بمحاذاة نهر ريببليكان."
+    },
+    {
+      "index": 4,
+      "ar": "وقف السيد فوج ساكنًا وذراعاه مطويتان. كان عليه اتخاذ قرار خطير. وقفت أودا بالقرب منه تنظر إليه دون كلام، ففهم ما تعنيه نظرتها. إن كان خادمه أسيرًا، أفلا ينبغي له أن يخاطر بكل شيء لإنقاذه من المهاجمين؟ قال لها بهدوء: «سأعثر عليه، حيًا كان أم ميتًا»."
+    },
+    {
+      "index": 5,
+      "ar": "صاحت وهي تقبض على يديه وتغمرهما بدموعها: «آه، سيّد—سيّد فوج!»"
+    },
+    {
+      "index": 6,
+      "ar": "وأضاف السيد فوج: «حيًا، إن لم نُضع لحظة واحدة»."
+    },
+    {
+      "index": 7,
+      "ar": "كان هذا القرار يعني أن فيلياس فوج يضحّي بنفسه حتمًا، وكأنه حكم على رحلته بالفشل. فتأخر يوم واحد سيجعله يفوّت الباخرة في نيويورك ويخسر رهانه قطعًا. لكنه لم يتردد، إذ قال في نفسه: «هذا واجبي»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": false,
+      "issues": "تمت ترجمة spokes إلى الأسلاك بدلاً من أسلاك العجلات أو شعاع العجلات، وهي ترجمة غير دقيقة في سياق عربات القطار."
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
