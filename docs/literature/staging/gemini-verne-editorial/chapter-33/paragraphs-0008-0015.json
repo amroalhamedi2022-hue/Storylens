@@ -1,0 +1,168 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 33,
+  "chapterTitle": "In which Phileas Fogg shows himself equal to the occasion.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "274fb80ad54166ea888807af474468744ccbf19a24efd074b9792a35a695cf9a",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505",
+    "729d8c5dd8d3c581f01e96e13765f242da5e621dbae93c63f8bb9360acb738a4",
+    "18db25afe8a1bee362576ba192d7651067c9dc377e0308809ecda6491fda9d58"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "As for Captain Speedy, he continued to howl and growl in his cabin; and Passepartout, whose duty it was to carry him his meals, courageous as he was, took the greatest precautions. Mr. Fogg did not seem even to know that there was a captain on board.",
+      "existingArabicDraft": "ظل القبطان سبيدي يعوي ويتذمر في مقصورته، وكان باسبارتو يتولى إيصال وجباته، فيتخذ أقصى درجات الحذر رغم شجاعته. أما السيد فوج فبدا كأنه لا يعلم بوجود قبطان على متن السفينة أصلًا."
+    },
+    {
+      "index": 9,
+      "en": "On the 13th they passed the edge of the Banks of Newfoundland, a dangerous locality; during the winter, especially, there are frequent fogs and heavy gales of wind. Ever since the evening before the barometer, suddenly falling, had indicated an approaching change in the atmosphere; and during the night the temperature varied, the cold became sharper, and the wind veered to the southeast.",
+      "existingArabicDraft": "في الثالث عشر من الشهر مرّوا بمحاذاة ضفاف نيوفاوندلاند، وهي منطقة خطرة تكثر فيها الضبابات والعواصف الشتوية. ومنذ المساء السابق كان مقياس الضغط يهبط فجأة، مشيرًا إلى تغير قريب في الجو. وخلال الليل تبدلت الحرارة واشتد البرد وانحرفت الريح إلى الجنوب الشرقي."
+    },
+    {
+      "index": 10,
+      "en": "This was a misfortune. Mr. Fogg, in order not to deviate from his course, furled his sails and increased the force of the steam; but the vessel’s speed slackened, owing to the state of the sea, the long waves of which broke against the stern. She pitched violently, and this retarded her progress. The breeze little by little swelled into a tempest, and it was to be feared that the Henrietta might not be able to maintain herself upright on the waves.",
+      "existingArabicDraft": "كانت تلك نكسة. ولكيلا يغيّر فوج مساره، طوى الأشرعة وزاد قوة البخار؛ لكن سرعة السفينة تباطأت بسبب حالة البحر، إذ كانت الأمواج الطويلة تضرب المؤخرة. راحت السفينة تتمايل بعنف، وأخذ النسيم يتحول تدريجيًا إلى عاصفة، حتى خُشي ألا تتمكن «هنرييتا» من البقاء مستقيمة فوق الأمواج."
+    },
+    {
+      "index": 11,
+      "en": "Passepartout’s visage darkened with the skies, and for two days the poor fellow experienced constant fright. But Phileas Fogg was a bold mariner, and knew how to maintain headway against the sea; and he kept on his course, without even decreasing his steam. The Henrietta, when she could not rise upon the waves, crossed them, swamping her deck, but passing safely. Sometimes the screw rose out of the water, beating its protruding end, when a mountain of water raised the stern above the waves; but the craft always kept straight ahead.",
+      "existingArabicDraft": "اسودّ وجه باسبارتو مع اسوداد السماء، وعاش يومين في خوف دائم. لكن فوج كان بحّارًا جريئًا يعرف كيف يحافظ على تقدم السفينة في مواجهة البحر، فواصل المسير دون أن يقلل البخار. وحين تعجز «هنرييتا» عن اعتلاء الموج كانت تخترقه، فتغمر المياه سطحها ثم تمضي سالمة. وأحيانًا يخرج المسمار الدافع من الماء ويضرب الهواء، بينما ترفع كتلة مائية المؤخرة فوق الموج؛ ومع ذلك ظلت السفينة تتقدم مباشرة."
+    },
+    {
+      "index": 12,
+      "en": "The wind, however, did not grow as boisterous as might have been feared; it was not one of those tempests which burst, and rush on with a speed of ninety miles an hour. It continued fresh, but, unhappily, it remained obstinately in the southeast, rendering the sails useless.",
+      "existingArabicDraft": "لم تشتد الريح، لحسن الحظ، كما خُشي؛ فلم تكن إحدى تلك العواصف التي تنفجر وتندفع بسرعة تسعين ميلًا في الساعة. بقيت قوية، لكنها ظلت بعناد من الجنوب الشرقي، فصارت الأشرعة بلا فائدة."
+    },
+    {
+      "index": 13,
+      "en": "The 16th of December was the seventy-fifth day since Phileas Fogg’s departure from London, and the Henrietta had not yet been seriously delayed. Half of the voyage was almost accomplished, and the worst localities had been passed. In summer, success would have been well-nigh certain. In winter, they were at the mercy of the bad season. Passepartout said nothing; but he cherished hope in secret, and comforted himself with the reflection that, if the wind failed them, they might still count on the steam.",
+      "existingArabicDraft": "كان السادس عشر من ديسمبر اليوم الخامس والسبعين منذ مغادرة فوج لندن، ولم تتعرض «هنرييتا» لتأخير خطير. كاد نصف الرحلة أن يكتمل، وقد تجاوزوا أخطر المناطق. لو كان الفصل صيفًا لكان النجاح شبه مؤكد، أما في الشتاء فكانوا تحت رحمة الطقس السيئ. لم يقل باسبارتو شيئًا، لكنه احتفظ بالأمل سرًا وعزّى نفسه بأنهم يستطيعون الاعتماد على البخار إذا خذلتهم الريح."
+    },
+    {
+      "index": 14,
+      "en": "On this day the engineer came on deck, went up to Mr. Fogg, and began to speak earnestly with him. Without knowing why it was a presentiment, perhaps Passepartout became vaguely uneasy. He would have given one of his ears to hear with the other what the engineer was saying. He finally managed to catch a few words, and was sure he heard his master say, “You are certain of what you tell me?”",
+      "existingArabicDraft": "في ذلك اليوم صعد المهندس إلى السطح وتحدث مع فوج بجدية. ولم يعرف باسبارتو السبب، لكن حدسًا غامضًا جعله قلقًا. كان مستعدًا للتضحية بإحدى أذنيه كي يسمع الحديث بالأخرى. وتمكن أخيرًا من التقاط كلمات قليلة، وظن أنه سمع سيده يسأل: «أأنت متأكد مما تقوله؟»"
+    },
+    {
+      "index": 15,
+      "en": "“Certain, sir,” replied the engineer. “You must remember that, since we started, we have kept up hot fires in all our furnaces, and, though we had coal enough to go on short steam from New York to Bordeaux, we haven’t enough to go with all steam from New York to Liverpool.”",
+      "existingArabicDraft": "«متأكد يا سيدي»، أجاب المهندس. «عليك أن تتذكر أننا أبقينا النيران مشتعلة في كل الأفران منذ انطلاقنا. ومع أن الفحم كان يكفينا للسير بالبخار المنخفض من نيويورك إلى بوردو، فإنه لا يكفي للسير بأقصى قوة من نيويورك إلى ليفربول»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "أما القبطان سبيدي، فقد واصل العواء والتذمر في مقصورته؛ وارتدى باسبارتو، الذي كان واجبه حمل وجباته، أقصى درجات الحذر رغم شجاعته. ولم يبدُ أن السيد فوج كان يعلم حتى بوجود قبطان على متن السفينة."
+    },
+    {
+      "index": 1,
+      "ar": "وفي الثالث عشر مرّوا بمحاذاة ضفاف نيوفاوندلاند، وهي منطقة خطرة؛ فخلال الشتاء خصوصًا، تكرر الضباب والعواصف الشديدة. ومنذ المساء السابق كان مقياس الضغط الجوي، الذي هبط فجأة، يشير إلى تغير وشيك في الجو؛ وخلال الليل تفاوتت درجات الحرارة، واشتد البرد، وانحرفت الرياح نحو الجنوب الشرقي."
+    },
+    {
+      "index": 2,
+      "ar": "كان ذلك نحساً. ولكيلا ينحرف السيد فوج عن مساره، طوى أشرعته وزاد من قوة البخار؛ لكن سرعة السفينة تباطأت بسبب حالة البحر، إذ كانت أمواجه الطويلة تضرب المؤخرة. تمايلت السفينة بعنف، وهذا ما أخر تقدمها. وتحولت النسيمات تدريجياً إلى عاصفة، وكان يُخشى ألا تتمكن «هنرييتا» من الحفاظ على استقامتها فوق الأمواج."
+    },
+    {
+      "index": 3,
+      "ar": "اسودّ وجه باسبارتو مع اسوداد السماء، وعاش المسكين يومين في خوف مستمر. لكن فيلياس فوج كان بحاراً جريئاً، ويعرف كيف يحافظ على تقدم السفينة في مواجهة البحر؛ فواصل طريقه دون أن يخفض حتى من ضغط البخار. وحين كانت «هنرييتا» تعجز عن الارتفاع فوق الأمواج، كانت تخترقها، فتغمر المياه سطحها لكنها تمر بسلام. وأحيانًا كان المحرك اللولبي يخرج من الماء ضارباً الهواء بنهايته البارزة، عندما ترفع جبال من الماء المؤخرة فوق الأمواج؛ غير أن السفينة ظلت تتقدم بشكل مستقيم دائمًا."
+    },
+    {
+      "index": 4,
+      "ar": "مع ذلك، لم تشتد الرياح بالقدر الذي كان يُخشى منه؛ فلم تكن إحدى تلك العواصف التي تنفجر وتهب بسرعة تسعين ميلاً في الساعة. لقد ظلت قوية، لكنها للأسف بقيت مستقرة بعناد في الاتجاه الجنوبي الشرقي، مما جعل الأشرعة عديمة الفائدة."
+    },
+    {
+      "index": 5,
+      "ar": "كان السادس عشر من ديسمبر هو اليوم الخامس والسبعين منذ مغادرة فيلياس فوج لندن، ولم تتأخر «هنرييتا» حتى ذلك الحين تأخراً جسيماً. لقد أُنجز نصف الرحلة تقريباً، وتم اجتياز الأسوأ من المناطق. وفي الصيف، لكان النجاح شبه مؤكد. أما في الشتاء، فقد كانوا تحت رحمة فصل السيئات. لم يقل باسبارتو شيئاً؛ لكنه أضمر الأمل في سره، وعزّى نفسه بالتفكير في أنه إذا خذلتهم الرياح، فيمكنهم الاعتماد على البخار."
+    },
+    {
+      "index": 6,
+      "ar": "في ذلك اليوم صعد مهندس السفينة إلى السطح، واقترب من السيد فوج، وشرع يتحدث إليه بجدية. وبدون أن يدري السبب ــ ربما كان حدساً ــ شع باسبارتو بقلق غامض. لو أنه استطاع لأعطى إحدى أذنيه كي يسمع بالأخرى ما يقوله المهندس. ونجح أخيرًا في التقاط كلمات قليلة، وتأكد أنه سمع سيده يقول: «أأنت متأكد مما تقوله لي؟»"
+    },
+    {
+      "index": 7,
+      "ar": "أجاب المهندس: «متأكد يا سيدي. يجب أن تتذكر أنه منذ انطلاقنا، أبقينا النيران مشتعلة في جميع غلاياتنا، ومع أننا امتلكنا فحمًا يكفي للسير بسرعة منخفضة بالبخار من نيويورك إلى بوردو، إلا أننا لا نملك ما يكفي للسير بكامل البخار من نيويورك إلى ليفربول»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": false,
+      "issues": "خطأ في الترجمة: 'ارتدى باسبارتو' خطأ والصحيح 'حمل باسبارتو' حيث إن النص الأصلي يعني أن حمل الوجبات كان من واجبه وليس ارتداءها."
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": false,
+      "issues": "خطأ في الترجمة: 'النسيمات' غير مناسبة سياقياً، والصحيح 'النسيم' أو 'الريح الخفيفة'."
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": false,
+      "issues": "خطأ في الترجمة: 'فصل السيئات' ترجمة رديئة وحرفية غير دقيقة لـ 'bad season' والصحيح 'الطقس السيئ' أو 'الفصل السيئ'."
+    },
+    {
+      "index": 6,
+      "adequate": false,
+      "issues": "خطأ مطبعي: 'شع باسبارتو' والصحيح 'شعر باسبارتو'."
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

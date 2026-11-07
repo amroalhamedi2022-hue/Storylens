@@ -1,0 +1,168 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 33,
+  "chapterTitle": "In which Phileas Fogg shows himself equal to the occasion.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "afad34832e39967f74c5266e53779a14c11920105a032704dc236fd204573829",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505",
+    "729d8c5dd8d3c581f01e96e13765f242da5e621dbae93c63f8bb9360acb738a4",
+    "18db25afe8a1bee362576ba192d7651067c9dc377e0308809ecda6491fda9d58"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "An hour after, the Henrietta passed the lighthouse which marks the entrance of the Hudson, turned the point of Sandy Hook, and put to sea. During the day she skirted Long Island, passed Fire Island, and directed her course rapidly eastward.",
+      "existingArabicDraft": "بعد ساعة، مرّت «هنرييتا» بالمنارة التي تحدد مدخل نهر هدسون، والتفت حول رأس ساندي هوك ثم خرجت إلى عرض البحر. وخلال النهار سارت بمحاذاة لونغ آيلاند، واجتازت جزيرة فاير، ومضت سريعًا شرقًا."
+    },
+    {
+      "index": 1,
+      "en": "At noon the next day, a man mounted the bridge to ascertain the vessel’s position. It might be thought that this was Captain Speedy. Not the least in the world. It was Phileas Fogg, Esquire. As for Captain Speedy, he was shut up in his cabin under lock and key, and was uttering loud cries, which signified an anger at once pardonable and excessive.",
+      "existingArabicDraft": "عند ظهر اليوم التالي، صعد رجل إلى الجسر ليتحقق من موقع السفينة. قد يظن المرء أنه القبطان سبيدي، لكن الأمر لم يكن كذلك إطلاقًا؛ بل كان السيد فيلياس فوج. أما القبطان سبيدي فكان حبيس مقصورته خلف القفل والمفتاح، يطلق صيحات غاضبة يمكن تفهّمها، وإن تجاوزت حدها."
+    },
+    {
+      "index": 2,
+      "en": "What had happened was very simple. Phileas Fogg wished to go to Liverpool, but the captain would not carry him there. Then Phileas Fogg had taken passage for Bordeaux, and, during the thirty hours he had been on board, had so shrewdly managed with his banknotes that the sailors and stokers, who were only an occasional crew, and were not on the best terms with the captain, went over to him in a body. This was why Phileas Fogg was in command instead of Captain Speedy; why the captain was a prisoner in his cabin; and why, in short, the Henrietta was directing her course towards Liverpool. It was very clear, to see Mr. Fogg manage the craft, that he had been a sailor.",
+      "existingArabicDraft": "كان ما حدث بسيطًا جدًا. أراد فوج الوصول إلى ليفربول، لكن القبطان رفض نقله إليها. فحجز فوج رحلة إلى بوردو، وخلال الساعات الثلاثين التي قضاها على متن السفينة استخدم أوراقه النقدية بذكاء حتى انضم إليه البحارة وعمال الأفران، وهم طاقم مؤقت لم تكن علاقته بالقبطان على ما يرام. وهكذا صار فوج قائدًا بدل سبيدي، وأُودع القبطان مقصورته، واتجهت «هنرييتا» إلى ليفربول. وكان واضحًا من طريقة فوج في إدارة السفينة أنه سبق أن عمل بحّارًا."
+    },
+    {
+      "index": 3,
+      "en": "How the adventure ended will be seen anon. Aouda was anxious, though she said nothing. As for Passepartout, he thought Mr. Fogg’s manoeuvre simply glorious. The captain had said “between eleven and twelve knots,” and the Henrietta confirmed his prediction.",
+      "existingArabicDraft": "ستتضح نهاية المغامرة لاحقًا. كانت أودا قلقة، وإن لم تقل شيئًا. أما باسبارتو فعدّ مناورة سيده رائعة. كان القبطان قد قال إن سرعتها بين إحدى عشرة واثنتي عشرة عقدة، وأكدت «هنرييتا» صحة توقعه."
+    },
+    {
+      "index": 4,
+      "en": "If, then⁠—for there were “ifs” still⁠—the sea did not become too boisterous, if the wind did not veer round to the east, if no accident happened to the boat or its machinery, the Henrietta might cross the three thousand miles from New York to Liverpool in the nine days, between the 12th and the 21st of December. It is true that, once arrived, the affair on board the Henrietta, added to that of the Bank of England, might create more difficulties for Mr. Fogg than he imagined or could desire.",
+      "existingArabicDraft": "إذا لم يشتد اضطراب البحر، ولم تنحرف الريح إلى الشرق، ولم يقع عطل في السفينة أو آلاتها، فقد تعبر «هنرييتا» الأميال الثلاثة آلاف بين نيويورك وليفربول خلال الأيام التسعة من الثاني عشر إلى الحادي والعشرين من ديسمبر. غير أن ما جرى على متنها، مضافًا إلى قضية بنك إنجلترا، قد يخلق للسيد فوج متاعب أكثر مما تخيل أو أراد."
+    },
+    {
+      "index": 5,
+      "en": "During the first days, they went along smoothly enough. The sea was not very unpropitious, the wind seemed stationary in the northeast, the sails were hoisted, and the Henrietta ploughed across the waves like a real transatlantic steamer.",
+      "existingArabicDraft": "مرّت الأيام الأولى بسلاسة معقولة. لم يكن البحر شديد العناد، وبدا أن الريح ثابتة من الشمال الشرقي، ورُفعت الأشرعة، وشقّت «هنرييتا» الأمواج كما تفعل سفينة حقيقية تعبر الأطلسي."
+    },
+    {
+      "index": 6,
+      "en": "Passepartout was delighted. His master’s last exploit, the consequences of which he ignored, enchanted him. Never had the crew seen so jolly and dexterous a fellow. He formed warm friendships with the sailors, and amazed them with his acrobatic feats. He thought they managed the vessel like gentlemen, and that the stokers fired up like heroes. His loquacious good-humour infected everyone. He had forgotten the past, its vexations and delays. He only thought of the end, so nearly accomplished; and sometimes he boiled over with impatience, as if heated by the furnaces of the Henrietta. Often, also, the worthy fellow revolved around Fix, looking at him with a keen, distrustful eye; but he did not speak to him, for their old intimacy no longer existed.",
+      "existingArabicDraft": "كان باسبارتو في غاية السرور. فقد أسعده إنجاز سيده الأخير، مع أنه لم يعرف عواقبه. ولم يرَ الطاقم قط رجلًا مرحًا وماهرًا مثله؛ صادق البحارة وأدهشهم بحركاته البهلوانية. وأعجب بطريقة عملهم، ورأى أن عمال الأفران يوقدون النار كالأبطال. وانتقلت خفة ظله إلى الجميع. نسي ما سبق من متاعب وتأخيرات، ولم يعد يفكر إلا في النهاية التي اقتربت؛ وكان يغلي أحيانًا من نفاد الصبر كأنه يسخن في أفران «هنرييتا». وكان يطوف حول فيكس ويرمقه بريبة، لكنه لم يعد يكلمه، إذ انقطعت الألفة القديمة بينهما."
+    },
+    {
+      "index": 7,
+      "en": "Fix, it must be confessed, understood nothing of what was going on. The conquest of the Henrietta, the bribery of the crew, Fogg managing the boat like a skilled seaman, amazed and confused him. He did not know what to think. For, after all, a man who began by stealing fifty-five thousand pounds might end by stealing a vessel; and Fix was not unnaturally inclined to conclude that the Henrietta under Fogg’s command, was not going to Liverpool at all, but to some part of the world where the robber, turned into a pirate, would quietly put himself in safety. The conjecture was at least a plausible one, and the detective began to seriously regret that he had embarked on the affair.",
+      "existingArabicDraft": "لم يكن فيكس، باعترافنا، يفهم ما يجري. فقد حيّره استيلاء فوج على «هنرييتا» وإغراؤه الطاقم وإدارته السفينة كبحّار خبير. ولم يعرف ما الذي ينبغي أن يصدقه؛ فالرجل الذي بدأ بسرقة خمسة وخمسين ألف جنيه قد ينتهي بسرقة سفينة أيضًا. لذلك مال المحقق إلى الاعتقاد بأن فوج لن يتجه إلى ليفربول، بل سيهرب بالسفينة إلى مكان بعيد بصفته قرصانًا. وكان ذلك احتمالًا معقولًا، وبدأ فيكس يندم بجدية على دخوله في هذه القضية."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "بعد ساعة، مرّت «هنرييتا» بالمنارة التي تحدد مدخل نهر هدسون، والتفت حول رأس ساندي هوك ثم خرجت إلى عرض البحر. وخلال النهار سارت بمحاذاة لونغ آيلاند، واجتازت جزيرة فاير، ومضت سريعًا شرقًا."
+    },
+    {
+      "index": 1,
+      "ar": "عند ظهر اليوم التالي، صعد رجل إلى الجسر ليتحقق من موقع السفينة. قد يظن المرء أنه القبطان سبيدي، لكن الأمر لم يكن كذلك إطلاقًا؛ بل كان السيد فيلياس فوج. أما القبطان سبيدي فكان حبيس مقصورته خلف القفل والمفتاح، يطلق صيحات غاضبة يمكن تفهّمها، وإن تجاوزت حدها."
+    },
+    {
+      "index": 2,
+      "ar": "كان ما حدث بسيطًا جدًا. أراد فوج الوصول إلى ليفربول، لكن القبطان رفض نقله إليها. فحجز فوج رحلة إلى بوردو، وخلال الساعات الثلاثين التي قضاها على متن السفينة استخدم أوراقه النقدية بذكاء حتى انضم إليه البحارة وعمال الأفران، وهم طاقم مؤقت لم تكن علاقته بالقبطان على ما يرام. وهكذا صار فوج قائدًا بدل سبيدي، وأُودع القبطان مقصورته، واتجهت «هنرييتا» إلى ليفربول. وكان واضحًا من طريقة فوج في إدارة السفينة أنه سبق أن عمل بحّارًا."
+    },
+    {
+      "index": 3,
+      "ar": "ستتضح نهاية المغامرة لاحقًا. كانت أودا قلقة، وإن لم تقل شيئًا. أما باسبارتو فعدّ مناورة سيده رائعة. كان القبطان قد قال إن سرعتها بين إحدى عشرة واثنتي عشرة عقدة، وأكدت «هنرييتا» صحة توقعه."
+    },
+    {
+      "index": 4,
+      "ar": "إذا لم يشتد اضطراب البحر، ولم تنحرف الريح إلى الشرق، ولم يقع عطل في السفينة أو آلاتها، فقد تعبر «هنرييتا» الأميال الثلاثة آلاف بين نيويورك وليفربول خلال الأيام التسعة من الثاني عشر إلى الحادي والعشرين من ديسمبر. غير أن ما جرى على متنها، مضافًا إلى قضية بنك إنجلترا، قد يخلق للسيد فوج متاعب أكثر مما تخيل أو أراد."
+    },
+    {
+      "index": 5,
+      "ar": "مرّت الأيام الأولى بسلاسة معقولة. لم يكن البحر شديد العناد، وبدا أن الريح ثابتة من الشمال الشرقي، ورُفعت الأشرعة، وشقّت «هنرييتا» الأمواج كما تفعل سفينة حقيقية تعبر الأطلسي."
+    },
+    {
+      "index": 6,
+      "ar": "كان باسبارتو في غاية السرور. فقد أسعده إنجاز سيده الأخير، مع أنه لم يعرف عواقبه. ولم يرَ الطاقم قط رجلًا مرحًا وماهرًا مثله؛ صادق البحارة وأدهشهم بحركاته البهلوانية. وأعجب بطريقة عملهم، ورأى أن عمال الأفران يوقدون النار كالأبطال. وانتقلت خفة ظله إلى الجميع. نسي ما سبق من متاعب وتأخيرات، ولم يعد يفكر إلا في النهاية التي اقتربت؛ وكان يغلي أحيانًا من نفاد الصبر كأنه يسخن في أفران «هنرييتا». وكان يطوف حول فيكس ويرمقه بريبة، لكنه لم يعد يكلمه، إذ انقطعت الألفة القديمة بينهما."
+    },
+    {
+      "index": 7,
+      "ar": "لم يكن فيكس، باعترافنا، يفهم ما يجري. فقد حيّره استيلاء فوج على «هنرييتا» وإغراؤه الطاقم وإدارته السفينة كبحّار خبير. ولم يعرف ما الذي ينبغي أن يصدقه؛ فالرجل الذي بدأ بسرقة خمسة وخمسين ألف جنيه قد ينتهي بسرقة سفينة أيضًا. لذلك مال المحقق إلى الاعتقاد بأن فوج لن يتجه إلى ليفربول، بل سيهرب بالسفينة إلى مكان بعيد بصفته قرصانًا. وكان ذلك احتمالًا معقولًا، وبدأ فيكس يندم بجدية على دخوله في هذه القضية."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
