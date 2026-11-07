@@ -1,7 +1,7 @@
 name: Lingua Tales - verify and index actual Woman in White narrative units
 on:
   push:
-    branches: [main]
+    branches: [main, content/woman-white-1860-1903-original-art-20261107]
     paths:
       - 'tools/map_woman_white_original_narratives.py'
       - 'tools/test_woman_white_original_narratives.py'
