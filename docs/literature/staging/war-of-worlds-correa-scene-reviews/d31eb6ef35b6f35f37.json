@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_077_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-d31eb6ef35b6f35f.webp",
+  "imageSha256": "44e7f62396d57ffadafa4fd315aa7983a085f1f02c08bf3721cac2c85b421335",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch depicting a conversation between a man standing on the ground and a soldier mounted on a horse. The setting appears to be an open, flat field or rural road. The man on the ground is gesturing with his hands while looking up at the soldier, who is looking down at him. The style is illustrative, resembling a 19th or early 20th-century book engraving or pen-and-ink drawing.",
+    "visualObjectsEn": "A man in civilian clothing, a soldier in a military uniform with a cap, a horse, a sword or saber hanging from the soldier's saddle, and a sparse, flat landscape with a distant structure.",
+    "recognizableCharactersOrPeopleEn": "A civilian man and a mounted soldier.",
+    "uncertaintyNotes": "The specific historical period or nationality of the uniforms is not explicitly identifiable, though they appear to be of a 19th-century European style. The exact nature of the interaction is ambiguous, though it appears to be a casual or informational exchange."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 9,
+    "paragraphIndexZeroBased": 7,
+    "exactSourceQuotation": "I talked with these soldiers for a time; I told them of my sight of the Martians on the previous evening.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description depicts a civilian man gesturing while talking to a soldier on a horse in a rural setting. This matches the narrative in Chapter 9, Paragraph 7, where the narrator encounters soldiers (including a sentinel on horseback) and talks to them about his observations of the Martians.",
+    "suggestedAltArNotApproved": "A civilian man conversing with a mounted soldier on a rural road.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a civilian man in a jacket gesturing and talking to a mounted soldier (a Cardigan man standing sentinel on horseback) in an open landscape, matching the narrator's conversation with the soldiers and the sentinel near the common.",
+    "visualContradictions": "The text mentions a group of sappers under a railway bridge, while the illustration focuses specifically on the narrator talking to a mounted sentinel on a road.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

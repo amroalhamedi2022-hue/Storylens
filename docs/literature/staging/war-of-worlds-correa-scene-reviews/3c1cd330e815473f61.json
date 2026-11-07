@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_070_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-3c1cd330e815473f.webp",
+  "imageSha256": "613a43eb2fb8d5e2695109e71f08cc88fec1b9e8cf19dcf5c7766c4a7d8c6255",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting two men sitting across from each other at a table in a dimly lit, possibly indoor setting. The man on the left is gesturing with his hand while speaking, and the man on the right is listening with his hand near his face. A bottle and a glass are placed on the table between them. The background features a grid-like pattern suggesting a window or a wall structure.",
+    "visualObjectsEn": "Two men, a wooden table, a bottle, a glass, a chair, a window or wall grid, and a vertical post or stick on the right side.",
+    "recognizableCharactersOrPeopleEn": "Two adult males, both dressed in dark, somewhat rugged or period-appropriate clothing.",
+    "uncertaintyNotes": "The exact historical period or specific literary context is not identifiable from the image alone. The setting could be a tavern, a prison, or a private room, but this is speculative."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 7,
+    "paragraphIndexZeroBased": 31,
+    "exactSourceQuotation": "I remember that dinner table with extraordinary vividness even now. My dear wife’s sweet anxious face peering at me from under the pink lamp shade, the white cloth with its silver and glass table furniture⁠—for in those days even philosophical writers had many little luxuries⁠—the crimson-purple wine in my glass, are photographically distinct.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts two men at a table with a bottle and glass in a domestic or private setting, which aligns with the narrator's vivid recollection of a dinner table scene featuring glass table furniture and wine, as described in the selected passage.",
+    "suggestedAltArNotApproved": "A black and white illustration of two men seated at a table with a bottle and glass, reflecting the narrator's memory of a dinner scene.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image depicts two men sitting at a table together in an indoor setting.",
+    "visualContradictions": "The passage specifically describes the narrator having dinner with his wife peering from under a pink lamp shade, with silver, glass table furniture, and crimson-purple wine. The illustration instead shows two men talking across a table, with no woman (the narrator's wife) present.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.99,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

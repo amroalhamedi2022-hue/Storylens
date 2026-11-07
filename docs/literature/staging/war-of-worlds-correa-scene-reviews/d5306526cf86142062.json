@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_073_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-d5306526cf861420.webp",
+  "imageSha256": "f471589ce00997eca6459274deaeaaeda259bf4589f4aa8c2a58e26b9e539c52",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a chaotic battle scene. A large, multi-legged, mechanical tripod-like machine is suspended in the air, emitting a bright flash or explosion from its central body. Below it, on the ground, figures are operating a large artillery cannon, firing towards the machine. The scene is filled with thick clouds of smoke, debris, and projectiles.",
+    "visualObjectsEn": "Mechanical tripod machine, large artillery cannon, smoke clouds, projectiles, debris, flashes of light.",
+    "recognizableCharactersOrPeopleEn": "Several small, indistinct human figures operating the artillery cannon.",
+    "uncertaintyNotes": "The exact nature of the mechanical machine is ambiguous, though it resembles science fiction tripod designs. The specific historical context or source of the illustration is not identified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 10,
+    "paragraphIndexZeroBased": 11,
+    "exactSourceQuotation": "A monstrous tripod, higher than many houses, striding over the young pine trees, and smashing them aside in its career; a walking engine of glittering metal, striding now across the heather; articulate ropes of steel dangling from it, and the clattering tumult of its passage mingling with the riot of the thunder. A flash, and it came out vividly",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a tripod machine in a chaotic scene with flashes and smoke, which aligns with the description of the tripod in Chapter 10, paragraph 11, specifically mentioning the 'monstrous tripod' and the 'flash' that illuminates it vividly.",
+    "suggestedAltArNotApproved": "A black and white illustration of a Martian tripod machine striding through a landscape, illuminated by a bright flash, with smoke and debris in the foreground.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts a monstrous mechanical tripod machine of glittering metal striding through smoke and flashes of light, surrounded by artillery fire and explosions, directly matching the description of the fighting machine in the passage.",
+    "visualContradictions": "None.",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

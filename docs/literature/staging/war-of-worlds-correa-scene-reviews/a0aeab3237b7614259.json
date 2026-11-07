@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_072_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-a0aeab3237b76142.webp",
+  "imageSha256": "9e7893b1600412a790e5907f0ce4b6b0bfee3d3927abf6842a5dc67a8303e995",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a large, mechanical, tripod-like machine standing amidst a cloud of smoke or dust. The machine has a conical top, a central body with circular features, and long, jointed legs. One of its appendages is extended upward, holding a small human figure. Below the machine, on the ground, are two other small, prone human figures.",
+    "visualObjectsEn": "Mechanical tripod machine, conical hood, jointed legs, smoke or dust clouds, ground surface.",
+    "recognizableCharactersOrPeopleEn": "Three small human figures: one held aloft by the machine and two lying on the ground.",
+    "uncertaintyNotes": "The style is consistent with late 19th or early 20th-century pen-and-ink book illustration, but the specific origin or artist is not identified. The nature of the machine is ambiguous, appearing as a science fiction construct."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 20,
+    "paragraphIndexZeroBased": 8,
+    "exactSourceQuotation": "Then something⁠—something struggling violently⁠—was lifted high against the sky, a black, vague enigma against the starlight; and as this black object came down again, I saw by the green brightness that it was a man.",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The illustration depicts a tripod machine holding a human figure aloft, which directly corresponds to the narrative in Chapter 20, Paragraph 8, where the narrator observes a fighting-machine lifting a struggling man into the air.",
+    "suggestedAltArNotApproved": "A mechanical tripod machine with a conical hood and jointed legs stands in a smoky environment, holding a small human figure aloft with one of its tentacles, while two other human figures lie prone on the ground below.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a fighting-machine with a hood and tentacles, using one of its long tentacles to lift a struggling human figure high into the air against the sky, directly matching the action described in the passage.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
