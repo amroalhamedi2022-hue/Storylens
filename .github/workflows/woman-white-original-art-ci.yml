@@ -4,6 +4,9 @@ on:
     paths:
       - 'tools/intake_woman_white_original_art.py'
       - 'tools/test_woman_white_original_art.py'
+      - 'tools/map_woman_white_original_narratives.py'
+      - 'tools/test_woman_white_original_narratives.py'
+      - 'docs/literature/staging/user-requested-classics-20261105/the-woman-in-white/chapter-image-map.json'
       - 'tools/report_chapter_art_progress.py'
       - 'docs/literature/staging/woman-white-original-1860-1903-plates/**'
       - '.github/workflows/woman-white-*.yml'
@@ -26,4 +29,6 @@ jobs:
       - name: Prove source whitelist and actual SHA256 files in central audit
         run: |
           python tools/test_woman_white_original_art.py
+          python tools/map_woman_white_original_narratives.py --verify
+          python tools/test_woman_white_original_narratives.py
           python tools/report_chapter_art_progress.py
