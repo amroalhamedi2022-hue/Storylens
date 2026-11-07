@@ -29,14 +29,22 @@ class AuthenticNarrativeSections(unittest.TestCase):
         self.assertIn("not 62 conventional numbered chapters", doc["chapterCountUnitLabel"])
         self.assertEqual(doc["countSemantics"],
                          "UNABRIDGED_SOURCE_NARRATIVE_UNITS__EPOCHS_AND_NARRATORS_PRESERVED")
-        self.assertEqual(doc["localCandidateChapters"], 0)
-        self.assertEqual(doc["missingCandidateChapters"], 62)
+        self.assertEqual(doc["localCandidateChapters"], 1)
+        self.assertEqual(doc["missingCandidateChapters"], 61)
         self.assertEqual(doc["readyForUICards"], 0)
         self.assertFalse(doc["releaseApproved"])
         self.assertEqual([u["chapterOneBased"] for u in doc["chapters"]],
                          list(range(1, 63)))
-        self.assertTrue(all(u["primaryImage"] is None and u["titleAr"] == ""
-                            for u in doc["chapters"]))
+        self.assertTrue(all(u["primaryImage"] is None for u in doc["chapters"] if u["chapterOneBased"] != 4))
+        self.assertTrue(all(not u["titleAr"] for u in doc["chapters"]))
+        image = doc["chapters"][3]["primaryImage"]
+        self.assertIsNotNone(image)
+        self.assertEqual(image["sourceCaption"], "Is that the road to London?")
+        self.assertFalse(image["editoriallyApproved"])
+        self.assertFalse(image["publishedToApp"])
+        self.assertEqual(image["rightsStatus"], "PENDING_INDIVIDUAL_TERRITORIAL_AND_EDITORIAL_REVIEW")
+        self.assertTrue(image["imagePath"].endswith(".webp"))
+        self.assertEqual(len(image["sha256"]), 64)
 
     def test_actual_utf8_original_text_spans_rehash_and_preserve_all_three_epochs(self):
         doc = generate()
@@ -72,6 +80,21 @@ class AuthenticNarrativeSections(unittest.TestCase):
                             for x in doc["chapters"]))
         self.assertTrue(any("THE NARRATIVE OF THE TOMBSTONE" in x["sourceOriginalHeading"]
                             for x in doc["chapters"]))
+
+    def test_real_caption_is_unique_and_pinned_to_original_section_four(self):
+        doc = generate()
+        art = doc["chapters"][3]["primaryImage"]
+        full = (ROOT / doc["sourceFullOriginalPath"]).read_bytes()
+        original = b"Is that the road to London?"
+        self.assertEqual(full.count(original), 1)
+        self.assertEqual(full.find(original), art["sourceTextByteOffset"])
+        self.assertEqual(hashlib.sha256(full).hexdigest(), art["sourceTextOriginalSha256"])
+        self.assertLess(doc["chapters"][3]["sourceHtmlStartByte"], art["sourceTextByteOffset"])
+        self.assertGreater(doc["chapters"][3]["sourceHtmlEndByteExclusive"], art["sourceTextByteOffset"])
+        self.assertIn("HUMAN_SCENE_REVIEW_PENDING", art["sceneVerificationStatus"])
+        self.assertEqual(doc["chapters"][3]["sourceOriginalHeading"], "IV")
+        self.assertTrue(all(not x.get("primaryImage", {}).get("editoriallyApproved", False)
+                            for x in doc["chapters"] if x.get("primaryImage")))
 
     def test_archive_original_novel_still_has_no_guessed_bilingual_publication(self):
         manifest = json.loads((STAGED / "manifest.json").read_text("utf-8"))
