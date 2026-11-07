@@ -93,7 +93,33 @@
       "duplicateHeadingWithinSection": null,
       "sourceOpeningExcerptAr": "قال دبشليم الملك لبيدبا الفيلسوف، وهو رأس البراهمة: اضرب لنا مثلاً لمتحابين يقطع بينهما الكذوب المحتال، حتى يحملهما على العداوة والبغضاء. قال بيدبا: إذا ابتلي المتحا",
       "sourceFilePath": "docs/literature/staging/kalila-arabic-wikisource/kalila.md",
-      "primaryImage": null,
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-002.webp",
+        "sha256": "862515bf0324462255694ff709b0c7a8002a7ae06d84dc0f4ef30b5693052158",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Geese_carrying_the_tortoise_in_flight._Ibn_al-Muqaffaʿ,_Kalīla_wa-Dimna,_Egypt_or_Syria,_ca._1220._BnF_Arabe_3465,_fol._67r.jpg",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Geese_carrying_the_tortoise_in_flight._Ibn_al-Muqaffaʿ,_Kalīla_wa-Dimna,_Egypt_or_Syria,_ca._1220._BnF_Arabe_3465,_fol._67r.jpg",
+        "creator": "Unknown medieval manuscript artist, Egypt or Syria, circa 1220; BnF Arabe 3465",
+        "edition": "Original illustrated Kalila wa Dimna manuscript, BnF Arabe 3465, folio 67r (c. 1220), NOT the transcription edition used for modern prose",
+        "sourceManuscriptFolio": "67r",
+        "sourceManuscriptURL": "https://commons.wikimedia.org/wiki/Category:Kalila_and_Dimna,_1200-1220_(BNF,_Arabe_3465)",
+        "originalCommonsFile": "File:Geese carrying the tortoise in flight. Ibn al-Muqaffaʿ, Kalīla wa-Dimna, Egypt or Syria, ca. 1220. BnF Arabe 3465, fol. 67r.jpg",
+        "originalSourceLicense": "Public domain",
+        "sourceArabicEditionDifferentFromIllustratedManuscript": true,
+        "imageOriginalColourUnmodified": true,
+        "sourcePassageAr": "ثم أخذتاها فطارتا بها في الجو. فقال الناس: عجبٌ: سلحفاة بين بطتين، قد حملتاها.",
+        "sceneAnchor": "ثم أخذتاها فطارتا بها في الجو. فقال الناس: عجبٌ: سلحفاة بين بطتين، قد حملتاها.",
+        "sceneVerificationStatus": "ACTUAL_ORIGINAL_COLOUR_FOLIO_VISION_AND_EXACT_ARABIC_STORY_PASSAGE_MATCHED__PENDING_HUMAN_FOLIO_EDITION_AND_RIGHTS_CHECK",
+        "sourceWorkNarrativeSectionOneBased": 5,
+        "sceneAltEn": "Original coloured manuscript miniature: two geese fly while carrying a tortoise that holds a stick with its mouth, above watching people.",
+        "altAr": "منمنمة تاريخية ملونة أصلية تُظهر بطتين تحملان سلحفاة متعلقة بعصا في الجو، بينما يشاهدها أشخاص من الأسفل.",
+        "altEn": "Original medieval coloured Kalila wa Dimna folio depicting two geese carrying a tortoise on a stick above onlookers, matching the embedded fable in The Lion and the Bull.",
+        "editoriallyApproved": false,
+        "chapterArtPublished": false,
+        "humanEditorApproved": false,
+        "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+        "license": "Commons individual public-domain metadata recorded; manuscript attribution and territorial rights still awaiting review",
+        "publicationStatus": "STAGING_ONLY_NOT_PUBLISHED"
+      },
       "completeContextualEnglishTranslationVerified": false,
       "chapterSceneImageHumanApproved": false
     },
@@ -297,5 +323,7 @@
       "completeContextualEnglishTranslationVerified": false,
       "chapterSceneImageHumanApproved": false
     }
-  ]
+  ],
+  "sourceMatchedHistoricFolioCandidatesNotApproved": 1,
+  "imageHumanApprovedCount": 0
 }
