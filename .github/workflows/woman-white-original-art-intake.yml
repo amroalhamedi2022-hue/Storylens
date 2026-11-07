@@ -1,0 +1,79 @@
+name: Lingua Tales - acquire real early Woman in White pictures and historical cover
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/intake_woman_white_original_art.py'
+      - '.github/workflows/woman-white-original-art-intake.yml'
+  schedule:
+    - cron: '17 6 * * 1,4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: lingua-woman-white-historical-plates-\${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify-fetch-and-retain-real-original-woman-white-art:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned historical image decoder and Commons transport
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0
+      - name: Test exact original artist-edition whitelist and safety
+        run: python tools/test_woman_white_original_art.py
+      - name: Acquire ten actual licensed historical source scans and SHA256 proof
+        run: python tools/intake_woman_white_original_art.py --max-new 10
+      - name: Save only the genuine original source binaries and manifest
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: \${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          folder=docs/literature/staging/woman-white-original-1860-1903-plates
+          if [ -d "$folder" ]; then
+            git add -f "$folder"
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No original source records changed; do not repeat art work."
+          else
+            git commit -m "Literature: checkpoint real verified 1860-1903 Woman in White sources"
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              python tools/test_woman_white_original_art.py
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 3
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Real source image files archived to Action artifact, push failed"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = main ]; then
+              # GITHUB_TOKEN bot pushes alone do NOT trigger other push Actions.
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
+          fi
+      - name: Retain actual download evidence if source requests/push were interrupted
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: woman-white-real-art-staged-pending-visual-and-rights-review
+          path: docs/literature/staging/woman-white-original-1860-1903-plates/
+          if-no-files-found: ignore
+          retention-days: 30
