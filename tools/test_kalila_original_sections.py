@@ -114,6 +114,36 @@ def verify_kalila_sections(data=None):
             or data.get("imageHumanApprovedCount") != 0
             or len(image_hashes) != 3):
         raise ValueError("Kalila source-scenic miniatures miscounted or falsely approved")
+    # Exact-byte SHA-256 alone cannot detect different crops of one painting:
+    # inspect the documented same-scene clusters and disallow two primaries
+    # from the same medieval manuscript illustration in separate story sections.
+    duplicate_sets = ((1, 12), (3, 4), (7, 13), (16, 17))
+    groups = data.get("visualDuplicateCropGroups", [])
+    archived = folio_manifest["plates"]
+    if (len(groups) != len(duplicate_sets)
+            or data.get("knownArchivedVisualCropDuplicateGroups") != 4
+            or data.get("historicArchiveFileCount") != len(archived)
+            or data.get("uniqueVisualScenesAtMostIfTheseAreOnlyDuplicates") != len(archived) - 4):
+        raise ValueError("Kalila cropped variants not documented exactly")
+    staged_primary_paths = [s["primaryImage"]["imagePath"] for s in sections if s["primaryImage"]]
+    for group, ordinals in zip(groups, duplicate_sets):
+        if tuple(x.get("archiveFolioOrdinal") for x in group["members"]) != ordinals:
+            raise ValueError("Kalila same-visual-source crop group changed")
+        all_names = []
+        for member, n in zip(group["members"], ordinals):
+            fig = archived[n - 1]
+            actual_path = "docs/literature/staging/kalila-original-colour-miniatures-20261105/" + fig["localPath"]
+            if (member["imagePath"] != actual_path
+                    or member["sha256"] != fig["webpSha256"]
+                    or member["sourceCommonsFilePage"] != fig["sourceCommonsFilePage"]):
+                raise ValueError("Kalila crop-group archive source was swapped")
+            all_names.append(actual_path)
+        preferred = group["preferredWholeOrContextualImagePath"]
+        if preferred not in all_names:
+            raise ValueError("Kalila crop preference references unrelated painting")
+        assigned = [a for a in staged_primary_paths if a in all_names]
+        if len(assigned) > 1 or (assigned and assigned[0] != preferred):
+            raise ValueError("Visually duplicated medieval picture reused or preferred folio replaced")
     return len(sections)
 
 
@@ -131,6 +161,8 @@ class AuthenticKalilaSections(unittest.TestCase):
             ("fictitious-rights", lambda d: d.__setitem__("territorialRightsReviewed", True)),
             ("duplicate-counted", lambda d: d.__setitem__("distinctNonEmptySourceSections", 20)),
             ("translation-falsified", lambda d: d.__setitem__("fullContextualEnglishTranslationVerified", True)),
+            ("remove-visual-crop-audit", lambda d: d.__setitem__("visualDuplicateCropGroups", [])),
+            ("incorrect-same-scene-pair", lambda d: d["visualDuplicateCropGroups"][0]["members"][0].__setitem__("sha256", "0" * 64)),
         ):
             with self.subTest(name=name):
                 test_data = copy.deepcopy(original)
