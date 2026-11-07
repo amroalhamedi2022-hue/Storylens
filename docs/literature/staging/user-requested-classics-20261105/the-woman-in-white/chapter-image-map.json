@@ -12,8 +12,8 @@
   "sourceMarkedH3Narratives": 59,
   "sourceSubstantiveH2Narratives": 3,
   "releaseApproved": false,
-  "localCandidateChapters": 0,
-  "missingCandidateChapters": 62,
+  "localCandidateChapters": 1,
+  "missingCandidateChapters": 61,
   "readyForUICards": 0,
   "chapters": [
     {
@@ -77,8 +77,26 @@
       "sourceHtmlByteCount": 22720,
       "sourceHtmlSliceSha256": "f2dfc7fe948ea1aceafdd6e27973fb507edf240d87e3ac13a476b0bd23fa2b46",
       "sourcePassageLead": "The heat had been painfully oppressive all day, and it was now a close and sultry night. My mother and sister had spoken so many last words, and had begged me t",
-      "primaryImage": null,
-      "imageStatus": "EXACT_ORIGINAL_NARRATIVE_UNIT__NO_SCENE_VERIFIED_LOCAL_IMAGE"
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/woman-white-original-1860-1903-plates/plates/woman-white-period-c6b842c9d30882cf.webp",
+        "sha256": "fcacda9b33159d858139348f28ef7f7a7e6eef3c8031b6b86a72c52ab73eaa2e",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Illustration_by_Thomas_Eyre_Macklin_for_The_Woman_in_White_(1).jpg",
+        "sourceEdition": "Thomas Eyre Macklin 1903 Woman in White lithograph; first British serial and Standard Ebooks text are not this art edition",
+        "sourceBookEditionURL": "https://commons.wikimedia.org/wiki/Category:The_Woman_in_White",
+        "sourceCaption": "Is that the road to London?",
+        "sourceTextOriginalSha256": "d4f2546d9fbf4e1115d47e1cf4777ef26416088f525654ff1f091ef3feee5ec2",
+        "sourceTextByteOffset": 47853,
+        "sceneAnchor": "Original 1860 English section IV: Is that the road to London?",
+        "sceneVerificationStatus": "ORIGINAL_1903_PRINTED_CAPTION_AND_ACTUAL_1860_SOURCE_PROSE_MATCHED__HUMAN_SCENE_REVIEW_PENDING",
+        "credit": "Thomas Eyre Macklin (1867–1943)",
+        "license": "Public domain",
+        "rightsStatus": "PENDING_INDIVIDUAL_TERRITORIAL_AND_EDITORIAL_REVIEW",
+        "altEn": "Historical lithograph of Walter Hartright meeting the woman in white on the road; she points toward London. Editorial review pending.",
+        "altAr": "رسم تاريخي للقاء والتر هارترايت بالمرأة ذات الثياب البيضاء على الطريق وهي تشير باتجاه لندن. الوصف قيد المراجعة.",
+        "editoriallyApproved": false,
+        "publishedToApp": false
+      },
+      "imageStatus": "REAL_ORIGINAL_SCENE_MATCHED_CANDIDATE__NOT_APPROVED_FOR_APP"
     },
     {
       "chapterOneBased": 5,
