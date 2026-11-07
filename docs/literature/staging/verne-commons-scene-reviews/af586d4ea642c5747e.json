@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_45.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-af586d4ea642c574.webp",
+  "imageSha256": "c1a51514b2325e6e80395e434aed232599768a88dec7bc95e6262563b671a837",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a dramatic landscape with a suspension bridge spanning a deep, rocky gorge. The bridge is partially collapsed, with a section of the walkway hanging downwards. The foreground features dark, craggy rock formations and dense foliage, while the background shows steep cliffs and trees. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "Suspension bridge, broken bridge section, rocky cliffs, gorge, trees, foliage, riverbed or rocky ground in the foreground.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The specific geographic location is not identifiable from the image alone. The artist's signature is partially visible but not fully legible."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 28,
+    "paragraphIndexZeroBased": 35,
+    "exactSourceQuotation": "This was a suspension-bridge thrown over some rapids, about a mile from the place where they now were. According to the signalman, it was in a ruinous condition, several of the iron wires being broken; and it was impossible to risk the passage.",
+    "confidenceModelEstimateNotVerified": 1.0,
+    "modelRationaleNotVerified": "The image depicts a suspension bridge in a ruinous, partially collapsed state over a rocky gorge, which directly corresponds to the description in the text of a suspension bridge over rapids that is in a ruinous condition with broken wires.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a damaged suspension bridge spanning a deep, rocky gorge, with a section of the bridge hanging down and dense foliage in the foreground.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts a suspension bridge thrown over rapids in a ruinous condition, with a section of the walkway broken and hanging down, exactly matching the description in the passage.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

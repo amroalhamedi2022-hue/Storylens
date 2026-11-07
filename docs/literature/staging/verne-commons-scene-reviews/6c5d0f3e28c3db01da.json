@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_44.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-6c5d0f3e28c3db01.webp",
+  "imageSha256": "55d7e57db01b3a3ca87acee8944f08f159f82152df8fec5cbeac96704134cdd5",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a train traveling along a narrow, rocky cliffside path overlooking a large body of water. The train consists of several carriages, and passengers are visible standing on an open-air platform or balcony of the rear carriage. The landscape features steep, rugged mountains in the background and a large, gnarled tree in the foreground on the right. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "Train carriages, railway tracks, rocky cliff, mountains, large body of water, gnarled tree, vegetation, sky.",
+    "recognizableCharactersOrPeopleEn": "Three figures are visible standing on the rear platform of the train, all wearing hats, likely top hats or similar formal headwear of the 19th century.",
+    "uncertaintyNotes": "The exact geographical location is not specified in the image. The specific type of train or the historical context of the railway cannot be determined with certainty from the visual evidence alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 27,
+    "paragraphIndexZeroBased": 15,
+    "exactSourceQuotation": "It is a picturesque expanse, framed in lofty crags in large strata, encrusted with white salt—a superb sheet of water",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The engraving depicts a train on a rocky cliffside overlooking a large body of water with rugged mountains in the background. This matches the description of the train journey along the Great Salt Lake, which is described as a picturesque expanse framed by lofty crags.",
+    "suggestedAltArNotApproved": "A 19th-century engraving of a train traveling along a rocky cliffside overlooking the Great Salt Lake, with passengers on the rear platform and rugged mountains in the distance.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows passengers on a train observing a vast interior sea surrounded by lofty crags and rugged cliffs, precisely matching the description of the train reaching the Great Salt Lake and passengers observing the water.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

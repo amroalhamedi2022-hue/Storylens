@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_46.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-2eb8ca14cca80254.webp",
+  "imageSha256": "e1e27d27a4f2054186af8cf86add10a909e4b6452cf315d983b11597597c2d80",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a steam locomotive pulling a train across a high trestle bridge spanning a deep, mountainous valley. The landscape features steep, forested hillsides and a river visible in the distance at the bottom of the gorge. The sky is filled with textured clouds, and the train emits a plume of smoke.",
+    "visualObjectsEn": "Steam locomotive, train cars, trestle bridge, mountains, forest, river, clouds, smoke.",
+    "recognizableCharactersOrPeopleEn": "None visible.",
+    "uncertaintyNotes": "The specific geographic location is not identifiable from the image alone. The names 'R. Menett' and 'P. Louis' are visible in the bottom corners, likely indicating the artist and engraver, but their identities are not confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 28,
+    "paragraphIndexZeroBased": 74,
+    "exactSourceQuotation": "The train leaped, so to speak, from one bank to the other",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The image depicts a train crossing a high trestle bridge over a deep valley, which aligns with the dramatic crossing of the Medicine Bow bridge described in Chapter 28. The visual elements of the locomotive, bridge, and mountainous terrain match the narrative context of the train's precarious passage.",
+    "suggestedAltArNotApproved": "A steam locomotive crossing a high trestle bridge over a deep, mountainous gorge.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a steam locomotive and train speeding across a high trestle bridge spanning a deep gorge, directly illustrating the perilous crossing of the Medicine Bow bridge at full speed described in the passage.",
+    "visualContradictions": "None. The image matches the narrative event of the train crossing the collapsing/dangerous bridge over the river.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

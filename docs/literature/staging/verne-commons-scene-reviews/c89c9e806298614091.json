@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_43.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-c89c9e8062986140.webp",
+  "imageSha256": "a9f11d79f2adab178020f0cdec50ec7a2d282fd192f4551461973008431fad00",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting an interior scene with a man standing and gesturing towards an open doorway or window, while another person sits in the foreground with their back to the viewer. The room appears to be sparsely furnished with wooden walls and several chairs.",
+    "visualObjectsEn": "A man in a formal suit, a seated person, several chairs, a doorway or window opening, wooden wall paneling, and a pile of fabric or clothing near the opening.",
+    "recognizableCharactersOrPeopleEn": "A standing man with receding hair wearing a frock coat and waistcoat, and a seated person seen from behind.",
+    "uncertaintyNotes": "The exact identity of the individuals and the specific setting are not explicitly stated in the image. The nature of the objects near the doorway is ambiguous, appearing as a pile of fabric or perhaps luggage."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 35,
+    "paragraphIndexZeroBased": 21,
+    "exactSourceQuotation": "he knocked at Aouda’s door, went into her room, seated himself, without speaking, in a corner, and looked ruefully at the young woman.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene depicts a man standing and gesturing towards a doorway while another person sits in the foreground. This matches the narrative moment where Phileas Fogg enters Aouda's room and sits down, with Aouda being the seated person. The sparse furniture and wooden interior are consistent with the description of the room in the novel.",
+    "suggestedAltArNotApproved": "A black and white engraving showing Phileas Fogg standing in the doorway of Aouda's room, gesturing towards her as she sits in the foreground with her back to the viewer.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a man standing, gesturing aggressively with his arms and pointing, while another person is seated in the foreground with their back to the viewer.",
+    "visualContradictions": "The passage describes Phileas Fogg going into Aouda's room, seating himself quietly in a corner without speaking, and looking ruefully at her. In contrast, the image shows a man standing up, actively pointing and gesturing rather than sitting quietly in a corner.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
