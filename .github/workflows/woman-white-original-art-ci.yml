@@ -1,0 +1,29 @@
+name: Lingua Tales - genuine Woman in White early art audit
+on:
+  pull_request:
+    paths:
+      - 'tools/intake_woman_white_original_art.py'
+      - 'tools/test_woman_white_original_art.py'
+      - 'tools/report_chapter_art_progress.py'
+      - 'docs/literature/staging/woman-white-original-1860-1903-plates/**'
+      - '.github/workflows/woman-white-*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-exact-art-source-scope-and-archived-bytes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned strict historical image decoder
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0
+      - name: Prove source whitelist and actual SHA256 files in central audit
+        run: |
+          python tools/test_woman_white_original_art.py
+          python tools/report_chapter_art_progress.py
