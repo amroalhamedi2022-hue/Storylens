@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_59.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-7a40174d4b7044ad.webp",
+  "imageSha256": "961631ca262fb24477e2e7f49b38cf054d2911cadc2f5d346cae44ed89a66b09",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a formal indoor scene, likely a grand room or hall. A group of men in 19th-century formal attire are gathered. One man stands in the foreground with his back to the viewer, resting his hand on the back of a chair. Facing him, slightly to the left, is another man holding a hat, appearing to address the group. Other men stand in the background near a large doorway. The room features ornate architectural details, including a wall-mounted candelabra held by a sculpted figure.",
+    "visualObjectsEn": "Men in frock coats and trousers, a wooden chair, a wall-mounted candelabra with a sculpted figure, a large doorway with decorative molding, patterned wallpaper or wall texture.",
+    "recognizableCharactersOrPeopleEn": "A group of adult men dressed in 19th-century formal clothing. No specific historical figures can be definitively identified without external context.",
+    "uncertaintyNotes": "The specific identities of the individuals and the exact historical or fictional setting are not provided in the image. The style is consistent with 19th-century book illustrations, but the specific source or narrative context is uncertain."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 4,
+    "exactSourceQuotation": "there were silk hats and black coats everywhere worn by a multitude of nervously active, gentlemanly-looking men.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The scene depicts a group of men in 19th-century formal attire (silk hats and black coats) in a grand, formal indoor setting, which aligns with the description of the gentlemanly-looking men in the San Francisco chapter.",
+    "suggestedAltArNotApproved": "A black and white engraving of a group of men in 19th-century formal attire, including silk hats and frock coats, gathered in a grand, ornate room with a wall-mounted candelabra.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows an indoor formal meeting room with a group of gentlemen standing around talking, not an outdoor street view of San Francisco with City Hall, intersecting avenues, or store windows as described in the passage.",
+    "visualContradictions": "The passage describes an outdoor urban panorama of San Francisco (City Hall, streets at right angles, squares, Chinese quarter, stores with windows), whereas the engraving exclusively depicts an interior room scene with men gathered inside.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.99,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
