@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "bookId": "the-sign-of-the-four",
+  "sourceArchive": "docs/literature/staging/sign-four-townsend-1903-period-plates/manifest.json",
+  "canonicalOriginalEnglish": "docs/literature/staging/the-sign-of-the-four/manifest.json",
+  "title": "Historical 1903 Townsend images vs authentic English original — UNAPPROVED visual review leads",
+  "independentHumanVisualReviewComplete": false,
+  "releaseApproved": false,
+  "rightsCleared": false,
+  "note": "Manually identified possible visual-narrative correspondences only. Original illustrations contain ambiguous gestures and different printed edition composition; do NOT count any as a confirmed scene, chapter thumbnail, human editorial review, alt-text acceptance or rights clearance.",
+  "leads": [
+    {
+      "image": "File:Sign-t7.jpg",
+      "imagePath": "docs/literature/staging/sign-four-townsend-1903-period-plates/plates/sign-four-townsend-ed02ad4faf5cdd18.webp",
+      "imageSha256": "650c76e56165bdd18f34065226dde2b9e0e53dce1b81698359c5d1cb43f19d60",
+      "imageSource": "https://commons.wikimedia.org/wiki/File:Sign-t7.jpg",
+      "visualObservation": "An elderly-looking figure slumps backwards beside an interior table, with an arm extended upward; furniture/objects and a tall backrest are visible.",
+      "proposedChapter": 5,
+      "actualChapterTitle": "V: The Tragedy of Pondicherry Lodge",
+      "sourceXhtml": "docs/literature/staging/the-sign-of-the-four/chapter-5.xhtml",
+      "sourceGitBlobSha": "4c6e97ee194074b249662368ed4eda26c9f63cc2",
+      "originalTextAnchor": "By the table, in a wooden armchair, the master of the house was seated all in a heap",
+      "visualAmbiguity": "The picture's pose/face and the text are only potentially corresponding. Needs independent original 1903 printed caption, visual inspection of figure identity and exact text position.",
+      "verificationStatus": "VISUAL_HYPOTHESIS_WITH_REAL_SHA_VERIFIED_SOURCE_PASSAGE__NOT_CHAPTER_MAPPING",
+      "humanConfirmed": false,
+      "approvedForChapterCard": false,
+      "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW"
+    },
+    {
+      "image": "File:Sign-t4.jpg",
+      "imagePath": "docs/literature/staging/sign-four-townsend-1903-period-plates/plates/sign-four-townsend-a221afbc95f1400c.webp",
+      "imageSha256": "7b617aac1443f99558c172b33bc6de78d7d42c5161b79909ddc14bb276fa5497",
+      "imageSource": "https://commons.wikimedia.org/wiki/File:Sign-t4.jpg",
+      "visualObservation": "An individual is shown falling or lunging alongside a river boat while another figure on the boat extends an arm; water and a vessel are clearly depicted.",
+      "proposedChapter": 10,
+      "actualChapterTitle": "X: The End of the Islander",
+      "sourceXhtml": "docs/literature/staging/the-sign-of-the-four/chapter-10.xhtml",
+      "sourceGitBlobSha": "fda705255e7e0aed22c439ac40bf9364ba2590a3",
+      "originalTextAnchor": "Our pistols rang out together. He whirled round, threw up his arms",
+      "visualAmbiguity": "The 1903 plate may portray a different river action or character. Independent original plate caption and human scene comparison not yet completed.",
+      "verificationStatus": "VISUAL_HYPOTHESIS_WITH_REAL_SHA_VERIFIED_SOURCE_PASSAGE__NOT_CHAPTER_MAPPING",
+      "humanConfirmed": false,
+      "approvedForChapterCard": false,
+      "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW"
+    }
+  ],
+  "countAsMappedChapterCards": 0,
+  "countAsApprovedChapterCards": 0
+}
