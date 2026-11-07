@@ -1,0 +1,166 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 30,
+  "chapterTitle": "In which Phileas Fogg simply does his duty.",
+  "startParagraphZeroBased": 56,
+  "paragraphCount": 8,
+  "sourceSha256": "96193d8ce79af26e3f9d08f0fe2031a1e87f22dfb4e828e2237fae1ab205b587",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 56,
+      "en": "Should he send another detachment to the rescue of the first? Should he sacrifice more men, with so few chances of saving those already sacrificed? His hesitation did not last long, however. Calling one of his lieutenants, he was on the point of ordering a reconnaissance, when gunshots were heard. Was it a signal? The soldiers rushed out of the fort, and half a mile off they perceived a little band returning in good order.",
+      "existingArabicDraft": "هل يرسل فرقة أخرى لإنقاذ الأولى؟ وهل يعرّض مزيدًا من رجاله للخطر مع أن فرصة إنقاذ من خاطروا بالفعل ضئيلة؟ لم يطل تردده. استدعى أحد ملازميه وكان على وشك إصدار أمر باستطلاع المنطقة حين دوّت طلقات نارية. أكانت إشارة؟ اندفع الجنود من الحصن، ورأوا على بعد نصف ميل فرقة صغيرة تعود بانتظام."
+    },
+    {
+      "index": 57,
+      "en": "Mr. Fogg was marching at their head, and just behind him were Passepartout and the other two travellers, rescued from the Sioux.",
+      "existingArabicDraft": "كان السيد فوج في مقدمتها، وخلفه مباشرة باسبارتو والراكبان الآخران الذين أنقذهم من أفراد السيو."
+    },
+    {
+      "index": 58,
+      "en": "They had met and fought the Indians ten miles south of Fort Kearney. Shortly before the detachment arrived, Passepartout and his companions had begun to struggle with their captors, three of whom the Frenchman had felled with his fists, when his master and the soldiers hastened up to their relief.",
+      "existingArabicDraft": "التقى فوج ورجاله بالسيو واشتبكوا معهم على بعد عشرة أميال جنوب حصن كيرني. وقبل وصول الفرقة بقليل، كان باسبارتو ورفيقاه قد بدؤوا مقاومة آسريهم؛ وأسقط الفرنسي ثلاثة منهم بقبضتيه، حين أسرع سيده والجنود لنجدتهم."
+    },
+    {
+      "index": 59,
+      "en": "All were welcomed with joyful cries. Phileas Fogg distributed the reward he had promised to the soldiers, while Passepartout, not without reason, muttered to himself, “It must certainly be confessed that I cost my master dear!”",
+      "existingArabicDraft": "استقبلهم الجميع بهتافات الفرح. ووزّع فيلياس فوج المكافأة التي وعد بها الجنود، بينما تمتم باسبارتو في نفسه، وله كل الحق: «لا بد أن أعترف بأنني كلّفت سيدي كثيرًا!»"
+    },
+    {
+      "index": 60,
+      "en": "Fix, without saying a word, looked at Mr. Fogg, and it would have been difficult to analyse the thoughts which struggled within him. As for Aouda, she took her protector’s hand and pressed it in her own, too much moved to speak.",
+      "existingArabicDraft": "نظر فيكس إلى السيد فوج صامتًا، وكان من الصعب تحليل الأفكار المتصارعة داخله. أما أودا فأخذت يد منقذها وضغطتها بين يديها، وقد غلبها التأثر فلم تستطع الكلام."
+    },
+    {
+      "index": 61,
+      "en": "Meanwhile, Passepartout was looking about for the train; he thought he should find it there, ready to start for Omaha, and he hoped that the time lost might be regained.",
+      "existingArabicDraft": "كان باسبارتو يبحث بعينيه عن القطار؛ فقد ظن أنه سيجده في المحطة مستعدًا للانطلاق إلى أوماها، وأمل أن يتمكنوا من تعويض الوقت الضائع."
+    },
+    {
+      "index": 62,
+      "en": "“The train! the train!” cried he.",
+      "existingArabicDraft": "«القطار! القطار!» صاح باسبارتو."
+    },
+    {
+      "index": 63,
+      "en": "“Gone,” replied Fix.",
+      "existingArabicDraft": "أجاب فيكس: «رحل»."
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "هل يرسل فرقة أخرى لإنقاذ الأولى؟ وهل يعرّض مزيدًا من رجاله للخطر مع أن فرصة إنقاذ من خاطروا بالفعل ضئيلة؟ لم يطل تردده. استدعى أحد ملازميه وكان على وشك إصدار أمر باستطلاع المنطقة حين دوّت طلقات نارية. أكانت إشارة؟ اندفع الجنود من الحصن، ورأوا على بعد نصف ميل فرقة صغيرة تعود بانتظام."
+    },
+    {
+      "index": 1,
+      "ar": "كان السيد فوج في مقدمتها، وخلفه مباشرة باسبارتو والراكبان الآخران الذين أنقذهم من أفراد السيو."
+    },
+    {
+      "index": 2,
+      "ar": "التقى فوج ورجاله بالسيو واشتبكوا معهم على بعد عشرة أميال جنوب حصن كيرني. وقبل وصول الفرقة بقليل، كان باسبارتو ورفيقاه قد بدؤوا مقاومة آسريهم؛ وأسقط الفرنسي ثلاثة منهم بقبضتيه، حين أسرع سيده والجنود لنجدتهم."
+    },
+    {
+      "index": 3,
+      "ar": "استقبلهم الجميع بهتافات الفرح. ووزّع فيلياس فوج المكافأة التي وعد بها الجنود، بينما تمتم باسبارتو في نفسه، وله كل الحق: «لا بد أن أعترف بأنني كلّفت سيدي كثيرًا!»"
+    },
+    {
+      "index": 4,
+      "ar": "نظر فيكس إلى السيد فوج صامتًا، وكان من الصعب تحليل الأفكار المتصارعة داخله. أما أودا فأخذت يد منقذها وضغطتها بين يديها، وقد غلبها التأثر فلم تستطع الكلام."
+    },
+    {
+      "index": 5,
+      "ar": "كان باسبارتو يبحث بعينيه عن القطار؛ فقد ظن أنه سيجده في المحطة مستعدًا للانطلاق إلى أوماها، وأمل أن يتمكنوا من تعويض الوقت الضائع."
+    },
+    {
+      "index": 6,
+      "ar": "«القطار! القطار!» صاح باسبارتو."
+    },
+    {
+      "index": 7,
+      "ar": "أجاب فيكس: «رحل»."
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
