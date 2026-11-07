@@ -379,5 +379,90 @@
     }
   ],
   "sourceMatchedHistoricFolioCandidatesNotApproved": 3,
-  "imageHumanApprovedCount": 0
+  "imageHumanApprovedCount": 0,
+  "visualDuplicateCropGroups": [
+    {
+      "groupId": "KALILA_VISIBLE_CROP_VARIANT_1",
+      "manualImageComparisonStatus": "ACTUALLY_VIEWED_SAME_MANUSCRIPT_SCENE_VARIANTS__HUMAN_COLLECTION_AUDIT_PENDING",
+      "sourceArtworkIdentityNote": "BNF Arabe 3465 folio95v: crow monarch consulting crow council; image001 cropped scene, image012 entire folio",
+      "preferredWholeOrContextualImagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-012.webp",
+      "members": [
+        {
+          "archiveFolioOrdinal": 1,
+          "imagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-001.webp",
+          "sha256": "eb31459a56906eaf5275ff2097f64e9280a9b5a1ea7c8821750ba2118b937821",
+          "sourceCommonsFilePage": "https://commons.wikimedia.org/wiki/File:Arabischer_Maler_um_1210_001.jpg"
+        },
+        {
+          "archiveFolioOrdinal": 12,
+          "imagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-012.webp",
+          "sha256": "f0adefaacd6971d5eba145f668ca81a7558c86503eaa04cac1b1d5bcbb6c62ee",
+          "sourceCommonsFilePage": "https://commons.wikimedia.org/wiki/File:Kalila_wa_Dimna_BNF_Arabe_3465,_folio_95v.jpg"
+        }
+      ]
+    },
+    {
+      "groupId": "KALILA_VISIBLE_CROP_VARIANT_2",
+      "manualImageComparisonStatus": "ACTUALLY_VIEWED_SAME_MANUSCRIPT_SCENE_VARIANTS__HUMAN_COLLECTION_AUDIT_PENDING",
+      "sourceArtworkIdentityNote": "BNF Arabe 3465 folio131v: crowned monarch in red, image003 detail crop of image004 whole manuscript folio",
+      "preferredWholeOrContextualImagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-004.webp",
+      "members": [
+        {
+          "archiveFolioOrdinal": 3,
+          "imagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-003.webp",
+          "sha256": "30bda7d0a95654da5973039b1a835c0c6da39061b46ee2d5fed3b0c1d3c49a1e",
+          "sourceCommonsFilePage": "https://commons.wikimedia.org/wiki/File:Kalila_wa_Dimna_BNF_131v_(king_detail).jpg"
+        },
+        {
+          "archiveFolioOrdinal": 4,
+          "imagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-004.webp",
+          "sha256": "5c6a2fcdc8982491a5fffda5a4dcf214a16fe713242d81745387ed4de727dcbd",
+          "sourceCommonsFilePage": "https://commons.wikimedia.org/wiki/File:Kalila_wa_Dimna_BNF_131v.jpg"
+        }
+      ]
+    },
+    {
+      "groupId": "KALILA_VISIBLE_CROP_VARIANT_3",
+      "manualImageComparisonStatus": "ACTUALLY_VIEWED_SAME_MANUSCRIPT_SCENE_VARIANTS__HUMAN_COLLECTION_AUDIT_PENDING",
+      "sourceArtworkIdentityNote": "BNF Arabe 3465 folio20v: Burzuya and learned interlocutor in arched palace, image013 cropped reproduction of image007 whole folio",
+      "preferredWholeOrContextualImagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-007.webp",
+      "members": [
+        {
+          "archiveFolioOrdinal": 7,
+          "imagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-007.webp",
+          "sha256": "d41fc29886fd79ba7eb9dc85e6773b39856572ac45493eebc386c2a74a8b8e3d",
+          "sourceCommonsFilePage": "https://commons.wikimedia.org/wiki/File:Kalila_wa_Dimna_BNF_Arabe_3465,_folio_20v.jpg"
+        },
+        {
+          "archiveFolioOrdinal": 13,
+          "imagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-013.webp",
+          "sha256": "b0e948a933eaa6611f3802806b1cb3eb304d45f46eaa8feed1f3b8ecd0798281",
+          "sourceCommonsFilePage": "https://commons.wikimedia.org/wiki/File:Kalila_wa_Dimna,_BnF_Arabe_3465,_f._20v_Burzuya_en_compagnie_du_sage_indien_Bidpaï.jpg"
+        }
+      ]
+    },
+    {
+      "groupId": "KALILA_VISIBLE_CROP_VARIANT_4",
+      "manualImageComparisonStatus": "ACTUALLY_VIEWED_SAME_MANUSCRIPT_SCENE_VARIANTS__HUMAN_COLLECTION_AUDIT_PENDING",
+      "sourceArtworkIdentityNote": "Two men speaking before a column: image016 cropped variant of image017 with same painted figures",
+      "preferredWholeOrContextualImagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-017.webp",
+      "members": [
+        {
+          "archiveFolioOrdinal": 16,
+          "imagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-016.webp",
+          "sha256": "e5b9a18fd29c97eb930ef1a74113570babb814cb2c32fc524fa18acb01b8b06a",
+          "sourceCommonsFilePage": "https://commons.wikimedia.org/wiki/File:Two_Men_Talking,_an_image_from_Kalila_wa_Dimna.jpg"
+        },
+        {
+          "archiveFolioOrdinal": 17,
+          "imagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-017.webp",
+          "sha256": "33dc0797584cb91f01aa377699f24655fd01c1dc3816db13e37d1133409e23bf",
+          "sourceCommonsFilePage": "https://commons.wikimedia.org/wiki/File:Two_men_talking._An_image_from_Kalila_wa_Dimna.jpg"
+        }
+      ]
+    }
+  ],
+  "knownArchivedVisualCropDuplicateGroups": 4,
+  "historicArchiveFileCount": 17,
+  "uniqueVisualScenesAtMostIfTheseAreOnlyDuplicates": 13
 }
