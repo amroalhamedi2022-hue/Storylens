@@ -1,0 +1,170 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 35,
+  "chapterTitle": "In which Phileas Fogg does not have to repeat his orders to Passepartout twice.",
+  "startParagraphZeroBased": 8,
+  "paragraphCount": 8,
+  "sourceSha256": "d06e15e2c634049aac7d8fafbb5d836fa18fa8f1fcb9cb402a66391b15b88f85",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505",
+    "729d8c5dd8d3c581f01e96e13765f242da5e621dbae93c63f8bb9360acb738a4",
+    "18db25afe8a1bee362576ba192d7651067c9dc377e0308809ecda6491fda9d58",
+    "eef93d7ffbcdcdd0a314a14466894430cc6ddf41d4881e4e77249138bbb98771",
+    "4e758755927cdfd93357c10f42cbb958fe5972d16709f2d8393b627b9facc534"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 8,
+      "en": "Mr. Fogg called him in the morning, and told him to get Aouda’s breakfast, and a cup of tea and a chop for himself. He desired Aouda to excuse him from breakfast and dinner, as his time would be absorbed all day in putting his affairs to rights. In the evening he would ask permission to have a few moment’s conversation with the young lady.",
+      "existingArabicDraft": "استدعاه السيد فوج في الصباح، وطلب منه إحضار فطور أودا، وكوب شاي وقطعة لحم له. وطلب من أودا أن تعذره عن عدم تناول الفطور والغداء معها، إذ سيقضي اليوم كله في ترتيب شؤونه. وفي المساء سيطلب الإذن بالتحدث مع الشابة لبضع دقائق."
+    },
+    {
+      "index": 9,
+      "en": "Passepartout, having received his orders, had nothing to do but obey them. He looked at his imperturbable master, and could scarcely bring his mind to leave him. His heart was full, and his conscience tortured by remorse; for he accused himself more bitterly than ever of being the cause of the irretrievable disaster. Yes! if he had warned Mr. Fogg, and had betrayed Fix’s projects to him, his master would certainly not have given the detective passage to Liverpool, and then—",
+      "existingArabicDraft": "لم يكن أمام باسبارتو، بعد تلقي الأوامر، سوى تنفيذها. نظر إلى سيده الذي لا يتزعزع، وكاد يعجز عن حمل نفسه على مغادرته. كان قلبه مثقلًا وضميره يعذبه الندم؛ إذ لام نفسه أكثر من أي وقت مضى لأنه سبب الكارثة التي لا رجعة فيها. نعم، لو أنه حذّر السيد فوج وكشف له خطط فيكس، لما اصطحب سيده المحقق إلى ليفربول، وعندها..."
+    },
+    {
+      "index": 10,
+      "en": "Passepartout could hold in no longer.",
+      "existingArabicDraft": "لم يعد باسبارتو قادرًا على كبح نفسه."
+    },
+    {
+      "index": 11,
+      "en": "“My master! Mr. Fogg!” he cried, “why do you not curse me? It was my fault that—”",
+      "existingArabicDraft": "صاح: «سيدي! سيد فوج! لماذا لا توبخني؟ أنا السبب في أن...»"
+    },
+    {
+      "index": 12,
+      "en": "“I blame no one,” returned Phileas Fogg, with perfect calmness. “Go!”",
+      "existingArabicDraft": "أجاب فيلياس فوج بهدوء تام: «لا ألوم أحدًا. اذهب!»"
+    },
+    {
+      "index": 13,
+      "en": "Passepartout left the room, and went to find Aouda, to whom he delivered his master’s message.",
+      "existingArabicDraft": "غادر باسبارتو الغرفة وذهب يبحث عن أودا لينقل إليها رسالة سيده."
+    },
+    {
+      "index": 14,
+      "en": "“Madam,” he added, “I can do nothing myself—nothing! I have no influence over my master; but you, perhaps—”",
+      "existingArabicDraft": "وأضاف: «سيدتي، لا أستطيع فعل شيء بنفسي، لا شيء! ليس لي أي تأثير على سيدي، لكن ربما أنتِ...»"
+    },
+    {
+      "index": 15,
+      "en": "“What influence could I have?” replied Aouda. “Mr. Fogg is influenced by no one. Has he ever understood that my gratitude to him is overflowing? Has he ever read my heart? My friend, he must not be left alone an instant! You say he is going to speak with me this evening?”",
+      "existingArabicDraft": "ردت أودا: «أي تأثير يمكن أن يكون لي؟ لا أحد يؤثر في السيد فوج. هل فهم يومًا أن امتناني له يفيض؟ هل قرأ ما في قلبي؟ يا صديقي، يجب ألا يُترك وحده لحظة! أتقول إنه سيتحدث إليّ هذا المساء؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "استدعاه السيد فوج في الصباح، وطلب منه إحضار فطور أودا، وكوب شاي وقطعة لحم له. وطلب من أودا أن تعذره عن عدم تناول الفطور والغداء معها، إذ سيقضي اليوم كله في ترتيب شؤونه. وفي المساء سيطلب الإذن بالتحدث مع الشابة لبضع دقائق."
+    },
+    {
+      "index": 1,
+      "ar": "لم يكن أمام باسبارتو، بعد تلقي الأوامر، سوى تنفيذها. نظر إلى سيده الذي لا يتزعزع، وكاد يعجز عن حمل نفسه على مغادرته. كان قلبه مثقلًا وضميره يعذبه الندم؛ إذ لام نفسه أكثر من أي وقت مضى لأنه سبب الكارثة التي لا رجعة فيها. نعم، لو أنه حذّر السيد فوج وكشف له خطط فيكس، لما اصطحب سيده المحقق إلى ليفربول، وعندها..."
+    },
+    {
+      "index": 2,
+      "ar": "لم يعد باسبارتو قادرًا على كبح نفسه."
+    },
+    {
+      "index": 3,
+      "ar": "صاح: «سيدي! سيد فوج! لماذا لا توبخني؟ أنا السبب في أن...»"
+    },
+    {
+      "index": 4,
+      "ar": "أجاب فيلياس فوج بهدوء تام: «لا ألوم أحدًا. اذهب!»"
+    },
+    {
+      "index": 5,
+      "ar": "غادر باسبارتو الغرفة وذهب يبحث عن أودا لينقل إليها رسالة سيده."
+    },
+    {
+      "index": 6,
+      "ar": "وأضاف: «سيدتي، لا أستطيع فعل شيء بنفسي، لا شيء! ليس لي أي تأثير على سيدي، لكن ربما أنتِ...»"
+    },
+    {
+      "index": 7,
+      "ar": "ردت أودا: «أي تأثير يمكن أن يكون لي؟ لا أحد يؤثر في السيد فوج. هل فهم يومًا أن امتناني له يفيض؟ هل قرأ ما في قلبي؟ يا صديقي، يجب ألا يُترك وحده لحظة! أتقول إنه سيتحدث إليّ هذا المساء؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

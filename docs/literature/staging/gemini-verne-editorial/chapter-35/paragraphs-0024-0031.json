@@ -1,0 +1,170 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 35,
+  "chapterTitle": "In which Phileas Fogg does not have to repeat his orders to Passepartout twice.",
+  "startParagraphZeroBased": 24,
+  "paragraphCount": 8,
+  "sourceSha256": "b9125bcfdae291a48d682e43f5a65e2b15fa4a46a856e104835469be287e0b92",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505",
+    "729d8c5dd8d3c581f01e96e13765f242da5e621dbae93c63f8bb9360acb738a4",
+    "18db25afe8a1bee362576ba192d7651067c9dc377e0308809ecda6491fda9d58",
+    "eef93d7ffbcdcdd0a314a14466894430cc6ddf41d4881e4e77249138bbb98771",
+    "4e758755927cdfd93357c10f42cbb958fe5972d16709f2d8393b627b9facc534"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 24,
+      "en": "He sat several minutes without speaking; then, bending his eyes on Aouda, “Madam,” said he, “will you pardon me for bringing you to England?”",
+      "existingArabicDraft": "ظل جالسًا دقائق عدة دون كلام، ثم رفع عينيه نحو أودا وقال: «سيدتي، هل تسامحينني لأنني جلبتك إلى إنجلترا؟»"
+    },
+    {
+      "index": 25,
+      "en": "“I, Mr. Fogg!” replied Aouda, checking the pulsations of her heart.",
+      "existingArabicDraft": "أجابت أودا وهي تحاول ضبط خفقان قلبها: «أنا، يا سيد فوج؟»"
+    },
+    {
+      "index": 26,
+      "en": "“Please let me finish,” returned Mr. Fogg. “When I decided to bring you far away from the country which was so unsafe for you, I was rich, and counted on putting a portion of my fortune at your disposal; then your existence would have been free and happy. But now I am ruined.”",
+      "existingArabicDraft": "قال: «أرجوكِ دعيني أتم كلامي. حين قررت إبعادك عن البلد الذي لم يعد آمنًا لك، كنت ثريًا، وكنت أنوي أن أضع جزءًا من ثروتي تحت تصرفك لتعيشي حرة وسعيدة. لكنني الآن مفلس.»"
+    },
+    {
+      "index": 27,
+      "en": "“I know it, Mr. Fogg,” replied Aouda; “and I ask you in my turn, will you forgive me for having followed you, and—who knows?—for having, perhaps, delayed you, and thus contributed to your ruin?”",
+      "existingArabicDraft": "قالت أودا: «أعرف ذلك يا سيد فوج، وأنا بدوري أسألك: هل تسامحني لأنني تبعتك، ولأنني ربما أخرتك وأسهمت في إفلاسك؟»"
+    },
+    {
+      "index": 28,
+      "en": "“Madam, you could not remain in India, and your safety could only be assured by bringing you to such a distance that your persecutors could not take you.”",
+      "existingArabicDraft": "قال: «لم يكن بوسعك البقاء في الهند، ولم يكن من الممكن ضمان سلامتك إلا بإبعادك إلى مكان بعيد لا يستطيع مضطهدوك الوصول إليك فيه.»"
+    },
+    {
+      "index": 29,
+      "en": "“So, Mr. Fogg,” resumed Aouda, “not content with rescuing me from a terrible death, you thought yourself bound to secure my comfort in a foreign land?”",
+      "existingArabicDraft": "قالت أودا: «إذن، يا سيد فوج، لم تكتفِ بإنقاذي من موت فظيع، بل رأيت أنك ملزم بضمان راحتي في بلد غريب؟»"
+    },
+    {
+      "index": 30,
+      "en": "“Yes, madam; but circumstances have been against me. Still, I beg to place the little I have left at your service.”",
+      "existingArabicDraft": "أجاب: «نعم يا سيدتي، لكن الظروف كانت ضدي. ومع ذلك أرجو أن تقبلي القليل الذي بقي لي.»"
+    },
+    {
+      "index": 31,
+      "en": "“But what will become of you, Mr. Fogg?”",
+      "existingArabicDraft": "سألت: «وماذا سيحل بك أنت يا سيد فوج؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "ظل جالسًا دقائق عدة دون كلام، ثم وجه عينيه نحو أودا وقال: «سيدتي، هل تسامحينني لأنني جلبتك إلى إنجلترا؟»"
+    },
+    {
+      "index": 1,
+      "ar": "أجابت أودا، وهي تكبح خفقان قلبها: «أنا، يا سيد فوج؟»"
+    },
+    {
+      "index": 2,
+      "ar": "رد السيد فوج: «أرجوكِ دعيني أتم كلامي. عندما قررت أن أُبعدك عن البلد الذي كان شديد الخطر عليك، كنت غنيًا، وكنت أعول على وضع جزء من ثروتي تحت تصرفك؛ وحينها كان وجودك سيكون حرًا وسعيدًا. أما الآن فقد أصبحت مفلسًا.»"
+    },
+    {
+      "index": 3,
+      "ar": "قالت أودا: «أنا أعلم ذلك، يا سيد فوج؛ وأنا أسألك بدورى: هل تسامحني لأنني تبعتك، و—من يدري؟—لأنني ربما أخرتك، وأسهمتُ هكذا في إفلاسك؟»"
+    },
+    {
+      "index": 4,
+      "ar": "قال: «يا سيدتي، لم يكن بإمكانك البقاء في الهند، ولم يكن ليتسنى ضمان سلامتك إلا بجلبك إلى مسافة لا يستطيع معها مضطهدوك النيل منك.»"
+    },
+    {
+      "index": 5,
+      "ar": "عادت أودا تقول: «إذن يا سيد فوج، لم تكتفِ بإنقاذي من موت مروع، بل ظننت نفسك ملزمًا بتوفير سبل الراحة لي في أرض أجنبية؟»"
+    },
+    {
+      "index": 6,
+      "ar": "«نعم يا سيدتي؛ لكن الظروف جاءت ضدي. ومع ذلك، أرجو أن تضعي القليل الذي تبقى لي في خدمتك.»"
+    },
+    {
+      "index": 7,
+      "ar": "«ولكن ماذا سيحدث لك أنت، يا سيد فوج؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}

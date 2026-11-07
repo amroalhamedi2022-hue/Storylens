@@ -1,0 +1,171 @@
+{
+  "status": "AI_DRAFT_REVIEWED_NOT_APPROVED",
+  "publicationStatus": "STAGING_ONLY_NOT_IN_APK",
+  "humanEditorialAcceptance": false,
+  "territorialRightsClearance": false,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "chapterOneBased": 36,
+  "chapterTitle": "In which Phileas Fogg’s name is once more at a premium on ’Change.",
+  "startParagraphZeroBased": 0,
+  "paragraphCount": 8,
+  "sourceSha256": "f29fa1f9084005b1d16fd40a8950bb23f3c82bfc74c6c2e62ada280af8f707f8",
+  "sourceFileShas256": [
+    "443c45b52bd129f58e9cbe0cf9de676b577ce0d157ac1da4b3a1887c4d78767f",
+    "4153421fd0c837ae979438b5c301f3e1353238e3d64639922dc332e9ccdc608e",
+    "7e30953eb81de5f3c8f4b6ed82a3feb500980ff89767903cf51fa0877b178f64",
+    "7dcb840d5fa1d5e3b3fe1cee9dc1a9a71503525129b02d7587bb184369bda053",
+    "8893afb549678800f5f60babacd038f6e514a97d75f8c88daa4093d79028c885",
+    "d3f185c4413fc0b4e99d31b77b4e1231d84d3237f6451ea4b46dfc5461fcb8c2",
+    "fc9671d2873a814a608897fb63f41e7f612f9661d21ecb951ed412797c15cd39",
+    "863f1ad41219bda3797dd52917b742d0c0bb4e5a8805b43dba0548a0e9497b17",
+    "107bd428a9ea5144abf197ae6a1d68e9458e12c0472101679e88b7b76737a99f",
+    "d88e13c24854fc4d9924385de0055434b9377343d81666ba341c7c837a12f1e6",
+    "6803c272f1fd7e4814dd20b7bc131b45a5332a18887e313f678c92abc99aadf0",
+    "188dcc701002b2ace3e4160624e205f0542dddc3b763fbea13bfb20337e22cb4",
+    "7c260ccd0fe3dcf8d1623861900d8d7b30bb4bd846626ea4a5a0e46a8a69fd37",
+    "4cc48d6db84ed40ff8acc376dcd696a2e63396fb1ba991ef75aa2914ed4646fd",
+    "a261c0d70a6818a77ecebde191f5da8d52e9fb73b7cd16501887959fac6e7fc9",
+    "be30bbe796f37c1c714f6ebc30af76f382590bc2397f4e9da2723416ad4b1dba",
+    "7d0fcdb7f05fe3b653ba933dcdea9b260768741de395be8ce233935d44d1332a",
+    "fe3c1f5928d4d9cfe2a9830619fe43099b384fbef1a40969008c8abaab07089c",
+    "0de56cf2ab0f794a223861298af622ffc0a329029d799f49c8c5c1a5afd0aa70",
+    "243d61a0a6e81d3012ad05f7879a1c5a5bf966a8a2824622c906118ba247cd95",
+    "366326e7a13bf569e6fd0ce13916874bde72a17719cdc8db275e27d97fe96adc",
+    "da845bfa6beac051e4a46ed6dafb485ac0a916843625f70501feaf01be8607e1",
+    "4c20119210ff373477b7dd40867b9a6ad94369be6afef6d8712215ee36971b71",
+    "fb0600b8823aaf6fb7bb3325ff0f22fef43731e1899c6b76520063fdafcff8e3",
+    "d38032f71bd8c3455c31ef6326483bf3a6e7044364319ef46f0ad8cc2fa51302",
+    "8092c399e653ed59d50ae67d1829cfa3b336048c739a1fa569ea76792ad61c14",
+    "079e369264636629601322905047e8ae62606348cff6d3f372d5f12c0cd0bb1d",
+    "8ac0332b2cd98ca487e98452af033c7b47843535938a9bf351841deb48712cd1",
+    "d1d1b386ec268e12fbe7ee9935412597edaa77c5eea18b9628d31e1c699630f7",
+    "195930ae9f3e723db67b6161a921dd990f6707b54308df6188749aad5c3bd505",
+    "729d8c5dd8d3c581f01e96e13765f242da5e621dbae93c63f8bb9360acb738a4",
+    "18db25afe8a1bee362576ba192d7651067c9dc377e0308809ecda6491fda9d58",
+    "eef93d7ffbcdcdd0a314a14466894430cc6ddf41d4881e4e77249138bbb98771",
+    "4e758755927cdfd93357c10f42cbb958fe5972d16709f2d8393b627b9facc534",
+    "82f344098ef691dd31ea4818ab8e1c60b009ddd512e57ac3baab2f26c4415470"
+  ],
+  "sourceEdition": "Jules Verne, George Makepeace Towle 1873 English translation",
+  "originalTextAndDraft": [
+    {
+      "index": 0,
+      "en": "It is time to relate what a change took place in English public opinion when it transpired that the real bank robber, a certain James Strand, had been arrested, on the 17th day of December, at Edinburgh. Three days before, Phileas Fogg had been a criminal, who was being desperately followed up by the police; now he was an honourable gentleman, mathematically pursuing his eccentric journey round the world.",
+      "existingArabicDraft": "حان الوقت لنسرد كيف تبدّل الرأي العام الإنجليزي حين تبيّن أن سارق المصرف الحقيقي، رجل يُدعى جيمس ستراند، قد اعتُقل في إدنبرة يوم السابع عشر من ديسمبر. قبل ذلك بثلاثة أيام كان فيلياس فوج مجرمًا تطارده الشرطة بكل إصرار؛ أما الآن فهو رجل محترم يواصل رحلته الغريبة حول العالم بدقة حسابية."
+    },
+    {
+      "index": 1,
+      "en": "The papers resumed their discussion about the wager; all those who had laid bets, for or against him, revived their interest, as if by magic; the “Phileas Fogg bonds” again became negotiable, and many new wagers were made. Phileas Fogg’s name was once more at a premium on ’Change.",
+      "existingArabicDraft": "عادت الصحف إلى مناقشة الرهان، واستعاد كل من راهن معه أو ضده اهتمامه كأنما بسحر؛ وعادت «سندات فيلياس فوج» قابلة للتداول، وعُقدت رهانات جديدة كثيرة. وهكذا ارتفعت قيمة اسم فيلياس فوج من جديد في البورصة."
+    },
+    {
+      "index": 2,
+      "en": "His five friends of the Reform Club passed these three days in a state of feverish suspense. Would Phileas Fogg, whom they had forgotten, reappear before their eyes! Where was he at this moment? The 17th of December, the day of James Strand’s arrest, was the seventy-sixth since Phileas Fogg’s departure, and no news of him had been received. Was he dead? Had he abandoned the effort, or was he continuing his journey along the route agreed upon? And would he appear on Saturday, the 21st of December, at a quarter before nine in the evening, on the threshold of the Reform Club saloon?",
+      "existingArabicDraft": "قضى أصدقاؤه الخمسة في نادي الإصلاح هذه الأيام الثلاثة في ترقّب محموم. أسيعود فيلياس فوج، الذي نسوه، للظهور أمامهم؟ أين كان الآن؟ كان السابع عشر من ديسمبر، يوم اعتقال جيمس ستراند، اليوم السادس والسبعين منذ مغادرة فوج، ولم يصل عنه أي خبر. أكان قد مات؟ هل تخلّى عن المحاولة أم واصل رحلته وفق المسار المتفق عليه؟ وهل سيظهر مساء السبت، الحادي والعشرين من ديسمبر، قبل التاسعة بخمس عشرة دقيقة، عند عتبة قاعة نادي الإصلاح؟"
+    },
+    {
+      "index": 3,
+      "en": "The anxiety in which, for three days, London society existed, cannot be described. Telegrams were sent to America and Asia for news of Phileas Fogg. Messengers were dispatched to the house in Saville Row morning and evening. No news. The police were ignorant what had become of the detective, Fix, who had so unfortunately followed up a false scent. Bets increased, nevertheless, in number and value. Phileas Fogg, like a racehorse, was drawing near his last turning-point. The bonds were quoted, no longer at a hundred below par, but at twenty, at ten, and at five; and paralytic old Lord Albemarle bet even in his favour.",
+      "existingArabicDraft": "لا يمكن وصف القلق الذي عاشه مجتمع لندن طوال ثلاثة أيام. أُرسلت برقيات إلى أمريكا وآسيا طلبًا لأخبار فوج، وأُوفد رسل إلى منزله في سافيل رو صباحًا ومساءً، لكن لا جديد. لم تعرف الشرطة ما آل إليه أمر المفتش فيكس الذي اتبع أثرًا زائفًا على نحو مؤسف. ومع ذلك ازدادت الرهانات عددًا وقيمة، وكان فوج يقترب من نقطة الحسم كحصان سباق. ولم تعد السندات تُسعّر بأقل من قيمتها بمئة، بل بعشرين ثم بعشرة وخمسة، حتى إن اللورد ألبرمارل المسن، المصاب بالشلل، راهن لصالحه."
+    },
+    {
+      "index": 4,
+      "en": "A great crowd was collected in Pall Mall and the neighbouring streets on Saturday evening; it seemed like a multitude of brokers permanently established around the Reform Club. Circulation was impeded, and everywhere disputes, discussions, and financial transactions were going on. The police had great difficulty in keeping back the crowd, and as the hour when Phileas Fogg was due approached, the excitement rose to its highest pitch.",
+      "existingArabicDraft": "احتشد جمع غفير في بال مول والشوارع المجاورة مساء السبت؛ وبدا المكان كأن سماسرة البورصة اتخذوا من محيط نادي الإصلاح مقرًا دائمًا. تعطلت حركة المرور، واشتعلت المناقشات والمجادلات والمعاملات المالية في كل مكان. وعانى رجال الشرطة كثيرًا لإبقاء الحشد في الخلف، وكلما اقترب الموعد المنتظر ازداد التوتر حتى بلغ ذروته."
+    },
+    {
+      "index": 5,
+      "en": "The five antagonists of Phileas Fogg had met in the great saloon of the club. John Sullivan and Samuel Fallentin, the bankers, Andrew Stuart, the engineer, Gauthier Ralph, the director of the Bank of England, and Thomas Flanagan, the brewer, one and all waited anxiously.",
+      "existingArabicDraft": "اجتمع خصوم فيلياس فوج الخمسة في القاعة الكبرى للنادي: المصرفيان جون سوليفان وصموئيل فالنتين، والمهندس أندرو ستيوارت، وغوتييه رالف مدير بنك إنجلترا، وتوماس فلاناغان صانع الجعة؛ وكانوا جميعًا ينتظرون بقلق."
+    },
+    {
+      "index": 6,
+      "en": "When the clock indicated twenty minutes past eight, Andrew Stuart got up, saying, “Gentlemen, in twenty minutes the time agreed upon between Mr. Fogg and ourselves will have expired.”",
+      "existingArabicDraft": "حين أشارت الساعة إلى الثامنة وعشرين دقيقة، نهض أندرو ستيوارت وقال: «أيها السادة، لم يبقَ سوى عشرين دقيقة على انقضاء الموعد الذي اتفقنا عليه مع السيد فوج.»"
+    },
+    {
+      "index": 7,
+      "en": "“What time did the last train arrive from Liverpool?” asked Thomas Flanagan.",
+      "existingArabicDraft": "سأل توماس فلاناغان: «متى وصل آخر قطار من ليفربول؟»"
+    }
+  ],
+  "proposedArabic": [
+    {
+      "index": 0,
+      "ar": "حان الوقت لنروي كيف حدث ذلك التغيير في الرأي العام الإنجليزي عندما تبيّن أن سارق البنك الحقيقي، المدعو جيمس ستراند، قد أُلقي القبض عليه في اليوم السابع عشر من ديسمبر في إدنبرة. وقبل ثلاثة أيام، كان فيلياس فوج مجرمًا تطارده الشرطة باستماتة؛ أما الآن فأصبح نبيلًا محترمًا يواصل رحلته العجيبة حول العالم بدقة رياضية."
+    },
+    {
+      "index": 1,
+      "ar": "استأنفت الصحف نقاشاتها حول الرهان؛ واستعاد كل أولئك الذين وضعوا رهاناتهم، لصده أو لصالحه، اهتمامهم وكأنما بسحر ساحر؛ وعادت \"سندات فيلياس فوج\" قابلة للتداول من جديد، وعُقدت العديد من الرهانات الجديدة. وارتفع اسم فيلياس فوج مجددًا ليصل إلى سعر ممتاز في البورصة."
+    },
+    {
+      "index": 2,
+      "ar": "قضى أصدقاؤه الخمسة في نادي الإصلاح هذه الأيام الثلاثة في حالة ترقب محموم. هل سيظهر فيلياس فوج، الذي نسوه، أمام أعينهم مجددًا! أين كان في هذه اللحظة؟ كان السابع عشر من ديسمبر، يوم القبض على جيمس ستراند، هو اليوم السادس والسبعين منذ مغادرة فيلياس فوج، ولم يُتلقَ أي خبر عنه. أكان قد مات؟ هل تخلّى عن السعي، أم أنه كان يواصل رحلته على طول الطريق المتفق عليه؟ وهل سيظهر يوم السبت، الحادي والعشرين من ديسمبر، في تمام الساعة التاسعة إلا ربعًا مساءً، على عتبة صالة نادي الإصلاح؟"
+    },
+    {
+      "index": 3,
+      "ar": "لا يمكن وصف القلق الذي عاشه مجتمع لندن طوال ثلاثة أيام. أُرسلت البرقيات إلى أمريكا وآسيا بحثًا عن أخبار فيلياس فوج. وأُرسل الرسل إلى المنزل الكائن في شارع سافيل رو صباحًا ومساءً. بلا خبر. ولم تكن الشرطة على علم بما آلت إليه حال المحقق فيكس، الذي اقتفى أثرًا خاطئًا على نحو مؤسف. ومع ذلك، ازدادت الرهانات عددًا وقيمة. وكان فيلياس فوج، مثل حصان سباق، يقترب من منعرجه الأخير. ولم تعد السندات تُسعَّر بأقل من مئة تحت القيمة الاسمية، بل بعشرين، وبعشرة، وبخمسة؛ حتى إن اللورد ألبرمارل العجوز المشلول راهن بصوته لصالح فوزه."
+    },
+    {
+      "index": 4,
+      "ar": "تجمّع حشد كبير في شارع بال مول والشوارع المجاورة يوم السبت مساءً؛ وبدوا كأنهم جموع من السماسرة المستقرين بصفة دائمة حول نادي الإصلاح. وتعطلت حركة المرور، وكانت النزاعات والنقاشات والمعاملات المالية تجري في كل مكان. وواجهت الشرطة صعوبة بالغة في إبعاد الحشد، ومع اقتراب الساعة التي كان متوقعًا فيها وصول فيلياس فوج، بلغ التوتر ذروته."
+    },
+    {
+      "index": 5,
+      "ar": "كان خصوم فيلياس فوج الخمسة قد اجتمعوا في الصالة الكبرى للنادي. جون سوليفان وصموئيل فالنتين، المصرفيان؛ أندرو ستيوارت، المهندس؛ غوتييه رالف، مدير بنك إنجلترا؛ وتوماس فلاناغان، صانع الجعة، انتظروا جميعًا بقلق شديد."
+    },
+    {
+      "index": 6,
+      "ar": "عندما أشارت الساعة إلى الثامنة وعشرين دقيقة، نهض أندرو ستيوارت قائلًا: «أيها السادة، في غضون عشرين دقيقة سيكون الوقت المتفق عليه بين السيد فوج وبيننا قد انقضى»."
+    },
+    {
+      "index": 7,
+      "ar": "سأل توماس فلاناغان: «في أي وقت وصل القطار الأخير القادم من ليفربول؟»"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "independentAiChecks": [
+    {
+      "index": 0,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 1,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 2,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 3,
+      "adequate": false,
+      "issues": "تمت ترجمة bet even كـ 'راهن بصوته' والصحيح هو رهان متكافئ أو بدون فرق."
+    },
+    {
+      "index": 4,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 5,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 6,
+      "adequate": true,
+      "issues": ""
+    },
+    {
+      "index": 7,
+      "adequate": true,
+      "issues": ""
+    }
+  ],
+  "autoPublishAllowed": false,
+  "needsHumanReview": true
+}
