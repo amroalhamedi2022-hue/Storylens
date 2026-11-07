@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_079_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-83fb6794637d3246.webp",
+  "imageSha256": "e69ed02f747501bf03489366f1320648a1e3909c7a08bc1e8b0a8197e458ea28",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line drawing depicting a man and a woman carrying a large, cluttered handcart or barrow between them. The man is on the left, wearing a hat and vest, while the woman is on the right, wearing a hat and apron. The cart is piled high with household items including a clock, a chair, a basket, and various papers or books.",
+    "visualObjectsEn": "Handcart, clock, chair, basket, papers, books, clothing, hats.",
+    "recognizableCharactersOrPeopleEn": "An adult man and an adult woman.",
+    "uncertaintyNotes": "The exact historical context or specific narrative purpose of the illustration is unknown. The style is consistent with late 19th or early 20th-century satirical or editorial cartoons."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 38,
+    "exactSourceQuotation": "one husband and wife were even carrying a small outhouse door between them, with some of their household goods piled thereon.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a man and woman carrying a cluttered handcart piled with household items like a clock and chair. While the text mentions an outhouse door, the description of a couple carrying household goods on a makeshift cart aligns with the visual theme of refugees fleeing with their belongings during the panic described in Chapter 12.",
+    "suggestedAltArNotApproved": "A man and woman struggling to push a heavily loaded handcart piled with household furniture and personal items during the mass exodus.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a man and a woman carrying a cluttered handcart or barrow piled with furniture, a clock, and household items.",
+    "visualContradictions": "The passage specifically describes a husband and wife carrying a small outhouse door between them with household goods piled thereon, whereas the image shows them carrying a wheeled handcart/barrow.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

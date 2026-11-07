@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_078_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-9250c31784791120.webp",
+  "imageSha256": "49c567b0dbdd558158258f9e3e2ba457867fffea081bb141b0ddf8a0fa2e97c7",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black-and-white ink illustration depicting two men standing on opposite sides of a table. The man on the left is a younger individual in a military-style uniform with a cap. The man on the right is an older, balding man wearing glasses and a long coat. Between them on the table are several small, potted plants. The older man is gesturing toward the plants with his hand, while the younger man appears to be listening or responding with a gesture of his own.",
+    "visualObjectsEn": "A wooden table with a drawer, several small potted plants, a military uniform with a cap, a long coat, and eyeglasses.",
+    "recognizableCharactersOrPeopleEn": "A young man in a military uniform and an older man with glasses.",
+    "uncertaintyNotes": "The exact historical context, the specific identity of the individuals, and the nature of the interaction (e.g., whether it is a scientific experiment, a botanical inspection, or a casual conversation) are not explicitly stated and remain open to interpretation."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

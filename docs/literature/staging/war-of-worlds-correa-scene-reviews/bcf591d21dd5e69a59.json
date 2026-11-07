@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_086_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-bcf591d21dd5e69a.webp",
+  "imageSha256": "05b0ca27f53f7b390ee87ba0928e558e0fded8f20f32b81f74f7f8fa6f881281",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting two large, mechanical, tripod-like machines moving across a landscape. The machines are surrounded by large, billowing clouds of smoke or dust. The style is reminiscent of late 19th-century or early 20th-century pen-and-ink book illustrations.",
+    "visualObjectsEn": "Two mechanical tripod machines with metallic bodies, articulated legs, and hood-like tops; large clouds of smoke or dust; a flat, barren ground surface.",
+    "recognizableCharactersOrPeopleEn": "None. The figures are entirely mechanical.",
+    "uncertaintyNotes": "The exact nature of the machines is ambiguous, though they appear to be science fiction constructs. The medium is clearly a printed illustration, likely a woodcut or pen-and-ink drawing, but the specific artist or publication date is not identifiable from the image alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 10,
+    "paragraphIndexZeroBased": 14,
+    "exactSourceQuotation": "Machine it was, with a ringing metallic pace, and long, flexible, glittering tentacles (one of which gripped a young pine tree) swinging and rattling about its strange body. It picked its road as it went striding along, and the brazen hood that surmounted it moved to and fro with the inevitable suggestion of a head looking about. Behind the main body was a huge mass of white metal like a gigantic fisherman’s basket, and puffs of green smoke squirted out from the joints of the limbs as the monster swept by me.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts tripod machines with hood-like tops and smoke, which aligns perfectly with the description of the fighting-machine in Chapter 10, specifically the mention of the 'brazen hood' and 'puffs of green smoke' from the joints.",
+    "suggestedAltArNotApproved": "A 1906 illustration by Henrique Alvim Corrêa showing two Martian fighting-machines striding across a landscape, emitting puffs of smoke from their mechanical joints.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts the Martian fighting-machines (tripods) with a brazen hood-like top, flexible glittering tentacles, a body, and large clouds of smoke or dust, which matches the description of the Thing in the passage.",
+    "visualContradictions": "None significant; it closely matches the description of the strange machine with its tentacles and hood.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

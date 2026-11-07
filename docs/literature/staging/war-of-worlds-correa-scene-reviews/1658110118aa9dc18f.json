@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_087_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-1658110118aa9dc1.webp",
+  "imageSha256": "9cdda0f597ac335338b45b9f12f9267f48161ba329fe1918ce28b1bf74903d9c",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting two men in an outdoor setting near a wooden fence. On the left, a shirtless, disheveled man with messy hair stands with his hands on his hips, looking down. On the right, an older, formally dressed man sits on a low wall or ledge, gesturing upward with one finger as if speaking or lecturing. The style is reminiscent of 19th or early 20th-century book illustration.",
+    "visualObjectsEn": "Wooden picket fence, low stone or brick wall, grass, bare branches, clothing including trousers and a jacket.",
+    "recognizableCharactersOrPeopleEn": "Two adult males: one younger and shirtless with unkempt hair, one older and dressed in a dark coat.",
+    "uncertaintyNotes": "The exact historical context, specific identities of the figures, and the precise nature of their interaction are not explicitly stated in the image and remain open to interpretation."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 10,
+    "paragraphIndexZeroBased": 24,
+    "exactSourceQuotation": "he lay crumpled up close to the fence, as though he had been flung violently against it.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a man lying or sitting near a fence and a wall, which aligns with the description of a man found 'crumpled up close to the fence' in Chapter 10. While the illustration shows two men, the presence of the fence and the specific positioning of a figure near it provides a strong visual anchor to this passage.",
+    "suggestedAltArNotApproved": "An illustration showing a man lying near a wooden fence and a low stone wall, with another man standing nearby, referencing the discovery of a body in Chapter 10 of The War of the Worlds.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows two living men interacting near a fence: one standing shirtless and looking down, and the other sitting upright and gesturing with a finger.",
+    "visualContradictions": "The passage describes stumbling upon a single dead or unconscious man lying crumpled up on the ground near a fence by a flash of lightning. The image depicts two active, living men standing and sitting upright, which directly contradicts the dead body and solitary narrator perspective described.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
