@@ -1,0 +1,32 @@
+name: Lingua Tales - original 1903 Townsend source and rights CI
+on:
+  pull_request:
+    paths:
+      - 'tools/intake_sign_four_townsend_1903.py'
+      - 'tools/test_sign_four_townsend_1903.py'
+      - 'tools/test_sign_four_townsend_scene_lead.py'
+      - 'docs/literature/staging/sign-four-townsend-1903-period-plates/**'
+      - 'tools/intake_verne_commons_period_gallery.py'
+      - 'tools/report_chapter_art_progress.py'
+      - '.github/workflows/sign-four-1903-*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-real-source-only-1903-intake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact pinned source verification dependencies
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0
+      - name: Check real original image whitelist, local data signature and rights
+        run: |
+          python tools/test_sign_four_townsend_1903.py
+          python tools/test_sign_four_townsend_scene_lead.py
+          python tools/report_chapter_art_progress.py
