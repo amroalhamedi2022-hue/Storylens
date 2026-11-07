@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_39.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-3181bcad70b0ea48.webp",
+  "imageSha256": "c0105623ed1821f156dc694caf0d94f97060ff1cb6df7973b8e3dc9fe6b2865f",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a group of men on a wooden dock or pier near a body of water with mountains in the background. One man stands in the center with his arms raised high above his head. Two other men are seated or standing near a small boat moored at the dock. Several large birds, resembling pelicans, are on the dock in the foreground, and birds are flying in the sky.",
+    "visualObjectsEn": "Wooden dock, small boat, wooden barrel, luggage or crates marked with 'B' and '156', pelicans, flying birds, mountains, sky with clouds.",
+    "recognizableCharactersOrPeopleEn": "Three men dressed in 19th-century style clothing, including hats and coats. One man is standing with arms raised, another is standing with his back to the viewer, and a third is seated in the boat.",
+    "uncertaintyNotes": "The exact identity of the figures and the specific geographic location are not provided in the image. The style is consistent with 19th-century book illustrations, but the specific source is not identified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 20,
+    "paragraphIndexZeroBased": 63,
+    "exactSourceQuotation": "they returned to the wharf",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The scene depicts men on a wooden dock near a boat, which aligns with the characters returning to the wharf in Hong Kong to board the Tankadere. The presence of luggage and the nautical setting matches the narrative context of the characters preparing for their departure from the wharf.",
+    "suggestedAltArNotApproved": "A group of men on a wooden pier in Hong Kong, with a small boat and luggage, preparing for a voyage.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows characters at a wharf with luggage, a small boat, and men gesturing or preparing to board, aligning with the return to the wharf after visiting the police station and hotel as described in the passage.",
+    "visualContradictions": "None.",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.9,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

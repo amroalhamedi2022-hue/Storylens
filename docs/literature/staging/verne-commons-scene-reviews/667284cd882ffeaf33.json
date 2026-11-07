@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_41.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-667284cd882ffeaf.webp",
+  "imageSha256": "ab97c4ecc44b36d0742380e6f9bc40f3810dd7be6469fe44ff52ff208d928746",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting the interior of a narrow, cabin-like space, possibly on a ship or train. A man in a coat and head covering stands in the foreground, leaning over a lower bunk. Another man is lying in the upper bunk, looking down at him. Two other figures wearing hats and coats stand in the background, partially obscured by shadows. The style is consistent with 19th-century book illustrations.",
+    "visualObjectsEn": "Bunk beds with metal frames and curtains, wooden floorboards, a ceiling light fixture, coats, hats, and bedding.",
+    "recognizableCharactersOrPeopleEn": "Four adult males: one standing in the foreground, one lying in an upper bunk, and two standing in the background.",
+    "uncertaintyNotes": "The exact setting (ship cabin vs. train carriage) is not explicitly stated, though the bunk arrangement suggests a maritime or travel context. The specific identities of the individuals are not provided."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 33,
+    "paragraphIndexZeroBased": 50,
+    "exactSourceQuotation": "Have the interior seats, bunks, and frames pulled down, and burn them.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The scene depicts a narrow cabin interior with bunk beds, which aligns with the specific mention of 'bunks' and 'frames' in the source text. While the text refers to burning them, the visual setting of a cramped cabin with bunk furniture is the most plausible match among the provided options.",
+    "suggestedAltArNotApproved": "A black and white engraving of a cramped ship or train cabin interior featuring bunk beds with metal frames and curtains, with four men present in the space.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly illustrates a scene inside the train carriage where interior wooden fittings, bunks, and frames are being examined and dismantled or prepared for burning to fuel the train, matching the context of ordering interior seats and bunks to be pulled down and burned.",
+    "visualContradictions": "None.",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

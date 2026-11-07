@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_40.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-06bdbd5208fb1904.webp",
+  "imageSha256": "18b9710b033d46a6af158b72595a3dad5480d2a346dbfd85827a346118097db8",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a chaotic street scene with a large crowd. In the foreground, a man in a top hat is physically restraining or struggling with another man who is bent over. A woman stands nearby watching the struggle. In the background, there is a long building with many windows, a large banner hanging from a pole, and a figure perched atop a lamp post or monument. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "Top hats, long coats, banner, lamp post, building with windows, crowd of people, stone steps.",
+    "recognizableCharactersOrPeopleEn": "A man in a top hat restraining another man, a woman standing beside them, a crowd of onlookers, a figure on a lamp post.",
+    "uncertaintyNotes": "The specific historical event or narrative context is not explicitly stated in the image. The exact nature of the struggle (arrest, fight, or rescue) is ambiguous."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 17,
+    "exactSourceQuotation": "The crowd swayed back, the banners and flags wavered, disappeared an instant, then reappeared in tatters.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The scene description mentions a chaotic street scene with a large crowd, banners, and a struggle, which aligns with the description of the 'human mass' and 'swaying' crowd in the provided text from Chapter 25.",
+    "suggestedAltArNotApproved": "A chaotic street scene in San Francisco during a political rally, featuring a struggling man in a top hat amidst a dense crowd, banners, and onlookers.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a dense, chaotic crowd with raised fists and hands voting, banners and flags wavering and in tatters, steps in the foreground, and figures with black hats merging into a tumultuous human surge as described in the passage.",
+    "visualContradictions": "None.",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

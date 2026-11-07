@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_42.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-301d8c1d54d260d7.webp",
+  "imageSha256": "ace88460a445dc806a4f084ecb646de0f8ba52bad56b223b4d99cf5064503680",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a steam locomotive train traveling through a vast, dense herd of American bison on a grassy plain at sunrise or sunset. The sun is low on the horizon, casting rays of light across the sky. The train is partially obscured by the herd and steam, while the bison occupy the foreground and middle ground, some appearing to move away from or alongside the tracks.",
+    "visualObjectsEn": "Steam locomotive, train cars, large herd of bison, tall grass, horizon line, sun with radiating light beams, smoke from the locomotive chimney.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact historical origin or specific publication source of this engraving is not identified. The exact time of day (sunrise vs. sunset) is ambiguous due to the monochromatic nature of the print."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 26,
+    "paragraphIndexZeroBased": 17,
+    "exactSourceQuotation": "Sometimes a great herd of buffaloes, massing together in the distance, seemed like a moveable dam. These innumerable multitudes of ruminating beasts often form an insurmountable obstacle to the passage of the trains; thousands of them have been seen passing over the track for hours together, in compact ranks. The locomotive is then forced to stop and wait till the road is once more clear.",
+    "confidenceModelEstimateNotVerified": 1.0,
+    "modelRationaleNotVerified": "The engraving depicts a steam locomotive encountering a large herd of bison on a plain, which directly corresponds to the narrative description in Chapter 26, paragraph 17, where the text describes a 'great herd of buffaloes' acting as an 'insurmountable obstacle' that forces the locomotive to stop.",
+    "suggestedAltArNotApproved": "A black and white engraving of a steam train stopped on tracks by a massive herd of American bison on a vast prairie at sunset.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts a steam locomotive train stopped on tracks as a massive, dense herd of buffaloes (bison) blocks its path across the plains, exactly matching the description in the passage of the train forced to wait for a herd of buffaloes forming an insurmountable obstacle.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
