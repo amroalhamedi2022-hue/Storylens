@@ -64,8 +64,12 @@ class AuthenticNarrativeSections(unittest.TestCase):
                 self.assertEqual(hashlib.sha256(full[start:end]).hexdigest(),
                                  row["sourceHtmlSliceSha256"])
                 self.assertGreater(len(row["sourcePassageLead"]), 100)
-                self.assertIn("EXACT_ORIGINAL_NARRATIVE_UNIT",
-                              row["imageStatus"])
+                if row["chapterOneBased"] == 4:
+                    self.assertEqual(row["imageStatus"],
+                                     "REAL_ORIGINAL_SCENE_MATCHED_CANDIDATE__NOT_APPROVED_FOR_APP")
+                else:
+                    self.assertIn("EXACT_ORIGINAL_NARRATIVE_UNIT",
+                                  row["imageStatus"])
         for a, b in zip(doc["chapters"], doc["chapters"][1:]):
             self.assertLessEqual(a["sourceHtmlEndByteExclusive"],
                                  b["sourceHtmlStartByte"])
