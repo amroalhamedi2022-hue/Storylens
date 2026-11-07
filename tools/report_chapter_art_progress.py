@@ -628,6 +628,8 @@ def generate() -> dict:
                     "sourceState": "19 byte-verified Arabic source sections (4 intro, 15 narrative); 3 actual c.1220 original-colour manuscript folios source-scene matched (geese/tortoise, crow/mouse, crow council); remaining 14 folios, full contextual English and all territorial/human release approval pending",
                     "sourceMatchedHistoricFolioCandidatesNotApproved": 3,
                     "sourceUnassignedOriginalColourFolioFiles": 14,
+                    "originalColourArchiveVisualDuplicateCropGroups": 4,
+                    "originalColourDistinctScenesUpperBoundFromVerifiedCrops": 13,
                     "originalArabicSourceSectionCountNotChapterCardCount": real_sections,
                     "sourcePrefatorySectionCount": 4,
                     "sourceNarrativeSectionCount": 15,
