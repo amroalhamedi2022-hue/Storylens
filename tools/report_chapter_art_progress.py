@@ -284,6 +284,97 @@ def verify_unpublished_gutenberg_edition(slug: str, volume: int | None = None) -
             "sourceState": "complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance"}
 
 
+def verify_woman_white_authentic_period_art() -> dict:
+    """10 uniquely SHA-audited mixed-edition original sources: eight 1903
+    Macklin novel plates, Gilbert's 1861 frontispiece, 1860 publisher cover.
+    Historical cover is NOT counted as a per-chapter illustration.
+    Never grant distribution/scene/editorial approval from a Commons label.
+    """
+    archive = STAGING / "woman-white-original-1860-1903-plates" / "manifest.json"
+    result = {
+        "unassigned1903MacklinIllustrations": 0,
+        "unassigned1861GilbertFrontispieces": 0,
+        "historical1860PublisherBookCovers": 0,
+        "archivedLocalHistoricArt": 0,
+    }
+    if not archive.exists():
+        return result
+    doc = jload(archive)
+    macklin = {
+        f"File:Illustration by Thomas Eyre Macklin for The Woman in White ({i}).jpg"
+        for i in range(1, 9)
+    }
+    gilbert = "File:The Woman In White - Illustration.jpg"
+    cover = "File:The Woman In White - Cover.jpg"
+    allowed = macklin | {gilbert, cover}
+    facts = {
+        "macklin": (1903, "Thomas Eyre Macklin (1867–1943)",
+                    "ORIGINAL_1903_NOVEL_LITHOGRAPH__NO_VERIFIED_CHAPTER_SCENE"),
+        "gilbert": (1861, "Sir John Gilbert (1817–1897)",
+                    "ORIGINAL_1861_ONE_VOLUME_BOOK_FRONTISPIECE__UNASSIGNED"),
+        "cover": (1860, "Harper & Brothers, New York (publisher)",
+                  "ORIGINAL_1860_BOOK_COVER__NOT_A_CHAPTER_THUMBNAIL"),
+    }
+    if (doc.get("schemaVersion") != 1
+            or doc.get("category") != "Category:The Woman in White"
+            or doc.get("originalEditionYear") is not None
+            or doc.get("sourceTextWorkId") != "the-woman-in-white"
+            or doc.get("publicationApproved") is not False
+            or doc.get("humanSceneReviewComplete") is not False
+            or doc.get("chapterSceneMatchingComplete") is not False
+            or len(doc.get("images", [])) > 10):
+        raise ValueError("Woman in White originals mixed-edition or rights verification failed")
+    seen_names, sha1s, webps = set(), set(), set()
+    for image in doc["images"]:
+        name = image.get("wikiFile")
+        if name not in allowed or name in seen_names:
+            raise ValueError("Unexpected or repeated original Woman in White artwork file")
+        kind = "macklin" if name in macklin else ("gilbert" if name == gilbert else "cover")
+        year, artist, classification = facts[kind]
+        raw_sha = image.get("originalCommonsSHA1MetadataOnly")
+        encoded_sha = image.get("webpSha256")
+        source_sha = image.get("downloadedResourceSha256")
+        license_name = image.get("individualCommonsLicense", "")
+        if (not isinstance(raw_sha, str) or not re.fullmatch("[0-9a-f]{40}", raw_sha)
+                or not isinstance(source_sha, str) or not re.fullmatch("[0-9a-f]{64}", source_sha)
+                or not isinstance(encoded_sha, str) or not re.fullmatch("[0-9a-f]{64}", encoded_sha)
+                or raw_sha in sha1s or encoded_sha in webps
+                or image.get("sourceArtworkYear") != year
+                or image.get("originalCreator") != artist
+                or image.get("artworkClassificationStatus") != classification
+                or not image.get("sourceEdition")
+                or not isinstance(license_name, str)
+                or not re.search("public.domain|^pd(?:-|$)|cc0", license_name, re.IGNORECASE)
+                or not str(image.get("commonsPage", "")).startswith("https://commons.wikimedia.org/wiki/File:")
+                or not str(image.get("downloadURL", "")).startswith("https://upload.wikimedia.org/")
+                or image.get("sceneChapterMatchStatus") != "UNREVIEWED__NO_CHAPTER_CARD"
+                or image.get("rightsStatus") != "PENDING_INDIVIDUAL_TERRITORIAL_AND_EDITORIAL_REVIEW"
+                or image.get("editoriallyApproved") is not False
+                or image.get("publishedToApp") is not False
+                or image.get("altAr") is not None or image.get("altEn") is not None
+                or image.get("cropped") is not False
+                or image.get("recolouring") is not False):
+            raise ValueError("Woman in White historical scan lacks source, hash or rights quarantine: " + str(name))
+        relative = str((archive.parent / image["localPath"]).relative_to(ROOT))
+        check_binary(relative, encoded_sha)
+        seen_names.add(name)
+        sha1s.add(raw_sha)
+        webps.add(encoded_sha)
+        if kind == "macklin":
+            result["unassigned1903MacklinIllustrations"] += 1
+        elif kind == "gilbert":
+            result["unassigned1861GilbertFrontispieces"] += 1
+        else:
+            result["historical1860PublisherBookCovers"] += 1
+    if doc.get("allOriginalTenSourceFilesArchived") is not (seen_names == allowed):
+        raise ValueError("Woman in White exact source file completeness flag differs from actual files")
+    result["archivedLocalHistoricArt"] = (
+        result["unassigned1903MacklinIllustrations"]
+        + result["unassigned1861GilbertFrontispieces"]
+    )  # The actual title-bearing book cover is tracked separately.
+    return result
+
+
 def verify_arabian_wikisource_arabic_segments() -> dict:
     """Keep original four Arabic parts distinct from Burton's ten English volumes."""
     archive = STAGING / "arabian-nights-arabic-wikisource-20261105"
@@ -680,8 +771,20 @@ def generate() -> dict:
     # individual Nights / story scenes or approved contextual bilingual parallels.
     woman = STAGING / "user-requested-classics-20261105" / "the-woman-in-white"
     if woman.is_dir():
-        rows.append({"bookId": "the-woman-in-white", "title": "The Woman in White",
-                     **verify_unpublished_gutenberg_edition("the-woman-in-white")})
+        staged = verify_unpublished_gutenberg_edition("the-woman-in-white")
+        original_illustrations = verify_woman_white_authentic_period_art()
+        staged.update(original_illustrations)
+        staged["sourceState"] = (
+            "complete English 1860 novel source SHA-pinned; "
+            + str(original_illustrations["unassigned1903MacklinIllustrations"])
+            + " genuine 1903 Macklin lithographs and "
+            + str(original_illustrations["unassigned1861GilbertFrontispieces"])
+            + " real 1861 frontispiece(s), plus "
+            + str(original_illustrations["historical1860PublisherBookCovers"])
+            + " genuine 1860 book cover(s) locally archived; "
+            "no exact chapter-scene map, full edited Arabic, territorial rights or editorial approval"
+        )
+        rows.append({"bookId": "the-woman-in-white", "title": "The Woman in White", **staged})
     for volume in range(1, 11):
         slug = f"arabian-nights-burton-v{volume:02d}"
         folder = STAGING / "user-requested-classics-20261105" / slug
@@ -766,6 +869,13 @@ def markdown(report: dict) -> str:
           str(next((b.get("unassignedHistorical1903TownsendImageFiles", 0) for b in report["books"]
                     if b["bookId"] == "the-sign-of-the-four"), 0)) +
           "** local originals, NOT chapter cards.",
+        "- The Woman in White original historic art (1903 Macklin + 1861 Gilbert): **" +
+          str(next((b["archivedLocalHistoricArt"] for b in report["books"]
+                    if b["bookId"] == "the-woman-in-white"), 0)) +
+          "** individually SHA-verified scans; actual original 1860 book covers: **" +
+          str(next((b.get("historical1860PublisherBookCovers", 0) for b in report["books"]
+                    if b["bookId"] == "the-woman-in-white"), 0)) +
+          "**; all chapter-image placement and territorial release rights pending.",
         "- GitHub handoff: docs/handoffs/LINGUA_TALES_HANDOFF_CURRENT.md.",
         "- Story content automation is separate from the scheduled GitHub report; inspect latest Actions SHA and output before claiming any new image.",
         "- This inventory does NOT assert that a chapter card exists for any staged book lacking a verified chapter-to-image map, even if its archive contains hundreds of figures.",
