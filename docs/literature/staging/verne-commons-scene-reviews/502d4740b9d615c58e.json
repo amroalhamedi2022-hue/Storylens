@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_36.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-502d4740b9d615c5.webp",
+  "imageSha256": "27e427cb50941958666241e06acaf3bbae90e99e6b4efb2b2b9fe2c3b936da4a",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a group of people in traditional Japanese attire standing in front of a wooden building with a tiled roof. A central male figure in a dark robe and a cap stands in the foreground, looking to the right. To his left, a woman in a kimono stands near a wooden crate. To his right, two other men, one appearing to be a samurai with a sword at his waist, stand near the entrance of the building. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "Wooden building, tiled roof, wooden crate, traditional Japanese clothing (kimono, hakama), swords, trees in the background, signage with Japanese characters.",
+    "recognizableCharactersOrPeopleEn": "A central man wearing a cap and dark robe, a woman in a kimono, a man with a sword (samurai-style), and another man standing nearby.",
+    "uncertaintyNotes": "The specific identity of the individuals and the exact location are not explicitly stated in the image. The historical context is inferred from the artistic style and clothing, but cannot be verified without external documentation."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 22,
+    "paragraphIndexZeroBased": 23,
+    "exactSourceQuotation": "police and customhouse officers with pointed hats encrusted with lac and carrying two sabres hung to their waists",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The image depicts a scene in Japan featuring individuals in traditional attire, including a man with a sword (samurai-style) and others in Japanese clothing. The selected paragraph explicitly describes Japanese police and customhouse officers carrying two sabres at their waists, which aligns with the visual elements of the engraving.",
+    "suggestedAltArNotApproved": "A 19th-century engraving of a Japanese street scene featuring a central man in a robe, a woman, and men with swords, illustrating the diverse population of Japan as described in the text.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts Passepartout in his strange native Japanese theatrical costume (wearing a cap, dark robe, and carrying a fan/pouch) standing in a crowded Japanese street scene alongside local inhabitants including women in kimonos and men with swords, directly illustrating his observations of the Japanese people and street life described in the passage.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

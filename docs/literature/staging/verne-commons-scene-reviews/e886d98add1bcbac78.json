@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_37.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-e886d98add1bcbac.webp",
+  "imageSha256": "b02a7cd5ed93010e65d91e2706e1db1a8db06ce7ddb6e74515a4d1bd5ec9f5c3",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A colored engraving depicting a performance in a multi-tiered wooden theater. In the center, a group of acrobats are performing a complex balancing act, with one person at the top holding an umbrella and juggling balls, while others are suspended or balanced on poles. A large audience is watching from the floor level and from tiered balconies on the sides.",
+    "visualObjectsEn": "Wooden theater structure, tiered balconies, acrobats, poles, umbrella, juggling balls, fans held by audience members, a bowl on a table in the foreground.",
+    "recognizableCharactersOrPeopleEn": "A large crowd of spectators dressed in traditional East Asian-style clothing, and a troupe of acrobats performing in the center.",
+    "uncertaintyNotes": "The specific cultural or historical origin of the theater is not explicitly labeled, though the architectural style and clothing suggest an East Asian setting, likely Japanese or Chinese. The exact nature of the performance is a stylized artistic representation."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 23,
+    "paragraphIndexZeroBased": 41,
+    "exactSourceQuotation": "It is useless to describe the astonishing performances of the acrobats and gymnasts. The turning on ladders, poles, balls, barrels, etc., was executed with wonderful precision.",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The scene description explicitly mentions a performance in a theater with acrobats using poles, balls, and balancing acts, which directly corresponds to the text describing the 'astonishing performances of the acrobats' involving 'ladders, poles, balls'.",
+    "suggestedAltArNotApproved": "A colored engraving of a Japanese theater performance featuring a troupe of acrobats balancing on poles and juggling balls before a large audience in tiered balconies.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows acrobats performing complex balancing and juggling acts on poles and with umbrellas, exactly matching the description of acrobats and gymnasts executing turning on ladders, poles, balls, and other objects with wonderful precision.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

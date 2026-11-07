@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_38.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-145a6426e67bf27a.webp",
+  "imageSha256": "789df0ee49ac344252883b63b621fc3395f12fff3acf9ad7eae86773d35c62fb",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a group of men on the deck of a sailing ship. A central figure with large, feathered wings is entering a doorway or cabin entrance. A man stands to the left of the doorway, and a crowd of men in hats and rough clothing watches from the right. In the background, on a raised deck level, two other men are visible, one appearing to work at a table or instrument.",
+    "visualObjectsEn": "Sailing ship deck, wooden planks, cabin doorway, large feathered wings, rigging, ropes, ship's mast, hats, clothing, table or instrument.",
+    "recognizableCharactersOrPeopleEn": "A winged figure, a man standing by the doorway, a group of onlookers, two men in the background on an upper deck.",
+    "uncertaintyNotes": "The nature of the winged figure is ambiguous; it could be a costume, a mythological representation, or a symbolic element. The specific historical or literary context is not provided and cannot be confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 21,
+    "paragraphIndexZeroBased": 6,
+    "exactSourceQuotation": "Above her head rustled the white sails, which seemed like great white wings.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The engraving depicts a figure with large, feathered wings on a ship's deck. While the text describes sails as 'great white wings' metaphorically, this is the only passage in the provided list that explicitly links the visual concept of 'wings' to the setting of a 'sailing ship' and 'deck'. The visual representation of the wings in the engraving is likely a literal interpretation of this specific literary metaphor.",
+    "suggestedAltArNotApproved": "A black and white engraving showing a ship's deck with a figure appearing to have large wings, referencing the metaphorical description of sails as wings in the text.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a figure with large feathered wings entering a cabin doorway on a ship deck, surrounded by a crowd of onlookers, which does not match the passage.",
+    "visualContradictions": "The passage describes Phileas Fogg standing erect on deck like a sailor and a young woman seated aft looking out at the ocean. The image instead depicts a figure with wings and a crowd of men on a ship deck, lacking Phileas Fogg in this pose and the young woman.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

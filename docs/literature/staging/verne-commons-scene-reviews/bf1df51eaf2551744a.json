@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_35.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-bf1df51eaf255174.webp",
+  "imageSha256": "23a99be616d6cf03c5aa8a96b22f06f1678de147e7fc0dd366802b9a726be92c",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white woodcut-style engraving depicting a tranquil, marshy landscape at dusk or dawn. In the foreground, a person wearing a wide-brimmed hat lies prone on the ground, observing a shallow body of water. Another figure, dressed in traditional East Asian-style robes and a cap, stands on the left bank looking toward the water. Several long-legged birds, resembling cranes or herons, are wading in the water. A small wooden structure on stilts stands on the left, and a path leads into the distance where a small, indistinct figure is walking. The scene is framed by dense trees and foliage, with birds flying in the sky.",
+    "visualObjectsEn": "Trees, foliage, marshy water, wooden structure on stilts, long-legged birds (cranes/herons), path, sky with birds, rocks.",
+    "recognizableCharactersOrPeopleEn": "A person lying prone in the foreground wearing a wide-brimmed hat; a standing figure in traditional East Asian-style robes and a cap; a small, distant figure walking on a path.",
+    "uncertaintyNotes": "The specific cultural or historical context of the figures' clothing is inferred from visual style but not explicitly identified. The exact time of day (dawn vs. dusk) is ambiguous. The species of the birds is not definitively identifiable."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 22,
+    "paragraphIndexZeroBased": 24,
+    "exactSourceQuotation": "He went on till he found himself in the fields, in the midst of vast rice plantations. There he saw dazzling camellias expanding themselves, with flowers which were giving forth their last colours and perfumes, not on bushes, but on trees, and within bamboo enclosures",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene depicts a marshy landscape with traditional East Asian architecture (bamboo enclosures/stilts) and figures in traditional robes, which aligns with Passepartout's exploration of the Japanese countryside in Chapter 22. The presence of rice plantations and the specific botanical descriptions in the text match the rural, marshy, and cultivated environment shown in the engraving.",
+    "suggestedAltArNotApproved": "A woodcut illustration of a Japanese marshland scene featuring a figure in traditional robes, a stilted structure, and wading birds, reflecting Passepartout's walk through the rice fields of Japan.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts a landscape in Japan with fields, long-legged birds like herons standing near water, trees like cedars and willows matching the description of Passepartout's walk through the fields observing flora and fauna.",
+    "visualContradictions": "None significant; the elements of the natural setting, birds, and figures align directly with the details mentioned in the passage.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
