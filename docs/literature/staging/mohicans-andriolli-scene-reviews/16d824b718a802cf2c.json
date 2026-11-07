@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p421.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-16d824b718a802cf.webp",
+  "imageSha256": "21cf12978caf31caa715cb7e14cfbadfdaa95c1729ee1686ff66f59452bd6538",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a group of Indigenous people gathered outdoors, likely in a council or meeting setting. Several figures are standing while others are seated on the ground. One central standing figure is being gestured toward by another standing man, while others observe. The style is characteristic of 19th-century book illustrations.",
+    "visualObjectsEn": "Engraved lines, figures wearing traditional clothing including cloaks, feathers, and headbands, long spears or staffs held by some figures, rocky or uneven ground, faint landscape background.",
+    "recognizableCharactersOrPeopleEn": "A group of approximately ten to twelve Indigenous men, some with distinct hairstyles and traditional attire, engaged in a formal interaction.",
+    "uncertaintyNotes": "The specific cultural or tribal identity of the figures is not explicitly stated in the image. The exact nature of the interaction (e.g., negotiation, council, or dispute) is inferred from the gestures. The artist's signature 'Andriolli 1843' is visible at the bottom."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "modelOriginalQuotationRejected": true,
+  "modelOriginalQuotationRejectReason": "Model chapter/paragraph/quotation not verifiable verbatim against pinned original candidate excerpt",
+  "suggestedMatch": null,
+  "evidenceStatus": "INVALID_MODEL_SOURCE_QUOTE_REJECTED_NONPUBLISHABLE",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

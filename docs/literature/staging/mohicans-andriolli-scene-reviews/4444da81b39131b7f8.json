@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p439.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-4444da81b39131b7.webp",
+  "imageSha256": "ffc64cfb6d4d45ed5eba9d735bf068f48d7be1f355e6c81ef0b58fdc34c2feda",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a tall man in frontier-style clothing standing outdoors, holding a long rifle upward. A smaller figure, possibly a child or youth, stands with their back to the viewer, reaching up to grasp the barrel of the rifle. In the background, there are trees and what appear to be conical tents or tipis. The style is that of a 19th-century book illustration.",
+    "visualObjectsEn": "Rifle, frontier clothing with fringe, fur-trimmed hat, belt with pouch, trees, conical tents or tipis, rocky ground.",
+    "recognizableCharactersOrPeopleEn": "A tall adult male figure dressed in buckskin-style clothing and a smaller figure seen from behind, possibly a child or youth.",
+    "uncertaintyNotes": "The specific cultural or historical identity of the figures is not explicitly stated in the image, though the clothing and dwellings suggest a North American frontier or indigenous context. The exact nature of the interaction between the two figures is ambiguous."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p413.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-7faabaa6609fdbf0.webp",
+  "imageSha256": "7a48609cb7d179a19631cdbaa44f76edbf51ab6135e34039ce05ccc3b9f7bf9c",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white historical-style engraving depicting a group of people in a rocky, outdoor setting. In the upper section, three figures stand on a raised rocky ledge; the central figure is draped in a cloak and supported by two others. In the lower section, a larger group of people are engaged in a struggle or interaction, with some figures appearing to restrain or pull others. The style is detailed, with cross-hatching typical of 19th-century book illustrations.",
+    "visualObjectsEn": "Rocky terrain, cloaks, feathered headdresses, belts, knives or daggers, tunics, leggings, sandals.",
+    "recognizableCharactersOrPeopleEn": "A group of men, some appearing to be Indigenous North Americans based on their attire and hairstyles, and other figures in European-style clothing, including a woman being held or guided.",
+    "uncertaintyNotes": "The specific cultural or historical identity of the figures is inferred from visual tropes common in 19th-century illustrations; the exact nature of the interaction (whether it is a rescue, an abduction, or a formal procession) is ambiguous without external context. The signature 'Andriolli' is visible in the bottom right corner."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 28,
+    "paragraphIndexZeroBased": 53,
+    "exactSourceQuotation": "At that the door of the lodge in question opened, and three men, issuing from it, slowly approached the place of consultation. They were all aged, even beyond that period to which the oldest present had reached; but one in the centre, who leaned on his companions for support, had numbered an amount of years to which the human race is seldom permitted to attain.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts three figures on a raised rocky ledge, with a central figure draped in a cloak being supported by two others. This matches the description of the aged patriarch in Chapter 28, who is described as being in the center and leaning on his companions for support as they emerge from a lodge.",
+    "suggestedAltArNotApproved": "An engraving showing three elderly Indigenous men walking together; the central figure is very old, draped in a cloak, and supported by the two men on either side of him.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts three aged men issuing from a lodge or standing on a raised area, with the central figure leaning on two companions for support, exactly matching the description of Tamenund and his attendants appearing before the nation.",
+    "visualContradictions": "None.",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

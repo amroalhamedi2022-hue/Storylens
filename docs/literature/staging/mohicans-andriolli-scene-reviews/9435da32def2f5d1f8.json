@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p41.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-9435da32def2f5d1.webp",
+  "imageSha256": "f1e1c31edb76fd0b04a141f118b9d17308d6860300965b8f0bd4974182614ec2",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a forest scene. A man in 18th-century military-style clothing sits on horseback, pointing with his left hand toward the distance. Standing before him is a person dressed in fringed buckskin clothing, holding a long rifle upright with one hand and gesturing with the other. The style is characteristic of 19th-century book illustration.",
+    "visualObjectsEn": "Horse, long rifle, fringed buckskin tunic, military coat with lapels, tricorn hat, powder horn, trees, forest undergrowth.",
+    "recognizableCharactersOrPeopleEn": "A mounted officer in period military attire and a person in frontier-style buckskin clothing.",
+    "uncertaintyNotes": "The specific historical identities of the figures are not provided in the image, though the style suggests a 19th-century depiction of an 18th-century frontier encounter. The signature 'Andriolli 1883' is visible."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 2,
+    "paragraphIndexZeroBased": 8,
+    "exactSourceQuotation": "When they reached the spot where the Indian stood, pointing into the thicket that fringed the military road",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The scene depicts a mounted officer (Major Heyward) and an Indian guide (Magua) in a forest setting. The text in Chapter 2, Paragraph 8 describes the exact moment where the Indian stands and points into the thicket along the military road, which aligns with the visual composition of the engraving.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing a mounted officer in military uniform pointing toward a forest thicket, while an Indian guide in buckskin stands before him, gesturing with his hand.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts Major Heyward mounted on a horse, pointing into the thicket, while an Indian stands before him pointing toward a narrow path into the woods, exactly matching the narrative of the passage.",
+    "visualContradictions": "None.",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
