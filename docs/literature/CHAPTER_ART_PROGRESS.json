@@ -4,10 +4,10 @@
   "scope": "checked-in main only; recovered PR16 historical source is counted only after merged",
   "policy": "at least one distinct locally stored, sourced, chapter-matched and rights-cleared primary image per chapter",
   "counts": {
-    "localCandidateChapterCards": 280,
+    "localCandidateChapterCards": 288,
     "readyChapterCards": 0,
-    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1200,
-    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1200
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1209,
+    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1209
   },
   "books": [
     {
@@ -568,14 +568,32 @@
       "title": "The Woman in White",
       "sourceOriginalSha256": "d4f2546d9fbf4e1115d47e1cf4777ef26416088f525654ff1f091ef3feee5ec2",
       "originalNarrativeWordsClaimFromSource": 246996,
-      "localCandidateChapters": 0,
+      "localCandidateChapters": 8,
       "readyForUICards": 0,
-      "chapterCount": null,
-      "missingImageChapters": null,
-      "missingReadyChapters": null,
-      "archivedLocalHistoricArt": 0,
+      "chapterCount": 62,
+      "missingImageChapters": 54,
+      "missingReadyChapters": 62,
+      "archivedLocalHistoricArt": 9,
       "sourceHashAudit": "BYTE_EXACT_GUTENBERG_SHA256",
-      "sourceState": "complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance"
+      "sourceState": "complete English 1860 novel source SHA-pinned; 8 genuine 1903 Macklin lithographs and 1 real 1861 frontispiece(s), plus 1 genuine 1860 book cover(s) locally archived; no exact chapter-scene map, full edited Arabic, territorial rights or editorial approval",
+      "unassigned1903MacklinIllustrations": 8,
+      "unassigned1861GilbertFrontispieces": 1,
+      "historical1860PublisherBookCovers": 1,
+      "mappedChapterNumbers": [
+        4,
+        8,
+        19,
+        25,
+        31,
+        35,
+        49,
+        58
+      ],
+      "readyChapterNumbers": [],
+      "imageMap": "docs/literature/staging/user-requested-classics-20261105/the-woman-in-white/chapter-image-map.json",
+      "chapterCountUnitLabel": "62 authentic narrative units (59 h3 sections + 3 standalone h2 narratives), not 62 conventional numbered chapters",
+      "originalNarrativeUnitsIncludingNonChapterSections": 62,
+      "sourceSectionClassification": "UNABRIDGED_SOURCE_NARRATIVE_UNITS__EPOCHS_AND_NARRATORS_PRESERVED"
     },
     {
       "bookId": "arabian-nights-burton-v01",

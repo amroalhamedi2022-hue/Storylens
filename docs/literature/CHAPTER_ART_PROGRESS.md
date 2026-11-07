@@ -6,9 +6,9 @@
 
 ## Current totals
 
-- Locally mapped chapter candidates: **280**.
+- Locally mapped chapter candidates: **288**.
 - Chapter cards with both territorial rights and editorial approval: **0**.
-- Verified historical art binaries retained in audited archives (all editions): **1200**; NOT necessarily chapter-aligned.
+- Verified historical art binaries retained in audited archives (all editions): **1209**; NOT necessarily chapter-aligned.
 
 ## Book-by-book audit
 
@@ -31,7 +31,7 @@
 | The Lost World | 16 | 0 | 0 | 16 | full unabridged English original with 16 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending |
 | The Sign of the Four | 12 | 0 | 0 | 12 | full unabridged English original with 12 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending; 8 verified original 1903 Townsend plates in quarantine |
 | Kalila wa Dimna | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
-| The Woman in White | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
+| The Woman in White | 62 authentic narrative units (59 h3 sections + 3 standalone h2 narratives), not 62 conventional numbered chapters | 8 | 0 | 54 | complete English 1860 novel source SHA-pinned; 8 genuine 1903 Macklin lithographs and 1 real 1861 frontispiece(s), plus 1 genuine 1860 book cover(s) locally archived; no exact chapter-scene map, full edited Arabic, territorial rights or editorial approval |
 | Arabian Nights — Burton Volume 01/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
 | Arabian Nights — Burton Volume 02/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
 | Arabian Nights — Burton Volume 03/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
@@ -60,6 +60,7 @@
 - New original Commons period images in quarantine, NOT chapter-mapped: **57**.
 - Original 1906 Correa War of the Worlds files in quarantine, NOT chapter-mapped: **137**.
 - Original F. H. Townsend 1903 *The Sign of Four* chapter-scene-unreviewed engravings: **8** local originals, NOT chapter cards.
+- The Woman in White original historic art (1903 Macklin + 1861 Gilbert): **9** individually SHA-verified scans; actual original 1860 book covers: **1**; all chapter-image placement and territorial release rights pending.
 - GitHub handoff: docs/handoffs/LINGUA_TALES_HANDOFF_CURRENT.md.
 - Story content automation is separate from the scheduled GitHub report; inspect latest Actions SHA and output before claiming any new image.
 - This inventory does NOT assert that a chapter card exists for any staged book lacking a verified chapter-to-image map, even if its archive contains hundreds of figures.
