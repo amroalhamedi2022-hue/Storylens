@@ -51,7 +51,33 @@
       "duplicateHeadingWithinSection": null,
       "sourceOpeningExcerptAr": "وكذلك طالب الآخرة مجتهد في العمل المنجي به روحه لا يقدر على إتمام عمله وإكماله إلا بالعقل الذي هو سبب كل خير ومفتاح كل سعادةٍ. فليس لأحد غنى عن العقل. والعقل مكتسب ب",
       "sourceFilePath": "docs/literature/staging/kalila-arabic-wikisource/kalila.md",
-      "primaryImage": null,
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/kalila-original-colour-miniatures-20261105/plates/kalila-colour-folio-007.webp",
+        "sha256": "d41fc29886fd79ba7eb9dc85e6773b39856572ac45493eebc386c2a74a8b8e3d",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kalila_wa_Dimna_BNF_Arabe_3465,_folio_20v.jpg",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Kalila_wa_Dimna_BNF_Arabe_3465,_folio_20v.jpg",
+        "creator": "Unknown medieval manuscript painter (Egypt or Syria c.1220), BnF Arabe 3465; identity independently unverified",
+        "edition": "Kalila wa Dimna medieval BnF Arabe 3465 illuminated manuscript, folio 20v, c.1220; different from Wikisource-derived Arabic edition",
+        "sourceManuscriptFolio": "20v",
+        "sourceManuscriptURL": "https://commons.wikimedia.org/wiki/Category:Kalila_and_Dimna,_1200-1220_(BNF,_Arabe_3465)",
+        "originalCommonsFile": "File:Kalila wa Dimna BNF Arabe 3465, folio 20v.jpg",
+        "originalSourceLicense": "Public domain",
+        "sourceArabicEditionDifferentFromIllustratedManuscript": true,
+        "imageOriginalColourUnmodified": true,
+        "sourcePassageAr": "فلما دخل عليه كفر وسجد بين يديه. فقال له الملك : يا بروزيه، إن قد اخترتك",
+        "sceneAnchor": "فلما دخل عليه كفر وسجد بين يديه. فقال له الملك : يا بروزيه، إن قد اخترتك",
+        "visualEvidence": "Actual folio 20v shows a seated crowned ruler in blue, a bearded visiting sage addressing him under an arched court, and a servant; image's manuscript labels and source prose both identify the ruler's encounter with Burzawayh. Original scene remains a cross-edition hypothesis pending human manuscript verification.",
+        "sceneVerificationStatus": "ACTUAL_ORIGINAL_COLOUR_FOLIO_VISION_AND_EXACT_ARABIC_STORY_PASSAGE_MATCHED__PENDING_HUMAN_FOLIO_EDITION_AND_RIGHTS_CHECK",
+        "sourceWorkNarrativeSectionOneBased": 2,
+        "altAr": "منمنمة تاريخية ملونة من كليلة ودمنة تُظهر ملكًا متوّجًا يجلس أمام رجل حكيم ذي لحية في مجلس ملكي، ضمن قصة بعثة بروزيه إلى الهند.",
+        "altEn": "Original medieval coloured manuscript illustration of a crowned ruler seated before a bearded counsellor, corresponding to Burzawayh's audience before being sent to India.",
+        "editoriallyApproved": false,
+        "humanEditorApproved": false,
+        "chapterArtPublished": false,
+        "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+        "license": "Individual Commons public-domain metadata recorded, full manuscript attribution and territory-specific rights still pending",
+        "publicationStatus": "STAGING_ONLY_NOT_PUBLISHED"
+      },
       "completeContextualEnglishTranslationVerified": false,
       "chapterSceneImageHumanApproved": false
     },
@@ -378,7 +404,7 @@
       "chapterSceneImageHumanApproved": false
     }
   ],
-  "sourceMatchedHistoricFolioCandidatesNotApproved": 3,
+  "sourceMatchedHistoricFolioCandidatesNotApproved": 4,
   "imageHumanApprovedCount": 0,
   "visualDuplicateCropGroups": [
     {
