@@ -14,7 +14,7 @@ on:
 permissions:
   contents: read
 jobs:
-  keep-all-exact-193293-source-sections:
+  verify-original-arabic-sections:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
