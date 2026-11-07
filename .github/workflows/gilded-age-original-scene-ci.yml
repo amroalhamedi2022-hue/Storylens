@@ -1,0 +1,27 @@
+name: Literature - authentic Gilded Age Chapter XXX railway plate
+on:
+  pull_request:
+    paths:
+      - 'docs/literature/staging/illustrated-five-20261105/the-gilded-age/chapter-image-map.json'
+      - 'tools/test_gilded_age_ch30_original_plate.py'
+      - '.github/workflows/gilded-age-original-scene-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/literature/staging/illustrated-five-20261105/the-gilded-age/chapter-image-map.json'
+      - 'tools/test_gilded_age_ch30_original_plate.py'
+permissions:
+  contents: read
+jobs:
+  verify-original-page-and-rights:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify authentic Gutenberg page, actual local binary, genuine chapter and no approval
+        run: |
+          python tools/test_gilded_age_ch30_original_plate.py
+          python tools/report_chapter_art_progress.py
