@@ -8,7 +8,7 @@
 
 - Locally mapped chapter candidates: **280**.
 - Chapter cards with both territorial rights and editorial approval: **0**.
-- Verified historical art binaries retained in audited archives (all editions): **1192**; NOT necessarily chapter-aligned.
+- Verified historical art binaries retained in audited archives (all editions): **1200**; NOT necessarily chapter-aligned.
 
 ## Book-by-book audit
 
@@ -29,7 +29,7 @@
 | Frankenstein | 24 | 0 | 0 | 24 | full byte-verified original English narrative and framing units; all specific historic chapter art, complete contextual Arabic, individual image rights, and human editorial clearance remain unavailable |
 | The Hound of the Baskervilles | 15 | 0 | 0 | 15 | full unabridged English original with 15 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending |
 | The Lost World | 16 | 0 | 0 | 16 | full unabridged English original with 16 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending |
-| The Sign of the Four | 12 | 0 | 0 | 12 | full unabridged English original with 12 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending |
+| The Sign of the Four | 12 | 0 | 0 | 12 | full unabridged English original with 12 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending; 8 verified original 1903 Townsend plates in quarantine |
 | Kalila wa Dimna | Needs segmentation | 0 | 0 | Unknown | older staged work; chapter-card coverage audit pending |
 | The Woman in White | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
 | Arabian Nights — Burton Volume 01/10 | Needs segmentation | 0 | 0 | Unknown | complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance |
@@ -59,6 +59,7 @@
 - Exact historic scan/rights source list: docs/literature/HISTORIC_VERNES_ASSETS.json.
 - New original Commons period images in quarantine, NOT chapter-mapped: **57**.
 - Original 1906 Correa War of the Worlds files in quarantine, NOT chapter-mapped: **137**.
+- Original F. H. Townsend 1903 *The Sign of Four* chapter-scene-unreviewed engravings: **8** local originals, NOT chapter cards.
 - GitHub handoff: docs/handoffs/LINGUA_TALES_HANDOFF_CURRENT.md.
 - Story content automation is separate from the scheduled GitHub report; inspect latest Actions SHA and output before claiming any new image.
 - This inventory does NOT assert that a chapter card exists for any staged book lacking a verified chapter-to-image map, even if its archive contains hundreds of figures.

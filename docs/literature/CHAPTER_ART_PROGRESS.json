@@ -6,8 +6,8 @@
   "counts": {
     "localCandidateChapterCards": 280,
     "readyChapterCards": 0,
-    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1192,
-    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1192
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1200,
+    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1200
   },
   "books": [
     {
@@ -540,13 +540,14 @@
     {
       "bookId": "the-sign-of-the-four",
       "title": "The Sign of the Four",
-      "sourceState": "full unabridged English original with 12 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending",
+      "sourceState": "full unabridged English original with 12 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending; 8 verified original 1903 Townsend plates in quarantine",
       "chapterCount": 12,
       "localCandidateChapters": 0,
       "readyForUICards": 0,
       "missingImageChapters": 12,
       "missingReadyChapters": 12,
-      "archivedLocalHistoricArt": 0,
+      "archivedLocalHistoricArt": 8,
+      "unassignedHistorical1903TownsendImageFiles": 8,
       "mappedChapterNumbers": [],
       "readyChapterNumbers": [],
       "imageMap": "docs/literature/staging/the-sign-of-the-four/chapter-image-map.json"
