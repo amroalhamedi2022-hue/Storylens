@@ -144,6 +144,24 @@ def verify_kalila_sections(data=None):
         assigned = [a for a in staged_primary_paths if a in all_names]
         if len(assigned) > 1 or (assigned and assigned[0] != preferred):
             raise ValueError("Visually duplicated medieval picture reused or preferred folio replaced")
+    # A book cover is a distinct artefact from every chapter primary:
+    # stage the original labelled two-jackal manuscript painting, not an AI image.
+    original_cover = archived[13]
+    cover = data.get("bookCoverCandidate", {})
+    cover_path = "docs/literature/staging/kalila-original-colour-miniatures-20261105/" + original_cover["localPath"]
+    raw_cover = (ROOT / cover_path).read_bytes()
+    if (cover.get("imagePath") != cover_path
+            or cover.get("sha256") != original_cover["webpSha256"]
+            or cover.get("sourceURL") != original_cover["sourceCommonsFilePage"]
+            or hashlib.sha256(raw_cover).hexdigest() != cover["sha256"]
+            or len(raw_cover) != original_cover["webpBytes"]
+            or cover["sha256"] in image_hashes
+            or cover.get("coverStatus") != "ORIGINAL_HISTORIC_ART_CANDIDATE__NOT_PUBLISHED"
+            or cover.get("editorApproved") is not False
+            or cover.get("sourceManuscriptTextEditionEqualToWikisourceDerivedEdition") is not False
+            or cover.get("territoryRightsStatus") != "PENDING_MANUSCRIPT_AND_TERRITORIAL_HUMAN_REVIEW"
+            or not cover.get("altAr") or not cover.get("altEn")):
+        raise ValueError("Original historic Kalila cover provenance/release safeguards broken")
     return len(sections)
 
 
@@ -163,6 +181,7 @@ class AuthenticKalilaSections(unittest.TestCase):
             ("translation-falsified", lambda d: d.__setitem__("fullContextualEnglishTranslationVerified", True)),
             ("remove-visual-crop-audit", lambda d: d.__setitem__("visualDuplicateCropGroups", [])),
             ("incorrect-same-scene-pair", lambda d: d["visualDuplicateCropGroups"][0]["members"][0].__setitem__("sha256", "0" * 64)),
+            ("fake-cover-approved", lambda d: d["bookCoverCandidate"].__setitem__("editorApproved", True)),
         ):
             with self.subTest(name=name):
                 test_data = copy.deepcopy(original)
