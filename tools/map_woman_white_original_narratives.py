@@ -32,70 +32,138 @@ def text(raw: bytes) -> str:
 
 
 
-def attach_exact_original_lithograph_candidate(indexed: list[dict], source: bytes) -> int:
-    """Only a REAL original plate with a caption also present once in the
-    checked original English scene may be a pending chapter image *candidate*.
-    All other original scans remain unassigned archival evidence.
+def attach_original_macklin_scene_candidates(indexed: list[dict], source: bytes) -> int:
+    """Source-corroborate eight distinct real 1903 Macklin plate captions.
+
+    Every caption was inspected on a REAL period lithograph, not inferred
+    from its ordinal. Anchor phrase is matched uniquely in the complete
+    1860 original and in one SHA-pinned narrative unit; punctuation and
+    excerpt differences between editions are recorded rather than hidden.
+    These eight candidates are emphatically NOT human editor/territory
+    approved, and neither frontispiece nor original cover is substituted.
     """
-    manifest_path = ROOT / "docs/literature/staging/woman-white-original-1860-1903-plates/manifest.json"
-    if not manifest_path.exists():
+    archive_folder = ROOT / "docs/literature/staging/woman-white-original-1860-1903-plates"
+    archive_path = archive_folder / "manifest.json"
+    if not archive_path.exists():
         return 0
-    archive = json.loads(manifest_path.read_text("utf-8"))
-    if archive.get("publicationApproved") is not False:
-        raise ValueError("Original art archive must never imply release")
-    source_name = "File:Illustration by Thomas Eyre Macklin for The Woman in White (1).jpg"
-    matching = [x for x in archive.get("images", []) if x.get("wikiFile") == source_name]
-    if len(matching) != 1:
-        raise ValueError("1860 novel caption candidate has no uniquely pinned 1903 real art")
-    art = matching[0]
-    picture = ROOT / "docs/literature/staging/woman-white-original-1860-1903-plates" / art["localPath"]
-    binary = picture.read_bytes()
-    expected_hash = art["webpSha256"]
-    if (not picture.is_relative_to(ROOT)
-            or binary[:4] != b"RIFF" or binary[8:12] != b"WEBP"
-            or hashlib.sha256(binary).hexdigest() != expected_hash
-            or art.get("originalCreator") != "Thomas Eyre Macklin (1867–1943)"
-            or art.get("sourceArtworkYear") != 1903
-            or art.get("artworkClassificationStatus") !=
-                "ORIGINAL_1903_NOVEL_LITHOGRAPH__NO_VERIFIED_CHAPTER_SCENE"
-            or art.get("sceneChapterMatchStatus") != "UNREVIEWED__NO_CHAPTER_CARD"
-            or art.get("editoriallyApproved") is not False
-            or art.get("rightsStatus") != "PENDING_INDIVIDUAL_TERRITORIAL_AND_EDITORIAL_REVIEW"
-            or art.get("publishedToApp") is not False
-            or not art.get("individualCommonsLicense")
-            or not str(art.get("commonsPage", "")).startswith("https://commons.wikimedia.org/wiki/File:")):
-        raise ValueError("Macklin original plate source, checksum or rights evidence invalid")
-    source_caption = b"Is that the road to London?"
-    if source.count(source_caption) != 1:
-        raise ValueError("Caption does not match one actual source scene")
-    original_byte_offset = source.index(source_caption)
-    rows = [r for r in indexed if
-            r["sourceHtmlStartByte"] <= original_byte_offset < r["sourceHtmlEndByteExclusive"]]
-    if len(rows) != 1 or rows[0]["sourceOriginalHeading"] != "IV" or rows[0]["chapterOneBased"] != 4:
-        raise ValueError("Historic Macklin scene anchor not in source-authentic opening section IV")
-    chapter = rows[0]
-    chapter["primaryImage"] = {
-        "imagePath": picture.relative_to(ROOT).as_posix(),
-        "sha256": expected_hash,
-        "sourceUrl": art["commonsPage"],
-        "sourceEdition": art["sourceEdition"],
-        "sourceBookEditionURL": archive["categoryURL"],
-        "sourceCaption": "Is that the road to London?",
-        "sourceTextOriginalSha256": hashlib.sha256(source).hexdigest(),
-        "sourceTextByteOffset": original_byte_offset,
-        "sceneAnchor": "Original 1860 English section IV: Is that the road to London?",
-        "sceneVerificationStatus":
-            "ORIGINAL_1903_PRINTED_CAPTION_AND_ACTUAL_1860_SOURCE_PROSE_MATCHED__HUMAN_SCENE_REVIEW_PENDING",
-        "credit": art["originalCreator"],
-        "license": art["individualCommonsLicense"],
-        "rightsStatus": "PENDING_INDIVIDUAL_TERRITORIAL_AND_EDITORIAL_REVIEW",
-        "altEn": "Historical lithograph of Walter Hartright meeting the woman in white on the road; she points toward London. Editorial review pending.",
-        "altAr": "رسم تاريخي للقاء والتر هارترايت بالمرأة ذات الثياب البيضاء على الطريق وهي تشير باتجاه لندن. الوصف قيد المراجعة.",
-        "editoriallyApproved": False,
-        "publishedToApp": False,
-    }
-    chapter["imageStatus"] = "REAL_ORIGINAL_SCENE_MATCHED_CANDIDATE__NOT_APPROVED_FOR_APP"
-    return 1
+    archive = json.loads(archive_path.read_text("utf-8"))
+    if (archive.get("publicationApproved") is not False
+            or archive.get("chapterSceneMatchingComplete") is not False
+            or archive.get("humanSceneReviewComplete") is not False
+            or archive.get("allOriginalTenSourceFilesArchived") is not True):
+        raise ValueError("Original Macklin plate archive not complete or incorrectly rights-approved")
+    picture_by_name = {x["wikiFile"]: x for x in archive.get("images", [])}
+    if len(picture_by_name) != 10:
+        raise ValueError("Duplicate or missing independent period plate file")
+    def match_text(raw: bytes) -> str:
+        return text(raw).replace("’", "'").replace("‘", "'").casefold()
+
+    exact_original = match_text(source)
+    # Plate captions are faithfully transcribed from text PRINTED on original
+    # historical 1903 images. Source anchors remove terminal punctuation or,
+    # for plate 5, the caption's editorial 'I' absent from adjacent 1860 prose.
+    # (plate, period caption, authentic 1860 phrase, verified source unit,
+    #  original printed 1903 page, descriptive bilingual draft)
+    research = [
+        (1, "Is that the road to London?", "Is that the road to London?", 4, 19,
+         "Walter Hartright and the woman in white on a road; she points toward London.",
+         "والتر هارترايت يقف مع المرأة ذات الثياب البيضاء على الطريق وهي تشير نحو لندن."),
+        (2, "Why do I sit here still?", "Why do I sit here still?", 31, 276,
+         "A woman sits at a writing desk with a pen, papers and a nearby window.",
+         "امرأة تجلس قرب نافذة إلى مكتب للكتابة وبيدها قلم وأمامها أوراق."),
+        (3, "I started up from the ottoman.", "I started up from the ottoman", 8, 51,
+         "One woman reads a paper while a man rises beside her; another woman stands nearby.",
+         "امرأة تقرأ ورقة بينما ينهض رجل بجانبها وتقف امرأة أخرى بالقرب منهما."),
+        (4, "Drop your hold of my arms.", "Drop your hold of my arms", 49, 415,
+         "Two men hold a third man by the arms outdoors beside a fence.",
+         "رجلان يمسكان بذراعي رجل ثالث في الخارج بالقرب من سياج."),
+        (5, "I handed it to him at arm’s length.", "handed it to him at arm’s length", 58, 455,
+         "A standing man extends a written paper toward a seated man in a room.",
+         "رجل واقف يمد ورقة مكتوبة نحو رجل جالس داخل غرفة."),
+        (6, "What can you possibly mean?", "What can you possibly mean", 19, 130,
+         "Men converse in a formal room as an open illustrated volume is displayed.",
+         "رجال يتحدثون داخل غرفة رسمية وأمامهم مجلد مفتوح يحوي صورًا."),
+        (7, "We saw the lady laid on the sofa.", "We saw the lady laid on the sofa", 35, 329,
+         "Several adults gather around a woman lying on a sofa.",
+         "مجموعة من الأشخاص تحيط بامرأة مستلقية على أريكة."),
+        (8, "Sign your name there.", "Sign your name there", 25, 200,
+         "A man points to a document on a table while women and another man look on.",
+         "رجل يشير إلى مستند على طاولة بينما تنظر إليه امرأتان ورجل آخر."),
+    ]
+    used_art, used_units = set(), set()
+    for plate, caption, fragment, expected_unit, page, alt_en, alt_ar in research:
+        name = (f"File:Illustration by Thomas Eyre Macklin for The Woman in White ({plate}).jpg")
+        art = picture_by_name.get(name)
+        if art is None:
+            raise ValueError("Missing unique authentic 1903 Macklin illustration: " + str(plate))
+        picture = (archive_folder / art["localPath"]).resolve()
+        actual = picture.read_bytes()
+        if (not picture.is_relative_to(archive_folder.resolve())
+                or actual[:4] != b"RIFF" or actual[8:12] != b"WEBP"
+                or hashlib.sha256(actual).hexdigest() != art.get("webpSha256")
+                or art.get("originalCreator") != "Thomas Eyre Macklin (1867–1943)"
+                or art.get("sourceArtworkYear") != 1903
+                or art.get("artworkClassificationStatus") !=
+                    "ORIGINAL_1903_NOVEL_LITHOGRAPH__NO_VERIFIED_CHAPTER_SCENE"
+                or art.get("sceneChapterMatchStatus") != "UNREVIEWED__NO_CHAPTER_CARD"
+                or art.get("editoriallyApproved") is not False
+                or art.get("rightsStatus") != "PENDING_INDIVIDUAL_TERRITORIAL_AND_EDITORIAL_REVIEW"
+                or art.get("publishedToApp") is not False
+                or not art.get("individualCommonsLicense")
+                or not str(art.get("commonsPage", "")).startswith("https://commons.wikimedia.org/wiki/File:")):
+            raise ValueError("Macklin plate bytes, source artist or rights invalid: " + name)
+        wanted = match_text(fragment.encode("utf-8"))
+        if exact_original.count(wanted) != 1:
+            raise ValueError("Historical caption did not uniquely match the original: " + caption)
+        destinations = [r for r in indexed if wanted in match_text(
+            source[r["sourceHtmlStartByte"]:r["sourceHtmlEndByteExclusive"]])]
+        if (len(destinations) != 1
+                or destinations[0]["chapterOneBased"] != expected_unit
+                or expected_unit in used_units
+                or art["webpSha256"] in used_art):
+            raise ValueError("Original illustration assigned to wrong or duplicate original unit")
+        unit = destinations[0]
+        unit_text = match_text(source[unit["sourceHtmlStartByte"]:unit["sourceHtmlEndByteExclusive"]])
+        unit_offset = unit_text.index(wanted)
+        photo = {
+            "imagePath": picture.relative_to(ROOT).as_posix(),
+            "sha256": art["webpSha256"],
+            "sourceUrl": art["commonsPage"],
+            "sourceEdition": art["sourceEdition"],
+            "sourceBookEditionURL": archive["categoryURL"],
+            "sourceArtworkYear": 1903,
+            "sourcePrintedCaption": caption,
+            "sourcePrintedPageNumber": page,
+            "sourceMatchFragment": fragment,
+            "sourceNormalizedCharOffsetInUnit": unit_offset,
+            "sourceNarrativeUnitSliceSha256": unit["sourceHtmlSliceSha256"],
+            "sourceTextOriginalSha256": hashlib.sha256(source).hexdigest(),
+            "sceneAnchor": f"Original Wilkie Collins section {expected_unit}: {fragment}",
+            "sceneVerificationStatus":
+                "PRINTED_1903_CAPTION_AND_UNIQUE_1860_NARRATIVE_FRAGMENT_MATCH__HUMAN_APPROVAL_PENDING",
+            "editionTextDifference":
+                "Original scene words match; period plate punctuation / quotation "
+                "boundary may differ from Gutenberg's original narrative prose.",
+            "credit": art["originalCreator"],
+            "license": art["individualCommonsLicense"],
+            "rightsStatus": "PENDING_INDIVIDUAL_TERRITORIAL_AND_EDITORIAL_REVIEW",
+            "altEn": alt_en + " Historical illustration; editorial review pending.",
+            "altAr": alt_ar + " رسم تاريخي يحتاج إلى مراجعة تحريرية.",
+            "editoriallyApproved": False,
+            "publishedToApp": False,
+        }
+        if plate == 1:
+            direct = b"Is that the road to London?"
+            if source.count(direct) != 1:
+                raise ValueError("Opening scene's byte-precise original caption has drifted")
+            photo["sourceTextByteOffset"] = source.index(direct)
+        unit["primaryImage"] = photo
+        unit["imageStatus"] = "REAL_PERIOD_CAPTION_AND_SOURCE_SCENE_CANDIDATE__NOT_APPROVED_FOR_APP"
+        used_art.add(art["webpSha256"])
+        used_units.add(expected_unit)
+    if len(used_art) != 8 or len(used_units) != 8:
+        raise ValueError("Incomplete unique original Macklin image caption coverage")
+    return len(used_units)
 
 
 def generate() -> dict:
@@ -185,7 +253,7 @@ def generate() -> dict:
     for before, after in zip(indexed, indexed[1:]):
         if before["sourceHtmlEndByteExclusive"] > after["sourceHtmlStartByte"]:
             raise ValueError("Source narrative byte ranges overlap")
-    mapped_original_illustrations = attach_exact_original_lithograph_candidate(indexed, raw)
+    mapped_original_illustrations = attach_original_macklin_scene_candidates(indexed, raw)
     return {
         "schemaVersion": 1,
         "bookId": "the-woman-in-white",
