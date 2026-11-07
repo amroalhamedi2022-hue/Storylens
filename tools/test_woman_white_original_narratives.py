@@ -29,17 +29,17 @@ class AuthenticNarrativeSections(unittest.TestCase):
         self.assertIn("not 62 conventional numbered chapters", doc["chapterCountUnitLabel"])
         self.assertEqual(doc["countSemantics"],
                          "UNABRIDGED_SOURCE_NARRATIVE_UNITS__EPOCHS_AND_NARRATORS_PRESERVED")
-        self.assertEqual(doc["localCandidateChapters"], 1)
-        self.assertEqual(doc["missingCandidateChapters"], 61)
+        self.assertEqual(doc["localCandidateChapters"], 8)
+        self.assertEqual(doc["missingCandidateChapters"], 54)
         self.assertEqual(doc["readyForUICards"], 0)
         self.assertFalse(doc["releaseApproved"])
         self.assertEqual([u["chapterOneBased"] for u in doc["chapters"]],
                          list(range(1, 63)))
-        self.assertTrue(all(u["primaryImage"] is None for u in doc["chapters"] if u["chapterOneBased"] != 4))
+        self.assertTrue(all(u["primaryImage"] is None for u in doc["chapters"] if u["chapterOneBased"] not in {4, 8, 19, 25, 31, 35, 49, 58}))
         self.assertTrue(all(not u["titleAr"] for u in doc["chapters"]))
         image = doc["chapters"][3]["primaryImage"]
         self.assertIsNotNone(image)
-        self.assertEqual(image["sourceCaption"], "Is that the road to London?")
+        self.assertEqual(image["sourcePrintedCaption"], "Is that the road to London?")
         self.assertFalse(image["editoriallyApproved"])
         self.assertFalse(image["publishedToApp"])
         self.assertEqual(image["rightsStatus"], "PENDING_INDIVIDUAL_TERRITORIAL_AND_EDITORIAL_REVIEW")
@@ -64,9 +64,9 @@ class AuthenticNarrativeSections(unittest.TestCase):
                 self.assertEqual(hashlib.sha256(full[start:end]).hexdigest(),
                                  row["sourceHtmlSliceSha256"])
                 self.assertGreater(len(row["sourcePassageLead"]), 100)
-                if row["chapterOneBased"] == 4:
+                if row["chapterOneBased"] in {4, 8, 19, 25, 31, 35, 49, 58}:
                     self.assertEqual(row["imageStatus"],
-                                     "REAL_ORIGINAL_SCENE_MATCHED_CANDIDATE__NOT_APPROVED_FOR_APP")
+                                     "REAL_PERIOD_CAPTION_AND_SOURCE_SCENE_CANDIDATE__NOT_APPROVED_FOR_APP")
                 else:
                     self.assertIn("EXACT_ORIGINAL_NARRATIVE_UNIT",
                                   row["imageStatus"])
@@ -95,10 +95,41 @@ class AuthenticNarrativeSections(unittest.TestCase):
         self.assertEqual(hashlib.sha256(full).hexdigest(), art["sourceTextOriginalSha256"])
         self.assertLess(doc["chapters"][3]["sourceHtmlStartByte"], art["sourceTextByteOffset"])
         self.assertGreater(doc["chapters"][3]["sourceHtmlEndByteExclusive"], art["sourceTextByteOffset"])
-        self.assertIn("HUMAN_SCENE_REVIEW_PENDING", art["sceneVerificationStatus"])
+        self.assertIn("HUMAN_APPROVAL_PENDING", art["sceneVerificationStatus"])
         self.assertEqual(doc["chapters"][3]["sourceOriginalHeading"], "IV")
         self.assertTrue(all(not x.get("primaryImage", {}).get("editoriallyApproved", False)
                             for x in doc["chapters"] if x.get("primaryImage")))
+
+    def test_all_eight_period_captions_match_unique_source_narrative_units(self):
+        doc = generate()
+        pairs = {
+            1: 4, 2: 31, 3: 8, 4: 49,
+            5: 58, 6: 19, 7: 35, 8: 25,
+        }
+        mapped = [r for r in doc["chapters"] if r["primaryImage"] is not None]
+        self.assertEqual(len(mapped), 8)
+        self.assertEqual({r["chapterOneBased"] for r in mapped}, set(pairs.values()))
+        self.assertEqual(len({r["primaryImage"]["sha256"] for r in mapped}), 8)
+        self.assertEqual(len({r["primaryImage"]["imagePath"] for r in mapped}), 8)
+        original = (ROOT / doc["sourceFullOriginalPath"]).read_bytes()
+        for illustration, unit in pairs.items():
+            with self.subTest(plate=illustration, unit=unit):
+                row = doc["chapters"][unit - 1]
+                art = row["primaryImage"]
+                self.assertIsNotNone(art)
+                self.assertEqual(art["sourceArtworkYear"], 1903)
+                self.assertIn(f"({illustration}).jpg", art["sourceUrl"])
+                self.assertFalse(art["editoriallyApproved"])
+                self.assertFalse(art["publishedToApp"])
+                self.assertEqual(art["rightsStatus"], "PENDING_INDIVIDUAL_TERRITORIAL_AND_EDITORIAL_REVIEW")
+                self.assertEqual(art["sourceNarrativeUnitSliceSha256"], row["sourceHtmlSliceSha256"])
+                self.assertEqual(art["sourceTextOriginalSha256"], doc["sourceFullOriginalSha256"])
+                self.assertGreaterEqual(art["sourceNormalizedCharOffsetInUnit"], 0)
+                self.assertEqual(len(art["sha256"]), 64)
+                picture = ROOT / art["imagePath"]
+                self.assertEqual(hashlib.sha256(picture.read_bytes()).hexdigest(), art["sha256"])
+        self.assertEqual(original.count(b"Is that the road to London?"), 1)
+        self.assertEqual(doc["readyForUICards"], 0)
 
     def test_archive_original_novel_still_has_no_guessed_bilingual_publication(self):
         manifest = json.loads((STAGED / "manifest.json").read_text("utf-8"))
