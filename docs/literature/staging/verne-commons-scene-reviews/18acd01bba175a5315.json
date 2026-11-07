@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_54.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-18acd01bba175a53.webp",
+  "imageSha256": "bfcc376a46aee4f85a155620973eb84a4657c91aad2987ac635ea1e1118a4560",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting four men on the deck of a ship. One man stands with his back to the viewer, facing another man who appears to be gesturing or speaking intensely. Two other men stand in the background, one near a ship's wheel and the other to the right. The sky is cloudy, and the deck features nautical equipment like a capstan.",
+    "visualObjectsEn": "Ship deck, ship's wheel, capstan, railing, wooden planks, cloudy sky.",
+    "recognizableCharactersOrPeopleEn": "Four men dressed in 19th-century style clothing, including coats and trousers. One man is positioned at the helm.",
+    "uncertaintyNotes": "The specific identities of the individuals are not provided in the image. The exact historical context or narrative source of the engraving is not explicitly stated."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 20,
+    "paragraphIndexZeroBased": 65,
+    "exactSourceQuotation": "The crew of the Tankadere was composed of John Bunsby, the master, and four hardy mariners",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The engraving depicts four men on a ship deck with nautical equipment like a capstan and a ship's wheel. The selected paragraph describes the crew of the Tankadere as consisting of the master and four hardy mariners, which aligns with the visual count and setting of the engraving.",
+    "suggestedAltArNotApproved": "An engraving showing four men on the deck of a ship, including a man at the helm, with nautical equipment such as a capstan and ship's wheel visible.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts the deck of a pilot-boat (the Tankadere) featuring characters interacting on board, aligning with the scene introducing John Bunsby and his vessel in Chapter 20.",
+    "visualContradictions": "None significant; the setting is clearly a ship's deck with crew members present as described in the narrative context.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.9,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

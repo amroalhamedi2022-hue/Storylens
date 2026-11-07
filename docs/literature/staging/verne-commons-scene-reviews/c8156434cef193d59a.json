@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_52.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-c8156434cef193d5.webp",
+  "imageSha256": "121d9232c25c476e80608cb79eae94bac50efd1ca8d20af619e5c95f6b19b806",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a group of five people huddled together on the deck of a small sailboat at night. The scene is dark, with a mast and rigging visible, and the boat appears to be moving through water. The figures are dressed in heavy clothing, with some wearing hats or hoods, suggesting cold weather or a maritime journey.",
+    "visualObjectsEn": "Sailboat, mast, rigging, sails, deck, water, hats, hoods, heavy coats, blankets.",
+    "recognizableCharactersOrPeopleEn": "Five individuals: one man in a top hat, one woman wrapped in a shawl or blanket, and three other men, one of whom is steering or holding a tiller.",
+    "uncertaintyNotes": "The exact historical context, the specific identities of the individuals, and the precise nature of the vessel are not explicitly stated in the image. The engraving style is characteristic of 19th-century book illustrations, but the specific source is not identified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 21,
+    "paragraphIndexZeroBased": 6,
+    "exactSourceQuotation": "The young woman, who was seated aft, was profoundly affected as she looked out upon the ocean, darkening now with the twilight, on which she had ventured in so frail a vessel. Above her head rustled the white sails, which seemed like great white wings.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The passage describes a young woman (Aouda) seated on the deck of a small boat (the Tankadere) at twilight, with sails visible above her, which aligns perfectly with the visual elements of the engraving showing a group on a small sailboat at night.",
+    "suggestedAltArNotApproved": "A black and white engraving of five people on a small sailboat at night, illustrating the scene where Phileas Fogg and Aouda travel across the sea on the Tankadere.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a group of five people crowded together on a small boat, including a woman seated wrapped in a blanket, a man in a top hat sitting down, and others huddled around the mast and steering.",
+    "visualContradictions": "The passage states that Phileas Fogg is standing with body erect and legs wide apart like a sailor, but the man in the top hat (representing Fogg) is visibly seated rather than standing erect.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

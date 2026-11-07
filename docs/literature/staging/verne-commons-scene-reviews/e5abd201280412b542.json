@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_51.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-e5abd201280412b5.webp",
+  "imageSha256": "a94c2801c85d7365394aa089dba82a9519818306deb44e90602abb44947611be",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a chaotic struggle in a snowy, wooded forest. A young man in a coat and trousers is in the center, surrounded by several figures wearing feathered headdresses and traditional clothing, who appear to be attacking or restraining him. One figure lies prone on the ground in the foreground, while another man in a hat stands in the background observing the scene.",
+    "visualObjectsEn": "Snow-covered trees, forest floor, feathered headdresses, coats, trousers, boots, rocks, and dense foliage.",
+    "recognizableCharactersOrPeopleEn": "A young man in Western-style clothing, several figures dressed in indigenous-style attire with feathers, and one man in the background wearing a hat and coat.",
+    "uncertaintyNotes": "The specific identities of the individuals and the exact historical or narrative context of the struggle are not explicitly stated in the image and remain uncertain."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 29,
+    "paragraphIndexZeroBased": 58,
+    "exactSourceQuotation": "She defended herself like a true heroine with a revolver, which she shot through the broken windows whenever a savage made his appearance. Twenty Sioux had fallen mortally wounded to the ground",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The scene depicts a chaotic struggle in a snowy forest with figures in indigenous-style attire (Sioux) attacking, which aligns with the narrative of the Sioux attack on the train in Chapter 29. While the text describes the attack on a train, the visual representation of a struggle with 'savages' in a snowy environment matches the thematic content of this passage.",
+    "suggestedAltArNotApproved": "A black and white engraving showing a chaotic struggle in a snowy forest, where a young man is surrounded by figures in feathered headdresses, representing a scene of conflict during the Sioux attack on the train.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a hand-to-hand combat scene in a forest with attackers wearing feathered headdresses surrounding a man in the center.",
+    "visualContradictions": "The passage describes Aouda defending a train interior by shooting a revolver through broken windows and train wheels crushing attackers on rails. The image shows none of these elements, lacking any train, windows, rails, or Aouda with a revolver.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "originalCreator": "Alphonse de Neuville and Léon Benett",
+  "historicIllustratedEdition": "Around the World in Eighty Days, nineteenth-century illustrated editions",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_53.jpg",
+  "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-abadc33a3b65d4af.webp",
+  "imageSha256": "e18b7f71168c0d392d75de03c4d9ba39a83cebaefdd6e1fe3af91a77b6ab35fa",
+  "sourceCorpusSha256": "0a238df706f5ac326bade25b05944b9b6930f5f5cae948e4036155883c156821",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a small sailboat with a single sail navigating on a flat, light-colored surface, possibly ice or water. In the foreground, a pack of dark, wolf-like animals is running across the surface toward the right. In the sky above, several large birds, resembling eagles or vultures, are flying in the direction of the boat.",
+    "visualObjectsEn": "Sailboat, sail, mast, pack of wolves or wild dogs, flock of birds, flat landscape, cloudy sky.",
+    "recognizableCharactersOrPeopleEn": "None, the figures in the boat are indistinct silhouettes.",
+    "uncertaintyNotes": "It is unclear if the surface is water or ice, though the flat, uniform texture suggests ice. The species of the animals is not explicitly defined, though they resemble wolves or wild dogs. The exact historical context or origin of the engraving is not provided."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 31,
+    "paragraphIndexZeroBased": 27,
+    "exactSourceQuotation": "Sometimes flocks of wild birds rose, or bands of gaunt, famished, ferocious prairie-wolves ran howling after the sledge.",
+    "confidenceModelEstimateNotVerified": 1.0,
+    "modelRationaleNotVerified": "The engraving depicts a sailboat-like sledge on a flat, icy surface, which matches the description of the 'sledge' in Chapter 31. The presence of 'bands of gaunt, famished, ferocious prairie-wolves' running after the sledge and 'flocks of wild birds' in the sky directly corresponds to the visual elements in the engraving.",
+    "suggestedAltArNotApproved": "A black and white engraving of a wind-powered ice sledge gliding across a frozen plain, pursued by a pack of wolves, with large birds flying overhead.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a land-sledge with a sail moving across a vast snowy plain, pursued by a pack of wolves in the foreground, and with flocks of birds rising in the sky above, precisely matching the events described in the passage.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
