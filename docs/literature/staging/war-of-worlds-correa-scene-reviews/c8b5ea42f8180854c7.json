@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_100_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-c8b5ea42f8180854.webp",
+  "imageSha256": "4e018846ce3ead0ffd4597a6962451f332b694d53e7f22ed9d15fc32b6465724",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch depicting a crowded city street scene. In the foreground, two men are prominently featured; one is leaning forward holding a large sheet of paper or a poster, while the other stands nearby. Behind them is a dense, indistinct crowd of people. The background shows tall buildings lining the street, creating a perspective that leads toward a distant point where carriages or vehicles are visible.",
+    "visualObjectsEn": "Large sheet of paper or poster, city buildings, carriages or vehicles in the distance, hats worn by the crowd.",
+    "recognizableCharactersOrPeopleEn": "A large group of people, including two men in the immediate foreground wearing hats and coats.",
+    "uncertaintyNotes": "The exact nature of the activity (e.g., a protest, a public announcement, or a street scene) is ambiguous due to the loose, impressionistic style of the sketch. The specific historical period is not explicitly stated, though the clothing suggests late 19th or early 20th century."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 14,
+    "paragraphIndexZeroBased": 45,
+    "exactSourceQuotation": "As my brother hesitated on the doorstep, he saw another news vender approaching, and got a paper forthwith. The man was running away with the rest, and selling his papers for a shilling each as he ran",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene depicts a crowded street with a man holding a large sheet of paper (a news vendor) amidst a panicked crowd, which aligns perfectly with the brother's encounter with a news vendor selling papers while fleeing in the chaos of the Martian invasion.",
+    "suggestedAltArNotApproved": "A black and white ink sketch of a crowded city street during a panic, featuring a news vendor in the foreground holding a large newspaper, surrounded by a dense crowd of people in hats and coats, with buildings and distant vehicles in the background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a man in the foreground holding up a large sheet (news vendor selling a paper) in the middle of a chaotic, fleeing crowd on a city street, directly matching the brother buying a paper from a news vendor running away with the panicked throng.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

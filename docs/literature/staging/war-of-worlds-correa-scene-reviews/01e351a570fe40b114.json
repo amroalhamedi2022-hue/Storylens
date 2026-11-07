@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_103_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-01e351a570fe40b1.webp",
+  "imageSha256": "691018e4ed89e9b5098db420526c303a8a6c9b39e21c57d4de0a5cbeffb04870",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink drawing depicting a close-up, abstract view of what appears to be a wooden structure or machinery, possibly a water wheel or mill mechanism, partially submerged or interacting with flowing water. The composition uses heavy cross-hatching and directional lines to suggest motion and texture. There is a prominent wooden beam with a carved 'VI' mark on the left side, and a cylindrical object resembling a barrel or wheel component in the background. The lower portion is dominated by sweeping, horizontal lines representing water flow.",
+    "visualObjectsEn": "Wooden beams, cylindrical barrel-like object, water surface with motion lines, carved 'VI' inscription, structural supports.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the machinery is ambiguous due to the abstract, stylized nature of the ink work. It is unclear if the scene depicts a functional mill, a ruin, or a specific historical device."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 15,
+    "paragraphIndexZeroBased": 22,
+    "exactSourceQuotation": "And where it came upon water some chemical action occurred, and the surface would be instantly covered with a powdery scum that sank slowly and made way for more.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a mechanical structure interacting with water, characterized by heavy cross-hatching and motion lines. The selected passage describes the interaction of the Martian 'Black Smoke' with water, creating a chemical reaction and surface scum, which aligns with the visual theme of machinery or structural elements submerged in or interacting with turbulent, chemically affected water.",
+    "suggestedAltArNotApproved": "A detailed ink engraving showing a mechanical structure partially submerged in water, with heavy cross-hatching suggesting turbulent flow and chemical interaction on the surface.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows an abstract close-up of wooden structures, beams, and machinery interacting with flowing water, featuring a beam marked with 'VI'.",
+    "visualContradictions": "The passage describes the heavy black smoke/vapour flowing over the ground, valleys, and watercourses, creating a powdery scum on the water surface. The illustration depicts wooden mill machinery or waterworks rather than the black vapor itself or its chemical reaction on water described in the text.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

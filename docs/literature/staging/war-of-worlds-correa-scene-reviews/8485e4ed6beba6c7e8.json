@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_099_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-8485e4ed6beba6c7.webp",
+  "imageSha256": "59a58412520d81b34f774793811631eaa8b95b42aa04a283ae2f85b0f21a529f",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line drawing or engraving depicting a chaotic scene involving large mechanical or military equipment, possibly artillery or specialized vehicles, near a body of water or shore. Numerous figures appear to be interacting with the machinery, with smoke or dust obscuring parts of the background.",
+    "visualObjectsEn": "Large cannons, heavy military machinery or vehicles, rigging, smoke, water, horizontal lines indicating ground or water surface, stylized sketchy lines forming the overall composition.",
+    "recognizableCharactersOrPeopleEn": "Unidentified multiple figures in various poses, appearing as crew members or soldiers operating or observing the machinery.",
+    "uncertaintyNotes": "The exact historical context, specific machinery types, and identities of the figures cannot be determined from the visual information alone."
+  },
+  "visionModel": "gemini-3.5-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 31,
+    "exactSourceQuotation": "Three or four black government wagons, with crosses in white circles, and an old omnibus, among other vehicles, were being loaded in the village street.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene depicts military machinery and vehicles being loaded or managed by figures near a settlement or shore with horizontal lines indicating ground, perfectly matching the mobilization and loading of wagons and vehicles by soldiers and townspeople in Byfleet.",
+    "suggestedAltArNotApproved": "رسم تمثيلي يظهر عربات عسكرية ومعدات وسط حشد من الناس بالقرب من الشاطئ أو القرية أثناء الاستعدادات والاضطراب.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.5-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows large cannons, cranes, and heavy military machinery or equipment near water, with figures operating them.",
+    "visualContradictions": "The passage describes a village street scene in Byfleet with fleeing civilians, hussars, government wagons, an old omnibus, and an old man with a box and orchid pots. None of these specific elements, such as the street, the government wagons, the old man with orchids, or the civilian crowd being hunted by hussars, are depicted in the image, which instead focuses on heavy artillery and nautical or river equipment.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.99,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
