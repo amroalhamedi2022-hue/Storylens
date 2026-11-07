@@ -1,7 +1,7 @@
 name: Lingua Tales - acquire real early Woman in White pictures and historical cover
 on:
   push:
-    branches: [main, content/woman-white-1860-1903-original-art-20261107]
+    branches: [main]
     paths:
       - 'tools/intake_woman_white_original_art.py'
       - '.github/workflows/woman-white-original-art-intake.yml'
