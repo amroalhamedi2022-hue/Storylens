@@ -630,6 +630,8 @@ def generate() -> dict:
                     "sourceUnassignedOriginalColourFolioFiles": 14,
                     "originalColourArchiveVisualDuplicateCropGroups": 4,
                     "originalColourDistinctScenesUpperBoundFromVerifiedCrops": 13,
+                    "historicBookCoverCandidateFilesNotApproved": 1,
+                    "bookCoverReadyForPublication": False,
                     "originalArabicSourceSectionCountNotChapterCardCount": real_sections,
                     "sourcePrefatorySectionCount": 4,
                     "sourceNarrativeSectionCount": 15,
