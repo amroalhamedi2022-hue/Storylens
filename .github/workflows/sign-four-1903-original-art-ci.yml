@@ -5,6 +5,7 @@ on:
       - 'tools/intake_sign_four_townsend_1903.py'
       - 'tools/test_sign_four_townsend_1903.py'
       - 'tools/test_sign_four_townsend_scene_lead.py'
+      - 'tools/test_sign_four_visual_source_leads.py'
       - 'docs/literature/staging/sign-four-townsend-1903-period-plates/**'
       - 'tools/intake_verne_commons_period_gallery.py'
       - 'tools/report_chapter_art_progress.py'
@@ -29,4 +30,5 @@ jobs:
         run: |
           python tools/test_sign_four_townsend_1903.py
           python tools/test_sign_four_townsend_scene_lead.py
+          python tools/test_sign_four_visual_source_leads.py
           python tools/report_chapter_art_progress.py
