@@ -1,0 +1,72 @@
+name: Lingua Tales - verify and index actual Woman in White narrative units
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/map_woman_white_original_narratives.py'
+      - 'tools/test_woman_white_original_narratives.py'
+      - '.github/workflows/woman-white-original-narrative-index.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: lingua-woman-white-exact-source-index-\${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  preserve-original-unabridged-three-epoch-narrative-index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rebuild only original-SHA-backed section index, no synthesized chapters
+        run: |
+          python tools/map_woman_white_original_narratives.py --write --verify
+          python tools/test_woman_white_original_narratives.py
+      - name: Commit genuine index only and dispatch latest central chapter audit
+        shell: bash
+        env:
+          GH_TOKEN: \${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/literature/staging/user-requested-classics-20261105/the-woman-in-white/chapter-image-map.json
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "All 62 source-accurate narrative units already indexed; no repeat."
+          else
+            git commit -m "Literature: preserve 62 source-SHA256-verified Woman in White narrative units"
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              python tools/map_woman_white_original_narratives.py --verify
+              python tools/test_woman_white_original_narratives.py
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 3
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Source index generated but branch push failed"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = main ]; then
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
+          fi
+      - name: Retain source index evidence if GitHub branch update is rejected
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: woman-white-62-original-narrative-units-not-bilingual-not-approved
+          path: docs/literature/staging/user-requested-classics-20261105/the-woman-in-white/chapter-image-map.json
+          if-no-files-found: ignore
+          retention-days: 30
