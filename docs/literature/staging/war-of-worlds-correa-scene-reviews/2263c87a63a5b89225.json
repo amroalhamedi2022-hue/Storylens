@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_110_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-2263c87a63a5b892.webp",
+  "imageSha256": "d37c6bcb098a8bb56699c46c50c7168ad5a3ac01971e2fac19073fff7e10eba2",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink drawing depicting a large, dense cloud of smoke rising over a cityscape. In the upper left, a small, dark, possibly airborne object is visible with motion lines, and a faint, elongated shape floats above the smoke. The city below consists of simple, sketched building outlines.",
+    "visualObjectsEn": "Large plume of smoke, cityscape with rooftops, small airborne object with motion lines, faint floating shape above the smoke, signature initials in the bottom right corner.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The nature of the airborne object is ambiguous; it could represent a projectile, a small aircraft, or debris. The specific location of the city is not identifiable from the drawing."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 24,
+    "paragraphIndexZeroBased": 82,
+    "exactSourceQuotation": "Beyond Kensington dense smoke was rising, and that and a blue haze hid the northward hills.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The description of a large, dense cloud of smoke rising over a cityscape aligns with the narrative context of the Martian destruction of London, specifically the scene where the narrator observes the smoke rising beyond Kensington. The visual elements of a cityscape and smoke are consistent with this passage.",
+    "suggestedAltArNotApproved": "A black and white ink drawing showing a dense plume of smoke rising over the silhouettes of city buildings, representing the destruction of London.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a dense cloud of smoke rising over a city skyline with an airborne object and a faint floating shape in the sky.",
+    "visualContradictions": "The passage describes looking over Putney, the river with red weed, Lambeth flooded and red, and specific trees like laburnums, laurels, and hydrangeas unaffected by the weed near the narrator. The image only shows a generic cityscape with heavy smoke and floating objects, lacking any depiction of the narrator's specific vantage point, the red weed, the river, or the described local flora.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

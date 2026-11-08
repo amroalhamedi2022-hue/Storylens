@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_115_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-43e7851669f48672.webp",
+  "imageSha256": "6b1a9d904247ebaa069a9b63990148d4fa33746b283f3b25735a89cbea9db5dc",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a person drowning in a body of water. The person's head is partially submerged, and their two arms are raised above the water surface. In the background, there is a distant shoreline with a silhouette of a building or structure, possibly a ship or a ruined building, and a tall, thin vertical element resembling a tree or a plume of smoke. The style is that of a 19th or early 20th-century pen-and-ink engraving.",
+    "visualObjectsEn": "Water, human arms, human head, distant shoreline, building silhouette, vertical structure, ink lines, cross-hatching.",
+    "recognizableCharactersOrPeopleEn": "A single, unidentified person struggling in the water.",
+    "uncertaintyNotes": "It is uncertain whether the distant structure is a ship, a building, or a ruin. The vertical element could be a tree, a mast, or smoke. The exact identity of the person and the specific context of the scene are not provided in the image."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "modelOriginalQuotationRejected": true,
+  "modelOriginalQuotationRejectReason": "Model chapter/paragraph/quotation not verifiable verbatim against pinned original candidate excerpt",
+  "suggestedMatch": null,
+  "evidenceStatus": "INVALID_MODEL_SOURCE_QUOTE_REJECTED_NONPUBLISHABLE",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

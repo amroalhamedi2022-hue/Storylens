@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_111_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-11a7fde549d876dc.webp",
+  "imageSha256": "e8c3e0671972a2512da282fda7e656d371db29050dcf98cdcdd8325315165f99",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch depicting a dense, somewhat dilapidated urban or village scene. On the left, a figure leans out of a window frame. The background is filled with various buildings, including a tall, ornate tower and several houses with gabled roofs. The style is loose and expressive, with heavy cross-hatching and dark shadows.",
+    "visualObjectsEn": "Buildings, houses, a tall tower, a window frame, a figure, clouds or smoke in the sky.",
+    "recognizableCharactersOrPeopleEn": "A single figure, possibly male, with a bald or shaved head, leaning out of a window on the left side of the frame.",
+    "uncertaintyNotes": "The specific architectural style or historical period is not clearly defined, though it appears European in influence. The figure's identity and the exact nature of the buildings are ambiguous due to the stylized, impressionistic nature of the drawing."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 15,
+    "paragraphIndexZeroBased": 24,
+    "exactSourceQuotation": "looked down from the church spire and saw the houses of the village rising like ghosts out of its inky nothingness",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a figure leaning out of a window overlooking a dense, dilapidated village scene with gabled roofs and a tall tower (church spire). The description of looking down from a high vantage point at village houses rising out of darkness aligns well with the visual composition of the sketch.",
+    "suggestedAltArNotApproved": "A black and white ink sketch showing a figure leaning out of a window, looking down upon a dense village with gabled houses and a tall church tower, rendered in a dark, expressive, and cross-hatched style.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a figure looking down from a high vantage point resembling a church spire or high window over a village landscape partially submerged or surrounded by dark, inky shadows and swirling black flows, directly matching the description of the man looking down from the church spire onto the village.",
+    "visualContradictions": "None significant; the depiction aligns closely with the narrative elements of looking down from an elevated position upon the darkened villagescape.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

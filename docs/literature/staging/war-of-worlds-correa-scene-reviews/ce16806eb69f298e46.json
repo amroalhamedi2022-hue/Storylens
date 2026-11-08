@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_116_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-ce16806eb69f298e.webp",
+  "imageSha256": "555c4b18493576820306da87d864e02f968127984ead144407ea6ba88e6a1cf8",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch depicting a chaotic scene of people fleeing along a road or path. In the foreground, a person lies face down on the ground. In the mid-ground, a group of civilians, including a woman carrying a baby and a child, are walking away from a background filled with smoke and what appears to be a military vehicle or wagon with figures in uniform. The style is that of a 19th or early 20th-century newspaper or book illustration.",
+    "visualObjectsEn": "A fallen figure, a woman carrying a baby, a child, a dog, a military-style vehicle or wagon, smoke, trees, and a hat on the ground.",
+    "recognizableCharactersOrPeopleEn": "A group of civilians including a woman, a baby, a child, and figures in military-style uniforms in the background.",
+    "uncertaintyNotes": "The exact historical context, specific event, or location is not explicitly stated in the image. The nature of the vehicle in the background is somewhat obscured by the smoke and sketchy lines."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 16,
+    "paragraphIndexZeroBased": 29,
+    "exactSourceQuotation": "they saw a woman approaching the road across some fields on their left, carrying a child and with two other children",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a woman carrying a baby and a child, which aligns with the specific description in this paragraph of a woman carrying a child and accompanied by others. The chaotic road scene and the presence of a vehicle (cart) in the text also match the visual elements of the sketch.",
+    "suggestedAltArNotApproved": "A black and white ink sketch showing a woman carrying a baby and a child walking along a road, with a fallen figure in the foreground and a military-style vehicle in the smoky background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving visibly shows the refugees described in the passage: a woman carrying a child with other children walking, a man carrying a portmanteau and stick, and a chaotic road filled with fleeing citizens and a cart/wagon.",
+    "visualContradictions": "None significant; the visual elements closely align with the specific group of refugees and individuals described encountering the brother's party.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
