@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_104_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-13c01adffd5393a6.webp",
+  "imageSha256": "7f12f1de741d15a4648788e06ef8042fcf9602d6133717b329e63af771d01f41",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting an indoor bedroom scene. A younger man with messy hair stands near a window, looking frustrated or contemplative with his hand on his head. An older, heavier man stands in the doorway, looking surprised or alarmed with his hand raised to his ear as if listening or reacting to something. The style is characteristic of early 20th-century pen-and-ink book illustration.",
+    "visualObjectsEn": "A bed with rumpled bedding, a window with a view of a landscape, a chest of drawers or dresser, a doorway, a candle or small object held by the older man, and a signature in the bottom right corner.",
+    "recognizableCharactersOrPeopleEn": "Two men: one younger, lean, and disheveled standing in the room; one older, stout, and balding standing in the doorway.",
+    "uncertaintyNotes": "The exact nature of the interaction between the two men is ambiguous, as is the specific historical context or the identity of the artist beyond the visible signature 'H.V. COR'."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 11,
+    "paragraphIndexZeroBased": 1,
+    "exactSourceQuotation": "I stopped short in the doorway.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene description matches the narrative moment where the narrator returns to his study and encounters the dark room from the doorway, which aligns with the visual of a man standing in a doorway looking into a room with a window.",
+    "suggestedAltArNotApproved": "An illustration of the narrator standing in the doorway of his study, looking into the darkened room toward an open window overlooking the landscape.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image depicts two men inside a room (one standing near an open window and another in the doorway), which does not correspond to the narrator alone going upstairs into his dark study and stopping short in the doorway as described in the text.",
+    "visualContradictions": "The passage describes only the narrator entering his dark study alone and observing the open window, whereas the illustration shows two distinct individuals interacting inside the room.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

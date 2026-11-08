@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_105_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-524c03f04e1d65d3.webp",
+  "imageSha256": "3aa81cb293a66f18e6c689191c561c26f6e363b02163361a37fca43c909b9756",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting three figures on a staircase. A man in a hat and coat is descending the stairs, looking back over his shoulder. Behind him, a woman wearing a bonnet and a long dress is standing on the landing, looking toward him with a concerned or surprised expression. To the left, a man with a mustache, wearing a light-colored shirt and trousers, stands in a doorway or shadowed area, holding a small object in his hand. The style is characteristic of late 19th or early 20th-century pen-and-ink book illustration.",
+    "visualObjectsEn": "Staircase with a railing, doorway, bonnet, long dress, hat, coat, light-colored shirt, trousers, small object held by the man on the left.",
+    "recognizableCharactersOrPeopleEn": "Three figures: a man descending the stairs, a woman standing on the landing, and a man standing in a doorway.",
+    "uncertaintyNotes": "The exact nature of the object held by the man on the left is unclear due to the sketch-like quality of the drawing. The specific historical context or narrative purpose of the scene is not explicitly stated in the image."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 14,
+    "paragraphIndexZeroBased": 38,
+    "exactSourceQuotation": "Then the door behind him opened, and the man who lodged across the landing came in, dressed only in shirt, trousers, and slippers, his braces loose about his waist, his hair disordered from his pillow.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a man in a shirt and trousers (the lodger) standing in a doorway, a man descending stairs (the brother), and a woman on the landing. This aligns with the scene in Chapter 14 where the brother is watching the street from a window and the man from across the landing enters the room, matching the visual elements of the doorway, the figures, and the domestic setting described.",
+    "suggestedAltArNotApproved": "A man in a shirt and trousers stands in a doorway, while a man in a hat and coat descends a staircase, observed by a woman on the landing.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The illustration depicts a man on the left standing in a doorway dressed in shirt, trousers, and slippers with braces loose about his waist, matching the description of the lodger coming in from across the landing.",
+    "visualContradictions": "None significant; the image includes an extra woman and man on the stairs not explicitly detailed in this exact sentence fragment, but the central character matches the passage.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

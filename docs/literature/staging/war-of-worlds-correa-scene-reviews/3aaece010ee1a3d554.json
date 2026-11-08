@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_107_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-3aaece010ee1a3d5.webp",
+  "imageSha256": "ec458dfe0551ba4e7c501cdc3476d5a2833240451485da4cd7860a74abb3eea9",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch depicting a battlefield scene with artillery in action. A large cannon is positioned on the right, firing with a large cloud of smoke billowing out. Several soldiers are visible in the foreground and near the cannon, some appearing to be running or operating the equipment. The background is filled with dense smoke and sparse, skeletal trees, suggesting a war-torn landscape.",
+    "visualObjectsEn": "Large artillery cannon, smoke clouds, skeletal trees, ground terrain, military equipment, soldiers.",
+    "recognizableCharactersOrPeopleEn": "Several indistinct figures of soldiers, some in motion.",
+    "uncertaintyNotes": "The specific historical conflict or location cannot be determined from the image alone. The style is consistent with 19th or early 20th-century illustrative ink drawings."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 64,
+    "exactSourceQuotation": "Dense black smoke was leaping up to mingle with the steam from the river, and as the Heat-Ray went to and fro over Weybridge its impact was marked by flashes of incandescent white, that gave place at once to a smoky dance of lurid flames.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a battlefield scene with artillery, smoke, and skeletal trees. While the text in Chapter 12, Paragraph 64 describes the destruction of Weybridge by the Heat-Ray, the imagery of 'dense black smoke' and the chaotic, war-torn landscape described in the text aligns well with the visual elements of the artillery-focused sketch.",
+    "suggestedAltArNotApproved": "A black and white ink illustration showing a battlefield with a large cannon firing, surrounded by dense smoke and skeletal trees, representing the chaotic destruction during the Martian attack.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a large artillery cannon firing with soldiers operating it in a battlefield setting.",
+    "visualContradictions": "The passage specifically describes Martian fighting-machines (the clangorous din of the Martians) and the Heat-Ray destroying Weybridge with houses, river steam, and fences flashing into flame, whereas the engraving depicts traditional human military artillery and soldiers.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.99,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

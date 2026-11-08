@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_106_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-12d3e9686d5e6ab2.webp",
+  "imageSha256": "674ea5d075eaffe1fd55058b9c4e8ed9744d7af33a4f0f857b692d3b09466c5c",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a large, mechanical tripod machine standing in a field. The machine has a central body with a dome, a long projecting arm or weapon, and thin, spindly legs. In the background, there are thick plumes of smoke rising, suggesting an explosion or fire, with a distant, indistinct landscape or town silhouette on the horizon.",
+    "visualObjectsEn": "Mechanical tripod machine, long weapon-like attachment, spindly legs, smoke clouds, field, distant horizon line, faint architectural silhouettes.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the machine's function is ambiguous, though it appears to be a science fiction or fantasy construct. The specific setting is not identifiable beyond a generic rural or open landscape."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 9,
+    "paragraphIndexZeroBased": 41,
+    "exactSourceQuotation": "Thick streamers of black smoke shot with threads of red fire were driving up into the still air, and throwing dark shadows upon the green treetops eastward.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a tripod machine in a field with smoke rising in the background, which aligns with the description of the Martians' activity and the resulting smoke and fire in the landscape described in this passage.",
+    "suggestedAltArNotApproved": "A mechanical tripod machine stands in a field with plumes of black smoke and fire rising in the distant background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a Martian tripod machine in a field with smoke rising in the background.",
+    "visualContradictions": "The passage describes the narrator looking back from the bottom of the hill near the Maybury Inn, seeing the doctor's cart and people running towards them while hearing machine-gun fire. None of these specific human characters, the doctor's cart, the Maybury Inn, or running people are depicted in the engraving, which focuses solely on the tripod and smoke.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
