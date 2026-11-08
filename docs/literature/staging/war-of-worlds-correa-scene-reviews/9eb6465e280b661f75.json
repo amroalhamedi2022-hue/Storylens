@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_125_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-9eb6465e280b661f.webp",
+  "imageSha256": "d224849ba0a8ac567739a9e433042a3ce3de24e9e0f5a1945775bec70a91ef2d",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink drawing depicting two women sitting side-by-side in an open-top carriage or vehicle. The woman on the left is looking toward the left with a surprised or concerned expression, while the woman on the right looks forward with a serious expression. The style is illustrative with loose, expressive pen strokes.",
+    "visualObjectsEn": "Two women, a carriage or vehicle seat, a carriage lamp on the right side, and a small figure of a person or animal in the lower left background.",
+    "recognizableCharactersOrPeopleEn": "Two adult women dressed in late 19th or early 20th-century fashion, including hats and high-collared garments.",
+    "uncertaintyNotes": "The exact nature of the vehicle is not fully detailed, and the small figure in the lower left is ambiguous, possibly representing a person or a small animal. The signature 'Vim Corria' is visible in the lower right."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 16,
+    "paragraphIndexZeroBased": 29,
+    "exactSourceQuotation": "There were three girls, East End factory girls, and a couple of little children crowded in the cart.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts two women in a carriage-like vehicle, which aligns with the description of a cart carrying people during the evacuation in Chapter 16. While the text mentions three girls and children, the visual representation of women in a carriage matches the narrative context of the flight from the Martians.",
+    "suggestedAltArNotApproved": "A black and white ink drawing of two women sitting in a small cart, reflecting the crowded evacuation scenes described in the narrative.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image depicts two women seated in a carriage or vehicle, consistent with the mention of the factory girls crowded in the cart.",
+    "visualContradictions": "The passage describes a larger scene including a woman with children, a man in dirty black with a stick and portmanteau, and a sallow youth driving a black pony, none of which are depicted here as the focus is solely on two women inside a vehicle.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_129_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-f89a87cb9eac8c0c.webp",
+  "imageSha256": "2d39d47e73cd0c6eae83ce9922936179e52b9ae43bd34b75128b228d970d0a23",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a naval battle scene. A large ironclad warship is positioned in the center, firing its cannons amidst heavy smoke and explosions. To the right, a strange, tripod-like mechanical machine with circular appendages is hovering or standing in the water, emitting a beam of light or energy toward the ship. The background is filled with dense smoke and debris, suggesting an intense conflict.",
+    "visualObjectsEn": "Ironclad warship, tripod mechanical machine, cannons, smoke clouds, explosions, water, debris, masts, searchlights or energy beams.",
+    "recognizableCharactersOrPeopleEn": "None. The figures are mechanical or structural.",
+    "uncertaintyNotes": "The nature of the tripod machine is ambiguous; it appears to be a science-fiction or fantasy element rather than a historical naval vessel. The exact historical context or origin of the engraving is not explicitly stated in the image."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 17,
+    "paragraphIndexZeroBased": 11,
+    "exactSourceQuotation": "About a couple of miles out lay an ironclad, very low in the water, almost, to my brother’s perception, like a waterlogged ship. This was the ram Thunder Child. It was the only warship in sight, but far away to the right over the smooth surface of the sea⁠—for that day there was a dead calm⁠—lay a serpent of black smoke to mark the next ironclads of the Channel Fleet",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a naval battle involving an ironclad warship and a tripod machine, which corresponds directly to the climactic scene in Chapter 17 where the Thunder Child engages the Martian tripods at sea.",
+    "suggestedAltArNotApproved": "A black and white engraving of the ironclad ram Thunder Child engaged in battle at sea, with a Martian tripod machine standing in the water nearby amidst smoke and explosions.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts an ironclad warship actively engaged in battle with a Martian fighting-machine, showing explosions, smoke, and firing cannons.",
+    "visualContradictions": "The selected passage describes a distant view of the ironclad Thunder Child and the distant Channel Fleet waiting, before the actual battle engagement begins, whereas the image shows an active, close-quarters combat scene with a Martian fighting-machine firing upon the warship.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

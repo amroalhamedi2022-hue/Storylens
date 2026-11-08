@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_130_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-ac3498925f23720c.webp",
+  "imageSha256": "a4102dc93d39faba1219ddd09708a9f4fc01b4f0611a022986f52b29cbb3b2f6",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch depicting a multi-story building on the left, situated on a slight elevation or cliffside, overlooking a sprawling, low-lying landscape or town in the distance. The foreground features dense foliage and a stone wall with a small rectangular marker. The style is illustrative with loose, expressive linework.",
+    "visualObjectsEn": "Multi-story building with windows and balconies, stone wall, foliage, distant town or landscape, rectangular marker on the wall, chimneys.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact location or subject of the drawing is not identifiable from the image alone. The signature at the bottom left appears to read 'Henry Correa' or similar, but this is not verified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 15,
+    "paragraphIndexZeroBased": 24,
+    "exactSourceQuotation": "the earth under the blue sky and against the prospect of the distant hills a velvet-black expanse, with red roofs, green trees, and, later, black-veiled shrubs and gates, barns, outhouses, and walls, rising here and there into the sunlight.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a multi-story building on a cliffside overlooking a landscape, which aligns well with the descriptive passage of a prospect of distant hills, walls, and outhouses rising into the sunlight as viewed from a high vantage point.",
+    "suggestedAltArNotApproved": "A multi-story building on a cliffside overlooking a distant landscape, with a stone wall and foliage in the foreground.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a multi-story building on an elevation overlooking a flat, dark expanse and distant landscape.",
+    "visualContradictions": "The passage describes looking down specifically from a church spire onto a village half-submerged in a coiling, velvet-black flow with rising red roofs and trees. The image depicts a standard multi-story urban building rather than a church spire, and lacks the distinct visual elements of a person stranded observing a black smoke-filled village from a spire.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

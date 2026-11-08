@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_126_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-cc8e4c1a99f127c7.webp",
+  "imageSha256": "ef678964b07a083686af60b682eb37dc3af5d89afa54eeb174bb2df25074a936",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch depicting a person lying prone on the ground, seemingly deceased or unconscious. The figure is positioned horizontally, with their head to the left and feet to the right. There is a dark, radiating mark or stain on the ground beneath the torso, suggesting an injury or impact. A small, rectangular object, possibly a book or a small bag, lies on the ground near the figure's feet. The background is sparse, with light hatching suggesting smoke or dust.",
+    "visualObjectsEn": "A human figure in a prone position, a dark radiating stain or mark on the ground, a small rectangular object near the feet, and light hatching lines representing atmospheric effects like smoke or dust.",
+    "recognizableCharactersOrPeopleEn": "A single, unidentified human figure lying on the ground.",
+    "uncertaintyNotes": "The exact nature of the radiating mark (whether it represents blood, an explosion, or a shadow) is ambiguous. The identity of the person and the specific context of the scene are not provided in the image."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 10,
+    "paragraphIndexZeroBased": 24,
+    "exactSourceQuotation": "I saw that he was a sturdy man, cheaply but not shabbily dressed; his head was bent under his body, and he lay crumpled up close to the fence, as though he had been flung violently against it.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The image depicts a prone figure on the ground with a dark mark, which aligns with the narrator discovering a man lying crumpled and still after a flash of light in Chapter 10. The description of the man's position and the atmospheric setting matches the visual evidence of the sketch.",
+    "suggestedAltArNotApproved": "A sketch of a man lying prone on the ground, crumpled near a fence, with a dark mark on the earth suggesting a violent impact.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a person lying crumpled on the ground with their head bent awkwardly under the body, perfectly matching the description of the dead man found by the narrator near the fence during the lightning flashes.",
+    "visualContradictions": "None, the scene aligns well with the description of a body lying crumpled and distorted on the ground.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
