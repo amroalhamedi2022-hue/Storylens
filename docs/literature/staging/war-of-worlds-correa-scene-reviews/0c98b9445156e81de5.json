@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_139-1_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-0c98b9445156e81d.webp",
+  "imageSha256": "d75d179409d560f9c9372ea78196dc9378976b2bfb8fbbc9b62b9b68b183a162",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A small, isolated ink-style engraving of an abstract, possibly organic or mechanical object floating against a plain white background. The object features a horizontal, elongated, textured body with a central rounded mass and several thin, dangling, root-like or tentacle-like appendages extending downward.",
+    "visualObjectsEn": "Horizontal textured bar, central rounded core, dangling thin filaments or tentacles.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The object is highly abstract and lacks context; it is unclear if it represents a biological specimen, a piece of debris, or a stylized artistic element."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 13,
+    "exactSourceQuotation": "its tentacles bent and smashed and twisted",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The description of a horizontal, textured body with dangling, tentacle-like appendages matches the visual depiction of a damaged Martian handling-machine, which is described in this passage as having its tentacles bent and twisted among ruins.",
+    "suggestedAltArNotApproved": "An ink-style engraving of a damaged Martian handling-machine, showing its elongated, textured body and dangling, twisted tentacles.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a small, isolated illustration of an abstract mechanical or organic object with a horizontal elongated body and hanging tentacles against a plain background.",
+    "visualContradictions": "The passage describes a wrecked handling-machine lying amongst ruins with bent and smashed tentacles and a shattered forepart, whereas the image only shows the object floating in isolation without any surrounding ruins, houses, or road setting.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

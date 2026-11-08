@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_148_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-e776243bb311f91f.webp",
+  "imageSha256": "3ecd1191e3604d24f5567aeeefc128df534ed51b5e06c73124a4ae042e83a5fa",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a large, mechanical, tripod-like machine hovering or standing above a forest. The machine has a wide, conical roof, a central body with large circular lenses or eyes, and multiple articulated, tentacle-like appendages. One of these appendages is grasping a small human figure in mid-air. The style is reminiscent of early 20th-century pen-and-ink book illustrations.",
+    "visualObjectsEn": "Tripod machine, conical roof, circular lenses, mechanical tentacles, human figure, forest, smoke or mist, cross-hatching shading.",
+    "recognizableCharactersOrPeopleEn": "A single small human figure being held by the machine.",
+    "uncertaintyNotes": "The exact nature of the machine is ambiguous, though it resembles science fiction depictions of extraterrestrial technology. The specific identity of the human figure is not discernible."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 10,
+    "paragraphIndexZeroBased": 14,
+    "exactSourceQuotation": "Machine it was, with a ringing metallic pace, and long, flexible, glittering tentacles (one of which gripped a young pine tree) swinging and rattling about its strange body.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a tripod machine with a conical roof, circular lenses, and mechanical tentacles, one of which is grasping a human figure. This aligns with the description in Chapter 10, Paragraph 14, which describes the machine as having a 'brazen hood' (conical roof), 'circular lenses' (implied by the machine's 'eyes' and 'strange body'), and 'long, flexible, glittering tentacles' that grip objects (in the text a tree, in the illustration a human).",
+    "suggestedAltArNotApproved": "A mechanical tripod machine with a conical hood and circular lenses strides through a forest, using its articulated, tentacle-like appendages to grasp a small human figure.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts a mechanical tripod holding a small human figure with one of its tentacles, rather than gripping a young pine tree as specifically stated in the text.",
+    "visualContradictions": "The passage describes the tentacle gripping a young pine tree, but the image shows a tentacle grabbing a human figure in mid-air.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

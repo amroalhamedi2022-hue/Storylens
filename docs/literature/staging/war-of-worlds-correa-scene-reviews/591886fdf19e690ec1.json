@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_139-2_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-591886fdf19e690e.webp",
+  "imageSha256": "52e7fcc60b452d1639b57df2b6c810927666895a695921a55211eb131f0e7f48",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a group of people standing on what appears to be the deck of a ship, looking upward and outward toward something off-screen. The style is reminiscent of early 20th-century editorial or book illustration.",
+    "visualObjectsEn": "A ship's railing, a large circular object resembling a ventilator or searchlight, rigging or mast lines, binoculars held by one of the figures, and clothing consistent with early 20th-century fashion including hats and coats.",
+    "recognizableCharactersOrPeopleEn": "A group of several individuals, including a woman wearing a hat standing on the right, and several men, some wearing hats, with one man in the center using binoculars.",
+    "uncertaintyNotes": "The exact nature of the object being viewed is not depicted. The setting is inferred to be a ship based on the railing and rigging, but this is not explicitly confirmed by the drawing."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 17,
+    "paragraphIndexZeroBased": 27,
+    "exactSourceQuotation": "all the crowding passengers on the steamer’s stern shouted together. And then they yelled again. For, surging out beyond the white tumult, drove something long and black, the flames streaming from its middle parts, its ventilators and funnels spouting fire.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description mentions a ship's deck, a railing, rigging, and a group of people looking outward, which aligns perfectly with the narrative of passengers on a steamer witnessing the Martian machine. The mention of 'ventilators' in the text matches the 'large circular object resembling a ventilator' noted in the visual description.",
+    "suggestedAltArNotApproved": "A group of passengers on the deck of a steamer, including a woman in a hat and a man with binoculars, looking in terror at a Martian machine emerging from the water.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a crowd of passengers on the stern of a steamer looking and reacting upward toward the scene described in the text, with figures holding binoculars and shouting.",
+    "visualContradictions": "None. The scene accurately matches the description of passengers on the steamer's stern witnessing the event.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

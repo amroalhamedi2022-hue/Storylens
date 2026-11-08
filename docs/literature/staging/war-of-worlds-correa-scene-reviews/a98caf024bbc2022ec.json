@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_143_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-a98caf024bbc2022.webp",
+  "imageSha256": "e464d9bec67b16eac298637dbc734dc9765d854920d4ff07415d8746e67301b7",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a dark, desolate landscape at night. A tall, tripod-like mechanical structure with a central head and dangling tentacles stands in the foreground. In the background, there are silhouettes of buildings and a rough, uneven terrain. The sky is heavily hatched with dark, stormy lines.",
+    "visualObjectsEn": "Tripod machine, tentacles, mechanical head, buildings, rubble, uneven ground, dark sky.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The image is a stylized artistic illustration; the exact nature of the mechanical structure is ambiguous, though it resembles science fiction imagery. The signature 'A. CORR' is visible at the bottom."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 16,
+    "exactSourceQuotation": "The dusky houses about me stood faint and tall and dim; the trees towards the park were growing black. All about me the red weed clambered among the ruins, writhing to get above me in the dimness. Night, the mother of fear and mystery, was coming upon me.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a desolate, dark landscape with a tripod machine and silhouettes of buildings, which aligns with the narrator's description of the ruined, dark, and desolate environment in Chapter 25. The visual elements of the tripod and the dark, hatched sky match the atmosphere of 'night, the mother of fear and mystery' described in the selected passage.",
+    "suggestedAltArNotApproved": "A dark, atmospheric illustration of a Martian tripod standing amidst the ruins of a desolate, night-time landscape, with silhouettes of buildings and a stormy, hatched sky.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a desolate landscape with ruins, a tripod fighting machine, and a dark sky, capturing the general mood of post-invasion London.",
+    "visualContradictions": "The passage specifically describes the narrator standing alone in the dimness as night falls, listening to a voice that suddenly stops, leaving a gaunt quiet. The image prominently features a towering Martian tripod machine, whereas the passage depicts a moment of eerie stillness and absence of activity before or after an event, without depicting the narrator or the specific auditory transition described.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.9,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
