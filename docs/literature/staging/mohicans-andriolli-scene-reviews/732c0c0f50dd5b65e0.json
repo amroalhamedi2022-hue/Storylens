@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p53.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-732c0c0f50dd5b65.webp",
+  "imageSha256": "97dfb469aaee9fef0267a7df3e9c4307abac5c5a8bcf1352f6ba415728ab4a42",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a group of people in a wooded, riverine setting. A man in buckskin clothing stands in the water, holding a long pole and steadying a small wooden canoe. Inside the canoe, a woman is seated, reaching out to take the hand of another woman who is being assisted by a man in a military-style uniform. A fourth man, wearing a tricorn hat, stands on the riverbank near a tree, observing the scene. The style is that of a 19th-century book illustration.",
+    "visualObjectsEn": "Canoe, wooden pole, river, trees, forest, tricorn hats, military-style uniform, buckskin clothing, long dresses, rocks, water ripples.",
+    "recognizableCharactersOrPeopleEn": "Four individuals: one man in buckskin, one man in a military uniform, two women, and one man in a tricorn hat standing on the bank.",
+    "uncertaintyNotes": "The identities of the characters are based on the provided caption text, which I am reporting as part of the image content, but I cannot independently verify the historical or literary accuracy of these labels."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 5,
+    "paragraphIndexZeroBased": 27,
+    "exactSourceQuotation": "So soon as Cora and Alice were seated, the scout, without regarding the element, directed Heyward to support one side of the frail vessel, and posting himself at the other, they bore it up against the stream",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description matches the action in Chapter 5, where the scout (Hawkeye) and Heyward are maneuvering a canoe in the water to transport Cora and Alice. The description of the scout in buckskin, the military-style uniform (Heyward), and the two women in the canoe aligns with the narrative context of this specific passage.",
+    "suggestedAltArNotApproved": "A 19th-century engraving illustrating the scout and Heyward assisting Cora and Alice into a canoe on the river, as described in James Fenimore Cooper's The Last of the Mohicans.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts a scout in buckskin handling a canoe in the water, a gentleman in military uniform (Heyward) supporting the vessel alongside him, and two women (Cora and Alice) seated inside the frail boat, exactly matching the narrative of crossing the stream in the passage.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

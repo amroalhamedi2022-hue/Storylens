@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p64.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-adbf7af88f243d62.webp",
+  "imageSha256": "ffebd70accab7fdc1eed68c8d7222e220ff8428311bd731402f9e12155fffece",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white historical-style engraving depicting a group of people in a dimly lit, outdoor, possibly wooded setting at night. A figure in the foreground, dressed in buckskins and a fur cap, sits on a rock and holds a flaming torch high, illuminating the scene. Facing this figure is a Native American man standing tall with feathers in his hair. Behind the torch-bearer stand three other individuals: a man in an 18th-century military-style coat and two women in period-appropriate dresses and bonnets.",
+    "visualObjectsEn": "Flaming torch, long rifle, buckskin clothing, fur cap, 18th-century military coat, period dresses, bonnets, feathers, rock, foliage.",
+    "recognizableCharactersOrPeopleEn": "A Native American man, a frontiersman or scout holding a torch, a man in military attire, and two women.",
+    "uncertaintyNotes": "The exact historical context, specific identities of the individuals, and the precise location are not explicitly stated in the image and are subject to interpretation."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 6,
+    "paragraphIndexZeroBased": 3,
+    "exactSourceQuotation": "At the farther extremity of a narrow, deep cavern in the rock, whose length appeared much extended by the perspective and the nature of the light by which it was seen, was seated the scout, holding a blazing knot of pine. The strong glare of the fire fell full upon his sturdy, weather-beaten countenance and forest attire",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The passage explicitly describes the scout (Hawkeye) sitting in a cavern holding a 'blazing knot of pine' (torch) which illuminates his face and attire, matching the visual description of the frontiersman holding a torch in a dimly lit, rocky, wooded setting. The presence of Uncas and the travellers in the scene aligns with the characters mentioned in the text.",
+    "suggestedAltArNotApproved": "A nineteenth-century engraving of Hawkeye holding a torch in a cavern, illuminating the faces of Uncas and the travellers.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a seated scout holding a blazing knot of pine (torch) inside a narrow cavern setting, with Uncas standing in advance throwing his figure powerfully into view, and the travelers (Major Heyward and the two women) observing them.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.98,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

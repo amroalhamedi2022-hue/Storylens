@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p77.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-b27f22788755eaf6.webp",
+  "imageSha256": "96bf2a901a85b3554c252e1c6233c143b1a9e51109ce9312cb8ae26c0b408abe",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting a dramatic scene inside or near a tent. A man in 18th-century military uniform stands centrally with arms outstretched, holding a pistol in one hand. To his left, two women are huddled together on the ground, appearing distressed or protective. To his right, a person wearing a head covering and a long coat stands holding a long rifle, pulling back a tent flap. The style is characteristic of 19th-century book illustration.",
+    "visualObjectsEn": "18th-century military uniform, tricorn hat, pistol, long rifle, tent fabric, period-style dresses, ground foliage.",
+    "recognizableCharactersOrPeopleEn": "A male soldier in 18th-century attire, two women in period clothing, and a person in a head covering holding a rifle.",
+    "uncertaintyNotes": "The specific historical or literary context is not provided in the image, and the identities of the characters are unknown. The date '1863' and the name 'Andreotti' are visible, suggesting the artist and year of creation, but the narrative subject remains speculative."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 17,
+    "paragraphIndexZeroBased": 60,
+    "exactSourceQuotation": "The woman, more in terror than through love of the ornament, wrapped her child in the coveted article, and folded both more closely to her bosom. Cora was in [Pg 180] the act of speaking, with an intent to advise the woman to abandon the trifle, when the savage relinquished his hold of the shawl, and tore the screaming infant from her arms.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The scene depicts a dramatic interaction involving women in distress and a figure in a long coat/head covering (the savage) interacting with them. While the military figure is not explicitly the focus of this specific sentence, the context of the Huron seizing the shawl and the women's protective, distressed posture matches the visual description of the engraving depicting the abduction/harassment of the women in the camp.",
+    "suggestedAltArNotApproved": "A dramatic 19th-century engraving showing a tense confrontation involving a soldier, two distressed women, and a captor in a tent setting.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a man in an 18th-century military uniform holding a pistol and standing defensively in front of two distressed women, while another figure holds open a tent flap with a rifle.",
+    "visualContradictions": "The text describes a specific scene where a Huron savage tears an infant from a woman's arms and holds the baby by the feet overhead. The engraving depicts a military officer with a pistol and two women on the ground inside a tent, completely lacking the infant being held by the feet, the shawl-snatching Huron, and Cora speaking.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

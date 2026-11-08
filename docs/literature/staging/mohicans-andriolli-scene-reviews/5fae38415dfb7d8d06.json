@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p69.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-5fae38415dfb7d8d.webp",
+  "imageSha256": "7b53d7052f486f1ea07146ec84e2cf47cc9cd3a325bf5655f02f75c5ce5f9c42",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraved illustration depicting a group of people gathered in what appears to be a rustic or cave-like interior. A man in a long coat stands with his back to the viewer, holding a bottle, while facing two women seated on a ledge. To the left, two men are seated, one holding a cup, with a small wooden barrel placed on the ground in front of them. A figure stands in the background. The style is consistent with 19th-century book illustrations.",
+    "visualObjectsEn": "Wooden barrel, glass or cup, bottle, long coats, hats, rifles or muskets leaning against the wall, rocky or cave-like background, clothing with buttons and period-appropriate tailoring.",
+    "recognizableCharactersOrPeopleEn": "Five individuals: two men seated on the left, one man standing on the right, two women seated in the middle, and one figure standing in the background.",
+    "uncertaintyNotes": "The exact setting (cave vs. interior of a cabin) is ambiguous due to the shading. The specific historical period is not explicitly stated, though the clothing suggests an 18th or early 19th-century setting. The identity of the figures is unknown."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 6,
+    "paragraphIndexZeroBased": 11,
+    "exactSourceQuotation": "A spectral-looking figure stalked from out the darkness behind the scout, and seizing a blazing brand, held it towards the farther extremity of their place of retreat. Alice uttered a faint shriek, and even Cora rose to her feet, as this appalling object moved into the light",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The scene describes a group in a cave-like interior (the retreat) with women (Alice and Cora) reacting to a figure (Chingachgook) appearing in the light. The presence of multiple figures, the cave setting, and the dramatic lighting match the visual description of the engraving.",
+    "suggestedAltArNotApproved": "Engraving of a group of people in a cave, with two women reacting to a figure holding a light source, consistent with the scene where Chingachgook reveals the cavern's interior to Alice and Cora.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a group of characters gathered inside a cave or room setting, with individuals seated and standing, a wooden barrel on the ground, and a standing man holding a bottle, interacting with seated women and men.",
+    "visualContradictions": "The passage describes Chingachgook emerging from the darkness holding a blazing brand, causing Alice and Cora to rise, and subsequently crossing a deep, narrow chasm to enter another cave. None of these specific actions—holding a blazing brand, rising in alarm, or crossing a rock chasm—are depicted in the engraving.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
