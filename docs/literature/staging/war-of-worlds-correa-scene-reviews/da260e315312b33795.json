@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_118_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-da260e315312b337.webp",
+  "imageSha256": "129b5c31247193ec6e6b7a279802c931f66d2db411823af4c6f5ab57b160a2b8",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a violent outdoor scene. A woman in a long dress and hat stands on the left, firing a small handgun toward a group of men. A large cloud of smoke obscures the space between her and the men. One man is falling backward or being struck, while another man stands behind him. In the background, there is a carriage or cart with a driver and a sparse, wooded landscape.",
+    "visualObjectsEn": "Handgun, smoke, long dress, hat, carriage, trees, ground, clothing.",
+    "recognizableCharactersOrPeopleEn": "A woman, two men in the foreground, a driver in the background.",
+    "uncertaintyNotes": "The exact nature of the interaction (e.g., robbery, duel, or defense) is ambiguous. The specific historical period is not explicitly stated, though the clothing suggests late 19th or early 20th century. The identity of the figures is unknown."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

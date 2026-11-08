@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_122_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-5d8299ef6592ddeb.webp",
+  "imageSha256": "d90d0b782f709dca26ebb0cd617b5c531b7a53ed2d043a347a665662ed2e3969",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch showing a man kneeling on the ground, leaning over a long, rectangular wooden beam or plank. He is using his hands to manipulate or inspect the object. The style is loose and expressive with heavy cross-hatching.",
+    "visualObjectsEn": "A man, a long wooden beam or plank, a thin vertical support or rod under the beam, and a textured ground surface.",
+    "recognizableCharactersOrPeopleEn": "A single male figure with short hair, wearing a shirt and trousers, shown in profile.",
+    "uncertaintyNotes": "The exact nature of the object the man is interacting with is ambiguous; it could be a piece of construction material, a balance beam, or a tool. The historical context or specific artistic origin of the sketch is not identifiable from the image alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 19,
+    "paragraphIndexZeroBased": 2,
+    "exactSourceQuotation": "The detachment of the plaster had left a vertical slit open in the debris, and by raising myself cautiously across a beam I was able to see out of this gap into what had been overnight a quiet suburban roadway.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The scene description depicts a man interacting with a beam or plank in a way that suggests construction or structural movement. In Chapter 19, the narrator describes using a beam to position himself to look through a gap in the debris of a ruined house, which aligns with the physical action of leaning over or manipulating a beam in a confined, structural context.",
+    "suggestedAltArNotApproved": "A man leaning over a wooden beam while navigating through debris, illustrating the narrator's attempt to observe the outside world from his hiding place.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a single male figure kneeling and interacting with a horizontal wooden beam or plank, with no other characters or context visible.",
+    "visualContradictions": "The passage describes two characters (the narrator and the curate) interacting within a ruined enclosure, with plaster falling and looking out through a gap onto a suburban roadway. The image only features one man alone by a beam, lacking the curate, the fallen plaster, the gap, and the view of the roadway.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

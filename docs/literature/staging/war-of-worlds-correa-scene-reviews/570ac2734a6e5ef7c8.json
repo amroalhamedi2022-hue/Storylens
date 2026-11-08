@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_120_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-570ac2734a6e5ef7.webp",
+  "imageSha256": "d4e3baadab9ebd759520682dd314025c97e2758f81bcea75a3b2596bd1757018",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch of a disheveled man in a tattered suit, standing in a dynamic, theatrical pose against a plain background. The man has messy hair, wears a jacket with frayed edges, and appears to be gesturing with both hands, one raised high and the other extended forward.",
+    "visualObjectsEn": "Tattered suit jacket, worn trousers, cravat or necktie, shoes, ink lines indicating shading and texture.",
+    "recognizableCharactersOrPeopleEn": "A single male figure with a gaunt, expressive face and unkempt hair.",
+    "uncertaintyNotes": "The specific identity of the person is not provided in the image. The style is characteristic of 19th or early 20th-century pen-and-ink illustration, but the exact historical context or artist cannot be definitively confirmed from the image alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 29,
+    "exactSourceQuotation": "At the thought I extended my hands towards the sky and began thanking God.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The description of a disheveled man in a tattered suit gesturing with both hands, one raised high and the other extended forward, aligns perfectly with the narrator's emotional climax in Chapter 25, where he expresses relief and gratitude by extending his hands toward the sky.",
+    "suggestedAltArNotApproved": "A disheveled, gaunt man in a tattered suit stands in a theatrical pose, extending his hands toward the sky in a gesture of relief and gratitude.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The illustration depicts a disheveled, ragged man with a gaunt face standing alone, raising his hands towards the sky in a dramatic gesture of gratitude or prayer, which directly corresponds to the narrator's action described in the passage: 'At the thought I extended my hands towards the sky and began thanking God.'",
+    "visualContradictions": "None. The solitary, tattered figure gesturing upward matches the emotional peak and specific action described by the narrator at the end of the book.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

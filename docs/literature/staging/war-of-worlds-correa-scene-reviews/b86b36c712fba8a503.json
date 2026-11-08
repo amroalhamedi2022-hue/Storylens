@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_124_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-b86b36c712fba8a5.webp",
+  "imageSha256": "74b4aadbf788e6604972c361a5fe1f72fcb139f278aea733c92f880d9c68d4c4",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch of an elderly man with a beard walking forward while hunched over, carrying a bundle or object in his arms. The style is expressive with loose, hatched lines.",
+    "visualObjectsEn": "An elderly man, a long coat, a bundle or object held in the arms, textured ground markings.",
+    "recognizableCharactersOrPeopleEn": "An elderly man with a beard and disheveled hair.",
+    "uncertaintyNotes": "The exact nature of the object being carried is ambiguous due to the sketch-like quality of the drawing. The artist's signature is visible in the bottom right corner, reading 'Lvin-Correa'."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 23,
+    "paragraphIndexZeroBased": 2,
+    "exactSourceQuotation": "I went knee-deep, and sometimes neck-deep, in the red weed. The density of the weed gave me a reassuring sense of hiding. The wall was some six feet high, and when I attempted to clamber it I found I could not lift my feet to the crest. So I went along by the side of it, and came to a corner and a rockwork that enabled me to get to the top, and tumble into the garden I coveted.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts an elderly, disheveled man hunched over and carrying a bundle, which aligns with the narrator's desperate, exhausted state while foraging for food in the red weed and garden, as described in this passage.",
+    "suggestedAltArNotApproved": "An elderly, disheveled man hunched over and carrying a bundle of food, walking through a desolate landscape.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows an exhausted, hunched man in a long coat walking forward while clutching a bundle of food or objects in his arms, aligning with the narrator foraging for vegetables and carrying them away after escaping the pit.",
+    "visualContradictions": "There are no major contradictions; the specific details like the red weed, garden walls, or specific vegetables are not explicitly rendered in detail, but the overall action of a starved traveler carrying a gathered burden matches the scene.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
