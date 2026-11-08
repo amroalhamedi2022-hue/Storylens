@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_131_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-6c9880cdd6689bf2.webp",
+  "imageSha256": "2ca7db2bf649868c42667ebd23dfcfdd1bfbe40b5ace06e01b94a2c7a49daf14",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting two large, mechanical, tripod-like machines moving across a landscape filled with smoke or clouds. The machines have tall, spindly legs and wide, flat, hat-like tops. In the background, there are faint outlines of buildings or a city skyline. The style is reminiscent of a 19th-century pen-and-ink engraving.",
+    "visualObjectsEn": "Two mechanical tripods, smoke clouds, distant buildings, ground terrain.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the machines is ambiguous, though they appear to be science-fiction constructs. The setting is generic and lacks specific geographical markers."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 13,
+    "paragraphIndexZeroBased": 2,
+    "exactSourceQuotation": "Over that, above the blackened heather and ruined buildings that stretched far and wide, stood one as sentinel, while the rest abandoned their vast fighting-machines and descended into the pit.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts large mechanical tripods (fighting-machines) in a landscape with smoke and distant buildings, which aligns with the description of the Martians' machines standing sentinel over ruined buildings and the surrounding landscape.",
+    "suggestedAltArNotApproved": "A black and white engraving showing two towering Martian fighting-machines on spindly tripod legs moving through a smoky, desolate landscape with the faint silhouette of a city in the background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows two tripod fighting machines amidst clouds of smoke, but does not depict specific narrative actions from the passage such as transferring contents from multiple cylinders to a central pit on Horsell Common, nor does it show a sentinel standing guard while others descend into the pit.",
+    "visualContradictions": "The passage describes specific activities involving multiple cylinders, a central pit, and a sentinel standing guard over ruined buildings, whereas the illustration only shows two tripods near smoke and generic landscape features without clearly distinguishing the specific pit-working actions or the sentinel guard role described.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

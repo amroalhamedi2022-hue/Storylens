@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_137_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-acd01b98d196f188.webp",
+  "imageSha256": "58293180020b68cb4e22637993c7217a00c4e6ca8e6ed13a7baf3e8b77972c17",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch of a large, armored warship at sea. The ship is depicted in a stylized, impressionistic manner with heavy cross-hatching and dark ink strokes. It features a prominent superstructure, masts, and gun turrets. The ship appears to be moving through water, with reflections visible below it. The style is reminiscent of late 19th or early 20th-century book illustrations.",
+    "visualObjectsEn": "Warship, masts, gun turrets, superstructure, water, reflections, signature.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The specific class or model of the warship is not identifiable due to the abstract and stylized nature of the ink drawing. The signature 'Alv. Cox' is visible in the lower left, but the identity of the artist is not confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 17,
+    "paragraphIndexZeroBased": 11,
+    "exactSourceQuotation": "About a couple of miles out lay an ironclad, very low in the water, almost, to my brother’s perception, like a waterlogged ship. This was the ram Thunder Child.",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The scene description of a warship at sea with heavy cross-hatching and dark ink strokes aligns perfectly with the narrative introduction of the ironclad 'Thunder Child' in Chapter 17, which is the only warship described in the text.",
+    "suggestedAltArNotApproved": "An impressionistic ink illustration of the ironclad ram Thunder Child at sea, depicted with heavy cross-hatching and dark strokes, appearing low in the water.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a low-profile ironclad warship at sea, specifically depicting the ram Thunder Child described in the passage.",
+    "visualContradictions": "None.",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

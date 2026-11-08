@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_136_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-a7b657746a40c049.webp",
+  "imageSha256": "c1ab74a879f5c5dff3610f6502948450871ac605270d415f3f9bfe11a2eb437e",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a scene on a body of water. In the background, a large, tall, tripod-like mechanical structure looms over a dark, smoky landscape. In the foreground, two small steam-powered boats are moving through the water, with people visible on board. A large plume of smoke or steam billows from the left side of the image, partially obscuring the background.",
+    "visualObjectsEn": "Tripod machine, steam-powered boats, water, smoke, steam, masts of ships in the distance, people on boats.",
+    "recognizableCharactersOrPeopleEn": "Several small, indistinct figures of people are visible on the decks of the two boats.",
+    "uncertaintyNotes": "The exact nature of the tripod machine is ambiguous, appearing as a fantastical or science-fiction element. The specific historical or fictional context is not explicitly stated in the image itself."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 64,
+    "exactSourceQuotation": "Dense black smoke was leaping up to mingle with the steam from the river, and as the Heat-Ray went to and fro over Weybridge its impact was marked by flashes of incandescent white, that gave place at once to a smoky dance of lurid flames.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a tripod machine near a river with steam and smoke, which aligns with the description of the Heat-Ray's impact on the river at Weybridge, where smoke and steam mingle and the machine is active.",
+    "suggestedAltArNotApproved": "A black and white illustration showing a tripod Martian machine looming over a river, with steam and smoke rising from the water and boats in the foreground.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows steam-powered boats on a river with a tripod machine looming in the background amidst smoke and steam.",
+    "visualContradictions": "The passage describes the Heat-Ray going to and fro over Weybridge, falling houses, trees, fences, and sheds flashing into flame, whereas the engraving depicts a river scene with boats which corresponds to a different passage in the novel (specifically the escape down the Thames, Chapter 16, rather than the destruction at Weybridge in Chapter 12).",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

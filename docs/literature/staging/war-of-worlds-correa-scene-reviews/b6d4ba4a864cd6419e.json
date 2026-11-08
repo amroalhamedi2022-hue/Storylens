@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_132_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-b6d4ba4a864cd641.webp",
+  "imageSha256": "830e2d04e1e772002a1b7c8079d20f9caa759455f47d33cc48b392619b1e032c",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line-art engraving depicting a harbor scene. In the foreground, people are gathered on a shore or dock near small rowboats. In the background, there are large steam-powered ships with masts and smokestacks, with smoke billowing from one of the vessels. The style is reminiscent of 19th-century book illustrations.",
+    "visualObjectsEn": "Steamships, masts, smokestacks, rowboats, shoreline, harbor, smoke, figures of people.",
+    "recognizableCharactersOrPeopleEn": "A group of unidentified people standing on the shore, some appearing to be boarding or disembarking from small boats.",
+    "uncertaintyNotes": "The specific historical event or location is not explicitly labeled. The exact nature of the activity (e.g., evacuation, arrival, or departure) is ambiguous due to the stylized nature of the drawing."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 17,
+    "paragraphIndexZeroBased": 10,
+    "exactSourceQuotation": "Close inshore was a multitude of fishing smacks⁠—English, Scotch, French, Dutch, and Swedish; steam launches from the Thames, yachts, electric boats; and beyond were ships of large burden, a multitude of filthy colliers, trim merchantmen, cattle ships, passenger boats, petroleum tanks, ocean tramps, an old white transport even, neat white and grey liners from Southampton and Hamburg",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description of a harbor with steamships, masts, smokestacks, and people on the shore aligns perfectly with the detailed description of the evacuation scene at the Essex coast in Chapter 17, where a multitude of various vessels and people are gathered.",
+    "suggestedAltArNotApproved": "An engraving of a busy harbor scene featuring various steamships, masts, and smokestacks with smoke billowing, while a group of people gathers on the shoreline near small rowboats.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows people gathered on a shoreline near small boats and rowboats, with large steamships and vessels visible in the background, matching the evacuation scene described in the passage.",
+    "visualContradictions": "None observed that contradict the specific text elements.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
