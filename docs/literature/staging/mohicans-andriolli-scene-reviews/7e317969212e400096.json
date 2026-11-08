@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p95.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-7e317969212e4000.webp",
+  "imageSha256": "117c0108dbcb937ba3787e51eeba9bab69ef14b79027a538d023feb74bdb083a",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting a forest scene with a rocky outcrop. In the foreground, three figures are positioned behind rocks and brush, aiming rifles toward the upper right. In the background, a figure is suspended by one hand from a tree branch. The style is detailed, cross-hatched, and illustrative, characteristic of 19th-century book engravings.",
+    "visualObjectsEn": "Rifles, rocks, dense forest trees, brush, a figure hanging from a tree branch, clothing including a tricorn hat and fringed garments.",
+    "recognizableCharactersOrPeopleEn": "Three armed men in the foreground, one wearing a tricorn hat and colonial-style coat, two others in fringed hunting attire. One figure is suspended from a tree in the upper right.",
+    "uncertaintyNotes": "The specific identities of the figures are not verifiable from the image alone, though they appear to be characters from a narrative. The exact nature of the hanging figure's situation is ambiguous, as it could be a depiction of a prisoner or a corpse."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 29,
+    "paragraphIndexZeroBased": 34,
+    "exactSourceQuotation": "The gourd was one of the usual little vessels used by the Indians, and it was suspended from a dead branch of a small pine, by a thong of deer-skin, at the full distance of a hundred yards.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a figure suspended from a tree branch in the background, which aligns with the description of a target (a gourd) suspended from a branch in this specific passage. The foreground figures aiming rifles correspond to the context of the shooting contest described in the paragraph.",
+    "suggestedAltArNotApproved": "A detailed 19th-century engraving showing three men in hunting attire aiming rifles from behind rocks in a forest, while in the background, a small object is seen hanging from a tree branch.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts armed figures in a forest setting with a person hanging from a tree branch in the upper right corner, which directly matches a completely different scene (specifically Hawkeye shooting at the Huron suspended by one hand, as stated in the French caption: 'Œil de Faucon envoie une dernière balle au Huron suspendu par une main').",
+    "visualContradictions": "The passage describes Duncan shooting at a gourd suspended from a dead branch of a pine tree at a distance of a hundred yards, with young Indians springing forward to check the tree. The image instead shows a human figure hanging by one hand from a tree branch being shot at by characters in the foreground, corresponding to a different event in the novel.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.99,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

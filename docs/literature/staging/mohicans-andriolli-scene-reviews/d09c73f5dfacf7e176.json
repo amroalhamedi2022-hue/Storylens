@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p9.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-d09c73f5dfacf7e1.webp",
+  "imageSha256": "248b1e58f42118536a68717b88f0932c267df11130ca261582e70303698f843b",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraved illustration depicting a group of people outdoors in a camp-like setting. In the foreground, a shirtless Indigenous man with feathers in his hair stands next to a European man in 18th-century military-style clothing, including a tricorn hat and breeches. The European man is pointing toward the distance. A horse stands between them, held by a younger man in a uniform. In the background, there are several tents and other figures, including men in military uniforms.",
+    "visualObjectsEn": "Indigenous man, European man in tricorn hat, horse, young man in uniform, tents, grass, trees, military uniforms, leather satchel, spurs.",
+    "recognizableCharactersOrPeopleEn": "An Indigenous man, a European man in 18th-century attire, a young man in a uniform, and several background figures in military-style clothing.",
+    "uncertaintyNotes": "The specific historical identities of the individuals are not explicitly stated in the image, and the exact geographical location is not identified. The date '1883' and the signature 'Anariolli' are visible in the bottom right corner, suggesting the date of the engraving's creation rather than the historical event depicted."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "modelOriginalQuotationRejected": true,
+  "modelOriginalQuotationRejectReason": "Model chapter/paragraph/quotation not verifiable verbatim against pinned original candidate excerpt",
+  "suggestedMatch": null,
+  "evidenceStatus": "INVALID_MODEL_SOURCE_QUOTE_REJECTED_NONPUBLISHABLE",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

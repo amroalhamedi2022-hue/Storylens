@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-last-of-the-mohicans",
+  "originalCreator": "Michał Elwiro Andriolli; engraved by Huyot",
+  "historicIllustratedEdition": "Le dernier des Mohicans, French illustrated period source (exact plate year to confirm)",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Le_dernier_des_Mohicans_-_Cooper_James_-_Andriolli_-_Huyot_-_p85.jpg",
+  "imagePath": "docs/literature/staging/mohicans-andriolli-period-plates/plates/mohicans-andriolli-f82c805760de5d79.webp",
+  "imageSha256": "4188bf09969ab273b163107342947ce50119b07d0f959850859d9d92b858332a",
+  "sourceCorpusSha256": "325f0f2e439a70ae352404a0665fc2cdd36a20069a12a8dbaed38e8256a0b772",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraved illustration depicting a group of people swimming or wading in a body of water near a rocky cliffside. Several individuals are partially submerged in the water, interacting with a large, fallen, gnarled tree trunk that extends into the water from the shore. In the upper right, atop the rocky cliff, two smaller figures are visible. The style is that of a 19th-century ink or pencil sketch.",
+    "visualObjectsEn": "Rocky cliff, fallen tree trunk with bare branches, water with ripples, small figures on the cliff, figures in the water.",
+    "recognizableCharactersOrPeopleEn": "Multiple figures are visible: at least three individuals are in the water near the log, and two smaller figures are positioned on the rocky ledge above.",
+    "uncertaintyNotes": "The exact identity of the figures and the specific geographical location are not provided in the image. The activity could be interpreted as swimming, hiding, or navigating a river, but the exact nature of the event is ambiguous."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 5,
+    "paragraphIndexZeroBased": 48,
+    "exactSourceQuotation": "the whole three disappeared in succession, seeming to vanish against the dark face of a perpendicular rock, that rose to the height of a few yards within as many feet of the water's edge.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts figures near a rocky cliffside and water, which aligns with the description of the characters navigating the water's edge near a perpendicular rock face in this passage. The presence of the fallen tree and the figures on the cliff matches the visual elements described in the scene.",
+    "suggestedAltArNotApproved": "A 19th-century engraving showing figures navigating a rocky riverbank with a fallen tree, consistent with the scout and Mohicans moving along the water's edge near a cliff.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows several figures wading or swimming in the water near a fallen tree and a rocky cliff, but it does not specifically depict the scout collecting implements and disappearing against a perpendicular rock along with the Mohicans as described in the passage.",
+    "visualContradictions": "The passage describes the scout and Mohicans moving silently by a group of travellers and vanishing against a rock near the water's edge, whereas the image shows figures actively swimming or navigating water around a large fallen log.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
