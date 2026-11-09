@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_181_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-3cafb76eef170238.webp",
+  "imageSha256": "a9ad2965ca95faa46a6ed46c5a713e92c9f9e58822a9f9eec6fd70ad4bb198de",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a tranquil, possibly wintery or overgrown riverside scene. A prominent street lamp stands on the left, heavily draped with hanging vegetation or icicles. In the background, a stone bridge spans a calm body of water, with buildings visible on the far bank. The foreground is dominated by dense, hanging foliage or frozen icicles that frame the view.",
+    "visualObjectsEn": "Street lamp, stone bridge, river or canal, buildings with pitched roofs, dense hanging vegetation or icicles, rocky or uneven riverbank.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "It is unclear whether the hanging elements are meant to represent natural weeping willow branches, heavy snow/icicles, or a stylized artistic effect. The exact historical period or location is not identifiable from the image alone, though the style suggests a late 19th or early 20th-century book illustration."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 14,
+    "paragraphIndexZeroBased": 50,
+    "exactSourceQuotation": "some of the passing cabs flaunted unextinguished lamps. And overhead the dawn was growing brighter, clear and steady and calm.",
+    "confidenceModelEstimateNotVerified": 0.7,
+    "modelRationaleNotVerified": "The illustration depicts a riverside scene with a prominent street lamp and a bridge, capturing a tranquil, quiet atmosphere. The selected passage describes a scene with street lamps and a calm, clear dawn, which aligns with the visual elements of the lamp and the quiet, bridge-adjacent setting described in the text.",
+    "suggestedAltArNotApproved": "A black and white illustration of a riverside street at dawn, featuring a prominent street lamp in the foreground and a stone bridge in the background, reflecting a quiet, early morning atmosphere.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image depicts a tranquil riverside scene with a street lamp, a stone bridge, and dense foliage or icicles. No people, carts, crashing vehicles, water troughs, church bells, or cabs with unextinguished lamps are visible.",
+    "visualContradictions": "The passage describes a chaotic street scene with a crashing cart, shrieks, curses, water troughs, and passing cabs during early dawn, whereas the illustration shows a quiet, static landscape scene featuring a river, bridge, and lamp post.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_187_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-f33daa4943a6b7a4.webp",
+  "imageSha256": "d5748907101813a0251488da431ec68681326a65270478567b4b1d6c781d8ac3",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a dimly lit, sparse room. On the left, a gaunt, skeletal figure in tattered, long clothing stands and holds out a small, rectangular object, possibly a card or a small frame, toward a person seated at a table on the right. The seated person is hunched over with their head resting on their arms on the table, seemingly asleep or in distress. The style is that of a 19th-century pen-and-ink engraving with heavy cross-hatching.",
+    "visualObjectsEn": "Skeletal figure, tattered robe, small rectangular object, wooden table, wooden stool, bed frame, floor, wall.",
+    "recognizableCharactersOrPeopleEn": "A skeletal, ghost-like or emaciated figure standing; a person sitting at a table with their head down.",
+    "uncertaintyNotes": "The exact nature of the object held by the skeletal figure is ambiguous due to the sketch-like quality of the drawing. The identity of the seated person and the specific narrative context are not explicitly stated in the image."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 11,
+    "paragraphIndexZeroBased": 23,
+    "exactSourceQuotation": "Then abruptly he sat down before the table, put his head on his arms, and began to sob and weep like a little boy",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a person seated at a table with their head resting on their arms, which matches the specific action of the curate in this paragraph. The 'skeletal figure' in the illustration corresponds to the narrator standing beside him, observing his emotional breakdown.",
+    "suggestedAltArNotApproved": "A black and white engraving showing a man sitting at a wooden table with his head buried in his arms, while a gaunt, standing figure looks on, illustrating the curate's emotional collapse.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a gaunt, skeletal figure standing and holding out an object (like a magnifying glass or small frame) toward a seated person who has their head down on a table. While the seated person resembles someone weeping with their head on their arms, the skeletal standing figure is entirely an hallucination or symbolic element not described in the passage.",
+    "visualContradictions": "The passage describes the narrator standing beside the weeping curate, wondering. The image introduces a bizarre, skeletal, ghost-like figure standing near the wall holding a magnifying glass or tool, which does not appear in the text at this moment.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

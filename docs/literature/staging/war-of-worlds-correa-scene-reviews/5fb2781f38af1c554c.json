@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_185_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-5fb2781f38af1c55.webp",
+  "imageSha256": "ac647d5592e055e331492d433e70da46d046333c383b6f0fa51ccc03c45a5b4a",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink drawing depicting two houses situated along a body of water, likely a canal or river. The house on the left is lower and wider, while the house on the right is taller and narrower with a prominent balcony. Both structures are surrounded by dense, overgrown vegetation and hanging vines. A vintage-style street lamp stands on the left bank. The style is reminiscent of a 19th-century pen-and-ink architectural sketch or etching.",
+    "visualObjectsEn": "Two houses, a street lamp, a body of water, dense foliage, vines, trees, architectural details like windows and balconies.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact geographical location is not identifiable from the image alone. The specific historical period of the engraving is estimated based on the artistic style, but cannot be confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 24,
+    "paragraphIndexZeroBased": 82,
+    "exactSourceQuotation": "The red creeper swarmed up the trees about the old palace, and their branches stretched gaunt and dead, and set with shrivelled leaves, from amid its clusters.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The engraving depicts two houses by a riverbank heavily overgrown with vines and dense vegetation. This matches the narrative description in Chapter 24, where the narrator observes the riverbank environment characterized by red creepers swarming up trees and dense, overgrown foliage surrounding structures near the water.",
+    "suggestedAltArNotApproved": "A black and white etching showing two houses along a riverbank, heavily obscured by thick, hanging vines and overgrown vegetation, with a street lamp on the left bank.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows two houses along a body of water with overgrown vegetation, a street lamp, and vines.",
+    "visualContradictions": "The passage describes the narrator looking out from Putney over the river with red weed, Lambeth flooded and red, and smoke rising beyond Kensington. The engraving merely shows a generic riverside scene with two buildings and dense foliage, without any specific elements of the Martian red weed, the ruined landscape of Putney and Lambeth, or the narrator's viewpoint as described in the text.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

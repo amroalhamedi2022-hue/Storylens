@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_186_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-7e68d5c16087d045.webp",
+  "imageSha256": "c45b0043e4106d0bb62997912a101fd24b4e7a36ed728cd23cf1c9a3740c864e",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration of a human skull partially overgrown with or entangled in seaweed or root-like vegetation. The skull is depicted from a front-facing perspective, with dark, hollow eye sockets and nasal cavity. The vegetation hangs down from the sides of the skull in long, dripping strands. There is a small signature or monogram 'A.C.' in the bottom right corner.",
+    "visualObjectsEn": "Human skull, seaweed, roots, vegetation, ink lines, signature.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the vegetation (seaweed versus roots) is ambiguous due to the stylized ink drawing technique. The origin and date of the engraving are not specified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 22,
+    "paragraphIndexZeroBased": 12,
+    "exactSourceQuotation": "the skeletons of the killed",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a skull entangled in vegetation, which aligns with the narrator's discovery of the aftermath of the Martian occupation in the pit, specifically mentioning 'the skeletons of the killed' amidst the debris. While the vegetation is stylized, the presence of a skull in a context of death and decay matches the narrative description of the abandoned Martian pit.",
+    "suggestedAltArNotApproved": "A black and white ink illustration of a human skull partially overgrown with vegetation, representing the remains of the victims found in the abandoned Martian pit.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a human skull entangled with vegetation, which visually corresponds directly to 'the skeletons of the killed' mentioned in the passage.",
+    "visualContradictions": "None. The passage mentions skeletons of the killed, and the engraving depicts a skeletal human skull.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.9,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
