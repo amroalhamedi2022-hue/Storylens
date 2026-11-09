@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_157_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-15b0d8393aea01d3.webp",
+  "imageSha256": "c38d5f78a1ca495f7a01a92a05e6a97949489554913f9acdb84e58cf28b2c469",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a person lying prone on a stone surface, with a large, amorphous, tentacled creature resting on or enveloping their back. The style is reminiscent of late 19th or early 20th-century pen-and-ink book illustrations, characterized by cross-hatching and expressive line work.",
+    "visualObjectsEn": "A human figure in a dress or robe, a large bulbous creature with tentacles, stone steps or a ledge, and a signature or mark in the bottom right corner.",
+    "recognizableCharactersOrPeopleEn": "A single human figure, likely female based on the hair and clothing, and a fantastical, monstrous creature.",
+    "uncertaintyNotes": "The exact nature of the creature is ambiguous due to the stylized, abstract ink work. It is unclear if the creature is attacking, consuming, or merely resting upon the person. The setting is suggested to be stone, but the environment is otherwise undefined."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 17,
+    "exactSourceQuotation": "I saw a contorted shape lying across the pathway.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a figure lying prone on a surface with a creature enveloping them, which aligns with the narrator's discovery of a 'contorted shape' on the path in the aftermath of the Martian invasion. While the text does not explicitly describe the creature in this specific sentence, the visual style and the context of the narrator encountering the aftermath of the Martian presence make this a plausible match for the scene described.",
+    "suggestedAltArNotApproved": "A figure lying prone on a stone surface with a large, tentacled creature resting upon them, illustrating the grim aftermath of the Martian conquest.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image depicts a Martian creature interacting with a human body on stone steps.",
+    "visualContradictions": "The selected passage describes the narrator wandering through empty London streets at dawn, seeing a single contorted shape across a pathway, and later observing a towering Martian on Primrose Hill. The image depicts a close-up encounter with a Martian directly engaging with a human victim, which does not match the specific solitary wandering and distant sighting described in the passage.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

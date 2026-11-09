@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_159_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-8588111e40f98885.webp",
+  "imageSha256": "e8cfc0e91f8223b6dd9f9e623cc5c176db5ed20461d29ef3afeb49ec27a36d71",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a small, winged, nude figure resembling a cherub or cupid standing with its back to the viewer, leaning its head against a vertical surface. To the left, a large spider web is drawn on the wall. On the ground, there are scattered items including an arrow, a bow, and a small bundle or book tied with string. The style is that of a 19th-century pen-and-ink engraving.",
+    "visualObjectsEn": "winged figure, spider web, arrow, bow, bundle, vertical wall surface, ground",
+    "recognizableCharactersOrPeopleEn": "A small, winged, cherubic figure.",
+    "uncertaintyNotes": "The exact identity of the figure is not explicitly stated, though it resembles traditional depictions of Cupid or Eros. The specific context or narrative purpose of the objects on the ground is not provided in the image."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 4,
+    "paragraphIndexZeroBased": 19,
+    "exactSourceQuotation": "The barrow of ginger beer stood, a queer derelict, black against the burning sky, and in the sand pits was a row of deserted vehicles with their horses feeding out of nosebags or pawing the ground.",
+    "confidenceModelEstimateNotVerified": 0.7,
+    "modelRationaleNotVerified": "The illustration depicts a scene of abandoned items (a bundle, bow, arrow) which aligns with the imagery of 'deserted vehicles' and 'queer derelict' items left behind in the chaos described in the aftermath of the Martian arrival. While the cherub figure is allegorical, the composition of scattered objects on the ground matches the narrative description of the abandoned common.",
+    "suggestedAltArNotApproved": "An engraving showing abandoned personal items and a bow and arrow on the ground near a wall, representing the remnants of human activity left behind during the Martian invasion.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a small winged cherubic figure leaning against a wall next to a spider web, with a bow and arrow on the ground.",
+    "visualContradictions": "The passage describes a crowd of people staring at a sand pit containing a fallen cylinder, along with a ginger beer barrow and deserted vehicles with horses. None of these elements—neither the crowd, the cylinder, the sand pit, nor the vehicles—appear in the illustration, which instead depicts a mythological scene with Cupid.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

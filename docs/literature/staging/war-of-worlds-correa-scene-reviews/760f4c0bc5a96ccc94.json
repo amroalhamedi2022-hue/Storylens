@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_163-1_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-760f4c0bc5a96ccc.webp",
+  "imageSha256": "b7f099523cd981387fbf5fe73b1729bab38578d5acbf588c5d950cce16642ecf",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink drawing showing a close-up, vertical view of a mechanical or anatomical structure. It features a central, segmented, tube-like column with a smaller, ribbed, flexible hose or cable running parallel to it, connected at the top and bottom by bracket-like joints.",
+    "visualObjectsEn": "Central cylindrical column, ribbed flexible hose, mechanical joints, connecting brackets, stippling and hatching marks for shading.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "It is unclear if this represents a biological structure like a spinal column with a nerve or a mechanical component like a hydraulic hose or industrial piping. The exact function or historical context of the engraving is unknown."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 10,
+    "paragraphIndexZeroBased": 14,
+    "exactSourceQuotation": "long, flexible, glittering tentacles",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The description of a central column with a ribbed, flexible hose connected by joints aligns well with the description of the Martian machine's mechanical anatomy, specifically the 'long, flexible, glittering tentacles' and the 'joints of the limbs' mentioned in the text.",
+    "suggestedAltArNotApproved": "A detailed engraving of a Martian tripod's mechanical limb, showing a central structural column and a flexible, ribbed tentacle connected by complex joints.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a close-up, abstract line drawing of mechanical joints and tubing, which lacks the full Martian Tripod structure, the pine tree, the hood, the basket, and the specific scene described in the text.",
+    "visualContradictions": "The passage describes a complete Martian fighting machine with tentacles, a hood, and a basket moving through a landscape, whereas the illustration is merely a localized, abstract technical detail of mechanical parts.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

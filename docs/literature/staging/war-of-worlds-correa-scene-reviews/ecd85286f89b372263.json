@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_158_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-ecd85286f89b3722.webp",
+  "imageSha256": "795567c6a3802803c597b48a04ee6366382383909d09abc3043bc91956e80c92",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration of a grotesque, humanoid creature standing against a plain background. The creature has a large, distended, spherical belly, thin limbs, and webbed feet and hands. Its head is bald with pointed ears and a somber, downturned facial expression. The style is reminiscent of a 19th-century pen-and-ink sketch or engraving.",
+    "visualObjectsEn": "A single creature with a large belly, thin arms, long fingers, thin legs, and webbed feet. There is a signature or mark in the bottom left corner.",
+    "recognizableCharactersOrPeopleEn": "None. The figure is a fictional, monstrous, or fantastical creature.",
+    "uncertaintyNotes": "The exact identity of the creature is not provided in the image. The signature in the bottom left is partially obscured and difficult to read, making the artist's identity uncertain."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 19,
+    "paragraphIndexZeroBased": 9,
+    "exactSourceQuotation": "They were, I now saw, the most unearthly creatures it is possible to conceive. They were huge round bodies⁠—or, rather, heads⁠—about four feet in diameter, each body having in front of it a face.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a grotesque, humanoid creature with a large, spherical body (head), thin limbs, and webbed features, which aligns with the descriptive passage in Chapter 19 regarding the Martians' anatomy as 'huge round bodies' with 'slender, almost whiplike tentacles' (often interpreted as limbs in artistic renderings of the period).",
+    "suggestedAltArNotApproved": "A 1906 engraving by Henrique Alvim Corrêa depicting a Martian, characterized by a large, spherical body, thin limbs, and webbed extremities, reflecting the creature's description in the text.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts a standing humanoid creature with a distended belly, thin limbs, webbed hands and feet, and a humanoid head with ears, which resembles a classic alien or goblin-like figure rather than the specific Martian description.",
+    "visualContradictions": "The passage describes the Martian as a huge round body or head about four feet in diameter with no nostrils, a fleshy beak, sixteen slender whiplike tentacles arranged in two bunches of eight serving as hands, and unable to raise itself on terrestrial conditions. The image instead shows a bipedal humanoid creature with distinct arms and legs, standard fingers and webbed feet, standing upright, and possessing traditional humanoid facial features and ears rather than tentacles and a beak.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.99,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
