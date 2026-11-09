@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_163-2_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-e35c02c923a7d876.webp",
+  "imageSha256": "277298175e3321a48ff4a27715d771506aef5b297127fb5c24ecb6db2a749fcb",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration showing a man leaning over a desk or counter. The man is positioned in profile, resting his forehead on one hand while his other hand grips the edge of the surface. The background is sketchy and dark, suggesting an interior setting. The style is reminiscent of late 19th or early 20th-century pen-and-ink book illustrations.",
+    "visualObjectsEn": "A man, a desk or table with a paneled front, and a signature in the bottom right corner.",
+    "recognizableCharactersOrPeopleEn": "A single adult male figure with short hair, wearing a collared shirt.",
+    "uncertaintyNotes": "The exact nature of the surface (desk, counter, or bar) is ambiguous. The signature in the bottom right is partially obscured or stylized, making the artist's name difficult to read with certainty."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 13,
+    "paragraphIndexZeroBased": 12,
+    "exactSourceQuotation": "For a moment we were silent, taking stock of each other. I dare say he found me a strange enough figure, naked, save for my water-soaked trousers and socks, scalded, and my face and shoulders blackened by the smoke. His face was a fair weakness, his chin retreated, and his hair lay in crisp, almost flaxen curls on his low forehead; his eyes were rather large, pale blue, and blankly staring. He spoke abruptly, looking vacantly away from me.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a man in a state of exhaustion or distress, leaning over a surface with his head in his hand, which aligns with the narrator's description of his own disheveled, traumatized state and his encounter with the curate in Chapter 13. The visual tone of a dark, sketchy interior matches the atmosphere of the ruined house where the two characters meet.",
+    "suggestedAltArNotApproved": "A man in a state of exhaustion, leaning over a desk with his head in his hand, reflecting the narrator's distress during his encounter with the curate.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a single adult male figure leaning over a desk or counter with his hand to his head.",
+    "visualContradictions": "The passage describes an interaction between two people ('taking stock of each other', the narrator describing the artilleryman's appearance and how he spoke). The image only depicts a single male figure alone, failing to show the narrator or the specific exchange described in the text.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

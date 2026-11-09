@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_164_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-1ff20c52c9af2a50.webp",
+  "imageSha256": "2117b6905c0ab07e60b779652c79d81429026b55ed7ab796764d63012362507f",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting an industrial or laboratory setting filled with complex, heavy machinery. Large, dark, metallic vessels or tanks dominate the foreground and midground, connected by pipes and emitting clouds of smoke or steam. The style is reminiscent of late 19th or early 20th-century book illustrations, characterized by heavy cross-hatching and high-contrast shadows. A large portion of the lower right corner is blank, suggesting a layout for text.",
+    "visualObjectsEn": "Large industrial tanks, pipes, valves, steam or smoke clouds, metallic structures, mechanical components, and a pile of rubble or coal at the base of the left tank.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the machinery is ambiguous; it could represent a chemical plant, a steam-powered engine room, or a fictional laboratory. The blank space in the lower right is clearly intentional for text placement, but the original context of the image is not provided."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 17,
+    "paragraphIndexZeroBased": 10,
+    "exactSourceQuotation": "a multitude of filthy colliers, trim merchantmen, cattle ships, passenger boats, petroleum tanks, ocean tramps",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts heavy industrial machinery, tanks, and pipes, which aligns with the description of a harbor or industrial scene containing 'petroleum tanks' and various industrial vessels mentioned in the source text.",
+    "suggestedAltArNotApproved": "An industrial harbor scene featuring large storage tanks and mechanical infrastructure, consistent with the description of a maritime industrial landscape.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows an industrial or laboratory setting with heavy machinery, large metallic vessels, pipes, valves, and smoke or steam.",
+    "visualContradictions": "The passage describes a coastal scene with a multitude of boats, ships, fishing smacks, and people evacuating along the Essex coast and the Thames. The engraving depicts indoor or factory-like machinery and tanks, with no water, boats, ships, or coastline visible.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

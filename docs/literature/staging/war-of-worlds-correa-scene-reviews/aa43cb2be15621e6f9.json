@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_170_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-aa43cb2be15621e6.webp",
+  "imageSha256": "2378431589e79725697ad26ba8e3b3661ac3d8ff5be33dd9c29fdb14ee0379ab",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a person lying on the ground, surrounded by several large, rounded, sack-like objects. The person appears to be resting or sleeping, with their head propped up against one of the sacks. The style is reminiscent of early 20th-century editorial or literary illustration, characterized by cross-hatching and expressive line work.",
+    "visualObjectsEn": "A person wearing a jacket and trousers, multiple large rounded sacks or bundles, a strap or cord lying on the ground, and a signature in the bottom right corner.",
+    "recognizableCharactersOrPeopleEn": "A single human figure, possibly male, lying in a prone or semi-reclined position.",
+    "uncertaintyNotes": "The exact nature of the sacks is ambiguous; they could represent grain bags, luggage, or abstract shapes. The setting is indeterminate, possibly a warehouse, a street, or a dockside. The signature is partially legible as 'H. M. CORR...'. The historical context is inferred from the artistic style rather than explicit visual evidence."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 19,
+    "paragraphIndexZeroBased": 0,
+    "exactSourceQuotation": "I perceived him across the room, lying against the triangular hole that looked out upon the Martians. His shoulders were hunched, so that his head was hidden from me.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a person lying on the ground near large, rounded, sack-like objects. In the selected passage, the narrator describes the curate lying against a hole in the wall, with his head hidden/propped in a way that aligns with the visual of a figure resting against rounded shapes (which could be interpreted as the debris or structural elements near the triangular hole).",
+    "suggestedAltArNotApproved": "A person lying on the ground, resting against large, rounded, sack-like objects in a dimly lit, enclosed space.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a single human figure lying on the ground surrounded by large rounded sacks or bundles.",
+    "visualContradictions": "The passage describes the narrator perceiving the curate across the room lying against a triangular hole that looked out upon the Martians, with his shoulders hunched so his head was hidden. The image shows a person lying amongst sacks with their face visible and no triangular hole or Martians present.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
