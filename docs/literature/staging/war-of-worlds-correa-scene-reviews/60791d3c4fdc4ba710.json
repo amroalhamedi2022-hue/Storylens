@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_154_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-60791d3c4fdc4ba7.webp",
+  "imageSha256": "412bfa093f5efe3d5ccfb294e05c099e263b6ac943d1b9dd98d2ab0b10e3f79c",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a large, rounded, textured creature resting on the ground. The creature has a smooth, beak-like protrusion at the front and a cluster of long, thin, writhing tentacles extending from its base. The background is minimal, with some faint, sketchy vertical lines suggesting a structure or environment behind the creature.",
+    "visualObjectsEn": "A large, bulbous creature with a textured surface, a beak-like structure, and multiple long, thin tentacles. There are faint, sketchy lines in the background.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The creature is fantastical and does not represent a known biological species. The exact nature of the background structure is ambiguous due to the sketchy, unfinished style of the drawing."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 19,
+    "paragraphIndexZeroBased": 9,
+    "exactSourceQuotation": "They were, I now saw, the most unearthly creatures it is possible to conceive. They were huge round bodies⁠—or, rather, heads⁠—about four feet in diameter, each body having in front of it a face. This face had no nostrils⁠—indeed, the Martians do not seem to have had any sense of smell, but it had a pair of very large dark-coloured eyes, and just beneath this a kind of fleshy beak. In the back of this head or body⁠—I scarcely know how to speak of it⁠—was the single tight tympanic surface, since known to be anatomically an ear, though it must have been almost useless in our dense air. In a group round the mouth were sixteen slender, almost whiplike tentacles, arranged in two bunches of eight each.",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The description of the creature in the illustration—a large, bulbous, textured body with a beak-like protrusion and multiple thin, writhing tentacles—perfectly matches the anatomical description of the Martian provided in Chapter 19, Paragraph 9.",
+    "suggestedAltArNotApproved": "A black and white ink illustration of a Martian, depicted as a large, bulbous, textured creature with a beak-like mouth and numerous long, thin tentacles, resting on the ground.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a huge, rounded body about four feet in diameter with a face featuring large eyes, a fleshy beak, and a group of slender, whiplike tentacles arranged around the mouth, perfectly matching the description in the passage.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_151_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-54e6a3508187d86c.webp",
+  "imageSha256": "e3674617868106e3dfad0ee0a082271c37ae4f8d2f6a9521797758dca28bb401",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting two figures in a dimly lit, possibly indoor or cellar-like setting. One figure, wearing a long coat and appearing to be in a crouched or lunging position, gestures toward a second figure who is seated against a wall. The seated figure is holding a small object, possibly food or a cup, and appears to be looking at the first figure. A bottle stands on the floor near the seated figure.",
+    "visualObjectsEn": "Long coat, boots, bottle, wall, floor, small handheld object.",
+    "recognizableCharactersOrPeopleEn": "Two male figures, one standing/crouching and one seated.",
+    "uncertaintyNotes": "The exact nature of the interaction, the specific historical period, and the identity of the figures are not explicitly stated in the image. The setting is ambiguous, appearing to be a rough interior or corner of a room."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 21,
+    "paragraphIndexZeroBased": 1,
+    "exactSourceQuotation": "The bottle struck the floor and broke, and I desisted and rose. We stood panting and threatening each other. In the end I planted myself between him and the food",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts two figures in a confined, cellar-like space, one standing/crouching and one seated, with a bottle on the floor. This aligns perfectly with the scene in Chapter 21 where the narrator and the curate are in a confined space, struggling over food and drink, resulting in a bottle breaking on the floor.",
+    "suggestedAltArNotApproved": "Two men in a confined, dimly lit room; one stands in a lunging posture while the other sits on the floor near a broken bottle, representing the narrator and the curate in their tense standoff over food.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows two male figures indoors: one standing/crouching menacingly with an outstretched arm guarding the food area, and the other seated against the wall holding food and looking distressed, accompanied by a broken or upright bottle nearby on the floor, directly illustrating the conflict over food rations between the narrator and the artilleryman as described in the passage.",
+    "visualContradictions": "None significant; the details of the broken bottle, the confrontation between the two figures, and the focus on food align well with the text.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

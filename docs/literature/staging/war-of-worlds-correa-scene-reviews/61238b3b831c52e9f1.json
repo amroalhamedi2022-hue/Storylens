@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_152_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-61238b3b831c52e9.webp",
+  "imageSha256": "8bc895953789f85ac9426c1a200fcc33693f9d22ce3e6dfcc58d8487d21e8d7f",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a complex, multi-legged mechanical machine standing on a barren, uneven landscape. The machine has a central cylindrical body, multiple thin, spindly legs, and several tentacle-like appendages extending from its base. To the left, a large, dark, curved structure is partially visible, and to the right, a smaller, detached mechanical component lies on the ground. The background is sketchy, suggesting a desolate or industrial environment with faint outlines of structures.",
+    "visualObjectsEn": "Mechanical machine, spindly legs, tentacle-like appendages, cylindrical body, detached mechanical component, large curved structure, barren ground, sketchy background structures.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the machine and the setting is ambiguous due to the abstract, sketchy style of the illustration. It is unclear if the machine is damaged, under construction, or in operation. The signature in the bottom right corner is partially obscured and illegible."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 20,
+    "paragraphIndexZeroBased": 4,
+    "exactSourceQuotation": "The second handling-machine was now completed, and was busied in serving one of the novel contrivances the big machine had brought.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a complex mechanical machine with spindly legs and tentacle-like appendages, alongside a detached mechanical component on the ground. This aligns with the description in Chapter 20, Paragraph 4, where the narrator observes the Martians assembling new appliances and handling-machines in the pit.",
+    "suggestedAltArNotApproved": "A detailed ink illustration of a Martian handling-machine with spindly legs and tentacles standing on a barren, industrial landscape, with a detached mechanical part lying on the ground nearby.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a multi-legged handling-machine operating near a cylindrical structure and fresh appliances brought by fighting-machines, matching the passage describing the second handling-machine busied in serving novel contrivances near the cylinder.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
