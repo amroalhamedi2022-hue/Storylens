@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_180_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-644ec8d45724958c.webp",
+  "imageSha256": "dc09e3df567b839e98b19099d34a821352d2c7817cca3296ef6c86813ea31e90",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a vintage typewriter sitting on a flat surface, partially obscured or surrounded by stylized, leafy plant-like growths or smoke-like swirls. To the right of the typewriter, a phonograph horn is positioned. The style is reminiscent of early 20th-century pen-and-ink book illustrations.",
+    "visualObjectsEn": "Vintage typewriter, phonograph horn, stylized foliage or smoke swirls, flat base or table surface.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The swirling elements surrounding the typewriter are ambiguous; they could be interpreted as either organic plant life or abstract smoke/vapor. The signature at the bottom right appears to read 'ALIM-CORREA' or similar, but the exact spelling is uncertain."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_172_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-0cc249a2b6acb035.webp",
+  "imageSha256": "b2ab0649c622e0f5abb82afdc01af54a6e8ae30d8456f273ce6cbc3e0a15debc",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a dark, indoor setting. On the left, a disheveled man stands with a tense, aggressive posture, his hand pressed against a wall. On the right, a person lies prone on the floor, seemingly deceased, with a dark pool of liquid spreading from their head. A cleaver or large knife lies on the floor near the body. A wooden bucket sits in the corner.",
+    "visualObjectsEn": "Man, prone figure, cleaver, wooden bucket, wall, floor, dark shadows.",
+    "recognizableCharactersOrPeopleEn": "Two adult male figures, one standing and one lying on the ground.",
+    "uncertaintyNotes": "The exact nature of the liquid (blood) and the specific identity of the figures are inferred from visual cues typical of crime or horror illustrations. The artist's signature 'H. Lvim-Correa' is visible in the bottom right corner."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 21,
+    "paragraphIndexZeroBased": 17,
+    "exactSourceQuotation": "Then a heavy body⁠—I knew too well what⁠—was dragged across the floor of the kitchen towards the opening. Irresistibly attracted, I crept to the door and peeped into the kitchen.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a dark kitchen scene with a prone body and a standing figure, which aligns with the narrator peeping into the kitchen to see the aftermath of the Martian's actions against the curate. While the specific 'cleaver' is an artistic interpretation of the scene's violence, the setting (kitchen) and the presence of a prone body match the narrative context of the curate's demise.",
+    "suggestedAltArNotApproved": "A dark, tense scene inside a kitchen where a prone body lies on the floor near a bucket, while a disheveled man stands in the shadows, reflecting the grim atmosphere of the narrator's discovery of the curate's fate.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a disheveled man standing near a wall and another figure lying dead on the floor with a pool of blood and a cleaver nearby.",
+    "visualContradictions": "The passage describes the narrator peeping into the kitchen and seeing the Martian in its handling-machine scrutinizing the curate's head. The image depicts only a human standing and a dead human on the floor, completely omitting the Martian and its handling-machine.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_176_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-ee0b53418f27e892.webp",
+  "imageSha256": "a700419c05aa90fd4854515170de2ddf29bcf14755fe7c710339bd235f88d4a5",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink drawing depicting a rural or semi-rural landscape. In the foreground, there is a prominent, stylized plant with broad, rounded leaves. The middle ground shows a dirt path or open area leading toward a cluster of buildings. In the background, there are two main structures: a multi-story building on the left with a balcony or porch, and a simpler, smaller building on the right. There is a suggestion of smoke or mist rising in the center background. The style is that of a pen-and-ink sketch or engraving.",
+    "visualObjectsEn": "Buildings, houses, dirt path, stylized plant in the foreground, smoke or mist, vegetation, fence or wall structure.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the buildings (residential vs. agricultural) is ambiguous due to the sketch-like quality. The signature on the bottom left is partially legible as 'H. VIV-CORREA' or similar, but the artist's identity is not confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 15,
+    "paragraphIndexZeroBased": 24,
+    "exactSourceQuotation": "the earth under the blue sky and against the prospect of the distant hills a velvet-black expanse, with red roofs, green trees, and, later, black-veiled shrubs and gates, barns, outhouses, and walls, rising here and there into the sunlight.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a rural landscape with buildings, vegetation, and a sense of atmosphere (smoke/mist), which aligns well with the descriptive passage detailing a landscape of red roofs, trees, barns, outhouses, and walls emerging from a black expanse.",
+    "suggestedAltArNotApproved": "A pen-and-ink drawing of a rural scene featuring a stylized plant in the foreground, a dirt path leading toward two buildings, and a hazy, smoky atmosphere in the background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a rural landscape with buildings, a path, and strange foreground vegetation, but it lacks any depiction of a church spire, a person looking down from a vantage point, or the black smoke/weed spreading over the village as specifically described in the passage.",
+    "visualContradictions": "The passage describes looking down from a church spire onto a village engulfed in the black smoke/weed expanse; the illustration is drawn from a ground-level perspective and shows no church spire or narrator figure.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_171_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-9e79462adc9ac4f5.webp",
+  "imageSha256": "cbe8e54271836a56b11c2de1acbe1201016104287869d53239e279deb6bc91a2",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line drawing depicting three people trapped inside a large, suspended wooden cage or crate. The cage is hanging from ropes or cables that converge at a single point above. The people are positioned within the slats of the cage, with one person on the left, one in the center, and one on the right, all appearing to be looking out or interacting with the bars.",
+    "visualObjectsEn": "A large wooden cage or crate with vertical slats, ropes or cables for suspension, and three human figures.",
+    "recognizableCharactersOrPeopleEn": "Three distinct human figures, appearing to be men, are visible inside the cage structure.",
+    "uncertaintyNotes": "The exact nature of the cage (whether it is a transport crate, a prison, or a theatrical prop) is unclear. The historical context or specific artistic style is not definitively identifiable, though it resembles early 20th-century editorial or book illustration styles."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 20,
+    "paragraphIndexZeroBased": 8,
+    "exactSourceQuotation": "a long tentacle reaching over the shoulder of the machine to the little cage that hunched upon its back. Then something⁠—something struggling violently⁠—was lifted high against the sky, a black, vague enigma against the starlight; and as this black object came down again, I saw by the green brightness that it was a man.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts three people inside a suspended cage. While the text describes a single man being lifted in a cage on the back of a Martian machine, the visual representation of a cage containing human figures aligns with the narrative element of the Martians capturing humans in cages during the later chapters of the book.",
+    "suggestedAltArNotApproved": "A depiction of a cage containing human captives, referencing the Martian practice of capturing humans in cages as described in the narrative.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a hanging wooden structure with multiple compartments containing three human figures looking out.",
+    "visualContradictions": "The passage describes a single man being lifted out of a cage on a Martian fighting-machine by a tentacle, whereas the image shows multiple people inside hanging wooden cage compartments without any fighting-machine, tentacle, or Martian visible.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
