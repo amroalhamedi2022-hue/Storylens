@@ -1,4 +1,4 @@
-name: Literature - Verne 1873 authenticated Ch4 Ch8 Ch9 period chapter scenes
+name: Literature - Verne 1873 authenticated Ch4 Ch8 Ch9 Ch10 period chapter scenes
 on:
   pull_request:
     paths:
@@ -24,7 +24,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify three actual historic engravings, literal original chapters, SHA256 and 12 tamper cases
+      - name: Verify four actual historic engravings, literal original chapters, SHA256 and 12 tamper cases
         run: |
           python tools/test_verne_original_french_caption_and_towle_scene.py
           python tools/report_chapter_art_progress.py
