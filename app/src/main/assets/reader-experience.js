@@ -429,6 +429,10 @@ function installPageTurn(){
  const countLabel=pageControls.querySelector('.lt-page-count');
  function renderPage(direction,animate){
   current=Math.max(0,Math.min(pages.length-1,current));
+  // Preserve the authentic source-art hero on the first spread. Only after
+  // turning past the opening page should landscape enter chrome-free reading.
+  // Earlier hiding the hero unconditionally failed the historical art ratio QA.
+  if(sentenceBox?.dataset)sentenceBox.dataset.ltReadingStarted=String(spread===2&&current>0);
   pages.forEach((item,index)=>{
    const visible=index>=current&&index<current+spread;
    item.classList.toggle('is-active',visible);
