@@ -129,13 +129,12 @@ def detect_original_engraving_regions(gray: np.ndarray, max_per_page: int=3) -> 
     dense=(smooth>0.155).astype("uint8")*255
     # Closed original texture patches with a minimum genuine illustration area.
     dense=cv2.morphologyEx(dense,cv2.MORPH_CLOSE,np.ones((27,17),np.uint8))
-    count,regions=cv2.connectedComponents(dense)
+    count,_,stats,_=cv2.connectedComponentsWithStats(dense,connectivity=8)
     boxes=[]
-    for i in range(1,count):
-        ys,xs=np.where(regions==i)
-        if len(xs)<2500:continue
-        x0,y0,x1,y1=int(xs.min()),int(ys.min()),int(xs.max()+1),int(ys.max()+1)
-        bw,bh=x1-x0,y1-y0
+    for x0,y0,bw,bh,area in stats[1:]:
+        if int(area)<2500:continue
+        x0,y0,bw,bh=map(int,(x0,y0,bw,bh))
+        x1,y1=x0+bw,y0+bh
         if bw<MIN_WIDTH or bh<MIN_HEIGHT or bw>W*.55 or bh>H*.60:continue
         if x0<W*.018 or x1>W*.988 or y0<H*.012 or y1>H*.990:continue
         img=gray[y0:y1,x0:x1]
