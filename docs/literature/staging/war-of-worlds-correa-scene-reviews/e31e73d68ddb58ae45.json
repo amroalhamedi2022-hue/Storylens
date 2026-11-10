@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_236_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-e31e73d68ddb58ae.webp",
+  "imageSha256": "21e799e7846d90d1ff454baa45c9a1011c8af7d74eb63bf40dd9d112589572de",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black-and-white ink illustration depicting a large, dark, disc-shaped object partially buried or crashed into a pile of debris and wooden planks on a rough, uneven ground surface. The object has a pointed top and a long, thin pole or antenna extending diagonally upward into the sky. The style is reminiscent of a 19th or early 20th-century pen-and-ink engraving or sketch.",
+    "visualObjectsEn": "A large disc-shaped object, wooden planks, debris, a long pole or antenna, rough terrain, and a signature in the bottom right corner.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The nature of the disc-shaped object is ambiguous; it could be interpreted as a crashed vehicle, a piece of machinery, or a stylized structure. The exact medium is likely a pen-and-ink drawing intended to look like an engraving."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 5,
+    "paragraphIndexZeroBased": 18,
+    "exactSourceQuotation": "The Martians and their appliances were altogether invisible, save for that thin mast upon which their restless mirror wobbled.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a disc-shaped object with a long, thin pole or antenna extending upward, which aligns perfectly with the description of the Martian appliance featuring a 'thin mast' in the provided text.",
+    "suggestedAltArNotApproved": "A pen-and-ink illustration of a Martian appliance, featuring a disc-shaped base partially obscured by debris and a long, thin mast extending diagonally into the sky.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts a dark, uneven landscape with a crashed cylindrical Martian cylinder surrounded by debris and wooden planks, featuring the thin mast/pole described in the passage (\"save for that thin mast upon which their restless mirror wobbled\").",
+    "visualContradictions": "None significant; the depiction aligns well with the description of the cylinder and the desolate, debris-strewn common during the early evening.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

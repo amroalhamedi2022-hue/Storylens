@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_36_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-6dd7dae3c780c3c8.webp",
+  "imageSha256": "1e19da01765b18386d4cdb44365c3d90b26027be50ddeb84d7ebe686c4d71ea8",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white line engraving depicting several figures lying down on the ground, possibly sleeping, intoxicated, or overcome by smoke or exhaustion, accompanied by swirling smoke trails rising near them. The composition features rough cross-hatching and sketchy lines against a plain white background.",
+    "visualObjectsEn": "Sketches of human figures, trousers, shirts, hats, smoke curls, sketchy ground shading, signature in the bottom right corner.",
+    "recognizableCharactersOrPeopleEn": "Unidentified male figures lying on the ground.",
+    "uncertaintyNotes": "It is uncertain whether the figures are sleeping, dead, drunk, or overcome by an external event. Specific identities of the figures cannot be definitively determined from the visual elements alone."
+  },
+  "visionModel": "gemini-3.5-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 1,
+    "exactSourceQuotation": "At the corner of the lane that runs to Putney Bridge station I found a man lying. He was as black as a sweep with the black dust, alive, but helplessly and speechlessly drunk.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The engraving depicts a male figure lying down near the ground amidst swirling smoke/dust lines, matching the description of a character overcome or lying down in Chapter 25.",
+    "suggestedAltArNotApproved": "رسم توضيحي يظهر رجلاً مستلقياً على الأرض وسط مسارات من الدخان.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.5-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows multiple figures lying down on the ground covered in or near smoke, whereas the specific passage describes the narrator encountering a single drunken man at a corner near Putney Bridge station.",
+    "visualContradictions": "The passage describes one specific man lying at the corner of a lane who lunges at the narrator's head. The image depicts multiple figures lying down in a group with swirling smoke, rather than an active single individual lunging at a narrator.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

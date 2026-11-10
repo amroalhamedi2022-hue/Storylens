@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_75_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-6fd7d0acedda3ef5.webp",
+  "imageSha256": "dbf9fee4b9037fc10a0aa5bd92b7599fabe862d4985e5549846c381569a82af6",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A monochrome, detailed illustration in an engraved or etched style depicting a strange, multi-legged mechanical tripod creature striding across a rolling landscape towards a distant town or city skyline. The background shows a dramatic, cloudy sky with a beam of light projecting downwards from the machine's head toward the buildings. The art style has a textured, vintage appearance.",
+    "visualObjectsEn": "A large mechanical tripod walking machine with a hood-like head, thin spindly legs, flexible metal tentacles or cables, a pointed snout or projector emitting a beam of light, smoke or dust clouds on the ground, rolling hills, and a distant silhouette of a town with church spires or towers.",
+    "recognizableCharactersOrPeopleEn": "No recognizable real people or historical figures are present, only the fictional mechanical tripod creature.",
+    "uncertaintyNotes": "Uncertain whether the image is an original etching, engraving, or a pencil sketch reproduction; the exact publication date and artist name are not clearly verifiable from visual inspection alone."
+  },
+  "visionModel": "gemini-3.5-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 10,
+    "paragraphIndexZeroBased": 11,
+    "exactSourceQuotation": "A monstrous tripod, higher than many houses, striding over the young pine trees, and smashing them aside in its career; a walking engine of glittering metal, striding now across the heather; articulate ropes of steel dangling from it, and the clattering tumult of its passage mingling with the riot of the thunder.",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The engraving explicitly depicts the iconic scene of a Martian tripod striding over a landscape with young pine trees and heather, featuring metallic tentacles and a dramatic sky, which matches Chapter 10, paragraph 11.",
+    "suggestedAltArNotApproved": "رسم توضيحي بالأبيض والأسود لآلة ثلاثية القوائم ميكانيكية عملاقة تسير عبر تضاريس متموجة نحو أفق مدينة بعيدة تحت سماء ملبدة بالغيوم.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.5-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts a monstrous tripod machine higher than houses, striding across the landscape with articulate ropes of steel dangling from it, and heeling over one way with two feet in the air matching the milking stool comparison mentioned in the passage.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

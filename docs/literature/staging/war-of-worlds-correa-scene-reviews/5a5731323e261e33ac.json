@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_239_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-5a5731323e261e33.webp",
+  "imageSha256": "78e051ba37be64fa5e896d8129f02cbd6e33651fb1101c6c4ba8008f9df64340",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting two men in a desolate landscape. One man sits on the ground sketching on a pad, while the other stands beside a large stone slab inscribed with the word 'FIN'. Behind the slab, a tall, tripod-like mechanical structure with a wide, flat top stands against a cloudy sky with birds. In the foreground, a strange, tentacled, organic mass lies on the ground.",
+    "visualObjectsEn": "Large stone slab with the word 'FIN', tripod mechanical machine, sketchbook, pen, large feather or quill, tentacled organic creature, birds in the sky.",
+    "recognizableCharactersOrPeopleEn": "Two men, one seated and one standing, both dressed in simple, somewhat disheveled clothing.",
+    "uncertaintyNotes": "The exact nature of the mechanical structure and the organic mass is ambiguous, as they appear to be fantastical or science-fiction elements. The artist's signature 'Alvim-Corrêa' is visible in the bottom left corner."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
