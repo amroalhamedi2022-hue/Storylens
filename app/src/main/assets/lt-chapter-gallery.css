@@ -616,3 +616,53 @@ dialog.lt-chapter-gallery :is(input,textarea,[contenteditable="true"]){
  -webkit-user-select:text!important;user-select:text!important;
  -webkit-touch-callout:default!important;
 }
+
+
+/* AUDIT-49 card clipping fix. Real Chromium QA (360x760, 460x860, 1280x840)
+ * showed lower chapter titles/rights labels cut off by the fixed-height rail
+ * while its footer stayed fixed. Make the full dialog vertically scrollable,
+ * while its ordered chapter rail remains horizontally swipeable. No scene art
+ * is invented, reused or promoted by this layout-only correction. */
+dialog.lt-chapter-gallery{
+ overflow-x:hidden!important;
+ overflow-y:auto!important;
+ scrollbar-width:thin;
+ overscroll-behavior-y:contain;
+}
+dialog.lt-chapter-gallery .lt-chapter-gallery-sheet{
+ height:auto!important;
+ min-height:100%!important;
+ overflow:visible!important;
+}
+dialog.lt-chapter-gallery .lt-chapter-gallery-header,
+dialog.lt-chapter-gallery .lt-chapter-gallery-footer{
+ flex:0 0 auto!important;
+}
+dialog.lt-chapter-gallery .lt-chapter-gallery-track{
+ flex:0 0 auto!important;
+ min-height:max-content!important;
+ height:auto!important;
+ overflow-x:auto!important;
+ overflow-y:hidden!important;
+ align-items:flex-start;
+}
+@media(max-width:650px) and (orientation:portrait){
+ dialog.lt-chapter-gallery .lt-chapter-gallery-header{
+  padding:14px 14px 12px;
+  gap:10px;
+ }
+ dialog.lt-chapter-gallery .lt-chapter-gallery-title{
+  font-size:clamp(20px,5vw,24px);line-height:1.24;margin-bottom:5px;
+ }
+ dialog.lt-chapter-gallery .lt-chapter-gallery-eyebrow{margin-bottom:5px}
+ dialog.lt-chapter-gallery .lt-chapter-gallery-tools{
+  gap:8px;margin-block-start:9px;
+ }
+ dialog.lt-chapter-gallery .lt-chapter-gallery-track{
+  padding-block:14px 19px;
+ }
+ dialog.lt-chapter-gallery .lt-chapter-tile-visual{
+  height:clamp(170px,29dvh,225px);
+  min-height:170px;
+ }
+}
