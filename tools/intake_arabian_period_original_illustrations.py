@@ -2,7 +2,7 @@
 """Actually archive period Arabian Nights pictures from TWO named original editions.
 
 Edmund Dulac, Stories from the Arabian Nights (Housman retelling), 1907:
-15 individually identified original-colour printed plates from Wikimedia scans.
+28 individually identified original-colour printed plates from one London edition.
 Friedrich Groß, 1001 Nacht, original German historical illustrations 1838-39:
 7 individually identified higher-resolution numbered-night prints.
 
@@ -22,10 +22,10 @@ from pathlib import Path
 
 import intake_verne_commons_period_gallery as engine
 
-DULAC_PAGES = frozenset({39, 47, 57, 65, 75, 89, 109, 117, 139, 147, 155, 177, 197, 209, 229})
+DULAC_PLATES = frozenset(set(range(2, 31)) - {11})
 GROSS_NIGHTS = frozenset({9, 109, 167, 231, 236, 247, 460})
 
-DULAC_CATEGORY = "Category:Stories from The Arabian Nights (Dulac, 1907)"
+DULAC_CATEGORY = "Category:Stories from The Arabian Nights (Dulac, 1907) (London)"
 GROSS_CATEGORY = "Category:Illustrations to the Arabian Nights by F. Groß"
 
 GROSS_FILENAMES = {
@@ -40,15 +40,15 @@ GROSS_FILENAMES = {
 CONFIG = {
     "dulac": {
         "category": DULAC_CATEGORY,
-        "dir": "arabian-nights-dulac-1907-original-colour-plates",
+        "dir": "arabian-nights-dulac-london-1907-original-colour-plates",
         "year": 1907,
-        "prefix": "arabian-dulac-1907",
+        "prefix": "arabian-dulac-london-1907",
         "creator": "Edmund Dulac (1882–1953)",
-        "edition": "Stories from The Arabian Nights, Laurence Housman retelling; illustrated by Edmund Dulac; Hodder & Stoughton, 1907",
+        "edition": "Stories from The Arabian Nights, Laurence Housman retelling; illustrated by Edmund Dulac; Hodder & Stoughton London, 1907 original print",
         "rightsNote": "Original art scanned from the 1907 Housman *retelling*; not a proof of alignment with Burton/Arabic primary text",
         "names": {
-            f"File:Stories from the Arabian nights - colour plate at page {page:03d}.jpg"
-            for page in DULAC_PAGES
+            f"File:Stories from the Arabian nights - London 1907 - plate {page:02d}.jpg"
+            for page in DULAC_PLATES
         },
     },
     "gross": {
@@ -126,12 +126,12 @@ def provenance(edition: str) -> None:
         item["altAr"] = None
         item["altEn"] = None
         if edition == "dulac":
-            page = int(re.search(r"page (\d{3})\.jpg$", name).group(1))
-            if page not in DULAC_PAGES:
+            page = int(re.search(r"plate (\d{2})\.jpg$", name).group(1))
+            if page not in DULAC_PLATES:
                 raise ValueError("1907 original edition page citation altered")
-            item["sourcePrintedPageOneBased"] = page
+            item["sourceEditionPlateOrdinal"] = page
             item["sourceNightNumberClaim"] = None
-            item["captionEvidenceStatus"] = "EXACT_1907_PRINT_PAGE_NUMBER_NOT_STORY_ALIGNED"
+            item["captionEvidenceStatus"] = "EXACT_LONDON_1907_PRINTED_PLATE_ORDINAL_NOT_STORY_ALIGNED"
             item["sourceArtworkYear"] = 1907
         else:
             night = int(re.search(r"Gross F, (\d+)\. Nacht,", name).group(1))
