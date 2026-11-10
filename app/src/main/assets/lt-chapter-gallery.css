@@ -600,3 +600,19 @@ dialog.lt-chapter-gallery::backdrop{
   min-height:80px;
  }
 }
+
+
+/* Audit 49 #35-36: gallery labels are controls, not Android-selectable prose.
+ * Keep chapter search/filter inputs editable and TalkBack text discoverable. */
+dialog.lt-chapter-gallery .lt-chapter-tile,
+dialog.lt-chapter-gallery .lt-chapter-tile *,
+dialog.lt-chapter-gallery .lt-chapter-gallery-title,
+dialog.lt-chapter-gallery .lt-chapter-gallery-eyebrow{
+ -webkit-user-select:none!important;user-select:none!important;
+ -webkit-touch-callout:none!important;
+ -webkit-tap-highlight-color:transparent;
+}
+dialog.lt-chapter-gallery :is(input,textarea,[contenteditable="true"]){
+ -webkit-user-select:text!important;user-select:text!important;
+ -webkit-touch-callout:default!important;
+}
