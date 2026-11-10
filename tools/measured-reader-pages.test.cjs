@@ -63,7 +63,7 @@ const getTurnBody=source.slice(curlStart,curlEnd)
  .replace(/\},\s*$/,'\n}');
 const simulated={pages:Array.from({length:5},(_,i)=>({id:i})),
  current:0,spread:1,state:{chapter:0,story:{chapters:[{},{},{}]}},
- boundaryPage:()=>({id:'boundary'}),curlStory:{id:'book'},curlChapter:0};
+ boundaryPage:()=>({id:'boundary'}),blankUnderPage:()=>({id:'blank-under'}),curlStory:{id:'book'},curlChapter:0};
 vm.runInNewContext(getTurnBody+'\nglobalThis.getTurn=getTurn;',simulated);
 const portrait=simulated.getTurn(1);
 assert.equal(portrait.under,simulated.pages[2],
@@ -80,6 +80,15 @@ assert.equal(landscape.back,simulated.pages[2],
 simulated.current=2;
 const reverse=simulated.getTurn(-1);
 assert.notEqual(reverse.back,reverse.under,'reverse curl never doubles under-page ink');
+simulated.pages=simulated.pages.slice(0,3);
+simulated.current=0;
+simulated.spread=2;
+const lastOdd=simulated.getTurn(1);
+assert.equal(lastOdd.back,simulated.pages[2],
+ 'last odd RTL/LTR spread retains the genuine next page ink on verso');
+assert.equal(lastOdd.under.id,'blank-under',
+ 'a short final spread supplies actual blank paper rather than missing underlay');
+assert.notEqual(lastOdd.back,lastOdd.under,'short spread never doubles last-page text');
 const css=fs.readFileSync('app/src/main/assets/lt-device-acceptance.css','utf8');
 const physical=fs.readFileSync('app/src/main/assets/physical-page-curl.css','utf8');
 const gallery=fs.readFileSync('app/src/main/assets/lt-chapter-gallery.css','utf8');
@@ -89,6 +98,8 @@ assert.match(css,/\.reader\.lt-reader-controls-visible>\.toolbar/,
  'immersive landscape reveals real Back and Settings, not only paging');
 assert.match(css,/\.toolbar:focus-within/,
  'keyboard focus retains Back and Settings despite hidden immersive chrome');
+assert.match(physical,/lt-curl-blank-under:not\(\.lt-curl-under\)/,
+ 'blank physical underlay is hidden until actual curl, no extra grid row');
 assert.match(physical,/\.lt-curl-ghost\{opacity:0!important\}/,
  'ghost text is never duplicated on the next page');
 assert.match(css,/\.lt-settings-sheet \.lt-font-setting>select/,
