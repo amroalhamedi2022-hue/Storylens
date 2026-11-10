@@ -71,7 +71,7 @@ def verify(data, archive, sources):
             or any(p.get("editoriallyApproved") is not False for p in pictures)
             or "docs/literature/staging/verne-commons-period-plates/manifest.json"
             not in data["artProvenanceManifests"]):
-        raise ValueError("Duplicated historic art, missing cover provenance or false release")
+        raise ValueError("Duplicated historic art, missing source provenance or false release")
     for number, (suffix, french_caption, quote, original_blob) in EVIDENCE.items():
         row = data["chapters"][number-1]
         item = next(x for x in archive["images"] if
@@ -124,7 +124,7 @@ class OriginalFrenchIllustrationsVsFullEnglishTowle(unittest.TestCase):
         cls.art = json.loads((ARCHIVE / "manifest.json").read_text("utf-8"))
         cls.sources = verne_sources()
 
-    def test_actual_three_distinct_original_scenes_and_pending_rights(self):
+    def test_actual_four_distinct_original_scenes_and_pending_rights(self):
         self.assertEqual(verify(self.data, self.art, self.sources), 16)
 
     def test_original_chapter_image_rejections_are_strict(self):
