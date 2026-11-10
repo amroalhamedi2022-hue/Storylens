@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-sign-of-the-four",
+  "originalCreator": "Frederick Henry Townsend (1868–1920); per-file credits pending",
+  "historicIllustratedEdition": "The Sign of Four, G. Newnes Ltd. 1903 illustrated souvenir edition; per-image territorial rights and scene identity require review",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Sign-t1.jpg",
+  "imagePath": "docs/literature/staging/sign-four-townsend-1903-period-plates/plates/sign-four-townsend-8ecadcc05008471d.webp",
+  "imageSha256": "380da056acba4f21510f0c7c1f9c76e1e9b91275eefa2c3e8c6448a2b91926fa",
+  "sourceCorpusSha256": "c46d81783380cc1a66862189639e204f02f927bc45f69868d2b2f2c71be14025",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A dark, atmospheric scene featuring two men in a dimly lit, possibly indoor or subterranean environment. One man stands on the left holding a lantern, while the other man leans forward on the right, looking down at something on the ground. The style is that of a 19th or early 20th-century monochromatic illustration or engraving.",
+    "visualObjectsEn": "A handheld lantern emitting a warm glow, dark clothing including coats and hats, a floor or ground surface, and indistinct architectural or structural elements in the background.",
+    "recognizableCharactersOrPeopleEn": "Two adult men, both dressed in formal or semi-formal attire typical of the late 19th century, including hats.",
+    "uncertaintyNotes": "The exact setting is ambiguous due to the heavy shadows; it could be a cellar, a tunnel, or a dark room. The specific identity of the figures is not verifiable from the image alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 5,
+    "paragraphIndexZeroBased": 35,
+    "exactSourceQuotation": "Sherlock Holmes took the lamp and led the way, for Thaddeus Sholto’s teeth were chattering in his head. So shaken was he that I had to pass my hand under his arm as we went up the stairs, for his knees were trembling under him. Twice as we ascended Holmes whipped his lens out of his pocket and carefully examined marks which appeared to me to be mere shapeless smudges of dust upon the coconut matting which served as a stair-carpet. He walked slowly from step to step, holding the lamp, and shooting keen glances to right and left.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description of two men in a dark, indoor environment with one holding a lantern and the other leaning forward/looking down matches the narrative of Holmes leading Thaddeus Sholto up the stairs while holding a lamp and examining the floor for clues.",
+    "suggestedAltArNotApproved": "Two men in 19th-century attire in a dark, indoor setting; one man holds a lantern aloft, illuminating the other who leans forward to inspect the floor.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows Sherlock Holmes holding a lamp and examining marks on the steps with his lens, while Thaddeus Sholto looks on, closely matching the actions described in the passage.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

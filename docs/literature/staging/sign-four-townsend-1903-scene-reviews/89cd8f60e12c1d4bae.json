@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-sign-of-the-four",
+  "originalCreator": "Frederick Henry Townsend (1868–1920); per-file credits pending",
+  "historicIllustratedEdition": "The Sign of Four, G. Newnes Ltd. 1903 illustrated souvenir edition; per-image territorial rights and scene identity require review",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Sign-t3.jpg",
+  "imagePath": "docs/literature/staging/sign-four-townsend-1903-period-plates/plates/sign-four-townsend-89cd8f60e12c1d4b.webp",
+  "imageSha256": "273b256dd3a8fcfe31c759b14f7bb3de1ecb1018447df832696568420eddac52",
+  "sourceCorpusSha256": "c46d81783380cc1a66862189639e204f02f927bc45f69868d2b2f2c71be14025",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white illustration depicting two men standing indoors against a wall. The man on the left is younger, clean-shaven, and leaning back against the wall with his head tilted up. The man on the right is older, with a long white beard, wearing a dark coat and a patterned scarf, holding a thin cord or string in his hand. The style is that of a 19th or early 20th-century ink or charcoal drawing.",
+    "visualObjectsEn": "Two men, a wall, a framed picture on the wall, a chair or piece of furniture on the right, a thin cord or string held by the older man.",
+    "recognizableCharactersOrPeopleEn": "Two adult males: one younger man with short hair and a suit, and one older man with a full white beard and a dark overcoat.",
+    "uncertaintyNotes": "The exact nature of the object held by the older man is ambiguous, appearing as a thin cord, string, or perhaps a medical instrument. The setting is generic, and the specific historical context or narrative purpose of the interaction is not visually explicit."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 9,
+    "paragraphIndexZeroBased": 56,
+    "exactSourceQuotation": "He had a colored scarf round his chin, and I could see little of his face save a pair of keen dark eyes, overhung by bushy white brows, and long gray side-whiskers.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts an older man with a long white beard and a patterned scarf, which aligns perfectly with the description of the character in Chapter 9, Paragraph 56, who is described as having a colored scarf around his chin and long gray side-whiskers (often depicted as a full beard in period illustrations). The younger man leaning against the wall matches the context of the scene where this character enters the room.",
+    "suggestedAltArNotApproved": "A 19th-century ink illustration showing an older man with a long white beard and a patterned scarf standing indoors, while a younger man leans against the wall nearby.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows an older man with a long white beard and a patterned scarf standing near another man who is leaning back against a wall in distress. However, this actually depicts the discovery of Bartholomew Sholto murdered in his locked room with a poisoned dart blowpipe/cord, rather than the initial arrival and entry of Captain Morstan or another elderly mariner describing their entrance as detailed in the text passage.",
+    "visualContradictions": "The man on the left is slumped dead or dying against a wall with a cord around him, which contradicts the passage describing an aged seafaring man entering the room and breathing heavily while leaning on an oaken cudgel.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.99,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-sign-of-the-four",
+  "originalCreator": "Frederick Henry Townsend (1868–1920); per-file credits pending",
+  "historicIllustratedEdition": "The Sign of Four, G. Newnes Ltd. 1903 illustrated souvenir edition; per-image territorial rights and scene identity require review",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Sign-t2.jpg",
+  "imagePath": "docs/literature/staging/sign-four-townsend-1903-period-plates/plates/sign-four-townsend-ea9e4e53c92fd8da.webp",
+  "imageSha256": "e578be4f1be32bbe4c022633affed21f3df331a14f2071829de9857a91fa9968",
+  "sourceCorpusSha256": "c46d81783380cc1a66862189639e204f02f927bc45f69868d2b2f2c71be14025",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraved illustration depicting two men in formal attire walking through a dark, wooded area at night. The man in the foreground is wearing a fedora and a long coat, holding a leash attached to a large, low-slung animal, likely a dog, that is sniffing the ground. A second man follows closely behind him in the background. The style is reminiscent of late 19th or early 20th-century book illustrations.",
+    "visualObjectsEn": "Two men, a dog, a leash, trees, forest floor, shadows.",
+    "recognizableCharactersOrPeopleEn": "Two adult men dressed in period-appropriate suits and hats.",
+    "uncertaintyNotes": "The exact breed of the animal is difficult to determine due to the dark, high-contrast nature of the engraving, though it appears to be a large dog. The specific historical context or source of the illustration is not identified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 7,
+    "paragraphIndexZeroBased": 42,
+    "exactSourceQuotation": "Holmes then threw the handkerchief to a distance, fastened a stout cord to the mongrel’s collar, and led him to the foot of the water-barrel. The creature instantly broke into a succession of high, tremulous yelps, and, with his nose on the ground, and his tail in the air, pattered off upon the trail at a pace which strained his leash and kept us at the top of our speed.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts two men (Holmes and Watson) following a dog (Toby) on a leash through a dark, outdoor setting while the dog sniffs the ground. This matches the narrative action in Chapter 7, Paragraph 42, where Holmes leads Toby on a leash to track a scent, with the dog's nose on the ground.",
+    "suggestedAltArNotApproved": "A black and white illustration of Sherlock Holmes and Dr. Watson following their dog, Toby, on a leash through a dark, wooded area at night as the dog tracks a scent.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows Sherlock Holmes holding a leash attached to the dog Toby, who has his nose to the ground tracking a scent outdoors, matching the passage where Holmes leads Toby off upon the trail.",
+    "visualContradictions": "None observed; the setting is outdoors on a trail with a dog and men tracking.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

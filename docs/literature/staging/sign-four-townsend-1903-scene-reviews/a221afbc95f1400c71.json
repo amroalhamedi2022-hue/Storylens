@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-sign-of-the-four",
+  "originalCreator": "Frederick Henry Townsend (1868–1920); per-file credits pending",
+  "historicIllustratedEdition": "The Sign of Four, G. Newnes Ltd. 1903 illustrated souvenir edition; per-image territorial rights and scene identity require review",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Sign-t4.jpg",
+  "imagePath": "docs/literature/staging/sign-four-townsend-1903-period-plates/plates/sign-four-townsend-a221afbc95f1400c.webp",
+  "imageSha256": "7b617aac1443f99558c172b33bc6de78d7d42c5161b79909ddc14bb276fa5497",
+  "sourceCorpusSha256": "c46d81783380cc1a66862189639e204f02f927bc45f69868d2b2f2c71be14025",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white illustration depicting a dramatic scene where a man in a suit is recoiling or falling backward with his arms raised in distress. Behind him, a group of men in a small boat or vessel are observing or interacting with him, with one man pointing toward him. The background is dark and indistinct, suggesting a night or stormy setting.",
+    "visualObjectsEn": "A small boat or rowboat, a man in a suit, a group of men in the boat, ropes or rigging, dark background.",
+    "recognizableCharactersOrPeopleEn": "A man in the foreground appearing to be in distress or shock, and at least two or three men in a boat behind him.",
+    "uncertaintyNotes": "The exact nature of the interaction between the man in the foreground and the men in the boat is ambiguous; it is unclear if he is being rescued, threatened, or reacting to something they have done. The setting is not clearly defined beyond the presence of a boat."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
