@@ -61,12 +61,15 @@ viewport_script = r"""
  const observer=new MutationObserver(()=>{
   if(document.body.hasAttribute('data-lt-chapter-gallery-qa')){
    observer.disconnect();
-   requestAnimationFrame(done);
+   // Chrome --dump-dom virtual time can end between mutation delivery and
+   // the next paint. Geometry is already final after the completed reader
+   // journey, so inspect synchronously instead of depending on an rAF tick.
+   done();
   }
  });
  observer.observe(document.body,{attributes:true,attributeFilter:['data-lt-chapter-gallery-qa']});
  if(document.body.hasAttribute('data-lt-chapter-gallery-qa')){
-  observer.disconnect();requestAnimationFrame(done);
+  observer.disconnect();done();
  }
 })();
 """
