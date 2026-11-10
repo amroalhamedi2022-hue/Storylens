@@ -85,6 +85,10 @@ const physical=fs.readFileSync('app/src/main/assets/physical-page-curl.css','utf
 const gallery=fs.readFileSync('app/src/main/assets/lt-chapter-gallery.css','utf8');
 assert.match(css,/lt-chapter-paper-heading/,'real chapter heading has physical paper styling');
 assert.match(css,/lt-reader-controls-visible/,'landscape blank-paper tap reveals accessible controls');
+assert.match(css,/\.reader\.lt-reader-controls-visible>\.toolbar/,
+ 'immersive landscape reveals real Back and Settings, not only paging');
+assert.match(css,/\.toolbar:focus-within/,
+ 'keyboard focus retains Back and Settings despite hidden immersive chrome');
 assert.match(physical,/\.lt-curl-ghost\{opacity:0!important\}/,
  'ghost text is never duplicated on the next page');
 assert.match(css,/\.lt-settings-sheet \.lt-font-setting>select/,
