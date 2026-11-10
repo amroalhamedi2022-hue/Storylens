@@ -1,0 +1,82 @@
+name: Lingua Tales - Gemini verify genuine Townsend art vs all 12 original Doyle chapters
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/export_sign_four_original_source_for_art.py'
+      - 'tools/gemini_suggest_sign_four_plate_scenes.py'
+      - 'tools/test_sign_four_gemini_original_pipeline.py'
+      - '.github/workflows/sign-four-gemini-original-scene-review.yml'
+  pull_request:
+    paths:
+      - 'tools/export_sign_four_original_source_for_art.py'
+      - 'tools/gemini_suggest_sign_four_plate_scenes.py'
+      - 'tools/test_sign_four_gemini_original_pipeline.py'
+      - '.github/workflows/sign-four-gemini-original-scene-review.yml'
+  schedule:
+    - cron: '43 5,17 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: lingua-townsend-1903-source-backed-gemini-original-visuals
+  cancel-in-progress: false
+jobs:
+  skeptical-unaltered-original-scene-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prove 12 real source chapters, 8 SHA-pinned genuine engravings and fail-closed quote validator
+        run: |
+          python tools/export_sign_four_original_source_for_art.py --check
+          python tools/gemini_suggest_sign_four_plate_scenes.py --self-test
+          python tools/test_sign_four_gemini_original_pipeline.py
+          python tools/test_original_quote_rejection_nonblocking.py
+      - name: Actually see up to 4 historical 1903 images with Gemini and check against authentic original Doyle prose
+        if: github.event_name != 'pull_request'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python tools/gemini_suggest_sign_four_plate_scenes.py --pending-count
+          python tools/gemini_suggest_sign_four_plate_scenes.py --max-new 4
+      - name: Commit only traceable NON-PUBLISHABLE original image/prose suggestions
+        if: ${{ always() && github.event_name != 'pull_request' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -d docs/literature/staging/sign-four-townsend-1903-scene-reviews ]; then
+            git add -f docs/literature/staging/sign-four-townsend-1903-scene-reviews/
+          fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No new original-scene records, no empty commit or unnecessary API retry"
+          else
+            git commit -m "Literature: checkpoint Gemini skepticism for genuine Townsend art and exact Doyle prose [skip ci]"
+            saved=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 3
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Unable to save original scene evidence; see artifact checkpoint"
+              exit 1
+            fi
+          fi
+      - name: Preserve source-vision results if remote checkpoint cannot be committed
+        if: ${{ always() && github.event_name != 'pull_request' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: townsend-genuine-original-vision-reviews-unapproved
+          path: docs/literature/staging/sign-four-townsend-1903-scene-reviews/
+          if-no-files-found: ignore
+          retention-days: 30
