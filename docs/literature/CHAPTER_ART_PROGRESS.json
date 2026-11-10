@@ -4,7 +4,7 @@
   "scope": "checked-in main only; recovered PR16 historical source is counted only after merged",
   "policy": "at least one distinct locally stored, sourced, chapter-matched and rights-cleared primary image per chapter",
   "counts": {
-    "localCandidateChapterCards": 288,
+    "localCandidateChapterCards": 289,
     "readyChapterCards": 0,
     "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1209,
     "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1209
@@ -262,6 +262,7 @@
         27,
         28,
         29,
+        30,
         31,
         32,
         33,
@@ -296,9 +297,9 @@
         63
       ],
       "readyChapterNumbers": [],
-      "localCandidateChapters": 61,
+      "localCandidateChapters": 62,
       "readyForUICards": 0,
-      "missingImageChapters": 2,
+      "missingImageChapters": 1,
       "missingReadyChapters": 63,
       "imageMap": "docs/literature/staging/illustrated-five-20261105/the-gilded-age/chapter-image-map.json",
       "archivedLocalHistoricArt": 212,
