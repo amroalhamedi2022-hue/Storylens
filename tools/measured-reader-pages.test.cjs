@@ -84,6 +84,10 @@ assert.match(css,/lt-chapter-paper-heading/,'real chapter heading has physical p
 assert.match(css,/lt-reader-controls-visible/,'landscape blank-paper tap reveals accessible controls');
 assert.match(physical,/\.lt-curl-ghost\{opacity:0!important\}/,
  'ghost text is never duplicated on the next page');
+assert.match(css,/\.lt-settings-sheet \.lt-font-setting>select/,
+ 'mobile settings controls respect available row width');
+assert.match(css,/overflow-y:auto!important;overflow-x:hidden!important/,
+ 'settings preserve scroll and prevent clipping of later controls');
 assert.match(gallery,/dialog\.lt-chapter-gallery \.lt-chapter-tile \*/,
  'nonselectable chapter tiles preserve separate editable search');
 console.log('PASS: audit-49 title-space budget, real chapter sheet, distinct curl ink, spread and gallery guards');
