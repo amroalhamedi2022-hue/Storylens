@@ -2,7 +2,7 @@ name: Lingua Tales • Story Art Pilot
 on:
   push:
     branches: ['feature/story-art-*']
-    paths: ['tools/story_art_pilot.cjs','tools/test_story_art_pilot.cjs','docs/art-generation/**','.github/workflows/story-art-pilot.yml']
+    paths: ['tools/story_art_pilot.cjs','tools/test_story_art_pilot.cjs','tools/package_generated_story_art.py','tools/test_generated_art_packaging.py','app/src/main/assets/lt-generated-art-registry.js','docs/art-generation/**','.github/workflows/story-art-pilot.yml']
   pull_request:
     branches: [main]
     paths: ['tools/story_art_pilot.cjs','tools/test_story_art_pilot.cjs','docs/art-generation/**','.github/workflows/story-art-pilot.yml']
@@ -24,6 +24,8 @@ jobs:
           node --check tools/story_art_pilot.cjs
           node tools/story_art_pilot.cjs --check
           node tools/test_story_art_pilot.cjs
+          python3 tools/package_generated_story_art.py --check
+          python3 tools/test_generated_art_packaging.py
       - name: Export source-pinned prompts; verify offline and modern provenance
         run: |
           node tools/story_art_pilot.cjs --export /tmp/story-art-queue.json

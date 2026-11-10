@@ -20,3 +20,13 @@ The queue does not make images and is not approved for app distribution. **No ge
 
 ## Practical generation
 Use the exported queue prompts as the exact input for controlled image jobs, together with actual reference-image files under a separately licensed Visual Bible. Review each result against the original paragraph BEFORE promotion. No automated billing, external image fetch or real-time online app behavior is introduced by this pilot.
+
+## Strict local image promotion (implemented, no pictures approved)
+The image intake path is `docs/art-generation/approved/<bookId>/<sceneId>.webp`. The signed-APK package path, after separate approval, will be `app/src/main/assets/art/generated/<bookId>/<sceneId>.webp`. The original `art/verne-*.webp` historical engravings and historical thumbnail registry remain untouched.
+
+```bash
+python3 tools/package_generated_story_art.py --check
+python3 tools/test_generated_art_packaging.py
+```
+
+Release manifest `docs/art-generation/approved/generated-art-release.json` is **empty and fail-closed**. A source-verified output is still not approved until editorial, owner, image usage rights and territorial review all pass; a scene ID + matching exact English paragraph SHA + original WebP bytes SHA are mandatory. A revoked packaged image cannot silently linger in the APK. The standalone registry `lt-generated-art-registry.js` is also empty; **no live reader integration or Android release** in this branch.
