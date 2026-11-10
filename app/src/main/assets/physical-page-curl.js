@@ -140,8 +140,13 @@ function mount(options){
    node.firstElementChild.style.display=g.angle<=Math.PI/2?'block':'none';
    node.lastElementChild.style.display=g.angle>Math.PI/2?'block':'none';
   });
-  const x=h.edge==='right'?g.crease:h.width-g.crease;
-  h.shadow.style.cssText='left:'+x+'px;width:'+Math.max(6,g.radius*2)+'px;opacity:'+Math.min(.38,g.progress*1.8)+';transform:translateX(-50%) rotate('+(-Math.atan2(g.normal.y,g.normal.x))+'rad)';
+  // Do not let the long contact shadow escape the physical paper boundary
+  // when diagonal pulls make the geometric crease pass outside the sheet.
+  const creaseX=h.edge==='right'?g.crease:h.width-g.crease;
+  const x=clamp(creaseX,0,h.width);
+  const contactOpacity=(creaseX<0||creaseX>h.width||g.progress<.015)
+   ?0:Math.min(.30,g.progress*1.25);
+  h.shadow.style.cssText='left:'+x+'px;width:'+Math.max(4,g.radius*1.6)+'px;opacity:'+contactOpacity+';transform:translateX(-50%) rotate('+(-Math.atan2(g.normal.y,g.normal.x))+'rad)';
   emit('progress',h);
  }
  function clean(h){
