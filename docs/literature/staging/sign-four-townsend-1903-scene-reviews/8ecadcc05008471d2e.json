@@ -30,15 +30,30 @@
     "suggestedAltArNotApproved": "Two men in 19th-century attire in a dark, indoor setting; one man holds a lantern aloft, illuminating the other who leans forward to inspect the floor.",
     "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
   },
-  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "evidenceStatus": "COMMONS_CAPTION_CHAPTER_CONFLICT__AI_IMAGE_MATCH_QUARANTINED",
   "sourceSelectionModel": "gemini-3.1-flash-lite",
   "visualCrosscheck": {
-    "passesConservativeModelComparison": true,
+    "passesConservativeModelComparison": false,
     "model": "gemini-3.5-flash-lite",
     "specificVisibleEvidenceNotHumanVerified": "The engraving shows Sherlock Holmes holding a lamp and examining marks on the steps with his lens, while Thaddeus Sholto looks on, closely matching the actions described in the passage.",
     "visualContradictions": "None",
     "contradictionTextConservativelyCleared": true,
     "confidenceSelfReported": 0.95,
-    "requiresHumanEditorialAndRightsReview": true
+    "requiresHumanEditorialAndRightsReview": true,
+    "historicCaptionDisagreementBlocksSceneSupport": true
+  },
+  "historicalCaptionConflictReview": {
+    "original1903PrintedCaptionIndependentlyVerified": false,
+    "captionSource": "Wikimedia Commons caption separately matched to original novel text",
+    "captionSourceURL": "https://commons.wikimedia.org/wiki/File:Sign-t1.jpg",
+    "captionTextOriginalFromCommonsNotPrintVerified": "\"HOLMES,\" I SAID, \"A CHILD HAS DONE THIS HORRID THING\".",
+    "captionTextMatchesOriginalChapterOneBased": 6,
+    "geminiSuggestedChapterOneBased": 5,
+    "modelOriginallySupportedWithoutCaption": true,
+    "candidateChapterConflict": true,
+    "humanEditorialReconciliationComplete": false,
+    "territorialRightsCleared": false,
+    "approvedForChapterCard": false,
+    "interpretation": "Commons caption/source novel chapter disagrees with image-only model; cannot treat model support as confirmed scene. Independent 1903 printed caption, actual painted scene and edition must be human-reviewed."
   }
 }
