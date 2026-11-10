@@ -6,7 +6,7 @@
   "releaseApproved": false,
   "sourceStatus": "37-original-Towle-chapters; Arabic draft needs independent editorial review",
   "chapterImagePolicy": "distinct_primary_original_period_art_per_chapter",
-  "chapterReadiness": "15_LOCAL_ORIGINAL_PERIOD_SCENE_CANDIDATES__22_CHAPTERS_NO_PRIMARY_IMAGE__0_EDITORIAL_TERRITORIAL_APPROVALS",
+  "chapterReadiness": "16_LOCAL_ORIGINAL_PERIOD_SCENE_CANDIDATES__21_CHAPTERS_NO_PRIMARY_IMAGE__0_EDITORIAL_TERRITORIAL_APPROVALS",
   "artProvenanceManifest": "docs/literature/HISTORIC_VERNES_ASSETS.json",
   "chapters": [
     {
@@ -192,9 +192,40 @@
     },
     {
       "chapterOneBased": 10,
-      "titleAr": "",
-      "titleEn": "",
-      "primaryImage": null
+      "titleAr": "حيث يكاد باسبارتو يحمد النجاة ولو بثمن حذائه",
+      "titleEn": "In which Passepartout is only too glad to get off with the loss of his shoes.",
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-6b44474b4e3e87c5.webp",
+        "sha256": "5e9264132e771e141c6ad8667180ebaf25c3cae33f46484909feacd3f7f49010",
+        "webpBytes": 584676,
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_15.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_15.jpg",
+        "creator": "Alphonse de Neuville and/or Léon Benett (individual original plate artist not definitively attributed)",
+        "sourceEdition": "Jules Verne, Le Tour du monde en quatre-vingts jours, original illustrated Hetzel 1872–73 French edition",
+        "sceneAnchor": "knocking down two of his long-gowned adversaries with his fists and a vigorous application of his toes",
+        "sourcePassage": "knocking down two of his long-gowned adversaries with his fists and a vigorous application of his toes",
+        "originalEnglishSourceFile": "app/src/main/assets/classic-verne-towle-ch10.js",
+        "originalEnglishSourceGitBlobSha": "eaebb6d7abdbc9598c8cb2ad31ed53fa402e187b",
+        "originalEnglishChapterOneBased": 10,
+        "originalFrenchEditionChapterURL": "https://fr.wikisource.org/wiki/Le_Tour_du_monde_en_quatre-vingts_jours/Chapitre_10",
+        "originalFrenchCaption": "Il renversa deux de ses adversaires",
+        "originalEnglishCaption": "Passepartout Knocked Down Two of His Adversaries",
+        "originalEditionImagePlacement": "Original French illustrated Chapter X, illustrated print folio 45; original visual shows Passepartout fighting two attackers",
+        "originalScanMetadataSha1": "6b44474b4e3e87c5bffb133a13ca668879970afb",
+        "rightsStatus": "PENDING_INDIVIDUAL_SCAN_TERRITORIAL_AND_EDITORIAL_REVIEW",
+        "license": "Individual Commons page declares public domain scan, human/territory and historical edition rights pending",
+        "sourceVerificationStatus": "ORIGINAL_1873_PRINTED_FRENCH_CAPTION_AND_LITERAL_TOWLE_CH10_COMBAT_PASSAGE_PLUS_REAL_IMAGE_SEEN__STAGING_ONLY",
+        "visualObservationEn": "Nineteenth-century engraving of an unshod man in Western dress punching or pushing two robed attackers inside a decorated Indian temple.",
+        "altEn": "An original period engraving of Passepartout striking back at two robed attackers in a Bombay temple, from Chapter X of Around the World in Eighty Days.",
+        "altAr": "نقش تاريخي أصلي يظهر باسبارتو وهو يرد هجوم رجلين يرتديان ثيابًا طويلة داخل معبد في بومباي، كما ورد في الفصل العاشر.",
+        "editionDifferenceNotice": "Original French illustrated scene and exact original Towle English prose independently match the same event; editions are different.",
+        "imageOriginalColourUnchanged": true,
+        "nonAIArt": true,
+        "editoriallyApproved": false,
+        "humanEditorApproved": false,
+        "territorialRightsCleared": false,
+        "publicationStatus": "STAGING_ONLY_NOT_PUBLISHED"
+      }
     },
     {
       "chapterOneBased": 11,
