@@ -6,7 +6,7 @@
 
 ## Current totals
 
-- Locally mapped chapter candidates: **289**.
+- Locally mapped chapter candidates: **294**.
 - Chapter cards with both territorial rights and editorial approval: **0**.
 - Verified historical art binaries retained in audited archives (all editions): **1284**; NOT necessarily chapter-aligned.
 - Authentic unassigned Arabian Nights original art files (Dulac 1907 and Groß 1838–39): **35**; original-edition pictures are NOT approved for Burton/Arabic reader pages.
@@ -15,7 +15,7 @@
 
 | Book | Actual chapters | Local primary image candidates | Approved chapter cards | Missing candidates | Source / blocker |
 | --- | ---: | ---: | ---: | ---: | --- |
-| Around the World in Eighty Days | 37 | 12 | 0 | 25 | 37 source chapters plus Arabic draft |
+| Around the World in Eighty Days | 37 | 17 | 0 | 20 | 37 source chapters plus Arabic draft |
 | The Moonstone | 53 narrative sections (includes Prologue and three Epilogue statements) | 0 | 0 | 53 | original English source staged; 53 source-accurate narrative units including prologue and epilogue; all chapter images/editorial rights pending |
 | The War of the Worlds | 27 | 5 | 0 | 22 | 27 original English 17+10 chapters pinned to exact source titles and SHA, five authentic 1906 Correa scene candidate plates, all release rights pending |
 | Treasure Island | 34 | 34 | 0 | 0 | original full English/illustrated source staged; map from exact historical chapter heading and local plate; subject/rights/editorial not yet approved |
@@ -68,7 +68,7 @@
 
 ## Remaining counts
 
-- Verne: **25 chapters without image candidates, 37 without approved thumbnails**; historical art requires territory/scene approvals.
+- Verne: **20 chapters without image candidates, 37 without approved thumbnails**; historical art requires territory/scene approvals.
 - War of the Worlds: **27 chapters without candidates**.
 - Five archived illustrated novels now have edition-derived chapter counts and source-positioned local plate candidates; verify scene fidelity and per-image rights before use.
 - Monte Cristo: **2 chapter candidates missing**; the historical English translation's original French edition and rights still need verification.
