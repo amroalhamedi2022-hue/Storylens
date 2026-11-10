@@ -34,6 +34,12 @@ jobs:
         run: python tools/test_woman_white_harper1860_mclenan.py
       - name: Download SHA-authentic 278-page 1860 volume and stage up to 100 strictly flagged unreviewed illustration-region candidates
         run: python tools/intake_woman_white_harper1860_mclenan.py --max-new 100 --start 8 --stop 278
+      - name: Produce actual SHA-verifiable source contact sheets for editorial visual review
+        if: always()
+        run: |
+          if [ -f docs/literature/staging/woman-white-mclenan-1860-original-scan/manifest.json ]; then
+            python tools/make_woman_white_1860_review_contact_sheets.py
+          fi
       - name: Commit ONLY actual original scan pixel crops, preserving failed-page checkpoints
         if: always()
         shell: bash
