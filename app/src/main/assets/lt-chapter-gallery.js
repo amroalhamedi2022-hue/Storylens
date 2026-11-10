@@ -14,6 +14,10 @@ const galleryKey='lt-chapter-gallery';
 const originalOpen=global.openStory;
 if(typeof originalOpen!=='function')return;
 let active=null,serial=0,lastReaderBook=null;
+// A revoked/missing packaged file must not repeatedly fail in every chapter
+// card and reader hero. This is deliberately MEMORY-ONLY: an APK update can
+// restore the image on the next app launch without migration or data writes.
+const failedLocalSources=new Set();
 
 const stories=()=>Array.isArray(global.LinguaCatalog?.stories)?global.LinguaCatalog.stories:[];
 const storyById=id=>stories().find(item=>item?.id===id);
@@ -38,7 +42,7 @@ function validatedArt(entry,{inline=false,paragraphCount=0}={}){
  if(typeof src!=='string')return null;
  // Local asset paths are intentionally relative to app/src/main/assets, NEVER
  // docs/literature/staging. Those files aren't part of the Android APK.
- if(!VALID_IMAGE.test(src))return null;
+ if(!VALID_IMAGE.test(src)||failedLocalSources.has(src))return null;
  // Approval is separate from source provenance and SHA verification.
  // A story may supply an explicitly approved scene-ready chapter thumbnail,
  // or reuse a provenanced inline reader image that passed the existing gate.
@@ -260,7 +264,8 @@ function buildChapterCard(entry,story,i){
   img.addEventListener('error',()=>{
    // Real APK file missing/corrupt: treat this image as unavailable in BOTH
    // the card and coverage filters for the rest of this gallery session.
-   if(active!==entry||entry.images[i]===null)return;
+   if(VALID_IMAGE.test(source.src))failedLocalSources.add(source.src);
+   if(active!==entry||entry.images[i]?.src!==source.src)return;
    img.remove();
    cover.classList.add('lt-chapter-image-missing');
    addText(cover,'span','lt-chapter-tile-number',String(i+1).padStart(2,'0'));
@@ -684,6 +689,9 @@ function attachApprovedChapterHero(){
  credit.className='lt-approved-chapter-credit';
  credit.textContent=locale('صورة الفصل · ','Chapter illustration · ')+approved.credit;
  img.addEventListener('error',()=>{
+  // Do not show the exact same corrupted/offline-missing original on the
+  // next reader re-render or when reopening the chapter gallery.
+  if(VALID_IMAGE.test(approved.src))failedLocalSources.add(approved.src);
   figure.remove();
   hero.classList.remove('lt-chapter-primary-hero');
   hero.style.backgroundImage=hero.dataset.ltOriginalHeroBg||'';
