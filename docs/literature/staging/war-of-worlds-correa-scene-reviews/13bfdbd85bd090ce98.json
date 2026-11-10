@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_222_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-13bfdbd85bd090ce.webp",
+  "imageSha256": "f106762c22facc534a3860faed3e24c5d99cbd6714c8d7152f08bb38c33888ea",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a chaotic scene with several figures. In the center, a bald man is lifting another person upside down by their legs. To the left, an older woman with glasses and a bonnet watches with her hands clasped, while a young boy runs toward the left. To the right, another person is running away, hunched over. A small, dark, furry animal or creature is being held up by its tail by the central man. A faint, ghostly figure of a child stands in the background to the right.",
+    "visualObjectsEn": "Ink drawing, figures, bonnet, glasses, clothing, small furry animal, tail, ground texture.",
+    "recognizableCharactersOrPeopleEn": "An older woman, a bald man, a young boy, a person being held upside down, a person running away, a faint child figure.",
+    "uncertaintyNotes": "The exact nature of the creature being held by the tail is ambiguous; it could be a cat, a small dog, or a mythical creature. The relationship between the figures and the specific narrative context is not clear from the visual evidence alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 18,
+    "paragraphIndexZeroBased": 12,
+    "exactSourceQuotation": "In three strides he was among them, and they ran radiating from his feet in all directions. He used no Heat-Ray to destroy them, but picked them up one by one. Apparently he tossed them into the great metallic carrier which projected behind him, much as a workman’s basket hangs over his shoulder.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a chaotic scene of figures being handled by a central figure, which aligns with the narrative of the Martian picking up humans one by one and tossing them into a carrier. While the 'furry animal' in the description is ambiguous, the central action of a figure being held upside down and the general panic of the surrounding figures matches the description of the Martian's capture of humans in Chapter 18.",
+    "suggestedAltArNotApproved": "A chaotic scene showing a Martian figure capturing humans, with a person held upside down and others fleeing in terror.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a group of domestic figures including an older woman, a bald man holding another person by the legs, a small creature held by the tail, and running children.",
+    "visualContradictions": "The passage describes a Martian fighting-machine picking up fleeing humans across a field near Kew Lodge and tossing them into a metallic carrier. The image instead depicts generic domestic or domestic-abuse/comical cartoon figures indoors or on plain ground, with no giant Martian fighting-machine or metallic carrier present.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

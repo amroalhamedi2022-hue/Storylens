@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_227_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-c5f6587d0945d083.webp",
+  "imageSha256": "918c0c538b51417c7e545d9d303e6f09534b6cd4b59f5d02f357585304a6cd98",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink sketch of a traditional English-style cottage or manor house with multiple chimneys, a gabled roof, and small-paned windows. The house is situated on a slight incline or grassy slope. The drawing style is illustrative with cross-hatching and line work typical of late 19th or early 20th-century book illustrations.",
+    "visualObjectsEn": "Cottage, chimneys, gabled roof, windows, grassy slope, signature at the bottom left.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The specific location or identity of the house is not provided in the image. The signature 'Alvim-Correa' is visible, suggesting the artist, but the exact date and context of the original publication are not explicitly stated."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 9,
+    "paragraphIndexZeroBased": 22,
+    "exactSourceQuotation": "One of our chimneys cracked as if a shot had hit it, flew, and a piece of it came clattering down the tiles and made a heap of broken red fragments upon the flower bed by my study window.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a traditional English cottage or manor house with chimneys and a gabled roof, which aligns with the narrator's description of his own home being struck by debris from a Martian attack in Chapter 9. The specific mention of chimneys, roof lines, and the house structure in the text provides a plausible narrative context for the architectural sketch.",
+    "suggestedAltArNotApproved": "A black and white ink illustration of a traditional English cottage with multiple chimneys and a gabled roof, reflecting the narrator's home during the Martian invasion.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a black and white ink sketch of a traditional English-style cottage exterior with chimneys and gabled roof on a grassy slope.",
+    "visualContradictions": "The passage describes an active scene of destruction with a chimney cracking and falling onto a flower bed, smoky red flames, a ruined church tower, and the narrator and his wife experiencing an attack. The image merely depicts a peaceful exterior view of a house without any people, explosions, ruined buildings, or active destruction.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

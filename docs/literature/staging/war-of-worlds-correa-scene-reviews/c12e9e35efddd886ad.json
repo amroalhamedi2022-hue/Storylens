@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_226_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-c12e9e35efddd886.webp",
+  "imageSha256": "f2f50b28bf89480aca33c77f6911fc914d4092021c7e97f42eaed4677d9029ab",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting an industrial or construction site. A large, spherical, metallic object is being suspended by chains and positioned onto a rail cart. In the foreground, a man in a cap watches, while two other figures stand nearby. The background shows a complex structure of beams and scaffolding.",
+    "visualObjectsEn": "Large spherical metal object, rail cart, chains, scaffolding, wooden beams, industrial machinery, cap, wooden table or bench.",
+    "recognizableCharactersOrPeopleEn": "Three men, one in the foreground wearing a cap, and two others standing further back, one wearing a hat.",
+    "uncertaintyNotes": "The exact nature of the spherical object is ambiguous; it appears to be a piece of heavy machinery or a specialized vessel. The setting is likely an industrial workshop or a shipyard, but the specific purpose of the construction is not explicitly stated."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 31,
+    "exactSourceQuotation": "Three or four black government wagons, with crosses in white circles, and an old omnibus, among other vehicles, were being loaded in the village street.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a large metallic object being loaded onto a cart in an industrial or construction-like setting with figures present. While the specific 'spherical object' is ambiguous, the scene of loading heavy equipment onto a cart in a public or industrial space aligns with the description of government wagons and vehicles being loaded in the village street during the evacuation sequence.",
+    "suggestedAltArNotApproved": "A black and white illustration showing men loading a large metallic object onto a rail cart in an industrial setting, reflecting the chaotic evacuation and mobilization efforts described in the text.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows an industrial workshop or interior with a large spherical metallic object being hoisted by chains onto a rail cart, with observers watching nearby.",
+    "visualContradictions": "The passage describes an outdoor village street in Byfleet with hussars, government wagons, an old omnibus, fleeing townspeople, an old man with orchids, and soldiers; none of these elements (hussars, wagons, omnibus, orchids, village street) appear in the illustration, which instead depicts an indoor industrial/machinery setting.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
