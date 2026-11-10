@@ -45,3 +45,10 @@
 @media(prefers-reduced-motion:reduce){
  .reader .lt-curl-stage{display:none!important}
 }
+
+
+/* Last leaf in a short facing spread: a genuinely empty physical sheet beneath
+ * the fold, never a duplicate of the visible next page. No extra grid row. */
+.reader #sentences.lt-curl-book>.lt-book-page.lt-curl-blank-under:not(.lt-curl-under){
+ display:none!important;
+}
