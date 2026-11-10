@@ -6,8 +6,8 @@
   "counts": {
     "localCandidateChapterCards": 288,
     "readyChapterCards": 0,
-    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1227,
-    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1262,
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1236,
+    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1271,
     "unassignedOriginalArabianNightsArtworkFiles": 35
   },
   "unassignedOriginalArabianNightsSourceEditionCounts": {
@@ -533,14 +533,14 @@
     {
       "bookId": "the-lost-world",
       "title": "The Lost World",
-      "sourceState": "full unabridged English original with 16 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending",
+      "sourceState": "full unabridged English original with 16 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending; 9 original illustrated 1912 plate files archived, scene and rights pending",
       "chapterCount": 16,
       "localCandidateChapters": 0,
       "readyForUICards": 0,
       "missingImageChapters": 16,
       "missingReadyChapters": 16,
-      "archivedLocalHistoricArt": 0,
-      "unassignedOriginal1912LostWorldImageFiles": 0,
+      "archivedLocalHistoricArt": 9,
+      "unassignedOriginal1912LostWorldImageFiles": 9,
       "mappedChapterNumbers": [],
       "readyChapterNumbers": [],
       "imageMap": "docs/literature/staging/the-lost-world/chapter-image-map.json"

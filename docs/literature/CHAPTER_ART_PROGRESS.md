@@ -8,7 +8,7 @@
 
 - Locally mapped chapter candidates: **288**.
 - Chapter cards with both territorial rights and editorial approval: **0**.
-- Verified historical art binaries retained in audited archives (all editions): **1262**; NOT necessarily chapter-aligned.
+- Verified historical art binaries retained in audited archives (all editions): **1271**; NOT necessarily chapter-aligned.
 - Authentic unassigned Arabian Nights original art files (Dulac 1907 and Groß 1838–39): **35**; original-edition pictures are NOT approved for Burton/Arabic reader pages.
 
 ## Book-by-book audit
@@ -29,7 +29,7 @@
 | Dracula | 27 | 0 | 0 | 27 | full byte-verified original English narrative and framing units; all specific historic chapter art, complete contextual Arabic, individual image rights, and human editorial clearance remain unavailable |
 | Frankenstein | 24 | 0 | 0 | 24 | full byte-verified original English narrative and framing units; all specific historic chapter art, complete contextual Arabic, individual image rights, and human editorial clearance remain unavailable |
 | The Hound of the Baskervilles | 15 | 0 | 0 | 15 | full unabridged English original with 15 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending |
-| The Lost World | 16 | 0 | 0 | 16 | full unabridged English original with 16 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending |
+| The Lost World | 16 | 0 | 0 | 16 | full unabridged English original with 16 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending; 9 original illustrated 1912 plate files archived, scene and rights pending |
 | The Sign of the Four | 12 | 0 | 0 | 12 | full unabridged English original with 12 SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending; 8 verified original 1903 Townsend plates in quarantine |
 | Kalila wa Dimna | Needs segmentation | 0 | 0 | Unknown | 19 byte-verified Arabic source sections (4 intro, 15 narrative); 3 actual c.1220 original-colour manuscript folios source-scene matched (geese/tortoise, crow/mouse, crow council); remaining 14 folios, full contextual English and all territorial/human release approval pending |
 | The Woman in White | 62 authentic narrative units (59 h3 sections + 3 standalone h2 narratives), not 62 conventional numbered chapters | 8 | 0 | 54 | complete English 1860 novel source SHA-pinned; 8 genuine 1903 Macklin lithographs and 1 real 1861 frontispiece(s), plus 1 genuine 1860 book cover(s) locally archived; eight printed-caption-matched original-unit pictures remain UNAPPROVED; 54 further art gaps; no full edited Arabic, territorial rights or editorial approval |
