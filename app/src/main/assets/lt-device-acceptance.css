@@ -632,9 +632,28 @@ body :lang(en):not(svg),.reader[data-lt-source="en"] :is(h2,.sentence){
  * stays visible for the opening spread and hides after turning into reading. A blank-paper tap reveals
  * controls for a short time, while keyboard navigation remains accessible. */
 @media (orientation:landscape) and (min-width:700px){
- .reader:has(#sentences.lt-curl-book[data-spread="2"][data-lt-reading-started="true"]) .reader-hero,
- .reader:has(#sentences.lt-curl-book[data-spread="2"])>.toolbar{
+ .reader:has(#sentences.lt-curl-book[data-spread="2"][data-lt-reading-started="true"]) .reader-hero{
   display:none!important;
+ }
+ /* Immersive is not a navigation trap: the real Back/Settings toolbar stays
+    keyboard accessible and appears in the same temporary reveal as pages. */
+ .reader:has(#sentences.lt-curl-book[data-spread="2"])>.toolbar{
+  display:flex!important;
+  position:fixed!important;z-index:115!important;
+  top:calc(8px + env(safe-area-inset-top,0px));left:50%;
+  transform:translateX(-50%);
+  width:min(620px,94vw)!important;max-width:94vw!important;
+  gap:12px;align-items:center;justify-content:space-between;
+  padding:8px 12px!important;border-radius:17px!important;
+  color:var(--lt-paper-ink,var(--reader-ink))!important;
+  background:var(--lt-paper-bg,var(--reader))!important;
+  box-shadow:0 8px 24px #12120d49!important;
+  opacity:0;pointer-events:none;
+  transition:opacity .2s ease;
+ }
+ .reader.lt-reader-controls-visible>.toolbar,
+ .reader:has(#sentences.lt-curl-book[data-spread="2"])>.toolbar:focus-within{
+  opacity:1!important;pointer-events:auto!important;
  }
  .reader:has(#sentences.lt-curl-book[data-spread="2"]) .reading-width{
   max-width:100vw!important;
