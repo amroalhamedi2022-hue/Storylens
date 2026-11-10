@@ -1,0 +1,26 @@
+name: Lingua Tales - 1912 original illustrated Lost World source audit
+on:
+  pull_request:
+    paths:
+      - 'tools/intake_lost_world_original_1912_plate_gallery.py'
+      - 'tools/test_lost_world_1912_source_intake.py'
+      - 'tools/report_chapter_art_progress.py'
+      - '.github/workflows/lost-world-original-source-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-original-art-with-zero-false-chapter-images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate strict original illustrated edition whitelist without network
+        run: |
+          python tools/test_lost_world_1912_source_intake.py
+          python tools/report_chapter_art_progress.py
