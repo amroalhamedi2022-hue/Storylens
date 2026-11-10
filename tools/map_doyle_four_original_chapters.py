@@ -99,6 +99,16 @@ def generate(slug: str) -> dict:
         })
     if len(indexed) != chapter_count or [r["chapterOneBased"] for r in indexed] != list(range(1, chapter_count + 1)):
         raise ValueError("Missing authentic chapter index rows")
+    # External English Wikisource ORIGINAL 1912 illustrated-edition transclusions
+    # prove chapter-level co-placement of nine real source-hashed pictures.
+    # They do not grant scene, translation, editor or territorial approval.
+    additional_original_art_metadata = {}
+    if slug == "the-lost-world":
+        from apply_lost_world_1912_wikisource_chapter_art import apply
+        indexed, additional_original_art_metadata = apply(indexed)
+    authentic_picture_chapters = sum(row["primaryImage"] is not None for row in indexed)
+    if slug != "the-lost-world" and authentic_picture_chapters:
+        raise ValueError("Source-only Doyle chapter count gained unverified thumbnails")
     return {
         "schemaVersion": 1,
         "bookId": slug,
@@ -107,10 +117,11 @@ def generate(slug: str) -> dict:
         "chapterCount": chapter_count,
         "countSemantics": "AUTHENTIC_UNABRIDGED_ORIGINAL_ENGLISH_CHAPTERS",
         "releaseApproved": False,
-        "localCandidateChapters": 0,
-        "missingCandidateChapters": chapter_count,
+        "localCandidateChapters": authentic_picture_chapters,
+        "missingCandidateChapters": chapter_count - authentic_picture_chapters,
         "readyForUICards": 0,
         "chapters": indexed,
+        **additional_original_art_metadata,
     }
 
 
