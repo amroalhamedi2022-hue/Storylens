@@ -188,6 +188,42 @@ def intersection_over_union(a,b):
     area=lambda q:(q[2]-q[0])*(q[3]-q[1])
     return inter/(area(a)+area(b)-inter)
 
+def create_visual_index_of_original_1860_scan_pages(doc: fitz.Document) -> int:
+    """Genuine 1860 first US edition page thumbnails for human illustration
+    locating, kept SEPARATE from real chapter artwork; never count as crops.
+    """
+    from PIL import ImageDraw
+    dest=DEST/"original-pdf-page-index-review-only"
+    dest.mkdir(parents=True,exist_ok=True)
+    per=16
+    cw,ch=250,363
+    count=0
+    for start in range(0,len(doc),per):
+        board=Image.new("RGB",(4*cw,4*ch),(241,239,235))
+        painter=ImageDraw.Draw(board)
+        for slot,pg in enumerate(range(start,min(start+per,len(doc)))):
+            pix=doc[pg].get_pixmap(matrix=fitz.Matrix(.42,.42),
+                                    colorspace=fitz.csGRAY,alpha=False)
+            thumb=Image.frombytes("L",(pix.width,pix.height),pix.samples).convert("RGB")
+            thumb.thumbnail((cw-12,ch-36),Image.Resampling.LANCZOS)
+            left=(slot%4)*cw
+            top=(slot//4)*ch
+            board.paste(thumb,(left+(cw-thumb.width)//2,top+4))
+            painter.text((left+14,top+ch-27),
+                         f"ORIGINAL PDF PAGE {pg+1:03d}",fill=(25,25,25))
+        file=dest/f"original-pages-{start//per+1:03d}.webp"
+        board.save(file,"WEBP",quality=82,method=4)
+        count+=1
+    (dest/"INDEX.json").write_text(json.dumps({
+        "source":TITLE,
+        "individuallyApprovedPictures":0,
+        "actualOriginalPDFPageCount":len(doc),
+        "sheets":count,
+        "description":"Only visual 1860 printed PDF page previews for identifying embedded art; no chapter thumbnail is approved."
+    },indent=2)+"\n","utf8")
+    return count
+
+
 def rendered_page(doc: fitz.Document, pagenum: int) -> tuple[np.ndarray,str]:
     p=doc[pagenum]
     pix=p.get_pixmap(matrix=fitz.Matrix(1.45,1.45),colorspace=fitz.csGRAY,alpha=False)
@@ -283,6 +319,8 @@ def run(max_new:int=80,start:int=8,stop:int=278)->dict:
         raise ValueError("Wrong full first-edition 1860 book scanned page count")
     if doc["images"] and doc.get("sourcePDFSHA256")!=source_sha:
         raise ValueError("Prior scan image provenance cannot be silently replaced")
+    preview_count=create_visual_index_of_original_1860_scan_pages(pdf)
+    print(f"Original 1860 first edition PDF page audit contact sheets: {preview_count}; artwork approvals: 0",flush=True)
     doc.update({"sourcePDFSHA1":meta["commonsOriginalSHA1"],
       "sourcePDFSHA256":source_sha,
       "sourcePDFBytes":len(data),
