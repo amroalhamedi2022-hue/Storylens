@@ -1,3 +1,13 @@
+# READER AUDIT-49 INTEGRATION (2026-11-10) — code patches on dedicated review branch, NOT device approved
+
+- **Branch:** `fix/reader-integrity-49-audit-20261110` based on verified main `ec026268aa1`. Full numbered issue list and status: `docs/qa/READER_AUDIT_49_TRACKER_2026-11-10.md`.
+- **Verified already merged:** CHG-05 PR #67, chapter-gallery navigation/history, broken image quarantine, short-landscape QA; do NOT repeat. Main Android Action #42775000177 succeeded. A **different prior PR run** #42773890630 failed only at Wen Glass optical browser; no claim that current main is failing.
+- **Changed on this branch:** real chapter title/counter moved onto first page with measured first-page reserve; single page curl no longer prints identical exposed page a second time on its back; facet seams and stray contact shadow constrained; spread page counter; quieter landscape with recoverable accessible controls; contrast on paper buttons; gallery chapter labels non-selectable while filters remain editable. Expanded regression tests. **These are code-level changes only; exact-head CI and actual physical phone/Pad 5 visual tests still required.**
+- **Do not misreport completed:** full-line pagination of long paragraphs, full actual paper-grab including outer frame, perfectly curved 3D fold, original-scene images, physical Android 120Hz, private signed APK/data-preserving install remain unfinished. Content chat exclusively owns original books/pictures/rights/translations. No unapproved original images were published or modified.
+- **Next:** wait for exact-head PR CI, diagnose any failure rather than remove test, then screenshot/gesture QA and only merge green, independently reviewed change. User's demand is honest issue-by-issue progress not theoretical design reports.
+
+---
+
 ## 2026-11-10 — CHG-05 illustration/reader resilience merged in main
 - New source-arrangement work merged via [PR #67](https://github.com/amroalhamedi2022-hue/Storylens/pull/67), commit `68974e426eb05a1e2d4bc1619db8b6fd1facf299`. Prevent repeated same-book activation stacking modal/history, and never retry a missing local chapter image across reopened gallery/reader-hero during one app session. Numbered chapter fallback and original-colour provenance remain.
 - Real Chromium four-screen geometry, touch targets and image rail acceptance https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42773792294 **SUCCESS**. The QA surfaced a real clipped 745×303 landscape rail, fixed CSS rather than weakening assertion. Source/book reader layout and original curl untouched.
