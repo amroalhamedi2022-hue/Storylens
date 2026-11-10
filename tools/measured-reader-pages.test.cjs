@@ -33,4 +33,59 @@ assert.match(source,/ltMeasuredParagraphHeights\(sentences\)/,'real DOM measurem
 assert.match(source,/ltPageStarts\(paragraphLengths/,'length-based compatibility fallback preserved');
 assert.match(source,/const starts=\(measured&&ltMeasuredPageStarts/,'measured pages preferred');
 assert.match(source,/const paragraphLengths=sentences\.map/,'both Arabic and English companion content counted');
+
+// Audit-49: a multi-line chapter heading lives on the first page and must
+// reserve vertical space without changing existing page/paragraph anchors.
+assert.deepEqual(asArray(paginate([100,100,100],700)),[0]);
+assert.deepEqual(asArray(paginate([100,100,100],700,165)),[0,2],
+ 'the physical chapter intro reserves real first-sheet height');
+const estimateStart=source.indexOf('function ltPageStarts(');
+const estimateEnd=source.indexOf('function ltMeasuredParagraphHeights(',estimateStart);
+assert.ok(estimateStart>=0&&estimateEnd>estimateStart);
+const fallbackEnv={LT_PAGE_PARAGRAPHS:4};
+vm.runInNewContext(source.slice(estimateStart,estimateEnd)+
+ '\nglobalThis.estimate=ltPageStarts;',fallbackEnv);
+assert.ok(Array.from(fallbackEnv.estimate([100,100,100],700,420,20,[],170)).length>=1,
+ 'estimated fallback also accepts first-page inset');
+assert.match(source,/pages\[0\]\.prepend\(caption,heading\)/,
+ 'original semantic heading and chapter number actually move onto first physical page');
+assert.match(source,/ltMeasuredPageStarts\(measured,window\.innerHeight,firstPaperInset\)/);
+assert.match(source,/spread===2\s*\?uiText\('الصفحتان /,
+ 'a two-page spread announces both visible page numbers');
+
+// Exercise the production getTurn() method: the reverse MUST NOT reuse the
+// same next-page DOM as the exposed underlay, which doubled visible words.
+const curlStart=source.indexOf('   getTurn(delta){');
+const curlEnd=source.indexOf('\n   commit(delta,source)',curlStart);
+assert.ok(curlStart>=0&&curlEnd>curlStart,'production physical curl delegate exists');
+const getTurnBody=source.slice(curlStart,curlEnd)
+ .replace('   getTurn(delta){','function getTurn(delta){')
+ .replace(/\},\s*$/,'\n}');
+const simulated={pages:Array.from({length:5},(_,i)=>({id:i})),
+ current:0,spread:1,state:{chapter:0,story:{chapters:[{},{},{}]}},
+ boundaryPage:()=>({id:'boundary'}),curlStory:{id:'book'},curlChapter:0};
+vm.runInNewContext(getTurnBody+'\nglobalThis.getTurn=getTurn;',simulated);
+const portrait=simulated.getTurn(1);
+assert.equal(portrait.under,simulated.pages[1]);
+assert.equal(portrait.back,null,
+ 'portrait verso must not clone exposed page ink a second time');
+simulated.spread=2;simulated.current=0;
+const landscape=simulated.getTurn(1);
+assert.equal(landscape.under,simulated.pages[3]);
+assert.equal(landscape.back,simulated.pages[2],
+ 'facing spread keeps distinct physical reverse and under sheets');
+simulated.current=2;
+const reverse=simulated.getTurn(-1);
+assert.notEqual(reverse.back,reverse.under,'reverse curl never doubles under-page ink');
+const css=fs.readFileSync('app/src/main/assets/lt-device-acceptance.css','utf8');
+const physical=fs.readFileSync('app/src/main/assets/physical-page-curl.css','utf8');
+const gallery=fs.readFileSync('app/src/main/assets/lt-chapter-gallery.css','utf8');
+assert.match(css,/lt-chapter-paper-heading/,'real chapter heading has physical paper styling');
+assert.match(css,/lt-reader-controls-visible/,'landscape blank-paper tap reveals accessible controls');
+assert.match(physical,/\.lt-curl-ghost\{opacity:0!important\}/,
+ 'ghost text is never duplicated on the next page');
+assert.match(gallery,/dialog\.lt-chapter-gallery \.lt-chapter-tile \*/,
+ 'nonselectable chapter tiles preserve separate editable search');
+console.log('PASS: audit-49 title-space budget, real chapter sheet, distinct curl ink, spread and gallery guards');
+
 console.log('PASS: measured paper pages keep bilingual paragraphs with offline art, handle tall content and safely fall back');
