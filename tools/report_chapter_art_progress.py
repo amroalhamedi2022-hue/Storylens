@@ -515,7 +515,60 @@ def generate() -> dict:
         if original_path in allowed:
             raise ValueError("Duplicate Verne historic source image path")
         allowed[original_path] = (item["sourceSha256"], item["chapterOneBased"])
-    for row in jload(MAP)["chapters"]:
+    # Strict original French print-caption + exact English scene allowlist.
+    # The 57 downloaded Commons images themselves are NOT mapped or approved:
+    # only these independently image-inspected four actual narrative scenes are
+    # checked against their complete original Towle chapter files. Never treat
+    # archive membership or an AI-suggested quotation as chapter-card evidence.
+    commons_plates = STAGING / "verne-commons-period-plates"
+    commons_manifest = jload(commons_plates / "manifest.json")
+    verified_original_scenes = {
+        4: ("07", "Une pauvre mendiante",
+            "a poor beggar-woman, with a child in her arms, her naked feet smeared with mud"),
+        8: ("11", "« Ma montre ! une montre de famille ! »",
+            "My watch? A family watch, monsieur, which has come down from my great-grandfather!"),
+        9: ("12", "Il faisait escale à Steamer-Point",
+            "the next day they put in at Steamer Point, northwest of Aden harbour, to take in coal"),
+        10: ("15", "Il renversa deux de ses adversaires",
+             "knocking down two of his long-gowned adversaries with his fists and a vigorous application of his toes"),
+    }
+    verne_map_data = jload(MAP)
+    for chapter_num, (ordinal, french_caption, literal_source) in verified_original_scenes.items():
+        originals = [image for image in commons_manifest["images"] if
+                     image["wikiFile"].endswith("Neuville and Benett " + ordinal + ".jpg")]
+        if len(originals) != 1:
+            raise ValueError("Missing or duplicate French original illustrated scene for chapter " + str(chapter_num))
+        item = originals[0]
+        photo = verne_map_data["chapters"][chapter_num - 1].get("primaryImage")
+        local_path = str((commons_plates / item["localPath"]).relative_to(ROOT))
+        source_path = ROOT / f"app/src/main/assets/classic-verne-towle-ch{chapter_num:02d}.js"
+        source_raw = source_path.read_bytes()
+        blob_hash = hashlib.sha1(b"blob " + str(len(source_raw)).encode("ascii")
+                                 + b"\\0" + source_raw).hexdigest()
+        if (not isinstance(photo, dict)
+                or photo.get("imagePath") != local_path
+                or photo.get("sha256") != item["webpSha256"]
+                or photo.get("sourceUrl") != item["commonsPage"]
+                or photo.get("originalScanMetadataSha1") != item["originalCommonsSHA1MetadataOnly"]
+                or photo.get("originalFrenchCaption") != french_caption
+                or photo.get("sourcePassage") != literal_source
+                or photo.get("sceneAnchor") != literal_source
+                or photo.get("originalEnglishSourceGitBlobSha") != blob_hash
+                or photo.get("originalEnglishChapterOneBased") != chapter_num
+                or literal_source.encode("utf-8") not in source_raw
+                or photo.get("rightsStatus") != "PENDING_INDIVIDUAL_SCAN_TERRITORIAL_AND_EDITORIAL_REVIEW"
+                or photo.get("editoriallyApproved") is not False
+                or photo.get("territorialRightsCleared") is not False
+                or photo.get("publicationStatus") != "STAGING_ONLY_NOT_PUBLISHED"
+                or photo.get("nonAIArt") is not True
+                or item.get("individualCommonsLicense") != "Public domain"
+                or item.get("sceneChapterMatchStatus") != "UNREVIEWED__NO_CHAPTER_CARD"):
+            raise ValueError("Verne period engraving lacks actual human-reviewed source or rights hold")
+        check_binary(local_path, item["webpSha256"])
+        if local_path in allowed:
+            raise ValueError("Repeated a period illustration already assigned elsewhere")
+        allowed[local_path] = (item["webpSha256"], chapter_num)
+    for row in verne_map_data["chapters"]:
         art = row.get("primaryImage")
         for image in ([art] if art else []) + row.get("secondaryImageCandidates", []):
             if image["imagePath"] not in allowed or (
