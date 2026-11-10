@@ -572,6 +572,28 @@ function installPageTurn(){
   sentenceBox.addEventListener('lingua:turncancel',()=>{boundaryPreview?.remove();boundaryPreview=null;});
   // Public bridge for native Back and immersive shell integration.
   window.LinguaReaderCurl=curl;
+  if(spread===2){
+   // Quiet landscape: no permanent navigation strip over the paper. Tapping
+   // blank parchment reveals the same real controls; word taps, illustrations
+   // and active paper-fold gestures retain their original semantics.
+   let controlsTimer=null;
+   function revealPageControls(){
+    reader.classList.add('lt-reader-controls-visible');
+    if(controlsTimer!==null)window.clearTimeout(controlsTimer);
+    controlsTimer=window.setTimeout(()=>{
+     if(!pageControls.contains(document.activeElement)){
+      reader.classList.remove('lt-reader-controls-visible');
+     }
+     controlsTimer=null;
+    },3500);
+   }
+   sentenceBox.addEventListener('click',event=>{
+    const target=event.target;
+    if(target?.closest?.('.sentence,.tok,button,a,input,textarea,.lt-inline-illustration'))return;
+    revealPageControls();
+   });
+   pageControls.addEventListener('focusin',revealPageControls);
+  }
   renderPage('next',false);return;
  }
  let startX=null,startY=null,startTarget=null;
