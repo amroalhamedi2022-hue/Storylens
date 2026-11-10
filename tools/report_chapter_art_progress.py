@@ -817,6 +817,43 @@ def generate() -> dict:
             originals.add(original_sha1)
             binaries.add(webp_sha)
         hound_paget_count = len(hound_archive["images"])
+    # The 1912 originals are real scene research assets, not already published images.
+    lost_world_original_1912 = 0
+    lost_world_gallery = STAGING / "lost-world-original-1912-period-plates" / "manifest.json"
+    if lost_world_gallery.is_file():
+        illustrated = jload(lost_world_gallery)
+        if (illustrated.get("category") != "Category:The Lost World"
+                or illustrated.get("historicalPrintYear") != 1912
+                or illustrated.get("chapterSceneMatchingComplete") is not False
+                or illustrated.get("publicationApproved") is not False):
+            raise ValueError("Original 1912 Lost World period source or rights are invalid")
+        print_pages = {55, 59, 142, 161, 187, 195, 222, 311}
+        period_names = {
+            *(f"File:Page {n} (The Lost World, 1912).jpg" for n in print_pages if n != 59),
+            "File:Page 59 (The Lost World. 1912).jpg",
+            "File:General view of plateau from top of gingho tree, page 225 (The Lost World, 1912).jpg",
+            "File:The Celestial Lake, page 299 (The Lost World, 1912).jpg",
+        }
+        seen_lost_sources, seen_lost_webp = set(), set()
+        for image in illustrated["images"]:
+            original_id, local_hash = image["originalCommonsSHA1MetadataOnly"], image["webpSha256"]
+            if (image.get("wikiFile") not in period_names
+                    or image.get("sourceEdition") != illustrated.get("sourceEdition")
+                    or image.get("artworkClassificationStatus") !=
+                    "GENUINE_1912_PRINTED_ILLUSTRATION_CHAPTER_UNMATCHED"
+                    or image.get("editoriallyApproved") is not False
+                    or image.get("rightsStatus") != "PENDING_1912_ORIGINAL_PRINT_AND_TERRITORIAL_REVIEW"
+                    or not image.get("commonsPage") or not image.get("individualCommonsLicense")
+                    or image.get("originalPrintedYear") != 1912):
+                raise ValueError("Unverified or incorrectly cleared 1912 original Doyle illustration")
+            if original_id in seen_lost_sources or local_hash in seen_lost_webp:
+                raise ValueError("Duplicate original Lost World 1912 source/image binary")
+            check_binary(str((lost_world_gallery.parent / image["localPath"]).relative_to(ROOT)), local_hash)
+            seen_lost_sources.add(original_id)
+            seen_lost_webp.add(local_hash)
+        lost_world_original_1912 = len(illustrated["images"])
+        if lost_world_original_1912 > 10:
+            raise ValueError("Mixed modern media or other sources falsely counted as original 1912 artwork")
     kalila_colours = (
         verify_kalila_miniatures()
         if (STAGING / "kalila-original-colour-miniatures-20261105" / "manifest.json").is_file()
@@ -828,7 +865,9 @@ def generate() -> dict:
             art_count = kalila_colours if slug == "kalila-arabic-wikisource" else (
                 scarlet_originals if slug == "a-study-in-scarlet" else (
                     townsend_originals if slug == "the-sign-of-the-four" else (
-                        hound_paget_count if slug == "the-hound-of-the-baskervilles" else 0
+                        hound_paget_count if slug == "the-hound-of-the-baskervilles" else (
+                            lost_world_original_1912 if slug == "the-lost-world" else 0
+                        )
                     )
                 )
             )
@@ -877,6 +916,8 @@ def generate() -> dict:
                         "full English original staged; genuine original Sidney Paget 1901-02 "
                         "historical art archived; exact original chapter scenes/territorial rights pending"
                     )
+            if slug == "the-lost-world":
+                data["unassignedOriginal1912LostWorldImageFiles"] = lost_world_original_1912
             chaptered_doyle = {
                 "a-study-in-scarlet": 14,
                 "the-lost-world": 16,
@@ -905,6 +946,11 @@ def generate() -> dict:
                         "full unabridged English original with " + str(total) +
                         " SHA-pinned chapter source references; individual real scene-matched chapter pictures and rights pending"
                     )
+                    if slug == "the-lost-world" and lost_world_original_1912:
+                        data["sourceState"] += (
+                            "; " + str(lost_world_original_1912) +
+                            " original illustrated 1912 plate files archived, scene and rights pending"
+                        )
                     if slug == "a-study-in-scarlet" and scarlet_originals:
                         data["sourceState"] += "; " + str(scarlet_originals) + " original Friston artwork files archived"
                     if slug == "the-sign-of-the-four" and townsend_originals:
