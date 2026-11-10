@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Adversarial, source-edition-specific tests for 22 genuine Arabian Nights plates."""
+"""Adversarial, source-edition-specific tests for 35 genuine Arabian Nights plates."""
 from pathlib import Path
 import re
 import sys
@@ -12,24 +12,24 @@ import intake_verne_commons_period_gallery as commons
 
 
 class GenuineVintageArabianNightsArtTest(unittest.TestCase):
-    def test_15_distinct_dulac_1907_pages_and_no_faux_original_cover(self):
+    def test_28_distinct_dulac_london_1907_plates_and_no_faux_original_cover(self):
         cfg = source.configure("dulac")
-        self.assertEqual(len(cfg["names"]), 15)
-        self.assertEqual(len(source.DULAC_PAGES), 15)
+        self.assertEqual(len(cfg["names"]), 28)
+        self.assertEqual(len(source.DULAC_PLATES), 28)
         self.assertEqual(commons.SOURCE_CATEGORY, source.DULAC_CATEGORY)
         self.assertEqual(commons.ORIGINAL_YEAR, 1907)
         self.assertIn("Housman", cfg["edition"])
-        for page in source.DULAC_PAGES:
+        for page in source.DULAC_PLATES:
             with self.subTest(page=page):
-                name = f"File:Stories from the Arabian nights - colour plate at page {page:03d}.jpg"
+                name = f"File:Stories from the Arabian nights - London 1907 - plate {page:02d}.jpg"
                 self.assertTrue(commons.PERIOD_NAME.fullmatch(name))
         for fake in (
             "File:Stories from the Arabian nights - cover.png",
             "File:Stories from the Arabian nights - end paper.png",
             "File:Stories from the Arabian nights - frontipiece.jpg",
-            "File:Stories from the Arabian nights - colour plate at page 037.jpg",
-            "File:Stories from the Arabian nights - colour plate at page 039 (cropped).jpg",
-            "File:Stories from the Arabian nights - colour plate at page 039.png",
+            "File:Stories from the Arabian nights - London 1907 - plate 11.jpg",
+            "File:Stories from the Arabian nights - London 1907 - plate 02 (cropped).jpg",
+            "File:Stories from the Arabian nights - London 1907 - plate 02.png",
             "File:Illustration by Edmund Dulac from One Thousand and One Nights 01.jpg",
         ):
             self.assertFalse(commons.PERIOD_NAME.fullmatch(fake), fake)
@@ -56,7 +56,7 @@ class GenuineVintageArabianNightsArtTest(unittest.TestCase):
     def test_only_individually_pd_tagged_commons_actual_images_eligible(self):
         source.configure("dulac")
         entry = {
-            "title": "File:Stories from the Arabian nights - colour plate at page 039.jpg",
+            "title": "File:Stories from the Arabian nights - London 1907 - plate 02.jpg",
             "imageinfo": [{
                 "mime": "image/jpeg", "sha1": "a"*40,
                 "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/p/p/plate.jpg/960px-plate.jpg",
@@ -88,7 +88,7 @@ class GenuineVintageArabianNightsArtTest(unittest.TestCase):
             'item["altAr"] = None',
             'item["altEn"] = None',
             'item["captionEvidenceStatus"] = "EXACT_GERMAN_EDITION_NIGHT_NUMBER_NOT_SCENE_ALIGNED"',
-            'item["captionEvidenceStatus"] = "EXACT_1907_PRINT_PAGE_NUMBER_NOT_STORY_ALIGNED"',
+            'item["captionEvidenceStatus"] = "EXACT_LONDON_1907_PRINTED_PLATE_ORDINAL_NOT_STORY_ALIGNED"',
             'finally:',
             "provenance(edition)",
         ):
