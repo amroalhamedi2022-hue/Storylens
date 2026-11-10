@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_209_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-6901a8f95169b3f9.webp",
+  "imageSha256": "461a4ae2dbc12faa92c725f40a260e7ee11527704e119526b6f5cda37306c85d",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a man sitting dejectedly on a stone step or ledge at night. He is leaning forward with his head resting on his hand. Behind him stands a tall, dark street lamp. The background is heavily shaded with cross-hatching, suggesting a dark, urban environment. There is a small, smoldering object, possibly a cigarette, on the ground in the foreground.",
+    "visualObjectsEn": "A man, a street lamp, stone steps or a ledge, a smoldering cigarette or small fire on the ground.",
+    "recognizableCharactersOrPeopleEn": "A single male figure with dark hair, wearing a collared shirt and trousers.",
+    "uncertaintyNotes": "The exact historical period or artistic style is difficult to pinpoint, though it resembles 19th or early 20th-century book illustration techniques. The identity of the man is not provided in the image. The smoldering object on the ground is ambiguous."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

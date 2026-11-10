@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_205_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-95ae91f012474d8d.webp",
+  "imageSha256": "cca07aa655377855b797c8400b6541757cef8260dc4f7661da6da70974e5966b",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting two disheveled men standing in a dirt area, possibly a construction site or excavation. The man on the left is leaning forward, pointing downward with one hand while holding a cigar in his mouth. The man on the right stands with his hands in his pockets, also smoking a cigar. Between them is a shovel stuck in the ground, and behind the man on the right is a wooden wheelbarrow. A small crate containing a bottle and a box sits on the ground near the man on the left.",
+    "visualObjectsEn": "Two men, cigars, shovel, wooden wheelbarrow, crate, bottle, box, dirt ground, rough terrain.",
+    "recognizableCharactersOrPeopleEn": "Two adult males dressed in worn, casual work clothing.",
+    "uncertaintyNotes": "The exact historical context, setting, or specific narrative purpose of the illustration is not provided and cannot be determined from the image alone. The signature in the bottom right corner is partially obscured and illegible."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 24,
+    "paragraphIndexZeroBased": 93,
+    "exactSourceQuotation": "We went on smoking the cigars.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts two men smoking cigars in a setting that includes a shovel and a wheelbarrow, which aligns with the artilleryman's scene in Chapter 24 where the narrator and the artilleryman are smoking cigars and discussing their situation in a makeshift, somewhat derelict environment.",
+    "suggestedAltArNotApproved": "Two men in work clothes smoking cigars, standing near a shovel and a wheelbarrow in a dirt-filled area.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows two disheveled men smoking cigars outdoors near a shovel, wheelbarrow, and a crate with a bottle, fitting an earlier scene where they discuss plans and drink champagne near an excavation, rather than the specific actions of finishing supper, delivering a toast to health, or going upstairs to view distant green lights.",
+    "visualContradictions": "The passage describes being indoors or at least going 'upstairs to look at the lights', whereas the illustration clearly sets the two men outdoors in a rough, dirt-ground excavation site surrounded by construction tools like a shovel and a wheelbarrow.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

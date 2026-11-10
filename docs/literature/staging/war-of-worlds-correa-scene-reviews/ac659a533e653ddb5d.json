@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_210_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-ac659a533e653ddb.webp",
+  "imageSha256": "cb6a26d8b8a0f6775abce88787c8ed4fe0e4827244bc8b6cdedd13d33f40840f",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black-and-white ink illustration depicting a surreal, dystopian landscape. In the foreground, a large, dark, hooded figure with a long, tube-like appendage stands on a wooden scaffolding structure. In the background, a town with buildings sits under a heavy, swirling sky. A mechanical, tripod-like machine with a circular eye-like feature stands near the buildings, and a bird-like creature flies in the lower right foreground. The style is reminiscent of early 20th-century pen-and-ink book illustrations.",
+    "visualObjectsEn": "Scaffolding, wooden planks, large hooded figure, tube-like appendage, tripod machine with a circular lens, buildings, birds, swirling clouds, ink lines.",
+    "recognizableCharactersOrPeopleEn": "A large, dark, hooded figure in the foreground; no other human figures are clearly identifiable.",
+    "uncertaintyNotes": "The nature of the hooded figure and the mechanical tripod is ambiguous and open to interpretation. The exact historical origin or artist is not specified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 20,
+    "paragraphIndexZeroBased": 8,
+    "exactSourceQuotation": "I crouched, watching this fighting-machine closely, satisfying myself now for the first time that the hood did indeed contain a Martian. As the green flames lifted I could see the oily gleam of his integument and the brightness of his eyes. And suddenly I heard a yell, and saw a long tentacle reaching over the shoulder of the machine to the little cage that hunched upon its back.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a hooded figure (the Martian inside the hood of the fighting-machine) and a mechanical tripod structure. The passage describes the narrator watching the fighting-machine, noting the hood, the Martian's eyes, and the tentacle reaching out, which aligns with the visual elements of the hooded figure and the mechanical appendage described in the scene.",
+    "suggestedAltArNotApproved": "A black-and-white ink illustration showing a Martian fighting-machine with a hooded top, a long tentacle extending from it, and a tripod base, set against a backdrop of a town under a dark, swirling sky.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a surreal landscape with a hooded figure on scaffolding, a tripod machine in the background, and a bird flying, but it does not depict a Martian inside a hood, a tentacle reaching out to a cage, or a captive man being lifted as described in the text.",
+    "visualContradictions": "The passage specifically details a Martian visible inside the hood with green flames, a tentacle reaching to a cage on the machine's back, and a stout, well-dressed man being lifted into the sky; none of these specific narrative elements are depicted in the illustration.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

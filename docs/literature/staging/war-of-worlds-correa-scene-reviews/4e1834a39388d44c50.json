@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_206_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-4e1834a39388d44c.webp",
+  "imageSha256": "d7c0f9a8afa142429f8e4177b39a11941df6df8a42e1ec0a231aad476b1d5eb5",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting two men in a rustic, dimly lit setting, likely a tavern or shack. One man stands aggressively, pointing at a wooden bench, while holding a hand of playing cards. The other man sits relaxed on the bench, smoking a cigar, with a bottle nearby and cards in his hand. The style is reminiscent of 19th or early 20th-century pen-and-ink book illustrations.",
+    "visualObjectsEn": "Two men, wooden bench, playing cards, cigar, glass bottle, oil lamp or candle stand, rough clothing, knife tucked into a belt.",
+    "recognizableCharactersOrPeopleEn": "Two adult males, one standing and one seated.",
+    "uncertaintyNotes": "The exact historical context, specific location, and the nature of the interaction (e.g., whether it is a friendly game or a confrontation) are not explicitly stated and are open to interpretation based on the visual cues."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 17,
+    "exactSourceQuotation": "I hid from the night and the silence, until long after midnight, in a cabmen’s shelter in Harrow Road.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts two men in a rustic, dimly lit setting with cards, a cigar, and a bottle, which aligns with the atmosphere of a 'cabmen's shelter' where the narrator hides during the night in the specified passage. While the text does not explicitly describe a card game, the setting of a shelter provides a plausible context for such an interaction in the 19th-century literary style of the period.",
+    "suggestedAltArNotApproved": "Two men in a dimly lit cabmen's shelter, one standing and one seated, engaged in a card game.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows two men indoors, one standing aggressively and holding playing cards while pointing at a bench, and another man sitting and smoking a cigar.",
+    "visualContradictions": "The passage describes a lone narrator wandering through a desolate, ruined London at dawn, encountering a dead body, and seeing a Martian on Primrose Hill. The image depicts an interior tavern scene with two card-playing men, bearing no resemblance to the deserted streets, the narrator's flight, or the Martian war machine.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
