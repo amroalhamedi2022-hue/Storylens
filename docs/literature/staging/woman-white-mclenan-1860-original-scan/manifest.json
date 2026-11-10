@@ -372,7 +372,7 @@
   "sourcePDFBytes": 31714138,
   "sourcePDFPageCount": 278,
   "individualCommonsSourceLicense": "Public domain",
-  "lastRunPagesInspected": 270,
-  "lastRunImageRegionsPassingStrictComputerVision": 11,
+  "lastRunPagesInspected": 260,
+  "lastRunImageRegionsPassingStrictComputerVision": 0,
   "localImageRegionCropsBeforeHumanVerification": 11
 }
