@@ -1,0 +1,35 @@
+name: Lingua Tales - verify original 1907 Dulac and 1838 Gross Arabian Nights art provenance
+on:
+  pull_request:
+    paths:
+      - 'tools/intake_arabian_period_original_illustrations.py'
+      - 'tools/test_arabian_original_period_illustrations.py'
+      - 'tools/report_chapter_art_progress.py'
+      - '.github/workflows/arabian-original-colour-art-intake.yml'
+      - '.github/workflows/arabian-original-colour-art-source-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/intake_arabian_period_original_illustrations.py'
+      - 'tools/test_arabian_original_period_illustrations.py'
+      - 'docs/literature/staging/arabian-nights-*/manifest.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-real-source-and-not-falsely-approved-Burton-story-pictures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original image Commons source metadata verifier
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0
+      - name: Verify edition-specific real original image selectors, legal holds, no counterfeit artwork
+        run: python tools/test_arabian_original_period_illustrations.py
+      - name: Verify every downloaded historical WebP binary against its source SHA256 and rights state
+        run: python tools/report_chapter_art_progress.py

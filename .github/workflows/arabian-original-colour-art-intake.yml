@@ -1,0 +1,99 @@
+name: Lingua Tales - acquire REAL 1907 Dulac and 1838-39 Gross Arabian Nights original art
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/intake_arabian_period_original_illustrations.py'
+      - 'tools/test_arabian_original_period_illustrations.py'
+      - '.github/workflows/arabian-original-colour-art-intake.yml'
+  schedule:
+    - cron: '31 3,11,19 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: lingua-original-arabian-1907-1838-art-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  fetch-real-source-and-verify-original-colour:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned genuine Wikimedia media collector and decoder dependencies
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0
+      - name: Prove exact 28 Dulac and seven Gross original archival plate selectors
+        run: python tools/test_arabian_original_period_illustrations.py
+      - name: Fetch actual historical 1907 Dulac original-colour plates and 1838/39 Gross original prints
+        shell: bash
+        run: |
+          set +e
+          python tools/intake_arabian_period_original_illustrations.py --edition dulac --max-new 28
+          dulac_status=$?
+          python tools/intake_arabian_period_original_illustrations.py --edition gross --max-new 7
+          gross_status=$?
+          if [ "$dulac_status" -ne 0 ] || [ "$gross_status" -ne 0 ]; then
+            echo "::warning::Some original media could not be fetched or authenticated; partial valid checkpoints persist."
+            exit 1
+          fi
+      - name: Verify real bytes/sha256, editions and held rights for ALL new authentic images
+        if: always()
+        shell: bash
+        run: |
+          python tools/test_arabian_original_period_illustrations.py
+          python tools/report_chapter_art_progress.py
+      - name: Commit ONLY genuinely downloaded original period image binaries and metadata
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for art_dir in \
+              docs/literature/staging/arabian-nights-dulac-london-1907-original-colour-plates \
+              docs/literature/staging/arabian-nights-gross-1838-original-night-illustrations; do
+            if [ -d "$art_dir" ]; then
+              git add -f "$art_dir"
+            fi
+          done
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No additional original source art bytes: do not create an empty commit."
+          else
+            git commit -m "Literature: archive actual source-verified 1907 Dulac / 1838 Gross Arabian Nights art"
+            pushed=0
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then pushed=1; break; fi
+              sleep 3
+            done
+            if [ "$pushed" -ne 1 ]; then
+              echo "::error::Genuine source image bytes saved as Actions artifact but could not push"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = main ]; then
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
+          fi
+      - name: Retain actual historic picture bytes if Wikimedia/GitHub fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: arabian-nights-genuine-Dulac-1907-Gross-1838-art-evidence-not-publishable
+          path: |
+            docs/literature/staging/arabian-nights-dulac-london-1907-original-colour-plates/
+            docs/literature/staging/arabian-nights-gross-1838-original-night-illustrations/
+          if-no-files-found: ignore
+          retention-days: 30
