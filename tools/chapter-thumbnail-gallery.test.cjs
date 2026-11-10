@@ -168,6 +168,10 @@ function scenario({en=false,lazy=false,slowLazy=false,artSrc=null,approved=null,
  assert.equal(s.api.isOpen,true);
  assert.equal(s.baseOpens.length,0,'book click MUST open ordered chapter list rather than start reading');
  assert.equal(s.historyCalls[0].payload.page,'chapter-gallery');
+ s.clickBook();
+ assert.equal(s.cards.length,1,'double tap must not stack second dialog');
+ assert.equal(s.historyCalls.filter(x=>x.type==='push').length,1,
+  'double tap must not push another chapter-gallery history entry');
  await tick();
  const dialog=s.cards[0],sheet=dialog.children[0],track=sheet.children[1];
  assert.equal(track.children.length,3,'all three existing chapters appear');
@@ -390,9 +394,14 @@ function scenario({en=false,lazy=false,slowLazy=false,artSrc=null,approved=null,
  assert.equal(inReader.hero.children.length,1,'re-renders must NOT duplicate the primary chapter image');
  assert.equal(inReader.readerNav.children.length,1,'only one illustrated-chapter button in reader nav');
  approvedImage.emit('error');
+ assert.equal(inReader.api.chapterImage(inReader.story,0),null,
+  'a failed locally-packaged source is suppressed for this app session');
  assert.equal(approvedFigure.removed,true,'broken chapter image safely removed');
  assert.equal(inReader.hero.style.backgroundImage,'url("data:existing")',
    'failed local image restores original paper hero, never a blank chapter');
+ inReader.W.renderReader();
+ assert.equal(inReader.hero.children.length,0,
+  're-render of the same chapter must NOT retry known corrupt local art');
  const deniedReader=scenario({renderMock:true,approved:{...chapterApproved,editoriallyApproved:false}});
  deniedReader.sandbox.state.page='reader';
  deniedReader.sandbox.state.story=deniedReader.story;
@@ -526,6 +535,15 @@ function scenario({en=false,lazy=false,slowLazy=false,artSrc=null,approved=null,
  failingKind.value='pending';failingKind.emit('change');
  assert.deepEqual(failingTrack.children.map(c=>c.dataset.chapterIndex),['0','1','2'],
   'broken image is immediately reported as missing, not repeatedly retried');
+ assert.equal(failing.api.chapterImage(failing.story,0),null,
+  'broken image is quarantined across this gallery session');
+ failing.api.close();
+ failing.clickBook();await tick();
+ const returnedTiles=failing.cards.at(-1).children[0].children[1].children;
+ assert.equal(returnedTiles[0].dataset.thumbnailState,'missing-or-pending-approval',
+  'reopening the same book never refetches a missing approved source');
+ assert.equal(returnedTiles[0].children[0].children[0].tagName,'SPAN',
+  'the actual chapter number stays visible after approved art failed');
 
  // CHG-03: pinpoint chapter 933 of a thousand-one-chapter anthology
  // WITHOUT mounting 933 cards, opening the reader, or changing bookmarks.
