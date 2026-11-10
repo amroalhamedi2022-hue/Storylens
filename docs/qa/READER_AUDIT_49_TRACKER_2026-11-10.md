@@ -13,7 +13,7 @@
 
 1. **Reader integration:** chapter heading + chapter counter moved from a permanently separate frame into first *actual HTML sheet*. Measured and fallback pagination reserve height; source paragraph IDs, dictionary DOM, bookmarks and original texts unchanged. Landscape announces the two physical pages, not a false single number.
 2. **Physical mesh ink:** ensure `under` and `back` never reference the same paragraph/DOM page; portrait forward curls display the real next page as verso while the subsequent page is the distinct under-sheet; at chapter boundaries the placeholder remains incomplete pending a full real preview. Preserve genuinely distinct faces for tablet spreads. Reduce artificial borders/seam shading and clamp contact shadow.
-3. **Reading shell:** reader-control contrast uses real paper ink/background; in true landscape spread the cover and persistent toolbar hide; blank-paper tap/keyboard focus temporarily exposes navigation (no removal of accessible controls).
+3. **Reading shell:** reader-control contrast uses real paper ink/background; in true landscape spread the cover and persistent toolbar hide; blank-paper tap/keyboard focus temporarily exposes both the genuine Back/Settings toolbar and the navigation bar (no removal of accessible controls).
 4. **Chapter gallery:** non-selectable tiles and heading to suppress Android selection handles; search/select inputs retain normal selection/editing.
 5. **Tests:** expand real production helper VM test `tools/measured-reader-pages.test.cjs` to verify title-aware pagination, actual `getTurn()` results in portrait/spread and styling guards. All tests must pass on the **exact PR SHA** before merge.
 
