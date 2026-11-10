@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "bookId": "the-woman-in-white",
+  "sourceEdition": "Harper & Brothers (New York), 1860 first American illustrated edition",
+  "sourceOriginalPDF": "https://commons.wikimedia.org/wiki/File:The_woman_in_white._A_novel_.._(IA_womaninwhitenove00collrich).pdf",
+  "sourcePDFSHA256": "97c7236c8f6f02d63fa2a11043402f781467ba8c57aad48556be72080f19b854",
+  "verificationMeaning": "8 actual drawings visually inspected; NOT eight approved chapter thumbnails; 3 previously scanned ordinary text patches explicitly excluded.",
+  "realArchiveImagesVisuallySeenCount": 8,
+  "readyChapterThumbnailCount": 0,
+  "rightsStatus": "HUMAN_TERRITORIAL_AND_EDITORIAL_REVIEW_PENDING",
+  "visuallyVerifiedHistoricalPictureSources": [
+    {
+      "sourcePDFPageOneBased": 42,
+      "sourceOriginalPixelRectXYXY": [
+        75,
+        103,
+        234,
+        480
+      ],
+      "localPath": "scan-art-crops/harper1860-p042-fb8b65430805e19d.webp",
+      "webpSha256": "fb8b65430805e19dc94ee824a442d57be9ac7a90625dc1e959ee9ca3a29345b6",
+      "sourcePDFSHA256": "97c7236c8f6f02d63fa2a11043402f781467ba8c57aad48556be72080f19b854",
+      "evidence": "DIRECT_VISUAL_INSPECTION_OF_ACTUAL_1860_BOOK_SCAN_CROP",
+      "sourceIllustrationType": "ORIGINAL_PERIOD_WOOD_ENGRAVING_CANDIDATE_VERIFIED_AS_DRAWING_NOT_TEXT",
+      "visualDescriptionEn": "A standing young figure shields the face with both hands beside a small stool.",
+      "visualDescriptionAr": "شخص شاب واقف يغطي وجهه بكلتا يديه قرب مقعد صغير.",
+      "originalArtistAttribution": "John McLenan (Harper 1860 book title page; individual engraving attribution needs review)",
+      "specificChapter": null,
+      "originalCaption": null,
+      "humanVisualSceneReviewCompleted": false,
+      "editorialPublicationApproved": false,
+      "targetTerritoryRightsApproved": false
+    },
+    {
+      "sourcePDFPageOneBased": 55,
+      "sourceOriginalPixelRectXYXY": [
+        1,
+        47,
+        271,
+        448
+      ],
+      "localPath": "scan-art-crops/harper1860-p055-db35a6de9f12d5ff.webp",
+      "webpSha256": "db35a6de9f12d5ff549d877aa805324404b6c0c412ace0d63dbd510d54d2acfa",
+      "sourcePDFSHA256": "97c7236c8f6f02d63fa2a11043402f781467ba8c57aad48556be72080f19b854",
+      "evidence": "DIRECT_VISUAL_INSPECTION_OF_ACTUAL_1860_BOOK_SCAN_CROP",
+      "sourceIllustrationType": "ORIGINAL_PERIOD_WOOD_ENGRAVING_CANDIDATE_VERIFIED_AS_DRAWING_NOT_TEXT",
+      "visualDescriptionEn": "An outdoor woodland scene shows trees and a small distant standing figure.",
+      "visualDescriptionAr": "مشهد خارجي لغابة تظهر فيه أشجار وشخص صغير بعيد.",
+      "originalArtistAttribution": "John McLenan (Harper 1860 book title page; individual engraving attribution needs review)",
+      "specificChapter": null,
+      "originalCaption": null,
+      "humanVisualSceneReviewCompleted": false,
+      "editorialPublicationApproved": false,
+      "targetTerritoryRightsApproved": false
+    },
+    {
+      "sourcePDFPageOneBased": 129,
+      "sourceOriginalPixelRectXYXY": [
+        292,
+        114,
+        526,
+        491
+      ],
+      "localPath": "scan-art-crops/harper1860-p129-ab276da5445b3b6b.webp",
+      "webpSha256": "ab276da5445b3b6b20c354ab18de588754948989b7f051ef717b87b4c0504283",
+      "sourcePDFSHA256": "97c7236c8f6f02d63fa2a11043402f781467ba8c57aad48556be72080f19b854",
+      "evidence": "DIRECT_VISUAL_INSPECTION_OF_ACTUAL_1860_BOOK_SCAN_CROP",
+      "sourceIllustrationType": "ORIGINAL_PERIOD_WOOD_ENGRAVING_CANDIDATE_VERIFIED_AS_DRAWING_NOT_TEXT",
+      "visualDescriptionEn": "Two women in long nineteenth-century dresses converse indoors.",
+      "visualDescriptionAr": "امرأتان ترتديان فساتين طويلة من القرن التاسع عشر تتحدثان داخل غرفة.",
+      "originalArtistAttribution": "John McLenan (Harper 1860 book title page; individual engraving attribution needs review)",
+      "specificChapter": null,
+      "originalCaption": null,
+      "humanVisualSceneReviewCompleted": false,
+      "editorialPublicationApproved": false,
+      "targetTerritoryRightsApproved": false
+    },
+    {
+      "sourcePDFPageOneBased": 157,
+      "sourceOriginalPixelRectXYXY": [
+        30,
+        39,
+        252,
+        467
+      ],
+      "localPath": "scan-art-crops/harper1860-p157-4776684e9fc17cf5.webp",
+      "webpSha256": "4776684e9fc17cf57eeccf7657913023a36cec3e9f551acb4614233d6b0810fd",
+      "sourcePDFSHA256": "97c7236c8f6f02d63fa2a11043402f781467ba8c57aad48556be72080f19b854",
+      "evidence": "DIRECT_VISUAL_INSPECTION_OF_ACTUAL_1860_BOOK_SCAN_CROP",
+      "sourceIllustrationType": "ORIGINAL_PERIOD_WOOD_ENGRAVING_CANDIDATE_VERIFIED_AS_DRAWING_NOT_TEXT",
+      "visualDescriptionEn": "A stout gentleman stands wearing a brimmed hat, bow tie and waistcoat.",
+      "visualDescriptionAr": "رجل ممتلئ الجسم يقف مرتديًا قبعة وربطة عنق وسترة.",
+      "originalArtistAttribution": "John McLenan (Harper 1860 book title page; individual engraving attribution needs review)",
+      "specificChapter": null,
+      "originalCaption": null,
+      "humanVisualSceneReviewCompleted": false,
+      "editorialPublicationApproved": false,
+      "targetTerritoryRightsApproved": false
+    },
+    {
+      "sourcePDFPageOneBased": 174,
+      "sourceOriginalPixelRectXYXY": [
+        35,
+        103,
+        267,
+        443
+      ],
+      "localPath": "scan-art-crops/harper1860-p174-253f0328b62110c4.webp",
+      "webpSha256": "253f0328b62110c4e3f30c8ce3cac52f0fb05bd7fb4d1d86087e4507130063e7",
+      "sourcePDFSHA256": "97c7236c8f6f02d63fa2a11043402f781467ba8c57aad48556be72080f19b854",
+      "evidence": "DIRECT_VISUAL_INSPECTION_OF_ACTUAL_1860_BOOK_SCAN_CROP",
+      "sourceIllustrationType": "ORIGINAL_PERIOD_WOOD_ENGRAVING_CANDIDATE_VERIFIED_AS_DRAWING_NOT_TEXT",
+      "visualDescriptionEn": "A stout gentleman sits in a chair with both hands resting on his knees.",
+      "visualDescriptionAr": "رجل ممتلئ الجسم يجلس على كرسي واضعًا يديه على ركبتيه.",
+      "originalArtistAttribution": "John McLenan (Harper 1860 book title page; individual engraving attribution needs review)",
+      "specificChapter": null,
+      "originalCaption": null,
+      "humanVisualSceneReviewCompleted": false,
+      "editorialPublicationApproved": false,
+      "targetTerritoryRightsApproved": false
+    },
+    {
+      "sourcePDFPageOneBased": 195,
+      "sourceOriginalPixelRectXYXY": [
+        24,
+        107,
+        247,
+        410
+      ],
+      "localPath": "scan-art-crops/harper1860-p195-8223dbf558cf54e2.webp",
+      "webpSha256": "8223dbf558cf54e20ed8ac82d169ae2afc1cca130509e82da86f152bdaace5ff",
+      "sourcePDFSHA256": "97c7236c8f6f02d63fa2a11043402f781467ba8c57aad48556be72080f19b854",
+      "evidence": "DIRECT_VISUAL_INSPECTION_OF_ACTUAL_1860_BOOK_SCAN_CROP",
+      "sourceIllustrationType": "ORIGINAL_PERIOD_WOOD_ENGRAVING_CANDIDATE_VERIFIED_AS_DRAWING_NOT_TEXT",
+      "visualDescriptionEn": "A man in a top hat and long coat walks away on a wooded path.",
+      "visualDescriptionAr": "رجل يرتدي قبعة عالية ومعطفًا طويلًا يسير مبتعدًا في طريق مشجر.",
+      "originalArtistAttribution": "John McLenan (Harper 1860 book title page; individual engraving attribution needs review)",
+      "specificChapter": null,
+      "originalCaption": null,
+      "humanVisualSceneReviewCompleted": false,
+      "editorialPublicationApproved": false,
+      "targetTerritoryRightsApproved": false
+    },
+    {
+      "sourcePDFPageOneBased": 232,
+      "sourceOriginalPixelRectXYXY": [
+        341,
+        94,
+        507,
+        513
+      ],
+      "localPath": "scan-art-crops/harper1860-p232-6b7d3e3338c0be45.webp",
+      "webpSha256": "6b7d3e3338c0be45790a64cbe1fd218bdff3f53dae23f3270d18e8a6ff7cfa51",
+      "sourcePDFSHA256": "97c7236c8f6f02d63fa2a11043402f781467ba8c57aad48556be72080f19b854",
+      "evidence": "DIRECT_VISUAL_INSPECTION_OF_ACTUAL_1860_BOOK_SCAN_CROP",
+      "sourceIllustrationType": "ORIGINAL_PERIOD_WOOD_ENGRAVING_CANDIDATE_VERIFIED_AS_DRAWING_NOT_TEXT",
+      "visualDescriptionEn": "A bearded gentleman in nineteenth-century clothing stands holding papers.",
+      "visualDescriptionAr": "رجل ملتحٍ بملابس تعود للقرن التاسع عشر يقف ممسكًا أوراقًا.",
+      "originalArtistAttribution": "John McLenan (Harper 1860 book title page; individual engraving attribution needs review)",
+      "specificChapter": null,
+      "originalCaption": null,
+      "humanVisualSceneReviewCompleted": false,
+      "editorialPublicationApproved": false,
+      "targetTerritoryRightsApproved": false
+    },
+    {
+      "sourcePDFPageOneBased": 236,
+      "sourceOriginalPixelRectXYXY": [
+        47,
+        23,
+        277,
+        457
+      ],
+      "localPath": "scan-art-crops/harper1860-p236-6493374a4ede2231.webp",
+      "webpSha256": "6493374a4ede22313ac5838d785e670e70e7557acfd9a6c258225ed04b0ae0b0",
+      "sourcePDFSHA256": "97c7236c8f6f02d63fa2a11043402f781467ba8c57aad48556be72080f19b854",
+      "evidence": "DIRECT_VISUAL_INSPECTION_OF_ACTUAL_1860_BOOK_SCAN_CROP",
+      "sourceIllustrationType": "ORIGINAL_PERIOD_WOOD_ENGRAVING_CANDIDATE_VERIFIED_AS_DRAWING_NOT_TEXT",
+      "visualDescriptionEn": "A stout gentleman in a tall hat stands with a walking cane.",
+      "visualDescriptionAr": "رجل ممتلئ الجسم يرتدي قبعة عالية ويقف ممسكًا عصا للمشي.",
+      "originalArtistAttribution": "John McLenan (Harper 1860 book title page; individual engraving attribution needs review)",
+      "specificChapter": null,
+      "originalCaption": null,
+      "humanVisualSceneReviewCompleted": false,
+      "editorialPublicationApproved": false,
+      "targetTerritoryRightsApproved": false
+    }
+  ]
+}
