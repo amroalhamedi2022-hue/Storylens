@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import html
 import json
 import re
 from pathlib import Path
@@ -21,6 +22,7 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "docs/literature/staging/illustrated-five-20261105"
+CURATED_SCENES = BASE / "curated-original-scene-evidence.json"
 CONFIG = {
     "treasure-island": {"chapters": 34, "heading": "roman"},
     "kidnapped": {"chapters": 30, "heading": "chapter_with_title"},
@@ -209,7 +211,7 @@ def make_map(slug: str) -> dict:
         mapped.append(row)
 
     target = CONFIG[slug]["chapters"]
-    return {
+    book = {
         "schemaVersion": 1,
         "bookId": slug,
         "source": manifest["source"]["originalFullHTMLUrl"],
@@ -230,6 +232,107 @@ def make_map(slug: str) -> dict:
         "sourceArchiveManifest": str((folder / "manifest.json").relative_to(ROOT)),
         "chapters": mapped,
     }
+    # Keep source-verified scenes overlaid *after* automatic image selection.
+    # Otherwise the nightly mapping job deletes them silently on every run.
+    return apply_curated_scenes(slug, book, original_bytes, manifest)
+
+
+def apply_curated_scenes(slug: str, book: dict, original_bytes: bytes,
+                         manifest: dict, evidence: dict | None = None) -> dict:
+    """Fail-closed preservation of genuinely source-proven art, never auto-release.
+
+    The curated file is a separate, durable input: generated maps must not be
+    their own only source of truth. Bad proofs fail CI rather than resetting to
+    blank cards or replacing a human-selected original with stock art.
+    """
+    if evidence is None:
+        evidence = json.loads(CURATED_SCENES.read_text(encoding="utf-8"))
+    if (evidence.get("schemaVersion") != 1
+            or evidence.get("releaseApproved") is not False
+            or not isinstance(evidence.get("chapterScenes"), list)
+            or len(evidence["chapterScenes"]) != 1):
+        raise ValueError("Curated source-scene evidence schema / release hold invalid")
+
+    seen_chapters = set()
+    for record in evidence["chapterScenes"]:
+        key = (record.get("bookId"), record.get("chapterOneBased"))
+        if key in seen_chapters:
+            raise ValueError("Duplicate curated chapter scene: " + str(key))
+        seen_chapters.add(key)
+        # Every accepted exception must have dedicated original-source tests.
+        # Unexpected additions cannot silently bypass proof checking on the
+        # current book or on another book in this batch.
+        if key != ("the-gilded-age", 30):
+            raise ValueError("Unreviewed curated exception: " + str(key))
+        if key[0] != slug:
+            continue
+        photo = record.get("primaryImage")
+        if not isinstance(photo, dict):
+            raise ValueError("Curated image evidence missing")
+        art = next((a for a in manifest["art"] if
+                    a.get("imageOrdinalInExactSourceDOM") == photo.get("sourceOriginalImageOrdinal")), None)
+        if art is None:
+            raise ValueError("Unknown historical image ordinal")
+        row = book["chapters"][29]
+        expected_path = str((BASE / slug / art["localPath"]).relative_to(ROOT))
+        if (row["chapterOneBased"] != 30 or row["titleEn"] != "CHAPTER XXX."
+                or art.get("nearestPriorHeading") != row["titleEn"]
+                or art.get("originalRelativeImageSource") != "images/p277.jpg"
+                or photo.get("sourceChapterHeading") != row["titleEn"]
+                or photo.get("imagePath") != expected_path
+                or photo.get("sha256") != art.get("webpSha256")
+                or photo.get("originalSourceSha256") != art.get("sourceSha256")
+                or photo.get("sourceUrl") != art.get("originalSourceUrl")
+                or photo.get("sourceURL") != art.get("originalSourceUrl")
+                or photo.get("sourceOriginalImageOrdinal") != 109
+                or photo.get("sourceBookEditionURL") != manifest["source"]["originalFullHTMLUrl"]
+                or photo.get("sourcePassage") != photo.get("sceneAnchor")
+                or not isinstance(photo.get("sourcePassage"), str)
+                or len(photo["sourcePassage"]) < 60
+                or photo.get("editoriallyApproved") is not False
+                or photo.get("publicationStatus") != "STAGING_ONLY_NOT_PUBLISHED"
+                or photo.get("rightsStatus") != "PENDING_PER_SCAN_AND_TERRITORY_REVIEW"
+                or photo.get("nonAIArt") is not True
+                or photo.get("originalSourceImageEmbeddedWithinChapter") is not True
+                or "HUMAN_SCENE_AND_RIGHTS_PENDING" not in str(photo.get("sceneVerificationStatus", ""))
+                or not isinstance(photo.get("altAr"), str) or not photo["altAr"].strip()
+                or not isinstance(photo.get("altEn"), str) or not photo["altEn"].strip()
+                or record.get("imageStatus") != "ORIGINAL_BOOK_CH30_RAIL_TRAVEL_IMAGE_CANDIDATE_UNAPPROVED"):
+            raise ValueError("Curated image not authenticated against original book metadata")
+        raw_image = (ROOT / expected_path).read_bytes()
+        if (len(raw_image) != art["webpBytes"]
+                or raw_image[:4] != b"RIFF" or raw_image[8:12] != b"WEBP"
+                or hashlib.sha256(raw_image).hexdigest() != art["webpSha256"]):
+            raise ValueError("Curated original historical image corrupted")
+        # The literal quoted scene and image filename must both occur inside
+        # Chapter XXX rather than merely elsewhere in the same full book.
+        raw_html = original_bytes.decode("utf-8")
+        image_at = raw_html.find(art["originalRelativeImageSource"])
+        chapter_at = raw_html.rfind("CHAPTER XXX.", 0, image_at)
+        next_at = raw_html.find("CHAPTER XXXI.", chapter_at + 1)
+        if (raw_html.count(art["originalRelativeImageSource"]) != 1
+                or image_at < 0 or chapter_at < 0 or next_at < 0
+                or not chapter_at < image_at < next_at):
+            raise ValueError("Curated image not situated inside original source chapter")
+        original_chapter_text = " ".join(
+            html.unescape(re.sub(r"<[^>]+>", " ", raw_html[chapter_at:next_at])).split()
+        )
+        if photo["sourcePassage"] not in original_chapter_text:
+            raise ValueError("Curated scene quotation not literal original Chapter XXX prose")
+        if any(c["chapterOneBased"] != 30 and c["primaryImage"] and
+               (c["primaryImage"]["imagePath"] == photo["imagePath"] or
+                c["primaryImage"]["sha256"] == photo["sha256"])
+               for c in book["chapters"]):
+            raise ValueError("Curated image already assigned to another chapter")
+        row["primaryImage"] = dict(photo)
+        row["imageStatus"] = record["imageStatus"]
+
+    book["localCandidateChapters"] = sum(bool(c["primaryImage"]) for c in book["chapters"])
+    book["missingCandidateChapters"] = book["chapterCount"] - book["localCandidateChapters"]
+    # Do not change book or individual-image release flags based on curation.
+    if book["releaseApproved"] is not False or book["readyForUICards"] != 0:
+        raise ValueError("Original chapter scene was incorrectly released")
+    return book
 
 
 def main() -> None:

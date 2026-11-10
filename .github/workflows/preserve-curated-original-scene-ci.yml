@@ -1,0 +1,36 @@
+name: Literature - preserve proved chapter art against nightly regeneration
+on:
+  pull_request:
+    paths:
+      - 'tools/map_archived_five_chapter_art.py'
+      - 'tools/test_curated_original_scene_preservation.py'
+      - 'tools/test_gilded_age_ch30_original_plate.py'
+      - 'docs/literature/staging/illustrated-five-20261105/curated-original-scene-evidence.json'
+      - 'docs/literature/staging/illustrated-five-20261105/**/chapter-image-map.json'
+      - '.github/workflows/preserve-curated-original-scene-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/map_archived_five_chapter_art.py'
+      - 'tools/test_curated_original_scene_preservation.py'
+      - 'docs/literature/staging/illustrated-five-20261105/curated-original-scene-evidence.json'
+      - '.github/workflows/preserve-curated-original-scene-ci.yml'
+permissions:
+  contents: read
+jobs:
+  verify-immutable-original-plate-scene:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install verified original-edition HTML parser only
+        run: python -m pip install 'beautifulsoup4==4.14.2'
+      - name: Audit exact historical chapter reconstruction and 15 false-proof attack cases
+        run: |
+          python tools/test_curated_original_scene_preservation.py
+          python tools/test_gilded_age_ch30_original_plate.py
+          python tools/map_archived_five_chapter_art.py --verify
+          python tools/report_chapter_art_progress.py
