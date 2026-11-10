@@ -534,7 +534,22 @@ function installPageTurn(){
  // below is only a compatibility fallback; never install both sets of handlers.
  if(window.LinguaPageCurl){
   const curlStory=state.story,curlChapter=state.chapter;
-  let boundaryPreview=null;
+  let boundaryPreview=null,blankUnder=null;
+  // The last half of a short chapter may have no further printed paper side.
+  // Never duplicate the existing next-page ink to invent an underlay: instead
+  // supply a temporary real, empty page with the same paper material. It is
+  // removed on turn commit/cancel and is never added to saved page counters.
+  function blankUnderPage(){
+   blankUnder?.remove();
+   const under=document.createElement('section');
+   under.className='lt-book-page lt-curl-blank-under';
+   under.inert=true;under.setAttribute('aria-hidden','true');
+   sentenceBox.appendChild(under);blankUnder=under;return under;
+  }
+  function clearCurlPreviews(){
+   boundaryPreview?.remove();boundaryPreview=null;
+   blankUnder?.remove();blankUnder=null;
+  }
   function boundaryPage(delta){
    boundaryPreview?.remove();
    const chapter=state.story.chapters[state.chapter+delta];
@@ -564,7 +579,7 @@ function installPageTurn(){
     // In a facing spread: forward verso=target and under=target+1;
     // backward verso=target+1 and under=target. Do not create a fake page.
     const beneathIndex=delta>0?target+1:target+(spread===2?0:-1);
-    const under=boundary?boundaryPage(delta):(pages[beneathIndex]||null);
+    const under=boundary?boundaryPage(delta):(pages[beneathIndex]||blankUnderPage());
     const candidateBack=boundary?null:pages[target+(spread===2&&delta<0?1:0)];
     return {page:pages[moving],under,
      back:candidateBack===under?null:candidateBack,
@@ -572,10 +587,10 @@ function installPageTurn(){
    },
    commit(delta,source){
     if(state.page!=='reader'||state.story!==curlStory||state.chapter!==curlChapter||!sentenceBox.isConnected)return false;
-    move(delta,source);boundaryPreview?.remove();boundaryPreview=null;return true;
+    move(delta,source);clearCurlPreviews();return true;
    }
   });
-  sentenceBox.addEventListener('lingua:turncancel',()=>{boundaryPreview?.remove();boundaryPreview=null;});
+  sentenceBox.addEventListener('lingua:turncancel',clearCurlPreviews);
   // Public bridge for native Back and immersive shell integration.
   window.LinguaReaderCurl=curl;
   if(spread===2){
