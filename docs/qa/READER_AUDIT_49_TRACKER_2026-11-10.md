@@ -71,9 +71,9 @@
 | 42 | P2 | المكتبة الظاهرة قليلة | OPEN · لم ينفذ إصلاح |
 | 43 | P2 | فراغات المكتبة الرئيسية | OPEN · لم ينفذ إصلاح |
 | 44 | P2 | قائمة جانبية مزدحمة | OPEN · لم ينفذ إصلاح |
-| 45 | P1 | تسميات الإعدادات مزدحمة | OPEN · لم ينفذ إصلاح |
-| 46 | P1 | قص مجموعات الإعدادات | OPEN · لم ينفذ إصلاح |
-| 47 | P2 | حجم الخط والخيارات | OPEN · لم ينفذ إصلاح |
+| 45 | P1 | تسميات الإعدادات مزدحمة | CODE FIXED · Grid يفصل النصوص عن محددات الخيارات |
+| 46 | P1 | قص مجموعات الإعدادات | CODE FIXED · ورقة إعدادات قابلة للتمرير مع تذييل متاح |
+| 47 | P2 | حجم الخط والخيارات | PARTIAL · تحسين التفاف العناوين ومناطق التفاعل |
 | 48 | P2 | وميض شاشة فاتحة عند فتح التطبيق | OPEN · لم ينفذ إصلاح |
 | 49 | P1 | تفاوت تباين الثيمات | OPEN · لم ينفذ إصلاح |
 
@@ -84,7 +84,7 @@
 - **#12–14:** outer-paper edge hit testing, accurate full next-chapter paper preview and 22-facet DOM performance on real device require targeted regression and performance QA.
 - **#33–34:** Android insets and rotation loop must be tested on actual hardware; do not mistake video letterboxing for an app bug. Width-triggered semantic reader reflow already exists on main, so no duplicate resize listener added.
 - **#37, #41, #42:** photo and book availability depend on independently cleared content; never turn an archived candidate into a shipped thumbnail without rights/editorial approval.
-- **#38–49:** remaining library, settings and gallery layout work stays OPEN pending direct screenshots and source-level analysis.
+- **#38–49:** settings overlap/scroll (#45–47) now code-patched. Remaining library, content and theme acceptance still OPEN pending real device screens.
 
 ### Release gates (all must be verified)
 
