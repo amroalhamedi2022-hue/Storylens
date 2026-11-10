@@ -1,0 +1,36 @@
+name: Lingua Tales - nine original 1912 pictures placed in five real Doyle source chapters
+on:
+  pull_request:
+    paths:
+      - 'tools/apply_lost_world_1912_wikisource_chapter_art.py'
+      - 'tools/map_doyle_four_original_chapters.py'
+      - 'tools/test_doyle_original_chapter_maps.py'
+      - 'tools/test_lost_world_1912_wikisource_illustration_map.py'
+      - 'docs/literature/staging/the-lost-world/chapter-image-map.json'
+      - 'docs/literature/staging/the-lost-world/original-1912-wikisource-image-evidence.json'
+      - 'tools/report_chapter_art_progress.py'
+      - '.github/workflows/lost-world-1912-wikisource-chapter-art-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/apply_lost_world_1912_wikisource_chapter_art.py'
+      - 'docs/literature/staging/the-lost-world/chapter-image-map.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  original-1912-artwork-local-binary-and-source-chapter-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pin ALL 57 original English Doyle chapters and their new source-backed images
+        run: python tools/map_doyle_four_original_chapters.py --verify
+      - name: Test nine distinct real images, five original chapter placements and four additional illustrations
+        run: python tools/test_lost_world_1912_wikisource_illustration_map.py
+      - name: Verify real artwork SHA-256 and zero releases in central progress auditor
+        run: python tools/report_chapter_art_progress.py
