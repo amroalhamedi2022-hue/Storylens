@@ -6,12 +6,18 @@ on:
       - 'tools/export_sign_four_original_source_for_art.py'
       - 'tools/gemini_suggest_sign_four_plate_scenes.py'
       - 'tools/test_sign_four_gemini_original_pipeline.py'
+      - 'tools/reconcile_sign_four_historic_caption_conflict.py'
+      - 'tools/test_sign_four_caption_conflict_gate.py'
+      - 'docs/literature/staging/sign-four-townsend-1903-scene-reviews/**'
       - '.github/workflows/sign-four-gemini-original-scene-review.yml'
   pull_request:
     paths:
       - 'tools/export_sign_four_original_source_for_art.py'
       - 'tools/gemini_suggest_sign_four_plate_scenes.py'
       - 'tools/test_sign_four_gemini_original_pipeline.py'
+      - 'tools/reconcile_sign_four_historic_caption_conflict.py'
+      - 'tools/test_sign_four_caption_conflict_gate.py'
+      - 'docs/literature/staging/sign-four-townsend-1903-scene-reviews/**'
       - '.github/workflows/sign-four-gemini-original-scene-review.yml'
   schedule:
     - cron: '43 5,17 * * *'
@@ -38,7 +44,12 @@ jobs:
           python tools/export_sign_four_original_source_for_art.py --check
           python tools/gemini_suggest_sign_four_plate_scenes.py --self-test
           python tools/test_sign_four_gemini_original_pipeline.py
+          python tools/test_sign_four_caption_conflict_gate.py
+          python tools/reconcile_sign_four_historic_caption_conflict.py --check
           python tools/test_original_quote_rejection_nonblocking.py
+      - name: Quarantine caption-vs-AI chapter contradictions before new model calls
+        if: github.event_name != 'pull_request'
+        run: python tools/reconcile_sign_four_historic_caption_conflict.py --write
       - name: Actually see up to 4 historical 1903 images with Gemini and check against authentic original Doyle prose
         if: github.event_name != 'pull_request'
         env:
@@ -46,6 +57,9 @@ jobs:
         run: |
           python tools/gemini_suggest_sign_four_plate_scenes.py --pending-count
           python tools/gemini_suggest_sign_four_plate_scenes.py --max-new 4
+      - name: Independently quarantine new chapter conflicts against actual caption-to-text leads
+        if: ${{ always() && github.event_name != 'pull_request' }}
+        run: python tools/reconcile_sign_four_historic_caption_conflict.py --write
       - name: Commit only traceable NON-PUBLISHABLE original image/prose suggestions
         if: ${{ always() && github.event_name != 'pull_request' }}
         shell: bash
