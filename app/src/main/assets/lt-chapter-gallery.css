@@ -590,7 +590,7 @@ dialog.lt-chapter-gallery::backdrop{
   font-size:10px;line-height:1.25;
  }
  .lt-chapter-gallery-locate{
-  min-height:32px;max-width:48%;padding:4px 8px;
+  min-height:36px;max-width:48%;padding:5px 8px;
   font-size:10px;
  }
  .lt-chapter-gallery-list-view .lt-chapter-tile-visual{
