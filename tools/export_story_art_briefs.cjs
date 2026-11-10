@@ -24,7 +24,7 @@ function serialise(queue){
   for(const scene of queue.queue){
    const source=scene.chapterOneBased+' / paragraph '+(scene.afterParagraph+1);
    header.push('=== '+scene.sceneId+' | chapter '+source+' ===');
-   header.push('Original verified anchor: '+scene.sourceExcerpt);
+   header.push('Source (original text) — verified anchor: '+scene.sourceExcerpt);
    header.push('Original paragraph SHA256: '+scene.sourceParagraphSha256);
    header.push('English alt: '+scene.altEn);
    header.push('Arabic alt: '+scene.altAr);
