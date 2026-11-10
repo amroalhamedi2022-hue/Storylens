@@ -66,9 +66,12 @@ const simulated={pages:Array.from({length:5},(_,i)=>({id:i})),
  boundaryPage:()=>({id:'boundary'}),curlStory:{id:'book'},curlChapter:0};
 vm.runInNewContext(getTurnBody+'\nglobalThis.getTurn=getTurn;',simulated);
 const portrait=simulated.getTurn(1);
-assert.equal(portrait.under,simulated.pages[1]);
-assert.equal(portrait.back,null,
- 'portrait verso must not clone exposed page ink a second time');
+assert.equal(portrait.under,simulated.pages[2],
+ 'beneath the turned leaf is the subsequent paper side');
+assert.equal(portrait.back,simulated.pages[1],
+ 'portrait fold rear shows the actual next page, not a blank ghost');
+assert.notEqual(portrait.under,portrait.back,
+ 'moving verso and underlying sheet cannot duplicate visible text');
 simulated.spread=2;simulated.current=0;
 const landscape=simulated.getTurn(1);
 assert.equal(landscape.under,simulated.pages[3]);
