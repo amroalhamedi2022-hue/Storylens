@@ -8,7 +8,7 @@
 
 - Locally mapped chapter candidates: **289**.
 - Chapter cards with both territorial rights and editorial approval: **0**.
-- Verified historical art binaries retained in audited archives (all editions): **1271**; NOT necessarily chapter-aligned.
+- Verified historical art binaries retained in audited archives (all editions): **1284**; NOT necessarily chapter-aligned.
 - Authentic unassigned Arabian Nights original art files (Dulac 1907 and Groß 1838–39): **35**; original-edition pictures are NOT approved for Burton/Arabic reader pages.
 
 ## Book-by-book audit
