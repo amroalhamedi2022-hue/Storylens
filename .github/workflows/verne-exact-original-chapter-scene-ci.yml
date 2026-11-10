@@ -1,4 +1,4 @@
-name: Literature - five authenticated original 1873 Verne chapter scenes and historical cover
+name: Literature - eight authenticated original 1873 Verne chapter scenes and historical cover
 on:
   pull_request:
     paths:
@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify five real chapter scenes, one title plate, all original Towle prose, SHA256 and 12 tamper cases
+      - name: Verify eight real chapter scenes, one title plate, all original Towle prose, SHA256 and 12 tamper cases
         run: |
           python tools/test_verne_original_french_caption_and_towle_scene.py
           python tools/report_chapter_art_progress.py

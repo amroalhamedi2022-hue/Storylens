@@ -517,7 +517,7 @@ def generate() -> dict:
         allowed[original_path] = (item["sourceSha256"], item["chapterOneBased"])
     # Strict original French print-caption + exact English scene allowlist.
     # The 57 downloaded Commons images themselves are NOT mapped or approved:
-    # only these independently image-inspected five actual narrative scenes are
+    # only these independently image-inspected eight actual narrative scenes are
     # checked against their complete original Towle chapter files. Never treat
     # archive membership or an AI-suggested quotation as chapter-card evidence.
     commons_plates = STAGING / "verne-commons-period-plates"
@@ -533,6 +533,12 @@ def generate() -> dict:
              "knocking down two of his long-gowned adversaries with his fists and a vigorous application of his toes"),
         12: ("19", "Cette infortunée ne paraissait faire aucune résistance",
              "the wretched creature did not seem to be making any resistance"),
+        14: ("23", "Des bandes d’Indous des deux sexes",
+             "groups of Indians, despite the advanced season and chilly air, were performing solemnly their pious ablutions"),
+        16: ("25", "Elle lui témoignait la plus vive reconnaissance",
+             "Aouda became better acquainted with her protector, and constantly gave evidence of her deep gratitude for what he had done"),
+        19: ("29", "Passepartout remarqua un certain nombre d’indigènes",
+             "Passepartout noticed in the crowd a number of the natives who seemed very old and were dressed in yellow"),
     }
     verne_map_data = jload(MAP)
     for chapter_num, (ordinal, french_caption, literal_source) in verified_original_scenes.items():
