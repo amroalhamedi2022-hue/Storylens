@@ -1,0 +1,28 @@
+name: Literature - eight real Townsend historical image bilingual visual descriptions
+on:
+  pull_request:
+    paths:
+      - 'docs/literature/staging/sign-four-townsend-1903-period-plates/eight-illustration-bilingual-visual-inventory.json'
+      - 'tools/test_sign_four_bilingual_visual_inventory.py'
+      - '.github/workflows/townsend-eight-visual-descriptions-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/literature/staging/sign-four-townsend-1903-period-plates/eight-illustration-bilingual-visual-inventory.json'
+      - 'tools/test_sign_four_bilingual_visual_inventory.py'
+permissions:
+  contents: read
+jobs:
+  verify-eight-not-yet-chapter-matched-real-images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit eight original SHA-verified bilingual visual observations, 11 rejection cases and three existing textual leads
+        run: |
+          python tools/test_sign_four_bilingual_visual_inventory.py
+          python tools/test_sign_four_townsend_scene_lead.py
+          python tools/test_sign_four_visual_source_leads.py
