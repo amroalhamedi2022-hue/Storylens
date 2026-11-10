@@ -2,7 +2,7 @@ name: Lingua Tales • Story Art Pilot
 on:
   push:
     branches: ['feature/story-art-*']
-    paths: ['tools/story_art_pilot.cjs','tools/test_story_art_pilot.cjs','tools/generate_story_art_openai.cjs','tools/test_story_art_openai.cjs','tools/package_generated_story_art.py','tools/test_generated_art_packaging.py','app/src/main/assets/lt-generated-art-registry.js','docs/art-generation/**','.github/workflows/story-art-pilot.yml']
+    paths: ['tools/story_art_pilot.cjs','tools/test_story_art_pilot.cjs','tools/generate_story_art_openai.cjs','tools/test_story_art_openai.cjs','tools/generated-art-reader.test.cjs','app/src/main/assets/reader-experience.js','app/src/main/assets/index.html','tools/package_generated_story_art.py','tools/test_generated_art_packaging.py','app/src/main/assets/lt-generated-art-registry.js','docs/art-generation/**','.github/workflows/story-art-pilot.yml']
   pull_request:
     branches: [main]
     paths: ['tools/story_art_pilot.cjs','tools/test_story_art_pilot.cjs','tools/generate_story_art_openai.cjs','tools/test_story_art_openai.cjs','docs/art-generation/**','.github/workflows/story-art-pilot.yml']
@@ -26,6 +26,7 @@ jobs:
           node tools/test_story_art_pilot.cjs
           node --check tools/generate_story_art_openai.cjs
           node tools/test_story_art_openai.cjs
+          node tools/generated-art-reader.test.cjs
           node tools/generate_story_art_openai.cjs --scene verne-ch01-new-servant
           python3 tools/package_generated_story_art.py --check
           python3 tools/test_generated_art_packaging.py
