@@ -130,6 +130,36 @@ class OriginalFrenchIllustrationsVsFullEnglishTowle(unittest.TestCase):
     def test_actual_five_distinct_original_scenes_and_pending_rights(self):
         self.assertEqual(verify(self.data, self.art, self.sources), 17)
 
+    def test_period_illustrated_title_page_is_a_distinct_unapproved_cover(self):
+        cover_path = STAGING / "verne-chapter-cards/original-historical-cover-candidate.json"
+        cover = json.loads(cover_path.read_text("utf-8"))
+        source = next(x for x in self.art["images"] if
+                      x["wikiFile"].endswith("Neuville and Benett 02.jpg"))
+        path = "docs/literature/staging/verne-commons-period-plates/" + source["localPath"]
+        image_bytes = (ROOT / path).read_bytes()
+        self.assertEqual(cover["schemaVersion"], 1)
+        self.assertEqual(cover["bookId"], self.data["bookId"])
+        self.assertEqual(cover["coverSourceType"],
+                         "ORIGINAL_PERIOD_ILLUSTRATED_TITLE_ART_NOT_PROVEN_HARDBACK_FRONT_COVER")
+        self.assertEqual(cover["imagePath"], path)
+        self.assertEqual(cover["sha256"], source["webpSha256"])
+        self.assertEqual(cover["webpBytes"], len(image_bytes))
+        self.assertEqual(hashlib.sha256(image_bytes).hexdigest(), cover["sha256"])
+        self.assertEqual(cover["sourceURL"], source["commonsPage"])
+        self.assertEqual(cover["originalScanMetadataSha1"],
+                         source["originalCommonsSHA1MetadataOnly"])
+        self.assertFalse(cover["humanEditorialApproved"])
+        self.assertFalse(cover["territorialRightsCleared"])
+        self.assertEqual(cover["sourceScanRightsStatus"],
+                         "PENDING_INDIVIDUAL_SCAN_AND_TERRITORY_REVIEW")
+        self.assertEqual(cover["publicationStatus"], "STAGING_ONLY_NOT_PUBLISHED")
+        self.assertTrue(cover["originalColourUnchanged"])
+        self.assertIn("Tour du monde", cover["originalPrintTitleFr"])
+        self.assertTrue(cover["altAr"] and cover["altEn"])
+        primaries = [x["primaryImage"] for x in self.data["chapters"] if x["primaryImage"]]
+        self.assertNotIn(cover["sha256"], {p["sha256"] for p in primaries})
+        self.assertNotIn(cover["imagePath"], {p["imagePath"] for p in primaries})
+
     def test_original_chapter_image_rejections_are_strict(self):
         changes = {
             "swap-original-art": lambda d: d["chapters"][3]["primaryImage"].__setitem__(
