@@ -555,13 +555,24 @@
     {
       "bookId": "kalila-arabic-wikisource",
       "title": "Kalila wa Dimna",
-      "sourceState": "older staged work; chapter-card coverage audit pending",
+      "sourceState": "19 byte-verified Arabic source sections (4 intro, 15 narrative); 3 actual c.1220 original-colour manuscript folios source-scene matched (geese/tortoise, crow/mouse, crow council); remaining 14 folios, full contextual English and all territorial/human release approval pending",
       "chapterCount": null,
       "localCandidateChapters": 0,
       "readyForUICards": 0,
       "missingImageChapters": null,
       "missingReadyChapters": null,
-      "archivedLocalHistoricArt": 17
+      "archivedLocalHistoricArt": 17,
+      "sourceMatchedHistoricFolioCandidatesNotApproved": 3,
+      "sourceUnassignedOriginalColourFolioFiles": 14,
+      "originalColourArchiveVisualDuplicateCropGroups": 4,
+      "originalColourDistinctScenesUpperBoundFromVerifiedCrops": 13,
+      "historicBookCoverCandidateFilesNotApproved": 1,
+      "bookCoverReadyForPublication": false,
+      "originalArabicSourceSectionCountNotChapterCardCount": 19,
+      "sourcePrefatorySectionCount": 4,
+      "sourceNarrativeSectionCount": 15,
+      "sourceRedundantEmptyH2Headings": 1,
+      "sourceEditionIntegrity": "UPSTREAM_GIT_BLOB_SHA1_AND_EXACT_SECTION_BYTE_RANGES"
     },
     {
       "bookId": "the-woman-in-white",
