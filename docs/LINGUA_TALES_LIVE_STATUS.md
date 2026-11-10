@@ -1,3 +1,9 @@
+## 2026-11-10 — CHG-05 illustration/reader resilience merged in main
+- New source-arrangement work merged via [PR #67](https://github.com/amroalhamedi2022-hue/Storylens/pull/67), commit `68974e426eb05a1e2d4bc1619db8b6fd1facf299`. Prevent repeated same-book activation stacking modal/history, and never retry a missing local chapter image across reopened gallery/reader-hero during one app session. Numbered chapter fallback and original-colour provenance remain.
+- Real Chromium four-screen geometry, touch targets and image rail acceptance https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42773792294 **SUCCESS**. The QA surfaced a real clipped 745×303 landscape rail, fixed CSS rather than weakening assertion. Source/book reader layout and original curl untouched.
+- Full Android CI https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42773890630 **FAILED** at unrelated existing Wen Glass optical gesture step, *after* Android assembly and existing chapter/reader browser checks passed. No signed update, no physical device testing claimed.
+- Latest original source art dashboard: **288 mapped candidate chapter images, 0 release-approved, 0 images in packaged UI registry**; Verne 12/37 candidates, zero cleared. Other chat responsible for sourcing/rights/translation. Full up-to-date status in `docs/CHAPTER_GALLERY_PROGRESS_CURRENT.json`.
+
 ## 2026-11-07 — CHG-02 stable reader/gallery UI integration MERGED
 - Chapter search AR/EN, 36-card batches, accurate progress, keyboard/RTL, image in real reader hero, Android Back safety and original text were already on main, confirmed by byte comparisons. No duplicate source code commits made.
 - Last safe missing work merged via PR #52, commit af7c15dd6c04c76e63c1d5c00fcf5a400565c3a7: signed-off per-picture edition/license/hash, duplicate and revoked source file gates, isolated true phone/tablet Chromium screenshots, and live read-only source progress generator.
