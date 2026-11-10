@@ -30,3 +30,15 @@ python3 tools/test_generated_art_packaging.py
 ```
 
 Release manifest `docs/art-generation/approved/generated-art-release.json` is **empty and fail-closed**. A source-verified output is still not approved until editorial, owner, image usage rights and territorial review all pass; a scene ID + matching exact English paragraph SHA + original WebP bytes SHA are mandatory. A revoked packaged image cannot silently linger in the APK. The standalone registry `lt-generated-art-registry.js` is also empty; **no live reader integration or Android release** in this branch.
+
+## Third working component — opt-in API image producer (NO API calls by CI)
+The source-checked four-prompt queue now has an actual OpenAI Images API adapter, `tools/generate_story_art_openai.cjs`. Verified against current OpenAI API documentation on 10 Nov 2026. Supports `gpt-image-2.6-flare` for trial runs or `gpt-image-2.6-sunburst` for detailed scenes, one image/request. Without references it uses `/v1/images/generations`. With a **locally saved, SHA-verified, rights-approved reference manifest** in `docs/art-generation/visual-bibles/`, it uses `/v1/images/edits` with 1–4 data-URL images and a continuous character/style bible.
+
+```bash
+node tools/generate_story_art_openai.cjs --scene verne-ch01-new-servant
+# Paid, explicit ONE scene only; use a secured environment variable, NEVER commit the key.
+OPENAI_API_KEY=... node tools/generate_story_art_openai.cjs --scene verne-ch01-new-servant --execute --confirm-paid
+node tools/test_story_art_openai.cjs
+```
+
+**Hard controls:** dry run is the default and needs no key; BOTH paid flags required; only one image at a time; no overwrite of review output; never approves or packages its own output. Real API results and SHA256 + source hashes land only in `docs/art-generation/review/<bookId>/`, **not Android**. Do not use paid API without an account budget/owner consent. No key is stored or sent by Actions. If historical references are included, each must have exact local bytes, SHA256, source credit and explicit permission for AI-reference use; absence of proof blocks reference submission. This is executable code, but no paid API call has been run in this chat.
