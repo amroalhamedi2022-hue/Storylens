@@ -1,3 +1,6 @@
+## 2026-11-10 — Review-image regression correction (PR #72)
+- After adding 5th genuinely source-anchored scene, existing test still expected four unique source SHA values and used stale position indices. Fixed assertions to require five unique paragraphs and target the correct chapter-II scene. No images/reader/permissions altered. Re-run exact-head CI before claiming pass.
+
 ## 2026-11-10 — REAL review-only AI image binaries committed (PR #72, UNAPPROVED)
 - TWO ACTUAL SINGLE-SCENE AI illustrations for Jules Verne Chapter I stored in Git as FOUR physically real WebP binaries: 1536×1024 full-size and 960×640 mobile renditions, total checked image bytes **1,780,170**. The new checked-in `candidate-manifest.json` has real per-image SHA256/bytes, authentic chapter/paragraph and original-English SHA256, bilingual alt, AI-only provenance and explicit rejection flags.
 - Saville Row neighborhood art: source paragraph 0, building identity not historically verified; human review required. Fogg reading in Reform Club: source paragraph 11, **rejected for clean-shaven/dark hair mismatch** with source Fogg description; must regenerate before any release. The source-grounded prompt plan now includes 5 distinct candidate scenes. Gallery/story reader images and original historical art remain unchanged: **0 released AI images, 0 published AI artifacts, no APK**.
