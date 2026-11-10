@@ -106,6 +106,10 @@ assert.match(css,/\.lt-settings-sheet \.lt-font-setting>select/,
  'mobile settings controls respect available row width');
 assert.match(css,/overflow-y:auto!important;overflow-x:hidden!important/,
  'settings preserve scroll and prevent clipping of later controls');
+assert.match(gallery,/dialog\.lt-chapter-gallery \.lt-chapter-gallery-sheet\{[\s\S]*?overflow:visible!important/,
+ 'chapter gallery sheet can expand vertically beyond a compact viewport');
+assert.match(gallery,/min-height:max-content!important/,
+ 'horizontal chapter rail must never clip its cards below its own height');
 assert.match(gallery,/dialog\.lt-chapter-gallery \.lt-chapter-tile \*/,
  'nonselectable chapter tiles preserve separate editable search');
 console.log('PASS: audit-49 title-space budget, real chapter sheet, distinct curl ink, spread and gallery guards');
