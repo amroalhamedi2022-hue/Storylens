@@ -2,9 +2,13 @@
   "schemaVersion": 1,
   "originVerifiedPDFSHA256": "97c7236c8f6f02d63fa2a11043402f781467ba8c57aad48556be72080f19b854",
   "historicalArtworkApproval": false,
-  "sourceArtworkCountBeforeHumanVisualCuration": 8,
+  "sourceArtworkCountBeforeHumanVisualCuration": 74,
   "sheets": [
-    "docs/literature/staging/woman-white-mclenan-1860-original-scan/visual-review-only/contact-001.webp"
+    "docs/literature/staging/woman-white-mclenan-1860-original-scan/visual-review-only/contact-001.webp",
+    "docs/literature/staging/woman-white-mclenan-1860-original-scan/visual-review-only/contact-002.webp",
+    "docs/literature/staging/woman-white-mclenan-1860-original-scan/visual-review-only/contact-003.webp",
+    "docs/literature/staging/woman-white-mclenan-1860-original-scan/visual-review-only/contact-004.webp",
+    "docs/literature/staging/woman-white-mclenan-1860-original-scan/visual-review-only/contact-005.webp"
   ],
   "neverCountTheseFilesAsHistoricalArt": true
 }
