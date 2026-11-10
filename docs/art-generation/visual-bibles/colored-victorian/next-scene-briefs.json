@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "classification": "SIX_REAL_SOURCE_ANCHORED_PROMPTS_NOT_GENERATED",
+  "sourceLanguage": "English original; Arabic packaged translation",
+  "style": "Lush nineteenth-century oil-paint and fine engraving hybrid, warm parchment, antique gold, copper, blue and teal. A SINGLE chapter-specific scene, no text labels or multi-panel collages.",
+  "characters": {
+    "phileasFogg": "Calm gentleman around forty. BEARDED, with LIGHT hair and LIGHT whiskers as described in the prose. Conservative 1872 English suit.",
+    "passepartout": "Thirty-year-old French valet, brown slightly tousled hair, lively, practical 1872 servant clothing."
+  },
+  "negative": "No decorative hot-air-balloon itinerary; do not mix scenes from different chapters; no modern objects, fabricated historical source credit or route claim.",
+  "scenes": [
+    {
+      "id": "ch01-saville-street",
+      "chapterOneBased": 1,
+      "afterParagraph": 0,
+      "sourceExcerpt": "Mr. Phileas Fogg lived, in 1872, at No. 7, Saville Row",
+      "description": "Saville Row townhouse exterior, London 1872; do not claim an authenticated building facade.",
+      "generated": false,
+      "editoriallyApproved": false,
+      "releaseApproved": false
+    },
+    {
+      "id": "ch01-new-servant",
+      "chapterOneBased": 1,
+      "afterParagraph": 19,
+      "sourceExcerpt": "A rap at this moment sounded on the door of the cosy apartment",
+      "description": "New servant Passepartout bows before seated Fogg as James Forster introduces him.",
+      "generated": false,
+      "editoriallyApproved": false,
+      "releaseApproved": false
+    },
+    {
+      "id": "ch02-clock-schedule",
+      "chapterOneBased": 2,
+      "afterParagraph": 8,
+      "sourceExcerpt": "He suddenly observed, hung over the clock, a card",
+      "description": "Passepartout alone examines the daily schedule card above the clock in Fogg's house.",
+      "generated": false,
+      "editoriallyApproved": false,
+      "releaseApproved": false
+    },
+    {
+      "id": "ch03-wager",
+      "chapterOneBased": 3,
+      "afterParagraph": 58,
+      "sourceExcerpt": "I will bet twenty thousand pounds against anyone who wishes",
+      "description": "Reform Club gentlemen and Fogg discuss his wager; no railway travel in this scene.",
+      "generated": false,
+      "editoriallyApproved": false,
+      "releaseApproved": false
+    },
+    {
+      "id": "ch04-packing",
+      "chapterOneBased": 4,
+      "afterParagraph": 18,
+      "sourceExcerpt": "He mechanically set about making the preparations for departure.",
+      "description": "Passepartout packs for his sudden journey in his London quarters.",
+      "generated": false,
+      "editoriallyApproved": false,
+      "releaseApproved": false
+    },
+    {
+      "id": "ch04-guide",
+      "chapterOneBased": 4,
+      "afterParagraph": 20,
+      "sourceExcerpt": "Under his arm might have been observed a red-bound copy of Bradshaw’s",
+      "description": "Fogg holds his red-bound Bradshaw railway guide and carries a carpetbag before setting off.",
+      "generated": false,
+      "editoriallyApproved": false,
+      "releaseApproved": false
+    }
+  ]
+}

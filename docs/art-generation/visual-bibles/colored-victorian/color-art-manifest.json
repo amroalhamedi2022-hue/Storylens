@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "classification": "MODERN_AI_COLOR_STYLE_REFERENCE_ONLY",
+  "releaseApproved": false,
+  "approvedAsChapterArt": false,
+  "historicalOriginal": false,
+  "sourceSceneAccurate": false,
+  "images": [
+    {
+      "name": "golden-world-route.webp",
+      "sha256": "fe516acd77f610bb108592b38b9ea5372131600880374a2625b2b0a24580f8f5",
+      "bytes": 529014,
+      "width": 1536,
+      "height": 1024,
+      "warning": "Decorative balloon and travel route are symbolic, NOT source-grounded journey events.",
+      "generated": true,
+      "forSceneReferenceOnly": true,
+      "editoriallyApproved": false,
+      "ownerImageApproved": false,
+      "distributionReviewApproved": false,
+      "releaseApproved": false
+    },
+    {
+      "name": "london-club-and-journey.webp",
+      "sha256": "768b917270b577e278e3efbe319123183843b9b1ca7371a769a0dfa0b09d3816",
+      "bytes": 431856,
+      "width": 1536,
+      "height": 1024,
+      "warning": "Fogg identity inaccurate; collage events are not verified individual chapter scenes.",
+      "generated": true,
+      "forSceneReferenceOnly": true,
+      "editoriallyApproved": false,
+      "ownerImageApproved": false,
+      "distributionReviewApproved": false,
+      "releaseApproved": false
+    },
+    {
+      "name": "twelve-panel-color-gallery.webp",
+      "sha256": "9478ca97799d02cb513add0b0a91c46905c183e46b83f0ccdde5908975969bb8",
+      "bytes": 434428,
+      "width": 1536,
+      "height": 1024,
+      "warning": "Chapters I–II heading incorrectly contains later Chapter III–IV events; visual inspiration only.",
+      "generated": true,
+      "forSceneReferenceOnly": true,
+      "editoriallyApproved": false,
+      "ownerImageApproved": false,
+      "distributionReviewApproved": false,
+      "releaseApproved": false
+    }
+  ]
+}
