@@ -515,7 +515,93 @@ def generate() -> dict:
         if original_path in allowed:
             raise ValueError("Duplicate Verne historic source image path")
         allowed[original_path] = (item["sourceSha256"], item["chapterOneBased"])
-    for row in jload(MAP)["chapters"]:
+    # Strict original French print-caption + exact English scene allowlist.
+    # The 57 downloaded Commons images themselves are NOT mapped or approved:
+    # only these independently image-inspected five actual narrative scenes are
+    # checked against their complete original Towle chapter files. Never treat
+    # archive membership or an AI-suggested quotation as chapter-card evidence.
+    commons_plates = STAGING / "verne-commons-period-plates"
+    commons_manifest = jload(commons_plates / "manifest.json")
+    verified_original_scenes = {
+        4: ("07", "Une pauvre mendiante",
+            "a poor beggar-woman, with a child in her arms, her naked feet smeared with mud"),
+        8: ("11", "« Ma montre ! une montre de famille ! »",
+            "My watch? A family watch, monsieur, which has come down from my great-grandfather!"),
+        9: ("12", "Il faisait escale à Steamer-Point",
+            "the next day they put in at Steamer Point, northwest of Aden harbour, to take in coal"),
+        10: ("15", "Il renversa deux de ses adversaires",
+             "knocking down two of his long-gowned adversaries with his fists and a vigorous application of his toes"),
+        12: ("19", "Cette infortunée ne paraissait faire aucune résistance",
+             "the wretched creature did not seem to be making any resistance"),
+    }
+    verne_map_data = jload(MAP)
+    for chapter_num, (ordinal, french_caption, literal_source) in verified_original_scenes.items():
+        originals = [image for image in commons_manifest["images"] if
+                     image["wikiFile"].endswith("Neuville and Benett " + ordinal + ".jpg")]
+        if len(originals) != 1:
+            raise ValueError("Missing or duplicate French original illustrated scene for chapter " + str(chapter_num))
+        item = originals[0]
+        photo = verne_map_data["chapters"][chapter_num - 1].get("primaryImage")
+        local_path = str((commons_plates / item["localPath"]).relative_to(ROOT))
+        source_path = ROOT / f"app/src/main/assets/classic-verne-towle-ch{chapter_num:02d}.js"
+        source_raw = source_path.read_bytes()
+        blob_hash = hashlib.sha1(b"blob " + str(len(source_raw)).encode("ascii")
+                                 + bytes([0]) + source_raw).hexdigest()
+        if (not isinstance(photo, dict)
+                or photo.get("imagePath") != local_path
+                or photo.get("sha256") != item["webpSha256"]
+                or photo.get("sourceUrl") != item["commonsPage"]
+                or photo.get("originalScanMetadataSha1") != item["originalCommonsSHA1MetadataOnly"]
+                or photo.get("originalFrenchCaption") != french_caption
+                or photo.get("sourcePassage") != literal_source
+                or photo.get("sceneAnchor") != literal_source
+                or photo.get("originalEnglishSourceGitBlobSha") != blob_hash
+                or photo.get("originalEnglishChapterOneBased") != chapter_num
+                or literal_source.encode("utf-8") not in source_raw
+                or photo.get("rightsStatus") != "PENDING_INDIVIDUAL_SCAN_TERRITORIAL_AND_EDITORIAL_REVIEW"
+                or photo.get("editoriallyApproved") is not False
+                or photo.get("territorialRightsCleared") is not False
+                or photo.get("publicationStatus") != "STAGING_ONLY_NOT_PUBLISHED"
+                or photo.get("nonAIArt") is not True
+                or item.get("individualCommonsLicense") != "Public domain"
+                or item.get("sceneChapterMatchStatus") != "UNREVIEWED__NO_CHAPTER_CARD"):
+            raise ValueError("Verne period engraving lacks actual human-reviewed source or rights hold")
+        check_binary(local_path, item["webpSha256"])
+        if local_path in allowed:
+            raise ValueError("Repeated a period illustration already assigned elsewhere")
+        allowed[local_path] = (item["webpSha256"], chapter_num)
+    # Title-page artwork is a *separate* book-cover candidate, never a
+    # chapter scene or an approved locally packaged cover.
+    original_cover = jload(STAGING / "verne-chapter-cards/original-historical-cover-candidate.json")
+    original_title_plates = [image for image in commons_manifest["images"] if
+                             image["wikiFile"].endswith("Neuville and Benett 02.jpg")]
+    if len(original_title_plates) != 1:
+        raise ValueError("Original Verne printed title illustration absent/duplicated")
+    title_plate = original_title_plates[0]
+    title_image_path = str((commons_plates / title_plate["localPath"]).relative_to(ROOT))
+    if (original_cover.get("schemaVersion") != 1
+            or original_cover.get("bookId") != "around-the-world-in-eighty-days-towle"
+            or original_cover.get("coverSourceType") !=
+               "ORIGINAL_PERIOD_ILLUSTRATED_TITLE_ART_NOT_PROVEN_HARDBACK_FRONT_COVER"
+            or original_cover.get("imagePath") != title_image_path
+            or original_cover.get("sha256") != title_plate["webpSha256"]
+            or original_cover.get("webpBytes") != title_plate["webpBytes"]
+            or original_cover.get("sourceURL") != title_plate["commonsPage"]
+            or original_cover.get("originalScanMetadataSha1") !=
+               title_plate["originalCommonsSHA1MetadataOnly"]
+            or original_cover.get("humanEditorialApproved") is not False
+            or original_cover.get("territorialRightsCleared") is not False
+            or original_cover.get("publicationStatus") != "STAGING_ONLY_NOT_PUBLISHED"
+            or original_cover.get("sourceScanRightsStatus") !=
+               "PENDING_INDIVIDUAL_SCAN_AND_TERRITORY_REVIEW"
+            or original_cover.get("originalColourUnchanged") is not True
+            or not original_cover.get("altAr") or not original_cover.get("altEn")):
+        raise ValueError("Original Verne title/cover source or rights misrepresented")
+    check_binary(title_image_path, title_plate["webpSha256"])
+    if any(row.get("primaryImage", {}) and row["primaryImage"].get("sha256") ==
+           original_cover["sha256"] for row in verne_map_data["chapters"]):
+        raise ValueError("Historic title page falsely reused as a distinct chapter scene")
+    for row in verne_map_data["chapters"]:
         art = row.get("primaryImage")
         for image in ([art] if art else []) + row.get("secondaryImageCandidates", []):
             if image["imagePath"] not in allowed or (
@@ -639,7 +725,9 @@ def generate() -> dict:
         {"bookId": "around-the-world-in-eighty-days-towle",
          "title": "Around the World in Eighty Days", "sourceState": "37 source chapters plus Arabic draft",
          "chapterCount": 37, "archivedLocalHistoricArt": len(manifest) + len(additional) + commons_candidates,
-         "unassignedHistoricalCommonsImageFiles": commons_candidates, **verne},
+         "unassignedHistoricalCommonsImageFiles": commons_candidates,
+         "historicBookCoverCandidateFilesNotApproved": 1,
+         "bookCoverReadyForPublication": False, **verne},
         moonstone_row,
         {"bookId": "wells-war-of-the-worlds-1898", "title": "The War of the Worlds",
          "sourceState": "27 original English 17+10 chapters pinned to exact source titles and SHA, five authentic 1906 Correa scene candidate plates, all release rights pending",

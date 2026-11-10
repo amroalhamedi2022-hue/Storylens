@@ -1,0 +1,31 @@
+name: Literature - five authenticated original 1873 Verne chapter scenes and historical cover
+on:
+  pull_request:
+    paths:
+      - 'docs/literature/staging/verne-chapter-cards/chapter-image-map.json'
+      - 'docs/literature/staging/verne-chapter-cards/original-historical-cover-candidate.json'
+      - 'tools/test_verne_original_french_caption_and_towle_scene.py'
+      - '.github/workflows/verne-exact-original-chapter-scene-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/literature/staging/verne-chapter-cards/chapter-image-map.json'
+      - 'tools/test_verne_original_french_caption_and_towle_scene.py'
+permissions:
+  contents: read
+jobs:
+  original-chapter-and-colour-unchanged:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify five real chapter scenes, one title plate, all original Towle prose, SHA256 and 12 tamper cases
+        run: |
+          python tools/test_verne_original_french_caption_and_towle_scene.py
+          python tools/report_chapter_art_progress.py
