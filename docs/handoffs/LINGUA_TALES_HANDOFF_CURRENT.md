@@ -1,3 +1,13 @@
+# READER AUDIT-49 INTEGRATION (2026-11-10) — code patches on dedicated review branch, NOT device approved
+
+- **Branch:** `fix/reader-integrity-49-audit-20261110` based on verified main `ec026268aa1`. Full numbered issue list and status: `docs/qa/READER_AUDIT_49_TRACKER_2026-11-10.md`.
+- **Verified already merged:** CHG-05 PR #67, chapter-gallery navigation/history, broken image quarantine, short-landscape QA; do NOT repeat. Main Android Action #42775000177 succeeded. A **different prior PR run** #42773890630 failed only at Wen Glass optical browser; no claim that current main is failing.
+- **Changed on this branch:** real chapter title/counter moved onto first page with measured first-page reserve; single page curl no longer prints identical exposed page a second time on its back; facet seams and stray contact shadow constrained; spread page counter; quieter landscape with recoverable accessible controls; contrast on paper buttons; gallery chapter labels non-selectable while filters remain editable. Expanded regression tests. **These are code-level changes only; exact-head CI and actual physical phone/Pad 5 visual tests still required.**
+- **Do not misreport completed:** full-line pagination of long paragraphs, full actual paper-grab including outer frame, perfectly curved 3D fold, original-scene images, physical Android 120Hz, private signed APK/data-preserving install remain unfinished. Content chat exclusively owns original books/pictures/rights/translations. No unapproved original images were published or modified.
+- **Next:** wait for exact-head PR CI, diagnose any failure rather than remove test, then screenshot/gesture QA and only merge green, independently reviewed change. User's demand is honest issue-by-issue progress not theoretical design reports.
+
+---
+
 # 2026-11-10 — CHG-05 Reader UX, chapter-image resilience & short landscape — MERGED
 
 **UI conversation owns:** organize supplied books and source-approved pictures; chapter thumbnails, book→chapter→reader and back, layout, accessibility, tests. **Separate literature conversation** owns books, original historical pictures, full translations, source/territorial rights. **Physical page-curl** and Wen Glass design tests remain separate owners.
