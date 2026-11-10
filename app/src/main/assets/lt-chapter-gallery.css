@@ -516,3 +516,87 @@ dialog.lt-chapter-gallery::backdrop{
 @media(orientation:landscape) and (max-height:580px){
  .lt-chapter-gallery-locate{min-height:36px;padding:5px 10px}
 }
+
+
+/* CHG-05: real Chromium 760x390 landscape test exposed a nearly invisible
+   chapter rail at the 745x303 inner viewport. Keep the chapter content large
+   enough to navigate while packing filters into a single compact toolbar.
+   Accessibility messages remain present for screen readers. */
+@media(orientation:landscape) and (max-height:420px){
+ dialog.lt-chapter-gallery{
+  height:98dvh;max-height:98dvh;
+  border-radius:15px;
+ }
+ .lt-chapter-gallery-sheet{min-height:0}
+ .lt-chapter-gallery-header{
+  flex:none;padding:6px 13px 7px;
+  gap:8px;
+ }
+ .lt-chapter-gallery-copy{max-width:calc(100% - 86px)}
+ .lt-chapter-gallery-eyebrow{display:none}
+ .lt-chapter-gallery-title{
+  font-size:16px;line-height:1.15;
+  max-height:21px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;
+  margin:0 0 2px;
+ }
+ .lt-chapter-gallery-subtitle{
+  font-size:10px;line-height:1.25;margin:0;
+ }
+ .lt-chapter-gallery-tools{
+  margin-block-start:4px;gap:5px;
+  flex-wrap:nowrap;align-items:end;
+ }
+ .lt-chapter-gallery-search-label,
+ .lt-chapter-gallery-filter-label{
+  min-width:0;flex:1 1 130px;gap:2px;
+  font-size:10px;line-height:1.1;
+ }
+ .lt-chapter-gallery-search,.lt-chapter-gallery-filter{
+  min-height:36px;padding:5px 7px;
+  font-size:12px;line-height:1.2;
+ }
+ .lt-chapter-gallery-continue,.lt-chapter-gallery-layout{
+  flex:0 1 auto;min-width:0;min-height:36px;
+  max-width:145px;padding:5px 8px;
+  font-size:11px;line-height:1.2;
+ }
+ .lt-chapter-gallery-close{
+  flex:none;min-width:72px;min-height:36px;
+  padding:6px 8px;font-size:11px;
+ }
+ .lt-chapter-gallery-results{
+  /* Preserve live screen-reader status while removing its wasted row. */
+  position:absolute!important;width:1px!important;height:1px!important;
+  padding:0!important;margin:0!important;border:0!important;
+  overflow:hidden!important;clip-path:inset(50%)!important;
+  white-space:nowrap!important;
+ }
+ .lt-chapter-gallery-track{
+  min-height:75px;padding:6px 11px;gap:9px;
+ }
+ .lt-chapter-tile{flex-basis:145px;border-radius:10px}
+ .lt-chapter-tile-visual{height:82px;min-height:82px}
+ .lt-chapter-tile-heading{
+  min-height:0;margin:5px 7px 3px;
+  font-size:12px;line-height:1.2;
+  -webkit-line-clamp:2;
+ }
+ .lt-chapter-tile-pending,.lt-chapter-tile-credit{
+  margin:0 7px 6px;font-size:10px;
+ }
+ .lt-chapter-gallery-footer{
+  flex:none;min-height:32px;padding:3px 12px;
+  font-size:10px;line-height:1.25;
+ }
+ .lt-chapter-gallery-locate{
+  min-height:32px;max-width:48%;padding:4px 8px;
+  font-size:10px;
+ }
+ .lt-chapter-gallery-list-view .lt-chapter-tile-visual{
+  height:80px;min-height:80px;
+ }
+ .lt-chapter-gallery-list-view .lt-chapter-tile{
+  min-height:80px;
+ }
+}
