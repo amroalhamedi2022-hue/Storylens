@@ -544,7 +544,7 @@ def generate() -> dict:
         source_path = ROOT / f"app/src/main/assets/classic-verne-towle-ch{chapter_num:02d}.js"
         source_raw = source_path.read_bytes()
         blob_hash = hashlib.sha1(b"blob " + str(len(source_raw)).encode("ascii")
-                                 + b"\\0" + source_raw).hexdigest()
+                                 + bytes([0]) + source_raw).hexdigest()
         if (not isinstance(photo, dict)
                 or photo.get("imagePath") != local_path
                 or photo.get("sha256") != item["webpSha256"]
