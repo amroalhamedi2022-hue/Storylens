@@ -7,13 +7,13 @@
     "localCandidateChapterCards": 288,
     "readyChapterCards": 0,
     "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1209,
-    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1209,
-    "unassignedOriginalArabianNightsArtworkFiles": 0
+    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1244,
+    "unassignedOriginalArabianNightsArtworkFiles": 35
   },
   "unassignedOriginalArabianNightsSourceEditionCounts": {
-    "dulac": 0,
-    "gross": 0,
-    "total": 0
+    "dulac": 28,
+    "gross": 7,
+    "total": 35
   },
   "books": [
     {
