@@ -21,11 +21,14 @@ class OriginalDoyleChapterIndexTests(unittest.TestCase):
                 self.assertEqual([x["chapterOneBased"] for x in doc["chapters"]], list(range(1, total + 1)))
                 self.assertEqual(len({x["sourceFile"] for x in doc["chapters"]}), total)
                 self.assertEqual(len({x["sourceGitBlobSha"] for x in doc["chapters"]}), total)
-                self.assertEqual(doc["missingCandidateChapters"], total)
-                self.assertEqual(doc["localCandidateChapters"], 0)
+                matched = 5 if slug == "the-lost-world" else 0
+                self.assertEqual(doc["missingCandidateChapters"], total - matched)
+                self.assertEqual(doc["localCandidateChapters"], matched)
                 self.assertEqual(doc["readyForUICards"], 0)
                 self.assertFalse(doc["releaseApproved"])
-                self.assertTrue(all(x["primaryImage"] is None and not x["titleAr"] for x in doc["chapters"]))
+                self.assertTrue(all(not x["titleAr"] for x in doc["chapters"]))
+                if slug != "the-lost-world":
+                    self.assertTrue(all(x["primaryImage"] is None for x in doc["chapters"]))
 
     def test_original_edition_titles_match_staged_source_html_and_saved_maps(self):
         for slug in CONFIG:
@@ -50,8 +53,15 @@ class OriginalDoyleChapterIndexTests(unittest.TestCase):
             d = generate(slug)
             self.assertEqual(d["countSemantics"], "AUTHENTIC_UNABRIDGED_ORIGINAL_ENGLISH_CHAPTERS")
             for row in d["chapters"]:
-                self.assertIn("NO_SCENE_MAPPED", row["imageStatus"])
                 self.assertTrue((ROOT / row["sourceFile"]).is_file())
+                if row["primaryImage"] is None:
+                    self.assertIn("NO_SCENE_MAPPED", row["imageStatus"])
+                else:
+                    self.assertEqual(slug, "the-lost-world")
+                    self.assertIn("WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED", row["imageStatus"])
+                    self.assertFalse(row["primaryImage"]["editoriallyApproved"])
+                    self.assertFalse(row["primaryImage"]["publishedToApp"])
+                    self.assertIn("PENDING", row["primaryImage"]["rightsStatus"])
 
 
 if __name__ == "__main__":
