@@ -249,7 +249,8 @@ def apply_curated_scenes(slug: str, book: dict, original_bytes: bytes,
         evidence = json.loads(CURATED_SCENES.read_text(encoding="utf-8"))
     if (evidence.get("schemaVersion") != 1
             or evidence.get("releaseApproved") is not False
-            or not isinstance(evidence.get("chapterScenes"), list)):
+            or not isinstance(evidence.get("chapterScenes"), list)
+            or len(evidence["chapterScenes"]) != 1):
         raise ValueError("Curated source-scene evidence schema / release hold invalid")
 
     seen_chapters = set()
@@ -258,13 +259,13 @@ def apply_curated_scenes(slug: str, book: dict, original_bytes: bytes,
         if key in seen_chapters:
             raise ValueError("Duplicate curated chapter scene: " + str(key))
         seen_chapters.add(key)
-        if key[0] != slug:
-            continue
-        # Every accepted exception must have a dedicated original-source test
-        # and a previously verified historical image. Extend this allow-list
-        # only alongside specific evidence and negative regression tests.
+        # Every accepted exception must have dedicated original-source tests.
+        # Unexpected additions cannot silently bypass proof checking on the
+        # current book or on another book in this batch.
         if key != ("the-gilded-age", 30):
             raise ValueError("Unreviewed curated exception: " + str(key))
+        if key[0] != slug:
+            continue
         photo = record.get("primaryImage")
         if not isinstance(photo, dict):
             raise ValueError("Curated image evidence missing")
