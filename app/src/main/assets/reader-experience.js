@@ -157,14 +157,16 @@ const ltPageIndices=new Map();
 // Keep small phone pages readable instead of forcing four long passages onto
 // one oversized sheet. This is a bounded, deterministic layout estimate; each
 // authored paragraph, its bilingual translation and illustration remain intact.
-function ltPageStarts(lengths,viewportHeight,readerWidth,fontSize,illustrationHeights=[]){
+function ltPageStarts(lengths,viewportHeight,readerWidth,fontSize,illustrationHeights=[],firstPaperInset=0){
  const height=Number(viewportHeight),width=Number(readerWidth),size=Number(fontSize);
  const vh=Number.isFinite(height)&&height>=320?height:800;
  const rw=Number.isFinite(width)&&width>=220?width:420;
  const px=Number.isFinite(size)&&size>=12&&size<=42?size:20;
  const charactersPerLine=Math.max(16,Math.floor((Math.min(920,rw)-82)/(px*.56)));
  const budget=Math.max(210,Math.min(800,vh*.77)-80);
- const starts=[];let used=0,count=0;
+ const inset=Number(firstPaperInset);
+ const firstReserve=Number.isFinite(inset)?Math.max(0,Math.min(budget-60,inset)):0;
+ const starts=[];let used=firstReserve,count=0;
  for(let i=0;i<lengths.length;i++){
   const raw=Number(lengths[i]);
   const chars=Number.isFinite(raw)?Math.max(0,Math.min(20000,raw)):0;
@@ -172,7 +174,7 @@ function ltPageStarts(lengths,viewportHeight,readerWidth,fontSize,illustrationHe
   const imageCost=Number.isFinite(additional)?Math.max(0,Math.min(320,additional)):0;
   const cost=Math.max(1,Math.ceil(chars/charactersPerLine))*px*1.65+38+imageCost;
   if(count===0||count>=LT_PAGE_PARAGRAPHS||used+cost>budget){
-   starts.push(i);used=0;count=0;
+   starts.push(i);used=i===0?firstReserve:0;count=0;
   }
   used+=cost;count++;
  }
@@ -202,18 +204,20 @@ function ltMeasuredParagraphHeights(sentences){
  }
  return heights;
 }
-function ltMeasuredPageStarts(heights,viewportHeight){
+function ltMeasuredPageStarts(heights,viewportHeight,firstPaperInset=0){
  const vh=Number(viewportHeight);
  const height=Number.isFinite(vh)&&vh>=320?vh:800;
  const budget=Math.max(210,Math.min(800,height*.77)-80);
- const starts=[];let used=0,count=0;
+ const inset=Number(firstPaperInset);
+ const firstReserve=Number.isFinite(inset)?Math.max(0,Math.min(budget-60,inset)):0;
+ const starts=[];let used=firstReserve,count=0;
  for(let i=0;i<heights.length;i++){
   const raw=Number(heights[i]);
   if(!Number.isFinite(raw)||raw<=0)return null;
   // A single oversized paragraph remains intact and scrollable; never
   // cut bilingual text, dictionary words or an illustration across sheets.
   if(count===0||count>=LT_PAGE_PARAGRAPHS||used+raw>budget){
-   starts.push(i);used=0;count=0;
+   starts.push(i);used=i===0?firstReserve:0;count=0;
   }
   used+=raw;count++;
  }
@@ -341,6 +345,14 @@ function installPageTurn(){
  }
  const chapterEnd=width.querySelector('.chapter-end');
  if(chapterEnd)chapterEnd.hidden=true;
+ // An actual book's chapter heading and number belong on its FIRST paper,
+ // not in a fixed slab above every turning page. Reserve their real measured
+ // height before reparenting; do not clone or split editable dictionary text.
+ const heading=width.querySelector(':scope > h2');
+ const caption=width.querySelector(':scope > .reader-label');
+ const headingHeight=heading?.getBoundingClientRect?.().height||0;
+ const captionHeight=caption?.getBoundingClientRect?.().height||0;
+ const firstPaperInset=heading?Math.max(0,headingHeight)+Math.max(0,captionHeight)+48:0;
  const originalNodes=Array.from(sentenceBox.childNodes);
  const pages=[];
  const bounds=width.getBoundingClientRect?.();
@@ -365,9 +377,9 @@ function installPageTurn(){
  // figures have entered the DOM. Fall back to safe length estimates in
  // partial/older WebViews that cannot measure laid-out content.
  const measured=ltMeasuredParagraphHeights(sentences);
- const starts=(measured&&ltMeasuredPageStarts(measured,window.innerHeight))||
+ const starts=(measured&&ltMeasuredPageStarts(measured,window.innerHeight,firstPaperInset))||
   ltPageStarts(paragraphLengths,window.innerHeight,bounds?.width||window.innerWidth,
-   Number.isFinite(computedSize)?computedSize:preferredSize,illustrationHeights);
+   Number.isFinite(computedSize)?computedSize:preferredSize,illustrationHeights,firstPaperInset);
  const boundaries=new Set(starts);
  let page=null,paragraph=0;
  for(const node of originalNodes){
@@ -383,6 +395,13 @@ function installPageTurn(){
   }
   if(!page){page=document.createElement('section');page.className='lt-book-page';page.setAttribute('role','group');pages.push(page)}
   page.appendChild(node);
+ }
+ // Keep all chapter metadata inside the paper that actually folds. The
+ // semantic heading remains the same original DOM node for focus/Back/AT.
+ if(pages.length&&heading){
+  heading.classList.add('lt-chapter-paper-heading');
+  if(caption){caption.classList.add('lt-chapter-paper-caption');pages[0].prepend(caption,heading);}
+  else pages[0].prepend(heading);
  }
  sentenceBox.replaceChildren(...pages);
  if(window.LinguaPageCurl){sentenceBox.style.removeProperty('display');sentenceBox.style.removeProperty('width');}
@@ -423,7 +442,10 @@ function installPageTurn(){
   next.textContent=current+spread>=pages.length
    ?(state.chapter<state.story.chapters.length-1?uiText('الفصل التالي','Next chapter'):uiText('العودة للمكتبة','Back to library'))
    :uiText('الصفحة التالية','Next page');
-  countLabel.textContent=uiText('الصفحة '+(current+1)+' من '+pages.length,'Page '+(current+1)+' of '+pages.length);
+  countLabel.textContent=spread===2
+   ?uiText('الصفحتان '+(current+1)+'–'+Math.min(current+spread,pages.length)+' من '+pages.length,
+     'Pages '+(current+1)+'–'+Math.min(current+spread,pages.length)+' of '+pages.length)
+   :uiText('الصفحة '+(current+1)+' من '+pages.length,'Page '+(current+1)+' of '+pages.length);
   put(key,current);
   put(anchorKey,starts[current]||0);
   if(chapterEnd)chapterEnd.hidden=current+spread<pages.length;
@@ -531,9 +553,15 @@ function installPageTurn(){
     const boundary=target<0||target>=pages.length;
     if(boundary&&!state.story.chapters[state.chapter+delta])return null;
     const moving=delta>0?Math.min(current+spread-1,pages.length-1):current;
-    return {page:pages[moving],
-     under:boundary?boundaryPage(delta):pages[target+(delta>0?Math.min(spread-1,pages.length-1-target):0)],
-     back:!boundary?pages[target+(spread===2&&delta<0?1:0)]:boundaryPreview,
+    // In a single-sheet view the next page is already the exposed UNDER-page.
+    // Rendering that SAME ink again on the flap's rear caused the doubled text
+    // observed on Android. A blank reverse is safer than counterfeit ink.
+    // Facing spreads retain a different real reverse where it is available.
+    const under=boundary?boundaryPage(delta):
+     pages[target+(delta>0?Math.min(spread-1,pages.length-1-target):0)];
+    const candidateBack=boundary?null:pages[target+(spread===2&&delta<0?1:0)];
+    return {page:pages[moving],under,
+     back:candidateBack===under?null:candidateBack,
      info:{storyId:curlStory.id,chapter:curlChapter,fromPage:current,toPage:boundary?null:target,spread}};
    },
    commit(delta,source){
