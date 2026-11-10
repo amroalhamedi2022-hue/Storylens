@@ -32,6 +32,15 @@ EVIDENCE = {
     12: ("19", "Cette infortunée ne paraissait faire aucune résistance",
          "the wretched creature did not seem to be making any resistance",
          "c8a288bbe74b23ba60e9f0adecbc52b50c306dad"),
+    14: ("23", "Des bandes d’Indous des deux sexes",
+         "groups of Indians, despite the advanced season and chilly air, were performing solemnly their pious ablutions",
+         "aa9b955ce20347cb37624001640b49633f818d38"),
+    16: ("25", "Elle lui témoignait la plus vive reconnaissance",
+         "Aouda became better acquainted with her protector, and constantly gave evidence of her deep gratitude for what he had done",
+         "5206a72e6b65ee15c14af937a5aa4d8c5e404b5d"),
+    19: ("29", "Passepartout remarqua un certain nombre d’indigènes",
+         "Passepartout noticed in the crowd a number of the natives who seemed very old and were dressed in yellow",
+         "e0c2f11f2a079e15d251a33285ce0abb3ad67678"),
 }
 
 
@@ -65,12 +74,12 @@ def verify(data, archive, sources):
             or data.get("chapterCount") != 37
             or data.get("releaseApproved") is not False
             or data.get("chapterReadiness") !=
-            "17_LOCAL_ORIGINAL_PERIOD_SCENE_CANDIDATES__20_CHAPTERS_NO_PRIMARY_IMAGE__0_EDITORIAL_TERRITORIAL_APPROVALS"
+            "20_LOCAL_ORIGINAL_PERIOD_SCENE_CANDIDATES__17_CHAPTERS_NO_PRIMARY_IMAGE__0_EDITORIAL_TERRITORIAL_APPROVALS"
             or [c.get("chapterOneBased") for c in data["chapters"]] != list(range(1, 38))):
         raise ValueError("Verne primary count, original order, editorial rights or release hold changed")
     pictures = [c["primaryImage"] for c in data["chapters"] if c["primaryImage"]]
-    if (len(pictures) != 17 or len({p["sha256"] for p in pictures}) != 17
-            or len({p["imagePath"] for p in pictures}) != 17
+    if (len(pictures) != 20 or len({p["sha256"] for p in pictures}) != 20
+            or len({p["imagePath"] for p in pictures}) != 20
             or any(p.get("editoriallyApproved") is not False for p in pictures)
             or "docs/literature/staging/verne-commons-period-plates/manifest.json"
             not in data["artProvenanceManifests"]):
@@ -127,8 +136,8 @@ class OriginalFrenchIllustrationsVsFullEnglishTowle(unittest.TestCase):
         cls.art = json.loads((ARCHIVE / "manifest.json").read_text("utf-8"))
         cls.sources = verne_sources()
 
-    def test_actual_five_distinct_original_scenes_and_pending_rights(self):
-        self.assertEqual(verify(self.data, self.art, self.sources), 17)
+    def test_actual_eight_distinct_original_scenes_and_pending_rights(self):
+        self.assertEqual(verify(self.data, self.art, self.sources), 20)
 
     def test_period_illustrated_title_page_is_a_distinct_unapproved_cover(self):
         cover_path = STAGING / "verne-chapter-cards/original-historical-cover-candidate.json"
