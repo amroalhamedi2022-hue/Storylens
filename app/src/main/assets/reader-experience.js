@@ -557,12 +557,14 @@ function installPageTurn(){
     const boundary=target<0||target>=pages.length;
     if(boundary&&!state.story.chapters[state.chapter+delta])return null;
     const moving=delta>0?Math.min(current+spread-1,pages.length-1):current;
-    // In a single-sheet view the next page is already the exposed UNDER-page.
-    // Rendering that SAME ink again on the flap's rear caused the doubled text
-    // observed on Android. A blank reverse is safer than counterfeit ink.
-    // Facing spreads retain a different real reverse where it is available.
-    const under=boundary?boundaryPage(delta):
-     pages[target+(delta>0?Math.min(spread-1,pages.length-1-target):0)];
+    // Pages are *paper sides*, not duplicate independent cards. For a portrait
+    // forward turn the current front bends to reveal the NEXT page on its
+    // reverse, and the sheet BENEATH carries the following page. The old
+    // renderer put the same target page on both surfaces, doubling the ink.
+    // In a facing spread: forward verso=target and under=target+1;
+    // backward verso=target+1 and under=target. Do not create a fake page.
+    const beneathIndex=delta>0?target+1:target+(spread===2?0:-1);
+    const under=boundary?boundaryPage(delta):(pages[beneathIndex]||null);
     const candidateBack=boundary?null:pages[target+(spread===2&&delta<0?1:0)];
     return {page:pages[moving],under,
      back:candidateBack===under?null:candidateBack,
