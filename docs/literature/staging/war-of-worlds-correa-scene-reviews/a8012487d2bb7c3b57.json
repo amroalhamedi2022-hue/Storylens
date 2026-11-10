@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_228_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-a8012487d2bb7c3b.webp",
+  "imageSha256": "1902b2acc560a42a548b63f1d79bf01940abd33ec6459ba977d2a137a8b4202b",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a man and a woman standing face-to-face, holding hands. The man is dressed in casual, possibly rustic clothing with rolled-up sleeves, while the woman wears a formal, long dress with a veil or head covering. The style is reminiscent of a 19th or early 20th-century pen-and-ink sketch or engraving.",
+    "visualObjectsEn": "Man in a shirt and trousers, woman in a long dress with a veil, hands clasped together, signature or initials at the bottom right.",
+    "recognizableCharactersOrPeopleEn": "A man with short, messy hair and a woman with a veiled head covering.",
+    "uncertaintyNotes": "The exact historical context, specific identity of the figures, and the precise medium (whether it is a woodcut, etching, or pen-and-ink drawing) are not explicitly stated and are based on visual interpretation."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 11,
+    "paragraphIndexZeroBased": 32,
+    "exactSourceQuotation": "our hands would touch upon bread or meat",
+    "confidenceModelEstimateNotVerified": 0.7,
+    "modelRationaleNotVerified": "The illustration depicts a man and woman in a moment of interaction, which aligns with the intimate, shared experience of the narrator and the curate in Chapter 11, where they are huddled in the dark, their hands touching as they share food. While the clothing in the illustration is more formal than the text describes, the physical proximity and the act of holding hands or touching hands is a central, recognizable motif in the scene.",
+    "suggestedAltArNotApproved": "A black and white illustration showing a man and a woman in close proximity, their hands touching, capturing a moment of shared human connection amidst the darkness of the Martian invasion.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a man and a woman standing face-to-face and holding hands.",
+    "visualContradictions": "The passage describes two men sitting together in a dark room eating bread and meat without lamps, but the illustration depicts a man and a woman standing in full light.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

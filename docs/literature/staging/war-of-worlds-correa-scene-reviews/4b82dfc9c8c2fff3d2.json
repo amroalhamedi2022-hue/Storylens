@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_233_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-4b82dfc9c8c2fff3.webp",
+  "imageSha256": "919626eeec518d2b691f07018430d46bd805e2a3c97b7fe721b6f5c7133dec2b",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A monochromatic, detailed ink or charcoal drawing depicting a row of large, mechanical, tripod-like machines looming over a desolate urban landscape. The machines have conical heads with circular openings and long, segmented, tentacle-like appendages. In the background, a flock of birds flies over a cityscape with simple building silhouettes and a distant industrial structure. The foreground shows a stone wall or rooftop edge with debris.",
+    "visualObjectsEn": "Mechanical tripods, segmented tentacles, conical machine heads, birds, urban buildings, stone wall, debris, industrial structure in the distance.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact medium (etching, lithograph, or ink drawing) is not definitively confirmed by visual inspection alone. The specific identity of the machines is not stated in the image, though they resemble science fiction tropes."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 24,
+    "exactSourceQuotation": "They glittered now, harmless tripod towers of shining metal, in the brightness of the rising sun.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts tripod machines in a desolate urban landscape, which aligns with the description of the Martians' fighting-machines as 'tripod towers' found in the aftermath of the invasion. The presence of birds in the image also corresponds to the text's mention of the machines being 'enhaloed now in birds'.",
+    "suggestedAltArNotApproved": "A monochromatic drawing of several large, metallic tripod machines standing over a ruined city, with a flock of birds circling above them against a backdrop of industrial structures and debris.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows dead Martian tripod machines standing motionless, surrounded by a flock of birds as described in the passage, overlooking a cityscape under the morning light.",
+    "visualContradictions": "None observed; the depiction accurately matches the text's description of the dead Martian fighting-machines enhaloed by birds.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

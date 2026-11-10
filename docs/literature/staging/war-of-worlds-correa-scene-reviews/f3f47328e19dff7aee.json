@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_232_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-f3f47328e19dff7a.webp",
+  "imageSha256": "8ac6ed67ce29bdbb27dc5494a39e6a1313dcdff423d128641d07ebcfbf58ebbc",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting three men in a clinical or laboratory setting, gathered around a table. On the table lies a large, amorphous, fleshy, sack-like object with long, tentacle-like appendages hanging off the side. One man on the left is looking down at the object, a man in the center is partially obscured behind the object, and a man on the right is standing, pointing at the object with his right hand while holding a small paper or document in his left hand.",
+    "visualObjectsEn": "A table with a cloth, a large fleshy mass with appendages, a small document or paper, laboratory glassware in the background, and the clothing of the men (coats, shirts).",
+    "recognizableCharactersOrPeopleEn": "Three adult men, all dressed in formal or professional attire typical of the late 19th or early 20th century, including coats and possibly lab coats or aprons.",
+    "uncertaintyNotes": "The nature of the object on the table is ambiguous; it appears organic or biological but is not clearly identifiable as a specific creature or medical specimen. The exact historical context or specific publication source is not provided and cannot be confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
