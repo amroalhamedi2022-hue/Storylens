@@ -6,8 +6,8 @@
   "counts": {
     "localCandidateChapterCards": 288,
     "readyChapterCards": 0,
-    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1209,
-    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1244,
+    "verifiedArchivedHistoricArtFilesAmongTrackedEightBooks": 1227,
+    "verifiedHistoricalArtBinaryFilesAcrossAuditedSources": 1262,
     "unassignedOriginalArabianNightsArtworkFiles": 35
   },
   "unassignedOriginalArabianNightsSourceEditionCounts": {
@@ -524,8 +524,8 @@
       "readyForUICards": 0,
       "missingImageChapters": 15,
       "missingReadyChapters": 15,
-      "archivedLocalHistoricArt": 0,
-      "unassignedHistoricalSidneyPagetFiles": 0,
+      "archivedLocalHistoricArt": 18,
+      "unassignedHistoricalSidneyPagetFiles": 18,
       "mappedChapterNumbers": [],
       "readyChapterNumbers": [],
       "imageMap": "docs/literature/staging/the-hound-of-the-baskervilles/chapter-image-map.json"
