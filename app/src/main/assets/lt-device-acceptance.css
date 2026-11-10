@@ -628,11 +628,11 @@ body :lang(en):not(svg),.reader[data-lt-source="en"] :is(h2,.sentence){
 .reader .lt-page-controls :is(.lt-page-prev,.lt-page-next):focus-visible{
  outline:3px solid var(--accent,#307b96)!important;outline-offset:3px;
 }
-/* The landscape reading stage is TWO actual pages. The covers and chrome
- * never permanently consume room in the spread. A blank-paper tap reveals
+/* The landscape reading stage is TWO actual pages. Original-source hero art
+ * stays visible for the opening spread and hides after turning into reading. A blank-paper tap reveals
  * controls for a short time, while keyboard navigation remains accessible. */
 @media (orientation:landscape) and (min-width:700px){
- .reader:has(#sentences.lt-curl-book[data-spread="2"]) .reader-hero,
+ .reader:has(#sentences.lt-curl-book[data-spread="2"][data-lt-reading-started="true"]) .reader-hero,
  .reader:has(#sentences.lt-curl-book[data-spread="2"])>.toolbar{
   display:none!important;
  }
