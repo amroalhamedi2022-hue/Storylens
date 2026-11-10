@@ -1,0 +1,30 @@
+name: Lingua Tales • Story Art Pilot
+on:
+  push:
+    branches: ['feature/story-art-*']
+    paths: ['tools/story_art_pilot.cjs','tools/test_story_art_pilot.cjs','docs/art-generation/**','.github/workflows/story-art-pilot.yml']
+  pull_request:
+    branches: [main]
+    paths: ['tools/story_art_pilot.cjs','tools/test_story_art_pilot.cjs','docs/art-generation/**','.github/workflows/story-art-pilot.yml']
+permissions:
+  contents: read
+jobs:
+  verify-scene-authenticity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate real source paragraph anchors and character continuity
+        run: |
+          node --check tools/story_art_pilot.cjs
+          node tools/story_art_pilot.cjs --check
+          node tools/test_story_art_pilot.cjs
+      - name: Export source-pinned prompts; verify offline and modern provenance
+        run: |
+          node tools/story_art_pilot.cjs --export /tmp/story-art-queue.json
+          node -e 'const q=require("/tmp/story-art-queue.json");if(q.releaseApproved||q.queueCount!==4||q.queue.some(s=>!s.generated||s.editoriallyApproved||s.status!=="PROMPT_READY_NOT_GENERATED"))process.exit(1)'

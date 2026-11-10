@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "sourceKind": "authentic_existing_prose",
+  "policy": "AI-generated companion illustrations are contemporary artwork, never historical archival scans",
+  "illustrationStyle": {
+    "label": "Victorian ink-engraving companion (modern AI interpretation)",
+    "prompt": "A single scene rendered as a refined black-ink Victorian wood-engraving on subtle warm aged paper, 1872 London material culture, detailed etched cross-hatching, restrained contrast, editorial book illustration, consistent human likenesses, no text, no lettering, no borders, no collage, no diagram.",
+    "negative": "Do not depict events, people, clothing, locations or objects absent from the cited passage. No anachronistic technology. No fictional wager in chapters one or two."
+  },
+  "characters": {
+    "phileas-fogg": "English gentleman around forty, calm and composed; pale face, light-colored hair and whiskers, tall well-built figure, precise formal Victorian dress. Keep his facial structure and attire consistent across scenes.",
+    "jean-passepartout": "French valet around thirty, friendly face, blue eyes, brown slightly tousled hair, ruddy complexion, muscular build; modest practical Victorian servant clothing. Keep the same likeness across scenes."
+  },
+  "scenes": [
+    {
+      "id": "verne-ch01-saville-house",
+      "chapterOneBased": 1,
+      "paragraphZeroBased": 0,
+      "anchorExcerpt": "Mr. Phileas Fogg lived, in 1872, at No. 7, Saville Row",
+      "people": [],
+      "description": "Exterior street view of Phileas Fogg's residence at No. 7, Saville Row in London, 1872. Quiet Victorian townhouse frontage and period street environment, without imagined identifiable occupants. Avoid depicting a modern reconstruction as a documentary photograph.",
+      "altEn": "An engraved interpretation of the exterior of Phileas Fogg's Saville Row residence in 1872.",
+      "altAr": "رسم حديث بأسلوب الحفر الكلاسيكي لواجهة منزل فيلياس فوغ في شارع سافيل رو سنة 1872."
+    },
+    {
+      "id": "verne-ch01-new-servant",
+      "chapterOneBased": 1,
+      "paragraphZeroBased": 19,
+      "anchorExcerpt": "A rap at this moment sounded on the door of the cosy apartment",
+      "people": [
+        "phileas-fogg",
+        "jean-passepartout"
+      ],
+      "description": "In a comfortable Victorian sitting room, Phileas Fogg is seated as dismissed servant James Forster announces the young new French valet, Jean Passepartout, who steps forward and bows. Exactly the first introduction; do not depict the later Reform Club wager.",
+      "altEn": "Passepartout bows to the seated Phileas Fogg as the new servant is introduced.",
+      "altAr": "باسبارتو ينحني أمام فيلياس فوغ الجالس لحظة تقديم الخادم الجديد."
+    },
+    {
+      "id": "verne-ch02-house-inspection",
+      "chapterOneBased": 2,
+      "paragraphZeroBased": 7,
+      "anchorExcerpt": "Passepartout found himself alone in the house in Saville Row",
+      "people": [
+        "jean-passepartout"
+      ],
+      "description": "Passepartout inspects a clean, unusually orderly Victorian London townhouse, upstairs near a mantelpiece with an electric clock. He is alone, struck by the home's quiet precision. No Fogg, no wager, no invented visitors.",
+      "altEn": "Passepartout alone explores the orderly Saville Row townhouse and its clock.",
+      "altAr": "باسبارتو يستكشف منزل سافيل رو المنظم وحده، ويلاحظ الساعة."
+    },
+    {
+      "id": "verne-ch02-daily-schedule",
+      "chapterOneBased": 2,
+      "paragraphZeroBased": 8,
+      "anchorExcerpt": "He suddenly observed, hung over the clock, a card",
+      "people": [
+        "jean-passepartout"
+      ],
+      "description": "Passepartout notices a card posted above the mantel clock listing his master's exact daily household routine. The card is visibly a schedule but contains no readable invented lettering. An intimate Victorian interior; no other people.",
+      "altEn": "Passepartout discovers the household routine card hanging above the clock.",
+      "altAr": "باسبارتو يكتشف بطاقة برنامج العمل اليومية المعلقة فوق الساعة."
+    }
+  ],
+  "images": [],
+  "releaseApproved": false
+}
