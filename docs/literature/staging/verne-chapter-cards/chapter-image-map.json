@@ -6,7 +6,7 @@
   "releaseApproved": false,
   "sourceStatus": "37-original-Towle-chapters; Arabic draft needs independent editorial review",
   "chapterImagePolicy": "distinct_primary_original_period_art_per_chapter",
-  "chapterReadiness": "16_LOCAL_ORIGINAL_PERIOD_SCENE_CANDIDATES__21_CHAPTERS_NO_PRIMARY_IMAGE__0_EDITORIAL_TERRITORIAL_APPROVALS",
+  "chapterReadiness": "17_LOCAL_ORIGINAL_PERIOD_SCENE_CANDIDATES__20_CHAPTERS_NO_PRIMARY_IMAGE__0_EDITORIAL_TERRITORIAL_APPROVALS",
   "artProvenanceManifest": "docs/literature/HISTORIC_VERNES_ASSETS.json",
   "chapters": [
     {
@@ -247,9 +247,40 @@
     },
     {
       "chapterOneBased": 12,
-      "titleAr": "",
-      "titleEn": "",
-      "primaryImage": null
+      "titleAr": "حيث يخوض فيلياس فوغ ورفاقه مغامرة عبر غابات الهند، وما الذي أعقب ذلك.",
+      "titleEn": "In which Phileas Fogg and his companions venture across the Indian forests, and what ensued.",
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-7483ddd5c2102988.webp",
+        "sha256": "61dfca84aa5a6657f2cfa306b7af972692f723c4738393a5111882f28fd87e95",
+        "webpBytes": 94692,
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_19.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_19.jpg",
+        "creator": "Alphonse de Neuville and/or Léon Benett; exact plate artist unresolved",
+        "sourceEdition": "Jules Verne, Le Tour du monde en quatre-vingts jours, original 1872–73 illustrated French Hetzel edition",
+        "sceneAnchor": "the wretched creature did not seem to be making any resistance",
+        "sourcePassage": "the wretched creature did not seem to be making any resistance",
+        "originalEnglishSourceFile": "app/src/main/assets/classic-verne-towle-ch12.js",
+        "originalEnglishSourceGitBlobSha": "c8a288bbe74b23ba60e9f0adecbc52b50c306dad",
+        "originalEnglishChapterOneBased": 12,
+        "originalFrenchEditionChapterURL": "https://fr.wikisource.org/wiki/Le_Tour_du_monde_en_quatre-vingts_jours/Chapitre_12",
+        "originalFrenchCaption": "Cette infortunée ne paraissait faire aucune résistance",
+        "originalEnglishCaption": "The unhappy young woman offered no apparent resistance during the procession.",
+        "originalEditionImagePlacement": "Original illustrated French chapter XII, page 61 (Wikisource and Commons)",
+        "originalScanMetadataSha1": "7483ddd5c2102988f27a7c5670e4efc106cbf48b",
+        "rightsStatus": "PENDING_INDIVIDUAL_SCAN_TERRITORIAL_AND_EDITORIAL_REVIEW",
+        "license": "Individual Commons file public-domain scan metadata, independent territorial/editorial review pending",
+        "sourceVerificationStatus": "ORIGINAL_FRENCH_CH12_PROCESSION_CAPTION_AND_LITERAL_TOWLE_ENGLISH_PASSAGE_PLUS_ACTUAL_IMAGE_SEEN__STAGING_ONLY",
+        "visualObservationEn": "Original partially coloured engraved scene of the young Indian woman in a forest funeral procession, flanked by robed figures and a palanquin in the background.",
+        "altEn": "A nineteenth-century engraving of the young woman being escorted in a forest procession in Chapter XII, while Fogg's companions watch unseen.",
+        "altAr": "نقش تاريخي أصلي ملوّن جزئيًا يصوّر امرأة شابة ضمن موكب في غابة هندية برفقة أشخاص يرتدون ثيابًا تقليدية، وهو مشهد الفصل الثاني عشر.",
+        "editionDifferenceNotice": "Illustration from the original French illustrated edition; passage quoted verbatim from Towle's separate English translation.",
+        "imageOriginalColourUnchanged": true,
+        "nonAIArt": true,
+        "editoriallyApproved": false,
+        "humanEditorApproved": false,
+        "territorialRightsCleared": false,
+        "publicationStatus": "STAGING_ONLY_NOT_PUBLISHED"
+      }
     },
     {
       "chapterOneBased": 13,
