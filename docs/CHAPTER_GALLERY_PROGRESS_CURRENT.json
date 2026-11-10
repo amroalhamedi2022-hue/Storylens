@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "updatedOn": "2026-11-07",
+  "updatedOn": "2026-11-10",
   "role": "chapter-organizer-ui-not-literature-or-image-acquisition",
   "repository": "amroalhamedi2022-hue/Storylens",
-  "mainMergedFeatureCommit": "af7c15dd6c04c76e63c1d5c00fcf5a400565c3a7",
-  "pullRequest": "https://github.com/amroalhamedi2022-hue/Storylens/pull/52",
-  "exactFeatureCI": "https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42308601475",
-  "exactFeatureCIResult": "success",
-  "sourceBranches": "CHG-02 merged main; original conflicted PR #40 safely closed",
+  "mainMergedFeatureCommit": "68974e426eb05a1e2d4bc1619db8b6fd1facf299",
+  "pullRequest": "https://github.com/amroalhamedi2022-hue/Storylens/pull/67",
+  "exactFeatureCI": "https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42773792294",
+  "exactFeatureCIResult": "success: isolated reader-gallery and real-browser-chapters jobs",
+  "sourceBranches": "CHG-05 PR #67 merged to main; previous CHG-03 PR #54 and CHG-04 PR #56 also merged",
   "workstreamBoundaries": {
     "thisConversation": [
       "book cover to chapter chooser",
@@ -38,7 +38,11 @@
     "CHG-02 chapter title/number search across all originals, 36-card incremental rail, stored progress and RTL keyboard chapter selection already integrated in main",
     "CHG-02 safer historical art package with edition/licence/SHA matching, cross-book dedupe and revoked image orphan hard gate",
     "Standalone real browser phone/tablet gallery journey and PNG screenshot artifacts PASSED in CI run 42308601475",
-    "CHG-02 conflict-free PR #52 merged after detecting original UI files had already landed byte-for-byte on main"
+    "CHG-02 conflict-free PR #52 merged after detecting original UI files had already landed byte-for-byte on main",
+    "CHG-05: double-tapping a story cannot push duplicate gallery/history entries",
+    "CHG-05: one failed approved local image is blocked in-memory across gallery reopen and reader-hero rerender, with numbered fallback and truthful counts",
+    "CHG-05: actual Chromium 360x760, 460x860, 760x390 and 1280x840 viewport geometry/touch controls and screenshot test; repaired reproducible short landscape rail clipping",
+    "CHG-05: isolated source/reader gallery and real Chromium tests passed; merged PR #67 68974e42"
   ],
   "implementation": [
     "app/src/main/assets/lt-chapter-gallery.js",
@@ -72,15 +76,29 @@
     "do not claim 37 thumbnail images or new APK while approvals/device/signing remain open",
     "Individual book and image clearance remains separate; do not present 280 mapped candidates as approved",
     "Physical Android phone+tablet chapter UI tests remain unperformed",
-    "Wen Glass full-Android browser QA failure is separate and unchanged in this UI workstream"
+    "Wen Glass full-Android browser QA failure is separate and unchanged in this UI workstream",
+    "Wen Glass full Android visual test still failing in its own design workflow; cannot claim full Android CI green",
+    "Real Android handset and tablet tactile chapter UX inspection remains pending",
+    "Original-colour chapter photos still 0 rights/editorially approved and 0 physically shipped until content workstream clears each file"
   ],
   "canonicalPlan": "docs/plans/LINGUA_TALES_CHAPTER_GALLERY_MASTER_2026-11-05.md",
   "privateLibrary": "/Lingua Tales/Plans/LINGUA_TALES_CHAPTER_GALLERY_HANDOFF_CURRENT.md",
   "currentSourceArtAudit": {
     "sourceCoverageFile": "docs/literature/CHAPTER_ART_PROGRESS.json",
-    "locallyMappedCandidates": 280,
+    "locallyMappedCandidates": 288,
     "rightsAndEditorialReady": 0,
     "actualPackagedApprovedChapterImages": 0,
-    "note": "source-image candidates are NOT approved nor APK-published historical chapter art"
+    "note": "Candidates never counted as cleared/installed art, regardless of original historical colour."
+  },
+  "fullAndroidCI": {
+    "url": "https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42773890630",
+    "conclusion": "failure",
+    "passedBeforeFailure": [
+      "Android compile and package verification",
+      "APK signature/package identity checks",
+      "reader smoke and browser screenshots"
+    ],
+    "failure": "Unrelated existing Wen Glass optical gesture acceptance",
+    "action": "Do not disable/modify; resolve in design-owner workflow"
   }
 }
