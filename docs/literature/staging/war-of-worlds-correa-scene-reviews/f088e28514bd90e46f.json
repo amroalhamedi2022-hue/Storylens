@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_213_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-f088e28514bd90e4.webp",
+  "imageSha256": "cccc90ab5d941283d3aa541c7872105f3356570f41799b97886a856b81c7621e",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A high-contrast, black and white ink drawing depicting a narrow, shadowed urban street or alleyway flanked by tall, multi-story buildings with ornate architectural details, balconies, and windows. The perspective is from a low angle looking up, emphasizing the height of the structures and the deep shadows between them. A small, dimly lit street lamp is visible on the right side, and the ground appears to be paved.",
+    "visualObjectsEn": "Tall buildings, multi-story facades, windows with shutters, balconies, street lamp, paved ground, architectural ornamentation, hanging foliage or decorative elements.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The specific location or historical period is not explicitly identified in the image, though the architectural style suggests a European urban setting, possibly from the 19th or early 20th century."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 7,
+    "exactSourceQuotation": "great waves of sound sweeping down the broad, sunlit roadway, between the tall buildings on each side.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a narrow, shadowed urban street flanked by tall, multi-story buildings with ornate architectural details, which aligns well with the narrator's description of walking through a roadway between tall buildings in London during the Martian invasion.",
+    "suggestedAltArNotApproved": "A low-angle, high-contrast ink drawing of a narrow, shadowed urban street in London, flanked by tall, ornate multi-story buildings with balconies and windows, capturing the eerie, deserted atmosphere described in the text.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image depicts a narrow urban street lined with tall, multi-story buildings and a street lamp, viewed from a low angle.",
+    "visualContradictions": "The passage describes Exhibition Road with large mansions, an overturned bus, and the skeleton of a horse near Hyde Park gates, none of which are present in this narrow, shadowed alleyway engraving.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

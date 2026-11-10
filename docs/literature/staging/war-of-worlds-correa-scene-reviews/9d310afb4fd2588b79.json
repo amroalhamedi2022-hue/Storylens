@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_220_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-9d310afb4fd2588b.webp",
+  "imageSha256": "5474e2e04666c1c21e0e608aba48518076008656eaa9b9f5cb7e43fb15c281db",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a skeletal figure, resembling the Grim Reaper, sitting on a ledge or wall. The figure is draped in a dark, textured robe and holds a scythe. In front of the figure lies a large, rounded, sack-like object with long, trailing ribbons or fabric hanging down over the edge of the wall. In the background, there is a faint, stylized outline of a sun rising or setting behind a distant cityscape or architectural silhouette. The style is reminiscent of 19th-century pen-and-ink book illustrations.",
+    "visualObjectsEn": "Skeletal figure, scythe, dark robe, large sack or bundle, long ribbons or fabric strips, stone ledge or wall, sun rays, distant city silhouette.",
+    "recognizableCharactersOrPeopleEn": "A personified figure of Death or a skeleton.",
+    "uncertaintyNotes": "The exact nature of the sack-like object is ambiguous; it could represent a burden, a collection of souls, or simply a bundle of fabric. The background silhouette is too stylized to identify a specific city. The artist's initials 'J.H.C.' are visible in the bottom right corner, but the specific identity of the artist is not confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 20,
+    "paragraphIndexZeroBased": 8,
+    "exactSourceQuotation": "something struggling violently⁠—was lifted high against the sky, a black, vague enigma against the starlight; and as this black object came down again, I saw by the green brightness that it was a man.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a skeletal figure (Death) holding a sack-like object (the victim) against a backdrop of a rising/setting sun or light source. This aligns with the scene in Chapter 20 where the narrator watches a Martian fighting-machine lift a man (a 'black, vague enigma') high against the sky, silhouetted against the light, before he is taken away.",
+    "suggestedAltArNotApproved": "A skeletal figure representing Death holding a bundle against a backdrop of a distant sun, illustrating the grim fate of a human victim captured by a Martian machine.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a skeletal figure resembling the Grim Reaper holding a scythe, seated next to a large sack-like object on a stone wall, with a cityscape in the background.",
+    "visualContradictions": "The passage describes a Martian fighting-machine with a hood containing a Martian, a tentacle lifting a stout, middle-aged man into a cage on its back. The engraving depicts a traditional skeletal personification of Death with a scythe and a large sack or bundle, completely lacking the fighting-machine, the Martian, and the specific depiction of the captured gentleman described in the text.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_215_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-cbb94ddf061e10e4.webp",
+  "imageSha256": "184e1b34a66943ff0684545fc0bd31a54a10c7e85a7cf6e640d9b9390f134835",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a tall, spindly, multi-legged mechanical or alien structure towering over a small village or cluster of houses. The structure has a flat, wide top and long, thin, jointed legs that extend down to the ground. Wispy, thread-like appendages hang down from the main body. Several birds are flying in the sky above the structure.",
+    "visualObjectsEn": "A large tripod-like machine, houses with pitched roofs, a church-like steeple, birds, and hanging debris or tentacles.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The nature of the central object is ambiguous; it could be interpreted as a machine, a creature, or a surreal architectural element. The style is consistent with late 19th or early 20th-century pen and ink book illustration."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 10,
+    "paragraphIndexZeroBased": 11,
+    "exactSourceQuotation": "A monstrous tripod, higher than many houses, striding over the young pine trees, and smashing them aside in its career; a walking engine of glittering metal, striding now across the heather; articulate ropes of steel dangling from it",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The description of a 'monstrous tripod, higher than many houses' and 'articulate ropes of steel dangling from it' perfectly matches the visual elements of the tripod machine and the hanging appendages described in the scene.",
+    "suggestedAltArNotApproved": "A towering tripod machine with long, jointed legs and dangling metallic tentacles striding over a village landscape.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly shows a monstrous tripod machine towering higher than houses, striding over buildings with articulate ropes of steel dangling from it, exactly as described in the passage.",
+    "visualContradictions": "None.",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

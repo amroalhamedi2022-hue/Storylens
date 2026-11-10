@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:H_G_Wells_La_guerre_des_mondes_1906_(page_214_crop).jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-686b310c2b507880.webp",
+  "imageSha256": "19814eec517d330e301e84eda3daf03c9dab23cc77207697a3820270b50f14e8",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white ink illustration depicting a gaunt, disheveled figure standing near a vertical architectural element, possibly a wall or pillar. The figure is draped in loose, tattered fabric and appears to be emerging from or surrounded by swirling clouds or smoke. The style is reminiscent of a 19th-century pen-and-ink sketch or etching.",
+    "visualObjectsEn": "A human figure with long, messy hair, wearing a simple, draped garment; a vertical structure on the right side; swirling, cloud-like or smoky atmospheric effects; a signature or monogram 'AC' in the bottom right corner.",
+    "recognizableCharactersOrPeopleEn": "A single, unidentified, emaciated human figure.",
+    "uncertaintyNotes": "The exact nature of the figure (e.g., ghost, beggar, or mythological being) is ambiguous. The 'smoke' could represent supernatural manifestation, dust, or fog. The architectural element is only partially visible, making its specific function unclear."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 23,
+    "paragraphIndexZeroBased": 2,
+    "exactSourceQuotation": "The wall was some six feet high, and when I attempted to clamber it I found I could not lift my feet to the crest. So I went along by the side of it, and came to a corner and a rockwork that enabled me to get to the top, and tumble into the garden I coveted.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a gaunt, disheveled figure near a vertical architectural element (a wall) and suggests a scene of struggle or movement, which aligns with the narrator's desperate attempt to climb a wall to reach a garden in Chapter 23. The 'swirling clouds or smoke' in the illustration can be interpreted as the 'red weed' or the atmospheric conditions described in the surrounding text of this chapter.",
+    "suggestedAltArNotApproved": "A gaunt, disheveled figure struggling to climb a high wall, surrounded by swirling, cloud-like atmospheric effects, reflecting the narrator's desperate search for food in a ruined garden.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a gaunt, disheveled figure draped in loose fabric standing next to a vertical architectural element surrounded by smoky or cloudy effects, signed with 'AC'.",
+    "visualContradictions": "The passage describes the protagonist wading through red weed, climbing a garden wall, and gathering onions, gladiolus bulbs, and carrots. None of these specific actions, objects (vegetables, red weed), or the garden/wall climbing scene are depicted in the engraving, which only shows an abstract, emaciated figure in smoke next to a wall.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
