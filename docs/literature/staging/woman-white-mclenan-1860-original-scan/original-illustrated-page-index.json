@@ -1,0 +1,622 @@
+{
+  "schemaVersion": 1,
+  "bookId": "the-woman-in-white",
+  "sourcePDF": "File:The woman in white. A novel .. (IA womaninwhitenove00collrich).pdf",
+  "sourcePDFSHA256": "97c7236c8f6f02d63fa2a11043402f781467ba8c57aad48556be72080f19b854",
+  "sourceEdition": "1860 Harper & Brothers first illustrated American edition, John McLenan",
+  "provenance": "Visual page-by-page inspection of 18 contact sheets showing 278 actual pages of the individually Commons-PD historical first edition",
+  "documentedOriginalIllustrationCount": 74,
+  "visualPageIndicesChecked": 278,
+  "earlierAutoExtractedUniqueDrawingPages": [
+    42,
+    55,
+    129,
+    157,
+    174,
+    195,
+    232,
+    236
+  ],
+  "newOriginalArtworkPagesAwaitingSeparateCrops": 66,
+  "publicationApproved": false,
+  "allNarrativeScenesEditoriallyApproved": false,
+  "focusGuide": {
+    "L": "left-column engraving, exclude facing right textual column",
+    "R": "right-column engraving, exclude facing left textual column",
+    "F": "upper full-width scene; preserve native original source ink, border and captions when visible"
+  },
+  "originalScannedPagesWithWoodcuts": [
+    {
+      "sourcePDFPageOneBased": 11,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 17,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 21,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 25,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 27,
+      "visualIllustrationFocus": "R",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 28,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 34,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 37,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 42,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 44,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 46,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 48,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 55,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 58,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 61,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 62,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 70,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 71,
+      "visualIllustrationFocus": "R",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 75,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 78,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 82,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 87,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 91,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 92,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 96,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 98,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 101,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 105,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 108,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 112,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 115,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 117,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 119,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 121,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 124,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 127,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 128,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 129,
+      "visualIllustrationFocus": "R",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 135,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 138,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 141,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 147,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 150,
+      "visualIllustrationFocus": "R",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 152,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 157,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 158,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 161,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 168,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 169,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 174,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 176,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 178,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 183,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 184,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 185,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 191,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 192,
+      "visualIllustrationFocus": "R",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 195,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 199,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 202,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 206,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 208,
+      "visualIllustrationFocus": "R",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 215,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 216,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 220,
+      "visualIllustrationFocus": "R",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 222,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 225,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 226,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 230,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 232,
+      "visualIllustrationFocus": "R",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 235,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 236,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 244,
+      "visualIllustrationFocus": "F",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    },
+    {
+      "sourcePDFPageOneBased": 245,
+      "visualIllustrationFocus": "L",
+      "originalArtworkPresentOnThisScannedPage": true,
+      "originalPrintedCaption": null,
+      "proposedNarrativeUnit": null,
+      "rightsStatus": "PENDING_HUMAN_SCENE_AND_TERRITORIAL_REVIEW"
+    }
+  ]
+}
