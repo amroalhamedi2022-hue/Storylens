@@ -48,3 +48,6 @@ node tools/test_story_art_openai.cjs
 
 ## Cross-tool export — ChatGPT Images, Canva, Midjourney
 Run `node tools/export_story_art_briefs.cjs --output-dir /tmp/lingua-prompt-exports`. It reads the **actual approved source-paragraph verifier** (no chatbot summary) and exports **four individual scene prompts** to `chatgpt-image-prompt.txt`, `canva-image-prompt.txt` and `midjourney-manual.txt` plus JSON source SHA/alt and honest review instructions. Midjourney is strictly MANUAL (do not imply the tool has an automated API). All prompts state images are modern AI art, no fake original attribution, no scenes invented or images generated. GitHub CI uploads the complete five-file no-cost prompt package as an Actions artifact, no credential stored.
+
+## Actual separate AI-art image candidates, 10 November 2026
+Four real WebP binary files (two scenes × full/mobile) are preserved under `docs/art-generation/review/2026-11-10/`, in Git, **not** `app/src/main/assets/art`. Run `node tools/test_generated_art_review_candidates.cjs` to verify all four SHA256 and actual source paragraph identity. Detailed editorial rejection evidence is in [the review README](review/2026-11-10/README.md). Both retain all release flags false; one Fogg image explicitly requires regeneration due to incorrect beard/hair details.

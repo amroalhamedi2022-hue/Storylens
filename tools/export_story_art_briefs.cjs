@@ -8,8 +8,8 @@ const fs=require('node:fs'),path=require('node:path'),os=require('node:os');
 const {run:verifiedQueue}=require('./story_art_pilot.cjs');
 const DEFAULT=path.join(os.tmpdir(),'lingua-story-art-briefs');
 function serialise(queue){
- if(!queue||queue.releaseApproved!==false||queue.queueCount!==4||
-    !Array.isArray(queue.queue)||queue.queue.length!==4||
+ if(!queue||queue.releaseApproved!==false||queue.queueCount!==5||
+    !Array.isArray(queue.queue)||queue.queue.length!==5||
     queue.queue.some(s=>s.editoriallyApproved||s.status!=='PROMPT_READY_NOT_GENERATED'))
   throw Error('Refusing to export a non-verified or ambiguously approved scene queue');
  const make=(target,custom)=>{
@@ -17,7 +17,7 @@ function serialise(queue){
    'Lingua Tales — '+target+' | Scene-specific authoring prompts',
    'Generated from actual, verified bilingual novel paragraphs.',
    'ALL images are MODERN AI ART, NEVER historical originals.',
-   'Four candidates. ZERO approved pictures. Human passage/visual/rights review mandatory.',
+   'Five candidates. ZERO approved pictures. Human passage/visual/rights review mandatory.',
    'Do not fabricate events not in each cited paragraph.',
    ''
   ];

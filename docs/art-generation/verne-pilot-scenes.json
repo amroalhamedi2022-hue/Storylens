@@ -24,6 +24,18 @@
       "altAr": "رسم حديث بأسلوب الحفر الكلاسيكي لواجهة منزل فيلياس فوغ في شارع سافيل رو سنة 1872."
     },
     {
+      "id": "verne-ch01-fogg-reading",
+      "chapterOneBased": 1,
+      "paragraphZeroBased": 11,
+      "anchorExcerpt": "His sole pastimes were reading the papers and playing whist.",
+      "people": [
+        "phileas-fogg"
+      ],
+      "description": "Phileas Fogg, a reserved English gentleman about forty, seated quietly inside his Reform Club reading a newspaper in 1872 London. Crucial source likeness: a BEARD, light-colored hair and whiskers, composed expression, tall well-built build and dignified dark Victorian suit. Other club members may be visible unobtrusively in the background. Not a wager scene, no railway or balloons.",
+      "altEn": "Phileas Fogg reads a newspaper at a London gentlemen's club in 1872.",
+      "altAr": "فيلياس فوغ يقرأ صحيفة في نادٍ إنجليزي في لندن سنة 1872."
+    },
+    {
       "id": "verne-ch01-new-servant",
       "chapterOneBased": 1,
       "paragraphZeroBased": 19,

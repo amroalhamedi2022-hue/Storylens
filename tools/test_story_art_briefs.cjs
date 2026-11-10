@@ -8,7 +8,7 @@ const files=serialise(queue);
 assert.equal(Object.keys(files).length,5);
 for(const file of ['midjourney-manual.txt','canva-image-prompt.txt','chatgpt-image-prompt.txt']){
  const content=files[file];
- assert.equal((content.match(/=== verne-ch0/g)||[]).length,4);
+ assert.equal((content.match(/=== verne-ch0/g)||[]).length,5);
  assert.ok(content.includes('ONE independent illustration'));
  assert.ok(content.includes('ALL images are MODERN AI ART'));
  assert.ok(content.includes('source')||content.includes('Source'));
@@ -32,4 +32,4 @@ try{
  fs.writeFileSync(p,'corrupted-review');
  assert.throws(()=>main(['--output-dir',temp]),/Refuse overwrite/);
 }finally{fs.rmSync(temp,{recursive:true,force:true});}
-console.log('PASS: four source-pinned engine prompts, no guessed scenes, deterministic text export, no paid calls, fail-on-overwrite');
+console.log('PASS: five source-pinned engine prompts, no guessed scenes, deterministic text export, no paid calls, fail-on-overwrite');
