@@ -77,6 +77,11 @@
 | 48 | P2 | وميض شاشة فاتحة عند فتح التطبيق | OPEN · لم ينفذ إصلاح |
 | 49 | P2 | تفاوت تباين الثيمات | OPEN · لم ينفذ إصلاح |
 
+
+### Newly discovered from actual GitHub Chromium screenshots (not counted among the original 49 video findings)
+
+- **#50 / P1 / CODE PATCHED, browser recheck pending:** entire lower part of chapter tiles (chapter title and rights/image label) was **hard-clipped** on 360×760 and 1280×840 images in successful chapter-gallery browser run #42783887845. Root cause: fixed-height `dialog` + `overflow-y:hidden` on `.lt-chapter-gallery-track` made full tiles unreachable; the footer covered them. Fix: make modal scroll vertically as one coherent view, keep its rail horizontally scrollable at intrinsic card height, compact narrow portrait header and paper tiles. Recheck actual screenshot images after latest CI, including 360×760, 460×860, 760×390 and 1280×840. No approved source art change.
+
 ### Outstanding critical follow-up
 
 - **P0 #2–3, #8 and P1 #9–11:** genuine sheet deformation, correct continuous geometry/material, proper front/back masking and curved ink placement require a physical HTML curl redesign and 0%, 25%, 50%, 75%, 100% slow-motion screenshots; border removal alone isn't a new paper physics engine.
