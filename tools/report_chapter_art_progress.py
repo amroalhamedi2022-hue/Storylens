@@ -951,6 +951,39 @@ def generate() -> dict:
                             "; " + str(lost_world_original_1912) +
                             " original illustrated 1912 plate files archived, scene and rights pending"
                         )
+                    if slug == "the-lost-world" and mapped.get("original1912SourceVerifiedChapterCoPlacement"):
+                        if (mapped.get("original1912SourceVerifiedChapterCoPlacement") != 5 or
+                                mapped.get("additionalOriginal1912ChapterPicturesHeldForReview") != 4 or
+                                mapped.get("humanSceneAndTerritorialRelease") != "PENDING__NOT_PUBLISHED" or
+                                coverage["localCandidateChapters"] != 5 or
+                                coverage["readyForUICards"] != 0):
+                            raise ValueError("Original five source-backed illustrated chapters falsely approved")
+                        secondaries, art_paths, art_hashes = 0, set(), set()
+                        for chapter in mapped["chapters"]:
+                            if chapter.get("primaryImage"):
+                                art_paths.add(chapter["primaryImage"]["imagePath"])
+                                art_hashes.add(chapter["primaryImage"]["sha256"])
+                            for illustration in chapter.get("additionalIllustrations", []):
+                                if (illustration.get("sourceActualChapterOneBased") != chapter["chapterOneBased"]
+                                        or illustration.get("editoriallyApproved") is not False
+                                        or illustration.get("publishedToApp") is not False
+                                        or illustration.get("rightsStatus") !=
+                                        "PENDING_1912_ORIGINAL_PRINT_AND_TERRITORIAL_REVIEW"
+                                        or illustration["imagePath"] in art_paths
+                                        or illustration["sha256"] in art_hashes):
+                                    raise ValueError("Unverified or duplicate secondary original 1912 chapter picture")
+                                check_binary(illustration["imagePath"], illustration["sha256"])
+                                art_paths.add(illustration["imagePath"])
+                                art_hashes.add(illustration["sha256"])
+                                secondaries += 1
+                        if secondaries != 4 or len(art_hashes) != 9:
+                            raise ValueError("Source-backed 1912 chapter artwork count is incomplete")
+                        data["sourceVerified1912OriginalChapterCandidatesNotApproved"] = 5
+                        data["additionalSameChapterHistoricalIllustrationsNotApproved"] = 4
+                        data["sourceState"] += (
+                            "; 5 original English Wikisource chapter-co-placed primaries and "
+                            "4 same-chapter secondary original pictures, no visual/rights/editorial release"
+                        )
                     if slug == "a-study-in-scarlet" and scarlet_originals:
                         data["sourceState"] += "; " + str(scarlet_originals) + " original Friston artwork files archived"
                     if slug == "the-sign-of-the-four" and townsend_originals:
