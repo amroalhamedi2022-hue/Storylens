@@ -414,9 +414,9 @@ def verify_arabian_unassigned_original_period_art() -> dict:
     """
     archives = {
         "dulac": (
-            STAGING / "arabian-nights-dulac-1907-original-colour-plates" / "manifest.json",
-            "Category:Stories from The Arabian Nights (Dulac, 1907)",
-            "Edmund Dulac", 15,
+            STAGING / "arabian-nights-dulac-london-1907-original-colour-plates" / "manifest.json",
+            "Category:Stories from The Arabian Nights (Dulac, 1907) (London)",
+            "Edmund Dulac", 28,
         ),
         "gross": (
             STAGING / "arabian-nights-gross-1838-original-night-illustrations" / "manifest.json",
@@ -442,7 +442,7 @@ def verify_arabian_unassigned_original_period_art() -> dict:
         if not isinstance(images, list) or len(images) > max_count or (
                 doc.get("historicalOriginalImageFileCountVerifiedByManifest") != len(images)):
             raise ValueError("Original Arabian historical print count unsupported by source")
-        page_list = {39, 47, 57, 65, 75, 89, 109, 117, 139, 147, 155, 177, 197, 209, 229}
+        page_list = set(range(2, 31)) - {11}
         night_list = {9, 109, 167, 231, 236, 247, 460}
         local_names = set()
         for image in images:
@@ -473,10 +473,10 @@ def verify_arabian_unassigned_original_period_art() -> dict:
             if (original in all_originals or binary in all_binaries or local_path in local_names):
                 raise ValueError("Same Arabian historical printed plate/binary reused or duplicated")
             if edition == "dulac":
-                if (image.get("sourcePrintedPageOneBased") not in page_list
+                if (image.get("sourceEditionPlateOrdinal") not in page_list
                         or image.get("sourceArtworkYear") != 1907
                         or image.get("captionEvidenceStatus") !=
-                        "EXACT_1907_PRINT_PAGE_NUMBER_NOT_STORY_ALIGNED"):
+                        "EXACT_LONDON_1907_PRINTED_PLATE_ORDINAL_NOT_STORY_ALIGNED"):
                     raise ValueError("False Dulac historical original plate page claim")
             else:
                 if (image.get("sourcePrintedNightNumber") not in night_list
