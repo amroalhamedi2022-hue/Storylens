@@ -2,7 +2,7 @@ name: Lingua Tales • Story Art Pilot
 on:
   push:
     branches: ['feature/story-art-*']
-    paths: ['tools/story_art_pilot.cjs','tools/test_story_art_pilot.cjs','tools/generate_story_art_openai.cjs','tools/test_story_art_openai.cjs','tools/generated-art-reader.test.cjs','app/src/main/assets/reader-experience.js','app/src/main/assets/index.html','tools/package_generated_story_art.py','tools/test_generated_art_packaging.py','app/src/main/assets/lt-generated-art-registry.js','docs/art-generation/**','.github/workflows/story-art-pilot.yml']
+    paths: ['tools/story_art_pilot.cjs','tools/test_story_art_pilot.cjs','tools/generate_story_art_openai.cjs','tools/test_story_art_openai.cjs','tools/generated-art-reader.test.cjs','tools/export_story_art_briefs.cjs','tools/test_story_art_briefs.cjs','app/src/main/assets/reader-experience.js','app/src/main/assets/index.html','tools/package_generated_story_art.py','tools/test_generated_art_packaging.py','app/src/main/assets/lt-generated-art-registry.js','docs/art-generation/**','.github/workflows/story-art-pilot.yml']
   pull_request:
     branches: [main]
     paths: ['tools/story_art_pilot.cjs','tools/test_story_art_pilot.cjs','tools/generate_story_art_openai.cjs','tools/test_story_art_openai.cjs','docs/art-generation/**','.github/workflows/story-art-pilot.yml']
@@ -27,6 +27,7 @@ jobs:
           node --check tools/generate_story_art_openai.cjs
           node tools/test_story_art_openai.cjs
           node tools/generated-art-reader.test.cjs
+          node tools/test_story_art_briefs.cjs
           node tools/generate_story_art_openai.cjs --scene verne-ch01-new-servant
           python3 tools/package_generated_story_art.py --check
           python3 tools/test_generated_art_packaging.py
@@ -34,3 +35,12 @@ jobs:
         run: |
           node tools/story_art_pilot.cjs --export /tmp/story-art-queue.json
           node -e 'const q=require("/tmp/story-art-queue.json");if(q.releaseApproved||q.queueCount!==4||q.queue.some(s=>!s.generated||s.editoriallyApproved||s.status!=="PROMPT_READY_NOT_GENERATED"))process.exit(1)'
+      - name: Export source-verified prompts for the three requested image tools
+        run: node tools/export_story_art_briefs.cjs --output-dir /tmp/lingua-prompt-exports
+      - name: Preserve review-ready prompts as GitHub Actions artifact (no generated images)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lingua-tales-verified-art-prompts-no-images
+          path: /tmp/lingua-prompt-exports/*
+          if-no-files-found: error
+          retention-days: 30
