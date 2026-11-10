@@ -36,6 +36,22 @@ engine.ILLUSTRATED_EDITION = (
 )
 
 
+
+def pending_scene_count() -> int:
+    """Compute work locally; ZERO requests to Gemini if all images reviewed."""
+    archive = json.loads((ART / "manifest.json").read_text("utf-8"))
+    count = 0
+    for item in archive["images"]:
+        file = engine.record_file(item)
+        if file.exists():
+            record = json.loads(file.read_text("utf-8"))
+            if (record.get("status") == "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED"
+                    and "visualCrosscheck" in record):
+                continue
+        count += 1
+    return count
+
+
 def check() -> None:
     doc = collect()
     archive = json.loads((ART / "manifest.json").read_text("utf-8"))
@@ -54,16 +70,22 @@ def check() -> None:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--self-test", action="store_true")
-    ap.add_argument("--max-new", type=int, default=2)
+    ap.add_argument("--pending-count", action="store_true")
+    ap.add_argument("--max-new", type=int, default=4)
     args = ap.parse_args()
     try:
         if args.self_test:
             check()
+        elif args.pending_count:
+            print("PENDING_UNREVIEWED_TOWNSEND_IMAGES:", pending_scene_count())
         elif not 1 <= args.max_new <= 4:
             ap.error("--max-new must be 1..4")
         else:
-            engine.corpus = collect
-            engine.run(args.max_new)
+            if pending_scene_count() == 0:
+                print("All eight genuine Townsend images have review checkpoints; no Gemini API calls")
+            else:
+                engine.corpus = collect
+                engine.run(args.max_new)
     except Exception as exc:
         message = str(exc)
         secret = os.environ.get("GEMINI_API_KEY", "")
