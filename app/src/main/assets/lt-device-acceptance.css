@@ -667,3 +667,50 @@ body :lang(en):not(svg),.reader[data-lt-source="en"] :is(h2,.sentence){
 @media(prefers-reduced-motion:reduce){
  .reader .lt-page-controls{transition:none!important}
 }
+
+
+/* Audit-49 #45-47: Settings labels and native select controls never overlap.
+ * Phone-size sheets scroll internally rather than slicing the last controls.
+ * Inputs remain editable and the exit button is always reachable. */
+.lt-settings-overlay{
+ padding:max(12px,env(safe-area-inset-top,0px)) 12px max(12px,env(safe-area-inset-bottom,0px))!important;
+ align-items:center!important;justify-content:center!important;
+ overscroll-behavior:contain;
+}
+.lt-settings-overlay .lt-settings-sheet{
+ box-sizing:border-box!important;width:min(620px,100%)!important;
+ max-width:min(620px,calc(100vw - 24px))!important;
+ max-height:calc(100dvh - max(24px,env(safe-area-inset-top,0px) + env(safe-area-inset-bottom,0px)))!important;
+ overflow-y:auto!important;overflow-x:hidden!important;
+ overscroll-behavior-y:contain;
+ -webkit-overflow-scrolling:touch;
+ scroll-padding-bottom:72px;
+}
+.lt-settings-sheet .lt-font-setting{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) minmax(145px,44%)!important;
+ align-items:center!important;
+ gap:10px 16px!important;
+ min-width:0!important;
+ margin-block:13px!important;
+}
+.lt-settings-sheet .lt-font-setting>span{
+ min-width:0!important;max-width:100%!important;
+ overflow-wrap:anywhere;line-height:1.5!important;
+}
+.lt-settings-sheet .lt-font-setting>select{
+ box-sizing:border-box!important;
+ width:100%!important;min-width:0!important;max-width:100%!important;
+ margin:0!important;min-height:44px!important;
+}
+.lt-settings-sheet>footer{
+ position:sticky;bottom:0;z-index:2;
+ padding:13px 0 max(3px,env(safe-area-inset-bottom,0px));
+ background:var(--card,#f7f1e5);
+}
+@media(max-width:420px){
+ .lt-settings-sheet .lt-font-setting{
+  grid-template-columns:minmax(0,1fr)!important;gap:6px!important;
+ }
+ .lt-settings-sheet .lt-font-setting>select{max-width:100%!important}
+}
