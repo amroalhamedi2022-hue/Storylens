@@ -666,3 +666,16 @@ dialog.lt-chapter-gallery .lt-chapter-gallery-track{
   min-height:170px;
  }
 }
+
+
+/* AUDIT-50 sticky locator: the source-chapter locate/continue action must
+ * remain visible without searching for a button beneath a tall scrollable
+ * sheet. The horizontally ordered cards remain reachable by normal vertical
+ * scrolling beneath this footer, with bottom space reserved in document flow. */
+dialog.lt-chapter-gallery .lt-chapter-gallery-footer{
+ position:sticky!important;
+ bottom:0!important;
+ z-index:8;
+ background:linear-gradient(180deg,rgba(253,249,240,.96),#f8eedb)!important;
+ box-shadow:0 -1px 0 rgba(99,88,73,.21);
+}
