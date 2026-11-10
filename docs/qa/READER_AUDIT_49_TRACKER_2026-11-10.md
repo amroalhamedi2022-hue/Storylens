@@ -1,3 +1,22 @@
+## UPDATED EXECUTION DASHBOARD — 10 November 2026 / Codex delegation
+
+**Current development integration:** PR [#68](https://github.com/amroalhamedi2022-hue/Storylens/pull/68), branch `fix/reader-integrity-49-audit-20261110`. Main has additional literature/art source commits; keep the two workstreams' files separate. PR #68 is **OPEN**, not installed/released.
+
+**Verified exact-SHA code validation before documentation update:** `1f574f9ed63118521c67873739ee78bbf33bf519`, Android [run #42785164198](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42785164198) **SUCCESS** (including unit tests, Android build/identity, Chromium artwork, Wen Glass, physical RTL/LTR portrait/spread curl, Wen Reader Sanctuary); chapter gallery [#42785164150](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42785164150) **SUCCESS**. **After documentation-only commits the HEAD advances; recheck final HEAD CI before merging**. Workflow artifacts include preview/debug and **unsigned** production; no owner-signed installable release claimed.
+
+**Issue accounting:** Original 49 video defects: **19 CODE FIXED / MITIGATED / PARTIAL** and **30 OPEN**, with **zero hardware-accepted**. Additional #50 / P1 was found in genuine CI screenshots: gallery card bottoms clipped, layout fix committed; automated browser checks green at the verified source SHA but direct device visual sign-off pending. This is a **50-finding ledger**, not an assertion of 50 completed fixes. [Full tracker](docs/qa/READER_AUDIT_49_TRACKER_2026-11-10.md).
+
+**Completed at source level for PR #68:** first-paper heading with measured title height; distinct verso/underlay and temporary blank sheet for trailing odd spread; controlled paper-shadow/facet seams; physical RTL/LTR flip tests; recoverable Back/Settings in landscape immersive mode; accessible page counts, paper control contrast, no selection handles on chapter gallery labels; settings rows/scroll; compact gallery card height and fixed gallery overflow. Existing CHG-05 PR #67 stays preserved, not redone.
+
+**Remaining highest-impact work:**
+- **Delegated ONLY to Codex with owner approval:** P0 #16/#17 + P1 #18 real line-level, non-clipping, measured page pagination. Full instructions at [`docs/prompts/CODEX_LINGUA_REAL_PAPER_PAGINATION_2026-11-10.md`](docs/prompts/CODEX_LINGUA_REAL_PAPER_PAGINATION_2026-11-10.md). Codex creates `codex/lingua-real-paper-pagination-20261110` from latest PR #68 and opens an **unmerged PR against PR #68 branch**. The main chat avoids concurrent edits to Codex-owned `reader-experience.js`, `reader-experience.css` and `tools/measured-reader-pages.test.cjs`.
+- **Owner chat continues separately:** P0 #2/#3/#8 plus page curl visual realism, outer-sheet touch (#12), frame rate/DOM budget (#14), boundary preview (#13), remaining #22/#25/#28/#30/#31 and #38–#49 UX/design items. Work only in non-overlapping files while Codex edits pagination.
+- **External dependencies:** approved chapter-specific images remain **0** in `docs/literature/CHAPTER_ART_PROGRESS.json` (currently **288** mapped *candidates*, not approved). Source literature chat alone controls originals, translations and art rights; UI chat integrates only approved assets. Physical Android phone and Xiaomi Pad 5, real 120Hz smoothness, in-place signed update with original certificate remain **NOT VERIFIED**.
+
+**Hard gates:** keep actual source text, translation, tap-dictionary, Saved Words/SRS, per-chapter position, offline behavior and backup keys unchanged; do not disable failing QA. Run full tests at exact PR tip after Codex PR integration; recheck real 360×760, 460×860, 760×390, 1280×840 gallery screenshots including entire chapter title/label; then physical phone + Pad 5 portrait/landscape and matching owner signing certificate. Do not publish APK from this design branch.
+
+---
+
 # Lingua Tales — 49-issue reader and UI verification tracker (2026-11-10)
 
 > **Scope:** A *visual/functional* defect ledger, NOT a cybersecurity assessment. Based on the user's 03:25.7 screen capture and source snapshot from 2026-11-09, reconciled with GitHub **main `ec026268aa1`** on 2026-11-10. The captured APK version was not proven identical to this SHA. **Source-code patches are NOT physical-device acceptance.** Nothing in this branch replaces genuine literature or releases unapproved artwork.
@@ -80,7 +99,7 @@
 
 ### Newly discovered from actual GitHub Chromium screenshots (not counted among the original 49 video findings)
 
-- **#50 / P1 / CODE PATCHED, browser recheck pending:** entire lower part of chapter tiles (chapter title and rights/image label) was **hard-clipped** on 360×760 and 1280×840 images in successful chapter-gallery browser run #42783887845. Root cause: fixed-height `dialog` + `overflow-y:hidden` on `.lt-chapter-gallery-track` made full tiles unreachable; the footer covered them. Fix: make modal scroll vertically as one coherent view, keep its rail horizontally scrollable at intrinsic card height, compact narrow portrait header and paper tiles. Recheck actual screenshot images after latest CI, including 360×760, 460×860, 760×390 and 1280×840. No approved source art change.
+- **#50 / P1 / CODE PATCHED, automated browser CI success, hardware screenshot sign-off pending:** entire lower part of chapter tiles (chapter title and rights/image label) was **hard-clipped** on 360×760 and 1280×840 images in successful chapter-gallery browser run #42783887845. Root cause: fixed-height `dialog` + `overflow-y:hidden` on `.lt-chapter-gallery-track` made full tiles unreachable; the footer covered them. Fix: make modal scroll vertically as one coherent view, keep its rail horizontally scrollable at intrinsic card height, compact narrow portrait header and paper tiles. Recheck actual screenshot images after latest CI, including 360×760, 460×860, 760×390 and 1280×840. No approved source art change.
 
 ### Outstanding critical follow-up
 
