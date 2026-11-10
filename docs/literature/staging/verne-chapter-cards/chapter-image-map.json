@@ -6,7 +6,7 @@
   "releaseApproved": false,
   "sourceStatus": "37-original-Towle-chapters; Arabic draft needs independent editorial review",
   "chapterImagePolicy": "distinct_primary_original_period_art_per_chapter",
-  "chapterReadiness": "12_LOCAL_SCENE_CANDIDATES_FROM_13_LOCAL_PERIOD_IMAGES__25_CHAPTERS_NO_PRIMARY_IMAGE__0_RIGHTS_APPROVED",
+  "chapterReadiness": "13_LOCAL_ORIGINAL_PERIOD_SCENE_CANDIDATES__24_CHAPTERS_NO_PRIMARY_IMAGE__0_EDITORIAL_TERRITORIAL_APPROVALS",
   "artProvenanceManifest": "docs/literature/HISTORIC_VERNES_ASSETS.json",
   "chapters": [
     {
@@ -41,9 +41,40 @@
     },
     {
       "chapterOneBased": 4,
-      "titleAr": "",
-      "titleEn": "",
-      "primaryImage": null
+      "titleAr": "فيه يذهل فيلياس فوغ خادمه باسبارتو",
+      "titleEn": "In Which Phileas Fogg Astounds Passepartout, His Servant",
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/verne-commons-period-plates/plates/verne-commons-18b8df2306681bb3.webp",
+        "sha256": "290a11e73c792a51504eb7c6ef03e4709b67a1528f1cd3aa1524a0b9924c8d0a",
+        "webpBytes": 570408,
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_07.jpg",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_07.jpg",
+        "creator": "Alphonse de Neuville and/or Léon Benett (individual plate attribution unconfirmed)",
+        "sourceEdition": "Jules Verne, Le Tour du monde en quatre-vingts jours, original 1872-1873 Hetzel illustrations; chapter IV image identified by 'Une pauvre mendiante' caption",
+        "sceneAnchor": "a poor beggar-woman, with a child in her arms, her naked feet smeared with mud",
+        "sourcePassage": "a poor beggar-woman, with a child in her arms, her naked feet smeared with mud",
+        "originalEnglishSourceFile": "app/src/main/assets/classic-verne-towle-ch04.js",
+        "originalEnglishSourceGitBlobSha": "037937644d26dbddbeb3abafcaee4962517c9412",
+        "originalEnglishChapterOneBased": 4,
+        "originalFrenchEditionChapterURL": "https://fr.wikisource.org/wiki/Le_Tour_du_monde_en_quatre-vingts_jours/Chapitre_4",
+        "originalFrenchCaption": "Une pauvre mendiante",
+        "originalEnglishCaption": "A Poor Mendicant",
+        "originalEditionImagePlacement": "Original French 1873 chapter IV, page 20; separately independently described on Commons file page",
+        "originalScanMetadataSha1": "18b8df2306681bb35b903d383c64bf5ffd2d2573",
+        "rightsStatus": "PENDING_INDIVIDUAL_SCAN_TERRITORIAL_AND_EDITORIAL_REVIEW",
+        "license": "Wikimedia Commons individual Public domain scan metadata; independent territorial review pending",
+        "sourceVerificationStatus": "EXACT_ORIGINAL_CH4_PASSAGE_AND_VINTAGE_CH4_PRINT_CAPTION_PLUS_ACTUAL_IMAGE_SEEN__HUMAN_EDITORIAL_CLEARANCE_PENDING",
+        "visualObservationEn": "Original black-and-white printed engraving of a poor shawled woman standing with a young child near a masonry wall; child leans by the wall, matching the beggar and child scene at Charing Cross station.",
+        "altEn": "An original nineteenth-century illustration of a poor woman with a child at Charing Cross station, where Phileas Fogg encounters them before departing.",
+        "altAr": "نقش تاريخي أصلي لامرأة فقيرة ترتدي شالًا وإلى جانبها طفل قرب جدار محطة القطار، في مشهد لقائهما مع فيلياس فوغ قبل الرحلة.",
+        "editionDifferenceNotice": "The archived engraving is from the illustrated French edition; the quoted English scene is the independent 1873 Towle translation, not identical French text.",
+        "imageOriginalColourUnchanged": true,
+        "nonAIArt": true,
+        "editoriallyApproved": false,
+        "humanEditorApproved": false,
+        "territorialRightsCleared": false,
+        "publicationStatus": "STAGING_ONLY_NOT_PUBLISHED"
+      }
     },
     {
       "chapterOneBased": 5,
@@ -393,6 +424,7 @@
   ],
   "artProvenanceManifests": [
     "docs/literature/HISTORIC_VERNES_ASSETS.json",
-    "docs/literature/staging/verne-period-plates-20261105/manifest.json"
+    "docs/literature/staging/verne-period-plates-20261105/manifest.json",
+    "docs/literature/staging/verne-commons-period-plates/manifest.json"
   ]
 }
