@@ -29,10 +29,12 @@ assert.deepEqual(asArray(paginate([1200,90,90],700)),[0,1],
  'oversized passage is scrollable alone, not cut or discarded');
 assert.equal(paginate([80,NaN],700),null,'corrupt heights fall back safely');
 const unmeasured=element(0);assert.equal(measure([unmeasured]),null,'invalid WebView bounds use legacy estimator');
-assert.match(source,/ltMeasuredParagraphHeights\(sentences\)/,'real DOM measurements actually drive the page boundaries');
-assert.match(source,/ltPageStarts\(paragraphLengths/,'length-based compatibility fallback preserved');
-assert.match(source,/const starts=\(measured&&ltMeasuredPageStarts/,'measured pages preferred');
-assert.match(source,/const paragraphLengths=sentences\.map/,'both Arabic and English companion content counted');
+assert.match(source,/ltMeasuredContentPages\(sentenceBox,heading,caption,spread,pageHeight\)/,
+ 'Range-based measured content drives supported WebViews');
+assert.match(source,/document\.createRange/,'production pagination uses real DOM ranges');
+assert.match(source,/document\.createTreeWalker/,'nested dictionary tokens are split without flattening HTML');
+assert.match(source,/const starts=\(measured&&ltMeasuredPageStarts/,
+ 'whole-paragraph grouping remains only as an old-WebView fallback');
 
 // Audit-49: a multi-line chapter heading lives on the first page and must
 // reserve vertical space without changing existing page/paragraph anchors.
@@ -47,11 +49,30 @@ vm.runInNewContext(source.slice(estimateStart,estimateEnd)+
  '\nglobalThis.estimate=ltPageStarts;',fallbackEnv);
 assert.ok(Array.from(fallbackEnv.estimate([100,100,100],700,420,20,[],170)).length>=1,
  'estimated fallback also accepts first-page inset');
-assert.match(source,/pages\[0\]\.prepend\(caption,heading\)/,
+assert.match(source,/page\.append\(caption,heading\)/,
  'original semantic heading and chapter number actually move onto first physical page');
-assert.match(source,/ltMeasuredPageStarts\(measured,window\.innerHeight,firstPaperInset\)/);
+assert.match(source,/ltMeasuredPageStarts\(measured,window\.innerHeight,inset\)/);
 assert.match(source,/spread===2\s*\?uiText\('الصفحتان /,
  'a two-page spread announces both visible page numbers');
+
+// Duplicate paragraph starts are real continuation pages. A character anchor
+// restores the correct fragment after rotation/font reflow.
+const anchorStart=source.indexOf('function ltPageForTextAnchor(');
+const anchorEnd=source.indexOf('// Word endpoints',anchorStart);
+const anchorContext={};
+vm.runInNewContext(source.slice(anchorStart,anchorEnd)+'\nglobalThis.restore=ltPageForTextAnchor;',anchorContext);
+assert.equal(anchorContext.restore([0,0,0,1],[0,180,360,0],0,225),1);
+assert.equal(anchorContext.restore([0,0,0,1],[0,180,360,0],0,500),2);
+
+const boundaryStart=source.indexOf('function ltTextBoundaries(');
+const boundaryEnd=source.indexOf('function ltTextPosition(',boundaryStart);
+const boundaryContext={Intl};
+vm.runInNewContext(source.slice(boundaryStart,boundaryEnd)+'\nglobalThis.boundaries=ltTextBoundaries;',boundaryContext);
+const vocalized='السَّطْرُ المُقَاسُ يَبْقَى كَامِلًا.';
+const safe=new Set(new Intl.Segmenter('ar',{granularity:'grapheme'}).segment(vocalized));
+const graphemeEnds=new Set(Array.from(safe,part=>part.index+part.segment.length));
+for(const end of boundaryContext.boundaries(vocalized,'ar'))
+ assert.ok(graphemeEnds.has(end),'Arabic page boundary is grapheme-safe');
 
 // Exercise the production getTurn() method: the reverse MUST NOT reuse the
 // same next-page DOM as the exposed underlay, which doubled visible words.
