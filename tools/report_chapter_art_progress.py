@@ -570,6 +570,37 @@ def generate() -> dict:
         if local_path in allowed:
             raise ValueError("Repeated a period illustration already assigned elsewhere")
         allowed[local_path] = (item["webpSha256"], chapter_num)
+    # Title-page artwork is a *separate* book-cover candidate, never a
+    # chapter scene or an approved locally packaged cover.
+    original_cover = jload(STAGING / "verne-chapter-cards/original-historical-cover-candidate.json")
+    original_title_plates = [image for image in commons_manifest["images"] if
+                             image["wikiFile"].endswith("Neuville and Benett 02.jpg")]
+    if len(original_title_plates) != 1:
+        raise ValueError("Original Verne printed title illustration absent/duplicated")
+    title_plate = original_title_plates[0]
+    title_image_path = str((commons_plates / title_plate["localPath"]).relative_to(ROOT))
+    if (original_cover.get("schemaVersion") != 1
+            or original_cover.get("bookId") != "around-the-world-in-eighty-days-towle"
+            or original_cover.get("coverSourceType") !=
+               "ORIGINAL_PERIOD_ILLUSTRATED_TITLE_ART_NOT_PROVEN_HARDBACK_FRONT_COVER"
+            or original_cover.get("imagePath") != title_image_path
+            or original_cover.get("sha256") != title_plate["webpSha256"]
+            or original_cover.get("webpBytes") != title_plate["webpBytes"]
+            or original_cover.get("sourceURL") != title_plate["commonsPage"]
+            or original_cover.get("originalScanMetadataSha1") !=
+               title_plate["originalCommonsSHA1MetadataOnly"]
+            or original_cover.get("humanEditorialApproved") is not False
+            or original_cover.get("territorialRightsCleared") is not False
+            or original_cover.get("publicationStatus") != "STAGING_ONLY_NOT_PUBLISHED"
+            or original_cover.get("sourceScanRightsStatus") !=
+               "PENDING_INDIVIDUAL_SCAN_AND_TERRITORY_REVIEW"
+            or original_cover.get("originalColourUnchanged") is not True
+            or not original_cover.get("altAr") or not original_cover.get("altEn")):
+        raise ValueError("Original Verne title/cover source or rights misrepresented")
+    check_binary(title_image_path, title_plate["webpSha256"])
+    if any(row.get("primaryImage", {}) and row["primaryImage"].get("sha256") ==
+           original_cover["sha256"] for row in verne_map_data["chapters"]):
+        raise ValueError("Historic title page falsely reused as a distinct chapter scene")
     for row in verne_map_data["chapters"]:
         art = row.get("primaryImage")
         for image in ([art] if art else []) + row.get("secondaryImageCandidates", []):
@@ -694,7 +725,9 @@ def generate() -> dict:
         {"bookId": "around-the-world-in-eighty-days-towle",
          "title": "Around the World in Eighty Days", "sourceState": "37 source chapters plus Arabic draft",
          "chapterCount": 37, "archivedLocalHistoricArt": len(manifest) + len(additional) + commons_candidates,
-         "unassignedHistoricalCommonsImageFiles": commons_candidates, **verne},
+         "unassignedHistoricalCommonsImageFiles": commons_candidates,
+         "historicBookCoverCandidateFilesNotApproved": 1,
+         "bookCoverReadyForPublication": False, **verne},
         moonstone_row,
         {"bookId": "wells-war-of-the-worlds-1898", "title": "The War of the Worlds",
          "sourceState": "27 original English 17+10 chapters pinned to exact source titles and SHA, five authentic 1906 Correa scene candidate plates, all release rights pending",
