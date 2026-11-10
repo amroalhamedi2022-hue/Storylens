@@ -6,8 +6,8 @@
   "chapterCount": 16,
   "countSemantics": "AUTHENTIC_UNABRIDGED_ORIGINAL_ENGLISH_CHAPTERS",
   "releaseApproved": false,
-  "localCandidateChapters": 0,
-  "missingCandidateChapters": 16,
+  "localCandidateChapters": 5,
+  "missingCandidateChapters": 11,
   "readyForUICards": 0,
   "chapters": [
     {
@@ -55,8 +55,53 @@
       "chapterWithinBookPart": 4,
       "sourceFile": "docs/literature/staging/the-lost-world/chapter-4.xhtml",
       "sourceGitBlobSha": "12139883be01a0b50103b9240d046005910de60c",
-      "primaryImage": null,
-      "imageStatus": "ORIGINAL_SOURCE_CHAPTER_VERIFIED__NO_SCENE_MAPPED_LOCAL_IMAGE"
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/lost-world-original-1912-period-plates/plates/lost-world-1912-719e34218dacf828.webp",
+        "sha256": "9ae44bcf031cec0d0687cbd8b06002168bbcaa168709627850bfc2fc189cfd0e",
+        "originalSourceSha256": "53634e269c4ef19cde4d2d7297224f0d68e84fcabebb2567ffbc41dd25175823",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Page_59_(The_Lost_World._1912).jpg",
+        "sourceWikisourceChapterProofUrl": "https://en.wikisource.org/wiki/The_Lost_World/Chapter_IV",
+        "sourceBookEditionURL": "https://archive.org/details/lostworldbeingac00doylrich",
+        "sourceEdition": "1912 Hodder and Stoughton original illustrated edition archive-source scans; individual image artist, final scene and territory rights pending review",
+        "sourcePrintPageOneBased": 59,
+        "sourceOriginalImageCommonsSHA1": "719e34218dacf828076bbca4bc0bfa3650f7235b",
+        "sourceActualChapterOneBased": 4,
+        "sourceChapterEnglishGitBlobSha": "12139883be01a0b50103b9240d046005910de60c",
+        "sceneAnchor": "The ORIGINAL 1912 book image from printed page 59 is used on the separately transcribed English Wikisource source chapter IV. Actual pictured action and exact original paragraph remain unconfirmed.",
+        "sceneVerificationStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING",
+        "credit": "Historical 1912 illustrated novel image; individual print artist attribution requires review",
+        "license": "Public domain",
+        "rightsStatus": "PENDING_1912_ORIGINAL_PRINT_AND_TERRITORIAL_REVIEW",
+        "altEn": "Original 1912 illustrated novel image associated with Chapter IV; exact depicted event needs editorial verification",
+        "altAr": "رسم تاريخي من طبعة 1912 مرتبط بالفصل 4؛ تفاصيل المشهد بانتظار المراجعة",
+        "editoriallyApproved": false,
+        "publishedToApp": false
+      },
+      "imageStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING",
+      "additionalIllustrations": [
+        {
+          "imagePath": "docs/literature/staging/lost-world-original-1912-period-plates/plates/lost-world-1912-e0dbfdd643abebb4.webp",
+          "sha256": "5a4a549f319ad8a69ad06377bd4b66fbeeeb8a9a7f1a14d7bb8b6aeb1af02331",
+          "originalSourceSha256": "5e504336bf77d37c814256dd6579a0a74ffeb89e71f464cf023133b53ef1414e",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Page_55_(The_Lost_World,_1912).jpg",
+          "sourceWikisourceChapterProofUrl": "https://en.wikisource.org/wiki/The_Lost_World/Chapter_IV",
+          "sourceBookEditionURL": "https://archive.org/details/lostworldbeingac00doylrich",
+          "sourceEdition": "1912 Hodder and Stoughton original illustrated edition archive-source scans; individual image artist, final scene and territory rights pending review",
+          "sourcePrintPageOneBased": 55,
+          "sourceOriginalImageCommonsSHA1": "e0dbfdd643abebb49555e56156728923cdfee486",
+          "sourceActualChapterOneBased": 4,
+          "sourceChapterEnglishGitBlobSha": "12139883be01a0b50103b9240d046005910de60c",
+          "sceneAnchor": "The ORIGINAL 1912 book image from printed page 55 is used on the separately transcribed English Wikisource source chapter IV. Actual pictured action and exact original paragraph remain unconfirmed.",
+          "sceneVerificationStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING",
+          "credit": "Historical 1912 illustrated novel image; individual print artist attribution requires review",
+          "license": "Public domain",
+          "rightsStatus": "PENDING_1912_ORIGINAL_PRINT_AND_TERRITORIAL_REVIEW",
+          "altEn": "Original 1912 illustrated novel image associated with Chapter IV; exact depicted event needs editorial verification",
+          "altAr": "رسم تاريخي من طبعة 1912 مرتبط بالفصل 4؛ تفاصيل المشهد بانتظار المراجعة",
+          "editoriallyApproved": false,
+          "publishedToApp": false
+        }
+      ]
     },
     {
       "chapterOneBased": 5,
@@ -115,8 +160,53 @@
       "chapterWithinBookPart": 9,
       "sourceFile": "docs/literature/staging/the-lost-world/chapter-9.xhtml",
       "sourceGitBlobSha": "ba64ad302f7f5a592bd81307f6b886456b97d8df",
-      "primaryImage": null,
-      "imageStatus": "ORIGINAL_SOURCE_CHAPTER_VERIFIED__NO_SCENE_MAPPED_LOCAL_IMAGE"
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/lost-world-original-1912-period-plates/plates/lost-world-1912-74b165b96afef8b3.webp",
+        "sha256": "4c9682b1a613a8067686911ec2d1755c087ce8325115b8dd5eec96fbd3823673",
+        "originalSourceSha256": "71721eb64e95c02d3307a1809a7d41ede5a8da3bbcd0052dbd7d1f8d0b9a07cf",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Page_161_(The_Lost_World,_1912).jpg",
+        "sourceWikisourceChapterProofUrl": "https://en.wikisource.org/wiki/The_Lost_World/Chapter_IX",
+        "sourceBookEditionURL": "https://archive.org/details/lostworldbeingac00doylrich",
+        "sourceEdition": "1912 Hodder and Stoughton original illustrated edition archive-source scans; individual image artist, final scene and territory rights pending review",
+        "sourcePrintPageOneBased": 161,
+        "sourceOriginalImageCommonsSHA1": "74b165b96afef8b36bd7d6311d6f0185bf60d8e4",
+        "sourceActualChapterOneBased": 9,
+        "sourceChapterEnglishGitBlobSha": "ba64ad302f7f5a592bd81307f6b886456b97d8df",
+        "sceneAnchor": "The ORIGINAL 1912 book image from printed page 161 is used on the separately transcribed English Wikisource source chapter IX. Actual pictured action and exact original paragraph remain unconfirmed.",
+        "sceneVerificationStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING",
+        "credit": "Historical 1912 illustrated novel image; individual print artist attribution requires review",
+        "license": "Public domain",
+        "rightsStatus": "PENDING_1912_ORIGINAL_PRINT_AND_TERRITORIAL_REVIEW",
+        "altEn": "Original 1912 illustrated novel image associated with Chapter IX; exact depicted event needs editorial verification",
+        "altAr": "رسم تاريخي من طبعة 1912 مرتبط بالفصل 9؛ تفاصيل المشهد بانتظار المراجعة",
+        "editoriallyApproved": false,
+        "publishedToApp": false
+      },
+      "imageStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING",
+      "additionalIllustrations": [
+        {
+          "imagePath": "docs/literature/staging/lost-world-original-1912-period-plates/plates/lost-world-1912-a1c1f9eaca972d38.webp",
+          "sha256": "1106f668c96a39b8f7e7bf78ce8145ceffe6efbffaf6eec825833287ebbed7b5",
+          "originalSourceSha256": "1f109af2a8bd14eed821a65fcfd628a0f24c07b2d5616d777d2aaff1bc1a5b2f",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Page_142_(The_Lost_World,_1912).jpg",
+          "sourceWikisourceChapterProofUrl": "https://en.wikisource.org/wiki/The_Lost_World/Chapter_IX",
+          "sourceBookEditionURL": "https://archive.org/details/lostworldbeingac00doylrich",
+          "sourceEdition": "1912 Hodder and Stoughton original illustrated edition archive-source scans; individual image artist, final scene and territory rights pending review",
+          "sourcePrintPageOneBased": 142,
+          "sourceOriginalImageCommonsSHA1": "a1c1f9eaca972d38c9c7592c5bfe6abb49ca73e5",
+          "sourceActualChapterOneBased": 9,
+          "sourceChapterEnglishGitBlobSha": "ba64ad302f7f5a592bd81307f6b886456b97d8df",
+          "sceneAnchor": "The ORIGINAL 1912 book image from printed page 142 is used on the separately transcribed English Wikisource source chapter IX. Actual pictured action and exact original paragraph remain unconfirmed.",
+          "sceneVerificationStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING",
+          "credit": "Historical 1912 illustrated novel image; individual print artist attribution requires review",
+          "license": "Public domain",
+          "rightsStatus": "PENDING_1912_ORIGINAL_PRINT_AND_TERRITORIAL_REVIEW",
+          "altEn": "Original 1912 illustrated novel image associated with Chapter IX; exact depicted event needs editorial verification",
+          "altAr": "رسم تاريخي من طبعة 1912 مرتبط بالفصل 9؛ تفاصيل المشهد بانتظار المراجعة",
+          "editoriallyApproved": false,
+          "publishedToApp": false
+        }
+      ]
     },
     {
       "chapterOneBased": 10,
@@ -127,8 +217,53 @@
       "chapterWithinBookPart": 10,
       "sourceFile": "docs/literature/staging/the-lost-world/chapter-10.xhtml",
       "sourceGitBlobSha": "e8b19c0918cea3f4e6e73ed2d554dda50bb88c3b",
-      "primaryImage": null,
-      "imageStatus": "ORIGINAL_SOURCE_CHAPTER_VERIFIED__NO_SCENE_MAPPED_LOCAL_IMAGE"
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/lost-world-original-1912-period-plates/plates/lost-world-1912-c866e044500766b1.webp",
+        "sha256": "7f1182b4c016737fa55c872e278aa5b85ff8a6d1ee988282cda20812801dbc4f",
+        "originalSourceSha256": "5ab5b2d96b500f7c871530023ad753ac72ead58d117f6211fc6cf9aeaff9e27a",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Page_187_(The_Lost_World,_1912).jpg",
+        "sourceWikisourceChapterProofUrl": "https://en.wikisource.org/wiki/The_Lost_World/Chapter_X",
+        "sourceBookEditionURL": "https://archive.org/details/lostworldbeingac00doylrich",
+        "sourceEdition": "1912 Hodder and Stoughton original illustrated edition archive-source scans; individual image artist, final scene and territory rights pending review",
+        "sourcePrintPageOneBased": 187,
+        "sourceOriginalImageCommonsSHA1": "c866e044500766b102562a0e426a8e344d7ee809",
+        "sourceActualChapterOneBased": 10,
+        "sourceChapterEnglishGitBlobSha": "e8b19c0918cea3f4e6e73ed2d554dda50bb88c3b",
+        "sceneAnchor": "The ORIGINAL 1912 book image from printed page 187 is used on the separately transcribed English Wikisource source chapter X. Actual pictured action and exact original paragraph remain unconfirmed.",
+        "sceneVerificationStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING",
+        "credit": "Historical 1912 illustrated novel image; individual print artist attribution requires review",
+        "license": "Public domain",
+        "rightsStatus": "PENDING_1912_ORIGINAL_PRINT_AND_TERRITORIAL_REVIEW",
+        "altEn": "Original 1912 illustrated novel image associated with Chapter X; exact depicted event needs editorial verification",
+        "altAr": "رسم تاريخي من طبعة 1912 مرتبط بالفصل 10؛ تفاصيل المشهد بانتظار المراجعة",
+        "editoriallyApproved": false,
+        "publishedToApp": false
+      },
+      "imageStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING",
+      "additionalIllustrations": [
+        {
+          "imagePath": "docs/literature/staging/lost-world-original-1912-period-plates/plates/lost-world-1912-f00186bac40ae013.webp",
+          "sha256": "73901a8e17ee432b47b695a4cf6bc07b743b3d9c724da88a152bdfb6e51544a9",
+          "originalSourceSha256": "a3d13afbf6f9275fead8dbebd6e091acc4f8492505b02d0bfae057a4d700f573",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Page_195_(The_Lost_World,_1912).jpg",
+          "sourceWikisourceChapterProofUrl": "https://en.wikisource.org/wiki/The_Lost_World/Chapter_X",
+          "sourceBookEditionURL": "https://archive.org/details/lostworldbeingac00doylrich",
+          "sourceEdition": "1912 Hodder and Stoughton original illustrated edition archive-source scans; individual image artist, final scene and territory rights pending review",
+          "sourcePrintPageOneBased": 195,
+          "sourceOriginalImageCommonsSHA1": "f00186bac40ae0136ec8aab8ab14f51873d5e7f9",
+          "sourceActualChapterOneBased": 10,
+          "sourceChapterEnglishGitBlobSha": "e8b19c0918cea3f4e6e73ed2d554dda50bb88c3b",
+          "sceneAnchor": "The ORIGINAL 1912 book image from printed page 195 is used on the separately transcribed English Wikisource source chapter X. Actual pictured action and exact original paragraph remain unconfirmed.",
+          "sceneVerificationStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING",
+          "credit": "Historical 1912 illustrated novel image; individual print artist attribution requires review",
+          "license": "Public domain",
+          "rightsStatus": "PENDING_1912_ORIGINAL_PRINT_AND_TERRITORIAL_REVIEW",
+          "altEn": "Original 1912 illustrated novel image associated with Chapter X; exact depicted event needs editorial verification",
+          "altAr": "رسم تاريخي من طبعة 1912 مرتبط بالفصل 10؛ تفاصيل المشهد بانتظار المراجعة",
+          "editoriallyApproved": false,
+          "publishedToApp": false
+        }
+      ]
     },
     {
       "chapterOneBased": 11,
@@ -139,8 +274,53 @@
       "chapterWithinBookPart": 11,
       "sourceFile": "docs/literature/staging/the-lost-world/chapter-11.xhtml",
       "sourceGitBlobSha": "4abd98bc13fc2a7fb5e712acd46b644aa1f5042a",
-      "primaryImage": null,
-      "imageStatus": "ORIGINAL_SOURCE_CHAPTER_VERIFIED__NO_SCENE_MAPPED_LOCAL_IMAGE"
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/lost-world-original-1912-period-plates/plates/lost-world-1912-e0ece4d20015fa77.webp",
+        "sha256": "11a3de5ccb40f4516609eca90d0a423947a44ccb389199d4f284a5b49754c977",
+        "originalSourceSha256": "405225f0339dec3d74642e361823308b06b6e1c321e557768e874dc393346305",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:General_view_of_plateau_from_top_of_gingho_tree,_page_225_(The_Lost_World,_1912).jpg",
+        "sourceWikisourceChapterProofUrl": "https://en.wikisource.org/wiki/The_Lost_World/Chapter_XI",
+        "sourceBookEditionURL": "https://archive.org/details/lostworldbeingac00doylrich",
+        "sourceEdition": "1912 Hodder and Stoughton original illustrated edition archive-source scans; individual image artist, final scene and territory rights pending review",
+        "sourcePrintPageOneBased": 225,
+        "sourceOriginalImageCommonsSHA1": "e0ece4d20015fa77a6ce5a1c9b7aaa8343247f46",
+        "sourceActualChapterOneBased": 11,
+        "sourceChapterEnglishGitBlobSha": "4abd98bc13fc2a7fb5e712acd46b644aa1f5042a",
+        "sceneAnchor": "The ORIGINAL 1912 book image from printed page 225 is used on the separately transcribed English Wikisource source chapter XI. Actual pictured action and exact original paragraph remain unconfirmed.",
+        "sceneVerificationStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING",
+        "credit": "Historical 1912 illustrated novel image; individual print artist attribution requires review",
+        "license": "Public domain",
+        "rightsStatus": "PENDING_1912_ORIGINAL_PRINT_AND_TERRITORIAL_REVIEW",
+        "altEn": "Original 1912 illustrated novel image associated with Chapter XI; exact depicted event needs editorial verification",
+        "altAr": "رسم تاريخي من طبعة 1912 مرتبط بالفصل 11؛ تفاصيل المشهد بانتظار المراجعة",
+        "editoriallyApproved": false,
+        "publishedToApp": false
+      },
+      "imageStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING",
+      "additionalIllustrations": [
+        {
+          "imagePath": "docs/literature/staging/lost-world-original-1912-period-plates/plates/lost-world-1912-60205968272b6b20.webp",
+          "sha256": "3c46323e9954f4e90134a81374d64e1479fb6b4e70e7b3c9a3107d15f38fc780",
+          "originalSourceSha256": "dbcfbbdbae3d9f446c7dd9a6f3de0ce19ccc38ae9bb9a09f4b270cd23cb268bc",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Page_222_(The_Lost_World,_1912).jpg",
+          "sourceWikisourceChapterProofUrl": "https://en.wikisource.org/wiki/The_Lost_World/Chapter_XI",
+          "sourceBookEditionURL": "https://archive.org/details/lostworldbeingac00doylrich",
+          "sourceEdition": "1912 Hodder and Stoughton original illustrated edition archive-source scans; individual image artist, final scene and territory rights pending review",
+          "sourcePrintPageOneBased": 222,
+          "sourceOriginalImageCommonsSHA1": "60205968272b6b2069c420f44fed2887e7b042e6",
+          "sourceActualChapterOneBased": 11,
+          "sourceChapterEnglishGitBlobSha": "4abd98bc13fc2a7fb5e712acd46b644aa1f5042a",
+          "sceneAnchor": "The ORIGINAL 1912 book image from printed page 222 is used on the separately transcribed English Wikisource source chapter XI. Actual pictured action and exact original paragraph remain unconfirmed.",
+          "sceneVerificationStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING",
+          "credit": "Historical 1912 illustrated novel image; individual print artist attribution requires review",
+          "license": "Public domain",
+          "rightsStatus": "PENDING_1912_ORIGINAL_PRINT_AND_TERRITORIAL_REVIEW",
+          "altEn": "Original 1912 illustrated novel image associated with Chapter XI; exact depicted event needs editorial verification",
+          "altAr": "رسم تاريخي من طبعة 1912 مرتبط بالفصل 11؛ تفاصيل المشهد بانتظار المراجعة",
+          "editoriallyApproved": false,
+          "publishedToApp": false
+        }
+      ]
     },
     {
       "chapterOneBased": 12,
@@ -187,8 +367,29 @@
       "chapterWithinBookPart": 15,
       "sourceFile": "docs/literature/staging/the-lost-world/chapter-15.xhtml",
       "sourceGitBlobSha": "f2c8f1e0cfc9ef032b65f1d4d1a7455500746051",
-      "primaryImage": null,
-      "imageStatus": "ORIGINAL_SOURCE_CHAPTER_VERIFIED__NO_SCENE_MAPPED_LOCAL_IMAGE"
+      "primaryImage": {
+        "imagePath": "docs/literature/staging/lost-world-original-1912-period-plates/plates/lost-world-1912-1c5f6bab41a5eb10.webp",
+        "sha256": "9c9a7d0e4864ad5d6cd3238c4380e8921b33147c1ff0e375cd3ea36f4dd4c43b",
+        "originalSourceSha256": "a145d6c989bf62263e6d55d093cf3b21130eb91592091219fb5fbd5624e0c83e",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Celestial_Lake,_page_299_(The_Lost_World,_1912).jpg",
+        "sourceWikisourceChapterProofUrl": "https://en.wikisource.org/wiki/The_Lost_World/Chapter_XV",
+        "sourceBookEditionURL": "https://archive.org/details/lostworldbeingac00doylrich",
+        "sourceEdition": "1912 Hodder and Stoughton original illustrated edition archive-source scans; individual image artist, final scene and territory rights pending review",
+        "sourcePrintPageOneBased": 299,
+        "sourceOriginalImageCommonsSHA1": "1c5f6bab41a5eb101a796b12d461f5aaae840cab",
+        "sourceActualChapterOneBased": 15,
+        "sourceChapterEnglishGitBlobSha": "f2c8f1e0cfc9ef032b65f1d4d1a7455500746051",
+        "sceneAnchor": "The ORIGINAL 1912 book image from printed page 299 is used on the separately transcribed English Wikisource source chapter XV. Actual pictured action and exact original paragraph remain unconfirmed.",
+        "sceneVerificationStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING",
+        "credit": "Historical 1912 illustrated novel image; individual print artist attribution requires review",
+        "license": "Public domain",
+        "rightsStatus": "PENDING_1912_ORIGINAL_PRINT_AND_TERRITORIAL_REVIEW",
+        "altEn": "Original 1912 illustrated novel image associated with Chapter XV; exact depicted event needs editorial verification",
+        "altAr": "رسم تاريخي من طبعة 1912 مرتبط بالفصل 15؛ تفاصيل المشهد بانتظار المراجعة",
+        "editoriallyApproved": false,
+        "publishedToApp": false
+      },
+      "imageStatus": "WIKISOURCE_SOURCE_CHAPTER_POSITION_VERIFIED__IMAGE_SCENE_AND_TERRITORIAL_RIGHTS_PENDING"
     },
     {
       "chapterOneBased": 16,
@@ -202,5 +403,9 @@
       "primaryImage": null,
       "imageStatus": "ORIGINAL_SOURCE_CHAPTER_VERIFIED__NO_SCENE_MAPPED_LOCAL_IMAGE"
     }
-  ]
+  ],
+  "original1912SourceVerifiedChapterCoPlacement": 5,
+  "additionalOriginal1912ChapterPicturesHeldForReview": 4,
+  "historical1912PictureEvidenceFile": "docs/literature/staging/the-lost-world/original-1912-wikisource-image-evidence.json",
+  "humanSceneAndTerritorialRelease": "PENDING__NOT_PUBLISHED"
 }
