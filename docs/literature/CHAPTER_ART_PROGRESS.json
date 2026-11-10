@@ -540,6 +540,7 @@
       "missingImageChapters": 16,
       "missingReadyChapters": 16,
       "archivedLocalHistoricArt": 0,
+      "unassignedOriginal1912LostWorldImageFiles": 0,
       "mappedChapterNumbers": [],
       "readyChapterNumbers": [],
       "imageMap": "docs/literature/staging/the-lost-world/chapter-image-map.json"
