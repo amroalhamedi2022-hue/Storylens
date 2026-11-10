@@ -26,6 +26,9 @@ EVIDENCE = {
     9: ("12", "Il faisait escale à Steamer-Point",
         "the next day they put in at Steamer Point, northwest of Aden harbour, to take in coal",
         "75a612d410e6161612f9db6bce74668a4aaad836"),
+    10: ("15", "Il renversa deux de ses adversaires",
+         "knocking down two of his long-gowned adversaries with his fists and a vigorous application of his toes",
+         "eaebb6d7abdbc9598c8cb2ad31ed53fa402e187b"),
 }
 
 
@@ -59,12 +62,12 @@ def verify(data, archive, sources):
             or data.get("chapterCount") != 37
             or data.get("releaseApproved") is not False
             or data.get("chapterReadiness") !=
-            "15_LOCAL_ORIGINAL_PERIOD_SCENE_CANDIDATES__22_CHAPTERS_NO_PRIMARY_IMAGE__0_EDITORIAL_TERRITORIAL_APPROVALS"
+            "16_LOCAL_ORIGINAL_PERIOD_SCENE_CANDIDATES__21_CHAPTERS_NO_PRIMARY_IMAGE__0_EDITORIAL_TERRITORIAL_APPROVALS"
             or [c.get("chapterOneBased") for c in data["chapters"]] != list(range(1, 38))):
         raise ValueError("Verne primary count, original order, editorial rights or release hold changed")
     pictures = [c["primaryImage"] for c in data["chapters"] if c["primaryImage"]]
-    if (len(pictures) != 15 or len({p["sha256"] for p in pictures}) != 15
-            or len({p["imagePath"] for p in pictures}) != 15
+    if (len(pictures) != 16 or len({p["sha256"] for p in pictures}) != 16
+            or len({p["imagePath"] for p in pictures}) != 16
             or any(p.get("editoriallyApproved") is not False for p in pictures)
             or "docs/literature/staging/verne-commons-period-plates/manifest.json"
             not in data["artProvenanceManifests"]):
@@ -122,7 +125,7 @@ class OriginalFrenchIllustrationsVsFullEnglishTowle(unittest.TestCase):
         cls.sources = verne_sources()
 
     def test_actual_three_distinct_original_scenes_and_pending_rights(self):
-        self.assertEqual(verify(self.data, self.art, self.sources), 15)
+        self.assertEqual(verify(self.data, self.art, self.sources), 16)
 
     def test_original_chapter_image_rejections_are_strict(self):
         changes = {
