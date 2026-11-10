@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-sign-of-the-four",
+  "originalCreator": "Frederick Henry Townsend (1868–1920); per-file credits pending",
+  "historicIllustratedEdition": "The Sign of Four, G. Newnes Ltd. 1903 illustrated souvenir edition; per-image territorial rights and scene identity require review",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Sign-t6.jpg",
+  "imagePath": "docs/literature/staging/sign-four-townsend-1903-period-plates/plates/sign-four-townsend-df858cbada951de0.webp",
+  "imageSha256": "14ce194a3630ade34f7efef7acfca8a7977b548722c103ab934a7d6500216b23",
+  "sourceCorpusSha256": "c46d81783380cc1a66862189639e204f02f927bc45f69868d2b2f2c71be14025",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A dark, high-contrast monochromatic engraving depicting a nighttime scene in a rugged, possibly wooded or hilly landscape. In the background, a small, simple stone structure is visible. In the foreground, a figure is partially obscured by shadows, while in the mid-ground, another figure is captured in a dynamic, leaping motion with an arm raised. To the left, a third figure stands more calmly, holding a long object, possibly a rifle or staff.",
+    "visualObjectsEn": "A small stone building, a rifle or staff, trees or dense foliage, rocky terrain, and clothing consistent with historical military or rural attire.",
+    "recognizableCharactersOrPeopleEn": "Three distinct human figures: one standing on the left, one leaping in the center, and one partially visible in the foreground on the right.",
+    "uncertaintyNotes": "The exact nature of the activity (e.g., combat, escape, or patrol) is ambiguous due to the heavy use of shadow and the low resolution of the image. The specific historical period or setting cannot be definitively identified from the visual evidence alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 21,
+    "exactSourceQuotation": "In an instant the two Sikhs were upon me. One of them snatched my firelock up and levelled it at my head, while the other held a great knife to my throat",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a nighttime scene with three figures, one of whom is in a dynamic, leaping motion, and another holding a long object (a rifle or firelock). This aligns with the narrative of the narrator being ambushed by two Sikhs, where one snatches his firelock and the other threatens him with a knife, occurring in a dark, outdoor setting.",
+    "suggestedAltArNotApproved": "A dark, high-contrast engraving showing a nighttime ambush: a figure in the center leaps forward, another stands to the left holding a rifle, and a third is partially visible in the foreground, reflecting the tense confrontation described in the text.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows three figures outdoors near a small structure or gateway, with one figure leaping or attacking, another standing with a rifle, and a foreground figure.",
+    "visualContradictions": "The passage describes an indoor or gateway setting where the narrator lays down his musket to strike a match and is immediately ambushed by two Sikhs in close quarters (one leveling the firelock at his head, the other holding a knife to his throat). The visual depicts an outdoor rocky landscape with a leaping figure in mid-air and widely separated individuals, rather than the intimate, close-quarters ambush described.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

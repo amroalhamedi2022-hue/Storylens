@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-sign-of-the-four",
+  "originalCreator": "Frederick Henry Townsend (1868–1920); per-file credits pending",
+  "historicIllustratedEdition": "The Sign of Four, G. Newnes Ltd. 1903 illustrated souvenir edition; per-image territorial rights and scene identity require review",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Sign-t7.jpg",
+  "imagePath": "docs/literature/staging/sign-four-townsend-1903-period-plates/plates/sign-four-townsend-ed02ad4faf5cdd18.webp",
+  "imageSha256": "650c76e56165bdd18f34065226dde2b9e0e53dce1b81698359c5d1cb43f19d60",
+  "sourceCorpusSha256": "c46d81783380cc1a66862189639e204f02f927bc45f69868d2b2f2c71be14025",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraving depicting an interior scene, likely a shop or workshop. A man sits at a desk in the foreground, looking upward and holding an object aloft in his raised hand. Behind him, another person is climbing a wooden ladder leaning against a wall. The room contains shelves with various items, a desk with scattered objects, and baskets on the floor.",
+    "visualObjectsEn": "Wooden desk, open wooden box, scattered small objects on the desk, shelves with glassware or bottles, wooden ladder, baskets, clothing worn by the figures.",
+    "recognizableCharactersOrPeopleEn": "Two male figures: one seated at a desk looking up, and one climbing a ladder.",
+    "uncertaintyNotes": "The specific nature of the objects on the desk and shelves is unclear due to the engraving style. The exact historical context or narrative purpose of the scene is not definitively identifiable from the visual evidence alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 5,
+    "paragraphIndexZeroBased": 41,
+    "exactSourceQuotation": "A set of steps stood at one side of the room, in the midst of a litter of lath and plaster, and above them there was an opening in the ceiling large enough for a man to pass through.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description matches the laboratory setting described in Chapter 5, paragraph 41, which includes a set of steps (ladder), a room with shelves (bottles), and baskets (carboys in wicker baskets).",
+    "suggestedAltArNotApproved": "An engraving of a laboratory interior showing a man at a desk and another climbing a ladder near shelves and baskets.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a man seated at a desk holding up a small object, while another figure climbs a ladder into a ceiling opening, and baskets are visible on the floor.",
+    "visualContradictions": "The passage describes a room filled with a chemical laboratory setup including Bunsen burners, test-tubes, retorts, carboys of acid with a leaking stream, and a coil of rope. The engraving instead prominently features a desk cluttered with jewelry or small trinkets from a treasure box rather than chemical apparatuses and acid spills.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

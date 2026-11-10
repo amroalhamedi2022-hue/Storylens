@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-sign-of-the-four",
+  "originalCreator": "Frederick Henry Townsend (1868–1920); per-file credits pending",
+  "historicIllustratedEdition": "The Sign of Four, G. Newnes Ltd. 1903 illustrated souvenir edition; per-image territorial rights and scene identity require review",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Sign-t5.jpg",
+  "imagePath": "docs/literature/staging/sign-four-townsend-1903-period-plates/plates/sign-four-townsend-47966cdf72ca735a.webp",
+  "imageSha256": "08bc7041c4cbc94212e99fcff602fafa9ff0f41d7b0474f0a68a0d47aecfea06",
+  "sourceCorpusSha256": "c46d81783380cc1a66862189639e204f02f927bc45f69868d2b2f2c71be14025",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A dark, high-contrast engraved illustration depicting a nighttime scene. In the foreground, a person wearing a turban and light-colored clothing is crouched over another figure on the ground, holding a curved blade or knife aloft. In the background, standing near a doorway or wall, a second person wearing a head covering holds a lantern, illuminating the scene.",
+    "visualObjectsEn": "Curved blade, lantern, turban, clothing, doorway, ground, shadows.",
+    "recognizableCharactersOrPeopleEn": "Two figures: one in the foreground actively engaged in a struggle or attack, and one in the background observing while holding a light source.",
+    "uncertaintyNotes": "The exact nature of the interaction (e.g., murder, capture, or rescue) is ambiguous due to the dramatic shadows and artistic style. The historical context or specific narrative origin of the engraving is not identifiable from the image alone."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": null,
+  "evidenceStatus": "NO_STRONG_SOURCE_MATCH",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

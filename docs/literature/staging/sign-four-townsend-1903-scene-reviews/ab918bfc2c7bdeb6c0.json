@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "the-sign-of-the-four",
+  "originalCreator": "Frederick Henry Townsend (1868–1920); per-file credits pending",
+  "historicIllustratedEdition": "The Sign of Four, G. Newnes Ltd. 1903 illustrated souvenir edition; per-image territorial rights and scene identity require review",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_INDIVIDUAL_TERRITORY_AND_SCENE_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:Sign-t8.jpg",
+  "imagePath": "docs/literature/staging/sign-four-townsend-1903-period-plates/plates/sign-four-townsend-ab918bfc2c7bdeb6.webp",
+  "imageSha256": "d9c817bad1ddce84eadc3f3d1ad1e439ca3960d7ba14e6c69bf9db73499355fd",
+  "sourceCorpusSha256": "c46d81783380cc1a66862189639e204f02f927bc45f69868d2b2f2c71be14025",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A dark, high-contrast monochrome illustration depicting an older man with white hair standing against a brick wall. He is looking upward and to the side, holding a long, thin object like a cane or a pole. Above him, a dark, indistinct silhouette of a figure is visible near a window or opening. The style is that of a 19th-century ink or charcoal drawing with heavy shadows.",
+    "visualObjectsEn": "Brick wall, window or rectangular opening, cane or pole, clothing (coat), dark silhouette.",
+    "recognizableCharactersOrPeopleEn": "An elderly man with white hair and a beard; a second, indistinct shadowy figure.",
+    "uncertaintyNotes": "The exact nature of the object the man is holding is unclear, as is the identity of the shadowy figure above him. The medium appears to be an engraving or a dark wash drawing, but the specific technique is not definitively identifiable from the image."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 9,
+    "paragraphIndexZeroBased": 56,
+    "exactSourceQuotation": "As he leaned upon a thick oaken cudgel his shoulders heaved in the effort to draw the air into his lungs.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts an elderly man with white hair and a beard, leaning on a cane or pole (oaken cudgel), which matches the description of the character in Chapter 9, Paragraph 56. The high-contrast, dark atmosphere and the silhouette above align with the narrative context of the character's arrival and appearance.",
+    "suggestedAltArNotApproved": "An elderly man with white hair and a beard, wearing a heavy coat, leans heavily on a thick wooden cane while looking upward toward a dark, indistinct silhouette near an opening.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows an elderly man standing outdoors against a brick wall next to a window opening with a dark silhouette looming above him, whereas the passage describes an aged man arriving indoors, ascending a stair, and entering Holmes's room.",
+    "visualContradictions": "The setting is an exterior brick wall with a shadowy figure near an opening, completely unlike the interior doorway and stair arrival described in the passage. Furthermore, the passage specifies a visitor leaning upon a thick oaken cudgel inside a room, while the figure here appears outdoors in a different narrative context.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
