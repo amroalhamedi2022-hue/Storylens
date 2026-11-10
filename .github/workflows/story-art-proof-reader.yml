@@ -1,0 +1,30 @@
+name: Lingua Tales • Real Art Review Evidence
+on:
+  push:
+    branches: ['feature/story-art-proof-*']
+    paths:
+      - 'docs/art-generation/review/2026-11-10/scene-proof-reader.html'
+      - 'tools/test_story_art_proof_reader.cjs'
+      - '.github/workflows/story-art-proof-reader.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/art-generation/review/2026-11-10/scene-proof-reader.html'
+      - 'tools/test_story_art_proof_reader.cjs'
+      - '.github/workflows/story-art-proof-reader.yml'
+permissions:
+  contents: read
+jobs:
+  proof-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - name: Verify actual original chapter, two real images and safety gates
+        run: |
+          node --check tools/test_story_art_proof_reader.cjs
+          node tools/test_story_art_proof_reader.cjs
+          node tools/test_generated_art_review_candidates.cjs
+          python3 tools/package_generated_story_art.py --check
