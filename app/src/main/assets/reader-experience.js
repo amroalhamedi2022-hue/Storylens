@@ -1222,6 +1222,46 @@ function ltApprovedArchiveSceneLayout(item){
   ?item.position:item.aspectRatio<.86?'edge-start':'wide';
  return {position,uncropped:true,archival:true};
 }
+// Modern AI companion pictures are NOT historical scans and never use the
+// archived-image approval shortcut. Only independently approved, locally packed
+// images with a verified original-paragraph anchor may enter the paper reader.
+function ltVerifiedGeneratedArtScenes(story,chapterIndex,chapter){
+ const bookId=story?.id;
+ if(bookId!=='around-the-world-in-eighty-days-towle')return []; // first audited pilot only
+ const chapterOneBased=chapterIndex+1;
+ const all=window.LinguaGeneratedArtRegistry?.[bookId]?.chapters?.[String(chapterOneBased)];
+ if(!Array.isArray(all)||!Array.isArray(chapter?.paragraphs))return [];
+ const used=new Set(),accepted=[];
+ for(const item of all.slice(0,12)){
+  if(!item||item.generated!==true||
+     item.origin!=='AI_GENERATED'||item.sourceType!=='AI_GENERATED_MODERN_COMPANION'||
+     item.editoriallyApproved!==true||item.ownerImageApproved!==true||
+     item.imageRightsReviewed!==true||item.distributionReviewApproved!==true||
+     item.releaseApproved!==true||item.chapterOneBased!==chapterOneBased)continue;
+  const index=item.afterParagraph;
+  if(!Number.isInteger(index)||index<0||index>=chapter.paragraphs.length||
+     used.has(index)||typeof item.sceneId!=='string'||
+     !/^verne-ch0[12]-[a-z0-9-]{1,65}$/.test(item.sceneId))continue;
+  const expected='art/generated/'+bookId+'/'+item.sceneId+'.webp';
+  if(item.src!==expected||
+     !/^[a-f0-9]{64}$/.test(item.sha256||'')||
+     !/^[a-f0-9]{64}$/.test(item.sourceParagraphSha256||''))continue;
+  const original=chapter.paragraphs[index]?.en;
+  if(typeof original!=='string'||typeof item.sourceExcerpt!=='string'||
+     item.sourceExcerpt.length<30||!original.includes(item.sourceExcerpt))continue;
+  if(typeof item.altAr!=='string'||!item.altAr.trim()||item.altAr.length>240||
+     typeof item.altEn!=='string'||!item.altEn.trim()||item.altEn.length>240||
+     typeof item.credit!=='string'||!item.credit.includes('AI')||
+     !item.credit.trim()||item.credit.length>160)continue;
+  used.add(index);
+  accepted.push({
+   afterParagraph:index,src:expected,
+   alt:uiText(item.altAr,item.altEn),credit:item.credit,
+   generatedCompanion:true,position:'wide',visualTreatment:'ai-companion'
+  });
+ }
+ return accepted.sort((a,b)=>a.afterParagraph-b.afterParagraph);
+}
 function ltVerifiedCompanionPlates(chapter,periodPlate){
  const paragraphs=Array.isArray(chapter?.paragraphs)?chapter.paragraphs:[];
  const validSrc=/^art\/[a-z0-9_-]+(?:\/[a-z0-9_-]+)*\.(?:webp|png|jpe?g)$/i;
@@ -1531,6 +1571,15 @@ renderReader=function(){
    state.story.id==='around-the-world-in-eighty-days-towle')
   ?null:ltBuiltInChapterScene(chapter,sentences.length);
  const inlineArt=chapterScene?[chapterScene,...periodArt,...curatedArt]:[...periodArt,...curatedArt];
+ // Historic source passages always win if both forms target the same paragraph.
+ // These are already approved offline artifacts, never live image requests.
+ const occupied=new Set(inlineArt.map(item=>item?.afterParagraph).filter(Number.isInteger));
+ for(const generated of ltVerifiedGeneratedArtScenes(state.story,state.chapter,chapter)){
+  if(!occupied.has(generated.afterParagraph)){
+   inlineArt.push(generated);
+   occupied.add(generated.afterParagraph);
+  }
+ }
  const usedAnchors=new Set();
  // Ignore invalid catalog entries without allowing them to consume the 12-image budget.
  // Bound candidate scanning so a corrupt chapter cannot stall the reader.
@@ -1551,7 +1600,8 @@ renderReader=function(){
   figure.className='lt-inline-illustration lt-inline-'+position+
    (item===chapterScene?' lt-inline-chapter-scene':'')+
    (originalColour?' lt-archive-colour-original':'')+
-   (layout.archival?' lt-archive-source-approved':'');
+   (layout.archival?' lt-archive-source-approved':'')+
+   (item.generatedCompanion===true?' lt-ai-generated-companion':'');
   const picture=document.createElement('img');
   picture.src=item.src;picture.alt=item.alt.trim();
   picture.loading='lazy';picture.decoding='async';
@@ -1561,7 +1611,7 @@ renderReader=function(){
      Number.isFinite(item.aspectRatio) && item.aspectRatio>=0.5 && item.aspectRatio<=3.5){
    picture.style.aspectRatio=String(item.aspectRatio);
   }
-  if(picture.style && (originalColour||layout.uncropped)){
+  if(picture.style && (originalColour||layout.uncropped||item.generatedCompanion===true)){
    // Authentic pigment, manuscript margins and engraving frame are immutable.
    // Full frame wins over any stray legacy crop request.
    picture.style.objectFit='contain';

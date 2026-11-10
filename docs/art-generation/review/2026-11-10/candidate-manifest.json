@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "sourceWork": "Jules Verne / George Makepeace Towle 1873 English translation",
+  "releaseApproved": false,
+  "generatedBy": "ChatGPT image generation, 2026-11-10",
+  "provenanceWarning": "These are modern AI-generated illustrations, NOT original historical engravings. Do not ship or mark release-approved until reviewed.",
+  "images": [
+    {
+      "sceneId": "verne-ch01-saville-house",
+      "chapterOneBased": 1,
+      "afterParagraph": 0,
+      "sourceExcerpt": "Mr. Phileas Fogg lived, in 1872, at No. 7, Saville Row",
+      "sourceParagraphSha256": "fec1473debbf0e4a1c3571cda7bdecb6fae9409fe2449a725531375cf65b1803",
+      "altEn": "A modern engraving-style illustration of a London residential street resembling Saville Row in 1872.",
+      "altAr": "رسم حديث بأسلوب الحفر لشارع سكني في لندن يستحضر سافيل رو سنة 1872.",
+      "imageRightsNote": "Modern AI-generated art; redistribution review pending.",
+      "editorialFlags": [
+        "The exact No. 7 residence cannot be authenticated from a generated street scene."
+      ],
+      "reviewStatus": "PENDING_HUMAN_VISUAL_AND_LOCATION_REVIEW",
+      "full": {
+        "path": "docs/art-generation/review/2026-11-10/verne-ch01-saville-house-full.webp",
+        "sha256": "34e23795acf6beecc83ddd273e676e58f703701fd8d27ea6101f1fb8b3cb4457",
+        "bytes": 685082,
+        "width": 1536,
+        "height": 1024
+      },
+      "mobile": {
+        "path": "docs/art-generation/review/2026-11-10/verne-ch01-saville-house-mobile.webp",
+        "sha256": "b4fb8588c2f563f1baae6fa9f2f42fe821fa32bfa82e7193b040abeb8927dca3",
+        "bytes": 230626,
+        "width": 960,
+        "height": 640
+      },
+      "generated": true,
+      "editoriallyApproved": false,
+      "ownerImageApproved": false,
+      "imageRightsReviewed": false,
+      "distributionReviewApproved": false,
+      "releaseApproved": false
+    },
+    {
+      "sceneId": "verne-ch01-fogg-reading",
+      "chapterOneBased": 1,
+      "afterParagraph": 11,
+      "sourceExcerpt": "His sole pastimes were reading the papers and playing whist.",
+      "sourceParagraphSha256": "fd6def4d485d455e8d802684570e66d478cbc43fc1ae073c697d94bdefe8859d",
+      "altEn": "A modern engraving-style draft depicting Phileas Fogg reading in a Victorian gentlemen's club.",
+      "altAr": "مسودة رسم حديث بأسلوب الحفر تُظهر فيلياس فوغ وهو يقرأ داخل نادٍ إنجليزي في العصر الفيكتوري.",
+      "imageRightsNote": "Modern AI-generated art; redistribution review pending.",
+      "editorialFlags": [
+        "REJECTED_CHARACTER_ACCURACY: source chapter describes Fogg as bearded, while this generated face appears clean-shaven.",
+        "SOURCE_CONSISTENCY: light whiskers/hair not met; must regenerate before release."
+      ],
+      "reviewStatus": "REQUIRES_REGENERATION",
+      "full": {
+        "path": "docs/art-generation/review/2026-11-10/verne-ch01-fogg-reading-full.webp",
+        "sha256": "1cd015abcc19889a46dca3f1ea2bf371a17a3b0e84407fff2467a26f1406b9d5",
+        "bytes": 651056,
+        "width": 1536,
+        "height": 1024
+      },
+      "mobile": {
+        "path": "docs/art-generation/review/2026-11-10/verne-ch01-fogg-reading-mobile.webp",
+        "sha256": "02912a8ce7b74050aa38ee11f49546a376c9a8da8e2775b49dcdb7ec82372378",
+        "bytes": 213406,
+        "width": 960,
+        "height": 640
+      },
+      "generated": true,
+      "editoriallyApproved": false,
+      "ownerImageApproved": false,
+      "imageRightsReviewed": false,
+      "distributionReviewApproved": false,
+      "releaseApproved": false
+    }
+  ]
+}
