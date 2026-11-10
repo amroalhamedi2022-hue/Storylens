@@ -517,7 +517,7 @@ def generate() -> dict:
         allowed[original_path] = (item["sourceSha256"], item["chapterOneBased"])
     # Strict original French print-caption + exact English scene allowlist.
     # The 57 downloaded Commons images themselves are NOT mapped or approved:
-    # only these independently image-inspected four actual narrative scenes are
+    # only these independently image-inspected five actual narrative scenes are
     # checked against their complete original Towle chapter files. Never treat
     # archive membership or an AI-suggested quotation as chapter-card evidence.
     commons_plates = STAGING / "verne-commons-period-plates"
@@ -531,6 +531,8 @@ def generate() -> dict:
             "the next day they put in at Steamer Point, northwest of Aden harbour, to take in coal"),
         10: ("15", "Il renversa deux de ses adversaires",
              "knocking down two of his long-gowned adversaries with his fists and a vigorous application of his toes"),
+        12: ("19", "Cette infortunée ne paraissait faire aucune résistance",
+             "the wretched creature did not seem to be making any resistance"),
     }
     verne_map_data = jload(MAP)
     for chapter_num, (ordinal, french_caption, literal_source) in verified_original_scenes.items():
