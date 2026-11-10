@@ -512,6 +512,9 @@ async function prepare(id,entry){
 function show(id,{historyEntry=true}={}){
  const story=storyById(id);
  if(!hasChapters(story))return false;
+ // Rapid double taps, accessibility repeated activations and duplicate
+ // deep-link events must not create stacked dialogs or extra history entries.
+ if(active?.id===id)return true;
  const current=active;
  if(current)close(false);
  // A reader-opened chapter chooser is a modal reader control, not a new
