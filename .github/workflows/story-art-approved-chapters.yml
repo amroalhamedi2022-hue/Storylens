@@ -1,0 +1,41 @@
+name: Lingua Tales • Approved AI Art Chapters I–IV
+on:
+  push:
+    branches: ['feature/story-art-approved-ch1-4-*']
+    paths:
+      - 'tools/package_generated_story_art.py'
+      - 'tools/test_generated_art_packaging.py'
+      - 'tools/generated-art-reader.test.cjs'
+      - 'app/src/main/assets/reader-experience.js'
+      - '.github/workflows/story-art-approved-chapters.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tools/package_generated_story_art.py'
+      - 'tools/test_generated_art_packaging.py'
+      - 'tools/generated-art-reader.test.cjs'
+      - 'app/src/main/assets/reader-experience.js'
+      - '.github/workflows/story-art-approved-chapters.yml'
+permissions:
+  contents: read
+jobs:
+  source-proof-and-approval-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate real original bilingual story anchors
+        run: |
+          node tools/story_art_pilot.cjs --check
+          node tools/prepare_color_scene_queue.cjs --check
+          node tools/test_color_scene_queue.cjs
+          node tools/generated-art-reader.test.cjs
+      - name: Enforce offline approved-art packaging and reject corrupted scenes
+        run: |
+          python3 tools/test_generated_art_packaging.py
+          python3 tools/package_generated_story_art.py --check
