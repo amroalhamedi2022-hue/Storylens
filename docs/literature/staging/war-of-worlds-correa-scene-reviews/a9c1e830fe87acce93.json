@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_04.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-a9c1e830fe87acce.webp",
+  "imageSha256": "deda807c37864b0c287ec73472f49048de43b91f66093913613b88ab5f1ff84a",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned, engraved-style illustration depicting a large, cylindrical, metallic-looking object embedded in a sandy, crater-like depression. Smoke or steam rises from the top of the object. The surrounding terrain is uneven, with scattered rocks and sparse vegetation.",
+    "visualObjectsEn": "Cylindrical object, smoke, rocks, sand, crater, sparse vegetation.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the object is ambiguous due to the artistic style; it could be interpreted as a crashed vessel, a piece of machinery, or a geological formation. The historical origin of the engraving is not specified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 3,
+    "paragraphIndexZeroBased": 12,
+    "exactSourceQuotation": "A large portion of the cylinder had been uncovered, though its lower end was still embedded.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The description of a cylindrical object embedded in a crater-like depression with smoke/steam matches the visual depiction of the Martian cylinder at the Horsell Common sand pit, which is the primary focus of the early chapters.",
+    "suggestedAltArNotApproved": "A sepia-toned engraving of the Martian cylinder partially embedded in a sandy crater, with smoke rising from the top and a desolate, rocky landscape surrounding it.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows only the uncovered cylindrical object in the pit with smoke rising, but there are no people present such as Ogilvy, the narrator, or a crowd, nor is any conversation or interaction depicted.",
+    "visualContradictions": "The passage describes Ogilvy calling out to the narrator among a staring crowd and asking him to see Lord Hilton. The illustration contains zero people and completely lacks the characters and specific social interaction described in the text.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

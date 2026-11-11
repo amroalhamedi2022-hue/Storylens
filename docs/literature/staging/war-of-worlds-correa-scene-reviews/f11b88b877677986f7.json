@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_03.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-f11b88b877677986.webp",
+  "imageSha256": "01580dfbdd9b3dc0542a49fcdc0b30c028f5fbbcb13c72adc73ce57f93912373",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned, sketch-like illustration depicting a view from a rooftop looking out over a city skyline at night. A large, bright, curved streak of light, resembling a comet or falling star, arcs across the dark sky above the buildings. The foreground features detailed brick chimneys and tiled roof surfaces with visible hatching lines.",
+    "visualObjectsEn": "Brick chimneys, tiled roofs, city skyline, curved streak of light, sky.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact medium is unclear, appearing to be a charcoal or pencil drawing or a print reproduction. The specific city is not identifiable through visual evidence alone, though the architecture suggests a 19th or early 20th-century European urban setting."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 17,
+    "paragraphIndexZeroBased": 34,
+    "exactSourceQuotation": "Something rushed up into the sky out of the greyness⁠—rushed slantingly upward and very swiftly into the luminous clearness above the clouds in the western sky; something flat and broad, and very large, that swept round in a vast curve",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a large, curved streak of light over a city skyline at night, which aligns well with the description of a large object sweeping in a vast curve across the sky in this passage.",
+    "suggestedAltArNotApproved": "A sepia-toned engraving showing a dark city skyline with brick chimneys and tiled roofs under a night sky, where a large, bright, curved streak of light arcs across the horizon.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a luminous streak of light or falling star arching across the night sky above city rooftops, matching the caption about the first falling star over London.",
+    "visualContradictions": "The passage describes something flat, broad, and very large rushing slantingly upward into the sky and raining down darkness, whereas the illustration depicts a bright, curved streak of light resembling a traditional shooting star or comet rather than the specific flying machine described.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_02.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-a6797cf63f152fc1.webp",
+  "imageSha256": "1ea8f2037d25069c6c426eb467a02c4cdd9ebab8dbcc5a5cb3fc8b70ac97ab3a",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A dark, textured night sky scene featuring a large, pale, circular celestial body in the upper left corner with a geometric, web-like pattern on its surface. A plume of smoke or light is erupting from the edge of this sphere, extending into the dark space. Three dark, winged silhouettes resembling bats are flying through the dark, hatched-line background.",
+    "visualObjectsEn": "Large circular celestial body, smoke plume, three bat-like silhouettes, stars, crescent moon.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The style is consistent with 19th-century ink or charcoal illustration techniques, but the specific origin is not verified. The celestial body could be interpreted as a moon or a planet, and the plume could be interpreted as an explosion or a launch."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 13,
+    "paragraphIndexZeroBased": 48,
+    "exactSourceQuotation": "High in the west the crescent moon hung faint and pale above the smoke of Weybridge and Shepperton",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a large celestial body (crescent moon) with a geometric pattern and a plume of smoke, which aligns with the description of the moon hanging above the smoke of Weybridge and Shepperton in the specified passage.",
+    "suggestedAltArNotApproved": "A dark, textured night sky featuring a pale crescent moon with a geometric surface pattern, positioned above a plume of smoke rising from the landscape, with three dark, bat-like silhouettes flying in the foreground.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a large celestial body (Mars) with a gas/smoke eruption and flying creatures in space, captioned 'The Martians start their journey to attack Earth.'",
+    "visualContradictions": "The text describes an Earth-bound scene near Weybridge and Shepperton featuring distant guns, a hedge, a cockchafer insect, and a crescent moon in a sunset sky, none of which correspond to the depiction of Mars launching an attack from space.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

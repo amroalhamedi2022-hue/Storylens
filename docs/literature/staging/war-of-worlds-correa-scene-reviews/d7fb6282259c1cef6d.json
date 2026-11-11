@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_01.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-d7fb6282259c1cef.webp",
+  "imageSha256": "082415870161d64560265a7cf961c5ac8582f7ef0aae49149ed22d9f2ff60087",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A dark, atmospheric, sketch-style illustration depicting a war-torn landscape at night. A large, multi-legged mechanical tripod machine dominates the background, emitting a bright beam of light. In the foreground, there are abandoned or deployed artillery cannons and debris. The overall composition is moody, with high contrast between the dark surroundings and the glowing light from the machine.",
+    "visualObjectsEn": "Large mechanical tripod machine, artillery cannons, debris, ruined structures, power lines, glowing light beam, dark landscape.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The image contains text in French ('Livre Premier', 'L'arrivée des Marsiens') and English ('Book I. The Coming of the Martians.') which are likely additions or captions rather than part of the original artwork. The style resembles early 20th-century ink or charcoal illustration, but the specific artist is not identified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 8,
+    "paragraphIndexZeroBased": 5,
+    "exactSourceQuotation": "a light-ray, like the beam of a warship’s searchlight swept the common, and the Heat-Ray was ready to follow. Save for such, that big area of common was silent and desolate, and the charred bodies lay about on it all night under the stars",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a tripod machine emitting a beam of light over a dark, war-torn landscape with debris, which aligns perfectly with the description of the Heat-Ray sweeping the common and the desolate, charred aftermath described in this passage.",
+    "suggestedAltArNotApproved": "A dark, atmospheric illustration of a Martian tripod machine standing over a desolate, war-torn landscape at night, casting a bright searchlight-like beam across debris and artillery.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a Martian tripod machine sweeping a searchlight beam across a landscape with artillery cannons and ruins, labeled 'Livre Premier: L'arrivée des Marsiens'.",
+    "visualContradictions": "The passage describes a silent, desolate common with charred bodies, a crowd lingering on bridges, and the sound of hammering from a pit, none of which are specifically or prominently depicted in the image. The image focuses on a towering tripod and discarded cannons rather than the crowd on the bridges or the charred bodies on the common.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
