@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_14.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-9040e88953536025.webp",
+  "imageSha256": "6bd6922599398a88242c551346238349733cf30c560374cd1d865a4c77d39e0e",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned illustration depicting a large, multi-legged mechanical tripod machine in the air, appearing to be struck or exploding. Below it, on a landscape with trees and uneven terrain, several small human-like figures are scattered, some lying on the ground and others in motion. A beam of light or energy is visible, originating from the machine toward the ground.",
+    "visualObjectsEn": "Large tripod mechanical machine, smaller tripod machine in the background, trees, ground, beam of light, small human figures.",
+    "recognizableCharactersOrPeopleEn": "Multiple small, indistinct human-like figures.",
+    "uncertaintyNotes": "The image is a stylized illustration with a sepia wash, making fine details difficult to discern. It is unclear if the figures on the ground are soldiers, civilians, or casualties. The exact nature of the 'shell' or explosion is ambiguous due to the artistic style."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "modelOriginalQuotationRejected": true,
+  "modelOriginalQuotationRejectReason": "Model chapter/paragraph/quotation not verifiable verbatim against pinned original candidate excerpt",
+  "suggestedMatch": null,
+  "evidenceStatus": "INVALID_MODEL_SOURCE_QUOTE_REJECTED_NONPUBLISHABLE",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passes": false,
+    "reason": "No source-backed scene candidate",
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

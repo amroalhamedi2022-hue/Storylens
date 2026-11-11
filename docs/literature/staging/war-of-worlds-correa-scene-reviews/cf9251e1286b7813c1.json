@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_12.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-cf9251e1286b7813.webp",
+  "imageSha256": "4450a41ebfadeb86b8dd70444751bbd30a498594954d10028aa913b545568e90",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned illustration depicting a large, multi-legged mechanical tripod machine standing over a landscape. The machine has a central body with a pointed top, a single large eye, and several long, thin, spindly legs. It is emitting a bright, straight beam of light from its front towards a distant silhouette of a town or village with a church spire. The background features a cloudy, textured sky and a rolling hill in the foreground.",
+    "visualObjectsEn": "Mechanical tripod machine, spindly legs, central body, large eye, beam of light, church spire, silhouette of buildings, rolling hills, clouds.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The image is a stylized artistic illustration; the exact nature of the machine's construction and the specific location are not defined beyond the visual representation of a science-fiction-themed mechanical construct."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 10,
+    "paragraphIndexZeroBased": 6,
+    "exactSourceQuotation": "Then I heard midnight pealing out from Pyrford Church behind me, and then came the silhouette of Maybury Hill, with its treetops and roofs black and sharp against the red.",
+    "confidenceModelEstimateNotVerified": 0.8,
+    "modelRationaleNotVerified": "The illustration depicts a tripod machine emitting a beam of light towards a silhouette of a town with a church spire, set against a landscape. The selected passage describes the narrator observing the silhouette of Maybury Hill and a church (Pyrford Church) against a red, glowing background, which aligns with the visual elements of the silhouette and the atmospheric, ominous tone of the scene.",
+    "suggestedAltArNotApproved": "A sepia-toned engraving of a Martian tripod standing over a landscape, emitting a beam of light toward a distant village silhouette with a church spire.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a Martian fighting machine standing over a landscape, with a beam of light hitting a distant church spire.",
+    "visualContradictions": "The passage describes the narrator ascending the hill beyond Pyrford Church, hearing midnight pealing, and seeing the silhouette of Maybury Hill against the red glare. The narrator himself is not depicted in the image, nor is the specific moment of walking up the hill at midnight captured.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

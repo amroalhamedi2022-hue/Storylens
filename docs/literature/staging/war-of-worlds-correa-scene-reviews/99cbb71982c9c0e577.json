@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_13.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-99cbb71982c9c0e5.webp",
+  "imageSha256": "d3e11916be6a4f291ddc1702ef151902d8f9dcfed9782b7d86bd36945433f027",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned, grainy illustration depicting a large, dark, mechanical object hovering above a body of water. The object has a central spherical body surrounded by a ring-like structure, with long, thin, tentacle-like appendages hanging downward. In the background, there is a hazy, dark shoreline or cliffside, and some indistinct, blurry shapes that could be interpreted as birds or small flying craft. The overall style resembles a vintage charcoal or ink wash drawing.",
+    "visualObjectsEn": "A large mechanical object with a ring and tentacles, a body of water with ripples, a dark shoreline or cliff, and several small, blurry, bird-like or craft-like shapes in the air.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The image is highly stylized and grainy, making it difficult to determine if the small shapes in the air are birds, aircraft, or artifacts of the printing process. The exact nature of the mechanical object is ambiguous due to the artistic abstraction."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 17,
+    "paragraphIndexZeroBased": 25,
+    "exactSourceQuotation": "They saw the gaunt figures separating and rising out of the water as they retreated shoreward",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a large mechanical object (the tripod/fighting machine) hovering over a body of water with a shoreline in the background, which aligns with the scene described in Chapter 17 where the Martians are seen rising out of the water and retreating shoreward.",
+    "suggestedAltArNotApproved": "A sepia-toned illustration of a Martian fighting machine rising from the water near a dark shoreline.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a single hovering Martian machine with a ring structure and hanging tentacles over a body of water, captioned 'A Martian fighting machine over the Channel.'",
+    "visualContradictions": "The passage describes gaunt figures separating and rising out of the water, retreating shoreward, and raising a camera-like generator of the Heat-Ray to strike an iron ship. The image depicts an airborne/hovering machine and lacks any figures rising from the water, a retreating action, or an iron ship being attacked.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

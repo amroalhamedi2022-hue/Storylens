@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_15.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-fdb819f592f28a38.webp",
+  "imageSha256": "d7b3c5cf2c03febcb0fce05504ed886bb51e8298bfb9f2989f38d88651bbc6be",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned illustration depicting a large, mechanical, three-legged tripod machine standing in a river. The machine is emitting a beam of light or energy towards the shore. In the background, another similar tripod silhouette is visible in the hazy, smoky atmosphere. A damaged or partially submerged boat or vessel is visible in the foreground near the tripod's leg.",
+    "visualObjectsEn": "Tripod mechanical walker, beam of light, river, boat, smoke, hazy landscape, distant tripod silhouette.",
+    "recognizableCharactersOrPeopleEn": "None, only mechanical figures.",
+    "uncertaintyNotes": "The image is a stylized artistic illustration, likely an engraving or lithograph, and the specific historical origin or artist is not explicitly stated in the visual content itself."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 46,
+    "exactSourceQuotation": "striding hurriedly towards the river",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a tripod machine in a river, which aligns with the narrative description of the Martians striding towards the river in Chapter 12.",
+    "suggestedAltArNotApproved": "A sepia-toned engraving of a Martian tripod machine wading through a river, with a beam of light emanating from it and a distant tripod silhouette in the smoky, hazy background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a Martian tripod machine standing in a river with a beam of light and a boat in the foreground, matching the general setting of the Thames Valley near the river.",
+    "visualContradictions": "The passage describes 'one, two, three, four of the armoured Martians' appearing together and striding hurriedly towards the river. The engraving primarily highlights a single prominent tripod in the river with a heat ray beam, rather than four distinct machines simultaneously marching towards it.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
