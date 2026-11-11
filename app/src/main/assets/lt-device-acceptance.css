@@ -628,6 +628,14 @@ body :lang(en):not(svg),.reader[data-lt-source="en"] :is(h2,.sentence){
 .reader .lt-page-controls :is(.lt-page-prev,.lt-page-next):focus-visible{
  outline:3px solid var(--accent,#307b96)!important;outline-offset:3px;
 }
+/* Keep the chapter chooser readable on all six paper surfaces. */
+.reader .lt-chapter-nav :is(button,select,.lt-chapter-picker){
+ color:var(--lt-paper-ink,var(--reader-ink))!important;
+}
+.reader .lt-chapter-nav :is(button,select){
+ background:var(--lt-paper-bg,var(--reader))!important;
+ border-color:color-mix(in srgb,var(--lt-paper-ink,var(--reader-ink)) 42%,transparent)!important;
+}
 /* The landscape reading stage is TWO actual pages. Original-source hero art
  * stays visible for the opening spread and hides after turning into reading. A blank-paper tap reveals
  * controls for a short time, while keyboard navigation remains accessible. */
@@ -676,6 +684,18 @@ body :lang(en):not(svg),.reader[data-lt-source="en"] :is(h2,.sentence){
   box-shadow:0 8px 26px #12120d50!important;
   opacity:0;pointer-events:none;
   transition:opacity .2s ease;
+ }
+ .reader:has(#sentences.lt-curl-book[data-spread="2"]) .lt-chapter-nav{
+  position:fixed!important;left:50%;bottom:calc(68px + env(safe-area-inset-bottom,0px));
+  z-index:111;width:min(620px,94vw)!important;
+  max-height:calc(100dvh - 140px);overflow:auto;
+  margin:0!important;transform:translateX(-50%);
+  background:var(--lt-paper-bg,var(--reader))!important;
+  opacity:0;pointer-events:none;
+ }
+ .reader.lt-reader-controls-visible .lt-chapter-nav,
+ .reader .lt-chapter-nav:focus-within{
+  opacity:1!important;pointer-events:auto!important;
  }
  .reader.lt-reader-controls-visible .lt-page-controls,
  .reader .lt-page-controls:focus-within,

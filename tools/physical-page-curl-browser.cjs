@@ -94,10 +94,17 @@ const server=http.createServer((req,res)=>{
    }
    // Reduced motion, chapter boundaries, restoration and end-of-book guards.
    await page.emulateMedia({reducedMotion:'reduce'});
-   await page.evaluate(()=>{
-    state.chapter=0;put('readpage_anchor_'+state.story.id+'_0',state.story.chapters[0].paragraphs.length-1);
-    put('readpage_offset_'+state.story.id+'_0',0);renderReader();testEvents.length=0;
-   });
+   const openLastSheet=chapter=>page.evaluate(({finalChapter})=>{
+    state.chapter=finalChapter?state.story.chapters.length-1:0;
+    renderReader();
+    const pages=[...document.querySelectorAll('#sentences>.lt-paginated-sheet')];
+    const sheet=pages.at(-1),key=state.story.id+'_'+state.chapter;
+    put('readpage_'+key,pages.length-1);
+    put('readpage_anchor_'+key,Number(sheet.dataset.ltStartParagraph));
+    put('readpage_offset_'+key,Number(sheet.dataset.ltStartOffset));
+    renderReader();testEvents.length=0;
+   },{finalChapter:chapter==='last'});
+   await openLastSheet('first');
    await gesture(0);
    await page.waitForTimeout(250);
    assert.equal(await page.locator('#sentences > .lt-curl-boundary-preview').count(),0,
@@ -112,7 +119,8 @@ const server=http.createServer((req,res)=>{
    const saved=await page.evaluate(()=>get('readpage_anchor_'+state.story.id+'_0'));
    await page.evaluate(()=>renderReader());
    assert.equal(await page.evaluate(()=>get('readpage_anchor_'+state.story.id+'_0')),saved,'saved progress restores');
-   await page.evaluate(()=>{state.chapter=state.story.chapters.length-1;put('readpage_anchor_'+state.story.id+'_'+state.chapter,state.story.chapters[state.chapter].paragraphs.length-1);put('readpage_offset_'+state.story.id+'_'+state.chapter,0);renderReader();testEvents.length=0;LinguaReaderCurl.turn(1,'keyboard')});
+   await openLastSheet('last');
+   await page.evaluate(()=>LinguaReaderCurl.turn(1,'keyboard'));
    assert.equal(await page.evaluate(()=>testEvents.length),0,'end guard does not start or commit');
    assert.equal(await page.evaluate(()=>state.page),'reader');
    assert.deepEqual(errors,[]);

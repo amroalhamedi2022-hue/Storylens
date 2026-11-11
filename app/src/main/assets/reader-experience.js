@@ -1934,9 +1934,16 @@ renderReader=function(){
  }
  // Apply final token semantics before measuring: global accessibility styles
  // may affect inline metrics in some WebViews, so pagination must see them.
- sentences.forEach(p=>p.querySelectorAll?.('.tok').forEach(token=>{
-  token.setAttribute('role','button');token.setAttribute('tabindex','-1');
- }));
+ const primaryLanguage=state.story?.sourceLanguage==='ar'?'ar':'en';
+ sentences.forEach(p=>{
+  // Language selectors choose the bundled fonts. Apply these attributes
+  // before measuring so English in an Arabic UI is laid out in its own font.
+  p.setAttribute('lang',primaryLanguage);
+  p.setAttribute('dir',primaryLanguage==='ar'?'rtl':'ltr');
+  p.querySelectorAll?.('.tok').forEach(token=>{
+   token.setAttribute('role','button');token.setAttribute('tabindex','-1');
+  });
+ });
  installPageTurn();
  const interactiveSentences=Array.from(document.querySelectorAll('.reader .sentence'));
  interactiveSentences.forEach(p=>{
@@ -2017,8 +2024,6 @@ renderReader=function(){
    interactiveSentences.forEach(node=>node.setAttribute('tabindex',node===next?'0':'-1'));
    next.focus?.();
   },true);
-  p.setAttribute('lang',state.story?.sourceLanguage==='ar'?'ar':'en');
-  p.setAttribute('dir',state.story?.sourceLanguage==='ar'?'rtl':'ltr');
   // Preserve the actual English sentence for screen readers: aria-label would
   // replace the sentence with generic instructions and hide its learning text.
   p.setAttribute('aria-description',state.story?.sourceLanguage==='ar'?uiText('اضغط مطولًا أو Enter أو Space لعرض المعنى بالإنجليزية.','Long press, Enter or Space to show contextual English.'):uiText('انقر كلمة لمعناها، أو اضغط مطولًا أو اضغط Enter أو Space لعرض الترجمة.','Tap a word for its meaning, or long-press, Enter or Space for Arabic translation.'));
