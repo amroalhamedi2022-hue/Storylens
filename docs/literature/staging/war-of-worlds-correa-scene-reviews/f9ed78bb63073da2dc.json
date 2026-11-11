@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_09.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-f9ed78bb63073da2.webp",
+  "imageSha256": "8a7556151d7deb3def9fd0bc1133ec11a28d9164711b68aeb9fc3d5127d785e9",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned, high-contrast engraving depicting a human figure lying prone on a textured, rocky surface. A serpentine, tentacle-like appendage is wrapped around the figure's torso. The background is dark and heavily shaded with cross-hatching, suggesting a cave or dim environment.",
+    "visualObjectsEn": "Human figure, serpentine tentacle, rocky ground, dark background, cross-hatched shading.",
+    "recognizableCharactersOrPeopleEn": "A single human figure, appearing to be a woman, is the only recognizable person.",
+    "uncertaintyNotes": "The nature of the creature to which the tentacle belongs is not fully visible, only the appendage is shown. The exact setting is ambiguous, though it appears to be a dark, cavernous space."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 11,
+    "paragraphIndexZeroBased": 25,
+    "exactSourceQuotation": "he found himself lying under a heap of charred dead men and dead horses",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The engraving depicts a human figure prone on rocky ground with a tentacle-like appendage nearby, which aligns with the narrative of a soldier thrown into a depression and lying among the dead after a Martian attack. While the tentacle is a Martian feature, the prone human figure in a dark, textured environment matches the description of the soldier's grim discovery in the aftermath of the explosion.",
+    "suggestedAltArNotApproved": "A sepia-toned engraving showing a human figure lying prone on rocky, textured ground, with a dark, cross-hatched background suggesting a cavernous or desolate environment, and a serpentine tentacle-like appendage looming nearby.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a prone human figure, labeled as a woman, caught in the clutches of a Martian tentacle.",
+    "visualContradictions": "The passage describes an artilleryman whose horse falls into a rabbit hole, causing an ammunition explosion and leaving him lying under charred dead men and horses. The image depicts a woman captured by a Martian tentacle, which completely contradicts the specific characters, setting, and action described in the passage.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

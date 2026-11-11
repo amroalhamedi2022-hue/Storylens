@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_08.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-ed49c77e2606f8c0.webp",
+  "imageSha256": "c81128c77e8994c2b2b9c7b2de166eaabc6bdef717af7914ca96ed50cf04445c",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A dark, high-contrast illustration depicting a night scene where several towering, multi-legged mechanical tripod machines are attacking a village. One machine is firing a bright beam of light that causes an explosion on the roof of a building. In the foreground, small human figures are seen hiding behind a wall and near the rooftops of houses, observing the destruction.",
+    "visualObjectsEn": "Tripod machines with mechanical legs and tentacles, a beam of light, explosions, smoke, houses with tiled roofs, a stone wall, a ladder, and human figures.",
+    "recognizableCharactersOrPeopleEn": "Several small, indistinct human figures in the foreground, some standing on a wall and others near the base of the wall.",
+    "uncertaintyNotes": "The exact medium is unclear, appearing to be a lithograph, etching, or ink wash drawing with a vintage aesthetic. The specific identity of the mechanical figures is not explicitly stated in the image itself, though they are clearly science-fiction in nature."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 5,
+    "paragraphIndexZeroBased": 12,
+    "exactSourceQuotation": "Slowly a humped shape rose out of the pit, and the ghost of a beam of light seemed to flicker out from it.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a tripod machine firing a beam of light at a village, which aligns with the description of the Martian machine rising from the pit and emitting a beam of light in this passage. The presence of small human figures observing the scene also matches the 'little wedge of people' mentioned in the text.",
+    "suggestedAltArNotApproved": "A dark, high-contrast illustration showing a towering tripod machine firing a beam of light at a village, with small human figures observing from behind a wall in the foreground.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows tripod machines attacking a village with a heat-ray hitting a building and human figures hiding near rooftops, which corresponds to a general scene from the book rather than the specific passage describing the group with the white flag approaching the pit.",
+    "visualContradictions": "The selected passage describes a specific group with a white flag standing by a pit as green smoke arises and a humped shape emerges, whereas the illustration shows a populated village setting with buildings, a heat-ray beam destroying a roof, and no visible white flag bearer group near the pit.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_11.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-3355aec004ae9540.webp",
+  "imageSha256": "633342d5b94d1c6fcda9fffb21f3e0de3e3b80f7d15c8e80a80f2a8be1cf5a90",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned, sketch-like illustration depicting a rural landscape at dusk or night. In the foreground, a horse-drawn carriage is moving along a path near a stone wall. In the background, two large, multi-legged mechanical tripod machines dominate the scene. One tripod is firing a bright beam of light toward a hillside, while the other stands partially obscured by trees. The style resembles a 19th-century ink or charcoal engraving.",
+    "visualObjectsEn": "Two large mechanical tripods with long, thin legs and domed tops; a horse-drawn carriage with a driver; a stone wall; trees; a hillside; a bright beam of light emanating from one of the tripods.",
+    "recognizableCharactersOrPeopleEn": "A person driving a horse-drawn carriage.",
+    "uncertaintyNotes": "The exact medium is uncertain, though it appears to be a print or drawing in an engraving style. The nature of the mechanical tripods is ambiguous and fantastical, and their origin or purpose is not explicitly stated in the image."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 8,
+    "paragraphIndexZeroBased": 5,
+    "exactSourceQuotation": "a light-ray, like the beam of a warship’s searchlight swept the common, and the Heat-Ray was ready to follow.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a rural landscape with a horse-drawn carriage and two mechanical tripods, one of which is firing a beam of light. This aligns with the description of the Martians using a light-ray similar to a searchlight on the common, and the presence of a carriage/driver is consistent with the chaotic scenes of flight and observation described in the text.",
+    "suggestedAltArNotApproved": "A sepia-toned engraving showing a horse-drawn carriage on a path near a stone wall at night, with two towering mechanical tripods in the background, one emitting a bright beam of light across the landscape.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows giant fighting-machines (tripods) active on the common, with one firing a beam of light, and a horse-drawn carriage fleeing.",
+    "visualContradictions": "The passage describes a silent and desolate area with a curious crowd lingering on bridges, adventurous souls crawling near the Martians in the darkness, charred bodies lying about, and a noise of hammering from the pit. None of the specific elements such as crowds on bridges, crawling scouts, or a hammering pit are depicted in the illustration; instead, it shows active tripods operating and a fleeing carriage.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
