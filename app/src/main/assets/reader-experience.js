@@ -582,11 +582,13 @@ function installPageTurn(){
  sentenceBox.insertAdjacentElement('afterend',pageControls);
  const key='readpage_'+state.story.id+'_'+state.chapter;
  const anchorKey='readpage_anchor_'+state.story.id+'_'+state.chapter;
+ const offsetKey='readpage_offset_'+state.story.id+'_'+state.chapter;
  const initial=Number(get(key,0));
  // Old backups only had a page number (four paragraphs per page); new
  // backups retain the first paragraph so changing font/phone width cannot
  // skip, duplicate or reset progress.
  const savedAnchor=Number(get(anchorKey,-1));
+ const savedOffset=get(offsetKey,null);
  const legacyParagraph=Number.isInteger(initial)&&initial>=0
   ?initial*LT_PAGE_PARAGRAPHS:0;
  const firstParagraph=Number.isInteger(savedAnchor)&&savedAnchor>=0&&
@@ -596,8 +598,10 @@ function installPageTurn(){
  ltPendingReflowAnchors.delete(reflowKey);
  let current=pendingAnchor
   ?ltPageForTextAnchor(starts,offsets,pendingAnchor.paragraph,pendingAnchor.textOffset)
-  :(Number.isInteger(initial)&&initial>=0&&initial<pages.length&&starts[initial]===firstParagraph
-    ?initial:ltPageForParagraph(starts,firstParagraph));
+  :(Number.isInteger(savedOffset)&&savedOffset>=0&&savedAnchor===firstParagraph
+    ?ltPageForTextAnchor(starts,offsets,firstParagraph,savedOffset)
+    :(Number.isInteger(initial)&&initial>=0&&initial<pages.length&&starts[initial]===firstParagraph
+      ?initial:ltPageForParagraph(starts,firstParagraph)));
  current=Math.floor(current/spread)*spread;
  let curl=null;
  const prev=pageControls.querySelector('.lt-page-prev');
@@ -628,6 +632,7 @@ function installPageTurn(){
    :uiText('الصفحة '+(current+1)+' من '+pages.length,'Page '+(current+1)+' of '+pages.length);
   put(key,current);
   put(anchorKey,starts[current]||0);
+  put(offsetKey,offsets[current]||0);
   if(chapterEnd)chapterEnd.hidden=current+spread<pages.length;
   if(animate&&!window.LinguaPageCurl&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
    animatePageTurn(pages[current],direction);
@@ -734,7 +739,7 @@ function installPageTurn(){
    boundaryPreview?.remove();
    const chapter=state.story.chapters[state.chapter+delta];
    if(!chapter)return null;
-   const preview=document.createElement('section');preview.className='lt-book-page';
+   const preview=document.createElement('section');preview.className='lt-book-page lt-curl-boundary-preview';
    preview.inert=true;preview.setAttribute('aria-hidden','true');
    const from=delta>0?0:Math.max(0,chapter.paragraphs.length-1);
    // Bounded preview from real source, never a fabricated or full-novel snapshot.
@@ -761,16 +766,15 @@ function installPageTurn(){
     const beneathIndex=delta>0?target+1:target+(spread===2?0:-1);
     const under=boundary?boundaryPage(delta):(pages[beneathIndex]||blankUnderPage());
     const candidateBack=boundary?null:pages[target+(spread===2&&delta<0?1:0)];
-    return {page:pages[moving],under,
+    return {page:pages[moving],under,dispose:clearCurlPreviews,
      back:candidateBack===under?null:candidateBack,
      info:{storyId:curlStory.id,chapter:curlChapter,fromPage:current,toPage:boundary?null:target,spread}};
    },
    commit(delta,source){
     if(state.page!=='reader'||state.story!==curlStory||state.chapter!==curlChapter||!sentenceBox.isConnected)return false;
-    move(delta,source);clearCurlPreviews();return true;
+    move(delta,source);return true;
    }
   });
-  sentenceBox.addEventListener('lingua:turncancel',clearCurlPreviews);
   // Public bridge for native Back and immersive shell integration.
   window.LinguaReaderCurl=curl;
   if(spread===2){

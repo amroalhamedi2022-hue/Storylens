@@ -164,6 +164,7 @@ assert.equal(JSON.parse(fontBackup.entries.storylens_fontEnglish),'sans');
  const newKeys={
   'storylens_readpage_around-the-world-in-eighty-days-towle_31':4,
   'storylens_readpage_anchor_around-the-world-in-eighty-days-towle_31':17,
+  'storylens_readpage_offset_around-the-world-in-eighty-days-towle_31':15000,
   'storylens_reading_anchor_around-the-world-in-eighty-days-towle_31':{index:17,top:-28},
   storylens_libraryScroll:548,
   storylens_lt_glass_palette:'lavender',
@@ -185,6 +186,12 @@ assert.equal(JSON.parse(fontBackup.entries.storylens_fontEnglish),'sans');
   assert.deepEqual(JSON.parse(storage.getItem(key)),value,'restore preserves '+key);
   storage.removeItem(key);
  }
+ const oldPosition='storylens_readpage_anchor_short-book_0';
+ const staleOffset='storylens_readpage_offset_short-book_0';
+ storage.setItem(staleOffset,'200');
+ assert.equal(api.restore({[oldPosition]:'4'}),1);
+ assert.equal(storage.getItem(staleOffset),null,'restoring a legacy position clears only that chapter offset');
+ storage.removeItem(oldPosition);
  const invalidPortable=(key,value)=>JSON.stringify({format:'storylens.backup',version:1,
   entries:{[key]:JSON.stringify(value)}});
  for(const [key,value] of [
@@ -193,6 +200,8 @@ assert.equal(JSON.parse(fontBackup.entries.storylens_fontEnglish),'sans');
   ['storylens_readpage_anchor_short-book_0',-1],
   ['storylens_readpage_anchor_short-book_0',1.5],
   ['storylens_readpage_anchor_short-book_0','invalid'],
+  ['storylens_readpage_offset_short-book_0',-1],
+  ['storylens_readpage_offset_short-book_0',1.5],
   ['storylens_reading_anchor_short-book_0',{index:-1,top:0}],
   ['storylens_reading_anchor_short-book_0',{index:4,top:Infinity}],
   ['storylens_reading_anchor_short-book_0',{index:2,top:0,prototype:'evil'}],

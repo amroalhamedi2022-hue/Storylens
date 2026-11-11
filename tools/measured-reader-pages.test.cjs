@@ -84,7 +84,7 @@ const getTurnBody=source.slice(curlStart,curlEnd)
  .replace(/\},\s*$/,'\n}');
 const simulated={pages:Array.from({length:5},(_,i)=>({id:i})),
  current:0,spread:1,state:{chapter:0,story:{chapters:[{},{},{}]}},
- boundaryPage:()=>({id:'boundary'}),blankUnderPage:()=>({id:'blank-under'}),curlStory:{id:'book'},curlChapter:0};
+ clearCurlPreviews:()=>{},boundaryPage:()=>({id:'boundary'}),blankUnderPage:()=>({id:'blank-under'}),curlStory:{id:'book'},curlChapter:0};
 vm.runInNewContext(getTurnBody+'\nglobalThis.getTurn=getTurn;',simulated);
 const portrait=simulated.getTurn(1);
 assert.equal(portrait.under,simulated.pages[2],

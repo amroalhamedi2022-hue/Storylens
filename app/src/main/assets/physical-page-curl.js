@@ -159,6 +159,7 @@ function mount(options){
   if(h.under){h.under.classList.remove('lt-curl-under');h.under.style.removeProperty('--lt-under-left');h.under.style.removeProperty('--lt-under-width');}
   host.classList.remove('lt-curl-active');delete host.dataset.ltFoldEdge;
   if(h.pointer!==undefined)try{host.releasePointerCapture(h.pointer);}catch(_){}
+  h.dispose?.();
  }
  function finish(success,reason){
   const h=hold;if(!h)return;
@@ -174,7 +175,7 @@ function mount(options){
  function cancel(reason='cancel'){finish(false,reason);}
  function settle(success){
   const h=hold;if(!h)return;
-  if(!h.started){hold=null;return;}
+  if(!h.started){cancel('no-fold');return;}
   h.settling=true;h.target=success?2*h.width:0;h.success=success;
   h.velocity=clamp(h.velocity*1000,-h.width*4,h.width*4);h.time=0;h.startedAt=0;h.elapsed=0;
   if(reduced.matches){finish(success,'release');return;}

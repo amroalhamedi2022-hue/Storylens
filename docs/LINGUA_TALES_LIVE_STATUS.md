@@ -2,6 +2,7 @@
 
 - Integrated the audit fixes from PR #68 and the measured bilingual paper pagination from its dependent PR #85. Current gallery and approved local artwork handling stay in place.
 - Each curl facet mounts its visible face only (22 face trees instead of 44). Android reserves display-cutout space, and the launch window and WebView share a background colour. Integrated the five optional Wen gradient palettes from PR #45 into the existing six-theme editor.
+- The character offset inside split paragraphs now survives reopening and backup/restore. Cancelled and tap-only edge gestures dispose of their temporary chapter previews.
 - The numbered tracker in `docs/qa/READER_AUDIT_49_TRACKER_2026-11-10.md` is the baseline. This integration addresses the duplicated facet DOM (#14), line-aware pagination (#16–18), and applies source fixes for cutout insets and launch surface (#33, #48). Real-device results, 120Hz, final curl geometry and owner-signed upgrade still require verification. No stories, translations or source images were added.
 
 ## PAGINATION DELIVERY — 11 November 2026

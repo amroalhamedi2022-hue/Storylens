@@ -43,7 +43,7 @@ assert.match(source,/put\(anchorKey,starts\[current\]\|\|0\)/,'per-turn anchor p
 assert.match(source,/savedReaderPage\*LT_PAGE_PARAGRAPHS/,'older bookmark backup remains restorable');
 assert.match(source,/Math\.max\(0,length-1\)/,'cross-chapter reverse navigation starts at last paragraph');
 const backup=fs.readFileSync('app/src/main/assets/data-backup.js','utf8');
-assert.match(backup,/readpage_anchor\|reading_anchor/,'semantic page anchors included in backups');
+assert.match(backup,/readpage_anchor\|readpage_offset\|reading_anchor/,'semantic page anchors included in backups');
 assert.match(backup,/tail\.startsWith\('readpage_anchor_'\)/,'anchors validated on import');
 console.log('PASS: phone/tablet adaptive page groups, semantic anchors, old bookmarks and portable backups');
 

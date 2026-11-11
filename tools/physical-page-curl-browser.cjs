@@ -94,7 +94,16 @@ const server=http.createServer((req,res)=>{
    }
    // Reduced motion, chapter boundaries, restoration and end-of-book guards.
    await page.emulateMedia({reducedMotion:'reduce'});
-   await page.evaluate(()=>{state.chapter=0;put('readpage_anchor_'+state.story.id+'_0',state.story.chapters[0].paragraphs.length-1);renderReader();testEvents.length=0;LinguaReaderCurl.turn(1,'keyboard')});
+   await page.evaluate(()=>{
+    state.chapter=0;put('readpage_anchor_'+state.story.id+'_0',state.story.chapters[0].paragraphs.length-1);
+    put('readpage_offset_'+state.story.id+'_0',0);renderReader();testEvents.length=0;
+   });
+   await gesture(0);
+   await page.waitForTimeout(250);
+   assert.equal(await page.locator('#sentences > .lt-curl-boundary-preview').count(),0,
+    'a tap at the chapter edge leaves no orphaned preview');
+   assert.equal(await page.evaluate(()=>testEvents.length),0,'an edge tap does not start a turn');
+   await page.evaluate(()=>LinguaReaderCurl.turn(1,'keyboard'));
    assert.equal(await page.evaluate(()=>state.chapter),1);
    assert.equal(await page.evaluate(()=>testEvents.filter(e=>e.event==='commit').length),1,'cross-chapter commit reaches document even after old DOM removal');
    await page.evaluate(()=>LinguaReaderCurl.turn(-1,'keyboard'));
@@ -103,7 +112,7 @@ const server=http.createServer((req,res)=>{
    const saved=await page.evaluate(()=>get('readpage_anchor_'+state.story.id+'_0'));
    await page.evaluate(()=>renderReader());
    assert.equal(await page.evaluate(()=>get('readpage_anchor_'+state.story.id+'_0')),saved,'saved progress restores');
-   await page.evaluate(()=>{state.chapter=state.story.chapters.length-1;put('readpage_anchor_'+state.story.id+'_'+state.chapter,state.story.chapters[state.chapter].paragraphs.length-1);renderReader();testEvents.length=0;LinguaReaderCurl.turn(1,'keyboard')});
+   await page.evaluate(()=>{state.chapter=state.story.chapters.length-1;put('readpage_anchor_'+state.story.id+'_'+state.chapter,state.story.chapters[state.chapter].paragraphs.length-1);put('readpage_offset_'+state.story.id+'_'+state.chapter,0);renderReader();testEvents.length=0;LinguaReaderCurl.turn(1,'keyboard')});
    assert.equal(await page.evaluate(()=>testEvents.length),0,'end guard does not start or commit');
    assert.equal(await page.evaluate(()=>state.page),'reader');
    assert.deepEqual(errors,[]);

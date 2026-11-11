@@ -116,9 +116,11 @@ function fixture(id,sourceLanguage,text,translation){
      const pages=Array.from(document.querySelectorAll('#sentences>.lt-book-page'));
      const target=Math.min(pages.length-1,document.querySelector('#sentences').dataset.spread==='2'?2:1);
      put('readpage_'+state.story.id+'_'+state.chapter,target);
-     put('readpage_anchor_'+state.story.id+'_'+state.chapter,0);renderReader();
-     const node=document.querySelector('#sentences>.is-active .sentence');
-     return Number(node?.dataset.ltFragmentStart)||0;
+     put('readpage_anchor_'+state.story.id+'_'+state.chapter,0);
+     const node=pages[target].querySelector('.sentence');
+     const offset=Number(node?.dataset.ltFragmentStart)||0;
+     put('readpage_offset_'+state.story.id+'_'+state.chapter,offset);renderReader();
+     return offset;
     });
     await page.waitForTimeout(100);
     if(!rtl){
@@ -131,9 +133,15 @@ function fixture(id,sourceLanguage,text,translation){
      const start=Number(node.dataset.ltFragmentStart)||0,end=Number(node.dataset.ltFragmentEnd)||0;
      return start<=offset&&offset<end;
     }),activeOffset),true,'rotation restores the same location inside the split paragraph');
-    const reopened=await page.evaluate(()=>{renderReader();const node=document.querySelector('#sentences>.is-active .sentence');
-     return Number(node?.dataset.ltFragmentStart)||0;});
-    assert.ok(reopened<=activeOffset,'stored physical page reopens at or before the saved fragment');
+    const reopened=await page.evaluate(offset=>{
+     put('readpage_offset_'+state.story.id+'_'+state.chapter,offset);
+     // Simulate a page index computed on a differently sized screen.
+     put('readpage_'+state.story.id+'_'+state.chapter,0);
+     renderReader();
+     return [...document.querySelectorAll('#sentences>.is-active .sentence')].some(node=>
+      Number(node.dataset.ltFragmentStart)<=offset&&offset<Number(node.dataset.ltFragmentEnd));
+    },activeOffset);
+    assert.ok(reopened,'reopening uses the persisted character offset despite a stale page index');
     assert.equal(await page.evaluate(offset=>{put('readingSizeEnglish','large');
      LinguaReflowReader({paragraph:0,textOffset:offset,viewportOffset:80});
      return Array.from(document.querySelectorAll('#sentences>.is-active .sentence')).some(node=>{
