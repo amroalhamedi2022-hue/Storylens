@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "date": "2026-11-11",
+  "assetClass": "AI_GENERATED_VICTORIAN_COLOR_STYLE_REFERENCE_ONLY",
+  "generated": true,
+  "releaseApproved": false,
+  "sourceAccurate": false,
+  "forReader": false,
+  "historicalOriginal": false,
+  "sceneId": null,
+  "sourceExcerpt": null,
+  "approvedAsChapterArt": false,
+  "image": {
+    "filename": "verne-victorian-gold-journey-collage.webp",
+    "sha256": "ca81464a7e6f1431fb1aff05aa6a37ac23db6b8941114aed4f64df80c65ce6d8",
+    "bytes": 609220,
+    "width": 1536,
+    "height": 1024
+  },
+  "review": {
+    "editoriallyApproved": false,
+    "ownerImageApproved": false,
+    "distributionReviewApproved": false,
+    "imageRightsReviewed": false,
+    "releaseApproved": false
+  },
+  "notes": [
+    "This is a visually appealing modern AI-generated color reference, not a historical original engraving.",
+    "The requested Chapter III Reform Club wager is NOT accurately depicted in this multi-scene collage.",
+    "Hot-air balloon is decorative; Fogg does not travel by hot-air balloon in the novel.",
+    "Character hair/beard and travel sequence are not faithful enough for a chapter-specific illustration.",
+    "Keep out of reader assets until an independently source-matched real frame is reviewed and approved."
+  ]
+}
