@@ -26,6 +26,7 @@ Historical figures remain atomic. A figure moves to the next sheet or a containe
 - Curl compatibility: `tools/physical-page-curl-browser.cjs` passed LTR and RTL portrait/spread, real touch, rapid controls, original illustration, and catch/cancel scenarios.
 - Android: `:app:testDebugUnitTest :app:assembleDebug` passed with Gradle 9.3.1, JDK 17, and Android SDK 36. No release APK or key was generated.
 - Workflow Python validation: the exact Python checks registered by `.github/workflows/android.yml` passed.
+- [GitHub Actions #43027888129](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/43027888129) **SUCCESS** on code/test SHA `a487e47cb8dc45747e227ae772541b2f1247d2f2`; the workflow included Android build/identity, browser journeys, measured pagination, physical curl, and screenshot artifacts.
 - Screenshots and raw measurements: [`pagination-evidence`](pagination-evidence). Before evidence shows the old 8,635-character paragraph in one approximately 10,165 px-tall sheet; after evidence shows fixed-height first and continuation sheets.
 
 Headless Chromium pagination times for the adversarial paragraph were 229–2,145 ms depending on language and viewport. The worst case was compact landscape, which produced 64 short sheets. These are rebuild timings, not animation-frame work; pagination is not run during curl animation frames.
