@@ -3,6 +3,9 @@ on:
   push:
     branches: ['feature/story-art-approved-ch1-4-*']
     paths:
+      - 'tools/prepare_color_scene_queue.cjs'
+      - 'tools/test_color_scene_queue.cjs'
+      - 'docs/art-generation/visual-bibles/colored-victorian/next-scene-briefs.json'
       - 'tools/package_generated_story_art.py'
       - 'tools/test_generated_art_packaging.py'
       - 'tools/generated-art-reader.test.cjs'
@@ -11,6 +14,9 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - 'tools/prepare_color_scene_queue.cjs'
+      - 'tools/test_color_scene_queue.cjs'
+      - 'docs/art-generation/visual-bibles/colored-victorian/next-scene-briefs.json'
       - 'tools/package_generated_story_art.py'
       - 'tools/test_generated_art_packaging.py'
       - 'tools/generated-art-reader.test.cjs'
