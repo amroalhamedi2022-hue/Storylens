@@ -8,6 +8,7 @@ assert.equal(q.queueCount,6);
 assert.deepEqual(Array.from(q.queue,x=>[x.chapterOneBased,x.afterParagraph]),[[1,0],[1,19],[2,8],[3,58],[4,18],[4,20]]);
 assert.equal(new Set(q.queue.map(x=>x.sourceParagraphSha256)).size,6);
 assert.ok(q.queue.every(x=>x.status==='PROMPT_READY_NOT_GENERATED'&&!x.generated&&!x.releaseApproved));
+assert.ok(q.queue.every(x=>x.altAr.length>=15&&x.altEn.length>=15));
 assert.ok(q.queue.every(x=>x.prompt.includes('SINGLE-FRAME')&&x.prompt.includes('ORIGINAL TEXT GROUNDING')&&x.sourceTextAr.length>15));
 assert.ok(q.queue.some(x=>x.chapterOneBased===3&&x.prompt.includes('twenty thousand pounds')));
 assert.ok(q.queue.some(x=>x.chapterOneBased===4&&x.prompt.includes('Passepartout')));
@@ -15,6 +16,8 @@ function reject(mutator){const m=JSON.parse(JSON.stringify(doc));mutator(m);asse
 reject(m=>m.scenes[3].chapterOneBased=1); // wager is Chapter III
 reject(m=>m.scenes[3].afterParagraph=19);
 reject(m=>m.scenes[0].sourceExcerpt='Invented giant hot air balloon');
+reject(m=>m.scenes[0].altAr='');
+reject(m=>m.scenes[0].altEn='');
 reject(m=>m.scenes[0].generated=true);
 reject(m=>m.scenes[0].editoriallyApproved=true);
 reject(m=>m.scenes[0].releaseApproved=true);
