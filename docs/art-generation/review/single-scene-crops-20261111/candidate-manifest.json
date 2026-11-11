@@ -40,7 +40,8 @@
       "bookId": "around-the-world-in-eighty-days-towle",
       "generated": true,
       "origin": "AI_GENERATED_PANEL_CROP",
-      "reprocessRequired": true
+      "reprocessRequired": true,
+      "sourceParagraphAr": "في تلك اللحظة سُمعت طرقة على باب الغرفة المريحة التي يجلس فيها فوغ، وظهر جيمس فورستر، الخادم الذي صُرف من عمله. قال: «الخادم الجديد». فتقدم شاب في الثلاثين من عمره وانحنى احترامًا."
     },
     {
       "id": "ch03-reform-wager-study-a",
@@ -78,7 +79,8 @@
       "bookId": "around-the-world-in-eighty-days-towle",
       "generated": true,
       "origin": "AI_GENERATED_PANEL_CROP",
-      "reprocessRequired": true
+      "reprocessRequired": true,
+      "sourceParagraphAr": "قال فوغ بوقار: «الإنجليزي الحق لا يمزح في أمر جاد مثل الرهان. أراهن بعشرين ألف جنيه أمام أي شخص يشاء أنني سأطوف العالم في ثمانين يومًا أو أقل؛ أي ألف وتسعمئة وعشرين ساعة، أو مئة وخمسة عشر ألفًا ومئتي دقيقة. هل تقبلون؟»"
     }
   ]
 }
