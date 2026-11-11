@@ -597,3 +597,139 @@ body :lang(ar):not(svg),.reader[data-lt-source="ar"] :is(h2,.sentence){
 body :lang(en):not(svg),.reader[data-lt-source="en"] :is(h2,.sentence){
  font-family:var(--lt-en-font,"LT English Serif",Georgia,serif)!important;
 }
+
+
+/* AUDIT-49 / reader integrity — the original chapter heading belongs to the
+ * physical first page, not the fixed frame above every turning sheet.
+ * All live text remains semantic/selectable only to assistive technology. */
+.reader #sentences.lt-curl-book>.lt-book-page>.lt-chapter-paper-caption{
+ display:block;max-width:100%;margin:0 0 10px!important;
+ color:var(--lt-paper-ink,var(--reader-ink))!important;
+ opacity:.72;line-height:1.35!important;
+ font-size:clamp(11px,1.5vw,13px)!important;
+ overflow-wrap:anywhere;
+}
+.reader #sentences.lt-curl-book>.lt-book-page>.lt-chapter-paper-heading{
+ display:block;max-width:100%;margin:0 0 clamp(14px,2vw,22px)!important;
+ color:var(--lt-paper-ink,var(--reader-ink))!important;
+ font-size:clamp(23px,2.55vw,34px)!important;
+ line-height:1.24!important;
+ font-weight:750!important;overflow-wrap:anywhere;
+ -webkit-user-select:none!important;user-select:none!important;
+}
+/* Book controls must be legible even on the cream/white presets. */
+.reader .lt-page-controls :is(.lt-page-prev,.lt-page-next){
+ color:var(--lt-paper-ink,var(--reader-ink))!important;
+ background:var(--lt-paper-bg,var(--reader))!important;
+ border:1px solid color-mix(in srgb,var(--lt-paper-ink,var(--reader-ink)) 48%,transparent)!important;
+ font-weight:750!important;
+ box-shadow:0 2px 8px #00000014!important;
+}
+.reader .lt-page-controls :is(.lt-page-prev,.lt-page-next):focus-visible{
+ outline:3px solid var(--accent,#307b96)!important;outline-offset:3px;
+}
+/* The landscape reading stage is TWO actual pages. Original-source hero art
+ * stays visible for the opening spread and hides after turning into reading. A blank-paper tap reveals
+ * controls for a short time, while keyboard navigation remains accessible. */
+@media (orientation:landscape) and (min-width:700px){
+ .reader:has(#sentences.lt-curl-book[data-spread="2"][data-lt-reading-started="true"]) .reader-hero{
+  display:none!important;
+ }
+ /* Immersive is not a navigation trap: the real Back/Settings toolbar stays
+    keyboard accessible and appears in the same temporary reveal as pages. */
+ .reader:has(#sentences.lt-curl-book[data-spread="2"])>.toolbar{
+  display:flex!important;
+  position:fixed!important;z-index:115!important;
+  top:calc(8px + env(safe-area-inset-top,0px));left:50%;
+  transform:translateX(-50%);
+  width:min(620px,94vw)!important;max-width:94vw!important;
+  gap:12px;align-items:center;justify-content:space-between;
+  padding:8px 12px!important;border-radius:17px!important;
+  color:var(--lt-paper-ink,var(--reader-ink))!important;
+  background:var(--lt-paper-bg,var(--reader))!important;
+  box-shadow:0 8px 24px #12120d49!important;
+  opacity:0;pointer-events:none;
+  transition:opacity .2s ease;
+ }
+ .reader.lt-reader-controls-visible>.toolbar,
+ .reader:has(#sentences.lt-curl-book[data-spread="2"])>.toolbar:focus-within{
+  opacity:1!important;pointer-events:auto!important;
+ }
+ .reader:has(#sentences.lt-curl-book[data-spread="2"]) .reading-width{
+  max-width:100vw!important;
+  width:100%!important;
+  padding:clamp(6px,1vw,14px)!important;
+ }
+ .reader:has(#sentences.lt-curl-book[data-spread="2"]) #sentences{
+  width:100%!important;
+  max-width:100%!important;
+  margin:0!important;
+ }
+ .reader:has(#sentences.lt-curl-book[data-spread="2"]) .lt-page-controls{
+  position:fixed!important;
+  bottom:calc(9px + env(safe-area-inset-bottom,0px));left:50%;z-index:110;
+  transform:translateX(-50%);
+  width:min(460px,92vw)!important;max-width:92vw!important;
+  padding:6px 12px!important;
+  border-radius:18px!important;
+  background:var(--lt-paper-bg,var(--reader))!important;
+  box-shadow:0 8px 26px #12120d50!important;
+  opacity:0;pointer-events:none;
+  transition:opacity .2s ease;
+ }
+ .reader.lt-reader-controls-visible .lt-page-controls,
+ .reader .lt-page-controls:focus-within,
+ .reader .lt-page-controls:hover{
+  opacity:1!important;pointer-events:auto!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .reader .lt-page-controls{transition:none!important}
+}
+
+
+/* Audit-49 #45-47: Settings labels and native select controls never overlap.
+ * Phone-size sheets scroll internally rather than slicing the last controls.
+ * Inputs remain editable and the exit button is always reachable. */
+.lt-settings-overlay{
+ padding:max(12px,env(safe-area-inset-top,0px)) 12px max(12px,env(safe-area-inset-bottom,0px))!important;
+ align-items:center!important;justify-content:center!important;
+ overscroll-behavior:contain;
+}
+.lt-settings-overlay .lt-settings-sheet{
+ box-sizing:border-box!important;width:min(620px,100%)!important;
+ max-width:min(620px,calc(100vw - 24px))!important;
+ max-height:calc(100dvh - max(24px,env(safe-area-inset-top,0px) + env(safe-area-inset-bottom,0px)))!important;
+ overflow-y:auto!important;overflow-x:hidden!important;
+ overscroll-behavior-y:contain;
+ -webkit-overflow-scrolling:touch;
+ scroll-padding-bottom:72px;
+}
+.lt-settings-sheet .lt-font-setting{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) minmax(145px,44%)!important;
+ align-items:center!important;
+ gap:10px 16px!important;
+ min-width:0!important;
+ margin-block:13px!important;
+}
+.lt-settings-sheet .lt-font-setting>span{
+ min-width:0!important;max-width:100%!important;
+ overflow-wrap:anywhere;line-height:1.5!important;
+}
+.lt-settings-sheet .lt-font-setting>select{
+ box-sizing:border-box!important;
+ width:100%!important;min-width:0!important;max-width:100%!important;
+ margin:0!important;min-height:44px!important;
+}
+.lt-settings-sheet>footer{
+ position:sticky;bottom:0;z-index:2;
+ padding:13px 0 max(3px,env(safe-area-inset-bottom,0px));
+ background:var(--card,#f7f1e5);
+}
+@media(max-width:420px){
+ .lt-settings-sheet .lt-font-setting{
+  grid-template-columns:minmax(0,1fr)!important;gap:6px!important;
+ }
+ .lt-settings-sheet .lt-font-setting>select{max-width:100%!important}
+}

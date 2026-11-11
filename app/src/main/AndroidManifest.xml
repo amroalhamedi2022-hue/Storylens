@@ -3,7 +3,7 @@
     <!-- Offline-first: no network or microphone permissions. Playback-only audio needs no extra permission. -->
     <application android:label="${ltAppLabel}" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher"
         android:allowBackup="false" android:usesCleartextTraffic="false"
-        android:supportsRtl="true" android:theme="@android:style/Theme.Material.Light.NoActionBar">
+        android:supportsRtl="true" android:theme="@style/LinguaTalesTheme">
         <activity android:name=".MainActivity" android:exported="true"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="adjustResize">

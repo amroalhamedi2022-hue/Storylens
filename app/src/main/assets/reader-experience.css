@@ -173,6 +173,30 @@ body.theme-aurora,body.theme-nebula{
   linear-gradient(110deg,rgba(255,255,255,.25),transparent 22%,transparent 76%,rgba(70,76,130,.05));
 }
 .lt-book-page .sentence{position:relative;z-index:1}
+/* Measured pagination uses the final paper width and a bounded block size.
+   Probe pages are visible to layout only, then become ordinary curl sheets. */
+.reader #sentences>.lt-book-page.lt-pagination-probe{
+ display:block!important;position:absolute!important;inset:0 auto auto 0!important;
+ visibility:hidden!important;pointer-events:none!important;
+}
+.reader #sentences.lt-curl-book>.lt-book-page.lt-paginated-sheet{
+ box-sizing:border-box!important;height:var(--lt-page-height)!important;
+ min-height:var(--lt-page-height)!important;overflow:hidden!important;
+ overflow-wrap:anywhere;
+}
+.reader .lt-book-page .lt-text-fragment{margin-block-start:0!important}
+.reader .lt-book-page .lt-fragment-continues{margin-block-end:0!important}
+.reader #sentences.lt-curl-book>.lt-book-page.lt-page-scroll-fallback{
+ overflow-y:auto!important;overscroll-behavior:contain;
+}
+.reader #sentences.lt-curl-book>.lt-book-page.lt-illustration-page{
+ display:flex;flex-direction:column;justify-content:center;
+}
+.reader .lt-illustration-page>.lt-inline-illustration{max-height:calc(var(--lt-page-height) - 44px);margin:auto!important}
+.reader .lt-illustration-page>.lt-inline-illustration img{
+ display:block;width:auto!important;max-width:100%!important;
+ max-height:calc(var(--lt-page-height) - 118px)!important;object-fit:contain!important;margin:auto;
+}
 .lt-page-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;
  padding:12px;border:1px solid rgba(255,255,255,.35);border-radius:22px;
  background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}

@@ -168,3 +168,10 @@ body .reader :is(.reading-width,.lt-book-page,.sentence,.tok,.inline-ar,
   outline:3px solid currentColor!important;outline-offset:3px!important;
  }
 }
+
+/* The theme editor also supplies the atmosphere for its glass surfaces. */
+body.lt-has-custom-gradient:is(.theme-liquid-27,.theme-aurora,.theme-aqua,
+ .theme-nebula,.theme-paper-atlas,.theme-midnight-library){
+ --lt-sanctuary-a:var(--lt-glass-a,#b4def2);
+ --lt-sanctuary-b:var(--lt-glass-b,#b8a8e6);
+}

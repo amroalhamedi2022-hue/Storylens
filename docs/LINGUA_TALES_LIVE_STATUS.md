@@ -1,3 +1,44 @@
+## 2026-11-11 — Main app integration and reader fixes
+
+- Integrated the audit fixes from PR #68 and the measured bilingual paper pagination from its dependent PR #85. Current gallery and approved local artwork handling stay in place.
+- Each curl facet mounts its visible face only (22 face trees instead of 44). Android reserves display-cutout space, and the launch window and WebView share a background colour. Integrated the five optional Wen gradient palettes from PR #45 into the existing six-theme editor.
+- The numbered tracker in `docs/qa/READER_AUDIT_49_TRACKER_2026-11-10.md` is the baseline. This integration addresses the duplicated facet DOM (#14), line-aware pagination (#16–18), and applies source fixes for cutout insets and launch surface (#33, #48). Real-device results, 120Hz, final curl geometry and owner-signed upgrade still require verification. No stories, translations or source images were added.
+
+## PAGINATION DELIVERY — 11 November 2026
+
+The dedicated branch `codex/lingua-real-paper-pagination-20261110` now contains the measured, line-aware pagination implementation for #16, #17, and #18. Source commit `371eb02` passed all 114 Node test files, real offline Chromium at all five required viewports in English and Arabic, physical-curl browser compatibility, workflow Python checks, and Android `testDebugUnitTest` plus `assembleDebug`. Exact text, dictionary taps at fragment boundaries, Saved Words, translation continuation, rotation/font/reopen anchors, chapter heading, and one uncropped historical image were verified. [Engineering handoff and screenshots](qa/CODEX_PAGINATION_HANDOFF_2026-11-11.md).
+
+These three issues are **CODE FIXED with automated rendering evidence** on the dedicated branch; [GitHub Actions #43027888129](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/43027888129) **SUCCESS** on code/test SHA `a487e47cb8dc45747e227ae772541b2f1247d2f2`. PR review and physical Android phone/Xiaomi Pad 5 acceptance remain pending. No 120Hz or signed-release claim is made.
+
+## UPDATED EXECUTION DASHBOARD — 10 November 2026 / Codex delegation
+
+**Current development integration:** PR [#68](https://github.com/amroalhamedi2022-hue/Storylens/pull/68), branch `fix/reader-integrity-49-audit-20261110`. Main has additional literature/art source commits; keep the two workstreams' files separate. PR #68 is **OPEN**, not installed/released.
+
+**Verified exact-SHA code validation before documentation update:** `1f574f9ed63118521c67873739ee78bbf33bf519`, Android [run #42785164198](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42785164198) **SUCCESS** (including unit tests, Android build/identity, Chromium artwork, Wen Glass, physical RTL/LTR portrait/spread curl, Wen Reader Sanctuary); chapter gallery [#42785164150](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42785164150) **SUCCESS**. **After documentation-only commits the HEAD advances; recheck final HEAD CI before merging**. Workflow artifacts include preview/debug and **unsigned** production; no owner-signed installable release claimed.
+
+**Issue accounting:** Original 49 video defects: **22 CODE FIXED / MITIGATED / PARTIAL** and **27 OPEN**, with **zero hardware-accepted**. Additional #50 / P1 was found in genuine CI screenshots: gallery card bottoms clipped, layout fix committed; automated browser checks green at the verified source SHA but direct device visual sign-off pending. This is a **50-finding ledger**, not an assertion of 50 completed fixes. [Full tracker](docs/qa/READER_AUDIT_49_TRACKER_2026-11-10.md).
+
+**Completed at source level for PR #68:** first-paper heading with measured title height; distinct verso/underlay and temporary blank sheet for trailing odd spread; controlled paper-shadow/facet seams; physical RTL/LTR flip tests; recoverable Back/Settings in landscape immersive mode; accessible page counts, paper control contrast, no selection handles on chapter gallery labels; settings rows/scroll; compact gallery card height and fixed gallery overflow. Existing CHG-05 PR #67 stays preserved, not redone.
+
+**Remaining highest-impact work:**
+- **Delivered on the dedicated Codex branch:** P0 #16/#17 + P1 #18 real line-level, non-clipping, measured page pagination at source commit `371eb02`; automated Node, Chromium, curl-compatibility and Android checks passed locally, and [GitHub Actions #43027888129](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/43027888129) **SUCCESS** on code/test SHA `a487e47cb8dc45747e227ae772541b2f1247d2f2`. PR review and physical-device acceptance remain. Full evidence: [`docs/qa/CODEX_PAGINATION_HANDOFF_2026-11-11.md`](qa/CODEX_PAGINATION_HANDOFF_2026-11-11.md).
+- **Owner chat continues separately:** P0 #2/#3/#8 plus page curl visual realism, outer-sheet touch (#12), frame rate/DOM budget (#14), boundary preview (#13), remaining #22/#25/#28/#30/#31 and #38–#49 UX/design items. Work only in non-overlapping files while Codex edits pagination.
+- **External dependencies:** approved chapter-specific images remain **0** in `docs/literature/CHAPTER_ART_PROGRESS.json` (currently **288** mapped *candidates*, not approved). Source literature chat alone controls originals, translations and art rights; UI chat integrates only approved assets. Physical Android phone and Xiaomi Pad 5, real 120Hz smoothness, in-place signed update with original certificate remain **NOT VERIFIED**.
+
+**Hard gates:** keep actual source text, translation, tap-dictionary, Saved Words/SRS, per-chapter position, offline behavior and backup keys unchanged; do not disable failing QA. Run full tests at exact PR tip after Codex PR integration; recheck real 360×760, 460×860, 760×390, 1280×840 gallery screenshots including entire chapter title/label; then physical phone + Pad 5 portrait/landscape and matching owner signing certificate. Do not publish APK from this design branch.
+
+---
+
+# READER AUDIT-49 INTEGRATION (2026-11-10) — code patches on dedicated review branch, NOT device approved
+
+- **Branch:** `fix/reader-integrity-49-audit-20261110` based on verified main `ec026268aa1`. Full numbered issue list and status: `docs/qa/READER_AUDIT_49_TRACKER_2026-11-10.md`.
+- **Verified already merged:** CHG-05 PR #67, chapter-gallery navigation/history, broken image quarantine, short-landscape QA; do NOT repeat. Main Android Action #42775000177 succeeded. A **different prior PR run** #42773890630 failed only at Wen Glass optical browser; no claim that current main is failing.
+- **Changed on this branch:** real chapter title/counter moved onto first page with measured first-page reserve; single page curl no longer prints identical exposed page a second time on its back; facet seams and stray contact shadow constrained; spread page counter; quieter landscape with recoverable accessible controls; contrast on paper buttons; gallery chapter labels non-selectable while filters remain editable. Expanded regression tests. **These are code-level changes only; exact-head CI and actual physical phone/Pad 5 visual tests still required.**
+- **Do not misreport completed:** full-line pagination of long paragraphs, full actual paper-grab including outer frame, perfectly curved 3D fold, original-scene images, physical Android 120Hz, private signed APK/data-preserving install remain unfinished. Content chat exclusively owns original books/pictures/rights/translations. No unapproved original images were published or modified.
+- **Next:** wait for exact-head PR CI, diagnose any failure rather than remove test, then screenshot/gesture QA and only merge green, independently reviewed change. User's demand is honest issue-by-issue progress not theoretical design reports.
+
+---
+
 ## 2026-11-10 — 3 actual Victorian FULL-COLOR artboards & 6 source-matched upcoming scenes (separate visual-bible PR)
 - The owner requested colorful multi-scene Victorian illustrated galleries. Created THREE 1536×1024 actual modern AI artboards and THREE sha256-verified WebP versions in `docs/art-generation/visual-bibles/colored-victorian/` (full PNG originals + screenshot-tested offline gallery ZIP in personal Library). Artistic references **not** genuine 19th-century originals and **not** real chapter pictures. The first two collages include balloon symbolism and wrong Fogg likeness, and the twelve-panel AI sheet incorrectly calls some chapter III/IV events chapters I–II. All images remain releaseApproved false, the app registry remains empty and NO APK was signed. Added six original English + Arabic source anchored briefs from chapters I–IV, no generated pictures claimed for those scenes; automated real-content and image-hash tests. Android reader, original engravings, user data remain unchanged. All browser checks used actual image bytes via in-memory data URI because sandbox blocks direct file and loopback navigation; do not misstate as physical device test.
 

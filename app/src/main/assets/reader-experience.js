@@ -149,22 +149,28 @@ wordSheet=function(args){
  contextNode.classList.toggle('lt-context-missing',result.kind==='sentence');
 };
 
-// Each chapter becomes a sequence of readable pages. Four paragraphs is a
-// conservative starting point; translations and illustrations travel with
-// their source paragraph. The current page is persisted per story/chapter.
+// Each chapter becomes measured physical pages. The legacy four-paragraph
+// constant remains only for old stored page numbers and unsupported WebViews.
 const LT_PAGE_PARAGRAPHS=4;
 const ltPageIndices=new Map();
+// A reflow needs more precision than the legacy paragraph-only storage key.
+// Keep the character offset in memory across rotation/font rebuilds; the
+// existing physical page number still restores the same fragment after an app
+// restart without changing any persisted-data or backup format.
+const ltPendingReflowAnchors=new Map();
 // Keep small phone pages readable instead of forcing four long passages onto
 // one oversized sheet. This is a bounded, deterministic layout estimate; each
 // authored paragraph, its bilingual translation and illustration remain intact.
-function ltPageStarts(lengths,viewportHeight,readerWidth,fontSize,illustrationHeights=[]){
+function ltPageStarts(lengths,viewportHeight,readerWidth,fontSize,illustrationHeights=[],firstPaperInset=0){
  const height=Number(viewportHeight),width=Number(readerWidth),size=Number(fontSize);
  const vh=Number.isFinite(height)&&height>=320?height:800;
  const rw=Number.isFinite(width)&&width>=220?width:420;
  const px=Number.isFinite(size)&&size>=12&&size<=42?size:20;
  const charactersPerLine=Math.max(16,Math.floor((Math.min(920,rw)-82)/(px*.56)));
  const budget=Math.max(210,Math.min(800,vh*.77)-80);
- const starts=[];let used=0,count=0;
+ const inset=Number(firstPaperInset);
+ const firstReserve=Number.isFinite(inset)?Math.max(0,Math.min(budget-60,inset)):0;
+ const starts=[];let used=firstReserve,count=0;
  for(let i=0;i<lengths.length;i++){
   const raw=Number(lengths[i]);
   const chars=Number.isFinite(raw)?Math.max(0,Math.min(20000,raw)):0;
@@ -172,7 +178,7 @@ function ltPageStarts(lengths,viewportHeight,readerWidth,fontSize,illustrationHe
   const imageCost=Number.isFinite(additional)?Math.max(0,Math.min(320,additional)):0;
   const cost=Math.max(1,Math.ceil(chars/charactersPerLine))*px*1.65+38+imageCost;
   if(count===0||count>=LT_PAGE_PARAGRAPHS||used+cost>budget){
-   starts.push(i);used=0;count=0;
+   starts.push(i);used=i===0?firstReserve:0;count=0;
   }
   used+=cost;count++;
  }
@@ -202,18 +208,20 @@ function ltMeasuredParagraphHeights(sentences){
  }
  return heights;
 }
-function ltMeasuredPageStarts(heights,viewportHeight){
+function ltMeasuredPageStarts(heights,viewportHeight,firstPaperInset=0){
  const vh=Number(viewportHeight);
  const height=Number.isFinite(vh)&&vh>=320?vh:800;
  const budget=Math.max(210,Math.min(800,height*.77)-80);
- const starts=[];let used=0,count=0;
+ const inset=Number(firstPaperInset);
+ const firstReserve=Number.isFinite(inset)?Math.max(0,Math.min(budget-60,inset)):0;
+ const starts=[];let used=firstReserve,count=0;
  for(let i=0;i<heights.length;i++){
   const raw=Number(heights[i]);
   if(!Number.isFinite(raw)||raw<=0)return null;
   // A single oversized paragraph remains intact and scrollable; never
   // cut bilingual text, dictionary words or an illustration across sheets.
   if(count===0||count>=LT_PAGE_PARAGRAPHS||used+raw>budget){
-   starts.push(i);used=0;count=0;
+   starts.push(i);used=i===0?firstReserve:0;count=0;
   }
   used+=raw;count++;
  }
@@ -227,6 +235,194 @@ function ltPageForParagraph(starts,paragraph){
   found=i;
  }
  return found;
+}
+function ltPageForTextAnchor(starts,offsets,paragraph,textOffset=0){
+ const target=Number.isInteger(paragraph)&&paragraph>=0?paragraph:0;
+ const offset=Number.isInteger(textOffset)&&textOffset>=0?textOffset:0;
+ let found=0;
+ for(let i=0;i<starts.length;i++){
+  if(starts[i]<target){found=i;continue;}
+  if(starts[i]>target)break;
+  if((offsets[i]||0)<=offset)found=i;else break;
+ }
+ return found;
+}
+// Word endpoints supplied by Intl.Segmenter are also grapheme-safe. Older
+// WebViews fall back to code-point iteration while keeping combining marks,
+// variation selectors and ZWJ sequences attached to their base character.
+function ltTextBoundaries(text,language){
+ const value=String(text||'');
+ if(!value)return [0];
+ try{
+  if(typeof Intl?.Segmenter==='function'){
+   const segmenter=new Intl.Segmenter(language||undefined,{granularity:'word'});
+   const ends=[];
+   for(const part of segmenter.segment(value))ends.push(part.index+part.segment.length);
+   if(ends[ends.length-1]!==value.length)ends.push(value.length);
+   return ends;
+  }
+ }catch(_){}
+ const ends=[];let offset=0,join=false;
+ for(const point of value){
+  offset+=point.length;
+  const combining=/[\u0300-\u036f\u0483-\u0489\u0591-\u05bd\u05bf\u05c1-\u05c2\u05c4-\u05c5\u0610-\u061a\u064b-\u065f\u0670\u06d6-\u06ed\u1ab0-\u1aff\u1dc0-\u1dff\u20d0-\u20ff\ufe00-\ufe0f\ufe20-\ufe2f]/.test(point);
+  if(combining||point==='\u200D'||join){
+   if(ends.length)ends[ends.length-1]=offset;else ends.push(offset);
+   join=point==='\u200D';continue;
+  }
+  ends.push(offset);
+ }
+ if(ends[ends.length-1]!==value.length)ends.push(value.length);
+ const wordEnds=ends.filter(end=>end===value.length||/[\s.,;:!?…،؛؟—–-]/.test(value.slice(Math.max(0,end-1),end)));
+ return wordEnds.length?wordEnds:ends;
+}
+function ltTextPosition(root,offset){
+ if(!root||typeof document.createTreeWalker!=='function')return null;
+ const walker=document.createTreeWalker(root,window.NodeFilter?.SHOW_TEXT||4);
+ let node=walker.nextNode(),used=0,last=null;
+ while(node){
+  const length=node.nodeValue?.length||0;
+  if(offset<=used+length)return {node,offset:Math.max(0,offset-used)};
+  used+=length;last=node;node=walker.nextNode();
+ }
+ return last&&offset===used?{node:last,offset:last.nodeValue?.length||0}:null;
+}
+function ltCloneTextSlice(source,start,end){
+ if(!source||typeof document.createRange!=='function'||end<=start)return null;
+ const from=ltTextPosition(source,start),to=ltTextPosition(source,end);
+ if(!from||!to)return null;
+ const clone=source.cloneNode(false),range=document.createRange();
+ range.setStart(from.node,from.offset);range.setEnd(to.node,to.offset);
+ clone.appendChild(range.cloneContents());
+ clone.removeAttribute?.('id');
+ clone.querySelectorAll?.('[id]').forEach(node=>node.removeAttribute('id'));
+ return clone;
+}
+function ltSetPhysicalPageSize(page,height){
+ page.classList.add('lt-paginated-sheet');
+ page.style.setProperty('--lt-page-height',height+'px');
+ // Inline !important intentionally wins over the late compatibility sheet's
+ // historical height:auto rule. Every curl side must share one paper size.
+ page.style.setProperty('height',height+'px','important');
+ page.style.setProperty('min-height',height+'px','important');
+}
+// Build bounded physical sheets from the real rendered DOM. Only paragraphs
+// that cross a boundary are cloned into semantic fragments; illustrations and
+// other interactive atomic nodes are moved, so their handlers are never copied.
+function ltMeasuredContentPages(sentenceBox,heading,caption,spread,pageHeight){
+ if(typeof document.createRange!=='function'||typeof document.createTreeWalker!=='function')return null;
+ const originalNodes=Array.from(sentenceBox.childNodes),pages=[],starts=[],offsets=[];
+ let page=null,currentParagraph=0;
+ function createPage(){
+  page=document.createElement('section');page.className='lt-book-page lt-pagination-probe';
+  page.setAttribute('role','group');ltSetPhysicalPageSize(page,pageHeight);
+  sentenceBox.appendChild(page);pages.push(page);
+  if(pages.length===1&&heading){
+   heading.classList.add('lt-chapter-paper-heading');
+   if(caption){caption.classList.add('lt-chapter-paper-caption');page.append(caption,heading);}
+   else page.appendChild(heading);
+  }
+  return page;
+ }
+ function hasFlow(){return page?.dataset.ltHasFlow==='1';}
+ function fits(){
+  if(!page)return false;
+  const box=page.getBoundingClientRect(),style=window.getComputedStyle?.(page);
+  if(!box||!style)return page.scrollHeight<=page.clientHeight+1;
+  const bottom=box.bottom-(Number.parseFloat(style.borderBottomWidth)||0)-
+   (Number.parseFloat(style.paddingBottom)||0)-(pages.length===1?52:32);
+  const children=Array.from(page.children);
+  return !children.some(child=>child.getBoundingClientRect?.().bottom>bottom);
+ }
+ function anchor(paragraph,offset){
+  if(hasFlow())return;
+  const safeParagraph=Number.isInteger(paragraph)&&paragraph>=0?paragraph:0;
+  const safeOffset=Number.isInteger(offset)&&offset>=0?offset:0;
+  page.dataset.ltHasFlow='1';page.dataset.ltStartParagraph=String(safeParagraph);
+  page.dataset.ltStartOffset=String(safeOffset);starts[pages.length-1]=safeParagraph;
+  offsets[pages.length-1]=safeOffset;
+ }
+ function decorateFragment(fragment,start,end,total){
+  fragment.classList.add('lt-text-fragment');
+  if(fragment.classList.contains('sentence'))fragment.classList.add('lt-paragraph-fragment');
+  if(start>0)fragment.classList.add('lt-fragment-continuation');
+  if(end<total)fragment.classList.add('lt-fragment-continues');
+  fragment.dataset.ltFragmentStart=String(start);fragment.dataset.ltFragmentEnd=String(end);
+ }
+ function trySlice(source,start,end,total,paragraph,anchorBase,commit=true){
+  const fragment=ltCloneTextSlice(source,start,end);
+  if(!fragment)return null;
+  decorateFragment(fragment,start,end,total);page.appendChild(fragment);
+  if(!fits()){fragment.remove();return null;}
+  if(commit)anchor(paragraph,anchorBase+start);return fragment;
+ }
+ function appendText(source,paragraph,anchorBase=0){
+  const text=source.textContent||'',total=text.length;
+  if(!total){
+   const empty=source.cloneNode(true);page.appendChild(empty);
+   if(!fits()&&hasFlow()){empty.remove();createPage();page.appendChild(empty);}
+   anchor(paragraph,anchorBase);return;
+  }
+  const boundaries=ltTextBoundaries(text,source.lang||state.story?.sourceLanguage||undefined);
+  const sourceHeight=Number(source.getBoundingClientRect?.().height);
+  const wholeMayFit=Number.isFinite(sourceHeight)&&sourceHeight<=pageHeight;
+  let start=0;
+  while(start<total){
+   // Avoid cloning an obviously multi-page DOM subtree in full for every
+   // continuation. Long tokenized paragraphs would otherwise become quadratic.
+   if(wholeMayFit&&trySlice(source,start,total,total,paragraph,anchorBase)){start=total;break;}
+   const candidates=boundaries.filter(value=>value>start&&value<=total);
+   let low=0,high=candidates.length-1,best=start;
+   while(low<=high){
+    const mid=(low+high)>>1,end=candidates[mid];
+    const candidate=trySlice(source,start,end,total,paragraph,anchorBase,false);
+    if(candidate){best=end;candidate.remove();low=mid+1;}else high=mid-1;
+   }
+   if(best===start){
+    if(hasFlow()||pages.length===1){createPage();continue;}
+    // An extreme accessibility font or malformed unbreakable run must remain
+    // reachable. This is the explicitly scrollable unsupported-layout fallback.
+    best=candidates[0]||total;page.classList.add('lt-page-scroll-fallback');
+   }
+   const committed=ltCloneTextSlice(source,start,best);
+   decorateFragment(committed,start,best,total);page.appendChild(committed);anchor(paragraph,anchorBase+start);
+   start=best;
+   if(start<total)createPage();
+  }
+ }
+ function appendAtomic(node,paragraph,offset){
+  if(node.nodeType!==1){
+   if(node.nodeType===3&&node.nodeValue?.trim())page.appendChild(node.cloneNode(true));
+   return;
+  }
+  page.appendChild(node);
+  if(!fits()&&hasFlow()){node.remove();createPage();page.appendChild(node);}
+  anchor(paragraph,offset);
+  if(!fits()){
+   if(node.classList?.contains('lt-inline-illustration'))page.classList.add('lt-illustration-page');
+   if(!fits())page.classList.add('lt-page-scroll-fallback');
+  }
+ }
+ createPage();
+ for(const node of originalNodes){
+  if(node.nodeType===1&&node.classList.contains('sentence')){
+   currentParagraph=Number(node.dataset.i);
+   if(!Number.isInteger(currentParagraph)||currentParagraph<0)currentParagraph=0;
+   appendText(node,currentParagraph,0);continue;
+  }
+  if(node.nodeType===1&&node.matches?.('.inline-ar,.inline-en,.stl-sentence-translation')){
+   const source=state.story?.chapters?.[state.chapter]?.paragraphs?.[currentParagraph];
+   const sourceText=state.story?.sourceLanguage==='ar'?source?.ar:source?.en;
+   appendText(node,currentParagraph,String(sourceText||'').length+1);continue;
+  }
+  const sourceLength=state.story?.chapters?.[state.chapter]?.paragraphs?.[currentParagraph];
+  const endOffset=String(state.story?.sourceLanguage==='ar'?sourceLength?.ar||'':sourceLength?.en||'').length;
+  appendAtomic(node,currentParagraph,endOffset);
+ }
+ pages.forEach(item=>item.classList.remove('lt-pagination-probe'));
+ // A page containing only whitespace is never useful physical paper.
+ while(pages.length>1&&!pages[pages.length-1].dataset.ltHasFlow){pages.pop().remove();starts.pop();offsets.pop();}
+ return {pages,starts,offsets};
 }
 // Do not let page gestures steal taps, text selection, or accessibility controls.
 function pageSwipeAllowed(target,selectionText=''){
@@ -337,53 +533,46 @@ function installPageTurn(){
   sentenceBox.classList.add('lt-curl-book');sentenceBox.dataset.spread=String(spread);
   // Measure at final sheet width, before moving the original interactive nodes.
   sentenceBox.style.display='block';
-  sentenceBox.style.width=(100/spread)+'%';
+  // Measure a few pixels narrower than the eventual grid track. Android's
+  // fractional grid rounding can otherwise add one late line after activation.
+  sentenceBox.style.setProperty('width','calc('+(100/spread)+'% - 8px)','important');
  }
  const chapterEnd=width.querySelector('.chapter-end');
  if(chapterEnd)chapterEnd.hidden=true;
- const originalNodes=Array.from(sentenceBox.childNodes);
- const pages=[];
- const bounds=width.getBoundingClientRect?.();
- // Use the actual post-theme English font size. The legacy 'size' preference
- // does not reflect the independent compact/comfortable/large reader profiles.
- const computedSize=Number.parseFloat(window.getComputedStyle?.(sentences[0])?.fontSize||'');
- const preferredSize={compact:17,comfortable:19,large:22}[get('readingSizeEnglish','comfortable')]||Number(get('size',20));
- // Keep the figure on the same paper as its source paragraph. Reserve
- // enough space to prevent image-heavy pages from overrunning the sheet.
- const illustrationHeights=sentences.map(node=>{
-  const after=node.nextElementSibling;
-  const adjacent=(after?.classList?.contains('inline-ar')||after?.classList?.contains('inline-en'))?after.nextElementSibling:after;
-  return adjacent?.classList?.contains('lt-inline-illustration')
-   ?Math.min(260,Math.max(140,window.innerHeight*.26)):0;
- });
- const paragraphLengths=sentences.map(node=>{
-  const translated=node.nextElementSibling;
-  const companion=(translated?.classList?.contains('inline-ar')||translated?.classList?.contains('inline-en'))?(translated.textContent||'').length:0;
-  return (node.textContent||'').length+companion;
- });
- // Prefer real text metrics after the final fonts, translations and scene
- // figures have entered the DOM. Fall back to safe length estimates in
- // partial/older WebViews that cannot measure laid-out content.
- const measured=ltMeasuredParagraphHeights(sentences);
- const starts=(measured&&ltMeasuredPageStarts(measured,window.innerHeight))||
-  ltPageStarts(paragraphLengths,window.innerHeight,bounds?.width||window.innerWidth,
-   Number.isFinite(computedSize)?computedSize:preferredSize,illustrationHeights);
- const boundaries=new Set(starts);
- let page=null,paragraph=0;
- for(const node of originalNodes){
-  if(node.nodeType===1&&node.classList.contains('sentence')){
-   // Leading illustrations or decorative nodes belong on the first paper.
-   if(!page||(paragraph>0&&boundaries.has(paragraph))){
-    page=document.createElement('section');
-    page.className='lt-book-page';
-    page.setAttribute('role','group');
-    pages.push(page);
+ // The heading participates in the same fixed content box as the prose.
+ const heading=width.querySelector(':scope > h2');
+ const caption=width.querySelector(':scope > .reader-label');
+ const pageHeight=Math.max(260,Math.min(850,Math.round((Number(window.innerHeight)||800)*.72)));
+ let built=ltMeasuredContentPages(sentenceBox,heading,caption,spread,pageHeight);
+ // Range and TreeWalker are available in supported Android System WebViews.
+ // Retain an honest scrollable fallback for an unusually old implementation.
+ if(!built){
+  const originalNodes=Array.from(sentenceBox.childNodes),pages=[];
+  const headingHeight=heading?.getBoundingClientRect?.().height||0;
+  const captionHeight=caption?.getBoundingClientRect?.().height||0;
+  const inset=heading?Math.max(0,headingHeight)+Math.max(0,captionHeight)+48:0;
+  const measured=ltMeasuredParagraphHeights(sentences);
+  const starts=(measured&&ltMeasuredPageStarts(measured,window.innerHeight,inset))||[0];
+  const boundaries=new Set(starts);let page=null,paragraph=0;
+  for(const node of originalNodes){
+   if(node.nodeType===1&&node.classList.contains('sentence')){
+    if(!page||(paragraph>0&&boundaries.has(paragraph))){
+     page=document.createElement('section');page.className='lt-book-page lt-page-scroll-fallback';
+     page.setAttribute('role','group');pages.push(page);
+    }
+    paragraph++;
    }
-   paragraph++;
+   if(!page){page=document.createElement('section');page.className='lt-book-page lt-page-scroll-fallback';page.setAttribute('role','group');pages.push(page)}
+   page.appendChild(node);
   }
-  if(!page){page=document.createElement('section');page.className='lt-book-page';page.setAttribute('role','group');pages.push(page)}
-  page.appendChild(node);
+  if(pages.length&&heading){
+   heading.classList.add('lt-chapter-paper-heading');
+   if(caption){caption.classList.add('lt-chapter-paper-caption');pages[0].prepend(caption,heading);}
+   else pages[0].prepend(heading);
+  }
+  built={pages,starts,offsets:starts.map(()=>0)};
  }
+ const {pages,starts,offsets}=built;
  sentenceBox.replaceChildren(...pages);
  if(window.LinguaPageCurl){sentenceBox.style.removeProperty('display');sentenceBox.style.removeProperty('width');}
  const pageControls=document.createElement('nav');
@@ -402,7 +591,13 @@ function installPageTurn(){
   ?initial*LT_PAGE_PARAGRAPHS:0;
  const firstParagraph=Number.isInteger(savedAnchor)&&savedAnchor>=0&&
   savedAnchor<sentences.length?savedAnchor:legacyParagraph;
- let current=ltPageForParagraph(starts,firstParagraph);
+ const reflowKey=state.story.id+'\u0000'+state.chapter;
+ const pendingAnchor=ltPendingReflowAnchors.get(reflowKey);
+ ltPendingReflowAnchors.delete(reflowKey);
+ let current=pendingAnchor
+  ?ltPageForTextAnchor(starts,offsets,pendingAnchor.paragraph,pendingAnchor.textOffset)
+  :(Number.isInteger(initial)&&initial>=0&&initial<pages.length&&starts[initial]===firstParagraph
+    ?initial:ltPageForParagraph(starts,firstParagraph));
  current=Math.floor(current/spread)*spread;
  let curl=null;
  const prev=pageControls.querySelector('.lt-page-prev');
@@ -410,6 +605,10 @@ function installPageTurn(){
  const countLabel=pageControls.querySelector('.lt-page-count');
  function renderPage(direction,animate){
   current=Math.max(0,Math.min(pages.length-1,current));
+  // Preserve the authentic source-art hero on the first spread. Only after
+  // turning past the opening page should landscape enter chrome-free reading.
+  // Earlier hiding the hero unconditionally failed the historical art ratio QA.
+  if(sentenceBox?.dataset)sentenceBox.dataset.ltReadingStarted=String(spread===2&&current>0);
   pages.forEach((item,index)=>{
    const visible=index>=current&&index<current+spread;
    item.classList.toggle('is-active',visible);
@@ -423,7 +622,10 @@ function installPageTurn(){
   next.textContent=current+spread>=pages.length
    ?(state.chapter<state.story.chapters.length-1?uiText('الفصل التالي','Next chapter'):uiText('العودة للمكتبة','Back to library'))
    :uiText('الصفحة التالية','Next page');
-  countLabel.textContent=uiText('الصفحة '+(current+1)+' من '+pages.length,'Page '+(current+1)+' of '+pages.length);
+  countLabel.textContent=spread===2
+   ?uiText('الصفحتان '+(current+1)+'–'+Math.min(current+spread,pages.length)+' من '+pages.length,
+     'Pages '+(current+1)+'–'+Math.min(current+spread,pages.length)+' of '+pages.length)
+   :uiText('الصفحة '+(current+1)+' من '+pages.length,'Page '+(current+1)+' of '+pages.length);
   put(key,current);
   put(anchorKey,starts[current]||0);
   if(chapterEnd)chapterEnd.hidden=current+spread<pages.length;
@@ -475,6 +677,10 @@ function installPageTurn(){
    put('chapter_'+state.story.id,previous);
    put('readpage_'+state.story.id+'_'+previous,lastPage);
    put('readpage_anchor_'+state.story.id+'_'+previous,Math.max(0,length-1));
+   const previousSource=state.story.chapters[previous].paragraphs[Math.max(0,length-1)];
+   const previousText=state.story?.sourceLanguage==='ar'?previousSource?.ar:previousSource?.en;
+   ltPendingReflowAnchors.set(state.story.id+'\u0000'+previous,{paragraph:Math.max(0,length-1),
+    textOffset:String(previousText||'').length});
    ltPlayPageTurnSfx();renderReader();window.scrollTo(0,0);
    return;
   }
@@ -508,7 +714,22 @@ function installPageTurn(){
  // below is only a compatibility fallback; never install both sets of handlers.
  if(window.LinguaPageCurl){
   const curlStory=state.story,curlChapter=state.chapter;
-  let boundaryPreview=null;
+  let boundaryPreview=null,blankUnder=null;
+  // The last half of a short chapter may have no further printed paper side.
+  // Never duplicate the existing next-page ink to invent an underlay: instead
+  // supply a temporary real, empty page with the same paper material. It is
+  // removed on turn commit/cancel and is never added to saved page counters.
+  function blankUnderPage(){
+   blankUnder?.remove();
+   const under=document.createElement('section');
+   under.className='lt-book-page lt-curl-blank-under';
+   under.inert=true;under.setAttribute('aria-hidden','true');
+   sentenceBox.appendChild(under);blankUnder=under;return under;
+  }
+  function clearCurlPreviews(){
+   boundaryPreview?.remove();boundaryPreview=null;
+   blankUnder?.remove();blankUnder=null;
+  }
   function boundaryPage(delta){
    boundaryPreview?.remove();
    const chapter=state.story.chapters[state.chapter+delta];
@@ -531,19 +752,49 @@ function installPageTurn(){
     const boundary=target<0||target>=pages.length;
     if(boundary&&!state.story.chapters[state.chapter+delta])return null;
     const moving=delta>0?Math.min(current+spread-1,pages.length-1):current;
-    return {page:pages[moving],
-     under:boundary?boundaryPage(delta):pages[target+(delta>0?Math.min(spread-1,pages.length-1-target):0)],
-     back:!boundary?pages[target+(spread===2&&delta<0?1:0)]:boundaryPreview,
+    // Pages are *paper sides*, not duplicate independent cards. For a portrait
+    // forward turn the current front bends to reveal the NEXT page on its
+    // reverse, and the sheet BENEATH carries the following page. The old
+    // renderer put the same target page on both surfaces, doubling the ink.
+    // In a facing spread: forward verso=target and under=target+1;
+    // backward verso=target+1 and under=target. Do not create a fake page.
+    const beneathIndex=delta>0?target+1:target+(spread===2?0:-1);
+    const under=boundary?boundaryPage(delta):(pages[beneathIndex]||blankUnderPage());
+    const candidateBack=boundary?null:pages[target+(spread===2&&delta<0?1:0)];
+    return {page:pages[moving],under,
+     back:candidateBack===under?null:candidateBack,
      info:{storyId:curlStory.id,chapter:curlChapter,fromPage:current,toPage:boundary?null:target,spread}};
    },
    commit(delta,source){
     if(state.page!=='reader'||state.story!==curlStory||state.chapter!==curlChapter||!sentenceBox.isConnected)return false;
-    move(delta,source);boundaryPreview?.remove();boundaryPreview=null;return true;
+    move(delta,source);clearCurlPreviews();return true;
    }
   });
-  sentenceBox.addEventListener('lingua:turncancel',()=>{boundaryPreview?.remove();boundaryPreview=null;});
+  sentenceBox.addEventListener('lingua:turncancel',clearCurlPreviews);
   // Public bridge for native Back and immersive shell integration.
   window.LinguaReaderCurl=curl;
+  if(spread===2){
+   // Quiet landscape: no permanent navigation strip over the paper. Tapping
+   // blank parchment reveals the same real controls; word taps, illustrations
+   // and active paper-fold gestures retain their original semantics.
+   let controlsTimer=null;
+   function revealPageControls(){
+    reader.classList.add('lt-reader-controls-visible');
+    if(controlsTimer!==null)window.clearTimeout(controlsTimer);
+    controlsTimer=window.setTimeout(()=>{
+     if(!pageControls.contains(document.activeElement)){
+      reader.classList.remove('lt-reader-controls-visible');
+     }
+     controlsTimer=null;
+    },3500);
+   }
+   sentenceBox.addEventListener('click',event=>{
+    const target=event.target;
+    if(target?.closest?.('.sentence,.tok,button,a,input,textarea,.lt-inline-illustration'))return;
+    revealPageControls();
+   });
+   pageControls.addEventListener('focusin',revealPageControls);
+  }
   renderPage('next',false);return;
  }
  let startX=null,startY=null,startTarget=null;
@@ -814,7 +1065,9 @@ function captureParagraphAnchor(){
   if(!Number.isInteger(paragraph)||paragraph<0||!box||
      !Number.isFinite(box.top)||!Number.isFinite(box.bottom)||
      box.bottom<=52||box.top>=viewport)continue;
-  return {paragraph,viewportOffset:Math.max(-4096,Math.min(4096,box.top))};
+  const fragmentOffset=Number(node.dataset?.ltFragmentStart);
+  return {paragraph,textOffset:Number.isInteger(fragmentOffset)&&fragmentOffset>=0?fragmentOffset:0,
+   viewportOffset:Math.max(-4096,Math.min(4096,box.top))};
  }
  return {};
 }
@@ -826,8 +1079,14 @@ function bookmarkPosition(mark){
     mark.paragraph>=(paragraphs?.length??0)||
     typeof mark.viewportOffset!=='number'||!Number.isFinite(mark.viewportOffset)||
     Math.abs(mark.viewportOffset)>4096)return fallback;
- const node=Array.from(document.querySelectorAll('.reader .sentence'))
-  .find(el=>Number(el.dataset?.i)===mark.paragraph);
+ const wantedOffset=Number.isInteger(mark.textOffset)&&mark.textOffset>=0?mark.textOffset:0;
+ const matching=Array.from(document.querySelectorAll('.reader .sentence'))
+  .filter(el=>Number(el.dataset?.i)===mark.paragraph);
+ const node=matching.find(el=>{
+  const start=Number(el.dataset?.ltFragmentStart)||0;
+  const end=Number(el.dataset?.ltFragmentEnd)||Number.MAX_SAFE_INTEGER;
+  return start<=wantedOffset&&wantedOffset<end;
+ })||matching[0];
  const top=node?.getBoundingClientRect?.().top;
  const y=window.scrollY+top-mark.viewportOffset;
  return Number.isFinite(top)&&Number.isFinite(y)
@@ -1652,7 +1911,31 @@ renderReader=function(){
   marker.setAttribute('title',uiText('يوجد علامة محفوظة في هذا الفصل','Bookmark saved in this chapter'));
   label.appendChild(marker);
  }
- document.querySelectorAll('.reader .sentence').forEach(p=>{
+ // Restore revealed companions before measuring; otherwise their height would
+ // be added after the fixed sheet had already been fitted. The page builder
+ // may then split source or translation independently without changing text.
+ const revealed=revealedByChapter.get(revealKey());
+ if(revealed){
+  for(const p of sentences){
+   const sentenceIndex=Number(p.dataset.i),source=chapter?.paragraphs?.[sentenceIndex];
+   if(!revealed.has(sentenceIndex)||!source)continue;
+   const translation=document.createElement('p');
+   translation.className='stl-sentence-translation';
+   translation.dataset.ltFor=String(sentenceIndex);
+   translation.setAttribute('dir',state.story?.sourceLanguage==='ar'?'ltr':'rtl');
+   translation.setAttribute('lang',state.story?.sourceLanguage==='ar'?'en':'ar');
+   translation.textContent=state.story?.sourceLanguage==='ar'?source.en:source.ar;
+   p.insertAdjacentElement('afterend',translation);
+  }
+ }
+ // Apply final token semantics before measuring: global accessibility styles
+ // may affect inline metrics in some WebViews, so pagination must see them.
+ sentences.forEach(p=>p.querySelectorAll?.('.tok').forEach(token=>{
+  token.setAttribute('role','button');token.setAttribute('tabindex','-1');
+ }));
+ installPageTurn();
+ const interactiveSentences=Array.from(document.querySelectorAll('.reader .sentence'));
+ interactiveSentences.forEach(p=>{
   // Capture word taps before the legacy per-tap scan of every phrase. The
   // optimized index preserves longest edited idiom, inflected-word fallback,
   // and the existing source-grounded word sheet/SRS persistence.
@@ -1667,9 +1950,10 @@ renderReader=function(){
    const range=document.createRange();
    range.selectNodeContents(p);
    range.setEndBefore(token);
+   const fragmentStart=Number(p.dataset?.ltFragmentStart)||0;
    const hit=window.LinguaLookup.lookup({
     story:state.story,dictionary:catalog.dictionary,sentence:source.en,
-    selected:token.textContent,offset:range.toString().length,
+    selected:token.textContent,offset:fragmentStart+range.toString().length,
     lemmas,lexicon:window.StoryLexicon,freeDict:window.FreeDictEnglishArabic
    });
    if(!hit)return false;
@@ -1716,17 +2000,17 @@ renderReader=function(){
   // One chapter-level Tab entry rather than hundreds of Tab stops in a
   // full-length book. Up/Down moves between English paragraphs; the existing
   // Right/Left controls still move among individual words for dictionary lookup.
-  p.setAttribute('tabindex',p===sentences[0]?'0':'-1');
+  p.setAttribute('tabindex',p===interactiveSentences[0]?'0':'-1');
   p.addEventListener('focusin',()=>{
-   sentences.forEach(node=>node.setAttribute('tabindex',node===p?'0':'-1'));
+   interactiveSentences.forEach(node=>node.setAttribute('tabindex',node===p?'0':'-1'));
   });
   p.addEventListener('keydown',event=>{
    if(event.target!==p||!['ArrowUp','ArrowDown'].includes(event.key))return;
-   const index=sentences.indexOf(p);
-   const next=sentences[index+(event.key==='ArrowDown'?1:-1)];
+   const index=interactiveSentences.indexOf(p);
+   const next=interactiveSentences[index+(event.key==='ArrowDown'?1:-1)];
    if(!next)return; // let the browser handle the boundary naturally
    event.preventDefault();event.stopImmediatePropagation();
-   sentences.forEach(node=>node.setAttribute('tabindex',node===next?'0':'-1'));
+   interactiveSentences.forEach(node=>node.setAttribute('tabindex',node===next?'0':'-1'));
    next.focus?.();
   },true);
   p.setAttribute('lang',state.story?.sourceLanguage==='ar'?'ar':'en');
@@ -1748,21 +2032,25 @@ renderReader=function(){
    window.LinguaReflowReader({paragraph:sentenceIndex,
     viewportOffset:Math.max(-4096,Math.min(4096,offset))});
   };
+  const translationNode=()=>p.nextElementSibling?.classList?.contains('stl-sentence-translation')
+   ?p.nextElementSibling:document.querySelector('.reader .stl-sentence-translation[data-lt-for="'+sentenceIndex+'"]');
   const showTranslation=()=>{
-   if(!source||p.nextElementSibling?.classList?.contains('stl-sentence-translation'))return;
+   if(!source||translationNode())return;
    const translation=document.createElement('p');
    translation.className='stl-sentence-translation';
+   translation.dataset.ltFor=String(sentenceIndex);
    translation.setAttribute('dir',state.story?.sourceLanguage==='ar'?'ltr':'rtl');
    translation.setAttribute('lang',state.story?.sourceLanguage==='ar'?'en':'ar');
    translation.textContent=state.story?.sourceLanguage==='ar'?source.en:source.ar;
-   p.insertAdjacentElement('afterend',translation);
+   const fragments=interactiveSentences.filter(node=>Number(node.dataset.i)===sentenceIndex);
+   (fragments[fragments.length-1]||p).insertAdjacentElement('afterend',translation);
   };
   const toggleSentenceTranslation=event=>{
    event.preventDefault();
    event.stopImmediatePropagation();
    if(!source)return;
-   const old=p.nextElementSibling;
-   if(old?.classList?.contains('stl-sentence-translation')){
+   const old=translationNode();
+   if(old){
     old.remove();
     revealedByChapter.get(key)?.delete(sentenceIndex);
     repaginateRevealedText();
@@ -1782,9 +2070,7 @@ renderReader=function(){
    if(event.target!==p||(event.key!=='Enter'&&event.key!==' '))return;
    toggleSentenceTranslation(event);
   });
-  if(revealedByChapter.get(key)?.has(sentenceIndex))showTranslation();
  });
- installPageTurn();
 };
 settings=function(){
  originalSettings();
@@ -1873,6 +2159,8 @@ window.stlJumpBookmark=function(){
   const target=Number.isInteger(mark.paragraph)&&mark.paragraph>=0
    ?mark.paragraph:savedReaderPage*LT_PAGE_PARAGRAPHS;
   put('readpage_anchor_'+state.story.id+'_'+chapter,target);
+  ltPendingReflowAnchors.set(state.story.id+'\u0000'+chapter,{paragraph:target,
+   textOffset:Number.isInteger(mark.textOffset)&&mark.textOffset>=0?mark.textOffset:0});
  }
 
  state.chapter=chapter;
@@ -1909,11 +2197,21 @@ window.LinguaReflowReader=function(anchor){
  const id=state.story.id,chapter=state.chapter;
  const valid=anchor&&Number.isInteger(anchor.paragraph)&&anchor.paragraph>=0&&
   Number.isFinite(anchor.viewportOffset)&&Math.abs(anchor.viewportOffset)<=4096;
- if(valid)put('readpage_anchor_'+id+'_'+chapter,anchor.paragraph);
+ if(valid){
+  put('readpage_anchor_'+id+'_'+chapter,anchor.paragraph);
+  ltPendingReflowAnchors.set(id+'\u0000'+chapter,{paragraph:anchor.paragraph,
+   textOffset:Number.isInteger(anchor.textOffset)&&anchor.textOffset>=0?anchor.textOffset:0});
+ }
  renderReader();
  if(!valid||state.page!=='reader'||state.story?.id!==id||state.chapter!==chapter)return;
- const target=Array.from(document.querySelectorAll('.reader .sentence'))
-  .find(node=>Number(node.dataset?.i)===anchor.paragraph);
+ const candidates=Array.from(document.querySelectorAll('.reader .sentence'))
+  .filter(node=>Number(node.dataset?.i)===anchor.paragraph);
+ const wanted=Number.isInteger(anchor.textOffset)&&anchor.textOffset>=0?anchor.textOffset:0;
+ const target=candidates.find(node=>{
+  const start=Number(node.dataset?.ltFragmentStart)||0;
+  const end=Number(node.dataset?.ltFragmentEnd)||Number.MAX_SAFE_INTEGER;
+  return start<=wanted&&wanted<end;
+ })||candidates[0];
  const top=target?.getBoundingClientRect?.()?.top;
  if(!Number.isFinite(top))return;
  const y=window.scrollY+top-anchor.viewportOffset;

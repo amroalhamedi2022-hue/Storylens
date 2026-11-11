@@ -24,3 +24,31 @@
 /* Both sides carry real ink. Legacy page backface suppression must not hide it. */
 .reader .lt-curl-book .lt-curl-stage .lt-curl-ink{backface-visibility:visible!important;transform-style:flat}
 .lt-curl-back>.lt-curl-ink{transform-origin:50% 50%}
+
+
+/* Reader audit 49 — one continuous optical sheet, not 22 bordered cards.
+ * Keep the original faceted HTML mesh, pointer and paper geometry untouched. */
+.reader .lt-curl-book .lt-curl-stage{
+ transform-style:preserve-3d!important;
+ contain:layout style;
+}
+.reader .lt-curl-stage .lt-curl-facet,
+.reader .lt-curl-stage .lt-curl-front,
+.reader .lt-curl-stage .lt-curl-back{
+ border:0!important;outline:0!important;
+ box-shadow:none!important;
+}
+/* The exposed page is the real next page. Never paint the same source ink
+   again on a fake transparent back-face when there is no distinct verso. */
+.reader .lt-curl-ghost{opacity:0!important}
+.reader .lt-curl-contact{border-radius:100%;pointer-events:none}
+@media(prefers-reduced-motion:reduce){
+ .reader .lt-curl-stage{display:none!important}
+}
+
+
+/* Last leaf in a short facing spread: a genuinely empty physical sheet beneath
+ * the fold, never a duplicate of the visible next page. No extra grid row. */
+.reader #sentences.lt-curl-book>.lt-book-page.lt-curl-blank-under:not(.lt-curl-under){
+ display:none!important;
+}

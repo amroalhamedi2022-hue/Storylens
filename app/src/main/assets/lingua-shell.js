@@ -301,9 +301,15 @@ function openThemeEditor(name,origin){
  ['forest','#183e35','#4b8c6c','#a1d9b1','#e7f3d9'],
  ['peach','#8c4e6d','#d7809b','#ffc3aa','#fff1d8'],
  ['ice','#1c577a','#6d95c5','#b0e6ee','#f0fbff'],
- ['ember','#682f31','#b95139','#e9a756','#ffe0a4']];
- for(const [id,a,b,c,d] of presets){
-  const button=addButton(presetRow,id,()=>{
+ ['ember','#682f31','#b95139','#e9a756','#ffe0a4'],
+ ['Royal Gold','#221c19','#715128','#d3ae68','#f4e0ae','ذهب ملكي'],
+ ['Imperial Gold','#171a21','#54442d','#bd9452','#e9c889','ذهب إمبراطوري'],
+ ['Champagne','#6d5d53','#bda487','#f3dfbc','#fff7e8','شامبانيا'],
+ ['Orange & Sage','#9b613f','#eeaa80','#80bca5','#e9f6e6','برتقالي وأخضر'],
+ ['Orchid & Rose','#483369','#a367be','#eaa4c8','#f6dbec','أرجواني ووردي']];
+ for(const [id,a,b,c,d,arabicLabel] of presets){
+  const label=rtl()?(arabicLabel||id):id;
+  const button=addButton(presetRow,label,()=>{
    const updated=customThemeColors();
    updated[name]={a,b,c,d,angle:Number(angleInput.value)};
    put('ltThemeCustomColors',updated);applyTheme(name);
@@ -311,7 +317,7 @@ function openThemeEditor(name,origin){
    syncPreview();
   },'lt-theme-preset');
   button.style.background='linear-gradient(135deg,'+[a,b,c,d].join(',')+')';
-  button.setAttribute('aria-label',rtl()?'تدرج '+id:'Gradient '+id);
+  button.setAttribute('aria-label',rtl()?'تدرج '+label:'Gradient '+label);
  }
  panel.appendChild(presetRow);
  const actions=document.createElement('div');actions.className='lt-theme-editor-actions';

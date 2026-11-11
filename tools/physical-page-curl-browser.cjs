@@ -50,6 +50,8 @@ const server=http.createServer((req,res)=>{
    // Actual held mesh, source HTML, real underpage; save visual evidence.
    await gesture(.75,80,'pointerup',true);await page.waitForTimeout(80);
    assert.equal(await page.locator('.lt-curl-facet').count(),22);
+   assert.equal(await page.locator('.lt-curl-facet > :is(.lt-curl-front,.lt-curl-back)').count(),22,
+    'each geometric facet mounts only its visible face');
    assert.ok(await page.evaluate(()=>{
     const r=document.querySelector('#sentences').getBoundingClientRect();
     return r.left>=-1&&r.right<=innerWidth+1&&Math.abs(scrollX)<1;

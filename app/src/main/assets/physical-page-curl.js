@@ -3,6 +3,7 @@
 'use strict';
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,Number.isFinite(v)?v:a));
 const edgeDelta=(edge,rtl)=>(edge==='right')!==rtl?1:-1;
+const CURL_SEGMENTS=20;
 const spreadStart=(page,count)=>Math.floor(Math.max(0,page)/count)*count;
 function clip(poly,n,limit,above){
  const out=[];
@@ -18,7 +19,7 @@ function clip(poly,n,limit,above){
 // Ruled tapered sheet approximation. The unfolded portion and reversed tail
 // are planar; the belly consists of joined tangent facets, tapering at the
 // opposite edge. This is a geometric model, not a finite-element paper solver.
-function geometry(width,height,distance,vertical,grabY,edge='right',segments=20){
+function geometry(width,height,distance,vertical,grabY,edge='right',segments=CURL_SEGMENTS){
  const w=Math.max(1,Number.isFinite(width)?width:1),h=Math.max(1,Number.isFinite(height)?height:1),d=clamp(distance,0,2*w);
  const p=d/(2*w),dy=clamp(vertical,-d*.65,d*.65)*(1-p*p);
  const length=Math.hypot(d,dy)||1,n={x:d/length||1,y:-dy/length};
@@ -115,13 +116,16 @@ function mount(options){
   // Match computed paper padding/font; the copies inherit all reader language styles.
   for(const ink of [front,back].filter(Boolean))Object.assign(ink.style,{padding:style.padding,font:style.font,color:style.color,width:rect.width+'px',height:rect.height+'px'});
   h.facets=[];
-  for(let i=0;i<22;i++){
+  // Each facet's midpoint angle is fixed throughout a turn. It only ever
+  // shows one face, so mounting the other subtree doubles the DOM for no gain.
+  for(let i=0;i<CURL_SEGMENTS+2;i++){
    const facet=doc.createElement('div');facet.className='lt-curl-facet';
-   const face=doc.createElement('div');face.className='lt-curl-front';face.append(front.cloneNode(true));
-   const reverse=doc.createElement('div');reverse.className='lt-curl-back';
-   if(back)reverse.append(back.cloneNode(true));
-   else {const ghost=front.cloneNode(true);ghost.classList.add('lt-curl-ghost');reverse.append(ghost);}
-   facet.append(face,reverse);stage.append(facet);h.facets.push(facet);
+   const reverse=i>Math.ceil(CURL_SEGMENTS/2);
+   const face=doc.createElement('div');
+   face.className=reverse?'lt-curl-back':'lt-curl-front';
+   const ink=reverse?(back||front).cloneNode(true):front.cloneNode(true);
+   if(reverse&&!back)ink.classList.add('lt-curl-ghost');
+   face.append(ink);facet.append(face);stage.append(facet);h.facets.push(facet);
   }
   const shadow=doc.createElement('div');shadow.className='lt-curl-contact';stage.prepend(shadow);h.shadow=shadow;
   h.stage=stage;host.append(stage);h.page.style.visibility='hidden';
@@ -132,16 +136,21 @@ function mount(options){
   if(!h.stage)return;
   const g=geometry(h.width,h.height,h.distance,h.vertical,h.grabY,h.edge);
   g.facets.forEach((g,i)=>{
-   const node=h.facets[i];node.style.display=g.polygon.length<3?'none':'block';
+   const node=h.facets[i];
+   if(g.polygon.length<3){node.style.display='none';return;}
+   node.style.display='block';
    node.style.clipPath='polygon('+g.polygon.map(p=>p.x.toFixed(2)+'px '+p.y.toFixed(2)+'px').join(',')+')';
    node.style.transform='matrix3d('+g.matrix.map(x=>x.toFixed(6)).join(',')+')';
    node.style.setProperty('--lt-curl-shade',g.shade.toFixed(3));
    node.style.setProperty('--lt-curl-light',g.light);
-   node.firstElementChild.style.display=g.angle<=Math.PI/2?'block':'none';
-   node.lastElementChild.style.display=g.angle>Math.PI/2?'block':'none';
   });
-  const x=h.edge==='right'?g.crease:h.width-g.crease;
-  h.shadow.style.cssText='left:'+x+'px;width:'+Math.max(6,g.radius*2)+'px;opacity:'+Math.min(.38,g.progress*1.8)+';transform:translateX(-50%) rotate('+(-Math.atan2(g.normal.y,g.normal.x))+'rad)';
+  // Do not let the long contact shadow escape the physical paper boundary
+  // when diagonal pulls make the geometric crease pass outside the sheet.
+  const creaseX=h.edge==='right'?g.crease:h.width-g.crease;
+  const x=clamp(creaseX,0,h.width);
+  const contactOpacity=(creaseX<0||creaseX>h.width||g.progress<.015)
+   ?0:Math.min(.30,g.progress*1.25);
+  h.shadow.style.cssText='left:'+x+'px;width:'+Math.max(4,g.radius*1.6)+'px;opacity:'+contactOpacity+';transform:translateX(-50%) rotate('+(-Math.atan2(g.normal.y,g.normal.x))+'rad)';
   emit('progress',h);
  }
  function clean(h){

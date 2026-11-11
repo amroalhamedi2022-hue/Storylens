@@ -1,0 +1,20 @@
+[
+  {
+    "name": "phone-compact",
+    "pageCount": 1,
+    "paperHeight": 10164.953125,
+    "viewportHeight": 760,
+    "sentenceHeight": 10015.078125,
+    "fragmentCount": 0,
+    "scrollFallback": false
+  },
+  {
+    "name": "landscape-compact",
+    "pageCount": 1,
+    "paperHeight": 10162.953125,
+    "viewportHeight": 390,
+    "sentenceHeight": 10015.078125,
+    "fragmentCount": 0,
+    "scrollFallback": false
+  }
+]

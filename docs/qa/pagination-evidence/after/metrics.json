@@ -1,0 +1,112 @@
+[
+  {
+    "viewport": "phone-compact",
+    "width": 360,
+    "height": 760,
+    "language": "en",
+    "paginationMs": 596.4,
+    "pageCount": 23,
+    "fragmentCount": 23,
+    "nodeCount": 1190,
+    "overflowPages": 0
+  },
+  {
+    "viewport": "phone-compact",
+    "width": 360,
+    "height": 760,
+    "language": "ar",
+    "paginationMs": 229.3,
+    "pageCount": 14,
+    "fragmentCount": 14,
+    "nodeCount": 32,
+    "overflowPages": 0
+  },
+  {
+    "viewport": "phone-standard",
+    "width": 460,
+    "height": 860,
+    "language": "en",
+    "paginationMs": 846.2,
+    "pageCount": 15,
+    "fragmentCount": 15,
+    "nodeCount": 1174,
+    "overflowPages": 0
+  },
+  {
+    "viewport": "phone-standard",
+    "width": 460,
+    "height": 860,
+    "language": "ar",
+    "paginationMs": 285.2,
+    "pageCount": 10,
+    "fragmentCount": 10,
+    "nodeCount": 24,
+    "overflowPages": 0
+  },
+  {
+    "viewport": "tablet-portrait",
+    "width": 700,
+    "height": 1000,
+    "language": "en",
+    "paginationMs": 943.3,
+    "pageCount": 9,
+    "fragmentCount": 9,
+    "nodeCount": 1162,
+    "overflowPages": 0
+  },
+  {
+    "viewport": "tablet-portrait",
+    "width": 700,
+    "height": 1000,
+    "language": "ar",
+    "paginationMs": 220.7,
+    "pageCount": 6,
+    "fragmentCount": 6,
+    "nodeCount": 16,
+    "overflowPages": 0
+  },
+  {
+    "viewport": "landscape-compact",
+    "width": 760,
+    "height": 390,
+    "language": "en",
+    "paginationMs": 2145,
+    "pageCount": 64,
+    "fragmentCount": 64,
+    "nodeCount": 1272,
+    "overflowPages": 0
+  },
+  {
+    "viewport": "landscape-compact",
+    "width": 760,
+    "height": 390,
+    "language": "ar",
+    "paginationMs": 795.4,
+    "pageCount": 37,
+    "fragmentCount": 37,
+    "nodeCount": 78,
+    "overflowPages": 0
+  },
+  {
+    "viewport": "tablet-landscape",
+    "width": 1280,
+    "height": 840,
+    "language": "en",
+    "paginationMs": 695.7,
+    "pageCount": 12,
+    "fragmentCount": 12,
+    "nodeCount": 1168,
+    "overflowPages": 0
+  },
+  {
+    "viewport": "tablet-landscape",
+    "width": 1280,
+    "height": 840,
+    "language": "ar",
+    "paginationMs": 218.7,
+    "pageCount": 7,
+    "fragmentCount": 7,
+    "nodeCount": 18,
+    "overflowPages": 0
+  }
+]
