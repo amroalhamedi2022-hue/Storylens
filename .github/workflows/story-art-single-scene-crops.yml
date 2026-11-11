@@ -1,0 +1,22 @@
+name: Lingua Tales • Single-Scene Crop Review QA
+on:
+  push:
+    branches: ['feature/story-art-single-scene-reviews-*']
+    paths: ['docs/art-generation/review/single-scene-crops-20261111/**','tools/test_story_art_single_scene_crops.cjs','.github/workflows/story-art-single-scene-crops.yml']
+  pull_request:
+    branches: [main]
+    paths: ['docs/art-generation/review/single-scene-crops-20261111/**','tools/test_story_art_single_scene_crops.cjs','.github/workflows/story-art-single-scene-crops.yml']
+permissions:
+  contents: read
+jobs:
+  verify-real-images-and-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - name: Verify source excerpts, bilingual original and actual unapproved image bytes
+        run: |
+          node tools/test_story_art_single_scene_crops.cjs
+          python3 tools/package_generated_story_art.py --check
