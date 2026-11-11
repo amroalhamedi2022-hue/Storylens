@@ -41,6 +41,9 @@ function verify(input){
      !paragraph.en.includes(scene.sourceExcerpt))throw Error('Scene anchor NOT found in original exact English paragraph');
   if(typeof scene.description!=='string'||scene.description.length<55)
    throw Error('Scene-specific story description missing');
+  if(typeof scene.altAr!=='string'||scene.altAr.trim().length<15||scene.altAr.length>240||
+     typeof scene.altEn!=='string'||scene.altEn.trim().length<15||scene.altEn.length>240)
+   throw Error('Missing bilingual scene caption; NEVER publish without Arabic and English alt');
   const anchor=chapter+':'+paraIndex;
   if(anchors.has(anchor))throw Error('Duplicate paragraph anchor');
   anchors.add(anchor);
@@ -73,7 +76,7 @@ function verify(input){
    status:'PROMPT_READY_NOT_GENERATED',generated:false,
    sourceType:'AI_GENERATED_MODERN_COMPANION',editoriallyApproved:false,
    ownerImageApproved:false,releaseApproved:false,
-   prompt,sourceTextAr:paragraph.ar});
+   altAr:scene.altAr,altEn:scene.altEn,prompt,sourceTextAr:paragraph.ar});
  }
  return {schemaVersion:1,bookId:BOOK,releaseApproved:false,queueCount:queue.length,
   source:'verified real original bilingual chapters I-IV; contemporary AI color art',queue};
