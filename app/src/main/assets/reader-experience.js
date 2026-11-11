@@ -1241,7 +1241,8 @@ function ltVerifiedGeneratedArtScenes(story,chapterIndex,chapter){
   const index=item.afterParagraph;
   if(!Number.isInteger(index)||index<0||index>=chapter.paragraphs.length||
      used.has(index)||typeof item.sceneId!=='string'||
-     !/^verne-ch0[12]-[a-z0-9-]{1,65}$/.test(item.sceneId))continue;
+     !/^verne-ch0[1-4]-(?:color-)?[a-z0-9-]{1,65}$/.test(item.sceneId)||
+     !item.sceneId.startsWith("verne-ch0"+chapterOneBased+"-"))continue;
   const expected='art/generated/'+bookId+'/'+item.sceneId+'.webp';
   if(item.src!==expected||
      !/^[a-f0-9]{64}$/.test(item.sha256||'')||
