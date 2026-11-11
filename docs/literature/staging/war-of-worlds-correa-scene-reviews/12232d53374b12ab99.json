@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_06.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-12232d53374b12ab.webp",
+  "imageSha256": "4bd12b03f3e0d90a11822f4b34f7f69bbbb39d3fca9ea9cc85fd048874160541",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A dramatic, high-contrast monochrome illustration depicting a chaotic scene where a group of people are fleeing from a powerful, bright beam of light or energy. The beam originates from the upper left and strikes the center, causing an explosion of light and debris. Several figures are shown in mid-air or falling, suggesting they have been struck or thrown by the force of the blast. The style is reminiscent of late 19th-century ink or charcoal book illustrations.",
+    "visualObjectsEn": "A bright, intense beam of light, an explosion or blast effect, debris, and a crowd of people in period-appropriate clothing.",
+    "recognizableCharactersOrPeopleEn": "A group of multiple human figures, some running away in the foreground and others being thrown or suspended in the air by the blast.",
+    "uncertaintyNotes": "The exact nature of the light source is not visible, only its effect. The historical context of the illustration is inferred from the artistic style, but the specific origin or artist is not explicitly stated in the image itself."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 6,
+    "paragraphIndexZeroBased": 7,
+    "exactSourceQuotation": "They saw the flashes and the men falling and an invisible hand, as it were, lit the bushes as it hurried towards them through the twilight. Then, with a whistling note that rose above the droning of the pit, the beam swung close over their heads, lighting the tops of the beech trees that line the road, and splitting the bricks, smashing the windows, firing the window frames, and bringing down in crumbling ruin a portion of the gable of the house nearest the corner.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a chaotic scene of people fleeing from a powerful beam of light causing an explosion, which aligns perfectly with the description of the Heat-Ray's effect on the crowd in this passage, specifically mentioning 'flashes', 'men falling', and the beam 'splitting the bricks' and 'smashing the windows'.",
+    "suggestedAltArNotApproved": "A dramatic monochrome illustration showing a crowd of people fleeing in terror as a powerful, bright beam of energy strikes a building, causing an explosion of light and debris, with figures falling or being thrown by the force of the blast.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving depicts a crowd of people fleeing and being struck or falling as a bright beam of light from a heat-ray cuts across the scene, creating explosions and fires, directly matching the description of the crowd's narrow escape and the beam sweeping over them.",
+    "visualContradictions": "None, the visual elements closely align with the specific text describing the heat-ray dispersing the crowd, people falling, and the beam's destructive path.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_07.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-4c37d6e64ff542c1.webp",
+  "imageSha256": "d4feeb53c790b94b7b590df1bb1f8aa1202d8bd0f1fb429524ca1faaa52f6b7a",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A dark, sepia-toned illustration depicting a desolate, hilly landscape at night. In the background, a small, dark, domed structure sits atop a hill, emitting a bright, horizontal beam of light that cuts across the scene. In the foreground, two dark, contorted, insect-like or skeletal figures lie on the ground, appearing to be in distress or deceased. The sky is filled with swirling, smoky clouds or atmospheric disturbances.",
+    "visualObjectsEn": "A domed building, a beam of light, two dark, multi-limbed, skeletal or insectoid figures, a hat on the ground, rocky terrain, smoky or cloudy sky.",
+    "recognizableCharactersOrPeopleEn": "None. The figures are non-humanoid, appearing as dark, spindly, multi-limbed creatures.",
+    "uncertaintyNotes": "The exact nature of the figures is ambiguous; they appear to be stylized, non-humanoid creatures or perhaps distorted human forms. The style is consistent with late 19th-century ink or charcoal illustration techniques."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 8,
+    "paragraphIndexZeroBased": 6,
+    "exactSourceQuotation": "Around it was a patch of silent common, smouldering in places, and with a few dark, dimly seen objects lying in contorted attitudes here and there.",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The illustration depicts a desolate, hilly landscape at night with a beam of light and dark, contorted figures on the ground. This matches the description in Chapter 8, Paragraph 6, which explicitly mentions the 'silent common', 'smouldering' ground, and 'dark, dimly seen objects lying in contorted attitudes' near the Martian cylinder (the domed structure/source of the light beam).",
+    "suggestedAltArNotApproved": "A sepia-toned illustration of a desolate, hilly landscape at night, featuring a distant domed structure emitting a horizontal beam of light across a dark, smoky common where two contorted, skeletal figures lie on the ground.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image clearly shows the common at night with dark, dimly seen objects lying in contorted attitudes on the ground (the first victims), a smouldering/burning area with smoke, and a looming Martian machine in the background emitting a beam of light, matching the description of Friday night on the common after the cylinder's arrival.",
+    "visualContradictions": "None.",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

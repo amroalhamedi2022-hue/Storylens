@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_05.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-0957c020b5174114.webp",
+  "imageSha256": "4b77b69f4c40ccaf0e69de943fc166da24caef7002840a131d82b9eccaa23bd6",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A black and white engraved illustration depicting a man in 19th-century attire recoiling in surprise or fear from a large, metallic, cylindrical object embedded in the ground. A tentacled, creature-like entity is emerging from the opening of the cylinder. The setting appears to be a desolate, rocky landscape with a single tree in the background.",
+    "visualObjectsEn": "A large metallic cylinder with a lid, a tentacled creature, a man in a frock coat and trousers, scattered rocks, and a single tree.",
+    "recognizableCharactersOrPeopleEn": "A single human male figure dressed in period-appropriate clothing, and a non-human, tentacled creature.",
+    "uncertaintyNotes": "The exact nature of the creature and the object is ambiguous, though they appear to be of a science-fiction or fantastical origin. The historical context of the engraving is not verified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 4,
+    "paragraphIndexZeroBased": 14,
+    "exactSourceQuotation": "A lank tentacular appendage gripped the edge of the cylinder, another swayed in the air.",
+    "confidenceModelEstimateNotVerified": 0.95,
+    "modelRationaleNotVerified": "The scene description matches the specific moment in Chapter 4 where the narrator observes the Martian emerging from the cylinder, explicitly mentioning the tentacular appendage gripping the edge of the cylinder, which aligns with the visual elements of the engraving.",
+    "suggestedAltArNotApproved": "An illustration of a man recoiling in fear as a tentacled Martian emerges from a metallic cylinder embedded in a rocky landscape.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image clearly shows a rounded Martian head with two large dark eyes and a mouth, emerging from a large metal cylinder with tentacular appendages gripping and swaying near the edge, directly matching the description of the creature and cylinder in the passage.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
