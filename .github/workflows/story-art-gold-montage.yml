@@ -1,0 +1,22 @@
+name: Lingua Tales • Actual Gold Montage Art Review
+on:
+  push:
+    branches: ['feature/story-art-gold-collage-*']
+    paths: ['docs/art-generation/visual-bibles/colored-victorian/gold-montage-20261111/**','tools/test_gold_montage_20261111.cjs','.github/workflows/story-art-gold-montage.yml']
+  pull_request:
+    branches: [main]
+    paths: ['docs/art-generation/visual-bibles/colored-victorian/gold-montage-20261111/**','tools/test_gold_montage_20261111.cjs','.github/workflows/story-art-gold-montage.yml']
+permissions:
+  contents: read
+jobs:
+  actual-binary-and-unapproved-art-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - run: |
+          node tools/test_gold_montage_20261111.cjs
+          node tools/generated-art-reader.test.cjs
+          python3 tools/package_generated_story_art.py --check
