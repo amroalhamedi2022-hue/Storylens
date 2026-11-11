@@ -30,6 +30,8 @@ for(const c of m.files){
  const source=novel.chapters[c.chapter-1]?.paragraphs?.[c.paragraphZeroBased];
  assert.ok(source?.en&&source?.ar,'original bilingual source must exist');
  assert.equal(c.sourceParagraphEn,source.en,'exact unmodified English paragraph from real shipped novel');
+ assert.equal(c.sourceParagraphAr,source.ar,'exact unmodified Arabic paragraph from real shipped novel');
+ assert.ok(html.includes(c.sourceParagraphAr),'offline review includes actual original Arabic text');
  assert.ok(source.en.includes(c.sourceExcerpt));
  assert.equal(c.sourceParagraphSha256,crypto.createHash('sha256').update(source.en).digest('hex'));
  assert.ok(c.width>=450&&c.width<600&&c.height>=200&&c.height<350,'native panel crop, NOT falsely described as full resolution');
