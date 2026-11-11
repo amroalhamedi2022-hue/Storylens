@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_23.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-780ab939c3ed4b5f.webp",
+  "imageSha256": "8d41cc303cc41bddcd70857176742b17f52a87853d4ac282b6a5ffea8850a133",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned illustration depicting an interior scene with a damaged, possibly collapsed, wooden structure. A long, segmented, metallic tentacle-like appendage descends from an opening in the ceiling or wall, wrapping around a person lying on the floor. Another person is seated or crouching nearby, observing the scene. The style is reminiscent of a 19th-century ink or charcoal engraving.",
+    "visualObjectsEn": "Segmented metallic tentacle, wooden beams, debris, furniture, floor, wall, axe on the floor.",
+    "recognizableCharactersOrPeopleEn": "Two human figures: one lying on the floor being grasped by the tentacle, and one seated nearby.",
+    "uncertaintyNotes": "The exact nature of the metallic appendage is ambiguous, appearing mechanical or biological. The setting is clearly a damaged interior, but the specific type of building is not explicitly defined. The historical origin of the engraving is not verified."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 21,
+    "paragraphIndexZeroBased": 15,
+    "exactSourceQuotation": "One of its gripping limbs curled amid the debris; another limb appeared, feeling its way over the fallen beams. I stood petrified, staring. Then I saw through a sort of glass plate near the edge of the body the face, as we may call it, and the large dark eyes of a Martian, peering, and then a long metallic snake of tentacle came feeling slowly through the hole.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description of a metallic tentacle descending through a hole in a wall/ceiling into a damaged interior with debris and a person present aligns perfectly with the narrative of the handling-machine entering the house in Chapter 21.",
+    "suggestedAltArNotApproved": "Illustration of a Martian handling-machine tentacle entering a ruined house to grasp a human survivor.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a damaged interior with a segmented metallic tentacle wrapping around a person lying on the floor, and another person watching nearby.",
+    "visualContradictions": "The passage describes the narrator standing petrified inside a ruined building while a handling-machine peers through a triangular hole with a Martian's face visible through a glass plate and a tentacle feeling through the hole. The image instead depicts a person already being actively grabbed and lifted by the tentacle while another person is present, rather than the solitary narrator witnessing the machine first appearing.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

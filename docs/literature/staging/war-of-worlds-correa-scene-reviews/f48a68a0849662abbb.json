@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_22.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-f48a68a0849662ab.webp",
+  "imageSha256": "f1fad676dab2f0ade1e4f5064913c786fed3c7e83bfbec29f25fe39e6ff5f6b6",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned, sketch-like illustration depicting an interior room with a sloped ceiling. A man is sitting on the floor with his head in his hands, appearing distressed. Another man is lying unconscious on the floor in the foreground. Strange, tentacled, bulbous organic forms are present in the room, one near the unconscious man and another on the right side. A tall, thin, tripod-like structure stands in the background.",
+    "visualObjectsEn": "Two men, a tripod-like structure, bulbous organic shapes with tentacles, a sloped ceiling, floor, shadows.",
+    "recognizableCharactersOrPeopleEn": "Two adult males, one sitting and one lying down.",
+    "uncertaintyNotes": "The nature of the bulbous, tentacled objects is ambiguous and appears to be fantastical or science-fictional in origin. The exact historical style resembles late 19th-century ink or charcoal book illustration."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 19,
+    "paragraphIndexZeroBased": 0,
+    "exactSourceQuotation": "I perceived him across the room, lying against the triangular hole that looked out upon the Martians. His shoulders were hunched, so that his head was hidden from me.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts an interior with a sloped ceiling (attic/scullery), a man sitting distressed with his head in his hands, and another man lying on the floor near a 'triangular hole' (the aperture looking out at the Martians). The 'bulbous organic forms' correspond to the Martian tentacles described in the text as being visible through that hole.",
+    "suggestedAltArNotApproved": "A sepia-toned illustration of a cramped, sloped-ceiling room where one man sits on the floor in distress while another lies unconscious near a triangular opening containing tentacled Martian forms.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows two men in an interior room, with one man sitting with his head in his hands and another man lying unconscious on the floor.",
+    "visualContradictions": "The passage describes the narrator waking up alone in the scullery, moving to the kitchen door, and perceiving the curate across the room lying against a triangular hole with his shoulders hunched. The image instead depicts an elaborate scene with multiple fantastical tentacled organic forms and a tripod structure, portraying the curate as unconscious on the floor rather than simply hunched against a triangular opening as described in this specific passage.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.9,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

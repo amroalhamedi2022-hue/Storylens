@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_21.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-7242aa2ee17aab4c.webp",
+  "imageSha256": "1b6972ea8639c50a1e5d1feae661b942336816459a96f09b94296de9413c3199",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned, high-contrast illustration depicting a mechanical, multi-limbed machine operating in a desolate, smoky landscape. The machine features a large, rounded central body with several articulated, tentacle-like appendages extending from it. One prominent appendage is raised, holding a bundle of rod-like objects. The background is filled with swirling smoke or clouds, and there is a suggestion of industrial or structural elements in the foreground and distance. The style resembles a 19th-century woodcut or lithograph.",
+    "visualObjectsEn": "Mechanical machine, articulated tentacles, rod-like objects, smoke, clouds, industrial structures, landscape, vertical beam or post on the right side.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the machine's function is ambiguous due to the abstract, stylized nature of the illustration. The setting is indeterminate, appearing as a barren or industrial wasteland."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 20,
+    "paragraphIndexZeroBased": 5,
+    "exactSourceQuotation": "With two spatulate hands the handling-machine was digging out and flinging masses of clay into the pear-shaped receptacle above, while with another arm it periodically opened a door and removed rusty and blackened clinkers from the middle part of the machine. Another steely tentacle directed the powder from the basin along a ribbed channel towards some receiver that was hidden from me by the mound of bluish dust. From this unseen receiver a little thread of green smoke rose vertically into the quiet air.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a mechanical machine with articulated tentacles and a rounded body, surrounded by smoke and industrial elements. This matches the description of the 'handling-machine' in Chapter 20, which uses tentacles to manipulate materials, features a receptacle, and emits smoke while working in a desolate, industrial-like setting.",
+    "suggestedAltArNotApproved": "A mechanical handling-machine with articulated tentacles working in a smoky, industrial landscape, lifting materials into a central receptacle.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "EXACT_ORIGINAL_QUOTE_AND_SECOND_IMAGE_MODEL_SUPPORT__NOT_HUMAN_APPROVED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": true,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts the Martian handling-machine with multiple articulated tentacles, holding rod-like objects (aluminum bars) and working in a pit with mounds of clay and smoke, perfectly matching the detailed description in the passage.",
+    "visualContradictions": "None",
+    "contradictionTextConservativelyCleared": true,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

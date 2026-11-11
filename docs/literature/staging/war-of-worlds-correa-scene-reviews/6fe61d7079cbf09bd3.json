@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_20.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-6fe61d7079cbf09b.webp",
+  "imageSha256": "646dc46b5ff1b70d27796f47d847642eaa848cab0c4ec5b0675087277394ccfb",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned illustration depicting a large, cylindrical object crashing into a residential building. The impact creates a massive explosion of light, debris, and dust. In the foreground, the tiled roof of a house is visible, with a dormer window. In the background, smaller streaks of light or falling objects are visible in the sky.",
+    "visualObjectsEn": "Large cylindrical object, residential building, tiled roof, dormer window, debris, dust, streaks of light, sky.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The image is a stylized artistic illustration; the exact nature of the cylindrical object and the specific architectural style of the building are subject to artistic interpretation."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 6,
+    "paragraphIndexZeroBased": 7,
+    "exactSourceQuotation": "splitting the bricks, smashing the windows, firing the window frames, and bringing down in crumbling ruin a portion of the gable of the house nearest the corner.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a cylindrical object impacting a residential building with an explosion of debris and light, which aligns perfectly with the description of the Heat-Ray destroying a house gable in Chapter 6, Paragraph 7.",
+    "suggestedAltArNotApproved": "A sepia-toned engraving showing a Martian Heat-Ray striking a residential building, causing the gable to crumble amidst an explosion of light and debris.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a large cylindrical object crashing into a building with an explosion of light and debris, which corresponds to a completely different scene (the fall of a cylinder).",
+    "visualContradictions": "The passage describes the Heat-Ray sweeping over a crowd, lighting tree tops, and destroying a house gable with a beam, whereas the engraving depicts a massive cylinder physically crashing into a roof.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 1.0,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
