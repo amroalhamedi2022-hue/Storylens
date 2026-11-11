@@ -1,0 +1,23 @@
+name: Lingua Tales • Verified Colored Story Art
+on:
+  push:
+    branches: ['feature/story-art-colour-*']
+    paths: ['docs/art-generation/visual-bibles/colored-victorian/**','tools/test_story_art_color_bible.cjs','.github/workflows/story-art-color-bible.yml']
+  pull_request:
+    branches: [main]
+    paths: ['docs/art-generation/visual-bibles/colored-victorian/**','tools/test_story_art_color_bible.cjs','.github/workflows/story-art-color-bible.yml']
+permissions:
+  contents: read
+jobs:
+  check-real-art-and-original-prose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          node tools/test_story_art_color_bible.cjs
+          node tools/test_generated_art_review_candidates.cjs
+          python3 tools/package_generated_story_art.py --check
