@@ -69,4 +69,44 @@ context.window.LinguaGeneratedArtRegistry={[book]:{chapters:{'1':Array.from({len
 assert.equal(context.check({id:book},0,chapter).length,1,'bounded candidate budget');
 assert.ok(reader.includes('const occupied=new Set(inlineArt.map'), 'original sources win the same paragraph');
 assert.ok(!reader.includes('fetch('),'reader does not download pictures at runtime');
-console.log('PASS: real reader AI image gate, 17 unsafe-input controls, source and chapter alignment, duplicate bounds, offline + historical priority');
+
+// Exercise the REAL reader guard with the actual novel's Chapter III–IV
+// bilingual source, not only the synthetic Chapter I regression fixture.
+const {sourceChapters}=require('./story_art_pilot.cjs');
+const {run:colorRun}=require('./prepare_color_scene_queue.cjs');
+const actual=sourceChapters(4).chapters,colorScenes=colorRun(['--check']).queue;
+assert.equal(colorScenes.length,6);
+for(const scene of colorScenes.filter(x=>x.chapterOneBased>=3)){
+ const item={
+  sceneId:scene.sceneId,generated:true,origin:'AI_GENERATED',
+  sourceType:'AI_GENERATED_MODERN_COMPANION',
+  chapterOneBased:scene.chapterOneBased,afterParagraph:scene.afterParagraph,
+  src:'art/generated/'+book+'/'+scene.sceneId+'.webp',
+  sha256:'c'.repeat(64),sourceParagraphSha256:scene.sourceParagraphSha256,
+  sourceExcerpt:scene.sourceExcerpt,altAr:'رسم مصور حديث.',altEn:'Modern period illustration.',
+  credit:'Modern AI-generated art',ownerImageApproved:true,
+  editoriallyApproved:true,distributionReviewApproved:true,
+  imageRightsReviewed:true,releaseApproved:true
+ };
+ const number=String(scene.chapterOneBased);
+ const chapter=actual[scene.chapterOneBased-1];
+ const testItem=x=>{
+  context.window.LinguaGeneratedArtRegistry={[book]:{chapters:{[number]:[x]}}};
+  return context.check({id:book},scene.chapterOneBased-1,chapter);
+ };
+ assert.equal(testItem(item).length,1,'source-approved art accepted for chapter '+number);
+ assert.equal(testItem(item)[0].src,item.src);
+ for(const mutate of [
+  x=>x.releaseApproved=false,
+  x=>x.editoriallyApproved=false,
+  x=>x.imageRightsReviewed=false,
+  x=>x.sourceExcerpt='Fictional dirigible arriving in London in Chapter III',
+  x=>x.chapterOneBased=1,
+  x=>x.sceneId=x.sceneId.replace('verne-ch0'+number+'-','verne-ch01-'),
+  x=>x.src='https://invalid.example/remote.webp'
+ ]){
+  const changed=JSON.parse(JSON.stringify(item));mutate(changed);
+  assert.equal(testItem(changed).length,0,'invalid art must not enter source chapter '+number);
+ }
+}
+console.log('PASS: original and colored chapters I-IV, fail-closed approvals, local URLs and chapter/prose checks');
