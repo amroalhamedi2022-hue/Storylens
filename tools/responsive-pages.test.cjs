@@ -43,7 +43,7 @@ assert.match(source,/put\(anchorKey,starts\[current\]\|\|0\)/,'per-turn anchor p
 assert.match(source,/savedReaderPage\*LT_PAGE_PARAGRAPHS/,'older bookmark backup remains restorable');
 assert.match(source,/Math\.max\(0,length-1\)/,'cross-chapter reverse navigation starts at last paragraph');
 const backup=fs.readFileSync('app/src/main/assets/data-backup.js','utf8');
-assert.match(backup,/readpage_anchor\|reading_anchor/,'semantic page anchors included in backups');
+assert.match(backup,/readpage_anchor\|readpage_offset\|reading_anchor/,'semantic page anchors included in backups');
 assert.match(backup,/tail\.startsWith\('readpage_anchor_'\)/,'anchors validated on import');
 console.log('PASS: phone/tablet adaptive page groups, semantic anchors, old bookmarks and portable backups');
 
@@ -102,8 +102,10 @@ assert.equal(rerenders,1,'semantic reflow replaces legacy hard-scroll behavior')
 console.log('PASS: orientation/multi-window repagination, keyboard resize safety and semantic reading position');
 
 /* Test the source reflow bridge with a visible semantic paragraph. */
-assert.match(source,/const computedSize=Number\.parseFloat\(window\.getComputedStyle/,
- 'paper grouping uses actual CSS font size after theme/typography changes');
+assert.match(source,/ltMeasuredContentPages\(sentenceBox,heading,caption,spread,pageHeight\)/,
+ 'paper grouping uses final rendered DOM metrics after theme/typography changes');
+assert.match(source,/document\.fonts\.load[\s\S]*?LinguaReflowReader/,
+ 'late offline font resolution triggers one position-preserving reflow');
 const typoStart=source.indexOf('window.LinguaReflowReader=function(anchor){');
 const typoEnd=source.indexOf('\n};\n// Adaptive paper grouping',typoStart);
 assert.ok(typoStart>0&&typoEnd>typoStart,'production typography reflow bridge exists');
@@ -111,6 +113,7 @@ let renderCount=0;const stored=[],scrollRestored=[];
 const visibleParagraph={dataset:{i:'3'},getBoundingClientRect(){return {top:180};}};
 const typoEnv={
  state:{page:'reader',chapter:0,story:{id:'book'}},
+ ltPendingReflowAnchors:new Map(),
  put:(key,value)=>stored.push([key,value]),renderReader:()=>{renderCount++;},
  document:{querySelectorAll:()=>[visibleParagraph]},
  window:{scrollY:400,scrollTo:(x,y)=>scrollRestored.push([x,y])}

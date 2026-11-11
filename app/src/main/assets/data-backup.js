@@ -37,7 +37,7 @@ function allowed(key){
  if(typeof key!=='string'||!key.startsWith(PREFIX))return false;
  const suffix=key.slice(PREFIX.length);
  return simple.has(suffix)||/^(chapter|has_read)_[a-z0-9-]{1,90}$/.test(suffix)||
-  /^(scroll|readpage|readpage_anchor|reading_anchor)_[a-z0-9-]{1,90}_[0-9]{1,4}$/.test(suffix);
+  /^(scroll|readpage|readpage_anchor|readpage_offset|reading_anchor)_[a-z0-9-]{1,90}_[0-9]{1,4}$/.test(suffix);
 }
 const safeText=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // A backup must not silently restore objects/arrays where the reader expects
@@ -113,6 +113,7 @@ function validValue(key,val){
  if(tail==='size')return Number.isInteger(val)&&val>=16&&val<=32;
  if(tail.startsWith('chapter_'))return Number.isInteger(val)&&val>=0&&val<1000;
  if(tail.startsWith('readpage_anchor_'))return Number.isInteger(val)&&val>=0&&val<=10000;
+ if(tail.startsWith('readpage_offset_'))return Number.isInteger(val)&&val>=0&&val<=1_000_000;
  if(tail.startsWith('readpage_'))return Number.isInteger(val)&&val>=0&&val<=10000;
  if(tail.startsWith('reading_anchor_'))return val===null||
   (val!==null&&typeof val==='object'&&!Array.isArray(val)&&
@@ -183,9 +184,21 @@ function restore(entries){
  for(const name of names) {
   if(!allowed(name)||!validValue(name,JSON.parse(entries[name])))throw Error('بيانات غير صالحة.');
  }
+ // A legacy position replaces the same chapter's old character offset too.
+ // Treat that deletion as part of the existing atomic restore transaction.
+ const offsetsToClear=new Set();
+ for(const name of names){
+  const match=name.match(/^storylens_readpage_(?:anchor_)?([a-z0-9-]{1,90}_[0-9]{1,4})$/);
+  if(!match)continue;
+  const offset=PREFIX+'readpage_offset_'+match[1];
+  if(!Object.hasOwn(entries,offset))offsetsToClear.add(offset);
+ }
  const previous=new Map();
- for(const name of names)previous.set(name,localStorage.getItem(name));
- try {for(const name of names)localStorage.setItem(name,entries[name]);}
+ for(const name of [...names,...offsetsToClear])previous.set(name,localStorage.getItem(name));
+ try {
+  for(const name of offsetsToClear)localStorage.removeItem(name);
+  for(const name of names)localStorage.setItem(name,entries[name]);
+ }
  catch(error){
   // Revert changes that FREE space before those that need space. Restoring
   // large old values first can itself fail under quota while newer imported

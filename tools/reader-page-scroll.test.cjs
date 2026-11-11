@@ -16,7 +16,7 @@ const pages=[makePage(),makePage()];
 const env={
  current:0,spread:1,bindingRtl:false,pages,sentenceBox:sheet,
  prev:{},next:{},countLabel:{},chapterEnd:{},key:'readpage_test_0',
- anchorKey:'readpage_anchor_test_0',starts:[0,1],
+ anchorKey:'readpage_anchor_test_0',offsetKey:'readpage_offset_test_0',starts:[0,1],offsets:[0,0],
  state:{chapter:0,story:{chapters:[{paragraphs:[{},{}]}]}},
  pageGroupLabel:(i,n)=>'Page '+(i+1)+' of '+n,
  uiText:(ar,en)=>en,put:(key,index)=>saved.push([key,index]),
@@ -30,8 +30,9 @@ assert.equal(scrolls[0][0],'paper','a real page turn brings the book, not its co
 assert.equal(scrolls[0][1].block,'start');
 assert.equal(scrolls[0][1].behavior,'auto','no competing smooth scroll during paper animation');
 assert.equal(turns.length,1);
-assert.equal(saved.at(-1)[1],0,'saving first paragraph anchor remains intact');
-assert.equal(saved.at(-2)[1],0,'saving legacy page progress remains intact');
+assert.deepEqual(saved.at(-1),['readpage_offset_test_0',0],'saving the character offset');
+assert.deepEqual(saved.at(-2),['readpage_anchor_test_0',0],'saving first paragraph anchor remains intact');
+assert.deepEqual(saved.at(-3),['readpage_test_0',0],'saving legacy page progress remains intact');
 env.testRenderPage('next',false);
 assert.equal(scrolls.at(-1)[0],'window','initial chapter render may show its illustration');
 delete sheet.scrollIntoView;

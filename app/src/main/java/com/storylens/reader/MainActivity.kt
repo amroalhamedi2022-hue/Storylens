@@ -1,7 +1,6 @@
 package com.storylens.reader
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.net.Uri
 import android.webkit.JavascriptInterface
 import org.json.JSONObject
@@ -17,8 +16,10 @@ import android.webkit.WebResourceResponse
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.FrameLayout
 import androidx.activity.ComponentActivity
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -227,7 +228,7 @@ class MainActivity : ComponentActivity() {
             .build()
 
         reader = WebView(this).apply {
-            setBackgroundColor(Color.rgb(239, 245, 243))
+            setBackgroundColor(getColor(R.color.lingua_startup_surface))
             isVerticalScrollBarEnabled = false
             isHorizontalScrollBarEnabled = false
             overScrollMode = WebView.OVER_SCROLL_NEVER
@@ -269,7 +270,21 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        setContentView(reader)
+        val readerContainer = FrameLayout(this).apply {
+            setBackgroundColor(getColor(R.color.lingua_startup_surface))
+            addView(reader, FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT
+            ))
+        }
+        ViewCompat.setOnApplyWindowInsetsListener(readerContainer) { container, insets ->
+            val cutout = insets.getInsets(WindowInsetsCompat.Type.displayCutout())
+            container.setPadding(cutout.left, cutout.top, cutout.right, cutout.bottom)
+            WindowInsetsCompat.Builder(insets)
+                .setDisplayCutout(null)
+                .build()
+        }
+        setContentView(readerContainer)
+        ViewCompat.requestApplyInsets(readerContainer)
         // All HTML/CSS/JS, including the independent GPL dictionary data, are
         // served from APK assets by WebViewAssetLoader — no network permission.
         reader.loadUrl("https://appassets.androidplatform.net/assets/index.html")

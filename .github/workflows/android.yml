@@ -699,6 +699,7 @@ jobs:
           export NODE_PATH=/tmp/lt-curl-browser/node_modules
           export CHROME="$(command -v google-chrome || command -v chromium)"
           node tools/physical-page-curl-browser.cjs
+          node tools/reader-line-pagination-browser.cjs
 
 
       - name: Wen Reader Sanctuary visual browser acceptance
@@ -730,7 +731,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: StoryLens-UI-Screenshots
-          path: qa-screenshots/*.png
+          path: qa-screenshots/**/*.png
           if-no-files-found: ignore
       - name: Upload debug APK
         if: success() && !(github.event_name == 'workflow_dispatch' && inputs.release_channel == 'stable-release')

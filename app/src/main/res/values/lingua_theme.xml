@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lingua_startup_surface">#EFF5F3</color>
+    <style name="LinguaTalesTheme" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/lingua_startup_surface</item>
+    </style>
+</resources>
