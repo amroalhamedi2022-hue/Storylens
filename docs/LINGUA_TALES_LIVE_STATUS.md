@@ -1,3 +1,13 @@
+## 2026-11-11 — Integrated on main and owner-signed update verified
+
+PR #86 merged at `9791a976b59e0e3506cd0733c89e081c0caac5ed`. The local validated application tree and merged `main:app` are identical, SHA `dc9b183d588bb5a24082ceb71dae2fba359ba320`.
+
+Local acceptance passed all 115 Node test files, five Android unit tests, Release assembly/vital lint, five-viewport bilingual pagination, seven font pairs, actual LTR/RTL portrait/spread touch-curl, four-viewport chapter journey/geometry, Wen Glass, Sanctuary, core flow and Arabic-first journeys. Hosted Actions remained queued at the last check. Physical Android/Xiaomi Pad 5, TalkBack, 120Hz and installation acceptance remain unverified.
+
+Private signed owner update `Lingua-Tales-v101211-Main-Integrated-SIGNED-UPDATE.apk`, package `com.storylens.reader`, versionCode `101211`, 32327293 bytes, SHA-256 `9831781148fbcaa43a193ff03d0f9146b2d3d8812d3607be6f877b454027feb2`. Permanent certificate `3df6489eacea84e78b715943ca4d014abb24e3159641e0bf80890ecedcf9da31` verified with Android v2/v3. Every original unsigned ZIP entry is byte-identical after signing. All 123 tracked packaged asset files match the source. Read-only update identity check passed against 101048.
+
+Remaining engineering includes the complete adjacent-chapter paper preview and further physical-curl geometry/ink/shadow realism. Keep the numbered audit ledger as an open acceptance record. This delivery changes the application integration and reader code, and adds no new original literature text or internet-sourced illustrations.
+
 ## 2026-11-11 — Main app integration and reader fixes
 
 - Integrated the audit fixes from PR #68 and the measured bilingual paper pagination from its dependent PR #85. Current gallery and approved local artwork handling stay in place.
