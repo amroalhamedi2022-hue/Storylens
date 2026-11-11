@@ -27,6 +27,10 @@ with tempfile.TemporaryDirectory() as folder:
     root = Path(folder)
     for file in ("tools/story_art_pilot.cjs",
                  "docs/art-generation/verne-pilot-scenes.json",
+                 "tools/prepare_color_scene_queue.cjs",
+                 "docs/art-generation/visual-bibles/colored-victorian/next-scene-briefs.json",
+                 "app/src/main/assets/classic-verne-towle-ch03.js",
+                 "app/src/main/assets/classic-verne-towle-ch04.js",
                  "app/src/main/assets/classic-verne-towle-ch01.js",
                  "app/src/main/assets/classic-verne-towle-ch02.js"):
         dest = root / file
@@ -42,7 +46,7 @@ with tempfile.TemporaryDirectory() as folder:
     source = json.loads(real_queue.read_text("utf8"))["queue"][0]
     # Real WebP RIFF binary signature with a small dummy payload: test fixture
     # is byte integrity only, not a valid displayable book illustration.
-    data = b"RIFF" + (512).to_bytes(4, "little") + b"WEBP" + b"VP8 " + b"\0" * 512
+    data = b"RIFF" + (520).to_bytes(4, "little") + b"WEBP" + b"VP8 " + b"\0" * 512
     path = approved / BOOK / (SCENE + ".webp")
     path.parent.mkdir(parents=True)
     path.write_bytes(data)
@@ -100,11 +104,72 @@ with tempfile.TemporaryDirectory() as folder:
     manifest["images"] = [item, item]
     save()
     invoke(root, "--write", passes=False)
+
+    # Chapter III colour art follows the same exact original-source SHA proof.
+    queue_color = root / "color-queue.json"
+    p = subprocess.run([
+        "node", str(root / "tools/prepare_color_scene_queue.cjs"),
+        "--export", str(queue_color)
+    ], capture_output=True, text=True)
+    assert p.returncode == 0, p.stderr
+    colors = json.loads(queue_color.read_text("utf8"))["queue"]
+    chapter_three = next(x for x in colors if x["sceneId"] == "verne-ch03-color-wager")
+    assert (chapter_three["chapterOneBased"], chapter_three["afterParagraph"]) == (3, 58)
+    color_binary = b"RIFF" + (520).to_bytes(4, "little") + b"WEBP" + b"VP8 " + b"\1" * 512
+    approved_color = approved / BOOK / (chapter_three["sceneId"] + ".webp")
+    approved_color.write_bytes(color_binary)
+    color_item = dict(item)
+    color_item.update(
+        sceneId=chapter_three["sceneId"],
+        sourceParagraphSha256=chapter_three["sourceParagraphSha256"],
+        chapterOneBased=3, afterParagraph=58,
+        sha256=hashlib.sha256(color_binary).hexdigest()
+    )
+    manifest["images"] = [item, color_item]
+    save()
+    invoke(root, "--check", passes=False)   # not in Android until a reviewed package
+    invoke(root, "--write")
+    invoke(root, "--check")
+    color_output = (root / "app/src/main/assets/art/generated" / BOOK /
+                    (chapter_three["sceneId"] + ".webp"))
+    assert color_output.read_bytes() == color_binary
+    registry_content = registry.read_text("utf8")
+    assert '"3":' in registry_content and '"1":' in registry_content
+    assert chapter_three["sourceParagraphSha256"] in registry_content
+    for field, bad in (
+        ("editoriallyApproved", False),
+        ("ownerImageApproved", False),
+        ("distributionReviewApproved", False),
+        ("imageRightsReviewed", False),
+        ("sourceParagraphSha256", "a" * 64),
+        ("chapterOneBased", 2),
+        ("afterParagraph", 19),
+        ("sha256", "0" * 64)
+    ):
+        previous = color_item[field]
+        color_item[field] = bad
+        save()
+        invoke(root, "--write", passes=False)
+        color_item[field] = previous
+    # Historic and color options for the same paragraph must NEVER both ship.
+    color_first = next(x for x in colors if x["sceneId"] == "verne-ch01-color-saville-street")
+    duplicate_anchor = dict(color_item,
+        sceneId=color_first["sceneId"],
+        sourceParagraphSha256=color_first["sourceParagraphSha256"],
+        chapterOneBased=1, afterParagraph=0
+    )
+    manifest["images"] = [item, duplicate_anchor]
+    save()
+    invoke(root, "--write", passes=False)
+    manifest["images"] = [item, color_item]
+    save()
+    invoke(root, "--check")
     manifest["images"] = []
     manifest["releaseApproved"] = False
     save()
     invoke(root, "--write", passes=False)  # orphaned published art is never silently erased
     output.unlink()  # explicit owner-reviewed removal simulated in disposable fixture
+    color_output.unlink()  # explicit revocation of second published test-only fixture
     invoke(root, "--write")
     invoke(root, "--check")
-print("PASS: no premature AI art, 10 gates, byte integrity, original-story paragraph hashes, offline promotion, revoked-file orphan block")
+print("PASS: Ch1+Ch3 bilingual source gating, WebP RIFF, collision protection, review flags and revoked-art checks")
