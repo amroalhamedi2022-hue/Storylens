@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "set": "colored-victorian-second-moodboard-batch",
+  "status": "STYLE_REFERENCES_ONLY",
+  "releaseApproved": false,
+  "forReader": false,
+  "images": [
+    {
+      "id": "harbor-moodboard",
+      "filename": "harbor-moodboard.webp",
+      "title": "Victorian steamship harbor composition",
+      "bytes": 617300,
+      "sha256": "b96adc6036adc9e6f7439965bf4b7f685f9a9d257e6fe8445872a1c405280d66",
+      "width": 1536,
+      "height": 1024,
+      "kind": "AI_GENERATED_COLORED_MOODBOARD_ONLY",
+      "sourceAccurate": false,
+      "editoriallyApproved": false,
+      "ownerImageApproved": false,
+      "imageRightsReviewed": false,
+      "distributionReviewApproved": false,
+      "releaseApproved": false,
+      "origin": "MODERN_AI_NOT_HISTORICAL",
+      "warning": "Decorative, not a chapter 1/2 scene. The coastline, clock-tower and transit details are imaginative; the two characters do not match the verified source appearance for Fogg; do not associate this with any chapter anchor.",
+      "provenance": "Generated using ChatGPT Images, 2026-11-11; intentionally retained only as a visual style study; no source-chapter validation approval."
+    },
+    {
+      "id": "map-study-moodboard",
+      "filename": "map-study-moodboard.webp",
+      "title": "Victorian map-and-library composition",
+      "bytes": 643416,
+      "sha256": "b488f2baf1d12959ce50ad481bbba444542d06934ca67282a348fac0476a301a",
+      "width": 1536,
+      "height": 1024,
+      "kind": "AI_GENERATED_COLORED_MOODBOARD_ONLY",
+      "sourceAccurate": false,
+      "editoriallyApproved": false,
+      "ownerImageApproved": false,
+      "imageRightsReviewed": false,
+      "distributionReviewApproved": false,
+      "releaseApproved": false,
+      "origin": "MODERN_AI_NOT_HISTORICAL",
+      "warning": "Decorative study only; not an event in the first two chapters. Fogg likeness is not source accurate and the depicted travel planning is not source-verified as a chapter scene.",
+      "provenance": "Generated using ChatGPT Images, 2026-11-11; intentionally retained only as a visual style study; no source-chapter validation approval."
+    }
+  ]
+}

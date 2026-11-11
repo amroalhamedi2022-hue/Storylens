@@ -10,6 +10,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {run:loadQueue}=require('./story_art_pilot.cjs');
+const {run:loadColorQueue}=require('./prepare_color_scene_queue.cjs');
 const ROOT=path.resolve(__dirname,'..');
 const MODEL_FLARE='gpt-image-2.6-flare',MODEL_DETAIL='gpt-image-2.6-sunburst';
 const REVIEW=path.join(ROOT,'docs/art-generation/review');
@@ -77,23 +78,25 @@ function parseResult(payload){
  return image;
 }
 function parseArgs(argv){
- const opts={model:MODEL_FLARE,execute:false,confirm:false,references:null,scene:null};
+ const opts={model:MODEL_FLARE,execute:false,confirm:false,references:null,scene:null,colorScenes:false};
  for(let i=0;i<argv.length;i++){
   const k=argv[i];
   if(k==='--scene')opts.scene=argv[++i];
   else if(k==='--model')opts.model=argv[++i];
   else if(k==='--references')opts.references=argv[++i];
+  else if(k==='--color-scenes')opts.colorScenes=true;
   else if(k==='--execute')opts.execute=true;
   else if(k==='--confirm-paid')opts.confirm=true;
   else throw Error('Unknown argument '+k);
  }
- if(typeof opts.scene!=='string'||!/^verne-ch0[12]-[a-z0-9-]+$/.test(opts.scene))throw Error('Select one real --scene ID');
+ const verifiedPattern=opts.colorScenes?/^verne-ch0[1-4]-color-[a-z0-9-]+$/:/^verne-ch0[12]-[a-z0-9-]+$/;
+ if(typeof opts.scene!=='string'||!verifiedPattern.test(opts.scene))throw Error('Select one real --scene ID');
  if(opts.execute!==opts.confirm)throw Error('Paid execution requires BOTH --execute and --confirm-paid');
  return opts;
 }
 async function main(argv,transport=fetch){
  const opts=parseArgs(argv);
- const queue=loadQueue(['--check']);
+ const queue=opts.colorScenes?loadColorQueue(['--check']):loadQueue(['--check']);
  const scene=queue.queue.find(x=>x.sceneId===opts.scene);
  if(!scene)throw Error('Scene ID does not exist in the verified actual prose queue');
  const refs=readReferences(opts.references);
@@ -127,7 +130,8 @@ async function main(argv,transport=fetch){
  const record={
   sceneId:scene.sceneId,bookId:BOOK,sourceFile:scene.sourceFile,
   chapterOneBased:scene.chapterOneBased,afterParagraph:scene.afterParagraph,
-  sourceParagraphSha256:scene.sourceParagraphSha256,promptSha256:digest(scene.prompt),
+  sourceParagraphSha256:scene.sourceParagraphSha256,sourceExcerpt:scene.sourceExcerpt,
+  promptSha256:digest(scene.prompt),
   outputSha256:digest(image),model:opts.model,outputFile:path.relative(ROOT,output),
   sourceType:'AI_GENERATED_MODERN_COMPANION',generated:true,referenceSha256:refs.map(x=>x.hash),
   promptSource:'verified actual Lingua Tales original prose',

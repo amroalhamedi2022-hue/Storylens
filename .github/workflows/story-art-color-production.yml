@@ -1,0 +1,53 @@
+name: Lingua Tales • Colored Scene Production QA
+on:
+  push:
+    branches: ['feature/story-art-color-production-*']
+    paths:
+      - 'docs/art-generation/visual-bibles/colored-victorian/**'
+      - 'tools/prepare_color_scene_queue.cjs'
+      - 'tools/test_color_scene_queue.cjs'
+      - 'tools/test_color_moodboard_batch.cjs'
+      - 'tools/generate_story_art_openai.cjs'
+      - 'tools/test_story_art_openai.cjs'
+      - '.github/workflows/story-art-color-production.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/art-generation/visual-bibles/colored-victorian/**'
+      - 'tools/prepare_color_scene_queue.cjs'
+      - 'tools/test_color_scene_queue.cjs'
+      - 'tools/test_color_moodboard_batch.cjs'
+      - 'tools/generate_story_art_openai.cjs'
+      - 'tools/test_story_art_openai.cjs'
+      - '.github/workflows/story-art-color-production.yml'
+permissions:
+  contents: read
+jobs:
+  verify-new-art-and-prompts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate actual source-verified color scenes and real image bytes
+        run: |
+          node tools/test_color_scene_queue.cjs
+          node tools/test_color_moodboard_batch.cjs
+          node tools/test_story_art_openai.cjs
+          node tools/test_generated_art_review_candidates.cjs
+          python3 tools/package_generated_story_art.py --check
+      - name: Export six source-verified color prompts without spending money
+        run: |
+          node tools/prepare_color_scene_queue.cjs --export /tmp/lingua-color-queue.json
+          node tools/generate_story_art_openai.cjs --color-scenes --scene verne-ch03-color-wager
+          node -e 'const d=require("/tmp/lingua-color-queue.json");if(d.releaseApproved||d.queueCount!==6||d.queue.some(x=>x.generated||x.releaseApproved||x.editoriallyApproved||x.sourceParagraphSha256.length!==64))process.exit(1)'
+      - name: Publish generation briefs as CI artifact, not real pictures
+        uses: actions/upload-artifact@v4
+        with:
+          name: lingua-six-verified-color-scene-prompts-not-images
+          path: /tmp/lingua-color-queue.json
+          retention-days: 30
