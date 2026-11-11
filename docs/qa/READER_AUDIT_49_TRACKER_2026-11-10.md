@@ -4,12 +4,12 @@
 
 **Verified exact-SHA code validation before documentation update:** `1f574f9ed63118521c67873739ee78bbf33bf519`, Android [run #42785164198](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42785164198) **SUCCESS** (including unit tests, Android build/identity, Chromium artwork, Wen Glass, physical RTL/LTR portrait/spread curl, Wen Reader Sanctuary); chapter gallery [#42785164150](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/42785164150) **SUCCESS**. **After documentation-only commits the HEAD advances; recheck final HEAD CI before merging**. Workflow artifacts include preview/debug and **unsigned** production; no owner-signed installable release claimed.
 
-**Issue accounting:** Original 49 video defects: **19 CODE FIXED / MITIGATED / PARTIAL** and **30 OPEN**, with **zero hardware-accepted**. Additional #50 / P1 was found in genuine CI screenshots: gallery card bottoms clipped, layout fix committed; automated browser checks green at the verified source SHA but direct device visual sign-off pending. This is a **50-finding ledger**, not an assertion of 50 completed fixes. [Full tracker](docs/qa/READER_AUDIT_49_TRACKER_2026-11-10.md).
+**Issue accounting:** Original 49 video defects: **22 CODE FIXED / MITIGATED / PARTIAL** and **27 OPEN**, with **zero hardware-accepted**. Additional #50 / P1 was found in genuine CI screenshots: gallery card bottoms clipped, layout fix committed; automated browser checks green at the verified source SHA but direct device visual sign-off pending. This is a **50-finding ledger**, not an assertion of 50 completed fixes. [Full tracker](docs/qa/READER_AUDIT_49_TRACKER_2026-11-10.md).
 
 **Completed at source level for PR #68:** first-paper heading with measured title height; distinct verso/underlay and temporary blank sheet for trailing odd spread; controlled paper-shadow/facet seams; physical RTL/LTR flip tests; recoverable Back/Settings in landscape immersive mode; accessible page counts, paper control contrast, no selection handles on chapter gallery labels; settings rows/scroll; compact gallery card height and fixed gallery overflow. Existing CHG-05 PR #67 stays preserved, not redone.
 
 **Remaining highest-impact work:**
-- **Delegated ONLY to Codex with owner approval:** P0 #16/#17 + P1 #18 real line-level, non-clipping, measured page pagination. Full instructions at [`docs/prompts/CODEX_LINGUA_REAL_PAPER_PAGINATION_2026-11-10.md`](docs/prompts/CODEX_LINGUA_REAL_PAPER_PAGINATION_2026-11-10.md). Codex creates `codex/lingua-real-paper-pagination-20261110` from latest PR #68 and opens an **unmerged PR against PR #68 branch**. The main chat avoids concurrent edits to Codex-owned `reader-experience.js`, `reader-experience.css` and `tools/measured-reader-pages.test.cjs`.
+- **Delivered on the dedicated Codex branch:** P0 #16/#17 + P1 #18 real line-level, non-clipping, measured page pagination at source commit `371eb02`; automated Node, Chromium, curl-compatibility and Android checks passed locally. Review/integration CI and physical-device acceptance remain. Full evidence: [`docs/qa/CODEX_PAGINATION_HANDOFF_2026-11-11.md`](CODEX_PAGINATION_HANDOFF_2026-11-11.md).
 - **Owner chat continues separately:** P0 #2/#3/#8 plus page curl visual realism, outer-sheet touch (#12), frame rate/DOM budget (#14), boundary preview (#13), remaining #22/#25/#28/#30/#31 and #38–#49 UX/design items. Work only in non-overlapping files while Codex edits pagination.
 - **External dependencies:** approved chapter-specific images remain **0** in `docs/literature/CHAPTER_ART_PROGRESS.json` (currently **288** mapped *candidates*, not approved). Source literature chat alone controls originals, translations and art rights; UI chat integrates only approved assets. Physical Android phone and Xiaomi Pad 5, real 120Hz smoothness, in-place signed update with original certificate remain **NOT VERIFIED**.
 
@@ -61,9 +61,9 @@
 | 13 | P1 | معاينة الفصل التالي ناقصة | OPEN · لم ينفذ إصلاح |
 | 14 | P1 | تكرار DOM بكلفة عالية | OPEN · لم ينفذ إصلاح |
 | 15 | P2 | اختلاف خامة وجه الطية | MITIGATED · أزلنا خطوط الشرائح والحبر الشبح |
-| 16 | P0 | صفحات شبه فارغة | OPEN · لم ينفذ إصلاح |
-| 17 | P0 | تجزئة على حدود الفقرة فقط | OPEN · لم ينفذ إصلاح |
-| 18 | P1 | فقرة تتجاوز الورقة | OPEN · لم ينفذ إصلاح |
+| 16 | P0 | صفحات شبه فارغة | CODE FIXED على فرع Codex · قياس Chromium ناجح؛ قبول الجهاز معلّق |
+| 17 | P0 | تجزئة على حدود الفقرة فقط | CODE FIXED على فرع Codex · تقسيم كلمة/محرف آمن EN/AR؛ قبول الجهاز معلّق |
+| 18 | P1 | فقرة تتجاوز الورقة | CODE FIXED على فرع Codex · صفر تجاوز في مصفوفة العرض؛ قبول الجهاز معلّق |
 | 19 | P0 | قص عنوان الفصل في الانتقال | PARTIAL · نقل العنوان داخل الصفحة الأولى؛ اختبار القفز بعد التدوير مطلوب |
 | 20 | P1 | قفزة رأسية للعنوان | PARTIAL · ينزل العنوان مع الصفحة الأولى بدل الإطار |
 | 21 | P1 | العنوان ثابت فوق كل صفحة | CODE FIXED · العنوان داخل الورقة الأولى فقط |
@@ -104,7 +104,7 @@
 ### Outstanding critical follow-up
 
 - **P0 #2–3, #8 and P1 #9–11:** genuine sheet deformation, correct continuous geometry/material, proper front/back masking and curved ink placement require a physical HTML curl redesign and 0%, 25%, 50%, 75%, 100% slow-motion screenshots; border removal alone isn't a new paper physics engine.
-- **P0 #16–17 and P1 #18:** current pagination still keeps each paragraph/illustration intact. **Line-level splitting with dictionary token semantics, translations, images and stable paragraph anchors has NOT been implemented**. Prevent truncation and wasted sheets in a dedicated evidence-driven batch.
+- **P0 #16–17 and P1 #18:** implemented on `codex/lingua-real-paper-pagination-20261110` at source commit `371eb02`. Real DOM measurement now continues oversized paragraphs at word/grapheme-safe boundaries, retains dictionary token offsets and translations, moves figures atomically, and restores exact character anchors after reflow. Required English/Arabic Chromium viewport tests report zero padded-ink overflow. Integration CI and physical Android device acceptance remain pending; see [`CODEX_PAGINATION_HANDOFF_2026-11-11.md`](CODEX_PAGINATION_HANDOFF_2026-11-11.md).
 - **#12–14:** outer-paper edge hit testing, accurate full next-chapter paper preview and 22-facet DOM performance on real device require targeted regression and performance QA.
 - **#33–34:** Android insets and rotation loop must be tested on actual hardware; do not mistake video letterboxing for an app bug. Width-triggered semantic reader reflow already exists on main, so no duplicate resize listener added.
 - **#37, #41, #42:** photo and book availability depend on independently cleared content; never turn an archived candidate into a shipped thumbnail without rights/editorial approval.
