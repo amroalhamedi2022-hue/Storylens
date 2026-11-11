@@ -23,7 +23,7 @@ MANIFEST = Path("docs/art-generation/approved/generated-art-release.json")
 SRC = Path("docs/art-generation/approved")
 OUT = Path("app/src/main/assets")
 REG = "lt-generated-art-registry.js"
-SCENE_RE = re.compile(r"^verne-ch0[12]-[a-z0-9-]{1,65}$")
+SCENE_RE = re.compile(r"^verne-ch0[1-4]-(?:color-)?[a-z0-9-]{1,65}$")
 SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 VALID_BOOK = "around-the-world-in-eighty-days-towle"
 
@@ -40,19 +40,42 @@ def sha(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def queue_from_actual_source(repo: Path) -> dict:
-    # Node VM verifier computes paragraph fingerprints directly from original
-    # first-party story JS. A stale/edited scene plan cannot invent a new anchor.
+def queue_from_actual_source(repo: Path) -> list[dict]:
+    """Load both scene queues, freshly anchored to the real bilingual source.
+
+    Multiple proposed art styles may target the same paragraph; published
+    scenes are checked for duplicate anchors separately, after owner review.
+    """
+    queues = [("story_art_pilot.cjs", "classic"),
+              ("prepare_color_scene_queue.cjs", "color")]
+    verified: list[dict] = []
+    seen: set[str] = set()
     with tempfile.TemporaryDirectory() as temp:
-        output = Path(temp) / "queue.json"
-        p = subprocess.run(
-            ["node", str(repo / "tools/story_art_pilot.cjs"),
-             "--export", str(output)],
-            cwd=repo, capture_output=True, text=True, timeout=30
-        )
-        if p.returncode:
-            raise ValueError("Original prose scene verification failed: " + p.stderr)
-        return json.loads(output.read_text(encoding="utf-8"))
+        for command, label in queues:
+            out = Path(temp) / f"{label}.json"
+            run = subprocess.run(
+                ["node", str(repo / "tools" / command), "--export", str(out)],
+                cwd=repo, capture_output=True, text=True, timeout=30
+            )
+            if run.returncode:
+                raise ValueError("Verified original scene queue failed: "
+                                 + label + ": " + run.stderr)
+            data = json.loads(out.read_text(encoding="utf-8"))
+            if (data.get("bookId") != VALID_BOOK or
+                    data.get("releaseApproved") is not False or
+                    not isinstance(data.get("queue"), list) or not data["queue"]):
+                raise ValueError("Invalid verified scene queue: " + label)
+            for scene in data["queue"]:
+                if (not isinstance(scene, dict) or
+                        scene.get("status") != "PROMPT_READY_NOT_GENERATED" or
+                        scene.get("editoriallyApproved") is not False or
+                        not isinstance(scene.get("sourceParagraphSha256"), str) or
+                        not SHA_RE.fullmatch(scene["sourceParagraphSha256"]) or
+                        scene.get("sceneId") in seen):
+                    raise ValueError("Invalid/duplicated scene proof in: " + label)
+                seen.add(scene["sceneId"])
+                verified.append(scene)
+    return verified
 
 
 def approved_item(item: dict) -> bool:
@@ -77,7 +100,7 @@ def build(repo: Path) -> tuple[Path, bytes, dict[Path, bytes], dict]:
     if m.get("schemaVersion") != 1 or m.get("bookId") != VALID_BOOK or not isinstance(m.get("images"), list):
         raise ValueError("Unexpected/generated-art schema or book")
     real = queue_from_actual_source(repo)
-    by_id = {s["sceneId"]: s for s in real["queue"]}
+    by_id = {s["sceneId"]: s for s in real}
     images = m["images"]
     if m.get("releaseApproved") is not True:
         # Unapproved/preview candidates MUST NEVER be silently shipped.
@@ -97,6 +120,8 @@ def build(repo: Path) -> tuple[Path, bytes, dict[Path, bytes], dict]:
             raise ValueError("Invalid, unknown or duplicate approved scene id")
         seen_ids.add(sid)
         scene = by_id[sid]
+        if not sid.startswith(f"verne-ch0{scene['chapterOneBased']}-"):
+            raise ValueError("Scene ID does not match real source chapter")
         if item.get("sourceParagraphSha256") != scene["sourceParagraphSha256"]:
             raise ValueError("Original source paragraph fingerprint mismatch")
         if item.get("afterParagraph") != scene["afterParagraph"] or item.get("chapterOneBased") != scene["chapterOneBased"]:
@@ -117,7 +142,9 @@ def build(repo: Path) -> tuple[Path, bytes, dict[Path, bytes], dict]:
             raise ValueError("Same generated image reused for two scenes")
         seen_hashes.add(digest)
         if not (300 < len(data) <= 10_000_000 and data[:4] == b"RIFF"
-                and data[8:12] == b"WEBP"):
+                and data[8:12] == b"WEBP" and
+                int.from_bytes(data[4:8], "little") + 8 == len(data) and
+                data[12:16] in (b"VP8 ", b"VP8L", b"VP8X")):
             raise ValueError("Invalid, oversized or non-WebP image")
         model = item.get("model")
         if not isinstance(model, str) or not 3 <= len(model) <= 80:
