@@ -4,6 +4,7 @@
 - Each curl facet mounts its visible face only (22 face trees instead of 44). Android reserves display-cutout space, and the launch window and WebView share a background colour. Integrated the five optional Wen gradient palettes from PR #45 into the existing six-theme editor.
 - The character offset inside split paragraphs now survives reopening and backup/restore. Cancelled and tap-only edge gestures dispose of their temporary chapter previews.
 - Chromium exposed a tablet overflow when English prose inherited the Arabic UI language during measurement. Pages now use final language and font attributes before splitting. The chapter chooser uses the paper ink contrast and the same on-demand reveal as landscape page controls.
+- Preloading and post-load repagination now cover the additional Lateef, Katibeh, Caveat and Kalam choices through their actual bundled font names.
 - The numbered tracker in `docs/qa/READER_AUDIT_49_TRACKER_2026-11-10.md` is the baseline. This integration addresses the duplicated facet DOM (#14), line-aware pagination (#16–18), and applies source fixes for cutout insets and launch surface (#33, #48). Real-device results, 120Hz, final curl geometry and owner-signed upgrade still require verification. No stories, translations or source images were added.
 
 ## PAGINATION DELIVERY — 11 November 2026

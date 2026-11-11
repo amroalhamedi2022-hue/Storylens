@@ -62,14 +62,18 @@ function ltApplyFonts(){
   naskh:'"LT Arabic Naskh","Noto Naskh Arabic",serif',
   ruqaa:'"LT Arabic Ruqaa","Aref Ruqaa",serif',
   kufi:'"LT Arabic Kufi","Noto Kufi Arabic",sans-serif',
-  hand:'"LT Arabic Hand","Reem Kufi Ink",cursive'
+  hand:'"LT Arabic Hand","Reem Kufi Ink",cursive',
+  lateef:'"LT Arabic Lateef",serif',
+  katibeh:'"LT Arabic Katibeh",serif'
  };
  const english={
   serif:'"LT English Serif",Georgia,serif',
   sans:'"LT English Sans",system-ui,sans-serif',
   humanist:'"LT English Humanist","Trebuchet MS",sans-serif',
   mono:'"LT English Mono",ui-monospace,monospace',
-  hand:'"LT English Hand",cursive'
+  hand:'"LT English Hand",cursive',
+  caveat:'"LT English Caveat",cursive',
+  kalam:'"LT English Kalam",cursive'
  };
  const ar=arabic[get('fontArabic','sans')]||legacy.ar;
  const en=english[get('fontEnglish','serif')]||legacy.en;
@@ -90,7 +94,8 @@ function ltApplyFonts(){
   Promise.all([document.fonts.load('20px '+ar.split(',')[0]),
    document.fonts.load('20px '+en.split(',')[0])]).then(()=>{
    if(state.page!=='reader'||state.story?.id!==storyId||state.chapter!==chapter)return;
-   const selected=arabic[get('fontArabic','sans')]+'|'+english[get('fontEnglish','serif')];
+   const selected=(arabic[get('fontArabic','sans')]||legacy.ar)+'|'+
+    (english[get('fontEnglish','serif')]||legacy.en);
    if(selected!==pair)return;
    if(typeof window.LinguaReflowReader==='function')
     window.LinguaReflowReader(captureParagraphAnchor());
