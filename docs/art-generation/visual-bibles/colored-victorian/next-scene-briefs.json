@@ -18,7 +18,9 @@
       "description": "Saville Row townhouse exterior, London 1872; do not claim an authenticated building facade.",
       "generated": false,
       "editoriallyApproved": false,
-      "releaseApproved": false
+      "releaseApproved": false,
+      "altEn": "Modern colored Victorian interpretation of a Saville Row street exterior in 1872.",
+      "altAr": "رسم ملوّن حديث لشارع سافيل رو في لندن سنة 1872، دون توثيق الواجهة التاريخية للمنزل."
     },
     {
       "id": "ch01-new-servant",
@@ -28,7 +30,9 @@
       "description": "New servant Passepartout bows before seated Fogg as James Forster introduces him.",
       "generated": false,
       "editoriallyApproved": false,
-      "releaseApproved": false
+      "releaseApproved": false,
+      "altEn": "Passepartout bows as he is introduced to the seated Phileas Fogg.",
+      "altAr": "باسبارتو ينحني أمام فيلياس فوغ الجالس في لحظة تقديم الخادم الجديد."
     },
     {
       "id": "ch02-clock-schedule",
@@ -38,7 +42,9 @@
       "description": "Passepartout alone examines the daily schedule card above the clock in Fogg's house.",
       "generated": false,
       "editoriallyApproved": false,
-      "releaseApproved": false
+      "releaseApproved": false,
+      "altEn": "Passepartout examines a household schedule card above the clock.",
+      "altAr": "باسبارتو يتفحص بطاقة جدول المهام اليومية المعلّقة فوق الساعة."
     },
     {
       "id": "ch03-wager",
@@ -48,7 +54,9 @@
       "description": "Reform Club gentlemen and Fogg discuss his wager; no railway travel in this scene.",
       "generated": false,
       "editoriallyApproved": false,
-      "releaseApproved": false
+      "releaseApproved": false,
+      "altEn": "Phileas Fogg calmly makes his wager before the gentlemen of the Reform Club.",
+      "altAr": "فيلياس فوغ يعلن رهانه بهدوء أمام أعضاء نادي الإصلاح."
     },
     {
       "id": "ch04-packing",
@@ -58,7 +66,9 @@
       "description": "Passepartout packs for his sudden journey in his London quarters.",
       "generated": false,
       "editoriallyApproved": false,
-      "releaseApproved": false
+      "releaseApproved": false,
+      "altEn": "Passepartout prepares his belongings for an unexpected journey.",
+      "altAr": "باسبارتو يجهز أمتعته استعدادًا لرحلة مفاجئة."
     },
     {
       "id": "ch04-guide",
@@ -68,7 +78,9 @@
       "description": "Fogg holds his red-bound Bradshaw railway guide and carries a carpetbag before setting off.",
       "generated": false,
       "editoriallyApproved": false,
-      "releaseApproved": false
+      "releaseApproved": false,
+      "altEn": "Phileas Fogg carries a red-bound railway timetable guide and a travel bag.",
+      "altAr": "فيلياس فوغ يحمل دليل مواعيد القطارات ذا الغلاف الأحمر وحقيبة السفر."
     }
   ]
 }
