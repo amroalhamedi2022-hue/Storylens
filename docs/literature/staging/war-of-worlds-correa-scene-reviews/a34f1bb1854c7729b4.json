@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_16.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-a34f1bb1854c7729.webp",
+  "imageSha256": "74819ae1a4ec33eba2f07520aaa7291d1fdd05b2f1e0a2dae2fcb886d7cad0ff",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned, sketch-like illustration depicting several large, mechanical, tripod-legged machines wading through a body of water or misty landscape. The foreground features a prominent tripod machine with a central pod and a horizontal tube mounted on top. In the background, other similar tripod machines are visible, partially obscured by mist or smoke. Birds are flying in the upper left corner.",
+    "visualObjectsEn": "Tripod machines, mechanical pods, horizontal tubes, water, mist, smoke, birds, shoreline vegetation.",
+    "recognizableCharactersOrPeopleEn": "None. The figures are mechanical machines.",
+    "uncertaintyNotes": "The exact nature of the machines (e.g., their origin or purpose) is not explicitly stated in the visual content, though they appear to be science-fiction constructs. The medium appears to be an ink or charcoal drawing or an engraving."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 15,
+    "paragraphIndexZeroBased": 7,
+    "exactSourceQuotation": "At the same time four of their fighting machines, similarly armed with tubes, crossed the river, and two of them, black against the western sky, came into sight of myself and the curate as we hurried wearily and painfully along the road that runs northward out of Halliford. They moved, as it seemed to us, upon a cloud, for a milky mist covered the fields and rose to a third of their height.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts tripod machines wading through water or mist, which aligns perfectly with the description of the machines crossing the river and moving upon a milky mist that covers the fields, as described in Chapter 15, Paragraph 7.",
+    "suggestedAltArNotApproved": "A sepia-toned illustration of Martian tripod machines wading through a misty, water-filled landscape, with mechanical pods and horizontal tubes visible.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows tripod fighting machines wading in a misty landscape with a caption reading 'The Martians fire their gas-guns.'",
+    "visualContradictions": "The passage specifically describes the narrator and the curate hurrying wearily and painfully along the road northward out of Halliford with two fighting machines in sight, which are absent from this illustration that focuses solely on the tripods in the mist/water.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

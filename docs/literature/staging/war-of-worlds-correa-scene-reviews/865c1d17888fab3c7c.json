@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_17.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-865c1d17888fab3c.webp",
+  "imageSha256": "f0656ee9e11b66cd8fdaa96ea06dcad913b4b91ffff49957b57882244c9fffea",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned, cross-hatched engraving depicting a dark, atmospheric scene of a flooded urban waterway or canal at night. A large, tripod-like mechanical structure with a domed top looms over the water. The sky is dark and swirling, while the water reflects the dim light. Two street lamps stand partially submerged in the water on either side of the foreground.",
+    "visualObjectsEn": "A large tripod mechanical machine, two street lamps, a body of water, stone embankments or walls, a dark swirling sky.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the mechanical structure is ambiguous, though it resembles a science-fiction tripod. The location is depicted as a generic urban waterway, and while the caption suggests the Thames, the visual evidence is not specific enough to confirm this geographic location."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 14,
+    "exactSourceQuotation": "I came upon the red weed again, and found the Regent’s Canal, a spongy mass of dark-red vegetation.",
+    "confidenceModelEstimateNotVerified": 0.7,
+    "modelRationaleNotVerified": "The scene depicts a dark, atmospheric urban waterway with a tripod machine, which aligns with the narrator's discovery of the Regent's Canal in Chapter 25, where he encounters both the red weed and a Martian fighting-machine in the urban landscape.",
+    "suggestedAltArNotApproved": "A dark, sepia-toned engraving of a Martian tripod machine looming over a flooded urban canal at night, with street lamps reflecting in the water.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a tripod machine over a flooded waterway with street lamps, and the caption identifies the location as the flooding Thames.",
+    "visualContradictions": "The selected passage specifically describes Regent's Canal filled with a spongy mass of dark-red vegetation and a second Martian standing near the Zoological Gardens/Primrose Hill, whereas the image's caption and visual context refer to the flooding Thames without depicting the prominent red weed mass described in the text.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

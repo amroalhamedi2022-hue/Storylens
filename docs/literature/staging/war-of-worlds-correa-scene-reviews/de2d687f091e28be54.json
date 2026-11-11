@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_18.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-de2d687f091e28be.webp",
+  "imageSha256": "b22679e78bde25fbae9fe9b07a74b5a35ebe6807211b4b1199e7dbf9ccaf92a0",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A dramatic, painterly scene depicting a large, dark, multi-legged mechanical creature attacking a naval warship in a body of water. The creature has a prominent, angular head with a single large eye and long, segmented, whip-like appendages. The warship is partially submerged or listing, with visible masts and superstructure. The water is turbulent, and the overall atmosphere is stormy and chaotic.",
+    "visualObjectsEn": "Mechanical creature, warship, masts, water, waves, spray, sky, clouds.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the mechanical creature is ambiguous, appearing as a science-fiction or fantasy construct. The specific type of warship is not clearly identifiable due to the artistic style, though it resembles early 20th-century naval vessels."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 59,
+    "exactSourceQuotation": "Thick clouds of steam were pouring off the wreckage, and through the tumultuously whirling wisps I could see, intermittently and vaguely, the gigantic limbs churning the water and flinging a splash and spray of mud and froth into the air. The tentacles swayed and struck like living arms",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description of a mechanical creature attacking a warship in turbulent water matches the narrative of the Martian fighting-machine destroying vessels in the river/water, specifically referencing the churning water, spray, and the movement of the tentacles.",
+    "suggestedAltArNotApproved": "A mechanical Martian fighting-machine with long tentacles attacking a naval warship in a stormy, turbulent body of water.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a large mechanical tripod creature standing near a damaged warship in the water, with tentacles swaying and water splashing around it.",
+    "visualContradictions": "The passage describes a wounded machine churning the water, surrounded by thick clouds of steam and spurting enormous quantities of a ruddy-brown fluid in noisy jets. The image does not clearly depict thick steam clouds or the distinct spurting jets of ruddy-brown fluid.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.7,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

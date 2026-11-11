@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_19.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-fab9eff4dfc8afa0.webp",
+  "imageSha256": "28a46535e9bc2944c2c4844bb0d44b488335258869c8f62333a0e7019047a95f",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned, sketch-like illustration depicting a naval engagement at sea. A large, dark warship is positioned on the left, moving through choppy water. To the right, a tall, tripod-like mechanical structure with a rounded head and long, spindly legs stands in the water, seemingly interacting with or being struck by the ship. The atmosphere is hazy and dramatic, suggesting a conflict.",
+    "visualObjectsEn": "Warship, tripod machine, ocean waves, smoke or spray, horizon line.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The nature of the tripod machine is ambiguous and fantastical, making it impossible to identify as a real-world object. The artistic style resembles a 19th or early 20th-century ink or charcoal drawing, but the specific origin or artist is not confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 17,
+    "paragraphIndexZeroBased": 11,
+    "exactSourceQuotation": "About a couple of miles out lay an ironclad, very low in the water, almost, to my brother’s perception, like a waterlogged ship. This was the ram Thunder Child. It was the only warship in sight",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a naval engagement featuring a warship (the Thunder Child) and a tripod machine in the water. This matches the narrative context of the Thunder Child's battle against the Martians at sea in Chapter 17.",
+    "suggestedAltArNotApproved": "A sepia-toned engraving showing the ironclad warship Thunder Child engaging a Martian tripod machine in the sea, with smoke and choppy water surrounding them.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows an ironclad warship (Thunder Child) engaging a Martian tripod machine, and the caption reads 'The torpedo-boat's brave attack on the Martians'.",
+    "visualContradictions": "The text focuses on the observation of the ironclad Thunder Child lying low in the water and the distant Channel Fleet as a serpent of black smoke, whereas the illustration depicts active combat and a direct ramming/engagement with a Martian tripod.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
