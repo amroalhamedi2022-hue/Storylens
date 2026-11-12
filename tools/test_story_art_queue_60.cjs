@@ -5,15 +5,15 @@ const {verified,next,status,imageSize,record,reject,retry,main}=require('./story
 const v=verified();
 const counts=status(v);
 assert.equal(counts.total,60);
-assert.equal(counts.sourceVerified,7);
+assert.equal(counts.sourceVerified,8);
 assert.equal(counts.existingReview,1);
-assert.equal(counts.ready,6);
-assert.equal(counts.needsSource,33);
+assert.equal(counts.ready,7);
+assert.equal(counts.needsSource,32);
 assert.equal(counts.needsSegmentation,20);
 assert.equal(counts.generatedCandidate,0);
 assert.equal(counts.readerIntegrated,0);
 assert.equal(v.q.items.length,new Set(v.q.items.map(x=>x.queueId)).size);
-for(const item of v.q.items.slice(7)){
+for(const item of v.q.items.slice(8)){
  assert.equal(item.sceneId,null);
  assert.equal(item.sourceExcerpt,null);
  assert.equal(item.paragraphZeroBased,null);
@@ -33,6 +33,12 @@ assert.equal(seventh.paragraphZeroBased,8);
 assert.equal(v.colorMap.get(seventh.sceneId).sourceExcerpt,seventh.sourceExcerpt);
 assert.equal(v.colorMap.get(seventh.sceneId).chapterOneBased,5);
 assert.equal(v.colorMap.get(seventh.sceneId).status,'PROMPT_READY_NOT_GENERATED');
+const eighth=v.q.items[7];
+assert.equal(eighth.queueId,'verne-008');
+assert.equal(eighth.chapterOneBased,6);
+assert.equal(eighth.paragraphZeroBased,13);
+assert.equal(v.colorMap.get(eighth.sceneId).sourceExcerpt,eighth.sourceExcerpt);
+assert.equal(v.colorMap.get(eighth.sceneId).sourceParagraphSha256.length,64);
 const decision=next(v);
 assert.equal(decision.ready,true);
 assert.equal(decision.queueId,'verne-007');
@@ -59,4 +65,4 @@ const old=process.env.STORY_ART_AUTOGEN_APPROVED;
 delete process.env.STORY_ART_AUTOGEN_APPROVED;
 assert.throws(()=>main(['--produce']),/not explicitly authorized/);
 if(old!==undefined)process.env.STORY_ART_AUTOGEN_APPROVED=old;
-console.log('PASS: 60 unique queue slots, 7 source-verified prompts incl. original chapter V, one unblocked environment scene, safety gates remain');
+console.log('PASS: 60 unique queue slots, 8 source-verified prompts incl. original chapter V, one unblocked environment scene, safety gates remain');
