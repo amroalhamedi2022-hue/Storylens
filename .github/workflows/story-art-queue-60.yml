@@ -1,0 +1,44 @@
+name: Lingua Tales — 60-scene queue integrity
+on:
+  push:
+    paths:
+      - 'docs/art-generation/production-queue-60.json'
+      - 'docs/art-generation/production-run-state.json'
+      - 'docs/art-generation/character-bibles/**'
+      - 'tools/story_art_queue_60.cjs'
+      - 'tools/test_story_art_queue_60.cjs'
+      - 'tools/prepare_color_scene_queue.cjs'
+      - 'docs/art-generation/visual-bibles/colored-victorian/next-scene-briefs.json'
+      - '.github/workflows/story-art-queue-60.yml'
+  pull_request:
+    paths:
+      - 'docs/art-generation/production-queue-60.json'
+      - 'docs/art-generation/production-run-state.json'
+      - 'docs/art-generation/character-bibles/**'
+      - 'tools/story_art_queue_60.cjs'
+      - 'tools/test_story_art_queue_60.cjs'
+      - 'tools/prepare_color_scene_queue.cjs'
+      - 'docs/art-generation/visual-bibles/colored-victorian/next-scene-briefs.json'
+      - '.github/workflows/story-art-queue-60.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: story-art-queue-integrity
+  cancel-in-progress: true
+jobs:
+  check-queue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify grounded color scenes
+        run: node tools/prepare_color_scene_queue.cjs --check
+      - name: Verify persistent queue, references and rejection safety
+        run: node tools/test_story_art_queue_60.cjs
+      - name: Verify bounded runnable queue
+        run: node tools/story_art_queue_60.cjs --next
+# This CI never invokes the images API, never stores API keys and never publishes art.
