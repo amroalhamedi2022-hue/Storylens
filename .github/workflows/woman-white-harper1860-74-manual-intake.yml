@@ -1,0 +1,81 @@
+name: Lingua Tales - recover all 74 original 1860 Harper McLenan illustrated pages
+on:
+  push:
+    branches: [main, content/woman-white-1860-harper-mclenan-original-plates-20261110]
+    paths:
+      - 'tools/intake_woman_white_harper1860_74_manual_plates.py'
+      - 'docs/literature/staging/woman-white-mclenan-1860-original-scan/original-illustrated-page-index.json'
+      - '.github/workflows/woman-white-harper1860-74-manual-intake.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: lingua-original-1860-74-source-recovery-\${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  source-verified-74-engraving-page-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original scan and image decoder
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0 pymupdf==1.26.5 opencv-python-headless==4.12.0.88
+      - name: Verify exact 74 manually located historical source pages
+        run: python tools/test_woman_white_harper1860_mclenan.py
+      - name: Recover 66 truly original 1860 illustrated-page image crops, zero fake chapter approvals
+        run: python tools/intake_woman_white_harper1860_74_manual_plates.py --max-new 66
+      - name: Rebuild full WebP contact sheets for review before source promotion
+        if: always()
+        run: |
+          if [ -f docs/literature/staging/woman-white-mclenan-1860-original-scan/manifest.json ]; then
+            python tools/make_woman_white_1860_review_contact_sheets.py
+          fi
+      - name: Commit actual original 1860 image binaries and unchanged edition proof
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: \${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          folder=docs/literature/staging/woman-white-mclenan-1860-original-scan
+          if [ -d "$folder" ]; then git add -A -f "$folder"; fi
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "All original 1860 PDF images already in history. No duplicate."
+          else
+            git commit -m "Literature: preserve 66 newly extracted authentic 1860 McLenan illustrated-page source crops"
+            saved=0
+            for attempt in 1 2 3 4; do
+              git pull --rebase origin "$GITHUB_REF_NAME"
+              python tools/test_woman_white_harper1860_mclenan.py
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then saved=1; break; fi
+              sleep 3
+            done
+            if [ "$saved" -ne 1 ]; then
+              echo "::error::Real first-edition picture binaries retained in downloadable Action artifact, push failed"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_NAME" = main ]; then
+              gh workflow run chapter-art-progress.yml --ref main --repo "$GITHUB_REPOSITORY"
+            fi
+          fi
+      - name: Retain authentic source evidence when a page scan or push temporarily fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-74-mclenan-1860-sources-pending-independent-scene-rights-approval
+          path: docs/literature/staging/woman-white-mclenan-1860-original-scan/
+          if-no-files-found: ignore
+          retention-days: 30
