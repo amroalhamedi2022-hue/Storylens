@@ -115,3 +115,8 @@
 ### Release gates (all must be verified)
 
 - PR-specific Node tests; full Android and Chromium jobs on exact SHA; screenshot QA for portrait phone and real tablet portrait/landscape; gesture cancellation/fast turns/RTL/LTR; reader data backup and semantic anchors; accessibility focus/contrast; sign with *existing* owner certificate (never build unsigned and present as update). No APK shipped by this branch.
+
+### 12 November release evidence
+
+- Source `6db1c585b7a0fc47a0d4b40cad7b5eb6c83dcfff`; successful CI run `43303063554`; same-certificate signed update versionCode `101216`; APK SHA-256 `18f991d4088fe7fd56054f05f42d4944700c9c4a609a9080202b1334ad6c95c0`.
+- Automated phone/tablet, Wen Glass and physical RTL/LTR curl gates passed. Xiaomi Pad 5 hardware acceptance remains open and is not converted into an automated claim.
