@@ -66,6 +66,7 @@ function next(v){
  for(const i of v.q.items){
   const current=v.s.attempts[i.queueId]?.status||i.status;
   if(current!=='ready_for_generation')continue;
+  if((v.s.attempts[i.queueId]?.count||0)>=2){blocks.push({queueId:i.queueId,reason:'RETRY_BUDGET_EXHAUSTED'});continue;}
   if(v.s.candidates.some(c=>c.queueId===i.queueId)){blocks.push({queueId:i.queueId,reason:'ALREADY_GENERATED'});continue;}
   const source=v.colorMap.get(i.sceneId);
   if(!source){blocks.push({queueId:i.queueId,reason:'SOURCE_NOT_VERIFIED'});continue;}
@@ -101,6 +102,7 @@ function imageSize(bytes){
 function record(v,id,file){
  const item=v.q.items.find(x=>x.queueId===id);
  assert(item&&v.colorMap.has(item.sceneId),'unverified/unknown queue item');
+ assert(!v.s.attempts[id]||v.s.attempts[id].status!=='rejected','rejected scene cannot silently be accepted as a new candidate');
  assert(!v.s.candidates.some(x=>x.queueId===id),'this scene was already recorded');
  const full=safeRel(file);
  assert(full.startsWith(REVIEW+path.sep)&&full.endsWith('.webp'),'review WebP only; never Android assets');
@@ -141,7 +143,10 @@ function produce(v){
  assert(task.referenceManifest&&task.charactersPresent.every(id=>v.b.continuity[id]?.approvedForCrossSceneReference===true),'unapproved named-character image references');
  const args=[path.join(ROOT,'tools/generate_story_art_openai.cjs'),'--color-scenes','--scene',task.sceneId,'--references',task.referenceManifest,'--execute','--confirm-paid'];
  const result=child.spawnSync(process.execPath,args,{cwd:ROOT,stdio:'inherit',timeout:200000,env:process.env});
- assert(result.status===0,'image adapter failed; cannot claim generated image');
+ if(result.status!==0){
+  // Persist failure so the next hourly run does not repeat the same paid request indefinitely.
+  return reject(v,task.queueId,result.error?.code==='ETIMEDOUT'?'GENERATION_TIMEOUT':'IMAGE_ADAPTER_FAILED');
+ }
  const file='docs/art-generation/review/'+task.bookId+'/'+task.sceneId+'.webp';
  return record(v,task.queueId,file);
 }
