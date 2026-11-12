@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "source": "docs/art-generation/verne-pilot-scenes.json",
+  "verificationCommand": "node tools/story_art_pilot.cjs --check",
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "sceneId": "verne-ch01-fogg-reading",
+  "chapterOneBased": 1,
+  "paragraphZeroBased": 11,
+  "sourceExcerpt": "His sole pastimes were reading the papers and playing whist.",
+  "sceneDescription": "Phileas Fogg, a reserved English gentleman about forty, seated quietly inside his Reform Club reading a newspaper in 1872 London. Crucial source likeness: a BEARD, light-colored hair and whiskers, composed expression, tall well-built build and dignified dark Victorian suit. Other club members may be visible unobtrusively in the background. Not a wager scene, no railway or balloons.",
+  "people": [
+    "phileas-fogg"
+  ],
+  "altEn": "Phileas Fogg reads a newspaper at a London gentlemen's club in 1872.",
+  "altAr": "فيلياس فوغ يقرأ صحيفة في نادٍ إنجليزي في لندن سنة 1872.",
+  "queueSlot": "verne-007",
+  "status": "SOURCE_ANCHORED_IN_EXISTING_PILOT_NOT_PROMOTED",
+  "imageGenerated": false,
+  "referenceApproved": false,
+  "releaseApproved": false,
+  "notes": "Existing verified pilot contains a distinct scene (Fogg reading newspapers at Reform Club) not duplicated among six color scenes. Evidence is staged; production queue slot remains blocked until source hash validation and compatible colored-scene adapter are integrated."
+}
