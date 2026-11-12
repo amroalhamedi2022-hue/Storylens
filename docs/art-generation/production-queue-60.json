@@ -188,10 +188,26 @@
       "queueId": "verne-008",
       "bookId": "around-the-world-in-eighty-days-towle",
       "chapterOneBased": 6,
-      "paragraphZeroBased": null,
-      "sceneId": null,
-      "sourceExcerpt": null,
-      "status": "needs_source_verification"
+      "paragraphZeroBased": 13,
+      "sceneId": "verne-ch06-color-suez-quay",
+      "sourceExcerpt": "Little by little the scene on the quay became more animated; sailors of various nations, merchants, ship-brokers, porters, fellahs, bustled to and fro",
+      "status": "ready_for_generation",
+      "description": "An expansive single-scene view of the Suez quay in 1872 as it grows lively before the steamship's arrival: sailors, merchants, ship brokers, porters and fellahs move along the jetty; the clear chilly daylight reveals town minarets and traditional small boats on the Red Sea, without foregrounding any named protagonist or depicting the Mongolia already docked.",
+      "altEn": "Busy Suez quayside with sailors, merchants and porters, minarets and small Red Sea boats before the Mongolia arrives.",
+      "altAr": "رصيف السويس المزدحم بالبحارة والتجار والحمالين، مع المآذن والقوارب الصغيرة قبل وصول الباخرة منغوليا.",
+      "charactersPresent": [],
+      "forbiddenElements": [
+        "Mongolia docked at quay",
+        "Phileas Fogg",
+        "Jean Passepartout",
+        "Bombay station",
+        "train",
+        "elephant",
+        "hot air balloon",
+        "collage",
+        "legible invented signs"
+      ],
+      "referenceBible": "docs/art-generation/character-bibles/verne-main-cast-v1.json"
     },
     {
       "queueId": "verne-009",
