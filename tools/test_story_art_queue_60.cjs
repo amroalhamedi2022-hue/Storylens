@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 const assert=require('node:assert/strict');
-const {verified,next,status,imageSize,reject,main}=require('./story_art_queue_60.cjs');
+const {verified,next,status,imageSize,record,reject,retry,main}=require('./story_art_queue_60.cjs');
 const v=verified();
 const counts=status(v);
 assert.equal(counts.total,60);
@@ -38,6 +38,13 @@ const rejectedCopy=structuredClone(v);
 rejectedCopy.s.attempts['verne-002']={status:'rejected',count:2,reason:'IMAGE_ADAPTER_FAILED'};
 assert.equal(next(rejectedCopy).blocks.some(x=>x.queueId==='verne-002'),false);
 assert.equal(next(rejectedCopy).ready,false);
+// Negative tests must not mutate the real state.
+assert.throws(()=>retry(v,'verne-002'),/must be explicitly rejected/);
+const mocked={...v,s:{...v.s,attempts:{'verne-002':{status:'rejected',count:2}}}};
+assert.throws(()=>retry(mocked,'verne-002'),/attempt budget exhausted/);
+const mockedOnce={...v,s:{...v.s,attempts:{'verne-002':{status:'rejected',count:1}}}};
+assert.throws(()=>retry(mockedOnce,'verne-002'),/CHARACTER_REFERENCE_NOT_APPROVED/);
+assert.throws(()=>record(v,'verne-002','docs/art-generation/review/wrong-dir/file.webp'),/ENOENT|canonical scene path/);
 const old=process.env.STORY_ART_AUTOGEN_APPROVED;
 delete process.env.STORY_ART_AUTOGEN_APPROVED;
 assert.throws(()=>main(['--produce']),/not explicitly authorized/);
