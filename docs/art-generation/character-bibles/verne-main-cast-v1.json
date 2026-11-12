@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "bibleId": "verne-main-cast-v1",
+  "workId": "around-the-world-in-eighty-days-towle",
+  "sources": [
+    "app/src/main/assets/classic-verne-towle-ch02.js",
+    "docs/art-generation/visual-bibles/colored-victorian/next-scene-briefs.json"
+  ],
+  "style": "Single vivid, fine-engraved Victorian period-book scene, muted gold, warm parchment, natural copper/blue/teal, hand-painted materials, realistic historical 1872 details; not an archival original; never collages or readable text",
+  "continuity": {
+    "phileas-fogg": {
+      "sourceAppearance": "About forty; tall well-proportioned English gentleman; pale handsome composed face, LIGHT HAIR AND LIGHT WHISKERS, restrained facial hair/side-whiskers matching original source; formal precise 1872 English suit; always calm.",
+      "never": [
+        "dark-haired Fogg",
+        "clean-shaven when selected source implies whiskers",
+        "different head proportions per scene",
+        "exaggerated top hat stereotype"
+      ],
+      "approvedReferenceImage": null,
+      "approvedForCrossSceneReference": false
+    },
+    "jean-passepartout": {
+      "sourceAppearance": "About thirty; French valet, BLUE eyes, ruddy complexion, friendly rounded face, full muscular build, BROWN slightly tousled hair, practical 1872 house-servant clothing.",
+      "never": [
+        "black slick hair",
+        "blond hair",
+        "random facial age",
+        "unrelated expensive nobleman suit"
+      ],
+      "approvedReferenceImage": null,
+      "approvedForCrossSceneReference": false
+    }
+  },
+  "references": {
+    "ownerApproved": false,
+    "files": [],
+    "policy": "Real image reference must have local approved file hash, image rights/AI-edit permission, source and owner signoff; styled collage is NOT face identity reference"
+  },
+  "visualExclusions": [
+    "Victorian travel collage",
+    "Balloon itinerary not in original journey",
+    "Inconsistent faces",
+    "Nonexistent events, random stations, elephants inserted into an indoor London scene",
+    "Modern text or signs"
+  ],
+  "notes": "This is a textual source-verified continuity draft, NOT a final visual face reference; casting scenes must wait for a single approved face reference if visual consistency cannot otherwise be guaranteed."
+}
