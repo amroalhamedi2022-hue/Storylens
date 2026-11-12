@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_24.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-0587e506af404a70.webp",
+  "imageSha256": "b80d55dec97514c2b3cb42fa7edf37c04fe74ccb955b465878bd60e34d346e6c",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned, detailed pencil or ink illustration depicting a dilapidated, overgrown interior space, possibly a greenhouse or a ruined study. A heavy wooden desk sits in the center, partially covered by tangled, vine-like vegetation. A chair lies overturned on the floor in the foreground, surrounded by scattered papers. The ceiling is partially open or broken, with more vegetation hanging down.",
+    "visualObjectsEn": "Wooden desk, overturned chair, scattered papers, tangled vine-like vegetation, broken ceiling structure, interior walls.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the vegetation is ambiguous, appearing as either organic vines or a stylized, possibly alien, growth. The setting is clearly abandoned or destroyed, but the specific function of the room is not definitively identifiable."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 22,
+    "paragraphIndexZeroBased": 17,
+    "exactSourceQuotation": "The neighbouring houses had all been wrecked, but none had been burned; their walls stood, sometimes to the second story, with smashed windows and shattered doors. The red weed grew tumultuously in their roofless rooms.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a ruined, overgrown interior with a desk and overturned chair, matching the description of a wrecked house where the 'red weed' has taken over the roofless, abandoned rooms as described in the selected passage.",
+    "suggestedAltArNotApproved": "A sepia-toned illustration of a ruined, roofless interior space overgrown with vegetation, featuring an overturned chair and a desk, representing the aftermath of the Martian invasion.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image clearly shows a roofless or ruined room overgrown with tendril-like red weed, matching the description of 'The red weed grew tumultuously in their roofless rooms' and houses with damaged walls.",
+    "visualContradictions": "The perspective is from inside a room looking out rather than from an elevated exterior vantage point overlooking a great pit with crows and a distant cat.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

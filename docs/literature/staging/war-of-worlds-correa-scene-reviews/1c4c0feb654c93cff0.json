@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_25.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-1c4c0feb654c93cf.webp",
+  "imageSha256": "aab47df51f8ce6c3d2bf2dcf381f3c86254e95c4d6ff89015c324ab33f63669f",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A monochromatic, cross-hatched engraving depicting a tall, tripod-like mechanical structure looming over a city street at night. The machine has a wide, flat top and two glowing, circular lights. Below, a group of small, indistinct human figures are scattered across the street, some running or gesturing, with a bright light source emanating from the base of a building, casting long shadows.",
+    "visualObjectsEn": "Tripod machine, city buildings, street, glowing lights, human figures, shadows.",
+    "recognizableCharactersOrPeopleEn": "A group of small, indistinct human figures.",
+    "uncertaintyNotes": "The image is a stylized artistic engraving; the exact nature of the machine and the specific activity of the people are open to interpretation based on the visual style. The caption at the bottom is part of the image file but is not verified as an original historical title."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 17,
+    "exactSourceQuotation": "On the summit, towering up to the fading stars, was a t",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The scene description of a tripod looming over a city street at night with human figures matches the narrator's arrival at Primrose Hill in Chapter 25, where he observes the Martian machine standing on the summit against the dawn sky, with the city streets below.",
+    "suggestedAltArNotApproved": "A monochromatic engraving of a Martian tripod looming over a city street at night, with small human figures scattered below.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving shows a tall Martian tripod machine towering over a city street with a crowd of small figures below.",
+    "visualContradictions": "The passage describes the narrator approaching Primrose Hill at dawn and seeing a third Martian erect and motionless on the summit, whereas the image depicts a street scene with a crowd and an inaccurate caption referring to a drunken crowd, which does not match the solitary, terrified narrator wandering through silent, dead London in the specified passage.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_27.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-e6d2585b9e28d434.webp",
+  "imageSha256": "0f9fa3f130b74afec17e390919d19affa0ee4506e616b6621f6b840f71410f32",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned, etched-style illustration depicting a large, complex, and damaged mechanical structure resting on a desolate, muddy landscape near a body of water. The machine has a rounded, bulbous central body with multiple spindly, tentacle-like appendages extending from it. A flock of birds is flying above and around the wreckage. The surrounding environment is barren, with debris scattered on the ground and a skeletal, leafless tree visible in the distance.",
+    "visualObjectsEn": "Large mechanical structure, spindly appendages, metallic debris, muddy ground, body of water, flock of birds, leafless tree, etched lines, sepia-toned paper texture.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The exact nature of the mechanical structure is ambiguous, appearing as a piece of science fiction machinery or a surrealist construct. The medium appears to be an etching or a lithograph, but the specific printing technique cannot be confirmed."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 12,
+    "paragraphIndexZeroBased": 57,
+    "exactSourceQuotation": "A violent explosion shook the air, and a spout of water, steam, mud, and shattered metal shot far up into the sky.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The illustration depicts a damaged mechanical structure in a muddy, watery landscape, which aligns perfectly with the aftermath of the destruction described in this paragraph, specifically the 'spout of water, steam, mud, and shattered metal' resulting from the Martian machine's collapse.",
+    "suggestedAltArNotApproved": "A sepia-toned etching showing the wreckage of a Martian machine in a muddy, desolate landscape near water, reflecting the aftermath of the destruction described in the text.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a wrecked Martian handling machine resting quietly on a riverbank with birds flying overhead and debris around it.",
+    "visualContradictions": "The passage describes the explosive collapse of the machine into the water, a massive scalding wave sweeping around the bend, and people struggling and screaming shorewards, none of which are depicted in this calm, static aftermath scene.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
