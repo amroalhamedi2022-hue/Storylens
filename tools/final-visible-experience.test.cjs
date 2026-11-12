@@ -7,8 +7,10 @@ const reader=fs.readFileSync('app/src/main/assets/reader-experience.js','utf8');
 const css=fs.readFileSync('app/src/main/assets/lt-final-experience.css','utf8');
 const curlCss=fs.readFileSync('app/src/main/assets/physical-page-curl.css','utf8');
 
-assert.ok(html.lastIndexOf('lt-final-experience.css')>html.lastIndexOf('lt-antique-book.css'),
- 'unified visual finish must load after historical theme layers');
+assert.match(reader,/link\[data-lt-final-experience\]/,
+ 'reader must mount the unified visual finish without rewriting the embedded catalog');
+assert.match(reader,/finalStyle\.href='lt-final-experience\.css'/,
+ 'production reader must load the unified visual finish');
 assert.match(curl,/const taper=\.34\*Math\.max\(0,1-p\/\.86\)/,
  'moving leaf remains broad instead of collapsing into the old triangle');
 assert.match(curl,/const edgeZone=Math\.min\(112,Math\.max\(64,rect\.width\*\.17\)\)/,

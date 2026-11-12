@@ -3,6 +3,14 @@
  */
 (function(){
 'use strict';
+// Keep the final product layer independent from the large embedded catalog
+// document. Loading it here prevents content-only catalog rebuilds from
+// silently dropping the visible finish.
+if(document.head&&!document.querySelector('link[data-lt-final-experience]')){
+ const finalStyle=document.createElement('link');
+ finalStyle.rel='stylesheet';finalStyle.href='lt-final-experience.css';
+ finalStyle.dataset.ltFinalExperience='true';document.head.appendChild(finalStyle);
+}
 const originalLibrary=library;
 const originalOpenStory=openStory;
 const originalReader=renderReader;
