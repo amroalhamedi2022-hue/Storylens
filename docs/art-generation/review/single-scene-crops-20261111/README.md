@@ -1,0 +1,3 @@
+# Lingua Tales — Two isolated story panels for editorial review
+
+Generated 2026-11-11 from an earlier AI collage; **NOT independently generated new chapter artwork**. Both cropped WebPs are native small panel resolution, not high-resolution final chapter art. Exact source paragraph locations and SHA256 are in candidate-manifest.json. Both are **REJECTED_FOR_RELEASE** for character continuity errors. No images were installed in the Android book reader or approved for publication. The offline review.html shows the actual images and text.

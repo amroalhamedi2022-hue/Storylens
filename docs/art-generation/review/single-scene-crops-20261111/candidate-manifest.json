@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "purpose": "UNAPPROVED_SINGLE_SCENE_CANDIDATES",
+  "bookId": "around-the-world-in-eighty-days-towle",
+  "releaseApproved": false,
+  "files": [
+    {
+      "id": "ch01-passepartout-introduction-study",
+      "chapter": 1,
+      "paragraphZeroBased": 19,
+      "box": [
+        513,
+        6,
+        1005,
+        249
+      ],
+      "status": "REJECTED_FOR_RELEASE",
+      "issues": [
+        "Fogg hairstyle and facial hair do not match established lighter-haired bearded character reference",
+        "Original scene includes dismissed James Forster, but generated scene omits him",
+        "Scene contains a top hat worn indoors; needs historical review"
+      ],
+      "captionAr": "باسبارتو يتقدم للتعريف بنفسه أمام فوغ (قصاصة مراجعة فقط).",
+      "captionEn": "Passepartout meets Fogg (unapproved extracted panel).",
+      "filename": "ch01-passepartout-introduction-study.webp",
+      "width": 492,
+      "height": 243,
+      "bytes": 57180,
+      "sha256": "c831a97b5328309b9d5af6693d43c705d661985ec111ed39a22546eabae6fef3",
+      "originalFile": "a_highly_detailed_cinematic_illustrated_comic_sty.png",
+      "croppedFromMontage": true,
+      "releaseApproved": false,
+      "ownerImageApproved": false,
+      "editoriallyApproved": false,
+      "imageRightsReviewed": false,
+      "distributionReviewApproved": false,
+      "sourceParagraphSha256": "9e4b0158e4f0db377ba6795ba8431dcc83b780c9041634794be2dec7d43f6ca6",
+      "sourceExcerpt": "A rap at this moment sounded on the door of the cosy apartment where Phileas Fogg w",
+      "sourceParagraphEn": "A rap at this moment sounded on the door of the cosy apartment where Phileas Fogg was seated, and James Forster, the dismissed servant, appeared. \"The new servant,\" said he. A young man of thirty advanced and bowed.",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "generated": true,
+      "origin": "AI_GENERATED_PANEL_CROP",
+      "reprocessRequired": true,
+      "sourceParagraphAr": "في تلك اللحظة سُمعت طرقة على باب الغرفة المريحة التي يجلس فيها فوغ، وظهر جيمس فورستر، الخادم الذي صُرف من عمله. قال: «الخادم الجديد». فتقدم شاب في الثلاثين من عمره وانحنى احترامًا."
+    },
+    {
+      "id": "ch03-reform-wager-study-a",
+      "chapter": 3,
+      "paragraphZeroBased": 58,
+      "box": [
+        1035,
+        10,
+        1523,
+        250
+      ],
+      "status": "REJECTED_FOR_RELEASE",
+      "issues": [
+        "Fogg appears dark-haired and clean-shaven, contrary to the established light-hair/beard reference",
+        "Image was cropped from a multi-scene montage, not generated as an independent scene",
+        "No verified £20,000 wager is visually distinguishable without the chapter context"
+      ],
+      "captionAr": "نقاش داخل نادي الإصلاح عند إعلان الرهان (قصاصة مراجعة).",
+      "captionEn": "Reform Club wager discussion (unapproved extracted panel).",
+      "filename": "ch03-reform-wager-study-a.webp",
+      "width": 488,
+      "height": 240,
+      "bytes": 59188,
+      "sha256": "22417c30d1235d76da9aeead8b7d0fb542f305b5f58c247d7a47ba0f45c23bc9",
+      "originalFile": "a_highly_detailed_cinematic_illustrated_comic_sty.png",
+      "croppedFromMontage": true,
+      "releaseApproved": false,
+      "ownerImageApproved": false,
+      "editoriallyApproved": false,
+      "imageRightsReviewed": false,
+      "distributionReviewApproved": false,
+      "sourceParagraphSha256": "2d2e99fd48fa0076fd442ae5fced199c4247ddd1ea94a740d28967283542a7ff",
+      "sourceExcerpt": "“A true Englishman doesn’t joke when he is talking about so serious a thing as a wa",
+      "sourceParagraphEn": "“A true Englishman doesn’t joke when he is talking about so serious a thing as a wager,” replied Phileas Fogg, solemnly. “I will bet twenty thousand pounds against anyone who wishes that I will make the tour of the world in eighty days or less; in nineteen hundred and twenty hours, or a hundred and fifteen thousand two hundred minutes. Do you accept?”",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "generated": true,
+      "origin": "AI_GENERATED_PANEL_CROP",
+      "reprocessRequired": true,
+      "sourceParagraphAr": "قال فوغ بوقار: «الإنجليزي الحق لا يمزح في أمر جاد مثل الرهان. أراهن بعشرين ألف جنيه أمام أي شخص يشاء أنني سأطوف العالم في ثمانين يومًا أو أقل؛ أي ألف وتسعمئة وعشرين ساعة، أو مئة وخمسة عشر ألفًا ومئتي دقيقة. هل تقبلون؟»"
+    }
+  ]
+}

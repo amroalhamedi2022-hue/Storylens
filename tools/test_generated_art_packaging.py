@@ -46,7 +46,8 @@ with tempfile.TemporaryDirectory() as folder:
     source = json.loads(real_queue.read_text("utf8"))["queue"][0]
     # Real WebP RIFF binary signature with a small dummy payload: test fixture
     # is byte integrity only, not a valid displayable book illustration.
-    data = b"RIFF" + (520).to_bytes(4, "little") + b"WEBP" + b"VP8 " + b"\0" * 512
+    # Use actual 1536x1024 decoded WebP assets as TEST-ONLY positive fixtures.
+    data = (SRC / "docs/art-generation/visual-bibles/colored-victorian/golden-world-route.webp").read_bytes()
     path = approved / BOOK / (SCENE + ".webp")
     path.parent.mkdir(parents=True)
     path.write_bytes(data)
@@ -75,6 +76,18 @@ with tempfile.TemporaryDirectory() as folder:
     save()
     invoke(root, "--write", passes=False)  # cannot ship before book-release review
     manifest["releaseApproved"] = True
+    save()
+    # Real single-panel preview is too small for a tablet: it must NEVER ship,
+    # even if every release approval were mistakenly set to True.
+    tiny = (SRC / "docs/art-generation/review/single-scene-crops-20261111/ch03-reform-wager-study-a.webp").read_bytes()
+    path.write_bytes(tiny)
+    old_sha = item["sha256"]
+    item["sha256"] = hashlib.sha256(tiny).hexdigest()
+    save()
+    denied = invoke(root, "--write", passes=False)
+    assert "resolution too small" in denied.stderr.lower(), denied.stderr
+    path.write_bytes(data)
+    item["sha256"] = old_sha
     save()
     invoke(root, "--check", passes=False)  # cannot claim packaged before genuine promotion
     invoke(root, "--write")
@@ -115,7 +128,7 @@ with tempfile.TemporaryDirectory() as folder:
     colors = json.loads(queue_color.read_text("utf8"))["queue"]
     chapter_three = next(x for x in colors if x["sceneId"] == "verne-ch03-color-wager")
     assert (chapter_three["chapterOneBased"], chapter_three["afterParagraph"]) == (3, 58)
-    color_binary = b"RIFF" + (520).to_bytes(4, "little") + b"WEBP" + b"VP8 " + b"\1" * 512
+    color_binary = (SRC / "docs/art-generation/visual-bibles/colored-victorian/london-club-and-journey.webp").read_bytes()
     approved_color = approved / BOOK / (chapter_three["sceneId"] + ".webp")
     approved_color.write_bytes(color_binary)
     color_item = dict(item)
