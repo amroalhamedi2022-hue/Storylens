@@ -34,6 +34,10 @@ assert.ok(decision.blocks.some(x=>x.reason==='CHARACTER_REFERENCE_NOT_APPROVED')
 assert.throws(()=>imageSize(Buffer.from('image-but-not-webp')),/not substantial WebP/);
 assert.throws(()=>reject(v,'verne-003','invalid lowercase'),/UPPERCASE_FAILURE_REASON/);
 assert.throws(()=>reject(v,'nonexistent-000','SCENE_MISMATCH'),/unverified\/unknown/);
+const rejectedCopy=structuredClone(v);
+rejectedCopy.s.attempts['verne-002']={status:'rejected',count:2,reason:'IMAGE_ADAPTER_FAILED'};
+assert.equal(next(rejectedCopy).blocks.some(x=>x.queueId==='verne-002'),false);
+assert.equal(next(rejectedCopy).ready,false);
 const old=process.env.STORY_ART_AUTOGEN_APPROVED;
 delete process.env.STORY_ART_AUTOGEN_APPROVED;
 assert.throws(()=>main(['--produce']),/not explicitly authorized/);
