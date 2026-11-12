@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* Lingua Tales: bounded, fail-closed 60-scene queue runner.
- * Usage: node tools/story_art_queue_60.cjs --check | --next | --produce | --record <queueId> <relative-WebP>
+ * Usage: node tools/story_art_queue_60.cjs --check | --next | --produce | --record <queueId> <relative-WebP> | --reject <queueId> <REASON>
  * --produce is PAID and impossible without explicit opt-in, API key AND approved, hashed visual references.
  * Only review candidates may be recorded, never release approval or app assets.
  */
@@ -117,6 +117,22 @@ function record(v,id,file){
  writeAtomic(SPATH,v.s);
  return {recorded:true,queueId:id,status:'generated_candidate',sha256:hash,...dim};
 }
+function reject(v,id,reason){
+ const item=v.q.items.find(x=>x.queueId===id);
+ assert(item&&v.colorMap.has(item.sceneId),'unverified/unknown queue item');
+ assert(/^[A-Z][A-Z0-9_]{4,96}$/.test(reason),'use explicit UPPERCASE_FAILURE_REASON');
+ assert(!v.s.candidates.some(x=>x.queueId===id),'cannot reject a recorded candidate without editorial review');
+ const old=v.s.attempts[id];
+ const count=(old?.count||0)+1;
+ assert(count<=2,'retry budget exhausted for '+id);
+ const event={queueId:id,sceneId:item.sceneId,reason,status:'rejected',attemptCount:count,recordedAt:new Date().toISOString()};
+ if(!Array.isArray(v.s.rejections))v.s.rejections=[];
+ v.s.rejections.push(event);
+ v.s.attempts[id]={status:'rejected',count,reason,updatedAt:event.recordedAt};
+ v.s.lastProcessedQueueId=id;
+ writeAtomic(SPATH,v.s);
+ return event;
+}
 function produce(v){
  assert(process.env.STORY_ART_AUTOGEN_APPROVED==='yes','paid autonomous generation not explicitly authorized: no API call');
  assert(process.env.OPENAI_API_KEY&&process.env.STORY_ART_PAID_IMAGE_LIMIT==='1','missing scoped API key or per-run ONE-IMAGE payment limit');
@@ -135,10 +151,11 @@ function main(args){
  if(op==='--check')out={ok:true,counts:status(v),releaseApproved:false};
  else if(op==='--next')out=next(v);
  else if(op==='--record'){assert(args.length===3,'use --record <queueId> <file>');out=record(v,args[1],args[2]);}
+ else if(op==='--reject'){assert(args.length===3,'use --reject <queueId> <UPPERCASE_REASON>');out=reject(v,args[1],args[2]);}
  else if(op==='--produce')out=produce(v);
  else throw Error('unknown action '+op);
  console.log(JSON.stringify(out,null,2));
  return out;
 }
 if(require.main===module){try{main(process.argv.slice(2));}catch(e){console.error('QUEUE_BLOCKED: '+e.message);process.exitCode=1;}}
-module.exports={verified,next,status,imageSize,record,main};
+module.exports={verified,next,status,imageSize,record,reject,main};
