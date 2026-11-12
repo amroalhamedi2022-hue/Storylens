@@ -1,0 +1,650 @@
+{
+  "schemaVersion": 1,
+  "queueVersion": "2026-11-13-v1",
+  "purpose": "fixed bounded 60-scene backlog; no AI-authored story text and no unverified source anchors",
+  "sourceBriefs": "docs/art-generation/visual-bibles/colored-victorian/next-scene-briefs.json",
+  "sourcePolicy": "Existing six original-text-anchored color briefs; later positions are deliberately NOT validated scenes until source text is audited",
+  "defaults": {
+    "imagesPerRun": 1,
+    "maxImagesPerRun": 2,
+    "maxRetriesPerScene": 1,
+    "requiresSceneBoundPrompt": true,
+    "requiresImageReferencesForNamedCharacters": true,
+    "noPaidApiWithoutExplicitApproval": true,
+    "noAutoRelease": true
+  },
+  "items": [
+    {
+      "queueId": "verne-001",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 1,
+      "paragraphZeroBased": 0,
+      "sceneId": "verne-ch01-color-saville-street",
+      "sourceExcerpt": "Mr. Phileas Fogg lived, in 1872, at No. 7, Saville Row",
+      "description": "Saville Row townhouse exterior, London 1872; do not claim an authenticated building facade.",
+      "altEn": "Modern colored Victorian interpretation of a Saville Row street exterior in 1872.",
+      "altAr": "رسم ملوّن حديث لشارع سافيل رو في لندن سنة 1872، دون توثيق الواجهة التاريخية للمنزل.",
+      "charactersPresent": [],
+      "forbiddenElements": [
+        "train station",
+        "Bombay",
+        "elephants",
+        "travel departure",
+        "hot air balloon",
+        "collage",
+        "printed lettering"
+      ],
+      "status": "existing_candidate_review",
+      "referenceBible": "docs/art-generation/character-bibles/verne-main-cast-v1.json",
+      "priorCandidate": "docs/art-generation/review/2026-11-10/verne-ch01-saville-house-full.webp"
+    },
+    {
+      "queueId": "verne-002",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 1,
+      "paragraphZeroBased": 19,
+      "sceneId": "verne-ch01-color-new-servant",
+      "sourceExcerpt": "A rap at this moment sounded on the door of the cosy apartment",
+      "description": "New servant Passepartout bows before seated Fogg as James Forster introduces him.",
+      "altEn": "Passepartout bows as he is introduced to the seated Phileas Fogg.",
+      "altAr": "باسبارتو ينحني أمام فيلياس فوغ الجالس في لحظة تقديم الخادم الجديد.",
+      "charactersPresent": [
+        "phileas-fogg",
+        "jean-passepartout"
+      ],
+      "forbiddenElements": [
+        "train station",
+        "Bombay",
+        "elephants",
+        "travel departure",
+        "hot air balloon",
+        "collage",
+        "printed lettering"
+      ],
+      "status": "ready_for_generation",
+      "referenceBible": "docs/art-generation/character-bibles/verne-main-cast-v1.json",
+      "priorCandidate": null
+    },
+    {
+      "queueId": "verne-003",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 2,
+      "paragraphZeroBased": 8,
+      "sceneId": "verne-ch02-color-clock-schedule",
+      "sourceExcerpt": "He suddenly observed, hung over the clock, a card",
+      "description": "Passepartout alone examines the daily schedule card above the clock in Fogg's house.",
+      "altEn": "Passepartout examines a household schedule card above the clock.",
+      "altAr": "باسبارتو يتفحص بطاقة جدول المهام اليومية المعلّقة فوق الساعة.",
+      "charactersPresent": [
+        "jean-passepartout"
+      ],
+      "forbiddenElements": [
+        "train station",
+        "Bombay",
+        "elephants",
+        "travel departure",
+        "hot air balloon",
+        "collage",
+        "printed lettering"
+      ],
+      "status": "ready_for_generation",
+      "referenceBible": "docs/art-generation/character-bibles/verne-main-cast-v1.json",
+      "priorCandidate": null
+    },
+    {
+      "queueId": "verne-004",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 3,
+      "paragraphZeroBased": 58,
+      "sceneId": "verne-ch03-color-wager",
+      "sourceExcerpt": "I will bet twenty thousand pounds against anyone who wishes",
+      "description": "Reform Club gentlemen and Fogg discuss his wager; no railway travel in this scene.",
+      "altEn": "Phileas Fogg calmly makes his wager before the gentlemen of the Reform Club.",
+      "altAr": "فيلياس فوغ يعلن رهانه بهدوء أمام أعضاء نادي الإصلاح.",
+      "charactersPresent": [
+        "phileas-fogg"
+      ],
+      "forbiddenElements": [
+        "events from other chapters",
+        "hot air balloon",
+        "collage",
+        "printed lettering"
+      ],
+      "status": "ready_for_generation",
+      "referenceBible": "docs/art-generation/character-bibles/verne-main-cast-v1.json",
+      "priorCandidate": null
+    },
+    {
+      "queueId": "verne-005",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 4,
+      "paragraphZeroBased": 18,
+      "sceneId": "verne-ch04-color-packing",
+      "sourceExcerpt": "He mechanically set about making the preparations for departure.",
+      "description": "Passepartout packs for his sudden journey in his London quarters.",
+      "altEn": "Passepartout prepares his belongings for an unexpected journey.",
+      "altAr": "باسبارتو يجهز أمتعته استعدادًا لرحلة مفاجئة.",
+      "charactersPresent": [
+        "jean-passepartout"
+      ],
+      "forbiddenElements": [
+        "events from other chapters",
+        "hot air balloon",
+        "collage",
+        "printed lettering"
+      ],
+      "status": "ready_for_generation",
+      "referenceBible": "docs/art-generation/character-bibles/verne-main-cast-v1.json",
+      "priorCandidate": null
+    },
+    {
+      "queueId": "verne-006",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 4,
+      "paragraphZeroBased": 20,
+      "sceneId": "verne-ch04-color-guide",
+      "sourceExcerpt": "Under his arm might have been observed a red-bound copy of Bradshaw’s",
+      "description": "Fogg holds his red-bound Bradshaw railway guide and carries a carpetbag before setting off.",
+      "altEn": "Phileas Fogg carries a red-bound railway timetable guide and a travel bag.",
+      "altAr": "فيلياس فوغ يحمل دليل مواعيد القطارات ذا الغلاف الأحمر وحقيبة السفر.",
+      "charactersPresent": [
+        "phileas-fogg"
+      ],
+      "forbiddenElements": [
+        "events from other chapters",
+        "hot air balloon",
+        "collage",
+        "printed lettering"
+      ],
+      "status": "ready_for_generation",
+      "referenceBible": "docs/art-generation/character-bibles/verne-main-cast-v1.json",
+      "priorCandidate": null
+    },
+    {
+      "queueId": "verne-007",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 5,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "verne-008",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 6,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "verne-009",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 7,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "verne-010",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 8,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "verne-011",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 9,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "verne-012",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 10,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "verne-013",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 11,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "verne-014",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 12,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "verne-015",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 13,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "verne-016",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 14,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "verne-017",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 15,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "verne-018",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 16,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "verne-019",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 17,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "verne-020",
+      "bookId": "around-the-world-in-eighty-days-towle",
+      "chapterOneBased": 18,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "sherlock-001",
+      "bookId": "a-study-in-scarlet",
+      "chapterOneBased": 1,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "sherlock-002",
+      "bookId": "a-study-in-scarlet",
+      "chapterOneBased": 2,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "sherlock-003",
+      "bookId": "a-study-in-scarlet",
+      "chapterOneBased": 3,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "sherlock-004",
+      "bookId": "a-study-in-scarlet",
+      "chapterOneBased": 4,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "sherlock-005",
+      "bookId": "a-study-in-scarlet",
+      "chapterOneBased": 5,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "sherlock-006",
+      "bookId": "a-study-in-scarlet",
+      "chapterOneBased": 6,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "sherlock-007",
+      "bookId": "a-study-in-scarlet",
+      "chapterOneBased": 7,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "sherlock-008",
+      "bookId": "a-study-in-scarlet",
+      "chapterOneBased": 8,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "sherlock-009",
+      "bookId": "a-study-in-scarlet",
+      "chapterOneBased": 9,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "sherlock-010",
+      "bookId": "a-study-in-scarlet",
+      "chapterOneBased": 10,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "arabian-001",
+      "bookId": "arabian-nights-burton-v01",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "arabian-002",
+      "bookId": "arabian-nights-burton-v01",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "arabian-003",
+      "bookId": "arabian-nights-burton-v01",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "arabian-004",
+      "bookId": "arabian-nights-burton-v01",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "arabian-005",
+      "bookId": "arabian-nights-burton-v01",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "arabian-006",
+      "bookId": "arabian-nights-burton-v01",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "arabian-007",
+      "bookId": "arabian-nights-burton-v01",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "arabian-008",
+      "bookId": "arabian-nights-burton-v01",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "arabian-009",
+      "bookId": "arabian-nights-burton-v01",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "arabian-010",
+      "bookId": "arabian-nights-burton-v01",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "kalila-001",
+      "bookId": "kalila-arabic-wikisource",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "kalila-002",
+      "bookId": "kalila-arabic-wikisource",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "kalila-003",
+      "bookId": "kalila-arabic-wikisource",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "kalila-004",
+      "bookId": "kalila-arabic-wikisource",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "kalila-005",
+      "bookId": "kalila-arabic-wikisource",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "kalila-006",
+      "bookId": "kalila-arabic-wikisource",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "kalila-007",
+      "bookId": "kalila-arabic-wikisource",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "kalila-008",
+      "bookId": "kalila-arabic-wikisource",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "kalila-009",
+      "bookId": "kalila-arabic-wikisource",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "kalila-010",
+      "bookId": "kalila-arabic-wikisource",
+      "chapterOneBased": null,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_chapter_segmentation"
+    },
+    {
+      "queueId": "monte-001",
+      "bookId": "the-count-of-monte-cristo",
+      "chapterOneBased": 1,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "monte-002",
+      "bookId": "the-count-of-monte-cristo",
+      "chapterOneBased": 2,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "monte-003",
+      "bookId": "the-count-of-monte-cristo",
+      "chapterOneBased": 3,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "monte-004",
+      "bookId": "the-count-of-monte-cristo",
+      "chapterOneBased": 4,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "monte-005",
+      "bookId": "the-count-of-monte-cristo",
+      "chapterOneBased": 5,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "monte-006",
+      "bookId": "the-count-of-monte-cristo",
+      "chapterOneBased": 6,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "monte-007",
+      "bookId": "the-count-of-monte-cristo",
+      "chapterOneBased": 7,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "monte-008",
+      "bookId": "the-count-of-monte-cristo",
+      "chapterOneBased": 8,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "monte-009",
+      "bookId": "the-count-of-monte-cristo",
+      "chapterOneBased": 9,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    },
+    {
+      "queueId": "monte-010",
+      "bookId": "the-count-of-monte-cristo",
+      "chapterOneBased": 10,
+      "paragraphZeroBased": null,
+      "sceneId": null,
+      "sourceExcerpt": null,
+      "status": "needs_source_verification"
+    }
+  ]
+}
