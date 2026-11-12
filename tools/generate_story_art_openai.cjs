@@ -11,6 +11,7 @@
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {run:loadQueue}=require('./story_art_pilot.cjs');
 const {run:loadColorQueue}=require('./prepare_color_scene_queue.cjs');
+const {verified:loadProductionQueue}=require('./story_art_queue_60.cjs');
 const ROOT=path.resolve(__dirname,'..');
 const MODEL_FLARE='gpt-image-2.6-flare',MODEL_DETAIL='gpt-image-2.6-sunburst';
 const REVIEW=path.join(ROOT,'docs/art-generation/review');
@@ -78,25 +79,27 @@ function parseResult(payload){
  return image;
 }
 function parseArgs(argv){
- const opts={model:MODEL_FLARE,execute:false,confirm:false,references:null,scene:null,colorScenes:false};
+ const opts={model:MODEL_FLARE,execute:false,confirm:false,references:null,scene:null,colorScenes:false,queueScenes:false};
  for(let i=0;i<argv.length;i++){
   const k=argv[i];
   if(k==='--scene')opts.scene=argv[++i];
   else if(k==='--model')opts.model=argv[++i];
   else if(k==='--references')opts.references=argv[++i];
   else if(k==='--color-scenes')opts.colorScenes=true;
+  else if(k==='--queue-scenes')opts.queueScenes=true;
   else if(k==='--execute')opts.execute=true;
   else if(k==='--confirm-paid')opts.confirm=true;
   else throw Error('Unknown argument '+k);
  }
- const verifiedPattern=opts.colorScenes?/^verne-ch0[1-4]-color-[a-z0-9-]+$/:/^verne-ch0[12]-[a-z0-9-]+$/;
+ if(opts.colorScenes&&opts.queueScenes)throw Error('Use one scene queue, not both');
+ const verifiedPattern=opts.queueScenes?/^verne-ch(?:0[5-9]|[12][0-9]|3[0-7])-color-[a-z0-9-]+$/:opts.colorScenes?/^verne-ch0[1-4]-color-[a-z0-9-]+$/:/^verne-ch0[12]-[a-z0-9-]+$/;
  if(typeof opts.scene!=='string'||!verifiedPattern.test(opts.scene))throw Error('Select one real --scene ID');
  if(opts.execute!==opts.confirm)throw Error('Paid execution requires BOTH --execute and --confirm-paid');
  return opts;
 }
 async function main(argv,transport=fetch){
  const opts=parseArgs(argv);
- const queue=opts.colorScenes?loadColorQueue(['--check']):loadQueue(['--check']);
+ const queue=opts.queueScenes?{queue:[...loadProductionQueue().colorMap.values()]}:opts.colorScenes?loadColorQueue(['--check']):loadQueue(['--check']);
  const scene=queue.queue.find(x=>x.sceneId===opts.scene);
  if(!scene)throw Error('Scene ID does not exist in the verified actual prose queue');
  const refs=readReferences(opts.references);
