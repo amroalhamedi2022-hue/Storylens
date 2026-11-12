@@ -6,6 +6,8 @@ on:
       - 'docs/art-generation/production-run-state.json'
       - 'docs/art-generation/character-bibles/**'
       - 'tools/story_art_queue_60.cjs'
+      - 'tools/generate_story_art_openai.cjs'
+      - 'tools/test_story_art_openai.cjs'
       - 'tools/test_story_art_queue_60.cjs'
       - 'tools/prepare_color_scene_queue.cjs'
       - 'docs/art-generation/visual-bibles/colored-victorian/next-scene-briefs.json'
@@ -16,6 +18,8 @@ on:
       - 'docs/art-generation/production-run-state.json'
       - 'docs/art-generation/character-bibles/**'
       - 'tools/story_art_queue_60.cjs'
+      - 'tools/generate_story_art_openai.cjs'
+      - 'tools/test_story_art_openai.cjs'
       - 'tools/test_story_art_queue_60.cjs'
       - 'tools/prepare_color_scene_queue.cjs'
       - 'docs/art-generation/visual-bibles/colored-victorian/next-scene-briefs.json'
@@ -41,4 +45,8 @@ jobs:
         run: node tools/test_story_art_queue_60.cjs
       - name: Verify bounded runnable queue
         run: node tools/story_art_queue_60.cjs --next
+      - name: Validate image API adapter without purchases
+        run: |
+          node tools/test_story_art_openai.cjs
+          node tools/generate_story_art_openai.cjs --queue-scenes --scene verne-ch05-color-telegram-arrives
 # This CI never invokes the images API, never stores API keys and never publishes art.
