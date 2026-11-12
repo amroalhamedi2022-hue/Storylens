@@ -104,16 +104,28 @@ function record(v,id,file){
  assert(item&&v.colorMap.has(item.sceneId),'unverified/unknown queue item');
  assert(!v.s.attempts[id]||v.s.attempts[id].status!=='rejected','rejected scene cannot silently be accepted as a new candidate');
  assert(!v.s.candidates.some(x=>x.queueId===id),'this scene was already recorded');
+ assert(!v.s.candidates.some(x=>x.sceneId===item.sceneId),'duplicate scene already recorded');
+ assert((v.s.attempts[id]?.status||item.status)==='ready_for_generation','not currently queued for generation');
  const full=safeRel(file);
  assert(full.startsWith(REVIEW+path.sep)&&full.endsWith('.webp'),'review WebP only; never Android assets');
+ const expected='docs/art-generation/review/'+item.bookId+'/'+item.sceneId+'.webp';
+ assert(file===expected,'image not saved at canonical scene path');
+ assert(fs.realpathSync(full)===full,'review image path has symlink or alias');
  const bytes=fs.readFileSync(full),dim=imageSize(bytes),hash=sha(bytes);
  const descriptor=json(full+'.review.json');
  assert(descriptor.sceneId===item.sceneId&&descriptor.bookId===item.bookId,'generator descriptor scene mismatch');
  assert(descriptor.outputSha256===hash&&HASH.test(hash),'file/descriptor SHA mismatch');
  assert(descriptor.sourceExcerpt===item.sourceExcerpt,'original quote mismatch');
- assert(descriptor.ownerImageApproved===false&&descriptor.releaseApproved===false,'auto-approval forbidden');
+ const verifiedScene=v.colorMap.get(item.sceneId);
+ assert(descriptor.sourceParagraphSha256===verifiedScene.sourceParagraphSha256,'original source paragraph hash mismatch');
+ assert(descriptor.promptSha256===sha(Buffer.from(verifiedScene.prompt,'utf8')),'generated prompt hash mismatch');
+ assert(descriptor.outputFile===file,'descriptor image path mismatch');
+ assert(descriptor.generated===true&&descriptor.sourceType==='AI_GENERATED_MODERN_COMPANION','descriptor is not a real generated image candidate');
+ assert(descriptor.ownerImageApproved===false&&descriptor.editoriallyApproved===false&&
+  descriptor.distributionReviewApproved===false&&descriptor.releaseApproved===false,'auto-approval forbidden');
+ assert(!v.s.candidates.some(x=>x.sha256===hash),'duplicate candidate image bytes');
  v.s.candidates.push({queueId:id,sceneId:item.sceneId,status:'generated_candidate',file:path.relative(ROOT,full).replaceAll(path.sep,'/'),sha256:hash,...dim,recordedAt:new Date().toISOString(),editoriallyApproved:false,ownerImageApproved:false,releaseApproved:false});
- v.s.attempts[id]={status:'generated_candidate',count:1,updatedAt:new Date().toISOString()};
+ v.s.attempts[id]={status:'generated_candidate',count:(v.s.attempts[id]?.count||0)+1,updatedAt:new Date().toISOString()};
  v.s.lastProcessedQueueId=id;
  v.s.lastSuccessfulImageAt=new Date().toISOString();
  writeAtomic(SPATH,v.s);
@@ -135,13 +147,29 @@ function reject(v,id,reason){
  writeAtomic(SPATH,v.s);
  return event;
 }
+function retry(v,id){
+ const i=v.q.items.find(x=>x.queueId===id);
+ assert(i&&v.colorMap.has(i.sceneId),'unverified/unknown queue item');
+ const old=v.s.attempts[id];
+ assert(old&&old.status==='rejected','scene must be explicitly rejected before retry');
+ assert(old.count===1,'one retry maximum; attempt budget exhausted');
+ assert(!v.s.candidates.some(x=>x.queueId===id),'cannot retry a generated candidate');
+ assert(!(v.s.priorFailures||[]).some(f=>f.sceneId===i.sceneId&&f.reason==='SCENE_PROMPT_NOT_BOUND'),'known-unbound prompt cannot be retried unchanged');
+ const ref=v.b.references;
+ if(i.charactersPresent.length&&(!ref?.ownerApproved||!ref?.manifestPath)) throw Error('CHARACTER_REFERENCE_NOT_APPROVED');
+ v.s.attempts[id]={...old,status:'ready_for_generation',updatedAt:new Date().toISOString(),retryPending:true};
+ writeAtomic(SPATH,v.s);
+ return {queueId:id,status:'ready_for_generation',retriesRemaining:0};
+}
 function produce(v){
  assert(process.env.STORY_ART_AUTOGEN_APPROVED==='yes','paid autonomous generation not explicitly authorized: no API call');
  assert(process.env.OPENAI_API_KEY&&process.env.STORY_ART_PAID_IMAGE_LIMIT==='1','missing scoped API key or per-run ONE-IMAGE payment limit');
  const task=next(v);
  if(!task.ready)return task;
  assert(task.referenceManifest&&task.charactersPresent.every(id=>v.b.continuity[id]?.approvedForCrossSceneReference===true),'unapproved named-character image references');
- const args=[path.join(ROOT,'tools/generate_story_art_openai.cjs'),'--color-scenes','--scene',task.sceneId,'--references',task.referenceManifest,'--execute','--confirm-paid'];
+ const args=[path.join(ROOT,'tools/generate_story_art_openai.cjs'),'--color-scenes','--scene',task.sceneId];
+ if(task.referenceManifest)args.push('--references',task.referenceManifest);
+ args.push('--execute','--confirm-paid');
  const result=child.spawnSync(process.execPath,args,{cwd:ROOT,stdio:'inherit',timeout:200000,env:process.env});
  if(result.status!==0){
   // Persist failure so the next hourly run does not repeat the same paid request indefinitely.
@@ -157,10 +185,11 @@ function main(args){
  else if(op==='--next')out=next(v);
  else if(op==='--record'){assert(args.length===3,'use --record <queueId> <file>');out=record(v,args[1],args[2]);}
  else if(op==='--reject'){assert(args.length===3,'use --reject <queueId> <UPPERCASE_REASON>');out=reject(v,args[1],args[2]);}
+ else if(op==='--retry'){assert(args.length===2,'use --retry <queueId>');out=retry(v,args[1]);}
  else if(op==='--produce')out=produce(v);
  else throw Error('unknown action '+op);
  console.log(JSON.stringify(out,null,2));
  return out;
 }
 if(require.main===module){try{main(process.argv.slice(2));}catch(e){console.error('QUEUE_BLOCKED: '+e.message);process.exitCode=1;}}
-module.exports={verified,next,status,imageSize,record,reject,main};
+module.exports={verified,next,status,imageSize,record,reject,retry,main};
