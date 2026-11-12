@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "queueVersion": "2026-11-13-v1",
+  "lastProcessedQueueId": null,
+  "lastSuccessfulImageAt": null,
+  "attempts": {},
+  "blocked": {},
+  "completed": [],
+  "candidates": [],
+  "rejections": [],
+  "priorFailures": [
+    {
+      "sceneId": "verne-ch02-color-clock-schedule",
+      "count": 2,
+      "reason": "SCENE_PROMPT_NOT_BOUND",
+      "detail": "2026-11-12 trial returned Bombay then London railway station instead of Passepartout alone with schedule card inside 1872 Saville Row house; both rejected; no repo upload"
+    }
+  ],
+  "policy": {
+    "retriesPerSceneMax": 1,
+    "neverOverwriteExistingImages": true,
+    "promptBindingRequired": true,
+    "candidateNotApproved": true,
+    "doNotAutoPublish": true
+  }
+}
