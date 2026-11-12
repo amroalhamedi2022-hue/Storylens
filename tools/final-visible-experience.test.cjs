@@ -35,6 +35,8 @@ for(const selector of [
 ])assert.ok(css.includes(selector),'missing final visible surface: '+selector);
 assert.match(css,/grid-template-columns:repeat\(auto-fit,minmax\(min\(100%,220px\),1fr\)\)/,
  'library uses a dense responsive cover-first shelf');
+assert.match(css,/>\.lt-novel-card:only-child\{grid-column:1\/-1!important;width:min\(100%,210px\)!important;justify-self:center!important\}/,
+ 'a filtered one-book phone shelf remains visually centred');
 assert.match(css,/font-size:clamp\(20px,1\.55vw,26px\)/,
  'reader body is visibly comfortable, not the old undersized text');
 assert.match(css,/\.lt-chapter-gallery-sheet\{overflow-y:auto!important/,
