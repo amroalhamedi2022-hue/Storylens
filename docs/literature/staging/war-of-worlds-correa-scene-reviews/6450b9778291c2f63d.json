@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_30.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-6450b9778291c2f6.webp",
+  "imageSha256": "ae8ddbab65e6cacdccddc449885783a3cd3a947a6270bc68e947505f9adf2478",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned illustration depicting a large, multi-legged mechanical tripod machine standing in a ruined or desolate urban landscape. The machine has a conical head with glowing circular apertures and long, segmented, tentacle-like appendages. In the background, there are silhouettes of birds flying over a crumbling stone wall and debris-strewn ground.",
+    "visualObjectsEn": "Mechanical tripod machine, segmented tentacles, glowing circular apertures, stone walls, rubble, debris, birds, wires or cables extending from the machine.",
+    "recognizableCharactersOrPeopleEn": "None.",
+    "uncertaintyNotes": "The image appears to be a vintage-style engraving or lithograph, but the exact medium and historical origin are not verifiable from the visual data alone. The scale and specific function of the machine are ambiguous."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 10,
+    "paragraphIndexZeroBased": 14,
+    "exactSourceQuotation": "Machine it was, with a ringing metallic pace, and long, flexible, glittering tentacles (one of which gripped a young pine tree) swinging and rattling about its strange body. It picked its road as it went striding along, and the brazen hood that surmounted it moved to and fro with the inevitable suggestion of a head looking about.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The description of the machine as a 'mechanical tripod' with 'long, flexible, glittering tentacles' and a 'brazen hood' that acts as a head matches the visual elements of the tripod machine in the engraving. The setting of 'ruined or desolate urban landscape' aligns with the context of the machine striding through the environment described in the source.",
+    "suggestedAltArNotApproved": "A sepia-toned engraving of a Martian fighting-machine, a tall tripod with a conical head and long, segmented tentacles, standing amidst the rubble of a ruined city.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The engraving clearly depicts the Martian fighting machine (the Thing) with its brazen hood, long flexible glittering tentacles swinging about, multi-legged structure, and mechanical body moving near a ruined setting, closely matching the detailed description in the passage.",
+    "visualContradictions": "None significant; the depiction strongly aligns with the specific visual elements mentioned in the text such as the tentacles, hood, and mechanical limbs.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_28.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-2d1d759aa541e0a2.webp",
+  "imageSha256": "5de44bcf140f2bcba67bf3c1170ba0692779ff5d6dc19136c6476c53046f3ba9",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A dark, atmospheric, and surreal etching depicting a narrow, deserted city street at night. The buildings are tall, multi-storied, and appear to be in a state of disrepair or construction, with ladders leaning against them. A massive, ghostly, or ethereal dome-like structure looms over the skyline, partially obscured by dark, swirling clouds or smoke. The street is paved with cobblestones, and the overall tone is somber and ominous.",
+    "visualObjectsEn": "Multi-storied buildings, ladders, street lamp, cobblestone street, large dome-like structure in the sky, dark clouds, windows with light emanating from them, debris on the ground.",
+    "recognizableCharactersOrPeopleEn": "No specific human figures are clearly visible in the street, though there are suggestions of presence in the illuminated windows.",
+    "uncertaintyNotes": "The nature of the large dome-like structure is ambiguous; it could be interpreted as a building, a celestial phenomenon, or a surreal manifestation. The exact historical origin or specific artistic style is not definitively identified, though it resembles 19th-century etching techniques."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 7,
+    "exactSourceQuotation": "great waves of sound sweeping down the broad, sunlit roadway, between the tall buildings on each side.",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The scene description of a narrow city street with tall, multi-storied buildings and a looming, ethereal structure aligns with the narrator's journey through the deserted, tall-building-lined streets of London in Chapter 25. While the text mentions 'sunlit', the etching's atmospheric, somber tone captures the eerie, deserted urban landscape described in this section of the narrative.",
+    "suggestedAltArNotApproved": "A deserted, narrow city street flanked by tall, multi-storied buildings, with a massive, ethereal dome-like structure looming in the dark, cloudy sky above.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a dark, deserted city street at night with tall buildings and a large dome-like structure in the sky, titled 'London deserted.'",
+    "visualContradictions": "The text describes a broad, sunlit roadway during daytime ('sunlit roadway', 'quick hiding was possible') while the image is clearly set at night with dark skies and lit windows. Furthermore, specific elements from the passage such as the overturned bus, skeleton of a horse, and the narrator walking towards Hyde Park and Exhibition Road are not depicted.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.95,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_31.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-e4fd756bd44c1e55.webp",
+  "imageSha256": "a462c9287b3d381431ebf1df60c36ab468701cd85a130df958c202b87431c42e",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A sepia-toned illustration depicting a city street scene where people are gathered to examine large, complex, metallic tripod-like machines and spherical objects. The machines are partially dismantled or stationary, with scaffolding and wires connecting them to surrounding buildings. People are seen climbing on the structures, inspecting the spherical components, and walking around the site.",
+    "visualObjectsEn": "Large tripod machines, spherical metallic pods, scaffolding, railway tracks, city buildings, wires, tools, debris.",
+    "recognizableCharactersOrPeopleEn": "A crowd of men, women, and children dressed in late 19th or early 20th-century attire, including hats and coats.",
+    "uncertaintyNotes": "The exact historical context or specific artistic source is not provided, though the style is consistent with early 20th-century science fiction illustration. The nature of the 'machines' is ambiguous and fantastical."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 27,
+    "paragraphIndexZeroBased": 11,
+    "exactSourceQuotation": "to see the sightseers about the Martian machine that stands there still",
+    "confidenceModelEstimateNotVerified": 0.85,
+    "modelRationaleNotVerified": "The illustration depicts a post-invasion scene where a crowd of people is gathered around a stationary, large metallic tripod machine, which aligns with the narrator's description of sightseers visiting the Martian machine on Primrose Hill in the final chapter.",
+    "suggestedAltArNotApproved": "A sepia-toned illustration showing a crowd of late 19th-century civilians gathered around a large, stationary Martian tripod machine on Primrose Hill, with city buildings in the background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows Londoners examining dead Martian machines and disassembled tripods in a narrow city street flanked by tall buildings, consistent with the aftermath of the invasion discussed broadly in the final chapter.",
+    "visualContradictions": "The passage specifically describes the narrator standing on Primrose Hill looking down at the province of houses and seeing sightseers about the Martian machine that stands there still on the hill. The engraving depicts a narrow urban street canyon with scaffolding and railway tracks rather than the open grassy expanse of Primrose Hill.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.85,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}

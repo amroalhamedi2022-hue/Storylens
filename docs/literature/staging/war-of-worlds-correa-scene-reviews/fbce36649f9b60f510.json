@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "AI_SCENE_SUGGESTION_NOT_RELEASE_APPROVED",
+  "workId": "wells-war-of-the-worlds-1898",
+  "originalCreator": "Henrique Alvim Corrêa (1876–1910)",
+  "historicIllustratedEdition": "La Guerre des mondes, Brussels 1906",
+  "individualSourceLicense": "Public domain",
+  "rightsStatus": "PENDING_TERRITORIAL_AND_EDITORIAL_REVIEW",
+  "originalIllustrationPage": "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa_29.jpg",
+  "imagePath": "docs/literature/staging/war-of-worlds-correa-period-plates/plates/war-correa-fbce36649f9b60f5.webp",
+  "imageSha256": "c87df49b263bf34346214488a1fcf6bf34586bd3b02febb551b3f840dc16eabf",
+  "sourceCorpusSha256": "e0b35c5cdac5398bee3bbe69b14d947714ea0f5b98a512236a73cfd1c7b680aa",
+  "publicationApproved": false,
+  "rightsVerifiedForTerritories": false,
+  "sceneMatchHumanApproved": false,
+  "dataInterpretation": "Model-suggested historical illustration scene, not a human-verified chapter map",
+  "visualDescription": {
+    "sceneDescriptionEn": "A monochromatic, detailed engraving depicting a desolate, rocky landscape with a large, metallic, tripod-like structure partially collapsed or dismantled. In the foreground, there is a circular opening in the ground and a large, riveted metal plate. In the background, a skeletal, tower-like structure stands against a hazy, mountainous backdrop. Small, dark, indistinct shapes are scattered across the ground.",
+    "visualObjectsEn": "Tripod machine, riveted metal plates, circular pit, skeletal tower, rocky terrain, debris, atmospheric haze.",
+    "recognizableCharactersOrPeopleEn": "None. The figures are indistinct, dark, and appear to be non-humanoid or mechanical in nature.",
+    "uncertaintyNotes": "The exact nature of the figures is ambiguous due to the artistic style; they could be interpreted as biological entities or mechanical components. The setting is speculative and science-fiction oriented."
+  },
+  "visionModel": "gemini-3.1-flash-lite",
+  "suggestedMatch": {
+    "chapterOneBased": 25,
+    "paragraphIndexZeroBased": 13,
+    "exactSourceQuotation": "I came upon the wrecked handling-machine halfway to St. John’s Wood station. At first I thought a house had fallen across the road. It was only as I clambered among the ruins that I saw, with a start, this mechanical Samson lying, with its tentacles bent and smashed and twisted, among the ruins it had made.",
+    "confidenceModelEstimateNotVerified": 0.9,
+    "modelRationaleNotVerified": "The engraving depicts a collapsed, metallic tripod-like structure in a desolate, ruined landscape, which aligns perfectly with the narrator's discovery of a 'wrecked handling-machine' amidst ruins in this passage.",
+    "suggestedAltArNotApproved": "A detailed engraving of a destroyed, metallic tripod machine lying amidst a desolate, rocky landscape with scattered debris and a skeletal tower in the background.",
+    "sceneVerificationStatus": "AI_PLUS_EXACT_TEXT_SUBSTRING_ONLY__IMAGE_HUMAN_REVIEW_PENDING"
+  },
+  "evidenceStatus": "SOURCE_QUOTE_EXISTS_BUT_IMAGE_MATCH_NOT_INDEPENDENTLY_CONFIRMED",
+  "sourceSelectionModel": "gemini-3.1-flash-lite",
+  "visualCrosscheck": {
+    "passesConservativeModelComparison": false,
+    "model": "gemini-3.5-flash-lite",
+    "specificVisibleEvidenceNotHumanVerified": "The image shows a large, wrecked mechanical structure, a circular pit, and debris in a desolate landscape, which generally aligns with the aftermath of the Martian invasion.",
+    "visualContradictions": "The passage specifically describes a wrecked handling-machine lying among ruins halfway to St. John's Wood station with bent, smashed, and twisted tentacles and a shattered forepart, whereas this illustration depicts a general industrial or pit-like landscape with skeletal structures that does not clearly capture the specific suburban street ruins or the specific mechanical Samson described in the text.",
+    "contradictionTextConservativelyCleared": false,
+    "confidenceSelfReported": 0.7,
+    "requiresHumanEditorialAndRightsReview": true
+  }
+}
