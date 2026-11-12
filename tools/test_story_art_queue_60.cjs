@@ -44,8 +44,10 @@ assert.throws(()=>reject(v,'verne-003','invalid lowercase'),/UPPERCASE_FAILURE_R
 assert.throws(()=>reject(v,'nonexistent-000','SCENE_MISMATCH'),/unverified\/unknown/);
 const rejectedCopy=structuredClone(v);
 rejectedCopy.s.attempts['verne-002']={status:'rejected',count:2,reason:'IMAGE_ADAPTER_FAILED'};
-assert.equal(next(rejectedCopy).blocks.some(x=>x.queueId==='verne-002'),false);
-assert.equal(next(rejectedCopy).ready,false);
+const afterReject=next(rejectedCopy);
+assert.equal(afterReject.ready,true);
+assert.equal(afterReject.queueId,'verne-007');
+assert.equal((afterReject.blocks||[]).some(x=>x.queueId==='verne-002'),false);
 // Negative tests must not mutate the real state.
 assert.throws(()=>retry(v,'verne-002'),/must be explicitly rejected/);
 const mocked={...v,s:{...v.s,attempts:{'verne-002':{status:'rejected',count:2}}}};
