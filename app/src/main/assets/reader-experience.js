@@ -746,17 +746,28 @@ function installPageTurn(){
    if(!chapter)return null;
    const preview=document.createElement('section');preview.className='lt-book-page lt-curl-boundary-preview';
    preview.inert=true;preview.setAttribute('aria-hidden','true');
-   const from=delta>0?0:Math.max(0,chapter.paragraphs.length-1);
-   // Bounded preview from real source, never a fabricated or full-novel snapshot.
-   for(const paragraph of chapter.paragraphs.slice(from,from+1)){
+   preview.dir=bindingRtl?'rtl':'ltr';preview.lang=bindingRtl?'ar':'en';
+   const title=document.createElement('h2');title.className='lt-chapter-paper-heading';
+   title.textContent=bindingRtl?(chapter.titleAr||chapter.title):(chapter.title||chapter.titleAr);
+   if(delta>0)preview.appendChild(title);
+   // Build the actual adjacent paper, not a one-paragraph teaser.  It remains
+   // inert and bounded to a single sheet, while using only the already-loaded
+   // authentic chapter source.  Previous-chapter previews fill from its end.
+   const source=delta>0?chapter.paragraphs:[...chapter.paragraphs].reverse();
+   sentenceBox.appendChild(preview);
+   const maxHeight=Math.max(260,pages[current]?.getBoundingClientRect?.().height||0);
+   for(const paragraph of source){
     const p=document.createElement('p');p.className='sentence';
     p.dir=bindingRtl?'rtl':'ltr';p.lang=bindingRtl?'ar':'en';
-    p.textContent=bindingRtl?paragraph.ar:paragraph.en;preview.appendChild(p);
+    p.textContent=bindingRtl?paragraph.ar:paragraph.en;
+    if(delta<0)preview.prepend(p);else preview.appendChild(p);
+    if(preview.scrollHeight>maxHeight+1){p.remove();break;}
    }
-   sentenceBox.appendChild(preview);boundaryPreview=preview;return preview;
+   boundaryPreview=preview;return preview;
   }
   curl=window.LinguaPageCurl.mount({host:sentenceBox,rtl:bindingRtl,
    allowed:target=>pageFoldStartAllowed(target,window.getSelection?.()?.toString()||''),
+   tapAllowed:target=>pageSwipeAllowed(target,window.getSelection?.()?.toString()||''),
    getTurn(delta){
     const target=current+delta*spread;
     const boundary=target<0||target>=pages.length;

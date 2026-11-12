@@ -1,19 +1,19 @@
 /* Only the paper renderer; shell themes and paper presets remain independent. */
-.reader #sentences.lt-curl-book{position:relative;isolation:isolate;touch-action:pan-y;display:grid;grid-template-columns:1fr;gap:0;direction:ltr;overflow:hidden;overflow:clip;overflow-clip-margin:0}
+.reader #sentences.lt-curl-book{position:relative;isolation:isolate;touch-action:pan-y;display:grid;grid-template-columns:1fr;gap:0;direction:ltr;overflow:hidden;overflow:clip;overflow-clip-margin:0;perspective:1800px}
 .reader #sentences.lt-curl-book[data-spread="2"]{grid-template-columns:1fr 1fr}
 .reader .lt-curl-book>.lt-book-page{box-sizing:border-box;width:100%;margin:0;min-width:0;border-radius:2px;min-height:min(72vh,850px);transform:none;animation:none}
 .reader .lt-curl-book>.lt-book-page.is-active{grid-row:1;grid-column:var(--lt-page-column,1)}
 .reader .lt-curl-book>.lt-book-page.lt-curl-under{display:block;position:absolute;top:0;left:var(--lt-under-left);width:var(--lt-under-width);z-index:0;pointer-events:none}
 .lt-curl-stage{position:absolute;z-index:5;pointer-events:none;transform-style:preserve-3d;direction:ltr}
 .lt-curl-facet{position:absolute;inset:0;transform-origin:0 0;transform-style:preserve-3d;will-change:transform;pointer-events:none}
-.lt-curl-front,.lt-curl-back{position:absolute;inset:0;backface-visibility:visible;background:var(--lt-curl-paper-image,none) var(--lt-curl-paper,#f7f1e3);overflow:hidden;box-shadow:inset 0 0 0 .6px #948774;transform:none}
+.lt-curl-front,.lt-curl-back{position:absolute;inset:0;backface-visibility:visible;background:var(--lt-curl-paper-image,none) var(--lt-curl-paper,#f7f1e3);overflow:hidden;box-shadow:none;transform:none}
 .lt-curl-back{transform:none}
 .lt-curl-front:after,.lt-curl-back:after{content:"";position:absolute;inset:0;background:var(--lt-curl-light);pointer-events:none}
 .lt-curl-ink{display:block!important;box-sizing:border-box;margin:0!important;min-height:0!important;border:0!important;position:absolute;inset:0;overflow:hidden;background:transparent!important;box-shadow:none!important}
 .lt-curl-ink:after{display:none!important}
 .lt-curl-back>.lt-curl-ink{transform:scaleX(-1)}
 .lt-curl-ghost{opacity:.07}
-.lt-curl-contact{position:absolute;top:0;height:100%;transform-origin:center;background:linear-gradient(90deg,transparent,rgba(27,22,17,.65),transparent);pointer-events:none}
+.lt-curl-contact{position:absolute;top:1%;height:98%;transform-origin:center;background:linear-gradient(90deg,transparent,rgba(27,22,17,.48),transparent);filter:blur(1.5px);pointer-events:none}
 @media (orientation:landscape) and (min-width:700px){.reader:has(.lt-curl-book) .reading-width{max-width:1500px!important;width:100%}}
 @media(prefers-reduced-motion:reduce){.lt-curl-stage{display:none}}
 
@@ -42,6 +42,26 @@
    again on a fake transparent back-face when there is no distinct verso. */
 .reader .lt-curl-ghost{opacity:0!important}
 .reader .lt-curl-contact{border-radius:100%;pointer-events:none}
+
+/* The page itself reads as one broad flexible leaf.  A subtle outside edge
+ * and gutter are painted on the static paper, while the moving mesh has no
+ * facet borders.  This removes the old striped triangular-fan appearance. */
+.reader #sentences.lt-curl-book>.lt-book-page{
+ border:1px solid color-mix(in srgb,var(--reader-ink,#493f33) 16%,transparent)!important;
+ box-shadow:0 14px 34px rgba(55,42,27,.13),inset 0 1px rgba(255,255,255,.64)!important;
+ overflow:hidden!important;
+}
+.reader #sentences.lt-curl-book[data-spread="2"]>.lt-book-page[style*="--lt-page-column: 1"]{
+ border-radius:8px 1px 1px 8px!important;
+ box-shadow:-10px 14px 28px rgba(55,42,27,.10),inset -18px 0 24px -24px rgba(38,28,18,.38)!important;
+}
+.reader #sentences.lt-curl-book[data-spread="2"]>.lt-book-page[style*="--lt-page-column: 2"]{
+ border-radius:1px 8px 8px 1px!important;
+ box-shadow:10px 14px 28px rgba(55,42,27,.10),inset 18px 0 24px -24px rgba(38,28,18,.38)!important;
+}
+.reader .lt-curl-boundary-preview .lt-chapter-paper-heading{
+ margin-block:0 1.1rem!important;font-size:clamp(1.35rem,3vw,2rem)!important;
+}
 @media(prefers-reduced-motion:reduce){
  .reader .lt-curl-stage{display:none!important}
 }

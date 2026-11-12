@@ -19,6 +19,8 @@
 
 # Lingua Tales — 49-issue reader and UI verification tracker (2026-11-10)
 
+> **12 November visible-correction addendum:** the owner rejected the prior signed build as looking unchanged. New mainline implementation now addresses #02/#03 by retaining a broad physical leaf instead of the recorded triangular spike, #12 with a 17%/64–112 px outer paper grab region plus safe margin tap, #13 with a real source-filled adjacent chapter sheet, #22 with 20–26 px responsive prose, and #38/#39/#40/#43/#44/#49 through one final loaded visual layer. These are **CODE PATCHED, not hardware accepted** until updated Chromium screenshots and Xiaomi Pad 5 testing pass. The addendum does not approve or add any source text/image.
+
 > **Scope:** A *visual/functional* defect ledger, NOT a cybersecurity assessment. Based on the user's 03:25.7 screen capture and source snapshot from 2026-11-09, reconciled with GitHub **main `ec026268aa1`** on 2026-11-10. The captured APK version was not proven identical to this SHA. **Source-code patches are NOT physical-device acceptance.** Nothing in this branch replaces genuine literature or releases unapproved artwork.
 
 ## Latest verified upstream before starting

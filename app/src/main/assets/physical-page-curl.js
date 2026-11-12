@@ -33,7 +33,11 @@ function geometry(width,height,distance,vertical,grabY,edge='right',segments=CUR
  // A ruled, tapered belly: the opposite edge lags behind the held corner.
  // As the sheet crosses the binding the taper relaxes into a complete turn.
  // All bands meet on the same surface; no separate rotating card or rolled tube.
- const taper=.88*Math.max(0,1-p/.72);
+ // Keep a broad physical leaf throughout the gesture.  The previous .88
+ // taper pinned almost the whole far edge and collapsed the visible paper
+ // into a long triangular spike.  Real paper still twists toward the held
+ // corner, but the opposite edge follows it instead of becoming a hinge.
+ const taper=.34*Math.max(0,1-p/.86);
  const slopeR=-r*taper/span,baseR=r-slopeR*vGrab;
  const slopeD=-length*taper/span,baseD=length-slopeD*vGrab;
  const crease=tip-baseD/2-Math.PI*baseR/2;
@@ -85,7 +89,7 @@ function shouldCommit(distance,width,velocity){
 }
 let turnSerial=0;
 function mount(options){
- const {host,rtl,getTurn,commit,allowed}=options;
+ const {host,rtl,getTurn,commit,allowed,tapAllowed=allowed}=options;
  const win=host.ownerDocument.defaultView,doc=host.ownerDocument;
  const reduced=win.matchMedia('(prefers-reduced-motion: reduce)');
  let hold=null,frame=0,dead=false,suppressUntil=0;
@@ -221,10 +225,15 @@ function mount(options){
   }
   if(hold)cancel('interrupted');
   const rect=host.getBoundingClientRect(),x=e.clientX-rect.left;
-  const edge=x<0||x>rect.width?null:x<=56?'left':rect.width-x<=56?'right':null;
+  // A full page has a forgiving outer margin, not a hidden 56 px sliver.
+  // Cap the zone so the middle remains available for vertical reading and
+  // dictionary interaction on both phones and wide two-page spreads.
+  const edgeZone=Math.min(112,Math.max(64,rect.width*.17));
+  const edge=x<0||x>rect.width?null:x<=edgeZone?'left':rect.width-x<=edgeZone?'right':null;
   if(!edge)return;
   const h=begin(edgeDelta(edge,rtl),edge,'gesture');if(!h)return;
   h.pointer=e.pointerId;h.startX=e.clientX;h.startY=e.clientY;h.grabY=clamp(e.clientY-h.top,0,h.height);h.lastAt=e.timeStamp;
+  h.downAt=e.timeStamp;h.tapEligible=!!tapAllowed(e.target);
  });
  // A second finger elsewhere (e.g. over an illustration) cancels as well.
  on(doc,'pointerdown',e=>{if(hold&&(e.isPrimary===false||(!hold.settling&&hold.pointer!==undefined&&e.pointerId!==hold.pointer)))cancel('second-pointer');},true);
@@ -242,7 +251,18 @@ function mount(options){
   h.distance=clamp(d,0,2*h.width);h.vertical=dy;suppressUntil=Date.now()+450;
   if(first)paint(h);else request();if(e.cancelable)e.preventDefault();
  },{passive:false});
- on(doc,'pointerup',e=>{if(hold?.pointer===e.pointerId){const h=hold;if(h.started)suppressUntil=Date.now()+450;const v=e.timeStamp-h.lastAt>100?0:h.velocity;settle(shouldCommit(h.distance,h.width,v));}},true);
+ on(doc,'pointerup',e=>{if(hold?.pointer===e.pointerId){
+  const h=hold;
+  // A short stationary tap in the outer paper margin is an intentional page
+  // turn.  Taps on dictionary words, controls and selections are excluded by
+  // tapAllowed, so first-party lookup keeps its normal single-tap behaviour.
+  if(!h.started&&h.tapEligible&&e.timeStamp-h.downAt<=320){
+   start(h);suppressUntil=Date.now()+450;settle(true);return;
+  }
+  if(h.started)suppressUntil=Date.now()+450;
+  const v=e.timeStamp-h.lastAt>100?0:h.velocity;
+  settle(shouldCommit(h.distance,h.width,v));
+ }},true);
  on(doc,'pointercancel',e=>{if(hold?.pointer===e.pointerId)cancel('pointercancel');},true);
  // Touch implicitly captures on the original child. Its bubbling loss during
  // transfer to host is expected; only a loss on our actual owner cancels.

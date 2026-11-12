@@ -17,10 +17,9 @@ from export_sign_four_original_source_for_art import collect
 
 ROOT = Path(__file__).resolve().parents[1]
 ART = ROOT / "docs/literature/staging/sign-four-townsend-1903-period-plates"
-engine.GALLERY = ART
-engine.OUTPUT = ROOT / "docs/literature/staging/sign-four-townsend-1903-scene-reviews"
-engine.WORK_ID = "the-sign-of-the-four"
-engine.EDITION_CONTEXT = (
+OUTPUT = ROOT / "docs/literature/staging/sign-four-townsend-1903-scene-reviews"
+WORK_ID = "the-sign-of-the-four"
+EDITION_CONTEXT = (
     "Compare an authentic Frederick Henry Townsend G. Newnes 1903 illustrated "
     "souvenir edition of The Sign of Four against the genuine complete 12-chapter "
     "1890 English Arthur Conan Doyle novel as pinned by Standard Ebooks. "
@@ -29,16 +28,30 @@ engine.EDITION_CONTEXT = (
     "visible objects/actions and a second independent skeptical vision check; "
     "otherwise reject. No historical page-placement, copyright or approvals."
 )
-engine.ORIGINAL_ARTIST = "Frederick Henry Townsend (1868–1920); per-file credits pending"
-engine.ILLUSTRATED_EDITION = (
+ORIGINAL_ARTIST = "Frederick Henry Townsend (1868–1920); per-file credits pending"
+ILLUSTRATED_EDITION = (
     "The Sign of Four, G. Newnes Ltd. 1903 illustrated souvenir edition; "
     "per-image territorial rights and scene identity require review"
 )
 
 
+def configure_engine() -> None:
+    """Restore this work's shared-engine state after other intake tests mutate it."""
+    engine.GALLERY = ART
+    engine.OUTPUT = OUTPUT
+    engine.WORK_ID = WORK_ID
+    engine.EDITION_CONTEXT = EDITION_CONTEXT
+    engine.ORIGINAL_ARTIST = ORIGINAL_ARTIST
+    engine.ILLUSTRATED_EDITION = ILLUSTRATED_EDITION
+
+
+configure_engine()
+
+
 
 def pending_scene_count() -> int:
     """Compute work locally; ZERO requests to Gemini if all images reviewed."""
+    configure_engine()
     archive = json.loads((ART / "manifest.json").read_text("utf-8"))
     count = 0
     for item in archive["images"]:
@@ -53,6 +66,7 @@ def pending_scene_count() -> int:
 
 
 def check() -> None:
+    configure_engine()
     doc = collect()
     archive = json.loads((ART / "manifest.json").read_text("utf-8"))
     assert doc["workId"] == engine.WORK_ID
@@ -81,6 +95,7 @@ if __name__ == "__main__":
         elif not 1 <= args.max_new <= 4:
             ap.error("--max-new must be 1..4")
         else:
+            configure_engine()
             if pending_scene_count() == 0:
                 print("All eight genuine Townsend images have review checkpoints; no Gemini API calls")
             else:

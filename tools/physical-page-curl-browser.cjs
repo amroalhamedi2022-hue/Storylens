@@ -90,6 +90,7 @@ const server=http.createServer((req,res)=>{
     await page.evaluate(()=>{window.dictionaryCalls=0;const original=wordSheet;wordSheet=function(a){dictionaryCalls++;return original(a)}});
     await page.locator('#sentences > .is-active .tok').first().click();
     assert.equal(await page.evaluate(()=>dictionaryCalls),1);assert.ok(await page.locator('#modals .sheet').count());
+   assert.equal(await page.evaluate(()=>LinguaReaderCurl.active),false,'dictionary taps never start a paper turn');
     await page.evaluate(()=>closeSheet());
    }
    // Reduced motion, chapter boundaries, restoration and end-of-book guards.
@@ -106,13 +107,11 @@ const server=http.createServer((req,res)=>{
    },{finalChapter:chapter==='last'});
    await openLastSheet('first');
    await gesture(0);
-   await page.waitForTimeout(250);
+   await page.waitForFunction(()=>state.chapter===1&&testEvents.some(e=>e.event==='commit'),{},{timeout:5000});
    assert.equal(await page.locator('#sentences > .lt-curl-boundary-preview').count(),0,
-    'a tap at the chapter edge leaves no orphaned preview');
-   assert.equal(await page.evaluate(()=>testEvents.length),0,'an edge tap does not start a turn');
-   await page.evaluate(()=>LinguaReaderCurl.turn(1,'keyboard'));
-   assert.equal(await page.evaluate(()=>state.chapter),1);
-   assert.equal(await page.evaluate(()=>testEvents.filter(e=>e.event==='commit').length),1,'cross-chapter commit reaches document even after old DOM removal');
+    'a chapter-edge tap commits and leaves no orphaned preview');
+   assert.equal(await page.evaluate(()=>testEvents.filter(e=>e.event==='commit').length),1,
+    'a short empty-margin tap turns the paper and crosses the chapter boundary');
    await page.evaluate(()=>LinguaReaderCurl.turn(-1,'keyboard'));
    assert.equal(await page.evaluate(()=>state.chapter),0);
    assert.equal(await page.evaluate(()=>testEvents.filter(e=>e.event==='commit').length),2);
