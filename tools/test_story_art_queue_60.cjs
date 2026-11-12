@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 const assert=require('node:assert/strict');
-const {verified,next,status,imageSize,main}=require('./story_art_queue_60.cjs');
+const {verified,next,status,imageSize,reject,main}=require('./story_art_queue_60.cjs');
 const v=verified();
 const counts=status(v);
 assert.equal(counts.total,60);
@@ -32,6 +32,8 @@ assert.equal(decision.reason,'PRECONDITIONS_NOT_MET');
 assert.ok(decision.blocks.some(x=>x.reason==='SCENE_PROMPT_NOT_BOUND'));
 assert.ok(decision.blocks.some(x=>x.reason==='CHARACTER_REFERENCE_NOT_APPROVED'));
 assert.throws(()=>imageSize(Buffer.from('image-but-not-webp')),/not substantial WebP/);
+assert.throws(()=>reject(v,'verne-003','invalid lowercase'),/UPPERCASE_FAILURE_REASON/);
+assert.throws(()=>reject(v,'nonexistent-000','SCENE_MISMATCH'),/unverified\/unknown/);
 const old=process.env.STORY_ART_AUTOGEN_APPROVED;
 delete process.env.STORY_ART_AUTOGEN_APPROVED;
 assert.throws(()=>main(['--produce']),/not explicitly authorized/);
