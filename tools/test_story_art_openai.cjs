@@ -39,4 +39,17 @@ assert.throws(()=>parseArgs(['--scene',ch3.sceneId]),/Select one real/);
 assert.throws(()=>parseArgs(['--color-scenes','--scene',ch3.sceneId,'--execute']),/BOTH/);
 assert.equal(buildRequest(ch3,'gpt-image-2.6-flare',[]).endpoint,'/v1/images/generations');
 assert.ok(ch3.prompt.includes('SINGLE-FRAME')&&ch3.sourceParagraphSha256.length===64);
+const {verified:productionVerified}=require('./story_art_queue_60.cjs');
+const production=productionVerified();
+const chapter5=production.colorMap.get('verne-ch05-color-telegram-arrives');
+if(chapter5){
+ assert.equal(chapter5.chapterOneBased,5);
+ assert.equal(chapter5.afterParagraph,8);
+ assert.ok(chapter5.prompt.includes('commissioner of police'));
+ assert.equal(parseArgs(['--queue-scenes','--scene',chapter5.sceneId]).queueScenes,true);
+ assert.equal(parseArgs(['--queue-scenes','--scene',chapter5.sceneId]).execute,false);
+ assert.throws(()=>parseArgs(['--color-scenes','--queue-scenes','--scene',chapter5.sceneId]),/one scene queue/);
+ assert.throws(()=>parseArgs(['--queue-scenes','--scene',chapter5.sceneId,'--execute']),/BOTH/);
+ assert.equal(buildRequest(chapter5,'gpt-image-2.6-flare',[]).endpoint,'/v1/images/generations');
+}
 console.log('PASS: one-scene paid-call opt-in, real source-only queue, API generation/reference payload, WebP bytes, no overwrite contract');
