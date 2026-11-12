@@ -1,0 +1,144 @@
+#!/usr/bin/env node
+/* Lingua Tales: bounded, fail-closed 60-scene queue runner.
+ * Usage: node tools/story_art_queue_60.cjs --check | --next | --produce | --record <queueId> <relative-WebP>
+ * --produce is PAID and impossible without explicit opt-in, API key AND approved, hashed visual references.
+ * Only review candidates may be recorded, never release approval or app assets.
+ */
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),child=require('node:child_process');
+const {run:readVerifiedColorQueue}=require('./prepare_color_scene_queue.cjs');
+const ROOT=path.resolve(__dirname,'..');
+const QPATH=path.join(ROOT,'docs/art-generation/production-queue-60.json');
+const SPATH=path.join(ROOT,'docs/art-generation/production-run-state.json');
+const BPATH=path.join(ROOT,'docs/art-generation/character-bibles/verne-main-cast-v1.json');
+const REVIEW=path.join(ROOT,'docs/art-generation/review');
+const ALLOWED=new Set(['existing_candidate_review','ready_for_generation','needs_source_verification','needs_chapter_segmentation']);
+const HASH=/^[0-9a-f]{64}$/i;
+function json(file){return JSON.parse(fs.readFileSync(file,'utf8'));}
+function assert(value,message){if(!value)throw Error(message);}
+function sha(bytes){return crypto.createHash('sha256').update(bytes).digest('hex');}
+function safeRel(file){assert(typeof file==='string'&&!path.isAbsolute(file)&&!file.includes('\\'),'unsafe relative path');const full=path.resolve(ROOT,file);assert(full.startsWith(ROOT+path.sep),'path escapes repository');return full;}
+function writeAtomic(file,data){const t=file+'.'+process.pid+'.tmp';fs.writeFileSync(t,JSON.stringify(data,null,2)+'\n',{flag:'wx'});fs.renameSync(t,file);}
+function verified(){
+ const q=json(QPATH),s=json(SPATH),b=json(BPATH);
+ assert(q.schemaVersion===1&&q.queueVersion===s.queueVersion,'queue/state version mismatch');
+ assert(Array.isArray(q.items)&&q.items.length===60,'queue must contain exactly 60 slots');
+ assert(s.schemaVersion===1&&typeof s.attempts==='object'&&Array.isArray(s.candidates),'invalid state');
+ assert(b.schemaVersion===1&&b.bibleId==='verne-main-cast-v1','character bible missing/version mismatch');
+ const checked=readVerifiedColorQueue(['--check']).queue;
+ const colorMap=new Map(checked.map(x=>[x.sceneId,x]));
+ const ids=new Set(),scenes=new Set();
+ for(const [index,i] of q.items.entries()){
+  assert(i&&typeof i.queueId==='string'&&/^[a-z]+-\d{3}$/.test(i.queueId)&&!ids.has(i.queueId),'invalid/duplicated queue id');
+  ids.add(i.queueId);
+  assert(ALLOWED.has(i.status),'unknown queue status '+i.queueId);
+  assert(typeof i.bookId==='string'&&i.bookId.length>8,'missing genuine book id');
+  assert(i.releaseApproved!==true&&i.editoriallyApproved!==true,'queue cannot auto-approve art');
+  if(index<6){
+   const color=colorMap.get(i.sceneId);
+   assert(color&&!scenes.has(i.sceneId),'missing/duplicated source-checked color scene');
+   scenes.add(i.sceneId);
+   assert(i.sourceExcerpt===color.sourceExcerpt&&i.chapterOneBased===color.chapterOneBased&&i.paragraphZeroBased===color.afterParagraph,'source anchor drift '+i.queueId);
+   assert(typeof i.altAr==='string'&&i.altAr.length>15&&typeof i.altEn==='string'&&i.altEn.length>15,'missing bilingual alt');
+   assert(Array.isArray(i.charactersPresent),'cast must be explicit');
+   assert(i.referenceBible==='docs/art-generation/character-bibles/verne-main-cast-v1.json','wrong bible');
+  }else{
+   assert(i.sceneId===null&&i.sourceExcerpt===null&&i.paragraphZeroBased===null,'unverified slots cannot claim invented passage/scene');
+   assert(i.status==='needs_source_verification'||i.status==='needs_chapter_segmentation','unverified scene promoted without evidence');
+  }
+ }
+ assert(s.candidates.every(x=>x&&HASH.test(x.sha256)&&x.status==='generated_candidate'),'state contains noncandidate/invalid hashes');
+ return {q,s,b,colorMap};
+}
+function status(v){
+ const c={total:60,sourceVerified:6,needsSource:0,needsSegmentation:0,ready:0,existingReview:0,generatedCandidate:v.s.candidates.length,rejected:v.s.rejections?.length||0,readerIntegrated:0};
+ for(const it of v.q.items){
+  const st=v.s.attempts[it.queueId]?.status||it.status;
+  if(st==='ready_for_generation')c.ready++;
+  if(st==='existing_candidate_review')c.existingReview++;
+  if(st==='needs_source_verification')c.needsSource++;
+  if(st==='needs_chapter_segmentation')c.needsSegmentation++;
+ }
+ return c;
+}
+function next(v){
+ const blocks=[];
+ for(const i of v.q.items){
+  const current=v.s.attempts[i.queueId]?.status||i.status;
+  if(current!=='ready_for_generation')continue;
+  if(v.s.candidates.some(c=>c.queueId===i.queueId)){blocks.push({queueId:i.queueId,reason:'ALREADY_GENERATED'});continue;}
+  const source=v.colorMap.get(i.sceneId);
+  if(!source){blocks.push({queueId:i.queueId,reason:'SOURCE_NOT_VERIFIED'});continue;}
+  if((v.s.priorFailures||[]).some(f=>f.sceneId===i.sceneId&&f.reason==='SCENE_PROMPT_NOT_BOUND')){blocks.push({queueId:i.queueId,reason:'SCENE_PROMPT_NOT_BOUND'});continue;}
+  if(i.charactersPresent.length>0){
+   const ref=v.b.references;
+   if(ref?.ownerApproved!==true||!ref.manifestPath){
+    blocks.push({queueId:i.queueId,reason:'CHARACTER_REFERENCE_NOT_APPROVED'});
+    continue;
+   }
+  }
+  return {ready:true,queueId:i.queueId,sceneId:i.sceneId,chapter:i.chapterOneBased,paragraphZeroBased:i.paragraphZeroBased,bookId:i.bookId,sourceExcerpt:i.sourceExcerpt,charactersPresent:i.charactersPresent,forbiddenElements:i.forbiddenElements,prompt:source.prompt,referenceManifest:v.b.references?.manifestPath||null,counts:status(v)};
+ }
+ return {ready:false,reason:blocks.length?'PRECONDITIONS_NOT_MET':'NO_VERIFIED_PENDING_WORK',blocks,counts:status(v)};
+}
+function imageSize(bytes){
+ assert(bytes.length>100000&&bytes.toString('ascii',0,4)==='RIFF'&&bytes.toString('ascii',8,12)==='WEBP','not substantial WebP data');
+ assert(bytes.readUInt32LE(4)+8===bytes.length,'RIFF length mismatch');
+ const kind=bytes.toString('ascii',12,16);
+ let w,h;
+ if(kind==='VP8X'){
+  w=bytes.readUIntLE(24,3)+1;h=bytes.readUIntLE(27,3)+1;
+ } else if(kind==='VP8 '){
+  assert(bytes[23]===0x9d&&bytes[24]===0x01&&bytes[25]===0x2a,'VP8 sync code missing');
+  w=bytes.readUInt16LE(26)&0x3fff;h=bytes.readUInt16LE(28)&0x3fff;
+ } else if(kind==='VP8L'){
+  assert(bytes[20]===0x2f,'VP8L signature missing');
+  const bits=bytes.readUInt32LE(21);w=(bits&0x3fff)+1;h=((bits>>>14)&0x3fff)+1;
+ } else throw Error('unknown WebP bitstream type');
+ assert(Math.min(w,h)>=640&&w*h>=614400&&w/h>=0.55&&w/h<=2.5,'image below acceptance dimensions or invalid aspect');
+ return {width:w,height:h};
+}
+function record(v,id,file){
+ const item=v.q.items.find(x=>x.queueId===id);
+ assert(item&&v.colorMap.has(item.sceneId),'unverified/unknown queue item');
+ assert(!v.s.candidates.some(x=>x.queueId===id),'this scene was already recorded');
+ const full=safeRel(file);
+ assert(full.startsWith(REVIEW+path.sep)&&full.endsWith('.webp'),'review WebP only; never Android assets');
+ const bytes=fs.readFileSync(full),dim=imageSize(bytes),hash=sha(bytes);
+ const descriptor=json(full+'.review.json');
+ assert(descriptor.sceneId===item.sceneId&&descriptor.bookId===item.bookId,'generator descriptor scene mismatch');
+ assert(descriptor.outputSha256===hash&&HASH.test(hash),'file/descriptor SHA mismatch');
+ assert(descriptor.sourceExcerpt===item.sourceExcerpt,'original quote mismatch');
+ assert(descriptor.ownerImageApproved===false&&descriptor.releaseApproved===false,'auto-approval forbidden');
+ v.s.candidates.push({queueId:id,sceneId:item.sceneId,status:'generated_candidate',file:path.relative(ROOT,full).replaceAll(path.sep,'/'),sha256:hash,...dim,recordedAt:new Date().toISOString(),editoriallyApproved:false,ownerImageApproved:false,releaseApproved:false});
+ v.s.attempts[id]={status:'generated_candidate',count:1,updatedAt:new Date().toISOString()};
+ v.s.lastProcessedQueueId=id;
+ v.s.lastSuccessfulImageAt=new Date().toISOString();
+ writeAtomic(SPATH,v.s);
+ return {recorded:true,queueId:id,status:'generated_candidate',sha256:hash,...dim};
+}
+function produce(v){
+ assert(process.env.STORY_ART_AUTOGEN_APPROVED==='yes','paid autonomous generation not explicitly authorized: no API call');
+ assert(process.env.OPENAI_API_KEY&&process.env.STORY_ART_PAID_IMAGE_LIMIT==='1','missing scoped API key or per-run ONE-IMAGE payment limit');
+ const task=next(v);
+ if(!task.ready)return task;
+ assert(task.referenceManifest&&task.charactersPresent.every(id=>v.b.continuity[id]?.approvedForCrossSceneReference===true),'unapproved named-character image references');
+ const args=[path.join(ROOT,'tools/generate_story_art_openai.cjs'),'--color-scenes','--scene',task.sceneId,'--references',task.referenceManifest,'--execute','--confirm-paid'];
+ const result=child.spawnSync(process.execPath,args,{cwd:ROOT,stdio:'inherit',timeout:200000,env:process.env});
+ assert(result.status===0,'image adapter failed; cannot claim generated image');
+ const file='docs/art-generation/review/'+task.bookId+'/'+task.sceneId+'.webp';
+ return record(v,task.queueId,file);
+}
+function main(args){
+ const op=args[0]||'--check';const v=verified();
+ let out;
+ if(op==='--check')out={ok:true,counts:status(v),releaseApproved:false};
+ else if(op==='--next')out=next(v);
+ else if(op==='--record'){assert(args.length===3,'use --record <queueId> <file>');out=record(v,args[1],args[2]);}
+ else if(op==='--produce')out=produce(v);
+ else throw Error('unknown action '+op);
+ console.log(JSON.stringify(out,null,2));
+ return out;
+}
+if(require.main===module){try{main(process.argv.slice(2));}catch(e){console.error('QUEUE_BLOCKED: '+e.message);process.exitCode=1;}}
+module.exports={verified,next,status,imageSize,record,main};
