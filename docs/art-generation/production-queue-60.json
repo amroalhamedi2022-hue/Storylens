@@ -164,10 +164,25 @@
       "queueId": "verne-007",
       "bookId": "around-the-world-in-eighty-days-towle",
       "chapterOneBased": 5,
-      "paragraphZeroBased": null,
-      "sceneId": null,
-      "sourceExcerpt": null,
-      "status": "needs_source_verification"
+      "paragraphZeroBased": 8,
+      "sceneId": "verne-ch05-color-telegram-arrives",
+      "sourceExcerpt": "The commissioner of police was sitting in his office at nine o’clock one evening",
+      "status": "ready_for_generation",
+      "description": "At nine in the evening in a historically plausible 1872 London police commissioner's office, an anonymous commissioner seated at his desk receives an urgent telegraphic dispatch placed into his hands; focus on the physical telegram, the desk and the recipient, without invented readable contents.",
+      "altEn": "A police commissioner receives a telegram at his London office in the evening, as the investigation into Phileas Fogg develops.",
+      "altAr": "مفوض شرطة يتسلم برقية مساءً داخل مكتبه في لندن مع تطور التحقيق المتعلق بفيلياس فوغ.",
+      "charactersPresent": [],
+      "forbiddenElements": [
+        "Phileas Fogg physically present",
+        "Jean Passepartout",
+        "train station",
+        "Bombay",
+        "elephant",
+        "hot air balloons",
+        "legible invented telegram message",
+        "collage"
+      ],
+      "referenceBible": "docs/art-generation/character-bibles/verne-main-cast-v1.json"
     },
     {
       "queueId": "verne-008",
