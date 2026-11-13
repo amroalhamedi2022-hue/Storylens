@@ -8,6 +8,7 @@ on:
       - 'tools/story_art_queue_60.cjs'
       - 'tools/generate_story_art_openai.cjs'
       - 'tools/test_story_art_openai.cjs'
+      - 'tools/test_story_art_end_to_end_mock.cjs'
       - 'tools/test_story_art_queue_60.cjs'
       - 'tools/prepare_color_scene_queue.cjs'
       - 'docs/art-generation/visual-bibles/colored-victorian/next-scene-briefs.json'
@@ -20,6 +21,7 @@ on:
       - 'tools/story_art_queue_60.cjs'
       - 'tools/generate_story_art_openai.cjs'
       - 'tools/test_story_art_openai.cjs'
+      - 'tools/test_story_art_end_to_end_mock.cjs'
       - 'tools/test_story_art_queue_60.cjs'
       - 'tools/prepare_color_scene_queue.cjs'
       - 'docs/art-generation/visual-bibles/colored-victorian/next-scene-briefs.json'
@@ -49,4 +51,6 @@ jobs:
         run: |
           node tools/test_story_art_openai.cjs
           node tools/generate_story_art_openai.cjs --queue-scenes --scene verne-ch05-color-telegram-arrives
+      - name: Mock complete binary/descriptor/queue path without network or payment
+        run: node tools/test_story_art_end_to_end_mock.cjs
 # This CI never invokes the images API, never stores API keys and never publishes art.
