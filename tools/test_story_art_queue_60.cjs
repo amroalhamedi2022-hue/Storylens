@@ -5,15 +5,15 @@ const {verified,next,status,imageSize,record,reject,retry,main}=require('./story
 const v=verified();
 const counts=status(v);
 assert.equal(counts.total,60);
-assert.equal(counts.sourceVerified,16);
+assert.equal(counts.sourceVerified,17);
 assert.equal(counts.existingReview,1);
-assert.equal(counts.ready,15);
-assert.equal(counts.needsSource,24);
+assert.equal(counts.ready,16);
+assert.equal(counts.needsSource,23);
 assert.equal(counts.needsSegmentation,20);
 assert.equal(counts.generatedCandidate,0);
 assert.equal(counts.readerIntegrated,0);
 assert.equal(v.q.items.length,new Set(v.q.items.map(x=>x.queueId)).size);
-for(const item of v.q.items.slice(16)){
+for(const item of v.q.items.slice(17)){
  assert.equal(item.sceneId,null);
  assert.equal(item.sourceExcerpt,null);
  assert.equal(item.paragraphZeroBased,null);
@@ -51,7 +51,7 @@ assert.equal(v.b.continuity['detective-fix'].approvedForCrossSceneReference,fals
 const tenth=v.q.items[9];
 assert.equal(tenth.queueId,'verne-010');
 assert.equal(tenth.chapterOneBased,8);
-assert.equal(tenth.paragraphZeroBased,17);
+assert.equal(tenth.paragraphZeroBased,18);
 assert.equal(tenth.sceneId,'verne-ch08-color-pocket-watch-suez');
 assert.equal(v.colorMap.get(tenth.sceneId).sourceExcerpt,tenth.sourceExcerpt);
 assert.equal(v.colorMap.get(tenth.sceneId).sourceParagraphSha256.length,64);
@@ -77,7 +77,7 @@ assert.ok(v.colorMap.get(twelfth.sceneId).prompt.includes('half-past four p.m.')
 const thirteenth=v.q.items[12];
 assert.equal(thirteenth.queueId,'verne-013');
 assert.equal(thirteenth.chapterOneBased,11);
-assert.equal(thirteenth.paragraphZeroBased,14);
+assert.equal(thirteenth.paragraphZeroBased,13);
 assert.equal(thirteenth.sceneId,'verne-ch11-color-forest-railway-halt');
 assert.deepEqual(thirteenth.charactersPresent,[]);
 assert.equal(v.colorMap.get(thirteenth.sceneId).sourceExcerpt,thirteenth.sourceExcerpt);
@@ -107,6 +107,23 @@ assert.equal(sixteenth.chapterOneBased,14);
 assert.equal(sixteenth.paragraphZeroBased,3);
 assert.equal(v.colorMap.get(sixteenth.sceneId).sourceExcerpt,sixteenth.sourceExcerpt);
 assert.ok(v.colorMap.get(sixteenth.sceneId).prompt.includes('Allahabad'));
+const seventeenth=v.q.items[16];
+assert.equal(seventeenth.queueId,'verne-017');
+assert.equal(seventeenth.chapterOneBased,15);
+assert.equal(seventeenth.paragraphZeroBased,4);
+assert.equal(v.colorMap.get(seventeenth.sceneId).sourceExcerpt,seventeenth.sourceExcerpt);
+assert.equal(v.colorMap.get(seventeenth.sceneId).sourceParagraphSha256.length,64);
+// All declared source-grounded scenes must hash to an actual chapter paragraph.
+// No duplicate source anchors, and reserved items must never be presented as generated.
+for(const it of v.q.items.filter(x=>x.sceneId&&x.status==='ready_for_generation')){
+ const proof=v.colorMap.get(it.sceneId);
+ assert.ok(proof,'missing original paragraph for '+it.queueId);
+ assert.equal(it.chapterOneBased,proof.chapterOneBased);
+ assert.equal(it.paragraphZeroBased,proof.afterParagraph);
+ assert.equal(it.sourceExcerpt,proof.sourceExcerpt);
+ assert.match(proof.sourceParagraphSha256,/^[0-9a-f]{64}$/);
+ assert.ok(proof.prompt.includes(it.description)||it.chapterOneBased<=4,'prompt missing scene detail '+it.queueId);
+}
 const decision=next(v);
 assert.equal(decision.ready,true);
 assert.equal(decision.queueId,'verne-007');
@@ -133,4 +150,4 @@ const old=process.env.STORY_ART_AUTOGEN_APPROVED;
 delete process.env.STORY_ART_AUTOGEN_APPROVED;
 assert.throws(()=>main(['--produce']),/not explicitly authorized/);
 if(old!==undefined)process.env.STORY_ART_AUTOGEN_APPROVED=old;
-console.log('PASS: 60 unique queue slots, 15 source-verified prompts incl. original chapter V, one unblocked environment scene, safety gates remain');
+console.log('PASS: 60 unique queue slots, 17 source-verified prompts including corrected chapter VIII and XI, one unblocked environment scene, safety gates remain');
