@@ -68,13 +68,14 @@ jobs:
             browser "$viewport" --screenshot="$PWD/qa-screenshots/visual-qa/reader/$size.png" "$source" > /dev/null 2>&1
             test -s "qa-screenshots/visual-qa/reader/$size.png"
           done
-          for direction in ltr rtl; do
-            source="file://$PWD/app/src/main/assets/qa-paper-fold-held-$direction.html"
-            browser '460,860' --dump-dom "$source" > "$RUNNER_TEMP/curl-$direction.html"
-            grep -Fq 'data-lt-held-fold-qa="PASS"' "$RUNNER_TEMP/curl-$direction.html"
-            browser '460,860' --screenshot="$PWD/qa-screenshots/visual-qa/curl/$direction-460x860.png" "$source" > /dev/null 2>&1
-            test -s "qa-screenshots/visual-qa/curl/$direction-460x860.png"
-          done
+          # Capture a truly held fold INSIDE the same live Playwright page.
+          # Chromium CLI re-launch loses the pointer-held paint state and makes
+          # misleading flat screenshots even when DOM assertions pass.
+          npm install --prefix /tmp/lt-visual-playwright --no-audit --no-fund playwright@1.56.1
+          NODE_PATH=/tmp/lt-visual-playwright/node_modules CHROME="$CHROME" \
+            CURL_SCREENSHOTS=qa-screenshots/visual-qa/curl node tools/physical-page-curl-browser.cjs
+          test -s qa-screenshots/visual-qa/curl/curl-ltr-portrait-held.png
+          test -s qa-screenshots/visual-qa/curl/curl-rtl-spread-held.png
       - name: Compare against owner-approved references (unapproved is PENDING, never PASS)
         run: |
           python tools/visual_qa.py \
