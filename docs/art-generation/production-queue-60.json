@@ -241,10 +241,30 @@
       "queueId": "verne-010",
       "bookId": "around-the-world-in-eighty-days-towle",
       "chapterOneBased": 8,
-      "paragraphZeroBased": null,
-      "sceneId": null,
-      "sourceExcerpt": null,
-      "status": "needs_source_verification"
+      "paragraphZeroBased": 18,
+      "sceneId": "verne-ch08-color-pocket-watch-suez",
+      "sourceExcerpt": "Passepartout pulled out his big watch.",
+      "status": "ready_for_generation",
+      "description": "On the Suez quay at noon in 1872, Passepartout pulls his large inherited pocket watch out while speaking with Detective Fix, who has just told him it is twelve o'clock; show their immediate interaction and the timepiece as the central object, no railway station, no train, no London setting, no invented dial numerals, no other recurring characters.",
+      "altEn": "On the Suez quay, Passepartout draws out his large pocket watch in surprise while talking with Detective Fix about the local time.",
+      "altAr": "على رصيف السويس يُخرج باسبارتو ساعته الكبيرة متعجبًا أثناء حديثه مع المحقق فيكس عن التوقيت المحلي.",
+      "charactersPresent": [
+        "jean-passepartout",
+        "detective-fix"
+      ],
+      "forbiddenElements": [
+        "Phileas Fogg present",
+        "London railway station",
+        "Bombay railway station",
+        "train",
+        "elephant",
+        "balloon",
+        "legible fabricated watch numerals",
+        "fictional police uniform",
+        "invented face for Detective Fix",
+        "collage"
+      ],
+      "referenceBible": "docs/art-generation/character-bibles/verne-main-cast-v1.json"
     },
     {
       "queueId": "verne-011",
