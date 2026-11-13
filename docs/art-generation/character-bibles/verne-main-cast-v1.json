@@ -29,6 +29,17 @@
       ],
       "approvedReferenceImage": null,
       "approvedForCrossSceneReference": false
+    },
+    "detective-fix": {
+      "sourceAppearance": "Detective Fix is the detective who proceeds along the Suez quay to the consul's office in Chapter VII. This passage does not establish eye color, hair color, age, or facial features; depict only a rear or distant figure until an original-text appearance reference and approved consistent visual reference are available. Period-appropriate 1872 civilian clothing; no invented uniform.",
+      "never": [
+        "invented facial identity",
+        "unverified eye or hair color",
+        "modern police uniform",
+        "appearing in London instead of Suez in Chapter VII"
+      ],
+      "approvedReferenceImage": null,
+      "approvedForCrossSceneReference": false
     }
   },
   "references": {
