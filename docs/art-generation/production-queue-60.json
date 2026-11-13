@@ -270,10 +270,26 @@
       "queueId": "verne-011",
       "bookId": "around-the-world-in-eighty-days-towle",
       "chapterOneBased": 9,
-      "paragraphZeroBased": null,
-      "sceneId": null,
-      "sourceExcerpt": null,
-      "status": "needs_source_verification"
+      "paragraphZeroBased": 1,
+      "sceneId": "verne-ch09-color-red-sea-storm",
+      "sourceExcerpt": "But the Red Sea is full of caprice, and often boisterous, like most long and narrow gulfs.",
+      "status": "ready_for_generation",
+      "description": "A single moment at sea aboard the steamship Mongolia in the Red Sea after leaving Suez in 1872: strong wind from one of the bordering coasts drives choppy waves against the long hull, visibly making the vessel roll. Exterior maritime view of the ship continuing towards the straits of Bab-el-Mandeb despite the wind and waves. No named passengers are depicted; avoid inventing a particular African or Asian coastline or a specific time of day.",
+      "altEn": "The steamship Mongolia rolls through rough Red Sea waves while continuing toward Bab-el-Mandeb.",
+      "altAr": "الباخرة منغوليا تتمايل وسط أمواج البحر الأحمر الهائجة وتواصل رحلتها نحو باب المندب.",
+      "charactersPresent": [],
+      "forbiddenElements": [
+        "Phileas Fogg visible on deck",
+        "Passepartout visible on deck",
+        "Detective Fix visible on deck",
+        "Bombay railway station",
+        "elephants",
+        "balloons",
+        "legible lettering",
+        "collage",
+        "invented precise coastline or daylight"
+      ],
+      "referenceBible": "docs/art-generation/character-bibles/verne-main-cast-v1.json"
     },
     {
       "queueId": "verne-012",
