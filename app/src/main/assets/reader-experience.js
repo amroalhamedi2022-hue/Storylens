@@ -555,7 +555,12 @@ function installPageTurn(){
  // The heading participates in the same fixed content box as the prose.
  const heading=width.querySelector(':scope > h2');
  const caption=width.querySelector(':scope > .reader-label');
- const pageHeight=Math.max(260,Math.min(850,Math.round((Number(window.innerHeight)||800)*.72)));
+ // A sheet's layout height must match its FINAL paper box. The old 72vh
+ // pagination budget produced short sheets while the later visual layer
+ // stretched them almost to the viewport, making folds clip or feel detached.
+ // Keep both faces the same measured size across phone and facing-spread modes.
+ const pageHeight=Math.max(260,Math.min(920,
+  Math.round((Number(window.innerHeight)||800)-(spread===2?82:118))));
  let built=ltMeasuredContentPages(sentenceBox,heading,caption,spread,pageHeight);
  // Range and TreeWalker are available in supported Android System WebViews.
  // Retain an honest scrollable fallback for an unusually old implementation.

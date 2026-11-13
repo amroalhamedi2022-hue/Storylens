@@ -119,17 +119,14 @@ function mount(options){
   const front=inertCopy(h.page),back=h.back?inertCopy(h.back):null;
   // Match computed paper padding/font; the copies inherit all reader language styles.
   for(const ink of [front,back].filter(Boolean))Object.assign(ink.style,{padding:style.padding,font:style.font,color:style.color,width:rect.width+'px',height:rect.height+'px'});
-  h.facets=[];
-  // Each facet's midpoint angle is fixed throughout a turn. It only ever
-  // shows one face, so mounting the other subtree doubles the DOM for no gain.
+  // Cloning an illustrated HTML page 22 times at pointer-lock stalled older
+  // Android WebViews before the first drawn frame. Allocate only the lightweight
+  // facet shells now; materialise each face once, when the crease exposes it.
+  // The live, interactive source DOM never gets cloned back into the reader.
+  h.frontTemplate=front;h.backTemplate=back;h.facets=[];
   for(let i=0;i<CURL_SEGMENTS+2;i++){
    const facet=doc.createElement('div');facet.className='lt-curl-facet';
-   const reverse=i>Math.ceil(CURL_SEGMENTS/2);
-   const face=doc.createElement('div');
-   face.className=reverse?'lt-curl-back':'lt-curl-front';
-   const ink=reverse?(back||front).cloneNode(true):front.cloneNode(true);
-   if(reverse&&!back)ink.classList.add('lt-curl-ghost');
-   face.append(ink);facet.append(face);stage.append(facet);h.facets.push(facet);
+   stage.append(facet);h.facets.push(facet);
   }
   const shadow=doc.createElement('div');shadow.className='lt-curl-contact';stage.prepend(shadow);h.shadow=shadow;
   h.stage=stage;host.append(stage);h.page.style.visibility='hidden';
@@ -142,6 +139,14 @@ function mount(options){
   g.facets.forEach((g,i)=>{
    const node=h.facets[i];
    if(g.polygon.length<3){node.style.display='none';return;}
+   if(!node.firstElementChild){
+    const reverse=i>Math.ceil(CURL_SEGMENTS/2);
+    const face=doc.createElement('div');
+    face.className=reverse?'lt-curl-back':'lt-curl-front';
+    const ink=(reverse?(h.backTemplate||h.frontTemplate):h.frontTemplate).cloneNode(true);
+    if(reverse&&!h.backTemplate)ink.classList.add('lt-curl-ghost');
+    face.append(ink);node.append(face);
+   }
    node.style.display='block';
    node.style.clipPath='polygon('+g.polygon.map(p=>p.x.toFixed(2)+'px '+p.y.toFixed(2)+'px').join(',')+')';
    node.style.transform='matrix3d('+g.matrix.map(x=>x.toFixed(6)).join(',')+')';
@@ -189,7 +194,7 @@ function mount(options){
   frame=0;const h=hold;if(!h)return;
   if(!host.isConnected||dead){cancel('detached');return;}
   if(h.settling){
-   const dt=h.time?Math.min(.032,(time-h.time)/1000):1/60;h.time=time;if(!h.startedAt)h.startedAt=time;h.elapsed=(time-h.startedAt)/1000;
+   const dt=h.time?clamp((time-h.time)/1000,0,.032):1/60;h.time=time;if(!h.startedAt)h.startedAt=time;h.elapsed=(time-h.startedAt)/1000;
    // Stable semi-implicit integration in <=8ms steps, independent of refresh rate.
    const steps=Math.ceil(dt/.008),step=dt/steps;
    for(let i=0;i<steps;i++){h.velocity+=((h.target-h.distance)*210-h.velocity*29)*step;h.distance=clamp(h.distance+h.velocity*step,0,2*h.width);}

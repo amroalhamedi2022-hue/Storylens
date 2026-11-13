@@ -32,6 +32,12 @@ const server=http.createServer((req,res)=>{
    assert.equal(await page.locator('#sentences').getAttribute('data-spread'),String(spread));
    assert.equal(await page.locator('#sentences > .is-active').count(),spread);
    const initial=await page.locator('#sentences > .is-active .sentence').first().getAttribute('data-i');
+   if(!landscape){
+    assert.ok(await page.locator('.lt-page-next').evaluate(node=>{
+     const style=getComputedStyle(node),rect=node.getBoundingClientRect();
+     return rect.width>=65&&rect.height>=38&&style.clipPath==='none';
+    }),'portrait navigation must be actually touchable, not visually clipped to 1px');
+   }
    async function gesture(distance,vertical=0,ending='pointerup',holdOnly=false){
     await page.evaluate(({rtl,distance,vertical,ending,holdOnly})=>{
      const box=document.querySelector('#sentences');box.scrollIntoView({block:'start',behavior:'instant'});
@@ -50,8 +56,14 @@ const server=http.createServer((req,res)=>{
    // Actual held mesh, source HTML, real underpage; save visual evidence.
    await gesture(.75,80,'pointerup',true);await page.waitForTimeout(80);
    assert.equal(await page.locator('.lt-curl-facet').count(),22);
-   assert.equal(await page.locator('.lt-curl-facet > :is(.lt-curl-front,.lt-curl-back)').count(),22,
-    'each geometric facet mounts only its visible face');
+   const painted=await page.evaluate(()=>{
+    const facets=[...document.querySelectorAll('.lt-curl-facet')];
+    return {visible:facets.filter(node=>node.style.display!=='none').length,
+     faces:facets.filter(node=>node.firstElementChild).length};
+   });
+   assert.ok(painted.visible>0,'a held page must reveal physical facets');
+   assert.equal(painted.faces,painted.visible,
+    'only visible paper facets allocate ink; no pre-cloned off-screen sheets');
    assert.ok(await page.evaluate(()=>{
     const r=document.querySelector('#sentences').getBoundingClientRect();
     return r.left>=-1&&r.right<=innerWidth+1&&Math.abs(scrollX)<1;
@@ -60,7 +72,8 @@ const server=http.createServer((req,res)=>{
    assert.equal(await page.locator('.lt-curl-stage .tok').count(),0,'no duplicate dictionary buttons');
    assert.equal(await page.locator('.lt-curl-stage [id]').count(),0,'no duplicate DOM identities');
    assert.ok(await page.evaluate(()=>{
-    const ink=document.querySelector('.lt-curl-facet:last-child .lt-curl-back .lt-curl-ink');
+    const ink=[...document.querySelectorAll('.lt-curl-facet .lt-curl-back .lt-curl-ink')]
+     .find(node=>node.parentElement.parentElement.style.display!=='none');
     const style=getComputedStyle(ink),width=ink.getBoundingClientRect().width;
     return ink.textContent.trim().length>10&&style.backfaceVisibility==='visible'&&parseFloat(style.transformOrigin)>0&&width>0;
    }),'reverse ink remains visible and reflected about the centre, not moved off paper');

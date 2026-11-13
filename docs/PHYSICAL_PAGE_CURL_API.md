@@ -121,3 +121,37 @@ there is no additional runtime licence dependency. turn.js was not used.
 - The existing Android workflow runs all Node/Android/Chromium checks and the new
   browser acceptance, uploading `StoryLens-UI-Screenshots`. Generated QA HTML and
   test screenshots are not added to Android runtime assets.
+
+
+## 13 November 2026 — eBook reader core stabilization (pending CI/device check)
+
+Source-based review considered `harism/android-pagecurl` (Apache-2.0, OpenGL ES),
+`eschao/android-PageFlip` (Apache-2.0, OpenGL ES),
+`oleksandrbalan/pagecurl` (Compose),
+`Nodlik/StPageFlip` (MIT, HTML), and the open Readium Mobile EPUB reading toolkit.
+This application renders live bilingual HTML in an offline Android WebView;
+switching to an EPUB/GLSurfaceView/Compose engine would replace the existing
+DOM dictionary, authentic illustration and saved-anchor pipeline. No foreign
+code, network asset, license-restricted renderer or binary was imported.
+
+This change fixes three direct integration faults instead:
+
+1. **First-frame responsiveness:** `makeVisual` builds the 22 extremely cheap
+   geometric facet shells, then `paint` creates a clipped ink copy **only**
+   when the facet's polygon intersects the sheet. Each visible face is copied
+   once and reused throughout that turn. The interactive original remains the
+   only dictionary/translation event target; invisible faces allocate no ink.
+2. **Physical paper dimensions:** measured pagination now uses the final
+   portrait/spread paper height (viewport minus the respective 118/82 px
+   reader furniture), rather than the old 72vh budget contradicting the final
+   CSS paper size. Orientation/font rebuilds still use paragraph anchors.
+3. **Recoverable navigation:** touch-sized Previous/Next buttons are visible in
+   portrait even if Android's system Back gesture consumes the outer edge.
+   The established on-demand landscape toolbar behavior is retained.
+
+No changes to app ID, signing, literary source, DRM, money/finance, text
+acquisition, licensed sounds, bookmarks, storage keys or offline policy.
+`tools/physical-page-curl-browser.cjs` checks that only intersecting facets
+materialize faces and that the portrait button can actually be tapped.
+Chromium, Android emulator and physical Xiaomi Pad 5 test outcomes must be
+reported separately; new source code is not itself proof of device acceptance.
