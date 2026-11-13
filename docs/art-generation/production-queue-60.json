@@ -241,7 +241,7 @@
       "queueId": "verne-010",
       "bookId": "around-the-world-in-eighty-days-towle",
       "chapterOneBased": 8,
-      "paragraphZeroBased": 18,
+      "paragraphZeroBased": 17,
       "sceneId": "verne-ch08-color-pocket-watch-suez",
       "sourceExcerpt": "Passepartout pulled out his big watch.",
       "status": "ready_for_generation",
