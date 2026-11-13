@@ -295,10 +295,28 @@
       "queueId": "verne-012",
       "bookId": "around-the-world-in-eighty-days-towle",
       "chapterOneBased": 10,
-      "paragraphZeroBased": null,
-      "sceneId": null,
-      "sourceExcerpt": null,
-      "status": "needs_source_verification"
+      "paragraphZeroBased": 4,
+      "sceneId": "verne-ch10-color-bombay-disembarkation",
+      "sourceExcerpt": "The passengers of the Mongolia went ashore at half-past four p.m.; at exactly eight the train would start for Calcutta.",
+      "status": "ready_for_generation",
+      "description": "A single historically grounded afternoon moment at the Bombay harbor in 1872: ordinary unnamed passengers from the steamship Mongolia disembark onto the shore at half-past four in the afternoon. Focus on the gangway, quayside and arriving passengers, not the later eight o'clock Calcutta train. No identifiable recurring protagonists and no speculative named port architecture.",
+      "altEn": "Unnamed passengers from the Mongolia disembark at Bombay harbor at half-past four in the afternoon, before the evening train to Calcutta.",
+      "altAr": "ينزل ركاب الباخرة منغوليا إلى رصيف ميناء بومباي عند الرابعة والنصف عصرًا، قبل موعد القطار المسائي إلى كلكتا.",
+      "charactersPresent": [],
+      "forbiddenElements": [
+        "Phileas Fogg identifiable in foreground",
+        "Passepartout identifiable in foreground",
+        "Detective Fix identifiable in foreground",
+        "Calcutta train already departing",
+        "railway platform",
+        "Suez harbor",
+        "Red Sea storm",
+        "elephant",
+        "balloon",
+        "legible ship lettering",
+        "collage"
+      ],
+      "referenceBible": "docs/art-generation/character-bibles/verne-main-cast-v1.json"
     },
     {
       "queueId": "verne-013",
