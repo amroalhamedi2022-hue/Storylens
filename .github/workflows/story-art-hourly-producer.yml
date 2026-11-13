@@ -1,5 +1,8 @@
 name: Lingua Tales — hourly image production (owner-authorized)
 on:
+  push:
+    paths:
+      - '.github/workflows/story-art-hourly-producer.yml'
   schedule:
     - cron: '43 * * * *'
   workflow_dispatch:
