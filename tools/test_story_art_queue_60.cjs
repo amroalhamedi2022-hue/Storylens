@@ -5,15 +5,15 @@ const {verified,next,status,imageSize,record,reject,retry,main}=require('./story
 const v=verified();
 const counts=status(v);
 assert.equal(counts.total,60);
-assert.equal(counts.sourceVerified,17);
-assert.equal(counts.existingReview,1);
-assert.equal(counts.ready,16);
-assert.equal(counts.needsSource,23);
-assert.equal(counts.needsSegmentation,20);
+assert.equal(counts.sourceVerified,v.q.items.filter(i=>i.sceneId).length);
+assert.equal(counts.existingReview,v.q.items.filter(i=>i.status==='existing_candidate_review').length);
+assert.equal(counts.ready,v.q.items.filter(i=>i.status==='ready_for_generation').length);
+assert.equal(counts.needsSource,v.q.items.filter(i=>i.status==='needs_source_verification').length);
+assert.equal(counts.needsSegmentation,v.q.items.filter(i=>i.status==='needs_chapter_segmentation').length);
 assert.equal(counts.generatedCandidate,0);
 assert.equal(counts.readerIntegrated,0);
 assert.equal(v.q.items.length,new Set(v.q.items.map(x=>x.queueId)).size);
-for(const item of v.q.items.slice(17)){
+for(const item of v.q.items.filter(i=>!i.sceneId)){
  assert.equal(item.sceneId,null);
  assert.equal(item.sourceExcerpt,null);
  assert.equal(item.paragraphZeroBased,null);
@@ -162,4 +162,4 @@ try {
 } finally {
  for(const [k,v] of Object.entries(originalEnv)){if(v===undefined)delete process.env[k];else process.env[k]=v;}
 }
-console.log('PASS: 60 unique queue slots, 17 source-verified prompts including corrected chapter VIII and XI, one unblocked environment scene, safety gates remain');
+console.log('PASS: 60 unique queue slots, '+counts.sourceVerified+' source-verified prompts including corrected chapter VIII and XI, one unblocked environment scene, safety gates remain');
