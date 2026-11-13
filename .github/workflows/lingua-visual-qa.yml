@@ -1,0 +1,108 @@
+name: Lingua Tales - Visual reference QA (browser evidence)
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/src/main/assets/**'
+      - 'tools/visual_qa.py'
+      - 'tools/test_visual_qa.py'
+      - 'tools/make_browser_fixtures.py'
+      - 'tools/make_chapter_gallery_browser_fixture.py'
+      - 'docs/qa/visual-references/**'
+      - '.github/workflows/lingua-visual-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lingua-visual-reference-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compare-real-browser-renders:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install screenshot comparator
+        run: python -m pip install Pillow==11.3.0
+      - name: Prove the comparator rejects visual errors and unapproved references
+        run: PYTHONPATH=tools python -m unittest discover -s tools -p 'test_visual_qa.py' -v
+      - name: Generate QA-only pages from the real app (never packaged in APK)
+        run: |
+          python tools/make_browser_fixtures.py
+          python tools/make_chapter_gallery_browser_fixture.py
+      - name: Capture real Chromium app scenes across phone and tablet layouts
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || true)"
+          test -n "$CHROME" || { echo '::error::Chromium missing'; exit 1; }
+          mkdir -p qa-screenshots/visual-qa/{gallery,reader,curl}
+          browser() {
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage \
+              --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
+              --virtual-time-budget=30000 --window-size="$1" "$2" "$3"
+          }
+          for size in 360x760 460x860 760x390 1280x840; do
+            viewport="${size/x/,}"
+            source="file://$PWD/app/src/main/assets/qa-chapter-gallery-journey.html"
+            browser "$viewport" --dump-dom "$source" > "$RUNNER_TEMP/gallery-$size.html"
+            grep -Fq 'data-lt-chapter-gallery-qa="PASS"' "$RUNNER_TEMP/gallery-$size.html"
+            grep -Fq 'data-lt-gallery-viewport-qa="PASS"' "$RUNNER_TEMP/gallery-$size.html"
+            browser "$viewport" --screenshot="$PWD/qa-screenshots/visual-qa/gallery/$size.png" "$source" > /dev/null 2>&1
+            test -s "qa-screenshots/visual-qa/gallery/$size.png"
+          done
+          for size in 460x860 1280x840; do
+            viewport="${size/x/,}"
+            source="file://$PWD/app/src/main/assets/qa-verne14.html"
+            browser "$viewport" --dump-dom "$source" > "$RUNNER_TEMP/reader-$size.html"
+            grep -Fq 'data-storylens-qa="PASS"' "$RUNNER_TEMP/reader-$size.html"
+            browser "$viewport" --screenshot="$PWD/qa-screenshots/visual-qa/reader/$size.png" "$source" > /dev/null 2>&1
+            test -s "qa-screenshots/visual-qa/reader/$size.png"
+          done
+          for direction in ltr rtl; do
+            source="file://$PWD/app/src/main/assets/qa-paper-fold-held-$direction.html"
+            browser '460,860' --dump-dom "$source" > "$RUNNER_TEMP/curl-$direction.html"
+            grep -Fq 'data-lt-held-fold-qa="PASS"' "$RUNNER_TEMP/curl-$direction.html"
+            browser '460,860' --screenshot="$PWD/qa-screenshots/visual-qa/curl/$direction-460x860.png" "$source" > /dev/null 2>&1
+            test -s "qa-screenshots/visual-qa/curl/$direction-460x860.png"
+          done
+      - name: Compare against owner-approved references (unapproved is PENDING, never PASS)
+        run: |
+          python tools/visual_qa.py \
+            --actual-dir qa-screenshots/visual-qa \
+            --references docs/qa/visual-references \
+            --out qa-reports/visual-qa
+      - name: Publish explicit visual reference status in job summary
+        if: always()
+        shell: bash
+        run: |
+          if test -f qa-reports/visual-qa/summary.json; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          s=json.load(open('qa-reports/visual-qa/summary.json',encoding='utf-8'))
+          print('### Lingua Tales Visual QA (Chromium, not device approval)')
+          print(f'**{s["overall"]}** — {s["counts"]}')
+          print('Unapproved screenshot references remain PENDING; browser screenshots do not certify the Android APK.')
+          PY
+          else
+            echo 'Visual capture or comparison FAILED before a report could be produced.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload actual screenshots, overlays, heatmaps and JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lingua-visual-reference-evidence
+          path: |
+            qa-screenshots/visual-qa/
+            qa-reports/visual-qa/
+          if-no-files-found: warn
+          retention-days: 30
