@@ -5,15 +5,15 @@ const {verified,next,status,imageSize,record,reject,retry,main}=require('./story
 const v=verified();
 const counts=status(v);
 assert.equal(counts.total,60);
-assert.equal(counts.sourceVerified,15);
+assert.equal(counts.sourceVerified,16);
 assert.equal(counts.existingReview,1);
-assert.equal(counts.ready,14);
-assert.equal(counts.needsSource,25);
+assert.equal(counts.ready,15);
+assert.equal(counts.needsSource,24);
 assert.equal(counts.needsSegmentation,20);
 assert.equal(counts.generatedCandidate,0);
 assert.equal(counts.readerIntegrated,0);
 assert.equal(v.q.items.length,new Set(v.q.items.map(x=>x.queueId)).size);
-for(const item of v.q.items.slice(15)){
+for(const item of v.q.items.slice(16)){
  assert.equal(item.sceneId,null);
  assert.equal(item.sourceExcerpt,null);
  assert.equal(item.paragraphZeroBased,null);
@@ -101,6 +101,12 @@ assert.deepEqual(fifteenth.charactersPresent,[]);
 assert.equal(v.colorMap.get(fifteenth.sceneId).sourceExcerpt,fifteenth.sourceExcerpt);
 assert.equal(v.colorMap.get(fifteenth.sceneId).sourceParagraphSha256.length,64);
 assert.ok(v.colorMap.get(fifteenth.sceneId).prompt.includes('pagoda of Pillaji'));
+const sixteenth=v.q.items[15];
+assert.equal(sixteenth.queueId,'verne-016');
+assert.equal(sixteenth.chapterOneBased,14);
+assert.equal(sixteenth.paragraphZeroBased,3);
+assert.equal(v.colorMap.get(sixteenth.sceneId).sourceExcerpt,sixteenth.sourceExcerpt);
+assert.ok(v.colorMap.get(sixteenth.sceneId).prompt.includes('Allahabad'));
 const decision=next(v);
 assert.equal(decision.ready,true);
 assert.equal(decision.queueId,'verne-007');
