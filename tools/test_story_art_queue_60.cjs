@@ -146,8 +146,20 @@ assert.throws(()=>retry(mocked,'verne-002'),/attempt budget exhausted/);
 const mockedOnce={...v,s:{...v.s,attempts:{'verne-002':{status:'rejected',count:1}}}};
 assert.throws(()=>retry(mockedOnce,'verne-002'),/CHARACTER_REFERENCE_NOT_APPROVED/);
 assert.throws(()=>record(v,'verne-002','docs/art-generation/review/wrong-dir/file.webp'),/ENOENT|canonical scene path/);
-const old=process.env.STORY_ART_AUTOGEN_APPROVED;
-delete process.env.STORY_ART_AUTOGEN_APPROVED;
-assert.throws(()=>main(['--produce']),/not explicitly authorized/);
-if(old!==undefined)process.env.STORY_ART_AUTOGEN_APPROVED=old;
+const originalEnv=Object.fromEntries(['STORY_ART_AUTOGEN_APPROVED','STORY_ART_PAID_IMAGE_LIMIT','STORY_ART_APPROVED_IMAGE_CAP','OPENAI_API_KEY'].map(k=>[k,process.env[k]]));
+try {
+ delete process.env.STORY_ART_AUTOGEN_APPROVED;
+ assert.throws(()=>main(['--produce']),/not explicitly authorized/);
+ process.env.STORY_ART_AUTOGEN_APPROVED='yes';
+ process.env.STORY_ART_PAID_IMAGE_LIMIT='1';
+ process.env.OPENAI_API_KEY='FAKE_KEY_NEVER_USED';
+ delete process.env.STORY_ART_APPROVED_IMAGE_CAP;
+ assert.throws(()=>main(['--produce']),/total image cap/);
+ process.env.STORY_ART_APPROVED_IMAGE_CAP='61';
+ assert.throws(()=>main(['--produce']),/between 1 and 60/);
+ process.env.STORY_ART_APPROVED_IMAGE_CAP='0';
+ assert.throws(()=>main(['--produce']),/total image cap/);
+} finally {
+ for(const [k,v] of Object.entries(originalEnv)){if(v===undefined)delete process.env[k];else process.env[k]=v;}
+}
 console.log('PASS: 60 unique queue slots, 17 source-verified prompts including corrected chapter VIII and XI, one unblocked environment scene, safety gates remain');
