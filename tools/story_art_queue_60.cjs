@@ -206,6 +206,11 @@ function retry(v,id){
 function produce(v){
  assert(process.env.STORY_ART_AUTOGEN_APPROVED==='yes','paid autonomous generation not explicitly authorized: no API call');
  assert(process.env.OPENAI_API_KEY&&process.env.STORY_ART_PAID_IMAGE_LIMIT==='1','missing scoped API key or per-run ONE-IMAGE payment limit');
+ const capRaw=process.env.STORY_ART_APPROVED_IMAGE_CAP;
+ assert(typeof capRaw==='string'&&/^[1-9][0-9]?$/.test(capRaw),'missing bounded owner-approved total image cap (1..60)');
+ const cap=Number(capRaw);
+ assert(cap>=1&&cap<=60,'owner-approved image cap must be between 1 and 60');
+ assert(v.s.candidates.length<cap,'owner-approved cumulative candidate cap reached; refuse paid generation');
  const task=next(v);
  if(!task.ready)return task;
  assert(!task.charactersPresent.length||(task.referenceManifest&&task.charactersPresent.every(id=>v.b.continuity[id]?.approvedForCrossSceneReference===true)),'unapproved named-character image references');
