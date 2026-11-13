@@ -213,10 +213,29 @@
       "queueId": "verne-009",
       "bookId": "around-the-world-in-eighty-days-towle",
       "chapterOneBased": 7,
-      "paragraphZeroBased": null,
-      "sceneId": null,
-      "sourceExcerpt": null,
-      "status": "needs_source_verification"
+      "paragraphZeroBased": 0,
+      "sceneId": "verne-ch07-color-fix-consulate",
+      "sourceExcerpt": "The detective passed down the quay, and rapidly made his way to the consul’s office",
+      "status": "ready_for_generation",
+      "description": "In 1872 Suez, a distant rear-view of Detective Fix hurrying along the quay toward the British consul's office, immediately before his meeting with the consul; one authentic period harbor approach with no identifiable face, no other recurring characters, and no depiction of later passport events.",
+      "altEn": "Detective Fix walks briskly along the Suez quay toward the consul's office, viewed from behind.",
+      "altAr": "المحقق فيكس يسير مسرعًا على رصيف السويس باتجاه مكتب القنصل، ويظهر من الخلف دون ملامح وجه مفترضة.",
+      "charactersPresent": [
+        "detective-fix"
+      ],
+      "forbiddenElements": [
+        "Phileas Fogg",
+        "Passepartout",
+        "passport stamping",
+        "Bombay railway station",
+        "hot air balloon",
+        "elephant",
+        "detective facial close-up",
+        "modern police uniform",
+        "legible invented signs",
+        "collage"
+      ],
+      "referenceBible": "docs/art-generation/character-bibles/verne-main-cast-v1.json"
     },
     {
       "queueId": "verne-010",
