@@ -1,0 +1,66 @@
+name: Lingua Tales — hourly image production (owner-authorized)
+on:
+  schedule:
+    - cron: '43 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: lingua-tales-story-art-production
+  cancel-in-progress: false
+jobs:
+  produce-one:
+    # Never pay for generation unless the owner explicitly enables BOTH cap and API access.
+    # Without these repository variables the job is SKIPPED, not a fake production success.
+    if: ${{ vars.LT_STORY_ART_PAID_APPROVED == 'yes' && vars.STORY_ART_APPROVED_IMAGE_CAP != '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      STORY_ART_AUTOGEN_APPROVED: 'yes'
+      STORY_ART_PAID_IMAGE_LIMIT: '1'
+      STORY_ART_APPROVED_IMAGE_CAP: ${{ vars.STORY_ART_APPROVED_IMAGE_CAP }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check owner authorization and source-gated production queue
+        shell: bash
+        run: |
+          test -n "$OPENAI_API_KEY" || { echo "::error::No owner-provided image API credential; no generation attempted"; exit 1; }
+          node tools/story_art_queue_60.cjs --check
+          node tools/test_story_art_queue_60.cjs
+          node tools/story_art_queue_60.cjs --next
+      - name: Produce exactly one review-only image
+        id: produce
+        shell: bash
+        run: |
+          node tools/story_art_queue_60.cjs --produce
+      - name: Commit ONLY new review assets and state, never release art
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/art-generation/production-run-state.json docs/art-generation/review/
+          if git diff --cached --quiet; then
+            echo 'No image candidate was created. Scene/reference/source gating is still blocking generation.'
+            exit 0
+          fi
+          git diff --cached --name-only
+          git commit -m 'Art: save one source-anchored, unapproved generated scene [skip ci]'
+          git push origin HEAD:main
+      - name: Keep unpublished output as recovery artifact if Git push fails
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lingua-story-art-unapproved-recovery-${{ github.run_id }}
+          path: |
+            docs/art-generation/production-run-state.json
+            docs/art-generation/review/**/*
+          if-no-files-found: ignore
+          retention-days: 7
+# No workflow step calls the Android packager or marks generated art release-approved.
