@@ -56,6 +56,37 @@ const server=http.createServer((req,res)=>{
    }),'GPU shader must NOT vertically invert printed pages');
 
    await page.waitForTimeout(350);
+   // The visible sheet is mutable (font, translation, colors, inline art).
+   // Verify cached GPU screenshots refresh rather than reusing stale ink.
+   const freshness=await page.evaluate(async()=>{
+    const v2=window.LinguaCurlV2,host=document.querySelector('#sentences');
+    const pages=[...host.querySelectorAll(':scope > .lt-book-page')]
+     .filter(node=>!node.classList.contains('lt-curl-snapshot-page'));
+    const front=pages.find(node=>node.classList.contains('is-active'));
+    const next=pages[pages.indexOf(front)+1];
+    if(!front||!next)throw new Error('No adjacent source page for texture QA');
+    const rect=front.getBoundingClientRect(),options={
+     win:window,host,page:front,back:next,width:rect.width,height:rect.height
+    };
+    const first=await v2.prime(options),before=v2.cacheStats();
+    const previous=front.style.color;
+    front.style.color='rgb(19, 86, 141)';
+    const second=await v2.prime(options),changed=v2.cacheStats();
+    if(previous)front.style.color=previous;
+    else front.style.removeProperty('color');
+    const restored=await v2.prime(options),after=v2.cacheStats();
+    const freed=v2.clearCache(),empty=v2.cacheStats();
+    return {first,second,restored,
+     before:before.snapshots,changed:changed.snapshots,after:after.snapshots,
+     bytes:after.estimatedBytes,freed,remaining:empty.pages};
+   });
+   assert.equal(freshness.first,true,'offline warmup must capture real pages');
+   assert.equal(freshness.second,true,'changing a page theme must recapture');
+   assert.equal(freshness.restored,true,'restoring theme must recapture');
+   assert.ok(freshness.changed>freshness.before,'stale theme cache must invalidate');
+   assert.ok(freshness.after>freshness.changed,'restored page texture must refresh');
+   assert.ok(freshness.bytes<=24*1024*1024,'bound idle snapshot memory');
+   assert.equal(freshness.remaining,0,'temporary GPU cache must be releasable');
    await page.evaluate(rtl=>{
     const host=document.querySelector('#sentences');host.scrollIntoView({block:'start',behavior:'instant'});
     const box=host.getBoundingClientRect();
