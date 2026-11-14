@@ -61,8 +61,8 @@ const server=http.createServer((req,res)=>{
       pen.fillRect(0,0,120,160);return sheet;
      };
      renderer.install(makeInk('#eb2222'),makeInk('#18eb18'));
-     const countFaces=edge=>{
-      renderer.draw(.72,.5,edge);
+     const countFaces=(edge,progress)=>{
+      renderer.draw(progress,.5,edge);
       const pixels=new Uint8Array(120*160*4);
       gl.readPixels(0,0,120,160,gl.RGBA,gl.UNSIGNED_BYTE,pixels);
       let front=0,verso=0;
@@ -74,14 +74,19 @@ const server=http.createServer((req,res)=>{
       }
       return {front,verso};
      };
-     const right=countFaces('right'),left=countFaces('left');
+     const phases=[.25,.38,.72];
+     const right=phases.map(progress=>({progress,...countFaces('right',progress)}));
+     const left=phases.map(progress=>({progress,...countFaces('left',progress)}));
      window.gpuVersoEvidence={right,left};
      return {orientation,right,left};
     }finally{renderer?.destroy();host.remove();}
    });
    assert.ok(faceProbe.orientation,'GPU source texture is vertically inverted: '+JSON.stringify(faceProbe));
-   assert.ok([faceProbe.right,faceProbe.left].every(face=>face.front>100&&face.verso>50),
-    'GPU curl must show distinct front and back textures: '+JSON.stringify(faceProbe));
+   assert.ok([faceProbe.right,faceProbe.left].every(phases=>
+    phases.some(face=>face.front>100)&&
+    phases.some(face=>face.verso>50)&&
+    phases.some(face=>face.front>100&&face.verso>50)),
+    'GPU must expose front, verso and a partly folded phase for BOTH edges: '+JSON.stringify(faceProbe));
 
    await page.waitForTimeout(350);
    // The visible sheet is mutable (font, translation, colors, inline art).
