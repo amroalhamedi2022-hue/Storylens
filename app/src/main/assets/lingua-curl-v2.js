@@ -350,7 +350,7 @@ function createSession({win,host,stage,page,back,width,height,onReady,onFailed})
  };
 }
 root.LinguaCurlV2={CurlSpringPhysics,createMesh,VERTEX_SHADER,FRAGMENT_SHADER,
- snapAllowed,createSession,prime,lastFailure:null};
+ snapAllowed,createSession,createRenderer:makeRenderer,prime,lastFailure:null};
 if(typeof module==='object'&&module.exports)
  module.exports={CurlSpringPhysics,createMesh,VERTEX_SHADER,FRAGMENT_SHADER};
 })(typeof window==='object'?window:globalThis);
