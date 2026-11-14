@@ -278,7 +278,24 @@ const server=http.createServer((req,res)=>{
    },rtl);
    await page.waitForTimeout(180);
    await page.evaluate(()=>smallPullRelease());
-   await page.waitForFunction(()=>!window.LinguaReaderCurl?.active,{},{timeout:5000});
+   // The integration job runs this after legacy browser/large-book rendering,
+   // which can heavily throttle compositor frames. Still insist on actual
+   // spring-back, no navigation and zero orphaned GPU surfaces.
+   try{
+    await page.waitForFunction(()=>!window.LinguaReaderCurl?.active,{},
+     {timeout:12000,polling:100});
+   }catch(e){
+    const state=await page.evaluate(()=>({
+     active:window.LinguaReaderCurl?.active,
+     events:window.turnEvents?.map(x=>x.name),
+     stages:document.querySelectorAll('.lt-curl-stage').length,
+     gpuReady:!!document.querySelector('.lt-curl-webgl-ready'),
+     gpuFailure:window.LinguaCurlV2?.lastFailure,
+     documentHidden:document.hidden
+    }));
+    throw new Error('GPU slow cancel did not settle under loaded Chromium: '+
+     JSON.stringify(state)+'; '+e.message);
+   }
    assert.equal(await page.evaluate(()=>turnEvents.filter(x=>x.name==='commit').length),2,
     'slow incomplete fold must cancel instead of moving to next page');
    assert.equal(await page.locator('.lt-curl-stage').count(),0,
