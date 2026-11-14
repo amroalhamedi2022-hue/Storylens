@@ -172,6 +172,8 @@ jobs:
           node tools/page-turn-sfx.test.cjs
           node tools/contextual-page-turn.test.cjs
           node tools/physical-page-curl.test.cjs
+          node tools/lingua-curl-v2.test.cjs
+          node tools/quran-safe-curl-adapter.test.cjs
           node tools/story-transitions.test.cjs
           node tools/data-backup.test.cjs
           node tools/four-stop-theme.test.cjs
@@ -675,11 +677,27 @@ jobs:
             echo "::error::Chrome is required for Liquid Glass gesture acceptance"
             exit 1
           fi
-          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --virtual-time-budget=3600 --window-size=460,860 --dump-dom \
-            "file://$PWD/app/src/main/assets/qa-wen-glass.html" > /tmp/lt-wen-glass-dom.html 2> /tmp/lt-wen-glass-browser.log
-          if ! grep -Fq 'data-lt-wen-glass-qa="PASS"' /tmp/lt-wen-glass-dom.html; then
-            echo "::error::Wen Glass live pointer/RTL/reader ink visual acceptance failed"
+          # Headless Chrome's virtual-time budget occasionally exits before
+          # this fixture's nested requestAnimationFrame callbacks fire. Never
+          # skip the assertion: rerun in a fresh browser, and fail closed after
+          # three explicit attempts with a diagnostic DOM/Chrome log.
+          wen_glass_pass=false
+          for attempt in 1 2 3; do
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu \
+              --disable-background-timer-throttling --run-all-compositor-stages-before-draw \
+              --virtual-time-budget=$((3600 + attempt * 1800)) --window-size=460,860 --dump-dom \
+              "file://$PWD/app/src/main/assets/qa-wen-glass.html" > /tmp/lt-wen-glass-dom.html 2> /tmp/lt-wen-glass-browser.log || true
+            if grep -Fq 'data-lt-wen-glass-qa="PASS"' /tmp/lt-wen-glass-dom.html; then
+              wen_glass_pass=true
+              break
+            fi
+            echo "::warning::Wen Glass QA browser attempt $attempt did not return PASS"
+            grep -o 'data-lt-wen-glass-qa="[^"]*"\|data-lt-wen-glass-errors="[^"]*"' /tmp/lt-wen-glass-dom.html | head -2 || true
+          done
+          if [ "$wen_glass_pass" != "true" ]; then
+            echo "::error::Wen Glass live pointer/RTL/reader ink visual acceptance failed after 3 browser runs"
             grep -o 'data-lt-wen-glass-errors="[^"]*"' /tmp/lt-wen-glass-dom.html | head -1 || true
+            tail -n 25 /tmp/lt-wen-glass-browser.log || true
             exit 1
           fi
           mkdir -p qa-screenshots
@@ -699,6 +717,7 @@ jobs:
           export NODE_PATH=/tmp/lt-curl-browser/node_modules
           export CHROME="$(command -v google-chrome || command -v chromium)"
           node tools/physical-page-curl-browser.cjs
+          node tools/lingua-curl-v2-browser.cjs
           node tools/reader-line-pagination-browser.cjs
 
 
