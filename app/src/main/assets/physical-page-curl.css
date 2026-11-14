@@ -72,3 +72,28 @@
 .reader #sentences.lt-curl-book>.lt-book-page.lt-curl-blank-under:not(.lt-curl-under){
  display:none!important;
 }
+
+
+/* Continuous GPU curl: single canvas replaces the segmented HTML strips only
+ * after both real page textures are ready. Snapshot sources are invisible in
+ * the active DOM, but html2canvas makes them visible in its isolated clone. */
+.reader .lt-curl-stage .lt-curl-webgl {
+ position:absolute!important;inset:0!important;
+ display:block;width:100%;height:100%;z-index:4;
+ pointer-events:none;touch-action:none;
+ background:transparent;box-shadow:none;border:0;
+}
+.reader .lt-curl-stage .lt-curl-webgl[hidden]{display:none!important}
+.reader .lt-curl-stage.lt-curl-webgl-ready>.lt-curl-facet,
+.reader .lt-curl-stage.lt-curl-webgl-ready>.lt-curl-contact {
+ display:none!important;
+}
+.reader #sentences.lt-curl-book>.lt-book-page.lt-curl-snapshot-page{
+ position:absolute!important;left:0!important;top:0!important;
+ display:block!important;visibility:hidden!important;
+ overflow:hidden!important;pointer-events:none!important;
+ box-shadow:none!important;border:0!important;
+}
+.reader #sentences.lt-curl-book>.lt-book-page.lt-curl-snapshot-page::after{
+ display:none!important;
+}
