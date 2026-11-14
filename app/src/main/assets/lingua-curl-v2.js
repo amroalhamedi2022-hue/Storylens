@@ -147,6 +147,7 @@ let snapshotSerial=0;
 const snapshotCache=new Map();
 const MAX_CACHED_PAGES=4;
 const MAX_CACHE_BYTES=24*1024*1024;
+let snapshotBuilds=0;
 function snapshotSignature(win,source){
  const doc=source.ownerDocument,style=win.getComputedStyle(source);
  const reader=source.closest?.('.reader');
@@ -157,7 +158,7 @@ function snapshotSignature(win,source){
   return 'dynamic:'+node.tagName;
  });
  return [
-  source.textContent||'',source.className||'',
+  source.innerHTML||source.textContent||'',source.className||'',
   doc.documentElement.className||'',doc.body?.className||'',
   reader?.className||'',
   style.font,style.padding,style.color,style.lineHeight,style.textAlign,
@@ -200,6 +201,7 @@ async function cachedPage(win,host,source,width,height,scale,dead){
  }
  snapshotCache.delete(source);
  const row={width,height,scale,signature,promise:null};
+ snapshotBuilds++;
  row.promise=capturePage(win,host,source,width,height,scale,
   ()=>!host.isConnected).then(canvas=>{
    if(snapshotSignature(win,source)!==signature){
@@ -217,12 +219,16 @@ async function cachedPage(win,host,source,width,height,scale,dead){
  return canvas;
 }
 function prime({win,host,page,back,width,height}){
- if(!snapAllowed(win)||!page||!back||!host.isConnected)return;
+ if(!snapAllowed(win)||!page||!back||!host.isConnected)
+  return Promise.resolve(false);
  const scale=rasterScale(win,width,height);
- // Run off the input path. Failed snapshots do not affect reading.
- Promise.resolve().then(()=>cachedPage(win,host,page,width,height,scale,()=>false))
+ // Run off the input path. Failed prewarming never blocks a real turn.
+ return Promise.resolve().then(()=>cachedPage(win,host,page,width,height,scale,()=>false))
   .then(()=>cachedPage(win,host,back,width,height,scale,()=>false))
-  .catch(error=>{root.LinguaCurlV2.lastFailure=String(error);});
+  .then(()=>true).catch(error=>{
+   root.LinguaCurlV2.lastWarmupWarning=String(error);
+   return false;
+  });
 }
 async function capturePage(win,host,source,width,height,scale,disposed){
  if(!source)throw new Error('No paper face to rasterize');
@@ -356,6 +362,7 @@ function makeRenderer(win,stage,width,height){
 }
 function createSession({win,host,stage,page,back,width,height,onReady,onFailed}){
  if(!snapAllowed(win))return null;
+ root.LinguaCurlV2.lastFailure=null;
  let disposed=false,renderer;
  try{renderer=makeRenderer(win,stage,width,height);}
  catch(e){root.LinguaCurlV2.lastFailure=String(e);return null;}
@@ -397,8 +404,9 @@ root.LinguaCurlV2={CurlSpringPhysics,createMesh,VERTEX_SHADER,FRAGMENT_SHADER,
  snapAllowed,createSession,createRenderer:makeRenderer,prime,clearCache,
  snapshotSignature,cacheStats:()=>({
   pages:snapshotCache.size,
+  snapshots:snapshotBuilds,
   estimatedBytes:Array.from(snapshotCache.values()).reduce((n,row)=>n+cacheBytes(row),0)
- }),lastFailure:null};
+ }),lastFailure:null,lastWarmupWarning:null};
 if(typeof module==='object'&&module.exports)
  module.exports={CurlSpringPhysics,createMesh,VERTEX_SHADER,FRAGMENT_SHADER};
 })(typeof window==='object'?window:globalThis);
