@@ -34,7 +34,7 @@ const server=http.createServer((req,res)=>{
    // Regression: an earlier GPU upload flipped EVERY printed line vertically
    // despite all gesture and transaction tests passing. Check actual shader
    // pixels: the TOP of the paper must retain its TOP source texels.
-   assert.ok(await page.evaluate(()=>{
+   const faceProbe=await page.evaluate(()=>{
     const mod=window.LinguaCurlV2,host=document.createElement('div');
     host.style.cssText='position:absolute;left:0;top:0;pointer-events:none';
     document.body.append(host);
@@ -51,9 +51,42 @@ const server=http.createServer((req,res)=>{
       bottom=new Uint8Array(4);
      gl.readPixels(60,140,1,1,gl.RGBA,gl.UNSIGNED_BYTE,top);
      gl.readPixels(60,20,1,1,gl.RGBA,gl.UNSIGNED_BYTE,bottom);
-     return top[0]>top[2]*1.5&&bottom[2]>bottom[0]*1.5;
+     const orientation=top[0]>top[2]*1.5&&bottom[2]>bottom[0]*1.5;
+     // Both textures must actually appear. A green verso cannot be replaced
+     // by a mirrored red front or a blank strip with a passing gesture test.
+     const makeInk=color=>{
+      const sheet=document.createElement('canvas');
+      sheet.width=120;sheet.height=160;
+      const pen=sheet.getContext('2d');pen.fillStyle=color;
+      pen.fillRect(0,0,120,160);return sheet;
+     };
+     renderer.install(makeInk('#eb2222'),makeInk('#18eb18'));
+     const countFaces=(edge,progress)=>{
+      renderer.draw(progress,.5,edge);
+      const pixels=new Uint8Array(120*160*4);
+      gl.readPixels(0,0,120,160,gl.RGBA,gl.UNSIGNED_BYTE,pixels);
+      let front=0,verso=0;
+      for(let i=0;i<pixels.length;i+=4){
+       const red=pixels[i],green=pixels[i+1],blue=pixels[i+2],alpha=pixels[i+3];
+       if(alpha<80)continue;
+       if(red>green*1.7&&red>blue*1.7)front++;
+       if(green>red*1.7&&green>blue*1.7)verso++;
+      }
+      return {front,verso};
+     };
+     const phases=[.25,.38,.72];
+     const right=phases.map(progress=>({progress,...countFaces('right',progress)}));
+     const left=phases.map(progress=>({progress,...countFaces('left',progress)}));
+     window.gpuVersoEvidence={right,left};
+     return {orientation,right,left};
     }finally{renderer?.destroy();host.remove();}
-   }),'GPU shader must NOT vertically invert printed pages');
+   });
+   assert.ok(faceProbe.orientation,'GPU source texture is vertically inverted: '+JSON.stringify(faceProbe));
+   assert.ok([faceProbe.right,faceProbe.left].every(phases=>
+    phases.some(face=>face.front>100)&&
+    phases.some(face=>face.verso>50)&&
+    phases.some(face=>face.front>100&&face.verso>50)),
+    'GPU must expose front, verso and a partly folded phase for BOTH edges: '+JSON.stringify(faceProbe));
 
    await page.waitForTimeout(350);
    // The visible sheet is mutable (font, translation, colors, inline art).
@@ -137,8 +170,63 @@ const server=http.createServer((req,res)=>{
    assert.ok(counts.liveInk>0,'interactive source ink remains');
    assert.equal(counts.staging,0,'temporary snapshots cleaned');
    assert.equal(counts.activeStage,0,'WebGL and DOM sheets cleaned');
+   // Actually drag the other book edge backwards with the GPU renderer:
+   // both the page index and underlying live dictionary DOM must survive.
+   await page.evaluate(rtl=>{
+    const host=document.querySelector('#sentences');
+    host.scrollIntoView({block:'start',behavior:'instant'});
+    const rect=host.getBoundingClientRect();
+    const active=[...host.children].find(n=>n.classList.contains('is-active'));
+    const width=active.getBoundingClientRect().width;
+    const x=rtl?rect.right-12:rect.left+12;
+    const y=rect.top+Math.min(100,rect.height/3);
+    const end=x+(rtl?-1:1)*width*.72;
+    const fire=(type,px)=>host.dispatchEvent(new PointerEvent(type,{
+     bubbles:true,cancelable:true,pointerType:'touch',pointerId:83,isPrimary:true,
+     buttons:1,button:0,clientX:px,clientY:y+30
+    }));
+    fire('pointerdown',x);fire('pointermove',end);
+    window.backwardRelease=()=>fire('pointerup',end);
+   },rtl);
+   await page.waitForFunction(()=>document.querySelector('.lt-curl-webgl-ready')||
+    window.LinguaCurlV2?.lastFailure,{},{timeout:15000});
+   assert.equal(await page.locator('.lt-curl-webgl-ready').count(),1,
+    'backward gesture must use continuous GPU mesh, not just CSS fallback');
+   await page.screenshot({path:path.join(out,'gpu-curl-'+
+    (rtl?'rtl-spread':'ltr-portrait')+'-reverse.png')});
+   await page.evaluate(()=>backwardRelease());
+   await page.waitForFunction(()=>!window.LinguaReaderCurl?.active,{},{timeout:5000});
+   assert.equal(await page.evaluate(()=>turnEvents.filter(x=>x.name==='commit').length),2,
+    'one forward and one backward GPU paper turn');
+   assert.equal(await page.locator('.lt-curl-stage').count(),0,
+    'reverse gesture must dispose the GPU surface');
+
+   // A short, slow pull must spring back and NOT mutate saved reading position.
+   await page.evaluate(rtl=>{
+    const host=document.querySelector('#sentences');
+    const rect=host.getBoundingClientRect();
+    const active=[...host.children].find(n=>n.classList.contains('is-active'));
+    const width=active.getBoundingClientRect().width;
+    const x=rtl?rect.left+12:rect.right-12;
+    const y=rect.top+Math.min(90,rect.height/3);
+    const end=x+(rtl?1:-1)*width*.18;
+    const fire=(type,px)=>host.dispatchEvent(new PointerEvent(type,{
+     bubbles:true,cancelable:true,pointerType:'touch',pointerId:85,isPrimary:true,
+     buttons:1,button:0,clientX:px,clientY:y
+    }));
+    fire('pointerdown',x);fire('pointermove',end);
+    window.smallPullRelease=()=>fire('pointerup',end);
+   },rtl);
+   await page.waitForTimeout(180);
+   await page.evaluate(()=>smallPullRelease());
+   await page.waitForFunction(()=>!window.LinguaReaderCurl?.active,{},{timeout:5000});
+   assert.equal(await page.evaluate(()=>turnEvents.filter(x=>x.name==='commit').length),2,
+    'slow incomplete fold must cancel instead of moving to next page');
+   assert.equal(await page.locator('.lt-curl-stage').count(),0,
+    'cancel must free temporary GPU and HTML paper');
+
    assert.deepEqual(errors,[],'no page JS errors');
-   console.log('PASS GPU curl '+(rtl?'RTL landscape':'LTR portrait'),report);
+   console.log('PASS GPU forward/backward/cancel '+(rtl?'RTL landscape':'LTR portrait'),report);
    await page.close();
   }
  }finally{await browser.close();server.close();}
