@@ -264,7 +264,10 @@ function makeRenderer(win,stage,width,height){
  const textures=[];
  function upload(source){
   const t=gl.createTexture();textures.push(t);gl.bindTexture(gl.TEXTURE_2D,t);
-  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);
+  // The mesh UV origin is at the TOP of a DOM page. Chromium canvas bytes
+  // already use that top-down order here; UNPACK_FLIP_Y_WEBGL=true inverted
+  // English and Arabic writing on the moving paper (visual QA 2026-11-14).
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,false);
   gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);
   gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
   gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
