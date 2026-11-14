@@ -162,8 +162,63 @@ const server=http.createServer((req,res)=>{
    assert.ok(counts.liveInk>0,'interactive source ink remains');
    assert.equal(counts.staging,0,'temporary snapshots cleaned');
    assert.equal(counts.activeStage,0,'WebGL and DOM sheets cleaned');
+   // Actually drag the other book edge backwards with the GPU renderer:
+   // both the page index and underlying live dictionary DOM must survive.
+   await page.evaluate(rtl=>{
+    const host=document.querySelector('#sentences');
+    host.scrollIntoView({block:'start',behavior:'instant'});
+    const rect=host.getBoundingClientRect();
+    const active=[...host.children].find(n=>n.classList.contains('is-active'));
+    const width=active.getBoundingClientRect().width;
+    const x=rtl?rect.right-12:rect.left+12;
+    const y=rect.top+Math.min(100,rect.height/3);
+    const end=x+(rtl?-1:1)*width*.72;
+    const fire=(type,px)=>host.dispatchEvent(new PointerEvent(type,{
+     bubbles:true,cancelable:true,pointerType:'touch',pointerId:83,isPrimary:true,
+     buttons:1,button:0,clientX:px,clientY:y+30
+    }));
+    fire('pointerdown',x);fire('pointermove',end);
+    window.backwardRelease=()=>fire('pointerup',end);
+   },rtl);
+   await page.waitForFunction(()=>document.querySelector('.lt-curl-webgl-ready')||
+    window.LinguaCurlV2?.lastFailure,{},{timeout:15000});
+   assert.equal(await page.locator('.lt-curl-webgl-ready').count(),1,
+    'backward gesture must use continuous GPU mesh, not just CSS fallback');
+   await page.screenshot({path:path.join(out,'gpu-curl-'+
+    (rtl?'rtl-spread':'ltr-portrait')+'-reverse.png')});
+   await page.evaluate(()=>backwardRelease());
+   await page.waitForFunction(()=>!window.LinguaReaderCurl?.active,{},{timeout:5000});
+   assert.equal(await page.evaluate(()=>turnEvents.filter(x=>x.name==='commit').length),2,
+    'one forward and one backward GPU paper turn');
+   assert.equal(await page.locator('.lt-curl-stage').count(),0,
+    'reverse gesture must dispose the GPU surface');
+
+   // A short, slow pull must spring back and NOT mutate saved reading position.
+   await page.evaluate(rtl=>{
+    const host=document.querySelector('#sentences');
+    const rect=host.getBoundingClientRect();
+    const active=[...host.children].find(n=>n.classList.contains('is-active'));
+    const width=active.getBoundingClientRect().width;
+    const x=rtl?rect.left+12:rect.right-12;
+    const y=rect.top+Math.min(90,rect.height/3);
+    const end=x+(rtl?1:-1)*width*.18;
+    const fire=(type,px)=>host.dispatchEvent(new PointerEvent(type,{
+     bubbles:true,cancelable:true,pointerType:'touch',pointerId:85,isPrimary:true,
+     buttons:1,button:0,clientX:px,clientY:y
+    }));
+    fire('pointerdown',x);fire('pointermove',end);
+    window.smallPullRelease=()=>fire('pointerup',end);
+   },rtl);
+   await page.waitForTimeout(180);
+   await page.evaluate(()=>smallPullRelease());
+   await page.waitForFunction(()=>!window.LinguaReaderCurl?.active,{},{timeout:5000});
+   assert.equal(await page.evaluate(()=>turnEvents.filter(x=>x.name==='commit').length),2,
+    'slow incomplete fold must cancel instead of moving to next page');
+   assert.equal(await page.locator('.lt-curl-stage').count(),0,
+    'cancel must free temporary GPU and HTML paper');
+
    assert.deepEqual(errors,[],'no page JS errors');
-   console.log('PASS GPU curl '+(rtl?'RTL landscape':'LTR portrait'),report);
+   console.log('PASS GPU forward/backward/cancel '+(rtl?'RTL landscape':'LTR portrait'),report);
    await page.close();
   }
  }finally{await browser.close();server.close();}
