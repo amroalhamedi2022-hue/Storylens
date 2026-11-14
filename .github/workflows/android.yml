@@ -172,6 +172,7 @@ jobs:
           node tools/page-turn-sfx.test.cjs
           node tools/contextual-page-turn.test.cjs
           node tools/physical-page-curl.test.cjs
+          node tools/lingua-curl-v2.test.cjs
           node tools/story-transitions.test.cjs
           node tools/data-backup.test.cjs
           node tools/four-stop-theme.test.cjs
@@ -699,6 +700,7 @@ jobs:
           export NODE_PATH=/tmp/lt-curl-browser/node_modules
           export CHROME="$(command -v google-chrome || command -v chromium)"
           node tools/physical-page-curl-browser.cjs
+          node tools/lingua-curl-v2-browser.cjs
           node tools/reader-line-pagination-browser.cjs
 
 
