@@ -313,6 +313,12 @@ function createSession({win,host,stage,page,back,width,height,onReady,onFailed})
  try{renderer=makeRenderer(win,stage,width,height);}
  catch(e){root.LinguaCurlV2.lastFailure=String(e);return null;}
  renderer.canvas.hidden=true;
+ renderer.canvas.addEventListener('webglcontextlost',event=>{
+  event.preventDefault();
+  if(disposed)return;
+  disposed=true;root.LinguaCurlV2.lastFailure='WebGL2 context lost';
+  renderer.destroy();onFailed?.(new Error('WebGL2 context lost'));
+ },{once:true});
  const dead=()=>disposed;
  const startup=(async()=>{
   try{
