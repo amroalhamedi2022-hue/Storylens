@@ -34,7 +34,7 @@ const server=http.createServer((req,res)=>{
    // Regression: an earlier GPU upload flipped EVERY printed line vertically
    // despite all gesture and transaction tests passing. Check actual shader
    // pixels: the TOP of the paper must retain its TOP source texels.
-   assert.ok(await page.evaluate(()=>{
+   const faceProbe=await page.evaluate(()=>{
     const mod=window.LinguaCurlV2,host=document.createElement('div');
     host.style.cssText='position:absolute;left:0;top:0;pointer-events:none';
     document.body.append(host);
@@ -76,9 +76,12 @@ const server=http.createServer((req,res)=>{
      };
      const right=countFaces('right'),left=countFaces('left');
      window.gpuVersoEvidence={right,left};
-     return orientation&&[right,left].every(face=>face.front>100&&face.verso>50);
+     return {orientation,right,left};
     }finally{renderer?.destroy();host.remove();}
-   }),'GPU shader must NOT vertically invert printed pages');
+   });
+   assert.ok(faceProbe.orientation,'GPU source texture is vertically inverted: '+JSON.stringify(faceProbe));
+   assert.ok([faceProbe.right,faceProbe.left].every(face=>face.front>100&&face.verso>50),
+    'GPU curl must show distinct front and back textures: '+JSON.stringify(faceProbe));
 
    await page.waitForTimeout(350);
    // The visible sheet is mutable (font, translation, colors, inline art).
