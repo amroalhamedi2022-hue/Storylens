@@ -142,7 +142,10 @@ function mount(options){
      if(hold!==h||!h.stage?.isConnected)return;
      h.stage.classList.add('lt-curl-webgl-ready');paint(h);
     },
-    onFailed(){h.stage?.classList.remove('lt-curl-webgl-ready');}
+    onFailed(){
+     h.stage?.classList.remove('lt-curl-webgl-ready');
+     if(hold===h&&h.stage?.isConnected)paint(h);
+    }
    });
    if(h.webgl&&v2.CurlSpringPhysics)h.physics=new v2.CurlSpringPhysics();
   }
