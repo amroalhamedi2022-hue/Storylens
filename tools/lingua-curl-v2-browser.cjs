@@ -31,6 +31,30 @@ const server=http.createServer((req,res)=>{
     put('chapter_'+id,0);put('readpage_'+id+'_0',0);openStory(id);
    },rtl);
    await page.evaluate(()=>document.fonts.ready);
+   // Regression: an earlier GPU upload flipped EVERY printed line vertically
+   // despite all gesture and transaction tests passing. Check actual shader
+   // pixels: the TOP of the paper must retain its TOP source texels.
+   assert.ok(await page.evaluate(()=>{
+    const mod=window.LinguaCurlV2,host=document.createElement('div');
+    host.style.cssText='position:absolute;left:0;top:0;pointer-events:none';
+    document.body.append(host);
+    let renderer;
+    try{
+     renderer=mod.createRenderer(window,host,120,160);
+     const paper=document.createElement('canvas');
+     paper.width=120;paper.height=160;
+     const ctx=paper.getContext('2d');
+     ctx.fillStyle='#ff0000';ctx.fillRect(0,0,120,60);
+     ctx.fillStyle='#0000ff';ctx.fillRect(0,60,120,100);
+     renderer.install(paper,paper);renderer.draw(0,.5,'right');
+     const gl=renderer.canvas.getContext('webgl2'),top=new Uint8Array(4),
+      bottom=new Uint8Array(4);
+     gl.readPixels(60,140,1,1,gl.RGBA,gl.UNSIGNED_BYTE,top);
+     gl.readPixels(60,20,1,1,gl.RGBA,gl.UNSIGNED_BYTE,bottom);
+     return top[0]>top[2]*1.5&&bottom[2]>bottom[0]*1.5;
+    }finally{renderer?.destroy();host.remove();}
+   }),'GPU shader must NOT vertically invert printed pages');
+
    await page.waitForTimeout(350);
    await page.evaluate(rtl=>{
     const host=document.querySelector('#sentences');host.scrollIntoView({block:'start',behavior:'instant'});
