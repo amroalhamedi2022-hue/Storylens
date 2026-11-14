@@ -51,7 +51,32 @@ const server=http.createServer((req,res)=>{
       bottom=new Uint8Array(4);
      gl.readPixels(60,140,1,1,gl.RGBA,gl.UNSIGNED_BYTE,top);
      gl.readPixels(60,20,1,1,gl.RGBA,gl.UNSIGNED_BYTE,bottom);
-     return top[0]>top[2]*1.5&&bottom[2]>bottom[0]*1.5;
+     const orientation=top[0]>top[2]*1.5&&bottom[2]>bottom[0]*1.5;
+     // Both textures must actually appear. A green verso cannot be replaced
+     // by a mirrored red front or a blank strip with a passing gesture test.
+     const makeInk=color=>{
+      const sheet=document.createElement('canvas');
+      sheet.width=120;sheet.height=160;
+      const pen=sheet.getContext('2d');pen.fillStyle=color;
+      pen.fillRect(0,0,120,160);return sheet;
+     };
+     renderer.install(makeInk('#eb2222'),makeInk('#18eb18'));
+     const countFaces=edge=>{
+      renderer.draw(.72,.5,edge);
+      const pixels=new Uint8Array(120*160*4);
+      gl.readPixels(0,0,120,160,gl.RGBA,gl.UNSIGNED_BYTE,pixels);
+      let front=0,verso=0;
+      for(let i=0;i<pixels.length;i+=4){
+       const red=pixels[i],green=pixels[i+1],blue=pixels[i+2],alpha=pixels[i+3];
+       if(alpha<80)continue;
+       if(red>green*1.7&&red>blue*1.7)front++;
+       if(green>red*1.7&&green>blue*1.7)verso++;
+      }
+      return {front,verso};
+     };
+     const right=countFaces('right'),left=countFaces('left');
+     window.gpuVersoEvidence={right,left};
+     return orientation&&[right,left].every(face=>face.front>100&&face.verso>50);
     }finally{renderer?.destroy();host.remove();}
    }),'GPU shader must NOT vertically invert printed pages');
 
