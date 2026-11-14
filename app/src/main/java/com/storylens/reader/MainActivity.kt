@@ -337,6 +337,8 @@ class MainActivity : ComponentActivity() {
                 "(function(){" +
                     "window.LinguaLicensedAudio && window.LinguaLicensedAudio.pause && window.LinguaLicensedAudio.pause();" +
                     "window.LinguaAmbience && window.LinguaAmbience.pauseFromNative && window.LinguaAmbience.pauseFromNative();" +
+                    "window.LinguaReaderCurl?.cancelIfActive?.();" +
+                    "window.LinguaCurlV2?.clearCache?.();" +
                 "})();",
                 null
             )
@@ -348,6 +350,15 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         if (::reader.isInitialized) reader.onResume()
+    }
+
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        // Release temporary WebGL snapshot canvases on Android memory pressure;
+        // never touch saved word lists, story assets or paragraph anchors.
+        if (level >= 10 && ::reader.isInitialized) {
+            reader.evaluateJavascript("window.LinguaCurlV2?.clearCache?.();", null)
+        }
     }
 
     override fun onDestroy() {

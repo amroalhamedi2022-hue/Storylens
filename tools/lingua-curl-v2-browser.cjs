@@ -56,6 +56,49 @@ const server=http.createServer((req,res)=>{
    }),'GPU shader must NOT vertically invert printed pages');
 
    await page.waitForTimeout(350);
+   // The visible sheet is mutable (font, translation, colors, inline art).
+   // Verify cached GPU screenshots refresh rather than reusing stale ink.
+   const freshness=await page.evaluate(async()=>{
+    const v2=window.LinguaCurlV2,host=document.querySelector('#sentences');
+    const pages=[...host.querySelectorAll(':scope > .lt-book-page')]
+     .filter(node=>!node.classList.contains('lt-curl-snapshot-page'));
+    const front=pages.find(node=>node.classList.contains('is-active'));
+    const next=pages[pages.indexOf(front)+1];
+    if(!front||!next)throw new Error('No adjacent source page for texture QA');
+    const rect=front.getBoundingClientRect(),options={
+     win:window,host,page:front,back:next,width:rect.width,height:rect.height
+    };
+    const first=await v2.prime(options),before=v2.cacheStats();
+    const sentence=front.querySelector('.sentence');
+    if(!sentence)throw new Error('Missing real text for cache freshness QA');
+    const qaStamp=document.createElement('span');
+    qaStamp.textContent=' GPU snapshot freshness QA';
+    sentence.appendChild(qaStamp);
+    const second=await v2.prime(options),changed=v2.cacheStats();
+    qaStamp.remove();
+    const restored=await v2.prime(options),after=v2.cacheStats();
+    // Test computed CSS changes with !important, rather than setting a
+    // lower-priority inline color that existing author !important overrides.
+    const beforeStyle=v2.snapshotSignature(window,front);
+    const oldColor=front.style.getPropertyValue('color');
+    const oldPriority=front.style.getPropertyPriority('color');
+    front.style.setProperty('color','rgb(19, 86, 141)','important');
+    const styleChanged=v2.snapshotSignature(window,front)!==beforeStyle;
+    if(oldColor)front.style.setProperty('color',oldColor,oldPriority);
+    else front.style.removeProperty('color');
+    const freed=v2.clearCache(),empty=v2.cacheStats();
+    return {first,second,restored,styleChanged,
+     before:before.snapshots,changed:changed.snapshots,after:after.snapshots,
+     bytes:after.estimatedBytes,freed,remaining:empty.pages};
+   });
+   assert.equal(freshness.first,true,'offline warmup must capture real pages');
+   assert.equal(freshness.second,true,'changing visible page ink must recapture');
+   assert.equal(freshness.restored,true,'restoring the original text must recapture');
+   assert.ok(freshness.changed>freshness.before,'stale text cache must invalidate');
+   assert.equal(freshness.styleChanged,true,'computed theme changes must invalidate cache keys');
+   assert.ok(freshness.after>freshness.changed,'restored page texture must refresh');
+   assert.ok(freshness.bytes<=24*1024*1024,'bound idle snapshot memory');
+   assert.equal(freshness.remaining,0,'temporary GPU cache must be releasable');
    await page.evaluate(rtl=>{
     const host=document.querySelector('#sentences');host.scrollIntoView({block:'start',behavior:'instant'});
     const box=host.getBoundingClientRect();

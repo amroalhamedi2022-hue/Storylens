@@ -631,7 +631,9 @@ function installPageTurn(){
   if(curlPrimeTimer!==null)window.clearTimeout(curlPrimeTimer);
   curlPrimeTimer=window.setTimeout(()=>{
    curlPrimeTimer=null;
-   if(!sentenceBox.isConnected||state.page!=='reader')return;
+   if(!sentenceBox.isConnected||state.page!=='reader'||document.hidden||
+     window.LinguaReaderCurl?.active||
+     document.querySelector('#modals .sheet,.lt-art-inspection-backdrop'))return;
    const front=pages[Math.min(current+spread-1,pages.length-1)];
    const back=pages[current+spread];
    if(!front||!back)return;

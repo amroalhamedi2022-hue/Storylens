@@ -146,39 +146,89 @@ let snapshotSerial=0;
 // while idle, so fast touch turns need only upload GPU textures.
 const snapshotCache=new Map();
 const MAX_CACHED_PAGES=4;
+const MAX_CACHE_BYTES=24*1024*1024;
+let snapshotBuilds=0;
+function snapshotSignature(win,source){
+ const doc=source.ownerDocument,style=win.getComputedStyle(source);
+ const reader=source.closest?.('.reader');
+ const media=Array.from(source.querySelectorAll?.('img,canvas,video')||[],node=>{
+  if(node.tagName==='IMG')return [node.currentSrc||node.src,
+   node.complete?'ready':'loading',node.naturalWidth,node.naturalHeight].join(':');
+  // Canvas/video frames change without DOM mutations; never cache their ink.
+  return 'dynamic:'+node.tagName;
+ });
+ return [
+  source.innerHTML||source.textContent||'',source.className||'',
+  doc.documentElement.className||'',doc.body?.className||'',
+  reader?.className||'',
+  style.font,style.padding,style.color,style.lineHeight,style.textAlign,
+  style.backgroundColor,style.backgroundImage,style.backgroundSize,
+  style.direction,style.letterSpacing,media.join('|')
+ ].join('\u001f');
+}
+function cacheBytes(row){
+ return Math.ceil(row.width*row.scale)*Math.ceil(row.height*row.scale)*4;
+}
+function trimCache(){
+ let used=0;
+ for(const row of snapshotCache.values())used+=cacheBytes(row);
+ while(snapshotCache.size>MAX_CACHED_PAGES||
+   (snapshotCache.size>1&&used>MAX_CACHE_BYTES)){
+  const first=snapshotCache.keys().next().value;
+  used-=cacheBytes(snapshotCache.get(first));
+  snapshotCache.delete(first);
+ }
+}
+function clearCache(){
+ const count=snapshotCache.size;
+ snapshotCache.clear();return count;
+}
+
 function rasterScale(win,width,height,max=2048){
  return clamp(Math.min(win.devicePixelRatio||1,1.8,
-  max/width,max/height,Math.sqrt(3500000/(width*height))),.5,1.8);
+  max/width,max/height,Math.sqrt(2400000/(width*height))),.5,1.8);
 }
 async function cachedPage(win,host,source,width,height,scale,dead){
+ const signature=snapshotSignature(win,source);
+ const dynamic=signature.includes('dynamic:');
  const found=snapshotCache.get(source);
- if(found&&found.width===width&&found.height===height&&
-    Math.abs(found.scale-scale)<.0001){
+ if(!dynamic&&found&&found.signature===signature&&found.width===width&&
+    found.height===height&&Math.abs(found.scale-scale)<.0001){
   snapshotCache.delete(source);snapshotCache.set(source,found);
   const canvas=await found.promise;
   if(dead())throw new Error('Curl cancelled');
   return canvas;
  }
- const row={width,height,scale,promise:null};
+ snapshotCache.delete(source);
+ const row={width,height,scale,signature,promise:null};
+ snapshotBuilds++;
  row.promise=capturePage(win,host,source,width,height,scale,
-  ()=>!host.isConnected).catch(error=>{
+  ()=>!host.isConnected).then(canvas=>{
+   if(snapshotSignature(win,source)!==signature){
+    if(snapshotCache.get(source)===row)snapshotCache.delete(source);
+    throw new Error('Paper content or theme changed during texture capture');
+   }
+   return canvas;
+  }).catch(error=>{
    if(snapshotCache.get(source)===row)snapshotCache.delete(source);
    throw error;
- });
- snapshotCache.set(source,row);
- while(snapshotCache.size>MAX_CACHED_PAGES)
-  snapshotCache.delete(snapshotCache.keys().next().value);
+  });
+ if(!dynamic){snapshotCache.set(source,row);trimCache();}
  const canvas=await row.promise;
  if(dead())throw new Error('Curl cancelled');
  return canvas;
 }
 function prime({win,host,page,back,width,height}){
- if(!snapAllowed(win)||!page||!back||!host.isConnected)return;
+ if(!snapAllowed(win)||!page||!back||!host.isConnected)
+  return Promise.resolve(false);
  const scale=rasterScale(win,width,height);
- // Run off the input path. Failed snapshots do not affect reading.
- Promise.resolve().then(()=>cachedPage(win,host,page,width,height,scale,()=>false))
+ // Run off the input path. Failed prewarming never blocks a real turn.
+ return Promise.resolve().then(()=>cachedPage(win,host,page,width,height,scale,()=>false))
   .then(()=>cachedPage(win,host,back,width,height,scale,()=>false))
-  .catch(error=>{root.LinguaCurlV2.lastFailure=String(error);});
+  .then(()=>true).catch(error=>{
+   root.LinguaCurlV2.lastWarmupWarning=String(error);
+   return false;
+  });
 }
 async function capturePage(win,host,source,width,height,scale,disposed){
  if(!source)throw new Error('No paper face to rasterize');
@@ -312,6 +362,7 @@ function makeRenderer(win,stage,width,height){
 }
 function createSession({win,host,stage,page,back,width,height,onReady,onFailed}){
  if(!snapAllowed(win))return null;
+ root.LinguaCurlV2.lastFailure=null;
  let disposed=false,renderer;
  try{renderer=makeRenderer(win,stage,width,height);}
  catch(e){root.LinguaCurlV2.lastFailure=String(e);return null;}
@@ -350,7 +401,12 @@ function createSession({win,host,stage,page,back,width,height,onReady,onFailed})
  };
 }
 root.LinguaCurlV2={CurlSpringPhysics,createMesh,VERTEX_SHADER,FRAGMENT_SHADER,
- snapAllowed,createSession,createRenderer:makeRenderer,prime,lastFailure:null};
+ snapAllowed,createSession,createRenderer:makeRenderer,prime,clearCache,
+ snapshotSignature,cacheStats:()=>({
+  pages:snapshotCache.size,
+  snapshots:snapshotBuilds,
+  estimatedBytes:Array.from(snapshotCache.values()).reduce((n,row)=>n+cacheBytes(row),0)
+ }),lastFailure:null,lastWarmupWarning:null};
 if(typeof module==='object'&&module.exports)
  module.exports={CurlSpringPhysics,createMesh,VERTEX_SHADER,FRAGMENT_SHADER};
 })(typeof window==='object'?window:globalThis);
