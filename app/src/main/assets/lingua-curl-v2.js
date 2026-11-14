@@ -141,6 +141,45 @@ function snapAllowed(win){
  }catch(_){return false;}
 }
 let snapshotSerial=0;
+// Bounded idle warm-cache: a reader spends far longer viewing a page than
+// turning it. Prepare the current and immediately adjacent real paper sides
+// while idle, so fast touch turns need only upload GPU textures.
+const snapshotCache=new Map();
+const MAX_CACHED_PAGES=4;
+function rasterScale(win,width,height,max=2048){
+ return clamp(Math.min(win.devicePixelRatio||1,1.8,
+  max/width,max/height,Math.sqrt(3500000/(width*height))),.5,1.8);
+}
+async function cachedPage(win,host,source,width,height,scale,dead){
+ const found=snapshotCache.get(source);
+ if(found&&found.width===width&&found.height===height&&
+    Math.abs(found.scale-scale)<.0001){
+  snapshotCache.delete(source);snapshotCache.set(source,found);
+  const canvas=await found.promise;
+  if(dead())throw new Error('Curl cancelled');
+  return canvas;
+ }
+ const row={width,height,scale,promise:null};
+ row.promise=capturePage(win,host,source,width,height,scale,
+  ()=>!host.isConnected).catch(error=>{
+   if(snapshotCache.get(source)===row)snapshotCache.delete(source);
+   throw error;
+ });
+ snapshotCache.set(source,row);
+ while(snapshotCache.size>MAX_CACHED_PAGES)
+  snapshotCache.delete(snapshotCache.keys().next().value);
+ const canvas=await row.promise;
+ if(dead())throw new Error('Curl cancelled');
+ return canvas;
+}
+function prime({win,host,page,back,width,height}){
+ if(!snapAllowed(win)||!page||!back||!host.isConnected)return;
+ const scale=rasterScale(win,width,height);
+ // Run off the input path. Failed snapshots do not affect reading.
+ Promise.resolve().then(()=>cachedPage(win,host,page,width,height,scale,()=>false))
+  .then(()=>cachedPage(win,host,back,width,height,scale,()=>false))
+  .catch(error=>{root.LinguaCurlV2.lastFailure=String(error);});
+}
 async function capturePage(win,host,source,width,height,scale,disposed){
  if(!source)throw new Error('No paper face to rasterize');
  const doc=host.ownerDocument;
@@ -206,8 +245,7 @@ function makeRenderer(win,stage,width,height){
  });
  if(!gl){canvas.remove();throw new Error('WebGL2 unavailable');}
  const max=gl.getParameter(gl.MAX_TEXTURE_SIZE)||2048;
- const scale=clamp(Math.min(win.devicePixelRatio||1,1.8,max/width,max/height,
-   Math.sqrt(3500000/(width*height))),.5,1.8);
+ const scale=rasterScale(win,width,height,Math.min(max,2048));
  canvas.width=Math.max(2,Math.round(width*scale));
  canvas.height=Math.max(2,Math.round(height*scale));
  const program=makeProgram(gl),mesh=createMesh(),vao=gl.createVertexArray(),
@@ -279,9 +317,9 @@ function createSession({win,host,stage,page,back,width,height,onReady,onFailed})
  const startup=(async()=>{
   try{
    const scale=renderer.scale;
-   const front=await capturePage(win,host,page,width,height,scale,dead);
+   const front=await cachedPage(win,host,page,width,height,scale,dead);
    const reverse=back
-    ?await capturePage(win,host,back,width,height,scale,dead)
+    ?await cachedPage(win,host,back,width,height,scale,dead)
     :blankBack(win,width,height,scale,win.getComputedStyle(page).backgroundColor);
    if(disposed)return;
    renderer.install(front,reverse);
@@ -303,7 +341,7 @@ function createSession({win,host,stage,page,back,width,height,onReady,onFailed})
  };
 }
 root.LinguaCurlV2={CurlSpringPhysics,createMesh,VERTEX_SHADER,FRAGMENT_SHADER,
- snapAllowed,createSession,lastFailure:null};
+ snapAllowed,createSession,prime,lastFailure:null};
 if(typeof module==='object'&&module.exports)
  module.exports={CurlSpringPhysics,createMesh,VERTEX_SHADER,FRAGMENT_SHADER};
 })(typeof window==='object'?window:globalThis);
