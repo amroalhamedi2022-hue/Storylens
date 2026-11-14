@@ -671,7 +671,8 @@ function installPageTurn(){
   put(anchorKey,starts[current]||0);
   put(offsetKey,offsets[current]||0);
   if(chapterEnd)chapterEnd.hidden=current+spread<pages.length;
-  scheduleGpuPaperPrime();
+  // Legacy VM tests extract renderPage alone; standalone reader remains valid.
+  if(typeof scheduleGpuPaperPrime==='function')scheduleGpuPaperPrime();
   if(animate&&!window.LinguaPageCurl&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
    animatePageTurn(pages[current],direction);
   }
