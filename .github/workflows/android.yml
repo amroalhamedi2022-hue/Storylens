@@ -173,6 +173,7 @@ jobs:
           node tools/contextual-page-turn.test.cjs
           node tools/physical-page-curl.test.cjs
           node tools/lingua-curl-v2.test.cjs
+          node tools/quran-safe-curl-adapter.test.cjs
           node tools/story-transitions.test.cjs
           node tools/data-backup.test.cjs
           node tools/four-stop-theme.test.cjs
