@@ -132,9 +132,28 @@ function mount(options){
   h.stage=stage;host.append(stage);h.page.style.visibility='hidden';
   if(h.under){h.under.classList.add('lt-curl-under');h.under.style.setProperty('--lt-under-left',rect.left-hostRect.left+'px');h.under.style.setProperty('--lt-under-width',rect.width+'px');}
   host.classList.add('lt-curl-active');host.dataset.ltFoldEdge=h.edge;
+  // Preserve existing facets until WebGL textures upload. Capture failures
+  // must never strand a user on an invisible or unturnable page.
+  const v2=win.LinguaCurlV2;
+  if(v2?.createSession){
+   h.webgl=v2.createSession({win,host,stage,page:h.page,back:h.back||h.under,
+    width:h.width,height:h.height,
+    onReady(){
+     if(hold!==h||!h.stage?.isConnected)return;
+     h.stage.classList.add('lt-curl-webgl-ready');paint(h);
+    },
+    onFailed(){h.stage?.classList.remove('lt-curl-webgl-ready');}
+   });
+   if(h.webgl&&v2.CurlSpringPhysics)h.physics=new v2.CurlSpringPhysics();
+  }
  }
  function paint(h){
   if(!h.stage)return;
+  if(h.webgl?.ready){
+   h.webgl.draw(h.distance/(2*h.width),h.grabY/h.height,h.edge);
+   if(h.shadow)h.shadow.style.opacity='0';
+   emit('progress',h);return;
+  }
   const g=geometry(h.width,h.height,h.distance,h.vertical,h.grabY,h.edge);
   g.facets.forEach((g,i)=>{
    const node=h.facets[i];
@@ -164,6 +183,7 @@ function mount(options){
  }
  function clean(h){
   if(frame)win.cancelAnimationFrame(frame);frame=0;
+  h.webgl?.destroy();
   h.stage?.remove();h.page.style.visibility='';
   if(h.under){h.under.classList.remove('lt-curl-under');h.under.style.removeProperty('--lt-under-left');h.under.style.removeProperty('--lt-under-width');}
   host.classList.remove('lt-curl-active');delete host.dataset.ltFoldEdge;
@@ -186,6 +206,12 @@ function mount(options){
   const h=hold;if(!h)return;
   if(!h.started){cancel('no-fold');return;}
   h.settling=true;h.target=success?2*h.width:0;h.success=success;
+  if(h.physics){
+   h.physics.progress=clamp(h.distance/(2*h.width),0,1);
+   h.physics.velocity=clamp(h.velocity*1000/(2*h.width),-4,4);
+   h.physics.grabY=clamp(h.grabY/h.height,0,1);
+   h.physics.release(success?1:0);
+  }
   h.velocity=clamp(h.velocity*1000,-h.width*4,h.width*4);h.time=0;h.startedAt=0;h.elapsed=0;
   if(reduced.matches){finish(success,'release');return;}
   request();
@@ -196,10 +222,18 @@ function mount(options){
   if(h.settling){
    const dt=h.time?clamp((time-h.time)/1000,0,.032):1/60;h.time=time;if(!h.startedAt)h.startedAt=time;h.elapsed=(time-h.startedAt)/1000;
    // Stable semi-implicit integration in <=8ms steps, independent of refresh rate.
-   const steps=Math.ceil(dt/.008),step=dt/steps;
-   for(let i=0;i<steps;i++){h.velocity+=((h.target-h.distance)*210-h.velocity*29)*step;h.distance=clamp(h.distance+h.velocity*step,0,2*h.width);}
-   h.vertical*=Math.exp(-dt*12);
-   if((Math.abs(h.target-h.distance)<.35&&Math.abs(h.velocity)<3)||h.elapsed>1.1){finish(h.success,'release');return;}
+   if(h.physics){
+    const done=h.physics.update(dt);
+    h.distance=clamp(h.physics.progress*2*h.width,0,2*h.width);
+    h.velocity=h.physics.velocity*2*h.width;
+    h.vertical*=Math.exp(-dt*12);
+    if(done||h.elapsed>1.1){finish(h.success,'release');return;}
+   }else{
+    const steps=Math.ceil(dt/.008),step=dt/steps;
+    for(let i=0;i<steps;i++){h.velocity+=((h.target-h.distance)*210-h.velocity*29)*step;h.distance=clamp(h.distance+h.velocity*step,0,2*h.width);}
+    h.vertical*=Math.exp(-dt*12);
+    if((Math.abs(h.target-h.distance)<.35&&Math.abs(h.velocity)<3)||h.elapsed>1.1){finish(h.success,'release');return;}
+   }
   }
   paint(h);if(h.settling)request();
  }
@@ -254,6 +288,8 @@ function mount(options){
   const dt=Math.max(1,e.timeStamp-h.lastAt);
   h.velocity=.65*(d-h.distance)/dt+.35*h.velocity;h.lastAt=e.timeStamp;
   h.distance=clamp(d,0,2*h.width);h.vertical=dy;suppressUntil=Date.now()+450;
+  h.physics?.drag(h.distance/(2*h.width),h.grabY/h.height,
+   h.velocity*1000/(2*h.width));
   if(first)paint(h);else request();if(e.cancelable)e.preventDefault();
  },{passive:false});
  on(doc,'pointerup',e=>{if(hold?.pointer===e.pointerId){
