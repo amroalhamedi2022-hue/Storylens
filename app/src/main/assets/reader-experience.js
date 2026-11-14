@@ -622,6 +622,25 @@ function installPageTurn(){
       ?initial:ltPageForParagraph(starts,firstParagraph)));
  current=Math.floor(current/spread)*spread;
  let curl=null;
+ let curlPrimeTimer=null;
+ // Pre-capture only the present leaf and its immediate verso when reading is
+ // idle. This avoids rasterizing the novel, stealing a word tap, or waiting for
+ // two fresh snapshots at the instant a quick gesture begins.
+ function scheduleGpuPaperPrime(){
+  if(!window.LinguaCurlV2?.snapAllowed?.(window))return;
+  if(curlPrimeTimer!==null)window.clearTimeout(curlPrimeTimer);
+  curlPrimeTimer=window.setTimeout(()=>{
+   curlPrimeTimer=null;
+   if(!sentenceBox.isConnected||state.page!=='reader')return;
+   const front=pages[Math.min(current+spread-1,pages.length-1)];
+   const back=pages[current+spread];
+   if(!front||!back)return;
+   const rect=front.getBoundingClientRect();
+   if(rect.width<1||rect.height<1)return;
+   window.LinguaCurlV2.prime({win:window,host:sentenceBox,
+    page:front,back,width:rect.width,height:rect.height});
+  },650);
+ }
  const prev=pageControls.querySelector('.lt-page-prev');
  const next=pageControls.querySelector('.lt-page-next');
  const countLabel=pageControls.querySelector('.lt-page-count');
@@ -652,6 +671,7 @@ function installPageTurn(){
   put(anchorKey,starts[current]||0);
   put(offsetKey,offsets[current]||0);
   if(chapterEnd)chapterEnd.hidden=current+spread<pages.length;
+  scheduleGpuPaperPrime();
   if(animate&&!window.LinguaPageCurl&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
    animatePageTurn(pages[current],direction);
   }
