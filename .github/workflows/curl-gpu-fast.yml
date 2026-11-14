@@ -1,0 +1,49 @@
+name: Lingua Tales — WebGL2 Curl Fast Acceptance
+on:
+  push:
+    branches: [main, feature/webgl2-continuous-pagecurl-20261114]
+    paths:
+      - 'app/src/main/assets/lingua-curl-v2.js'
+      - 'app/src/main/assets/physical-page-curl.js'
+      - 'app/src/main/assets/physical-page-curl.css'
+      - 'app/src/main/assets/reader-experience.js'
+      - 'app/src/main/assets/index.html'
+      - 'tools/lingua-curl-v2*'
+      - '.github/workflows/curl-gpu-fast.yml'
+  pull_request:
+    paths:
+      - 'app/src/main/assets/lingua-curl-v2.js'
+      - 'app/src/main/assets/physical-page-curl.js'
+      - 'app/src/main/assets/physical-page-curl.css'
+      - 'app/src/main/assets/reader-experience.js'
+      - 'app/src/main/assets/index.html'
+      - 'tools/lingua-curl-v2*'
+      - '.github/workflows/curl-gpu-fast.yml'
+permissions:
+  contents: read
+jobs:
+  gpu-curl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify continuous mesh, spring and Quran future-adapter safety
+        run: |
+          node tools/lingua-curl-v2.test.cjs
+          node tools/quran-safe-curl-adapter.test.cjs
+      - name: Prepare offline Chromium GPU test
+        run: |
+          npm install --prefix /tmp/lt-gpu-browser --no-audit --no-fund playwright@1.56.1
+      - name: Test real RTL and LTR page folds on WebGL2
+        env:
+          NODE_PATH: /tmp/lt-gpu-browser/node_modules
+        run: |
+          export CHROME="$(command -v google-chrome || command -v chromium)"
+          node tools/lingua-curl-v2-browser.cjs
+      - name: Preserve GPU screenshot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Lingua-Tales-WebGL2-Curl-Screenshots
+          path: qa-screenshots/gpu-curl-*.png
+          if-no-files-found: ignore
