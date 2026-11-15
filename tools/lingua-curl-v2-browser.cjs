@@ -301,6 +301,31 @@ const server=http.createServer((req,res)=>{
    assert.equal(await page.locator('.lt-curl-stage').count(),0,
     'cancel must free temporary GPU and HTML paper');
 
+   // Android WebViews sometimes suspend requestAnimationFrame while the
+   // document remains visible. A turn must still complete or be cancelable,
+   // restoring the original clickable paper instead of getting stuck.
+   const priorCommits=await page.evaluate(()=>turnEvents.filter(x=>x.name==='commit').length);
+   assert.equal(await page.evaluate(()=>{
+    window.__originalRaf=window.requestAnimationFrame;
+    window.requestAnimationFrame=()=>0; // Simulated stalled compositor.
+    return LinguaReaderCurl.turn(1,'gpu-raf-starved');
+   }),true,'RAF-starvation QA requires an actual new forward turn');
+   await page.waitForFunction(()=>!window.LinguaReaderCurl?.active,{},
+    {timeout:4500,polling:100});
+   assert.equal(await page.evaluate(()=>turnEvents.filter(x=>x.name==='commit').length),
+    priorCommits+1,'watchdog commits exactly once with zero RAF frames');
+   assert.equal(await page.locator('.lt-curl-stage').count(),0,
+    'RAF starvation watchdog must restore the interactive source DOM');
+   assert.equal(await page.evaluate(()=>LinguaReaderCurl.turn(-1,'watchdog-back')),true);
+   assert.equal(await page.evaluate(()=>LinguaReaderCurl.cancelIfActive()),true,
+    'native Back cancels the pending watchdog transaction');
+   await page.waitForTimeout(1800);
+   assert.equal(await page.evaluate(()=>turnEvents.filter(x=>x.name==='commit').length),
+    priorCommits+1,'cancelled watchdog must never navigate after a timer fires');
+   assert.equal(await page.locator('.lt-curl-stage').count(),0,
+    'cancelled watchdog must not retain a GPU canvas');
+   await page.evaluate(()=>{window.requestAnimationFrame=window.__originalRaf;delete window.__originalRaf});
+
    assert.deepEqual(errors,[],'no page JS errors');
    console.log('PASS GPU forward/backward/cancel '+(rtl?'RTL landscape':'LTR portrait'),report);
    await page.close();
