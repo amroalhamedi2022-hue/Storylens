@@ -92,7 +92,7 @@ function mount(options){
  const {host,rtl,getTurn,commit,allowed,tapAllowed=allowed}=options;
  const win=host.ownerDocument.defaultView,doc=host.ownerDocument;
  const reduced=win.matchMedia('(prefers-reduced-motion: reduce)');
- let hold=null,frame=0,dead=false,suppressUntil=0;
+ let hold=null,frame=0,settleTimer=0,dead=false,suppressUntil=0;
  const listeners=[];
  const on=(node,type,fn,opts)=>{node.addEventListener(type,fn,opts);listeners.push(()=>node.removeEventListener(type,fn,opts));};
  const emit=(name,h,extra={})=>(host.isConnected?host:doc).dispatchEvent(new win.CustomEvent('lingua:turn'+name,{bubbles:true,detail:{id:h.id,delta:h.delta,source:h.source,progress:h.distance/(2*h.width),...h.info,...extra}}));
@@ -186,6 +186,7 @@ function mount(options){
  }
  function clean(h){
   if(frame)win.cancelAnimationFrame(frame);frame=0;
+  if(settleTimer)win.clearTimeout(settleTimer);settleTimer=0;
   h.webgl?.destroy();
   h.stage?.remove();h.page.style.visibility='';
   if(h.under){h.under.classList.remove('lt-curl-under');h.under.style.removeProperty('--lt-under-left');h.under.style.removeProperty('--lt-under-width');}
@@ -217,6 +218,15 @@ function mount(options){
   }
   h.velocity=clamp(h.velocity*1000,-h.width*4,h.width*4);h.time=0;h.startedAt=0;h.elapsed=0;
   if(reduced.matches){finish(success,'release');return;}
+  // Android WebView may temporarily stop sending animation frames while its
+  // GPU/compositor is busy. The usual 1.1s limit only advances inside RAF.
+  // This strictly transaction-bound wall-clock watchdog prevents a stranded
+  // invisible page. Regrabs, cancels, and supersedes always clear it.
+  if(settleTimer)win.clearTimeout(settleTimer);
+  settleTimer=win.setTimeout(()=>{
+   settleTimer=0;
+   if(hold===h&&h.settling)finish(h.success,'animation-watchdog');
+  },1600);
   request();
  }
  function tick(time){
@@ -259,6 +269,7 @@ function mount(options){
   if(dead||e.isPrimary===false||e.button!==0||!allowed(e.target)||win.getSelection()?.toString().trim())return;
   if(hold?.settling){
    const h=hold;h.settling=false;h.pointer=e.pointerId;h.velocity=0;
+   if(settleTimer)win.clearTimeout(settleTimer);settleTimer=0;
    h.startX=e.clientX+(h.edge==='right'?h.distance:-h.distance);
    h.startY=e.clientY-h.vertical;h.lastAt=e.timeStamp;
    if(frame)win.cancelAnimationFrame(frame);frame=0;
