@@ -170,6 +170,65 @@ const server=http.createServer((req,res)=>{
    assert.ok(counts.liveInk>0,'interactive source ink remains');
    assert.equal(counts.staging,0,'temporary snapshots cleaned');
    assert.equal(counts.activeStage,0,'WebGL and DOM sheets cleaned');
+   // The previous spread's REAL source is display:none when moving backward.
+   // Verify that our html2canvas technique still captures its words; otherwise
+   // the GPU would curl a blank verso even though the renderer itself works.
+   const hiddenInk=await page.evaluate(async()=>{
+    const host=document.querySelector('#sentences');
+    const hidden=[...host.querySelectorAll(':scope>.lt-book-page')]
+     .filter(node=>!node.classList.contains('is-active')&&
+      (node.textContent||'').trim().length>150).at(-1);
+    const active=host.querySelector(':scope>.lt-book-page.is-active');
+    if(!hidden||!active)throw new Error('No substantive inactive page for verso test');
+    const rect=active.getBoundingClientRect(),style=getComputedStyle(hidden);
+    let serial=0;
+    async function snap(withInk){
+     const stage=hidden.cloneNode(true),marker='qa-inactive-verso-'+(++serial);
+     stage.id=marker;stage.classList.add('lt-curl-snapshot-page');
+     stage.classList.remove('is-active','lt-curl-under','lt-pagination-probe');
+     stage.querySelectorAll('[id]').forEach(node=>node.removeAttribute('id'));
+     stage.querySelectorAll('.tok').forEach(node=>
+      node.replaceWith(document.createTextNode(node.textContent)));
+     if(!withInk)stage.replaceChildren();
+     stage.inert=true;stage.setAttribute('aria-hidden','true');
+     for(const key of ['padding','font','color','direction','backgroundColor',
+       'backgroundImage','backgroundSize','backgroundPosition','backgroundRepeat']){
+      if(style[key])stage.style[key]=style[key];
+     }
+     for(const [key,value] of Object.entries({
+      position:'absolute',left:'0px',top:'0px',display:'block',
+      width:rect.width+'px',height:rect.height+'px',
+      'min-height':rect.height+'px','max-height':rect.height+'px',
+      visibility:'hidden','pointer-events':'none'
+     }))stage.style.setProperty(key,value,'important');
+     host.appendChild(stage);
+     try{
+      return await html2canvas(stage,{backgroundColor:null,scale:1,
+       logging:false,useCORS:false,allowTaint:false,imageTimeout:3500,
+       windowWidth:Math.max(document.documentElement.clientWidth,Math.ceil(rect.width)),
+       windowHeight:Math.max(document.documentElement.clientHeight,Math.ceil(rect.height)),
+       scrollX:0,scrollY:0,onclone(doc){
+        doc.getElementById(marker).style.setProperty('visibility','visible','important');
+       }});
+     }finally{stage.remove();}
+    }
+    const ink=await snap(true),empty=await snap(false);
+    if(ink.width!==empty.width||ink.height!==empty.height)
+     throw new Error('Verso baseline geometry mismatch');
+    const a=ink.getContext('2d').getImageData(0,0,ink.width,ink.height).data;
+    const b=empty.getContext('2d').getImageData(0,0,empty.width,empty.height).data;
+    let difference=0,darker=0;
+    for(let i=0;i<a.length;i+=4){
+     const delta=Math.max(Math.abs(a[i]-b[i]),Math.abs(a[i+1]-b[i+1]),
+      Math.abs(a[i+2]-b[i+2]));
+     if(delta>55&&a[i+3]>100)difference++;
+     if(a[i]+a[i+1]+a[i+2]<b[i]+b[i+1]+b[i+2]-150)darker++;
+    }
+    return {words:hidden.textContent.trim().length,
+     imageSize:[ink.width,ink.height],difference,darker};
+   });
+   assert.ok(hiddenInk.difference>350&&hiddenInk.darker>200,
+    'inactive real verso must NOT rasterize as blank paper: '+JSON.stringify(hiddenInk));
    // Actually drag the other book edge backwards with the GPU renderer:
    // both the page index and underlying live dictionary DOM must survive.
    await page.evaluate(rtl=>{
@@ -219,7 +278,24 @@ const server=http.createServer((req,res)=>{
    },rtl);
    await page.waitForTimeout(180);
    await page.evaluate(()=>smallPullRelease());
-   await page.waitForFunction(()=>!window.LinguaReaderCurl?.active,{},{timeout:5000});
+   // The integration job runs this after legacy browser/large-book rendering,
+   // which can heavily throttle compositor frames. Still insist on actual
+   // spring-back, no navigation and zero orphaned GPU surfaces.
+   try{
+    await page.waitForFunction(()=>!window.LinguaReaderCurl?.active,{},
+     {timeout:12000,polling:100});
+   }catch(e){
+    const state=await page.evaluate(()=>({
+     active:window.LinguaReaderCurl?.active,
+     events:window.turnEvents?.map(x=>x.name),
+     stages:document.querySelectorAll('.lt-curl-stage').length,
+     gpuReady:!!document.querySelector('.lt-curl-webgl-ready'),
+     gpuFailure:window.LinguaCurlV2?.lastFailure,
+     documentHidden:document.hidden
+    }));
+    throw new Error('GPU slow cancel did not settle under loaded Chromium: '+
+     JSON.stringify(state)+'; '+e.message);
+   }
    assert.equal(await page.evaluate(()=>turnEvents.filter(x=>x.name==='commit').length),2,
     'slow incomplete fold must cancel instead of moving to next page');
    assert.equal(await page.locator('.lt-curl-stage').count(),0,

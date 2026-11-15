@@ -439,7 +439,16 @@ tests["historic-verne-plates"] = r"""(async function(){
     // is intentionally private to reader-experience.js; test its BEHAVIOUR,
     // not a missing global function in the QA fixture.
     const viewport=viewer?.querySelector('.lt-art-inspection-viewport');
-    try{await zoomed?.decode?.()}catch(_){}
+    // Chromium virtual-time may leave decode() unresolved indefinitely.
+     // Bound only the wait, never the actual decoded-bitmap assertion.
+     if(zoomed?.decode){
+      try{await Promise.race([
+       zoomed.decode(),
+       new Promise(resolve=>setTimeout(resolve,2000))
+      ])}catch(_){}
+     }
+     check('historic portrait decoded from real offline bitmap',
+      !!zoomed?.complete&&zoomed?.naturalWidth>0);
     const rect=viewport?.getBoundingClientRect();
     const imageWidth=zoomed?.clientWidth||0;
     check('historic portrait decoded and viewport has width',
