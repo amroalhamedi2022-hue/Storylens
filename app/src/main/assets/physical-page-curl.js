@@ -5,6 +5,16 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,Number.isFinite(v)?v:a));
 const edgeDelta=(edge,rtl)=>(edge==='right')!==rtl?1:-1;
 const CURL_SEGMENTS=20;
 const spreadStart=(page,count)=>Math.floor(Math.max(0,page)/count)*count;
+// A tap near the outside page edge still turns. A horizontal hold from the
+// interior chooses its physical edge only AFTER the user reveals drag intent.
+// No accidental page turns on ordinary taps, dictionary words or scrolls.
+function grabEdge(x,width,dx=0){
+ if(!Number.isFinite(x)||!Number.isFinite(width)||width<=0||x<0||x>width)return null;
+ const zone=Math.min(112,Math.max(64,width*.17));
+ if(x<=zone)return 'left';
+ if(width-x<=zone)return 'right';
+ return Math.abs(dx)>=10?(dx<0?'right':'left'):null;
+}
 function clip(poly,n,limit,above){
  const out=[];
  for(let i=0;i<poly.length;i++){
@@ -95,7 +105,10 @@ function mount(options){
  let hold=null,frame=0,settleTimer=0,dead=false,suppressUntil=0;
  const listeners=[];
  const on=(node,type,fn,opts)=>{node.addEventListener(type,fn,opts);listeners.push(()=>node.removeEventListener(type,fn,opts));};
- const emit=(name,h,extra={})=>(host.isConnected?host:doc).dispatchEvent(new win.CustomEvent('lingua:turn'+name,{bubbles:true,detail:{id:h.id,delta:h.delta,source:h.source,progress:h.distance/(2*h.width),...h.info,...extra}}));
+ const emit=(name,h,extra={})=>(host.isConnected?host:doc).dispatchEvent(new win.CustomEvent('lingua:turn'+name,{bubbles:true,detail:{id:h.id,delta:h.delta,source:h.source,progress:h.distance/(2*h.width),
+ grabY:clamp((h.grabY||0)/(h.height||1),0,1),
+ pullY:clamp((h.vertical||0)/(h.height||1),-1,1),
+ ...h.info,...extra}}));
  function inertCopy(page){
   const copy=page.cloneNode(true);
   // Keep span boundaries for matching typography, but strip interactive identity.
@@ -170,7 +183,8 @@ function mount(options){
  function paint(h){
   if(!h.stage)return;
   if(h.webgl?.ready){
-   h.webgl.draw(h.distance/(2*h.width),h.grabY/h.height,h.edge);
+   h.webgl.draw(h.distance/(2*h.width),h.grabY/h.height,h.edge,
+    clamp(h.vertical/h.height,-1,1));
    if(h.shadow)h.shadow.style.opacity='0';
    emit('progress',h);return;
   }
@@ -307,33 +321,56 @@ function mount(options){
   }
   if(hold)cancel('interrupted');
   const rect=host.getBoundingClientRect(),x=e.clientX-rect.left;
-  // A full page has a forgiving outer margin, not a hidden 56 px sliver.
-  // Cap the zone so the middle remains available for vertical reading and
-  // dictionary interaction on both phones and wide two-page spreads.
-  const edgeZone=Math.min(112,Math.max(64,rect.width*.17));
-  const edge=x<0||x>rect.width?null:x<=edgeZone?'left':rect.width-x<=edgeZone?'right':null;
-  if(!edge)return;
-  const h=begin(edgeDelta(edge,rtl),edge,'gesture');if(!h)return;
-  h.pointer=e.pointerId;h.startX=e.clientX;h.startY=e.clientY;h.grabY=clamp(e.clientY-h.top,0,h.height);h.lastAt=e.timeStamp;
-  h.downAt=e.timeStamp;h.tapEligible=!!tapAllowed(e.target);
+  if(x<0||x>rect.width)return;
+  // Inside a two-page book the user can pick the leaf up from any clean ink
+  // surface. Defer the direction decision until horizontal intent is clear.
+  const edge=grabEdge(x,rect.width);
+  const h=edge?begin(edgeDelta(edge,rtl),edge,'gesture'):{
+   pendingEdge:true,containerWidth:rect.width,localX:x,started:false
+  };
+  if(!h)return;
+  hold=h;
+  h.pointer=e.pointerId;h.startX=e.clientX;h.startY=e.clientY;
+  h.grabY=edge?clamp(e.clientY-h.top,0,h.height):0;
+  h.lastAt=e.timeStamp;h.downAt=e.timeStamp;
+  // Only the outside margins are tap-to-turn; the body remains tap-to-read.
+  h.tapEligible=!!edge&&!!tapAllowed(e.target);
  });
  // A second finger elsewhere (e.g. over an illustration) cancels as well.
  on(doc,'pointerdown',e=>{if(hold&&(e.isPrimary===false||(!hold.settling&&hold.pointer!==undefined&&e.pointerId!==hold.pointer)))cancel('second-pointer');},true);
  on(host,'pointermove',e=>{
-  const h=hold;if(!h||h.pointer!==e.pointerId||h.settling)return;
-  let first=false;
-  const d=(h.edge==='right'?-1:1)*(e.clientX-h.startX),dy=e.clientY-h.startY;
+  let h=hold;if(!h||h.pointer!==e.pointerId||h.settling)return;
+  const dx=e.clientX-h.startX,dy=e.clientY-h.startY;
   if(!h.started){
-   if(Math.abs(dy)>12&&Math.abs(dy)>Math.abs(d)*1.1){cancel('scroll');return;}
-   if(d<8)return;
-   start(h);first=true;try{host.setPointerCapture(e.pointerId);}catch(_){}
+   // Android touch scrolling and long-press dictionary selection win over a
+   // page fold until the finger deliberately moves horizontally.
+   if(Math.abs(dy)>12&&Math.abs(dy)>Math.abs(dx)*1.1){cancel('scroll');return;}
+   if(h.pendingEdge){
+    const edge=grabEdge(h.localX,h.containerWidth,dx);
+    if(!edge)return;
+    const next=begin(edgeDelta(edge,rtl),edge,'gesture');
+    if(!next){hold=null;return;}
+    Object.assign(next,{pointer:h.pointer,startX:h.startX,startY:h.startY,
+     downAt:h.downAt,lastAt:h.lastAt,tapEligible:false});
+    next.grabY=clamp(h.startY-next.top,0,next.height);
+    h=next;
+   }
+   const initialPull=(h.edge==='right'?-1:1)*dx;
+   if(initialPull<8)return;
+   start(h);try{host.setPointerCapture(e.pointerId);}catch(_){}
   }
+  const d=(h.edge==='right'?-1:1)*dx;
   const dt=Math.max(1,e.timeStamp-h.lastAt);
   h.velocity=.65*(d-h.distance)/dt+.35*h.velocity;h.lastAt=e.timeStamp;
-  h.distance=clamp(d,0,2*h.width);h.vertical=dy;suppressUntil=Date.now()+450;
+  h.distance=clamp(d,0,2*h.width);
+  // Grabbing the paper never locks its Y. Follow the finger up/down (including
+  // at the corners) while staying within finite physically drawable bounds.
+  h.grabY=clamp(e.clientY-h.top,0,h.height);
+  h.vertical=clamp(dy,-h.height*.9,h.height*.9);
+  suppressUntil=Date.now()+450;
   h.physics?.drag(h.distance/(2*h.width),h.grabY/h.height,
    h.velocity*1000/(2*h.width));
-  if(first)paint(h);else request();if(e.cancelable)e.preventDefault();
+  request();if(e.cancelable)e.preventDefault();
  },{passive:false});
  on(doc,'pointerup',e=>{if(hold?.pointer===e.pointerId){
   const h=hold;
@@ -363,7 +400,7 @@ function mount(options){
  const api={turn,cancel,cancelIfActive(){if(!hold)return false;cancel('back');return true;},get active(){return !!hold?.started;},destroy(){if(dead)return;cancel('destroy');dead=true;listeners.forEach(off=>off());observer.disconnect();reduced.removeEventListener?.('change',preference);}};
  return api;
 }
-const api={geometry,shouldCommit,edgeDelta,spreadStart,mount};
+const api={geometry,shouldCommit,edgeDelta,spreadStart,grabEdge,mount};
 if(typeof module==='object'&&module.exports)module.exports=api;
 else root.LinguaPageCurl=api;
 })(typeof window==='object'?window:globalThis);
