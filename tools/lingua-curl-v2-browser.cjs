@@ -31,6 +31,21 @@ const server=http.createServer((req,res)=>{
     put('chapter_'+id,0);put('readpage_'+id+'_0',0);openStory(id);
    },rtl);
    await page.evaluate(()=>document.fonts.ready);
+   // No html2canvas capture is permitted on a gesture. Idle-prime real faces.
+   const primeLiveTurn=delta=>page.evaluate(async delta=>{
+    const gpu=window.LinguaCurlV2,host=document.querySelector('#sentences');
+    const papers=[...host.querySelectorAll(':scope > .lt-book-page')]
+     .filter(node=>!node.classList.contains('lt-curl-snapshot-page'));
+    const spread=Number(host.dataset.spread)||1;
+    const current=papers.findIndex(node=>node.classList.contains('is-active'));
+    const front=papers[delta>0?Math.min(current+spread-1,papers.length-1):current];
+    const back=papers[delta>0?current+spread:current-1];
+    if(!front||!back)throw new Error('Missing real paper sides for idle priming');
+    const rect=front.getBoundingClientRect();
+    const options={win:window,host,page:front,back,width:rect.width,height:rect.height};
+    const prepared=await gpu.prime(options);
+    return {prepared,ready:gpu.isReady(options)};
+   },delta);
    // Regression: an earlier GPU upload flipped EVERY printed line vertically
    // despite all gesture and transaction tests passing. Check actual shader
    // pixels: the TOP of the paper must retain its TOP source texels.
@@ -132,6 +147,9 @@ const server=http.createServer((req,res)=>{
    assert.ok(freshness.after>freshness.changed,'restored page texture must refresh');
    assert.ok(freshness.bytes<=24*1024*1024,'bound idle snapshot memory');
    assert.equal(freshness.remaining,0,'temporary GPU cache must be releasable');
+   const forwardPrime=await primeLiveTurn(1);
+   assert.ok(forwardPrime.prepared&&forwardPrime.ready,
+    'forward GPU page must be primed BEFORE touch: '+JSON.stringify(forwardPrime));
    await page.evaluate(rtl=>{
     const host=document.querySelector('#sentences');host.scrollIntoView({block:'start',behavior:'instant'});
     const box=host.getBoundingClientRect();
@@ -229,6 +247,9 @@ const server=http.createServer((req,res)=>{
    });
    assert.ok(hiddenInk.difference>350&&hiddenInk.darker>200,
     'inactive real verso must NOT rasterize as blank paper: '+JSON.stringify(hiddenInk));
+   const reversePrime=await primeLiveTurn(-1);
+   assert.ok(reversePrime.prepared&&reversePrime.ready,
+    'reverse GPU paper must be primed BEFORE touch: '+JSON.stringify(reversePrime));
    // Actually drag the other book edge backwards with the GPU renderer:
    // both the page index and underlying live dictionary DOM must survive.
    await page.evaluate(rtl=>{
@@ -260,6 +281,9 @@ const server=http.createServer((req,res)=>{
    assert.equal(await page.locator('.lt-curl-stage').count(),0,
     'reverse gesture must dispose the GPU surface');
 
+   const cancelPrime=await primeLiveTurn(1);
+   assert.ok(cancelPrime.prepared&&cancelPrime.ready,
+    'cancel acceptance must begin with a warmed real GPU sheet');
    // A short, slow pull must spring back and NOT mutate saved reading position.
    await page.evaluate(rtl=>{
     const host=document.querySelector('#sentences');
@@ -304,7 +328,10 @@ const server=http.createServer((req,res)=>{
    // Android WebViews sometimes suspend requestAnimationFrame while the
    // document remains visible. A turn must still complete or be cancelable,
    // restoring the original clickable paper instead of getting stuck.
-   const priorCommits=await page.evaluate(()=>turnEvents.filter(x=>x.name==='commit').length);
+   const starvedPrime=await primeLiveTurn(1);
+    assert.ok(starvedPrime.prepared&&starvedPrime.ready,
+     'RAF starvation acceptance needs a warmed GPU sheet');
+    const priorCommits=await page.evaluate(()=>turnEvents.filter(x=>x.name==='commit').length);
    assert.equal(await page.evaluate(()=>{
     window.__originalRaf=window.requestAnimationFrame;
     window.requestAnimationFrame=()=>0; // Simulated stalled compositor.
