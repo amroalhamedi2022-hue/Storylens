@@ -173,6 +173,20 @@ const server=http.createServer((req,res)=>{
      node=>getComputedStyle(node).display!=='none')
    }));
    assert.ok(report.ready,'WebGL2 texture capture failed: '+JSON.stringify(report));
+   if(rtl){
+    const layout=await page.evaluate(()=>{
+     const rect=document.querySelector('#sentences').getBoundingClientRect();
+     const nav=document.querySelector('.lt-chapter-nav');
+     const nr=nav?.getBoundingClientRect();
+     return {left:rect.left,right:rect.right,viewport:innerWidth,
+      scrollX:window.scrollX,navTop:nr?.top,bookBottom:rect.bottom};
+    });
+    assert.ok(layout.left>=-2&&layout.right<=layout.viewport+2,
+     'RTL landscape spread clips beyond screen edges: '+JSON.stringify(layout));
+    if(Number.isFinite(layout.navTop))
+     assert.ok(layout.navTop>=layout.bookBottom-2,
+      'Chapter navigation must be below the physical paper: '+JSON.stringify(layout));
+   }
    assert.equal(report.canvases,1,'one continuous canvas');
    assert.equal(report.fallbackVisible,false,'old DOM facets must be hidden after GPU preparation');
    await page.screenshot({path:path.join(out,'gpu-curl-'+(rtl?'rtl-spread':'ltr-portrait')+'.png')});
