@@ -218,6 +218,8 @@ function mount(options){
   emit('progress',h);
  }
  function clean(h){
+  // An interior tap is just a pending direction hint, never a visual sheet.
+  if(h.pendingEdge)return;
   if(frame)win.cancelAnimationFrame(frame);frame=0;
   if(settleTimer)win.clearTimeout(settleTimer);settleTimer=0;
   h.webgl?.destroy();
