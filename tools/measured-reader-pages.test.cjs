@@ -74,8 +74,9 @@ const graphemeEnds=new Set(Array.from(safe,part=>part.index+part.segment.length)
 for(const end of boundaryContext.boundaries(vocalized,'ar'))
  assert.ok(graphemeEnds.has(end),'Arabic page boundary is grapheme-safe');
 
-// Exercise the production getTurn() method: the reverse MUST NOT reuse the
-// same next-page DOM as the exposed underlay, which doubled visible words.
+// Exercise the actual production getTurn() contract: portrait reveals the
+// destination beneath a blank reverse; landscape has distinct printed verso
+// and underlay. Neither mode may show a wrong page then jump at commit.
 const curlStart=source.indexOf('   getTurn(delta){');
 const curlEnd=source.indexOf('\n   commit(delta,source)',curlStart);
 assert.ok(curlStart>=0&&curlEnd>curlStart,'production physical curl delegate exists');
@@ -87,12 +88,16 @@ const simulated={pages:Array.from({length:5},(_,i)=>({id:i})),
  clearCurlPreviews:()=>{},boundaryPage:()=>({id:'boundary'}),blankUnderPage:()=>({id:'blank-under'}),curlStory:{id:'book'},curlChapter:0};
 vm.runInNewContext(getTurnBody+'\nglobalThis.getTurn=getTurn;',simulated);
 const portrait=simulated.getTurn(1);
-assert.equal(portrait.under,simulated.pages[2],
- 'beneath the turned leaf is the subsequent paper side');
-assert.equal(portrait.back,simulated.pages[1],
- 'portrait fold rear shows the actual next page, not a blank ghost');
-assert.notEqual(portrait.under,portrait.back,
- 'moving verso and underlying sheet cannot duplicate visible text');
+assert.equal(portrait.under,simulated.pages[1],
+ 'portrait fold reveals exactly the next visible destination, not the page after it');
+assert.equal(portrait.back,null,
+ 'portrait folded reverse has no duplicate next-page text');
+simulated.current=3;
+const portraitReverse=simulated.getTurn(-1);
+assert.equal(portraitReverse.under,simulated.pages[2],
+ 'portrait reverse fold exposes exactly the previous destination');
+assert.equal(portraitReverse.back,null,
+ 'portrait backward fold does not duplicate the underlying page');
 simulated.spread=2;simulated.current=0;
 const landscape=simulated.getTurn(1);
 assert.equal(landscape.under,simulated.pages[3]);
