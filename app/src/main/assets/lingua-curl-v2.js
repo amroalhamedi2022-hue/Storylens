@@ -158,7 +158,9 @@ function snapshotSignature(win,source){
   return 'dynamic:'+node.tagName;
  });
  return [
-  source.innerHTML||source.textContent||'',source.className||'',
+  source.innerHTML||source.textContent||'',
+   // is-active/under only alter live visibility, not the normalized cloned sheet.
+   String(source.className||'').replace(/\b(?:is-active|lt-curl-under|lt-pagination-probe)\b/g,'').replace(/\s+/g,' ').trim(),
   doc.documentElement.className||'',doc.body?.className||'',
   reader?.className||'',
   style.font,style.padding,style.color,style.lineHeight,style.textAlign,
@@ -200,7 +202,7 @@ async function cachedPage(win,host,source,width,height,scale,dead){
   return canvas;
  }
  snapshotCache.delete(source);
- const row={width,height,scale,signature,promise:null};
+ const row={width,height,scale,signature,promise:null,canvas:null};
  snapshotBuilds++;
  row.promise=capturePage(win,host,source,width,height,scale,
   ()=>!host.isConnected).then(canvas=>{
@@ -208,6 +210,7 @@ async function cachedPage(win,host,source,width,height,scale,dead){
     if(snapshotCache.get(source)===row)snapshotCache.delete(source);
     throw new Error('Paper content or theme changed during texture capture');
    }
+   row.canvas=canvas;
    return canvas;
   }).catch(error=>{
    if(snapshotCache.get(source)===row)snapshotCache.delete(source);
@@ -217,6 +220,18 @@ async function cachedPage(win,host,source,width,height,scale,dead){
  const canvas=await row.promise;
  if(dead())throw new Error('Curl cancelled');
  return canvas;
+}
+// A gesture must never begin a new html2canvas rasterization.
+// Only an already completed, content-identical idle snapshot qualifies.
+function isReady({win,page,back,width,height}){
+ if(!snapAllowed(win)||!page||!back||!width||!height)return false;
+ const scale=rasterScale(win,width,height);
+ return [page,back].every(source=>{
+  const row=snapshotCache.get(source);
+  return !!row?.canvas&&row.width===width&&row.height===height&&
+   Math.abs(row.scale-scale)<.0001&&
+   row.signature===snapshotSignature(win,source);
+ });
 }
 function prime({win,host,page,back,width,height}){
  if(!snapAllowed(win)||!page||!back||!host.isConnected)
@@ -240,7 +255,13 @@ async function capturePage(win,host,source,width,height,scale,disposed){
  stage.id=marker;stage.classList.add('lt-curl-snapshot-page');
  stage.classList.remove('is-active','lt-curl-under','lt-pagination-probe');
  stage.querySelectorAll('[id]').forEach(node=>node.removeAttribute('id'));
- stage.querySelectorAll('.tok').forEach(node=>node.replaceWith(doc.createTextNode(node.textContent)));
+ // Keep the original token spans: removing them changes wrapping, bidi and
+ // measured glyph positions, which looks like a jump when the page lifts.
+ // The copy is inert and never receives the live dictionary event listeners.
+ stage.querySelectorAll('[tabindex],[onclick],[onpointerdown]').forEach(node=>{
+  node.removeAttribute('tabindex');node.removeAttribute('onclick');
+  node.removeAttribute('onpointerdown');
+ });
  stage.setAttribute('aria-hidden','true');stage.inert=true;
  const original=win.getComputedStyle(source);
  for(const key of ['padding','font','color','direction','backgroundColor','backgroundImage','backgroundSize','backgroundPosition','backgroundRepeat']){
@@ -401,7 +422,7 @@ function createSession({win,host,stage,page,back,width,height,onReady,onFailed})
  };
 }
 root.LinguaCurlV2={CurlSpringPhysics,createMesh,VERTEX_SHADER,FRAGMENT_SHADER,
- snapAllowed,createSession,createRenderer:makeRenderer,prime,clearCache,
+ snapAllowed,createSession,createRenderer:makeRenderer,prime,isReady,clearCache,
  snapshotSignature,cacheStats:()=>({
   pages:snapshotCache.size,
   snapshots:snapshotBuilds,

@@ -634,14 +634,25 @@ function installPageTurn(){
    if(!sentenceBox.isConnected||state.page!=='reader'||document.hidden||
      window.LinguaReaderCurl?.active||
      document.querySelector('#modals .sheet,.lt-art-inspection-backdrop'))return;
-   const front=pages[Math.min(current+spread-1,pages.length-1)];
-   const back=pages[current+spread];
-   if(!front||!back)return;
+   const nextFront=pages[Math.min(current+spread-1,pages.length-1)];
+   const nextBack=pages[current+spread];
+   const prevFront=pages[current];
+   const prevBack=pages[current-1];
+   const front=nextFront||prevFront;if(!front)return;
    const rect=front.getBoundingClientRect();
    if(rect.width<1||rect.height<1)return;
-   window.LinguaCurlV2.prime({win:window,host:sentenceBox,
-    page:front,back,width:rect.width,height:rect.height});
-  },650);
+   const gpu=window.LinguaCurlV2;
+   // Idle capture is sequential to avoid two heavy html2canvas iframes
+   // contending on slower Android GPUs. Cover both physical turn directions.
+   (async()=>{
+    if(nextFront&&nextBack)await gpu.prime({win:window,host:sentenceBox,
+     page:nextFront,back:nextBack,width:rect.width,height:rect.height});
+    if(prevFront&&prevBack&&sentenceBox.isConnected&&
+       state.page==='reader'&&!document.hidden&&!window.LinguaReaderCurl?.active)
+     await gpu.prime({win:window,host:sentenceBox,
+      page:prevFront,back:prevBack,width:rect.width,height:rect.height});
+   })().catch(error=>{gpu.lastWarmupWarning=String(error);});
+  },180);
  }
  const prev=pageControls.querySelector('.lt-page-prev');
  const next=pageControls.querySelector('.lt-page-next');
