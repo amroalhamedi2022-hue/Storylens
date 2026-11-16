@@ -53,6 +53,7 @@ const VERTEX_SHADER=[
  'uniform vec2 uResolution;',
  'uniform float uProgress;',
  'uniform float uGrabY;',
+ 'uniform float uPullY;',
  'uniform float uRadius;',
  'uniform float uEdge;',
  'out vec2 vUv;',
@@ -61,7 +62,8 @@ const VERTEX_SHADER=[
  'void main(){',
  ' vUv=aUv;',
  ' vec2 pos=aUv*uResolution;',
- ' float angle=(uGrabY-0.5)*0.5;',
+ ' // The physical crease tilts with both corner position and diagonal pull.',
+ ' float angle=clamp((uGrabY-0.5)*0.52+uPullY*0.32,-0.65,0.65);',
  ' vec2 dir=vec2(cos(angle),sin(angle));',
  ' vec2 oriented=vec2(uEdge>0.0?pos.x:uResolution.x-pos.x,pos.y);',
  ' float curlCenter=uResolution.x*(1.0-clamp(uProgress,0.0,1.0));',
@@ -330,7 +332,7 @@ function makeRenderer(win,stage,width,height){
  gl.useProgram(program);
  const uniform=name=>gl.getUniformLocation(program,name);
  const uniforms={resolution:uniform('uResolution'),progress:uniform('uProgress'),
-  grabY:uniform('uGrabY'),radius:uniform('uRadius'),edge:uniform('uEdge'),
+  grabY:uniform('uGrabY'),pullY:uniform('uPullY'),radius:uniform('uRadius'),edge:uniform('uEdge'),
   front:uniform('uFrontTex'),back:uniform('uBackTex')};
  const textures=[];
  function upload(source){
@@ -354,7 +356,7 @@ function makeRenderer(win,stage,width,height){
    if(dead)return false;
    front=upload(frontCanvas);back=upload(backCanvas);return true;
   },
-  draw(progress,grabY,edge){
+  draw(progress,grabY,edge,pullY=0){
    if(dead||!front||!back)return;
    gl.viewport(0,0,canvas.width,canvas.height);
    gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
@@ -367,6 +369,7 @@ function makeRenderer(win,stage,width,height){
    gl.uniform2f(uniforms.resolution,width,height);
    gl.uniform1f(uniforms.progress,clamp(progress,0,1));
    gl.uniform1f(uniforms.grabY,clamp(grabY,0,1));
+   gl.uniform1f(uniforms.pullY,clamp(pullY,-1,1));
    gl.uniform1f(uniforms.radius,Math.max(5,Math.min(width*.11,32+width*.045)));
    gl.uniform1f(uniforms.edge,edge==='left'?-1:1);
    gl.drawElements(gl.TRIANGLES,mesh.indices.length,gl.UNSIGNED_SHORT,0);
@@ -416,7 +419,7 @@ function createSession({win,host,stage,page,back,width,height,onReady,onFailed})
  })();
  return {
   get ready(){return !disposed&&!renderer.canvas.hidden;},
-  draw(progress,grabY,edge){if(!disposed&&!renderer.canvas.hidden)renderer.draw(progress,grabY,edge);},
+  draw(progress,grabY,edge,pullY=0){if(!disposed&&!renderer.canvas.hidden)renderer.draw(progress,grabY,edge,pullY);},
   destroy(){disposed=true;renderer.destroy();},
   startup
  };
