@@ -25,7 +25,7 @@ const server=http.createServer((req,res)=>{
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(url,{waitUntil:'domcontentloaded'});
    await page.evaluate(rtl=>{
-    window.turnEvents=[];for(const name of ['start','commit','cancel'])
+    window.turnEvents=[];for(const name of ['start','progress','commit','cancel'])
      document.addEventListener('lingua:turn'+name,e=>turnEvents.push({name,...e.detail}));
     const id=rtl?'thirteenth-bell-arabic':'last-passenger';
     put('chapter_'+id,0);put('readpage_'+id+'_0',0);openStory(id);
