@@ -98,13 +98,26 @@ function mount(options){
  const emit=(name,h,extra={})=>(host.isConnected?host:doc).dispatchEvent(new win.CustomEvent('lingua:turn'+name,{bubbles:true,detail:{id:h.id,delta:h.delta,source:h.source,progress:h.distance/(2*h.width),...h.info,...extra}}));
  function inertCopy(page){
   const copy=page.cloneNode(true);
-  copy.querySelectorAll('.tok').forEach(node=>node.replaceWith(doc.createTextNode(node.textContent)));
+  // Word spans remain as ink, but the copy is inert and cannot open lookup.
   [copy,...copy.querySelectorAll('*')].forEach(node=>{
    node.removeAttribute('id');node.removeAttribute('tabindex');
    for(const attr of [...node.attributes])if(attr.name.startsWith('on'))node.removeAttribute(attr.name);
   });
   copy.className='lt-book-page lt-curl-ink';copy.inert=true;copy.setAttribute('aria-hidden','true');
   return copy;
+ }
+ function buildFallbackFacets(h,style){
+  if(h.facets?.length)return;
+  const front=inertCopy(h.page),back=h.back?inertCopy(h.back):null;
+  // Retain the same text spans and line breaks as the actual reader paper.
+  for(const ink of [front,back].filter(Boolean))Object.assign(ink.style,{
+   padding:style.padding,font:style.font,color:style.color,
+   width:h.width+'px',height:h.height+'px'});
+  h.frontTemplate=front;h.backTemplate=back;h.facets=[];
+  for(let i=0;i<CURL_SEGMENTS+2;i++){
+   const facet=doc.createElement('div');facet.className='lt-curl-facet';
+   h.stage.append(facet);h.facets.push(facet);
+  }
  }
  function makeVisual(h){
   const rect=h.page.getBoundingClientRect(),hostRect=host.getBoundingClientRect();
@@ -116,38 +129,41 @@ function mount(options){
   const inset=['Top','Right','Bottom','Left'].map(side=>(parseFloat(style['padding'+side])+parseFloat(style['border'+side+'Width']))+'px').join(' ');
   stage.style.setProperty('--lt-curl-padding',inset);
   stage.style.setProperty('--lt-curl-paper-image',style.backgroundImage);
-  const front=inertCopy(h.page),back=h.back?inertCopy(h.back):null;
-  // Match computed paper padding/font; the copies inherit all reader language styles.
-  for(const ink of [front,back].filter(Boolean))Object.assign(ink.style,{padding:style.padding,font:style.font,color:style.color,width:rect.width+'px',height:rect.height+'px'});
-  // Cloning an illustrated HTML page 22 times at pointer-lock stalled older
-  // Android WebViews before the first drawn frame. Allocate only the lightweight
-  // facet shells now; materialise each face once, when the crease exposes it.
-  // The live, interactive source DOM never gets cloned back into the reader.
-  h.frontTemplate=front;h.backTemplate=back;h.facets=[];
-  for(let i=0;i<CURL_SEGMENTS+2;i++){
-   const facet=doc.createElement('div');facet.className='lt-curl-facet';
-   stage.append(facet);h.facets.push(facet);
-  }
-  const shadow=doc.createElement('div');shadow.className='lt-curl-contact';stage.prepend(shadow);h.shadow=shadow;
-  h.stage=stage;host.append(stage);h.page.style.visibility='hidden';
+  const v2=win.LinguaCurlV2;
+  const gpuPrimed=!!v2?.isReady?.({win,host,page:h.page,
+   back:h.back||h.under,width:h.width,height:h.height});
+  const shadow=doc.createElement('div');shadow.className='lt-curl-contact';
+  stage.append(shadow);h.shadow=shadow;h.facets=[];
+  h.stage=stage;host.append(stage);
   if(h.under){h.under.classList.add('lt-curl-under');h.under.style.setProperty('--lt-under-left',rect.left-hostRect.left+'px');h.under.style.setProperty('--lt-under-width',rect.width+'px');}
   host.classList.add('lt-curl-active');host.dataset.ltFoldEdge=h.edge;
-  // Preserve existing facets until WebGL textures upload. Capture failures
-  // must never strand a user on an invisible or unturnable page.
-  const v2=win.LinguaCurlV2;
-  if(v2?.createSession){
-   h.webgl=v2.createSession({win,host,stage,page:h.page,back:h.back||h.under,
-    width:h.width,height:h.height,
-    onReady(){
-     if(hold!==h||!h.stage?.isConnected)return;
-     h.stage.classList.add('lt-curl-webgl-ready');paint(h);
-    },
-    onFailed(){
-     h.stage?.classList.remove('lt-curl-webgl-ready');
-     if(hold===h&&h.stage?.isConnected)paint(h);
+  if(!gpuPrimed){
+   // No new rasterization inside a gesture; one consistent HTML fallback.
+   buildFallbackFacets(h,style);h.page.style.visibility='hidden';
+   return;
+  }
+  // Keep real, interactive-looking paper visible until GPU upload completes.
+  // This avoids an intermediate faceted/screenshot frame or white flash.
+  shadow.style.opacity='0';
+  h.webgl=v2.createSession({win,host,stage,page:h.page,back:h.back||h.under,
+   width:h.width,height:h.height,
+   onReady(){
+    if(hold!==h||!h.stage?.isConnected)return;
+    h.stage.classList.add('lt-curl-webgl-ready');
+    paint(h);h.page.style.visibility='hidden';
+   },
+   onFailed(){
+    h.stage?.classList.remove('lt-curl-webgl-ready');
+    if(hold===h&&h.stage?.isConnected){
+     buildFallbackFacets(h,style);
+     paint(h);h.page.style.visibility='hidden';
     }
-   });
-   if(h.webgl&&v2.CurlSpringPhysics)h.physics=new v2.CurlSpringPhysics();
+   }
+  });
+  if(h.webgl&&v2.CurlSpringPhysics)h.physics=new v2.CurlSpringPhysics();
+  else if(!h.webgl){
+   buildFallbackFacets(h,style);
+   paint(h);h.page.style.visibility='hidden';
   }
  }
  function paint(h){
@@ -157,6 +173,8 @@ function mount(options){
    if(h.shadow)h.shadow.style.opacity='0';
    emit('progress',h);return;
   }
+  // Await an already-primed WebGL texture without flashing a legacy sheet.
+  if(!h.facets?.length){emit('progress',h);return;}
   const g=geometry(h.width,h.height,h.distance,h.vertical,h.grabY,h.edge);
   g.facets.forEach((g,i)=>{
    const node=h.facets[i];
@@ -262,7 +280,17 @@ function mount(options){
   if(dead||!host.isConnected||(delta!==1&&delta!==-1))return false;
   if(hold)cancel('superseded');
   const h=begin(delta,(delta>0)!==rtl?'right':'left',source);if(!h)return false;
-  h.grabY=h.height*.84;start(h);settle(true);return true;
+  h.grabY=h.height*.84;
+  // A deliberate button/key press must never freeze while html2canvas
+  // rasterizes missing paper. Navigate immediately; idle prewarm prepares
+  // the next turn. A held edge gesture still uses the stable HTML fallback.
+  const gpu=win.LinguaCurlV2;
+  if(gpu?.snapAllowed?.(win)&&gpu.isReady&&
+     !gpu.isReady({win,host,page:h.page,back:h.back||h.under,
+       width:h.width,height:h.height})){
+   h.started=true;emit('start',h);finish(true,'uncached-instant-turn');return true;
+  }
+  start(h);settle(true);return true;
  }
  on(host,'pointerdown',e=>{
   if(hold&&!hold.settling&&e.pointerId!==hold.pointer){cancel('second-pointer');return;}
