@@ -98,7 +98,8 @@ function mount(options){
  const emit=(name,h,extra={})=>(host.isConnected?host:doc).dispatchEvent(new win.CustomEvent('lingua:turn'+name,{bubbles:true,detail:{id:h.id,delta:h.delta,source:h.source,progress:h.distance/(2*h.width),...h.info,...extra}}));
  function inertCopy(page){
   const copy=page.cloneNode(true);
-  // Word spans remain as ink, but the copy is inert and cannot open lookup.
+  // Keep span boundaries for matching typography, but strip interactive identity.
+  copy.querySelectorAll('.tok').forEach(node=>{node.classList.remove('tok');node.removeAttribute('role');});
   [copy,...copy.querySelectorAll('*')].forEach(node=>{
    node.removeAttribute('id');node.removeAttribute('tabindex');
    for(const attr of [...node.attributes])if(attr.name.startsWith('on'))node.removeAttribute(attr.name);
