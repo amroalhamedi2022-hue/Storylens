@@ -184,3 +184,24 @@ html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.the
 html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .lt-page-controls :is(button,select):focus-visible {
  outline:3px solid #f4cd7e!important;outline-offset:2px!important;
 }
+
+/* Owner video review 2026-11-16: facing pages are two leaves of one book,
+ * with a quiet fixed gutter. The paper surface and original ink stay live. */
+@media (orientation:landscape) and (min-width:700px){
+ .reader #sentences.lt-curl-book[data-spread="2"]{
+  border-radius:clamp(8px,1.1vw,16px)!important;
+  box-shadow:0 17px 38px rgba(17,15,14,.24),0 3px 0 rgba(94,64,39,.16)!important;
+ }
+ .reader #sentences.lt-curl-book[data-spread="2"]::after{
+  content:"";position:absolute;z-index:6;pointer-events:none;
+  top:0;bottom:0;left:calc(50% - 15px);width:30px;
+  background:linear-gradient(90deg,transparent 0%,rgba(46,31,18,.09) 30%,
+   rgba(43,28,16,.2) 49%,rgba(255,251,240,.33) 53%,transparent 100%);
+ }
+ .reader #sentences.lt-curl-book[data-spread="2"]>.lt-book-page.is-active[style*="--lt-page-column: 1"]{
+  border-radius:clamp(8px,1.1vw,16px) 0 0 clamp(8px,1.1vw,16px)!important;
+ }
+ .reader #sentences.lt-curl-book[data-spread="2"]>.lt-book-page.is-active[style*="--lt-page-column: 2"]{
+  border-radius:0 clamp(8px,1.1vw,16px) clamp(8px,1.1vw,16px) 0!important;
+ }
+}
