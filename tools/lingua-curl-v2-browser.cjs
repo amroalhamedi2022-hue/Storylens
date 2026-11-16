@@ -25,7 +25,7 @@ const server=http.createServer((req,res)=>{
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(url,{waitUntil:'domcontentloaded'});
    await page.evaluate(rtl=>{
-    window.turnEvents=[];for(const name of ['start','commit','cancel'])
+    window.turnEvents=[];for(const name of ['start','progress','commit','cancel'])
      document.addEventListener('lingua:turn'+name,e=>turnEvents.push({name,...e.detail}));
     const id=rtl?'thirteenth-bell-arabic':'last-passenger';
     put('chapter_'+id,0);put('readpage_'+id+'_0',0);openStory(id);
@@ -150,6 +150,70 @@ const server=http.createServer((req,res)=>{
    const forwardPrime=await primeLiveTurn(1);
    assert.ok(forwardPrime.prepared&&forwardPrime.ready,
     'forward GPU page must be primed BEFORE touch: '+JSON.stringify(forwardPrime));
+   // Owner request: grab paper from the interior, hold it indefinitely,
+   // steer its diagonal crease up and down, then release it back to rest.
+   const freeGrab=await page.evaluate(rtl=>{
+    const host=document.querySelector('#sentences');
+    host.scrollIntoView({block:'start',behavior:'instant'});
+    const box=host.getBoundingClientRect();
+    const leaf=host.querySelector(':scope > .lt-book-page.is-active');
+    const width=leaf.getBoundingClientRect().width;
+    const x=box.left+box.width*.51,y=box.top+Math.min(120,box.height*.24);
+    const d=(rtl?1:-1)*Math.min(width*.34,210);
+    const send=(type,id,dx=0,dy=0)=>host.dispatchEvent(new PointerEvent(type,{
+     bubbles:true,cancelable:true,pointerType:'touch',pointerId:id,isPrimary:true,
+     button:0,buttons:type==='pointerup'?0:1,clientX:x+dx,clientY:y+dy
+    }));
+    const commits=turnEvents.filter(e=>e.name==='commit').length;
+    send('pointerdown',77);send('pointerup',77);
+    const tapSafe=!LinguaReaderCurl.active&&
+     turnEvents.filter(e=>e.name==='commit').length===commits&&
+     !host.querySelector('.lt-curl-stage');
+    send('pointerdown',78);send('pointermove',78,d,20);
+    window.ltFreeGrab={send,d,commits};
+    return {tapSafe,d,width};
+   },rtl);
+   assert.ok(freeGrab.tapSafe,'a stationary interior tap must not turn paper');
+   await page.waitForFunction(()=>document.querySelector('.lt-curl-webgl-ready')||
+    window.LinguaCurlV2?.lastFailure,{},{timeout:7000});
+   assert.equal(await page.locator('.lt-curl-webgl-ready').count(),1,
+    'interior horizontal paper hold must use an already-primed GPU sheet');
+   await page.waitForTimeout(550); // A true hold never auto-commits on idle.
+   const firstHold=await page.evaluate(()=>{
+    const progress=turnEvents.filter(e=>e.name==='progress').at(-1);
+    return {active:LinguaReaderCurl.active,progress,
+     commits:turnEvents.filter(e=>e.name==='commit').length};
+   });
+   assert.ok(firstHold.active,'the finger-held sheet must remain live while stationary');
+   assert.equal(firstHold.commits,0,'holding the paper must not navigate');
+   await page.screenshot({path:path.join(out,
+    'gpu-curl-free-hold-'+(rtl?'rtl-spread':'ltr-phone')+'-first.png')});
+   await page.evaluate(()=>window.ltFreeGrab.send('pointermove',78,window.ltFreeGrab.d,205));
+   await page.waitForTimeout(120);
+   const raisedHold=await page.evaluate(()=>{
+    const progress=turnEvents.filter(e=>e.name==='progress').at(-1);
+    return {active:LinguaReaderCurl.active,progress,
+     staging:document.querySelectorAll('.lt-curl-snapshot-page').length};
+   });
+   assert.ok(raisedHold.active,'vertical steering must NOT release the held paper');
+   assert.ok(raisedHold.progress.grabY>firstHold.progress.grabY+.09,
+    'corner grip must track the current finger Y: '+JSON.stringify({firstHold,raisedHold}));
+   assert.ok(raisedHold.progress.pullY>firstHold.progress.pullY+.09,
+    'diagonal crease must follow actual vertical pull: '+JSON.stringify({firstHold,raisedHold}));
+   assert.equal(raisedHold.staging,0,'held movement must not rasterize a new page');
+   await page.screenshot({path:path.join(out,
+    'gpu-curl-free-hold-'+(rtl?'rtl-spread':'ltr-phone')+'-raised.png')});
+   await page.evaluate(()=>{
+    const {send,d}=window.ltFreeGrab;
+    send('pointermove',78,d*.3,180);
+    send('pointerup',78,d*.3,180);
+    delete window.ltFreeGrab;
+   });
+   await page.waitForFunction(()=>!window.LinguaReaderCurl?.active,{},{timeout:5000});
+   assert.equal(await page.evaluate(()=>turnEvents.filter(e=>e.name==='commit').length),0,
+    'pulling a held sheet back must cancel without changing reading position');
+   assert.equal(await page.locator('.lt-curl-stage').count(),0,
+    'releasing an interior hold must clean temporary GPU and fallback surfaces');
    await page.evaluate(rtl=>{
     const host=document.querySelector('#sentences');host.scrollIntoView({block:'start',behavior:'instant'});
     const box=host.getBoundingClientRect();

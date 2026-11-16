@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict');
-const {geometry,shouldCommit,edgeDelta,spreadStart}=require('../app/src/main/assets/physical-page-curl.js');
+const {geometry,shouldCommit,edgeDelta,spreadStart,grabEdge}=require('../app/src/main/assets/physical-page-curl.js');
 function area(poly){return Math.abs(poly.reduce((a,p,i)=>{const q=poly[(i+1)%poly.length];return a+p.x*q.y-q.x*p.y},0))/2;}
 function transform(f,p){const m=f.matrix;return [m[0]*p.x+m[4]*p.y+m[12],m[1]*p.x+m[5]*p.y+m[13],m[2]*p.x+m[6]*p.y+m[14]];}
 for(const w of [240,510,800])for(const h of [400,850])for(const d of [0,8,w*.3,w,w*1.8,2*w])for(const y of [0,h/2,h])for(const dy of [-180,0,180]){
@@ -16,6 +16,20 @@ for(const w of [240,510,800])for(const h of [400,850])for(const d of [0,8,w*.3,w
   });
  });
 }
+
+// Free-grab gestures must choose direction only after intentional horizontal
+// movement, never during taps or vertical dictionary/reading interactions.
+assert.equal(grabEdge(-1,500),null);
+assert.equal(grabEdge(501,500),null);
+assert.equal(grabEdge(12,500),'left');
+assert.equal(grabEdge(488,500),'right');
+assert.equal(grabEdge(250,500),null,'middle taps must not turn');
+assert.equal(grabEdge(250,500,9),null,'short jitter must not turn');
+assert.equal(grabEdge(250,500,-90),'right','interior left pull grabs right leaf');
+assert.equal(grabEdge(250,500,90),'left','interior right pull grabs left leaf');
+assert.equal(edgeDelta(grabEdge(250,500,-90),false),1,'LTR interior forward');
+assert.equal(edgeDelta(grabEdge(250,500,90),true),1,'RTL interior forward');
+
 const half=geometry(600,800,320,80,60);
 assert.ok(new Set(half.facets.filter(f=>f.polygon.length).map(f=>f.matrix[0].toFixed(3))).size>8,'many distinct local tangents, not one rotating card');
 assert.ok(half.facets.at(-1).polygon.length>=3,'broad reverse face exists');
