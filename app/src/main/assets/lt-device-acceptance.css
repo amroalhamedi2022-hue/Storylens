@@ -685,9 +685,9 @@ body :lang(en):not(svg),.reader[data-lt-source="en"] :is(h2,.sentence){
   opacity:0;pointer-events:none;
   transition:opacity .2s ease;
  }
- .reader:has(#sentences.lt-curl-book[data-spread="2"]) .lt-chapter-nav{
+ html body .reader:has(#sentences.lt-curl-book[data-spread="2"]) .lt-chapter-nav{
   /* The former fixed 620px navigation sheet overlapped the bottom ink. */
-  position:relative!important;inset:auto!important;
+  position:static!important;inset:auto!important;
   left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
   z-index:auto!important;width:min(680px,94vw)!important;max-width:100%!important;
   max-height:none!important;overflow:visible!important;
