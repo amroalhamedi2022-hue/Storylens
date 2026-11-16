@@ -225,10 +225,15 @@ async function cachedPage(win,host,source,width,height,scale,dead){
 }
 // A gesture must never begin a new html2canvas rasterization.
 // Only an already completed, content-identical idle snapshot qualifies.
+function snapshotSources(page,back){
+ // Portrait has one printed source and an unprinted verso. Never force
+ // duplicate texture captures of the destination page during a gesture.
+ return back&&back!==page?[page,back]:[page];
+}
 function isReady({win,page,back,width,height}){
- if(!snapAllowed(win)||!page||!back||!width||!height)return false;
+ if(!snapAllowed(win)||!page||!width||!height)return false;
  const scale=rasterScale(win,width,height);
- return [page,back].every(source=>{
+ return snapshotSources(page,back).every(source=>{
   const row=snapshotCache.get(source);
   return !!row?.canvas&&row.width===width&&row.height===height&&
    Math.abs(row.scale-scale)<.0001&&
@@ -236,13 +241,13 @@ function isReady({win,page,back,width,height}){
  });
 }
 function prime({win,host,page,back,width,height}){
- if(!snapAllowed(win)||!page||!back||!host.isConnected)
+ if(!snapAllowed(win)||!page||!host.isConnected||!width||!height)
   return Promise.resolve(false);
  const scale=rasterScale(win,width,height);
- // Run off the input path. Failed prewarming never blocks a real turn.
- return Promise.resolve().then(()=>cachedPage(win,host,page,width,height,scale,()=>false))
-  .then(()=>cachedPage(win,host,back,width,height,scale,()=>false))
-  .then(()=>true).catch(error=>{
+ // Only existing printed sides are rasterized, while the reader is idle.
+ return snapshotSources(page,back).reduce((done,source)=>
+   done.then(()=>cachedPage(win,host,source,width,height,scale,()=>false)),
+   Promise.resolve()).then(()=>true).catch(error=>{
    root.LinguaCurlV2.lastWarmupWarning=String(error);
    return false;
   });
@@ -426,11 +431,11 @@ function createSession({win,host,stage,page,back,width,height,onReady,onFailed})
 }
 root.LinguaCurlV2={CurlSpringPhysics,createMesh,VERTEX_SHADER,FRAGMENT_SHADER,
  snapAllowed,createSession,createRenderer:makeRenderer,prime,isReady,clearCache,
- snapshotSignature,cacheStats:()=>({
+ snapshotSignature,snapshotSources,cacheStats:()=>({
   pages:snapshotCache.size,
   snapshots:snapshotBuilds,
   estimatedBytes:Array.from(snapshotCache.values()).reduce((n,row)=>n+cacheBytes(row),0)
  }),lastFailure:null,lastWarmupWarning:null};
 if(typeof module==='object'&&module.exports)
- module.exports={CurlSpringPhysics,createMesh,VERTEX_SHADER,FRAGMENT_SHADER};
+ module.exports={CurlSpringPhysics,createMesh,VERTEX_SHADER,FRAGMENT_SHADER,snapshotSources};
 })(typeof window==='object'?window:globalThis);

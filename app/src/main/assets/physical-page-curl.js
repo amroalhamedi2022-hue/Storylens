@@ -144,8 +144,11 @@ function mount(options){
   stage.style.setProperty('--lt-curl-padding',inset);
   stage.style.setProperty('--lt-curl-paper-image',style.backgroundImage);
   const v2=win.LinguaCurlV2;
+  // null is an intentionally blank portrait reverse; undefined alone
+  // retains compatibility with callers requiring the adjacent page texture.
+  const textureBack=h.back===undefined?(h.under||null):h.back;
   const gpuPrimed=!!v2?.isReady?.({win,host,page:h.page,
-   back:h.back||h.under,width:h.width,height:h.height});
+   back:textureBack,width:h.width,height:h.height});
   const shadow=doc.createElement('div');shadow.className='lt-curl-contact';
   stage.append(shadow);h.shadow=shadow;h.facets=[];
   h.stage=stage;host.append(stage);
@@ -159,7 +162,7 @@ function mount(options){
   // Keep real, interactive-looking paper visible until GPU upload completes.
   // This avoids an intermediate faceted/screenshot frame or white flash.
   shadow.style.opacity='0';
-  h.webgl=v2.createSession({win,host,stage,page:h.page,back:h.back||h.under,
+  h.webgl=v2.createSession({win,host,stage,page:h.page,back:textureBack,
    width:h.width,height:h.height,
    onReady(){
     if(hold!==h||!h.stage?.isConnected)return;
@@ -303,7 +306,8 @@ function mount(options){
   // the next turn. A held edge gesture still uses the stable HTML fallback.
   const gpu=win.LinguaCurlV2;
   if(gpu?.snapAllowed?.(win)&&gpu.isReady&&
-     !gpu.isReady({win,host,page:h.page,back:h.back||h.under,
+     !gpu.isReady({win,host,page:h.page,
+       back:h.back===undefined?(h.under||null):h.back,
        width:h.width,height:h.height})){
    h.started=true;emit('start',h);finish(true,'uncached-instant-turn');return true;
   }

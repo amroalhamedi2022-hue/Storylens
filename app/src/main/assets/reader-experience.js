@@ -635,9 +635,11 @@ function installPageTurn(){
      window.LinguaReaderCurl?.active||
      document.querySelector('#modals .sheet,.lt-art-inspection-backdrop'))return;
    const nextFront=pages[Math.min(current+spread-1,pages.length-1)];
-   const nextBack=pages[current+spread];
+   // A portrait leaf has a blank reverse; keep only the live printed front
+   // primed while its actual destination page remains visible below.
+   const nextBack=spread===2?pages[current+spread]:null;
    const prevFront=pages[current];
-   const prevBack=pages[current-1];
+   const prevBack=spread===2?pages[current-1]:null;
    const front=nextFront||prevFront;if(!front)return;
    const rect=front.getBoundingClientRect();
    if(rect.width<1||rect.height<1)return;
@@ -645,7 +647,7 @@ function installPageTurn(){
    // Idle capture is sequential to avoid two heavy html2canvas iframes
    // contending on slower Android GPUs. Cover both physical turn directions.
    (async()=>{
-    if(nextFront&&nextBack)await gpu.prime({win:window,host:sentenceBox,
+    if(nextFront)await gpu.prime({win:window,host:sentenceBox,
      page:nextFront,back:nextBack,width:rect.width,height:rect.height});
     if(prevFront&&prevBack&&sentenceBox.isConnected&&
        state.page==='reader'&&!document.hidden&&!window.LinguaReaderCurl?.active)
@@ -820,15 +822,13 @@ function installPageTurn(){
     const boundary=target<0||target>=pages.length;
     if(boundary&&!state.story.chapters[state.chapter+delta])return null;
     const moving=delta>0?Math.min(current+spread-1,pages.length-1):current;
-    // Pages are *paper sides*, not duplicate independent cards. For a portrait
-    // forward turn the current front bends to reveal the NEXT page on its
-    // reverse, and the sheet BENEATH carries the following page. The old
-    // renderer put the same target page on both surfaces, doubling the ink.
-    // In a facing spread: forward verso=target and under=target+1;
-    // backward verso=target+1 and under=target. Do not create a fake page.
-    const beneathIndex=delta>0?target+1:target+(spread===2?0:-1);
+    // Portrait: show the REAL destination under the moving front and use
+    // plain paper on its reverse; otherwise N+2 flashes below N+1 before
+    // the commit changes the entire viewport to N+1.
+    // Landscape: true spread leaf has a printed verso and a separate underlay.
+    const beneathIndex=spread===2?(delta>0?target+1:target):target;
     const under=boundary?boundaryPage(delta):(pages[beneathIndex]||blankUnderPage());
-    const candidateBack=boundary?null:pages[target+(spread===2&&delta<0?1:0)];
+    const candidateBack=boundary||spread===1?null:pages[target+(delta<0?1:0)];
     return {page:pages[moving],under,dispose:clearCurlPreviews,
      back:candidateBack===under?null:candidateBack,
      info:{storyId:curlStory.id,chapter:curlChapter,fromPage:current,toPage:boundary?null:target,spread}};
