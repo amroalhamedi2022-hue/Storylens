@@ -62,17 +62,20 @@ const server=http.createServer((req,res)=>{
     return front&&LinguaCurlV2.isReady({win:window,host,page:front,back:papers[i+spread],under:papers[i+spread+1],stationary:papers[spread===2?i:i-1],width:r.width,height:r.height});
    },null,{timeout:20000});
    const paperSeam=await page.evaluate(()=>{
-    let maxJump=0;
+    let maxJump=0,worst=null;
     for(const c of __paperCaptures){
      const x=Math.min(12,c.width-2),a=c.getContext('2d').getImageData(x,0,6,c.height).data;
      let previous=null;
      for(let y=20;y<c.height-20;y++){
       let sum=0;for(let x=0;x<6;x++){const i=(y*6+x)*4;sum+=a[i]+a[i+1]+a[i+2];}
-      const mean=sum/18;if(previous!==null)maxJump=Math.max(maxJump,Math.abs(mean-previous));previous=mean;
+      const mean=sum/18;if(previous!==null&&Math.abs(mean-previous)>maxJump){maxJump=Math.abs(mean-previous);worst={y,mean,previous,width:c.width,height:c.height,index:__paperCaptures.indexOf(c)};}previous=mean;
      }
     }
-    return {maxJump,captures:__paperCaptures.length};
+    return {maxJump,worst,captures:__paperCaptures.length};
    });
+   for(const [i,data] of (await page.evaluate(()=>__paperCaptures.map(c=>c.toDataURL()))).entries())
+    fs.writeFileSync(path.join(out,'paper-capture-'+i+'.png'),Buffer.from(data.split(',')[1],'base64'));
+   await page.locator('#sentences').screenshot({path:path.join(out,'paper-before-turn.png')});
    assert.ok(paperSeam.captures>0&&paperSeam.maxJump<12,'horizontal paper raster seam: '+JSON.stringify(paperSeam));
    await page.locator('#sentences').screenshot({path:path.join(out,'gpu-idle-'+(rtl?'rtl':'ltr')+'-'+(landscape?'spread':'portrait')+'.png')});
    // Regression: an earlier GPU upload flipped EVERY printed line vertically
