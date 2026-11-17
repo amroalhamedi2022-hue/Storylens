@@ -70,7 +70,7 @@ const VERTEX_SHADER=[
  ' // Both ends return to their exact coordinates at progress 0 and 1.',
  ' float taper=sin(3.14159265*progress)*clamp(abs(aUv.y-uGrabY),0.0,1.0);',
  ' float localProgress=progress*(1.0-0.42*taper);',
- ' float angle=clamp((uGrabY-0.5)*0.62+uPullY*0.22,-0.48,0.48);',
+ ' float angle=sin(3.14159265*progress)*clamp((uGrabY-0.5)*0.62+uPullY*0.22,-0.48,0.48);',
  ' vec2 dir=vec2(cos(angle),sin(angle));',
  ' vec2 oriented=vec2(uEdge>0.0?pos.x:uResolution.x-pos.x,pos.y);',
  ' vec2 grip=vec2(uResolution.x*(1.0-localProgress),uGrabY*uResolution.y);',
