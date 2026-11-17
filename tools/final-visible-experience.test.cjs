@@ -13,8 +13,13 @@ assert.match(reader,/finalStyle\.href='lt-final-experience\.css'/,
  'production reader must load the unified visual finish');
 assert.match(curl,/const taper=\.34\*Math\.max\(0,1-p\/\.86\)/,
  'moving leaf remains broad instead of collapsing into the old triangle');
-assert.match(curl,/const edgeZone=Math\.min\(112,Math\.max\(64,rect\.width\*\.17\)\)/,
- 'physical edge has a forgiving phone/tablet grab zone');
+const {grabEdge}=require('../app/src/main/assets/physical-page-curl.js');
+for(const width of [360,600,1200]){
+ assert.equal(grabEdge(32,width),'left');
+ assert.equal(grabEdge(width-32,width),'right');
+ assert.equal(grabEdge(width/2,width),null,'stationary text tap is never a page turn');
+ assert.equal(grabEdge(width/2,width,-40),'right','interior drag selects the forward physical edge');
+}
 assert.match(curl,/!h\.started&&h\.tapEligible&&e\.timeStamp-h\.downAt<=320/,
  'short outer-margin tap commits a page turn');
 assert.match(reader,/tapAllowed:target=>pageSwipeAllowed/,

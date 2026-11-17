@@ -1,0 +1,608 @@
+{
+  "date": "2026-11-17T09:30:24.185568+00:00",
+  "baseline": "45f7f788ee191e2343ea02fcf7ca069c44a664f9",
+  "node_tests": [
+    {
+      "test": "tools/ambience.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/antique-book-paper.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/arabic-originals.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/assets.test.cjs",
+      "passed": false,
+      "failure": "AssertionError [ERR_ASSERTION]: APK asset missing: freedict-en-ar.js"
+    },
+    {
+      "test": "tools/bookmark-navigation.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/botanical-theme.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/celestial-atlas.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/chapter-navigation.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/chapter-search.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/chapter-thumbnail-gallery.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/circuit-notebook.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/content-loader.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/contextual-page-turn.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/data-backup.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/device-ux-batch.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/editorial-c.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/editorial.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/final-visible-experience.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/five-font-reader.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/floor-between.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/four-stop-theme.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/freedict.test.cjs",
+      "passed": false,
+      "failure": "Error: ENOENT: no such file or directory, open '/workspace/scratch/7a367d5bf7af/Storylens/app/src/main/assets/freedict-en-ar.js'"
+    },
+    {
+      "test": "tools/full-localization.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/generated-art-reader.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/hero-declutter.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/historic-verne-art.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/illustrated-covers.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/ink-workshop.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/inline-illustrations.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/kalila-color-folios.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/keyboard-lookup.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/lexicon.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/library-experience.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/library-shell-layout.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/licensed-audio-monitor.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/licensed-audio-start-timeout.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/licensed-audio.test.cjs",
+      "passed": false,
+      "failure": "Error: ENOENT: no such file or directory, open '/workspace/scratch/7a367d5bf7af/Storylens/app/src/main/assets/LICENSE_AUDIO.txt'"
+    },
+    {
+      "test": "tools/lingua-curl-v2.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/literature-arabic-original.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/literature-dracula.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/literature-five-originals-integrity.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/literature-frankenstein.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/literature-hound.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/literature-moonstone.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/literature-originals.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/literature-prior-requests-integrity.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/literature-sci-fi.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/literature-sign-of-four.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/literature-war-of-worlds.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/locale-journeys.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/locale-shell.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/measured-reader-pages.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/monochrome-zine.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/multi-companion-art.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/ninth-ledger.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/novella-cover-scenes.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/offline-font-pack.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/offline-handwriting-extra.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/page-turn-sfx.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/paragraph-roving.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/phrase-lookup.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/physical-page-curl.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/physical-sheet-geometry.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/quiet-frequency.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/quran-safe-curl-adapter.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/rain-glass.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/reader-copy-guard-typography.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/reader-experience.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/reader-material-presets.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/reader-page-scroll.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/release-gate.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/responsive-pages.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/salt-meridian.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/semantic-bookmarks.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/solar-atelier.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/story-transitions.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/terracotta-gallery.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/theme-catalog.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/theme-live-gradient.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/translation-window.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/typography-profiles.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/unsigned-production-gate.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/ux-2026-10-29.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-chronology.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-complete-novel.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-plate-queue.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch05.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch06.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch07.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch08.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch09.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch10.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch12.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch13.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch14.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch15.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch16.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch17.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch18.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch19.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch20.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch21.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch22.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch23.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch24.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch25.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch26.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch27.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch28.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch29.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch30.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch31.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch33.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch35.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch36.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle-ch37.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/verne-towle.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/wen-glass-port.test.cjs",
+      "passed": true,
+      "failure": null
+    },
+    {
+      "test": "tools/wen-reader-sanctuary.test.cjs",
+      "passed": true,
+      "failure": null
+    }
+  ],
+  "passed": 116,
+  "total": 119,
+  "browser": "BLOCKED: Chromium process singleton socket denied; escalation disabled",
+  "android_build": "NOT RUN: no Android SDK/Gradle here; CI publication approval blocked",
+  "publication": "Local commits only; public Git push rejected by approval review",
+  "apk": "NOT BUILT",
+  "physical_120hz": "NOT MEASURED"
+}

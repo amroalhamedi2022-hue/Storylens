@@ -635,11 +635,11 @@ function installPageTurn(){
      window.LinguaReaderCurl?.active||
      document.querySelector('#modals .sheet,.lt-art-inspection-backdrop'))return;
    const nextFront=pages[Math.min(current+spread-1,pages.length-1)];
-   // A portrait leaf has a blank reverse; keep only the live printed front
-   // primed while its actual destination page remains visible below.
-   const nextBack=spread===2?pages[current+spread]:null;
+   // Both physical sides are printed; the portrait camera follows the verso.
+   // Idle priming includes the underlying and stationary sheets as well.
+   const nextBack=pages[current+spread]||null;
    const prevFront=pages[current];
-   const prevBack=spread===2?pages[current-1]:null;
+   const prevBack=pages[current-1]||null;
    const front=nextFront||prevFront;if(!front)return;
    const rect=front.getBoundingClientRect();
    if(rect.width<1||rect.height<1)return;
@@ -648,11 +648,15 @@ function installPageTurn(){
    // contending on slower Android GPUs. Cover both physical turn directions.
    (async()=>{
     if(nextFront)await gpu.prime({win:window,host:sentenceBox,
-     page:nextFront,back:nextBack,width:rect.width,height:rect.height});
+     page:nextFront,back:nextBack,
+     under:pages[current+spread+1]||null,stationary:pages[current]===nextFront?pages[current-1]:pages[current],
+     width:rect.width,height:rect.height});
     if(prevFront&&prevBack&&sentenceBox.isConnected&&
        state.page==='reader'&&!document.hidden&&!window.LinguaReaderCurl?.active)
      await gpu.prime({win:window,host:sentenceBox,
-      page:prevFront,back:prevBack,width:rect.width,height:rect.height});
+      page:prevFront,back:prevBack,
+      under:pages[current-2]||null,stationary:pages[current+1]||null,
+      width:rect.width,height:rect.height});
    })().catch(error=>{gpu.lastWarmupWarning=String(error);});
   },180);
  }
@@ -822,15 +826,15 @@ function installPageTurn(){
     const boundary=target<0||target>=pages.length;
     if(boundary&&!state.story.chapters[state.chapter+delta])return null;
     const moving=delta>0?Math.min(current+spread-1,pages.length-1):current;
-    // Portrait: show the REAL destination under the moving front and use
-    // plain paper on its reverse; otherwise N+2 flashes below N+1 before
-    // the commit changes the entire viewport to N+1.
-    // Landscape: true spread leaf has a printed verso and a separate underlay.
-    const beneathIndex=spread===2?(delta>0?target+1:target):target;
+    // Four distinct physical surfaces. Portrait follows the turning verso
+    // with its camera, so N+2 is never substituted for destination N+1.
+    const beneathIndex=delta>0?target+1:current-2;
     const under=boundary?boundaryPage(delta):(pages[beneathIndex]||blankUnderPage());
-    const candidateBack=boundary||spread===1?null:pages[target+(delta<0?1:0)];
+    const candidateBack=boundary?null:pages[delta>0?target:current-1];
     return {page:pages[moving],under,dispose:clearCurlPreviews,
-     back:candidateBack===under?null:candidateBack,
+     fallbackUnder:spread===1?(boundary?under:pages[target]):under,
+     back:candidateBack||null,
+     stationary:pages[delta>0?(spread===2?current:current-1):current+1]||null,
      info:{storyId:curlStory.id,chapter:curlChapter,fromPage:current,toPage:boundary?null:target,spread}};
    },
    commit(delta,source){
