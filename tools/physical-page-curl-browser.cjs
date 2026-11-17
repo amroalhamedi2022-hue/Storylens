@@ -55,15 +55,14 @@ const server=http.createServer((req,res)=>{
    assert.equal(await page.locator('#sentences > .is-active .sentence').first().getAttribute('data-i'),initial);
    // Actual held mesh, source HTML, real underpage; save visual evidence.
    await gesture(.75,80,'pointerup',true);await page.waitForTimeout(80);
-   assert.equal(await page.locator('.lt-curl-facet').count(),22);
-   const painted=await page.evaluate(()=>{
-    const facets=[...document.querySelectorAll('.lt-curl-facet')];
-    return {visible:facets.filter(node=>node.style.display!=='none').length,
-     faces:facets.filter(node=>node.firstElementChild).length};
-   });
-   assert.ok(painted.visible>0,'a held page must reveal physical facets');
-   assert.equal(painted.faces,painted.visible,
-    'only visible paper facets allocate ink; no pre-cloned off-screen sheets');
+   assert.equal(await page.locator('.lt-curl-facet').count(),0,
+    'cold-turn fallback must not expose segmented clip-path facets');
+   assert.equal(await page.locator('.lt-curl-fallback-sheet').count(),1,
+    'one continuous DOM sheet stands in when GPU textures are not warmed');
+   assert.equal(await page.locator('.lt-curl-fallback-front .lt-curl-ink').count(),1,
+    'the original ink is cloned once instead of per facet');
+   assert.equal(await page.locator('.lt-curl-fallback-back').count(),1,
+    'the back of the DOM sheet remains physically present');
    assert.ok(await page.evaluate(()=>{
     const r=document.querySelector('#sentences').getBoundingClientRect();
     return r.left>=-1&&r.right<=innerWidth+1&&Math.abs(scrollX)<1;
@@ -71,12 +70,15 @@ const server=http.createServer((req,res)=>{
    assert.equal(await page.locator('.lt-curl-under').count(),1);
    assert.equal(await page.locator('.lt-curl-stage .tok').count(),0,'no duplicate dictionary buttons');
    assert.equal(await page.locator('.lt-curl-stage [id]').count(),0,'no duplicate DOM identities');
-   assert.ok(await page.evaluate(()=>{
-    const ink=[...document.querySelectorAll('.lt-curl-facet .lt-curl-back .lt-curl-ink')]
-     .find(node=>node.parentElement.parentElement.style.display!=='none');
-    const style=getComputedStyle(ink),width=ink.getBoundingClientRect().width;
-    return ink.textContent.trim().length>10&&style.backfaceVisibility==='visible'&&parseFloat(style.transformOrigin)>0&&width>0;
-   }),'reverse ink remains visible and reflected about the centre, not moved off paper');
+   assert.ok(await page.evaluate(landscape=>{
+    const back=document.querySelector('.lt-curl-fallback-back');
+    const ink=back.querySelector('.lt-curl-ink');
+    const css=getComputedStyle(back);
+    if(css.backfaceVisibility!=='hidden')return false;
+    if(landscape)return !!ink&&ink.textContent.trim().length>10;
+    return !ink&&!!back.querySelector('.lt-curl-blank-verso');
+   },landscape),
+   'landscape has a printed reverse; portrait has unprinted paper with no ghost words');
    await page.screenshot({path:path.join(out,`curl-${rtl?'rtl':'ltr'}-${landscape?'spread':'portrait'}-held.png`)});
    await page.evaluate(()=>endCurl());await page.waitForFunction(()=>!LinguaReaderCurl.active,{},{timeout:5000});
    assert.equal(await page.evaluate(()=>testEvents.filter(e=>e.event==='commit').length),1);

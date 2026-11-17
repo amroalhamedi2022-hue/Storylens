@@ -120,18 +120,34 @@ function mount(options){
   copy.className='lt-book-page lt-curl-ink';copy.inert=true;copy.setAttribute('aria-hidden','true');
   return copy;
  }
+ // The WebGL renderer owns continuous curvature. When textures are cold or
+ // WebGL2 is unavailable, use ONE native HTML sheet rather than 22 separate
+ // clip-path ribbons with visible seams, mirrored glyphs and jagged edges.
+ // No screenshot, network request, font re-layout or delayed texture swap.
  function buildFallbackFacets(h,style){
-  if(h.facets?.length)return;
-  const front=inertCopy(h.page),back=h.back?inertCopy(h.back):null;
-  // Retain the same text spans and line breaks as the actual reader paper.
-  for(const ink of [front,back].filter(Boolean))Object.assign(ink.style,{
-   padding:style.padding,font:style.font,color:style.color,
-   width:h.width+'px',height:h.height+'px'});
-  h.frontTemplate=front;h.backTemplate=back;h.facets=[];
-  for(let i=0;i<CURL_SEGMENTS+2;i++){
-   const facet=doc.createElement('div');facet.className='lt-curl-facet';
-   h.stage.append(facet);h.facets.push(facet);
-  }
+  if(h.fallbackCard)return;
+  const sheet=doc.createElement('div');
+  sheet.className='lt-curl-fallback-sheet';
+  sheet.setAttribute('aria-hidden','true');sheet.inert=true;
+  const face=(kind,source)=>{
+   const wrapper=doc.createElement('div');
+   wrapper.className='lt-curl-fallback-'+kind;
+   if(source){
+    const ink=inertCopy(source);
+    Object.assign(ink.style,{
+     padding:style.padding,font:style.font,color:style.color,
+     width:h.width+'px',height:h.height+'px'
+    });
+    wrapper.append(ink);
+   }else{
+    const paper=doc.createElement('div');
+    paper.className='lt-curl-blank-verso';
+    wrapper.append(paper);
+   }
+   return wrapper;
+  };
+  sheet.append(face('front',h.page),face('back',h.back||null));
+  h.stage.append(sheet);h.fallbackCard=sheet;
  }
  function makeVisual(h){
   const rect=h.page.getBoundingClientRect(),hostRect=host.getBoundingClientRect();
@@ -194,33 +210,18 @@ function mount(options){
    if(h.shadow)h.shadow.style.opacity='0';
    emit('progress',h);return;
   }
-  // Await an already-primed WebGL texture without flashing a legacy sheet.
-  if(!h.facets?.length){emit('progress',h);return;}
-  const g=geometry(h.width,h.height,h.distance,h.vertical,h.grabY,h.edge);
-  g.facets.forEach((g,i)=>{
-   const node=h.facets[i];
-   if(g.polygon.length<3){node.style.display='none';return;}
-   if(!node.firstElementChild){
-    const reverse=i>Math.ceil(CURL_SEGMENTS/2);
-    const face=doc.createElement('div');
-    face.className=reverse?'lt-curl-back':'lt-curl-front';
-    const ink=(reverse?(h.backTemplate||h.frontTemplate):h.frontTemplate).cloneNode(true);
-    if(reverse&&!h.backTemplate)ink.classList.add('lt-curl-ghost');
-    face.append(ink);node.append(face);
-   }
-   node.style.display='block';
-   node.style.clipPath='polygon('+g.polygon.map(p=>p.x.toFixed(2)+'px '+p.y.toFixed(2)+'px').join(',')+')';
-   node.style.transform='matrix3d('+g.matrix.map(x=>x.toFixed(6)).join(',')+')';
-   node.style.setProperty('--lt-curl-shade',g.shade.toFixed(3));
-   node.style.setProperty('--lt-curl-light',g.light);
-  });
-  // Do not let the long contact shadow escape the physical paper boundary
-  // when diagonal pulls make the geometric crease pass outside the sheet.
-  const creaseX=h.edge==='right'?g.crease:h.width-g.crease;
-  const x=clamp(creaseX,0,h.width);
-  const contactOpacity=(creaseX<0||creaseX>h.width||g.progress<.015)
-   ?0:Math.min(.30,g.progress*1.25);
-  h.shadow.style.cssText='left:'+x+'px;width:'+Math.max(4,g.radius*1.6)+'px;opacity:'+contactOpacity+';transform:translateX(-50%) rotate('+(-Math.atan2(g.normal.y,g.normal.x))+'rad)';
+  // A single live-DOM fallback sheet preserves readability and continuity
+  // even on a cold first gesture. Never switch renderer mid-hold.
+  if(!h.fallbackCard){emit('progress',h);return;}
+  const progress=clamp(h.distance/(2*h.width),0,1);
+  const sign=h.edge==='right'?-1:1;
+  const tilt=clamp((h.grabY/h.height-.5)*7+h.vertical/h.height*5,-7,7);
+  h.fallbackCard.style.transformOrigin=h.edge==='right'?'0% 50%':'100% 50%';
+  h.fallbackCard.style.transform='rotateY('+(sign*179*progress).toFixed(3)+
+   'deg) rotateZ('+(Math.sin(Math.PI*progress)*tilt).toFixed(3)+'deg)';
+  h.fallbackCard.style.setProperty('--lt-fallback-shade',
+   (Math.sin(Math.PI*progress)*.26).toFixed(3));
+  if(h.shadow)h.shadow.style.opacity='0';
   emit('progress',h);
  }
  function clean(h){
