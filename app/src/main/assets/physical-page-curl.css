@@ -97,3 +97,7 @@
 .reader #sentences.lt-curl-book>.lt-book-page.lt-curl-snapshot-page::after{
  display:none!important;
 }
+
+/* GPU spreads may draw over their facing page; only the whole book clips. */
+.reader .lt-curl-stage{overflow:visible!important}
+.reader .lt-curl-stage .lt-curl-webgl{max-width:none!important;max-height:none!important}

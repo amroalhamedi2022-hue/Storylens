@@ -14,6 +14,9 @@ const source=require('node:fs').readFileSync(
 assert.match(source,/const beneathIndex=spread===2\?\(delta>0\?target\+1:target\):target;/,
  'portrait must expose actual destination under the held paper');
 assert.match(VERTEX_SHADER,/#version 300 es/);
+assert.match(VERTEX_SHADER,/uCanvasOffset/,'facing-page projection has an offset');
+assert.match(VERTEX_SHADER,/oriented-grip/,'crease anchored to the held Y');
+assert.match(VERTEX_SHADER,/0\.34/,'limited diagonal twist prevents narrow ribbons');
 assert.match(FRAGMENT_SHADER,/gl_FrontFacing/);
 assert.match(FRAGMENT_SHADER,/fwidth/,'page-edge antialiasing');
 const mesh=createMesh(96,48);

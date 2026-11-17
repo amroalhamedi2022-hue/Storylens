@@ -147,6 +147,32 @@ const server=http.createServer((req,res)=>{
    assert.ok(freshness.after>freshness.changed,'restored page texture must refresh');
    assert.ok(freshness.bytes<=24*1024*1024,'bound idle snapshot memory');
    assert.equal(freshness.remaining,0,'temporary GPU cache must be releasable');
+   // A printed reverse must be able to move into the opposite facing page.
+   // One-page canvas clipping made a real landscape spread behave as two cards.
+   const facing=await page.evaluate(()=>{
+    const mod=window.LinguaCurlV2,host=document.createElement('div');
+    document.body.append(host);
+    const ink=document.createElement('canvas');ink.width=120;ink.height=160;
+    const ctx=ink.getContext('2d');ctx.fillStyle='#ff0000';ctx.fillRect(0,0,120,160);
+    const probe=(edge,pageOffset)=>{
+     const renderer=mod.createRenderer(window,host,120,160,{spread:2,pageOffset});
+     try{
+      renderer.install(ink,ink);renderer.draw(.90,.5,edge);
+      const canvas=renderer.canvas,gl=canvas.getContext('webgl2');
+      const data=new Uint8Array(canvas.width*canvas.height*4);
+      gl.readPixels(0,0,canvas.width,canvas.height,gl.RGBA,gl.UNSIGNED_BYTE,data);
+      let left=0,right=0;
+      for(let y=0;y<canvas.height;y++)for(let x=0;x<canvas.width;x++){
+       if(data[(y*canvas.width+x)*4+3]>100){if(x<canvas.width/2)left++;else right++;}
+      }
+      return {left,right,width:canvas.width,cssLeft:canvas.style.left};
+     }finally{renderer.destroy();}
+    };
+    try{return {r:probe('right',1),l:probe('left',0)};}
+    finally{host.remove();}
+   });
+   assert.ok(facing.r.left>100,'right page must fold into left facing page '+JSON.stringify(facing));
+   assert.ok(facing.l.right>100,'left page must fold into right facing page '+JSON.stringify(facing));
    const forwardPrime=await primeLiveTurn(1);
    assert.ok(forwardPrime.prepared&&forwardPrime.ready,
     'forward GPU page must be primed BEFORE touch: '+JSON.stringify(forwardPrime));

@@ -51,6 +51,8 @@ const VERTEX_SHADER=[
  '#version 300 es',
  'layout(location=0) in vec2 aUv;',
  'uniform vec2 uResolution;',
+ 'uniform float uCanvasWidth;',
+ 'uniform float uCanvasOffset;',
  'uniform float uProgress;',
  'uniform float uGrabY;',
  'uniform float uPullY;',
@@ -62,12 +64,13 @@ const VERTEX_SHADER=[
  'void main(){',
  ' vUv=aUv;',
  ' vec2 pos=aUv*uResolution;',
- ' // The physical crease tilts with both corner position and diagonal pull.',
- ' float angle=clamp((uGrabY-0.5)*0.52+uPullY*0.32,-0.65,0.65);',
+ ' // Crease pivots about held Y rather than producing triangular ribbons.',
+ ' float progress=clamp(uProgress,0.0,1.0);',
+ ' float angle=clamp((uGrabY-0.5)*0.32+uPullY*0.17,-0.34,0.34);',
  ' vec2 dir=vec2(cos(angle),sin(angle));',
  ' vec2 oriented=vec2(uEdge>0.0?pos.x:uResolution.x-pos.x,pos.y);',
- ' float curlCenter=uResolution.x*(1.0-clamp(uProgress,0.0,1.0));',
- ' float dist=dot(oriented,dir)-curlCenter;',
+ ' vec2 grip=vec2(uResolution.x*(1.0-progress),uGrabY*uResolution.y);',
+ ' float dist=dot(oriented-grip,dir);',
  ' vec3 p=vec3(oriented,0.0);',
  ' vec3 normal=vec3(0.0,0.0,1.0);',
  ' float theta=0.0;',
@@ -85,7 +88,7 @@ const VERTEX_SHADER=[
  ' }',
  ' if(uEdge<0.0){p.x=uResolution.x-p.x;normal.x=-normal.x;}',
  ' float perspective=1.0+p.z/2400.0;',
- ' vec2 ndc=((p.xy/uResolution)*2.0-1.0)/perspective;',
+ ' vec2 ndc=(((p.xy+vec2(uCanvasOffset,0.0))/vec2(uCanvasWidth,uResolution.y))*2.0-1.0)/perspective;',
  ' gl_Position=vec4(ndc*vec2(1.0,-1.0),-p.z/1200.0,1.0);',
  ' vNormal=normal;vCurlAngle=theta;',
  '}'
@@ -312,10 +315,17 @@ function blankBack(win,width,height,scale,color){
  ctx.fillStyle=color||'#f4eee0';ctx.fillRect(0,0,canvas.width,canvas.height);
  return canvas;
 }
-function makeRenderer(win,stage,width,height){
+function makeRenderer(win,stage,width,height,options={}){
+ const spread=options.spread===2?2:1;
+ const pageOffset=spread===2&&options.pageOffset===1?1:0;
+ const viewportWidth=width*spread,offsetX=pageOffset*width;
  const canvas=win.document.createElement('canvas');
  canvas.className='lt-curl-webgl';
- canvas.style.width=width+'px';canvas.style.height=height+'px';
+ // Override stylesheet inset:0!important; cover both paper tracks.
+ canvas.style.setProperty('left',-offsetX+'px','important');
+ canvas.style.setProperty('right','auto','important');
+ canvas.style.setProperty('width',viewportWidth+'px','important');
+ canvas.style.height=height+'px';
  stage.appendChild(canvas);
  const gl=canvas.getContext('webgl2',{
   alpha:true,antialias:true,depth:true,premultipliedAlpha:true,
@@ -324,8 +334,10 @@ function makeRenderer(win,stage,width,height){
  if(!gl){canvas.remove();throw new Error('WebGL2 unavailable');}
  const max=gl.getParameter(gl.MAX_TEXTURE_SIZE)||2048;
  const scale=rasterScale(win,width,height,Math.min(max,2048));
- canvas.width=Math.max(2,Math.round(width*scale));
- canvas.height=Math.max(2,Math.round(height*scale));
+ const maxRenderbuffer=gl.getParameter(gl.MAX_RENDERBUFFER_SIZE)||4096;
+ const renderScale=Math.max(.35,Math.min(scale,maxRenderbuffer/viewportWidth,maxRenderbuffer/height));
+ canvas.width=Math.max(2,Math.round(viewportWidth*renderScale));
+ canvas.height=Math.max(2,Math.round(height*renderScale));
  const program=makeProgram(gl),mesh=createMesh(),vao=gl.createVertexArray(),
   uv=gl.createBuffer(),idx=gl.createBuffer();
  gl.bindVertexArray(vao);
@@ -336,7 +348,9 @@ function makeRenderer(win,stage,width,height){
  gl.bindVertexArray(null);
  gl.useProgram(program);
  const uniform=name=>gl.getUniformLocation(program,name);
- const uniforms={resolution:uniform('uResolution'),progress:uniform('uProgress'),
+ const uniforms={resolution:uniform('uResolution'),
+  canvasWidth:uniform('uCanvasWidth'),canvasOffset:uniform('uCanvasOffset'),
+  progress:uniform('uProgress'),
   grabY:uniform('uGrabY'),pullY:uniform('uPullY'),radius:uniform('uRadius'),edge:uniform('uEdge'),
   front:uniform('uFrontTex'),back:uniform('uBackTex')};
  const textures=[];
@@ -372,6 +386,8 @@ function makeRenderer(win,stage,width,height){
    gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,back);
    gl.uniform1i(uniforms.front,0);gl.uniform1i(uniforms.back,1);
    gl.uniform2f(uniforms.resolution,width,height);
+   gl.uniform1f(uniforms.canvasWidth,viewportWidth);
+   gl.uniform1f(uniforms.canvasOffset,offsetX);
    gl.uniform1f(uniforms.progress,clamp(progress,0,1));
    gl.uniform1f(uniforms.grabY,clamp(grabY,0,1));
    gl.uniform1f(uniforms.pullY,clamp(pullY,-1,1));
@@ -389,11 +405,11 @@ function makeRenderer(win,stage,width,height){
   get canvas(){return canvas;}
  };
 }
-function createSession({win,host,stage,page,back,width,height,onReady,onFailed}){
+function createSession({win,host,stage,page,back,width,height,spread=1,pageOffset=0,onReady,onFailed}){
  if(!snapAllowed(win))return null;
  root.LinguaCurlV2.lastFailure=null;
  let disposed=false,renderer;
- try{renderer=makeRenderer(win,stage,width,height);}
+ try{renderer=makeRenderer(win,stage,width,height,{spread,pageOffset});}
  catch(e){root.LinguaCurlV2.lastFailure=String(e);return null;}
  renderer.canvas.hidden=true;
  renderer.canvas.addEventListener('webglcontextlost',event=>{

@@ -162,8 +162,11 @@ function mount(options){
   // Keep real, interactive-looking paper visible until GPU upload completes.
   // This avoids an intermediate faceted/screenshot frame or white flash.
   shadow.style.opacity='0';
+  // Extend the GPU viewport across the neighboring facing page.
+  const spread=h.info?.spread===2?2:1;
+  const pageOffset=spread===2&&rect.left-hostRect.left>hostRect.width*.25?1:0;
   h.webgl=v2.createSession({win,host,stage,page:h.page,back:textureBack,
-   width:h.width,height:h.height,
+   width:h.width,height:h.height,spread,pageOffset,
    onReady(){
     if(hold!==h||!h.stage?.isConnected)return;
     h.stage.classList.add('lt-curl-webgl-ready');
@@ -234,13 +237,18 @@ function mount(options){
  }
  function finish(success,reason){
   const h=hold;if(!h)return;
-  hold=null;clean(h);
-  if(h.started){
-   if(success){
-    // Commit is synchronous and returns false if its installed chapter is stale.
-    if(commit(h.delta,h.source)!==false)emit('commit',h,{progress:1});
-    else emit('cancel',h,{reason:'stale'});
-   }else emit('cancel',h,{reason});
+  hold=null;
+  if(h.started&&success){
+   // Swap the real destination ink while the curl still covers the reader.
+   // Cleaning first exposed the old or blank underlay for a compositor frame.
+   let committed=false;
+   try{committed=commit(h.delta,h.source)!==false;}
+   finally{clean(h);}
+   if(committed)emit('commit',h,{progress:1});
+   else emit('cancel',h,{reason:'stale'});
+  }else{
+   clean(h);
+   if(h.started)emit('cancel',h,{reason});
   }
  }
  function cancel(reason='cancel'){finish(false,reason);}
