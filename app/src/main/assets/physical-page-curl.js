@@ -310,16 +310,9 @@ function mount(options){
   if(hold)cancel('superseded');
   const h=begin(delta,(delta>0)!==rtl?'right':'left',source);if(!h)return false;
   h.grabY=h.height*.84;
-  // A deliberate button/key press must never freeze while html2canvas
-  // rasterizes missing paper. Navigate immediately; idle prewarm prepares
-  // the next turn. A held edge gesture still uses the stable HTML fallback.
-  const gpu=win.LinguaCurlV2;
-  if(gpu?.snapAllowed?.(win)&&gpu.isReady&&
-     !gpu.isReady({win,host,page:h.page,
-       back:h.back===undefined?(h.under||null):h.back,
-       width:h.width,height:h.height})){
-   h.started=true;emit('start',h);finish(true,'uncached-instant-turn');return true;
-  }
+  // Controls and keys must ALWAYS visibly turn the paper. Cold texture
+  // caches use the new single-sheet DOM fallback rather than an abrupt
+  // instant jump or a synchronous html2canvas capture on the input path.
   start(h);settle(true);return true;
  }
  on(host,'pointerdown',e=>{
