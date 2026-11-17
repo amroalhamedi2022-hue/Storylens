@@ -97,3 +97,27 @@
 .reader #sentences.lt-curl-book>.lt-book-page.lt-curl-snapshot-page::after{
  display:none!important;
 }
+
+/* GPU spreads may draw over their facing page; only the whole book clips. */
+.reader .lt-curl-stage{overflow:visible!important}
+.reader .lt-curl-stage .lt-curl-webgl{max-width:none!important;max-height:none!important}
+
+/* Seam-free cold-curl fallback: one real DOM sheet, never clipped strips. */
+.reader .lt-curl-stage .lt-curl-fallback-sheet{
+ position:absolute;inset:0;transform-style:preserve-3d;
+ backface-visibility:visible;will-change:transform;pointer-events:none
+}
+.reader .lt-curl-stage .lt-curl-fallback-front,
+.reader .lt-curl-stage .lt-curl-fallback-back{
+ position:absolute;inset:0;overflow:hidden;
+ backface-visibility:hidden;transform-style:flat;
+ background:var(--lt-curl-paper-image,none) var(--lt-curl-paper,#f7f1e3);
+}
+.reader .lt-curl-stage .lt-curl-fallback-back{transform:rotateY(180deg)}
+.reader .lt-curl-stage .lt-curl-fallback-front::after,
+.reader .lt-curl-stage .lt-curl-fallback-back::after{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:linear-gradient(90deg,rgba(31,25,18,var(--lt-fallback-shade,0)),
+ transparent 50%,rgba(31,25,18,var(--lt-fallback-shade,0)));
+}
+.reader .lt-curl-stage .lt-curl-blank-verso{position:absolute;inset:0}

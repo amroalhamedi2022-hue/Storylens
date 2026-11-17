@@ -105,7 +105,7 @@ function mount(options){
  let hold=null,frame=0,settleTimer=0,dead=false,suppressUntil=0;
  const listeners=[];
  const on=(node,type,fn,opts)=>{node.addEventListener(type,fn,opts);listeners.push(()=>node.removeEventListener(type,fn,opts));};
- const emit=(name,h,extra={})=>(host.isConnected?host:doc).dispatchEvent(new win.CustomEvent('lingua:turn'+name,{bubbles:true,detail:{id:h.id,delta:h.delta,source:h.source,progress:h.distance/(2*h.width),
+ const emit=(name,h,extra={})=>(host.isConnected?host:doc).dispatchEvent(new win.CustomEvent('lingua:turn'+name,{bubbles:true,detail:{id:h.id,delta:h.delta,source:h.source,progress:h.distance/h.width,
  grabY:clamp((h.grabY||0)/(h.height||1),0,1),
  pullY:clamp((h.vertical||0)/(h.height||1),-1,1),
  ...h.info,...extra}}));
@@ -120,18 +120,34 @@ function mount(options){
   copy.className='lt-book-page lt-curl-ink';copy.inert=true;copy.setAttribute('aria-hidden','true');
   return copy;
  }
+ // The WebGL renderer owns continuous curvature. When textures are cold or
+ // WebGL2 is unavailable, use ONE native HTML sheet rather than 22 separate
+ // clip-path ribbons with visible seams, mirrored glyphs and jagged edges.
+ // No screenshot, network request, font re-layout or delayed texture swap.
  function buildFallbackFacets(h,style){
-  if(h.facets?.length)return;
-  const front=inertCopy(h.page),back=h.back?inertCopy(h.back):null;
-  // Retain the same text spans and line breaks as the actual reader paper.
-  for(const ink of [front,back].filter(Boolean))Object.assign(ink.style,{
-   padding:style.padding,font:style.font,color:style.color,
-   width:h.width+'px',height:h.height+'px'});
-  h.frontTemplate=front;h.backTemplate=back;h.facets=[];
-  for(let i=0;i<CURL_SEGMENTS+2;i++){
-   const facet=doc.createElement('div');facet.className='lt-curl-facet';
-   h.stage.append(facet);h.facets.push(facet);
-  }
+  if(h.fallbackCard)return;
+  const sheet=doc.createElement('div');
+  sheet.className='lt-curl-fallback-sheet';
+  sheet.setAttribute('aria-hidden','true');sheet.inert=true;
+  const face=(kind,source)=>{
+   const wrapper=doc.createElement('div');
+   wrapper.className='lt-curl-fallback-'+kind;
+   if(source){
+    const ink=inertCopy(source);
+    Object.assign(ink.style,{
+     padding:style.padding,font:style.font,color:style.color,
+     width:h.width+'px',height:h.height+'px'
+    });
+    wrapper.append(ink);
+   }else{
+    const paper=doc.createElement('div');
+    paper.className='lt-curl-blank-verso';
+    wrapper.append(paper);
+   }
+   return wrapper;
+  };
+  sheet.append(face('front',h.page),face('back',h.back||null));
+  h.stage.append(sheet);h.fallbackCard=sheet;
  }
  function makeVisual(h){
   const rect=h.page.getBoundingClientRect(),hostRect=host.getBoundingClientRect();
@@ -162,8 +178,11 @@ function mount(options){
   // Keep real, interactive-looking paper visible until GPU upload completes.
   // This avoids an intermediate faceted/screenshot frame or white flash.
   shadow.style.opacity='0';
+  // Extend the GPU viewport across the neighboring facing page.
+  const spread=h.info?.spread===2?2:1;
+  const pageOffset=spread===2&&rect.left-hostRect.left>hostRect.width*.25?1:0;
   h.webgl=v2.createSession({win,host,stage,page:h.page,back:textureBack,
-   width:h.width,height:h.height,
+   width:h.width,height:h.height,spread,pageOffset,
    onReady(){
     if(hold!==h||!h.stage?.isConnected)return;
     h.stage.classList.add('lt-curl-webgl-ready');
@@ -186,38 +205,23 @@ function mount(options){
  function paint(h){
   if(!h.stage)return;
   if(h.webgl?.ready){
-   h.webgl.draw(h.distance/(2*h.width),h.grabY/h.height,h.edge,
+   h.webgl.draw(h.distance/h.width,h.grabY/h.height,h.edge,
     clamp(h.vertical/h.height,-1,1));
    if(h.shadow)h.shadow.style.opacity='0';
    emit('progress',h);return;
   }
-  // Await an already-primed WebGL texture without flashing a legacy sheet.
-  if(!h.facets?.length){emit('progress',h);return;}
-  const g=geometry(h.width,h.height,h.distance,h.vertical,h.grabY,h.edge);
-  g.facets.forEach((g,i)=>{
-   const node=h.facets[i];
-   if(g.polygon.length<3){node.style.display='none';return;}
-   if(!node.firstElementChild){
-    const reverse=i>Math.ceil(CURL_SEGMENTS/2);
-    const face=doc.createElement('div');
-    face.className=reverse?'lt-curl-back':'lt-curl-front';
-    const ink=(reverse?(h.backTemplate||h.frontTemplate):h.frontTemplate).cloneNode(true);
-    if(reverse&&!h.backTemplate)ink.classList.add('lt-curl-ghost');
-    face.append(ink);node.append(face);
-   }
-   node.style.display='block';
-   node.style.clipPath='polygon('+g.polygon.map(p=>p.x.toFixed(2)+'px '+p.y.toFixed(2)+'px').join(',')+')';
-   node.style.transform='matrix3d('+g.matrix.map(x=>x.toFixed(6)).join(',')+')';
-   node.style.setProperty('--lt-curl-shade',g.shade.toFixed(3));
-   node.style.setProperty('--lt-curl-light',g.light);
-  });
-  // Do not let the long contact shadow escape the physical paper boundary
-  // when diagonal pulls make the geometric crease pass outside the sheet.
-  const creaseX=h.edge==='right'?g.crease:h.width-g.crease;
-  const x=clamp(creaseX,0,h.width);
-  const contactOpacity=(creaseX<0||creaseX>h.width||g.progress<.015)
-   ?0:Math.min(.30,g.progress*1.25);
-  h.shadow.style.cssText='left:'+x+'px;width:'+Math.max(4,g.radius*1.6)+'px;opacity:'+contactOpacity+';transform:translateX(-50%) rotate('+(-Math.atan2(g.normal.y,g.normal.x))+'rad)';
+  // A single live-DOM fallback sheet preserves readability and continuity
+  // even on a cold first gesture. Never switch renderer mid-hold.
+  if(!h.fallbackCard){emit('progress',h);return;}
+  const progress=clamp(h.distance/h.width,0,1);
+  const sign=h.edge==='right'?-1:1;
+  const tilt=clamp((h.grabY/h.height-.5)*7+h.vertical/h.height*5,-7,7);
+  h.fallbackCard.style.transformOrigin=h.edge==='right'?'0% 50%':'100% 50%';
+  h.fallbackCard.style.transform='rotateY('+(sign*179*progress).toFixed(3)+
+   'deg) rotateZ('+(Math.sin(Math.PI*progress)*tilt).toFixed(3)+'deg)';
+  h.fallbackCard.style.setProperty('--lt-fallback-shade',
+   (Math.sin(Math.PI*progress)*.26).toFixed(3));
+  if(h.shadow)h.shadow.style.opacity='0';
   emit('progress',h);
  }
  function clean(h){
@@ -234,23 +238,28 @@ function mount(options){
  }
  function finish(success,reason){
   const h=hold;if(!h)return;
-  hold=null;clean(h);
-  if(h.started){
-   if(success){
-    // Commit is synchronous and returns false if its installed chapter is stale.
-    if(commit(h.delta,h.source)!==false)emit('commit',h,{progress:1});
-    else emit('cancel',h,{reason:'stale'});
-   }else emit('cancel',h,{reason});
+  hold=null;
+  if(h.started&&success){
+   // Swap the real destination ink while the curl still covers the reader.
+   // Cleaning first exposed the old or blank underlay for a compositor frame.
+   let committed=false;
+   try{committed=commit(h.delta,h.source)!==false;}
+   finally{clean(h);}
+   if(committed)emit('commit',h,{progress:1});
+   else emit('cancel',h,{reason:'stale'});
+  }else{
+   clean(h);
+   if(h.started)emit('cancel',h,{reason});
   }
  }
  function cancel(reason='cancel'){finish(false,reason);}
  function settle(success){
   const h=hold;if(!h)return;
   if(!h.started){cancel('no-fold');return;}
-  h.settling=true;h.target=success?2*h.width:0;h.success=success;
+  h.settling=true;h.target=success?h.width:0;h.success=success;
   if(h.physics){
-   h.physics.progress=clamp(h.distance/(2*h.width),0,1);
-   h.physics.velocity=clamp(h.velocity*1000/(2*h.width),-4,4);
+   h.physics.progress=clamp(h.distance/h.width,0,1);
+   h.physics.velocity=clamp(h.velocity*1000/h.width,-4,4);
    h.physics.grabY=clamp(h.grabY/h.height,0,1);
    h.physics.release(success?1:0);
   }
@@ -275,13 +284,13 @@ function mount(options){
    // Stable semi-implicit integration in <=8ms steps, independent of refresh rate.
    if(h.physics){
     const done=h.physics.update(dt);
-    h.distance=clamp(h.physics.progress*2*h.width,0,2*h.width);
-    h.velocity=h.physics.velocity*2*h.width;
+    h.distance=clamp(h.physics.progress*h.width,0,h.width);
+    h.velocity=h.physics.velocity*h.width;
     h.vertical*=Math.exp(-dt*12);
     if(done||h.elapsed>1.1){finish(h.success,'release');return;}
    }else{
     const steps=Math.ceil(dt/.008),step=dt/steps;
-    for(let i=0;i<steps;i++){h.velocity+=((h.target-h.distance)*210-h.velocity*29)*step;h.distance=clamp(h.distance+h.velocity*step,0,2*h.width);}
+    for(let i=0;i<steps;i++){h.velocity+=((h.target-h.distance)*210-h.velocity*29)*step;h.distance=clamp(h.distance+h.velocity*step,0,h.width);}
     h.vertical*=Math.exp(-dt*12);
     if((Math.abs(h.target-h.distance)<.35&&Math.abs(h.velocity)<3)||h.elapsed>1.1){finish(h.success,'release');return;}
    }
@@ -301,16 +310,9 @@ function mount(options){
   if(hold)cancel('superseded');
   const h=begin(delta,(delta>0)!==rtl?'right':'left',source);if(!h)return false;
   h.grabY=h.height*.84;
-  // A deliberate button/key press must never freeze while html2canvas
-  // rasterizes missing paper. Navigate immediately; idle prewarm prepares
-  // the next turn. A held edge gesture still uses the stable HTML fallback.
-  const gpu=win.LinguaCurlV2;
-  if(gpu?.snapAllowed?.(win)&&gpu.isReady&&
-     !gpu.isReady({win,host,page:h.page,
-       back:h.back===undefined?(h.under||null):h.back,
-       width:h.width,height:h.height})){
-   h.started=true;emit('start',h);finish(true,'uncached-instant-turn');return true;
-  }
+  // Controls and keys must ALWAYS visibly turn the paper. Cold texture
+  // caches use the new single-sheet DOM fallback rather than an abrupt
+  // instant jump or a synchronous html2canvas capture on the input path.
   start(h);settle(true);return true;
  }
  on(host,'pointerdown',e=>{
@@ -368,14 +370,14 @@ function mount(options){
   const d=(h.edge==='right'?-1:1)*dx;
   const dt=Math.max(1,e.timeStamp-h.lastAt);
   h.velocity=.65*(d-h.distance)/dt+.35*h.velocity;h.lastAt=e.timeStamp;
-  h.distance=clamp(d,0,2*h.width);
+  h.distance=clamp(d,0,h.width);
   // Grabbing the paper never locks its Y. Follow the finger up/down (including
   // at the corners) while staying within finite physically drawable bounds.
   h.grabY=clamp(e.clientY-h.top,0,h.height);
   h.vertical=clamp(dy,-h.height*.9,h.height*.9);
   suppressUntil=Date.now()+450;
-  h.physics?.drag(h.distance/(2*h.width),h.grabY/h.height,
-   h.velocity*1000/(2*h.width));
+  h.physics?.drag(h.distance/h.width,h.grabY/h.height,
+   h.velocity*1000/h.width);
   request();if(e.cancelable)e.preventDefault();
  },{passive:false});
  on(doc,'pointerup',e=>{if(hold?.pointer===e.pointerId){

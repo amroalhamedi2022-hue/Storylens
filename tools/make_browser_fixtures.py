@@ -313,7 +313,7 @@ _curl_fixture = r"""(async function(){
   const events=[];box.addEventListener('lingua:turncommit',e=>events.push(e.detail));
   send('pointerdown',x,y);send('pointermove',x+(dir==='rtl'?1:-1)*w*.75,y+80);
   await new Promise(r=>setTimeout(r,100));
-  if(!LinguaReaderCurl.active||box.querySelectorAll('.lt-curl-facet').length!==22||!box.querySelector('.lt-curl-under'))throw Error('mesh or real underlying paper missing');
+  if(!LinguaReaderCurl.active||box.querySelectorAll('.lt-curl-fallback-sheet').length!==1||!box.querySelector('.lt-curl-under'))throw Error('continuous fallback sheet or real underlying paper missing');
   if(box.querySelector('.lt-curl-stage .tok,.lt-curl-stage [id]'))throw Error('visual copy contains interactive identity');
   if(!held){
    send('pointercancel',x,y);

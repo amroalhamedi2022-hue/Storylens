@@ -1,6 +1,12 @@
 'use strict';
 const assert=require('node:assert/strict');
 const {geometry,shouldCommit,edgeDelta,spreadStart,grabEdge}=require('../app/src/main/assets/physical-page-curl.js');
+const gestureSource=require('node:fs').readFileSync(
+ require('node:path').join(__dirname,'../app/src/main/assets/physical-page-curl.js'),'utf8');
+assert.match(gestureSource,/progress:h\.distance\/h\.width/,
+ 'one leaf-width of travel must be one complete paper curl');
+assert.doesNotMatch(gestureSource,/2\*h\.width/,
+ 'the previous half-speed physics divisor is forbidden');
 function area(poly){return Math.abs(poly.reduce((a,p,i)=>{const q=poly[(i+1)%poly.length];return a+p.x*q.y-q.x*p.y},0))/2;}
 function transform(f,p){const m=f.matrix;return [m[0]*p.x+m[4]*p.y+m[12],m[1]*p.x+m[5]*p.y+m[13],m[2]*p.x+m[6]*p.y+m[14]];}
 for(const w of [240,510,800])for(const h of [400,850])for(const d of [0,8,w*.3,w,w*1.8,2*w])for(const y of [0,h/2,h])for(const dy of [-180,0,180]){

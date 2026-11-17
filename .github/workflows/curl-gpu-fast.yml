@@ -40,6 +40,12 @@ jobs:
         run: |
           export CHROME="$(command -v google-chrome || command -v chromium)"
           node tools/lingua-curl-v2-browser.cjs
+      - name: Validate seam-free cold HTML sheet in phone and spread
+        env:
+          NODE_PATH: /tmp/lt-gpu-browser/node_modules
+        run: |
+          export CHROME="$(command -v google-chrome || command -v chromium)"
+          node tools/physical-page-curl-browser.cjs
       - name: Preserve GPU screenshot evidence
         if: always()
         uses: actions/upload-artifact@v4
