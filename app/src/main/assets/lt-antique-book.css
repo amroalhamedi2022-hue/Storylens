@@ -13,14 +13,11 @@ html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.the
 html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader #sentences:not(.lt-curl-book)>.lt-book-page,
 html[data-lt-reader-material="book"] body:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,.theme-paper-atlas,.theme-midnight-library) .reader .lt-book-page {
  background-color:#f3e6cc!important;
- background-image:
-   linear-gradient(90deg,rgba(84,48,17,.17),rgba(120,78,36,.055) 3.5%,transparent 15%,transparent 83%,rgba(104,59,21,.065) 97%,rgba(81,48,20,.14)),
-   url("lt-antique-paper-grain.svg"),
-   radial-gradient(ellipse at 25% 12%,rgba(255,255,249,.44),transparent 61%),
-   radial-gradient(ellipse at 89% 87%,rgba(161,113,57,.14),transparent 62%),
-   linear-gradient(135deg,#f9eed9 0%,#f2dfbe 47%,#e9d1ab 100%)!important;
- background-size:100% 100%,192px 192px,100% 100%,100% 100%,100% 100%!important;
- background-repeat:no-repeat,repeat,no-repeat,no-repeat,no-repeat!important;
+ /* Native SVG rasterization avoids html2canvas radial-gradient tile seams.
+    Both idle DOM and prepared GPU faces use this identical paper image. */
+ background-image:url("lt-antique-paper-grain.svg"),url("lt-antique-paper-light.svg")!important;
+ background-size:192px 192px,100% 100%!important;
+ background-repeat:repeat,no-repeat!important;
  background-attachment:scroll!important;
  color:var(--lt-paper-ink)!important;
  border:1px solid rgba(130,86,45,.54)!important;

@@ -25,6 +25,11 @@ const server=http.createServer((req,res)=>{
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(url,{waitUntil:'domcontentloaded'});
    await page.evaluate(rtl=>{
+    window.__paperCaptures=[];
+    const capture=window.html2canvas;
+    window.html2canvas=async(...args)=>{
+     const canvas=await capture(...args);window.__paperCaptures.push(canvas);return canvas;
+    };
     window.turnEvents=[];for(const name of ['start','progress','commit','cancel'])
      document.addEventListener('lingua:turn'+name,e=>turnEvents.push({name,...e.detail}));
     const id=rtl?'thirteenth-bell-arabic':'last-passenger';
@@ -49,6 +54,27 @@ const server=http.createServer((req,res)=>{
     const prepared=await gpu.prime(options);
     return {prepared,ready:gpu.isReady(options)};
    },delta);
+   // Exercise the production idle scheduler before any explicit test priming.
+   await page.waitForFunction(()=>{
+    const host=document.querySelector('#sentences'),papers=[...host.children].filter(n=>n.classList.contains('lt-book-page')&&!n.classList.contains('lt-curl-snapshot-page'));
+    const spread=Number(host.dataset.spread)||1,i=papers.findIndex(n=>n.classList.contains('is-active'));
+    const front=papers[i+spread-1],r=front?.getBoundingClientRect();
+    return front&&LinguaCurlV2.isReady({win:window,host,page:front,back:papers[i+spread],under:papers[i+spread+1],stationary:papers[spread===2?i:i-1],width:r.width,height:r.height});
+   },null,{timeout:20000});
+   const paperSeam=await page.evaluate(()=>{
+    let maxJump=0;
+    for(const c of __paperCaptures){
+     const x=Math.min(12,c.width-2),a=c.getContext('2d').getImageData(x,0,6,c.height).data;
+     let previous=null;
+     for(let y=20;y<c.height-20;y++){
+      let sum=0;for(let x=0;x<6;x++){const i=(y*6+x)*4;sum+=a[i]+a[i+1]+a[i+2];}
+      const mean=sum/18;if(previous!==null)maxJump=Math.max(maxJump,Math.abs(mean-previous));previous=mean;
+     }
+    }
+    return {maxJump,captures:__paperCaptures.length};
+   });
+   assert.ok(paperSeam.captures>0&&paperSeam.maxJump<12,'horizontal paper raster seam: '+JSON.stringify(paperSeam));
+   await page.locator('#sentences').screenshot({path:path.join(out,'gpu-idle-'+(rtl?'rtl':'ltr')+'-'+(landscape?'spread':'portrait')+'.png')});
    // Regression: an earlier GPU upload flipped EVERY printed line vertically
    // despite all gesture and transaction tests passing. Check actual shader
    // pixels: the TOP of the paper must retain its TOP source texels.
@@ -440,7 +466,7 @@ const server=http.createServer((req,res)=>{
    await page.evaluate(()=>{window.requestAnimationFrame=window.__originalRaf;delete window.__originalRaf});
 
    assert.deepEqual(errors,[],'no page JS errors');
-   console.log('PASS GPU forward/backward/cancel '+(rtl?'RTL landscape':'LTR portrait'),report);
+   console.log('PASS GPU forward/backward/cancel '+((rtl?'RTL':'LTR')+' '+(landscape?'landscape':'portrait')),report);
    await page.close();
   }
  }finally{await browser.close();server.close();}

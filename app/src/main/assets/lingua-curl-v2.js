@@ -328,7 +328,7 @@ async function prime(o){
   for(const source of collectSources(o)){
    if(root.LinguaReaderCurl?.active)return false;
    const canvas=await cachedPage(win,host,source,width,height,entry.renderer.scale,()=>!host.isConnected);
-   if(!host.isConnected||root.LinguaReaderCurl?.active)return false;
+   if(!host.isConnected||gpuBooks.get(host)!==entry||entry.renderer.lost||root.LinguaReaderCurl?.active)return false;
    entry.renderer.prepare(source,canvas);
   }
   return isReady(o);
@@ -424,6 +424,7 @@ function makeRenderer(win,stage,width,height){
  }
  const blankTexture=upload(blank);
  function prepare(key,source){
+  if(dead||lost)return;
   if(resident.get(key)?.source===source)return;
   const previous=resident.get(key);if(previous)gl.deleteTexture(previous.texture);
   resident.delete(key);resident.set(key,{source,texture:upload(source)});

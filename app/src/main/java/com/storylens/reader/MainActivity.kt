@@ -227,6 +227,8 @@ class MainActivity : ComponentActivity() {
             .addPathHandler("/assets/", WebViewAssetLoader.AssetsPathHandler(this))
             .build()
 
+        // Debug builds alone expose WebView inspection for real Android QA.
+        WebView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG)
         reader = WebView(this).apply {
             setBackgroundColor(getColor(R.color.lingua_startup_surface))
             isVerticalScrollBarEnabled = false

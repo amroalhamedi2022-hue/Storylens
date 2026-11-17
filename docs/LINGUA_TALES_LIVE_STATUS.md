@@ -1,3 +1,7 @@
+## 2026-11-17 physical-sheet visual correction / Android QA
+
+User authorized completion and same-key APK delivery. PR #98 source `3d91656` passed GPU acceptance run 44131948222 and fast acceptance 44131956129. Its screenshots revealed a horizontal parchment raster seam despite gesture/pixel endpoint tests passing. Replaced unsupported multi-radial CSS rasterization with one bundled SVG lighting image shared by DOM and GPU, kept the grain layer. Added actual automatic warmup and paper-margin pixel discontinuity checks, and Android emulator QA. Full release acceptance remains pending these changes; no physical-device FPS claim.
+
 ## 2026-11-17 — Physical sheet renderer rebuild in progress
 
 Base main 45f7f788 (rollback to 101306). New implementation is NOT yet device accepted or released. Replaces per-turn WebGL context creation with idle-resident programs/textures, exact crease-clipped developable mesh, four physical paper surfaces, portrait camera, full-spread viewport and commit-before-cleanup. Numerical geometry (1,650 cases), portrait screen-space inversion (1,001 positions) and changed production face-order tests passed. Actual browser/GPU and Android execution remain BLOCKED, not passed. Public push requires explicit user permission after automatic approval rejection. No 120Hz or zero-artifact claim. See docs/qa/PHYSICAL_SHEET_ENGINE_2026-11-17.md.
