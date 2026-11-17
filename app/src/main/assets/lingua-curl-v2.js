@@ -378,6 +378,15 @@ async function capturePage(win,host,source,width,height,scale,disposed){
    onclone(clone){
     const item=clone.getElementById(marker);
     if(!item)throw new Error('Missing snapshot page in cloned document');
+    // html2canvas clips image backgrounds at its iframe viewport when a
+    // scrolled reader starts below y=0. Normalize ONLY the disposable clone.
+    for(let parent=item.parentElement;parent;parent=parent.parentElement){
+     for(const key of ['transform','perspective','filter','contain'])parent.style.setProperty(key,'none','important');
+     parent.style.setProperty('overflow','visible','important');
+    }
+    item.style.setProperty('position','fixed','important');
+    item.style.setProperty('left','0px','important');
+    item.style.setProperty('top','0px','important');
     item.style.setProperty('visibility','visible','important');
     item.style.setProperty('display','block','important');
    }
