@@ -4,6 +4,7 @@
 const params=new URLSearchParams(location.search);
 const engine=params.get("engine")==="st"?"st":"open";
 const rtl=params.get("rtl")==="1";
+const grab=params.get("grab")==="anywhere"?"anywhere":"edges";
 const host=document.getElementById("book");
 const status=document.getElementById("status");
 const details=document.getElementById("details");
@@ -53,7 +54,7 @@ try {
   book=window.OpenPageFlip.createBook(host,{
    width:330,height:505,size:"stretch",minWidth:290,maxWidth:420,
    layout:"auto",binding:rtl?"right":"left",cover:false,
-   flipDuration:650,shadowOpacity:.35,shadows:true,click:"edges",
+   flipDuration:650,shadowOpacity:.35,shadows:true,click:grab,
    drag:true,swipe:true,swipeDistance:30,ignoreDragOn:"button,a,[data-opf-no-flip]"
   });
   book.on("flip",ev=>events.push({kind:"flip",page:ev.page}));
@@ -61,7 +62,7 @@ try {
   book.on("flipProgress",ev=>{if(events.length<250)events.push({kind:"progress",value:ev.progress});});
  }
  window.evalBook={
-  engine,rtl,book,events,
+  engine,rtl,grab,book,events,
   get wordClicks(){return wordClicks;},
   currentPage(){return engine==="st"?book.getCurrentPageIndex():book.page;},
   orientation(){return engine==="st"?book.getOrientation():book.orientation;},
@@ -69,7 +70,7 @@ try {
   previous(){return engine==="st"?book.flipPrev("bottom"):book.flipPrev("bottom");},
   destroy(){return book.destroy();}
  };
- status.textContent=engine+" • "+(rtl?"RTL":"LTR")+" • "+window.evalBook.orientation()+
+ status.textContent=engine+" • "+(rtl?"RTL":"LTR")+" • "+grab+" • "+window.evalBook.orientation()+
   " • original offline Chapter I • NO production integration";
  details.textContent="Source: app/src/main/assets/classic-verne-towle-ch01.js\n"+
    "Package: "+(engine==="st"?"page-flip@2.0.7":"@openpageflip/core@0.7.0")+

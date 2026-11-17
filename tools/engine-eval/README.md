@@ -44,3 +44,11 @@ signing. No \`main\` merge and no signed APK are implied by a green experiment.
 
 Source references: https://github.com/Nodlik/StPageFlip and
 https://github.com/benhonda/openpageflip .
+
+## Additional free-grab gate
+
+`grab=anywhere` runs three extra OpenPageFlip configurations. It checks that a
+pointer press in the middle actually enters `user_fold`, that the book does
+not commit while held, and (crucially) that native pointer text selection
+continues to work. If selection is hijacked, free-grab must NOT be enabled
+in production without an independently verified gesture guard.

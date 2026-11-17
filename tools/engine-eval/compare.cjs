@@ -34,13 +34,13 @@ async function measure(page){
    over33ms:durations.filter(n=>n>33.3).length};
  });
 }
-async function scenario(browser,base,{engine,rtl,width,height}){
- const label=engine+'-'+(rtl?'rtl':'ltr')+'-'+(width<600?'phone':'spread');
+async function scenario(browser,base,{engine,rtl,width,height,grab='edges'}){
+ const label=engine+'-'+(rtl?'rtl':'ltr')+'-'+(width<600?'phone':'spread')+(grab==='anywhere'?'-anywhere':'');
  const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1,hasTouch:width<600});
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
- const report={engine,rtl,viewport:[width,height],label,engineLoaded:false,wordClick:false,
-  holdNoCommit:false,flipForward:false,flipBack:false,textSelection:false,
+ const report={engine,rtl,grab,viewport:[width,height],label,engineLoaded:false,wordClick:false,
+  holdNoCommit:false,freeGrabActivated:null,flipForward:false,flipBack:false,textSelection:false,pointerSelection:null,
   orientation:null,frameP95Ms:null,destroyRafDelta:null,failures:[],errors};
  try{
   await page.route('**/*',route=>route.request().url().startsWith(base)?route.continue():route.abort());
@@ -49,7 +49,7 @@ async function scenario(browser,base,{engine,rtl,width,height}){
    window.__ltRafRequests=0;
    window.requestAnimationFrame=function(...args){window.__ltRafRequests++;return native.apply(window,args);};
   });
-  await page.goto(base+'/tools/engine-eval/index.html?engine='+engine+'&rtl='+(rtl?'1':'0'),
+  await page.goto(base+'/tools/engine-eval/index.html?engine='+engine+'&rtl='+(rtl?'1':'0')+'&grab='+grab,
    {waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>document.body.dataset.ready==='yes'||document.body.dataset.ready==='failed',
    null,{timeout:18000});
@@ -89,8 +89,24 @@ async function scenario(browser,base,{engine,rtl,width,height}){
    const ok=sel.toString().length>0;sel.removeAllRanges();return ok;
   });
   if(!report.textSelection)report.failures.push('source paragraph cannot be selected');
+  // Genuine mouse text-selection attempt. An "anywhere" paper grab can
+  // hijack this gesture, so a selectable Range alone is NOT sufficient.
+  try{
+   const paragraph=page.locator('.paper:visible .source-text').first();
+   const pb=await paragraph.boundingBox();
+   if(!pb)throw Error('no visible original text');
+   const px=pb.x+15,py=pb.y+Math.min(22,pb.height*.30);
+   await page.mouse.move(px,py);await page.mouse.down();
+   await page.mouse.move(px+Math.min(95,pb.width*.28),py,{steps:7});
+   await sleep(120);
+   report.pointerSelection=(await page.evaluate(()=>getSelection()?.toString()?.trim().length||0))>0;
+   await page.mouse.up();
+   await page.evaluate(()=>getSelection()?.removeAllRanges());
+  }catch(e){report.pointerSelection=false;}
+  if(!report.pointerSelection)report.failures.push('real pointer text selection blocked');
   const box=await page.locator('#book').boundingBox();
-  const x=rtl?box.x+16:box.x+box.width-16,y=box.y+Math.min(box.height*.45,200);
+  const x=grab==='anywhere' ? box.x+box.width*(rtl?.40:.60) : rtl?box.x+16:box.x+box.width-16;
+  const y=box.y+Math.min(box.height*.45,200);
   const into=rtl?Math.min(135,box.width*.25):-Math.min(135,box.width*.25);
   const before=await page.evaluate(()=>window.evalBook.currentPage());
   try{
@@ -102,6 +118,10 @@ async function scenario(browser,base,{engine,rtl,width,height}){
       window.evalBook.book.state:'state via event only'
    }));
    report.holdNoCommit=(mid.page===before);
+   if(grab==='anywhere'){
+    report.freeGrabActivated=mid.state==='user_fold';
+    if(!report.freeGrabActivated)report.failures.push('inside-page hold did not start a physical fold');
+   }
    if(!report.holdNoCommit)report.failures.push('page committed before finger release');
    report.frame=(await measure(page));
    await page.screenshot({path:path.join(output,label+'-held.png')});
@@ -152,7 +172,10 @@ async function scenario(browser,base,{engine,rtl,width,height}){
    {engine:'open',rtl:false,width:460,height:860},
    {engine:'open',rtl:false,width:1200,height:800},
    {engine:'open',rtl:true,width:460,height:860},
-   {engine:'open',rtl:true,width:1200,height:800}
+   {engine:'open',rtl:true,width:1200,height:800},
+   {engine:'open',rtl:false,width:460,height:860,grab:'anywhere'},
+   {engine:'open',rtl:true,width:460,height:860,grab:'anywhere'},
+   {engine:'open',rtl:true,width:1200,height:800,grab:'anywhere'}
   ];
   const results=[];
   for(const c of cases)results.push(await scenario(browser,base,c));
