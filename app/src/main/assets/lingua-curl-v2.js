@@ -66,15 +66,19 @@ const VERTEX_SHADER=[
  ' vec2 pos=aUv*uResolution;',
  ' // Crease pivots about held Y rather than producing triangular ribbons.',
  ' float progress=clamp(uProgress,0.0,1.0);',
- ' float angle=clamp((uGrabY-0.5)*0.32+uPullY*0.17,-0.34,0.34);',
+ ' // The remote vertical edge lags behind the held fingertip.',
+ ' // Both ends return to their exact coordinates at progress 0 and 1.',
+ ' float taper=sin(3.14159265*progress)*clamp(abs(aUv.y-uGrabY),0.0,1.0);',
+ ' float localProgress=progress*(1.0-0.42*taper);',
+ ' float angle=clamp((uGrabY-0.5)*0.62+uPullY*0.22,-0.48,0.48);',
  ' vec2 dir=vec2(cos(angle),sin(angle));',
  ' vec2 oriented=vec2(uEdge>0.0?pos.x:uResolution.x-pos.x,pos.y);',
- ' vec2 grip=vec2(uResolution.x*(1.0-progress),uGrabY*uResolution.y);',
+ ' vec2 grip=vec2(uResolution.x*(1.0-localProgress),uGrabY*uResolution.y);',
  ' float dist=dot(oriented-grip,dir);',
  ' vec3 p=vec3(oriented,0.0);',
  ' vec3 normal=vec3(0.0,0.0,1.0);',
  ' float theta=0.0;',
- ' float r=max(uRadius,1.0);',
+ ' float r=max(6.0,uRadius*(1.0-0.50*taper));',
  ' if(dist>0.0){',
  '  theta=min(dist/r,3.14159265);',
  '  if(dist<r*3.14159265){',
@@ -391,7 +395,7 @@ function makeRenderer(win,stage,width,height,options={}){
    gl.uniform1f(uniforms.progress,clamp(progress,0,1));
    gl.uniform1f(uniforms.grabY,clamp(grabY,0,1));
    gl.uniform1f(uniforms.pullY,clamp(pullY,-1,1));
-   gl.uniform1f(uniforms.radius,Math.max(5,Math.min(width*.11,32+width*.045)));
+   gl.uniform1f(uniforms.radius,Math.max(7,Math.min(width*.080,24+width*.028)));
    gl.uniform1f(uniforms.edge,edge==='left'?-1:1);
    gl.drawElements(gl.TRIANGLES,mesh.indices.length,gl.UNSIGNED_SHORT,0);
    gl.bindVertexArray(null);
