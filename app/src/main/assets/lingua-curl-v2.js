@@ -353,6 +353,7 @@ async function capturePage(win,host,source,width,height,scale,disposed){
  });
  stage.setAttribute('aria-hidden','true');stage.inert=true;
  const original=win.getComputedStyle(source);
+ const nativePaper=original.backgroundImage.includes('lt-antique-paper-light.svg');
  for(const key of ['padding','border','borderRadius','font','color','direction','backgroundColor','backgroundImage','backgroundSize','backgroundPosition','backgroundRepeat']){
   const value=original[key];if(value)stage.style[key]=value;
  }
@@ -375,7 +376,7 @@ async function capturePage(win,host,source,width,height,scale,disposed){
    imageTimeout:3500,removeContainer:true,scrollX:0,scrollY:0,
    windowWidth:Math.max(doc.documentElement.clientWidth,Math.ceil(width)),
    windowHeight:Math.max(doc.documentElement.clientHeight,Math.ceil(height)),
-   onclone(clone){
+   async onclone(clone){
     const item=clone.getElementById(marker);
     if(!item)throw new Error('Missing snapshot page in cloned document');
     // html2canvas clips image backgrounds at its iframe viewport when a
@@ -389,10 +390,43 @@ async function capturePage(win,host,source,width,height,scale,disposed){
     item.style.setProperty('top','0px','important');
     item.style.setProperty('visibility','visible','important');
     item.style.setProperty('display','block','important');
+    if(nativePaper){
+     // Paint this layered background with the browser's SVG/image rasterizer,
+     // not html2canvas's partial CSS background implementation.
+     item.style.setProperty('background','transparent','important');
+     const rule=clone.createElement('style');
+     rule.textContent='#'+marker+'::before,#'+marker+'::after{display:none!important}';
+     clone.head.appendChild(rule);
+    }
+    // html2canvas ignores object-fit. Bake only image boxes with the native
+    // decoder at their exact CSS size; text and original DOM stay untouched.
+    for(const img of item.querySelectorAll('img')){
+     if(!img.complete)try{await img.decode();}catch(_){}
+     if(!img.naturalWidth)continue;
+     const style=clone.defaultView.getComputedStyle(img);
+     if(style.objectFit!=='contain')continue;
+     const r=img.getBoundingClientRect(),box=clone.createElement('canvas');
+     if(!r.width||!r.height)continue;
+     box.width=Math.ceil(r.width*scale);box.height=Math.ceil(r.height*scale);
+     for(const key of style)box.style.setProperty(key,style.getPropertyValue(key),'important');
+     box.style.setProperty('width',r.width+'px','important');box.style.setProperty('height',r.height+'px','important');
+     const ctx=box.getContext('2d'),ratio=Math.min(box.width/img.naturalWidth,box.height/img.naturalHeight);
+     const w=img.naturalWidth*ratio,h=img.naturalHeight*ratio;
+     ctx.drawImage(img,(box.width-w)/2,(box.height-h)/2,w,h);img.replaceWith(box);
+    }
    }
   });
   if(disposed())throw new Error('Curl cancelled during rasterization');
   if(canvas.width<2||canvas.height<2)throw new Error('Empty paper texture');
+  if(nativePaper){
+   const image=async name=>{const img=new win.Image();img.src=new URL(name,doc.baseURI).href;await img.decode();return img;};
+   const [light,grain]=await Promise.all([image('lt-antique-paper-light.svg'),image('lt-antique-paper-grain.svg')]);
+   const paper=doc.createElement('canvas');paper.width=canvas.width;paper.height=canvas.height;
+   const ctx=paper.getContext('2d');ctx.drawImage(light,0,0,paper.width,paper.height);
+   const tile=192*scale;
+   for(let y=0;y<paper.height;y+=tile)for(let x=0;x<paper.width;x+=tile)ctx.drawImage(grain,x,y,tile,tile);
+   ctx.drawImage(canvas,0,0);return paper;
+  }
   return canvas;
  }finally{stage.remove();}
 }

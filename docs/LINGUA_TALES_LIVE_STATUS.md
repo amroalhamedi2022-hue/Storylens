@@ -1,3 +1,7 @@
+## Capture isolation refinement
+
+Viewport normalization alone still failed the seam check (y=562). The background rasterizer is now bypassed for the affected antique material: native SVG lighting and grain are composited below transparent captured ink. Added native image-box drawing for object-fit:contain, which html2canvas otherwise stretches. These changes require the same pixel/visual checks before acceptance.
+
 ## Confirmed capture boundary cause
 
 Saved raster diagnostics locate the discontinuity at y=554 of a 742px leaf: the iframe viewport boundary, because the source page begins below the chapter hero. SVG substitution alone did not fix it and was not accepted. Normalize the disposable capture clone to viewport origin with ancestor transforms/containment removed, retaining live layout and all CSS selectors. Pixel check remains mandatory.
