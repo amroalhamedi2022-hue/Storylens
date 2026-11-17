@@ -1,0 +1,47 @@
+name: Lingua Tales — isolated third-party page-flip engine evaluation
+on:
+  push:
+    branches: [experiments/pageflip-engine-evaluation-20261117]
+    paths:
+      - 'tools/engine-eval/**'
+      - '.github/workflows/pageflip-library-evaluation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare pinned third-party engines and Playwright
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --prefix /tmp/lt-pageflip-engine-eval --no-audit --no-fund \
+            page-flip@2.0.7 @openpageflip/core@0.7.0 playwright@1.56.1
+          mkdir -p tools/engine-eval/vendor
+          cp /tmp/lt-pageflip-engine-eval/node_modules/page-flip/dist/js/page-flip.browser.js tools/engine-eval/vendor/stpageflip.js
+          cp /tmp/lt-pageflip-engine-eval/node_modules/@openpageflip/core/dist/index.iife.js tools/engine-eval/vendor/openpageflip.js
+          cp /tmp/lt-pageflip-engine-eval/node_modules/@openpageflip/core/dist/styles.css tools/engine-eval/vendor/openpageflip.css
+          cp /tmp/lt-pageflip-engine-eval/node_modules/page-flip/LICENSE tools/engine-eval/vendor/LICENSE_STPAGEFLIP
+          cp /tmp/lt-pageflip-engine-eval/node_modules/@openpageflip/core/LICENSE tools/engine-eval/vendor/LICENSE_OPENPAGEFLIP
+          sha256sum tools/engine-eval/vendor/* | tee tools/engine-eval/vendor/SHA256SUMS
+      - name: Run Chromium real reading source and gesture comparison offline
+        env:
+          NODE_PATH: /tmp/lt-pageflip-engine-eval/node_modules
+        shell: bash
+        run: |
+          export CHROME="$(command -v google-chrome || command -v chromium)"
+          node tools/engine-eval/compare.cjs
+      - name: Archive screenshots and source library licenses
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: LinguaTales-PageFlip-Independent-Evaluation
+          path: |
+            qa-pageflip-eval/**
+            tools/engine-eval/index.html
+            tools/engine-eval/demo.js
+            tools/engine-eval/vendor/**
+          if-no-files-found: ignore
