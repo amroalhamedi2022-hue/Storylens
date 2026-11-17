@@ -105,7 +105,7 @@ function mount(options){
  let hold=null,frame=0,settleTimer=0,dead=false,suppressUntil=0;
  const listeners=[];
  const on=(node,type,fn,opts)=>{node.addEventListener(type,fn,opts);listeners.push(()=>node.removeEventListener(type,fn,opts));};
- const emit=(name,h,extra={})=>(host.isConnected?host:doc).dispatchEvent(new win.CustomEvent('lingua:turn'+name,{bubbles:true,detail:{id:h.id,delta:h.delta,source:h.source,progress:h.distance/(2*h.width),
+ const emit=(name,h,extra={})=>(host.isConnected?host:doc).dispatchEvent(new win.CustomEvent('lingua:turn'+name,{bubbles:true,detail:{id:h.id,delta:h.delta,source:h.source,progress:h.distance/h.width,
  grabY:clamp((h.grabY||0)/(h.height||1),0,1),
  pullY:clamp((h.vertical||0)/(h.height||1),-1,1),
  ...h.info,...extra}}));
@@ -205,7 +205,7 @@ function mount(options){
  function paint(h){
   if(!h.stage)return;
   if(h.webgl?.ready){
-   h.webgl.draw(h.distance/(2*h.width),h.grabY/h.height,h.edge,
+   h.webgl.draw(h.distance/h.width,h.grabY/h.height,h.edge,
     clamp(h.vertical/h.height,-1,1));
    if(h.shadow)h.shadow.style.opacity='0';
    emit('progress',h);return;
@@ -213,7 +213,7 @@ function mount(options){
   // A single live-DOM fallback sheet preserves readability and continuity
   // even on a cold first gesture. Never switch renderer mid-hold.
   if(!h.fallbackCard){emit('progress',h);return;}
-  const progress=clamp(h.distance/(2*h.width),0,1);
+  const progress=clamp(h.distance/h.width,0,1);
   const sign=h.edge==='right'?-1:1;
   const tilt=clamp((h.grabY/h.height-.5)*7+h.vertical/h.height*5,-7,7);
   h.fallbackCard.style.transformOrigin=h.edge==='right'?'0% 50%':'100% 50%';
@@ -256,10 +256,10 @@ function mount(options){
  function settle(success){
   const h=hold;if(!h)return;
   if(!h.started){cancel('no-fold');return;}
-  h.settling=true;h.target=success?2*h.width:0;h.success=success;
+  h.settling=true;h.target=success?h.width:0;h.success=success;
   if(h.physics){
-   h.physics.progress=clamp(h.distance/(2*h.width),0,1);
-   h.physics.velocity=clamp(h.velocity*1000/(2*h.width),-4,4);
+   h.physics.progress=clamp(h.distance/h.width,0,1);
+   h.physics.velocity=clamp(h.velocity*1000/h.width,-4,4);
    h.physics.grabY=clamp(h.grabY/h.height,0,1);
    h.physics.release(success?1:0);
   }
@@ -284,13 +284,13 @@ function mount(options){
    // Stable semi-implicit integration in <=8ms steps, independent of refresh rate.
    if(h.physics){
     const done=h.physics.update(dt);
-    h.distance=clamp(h.physics.progress*2*h.width,0,2*h.width);
-    h.velocity=h.physics.velocity*2*h.width;
+    h.distance=clamp(h.physics.progress*h.width,0,h.width);
+    h.velocity=h.physics.velocity*h.width;
     h.vertical*=Math.exp(-dt*12);
     if(done||h.elapsed>1.1){finish(h.success,'release');return;}
    }else{
     const steps=Math.ceil(dt/.008),step=dt/steps;
-    for(let i=0;i<steps;i++){h.velocity+=((h.target-h.distance)*210-h.velocity*29)*step;h.distance=clamp(h.distance+h.velocity*step,0,2*h.width);}
+    for(let i=0;i<steps;i++){h.velocity+=((h.target-h.distance)*210-h.velocity*29)*step;h.distance=clamp(h.distance+h.velocity*step,0,h.width);}
     h.vertical*=Math.exp(-dt*12);
     if((Math.abs(h.target-h.distance)<.35&&Math.abs(h.velocity)<3)||h.elapsed>1.1){finish(h.success,'release');return;}
    }
@@ -370,14 +370,14 @@ function mount(options){
   const d=(h.edge==='right'?-1:1)*dx;
   const dt=Math.max(1,e.timeStamp-h.lastAt);
   h.velocity=.65*(d-h.distance)/dt+.35*h.velocity;h.lastAt=e.timeStamp;
-  h.distance=clamp(d,0,2*h.width);
+  h.distance=clamp(d,0,h.width);
   // Grabbing the paper never locks its Y. Follow the finger up/down (including
   // at the corners) while staying within finite physically drawable bounds.
   h.grabY=clamp(e.clientY-h.top,0,h.height);
   h.vertical=clamp(dy,-h.height*.9,h.height*.9);
   suppressUntil=Date.now()+450;
-  h.physics?.drag(h.distance/(2*h.width),h.grabY/h.height,
-   h.velocity*1000/(2*h.width));
+  h.physics?.drag(h.distance/h.width,h.grabY/h.height,
+   h.velocity*1000/h.width);
   request();if(e.cancelable)e.preventDefault();
  },{passive:false});
  on(doc,'pointerup',e=>{if(hold?.pointer===e.pointerId){

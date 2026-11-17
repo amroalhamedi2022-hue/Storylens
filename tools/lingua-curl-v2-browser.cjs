@@ -211,6 +211,8 @@ const server=http.createServer((req,res)=>{
      commits:turnEvents.filter(e=>e.name==='commit').length};
    });
    assert.ok(firstHold.active,'the finger-held sheet must remain live while stationary');
+   assert.ok(Math.abs(firstHold.progress.progress-Math.abs(freeGrab.d)/freeGrab.width)<.06,
+    'dragging 34% of a leaf must make 34% curl progress, rather than 17%');
    assert.equal(firstHold.commits,0,'holding the paper must not navigate');
    await page.screenshot({path:path.join(out,
     'gpu-curl-free-hold-'+(rtl?'rtl-spread':'ltr-phone')+'-first.png')});
