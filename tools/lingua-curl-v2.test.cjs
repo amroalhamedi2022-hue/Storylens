@@ -16,7 +16,8 @@ assert.match(source,/const beneathIndex=spread===2\?\(delta>0\?target\+1:target\
 assert.match(VERTEX_SHADER,/#version 300 es/);
 assert.match(VERTEX_SHADER,/uCanvasOffset/,'facing-page projection has an offset');
 assert.match(VERTEX_SHADER,/oriented-grip/,'crease anchored to the held Y');
-assert.match(VERTEX_SHADER,/0\.48/,'point-grip steering has bounded twist');
+assert.match(VERTEX_SHADER,/0\.20/,'twist angle remains within a fifth radian to prevent a triangular spike');
+assert.match(VERTEX_SHADER,/0\.11\*taper/,'far edge lag stays under eleven percent of local fold progress');
 assert.match(VERTEX_SHADER,/localProgress/,'sheet bend changes with Y, not one uniform cylinder');
 assert.match(VERTEX_SHADER,/taper=sin/,'far edge lag vanishes at full turn and at rest');
 assert.match(FRAGMENT_SHADER,/gl_FrontFacing/);
