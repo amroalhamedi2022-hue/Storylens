@@ -106,7 +106,7 @@ async function scenario(browser,base,{engine,rtl,width,height,grab='edges'}){
   if(!report.pointerSelection)report.failures.push('real pointer text selection blocked');
   const box=await page.locator('#book').boundingBox();
   const x=grab==='anywhere' ? box.x+box.width*(rtl?.40:.60) : rtl?box.x+16:box.x+box.width-16;
-  const y=box.y+Math.min(box.height*.45,200);
+  const y=grab==='anywhere'?box.y+box.height*.88:box.y+Math.min(box.height*.45,200);
   const into=rtl?Math.min(135,box.width*.25):-Math.min(135,box.width*.25);
   const before=await page.evaluate(()=>window.evalBook.currentPage());
   try{
@@ -120,7 +120,7 @@ async function scenario(browser,base,{engine,rtl,width,height,grab='edges'}){
    report.holdNoCommit=(mid.page===before);
    if(grab==='anywhere'){
     report.freeGrabActivated=mid.state==='user_fold';
-    if(!report.freeGrabActivated)report.failures.push('inside-page hold did not start a physical fold');
+    if(!report.freeGrabActivated)report.failures.push('inside-blank-paper hold did not start a fold');
    }
    if(!report.holdNoCommit)report.failures.push('page committed before finger release');
    report.frame=(await measure(page));

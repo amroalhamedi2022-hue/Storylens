@@ -55,7 +55,7 @@ try {
    width:330,height:505,size:"stretch",minWidth:290,maxWidth:420,
    layout:"auto",binding:rtl?"right":"left",cover:false,
    flipDuration:650,shadowOpacity:.35,shadows:true,click:grab,
-   drag:true,swipe:true,swipeDistance:30,ignoreDragOn:"button,a,[data-opf-no-flip]"
+   drag:true,swipe:true,swipeDistance:30,ignoreDragOn:"button,a,[data-opf-no-flip],.source-text,h2"
   });
   book.on("flip",ev=>events.push({kind:"flip",page:ev.page}));
   book.on("changeState",ev=>events.push({kind:"state",state:ev.state}));

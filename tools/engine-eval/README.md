@@ -52,3 +52,14 @@ pointer press in the middle actually enters `user_fold`, that the book does
 not commit while held, and (crucially) that native pointer text selection
 continues to work. If selection is hijacked, free-grab must NOT be enabled
 in production without an independently verified gesture guard.
+
+## Selection-vs-hold conflict exposed by second run
+
+The initial `click:anywhere` probe correctly folded the page but blocked native
+pointer text selection, even though the app's word button remained clickable.
+We now explicitly protect `.source-text,h2` through OpenPageFlip's
+`ignoreDragOn` option. Free-grab is tested on the blank lower paper, not
+within actual words. **This is a deliberate compromise**: a single pointer
+gesture on live text cannot simultaneously select text and seize the leaf.
+Do not claim unlimited grab everywhere. Re-test both interactions in real
+Android WebView before any production integration.
