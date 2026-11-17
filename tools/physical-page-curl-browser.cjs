@@ -70,15 +70,20 @@ const server=http.createServer((req,res)=>{
    assert.equal(await page.locator('.lt-curl-under').count(),1);
    assert.equal(await page.locator('.lt-curl-stage .tok').count(),0,'no duplicate dictionary buttons');
    assert.equal(await page.locator('.lt-curl-stage [id]').count(),0,'no duplicate DOM identities');
-   assert.ok(await page.evaluate(landscape=>{
+   const reverseProof=await page.evaluate(landscape=>{
     const back=document.querySelector('.lt-curl-fallback-back');
-    const ink=back.querySelector('.lt-curl-ink');
-    const css=getComputedStyle(back);
-    if(css.backfaceVisibility!=='hidden')return false;
-    if(landscape)return !!ink&&ink.textContent.trim().length>10;
-    return !ink&&!!back.querySelector('.lt-curl-blank-verso');
-   },landscape),
-   'landscape has a printed reverse; portrait has unprinted paper with no ghost words');
+    const ink=back?.querySelector('.lt-curl-ink');
+    const blank=!!back?.querySelector('.lt-curl-blank-verso');
+    const boundary=!!document.querySelector('.lt-curl-boundary-preview');
+    const backText=ink?.textContent?.trim().length||0;
+    const backfaceVisibility=back?getComputedStyle(back).backfaceVisibility:null;
+    const ok=backfaceVisibility==='hidden'&&(
+     landscape?backText>10||(boundary&&blank&&!ink):blank&&!ink);
+    return {ok,landscape,backText,blank,boundary,backfaceVisibility};
+   },landscape);
+   assert.ok(reverseProof.ok,
+    'verso must be printed within a two-page chapter, unprinted at a chapter boundary: '+
+    JSON.stringify(reverseProof));
    await page.screenshot({path:path.join(out,`curl-${rtl?'rtl':'ltr'}-${landscape?'spread':'portrait'}-held.png`)});
    await page.evaluate(()=>endCurl());await page.waitForFunction(()=>!LinguaReaderCurl.active,{},{timeout:5000});
    assert.equal(await page.evaluate(()=>testEvents.filter(e=>e.event==='commit').length),1);
