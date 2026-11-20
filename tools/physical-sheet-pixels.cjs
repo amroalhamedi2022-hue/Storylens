@@ -18,21 +18,26 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
    engine.prepare('front',front);engine.prepare('back',back);
    engine.prepare('under',texture('UNDER 14 →'));engine.prepare('stationary',texture('STATIONARY 11 →'));
    const gl=engine.canvas.getContext('webgl2');
+   let meshUploads=0;
+   const upload=gl.bufferSubData.bind(gl);
+   gl.bufferSubData=(...args)=>{meshUploads++;return upload(...args);};
    function sample(x,y){const data=new Uint8Array(4);gl.readPixels(x,engine.canvas.height-1-y,1,1,gl.RGBA,gl.UNSIGNED_BYTE,data);return Array.from(data);}
    const report=[];
    for(const edge of ['left','right'])for(const portrait of [false,true]){
     engine.use({page:'front',back:'back',under:'under',stationary:'stationary',portrait});
     engine.viewport(portrait?w:w*2,h,portrait?0:edge==='right'?w:0,0);
+    const startUploads=meshUploads;
     engine.draw(0,.5,edge);
     const origin=portrait?0:edge==='right'?w:0;
     const before=[sample(origin+100,150),sample(origin+300,150),sample(origin+100,450),sample(origin+300,450)];
     engine.draw(1,.9,edge,.4);
     const dest=portrait?0:edge==='right'?0:w;
     const after=[sample(dest+100,150),sample(dest+300,150),sample(dest+100,450),sample(dest+300,450)];
-    report.push({edge,portrait,before,after});
+    report.push({edge,portrait,before,after,meshUploads:meshUploads-startUploads});
    }
    window.probe={engine,w,h};return report;
   });
+  for(const row of result)assert.equal(row.meshUploads,2,'one dynamic mesh upload per frame across all shadow passes');
   for(const row of result)assert.deepEqual(row.after,row.before,'verso must land exactly upright, unmirrored, full-width: '+JSON.stringify(row));
   for(const portrait of [false,true])for(const edge of ['left','right'])for(const progress of [0,.1,.25,.5,.75,.99,1]){
    await page.evaluate(({portrait,edge,progress})=>{

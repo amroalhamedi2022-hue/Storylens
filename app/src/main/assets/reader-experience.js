@@ -622,7 +622,7 @@ function installPageTurn(){
       ?initial:ltPageForParagraph(starts,firstParagraph)));
  current=Math.floor(current/spread)*spread;
  let curl=null;
- let curlPrimeTimer=null;
+ let curlPrimeTimer=null,priming=false,primeAgain=false;
  // Pre-capture only the present leaf and its immediate verso when reading is
  // idle. This avoids rasterizing the novel, stealing a word tap, or waiting for
  // two fresh snapshots at the instant a quick gesture begins.
@@ -634,6 +634,8 @@ function installPageTurn(){
    if(!sentenceBox.isConnected||state.page!=='reader'||document.hidden||
      window.LinguaReaderCurl?.active||
      document.querySelector('#modals .sheet,.lt-art-inspection-backdrop'))return;
+   if(priming){primeAgain=true;return;}
+   const primePage=current;
    const nextFront=pages[Math.min(current+spread-1,pages.length-1)];
    // Both physical sides are printed; the portrait camera follows the verso.
    // Idle priming includes the underlying and stationary sheets as well.
@@ -646,20 +648,30 @@ function installPageTurn(){
    const gpu=window.LinguaCurlV2;
    // Idle capture is sequential to avoid two heavy html2canvas iframes
    // contending on slower Android GPUs. Cover both physical turn directions.
+   priming=true;
    (async()=>{
     if(nextFront)await gpu.prime({win:window,host:sentenceBox,
      page:nextFront,back:nextBack,
      under:pages[current+spread+1]||null,stationary:pages[current]===nextFront?pages[current-1]:pages[current],
      width:rect.width,height:rect.height});
-    if(prevFront&&prevBack&&sentenceBox.isConnected&&
+    if(current===primePage&&prevFront&&prevBack&&sentenceBox.isConnected&&
        state.page==='reader'&&!document.hidden&&!window.LinguaReaderCurl?.active)
      await gpu.prime({win:window,host:sentenceBox,
       page:prevFront,back:prevBack,
       under:pages[current-2]||null,stationary:pages[current+1]||null,
       width:rect.width,height:rect.height});
-   })().catch(error=>{gpu.lastWarmupWarning=String(error);});
-  },180);
+    // Six resident portrait leaves cover both directions and the next
+    // forward turn. Prepare its last missing face before a rapid second swipe.
+    if(spread===1&&current===primePage&&pages[current+3]&&sentenceBox.isConnected&&
+       !document.hidden&&!window.LinguaReaderCurl?.active)
+     await gpu.prime({win:window,host:sentenceBox,page:pages[current+3],width:rect.width,height:rect.height});
+   })().catch(error=>{gpu.lastWarmupWarning=String(error);}).finally(()=>{
+    priming=false;
+    if(primeAgain&&sentenceBox.isConnected){primeAgain=false;scheduleGpuPaperPrime();}
+   });
+  },60);
  }
+ sentenceBox.addEventListener('lingua:turncancel',scheduleGpuPaperPrime);
  const prev=pageControls.querySelector('.lt-page-prev');
  const next=pageControls.querySelector('.lt-page-next');
  const countLabel=pageControls.querySelector('.lt-page-count');

@@ -17,7 +17,17 @@ fs.mkdirSync(out,{recursive:true});
    await device.shell('wm density 160');
    await device.shell('am start -n '+pkg+'/com.storylens.reader.MainActivity');
    const view=await device.webView({pkg}),page=await view.page();
-   await page.waitForFunction(()=>typeof openStory==='function'&&typeof catalog!=='undefined'&&catalog.stories?.some(s=>s.id==='last-passenger'));
+   page.on('pageerror',e=>console.error('WebView error',e.message));
+   try{
+    await page.waitForFunction(()=>typeof openStory==='function'&&typeof catalog!=='undefined'&&catalog.stories?.some(s=>s.id==='last-passenger'),null,{timeout:90000});
+   }catch(error){
+    console.error('Installed WebView startup',await page.evaluate(()=>({
+     url:location.href,title:document.title,userAgent:navigator.userAgent,state:document.readyState,
+     reader:typeof openStory,catalog:typeof catalog,screen:document.body?.innerText.slice(0,300)
+    })));
+    await page.screenshot({path:out+'/startup-failure.png',timeout:10000}).catch(()=>{});
+    throw error;
+   }
    for(const rtl of [false,true]){
     const tag=(rtl?'rtl':'ltr')+'-'+(landscape?'spread':'portrait');
     await page.evaluate(rtl=>{

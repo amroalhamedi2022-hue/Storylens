@@ -127,7 +127,7 @@ function mount(options){
   for(const ink of [front,back].filter(Boolean))Object.assign(ink.style,{
    padding:style.padding,font:style.font,color:style.color,
    width:h.width+'px',height:h.height+'px'});
-  h.frontTemplate=front;h.backTemplate=back;h.facets=[];
+  h.frontTemplate=front;h.backTemplate=back;h.facets=[];h.parkedFaces=[];
   for(let i=0;i<CURL_SEGMENTS+2;i++){
    const facet=doc.createElement('div');facet.className='lt-curl-facet';
    h.stage.append(facet);h.facets.push(facet);
@@ -212,7 +212,14 @@ function mount(options){
   const g=geometry(h.width,h.height,h.distance/h.travel*2*h.width,h.vertical,h.grabY,h.edge);
   g.facets.forEach((g,i)=>{
    const node=h.facets[i];
-   if(g.polygon.length<3){node.style.display='none';if(node.firstElementChild)node.replaceChildren();return;}
+   if(g.polygon.length<3){
+    node.style.display='none';
+    if(node.firstElementChild)h.parkedFaces[i]=node.removeChild(node.firstElementChild);
+    return;
+   }
+   if(!node.firstElementChild&&h.parkedFaces[i]){
+    node.append(h.parkedFaces[i]);h.parkedFaces[i]=null;
+   }
    if(!node.firstElementChild){
     const reverse=i>Math.ceil(CURL_SEGMENTS/2);
     const face=doc.createElement('div');

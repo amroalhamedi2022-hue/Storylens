@@ -373,6 +373,10 @@ async function capturePage(win,host,source,width,height,scale,disposed){
   if(disposed())throw new Error('Curl cancelled before rasterization');
   const canvas=await win.html2canvas(stage,{
    backgroundColor:null,scale,logging:false,useCORS:false,allowTaint:false,
+   // All other paginated leaves may hold thousands of token spans. They
+   // cannot contribute pixels to this fixed-position capture.
+   ignoreElements:element=>element!==stage&&element.parentElement===host&&
+    element.classList.contains('lt-book-page'),
    imageTimeout:3500,removeContainer:true,scrollX:0,scrollY:0,
    windowWidth:Math.max(doc.documentElement.clientWidth,Math.ceil(width)),
    windowHeight:Math.max(doc.documentElement.clientHeight,Math.ceil(height)),
@@ -456,6 +460,7 @@ function makeRenderer(win,stage,width,height){
   .map(name=>[name,gl.getUniformLocation(program,name)]));
  const resident=new Map();let dead=false,lost=false,faces=null,viewWidth=width,viewHeight=height,offsetX=0,offsetY=0;
  const flat=sheetGeometry(width,height,0).vertices;
+ gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferSubData(gl.ARRAY_BUFFER,0,flat);
  const blank=blankBack(win,width,height,scale,'#f4eee0');
  function upload(source){
   const t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);
@@ -469,7 +474,8 @@ function makeRenderer(win,stage,width,height){
  const blankTexture=upload(blank);
  function prepare(key,source){
   if(dead||lost)return;
-  if(resident.get(key)?.source===source)return;
+  const hit=resident.get(key);
+  if(hit?.source===source){resident.delete(key);resident.set(key,hit);return;}
   const previous=resident.get(key);if(previous)gl.deleteTexture(previous.texture);
   resident.delete(key);resident.set(key,{source,texture:upload(source)});
   while(resident.size>6){const key=resident.keys().next().value;gl.deleteTexture(resident.get(key).texture);resident.delete(key);}
@@ -482,11 +488,10 @@ function makeRenderer(win,stage,width,height){
  }
  viewport(width,height);
  function paint(vertices,front,back,x,y,shadow=0){
-  gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferSubData(gl.ARRAY_BUFFER,0,vertices);
   gl.uniform2f(uniforms.uOffset,x,y);gl.uniform1f(uniforms.uShadow,shadow);
   gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,front||blankTexture);
   gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,back||front||blankTexture);
-  gl.drawArrays(gl.TRIANGLES,0,vertices.length/8);
+  gl.drawArrays(gl.TRIANGLES,vertices===flat?0:flat.length/8,vertices.length/8);
  }
  const api={scale,
   prepare,has:(key,source)=>!dead&&!lost&&resident.get(key)?.source===source,
@@ -509,6 +514,7 @@ function makeRenderer(win,stage,width,height){
    gl.disable(gl.DEPTH_TEST);gl.useProgram(program);gl.bindVertexArray(vao);
    gl.uniform2f(uniforms.uViewport,viewWidth,viewHeight);
    gl.uniform1i(uniforms.uFrontTex,0);gl.uniform1i(uniforms.uBackTex,1);
+   gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferSubData(gl.ARRAY_BUFFER,flat.byteLength,g.vertices);
    if(faces.book){
     paint(flat,faces.under,faces.under,x,y);
     paint(flat,faces.stationary,faces.stationary,x+(edge==='right'?-width:width),y);
