@@ -17,11 +17,11 @@ fs.mkdirSync(out,{recursive:true});
    await device.shell('wm density 160');
    await device.shell('am start -n '+pkg+'/com.storylens.reader.MainActivity');
    const view=await device.webView({pkg}),page=await view.page();
-   await page.waitForFunction(()=>typeof openStory==='function');
+   await page.waitForFunction(()=>typeof openStory==='function'&&typeof catalog!=='undefined'&&catalog.stories?.some(s=>s.id==='last-passenger'));
    for(const rtl of [false,true]){
     const tag=(rtl?'rtl':'ltr')+'-'+(landscape?'spread':'portrait');
     await page.evaluate(rtl=>{
-     const id=rtl?'thirteenth-bell-arabic':'around-the-world-in-eighty-days-towle';
+     const id=rtl?'thirteenth-bell-arabic':'last-passenger';
      state.inline=false;put('chapter_'+id,0);put('readpage_'+id+'_0',0);put('readpage_anchor_'+id+'_0',0);openStory(id);
      window.androidTurns=[];
      if(!window.androidListener){
@@ -32,7 +32,7 @@ fs.mkdirSync(out,{recursive:true});
     await page.evaluate(()=>document.fonts.ready);
     const ready=async delta=>{
      await page.waitForFunction(delta=>{
-      const host=document.querySelector('#sentences'),ps=[...host.children].filter(n=>n.classList.contains('lt-book-page')&&!n.classList.contains('lt-curl-snapshot-page'));
+      const host=document.querySelector('#sentences');if(!host)return false;const ps=[...host.children].filter(n=>n.classList.contains('lt-book-page')&&!n.classList.contains('lt-curl-snapshot-page'));
       const s=Number(host.dataset.spread)||1,i=ps.findIndex(n=>n.classList.contains('is-active'));
       const front=ps[delta>0?i+s-1:i],r=front?.getBoundingClientRect();
       return front&&LinguaCurlV2.isReady({win:window,host,page:front,back:ps[delta>0?i+s:i-1],under:ps[delta>0?i+s+1:i-2],stationary:ps[delta>0?(s===2?i:i-1):i+1],width:r.width,height:r.height});
