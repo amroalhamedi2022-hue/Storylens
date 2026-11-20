@@ -26,9 +26,11 @@ const server=http.createServer((req,res)=>{
    await page.goto(url,{waitUntil:'domcontentloaded'});
    await page.evaluate(rtl=>{
     window.__paperCaptures=[];
-    const capture=window.html2canvas;
-    window.html2canvas=async(...args)=>{
-     const canvas=await capture(...args);window.__paperCaptures.push(canvas);return canvas;
+    const proto=WebGL2RenderingContext.prototype,upload=proto.texImage2D;
+    proto.texImage2D=function(...args){
+     const paper=args.at(-1);
+     if(paper instanceof HTMLCanvasElement)window.__paperCaptures.push(paper);
+     return upload.apply(this,args);
     };
     window.turnEvents=[];for(const name of ['start','progress','commit','cancel'])
      document.addEventListener('lingua:turn'+name,e=>turnEvents.push({name,...e.detail}));

@@ -205,7 +205,7 @@ function mount(options){
   const g=geometry(h.width,h.height,h.distance/h.travel*2*h.width,h.vertical,h.grabY,h.edge);
   g.facets.forEach((g,i)=>{
    const node=h.facets[i];
-   if(g.polygon.length<3){node.style.display='none';return;}
+   if(g.polygon.length<3){node.style.display='none';if(node.firstElementChild)node.replaceChildren();return;}
    if(!node.firstElementChild){
     const reverse=i>Math.ceil(CURL_SEGMENTS/2);
     const face=doc.createElement('div');

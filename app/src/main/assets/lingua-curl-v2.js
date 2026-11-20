@@ -394,6 +394,7 @@ async function capturePage(win,host,source,width,height,scale,disposed){
      // Paint this layered background with the browser's SVG/image rasterizer,
      // not html2canvas's partial CSS background implementation.
      item.style.setProperty('background','transparent','important');
+     item.style.setProperty('box-shadow','none','important');
      const rule=clone.createElement('style');
      rule.textContent='#'+marker+'::before,#'+marker+'::after{display:none!important}';
      clone.head.appendChild(rule);

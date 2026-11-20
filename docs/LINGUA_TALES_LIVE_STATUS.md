@@ -1,3 +1,7 @@
+## November 20 regression follow-up
+
+Test final GPU texture uploads rather than the transparent intermediate ink canvas. Disable inset shadow in that ink pass. Release hidden fallback facet content as the fold moves. Android and physical-device verification pending.
+
 ## Capture isolation refinement
 
 Viewport normalization alone still failed the seam check (y=562). The background rasterizer is now bypassed for the affected antique material: native SVG lighting and grain are composited below transparent captured ink. Added native image-box drawing for object-fit:contain, which html2canvas otherwise stretches. These changes require the same pixel/visual checks before acceptance.
