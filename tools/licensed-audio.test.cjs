@@ -42,7 +42,8 @@ for(const item of manifest.tracks){
  assert.equal(bytes.length,item.sizeBytes,'pinned byte length: '+item.id);
  assert.equal(bytes.subarray(0,4).toString('ascii'),'OggS','OGG signature: '+item.id);
 }
-assert.ok(!script.includes('fetch(')&&!script.includes('getUserMedia')&&!script.includes('speechSynthesis'));
+assert.deepEqual([...script.matchAll(/\bfetch\(([^)]*)\)/g)].map(m=>m[1]),["'licensed-audio/page-turn.ogg'"],'only the packaged page recording may be decoded');
+assert.ok(!script.includes('getUserMedia')&&!script.includes('speechSynthesis'));
 assert.ok(script.includes('new global.Audio(\'licensed-audio/'));
 assert.ok(script.includes('doc.addEventListener(\'visibilitychange\''));
 assert.ok(script.includes('keepFocus:true'));

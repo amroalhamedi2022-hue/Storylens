@@ -18,13 +18,20 @@ const server=http.createServer((req,res)=>{
    '--enable-webgl','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
  const url='http://127.0.0.1:'+server.address().port+'/index.html';
  try{
-  for(const rtl of [false,true]){
-   const page=await browser.newPage({viewport:rtl?{width:1200,height:800}:{width:460,height:860}});
+  for(const [rtl,landscape] of [[false,false],[true,false],[false,true],[true,true]]){
+   const page=await browser.newPage({viewport:landscape?{width:1200,height:800}:{width:460,height:860}});
    await page.addInitScript(()=>{window.__LT_CURL_V2_TEST__=true;});
    await page.route('**/*',r=>r.request().url().startsWith('http://127.0.0.1:')?r.continue():r.abort());
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(url,{waitUntil:'domcontentloaded'});
    await page.evaluate(rtl=>{
+    window.__paperCaptures=[];
+    const proto=WebGL2RenderingContext.prototype,upload=proto.texImage2D;
+    proto.texImage2D=function(...args){
+     const paper=args.at(-1);
+     if(paper instanceof HTMLCanvasElement)window.__paperCaptures.push(paper);
+     return upload.apply(this,args);
+    };
     window.turnEvents=[];for(const name of ['start','progress','commit','cancel'])
      document.addEventListener('lingua:turn'+name,e=>turnEvents.push({name,...e.detail}));
     const id=rtl?'thirteenth-bell-arabic':'last-passenger';
@@ -42,10 +49,45 @@ const server=http.createServer((req,res)=>{
     const back=papers[delta>0?current+spread:current-1];
     if(!front||!back)throw new Error('Missing real paper sides for idle priming');
     const rect=front.getBoundingClientRect();
-    const options={win:window,host,page:front,back,width:rect.width,height:rect.height};
+    const options={win:window,host,page:front,back,
+     under:papers[delta>0?current+spread+1:current-2]||null,
+     stationary:papers[delta>0?(spread===2?current:current-1):current+1]||null,
+     width:rect.width,height:rect.height};
     const prepared=await gpu.prime(options);
     return {prepared,ready:gpu.isReady(options)};
    },delta);
+   // Exercise the production idle scheduler before any explicit test priming.
+   await page.waitForFunction(()=>{
+    const host=document.querySelector('#sentences'),papers=[...host.children].filter(n=>n.classList.contains('lt-book-page')&&!n.classList.contains('lt-curl-snapshot-page'));
+    const spread=Number(host.dataset.spread)||1,i=papers.findIndex(n=>n.classList.contains('is-active'));
+    const front=papers[i+spread-1],r=front?.getBoundingClientRect();
+    return front&&LinguaCurlV2.isReady({win:window,host,page:front,back:papers[i+spread],under:papers[i+spread+1],stationary:papers[spread===2?i:i-1],width:r.width,height:r.height});
+   },null,{timeout:20000}).catch(async error=>{
+    console.error('Automatic sheet preparation',await page.evaluate(()=>({
+     warning:window.LinguaCurlV2?.lastWarmupWarning,stats:window.LinguaCurlV2?.cacheStats(),
+     hidden:document.hidden,reader:state.page,pages:document.querySelectorAll('#sentences > .lt-book-page').length,
+     active:document.querySelector('#sentences .is-active')?.getBoundingClientRect().toJSON(),
+     eligible:window.LinguaCurlV2?.snapAllowed(window),overlay:!!document.querySelector('#modals .sheet,.lt-art-inspection-backdrop')
+    })),errors);
+    throw error;
+   });
+   const paperSeam=await page.evaluate(()=>{
+    let maxJump=0,worst=null;
+    for(const c of __paperCaptures){
+     const x=Math.min(12,c.width-2),a=c.getContext('2d').getImageData(x,0,6,c.height).data;
+     let previous=null;
+     for(let y=20;y<c.height-20;y++){
+      let sum=0;for(let x=0;x<6;x++){const i=(y*6+x)*4;sum+=a[i]+a[i+1]+a[i+2];}
+      const mean=sum/18;if(previous!==null&&Math.abs(mean-previous)>maxJump){maxJump=Math.abs(mean-previous);worst={y,mean,previous,width:c.width,height:c.height,index:__paperCaptures.indexOf(c)};}previous=mean;
+     }
+    }
+    return {maxJump,worst,captures:__paperCaptures.length};
+   });
+   for(const [i,data] of (await page.evaluate(()=>__paperCaptures.map(c=>c.toDataURL()))).entries())
+    fs.writeFileSync(path.join(out,'paper-capture-'+i+'.png'),Buffer.from(data.split(',')[1],'base64'));
+   await page.locator('#sentences').screenshot({path:path.join(out,'paper-before-turn.png')});
+   assert.ok(paperSeam.captures>0&&paperSeam.maxJump<12,'horizontal paper raster seam: '+JSON.stringify(paperSeam));
+   await page.locator('#sentences').screenshot({path:path.join(out,'gpu-idle-'+(rtl?'rtl':'ltr')+'-'+(landscape?'spread':'portrait')+'.png')});
    // Regression: an earlier GPU upload flipped EVERY printed line vertically
    // despite all gesture and transaction tests passing. Check actual shader
    // pixels: the TOP of the paper must retain its TOP source texels.
@@ -145,13 +187,14 @@ const server=http.createServer((req,res)=>{
    assert.ok(freshness.changed>freshness.before,'stale text cache must invalidate');
    assert.equal(freshness.styleChanged,true,'computed theme changes must invalidate cache keys');
    assert.ok(freshness.after>freshness.changed,'restored page texture must refresh');
-   assert.ok(freshness.bytes<=24*1024*1024,'bound idle snapshot memory');
+   assert.ok(freshness.bytes<=48*1024*1024,'bound idle snapshot memory');
    assert.equal(freshness.remaining,0,'temporary GPU cache must be releasable');
    const forwardPrime=await primeLiveTurn(1);
    assert.ok(forwardPrime.prepared&&forwardPrime.ready,
     'forward GPU page must be primed BEFORE touch: '+JSON.stringify(forwardPrime));
    // Owner request: grab paper from the interior, hold it indefinitely,
    // steer its diagonal crease up and down, then release it back to rest.
+   const residentBefore=await page.evaluate(()=>LinguaCurlV2.cacheStats());
    const freeGrab=await page.evaluate(rtl=>{
     const host=document.querySelector('#sentences');
     host.scrollIntoView({block:'start',behavior:'instant'});
@@ -187,7 +230,7 @@ const server=http.createServer((req,res)=>{
    assert.ok(firstHold.active,'the finger-held sheet must remain live while stationary');
    assert.equal(firstHold.commits,0,'holding the paper must not navigate');
    await page.screenshot({path:path.join(out,
-    'gpu-curl-free-hold-'+(rtl?'rtl-spread':'ltr-phone')+'-first.png')});
+    'gpu-curl-free-hold-'+((rtl?'rtl':'ltr')+(landscape?'-spread':'-phone'))+'-first.png')});
    await page.evaluate(()=>window.ltFreeGrab.send('pointermove',78,window.ltFreeGrab.d,205));
    await page.waitForTimeout(120);
    const raisedHold=await page.evaluate(()=>{
@@ -201,8 +244,12 @@ const server=http.createServer((req,res)=>{
    assert.ok(raisedHold.progress.pullY>firstHold.progress.pullY+.09,
     'diagonal crease must follow actual vertical pull: '+JSON.stringify({firstHold,raisedHold}));
    assert.equal(raisedHold.staging,0,'held movement must not rasterize a new page');
+   const residentAfter=await page.evaluate(()=>LinguaCurlV2.cacheStats());
+   assert.equal(residentAfter.snapshots,residentBefore.snapshots,'NO capture on touch or drag');
+   assert.equal(residentAfter.uploads,residentBefore.uploads,'NO texture upload on touch or drag');
+   assert.equal(residentAfter.contexts,residentBefore.contexts,'NO GL context creation on touch or drag');
    await page.screenshot({path:path.join(out,
-    'gpu-curl-free-hold-'+(rtl?'rtl-spread':'ltr-phone')+'-raised.png')});
+    'gpu-curl-free-hold-'+((rtl?'rtl':'ltr')+(landscape?'-spread':'-phone'))+'-raised.png')});
    await page.evaluate(()=>{
     const {send,d}=window.ltFreeGrab;
     send('pointermove',78,d*.3,180);
@@ -237,7 +284,7 @@ const server=http.createServer((req,res)=>{
      node=>getComputedStyle(node).display!=='none')
    }));
    assert.ok(report.ready,'WebGL2 texture capture failed: '+JSON.stringify(report));
-   if(rtl){
+   if(landscape){
     const layout=await page.evaluate(()=>{
      const rect=document.querySelector('#sentences').getBoundingClientRect();
      const nav=document.querySelector('.lt-chapter-nav');
@@ -253,7 +300,7 @@ const server=http.createServer((req,res)=>{
    }
    assert.equal(report.canvases,1,'one continuous canvas');
    assert.equal(report.fallbackVisible,false,'old DOM facets must be hidden after GPU preparation');
-   await page.screenshot({path:path.join(out,'gpu-curl-'+(rtl?'rtl-spread':'ltr-portrait')+'.png')});
+   await page.screenshot({path:path.join(out,'gpu-curl-'+((rtl?'rtl':'ltr')+(landscape?'-spread':'-portrait'))+'.png')});
    await page.evaluate(()=>webglRelease());
    await page.waitForFunction(()=>!window.LinguaReaderCurl?.active,{},{timeout:5000});
    const counts=await page.evaluate(()=>({
@@ -351,7 +398,7 @@ const server=http.createServer((req,res)=>{
    assert.equal(await page.locator('.lt-curl-webgl-ready').count(),1,
     'backward gesture must use continuous GPU mesh, not just CSS fallback');
    await page.screenshot({path:path.join(out,'gpu-curl-'+
-    (rtl?'rtl-spread':'ltr-portrait')+'-reverse.png')});
+    ((rtl?'rtl':'ltr')+(landscape?'-spread':'-portrait'))+'-reverse.png')});
    await page.evaluate(()=>backwardRelease());
    await page.waitForFunction(()=>!window.LinguaReaderCurl?.active,{},{timeout:5000});
    assert.equal(await page.evaluate(()=>turnEvents.filter(x=>x.name==='commit').length),2,
@@ -432,7 +479,7 @@ const server=http.createServer((req,res)=>{
    await page.evaluate(()=>{window.requestAnimationFrame=window.__originalRaf;delete window.__originalRaf});
 
    assert.deepEqual(errors,[],'no page JS errors');
-   console.log('PASS GPU forward/backward/cancel '+(rtl?'RTL landscape':'LTR portrait'),report);
+   console.log('PASS GPU forward/backward/cancel '+((rtl?'RTL':'LTR')+' '+(landscape?'landscape':'portrait')),report);
    await page.close();
   }
  }finally{await browser.close();server.close();}

@@ -173,6 +173,7 @@ jobs:
           node tools/contextual-page-turn.test.cjs
           node tools/physical-page-curl.test.cjs
           node tools/lingua-curl-v2.test.cjs
+          node tools/physical-sheet-geometry.test.cjs
           node tools/quran-safe-curl-adapter.test.cjs
           node tools/story-transitions.test.cjs
           node tools/data-backup.test.cjs
@@ -734,6 +735,8 @@ jobs:
           export CHROME="$(command -v google-chrome || command -v chromium)"
           node tools/physical-page-curl-browser.cjs
           node tools/lingua-curl-v2-browser.cjs
+          node tools/physical-sheet-pixels.cjs
+          node tools/paper-motion-audio-browser.cjs
           node tools/reader-line-pagination-browser.cjs
 
 
@@ -799,6 +802,41 @@ jobs:
             app/build/outputs/apk/release/APK_SHA256.txt
             app/build/outputs/apk/release/APK_INSTALL_IDENTITY.txt
           if-no-files-found: error
+
+  android_sheet:
+    needs: build
+    if: github.event_name != 'workflow_dispatch' || inputs.release_channel != 'stable-release'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: Lingua-Tales-Preview-NOT-PRODUCTION-UPDATE
+          path: android-test-apk
+      - run: npm install --prefix /tmp/android-sheet --no-audit --no-fund playwright@1.56.1
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Install APK and exercise real Android WebView
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          ram-size: 2048
+          emulator-options: -no-window -gpu swiftshader -noaudio -no-boot-anim -no-snapshot-save
+          disable-animations: false
+          script: |
+            adb install -r "$(find android-test-apk -name '*.apk' -print -quit)"
+            NODE_PATH=/tmp/android-sheet/node_modules node tools/android-sheet-acceptance.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Android-Physical-Sheet-Evidence
+          path: android-sheet-evidence/**
 
   archive_signed_candidate:
     # Source and territorial-rights gates are not complete. Keep release DRAFT.

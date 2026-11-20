@@ -4,15 +4,11 @@ const {CurlSpringPhysics,createMesh,VERTEX_SHADER,FRAGMENT_SHADER,snapshotSource
  require('../app/src/main/assets/lingua-curl-v2.js');
 const front={side:'front'},back={side:'back'};
 assert.deepEqual(snapshotSources(front,null),[front],
- 'portrait has no duplicate verso and only needs one cached printed face');
+ 'an unprinted boundary needs only one cached printed face');
 assert.deepEqual(snapshotSources(front,back),[front,back],
- 'landscape preserves two different printed sides');
+ 'a physical leaf preserves two different printed sides');
 assert.deepEqual(snapshotSources(front,front),[front],
  'duplicate source does not trigger a second screenshot');
-const source=require('node:fs').readFileSync(
- require('node:path').join(__dirname,'../app/src/main/assets/reader-experience.js'),'utf8');
-assert.match(source,/const beneathIndex=spread===2\?\(delta>0\?target\+1:target\):target;/,
- 'portrait must expose actual destination under the held paper');
 assert.match(VERTEX_SHADER,/#version 300 es/);
 assert.match(FRAGMENT_SHADER,/gl_FrontFacing/);
 assert.match(FRAGMENT_SHADER,/fwidth/,'page-edge antialiasing');
