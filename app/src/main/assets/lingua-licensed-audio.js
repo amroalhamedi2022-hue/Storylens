@@ -50,6 +50,59 @@ function sanitize(raw){
 let prefs=sanitize(typeof global.get==='function'?global.get(KEY,DEFAULT):DEFAULT);
 let player=null,playerTrack=null,playing=false,focusOwned=false,generation=0;
 const sfxPlayers=new Set();
+const paperVoices=new Set();
+let paperContext=null,paperBuffer=null,paperLoading=null,paperTurn=null,paperVariation=0;
+function preparePaper(){
+ if(!prefs.sfxEnabled||doc.hidden||!global.AudioContext||!global.fetch)return;
+ try{
+  if(!paperContext)paperContext=new global.AudioContext({latencyHint:'interactive'});
+  if(paperContext.state==='suspended')paperContext.resume().catch(()=>{});
+  if(!paperBuffer&&!paperLoading){
+   paperLoading=global.fetch('licensed-audio/page-turn.ogg').then(response=>{
+    if(!response.ok)throw Error('Bundled paper recording unavailable');
+    return response.arrayBuffer();
+   }).then(bytes=>paperContext.decodeAudioData(bytes)).then(buffer=>{paperBuffer=buffer;})
+    .catch(()=>{}).finally(()=>{paperLoading=null;});
+  }
+ }catch(_){}
+}
+function stopPaper(){
+ paperTurn=null;
+ for(const voice of paperVoices){try{voice.stop();}catch(_){}}
+ paperVoices.clear();
+}
+function movePaper(detail){
+ const turn=paperTurn,ctx=paperContext;
+ if(!turn||turn.id!==detail.id||!prefs.sfxEnabled||doc.hidden)return;
+ const distance=Math.hypot(detail.progress-turn.progress,((detail.pullY||0)-turn.pullY)*.35);
+ turn.progress=detail.progress;turn.pullY=detail.pullY||0;
+ if(!ctx||ctx.state!=='running'||!paperBuffer||prefs.sfxVolume<=0)return;
+ const now=ctx.currentTime;
+ turn.distance+=distance;
+ if(distance<.0004||turn.distance<.008||now<turn.next)return;
+ if(!playing&&!proceduralPlaying()&&!requestFocus())return;
+ const speed=clamp(turn.distance/Math.max(.025,now-turn.last)/2);
+ // Short overlapping strokes from distinct rustles in the licensed recording.
+ // No scheduled loop survives a stationary finger or a cancelled sheet.
+ const offsets=[.30,.73,1.04,2.12,2.73],duration=.065+.053*speed;
+ const voice=ctx.createBufferSource(),gain=ctx.createGain();
+ voice.buffer=paperBuffer;voice.playbackRate.value=.83+.31*speed;
+ const level=prefs.sfxVolume*(.45+.85*speed);
+ gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(level,now+.012);
+ gain.gain.setTargetAtTime(0,now+duration*.48,duration*.13);
+ voice.connect(gain);gain.connect(ctx.destination);paperVoices.add(voice);
+ voice.onended=()=>{
+  paperVoices.delete(voice);voice.disconnect();gain.disconnect();
+  if(!paperTurn&&!playing&&!proceduralPlaying()&&!sfxPlayers.size)releaseFocus();
+ };
+ voice.start(now,offsets[paperVariation++%offsets.length]);voice.stop(now+duration);
+ turn.next=now+duration*.75;turn.last=now;turn.distance=0;
+}
+function finishPaper(detail){
+ if(paperTurn?.id!==detail.id)return;
+ paperTurn=null;
+ if(!playing&&!proceduralPlaying()&&!sfxPlayers.size)releaseFocus();
+}
 let playButton=null,statusNote=null,rtlUi=false,ambienceToggle=null,sfxToggle=null;
 let playbackIssue=null; // Persistent visible failure until the next successful play.
 let playbackTimer=null,playbackMonitorPlayer=null,playbackPosition=null;
@@ -68,7 +121,7 @@ function requestFocus(){
  try{const ok=bridge.requestFocus()===true;if(ok)focusOwned=true;return ok;}catch(_){return false;}
 }
 function releaseFocus(){
- if(!focusOwned)return;
+ if(!focusOwned||paperVoices.size)return;
  focusOwned=false;
  const bridge=global.LinguaTalesAudioFocus;
  if(!bridge||typeof bridge.releaseFocus!=='function')return;
@@ -169,6 +222,7 @@ function startPlaybackMonitor(active,ticket){
  playbackTimer=timer;
 }
 function stopSfx(){
+ stopPaper();
  for(const audio of sfxPlayers){try{audio.pause();audio.currentTime=0;}catch(_){}}
  sfxPlayers.clear();
 }
@@ -354,6 +408,14 @@ function controls(sheet,rtl){
 }
 function onNativeAudioFocusLoss(){focusOwned=false;pause({keepFocus:true}).catch(()=>{});}
 if(doc&&typeof doc.addEventListener==='function'){
+ for(const event of ['pointerdown','keydown'])doc.addEventListener(event,preparePaper,{capture:true,passive:true});
+ doc.addEventListener('lingua:turnstart',({detail})=>{
+  if(!prefs.sfxEnabled||doc.hidden)return;
+  paperTurn={id:detail.id,progress:detail.progress||0,pullY:detail.pullY||0,distance:0,
+   last:paperContext?.currentTime||0,next:0};
+ });
+ doc.addEventListener('lingua:turnprogress',({detail})=>movePaper(detail));
+ for(const event of ['lingua:turncommit','lingua:turncancel'])doc.addEventListener(event,({detail})=>finishPaper(detail));
  doc.addEventListener('visibilitychange',()=>{if(doc.hidden)pause().catch(()=>{});});
 }
 if(typeof global.addEventListener==='function')global.addEventListener('pagehide',()=>pause().catch(()=>{}));
@@ -379,6 +441,6 @@ if(procedural&&!procedural.__licensedAudioBridge){
 }
 global.LinguaLicensedAudio={
  TRACKS,SFX,LICENSE,controls,playTrack,pause,selectTrack,setVolume,setAmbienceEnabled,setSfxEnabled,setSfxVolume,disableAll,playSfx,
- isPlaying:()=>playing,prefs:()=>({...prefs}),onNativeAudioFocusLoss
+ paperTurning:()=>!!paperTurn,isPlaying:()=>playing,prefs:()=>({...prefs}),onNativeAudioFocusLoss
 };
 })(window);

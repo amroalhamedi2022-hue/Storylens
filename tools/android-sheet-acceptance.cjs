@@ -24,7 +24,7 @@ fs.mkdirSync(out,{recursive:true});
     console.error('Installed WebView startup',await page.evaluate(()=>({
      url:location.href,title:document.title,userAgent:navigator.userAgent,state:document.readyState,
      reader:typeof openStory,catalog:typeof catalog,screen:document.body?.innerText.slice(0,300)
-    })));
+    })).catch(()=>({closed:page.isClosed()})));
     await page.screenshot({path:out+'/startup-failure.png',timeout:10000}).catch(()=>{});
     throw error;
    }

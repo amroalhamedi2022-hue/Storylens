@@ -729,7 +729,7 @@ function installPageTurn(){
  function ltPlayPageTurnSfx(){
   try{
    const player=window.LinguaLicensedAudio;
-   if(!player||typeof player.playSfx!=='function'||
+   if(!player||player.paperTurning?.()||typeof player.playSfx!=='function'||
       typeof player.prefs!=='function'||player.prefs().sfxEnabled!==true)return false;
    const now=Date.now();
    if(now-ltLastPaperSfxAt<280)return false;

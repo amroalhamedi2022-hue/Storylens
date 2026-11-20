@@ -1,3 +1,7 @@
+## November 20 motion-synchronized paper audio
+
+Keep the frame-pacing and GPU preparation fixes. Drive short amplitude-shaped strokes from the existing offline Oculus page recording using actual fold displacement and velocity, including reverse motion and release. Skip the old post-commit recording on animated turns. Physical Xiaomi speaker and display latency remain unmeasured.
+
 ## November 20 frame pacing follow-up
 
 Reuse one dynamic mesh upload across shadow and ink draws. Skip sibling leaves during capture, serialize idle preparation, prewarm a second portrait turn, and reuse detached fallback ink when reversing. Pixel tests count actual GPU uploads. Retry interrupted idle preparation after layout settles. Target-tablet frame times still need measurement.

@@ -736,6 +736,7 @@ jobs:
           node tools/physical-page-curl-browser.cjs
           node tools/lingua-curl-v2-browser.cjs
           node tools/physical-sheet-pixels.cjs
+          node tools/paper-motion-audio-browser.cjs
           node tools/reader-line-pagination-browser.cjs
 
 
@@ -825,7 +826,8 @@ jobs:
           api-level: 35
           target: google_apis
           arch: x86_64
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot-save
+          ram-size: 2048
+          emulator-options: -no-window -gpu swiftshader -noaudio -no-boot-anim -no-snapshot-save
           disable-animations: false
           script: |
             adb install -r "$(find android-test-apk -name '*.apk' -print -quit)"
