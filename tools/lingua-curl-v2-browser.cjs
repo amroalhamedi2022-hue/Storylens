@@ -62,7 +62,15 @@ const server=http.createServer((req,res)=>{
     const spread=Number(host.dataset.spread)||1,i=papers.findIndex(n=>n.classList.contains('is-active'));
     const front=papers[i+spread-1],r=front?.getBoundingClientRect();
     return front&&LinguaCurlV2.isReady({win:window,host,page:front,back:papers[i+spread],under:papers[i+spread+1],stationary:papers[spread===2?i:i-1],width:r.width,height:r.height});
-   },null,{timeout:20000});
+   },null,{timeout:20000}).catch(async error=>{
+    console.error('Automatic sheet preparation',await page.evaluate(()=>({
+     warning:window.LinguaCurlV2?.lastWarmupWarning,stats:window.LinguaCurlV2?.cacheStats(),
+     hidden:document.hidden,reader:state.page,pages:document.querySelectorAll('#sentences > .lt-book-page').length,
+     active:document.querySelector('#sentences .is-active')?.getBoundingClientRect().toJSON(),
+     eligible:window.LinguaCurlV2?.snapAllowed(window),overlay:!!document.querySelector('#modals .sheet,.lt-art-inspection-backdrop')
+    })),errors);
+    throw error;
+   });
    const paperSeam=await page.evaluate(()=>{
     let maxJump=0,worst=null;
     for(const c of __paperCaptures){

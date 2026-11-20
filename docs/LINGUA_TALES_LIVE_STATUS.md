@@ -1,6 +1,6 @@
 ## November 20 frame pacing follow-up
 
-Reuse one dynamic mesh upload across shadow and ink draws. Skip sibling leaves during capture, serialize idle preparation, prewarm a second portrait turn, and reuse detached fallback ink when reversing. Pixel tests count actual GPU uploads. Target-tablet frame times still need measurement.
+Reuse one dynamic mesh upload across shadow and ink draws. Skip sibling leaves during capture, serialize idle preparation, prewarm a second portrait turn, and reuse detached fallback ink when reversing. Pixel tests count actual GPU uploads. Retry interrupted idle preparation after layout settles. Target-tablet frame times still need measurement.
 
 ## Owner video follow-up, November 20
 

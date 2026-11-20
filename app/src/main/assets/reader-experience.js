@@ -622,11 +622,12 @@ function installPageTurn(){
       ?initial:ltPageForParagraph(starts,firstParagraph)));
  current=Math.floor(current/spread)*spread;
  let curl=null;
- let curlPrimeTimer=null,priming=false,primeAgain=false;
+ let curlPrimeTimer=null,priming=false,primeAgain=false,primeRetries=0;
  // Pre-capture only the present leaf and its immediate verso when reading is
  // idle. This avoids rasterizing the novel, stealing a word tap, or waiting for
  // two fresh snapshots at the instant a quick gesture begins.
- function scheduleGpuPaperPrime(){
+ function scheduleGpuPaperPrime(retry=false){
+  if(retry!==true)primeRetries=0;
   if(!window.LinguaCurlV2?.snapAllowed?.(window))return;
   if(curlPrimeTimer!==null)window.clearTimeout(curlPrimeTimer);
   curlPrimeTimer=window.setTimeout(()=>{
@@ -650,10 +651,15 @@ function installPageTurn(){
    // contending on slower Android GPUs. Cover both physical turn directions.
    priming=true;
    (async()=>{
-    if(nextFront)await gpu.prime({win:window,host:sentenceBox,
+    if(nextFront&&!(await gpu.prime({win:window,host:sentenceBox,
      page:nextFront,back:nextBack,
      under:pages[current+spread+1]||null,stationary:pages[current]===nextFront?pages[current-1]:pages[current],
-     width:rect.width,height:rect.height});
+     width:rect.width,height:rect.height}))){
+     if(current===primePage&&primeRetries<2){
+      primeRetries++;scheduleGpuPaperPrime(true);
+     }
+     return;
+    }
     if(current===primePage&&prevFront&&prevBack&&sentenceBox.isConnected&&
        state.page==='reader'&&!document.hidden&&!window.LinguaReaderCurl?.active)
      await gpu.prime({win:window,host:sentenceBox,
@@ -669,7 +675,7 @@ function installPageTurn(){
     priming=false;
     if(primeAgain&&sentenceBox.isConnected){primeAgain=false;scheduleGpuPaperPrime();}
    });
-  },60);
+  },retry===true?300:180);
  }
  sentenceBox.addEventListener('lingua:turncancel',scheduleGpuPaperPrime);
  const prev=pageControls.querySelector('.lt-page-prev');
