@@ -142,7 +142,11 @@ function mount(options){
   stage.style.setProperty('--lt-curl-paper',style.backgroundColor==='rgba(0, 0, 0, 0)'?'#f7f1e3':style.backgroundColor);
   const inset=['Top','Right','Bottom','Left'].map(side=>(parseFloat(style['padding'+side])+parseFloat(style['border'+side+'Width']))+'px').join(' ');
   stage.style.setProperty('--lt-curl-padding',inset);
-  stage.style.setProperty('--lt-curl-paper-image',style.backgroundImage);
+  // Preserve each material layer's native sizing. The 100px lighting SVG
+  // otherwise repeats across the fold and appears as a checkerboard.
+  for(const [property,value] of Object.entries({image:style.backgroundImage,
+    size:style.backgroundSize,repeat:style.backgroundRepeat,position:style.backgroundPosition}))
+   stage.style.setProperty('--lt-curl-paper-'+property,value);
   const v2=win.LinguaCurlV2;
   // null is a genuinely unprinted boundary sheet; undefined retains
   // compatibility with adapters requiring the adjacent page texture.
@@ -152,7 +156,10 @@ function mount(options){
    stationary:h.stationary,width:h.width,height:h.height});
   // The legacy compositor has no portrait camera; preserve its original
   // one-page destination instead of exposing the GPU compositor's N+2.
-  if(!gpuPrimed&&h.info?.spread===1&&h.fallbackUnder){h.under=h.fallbackUnder;h.back=null;}
+  if(!gpuPrimed&&h.info?.spread===1&&h.fallbackUnder){
+   h.under=h.fallbackUnder;
+   h.back=textureBack||h.fallbackUnder;
+  }
   const shadow=doc.createElement('div');shadow.className='lt-curl-contact';
   stage.append(shadow);h.shadow=shadow;h.facets=[];
   h.stage=stage;host.append(stage);
@@ -313,17 +320,6 @@ function mount(options){
   if(hold)cancel('superseded');
   const h=begin(delta,(delta>0)!==rtl?'right':'left',source);if(!h)return false;
   h.grabY=h.height*.84;
-  // A deliberate button/key press must never freeze while html2canvas
-  // rasterizes missing paper. Navigate immediately; idle prewarm prepares
-  // the next turn. A held edge gesture still uses the stable HTML fallback.
-  const gpu=win.LinguaCurlV2;
-  if(gpu?.snapAllowed?.(win)&&gpu.isReady&&
-     !gpu.isReady({win,host,page:h.page,
-       back:h.back===undefined?(h.under||null):h.back,
-       under:h.under?.classList.contains("lt-curl-blank-under")?null:h.under,stationary:h.stationary,
-       width:h.width,height:h.height})){
-   h.started=true;emit('start',h);finish(true,'uncached-instant-turn');return true;
-  }
   start(h);settle(true);return true;
  }
  on(host,'pointerdown',e=>{

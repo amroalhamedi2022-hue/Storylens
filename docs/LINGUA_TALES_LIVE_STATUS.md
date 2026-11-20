@@ -1,3 +1,7 @@
+## Owner video follow-up, November 20
+
+Portrait cold turns erased the verso, and fallback facets repeated the native lighting image with default sizing. Preserve printed destination ink and the complete material layer geometry. Cold button navigation now animates through the same fallback. Added actual destination-text and material-size assertions. Physical-device retest pending.
+
 ## November 20 regression follow-up
 
 Test final GPU texture uploads rather than the transparent intermediate ink canvas. Disable inset shadow in that ink pass. Release hidden fallback facet content as the fold moves. Android and physical-device verification pending.

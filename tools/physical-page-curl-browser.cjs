@@ -77,6 +77,16 @@ const server=http.createServer((req,res)=>{
     const style=getComputedStyle(ink),width=ink.getBoundingClientRect().width;
     return ink.textContent.trim().length>10&&style.backfaceVisibility==='visible'&&parseFloat(style.transformOrigin)>0&&width>0;
    }),'reverse ink remains visible and reflected about the centre, not moved off paper');
+   if(!landscape){
+    const cold=await page.evaluate(()=>{
+     const host=document.querySelector('#sentences'),pages=[...host.children].filter(n=>n.matches('.lt-book-page'));
+     const back=host.querySelector('.lt-curl-back .lt-curl-ink');
+     const face=back.parentElement,live=pages[1];
+     return {actual:back.textContent,expected:live.textContent,ghost:back.classList.contains('lt-curl-ghost'),
+      tile:getComputedStyle(face).backgroundSize,original:getComputedStyle(live).backgroundSize};
+    });
+    assert.equal(cold.actual,cold.expected);assert.equal(cold.ghost,false);assert.equal(cold.tile,cold.original);
+   }
    await page.screenshot({path:path.join(out,`curl-${rtl?'rtl':'ltr'}-${landscape?'spread':'portrait'}-held.png`)});
    await page.evaluate(()=>endCurl());await page.waitForFunction(()=>!LinguaReaderCurl.active,{},{timeout:5000});
    assert.equal(await page.evaluate(()=>testEvents.filter(e=>e.event==='commit').length),1);
