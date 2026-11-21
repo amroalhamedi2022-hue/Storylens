@@ -371,6 +371,10 @@ tests["historic-verne-plates"] = r"""(async function(){
  try{
   const id='around-the-world-in-eighty-days-towle';
   await window.LinguaContentLoader.ensureStory(id);
+  // Measure the map at its decoded aspect ratio even on a cold file cache.
+  const mapImage=new Image();
+  mapImage.src='art/verne-route-map-1872.webp';
+  await mapImage.decode();
   put('chapter_'+id,2);
   openStory(id);
   const items=[
@@ -485,18 +489,27 @@ tests["historic-verne-plates"] = r"""(async function(){
     if(vp&&r){
      const cx=r.left+r.width/2,cy=r.top+r.height/2;
      const spread=Math.min(44,r.width*.14);
-     const finger=(type,id,x)=>vp.dispatchEvent(new PointerEvent(type,{
+     const finger=(type,id,x,y=cy)=>vp.dispatchEvent(new PointerEvent(type,{
       bubbles:true,cancelable:true,pointerId:id,pointerType:'touch',
       isPrimary:id===71,button:0,buttons:type==='pointerup'?0:1,
-      clientX:x,clientY:cy
+      clientX:x,clientY:y
      }));
      finger('pointerdown',71,cx-spread);
      finger('pointerdown',72,cx+spread);
-     finger('pointermove',72,cx+spread*1.75);
-     check('anchored gesture really pinches the original scan',actualScale()>1.25);
+     // Move diagonally: a height-limited map can legitimately have zero
+     // horizontal travel. Verify both axes against actual decoded bounds.
+     finger('pointermove',72,cx+spread*1.75,cy+spread*.6);
+     const scale=actualScale();
+     check('anchored gesture really pinches the original scan',scale>1.25);
+     const maxX=Math.max(0,(zoomed.clientWidth*scale-vp.clientWidth)/2);
+     const maxY=Math.max(0,(zoomed.clientHeight*scale-vp.clientHeight)/2);
+     const expectedX=Math.min(maxX,spread*.375);
+     const expectedY=Math.min(maxY,spread*.3);
+     const transform=new DOMMatrix(zoomed.style.transform);
      check('two-finger midpoint pans original as it zooms',
-       /translate3d\(-?[1-9]/.test(zoomed?.style.transform||''));
-     finger('pointerup',72,cx+spread*1.75);
+       Math.max(expectedX,expectedY)>1&&
+       Math.abs(transform.m41-expectedX)<1.5&&Math.abs(transform.m42-expectedY)<1.5);
+     finger('pointerup',72,cx+spread*1.75,cy+spread*.6);
      finger('pointerup',71,cx-spread);
      viewer?.dispatchEvent(new KeyboardEvent('keydown',{key:'0',bubbles:true,cancelable:true}));
      check('keyboard reset works after touch pinch',Math.abs(actualScale()-1)<.005);

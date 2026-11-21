@@ -1,3 +1,7 @@
+## 21 November 2026 — Hybrid Signature
+
+Hybrid Signature uses translucent navigation and matte book surfaces. The library shelf removes per-card backdrop filtering, and the dictionary backdrop leaves the surrounding sentence visible.
+
 # Lingua Tales — Wen Liquid Glass Engine + Complete-Product Roadmap
 
 **Living plan / الخطة الرئيسية للتنفيذ | 4 November 2026**

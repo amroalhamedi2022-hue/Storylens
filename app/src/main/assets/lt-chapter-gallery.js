@@ -532,6 +532,14 @@ function show(id,{historyEntry=true}={}){
  addText(copy,'span','lt-chapter-gallery-eyebrow',locale('مكتبة الفصول','CHAPTER LIBRARY'));
  const title=addText(copy,'h2','lt-chapter-gallery-title',bookTitle(story));
  const count=addText(copy,'p','lt-chapter-gallery-subtitle',locale('جارٍ ترتيب الفصول…','Preparing chapters…'));
+ if(typeof story.provenance==='string'&&story.provenance.trim()){
+  const edition=document.createElement('details');
+  edition.className='lt-edition-notes';
+  addText(edition,'summary','',locale('عن هذه الطبعة','About this edition'));
+  const note=addText(edition,'p','',story.provenance);
+  note.dir='auto';
+  copy.appendChild(edition);
+ }
  const tools=document.createElement('div');tools.className='lt-chapter-gallery-tools';
  const searchLabel=document.createElement('label');searchLabel.className='lt-chapter-gallery-search-label';
  searchLabel.textContent=locale('ابحث عن فصل','Find a chapter');
