@@ -1,0 +1,63 @@
+name: Installed WebView evidence for preview 101323
+on:
+  push:
+    branches: [qa/hybrid-dictionary-recheck]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  installed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: Lingua-Tales-Preview-NOT-PRODUCTION-UPDATE
+          run-id: 44874099789
+          github-token: ${{ github.token }}
+          path: apk
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.3.1'
+      - name: Build candidate with the same offline dictionary as the baseline
+        run: |
+          unzip -p apk/app-debug.apk assets/freedict-en-ar.js > app/src/main/assets/freedict-en-ar.js
+          test -s app/src/main/assets/freedict-en-ar.js
+          gradle --no-daemon :app:assembleDebug
+      - run: npm install --prefix /tmp/android-sheet --no-audit --no-fund playwright@1.56.1
+      - run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          mkdir -p android-sheet-evidence
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 33
+          target: default
+          arch: x86_64
+          cores: 2
+          ram-size: 3072
+          emulator-options: -no-window -gpu off -feature -Vulkan -noaudio -no-boot-anim -no-snapshot
+          disable-animations: false
+          script: |
+            adb logcat -v threadtime > android-sheet-evidence/logcat.txt 2>&1 &
+            adb install -r app/build/outputs/apk/debug/app-debug.apk
+            adb shell am start -W -n com.storylens.reader.preview/com.storylens.reader.MainActivity
+            adb shell wm size 460x860
+            adb shell wm density 160
+            sleep 2
+            adb exec-out screencap -p > android-sheet-evidence/installed-home.png
+            adb shell dumpsys webviewupdate > android-sheet-evidence/webview.txt
+            NODE_PATH=/tmp/android-sheet/node_modules node tools/installed-journey.cjs
+      - if: always()
+        run: sudo dmesg | tail -300 > android-sheet-evidence/host-kernel.txt
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Installed-101323-evidence
+          path: android-sheet-evidence
