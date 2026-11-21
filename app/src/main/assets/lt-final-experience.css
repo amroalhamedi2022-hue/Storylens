@@ -243,3 +243,7 @@ body:has(.reader.dark) #modals .lt-anchored-meaning{
 .library .shelf.lt-novel-shelf>.lt-novel-card:only-child{
  grid-column:1 / -1!important;width:min(100%,220px)!important;justify-self:center!important
 }
+.library .lt-book-cover .lt-book-cover-title{
+ line-height:1.42!important;padding-block:3px 6px!important;max-height:none!important;
+ display:block!important;overflow-wrap:anywhere
+}
