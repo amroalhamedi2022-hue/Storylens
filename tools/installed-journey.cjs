@@ -21,5 +21,9 @@ const out = 'android-sheet-evidence/';
     await capture('03-reader',words);
     await page.locator(words).first().click();
     await capture('04-meaning','#modals .sheet');
+    fs.writeFileSync(out+'lookup.json',JSON.stringify(await page.evaluate(()=>{
+      const sheet=document.querySelector('#modals .sheet');
+      return {className:sheet.className,style:sheet.getAttribute('style'),scroll:sheet.scrollTop,height:sheet.clientHeight,viewport:[innerWidth,innerHeight],title:sheet.querySelector('h2')?.textContent,labels:[...sheet.querySelectorAll('label')].map(n=>n.textContent),bounds:sheet.getBoundingClientRect().toJSON(),focus:document.activeElement?.textContent?.slice(0,35)};
+    }),null,2));
   } finally { await device.close(); }
 })().catch(e=>{console.error(e);process.exitCode=1});

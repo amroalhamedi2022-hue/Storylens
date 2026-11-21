@@ -1,7 +1,7 @@
 name: Installed WebView evidence for preview 101323
 on:
   push:
-    branches: [qa/hybrid-android-software-101323]
+    branches: [qa/hybrid-android-curl-101323]
 permissions:
   contents: read
   actions: read
@@ -42,6 +42,7 @@ jobs:
             adb exec-out screencap -p > android-sheet-evidence/installed-home.png
             adb shell dumpsys webviewupdate > android-sheet-evidence/webview.txt
             NODE_PATH=/tmp/android-sheet/node_modules node tools/installed-journey.cjs
+            NODE_PATH=/tmp/android-sheet/node_modules node tools/android-sheet-acceptance.cjs
       - if: always()
         run: sudo dmesg | tail -300 > android-sheet-evidence/host-kernel.txt
       - if: always()
