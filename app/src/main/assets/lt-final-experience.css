@@ -240,3 +240,6 @@ body:has(.reader.dark) #modals .lt-anchored-meaning{
 }
 #modals .lt-anchored-meaning :is(h2,label){color:var(--ink)!important}
 #modals .lt-anchored-meaning :is(.quiet,.tag){color:var(--sub)!important}
+.library .shelf.lt-novel-shelf>.lt-novel-card:only-child{
+ grid-column:1 / -1!important;width:min(100%,220px)!important;justify-self:center!important
+}
