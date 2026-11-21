@@ -230,3 +230,13 @@ dialog.lt-chapter-gallery .lt-chapter-gallery-track{margin-block:0!important}
  background:var(--reader,#fff8eb)!important;color:var(--reader-ink,#203a30)!important;
  box-shadow:0 8px 32px #162b2433!important;border:1px solid #a69b83!important
 }
+#modals .lt-anchored-meaning{
+ --ink:#25372e;--sub:#46574b;--accent:#28543f;
+ --reader:#faf6ed;--reader-ink:#25372e;color-scheme:light
+}
+body:has(.reader.dark) #modals .lt-anchored-meaning{
+ --ink:#f4efdf;--sub:#d0cdbf;--accent:#bad8bf;
+ --reader:#242c29;--reader-ink:#f4efdf;color-scheme:dark
+}
+#modals .lt-anchored-meaning :is(h2,label){color:var(--ink)!important}
+#modals .lt-anchored-meaning :is(.quiet,.tag){color:var(--sub)!important}
