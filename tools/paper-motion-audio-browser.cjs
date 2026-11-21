@@ -19,7 +19,8 @@ const fs=require('node:fs'),assert=require('node:assert/strict');
     get currentTime(){return window.clock;}
     get state(){return 'running';}
     get destination(){return ctx.destination;}
-    createBufferSource(){return ctx.createBufferSource();}
+    createBuffer(...args){return ctx.createBuffer(...args);}
+    createBufferSource(){window.paperSources=(window.paperSources||0)+1;return ctx.createBufferSource();}
     createGain(){return ctx.createGain();}
     async decodeAudioData(bytes){const b=await ctx.decodeAudioData(bytes);window.decoded=true;return b;}
    };
@@ -36,8 +37,9 @@ const fs=require('node:fs'),assert=require('node:assert/strict');
    event('progress',.6,.84);
    const data=(await offline.startRendering()).getChannelData(0);
    function peak(a,b){return data.subarray(a*48000,b*48000).reduce((n,x)=>Math.max(n,Math.abs(x)),0);}
-   return {forward:peak(.08,.30),hold:peak(.34,.55),reverse:peak(.56,.7),afterCancel:peak(.75,.99)};
+   return {sources:window.paperSources,forward:peak(.08,.30),hold:peak(.34,.55),reverse:peak(.56,.7),afterCancel:peak(.75,.99)};
   });
+  assert.equal(levels.sources,1);
   assert.ok(levels.forward>.001&&levels.reverse>.001);
   assert.equal(levels.hold,0);assert.equal(levels.afterCancel,0);
   console.log('PASS rendered packaged paper audio',levels);

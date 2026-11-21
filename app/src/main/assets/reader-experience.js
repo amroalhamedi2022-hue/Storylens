@@ -2373,5 +2373,4 @@ function ltRefreshPagesOnResize(){
  },180);
 }
 window.addEventListener?.('resize',ltRefreshPagesOnResize);
-library(); // Re-render once after installing enhancements.
 })();

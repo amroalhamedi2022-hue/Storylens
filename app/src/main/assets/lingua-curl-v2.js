@@ -50,7 +50,7 @@ function createMesh(columns=96,rows=48){
 // A developable cylinder: arc length is conserved and the binding stays fixed.
 // Clip in MATERIAL space at exact curve boundaries instead of sampling a UV grid
 // across a sub-pixel radius (the latter bridged folds and produced stray triangles).
-function sheetGeometry(width,height,progress,grabY=.5,pullY=0,edge='right',segments=64){
+function sheetGeometry(width,height,progress,grabY=.5,pullY=0,edge='right',segments=64,storage){
  const w=Math.max(1,width),h=Math.max(1,height),p=clamp(progress,0,1);
  const travel=2*w*p, gy=clamp(grabY-pullY,0,1)*h;
  let angle=Math.atan2(-clamp(pullY,-1,1)*h,Math.max(travel,1));
@@ -74,7 +74,8 @@ function sheetGeometry(width,height,progress,grabY=.5,pullY=0,edge='right',segme
   angle*=lo;q=parameters(angle);
  }
  const {nx,ny,crease}=q,r=Math.max(radius,1e-7);
- const vertices=[];
+ const vertices=storage||new Float32Array((segments+2)*12*8);
+ let used=0;
  function deform(x,y){
   const d=nx*x+ny*y-crease;
   let xx=x,yy=y,z=0,sin=0,cos=1;
@@ -108,14 +109,17 @@ function sheetGeometry(width,height,progress,grabY=.5,pullY=0,edge='right',segme
   if(Number.isFinite(cuts[i]))poly=clip(poly,cuts[i],true);
   if(poly.length&&Number.isFinite(cuts[i+1]))poly=clip(poly,cuts[i+1],false);
   if(poly.length<3)continue;
+  const corners=poly.map(([x,y])=>deform(x,y));
   for(let j=1;j<poly.length-1;j++){
    // y grows down; CCW in clip space is reversed. Mirroring the left leaf
    // reverses MATERIAL coordinates as well, keeping front-side semantics.
-   const triangle=edge==='left'?[poly[0],poly[j],poly[j+1]]:[poly[0],poly[j+1],poly[j]];
-   for(const v of triangle)vertices.push(...deform(v[0],v[1]));
+   vertices.set(corners[0],used);
+   vertices.set(corners[edge==='left'?j:j+1],used+8);
+   vertices.set(corners[edge==='left'?j+1:j],used+16);
+   used+=24;
   }
  }
- return {vertices:new Float32Array(vertices),radius,crease,normal:[nx,ny],deform};
+ return {vertices:vertices.subarray(0,used),radius,crease,normal:[nx,ny],deform};
 }
 // In portrait the viewport pans with the leaf. Invert that camera motion
 // so the held point still moves one screen pixel per finger pixel.
@@ -460,6 +464,7 @@ function makeRenderer(win,stage,width,height){
   .map(name=>[name,gl.getUniformLocation(program,name)]));
  const resident=new Map();let dead=false,lost=false,faces=null,viewWidth=width,viewHeight=height,offsetX=0,offsetY=0;
  const flat=sheetGeometry(width,height,0).vertices;
+ const movingVertices=new Float32Array(66*12*8);
  gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferSubData(gl.ARRAY_BUFFER,0,flat);
  const blank=blankBack(win,width,height,scale,'#f4eee0');
  function upload(source){
@@ -503,7 +508,7 @@ function makeRenderer(win,stage,width,height){
   viewport,
   draw(progress,grabY,edge,pullY=0){
    if(dead||lost||!faces)return;
-   const p=faces.portrait?portraitProgress(progress):clamp(progress,0,1),g=sheetGeometry(width,height,p,grabY,pullY,edge);
+   const p=faces.portrait?portraitProgress(progress):clamp(progress,0,1),g=sheetGeometry(width,height,p,grabY,pullY,edge,64,movingVertices);
    // A portrait camera follows the turning physical leaf to its other side.
    // At p=1 the correct verso fills the viewport; N+2 stays underneath N+1.
    const camera=faces.portrait?(edge==='right'?1:-1)*width*(p*p*(3-2*p)):0;
@@ -516,8 +521,12 @@ function makeRenderer(win,stage,width,height){
    gl.uniform1i(uniforms.uFrontTex,0);gl.uniform1i(uniforms.uBackTex,1);
    gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferSubData(gl.ARRAY_BUFFER,flat.byteLength,g.vertices);
    if(faces.book){
-    paint(flat,faces.under,faces.under,x,y);
-    paint(flat,faces.stationary,faces.stationary,x+(edge==='right'?-width:width),y);
+    // The portrait camera exposes only this leaf, recto and verso. Painting
+    // its neighbours here would slide two unrelated paragraphs into view.
+    if(!faces.portrait){
+     paint(flat,faces.under,faces.under,x,y);
+     paint(flat,faces.stationary,faces.stationary,x+(edge==='right'?-width:width),y);
+    }
     // Soft contact shadow projected from the ACTUAL deformed sheet, five
     // bounded taps instead of a rectangular CSS shadow across unrelated ink.
     for(const blur of [-2,-1,0,1,2])paint(g.vertices,null,null,x+blur,y+Math.abs(blur),1);

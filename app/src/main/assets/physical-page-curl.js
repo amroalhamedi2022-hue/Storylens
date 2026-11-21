@@ -178,11 +178,11 @@ function mount(options){
    width:h.width,height:h.height,
    onReady(){
     if(hold!==h||!h.stage?.isConnected)return;
-    h.stage.classList.add('lt-curl-webgl-ready');
+    h.stage.classList.add('lt-curl-webgl-ready');host.classList.add('lt-curl-gpu-book');
     h.gpuReady=true;
    },
    onFailed(){
-    h.stage?.classList.remove('lt-curl-webgl-ready');
+    host.classList.remove('lt-curl-gpu-book');h.stage?.classList.remove('lt-curl-webgl-ready');
     if(hold===h&&h.stage?.isConnected){
      buildFallbackFacets(h,style);
      paint(h);h.page.style.visibility='hidden';
@@ -251,7 +251,7 @@ function mount(options){
   h.webgl?.destroy();
   h.stage?.remove();h.page.style.visibility='';
   if(h.under){h.under.classList.remove('lt-curl-under');h.under.style.removeProperty('--lt-under-left');h.under.style.removeProperty('--lt-under-width');}
-  host.classList.remove('lt-curl-active');delete host.dataset.ltFoldEdge;
+  host.classList.remove('lt-curl-gpu-book');host.classList.remove('lt-curl-active');delete host.dataset.ltFoldEdge;
   if(h.pointer!==undefined)try{host.releasePointerCapture(h.pointer);}catch(_){}
   h.dispose?.();
  }

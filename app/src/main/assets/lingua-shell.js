@@ -1283,5 +1283,4 @@ loadReadingSizes();
 loadReaderMaterial();
 installReaderTextGuards();
 applyCustomThemeColors();
-library();
 })(window);

@@ -1,3 +1,7 @@
+## November 21 — startup, acoustic continuity and leaf ownership
+
+Installed dictionary recheck 44940457663 on Android 13 passed. At 460×860 the updated 420×499 sheet began at y=224 and the heading was visible. The previous sheet began at y=−219. First launch now calls the fully decorated library once after module registration. The reader uses a continuous local rustle with one audio voice per moving leaf, a velocity envelope and a short release. The portrait GPU camera no longer draws paragraphs from neighbouring leaves behind the recto/verso. While GPU compositing is active, live DOM sheets retain layout but do not paint duplicate ink. The geometry buffer is reused per renderer. Source-level tests and emulator visuals do not establish Pad 5 frame pacing or subjective acoustic quality. An API 33 WebView 101 baseline held screenshot was blank despite the gesture event assertions passing; framebuffer evidence remains essential.
+
 ## November 21 — Android 13 installed preview 101323
 
 Runs 44939722242 and 44939982249 exercised the installed offline reader on API 33, WebView 101. The library → Verne chapter → reader → first word journey passed. On cold dictionary lookup the replacement sheet was 1,079 px high on an 860 px viewport and its title was clipped. Preserve the word anchor when the offline pack supplies a definition and provide a vh fallback. English portrait hold, cancel, forward and reverse passed. Arabic portrait GPU readiness timed out; landscape and Pad 5 frame pacing are still open. The evidence uses a software-rendered emulator.

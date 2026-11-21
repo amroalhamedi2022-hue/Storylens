@@ -155,7 +155,7 @@ dialog.lt-chapter-gallery{height:min(92dvh,900px)!important;max-height:92dvh!imp
 }
 
 /* Hybrid Signature. The book is opaque; only transient controls use glass. */
-body.theme-aurora:not(.lt-has-custom-gradient):has(.library){
+body.theme-aurora:not(.lt-has-custom-gradient) .library{
  --body:#f5efe3;--card:#fffbf2;--ink:#19372e;--sub:#4d5c52;--accent:#204f40;
  background:#f5efe3!important;color:var(--ink)!important
 }
@@ -211,7 +211,7 @@ dialog.lt-chapter-gallery{background:#f7f0e2;color:#25382e}
  .library .shelf.lt-novel-shelf{grid-template-columns:repeat(2,minmax(0,1fr))!important}
  .library .lt-edition-copy{padding:18px 14px}
 }
-body.theme-aurora:has(.library)::before,body.theme-aurora:has(.library)::after{display:none!important}
+body.theme-aurora::before,body.theme-aurora::after{display:none!important}
 .library .lt-edition-feature .lt-edition-copy h2{font-family:"LT English Serif","LT Arabic Naskh",serif!important}
 dialog.lt-chapter-gallery:not(.lt-chapter-gallery-list-view) .lt-chapter-tile .lt-chapter-tile-visual{
  height:clamp(96px,20dvh,175px)!important;min-height:0!important

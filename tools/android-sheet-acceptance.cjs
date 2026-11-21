@@ -2,6 +2,7 @@
 'use strict';
 const {_android}=require('playwright'),assert=require('node:assert/strict');
 const fs=require('node:fs');
+const {execFileSync}=require('node:child_process');
 const out='android-sheet-evidence',pkg='com.storylens.reader.preview';
 fs.mkdirSync(out,{recursive:true});
 (async()=>{
@@ -10,6 +11,7 @@ fs.mkdirSync(out,{recursive:true});
  const reports=[];
  try{
   for(const landscape of [false,true]){
+   if(process.env.ANDROID_LAYOUT && process.env.ANDROID_LAYOUT!==(landscape?'spread':'portrait'))continue;
    await device.shell('am force-stop '+pkg);
    await device.shell('settings put system accelerometer_rotation 0');
    await device.shell('settings put system user_rotation 0');
@@ -29,6 +31,7 @@ fs.mkdirSync(out,{recursive:true});
     throw error;
    }
    for(const rtl of [false,true]){
+    if(process.env.ANDROID_DIRECTION && process.env.ANDROID_DIRECTION!==(rtl?'rtl':'ltr'))continue;
     const tag=(rtl?'rtl':'ltr')+'-'+(landscape?'spread':'portrait');
     await page.evaluate(rtl=>{
      const id=rtl?'thirteenth-bell-arabic':'last-passenger';
@@ -48,7 +51,16 @@ fs.mkdirSync(out,{recursive:true});
       return front&&LinguaCurlV2.isReady({win:window,host,page:front,back:ps[delta>0?i+s:i-1],under:ps[delta>0?i+s+1:i-2],stationary:ps[delta>0?(s===2?i:i-1):i+1],width:r.width,height:r.height});
      },delta,{timeout:60000});
     };
-    await ready(1); // No manual prime: production idle scheduler must work.
+    try{await ready(1);}catch(error){
+     const diagnosis=await page.evaluate(()=>({
+      book:state.story?.id,pages:document.querySelectorAll('#sentences>.lt-book-page').length,
+      host:document.querySelector('#sentences')?.getBoundingClientRect().toJSON(),
+      active:document.querySelector('#sentences>.is-active')?.getBoundingClientRect().toJSON(),
+      cache:LinguaCurlV2.cacheStats(),warning:LinguaCurlV2.lastWarmupWarning,modals:document.querySelector('#modals')?.innerText.slice(0,120)
+     })).catch(()=>({closed:page.isClosed()}));
+     fs.writeFileSync(out+'/'+tag+'-readiness.json',JSON.stringify(diagnosis,null,2));
+     throw error;
+    }
     await page.evaluate(()=>document.querySelector('#sentences').scrollIntoView({block:'start',behavior:'instant'}));
     await page.screenshot({path:out+'/'+tag+'-idle.png'});
     const before=await page.evaluate(()=>LinguaCurlV2.cacheStats());
@@ -68,6 +80,7 @@ fs.mkdirSync(out,{recursive:true});
     assert.equal(await page.evaluate(()=>androidTurns.filter(e=>e.name==='commit').length),held,'holding must not commit');
     assert.ok(await page.evaluate(()=>LinguaReaderCurl.active),'Android paper must remain held');
     await page.screenshot({path:out+'/'+tag+'-held.png'});
+    fs.writeFileSync(out+'/'+tag+'-display-held.png',execFileSync('adb',['exec-out','screencap','-p'],{maxBuffer:32<<20}));
     await touch('touchMove',.22,160);await touch('touchMove',.08,90);
     await page.screenshot({path:out+'/'+tag+'-reversed.png'});
     await touch('touchCancel');

@@ -231,5 +231,4 @@ wordSheet=function(args) {
  if(footer)footer.before(box);else sheet.appendChild(box);
 };
 global.StoryLensExtras={favorites,toggleFavorite,discoveryState,prefs,preference,applyPrefs};
-library();
 })(window);

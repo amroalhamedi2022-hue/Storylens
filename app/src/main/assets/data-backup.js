@@ -363,5 +363,4 @@ global.StoryLensBackup={
  receiveImport:showImport,nativeStatus:showNativeStatus,nativeError:message=>{if(!document.getElementById('stl-backup-feedback'))renderBackup();show(localizeBackupError(message));},
  open:renderBackup
 };
-library();
 })(window);

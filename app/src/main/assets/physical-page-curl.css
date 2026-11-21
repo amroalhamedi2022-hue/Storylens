@@ -101,3 +101,8 @@
 /* The GPU owns the full book framebuffer. Its viewport may start to the left
  * of the source leaf; inset:0 must not force it back into half of the book. */
 .reader .lt-curl-stage .lt-curl-webgl{right:auto!important;bottom:auto!important}
+
+/* The active GPU canvas draws both leaves and the revealed paper. Keep the
+   underlying DOM laid out for final placement without compositing its ink. */
+.reader #sentences.lt-curl-gpu-book>.lt-book-page{opacity:0!important}
+.reader #sentences.lt-curl-active{overflow:hidden!important;isolation:isolate}
