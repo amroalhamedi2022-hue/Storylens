@@ -7,10 +7,10 @@ const reader=fs.readFileSync('app/src/main/assets/reader-experience.js','utf8');
 const css=fs.readFileSync('app/src/main/assets/lt-final-experience.css','utf8');
 const curlCss=fs.readFileSync('app/src/main/assets/physical-page-curl.css','utf8');
 
-assert.match(reader,/link\[data-lt-final-experience\]/,
- 'reader must mount the unified visual finish without rewriting the embedded catalog');
-assert.match(reader,/finalStyle\.href='lt-final-experience\.css'/,
- 'production reader must load the unified visual finish');
+const head=html.slice(0,html.indexOf('</head>'));
+assert.match(head,/<link rel="stylesheet" data-lt-final-experience href="lt-final-experience\.css">/,
+ 'the final stylesheet must be available before the fully decorated library first renders');
+assert.equal((html.match(/<script>library\(\);<\/script>/g)||[]).length,1);
 assert.match(curl,/const taper=\.34\*Math\.max\(0,1-p\/\.86\)/,
  'moving leaf remains broad instead of collapsing into the old triangle');
 const {grabEdge}=require('../app/src/main/assets/physical-page-curl.js');

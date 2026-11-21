@@ -819,7 +819,7 @@ function decorateNovelShelf(section){
   card.setAttribute('aria-label',(rtl()?'افتح كتاب ':'Open book ')+story.title);
   card.addEventListener('keydown',event=>{
    if(event.target!==card||(event.key!=='Enter'&&event.key!==' '))return;
-   event.preventDefault();openStory(story.id);
+   event.preventDefault();card.click();
   });
   if(cover){
    cover.classList.add('lt-book-cover');

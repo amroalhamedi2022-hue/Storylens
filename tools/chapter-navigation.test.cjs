@@ -47,6 +47,13 @@ function run({locale='en',total=37,count=2,index=1,paged=false}={}){
  sandbox.renderReader();
  return {end,host,pageControls,label,heading,primary,calls,story,sandbox,decorate:sandbox.window.LinguaChapterNavigation.decorate};
 }
+const longBook=run({count:37,index:0,paged:true});
+const chapterPicker=longBook.host.children[1].children[2].children[1];
+for(const index of [1,10,36]){
+ chapterPicker.value=String(index);
+ chapterPicker.onchange();
+ assert.equal(longBook.calls.at(-1),index,'published chapter jump '+index);
+}
 const incomplete=run();
 assert.equal(incomplete.calls[0],'base');
 assert.match(incomplete.heading.textContent,/To be continued/);

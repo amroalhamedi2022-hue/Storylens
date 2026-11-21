@@ -54,7 +54,7 @@ function decorate(){
    // A stale or malformed selection must not leave the UI claiming that a
    // chapter was opened when navigation was rejected.
    const raw=select.value;
-   const target=/^(0|[1-9]\\d*)$/.test(raw)?Number(raw):NaN;
+   const target=/^(0|[1-9][0-9]*)$/.test(raw)?Number(raw):NaN;
    const active=state.page==='reader'&&state.story===story&&state.chapter===index;
    if(!active||!Number.isSafeInteger(target)||target<0||target>=chapters.length){
     select.value=String(index);
