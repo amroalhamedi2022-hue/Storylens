@@ -179,10 +179,12 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
  assert.deepEqual(d.successful,['freedict-en-ar.js'],'dictionary load remains independent from book loading');
 
  const w=makeHarness();
- w.window.wordSheet({entry:null,display:'dog',source:{en:'A dog waited.',ar:'انتظر كلب.'}});
+ const anchorToken={isConnected:true};
+ w.window.wordSheet({entry:null,display:'dog',anchorToken,source:{en:'A dog waited.',ar:'انتظر كلب.'}});
  assert.equal(w.sheetEntries.length,1,'word sheet opens immediately with its honest context fallback');
  await w.window.LinguaContentLoader.ensureDictionary();
  await tick();
+ assert.equal(w.sheetEntries[1].anchorToken,anchorToken,'lazy refresh retains the selected word as the placement anchor');
  assert.equal(w.sheetEntries.length,2,'same still-open unknown word refreshes when dictionary is ready');
  assert.equal(w.sheetEntries[1].entry.term,'dog');
 

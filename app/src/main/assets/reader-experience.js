@@ -147,6 +147,8 @@ function contextualMeaning(entry, source, story){
 }
 wordSheet=function(args){
  originalWordSheet(args);
+ // The offline dictionary can replace this sheet after its first lookup.
+ if(args?.anchorToken && args.anchorToken.isConnected!==false)positionDictionarySheet(args.anchorToken);
  const sheet=document.querySelector('#modals .sheet');
  if(!sheet)return;
  const labels=Array.from(sheet.querySelectorAll('label'));
@@ -2074,8 +2076,7 @@ renderReader=function(){
     lemmas,lexicon:window.StoryLexicon,freeDict:window.FreeDictEnglishArabic
    });
    if(!hit)return false;
-   wordSheet({...hit,source});
-   positionDictionarySheet(token);
+   wordSheet({...hit,source,anchorToken:token});
    return true;
   };
   p.addEventListener('click',event=>{

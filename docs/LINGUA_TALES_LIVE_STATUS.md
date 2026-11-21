@@ -1,3 +1,7 @@
+## November 21 — Android 13 installed preview 101323
+
+Runs 44939722242 and 44939982249 exercised the installed offline reader on API 33, WebView 101. The library → Verne chapter → reader → first word journey passed. On cold dictionary lookup the replacement sheet was 1,079 px high on an 860 px viewport and its title was clipped. Preserve the word anchor when the offline pack supplies a definition and provide a vh fallback. English portrait hold, cancel, forward and reverse passed. Arabic portrait GPU readiness timed out; landscape and Pad 5 frame pacing are still open. The evidence uses a software-rendered emulator.
+
 ## 21 November 2026 — Hybrid Signature
 
 Hybrid Signature implementation begins at the signed 101318 merge (1928c59). The home feature browses an actual offline edition or resumes the saved book. The chapter chooser exposes edition provenance and uses compact chapter plates. Tapping a reader token anchors the existing contextual dictionary to the selected line when space permits. Android update, translation review, and hardware frame pacing remain separate checks.

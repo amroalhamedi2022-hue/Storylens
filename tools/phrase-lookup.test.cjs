@@ -45,7 +45,7 @@ assert.match(readerJs,/const lookupToken=token=>[\s\S]*?window\.LinguaLookup\.lo
  'production token handler uses the source-bound resolver');
 assert.match(readerJs,/addEventListener\('click',event=>\{\s*if\(lookupToken\(event\.target\)\)event\.stopImmediatePropagation\(\)/,
  'click capture delegates to the same keyboard-accessible lookup');
-assert.match(readerJs,/wordSheet\(\{\.\.\.hit,source\}\)/,
+assert.match(readerJs,/wordSheet\(\{\.\.\.hit,source,anchorToken:token\}\)/,
  'one resolved word opens the existing dictionary sheet');
 
 // Inflected idioms must resolve from either the changed verb or a later word,

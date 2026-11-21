@@ -57,6 +57,7 @@ assert.ok(e.prevented&&e.stopped);
 assert.equal(opened.at(-1).entry.term,'go on');
 assert.equal(opened.at(-1).display,'went on');
 assert.equal(opened.at(-1).source.ar,'تابعت.');
+assert.equal(opened.at(-1).anchorToken,tokens[1]);
 e=key('ArrowRight',tokens[1]);
 assert.equal(document.activeElement,tokens[2]);
 e=key(' ',tokens[2]);

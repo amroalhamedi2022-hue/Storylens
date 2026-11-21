@@ -221,6 +221,8 @@ dialog.lt-chapter-gallery:not(.lt-chapter-gallery-list-view) .lt-chapter-tile{
 }
 dialog.lt-chapter-gallery .lt-chapter-gallery-sheet{justify-content:flex-start!important}
 dialog.lt-chapter-gallery .lt-chapter-gallery-track{margin-block:0!important}
+/* Older Android WebViews ignore dvh. Keep long fallback sheets reachable. */
+#modals .sheet{max-height:88vh;max-height:88dvh}
 #modals .overlay.lt-lookup-backdrop{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 #modals .lt-lookup-backdrop .lt-anchored-meaning{
  position:fixed!important;left:var(--lt-lookup-left);right:auto;width:var(--lt-lookup-width)!important;
