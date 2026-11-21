@@ -854,6 +854,44 @@ function decorateNovelShelf(section){
  refreshNovelShelf(section);
 }
 
+// Use the same saved story and reader entry point as the library. A first
+// visit opens the chapter chooser without manufacturing reading progress.
+function decorateEditionFeature(section){
+ const hero=section.querySelector('.storylens-hero');
+ if(!hero||state.genre!=='all'||state.query)return;
+ const last=catalog.stories.find(s=>s.id===get('last_story',''));
+ const book=last||catalog.stories.find(isFullLengthNovel);
+ if(!book)return;
+ const resume=Boolean(last);
+ const total=book.totalChapters||book.chapters.length;
+ const stored=get('chapter_'+book.id,0);
+ const current=Number.isInteger(stored)?Math.max(0,Math.min(total-1,stored)):0;
+ const copy=document.createElement('div');
+ copy.className='lt-edition-copy';
+ const label=document.createElement('small');
+ label.textContent=resume?(rtl()?'أكمل القراءة':'Continue reading'):(rtl()?'من المكتبة':'From the library');
+ const title=document.createElement('h2');
+ title.textContent=rtl()?(book.titleAr||book.title):(book.titleEn||book.title);
+ title.dir='auto';
+ const location=document.createElement('p');
+ location.textContent=resume?(rtl()?'الفصل ':'Chapter ')+(current+1)+' / '+total:
+  total+(rtl()?' فصلًا':' chapters');
+ const action=document.createElement('button');
+ action.type='button';action.className='lt-edition-open';
+ action.textContent=resume?(rtl()?'متابعة القراءة':'Resume reading'):(rtl()?'تصفّح الفصول':'Browse chapters');
+ action.addEventListener('click',()=>{
+  if(resume||!global.LinguaChapterGallery?.open(book.id))global.openStory(book.id);
+ });
+ copy.append(label,title,location,action);
+ const plate=document.createElement('div');
+ plate.className='lt-edition-plate';
+ plate.setAttribute('aria-hidden','true');
+ plate.setAttribute('data-lt-cover-story',book.id);
+ if(book.id==='around-the-world-in-eighty-days-towle')plate.classList.add('lt-verne-atlas');
+ hero.classList.add('lt-edition-feature');
+ hero.replaceChildren(copy,plate);
+ global.LinguaHydrateStoryCovers?.();
+}
 function decorateLibrary(){
  const section=document.querySelector('.library');
  if(!section||state.page!=='library')return;
@@ -871,8 +909,7 @@ function decorateLibrary(){
  section.querySelector('.storylens-hero .hero-eyebrow')?.remove();
  section.querySelector('.storylens-hero .hero-metrics')?.remove();
  section.querySelector('.storylens-hero .hero-content > p')?.remove();
- const heroTitle=section.querySelector('.storylens-hero h2');
- if(heroTitle)heroTitle.textContent=rtl()?'قصتك التالية تبدأ هنا':'Your next chapter';
+ decorateEditionFeature(section);
  section.querySelector('.stl-discovery-title')?.remove();
  section.querySelectorAll(':scope > p.quiet').forEach(p=>p.remove());
  section.querySelectorAll('.shelf .card .sub').forEach(p=>p.remove());

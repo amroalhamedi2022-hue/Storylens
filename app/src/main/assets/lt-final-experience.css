@@ -153,3 +153,80 @@ dialog.lt-chapter-gallery{height:min(92dvh,900px)!important;max-height:92dvh!imp
  }
  .reader .lt-page-count{font-size:11px!important}
 }
+
+/* Hybrid Signature. The book is opaque; only transient controls use glass. */
+body.theme-aurora:not(.lt-has-custom-gradient):has(.library){
+ --body:#f5efe3;--card:#fffbf2;--ink:#19372e;--sub:#4d5c52;--accent:#204f40;
+ background:#f5efe3!important;color:var(--ink)!important
+}
+.theme-aurora:not(.lt-has-custom-gradient) .library .header.storylens-header{
+ background:#faf6eae8!important;border-color:#c8c5af!important;
+ box-shadow:0 3px 18px #203c2810!important;color:#203d31!important
+}
+.theme-aurora:not(.lt-has-custom-gradient) .library :is(.lt-location-title,.lt-novel-shelf-heading h2,.card-content h2){
+ color:#1d3b30!important;text-shadow:none!important
+}
+.library .storylens-hero.lt-edition-feature{
+ display:grid!important;grid-template-columns:minmax(0,3fr) minmax(0,2fr);
+ align-items:stretch!important;isolation:isolate;overflow:hidden;
+ padding:0!important;margin:18px 0!important;max-height:none!important;
+ border:1px solid #948366!important;border-radius:18px!important;
+ color:#f6efda!important;background:#193e32!important;box-shadow:none!important
+}
+.lt-edition-copy{padding:clamp(18px,3vw,42px);align-self:center;text-align:start}
+.library .lt-edition-feature .lt-edition-copy h2{
+ display:block!important;margin:5px 0!important;font-family:"LT English Serif","LT Arabic Naskh",serif;
+ font-size:clamp(24px,3.4vw,47px)!important;line-height:1.15!important;
+ color:#fffae9!important;text-align:start!important;text-shadow:none!important
+}
+.library .lt-edition-feature .lt-edition-copy p,.lt-edition-copy small{
+ display:block!important;margin:5px 0!important;font-size:14px!important;color:#e1dcc5!important
+}
+.lt-edition-open{min-height:44px;margin-top:12px;padding:8px 20px;border-radius:22px;
+ background:#fff7df;color:#14392d;border:1px solid #c9b68a;font-weight:650}
+.lt-edition-plate{background:#285142 center/cover no-repeat;border-inline-start:1px solid #b19b65}
+.lt-edition-plate.lt-verne-atlas{background-image:url("art/verne-route-map-1872.webp")!important}
+.library .shelf.lt-novel-shelf{grid-template-columns:repeat(auto-fill,minmax(min(100%,175px),1fr))!important}
+.library .shelf.lt-novel-shelf .lt-novel-card{
+ background:transparent!important;box-shadow:none!important;border:0!important;
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-radius:8px!important
+}
+.library .shelf.lt-novel-shelf .lt-novel-card[hidden]{display:none!important}
+.library .lt-novel-shelf-heading p{display:none}
+.library .lt-novel-shelf-heading h2,.lt-chapter-gallery-title{
+ font-family:"LT English Serif","LT Arabic Naskh",serif
+}
+.lt-edition-notes{margin:6px 0 12px;max-width:65ch}
+.lt-edition-notes summary{cursor:pointer;min-height:44px;align-content:center;text-decoration:underline;text-underline-offset:4px}
+.lt-edition-notes p{margin:0 0 12px;overflow-wrap:anywhere;text-align:start}
+dialog.lt-chapter-gallery{background:#f7f0e2;color:#25382e}
+.lt-chapter-gallery .lt-chapter-gallery-header{position:relative!important;background:#f7f0e2!important}
+.lt-chapter-gallery .lt-chapter-tile:not(.lt-chapter-resume){border-color:#b9b29c}
+.lt-chapter-gallery .lt-chapter-tile.lt-chapter-resume{outline:2px solid #41694c;outline-offset:-2px}
+.lt-chapter-gallery .lt-chapter-tile-visual.lt-chapter-image-missing{
+ background:linear-gradient(135deg,#253d32,#385245)!important;color:#f8edce
+}
+.lt-chapter-gallery .lt-chapter-tile-number{color:#f6ebcf}
+@media(max-width:620px){
+ .library .shelf.lt-novel-shelf{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .library .lt-edition-copy{padding:18px 14px}
+}
+body.theme-aurora:has(.library)::before,body.theme-aurora:has(.library)::after{display:none!important}
+.library .lt-edition-feature .lt-edition-copy h2{font-family:"LT English Serif","LT Arabic Naskh",serif!important}
+dialog.lt-chapter-gallery:not(.lt-chapter-gallery-list-view) .lt-chapter-tile .lt-chapter-tile-visual{
+ height:clamp(96px,20dvh,175px)!important;min-height:0!important
+}
+dialog.lt-chapter-gallery:not(.lt-chapter-gallery-list-view) .lt-chapter-tile{
+ min-height:0!important
+}
+dialog.lt-chapter-gallery .lt-chapter-gallery-sheet{justify-content:flex-start!important}
+dialog.lt-chapter-gallery .lt-chapter-gallery-track{margin-block:0!important}
+#modals .overlay.lt-lookup-backdrop{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#modals .lt-lookup-backdrop .lt-anchored-meaning{
+ position:fixed!important;left:var(--lt-lookup-left);right:auto;width:var(--lt-lookup-width)!important;
+ height:auto!important;min-height:0!important;max-height:var(--lt-lookup-height)!important;
+ box-sizing:border-box;margin:0!important;padding:16px 20px!important;overflow:auto;
+ overscroll-behavior:contain;transform:none!important;border-radius:16px!important;
+ background:var(--reader,#fff8eb)!important;color:var(--reader-ink,#203a30)!important;
+ box-shadow:0 8px 32px #162b2433!important;border:1px solid #a69b83!important
+}

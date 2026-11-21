@@ -1,3 +1,7 @@
+## 21 November 2026 — Hybrid Signature
+
+Hybrid Signature implementation begins at the signed 101318 merge (1928c59). The home feature browses an actual offline edition or resumes the saved book. The chapter chooser exposes edition provenance and uses compact chapter plates. Tapping a reader token anchors the existing contextual dictionary to the selected line when space permits. Android update, translation review, and hardware frame pacing remain separate checks.
+
 ## November 20 motion-synchronized paper audio
 
 Keep the frame-pacing and GPU preparation fixes. Drive short amplitude-shaped strokes from the existing offline Oculus page recording using actual fold displacement and velocity, including reverse motion and release. Skip the old post-commit recording on animated turns. Physical Xiaomi speaker and display latency remain unmeasured.

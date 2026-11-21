@@ -162,6 +162,27 @@ wordSheet=function(args){
  contextNode.classList.toggle('lt-context-missing',result.kind==='sentence');
 };
 
+// Position the existing local dictionary sheet in the free space beside
+// the selected line. The full-screen layout remains available in short windows.
+function positionDictionarySheet(token){
+ const sheet=document.querySelector('#modals .sheet');
+ const box=token.getBoundingClientRect?.();
+ if(!box||!sheet||!window.innerWidth||!window.innerHeight)return;
+ const gap=10;
+ const above=box.top-gap*2;
+ const below=window.innerHeight-box.bottom-gap*2;
+ const room=Math.max(above,below);
+ if(room<160)return;
+ sheet.parentElement.classList.add('lt-lookup-backdrop');
+ sheet.classList.add('lt-anchored-meaning');
+ const width=Math.min(420,window.innerWidth-gap*2);
+ const left=Math.max(gap,Math.min(window.innerWidth-gap-width,(box.left+box.right-width)/2));
+ sheet.style.setProperty('--lt-lookup-width',width+'px');
+ sheet.style.setProperty('--lt-lookup-left',left+'px');
+ sheet.style.setProperty('--lt-lookup-height',Math.min(room,window.innerHeight*.58)+'px');
+ if(below>=above)sheet.style.top=(box.bottom+gap)+'px';
+ else sheet.style.bottom=(window.innerHeight-box.top+gap)+'px';
+}
 // Each chapter becomes measured physical pages. The legacy four-paragraph
 // constant remains only for old stored page numbers and unsupported WebViews.
 const LT_PAGE_PARAGRAPHS=4;
@@ -2054,6 +2075,7 @@ renderReader=function(){
    });
    if(!hit)return false;
    wordSheet({...hit,source});
+   positionDictionarySheet(token);
    return true;
   };
   p.addEventListener('click',event=>{
