@@ -1,7 +1,7 @@
 name: Installed WebView evidence for preview 101323
 on:
   push:
-    branches: [qa/hybrid-android-101323]
+    branches: [qa/hybrid-android-software-101323]
 permissions:
   contents: read
   actions: read
@@ -30,16 +30,18 @@ jobs:
           arch: x86_64
           cores: 2
           ram-size: 3072
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot
+          emulator-options: -no-window -gpu off -feature -Vulkan -noaudio -no-boot-anim -no-snapshot
           disable-animations: false
           script: |
             adb logcat -v threadtime > android-sheet-evidence/logcat.txt 2>&1 &
             adb install -r "$(find apk -name '*.apk' -print -quit)"
             adb shell am start -W -n com.storylens.reader.preview/com.storylens.reader.MainActivity
-            sleep 6
+            adb shell wm size 460x860
+            adb shell wm density 160
+            sleep 2
             adb exec-out screencap -p > android-sheet-evidence/installed-home.png
             adb shell dumpsys webviewupdate > android-sheet-evidence/webview.txt
-            NODE_PATH=/tmp/android-sheet/node_modules node tools/android-sheet-acceptance.cjs
+            NODE_PATH=/tmp/android-sheet/node_modules node tools/installed-journey.cjs
       - if: always()
         run: sudo dmesg | tail -300 > android-sheet-evidence/host-kernel.txt
       - if: always()
