@@ -1,3 +1,7 @@
+## November 22 — repeated book switches on Android 13
+
+Separate Android runs in both directions and layouts passed in 44941163224. Run 44941627913 reproduced a second-book readiness timeout. Its three cached sheets totalled 3,900,204 bytes (441×737×4×3) while the final page measured 444×742. Reader entry scaled the sheet while warm-up measured it. Preserve paper size during screen transitions and reschedule warm-up after changing geometry. The Android workflow uses the API 33 emulator configuration that produced actual device framebuffer captures, retaining the sequential switch test. No hardware 120 Hz claim.
+
 The final stylesheet is declared in the HTML head before first paint. The chapter selector now accepts every published positive integer chapter index, including 10 and 36, and library cover keyboard activation uses the same chapter chooser as touch.
 
 ## November 21 — startup, acoustic continuity and leaf ownership

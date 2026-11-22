@@ -823,11 +823,12 @@ jobs:
       - name: Install APK and exercise real Android WebView
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 35
-          target: google_apis
+          api-level: 33
+          target: default
           arch: x86_64
-          ram-size: 2048
-          emulator-options: -no-window -gpu swiftshader -noaudio -no-boot-anim -no-snapshot-save
+          cores: 2
+          ram-size: 3072
+          emulator-options: -no-window -gpu off -feature -Vulkan -noaudio -no-boot-anim -no-snapshot
           disable-animations: false
           script: |
             adb install -r "$(find android-test-apk -name '*.apk' -print -quit)"

@@ -688,7 +688,11 @@ function installPageTurn(){
      await gpu.prime({win:window,host:sentenceBox,page:pages[current+3],width:rect.width,height:rect.height});
    })().catch(error=>{gpu.lastWarmupWarning=String(error);}).finally(()=>{
     priming=false;
-    if(primeAgain&&sentenceBox.isConnected){primeAgain=false;scheduleGpuPaperPrime();}
+    if(!sentenceBox.isConnected)return;
+    const finalRect=front.getBoundingClientRect();
+    if(primeAgain||((finalRect.width!==rect.width||finalRect.height!==rect.height)&&current===primePage)){
+     primeAgain=false;scheduleGpuPaperPrime();
+    }
    });
   },retry===true?300:180);
  }

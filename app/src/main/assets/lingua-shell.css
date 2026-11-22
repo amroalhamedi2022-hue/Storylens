@@ -199,8 +199,8 @@ body.theme-midnight-library{
  .theme-midnight-library .library .storylens-hero{min-height:175px;padding:20px 14px 26px}
 }
 /* LT-02: transform+opacity only, no layout animation or live blur. */
-@keyframes ltReaderEnter{from{opacity:.45;transform:translate3d(0,12px,0) scale(.992)}to{opacity:1;transform:none}}
-@keyframes ltReaderExit{from{opacity:1;transform:none}to{opacity:.2;transform:translate3d(0,9px,0) scale(.994)}}
+@keyframes ltReaderEnter{from{opacity:.45;transform:translate3d(0,12px,0)}to{opacity:1;transform:none}}
+@keyframes ltReaderExit{from{opacity:1;transform:none}to{opacity:.2;transform:translate3d(0,9px,0)}}
 .reader.lt-reader-enter{animation:ltReaderEnter .21s cubic-bezier(.18,.8,.24,1) both;transform-origin:center top}
 .reader.lt-reader-exit{animation:ltReaderExit .19s ease-in both;pointer-events:none}
 @media(prefers-reduced-motion:reduce){
