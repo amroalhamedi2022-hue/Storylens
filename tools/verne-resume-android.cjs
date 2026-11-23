@@ -11,7 +11,7 @@ async function mark(page){return page.evaluate(()=>{
  const keys=page=>page.evaluate(()=>Object.fromEntries(Object.entries(localStorage).filter(([k])=>k.includes('eighty-days-towle_31')||k==='storylens_last_story')));
  let [device]=await _android.devices();
  try{
- let await new Promise(r=>setTimeout(r,3000));page=await connect(device);
+ let page=await connect(device);
  await page.locator(".library .card[onclick*='around-the-world-in-eighty-days-towle']").first().click();
  await page.locator('.lt-chapter-gallery-search').fill('32');
  await page.locator('.lt-chapter-tile[data-chapter-index="31"]').click();
@@ -29,7 +29,7 @@ async function mark(page){return page.evaluate(()=>{
  execFileSync('adb',['shell','am','force-stop',pkg]);
  [device]=await _android.devices();
  await device.shell('am start -W -n '+pkg+'/com.storylens.reader.MainActivity');
- page=await connect(device);
+ await new Promise(r=>setTimeout(r,3000));page=await connect(device);
  await page.locator('.lt-edition-open').waitFor();fs.writeFileSync(out+'keys-cold.json',JSON.stringify(await keys(page)));
  await page.locator('.lt-edition-open').click();
  await page.waitForFunction(()=>state.chapter===31&&document.querySelector('#sentences>.is-active'));
