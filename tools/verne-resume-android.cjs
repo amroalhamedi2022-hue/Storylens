@@ -9,9 +9,9 @@ async function mark(page){return page.evaluate(()=>{
 });}
 (async()=>{
  const keys=page=>page.evaluate(()=>Object.fromEntries(Object.entries(localStorage).filter(([k])=>k.includes('eighty-days-towle_31')||k==='storylens_last_story')));
- const [device]=await _android.devices();
+ let [device]=await _android.devices();
  try{
- let page=await connect(device);
+ let await new Promise(r=>setTimeout(r,3000));page=await connect(device);
  await page.locator(".library .card[onclick*='around-the-world-in-eighty-days-towle']").first().click();
  await page.locator('.lt-chapter-gallery-search').fill('32');
  await page.locator('.lt-chapter-tile[data-chapter-index="31"]').click();
@@ -25,7 +25,9 @@ async function mark(page){return page.evaluate(()=>{
  }
  fs.writeFileSync(out+'keys-before.json',JSON.stringify(await keys(page)));
  capture('before-stop');fs.writeFileSync(out+'before.json',JSON.stringify(last));
- await device.shell('am force-stop '+pkg);
+ await device.close();
+ execFileSync('adb',['shell','am','force-stop',pkg]);
+ [device]=await _android.devices();
  await device.shell('am start -W -n '+pkg+'/com.storylens.reader.MainActivity');
  page=await connect(device);
  await page.locator('.lt-edition-open').waitFor();fs.writeFileSync(out+'keys-cold.json',JSON.stringify(await keys(page)));
