@@ -512,24 +512,30 @@ body .lt-menu-toggle .lt-menu-glyph{
 
 /* RDR-03 — independently selected paper and opaque live book ink.
    No layout transforms; Codex owns the folding/shadow geometry. */
-html[data-lt-reader-material] body .reader{
+html[data-lt-reader-material] body .reader,
+html[data-lt-reader-material] body .lt-type-specimen{
  --lt-paper-bg:#f2e9d6;--lt-paper-ink:#292820;
  --reader:var(--lt-paper-bg)!important;--reader-ink:var(--lt-paper-ink)!important;
  background:var(--lt-paper-bg)!important;color:var(--lt-paper-ink)!important;
 }
-html[data-lt-reader-material="fibre"] body .reader{
+html[data-lt-reader-material="fibre"] body .reader,
+html[data-lt-reader-material="fibre"] body .lt-type-specimen{
  --lt-paper-bg:#f4efdf;--lt-paper-ink:#2e302c;
 }
-html[data-lt-reader-material="white"] body .reader{
+html[data-lt-reader-material="white"] body .reader,
+html[data-lt-reader-material="white"] body .lt-type-specimen{
  --lt-paper-bg:#ffffff;--lt-paper-ink:#22292d;
 }
-html[data-lt-reader-material="cream"] body .reader{
+html[data-lt-reader-material="cream"] body .reader,
+html[data-lt-reader-material="cream"] body .lt-type-specimen{
  --lt-paper-bg:#fff3d1;--lt-paper-ink:#302a21;
 }
-html[data-lt-reader-material="comfort"] body .reader{
+html[data-lt-reader-material="comfort"] body .reader,
+html[data-lt-reader-material="comfort"] body .lt-type-specimen{
  --lt-paper-bg:#e4e7df;--lt-paper-ink:#273530;
 }
-html[data-lt-reader-material="night"] body .reader{
+html[data-lt-reader-material="night"] body .reader,
+html[data-lt-reader-material="night"] body .lt-type-specimen{
  --lt-paper-bg:#172127;--lt-paper-ink:#d7e2dd;
 }
 html[data-lt-reader-material] body .reader .lt-book-page{

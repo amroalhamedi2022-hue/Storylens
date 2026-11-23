@@ -417,11 +417,11 @@ function openSettings(){
  sheet.setAttribute('aria-modal','true');
  sheet.setAttribute('aria-label',settingsText());
  const heading=document.createElement('h2');
- heading.textContent=settingsText();sheet.appendChild(heading);
- const description=document.createElement('p');
- description.className='quiet';
- description.textContent=rtl()?'اختر تصميم القراءة والمكتبة. تبقى بياناتك محفوظة.':'Choose your library appearance. Your reading progress is preserved.';
- sheet.appendChild(description);
+ const header=document.createElement('header');
+ header.className='lt-settings-heading';
+ heading.textContent=settingsText();header.appendChild(heading);
+ const closeButton=addButton(header,rtl()?'إغلاق':'Close',()=>closeSheet(),'secondary');
+ sheet.appendChild(header);
  const languageHeading=document.createElement('h3');
  languageHeading.textContent=rtl()?'لغة الواجهة':'Interface language';
  sheet.appendChild(languageHeading);
@@ -502,10 +502,23 @@ function openSettings(){
  }
  materialSelect.value=document.documentElement.dataset.ltReaderMaterial||'book';
  materialSelect.addEventListener('change',()=>applyReaderMaterial(materialSelect.value));
- materialLabel.appendChild(materialSelect);sheet.appendChild(materialLabel);
+ const typography=document.createElement('section');
+ typography.className='lt-reading-preferences';
+ materialLabel.appendChild(materialSelect);typography.appendChild(materialLabel);
+ const specimen=document.createElement('figure');
+ specimen.className='lt-type-specimen';
+ const caption=document.createElement('figcaption');
+ caption.textContent=rtl()?'معاينة خط القراءة':'Reading type preview';
+ specimen.appendChild(caption);
+ for(const [lang,dir,text] of [['ar','rtl','حول العالم في ثمانين يومًا'],
+  ['en','ltr','Around the World in Eighty Days']]){
+  const line=document.createElement('p');
+  line.lang=lang;line.dir=dir;line.textContent=text;specimen.appendChild(line);
+ }
+ typography.appendChild(specimen);sheet.appendChild(typography);
  const fontsHeading=document.createElement('h3');
  fontsHeading.textContent=rtl()?'خطوط القراءة':'Reading fonts';
- sheet.appendChild(fontsHeading);
+ typography.appendChild(fontsHeading);
  for(const lang of ['ar','en']){
   const label=document.createElement('label');label.className='lt-font-setting';
   const title=document.createElement('span');
@@ -531,11 +544,11 @@ function openSettings(){
   }
   select.value=document.documentElement.dataset[lang==='ar'?'ltArabicFont':'ltEnglishFont']||fontDefaults[lang];
   select.addEventListener('change',()=>applyFont(lang,select.value));
-  label.appendChild(select);sheet.appendChild(label);
+  label.appendChild(select);typography.appendChild(label);
  }
  const sizeHeading=document.createElement('h3');
  sizeHeading.textContent=rtl()?'حجم النص وتباعد السطور':'Text size & line spacing';
- sheet.appendChild(sizeHeading);
+ typography.appendChild(sizeHeading);
  for(const lang of ['ar','en']){
   const label=document.createElement('label');label.className='lt-font-setting lt-reading-size-setting';
   const title=document.createElement('span');
@@ -556,7 +569,7 @@ function openSettings(){
   const key=lang==='ar'?'ltArabicSize':'ltEnglishSize';
   select.value=document.documentElement.dataset[key]||readingSizeDefaults[lang];
   select.addEventListener('change',()=>applyReadingSize(lang,select.value));
-  label.appendChild(select);sheet.appendChild(label);
+  label.appendChild(select);typography.appendChild(label);
  }
  // One primary licensed-audio panel; the extra synthesized presets are
  // available on demand rather than duplicating a giant settings form.
@@ -569,13 +582,8 @@ function openSettings(){
   sheet.appendChild(extras);
  }
  if(global.LinguaLicensedAudio)global.LinguaLicensedAudio.controls(sheet,rtl());
- const note=document.createElement('p');note.className='quiet';
- note.textContent=rtl()?'ترجمة بقية عناصر الواجهة قيد التطوير.':'Full localization of the remaining interface is in progress.';
- sheet.appendChild(note);
- const footer=document.createElement('footer');
- addButton(footer,rtl()?'إغلاق':'Close',()=>closeSheet(),'secondary');
- sheet.appendChild(footer);overlay.appendChild(sheet);host.appendChild(overlay);
- sheet.querySelector('.lt-theme-choice.selected')?.focus();
+ overlay.appendChild(sheet);host.appendChild(overlay);
+ closeButton.focus({preventScroll:true});
 }
 /* LT-07/03: search actual bilingual passages of all offline chapters, not
  * only card titles. Index only when the user opens search, cap result count,

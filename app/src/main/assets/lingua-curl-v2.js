@@ -539,7 +539,7 @@ function makeRenderer(win,stage,width,height){
    resident.clear();gl.deleteTexture(blankTexture);gl.deleteBuffer(buffer);gl.deleteVertexArray(vao);gl.deleteProgram(program);canvas.remove();},
   get canvas(){return canvas;},get lost(){return lost||dead;}
  };
- canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;root.LinguaReaderCurl?.cancel('context-lost');});
+ canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;});
  return api;
 }
 function createSession(o){
@@ -554,9 +554,12 @@ function createSession(o){
  renderer.canvas.style.setProperty('top',(hr.top-pr.top)+'px','important');
  stage.appendChild(renderer.canvas);renderer.canvas.hidden=false;
  let disposed=false;
+ const lostDuringTurn=()=>{if(!disposed)o.onContextLost?.();};
+ renderer.canvas.addEventListener('webglcontextlost',lostDuringTurn);
  const session={get ready(){return !disposed&&!renderer.lost;},
   draw(...args){if(!disposed)renderer.draw(...args);},
-  destroy(){disposed=true;renderer.canvas.hidden=true;renderer.canvas.remove();},startup:Promise.resolve()};
+  destroy(){disposed=true;renderer.canvas.removeEventListener('webglcontextlost',lostDuringTurn);
+   renderer.canvas.hidden=true;renderer.canvas.remove();},startup:Promise.resolve()};
  // Callback is synchronous: shaders and all texture bytes already live on GPU.
  onReady?.();return session;
 }

@@ -158,7 +158,7 @@ function mount(options){
   // one-page destination instead of exposing the GPU compositor's N+2.
   if(!gpuPrimed&&h.info?.spread===1&&h.fallbackUnder){
    h.under=h.fallbackUnder;
-   h.back=textureBack||h.fallbackUnder;
+   h.back=textureBack;
   }
   const shadow=doc.createElement('div');shadow.className='lt-curl-contact';
   stage.append(shadow);h.shadow=shadow;h.facets=[];
@@ -181,6 +181,7 @@ function mount(options){
     h.stage.classList.add('lt-curl-webgl-ready');host.classList.add('lt-curl-gpu-book');
     h.gpuReady=true;
    },
+   onContextLost(){if(hold===h)cancel('context-lost');},
    onFailed(){
     host.classList.remove('lt-curl-gpu-book');h.stage?.classList.remove('lt-curl-webgl-ready');
     if(hold===h&&h.stage?.isConnected){
@@ -224,9 +225,9 @@ function mount(options){
     const reverse=i>Math.ceil(CURL_SEGMENTS/2);
     const face=doc.createElement('div');
     face.className=reverse?'lt-curl-back':'lt-curl-front';
-    const ink=(reverse?(h.backTemplate||h.frontTemplate):h.frontTemplate).cloneNode(true);
-    if(reverse&&!h.backTemplate)ink.classList.add('lt-curl-ghost');
-    face.append(ink);node.append(face);
+    const template=reverse?h.backTemplate:h.frontTemplate;
+    if(template)face.append(template.cloneNode(true));
+    node.append(face);
    }
    node.style.display='block';
    node.style.clipPath='polygon('+g.polygon.map(p=>p.x.toFixed(2)+'px '+p.y.toFixed(2)+'px').join(',')+')';

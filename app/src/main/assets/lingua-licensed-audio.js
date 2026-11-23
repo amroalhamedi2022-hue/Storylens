@@ -93,10 +93,12 @@ function movePaper(detail){
  const turn=paperTurn,ctx=paperContext;
  if(!turn||turn.id!==detail.id||!prefs.sfxEnabled||doc.hidden)return;
  const distance=Math.hypot(detail.progress-turn.progress,((detail.pullY||0)-turn.pullY)*.35);
- turn.progress=detail.progress;turn.pullY=detail.pullY||0;
  if(!ctx||ctx.state!=='running'||!paperBuffer||prefs.sfxVolume<=0)return;
  const now=ctx.currentTime;
+ // Accumulate sub-threshold motion instead of discarding every small
+ // high-refresh drag. A stationary hold still lets its envelope decay.
  if(distance<.0004)return;
+ turn.progress=detail.progress;turn.pullY=detail.pullY||0;
  if(!turn.voice){
   if(!playing&&!proceduralPlaying()&&!requestFocus())return;
   const voice=ctx.createBufferSource(),gain=ctx.createGain();
