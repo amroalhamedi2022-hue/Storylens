@@ -8,6 +8,7 @@ async function mark(page){return page.evaluate(()=>{
  const p=document.querySelector('#sentences>.is-active');return {book:state.story.id,chapter:state.chapter,total:state.story.chapters.length,paragraph:p.dataset.ltStartParagraph,offset:p.dataset.ltStartOffset,text:p.textContent.trim().slice(0,140)};
 });}
 (async()=>{
+ const keys=page=>page.evaluate(()=>Object.fromEntries(Object.entries(localStorage).filter(([k])=>k.includes('eighty-days-towle_31')||k==='storylens_last_story')));
  const [device]=await _android.devices();
  try{
  let page=await connect(device);
@@ -22,14 +23,18 @@ async function mark(page){return page.evaluate(()=>{
  await page.waitForFunction(before=>{const p=document.querySelector('#sentences>.is-active');return p&&!window.LinguaReaderCurl.active&&(p.dataset.ltStartParagraph!==before.paragraph||p.dataset.ltStartOffset!==before.offset);},last);
  last=await mark(page);
  }
+ fs.writeFileSync(out+'keys-before.json',JSON.stringify(await keys(page)));
  capture('before-stop');fs.writeFileSync(out+'before.json',JSON.stringify(last));
  await device.shell('am force-stop '+pkg);
  await device.shell('am start -W -n '+pkg+'/com.storylens.reader.MainActivity');
  page=await connect(device);
+ await page.locator('.lt-edition-open').waitFor();fs.writeFileSync(out+'keys-cold.json',JSON.stringify(await keys(page)));
  await page.locator('.lt-edition-open').click();
  await page.waitForFunction(()=>state.chapter===31&&document.querySelector('#sentences>.is-active'));
  await page.evaluate(()=>document.fonts.ready);
- const after=await mark(page);fs.writeFileSync(out+'after.json',JSON.stringify(after));assert.deepEqual(after,last);
+ await page.waitForTimeout(1500);fs.writeFileSync(out+'keys-resumed.json',JSON.stringify(await keys(page)));
+ fs.writeFileSync(out+'breaks.json',JSON.stringify(await page.evaluate(()=>[...document.querySelectorAll('#sentences>.lt-paginated-sheet')].filter(e=>!e.classList.contains('lt-curl-snapshot-page')).map(e=>[e.dataset.ltStartParagraph,e.dataset.ltStartOffset]))));
+ capture('after-resume');const after=await mark(page);fs.writeFileSync(out+'after.json',JSON.stringify(after));assert.deepEqual(after,last);
  capture('after-resume');console.log('PASS chapter 32 survives process death at the same paragraph, offset and text');
  }finally{await device.close();}
 })().catch(e=>{console.error(e);process.exitCode=1});
