@@ -833,6 +833,7 @@ jobs:
           script: |
             adb install -r "$(find android-test-apk -name '*.apk' -print -quit)"
             NODE_PATH=/tmp/android-sheet/node_modules node tools/android-sheet-acceptance.cjs
+            NODE_PATH=/tmp/android-sheet/node_modules node tools/android-verne-resume.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

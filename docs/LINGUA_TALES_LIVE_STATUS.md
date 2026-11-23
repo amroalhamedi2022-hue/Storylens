@@ -1,3 +1,7 @@
+## November 23 — cold reading progress on Android 13
+
+On preview 101327 the chapter 32 reader showed paragraph 2, character 629 after two turns. Following force-stop the WebView store already held paragraph 1, offset 0 before the reader reopened (run 45121115820). Added a small Android disk checkpoint at completed page changes with startup replay and invalidation after a backup restore. Existing story, vocabulary and bookmark records retain their original format. Native restart acceptance compares both the source anchor and the visible text.
+
 ## November 22 — repeated book switches on Android 13
 
 Separate Android runs in both directions and layouts passed in 44941163224. Run 44941627913 reproduced a second-book readiness timeout. Its three cached sheets totalled 3,900,204 bytes (441×737×4×3) while the final page measured 444×742. Reader entry scaled the sheet while warm-up measured it. Preserve paper size during screen transitions and reschedule warm-up after changing geometry. The Android workflow uses the API 33 emulator configuration that produced actual device framebuffer captures, retaining the sequential switch test. No hardware 120 Hz claim.

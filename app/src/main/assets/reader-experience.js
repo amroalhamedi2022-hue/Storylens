@@ -3,6 +3,19 @@
  */
 (function(){
 'use strict';
+// Replay only the latest physical page into the existing backup-compatible
+// store. Older installations and browser readers have no native checkpoint.
+const savedPaper=window.LinguaReadingPosition?.latest();
+if(savedPaper){
+ try{
+  const {book,chapter,page,paragraph,offset}=JSON.parse(savedPaper);
+  if(/^[a-z0-9-]{1,90}$/.test(book)&&[chapter,page,paragraph,offset].every(n=>Number.isSafeInteger(n)&&n>=0)){
+   const suffix=book+'_'+chapter;
+   put('last_story',book);put('chapter_'+book,chapter);
+   put('readpage_'+suffix,page);put('readpage_anchor_'+suffix,paragraph);put('readpage_offset_'+suffix,offset);
+  }
+ }catch(_){/* The WebView's existing progress remains available. */}
+}
 const originalLibrary=library;
 const originalOpenStory=openStory;
 const originalReader=renderReader;
@@ -726,6 +739,7 @@ function installPageTurn(){
   put(key,current);
   put(anchorKey,starts[current]||0);
   put(offsetKey,offsets[current]||0);
+  window.LinguaReadingPosition?.save(state.story.id,state.chapter,current,starts[current]||0,offsets[current]||0);
   if(chapterEnd)chapterEnd.hidden=current+spread<pages.length;
   // Legacy VM tests extract renderPage alone; standalone reader remains valid.
   if(typeof scheduleGpuPaperPrime==='function')scheduleGpuPaperPrime();
