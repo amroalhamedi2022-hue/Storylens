@@ -642,7 +642,9 @@ function installPageTurn(){
  const reflowKey=state.story.id+'\u0000'+state.chapter;
  const pendingAnchor=ltPendingReflowAnchors.get(reflowKey);
  ltPendingReflowAnchors.delete(reflowKey);
- let current=pendingAnchor
+ let current=Number.isInteger(pendingAnchor?.readerPage)
+  ?Math.min(pendingAnchor.readerPage,pages.length-1)
+  :pendingAnchor
   ?ltPageForTextAnchor(starts,offsets,pendingAnchor.paragraph,pendingAnchor.textOffset)
   :(Number.isInteger(savedOffset)&&savedOffset>=0&&savedAnchor===firstParagraph
     ?ltPageForTextAnchor(starts,offsets,firstParagraph,savedOffset)
@@ -1203,7 +1205,8 @@ function bookmarkPosition(mark){
     Math.abs(mark.viewportOffset)>4096)return fallback;
  const wantedOffset=Number.isInteger(mark.textOffset)&&mark.textOffset>=0?mark.textOffset:0;
  const matching=Array.from(document.querySelectorAll('.reader .sentence'))
-  .filter(el=>Number(el.dataset?.i)===mark.paragraph);
+  .filter(el=>Number(el.dataset?.i)===mark.paragraph&&
+   !el.closest?.('[aria-hidden="true"],.lt-curl-stage')&&el.getBoundingClientRect().height>0);
  const node=matching.find(el=>{
   const start=Number(el.dataset?.ltFragmentStart)||0;
   const end=Number(el.dataset?.ltFragmentEnd)||Number.MAX_SAFE_INTEGER;
@@ -2269,37 +2272,32 @@ window.stlBookmark=function(){
  put(bookmarkKey(),marks);
  closeSheet();settings();
 };
+// Use the same destination resolver from the shelf and the open reader.
+ // Called after the content loader has resolved the actual edition.
+function prepareBookmark(story){
+ const mark=get(bookmarkKey(),{})?.[story.id];
+ if(!mark||!Number.isInteger(mark.chapter)||mark.chapter<0||mark.chapter>=story.chapters.length)return null;
+ const chapter=mark.chapter;
+ const paragraph=mark.paragraph,readerPage=mark.readerPage;
+ const key=story.id+'\u0000'+chapter;
+ if(Number.isInteger(paragraph)&&paragraph>=0&&paragraph<(story.chapters[chapter]?.paragraphs?.length||0)){
+  const textOffset=Number.isSafeInteger(mark.textOffset)&&mark.textOffset>=0?mark.textOffset:0;
+  ltPendingReflowAnchors.set(key,{paragraph,textOffset});
+ }else if(Number.isSafeInteger(readerPage)&&readerPage>=0){
+  ltPendingReflowAnchors.set(key,{readerPage});
+ }
+ put('chapter_'+story.id,chapter);
+ return {chapter,restoreScroll:()=>window.scrollTo(0,bookmarkPosition(mark))};
+}
+window.LinguaBookmarkNavigation=Object.freeze({prepare:prepareBookmark});
 window.stlJumpBookmark=function(){
  if(!state.story)return;
- const mark=get(bookmarkKey(),{})[state.story.id];
- // Backups and old local storage can contain corrupt bookmark values.
- // Never let NaN or a non-integer chapter reach the reader renderer.
- if(!mark||!Number.isInteger(mark.chapter)||mark.chapter<0)return;
- const chapter=Math.min(mark.chapter,state.story.chapters.length-1);
- if(chapter<0)return;
- // Page-turn mode hides non-active pages. Restore the saved page before the
- // reader pipeline renders, so the paragraph anchor is measured in a visible page.
- const savedReaderPage=Number.isInteger(mark.readerPage)&&mark.readerPage>=0
-  ?mark.readerPage
-  :Number.isInteger(mark.paragraph)&&mark.paragraph>=0
-   ?Math.floor(mark.paragraph/LT_PAGE_PARAGRAPHS):null;
- if(savedReaderPage!==null){
-  put('readpage_'+state.story.id+'_'+chapter,savedReaderPage);
-  // Prefer the semantic bookmark; an old page number remains compatible.
-  const target=Number.isInteger(mark.paragraph)&&mark.paragraph>=0
-   ?mark.paragraph:savedReaderPage*LT_PAGE_PARAGRAPHS;
-  put('readpage_anchor_'+state.story.id+'_'+chapter,target);
-  ltPendingReflowAnchors.set(state.story.id+'\u0000'+chapter,{paragraph:target,
-   textOffset:Number.isInteger(mark.textOffset)&&mark.textOffset>=0?mark.textOffset:0});
- }
-
- state.chapter=chapter;
- put(chapterKey(),state.chapter);
+ const target=prepareBookmark(state.story);
+ if(!target)return;
+ state.chapter=target.chapter;
  closeSheet();state.toolbar=false;
- // Run the currently installed reader pipeline (accessibility, bookmarks and preferences).
- // Calling the captured base renderer here skips every later enhancement wrapper.
  renderReader();
- window.scrollTo(0,bookmarkPosition(mark));
+ target.restoreScroll();
 };
 window.stlChapter=function(i){
  if(!state.story||!Number.isInteger(i)||i<0||i>=state.story.chapters.length)return;

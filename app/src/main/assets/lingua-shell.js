@@ -1049,6 +1049,38 @@ function decorateLibrary(){
  if(actions){actions.classList.add('lt-drawer-actions');drawer.appendChild(actions);}
 
 }
+function mountSavedPlaces(section){
+ if(!section||state.genre!=='all'||state.query)return;
+ const marks=get('bookmarks',{})||{};
+ const books=catalog.stories.filter(book=>{
+  const chapter=marks[book.id]?.chapter;
+  return Number.isInteger(chapter)&&chapter>=0&&chapter<(book.totalChapters||book.chapters?.length||0);
+ });
+ if(!books.length)return;
+ books.sort((a,b)=>(Number(marks[b.id].updatedAt)||0)-(Number(marks[a.id].updatedAt)||0));
+ const places=document.createElement('details');places.className='lt-saved-places';
+ const summary=document.createElement('summary');
+ summary.textContent=(rtl()?'إشارات القراءة':'Reading bookmarks')+' ('+books.length+')';
+ places.appendChild(summary);
+ const list=document.createElement('ul');
+ for(const book of books){
+  const index=marks[book.id].chapter;
+  const row=document.createElement('li');
+  const button=document.createElement('button');button.type='button';
+  button.dataset.bookmarkBook=book.id;
+  const title=document.createElement('strong');title.dir='auto';
+  title.textContent=(rtl()?book.titleAr:book.titleEn)||book.title;
+  const location=document.createElement('span');location.dir='auto';
+  const chapter=book.chapters?.[index];
+  const name=rtl()?chapter?.titleAr||chapter?.title:chapter?.title||chapter?.titleAr;
+  location.textContent=(rtl()?'الفصل ':'Chapter ')+(index+1)+(name?' · '+name:'');
+  button.append(title,location);
+  button.addEventListener('click',()=>global.openStory(book.id,{bookmark:true}));
+  row.appendChild(button);list.appendChild(row);
+ }
+ places.appendChild(list);
+ section.querySelector('.lt-novel-shelf-heading')?.before(places);
+}
 // The three library destinations share one navigation model. Reader and
 // translation keep their own Back handling and unobstructed paper viewport.
 function mountLibraryNavigation(screen,route,entering){
@@ -1086,6 +1118,7 @@ function mountLibraryNavigation(screen,route,entering){
 library=function(){
  const entering=!document.querySelector('#root > .library');
  originalLibrary();decorateLibrary();
+ mountSavedPlaces(document.querySelector('#root > .library'));
  mountLibraryNavigation(document.querySelector('#root > .library'),'library',entering);
 };
 const renderWordsScreen=showWords;
@@ -1211,7 +1244,7 @@ document.addEventListener('click',event=>{
  if(typeof openStory!=='function'||typeof libraryBack!=='function')return;
  const baseOpen=openStory,baseBack=libraryBack;
  let closing=false,waitingPop=false,closeTimer=null,historyFallback=null;
- let returnY=0,returnStoryId=null,translationScroll=0;
+ let returnY=0,returnStoryId=null,returnToBookmark=false,translationScroll=0;
  const safeOffset=value=>typeof value==='number'&&Number.isFinite(value)
   ?Math.max(0,Math.min(value,10000000)):0;
  const focusWithoutScroll=node=>{
@@ -1273,6 +1306,11 @@ document.addEventListener('click',event=>{
    // Rebuilt library cards replace their previous DOM nodes.
    const card=Array.from(document.querySelectorAll('.library .card')).find(node=>
     node.getAttribute?.('onclick')==="openStory('"+returnStoryId+"')");
+   if(returnToBookmark){
+    const button=Array.from(document.querySelectorAll('.lt-saved-places button'))
+     .find(node=>node.dataset.bookmarkBook===returnStoryId);
+    if(button){button.closest('details').open=true;button.focus({preventScroll:true});return;}
+   }
    focusWithoutScroll(card);
   });
  }
@@ -1282,8 +1320,11 @@ document.addEventListener('click',event=>{
   if(!motionOff())document.querySelector('.reader')?.classList.add('lt-reader-exit');
   closeTimer=global.setTimeout(finishClose,motionOff()?0:190);
  }
- openStory=function(id){
+ openStory=function(id,options){
+  const book=options?.bookmark===true?catalog.stories.find(item=>item.id===id):null;
+  const bookmark=book?global.LinguaBookmarkNavigation?.prepare(book):null;
   if(state.page==='library'){
+   returnToBookmark=Boolean(bookmark);
    returnY=safeOffset(global.scrollY);
    put('libraryScroll',returnY);
   }
@@ -1301,7 +1342,8 @@ document.addEventListener('click',event=>{
    nextFrame(()=>{
     if(state.page!=='reader'||state.story?.id!==storyId||state.chapter!==chapterIndex)return;
     focusWithoutScroll(document.querySelector('.reader h2'));
-    restoreReadingPosition(storyId,chapterIndex,saved);
+    if(bookmark)bookmark.restoreScroll();
+    else restoreReadingPosition(storyId,chapterIndex,saved);
    });
   }
  };

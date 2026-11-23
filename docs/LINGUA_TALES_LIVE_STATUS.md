@@ -1,3 +1,7 @@
+## 23 November — bookmark shelf (source only)
+
+The library exposes existing one-per-book saved places in most-recent order. Both entry points resolve the bookmark after local chapter loading. A stored paragraph and character offset take priority, with physical-page and pixel-scroll compatibility paths for older data. Android verification is deferred.
+
 ## November 23 — shared library navigation
 
 Source-only update to the shared library, saved words and review destinations. The integrated library now creates its real edition feature directly and filters non-library works before creating cards. Shelf controls share existing favorite storage. Saved-word filtering uses the displayed vocabulary and meaning. Native Back now checks the chapter dialog before exiting the library or reader. Route motion and Wen pressure share the paper-safe boundaries. Source reviewed; Android visuals, performance, offline upgrade, localization and accessibility acceptance delegated.

@@ -111,7 +111,7 @@ function showLoading(kind = 'book') {
   }
   addAction(node, node.dir === 'ltr' ? 'Cancel' : 'إلغاء', cancelPending);
 }
-function showError() {
+function showError(args) {
   const node = status();
   node.setAttribute('role', 'alert');
   node.setAttribute('aria-live', 'assertive');
@@ -124,7 +124,7 @@ function showError() {
     ? 'The offline book could not be prepared. Please retry.'
     : 'تعذّر تجهيز الكتاب دون إنترنت. أعد المحاولة من فضلك.';
   node.appendChild(message);
-  addAction(node, node.dir === 'ltr' ? 'Retry' : 'إعادة المحاولة', () => global.openStory?.(BOOK_ID));
+  addAction(node, node.dir === 'ltr' ? 'Retry' : 'إعادة المحاولة', () => global.openStory?.(BOOK_ID, ...args));
   addAction(node, node.dir === 'ltr' ? 'Close' : 'إغلاق', cancelPending);
 }
 function cancelPending() {
@@ -315,7 +315,7 @@ if (typeof originalOpenStory === 'function') {
     }).catch(() => {
       if (token !== openGeneration) return;
       unlockRoot();
-      showError();
+      showError(args);
     });
   };
 }

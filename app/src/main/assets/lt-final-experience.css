@@ -478,3 +478,12 @@ body.lt-wen-optics #root .lt-library-dock>.lt-wen-follow-lens{
  @keyframes ltReaderArrive{from{opacity:.62}to{opacity:1}}
  @keyframes ltReaderLeave{from{opacity:1}to{opacity:.45}}
 }
+
+.library .lt-saved-places{margin:16px 0;padding:0 16px;background:var(--card,#fffaf1);
+ color:var(--ink,#24382e);border:1px solid #97896977;border-radius:12px}
+.lt-saved-places summary{padding:12px 0;min-height:44px;box-sizing:border-box;cursor:pointer;font-weight:650}
+.lt-saved-places ul{list-style:none;margin:0;padding:0 0 8px}
+.lt-saved-places li+li{border-block-start:1px solid #97896955}
+.lt-saved-places li button{display:grid;gap:4px;text-align:start;background:transparent;
+ color:inherit;box-shadow:none;border:0;min-height:48px;width:100%;padding:10px 4px}
+.lt-saved-places li span{font-size:.88em;overflow-wrap:anywhere}
