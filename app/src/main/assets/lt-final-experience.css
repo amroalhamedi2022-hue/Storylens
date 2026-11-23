@@ -301,7 +301,7 @@ dialog.lt-chapter-gallery .lt-chapter-gallery-list-view .lt-chapter-tile-heading
  min-height:0!important;margin:12px 14px 6px!important;text-align:start
 }
 @media(max-width:650px){
- dialog.lt-chapter-gallery{width:100vw!important;max-width:none!important;height:100vh!important;
+ dialog.lt-chapter-gallery{box-sizing:border-box;width:100%!important;max-width:100%!important;height:100vh!important;
  height:100dvh!important;max-height:100vh!important;max-height:100dvh!important;border:0;border-radius:0!important}
  dialog.lt-chapter-gallery .lt-chapter-gallery-tools{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
  .lt-chapter-gallery-tools :is(.lt-chapter-gallery-filter-label,.lt-chapter-gallery-search-label){margin:0;min-width:0}
