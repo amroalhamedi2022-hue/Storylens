@@ -311,3 +311,26 @@ dialog.lt-chapter-gallery .lt-chapter-gallery-list-view .lt-chapter-tile-heading
 .lt-edition-actions .lt-edition-open{margin:0}
 .lt-edition-actions .lt-edition-contents{min-height:44px;padding:4px;color:#fff2cb;
  background:transparent;border:0;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
+/* Numbered chapter plates are typographic when the edition has no cleared
+   illustration. Leave illustrated plates and their credits untouched. */
+.lt-chapter-gallery .lt-chapter-image-missing .lt-chapter-tile-kicker{
+ background:transparent;border:0;color:#e0d8bd;padding:0;letter-spacing:normal
+}
+.lt-chapter-gallery .lt-chapter-image-missing .lt-chapter-tile-number{
+ font-family:Georgia,serif;font-style:normal;font-weight:400;text-shadow:none;
+ font-size:clamp(38px,7vw,68px)
+}
+.lt-chapter-gallery .lt-chapter-image-missing::before{
+ content:"";position:absolute;inset:6px;border:1px solid #b9a87866;pointer-events:none
+}
+.lt-edition-imprint .lt-edition-notes summary{width:fit-content;max-width:100%}
+@media(orientation:landscape) and (max-height:580px){
+ dialog.lt-chapter-gallery .lt-edition-imprint{
+  padding:10px clamp(16px,3vw,34px);padding-inline-end:96px
+ }
+ dialog.lt-chapter-gallery .lt-edition-imprint .lt-chapter-gallery-title{
+  font-size:20px;max-height:none;line-height:1.25
+ }
+ dialog.lt-chapter-gallery .lt-edition-imprint .lt-chapter-gallery-eyebrow{display:none}
+}

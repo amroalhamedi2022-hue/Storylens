@@ -1,6 +1,6 @@
 ## 23 November — edition details and chapter index
 
-A narrow RTL desktop scrollbar exposed a 15px overrun with viewport units. The phone dialog now follows the available containing width. The edition title leaf and chapter browse now share one adaptive surface. The full-width phone view uses a compact two-column toolbar. The list mode sizing selector now targets the actual list parent; legacy single-card width and row height no longer apply. The home resume feature also opens the same edition index without moving the bookmark. Installed Android QA captures home, index and list, then checks cold restart against the original source text.
+A narrow RTL desktop scrollbar exposed a 15px overrun with viewport units. The phone dialog now follows the available containing width. Inspection of the 760×390 browser capture also exposed the close control covering the English title in Arabic UI. Reserved its own space in the short landscape masthead. The edition title leaf and chapter browse now share one adaptive surface. The full-width phone view uses a compact two-column toolbar. The list mode sizing selector now targets the actual list parent; legacy single-card width and row height no longer apply. The home resume feature also opens the same edition index without moving the bookmark. Installed Android QA captures home, index and list, then checks cold restart against the original source text.
 
 ## November 23 — cold reading progress on Android 13
 
