@@ -882,7 +882,17 @@ function decorateEditionFeature(section){
  action.addEventListener('click',()=>{
   if(resume||!global.LinguaChapterGallery?.open(book.id))global.openStory(book.id);
  });
- copy.append(label,title,location,action);
+ const actions=document.createElement('div');
+ actions.className='lt-edition-actions';
+ actions.appendChild(action);
+ if(resume&&global.LinguaChapterGallery?.hasChapters(book)){
+  const contents=document.createElement('button');
+  contents.type='button';contents.className='lt-edition-contents';
+  contents.textContent=rtl()?'الفهرس':'Contents';
+  contents.addEventListener('click',()=>global.LinguaChapterGallery.open(book.id));
+  actions.appendChild(contents);
+ }
+ copy.append(label,title,location,actions);
  const plate=document.createElement('div');
  plate.className='lt-edition-plate';
  plate.setAttribute('aria-hidden','true');

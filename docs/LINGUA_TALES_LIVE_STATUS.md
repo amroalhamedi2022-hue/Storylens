@@ -1,3 +1,7 @@
+## 23 November — edition details and chapter index
+
+The edition title leaf and chapter browse now share one adaptive surface. The full-width phone view uses a compact two-column toolbar. The list mode sizing selector now targets the actual list parent; legacy single-card width and row height no longer apply. The home resume feature also opens the same edition index without moving the bookmark. Installed Android QA captures home, index and list, then checks cold restart against the original source text.
+
 ## November 23 — cold reading progress on Android 13
 
 On preview 101327 the chapter 32 reader showed paragraph 2, character 629 after two turns. Following force-stop the WebView store already held paragraph 1, offset 0 before the reader reopened (run 45121115820). Added a small Android disk checkpoint at completed page changes with startup replay and invalidation after a backup restore. Existing story, vocabulary and bookmark records retain their original format. Native restart acceptance compares both the source anchor and the visible text.

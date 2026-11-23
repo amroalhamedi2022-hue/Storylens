@@ -213,10 +213,10 @@ dialog.lt-chapter-gallery{background:#f7f0e2;color:#25382e}
 }
 body.theme-aurora::before,body.theme-aurora::after{display:none!important}
 .library .lt-edition-feature .lt-edition-copy h2{font-family:"LT English Serif","LT Arabic Naskh",serif!important}
-dialog.lt-chapter-gallery:not(.lt-chapter-gallery-list-view) .lt-chapter-tile .lt-chapter-tile-visual{
+dialog.lt-chapter-gallery .lt-chapter-gallery-track:not(.lt-chapter-gallery-list-view) .lt-chapter-tile .lt-chapter-tile-visual{
  height:clamp(96px,20dvh,175px)!important;min-height:0!important
 }
-dialog.lt-chapter-gallery:not(.lt-chapter-gallery-list-view) .lt-chapter-tile{
+dialog.lt-chapter-gallery .lt-chapter-gallery-track:not(.lt-chapter-gallery-list-view) .lt-chapter-tile{
  min-height:0!important
 }
 dialog.lt-chapter-gallery .lt-chapter-gallery-sheet{justify-content:flex-start!important}
@@ -249,3 +249,65 @@ body:has(.reader.dark) #modals .lt-anchored-meaning{
  line-height:1.42!important;padding-block:3px 6px!important;max-height:none!important;
  display:block!important;overflow-wrap:anywhere
 }
+
+/* A single title leaf leads into the index. Keep authored chapter plates
+   distinct from the edition's cartographic endpaper. */
+dialog.lt-chapter-gallery .lt-chapter-gallery-header{
+ display:block;padding:0!important;border:0;backdrop-filter:none;-webkit-backdrop-filter:none
+}
+dialog.lt-chapter-gallery .lt-chapter-gallery-copy{width:100%;max-width:none}
+.lt-edition-imprint{
+ position:relative;isolation:isolate;overflow:hidden;background:#183d34;color:#f7f1dd;
+ padding:20px clamp(20px,4vw,48px);border-block-end:3px double #baaa80
+}
+.lt-verne-imprint::before{
+ content:"";position:absolute;z-index:-1;inset:0;background:
+ linear-gradient(90deg,transparent,#183d34 78%),url("art/verne-route-map-1872.webp") left center/cover;
+ opacity:.21;pointer-events:none
+}
+.lt-edition-imprint .lt-chapter-gallery-eyebrow{color:#e7d5ab;letter-spacing:.06em;margin:0 0 8px}
+dialog.lt-chapter-gallery .lt-edition-imprint .lt-chapter-gallery-title{
+ color:#fff9e7;font:600 clamp(24px,3.1vw,42px)/1.3 "LT English Serif","LT Arabic Naskh",serif;
+ margin:0 0 6px;text-align:start
+}
+.lt-edition-imprint .lt-chapter-gallery-subtitle,.lt-edition-imprint .lt-edition-notes{color:#eee7cf}
+.lt-edition-imprint .lt-edition-notes{margin:0}
+.lt-edition-imprint .lt-edition-notes summary{display:list-item;line-height:44px}
+dialog.lt-chapter-gallery .lt-chapter-gallery-close{
+ position:absolute;inset-block-start:10px;inset-inline-end:12px;min-width:44px;
+ border-radius:24px;background:#22483e;color:#fff8df;border:1px solid #a4af94
+}
+.lt-edition-imprint .lt-chapter-gallery-eyebrow{padding-inline-end:90px;min-height:30px}
+dialog.lt-chapter-gallery .lt-chapter-gallery-tools{
+ display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) auto auto;align-items:end;
+ gap:10px;margin:0;padding:14px clamp(16px,3vw,34px) 0
+}
+.lt-chapter-gallery-tools .lt-chapter-gallery-search-label{order:0}
+.lt-chapter-gallery-tools .lt-chapter-gallery-filter-label{order:1}
+.lt-chapter-gallery-tools .lt-chapter-gallery-layout{order:2}
+.lt-chapter-gallery-tools .lt-chapter-gallery-continue{order:3;background:#214e40;color:#fff9e8}
+dialog.lt-chapter-gallery .lt-chapter-gallery-tools :is(input,select,button){
+ width:100%;min-width:0;box-sizing:border-box;min-height:44px
+}
+.lt-chapter-gallery-copy .lt-chapter-gallery-results{margin:8px clamp(16px,3vw,34px) 0}
+dialog.lt-chapter-gallery .lt-chapter-gallery-list-view .lt-chapter-tile{
+ max-width:none!important;min-height:84px!important;flex:0 0 auto!important;
+ grid-template-columns:92px minmax(0,1fr)
+}
+dialog.lt-chapter-gallery .lt-chapter-gallery-list-view .lt-chapter-tile-visual{
+ height:100%!important;min-height:84px!important
+}
+dialog.lt-chapter-gallery .lt-chapter-gallery-list-view .lt-chapter-tile-heading{
+ min-height:0!important;margin:12px 14px 6px!important;text-align:start
+}
+@media(max-width:650px){
+ dialog.lt-chapter-gallery{width:100vw!important;max-width:none!important;height:100vh!important;
+ height:100dvh!important;max-height:100vh!important;max-height:100dvh!important;border:0;border-radius:0!important}
+ dialog.lt-chapter-gallery .lt-chapter-gallery-tools{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .lt-chapter-gallery-tools :is(.lt-chapter-gallery-filter-label,.lt-chapter-gallery-search-label){margin:0;min-width:0}
+}
+
+.lt-edition-actions{display:flex;align-items:center;gap:4px 12px;flex-wrap:wrap;margin-block-start:12px}
+.lt-edition-actions .lt-edition-open{margin:0}
+.lt-edition-actions .lt-edition-contents{min-height:44px;padding:4px;color:#fff2cb;
+ background:transparent;border:0;text-decoration:underline;text-underline-offset:4px;cursor:pointer}

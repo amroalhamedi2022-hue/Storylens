@@ -529,16 +529,21 @@ function show(id,{historyEntry=true}={}){
  const sheet=document.createElement('div');sheet.className='lt-chapter-gallery-sheet';
  const head=document.createElement('header');head.className='lt-chapter-gallery-header';
  const copy=document.createElement('div');copy.className='lt-chapter-gallery-copy';
- addText(copy,'span','lt-chapter-gallery-eyebrow',locale('مكتبة الفصول','CHAPTER LIBRARY'));
- const title=addText(copy,'h2','lt-chapter-gallery-title',bookTitle(story));
- const count=addText(copy,'p','lt-chapter-gallery-subtitle',locale('جارٍ ترتيب الفصول…','Preparing chapters…'));
+ const imprint=document.createElement('div');
+ imprint.className='lt-edition-imprint';
+ if(id==='around-the-world-in-eighty-days-towle')imprint.classList.add('lt-verne-imprint');
+ copy.appendChild(imprint);
+ addText(imprint,'span','lt-chapter-gallery-eyebrow',locale('فهرس الكتاب','Contents'));
+ const title=addText(imprint,'h2','lt-chapter-gallery-title',bookTitle(story));
+ title.dir='auto';
+ const count=addText(imprint,'p','lt-chapter-gallery-subtitle',locale('جارٍ ترتيب الفصول…','Preparing chapters…'));
  if(typeof story.provenance==='string'&&story.provenance.trim()){
   const edition=document.createElement('details');
   edition.className='lt-edition-notes';
   addText(edition,'summary','',locale('عن هذه الطبعة','About this edition'));
   const note=addText(edition,'p','',story.provenance);
   note.dir='auto';
-  copy.appendChild(edition);
+  imprint.appendChild(edition);
  }
  const tools=document.createElement('div');tools.className='lt-chapter-gallery-tools';
  const searchLabel=document.createElement('label');searchLabel.className='lt-chapter-gallery-search-label';

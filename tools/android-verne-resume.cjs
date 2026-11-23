@@ -17,6 +17,16 @@ async function mark(page){return page.evaluate(()=>{
  await device.shell('am start -W -n '+pkg+'/com.storylens.reader.MainActivity');
  let page=await connect(device);
  await page.locator(".library .card[onclick*='around-the-world-in-eighty-days-towle']").first().click();
+ const gallery=page.locator('dialog.lt-chapter-gallery');
+ await gallery.locator('.lt-chapter-tile').first().waitFor();
+ await page.evaluate(()=>document.fonts.ready);
+ capture('edition-contents');
+ await gallery.locator('.lt-chapter-gallery-layout').click();
+ const row=gallery.locator('.lt-chapter-gallery-list-view .lt-chapter-tile').first();
+ await row.scrollIntoViewIfNeeded();
+ assert.ok((await row.boundingBox()).width>300,'list row uses the available phone width');
+ capture('edition-list');
+ await gallery.locator('.lt-chapter-gallery-layout').click();
  await page.locator('.lt-chapter-gallery-search').fill('32');
  await page.locator('.lt-chapter-tile[data-chapter-index="31"]').click();
  await page.waitForFunction(()=>state.chapter===31&&document.querySelector('#sentences>.is-active'));
@@ -35,6 +45,10 @@ async function mark(page){return page.evaluate(()=>{
  await device.shell('am start -W -n '+pkg+'/com.storylens.reader.MainActivity');
  await new Promise(r=>setTimeout(r,3000));page=await connect(device);
  await page.locator('.lt-edition-open').waitFor();
+ await page.locator('.lt-edition-contents').click();
+ await page.locator('.lt-chapter-gallery-close').click();
+ await page.locator('.lt-edition-open').waitFor();
+ capture('edition-resume-home');
  await page.locator('.lt-edition-open').click();
  await page.waitForFunction(()=>state.chapter===31&&document.querySelector('#sentences>.is-active'));
  await page.evaluate(()=>document.fonts.ready);
