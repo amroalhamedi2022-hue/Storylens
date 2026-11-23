@@ -1,3 +1,7 @@
+## November 23 — shared library navigation
+
+Source-only update to the shared library, saved words and review destinations. The integrated library now creates its real edition feature directly and filters non-library works before creating cards. Shelf controls share existing favorite storage. Saved-word filtering uses the displayed vocabulary and meaning. Native Back now checks the chapter dialog before exiting the library or reader. Route motion and Wen pressure share the paper-safe boundaries. Source reviewed; Android visuals, performance, offline upgrade, localization and accessibility acceptance delegated.
+
 ## 23 November — source-only handoff
 
 Source-only candidate based on 0633622. Settings now presents bilingual typography with the existing local fonts, sizes, leading and shared paper palette. Small cumulative drags can drive the existing paper sound. Context-loss cancellation is scoped to the active renderer session. A deliberately unprinted fallback verso carries no cloned ink. Runtime acceptance, signing and upgrade remain delegated.

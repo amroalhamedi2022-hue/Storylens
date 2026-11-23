@@ -12,7 +12,7 @@
  if(!doc||typeof doc.addEventListener!=='function')return;
  const FOLLOW=.60, RELEASE_MS=265, SLOP=8, SCROLL_SLOP=14;
  const ACTION='button,.lt-theme-choice,.library .card,.lt-genre,.stl-choice,.stl-favorite,.stl-sense-button,.reader .lt-chapter-button';
- const TRACK='.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery';
+ const TRACK='.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery,.lt-library-dock,.lt-edition-actions,.rating';
  const state=new Map();
  let frame=0, lens=null, track=null, move=null;
  const media=q=>!!global.matchMedia?.(q)?.matches;
@@ -60,20 +60,21 @@
   if(track!==container){
    resetLens();
    track=container;
-   lens=container.querySelector?.(':scope > .lt-wen-follow-lens')||null;
+   lens=lens||container.querySelector?.(':scope > .lt-wen-follow-lens')||null;
    if(!lens){
     lens=doc.createElement('span');
     lens.className='lt-wen-follow-lens';
     lens.setAttribute('aria-hidden','true');
-    container.appendChild(lens);
    }
+   if(lens.parentNode!==container)container.appendChild(lens);
   }
   return lens;
  }
  function positionLens(el,dx,dy,instant){
   const box=track?.getBoundingClientRect?.(), r=el?.getBoundingClientRect?.();
   if(!box||!r||!lens)return;
-  const x=r.left-box.left+dx, y=r.top-box.top+dy;
+  const x=r.left-box.left-(track.clientLeft||0)+(track.scrollLeft||0)+dx;
+  const y=r.top-box.top-(track.clientTop||0)+(track.scrollTop||0)+dy;
   // Relative physical pixel coordinates are independent from RTL ordering.
   set(lens,'--lt-wen-lens-x',Math.round(x)+'px');
   set(lens,'--lt-wen-lens-y',Math.round(y)+'px');
@@ -156,6 +157,11 @@
  function end(e){
   // Android WebView emits lostpointercapture after pointerup; the second
   // event must not erase another gesture's touch feedback or double tap.
+  const g=state.get(e.pointerId);
+  if(e.type==='pointerup'&&g&&!g.moving&&!g.material&&!reduced()&&
+     g.el.isConnected&&validTarget(e.target)===g.el){
+   global.LinguaTapFeedback?.bubble(g.el,e.clientX,e.clientY);
+  }
   clearForPointer(e.pointerId);
  }
  function clearKeyboard(){
@@ -189,6 +195,6 @@
  });
  // Enable on load so fresh dynamic reader/modal elements get CSS immediately.
  root()?.classList?.add('lt-wen-optics');
- global.LinguaWenGlass={version:'1.1-tablet-optics',follow:FOLLOW,releaseMs:RELEASE_MS,
+ global.LinguaWenGlass={version:'1.2-library-optics',ownsPress:true,follow:FOLLOW,releaseMs:RELEASE_MS,
   get activePointers(){return state.size;},clear:allGone, reduced};
 })(window);

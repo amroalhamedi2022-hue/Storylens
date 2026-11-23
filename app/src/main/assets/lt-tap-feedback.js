@@ -19,7 +19,9 @@
   node.style.setProperty('--lt-tap-y',Math.max(0,Math.min(rect.height,y-rect.top))+'px');
   node.style.setProperty('--lt-bubble-size',Math.min(260,Math.ceil(Math.hypot(rect.width,rect.height)*1.2))+'px');
    target.appendChild(node);
-  node.addEventListener('animationend',()=>node.remove(),{once:true});
+  const clean=()=>node.remove();
+  node.addEventListener('animationend',clean,{once:true});
+  node.addEventListener('animationcancel',clean,{once:true});
  }
  const heldPointers=new Map();
  function releaseWaterPress(event){
@@ -36,6 +38,7 @@
   heldPointers.clear();
  });
  doc.addEventListener('pointerdown',event=>{
+  if(global.LinguaWenGlass?.ownsPress)return;
   if(!event.isPrimary||event.pointerType==='mouse'&&event.button!==0)return;
   const target=event.target?.closest?.('button,.lt-theme-choice,.library .card,.lt-genre');
   if(!target||target.closest?.('[disabled],[aria-disabled="true"],fieldset[disabled]'))return;
@@ -52,6 +55,7 @@
    doc.querySelectorAll?.('.lt-water-pressed').forEach(node=>node.classList?.remove('lt-water-pressed'));
  },true);
  doc.addEventListener('keydown',event=>{
+  if(global.LinguaWenGlass?.ownsPress)return;
   if(event.key!=='Enter'&&event.key!==' ')return;
   if(event.altKey||event.ctrlKey||event.metaKey||event.isComposing)return;
   const target=event.target?.closest?.('button,.lt-theme-choice,.library .card,.lt-genre');

@@ -109,11 +109,11 @@ body.lt-wen-optics :is(.lt-menu-toggle,.hero-continue,.lt-drawer-close,.lt-theme
 /* A SINGLE shared optical lens for navigable trays rather than one animated
  * blurred layer per option. It follows touch by 60%, then settles in 265ms.
  * pointer-events:none: native app buttons still own click, hold and keyboard. */
-body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery){
+body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery,.lt-library-dock,.lt-edition-actions,.rating){
  position:relative;
  isolation:isolate;
 }
-body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery) > .lt-wen-follow-lens{
+body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery,.lt-library-dock,.lt-edition-actions,.rating) > .lt-wen-follow-lens{
  position:absolute;
  left:0;top:0;
  width:var(--lt-wen-lens-w,0px);
@@ -141,7 +141,7 @@ body.lt-wen-optics .lt-wen-follow-lens.lt-wen-lens-live{opacity:.92}
 body.lt-wen-optics .lt-wen-follow-lens:not(.lt-wen-lens-moving){
  transition-duration:.11s;
 }
-body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery) > :not(.lt-wen-follow-lens){
+body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery,.lt-library-dock,.lt-edition-actions,.rating) > :not(.lt-wen-follow-lens){
  position:relative;z-index:1;
 }
 /* Focus must be obvious and not rendered underneath the translucent lens. */
@@ -208,13 +208,13 @@ body.lt-wen-optics .lt-wen-follow-lens::after{
 }
 body.lt-wen-optics .lt-wen-follow-lens.lt-wen-lens-live{will-change:transform;opacity:.96}
 /* Let the highlight show through the tray buttons without covering their labels. */
-body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery)
+body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery,.lt-library-dock,.lt-edition-actions,.rating)
  > :is(button,.lt-genre,.lt-theme-choice,.stl-choice){
  background-color:color-mix(in srgb,var(--card,#f3f7f8) 77%,transparent);
 }
 @media(min-width:700px) and (prefers-reduced-motion:no-preference){
  body.lt-wen-optics{--lt-wen-release:330ms}
- body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery)
+ body.lt-wen-optics :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery,.lt-library-dock,.lt-edition-actions,.rating)
  > .lt-wen-follow-lens.lt-wen-lens-live{
   border-radius:24px;
   -webkit-backdrop-filter:blur(7px) saturate(1.38);

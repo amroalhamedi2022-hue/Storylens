@@ -75,7 +75,10 @@ body{min-height:100dvh;background-attachment:fixed!important}
  background-color:var(--lt-paper-bg,var(--reader,#f7f0df))!important;
  color:var(--lt-paper-ink,var(--reader-ink,#2c2924))!important;
 }
-.reader .lt-book-page .sentence{font-size:clamp(20px,1.55vw,26px)!important;line-height:1.78!important;margin-block:0 1.05em!important}
+.reader .lt-book-page .sentence{font-size:var(--lt-en-reading-size,19px)!important;
+ line-height:var(--lt-en-reading-leading,1.85)!important;margin-block:0 1.05em!important}
+.reader[data-lt-source="ar"] .lt-book-page .sentence{font-size:var(--lt-ar-reading-size,20px)!important;
+ line-height:var(--lt-ar-reading-leading,2)!important}
 .reader .lt-book-page .inline-ar,.reader .lt-book-page .inline-en{font-size:clamp(17px,1.3vw,21px)!important;line-height:1.9!important}
 .reader .lt-chapter-paper-heading{font-size:clamp(30px,4vw,50px)!important;line-height:1.2!important;margin-block:0 28px!important;border:0!important}
 .reader .lt-page-controls{
@@ -117,7 +120,6 @@ dialog.lt-chapter-gallery{height:min(92dvh,900px)!important;max-height:92dvh!imp
  .library .lt-novel-card .card-content .desc,.library .lt-novel-card .card-content .sub{display:none!important}
  .reader .reading-width{padding-inline:8px!important}
  .reader #sentences.lt-curl-book>.lt-book-page{padding:28px 22px!important;min-height:calc(100dvh - 118px)!important}
- .reader .lt-book-page .sentence{font-size:20px!important;line-height:1.72!important}
  dialog.lt-chapter-gallery{width:96vw!important;height:94dvh!important;max-height:94dvh!important}
  .lt-chapter-tile{flex-basis:min(74vw,260px)!important;max-width:min(74vw,260px)!important}
 }
@@ -354,3 +356,125 @@ dialog.lt-chapter-gallery .lt-chapter-gallery-list-view .lt-chapter-tile-heading
  font-size:var(--lt-en-reading-size,19px);line-height:var(--lt-en-reading-leading,1.85);
  letter-spacing:var(--lt-en-reading-spacing,0)}
 @media(max-width:480px){.lt-reading-preferences{grid-template-columns:minmax(0,1fr)}}
+
+/* Shared surfaces for the shelf and the two study destinations. The reading
+   sheet has its own material, direction and unobstructed gesture area. */
+#root>.lt-library-destination{
+ --lt-dock-space:calc(88px + env(safe-area-inset-bottom,0px));
+ padding-bottom:var(--lt-dock-space)!important
+}
+#root>.vocab.lt-library-destination{
+ width:min(100%,880px);min-height:100vh;margin:0 auto;box-sizing:border-box;
+ padding:clamp(18px,4vw,44px);color:var(--ink,#24382e);
+ background:var(--body,#f5efe3);border:0;box-shadow:none
+}
+body.theme-aurora:not(.lt-has-custom-gradient) #root>.vocab{
+ --body:#f5efe3;--card:#fffbf2;--ink:#19372e;--sub:#4d5c52;--accent:#204f40
+}
+#root>.vocab h1,.lt-novel-shelf-heading h2{
+ font-family:var(--lt-en-font,Georgia),var(--lt-ar-font,serif);
+ line-height:1.35;color:var(--ink);text-align:start
+}
+#root>.vocab :is(.vitem,.review-card){
+ margin:14px 0;padding:clamp(16px,3vw,30px);border:1px solid #98896c66;
+ border-inline-start:3px solid var(--accent,#28513e);border-radius:12px;
+ background:var(--card,#fffaf0);color:var(--ink);box-shadow:none;
+ backdrop-filter:none;-webkit-backdrop-filter:none;overflow-wrap:anywhere
+}
+#root>.vocab .vitem[hidden]{display:none!important}
+#root>.vocab :is(.vitem,.review-card) p{max-width:68ch;line-height:1.7}
+#root>.vocab :is(.vitem .en,.review-card .en-prompt){font-family:var(--lt-en-font,Georgia);
+ font-size:clamp(18px,2vw,24px);text-align:start;direction:ltr}
+#root>.vocab button{min-height:44px}
+.lt-word-filter,.library .lt-shelf-search input{
+ width:100%;box-sizing:border-box;min-height:46px;border-radius:12px;
+ padding:9px 14px;border:1px solid #9b907b;background:var(--card,#fffbf3);color:var(--ink);
+ font:inherit
+}
+.lt-word-filter{margin-top:14px}
+.lt-word-filter-status:empty{display:none}
+.library .lt-novel-shelf-heading:has(.lt-shelf-search){
+ display:flex!important;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap
+}
+.library .lt-novel-shelf-heading .lt-shelf-search{display:grid!important;gap:4px;
+ width:min(100%,24rem);text-align:start;margin:0;font-size:13px;color:var(--sub)}
+/* The clear outer tray remains opaque on platforms without live blur. */
+body.lt-wen-optics #root .lt-library-dock{
+ position:fixed!important;z-index:80;bottom:calc(8px + env(safe-area-inset-bottom,0px));
+ left:50%;transform:translateX(-50%);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ box-sizing:border-box;width:min(calc(100% - 24px),420px);padding:4px;gap:2px;margin:0;
+ isolation:isolate;border:1px solid #abac9e;border-radius:22px;
+ background:var(--card,#fffaf1);color:var(--ink,#203b30);
+ box-shadow:inset 0 1px #ffffff9c,0 4px 18px #16231c24
+}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ @media(prefers-reduced-motion:no-preference){
+ body.lt-wen-optics #root .lt-library-dock{
+ background:color-mix(in srgb,var(--card,#fffaf1) 84%,transparent);
+ backdrop-filter:blur(12px) saturate(1.12);-webkit-backdrop-filter:blur(12px) saturate(1.12)
+ }}
+}
+body.lt-wen-optics #root .lt-library-dock>.lt-dock-link{
+ display:grid;place-content:center;justify-items:center;gap:2px;position:relative;
+ color:inherit;min-height:48px;border:0;border-radius:16px;padding:4px;
+ background:transparent;box-shadow:none;font:600 12px/1.35 system-ui,sans-serif
+}
+.lt-dock-link svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.65;
+ stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+body.lt-wen-optics #root .lt-dock-link[aria-current="page"]{
+ background:color-mix(in srgb,var(--accent,#295142) 14%,transparent);
+ text-decoration:underline;text-underline-offset:2px
+}
+body.lt-wen-optics #root .lt-library-dock>.lt-wen-follow-lens{
+ background:linear-gradient(165deg,#ffffff65,#ffffff0c 50%,#ffffff38);
+ border:1px solid #ffffff91;box-shadow:inset 0 1px #fff9,0 2px 5px #24332c24;
+ backdrop-filter:none;-webkit-backdrop-filter:none
+}
+#root .lt-library-destination .rating{display:grid;position:relative;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@keyframes ltDestinationIn{from{opacity:.68;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:no-preference){
+ .lt-destination-enter>:is(h1,.storylens-hero,.lt-novel-shelf-heading,.review-card),
+ .lt-answer-revealed>:is(h2,.rating),dialog.lt-chapter-gallery[open] .lt-edition-imprint{
+ animation:ltDestinationIn 185ms cubic-bezier(.22,.78,.22,1) both
+ }
+}
+@media(prefers-reduced-transparency:reduce),(prefers-reduced-motion:reduce),(forced-colors:active){
+ body.lt-wen-optics #root .lt-library-dock{background:var(--card,#fffaf1);
+ backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+}
+.library .lt-novel-shelf-heading{
+ display:flex!important;align-items:center;justify-content:space-between;
+ flex-wrap:wrap;gap:10px 18px
+}
+.lt-novel-shelf-heading .lt-collection-selector{
+ display:inline-flex;align-items:center;gap:4px;flex-wrap:wrap
+}
+.library .lt-collection-choice{
+ min-height:44px;padding:6px 14px;border:1px solid #90887580;border-radius:999px;
+ color:var(--ink);background:var(--card);font:inherit
+}
+.library .lt-collection-choice[aria-pressed="true"]{
+ border-color:currentColor;font-weight:700;text-decoration:underline;text-underline-offset:4px
+}
+.library .lt-novel-shelf-heading .lt-shelf-search{flex-basis:100%;width:100%}
+
+
+/* Keep the dock out of modal and drawer hit-testing, including old WebViews. */
+#root .lt-drawer.open~.lt-library-dock{visibility:hidden;pointer-events:none}
+@media(min-width:720px){
+ .library .shelf.lt-novel-shelf>.lt-novel-card:only-child{
+  display:grid!important;grid-template-columns:minmax(140px,190px) minmax(0,1fr);
+  justify-self:center!important;align-items:center;gap:clamp(22px,4vw,52px);
+  width:min(100%,720px)!important;max-width:none!important;padding:20px!important
+ }
+ .library .shelf.lt-novel-shelf>.lt-novel-card:only-child .desc{
+  display:-webkit-box!important;-webkit-box-orient:vertical;-webkit-line-clamp:4;
+  max-height:6.4em!important;overflow:hidden
+ }
+}
+@media(prefers-reduced-motion:no-preference){
+ .reader.lt-reader-enter{animation:ltReaderArrive 190ms ease-out both}
+ .reader.lt-reader-exit{animation:ltReaderLeave 190ms ease-in both}
+ @keyframes ltReaderArrive{from{opacity:.62}to{opacity:1}}
+ @keyframes ltReaderLeave{from{opacity:1}to{opacity:.45}}
+}

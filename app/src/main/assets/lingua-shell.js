@@ -368,6 +368,7 @@ function closeDrawer(restoreFocus=true){
  drawer.classList.remove('open');
  drawer.setAttribute('aria-hidden','true');
  drawer.inert=true;
+ const dock=document.querySelector('.lt-library-dock');if(dock)dock.inert=false;
  backdrop?.classList.remove('open');
  toggle?.setAttribute('aria-expanded','false');
  if(restoreFocus)toggle?.focus();
@@ -382,6 +383,7 @@ function openDrawer(){
  drawer.classList.add('open');
  drawer.setAttribute('aria-hidden','false');
  drawer.inert=false;
+ const dock=document.querySelector('.lt-library-dock');if(dock)dock.inert=true;
  backdrop?.classList.add('open');
  toggle?.setAttribute('aria-expanded','true');
  drawer.querySelector('button')?.focus();
@@ -795,6 +797,10 @@ function refreshNovelShelf(section){
  if(!shelf)return;
  const cards=[...shelf.querySelectorAll('.lt-novel-card')];
  const visible=cards.filter(card=>!card.hidden).length;
+ const onlyFavorites=global.StoryLensExtras?.discoveryState().favoritesOnly===true;
+ for(const button of section.querySelectorAll('.lt-collection-choice')){
+  button.setAttribute('aria-pressed',String(button.dataset.favorites===String(onlyFavorites)));
+ }
  const counter=section.querySelector('.stl-visible-count');
  if(counter)counter.textContent=(rtl()?'الكتب الظاهرة: ':'Visible books: ')+visible+' / '+cards.length;
  section.querySelector('.lt-novel-empty')?.remove();
@@ -840,6 +846,10 @@ function decorateNovelShelf(section){
   }
   const content=card.querySelector('.card-content');
   if(content){
+   const name=content.querySelector('h2');
+   if(name){name.dir='auto';name.textContent=(rtl()?story.titleAr:story.titleEn)||story.title;}
+   const description=content.querySelector('.desc');
+   if(description)description.dir='auto';
    const count=Math.max(story.chapters?.length||0,story.totalChapters||0);
    const detail=document.createElement('span');
    detail.className='lt-novel-volume';
@@ -858,6 +868,18 @@ function decorateNovelShelf(section){
  const subtitle=document.createElement('p');
  subtitle.textContent=rtl()?'روايات طويلة ومجلدات تراثية كاملة':'Complete novels and heritage volumes';
  heading.append(title,subtitle);
+ const collection=document.createElement('div');
+ collection.className='lt-collection-selector';
+ collection.setAttribute('role','group');
+ collection.setAttribute('aria-label',rtl()?'مجموعة الكتب':'Book collection');
+ for(const [favorite,ar,en] of [[false,'كل الكتب','All books'],[true,'المفضّلة','Favorites']]){
+  const button=addButton(collection,rtl()?ar:en,()=>{
+   if(global.StoryLensExtras.discoveryState().favoritesOnly===favorite)return;
+   section.querySelector('.stl-discovery-controls .stl-choice')?.click();
+  },'lt-collection-choice');
+  button.dataset.favorites=String(favorite);
+ }
+ heading.appendChild(collection);
  shelf.parentNode.insertBefore(heading,shelf);
  refreshNovelShelf(section);
 }
@@ -865,8 +887,10 @@ function decorateNovelShelf(section){
 // Use the same saved story and reader entry point as the library. A first
 // visit opens the chapter chooser without manufacturing reading progress.
 function decorateEditionFeature(section){
- const hero=section.querySelector('.storylens-hero');
- if(!hero||state.genre!=='all'||state.query)return;
+ if(state.genre!=='all'||state.query)return;
+ const hero=document.createElement('section');
+ hero.className='storylens-hero';
+ hero.setAttribute('aria-label',rtl()?'كتاب من مكتبتك':'Book from your library');
  const last=catalog.stories.find(s=>s.id===get('last_story',''));
  const book=last||catalog.stories.find(isFullLengthNovel);
  if(!book)return;
@@ -908,6 +932,7 @@ function decorateEditionFeature(section){
  if(book.id==='around-the-world-in-eighty-days-towle')plate.classList.add('lt-verne-atlas');
  hero.classList.add('lt-edition-feature');
  hero.replaceChildren(copy,plate);
+ section.insertBefore(hero,section.querySelector('.search-label'));
  global.LinguaHydrateStoryCovers?.();
 }
 function decorateLibrary(){
@@ -924,9 +949,6 @@ function decorateLibrary(){
  headerTitle.classList.add('lt-location-title');
 }
  section.querySelector('.header .quiet')?.remove();
- section.querySelector('.storylens-hero .hero-eyebrow')?.remove();
- section.querySelector('.storylens-hero .hero-metrics')?.remove();
- section.querySelector('.storylens-hero .hero-content > p')?.remove();
  decorateEditionFeature(section);
  section.querySelector('.stl-discovery-title')?.remove();
  section.querySelectorAll(':scope > p.quiet').forEach(p=>p.remove());
@@ -1015,16 +1037,94 @@ function decorateLibrary(){
  const divider=document.createElement('div');divider.className='lt-drawer-divider';drawer.appendChild(divider);
  section.appendChild(drawer);
  moveDiscovery();
- // Search tools are available in the drawer, not three full-width rows before
- // the first story card. Preserve real DOM inputs and their handlers.
+ // Keep title search on the shelf. Full-text chapter search remains in the drawer.
  const titleSearch=section.querySelector('.search-label');
  const chapterSearch=section.querySelector('.lt-chapter-search-open');
- if(titleSearch)drawer.appendChild(titleSearch);
+ const shelfHeading=section.querySelector('.lt-novel-shelf-heading');
+ if(titleSearch&&shelfHeading){
+  titleSearch.classList.add('lt-shelf-search');
+  shelfHeading.appendChild(titleSearch);
+ }
  if(chapterSearch)drawer.appendChild(chapterSearch);
  if(actions){actions.classList.add('lt-drawer-actions');drawer.appendChild(actions);}
 
 }
-library=function(){originalLibrary();decorateLibrary();};
+// The three library destinations share one navigation model. Reader and
+// translation keep their own Back handling and unobstructed paper viewport.
+function mountLibraryNavigation(screen,route,entering){
+ if(!screen)return;
+ screen.classList.add('lt-library-destination');
+ if(entering)screen.classList.add('lt-destination-enter');
+ const nav=document.createElement('nav');
+ nav.className='lt-library-dock';
+ nav.setAttribute('aria-label',rtl()?'التنقل في المكتبة':'Library navigation');
+ const items=[
+  ['library','المكتبة','Library','M3 4h4v16H3z M9 4h4v16H9z M15 5l3-1 4 15-3 1z',()=>libraryBack()],
+  ['words','مفرداتي','My words','M5 3h14v18l-7-4-7 4z',()=>showWords()],
+  ['review','المراجعة','Review','M4 12a8 8 0 1 1 2 5 M4 6v6h6 M9 12l2 2 4-5',()=>showReview()]
+ ];
+ for(const [id,ar,en,path,open] of items){
+  const button=document.createElement('button');
+  button.type='button';button.className='lt-dock-link';button.dataset.route=id;
+  if(id===route)button.setAttribute('aria-current','page');
+  const icon=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  icon.setAttribute('viewBox','0 0 24 24');icon.setAttribute('aria-hidden','true');
+  const line=document.createElementNS(icon.namespaceURI,'path');
+  line.setAttribute('d',path);icon.appendChild(line);
+  button.append(icon,document.createTextNode(rtl()?ar:en));
+  button.addEventListener('click',()=>{
+   if(id===route)return;
+   open();
+   global.scrollTo(0,0);
+   const heading=document.querySelector('#root h1');
+   if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}
+  });
+  nav.appendChild(button);
+ }
+ screen.appendChild(nav);
+}
+library=function(){
+ const entering=!document.querySelector('#root > .library');
+ originalLibrary();decorateLibrary();
+ mountLibraryNavigation(document.querySelector('#root > .library'),'library',entering);
+};
+const renderWordsScreen=showWords;
+showWords=function(){
+ const entering=!document.querySelector('#root > .vocab:not(.review)');
+ const previous=document.querySelector('.lt-word-filter');
+ const query=previous?.value||'';
+ if(opened)closeDrawer(false);
+ renderWordsScreen();
+ const screen=document.querySelector('#root > .vocab');
+ if(!screen)return;
+ const cards=Array.from(screen.querySelectorAll('.vitem'));
+ if(cards.length){
+  const search=document.createElement('input');search.type='search';search.className='lt-word-filter';
+  search.placeholder=rtl()?'ابحث في الكلمة أو معناها':'Search words or meanings';
+  search.setAttribute('aria-label',search.placeholder);search.value=query;
+  const status=document.createElement('p');status.className='lt-word-filter-status';
+  status.setAttribute('role','status');
+  cards[0].before(search,status);
+  const normalize=value=>value.normalize('NFKC').toLocaleLowerCase().trim();
+  const entries=cards.map(card=>[card,normalize(Array.from(card.querySelectorAll('h3,p')).map(n=>n.textContent).join(' '))]);
+  function filter(){
+   const needle=normalize(search.value);let count=0;
+   for(const [card,text] of entries){card.hidden=!text.includes(needle);if(!card.hidden)count++;}
+   status.textContent=needle?(rtl()?'عدد النتائج: ':'Results: ')+count:'';
+  }
+  search.addEventListener('input',filter);filter();
+ }
+ mountLibraryNavigation(screen,'words',entering);
+};
+const renderReviewScreen=renderReview;
+renderReview=function(revealed){
+ const entering=!document.querySelector('#root > .review');
+ if(opened)closeDrawer(false);
+ renderReviewScreen(revealed);
+ const screen=document.querySelector('#root > .review');
+ mountLibraryNavigation(screen,'review',entering);
+ if(revealed)screen?.querySelector('.review-card')?.classList.add('lt-answer-revealed');
+};
 global.LinguaShell={refreshNovelShelf,applyTheme,applyReaderMaterial,readerMaterialChoices:[...readerMaterialChoices],applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,isFullLengthNovel,
  isDrawerOpen:()=>opened,themeNames:[...themeNames],searchChapters,invalidateChapterSearch,openChapterSearch,jumpToChapterHit};
 /* LT-09/06 accessibility: a visible modal must own keyboard focus.

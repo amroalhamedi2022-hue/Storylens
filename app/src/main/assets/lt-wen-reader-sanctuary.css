@@ -92,7 +92,7 @@ body.lt-wen-optics:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
 }
 body.lt-wen-optics:is(.theme-liquid-27,.theme-aurora,.theme-aqua,.theme-nebula,
  .theme-paper-atlas,.theme-midnight-library)
- :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery) > .lt-wen-follow-lens{
+ :is(.lt-genre-list,.stl-discovery-controls,.lt-theme-gallery,.lt-library-dock,.lt-edition-actions,.rating) > .lt-wen-follow-lens{
  background:
  radial-gradient(ellipse 104% 76% at 25% -8%,rgba(255,255,255,.74),transparent 68%),
  radial-gradient(ellipse 82% 77% at 94% 109%,

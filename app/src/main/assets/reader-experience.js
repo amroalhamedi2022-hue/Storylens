@@ -1253,19 +1253,22 @@ library=function(){
  const section=document.querySelector('.library');
  if(!section)return;
  const last=storyById(get('last_story',''));
- const chapter=last?chapterIndex(last):0;
- const hero=document.createElement('section');
- hero.className='storylens-hero';
- hero.setAttribute('aria-label',uiText('المكتبة والعودة للقراءة','Library and continue reading'));
- hero.innerHTML='<div class="hero-content"><div class="hero-eyebrow">LINGUA TALES · IMMERSIVE READING</div>'+
-  '<h2>Lose yourself in a good story.</h2>'+
-  '<p>قصص ناضجة، أسرار تستحق الاكتشاف، وإنجليزي تتعلمه من الأحداث نفسها.</p>'+
-  '<div class="hero-metrics"><span>'+catalog.stories.length+' STORIES</span><span>'+catalog.genres.length+' GENRES</span><span>100% OFFLINE</span></div>'+
-  (last?'<button class="hero-continue" type="button" onclick="openStory(\''+escapeText(last.id)+'\')">'+uiText('تابع: ','Continue: ')+escapeText(last.title)+' · '+(chapter+1)+' / '+last.chapters.length+uiText(' ←',' →')+'</button>':
-   '<div class="hero-invitation">'+uiText('اختر عالمك التالي من المكتبة بالأسفل ↓','Choose a story from the library below ↓')+'</div>')+'</div>'+
-  '<div class="hero-orb" aria-hidden="true"><div class="hero-orb-core"></div></div>';
- const filters=section.querySelector('.filters');
- section.insertBefore(hero,section.querySelector('.search-label'));
+ // The integrated shell renders the real edition once. Standalone reader
+ // integrations can still present their existing entry point.
+ if(!window.LinguaShell){
+  const chapter=last?chapterIndex(last):0;
+  const hero=document.createElement('section');
+  hero.className='storylens-hero';
+  hero.setAttribute('aria-label',uiText('المكتبة والعودة للقراءة','Library and continue reading'));
+  hero.innerHTML='<div class="hero-content"><div class="hero-eyebrow">LINGUA TALES · IMMERSIVE READING</div>'+
+   '<h2>Lose yourself in a good story.</h2>'+
+   '<p>قصص ناضجة، أسرار تستحق الاكتشاف، وإنجليزي تتعلمه من الأحداث نفسها.</p>'+
+   '<div class="hero-metrics"><span>'+catalog.stories.length+' STORIES</span><span>'+catalog.genres.length+' GENRES</span><span>100% OFFLINE</span></div>'+
+   (last?'<button class="hero-continue" type="button" onclick="openStory(\''+escapeText(last.id)+'\')">'+uiText('تابع: ','Continue: ')+escapeText(last.title)+' · '+(chapter+1)+' / '+last.chapters.length+uiText(' ←',' →')+'</button>':
+    '<div class="hero-invitation">'+uiText('اختر عالمك التالي من المكتبة بالأسفل ↓','Choose a story from the library below ↓')+'</div>')+'</div>'+
+   '<div class="hero-orb" aria-hidden="true"><div class="hero-orb-core"></div></div>';
+  section.insertBefore(hero,section.querySelector('.search-label'));
+ }
  const header=section.querySelector('.header');
  if(header)header.classList.add('storylens-header');
  for(const button of section.querySelectorAll('.filters .pill')){

@@ -321,7 +321,8 @@ class MainActivity : ComponentActivity() {
                 // the first Back press here rather than leaving the book.
                 reader.evaluateJavascript(
                     "Boolean(window.LinguaReaderCurl?.cancelIfActive?.()) || " +
-                    "Boolean(window.LinguaTalesArtInspection?.closeIfOpen?.())"
+                    "Boolean(window.LinguaTalesArtInspection?.closeIfOpen?.()) || " +
+                    "Boolean(window.LinguaChapterGallery?.isOpen && window.LinguaChapterGallery.close())"
                 ) { artClosed ->
                     if (artClosed != "true") {
                         reader.evaluateJavascript(

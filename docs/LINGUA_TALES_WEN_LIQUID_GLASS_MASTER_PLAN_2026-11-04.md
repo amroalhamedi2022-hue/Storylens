@@ -1,3 +1,7 @@
+## November 23 — shared library navigation
+
+Library, words and review share one navigation tray. The installed Wen engine owns the active press and moves a single optical lens across trays. The legacy water feedback module supplies a released-tap bubble outside lens trays and remains usable standalone. Reader ink, chapter art and physical page surfaces remain outside the tray optics. New runtime evidence pending.
+
 ## 23 November — source-only handoff
 
 The settings header keeps the dismiss control near the top while scrolling. The bilingual paper specimen takes its six material palettes from the reader rules. Android rendering, accessibility and all six themes require the delegated QA run.
