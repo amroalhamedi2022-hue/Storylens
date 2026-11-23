@@ -1,4 +1,4 @@
-name: Installed WebView evidence for preview 101327
+name: Installed WebView evidence for preview 101328
 on:
   push:
     branches: [qa/verne-resume-101327]
@@ -11,10 +11,12 @@ jobs:
     timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: 9dbdc7eaafa98fa0419975083ded56956a63021d
       - uses: actions/download-artifact@v4
         with:
           name: Lingua-Tales-Preview-NOT-PRODUCTION-UPDATE
-          run-id: 45049724174
+          run-id: 45121533412
           github-token: ${{ github.token }}
           path: apk
       - run: npm install --prefix /tmp/android-sheet --no-audit --no-fund playwright@1.56.1
@@ -41,11 +43,11 @@ jobs:
             sleep 2
             adb exec-out screencap -p > android-sheet-evidence/installed-home.png
             adb shell dumpsys webviewupdate > android-sheet-evidence/webview.txt
-            NODE_PATH=/tmp/android-sheet/node_modules node tools/verne-resume-android.cjs
+            NODE_PATH=/tmp/android-sheet/node_modules node tools/android-verne-resume.cjs
       - if: always()
         run: sudo dmesg | tail -300 > android-sheet-evidence/host-kernel.txt
       - if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Installed-101327-evidence
+          name: Installed-101328-evidence
           path: android-sheet-evidence
