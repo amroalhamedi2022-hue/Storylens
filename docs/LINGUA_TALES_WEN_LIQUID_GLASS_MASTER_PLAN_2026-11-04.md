@@ -1,3 +1,7 @@
+## 24 November — reading surfaces
+
+The passage search uses paper and ink with a scrollable results region. Glossary and edition labels retain independent Arabic and English direction. Android Back gives the topmost reader surface priority. Device evidence, including system font scaling and high-contrast modes, is pending.
+
 ## November 23 — shared library navigation
 
 Library, words and review share one navigation tray. The installed Wen engine owns the active press and moves a single optical lens across trays. The legacy water feedback module supplies a released-tap bubble outside lens trays and remains usable standalone. Reader ink, chapter art and physical page surfaces remain outside the tray optics. New runtime evidence pending.

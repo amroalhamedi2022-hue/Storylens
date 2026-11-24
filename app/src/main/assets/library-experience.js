@@ -202,11 +202,14 @@ wordSheet=function(args) {
  if(args.entry?.type!=='dictionary')return;
  const sheet=document.querySelector('#modals .sheet');
  if(!sheet)return;
- const senses=String(args.entry.literal).split(/\s+\/\s+|؛/).map(x=>x.trim()).filter(Boolean);
+ const listed=Array.isArray(args.entry.meanings)?args.entry.meanings:[];
+ const senses=[...new Set((listed.length?listed:String(args.entry.literal||'').split(/\s+\/\s+|؛/))
+  .filter(x=>typeof x==='string').map(x=>x.trim()).filter(Boolean))];
  if(senses.length<2)return;
  const storyId=state.story?.id||'';
  const scopedKey=storyId+'\u001f'+state.chapter+'\u001f'+args.source.en+'\u001f'+args.display.toLowerCase();
- const selections=read('wordSenses',{});
+ const selections=read('wordSenses',{})||{};
+ if(senses.includes(selections[scopedKey]))activeWord.reviewMeaning=selections[scopedKey];
  const box=document.createElement('section');box.className='stl-sense-choices';
  const heading=document.createElement('h3');heading.textContent=uiText('اختر المعنى الأنسب في هذه الجملة','Choose the best sense in this sentence');box.appendChild(heading);
  const sub=document.createElement('p');sub.textContent=uiText('معانٍ معجمية محتملة. اختيارك شخصي ومحفوظ في هذه الجملة فقط، وليس ترجمة معتمدة آليًا.','Possible dictionary senses. Your selection applies only to this sentence; it is not a verified contextual translation.');
@@ -219,7 +222,7 @@ wordSheet=function(args) {
   button.setAttribute('aria-pressed',String(selections[scopedKey]===sense));
   button.addEventListener('click',()=>{
    const all=read('wordSenses',{});
-   all[scopedKey]=sense;
+   all[scopedKey]=sense;activeWord.reviewMeaning=sense;
    write('wordSenses',all);
    options.querySelectorAll('button').forEach(item=>{item.classList.remove('active');item.setAttribute('aria-pressed','false');});
    button.classList.add('active');button.setAttribute('aria-pressed','true');

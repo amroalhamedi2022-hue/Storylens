@@ -316,41 +316,8 @@ class MainActivity : ComponentActivity() {
         reader.loadUrl("https://appassets.androidplatform.net/assets/index.html")
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                // The on-demand original illustration covers the whole reading
-                // surface but is not one of the legacy #modals sheets. Consume
-                // the first Back press here rather than leaving the book.
-                reader.evaluateJavascript(
-                    "Boolean(window.LinguaReaderCurl?.cancelIfActive?.()) || " +
-                    "Boolean(window.LinguaTalesArtInspection?.closeIfOpen?.()) || " +
-                    "Boolean(window.LinguaChapterGallery?.isOpen && window.LinguaChapterGallery.close())"
-                ) { artClosed ->
-                    if (artClosed != "true") {
-                        reader.evaluateJavascript(
-                            "Boolean(document.getElementById('modals')?.innerHTML)"
-                        ) { modalOpen ->
-                            if (modalOpen == "true") {
-                                reader.evaluateJavascript("closeSheet();", null)
-                            } else {
-                                // Preserve the existing priority: word sheet,
-                                // drawer, translation, then reader/library.
-                                reader.evaluateJavascript(
-                                    "Boolean(window.LinguaShell && window.LinguaShell.isDrawerOpen())"
-                                ) { drawerOpen ->
-                                    if (drawerOpen == "true") {
-                                        reader.evaluateJavascript("window.LinguaShell.closeDrawer();", null)
-                                    } else {
-                                        reader.evaluateJavascript("state.page") { page ->
-                                            if (page == "\"library\"") finish()
-                                            else reader.evaluateJavascript(
-                                                "(function(){if(state.page==='translation'){backToReader();}" +
-                                                "else{libraryBack();}})();", null
-                                            )
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                reader.evaluateJavascript("window.LinguaShell?.handleAndroidBack?.()") { handled ->
+                    if (handled == "false" || handled == "null") finish()
                 }
             }
         })

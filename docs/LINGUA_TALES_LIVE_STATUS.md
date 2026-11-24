@@ -1,3 +1,7 @@
+## 24 November — library-to-passage, dictionary and paper integration
+
+Source changes on the signature handoff branch. Offline passage search resolves lazy editions and scans in cancellable time slices. Original text offsets feed pagination before opening the reader. Dictionary senses used for new study cards can reflect the selected sentence-specific choice. Android Back resolves the active surface in one JavaScript call. In portrait the cold compositor follows the reverse and the GPU warms only the faces it draws. The moving mesh reuses clipping and vertex scratch buffers. Motion audio smooths gesture speed and releases over a short tail. No APK, runtime inspection, tests or frame/audio evidence for this change. Edition art acquisition and editorial approvals stay with the content workstream.
+
 ## 23 November — bookmark shelf (source only)
 
 The library exposes existing one-per-book saved places in most-recent order. Both entry points resolve the bookmark after local chapter loading. A stored paragraph and character offset take priority, with physical-page and pixel-scroll compatibility paths for older data. Android verification is deferred.

@@ -127,7 +127,7 @@ function mount(options){
   for(const ink of [front,back].filter(Boolean))Object.assign(ink.style,{
    padding:style.padding,font:style.font,color:style.color,
    width:h.width+'px',height:h.height+'px'});
-  h.frontTemplate=front;h.backTemplate=back;h.facets=[];h.parkedFaces=[];
+  h.frontTemplate=front;h.backTemplate=back;h.facets=[];
   for(let i=0;i<CURL_SEGMENTS+2;i++){
    const facet=doc.createElement('div');facet.className='lt-curl-facet';
    h.stage.append(facet);h.facets.push(facet);
@@ -151,29 +151,14 @@ function mount(options){
   // null is a genuinely unprinted boundary sheet; undefined retains
   // compatibility with adapters requiring the adjacent page texture.
   const textureBack=h.back===undefined?(h.under||null):h.back;
-  const gpuPrimed=!!v2?.isReady?.({win,host,page:h.page,
-   back:textureBack,under:h.under?.classList.contains("lt-curl-blank-under")?null:h.under,
-   stationary:h.stationary,width:h.width,height:h.height});
-  // The legacy compositor has no portrait camera; preserve its original
-  // one-page destination instead of exposing the GPU compositor's N+2.
-  if(!gpuPrimed&&h.info?.spread===1&&h.fallbackUnder){
-   h.under=h.fallbackUnder;
-   h.back=textureBack;
-  }
   const shadow=doc.createElement('div');shadow.className='lt-curl-contact';
   stage.append(shadow);h.shadow=shadow;h.facets=[];
   h.stage=stage;host.append(stage);
-  if(h.under){h.under.classList.add('lt-curl-under');h.under.style.setProperty('--lt-under-left',rect.left-hostRect.left+'px');h.under.style.setProperty('--lt-under-width',rect.width+'px');}
   host.classList.add('lt-curl-active');host.dataset.ltFoldEdge=h.edge;
-  if(!gpuPrimed){
-   // No new rasterization inside a gesture; one consistent HTML fallback.
-   buildFallbackFacets(h,style);h.page.style.visibility='hidden';
-   return;
-  }
   // Resident textures are bound synchronously. The first rendered surface
   // replaces the original page in this same task; no upload waits on touch.
   shadow.style.opacity='0';
-  h.webgl=v2.createSession({win,host,stage,page:h.page,back:textureBack,
+  h.webgl=(h.info?.toPage===null&&h.info?.spread===1)?null:v2?.createSession?.({win,host,stage,page:h.page,back:textureBack,
    under:h.under?.classList.contains("lt-curl-blank-under")?null:h.under,stationary:h.stationary,
    width:h.width,height:h.height,
    onReady(){
@@ -196,6 +181,15 @@ function mount(options){
   }
   if(h.webgl&&v2.CurlSpringPhysics)h.physics=new v2.CurlSpringPhysics();
   else if(!h.webgl){
+   // Match the single-leaf camera on cold portrait turns. The destination
+   // is printed on the reverse; only an unprinted boundary needs an underlay.
+   h.portraitCamera=h.info?.spread===1&&!!textureBack;
+   if(h.info?.spread===1)h.under=h.portraitCamera?null:h.fallbackUnder;
+   if(h.under){
+    h.under.classList.add('lt-curl-under');
+    h.under.style.setProperty('--lt-under-left',rect.left-hostRect.left+'px');
+    h.under.style.setProperty('--lt-under-width',rect.width+'px');
+   }
    buildFallbackFacets(h,style);
    paint(h);h.page.style.visibility='hidden';
   }
@@ -210,16 +204,19 @@ function mount(options){
   }
   // Await an already-primed WebGL texture without flashing a legacy sheet.
   if(!h.facets?.length){emit('progress',h);return;}
-  const g=geometry(h.width,h.height,h.distance/h.travel*2*h.width,h.vertical,h.grabY,h.edge);
+  const screenProgress=h.distance/h.travel;
+  const progress=h.portraitCamera?(win.LinguaCurlV2?.portraitProgress?.(screenProgress)??screenProgress):screenProgress;
+  if(h.portraitCamera){
+   const camera=(h.edge==='right'?1:-1)*h.width*progress*progress*(3-2*progress);
+   h.stage.style.transform='translateX('+camera+'px)';
+  }
+  const g=geometry(h.width,h.height,progress*2*h.width,h.vertical,h.grabY,h.edge);
   g.facets.forEach((g,i)=>{
    const node=h.facets[i];
    if(g.polygon.length<3){
     node.style.display='none';
-    if(node.firstElementChild)h.parkedFaces[i]=node.removeChild(node.firstElementChild);
+
     return;
-   }
-   if(!node.firstElementChild&&h.parkedFaces[i]){
-    node.append(h.parkedFaces[i]);h.parkedFaces[i]=null;
    }
    if(!node.firstElementChild){
     const reverse=i>Math.ceil(CURL_SEGMENTS/2);
@@ -404,7 +401,11 @@ function mount(options){
    start(h);suppressUntil=Date.now()+450;settle(true);return;
   }
   if(h.started)suppressUntil=Date.now()+450;
+  if(h.started&&Number.isFinite(e.clientX)){
+   h.distance=clamp((h.edge==='right'?-1:1)*(e.clientX-h.startX),0,h.travel);
+  }
   const v=e.timeStamp-h.lastAt>100?0:h.velocity;
+  h.velocity=v;
   settle(shouldCommit(h.distance,h.width,v));
  }},true);
  on(doc,'pointercancel',e=>{if(hold?.pointer===e.pointerId)cancel('pointercancel');},true);

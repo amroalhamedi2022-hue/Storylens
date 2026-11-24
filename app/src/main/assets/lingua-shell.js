@@ -590,21 +590,9 @@ function openSettings(){
 /* LT-07/03: search actual bilingual passages of all offline chapters, not
  * only card titles. Index only when the user opens search, cap result count,
  * and never invent dictionary meanings or replace a book's original text. */
-let chapterSearchIndex=null;
-let chapterSearchCatalogSize=-1;
-let chapterSearchCatalogShape='';
-// Refresh if a new chapter/paragraph batch is appended to an existing work.
-function catalogSearchShape(){
- // Keep cache validation proportional to chapters, not millions of words.
- // A translator correcting an existing paragraph (same chapter length) bumps
- // chapter.searchRevision; a new book edition may bump story.searchRevision.
- return catalog.stories.map(s=>s.id+':'+(s.searchRevision??0)+':'+
-  s.chapters.map(c=>c.paragraphs.length+'@'+(c.searchRevision??0)).join(',')).join('|');
-}
+let chapterSearchCache=new WeakMap();
 function invalidateChapterSearch(){
- chapterSearchIndex=null;
- chapterSearchCatalogSize=-1;
- chapterSearchCatalogShape='';
+ chapterSearchCache=new WeakMap();
 }
 // Search folds common Arabic spelling variants and vowel marks without
 // changing the original bilingual text displayed to readers. Do not
@@ -616,51 +604,56 @@ function foldChapterSearch(value){
   .replace(/ؤ/gu,'و').replace(/ئ/gu,'ي').replace(/ة/gu,'ه')
   .replace(/[’‘]/gu,"'").replace(/\s+/gu,' ').trim();
 }
-function searchChapters(query,limit=40,novelsOnly=false){
- const raw=String(query||'');
- if(raw.length>80)return [];
- const q=foldChapterSearch(raw);
- if(q.length<2)return [];
- // Content batches can be appended after the first search. Rebuild when the
- // catalog grows; do not silently hide newly packaged chapters.
- const shape=catalogSearchShape();
- if(!chapterSearchIndex||chapterSearchCatalogSize!==catalog.stories.length||chapterSearchCatalogShape!==shape){
-  chapterSearchIndex=[];
-  chapterSearchCatalogSize=catalog.stories.length;
-  chapterSearchCatalogShape=shape;
-  for(const story of catalog.stories){
-   for(let chapter=0;chapter<story.chapters.length;chapter++){
-    const item=story.chapters[chapter];
-    for(let paragraph=0;paragraph<item.paragraphs.length;paragraph++){
-     const p=item.paragraphs[paragraph];
-     if(typeof p.en!=='string'||typeof p.ar!=='string')continue;
-     // Keep only folded search strings; the source is already in catalog.
-     // This avoids retaining a second copy of every bilingual paragraph.
-     chapterSearchIndex.push({
-      story,chapter,paragraph,
-      searchEn:foldChapterSearch(p.en),
-      searchAr:foldChapterSearch(p.ar)
-     });
+// Lazy per-paragraph normalization keeps a cold mobile search interruptible.
+function *passages(query,novelsOnly){
+ for(const story of catalog.stories){
+  if(novelsOnly&&!isFullLengthNovel(story))continue;
+  for(const [chapter,item] of story.chapters.entries()){
+   for(const [paragraph,p] of item.paragraphs.entries()){
+    if(typeof p?.en!=='string'||typeof p.ar!=='string')continue;
+    let row=chapterSearchCache.get(p);
+    if(!row||row.en!==p.en||row.ar!==p.ar){
+     row={en:p.en,ar:p.ar,enFold:foldChapterSearch(p.en),arFold:foldChapterSearch(p.ar)};
+     chapterSearchCache.set(p,row);
     }
+    const enIndex=row.enFold.indexOf(query),arIndex=row.arFold.indexOf(query);
+    yield enIndex<0&&arIndex<0?null:{storyId:story.id,storyTitle:(rtl()?story.titleAr:story.titleEn)||story.title,
+     chapter,chapterTitle:(rtl()?item.titleAr:item.titleEn)||item.title,paragraph,en:p.en,ar:p.ar,enIndex,arIndex};
    }
   }
  }
- const results=[];
- const cap=Math.max(1,Math.min(40,Number.isInteger(limit)?limit:40));
- for(const entry of chapterSearchIndex){
-  // The shelf and user-facing search share one long-form-only promise.
-  // Keep the legacy unfiltered API for old saved references and test fixtures.
-  if(novelsOnly&&!isFullLengthNovel(entry.story))continue;
-  if(entry.searchEn.includes(q)||entry.searchAr.includes(q)){
-   const story=entry.story,chapter=story.chapters[entry.chapter];
-   const p=chapter.paragraphs[entry.paragraph];
-   results.push({storyId:story.id,storyTitle:story.title,
-    chapter:entry.chapter,chapterTitle:chapter.title,
-    paragraph:entry.paragraph,en:p.en,ar:p.ar});
-   if(results.length>=cap)break;
-  }
+}
+function searchChapters(query,limit=40,novelsOnly=false){
+ const q=foldChapterSearch(query||'');
+ if(String(query||'').length>80||q.length<2)return [];
+ const hits=[],cap=Math.max(1,Math.min(40,Number.isInteger(limit)?limit:40));
+ for(const hit of passages(q,novelsOnly)){
+  if(hit)hits.push(hit);
+  if(hits.length===cap)break;
  }
- return results;
+ return hits;
+}
+function passageRange(text,index,length){
+ // Resolve folded UTF-16 positions back into the unmodified source. Arabic
+ // tashkeel, repeated whitespace and compatibility ligatures change offsets.
+ if(index<0)return null;
+ const boundary=n=>{
+  let lo=0,hi=text.length;
+  while(lo<hi){
+   const mid=(lo+hi)>>>1;
+   if(foldChapterSearch(text.slice(0,mid)).length<n)lo=mid+1;else hi=mid;
+  }
+  return lo;
+ };
+ let start=Math.max(0,boundary(index+1)-1),end=boundary(index+length);
+ while(end<text.length&&/[\p{M}]/u.test(text[end]))end++;
+ return {start,end};
+}
+function excerpt(node,text,range){
+ if(!range){node.textContent=text.length>125?text.slice(0,124)+'…':text;return;}
+ const before=Math.max(0,range.start-55),after=Math.min(text.length,range.end+85);
+ const mark=document.createElement('mark');mark.textContent=text.slice(range.start,range.end);
+ node.append((before?'…':'')+text.slice(before,range.start),mark,text.slice(range.end,after)+(after<text.length?'…':''));
 }
 let chapterSearchTimer=null;
 function closeChapterSearch(){
@@ -669,32 +662,22 @@ function closeChapterSearch(){
  if(root)root.inert=false;
  closeSheet();
 }
+function focusPassage(hit,offset){
+ const candidates=Array.from(document.querySelectorAll('.reader .sentence')).filter(node=>
+  Number(node.dataset?.i)===hit.paragraph&&!node.closest?.('[aria-hidden="true"],.lt-curl-stage'));
+ const node=candidates.find(n=>(Number(n.dataset.ltFragmentStart)||0)<=offset&&
+  (Number(n.dataset.ltFragmentEnd)||Infinity)>offset)||candidates[0];
+ if(!node)return;
+ node.classList?.add?.('lt-search-target');node.setAttribute?.('tabindex','-1');
+ node.scrollIntoView?.({block:'center',behavior:'instant'});node.focus?.({preventScroll:true});
+ global.setTimeout?.(()=>node.classList?.remove?.('lt-search-target'),2600);
+}
 function jumpToChapterHit(hit){
- if(!hit||!catalog.stories.some(s=>s.id===hit.storyId&&
-  Number.isInteger(hit.chapter)&&hit.chapter>=0&&hit.chapter<s.chapters.length&&
-  Number.isInteger(hit.paragraph)&&hit.paragraph>=0&&
-  hit.paragraph<s.chapters[hit.chapter].paragraphs.length))return false;
+ const story=catalog.stories.find(s=>s.id===hit?.storyId);
+ if(!story||!Number.isInteger(hit.chapter)||!Number.isInteger(hit.paragraph)||
+    !story.chapters[hit.chapter]?.paragraphs[hit.paragraph])return false;
  closeChapterSearch();
- openStory(hit.storyId); // keeps the existing history and animation pipeline
- if(state.page!=='reader'||state.story?.id!==hit.storyId)return false;
- state.chapter=hit.chapter;
- put('chapter_'+hit.storyId,hit.chapter);
- renderReader();
- const scroll=()=>{
-  if(state.page!=='reader'||state.story?.id!==hit.storyId||state.chapter!==hit.chapter)return;
-  const node=Array.from(document.querySelectorAll('.reader .sentence'))
-   .find(n=>Number(n.dataset?.i)===hit.paragraph);
-  if(!node)return;
-  // The hit is announced as real English reading content to assistive tech.
-  // This transient marker never changes the underlying literary paragraph.
-  node.classList?.add?.('lt-search-target');
-  node.setAttribute?.('tabindex','-1');
-  node.scrollIntoView?.({block:'center',behavior:'instant'});
-  node.focus?.({preventScroll:true});
-  global.setTimeout?.(()=>node.classList?.remove?.('lt-search-target'),2600);
- };
- if(typeof global.requestAnimationFrame==='function')global.requestAnimationFrame(scroll);
- else scroll();
+ openStory(hit.storyId,{passage:hit});
  return true;
 }
 function openChapterSearch(){
@@ -718,7 +701,7 @@ function openChapterSearch(){
  const input=document.createElement('input');input.type='search';input.maxLength=80;
  input.className='lt-chapter-query';
  input.setAttribute('aria-label',rtl()?'كلمة أو عبارة من القصة':'Word or phrase in a story');
- input.placeholder=rtl()?'اكتب كلمتين أو أكثر…':'Type at least two characters…';
+ input.placeholder=rtl()?'اكتب حرفين أو أكثر…':'Type at least two characters…';
  sheet.appendChild(input);
  const status=document.createElement('p');status.className='quiet';
  status.setAttribute('role','status');status.setAttribute('aria-live','polite');
@@ -727,22 +710,45 @@ function openChapterSearch(){
  sheet.appendChild(results);
  const footer=document.createElement('footer');
  addButton(footer,rtl()?'إغلاق':'Close',()=>{
-  closeChapterSearch();document.querySelector('.lt-chapter-search-open')?.focus();
+  closeChapterSearch();document.getElementById('lt-menu-toggle')?.focus();
  },'secondary');
  sheet.appendChild(footer);
  overlay.addEventListener('click',event=>{
-  if(event.target===overlay){closeChapterSearch();document.querySelector('.lt-chapter-search-open')?.focus();}
+  if(event.target===overlay){closeChapterSearch();document.getElementById('lt-menu-toggle')?.focus();}
  });
  overlay.appendChild(sheet);host.appendChild(overlay);
  const root=document.getElementById('root');
  if(root)root.inert=true; // keep background controls outside modal focus order
- const render=()=>{
+ let generation=0;
+ const render=async()=>{
+  const ticket=++generation;
   chapterSearchTimer=null;results.replaceChildren();
-  const q=input.value.trim();
+  const q=foldChapterSearch(input.value);
+  const current=()=>ticket===generation&&sheet.isConnected&&q===foldChapterSearch(input.value);
   if(q.length<2){status.textContent=rtl()?'اكتب حرفين على الأقل.':'Enter at least two characters.';return;}
-  const hits=searchChapters(q,40,true);
+  status.textContent=rtl()?'جارٍ البحث في الفصول المحلية…':'Searching offline chapters…';
+  const hits=[];
+  let incomplete=false;
+  try{
+   for(const story of catalog.stories.filter(s=>s.lazyBook&&isFullLengthNovel(s))){
+    await global.LinguaContentLoader.ensureStory(story.id);
+    if(!current())return;
+   }
+  }catch(_){incomplete=true;}
+  if(!current())return;
+  let sliceStart=performance.now();
+  for(const hit of passages(q,true)){
+   if(hit)hits.push(hit);
+   if(hits.length===40)break;
+   if(performance.now()-sliceStart>7){
+    await new Promise(resolve=>global.setTimeout(resolve,0));
+    if(!current())return;
+    sliceStart=performance.now();
+   }
+  }
   status.textContent=(rtl()?'نتائج مطابقة: ':'Matches: ')+hits.length+
    (hits.length===40?(rtl()?' (أول 40)':' (first 40)'):'');
+  if(incomplete)status.textContent+=rtl()?' · تعذّر فتح بعض الفصول المحلية.':' · Some offline chapters could not be loaded.';
   if(!hits.length)return;
   for(const hit of hits){
    const button=addButton(results,'',()=>jumpToChapterHit(hit),'lt-chapter-hit');
@@ -751,12 +757,15 @@ function openChapterSearch(){
     (rtl()?'فقرة ':'Paragraph ')+(hit.paragraph+1);
    button.appendChild(title);
    const en=document.createElement('span');en.lang='en';en.dir='ltr';
-   en.textContent=hit.en.slice(0,190);button.appendChild(en);
+   hit.enRange=passageRange(hit.en,hit.enIndex,q.length);
+   excerpt(en,hit.en,hit.enRange);button.appendChild(en);
    const ar=document.createElement('span');ar.lang='ar';ar.dir='rtl';
-   ar.textContent=hit.ar.slice(0,155);button.appendChild(ar);
+   hit.arRange=passageRange(hit.ar,hit.arIndex,q.length);
+   excerpt(ar,hit.ar,hit.arRange);button.appendChild(ar);
   }
  };
  input.addEventListener('input',()=>{
+  generation++;results.replaceChildren();
   if(chapterSearchTimer!==null)global.clearTimeout(chapterSearchTimer);
   chapterSearchTimer=global.setTimeout(render,170);
  });
@@ -1158,7 +1167,22 @@ renderReview=function(revealed){
  mountLibraryNavigation(screen,'review',entering);
  if(revealed)screen?.querySelector('.review-card')?.classList.add('lt-answer-revealed');
 };
-global.LinguaShell={refreshNovelShelf,applyTheme,applyReaderMaterial,readerMaterialChoices:[...readerMaterialChoices],applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,isFullLengthNovel,
+// Resolve the foreground surface in one WebView task so Android Back cannot
+// observe one overlay and subsequently dismiss a different one.
+function handleAndroidBack(){
+ if(global.LinguaReaderCurl?.cancelIfActive?.()||global.LinguaTalesArtInspection?.closeIfOpen?.())return true;
+ if(global.LinguaChapterGallery?.isOpen)return global.LinguaChapterGallery.close();
+ if(document.getElementById('lt-content-load-status')){global.LinguaContentLoader?.cancel();return true;}
+ if(document.querySelector('.lt-search-overlay')){
+  closeChapterSearch();document.getElementById('lt-menu-toggle')?.focus();return true;
+ }
+ if(document.getElementById('modals')?.firstElementChild){closeSheet();return true;}
+ if(opened){closeDrawer();return true;}
+ if(state.page==='library')return false;
+ if(state.page==='translation')backToReader();else libraryBack();
+ return true;
+}
+global.LinguaShell={handleAndroidBack,refreshNovelShelf,applyTheme,applyReaderMaterial,readerMaterialChoices:[...readerMaterialChoices],applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,isFullLengthNovel,
  isDrawerOpen:()=>opened,themeNames:[...themeNames],searchChapters,invalidateChapterSearch,openChapterSearch,jumpToChapterHit};
 /* LT-09/06 accessibility: a visible modal must own keyboard focus.
  * Trap Tab/Shift+Tab in Settings or the genre drawer; Escape dismisses the
@@ -1166,7 +1190,8 @@ global.LinguaShell={refreshNovelShelf,applyTheme,applyReaderMaterial,readerMater
 function handleDialogKeyboard(event){
  const settings=document.querySelector('.lt-settings-overlay .lt-settings-sheet');
  const search=document.querySelector('.lt-search-overlay .lt-chapter-search');
- const dialog=settings||search||(opened?document.getElementById('lt-drawer'):null);
+ const word=document.querySelector('.lt-word-sheet');
+ const dialog=settings||search||word||(opened?document.getElementById('lt-drawer'):null);
  if(!dialog)return;
  if(event.key==='Escape'){
   event.preventDefault();event.stopImmediatePropagation();
@@ -1175,8 +1200,9 @@ function handleDialogKeyboard(event){
    document.getElementById('lt-menu-toggle')?.focus();
   }else if(search){
    closeChapterSearch();
-   document.querySelector('.lt-chapter-search-open')?.focus();
-  }else closeDrawer();
+   document.getElementById('lt-menu-toggle')?.focus();
+  }else if(word)closeSheet();
+  else closeDrawer();
   return;
  }
  if(event.key!=='Tab')return;
@@ -1321,8 +1347,13 @@ document.addEventListener('click',event=>{
   closeTimer=global.setTimeout(finishClose,motionOff()?0:190);
  }
  openStory=function(id,options){
-  const book=options?.bookmark===true?catalog.stories.find(item=>item.id===id):null;
-  const bookmark=book?global.LinguaBookmarkNavigation?.prepare(book):null;
+  const book=catalog.stories.find(item=>item.id===id);
+  const bookmark=book&&options?.bookmark?global.LinguaBookmarkNavigation?.prepare(book):null;
+  const passage=options?.passage;
+  const validPassage=passage?.storyId===id&&Number.isInteger(passage.chapter)&&Number.isInteger(passage.paragraph)&&
+   !!book?.chapters[passage.chapter]?.paragraphs[passage.paragraph];
+  const offset=validPassage?(global.LinguaPassageNavigation?.prepare(book,passage)||0):0;
+  if(validPassage)put('chapter_'+id,passage.chapter);
   if(state.page==='library'){
    returnToBookmark=Boolean(bookmark);
    returnY=safeOffset(global.scrollY);
@@ -1341,9 +1372,12 @@ document.addEventListener('click',event=>{
    const saved=safeOffset(get('scroll_'+storyId+'_'+chapterIndex,0));
    nextFrame(()=>{
     if(state.page!=='reader'||state.story?.id!==storyId||state.chapter!==chapterIndex)return;
-    focusWithoutScroll(document.querySelector('.reader h2'));
-    if(bookmark)bookmark.restoreScroll();
-    else restoreReadingPosition(storyId,chapterIndex,saved);
+    if(validPassage)focusPassage(passage,offset);
+    else{
+     focusWithoutScroll(document.querySelector('.reader h2'));
+     if(bookmark)bookmark.restoreScroll();
+     else restoreReadingPosition(storyId,chapterIndex,saved);
+    }
    });
   }
  };

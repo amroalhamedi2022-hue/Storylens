@@ -487,3 +487,34 @@ body.lt-wen-optics #root .lt-library-dock>.lt-wen-follow-lens{
 .lt-saved-places li button{display:grid;gap:4px;text-align:start;background:transparent;
  color:inherit;box-shadow:none;border:0;min-height:48px;width:100%;padding:10px 4px}
 .lt-saved-places li span{font-size:.88em;overflow-wrap:anywhere}
+
+/* The search sheet uses the same paper, ink and binding as the contents. */
+.lt-search-overlay .lt-chapter-search{
+ box-sizing:border-box;display:flex;flex-direction:column;gap:8px;
+ width:min(100%,44rem);max-height:88dvh;padding:clamp(16px,3vw,30px);
+ background:#faf6e9;color:#243b32;border:1px solid #b8ac8d;border-radius:20px;
+}
+.lt-search-overlay .lt-chapter-search h2{color:inherit;margin:0;font:600 clamp(20px,3vw,30px)/1.4 "LT English Serif","LT Arabic Naskh",serif}
+.lt-search-overlay .quiet{color:#535e51;margin:0}
+.lt-search-overlay .lt-chapter-query{flex:none;background:#fffdf4;color:#20382e;border-color:#aaa68f}
+.lt-search-overlay .lt-chapter-results{min-height:0;overflow:auto;overscroll-behavior:contain;margin:0;gap:0}
+.lt-search-overlay .lt-chapter-hit{background:transparent;border:0;border-bottom:1px solid #d5ccba;border-radius:0;color:#283a31;padding:14px 6px}
+.lt-search-overlay .lt-chapter-hit span[lang="ar"]{color:#46584e}
+.lt-search-overlay .lt-chapter-hit mark{background:#ecd99f;color:#2b332a;border-radius:3px}
+.lt-search-overlay .lt-chapter-results:empty{display:none}
+.lt-search-overlay .lt-chapter-search footer{margin:0}
+.lt-edition-parallel-title{font:400 1rem/1.45 "LT English Serif","LT Arabic Naskh",serif;color:#e7d8b4;margin:0 0 8px}
+@media(max-width:620px){
+ .lt-search-overlay .lt-chapter-search{border-end-start-radius:0;border-end-end-radius:0;padding-bottom:max(14px,env(safe-area-inset-bottom))}
+}
+@media(forced-colors:active){.lt-search-overlay .lt-chapter-hit mark{background:Highlight;color:HighlightText}}
+
+.lt-word-sheet h2{font-family:var(--lt-font-en,Georgia),serif;text-align:start;margin-block:0 .35em;overflow-wrap:anywhere}
+.lt-word-sheet>p[lang]{text-align:start;line-height:1.65}
+.lt-word-sheet>p[lang="ar"]{font-family:var(--lt-font-ar,serif)}
+.lt-word-sheet>.en{font-family:var(--lt-font-en,serif)}
+.lt-word-sheet .lt-context-editorial,.lt-word-sheet .lt-context-inferred{
+ border-inline-start:3px solid currentColor;padding-inline-start:.75em
+}
+.lt-word-sheet footer{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.lt-word-sheet footer button{min-height:44px}

@@ -193,12 +193,6 @@ async function loadBook(generation) {
   if (!bookAssets.length) throw new Error('Offline book manifest is empty');
   await loadAssets(bookAssets, generation);
   if (generation !== bookLoadGeneration) throw cancelledLoadError();
-  // Reuse the idle prewarmed illustration registry. An in-flight art
-  // request is deduplicated, never regenerated once the book is ready.
-  if (!editorialArtReady) {
-    await ensureEditorialArt();
-    if (generation !== bookLoadGeneration) throw cancelledLoadError();
-  }
   const story = (global.StoryLensEditorialStories || []).find(item => item.id === BOOK_ID);
   if (!story || story.totalChapters !== 37 || story.chapters.length !== 37 ||
       story.chapters.some(chapter => !Array.isArray(chapter.paragraphs) || !chapter.paragraphs.length ||
@@ -268,28 +262,11 @@ if (typeof originalOpenStory === 'function') {
       cancelBookLoad();
       clearStatus();
       unlockRoot();
-      const needsIllustrations = !editorialArtReady &&
-        (global.StoryLensEditorialStories || []).some(story => story?.id === id);
-      if (!needsIllustrations) return originalOpenStory.call(this, id, ...args);
-      showLoading('art');
-      const root = rootNode();
-      if (root) {
-        root.setAttribute('aria-busy', 'true');
-        root.inert = true;
-      }
-      ensureEditorialArt().then(() => {
-        if (token !== openGeneration) return;
-        clearStatus();
-        unlockRoot();
-        originalOpenStory.call(this, id, ...args);
-      }).catch(() => {
-        if (token !== openGeneration) return;
-        // Illustrations may fail, but offline story text is always readable.
-        clearStatus();
-        unlockRoot();
-        originalOpenStory.call(this, id, ...args);
-      });
-      return;
+      // Local cover hydration runs independently. Decorative assets must not
+      // postpone mounting a readable edition or briefly lock the library.
+      if(!editorialArtReady&&(global.StoryLensEditorialStories||[]).some(story=>story?.id===id))
+        ensureEditorialArt().catch(()=>{});
+      return originalOpenStory.call(this, id, ...args);
     }
     // Once the verified long book has been merged into the catalog, reopening it
     // must be synchronous: no loading overlay, inert library, or microtask race.
@@ -330,8 +307,9 @@ if (typeof originalWordSheet === 'function') {
     const result = originalWordSheet.call(this, payload, ...args);
     if (global.FreeDictEnglishArabic?.resolve || !payload || payload.entry ||
         typeof payload.display !== 'string' || !payload.display || /\s/u.test(payload.display)) return result;
+    const openedSheet=document.querySelector('#modals .sheet');
     ensureDictionary().then(() => {
-      if (token !== wordSheetGeneration) return;
+      if (token !== wordSheetGeneration || !openedSheet?.isConnected || document.querySelector('#modals .sheet')!==openedSheet) return;
       const heading = document.querySelector('#modals .sheet h2');
       if (!heading || heading.textContent !== payload.display) return;
       const entry = global.FreeDictEnglishArabic?.resolve(payload.display);

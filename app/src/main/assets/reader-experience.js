@@ -150,20 +150,41 @@ function contextualMeaning(entry, source, story){
  if(best&&bestScore>0&&!ambiguous)return {label:'أقرب معنى بحسب ترجمة الجملة',text:best,kind:'inferred'};
  return {label:'السياق من القصة',text:'لم يُعثر على معنى مفرد موثّق لهذه الكلمة في هذه الجملة بعد. اقرأ ترجمة الجملة أدناه؛ ولن نخترع تعريفًا غير مؤكد.',kind:'sentence'};
 }
+let lookupReturnToken=null,lookupRootInert=false;
+const closeReaderSheet=closeSheet;
+closeSheet=function(event){
+ const lookup=document.querySelector('#modals .lt-word-sheet');
+ closeReaderSheet(event);
+ if(lookup&&!lookup.isConnected){
+  const root=document.getElementById('root');
+  if(root)root.inert=lookupRootInert;
+  if(lookupReturnToken?.isConnected)lookupReturnToken.focus?.({preventScroll:true});
+  lookupReturnToken=null;
+ }
+};
 wordSheet=function(args){
+ const previous=document.querySelector('#modals .lt-word-sheet');
+ const root=document.getElementById('root');
+ if(!previous)lookupRootInert=!!root?.inert;
+ lookupReturnToken=args?.anchorToken||lookupReturnToken;
  originalWordSheet(args);
+ if(root&&document.querySelector('#modals .lt-word-sheet'))root.inert=true;
  // The offline dictionary can replace this sheet after its first lookup.
  if(args?.anchorToken && args.anchorToken.isConnected!==false)positionDictionarySheet(args.anchorToken);
  const sheet=document.querySelector('#modals .sheet');
  if(!sheet)return;
- const labels=Array.from(sheet.querySelectorAll('label'));
- const contextLabel=labels.find(node=>/المعنى داخل القصة|المعنى في الجملة/.test(node.textContent||''));
- if(!contextLabel)return;
- const contextNode=contextLabel.nextElementSibling;
- if(!contextNode)return;
+ const contextLabel=sheet.querySelector('.lt-context-label'),contextNode=sheet.querySelector('.lt-word-context');
+ if(!contextLabel||!contextNode)return;
  const result=contextualMeaning(args?.entry,args?.source,state.story);
- contextLabel.textContent=result.label;
- contextNode.textContent=result.text;
+ const english=document.documentElement.lang==='en';
+ const names={editorial:'Edited meaning in this story',inferred:'Possible sense from the sentence',sentence:'Sentence context'};
+ contextLabel.textContent=english?names[result.kind]:result.label;
+ contextNode.textContent=result.kind==='sentence'?
+  (english?'Use the sentence translation below for this occurrence.':'ارجع إلى ترجمة الجملة أدناه لفهم الكلمة في هذا الموضع.'):result.text;
+ if(result.kind!=='sentence'){contextNode.lang='ar';contextNode.dir='rtl';}
+ if(typeof activeWord==='object'&&activeWord&&!activeWord.reviewMeaning)
+  activeWord.reviewMeaning=result.kind==='sentence'?(args.entry?.literal||args.source.ar):result.text;
+ sheet.querySelector('h2')?.focus?.({preventScroll:true});
  contextNode.classList.toggle('lt-context-inferred',result.kind==='inferred');
  contextNode.classList.toggle('lt-context-editorial',result.kind==='editorial');
  contextNode.classList.toggle('lt-context-missing',result.kind==='sentence');
@@ -696,11 +717,11 @@ function installPageTurn(){
       page:prevFront,back:prevBack,
       under:pages[current-2]||null,stationary:pages[current+1]||null,
       width:rect.width,height:rect.height});
-    // Six resident portrait leaves cover both directions and the next
+    // The visible portrait leaf and its two neighbours cover both directions. For the next
     // forward turn. Prepare its last missing face before a rapid second swipe.
-    if(spread===1&&current===primePage&&pages[current+3]&&sentenceBox.isConnected&&
+    if(spread===1&&current===primePage&&pages[current+2]&&sentenceBox.isConnected&&
        !document.hidden&&!window.LinguaReaderCurl?.active)
-     await gpu.prime({win:window,host:sentenceBox,page:pages[current+3],width:rect.width,height:rect.height});
+     await gpu.prime({win:window,host:sentenceBox,page:pages[current+2],width:rect.width,height:rect.height});
    })().catch(error=>{gpu.lastWarmupWarning=String(error);}).finally(()=>{
     priming=false;
     if(!sentenceBox.isConnected)return;
@@ -715,21 +736,34 @@ function installPageTurn(){
  const prev=pageControls.querySelector('.lt-page-prev');
  const next=pageControls.querySelector('.lt-page-next');
  const countLabel=pageControls.querySelector('.lt-page-count');
+ let lastVisibleStart=null;
  function renderPage(direction,animate){
   current=Math.max(0,Math.min(pages.length-1,current));
   // Preserve the authentic source-art hero on the first spread. Only after
   // turning past the opening page should landscape enter chrome-free reading.
   // Earlier hiding the hero unconditionally failed the historical art ratio QA.
   if(sentenceBox?.dataset)sentenceBox.dataset.ltReadingStarted=String(spread===2&&current>0);
-  pages.forEach((item,index)=>{
+  function updateLeaf(index){
+   const item=pages[index];if(!item)return;
    const visible=index>=current&&index<current+spread;
    item.classList.toggle('is-active',visible);
-   item.style.setProperty('--lt-page-column',String(bindingRtl?spread-(index-current):index-current+1));
-   item.setAttribute('aria-label',pageGroupLabel(index,pages.length));
-   item.setAttribute('aria-roledescription',uiText('صفحة من القصة','story page'));
-   item.setAttribute('aria-hidden',visible?'false':'true');
+   if(visible)item.style.setProperty('--lt-page-column',String(bindingRtl?spread-(index-current):index-current+1));
+   item.setAttribute('aria-hidden',String(!visible));
    item.inert=!visible;
-  });
+  }
+  if(lastVisibleStart===null){
+   pages.forEach((item,index)=>{
+    item.setAttribute('aria-label',pageGroupLabel(index,pages.length));
+    item.setAttribute('aria-roledescription',uiText('صفحة من القصة','story page'));
+    updateLeaf(index);
+   });
+  }else{
+   for(let i=0;i<spread;i++){
+    updateLeaf(lastVisibleStart+i);
+    updateLeaf(current+i);
+   }
+  }
+  lastVisibleStart=current;
   prev.disabled=current===0&&state.chapter===0;
   next.textContent=current+spread>=pages.length
    ?(state.chapter<state.story.chapters.length-1?uiText('الفصل التالي','Next chapter'):uiText('العودة للمكتبة','Back to library'))
@@ -754,7 +788,7 @@ function installPageTurn(){
   if(animate&&typeof sentenceBox.scrollIntoView==='function'){
    sentenceBox.scrollIntoView({block:'start',behavior:'auto'});
   }else{
-   window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+   window.scrollTo({top:0,behavior:'instant'});
   }
  }
  // Synchronize the already-packaged, licensed page-turn recording with
@@ -882,7 +916,7 @@ function installPageTurn(){
     // Four distinct physical surfaces. Portrait follows the turning verso
     // with its camera, so N+2 is never substituted for destination N+1.
     const beneathIndex=delta>0?target+1:current-2;
-    const under=boundary?boundaryPage(delta):(pages[beneathIndex]||blankUnderPage());
+    const under=boundary?boundaryPage(delta):(spread===1?null:pages[beneathIndex]||blankUnderPage());
     const candidateBack=boundary?null:pages[delta>0?target:current-1];
     return {page:pages[moving],under,dispose:clearCurlPreviews,
      fallbackUnder:spread===1?(boundary?under:pages[target]):under,
@@ -2289,6 +2323,13 @@ function prepareBookmark(story){
  put('chapter_'+story.id,chapter);
  return {chapter,restoreScroll:()=>window.scrollTo(0,bookmarkPosition(mark))};
 }
+window.LinguaPassageNavigation=Object.freeze({prepare(story,hit){
+ const arabic=story.sourceLanguage==='ar';
+ const offset=(arabic?hit.arRange:hit.enRange)?.start;
+ const textOffset=Number.isSafeInteger(offset)&&offset>=0?offset:0;
+ ltPendingReflowAnchors.set(story.id+'\u0000'+hit.chapter,{paragraph:hit.paragraph,textOffset});
+ return textOffset;
+}});
 window.LinguaBookmarkNavigation=Object.freeze({prepare:prepareBookmark});
 window.stlJumpBookmark=function(){
  if(!state.story)return;

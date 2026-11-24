@@ -50,7 +50,12 @@ function createMesh(columns=96,rows=48){
 // A developable cylinder: arc length is conserved and the binding stays fixed.
 // Clip in MATERIAL space at exact curve boundaries instead of sampling a UV grid
 // across a sub-pixel radius (the latter bridged folds and produced stray triangles).
-function sheetGeometry(width,height,progress,grabY=.5,pullY=0,edge='right',segments=64,storage){
+function meshScratch(){
+ // A rectangle clipped by two parallel lines has at most six distinct corners.
+ // Boundary coincidences can introduce repeated endpoints, so leave headroom.
+ return {first:new Float64Array(24),second:new Float64Array(24),corners:new Float32Array(96)};
+}
+function sheetGeometry(width,height,progress,grabY=.5,pullY=0,edge='right',segments=64,storage,scratch=meshScratch()){
  const w=Math.max(1,width),h=Math.max(1,height),p=clamp(progress,0,1);
  const travel=2*w*p, gy=clamp(grabY-pullY,0,1)*h;
  let angle=Math.atan2(-clamp(pullY,-1,1)*h,Math.max(travel,1));
@@ -76,7 +81,7 @@ function sheetGeometry(width,height,progress,grabY=.5,pullY=0,edge='right',segme
  const {nx,ny,crease}=q,r=Math.max(radius,1e-7);
  const vertices=storage||new Float32Array((segments+2)*12*8);
  let used=0;
- function deform(x,y){
+ function writeCorner(x,y,out,at){
   const d=nx*x+ny*y-crease;
   let xx=x,yy=y,z=0,sin=0,cos=1;
   if(p>=1){xx=-x;z=0;cos=-1;}
@@ -85,38 +90,47 @@ function sheetGeometry(width,height,progress,grabY=.5,pullY=0,edge='right',segme
    const f=d<Math.PI*r?r*sin:-(d-Math.PI*r);
    xx+=nx*(f-d);yy+=ny*(f-d);z=r*(1-cos);
   }
-  return [edge==='left'?w-xx:xx,yy,z,
-   edge==='left'?sin*nx:-sin*nx,-sin*ny,cos,
-   edge==='left'?1-x/w:x/w,y/h];
+  out[at]=edge==='left'?w-xx:xx;out[at+1]=yy;out[at+2]=z;
+  out[at+3]=edge==='left'?sin*nx:-sin*nx;out[at+4]=-sin*ny;out[at+5]=cos;
+  out[at+6]=edge==='left'?1-x/w:x/w;out[at+7]=y/h;
  }
- function clip(poly,limit,greater){
-  const out=[];
-  for(let i=0;i<poly.length;i++){
-   const a=poly[i],b=poly[(i+1)%poly.length];
-   const da=nx*a[0]+ny*a[1]-limit,db=nx*b[0]+ny*b[1]-limit;
+ function deform(x,y){
+  const out=new Array(8);writeCorner(x,y,out,0);return out;
+ }
+ function clip(input,count,output,limit,greater){
+  let n=0;
+  for(let i=0;i<count;i++){
+   const a=2*i,b=2*((i+1)%count);
+   const ax=input[a],ay=input[a+1],bx=input[b],by=input[b+1];
+   const da=nx*ax+ny*ay-limit,db=nx*bx+ny*by-limit;
    const ia=greater?da>=0:da<=0,ib=greater?db>=0:db<=0;
-   if(ia)out.push(a);
-   if(ia!==ib){const t=da/(da-db);out.push([a[0]+t*(b[0]-a[0]),a[1]+t*(b[1]-a[1])]);}
-  }return out;
+   if(ia){output[n++]=ax;output[n++]=ay;}
+   if(ia!==ib){const t=da/(da-db);output[n++]=ax+t*(bx-ax);output[n++]=ay+t*(by-ay);}
+  }
+  return n/2;
  }
- const cuts=[-Infinity,crease];
- for(let i=1;i<=segments;i++)cuts.push(crease+Math.PI*r*i/segments);
- cuts.push(Infinity);
- // Flat endpoints get one exact rectangle, avoiding a near-zero fold singularity.
- if(p===0||p===1)cuts.splice(0,cuts.length,-Infinity,Infinity);
- for(let i=0;i<cuts.length-1;i++){
-  let poly=[[0,0],[w,0],[w,h],[0,h]];
-  if(Number.isFinite(cuts[i]))poly=clip(poly,cuts[i],true);
-  if(poly.length&&Number.isFinite(cuts[i+1]))poly=clip(poly,cuts[i+1],false);
-  if(poly.length<3)continue;
-  const corners=poly.map(([x,y])=>deform(x,y));
-  for(let j=1;j<poly.length-1;j++){
-   // y grows down; CCW in clip space is reversed. Mirroring the left leaf
-   // reverses MATERIAL coordinates as well, keeping front-side semantics.
-   vertices.set(corners[0],used);
-   vertices.set(corners[edge==='left'?j:j+1],used+8);
-   vertices.set(corners[edge==='left'?j+1:j],used+16);
-   used+=24;
+ const flat=p===0||p===1,bandCount=flat?1:segments+2;
+ const {first,second,corners}=scratch;
+ function vertex(index){
+  const offset=index*8;
+  for(let k=0;k<8;k++)vertices[used++]=corners[offset+k];
+ }
+ for(let band=0;band<bandCount;band++){
+  first[0]=0;first[1]=0;first[2]=w;first[3]=0;
+  first[4]=w;first[5]=h;first[6]=0;first[7]=h;
+  let count=4,poly=first;
+  if(band>0){
+   count=clip(first,count,second,crease+Math.PI*r*(band-1)/segments,true);
+   poly=second;
+  }
+  if(band+1<bandCount){
+   const output=poly===first?second:first;
+   count=clip(poly,count,output,crease+Math.PI*r*band/segments,false);
+   poly=output;
+  }
+  for(let i=0;i<count;i++)writeCorner(poly[2*i],poly[2*i+1],corners,8*i);
+  for(let j=1;j<count-1;j++){
+   vertex(0);vertex(edge==='left'?j:j+1);vertex(edge==='left'?j+1:j);
   }
  }
  return {vertices:vertices.subarray(0,used),radius,crease,normal:[nx,ny],deform};
@@ -297,7 +311,10 @@ function release(host){
  if(entry){entry.renderer.destroy();gpuBooks.delete(host);}
  for(const [source] of snapshotCache)if(!source.isConnected)snapshotCache.delete(source);
 }
-function collectSources(o){return [...new Set([o.page,o.back,o.under,o.stationary].filter(Boolean))];}
+function collectSources(o){
+ const faces=o.host?.dataset?.spread==='1'?[o.page,o.back]:[o.page,o.back,o.under,o.stationary];
+ return [...new Set(faces.filter(Boolean))];
+}
 function sourceReady(win,source,width,height,scale){
  const row=snapshotCache.get(source);
  return row?.canvas&&row.width===width&&row.height===height&&
@@ -464,6 +481,7 @@ function makeRenderer(win,stage,width,height){
   .map(name=>[name,gl.getUniformLocation(program,name)]));
  const resident=new Map();let dead=false,lost=false,faces=null,viewWidth=width,viewHeight=height,offsetX=0,offsetY=0;
  const flat=sheetGeometry(width,height,0).vertices;
+ const scratch=meshScratch();
  const movingVertices=new Float32Array(66*12*8);
  gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferSubData(gl.ARRAY_BUFFER,0,flat);
  const blank=blankBack(win,width,height,scale,'#f4eee0');
@@ -508,7 +526,7 @@ function makeRenderer(win,stage,width,height){
   viewport,
   draw(progress,grabY,edge,pullY=0){
    if(dead||lost||!faces)return;
-   const p=faces.portrait?portraitProgress(progress):clamp(progress,0,1),g=sheetGeometry(width,height,p,grabY,pullY,edge,64,movingVertices);
+   const p=faces.portrait?portraitProgress(progress):clamp(progress,0,1),g=sheetGeometry(width,height,p,grabY,pullY,edge,64,movingVertices,scratch);
    // A portrait camera follows the turning physical leaf to its other side.
    // At p=1 the correct verso fills the viewport; N+2 stays underneath N+1.
    const camera=faces.portrait?(edge==='right'?1:-1)*width*(p*p*(3-2*p)):0;

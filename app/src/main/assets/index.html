@@ -163,6 +163,12 @@ window.LinguaAttachEditorialArt=function(){
   .filter(story=>story?.id!=='around-the-world-in-eighty-days-towle');
  Object.assign(art,window.StoryLensMakeEditorialArt(eligible));
  window.LinguaHydrateStoryCovers();
+ if(state.page==='reader'&&eligible.some(story=>story.id===state.story?.id)){
+  const hero=document.querySelector('.reader .reader-hero');
+  const image=art[state.story.id+'_'+state.chapter];
+  if(hero&&!hero.firstElementChild&&typeof image==='string')
+   hero.style.backgroundImage='url("'+image+'")';
+ }
  return true;
 };
 const $=id=>document.getElementById(id);
@@ -224,13 +230,20 @@ function wordSheet({entry,display,source}){
  activeWord={entry,display,source};
  const key=(entry?.term||display).toLowerCase();
  const saved=state.saved.includes(key);
- $('modals').innerHTML=`<div class="overlay" onclick="closeSheet(event)"><div class="sheet" onclick="event.stopPropagation()"><h2>${esc(display)}</h2>${entry?`<div class="tag">${esc(entry.type.toUpperCase())}</div><label>المعنى المعجمي (حتى معنيين متاحين)</label><p>${esc(entry.meanings?.slice(0,2).join(' / ')||entry.literal)}</p><label>${state.story.terms.includes(entry)?'المعنى داخل القصة (محرّر)':'المعنى في الجملة: يحتاج مراجعة سياقية'}</label>${state.story.terms.includes(entry)?`<p>${esc(entry.context)}</p>`:`<p class="quiet">هذه معانٍ معجمية عامة وليست تحديدًا آليًا لمعنى الكلمة في الجملة. استخدم الترجمة المعنوية أدناه لفهم السياق.</p>`}<p class="quiet">${esc(entry.note||'')}</p>`:`<div class="tag">CONTEXT · READING AID</div><label>المعنى المستفاد من الجملة</label><p>${esc(source.ar)}</p><p class="quiet">الترجمة هنا للجملة كاملة وليست تعريفًا مؤكدًا لهذه الكلمة وحدها. بنضيف معاني منفصلة بعد مراجعتها، بدل اختراع معنى غير صحيح.</p>`}<label>الجملة الإنجليزية</label><p class="en">${esc(source.en)}</p><label>ترجمة الجملة (معنوية)</label><p>${esc(source.ar)}</p><footer><button class="primary" onclick="saveTerm('${safeKey(key)}')">${saved?'إزالة من مفرداتي':'＋ حفظ التعبير'}</button><button class="secondary" onclick="closeSheet()">إغلاق</button></footer></div></div>`;
+ const english=document.documentElement.lang==='en';
+ const tr=(ar,en)=>english?en:ar;
+ const senses=entry?.meanings?.slice(0,2).join(' / ')||entry?.literal;
+ const kind=entry?.type?'<span class="tag">'+esc(entry.type.toUpperCase())+'</span>':'';
+ const gloss=senses?'<label>'+tr('المعنى المعجمي','Dictionary meaning')+'</label><p lang="ar" dir="rtl">'+esc(senses)+'</p>':'';
+ const note=entry?.note?'<p class="quiet" dir="auto">'+esc(entry.note)+'</p>':'';
+ $('modals').innerHTML=`<div class="overlay" onclick="closeSheet(event)"><section class="sheet lt-word-sheet" role="dialog" aria-modal="true" aria-labelledby="lt-word-title" onclick="event.stopPropagation()"><h2 id="lt-word-title" lang="en" dir="ltr" tabindex="-1">${esc(display)}</h2>${kind}${gloss}<label class="lt-context-label"></label><p class="lt-word-context" dir="auto"></p>${note}<label>${tr('الجملة الإنجليزية','English sentence')}</label><p class="en" lang="en" dir="ltr">${esc(source.en)}</p><label>${tr('ترجمة الجملة','Sentence translation')}</label><p lang="ar" dir="rtl">${esc(source.ar)}</p><footer><button class="primary" onclick="saveTerm('${safeKey(key)}')">${saved?tr('إزالة من مفرداتي','Remove from my words'):tr('حفظ التعبير','Save expression')}</button><button class="secondary" onclick="closeSheet()">${tr('إغلاق','Close')}</button></footer></section></div>`;
+
 }
 function saveTerm(encoded){const key=decodeURIComponent(encoded);
  if(state.saved.includes(key)){state.saved=state.saved.filter(x=>x!==key);state.cards=state.cards.filter(c=>c.term.toLowerCase()!==key)}
  else {state.saved.push(key);if(activeWord&&!state.cards.some(c=>c.term.toLowerCase()===key)){
  const {entry,display,source}=activeWord;state.cards.push({term:entry?.term||display,surface:display,sentence:source.en,
- translation:source.ar,meaning:(state.story.terms.includes(entry)?entry.context:(entry?.meanings?.slice(0,2).join(' / ')||entry?.literal||source.ar)),dueAt:0,intervalDays:0,ease:2.5,repetitions:0,lapses:0})}}
+ translation:source.ar,meaning:activeWord.reviewMeaning||(state.story.terms.includes(entry)?entry.context:(entry?.meanings?.slice(0,2).join(' / ')||entry?.literal||source.ar)),dueAt:0,intervalDays:0,ease:2.5,repetitions:0,lapses:0})}}
  put('saved',state.saved);put('cards',state.cards);closeSheet()}
 function closeSheet(e){if(e&&e.target!==e.currentTarget)return;$('modals').innerHTML=''}
 function settings(){

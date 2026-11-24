@@ -287,14 +287,12 @@ function buildChapterCard(entry,story,i){
   addText(cover,'span','lt-chapter-tile-number',String(i+1).padStart(2,'0'));
   card.dataset.thumbnailState='missing-or-pending-approval';
  }
- addText(cover,'span','lt-chapter-tile-kicker',locale('الفصل '+(i+1),'CHAPTER '+(i+1)));
+ addText(cover,'span','lt-chapter-tile-kicker',source?locale('الفصل '+(i+1),'CHAPTER '+(i+1)):locale('الفصل','Chapter'));
  if(i===entry.resume)addText(cover,'span','lt-chapter-tile-continue',
   entry.hasProgress?locale('موضع القراءة','Resume'):locale('ابدأ هنا','Start here'));
  card.appendChild(cover);
  addText(card,'strong','lt-chapter-tile-heading',titleFor(chapter,i));
- if(!source)addText(card,'small','lt-chapter-tile-pending',
-  locale('الصورة لم تُعتمد بعد','Image pending approval'));
- else if(source.kind==='approved'&&source.credit)
+ if(source?.kind==='approved'&&source.credit)
   addText(card,'small','lt-chapter-tile-credit',source.credit);
  // Stored reader position means reading started, NOT that a chapter was finished.
  if(startedInEntry(entry,i))
@@ -536,6 +534,11 @@ function show(id,{historyEntry=true}={}){
  addText(imprint,'span','lt-chapter-gallery-eyebrow',locale('فهرس الكتاب','Contents'));
  const title=addText(imprint,'h2','lt-chapter-gallery-title',bookTitle(story));
  title.dir='auto';
+ const otherTitle=dialog.dir==='rtl'?(story.titleEn||story.title):story.titleAr;
+ if(otherTitle&&otherTitle!==title.textContent){
+  const parallel=addText(imprint,'p','lt-edition-parallel-title',otherTitle);
+  parallel.dir='auto';
+ }
  const count=addText(imprint,'p','lt-chapter-gallery-subtitle',locale('جارٍ ترتيب الفصول…','Preparing chapters…'));
  if(typeof story.provenance==='string'&&story.provenance.trim()){
   const edition=document.createElement('details');
@@ -574,7 +577,7 @@ function show(id,{historyEntry=true}={}){
  for(const [value,ar,en] of [
   ['all','كل الفصول','All chapters'],
   ['illustrated','لها صورة متاحة','Available images'],
-  ['pending','تحتاج صورة','Images missing'],
+  ['pending','فصول بلا صورة','Without illustrations'],
   ['started','بدأت قراءتها','Reading started']
  ]){
   const option=document.createElement('option');
@@ -599,7 +602,7 @@ function show(id,{historyEntry=true}={}){
  const dismiss=document.createElement('button');
  dismiss.type='button';dismiss.className='lt-chapter-gallery-close';
  dismiss.textContent=locale('إغلاق ×','Close ×');
- dismiss.setAttribute('aria-label',locale('العودة للمكتبة','Back to library'));
+ dismiss.setAttribute('aria-label',fromReader?locale('العودة للقراءة','Back to reading'):locale('العودة للمكتبة','Back to library'));
  dismiss.addEventListener('click',()=>close(true));
  head.appendChild(dismiss);
  sheet.appendChild(head);

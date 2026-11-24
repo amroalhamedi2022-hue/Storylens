@@ -112,23 +112,26 @@ function movePaper(detail){
   voice.start(now);
  }
  const speed=clamp(distance/Math.max(.008,now-turn.last)/2);
- const level=prefs.sfxVolume*(.36+.64*speed);
- turn.voice.playbackRate.setTargetAtTime(.80+.35*speed,now,.045);
+ const dt=Math.max(0,now-turn.last);
+ const alpha=1-Math.exp(-dt/.055);
+ turn.speed=turn.speed===undefined?speed:turn.speed+(speed-turn.speed)*alpha;
+ const level=prefs.sfxVolume*(.28+.72*turn.speed);
+ turn.voice.playbackRate.setTargetAtTime(.80+.35*turn.speed,now,.055);
  shapePaper(turn,now,level);
  turn.last=now;
 }
-function shapePaper(turn,now,level){
+function shapePaper(turn,now,level,attack=.018){
  const gain=turn.gain;
  // Preserve the instantaneous envelope across uneven input timestamps.
  const elapsed=now-turn.at;
  const current=turn.at===undefined?0:elapsed<.018
   ?turn.from+(turn.level-turn.from)*Math.max(0,elapsed)/.018
-  :turn.level*(1-clamp((elapsed-.075)/.080));
+  :turn.level*(1-clamp((elapsed-.100)/.160));
  gain.cancelScheduledValues(now);
  gain.setValueAtTime(current,now);
- gain.linearRampToValueAtTime(level,now+.018);
- gain.setValueAtTime(level,now+.075);
- gain.linearRampToValueAtTime(0,now+.155);
+ gain.linearRampToValueAtTime(level,now+attack);
+ gain.setValueAtTime(level,now+.100);
+ gain.linearRampToValueAtTime(0,now+.260);
  turn.at=now;turn.from=current;turn.level=level;
 }
 function finishPaper(detail){
@@ -136,8 +139,10 @@ function finishPaper(detail){
  const turn=paperTurn;paperTurn=null;
  if(turn.voice){
   const now=paperContext.currentTime;
-  shapePaper(turn,now,0);
-  turn.voice.stop(now+.020);
+  // A release carries a short acoustic tail; an interrupted fold decays sooner.
+  const tail=detail.reason?0.032:0.080;
+  shapePaper(turn,now,0,tail);
+  turn.voice.stop(now+tail+.008);
  }
  if(!playing&&!proceduralPlaying()&&!sfxPlayers.size)releaseFocus();
 }
