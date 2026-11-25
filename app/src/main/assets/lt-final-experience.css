@@ -528,8 +528,8 @@ body.lt-wen-optics #root .lt-library-dock>.lt-wen-follow-lens{
 .lt-comparison-controls button[aria-pressed="true"]{font-weight:bold;text-decoration:underline;text-underline-offset:.3em}
 .lt-passage-pair{margin-block:1.1em;min-width:0}
 .arabic-page .lt-passage-pair p{margin:0;min-width:0;text-align:start;overflow-wrap:break-word;line-height:1.8}
-.lt-passage-pair [lang="ar"]{font-family:var(--lt-font-ar,serif)}
-.lt-passage-pair [lang="en"]{font-family:var(--lt-font-en,serif)}
+.arabic-page .arabic-inner .lt-passage-pair p[lang="ar"]{direction:rtl;text-align:start;font-family:var(--lt-font-ar,serif)!important}
+.arabic-page .arabic-inner .lt-passage-pair p[lang="en"]{direction:ltr;text-align:start;font-family:var(--lt-font-en,serif)!important}
 .arabic-page .lt-passage-original{display:none}
 .lt-parallel-reading .lt-passage-pair{display:grid;gap:.65rem;padding-block-end:1em;border-block-end:1px solid #94856c55}
 .lt-parallel-reading .lt-passage-original{display:block}
@@ -538,7 +538,7 @@ body.lt-wen-optics #root .lt-library-dock>.lt-wen-follow-lens{
  .arabic-page.lt-parallel-reading .arabic-inner{max-width:78rem}
  .lt-parallel-reading .lt-passage-pair{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem}
 }
-@media(max-height:450px){.arabic-page .lt-comparison-controls{position:static}}
+@media(max-height:450px){.arabic-page .lt-comparison-controls{padding-block:0;gap:.25rem}}
 
 .lt-study-passage{margin-block:.75rem;min-width:0;text-align:start}
 .lt-study-passage summary{cursor:pointer;line-height:1.5;padding-block:.65rem;font-weight:600}

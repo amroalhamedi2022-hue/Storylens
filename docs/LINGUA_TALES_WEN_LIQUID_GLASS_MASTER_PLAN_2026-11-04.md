@@ -1,6 +1,6 @@
 ## 25 November — parallel reading
 
-Companion study controls sit outside the paragraph pairs. Wide windows display parallel columns and narrow windows stack each pair. Paper remains opaque. Device and accessibility inspection pending.
+Companion study controls sit outside the paragraph pairs. Wide windows display parallel columns and narrow windows stack each pair. Paper remains opaque. Compact landscape keeps the comparison controls sticky. Device and accessibility inspection pending.
 
 ## 24 November — reading surfaces
 
