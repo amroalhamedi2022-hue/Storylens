@@ -76,7 +76,7 @@ function lookup({story, dictionary, sentence, selected, offset, lemmas, lexicon,
    const start = match.index + match[1].length;
    const end = start + match[2].length;
    if (offset >= start && offset + selected.length <= end)
-    return {entry:item.entry, display:match[2]};
+    return {entry:item.entry, display:match[2],start};
   }
   // Reuse reader inflections for contiguous multiword idioms, not punctuation.
   // Never generate a gloss: only return a verified story-authored term.
@@ -95,7 +95,7 @@ function lookup({story, dictionary, sentence, selected, offset, lemmas, lexicon,
     }
    }
    if(matches)return {entry:item.entry,
-    display:sentence.slice(spans[start].start,spans[start+item.words.length-1].end)};
+    start:spans[start].start,display:sentence.slice(spans[start].start,spans[start+item.words.length-1].end)};
   }
  }
  let entry = null;
@@ -105,7 +105,7 @@ function lookup({story, dictionary, sentence, selected, offset, lemmas, lexicon,
  }
  if (!entry && lexicon && typeof lexicon.resolve === 'function') entry = lexicon.resolve(selected);
  if (!entry && freeDict && typeof freeDict.resolve === 'function') entry = freeDict.resolve(selected);
- return {entry:entry || null, display:selected};
+ return {entry:entry || null, display:selected,start:offset};
 }
 global.LinguaLookup = Object.freeze({lookup, invalidate(story) {
  if (story && (typeof story === 'object' || typeof story === 'function')) indexes.delete(story);

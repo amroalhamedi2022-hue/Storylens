@@ -29,7 +29,7 @@ function exceedsUtf8Limit(value, limit){
 }
 const MAX_ENTRIES=5000; // Full story/chapter reading positions can exceed the old 900-key cap.
 const simple=new Set(['saved','cards','favorites','bookmarks','last_story','uiTheme','readerPrefs',
- 'written_examples','discoveryLevel','discoverySort','favoritesOnly','wordSenses','dark','size',
+ 'written_examples','discoveryLevel','discoverySort','favoritesOnly','wordSenses','parallelCompanion','dark','size',
  'fontArabic','fontEnglish','uiLocale','audioPrefs','licensedAudioPrefs',
  'libraryScroll','lt_glass_palette','lt_glass_tint','lt_reduce_transparency',
  'lt_high_contrast','lt_font_choice','ltThemeCustomColors','ltHiddenThemes','ltReaderMaterial']);
@@ -64,6 +64,10 @@ function validValue(key,val){
    typeof x.term==='string'&&x.term.trim().length>0&&x.term.length<=180&&
    ['sentence','translation','meaning','surface'].every(k=>x[k]===undefined||x[k]===null||
     (typeof x[k]==='string'&&x[k].length<5000))&&
+   (x.origin===undefined||(typeof x.origin?.storyId==='string'&&/^[a-z0-9-]{1,90}$/.test(x.origin.storyId)&&
+    Number.isSafeInteger(x.origin.chapter)&&x.origin.chapter>=0&&x.origin.chapter<10000&&
+    (x.origin.offset===undefined||Number.isSafeInteger(x.origin.offset)&&x.origin.offset>=0&&x.origin.offset<=1000000)&&
+    Number.isSafeInteger(x.origin.paragraph)&&x.origin.paragraph>=0&&x.origin.paragraph<=10000))&&
    optionalNumber(x,'dueAt',0,7258118400000)&&
    optionalNumber(x,'intervalDays',0,36500)&&
    optionalNumber(x,'ease',0,10)&&
@@ -93,7 +97,7 @@ function validValue(key,val){
  if(tail==='uiLocale')return ['ar','en'].includes(val);
  if(tail==='discoveryLevel')return ['all','A1','A2','B1','B2','C1','C2'].includes(val);
  if(tail==='discoverySort')return ['editorial','title','level'].includes(val);
- if(tail==='favoritesOnly'||tail==='dark'||tail.startsWith('has_read_'))return typeof val==='boolean';
+ if(tail==='parallelCompanion'||tail==='favoritesOnly'||tail==='dark'||tail.startsWith('has_read_'))return typeof val==='boolean';
  if(tail==='libraryScroll')return typeof val==='number'&&Number.isFinite(val)&&val>=0&&val<1e9;
  if(tail==='ltHiddenThemes')return Array.isArray(val)&&val.length<=90&&
   new Set(val).size===val.length&&val.every(x=>typeof x==='string'&&/^[a-z0-9-]{1,60}$/.test(x));

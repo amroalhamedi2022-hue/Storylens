@@ -1130,6 +1130,70 @@ library=function(){
  mountSavedPlaces(document.querySelector('#root > .library'));
  mountLibraryNavigation(document.querySelector('#root > .library'),'library',entering);
 };
+// Show the surrounding printed passage in place, without leaving study or
+// updating reading progress. Older cards retain their saved sentence.
+function mountStudyPassage(host,card){
+ const origin=card?.origin;
+ if(!origin||!Number.isSafeInteger(origin.chapter)||origin.chapter<0||
+    !Number.isSafeInteger(origin.paragraph)||origin.paragraph<0)return;
+ const story=catalog.stories.find(item=>item.id===origin.storyId);
+ if(!story)return;
+ const details=document.createElement('details');details.className='lt-study-passage';
+ const summary=document.createElement('summary');
+ summary.textContent=rtl()?'اقرأ سياق المقطع':'Read the surrounding passage';
+ const content=document.createElement('div');
+ details.append(summary,content);host.appendChild(details);
+ let loaded=false,loading=false;
+ async function show(){
+  if(!details.open||loaded||loading)return;
+  loading=true;
+  content.setAttribute('aria-busy','true');
+  content.textContent=rtl()?'جارٍ فتح الفصل…':'Opening chapter…';
+  try{
+   if(story.lazyBook)await global.LinguaContentLoader.ensureStory(story.id);
+   if(!details.isConnected)return;
+   const chapter=story.chapters[origin.chapter],paragraphs=chapter?.paragraphs;
+   const source=paragraphs?.[origin.paragraph];
+   if(!source||source.en!==card.sentence||source.ar!==card.translation){
+    content.textContent=rtl()?'تغيّر موضع النص في هذه الطبعة. الجملة المحفوظة معروضة في بطاقتك.':
+     'The saved passage no longer matches this edition. Your card retains the original sentence.';
+    loaded=true;return;
+   }
+   const title=document.createElement('strong');
+   title.textContent=[(rtl()?story.titleAr:story.titleEn)||story.title,
+    (rtl()?chapter.titleAr:chapter.titleEn)||chapter.title].filter(Boolean).join(' · ');
+   title.dir='auto';content.replaceChildren(title);
+   const order=story.sourceLanguage==='ar'?['ar','en']:['en','ar'];
+   for(let i=Math.max(0,origin.paragraph-1);i<=Math.min(paragraphs.length-1,origin.paragraph+1);i++){
+    const row=document.createElement('div');
+    if(i===origin.paragraph){
+     row.className='lt-study-current';
+     const label=document.createElement('small');
+     label.textContent=rtl()?'موضع التعبير المحفوظ':'Saved expression';row.appendChild(label);
+    }
+    for(const lang of order){
+     const line=document.createElement('p');line.lang=lang;line.dir=lang==='ar'?'rtl':'ltr';
+     const text=paragraphs[i][lang],offset=origin.offset,surface=card.surface;
+     if(i===origin.paragraph&&lang==='en'&&surface&&Number.isSafeInteger(offset)&&offset>=0&&
+        text.slice(offset,offset+surface.length)===surface){
+      const mark=document.createElement('mark');mark.textContent=surface;
+      line.append(text.slice(0,offset),mark,text.slice(offset+surface.length));
+     }else line.textContent=text;
+     row.appendChild(line);
+    }
+    content.appendChild(row);
+   }
+   loaded=true;
+  }catch(_){
+   if(!details.isConnected)return;
+   content.replaceChildren();
+   addButton(content,rtl()?'تعذّر فتح الفصل · أعد المحاولة':'Could not open chapter · Retry',show,'secondary');
+  }finally{
+   loading=false;content.removeAttribute('aria-busy');
+  }
+ }
+ details.addEventListener('toggle',show);
+}
 const renderWordsScreen=showWords;
 showWords=function(){
  const entering=!document.querySelector('#root > .vocab:not(.review)');
@@ -1149,6 +1213,8 @@ showWords=function(){
   cards[0].before(search,status);
   const normalize=value=>value.normalize('NFKC').toLocaleLowerCase().trim();
   const entries=cards.map(card=>[card,normalize(Array.from(card.querySelectorAll('h3,p')).map(n=>n.textContent).join(' '))]);
+  const savedCards=new Map(state.cards.map(card=>[card.term.toLowerCase(),card]));
+  for(const node of cards)mountStudyPassage(node,savedCards.get(node.dataset.wordKey));
   function filter(){
    const needle=normalize(search.value);let count=0;
    for(const [card,text] of entries){card.hidden=!text.includes(needle);if(!card.hidden)count++;}
@@ -1165,7 +1231,13 @@ renderReview=function(revealed){
  renderReviewScreen(revealed);
  const screen=document.querySelector('#root > .review');
  mountLibraryNavigation(screen,'review',entering);
- if(revealed)screen?.querySelector('.review-card')?.classList.add('lt-answer-revealed');
+ if(revealed){
+  const node=screen?.querySelector('.review-card');
+  if(node){
+   node.classList.add('lt-answer-revealed');
+   mountStudyPassage(node,state.cards.find(card=>card.term.toLowerCase()===node.dataset.wordKey));
+  }
+ }
 };
 // Resolve the foreground surface in one WebView task so Android Back cannot
 // observe one overlay and subsequently dismiss a different one.
@@ -1406,9 +1478,20 @@ document.addEventListener('click',event=>{
    }
    return baseTranslation.apply(this,args);
   };
-  backToReader=function(...args){
-   const result=baseReaderReturn.apply(this,args);
-   nextFrame(()=>{if(state.page==='reader')global.scrollTo(0,translationScroll);});
+  backToReader=function(target){
+   const story=state.story;
+   const explicit=state.page==='translation'&&Number.isInteger(target?.chapter)&&Number.isInteger(target?.paragraph)&&
+    !!story?.chapters[target.chapter]?.paragraphs[target.paragraph];
+   if(explicit){
+    state.chapter=target.chapter;put('chapter_'+story.id,target.chapter);
+    global.LinguaPassageNavigation?.prepare(story,target);
+   }
+   const chapter=state.chapter;
+   const result=baseReaderReturn();
+   nextFrame(()=>{
+    if(state.page!=='reader'||state.story!==story||state.chapter!==chapter)return;
+    if(explicit)focusPassage(target,0);else global.scrollTo(0,translationScroll);
+   });
    return result;
   };
  }

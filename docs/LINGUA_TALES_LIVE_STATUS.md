@@ -1,3 +1,9 @@
+## 25 November — bilingual comparison and vocabulary context (source only)
+
+The companion can start at the visible source paragraph or the paragraph of a word lookup. A paired layout uses the existing aligned edition text. Ordinary Back retains the original reader position, while an explicit read-from-here action selects the companion paragraph in the paginated reader. New word cards record a chapter and paragraph reference, plus the occurrence when an exact lookup offset is available. Vocabulary and revealed review answers can display the verified neighbouring paragraphs locally. Older cards keep their original stored sentence. The backup validator accepts the new optional fields.
+
+Design references reviewed: [Beelinguapp parallel texts](https://beelinguapp.com/) and [Readlang reading and flashcards](https://readlang.com/). No new story text, online translation dependency, Android build or runtime evidence in this delivery.
+
 ## 24 November — library-to-passage, dictionary and paper integration
 
 Source changes on the signature handoff branch. Offline passage search resolves lazy editions and scans in cancellable time slices. Original text offsets feed pagination before opening the reader. Dictionary senses used for new study cards can reflect the selected sentence-specific choice. Android Back resolves the active surface in one JavaScript call. In portrait the cold compositor follows the reverse and the GPU warms only the faces it draws. The moving mesh reuses clipping and vertex scratch buffers. Motion audio smooths gesture speed and releases over a short tail. No APK, runtime inspection, tests or frame/audio evidence for this change. Edition art acquisition and editorial approvals stay with the content workstream.

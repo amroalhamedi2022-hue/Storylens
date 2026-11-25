@@ -226,8 +226,8 @@ function renderReader(){
  window.scrollTo(0,get('scroll_'+story.id+'_'+state.chapter,0));
 }
 function toggleToolbar(){state.toolbar=!state.toolbar;document.querySelector('.toolbar')?.classList.toggle('hidden',!state.toolbar)}
-function wordSheet({entry,display,source}){
- activeWord={entry,display,source};
+function wordSheet({entry,display,source,start}){
+ activeWord={entry,display,source,start};
  const key=(entry?.term||display).toLowerCase();
  const saved=state.saved.includes(key);
  const english=document.documentElement.lang==='en';
@@ -242,7 +242,12 @@ function wordSheet({entry,display,source}){
 function saveTerm(encoded){const key=decodeURIComponent(encoded);
  if(state.saved.includes(key)){state.saved=state.saved.filter(x=>x!==key);state.cards=state.cards.filter(c=>c.term.toLowerCase()!==key)}
  else {state.saved.push(key);if(activeWord&&!state.cards.some(c=>c.term.toLowerCase()===key)){
- const {entry,display,source}=activeWord;state.cards.push({term:entry?.term||display,surface:display,sentence:source.en,
+ const {entry,display,source}=activeWord;
+ const paragraph=state.story.chapters[state.chapter]?.paragraphs.indexOf(source)??-1;
+ const origin=paragraph<0?{}:{origin:{storyId:state.story.id,chapter:state.chapter,paragraph}};
+ if(origin.origin&&Number.isSafeInteger(activeWord.start)&&activeWord.start>=0&&
+    source.en.slice(activeWord.start,activeWord.start+display.length)===display)origin.origin.offset=activeWord.start;
+ state.cards.push({...origin,term:entry?.term||display,surface:display,sentence:source.en,
  translation:source.ar,meaning:activeWord.reviewMeaning||(state.story.terms.includes(entry)?entry.context:(entry?.meanings?.slice(0,2).join(' / ')||entry?.literal||source.ar)),dueAt:0,intervalDays:0,ease:2.5,repetitions:0,lapses:0})}}
  put('saved',state.saved);put('cards',state.cards);closeSheet()}
 function closeSheet(e){if(e&&e.target!==e.currentTarget)return;$('modals').innerHTML=''}
@@ -272,12 +277,16 @@ function showWords(){
  }
  const all=state.saved.map(key=>({key,entry:entries.get(key)||window.StoryLexicon?.resolve(key)||
   window.FreeDictEnglishArabic?.resolve(key),card:cards.get(key)}));
- $('root').innerHTML=`<section class="vocab"><button class="secondary" onclick="libraryBack()">← المكتبة</button><h1>مفرداتي المحفوظة</h1><p class="quiet">${all.length} عنصر — محفوظة محليًا</p><button class="primary" onclick="showReview()">مراجعة الكلمات المستحقة (${state.cards.filter(c=>c.dueAt<=Date.now()).length})</button>${all.length?all.map(x=>`<div class="vitem"><h3>${esc(x.entry?.term||x.key)}</h3><p>${esc(x.card?.meaning||x.entry?.context||x.entry?.literal||'التعبير محفوظ من سياقه الأصلي')}</p>${x.card?.sentence?`<p class="quiet en">${esc(x.card.sentence)}</p><p class="quiet">${esc(x.card.translation)}</p>`:''}<button class="secondary" onclick="removeWord('${safeKey(x.key)}')">إزالة</button></div>`).join(''):'<p>احفظ أول كلمة أو تعبير من إحدى القصص.</p>'}</section>`}
+ $('root').innerHTML=`<section class="vocab"><button class="secondary" onclick="libraryBack()">← المكتبة</button><h1>مفرداتي المحفوظة</h1><p class="quiet">${all.length} عنصر — محفوظة محليًا</p><button class="primary" onclick="showReview()">مراجعة الكلمات المستحقة (${state.cards.filter(c=>c.dueAt<=Date.now()).length})</button>${all.length?all.map(x=>`<div class="vitem" data-word-key="${esc(x.key)}"><h3>${esc(x.entry?.term||x.key)}</h3><p>${esc(x.card?.meaning||x.entry?.context||x.entry?.literal||'التعبير محفوظ من سياقه الأصلي')}</p>${x.card?.sentence?`<p class="quiet en">${esc(x.card.sentence)}</p><p class="quiet">${esc(x.card.translation)}</p>`:''}<button class="secondary" onclick="removeWord('${safeKey(x.key)}')">إزالة</button></div>`).join(''):'<p>احفظ أول كلمة أو تعبير من إحدى القصص.</p>'}</section>`}
 function removeWord(enc){const key=decodeURIComponent(enc);state.saved=state.saved.filter(x=>x!==key);state.cards=state.cards.filter(x=>x.term.toLowerCase()!==key);put('saved',state.saved);put('cards',state.cards);showWords()}
-function maskSentence(sentence,term){if(!sentence||!term)return sentence;const escaped=term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');return sentence.replace(new RegExp('(^|[^A-Za-z])('+escaped+')(?=$|[^A-Za-z])','i'),(all,a)=>a+'________')}
+function maskSentence(sentence,term,offset){
+ if(!sentence||!term)return sentence;
+ if(Number.isSafeInteger(offset)&&offset>=0&&sentence.slice(offset,offset+term.length)===term)
+  return sentence.slice(0,offset)+'________'+sentence.slice(offset+term.length);
+ const escaped=term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');return sentence.replace(new RegExp('(^|[^A-Za-z])('+escaped+')(?=$|[^A-Za-z])','i'),(all,a)=>a+'________')}
 function showReview(){state.page='review';renderReview(false)}
 function renderReview(revealed){const due=state.cards.filter(c=>c.dueAt<=Date.now()).sort((a,b)=>a.dueAt-b.dueAt);const c=due[0];
- $('root').innerHTML=`<section class="vocab review"><button class="secondary" onclick="libraryBack()">← المكتبة</button><h1>مراجعة المفردات</h1><p class="quiet">${due.length} مستحقة الآن · تدريب كتابي فقط</p>${!c?'<h2>خلصت مراجعة اليوم 🎉</h2><p>اقرأ قصة جديدة واحفظ مفردات من سياقها.</p>':`<article class="review-card"><p class="quiet">حاول تذكر التعبير الناقص، ثم اكشف الجواب</p><p class="en-prompt">${esc(maskSentence(c.sentence,c.surface||c.term)||'What does this term mean?')}</p>${!revealed?'<button class="primary" onclick="renderReview(true)">اكشف الجواب</button>':`<h2 dir="ltr">${esc(c.term)}</h2><p>${esc(c.meaning)}</p><p class="quiet">${esc(c.translation)}</p><div class="rating">${[['again','نسيت'],['hard','صعب'],['good','تذكرت'],['easy','سهل']].map(([grade,label])=>`<button class="secondary" onclick="rateReview('${encodeURIComponent(c.term)}','${grade}')">${label}</button>`).join('')}</div>`}</article>`}</section>`}
+ $('root').innerHTML=`<section class="vocab review"><button class="secondary" onclick="libraryBack()">← المكتبة</button><h1>مراجعة المفردات</h1><p class="quiet">${due.length} مستحقة الآن · تدريب كتابي فقط</p>${!c?'<h2>خلصت مراجعة اليوم 🎉</h2><p>اقرأ قصة جديدة واحفظ مفردات من سياقها.</p>':`<article class="review-card" data-word-key="${esc(c.term.toLowerCase())}"><p class="quiet">حاول تذكر التعبير الناقص، ثم اكشف الجواب</p><p class="en-prompt">${esc(maskSentence(c.sentence,c.surface||c.term,c.origin?.offset)||'What does this term mean?')}</p>${!revealed?'<button class="primary" onclick="renderReview(true)">اكشف الجواب</button>':`<h2 dir="ltr">${esc(c.term)}</h2><p>${esc(c.meaning)}</p><p class="quiet">${esc(c.translation)}</p><div class="rating">${[['again','نسيت'],['hard','صعب'],['good','تذكرت'],['easy','سهل']].map(([grade,label])=>`<button class="secondary" onclick="rateReview('${encodeURIComponent(c.term)}','${grade}')">${label}</button>`).join('')}</div>`}</article>`}</section>`}
 function rateReview(enc,grade){const term=decodeURIComponent(enc),c=state.cards.find(c=>c.term===term);if(!c)return;const now=Date.now();
  c.ease=Math.max(1.3,Math.min(3,(c.ease||2.5)+(grade==='again'?-0.2:grade==='hard'?-0.15:grade==='easy'?.15:0)));
  let days=0; if(grade==='again'){c.repetitions=0;c.lapses=(c.lapses||0)+1}else if(grade==='hard'){days=Math.max(1,Math.round((c.intervalDays||0)*1.2));c.repetitions++}

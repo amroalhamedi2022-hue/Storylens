@@ -1,3 +1,7 @@
+## 25 November — parallel reading
+
+Companion study controls sit outside the paragraph pairs. Wide windows display parallel columns and narrow windows stack each pair. Paper remains opaque. Device and accessibility inspection pending.
+
 ## 24 November — reading surfaces
 
 The passage search uses paper and ink with a scrollable results region. Glossary and edition labels retain independent Arabic and English direction. Android Back gives the topmost reader surface priority. Device evidence, including system font scaling and high-contrast modes, is pending.

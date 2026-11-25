@@ -63,7 +63,7 @@ function localizeSettings() {
  exact('#modals .sheet button[onclick="theme()"], #modals .sheet button[onclick="inlineTranslate()"]', {
   'إيقاف': 'Turn off', 'تفعيل': 'Turn on', 'إخفاء': 'Hide', 'إظهار': 'Show'
  });
- label('#modals .sheet > button[onclick="fullTranslation()"]', 'Read the full Arabic translation');
+ label('#modals .sheet > button[onclick="fullTranslation()"]', state.story?.sourceLanguage==='ar'?'Read the English translation':'Read the Arabic translation');
  label('#modals .sheet footer button[onclick="closeSheet()"]', 'Close');
 }
 function localizeWordSheet() {

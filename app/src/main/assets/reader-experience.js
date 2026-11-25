@@ -184,6 +184,15 @@ wordSheet=function(args){
  if(result.kind!=='sentence'){contextNode.lang='ar';contextNode.dir='rtl';}
  if(typeof activeWord==='object'&&activeWord&&!activeWord.reviewMeaning)
   activeWord.reviewMeaning=result.kind==='sentence'?(args.entry?.literal||args.source.ar):result.text;
+ const chapter=state.story?.chapters[state.chapter];
+ const paragraph=chapter?.paragraphs.indexOf(args.source)??-1;
+ if(paragraph>=0){
+  const compare=document.createElement('button');
+  compare.type='button';compare.className='secondary';
+  compare.textContent=english?'Compare this passage':'قارن هذه الفقرة';
+  compare.addEventListener('click',()=>window.fullTranslation({paragraph,parallel:true}));
+  sheet.querySelector('footer')?.prepend(compare);
+ }
  sheet.querySelector('h2')?.focus?.({preventScroll:true});
  contextNode.classList.toggle('lt-context-inferred',result.kind==='inferred');
  contextNode.classList.toggle('lt-context-editorial',result.kind==='editorial');
@@ -1719,7 +1728,7 @@ function ltVerifiedCompanionPlates(chapter,periodPlate){
  }
  return plates.sort((a,b)=>a.index-b.index);
 }
-function ltRenderTranslationChapter(){
+function ltRenderTranslationChapter(entry={}){
  const story=ltTranslationBook;
  if(!story||state.page!=='translation'||state.story!==story)return;
  const chapter=story.chapters[ltTranslationIndex];
@@ -1801,9 +1810,11 @@ function ltRenderTranslationChapter(){
  const plates=ltVerifiedCompanionPlates(chapter,plate);
  const platesByParagraph=new Map(plates.map(item=>[item.index,item]));
  const translated=chapter.paragraphs.map((paragraph,index)=>{
-  const prose=sourceArabic
-   ?'<p lang="en" dir="ltr">'+escapeText(paragraph.en)+'</p>'
-   :'<p lang="ar" dir="rtl">'+escapeText(paragraph.ar)+'</p>';
+  const originalLang=sourceArabic?'ar':'en';
+  const originalDir=sourceArabic?'rtl':'ltr';
+  const prose='<div class="lt-passage-pair" data-paragraph="'+index+'" tabindex="-1">'+
+   '<p class="lt-passage-original" lang="'+originalLang+'" dir="'+originalDir+'">'+escapeText(paragraph[originalLang])+'</p>'+
+   '<p class="lt-passage-translation" lang="'+sourceLang+'" dir="'+direction+'">'+escapeText(paragraph[sourceLang])+'</p></div>';
   const item=platesByParagraph.get(index);
   if(!item)return prose;
   return prose+'<figure class="lt-companion-plate'+
@@ -1831,6 +1842,9 @@ function ltRenderTranslationChapter(){
   (ltTranslationIndex===story.chapters.length-1?' disabled':'')+'>'+nextLabel+'</button>'+
   '</nav>'+
   '<h2 id="lt-translation-chapter-title" tabindex="-1" lang="'+sourceLang+'" dir="'+direction+'">'+escapeText(chapterTitle)+'</h2>'+
+  '<div class="lt-comparison-controls"><button type="button" class="secondary lt-pair-switch">'+
+  uiText('النص الموازي','Parallel text')+'</button><button type="button" class="secondary lt-paper-here">'+
+  uiText('تابع من هنا في الكتاب','Read from here in the book')+'</button></div>'+
   translated+
   '<nav class="lt-translation-bottom" aria-label="'+selectLabel+'">'+
   '<button type="button" class="secondary" onclick="ltTranslationChapter('+(ltTranslationIndex-1)+')"'+
@@ -1842,8 +1856,50 @@ function ltRenderTranslationChapter(){
  // The old select/Next button is destroyed by this rerender; move the
  // reading cursor to the NEW chapter heading for keyboard and TalkBack users.
  root.querySelectorAll?.('.lt-companion-plate img')?.forEach(ltEnableArtInspection);
- root.querySelector?.('#lt-translation-chapter-title')?.focus({preventScroll:true});
- window.scrollTo(0,0);
+ const page=root.querySelector('.arabic-page');
+ const pairs=Array.from(page.querySelectorAll('.lt-passage-pair'));
+ const bar=page.querySelector('.lt-comparison-controls');
+ const toggle=bar.querySelector('.lt-pair-switch');
+ function layout(enabled){
+  page.classList.toggle('lt-parallel-reading',enabled);
+  toggle.setAttribute('aria-pressed',String(enabled));
+ }
+ layout(entry.parallel===true||get('parallelCompanion',false)===true);
+ function readingLine(){return Math.max(0,bar.getBoundingClientRect().bottom)+8;}
+ function currentPair(){
+  if(!pairs.length)return null;
+  const line=Math.min(window.innerHeight*.6,readingLine());
+  let lo=0,hi=pairs.length-1;
+  while(lo<hi){
+   const mid=(lo+hi)>>>1;
+   if(pairs[mid].getBoundingClientRect().bottom<=line)lo=mid+1;else hi=mid;
+  }
+  return pairs[lo];
+ }
+ function align(pair,top){
+  window.scrollBy({top:pair.getBoundingClientRect().top-top,behavior:'instant'});
+ }
+ toggle.addEventListener('click',()=>{
+  const pair=currentPair(),top=pair?.getBoundingClientRect().top;
+  const enabled=toggle.getAttribute('aria-pressed')!=='true';
+  layout(enabled);put('parallelCompanion',enabled);
+  if(pair&&top<window.innerHeight)align(pair,top);
+ });
+ bar.querySelector('.lt-paper-here').addEventListener('click',()=>{
+  const pair=currentPair();
+  if(!pair||state.page!=='translation'||state.story!==story)return;
+  window.backToReader({chapter:ltTranslationIndex,paragraph:Number(pair.dataset.paragraph)});
+ });
+ const destination=pairs[entry.paragraph];
+ if(destination&&Number.isInteger(entry.paragraph)&&
+    (entry.paragraph>0||entry.parallel===true)){
+  destination.focus({preventScroll:true});
+  align(destination,bar.offsetHeight+12);
+ }else{
+  root.querySelector?.('#lt-translation-chapter-title')?.focus({preventScroll:true});
+  window.scrollTo(0,0);
+ }
+
 }
 window.ltTranslationChapter=function(index){
  if(state.page!=='translation'||!ltTranslationBook||state.story!==ltTranslationBook)return;
@@ -1852,19 +1908,21 @@ window.ltTranslationChapter=function(index){
  const chapter=Number(index);
  if(!Number.isSafeInteger(chapter)||chapter<0||
     chapter>=ltTranslationBook.chapters.length||chapter===ltTranslationIndex)return;
+ const parallel=document.querySelector('.lt-pair-switch')?.getAttribute('aria-pressed')==='true';
  ltTranslationIndex=chapter;
- ltRenderTranslationChapter();
+ ltRenderTranslationChapter({parallel});
 };
 if(typeof fullTranslation==='function'){
  const originalFullTranslation=fullTranslation;
- window.fullTranslation=function(){
+ window.fullTranslation=function(options={}){
   if(!state.story?.chapters?.length)return originalFullTranslation();
   closeSheet();
   ltTranslationBook=state.story;
   ltTranslationIndex=Number.isInteger(state.chapter)
    ?Math.max(0,Math.min(state.chapter,state.story.chapters.length-1)):0;
+  const paragraph=Number.isInteger(options?.paragraph)?options.paragraph:captureParagraphAnchor().paragraph;
   state.page='translation';
-  ltRenderTranslationChapter();
+  ltRenderTranslationChapter({paragraph,parallel:options?.parallel===true});
  };
 }
 
