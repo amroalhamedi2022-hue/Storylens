@@ -1,3 +1,7 @@
+## Study-to-reader navigation
+
+Current branch handoff/signature-reader-20261123 includes direct study-card reading and exact chapter index return. See the latest live-status entry for browser coverage. Chapter images and Android release status are unchanged.
+
 ## 25 November — signature reader branch
 
 Continue from the current head of handoff/signature-reader-20261123. The latest local browser and suite evidence for the library dock, Arabic search and chapter browser is in the first entry of docs/LINGUA_TALES_LIVE_STATUS.md. APK and on-device checks remain deferred. Chapter art coverage was not changed in this batch.

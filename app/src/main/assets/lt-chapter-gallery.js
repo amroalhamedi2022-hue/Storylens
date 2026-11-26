@@ -13,7 +13,7 @@ const VALID_SVG_PREFIX='data:image/svg+xml;charset=utf-8,%3Csvg';
 const galleryKey='lt-chapter-gallery';
 const originalOpen=global.openStory;
 if(typeof originalOpen!=='function')return;
-let active=null,serial=0,lastReaderBook=null;
+let active=null,serial=0,returnView=null;
 // A revoked/missing packaged file must not repeatedly fail in every chapter
 // card and reader hero. This is deliberately MEMORY-ONLY: an APK update can
 // restore the image on the next app launch without migration or data writes.
@@ -156,7 +156,9 @@ function openSelected(id,index){
  // history entry, disturb the saved paragraph and strand Android Back.
  const inSameReader=state.page==='reader'&&state.story?.id===id &&
     typeof global.stlChapter==='function';
- lastReaderBook=id;
+ if(!inSameReader){
+  returnView={id,index,query:active.search.value,filter:active.filter.value,layout:active.layout};
+ }
  close(false);
  if(inSameReader){
   global.stlChapter(index);
@@ -500,8 +502,18 @@ function renderCards(entry,story){
  entry.filter.disabled=false;
  entry.layoutButton.disabled=false;
  if(entry.footerLayout)entry.footerLayout.disabled=false;
+ const restore=entry.restore;
+ if(restore){entry.search.value=restore.query;entry.filter.value=restore.filter;}
  setChapterLayout(entry,entry.layout);
  updateChapterFilter(entry);
+ if(restore){
+  entry.restore=null;
+  const pos=entry.visible.indexOf(restore.index);
+  while(pos>=entry.rendered&&entry.more)appendChapterBatch(entry);
+  const tile=entry.track.querySelectorAll('.lt-chapter-tile')[pos];
+  tile?.focus({preventScroll:true});
+  tile?.scrollIntoView?.({block:'nearest',inline:'center',behavior:'instant'});
+ }
 }
 async function prepare(id,entry){
  const token=entry.token;
@@ -545,12 +557,13 @@ async function prepare(id,entry){
   }
  }
 }
-function show(id,{historyEntry=true}={}){
+function show(id,{historyEntry=true,restore=null}={}){
  const story=storyById(id);
  if(!hasChapters(story))return false;
  // Rapid double taps, accessibility repeated activations and duplicate
  // deep-link events must not create stacked dialogs or extra history entries.
  if(active?.id===id)return true;
+ if(historyEntry&&!restore&&state.page!=='reader')returnView=null;
  const current=active;
  if(current)close(false);
  // A reader-opened chapter chooser is a modal reader control, not a new
@@ -674,7 +687,7 @@ function show(id,{historyEntry=true}={}){
  const storedLayout=typeof get==='function'?
   get('lt_chapter_gallery_layout','rail'):'rail';
  const entry={dialog,track,title,count,missing,locate,search,filter,layoutButton,
-  layout:storedLayout==='list'?'list':'rail',
+  restore,layout:(restore?.layout||storedLayout)==='list'?'list':'rail',
   continue:continueButton,searchSummary,restoreFocus,
   token:++serial,id,rendered:0,more:null,fromReader,loadingLongBook:false};
  locate.addEventListener('click',()=>{
@@ -814,34 +827,19 @@ if(typeof baseRender==='function'){
 
 // Reader stays untouched. A book icon in the existing reader's chapter nav
 // can open exactly this image-backed gallery without discarding its scroll.
+function restoreAfterReader(){
+ const route=global.history?.state;
+ if(active||state.page!=='library'||route?.page!=='chapter-gallery'||
+    !returnView||route.storyId!==returnView.id)return false;
+ return show(route.storyId,{historyEntry:false,restore:returnView});
+}
 global.LinguaChapterGallery=Object.freeze({
- open:show,close,openSelected,chapterImage,hasChapters,
+ open:show,close,openSelected,chapterImage,hasChapters,restoreAfterReader,
  get isOpen(){return !!active;}
 });
 global.addEventListener?.('popstate',event=>{
  if(active){
   if(event.state?.page!=='chapter-gallery')close(false);
-  return;
- }
- // Android/system Back from a chapter reader goes through the existing
- // animated library close. Restore the prior chapter chooser on that
- // history entry, only when the reader really has returned to library.
- if(event.state?.page==='chapter-gallery'&&lastReaderBook===event.state.storyId){
-  const id=lastReaderBook;
-  // The existing animated reader close can take 190ms; older Android
-  // WebViews may instead use the shell's 480ms history fallback. Poll for
-  // the actual library state, never force an early second reader/overlay.
-  const recover=(attempt)=>{
-   if(active||lastReaderBook!==id||!storyById(id)||
-      global.history?.state?.page!=='chapter-gallery'||
-      global.history?.state?.storyId!==id)return;
-   if(state.page==='library'){
-    show(id,{historyEntry:false});
-    return;
-   }
-   if(attempt<12)global.setTimeout?.(()=>recover(attempt+1),120);
-  };
-  global.setTimeout?.(()=>recover(0),270);
- }
+ }else restoreAfterReader();
 });
 })(window);

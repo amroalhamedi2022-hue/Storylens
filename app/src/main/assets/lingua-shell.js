@@ -1198,6 +1198,14 @@ function mountStudyPassage(host,card){
     }
     content.appendChild(row);
    }
+   addButton(content,rtl()?'اقرأ هذا المقطع في الكتاب':'Read this passage in the book',()=>{
+    const passage={storyId:story.id,chapter:origin.chapter,paragraph:origin.paragraph};
+    if(Number.isSafeInteger(origin.offset)&&origin.offset>=0&&card.surface&&
+       source.en.slice(origin.offset,origin.offset+card.surface.length)===card.surface){
+     passage.enRange={start:origin.offset};
+    }
+    global.openStory(story.id,{passage,studyWord:card.term.toLowerCase()});
+   },'secondary lt-read-study-passage');
    loaded=true;
   }catch(_){
    if(!details.isConnected)return;
@@ -1357,6 +1365,7 @@ document.addEventListener('click',event=>{
  if(typeof openStory!=='function'||typeof libraryBack!=='function')return;
  const baseOpen=openStory,baseBack=libraryBack;
  let closing=false,waitingPop=false,closeTimer=null,historyFallback=null;
+ let studyReturn=null;
  let returnY=0,returnStoryId=null,returnToBookmark=false,translationScroll=0;
  const safeOffset=value=>typeof value==='number'&&Number.isFinite(value)
   ?Math.max(0,Math.min(value,10000000)):0;
@@ -1412,6 +1421,21 @@ document.addEventListener('click',event=>{
   if(closeTimer!==null){global.clearTimeout(closeTimer);closeTimer=null;}
   closing=false;waitingPop=false;
   if(state.page!=='reader')return;
+  if(studyReturn){
+   const {route,word,scroll}=studyReturn;
+   studyReturn=null;
+   if(route==='review'){
+    showReview();
+    if(document.querySelector('.review-card')?.dataset.wordKey===word)renderReview(true);
+   }else showWords();
+   const cards=document.querySelectorAll('#root [data-word-key]');
+   const card=Array.from(cards).find(node=>node.dataset.wordKey===word);
+   const details=card?.querySelector('.lt-study-passage');
+   if(details)details.open=true;
+   global.scrollTo(0,scroll);
+   (details?.querySelector('summary')||document.querySelector('#root h1'))?.focus({preventScroll:true});
+   return;
+  }
   baseBack();
   nextFrame(()=>{
    if(state.page!=='library')return;
@@ -1425,6 +1449,7 @@ document.addEventListener('click',event=>{
     if(button){button.closest('details').open=true;button.focus({preventScroll:true});return;}
    }
    focusWithoutScroll(card);
+   global.LinguaChapterGallery?.restoreAfterReader?.();
   });
  }
  function closeReader(){
@@ -1440,6 +1465,9 @@ document.addEventListener('click',event=>{
   const validPassage=passage?.storyId===id&&Number.isInteger(passage.chapter)&&Number.isInteger(passage.paragraph)&&
    !!book?.chapters[passage.chapter]?.paragraphs[passage.paragraph];
   const offset=validPassage?(global.LinguaPassageNavigation?.prepare(book,passage)||0):0;
+  studyReturn=validPassage&&typeof options.studyWord==='string'&&
+   (state.page==='words'||state.page==='review')?
+   {route:state.page,word:options.studyWord,scroll:safeOffset(global.scrollY)}:null;
   if(validPassage)put('chapter_'+id,passage.chapter);
   if(state.page==='library'){
    returnToBookmark=Boolean(bookmark);

@@ -1,3 +1,7 @@
+## Returning to the index
+
+Reader exit restores the filtered chapter index from the shell completion callback. The active tile regains focus when the real chapter list is ready. Android motion profiling remains pending.
+
 ## 25 November — navigation motion
 
 The stationary dock animates its selected capsule using actual tab positions. Directional entry is limited to destination content. The transient Wen press lens remains gesture-owned. Chromium checked both document directions and reduced motion. Pad 5 frame pacing is still unmeasured.

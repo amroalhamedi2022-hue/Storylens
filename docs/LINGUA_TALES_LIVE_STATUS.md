@@ -1,3 +1,9 @@
+## Study cards and chapter return
+
+Saved words and revealed review cards with verified passage metadata now open the source paragraph in the full reader. Back restores the study tab, card context and vocabulary filter. The chapter index restores its search, coverage filter, layout and selected chapter after reader exit. The shell signals completion directly without polling. Fresh index visits start with a clear query.
+
+Chromium checked filtered chapter 32 and return at 390×844, 1100×760 and 760×390 across Arabic, English and reduced motion. Both study routes reached paragraph 4 of chapter 32 and restored focus to the same open study card. Eight local Node suites passed. Physical Android frame timing, installation and TalkBack remain pending.
+
 ## 25 November — library navigation and chapter browsing
 
 The active dock marker travels between actual tab positions in RTL and LTR. Returning via a dock tab restores its scroll and the current vocabulary query. The shelf and vocabulary lookup share the Arabic normalization used in passage search. The Verne catalog entry includes its Arabic title on cold start and after loading. The contents sheet retains a visible chapter when changing layout, provides compact controls below the masthead, and supports vertical list keyboard navigation.

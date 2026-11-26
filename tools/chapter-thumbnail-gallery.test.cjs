@@ -186,7 +186,10 @@ function scenario({en=false,lazy=false,slowLazy=false,artSrc=null,approved=null,
  assert.equal(first.tagName,'IMG');
  assert.equal(first.loading,'lazy');
  assert.equal(first.decoding,'async');
- const second=tiles[1];
+ const returnSearch=sheet.children[0].querySelector('.lt-chapter-gallery-search');
+ returnSearch.value='٢';returnSearch.emit('input');
+ const second=track.children[0];
+ assert.equal(second.dataset.chapterIndex,'1');
  second.emit('click');
  assert.equal(s.api.isOpen,false);
  assert.equal(s.writes[0][0],'chapter_example-story');
@@ -200,11 +203,15 @@ function scenario({en=false,lazy=false,slowLazy=false,artSrc=null,approved=null,
  // extra history entry) after the existing 190ms reader exit.
  s.W.history.state={page:'chapter-gallery',storyId:'example-story'};
  s.listeners.popstate({state:{page:'chapter-gallery',storyId:'example-story'}});
- assert.equal(s.timerQueue.length,1);
- s.timerQueue.shift()();
+ assert.equal(s.timerQueue.length,0);
  assert.equal(s.api.isOpen,true);
  assert.equal(s.historyCalls.filter(x=>x.type==='push').length,2,
   'returning to the previous chooser must not push a fresh history entry');
+ await tick();
+ const restored=s.cards.at(-1);
+ assert.equal(restored.querySelector('.lt-chapter-gallery-search').value,'٢');
+ assert.equal(restored.querySelector('.lt-chapter-tile').dataset.chapterIndex,'1');
+ assert.equal(restored.querySelector('.lt-chapter-tile').focused,true);
  s.api.close();
  assert.equal(s.historyCalls.at(-1).type,'back');
  assert.equal(s.api.isOpen,false);
@@ -217,12 +224,11 @@ function scenario({en=false,lazy=false,slowLazy=false,artSrc=null,approved=null,
  slowBack.sandbox.state.story=slowBack.story;
  slowBack.W.history.state={page:'chapter-gallery',storyId:'example-story'};
  slowBack.listeners.popstate({state:{page:'chapter-gallery',storyId:'example-story'}});
- assert.equal(slowBack.timerQueue.length,1);
- slowBack.timerQueue.shift()();
+ assert.equal(slowBack.timerQueue.length,0);
  assert.equal(slowBack.api.isOpen,false,'gallery must NOT overlay an active reader');
- assert.equal(slowBack.timerQueue.length,1,'reader exit rescheduled while still animating');
+ assert.equal(slowBack.api.restoreAfterReader(),false,'reader still active');
  slowBack.sandbox.state.page='library';
- slowBack.timerQueue.shift()();
+ slowBack.api.restoreAfterReader();
  assert.equal(slowBack.api.isOpen,true,'gallery recovers after actual reader transition');
  assert.equal(slowBack.historyCalls.filter(x=>x.type==='push').length,2,
   'restoration never invents additional browser history entries');
@@ -233,7 +239,8 @@ function scenario({en=false,lazy=false,slowLazy=false,artSrc=null,approved=null,
  escaped.W.history.state={page:'chapter-gallery',storyId:'example-story'};
  escaped.listeners.popstate({state:{page:'chapter-gallery',storyId:'example-story'}});
  escaped.W.history.state={page:'another-book'};
- escaped.timerQueue.shift()();
+ escaped.sandbox.state.page='library';
+ escaped.api.restoreAfterReader();
  assert.equal(escaped.api.isOpen,false,'stale delayed Back must not reopen prior story');
 
  // Force specifically APPROVED local source metadata; remote, traversal and
