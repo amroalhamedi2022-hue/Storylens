@@ -84,7 +84,7 @@ const drawerNodes = new Map([
   ['lt-drawer', drawer], ['lt-drawer-backdrop', backdrop], ['lt-menu-toggle', toggle]
 ]);
 const drawerContext = {
-  document: { getElementById(id) { return drawerNodes.get(id) || null; } },
+  document: { querySelector() { return null; }, getElementById(id) { return drawerNodes.get(id) || null; } },
   state: { page: 'library' }
 };
 vm.runInNewContext('let opened=false;\n' +

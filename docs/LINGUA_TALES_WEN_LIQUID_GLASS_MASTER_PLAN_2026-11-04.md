@@ -1,3 +1,7 @@
+## 25 November — navigation motion
+
+The stationary dock animates its selected capsule using actual tab positions. Directional entry is limited to destination content. The transient Wen press lens remains gesture-owned. Chromium checked both document directions and reduced motion. Pad 5 frame pacing is still unmeasured.
+
 ## 25 November — parallel reading
 
 Companion study controls sit outside the paragraph pairs. Wide windows display parallel columns and narrow windows stack each pair. Paper remains opaque. Compact landscape keeps the comparison controls sticky. Device and accessibility inspection pending.

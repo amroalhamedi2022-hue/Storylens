@@ -76,7 +76,7 @@ assert.equal(settingTitle.textContent,'Reading settings');
 assert.equal(settingLabels[0].textContent,'Text size');
 assert.equal(settingLabels[2].textContent,'Arabic translation under each sentence');
 assert.equal(settingSwitches[0].textContent,'Turn on');
-assert.equal(full.textContent,'Read the full Arabic translation');
+assert.equal(full.textContent,'Read the Arabic translation');
 assert.equal(close.textContent,'Close');
 const labels=group('#modals .sheet > label',['المعنى المعجمي (حتى معنيين متاحين)','الجملة الإنجليزية','ترجمة الجملة (معنوية)']);
 const warnings=group('#modals .sheet > p.quiet',['هذه معانٍ معجمية عامة وليست تحديدًا آليًا لمعنى الكلمة في الجملة. استخدم الترجمة المعنوية أدناه لفهم السياق.']);

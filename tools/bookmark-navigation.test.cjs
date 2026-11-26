@@ -33,7 +33,10 @@ const sandbox = {
   renderReader() { renders++; },
   Date
 };
-vm.runInNewContext(js, sandbox, {timeout: 5000});
+// Observe the anchor consumed by pagination; the stub renderer has no physical pages.
+const instrumented=js.replace('function prepareBookmark(story){',
+ 'window.pendingBookmark=(id,chapter)=>ltPendingReflowAnchors.get(id+String.fromCharCode(0)+chapter);function prepareBookmark(story){');
+vm.runInNewContext(instrumented, sandbox, {timeout: 5000});
 // Exercise the real openStory wrapper: corrupt legacy chapter data must be
 // repaired BEFORE the captured base renderer indexes the chapter array.
 saved.chapter_book = 1.5;
@@ -101,8 +104,9 @@ window.stlBookmark();
 assert.equal(saved.bookmarks.book.readerPage, 3, 'bookmark records the active reading page');
 saved.bookmarks.book = {chapter: 1, readerPage: 2, paragraph: 9, scroll: 0};
 window.stlJumpBookmark();
-assert.equal(saved.readpage_book_1, 2, 'bookmark restores its page before the reader renders');
+assert.equal(window.pendingBookmark('book',1).readerPage, 2, 'bookmark restores its page before the reader renders');
+story.chapters[0].paragraphs=Array.from({length:12},()=>({en:'Text',ar:'نص'}));
 saved.bookmarks.book = {chapter: 0, paragraph: 9, scroll: 0};
 window.stlJumpBookmark();
-assert.equal(saved.readpage_book_0, 2, 'legacy paragraph bookmark derives its four-paragraph page');
+assert.equal(window.pendingBookmark('book',0).paragraph, 9, 'legacy paragraph bookmark resolves after reflow');
 console.log('PASS: corrupt bookmark, page-turn restoration, and chapter navigation guards');

@@ -839,7 +839,7 @@ function decorateNovelShelf(section){
   card.classList.add('lt-novel-card');
   card.setAttribute('role','button');
   card.setAttribute('tabindex','0');
-  card.setAttribute('aria-label',(rtl()?'افتح كتاب ':'Open book ')+story.title);
+  card.setAttribute('aria-label',(rtl()?'افتح كتاب ':'Open book ')+((rtl()?story.titleAr:story.titleEn)||story.title));
   card.addEventListener('keydown',event=>{
    if(event.target!==card||(event.key!=='Enter'&&event.key!==' '))return;
    event.preventDefault();card.click();
@@ -1092,6 +1092,9 @@ function mountSavedPlaces(section){
 }
 // The three library destinations share one navigation model. Reader and
 // translation keep their own Back handling and unobstructed paper viewport.
+let lastDockRoute=null;
+const dockScroll=new Map();
+let wordFilterQuery='';
 function mountLibraryNavigation(screen,route,entering){
  if(!screen)return;
  screen.classList.add('lt-library-destination');
@@ -1115,14 +1118,26 @@ function mountLibraryNavigation(screen,route,entering){
   button.append(icon,document.createTextNode(rtl()?ar:en));
   button.addEventListener('click',()=>{
    if(id===route)return;
+   dockScroll.set(route,global.scrollY||0);
    open();
-   global.scrollTo(0,0);
+   global.scrollTo(0,dockScroll.get(id)||0);
    const heading=document.querySelector('#root h1');
    if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}
   });
   nav.appendChild(button);
  }
  screen.appendChild(nav);
+ // The destination is rebuilt by the legacy renderer, including its dock.
+ // Measure the new tray so direction, text scale and rail width stay native.
+ const oldLink=entering&&lastDockRoute&&nav.querySelector('[data-route="'+lastDockRoute+'"]');
+ const newLink=nav.querySelector('[aria-current="page"]');
+ if(oldLink&&newLink&&oldLink!==newLink){
+  const travel=oldLink.offsetLeft-newLink.offsetLeft;
+  screen.style.setProperty('--lt-arrival-x',travel<0?'18px':'-18px');
+  newLink.style.setProperty('--lt-indicator-from',travel+'px');
+  newLink.classList.add('lt-dock-arrival');
+ }
+ lastDockRoute=route;
 }
 library=function(){
  const entering=!document.querySelector('#root > .library');
@@ -1197,8 +1212,7 @@ function mountStudyPassage(host,card){
 const renderWordsScreen=showWords;
 showWords=function(){
  const entering=!document.querySelector('#root > .vocab:not(.review)');
- const previous=document.querySelector('.lt-word-filter');
- const query=previous?.value||'';
+ const query=wordFilterQuery;
  if(opened)closeDrawer(false);
  renderWordsScreen();
  const screen=document.querySelector('#root > .vocab');
@@ -1211,11 +1225,12 @@ showWords=function(){
   const status=document.createElement('p');status.className='lt-word-filter-status';
   status.setAttribute('role','status');
   cards[0].before(search,status);
-  const normalize=value=>value.normalize('NFKC').toLocaleLowerCase().trim();
+  const normalize=foldChapterSearch;
   const entries=cards.map(card=>[card,normalize(Array.from(card.querySelectorAll('h3,p')).map(n=>n.textContent).join(' '))]);
   const savedCards=new Map(state.cards.map(card=>[card.term.toLowerCase(),card]));
   for(const node of cards)mountStudyPassage(node,savedCards.get(node.dataset.wordKey));
   function filter(){
+   wordFilterQuery=search.value;
    const needle=normalize(search.value);let count=0;
    for(const [card,text] of entries){card.hidden=!text.includes(needle);if(!card.hidden)count++;}
    status.textContent=needle?(rtl()?'عدد النتائج: ':'Results: ')+count:'';
@@ -1254,7 +1269,7 @@ function handleAndroidBack(){
  if(state.page==='translation')backToReader();else libraryBack();
  return true;
 }
-global.LinguaShell={handleAndroidBack,refreshNovelShelf,applyTheme,applyReaderMaterial,readerMaterialChoices:[...readerMaterialChoices],applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,isFullLengthNovel,
+global.LinguaShell={foldChapterSearch,handleAndroidBack,refreshNovelShelf,applyTheme,applyReaderMaterial,readerMaterialChoices:[...readerMaterialChoices],applyFont,applyReadingSize,applyLocale,fontChoices,readingSizeChoices,localeChoices:[...localeChoices],openDrawer,closeDrawer,openSettings,moveDiscovery,menuSide,validTheme,isFullLengthNovel,
  isDrawerOpen:()=>opened,themeNames:[...themeNames],searchChapters,invalidateChapterSearch,openChapterSearch,jumpToChapterHit};
 /* LT-09/06 accessibility: a visible modal must own keyboard focus.
  * Trap Tab/Shift+Tab in Settings or the genre drawer; Escape dismisses the

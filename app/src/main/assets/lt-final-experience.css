@@ -546,3 +546,43 @@ body.lt-wen-optics #root .lt-library-dock>.lt-wen-follow-lens{
 .lt-study-passage>div>div{padding:.6rem .8rem}
 .lt-study-passage .lt-study-current{border-inline-start:3px solid currentColor}
 .lt-study-passage p[lang]{margin:.3em 0;text-align:start;line-height:1.7}
+
+/* Keep the dock stationary while the active capsule travels to its new tab.
+   The Wen touch lens remains an independent, transient press response. */
+body.lt-wen-optics #root .lt-dock-link[aria-current="page"]{
+ isolation:isolate;background:transparent
+}
+body.lt-wen-optics #root .lt-dock-link[aria-current="page"]::before{
+ content:"";position:absolute;inset:1px;z-index:-1;pointer-events:none;
+ border-radius:inherit;background:color-mix(in srgb,var(--accent,#295142) 14%,transparent)
+}
+@media(prefers-reduced-motion:no-preference){
+ .lt-dock-arrival::before{animation:ltDockTravel 280ms cubic-bezier(.2,.8,.24,1)}
+ @keyframes ltDockTravel{from{transform:translateX(var(--lt-indicator-from))}to{transform:none}}
+ #root .lt-destination-enter>:is(h1,.storylens-hero,.lt-novel-shelf-heading,.review-card,.vitem:nth-of-type(-n+3)){
+  animation:ltLibraryArrive 240ms cubic-bezier(.2,.78,.24,1) backwards
+ }
+ @keyframes ltLibraryArrive{
+  from{opacity:.56;translate:var(--lt-arrival-x,0px) 5px}to{opacity:1;translate:0 0}
+ }
+ dialog.lt-chapter-gallery[open]{animation:ltEditionOpen 235ms cubic-bezier(.18,.8,.25,1)}
+ dialog.lt-chapter-gallery[open]::backdrop{animation:ltBackdropOpen 170ms ease-out}
+ @keyframes ltEditionOpen{from{opacity:.45;translate:0 14px}to{opacity:1;translate:0 0}}
+ @keyframes ltBackdropOpen{from{opacity:0}to{opacity:1}}
+}
+.lt-index-controls:not([hidden]){display:flex;flex-wrap:wrap;gap:.4rem}
+dialog.lt-chapter-gallery .lt-index-controls button{
+ font:inherit;font-weight:600;color:#23483c;background:#fffaf0;border:1px solid #aea387;
+ border-radius:12px;min-height:44px;padding:4px 12px
+}
+dialog.lt-chapter-gallery .lt-chapter-gallery-footer:has(.lt-index-controls:not([hidden])){
+ display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;padding-block:5px
+}
+@media(prefers-reduced-motion:no-preference){
+ .lt-index-controls:not([hidden]),.lt-study-passage[open]>div,.lt-edition-notes[open]>p{
+  animation:ltDestinationIn 180ms ease-out
+ }
+ #modals :is(.lt-chapter-search,.lt-word-sheet),.arabic-page .lt-comparison-controls{
+  animation:ltEditionOpen 210ms cubic-bezier(.18,.8,.25,1)
+ }
+}

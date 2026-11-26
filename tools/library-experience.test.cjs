@@ -51,7 +51,7 @@ assert.ok(extras,'public helper for feature integration');
   'Choose the best sense in this sentence']){
   assert.ok(source.includes(label),'English discovery/reader label: '+label);
  }
- assert.match(source,/const senses=String\(args\.entry\.literal\)/,
+ assert.match(source,/listed\.length\?listed:String\(args\.entry\.literal\|\|\x27\x27\)/,
   'dictionary meaning must remain sourced, not translated by UI locale');
  assert.match(source,/button\.textContent=sense/,
   'selected dictionary gloss must preserve the original Arabic sense');
@@ -146,7 +146,7 @@ const shellWindow={innerWidth:400,addEventListener(type,listener){registered['wi
 const shellState={page:'library',uiTheme:'nebula'};
 const shellSandbox={
  window:shellWindow,document:shellDocument,state:shellState,
- catalog:{genres:[]},library(){},closeSheet(){},filterGenre(){},
+ catalog:{genres:[]},library(){},closeSheet(){},filterGenre(){},showWords(){},renderReview(){},
  put(k,v){shellStore.set(k,v);},
  safeOffset(value){return Number.isFinite(value)?Math.max(0,Math.min(10000000,value)):0;},Date,console
 };
@@ -364,7 +364,7 @@ function navigationScenario(reduced=false){
  const document={querySelector:sel=>sel==='.reader'?reader:null,
   querySelectorAll:()=>[],
   getElementById:id=>id==='modals'?modal:null};
- const sandbox={window,document,state,
+ const sandbox={window,document,state,catalog:{stories:[story]},
   openStory(id){if(id!==story.id)return;calls.open++;state.story=story;state.page='reader';window.scrollY=120;history.pushState({page:'reader'});},
   libraryBack(){calls.back++;state.page='library';window.scrollTo(0,0);},
   backToReader(){state.page='reader';},closeSheet(){modal.childElementCount=0;},
@@ -426,13 +426,14 @@ assert.ok(!/<uses-permission/.test(manifest),'rebrand cannot add network or micr
 assert.ok(nativeHost.includes('exportDocument.launch("LinguaTales-backup.json")'),
  'new backup filename must not change JSON schema or storage keys');
 const nativeBack=nativeHost.slice(nativeHost.indexOf('override fun handleOnBackPressed()'));
-assert.ok(nativeBack.includes('window.LinguaShell.isDrawerOpen()'),
- 'Android Back must check the library drawer before finishing');
-assert.ok(nativeBack.includes('window.LinguaShell.closeDrawer();'),
- 'Android Back must dismiss the open drawer');
-assert.ok(nativeBack.indexOf('window.LinguaShell.closeDrawer();') <
- nativeBack.indexOf('if (page == "\\\"library\\\"") finish()'),
- 'drawer close must precede activity finish');
+assert.ok(nativeBack.includes('window.LinguaShell?.handleAndroidBack?.()'));
+assert.ok(nativeBack.includes('if (handled == "false" || handled == "null") finish()'));
+shellDocument.querySelector=()=>null;
+shellState.page='library';
+shell.openDrawer();
+assert.equal(shell.handleAndroidBack(),true,'Back consumes the open drawer');
+assert.equal(shell.isDrawerOpen(),false);
+assert.equal(shell.handleAndroidBack(),false,'Back can leave the library after the drawer closes');
 console.log('PASS: LT-01 launcher/backup naming, package continuity and LT-09 native drawer Back contract (source; device NOT TESTED)');
 
 // User product invariant: Lingua Tales has no audio/TTS/microphone feature.

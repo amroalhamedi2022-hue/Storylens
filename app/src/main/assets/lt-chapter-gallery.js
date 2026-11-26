@@ -127,6 +127,7 @@ function close(pushBack=true){
  if(!current)return false;
  current.moreObserver?.disconnect?.();
  current.moreObserver=null;
+ current.headerObserver?.disconnect();
  // A big offline novel is loaded sequentially. Closing the chooser before
  // completion must stop future local script loads, not burn battery/RAM on
  // a book the reader abandoned. The loader's own cancellation generation
@@ -232,18 +233,53 @@ function updateArtStatus(entry){
          ' · Missing: '+coverage.pending):
   locale('جميع الفصول لها صور متاحة','Every chapter has an available image');
 }
+// Keep the leading visible chapter when changing between rail and list.
+function visibleChapter(entry){
+ if(!entry.track.getBoundingClientRect)return null;
+ const track=entry.track.getBoundingClientRect();
+ const footer=entry.dialog.querySelector('.lt-chapter-gallery-footer').getBoundingClientRect();
+ const header=entry.dialog.querySelector('.lt-chapter-gallery-header').getBoundingClientRect();
+ const top=Math.max(track.top,0,header.bottom), bottom=Math.min(track.bottom,innerHeight,footer.top);
+ const tiles=entry.track.querySelectorAll('.lt-chapter-tile');
+ const focused=entry.lastFocusedTile;
+ if(focused?.isConnected){
+  const r=focused.getBoundingClientRect();
+  if(r.bottom>top&&r.top<bottom&&r.right>track.left&&r.left<track.right)return focused;
+ }
+ let best=null,area=0;
+ for(const tile of tiles){
+  const r=tile.getBoundingClientRect();
+  const w=Math.max(0,Math.min(r.right,track.right)-Math.max(r.left,track.left));
+  const h=Math.max(0,Math.min(r.bottom,bottom)-Math.max(r.top,top));
+  const fraction=w*h/Math.max(1,r.width*r.height);
+  if(fraction>area+.001){best=tile;area=fraction;}
+  if(area>=.999)break;
+ }
+ return best;
+}
 function setChapterLayout(entry,mode,{save=false}={}){
  if(!active||active!==entry)return;
  const next=mode==='list'?'list':'rail';
+ const anchor=save&&visibleChapter(entry);
  entry.layout=next;
+ entry.track.setAttribute('aria-keyshortcuts',next==='list'?'ArrowUp ArrowDown Home End':'ArrowLeft ArrowRight Home End');
  entry.track.classList.remove('lt-chapter-gallery-list-view');
  if(next==='list')entry.track.classList.add('lt-chapter-gallery-list-view');
  entry.layoutButton.textContent=next==='list'?
   locale('العرض الأفقي','Horizontal cards'):locale('عرض قائمة','List view');
  entry.layoutButton.setAttribute('aria-pressed',next==='list'?'true':'false');
+ if(entry.footerLayout){
+  entry.footerLayout.textContent=entry.layoutButton.textContent;
+  entry.footerLayout.setAttribute('aria-pressed',String(next==='list'));
+ }
  entry.track.setAttribute('aria-label',next==='list'?
   locale('الفصول كقائمة مرتبة','Chapters as ordered list'):
   locale('الفصول بالترتيب','Chapters in order'));
+ if(anchor){
+  anchor.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'});
+  if(!global.matchMedia?.('(prefers-reduced-motion: reduce)').matches)
+   anchor.animate?.([{opacity:.65},{opacity:1}],{duration:180});
+ }
  if(save&&typeof put==='function')put('lt_chapter_gallery_layout',next);
 }
 function buildChapterCard(entry,story,i){
@@ -354,14 +390,15 @@ function focusChapterByArrow(entry,event){
  const current=event.target?.closest?.('.lt-chapter-tile');
  if(!current||!active||active!==entry)return;
  const key=event.key,rtl=entry.dialog.dir==='rtl';
- if(!['ArrowLeft','ArrowRight','Home','End'].includes(key))return;
+ const vertical=entry.layout==='list';
+ if(!['Home','End',...(vertical?['ArrowUp','ArrowDown']:['ArrowLeft','ArrowRight'])].includes(key))return;
  const rendered=Array.from(entry.track.querySelectorAll?.('.lt-chapter-tile')||[]);
  const index=rendered.indexOf(current);
  if(index<0)return;
  let target;
  if(key==='Home')target=0;
  else if(key==='End')target=rendered.length-1;
- else target=index+((key==='ArrowLeft')==rtl?1:-1);
+ else target=index+((vertical?key==='ArrowDown':(key==='ArrowLeft')===rtl)?1:-1);
  if(target<0||target>=entry.visible.length)return;
  event.preventDefault?.();
  // A keyboard user can reach the final chapter even if it was not in the
@@ -462,6 +499,7 @@ function renderCards(entry,story){
  updateArtStatus(entry);
  entry.filter.disabled=false;
  entry.layoutButton.disabled=false;
+ if(entry.footerLayout)entry.footerLayout.disabled=false;
  setChapterLayout(entry,entry.layout);
  updateChapterFilter(entry);
 }
@@ -611,7 +649,11 @@ function show(id,{historyEntry=true}={}){
  track.setAttribute('role','group');
  track.setAttribute('aria-label',locale('الفصول بالترتيب','Chapters in order'));
  track.setAttribute('aria-busy','true');
- track.setAttribute('aria-keyshortcuts','ArrowLeft ArrowRight Home End');
+
+ track.addEventListener('focusin',event=>{
+  const tile=event.target.closest('.lt-chapter-tile');
+  if(tile&&active?.track===track)active.lastFocusedTile=tile;
+ });
  track.addEventListener('keydown',event=>{if(active)focusChapterByArrow(active,event)});
  addText(track,'p','lt-chapter-gallery-loading',locale('جارٍ تجهيز الفصول المحلية…','Loading offline chapters…'));
  sheet.appendChild(track);
@@ -652,6 +694,29 @@ function show(id,{historyEntry=true}={}){
   if(active!==entry||layoutButton.disabled)return;
   setChapterLayout(entry,entry.layout==='list'?'rail':'list',{save:true});
  });
+ // Compact controls take over only after the full toolbar has scrolled away.
+ // This keeps the current chapter in view when switching a long list to cards.
+ if(typeof global.IntersectionObserver==='function'){
+  const controls=document.createElement('div');
+  controls.className='lt-index-controls';controls.hidden=true;
+  const top=document.createElement('button');
+  top.type='button';top.textContent=locale('أعلى الفهرس','Index top');
+  top.addEventListener('click',()=>{
+   dismiss.focus({preventScroll:true});
+   dialog.scrollTo({top:0,behavior:global.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  });
+  const toggle=document.createElement('button');
+  toggle.type='button';toggle.disabled=true;toggle.setAttribute('aria-controls',track.id);
+  toggle.addEventListener('click',()=>setChapterLayout(entry,entry.layout==='list'?'rail':'list',{save:true}));
+  controls.appendChild(top);controls.appendChild(toggle);footer.appendChild(controls);entry.footerLayout=toggle;
+  entry.headerObserver=new global.IntersectionObserver(records=>{
+   if(active!==entry)return;
+   const hidden=records[records.length-1].isIntersecting;
+   if(hidden&&controls.contains(document.activeElement))layoutButton.focus({preventScroll:true});
+   controls.hidden=hidden;
+  },{root:dialog});
+  entry.headerObserver.observe(tools);
+ }
  active=entry;
  if(historyEntry&&!fromReader&&global.history?.pushState)
   global.history.pushState({page:'chapter-gallery',storyId:id},'','#chapters-'+encodeURIComponent(id));

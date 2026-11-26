@@ -8,6 +8,7 @@
  'use strict';
  const story={
  "id": "around-the-world-in-eighty-days-towle",
+ "titleAr": "حول العالم في ثمانين يومًا",
  "title": "Around the World in Eighty Days",
  "subtitle": "The original 1873 English translation — Chapter I",
  "genre": "historical",

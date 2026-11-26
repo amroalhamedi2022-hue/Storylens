@@ -1,3 +1,7 @@
+## 25 November — signature reader branch
+
+Continue from the current head of handoff/signature-reader-20261123. The latest local browser and suite evidence for the library dock, Arabic search and chapter browser is in the first entry of docs/LINGUA_TALES_LIVE_STATUS.md. APK and on-device checks remain deferred. Chapter art coverage was not changed in this batch.
+
 # 2026-11-11 — Main app integration
 
 See the top of [live status](../LINGUA_TALES_LIVE_STATUS.md) for the integrated reader audit, Codex pagination, and remaining checks. The branch checkpoints below are historical evidence.
