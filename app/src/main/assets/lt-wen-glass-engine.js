@@ -122,7 +122,9 @@
    const focus=opticTarget(g,p.x,p.y),r=focus.getBoundingClientRect();
    // Smooth adjacent-chip optical morph; actual actions remain native.
    const sibling=focus!==g.el;
-   const dx=sibling?cap((p.x-r.left-r.width/2)*.15,-r.width*.18,r.width*.18)
+   const dock=g.container.matches?.('.lt-library-dock');
+   const box=dock?g.container.getBoundingClientRect():null;
+   const dx=dock?cap(p.x-r.width/2,box.left+4,box.right-4-r.width)-r.left:sibling?cap((p.x-r.left-r.width/2)*.15,-r.width*.18,r.width*.18)
                    :cap((p.x-g.startX)*FOLLOW,-r.width*.25,r.width*.25);
    const dy=sibling?cap((p.y-r.top-r.height/2)*.13,-r.height*.16,r.height*.16)
                    :cap((p.y-g.startY)*FOLLOW,-r.height*.20,r.height*.20);

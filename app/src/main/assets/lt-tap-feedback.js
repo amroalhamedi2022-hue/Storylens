@@ -68,6 +68,10 @@
  function scrollHeader(){
   const header=doc.querySelector?.('.library .header');
   const y=Math.max(0,Number(global.scrollY)||0);
+  if(header){
+   if(y>=48)header.classList.add('lt-glass-over-content');
+   else if(y<=16)header.classList.remove('lt-glass-over-content');
+  }
   if(header!==lastHeader){lastHeader=header;lastY=y;scrollTrend=0;return;}
   if(!header)return;
   const dy=y-lastY;

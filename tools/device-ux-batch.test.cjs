@@ -129,7 +129,7 @@ console.log('PASS: novel-first cover title, short-story exclusion, water-press l
 // Keep the drawer compact: show only categories with full-length books.
 a.match(source,/catalog\.stories\.filter\(isFullLengthNovel\)/);
 a.match(source,/catalog\.genres\.filter\(genre=>genresWithNovels\.has\(genre\.id\)\)/);
-a.match(source,/searchChapters\(q,40,true\)/,'visible search returns only novels');
+a.match(source,/passages\(q,true\)/,'visible search returns only novels');
 
 // Real novel-discovery filters cannot expose hidden cards through !important flex.
 a.match(css,/\.lt-novel-card\[hidden\]\{display:none!important\}/,'hidden book covers remain invisible');

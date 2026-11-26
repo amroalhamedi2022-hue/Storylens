@@ -1,3 +1,7 @@
+## Floating library controls
+
+The header and dock use a rimmed translucent material with lower fill over scrolling content. The dock lens follows the pointer directly during a drag. Drawer controls distinguish the current category, and settings and pressable icons have short entry or compression movement. Chromium phone and tablet previews checked dock gestures, cancellation on release, scrolling and drawer readability. Five local regression suites passed. Hardware frame timing remains pending.
+
 ## Study cards and chapter return
 
 Saved words and revealed review cards with verified passage metadata now open the source paragraph in the full reader. Back restores the study tab, card context and vocabulary filter. The chapter index restores its search, coverage filter, layout and selected chapter after reader exit. The shell signals completion directly without polling. Fresh index visits start with a clear query.

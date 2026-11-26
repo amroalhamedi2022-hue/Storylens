@@ -34,7 +34,7 @@ const listeners=new Map();
 const body={classList:classes(),style:style()};
 let lensCount=0;
 const track={classList:classes(),style:style(),children:[],querySelector:()=>track.children[0]||null,
- appendChild(e){this.children.push(e);e.isConnected=true;lensCount++},getBoundingClientRect:()=>({left:0,top:0,width:500,height:150})};
+ appendChild(e){this.children.push(e);e.parentNode=this;e.isConnected=true;lensCount++},getBoundingClientRect:()=>({left:0,top:0,width:500,height:150})};
 const el={classList:classes(),style:style(),disabled:false,isConnected:true,
  matches:()=>false,
  closest:(sel)=>sel.includes('button')?el:sel.includes('.lt-genre-list')?track:null,

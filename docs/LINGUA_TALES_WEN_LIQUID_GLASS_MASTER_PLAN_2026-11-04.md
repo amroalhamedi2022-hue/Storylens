@@ -1,3 +1,7 @@
+## Library glass and press motion
+
+The header and dock use a rimmed translucent material with lower fill over scrolling content. The dock lens follows the pointer directly during a drag. Drawer controls distinguish the current category, and settings and pressable icons have short entry or compression movement. Chromium phone and tablet previews checked dock gestures, cancellation on release, scrolling and drawer readability. Five local regression suites passed. Hardware frame timing remains pending.
+
 ## Returning to the index
 
 Reader exit restores the filtered chapter index from the shell completion callback. The active tile regains focus when the real chapter list is ready. Android motion profiling remains pending.
