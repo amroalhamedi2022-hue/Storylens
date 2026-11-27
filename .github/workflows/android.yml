@@ -838,3 +838,102 @@ jobs:
             --notes "Private draft of the new stable-signed Lingua Tales baseline. This candidate needs a fresh install if the previous app had a different signer. Export backups before uninstalling older apps. Historical content/translation/art, editorial and physical-device review remain separate gates. Retain the new private signer for all updates." \
             --draft
           echo "Draft signed release: https://github.com/$GITHUB_REPOSITORY/releases/tag/$tag"
+
+  native_android_smoke:
+    name: Android 13 native launch and rotation (no release)
+    needs: build
+    if: success() && !(github.event_name == 'workflow_dispatch' && inputs.release_channel == 'stable-release')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Lingua-Tales-Preview-NOT-PRODUCTION-UPDATE
+          path: preview-apk
+      - name: Enable KVM and install Android 13 emulator
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -c /dev/kvm
+          sudo chmod a+rw /dev/kvm
+          SDKMGR="$(find "$ANDROID_HOME/cmdline-tools" -maxdepth 3 -type f -name sdkmanager | head -n 1)"
+          test -x "$SDKMGR"
+          "$SDKMGR" --install "platform-tools" "emulator" "system-images;android-33;google_apis;x86_64"
+          AVDMGR="$(dirname "$SDKMGR")/avdmanager"
+          printf 'no\n' | "$AVDMGR" create avd --force --name lt_native_qa --package "system-images;android-33;google_apis;x86_64"
+      - name: Install existing preview and capture native evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p native-qa
+          adb="$ANDROID_HOME/platform-tools/adb"
+          emulator="$ANDROID_HOME/emulator/emulator"
+          package=com.storylens.reader.preview
+          activity="$package/com.storylens.reader.MainActivity"
+          mapfile -t apks < <(find preview-apk -type f -name '*.apk')
+          test "${#apks[@]}" -eq 1
+          apk="${apks[0]}"
+          "$adb" start-server
+          "$emulator" -avd lt_native_qa -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader -camera-back none -camera-front none > native-qa/emulator.log 2>&1 &
+          emulator_pid=$!
+          cleanup() {
+            "$adb" logcat -b crash -d > native-qa/crash.log 2>&1 || true
+            "$adb" emu kill >/dev/null 2>&1 || true
+            kill "$emulator_pid" 2>/dev/null || true
+          }
+          trap cleanup EXIT
+          timeout 240 "$adb" wait-for-device
+          booted=false
+          for attempt in $(seq 1 90); do
+            if [ "$("$adb" shell getprop sys.boot_completed | tr -d '\r')" = 1 ]; then
+              booted=true
+              break
+            fi
+            sleep 3
+          done
+          test "$booted" = true
+          "$adb" shell input keyevent 82
+          "$adb" shell svc wifi disable
+          "$adb" shell svc data disable
+          "$adb" install "$apk"
+          "$adb" shell am start -W -n "$activity" | tee native-qa/launch.txt
+          grep -Fq 'Status: ok' native-qa/launch.txt
+          "$adb" shell settings put system accelerometer_rotation 0
+          for rotation in 0 1; do
+            "$adb" shell settings put system user_rotation "$rotation"
+            sleep 6
+            "$adb" shell pidof "$package" | grep -Eq '[0-9]+'
+            "$adb" shell dumpsys activity activities > "native-qa/activity-$rotation.txt"
+            grep -E 'mResumedActivity|topResumedActivity' "native-qa/activity-$rotation.txt" | grep -Fq "$package"
+            "$adb" exec-out screencap -p > "native-qa/rotation-$rotation.png"
+          done
+          python3 - <<'PY'
+          import pathlib, struct
+          sizes = []
+          for rotation in (0, 1):
+              p = pathlib.Path(f"native-qa/rotation-{rotation}.png")
+              with p.open("rb") as f:
+                  h = f.read(24)
+              assert h[:8] == b"\x89PNG\r\n\x1a\n" and h[12:16] == b"IHDR", f"Invalid screenshot: {p}"
+              sizes.append(struct.unpack(">II", h[16:24]))
+          assert sizes[0][0] < sizes[0][1], f"Expected portrait: {sizes}"
+          assert sizes[1][0] > sizes[1][1], f"Expected landscape: {sizes}"
+          print("Native screenshots verified:", sizes)
+          PY
+          "$adb" logcat -b crash -d > native-qa/crash.log
+          if grep -Fq "Process: $package," native-qa/crash.log; then
+            echo "::error::Android reported a preview-app process crash"
+            exit 1
+          fi
+          echo "Android 13 native launch, process survival and rotation: PASS" >> "$GITHUB_STEP_SUMMARY"
+          echo "Emulator only: no physical-device, visual-reference, content or 120 Hz acceptance." >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload short-lived native QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Lingua-Tales-Native-Android13-Smoke
+          path: native-qa/
+          retention-days: 1
+          if-no-files-found: ignore
