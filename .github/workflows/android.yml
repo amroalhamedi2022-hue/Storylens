@@ -875,39 +875,57 @@ jobs:
           mapfile -t apks < <(find preview-apk -type f -name '*.apk')
           test "${#apks[@]}" -eq 1
           apk="${apks[0]}"
-          "$adb" start-server
-          "$emulator" -avd lt_native_qa -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader -camera-back none -camera-front none > native-qa/emulator.log 2>&1 &
+          # Every adb call is bounded. A failed boot must preserve diagnostics,
+          # not hang until Actions cancels the entire job.
+          adbc() { timeout --kill-after=5s 35s "$adb" -s emulator-5554 "$@"; }
+          timeout --kill-after=5s 25s "$adb" start-server
+          "$emulator" -accel-check | tee native-qa/accel.txt
+          "$emulator" -avd lt_native_qa -port 5554 -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -camera-back none -camera-front none > native-qa/emulator.log 2>&1 &
           emulator_pid=$!
           cleanup() {
-            "$adb" logcat -b crash -d > native-qa/crash.log 2>&1 || true
-            "$adb" emu kill >/dev/null 2>&1 || true
+            result=$?
+            trap - EXIT
+            timeout --kill-after=3s 12s "$adb" devices -l > native-qa/adb-devices.txt 2>&1 || true
+            timeout --kill-after=3s 12s "$adb" -s emulator-5554 logcat -b crash -d > native-qa/crash.log 2>&1 || true
+            timeout --kill-after=3s 12s "$adb" -s emulator-5554 emu kill >/dev/null 2>&1 || true
             kill "$emulator_pid" 2>/dev/null || true
+            if [ "$result" -ne 0 ]; then tail -n 80 native-qa/emulator.log || true; fi
+            exit "$result"
           }
           trap cleanup EXIT
-          timeout 240 "$adb" wait-for-device
           booted=false
-          for attempt in $(seq 1 90); do
-            if [ "$("$adb" shell getprop sys.boot_completed | tr -d '\r')" = 1 ]; then
+          deadline=$((SECONDS + 420))
+          while [ "$SECONDS" -lt "$deadline" ]; do
+            if ! kill -0 "$emulator_pid" 2>/dev/null; then
+              echo "::error::Emulator exited before boot"
+              exit 1
+            fi
+            boot=$(timeout --kill-after=2s 8s "$adb" -s emulator-5554 shell getprop sys.boot_completed 2>/dev/null | tr -d '\r' || true)
+            if [ "$boot" = 1 ]; then
               booted=true
               break
             fi
-            sleep 3
+            echo "Waiting for Android boot: remaining $((deadline - SECONDS))s"
+            sleep 5
           done
-          test "$booted" = true
-          "$adb" shell input keyevent 82
-          "$adb" shell svc wifi disable
-          "$adb" shell svc data disable
-          "$adb" install "$apk"
-          "$adb" shell am start -W -n "$activity" | tee native-qa/launch.txt
+          if [ "$booted" != true ]; then echo "::error::Android boot timed out"; exit 1; fi
+          echo "Android boot complete"
+          adbc shell input keyevent 82
+          adbc shell svc wifi disable
+          adbc shell svc data disable
+          echo "Installing existing preview APK"
+          timeout --kill-after=5s 180s "$adb" -s emulator-5554 install "$apk"
+          adbc shell am start -W -n "$activity" | tee native-qa/launch.txt
           grep -Fq 'Status: ok' native-qa/launch.txt
-          "$adb" shell settings put system accelerometer_rotation 0
+          adbc shell settings put system accelerometer_rotation 0
           for rotation in 0 1; do
-            "$adb" shell settings put system user_rotation "$rotation"
+            echo "Checking rotation $rotation"
+            adbc shell settings put system user_rotation "$rotation"
             sleep 6
-            "$adb" shell pidof "$package" | grep -Eq '[0-9]+'
-            "$adb" shell dumpsys activity activities > "native-qa/activity-$rotation.txt"
+            adbc shell pidof "$package" | grep -Eq '[0-9]+'
+            adbc shell dumpsys activity activities > "native-qa/activity-$rotation.txt"
             grep -E 'mResumedActivity|topResumedActivity' "native-qa/activity-$rotation.txt" | grep -Fq "$package"
-            "$adb" exec-out screencap -p > "native-qa/rotation-$rotation.png"
+            adbc exec-out screencap -p > "native-qa/rotation-$rotation.png"
           done
           python3 - <<'PY'
           import pathlib, struct
@@ -922,7 +940,7 @@ jobs:
           assert sizes[1][0] > sizes[1][1], f"Expected landscape: {sizes}"
           print("Native screenshots verified:", sizes)
           PY
-          "$adb" logcat -b crash -d > native-qa/crash.log
+          adbc logcat -b crash -d > native-qa/crash.log
           if grep -Fq "Process: $package," native-qa/crash.log; then
             echo "::error::Android reported a preview-app process crash"
             exit 1
