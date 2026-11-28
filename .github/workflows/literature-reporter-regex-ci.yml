@@ -1,0 +1,25 @@
+name: Literature - original chapter reporter runtime regex regression
+on:
+  pull_request:
+    paths:
+      - 'tools/report_chapter_art_progress.py'
+      - 'tools/test_reporter_regex_import.py'
+      - '.github/workflows/literature-reporter-regex-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/report_chapter_art_progress.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python tools/test_reporter_regex_import.py
+      - run: python tools/report_chapter_art_progress.py
