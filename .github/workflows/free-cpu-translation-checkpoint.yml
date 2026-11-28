@@ -42,16 +42,45 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          prior=$(gh api -X GET "repos/$GITHUB_REPOSITORY/actions/workflows/free-cpu-translation-checkpoint.yml/runs" \
+          # Skip only runs proven to have done no inference. Never repeat work
+          # when a checkpoint expired or an inference attempt lost its artifact.
+          completed=$(gh api -X GET "repos/$GITHUB_REPOSITORY/actions/workflows/free-cpu-translation-checkpoint.yml/runs" \
             -f branch="$GITHUB_REF_NAME" -f status=completed -F per_page=30 \
-            --jq ".workflow_runs | map(select(.id != $GITHUB_RUN_ID)) | sort_by(.created_at) | reverse | .[0].id // empty")
+            --jq ".workflow_runs | map(select(.id != $GITHUB_RUN_ID)) | sort_by(.created_at) | reverse | .[].id")
+          prior=""
+          artifact=lingua-cpu-translation-checkpoint
+          file=checkpoint.json
+          for candidate in $completed; do
+            [[ "$candidate" =~ ^[0-9]+$ ]]
+            evidence=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$candidate/artifacts" \
+              --jq ".artifacts | map(select(.name == \"$artifact\")) | [length, (map(select(.expired == false)) | length)] | @tsv")
+            read -r total live <<< "$evidence"
+            if [[ "$total" == 1 && "$live" == 1 ]]; then
+              prior="$candidate"
+              break
+            fi
+            if [[ "$total" != 0 ]]; then
+              echo "Checkpoint expired or ambiguous; refusing to repeat inference" >&2
+              exit 1
+            fi
+            # A missing artifact can be ignored only if the inference step
+            # explicitly did not run, including any rerun attempts.
+            attempt=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$candidate" --jq '.run_attempt')
+            [[ "$attempt" == 1 ]] || { echo "Unverified earlier attempt" >&2; exit 1; }
+            skipped=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$candidate/jobs" \
+              --jq '[.jobs[].steps[] | select(.name == "Add up to eight new review-only comparisons without retranslating existing rows" and .conclusion == "skipped")] | length')
+            [[ "$skipped" == 1 ]] || { echo "Missing checkpoint after possible inference" >&2; exit 1; }
+            echo "Skipping run $candidate: inference explicitly skipped"
+          done
           if [[ -z "$prior" ]]; then
+            # A full page may hide an older checkpoint; never assume no history.
+            if [[ $(wc -w <<< "$completed") -ge 30 ]]; then
+              echo "Checkpoint history exceeds safe search window" >&2
+              exit 1
+            fi
             prior=46072841717
             artifact=lingua-cpu-translation-pilot
             file=pilot.json
-          else
-            artifact=lingua-cpu-translation-checkpoint
-            file=checkpoint.json
           fi
           [[ "$prior" =~ ^[0-9]+$ ]]
           gh api "repos/$GITHUB_REPOSITORY/actions/runs/$prior/artifacts" \
