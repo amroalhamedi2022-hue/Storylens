@@ -1,0 +1,33 @@
+name: Lingua Tales - strict real 1860 McLenan photo-vs-type source audit
+on:
+  pull_request:
+    paths:
+      - 'tools/intake_woman_white_harper1860_mclenan.py'
+      - 'tools/make_woman_white_1860_review_contact_sheets.py'
+      - 'tools/test_woman_white_harper1860_mclenan.py'
+      - 'tools/test_woman_white_harper1860_archive.py'
+      - 'tools/report_chapter_art_progress.py'
+      - 'docs/literature/staging/woman-white-mclenan-1860-original-scan/**'
+      - '.github/workflows/woman-white-harper1860*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-real-engraved-originals-with-source-checksums-and-no-fake-cards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install same genuine-source raster verification packages as intake
+        run: python -m pip install requests==2.32.5 Pillow==11.3.0 pymupdf==1.26.5 opencv-python-headless==4.12.0.88
+      - name: Verify strict public-domain metadata, typography exclusion and real drawings
+        run: |
+          python tools/test_woman_white_harper1860_mclenan.py
+          python tools/test_woman_white_harper1860_archive.py
+      - name: Confirm all existing book sources and verified artwork remain unchanged
+        run: python tools/report_chapter_art_progress.py

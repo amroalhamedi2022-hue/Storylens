@@ -284,6 +284,106 @@ def verify_unpublished_gutenberg_edition(slug: str, volume: int | None = None) -
             "sourceState": "complete historic English source SHA-pinned; no canonical night/chapter alignment, complete contextual bilingual edition, verified chapter art or territorial clearance"}
 
 
+def verify_mclenan_1860_original_illustrations() -> dict:
+    """Count only independently *visually seen* 1860 wood engravings.
+    Reject prose-only scan patches and all machine-only detected regions.
+    Every actual source WebP and its separate primary visual-review ledger
+    must independently SHA-match; never award chapter publication rights.
+    """
+    folder=STAGING/"woman-white-mclenan-1860-original-scan"
+    path=folder/"manifest.json"
+    result={
+        "originalHarper1860McLenanConfirmedArtworkFiles":0,
+        "unverifiedOriginalScanRegionsNotCountedAsArt":0,
+        "historicalScannedProseFalsePositivesDiscarded":0,
+        "archivedLocalHistoricArt":0
+    }
+    if not path.is_file():
+        return result
+    doc=jload(path)
+    expected_pdf="97c7236c8f6f02d63fa2a11043402f781467ba8c57aad48556be72080f19b854"
+    if (doc.get("schemaVersion")!=1
+            or doc.get("sourceFileTitle")!="File:The woman in white. A novel .. (IA womaninwhitenove00collrich).pdf"
+            or doc.get("sourcePDFSHA256")!=expected_pdf
+            or doc.get("sourcePDFBytes")!=31714138
+            or doc.get("sourcePDFPageCount")!=278
+            or doc.get("sourcePDFYear")!=1860
+            or doc.get("originalIllustrator")!="John McLenan (illustrator, 1860)"
+            or doc.get("publicationApproved") is not False
+            or doc.get("chapterSceneMatchingComplete") is not False
+            or doc.get("humanVisualReviewComplete") is not False
+            or not str(doc.get("individualCommonsSourceLicense","")).lower().startswith("public domain")):
+        raise ValueError("Original 1860 Harper PDF source hash/edition or release flags differ")
+    verified=folder/"visually-inspected-original-drawings.json"
+    if not verified.is_file():
+        raise ValueError("1860 historical source archive has no separately verified drawings ledger")
+    ledger=jload(verified)
+    if (ledger.get("bookId")!="the-woman-in-white"
+            or ledger.get("sourcePDFSHA256")!=expected_pdf
+            or ledger.get("readyChapterThumbnailCount")!=0
+            or ledger.get("rightsStatus")!="HUMAN_TERRITORIAL_AND_EDITORIAL_REVIEW_PENDING"
+            or ledger.get("realArchiveImagesVisuallySeenCount") != len(ledger.get("visuallyVerifiedHistoricalPictureSources", []))):
+        raise ValueError("Original engraving classification ledger forged approval or provenance")
+    records=doc.get("images",[])
+    if len({x.get("webpSha256") for x in records})!=len(records):
+        raise ValueError("Duplicate true image crop SHA in original source")
+    if len({x.get("localPath") for x in records})!=len(records):
+        raise ValueError("Duplicate image source path in original source")
+    all_images={}
+    for row in records:
+        name=row.get("localPath")
+        claimed=row.get("webpSha256")
+        if (not isinstance(name,str) or not name.startswith("scan-art-crops/harper1860-p")
+                or not isinstance(claimed,str)
+                or not re.fullmatch("[0-9a-f]{64}",claimed)
+                or row.get("sourcePDFSHA256")!=expected_pdf
+                or not (1<=row.get("sourcePageOneBased",0)<=278)
+                or row.get("sourceArtist")!="John McLenan (illustrator, 1860)"
+                or row.get("sourceOriginalPublisher")!="Harper & Brothers, New York, 1860"
+                or row.get("editoriallyApproved") is not False
+                or row.get("humanSceneReviewApproved") is not False
+                or row.get("territorialRightsApproved") is not False
+                or row.get("publishedToApp") is not False
+                or row.get("chapterOneBased") is not None
+                or row.get("altAr") is not None or row.get("altEn") is not None):
+            raise ValueError("1860 original image region lacks SHA/authentic period source quarantine")
+        check_binary(str((folder/name).relative_to(ROOT)),claimed)
+        all_images[claimed]=row
+    identified=set()
+    for sighting in ledger["visuallyVerifiedHistoricalPictureSources"]:
+        digest=sighting["webpSha256"]
+        row=all_images.get(digest)
+        if row is None or digest in identified:
+            raise ValueError("Visually classified original drawing missing/duplicated SHA evidence")
+        if (sighting.get("sourceOriginalPixelRectXYXY")!=row.get("sourceOriginalPixelRectXYXY")
+                or sighting.get("sourcePDFPageOneBased")!=row.get("sourcePageOneBased")
+                or sighting.get("sourcePDFSHA256")!=expected_pdf
+                or sighting.get("localPath")!=row.get("localPath")
+                or sighting.get("sourceIllustrationType")!=
+                    "ORIGINAL_PERIOD_WOOD_ENGRAVING_CANDIDATE_VERIFIED_AS_DRAWING_NOT_TEXT"
+                or sighting.get("evidence")!=
+                    "DIRECT_VISUAL_INSPECTION_OF_ACTUAL_1860_BOOK_SCAN_CROP"
+                or sighting.get("specificChapter") is not None
+                or sighting.get("humanVisualSceneReviewCompleted") is not False
+                or sighting.get("editorialPublicationApproved") is not False
+                or sighting.get("targetTerritoryRightsApproved") is not False
+                or not sighting.get("visualDescriptionEn")
+                or not sighting.get("visualDescriptionAr")):
+            raise ValueError("1860 art classification cannot claim invented scene/rights")
+        identified.add(digest)
+    text_rejects=doc.get("visuallyRejectedProseScans",[])
+    for reject in text_rejects:
+        if reject.get("sha256") in all_images:
+            raise ValueError("Plain scanned page text wrongly counted as historical art")
+        if reject.get("review")!="ONLY_TYPESET_PROSE__NOT_AN_ORIGINAL_ENGRAVING":
+            raise ValueError("Source false-positive rejection lacks provenance")
+    result["originalHarper1860McLenanConfirmedArtworkFiles"]=len(identified)
+    result["unverifiedOriginalScanRegionsNotCountedAsArt"]=len(records)-len(identified)
+    result["historicalScannedProseFalsePositivesDiscarded"]=len(text_rejects)
+    result["archivedLocalHistoricArt"]=len(identified)
+    return result
+
+
 def verify_woman_white_authentic_period_art() -> dict:
     """10 uniquely SHA-audited mixed-edition original sources: eight 1903
     Macklin novel plates, Gilbert's 1861 frontispiece, 1860 publisher cover.
@@ -1062,6 +1162,9 @@ def generate() -> dict:
         staged = verify_unpublished_gutenberg_edition("the-woman-in-white")
         original_illustrations = verify_woman_white_authentic_period_art()
         staged.update(original_illustrations)
+        mclenan_verified=verify_mclenan_1860_original_illustrations()
+        staged.update({k:v for k,v in mclenan_verified.items() if k!="archivedLocalHistoricArt"})
+        staged["archivedLocalHistoricArt"]+=mclenan_verified["archivedLocalHistoricArt"]
         # The original is NOT a 62-chapter conventionally numbered novel.
         # The 62 actually present narratorial narrative units are separately
         # byte-SHA-indexed from unmodified 1.6MB Gutenberg original.
@@ -1090,7 +1193,9 @@ def generate() -> dict:
             + " real 1861 frontispiece(s), plus "
             + str(original_illustrations["historical1860PublisherBookCovers"])
             + " genuine 1860 book cover(s) locally archived; "
-            "eight printed-caption-matched original-unit pictures remain UNAPPROVED; 54 further art gaps; no full edited Arabic, territorial rights or editorial approval"
+            "eight printed-caption-matched original-unit pictures remain UNAPPROVED; " 
+            + str(mclenan_verified["originalHarper1860McLenanConfirmedArtworkFiles"])
+            + " newly archived real 1860 McLenan original book wood engravings not yet mapped; 54 further art gaps; no full edited Arabic, territorial rights or editorial approval"
         )
         rows.append({"bookId": "the-woman-in-white", "title": "The Woman in White", **staged})
     for volume in range(1, 11):
@@ -1190,6 +1295,10 @@ def markdown(report: dict) -> str:
           str(next((b.get("historical1860PublisherBookCovers", 0) for b in report["books"]
                     if b["bookId"] == "the-woman-in-white"), 0)) +
           "**; all chapter-image placement and territorial release rights pending.",
+        "- Authentic 1860 Harper McLenan original book engravings separately visually identified: **" +
+          str(next((b.get("originalHarper1860McLenanConfirmedArtworkFiles",0) for b in report["books"]
+                    if b["bookId"]=="the-woman-in-white"),0)) +
+          "** real and SHA-verified in source archives; all pending chapter scene/territory/editorial review, machine-only scans excluded.",
         "- GitHub handoff: docs/handoffs/LINGUA_TALES_HANDOFF_CURRENT.md.",
         "- Story content automation is separate from the scheduled GitHub report; inspect latest Actions SHA and output before claiming any new image.",
         "- This inventory does NOT assert that a chapter card exists for any staged book lacking a verified chapter-to-image map, even if its archive contains hundreds of figures.",
