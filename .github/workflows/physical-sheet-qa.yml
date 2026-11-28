@@ -1,0 +1,32 @@
+name: Physical sheet GPU acceptance
+on:
+  push:
+    branches: [feature/physical-sheet-engine-20261117]
+    paths: ['app/src/main/assets/**', 'tools/*curl*', 'tools/physical-sheet-*', '.github/workflows/physical-sheet-qa.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sheet-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install --prefix /tmp/sheet-test --no-audit --no-fund playwright@1.56.1
+      - name: Geometry and actual GPU pixels
+        run: |
+          export NODE_PATH=/tmp/sheet-test/node_modules
+          export CHROME="$(command -v google-chrome || command -v chromium)"
+          node tools/physical-sheet-geometry.test.cjs
+          node tools/physical-sheet-pixels.cjs
+      - name: Actual reader four-way GPU gestures
+        if: success() || failure()
+        run: |
+          export NODE_PATH=/tmp/sheet-test/node_modules
+          export CHROME="$(command -v google-chrome || command -v chromium)"
+          node tools/lingua-curl-v2-browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Physical-Sheet-Visual-Evidence
+          path: qa-screenshots/**
