@@ -1,0 +1,96 @@
+name: Lingua Tales - resumable free CPU comparison
+on:
+  push:
+    branches: [automation/free-cpu-translation-pilot-20261127]
+    paths:
+      - 'docs/automation/cpu_translation_checkpoint.py'
+      - '.github/workflows/free-cpu-translation-checkpoint.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: lingua-cpu-translation-checkpoint
+  cancel-in-progress: false
+jobs:
+  compare:
+    if: github.ref == 'refs/heads/automation/free-cpu-translation-pilot-20261127'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      HF_HUB_DISABLE_IMPLICIT_TOKEN: '1'
+      OMP_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test checkpoint integrity and no-repeat behavior
+        run: |
+          python docs/automation/cpu_translation_checkpoint.py --self-test
+          node tools/export_verne_chapter.cjs 1 --check
+      - name: Select most recent review checkpoint (never restart on expiry)
+        id: seed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          prior=$(gh api -X GET "repos/$GITHUB_REPOSITORY/actions/workflows/free-cpu-translation-checkpoint.yml/runs" \
+            -f branch="$GITHUB_REF_NAME" -f status=completed -F per_page=30 \
+            --jq ".workflow_runs | map(select(.id != $GITHUB_RUN_ID)) | sort_by(.created_at) | reverse | .[0].id // empty")
+          if [[ -z "$prior" ]]; then
+            prior=46072841717
+            artifact=lingua-cpu-translation-pilot
+            file=pilot.json
+          else
+            artifact=lingua-cpu-translation-checkpoint
+            file=checkpoint.json
+          fi
+          [[ "$prior" =~ ^[0-9]+$ ]]
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$prior/artifacts" \
+            --jq ".artifacts | map(select(.name == \"$artifact\" and .expired == false)) | length" | grep -x 1
+          printf 'run_id=%s\nartifact=%s\nfile=%s\n' "$prior" "$artifact" "$file" >> "$GITHUB_OUTPUT"
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ steps.seed.outputs.run_id }}
+          name: ${{ steps.seed.outputs.artifact }}
+          path: cpu-seed
+      - name: Audit previous output and preserve validated checkpoint before inference
+        env:
+          SEED_FILE: ${{ steps.seed.outputs.file }}
+          SEED_RUN: ${{ steps.seed.outputs.run_id }}
+        run: |
+          python docs/automation/cpu_translation_checkpoint.py --seed "cpu-seed/$SEED_FILE" --seed-run "$SEED_RUN" --limit 0
+      - name: Install pinned CPU runtime only for unfinished rows
+        id: runtime
+        shell: bash
+        run: |
+          if python -c 'import json; assert json.load(open("cpu-translation-evidence/checkpoint.json"))["unprocessed"] > 0'; then
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+            python -m pip install --disable-pip-version-check 'torch==2.7.1' --index-url https://download.pytorch.org/whl/cpu
+            python -m pip install --disable-pip-version-check 'transformers==4.53.3' 'sentencepiece==0.2.0' 'sacremoses==0.1.1'
+          else
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Add up to eight new review-only comparisons without retranslating existing rows
+        if: steps.runtime.outputs.needed == 'true'
+        env:
+          SEED_RUN: ${{ steps.seed.outputs.run_id }}
+        run: |
+          python docs/automation/cpu_translation_checkpoint.py --seed cpu-translation-evidence/checkpoint.json --seed-run "$SEED_RUN" --limit 8
+      - name: Keep validated progress even on inference failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lingua-cpu-translation-checkpoint
+          path: cpu-translation-evidence/checkpoint.json
+          retention-days: 30
+          if-no-files-found: error

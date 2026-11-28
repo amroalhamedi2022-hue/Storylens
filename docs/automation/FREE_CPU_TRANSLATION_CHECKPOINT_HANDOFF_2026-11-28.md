@@ -1,0 +1,11 @@
+# Free CPU comparison checkpoint — 2026-11-28
+
+Pilot run [46072841717](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/46072841717) succeeded on dd62a869caae7c597eba8f42f97c811b812c46ac. Downloaded actual artifact 15234195527 and inspected all eight candidates, verified their English SHA256 values. Chapter 1 contains 29 paragraphs in the committed English Towle edition (not Verne's French original). Artifact reports 8 candidates, 12.61 seconds of model inference, 0 approved. Manual sample inspection: paragraph index 0 mistranslates No. 7 as time and polished man of the world literally; index 1 mistranslates 'Change and Inns of Court; index 2 omits the opening sentence about manufacturer/merchant/farmer; index 4 omits the club name. These are material semantic failures. OPUS-MT is not a literary replacement. Use only as independent comparison and discrepancy triage, with no auto-approval. Existing Arabic is not certified by this comparison either.
+
+Implemented isolated resumable comparison, source/model/paragraph/draft integrity guards, review flags, atomic per-paragraph checkpoints, five regression tests, bounded eight-row batch and 30-day artifact carry-forward. The new workflow imports the existing pilot rather than regenerating its eight rows; subsequent runs select the latest completed checkpoint and fail closed if it is missing/expired. No API key, paid inference, Android build, app asset change or automatic publication. Exact-head test results pending. No schedule expansion until evidence reviewed.
+
+## Android blocker
+
+PR #100 head 3b15e4cd1f4044ae6592119c95c6e2185cd8cb4c: [run 46072339330](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/46072339330) failed in existing physical HTML curl browser acceptance, not in the new emulator script. Job 140751980677 reports tools/physical-page-curl-browser.cjs:65, expected 22 visible ink facets, actual 0, after LTR portrait passed. Native emulator job skipped. Do not bypass assertion or edit UI/curl owner's files concurrently. Coordinate with physical sheet/reader owner. Main observed 45f7f788ee191e2343ea02fcf7ca069c44a664f9.
+
+Full live status fetch failed with UnicodeDecodeError; do not replace it with partial read. This dedicated handoff records work without overwriting other owners' status.
