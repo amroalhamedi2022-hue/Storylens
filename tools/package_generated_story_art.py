@@ -78,6 +78,42 @@ def queue_from_actual_source(repo: Path) -> list[dict]:
     return verified
 
 
+def approved_image_dimensions(data: bytes) -> tuple[int, int]:
+    """Validate actual WebP dimensions without optional image-library dependencies.
+
+    Covers VP8, VP8L and VP8X containers. Header checks do not replace visual
+    editorial review, but stop tiny montage crops being silently published.
+    """
+    if (len(data) < 30 or data[:4] != b"RIFF" or data[8:12] != b"WEBP"
+            or int.from_bytes(data[4:8], "little") + 8 != len(data)):
+        raise ValueError("Malformed WebP RIFF image")
+    tag = data[12:16]
+    chunk_len = int.from_bytes(data[16:20], "little")
+    if 20 + chunk_len + chunk_len % 2 > len(data):
+        raise ValueError("Truncated WebP image chunk")
+    if tag == b"VP8 ":
+        if data[23:26] != b"\x9d\x01\x2a":
+            raise ValueError("Invalid WebP VP8 frame header")
+        width = int.from_bytes(data[26:28], "little") & 0x3FFF
+        height = int.from_bytes(data[28:30], "little") & 0x3FFF
+    elif tag == b"VP8L":
+        if len(data) < 25 or data[20] != 0x2F:
+            raise ValueError("Invalid WebP VP8L frame header")
+        a, b, d, e = data[21:25]
+        width = 1 + (a | ((b & 0x3F) << 8))
+        height = 1 + ((b >> 6) | (d << 2) | ((e & 0x0F) << 10))
+    elif tag == b"VP8X":
+        width = 1 + int.from_bytes(data[24:27], "little")
+        height = 1 + int.from_bytes(data[27:30], "little")
+    else:
+        raise ValueError("Unknown WebP primary chunk")
+    if not (1 <= width <= 16383 and 1 <= height <= 16383):
+        raise ValueError("Invalid WebP dimensions")
+    if min(width, height) < 640 or width * height < 614400 or not 0.5 <= width / height <= 2.5:
+        raise ValueError(f"Generated artwork resolution too small or unsuitable: {width}x{height}")
+    return width, height
+
+
 def approved_item(item: dict) -> bool:
     return (
         item.get("generated") is True
@@ -146,6 +182,7 @@ def build(repo: Path) -> tuple[Path, bytes, dict[Path, bytes], dict]:
                 int.from_bytes(data[4:8], "little") + 8 == len(data) and
                 data[12:16] in (b"VP8 ", b"VP8L", b"VP8X")):
             raise ValueError("Invalid, oversized or non-WebP image")
+        approved_image_dimensions(data)
         model = item.get("model")
         if not isinstance(model, str) or not 3 <= len(model) <= 80:
             raise ValueError("Missing true image model provenance")
