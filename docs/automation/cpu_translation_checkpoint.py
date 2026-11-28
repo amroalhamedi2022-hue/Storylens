@@ -54,12 +54,27 @@ def source_rows(source, chapter):
         raise ValueError("Missing existing aligned draft")
     return rows
 
+def review_priority(candidate_flags, draft_flags):
+    """Triage only: agreement or zero flags is never a quality approval."""
+    if candidate_flags and draft_flags:
+        return "BOTH_REQUIRE_REVIEW"
+    if draft_flags:
+        return "EXISTING_DRAFT_REQUIRES_REVIEW"
+    if candidate_flags:
+        return "CPU_BASELINE_REQUIRES_REVIEW"
+    return "NO_HEURISTIC_ALERT_NOT_APPROVED"
+
 def candidate_record(row, candidate):
+    cpu_flags = signals(row["en"], row["existingArabicDraft"], candidate)
+    draft_flags = signals(row["en"], row["existingArabicDraft"], row["existingArabicDraft"])
     return {"index": row["index"], "sourceSha256": sha(row["en"]),
             "sourceEnglish": row["en"], "existingArabicDraft": row["existingArabicDraft"],
             "cpuArabicCandidate": candidate, "candidateSha256": sha(candidate),
             "status": CANDIDATE,
-            "reviewSignals": signals(row["en"], row["existingArabicDraft"], candidate)}
+            "reviewSignals": cpu_flags,
+            "existingDraftSha256": sha(row["existingArabicDraft"]),
+            "existingDraftReviewSignals": draft_flags,
+            "reviewPriority": review_priority(cpu_flags, draft_flags)}
 
 def load_records(seed, source, chapter):
     rows = source_rows(source, chapter)
@@ -68,8 +83,14 @@ def load_records(seed, source, chapter):
         or seed.get("sourceHashes") != source["sourceFileShas256"]
         or seed.get("totalParagraphs") != len(rows)):
         raise ValueError("Seed does not match pinned source/model; refuse repeat or stale reuse")
-    if seed.get("schema") not in (None, SCHEMA):
+    schema = seed.get("schema")
+    if schema is not None and (type(schema) is not int or schema != SCHEMA):
         raise ValueError("Unknown checkpoint schema")
+    if schema == SCHEMA and (type(seed.get("approved")) is not int
+                            or seed["approved"] != 0 or seed.get("rightsVerified") is not False):
+        raise ValueError("Checkpoint must remain unapproved and rights unverified")
+    if schema is None and (seed.get("approved", 0) != 0 or seed.get("rightsVerified", False) is not False):
+        raise ValueError("Legacy pilot must remain unapproved")
     if not isinstance(seed.get("records"), list) or not seed["records"]:
         raise ValueError("Empty or invalid checkpoint")
     records = {}
@@ -88,11 +109,18 @@ def load_records(seed, source, chapter):
             or item.get("existingArabicDraft") != row["existingArabicDraft"]
             or not isinstance(candidate, str) or not ARABIC.search(candidate)):
             raise ValueError("Invalid or stale candidate")
-        if "candidateSha256" in item and item["candidateSha256"] != sha(candidate):
+        if (schema == SCHEMA or "candidateSha256" in item) and item.get("candidateSha256") != sha(candidate):
             raise ValueError("Candidate integrity mismatch")
+        if "existingDraftSha256" in item and item["existingDraftSha256"] != sha(row["existingArabicDraft"]):
+            raise ValueError("Existing draft integrity mismatch")
         records[i] = candidate_record(row, candidate)
-    if seed.get("translated") != sum(r["status"] == CANDIDATE for r in records.values()):
+    translated = sum(r["status"] == CANDIDATE for r in records.values())
+    if type(seed.get("translated")) is not int or seed["translated"] != translated:
         raise ValueError("Seed translated count mismatch")
+    if schema == SCHEMA:
+        expected = {"deferred": len(records) - translated, "unprocessed": len(rows) - len(records)}
+        if any(type(seed.get(k)) is not int or seed[k] != n for k, n in expected.items()):
+            raise ValueError("Checkpoint coverage count mismatch")
     return records
 
 def save(output, source, chapter, records, seed_run, reused):
@@ -104,6 +132,9 @@ def save(output, source, chapter, records, seed_run, reused):
               "deferred": sum(r["status"] == DEFERRED for r in records.values()),
               "unprocessed": len(source["paragraphs"])-len(records),
               "flaggedCandidates": sum(bool(r.get("reviewSignals")) for r in records.values()),
+              "flaggedExistingDrafts": sum(bool(r.get("existingDraftReviewSignals")) for r in records.values()),
+              "reviewPriorityCounts": dict(collections.Counter(
+                  r["reviewPriority"] for r in records.values() if r["status"] == CANDIDATE)),
               "approved": 0, "rightsVerified": False,
               "records": [records[i] for i in sorted(records)]}
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -199,6 +230,37 @@ class Tests(unittest.TestCase):
         self.assertEqual(signals("No. 7", "رقم 7", "رقم ٧"), [])
         self.assertIn({"code": "POSSIBLE_OCCUPATION_SENTENCE_OMISSION"},
                       signals("He was not a manufacturer.", "لم يكن صاحب مصنع", "كان اسمه غريباً"))
+    def test_schema_requires_integrity_and_no_approval(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = pathlib.Path(d)/"checkpoint.json"
+            original = load_records(self.seed, self.source, 1)
+            valid = save(path, self.source, 1, original, "1", 1)
+            self.assertEqual(len(load_records(valid, self.source, 1)), 1)
+            for field, value in (("approved", 1), ("rightsVerified", True),
+                                 ("deferred", 1), ("unprocessed", 0), ("schema", True)):
+                invalid = dict(valid, **{field: value})
+                with self.subTest(field=field), self.assertRaises(ValueError):
+                    load_records(invalid, self.source, 1)
+            for field in ("candidateSha256", "existingDraftSha256"):
+                record = dict(valid["records"][0])
+                if field == "candidateSha256":
+                    record.pop(field)
+                else:
+                    record[field] = "0"*64
+                invalid = dict(valid, records=[record])
+                with self.subTest(field=field), self.assertRaises(ValueError):
+                    load_records(invalid, self.source, 1)
+    def test_triage_both_versions_without_approval(self):
+        row = {"index": 0, "en": "No. 7", "existingArabicDraft": "الساعة ٧"}
+        record = candidate_record(row, "رقم ٧")
+        self.assertEqual(record["reviewPriority"], "EXISTING_DRAFT_REQUIRES_REVIEW")
+        self.assertEqual(record["reviewSignals"], [])
+        self.assertEqual(record["existingDraftReviewSignals"], [{"code": "ADDRESS_AS_TIME"}])
+        self.assertEqual(record["status"], CANDIDATE)
+        self.assertEqual(candidate_record(row, "الساعة ٧")["reviewPriority"], "BOTH_REQUIRE_REVIEW")
+        row["existingArabicDraft"] = "رقم ٧"
+        self.assertEqual(candidate_record(row, "رقم ٧")["reviewPriority"], "NO_HEURISTIC_ALERT_NOT_APPROVED")
+        self.assertEqual(candidate_record(row, "الساعة ٧")["reviewPriority"], "CPU_BASELINE_REQUIRES_REVIEW")
     def test_partial_failure_and_defer(self):
         records = load_records(self.seed, self.source, 1)
         calls = []
