@@ -1,0 +1,57 @@
+name: Literature - genuine coloured Kalila medieval manuscript plates
+on:
+  push:
+    branches:
+      - content/prior-requested-classics-20261105
+    paths:
+      - 'tools/intake_kalila_original_colour_miniatures.py'
+      - '.github/workflows/literature-kalila-colour-miniatures.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kalila-colour-archive-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  coloured-sourced-miniatures:
+    if: github.ref == 'refs/heads/content/prior-requested-classics-20261105'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Pillow and Commons source metadata client
+        run: python -m pip install 'requests==2.32.5' 'Pillow==11.3.0'
+      - name: Acquire genuine coloured miniature binaries from a 13th-century Kalila manuscript
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/intake_kalila_original_colour_miniatures.py
+          python tools/intake_kalila_original_colour_miniatures.py --verify
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f docs/literature/staging/kalila-original-colour-miniatures-20261105
+          if git diff --cached --quiet; then
+            echo "No duplicate coloured manuscript files"
+          else
+            git commit -m "Literature: preserve real COLOURED Kalila medieval illuminated folios and origin metadata"
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+          echo "Coloured original artwork archived, not falsely claimed chapter-aligned or app-released."
+      - name: Retain actually downloaded colour manuscripts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kalila-original-colour-folios
+          path: docs/literature/staging/kalila-original-colour-miniatures-20261105/
+          if-no-files-found: warn
+          retention-days: 21
