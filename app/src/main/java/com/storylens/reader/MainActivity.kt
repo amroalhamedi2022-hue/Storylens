@@ -90,6 +90,29 @@ class MainActivity : ComponentActivity() {
     }
 
     /** Only exposed to local APK JavaScript; does not access the Internet. */
+    // Chromium batches localStorage writes. Keep the last visible paper on
+    // disk before returning from a page commit, including across force-stop.
+    private inner class ReadingPositionBridge {
+        private val positions = getSharedPreferences("reader_position", MODE_PRIVATE)
+        private val validBook = Regex("[a-z0-9-]{1,90}")
+
+        @JavascriptInterface
+        fun save(book: String, chapter: Int, page: Int, paragraph: Int, offset: Int): Boolean {
+            if (!validBook.matches(book) || chapter !in 0..9999 ||
+                page < 0 || paragraph < 0 || offset < 0) return false
+            val value = JSONObject().put("book", book).put("chapter", chapter)
+                .put("page", page).put("paragraph", paragraph).put("offset", offset).toString()
+            return positions.getString("last", null) == value ||
+                positions.edit().putString("last", value).commit()
+        }
+
+        @JavascriptInterface
+        fun latest(): String = positions.getString("last", "") ?: ""
+
+        @JavascriptInterface
+        fun clear(): Boolean = positions.edit().remove("last").commit()
+    }
+
     private inner class OfflineBackupBridge {
         @JavascriptInterface
         fun saveBackup(json: String) {
@@ -227,6 +250,8 @@ class MainActivity : ComponentActivity() {
             .addPathHandler("/assets/", WebViewAssetLoader.AssetsPathHandler(this))
             .build()
 
+        // Debug builds alone expose WebView inspection for real Android QA.
+        WebView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG)
         reader = WebView(this).apply {
             setBackgroundColor(getColor(R.color.lingua_startup_surface))
             isVerticalScrollBarEnabled = false
@@ -243,6 +268,7 @@ class MainActivity : ComponentActivity() {
                 mixedContentMode = WebSettings.MIXED_CONTENT_NEVER_ALLOW
                 setSupportZoom(false)
             }
+            addJavascriptInterface(ReadingPositionBridge(), "LinguaReadingPosition")
             addJavascriptInterface(OfflineBackupBridge(), "StoryLensNative")
             addJavascriptInterface(ReaderAudioFocusBridge(), "LinguaTalesAudioFocus")
             webChromeClient = WebChromeClient()

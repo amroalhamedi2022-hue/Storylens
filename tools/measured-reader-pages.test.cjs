@@ -74,9 +74,9 @@ const graphemeEnds=new Set(Array.from(safe,part=>part.index+part.segment.length)
 for(const end of boundaryContext.boundaries(vocalized,'ar'))
  assert.ok(graphemeEnds.has(end),'Arabic page boundary is grapheme-safe');
 
-// Exercise the actual production getTurn() contract: portrait reveals the
-// destination beneath a blank reverse; landscape has distinct printed verso
-// and underlay. Neither mode may show a wrong page then jump at commit.
+// Exercise production face ordering. The GPU portrait camera lands the
+// printed verso; its physical underlay is distinct. Legacy fallback retains
+// the destination-under-blank-back layout until fully primed.
 const curlStart=source.indexOf('   getTurn(delta){');
 const curlEnd=source.indexOf('\n   commit(delta,source)',curlStart);
 assert.ok(curlStart>=0&&curlEnd>curlStart,'production physical curl delegate exists');
@@ -88,16 +88,18 @@ const simulated={pages:Array.from({length:5},(_,i)=>({id:i})),
  clearCurlPreviews:()=>{},boundaryPage:()=>({id:'boundary'}),blankUnderPage:()=>({id:'blank-under'}),curlStory:{id:'book'},curlChapter:0};
 vm.runInNewContext(getTurnBody+'\nglobalThis.getTurn=getTurn;',simulated);
 const portrait=simulated.getTurn(1);
-assert.equal(portrait.under,simulated.pages[1],
- 'portrait fold reveals exactly the next visible destination, not the page after it');
-assert.equal(portrait.back,null,
- 'portrait folded reverse has no duplicate next-page text');
+assert.equal(portrait.page,simulated.pages[0]);
+assert.equal(portrait.back,simulated.pages[1],'destination is the printed verso');
+assert.equal(portrait.under,simulated.pages[2],'next leaf remains under the moving sheet');
+assert.equal(portrait.fallbackUnder,simulated.pages[1],'cold fallback retains its destination');
+assert.equal(portrait.stationary,null,'no invented page before the first leaf');
 simulated.current=3;
 const portraitReverse=simulated.getTurn(-1);
-assert.equal(portraitReverse.under,simulated.pages[2],
- 'portrait reverse fold exposes exactly the previous destination');
-assert.equal(portraitReverse.back,null,
- 'portrait backward fold does not duplicate the underlying page');
+assert.equal(portraitReverse.page,simulated.pages[3]);
+assert.equal(portraitReverse.back,simulated.pages[2]);
+assert.equal(portraitReverse.under,simulated.pages[1]);
+assert.equal(portraitReverse.stationary,simulated.pages[4]);
+assert.equal(portraitReverse.fallbackUnder,simulated.pages[2]);
 simulated.spread=2;simulated.current=0;
 const landscape=simulated.getTurn(1);
 assert.equal(landscape.under,simulated.pages[3]);

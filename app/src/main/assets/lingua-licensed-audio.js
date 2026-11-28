@@ -50,6 +50,96 @@ function sanitize(raw){
 let prefs=sanitize(typeof global.get==='function'?global.get(KEY,DEFAULT):DEFAULT);
 let player=null,playerTrack=null,playing=false,focusOwned=false,generation=0;
 const sfxPlayers=new Set();
+const paperVoices=new Set();
+let paperContext=null,paperBuffer=null,paperLoading=null,paperTurn=null;
+function preparePaper(){
+ if(!prefs.sfxEnabled||doc.hidden||!global.AudioContext||!global.fetch)return;
+ try{
+  if(!paperContext)paperContext=new global.AudioContext({latencyHint:'interactive'});
+  if(paperContext.state==='suspended')paperContext.resume().catch(()=>{});
+  if(!paperBuffer&&!paperLoading){
+   paperLoading=global.fetch('licensed-audio/page-turn.ogg').then(response=>{
+    if(!response.ok)throw Error('Bundled paper recording unavailable');
+    return response.arrayBuffer();
+   }).then(bytes=>paperContext.decodeAudioData(bytes)).then(buffer=>{paperBuffer=paperRustle(buffer);})
+    .catch(()=>{}).finally(()=>{paperLoading=null;});
+  }
+ }catch(_){}
+}
+// Use the sustained rustle from the local recording. Crossfade its ends once
+// during decode so even a long drag can use one voice without a loop click.
+function paperRustle(recording){
+ const rate=recording.sampleRate;
+ const start=Math.round(.70*rate),end=Math.min(recording.length,Math.round(1.30*rate));
+ const blend=Math.round(.035*rate),length=end-start-blend;
+ if(length<=blend)return recording;
+ const loop=paperContext.createBuffer(recording.numberOfChannels,length,rate);
+ for(let channel=0;channel<loop.numberOfChannels;channel++){
+  const source=recording.getChannelData(channel),target=loop.getChannelData(channel);
+  target.set(source.subarray(start+blend,end));
+  for(let i=0;i<blend;i++){
+   const mix=(i+1)/blend;
+   target[length-blend+i]=source[end-blend+i]*(1-mix)+source[start+i]*mix;
+  }
+ }
+ return loop;
+}
+function stopPaper(){
+ paperTurn=null;
+ for(const voice of paperVoices){try{voice.stop();}catch(_){}}
+ paperVoices.clear();
+}
+function movePaper(detail){
+ const turn=paperTurn,ctx=paperContext;
+ if(!turn||turn.id!==detail.id||!prefs.sfxEnabled||doc.hidden)return;
+ const distance=Math.hypot(detail.progress-turn.progress,((detail.pullY||0)-turn.pullY)*.35);
+ turn.progress=detail.progress;turn.pullY=detail.pullY||0;
+ if(!ctx||ctx.state!=='running'||!paperBuffer||prefs.sfxVolume<=0)return;
+ const now=ctx.currentTime;
+ if(distance<.0004)return;
+ if(!turn.voice){
+  if(!playing&&!proceduralPlaying()&&!requestFocus())return;
+  const voice=ctx.createBufferSource(),gain=ctx.createGain();
+  voice.buffer=paperBuffer;voice.loop=true;gain.gain.value=0;
+  voice.connect(gain);gain.connect(ctx.destination);
+  turn.voice=voice;turn.gain=gain.gain;paperVoices.add(voice);
+  voice.onended=()=>{
+   paperVoices.delete(voice);voice.disconnect();gain.disconnect();
+   if(!paperTurn&&!playing&&!proceduralPlaying()&&!sfxPlayers.size)releaseFocus();
+  };
+  voice.start(now);
+ }
+ const speed=clamp(distance/Math.max(.008,now-turn.last)/2);
+ const level=prefs.sfxVolume*(.36+.64*speed);
+ turn.voice.playbackRate.setTargetAtTime(.80+.35*speed,now,.045);
+ shapePaper(turn,now,level);
+ turn.last=now;
+}
+function shapePaper(turn,now,level){
+ const gain=turn.gain;
+ // Preserve the instantaneous envelope across uneven input timestamps.
+ const elapsed=now-turn.at;
+ const current=turn.at===undefined?0:elapsed<.018
+  ?turn.from+(turn.level-turn.from)*Math.max(0,elapsed)/.018
+  :turn.level*(1-clamp((elapsed-.075)/.080));
+ gain.cancelScheduledValues(now);
+ gain.setValueAtTime(current,now);
+ gain.linearRampToValueAtTime(level,now+.018);
+ gain.setValueAtTime(level,now+.075);
+ gain.linearRampToValueAtTime(0,now+.155);
+ turn.at=now;turn.from=current;turn.level=level;
+}
+function finishPaper(detail){
+ if(paperTurn?.id!==detail.id)return;
+ const turn=paperTurn;paperTurn=null;
+ if(turn.voice){
+  const now=paperContext.currentTime;
+  shapePaper(turn,now,0);
+  turn.voice.stop(now+.020);
+ }
+ if(!playing&&!proceduralPlaying()&&!sfxPlayers.size)releaseFocus();
+}
+
 let playButton=null,statusNote=null,rtlUi=false,ambienceToggle=null,sfxToggle=null;
 let playbackIssue=null; // Persistent visible failure until the next successful play.
 let playbackTimer=null,playbackMonitorPlayer=null,playbackPosition=null;
@@ -68,7 +158,7 @@ function requestFocus(){
  try{const ok=bridge.requestFocus()===true;if(ok)focusOwned=true;return ok;}catch(_){return false;}
 }
 function releaseFocus(){
- if(!focusOwned)return;
+ if(!focusOwned||paperVoices.size)return;
  focusOwned=false;
  const bridge=global.LinguaTalesAudioFocus;
  if(!bridge||typeof bridge.releaseFocus!=='function')return;
@@ -169,6 +259,7 @@ function startPlaybackMonitor(active,ticket){
  playbackTimer=timer;
 }
 function stopSfx(){
+ stopPaper();
  for(const audio of sfxPlayers){try{audio.pause();audio.currentTime=0;}catch(_){}}
  sfxPlayers.clear();
 }
@@ -354,6 +445,14 @@ function controls(sheet,rtl){
 }
 function onNativeAudioFocusLoss(){focusOwned=false;pause({keepFocus:true}).catch(()=>{});}
 if(doc&&typeof doc.addEventListener==='function'){
+ for(const event of ['pointerdown','keydown'])doc.addEventListener(event,preparePaper,{capture:true,passive:true});
+ doc.addEventListener('lingua:turnstart',({detail})=>{
+  if(!prefs.sfxEnabled||doc.hidden)return;
+  paperTurn={id:detail.id,progress:detail.progress||0,pullY:detail.pullY||0,
+   last:paperContext?.currentTime||0};
+ });
+ doc.addEventListener('lingua:turnprogress',({detail})=>movePaper(detail));
+ for(const event of ['lingua:turncommit','lingua:turncancel'])doc.addEventListener(event,({detail})=>finishPaper(detail));
  doc.addEventListener('visibilitychange',()=>{if(doc.hidden)pause().catch(()=>{});});
 }
 if(typeof global.addEventListener==='function')global.addEventListener('pagehide',()=>pause().catch(()=>{}));
@@ -379,6 +478,6 @@ if(procedural&&!procedural.__licensedAudioBridge){
 }
 global.LinguaLicensedAudio={
  TRACKS,SFX,LICENSE,controls,playTrack,pause,selectTrack,setVolume,setAmbienceEnabled,setSfxEnabled,setSfxVolume,disableAll,playSfx,
- isPlaying:()=>playing,prefs:()=>({...prefs}),onNativeAudioFocusLoss
+ paperTurning:()=>!!paperTurn,isPlaying:()=>playing,prefs:()=>({...prefs}),onNativeAudioFocusLoss
 };
 })(window);

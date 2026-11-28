@@ -50,7 +50,7 @@ console.log('PASS: phone/tablet adaptive page groups, semantic anchors, old book
 /* Execute the production width-change handler with queued WebView resize
  * events. Height-only keyboard changes must preserve focus and reading page. */
 const resizeStart=source.indexOf('let ltLastLayoutWidth=');
-const resizeEnd=source.indexOf('library(); // Re-render once',resizeStart);
+const resizeEnd=source.indexOf('\n})();',resizeStart);
 assert.ok(resizeStart>0&&resizeEnd>resizeStart,'orientation resizer exists in production');
 const callbacks={};let pending=null,rerenders=0,cancelled=0,scrolls=0;
 const sheet={isConnected:true,getBoundingClientRect:()=>({top:18})};

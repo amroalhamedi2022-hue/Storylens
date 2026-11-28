@@ -1,3 +1,11 @@
+## 23 November — edition details and chapter index
+
+The edition title and chapter cards use opaque surfaces. Existing glass navigation remains outside the page. The Verne title leaf uses its local route map as edition-level decoration. Chapter thumbnails continue to require their own approved image.
+
+## 21 November 2026 — Hybrid Signature
+
+Hybrid Signature uses translucent navigation and matte book surfaces. The library shelf removes per-card backdrop filtering, and the dictionary backdrop leaves the surrounding sentence visible.
+
 # Lingua Tales — Wen Liquid Glass Engine + Complete-Product Roadmap
 
 **Living plan / الخطة الرئيسية للتنفيذ | 4 November 2026**

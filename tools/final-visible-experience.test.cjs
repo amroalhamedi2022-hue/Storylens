@@ -7,14 +7,19 @@ const reader=fs.readFileSync('app/src/main/assets/reader-experience.js','utf8');
 const css=fs.readFileSync('app/src/main/assets/lt-final-experience.css','utf8');
 const curlCss=fs.readFileSync('app/src/main/assets/physical-page-curl.css','utf8');
 
-assert.match(reader,/link\[data-lt-final-experience\]/,
- 'reader must mount the unified visual finish without rewriting the embedded catalog');
-assert.match(reader,/finalStyle\.href='lt-final-experience\.css'/,
- 'production reader must load the unified visual finish');
+const head=html.slice(0,html.indexOf('</head>'));
+assert.match(head,/<link rel="stylesheet" data-lt-final-experience href="lt-final-experience\.css">/,
+ 'the final stylesheet must be available before the fully decorated library first renders');
+assert.equal((html.match(/<script>library\(\);<\/script>/g)||[]).length,1);
 assert.match(curl,/const taper=\.34\*Math\.max\(0,1-p\/\.86\)/,
  'moving leaf remains broad instead of collapsing into the old triangle');
-assert.match(curl,/const edgeZone=Math\.min\(112,Math\.max\(64,rect\.width\*\.17\)\)/,
- 'physical edge has a forgiving phone/tablet grab zone');
+const {grabEdge}=require('../app/src/main/assets/physical-page-curl.js');
+for(const width of [360,600,1200]){
+ assert.equal(grabEdge(32,width),'left');
+ assert.equal(grabEdge(width-32,width),'right');
+ assert.equal(grabEdge(width/2,width),null,'stationary text tap is never a page turn');
+ assert.equal(grabEdge(width/2,width,-40),'right','interior drag selects the forward physical edge');
+}
 assert.match(curl,/!h\.started&&h\.tapEligible&&e\.timeStamp-h\.downAt<=320/,
  'short outer-margin tap commits a page turn');
 assert.match(reader,/tapAllowed:target=>pageSwipeAllowed/,

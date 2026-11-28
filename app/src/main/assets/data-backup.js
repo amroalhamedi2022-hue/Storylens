@@ -219,6 +219,8 @@ function restore(entries){
    'تعذّر الحفظ؛ لم تتغير بياناتك السابقة. قد تكون مساحة التخزين ممتلئة.':
    'تعذّر الحفظ واسترجاع بعض البيانات السابقة؛ لا تغلق التطبيق قبل حفظ نسخة من بياناتك.');
  }
+ // A successful import supersedes the last native restart checkpoint.
+ window.LinguaReadingPosition?.clear();
  return names.length;
 }
 let staged=null;
@@ -363,5 +365,4 @@ global.StoryLensBackup={
  receiveImport:showImport,nativeStatus:showNativeStatus,nativeError:message=>{if(!document.getElementById('stl-backup-feedback'))renderBackup();show(localizeBackupError(message));},
  open:renderBackup
 };
-library();
 })(window);

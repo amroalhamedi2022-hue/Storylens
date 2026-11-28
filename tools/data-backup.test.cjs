@@ -304,6 +304,7 @@ console.log('PASS: offline JSON schema, restore, rollback data preservation, uns
  const domSandbox={window,localStorage:local,document:doc,library(){},get,state,
   closeSheet(){},setTimeout(){},console};
  vm.runInNewContext(src,domSandbox,{filename:'data-backup.js bilingual',timeout:5000});
+ domSandbox.library(); // The application renders once after all extensions load.
  const backupApi=window.StoryLensBackup;
  const backupButton=elements.get('library-actions').children.at(-1);
  assert.equal(backupButton.textContent,'⤓ Backup');

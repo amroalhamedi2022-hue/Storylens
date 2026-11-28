@@ -79,6 +79,7 @@ body.theme-monsoon-meridian::before,body.theme-monsoon-meridian::after{display:n
 <link rel="stylesheet" href="lt-wen-reader-sanctuary.css">
 <link rel="stylesheet" href="lt-chapter-gallery.css">
 <link rel="stylesheet" href="lt-antique-book.css">
+<link rel="stylesheet" data-lt-final-experience href="lt-final-experience.css">
 </head><body><main id="root"></main><div id="modals"></div>
 <script src="editorial-stories-a.js"></script>
 <script src="editorial-stories-b.js"></script>
@@ -251,7 +252,6 @@ function rateReview(enc,grade){const term=decodeURIComponent(enc),c=state.cards.
  c.intervalDays=days;c.dueAt=grade==='again'?now+600000:now+days*86400000;put('cards',state.cards);renderReview(false)}
 let lastScrollSave=0;window.addEventListener('scroll',()=>{if(state.page!=='reader')return;let now=Date.now();if(now-lastScrollSave>450){put('scroll_'+state.story.id+'_'+state.chapter,scrollY);lastScrollSave=now}},{passive:true});
 window.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('modals').innerHTML)closeSheet();else if(state.page==='translation')backToReader();else libraryBack()}});
-library();
 </script><script>
 (function(){
   const p=document.createElement('div');p.id='reading-progress';p.setAttribute('aria-hidden','true');document.body.appendChild(p);
@@ -366,4 +366,5 @@ body.theme-prairie-sails::before,body.theme-prairie-sails::after{display:none!im
 @media(max-width:600px){.theme-prairie-sails .library .storylens-hero{grid-template-columns:minmax(0,1fr) 78px;padding:15px}.theme-prairie-sails .library .storylens-hero .hero-orb{width:70px;height:70px}.theme-prairie-sails .library .header::after{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.theme-prairie-sails .library .card{transition:none!important;transform:none!important}}
 </style>
+<script>library();</script>
 </body></html>

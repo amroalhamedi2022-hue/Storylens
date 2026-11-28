@@ -3,13 +3,18 @@
  */
 (function(){
 'use strict';
-// Keep the final product layer independent from the large embedded catalog
-// document. Loading it here prevents content-only catalog rebuilds from
-// silently dropping the visible finish.
-if(document.head&&!document.querySelector('link[data-lt-final-experience]')){
- const finalStyle=document.createElement('link');
- finalStyle.rel='stylesheet';finalStyle.href='lt-final-experience.css';
- finalStyle.dataset.ltFinalExperience='true';document.head.appendChild(finalStyle);
+// Replay only the latest physical page into the existing backup-compatible
+// store. Older installations and browser readers have no native checkpoint.
+const savedPaper=window.LinguaReadingPosition?.latest();
+if(savedPaper){
+ try{
+  const {book,chapter,page,paragraph,offset}=JSON.parse(savedPaper);
+  if(/^[a-z0-9-]{1,90}$/.test(book)&&[chapter,page,paragraph,offset].every(n=>Number.isSafeInteger(n)&&n>=0)){
+   const suffix=book+'_'+chapter;
+   put('last_story',book);put('chapter_'+book,chapter);
+   put('readpage_'+suffix,page);put('readpage_anchor_'+suffix,paragraph);put('readpage_offset_'+suffix,offset);
+  }
+ }catch(_){/* The WebView's existing progress remains available. */}
 }
 const originalLibrary=library;
 const originalOpenStory=openStory;
@@ -147,6 +152,8 @@ function contextualMeaning(entry, source, story){
 }
 wordSheet=function(args){
  originalWordSheet(args);
+ // The offline dictionary can replace this sheet after its first lookup.
+ if(args?.anchorToken && args.anchorToken.isConnected!==false)positionDictionarySheet(args.anchorToken);
  const sheet=document.querySelector('#modals .sheet');
  if(!sheet)return;
  const labels=Array.from(sheet.querySelectorAll('label'));
@@ -162,6 +169,27 @@ wordSheet=function(args){
  contextNode.classList.toggle('lt-context-missing',result.kind==='sentence');
 };
 
+// Position the existing local dictionary sheet in the free space beside
+// the selected line. The full-screen layout remains available in short windows.
+function positionDictionarySheet(token){
+ const sheet=document.querySelector('#modals .sheet');
+ const box=token.getBoundingClientRect?.();
+ if(!box||!sheet||!window.innerWidth||!window.innerHeight)return;
+ const gap=10;
+ const above=box.top-gap*2;
+ const below=window.innerHeight-box.bottom-gap*2;
+ const room=Math.max(above,below);
+ if(room<160)return;
+ sheet.parentElement.classList.add('lt-lookup-backdrop');
+ sheet.classList.add('lt-anchored-meaning');
+ const width=Math.min(420,window.innerWidth-gap*2);
+ const left=Math.max(gap,Math.min(window.innerWidth-gap-width,(box.left+box.right-width)/2));
+ sheet.style.setProperty('--lt-lookup-width',width+'px');
+ sheet.style.setProperty('--lt-lookup-left',left+'px');
+ sheet.style.setProperty('--lt-lookup-height',Math.min(room,window.innerHeight*.58)+'px');
+ if(below>=above)sheet.style.top=(box.bottom+gap)+'px';
+ else sheet.style.bottom=(window.innerHeight-box.top+gap)+'px';
+}
 // Each chapter becomes measured physical pages. The legacy four-paragraph
 // constant remains only for old stored page numbers and unsupported WebViews.
 const LT_PAGE_PARAGRAPHS=4;
@@ -622,11 +650,12 @@ function installPageTurn(){
       ?initial:ltPageForParagraph(starts,firstParagraph)));
  current=Math.floor(current/spread)*spread;
  let curl=null;
- let curlPrimeTimer=null;
+ let curlPrimeTimer=null,priming=false,primeAgain=false,primeRetries=0;
  // Pre-capture only the present leaf and its immediate verso when reading is
  // idle. This avoids rasterizing the novel, stealing a word tap, or waiting for
  // two fresh snapshots at the instant a quick gesture begins.
- function scheduleGpuPaperPrime(){
+ function scheduleGpuPaperPrime(retry=false){
+  if(retry!==true)primeRetries=0;
   if(!window.LinguaCurlV2?.snapAllowed?.(window))return;
   if(curlPrimeTimer!==null)window.clearTimeout(curlPrimeTimer);
   curlPrimeTimer=window.setTimeout(()=>{
@@ -634,28 +663,53 @@ function installPageTurn(){
    if(!sentenceBox.isConnected||state.page!=='reader'||document.hidden||
      window.LinguaReaderCurl?.active||
      document.querySelector('#modals .sheet,.lt-art-inspection-backdrop'))return;
+   if(priming){primeAgain=true;return;}
+   const primePage=current;
    const nextFront=pages[Math.min(current+spread-1,pages.length-1)];
-   // A portrait leaf has a blank reverse; keep only the live printed front
-   // primed while its actual destination page remains visible below.
-   const nextBack=spread===2?pages[current+spread]:null;
+   // Both physical sides are printed; the portrait camera follows the verso.
+   // Idle priming includes the underlying and stationary sheets as well.
+   const nextBack=pages[current+spread]||null;
    const prevFront=pages[current];
-   const prevBack=spread===2?pages[current-1]:null;
+   const prevBack=pages[current-1]||null;
    const front=nextFront||prevFront;if(!front)return;
    const rect=front.getBoundingClientRect();
    if(rect.width<1||rect.height<1)return;
    const gpu=window.LinguaCurlV2;
    // Idle capture is sequential to avoid two heavy html2canvas iframes
    // contending on slower Android GPUs. Cover both physical turn directions.
+   priming=true;
    (async()=>{
-    if(nextFront)await gpu.prime({win:window,host:sentenceBox,
-     page:nextFront,back:nextBack,width:rect.width,height:rect.height});
-    if(prevFront&&prevBack&&sentenceBox.isConnected&&
+    if(nextFront&&!(await gpu.prime({win:window,host:sentenceBox,
+     page:nextFront,back:nextBack,
+     under:pages[current+spread+1]||null,stationary:pages[current]===nextFront?pages[current-1]:pages[current],
+     width:rect.width,height:rect.height}))){
+     if(current===primePage&&primeRetries<2){
+      primeRetries++;scheduleGpuPaperPrime(true);
+     }
+     return;
+    }
+    if(current===primePage&&prevFront&&prevBack&&sentenceBox.isConnected&&
        state.page==='reader'&&!document.hidden&&!window.LinguaReaderCurl?.active)
      await gpu.prime({win:window,host:sentenceBox,
-      page:prevFront,back:prevBack,width:rect.width,height:rect.height});
-   })().catch(error=>{gpu.lastWarmupWarning=String(error);});
-  },180);
+      page:prevFront,back:prevBack,
+      under:pages[current-2]||null,stationary:pages[current+1]||null,
+      width:rect.width,height:rect.height});
+    // Six resident portrait leaves cover both directions and the next
+    // forward turn. Prepare its last missing face before a rapid second swipe.
+    if(spread===1&&current===primePage&&pages[current+3]&&sentenceBox.isConnected&&
+       !document.hidden&&!window.LinguaReaderCurl?.active)
+     await gpu.prime({win:window,host:sentenceBox,page:pages[current+3],width:rect.width,height:rect.height});
+   })().catch(error=>{gpu.lastWarmupWarning=String(error);}).finally(()=>{
+    priming=false;
+    if(!sentenceBox.isConnected)return;
+    const finalRect=front.getBoundingClientRect();
+    if(primeAgain||((finalRect.width!==rect.width||finalRect.height!==rect.height)&&current===primePage)){
+     primeAgain=false;scheduleGpuPaperPrime();
+    }
+   });
+  },retry===true?300:180);
  }
+ sentenceBox.addEventListener('lingua:turncancel',scheduleGpuPaperPrime);
  const prev=pageControls.querySelector('.lt-page-prev');
  const next=pageControls.querySelector('.lt-page-next');
  const countLabel=pageControls.querySelector('.lt-page-count');
@@ -685,6 +739,7 @@ function installPageTurn(){
   put(key,current);
   put(anchorKey,starts[current]||0);
   put(offsetKey,offsets[current]||0);
+  window.LinguaReadingPosition?.save(state.story.id,state.chapter,current,starts[current]||0,offsets[current]||0);
   if(chapterEnd)chapterEnd.hidden=current+spread<pages.length;
   // Legacy VM tests extract renderPage alone; standalone reader remains valid.
   if(typeof scheduleGpuPaperPrime==='function')scheduleGpuPaperPrime();
@@ -707,7 +762,7 @@ function installPageTurn(){
  function ltPlayPageTurnSfx(){
   try{
    const player=window.LinguaLicensedAudio;
-   if(!player||typeof player.playSfx!=='function'||
+   if(!player||player.paperTurning?.()||typeof player.playSfx!=='function'||
       typeof player.prefs!=='function'||player.prefs().sfxEnabled!==true)return false;
    const now=Date.now();
    if(now-ltLastPaperSfxAt<280)return false;
@@ -822,15 +877,15 @@ function installPageTurn(){
     const boundary=target<0||target>=pages.length;
     if(boundary&&!state.story.chapters[state.chapter+delta])return null;
     const moving=delta>0?Math.min(current+spread-1,pages.length-1):current;
-    // Portrait: show the REAL destination under the moving front and use
-    // plain paper on its reverse; otherwise N+2 flashes below N+1 before
-    // the commit changes the entire viewport to N+1.
-    // Landscape: true spread leaf has a printed verso and a separate underlay.
-    const beneathIndex=spread===2?(delta>0?target+1:target):target;
+    // Four distinct physical surfaces. Portrait follows the turning verso
+    // with its camera, so N+2 is never substituted for destination N+1.
+    const beneathIndex=delta>0?target+1:current-2;
     const under=boundary?boundaryPage(delta):(pages[beneathIndex]||blankUnderPage());
-    const candidateBack=boundary||spread===1?null:pages[target+(delta<0?1:0)];
+    const candidateBack=boundary?null:pages[delta>0?target:current-1];
     return {page:pages[moving],under,dispose:clearCurlPreviews,
-     back:candidateBack===under?null:candidateBack,
+     fallbackUnder:spread===1?(boundary?under:pages[target]):under,
+     back:candidateBack||null,
+     stationary:pages[delta>0?(spread===2?current:current-1):current+1]||null,
      info:{storyId:curlStory.id,chapter:curlChapter,fromPage:current,toPage:boundary?null:target,spread}};
    },
    commit(delta,source){
@@ -2031,7 +2086,7 @@ renderReader=function(){
     lemmas,lexicon:window.StoryLexicon,freeDict:window.FreeDictEnglishArabic
    });
    if(!hit)return false;
-   wordSheet({...hit,source});
+   wordSheet({...hit,source,anchorToken:token});
    return true;
   };
   p.addEventListener('click',event=>{
@@ -2328,5 +2383,4 @@ function ltRefreshPagesOnResize(){
  },180);
 }
 window.addEventListener?.('resize',ltRefreshPagesOnResize);
-library(); // Re-render once after installing enhancements.
 })();

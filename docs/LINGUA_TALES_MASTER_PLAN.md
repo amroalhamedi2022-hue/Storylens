@@ -1,3 +1,11 @@
+## 21 November 2026 — Hybrid Signature
+
+Approved direction: Concept C, Hybrid Signature. Scope connects local library, edition details, chapter selection, reader, and contextual lookup. Keep authored text, storage keys and physical sheet interaction compatible.
+
+## 17 November 2026 — Physical page engine acceptance contract
+
+Current task requires a real app integration with resident GPU resources before touch, two correctly oriented printed faces, continuous finger-held/reversible deformation, portrait and landscape RTL/LTR, original text/dictionary/bookmark preservation, actual image/video inspection and Android build evidence. Reusable geometry must not alter Quranic text. The new local physical-sheet branch remains UNACCEPTED until its visual and hardware gates pass; see `qa/PHYSICAL_SHEET_ENGINE_2026-11-17.md`. No frame-rate or flawless-rendering claim may be inferred from CPU/unit tests.
+
 ## PAGINATION DELIVERY — 11 November 2026
 
 Issues #16, #17, and #18 are implemented on `codex/lingua-real-paper-pagination-20261110` at source commit `371eb02`: actual DOM measurement, word/grapheme-safe continuation of paragraphs across fixed paper sheets, atomic contained historical figures, and character-offset restoration after font/orientation reflow. All 114 Node tests, the required English/Arabic Chromium viewport matrix, physical-curl compatibility, workflow Python checks, and Android unit/build tasks passed locally. See [the evidence handoff](qa/CODEX_PAGINATION_HANDOFF_2026-11-11.md). [GitHub Actions #43027888129](https://github.com/amroalhamedi2022-hue/Storylens/actions/runs/43027888129) **SUCCESS** on code/test SHA `a487e47cb8dc45747e227ae772541b2f1247d2f2`. PR review and physical phone/Xiaomi Pad 5 acceptance remain gates; this does not claim verified 120Hz performance.
