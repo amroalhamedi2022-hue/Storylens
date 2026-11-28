@@ -1,0 +1,29 @@
+name: Literature - unassigned authentic Commons historical source media integrity
+on:
+  pull_request:
+    paths:
+      - 'tools/audit_unassigned_commons_original_art.py'
+      - 'tools/test_unassigned_commons_original_art.py'
+      - 'docs/literature/staging/**/manifest.json'
+      - '.github/workflows/unassigned-commons-art-integrity.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/audit_unassigned_commons_original_art.py'
+      - 'docs/literature/staging/**/manifest.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-original-archives-before-image-chapter-promotion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Six adversarial tests of real Commons source, actual local SHA and nonpublication
+        run: python tools/test_unassigned_commons_original_art.py
+      - name: Audit every archived original Commons source and actual WebP bytes
+        run: python tools/audit_unassigned_commons_original_art.py --json
